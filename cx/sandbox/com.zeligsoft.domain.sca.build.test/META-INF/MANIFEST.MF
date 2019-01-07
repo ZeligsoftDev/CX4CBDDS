@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test Plug-in
+Bundle-SymbolicName: com.zeligsoft.domain.sca.build.test
+Bundle-Version: 1.0.0
+Bundle-Activator: com.zeligsoft.domain.sca.build.test.Activator
+Bundle-Vendor: ZELIGSOFT
+Require-Bundle: org.eclipse.core.runtime,
+ org.junit,
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.change,
+ org.eclipse.uml2.uml,
+ com.zeligsoft.domain.sca.build,
+ org.eclipse.core.resources,
+ com.zeligsoft.base,
+ com.ibm.xtools.modeler.ui,
+ com.zeligsoft.ce.build
+Eclipse-LazyStart: true

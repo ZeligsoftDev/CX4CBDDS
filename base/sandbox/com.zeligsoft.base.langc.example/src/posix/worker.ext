@@ -1,0 +1,185 @@
+import langc;
+import ZMLMM::ZML_Deployments;
+import POSIX::POSIX;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+
+extension langc::libc;
+extension langc::element;
+extension langc::expr;
+extension langc::stmt;
+extension langc::type;
+
+extension posix::name;
+extension posix::container;
+extension posix::baseIfs;
+extension posix::fwdDecl;
+extension posix::util;
+
+
+
+create ElementList genWorkerFile(ComponentInterface c) :
+	setName( componentWorkerFilename(c) )
+	->declInclude( operatingEnvironment())
+	->addElement( workerStruct(c) )
+	->addElement( c.workerConstructFunction())
+	->addElement( c.workerDestructFunction())
+	->addElement( c.workerAllocateFunction())
+	->addElement( c.workerInitFunction())
+	->addElement( c.workerStartFunction())
+	->addElement( c.workerStopFunction())
+	->addElement( c.workerReleaseFunction())
+	->addElement( c.ownedPort.typeSelect(MessagePort).genPortGetterFunction(c))
+	->addElement( c.ownedPort.typeSelect(MessagePort).providedInterface.genWorkerFunction(c));
+
+
+create Struct workerStruct(ComponentInterface c) :
+	setName( componentWorkerStructname(c) )
+	->addMember( c.containerStructTypedef(), containerInstance(c)) 
+	->addMember( int32().ptr().ptr().ptr(), portIdName(c))
+	->addMember( int32(), c.internalIdName())
+	->addMember( char(), c.friendlyIdName())
+	->members.addAll(c.ownedPort.typeSelect(MessagePort).genPortMember(c))
+	->members.addAll(c.ownedPort.typeSelect(MessagePort).genPortStructMember(c))
+;
+
+
+NamedReference genPortMember(MessagePort p, ComponentInterface c) :
+	p.requiredInterface.genRequiredPortMember(p, c)
+;
+
+NamedReference genPortStructMember(MessagePort p, ComponentInterface c) :
+	p.requiredInterface.genRequiredPortStructMember(p, c)
+;
+
+NamedReference genRequiredPortMember(Interface i, MessagePort p, ComponentInterface c) :
+	let member = new NamedReference : 
+	member.setType(i.baseInterfaceTypedef().type())
+	-> member.setName(p.portMemberName(c))
+	-> member
+;
+
+NamedReference genRequiredPortStructMember(Interface i, MessagePort p, ComponentInterface c) :
+	let member = new NamedReference : 
+	member.setType(i.baseInterfaceTypedef().type())
+	-> member.setName(p.portStructMemberName(c))
+	-> member
+;
+
+create Function workerConstructFunction(ComponentInterface c) :
+	setReturnType( void().type() )
+	-> setName(c.workerConstructFuncName())
+	-> addParameter(c.workerStructTypedef(), 'self')
+	-> addParameter(c.containerStructTypedef(), 'container')
+	-> parameters.addAll(c.ownedPort.typeSelect(MessagePort).genPortParam(c))
+	-> addStatement(stmt(blob('self->container_').assign(blob('container'))))
+	-> addStatement(c.ownedPort.typeSelect(MessagePort).genPortConstructStmt())
+	-> addStatement(stmt(blob('self->port_id_table').assign(blob('ZCE_NEW_ARRAY(int**, eEND_OF_COMPONENT_DEFINITION_C2_USES_PORTS)'))))
+;
+
+create Function workerDestructFunction(ComponentInterface c) :
+	setReturnType(void())
+	-> setName(c.workerDestructFuncName())
+	-> addParameter(c.workerStructTypedef(), 'self')
+;
+
+create Function workerAllocateFunction(ComponentInterface c) :
+	setReturnType( c.workerStructTypedef() )
+	-> setName(c.workerAllocateFuncName())
+	-> addStatement(stmt(blob('self').assign(c.workerStruct().zce_new())))
+	-> addStatement(returnStmt(blob('self')))
+;
+
+create Function workerInitFunction(ComponentInterface c) :
+	setReturnType( void() )
+	-> setName(c.workerInitFuncName())
+	-> addParameter(c.workerStructTypedef(), 'self')
+	-> addParameter(int32(), 'portIndex')
+	-> addParameter(int32(), 'connIndex')
+;
+
+create Function workerStartFunction(ComponentInterface c) :
+	setReturnType( void() )
+	-> setName(c.workerStartFuncName())
+	-> addParameter(c.workerStructTypedef(), 'self')
+;
+
+
+create Function workerStopFunction(ComponentInterface c) :
+	setReturnType( void() )
+	-> setName(c.workerStopFuncName())
+	-> addParameter(c.workerStructTypedef(), 'self')
+;
+
+create Function workerReleaseFunction(ComponentInterface c) :
+	setReturnType( void() )
+	-> setName(c.workerReleaseFuncName())
+	-> addParameter(c.workerStructTypedef(), 'self')
+;
+
+NamedReference genPortParam(MessagePort p, ComponentInterface c) :
+	p.requiredInterface.genRequiredPortParam(p, c);
+	
+NamedReference genRequiredPortParam(Interface i, MessagePort p, ComponentInterface c) :
+	let param = new NamedReference :
+	param.setType(type(i.baseInterfaceTypedef()))
+	-> param.setName(p.portName(c))
+	-> param
+;
+
+ExpressionStatement genPortConstructStmt(MessagePort p) :
+	p.requiredInterface.genRequiredPortConstructStmt(p)
+;
+
+ExpressionStatement genRequiredPortConstructStmt(Interface i, MessagePort p) :
+	let e = new ExpressionStatement :
+	let e1 = new ExpressionStatement :
+		e.setExpr(blob('self->' + p.zdlAsPort().name + '_').assign(blob(p.zdlAsPort().name)))
+	->	e1.setExpr(blob('self->' + p.zdlAsPort().name + '_struct_').assign(blob(p.zdlAsPort().name)))
+	-> {e, e1}
+;
+
+Function genPortGetterFunction(MessagePort p, ComponentInterface c) :
+	p.requiredInterface.genRequiredPortGetterFunction(p, c)
+;
+
+create Function genRequiredPortGetterFunction(Interface i, MessagePort p, ComponentInterface c) :
+	setReturnType(i.baseInterfaceTypedef())
+	-> setName(c.workerRequiredPortGetterFuncName(p))
+	-> addParameter(c.workerStructTypedef(), 'self')
+	-> addStatement(returnStmt(blob('self->' + p.zdlAsPort().name + '_')))
+;
+
+Function genWorkerFunction(Interface i, ComponentInterface c) :
+	i.operation.genWorkerOperation(i,c);
+
+
+create Function genWorkerOperation(Operation o, Interface i, ComponentInterface c) :
+	setReturnType(  void()  )
+ -> setName( o.workerFunctionName(i, c))
+ -> parameters.addAll(o.zdlAsOperation().ownedParameter.genWorkerParam(c))
+ -> addParameter(int32(), 'iPortIndex')
+ -> addParameter(int32(), 'iConnIndex')
+ -> addStatement( stmt( blob( 'i = 0' ) ) )
+ -> addStatement( returnStmt( blob( 'ZRET_OK' ) ) )
+;
+
+NamedReference genWorkerParam(uml::Parameter p, ComponentInterface c) :
+	let param = new NamedReference :
+	param.setType(int32().type())
+	-> param.setName(p.paramName(c))
+	-> param
+;
+
+
+
+
+
+
+
+
+
+
+
+
+

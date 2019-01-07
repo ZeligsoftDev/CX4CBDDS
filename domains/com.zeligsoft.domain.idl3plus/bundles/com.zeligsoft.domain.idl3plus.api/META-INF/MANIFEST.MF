@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: IDL3+ Static API
+Bundle-SymbolicName: com.zeligsoft.domain.idl3plus.api;singleton:=true
+Bundle-Version: 3.5.0.qualifier
+Bundle-Vendor: PrismTech Canada
+Export-Package: com.zeligsoft.domain.idl3plus.api.Connectors,
+ com.zeligsoft.domain.idl3plus.api.Connectors.impl,
+ com.zeligsoft.domain.idl3plus.api.Deployment,
+ com.zeligsoft.domain.idl3plus.api.Deployment.impl,
+ com.zeligsoft.domain.idl3plus.api.Generics,
+ com.zeligsoft.domain.idl3plus.api.Generics.impl,
+ com.zeligsoft.domain.idl3plus.api.IDL3Plus,
+ com.zeligsoft.domain.idl3plus.api.IDL3Plus.impl,
+ com.zeligsoft.domain.idl3plus.api.IDL3Plus.util
+Require-Bundle: org.eclipse.uml2.uml,
+ com.zeligsoft.base.zdl.staticapi;bundle-version="[3.5.0,3.6.0)",
+ com.google.guava;bundle-version="[10.0.1,15.1.0)",
+ com.zeligsoft.base.zdl;bundle-version="[3.5.0,3.6.0)",
+ com.zeligsoft.domain.omg.ccm.api;bundle-version="[3.5.0,3.6.0)",
+ com.zeligsoft.domain.omg.corba.api;bundle-version="[3.5.0,3.6.0)",
+ com.zeligsoft.domain.zml.api;bundle-version="[3.5.0,3.6.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

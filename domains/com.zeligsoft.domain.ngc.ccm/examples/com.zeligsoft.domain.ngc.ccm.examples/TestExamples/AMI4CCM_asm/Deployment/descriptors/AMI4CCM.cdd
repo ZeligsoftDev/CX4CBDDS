@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:Domain
+    xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <label>AMI4CCM</label>
+  <UUID>de7f5650-5983-47a2-8c05-629e1e1fb1c8</UUID>
+  <node>
+    <name>AMI4CCM_ExampleNode</name>
+    <label/>
+    <resource>
+      <name>Node Address</name>
+      <resourceType>edu.vanderbilt.dre.DAnCE.NodeAddress</resourceType>
+      <property>
+        <name>edu.vanderbilt.dre.DAnCE.StringIOR</name>
+        <kind>Attribute</kind>
+        <dynamic>false</dynamic>
+        <value>
+          <type>
+            <kind>tk_string</kind>
+          </type>
+          <value>
+            <string>corbaloc:iiop:localhost:60070</string>
+          </value>
+        </value>
+      </property>
+    </resource>
+  </node>
+</Deployment:Domain>

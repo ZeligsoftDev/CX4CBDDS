@@ -1,0 +1,276 @@
+«REM»
+
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«EXTENSION extensions::DeploymentUtilsFuncs»
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::FunctionNames»
+«EXTENSION extensions::SimpleCounter»
+
+
+«DEFINE CREATE_FILES FOR ZeligsoftDeployment::DeploymentPart»
+«FILE "cfgs/"+ getNamedElementName((ZeligsoftDeployment::Deployment)this.owner)+"/"+getMySWPlatformName(this)+"/pjt/"+"appcon.pcon"»	
+
+//
+// @file: app.pcon
+// 
+//
+
+
+#ifdef USE_PFM_CONFIG_H
+#include "pfm_config.h"
+#endif
+
+//
+// MAX_PROCS( <number> ) eg. 32
+//   Maximum number of processes allowed in the system.
+//
+	MAX_PROCS(32)
+
+//
+// MAX_POOLS( <number> ) eg. 4
+//   Maximum number of pools allowed in the system.
+//
+	MAX_POOLS(4)
+
+//
+// POOL( <poolid>, <size>, <bsize1>...<bsizeN> )
+//   Size of signal pools and their allocation sizes.
+//
+#ifndef POOL0_CONF
+#if defined(USE_DSPNET) || defined(USE_ETH_CM)
+#define POOL0_CONF POOL(0, 472000, 24, 256, 768, 1576, 2048, 3096, 4096, 12000)
+#else
+#define POOL0_CONF POOL(0, 35000, 8, 16, 32, 128, 256, 512, 768, 2048)
+#endif
+#endif
+
+#ifndef POOL1_CONF
+#if defined(USE_DSPNET) || defined(USE_ETH_CM)
+#define POOL1_CONF POOL(1, 12048, 24, 48, 64, 128, 256, 512, 768, 1024)
+#else
+#define POOL1_CONF
+#endif
+#endif
+
+	POOL0_CONF
+	POOL1_CONF
+
+//
+// STACK_POOL( <number> ) eg. 1
+//   Do we want to allocate stacks from a different pool?
+//   Default is to use the system pool.
+//
+//	STACK_POOL(1)
+
+//
+// BYTE_ORDER(LITTLE/BIG)
+//   The endian of the kernel.
+//
+#ifdef ENDIAN
+	BYTE_ORDER(ENDIAN)
+#endif
+
+//
+// BUFFER_CHECK(YES/NO)
+//   Do we use a kernel with buffer checks ?
+//
+	BUFFER_CHECK(YES)
+
+//
+// PARAMETER_CHECK(YES/NO)
+//   Do we use a kernel with parameter checks ?
+//
+	PARAMETER_CHECK(YES)
+
+//
+// STACK_CHECK(YES/NO)
+//   Do we use a kernel with stack checks ?
+//
+	STACK_CHECK(YES)
+
+//
+// DEBUG_HOOKS(YES/NO)
+//   Do we use a kernel with kernel debug hooks?
+//
+	DEBUG_HOOKS(YES)
+
+//
+// DEBUG_INFO(YES/NO)
+//   Do we want a debug_info struct to be generated?
+//
+	DEBUG_INFO(YES)
+
+//
+// ILLUMINATOR(YES/NO)
+//   Do we want to be able to connect Illuminator to the target?
+//
+#ifdef USE_ILLUMINATOR
+	ILLUMINATOR(YES)
+#endif
+
+//
+// STATISTICS(YES/NO)
+//   Do we want hooks for statistics to be generated?
+//
+//	STATISTICS(YES)
+
+//
+// ERROR_HANDLER( <function> )
+//   A custom error handler.
+//
+//	ERROR_HANDLER(myErrorHandler)
+	ERROR_HANDLER(pfm_error_handler, YES)
+
+//
+// POWER_OFF_HANDLER( <function> )
+//   A custom power off handler.
+//
+//	POWER_OFF_HANDLER(myPowerOffHandler)
+
+//
+// LINK_HANDLER_PROC( <processname> )
+//   The linkhandler process.
+//
+#ifdef USE_LINKHANDLER
+	LINK_HANDLER_PROC(ose_rlnh)
+#endif
+
+//
+// SYSTEM_DAEMON( <processname> )
+//   The system daemon process.
+//
+#ifdef USE_SYSD
+	SYSTEM_DAEMON(ose_sysd)
+#endif
+
+//
+// IDLE_PROC( <entrypoint>, <stack-size> )
+//   A custom idle process. The stack size must be smaller
+//   than the size of the system pool
+//
+#ifdef USE_ILLUMINATOR
+	IDLE_PROC(sd_ldm, DEFAULT_STACK_SIZE)
+#else
+	IDLE_PROC(default_idle_process, DEFAULT_STACK_SIZE)
+#endif
+
+//
+// START_HANDLER1( <function> )
+//    These are called in order before the initialisation
+//    of the kernel, with interrupts disabled.
+//
+	START_HANDLER1(board_init1)
+
+//
+// START_HANDLER2( <function> )
+//    These are called in order after the static processes
+//    are created, but before they are started.
+//    The handlers are called with interrupts enabled.
+//
+	START_HANDLER2(board_init2)
+	START_HANDLER2(pfm_init2)
+
+//
+// OS_INT( <pid>, <processname>, <entrypoint>, <interrupt-number>, <priority> )
+//   An OS_INT process can call the kernel.
+//   If the interrupt number is less then zero, the
+//   process will not be associated to any interrupt
+//   source.
+//	OS_INT(0, timerInt, timerInt, 1, 31)
+
+//
+// USER_INT( <entrypoint>, <interrupt-number>, <priority>)
+//   An USER_INT process can not call the kernel. And does
+//   not automaticly save registers
+//
+//	USER_INT(someCode, 2, 1)
+	USER_INT(_bsp_ts_userint_a, 12, 2)
+
+//
+// PRI_PROC( <pid>, <processname>, <entrypoint>, <stacksize>, <priority> )
+//   The stack size must be smaller or equal to the
+//   largest buffersize of the system pool.
+//
+#ifdef USE_LINKHANDLER
+	PRI_PROC(1, ose_rlnh, ose_rlnh, DEFAULT_STACK_SIZE, 9)
+#endif
+#ifdef USE_SYSD
+	PRI_PROC(0, ose_sysd, ose_sysd, DEFAULT_STACK_SIZE, 2)
+#endif
+
+//
+// DEBUG_HOOKS
+//   If we are using a kernel with debug hooks we can
+//   specify:
+//
+// Hook called for each process switch.
+//   SWAP_HOOK( <function> )
+//
+// Hook called for each send and send_w_s.
+//   SEND_HOOK( <function> )
+//
+// Hook called for each receive and receive_w_tmo.
+//   RECEIVE_HOOK( <function> )
+//
+// Hook called for each alloc, s_alloc etc.
+//   ALLOC_HOOK( <function> )
+//
+// Hook called for each free_buf.
+//   FREE_HOOK( <function> )
+//
+// Hook called for each restore.
+//   RESTORE_HOOK( <function> )
+//
+// Hook called for each s_create_process, create_process.
+//   CREATE_PROCESS_HOOK( <function> )
+//
+// Hook called for each kill_proc.
+//   KILL_PROC_HOOK( <function> )
+//
+// Hook called for each error.
+//   ERROR_HOOK( <function> )
+//
+// Hook called for each s_create_pool.
+//   CREATE_POOL_HOOK( <function> )
+//
+// Hook called for each reset_pool.
+//   RESET_POOL_HOOK( <function> )
+//
+// Hook called for each s_kill_pool.
+//   KILL_POOL_HOOK( <function> )
+//
+//
+//	SWAP_HOOK(my_swap_hook)
+//	SEND_HOOK(my_send_hook)
+//	RECEIVE_HOOK(my_receive_hook)
+//	ALLOC_HOOK(my_alloc_hook)
+//	FREE_HOOK(my_free_hook)
+//	RESTORE_HOOK(my_restore_hook)
+//	CREATE_PROCESS_HOOK(my_create_process_hook)
+//	KILL_PROC_HOOK(my_kill_proc_hook)
+//	ERROR_HOOK(my_error_hook)
+//	CREATE_POOL_HOOK(my_create_pool_hook)
+//	RESET_POOL_HOOK(my_reset_pool_hook)
+//	KILL_POOL_HOOK(my_kill_pool_hook)
+//
+
+/* End-Of-File */
+/* ------------------------------------------------------------------------------ */
+«ENDFILE»
+«ENDDEFINE»

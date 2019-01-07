@@ -1,0 +1,21 @@
+<head>
+	<title>Shared Descriptor Files</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="shareddescriptfiles.html" title="Shared Descriptor Files">
+		<h1>Shared Descriptor Files</h1>
+		<p>Property-files (PRF) files can be shared by multiple model elements a practice frequently used because it saves time when creating XML files.</p>
+		<p>CX allows import of these shared XML files, which results in multiple model elements referring to the same XML files for generation. This 
+			results in correct XML if and only if the content of those files (and hence the content of the model elements) is the same. Different 
+			content for these model elements may lead to unexpected behavior. CX indicates shared XML files with an error to prevent possible problems.</p>
+		<p>As an example, say that after import, component A and B both share a property file. If A and B have the same properties, then this is fine. 
+			However, if you add a property to A, then the components generate a different property file. The final content of the XML property file 
+			depends on which component was generated last, which is undefined. CX indicates these XML files with an error.</p>
+		<p>Zeligsoft does not encourage the use of shared descriptor files. </p>
+		<div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

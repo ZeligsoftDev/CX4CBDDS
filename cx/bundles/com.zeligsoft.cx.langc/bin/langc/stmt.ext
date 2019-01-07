@@ -1,0 +1,162 @@
+
+import langc;
+
+extension codegen::regions;
+extension langc::debug;
+extension langc::expr;
+
+create CodeBlock codeFor( Function function, LinkableArtifact artifact ) :
+    let fi = new FunctionImplementation :
+        setForceBraces( true )
+     -> fi.setBody( this )
+     -> fi.setFunction( function )
+     -> artifact.functionImplementations.add( fi )
+     -> this
+;
+
+CodeBlock block( List[Statement] stmts ) :
+    let b = new CodeBlock :
+        b.setStatements( stmts )
+     -> b
+;
+
+CodeBlock block( Statement stmt ) :
+    let b = new CodeBlock :
+        b.statements.add( stmt )
+     -> b
+;
+
+ExpressionStatement stmt( Expression expr ) :
+    let e = new ExpressionStatement :
+        e.setExpr( expr )
+     -> e
+;
+
+BreakStatement  breakStmt()  : new BreakStatement;
+ReturnStatement returnStmt() : new ReturnStatement;
+ReturnStatement returnStmt( Expression expr ) :
+    let s = new ReturnStatement :
+        s.setExpr( expr )
+     -> s
+;
+
+SwitchStatement switchStmt( Expression condition ) :
+    let s = new SwitchStatement :
+        s.setCondition( condition )
+     -> s.setClauses( {} )
+     -> s
+;
+
+SwitchClause defaultClause() :
+    let l = new SwitchClause :
+        l.setStatements( {} )
+     -> l
+;
+
+SwitchClause labeledClause( Expression label ) :
+    let l = new LabeledClause :
+        l.setLabels( { label } )
+     -> l.setStatements( {} )
+     -> l
+;
+
+SwitchClause labeledClause( List[Expression] labels ) :
+    let l = new LabeledClause :
+        l.setLabels( labels )
+     -> l.setStatements( {} )
+     -> l
+;
+
+SwitchClause labeledClause( List[Expression] labels, List[Statement] stmts ) :
+    let l = new LabeledClause :
+        l.setLabels( labels )
+     -> l.setStatements( stmts )
+     -> l
+;
+
+WhileStatement while( Expression condition ) :
+    let s = new WhileStatement :
+        s.setCondition( condition )
+     -> s
+;
+
+ConditionalStatement ifStmt( Expression condition ) :
+    let s = new ConditionalStatement :
+        s.setCondition( condition )
+     -> s
+;
+
+CodeBlock addStatement( CodeBlock block, Void none ) :
+    block
+;
+
+CodeBlock addStatement( CodeBlock block, Object obj ) :
+    block
+;
+
+CodeBlock addStatement( CodeBlock block, Statement stmt ) :
+    block.statements == null
+        ? block.setStatements( { stmt } )
+        : block.statements.add( stmt )
+ -> block
+;
+
+/* XTend does not allow overloading based on the type of List.  A generic List is specified
+ * here and an explicit loop is used to call the type appropriate rule. */
+CodeBlock addStatement( CodeBlock block, List elements ) :
+    elements
+        .select( e | e != null )
+        .collect( element | block.addStatement( element ) )
+ -> block
+;
+
+CodeBlock addStatement( CodeBlock block, Expression expr ) :
+    block.addStatement( expr.stmt() )
+;
+
+CodeBlock addStatement( CodeBlock block, VariableDeclaration var ) :
+    block.addStatement( var.stmt() )
+;
+
+Statement stmt( VariableDeclaration var ) :
+    let s = new VariableDeclarationStatement :
+        s.setVariable( var )
+     -> s
+;
+
+CodeBlob userCode( String text ) :
+    let b = new CodeBlob :
+        b.setForceBraces( true )
+     -> b.setText( text )
+     -> b
+;
+
+CodeBlob userCode( String deps, String text ) :
+    let b = new CodeBlob :
+        b.setForceBraces( true )
+     -> b.setDependencies( depBlob( deps ) )
+     -> b.setText( text )
+     -> b
+;
+
+CodeBlob userCode( emf::EObject modelElement, String concept, String property, String text ) :
+    let b = new CodeBlob :
+        b.setForceBraces( true )
+     -> b.setText( text == null ? '' : text )
+     -> b.setMarkerComment( modelElement.userEditBegin( concept, property ) )
+     -> b
+;
+
+DependencyBlob depBlob( String text ) :
+    let b = new DependencyBlob :
+        b.setText( text == null ? '' : text )
+     -> b.setMarkerComment( '' )
+     -> b
+;
+
+DependencyBlob depBlob( emf::EObject modelElement, String concept, String property, String text ) :
+    let b = new DependencyBlob :
+        b.setText( text == null ? '' : text )
+     -> b.setMarkerComment( modelElement.userEditBegin( concept, property ) )
+     -> b
+;

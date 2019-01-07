@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/"
+            target="platform:/plugin/com.zeligsoft.domain.dds4ccm.ddsdcpsconnector/models/">
+      </mapping>
+   </extension>
+   <extension
+         point="com.ibm.xtools.uml.msl.UMLLibraries">
+      <UMLLibrary
+            name="DDS DCPS Connector"
+            path="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml">
+      </UMLLibrary>
+   </extension>
+   <extension
+   		point="com.zeligsoft.domain.idl3plus.model_library_configuration">
+   		<connector name="DDS_DCPS::CCM_DDS::Typed">
+   			<generationOptions>
+   				<includeFile>Components.idl</includeFile>
+   				<includeFile>ccm_dds.idl</includeFile>
+   			</generationOptions>
+   			<importOptions />
+      <portIcon
+            name="DDS_DCPS::CCM_DDS::Typed::DDS_Write"
+            portIcon="icons/obj16/publisher-port.gif"
+            conjugatedPortIcon="icons/obj16/consumer-port.gif">
+      </portIcon>
+      <portIcon
+            name="DDS_DCPS::CCM_DDS::Typed::DDS_Update"
+            portIcon="icons/obj16/publisher-port.gif"    
+            conjugatedPortIcon="icons/obj16/consumer-port.gif">
+      </portIcon>
+      <portIcon
+            name="DDS_DCPS::CCM_DDS::Typed::DDS_Get"
+            portIcon="icons/obj16/consumer-port.gif"
+            conjugatedPortIcon="icons/obj16/publisher-port.gif">
+      </portIcon>
+      <portIcon
+            name="DDS_DCPS::CCM_DDS::Typed::DDS_Listen"
+            portIcon="icons/obj16/consumer-port.gif"
+            conjugatedPortIcon="icons/obj16/publisher-port.gif">
+      </portIcon>
+      <portIcon
+            name="DDS_DCPS::CCM_DDS::Typed::DDS_Read"
+            portIcon="icons/obj16/consumer-port.gif"
+            conjugatedPortIcon="icons/obj16/publisher-port.gif">
+      </portIcon>
+      <portIcon
+            name="DDS_DCPS::CCM_DDS::Typed::DDS_StateListen"
+            portIcon="icons/obj16/consumer-port.gif"
+            conjugatedPortIcon="icons/obj16/publisher-port.gif">
+      </portIcon>
+   		</connector>
+   		<module name="DDS_DCPS::CCM_DDS">
+   			<generationOptions>
+   				<includeFile>ccm_dds.idl</includeFile>
+   			</generationOptions>
+   		</module>
+   	</extension>
+</plugin>

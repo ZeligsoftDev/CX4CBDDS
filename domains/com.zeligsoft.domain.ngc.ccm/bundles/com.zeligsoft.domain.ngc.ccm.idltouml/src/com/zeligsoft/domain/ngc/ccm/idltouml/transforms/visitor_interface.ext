@@ -1,0 +1,266 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+import CORBADomain::IDL;
+import CCM::CCM_Component;
+
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::uml_utils;
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::ccm_utils;
+
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::tao_idl_utils;
+
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::component_names;
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::namespaces;
+
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::visitor_attribute;
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::visitor_operation;
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::visitor_component_einterface;
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::visitor_inheritance_graph;
+
+// the client interface
+Void visit_interface(CORBAInterface node, uml::Package container) :
+	let namespace = namespace(node, container) :
+		node.interface(namespace, container) ->
+		node.interface_var(namespace, container) ->
+		node.interface_ptr(namespace, container) ->
+		node.interface_out(namespace, container) ->
+		node.interface__equivalent_idl(container);
+		
+// the client equivalent interface
+Void visit_equivalent_interface_client(CCMComponent node, uml::Package container) :
+	let namespace = namespace(node, container) :
+		node.equivalent_interface_client(namespace, container) ->
+		node.equivalent_interface_client_var(namespace, container) ->
+		node.equivalent_interface_client_ptr(namespace, container) ->
+		node.equivalent_interface_client_out(namespace, container);
+	
+uml::Class type(CORBAInterface node, uml::Package container):
+	let namespace = namespace(node, container) :
+		interface(node, namespace, container);
+		
+uml::Class var_type(CORBAInterface node, uml::Package container):
+	let namespace = namespace(node, container) :
+		interface_var(node, namespace, container);
+
+uml::Class ptr_type(CORBAInterface node, uml::Package container):
+	let namespace = namespace(node, container) :
+		interface_ptr(node, namespace, container);
+		
+uml::Class out_type(CORBAInterface node, uml::Package container):
+	let namespace = namespace(node, container) :
+		interface_out(node, namespace, container);
+
+private create uml::Class interface(CORBAInterface node, uml::Package namespace, uml::Package root) :
+	this.setName(node.name) ->
+	// TODO : inherit from skeleton 
+	// TODO : handle local interface
+	add_interface__constructor(node.name, node.isLocal, node.isAbstract, this, node) ->
+	interface__destructor(node.name, this, node) ->
+	add_interface__copy_constructor(node.name, node.isLocal, node.isAbstract, this, node) ->
+	add_interface__stub_objects(node.name, node.isLocal, node.isAbstract, this, node) ->
+	node.ownedAttribute.visit_attribute(this) ->
+	node.ownedOperation.visit_operation(this) ->
+	node.zdlAsInterface().general.typeSelect(CORBAInterface).forAll(c|visit_inheritance_graph(node, c, this)) ->
+	addStandardAttributes(node.name, node.isLocal, node.isAbstract, this) ->
+	addStandardOperations(node.name, node.isLocal, node.isAbstract, this, node) ->
+	this.general.addAll(node.general().type(root)) ->
+	namespace.packagedElement.add(this) ->
+	this.createTrace(node, "interface") ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Class equivalent_interface_client(CCMComponent node, uml::Package namespace, uml::Package root) :
+	let name = node.component_einterface_client_name() :
+	let isLocal = false :
+	let isAbstract = node.zdlAsComponent().isAbstract :
+	this.setName(name) ->
+	// TODO : inherit from skeleton 
+	// TODO : handle local interface
+	add_interface__constructor(name, isLocal, isAbstract, this, node) ->
+	interface__destructor(name, this, node) ->
+	add_interface__copy_constructor(name, isLocal, isAbstract, this, node) ->
+	add_interface__stub_objects(name, isLocal, isAbstract, this, node) ->
+	node.ownedAttribute.visit_attribute(this) ->
+	node.zdlAsInterface().general.typeSelect(CORBAInterface).forAll(c|visit_inheritance_graph(node, c, this)) ->
+	addStandardAttributes(name, isLocal, isAbstract, this) ->
+	addStandardOperations(name, isLocal, isAbstract, this, node) ->
+	this.general.addAll(node.realizedInterfaces().type(root)) ->
+	namespace.packagedElement.add(this) ->
+	this.createTrace(node, "equivalent_interface_client") ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Class interface_var(CORBAInterface node, uml::Package namespace, uml::Package root) :
+	this.setName(node.name + "_var") ->
+	this.general.add(interface(node, namespace, root)) ->
+	namespace.packagedElement.add(this) ->
+	this.createTrace(node, "interface_var") ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Class interface_ptr(CORBAInterface node, uml::Package namespace, uml::Package root) :
+	this.setName(node.name + "_ptr") ->
+	this.general.add(interface(node, namespace, root)) ->
+	namespace.packagedElement.add(this) ->
+	this.createTrace(node, "interface_ptr") ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Class interface_out(CORBAInterface node, uml::Package namespace, uml::Package root) :
+	this.setName(node.name + "_out") ->
+	this.general.add(interface(node, namespace, root)) ->
+	namespace.packagedElement.add(this) ->
+	this.createTrace(node, "interface_out") ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Class equivalent_interface_client_var(CCMComponent node, uml::Package namespace, uml::Package root) :
+	this.setName(node.component_einterface_client_var_name()) ->
+	this.general.add(equivalent_interface_client(node, namespace, root)) ->
+	namespace.packagedElement.add(this) ->
+	this.createTrace(node, "equivalent_interface_client_var") ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Class equivalent_interface_client_ptr(CCMComponent node, uml::Package namespace, uml::Package root) :
+	this.setName(node.component_einterface_client_ptr_name()) ->
+	this.general.add(equivalent_interface_client(node, namespace, root)) ->
+	namespace.packagedElement.add(this) ->
+	this.createTrace(node, "equivalent_interface_client_ptr") ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Class equivalent_interface_client_out(CCMComponent node, uml::Package namespace, uml::Package root) :
+	this.setName(node.component_einterface_client_out_name()) ->
+	this.general.add(equivalent_interface_client(node, namespace, root)) ->
+	namespace.packagedElement.add(this) ->
+	this.createTrace(node, "equivalent_interface_client_out") ->
+	this.addGeneratedTag() ->
+	this;
+
+private Void add_interface__constructor(String name, Boolean isLocal, Boolean isAbstract, uml::Class container, uml::NamedElement source) :
+	if ((!isLocal) && (!isAbstract)) then 
+		interface__constructor(name, container).createTrace(source, "interface_constructor")
+	else if(isLocal && isAbstract) then 
+		interface__constructor(name, container).createTrace(source, "interface_constructor")
+	else 
+		Void;
+		
+private Void add_interface__copy_constructor(String name, Boolean isLocal, Boolean isAbstract, uml::Class container, uml::NamedElement source) :
+	interface__copy_constructor(name, isLocal, isAbstract, container).createTrace(source, "interface__copy_constructor");
+
+private create uml::Operation interface__constructor(String name, uml::Class container) :
+	this.setName(name) ->
+	this.makeProtected() ->
+	container.ownedOperation.add(this) ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Operation interface__destructor(String name, uml::Class container, uml::NamedElement source) :
+	this.setName("~" + name) ->
+	this.makeProtected() ->
+	container.ownedOperation.add(this) ->
+	this.createTrace(source, "interface__destructor") ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Operation interface__copy_constructor(String name, Boolean isLocal, Boolean isAbstract, uml::Class container) :
+	this.setName(name) ->
+	(isAbstract) ? this.makeProtected() : this.makePrivate() ->
+	interface__copy_constructor_parameter(name, this) ->
+	container.ownedOperation.add(this) ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Parameter interface__copy_constructor_parameter(String name, uml::Operation container) :
+	this.setName(name) ->
+	// TODO : set type
+	container.ownedParameter.add(this) ->
+	this.addGeneratedTag() ->
+	this;
+	
+private Void add_interface__stub_objects(String name, Boolean isLocal, Boolean isAbstract, uml::Class container, uml::NamedElement source) :
+		((!isAbstract) && (!isLocal)) ? interface__stub_objects_constructor(name, container).createTrace(source, "interface__stub_objects_constructor") : Void ->
+		(!isLocal) ? interface__stub_objects_constructor2(name, container).createTrace(source, "interface__stub_objects_constructor2") : Void ;
+	
+private create uml::Operation interface__stub_objects_constructor(String name, uml::Class container) :
+	this.setName(name) ->
+	this.makeProtected() ->
+	interface__stub_objects_constructor_parameters(name, this) ->
+	container.ownedOperation.add(this) ->
+	this.addGeneratedTag() ->
+	this;
+	
+private cached Void interface__stub_objects_constructor_parameters(String name, uml::Operation container) :
+	let ior = new uml::Parameter :
+	let orb_core = new uml::Parameter :
+		ior.setName("ior") ->
+		orb_core.setName("orb_core") ->
+		container.ownedParameter.add(ior) ->
+		container.ownedParameter.add(orb_core) ->
+		ior.addGeneratedTag() ->
+		ior.addGeneratedTag();
+
+private create uml::Operation interface__stub_objects_constructor2(String name, uml::Class container) :
+	this.setName(name) ->
+	this.makeProtected() ->
+	interface__stub_objects_constructor2_parameters(name, this) ->
+	container.ownedOperation.add(this) ->
+	this.addGeneratedTag() ->
+	this;
+	
+private cached Void interface__stub_objects_constructor2_parameters(String name, uml::Operation container) :
+	let objref = new uml::Parameter :
+	let tao_collocated = new uml::Parameter :
+	let servant = new uml::Parameter :
+	let orb_core = new uml::Parameter :
+		objref.setName("objref") ->
+		tao_collocated.setName("_tao_collocated") ->
+		servant.setName("servant") ->
+		orb_core.setName("orb_core") ->
+		container.ownedParameter.add(objref) ->
+		container.ownedParameter.add(tao_collocated) ->
+		container.ownedParameter.add(servant) ->
+		container.ownedParameter.add(orb_core) ->
+		objref.addGeneratedTag() ->
+		tao_collocated.addGeneratedTag() ->
+		servant.addGeneratedTag() ->
+		orb_core.addGeneratedTag();	
+		
+private Void addStandardAttributes(String name, Boolean isLocal, Boolean isAbstract, uml::Class container) :
+	((!isLocal) && gen_direct_collocation() && gen_thru_poa_collocation()) ? 
+		interface__standard_attribute_proxy_broker(name, container) : Void;
+
+// add the proxy broker member variable
+private create uml::Property interface__standard_attribute_proxy_broker(String name, uml::Class container) :
+	this.setName("the_TAO_" + name + "_Proxy_Broker_") ->
+	this.makePrivate() ->
+	// TODO : set the type
+	container.ownedAttribute.add(this) ->
+	this.addGeneratedTag() ->
+	this;
+	
+private Void addStandardOperations(String name, Boolean isLocal, Boolean isAbstract, uml::Class container, uml::NamedElement source) :
+	((!isLocal) && gen_direct_collocation() && gen_thru_poa_collocation()) ? 
+		interface__standard_operation_setup_collocation(name, container).createTrace(source, "interface__standard_operation_setup_collocation") : Void;
+	
+private create uml::Operation interface__standard_operation_setup_collocation(String name, uml::Class container) :
+	this.setName(name + "_setup_collocation") ->
+	this.makeProtected() ->
+	container.ownedOperation.add(this) ->
+	this.addGeneratedTag() ->
+	this;

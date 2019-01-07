@@ -1,0 +1,28 @@
+/// @defgroup AGSP_GPS_conn GPS_conn
+/// @{
+/// 
+/// @file AGSP_GPS_conn.idl
+/// @brief GPS_conn connector definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__GIMBAL_GPS_ADAPTER_COMP__PORTS__AGSP_GPS_CONN_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__GIMBAL_GPS_ADAPTER_COMP__PORTS__AGSP_GPS_CONN_IDL
+
+#include <Components.idl>
+#include <ccm_dds.idl>
+#include "AGSP_GPS_msg.idl"
+#pragma ciao lem "AGSP_GPS_connE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef GPS_msgSeq
+    typedef sequence <GPS_msg> GPS_msgSeq;
+    module CCM_DDS::Typed <GPS_msg, GPS_msgSeq> GPS_conn; 
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__GIMBAL_GPS_ADAPTER_COMP__PORTS__AGSP_GPS_CONN_IDL
+
+/// @}
+

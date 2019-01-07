@@ -1,0 +1,52 @@
+/// @defgroup AGSP_SystemImages_msg SystemImages_msg
+/// @{
+/// 
+/// @file AGSP_SystemImages_msg.idl
+/// @brief SystemImages_msg message definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__1ARTGALLERY__AGSP_SYSTEMIMAGES_MSG_IDL
+#define CX_PORTS__1ARTGALLERY__AGSP_SYSTEMIMAGES_MSG_IDL
+
+#include "ccm_psat_header_defn.idl"
+#include "AGSP_Common_defn.idl"
+#include "AGSP_SystemImages_defn.idl"
+#pragma ndds typesupport "AGSP_SystemImages_msgSupport.h"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @struct SystemImages_msg
+    ///
+    /// The SystemImages_msg message is used to publish images from the SP to be
+    /// used or stored in the Class 3 control room.
+    /// 
+    /// Since an image defines a large chunk of data, this message is defined as
+    /// a PSAT message, meaning it has an attachment. As a PSAT message, the
+    /// message definition MUST include a PSAT_Header struct as the first
+    /// message field. In addition, it includes a time stamp and (for now) a
+    /// proxy image array. In reality, for a PSAT message the image array would
+    /// be stored in the attachment. However, since the Art Gallery is not a
+    /// true operational design (it is for tool test/development purposes), this
+    /// extra nuance is not currently handled.
+    struct SystemImages_msg {
+
+        /// Since this is a PSAT message, the PSAT_Header is a REQUIRED field,
+        /// and must be defined first.
+        CCM_PSAT::PSAT_Header psat_hdr;
+
+        /// Timestamp for the image
+        AGSP::SystemTime timeStamp;
+
+        /// Proxy image array.  In reality this would be stored in the PSAT
+        /// attachment buffer (AB), but this message is only for test purposes
+        /// (not an actual design).
+        AGSP::ImageArray image;
+    }; //@top-level true
+};
+
+#endif // CX_PORTS__1ARTGALLERY__AGSP_SYSTEMIMAGES_MSG_IDL
+
+/// @}
+

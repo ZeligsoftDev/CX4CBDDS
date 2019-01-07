@@ -1,0 +1,335 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+ 
+«IMPORT uml»
+«IMPORT templates::common»
+
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::FunctionNames»
+«EXTENSION extensions::StringHelpers»
+
+
+«DEFINE providesInterfaceHeaderFile FOR Interface»
+«FILE "ifs/" + getNamedElementName(this) + "/c/Default/" + getInterfaceProvidesDefFileName()»
+«EXPAND Copyright::copyright FOR this»
+/**
+ *
+ * FILE: «getInterfaceProvidesDefFileName()»
+ *
+ */
+«EXPAND IfDefs::startIfDefZCEPROVIDES FOR this»
+«EXPAND IfDefs::startIfDefCPP FOR this»
+#include "zceOperatingEnvironment.h"
+
+/*******************************************************************
+ *
+ *
+ *  Interface ProvidesPort struct + typedefs
+ *
+ *
+ *******************************************************************/   
+#include "zceBase_«name».h"
+
+struct zce_struct_ProvidesPort_«name»;
+typedef struct zce_struct_ProvidesPort_«name»* zceProvidesPort_«name»;
+
+/*******************************************************************
+ *
+ *
+ *  Provides Port base functions
+ *
+ *
+ *******************************************************************/  
+/**
+ * zceProvidesPort_«name»_construct: zceProvidesPort_«name»'s constructor
+ * Following the constructor/destructor pattern, every struct has its own matching pair of construct/destruct functions
+ * @param self The zceProvidesPort_«name» struct to which this function applies to.
+ */
+void zceProvidesPort_«name»_construct(zceProvidesPort_«name» self ZCE_EXC_ENV_ARG);
+
+/**
+ * zceProvidesPort_«name»_destruct: zceProvidesPort_«name»'s destructor
+ * Following the constructor/destructor pattern, every struct has its own matching pair of construct/destruct functions
+ * @param self The zceProvidesPort_«name» struct to which this function applies to.
+ */
+void zceProvidesPort_«name»_destruct(zceProvidesPort_«name» self ZCE_EXC_ENV_ARG);
+
+/**
+ * zceProvidesPort_«name»_allocate: zceProvidesPort_«name»'s port allocator
+ * Allocate the memory for the port struct
+ * @return The zceProvidesPort_«name» struct.
+ */
+zceProvidesPort_«name» zceProvidesPort_«name»_allocate(ZCE_EXC_ENV_SINGLE_ARG);
+
+/**
+ * zceProvidesPort_«name»_getConnNumber: zceProvidesPort_«name»'s connection number getter
+ * Get connection number for the port struct
+ * @return The int represents connection number.
+ */
+int zceProvidesPort_«name»_getConnNumber(zceProvidesPort_«name» self ZCE_EXC_ENV_ARG);
+
+/**
+ * zceProvidesPort_«name»_setConnNumber: zceProvidesPort_«name»'s connection number setter
+ * Set connection number for the port struct
+ */
+void zceProvidesPort_«name»_setConnNumber(zceProvidesPort_«name» self, int numConnection ZCE_EXC_ENV_ARG);
+
+/*******************************************************************
+ *
+ *
+ *  Provides Port get set cons_/cons_table_ Operation
+ *
+ *
+ *******************************************************************/
+/**
+ * zceProvidesPort_«name»_setCons: zceProvidesPort_«name»'s Cons getter
+ * Allow one to set the consumer which is worker.
+ * @param self The zceProvidesPort_«name» struct to which this function applies to.
+ * @param pWorker The void* represents the worker struct passed in.
+ */
+void zceProvidesPort_«name»_setCons(zceProvidesPort_«name» self, void* pWorker ZCE_EXC_ENV_ARG);
+
+/**
+ * zceProvidesPort_«name»_setConsTable: zceProvidesPort_«name»'s ConsTable setter
+ * Allows one to set ConsTable.
+ * @param self The zceProvidesPort_«name» struct to which this function applies to.
+ * @param CallbackFuncTable The var represents the function pointer table.
+ */
+void zceProvidesPort_«name»_setConsTable(zceProvidesPort_«name» self, zceBase_«name» CallbackFuncTable ZCE_EXC_ENV_ARG);
+
+/**
+ * zceProvidesPort_«name»_getConsTable: zceProvidesPort_«name»'s ConsTable getter
+ * Allows one to get ConsTable.
+ * @param self The zceProvidesPort_«name» struct to which this function applies to.
+ * @return CallbackFuncTable The var represents the function pointer table.
+ */
+zceBase_«name» zceProvidesPort_«name»_getConsTable(zceProvidesPort_«name» self ZCE_EXC_ENV_ARG);
+
+
+«EXPAND IfDefs::startIfDefZCE_NAMES FOR this»
+/**
+ * zceProvidesPort_«name»_getFriendlyId: friendly id getter
+ * A component may have a string based friendly id if ZCE_NAMES_ is defined. This function allows one to retrieve this friendly id.
+ * @param self The zceProvidesPort_«name» struct to which this function applies to.
+ * @return A const char holding friendly id.
+ */
+const char* zceProvidesPort_«name»_getFriendlyId(zceProvidesPort_«name» self ZCE_EXC_ENV_ARG);
+
+/**
+ * zceProvidesPort_«name»_setFriendlyId: friendly id setter
+ * A component may have a string based friendly id if ZCE_NAMES_ is defined. This function allows one to retrieve this friendly id.
+ * @param self The zceProvidesPort_«name» struct to which this function applies to.
+ * @param pszFriendlyId The const char* that holds the new friendly id to be set.
+ */
+void zceProvidesPort_«name»_setFriendlyId(zceProvidesPort_«name» self, const char* pszFriendlyId ZCE_EXC_ENV_ARG);
+«EXPAND IfDefs::endIfDefZCE_NAMES FOR this»
+
+/**
+ * zceProvidesPort_«name»_getInternalId: internal id getter
+ * Allows one to retrieve internal id.
+ * @param self The zceProvidesPort_«name» struct to which this function applies to.
+ * @return internal id.
+ */
+long zceProvidesPort_«name»_getInternalId(zceProvidesPort_«name» self ZCE_EXC_ENV_ARG);
+
+/**
+ * zceProvidesPort_«name»_setInternalId: internal id setter
+ * Allows one to set internal id.
+ * @param self The zceProvidesPort_«name» struct to which this function applies to.
+ * @param lInternalId The long that holds the new internal id to be set.
+ */
+void zceProvidesPort_«name»_setInternalId(zceProvidesPort_«name» self, long lInternalId ZCE_EXC_ENV_ARG);
+
+/*******************************************************************
+ *
+ *
+ *  Provides Port Interface API functions
+ *
+ *
+ *******************************************************************/ 
+«FOREACH this.getOperations() AS op»
+void zceProvidesPort_«name»_«op.name»(void* port, char* buffer, int iBufLen, int iPortIndex, int iConnIndex ZCE_EXC_ENV_ARG );
+«ENDFOREACH»
+«EXPAND IfDefs::endIfDefCPP FOR this»
+«EXPAND IfDefs::endIfDefZCEPROVIDES FOR this»
+/* End of FILE: «getInterfaceProvidesDefFileName()» */
+/******************************************************************/
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE providesInterfaceSourceFile FOR Interface»
+«FILE "ifs/" + getNamedElementName(this) + "/c/Default/" + getInterfaceProvidesSourceFileName()»
+«EXPAND templates::common::Copyright::copyright FOR this»
+/**
+ *
+ * FILE: «getInterfaceProvidesSourceFileName()»
+ *
+ */
+
+#include "zceProvidesPort_«name».h"
+#include "zceOperatingEnvironment.h"
+#include "zceBase_«name».h"
+
+
+struct zce_struct_ProvidesPort_«name»
+{
+	int internal_id_;
+	int numConnection_;
+	zceBase_«name» cons_;
+	zceBase_«name» cons_table_;
+#ifdef ZCE_NAMES_
+	char friendly_id_[ZCE_NAMES_MAX_LEN_];
+#endif
+};
+
+
+/*******************************************************************
+ *
+ *
+ *  Provides Port base functions  
+ *
+ *
+ *******************************************************************/   
+
+void zceProvidesPort_«name»_construct(zceProvidesPort_«name» self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->internal_id_ = 0;
+	self->cons_ = NULL;
+	self->cons_table_ = NULL;
+#ifdef ZCE_NAMES_
+	self->friendly_id_[0] = '\0';
+#endif /* ZCE_NAMES_ */
+}
+
+void zceProvidesPort_«name»_destruct(zceProvidesPort_«name» self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->internal_id_ = 0;
+	self->cons_ = NULL;
+	ZCE_DELETE(self->cons_table_);
+#ifdef ZCE_NAMES_
+	self->friendly_id_[0] = '\0';
+#endif /* ZCE_NAMES_ */
+}
+
+zceProvidesPort_«name» zceProvidesPort_«name»_allocate(ZCE_EXC_ENV_SINGLE_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	zceProvidesPort_«name» self = ZCE_NEW(struct zce_struct_ProvidesPort_«name»);
+	return self;
+}
+
+int zceProvidesPort_«name»_getConnNumber(zceProvidesPort_«name» self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	return self->numConnection_;
+}
+
+void zceProvidesPort_«name»_setConnNumber(zceProvidesPort_«name» self, int numConnection ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->numConnection_ = numConnection;
+}
+
+/*******************************************************************
+ *
+ *
+ *  Provides Port ID getter setter functions  
+ *
+ *
+ *******************************************************************/  
+
+«EXPAND IfDefs::startIfDefZCE_NAMES FOR this»
+const char* zceProvidesPort_«name»_getFriendlyId(zceProvidesPort_«name» self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	return self->friendly_id_;
+}
+
+void zceProvidesPort_«name»_setFriendlyId(zceProvidesPort_«name» self, const char* pszFriendlyId ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	OE_STRNCPY(self->friendly_id_, pszFriendlyId, ZCE_NAMES_MAX_LEN_);
+	self->friendly_id_[ZCE_NAMES_MAX_LEN_-1] = 0;
+}
+«EXPAND IfDefs::endIfDefZCE_NAMES FOR this»
+
+long zceProvidesPort_«name»_getInternalId(zceProvidesPort_«name» self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	return self->internal_id_;
+}
+
+void zceProvidesPort_«name»_setInternalId(zceProvidesPort_«name» self, long lInternalId ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->internal_id_ = lInternalId;
+}
+
+/*******************************************************************
+ *
+ *
+ *  Provides Port cons_/cons_table_ getter setter functions
+ *
+ *
+ *******************************************************************/ 
+
+void zceProvidesPort_«name»_setCons(zceProvidesPort_«name» self, void* pWorker ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->cons_ = (zceBase_«name»)pWorker;
+}
+
+void zceProvidesPort_«name»_setConsTable(zceProvidesPort_«name» self, zceBase_«name» CallbackFuncTable ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->cons_table_ = CallbackFuncTable;
+}
+
+zceBase_«name» zceProvidesPort_«name»_getConsTable(zceProvidesPort_«name» self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	return self->cons_table_;
+}
+
+
+/*******************************************************************
+ *
+ *
+ *  Provides Port API functions
+ *
+ *
+ *******************************************************************/
+«FOREACH this.getOperations() AS op»
+void zceProvidesPort_«name»_«op.name»(void* port, char* buffer, int iBufLen, int iPortIndex, int iConnIndex ZCE_EXC_ENV_ARG )
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	zceProvidesPort_«name» providesPort = (zceProvidesPort_«name»)port;
+	/* Demarshalling the sending message */
+	struct zceMarshallStruct_«name»_«op.name»* data = (struct zceMarshallStruct_«name»_«op.name»*)buffer;
+	providesPort->cons_table_->«op.name»(providesPort->cons_, «FOREACH op.ownedParameter AS p»data->«p.name», «ENDFOREACH»iPortIndex, iConnIndex ZCE_EXC_ENV_PARAM);
+}
+«ENDFOREACH»
+
+
+
+/* End of FILE: «getInterfaceProvidesSourceFileName()» */
+/******************************************************************/
+«ENDFILE»
+«ENDDEFINE»

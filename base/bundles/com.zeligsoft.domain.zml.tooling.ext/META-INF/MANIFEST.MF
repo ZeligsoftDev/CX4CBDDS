@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: com.zeligsoft.domain.zml.tooling.ext
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: %Bundle-Vendor.0
+Export-Package: com.zeligsoft.domain.zml.tooling.ext
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.uml2.uml;visibility:=reexport,
+ com.ibm.xtools.modeler.ui,
+ com.zeligsoft.base.zdl,
+ com.zeligsoft.domain.zml
+Eclipse-LazyStart: true
+Bundle-Localization: plugin

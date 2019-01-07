@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.zeligsoft.domain.idl3plus_feature"
+      label="CX IDL3+ Domain"
+      version="3.5.0.qualifier"
+      provider-name="PrismTech Canada Inc.">
+
+   <description url="http://www.zeligsoft.com/tools/zeligsoft-cx">
+      %description
+   </description>
+
+   <copyright>
+      Copyright 2018 ADLINK Technology Limited.
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="com.zeligsoft.domain.omg.ccm.generator"/>
+      <import plugin="com.zeligsoft.domain.omg.corba.codegen"/>
+      <import plugin="org.eclipse.uml2.uml"/>
+      <import plugin="com.zeligsoft.base.zdl"/>
+      <import plugin="com.zeligsoft.domain.omg.ccm"/>
+      <import plugin="com.zeligsoft.domain.omg.corba"/>
+      <import plugin="com.zeligsoft.domain.omg.corba.dsl"/>
+      <import plugin="com.zeligsoft.domain.zml"/>
+      <import plugin="org.eclipse.emf.mwe.utils"/>
+      <import plugin="org.eclipse.emf.mwe.core"/>
+      <import plugin="org.eclipse.xpand"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.validation"/>
+      <import plugin="com.zeligsoft.domain.omg.ccm.idlimport"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="com.zeligsoft.cx.ui"/>
+      <import plugin="com.zeligsoft.domain.omg.corba.ui"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui"/>
+      <import plugin="com.ibm.xtools.uml.type"/>
+      <import plugin="com.ibm.xtools.modeler.ui"/>
+      <import plugin="com.zeligsoft.cx.ui.properties"/>
+      <import plugin="com.zeligsoft.base.ui.menus"/>
+      <import plugin="com.zeligsoft.base.ui"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="com.zeligsoft.domain.zml.ui"/>
+      <import plugin="com.zeligsoft.domain.omg.ccm.ui"/>
+      <import plugin="com.zeligsoft.cx.deployment.treeeditor"/>
+      <import plugin="com.ibm.xtools.uml.ui.diagrams.structure"/>
+      <import plugin="org.eclipse.uml2.uml.edit"/>
+      <import plugin="com.zeligsoft.base"/>
+      <import plugin="com.zeligsoft.cx.codegen.ui"/>
+      <import plugin="com.zeligsoft.cx.codegen"/>
+      <import plugin="org.eclipse.xtend.typesystem.uml2"/>
+      <import plugin="org.eclipse.xtend.typesystem.xsd"/>
+      <import plugin="com.zeligsoft.cx.codegen.ui"/>
+      <import plugin="com.zeligsoft.domain.omg.ccm"/>
+      <import plugin="org.eclipse.xpand"/>
+      <import plugin="org.apache.commons.logging"/>
+      <import plugin="com.ibm.xtools.uml.msl"/>
+   </requires>
+
+   <plugin
+         id="com.zeligsoft.domain.idl3plus"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.idl3plus.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.idl3plus.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.idl3plus.idlimport"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.idl3plus.generator"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

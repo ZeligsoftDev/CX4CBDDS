@@ -1,0 +1,167 @@
+<project default="runBuild">
+
+	<target name="runBuild">
+		<dirname file="${ant.file}" property="scripts.build.dir" />
+		<property name="ce.builder.home" value="${scripts.build.dir}/../.." />
+
+		<antcall target="runEclipseBuild">
+			<param name="ce.builder.home" value="${ce.builder.home}" />
+		</antcall>
+		<!-- antcall target="runEclipseBuildStamped">
+			<param name="ce.builder.home" value="${ce.builder.home}" />
+		</antcall-->
+	</target>
+
+
+
+	<target name="build" depends="init">
+
+		<!--this property required as of Eclipse 3.0 stream builds > 20031126 -->
+		<property name="buildingOSGi" value="true" />
+
+	    <!-- this property causes feature suffixes to be calcuated based on their 
+	    own CVS tag, plus the qualifier of their contained plugins -->
+	    <property name="generateFeatureVersionSuffix" value="true" />
+
+	    
+		<!--run the build for the specified component-->
+		<echo message="basedir: ${basedir}" />
+		<echo message="component: ${component}" />
+		<echo message="buildDirectory: ${buildDirectory}" />
+		<echo message="ce.builder.home: ${ce.builder.home}" />
+		<echo message="base.location: ${base.location}" />
+		<echo message="base.home: ${base.home}" />
+		<echo message="build.current: ${build.current}" />
+		<echo message="build.distribution: ${build.distribution}" />
+		<echo message="buildType: ${buildType}" />
+		<echo message="scripts/build/build.xml:baseLocatione=${build.home}/${build.current}-${build.distribution}-${buildType}/${base.location}"/>	
+		
+		<ant antfile="build.xml" dir="${pde.build.scripts}">
+			<property name="builder" value="${ce.builder.home}/components/${component}" />
+			<property name="ce.builder.home" value="${ce.builder.home}" />
+			<property name="buildBranch" value="${buildBranch}" />
+			<property name="dependencyTargets" value="${ce.builder.home}/scripts/dependency/build.xml" />
+			<property name="local.cache.dir" value="${build.home}/${build.local.repository}" />	
+			<property name="baseLocation" value="${build.home}/${build.current}-${build.distribution}-${buildType}/${base.location}" />
+			<property name="buildRoot" value="${build.home}/${build.current}-${build.distribution}-${buildType}" />
+			<property name="testRoot" value="${build.home}/${build.tests}-${build.distribution}-${buildType}" />
+			<property name="performanceRoot" value="${build.home}/${build.perf.tests}-${buildType}" />
+			<!-- property name="bootclasspath" value="${java.home}/lib/rt.jar${path.separator}${java.home}/lib/jsse.jar" / -->
+		</ant>
+	</target>
+
+	<target name="checkBaseBuilder">
+		<available property="basebuilderLocal" file="${pde.builder.path}" />
+		<echo message="pde.builder.path: ${pde.builder.path}" />
+		<echo message="basebuilderLocal: ${basebuilderLocal}" />
+	</target>
+
+	<target name="getBaseBuilder" depends="checkBaseBuilder, getSvnPdeBuilder" unless="basebuilderLocal">
+		<echo message="getting base builder" />
+		<!-- ***  change the repo info -->
+		<property name="builderCvsRoot" value=":pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse" />
+		<!-- note: the HEAD version of base builder is not good to use. 
+		     in some cases, won't run at all, in the best of cases, will simply
+		     be unstable, as its the development version -->
+<!--		<property name="eclipse.builder.version" value="M5_32" /> -->
+<!--		<mkdir dir="${build.home}/builders/${eclipse.builder.version}" /> -->
+		<cvs cvsRoot="${builderCvsRoot}" package="org.eclipse.releng.basebuilder" dest="${build.home}/builders/${eclipse.builder.version}" tag="${eclipse.builder.version}" />
+		
+	</target>
+
+	<!-- get svn pde builder -->
+	<target name="getSvnPdeBuilder" >
+		<mkdir dir="${build.home}/builders/${eclipse.builder.version}" />
+		<ant antfile="${ce.builder.home}/scripts/build/pdeSVNBuilderDependency.xml">
+			<property name="dependencyTargets" value="${ce.builder.home}/scripts/dependency/build.xml" />
+			<property name="base.install.dir" value="${build.home}/builders/${eclipse.builder.version}" />
+		    <property name="dependency.properties"
+		              value="${ce.builder.home}/scripts/build/dependency.properties" />
+			<property name="local.cache.dir" value="${build.home}/${build.local.repository}" />
+		</ant>
+	</target>
+
+
+	<target name="init">
+
+		<condition property="buildBranch" value="R1.5">
+			<equals arg1="${mapVersionTag}" arg2="HEAD" />
+		</condition>
+		<condition property="buildBranch" value="R0.7 Maintenance">
+			<equals arg1="${mapVersionTag}" arg2="R0_7_maintenance" />
+		</condition>
+		<condition property="buildBranch" value="R1.0 Maintenance">
+			<equals arg1="${mapVersionTag}" arg2="R1_0_maintenance" />
+		</condition>
+
+		<property file="${ce.builder.home}/build.properties" />
+
+		<ant antfile="${ce.builder.home}/scripts/build/label.xml" />
+		<property file="${buildDirectory}/label.properties" />
+
+		<!--fetch the HEAD stream of all projects if build type specified as N-->
+		<condition property="fetchTag" value="HEAD">
+			<equals arg1="${buildType}" arg2="N" />
+		</condition>
+
+		<condition property="tagMaps">
+			<equals arg1="${build.trial}" arg2="false" />
+		</condition>
+	</target>
+
+	<target name="runEclipseBuild" if="buildId">
+		<property environment="env" />
+		<echo message="pde.builder.path: ${pde.builder.path}" />
+		
+		<java taskname="build-${build.distribution}-${component}" jar="${pde.builder.path}/plugins/${eclipse.launcher}" fork="true" failonerror="true">
+			<jvmarg value="-Dosgi.ws=${basews}" />
+			<jvmarg value="-Dosgi.os=${baseos}" />
+			<jvmarg value="-Dosgi.arch=${basearch}" />
+			<jvmarg value="-Dbasews=${basews}" />
+			<jvmarg value="-Dbaseos=${baseos}" />
+			<jvmarg value="-Dbasearch=${basearch}" />
+			<jvmarg value="-Dbuild.home=${build.home}" />
+			<jvmarg value="-Dbuild.trial=${build.trial}" />
+			<jvmarg value="-DbuildType=${buildType}" />
+			<jvmarg value="-DbuildId=${buildId}" />
+			<jvmarg value="-DjavacDebugInfo=${javacDebugInfo}" />
+			<jvmarg value="-DmapVersionTag=${mapVersionTag}" />
+			<jvmarg value="-Dce.builder.home=${ce.builder.home}" />
+			<jvmarg value="-Dbuild.distribution=${build.distribution}" />
+			<jvmarg value="-Dcomponent=${component}" />
+	           <!--jvmarg value="-DJ2SE-1.5=${env.J2SE15}" /> 
+	           <jvmarg value="-DJ2SE-1.4=${env.J2SE14}" /--> 
+			<arg value="-application" />
+			<arg value="org.eclipse.ant.core.antRunner" />
+			<arg value="-buildfile" />
+			<arg value="${ant.file}" />
+			<arg value="build" />
+		</java>
+	</target>
+
+	<target name="runEclipseBuildStamped" unless="buildId">
+		<java taskname="build-${build.distribution}-${component}" jar="${pde.builder.path}/plugins/org.eclipse.equinox.launcher.jar" fork="true" failonerror="true">
+			<jvmarg value="-Dosgi.ws=${basews}" />
+			<jvmarg value="-Dosgi.os=${baseos}" />
+			<jvmarg value="-Dosgi.arch=${basearch}" />
+			<jvmarg value="-Dbasews=${basews}" />
+			<jvmarg value="-Dbaseos=${baseos}" />
+			<jvmarg value="-Dbasearch=${basearch}" />
+			<jvmarg value="-Dbuild.home=${build.home}" />
+			<jvmarg value="-Dbuild.trial=${build.trial}" />
+			<jvmarg value="-DbuildType=${buildType}" />
+			<jvmarg value="-DjavacDebugInfo=${javacDebugInfo}" />
+			<jvmarg value="-DmapVersionTag=${mapVersionTag}" />
+			<!--jvmarg value="-DcvsUser=${cvsUser}" />
+			<jvmarg value="-DcvsProtocol=${cvsProtocol}" /-->
+			<jvmarg value="-Dce.builder.home=${ce.builder.home}" />
+			<jvmarg value="-Dbuild.distribution=${build.distribution}" />
+			<jvmarg value="-Dcomponent=${component}" />
+			<arg value="-application" />
+			<arg value="org.eclipse.ant.core.antRunner" />
+			<arg value="-buildfile" />
+			<arg value="${ant.file}" />
+			<arg value="build" />
+		</java>
+	</target>
+</project>

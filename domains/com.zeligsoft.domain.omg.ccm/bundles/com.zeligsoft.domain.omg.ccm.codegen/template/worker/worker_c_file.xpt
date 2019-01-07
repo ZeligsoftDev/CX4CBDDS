@@ -1,0 +1,409 @@
+�REM�*
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ *�ENDREM�
+ 
+�IMPORT uml�
+�IMPORT CCM::CCM_Implementation�
+�IMPORT CCM::CCM_Component�
+�IMPORT ZMLMM::ZML_Component�
+
+�EXTENSION extensions::ccm_codegen�
+�EXTENSION codegen::regions�
+
+�EXTENSION com::zeligsoft::base::zdl::util::ZDLUtil�
+�EXTENSION com::zeligsoft::domain::zml::oaw::generation::ZMLCommon�
+�EXTENSION com::zeligsoft::domain::zml::oaw::generation::CounterFactoryToString�
+�EXTENSION com::zeligsoft::domain::omg::corba::generation::CORBAUtilFuncs�
+
+�DEFINE create FOR MonolithicImplementation�
+�FILE "/"+this.name+"/worker/"+getFunctionPrefix()+this.name+"Worker.cpp" -�
+�EXPAND commonWorkerCreate FOR this�
+�ENDFILE�
+�ENDDEFINE�
+
+�DEFINE commonWorkerCreate FOR MonolithicImplementation�
+#include "�getFunctionPrefix()��this.name�Worker.h"
+
+#include "�getFunctionPrefix()��this.name�Ports.h"
+
+
+�getFunctionPrefix()��this.name�Worker::�getFunctionPrefix()��this.name�Worker( �getFunctionPrefix()��this.name�Servant *pServant, const �this.name�_params& execParams SCX_EXC_ENV_ARG )
+{
+	SCX_ASSERT_EXCEPTION_VOID;
+	#if defined(DEBUG_MSGS)
+	debug_.rdbuf(std::cout.rdbuf());
+	#endif
+
+	
+	pServant_ = pServant;
+	initExecParams(execParams SCX_EXC_ENV_PARAM );
+	
+	// TODO : Implement constructor for �getFunctionPrefix()��this.name�Worker
+}
+
+�getFunctionPrefix()��this.name�Worker::~�getFunctionPrefix()��this.name�Worker()
+{
+	// TODO : Implement destructor for �getFunctionPrefix()��this.name�Worker
+}
+
+void �getFunctionPrefix()��this.name�Worker::initExecParams( const �this.name�_params& params SCX_EXC_ENV_ARG)
+{
+
+	SCX_ASSERT_EXCEPTION_VOID;
+	
+}
+		
+		�REM�this returns the supported interface, it doesn't return the interfaces inherited by it�ENDREM�
+	�LET this.getSupportedInterface() AS supportedInterface�
+	
+		�REM�generate the dispatchers for the interface used by the supported interface�ENDREM�
+		�IF supportedInterface != null�
+			�EXPAND worker_c_file::generateDispatcher(supportedInterface, supportedInterface) FOR this -�
+		�ENDIF�
+		
+		�REM�generate dispatchers for every attribute and operation on the interfaces used by the provides ports�ENDREM�
+		�FOREACH this.zdlAsComponent().superClass.get(0).ownedPort.typeSelect(MessagePort) AS port�
+			�FOREACH port.providedInterface AS prov�
+				�EXPAND worker_c_file::generateDispatcher(prov, port) FOR this -�			
+			�ENDFOREACH�				
+		�ENDFOREACH�
+		
+		�REM�reset counters for the supported interface�ENDREM�
+		�IF supportedInterface != null�
+			�FOREACH supportedInterface.ownedOperation AS op�	
+				�CreateCounter("cfile"+op.qualifiedName)�
+			�ENDFOREACH�
+			�FOREACH supportedInterface.ownedAttribute AS attribute�
+				�CreateCounter("cfile"+attribute.qualifiedName)�
+			�ENDFOREACH�
+		�ENDIF�
+		
+		�REM�reset counters for the ports�ENDREM�
+		�FOREACH this.zdlAsComponent().superClass.get(0).ownedPort.typeSelect(MessagePort) AS port�
+			�FOREACH port.providedInterface AS prov�
+				�FOREACH prov.ownedOperation AS op�	
+					�CreateCounter("cfile"+op.qualifiedName)�
+				�ENDFOREACH�
+				�FOREACH prov.ownedAttribute AS attribute�
+					�CreateCounter("cfile"+attribute.qualifiedName)�
+				�ENDFOREACH�
+			�ENDFOREACH�
+		�ENDFOREACH�
+		
+		�REM�generate the worker operations and attributes for the supported interface�ENDREM�
+			�IF supportedInterface != null�		
+				�EXPAND worker_c_file::generateWorkerAttributesAndOperations(supportedInterface, supportedInterface) FOR this -�
+			�ENDIF�
+			
+		�REM�generate the worker operations and attributes for the ports�ENDREM�
+		�FOREACH this.zdlAsComponent().superClass.get(0).ownedPort.typeSelect(MessagePort) AS port�
+			�FOREACH port.providedInterface AS prov�
+				�EXPAND worker_c_file::generateWorkerAttributesAndOperations(prov, port) FOR this -�
+			�ENDFOREACH�		
+		�ENDFOREACH�
+	�ENDLET�
+
+	�REM�generate getter for uses ports�ENDREM�
+	�FOREACH this.zdlAsComponent().superClass.get(0).ownedPort.typeSelect(MessagePort) AS port -�
+		�FOREACH port.requiredInterface AS req -�
+void �getFunctionPrefix()��this.name�Worker::set�getNamedElementName(port)�( �getFunctionPrefix()��getFullInterfaceName(req)�UsesPort& �getNamedElementName(port)� )
+{
+	�getNamedElementName(port)�_ = &�getNamedElementName(port)�;
+}
+		�ENDFOREACH�		
+	�ENDFOREACH�
+	
+	�REM� Generate Consumes Port �ENDREM�
+	�FOREACH this.zdlAsComponent().superClass.get(0).ownedPort.typeSelect(EventPort) AS port -�
+	�IF port.type.zdlAsClass().getUsedInterfaces().size > 0�
+	void �getFunctionPrefix()��this.name�Worker::push_�port.zdlAsPort().name� (Stock::StockName *ev /* hard-coded */) 
+{
+	�FOREACH this.zdlAsComponent().ownedOperation.typeSelect(WorkerFunction) AS workerOp -�
+			�IF ((Operation)getZDLValue(workerOp, "ZMLMM::ZML_Component::WorkerFunction", "portOperation")) == null
+				&& ((Port)getZDLValue(workerOp, "ZMLMM::ZML_Component::WorkerFunction", "receivingPort")).zdlAsPort().name.matches(port.zdlAsPort().name) -�
+    �userEditBegin(workerOp,"ZMLMM::ZML_Component::WorkerFunction", "body")�
+				�IF getZDLValue(workerOp, "ZMLMM::ZML_Component::WorkerFunction", "body") != null�
+	�getZDLValue(workerOp, "ZMLMM::ZML_Component::WorkerFunction", "body") -�
+				�ENDIF�
+	�userEditEnd()�
+			�ENDIF -�
+		�ENDFOREACH -�
+}
+	�ENDIF�
+	�ENDFOREACH�
+
+#if defined(DEBUG_MSGS)
+void �getFunctionPrefix()��this.name�Worker::setDebugStream(const std::ostream& stream)
+{
+	debug_.rdbuf(stream.rdbuf());
+}
+
+void �getFunctionPrefix()��this.name�Worker::debugMsg(const std::string& msg)
+{
+	if(debug_ != NULL)
+	{
+		debug_ << msg << std::endl;
+	}
+}
+#endif
+
+// End-Of-File
+//------------------------------------------------------------------------------
+�ENDDEFINE�
+
+�DEFINE generateDispatcher(Interface prov, NamedElement source) FOR MonolithicImplementation�
+
+	�REM�this returns the supported interface, it doesn't return the interfaces inherited by it�ENDREM�
+	�REM��LET this.interface.zdlAsComponent().interfaceRealization.zdlAsInterfaceRealization().contract.get(0) AS supportedInterface��ENDREM�
+	�LET this.getSupportedInterface() AS supportedInterface�
+
+	�REM�generate the operations for this interface�ENDREM�
+	�FOREACH prov.ownedOperation AS op�
+		�IF true� �REM� IsCounterGreaterThan("cfile"+op.qualifiedName.toString(), "0") == "false" � �ENDREM� 		
+
+/*!	\brief
+ * 
+ *	 Describe operation here.
+ * �FOREACH op.ownedParameter.select(e|!e.direction.toString().matches("return")) AS param�  
+ *	\param �param.name� ( �IF isCorbaType(param.idlType)� �getVariableTypeFromCorbaParameter(param)��ENDIF� ) 
+ * �ENDFOREACH�	
+ */
+�getReturnType(op)� �getFunctionPrefix()��this.name�Worker::�getFullInterfaceName(op.owner)�_�op.name�( int portIdentifier �getArguments(op, "true")� SCX_EXC_ENV_ARG)
+{
+ 		�LET getExceptionEnvParam(op) AS exceptionParam�
+			�IF getProvidesPortsWithInterface(op.owner).size > 1 || (op.owner == supportedInterface || (supportedInterface != null && isBaseTypeInterface(supportedInterface, op.owner))) && getProvidesPortsWithInterface(op.owner).size > 0-�
+				�REM�there are multiple ports using this interface�ENDREM�
+					
+				�IF !op.ownedParameter.select(e|e.direction.toString().matches("return")).isEmpty && !isVariableLength(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type)) && (isZDLConcept(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type), "CORBADomain::IDL::CORBAStruct") || isZDLConcept(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type), "CORBADomain::IDL::CORBAUnion"))�
+	�getReturnType(op)� _retval;
+	memset((void*)&_retval,0,sizeof(�getReturnType(op)�));
+	SCX_ASSERT_EXCEPTION(_retval);
+				�ELSEIF getReturnType(op) != "void"�
+	�getReturnType(op)� _retval = (�getReturnType(op)�)0;
+	SCX_ASSERT_EXCEPTION(_retval);
+				�ELSE�
+	SCX_ASSERT_EXCEPTION_VOID;
+				�ENDIF�
+					
+	switch(portIdentifier)
+	{
+				�IF op.owner == supportedInterface || isBaseTypeInterface(supportedInterface, op.owner) -��REM�write case for supported interface if needed�ENDREM�
+	case �this.name.toUpperCase()�_SUPPORTED_INTERFACE :
+					�IF getReturnType(op) != "void" -�
+		return �getWorkerFunctionName(op, supportedInterface)�( �getParameters(op, "false")� �exceptionParam� );
+					�ELSE-�
+		�getWorkerFunctionName(op, supportedInterface)�( �getParameters(op, "false")� �exceptionParam� );
+		break;
+					�ENDIF�
+				
+				�ENDIF�				
+				�FOREACH getProvidesPortsWithInterface(op.owner) AS otherPort��REM�write cases for ports�ENDREM�
+	case �this.name.toUpperCase()�_�otherPort.zdlAsPort().name.toUpperCase()� :
+					�IF getReturnType(op) != "void" -�
+		return �getWorkerFunctionName(op, otherPort)�( �getParameters(op, "false")� �exceptionParam� );
+					�ELSE-�
+		�getWorkerFunctionName(op, otherPort)�( �getParameters(op, "false")� �exceptionParam� );
+		break;
+					�ENDIF-�		
+			
+				�ENDFOREACH�
+	}
+				�IF getReturnType(op) != "void"�
+	return _retval;	
+				�ENDIF�
+	
+
+			�ELSE��REM�only used by one port/supported interface�ENDREM�
+	�IF getReturnType(op) != "void"�return �ENDIF-��getWorkerFunctionName(op, source)�( �getParameters(op, "false")� �exceptionParam� );	
+			�ENDIF�
+}					�CreateCounter("cfile"+op.qualifiedName)�
+					�CounterIncrement("cfile"+op.qualifiedName)�
+		�ENDLET�
+		�ENDIF�		
+	�ENDFOREACH�			
+			
+	�REM�generate the getters and setters for the attributes of this interface�ENDREM�
+	�FOREACH prov.ownedAttribute AS attribute�
+		�IF IsCounterGreaterThan("cfile"+attribute.qualifiedName, "0") == "false" �
+				
+			�REM�generate the getter�ENDREM� 	
+/*!	\brief
+ *
+ *	 Describe attribute here.
+ * 
+ */
+ �IF isCorbaType(attribute.idlType)� �getVariableTypeFromCorbaType(attribute.idlType, "return")��ENDIF� �getFunctionPrefix()��this.name�Worker::�getFullInterfaceName(attribute.owner)�_�attribute.name�(  int portIdentifier SCX_EXC_ENV_ARG )
+{
+					
+			�IF getProvidesPortsWithInterface(attribute.owner).size > 1 || (attribute.owner == supportedInterface || (supportedInterface != null && isBaseTypeInterface(supportedInterface, attribute.owner))) && getProvidesPortsWithInterface(attribute.owner).size > 0 -�
+			�REM�there are multiple ports using this interface�ENDREM�						
+						
+				�IF isCorbaType(attribute.type)-�
+					�IF isZDLConcept(getAbsoluteType(attribute.type), "CORBADomain::IDL::CORBAStruct") || isZDLConcept(getAbsoluteType(attribute.type), "CORBADomain::IDL::CORBAUnion")�
+	�getVariableTypeFromCorbaType(attribute.type, "return")� _retval;
+	memset((void*)&_retval,0,sizeof(�getVariableTypeFromCorbaType(attribute.type, "return")�));
+					�ELSE�
+	�getVariableTypeFromCorbaType(attribute.type, "return")-� _retval = (�getVariableTypeFromCorbaType(attribute.type, "return")�)0;
+					�ENDIF�
+	SCX_ASSERT_EXCEPTION(_retval);
+				�ENDIF�				
+	
+	switch(portIdentifier)
+	{
+				�IF attribute.owner == supportedInterface || (supportedInterface != null && isBaseTypeInterface(supportedInterface, attribute.owner)) -�
+	case �ToUpperCase(this.name)�_SUPPORTED_INTERFACE :
+		return �getWorkerFunctionName(attribute, supportedInterface)�( SCX_EXC_ENV_SINGLE_PARAM );
+		
+				�ENDIF�		
+				�FOREACH getProvidesPortsWithInterface(attribute.owner) AS otherPort�
+	case �ToUpperCase(this.name)�_�ToUpperCase(otherPort.name)� :
+		return �getWorkerFunctionName(attribute, otherPort)�( SCX_EXC_ENV_SINGLE_PARAM );
+		
+				�ENDFOREACH�
+	}
+	return _retval;
+	
+					�ELSE��REM�only used by one port/supported interface��ENDREM�
+						
+	return �getWorkerFunctionName(attribute, source)�( SCX_EXC_ENV_SINGLE_PARAM );
+					�ENDIF�
+}
+					
+			�REM�generate the setter�ENDREM� 
+			�IF !attribute.isReadOnly -�
+/*!	\brief
+ *
+ *	 Describe attribute here.
+ * 
+ */
+void �getFunctionPrefix()��this.name�Worker::�getFullInterfaceName(attribute.owner)�_�attribute.name�( int portIdentifier, �IF isCorbaType(attribute.type)� �getVariableTypeFromCorbaType(attribute.type, "in")� value �ENDIF�  SCX_EXC_ENV_ARG)
+{
+						
+				�IF getProvidesPortsWithInterface(attribute.owner).size > 1 || (attribute.owner == supportedInterface || (supportedInterface != null && isBaseTypeInterface(supportedInterface, attribute.owner))) && getProvidesPortsWithInterface(attribute.owner).size > 0 -�
+				�REM�there are multiple ports using this interface�ENDREM�
+						
+	SCX_ASSERT_EXCEPTION_VOID;
+	
+	switch(portIdentifier)
+	{
+					�IF attribute.owner == supportedInterface || (supportedInterface != null && isBaseTypeInterface(supportedInterface, attribute.owner)) -�
+	case �ToUpperCase(this.name)�_SUPPORTED_INTERFACE :
+		�getWorkerFunctionName(attribute, supportedInterface)�( �IF isCorbaType(attribute.type)� value �ENDIF� SCX_EXC_ENV_PARAM) ;
+		break;
+					
+					�ENDIF�					
+					�FOREACH getProvidesPortsWithInterface(attribute.owner) AS otherPort�
+	case �ToUpperCase(this.name)�_�ToUpperCase(otherPort.name)� :
+		�getWorkerFunctionName(attribute, otherPort)�( �IF isCorbaType(attribute.type)� value �ENDIF� SCX_EXC_ENV_PARAM) ;
+		break;
+		
+					�ENDFOREACH�
+	}
+				�ELSE��REM�only used by one port/supported interface��ENDREM�
+						
+	�getWorkerFunctionName(attribute, source)�( �IF isCorbaType(attribute.type)� value �ENDIF� SCX_EXC_ENV_PARAM) ;
+				�ENDIF�
+}
+			�ENDIF�
+					�CreateCounter("cfile"+attribute.qualifiedName)�
+					�CounterIncrement("cfile"+attribute.qualifiedName)�
+		�ENDIF�				
+	�ENDFOREACH�
+	�ENDLET�
+�ENDDEFINE�
+
+�DEFINE generateWorkerAttributesAndOperations(Interface prov, NamedElement source) FOR MonolithicImplementation�
+
+	�LET this.getSupportedInterface() AS supportedInterface�
+	
+	�REM�generate the operations for this port�ENDREM�
+	�FOREACH prov.ownedOperation AS op�
+
+/*!	\brief
+ * 
+ *	 Describe operation here.
+ * �FOREACH op.ownedParameter.select(e|!e.direction.toString().matches("return")) AS param�  
+ *	\param �param.name� ( �IF isCorbaType(param.idlType)� �getVariableTypeFromCorbaParameter(param)��ENDIF� ) 
+ * �ENDFOREACH�	
+ */
+�getSignature(op, source, this)�
+{
+		�IF !op.ownedParameter.select(e|e.direction.toString().matches("return")).isEmpty && !isVariableLength(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type)) && (isZDLConcept(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type), "CORBADomain::IDL::CORBAStruct") || isZDLConcept(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type), "CORBADomain::IDL::CORBAUnion"))�
+	�getReturnType(op)� _retval;
+	memset((void*)&_retval,0,sizeof(�getReturnType(op)�));
+	SCX_ASSERT_EXCEPTION(_retval);
+		�ELSEIF getReturnType(op) != "void"�
+	�getReturnType(op)� _retval = (�getReturnType(op)�)0;
+	SCX_ASSERT_EXCEPTION(_retval);
+		�ELSE�
+	SCX_ASSERT_EXCEPTION_VOID;
+		�ENDIF�
+	
+		�FOREACH this.worker AS workerOp -�
+			�IF ((Operation)getZDLValue(workerOp, "ZMLMM::ZML_Component::WorkerFunction", "portOperation")).qualifiedName.toString().matches(op.qualifiedName) && workerOp.zdlAsOperation().name == getOperationName(op, source) -�
+    �userEditBegin(workerOp,"ZMLMM::ZML_Component::WorkerFunction", "body")�
+				�IF getZDLValue(workerOp, "ZMLMM::ZML_Component::WorkerFunction", "body") != null�
+	�getZDLValue(workerOp, "ZMLMM::ZML_Component::WorkerFunction", "body") -�
+				�ENDIF�
+	�userEditEnd()�
+			�ENDIF -�
+		�ENDFOREACH -�
+	
+		�IF getReturnType(op) != "void"�
+	return _retval;
+		�ENDIF�					
+
+}
+	�ENDFOREACH�
+			
+	�REM�generate the getters and setters for the attributes of this port�ENDREM�
+	�FOREACH prov.ownedAttribute AS attribute�
+				
+				�REM�generate the getter�ENDREM� 	
+/*!	\brief
+ *
+ *	 Describe attribute here.
+ * 
+ */
+�IF isCorbaType(attribute.idlType)� �getVariableTypeFromCorbaType(attribute.idlType, "return")��ENDIF� �getFunctionPrefix()��this.name�Worker::�getWorkerFunctionName(attribute, source)�( SCX_EXC_ENV_SINGLE_ARG )
+{
+		�IF isCorbaType(attribute.idlType)-�
+			�IF isZDLConcept(getAbsoluteType(attribute.idlType), "CORBADomain::IDL::CORBAStruct") || isZDLConcept(getAbsoluteType(attribute.idlType), "CORBADomain::IDL::CORBAUnion")�
+	�getVariableTypeFromCorbaType(attribute.idlType, "return")� _retval;
+	memset((void*)&_retval,0,sizeof(�getVariableTypeFromCorbaType(attribute.idlType, "return")�));
+			�ELSE�
+	�getVariableTypeFromCorbaType(attribute.idlType, "return")-� _retval = (�getVariableTypeFromCorbaType(attribute.idlType, "return")�)0;
+			�ENDIF�
+	SCX_ASSERT_EXCEPTION(_retval);
+	return _retval;
+		�ENDIF�
+}
+				
+		�REM�generate the setter�ENDREM� 
+		�IF !attribute.isReadOnly -�
+/*!	\brief
+ *
+ *	 Describe attribute here.
+ * 
+ */
+void �getFunctionPrefix()��this.name�Worker::�getWorkerFunctionName(attribute, source)�(�IF isCorbaType(attribute.idlType)� �getVariableTypeFromCorbaType(attribute.idlType, "in")� value �ENDIF�  SCX_EXC_ENV_ARG)
+{
+	SCX_ASSERT_EXCEPTION_VOID;
+}
+		�ENDIF�
+	�ENDFOREACH�
+	�ENDLET�
+�ENDDEFINE�

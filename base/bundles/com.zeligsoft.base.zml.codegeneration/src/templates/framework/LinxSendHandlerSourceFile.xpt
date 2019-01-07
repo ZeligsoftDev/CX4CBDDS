@@ -1,0 +1,157 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+ 
+«IMPORT uml»
+
+«EXTENSION templates::common»
+
+
+«DEFINE linxSendHandlerSourceFile FOR Model»
+«FILE "fwk/C/transports/send/LinxSendHandler/zceLinxSendHandler.c"»
+/****************************************************************************************/
+/*																						*/
+/*     FILE: zceLINXSendHandler.c														*/
+/*																						*/
+/****************************************************************************************/
+
+#include "zceLinxSendHandler.h"
+#include "zce.sig"
+
+struct zce_struct_LinxSendHandler
+{
+	/* zceLinxSendHandler required members */
+	void * (*getTXBuffer)(zceSendHandler self, void* commData, int len ZCE_EXC_ENV_ARG);
+	void (*sendData)(zceSendHandler self, void* commData, char* buffer, int bufLen ZCE_EXC_ENV_ARG);
+};
+
+
+/***********************************************************
+ *                                                         *
+ *      zceLinxSendHandler base functions                  *
+ *                                                         *
+ ***********************************************************/
+
+void zceLinxSendHandler_construct(zceLinxSendHandler self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	
+	self->sendData = zceLinxSendHandler_sendData;
+	self->getTXBuffer = zceLinxSendHandler_GetTXBuffer;
+}
+
+void zceLinxSendHandler_destruct(zceLinxSendHandler self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	
+	self->sendData = NULL;
+}
+
+zceLinxSendHandler zceLinxSendHandler_allocate(ZCE_EXC_ENV_SINGLE_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	zceLinxSendHandler self = ZCE_NEW(struct zce_struct_LinxSendHandler);
+	return self;
+}
+
+void zceLinxSendData_construct(zceLinxSendData self, 
+	int connId,
+	int poolId,
+	int connected,
+	char * qName 
+	ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+			
+	self->connId = connId;
+	self->poolId = poolId;
+	self->connected = connected;
+	OE_STRNCPY(self->toNode, qName, ZCE_NAMES_MAX_LEN_);
+	self->toNodePid = 0;
+}
+
+void zceLinxSendHandler_init(zceLinxSendHandler self, void* commData ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	static SIGSELECT any_sig[] = { 0 };
+	union SIGNAL * huntsignal;
+	OSBOOLEAN check = 0;
+	
+	zceLinxSendData data = 0;
+	data = (zceLinxSendData)commData;
+	
+	DBGPRINTMSG("LINX ConnectionClient : locating far end node %s.\n", data->toNode);
+	
+	huntsignal = alloc(sizeof(struct SigLinxMsgHeader),SIG_LINX_MSG);		
+	check = hunt(data->toNode, 0, 0, &huntsignal);
+	huntsignal = receive((SIGSELECT *) any_sig);
+	
+	if (huntsignal != NIL)
+	{
+		data->toNodePid = sender(&huntsignal);
+		data->connected = ZCE_TRUE;
+		free_buf(&huntsignal);
+	
+		DBGPRINTMSG("LINX ConnectionClient : successfully found (pid=%d)far end node %s.\n",data->toNodePid, data->toNode);
+	}	
+
+}
+
+zceLinxSendData zceLinxSendData_allocate(ZCE_EXC_ENV_ARG)
+{
+	return ZCE_NEW(struct zce_struct_LinxSendData);
+}
+
+void zceLinxSendHandler_sendData(zceSendHandler self, void* commData, char* msg, int len ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	union SIGNAL *sig;
+	
+	zceLinxSendData data = (zceLinxSendData)commData;	
+	int writeoffset = SIZE_OF_LARGEST_DATA_PRIMITIVE_IN_BYTES-(sizeof(SIGSELECT)%SIZE_OF_LARGEST_DATA_PRIMITIVE_IN_BYTES);
+	int writebuffaddr = 0;
+	
+	writebuffaddr = (int)((char*)(msg));
+	sig = (union SIGNAL *)(writebuffaddr - sizeof(SIGSELECT) - writeoffset);
+
+	DBGPRINTMSG("\nData connected=%d, toNode=%s, toNodePid=%d \n",
+	           data->connected, data->toNode, data->toNodePid);
+
+    send(&sig,data->toNodePid);    
+
+}
+
+void * zceLinxSendHandler_GetTXBuffer(zceSendHandler self, void* commData, int len  ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	union SIGNAL *sig;
+	int writeoffset = SIZE_OF_LARGEST_DATA_PRIMITIVE_IN_BYTES-(sizeof(SIGSELECT)%SIZE_OF_LARGEST_DATA_PRIMITIVE_IN_BYTES);
+	int writebuffaddr = 0;
+	
+	zceLinxSendData data = (zceLinxSendData)commData;
+	
+	sig = alloc(sizeof(struct SigLinxMsgHeader),SIG_LINX_MSG);
+
+	writebuffaddr = (int)((char *)(sig->msg.payload));
+	return (void*)(writebuffaddr+ writeoffset);
+	
+}
+
+/* End-Of-File */
+/* ------------------------------------------------------------------------------ */
+«ENDFILE»
+«ENDDEFINE»

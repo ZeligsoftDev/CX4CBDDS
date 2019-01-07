@@ -1,0 +1,29 @@
+/// @defgroup AGSP_CameraDataAdapter_comp CameraDataAdapter_comp
+/// @{
+/// 
+/// @file AGSP_CameraDataAdapter_comp.idl
+/// @brief CameraDataAdapter_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__CAMERADATAADAPTER_COMP__SRC__AGSP_CAMERADATAADAPTER_COMP_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__CAMERADATAADAPTER_COMP__SRC__AGSP_CAMERADATAADAPTER_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao lem "AGSP_CameraDataAdapter_compE.idl"
+#include "AGSP_StateControl_obj.idl"
+#include "AGSP_UnprocessedImages_conn.idl"
+
+/// @namespace AGSP 
+module AGSP {
+    component CameraDataAdapter_comp {
+        provides AGSP::StateControl_obj StateControlFacet;
+        port UnprocessedImages_conn::PSAT_Write UnprocessedImagesPub;
+    };
+
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__CAMERADATAADAPTER_COMP__SRC__AGSP_CAMERADATAADAPTER_COMP_IDL
+
+/// @}
+

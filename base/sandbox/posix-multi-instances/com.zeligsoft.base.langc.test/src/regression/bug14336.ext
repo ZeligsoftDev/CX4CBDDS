@@ -1,0 +1,33 @@
+
+import langc;
+
+extension langc::element;
+extension langc::expr;
+extension langc::name;
+extension langc::stmt;
+extension langc::type;
+
+create SubSystem createFiles() :
+    files.add( publicHeader() )
+ -> files.add( privImpl( 1 ) )
+ -> files.add( privImpl( 2 ) )
+;
+
+create FolderName folder() : setName( 'bug14336' );
+cached FileName headerFile() : folder().child( 'header' );
+cached FileName implFile( int i ) : folder().child( 'impl' + i );
+cached Name functionName() : headerFile().child( 'function' );
+
+private cached Function func() :
+    function( int32(), functionName() )
+;
+
+create ElementList publicHeader() :
+    setName( headerFile() )
+ -> addElement( func() )
+;
+
+create ElementList privImpl( int i ) :
+    setName( implFile( i ) )
+ -> func().addStatement( this, i.literal().returnStmt() )
+;

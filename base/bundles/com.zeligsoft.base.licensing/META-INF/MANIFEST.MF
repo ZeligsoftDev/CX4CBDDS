@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: com.zeligsoft.base.licensing;singleton:=true
+Bundle-Version: 3.5.0.qualifier
+Bundle-Vendor: %Bundle-Vendor.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: lib/EccpressoAll.jar,
+ lib/flexlm.jar,
+ lib/rlm902.jar,
+ .
+Bundle-NativeCode: native/rlm902.so; osname = Linux; processor = x86,
+ native/rlm902.dll; osname = win32; osname=Windows8; osname=Windows 8; osname=Win8; osname=Windows 8.1; osname=Windows 10; processor = x86,
+ native/64rlm902.dll; osname = win32; osname=Windows8; osname=Windows 8; osname=Win8; osname=Windows 8.1; osname=Windows 10; processor = x86_64,
+ native/64rlm902.dll; osname = win64; osname=Windows8; osname=Windows 8; osname=Win8; osname=Windows 8.1; osname=Windows 10; processor = x86_64,
+ native/64rlm902.so; osname = Linux; processor = x86_64
+Bundle-Localization: plugin
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.4.0,4.0.0)";visibility:=reexport,
+ org.eclipse.jface;bundle-version="[3.6.0,4.0.0)"
+Export-Package: com.zeligsoft.base.licensing,
+ com.zeligsoft.base.licensing.exceptions
+Bundle-Activator: com.zeligsoft.base.licensing.Activator

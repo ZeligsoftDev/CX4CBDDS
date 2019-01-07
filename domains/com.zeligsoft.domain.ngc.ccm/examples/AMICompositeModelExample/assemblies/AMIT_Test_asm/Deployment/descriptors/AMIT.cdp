@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:DeploymentPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
+    xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>AMIT</label>
+  <UUID>_dd8f509c-5e39-4d48-8ae6-e49047cebe93</UUID>
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source/>
+    <artifact xmi:idref="CompSvrArt"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_d9fe3b99-0aa8-4266-9abf-65bc580f9fe5">
+    <name>Control1_obj</name>
+    <source/>
+    <artifact xmi:idref="_757c3a05-ab68-457d-a45c-20e7ff2dc1b4"/>
+    <artifact xmi:idref="_68b6ae2f-dfd1-4b44-ab88-a60e16a1670e"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AMIT_AMI4CCM_Control1_obj_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AMIT_Control1_obj_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AMIT_AMI4CCM_Control1_obj_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AMIT_Control1_obj_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Connector</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_072e2ddf-ef78-4413-9a31-b5fcf43cbf36">
+    <name>LocalImpl_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_19865534-f798-4130-ad50-046b61b38814"/>
+    <artifact xmi:idref="_9d3b1144-19de-4390-ab9c-790f072ede20"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AMIT_LocalImpl_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AMIT_LocalImpl_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AMIT_LocalImpl_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AMIT_LocalImpl_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_cb33b647-0520-4da7-b97e-fddf852d672a">
+    <name>Control2_obj</name>
+    <source/>
+    <artifact xmi:idref="_89aa0560-b841-4f31-8c8d-e8b2c010a1e7"/>
+    <artifact xmi:idref="_5283a70f-f2e4-4b83-97d5-7c085e33c58a"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AMIT_AMI4CCM_Control2_obj_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AMIT_Control2_obj_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AMIT_AMI4CCM_Control2_obj_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AMIT_Control2_obj_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Connector</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_f5b09215-be29-45ac-96e5-7a986b84ff92">
+    <name>RemoteImpl_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_375f94f6-9b1a-4848-89a0-f2f448541a98"/>
+    <artifact xmi:idref="_80e751b9-d623-4a06-a5fe-440944d26e95"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AMIT_RemoteImpl_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AMIT_RemoteImpl_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AMIT_RemoteImpl_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AMIT_RemoteImpl_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_648b3c3a-9b2a-486f-a8f8-e4b53489ce11">
+    <name>ServerImpl_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_817e130c-740c-4a4d-b77d-c76c08cb0f81"/>
+    <artifact xmi:idref="_cadfbe65-ff6b-4a23-bfcf-d9dc10f3c32a"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AMIT_ServerImpl_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AMIT_ServerImpl_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AMIT_ServerImpl_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AMIT_ServerImpl_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_b591cf24-f744-435a-b761-01155e43d4bd">
+    <name>AMIT_Test_asm.Local_comp</name>
+    <node>TestNode</node>
+    <source/>
+    <implementation xmi:idref="_072e2ddf-ef78-4413-9a31-b5fcf43cbf36"/>
+  </instance>
+
+  <instance xmi:id="_53e112ba-a829-460c-905f-415173a32950">
+    <name>AMIT_Test_asm.Remote_comp</name>
+    <node>TestNode</node>
+    <source/>
+    <implementation xmi:idref="_f5b09215-be29-45ac-96e5-7a986b84ff92"/>
+  </instance>
+
+  <instance xmi:id="_0b699b03-585d-46ed-81e4-2b78630cce8d">
+    <name>AMIT_Test_asm.Server_comp</name>
+    <node>TestNode</node>
+    <source/>
+    <implementation xmi:idref="_648b3c3a-9b2a-486f-a8f8-e4b53489ce11"/>
+  </instance>
+
+  <instance xmi:id="_d0653047-276f-4fa4-92dd-89e8c4e53177">
+    <name>Client_proc_ComponentServerInstance</name>
+    <node>TestNode</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Client_proc</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_a5a60b52-ec01-49d8-b16e-ca80a332b980">
+    <name>Server_proc_ComponentServerInstance</name>
+    <node>TestNode</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Server_proc</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_4291b146-9556-49f1-a78d-720204e3290e">
+    <name>AMITestInterfaces.ports.AMIT.Control1_obj_AMI4CCM_Connector_for_Server_comp_Remote_comp@TestNode.Client_proc</name>
+    <node>TestNode</node>
+    <source/>
+    <implementation xmi:idref="_d9fe3b99-0aa8-4266-9abf-65bc580f9fe5"/>
+  </instance>
+
+  <instance xmi:id="_a5fab648-cc47-4017-866d-479b0b914029">
+    <name>AMITestInterfaces.ports.AMIT.Control2_obj_AMI4CCM_Connector_for_Server_comp_Remote_comp@TestNode.Client_proc</name>
+    <node>TestNode</node>
+    <source/>
+    <implementation xmi:idref="_cb33b647-0520-4da7-b97e-fddf852d672a"/>
+  </instance>
+
+  <instance xmi:id="_01793e93-d250-4b16-bbb6-6220f89ea6fe">
+    <name>AMITestInterfaces.ports.AMIT.Control1_obj_AMI4CCM_Connector_for_Server_comp_Local_comp@TestNode.Client_proc</name>
+    <node>TestNode</node>
+    <source/>
+    <implementation xmi:idref="_d9fe3b99-0aa8-4266-9abf-65bc580f9fe5"/>
+  </instance>
+
+  <connection>
+    <name>AMIT_Test_asm.Remote_comp.Control1Server__AMITestInterfaces.ports.AMIT.Control1_obj_AMI4CCM_Connector_for_Server_comp_Remote_comp@TestNode.Client_proc</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_4291b146-9556-49f1-a78d-720204e3290e"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>sendc_Control1Client</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_53e112ba-a829-460c-905f-415173a32950"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMIT_Test_asm.Server_comp.Control1Server__AMIT_Test_asm.Remote_comp.Control1Client_AMI4CCM_Connector_asyncdirect</name>
+    <internalEndpoint>
+      <portName>Control1Server</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_0b699b03-585d-46ed-81e4-2b78630cce8d"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4291b146-9556-49f1-a78d-720204e3290e"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMIT_Test_asm.Remote_comp.Control1Client::AMIT_Test_asm.Server_comp.Control1Server</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>Control1Client</portName>
+      <provider>false</provider>
+      <kind>MultiplexReceptacle</kind>
+      <instance xmi:idref="_53e112ba-a829-460c-905f-415173a32950"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_4291b146-9556-49f1-a78d-720204e3290e"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMIT_Test_asm.Remote_comp.Control2Server__AMITestInterfaces.ports.AMIT.Control2_obj_AMI4CCM_Connector_for_Server_comp_Remote_comp@TestNode.Client_proc</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_a5fab648-cc47-4017-866d-479b0b914029"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>sendc_Control2Client</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_53e112ba-a829-460c-905f-415173a32950"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMIT_Test_asm.Server_comp.Control2Server__AMIT_Test_asm.Remote_comp.Control2Client_AMI4CCM_Connector_asyncdirect</name>
+    <internalEndpoint>
+      <portName>Control2Server</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_0b699b03-585d-46ed-81e4-2b78630cce8d"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_a5fab648-cc47-4017-866d-479b0b914029"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMIT_Test_asm.Remote_comp.Control2Client::AMIT_Test_asm.Server_comp.Control2Server</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>Control2Client</portName>
+      <provider>false</provider>
+      <kind>MultiplexReceptacle</kind>
+      <instance xmi:idref="_53e112ba-a829-460c-905f-415173a32950"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_a5fab648-cc47-4017-866d-479b0b914029"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMIT_Test_asm.Local_comp.Control1Server__AMITestInterfaces.ports.AMIT.Control1_obj_AMI4CCM_Connector_for_Server_comp_Local_comp@TestNode.Client_proc</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_01793e93-d250-4b16-bbb6-6220f89ea6fe"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>sendc_Control1Client</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_b591cf24-f744-435a-b761-01155e43d4bd"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMIT_Test_asm.Server_comp.Control1Server__AMIT_Test_asm.Local_comp.Control1Client_AMI4CCM_Connector_asyncdirect</name>
+    <internalEndpoint>
+      <portName>Control1Server</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_0b699b03-585d-46ed-81e4-2b78630cce8d"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_01793e93-d250-4b16-bbb6-6220f89ea6fe"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMIT_Test_asm.Local_comp.Control1Client::AMIT_Test_asm.Server_comp.Control1Server</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>Control1Client</portName>
+      <provider>false</provider>
+      <kind>MultiplexReceptacle</kind>
+      <instance xmi:idref="_b591cf24-f744-435a-b761-01155e43d4bd"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_01793e93-d250-4b16-bbb6-6220f89ea6fe"/>
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="CompSvrArt">
+    <name>CompoSvrArtifactName</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+
+  <artifact xmi:id="_19865534-f798-4130-ad50-046b61b38814">
+    <name>AMIT_LocalImpl_comp_exec</name>
+    <source/>
+    <node/>
+    <location>AMIT_LocalImpl_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_9d3b1144-19de-4390-ab9c-790f072ede20">
+    <name>AMIT_LocalImpl_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>AMIT_LocalImpl_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_757c3a05-ab68-457d-a45c-20e7ff2dc1b4">
+    <name>AMIT_Control1_obj_exec</name>
+    <source/>
+    <node/>
+    <location>AMIT_Control1_obj_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_68b6ae2f-dfd1-4b44-ab88-a60e16a1670e">
+    <name>AMIT_Control1_obj_svnt</name>
+    <source/>
+    <node/>
+    <location>AMIT_Control1_obj_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_375f94f6-9b1a-4848-89a0-f2f448541a98">
+    <name>AMIT_RemoteImpl_comp_exec</name>
+    <source/>
+    <node/>
+    <location>AMIT_RemoteImpl_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_80e751b9-d623-4a06-a5fe-440944d26e95">
+    <name>AMIT_RemoteImpl_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>AMIT_RemoteImpl_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_89aa0560-b841-4f31-8c8d-e8b2c010a1e7">
+    <name>AMIT_Control2_obj_exec</name>
+    <source/>
+    <node/>
+    <location>AMIT_Control2_obj_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_5283a70f-f2e4-4b83-97d5-7c085e33c58a">
+    <name>AMIT_Control2_obj_svnt</name>
+    <source/>
+    <node/>
+    <location>AMIT_Control2_obj_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_817e130c-740c-4a4d-b77d-c76c08cb0f81">
+    <name>AMIT_ServerImpl_comp_exec</name>
+    <source/>
+    <node/>
+    <location>AMIT_ServerImpl_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_cadfbe65-ff6b-4a23-bfcf-d9dc10f3c32a">
+    <name>AMIT_ServerImpl_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>AMIT_ServerImpl_comp_svnt</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <!-- This is referencing [Client_proc_ComponentServerInstance] -->
+    <constrainedInstance xmi:idref="_d0653047-276f-4fa4-92dd-89e8c4e53177"/>
+    <!-- This is referencing [AMIT_Test_asm.Local_comp] -->
+    <constrainedInstance xmi:idref="_b591cf24-f744-435a-b761-01155e43d4bd"/>
+    <!-- This is referencing [AMIT_Test_asm.Remote_comp] -->
+    <constrainedInstance xmi:idref="_53e112ba-a829-460c-905f-415173a32950"/>
+    <!-- This is referencing [AMITestInterfaces.ports.AMIT.Control1_obj_AMI4CCM_Connector_for_Server_comp_Remote_comp@TestNode.Client_proc] -->
+    <constrainedInstance xmi:idref="_4291b146-9556-49f1-a78d-720204e3290e"/>
+    <!-- This is referencing [AMITestInterfaces.ports.AMIT.Control2_obj_AMI4CCM_Connector_for_Server_comp_Remote_comp@TestNode.Client_proc] -->
+    <constrainedInstance xmi:idref="_a5fab648-cc47-4017-866d-479b0b914029"/>
+    <!-- This is referencing [AMITestInterfaces.ports.AMIT.Control1_obj_AMI4CCM_Connector_for_Server_comp_Local_comp@TestNode.Client_proc] -->
+    <constrainedInstance xmi:idref="_01793e93-d250-4b16-bbb6-6220f89ea6fe"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <!-- This is referencing [Server_proc_ComponentServerInstance] -->
+    <constrainedInstance xmi:idref="_a5a60b52-ec01-49d8-b16e-ca80a332b980"/>
+    <!-- This is referencing [AMIT_Test_asm.Server_comp] -->
+    <constrainedInstance xmi:idref="_0b699b03-585d-46ed-81e4-2b78630cce8d"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

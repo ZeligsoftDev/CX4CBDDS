@@ -1,0 +1,30 @@
+
+«IMPORT langc»
+
+«EXTENSION langc::debug»
+«EXTENSION generator::extend_util»
+«EXTENSION generator::objects»
+«EXTENSION generator::filepartitioner»
+«EXTENSION generator::systempartitioner2»
+
+«DEFINE ManifestFile FOR System»
+    «FILE 'sources.mk'»
+INCLUDE_ALL := .
+«EXPAND Include FOREACH artifacts SEPARATOR '\n'»
+
+«EXPAND Sources FOREACH artifacts SEPARATOR '\n'»
+
+ARTIFACTS := «EXPAND ArtifactName FOREACH artifacts SEPARATOR ' \\\n\t'»
+    «ENDFILE»
+«ENDDEFINE»
+
+«DEFINE Include FOR LinkableArtifact»INCLUDE_«name» := «EXPAND MakeVarValue FOR publicFolders().select( e | e.api )»«ENDDEFINE»
+«DEFINE Sources FOR LinkableArtifact»SRC_«name» := «EXPAND MakeVarValue FOR this.transitiveClosure().definitionFile( this ).getPopulatedObjectFiles()»«ENDDEFINE»
+
+«DEFINE MakeVarValue FOR Collection[Name]»«EXPAND ImplFile FOREACH this SEPARATOR ' \\\n\t'»«ENDDEFINE»
+
+«DEFINE ImplFile FOR FolderName»«IF parent != null»«EXPAND ImplFile FOR parent»/«ENDIF»«name»«ENDDEFINE»
+«DEFINE ImplFile FOR FileName»«IF parent != null»«EXPAND ImplFile FOR parent»/«ENDIF»«name».c«ENDDEFINE»
+«DEFINE ImplFile FOR Name»/* «this»: Attempt to put non-file into source list */«ENDDEFINE»
+
+«DEFINE ArtifactName FOR LinkableArtifact»«name»«ENDDEFINE»

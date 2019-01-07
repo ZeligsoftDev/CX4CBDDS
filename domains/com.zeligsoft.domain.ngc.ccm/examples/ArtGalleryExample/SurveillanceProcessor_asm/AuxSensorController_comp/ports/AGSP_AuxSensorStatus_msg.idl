@@ -1,0 +1,30 @@
+/// @defgroup AGSP_AuxSensorStatus_msg AuxSensorStatus_msg
+/// @{
+/// 
+/// @file AGSP_AuxSensorStatus_msg.idl
+/// @brief AuxSensorStatus_msg message definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__AUXSENSORCONTROLLER_COMP__PORTS__AGSP_AUXSENSORSTATUS_MSG_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__AUXSENSORCONTROLLER_COMP__PORTS__AGSP_AUXSENSORSTATUS_MSG_IDL
+
+#include "AGSP_HSManager_defn.idl"
+#pragma ndds typesupport "AGSP_AuxSensorStatus_msgSupport.h"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @struct AuxSensorStatus_msg
+    struct AuxSensorStatus_msg {
+        AGSP::SensorStatus cameraStatus;
+        AGSP::SensorStatus gimbalGpsStatus;
+        AGSP::SensorStatus lightSensorStatus;
+        AGSP::SensorStatus motionSensorStatus;
+    }; //@top-level true
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__AUXSENSORCONTROLLER_COMP__PORTS__AGSP_AUXSENSORSTATUS_MSG_IDL
+
+/// @}
+

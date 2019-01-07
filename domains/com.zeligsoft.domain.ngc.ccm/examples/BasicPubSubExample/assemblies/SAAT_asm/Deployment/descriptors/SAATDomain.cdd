@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:domain
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
+    xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <UUID>_f3c5a365-8381-4dce-b003-1e7d612961c9</UUID>
+  <label>SAATDomain</label>
+  <node>
+    <name>ComputeNode</name>
+    <label/>
+    <resource>
+      <name>NodeAddress</name>
+      <resourceType>edu.vanderbilt.dre.DAnCE.NodeAddress</resourceType>
+      <property>
+        <name>edu.vanderbilt.dre.DAnCE.StringIOR</name>
+        <kind>Attribute</kind>
+        <dynamic>false</dynamic>
+        <value>
+          <type>
+            <kind>tk_string</kind>
+          </type>
+          <value>
+            <string>corbaloc:iiop:localhost:60070</string>
+          </value>
+        </value>
+      </property>
+    </resource>
+  </node>
+</Deployment:domain>

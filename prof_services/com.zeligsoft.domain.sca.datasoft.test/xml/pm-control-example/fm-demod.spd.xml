@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.2-->
+<!--Powered by Python-->
+<softpkg id="DCE:a46de288-c548-11dc-aad1-000c29a1ba37" name="WFMdemod">
+    <title/>
+    <description>Broadcast FM demodulator</description> 
+    <author>
+        <name>DataSoft</name>
+        <company>DataSoft</company>
+        <webpage>http://www.datasoft.com/</webpage>
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="fm-demod.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="fm-demod.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:a472bd1c-c548-11dc-a762-000c29a1ba37">
+        <description>Description</description> 
+        <code type="Executable">
+            <localfile name="/bin/fm-demod"/>
+        </code>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

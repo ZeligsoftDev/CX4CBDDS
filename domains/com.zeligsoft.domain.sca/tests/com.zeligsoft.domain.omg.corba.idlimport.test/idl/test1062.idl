@@ -1,0 +1,14 @@
+// Struct forward-declaration
+
+interface int1062
+{
+  struct s1;
+
+  readonly attribute s1 structAttr;
+
+  struct s1
+  {
+     long a;
+  };
+
+};

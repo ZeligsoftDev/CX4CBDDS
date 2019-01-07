@@ -1,0 +1,13 @@
+#ifndef CX_PORTS__SHAPES_SHAPETYPE_MSG_IDL
+#define CX_PORTS__SHAPES_SHAPETYPE_MSG_IDL
+
+#pragma ndds typesupport "Shapes_ShapeType_msgSupport.h"
+
+struct ShapeType {
+    string color; //@key
+    long x;
+    long y;
+    long shapesize;
+}; //@top-level true
+
+#endif

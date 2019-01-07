@@ -1,0 +1,49 @@
+
+import langc;
+
+extension langc::debug;
+extension langc::expr;
+extension langc::libc;
+extension langc::mqueue;
+extension langc::stmt;
+extension langc::sysvipc;
+
+// TODO It might be useful for this api to accept a CodeBlock and then add the
+//      statement directly into the block.  This would allow multi-statement
+//      insertions instead of just creation of expressions.
+
+Expression createMQueue( Name qName ) :
+    mq_create( qName, O_RDONLY().or( O_CREAT() ).or( O_EXCL() ), S_IRWXU() )
+;
+
+Expression openMQueue( Name qName ) :
+    mq_open( qName, O_WRONLY() )
+;
+
+Expression mQueueSend( Name qName, VariableDeclaration buffVar ) :
+    mq_send( qName, buffVar.access(), buffVar.sizeof() )
+;
+
+Expression mQueueSend( Name qName, Expression buff ) :
+    mq_send( qName, buff, buff.sizeof() )
+;
+
+Expression mQueueReceive( Name qName, VariableDeclaration buffVar ) :
+    mq_receive( qName, buffVar.access(), buffVar.sizeof() )
+;
+
+Expression closeMQueue( Name qName ) :
+    mq_close( qName )
+;
+
+Expression createMsgget( Expression key ) :
+    msgget( key, IPC_CREAT().or( IPC_EXCL() ).or( O_RDONLY() ).or( S_IRWXU() ) )
+;
+
+Expression openMsgget( Expression key ) :
+    msgget( key, O_WRONLY() )
+;
+
+Expression msgrcv( Name qfd, VariableDeclaration buffVar ) :
+    msgrcv( qfd.access(), buffVar.access(), buffVar.sizeof() )
+;

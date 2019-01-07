@@ -1,0 +1,28 @@
+/// @defgroup AGSP_SystemStatus_msg SystemStatus_msg
+/// @{
+/// 
+/// @file AGSP_SystemStatus_msg.idl
+/// @brief SystemStatus_msg message definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__2SURVEILLANCEPROCESSOR__AGSP_SYSTEMSTATUS_MSG_IDL
+#define CX_PORTS__2SURVEILLANCEPROCESSOR__AGSP_SYSTEMSTATUS_MSG_IDL
+
+#include "AGSP_Common_defn.idl"
+#pragma ndds typesupport "AGSP_SystemStatus_msgSupport.h"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @struct SystemStatus_msg
+    struct SystemStatus_msg {
+        AGSP::SystemMode activeMode;
+        AGSP::SystemState theSystemState;
+    }; //@top-level true
+};
+
+#endif // CX_PORTS__2SURVEILLANCEPROCESSOR__AGSP_SYSTEMSTATUS_MSG_IDL
+
+/// @}
+

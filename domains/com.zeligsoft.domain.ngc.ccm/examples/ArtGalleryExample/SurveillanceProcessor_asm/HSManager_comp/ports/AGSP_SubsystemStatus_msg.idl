@@ -1,0 +1,34 @@
+/// @defgroup AGSP_SubsystemStatus_msg SubsystemStatus_msg
+/// @{
+/// 
+/// @file AGSP_SubsystemStatus_msg.idl
+/// @brief SubsystemStatus_msg message definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__HSMANAGER_COMP__PORTS__AGSP_SUBSYSTEMSTATUS_MSG_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__HSMANAGER_COMP__PORTS__AGSP_SUBSYSTEMSTATUS_MSG_IDL
+
+#include "AGSP_HSManager_defn.idl"
+#include "AGSP_Common_defn.idl"
+#pragma ndds typesupport "AGSP_SubsystemStatus_msgSupport.h"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @struct SubsystemStatus_msg
+    struct SubsystemStatus_msg {
+        AGSP::SPStatus summaryStatus;
+        AGSP::SensorStatus cameraStatus;
+        AGSP::SensorStatus gimbalGpsStatus;
+        AGSP::SensorStatus lightSensorStatus;
+        AGSP::SensorStatus motionSensorStatus;
+        AGSP::SystemMode activeMode;
+        AGSP::SystemState theSystemState;
+    }; //@top-level true
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__HSMANAGER_COMP__PORTS__AGSP_SUBSYSTEMSTATUS_MSG_IDL
+
+/// @}
+

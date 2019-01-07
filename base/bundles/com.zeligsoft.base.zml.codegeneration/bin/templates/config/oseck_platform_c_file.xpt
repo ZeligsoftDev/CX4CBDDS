@@ -1,0 +1,716 @@
+«REM»
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«EXTENSION extensions::DeploymentUtilsFuncs»
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::FunctionNames»
+
+
+«DEFINE CREATE_FILES FOR ZeligsoftDeployment::DeploymentPart»
+	«FILE "cfgs/"+ getNamedElementName((ZeligsoftDeployment::Deployment)this.owner)+"/"+getMySWPlatformName(this)+"/pjt/"+"platform.c"»	
+
+/**
+ * @file: platform.c
+ * 
+ */
+
+#include "ose.h"
+#include "heap.h"
+#include "ts.h"
+#include "ose_sysinfo.h"
+#include "bsp_config.h"
+#include "bspboard.h"
+#include "bspkrntimer.h"
+#include "device.h"
+#include "ethdev.h"
+
+#include "platform.h"
+
+#ifdef USE_PFM_CONFIG_H
+#include "pfm_config.h"
+#endif
+
+#include "lib-tci6488-320c64x+/bsplib-tci6488.h"
+
+#ifdef USE_DSPNET
+#include "ipcom_h.h"
+#endif
+
+#ifdef USE_LINKHANDLER
+#include "rlnh.h"
+#else
+#ifdef USE_ILLUMINATOR
+#error USE_ILLUMINATOR requires USE_LINKHANDLER to be defined!
+#endif
+#endif
+
+#ifdef USE_ETH_CM
+#ifndef USE_LINKHANDLER
+#error USE_ETH_CM requires USE_LINKHANDLER to be defined!
+#endif
+#ifndef USE_BSP_EMAC
+#ifdef USE_BSP_SRIO
+#error USE_ETH_CM combined with USE_BSP_SRIO not supported by core_example
+#endif
+#error USE_ETH_CM requires USE_BSP_EMAC to be defined!
+#endif
+#include "rlnh_eth_cm.h"
+#endif
+
+#ifdef USE_PTP_CM
+#ifndef USE_LINKHANDLER
+#error USE_PTP_CM requires USE_LINKHANDLER to be defined!
+#endif
+#ifndef USE_BSP_DMA
+#error USE_PTP_CM requires USE_BSP_DMA to be defined!
+#endif
+#include "rlnh_ptp_cm.h"
+#include "dma-320c648x/bspdma-320c648x.h"
+static void setup_dma(void);
+#endif
+
+/* Using ETH_DEBUG requires a stack increase,
+ * since bsp_debug_printf uses a lot of stack.
+ */
+/* #define ETH_DEBUG */
+
+Heap_t heap0 = NULL;
+#ifdef USE_HEAP0
+static char heap0_data[HEAP0_SIZE];
+#endif
+
+struct Ts *ts0 = NULL;
+struct Ts *ts1 = NULL;
+
+U32 pfm_ms_per_tick;
+
+extern void appstart(void);
+
+#ifdef USE_LINKHANDLER
+#define MAX_LINX_LINKS 16
+#define MAX_REMOTE_PROCS 16
+#define DEFAULT_CM_PRIO 10
+#endif
+
+struct pfm_proc_info_str {
+    PROCESS pid;
+    PROCESS_TYPE type;
+    OSPRIORITY prio;
+    unsigned int state;
+    unsigned int substate;
+    unsigned int stop_counter;
+    OSENTRYPOINT *entry;
+    char name[SYSINFO_PROC_NAME_LEN];
+    OSVECTOR vector;
+    unsigned int sigq_len;
+    unsigned int sig_owned;
+    OSBOOLEAN stack_valid;
+    const char *file;
+    unsigned int line;
+};
+
+#ifdef USE_PTP_CM
+#pragma DATA_SECTION(dma_area, ".zce2")
+static unsigned char dma_area[DMA_AREA_SIZE_FA];
+#pragma DATA_SECTION(dma_dm, ".zce2")
+static unsigned char dma_dm[DMA_DM_SIZE_FA];
+#endif
+
+#ifdef USE_BSP_EMAC
+struct DevMem *eth_dm;
+
+extern void ipcom_drv_eth_init2(int unit, struct DdFuncs *ddfuncs);
+static unsigned char rx_pool[0x40000];
+static unsigned int eth_mtu;
+
+/* Total number of rx buffers allocated
+ */
+#define NUM_PACKETS 48
+
+/* EMAC ring buffer packets
+ */
+#define CSL_PKTS 8
+
+void setup_ethernet_device(int unit, struct DdFuncs *ddfuncs)
+{
+    DevTag ddtag[13];
+    struct ISRInfo  ddisr;
+    char eth_mac[43];
+    U32 virt_unit, mru;
+    void *buf;
+    int i;
+
+    /* open driver.
+     */
+    if (ddfuncs->ddOpenShared(unit, DEVICE_TETHERNET, 0, 0, &ddisr, &virt_unit)
+        != DEVICE_SUCCESS)
+    {
+        bsp_debug_printf("pfm: failed to open eth driver\n");
+        return;
+    }
+
+    /* Get all info required to create the DevMem structure
+     */
+    ddtag[0] = DEVICE_TAGU_MAX_MRU;
+    ddtag[2] = DEVICE_TAGU_RXBUF_ALIGNMENT;
+    ddtag[4] = DEVICE_TAGU_MAX_MTU;
+    ddtag[6] = DEVICE_TAGU_TXBUF_ALIGNMENT;
+    ddtag[8] = DEVICE_TAGEND;
+
+    if (ddfuncs->ddUnitInfo(virt_unit, ddtag) != DEVICE_SUCCESS) {
+#ifdef ETH_DEBUG
+        bsp_debug_printf("pfm: failed to get eth%d info\n", unit);
+#endif
+        return;
+    }
+
+    eth_mtu = ddtag[5]; /* needed in rlnh_eth_cm_create_connection() */
+
+#ifdef ETH_DEBUG
+    bsp_debug_printf("pfm: eth%d mru: %d rx_align:%d mtu:%d tx_align:%d\n",
+                     unit,
+                     ddtag[1], ddtag[3], /* mru, rx_align */
+                     ddtag[5], ddtag[7] /* mtu, tx_align */
+                     );
+    bsp_debug_printf("pfm: cache line size %d\n", BSP_CACHE_LINE_SIZE);
+#endif
+
+    eth_dm = DM_create(0, /* tx poolid */
+                       (OSADDRESS)rx_pool, sizeof(rx_pool) - 10000,
+                       ddtag[1], ddtag[3], /* mru, rx_align */
+                       ddtag[5], ddtag[7], /* mtu, tx_align */
+                       BSP_CACHE_LINE_SIZE);
+
+    /* Get Ethernet address from bsp
+     */
+    bsp_get_eth_addr(unit, eth_mac);
+#ifdef ETH_DEBUG
+    {
+        unsigned char *ptr = (unsigned char *) eth_mac;
+        bsp_debug_printf("pfm: mac %02x:%02x:%02x:%02x:%02x:%02x\n",
+                         ptr[0], ptr[1], ptr[2], ptr[3], ptr[4], ptr[5]);
+    }
+#endif
+
+    mru = ddtag[1];
+
+    /* Set ethernet addr in driver
+     */
+    ddtag[0] = DEVICE_TAGC_ETHADDR;
+    ddtag[1] = (DevTag)eth_mac;
+    ddtag[2] = DEVICE_TAGC_NUM_PACKETS;
+    ddtag[3] = (DevTag)CSL_PKTS;
+    ddtag[4] = DEVICE_TAGC_NUM_ETH_CORES;
+    ddtag[5] = 3; /* Same as default */
+    ddtag[6] = DEVICE_TAGEND;
+
+    if (ddfuncs->ddSetConf(virt_unit, ddtag) != DEVICE_SUCCESS) {
+        bsp_debug_printf("pfm: Failed to set ethernet address in driver!\n");
+        return;
+    }
+
+    /* Give som rx buffers to driver:
+     */
+    for (i = 0; i < NUM_PACKETS; i++) {
+        buf = DM_alloc_rx(eth_dm);
+        if (buf == NULL) {
+            bsp_debug_printf("pfm: Failed to allocate enought eth RX packets\n");
+            break;
+        }
+        ddfuncs->ddRead(virt_unit, buf, &mru);
+    }
+
+    /* Create driver ISR proc. */
+    create_process(OS_INT_PROC,
+                   "tx_eth_isr",
+                   (OSENTRYPOINT *)ddisr.ISR[0].entrypoint,
+                   (OSADDRESS)ddisr.ISR[0].stacksize,
+                   (OSPRIORITY)ddisr.ISR[0].priority,
+                   (OSTIME)0,
+                   (PROCESS)0,
+                   (struct OS_redir_entry *)0,
+                   (OSVECTOR)ddisr.ISR[0].vector,
+                   (OSUSER)0);
+
+    /* Create driver ISR proc. */
+    create_process(OS_INT_PROC,
+                   "rx_eth_isr",
+                   (OSENTRYPOINT *)ddisr.ISR[1].entrypoint,
+                   (OSADDRESS)ddisr.ISR[1].stacksize,
+                   (OSPRIORITY)ddisr.ISR[1].priority,
+                   (OSTIME)0,
+                   (PROCESS)0,
+                   (struct OS_redir_entry *)0,
+                   (OSVECTOR)ddisr.ISR[1].vector,
+                   (OSUSER)0);
+
+
+#ifdef ETH_DEBUG
+    bsp_debug_printf("pfm: calling eth start\n");
+#endif
+
+
+    if (ddfuncs->ddStart(virt_unit) != DEVICE_SUCCESS) {
+        /* FIXME: */
+        return;
+    }
+}
+#endif
+
+/***********************************************************************
+ *
+ * Function:
+ *      pfm_init2
+ *
+ * This function is further described in platform.h
+ *
+ * Implementation notes:
+ *
+ ***********************************************************************
+ */
+void pfm_init2(void)
+{
+    /* Calculate the pfm_ms_per_tick value for use with in delay/receive_w_tmo
+     */
+    pfm_ms_per_tick = bsp_krntimer_get_period() /
+        (bsp_krntimer_get_hwfrequency() / 1000);
+
+#ifdef USE_HEAP0
+    s_heap_init(&heap0, HEAP_PRIVATE, heap0_data, HEAP0_SIZE, NULL);
+#endif
+
+#ifdef USE_TS0
+    ts0 = tsCreateTs(bsp_tsdriver0, bsp_tsdriver0_funcs);
+#endif
+
+#ifdef USE_TS1
+    ts1 = tsCreateTs(bsp_tsdriver1, bsp_tsdriver1_funcs);
+#endif
+
+#ifdef USE_ILLUMINATOR
+    /* no illuminator support yet */
+#endif
+
+#ifdef USE_BSP_EMAC
+    (void)eth_mtu; /* avoid compiler warning if USE_ETH_CM not defined */
+    setup_ethernet_device(BSP_EMAC_UNIT, bsp_get_eth_funcs(BSP_EMAC_UNIT));
+#endif
+
+    /* Tell ipcom about device and mode
+     */
+#ifdef USE_DSPNET
+    ipcom_drv_eth_init2(BSP_EMAC_UNIT,
+                        bsp_get_eth_funcs(BSP_EMAC_UNIT));
+    ipcom_create();
+#endif
+
+#ifdef USE_LINKHANDLER
+    ose_rlnh_init(MAX_LINX_LINKS, MAX_REMOTE_PROCS);
+#endif
+
+#ifdef USE_ETH_CM
+    {
+        struct RlnhLinkIF *linkif;
+        void *driver;
+        int this_node;
+
+        /* Create a link between this node and the remote node  */
+        this_node = pfm_get_node_number();
+
+#ifdef ETH_DEBUG
+        bsp_debug_printf("pfm: initialize eth cm\n");
+#endif
+
+        /* Initialize the ethernet connection manager */
+        rlnh_eth_cm_init(DEFAULT_CM_PRIO,
+                         DEFAULT_STACK_SIZE,
+                         BSP_EMAC_UNIT,
+                         bsp_get_eth_funcs(BSP_EMAC_UNIT),
+                         eth_dm);
+
+        /* I'm the server, connect to client */
+        if (this_node == 4) {
+            driver = rlnh_eth_cm_create_connection(&linkif,
+                                                   BSP_EMAC_UNIT,
+                                                   "00:DD:1F:C0:0a:EE",
+                                                   eth_mtu);
+            ose_rlnh_create_link("n6", linkif, driver, 1, 128, 128);
+        }
+
+        if (this_node == 3) {
+            driver = rlnh_eth_cm_create_connection(&linkif,
+                                                   BSP_EMAC_UNIT,
+                                                   "00:DD:1F:C0:09:EE",
+                                                   eth_mtu);
+            ose_rlnh_create_link("n6", linkif, driver, 1, 128, 128);
+        }
+
+        /* I'm the  client, connect to server */
+        if (this_node == 2) {
+            driver = rlnh_eth_cm_create_connection(&linkif,
+                                                   BSP_EMAC_UNIT,
+                                                   "00:DD:1F:C0:08:EE",
+                                                   eth_mtu);
+            ose_rlnh_create_link("n7", linkif, driver, 1, 128, 128);
+        }
+    }
+#endif
+
+#ifdef USE_PTP_CM
+    bsp_dma_create(dma_area);
+    setup_dma();
+#endif
+
+    appstart();
+}
+
+
+/***********************************************************************
+ *
+ * Function:
+ *      pfm_get_node_number
+ *
+ * This function is further described in platform.h
+ *
+ * Implementation notes:
+ *
+ ***********************************************************************
+ */
+int pfm_get_node_number(void)
+{
+    return bsp_get_node_number() + 2;
+}
+
+
+/***********************************************************************
+ *
+ * Function:
+ *      pfm_get_highest_node_number
+ *
+ * This function is further described in platform.h
+ *
+ * Implementation notes:
+ *
+ ***********************************************************************
+ */
+int pfm_get_highest_node_number(void)
+{
+#if defined(USE_LINKHANDLER)
+    return 4;
+#else
+    return 2;
+#endif
+}
+
+/***********************************************************************
+ *
+ * Function:
+ *      pfm_get_default_stack_size
+ *
+ * This function is further described in platform.h
+ *
+ * Implementation notes:
+ *      DEFAULT_STACK_SIZE is defined in platform_config.h
+ *
+ ***********************************************************************
+ */
+OSADDRESS pfm_get_default_stack_size(void)
+{
+    return DEFAULT_STACK_SIZE;
+}
+
+#ifdef USE_BSP_EMAC
+struct DevMem * pfm_get_eth_dm(void)
+{
+    return eth_dm;
+}
+#endif
+
+/***********************************************************************
+ * Function:
+ *      pfm_get_proc_info
+ *
+ * Parameters:
+ *      pid        - The pid for the process.
+ *      proc_info  - Pointer to a pfm_proc_info_str
+ *
+ * Return Value:
+ *      0 if the pid is valid otherwise 1
+ *
+ * Purpose:
+ *      Returns information on a process
+ *
+ ***********************************************************************
+ */
+int pfm_get_proc_info(PROCESS pid, struct pfm_proc_info_str *proc_info)
+{
+    proc_info->pid = pid;
+    proc_info->type = get_ptype(pid);
+    if (proc_info->type == OS_ILLEGAL) {
+        /* No such pid */
+        return 1;
+    }
+    (void)sysinfo_proc_prio(pid, &proc_info->prio);
+    (void)sysinfo_proc_state(pid, &proc_info->state, &proc_info->substate);
+    (void)sysinfo_proc_stop_counter(pid, &proc_info->stop_counter);
+    (void)sysinfo_proc_entry(pid, &proc_info->entry);
+    (void)sysinfo_proc_name(pid, SYSINFO_PROC_NAME_LEN, proc_info->name);
+    (void)sysinfo_proc_vector(pid, &proc_info->vector);
+    (void)sysinfo_proc_sigq_len(pid, &proc_info->sigq_len);
+    (void)sysinfo_proc_sig_owned(pid, &proc_info->sig_owned);
+    (void)sysinfo_proc_stack_validate(pid, &proc_info->stack_valid);
+    (void)sysinfo_proc_file_line(pid, &proc_info->file, &proc_info->line);
+    return 0;
+}
+
+/***********************************************************************
+ * Function:
+ *      validate_pool
+ *
+ * Parameters:
+ *        poolid     - if of pool to validate
+ *
+ * Return Value:
+ *        0  No corruption detected
+ *       -1  At least one corrupt signal in pool
+ *       -2  No scan performed
+ *
+ * Purpose:
+ *
+ * Side effects:
+ *
+ * Implementation notes:
+ *
+ ***********************************************************************
+ */
+static int validate_pool(OSPOOLID poolid)
+{
+    struct sysinfo_signal_info siginfo;
+    union SIGNAL *current;
+    union SIGNAL *next;
+    unsigned int type;
+    sysinfo_feature_type f;
+    struct sysinfo_system_properties sprop;
+    OSBOOLEAN sig_ok;
+    PROCESS owner;
+
+    /* Check preconditions
+     */
+    sysinfo_features_enabled(&f);
+
+    /* Need BUFFER_CHECK for endmark and owner validation
+     */
+    if (!(SYSINFO_FEATURE_IS_SET(&f, SYSINFO_FEATURE_BUFFER_CHECK))) {
+        return -2;
+    }
+
+    /* Max sprop.max_valid_pid is needed later for owner checking
+     */
+    sysinfo_system_properties(&sprop);
+
+
+    /* Start the scanning
+     * By checking preconditions first we know that all calls inside
+     * this loop will succeed, thus we can skip error checking inside
+     * making this code faster if used in performance critical situations.
+     */
+    if (sysinfo_pool_scan_first(poolid, &next, &type) != SYSINFO_NO_ERR) {
+        return -2;
+    }
+
+    while (next != NIL) {
+
+        current = next;
+
+        /* only validate signals
+         */
+        if (type != 0) {
+            sysinfo_pool_scan_next(poolid, current, &next, &type);
+            continue;
+        }
+
+        /* Validate the signal endmark
+         */
+        sysinfo_signal_validate(current, &sig_ok);
+
+        /* Check that "owner" is reasonble
+         */
+        sysinfo_signal_owner(current, &owner);
+        sig_ok &= owner <= sprop.max_valid_pid ||
+            owner == SYSINFO_OWNER_KERNEL;
+
+        /* - Validate that the given signal size fits
+         *   in its allocated pool space.
+         * - Validate that the poolid is the same as the
+         *   pool we are currently scanning
+         *
+         * addressee and sender cannot be validated without
+         * proper knowledge of the linkhandler configuration
+         * since they might be linkhandler "ClusterPids"
+         */
+        sysinfo_signal_info(current, &siginfo);
+        sig_ok &=  siginfo.size < siginfo.size_in_pool;
+        sig_ok &= siginfo.poolid == poolid;
+
+        if (!sig_ok) {
+            return -1;
+        }
+        sysinfo_pool_scan_next(poolid, current, &next, &type);
+    }
+    return 0;
+}
+
+/***********************************************************************
+ *
+ * Function:
+ *      setup_dma_device
+ *
+ ***********************************************************************
+ */
+#ifdef USE_PTP_CM
+U32 get_link_number(U32 node, U32 unit)
+{
+    U32 i, j, max_nodes, unitx;
+
+    i = 2;
+    j = 0;
+    max_nodes = pfm_get_highest_node_number();
+    unitx = unit - BSP_DMA_UNIT0;
+
+    do {
+        if (i != node) {
+            if (j++ == unitx) {
+                return i;
+            }
+        }
+    } while (i++ < max_nodes);
+
+    return 2;
+}
+
+static void setup_dma(void)
+{
+    struct DdFuncs *ddfuncs;
+    void *rlnhLinkObj;
+    struct RlnhLinkIF *linkif;
+    struct RlnhObj *ret;
+    struct DevMem *dm;
+    int this_node, mru, mtu, rx_align, tx_align, unit;
+    char name[3] = {'n', 'X', '\0'};
+    DevTag tags[] = {DEVICE_TAGU_MAX_MRU, 0,
+                     DEVICE_TAGU_MAX_MTU, 0,
+                     DEVICE_TAGU_RXBUF_ALIGNMENT, 0,
+                     DEVICE_TAGU_TXBUF_ALIGNMENT, 0,
+                     DEVICE_TAGEND};
+
+    ddfuncs = bsp_get_dma_funcs(BSP_DMA_UNIT0);
+    ddfuncs->ddUnitInfo(BSP_DMA_UNIT0, tags);
+    mru      = (int)tags[1];
+    mtu      = (int)tags[3];
+    rx_align = (int)tags[5];
+    tx_align = (int)tags[7];
+
+    rlnh_ptp_cm_init(DEFAULT_CM_PRIO, 2048, ts0, bsp_tsdriver0_frequency);
+
+    dm = DM_create(0, /* tx poolid */
+                   (OSADDRESS)dma_dm, sizeof(dma_dm),
+                   mru, rx_align,
+                   mtu, tx_align,
+                   BSP_CACHE_LINE_SIZE);
+
+    this_node = pfm_get_node_number();
+
+    for (unit = BSP_DMA_UNIT0; unit <= BSP_DMA_UNIT1; unit++) {
+        rlnhLinkObj = rlnh_ptp_cm_create_connection(&linkif, unit, ddfuncs,
+                                                    dm, mtu);
+        name[1] = '0' +  get_link_number(this_node, unit);
+        ret = ose_rlnh_create_link(name, linkif, rlnhLinkObj,
+                                   1, 128, 32);
+        if (ret == NULL) {
+            bsp_debug_printf("pfm: failed to create link \"%s\" (unit=%d)\n",
+                             name, unit);
+        }
+        else
+        {
+            bsp_debug_printf("pfm: successfully created link \"%s\" (unit=%d)\n",
+                             name, unit);        
+        }
+    }
+}
+#endif
+
+/***********************************************************************
+ *
+ * Function:
+ *      pfm_error_handler
+ *
+ * This function is further described in platform.h
+ *
+ * Implementation notes:
+ *
+ ***********************************************************************
+ */
+OSBOOLEAN pfm_error_handler(OSBOOLEAN user_called,
+                            OSERRCODE errcode,
+                            OSERRCODE extra)
+{
+    PROCESS pid;
+    Boolean fatal;
+    enum BspErrorCode ecode;
+    struct pfm_proc_info_str proc_info;
+    struct sysinfo_system_properties sprop;
+    volatile int nr_of_corrupt_pools;
+    OSPOOLID poolid;
+    OSERRCODE func;
+
+    if (user_called == 0) {
+        ecode = (enum BspErrorCode) (errcode & OSE_EERROR_MASK);
+        func = (errcode & OSE_ESUBCODE_MASK) > 16;
+        extra = extra;
+    }
+    fatal = (Boolean) ((errcode & OSE_EFATAL_MASK) != 0);
+
+    pid = current_process();
+    (void) pfm_get_proc_info(pid, &proc_info);
+
+    fatal = fatal;
+    func = func;
+    ecode = ecode;
+
+    /* Scan all pools in the system
+     * Scanning stops when the first corrupt signal is
+     * found.
+     */
+    nr_of_corrupt_pools = 0;
+    sysinfo_system_properties(&sprop);
+    for (poolid = 0; poolid <= sprop.max_valid_poolid; poolid++) {
+        if (validate_pool(poolid) == -1) {
+            nr_of_corrupt_pools++;
+            break;
+        }
+    }
+
+    /* Handle no errors.
+     */
+    return False;
+}
+
+/* End-Of-File */
+/* ------------------------------------------------------------------------------ */	
+	«ENDFILE»
+«ENDDEFINE»

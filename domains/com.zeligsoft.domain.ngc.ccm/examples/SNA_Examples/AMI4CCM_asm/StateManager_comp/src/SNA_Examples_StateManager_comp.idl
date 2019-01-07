@@ -1,0 +1,52 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+
+/**
+ * @defgroup StateManager_comp   StateManager_comp Component
+ * @ingroup AMI4CCM_Example
+ * @{
+ * The StateManager_comp component uses both the AMI4CCM and "normal" CORBA
+ * versions of the SystemControl_obj interface in order to change the state
+ * of the state machine implemented in Slave_comp.
+ *
+ * @file   SNA_Examples_StateManager_comp.idl
+ * @brief  StateManager_comp component definition IDL file.
+ */
+
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_STATEMANAGER_COMP_IDL
+#define SNA_EXAMPLES_STATEMANAGER_COMP_IDL
+
+#include <Components.idl>
+
+// This declares that the stateControlRecept receptacle should be
+// AMI4CCM-capable and will generated a new receptacle for AMI4CCM invocations
+// called sendc_stateControlRecept.
+#pragma ciao ami4ccm receptacle "SNA_Examples::StateManager_comp::stateControlRecept"
+
+#include "SNA_Examples_StateControl_obj.idl"
+
+module SNA_Examples
+{
+   /**
+    * This component uses AMI4CCM and "normal" CORBA to control state changes.
+    */
+   component StateManager_comp
+   {
+      /**
+       * An AMI4CCM-capable multiplex receptacle.
+       */
+      uses multiple StateControl_obj stateControlRecept;
+   };
+};
+
+#endif
+
+/// @}
+//==============================================================================
+//                            U N C L A S S I F I E D                            
+//==============================================================================

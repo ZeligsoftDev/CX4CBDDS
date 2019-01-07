@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         id="domain_test1"
+         name="domain_test1"
+         point="com.zeligsoft.ce.domainregistration.DomainRegistration">
+      <profile
+            name="Rose Migration Profiles">
+      </profile>      
+      <model-library
+            name="UML2 Type Library">
+      </model-library>
+      <description
+            description="Domain Registry Test Domain 1">
+      </description>      
+   </extension>
+   <extension
+         id="domain_test2"
+         name="domain_test2"
+         point="com.zeligsoft.ce.domainregistration.DomainRegistration">
+      <model-library
+            name="Java Type Library">         
+      </model-library>
+      <model-library
+            name="UML2 Type Library">
+      </model-library>
+      <profile
+            name="Rose Migration Profiles">
+      </profile> 
+      <description
+            description="Domain Registry Test Domain 2">
+      </description>      
+   </extension>
+   <extension
+         id="domain_test3"
+         name="domain_test3"
+         point="com.zeligsoft.ce.domainregistration.DomainRegistration">
+      <profile
+            name="Missing Profile">
+      </profile>      
+      <model-library
+            name="Missing Model Library">
+      </model-library>
+      <description
+            description="Domain Registry Test Domain 3"></description>
+   </extension>
+</plugin>

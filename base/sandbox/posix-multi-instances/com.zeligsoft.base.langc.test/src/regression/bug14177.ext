@@ -1,0 +1,26 @@
+
+import langc;
+
+extension langc::element;
+extension langc::expr;
+extension langc::name;
+extension langc::stmt;
+extension langc::type;
+
+FolderName baseFolder() : folder( 'folder' );
+FileName fileName() : baseFolder().child( 'file' );
+Name functionName() : fileName().child( 'f' );
+Name paramName()    : functionName().child( 'p' );
+
+Function testAddressOfInt() :
+    let f = function( int32().ptr(), functionName() ) :
+        f.addParameter( int32(), paramName() )
+     -> f.addStatement( returnStmt( paramName().access().addressOf() ) )
+     -> f
+;
+
+DereferenceExpr testDereferencePtr() :
+    let c = new FunctionCall :
+        c.setFunction( testAddressOfInt() )
+     -> dereference( c )
+;

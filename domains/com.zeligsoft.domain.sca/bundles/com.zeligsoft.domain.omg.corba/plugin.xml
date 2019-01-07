@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+    <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://OMG_CORBA_LIBRARIES/"
+            target="platform:/plugin/com.zeligsoft.domain.omg.corba/models/" />
+   </extension>
+   <extension
+         point="com.zeligsoft.base.zdl.domain_models">
+     <domainModel
+           uri="http://www.zeligsoft.com/zdl/2008/CORBA"
+           path="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml"
+           genModel="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen"/>
+   </extension>
+   
+   <extension
+         point="com.zeligsoft.base.validation.preload">
+      <zdl uri="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml" />
+   </extension>
+</plugin>

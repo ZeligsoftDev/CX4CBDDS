@@ -1,0 +1,38 @@
+/// @defgroup SNA_Examples_defn defn
+/// @{
+/// 
+/// @file SNA_Examples_defn.idl
+/// @brief defn definitions definition IDL file
+
+//=========================================================
+
+#ifndef CX_BASICPUBLISHER_COMP__PORTS__SNA_EXAMPLES_DEFN_IDL
+#define CX_BASICPUBLISHER_COMP__PORTS__SNA_EXAMPLES_DEFN_IDL
+
+
+/// @namespace SNA_Examples 
+module SNA_Examples {
+
+    /// @enum State
+    ///
+    enum State {
+        STATE_PASS,
+        STATE_FAIL
+    };
+
+    /// @enum Color
+    ///
+    enum Color {
+        COLOR_RED,
+        COLOR_GREEN,
+        COLOR_BLUE
+    };
+
+    /// @typedef BoundedString
+    typedef string<512> BoundedString;
+};
+
+#endif // CX_BASICPUBLISHER_COMP__PORTS__SNA_EXAMPLES_DEFN_IDL
+
+/// @}
+

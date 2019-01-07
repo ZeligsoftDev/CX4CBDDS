@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Deployment:domain xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <UUID>AB7108E0-9C1C-11E0-8000-000325596CA4</UUID>
+
+  <label/>
+
+  <node>
+    <name>Airplane_node</name>
+    <label/>
+    <resource>
+      <name>Node Address</name>
+      <resourceType>edu.vanderbilt.dre.DAnCE.NodeAddress</resourceType>
+      <property>
+        <name>edu.vanderbilt.dre.DAnCE.StringIOR</name>
+        <kind>Attribute</kind>
+        <dynamic>false</dynamic>
+        <value>
+          <type>
+            <kind>tk_string</kind>
+          </type>
+          <value>
+            <string>corbaloc:iiop:localhost:64321</string>
+          </value>
+        </value>
+      </property>
+    </resource>
+  </node>
+
+  <node>
+    <name>TemperatureSensor_node</name>
+    <label/>
+    <resource>
+      <name>Node Address</name>
+      <resourceType>edu.vanderbilt.dre.DAnCE.NodeAddress</resourceType>
+      <property>
+        <name>edu.vanderbilt.dre.DAnCE.StringIOR</name>
+        <kind>Attribute</kind>
+        <dynamic>false</dynamic>
+        <value>
+          <type>
+            <kind>tk_string</kind>
+          </type>
+          <value>
+            <string>corbaloc:iiop:localhost:64323</string>
+          </value>
+        </value>
+      </property>
+    </resource>
+  </node>
+
+  <node>
+    <name>WeatherStation_node</name>
+    <label/>
+    <resource>
+      <name>Node Address</name>
+      <resourceType>edu.vanderbilt.dre.DAnCE.NodeAddress</resourceType>
+      <property>
+        <name>edu.vanderbilt.dre.DAnCE.StringIOR</name>
+        <kind>Attribute</kind>
+        <dynamic>false</dynamic>
+        <value>
+          <type>
+            <kind>tk_string</kind>
+          </type>
+          <value>
+            <string>corbaloc:iiop:localhost:64322</string>
+          </value>
+        </value>
+      </property>
+    </resource>
+  </node>
+
+</Deployment:domain>

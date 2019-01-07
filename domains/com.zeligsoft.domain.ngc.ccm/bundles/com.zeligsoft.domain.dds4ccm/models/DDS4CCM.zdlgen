@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zdlgen:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:zdlgen="http://www.zeligsoft.com/zdl/2008/ZDLGen" xmi:id="_Ch8g0EDYEd-LnsQ685SqSQ">
+  <ownedModel xmi:id="_Ch8g0UDYEd-LnsQ685SqSQ" nsURI="http://www.zeligsoft.com/domain/dds4ccm/2010" rootPackage="com.zeligsoft.domain.dds4ccm.api" implementationSubPackage="impl" implSuffix="ZImpl" apiProject="com.zeligsoft.domain.dds4ccm.api">
+    <element xmi:type="zdlgen:GenDomainBlock" xmi:id="_Ch8g0kDYEd-LnsQ685SqSQ">
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_XBNVIEDqEd-pwPnT_VsB_g" menu="_5RmNMEQAEd-7VNyKjYIdZQ" category="firm">
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_MYJx8MdtEeCd498VXJd-dg">
+          <domainAttribute href="DDS4CCM.uml#_Bt4AkMdtEeCd498VXJd-dg"/>
+        </feature>
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_KlkWAElXEeK3Ob_fgdPatg" order="5000">
+          <domainAttribute href="DDS4CCM.uml#_TnWaAEkfEeKqQL8utZve1Q"/>
+        </feature>
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_KlkWAUlXEeK3Ob_fgdPatg">
+          <domainAttribute href="DDS4CCM.uml#_a-3aIEkfEeKqQL8utZve1Q"/>
+        </feature>
+        <domainConcept href="DDS4CCM.uml#_1fSP4EDkEd-LnsQ685SqSQ"/>
+        <rhapsodyAddNew>Package</rhapsodyAddNew>
+        <generalization xmi:id="_YvzuwJFBEeCRAOU4nmQMcQ">
+          <general href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_rwgN0pBXEeCN25huR8QT_w"/>
+          <domainGeneralization href="DDS4CCM.uml#_vXHkwJE_EeCRAOU4nmQMcQ"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_n9iOFMZaEd-tAY_HctmkAw" category="firm" isRSMSuppressed="true">
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_Z8ZjsMZcEd-XG_BORqpl5A" visible="false">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement-name"/>
+          <domainAttribute href="DDS4CCM.uml#_LRxiUMZcEd-XG_BORqpl5A"/>
+        </feature>
+        <domainConcept href="DDS4CCM.uml#_wB8bUMZYEd-tAY_HctmkAw"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_UasgyMZ_Ed-XG_BORqpl5A" category="firm">
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_UasgycZ_Ed-XG_BORqpl5A" target="_n9iOFMZaEd-tAY_HctmkAw" source="_UasgyMZ_Ed-XG_BORqpl5A">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency-supplier"/>
+          <domainAttribute href="DDS4CCM.uml#_6PzhMMZ-Ed-XG_BORqpl5A"/>
+          <domainReference href="DDS4CCM.uml#_6PW1QMZ-Ed-XG_BORqpl5A"/>
+        </feature>
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_UasgysZ_Ed-XG_BORqpl5A" source="_UasgyMZ_Ed-XG_BORqpl5A">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency-client"/>
+          <domainAttribute href="DDS4CCM.uml#_7IbLQcZ-Ed-XG_BORqpl5A"/>
+          <target href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_LOTkEO1pEd2XOPM4ACfj4Q"/>
+          <domainReference href="DDS4CCM.uml#_7IbLQMZ-Ed-XG_BORqpl5A"/>
+        </feature>
+        <domainConcept href="DDS4CCM.uml#_yDbVoMZ-Ed-XG_BORqpl5A"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency"/>
+        <rhapsodyToAddNew href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_AJ-wsUxGEd2q8K1oAnPrnA"/>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_C9Pu8Mg3EeCd498VXJd-dg" category="firm">
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_C9Pu8cg3EeCd498VXJd-dg" visible="false" source="_C9Pu8Mg3EeCd498VXJd-dg">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency-client"/>
+          <domainAttribute href="DDS4CCM.uml#_rZVOIMg1EeCd498VXJd-dg"/>
+          <target href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_LOTkEO1pEd2XOPM4ACfj4Q"/>
+          <domainReference href="DDS4CCM.uml#_rZJn8Mg1EeCd498VXJd-dg"/>
+        </feature>
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_C9Pu8sg3EeCd498VXJd-dg" visible="false" source="_C9Pu8Mg3EeCd498VXJd-dg">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency-supplier"/>
+          <domainAttribute href="DDS4CCM.uml#_suEzgMg1EeCd498VXJd-dg"/>
+          <target href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_LOTkEO1pEd2XOPM4ACfj4Q"/>
+          <domainReference href="DDS4CCM.uml#_suAiEMg1EeCd498VXJd-dg"/>
+        </feature>
+        <domainConcept href="DDS4CCM.uml#_nwamsMg1EeCd498VXJd-dg"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency"/>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_Xj5iAOk1EeCG1fXcL6IPFQ" category="firm">
+        <domainConcept href="DDS4CCM.uml#_jha5YOk0EeCG1fXcL6IPFQ"/>
+        <rhapsodyToAddNew href="pathmap://CCM_DOMAIN/CCM.zdlgen#_qPDU1KO_Ed67GLoXBGWUmA"/>
+        <generalization xmi:id="_Xj5iAek1EeCG1fXcL6IPFQ">
+          <general href="pathmap://CCM_DOMAIN/CCM.zdlgen#_3zrBMBWeEd-iXJ2fHwNJGg"/>
+          <domainGeneralization href="DDS4CCM.uml#_OljG8Ok1EeCG1fXcL6IPFQ"/>
+        </generalization>
+      </classifier>
+      <domainBlock href="DDS4CCM.uml#_eP42QEDSEd-VnJuJyqILLA"/>
+    </element>
+    <element xmi:type="zdlgen:GenDomainBlock" xmi:id="_0iexcHV-Ed-AKdymOEnO6w">
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_0ifYgHV-Ed-AKdymOEnO6w" menu="_-QRFYHV-Ed-AKdymOEnO6w" category="firm">
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_0ifYgXV-Ed-AKdymOEnO6w" target="_0ifYg3V-Ed-AKdymOEnO6w" source="_0ifYgHV-Ed-AKdymOEnO6w">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType-ownedAttribute"/>
+          <domainAttribute href="DDS4CCM.uml#_Lj6SQHVqEd-AKdymOEnO6w"/>
+          <domainReference href="DDS4CCM.uml#_LjzkkHVqEd-AKdymOEnO6w"/>
+        </feature>
+        <domainConcept href="DDS4CCM.uml#_3IaQ8HTFEd-8WZ4XFQyopg"/>
+        <generalization xmi:id="_0ifYgnV-Ed-AKdymOEnO6w">
+          <general href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_AJ-wkUxGEd2q8K1oAnPrnA"/>
+          <domainGeneralization href="DDS4CCM.uml#_ElXlUHTGEd-8WZ4XFQyopg"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_0ifYg3V-Ed-AKdymOEnO6w" category="firm" isRSMSuppressed="true">
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_0ifYhHV-Ed-AKdymOEnO6w">
+          <domainAttribute href="DDS4CCM.uml#_JJbkIHV7Ed-AKdymOEnO6w"/>
+        </feature>
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_hwuWwEZwEeC1reNsH6GyQw">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#TypedElement-type"/>
+          <domainAttribute href="DDS4CCM.uml#_LVPBIEZwEeC1reNsH6GyQw"/>
+          <target href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_ePmBRMJgEd60NLHtw9YF3A"/>
+          <domainReference href="DDS4CCM.uml#_LVEpEEZwEeC1reNsH6GyQw"/>
+        </feature>
+        <domainConcept href="DDS4CCM.uml#_HgGekHVqEd-AKdymOEnO6w"/>
+        <generalization xmi:id="_0if_kHV-Ed-AKdymOEnO6w">
+          <general href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_ePmBR8JgEd60NLHtw9YF3A"/>
+          <domainGeneralization href="DDS4CCM.uml#_QZN0UHVqEd-AKdymOEnO6w"/>
+        </generalization>
+      </classifier>
+      <relation xmi:type="zdlgen:GenDomainBlockImport" xmi:id="_0if_kXV-Ed-AKdymOEnO6w">
+        <target href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_AJ-wcUxGEd2q8K1oAnPrnA"/>
+        <domainBlockRelation xmi:type="uml:PackageImport" href="DDS4CCM.uml#_8zXooHTFEd-8WZ4XFQyopg"/>
+      </relation>
+      <domainBlock href="DDS4CCM.uml#_QtjUkHTFEd-8WZ4XFQyopg"/>
+    </element>
+    <element xmi:type="zdlgen:GenDomainBlock" xmi:id="_J6dagHmDEd-H7NKXnrpkvQ">
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_J6dagXmDEd-H7NKXnrpkvQ" menu="_CZR4UHmUEd-H7NKXnrpkvQ" category="firm">
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_J6dagnmDEd-H7NKXnrpkvQ">
+          <domainAttribute href="DDS4CCM.uml#_CQZR0HmDEd-H7NKXnrpkvQ"/>
+        </feature>
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_J6dag3mDEd-H7NKXnrpkvQ" visible="false" target="_J6dahnmDEd-H7NKXnrpkvQ" source="_J6dagXmDEd-H7NKXnrpkvQ">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class-nestedClassifier"/>
+          <domainAttribute href="DDS4CCM.uml#_fKMlIHl3Ed-H7NKXnrpkvQ"/>
+          <domainReference href="DDS4CCM.uml#_fJgBkHl3Ed-H7NKXnrpkvQ"/>
+        </feature>
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_J6dahHmDEd-H7NKXnrpkvQ" visible="false" target="_J6daiXmDEd-H7NKXnrpkvQ" source="_J6dagXmDEd-H7NKXnrpkvQ">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class-ownedAttribute"/>
+          <domainAttribute href="DDS4CCM.uml#_p3kGwHl3Ed-H7NKXnrpkvQ"/>
+          <domainReference href="DDS4CCM.uml#_p3iRkHl3Ed-H7NKXnrpkvQ"/>
+        </feature>
+        <domainConcept href="DDS4CCM.uml#_qPBZ8Hl2Ed-H7NKXnrpkvQ"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+        <generalization xmi:id="_J6dahXmDEd-H7NKXnrpkvQ">
+          <general href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_k8d9e2SHEd2454WIHspjPA"/>
+          <domainGeneralization href="DDS4CCM.uml#_dGa6EHl4Ed-H7NKXnrpkvQ"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_J6dahnmDEd-H7NKXnrpkvQ" category="firm">
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_J6dah3mDEd-H7NKXnrpkvQ" visible="false" source="_J6dahnmDEd-H7NKXnrpkvQ">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class-ownedAttribute"/>
+          <domainAttribute href="DDS4CCM.uml#_jnyVUHl4Ed-H7NKXnrpkvQ"/>
+          <target href="pathmap://DDS_DOMAIN/dds.zdlgen#_8t0REG2wEd-H9aZWBAsVAA"/>
+          <domainReference href="DDS4CCM.uml#_jnxHMHl4Ed-H7NKXnrpkvQ"/>
+        </feature>
+        <domainConcept href="DDS4CCM.uml#_tKeecHl2Ed-H7NKXnrpkvQ"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+        <generalization xmi:id="_J6daiHmDEd-H7NKXnrpkvQ">
+          <general href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_k8d9e2SHEd2454WIHspjPA"/>
+          <domainGeneralization href="DDS4CCM.uml#_cTHN0Hl4Ed-H7NKXnrpkvQ"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_J6daiXmDEd-H7NKXnrpkvQ" category="firm">
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_J6dainmDEd-H7NKXnrpkvQ" target="_J6dahnmDEd-H7NKXnrpkvQ" source="_J6daiXmDEd-H7NKXnrpkvQ">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#TypedElement-type"/>
+          <domainAttribute href="DDS4CCM.uml#_u_UqwHl3Ed-H7NKXnrpkvQ"/>
+          <domainReference href="DDS4CCM.uml#_u_S1kHl3Ed-H7NKXnrpkvQ"/>
+        </feature>
+        <domainConcept href="DDS4CCM.uml#_SBr2wHl3Ed-H7NKXnrpkvQ"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+        <generalization xmi:id="_J6dai3mDEd-H7NKXnrpkvQ">
+          <general href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_k8d9e2SHEd2454WIHspjPA"/>
+          <domainGeneralization href="DDS4CCM.uml#_crgfsHl4Ed-H7NKXnrpkvQ"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_J6dajHmDEd-H7NKXnrpkvQ" category="firm">
+        <domainConcept href="DDS4CCM.uml#_EM4NoHl4Ed-H7NKXnrpkvQ"/>
+        <generalization xmi:id="_x6INwnohEd-ShLb5Q4JRNg" general="_x6INwHohEd-ShLb5Q4JRNg">
+          <domainGeneralization href="DDS4CCM.uml#_V8JrwHl4Ed-H7NKXnrpkvQ"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_J6dajnmDEd-H7NKXnrpkvQ" category="firm">
+        <domainConcept href="DDS4CCM.uml#_H1sucHl4Ed-H7NKXnrpkvQ"/>
+        <generalization xmi:id="_J6daj3mDEd-H7NKXnrpkvQ" general="_J6dahnmDEd-H7NKXnrpkvQ">
+          <domainGeneralization href="DDS4CCM.uml#_UD2tYHl4Ed-H7NKXnrpkvQ"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_J6dakHmDEd-H7NKXnrpkvQ" category="firm">
+        <domainConcept href="DDS4CCM.uml#_JF3V0Hl4Ed-H7NKXnrpkvQ"/>
+        <generalization xmi:id="__xLyQHojEd-ShLb5Q4JRNg" general="__xJWAHojEd-ShLb5Q4JRNg">
+          <domainGeneralization href="DDS4CCM.uml#_Ucz_8Hl4Ed-H7NKXnrpkvQ"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_J6daknmDEd-H7NKXnrpkvQ" category="firm">
+        <domainConcept href="DDS4CCM.uml#_KRxvUHl4Ed-H7NKXnrpkvQ"/>
+        <generalization xmi:id="__xLyQXojEd-ShLb5Q4JRNg" general="__xJWAHojEd-ShLb5Q4JRNg">
+          <domainGeneralization href="DDS4CCM.uml#_U2frQHl4Ed-H7NKXnrpkvQ"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_J6dalHmDEd-H7NKXnrpkvQ" category="firm">
+        <domainConcept href="DDS4CCM.uml#_N5AUsHl4Ed-H7NKXnrpkvQ"/>
+        <generalization xmi:id="_J6dalXmDEd-H7NKXnrpkvQ" general="_J6dahnmDEd-H7NKXnrpkvQ">
+          <domainGeneralization href="DDS4CCM.uml#_VlVuQHl4Ed-H7NKXnrpkvQ"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_J6dalnmDEd-H7NKXnrpkvQ" category="firm">
+        <domainConcept href="DDS4CCM.uml#_RJzXEHl4Ed-H7NKXnrpkvQ"/>
+        <generalization xmi:id="_x6INw3ohEd-ShLb5Q4JRNg" general="_x6INwHohEd-ShLb5Q4JRNg">
+          <domainGeneralization href="DDS4CCM.uml#_WZIisHl4Ed-H7NKXnrpkvQ"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_x6INwHohEd-ShLb5Q4JRNg" category="firm">
+        <domainConcept href="DDS4CCM.uml#_bYCg4HohEd-ShLb5Q4JRNg"/>
+        <generalization xmi:id="_x6INwXohEd-ShLb5Q4JRNg" general="_J6dahnmDEd-H7NKXnrpkvQ">
+          <domainGeneralization href="DDS4CCM.uml#_hNuh4HohEd-ShLb5Q4JRNg"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="__xJWAHojEd-ShLb5Q4JRNg" category="firm">
+        <domainConcept href="DDS4CCM.uml#_e40OEHojEd-ShLb5Q4JRNg"/>
+        <generalization xmi:id="__xJWAXojEd-ShLb5Q4JRNg" general="_J6dahnmDEd-H7NKXnrpkvQ">
+          <domainGeneralization href="DDS4CCM.uml#_5wk6sHojEd-ShLb5Q4JRNg"/>
+        </generalization>
+      </classifier>
+      <relation xmi:type="zdlgen:GenDomainBlockImport" xmi:id="_J6damHmDEd-H7NKXnrpkvQ">
+        <target href="pathmap://DDS_DOMAIN/dds.zdlgen#_o_NqYG2uEd-H9aZWBAsVAA"/>
+        <domainBlockRelation xmi:type="uml:PackageImport" href="DDS4CCM.uml#_I4akIHmCEd-H7NKXnrpkvQ"/>
+      </relation>
+      <domainBlock href="DDS4CCM.uml#_oO4uMHl2Ed-H7NKXnrpkvQ"/>
+    </element>
+    <element xmi:type="zdlgen:GenDomainBlock" xmi:id="_94DHsOR6EeC8roqDzzauUg">
+      <domainBlock href="DDS4CCM.uml#_4JyrwOR3EeCaze562T5Rgw"/>
+    </element>
+    <element xmi:type="zdlgen:GenDomainSpecialization" xmi:id="_Ch8g00DYEd-LnsQ685SqSQ" pluginName="com.zeligsoft.domain.dds4ccm" resourceName="/profiles/dds4ccm.profile.uml" modelLibraryNamesPackage="com.zeligsoft.domain.dds4ccm.libraries" menuModelResource="/models/DDS4CCM.toolingmodel" version="1" codeGenTarget="com.zeligsoft.ddk.zdlgent2umlprofile.rsa_9_0" rhapsodyJavaProject="com.prismtech.domain.dds4ccm.rhapsody">
+      <domainSpecialization href="DDS4CCM.uml#_fP0CMEDSEd-VnJuJyqILLA"/>
+      <domainModelLibrary xmi:id="_XBNVIkDqEd-pwPnT_VsB_g" resourceName="/libraries/IDLPrimitives.uml">
+        <target href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_7EaHRk0VEd2ZXcdebtSTbw"/>
+        <domainModelLibraryReference href="DDS4CCM.uml#_RbSOcEDqEd-pwPnT_VsB_g"/>
+      </domainModelLibrary>
+      <excludedPaletteItem xmi:type="zdlgen:GenPaletteDrawer" href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_WSbQEHMbEd2WWba6YVf7jA"/>
+      <excludedPaletteItem xmi:type="zdlgen:GenPaletteDrawer" href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_N-uVEHOKEd2QvbZSdr1yQQ"/>
+      <excludedPaletteItem xmi:type="zdlgen:GenPaletteDrawer" href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_NGt9wHOEEd2QvbZSdr1yQQ"/>
+      <excludedPaletteItem xmi:type="zdlgen:GenPaletteDrawer" href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_6P4qAHMoEd2vroOnI6TdQA"/>
+      <excludedPaletteItem xmi:type="zdlgen:GenPaletteDrawer" href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_EcClQHOHEd2QvbZSdr1yQQ"/>
+      <excludedPaletteItem xmi:type="zdlgen:GenPaletteDrawer" href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_qI1yoLshEd2JF4bz6eb2YQ"/>
+      <excludedPaletteItem xmi:type="zdlgen:GenPaletteDrawer" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_2tv2EA9rEd-Yisz3vvTckQ"/>
+      <excludedPaletteItem xmi:type="zdlgen:GenPaletteDrawer" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_QQWawJBzEeC47az9vtcJWw"/>
+      <excludedPaletteItem xmi:type="zdlgen:GenPaletteDrawer" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_3hkFAHUJEd2ENv5YXK6t0w"/>
+      <excludedPaletteItem xmi:type="zdlgen:GenPaletteDrawer" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_V3KBQJyxEd6nTLqaytm5hw"/>
+      <includedUMLMenus href="pathmap://CCM_DOMAIN/CCM.zdlgen#_85jnsBwGEd-hrfr_HMaV6Q"/>
+      <domainBlock xmi:id="_Ch8g1EDYEd-LnsQ685SqSQ" target="_Ch8g0kDYEd-LnsQ685SqSQ">
+        <domainBlockReference href="DDS4CCM.uml#_sjamQEDSEd-VnJuJyqILLA"/>
+      </domainBlock>
+      <domainBlock xmi:id="_AYbfgEDsEd-pwPnT_VsB_g">
+        <target href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_AJ-wcUxGEd2q8K1oAnPrnA"/>
+        <domainBlockReference href="DDS4CCM.uml#_9-M4wEDrEd-pwPnT_VsB_g"/>
+      </domainBlock>
+      <domainBlock xmi:id="_0iq-tHV-Ed-AKdymOEnO6w">
+        <target href="pathmap://DDS_DOMAIN/dds.zdlgen#_UpzcYZVpEd6jzaDewott1A"/>
+        <domainBlockReference href="DDS4CCM.uml#_6CxrAHPuEd-cLIhOd_8awg"/>
+      </domainBlock>
+      <domainBlock xmi:id="_0iq-tXV-Ed-AKdymOEnO6w" target="_0iexcHV-Ed-AKdymOEnO6w">
+        <domainBlockReference href="DDS4CCM.uml#_92occHTFEd-8WZ4XFQyopg"/>
+      </domainBlock>
+      <domainBlock xmi:id="_J6l9YHmDEd-H7NKXnrpkvQ" target="_J6dagHmDEd-H7NKXnrpkvQ">
+        <domainBlockReference href="DDS4CCM.uml#_KBTe0HmCEd-H7NKXnrpkvQ"/>
+      </domainBlock>
+      <domainBlock xmi:id="_-oISsJNBEd-oFoYAcRoNfQ">
+        <target href="pathmap://CCM_DOMAIN/CCM.zdlgen#_pxDf8JA9Ed-41qlhZES-dg"/>
+        <domainBlockReference href="DDS4CCM.uml#_5oyq4JNBEd-oFoYAcRoNfQ"/>
+      </domainBlock>
+      <domainBlock xmi:id="_Yv9fwJFBEeCRAOU4nmQMcQ">
+        <target href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_rwgN9pBXEeCN25huR8QT_w"/>
+        <domainBlockReference href="DDS4CCM.uml#_ojMkcJFAEeCRAOU4nmQMcQ"/>
+      </domainBlock>
+      <domainBlock xmi:id="_Yv9fwZFBEeCRAOU4nmQMcQ">
+        <target href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_rwgN2JBXEeCN25huR8QT_w"/>
+        <domainBlockReference href="DDS4CCM.uml#_qLFIQJFAEeCRAOU4nmQMcQ"/>
+      </domainBlock>
+      <domainBlock xmi:id="_Yv9fwpFBEeCRAOU4nmQMcQ">
+        <target href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_rwgOG5BXEeCN25huR8QT_w"/>
+        <domainBlockReference href="DDS4CCM.uml#_tebIUJFAEeCRAOU4nmQMcQ"/>
+      </domainBlock>
+      <domainBlock xmi:id="_nWDGsJICEeCsrOl-W1K_Dg">
+        <target href="pathmap://CCM_DOMAIN/CCM.zdlgen#_qPDU0KO_Ed67GLoXBGWUmA"/>
+        <domainBlockReference href="DDS4CCM.uml#_VxdOkJICEeCsrOl-W1K_Dg"/>
+      </domainBlock>
+      <domainBlock xmi:id="_nWDGsZICEeCsrOl-W1K_Dg">
+        <target href="pathmap://CCM_DOMAIN/CCM.zdlgen#__djssJQvEd-TfMHkrqIL3w"/>
+        <domainBlockReference href="DDS4CCM.uml#_WVER8JICEeCsrOl-W1K_Dg"/>
+      </domainBlock>
+      <domainBlock xmi:id="_Ix_GcJINEeC0npPoSYuvUw">
+        <target href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_rwgN0ZBXEeCN25huR8QT_w"/>
+        <domainBlockReference href="DDS4CCM.uml#_FzJs4JIEEeCsrOl-W1K_Dg"/>
+      </domainBlock>
+      <domainBlock xmi:id="_94InQOR6EeC8roqDzzauUg" target="_94DHsOR6EeC8roqDzzauUg">
+        <domainBlockReference href="DDS4CCM.uml#_9-4P0OR3EeCaze562T5Rgw"/>
+      </domainBlock>
+      <domainBlock xmi:id="_YvtwQB9sEeGEWf0BDHdksQ">
+        <target href="pathmap://CCM_DOMAIN/CCM.zdlgen#_ghB8QpysEd6NpPmb0eU83g"/>
+        <domainBlockReference href="DDS4CCM.uml#_TQsi0B9sEeGEWf0BDHdksQ"/>
+      </domainBlock>
+    </element>
+    <domainModel href="DDS4CCM.uml#_NRAMoAwOEdmFcaeZXPdWAQ"/>
+    <palette xmi:id="_aflX8FbMEd-qZqT4KPzhew" drawer="_ldmoIMZ_Ed-XG_BORqpl5A _hJ-EYOk1EeCG1fXcL6IPFQ _Pw_o8GiCEeGmENO2_Kttgw">
+      <ownedDrawer xmi:id="_ldmoIMZ_Ed-XG_BORqpl5A" name="IDL Files" tool="_n0aHcMZ_Ed-XG_BORqpl5A _oKKVAMZ_Ed-XG_BORqpl5A _3lQtkMg3EeCd498VXJd-dg">
+        <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_n0aHcMZ_Ed-XG_BORqpl5A" name="IDL File Specification" description="" type="_n9iOFMZaEd-tAY_HctmkAw"/>
+        <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_oKKVAMZ_Ed-XG_BORqpl5A" name="IDL File Dependency" type="_UasgyMZ_Ed-XG_BORqpl5A"/>
+        <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_3lQtkMg3EeCd498VXJd-dg" name="IDLIncludeDependency" type="_C9Pu8Mg3EeCd498VXJd-dg"/>
+        <targetDiagram>component</targetDiagram>
+      </ownedDrawer>
+      <ownedDrawer xmi:id="_hJ-EYOk1EeCG1fXcL6IPFQ" name="Assembly" description="" tool="_-2v8EGiGEeGmENO2_Kttgw _p8eb0Ok1EeCG1fXcL6IPFQ _jggjsGiGEeGmENO2_Kttgw _oPieoGiGEeGmENO2_Kttgw _s3N0YGiGEeGmENO2_Kttgw">
+        <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_p8eb0Ok1EeCG1fXcL6IPFQ" name="ConnectorStatusListenerConnection" description="Creates a ConnectorStatusListenerConnection" type="_Xj5iAOk1EeCG1fXcL6IPFQ">
+          <overrides xmi:type="zdlgen:GenPaletteCreationTool" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_Ic0yALzmEd-41-V5qXw3EQ"/>
+        </ownedTool>
+        <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_jggjsGiGEeGmENO2_Kttgw" name="Interface Port">
+          <type xmi:type="zdlgen:GenDomainConcept" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_g3XQoF3jEd-zGe4Hpna54g"/>
+        </ownedTool>
+        <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_oPieoGiGEeGmENO2_Kttgw" name="CCMPart" elementTypeHint="part">
+          <type xmi:type="zdlgen:GenDomainConcept" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_x9a6oA9rEd-Yisz3vvTckQ"/>
+        </ownedTool>
+        <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_s3N0YGiGEeGmENO2_Kttgw" name="DataSpace" elementTypeHint="part">
+          <type xmi:type="zdlgen:GenDomainConcept" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_rwgN7pBXEeCN25huR8QT_w"/>
+        </ownedTool>
+        <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_-2v8EGiGEeGmENO2_Kttgw" name="Connection" elementTypeHint="assemblyConnector">
+          <type xmi:type="zdlgen:GenDomainConcept" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_3zrBMBWeEd-iXJ2fHwNJGg"/>
+        </ownedTool>
+        <targetDiagram>structure</targetDiagram>
+      </ownedDrawer>
+      <ownedDrawer xmi:id="_Pw_o8GiCEeGmENO2_Kttgw" name="CCM Components" tool="_xcf6QGiCEeGmENO2_Kttgw _reJQAGiDEeGmENO2_Kttgw _5y0PgGiDEeGmENO2_Kttgw _9IApsGiDEeGmENO2_Kttgw _TW2qcGiEEeGmENO2_Kttgw _dnBSsGiEEeGmENO2_Kttgw">
+        <ownedTool xmi:type="zdlgen:GenPaletteStack" xmi:id="_xcf6QGiCEeGmENO2_Kttgw" name="Components" tool="_ecGWAGiDEeGmENO2_Kttgw _iZ8roGiDEeGmENO2_Kttgw">
+          <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_ecGWAGiDEeGmENO2_Kttgw" name="Component">
+            <type xmi:type="zdlgen:GenDomainConcept" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_Z0TBsJywEd6nTLqaytm5hw"/>
+          </ownedTool>
+          <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_iZ8roGiDEeGmENO2_Kttgw" name="Home">
+            <type xmi:type="zdlgen:GenDomainConcept" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_NhIE0KIfEd6HXsAyqfpkfQ"/>
+          </ownedTool>
+        </ownedTool>
+        <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_reJQAGiDEeGmENO2_Kttgw" name="Interface Port">
+          <type xmi:type="zdlgen:GenDomainConcept" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_g3XQoF3jEd-zGe4Hpna54g"/>
+        </ownedTool>
+        <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_5y0PgGiDEeGmENO2_Kttgw" name="Event">
+          <type xmi:type="zdlgen:GenDomainConcept" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_pYyX8KIOEd6HXsAyqfpkfQ"/>
+        </ownedTool>
+        <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_9IApsGiDEeGmENO2_Kttgw" name="Manages Relationship">
+          <type xmi:type="zdlgen:GenDomainConcept" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_NhIE06IfEd6HXsAyqfpkfQ"/>
+        </ownedTool>
+        <ownedTool xmi:type="zdlgen:GenPaletteStack" xmi:id="_TW2qcGiEEeGmENO2_Kttgw" name="Component Relationship Types" tool="_Wm-XYGiEEeGmENO2_Kttgw _YstU0GiEEeGmENO2_Kttgw">
+          <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_Wm-XYGiEEeGmENO2_Kttgw" name="Generalization" elementTypeHint="generalization"/>
+          <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_YstU0GiEEeGmENO2_Kttgw" name="Interface Realization" elementTypeHint="interfaceRealization"/>
+        </ownedTool>
+        <ownedTool xmi:type="zdlgen:GenPaletteCreationTool" xmi:id="_dnBSsGiEEeGmENO2_Kttgw" name="Connection" elementTypeHint="assemblyConnector">
+          <type xmi:type="zdlgen:GenDomainConcept" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_3zrBMBWeEd-iXJ2fHwNJGg"/>
+        </ownedTool>
+        <targetDiagram>component</targetDiagram>
+      </ownedDrawer>
+    </palette>
+    <menuModel xmi:id="_44tMEEQAEd-7VNyKjYIdZQ">
+      <items xmi:type="zdlgen:GenMenu" xmi:id="_5RmNMEQAEd-7VNyKjYIdZQ" name="DDS4CCMModel" extends="_a9jgsFhpEd-Xk7Ado1D2qg"/>
+      <items xmi:type="zdlgen:GenMenu" xmi:id="_S2bTcFhnEd-Xk7Ado1D2qg" description="" name="DDS4CCMModuleMenu">
+        <overrides xmi:type="zdlgen:GenMenu" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_cxNi8JEmEeCRAOU4nmQMcQ"/>
+        <extends href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_SGG38AnSEd-LwebjboIKRw"/>
+        <item xmi:type="zdlgen:GenMenuDelegateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_gC15wLwlEd-XD634wLS0uA"/>
+        <item xmi:type="zdlgen:GenMenuSeparator" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_ICAEcEGmEd-Hp8jpxFjBdw"/>
+        <item xmi:type="zdlgen:GenMenuDelegateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_lkVM0LHnEd--N_3dcvISrw"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_XshLYA-pEeGm_rLIwBhecg"/>
+        <item xmi:type="zdlgen:GenMenuDelegateAction" href="#_HiCi8J_VEd-ki9Cbb-JWRg"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="#_87r4EHV-Ed-AKdymOEnO6w"/>
+        <item xmi:type="zdlgen:GenMenuSeparator" href="#_fXVjELIUEeCMl7fhq2uxZg"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_IxdhAJQwEd-TfMHkrqIL3w"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_nubNsJXLEd-guOCMdwguFQ"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_z9KSIJA-Ed-41qlhZES-dg"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_A8yxUJA_Ed-41qlhZES-dg"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_1ZT1IJBAEd-41qlhZES-dg"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_3ihZ0JA_Ed-41qlhZES-dg"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_-Kog0JBAEd-41qlhZES-dg"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_2vAIgJQsEd-pMONGe9Wqnw"/>
+        <item xmi:type="zdlgen:GenMenuSeparator" href="#_hvrTcLIUEeCMl7fhq2uxZg"/>
+        <item xmi:type="zdlgen:GenMenu" href="#_ASuUILIXEeCMl7fhq2uxZg"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenu" xmi:id="_a9jgsFhpEd-Xk7Ado1D2qg" name="DDS4CCMPackageMenu" extends="_S2bTcFhnEd-Xk7Ado1D2qg">
+        <overrides xmi:type="zdlgen:GenMenu" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_iK9N4JBtEeC47az9vtcJWw"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_87r4EHV-Ed-AKdymOEnO6w" name="Message" createConcept="_0ifYgHV-Ed-AKdymOEnO6w"/>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_87r4EXV-Ed-AKdymOEnO6w" name="Field" createConcept="_0ifYg3V-Ed-AKdymOEnO6w">
+        <expression xmi:type="zdlgen:OawXtend" xmi:id="_Omu2UIkvEd-nGPSrtQhHAQ" name="configure" expression="configureMessageField" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenu" xmi:id="_-QRFYHV-Ed-AKdymOEnO6w" name="DDSMessageMenu" item="_87r4EXV-Ed-AKdymOEnO6w"/>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_BmJyQHmUEd-H7NKXnrpkvQ" name="QoS Profile" createConcept="_J6dagXmDEd-H7NKXnrpkvQ"/>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_BmKZUHmUEd-H7NKXnrpkvQ" name="Data Reader QoS" createConcept="_J6dajHmDEd-H7NKXnrpkvQ">
+        <expression xmi:type="zdlgen:OawXtend" xmi:id="_NTzCsHokEd-ShLb5Q4JRNg" name="configure" expression="configureDataReaderQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_BmKZUXmUEd-H7NKXnrpkvQ" name="Participant QoS" createConcept="_J6dajnmDEd-H7NKXnrpkvQ">
+        <expression xmi:type="zdlgen:OawXtend" xmi:id="_aTB5QHokEd-ShLb5Q4JRNg" name="configure" expression="configureParticipantQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_BmKZUnmUEd-H7NKXnrpkvQ" name="Publisher QoS" createConcept="_J6dakHmDEd-H7NKXnrpkvQ">
+        <expression xmi:type="zdlgen:OawXtend" xmi:id="_eRDOAHokEd-ShLb5Q4JRNg" name="configure" expression="configurePublisherQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_BmKZU3mUEd-H7NKXnrpkvQ" name="Subscriber QoS" createConcept="_J6daknmDEd-H7NKXnrpkvQ">
+        <expression xmi:type="zdlgen:OawXtend" xmi:id="_hyzdgHokEd-ShLb5Q4JRNg" name="configure" expression="configureSubscriberQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_BmKZVHmUEd-H7NKXnrpkvQ" name="Topic QoS" createConcept="_J6dalHmDEd-H7NKXnrpkvQ">
+        <expression xmi:type="zdlgen:OawXtend" xmi:id="_k-yRUHokEd-ShLb5Q4JRNg" name="configure" expression="configureTopicQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_BmKZVXmUEd-H7NKXnrpkvQ" name="Data Writer QoS" createConcept="_J6dalnmDEd-H7NKXnrpkvQ">
+        <expression xmi:type="zdlgen:OawXtend" xmi:id="_osJT4HokEd-ShLb5Q4JRNg" name="configure" expression="configureDataWriterQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenu" xmi:id="_CZR4UHmUEd-H7NKXnrpkvQ" name="QoSProfileMenu" item="_BmKZUHmUEd-H7NKXnrpkvQ _BmKZVXmUEd-H7NKXnrpkvQ _BmKZUXmUEd-H7NKXnrpkvQ _BmKZUnmUEd-H7NKXnrpkvQ _BmKZU3mUEd-H7NKXnrpkvQ _BmKZVHmUEd-H7NKXnrpkvQ"/>
+      <items xmi:type="zdlgen:GenMenuDelegateAction" xmi:id="_HiCi8J_VEd-ki9Cbb-JWRg" description="" name="DDS4CCM Connector Type" hostBundle="com.zeligsoft.domain.dds4ccm.ui" className="com.zeligsoft.domain.dds4ccm.ui.actions.DDSMessageWizardAction"/>
+      <items xmi:type="zdlgen:GenMenuSeparator" xmi:id="_fXVjELIUEeCMl7fhq2uxZg" name="menuSeparator1"/>
+      <items xmi:type="zdlgen:GenMenuSeparator" xmi:id="_hvrTcLIUEeCMl7fhq2uxZg" name="menuSeparator2"/>
+      <items xmi:type="zdlgen:GenMenu" xmi:id="_ASuUILIXEeCMl7fhq2uxZg" name="Other...">
+        <item xmi:type="zdlgen:GenMenu" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_Lt760LF1EeCksaAOYNFKcA"/>
+        <item xmi:type="zdlgen:GenMenu" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_xWVuQLFvEeCksaAOYNFKcA"/>
+        <item xmi:type="zdlgen:GenMenu" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_IXKEIJEnEeCRAOU4nmQMcQ"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_DqDVcJEfEeC47az9vtcJWw"/>
+        <item xmi:type="zdlgen:GenMenuDelegateAction" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_3CNxkJEmEeCRAOU4nmQMcQ"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="#_BmJyQHmUEd-H7NKXnrpkvQ"/>
+        <item xmi:type="zdlgen:GenMenu" href="pathmap://DDS_DOMAIN/dds.zdlgen#_8s6hgHSoEd-KUqSFN4-uOQ"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenu" xmi:id="_LWGu0Gh-EeGmENO2_Kttgw" name="CCMComponentMenu">
+        <overrides xmi:type="zdlgen:GenMenu" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_ulz6IAdeEd-n39GCy1yjuA"/>
+        <item xmi:type="zdlgen:GenMenuDelegateAction" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_31CHENfFEd-kk76JT9qJeA"/>
+        <item xmi:type="zdlgen:GenMenuSeparator" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_BUQakNfGEd-kk76JT9qJeA"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_zXoCoF3qEd-zGe4Hpna54g"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_CLBh9wgqEd-oiOQEqO-Pvg"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_j-cK8CsmEeCnMs5t6DTLsg"/>
+        <item xmi:type="zdlgen:GenMenuDelegateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_z2wcEOhjEeCcZYgBnshAqg"/>
+        <item xmi:type="zdlgen:GenMenuDelegateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_fHzdQGzmEd-9Sc5eREELbw"/>
+        <item xmi:type="zdlgen:GenMenuDelegateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_tk7qQBCHEeGm_rLIwBhecg"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenu" xmi:id="_yCuesGiAEeGmENO2_Kttgw" name="ConnectorDefMenu">
+        <overrides xmi:type="zdlgen:GenMenu" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_-eANsJEmEeCRAOU4nmQMcQ"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_zXoCoF3qEd-zGe4Hpna54g"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenu" xmi:id="_BE8gsGiBEeGmENO2_Kttgw" name="ConnectorFragmentMenu">
+        <overrides xmi:type="zdlgen:GenMenu" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_A6UfIJEnEeCRAOU4nmQMcQ"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_zXoCoF3qEd-zGe4Hpna54g"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenu" xmi:id="_NgJdIGiBEeGmENO2_Kttgw" name="CCMPartMenu">
+        <overrides xmi:type="zdlgen:GenMenu" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_e_5KAJ8QEd-ki9Cbb-JWRg"/>
+        <item xmi:type="zdlgen:GenMenuDelegateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_hwBvUJ8QEd-ki9Cbb-JWRg"/>
+        <item xmi:type="zdlgen:GenMenuDelegateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_IxmfEMZxEd-s6oU7a2K7iA"/>
+      </items>
+    </menuModel>
+  </ownedModel>
+  <referencedModel href="pathmap://DDS_DOMAIN/dds.zdlgen#_0HUlsZQBEd6cD695LnAvug"/>
+  <referencedModel href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_rwgN0JBXEeCN25huR8QT_w"/>
+  <referencedModel href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_AJ-wcExGEd2q8K1oAnPrnA"/>
+  <referencedModel href="pathmap://CCM_DOMAIN/CCM.zdlgen#_ghB8QZysEd6NpPmb0eU83g"/>
+  <referencedModel href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_auH80DdmEd2dD_ra-wEDmw"/>
+</zdlgen:GenModel>

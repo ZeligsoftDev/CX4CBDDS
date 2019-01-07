@@ -1,0 +1,15 @@
+interface int1039 {
+
+exception Exception_A { };
+exception Exception_B { };
+exception Exception_C { };
+
+attribute string attr1 getraises ( Exception_A );
+attribute string attr2 setraises (Exception_B);
+attribute string attr3 getraises ( Exception_A ) setraises (Exception_B);
+attribute string attr4 getraises ( Exception_A, Exception_C );
+attribute string attr5 setraises (Exception_B, Exception_C);
+attribute string attr6 getraises ( Exception_A, Exception_B ) setraises (Exception_B, Exception_C );
+
+
+};

@@ -1,0 +1,34 @@
+<head>
+	<title>Code Generation Workflow</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="codegenworkflow.html" title="Code Generation Workflow">
+		<h1>Code Generation Workflow</h1>
+		<p>The following describes a typical workflow for code generation.</p>
+		<ol>
+			<li>(Optional)Configure the Make Location. In <strong>Windows &gt; Preferences &gt; Zeligsoft &gt; Modeling</strong>. Click <strong>
+	 Browse</strong> to navigate to the location of the make application used to build applications.</li>
+			<p>If you do not select a default make application, CX uses the default make environment that the CDT environment selects.</p>
+			<li>Optionally configure additional variables to the list of Linked Resources. To open the Linked Resources window, 
+	 select <strong>Windows &gt; Preferences &gt; General &gt; Workspace &gt; Linked Resources</strong>. This is usually used to instruct CX to use external IDL instead of generating IDL.</li>
+			<p>When using a variable in the Build configuration or in the IDL File Location, use 
+	 the variable as $(VARIABLE). However, when adding it to the linked resources, it should just be VARIABLE.</p>
+			<li>Specify the <a href="buildconfigsettings.html">Build Configuration</a> for each component or device implementation. </li>
+			<li>Add Functional Behavior: For each component or device, <a href="editsource.html">open its worker</a> in Rational Software Modeler and connect your functional code to the generated code. 
+This includes adding 
+behavior to operations defined for provides ports (incoming) and calling operations defined on uses ports (outgoing).  </li>
+			<li><a href="runcodegen.html">Generate Code</a>.</li><br>Right click on an application, node, component or device structure realization and select CX Generate &gt; SCA Code.<li>Compile: Compile the generated code from the Make Target view or from the command line. 
+				
+				<p><strong>Note:</strong> If IDL File Locations and Linked Resources are used to reference external IDL, these external file locations are passed into make when building from the Make Targets view. When building from the command line, these arguments have to be added to the command line.</p>
+			</li>
+			<li>Run: Run the application on the intended platform using the generated XML files and the component and device implementations.</li>
+			<li>Iteratively evolve the Application: CX generates code where all the user changes should be in the worker files.  Build and test iteratively, so that the 
+complexity of the components, devices and overall application can be incrementally increased. </li>
+		</ol>
+		<h3>See Also</h3><br><a href="runcodegen.html">Running Code Generation</a><br><a href="codegenoverview.html">Generation Overview</a><br><a href="codegenresp.html">SCA Code Responsibilities</a><br><a href="codegencodepattern.html">Code Pattern</a><div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gmftool:ToolRegistry xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gmftool="http://www.eclipse.org/gmf/2005/ToolDefinition">
+  <allMenus
+      xsi:type="gmftool:ContextMenu">
+    <items
+        xsi:type="gmftool:PopupMenu"
+        title="Add Zeligsoft Deployments"
+        iD="Zeligsoft Deployments">
+      <items
+          xsi:type="gmftool:PredefinedMenu"
+          identifier="zeligsoftDeployments">
+        <items
+            xsi:type="gmftool:MenuAction"
+            title="Zeligsoft Deployment"/>
+        <items
+            xsi:type="gmftool:MenuAction"
+            title="Part Deployment"/>
+        <items
+            xsi:type="gmftool:MenuAction"
+            title="Component Deployment"/>
+        <items
+            xsi:type="gmftool:MenuAction"
+            title="Port Deployment"/>
+        <items
+            xsi:type="gmftool:MenuAction"
+            title="Connector Deployment"/>
+      </items>
+    </items>
+  </allMenus>
+  <palette>
+    <tools
+        xsi:type="gmftool:ToolGroup"
+        title="Zeligsoft Deployments"
+        description="Zeligsoft Deployments"
+        collapsible="true">
+      <smallIcon
+          xsi:type="gmftool:DefaultImage"/>
+      <largeIcon
+          xsi:type="gmftool:DefaultImage"/>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Deployment"
+          description="Create a Zeligsoft deployment definition"/>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Allocation"
+          description="Create a deployment-part allocation"/>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Part Deployment"
+          description="Create a a part deployment for configuration of an unallocated part"/>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Component Deployment"
+          description="Create a deployment for configuration of an unallocated component"/>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Port Deployment"
+          description="Create a port deployment for configuration of an unallocated port"/>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Connector Deployment"
+          description="Create a connector deployment for configuration of an unallocated connector"/>
+    </tools>
+  </palette>
+</gmftool:ToolRegistry>

@@ -1,0 +1,23 @@
+/// @defgroup AGSP_SystemTargets_defn SystemTargets_defn
+/// @{
+/// 
+/// @file AGSP_SystemTargets_defn.idl
+/// @brief SystemTargets_defn definitions definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__MISSIONCONTROLBRIDGE_COMP__PORTS__AGSP_SYSTEMTARGETS_DEFN_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__MISSIONCONTROLBRIDGE_COMP__PORTS__AGSP_SYSTEMTARGETS_DEFN_IDL
+
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef SystemTargetListType
+    typedef sequence <octet, 100> SystemTargetListType;
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__MISSIONCONTROLBRIDGE_COMP__PORTS__AGSP_SYSTEMTARGETS_DEFN_IDL
+
+/// @}
+

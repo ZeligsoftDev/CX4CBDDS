@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="com.zeligsoft.cx.codegen.ui.transformation">
+      <concept
+            type="CCM::CCM_Deployment::DeploymentPlan">
+         <workflow
+               label="%generate.label"
+               path="/workflow/ngcgenerator.mwe"
+               validationFactory="com.zeligsoft.domain.dds4ccm.utils.DDS4CCMValidationFactory"
+               cancelOnValidationError="true">
+         </workflow>
+      </concept>
+      <concept
+            type="DDS4CCM::DDS4CCM::DDS4CCMModel">
+         <workflow
+               label="%generate.label"
+               path="/workflow/bulkDescriptorsGenerator.oaw"
+               validationFactory="com.zeligsoft.domain.dds4ccm.utils.DDS4CCMValidationFactory"
+               cancelOnValidationError="true">
+         </workflow>
+      </concept>
+   </extension>
+</plugin>
+

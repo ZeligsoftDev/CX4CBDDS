@@ -1,0 +1,53 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @addtogroup DataDistributor_comp
+/// @{
+/// @file   SNA_Examples_DataMap_UDM_msg.idl
+/// @brief  Definition of SPDM UDM used in the SPDM example.
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_DATAMAP_UDM_MSG_IDL
+#define SNA_EXAMPLES_DATAMAP_UDM_MSG_IDL
+
+#include "ccm_psat_header_defn.idl"
+#include "ccm_spdm_header_defn.idl"
+#include "SNA_SP_Data_defn.idl"
+
+#pragma ndds typesupport "SNA_Examples_DataMap_UDM_msgSupport.h"
+
+module SNA_Examples
+{   
+   /**
+    * @struct DataMap_UDM_msg
+    * 
+    * UDM message type for PSAT example
+    */
+   struct DataMap_UDM_msg
+   {
+      /**
+       * PSAT header which is required in all UDM messages
+       */
+      ::CCM_PSAT::PSAT_Header psat_hdr;
+      
+      /**
+       * SPDM header which is required in all UDM messages which use the SPDM
+       * connector
+       */
+      ::CCM_SPDM::SPDM_Header spdm_hdr;
+
+      /**
+       * An increasing sequence number for a particular publisher.
+       */
+      long message_number;
+   }; //@top-level true
+};
+
+#endif // SNA_EXAMPLES_DATAMAP_UDM_MSG_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

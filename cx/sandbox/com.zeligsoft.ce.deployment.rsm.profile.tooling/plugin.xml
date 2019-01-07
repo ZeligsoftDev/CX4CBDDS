@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+   <extension
+         id="ZDLDeployment UMLProfiles"
+         name="ZDLDeployment UMLProfiles"
+         point="org.eclipse.gmf.runtime.emf.core.Pathmaps">
+      <pathmap
+            name="ZDLDEPLOYMENT"
+            plugin="com.zeligsoft.ce.deployment.rsm.profile.tooling"
+            path="profiles">
+      </pathmap>
+   </extension>
+   
+   <extension
+         id="ZDLDeployment UMLProfiles"
+         name="ZDLDeployment UMLProfiles"
+         point="com.ibm.xtools.uml.msl.UMLProfiles">
+      <UMLProfile
+            id="com.zeligsoft.ce.deployment.rsm.profile.tooling.ZDLDeployment"
+            name="ZDLDeployment"
+            path="pathmap://ZDLDEPLOYMENT/ZDLDeployment.epx"
+            required="false"
+            visible="true">
+      </UMLProfile>
+   </extension>
+
+   <extension
+         id="ZDLDeployment ElementTypes"
+         name="ZDLDeployment ElementTypes"
+         point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.ce.deployment.rsm.profile.tooling.PortDeploymentPartProperty"
+               name="%_UI_ElementType__PortDeploymentPart__Property_name"
+               edithelperadvice="com.zeligsoft.ce.deployment.rsm.profile.tooling.edithelpers.PortDeploymentPartPropertyEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZDLDeployment::PortDeploymentPart"/>
+            <specializes id="com.ibm.xtools.uml.property"/>
+            <matcher class="com.zeligsoft.ce.deployment.rsm.profile.tooling.types.PortDeploymentPartPropertyMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.ce.deployment.rsm.profile.tooling.DeploymentComponent"
+               name="%_UI_ElementType__Deployment__Component_name"
+               edithelperadvice="com.zeligsoft.ce.deployment.rsm.profile.tooling.edithelpers.DeploymentComponentEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZDLDeployment::Deployment"/>
+            <specializes id="com.ibm.xtools.uml.component"/>
+            <matcher class="com.zeligsoft.ce.deployment.rsm.profile.tooling.types.DeploymentComponentMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.ce.deployment.rsm.profile.tooling.ConnectorDeploymentPartProperty"
+               name="%_UI_ElementType__ConnectorDeploymentPart__Property_name"
+               edithelperadvice="com.zeligsoft.ce.deployment.rsm.profile.tooling.edithelpers.ConnectorDeploymentPartPropertyEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZDLDeployment::ConnectorDeploymentPart"/>
+            <specializes id="com.ibm.xtools.uml.property"/>
+            <matcher class="com.zeligsoft.ce.deployment.rsm.profile.tooling.types.ConnectorDeploymentPartPropertyMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.ce.deployment.rsm.profile.tooling.DeploymentPartProperty"
+               name="%_UI_ElementType__DeploymentPart__Property_name"
+               edithelperadvice="com.zeligsoft.ce.deployment.rsm.profile.tooling.edithelpers.DeploymentPartPropertyEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZDLDeployment::DeploymentPart"/>
+            <specializes id="com.ibm.xtools.uml.property"/>
+            <matcher class="com.zeligsoft.ce.deployment.rsm.profile.tooling.types.DeploymentPartPropertyMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.ce.deployment.rsm.profile.tooling.PartDeploymentPartProperty"
+               name="%_UI_ElementType__PartDeploymentPart__Property_name"
+               edithelperadvice="com.zeligsoft.ce.deployment.rsm.profile.tooling.edithelpers.PartDeploymentPartPropertyEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZDLDeployment::PartDeploymentPart"/>
+            <specializes id="com.ibm.xtools.uml.property"/>
+            <matcher class="com.zeligsoft.ce.deployment.rsm.profile.tooling.types.PartDeploymentPartPropertyMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.ce.deployment.rsm.profile.tooling.AllocationAssociation"
+               name="%_UI_ElementType__Allocation__Association_name"
+               edithelperadvice="com.zeligsoft.ce.deployment.rsm.profile.tooling.edithelpers.AllocationAssociationEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZDLDeployment::Allocation"/>
+            <specializes id="com.ibm.xtools.uml.association"/>
+            <matcher class="com.zeligsoft.ce.deployment.rsm.profile.tooling.types.AllocationAssociationMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <adviceBinding
+            id="com.zeligsoft.ce.deployment.rsm.profile.tooling.applyProfileAdvice"
+            typeId="com.ibm.xtools.uml.package"
+            class="com.zeligsoft.ce.deployment.rsm.profile.tooling.edithelpers.ZDLDeploymentApplyProfileAdvice"
+            inheritance="all">
+         </adviceBinding>
+      </metamodel>
+   </extension>
+    
+   <extension
+         id="ZDLDeployment ElementTypeBindings"
+         name="ZDLDeployment ElementTypeBindings"
+         point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings">
+      <binding context="com.ibm.xtools.uml.type.context">
+         <elementType ref="com.zeligsoft.ce.deployment.rsm.profile.tooling.PortDeploymentPartProperty"/>
+         <elementType ref="com.zeligsoft.ce.deployment.rsm.profile.tooling.DeploymentComponent"/>
+         <elementType ref="com.zeligsoft.ce.deployment.rsm.profile.tooling.ConnectorDeploymentPartProperty"/>
+         <elementType ref="com.zeligsoft.ce.deployment.rsm.profile.tooling.DeploymentPartProperty"/>
+         <elementType ref="com.zeligsoft.ce.deployment.rsm.profile.tooling.PartDeploymentPartProperty"/>
+         <elementType ref="com.zeligsoft.ce.deployment.rsm.profile.tooling.AllocationAssociation"/>
+         <advice ref="com.zeligsoft.ce.deployment.rsm.profile.tooling.applyProfileAdvice"/>
+      </binding>
+   </extension>
+
+   <extension
+         id="ZDLDeployment ContributionItemProvider"
+         name="ZDLDeployment ContributionItemProvider"
+         point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+      <contributionItemProvider
+            class="com.zeligsoft.ce.deployment.rsm.profile.tooling.providers.ZDLDeploymentContributionItemProvider"
+            checkPluginLoaded="false">
+         <Priority
+               name="Medium">
+         </Priority>
+         <popupContribution
+               class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria
+                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <method
+                     name="getDiagramEditDomain().getEditorPart().getSite().getId()"
+                     value="ModelerDiagramEditor">
+               </method>
+            </popupStructuredContributionCriteria>
+            <popupMenu
+                  path="/umlAddGroup"
+                  id="Add_Zeligsoft_Deployments">
+            </popupMenu>
+            <popupMenuGroup
+                  path="/Add_Zeligsoft_Deployments/"
+                  id="zeligsoftDeployments">
+            </popupMenuGroup>
+            <popupAction
+                  path="/Add_Zeligsoft_Deployments/zeligsoftDeployments"
+                  id="Zeligsoft_Deployment">
+            </popupAction>
+            <popupAction
+                  path="/Add_Zeligsoft_Deployments/zeligsoftDeployments"
+                  id="Part_Deployment">
+            </popupAction>
+            <popupAction
+                  path="/Add_Zeligsoft_Deployments/zeligsoftDeployments"
+                  id="Component_Deployment">
+            </popupAction>
+            <popupAction
+                  path="/Add_Zeligsoft_Deployments/zeligsoftDeployments"
+                  id="Port_Deployment">
+            </popupAction>
+            <popupAction
+                  path="/Add_Zeligsoft_Deployments/zeligsoftDeployments"
+                  id="Connector_Deployment">
+            </popupAction>
+         </popupContribution>
+      </contributionItemProvider>
+   </extension>
+
+   <extension
+         id="ZDLDeployment PaletteProviders"
+         name="ZDLDeployment PaletteProviders"
+         point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+      <paletteProvider class="com.zeligsoft.ce.deployment.rsm.profile.tooling.palette.ZDLDeploymentPaletteProvider">
+         <Priority name="Medium"/>
+         <editor id="ModelerDiagramEditor"/>
+         <content>
+            <method
+                  name="getDiagram().getType()"
+                  value="Class, Freeform"/>
+         </content>
+      </paletteProvider>
+   </extension>
+   
+   <extension
+         id="ZDLDeployment ViewProviders"
+         name="ZDLDeployment ViewProviders"
+         point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.zeligsoft.ce.deployment.rsm.profile.tooling.providers.ZDLDeploymentViewProvider">
+         <Priority name="Medium"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge"/>
+      </viewProvider>
+   </extension>
+
+   <extension
+         id="ZDLDeployment EditpartProviders"
+         name="ZDLDeployment EditpartProviders"
+         point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.zeligsoft.ce.deployment.rsm.profile.tooling.providers.ZDLDeploymentEditPartProvider">
+         <Priority name="Medium"/>
+      </editpartProvider>
+   </extension>   
+
+   <extension
+         id="ZDLDeployment ModelingAssistantProviders"
+         name="ZDLDeployment ModelingAssistantProviders"
+         point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders">
+      <modelingAssistantProvider class="com.zeligsoft.ce.deployment.rsm.profile.tooling.providers.ZDLDeploymentModelingAssistant">
+         <Priority name="Medium"/>
+      </modelingAssistantProvider>
+   </extension>
+
+   <extension
+         id="ZDLDeployment Activities"
+         name="ZDLDeployment Activities"
+         point="org.eclipse.ui.activities">
+      <category
+            id="com.zeligsoft.ce.deployment.rsm.profile.tooling.activities.category"
+            name="%_UI_ActivityCategoryName">
+      </category>
+   </extension>
+   <extension
+         id="ZDLDeployment EditingCapabilities"
+         name="ZDLDeployment EditingCapabilities"
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity
+            match="equals"
+            ref="com.zeligsoft.ce.deployment.rsm.profile.tooling.uireduction.activity">
+      </activity>
+   </extension>
+
+   <extension
+         id="ZDLDeployment Activities"
+         name="ZDLDeployment Activities"
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.zeligsoft.ce.deployment.rsm.profile.tooling.uireduction.activity"
+            name="%_UI_Activity_uiReduction_name"
+            description="%_UI_Activity_uiReduction_description">
+      </activity>
+      <activityPatternBinding
+            activityId="com.zeligsoft.ce.deployment.rsm.profile.tooling.uireduction.activity"
+            pattern="com\.zeligsoft\.ce\.deployment\.rsm\.profile\.tooling/.*[^com.zeligsoft.ce.deployment.rsm.profile.tooling.core.templates.ZDLDeploymentModel].*">
+      </activityPatternBinding>
+      <activityRequirementBinding
+            activityId="com.zeligsoft.ce.deployment.rsm.profile.tooling.uireduction.activity"
+            requiredActivityId="com.zeligsoft.ce.deployment.rsm.profile.tooling.core.activity">
+      </activityRequirementBinding>
+      <categoryActivityBinding
+            activityId="com.zeligsoft.ce.deployment.rsm.profile.tooling.uireduction.activity"
+            categoryId="com.zeligsoft.ce.deployment.rsm.profile.tooling.activities.category">
+      </categoryActivityBinding>
+   </extension>
+
+   <extension
+         id="ZDLDeployment Activities"
+         name="ZDLDeployment Activities"
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.zeligsoft.ce.deployment.rsm.profile.tooling.core.activity"
+            name="%_UI_Activity_template_name"
+            description="%_UI_Activity_template_description">
+      </activity>
+      <activityPatternBinding
+            activityId="com.zeligsoft.ce.deployment.rsm.profile.tooling.core.activity"
+            pattern="com\.zeligsoft\.ce\.deployment\.rsm\.profile\.tooling/com\.zeligsoft\.ce\.deployment\.rsm\.profile\.tooling\.core\.templates\.ZDLDeploymentModel">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.zeligsoft.ce.deployment.rsm.profile.tooling.core.activity"
+            categoryId="com.zeligsoft.ce.deployment.rsm.profile.tooling.activities.category">
+      </categoryActivityBinding>
+   </extension>
+
+   <extension
+         id="ZDLDeployment NewModelWizard"
+         name="ZDLDeployment NewModelWizard"
+         point="com.ibm.xtools.common.ui.wizards.newModelWizard">
+      <templateDirectory
+            path="templates"
+            handler="com.zeligsoft.ce.deployment.rsm.profile.tooling.wizards.ZDLDeploymentTemplateModelHandler">
+      </templateDirectory>
+      <category
+            id="com.zeligsoft.ce.deployment.rsm.profile.tooling.core.category"
+            label="%_UI_NewModelWizard_CategoryName">
+      </category>
+      <templateCategoryBinding
+            categoryRef="com.zeligsoft.ce.deployment.rsm.profile.tooling.core.category">
+         <template
+               match="equals"
+               ref="com.zeligsoft.ce.deployment.rsm.profile.tooling.core.templates.ZDLDeploymentModel">
+         </template>
+      </templateCategoryBinding>
+      <activityTemplateBinding
+            required="true">
+         <template
+               match="equals"
+               ref="com.zeligsoft.ce.deployment.rsm.profile.tooling.core.templates.ZDLDeploymentModel">
+         </template>
+         <activity
+               match="equals"
+               ref="com.zeligsoft.ce.deployment.rsm.profile.tooling.uireduction.activity">
+         </activity>
+      </activityTemplateBinding>
+      <templateConfigurationPageGroup
+            afterRef=".*"
+            afterMatch="pattern"
+            class="com.ibm.xtools.common.ui.wizards.pagegroups.ActivitiesTemplateConfigurationPageGroup"
+            id="com.zeligsoft.ce.deployment.rsm.profile.tooling.wizards.pagegroups.ActivitiesTemplateConfigurationPageGroup">
+         <template
+               ref="com.zeligsoft.ce.deployment.rsm.profile.tooling.core.templates.ZDLDeploymentModel"
+               match="equals"/>
+      </templateConfigurationPageGroup>
+   </extension>
+</plugin>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified"
+	attributeFormDefault="qualified"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	targetNamespace="http://www.zeligsoft.com/Codetaginfo"
+	xmlns:CodeTagInfo="http://www.zeligsoft.com/Codetaginfo" xmlns:xmi="http://www.omg.org/XMI">
+
+	<xsd:import namespace="http://www.omg.org/XMI" schemaLocation="xmi-schema.xsd"/>
+	
+	<xsd:element name="CodeTagInfo"
+		type="CodeTagInfo:CodeTagInfo">
+	</xsd:element>
+	
+	<xsd:complexType name="CodeTagInfo">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="filename" type="xsd:string" />
+			<xsd:element name="codetag" type="CodeTagInfo:CodeTag" />
+		</xsd:choice>
+	</xsd:complexType>
+
+	<xsd:complexType name="CodeTag">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="name" type="xsd:string"></xsd:element>
+			<xsd:element name="type" type="CodeTagInfo:CodeTagType" />
+			<xsd:element name="tag_begin" type="xsd:string" />
+			<xsd:element name="contents" type="xsd:string" />
+			<xsd:element name="tag_end" type="xsd:string" />
+			<xsd:element name="contextinfo" type="CodeTagInfo:CodeTagContext" />
+			<xsd:element ref="xmi:Extension"></xsd:element>
+		</xsd:choice>
+		<xsd:attribute ref="xmi:id" use="optional"></xsd:attribute>
+		<xsd:attributeGroup ref="xmi:ObjectAttribs"></xsd:attributeGroup>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="CodeTagType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="FILE_HEADER_H" />
+			<xsd:enumeration value="FILE_HEADER_CPP" />
+			<xsd:enumeration value="FILE_FOOTER_H" />
+			<xsd:enumeration value="FILE_FOOTER_CPP" />
+			<xsd:enumeration value="FILE_INCLUDES_H" />
+			<xsd:enumeration value="FILE_INCLUDES_CPP" />
+			<xsd:enumeration value="CONSTRUCTOR_INIT_LIST" />
+			<xsd:enumeration value="CLASS_GENERATED_OPERATION_IMPL" />
+			<xsd:enumeration value="CLASS_GENERATED_ATTRIBUTE_GET" />
+			<xsd:enumeration value="CLASS_GENERATED_ATTRIBUTE_SET" />
+			<xsd:enumeration value="CLASS_PUBLIC_METHODS_SECTION_DECLARE" />
+			<xsd:enumeration value="CLASS_PUBLIC_METHODS_SECTION_IMPL" />
+			<xsd:enumeration value="CLASS_PRIVATE_METHODS_SECTION_DECLARE" />
+			<xsd:enumeration value="CLASS_PRIVATE_METHODS_SECTION_IMPL" />
+			<xsd:enumeration value="CLASS_PRIVATE_MEMBERS_SECTION_DECLARE" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="CodeTagContext">
+	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="component_name" type="xsd:string"></xsd:element>
+			<xsd:element name="class_name" type="xsd:string" />
+			<xsd:element name="operation_name" type="xsd:string" />
+			<xsd:element ref="xmi:Extension"></xsd:element>
+		</xsd:choice>
+		<xsd:attribute ref="xmi:id" use="optional"></xsd:attribute>
+		<xsd:attributeGroup ref="xmi:ObjectAttribs"></xsd:attributeGroup>
+	</xsd:complexType>
+
+</xsd:schema>

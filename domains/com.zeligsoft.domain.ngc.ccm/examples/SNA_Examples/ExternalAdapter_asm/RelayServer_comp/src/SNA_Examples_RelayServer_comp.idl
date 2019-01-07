@@ -1,0 +1,51 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+
+/**
+ * @defgroup RelayServer_comp RelayServer_comp Component
+ * @ingroup ExternalAdaptorExample
+ * @{
+ *
+ * The RelayServer_comp component is the service provider in this example. It
+ * uses one CORBA interface to receive messages from the Adapter_comp component
+ * and prints them to the screen.
+ *
+ * @file   SNA_Examples_RelayServer_comp.idl
+ * @brief  RelayServer_comp component definition IDL file.
+ */
+
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_RELAYSERVER_COMP_IDL
+#define SNA_EXAMPLES_RELAYSERVER_COMP_IDL
+
+// EXAMPLE:
+// "Components.idl" is required for idl3 types
+#include <Components.idl>
+
+// EXAMPLE:
+// we need to include the definition of the RelayServer_obj interface here.
+#include "SNA_Examples_RelayServer_obj.idl"
+
+// EXAMPLE:
+// the module keyword specifies a namespace for the RelayServer_comp component
+module SNA_Examples
+{
+   /**
+    * This component provides (implements) one CORBA interface/service.
+    */
+   component RelayServer_comp
+   {
+      provides SNA_Examples::RelayServer_obj relayServerFacet;
+   };
+};
+
+#endif // SNA_EXAMPLES_RELAYSERVER_COMP_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

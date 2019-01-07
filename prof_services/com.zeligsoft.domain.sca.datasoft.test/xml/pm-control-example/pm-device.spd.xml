@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<softpkg id="DCE:17f33154-d178-4aa0-9960-c643e0a7886c" name="pm-device" type="sca_compliant" version="">
+    <title>Power management device</title>
+    <description />
+    <author>
+        <name>DataSoft</name>
+        <company>DataSoft</company>
+        <webpage>http://www.datasoft.com/</webpage>
+    </author>
+    <descriptor name="">
+        <localfile name="pm-device.scd.xml" />
+    </descriptor>
+        <propertyfile type="PRF">
+            <localfile name="pm-device.prf.xml" />
+        </propertyfile>
+    <!--[Implementation pm-device_linux]-->
+    <implementation id="DCE:b91d71a2-f9de-4a61-95a3-0d2e8889e633" aepcompliance="aep_compliant">
+        <code type="Executable">
+            <localfile name="/bin/pm-device" />
+        </code>
+        <os name="Linux" version="5.5.1" />
+        <processor name="x86" />
+    </implementation>
+</softpkg>

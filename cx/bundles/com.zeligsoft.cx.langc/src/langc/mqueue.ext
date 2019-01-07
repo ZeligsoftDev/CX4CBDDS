@@ -1,0 +1,108 @@
+
+import langc;
+
+extension langc::element;
+extension langc::expr;
+extension langc::name;
+extension langc::libc;
+extension langc::type;
+
+create SystemFileName mqueueName() : setName( 'mqueue.h' );
+
+Name mqueueTypeName()    : mqueueName().child( 'mqd_t' );
+Name mqueueCloseName()   : mqueueName().child( 'mq_close' );
+Name mqueueOpenName()    : mqueueName().child( 'mq_open' );
+Name mqueueReceiveName() : mqueueName().child( 'mq_receive' );
+Name mqueueSendName()    : mqueueName().child( 'mq_send' );
+
+create Typedef mqd_t() :
+    setElement( int32() )
+ -> setName( mqueueTypeName() )
+;
+
+private create Function mq_close() :
+    setName( mqueueCloseName() )
+ -> setReturnType( int32() )
+ -> addParameter( mqd_t(), 'mq' )
+;
+
+private create Function mq_open() :
+    setName( mqueueOpenName() )
+ -> setReturnType( mqd_t() )
+ -> addParameter( char().const().ptr(), 'name' )
+ -> addParameter( int32(), 'mode' )
+;
+
+private create Function mq_receive() :
+    setName( mqueueReceiveName() )
+ -> setReturnType( ssize_t() )
+ -> addParameter( mqd_t(), 'mq' )
+ -> addParameter( char().ptr(), 'buff' )
+ -> addParameter( size_t(), 'len' )
+ -> addParameter( uint32().ptr(), 'priority' )
+;
+
+private create Function mq_send() :
+    setName( mqueueSendName() )
+ -> setReturnType( int32() )
+ -> addParameter( char().const().ptr(), 'buff' )
+ -> addParameter( size_t(), 'len' )
+ -> addParameter( uint32(), 'priority' )
+;
+
+Expression mq_close( Name mqName ) : mq_close( mqName.access() );
+Expression mq_close( Expression mq ) :
+    let e = new FunctionCall :
+        e.setFunction( mq_close() )
+     -> e.arguments.add( mq )
+     -> e
+;
+
+Expression mq_open( Name mqName, Expression mqMode ) :
+    mq_open( mqName.access(), mqMode )
+;
+
+Expression mq_open( Expression mqNameExpr, Expression mqMode ) :
+    let e = new FunctionCall :
+        e.setFunction( mq_open() )
+     -> e.arguments.add( mqNameExpr )
+     -> e.arguments.add( mqMode )
+     -> e
+;
+
+Expression mq_create( Name mqName, Expression mqMode, Expression mqAccess ) :
+    mq_create( mqName.access(), mqMode, mqAccess )
+;
+
+Expression mq_create( Expression mqNameExpr, Expression mqMode, Expression mqAccess ) :
+    let e = new FunctionCall :
+        e.setFunction( mq_open() )
+     -> e.arguments.add( mqNameExpr )
+     -> e.arguments.add( mqMode )
+     -> e.arguments.add( mqAccess )
+     -> e.arguments.add( NULL() )
+     -> e
+;
+
+
+Expression mq_receive( Name mqName, Expression buff, Expression size ) : mqName.access().mq_receive( buff, size );
+Expression mq_receive( Expression mq, Expression buff, Expression size ) :
+    let e = new FunctionCall :
+        e.setFunction( mq_receive() )
+     -> e.arguments.add( mq )
+     -> e.arguments.add( buff )
+     -> e.arguments.add( size )
+     -> e.arguments.add( NULL() )
+     -> e
+;
+
+Expression mq_send( Name mqName, Expression buff, Expression size ) : mqName.access().mq_send( buff, size );
+Expression mq_send( Expression mq, Expression buff, Expression size ) :
+    let e = new FunctionCall :
+        e.setFunction( mq_send() )
+     -> e.arguments.add( mq )
+     -> e.arguments.add( buff )
+     -> e.arguments.add( size )
+     -> e.arguments.add( 0.literal() )
+     -> e
+;

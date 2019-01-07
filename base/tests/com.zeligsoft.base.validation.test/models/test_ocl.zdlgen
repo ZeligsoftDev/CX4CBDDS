@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zdlgen:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:zdlgen="http://www.zeligsoft.com/zdl/2008/ZDLGen" xmi:id="_ccd2YFjCEd2XOcTgMndlVg">
+  <ownedModel xmi:id="_ccedcFjCEd2XOcTgMndlVg">
+    <element xmi:type="zdlgen:GenDomainBlock" xmi:id="_ccedcVjCEd2XOcTgMndlVg" rsmStereotypesSuppressed="false">
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_ccedcljCEd2XOcTgMndlVg" category="firm">
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_ccedc1jCEd2XOcTgMndlVg">
+          <domainAttribute href="test_validation.emx#_EKNs8FB-Ed20sOqCvAm01Q"/>
+        </feature>
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_cceddFjCEd2XOcTgMndlVg" target="_cceddVjCEd2XOcTgMndlVg" source="_ccedcljCEd2XOcTgMndlVg">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#Classifier-attribute"/>
+          <domainAttribute href="test_validation.emx#_Yv9wUFB7Ed20sOqCvAm01Q"/>
+          <domainReference href="test_validation.emx#_YvzYQFB7Ed20sOqCvAm01Q"/>
+        </feature>
+        <domainConcept href="test_validation.emx#_R1a1gFB6Ed2qWP4r03uXIg"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Classifier"/>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_cceddVjCEd2XOcTgMndlVg" category="firm">
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_cceddljCEd2XOcTgMndlVg">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement-name"/>
+          <domainAttribute href="test_validation.emx#_p9U0MFB7Ed20sOqCvAm01Q"/>
+        </feature>
+        <domainConcept href="test_validation.emx#_XwqPcFB7Ed20sOqCvAm01Q"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_y2TjkGLxEd2Ub_AtUWxu5A" category="firm">
+        <generalization xmi:id="_y2TjkWLxEd2Ub_AtUWxu5A" general="_ccedcljCEd2XOcTgMndlVg">
+          <domainGeneralization href="test_validation.emx#_XiWqMGLxEd2Ub_AtUWxu5A"/>
+        </generalization>
+        <domainConcept href="test_validation.emx#_VBkIcGLxEd2Ub_AtUWxu5A"/>
+      </classifier>
+      <domainBlock href="test_validation.emx#_IxmroFB6Ed2qWP4r03uXIg"/>
+    </element>
+    <element xmi:type="zdlgen:GenDomainSpecialization" xmi:id="_ccedd1jCEd2XOcTgMndlVg">
+      <domainSpecialization href="test_validation.emx#_HmlC8FB6Ed2qWP4r03uXIg"/>
+      <domainBlock xmi:id="_ccedeFjCEd2XOcTgMndlVg" target="_ccedcVjCEd2XOcTgMndlVg">
+        <domainBlockReference href="test_validation.emx#_OlTIkFB6Ed2qWP4r03uXIg"/>
+      </domainBlock>
+    </element>
+    <element xmi:type="zdlgen:GenDomainSpecialization" xmi:id="_ccedeVjCEd2XOcTgMndlVg" pluginName="com.zeligsoft.base.validation.test" resourceName="profiles/test_ocl.profile.uml">
+      <domainSpecialization href="test_validation.emx#_TI_8YFjBEd2XOcTgMndlVg"/>
+      <domainBlock xmi:id="_ccedeljCEd2XOcTgMndlVg" target="_ccedcVjCEd2XOcTgMndlVg">
+        <domainBlockReference href="test_validation.emx#_VHaw4FjBEd2XOcTgMndlVg"/>
+      </domainBlock>
+    </element>
+    <domainModel href="test_validation.emx#_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  </ownedModel>
+</zdlgen:GenModel>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_WErlEcsCEd6WOLjuNBMqfA" name="TestDomain" metamodelReference="_WErlIssCEd6WOLjuNBMqfA">
+  <eAnnotations xmi:id="_WErlEssCEd6WOLjuNBMqfA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+    <references xmi:type="uml:Class" href="pathmap://TEST_MENUS_MODELS/TestDomain.uml#_LmdS0Ml6Ed6xVaMbeWdlVw"/>
+  </eAnnotations>
+  <eAnnotations xmi:id="_WErlE8sCEd6WOLjuNBMqfA" source="CXMenuModel">
+    <details xmi:id="_WErlFMsCEd6WOLjuNBMqfA" key="uri"/>
+  </eAnnotations>
+  <eAnnotations xmi:id="_WErlFcsCEd6WOLjuNBMqfA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_WErlFssCEd6WOLjuNBMqfA" name="TestDomain" nsURI="http:///schemas/TestDomain/_WErlEMsCEd6WOLjuNBMqfA/0" nsPrefix="TestDomain">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_WErlF8sCEd6WOLjuNBMqfA" name="ComponentInterface">
+        <eAnnotations xmi:id="_WErlGMsCEd6WOLjuNBMqfA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WErlJMsCEd6WOLjuNBMqfA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_WErlGcsCEd6WOLjuNBMqfA" name="ComponentStructure">
+        <eAnnotations xmi:id="_WErlGssCEd6WOLjuNBMqfA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WErlJssCEd6WOLjuNBMqfA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_WErlG8sCEd6WOLjuNBMqfA" name="Implementation" abstract="true">
+        <eAnnotations xmi:id="_WErlHMsCEd6WOLjuNBMqfA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WErlKMsCEd6WOLjuNBMqfA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_WErlHcsCEd6WOLjuNBMqfA" name="ExecutableImplementation" eSuperTypes="_WErlG8sCEd6WOLjuNBMqfA">
+        <eAnnotations xmi:id="_WErlHssCEd6WOLjuNBMqfA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WErlKssCEd6WOLjuNBMqfA"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_WErlIMsCEd6WOLjuNBMqfA" name="Package">
+        <eAnnotations xmi:id="_WErlIcsCEd6WOLjuNBMqfA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_WErlLcsCEd6WOLjuNBMqfA"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <packageImport xmi:id="_WErlIssCEd6WOLjuNBMqfA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_WErlI8sCEd6WOLjuNBMqfA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WErlJMsCEd6WOLjuNBMqfA" name="ComponentInterface">
+    <eAnnotations xmi:id="_WErlJcsCEd6WOLjuNBMqfA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="pathmap://TEST_MENUS_MODELS/TestDomain.uml#_2pyroMl5Ed6xVaMbeWdlVw"/>
+    </eAnnotations>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WErlJssCEd6WOLjuNBMqfA" name="ComponentStructure">
+    <eAnnotations xmi:id="_WErlJ8sCEd6WOLjuNBMqfA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="pathmap://TEST_MENUS_MODELS/TestDomain.uml#_534YQMl5Ed6xVaMbeWdlVw"/>
+    </eAnnotations>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WErlKMsCEd6WOLjuNBMqfA" name="Implementation" isAbstract="true">
+    <eAnnotations xmi:id="_WErlKcsCEd6WOLjuNBMqfA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="pathmap://TEST_MENUS_MODELS/TestDomain.uml#_9JFqUMl5Ed6xVaMbeWdlVw"/>
+    </eAnnotations>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WErlKssCEd6WOLjuNBMqfA" name="ExecutableImplementation">
+    <eAnnotations xmi:id="_WErlK8sCEd6WOLjuNBMqfA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="pathmap://TEST_MENUS_MODELS/TestDomain.uml#_BsHJkMl6Ed6xVaMbeWdlVw"/>
+    </eAnnotations>
+    <generalization xmi:id="_WErlLMsCEd6WOLjuNBMqfA" general="_WErlKMsCEd6WOLjuNBMqfA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WErlLcsCEd6WOLjuNBMqfA" name="Package">
+    <eAnnotations xmi:id="_WErlLssCEd6WOLjuNBMqfA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="pathmap://TEST_MENUS_MODELS/TestDomain.uml#_G-g3UMl6Ed6xVaMbeWdlVw"/>
+    </eAnnotations>
+  </packagedElement>
+</uml:Profile>

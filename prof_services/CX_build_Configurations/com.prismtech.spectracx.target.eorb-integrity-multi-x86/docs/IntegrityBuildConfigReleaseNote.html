@@ -1,0 +1,80 @@
+<html><head>
+   <title>Integrity Spectra ORB PPC Build Configuration Release Notes</title>
+   <link rel="stylesheet" type="text/css" href="helpStyle.css">
+   <meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1">
+
+   </head><body outputfile="IntegrityBuildConfigReleaseNote.html" title="VxWorks 6.9 Spectra ORB ARM Build Configuration Release Notes">
+      <h1>Integrity Spectra ORB PPC Build Configuration Release Notes</h1>
+      <p><strong>Version: </strong>3.5.4</p>
+      <p><strong>Release Date: </strong>February 2014</p>
+      <systemrequirements>
+         <h2>System Requirements</h2>        
+         <!-- Host Linux, Target VxWorks 6.9, BSP support OMAP35xx -->
+         <table summary="System Requirements">
+            <tbody><tr>
+               <td><strong>Host Operating System</strong></td>
+               <td>Windows 7</td>
+            </tr>
+            <tr>
+               <td><strong>Target Operating System</strong></td>
+               <td>Integrity 10.0.2</td>
+            </tr>
+            <tr>
+               <td><strong>Supported BSPs</strong></td>
+               <td>cw-p4080</td>
+            </tr>
+         </tbody></table>
+      </systemrequirements>
+      <environmentvariables>
+         <h3>Environment Variables</h3>
+         <p>The following environment variables must be set before starting Spectra CX.</p>
+         <ol>
+            <li><strong>EORBHOME</strong> - set to the directory where Spectra ORB is installed.</li>
+            <li><strong>EORBTARGETENV</strong> - set to the following value: integrity-multi524-ppc</li>
+            <li><strong>INTEGRITY_BSP</strong> - set to the name of the BSP.</li>
+            <li><strong>INTEGRITY_BASE </strong> - set to the base location of the Integrity install.</li>
+            <li><strong>INTEGRITY_COMP_DIR</strong> - set to the install location of the Multi compiler.</li>
+         </ol>
+      </installationinstructions>
+      <usageinstructions>
+         <h3>Usage Instructions</h3>
+         <p>The following changes have to be made to components modeled in Spectra CX to generate correct XML for deployment:</p>
+         <ul>
+            <li>Change the SCA code properties of each component implementation to the following:
+               <ul>
+                  <li>Filename: ensure this ends in .mod</li>
+               </ul>
+            </li>
+            <li>Set the OS dependency name to INTEGRITY and version to 10.0.2</li>
+            <li>Set the processor dependency name to PPC</li>
+            <li>Update the os_name, os_version and processor_name properties of the Devices and DeviceManagers to the above values.</li>
+         </ul> 
+      </usageinstructions>
+      <knownissues>
+         <h3>Known Issues</h3>
+         <p>None</p>
+      </knownissues>
+                <contact>
+         <support>
+            <h3>Contact PrismTech</h3>
+            <p>Product support: <a href="mailto:crc@prismtech.com">crc@prismtech.com</a>.</p>
+            <p> General enquiries: <a href="mailto:info@prismtech.com"> info@prismtech.com</a></p>
+            <p> Web: <a href="http://www.prismtech.com"> www.prismtech.com</a></p>
+            <h3>European Headquarters </h3><strong><p>PrismTech Limited</p>
+               <p>PrismTech House, </p>
+               <p>5th Avenue Business Park, </p>
+               <p>Gateshead, Tyne and Wear, </p>
+               <p>NE11 0NG, </p>
+               <p>United Kingdom</p>
+Tel: +44 (0) 191-4979900
+Fax: +44 (0) 191-4979901
+</strong><h3>USA Corporate Headquarters - PrismTech Corporation</h3><strong><p>400 Tradecenter, </p>
+               <p>Suite 5900, </p>
+               <p>Woburn, MA, </p>
+               <p>01801-7471, </p>
+               <p>USA</p>
+Tel: (1) 781-5695819
+Fax: (1) 781-9333347
+</strong></support>
+      </contact>
+   </body></html>

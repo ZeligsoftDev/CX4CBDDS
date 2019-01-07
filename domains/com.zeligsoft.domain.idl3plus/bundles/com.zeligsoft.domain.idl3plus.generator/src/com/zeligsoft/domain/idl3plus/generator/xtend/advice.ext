@@ -1,0 +1,142 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+import CORBADomain::IDL;
+import CCM::CCM_Component;
+import IDL3Plus::Connectors;
+import IDL3Plus::Generics;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+import idl;
+
+extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
+extension com::zeligsoft::domain::omg::ccm::generator::extensions::mainTransform;
+extension com::zeligsoft::domain::omg::ccm::generator::extensions::scopedNames;
+extension com::zeligsoft::domain::omg::ccm::generator::extensions::CCM_IDL_Utils;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::annotations;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::metamodel;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::utils;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::IDL3Plus_Utils;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::idl3PlusTransform;
+
+around com::zeligsoft::domain::omg::ccm::generator::extensions::mainTransform::componentBody(idl::ComponentDecl this, CCMComponent component) :
+	ctx.proceed() ->
+	this.export.addAll(component.zdlAsComponent().ownedElement.typeSelect(InterfacePort).select(port | port.hasCSL).portCSLDecl());
+
+around com::zeligsoft::domain::omg::ccm::generator::extensions::mainTransform::visitContained(CCM::CCM_Component::InterfacePort self) :
+	if self.isUser() then { self.usesPort() } 
+	else if self.isProvider() then { self.providesPort() }
+	else if (!self.isProvider() && !self.isUser()) then {
+		self.portDecl() 
+	};
+	
+around com::zeligsoft::domain::omg::ccm::generator::extensions::mainTransform::visitContained(CCM::CCM_Component::EventPort self) :
+	if self.isPublisher() then { self.publishesPort() }
+	else if self.isConsumer() then { self.consumesPort() }
+	else if (!self.isPublisher() && !self.isConsumer()) then {
+		self.portDecl()
+	};
+
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::toScopedName(ZMLMM::ZML_Core::Type self, CORBANamedElement element) :
+	let newScopedName = new ScopedName :
+		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(self), scopedNameFromNamedElementForIDL3(element))
+		-> newScopedName;
+
+/**
+* Produce a scoped name for a CORBA Interface
+*/
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::toScopedName(CORBAInterface intf, CORBANamedElement element) :
+	let newScopedName = new ScopedName :
+		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(intf), scopedNameFromNamedElementForIDL3(element))
+		-> newScopedName;
+
+/**
+* Produce a scoped name for a CORBA Typedef
+*/
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::toScopedName(CORBATypeDef typedef, CORBANamedElement element) :
+	let newScopedName = new ScopedName :
+		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(typedef), scopedNameFromNamedElementForIDL3(element))
+		-> newScopedName;
+
+/**
+* Produce a scoped name for a CORBA Sequence
+*/
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::toScopedName(CORBASequence seq, CORBANamedElement element) :
+	let newScopedName = new ScopedName :
+		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(seq), scopedNameFromNamedElementForIDL3(element))
+		-> newScopedName;
+		
+/**
+* Produce a scoped name for a CORBA Array
+*/
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::toScopedName(CORBAArray array, CORBANamedElement element) :
+    let newScopedName = new ScopedName :
+    	newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(array), scopedNameFromNamedElementForIDL3(element))
+    	-> newScopedName;
+
+/**
+* Produce a scoped name for a CORBA Struct
+*/
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::toScopedName(CORBAStruct struct, CORBANamedElement element) :
+	let newScopedName = new ScopedName :
+		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(struct), scopedNameFromNamedElementForIDL3(element))
+		-> newScopedName;
+	
+/**
+* Produced a scoped name for a CORBA Exception
+*/
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::toScopedName(CORBAException exception, CORBANamedElement element) :
+	let newScopedName = new ScopedName :
+		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(exception), scopedNameFromNamedElementForIDL3(element))
+		-> newScopedName;
+		
+/**
+* Produce a scoped name for a CORBA Enum
+*/
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::toScopedName(CORBAEnum enum, CORBANamedElement element) :
+	let newScopedName = new ScopedName :
+		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(enum), scopedNameFromNamedElementForIDL3(element))
+		-> newScopedName;
+
+/**
+* Produce a scoped name for a CORBA Union
+*/
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::toScopedName(CORBAUnion union, CORBANamedElement element) :
+	let newScopedName = new ScopedName :
+		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(union), scopedNameFromNamedElementForIDL3(element))
+		-> newScopedName;
+		
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::toScopedName(CORBAString cString, CORBANamedElement element) :
+	let newScopedName = new ScopedName :
+		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(cString), scopedNameFromNamedElementForIDL3(element))
+		-> newScopedName;
+		
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::toScopedName(CORBAWString cString, CORBANamedElement element) :
+	let newScopedName = new ScopedName :
+		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(cString), scopedNameFromNamedElementForIDL3(element))
+		-> newScopedName;
+		
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::unhandledScopedName(Object o, CORBANamedElement element ) :	
+	toScopedNameLocal(o, element);
+	
+ScopedName toScopedNameLocal(emf::EObject o, CORBANamedElement element ) :
+	let newScopedName = new ScopedName :
+		newScopedName;
+	
+ScopedName toScopedNameLocal(TemplateParameterType t, CORBANamedElement element ) :
+	let newScopedName = new ScopedName :
+		newScopedName.name.add(t.zdlAsNamedElement().name) ->
+		newScopedName;

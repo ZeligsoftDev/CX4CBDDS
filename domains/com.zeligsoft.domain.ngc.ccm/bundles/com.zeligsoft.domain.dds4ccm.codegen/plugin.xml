@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+<!-- 
+   <extension
+         point="com.zeligsoft.cx.codegen.ui.transformation">
+      <concept
+            type="CCM::CCM_Implementation::MonolithicImplementation">
+         <workflow
+               label="Whatever"
+               path="/workflow/generatecodetags.oaw">
+         </workflow>
+      </concept>
+   </extension>
+   -->
+   
+      
+   <extension
+   		point="com.zeligsoft.cx.codegen.codeeditorpostprocessor">
+   		<codeeditorpostprocessor
+   			class="com.zeligsoft.domain.dds4ccm.codegen.DDS4CCMCodeEditorPostProcessor"
+   			id="com.zeligsoft.domain.dds4ccm.codeeditorpostprocessor">
+   		</codeeditorpostprocessor>
+   	</extension>
+   <extension 
+   		id="com.zeligsoft.domain.dds4ccm.codegen.startup"
+		name="com.zeligsoft.domain.dds4ccm.codegen.startup"
+		point="org.eclipse.ui.startup">
+	</extension>
+</plugin>
+

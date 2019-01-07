@@ -1,0 +1,32 @@
+<head>
+	<title>Connecting to Event Channels</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="aboutevtchns.html" title="Connecting to Event Channels">
+		<h1>Event Channels</h1>
+		<p>The SCA states that two event channels be present, Incoming DomainManager (IDM)
+and Outgoing DomainManager (ODM). Users can also create their own event
+channels. The instructions below describe how to connect to the IDM in a CX
+model.</p>
+		<p>  SCA devices should write to the IDM when certain events happen (i.e. the device
+changes state). To model the device connected to the IDM, do the following:  </p>
+		<ol>
+			<li> Import CosEventComm.idl into the model. This IDL is provided by the ORB
+supplier. </li>
+			<li> Create a PortType based on the CosEventComm/PushConsumer interface. </li>
+			<li> Add a uses port to the Device Component Interface based on the uses
+PushConsumer PortType. Set the port kind to data. </li>
+			<li> From the palette, add a "FSP DomainFinder-EventChannel" based on the
+provides PushConsumer PortType to the node.   </li>
+			<li> Select the Free Standing Port (FSP). Select the Properties view, SCA tab.
+Set FindBy Type to FindBy. Set the Findby Element Name and Name to IDM_Channel.</li>
+			<li> Connect the Device uses port to the IDM_Channel FSP.     </li>
+			<li> Validate SCA and generate. </li>
+		</ol>
+		<h3>See Also</h3><br><a href="fspprop.html">Freestanding FindBy Ports Properties</a><br><a href="editviewelement.html">Editing and Viewing Elements</a><br><a href="deleteelement.html">Deleting Elements</a><div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,285 @@
+
+import langc;
+import uml;
+
+extension langc::libc;
+extension langc::mqueue;
+
+extension langc::debug;
+extension langc::element;
+extension langc::expr;
+extension langc::name;
+extension langc::preprocessor;
+extension langc::stmt;
+extension langc::type;
+extension langc::util;
+
+extension simple::names;
+
+create System top( Model m ):
+    setSubSystems( { subSystem1(), subSystem2() } )
+ -> setPublicFolders( { apiFolder() } )
+;
+
+cached SubSystem subSystem1() :
+    let s = subSystem( 'subsystem1' ) :
+        s.setFiles( { util(), useEnumerator() } )
+     -> s.setPublicFolders( { apiFolder1() } )
+	 -> s.setFolders( { baseFolder() } )
+	 -> s
+;
+
+cached SubSystem subSystem2() :
+    let s = subSystem( 'subsystem2' ) :
+        s.setFiles( { buffer(), useEnumerator() } )
+     -> s.setPublicFolders( { apiFolder2() } )
+     -> s.setFolders( { zeligsoftFolder() } )
+     -> s
+;
+
+create ElementList util() :
+    setName( utilFilename() )
+ -> addElement( statusEnum() )
+;
+
+create ElementList buffer() :
+    setName( bufferFilename() )
+ -> addElement( { bufferMQVar(), bufferStruct(), bufferTypedef() } )
+ -> addElement( initFunction() )
+ -> bufferMacros()
+ -> addElement( mqueueSampleFunction() )
+ -> addElement( mqueueSampleFunction2() )
+ -> addElement( switchSampleFunction() )
+ -> addElement( sampleAddrFunction() )
+ -> addElement( sampleParensFunction() )
+ -> addElement( bufferArrayFunction() )
+ -> addElement( sampleBlobFunction() )
+;
+
+create langc::Enum statusEnum() :
+    setName( statusName() )
+ -> addEnumerator( statusOkName(), literal( 42 ) )
+ -> addEnumerator( statusFailName() )
+ -> addEnumerator( { statusNoRoomName(), statusNoDataName() } )
+;
+
+create VariableDeclaration bufferMQVar() :
+    setName( bufferMQueueVarName() )
+ -> setElement( mqd_t().type() )
+ -> setKind( implOnly() )
+ -> setLinkage( static() )
+;
+
+create Struct bufferStruct() :
+    setName( bufferName() )
+ -> addMember( int32().const(),     bufferCapacityName() )
+ -> addMember( int32(),             bufferLenName() )
+ -> addMember( int32().ptr().ptr(), bufferFieldName() )
+ -> addMember( char().array( 5.literal() ), bufferBuff2Name() )
+ -> addMember( char().array(), bufferBuffName() )
+;
+
+create Typedef bufferTypedef() :
+    setName( bufferPtrName() )
+ -> setElement( bufferStruct().ptr() )
+;
+
+Void bufferMacros() :
+    let define1 = buffer().publicDefine( bufferAvailName() ) :
+    let define2 = buffer().publicDefine( bufferUsedName() ) :
+        define1.addParameter( 'b' )
+     -> define1.setReplacement( blob( '( ( b )->capacity - ( b )->len )' ) )
+     -> define2.addParameter( 'b' )
+     -> define2.setReplacement( blob( '( ( b )->len )' ) )
+;
+
+Function initFunction() :
+    let f = function( statusEnum(), bufferInitName() ) :
+        f.setLinkage( extern() )
+	 -> f.addParameter( bufferStruct().ptr(), bufferInitBuffParam() )
+	 -> f.addParameter( int32(), bufferInitCapacityParam() )
+	 -> f.addStatement( printf( 'Running init function' ) )
+     -> f.addStatement( printf( '[%03d] Running init function', 5.literal() ) )
+	 -> f.addStatement( f.param( 1 ).field( bufferBuffName() ) )
+	 -> f.addStatement( bufferInitBuffParam().field( bufferBuffName() ).assign( malloc( uint8().ptr(), f.param( 1 ) ) ) )
+	 -> f.addStatement(
+        {
+            stmt( bufferInitBuffParam().field( bufferCapacityName() ).assign( f.param( 'capacity' ) ) ),
+            stmt( bufferInitBuffParam().field( bufferCapacityName() ).assign( f.param( bufferInitCapacityParam() ) ) ),
+            stmt( bufferInitBuffParam().field( bufferLenName() ).assign( literal( 42 ) ) )
+        } )
+     -> f.addStatement(
+            memcpy(
+                bufferInitBuffParam().field( bufferBuffName() ),
+                bufferInitBuffParam().access(),
+                bufferInitCapacityParam().access() ) )
+     -> f.addStatement( returnStmt( statusFailName().access() ) )
+     -> f
+;
+
+Function mqueueSampleFunction() :
+    let f = function( void(), bufferMQueueFunction() ) :
+        f.setLinkage( extern() )
+     -> f.addParameter( char().ptr(), bufferMQueueBuffParam()  )
+     -> f.addStatement( bufferMQueueVarName().access().assign( mq_open( queueName(), blob( 'O_RDONLY' ) ) ) )
+     -> f.addStatement( mq_open( queueName().access(), blob( 'O_WRONLY' ) ) )
+     -> f.addStatement( bufferMQueueVarName().mq_send( bufferMQueueBuffParam().access(), 512.literal() ) )
+     -> f.addStatement( bufferMQueueVarName().mq_receive( bufferMQueueBuffParam().access(), 512.literal() ) )
+     -> f.addStatement( bufferMQueueVarName().mq_close() )
+     -> f.addStatement( returnStmt() )
+     -> f
+;
+
+Function mqueueSampleFunction2() :
+    let v = variable( uint8().array( 8192.literal() ), 'buff' ) :
+    let f = function( void(), bufferMQueueFunction2() ) :
+        f.setLinkage( extern() )
+     -> f.addStatement( v )
+     -> f.addStatement( variable( mqd_t(), bufferMQueueQVar1Name(), createMQueue( queueName() ) ) )
+     -> f.addStatement( bufferMQueueQVar1Name().access().testLessThan( 0.literal() ) )
+     -> f.addStatement( variable( mqd_t(), bufferMQueueQVar2Name(), openMQueue( queueName() ) ) )
+     -> f.addStatement( mQueueSend( bufferMQueueQVar2Name(), v ) )
+     -> f.addStatement( mQueueReceive( bufferMQueueQVar1Name(), v ) )
+     -> f.addStatement( bufferMQueueQVar1Name().access().index( 0.literal() ).sizeof() )
+     -> f
+;
+
+private cached Name queueName() :
+    let m = buffer().privateDefine( bufferMQueueMacroName() ) :
+        m.setReplacement( 'MY_Q_NAME'.literal() )
+     -> m.name
+;
+
+Function switchSampleFunction() :
+    let f = function( statusEnum(), bufferSwitchFunction() ) :
+    let v = variable( statusEnum(), 'rc' ) :
+        v.setInitializer( statusFailName().access() )
+     -> f.setLinkage( extern() )
+     -> f.addParameter( statusEnum(), bufferSwitchParam() )
+     -> f.addStatement( v )
+     -> f.addStatement( while( 1.literal() ).addStatement( sampleSwitch( bufferSwitchParam(), v.name ) ) )
+     -> f.addStatement( v.name.access().returnStmt() )
+     -> f
+;
+
+
+SwitchStatement sampleSwitch( Name paramName, Name rcVarName ) :
+    let s = switchStmt( paramName.access() ) :
+        s.addCase( sampleCase( statusOkName() ) )
+     -> s.addCase( labeledClause( statusFailName().access() ) )
+     -> s.caseClause( statusNoRoomName().access(), { returnStmt( 4.literal() ) } )
+     -> s.caseClause( statusNoDataName().access(), { stmt( assign( rcVarName.access(), 9.literal() ) ) } )
+     -> s.addCase( labeledClause( statusNoDataName().access() ).addStatement( assign( paramName.access(), 9.literal() ) ) )        
+     -> s.addCase( sampleCase( { statusOkName(), statusFailName() } ) )
+     -> s.addCase( defaultClause().addStatement( returnStmt( 10.literal() ) ) )
+     -> s
+;
+
+SwitchClause sampleCase( Name enumName ) :
+    let l = labeledClause( enumName.access() ) :
+        l.addStatement( returnStmt( enumName.access() ) )
+     -> l
+;
+
+SwitchClause sampleCase( List[Name] enumNames ) :
+    let l = labeledClause( enumNames.access() ) :
+        l.addStatement( returnStmt( enumNames.get( 0 ).access() ) )
+     -> l
+;
+
+Function sampleAddrFunction() :
+    let f = function( int32().ptr(), bufferAddrFunction() ) :
+        f.setLinkage( extern() )
+     -> f.addParameter( int32(), bufferAddrIntParam() )
+     -> f.addParameter( int32().ptr(), bufferAddrPtrParam() )
+     -> f.addStatement( assign( bufferAddrPtrParam().access().dereference(), bufferAddrIntParam().access() ) )
+     -> f.addStatement( returnStmt( bufferAddrIntParam().access().addressOf() ) )
+     -> f
+;
+
+Function sampleParensFunction() :
+    let f = function( void(), bufferParensFunctionName() ) :
+        f.setLinkage( static() )
+     -> f.setKind( implOnly() )
+     -> f.addStatement( variable( int8().array(), bufferParensVarName() ) )
+     -> f.addStatement( bufferParensVarName().access().cast( bufferStruct().ptr() ).field( bufferCapacityName() ).assign( 5.literal() ) )
+     -> f
+;
+
+create ElementList useEnumerator() :
+    setName( useEnumeratorFilename() )
+ -> addElement( useEnumeratorFunction() )
+;
+
+Function useEnumeratorFunction() :
+    let f = function( int32(), useEnumeratorFuncName() ) :
+        f.setLinkage( static() )
+     -> f.addStatement( returnStmt( statusOkName().access().cast( int32().type() ) ) )
+     -> f
+;
+
+Function bufferArrayFunction() :
+    let f = function( void(), bufferArrayFunctionName() ) :
+        f.setLinkage( static() )
+     -> f.setKind( implOnly() )
+     -> f.addStatement( arrayVar1() )
+     -> f.addStatement( arrayVar2() )
+     -> f.addStatement( arrayVar3() )
+     -> f.addStatement( arrayVar4() )
+     -> f.addStatement( arrayVar1().access().index( 0.literal() ).assign( arrayVar2().access().index( 1.literal() ) ) )
+     -> f.addStatement( arrayVar3().access().index( 0.literal() ).assign( arrayVar4().access().index( 1.literal() ) ) )
+     -> f.addStatement( arrayVar3().access().index( 1.literal() ).assign( arrayVar2().access().index( statusOkName().access() ).addressOf() ) )
+     -> f.addStatement( arrayVar1().access().index( 1.literal() ).assign( arrayVar4().access().index( 1.literal() ).index( 0.literal() ) ) )
+;
+
+Function sampleBlobFunction() :
+    let f = function( void(), bufferBlobFunctionName() ) :
+        f.setLinkage( static() )
+     -> f.setKind( implOnly() )
+     -> f.setBody( userCode( '#include <deps.h>', 'stmts;' ) )
+;
+
+/* TODO This should be able to use the enum name, but the variable doesn't allow deferred
+        lookup yet. */
+cached VariableDeclaration arrayVar1() :
+    let v = variable( statusEnum(), 'stat1' ) :
+        v.element.setArrayBounds( { 2.literal() } )
+     -> v
+;
+
+cached VariableDeclaration arrayVar2() :
+    let v = variable( statusEnum(), 'stat2' ) :
+        v.element.setArrayBounds( { unboundedArraySize() } )
+     -> v.setInitializer( arrayVar2Init() )
+     -> v
+;
+
+Expression arrayVar2Init() :
+    let i = new BlockInitializer :
+        i.setExprs( { statusFailName().access(), statusFailName().access() } )
+     -> i
+;
+
+cached VariableDeclaration arrayVar3() :
+    let v = variable( statusEnum().ptr().const(), 'stat3' ) :
+        v.element.arrayBounds.add( 2.literal() )
+     -> v
+;
+
+cached VariableDeclaration arrayVar4() :
+    let v = variable( statusEnum().ptr().const(), 'stat4' ) :
+        v.element.arrayBounds.add( unboundedArraySize() )
+     -> v.element.arrayBounds.add( unboundedArraySize() )
+     -> v.setInitializer( arrayVar4Init() )
+     -> v
+;
+
+Expression arrayVar4Init() :
+    let b1 = new BlockInitializer :
+    let b2 = new BlockInitializer :
+    let i = new BlockInitializer :
+        b1.setExprs( { statusOkName().access() } )
+     -> b2.exprs.add( statusOkName().access() )
+     -> i.setExprs( { b1, b2, NULL() } )
+     -> i
+;

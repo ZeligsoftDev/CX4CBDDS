@@ -1,0 +1,215 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+ 
+«IMPORT uml»
+
+«EXTENSION templates::common»
+
+
+«DEFINE linxReceiveHandlerSourceFile FOR Model»
+«FILE "fwk/C/transports/receive/LinxReceiveHandler/zceLinxReceiveHandler.c"»
+/****************************************************************************************/
+/*																						*/
+/*     FILE: zceLinxReceiveHandler.c													*/
+/*																						*/
+/****************************************************************************************/
+
+#include "zceLinxReceiveHandler.h"
+#include "zceLinxSendHandler.h"
+#include "zce.sig"
+
+
+struct zce_struct_LinxReceiveHandler
+{
+	/* zceLinxReceiveHandler required members */
+	void (*listen)(zceReceiveHandler self, Boolean isPeriodDriven ZCE_EXC_ENV_ARG);
+    zceDispatcher dispatcher_;
+    OSTICK nextPeriod;  //absolute value of ticks for the next period
+    OSTICK period;      //period
+    OSTICK periodWrapAround;  // value that period wraps around at 
+    timeOutFuncPtr funcHandler;
+    void* timeOutComp;
+};
+
+/***********************************************************
+ *                                                         *
+ *      zceLinxSReceiveHandler base functions                  *
+ *                                                         *
+ ***********************************************************/
+
+void zceLinxReceiveHandler_construct(zceLinxReceiveHandler self, zceDispatcher dispatcher ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	
+	self->dispatcher_ = dispatcher;
+	self->listen = zceLinxReceiveHandler_listen;
+	self->nextPeriod = 0;
+	self->period = 0;
+	self->periodWrapAround = 0;
+	self->funcHandler = NULL;
+	self->timeOutComp = NULL;
+
+}
+
+void zceLinxReceiveHandler_destruct(zceLinxReceiveHandler self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+
+	self->listen = NULL;
+	self->dispatcher_ = NULL;
+	self->nextPeriod = 0;
+	self->period = 0;
+	self->periodWrapAround = 0;
+	self->funcHandler = NULL;
+	self->timeOutComp = NULL;
+}
+
+zceLinxReceiveHandler zceLinxReceiveHandler_allocate(ZCE_EXC_ENV_SINGLE_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	zceLinxReceiveHandler self = ZCE_NEW(struct zce_struct_LinxReceiveHandler);
+	return self;
+}
+
+void zceLinxReceiveHandler_listen(zceReceiveHandler self, Boolean isPeriodDriven ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+    if (isPeriodDriven)
+    {
+    	zceLinxReceiveHandler_periodDispatcher(self ZCE_EXC_ENV_PARAM);
+    }
+    else
+    {
+    	zceLinxReceiveHandler_dispatcher(self ZCE_EXC_ENV_PARAM);
+    }
+    	
+}
+
+void zceLinxReceiveHandler_dispatcher(zceReceiveHandler self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	static SIGSELECT sig_sel[] = {0 };
+	union SIGNAL * sig;
+	zceLinxReceiveHandler qHandler = (zceLinxReceiveHandler)self;	
+	int readbuffaddr = 0;
+	int readoffset = SIZE_OF_LARGEST_DATA_PRIMITIVE_IN_BYTES-(sizeof(SIGSELECT)%SIZE_OF_LARGEST_DATA_PRIMITIVE_IN_BYTES);
+
+    for (;;) {
+    
+        sig = receive(sig_sel);
+
+        switch (sig->sig_no) {
+
+        case SIG_LINX_MSG:
+        	readbuffaddr = (int)&sig->msg.payload[0];
+        	readbuffaddr = readbuffaddr + readoffset;
+
+                // DBGPRINTMSG("Received message from Far End and Processing\n");
+        	qHandler->dispatcher_->processBuffer(
+        						qHandler->dispatcher_, 
+        						(char*)readbuffaddr, 
+        						ZCE_LINX_PAYLOAD_SIZE 
+        						ZCE_EXC_ENV_PARAM);
+            break;
+        }
+        if (sig != NIL)
+        {
+        	free_buf(&sig);
+    	}
+    }	
+}
+
+void zceLinxReceiveHandler_periodDispatcher(zceReceiveHandler self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	static SIGSELECT sig_sel[] = {0 };
+	union SIGNAL * sig;
+	zceLinxReceiveHandler qHandler = (zceLinxReceiveHandler)self;	
+	int readbuffaddr = 0;
+	int readoffset = SIZE_OF_LARGEST_DATA_PRIMITIVE_IN_BYTES-(sizeof(SIGSELECT)%SIZE_OF_LARGEST_DATA_PRIMITIVE_IN_BYTES);
+
+	OSTICK tick, wait, nextPeriod;
+	
+	nextPeriod = qHandler->period + get_ticks();
+	qHandler->nextPeriod = nextPeriod;
+	qHandler->periodWrapAround = -1;
+	
+    for (;;) {
+    
+    	nextPeriod = qHandler->nextPeriod;
+    	tick = get_ticks();
+    	
+    	if (tick < nextPeriod)
+    		wait = nextPeriod - tick;
+    	else
+    		wait = qHandler->periodWrapAround - tick + nextPeriod;
+    		
+        sig = receive_w_tmo(wait, sig_sel);
+
+        if (sig != NIL)
+        {
+        	readbuffaddr = (int)&sig->msg.payload[0];
+        	readbuffaddr = readbuffaddr + readoffset;
+
+                // DBGPRINTMSG("Received message from Far End and Processing\n");
+        	qHandler->dispatcher_->processBuffer(
+        						qHandler->dispatcher_, 
+        						(char*)readbuffaddr, 
+        						ZCE_LINX_PAYLOAD_SIZE 
+        						ZCE_EXC_ENV_PARAM);
+        						
+          	free_buf(&sig);
+        }
+        else
+        {
+        	zceLinxReceiveHandler_nextTimeOut(qHandler, qHandler->period ZCE_EXC_ENV_PARAM);
+        	qHandler->funcHandler(qHandler->timeOutComp ZCE_EXC_ENV_PARAM);
+    	}
+    }	
+}
+
+void zceLinxReceiveHandler_release(zceLinxReceiveHandler self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+
+}
+
+void zceLinxReceiveHandler_setTimeOutHandler(zceLinxReceiveHandler self, timeOutFuncPtr funcHandler, void* timeoutComp ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->funcHandler = funcHandler;
+	self->timeOutComp = timeoutComp;
+}
+
+void zceLinxReceiveHandler_setTimeOutPeriod(zceLinxReceiveHandler self, int period ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->period = period;
+	zceLinxReceiveHandler_nextTimeOut(self, period ZCE_EXC_ENV_PARAM);
+}
+
+void zceLinxReceiveHandler_nextTimeOut(zceLinxReceiveHandler self, int period ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->nextPeriod = get_ticks() + period;
+}
+
+/* End-Of-File */
+/* ------------------------------------------------------------------------------ */
+«ENDFILE»
+«ENDDEFINE»

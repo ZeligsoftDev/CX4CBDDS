@@ -1,0 +1,11 @@
+#include "Components.idl"
+#include "this_will_never_be_able_to_import.idl"
+
+module TwoPartTwo{
+	interface SecondInterface{};
+};
+
+
+module TwoPartThree{
+	interface SecondInterface{};
+};

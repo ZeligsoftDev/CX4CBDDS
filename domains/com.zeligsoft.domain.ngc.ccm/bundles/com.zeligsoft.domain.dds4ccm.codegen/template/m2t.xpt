@@ -1,0 +1,35 @@
+«IMPORT uml»
+«IMPORT deploymentplan»
+
+«EXTENSION com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::deploymentUtil»
+ 
+«DEFINE generate FOR codetaginfo::CodeTagInfo»
+«FILE filename.get(0) + ".taginfo.xml"»
+<CodeTagInfo:CodeTagInfo xmlns:CodeTagInfo="http://www.zeligsoft.com/CodeTagInfo" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.zeligsoft.com/CodeTagInfo CodeTagInfo.xsd">
+
+«EXPAND codetag FOREACH codetag»
+
+</CodeTagInfo:CodeTagInfo>
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE codetag FOR codetaginfo::CodeTag»
+	<codetag>
+		<name>«name.get(0)»</name>
+		<type>«type.get(0)»</type>
+		<tag_begin>«tagBegin.get(0)»</tag_begin>
+		<contents>«contents.get(0)»</contents>
+		<tag_end>«tagEnd.get(0)»</tag_end>
+		«EXPAND codetagcontext FOR contextinfo.get(0)-»
+	</codetag>
+«ENDDEFINE»
+
+«DEFINE codetagcontext FOR codetaginfo::CodeTagContext-»
+		<contextinfo>
+			<component_name>«componentName.get(0)»</component_name>
+			«IF className.size > 0»<class_name>«className.get(0)»</class_name>
+			«ENDIF-»
+			«IF operationName.size > 0»<operation_name>«operationName.get(0)»</operation_name>
+			«ENDIF-»
+		</contextinfo>
+«ENDDEFINE»

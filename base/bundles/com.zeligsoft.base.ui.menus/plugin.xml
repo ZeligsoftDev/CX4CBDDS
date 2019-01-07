@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+ <extension
+       point="org.eclipse.core.expressions.propertyTesters">
+    <propertyTester
+          class="com.zeligsoft.base.ui.menus.util.CXMenuPropertyTester"
+          id="com.zeligsoft.base.ui.menus.CXMenuPropertyTester"
+          namespace="com.zeligsoft.base.ui.menus"
+          properties="isCXMenuVisible"
+          type="java.lang.Object">
+    </propertyTester>
+ </extension>
+   <extension
+		point="org.eclipse.ui.navigator.viewer">
+		<viewerActionBinding
+			viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+			<includes>
+				<actionExtension pattern="com.zeligsoft.base.ui.menu.provider.*" />
+			</includes>
+		</viewerActionBinding>			
+   </extension>
+   <extension
+       point="org.eclipse.ui.navigator.navigatorContent">
+    <actionProvider
+          class="com.zeligsoft.base.ui.menus.providers.DomainMenuActionProvider"
+          id="com.zeligsoft.base.ui.menu.provider.GenerateActionProvider"
+          priority="highest">
+       <enablement>
+          <instanceof
+                value="com.ibm.xtools.uml.navigator.IModelServerElement">
+          </instanceof>
+       </enablement>
+    </actionProvider>
+   </extension>   
+	<extension
+          point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+       <contributionItemProvider
+             checkPluginLoaded="false"
+             class="com.zeligsoft.base.ui.menus.providers.DomainSpecificContributionItemProvider">
+          <Priority
+                name="Medium">
+          </Priority>
+          <popupContribution
+                class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+             <popupStructuredContributionCriteria
+                   objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart">
+             </popupStructuredContributionCriteria>
+             <popupActionGroup
+                   id="addCXGroup"
+                   path="/">
+             </popupActionGroup>
+          </popupContribution>
+       </contributionItemProvider>
+    </extension>
+</plugin>

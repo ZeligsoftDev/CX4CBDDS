@@ -1,0 +1,8 @@
+importtargetdefinition -A "buildDriver/rsa.target"
+junit -l "com.zeligsoft.releng.updatesites/tests/launch/BaseAllTests.launch" -o 'tests.output/test-results-base.xml' --stdout 'tests.output/test-stdout-base.txt' --stderr 'tests.output/test-stderr-base.txt' --flatXML
+junit -l 'com.zeligsoft.releng.updatesites/tests/launch/BaseValidationAllTests.launch' -o 'tests.output/test-results-basevalidation.xml' --stdout 'tests.output/test-stdout-basevalidation.txt' --stderr 'tests.output/test-stderr-basevalidation.txt' --flatXML
+junit -l 'com.zeligsoft.releng.updatesites/tests/launch/CXCodegenAllTests.launch' -o 'tests.output/test-results-cxcodegen.xml' --stdout 'tests.output/test-stdout-cxcodegen.txt' --stderr 'tests.output/test-stderr-cxcodegen.txt' --flatXML
+junit -l 'com.zeligsoft.releng.updatesites/tests/launch/BaseZDLOCLAllTests.launch' -o 'tests.output/test-results-basezdlocl.xml' --stdout 'tests.output/test-stdout-basezdlocl.txt' --stderr 'tests.output/test-stderr-basezdlocl.txt' --flatXML
+junit -l 'com.zeligsoft.releng.updatesites/tests/launch/CXUIAllTests.launch' -o 'tests.output/test-results-cxui.xml' --stdout 'tests.output/test-stdout-cxui.txt' --stderr 'tests.output/test-stderr-cxui.txt' --flatXML
+junit -l 'com.zeligsoft.releng.updatesites/tests/launch/SCAAllTests.launch' -o 'tests.output/test-results-sca.xml' --stdout 'tests.output/test-stdout-sca.txt' --stderr 'tests.output/test-stderr-sca.txt' --flatXML
+junit -l 'com.zeligsoft.releng.updatesites/tests/launch/SCADescriptorGenerationAllTests.launch' -o 'tests.output/test-results-scadescriptorgeneration.xml' --stdout 'tests.output/test-stdout-scacscadescriptorgeneration.txt' --stderr 'tests.output/test-stderr-scadescriptorgeneration.txt' --flatXML

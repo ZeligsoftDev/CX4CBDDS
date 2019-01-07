@@ -1,0 +1,148 @@
+import xmischema; 
+import codetaginfo;
+import DDS4CCM::DDS4CCM;
+import IDL3Plus::Connectors;
+import IDL3Plus::IDL3Plus;
+import CCM::CCM_Component;
+import CCM::CCM_Deployment;
+import CCM::CCM_Implementation;
+import CCM::CCM_Target;
+import CORBADomain::IDL;
+import ZMLMM::ZML_Deployments;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+
+extension org::eclipse::xtend::util::stdlib::issues;
+extension com::zeligsoft::domain::zml::oaw::importutils::ZMLImportUtils;
+extension codegen::regions;
+
+create CodeTagInfo mainTransform(MonolithicImplementation impl) :
+	this.filename.add(impl._fileName()) ->
+	this.codetag.addAll(impl.worker.createCodeTag(impl));
+	
+private String _fileName(MonolithicImplementation self) :
+	_fileName(self.eContainer, self.name);
+		
+private String _fileName(CORBAModule self, String name) :
+	let filedependency = self.zdlAsNamedElement().clientDependency.typeSelect(IDLFileDependency) :
+	filedependency.size > 0 ? 
+		_fileName(self.eContainer, filedependency.get(0).file.filename + "_" + name) :
+		_fileName(self.eContainer, self.name + "_" + name);
+	
+private String _fileName(Void self, String name) :
+	name;
+	
+private String _fileName(ZMLMM::ZML_Core::NamedElement self, String name) :
+	_fileName(self.eContainer, name);
+	
+create CodeTag createCodeTag(WorkerFunction worker, MonolithicImplementation impl) :
+	this.name.add((prependName(worker) ? impl.name : "" ) + worker.name) ->
+	this.type.add(worker.getWorkerType()) ->
+	this.tagBegin.add(worker.userEditBegin("ZMLMM::ZML_Component::WorkerFunction", "body", "C++")) ->
+	this.contents.add(getWorkerFunctionCode(impl, worker, "C++")) ->
+	this.tagEnd.add(userEditEnd()) ->
+	this.contextinfo.add(worker.createContext());
+	
+boolean prependName(WorkerFunction worker ) :
+	worker.getWorkerTypeForNullPort() != CodeTagType::CLASSGENERATEDOPERATIONIMPL ? true :
+	switch(worker.name) {
+		case "_ccm_activate" :
+			true
+		case "_ccm_passivate" :
+			true
+		case "_ccm_remove" :
+			true
+		case "_configuration_complete" :
+			true
+		default:
+			false
+	}; 
+		
+CodeTagType getWorkerType(WorkerFunction worker) :
+	if worker.receivingPort != null then getWorkerTypeForNonNullPort(worker)
+	else getWorkerTypeForNullPort(worker);
+	
+CodeTagType getWorkerTypeForNonNullPort(WorkerFunction worker) :
+	let portname = worker.receivingPort.name :
+	switch(worker.name) {
+		case portname + "__constructor_init_list" :
+			CodeTagType::CONSTRUCTORINITLIST
+		case portname + "__class_public_methods_section_declare" :
+			CodeTagType::CLASSPUBLICMETHODSSECTIONDECLARE
+		case portname + "__class_public_methods_section_impl" :
+			CodeTagType::CLASSPUBLICMETHODSSECTIONIMPL
+		case portname + "__class_private_methods_section_declare" :
+			CodeTagType::CLASSPRIVATEMETHODSSECTIONDECLARE
+		case portname + "__class_private_methods_section_impl" :
+			CodeTagType::CLASSPRIVATEMETHODSSECTIONIMPL
+		case portname + "__class_private_members_section_declare" :
+			CodeTagType::CLASSPRIVATEMEMBERSSECTIONDECLARE
+		case portname + "__class_private_members_section_impl" :
+			CodeTagType::CLASSPRIVATEMEMBERSSECTIONIMPL
+		default :
+			CodeTagType::CLASSGENERATEDOPERATIONIMPL
+	};
+	
+CodeTagType getWorkerTypeForNullPort(WorkerFunction worker) :
+	let home = getHome(worker.zdlAsOperation().owner.interface) :
+	let homePrefix = (home != null ?
+		"_home_" + getHome(worker.zdlAsOperation().owner.interface).name
+		: "" ) :
+	switch(worker.name) {
+		case "_file_header_h" :
+			CodeTagType::FILEHEADERH
+		case "_file_header_cpp" :
+			CodeTagType::FILEHEADERCPP
+		case "_file_footer_h" :
+			CodeTagType::FILEFOOTERH
+		case "_file_footer_cpp" :
+			CodeTagType::FILEFOOTERCPP
+		case "_file_includes_h" :
+			CodeTagType::FILEINCLUDESH
+		case "_file_includes_cpp" :
+			CodeTagType::FILEINCLUDESCPP
+		case homePrefix + "__constructor_init_list" :
+			CodeTagType::CONSTRUCTORINITLIST
+		case homePrefix + "__class_public_methods_section_declare" :
+			CodeTagType::CLASSPUBLICMETHODSSECTIONDECLARE
+		case homePrefix + "__class_public_methods_section_impl" :
+			CodeTagType::CLASSPUBLICMETHODSSECTIONIMPL
+		case homePrefix + "__class_private_methods_section_declare" :
+			CodeTagType::CLASSPRIVATEMETHODSSECTIONDECLARE
+		case homePrefix + "__class_private_methods_section_impl" :
+			CodeTagType::CLASSPRIVATEMETHODSSECTIONIMPL
+		case homePrefix + "__class_private_members_section_declare" :
+			CodeTagType::CLASSPRIVATEMEMBERSSECTIONDECLARE
+		case homePrefix + "__class_private_members_section_impl" :
+			CodeTagType::CLASSPRIVATEMEMBERSSECTIONIMPL
+		default :
+			CodeTagType::CLASSGENERATEDOPERATIONIMPL
+	};
+	
+Home getHome(CCMComponent component) :
+	JAVA com.zeligsoft.domain.dds4ccm.codegen.CodeTagGeneratorUtil.getHome(
+		org.eclipse.uml2.uml.Component);
+	
+String getContents(WorkerFunction worker) :
+	JAVA com.zeligsoft.domain.dds4ccm.codegen.CodeTagGeneratorUtil.getContents(
+		org.eclipse.emf.ecore.EObject);
+		
+create CodeTagContext createContext(WorkerFunction worker) :
+	this.componentName.add(worker.zdlAsOperation().owner.name) ->
+	if worker.getWorkerTypeForNullPort() == CodeTagType::CLASSGENERATEDOPERATIONIMPL then this.className.add(worker.getClassName()) ->
+	if worker.name.startsWith("_home_") then this.className.add(getHome(worker.zdlAsOperation().owner.interface).name + "_exec_i" ) ->
+	if worker.getWorkerType() == CodeTagType::CLASSGENERATEDOPERATIONIMPL then this.operationName.add(worker.trimPrefix());
+	
+String trimPrefix(WorkerFunction worker) :
+	JAVA com.zeligsoft.domain.dds4ccm.codegen.CodeTagGeneratorUtil.trimPrefix(
+		org.eclipse.uml2.uml.Operation);
+	
+String getClassName(WorkerFunction worker) :
+	worker.receivingPort == null ?
+	worker.zdlAsOperation().owner.name + "_exec_i"
+	: getClassName(worker, worker.receivingPort);
+	
+String getClassName(WorkerFunction worker, InterfacePort port ) :
+	port.isConjugated ?
+		"AMI4CCM_" + port.type.name + "ReplyHandler_" + port.name + "_i"
+		: port.name + "_exec_i";

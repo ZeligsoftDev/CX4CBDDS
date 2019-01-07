@@ -1,0 +1,116 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+import xmischema;
+import deploymentplan;
+import IDL3Plus::Connectors;
+import CCM::CCM_Component;
+import CCM::CCM_Deployment;
+import CCM::CCM_Implementation;
+import CCM::CCM_Target;
+import CORBADomain::IDL;
+import ZMLMM::ZML_Deployments;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+
+
+extension org::eclipse::xtend::util::stdlib::issues;
+extension com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::cdpgenerator;
+extension com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::util;
+	
+Void mainTransform(CCM::CCM_Deployment::DeploymentPlan deployment) :
+	deployment.part.modelElement.typeSelect(CCM::CCM_Target::Domain).mainTransform(deployment);
+
+Void mainTransform(CCM::CCM_Target::Domain domain, CCM::CCM_Deployment::DeploymentPlan deployment ) :
+	deployment.part.select( part | part.modelElement == domain ).mainTransform(deployment);
+	
+create Domain mainTransform(DeploymentPart domainPart, CCM::CCM_Deployment::DeploymentPlan deployment ) :
+	let qname = getPath(domain) + domainPart.name :
+	this.label.add(domain.name) ->
+	this.label.add(qname) ->
+	this.uuid.add(getUUID()) ->
+	domainPart.nestedPart.select( s | s.visitNodeInstance(s.modelElement, deployment, this));
+		
+String getPath(CCM::CCM_Target::Domain domain) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
+
+Void visitNodeInstance(DeploymentPart part, Object obj, CCM::CCM_Deployment::DeploymentPlan deployment, Domain domain ) :
+	{};
+	
+create Node visitNodeInstance(DeploymentPart deploymentPart, CCM::CCM_Target::NodeInstance nodeInstance, CCM::CCM_Deployment::DeploymentPlan deployment, Domain domain ) :
+	domain.node.add(this) ->
+	this.label.add(nodeInstance.label) ->
+	this.name.add(nodeInstance.name) ->
+	nodeInstance.type.resource.visitResourceProperty(this, deploymentPart);
+	
+create Resource visitResourceProperty(CCM::CCM_Target::ResourceProperty property, Node node, DeploymentPart part ) :
+	node.resource.add(this) ->
+	this.name.add(property.type.zdlAsNamedElement().name) ->
+	this.resourceType.addAll(property.type.resourceType) ->
+	property.type.property.visitSatisfierProperty(this, node, part);
+	
+create SatisfierProperty visitSatisfierProperty(CCM::CCM_Target::SatisfierProperty property, Resource resource, Node node, DeploymentPart part ) :
+	resource.property.add(this) ->
+	this.name.add(property.name) ->
+	this.kind.add(property.toKind()) ->
+	this.dynamic.add(property.dynamic ? "true" : "false") ->
+	this.value.add(property.toValue(part, resource));
+	
+SatisfierPropertyKind toKind(CCM::CCM_Target::SatisfierProperty property) :
+	switch( property.kind ) {
+		case CCM::CCM_Target::SatisfierPropertyKind::Attribute :
+			SatisfierPropertyKind::Attribute
+		case CCM::CCM_Target::SatisfierPropertyKind::Capacity :
+			SatisfierPropertyKind::Capacity
+		case CCM::CCM_Target::SatisfierPropertyKind::Maximum :
+			SatisfierPropertyKind::Maximum
+		case CCM::CCM_Target::SatisfierPropertyKind::Minimum :
+			SatisfierPropertyKind::Minimum
+		case CCM::CCM_Target::SatisfierPropertyKind::Quantity :
+			SatisfierPropertyKind::Quantity
+		case CCM::CCM_Target::SatisfierPropertyKind::Selection :
+			SatisfierPropertyKind::Selection
+		default :
+			null
+	};
+	
+create Any toValue(CCM::CCM_Target::SatisfierProperty property, DeploymentPart part, Resource resource) :
+	let resourceValue = part.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.select(
+		slot | slot.definingFeature.type.name == resource.name.first() ).value :
+	this.type.add(property.createType(part)) ->
+	if resourceValue != null then {
+		let propertyValue = resourceValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.select(
+			slot | slot.definingFeature == property).value.first() :
+		this.value.add(visitAttributeValue(this, propertyValue.zdlAsInstanceValue(), property.type.name.toCDPType()))
+	} else {
+		// Get the _nodeInstance property and get the default value from it (if possible).
+		let modelElement = part.modelElement.type :
+		let nodeDefault = modelElement.zdlAsComponent().ownedAttribute.selectFirst( m | m.zdlAsProperty().name == "_defaultInstance") :
+		if(nodeDefault != null) then {
+			let defaultValue = nodeDefault.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.select(
+				slot | slot.definingFeature.type.name == resource.name.first() ).value :
+			if( defaultValue != null ) then {
+				let propertyValue = defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.select(
+					slot | slot.definingFeature == property).value.first() :
+				this.value.add(visitAttributeValue(this, propertyValue.zdlAsInstanceValue(), property.type.name.toCDPType()))
+			}
+		}
+	};
+	
+create DataType createType(CCM::CCM_Target::SatisfierProperty property, DeploymentPart part) :
+	this.kind.add(property.type.name.toCDPType());
+	

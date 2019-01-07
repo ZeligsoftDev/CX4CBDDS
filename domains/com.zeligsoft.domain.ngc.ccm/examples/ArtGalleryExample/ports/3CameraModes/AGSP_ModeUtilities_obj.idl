@@ -1,0 +1,48 @@
+/// @defgroup AGSP_ModeUtilities_obj ModeUtilities_obj
+/// @{
+/// 
+/// @file AGSP_ModeUtilities_obj.idl
+/// @brief ModeUtilities_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__3CAMERAMODES__AGSP_MODEUTILITIES_OBJ_IDL
+#define CX_PORTS__3CAMERAMODES__AGSP_MODEUTILITIES_OBJ_IDL
+
+#pragma ciao lem "AGSP_ModeUtilities_objE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    ///@interface ModeUtilities_obj 
+    ///
+    /// The ModeUtilities_obj service offers a set of common utility functions
+    /// for use by camera modes
+    interface ModeUtilities_obj {
+
+        /// The calculate() service call is a placeholder for mode utility
+        /// functions that would actually be needed for real image processing
+        /// operations
+        ///
+        /// @param[in] inVal
+        /// Example of a service call parameter with a direction of "in"
+        ///
+        /// @param[out] outVal
+        /// Example of a service call parameter with a direction of "out"
+        ///
+        /// @param[in,out] inOutVal
+        /// Example of a service call parameter with a direction of "inout"
+        ///
+        void calculate(
+            in long inVal,
+            out long outVal,
+            inout long inOutVal
+            );
+    };
+
+};
+
+#endif // CX_PORTS__3CAMERAMODES__AGSP_MODEUTILITIES_OBJ_IDL
+
+/// @}
+

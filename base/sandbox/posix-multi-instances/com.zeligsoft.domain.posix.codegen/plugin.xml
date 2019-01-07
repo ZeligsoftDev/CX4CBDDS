@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="com.zeligsoft.cx.codegen.ui.transformation">
+        <concept
+            type="ZMLMM::ZML_Deployments::Deployment">
+            <workflow path="workflow/POSIXCodegen.oaw" label="%PosixCodegenActionName"/>
+        </concept>
+    </extension>
+
+    <extension point="com.zeligsoft.cx.codegen.ui.transformation">
+        <concept
+            type="ZMLMM::ZML_Deployments::Deployment">
+            <workflow path="workflow/POSIXCodegen2.oaw" label="%PosixCodegen2ActionName"/>
+        </concept>
+    </extension>
+
+</plugin>

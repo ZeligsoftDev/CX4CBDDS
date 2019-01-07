@@ -1,0 +1,40 @@
+«REM»
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«IMPORT templates::common»
+
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::FunctionNames»
+
+
+«DEFINE usrHeaderFile FOR Component»
+«FILE "components/"+getNamedElementName(this)+"/"+getComponentUsrHeaderFileName()»
+«EXPAND Copyright::copyright FOR this»
+«EXPAND Common::startUsrHeaderFile FOR this»
+«EXPAND IfDefs::startUsrHeaderIfDefs FOR this»
+«EXPAND IfDefs::startIfDefCPP FOR this»
+«EXPAND Includes::usrHeaderIncludes FOR this»
+«EXPAND Structs::usrStructs FOR this»
+«EXPAND BaseFunctions::baseFunctionDefs FOR this»
+«EXPAND LifeCycleFunctions::lifecycleFunctionDefs FOR this»
+«EXPAND ProvidesPortFunctions::providesPortsFunctionDefs FOR this»
+«EXPAND IfDefs::endIfDefCPP FOR this»
+«EXPAND IfDefs::endUsrHeaderIfDefs FOR this»
+«EXPAND Common::endUsrHeaderFile FOR this»
+«ENDFILE»
+«ENDDEFINE»

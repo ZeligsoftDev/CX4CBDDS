@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+
+<!--
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<plugin>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.zeligsoft.domain.omg.corba.ui.providers.CORBADefaultViewProvider">
+         <Priority name="Highest"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node"/>         
+      </viewProvider>
+   </extension>
+   <extension
+         point="com.zeligsoft.cx.ui.properties.customPropertySection">
+      <PropertySection
+            class="com.zeligsoft.domain.omg.corba.ui.providers.CORBACustomPropertySection"
+            concept="CORBADomain::IDL::CORBAParameter"
+            property="direction">
+      </PropertySection>
+      <PropertySection
+            append="true"
+            class="com.zeligsoft.domain.omg.corba.ui.providers.CORBACustomPropertySection"
+            concept="ZMLMM::ZML_Core::NamedElement"
+            property="name">
+      </PropertySection>
+      <PropertySection
+            class="com.zeligsoft.domain.omg.corba.ui.providers.CORBACustomPropertySection"
+            concept="CORBADomain::IDL::CORBAOperation"
+            property="idlType">
+      </PropertySection>
+      <PropertySection
+            append="false"
+            class="com.zeligsoft.domain.omg.corba.ui.providers.CORBACustomPropertySection"
+            concept="CORBADomain::IDL::CORBAConstant"
+            property="default">
+      </PropertySection>
+   </extension>
+   <extension
+	      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	   <propertySections
+	         contributorId="com.ibm.xtools.modeler.ui.properties">
+	      <propertySection
+	            afterSection="modeler.property.section.AggregationPropertySection"
+	            class="com.zeligsoft.cx.ui.properties.sections.CXPropertyTabControllerSection"
+	            filter="com.zeligsoft.domain.omg.corba.ui.internal.filters.GeneralSectionControllerFilter"
+	            id="com.zeligsoft.domain.omg.corba.ui.generalSectionController"
+	            tab="modeler.property.tab.GeneralPropertySection">
+	      </propertySection>
+	      <propertySection
+	            afterSection="com.ibm.xtools.modeler.ui.properties.internal.sections.AttributesPropertySection"
+	            class="com.zeligsoft.cx.ui.properties.sections.CXPropertyTabControllerSection"
+	            filter="com.zeligsoft.domain.omg.corba.ui.internal.filters.AttributeSectionControllerFilter"
+	            id="com.zeligsoft.domain.omg.corba.ui.attributeSectionController"
+	            tab="modeler.property.tab.AttributesPropertySection">
+	      </propertySection>
+	      <propertySection
+	            afterSection="modeler.property.section.AggregationPropertySection"
+	            class="com.zeligsoft.cx.ui.properties.sections.CXPropertyTabControllerSection"
+	            filter="com.zeligsoft.domain.omg.corba.ui.internal.filters.ParameterSectionControllerFilter"
+	            id="com.zeligsoft.domain.omg.corba.ui.parameterSectionController"
+	            tab="modeler.property.tab.ParametersPropertySection">
+	      </propertySection>
+	      <propertySection
+	            afterSection="modeler.property.section.OperationsPropertySection"
+	            class="com.zeligsoft.cx.ui.properties.sections.CXPropertyTabControllerSection"
+	            filter="com.zeligsoft.domain.omg.corba.ui.internal.filters.OperationSectionControllerFilter"
+	            id="com.zeligsoft.domain.omg.corba.ui.operationsSectionController"
+	            tab="modeler.property.tab.OperationsPropertySection">
+	      </propertySection>
+	   </propertySections>
+	</extension>
+    <extension
+          id="CCM ElementTypes"
+          name="CCM ElementTypes"
+          point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+       <metamodel
+             nsURI="http://www.eclipse.org/uml2/3.0.0/UML">
+          <adviceBinding
+                class="com.zeligsoft.domain.omg.corba.ui.edithelpers.CORBAOperationEditHelperAdvice"
+                id="com.zeligsoft.domain.omg.corba.ui.CORBAOperation"
+                inheritance="all"
+                typeId="com.ibm.xtools.uml.element">
+          </adviceBinding>
+       </metamodel>
+    </extension>
+    <extension
+          id="CCM ElementTypeBindings"
+          name="CCM ElementTypeBindings"
+          point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings">
+       <binding
+             context="com.ibm.xtools.uml.type.context">
+          <advice
+                ref="com.zeligsoft.domain.omg.corba.ui.CORBAOperation">
+          </advice>
+       </binding>
+    </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders">
+      <modelingAssistantProvider
+            class="com.zeligsoft.domain.omg.corba.ui.providers.CORBAModelingAssistantProvider">
+         <Priority
+               name="Medium">
+         </Priority>
+         <object
+               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
+               id="corba__interface_">
+            <method
+                  name="resolveSemanticElement().eClass().getName()"
+                  value="Interface">
+            </method>
+         </object>
+         <object
+               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
+               id="corba__datatype_">
+            <method
+                  name="resolveSemanticElement().eClass().getName()"
+                  value="DataType">
+            </method>
+         </object>
+         <object
+               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
+               id="corba__enum_">
+            <method
+                  name="resolveSemanticElement().eClass().getName()"
+                  value="Enumeration">
+            </method>
+         </object>
+         <object
+               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
+               id="corba__package_">
+            <method
+                  name="resolveSemanticElement().eClass().getName()"
+                  value="Package">
+            </method>
+         </object>
+         <context
+               elements="corba__interface_,corba__datatype_,corba__enum_, corba__package_">
+         </context>
+      </modelingAssistantProvider>
+   </extension>
+</plugin>

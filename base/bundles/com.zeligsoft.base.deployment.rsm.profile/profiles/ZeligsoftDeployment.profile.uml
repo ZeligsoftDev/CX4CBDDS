@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/4" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/4 pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA">
+  <uml:Profile xmi:id="_lwBFQEukEd2T4d7a8_GVtg" name="ZeligsoftDeployment" metamodelReference="_lwBFW0ukEd2T4d7a8_GVtg">
+    <eAnnotations xmi:id="_lwBFQUukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details xmi:id="_B1VmAF0QEd2-gdBzTRvlwQ" key="Deployment::ZML_Deployments::Configuration" value="InstanceSpecification"/>
+      <details xmi:id="_B1VmAV0QEd2-gdBzTRvlwQ" key="Deployment::ZML_Deployments::ModelElement" value="NamedElement"/>
+      <details xmi:id="_B1VmAl0QEd2-gdBzTRvlwQ" key="Deployment::ZML_Deployments::Implementation" value="Artifact"/>
+      <details xmi:id="_B1VmA10QEd2-gdBzTRvlwQ" key="Deployment::ZML_Deployments::DeploymentTarget" value="NamedElement"/>
+      <details xmi:id="_B1VmBF0QEd2-gdBzTRvlwQ" key="Deployment::ZML_Deployments::DeployableElement" value="NamedElement"/>
+      <references xmi:type="uml:Class" href="../models/Deployment.uml#_BpHDIEuREd2aAOSqOUjI9w"/>
+    </eAnnotations>
+    <eAnnotations xmi:id="_lwBFQkukEd2T4d7a8_GVtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_Z5ZqcSzVEd2yXKsDUguUzg" name="deployment" nsURI="http://www.zeligsoft.com/zdl/2008/Deployment/1" nsPrefix="zdeploy">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_lwBFREukEd2T4d7a8_GVtg" name="Allocation">
+          <eAnnotations xmi:id="_lwBFRUukEd2T4d7a8_GVtg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lwBFXUukEd2T4d7a8_GVtg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lwBFRkukEd2T4d7a8_GVtg" name="base_Dependency" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Dependency"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_lwBFSEukEd2T4d7a8_GVtg" name="Deployment">
+          <eAnnotations xmi:id="_lwBFSUukEd2T4d7a8_GVtg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lwBFZkukEd2T4d7a8_GVtg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lwBFSkukEd2T4d7a8_GVtg" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_lwBFTEukEd2T4d7a8_GVtg" name="DeploymentPart">
+          <eAnnotations xmi:id="_lwBFTUukEd2T4d7a8_GVtg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lwBFbkukEd2T4d7a8_GVtg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lwBFTkukEd2T4d7a8_GVtg" name="nestedPart" ordered="false" upperBound="-1" eType="_lwBFTEukEd2T4d7a8_GVtg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lwBFUEukEd2T4d7a8_GVtg" name="modelElement" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//NamedElement"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lwBFUkukEd2T4d7a8_GVtg" name="configuration" ordered="false">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//InstanceSpecification"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lwBFVEukEd2T4d7a8_GVtg" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_lwBFVkukEd2T4d7a8_GVtg" name="ComponentDeploymentPart" eSuperTypes="_lwBFTEukEd2T4d7a8_GVtg">
+          <eAnnotations xmi:id="_lwBFV0ukEd2T4d7a8_GVtg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_lwBFkEukEd2T4d7a8_GVtg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_lwBFWEukEd2T4d7a8_GVtg" name="selectedImplementation" ordered="false">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Artifact"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_B1ZQYF0QEd2-gdBzTRvlwQ" name="implementationConfiguration" ordered="false">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//InstanceSpecification"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <packageImport xmi:id="_lwBFW0ukEd2T4d7a8_GVtg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_lwBFXEukEd2T4d7a8_GVtg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_lwBFXUukEd2T4d7a8_GVtg" name="Allocation">
+      <eAnnotations xmi:id="_lwBFXkukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_lwBFX0ukEd2T4d7a8_GVtg" key="deployed" value="client"/>
+        <details xmi:id="_lwBFYEukEd2T4d7a8_GVtg" key="deployedOn" value="supplier"/>
+        <references xmi:type="uml:Class" href="../models/Deployment.uml#_Ixk6oEuREd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_lwBFYUukEd2T4d7a8_GVtg" source="uml2.extensions">
+        <details xmi:id="_lwBFYkukEd2T4d7a8_GVtg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_lwBFY0ukEd2T4d7a8_GVtg" name="base_Dependency" association="_lwBFZEukEd2T4d7a8_GVtg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_lwBFZEukEd2T4d7a8_GVtg" name="Dependency_Allocation" memberEnd="_lwBFZUukEd2T4d7a8_GVtg _lwBFY0ukEd2T4d7a8_GVtg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lwBFZUukEd2T4d7a8_GVtg" name="extension_Allocation" type="_lwBFXUukEd2T4d7a8_GVtg" aggregation="composite" association="_lwBFZEukEd2T4d7a8_GVtg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_lwBFZkukEd2T4d7a8_GVtg" name="Deployment">
+      <eAnnotations xmi:id="_lwBFZ0ukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_lwBFaEukEd2T4d7a8_GVtg" key="part" value="ownedAttribute"/>
+        <references xmi:type="uml:Class" href="../models/Deployment.uml#_KPOkYEuREd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_lwBFaUukEd2T4d7a8_GVtg" source="uml2.extensions">
+        <details xmi:id="_lwBFakukEd2T4d7a8_GVtg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_lwBFa0ukEd2T4d7a8_GVtg" name="base_Component" association="_lwBFbEukEd2T4d7a8_GVtg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_lwBFbEukEd2T4d7a8_GVtg" name="Component_Deployment" memberEnd="_lwBFbUukEd2T4d7a8_GVtg _lwBFa0ukEd2T4d7a8_GVtg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lwBFbUukEd2T4d7a8_GVtg" name="extension_Deployment" type="_lwBFZkukEd2T4d7a8_GVtg" aggregation="composite" association="_lwBFbEukEd2T4d7a8_GVtg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_lwBFbkukEd2T4d7a8_GVtg" name="DeploymentPart">
+      <eAnnotations xmi:id="_lwBFb0ukEd2T4d7a8_GVtg" source="uml2.extensions">
+        <details xmi:id="_lwBFcEukEd2T4d7a8_GVtg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_lwBFcUukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="../models/Deployment.uml#_R1xfAEuREd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_lwBFckukEd2T4d7a8_GVtg" name="nestedPart" type="_lwBFbkukEd2T4d7a8_GVtg" association="_lwBFf0ukEd2T4d7a8_GVtg">
+        <eAnnotations xmi:id="_lwBFc0ukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="../models/Deployment.uml#_iSvLQEuSEd2aAOSqOUjI9w"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lwBFdEukEd2T4d7a8_GVtg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lwBFdUukEd2T4d7a8_GVtg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_lwBFdkukEd2T4d7a8_GVtg" name="modelElement" association="_lwBFhEukEd2T4d7a8_GVtg">
+        <eAnnotations xmi:id="_lwBFd0ukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="../models/Deployment.uml#_MdW98EuTEd2aAOSqOUjI9w"/>
+        </eAnnotations>
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lwBFeEukEd2T4d7a8_GVtg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lwBFeUukEd2T4d7a8_GVtg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_lwBFekukEd2T4d7a8_GVtg" name="configuration" association="_lwBFiUukEd2T4d7a8_GVtg">
+        <eAnnotations xmi:id="_lwBFe0ukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="../models/Deployment.uml#_Y_ELAEuTEd2aAOSqOUjI9w"/>
+        </eAnnotations>
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#InstanceSpecification"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lwBFfEukEd2T4d7a8_GVtg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lwBFfUukEd2T4d7a8_GVtg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_lwBFfkukEd2T4d7a8_GVtg" name="base_Property" association="_lwBFjkukEd2T4d7a8_GVtg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_lwBFf0ukEd2T4d7a8_GVtg" memberEnd="_lwBFckukEd2T4d7a8_GVtg _lwBFgUukEd2T4d7a8_GVtg">
+      <eAnnotations xmi:id="_lwBFgEukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="../models/Deployment.uml#_iStWEEuSEd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_lwBFgUukEd2T4d7a8_GVtg" name="nestingPart" type="_lwBFbkukEd2T4d7a8_GVtg" association="_lwBFf0ukEd2T4d7a8_GVtg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lwBFgkukEd2T4d7a8_GVtg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lwBFg0ukEd2T4d7a8_GVtg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_lwBFhEukEd2T4d7a8_GVtg" memberEnd="_lwBFdkukEd2T4d7a8_GVtg _lwBFhkukEd2T4d7a8_GVtg">
+      <eAnnotations xmi:id="_lwBFhUukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="../models/Deployment.uml#_MdVIwEuTEd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_lwBFhkukEd2T4d7a8_GVtg" name="deployment" type="_lwBFbkukEd2T4d7a8_GVtg" association="_lwBFhEukEd2T4d7a8_GVtg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lwBFh0ukEd2T4d7a8_GVtg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lwBFiEukEd2T4d7a8_GVtg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_lwBFiUukEd2T4d7a8_GVtg" memberEnd="_lwBFekukEd2T4d7a8_GVtg _lwBFi0ukEd2T4d7a8_GVtg">
+      <eAnnotations xmi:id="_lwBFikukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="../models/Deployment.uml#_Y_CV0EuTEd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_lwBFi0ukEd2T4d7a8_GVtg" name="configured" type="_lwBFbkukEd2T4d7a8_GVtg" association="_lwBFiUukEd2T4d7a8_GVtg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lwBFjEukEd2T4d7a8_GVtg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lwBFjUukEd2T4d7a8_GVtg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_lwBFjkukEd2T4d7a8_GVtg" name="Property_DeploymentPart" memberEnd="_lwBFj0ukEd2T4d7a8_GVtg _lwBFfkukEd2T4d7a8_GVtg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_lwBFj0ukEd2T4d7a8_GVtg" name="extension_DeploymentPart" type="_lwBFbkukEd2T4d7a8_GVtg" aggregation="composite" association="_lwBFjkukEd2T4d7a8_GVtg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_lwBFkEukEd2T4d7a8_GVtg" name="ComponentDeploymentPart">
+      <eAnnotations xmi:id="_lwBFkUukEd2T4d7a8_GVtg" source="uml2.extensions">
+        <details xmi:id="_lwBFkkukEd2T4d7a8_GVtg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_lwBFk0ukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="../models/Deployment.uml#_UGsYwEuREd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <generalization xmi:id="_lwBFlEukEd2T4d7a8_GVtg" general="_lwBFbkukEd2T4d7a8_GVtg"/>
+      <ownedAttribute xmi:id="_lwBFlUukEd2T4d7a8_GVtg" name="selectedImplementation" association="_lwBFmUukEd2T4d7a8_GVtg">
+        <eAnnotations xmi:id="_lwBFlkukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="../models/Deployment.uml#_EHvW0EuTEd2aAOSqOUjI9w"/>
+        </eAnnotations>
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Artifact"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lwBFl0ukEd2T4d7a8_GVtg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lwBFmEukEd2T4d7a8_GVtg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_B1fXAF0QEd2-gdBzTRvlwQ" name="implementationConfiguration" association="_B1U-8F0QEd2-gdBzTRvlwQ">
+        <eAnnotations xmi:id="_B1fXAV0QEd2-gdBzTRvlwQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="../models/Deployment.uml#_ggtHAFdFEd2vyvkXKkpVQw"/>
+        </eAnnotations>
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#InstanceSpecification"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_B1fXAl0QEd2-gdBzTRvlwQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_B1fXA10QEd2-gdBzTRvlwQ"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_lwBFmUukEd2T4d7a8_GVtg" memberEnd="_lwBFlUukEd2T4d7a8_GVtg _lwBFm0ukEd2T4d7a8_GVtg">
+      <eAnnotations xmi:id="_lwBFmkukEd2T4d7a8_GVtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="../models/Deployment.uml#_EHthoEuTEd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_lwBFm0ukEd2T4d7a8_GVtg" name="deployment" type="_lwBFkEukEd2T4d7a8_GVtg" association="_lwBFmUukEd2T4d7a8_GVtg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lwBFnEukEd2T4d7a8_GVtg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lwBFnUukEd2T4d7a8_GVtg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_B1U-8F0QEd2-gdBzTRvlwQ" memberEnd="_B1fXAF0QEd2-gdBzTRvlwQ _B1U-8l0QEd2-gdBzTRvlwQ">
+      <eAnnotations xmi:id="_B1U-8V0QEd2-gdBzTRvlwQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="../models/Deployment.uml#_gggSsFdFEd2vyvkXKkpVQw"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_B1U-8l0QEd2-gdBzTRvlwQ" name="" type="_lwBFkEukEd2T4d7a8_GVtg" association="_B1U-8F0QEd2-gdBzTRvlwQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_B1U-810QEd2-gdBzTRvlwQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_B1U-9F0QEd2-gdBzTRvlwQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <profileApplication xmi:id="_lwBFnkukEd2T4d7a8_GVtg">
+      <eAnnotations xmi:id="_lwBFn0ukEd2T4d7a8_GVtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_lwBFoEukEd2T4d7a8_GVtg" base_Package="_lwBFQEukEd2T4d7a8_GVtg" packageName="deployment" nsPrefix="zdeploy" nsURI="http://www.zeligsoft.com/zdl/2008/Deployment/Deployment/1" prefix="ZeligsoftDeployment"/>
+</xmi:XMI>

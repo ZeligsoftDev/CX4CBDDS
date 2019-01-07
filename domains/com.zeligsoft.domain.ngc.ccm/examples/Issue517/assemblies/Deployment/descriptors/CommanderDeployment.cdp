@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:DeploymentPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
+    xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>CommanderDeployment</label>
+  <UUID>_7e1af100-9bd3-4bca-8556-724367295591</UUID>
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source/>
+    <artifact xmi:idref="CompSvrArt"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_b6fc37a3-0eb7-4102-8502-60e1f64cd35f">
+    <name>Commander_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_96e79e6b-5020-463d-8f52-1fa6d003cd78"/>
+    <artifact xmi:idref="_8559da3c-113c-482f-b967-b635ab0e4b57"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Commander_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Commander_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Commander_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Commander_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_5dc6102a-584f-4e08-a0cf-e3e931893e3a">
+    <name>Commander_asm.commander_comp</name>
+    <node>node</node>
+    <source/>
+    <implementation xmi:idref="_b6fc37a3-0eb7-4102-8502-60e1f64cd35f"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.RegisterNaming</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Commander</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_b06a925e-0f44-40f5-880d-cd5e1f1c0c8e">
+    <name>ContainerProcess_ComponentServerInstance</name>
+    <node>node</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ContainerProcess</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>Commander_asm.commander_comp.commandFacet::Commander_asm.speaker.commandRecept</name>
+    <internalEndpoint>
+      <portName>commandFacet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_5dc6102a-584f-4e08-a0cf-e3e931893e3a"/>
+    </internalEndpoint>
+    <externalReference>
+      <location>corbaname:rir:/NameService#speaker</location>
+      <provider>false</provider>
+      <portName>commandRecept</portName>
+      <supportedType>Meaningless</supportedType>
+    </externalReference>
+  </connection>
+
+  <connection>
+    <name>Commander_asm.commander_comp.speakerRecept::Commander_asm.speaker.speakerFacet</name>
+    <internalEndpoint>
+      <portName>speakerRecept</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_5dc6102a-584f-4e08-a0cf-e3e931893e3a"/>
+    </internalEndpoint>
+    <externalReference>
+      <location>corbaname:rir:/NameService#speaker</location>
+      <provider>true</provider>
+      <portName>speakerFacet</portName>
+      <supportedType>Meaningless</supportedType>
+    </externalReference>
+  </connection>
+
+  <artifact xmi:id="CompSvrArt">
+    <name>CompoSvrArtifactName</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+
+  <artifact xmi:id="_96e79e6b-5020-463d-8f52-1fa6d003cd78">
+    <name>Commander_comp_exec</name>
+    <source/>
+    <node/>
+    <location>Commander_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_8559da3c-113c-482f-b967-b635ab0e4b57">
+    <name>Commander_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>Commander_comp_svnt</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <!-- This is referencing [ContainerProcess_ComponentServerInstance] -->
+    <constrainedInstance xmi:idref="_b06a925e-0f44-40f5-880d-cd5e1f1c0c8e"/>
+    <!-- This is referencing [Commander_asm.commander_comp] -->
+    <constrainedInstance xmi:idref="_5dc6102a-584f-4e08-a0cf-e3e931893e3a"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

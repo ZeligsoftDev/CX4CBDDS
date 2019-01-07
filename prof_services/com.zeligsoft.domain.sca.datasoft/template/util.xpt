@@ -1,0 +1,154 @@
+«IMPORT Standard»
+
+«DEFINE stylesheet FOR Object»
+«FILE "style.css"»
+
+/*
+Original style sheet © 2005 Christine Kirchmeier http://www.zeta-software.de
+and released into the public domain. Modified by Zeligsoft.
+*/
+
+#itsthetable {
+	background: #fff url(bg_caption.gif) repeat-x;
+	padding: 0 2em 2em 2em;
+}
+
+table {
+	margin: 1em auto;
+	font: 95%/130% Tahoma, Arial, Helvetica, sans-serif;
+	border-spacing: 0;
+}
+
+table caption {
+	background: url(caption_title.jpg) no-repeat 50% 0;
+	color: #2442b1;
+	font-size: 130%;
+	letter-spacing: .1em;
+	padding: 3.5em 0.2em 2em 0;
+	text-align: right;
+	text-transform: uppercase;
+}
+
+thead th, tbody th {
+	background: #2442b1 url(left_corner.gif) no-repeat;
+	color: #fff;
+	font-weight: bold;
+	padding: .2em .7em .2em .8em;
+	text-align: left;
+	border-top: 1px solid #fff;
+	border-right: 1px solid #c6cdd8;
+	border-bottom: 1px solid #c6cdd8;
+	border-left: 1px solid #fff;
+}
+
+thead th {
+	font-size: 1em;
+}
+
+tbody th {
+	background: #dee2e9 url(bg_col1.gif) repeat-x;
+}
+
+tbody tr.odd th {
+	background: #e2e2e2;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+tbody th a, tbody th a:link, tbody th a:visited, tbody th a:hover, tbody th a:active {
+	color: #2442b1;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 1.1em;
+}
+
+tbody th a:hover {
+	text-decoration: underline;
+}
+
+td a:link {
+	color: #537fc3;
+}
+
+tbody th a:visited, td a:visited {
+	color: #444;
+}
+
+th a:hover, td a:hover {
+	text-decoration: none;
+}
+
+td {
+	background: #f3f8fd url(bg_col2.gif) repeat-x;
+	color: #203276;
+	border-top: 1px solid #fff;
+	border-right: 1px solid #c6cdd8;
+	border-bottom: 1px solid #c6cdd8;
+	border-left: 1px solid #fff;
+	padding: 1.5em 0.5em 1.5em 0.8em;
+}
+
+td:hover {
+	background: #f3f8fd;
+}
+
+tr.odd td {
+	background: #f8f8f8 url(bg_col3.gif) repeat-x;
+	color: #444;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+tr.odd td.notable {
+	background: #cc99ff url(bg_col3.gif) repeat-x;
+	color: #444;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+tr td.notable {
+	background: #cc99ff url(bg_col3.gif) repeat-x;
+	color: #444;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+tr.odd td.warn {
+	background: yellow url(bg_col3.gif) repeat-x;
+	color: #444;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+tr td.warn {
+	background: yellow url(bg_col3.gif) repeat-x;
+	color: #444;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+tr.odd td.err {
+	background: red url(bg_col3.gif) repeat-x;
+	color: #444;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+tr td.err {
+	background: red url(bg_col3.gif) repeat-x;
+	color: #444;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+tr.odd td:hover {
+	background: #f8f8f8;
+}
+
+tfoot th, tfoot td {
+	background: #444 !important;
+	padding: .5em .5em .5em .5em !important;
+	color: #fff;
+}
+«ENDFILE»
+«ENDDEFINE»

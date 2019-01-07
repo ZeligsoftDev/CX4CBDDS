@@ -1,0 +1,101 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+import CCM::CCM_Component;
+import ZMLMM::ZML_Component;
+
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::ccm_utils;
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::uml_utils;
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::tao_idl_utils;
+
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::standard_ops;
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::corba_standard_ops;
+
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::component_names;
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::namespaces;
+
+
+cached Void add_component_context_class(CCMComponent node, uml::Package container) :
+	component_context_class(node, container) ->
+	component_context_var(node, container) ->
+	component_context_ptr(node, container)->
+	component_context_out(node, container);
+	
+create uml::Class component_context_class(CCMComponent node, uml::Package container) :
+	let name = node.component_context_name() :
+	let namespace = namespace(node, container) :
+		namespace.packagedElement.add(this) ->
+		this.setName(name) ->
+		node.usesPorts().component_context_class__uses_port_op(this, namespace) ->
+		node.publishesPorts().component_context_class__publishes_port_op(this, namespace) ->
+		this.standard_op__is_a().createTrace(node, "standard_op_is_a") ->
+	 	this.standard_op__interface_repository_id().createTrace(node, "standard_op_interface_repository_id") ->
+	 	this.standard_op__marshal().createTrace(node, "standard_marshal") ->
+	 	this.add_default_constructor(name, visibility_kind_protected()).createTrace(node, container, "component_context_class_constructor") ->
+	 	this.add_destructor(name, visibility_kind_protected()).createTrace(node, container, "component_context_class_destructor") ->
+	 	this.add_copy_constructor(name, visibility_kind_private()).createTrace(node, container, "omponent_context_class_copy_constructor") ->
+	 	this.createTrace(node, container, "component_context_class") ->
+		this.addGeneratedTag() ->
+		this;
+		
+create uml::DataType component_context_var(CCMComponent node, uml::Package container) :
+	let namespace = namespace(node, container) :
+		namespace.packagedElement.add(this) ->
+		this.setName(node.component_context_var_name()) ->
+		this.general.add(component_context_class(node, namespace)) ->
+		this.createTrace(node, container, "component_context_var") ->
+		this.addGeneratedTag() ->
+		this;
+	
+create uml::DataType component_context_ptr(CCMComponent node, uml::Package container) :
+	let namespace = namespace(node, container) :
+		namespace.packagedElement.add(this) ->
+		this.setName(node.component_context_ptr_name()) ->
+		this.general.add(component_context_class(node, namespace)) ->
+		this.createTrace(node, container, "component_context_ptr") ->
+		this.addGeneratedTag() ->
+		this;
+	
+create uml::DataType component_context_out(CCMComponent node, uml::Package container) :
+	let namespace = namespace(node, container) :
+		namespace.packagedElement.add(this) ->
+		this.setName(node.component_context_out_name()) ->
+		this.general.add(component_context_class(node, namespace)) ->
+		this.createTrace(node, container, "component_context_out") ->
+		this.addGeneratedTag() ->
+		this;
+	
+private create uml::Operation component_context_class__uses_port_op(MessagePort node, uml::Class container, uml::Package namespace) :
+	this.setName("get_connection_" + node.name) ->
+	// TODO : set return type
+	container.ownedOperation.add(this) ->
+	this.createTrace(node, namespace, "component_context_class__uses_port_op") ->
+	this;
+	
+private create uml::Operation component_context_class__publishes_port_op(EventPort node, uml::Class container, uml::Package namespace) :
+	this.setName("push_" + node.name) ->
+	component_context_class__publishes_port_op_parameter(node, this) ->
+	container.ownedOperation.add(this) ->
+	this.createTrace(node, namespace, "component_context_class__publishes_port_op") ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Parameter component_context_class__publishes_port_op_parameter(EventPort node, uml::Operation container) :
+	this.setName("e") ->
+	// TODO : set parameter type
+	container.ownedParameter.add(this) ->
+	this.addGeneratedTag() ->
+	this;

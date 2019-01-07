@@ -1,0 +1,114 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+
+import CCM::CCM_Component;
+import CORBADomain::IDL;
+import ZMLMM::ZML_Component;
+
+String executor_impl_class_name(CCMComponent node) :
+	node.local_name() + "_exec_i";
+	
+String facet_executor_class_name(MessagePort node) :
+	node.name + "_exec_i";
+	
+String facet_executor_class_name(ZMLMM::ZML_Component::Interface node) :
+	node.zdlAsInterface().name + "_exec_i";
+	
+String exec_class_name(CCMComponent node) :
+	node.local_name() + "_Exec";
+	
+String flat_name(CCMComponent node) :
+	node.name;
+	
+String local_name(CCMComponent node) :
+	node.name;
+	
+String full_name(CCMComponent node) :
+	node.name;
+	
+String component_context_name(CCMComponent node) :
+	"CCM_" + node.local_name() + "_Context";
+	
+String component_context_var_name(CCMComponent node) :
+	node.component_context_name() + "_var";
+	
+String component_context_ptr_name(CCMComponent node) :
+	node.component_context_name() + "_ptr";
+	
+String component_context_out_name(CCMComponent node) :
+	node.component_context_name() + "_out";
+	
+String component_einterface_name(CCMComponent node) :
+	"CCM_" + node.name;
+	
+String component_einterface_var_name(CCMComponent node) :
+	"CCM_" + node.name + "_var";
+	
+String component_einterface_ptr_name(CCMComponent node) :
+	"CCM_" + node.name + "_ptr";
+	
+String component_einterface_out_name(CCMComponent node) :
+	"CCM_" + node.name + "_out";
+	
+String component_einterface_client_name(CCMComponent node) :
+	node.name;
+	
+String component_einterface_client_var_name(CCMComponent node) :
+	node.component_einterface_client_name() + "_var";
+	
+String component_einterface_client_ptr_name(CCMComponent node) :
+	node.component_einterface_client_name() + "_ptr";
+	
+String component_einterface_client_out_name(CCMComponent node) :
+	node.component_einterface_client_name() + "_out";
+	
+String component_ciao_executor_name(CCMComponent node) :
+	node.name + "_Exec";
+	
+String component_ciao_executor_var_name(CCMComponent node) :
+	node.component_ciao_executor_name() + "_var";
+	
+String component_ciao_executor_ptr_name(CCMComponent node) :
+	node.component_ciao_executor_name() + "_ptr";
+	
+String component_ciao_executor_out_name(CCMComponent node) :
+	node.component_ciao_executor_name() + "_out";
+	
+String component_ciao_executor_facet_name(CCMComponent node) :
+	"CCM_" + node.name;
+	
+String component_ciao_executor_facet_var_name(CCMComponent node) :
+	node.component_ciao_executor_facet_name() + "_var";
+	
+String component_ciao_executor_facet_ptr_name(CCMComponent node) :
+	node.component_ciao_executor_facet_name() + "_ptr";
+	
+String component_ciao_executor_facet_out_name(CCMComponent node) :
+	node.component_ciao_executor_facet_name() + "_out";
+	
+String interface__equivalent_idl_name(CORBAInterface node) :
+	"CCM_" + node.name;
+	
+String interface__equivalent_idl_var_name(CORBAInterface node) :
+	node.interface__equivalent_idl_name() + "_var";
+	
+String interface__equivalent_idl_ptr_name(CORBAInterface node) :
+	node.interface__equivalent_idl_name() + "_ptr";
+
+String interface__equivalent_idl_out_name(CORBAInterface node) :
+	node.interface__equivalent_idl_name() + "_out";	

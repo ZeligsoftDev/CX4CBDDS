@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension point="com.ibm.xtools.uml.msl.UMLLibraries">
+      <UMLLibrary
+            name="eorb15-lynxos4-gcc-ppc"
+            path="pathmap://BUILD_CONFIG_EORB15_LYNXOS_GCC_PPC/eorb15-lynxos4-gcc-ppc.library.uml">
+      </UMLLibrary>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://BUILD_CONFIG_EORB15_LYNXOS_GCC_PPC/"
+            target="platform:/plugin/com.prismtech.spectracx.target.eorb15-lynxos4-gcc-ppc/models/">
+      </mapping>
+   </extension>
+   <extension
+         point="com.zeligsoft.base.licensing.license_check">
+      <license_check
+            class="com.prismtech.spectracx.target.eorb15_lynxos4_gcc_ppc.LicenseListener">
+      </license_check>
+   </extension>
+</plugin>

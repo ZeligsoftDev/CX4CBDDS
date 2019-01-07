@@ -1,0 +1,61 @@
+<head>
+	<title>Defining SCA Properties</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="definescaprop.html" title="Defining SCA Properties">
+		<h1>Defining SCA Properties</h1>
+		<p>There are different ways to define the elements in your model using SCA properties. Each element 
+		has associated mandatory and optional SCA properties that are configured in the Properties View. These 
+		properties are explained in detail in the main Properties section.</p>
+		<p>In addition to these mandatory and optional SCA properties, you can also create your own SCA properties 
+		for the elements in you model. These can be of configuration or allocation property type and these properties 
+		can be re-used in your model. This topic explains the workflow for creating and defining SCA properties.</p>
+		<h3>Create a Data Type</h3>
+		<ol>
+			<li>Create a data type (enumeration, primitive, struct, struct sequence, or test) and define the name.</li>
+			<li>In the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab, set the data type <strong>action</strong>, 
+<strong>kind</strong>, and <strong>type</strong>.</li><br>This data type can be referenced by more than one SCA Property.</ol>
+		<h3>Create an SCA Property</h3>
+		<ol>
+			<li>Select an element (component, component interface, or component implementation) to which you want to add SCA properties.</li>
+			<li>Right-click the element and from the pop-up menu, select <strong>Add SCA</strong> &gt; <strong>SCA Property</strong>.</li>
+			<li>A placeholder is added to the element. Type a name for the SCA property.</li>
+			<p>Now that the SCA property has been created you can use it to reference data types within your model.</p>
+			<li>Create a data type (enumeration, primitive, struct, struct sequence, or test).</li>
+			<li>In the <strong>Properties View</strong> &gt; <strong>General</strong> tab click <strong>Type</strong> and then Search for or Browse 
+		for the data type you created above.</li>
+			<p>This defines the type for the SCA property you created above.</p>
+			<li>In the <strong>Properties View</strong> for the data type, select the <strong>General</strong> tab.</li>
+			<li>Ensure you set a the <strong>Default Value</strong> for the SCA Property.</li>
+			<p>To identify the default value as a literal string, surround the value with " " (double quotes).</p>
+		</ol>
+		<p>The following SCA properties are created for each SCA property you define:</p>
+		<ul>
+			<li><strong>configure_body</strong>: use this property to add code to define the behavior of a specific property in the SCA. </li>
+			<li><strong>description</strong>: describes the implementation. See D.2.1.6.2 in SCA 2.2.2.</li>
+			<li><strong>mode</strong>: from the drop-down menu choose:</li>
+			<ul>
+				<li>readonly</li>
+				<li>readwrite</li>
+				<li>writeonly</li>
+			</ul>
+			<li><strong>query_body</strong>: use this property to add code to define the behaviour of a specific property in the SCA. </li>
+			<li><strong>range</strong>: click the ellipse button to specify minimum and maximum values.</li>
+			<li><strong>runtest_body</strong>: this property is used when the Test Property Type is used. When you edit the Test source, 
+		this attribute is updated with the content.</li>
+			<li><strong>units</strong>: this is an informational property, used to define the unit of the property type; for example, MIPS.</li>
+		</ul>
+		<h3>Override an SCA Property</h3>
+		<p>An SCA property can be overridden on an application or a node.</p>
+		<ol>
+			<li>Add the component or device containing the SCA property to your application or node. </li>
+			<li>Select the elements, right-click and from the pop-up menu, select <strong>SCA Properties</strong>. </li><br>The SCA properties for the selected elements are displayed.<li>In the Override SCA Properties window, you can override and edit the SCA property values. Simply select the value and make your changes. 
+The default value is displayed and is indicated with (default).</li><br>To revert to the default values, clear the value field. Note that you can only override SCA properties on the 
+application or node - you cannot define or add new SCA properties.</ol>
+		<div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

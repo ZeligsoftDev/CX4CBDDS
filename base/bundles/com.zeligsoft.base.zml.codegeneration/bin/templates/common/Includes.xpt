@@ -1,0 +1,107 @@
+«REM»
+
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«IMPORT templates::config»
+
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::DeploymentUtilsFuncs»
+
+
+«DEFINE usrHeaderIncludes FOR Component»
+#include "«getComponentHeaderFileName()»"
+«ENDDEFINE»
+
+«DEFINE headerIncludes FOR Type»
+#include "«getComponentContainerHeaderFileName()»"
+#include "zceOperatingEnvironment.h"
+#include "zce«this.name»ComponentFwdDeclares.h"
+«FOREACH this.ownedElement.typeSelect(Port) AS p»
+«EXPAND providesInterfaceIncludes FOR (Port)p»
+«EXPAND requiresInterfaceIncludes FOR (Port)p»
+«ENDFOREACH-»
+«ENDDEFINE»
+«DEFINE providesInterfaceIncludes FOR Port»
+«FOREACH this.getProvideds() AS providedInterface»
+#include "«getInterfaceBaseDefFileName(providedInterface)»"
+«ENDFOREACH»
+«ENDDEFINE»
+«DEFINE requiresInterfaceIncludes FOR Port»
+«FOREACH this.getRequireds() AS requiresInterface»
+#include "«getInterfaceBaseDefFileName(requiresInterface)»"
+«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE sourceIncludes FOR Type»
+#include "«getComponentHeaderFileName()»"
+#include "zce«name»Ids.h"
+«ENDDEFINE»
+
+«DEFINE sourceUsrIncludes FOR Component»
+#include "«getComponentHeaderFileName()»"
+#include "«getComponentUsrHeaderFileName()»"
+«ENDDEFINE»
+
+«DEFINE containerHeaderIncludes FOR Type»
+#include "zceOperatingEnvironment.h"
+#include "zceBaseConfigurator.h"
+#include "zceSendHandler.h"
+#include "«getComponentHeaderFileName()»"
+#include "«getComponentForwardDeclaresHeaderFileName()»"
+«FOREACH this.ownedElement AS p»
+	«FOREACH ((Port)p).getProvideds() AS providedInterface»
+#include "«getInterfaceProvidesDefFileName(providedInterface)»"
+	«ENDFOREACH»
+	«FOREACH ((Port)p).getRequireds() AS requiresInterface»
+#include "«getInterfaceRequiresDefFileName(requiresInterface)»"
+	«ENDFOREACH»
+«ENDFOREACH»
+
+«ENDDEFINE»
+
+«DEFINE containerSourceIncludes FOR Type»
+#include "«getComponentContainerHeaderFileName()»"
+#include <string.h>
+#include <stdlib.h>
+#include "«getComponentContainerIdsHeaderFileName()»"
+«ENDDEFINE»
+
+«DEFINE configuratorHeaderIncludes FOR Type»
+#include "«getComponentContainerHeaderFileName()»"
+«ENDDEFINE»
+
+«DEFINE configuratorSourceIncludes FOR Property»
+#include "«getConfiguratorHeaderFileName()»"
+#include "«getComponentHeaderFileName(this.type)»"
+#include "zceOperatingEnvironment.h"
+#include "«getComponentContainerIdsHeaderFileName(this.type)»"
+#include "zce«name»ConfiguratorIds.h"
+
+«FOREACH this.owner.ownedElement.typeSelect(ZeligsoftDeployment::DeploymentPart) AS e»
+«IF getAllocationForSourcePart((Property)e) != null»
+	«IF getModelElementForConnector((Property)e) != null»
+		«IF isPartEndofConnector(this, (Connector)getModelElementForConnector((Property)e))»
+			«IF getOtherComponentDeployedOnProecssName(this,(Connector)getModelElementForConnector((Property)e)) != null»
+#include "zce«getOtherComponentDeployedOnProecssName(this,(Connector)getModelElementForConnector((Property)e)).name»Ids.h"			
+			«ENDIF-»
+		«ENDIF-»
+	«ENDIF-»
+«ENDIF-»
+«ENDFOREACH-»
+#include "zceLinxSendHandler.h"
+«ENDDEFINE»

@@ -1,0 +1,28 @@
+/// @defgroup AGSP_CC_Status_conn CC_Status_conn
+/// @{
+/// 
+/// @file AGSP_CC_Status_conn.idl
+/// @brief CC_Status_conn connector definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__CAMERA__AGSP_CC_STATUS_CONN_IDL
+#define CX_PORTS__CAMERA__AGSP_CC_STATUS_CONN_IDL
+
+#include <Components.idl>
+#include <ccm_dds.idl>
+#include "AGSP_CC_Status_msg.idl"
+#pragma ciao lem "AGSP_CC_Status_connE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef CC_Status_msgSeq
+    typedef sequence <CC_Status_msg> CC_Status_msgSeq;
+    module CCM_DDS::Typed <CC_Status_msg, CC_Status_msgSeq> CC_Status_conn; 
+};
+
+#endif // CX_PORTS__CAMERA__AGSP_CC_STATUS_CONN_IDL
+
+/// @}
+

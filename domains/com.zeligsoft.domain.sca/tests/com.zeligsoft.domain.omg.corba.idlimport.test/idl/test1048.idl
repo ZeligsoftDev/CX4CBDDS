@@ -1,0 +1,7 @@
+// Interface with parameter namespace conflicts
+
+interface int1048
+{
+  void returnVoid (in long x, out string x);
+  string returnString (inout float y, in string Y);  // IDL namespace conflicts are case insensitive
+};

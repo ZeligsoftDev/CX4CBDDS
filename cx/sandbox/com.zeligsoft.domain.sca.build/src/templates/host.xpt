@@ -1,0 +1,67 @@
+�REM�
+
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+�ENDREM�
+�IMPORT uml�
+
+
+�DEFINE generate FOR Model�
+
+�FILE "host.mk"�
+
+�EXPAND templates::copyright::generate FOR this�
+
+ifeq ($(OS),Windows_NT)
+
+LOCALHOST=win32
+
+# win32 definitions.
+
+MKDIR= mkdir
+RMDIR= rmdir /s /q
+NUL = nul
+RM = del /f
+
+VSINSTALLDIR 		= 	C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE
+VCINSTALLDIR 		= 	C:\Program Files\Microsoft Visual Studio .NET 2003
+FrameworkDir		=	C:\WINDOWS\Microsoft.NET\Framework
+FrameworkVersion	=	v1.1.4322
+FrameworkSDKDir		=	C:\Program Files\Microsoft Visual Studio .NET 2003\SDK\v1.1
+DevEnvDir			=	$(VSINSTALLDIR)
+MSVCDir				=	$(VCINSTALLDIR)\VC7
+PATH				:=	$(DevEnvDir);$(MSVCDir)\BIN;$(VCINSTALLDIR)\Common7\Tools;$(VCINSTALLDIR)\Common7\Tools\bin\prerelease;$(VCINSTALLDIR)\Common7\Tools\bin;$(FrameworkSDKDir)\bin;$(FrameworkDir)\$(FrameworkVersion);$(Path);
+INCLUDE				:=	$(MSVCDir)\ATLMFC\INCLUDE;$(MSVCDir)\INCLUDE;$(MSVCDir)\PlatformSDK\include\prerelease;$(MSVCDir)\PlatformSDK\include;$(FrameworkSDKDir)\include;$(INCLUDE)
+LIB					:=	$(MSVCDir)\ATLMFC\LIB;$(MSVCDir)\LIB;$(MSVCDir)\PlatformSDK\lib\prerelease;$(MSVCDir)\PlatformSDK\lib;$(FrameworkSDKDir)\lib;$(LIB)
+
+export Path = $(PATH)
+export Include = $(INCLUDE)
+export Lib = $(LIB)
+
+else
+
+LOCALHOST=linux
+
+# linux definitions.
+
+MKDIR= mkdir -p
+RMDIR= rm -fr
+NUL = /dev/nul
+RM = rm -f
+
+endif
+
+�ENDFILE�
+�ENDDEFINE�

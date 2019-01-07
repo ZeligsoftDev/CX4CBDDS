@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+
+Description
+XML QoS Profile 
+
+The QoS configuration of the DDS entities in the generated example is 
+loaded from this file.
+
+This file is used only when it is in the current working directory
+or when the enviroment variable
+NDDS_QOS_PROFILES is defined and points to this file.
+
+For more information about XML QoS Profiles see Chapter 15 in the 
+RTI Data Distribution Service user manual.
+-->
+
+<dds>
+<qos_library name="SNA_Examples">
+   <!--
+     ===========================================================================
+     == DEFINE A QOS PROFILE FOR NETWORKED, BEST-EFFORT OPERATION:
+     ===========================================================================
+     -->
+   <qos_profile name="NetworkedBestEffort_QOS"> 
+      
+      <!-- This example's QoS settings are  -->
+      
+      <!-- reliability   = Best effort reliability vastly reduces latency, but 
+           	does not guarantee message transfer. However, for this example,
+           	messages are being transported over shared memory, so we expect
+           	dropped messages to be rare.
+           history = Here, the writer only keeps one message in its queue, and
+           	the reader keeps only four.
+           durability = The default setting holds here: volatile durability. 
+           	This means that late-joining components do not recieve messages
+           	published before they joined. -->
+      
+      <datawriter_qos>
+         <reliability>
+            <kind>DDS_BEST_EFFORT_RELIABILITY_QOS</kind>
+         </reliability>
+         <history>
+            <kind>DDS_KEEP_LAST_HISTORY_QOS</kind>
+            <depth>1</depth>
+         </history>
+      </datawriter_qos>
+      
+      <datareader_qos>
+         <reliability>
+            <kind>DDS_BEST_EFFORT_RELIABILITY_QOS</kind>
+         </reliability>
+         <history>
+            <kind>DDS_KEEP_LAST_HISTORY_QOS</kind>
+            <depth>4</depth>
+         </history>
+      </datareader_qos>
+      
+      
+      
+      <!-- Using QoS inheritance, pull in the SNA-provided
+           participant-level QoS settings for networked operation: -->
+      
+       
+      <participant_qos base_name="::SNA::networked::participant" />
+
+   </qos_profile>
+   
+     <!--
+     ===========================================================================
+     == DEFINE THE QOS PROFILES REFERENCED BY THE EXAMPLE DEPLOYMENT PLANS:
+     ===========================================================================
+     -->
+     
+   
+   <qos_profile name="Basic_Pub_Sub" base_name="NetworkedBestEffort_QOS">
+      <!-- 
+           Include any QoS customizations specific to the 
+           Basic Pub/Sub example here. 
+        -->
+   </qos_profile>
+   
+   <qos_profile name="PSAT" base_name="NetworkedBestEffort_QOS">
+      <!-- 
+           Include any QoS customizations specific to the 
+           PSAT example here. 
+        -->
+   </qos_profile>
+   
+   <qos_profile name="PubSubClientServer" base_name="NetworkedBestEffort_QOS">  
+      <!-- 
+           Include any QoS customizations specific to the 
+           Pub/Sub - Client/Server example here. 
+        -->
+   </qos_profile>
+   
+   <qos_profile name="Weather" base_name="NetworkedBestEffort_QOS">  
+      <!-- 
+           Include any QoS customizations specific to the 
+           "Weather" example here. 
+        -->
+   </qos_profile>
+   
+   
+   
+</qos_library>
+</dds>

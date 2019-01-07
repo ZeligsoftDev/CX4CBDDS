@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:DeploymentPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
+    xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>ProgAMI_prog1b</label>
+  <UUID>_a3c99c81-b27a-4806-872f-9dff70eaa9e3</UUID>
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source/>
+    <artifact xmi:idref="CompSvrArt"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_bb15c55e-358a-4ce4-9c55-68f74a3f38ed">
+    <name>Slave_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_ee8c4f84-24fd-4101-b5a9-59415da4de44"/>
+    <artifact xmi:idref="_cc7585c6-3835-48cf-a332-bc72aa84d21b"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_Slave_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_Slave_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_Slave_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_Slave_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_a152877b-1c65-4191-9f68-2bf908dfde18">
+    <name>AMI4CCM_asm.slave_comp2</name>
+    <node>Slave2Node</node>
+    <source/>
+    <implementation xmi:idref="_bb15c55e-358a-4ce4-9c55-68f74a3f38ed"/>
+    <configProperty>
+      <name>Propertyaaa</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>xxxxx</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.RegisterNaming</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>222222</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_a8a07eed-2683-4a0e-b171-c8e4598dfbc0">
+    <name>AMI4CCM_asm.slave_comp3</name>
+    <node>Slave3Node</node>
+    <source/>
+    <implementation xmi:idref="_bb15c55e-358a-4ce4-9c55-68f74a3f38ed"/>
+    <configProperty>
+      <name>Propertyaaa</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>xxxxx</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.RegisterNaming</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>33333</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_1435d097-cc76-492d-86d1-a032b77cdd93">
+    <name>Slave2_proc_ComponentServerInstance</name>
+    <node>Slave2Node</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Slave2_proc</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_798a6ec3-88f7-473c-a3f4-db00695f12d3">
+    <name>Slave3_proc_ComponentServerInstance</name>
+    <node>Slave3Node</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Slave3_proc</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>AMI4CCM_asm.slave_comp2.stateControlFacet__AMI4CCM_asm.stateManager_comp.stateControlRecept_AMI4CCM_Connector_asyncdirect</name>
+    <internalEndpoint>
+      <portName>stateControlFacet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_a152877b-1c65-4191-9f68-2bf908dfde18"/>
+    </internalEndpoint>
+    <externalReference>
+      <location>corbaname:rir:/NameService#AMI4CCM_asm::stateManager_comp_stateControlRecept__AMI4CCM_asm::slave_comp2_stateControlFacet</location>
+      <provider>false</provider>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <supportedType>Meaningless</supportedType>
+    </externalReference>
+  </connection>
+
+  <connection>
+    <name>AMI4CCM_asm.slave_comp3.stateControlFacet__AMI4CCM_asm.stateManager_comp.stateControlRecept_AMI4CCM_Connector_asyncdirect</name>
+    <internalEndpoint>
+      <portName>stateControlFacet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_a8a07eed-2683-4a0e-b171-c8e4598dfbc0"/>
+    </internalEndpoint>
+    <externalReference>
+      <location>corbaname:rir:/NameService#AMI4CCM_asm::stateManager_comp_stateControlRecept__AMI4CCM_asm::slave_comp3_stateControlFacet</location>
+      <provider>false</provider>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <supportedType>Meaningless</supportedType>
+    </externalReference>
+  </connection>
+
+  <artifact xmi:id="CompSvrArt">
+    <name>CompoSvrArtifactName</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+
+  <artifact xmi:id="_ee8c4f84-24fd-4101-b5a9-59415da4de44">
+    <name>SNA_Examples_Slave_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_Slave_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_cc7585c6-3835-48cf-a332-bc72aa84d21b">
+    <name>SNA_Examples_Slave_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_Slave_comp_svnt</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <!-- This is referencing [Slave2_proc_ComponentServerInstance] -->
+    <constrainedInstance xmi:idref="_1435d097-cc76-492d-86d1-a032b77cdd93"/>
+    <!-- This is referencing [AMI4CCM_asm.slave_comp2] -->
+    <constrainedInstance xmi:idref="_a152877b-1c65-4191-9f68-2bf908dfde18"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <!-- This is referencing [Slave3_proc_ComponentServerInstance] -->
+    <constrainedInstance xmi:idref="_798a6ec3-88f7-473c-a3f4-db00695f12d3"/>
+    <!-- This is referencing [AMI4CCM_asm.slave_comp3] -->
+    <constrainedInstance xmi:idref="_a8a07eed-2683-4a0e-b171-c8e4598dfbc0"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

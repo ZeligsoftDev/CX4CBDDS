@@ -1,0 +1,187 @@
+
+import langc;
+extension langc::debug;
+extension langc::element;
+extension langc::expr;
+extension langc::name;
+extension langc::type;
+
+private create SystemFileName fcntlName()   : setName( 'fcntl.h' );
+private create SystemFileName stdioName()   : setName( 'stdio.h' );
+private create SystemFileName stdlibName()  : setName( 'stdlib.h' );
+private create SystemFileName stringName()  : setName( 'string.h' );
+private create SystemFileName unistdName()  : setName( 'unistd.h' );
+private create SystemFileName sysStatName() : setName( 'sys/stat.h' );
+
+private Name stdioPrintfName()  : stdioName().child( 'printf' );
+private Name stdlibNullName()   : stdlibName().child( 'NULL' );
+private Name stdlibExitSuccessName()   : stdlibName().child( 'EXIT_SUCCESS' );
+private Name stdlibFreeName()   : stdlibName().child( 'free' );
+private Name stdlibMallocName() : stdlibName().child( 'malloc' );
+private Name stdlibSize_tName() : stdlibName().child( 'size_t' );
+private Name stdlibMemcpyName() : stringName().child( 'memcpy' );
+private Name unistdSize_tName() : unistdName().child( 'ssize_t' );
+private Name unistdSleepName()  : unistdName().child( 'sleep' );
+
+private Name fcntlO_CREATName() : fcntlName().child( 'O_CREAT' );
+private Name fcntlO_EXCLName()  : fcntlName().child( 'O_EXCL' );
+private Name fcntlO_RDONLYName() : fcntlName().child( 'O_RDONLY' );
+private Name fcntlO_WRONLYName() : fcntlName().child( 'O_WRONLY' );
+private Name sysStatS_IRWXUName() : sysStatName().child( 'S_IRWXU' );
+
+create SystemInclude stdio()  : setFilename( stdioName() );
+create SystemInclude stdlib() : setFilename( stdlibName() );
+create SystemInclude string() : setFilename( stringName() );
+
+create Typedef size_t() :
+    setElement( uint32() )
+ -> setName( stdlibSize_tName() )
+;
+
+create Typedef ssize_t() :
+    setElement( int32() )
+ -> setName( unistdSize_tName() )
+;
+
+private create Macro nullDefinition() :
+    setName( stdlibNullName() )
+ -> setReplacement( 0.literal() )
+;
+
+private create Macro exitSuccessDefinition() :
+    setName( stdlibExitSuccessName() )
+ -> setReplacement( 0.literal() )
+;
+
+private create Function malloc() :
+    setName( stdlibMallocName() )
+ -> setReturnType( void().ptr() )
+ -> addParameter( int32(), 'size' )
+;
+
+private create Function memcpy() :
+    setName( stdlibMemcpyName() )
+ -> setReturnType( void().ptr() )
+ -> addParameter( void().ptr(), 'dst' )
+ -> addParameter( void().ptr(), 'src' )
+ -> addParameter( size_t(), 'size' )
+;
+
+private create Function free() :
+    setName( stdlibFreeName() )
+ -> setReturnType( void() )
+ -> addParameter( void().ptr(), 'mem' )
+;
+
+private create Function sleep() :
+    setName( unistdSleepName() )
+ -> setReturnType( uint32() )
+ -> addParameter( uint32(), 'seconds' )
+;
+
+private create Function printf() :
+    setName( stdioPrintfName() )
+ -> setReturnType( int32() )
+ -> addParameter( char().const().ptr(), 'fmt' )
+;
+
+Function createMain( String processName, Name filename ) :
+    let f = function( int32(), filename.child( 'main' ) ) :
+        f.setLinkage( extern() )
+     -> f.setKind( implOnly() )
+     -> f.setReturnType( int32() )
+     -> f.addParameter( int32(), 'argc' )
+     -> f.addParameter( char().const().ptr().array(), 'argv' )
+     -> f
+;
+
+Expression NULL() :
+    nullDefinition().name.access()
+;
+
+Expression EXIT_SUCCESS() :
+    exitSuccessDefinition().name.access()
+;
+
+Expression malloc( Element element ) :
+    let e = new FunctionCall :
+        e.setFunction( malloc() )
+     -> e.arguments.add( element.sizeof() )
+     -> e.cast( element.ptr() )
+     -> e
+;
+
+Expression malloc( ElementReference ref, Expression size ) :
+    let e = new FunctionCall :
+        e.setFunction( malloc() )
+     -> e.arguments.add( size )
+     -> e.cast( ref )
+     -> e
+;
+
+Expression memcpy( Expression dst, Expression src, Expression size ) :
+    let e = new FunctionCall :
+        e.setFunction( memcpy() )
+     -> e.arguments.add( dst )
+     -> e.arguments.add( src )
+     -> e.arguments.add( size )
+     -> e
+;
+
+Expression free( Expression mem ) :
+    let e = new FunctionCall :
+        e.setFunction( free() )
+     -> e.arguments.add( mem )
+     -> e
+;
+
+Expression sleep( Expression seconds ) :
+    let e = new FunctionCall :
+        e.setFunction( sleep() )
+     -> e.arguments.add( seconds )
+     -> e
+;
+
+FunctionCall printf( String fmt ) :
+    let e = new FunctionCall :
+        e.setFunction( printf() )
+     -> e.arguments.add( ( fmt + '\\n' ).literal() )
+     -> e
+;
+
+FunctionCall printf( String fmt, Expression arg1 ) :
+    let e = printf( fmt ) :
+        e.arguments.add( arg1 )
+     -> e
+;
+
+FunctionCall printf( String fmt, Expression arg1, Expression arg2 ) :
+    let e = printf( fmt ) :
+        e.arguments.add( arg1 )
+     -> e.arguments.add( arg2 )
+     -> e
+;
+
+FunctionCall printf( String fmt, Expression arg1, Expression arg2, Expression arg3 ) :
+    let e = printf( fmt ) :
+        e.arguments.add( arg1 )
+     -> e.arguments.add( arg2 )
+     -> e.arguments.add( arg3 )
+     -> e
+;
+
+FunctionCall printf( String fmt, Expression arg1, Expression arg2, Expression arg3, Expression arg4 ) :
+    let e = printf( fmt ) :
+        e.arguments.add( arg1 )
+     -> e.arguments.add( arg2 )
+     -> e.arguments.add( arg3 )
+     -> e.arguments.add( arg4 )
+     -> e
+;
+
+Expression S_IRWXU() : sysStatS_IRWXUName().access();
+
+Expression O_CREAT() : fcntlO_CREATName().access();
+Expression O_EXCL()  : fcntlO_EXCLName().access();
+Expression O_RDONLY() : fcntlO_RDONLYName().access();
+Expression O_WRONLY() : fcntlO_WRONLYName().access();

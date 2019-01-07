@@ -1,0 +1,19 @@
+BasicPubSub_asm Example - 02/13/2011
+
+The included CX-generated IDL source tree built with no errors or changes required.
+However, the CX-generated CDP file required a number of edits to fix the issues listed below in order to deploy:
+
+General Issues:
+* P2 Issue 175 - Missing <artifact> references in CDP file component & DDS4CCM connector <implementation> entries
+* P4 Issue 142 - Newlines & comments in CDP XML file for readability (added to highlight changes made to CDP file)
+
+DDS4CCM Related Issues:
+* P3 Issue 141 - Missing ConnectionStatusListener port connections in CDP file
+* P2 Issue 145 - Local SimplexReceptacle ports on CDP file DDS4CCM connectors incorrectly tagged as Facets
+* P2 Issue 188 - DDS4CCM connector <location> tags wrong in CDP file <artifact> entries
+
+Directory Structure:
+* P2 Issue 156 - CDD/CDP files generated to target wrong directory (Deployment folder moved in attached source)
+
+Original CDP file is at:                         Deployment\descriptors\BasicPubSub.cdp.
+Edited CDP file that deployed correctly is at:   Deployment\descriptors\BasicPubSubFixed.cdp

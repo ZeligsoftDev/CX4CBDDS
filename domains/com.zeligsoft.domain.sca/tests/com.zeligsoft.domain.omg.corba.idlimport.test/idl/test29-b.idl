@@ -1,0 +1,16 @@
+module A
+{
+  module B
+  {
+     interface C
+     {};
+   };
+
+  module D
+  {
+     interface E : B::C
+     {
+     };
+  };
+};
+

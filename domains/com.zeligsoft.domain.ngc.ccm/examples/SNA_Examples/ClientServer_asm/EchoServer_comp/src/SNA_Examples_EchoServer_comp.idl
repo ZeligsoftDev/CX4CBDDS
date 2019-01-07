@@ -1,0 +1,54 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+
+/**
+ * @defgroup EchoServer_comp   EchoServer_comp Component
+ * @ingroup SourceClientExample
+ * @{
+ *
+ * The EchoServer_comp component provides one CORBA interface, which is
+ * described in the SNA_ExamplesEchoConnect_obj.idl file. The component’s
+ * interface is defined as EchoConnect_obj.  The EchoConnect_obj object contains
+ * only one method called echoText. The EchoServer_comp component implements
+ * this method because it is the service provider in this example.
+ *
+ * @file   SNA_Examples_EchoServer_comp.idl
+ * @brief  EchoServer_comp component definition IDL file.
+ */
+
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_ECHOSERVER_COMP_IDL
+#define SNA_EXAMPLES_ECHOSERVER_COMP_IDL
+
+#include <Components.idl>
+
+// EXAMPLE:
+// we need to include the definition of the EchoConnect_obj interface here.
+#include "SNA_Examples_EchoConnect_obj.idl"
+
+// EXAMPLE:
+// the module keyword specifies a namespace for the EchoServer_comp component
+module SNA_Examples
+{
+   /**
+    * This component provides (implements) one CORBA interface/service.
+    */
+   component EchoServer_comp
+   {
+      /**
+       * This is the CORBA facet implemented by this component
+       */
+      provides SNA_Examples::EchoConnect_obj echoConnectFacet;
+   };
+};
+
+#endif // SNA_EXAMPLES_ECHOSERVER_COMP_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

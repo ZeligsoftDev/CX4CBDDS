@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softpkg SYSTEM "../dtd/softpkg.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.2-->
+<!--Powered by Python-->
+<softpkg id="DCE:3a66a8a4-c7a9-11dc-b57b-000c29a1ba37" name="PMcontrol">
+    <title/>
+    <description>Power Manager</description> 
+    <author>
+        <name>DataSoft</name>
+        <company>DataSoft</company>
+        <webpage>http://www.datasoft.com/</webpage>
+    </author>
+    <propertyfile type="PRF">
+        <localfile name="pm-control.prf.xml"/>
+    </propertyfile>
+    <descriptor>
+        <localfile name="pm-control.scd.xml"/>
+    </descriptor>
+    <implementation id="DCE:3a6ec174-c7a9-11dc-a6d7-000c29a1ba37">
+        <description>Description</description> 
+        <code type="Executable">
+            <localfile name="/bin/pm-control"/>
+        </code>
+        <processor name="x86"/>
+    </implementation>
+</softpkg>

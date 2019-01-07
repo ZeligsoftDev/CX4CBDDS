@@ -1,0 +1,200 @@
+<html>
+   <head>
+      <title>Spectra ORB DSP/BIOS cl6x C Target Support Plug-in Release Notes</title>
+      <link rel="stylesheet" type="text/css" href="helpStyle.css">
+      <meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1">
+   </head>
+   <body>
+      <h1>Spectra ORB DSP/BIOS cl6x C Target Support Plug-in Release Notes</h1>
+      
+      <table>
+         <tbody>
+            <tr>
+               <td><strong>Version</strong></td>
+               <td>3.6.5</td>
+            </tr>
+            <tr>
+               <td><strong>Release Date</strong></td>
+               <td>March 2015</td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <supportedbuildconfigurations>
+      <h2>Supported Build Configurations</h2>
+
+      <table border="1">
+         <tbody>
+            <tr>
+               <td><strong>Build Configuration Name</strong></td>
+               <td><strong>Host OS</strong></td>
+               <td><strong>Target OS</strong></td>
+               <td><strong>BSP</strong></td>
+               <td><strong>ORB Version</strong></td>
+               <td><strong>Notes</strong></td>
+            </tr>
+            <tr>
+               <td>eorb17-dspbios-cl6x-linux-c-dtp4700-build</td>
+               <td>Ubuntu 12.04 (32 bit)</td>
+               <td>DSP/BIOS</td>
+               <td>DTP4700</td>
+               <td>1.7.x</td>
+               <td>MSGQIOP Transport (TI Message Queue based)</td>
+            </tr>
+            <tr>
+               <td>eorb17-dspbios-cl6x-linux-c-dtp4700-debug-build</td>
+               <td>Ubuntu 12.04 (32 bit)</td>
+               <td>DSP/BIOS</td>
+               <td>DTP4700</td>
+               <td>1.7.x</td>
+               <td>MSGQIOP Transport (TI Message Queue based), Debug Configuration</td>
+            </tr>
+            <tr>
+               <td>eorb20-dspbios-cl6x-linux-c-dtp4700-build</td>
+               <td>Ubuntu 12.04 (32 bit)</td>
+               <td>DSP/BIOS</td>
+               <td>DTP4700</td>
+               <td>2.0.x</td>
+               <td>MSGQIOP Transport (TI Message Queue based)</td>
+            </tr>
+            <tr>
+               <td>eorb20-dspbios-cl6x-linux-c-dtp4700-debug-build</td>
+               <td>Ubuntu 12.04 (32 bit)</td>
+               <td>DSP/BIOS</td>
+               <td>DTP4700</td>
+               <td>2.0.x</td>
+               <td>MSGQIOP Transport (TI Message Queue based), Debug Configuration</td>
+            </tr>
+            <tr>
+               <td>eorb20-dspbios-cl6x-linux-c-dtp4700+probes-build</td>
+               <td>Ubuntu 12.04 (32 bit)</td>
+               <td>DSP/BIOS</td>
+               <td>DTP4700</td>
+               <td>2.0.x</td>
+               <td>MSGQIOP Transport (TI Message Queue based), Spectra DTP4700 Probe Toolbox support</td>
+            </tr>
+            <tr>
+               <td>eorb20-dspbios-cl6x-linux-c-dtp4700+probes-debug-build</td>
+               <td>Ubuntu 12.04 (32 bit)</td>
+               <td>DSP/BIOS</td>
+               <td>DTP4700</td>
+               <td>2.0.x</td>
+               <td>MSGQIOP Transport (TI Message Queue based), Spectra DTP4700 Probe Toolbox support, Debug Configuration</td>
+            </tr>
+            <tr>
+               <td>eorb17-dspbios-cl6x-win32-c-pro4600-build</td>
+               <td>Windows XP (x32)</td>
+               <td>DSP/BIOS</td>
+               <td>PRO-4600 (SDR4000)</td>
+               <td>1.7.x</td>
+               <td>QCIOP and MQCIOP Transports (quicComm based)</td>
+            </tr>
+            <tr>
+               <td>eorb17-dspbios-cl6x-win32-c-pro4600-debug-build</td>
+               <td>Windows XP (x32)</td>
+               <td>DSP/BIOS</td>
+               <td>PRO-4600 (SDR4000)</td>
+               <td>1.7.x</td>
+               <td>QCIOP and MQCIOP Transports (quicComm based), Debug Configuration</td>
+            </tr>
+         </tbody>
+      </table>
+      </supportedbuildconfigurations>
+      
+      <environmentvariables>
+      <h2>Environment Variables</h2>
+
+      <p>The following environment variables must be set for all build configurations before starting Spectra CX.</p>
+      <ol>
+         <li><strong>EORBHOME</strong> - set to the directory where Spectra ORB is installed.</li>
+         <li><strong>BIOS_INSTALL_DIR</strong> - set to the directory where DSP/BIOS is installed.</li>
+         <li><strong>C6X_INSTALL_DIR</strong> - set to the directory where CGTools toolchain is installed.</li>
+      </ol>
+      
+      <p>In addition to use the DTP4700 build configurations the following environment variables must also be be set:</p>
+      <ol>
+         <li><strong>XDCTOOLS_DIR</strong> - set to the directory where the XDCTools package is installed.</li>
+         <li><strong>DSPLINK</strong> - set to the directory where the DSPLink package is installed.</li>
+         <li><strong>DVSDK</strong> - set to the directory where the TI DVSDK software is installed.</li>
+      </ol>
+      
+      <p>In addition to use the PRO-4600 build configurations the following environment variables must also be be set:</p>
+      <ol>
+         <li><strong>CSL_INSTALL_DIR</strong> - set to the directory where the CSL package is installed.</li>
+         <li><strong>SSP_INSTALL_ROOT</strong> - set to the directory where the Spectrum Signal's software is installed.</li>
+      </ol>
+      </environmentvariables>
+      
+      <usageinstructions>
+      <h2>Usage Instructions</h2>
+
+      <p>The following settings are required for components modeled in Spectra CX to generate correct XML for deployment:</p>
+      <ul>
+         <li>The SCA code properties of each component implementation should be set to:
+            <ul>
+               <li>Filename: ensure this ends in .out</li>
+            </ul>
+         </li>
+            <li>The OS dependency name should be set to DSPBIOS and version left blank</li>
+            <li>The processor dependency name should be set to C6416</li>
+            <li>The os_name and processor_name of the ExecutableDevice responsible for loading the DSP should match the above values.</li>
+      </ul>
+      
+      <h3>Build Configuration Restrictions</h3>
+      
+      <ul>
+         <li>The build configurations contained in this target support plug-in support the generation of SCA Resource and ResourceFactory
+             components only.</li>
+         <li>DSP processors are limited to running a single binary image at any one time. In terms of the SCA this means that only a single
+             component instance can be deployed to a DSP processor at a time. This limitation can be overcome by using a ResourceFactory
+             component to co-locate all Resource components to be deployed simultaneously into a single binary image.</li>
+      </ul>
+
+      </usageinstructions>
+      
+      <knownissues>
+      <h2>Known Issues</h2>
+
+      <p>None</p>
+      </knownissues>
+
+      <contact>
+      <support>
+      <h2>Contact PrismTech</h2>
+      
+      <p>Product support: <a href="mailto:crc@prismtech.com">crc@prismtech.com</a></p>
+      <p> General enquiries: <a href="mailto:info@prismtech.com">info@prismtech.com</a></p>
+      <p> Web: <a href="http://www.prismtech.com">www.prismtech.com</a></p>
+      
+      <h3>European Headquarters </h3>
+      <strong>
+         <p>PrismTech Limited</p>
+         <p>PrismTech House</p>
+         <p>5th Avenue Business Park</p>
+         <p>Gateshead, Tyne and Wear</p>
+         <p>NE11 0NG</p>
+         <p>United Kingdom</p>
+         <p>Tel: +44 (0) 191-4979900</p>
+         <p>Fax: +44 (0) 191-4979901</p>
+      </strong>
+
+      <h3>USA Corporate Headquarters</h3>
+      <strong>
+         <p>PrismTech Corporation</p>
+         <p>400 TradeCenter</p>
+         <p>Suite 5900</p>
+         <p>Woburn, MA</p>
+         <p>01801</p>
+         <p>USA</p>
+         <p>Tel: (1) 781-569-5819</p>
+      </strong>
+      </support>
+      </contact>
+
+      <div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a>
+         <br clear="none">
+         <hr>  
+         Copyright &#169; 2015 PrismTech Canada Inc. All rights reserved.
+      </div>
+   </body>
+</html>

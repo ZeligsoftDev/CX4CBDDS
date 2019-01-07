@@ -1,0 +1,494 @@
+import systemvueModel;
+import SCA::SCA_ComponentModel;
+import SCA::SCA_SoftwarePackage;
+import SCA::SCA_Core;
+import CORBADomain::IDLFileSupport; // needed for IDLFile and similar
+import CORBADomain::IDL; // needed for CORBAModule etc. 
+import ZMLMM::ZML_Component;
+
+create uml::Package mainTransform(systemvueModel::SystemvueModel node, ZMLMM::ZML_Core::NamedElement container) :
+	initializeMaps() ->
+	container.zdlAsPackage().packagedElement.add(this) ->
+	this.zdlApplyDomainProfile("pathmap://SCA_PROFILES/SCADomain.profile.uml") ->
+	this.setName(node.name) ->
+	this.createInterfacePackage().initializeComplexTypes() ->
+	visit(node, this) ->
+	createCUTControllerComponent(node, this) ->
+	createSCAApplication(node, this) ->
+	createPortTypesPackage(this).packagedElement.size == 0 ?
+		createPortTypesPackage(this).destroy() :
+		{} ->
+	createDependenciesPackage(this).packagedElement.size == 0 ?
+		createDependenciesPackage(this).destroy() :
+		{} ->
+	this;
+	
+Void initializeMaps() :
+	JAVA com.zeligsoft.domain.sca.utils.SCAImportUtils.initializeMaps();
+	
+create SCAComponent visit(SystemvueModel node, uml::Package pkg) :
+	pkg.packagedElement.add(this) ->
+	this.setName(node.name) ->
+	this.setId(generateUUID()) ->
+	this.setInterface(createComponentInterface(node, pkg)) ->
+	createSCAImplementation(node, pkg, this) ->
+	this.author.add(createAuthor("","","")) ->
+	repairWorkerFunctions(this);
+
+Author createAuthor(String name, String company, String webpage) :
+	let this = new Author :
+	this.name.add(name) ->
+	this.setCompany(company) ->
+	this.setWebpage(webpage) ->
+	this;
+
+Void repairWorkerFunctions(SCASoftwarePackage comp) :
+	JAVA com.zeligsoft.domain.sca.utils.SCAImportUtils.repairWorkerFunctions(
+		org.eclipse.uml2.uml.Component);
+	
+create SCAComponentInterface createComponentInterface(SystemvueModel node, uml::Package pkg) :
+	pkg.packagedElement.add(this) ->
+	this.setName(node.name + "_CI") ->
+	this.setCorbaversion("2.2") ->
+	this.addResourceInterface() ->
+	node.port.visit(this, pkg)
+	;
+		
+create SCAImplementation createSCAImplementation(SystemvueModel node, uml::Package pkg, SCAComponent comp) :
+	pkg.packagedElement.add(this) ->
+	this.setId(generateUUID()) ->
+	createSCAComponentImplementation(this, comp) ->
+	this.setName(node.name + "Impl") ->
+	this.createSCABinary(node, pkg) ->
+	this.createSCAOperatingSystemDependency("Linux", "2.6", pkg) ->
+	this.createSCAProcessorDependency("x86", pkg) ->
+	this;
+	
+create SCABinary createSCABinary(SCAImplementation impl, SystemvueModel node, uml::Package pkg) :
+	impl.setCode(this) ->
+	this.setFile(impl.name)
+	;
+	
+create SCAProcessor createSCAProcessor(uml::Package pkg, String name) :
+	pkg.packagedElement.add(this) ->
+	this.setName(name)
+	;
+	
+cached SCAProcessor getSCAProcessor(uml::Package pkg, String processorName) :
+	let dep = ZDLFind("SCA::SCA_SoftwarePackage::SCAProcessor", processorName, pkg) :
+		dep == null ? createSCAProcessor(pkg, processorName) : dep;
+	
+create SCAProcessorDependency createSCAProcessorDependency(SCAImplementation impl, String processorName, uml::Package pkg) :
+	pkg.packagedElement.add(this) ->
+	this.zdlAsDependency().client.add(impl) ->
+	this.zdlAsDependency().supplier.add(getSCAProcessor(createDependenciesPackage(pkg), processorName))
+	;
+	
+create SCAOperatingSystem createSCAOperatingSystem(uml::Package pkg, String name, String version) :
+	pkg.packagedElement.add(this) ->
+	this.setName(name) ->
+	this.setVersion(version)
+	;
+	
+cached SCAOperatingSystem getSCAOperatingSystem(uml::Package pkg, String osName, String version) :
+	let dep = ZDLFind("SCA::SCA_SoftwarePackage::SCAOperatingSystem", osName, pkg) :
+		dep == null || dep.version != version ? createSCAOperatingSystem(pkg, osName, version) : dep;
+	
+create SCAOperatingSystemDependency createSCAOperatingSystemDependency(SCAImplementation impl, String osName, String osVersion, uml::Package pkg) :
+	pkg.packagedElement.add(this) ->
+	this.zdlAsDependency().client.add(impl) ->
+	this.zdlAsDependency().supplier.add(getSCAOperatingSystem(createDependenciesPackage(pkg), osName, osVersion))
+	;	
+
+create SCAApplication createSCAApplication(SystemvueModel node, uml::Package pkg) :
+	createTestPackage(pkg).packagedElement.add(this) ->
+	this.setName(node.name + "TestApp") ->
+	this.setId(generateUUID()) ->
+	node.port.visit(this, pkg) ->
+	this.createComponentUnderTestPart(node, pkg) ->
+	this.setController(createControllerTestPart(node, pkg)) ->
+	node.port.createCUTConnector(node, this, pkg) ->
+	node.createControllerToCUTConnector(this, pkg)
+	;
+	
+create SCAComponentPart createComponentUnderTestPart(SCAApplication app, SystemvueModel node, uml::Package pkg) :
+	app.part.add(this) ->
+	this.setName("cut") ->
+	this.setId(generateUUID()) ->
+	this.setDefinition(node.visit(pkg))
+	;
+
+create SCAComponentPart createControllerTestPart(SCAApplication app, SystemvueModel node, uml::Package pkg) :
+	app.part.add(this) ->
+	this.setName("controller") ->
+	this.setId(generateUUID()) ->
+	this.setDefinition(node.createCUTControllerComponent(pkg))
+	;
+	
+private Void createCUTConnector(systemvueModel::Port port, SystemvueModel node, SCAApplication app, uml::Package pkg) :
+	let conn = new SCAConnector :
+		app.connector.add(conn) ->
+		conn.setId(generateUUID()) ->
+		createConnectorEnd(conn, null, createComponentUnderTestPart(app, node, pkg), port.visit(createComponentInterface(node, pkg), pkg)) ->
+		createConnectorEnd(conn, null, null, port.visit(app, pkg)) 
+	;
+	
+private Void createControllerToCUTConnector(SystemvueModel node, SCAApplication app, uml::Package pkg) :
+	let conn = new SCAConnector :
+		app.connector.add(conn) ->
+		conn.setId(generateUUID()) ->
+		createConnectorEnd(conn, createComponentUnderTestPart(app, node, pkg), null, null) ->
+		createConnectorEnd(conn, null, createControllerTestPart(app, node, pkg), createCUTControllerComponentInterface(node, pkg).addResourceUsesPort(pkg))
+	;
+	
+create SCAComponentInterface createCUTControllerComponentInterface(SystemvueModel node, uml::Package pkg) :
+	createTestPackage(pkg).packagedElement.add(this) ->
+	this.setName(node.name + "TestController_CI") ->
+	this.setCorbaversion("2.2") ->
+	this.addResourceInterface() ->
+	this.addResourceUsesPort(pkg)
+	;
+	
+create SCAComponent createCUTControllerComponent(SystemvueModel node, uml::Package pkg) :
+	createTestPackage(pkg).packagedElement.add(this) ->
+	this.setName(node.name + "TestController") ->
+	this.setId(generateUUID()) ->
+	this.setInterface(createCUTControllerComponentInterface(node, pkg)) ->
+	createCUTControllerImplementation(node, pkg, this) ->
+	this.author.add(createAuthor("","","")) ->
+	repairWorkerFunctions(this);
+
+create SCAImplementation createCUTControllerImplementation(SystemvueModel node, uml::Package pkg, SCAComponent comp) :
+	createTestPackage(pkg).packagedElement.add(this) ->
+	this.setId(generateUUID()) ->
+	createSCAComponentImplementation(this, comp) ->
+	this.setName(node.name + "TestControllerImpl") ->
+	this.createSCABinary(node, pkg) ->
+	this.createSCAOperatingSystemDependency("Linux", "2.6", pkg) ->
+	this.createSCAProcessorDependency("x86", pkg)
+	;
+		
+create ConnectorEnd createConnectorEnd(SCAConnector connector, SCAPart part, SCAPart partWithPort, MessagePort port) :
+	connector.end.add(this) ->
+	if( part != null ) then { this.setPart(part) } ->
+	if( partWithPort != null ) then { this.setPartWithPort(partWithPort) } ->
+	if( port != null ) then { this.setPort(port) };
+	
+private Void createSCAComponentImplementation(SCAImplementation impl, SCAComponent comp) :
+	JAVA com.zeligsoft.domain.sca.utils.SCAImportUtils.linkImplementationToComponent(
+		org.eclipse.uml2.uml.Artifact,
+		org.eclipse.uml2.uml.Component)
+	;
+		
+Void addResourceInterface(SCAComponentInterface comp) :
+	let intf = getCFInterface(comp, "Resource") :
+		comp.createInterfaceRealization("resource", intf) ->
+		comp.setRepositoryId(intf);
+
+Void createInterfaceRealization(SCAComponentInterface comp, String name, CORBAInterface intf) :
+	JAVA com.zeligsoft.domain.sca.agilent.importer.utils.AgilentImportUtils.createInterfaceRealization(
+		org.eclipse.uml2.uml.Component,
+		java.lang.String,
+		org.eclipse.uml2.uml.Interface
+	);
+	
+CORBAInterface getCFInterface(SCAComponentInterface comp, String intfName) :
+	JAVA com.zeligsoft.domain.sca.agilent.importer.utils.AgilentImportUtils.getCFInterface(
+		org.eclipse.uml2.uml.Element,
+		java.lang.String
+	);
+
+create SCAPort visit(systemvueModel::Port port, SCAComponentInterface comp, uml::Package pkg) :
+	comp.ownedPort.add(this) ->
+	this.setName(port.name) ->
+	if( getProvidesType(port.implementation, port.typeName, port.rate.toString(), createPortTypesPackage(pkg)) == null ) then
+		{ createPortType(port.implementation, port.typeName, port.rate.toString(), pkg) } ->
+	port.direction == DirectionType::input ?
+		this.setType(getProvidesType(port.implementation, port.typeName, port.rate.toString(), createPortTypesPackage(pkg))) :
+		this.setType(getRequiresType(port.implementation, port.typeName, port.rate.toString(), createPortTypesPackage(pkg))) ->
+	this.kind.add(SCAPortType::data);
+	
+create SCAPort addResourceUsesPort(SCAComponentInterface comp, uml::Package pkg) :
+	comp.ownedPort.add(this) ->
+	this.setName("cut") ->
+	this.setType(getCFPortType(comp, "Resource", true)) ->
+	this.kind.add(SCAPortType::control)
+	;
+	
+create SCAExternalPort visit(systemvueModel::Port port, SCAApplication app, uml::Package pkg) :
+	app.externalport.add(this) ->
+	this.setName(port.name) ->
+	if( getProvidesType(port.implementation, port.typeName, port.rate.toString(), createPortTypesPackage(pkg)) == null ) then
+		{ createPortType(port.implementation, port.typeName, port.rate.toString(), pkg) } ->
+	port.direction == DirectionType::input ?
+		this.setType(getProvidesType(port.implementation, port.typeName, port.rate.toString(), createPortTypesPackage(pkg))) :
+		this.setType(getRequiresType(port.implementation, port.typeName, port.rate.toString(), createPortTypesPackage(pkg))) ->
+	this
+	;
+		
+create PortType createPortType(ImplementationType impl, TypeNameType type, String rate, uml::Package pkg ) :
+	createPortTypesPackage(pkg).packagedElement.add(this) ->
+	this.setName(constructPortTypeName(impl, type, rate)) ->
+	configurePortType(
+		this, 
+		constructPortTypeName(impl, type, rate), 
+		"provides", 
+		createPortTypesPackage(pkg), 
+		getInterface(impl, type, rate, pkg));
+		
+private String constructPortTypeName(ImplementationType impl, TypeNameType type, String rate) :
+	switch(impl.toString()) {
+		case 'scalar' : typeToStringHelper(type) + impl.toString().toFirstUpper()
+		case 'array' : typeToStringHelper(type) + rate + impl.toString().toFirstUpper()
+		default : "Unknown"
+	}
+	;
+
+Void configurePortType(PortType porttype, String name, String conjugation, uml::Package pkg, Interface contract) :
+	JAVA com.zeligsoft.domain.sca.utils.SCAImportUtils.configurePortType(
+		org.eclipse.uml2.uml.Class,
+		java.lang.String,
+		java.lang.String,
+		org.eclipse.uml2.uml.Package,
+		org.eclipse.uml2.uml.Interface);
+
+create uml::Package createPortTypesPackage(uml::Package container) :
+	//container.owner.zdlAsPackage().packagedElement.add(this) ->
+	//this.zdlApplyDomainProfile("pathmap://SCA_PROFILES/SCADomain.profile.uml") ->
+	container.packagedElement.add(this) ->	
+	this.setName("PortTypes");
+	
+create uml::Package createDependenciesPackage(uml::Package container) :
+	container.packagedElement.add(this) ->
+	this.setName("Dependencies")
+	;
+	
+create uml::Package createTestPackage(uml::Package container) :
+	container.packagedElement.add(this) ->
+	this.setName("Test")
+	;
+	
+create CORBAInterface getInterface(ImplementationType impl, TypeNameType type, String size, uml::Package pkg ) :
+	createIDLFile(impl, type, size, createInterfacePackage(pkg)).createModule().contents.add(this) ->
+	this.setName(constructInterfaceName(impl, type, size)) ->
+	this.createOperation(impl, type, size);
+	 
+private String constructInterfaceName(ImplementationType impl, TypeNameType type, String size) :
+	switch(impl.toString()) {
+		case 'scalar' : 
+			"I" + typeToStringHelper(type) + 
+				impl.toString().toFirstUpper()
+		case 'array' : 
+			"I" + typeToStringHelper(type) + size + 
+				impl.toString().toFirstUpper()
+		default : "Unknown"
+	}
+	;
+
+private String typeToStringHelper(TypeNameType type) :
+	switch(type.toString()) {
+		case 'std::complex_double_' :
+			"ComplexDouble"
+		case 'std::complex_float_' :
+			"ComplexFloat"
+		default :
+			type.toString().replaceAll("::", "").toFirstUpper()		
+	}
+	;
+
+create CORBAOperation createOperation(CORBAInterface intf, ImplementationType impl, TypeNameType type, String size) :
+	let paramtype = intf.createParameterType(impl, type, size) :
+	intf.ownedOperation.add(this) ->
+	this.setName("pushPacket") ->
+	this.setIsOneWay(true) ->
+	this.createParameter(paramtype);
+	
+create CORBAParameter createParameter(CORBAOperation op, CORBAType type) :
+	op.ownedParameter.add(this) ->
+	this.setName("pkt") ->
+	this.setDirection("in") ->
+	this.setIdlType(type)
+	;
+	
+private CORBAType createParameterType(CORBAInterface intf, ImplementationType impl, TypeNameType type, String size) :
+	if(impl.toString() == "array") then 
+		getArrayType(intf, impl, type, size)
+	else
+		getScalarType(intf, impl, type)
+	;
+	
+private CORBAType getScalarType(CORBAInterface intf, ImplementationType impl, TypeNameType type) :
+	switch(type.toString()) {
+			case 'std::complex_double_':
+				ZDLFind("CORBADomain::IDL::CORBAStruct", "complex_double_", intf)
+			case 'std::complex_float_':
+				ZDLFind("CORBADomain::IDL::CORBAStruct", "complex_float_", intf)
+			default :
+				getCORBAPrimitiveType(intf, type2CORBAType(type))
+		}
+	;
+	
+private String type2CORBAType(TypeNameType type) :
+	switch(type.toString()) {
+		case 'int' : "CORBALong"
+		case 'bool' : "CORBABoolean"
+		case 'float' : "CORBAFloat"
+		case 'double' : "CORBADouble"
+		default : ""
+	}
+	;
+	
+private create CORBAArray getArrayType(CORBAInterface intf, ImplementationType impl, TypeNameType type, String size) :
+	intf.zdlAsInterface().nestedClassifier.add(this) ->
+	this.setName(typeToStringHelper(type) + size + impl.toString().toFirstUpper()) ->
+	this.setArrayType(type) ->
+	this.setIndex(size)
+	;
+	
+private Void setArrayType(CORBAArray array, TypeNameType type) :
+	let attr = new uml::Property :
+		array.zdlAsDataType().ownedAttribute.add(attr) ->
+		attr.setName("elements") ->
+		switch(type.toString()) {
+			case 'std::complex_double_':
+				attr.setType(ZDLFind("CORBADomain::IDL::CORBAStruct", "complex_double_", attr).zdlAsType())
+			case 'std::complex_float_':
+				attr.setType(ZDLFind("CORBADomain::IDL::CORBAStruct", "complex_float_", attr).zdlAsType())
+			default :
+				attr.setCORBAPrimitiveType(type2CORBAType(type))
+		}
+	;
+		
+
+		
+/*******************************************************************************
+	COMPLEX IDL CREATION
+*******************************************************************************/		
+
+Void initializeComplexTypes(uml::Package pkg) :
+	let file = createComplexTypesFile(pkg) :
+		let module = file.createComplexTypesModule() :
+			module.getComplexType("complex_double_", "CORBADouble") ->
+			module.getComplexType("complex_float_", "CORBAFloat");
+
+cached IDLFile createComplexTypesFile(uml::Package pkg) :
+	let file = ZDLFind("CORBADomain::IDLFileSupport::IDLFile", "ComplexTypes", pkg) :
+		if file == null then
+			pkg.createIDLFile("ComplexTypes")
+		else
+			file;
+			
+cached CORBAModule createComplexTypesModule(IDLFile file) :
+	let module = file.zdlAsPackage().packagedElement.selectFirst(e|e.name == "DataPlane") :
+		if module == null then
+			file.createModule()
+		else
+			module
+		;
+
+private cached CORBAStruct getComplexType(CORBAModule module, String name, String primitiveType) :
+	let struct = module.zdlAsPackage().packagedElement.selectFirst(e|e.name == name) :
+		if struct == null then
+			createComplexType(module, name, primitiveType)
+		else
+			struct
+		;
+	
+private create CORBAStruct createComplexType(CORBAModule module, String name, String primitiveType) :
+	module.contents.add(this) ->
+	this.setName(name) ->
+	this.members.add(createCORBAField("i", getCORBAPrimitiveType(module, primitiveType))) ->
+	this.members.add(createCORBAField("q", getCORBAPrimitiveType(module, primitiveType)))
+	;
+	
+create CORBAField createCORBAField(String name, CORBAType fieldType) :
+	this.setName(name) ->
+	this.zdlAsProperty().setType(fieldType.zdlAsType())
+	;
+
+/*******************************************************************************
+	COMPLEX IDL CREATION END
+*******************************************************************************/
+
+cached IDLFile createIDLFile(ImplementationType impl, TypeNameType type, String size, uml::Package pkg ) :
+	let idlFile = pkg.createIDLFile(constructInterfaceName(impl, type, size)) :
+		if type.toString().startsWith("std::complex_double_") then
+		 	createIDLImport(idlFile, createComplexTypesFile(pkg)) ->
+	idlFile
+	;
+	
+create IDLFile createIDLFile(uml::Package container, String name) :
+	container.packagedElement.add(this) ->
+	this.setName(name) ->
+	this;
+	
+create IDLImport createIDLImport(IDLFile importer, IDLFile target) :
+	importer.zdlAsPackage().packagedElement.add(this) ->
+	this.zdlAsDependency().supplier.add(target) ->
+	this.zdlAsDependency().client.add(importer);
+	
+	
+create CORBAModule createModule(IDLFile file) :
+	file.zdlAsPackage().packagedElement.add(this) ->
+	this.setName("DataPlane");
+	
+create uml::Package createInterfacePackage(uml::Package container) :
+	//container.owner.zdlAsPackage().packagedElement.add(this) ->
+	//this.zdlApplyDomainProfile("pathmap://SCA_PROFILES/SCADomain.profile.uml") ->
+	container.packagedElement.add(this) ->	
+	this.setName("Interfaces");
+	
+PortType getProvidesType(ImplementationType impl, TypeNameType type, String size, uml::Package pkg ) :
+	let typeList = pkg.packagedElement.
+		typeSelect(PortType).select( e | e.name == constructPortTypeName(impl, type, size)) :
+	typeList.size > 0 ?
+		typeList.get(0) : 
+		ZDLFind("ZMLMM::ZML_Component::PortType", constructPortTypeName(impl, type, size), pkg);
+		
+PortType getRequiresType(ImplementationType impl, TypeNameType type, String size, uml::Package pkg ) :
+	getProvidesType(impl, type, size, pkg) == null ?
+		null :
+		getProvidesType(impl, type, size, pkg).inverse;
+		
+private cached Object ZDLFind(String conceptName, String elementName, uml::Element modelElement) :
+	JAVA com.zeligsoft.domain.sca.utils.SCAImportUtils.ZDLFind(
+		java.lang.String,
+		java.lang.String,
+		org.eclipse.uml2.uml.Element);
+		
+private cached Object ZDLFind(String conceptName, String elementName, CORBAInterface modelElement) :
+	JAVA com.zeligsoft.domain.sca.utils.SCAImportUtils.ZDLFind(
+		java.lang.String,
+		java.lang.String,
+		org.eclipse.uml2.uml.Element);
+
+private Void setCORBAPrimitiveType(uml::TypedElement ctx, String primitive) : 
+	JAVA com.zeligsoft.domain.sca.agilent.importer.utils.AgilentImportUtils.setCORBAPrimitiveType(
+		org.eclipse.uml2.uml.TypedElement, java.lang.String);
+		
+private CORBAPrimitive getCORBAPrimitiveType(CORBAInterface ctx, String primitive) : 
+	JAVA com.zeligsoft.domain.sca.agilent.importer.utils.AgilentImportUtils.getCORBAPrimitiveType(
+		org.eclipse.uml2.uml.Element, java.lang.String);
+		
+private CORBAPrimitive getCORBAPrimitiveType(uml::Package ctx, String primitive) : 
+	JAVA com.zeligsoft.domain.sca.agilent.importer.utils.AgilentImportUtils.getCORBAPrimitiveType(
+		org.eclipse.uml2.uml.Element, java.lang.String);
+		
+private CORBAPrimitive getCORBAPrimitiveType(CORBAModule ctx, String primitive) : 
+	JAVA com.zeligsoft.domain.sca.agilent.importer.utils.AgilentImportUtils.getCORBAPrimitiveType(
+		org.eclipse.uml2.uml.Element, java.lang.String);
+		
+private CORBAPrimitive getCORBAPrimitiveType(CORBAStruct ctx, String primitive) : 
+	JAVA com.zeligsoft.domain.sca.agilent.importer.utils.AgilentImportUtils.getCORBAPrimitiveType(
+		org.eclipse.uml2.uml.Element, java.lang.String);
+		
+private PortType getCFPortType(SCAComponentInterface ctx, String interface, Boolean inv) :
+	JAVA com.zeligsoft.domain.sca.agilent.importer.utils.AgilentImportUtils.getCFPortType(
+		org.eclipse.uml2.uml.Element, java.lang.String, java.lang.Boolean);
+
+private Void setDirection(CORBAParameter parameter, String direction) :
+	JAVA com.zeligsoft.domain.sca.agilent.importer.utils.AgilentImportUtils.setParameterDirection(org.eclipse.emf.ecore.EObject, java.lang.String);
+	
+private String generateUUID() :
+	JAVA com.zeligsoft.domain.sca.agilent.importer.utils.AgilentImportUtils.generateDCEUUID();
+	

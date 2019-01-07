@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension point="com.zeligsoft.cx.codegen.ui.editsource">
+   		<usereditableelement
+            label="%editsource.implementation"
+            containerConcept="CCM::CCM_Implementation::MonolithicImplementation"
+            concept="ZMLMM::ZML_Component::WorkerFunction"
+            property="body"
+            codeLocator="com.zeligsoft.cx.codegen.UserEditableRegion$Locator">
+            <m2t-transformation
+                rule="template::worker::worker_c_file::create FOR element.zdlAsOperation().owner">
+                <emfmetamodelpackage value="org.eclipse.emf.ecore.EcorePackage"/>
+                <metamodelclass value="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
+                <zdlmetamodel
+                      value="pathmap://CCM_DOMAIN/CCM.uml">
+                </zdlmetamodel>
+                <zdlmetamodel
+                      value="pathmap://ZML_LIBRARIES/ZMLMM.uml">
+                </zdlmetamodel>
+            </m2t-transformation>
+        </usereditableelement>
+   </extension>
+   <extension
+         point="com.zeligsoft.cx.codegen.ui.transformation">
+      <concept
+            type="CCM::CCM_Implementation::MonolithicImplementation">
+         <workflow
+               label="%workflow.label.codegen"
+               path="workflow/ccmCodegen.oaw">
+         </workflow>
+      </concept>
+   </extension>
+</plugin>

@@ -1,0 +1,191 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+
+«EXTENSION extensions::FunctionNames»
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::StringHelpers»
+
+
+«DEFINE baseFunctionDefs FOR Component»
+/*******************************************************************
+ *
+ *
+ *  User Worker base functions
+ *
+ *
+ *******************************************************************/
+void usr«name»Worker_construct(usr«name»Worker self ZCE_EXC_ENV_ARG);
+
+void usr«name»Worker_destruct(usr«name»Worker self ZCE_EXC_ENV_ARG);
+«ENDDEFINE»
+
+«DEFINE baseFunctionImpls FOR Component»
+/*******************************************************************
+ *
+ *
+ *  User Worker base functions
+ *
+ *
+ *******************************************************************/
+void usr«name»Worker_construct(usr«name»Worker self ZCE_EXC_ENV_ARG) 
+{
+	/* TODO! */
+}
+
+void usr«name»Worker_destruct(usr«name»Worker self ZCE_EXC_ENV_ARG)
+{
+	/* TODO! */
+}
+«ENDDEFINE»
+
+«DEFINE workerBaseFunctionDefs FOR Type»
+/****************************
+ *                          *
+ * Worker base functions    *
+ *                          *
+ ****************************/
+/**
+ * zce«name»Worker_construct: «name»'s worker constructor
+ * Following the constructor/destructor pattern, every struct has its own matching pair of construct/destruct functions
+ * @param self The zce«name»Worker struct to which this function applies to.
+ * @param container The zce«name»Container struct to which this function applies to.
+ * @param port2 Reference to the component's port2 uses port.
+ */
+void zce«name»Worker_construct(zce«name»Worker self, zce«name»Container container«FOREACH this.ownedElement AS p»«IF !((Port)p).required.isEmpty», zceBase_«((Port)p).required.first().name» «((Port)p).name»«ENDIF»«ENDFOREACH» ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Worker_destruct: «name»'s worker destructor
+ * Following the constructor/destructor pattern, every struct has its own matching pair of construct/destruct functions
+ * @param self The zce«name»Worker struct to which this function applies to.
+ */
+void zce«name»Worker_destruct(zce«name»Worker self ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Worker_allocate: «name»'s worker allocator
+ * Allocate the memory for the struct
+ * @return The zce«name»Worker struct.
+ */
+zce«name»Worker zce«name»Worker_allocate(ZCE_EXC_ENV_SINGLE_ARG);
+
+/**
+ * zce«name»Worker_init: «name»'s worker init
+ * Placeholder function for the user to perform any kind of initialization before component starts.
+ * @param self The zce«name»Worker struct to which this function applies to.
+ * @param portIndex The int represent uses ports' index. 
+ * @param connNumber The int represent all the connection this uses port has. 
+ */
+void zce«name»Worker_init(zce«name»Worker self, int portIndex, int connNumber ZCE_EXC_ENV_ARG);
+«ENDDEFINE»
+
+
+«DEFINE workerBaseFunctionImpls FOR Type»
+«FOREACH this.ownedElement.typeSelect(Port) AS p»
+«IF !p.required.isEmpty»
+	«FOREACH p.required AS requires»
+		«FOREACH requires.getOperations() AS op»
+#define «this.name.ToUpperCase()»_«p.name.ToUpperCase()»_«op.name.ToUpperCase()»(«FOREACH op.ownedParameter AS param»«param.name.ToUpperCase()»,«ENDFOREACH» CONNID) \
+		self->«p.name»_->«op.name»(self->«p.name»_struct_, «FOREACH op.ownedParameter AS param»«param.name.ToUpperCase()»,«ENDFOREACH» self->port_id_table[e«this.name.ToUpperCase()»_USES_PORT_«p.name.ToUpperCase()»_INT_ID][CONNID+1][0], self->port_id_table[e«this.name.ToUpperCase()»_USES_PORT_«p.name.ToUpperCase()»_INT_ID][CONNID+1][1]);
+		«ENDFOREACH»
+	«ENDFOREACH»
+«ENDIF»
+«ENDFOREACH»
+
+/*************************************************
+ *                                               *
+ * Worker base functions                         *
+ *                                               *
+ *************************************************/
+void zce«name»Worker_construct(zce«name»Worker self, zce«name»Container container«FOREACH this.ownedElement AS p»«IF !((Port)p).required.isEmpty», zceBase_«((Port)p).required.first().name» «((Port)p).name»«ENDIF»«ENDFOREACH» ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->container_ = container;
+	«FOREACH this.ownedElement AS p»«IF !((Port)p).required.isEmpty»
+	self->«((Port)p).name»_ = «((Port)p).name»;
+	self->«((Port)p).name»_struct_ = «((Port)p).name»;
+	«ENDIF»«ENDFOREACH»
+	«IF !this.ownedElement.typeSelect(Port).required.isEmpty»
+	self->port_id_table = ZCE_NEW_ARRAY(int**, eEND_OF_COMPONENT_DEFINITION_«ToUpperCase(this.name)»_USES_PORTS);
+	«ENDIF»
+}
+
+void zce«name»Worker_destruct(zce«name»Worker self ZCE_EXC_ENV_ARG)
+{
+	«IF !this.ownedElement.typeSelect(Port).required.isEmpty»
+	int i,j,k = 0;
+	int iNumConn[eEND_OF_COMPONENT_DEFINITION_«ToUpperCase(this.name)»_USES_PORTS];
+	«ENDIF»
+	ZCE_ASSERT_EXCEPTION_VOID
+	«FOREACH this.ownedElement.typeSelect(Port) AS p»
+	«FOREACH p.required AS required»
+	iNumConn[e«ToUpperCase(this.name)»_USES_PORT_«ToUpperCase(((Port)p).name)»_INT_ID] = zceRequiresPort_«required.name»_getConnNumber((zceRequiresPort_«required.name»)zce«name»Container_get«((Port)p).name»(self->container_));
+	«ENDFOREACH»
+	«IF !p.required.isEmpty»
+	self->«((Port)p).name»_ = NULL;
+	self->«((Port)p).name»_struct_ = NULL;
+	«ENDIF»
+	«ENDFOREACH»
+	self->container_ = NULL;
+	«IF !this.ownedElement.typeSelect(Port).required.isEmpty»
+	for(i=0;i < eEND_OF_COMPONENT_DEFINITION_«ToUpperCase(this.name)»_USES_PORTS;i+=1)
+	{
+		for(j=0;j <= iNumConn[i]; j+=1)
+		{
+			for(k=0;k < 2; k+=1)
+			{
+				self->port_id_table[i][j][k] = 0;
+			}
+			ZCE_DELETE(self->port_id_table[i][j]);
+		}
+		ZCE_DELETE(self->port_id_table[i]);
+	}
+	ZCE_DELETE(self->port_id_table);
+	«ENDIF»
+}
+
+zce«name»Worker zce«name»Worker_allocate(ZCE_EXC_ENV_SINGLE_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	zce«name»Worker self =  ZCE_NEW(struct zce_struct_«name»Worker);
+	return self;
+}
+
+void zce«name»Worker_init(zce«name»Worker self, int portIndex, int connNumber ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+		int i = 0;
+	self->port_id_table[portIndex] = ZCE_NEW_ARRAY(int*, connNumber+1);
+	for (i = 0;i<connNumber+1;i+=1)
+	{
+		self->port_id_table[portIndex][i] = ZCE_NEW_ARRAY(int, 2);
+		self->port_id_table[portIndex][i][0] = ZCE_UNUSED;
+		self->port_id_table[portIndex][i][1] = ZCE_PORT_BROADCAST;
+	}
+}
+«ENDDEFINE»
+
+
+
+
+
+
+
+
+
+

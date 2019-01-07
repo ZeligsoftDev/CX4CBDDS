@@ -1,0 +1,1214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:zdl="http://www.zeligsoft.com/zdl/2008/ZDL/1" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w http://www.zeligsoft.com/zdl/2008/ZDL/1 pathmap://ZDL_PROFILES/ZDL.profile.uml#_TY7fcC_oEd2oX-fEHLus7g">
+  <uml:Model xmi:id="_NRAMoAwOEdmFcaeZXPdWAQ" name="CORBADomain">
+    <packageImport xmi:id="_UeIAJtCzEdqK7KjEh4hvHw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_8FMsoEk1Ed2eBKZvQ89d6g">
+      <importedPackage xmi:type="uml:Model" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_NRAMoAwOEdmFcaeZXPdWAQ"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_nwoAMEk1Ed2eBKZvQ89d6g" name="IDL">
+      <packageImport xmi:id="_G5D30Ek2Ed2eBKZvQ89d6g">
+        <importedPackage href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_hg-xYCBUEd2fK6BRw108zQ"/>
+      </packageImport>
+      <packageImport xmi:id="_tUPxYDL1EeCZXvaTmQgdWA">
+        <importedPackage href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_9ihoQEuQEd2aAOSqOUjI9w"/>
+      </packageImport>
+      <packagedElement xmi:type="uml:Class" xmi:id="_2LOWoEk3Ed2eBKZvQ89d6g" name="CORBAWString">
+        <generalization xmi:id="_3y77UEk3Ed2eBKZvQ89d6g" general="_w5Hj0Ek3Ed2eBKZvQ89d6g"/>
+        <generalization xmi:id="_wwUr0CfJEd-hjrUbfrMI8A" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_kcPqYPsxEeCUd9Edw_GMyg" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_Iwx8gEk4Ed2eBKZvQ89d6g" name="CORBAAnonymousArray"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_G0DxIEk4Ed2eBKZvQ89d6g" name="CORBAAnonymousSequence"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_9qchQEk3Ed2eBKZvQ89d6g" name="CORBAArray">
+        <ownedRule xmi:id="_MZPI8PpjEeCVxf8v04aRDA" name="must_have_type" constrainedElement="_9qchQEk3Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_MZSMQPpjEeCVxf8v04aRDA">
+            <body>%_desc_CORBADomain__IDL__CORBAArray__must_have_type</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_MZQXEPpjEeCVxf8v04aRDA">
+            <language>OCL</language>
+            <body>self.oclAsType(uml::DataType).ownedAttribute->first().type &lt;> null</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_n3qnwJBzEeG3w4bnc767Ng" name="bound_value_constraint" constrainedElement="_9qchQEk3Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_n3x8gJBzEeG3w4bnc767Ng">
+            <body>%_desc_CORBADomain__IDL__CORBAArray__bound_value_constraint</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_n3uSIJBzEeG3w4bnc767Ng">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.CORBABoundValueConstraint</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_CDe-EEk4Ed2eBKZvQ89d6g" general="_44-WUEk3Ed2eBKZvQ89d6g"/>
+        <generalization xmi:id="_SGs5oMJcEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_QQgFoMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_g1T3QMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+        <generalization xmi:id="_l1vz8PsxEeCUd9Edw_GMyg" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+        <ownedAttribute xmi:id="_ELOtsEk4Ed2eBKZvQ89d6g" name="index" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T6dz8G4NEeGbEdQxV9FPKw" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T6MuMG4NEeGbEdQxV9FPKw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_WdjMQI-tEeGdHIFRtaMqRA" name="bounds" visibility="public" type="_vWz-sIPiEeGRety5GrZr1Q" aggregation="composite" association="_WdcekI-tEeGdHIFRtaMqRA">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WdmPkI-tEeGdHIFRtaMqRA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WdlogI-tEeGdHIFRtaMqRA" value="1"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_w5Hj0Ek3Ed2eBKZvQ89d6g" name="CORBABounded" isAbstract="true">
+        <ownedRule xmi:id="_hDm38EFuEeODw463y6SlVg" name="bound_value_constraint" constrainedElement="_9qchQEk3Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_hDm38UFuEeODw463y6SlVg">
+            <body>%_desc_CORBADomain__IDL__CORBAArray__bound_value_constraint</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_hDm38kFuEeODw463y6SlVg">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.CORBABoundValueConstraint</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_FkYpECeoEd-ccth2MPb_KA" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_18tV8EmbEd-TkOZJm_KBeg" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+        <ownedAttribute xmi:id="_y3n34Ek3Ed2eBKZvQ89d6g" name="bound" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3zaRsCtqEeOdqchurdwy7A" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3zZDkCtqEeOdqchurdwy7A"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_5lRAQCn-EeOV59vr0QbsTQ" name="bounds" visibility="public" type="_vWz-sIPiEeGRety5GrZr1Q" aggregation="composite" association="_5lQZMCn-EeOV59vr0QbsTQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5lSOYSn-EeOV59vr0QbsTQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5lSOYCn-EeOV59vr0QbsTQ" value="1"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_eM2R8Ek3Ed2eBKZvQ89d6g" name="CORBABoxedValue">
+        <generalization xmi:id="_iczEMEk3Ed2eBKZvQ89d6g" general="_ftj2wEk3Ed2eBKZvQ89d6g"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_PNNp4Ek3Ed2eBKZvQ89d6g" name="CORBACase">
+        <generalization xmi:id="_ZzqrMEk3Ed2eBKZvQ89d6g" general="_TgljkEk3Ed2eBKZvQ89d6g"/>
+        <generalization xmi:id="_WRdk8O1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <ownedAttribute xmi:id="_V56ycEk3Ed2eBKZvQ89d6g" name="label" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aDHXAKuQEd2kKOGQLc9n8Q" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aC9mAKuQEd2kKOGQLc9n8Q" value="1"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_Wa0VgEk2Ed2eBKZvQ89d6g" name="CORBAConstant">
+        <ownedRule xmi:id="_gG_YENCsEd-7NcdD8GVUXQ" name="type_is_primitive" constrainedElement="_Wa0VgEk2Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_gG_YE9CsEd-7NcdD8GVUXQ">
+            <body>%_desc_CORBADomain__IDL__CORBAConstant__type_is_primitive</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_gG_YEdCsEd-7NcdD8GVUXQ">
+            <language>OCL</language>
+            <body>self.idlType.oclIsKindOf(CORBAPrimitive) or &#xD;
+(self.idlType.oclIsKindOf(CORBATypeDef) and self.idlType.oclAsType(uml::DataType).general()->select&#xD;
+	(   not(oclIsKindOf(CORBAPrimitive)) and not(oclIsKindOf(CORBATypeDef)) )->isEmpty()) or&#xD;
+self.idlType.oclIsKindOf(CORBAEnum)</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_EO7NECYOEeOmaaY6Ob2QXw" name="has_enum_literal" constrainedElement="_Wa0VgEk2Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_EPJPgCYOEeOmaaY6Ob2QXw">
+            <body>%_desc_CORBADomain__IDL__CORBAConstant__has_enum_literal</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_EPE-ECYOEeOmaaY6Ob2QXw">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.CORBAConstantValidEnumLiteral</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_Vy2WUO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_kD7PENCpEd-7NcdD8GVUXQ" general="_Q0OakMJbEd6QAZgNaBtgeQ"/>
+        <ownedAttribute xmi:id="_QuViAMMsEd6yzd-HWW9c9w" name="default" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ZW328Ek2Ed2eBKZvQ89d6g" name="CORBAConstants">
+        <generalization xmi:id="_VdvpAO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_RM1N4DQUEd-ChtLkdFBHeg" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+        <generalization xmi:id="_XHQk8DQUEd-ChtLkdFBHeg" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_nPTw8Ek3Ed2eBKZvQ89d6g" name="CORBAConstructed" isAbstract="true">
+        <generalization xmi:id="_-cR4gO1nEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_RVtncEk3Ed2eBKZvQ89d6g" name="CORBADefault">
+        <generalization xmi:id="_aYeBYEk3Ed2eBKZvQ89d6g" general="_TgljkEk3Ed2eBKZvQ89d6g"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_lLSqwEk3Ed2eBKZvQ89d6g" name="CORBAEnum">
+        <ownedRule xmi:id="_V-XoIO-XEeCQus6uqORjzw" name="enumeration_must_have_literals" constrainedElement="_lLSqwEk3Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_V-cgoO-XEeCQus6uqORjzw">
+            <body>%_desc_CORBADomain__IDL__CORBAEnum__enumeration_must_have_literals</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_V-YPMO-XEeCQus6uqORjzw">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.EnumerationMustHaveLiteralsConstraint</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_VEeNYO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_J4V7oMJdEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_WfFHwMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_hwWjMMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+        <generalization xmi:id="_OgAsMMPPEd6u_6T1TQ_XYQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_oz5JIEk3Ed2eBKZvQ89d6g" name="CORBAException">
+        <generalization xmi:id="_u_E5AEk3Ed2eBKZvQ89d6g" general="_nPTw8Ek3Ed2eBKZvQ89d6g"/>
+        <generalization xmi:id="_SEB4wMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_iYoEIMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+        <generalization xmi:id="_O-xr0MPPEd6u_6T1TQ_XYQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+        <generalization xmi:id="_z5fLACG-EeGd-Nb5_CNoPw" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <ownedAttribute xmi:id="_eGpLgMJeEd6QAZgNaBtgeQ" name="members" visibility="public" type="_THaTQMJdEd6QAZgNaBtgeQ" aggregation="composite" association="_eGn9YMJeEd6QAZgNaBtgeQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eGqZocJeEd6QAZgNaBtgeQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eGqZoMJeEd6QAZgNaBtgeQ"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_clQegEk2Ed2eBKZvQ89d6g" name="CORBAInterface">
+        <ownedRule xmi:id="_uGqRkHhnEd6JF4o51lMrwQ" name="OnlyCORBAOperations" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_uGzbgXhnEd6JF4o51lMrwQ">
+            <body>%_desc_CORBADomain__IDL__CORBAInterface__OnlyCORBAOperations</body>
+          </ownedComment>
+          <ownedComment xmi:id="_qEFycD3EEd-vLrboxH3Fxw" annotatedElement="_uGqRkHhnEd6JF4o51lMrwQ">
+            <body>&lt;br /></body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_uGqRkXhnEd6JF4o51lMrwQ">
+            <language>OCL</language>
+            <body>self.operation->forAll(o | o.oclIsKindOf(CORBAOperation))</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_mPhm4HuAEd6qXce-J7VhZw" name="OnlyCORBAAttributes" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_mQID0HuAEd6qXce-J7VhZw">
+            <body>%_desc_CORBADomain__IDL__CORBAInterface__OnlyCORBAAttributes</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_mP-S0HuAEd6qXce-J7VhZw">
+            <language>OCL</language>
+            <body>self.oclAsType(uml::Interface).ownedAttribute->forAll(a | a.oclIsKindOf(CORBAAttribute) or a.oclIsKindOf(CORBAConstant))</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_1XJgkCF0Ed-VD6bNQmk_YQ" name="only_inherit_from_abstract" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_1XPAICF0Ed-VD6bNQmk_YQ">
+            <body>%_desc_CORBADomain__IDL__CORBAInterface__only_inherit_from_abstract</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_1XKHoCF0Ed-VD6bNQmk_YQ">
+            <language>OCL</language>
+            <body>self.isAbstract implies self.oclAsType(uml::Interface).general->select(g | g.oclIsKindOf(CORBAInterface))->forAll(g | g.oclAsType(CORBAInterface).isAbstract)</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_Zi_HACF9Ed-VD6bNQmk_YQ" name="only_inherit_from_local" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_ZjHC0SF9Ed-VD6bNQmk_YQ">
+            <body>%_desc_CORBADomain__IDL__CORBAInterface__only_inherit_from_local</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_ZjAVICF9Ed-VD6bNQmk_YQ">
+            <language>OCL</language>
+            <body>not self.isLocal implies self.oclAsType(uml::Interface).general->select(g | g.oclIsKindOf(CORBAInterface))->forAll(g | not g.oclAsType(CORBAInterface).isLocal)</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_P4g3cCIaEd-VD6bNQmk_YQ" name="unique_inherited_operation_names" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_P5iLICIaEd-VD6bNQmk_YQ">
+            <body>%_desc_CORBADomain__IDL__CORBAInterface__unique_inherited_operation_names</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_P4xWICIaEd-VD6bNQmk_YQ">
+            <language>OCL</language>
+            <body>(self.oclAsType(uml::Interface).inheritedMember.name->asSet()).size() = (self.oclAsType(uml::Interface).inheritedMember.name).size()</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_tOhU4CIqEd-VD6bNQmk_YQ" name="unique_operation_names" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_tOpQsSIqEd-VD6bNQmk_YQ">
+            <body>%_desc_CORBADomain__IDL__CORBAInterface__unique_operation_names</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_tOjxICIqEd-VD6bNQmk_YQ">
+            <language>OCL</language>
+            <body>self.ownedOperation->forAll(op1 | self.ownedOperation->forAll(op2 | op1 &lt;> op2 implies op1.oclAsType(uml::Operation).name &lt;> op2.oclAsType(uml::Operation).name))</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_tUiycCIsEd-VD6bNQmk_YQ" name="dont_override_feature" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_tUqHMCIsEd-VD6bNQmk_YQ">
+            <body>%_desc_CORBADomain__IDL__CORBAInterface__dont_override_feature</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_tUjZgCIsEd-VD6bNQmk_YQ">
+            <language>OCL</language>
+            <body>self.ownedAttribute->forAll(a1 | self.oclAsType(uml::Interface).allParents()->select(p | p.oclIsKindOf(CORBAInterface)).attribute->select(oclIsKindOf(CORBAAttribute))->forAll(a2 | a1.oclAsType(uml::Property).name &lt;> a2.oclAsType(uml::Property).name)) 
+and
+self.operation->forAll(a1 | self.oclAsType(uml::Interface).allParents()->select(p | p.oclIsKindOf(CORBAInterface)).getOperations()->select(oclIsKindOf(CORBAOperation))->forAll(a2 | a1.oclAsType(uml::Operation).name &lt;> a2.oclAsType(uml::Operation).name))</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_QXkyACb8Ed-bI7KrIv1ElA" name="unique_attribute_names" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_QXkyASb8Ed-bI7KrIv1ElA">
+            <body>%_desc_CORBADomain__IDL__CORBAInterface__unique_attribute_names</body>
+          </ownedComment>
+          <ownedComment xmi:id="_luxYAD3EEd-vLrboxH3Fxw" annotatedElement="_QXkyACb8Ed-bI7KrIv1ElA">
+            <body>&lt;br /></body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_QXkyAib8Ed-bI7KrIv1ElA">
+            <ownedComment xmi:id="_mU_DcD3EEd-vLrboxH3Fxw" annotatedElement="_QXkyAib8Ed-bI7KrIv1ElA">
+              <body>&lt;br /></body>
+            </ownedComment>
+            <language>OCL</language>
+            <body>self.ownedAttribute->forAll(a1, a2 | a1 &lt;> a2 implies a1.oclAsType(uml::Property).name &lt;> a2.oclAsType(uml::Property).name)</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_xM8-sE4vEd-ZBakZXht1qg" name="not_both_local_and_abstract" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_xM8-sU4vEd-ZBakZXht1qg">
+            <body>%_desc_CORBADomain__IDL__CORBAInterface__not_both_local_and_abstract</body>
+          </ownedComment>
+          <ownedComment xmi:id="_xM8-sk4vEd-ZBakZXht1qg" annotatedElement="_xM8-sE4vEd-ZBakZXht1qg">
+            <body>&lt;br /></body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_xM9lwE4vEd-ZBakZXht1qg">
+            <ownedComment xmi:id="_xM9lwU4vEd-ZBakZXht1qg" annotatedElement="_xM9lwE4vEd-ZBakZXht1qg">
+              <body>&lt;br /></body>
+            </ownedComment>
+            <language>OCL</language>
+            <body>self.isAbstract  implies not(self.isLocal)</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_8onbYEk4Ed2eBKZvQ89d6g">
+          <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_5P3U8C2vEd2LuvOo-ahhJw"/>
+        </generalization>
+        <generalization xmi:id="_XHa8kO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_Akv7QMJbEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_MXBSoMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_ekZT4MMhEd6tra_UkAvALA" general="_bu8JsMMhEd6tra_UkAvALA"/>
+        <generalization xmi:id="_buD24IbkEeSjd8J8ZjsuPQ">
+          <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_iYmHIIbiEeSjd8J8ZjsuPQ"/>
+        </generalization>
+        <ownedAttribute xmi:id="_eU3a8Ek2Ed2eBKZvQ89d6g" name="isLocal" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_k7guYMJaEd6QAZgNaBtgeQ" name="isAbstract" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_AHfXsJoKEeGUmNT_0OYWnw" name="generals" visibility="public" type="_clQegEk2Ed2eBKZvQ89d6g" association="_AHZREJoKEeGUmNT_0OYWnw">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AHleUZoKEeGUmNT_0OYWnw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AHleUJoKEeGUmNT_0OYWnw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_aL-LQAEDEeOWHr0xAE9a0Q" name="isAsynchronous" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_jiPCQEk3Ed2eBKZvQ89d6g" name="CORBAPrimitive">
+        <generalization xmi:id="_SjMjcO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_DKZH0MJbEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_NHzPUMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
+        <ownedAttribute xmi:id="_u-9HwEk4Ed2eBKZvQ89d6g" name="type" visibility="public" type="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_AO9FYEk4Ed2eBKZvQ89d6g" name="CORBASequence">
+        <ownedRule xmi:id="_1K0y4Mv5Ed-o2JgoXZ13oQ" name="must_have_type" constrainedElement="_AO9FYEk4Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_1K0y4cv5Ed-o2JgoXZ13oQ">
+            <body>%_desc_CORBADomain__IDL__CORBASequence__must_have_type</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_1K0y4sv5Ed-o2JgoXZ13oQ">
+            <language>OCL</language>
+            <body>self.oclAsType(uml::DataType).ownedAttribute->first().type &lt;> null</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_jQC6UEFuEeODw463y6SlVg" name="bound_value_constraint" constrainedElement="_9qchQEk3Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_jQC6UUFuEeODw463y6SlVg">
+            <body>%_desc_CORBADomain__IDL__CORBAArray__bound_value_constraint</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_jQC6UkFuEeODw463y6SlVg">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.CORBABoundValueConstraint</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_C1GoQEk4Ed2eBKZvQ89d6g" general="_44-WUEk3Ed2eBKZvQ89d6g"/>
+        <generalization xmi:id="_oX9VMMJcEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_PlidEMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_jcGTUMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+        <generalization xmi:id="_QD6H4MPPEd6u_6T1TQ_XYQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+        <ownedAttribute xmi:id="_KHS8kKY5Ed-snc0XvAY1Mg" name="bound" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wWM4oavAEd-oJr1YbDcrKw" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wWM4oKvAEd-oJr1YbDcrKw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_43DPYCn-EeOV59vr0QbsTQ" name="bounds" visibility="public" type="_vWz-sIPiEeGRety5GrZr1Q" aggregation="composite" association="_429IwCn-EeOV59vr0QbsTQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_43FroSn-EeOV59vr0QbsTQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_43FroCn-EeOV59vr0QbsTQ"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_0_hYgEk3Ed2eBKZvQ89d6g" name="CORBAString">
+        <generalization xmi:id="_3QXZwEk3Ed2eBKZvQ89d6g" general="_w5Hj0Ek3Ed2eBKZvQ89d6g"/>
+        <generalization xmi:id="_0Uwb4CfJEd-hjrUbfrMI8A" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_lYkvwPsxEeCUd9Edw_GMyg" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_qwxFgEk3Ed2eBKZvQ89d6g" name="CORBAStruct">
+        <generalization xmi:id="_urZvEEk3Ed2eBKZvQ89d6g" general="_nPTw8Ek3Ed2eBKZvQ89d6g"/>
+        <generalization xmi:id="_IY2e0MJdEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_VVRnEMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_kbkzUMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+        <generalization xmi:id="_QpBnIMPPEd6u_6T1TQ_XYQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+        <ownedAttribute xmi:id="_sPQsAMJeEd6QAZgNaBtgeQ" name="members" visibility="public" type="_THaTQMJdEd6QAZgNaBtgeQ" aggregation="composite" association="_sPPd4MJeEd6QAZgNaBtgeQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sPRTEcJeEd6QAZgNaBtgeQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sPRTEMJeEd6QAZgNaBtgeQ"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_bStRgEk2Ed2eBKZvQ89d6g" name="CORBASupports"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_44-WUEk3Ed2eBKZvQ89d6g" name="CORBATemplate" isAbstract="true">
+        <generalization xmi:id="_-F1HYO1nEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_dITrwEk3Ed2eBKZvQ89d6g" name="CORBATypeDef">
+        <ownedRule xmi:id="_BwPOEPR_EeKYqZAl_2QeUg" name="typedef_should_have_type" constrainedElement="_dITrwEk3Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_BwVUsPR_EeKYqZAl_2QeUg">
+            <body>%_desc_CORBADomain__IDL__CORBATypeDef__typedef_should_have_type</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_BwTfgPR_EeKYqZAl_2QeUg">
+            <language>OCL</language>
+            <body>self.type &lt;> null or self.oclAsType(uml::DataType).generalization->size() &lt;> 0</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_hnAEoEk3Ed2eBKZvQ89d6g" general="_ftj2wEk3Ed2eBKZvQ89d6g"/>
+        <generalization xmi:id="_eHEM0MJfEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_gFirsMJfEd6QAZgNaBtgeQ" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_lDdSsMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+        <generalization xmi:id="_PkLe8MPPEd6u_6T1TQ_XYQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+        <ownedAttribute xmi:id="_7ektECG-EeGd-Nb5_CNoPw" name="type" visibility="public" type="_5ZEXsMJaEd6QAZgNaBtgeQ" association="_7eGzACG-EeGd-Nb5_CNoPw">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7e2Z4CG-EeGd-Nb5_CNoPw" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7e1y0CG-EeGd-Nb5_CNoPw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_sX40UEk3Ed2eBKZvQ89d6g" name="CORBAUnion">
+        <ownedRule xmi:id="_8JWRwMvZEd-o2JgoXZ13oQ" name="must_have_switchType" constrainedElement="_sX40UEk3Ed2eBKZvQ89d6g">
+          <ownedComment xmi:id="_8JWRwcvZEd-o2JgoXZ13oQ">
+            <body>%_desc_CORBADomain__IDL__CORBAUnion__must_have_switchType</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_8JWRwsvZEd-o2JgoXZ13oQ">
+            <language>OCL</language>
+            <body>self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->notEmpty() and&#xD;
+self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first().type &lt;> null</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_uLEpMEk3Ed2eBKZvQ89d6g" general="_nPTw8Ek3Ed2eBKZvQ89d6g"/>
+        <generalization xmi:id="_GY5ZQMJdEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_UOoIEMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_mLG3QMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+        <generalization xmi:id="_RWlQsMPPEd6u_6T1TQ_XYQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_TgljkEk3Ed2eBKZvQ89d6g" name="CORBAUnionField">
+        <generalization xmi:id="_ZTUb4MJdEd6QAZgNaBtgeQ" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_a5tK4MJdEd6QAZgNaBtgeQ" general="_Q0OakMJbEd6QAZgNaBtgeQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_j71qgEk2Ed2eBKZvQ89d6g" name="CORBAValue">
+        <generalization xmi:id="_H3nr8MJbEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_NuSAgMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_g3TKoMMhEd6tra_UkAvALA" general="_bu8JsMMhEd6tra_UkAvALA"/>
+        <ownedAttribute xmi:id="_lH08gEk2Ed2eBKZvQ89d6g" name="isCustom" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_lLG6AEk2Ed2eBKZvQ89d6g" name="isTruncatable" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_PHSXoMJbEd6QAZgNaBtgeQ" name="isAbstract" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_tBlHAEk2Ed2eBKZvQ89d6g" name="CORBAValueFactory"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ftj2wEk3Ed2eBKZvQ89d6g" name="CORBAWrapper" isAbstract="true">
+        <generalization xmi:id="_YCI4YO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_L3t4QEk4Ed2eBKZvQ89d6g" name="CORBAPrimitiveKind">
+        <ownedLiteral xmi:id="_jnx0IEk4Ed2eBKZvQ89d6g" name="CORBAWChar" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_jiRCAEk4Ed2eBKZvQ89d6g" name="CORBAVoid" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_ja0WMEk4Ed2eBKZvQ89d6g" name="CORBAUnsignedShort" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_jQ_EwEk4Ed2eBKZvQ89d6g" name="CORBAUnsignedLongLong" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_iNCUcEk4Ed2eBKZvQ89d6g" name="CORBAUnsignedLong" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_Q2TSIEk4Ed2eBKZvQ89d6g" name="CORBAShort" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_QzeAkEk4Ed2eBKZvQ89d6g" name="CORBAOctet" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_QxrQ0Ek4Ed2eBKZvQ89d6g" name="CORBAObjectRef" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_QwC5IEk4Ed2eBKZvQ89d6g" name="CORBALongLong" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_QuZ6YEk4Ed2eBKZvQ89d6g" name="CORBALongDouble" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_Qsw7oEk4Ed2eBKZvQ89d6g" name="CORBALong" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_QrRt4Ek4Ed2eBKZvQ89d6g" name="CORBAFloat" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_Qp7qEEk4Ed2eBKZvQ89d6g" name="CORBADouble" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_QoSrUEk4Ed2eBKZvQ89d6g" name="CORBAChar" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_QmWxoEk4Ed2eBKZvQ89d6g" name="CORBABoolean" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_QZidoEk4Ed2eBKZvQ89d6g" name="CORBAAny" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_nDnLIExUEd2INdt7Ch5VKg" name="CORBAString" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_IDH5IExVEd2INdt7Ch5VKg" name="CORBAWString" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+        <ownedLiteral xmi:id="_aYvlkExVEd2INdt7Ch5VKg" name="CORBATypecode" classifier="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_OQD9wEk6Ed2eBKZvQ89d6g" name="CORBAModule">
+        <generalization xmi:id="_UGMAMO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_LKz-MMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_dS-Y8MPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+        <ownedAttribute xmi:id="_BFl9MMPJEd6u_6T1TQ_XYQ" name="contents" visibility="public" type="_8UNR0MPIEd6u_6T1TQ_XYQ" aggregation="composite" association="_BFkvEMPJEd6u_6T1TQ_XYQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BFnLUMPJEd6u_6T1TQ_XYQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BFmkQMPJEd6u_6T1TQ_XYQ"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_CHbucLWrEd2PTvVd89HYhA" name="CORBAAttribute">
+        <ownedRule xmi:id="_3n8CkLHvEd-tbasCPUZnSQ" name="read_only_exceptions" constrainedElement="_CHbucLWrEd2PTvVd89HYhA">
+          <ownedComment xmi:id="_3oFzkrHvEd-tbasCPUZnSQ">
+            <body>%_desc_CORBADomain__IDL__CORBAAttribute__read_only_exceptions</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_3oFzkLHvEd-tbasCPUZnSQ">
+            <language>OCL</language>
+            <body>self.isReadOnly implies self.setraises->isEmpty()</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_Ww1BgO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_hd0YIMJdEd6QAZgNaBtgeQ" general="_Q0OakMJbEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_cB_fgIbkEeSjd8J8ZjsuPQ">
+          <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_iYmHIIbiEeSjd8J8ZjsuPQ"/>
+        </generalization>
+        <ownedAttribute xmi:id="_DN6OULWrEd2PTvVd89HYhA" name="setraises" visibility="public" type="_oz5JIEk3Ed2eBKZvQ89d6g">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LwMYcbWrEd2PTvVd89HYhA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LwMYcLWrEd2PTvVd89HYhA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_E0vCMLWrEd2PTvVd89HYhA" name="getraises" visibility="public" type="_oz5JIEk3Ed2eBKZvQ89d6g">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GGY3UbWrEd2PTvVd89HYhA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GGY3ULWrEd2PTvVd89HYhA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_cu-e0MMrEd6yzd-HWW9c9w" name="isReadOnly" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_riOLIAwxEd-V8dowZWqrvQ" name="owner" visibility="public" type="_8UNR0MPIEd6u_6T1TQ_XYQ" isReadOnly="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_OcmUULWrEd2PTvVd89HYhA" name="CORBAOperation">
+        <ownedRule xmi:id="_MJz0cCJDEd-VD6bNQmk_YQ" name="oneway_parameters_constraint" constrainedElement="_OcmUULWrEd2PTvVd89HYhA">
+          <ownedComment xmi:id="_MJ7wQCJDEd-VD6bNQmk_YQ">
+            <body>%_desc_CORBADomain__IDL__CORBAOperation__oneway_parameters_constraint</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_MJ1CkCJDEd-VD6bNQmk_YQ">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.OneWayOperationValidation</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_-B83QEZEEd-iq4zbnyRo8g" name="oneway_return_parameter_constraint" constrainedElement="_OcmUULWrEd2PTvVd89HYhA">
+          <ownedComment xmi:id="_-B83QUZEEd-iq4zbnyRo8g">
+            <body>%_desc_CORBADomain__IDL__CORBAOperation__oneway_return_parameter_constraint</body>
+          </ownedComment>
+          <ownedComment xmi:id="_FO_g8ElfEd-PCed84QcNLQ" annotatedElement="_-B83QEZEEd-iq4zbnyRo8g">
+            <body>&lt;br /></body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_-B83QkZEEd-iq4zbnyRo8g">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.OneWayOperationReturnParameterValidation</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_ASGbUEZNEd-iq4zbnyRo8g" name="oneway_raises_exception_constraint" constrainedElement="_OcmUULWrEd2PTvVd89HYhA">
+          <ownedComment xmi:id="_ASGbUUZNEd-iq4zbnyRo8g">
+            <body>%_desc_CORBADomain__IDL__CORBAOperation__oneway_raises_exception_constraint</body>
+          </ownedComment>
+          <ownedComment xmi:id="_vjDYMEZZEd-iq4zbnyRo8g" annotatedElement="_ASGbUEZNEd-iq4zbnyRo8g">
+            <body>&lt;br /></body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_ASGbUkZNEd-iq4zbnyRo8g">
+            <language>OCL</language>
+            <body>self.isOneWay implies self.exceptionDef->isEmpty()
+
+
+</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_9p7kEKu2Ed-oJr1YbDcrKw" name="only_corba_parameters" constrainedElement="_OcmUULWrEd2PTvVd89HYhA">
+          <ownedComment xmi:id="_9qFVEqu2Ed-oJr1YbDcrKw">
+            <body>%_desc_CORBADomain__IDL__CORBAOperation__only_corba_parameters</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_9qFVEKu2Ed-oJr1YbDcrKw">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.OnlyCORBAParametersConstraint</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_Xf8xUO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_XVQ-UMJeEd6QAZgNaBtgeQ" general="_Q0OakMJbEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_vTBRkGN4Ed-Q5o_C4JmcFg">
+          <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_zvCAcG1nEd2QsdnDLpauDg"/>
+        </generalization>
+        <generalization xmi:id="_cTb00IbkEeSjd8J8ZjsuPQ">
+          <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_iYmHIIbiEeSjd8J8ZjsuPQ"/>
+        </generalization>
+        <ownedAttribute xmi:id="_-dWu0PpgEeCS04dZxNZhOg" name="idlType" visibility="public" type="_5ZEXsMJaEd6QAZgNaBtgeQ" redefinedProperty="_T-4_wMJbEd6QAZgNaBtgeQ" association="_-dTEcPpgEeCS04dZxNZhOg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-dbnUfpgEeCS04dZxNZhOg" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-dbnUPpgEeCS04dZxNZhOg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_PlUP4LWrEd2PTvVd89HYhA" name="isOneWay" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_R-8ZsLWrEd2PTvVd89HYhA">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          </defaultValue>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_R-aOYMJeEd6QAZgNaBtgeQ" name="exceptionDef" visibility="public" type="_oz5JIEk3Ed2eBKZvQ89d6g" association="_R-ZAQMJeEd6QAZgNaBtgeQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_R-bcgMJeEd6QAZgNaBtgeQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_R-a1cMJeEd6QAZgNaBtgeQ"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_zvnI4MMrEd6yzd-HWW9c9w" name="ownedParameter" visibility="public" type="_kTyfsMJdEd6QAZgNaBtgeQ" aggregation="composite" association="_zvi3cMMrEd6yzd-HWW9c9w">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zvqMMMMrEd6yzd-HWW9c9w" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zvo-EMMrEd6yzd-HWW9c9w"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_cQFu0At2Ed-ejZ6Ziw6HnQ" name="owner" visibility="public" type="_8UNR0MPIEd6u_6T1TQ_XYQ" isReadOnly="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_2ZPPIO1nEd2XOPM4ACfj4Q" name="CORBANamedElement">
+        <ownedRule xmi:id="_hCQ1EO1oEd2XOPM4ACfj4Q" name="legal_corba_name" constrainedElement="_2ZPPIO1nEd2XOPM4ACfj4Q">
+          <ownedComment xmi:id="_hCQ1E-1oEd2XOPM4ACfj4Q">
+            <body>%_desc_CORBADomain__IDL__CORBANamedElement__legal_corba_name</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_hCQ1Ee1oEd2XOPM4ACfj4Q">
+            <language>OCL</language>
+            <body>self.oclAsType(uml::NamedElement).name.matches('([a-zA-Z_])([a-zA-Z_0-9])*')</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_ykZB4CPhEd-OjqI9OvrxBw" name="contained_name_constraint" constrainedElement="_2ZPPIO1nEd2XOPM4ACfj4Q">
+          <ownedComment xmi:id="_ykfIgSPhEd-OjqI9OvrxBw">
+            <body>%_desc_CORBADomain__IDL__CORBANamedElement__contained_name_constraint</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_ykcFMCPhEd-OjqI9OvrxBw">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.ContainedNameConstraint</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_3BtUMMJZEd6QAZgNaBtgeQ">
+          <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_i9Aj8GSDEd2454WIHspjPA"/>
+        </generalization>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_MopncMJaEd6QAZgNaBtgeQ" name="Contained" isAbstract="true"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_5ZEXsMJaEd6QAZgNaBtgeQ" name="CORBAType" isAbstract="true"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_Q0OakMJbEd6QAZgNaBtgeQ" name="CORBATyped" isAbstract="true">
+        <ownedAttribute xmi:id="_T-4_wMJbEd6QAZgNaBtgeQ" name="idlType" visibility="public" type="_5ZEXsMJaEd6QAZgNaBtgeQ" association="_T-3xoMJbEd6QAZgNaBtgeQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T-5m0cJbEd6QAZgNaBtgeQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T-5m0MJbEd6QAZgNaBtgeQ" value="1"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_T-3xoMJbEd6QAZgNaBtgeQ" name="" memberEnd="_T-4_wMJbEd6QAZgNaBtgeQ _T-608MJbEd6QAZgNaBtgeQ">
+        <ownedEnd xmi:id="_T-608MJbEd6QAZgNaBtgeQ" name="" visibility="public" type="_Q0OakMJbEd6QAZgNaBtgeQ" association="_T-3xoMJbEd6QAZgNaBtgeQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T-7cAcJbEd6QAZgNaBtgeQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T-7cAMJbEd6QAZgNaBtgeQ"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_THaTQMJdEd6QAZgNaBtgeQ" name="CORBAField">
+        <ownedRule xmi:id="_whgLYJBzEeG3w4bnc767Ng" name="bound_value_constraint" constrainedElement="_THaTQMJdEd6QAZgNaBtgeQ">
+          <ownedComment xmi:id="_whngIJBzEeG3w4bnc767Ng">
+            <body>%_desc_CORBADomain__IDL__CORBAField__bound_value_constraint</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_whhZgJBzEeG3w4bnc767Ng">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.CORBABoundValueConstraint</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_Y7vCUMJdEd6QAZgNaBtgeQ" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_ajb_8MJdEd6QAZgNaBtgeQ" general="_Q0OakMJbEd6QAZgNaBtgeQ"/>
+        <ownedAttribute xmi:id="_hcjEkLd4Ed-uoOYMo_NmtQ" name="bound" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_swJfwbd4Ed-uoOYMo_NmtQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_swJfwLd4Ed-uoOYMo_NmtQ"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_XTJXgI-tEeGdHIFRtaMqRA" name="bounds" visibility="public" type="_vWz-sIPiEeGRety5GrZr1Q" aggregation="composite" association="_XTHiUI-tEeGdHIFRtaMqRA">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XTLMsI-tEeGdHIFRtaMqRA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XTKloI-tEeGdHIFRtaMqRA"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_kTyfsMJdEd6QAZgNaBtgeQ" name="CORBAParameter">
+        <ownedRule xmi:id="_KhxCYNF4Ed-64pKc_8KmWw" name="parameter_type_is_set" constrainedElement="_OcmUULWrEd2PTvVd89HYhA">
+          <ownedComment xmi:id="_KhxCYdF4Ed-64pKc_8KmWw">
+            <body>%_desc_CORBADomain__IDL__CORBAParameter__parameter_type_is_set</body>
+          </ownedComment>
+          <ownedComment xmi:id="_KhxCYtF4Ed-64pKc_8KmWw" annotatedElement="_KhxCYNF4Ed-64pKc_8KmWw">
+            <body>&lt;br /></body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_KhxCY9F4Ed-64pKc_8KmWw">
+            <language>OCL</language>
+            <body>not(self.idlType->isEmpty())
+</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="_AMv9IBCMEeGHBr5dTOxUEw" name="no_return_direction" constrainedElement="_kTyfsMJdEd6QAZgNaBtgeQ">
+          <ownedComment xmi:id="_AM8xcBCMEeGHBr5dTOxUEw">
+            <body>%_desc_CORBADomain__IDL__CORBAParameter__no_return_direction</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_AM2DwBCMEeGHBr5dTOxUEw">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.CORBAParameterNoReturnDirection</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_mKj0EMJdEd6QAZgNaBtgeQ" general="_Q0OakMJbEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_nU3EAMJdEd6QAZgNaBtgeQ" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <ownedAttribute xmi:id="_-b8xoAtqEd--W7ol7Cq4tQ" name="direction" visibility="public"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_R-ZAQMJeEd6QAZgNaBtgeQ" name="canRaise" memberEnd="_R-aOYMJeEd6QAZgNaBtgeQ _R-cDkMJeEd6QAZgNaBtgeQ">
+        <ownedEnd xmi:id="_R-cDkMJeEd6QAZgNaBtgeQ" name="" visibility="public" type="_OcmUULWrEd2PTvVd89HYhA" association="_R-ZAQMJeEd6QAZgNaBtgeQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_R-cqocJeEd6QAZgNaBtgeQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_R-cqoMJeEd6QAZgNaBtgeQ"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_eGn9YMJeEd6QAZgNaBtgeQ" name="exceptionMembers" memberEnd="_eGpLgMJeEd6QAZgNaBtgeQ _eGrAsMJeEd6QAZgNaBtgeQ">
+        <ownedEnd xmi:id="_eGrAsMJeEd6QAZgNaBtgeQ" name="" visibility="public" type="_oz5JIEk3Ed2eBKZvQ89d6g" association="_eGn9YMJeEd6QAZgNaBtgeQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eGrnwcJeEd6QAZgNaBtgeQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eGrnwMJeEd6QAZgNaBtgeQ"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_sPPd4MJeEd6QAZgNaBtgeQ" name="structFields" memberEnd="_sPQsAMJeEd6QAZgNaBtgeQ _sPR6IMJeEd6QAZgNaBtgeQ">
+        <ownedEnd xmi:id="_sPR6IMJeEd6QAZgNaBtgeQ" name="" visibility="public" type="_qwxFgEk3Ed2eBKZvQ89d6g" association="_sPPd4MJeEd6QAZgNaBtgeQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sPTIQcJeEd6QAZgNaBtgeQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sPTIQMJeEd6QAZgNaBtgeQ"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_TiXw4MMhEd6tra_UkAvALA" name="classifierOperations" memberEnd="_Tio2oMMhEd6tra_UkAvALA _Ti0c0MMhEd6tra_UkAvALA">
+        <ownedEnd xmi:id="_Ti0c0MMhEd6tra_UkAvALA" name="" visibility="public" type="_bu8JsMMhEd6tra_UkAvALA" association="_TiXw4MMhEd6tra_UkAvALA">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ti1q8cMhEd6tra_UkAvALA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ti1q8MMhEd6tra_UkAvALA"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_bu8JsMMhEd6tra_UkAvALA" name="CORBAClassifier" isAbstract="true">
+        <generalization xmi:id="_hTlHoMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+        <ownedAttribute xmi:id="_Tio2oMMhEd6tra_UkAvALA" name="ownedOperation" visibility="public" type="_OcmUULWrEd2PTvVd89HYhA" aggregation="composite" association="_TiXw4MMhEd6tra_UkAvALA">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TiynocMhEd6tra_UkAvALA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TiynoMMhEd6tra_UkAvALA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_i_PukMMhEd6tra_UkAvALA" name="ownedAttribute" visibility="public" type="_CHbucLWrEd2PTvVd89HYhA" aggregation="composite" association="_i_N5YMMhEd6tra_UkAvALA">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_i_Q8sMMhEd6tra_UkAvALA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_i_QVoMMhEd6tra_UkAvALA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="__iTCoMPBEd6u_6T1TQ_XYQ" name="ownedConstants" visibility="public" type="_Wa0VgEk2Ed2eBKZvQ89d6g" aggregation="composite" association="__iLG0MPBEd6u_6T1TQ_XYQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__iyK0cPBEd6u_6T1TQ_XYQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__iyK0MPBEd6u_6T1TQ_XYQ"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_9GNu0MPOEd6u_6T1TQ_XYQ" name="contents" visibility="public" type="_5qa9YMPOEd6u_6T1TQ_XYQ" aggregation="composite" association="_9GMgsMPOEd6u_6T1TQ_XYQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9GO88cPOEd6u_6T1TQ_XYQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9GO88MPOEd6u_6T1TQ_XYQ"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_i_N5YMMhEd6tra_UkAvALA" name="classifierAttributes" memberEnd="_i_PukMMhEd6tra_UkAvALA _i_RjwMMhEd6tra_UkAvALA">
+        <ownedEnd xmi:id="_i_RjwMMhEd6tra_UkAvALA" name="" visibility="public" type="_bu8JsMMhEd6tra_UkAvALA" association="_i_N5YMMhEd6tra_UkAvALA">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_i_Sx4MMhEd6tra_UkAvALA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_i_SK0MMhEd6tra_UkAvALA"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_zvi3cMMrEd6yzd-HWW9c9w" name="operationParameters" memberEnd="_zvnI4MMrEd6yzd-HWW9c9w _zvtPgMMrEd6yzd-HWW9c9w">
+        <ownedEnd xmi:id="_zvtPgMMrEd6yzd-HWW9c9w" name="" visibility="public" type="_OcmUULWrEd2PTvVd89HYhA" association="_zvi3cMMrEd6yzd-HWW9c9w">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zvvEscMrEd6yzd-HWW9c9w" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zvvEsMMrEd6yzd-HWW9c9w"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="__iLG0MPBEd6u_6T1TQ_XYQ" name="classifierConstants" memberEnd="__iTCoMPBEd6u_6T1TQ_XYQ __izY8MPBEd6u_6T1TQ_XYQ">
+        <ownedEnd xmi:id="__izY8MPBEd6u_6T1TQ_XYQ" name="" visibility="public" type="_bu8JsMMhEd6tra_UkAvALA" association="__iLG0MPBEd6u_6T1TQ_XYQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__i0AAcPBEd6u_6T1TQ_XYQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__i0AAMPBEd6u_6T1TQ_XYQ"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_8UNR0MPIEd6u_6T1TQ_XYQ" name="CORBAModuleContained" isAbstract="true"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_BFkvEMPJEd6u_6T1TQ_XYQ" name="moduleContents" memberEnd="_BFl9MMPJEd6u_6T1TQ_XYQ _BFnyYMPJEd6u_6T1TQ_XYQ">
+        <ownedEnd xmi:id="_BFnyYMPJEd6u_6T1TQ_XYQ" name="" visibility="public" type="_OQD9wEk6Ed2eBKZvQ89d6g" association="_BFkvEMPJEd6u_6T1TQ_XYQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BFoZccPJEd6u_6T1TQ_XYQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BFoZcMPJEd6u_6T1TQ_XYQ"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_5qa9YMPOEd6u_6T1TQ_XYQ" name="CORBAClassifierContained" isAbstract="true"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_9GMgsMPOEd6u_6T1TQ_XYQ" name="classifierContents" memberEnd="_9GNu0MPOEd6u_6T1TQ_XYQ _9GPkAMPOEd6u_6T1TQ_XYQ">
+        <ownedEnd xmi:id="_9GPkAMPOEd6u_6T1TQ_XYQ" name="" visibility="public" type="_bu8JsMMhEd6tra_UkAvALA" association="_9GMgsMPOEd6u_6T1TQ_XYQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9GQLEcPOEd6u_6T1TQ_XYQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9GQLEMPOEd6u_6T1TQ_XYQ"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_Q2TIsGgTEd-cdtLnmNWWNQ" name="Native">
+        <generalization xmi:id="_Y0z3YGgTEd-cdtLnmNWWNQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+        <generalization xmi:id="_ZJOBIGgTEd-cdtLnmNWWNQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+        <generalization xmi:id="_ZcmQIGgTEd-cdtLnmNWWNQ" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+        <generalization xmi:id="_ZypYoGgTEd-cdtLnmNWWNQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_-dTEcPpgEeCS04dZxNZhOg" name="" memberEnd="_-dWu0PpgEeCS04dZxNZhOg _-dc1cPpgEeCS04dZxNZhOg">
+        <generalization xmi:id="_F4iuAPphEeCS04dZxNZhOg" general="_T-3xoMJbEd6QAZgNaBtgeQ"/>
+        <ownedEnd xmi:id="_-dc1cPpgEeCS04dZxNZhOg" name="" visibility="public" type="_OcmUULWrEd2PTvVd89HYhA" redefinedProperty="_T-608MJbEd6QAZgNaBtgeQ" association="_-dTEcPpgEeCS04dZxNZhOg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-ddcgfpgEeCS04dZxNZhOg" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-ddcgPpgEeCS04dZxNZhOg"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_7eGzACG-EeGd-Nb5_CNoPw" name="" memberEnd="_7ektECG-EeGd-Nb5_CNoPw _7e3oACG-EeGd-Nb5_CNoPw">
+        <ownedEnd xmi:id="_7e3oACG-EeGd-Nb5_CNoPw" name="" visibility="public" type="_dITrwEk3Ed2eBKZvQ89d6g" association="_7eGzACG-EeGd-Nb5_CNoPw">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7e42ISG-EeGd-Nb5_CNoPw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7e42ICG-EeGd-Nb5_CNoPw"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_vWz-sIPiEeGRety5GrZr1Q" name="CORBABound">
+        <ownedAttribute xmi:id="_PCNcEI-tEeGdHIFRtaMqRA" name="value" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AoRFkI-uEeGdHIFRtaMqRA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AoQegI-uEeGdHIFRtaMqRA"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_4jeIsI-tEeGdHIFRtaMqRA" name="constant" visibility="public" type="_Wa0VgEk2Ed2eBKZvQ89d6g" association="_4jbscI-tEeGdHIFRtaMqRA">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4jgk8I-tEeGdHIFRtaMqRA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4jf94I-tEeGdHIFRtaMqRA"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_WdcekI-tEeGdHIFRtaMqRA" name="" memberEnd="_WdjMQI-tEeGdHIFRtaMqRA _WdndsI-tEeGdHIFRtaMqRA">
+        <ownedEnd xmi:id="_WdndsI-tEeGdHIFRtaMqRA" name="" visibility="public" type="_9qchQEk3Ed2eBKZvQ89d6g" association="_WdcekI-tEeGdHIFRtaMqRA">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Wdor0I-tEeGdHIFRtaMqRA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WdoEwI-tEeGdHIFRtaMqRA" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_XTHiUI-tEeGdHIFRtaMqRA" name="" memberEnd="_XTJXgI-tEeGdHIFRtaMqRA _XTMa0I-tEeGdHIFRtaMqRA">
+        <ownedEnd xmi:id="_XTMa0I-tEeGdHIFRtaMqRA" name="" visibility="public" type="_THaTQMJdEd6QAZgNaBtgeQ" association="_XTHiUI-tEeGdHIFRtaMqRA">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XTO3EI-tEeGdHIFRtaMqRA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XTOQAI-tEeGdHIFRtaMqRA" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_4jbscI-tEeGdHIFRtaMqRA" name="" memberEnd="_4jeIsI-tEeGdHIFRtaMqRA _4jiaII-tEeGdHIFRtaMqRA">
+        <ownedEnd xmi:id="_4jiaII-tEeGdHIFRtaMqRA" name="" visibility="public" type="_vWz-sIPiEeGRety5GrZr1Q" association="_4jbscI-tEeGdHIFRtaMqRA">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4jk2YI-tEeGdHIFRtaMqRA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4jkPUI-tEeGdHIFRtaMqRA"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_AHZREJoKEeGUmNT_0OYWnw" name="CORBAInterfaceGenerals" memberEnd="_AHfXsJoKEeGUmNT_0OYWnw _AHleUpoKEeGUmNT_0OYWnw">
+        <ownedEnd xmi:id="_AHleUpoKEeGUmNT_0OYWnw" name="" visibility="public" type="_clQegEk2Ed2eBKZvQ89d6g" association="_AHZREJoKEeGUmNT_0OYWnw">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AHleVJoKEeGUmNT_0OYWnw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AHleU5oKEeGUmNT_0OYWnw"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_429IwCn-EeOV59vr0QbsTQ" name="" memberEnd="_43DPYCn-EeOV59vr0QbsTQ _43Hg0Cn-EeOV59vr0QbsTQ">
+        <ownedEnd xmi:id="_43Hg0Cn-EeOV59vr0QbsTQ" name="" visibility="public" type="_AO9FYEk4Ed2eBKZvQ89d6g" association="_429IwCn-EeOV59vr0QbsTQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_43Iu8Cn-EeOV59vr0QbsTQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_43IH4Cn-EeOV59vr0QbsTQ" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_5lQZMCn-EeOV59vr0QbsTQ" name="" memberEnd="_5lRAQCn-EeOV59vr0QbsTQ _5lTcgCn-EeOV59vr0QbsTQ">
+        <ownedEnd xmi:id="_5lTcgCn-EeOV59vr0QbsTQ" name="" visibility="public" type="_w5Hj0Ek3Ed2eBKZvQ89d6g" association="_5lQZMCn-EeOV59vr0QbsTQ">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5lUDkSn-EeOV59vr0QbsTQ" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5lUDkCn-EeOV59vr0QbsTQ" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_PaBzEExGEd2q8K1oAnPrnA" name="IDLPrimitives">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_83uJ8ExPEd2INdt7Ch5VKg" name="CORBAShort" clientDependency="_McBlUExQEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_GBo70ExQEd2INdt7Ch5VKg" name="CORBAShort" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_NMTLsExQEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_OzkEcExQEd2INdt7Ch5VKg" instance="_Q2TSIEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_McBlUExQEd2INdt7Ch5VKg" supplier="_GBo70ExQEd2INdt7Ch5VKg" client="_83uJ8ExPEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_up6K8ExQEd2INdt7Ch5VKg" name="CORBAAny" clientDependency="_ZcEpUExSEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_v027IExQEd2INdt7Ch5VKg" name="CORBABoolean" clientDependency="_bOzyQExSEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_xJ8ewExQEd2INdt7Ch5VKg" name="CORBAChar" clientDependency="_b2mLAExSEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_yUdKEExQEd2INdt7Ch5VKg" name="CORBADouble" clientDependency="_fXmzoExSEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_zlEdYExQEd2INdt7Ch5VKg" name="CORBAFloat" clientDependency="_3ufCcExTEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_1P6OkExQEd2INdt7Ch5VKg" name="CORBALong" clientDependency="_4Z2ToExTEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_4Sq08ExQEd2INdt7Ch5VKg" name="CORBALongLong" clientDependency="_SOZPwExUEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_5iZXcExQEd2INdt7Ch5VKg" name="CORBAObjref" clientDependency="_TjCHcExUEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_7MfhwExQEd2INdt7Ch5VKg" name="CORBAOctet" clientDependency="_USa9AExUEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_-n1nQExQEd2INdt7Ch5VKg" name="CORBAString" clientDependency="_rtybQExUEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_AhIrMExREd2INdt7Ch5VKg" name="CORBATypecode" clientDependency="_gY5xMExVEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_FpjWgExREd2INdt7Ch5VKg" name="CORBAULong" clientDependency="_wc4AkExUEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_Go4skExREd2INdt7Ch5VKg" name="CORBAULongLong" clientDependency="_10NRoExUEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_H3a8QExREd2INdt7Ch5VKg" name="CORBAUShort" clientDependency="_CpQ4gExVEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_Iz6ZsExREd2INdt7Ch5VKg" name="CORBAVoid" clientDependency="_EPVecExVEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_J4nX8ExREd2INdt7Ch5VKg" name="CORBAWChar" clientDependency="_E5Wr0ExVEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_K8QmQExREd2INdt7Ch5VKg" name="CORBAWString" clientDependency="_Fj0lIExVEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_baFDkExREd2INdt7Ch5VKg" name="CORBALongDouble" clientDependency="_RoshsExUEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_zgzzAExREd2INdt7Ch5VKg" name="CORBAAny" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_XUw-kExSEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_X-MWEExSEd2INdt7Ch5VKg" instance="_QZidoEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_61wAQExREd2INdt7Ch5VKg" name="CORBABoolean" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_V4YgIExSEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_WzPl4ExSEd2INdt7Ch5VKg" instance="_QmWxoEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_660GcExREd2INdt7Ch5VKg" name="CORBALong" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_4tXskExTEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_5esb0ExTEd2INdt7Ch5VKg" instance="_Qsw7oEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_69pYAExREd2INdt7Ch5VKg" name="CORBALongLong" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_AjPcoExUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_BcdjoExUEd2INdt7Ch5VKg" instance="_QwC5IEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_6_4MoExREd2INdt7Ch5VKg" name="CORBALongDouble" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="__AAIQExTEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_AKNRkExUEd2INdt7Ch5VKg" instance="_QuZ6YEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7CHoUExREd2INdt7Ch5VKg" name="CORBAOctet" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_VHeVsExUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_ZtoBcExUEd2INdt7Ch5VKg" instance="_QzeAkEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7ENTAExREd2INdt7Ch5VKg" name="CORBAString" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_qGhigExUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_qtjtUExUEd2INdt7Ch5VKg" instance="_nDnLIExUEd2INdt7Ch5VKg"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7GSWoExREd2INdt7Ch5VKg" name="CORBAObjref" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_f6cJAExUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_h1h8sExUEd2INdt7Ch5VKg" instance="_QxrQ0Ek4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7IYBUExREd2INdt7Ch5VKg" name="CORBAULong" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_xN504ExUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_yHa20ExUEd2INdt7Ch5VKg" instance="_iNCUcEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7Kwm8ExREd2INdt7Ch5VKg" name="CORBAULongLong" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_zI_BgExUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_z4-UAExUEd2INdt7Ch5VKg" instance="_jQ_EwEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7M_bkExREd2INdt7Ch5VKg" name="CORBAChar" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_dZ2GcExSEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_eiHWEExSEd2INdt7Ch5VKg" instance="_QoSrUEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7PYBMExREd2INdt7Ch5VKg" name="CORBADouble" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_f09eAExSEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_hUL1EExSEd2INdt7Ch5VKg" instance="_Qp7qEEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7XuE4ExREd2INdt7Ch5VKg" name="CORBAFloat" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_kG_68ExSEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_lA9o0ExSEd2INdt7Ch5VKg" instance="_QrRt4Ek4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_ZcEpUExSEd2INdt7Ch5VKg" supplier="_zgzzAExREd2INdt7Ch5VKg" client="_up6K8ExQEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_bOzyQExSEd2INdt7Ch5VKg" supplier="_61wAQExREd2INdt7Ch5VKg" client="_v027IExQEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_b2mLAExSEd2INdt7Ch5VKg" supplier="_7M_bkExREd2INdt7Ch5VKg" client="_xJ8ewExQEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_fXmzoExSEd2INdt7Ch5VKg" supplier="_7PYBMExREd2INdt7Ch5VKg" client="_yUdKEExQEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_3ufCcExTEd2INdt7Ch5VKg" supplier="_7XuE4ExREd2INdt7Ch5VKg" client="_zlEdYExQEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_4Z2ToExTEd2INdt7Ch5VKg" supplier="_660GcExREd2INdt7Ch5VKg" client="_1P6OkExQEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_RoshsExUEd2INdt7Ch5VKg" supplier="_6_4MoExREd2INdt7Ch5VKg" client="_baFDkExREd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_SOZPwExUEd2INdt7Ch5VKg" supplier="_69pYAExREd2INdt7Ch5VKg" client="_4Sq08ExQEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_TjCHcExUEd2INdt7Ch5VKg" supplier="_7GSWoExREd2INdt7Ch5VKg" client="_5iZXcExQEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_USa9AExUEd2INdt7Ch5VKg" supplier="_7CHoUExREd2INdt7Ch5VKg" client="_7MfhwExQEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_rtybQExUEd2INdt7Ch5VKg" supplier="_7ENTAExREd2INdt7Ch5VKg" client="_-n1nQExQEd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_wc4AkExUEd2INdt7Ch5VKg" supplier="_7IYBUExREd2INdt7Ch5VKg" client="_FpjWgExREd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_10NRoExUEd2INdt7Ch5VKg" supplier="_7Kwm8ExREd2INdt7Ch5VKg" client="_Go4skExREd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_33oh8ExUEd2INdt7Ch5VKg" name="CORBAUShort" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_33oh8UxUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_N-XIgExVEd2INdt7Ch5VKg" instance="_ja0WMEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_4Jz3EExUEd2INdt7Ch5VKg" name="CORBAVoid" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_4Jz3EUxUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_MJ1P0ExVEd2INdt7Ch5VKg" instance="_jiRCAEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_4N1bcExUEd2INdt7Ch5VKg" name="CORBAWChar" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_4N1bcUxUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_LJdX8ExVEd2INdt7Ch5VKg" instance="_jnx0IEk4Ed2eBKZvQ89d6g"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_4Sc1sExUEd2INdt7Ch5VKg" name="CORBAWString" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_4Sc1sUxUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_KM9TcExVEd2INdt7Ch5VKg" instance="_IDH5IExVEd2INdt7Ch5VKg"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_CpQ4gExVEd2INdt7Ch5VKg" supplier="_33oh8ExUEd2INdt7Ch5VKg" client="_H3a8QExREd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_EPVecExVEd2INdt7Ch5VKg" supplier="_4Jz3EExUEd2INdt7Ch5VKg" client="_Iz6ZsExREd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_E5Wr0ExVEd2INdt7Ch5VKg" supplier="_4N1bcExUEd2INdt7Ch5VKg" client="_J4nX8ExREd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_Fj0lIExVEd2INdt7Ch5VKg" supplier="_4Sc1sExUEd2INdt7Ch5VKg" client="_K8QmQExREd2INdt7Ch5VKg"/>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_c3I6oExVEd2INdt7Ch5VKg" name="CORBATypecode" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+        <slot xmi:id="_c3I6oUxVEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
+          <value xmi:type="uml:InstanceValue" xmi:id="_fFJqUExVEd2INdt7Ch5VKg" instance="_aYvlkExVEd2INdt7Ch5VKg"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Abstraction" xmi:id="_gY5xMExVEd2INdt7Ch5VKg" supplier="_c3I6oExVEd2INdt7Ch5VKg" client="_AhIrMExREd2INdt7Ch5VKg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="__YMtIE0UEd2ZXcdebtSTbw" name="IDLFileSupport">
+      <packageImport xmi:id="_D_scsE0VEd2ZXcdebtSTbw" importedPackage="_nwoAMEk1Ed2eBKZvQ89d6g"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_HBQJME0VEd2ZXcdebtSTbw" name="IDLFile">
+        <ownedRule xmi:id="_EGGhsKILEeKV6NAuBQOWiQ" name="idlfile_not_in_idlfile_or_idlmodule" constrainedElement="_HBQJME0VEd2ZXcdebtSTbw">
+          <ownedComment xmi:id="_EGGhsaILEeKV6NAuBQOWiQ">
+            <body>%_desc_CORBADomain__IDLFileSupport__IDLFile__idlfile_not_in_idlfile_or_idlmodule</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_EGGhsqILEeKV6NAuBQOWiQ">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.ContainedIDLFileConstraint</body>
+          </specification>
+        </ownedRule>
+        <generalization xmi:id="_K-xPgA0MEd-eAsxh_buW9g">
+          <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_0Cp2QGSDEd2454WIHspjPA"/>
+        </generalization>
+        <ownedAttribute xmi:id="_XhwHEk0VEd2ZXcdebtSTbw" name="importee" visibility="public" type="_UlP5sE0VEd2ZXcdebtSTbw" association="_XhwHEE0VEd2ZXcdebtSTbw">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ePDFgU0VEd2ZXcdebtSTbw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ePDFgE0VEd2ZXcdebtSTbw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_XfECsHq4Ed2V04eiveAJwQ" name="location" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zSLq4OPgEd2iD5gVsT1JIw" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zSB54OPgEd2iD5gVsT1JIw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_7e6dMDHUEd-p8IzobvQ3dg" name="contents" visibility="public" type="_8UNR0MPIEd6u_6T1TQ_XYQ" association="_7eUnUDHUEd-p8IzobvQ3dg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7fXJITHUEd-p8IzobvQ3dg" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7fXJIDHUEd-p8IzobvQ3dg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_zEo1EEvqEd-ulLTKfsXDHw" name="prefix" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1Rmb4UvqEd-ulLTKfsXDHw" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1Rmb4EvqEd-ulLTKfsXDHw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_UlP5sE0VEd2ZXcdebtSTbw" name="IDLImport">
+        <ownedAttribute xmi:id="_kxxysU0VEd2ZXcdebtSTbw" name="target" visibility="public" type="_HBQJME0VEd2ZXcdebtSTbw" association="_kxxysE0VEd2ZXcdebtSTbw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_XhwHEE0VEd2ZXcdebtSTbw" name="" memberEnd="_XhwHEU0VEd2ZXcdebtSTbw _XhwHEk0VEd2ZXcdebtSTbw">
+        <ownedEnd xmi:id="_XhwHEU0VEd2ZXcdebtSTbw" name="source" visibility="public" type="_HBQJME0VEd2ZXcdebtSTbw" association="_XhwHEE0VEd2ZXcdebtSTbw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_kxxysE0VEd2ZXcdebtSTbw" name="" memberEnd="_kxxysU0VEd2ZXcdebtSTbw _kxxysk0VEd2ZXcdebtSTbw">
+        <ownedEnd xmi:id="_kxxysk0VEd2ZXcdebtSTbw" name="" visibility="private" type="_UlP5sE0VEd2ZXcdebtSTbw" association="_kxxysE0VEd2ZXcdebtSTbw">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nD9QsU0VEd2ZXcdebtSTbw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nD9QsE0VEd2ZXcdebtSTbw"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_7eUnUDHUEd-p8IzobvQ3dg" name="" memberEnd="_7e6dMDHUEd-p8IzobvQ3dg _7fg6IDHUEd-p8IzobvQ3dg">
+        <ownedEnd xmi:id="_7fg6IDHUEd-p8IzobvQ3dg" name="" visibility="public" type="_HBQJME0VEd2ZXcdebtSTbw" association="_7eUnUDHUEd-p8IzobvQ3dg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7fg6IjHUEd-p8IzobvQ3dg" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7fg6ITHUEd-p8IzobvQ3dg"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_UeIAINCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAIdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_QP6H4Ek1Ed2eBKZvQ89d6g">
+      <eAnnotations xmi:id="_QP6H4Uk1Ed2eBKZvQ89d6g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://ZDL_PROFILES/ZDL.profile.uml#_TY7fcC_oEd2oX-fEHLus7g"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://ZDL_PROFILES/ZDL.profile.uml#_Rud18OyCEdyUQcM5ztOjuQ"/>
+    </profileApplication>
+  </uml:Model>
+  <zdl:DomainModel xmi:id="_QP6H4kk1Ed2eBKZvQ89d6g" base_Model="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  <zdl:DomainBlock xmi:id="_nwxxMEk1Ed2eBKZvQ89d6g" base_Package="_nwoAMEk1Ed2eBKZvQ89d6g"/>
+  <zdl:DomainBlockImport xmi:id="_G5No0Ek2Ed2eBKZvQ89d6g" base_PackageImport="_G5D30Ek2Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_Wa-GgEk2Ed2eBKZvQ89d6g" base_Class="_Wa0VgEk2Ed2eBKZvQ89d6g" iconURI="../icons/obj16/CORBA-constant.gif"/>
+  <zdl:DomainConcept xmi:id="_ZXBn8Ek2Ed2eBKZvQ89d6g" base_Class="_ZW328Ek2Ed2eBKZvQ89d6g" iconURI="../icons/obj16/CORBA-constant.gif"/>
+  <zdl:DomainConcept xmi:id="_bStRgUk2Ed2eBKZvQ89d6g" base_Class="_bStRgEk2Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_clQegUk2Ed2eBKZvQ89d6g" base_Class="_clQegEk2Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_j7-0cEk2Ed2eBKZvQ89d6g" base_Class="_j71qgEk2Ed2eBKZvQ89d6g"/>
+  <zdl:DomainAttribute xmi:id="_qyh1gEk2Ed2eBKZvQ89d6g" base_Property="_lH08gEk2Ed2eBKZvQ89d6g"/>
+  <zdl:DomainAttribute xmi:id="_qyh1gUk2Ed2eBKZvQ89d6g" base_Property="_lLG6AEk2Ed2eBKZvQ89d6g"/>
+  <zdl:DomainAttribute xmi:id="_rcQH8Ek2Ed2eBKZvQ89d6g" base_Property="_eU3a8Ek2Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_tBlHAUk2Ed2eBKZvQ89d6g" base_Class="_tBlHAEk2Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_PNNp4Uk3Ed2eBKZvQ89d6g" base_Class="_PNNp4Ek3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_RVtncUk3Ed2eBKZvQ89d6g" base_Class="_RVtncEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_TgljkUk3Ed2eBKZvQ89d6g" base_Class="_TgljkEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainGeneralization xmi:id="_Zzz1IEk3Ed2eBKZvQ89d6g" base_Generalization="_ZzqrMEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainGeneralization xmi:id="_aYeBYUk3Ed2eBKZvQ89d6g" base_Generalization="_aYeBYEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_dIc1sEk3Ed2eBKZvQ89d6g" base_Class="_dITrwEk3Ed2eBKZvQ89d6g" iconURI="../icons/obj16/CORBA-type-def.gif"/>
+  <zdl:DomainConcept xmi:id="_eNAC8Ek3Ed2eBKZvQ89d6g" base_Class="_eM2R8Ek3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_ftj2wUk3Ed2eBKZvQ89d6g" base_Class="_ftj2wEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainGeneralization xmi:id="_hnAEoUk3Ed2eBKZvQ89d6g" base_Generalization="_hnAEoEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainGeneralization xmi:id="_iczEMUk3Ed2eBKZvQ89d6g" base_Generalization="_iczEMEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_jiPCQUk3Ed2eBKZvQ89d6g" base_Class="_jiPCQEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_lLSqwUk3Ed2eBKZvQ89d6g" base_Class="_lLSqwEk3Ed2eBKZvQ89d6g" iconURI="../icons/obj16/CORBA-enum.gif"/>
+  <zdl:DomainConcept xmi:id="_nPTw8Uk3Ed2eBKZvQ89d6g" base_Class="_nPTw8Ek3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_oz5JIUk3Ed2eBKZvQ89d6g" base_Class="_oz5JIEk3Ed2eBKZvQ89d6g" iconURI="../icons/obj16/CORBA-exception.gif"/>
+  <zdl:DomainConcept xmi:id="_qwxFgUk3Ed2eBKZvQ89d6g" base_Class="_qwxFgEk3Ed2eBKZvQ89d6g" iconURI="../icons/obj16/CORBA-structure.gif"/>
+  <zdl:DomainConcept xmi:id="_sYB-QEk3Ed2eBKZvQ89d6g" base_Class="_sX40UEk3Ed2eBKZvQ89d6g" iconURI="../icons/obj16/CORBA-union.gif"/>
+  <zdl:DomainGeneralization xmi:id="_uLNzIEk3Ed2eBKZvQ89d6g" base_Generalization="_uLEpMEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainGeneralization xmi:id="_urZvEUk3Ed2eBKZvQ89d6g" base_Generalization="_urZvEEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainGeneralization xmi:id="_u_E5AUk3Ed2eBKZvQ89d6g" base_Generalization="_u_E5AEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_w5Hj0Uk3Ed2eBKZvQ89d6g" base_Class="_w5Hj0Ek3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_0_hYgUk3Ed2eBKZvQ89d6g" base_Class="_0_hYgEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_2LOWoUk3Ed2eBKZvQ89d6g" base_Class="_2LOWoEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainGeneralization xmi:id="_3QXZwUk3Ed2eBKZvQ89d6g" base_Generalization="_3QXZwEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainGeneralization xmi:id="_3y77UUk3Ed2eBKZvQ89d6g" base_Generalization="_3y77UEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_44-WUUk3Ed2eBKZvQ89d6g" base_Class="_44-WUEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_9qlrMEk3Ed2eBKZvQ89d6g" base_Class="_9qchQEk3Ed2eBKZvQ89d6g" iconURI="../icons/obj16/CORBA-array.gif"/>
+  <zdl:DomainConcept xmi:id="_AO9FYUk4Ed2eBKZvQ89d6g" base_Class="_AO9FYEk4Ed2eBKZvQ89d6g" iconURI="../icons/obj16/CORBA-sequence.gif"/>
+  <zdl:DomainGeneralization xmi:id="_CDoIAEk4Ed2eBKZvQ89d6g" base_Generalization="_CDe-EEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainGeneralization xmi:id="_C1PyMEk4Ed2eBKZvQ89d6g" base_Generalization="_C1GoQEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_G0NiIEk4Ed2eBKZvQ89d6g" base_Class="_G0DxIEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_Iwx8gUk4Ed2eBKZvQ89d6g" base_Class="_Iwx8gEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnum xmi:id="_L33CMEk4Ed2eBKZvQ89d6g" base_DataType="_L3t4QEk4Ed2eBKZvQ89d6g" base_Enumeration="_L3t4QEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_QZidoUk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_QZidoEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_QmgioEk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_QmWxoEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_QoSrUUk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_QoSrUEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_Qp7qEUk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_Qp7qEEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_QrRt4Uk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_QrRt4Ek4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_Qs6FkEk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_Qsw7oEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_QujEUEk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_QuZ6YEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_QwC5IUk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_QwC5IEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_QxrQ0Uk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_QxrQ0Ek4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_QzeAkUk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_QzeAkEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_Q2TSIUk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_Q2TSIEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_iNCUcUk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_iNCUcEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_jQ_EwUk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_jQ_EwEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_ja9gIEk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_ja0WMEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_jiRCAUk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_jiRCAEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainEnumLiteral xmi:id="_jnx0IUk4Ed2eBKZvQ89d6g" base_EnumerationLiteral="_jnx0IEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainAttribute xmi:id="_yLZ1oEk4Ed2eBKZvQ89d6g" base_Property="_u-9HwEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainAttribute xmi:id="_z2YwwEk4Ed2eBKZvQ89d6g" base_Property="_y3n34Ek3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainAttribute xmi:id="_1FEKYEk4Ed2eBKZvQ89d6g" base_Property="_ELOtsEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainAttribute xmi:id="_2JdmoEk4Ed2eBKZvQ89d6g" base_Property="_V56ycEk3Ed2eBKZvQ89d6g"/>
+  <zdl:DomainGeneralization xmi:id="_8onbYUk4Ed2eBKZvQ89d6g" base_Generalization="_8onbYEk4Ed2eBKZvQ89d6g"/>
+  <zdl:DomainConcept xmi:id="_OQD9wUk6Ed2eBKZvQ89d6g" base_Class="_OQD9wEk6Ed2eBKZvQ89d6g" iconURI="../icons/obj16/CORBA-module.gif"/>
+  <Standard:ModelLibrary xmi:id="_DH4oEEk9Ed263OrXyW13Cg" base_Package="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  <zdl:DomainModelLibrary xmi:id="_PaLkEExGEd2q8K1oAnPrnA" base_Package="_PaBzEExGEd2q8K1oAnPrnA"/>
+  <zdl:DomainInstantiation xmi:id="_McKvQExQEd2INdt7Ch5VKg" base_Abstraction="_McBlUExQEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_ZcOaUExSEd2INdt7Ch5VKg" base_Abstraction="_ZcEpUExSEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_bOzyQUxSEd2INdt7Ch5VKg" base_Abstraction="_bOzyQExSEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_b2mLAUxSEd2INdt7Ch5VKg" base_Abstraction="_b2mLAExSEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_fXwkoExSEd2INdt7Ch5VKg" base_Abstraction="_fXmzoExSEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_3uozcExTEd2INdt7Ch5VKg" base_Abstraction="_3ufCcExTEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_4aAEoExTEd2INdt7Ch5VKg" base_Abstraction="_4Z2ToExTEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_RoshsUxUEd2INdt7Ch5VKg" base_Abstraction="_RoshsExUEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_SOZPwUxUEd2INdt7Ch5VKg" base_Abstraction="_SOZPwExUEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_TjL4cExUEd2INdt7Ch5VKg" base_Abstraction="_TjCHcExUEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_USa9AUxUEd2INdt7Ch5VKg" base_Abstraction="_USa9AExUEd2INdt7Ch5VKg"/>
+  <zdl:DomainEnumLiteral xmi:id="_nDnLIUxUEd2INdt7Ch5VKg" base_EnumerationLiteral="_nDnLIExUEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_rtybQUxUEd2INdt7Ch5VKg" base_Abstraction="_rtybQExUEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_wc4AkUxUEd2INdt7Ch5VKg" base_Abstraction="_wc4AkExUEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_10NRoUxUEd2INdt7Ch5VKg" base_Abstraction="_10NRoExUEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_CpQ4gUxVEd2INdt7Ch5VKg" base_Abstraction="_CpQ4gExVEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_EPfPcExVEd2INdt7Ch5VKg" base_Abstraction="_EPVecExVEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_E5gc0ExVEd2INdt7Ch5VKg" base_Abstraction="_E5Wr0ExVEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_Fj0lIUxVEd2INdt7Ch5VKg" base_Abstraction="_Fj0lIExVEd2INdt7Ch5VKg"/>
+  <zdl:DomainEnumLiteral xmi:id="_IDH5IUxVEd2INdt7Ch5VKg" base_EnumerationLiteral="_IDH5IExVEd2INdt7Ch5VKg"/>
+  <zdl:DomainEnumLiteral xmi:id="_aYvlkUxVEd2INdt7Ch5VKg" base_EnumerationLiteral="_aYvlkExVEd2INdt7Ch5VKg"/>
+  <zdl:DomainInstantiation xmi:id="_gY5xMUxVEd2INdt7Ch5VKg" base_Abstraction="_gY5xMExVEd2INdt7Ch5VKg"/>
+  <zdl:DomainBlock xmi:id="__YMtIU0UEd2ZXcdebtSTbw" base_Package="__YMtIE0UEd2ZXcdebtSTbw"/>
+  <zdl:DomainBlockImport xmi:id="_D_1moE0VEd2ZXcdebtSTbw" base_PackageImport="_D_scsE0VEd2ZXcdebtSTbw"/>
+  <zdl:DomainConcept xmi:id="_HBZ6ME0VEd2ZXcdebtSTbw" base_Class="_HBQJME0VEd2ZXcdebtSTbw" iconURI="../icons/obj16/CORBA-IDL.gif"/>
+  <zdl:DomainConcept xmi:id="_UlP5sU0VEd2ZXcdebtSTbw" base_Class="_UlP5sE0VEd2ZXcdebtSTbw"/>
+  <zdl:DomainReference xmi:id="_Xh5RAE0VEd2ZXcdebtSTbw" base_Association="_XhwHEE0VEd2ZXcdebtSTbw"/>
+  <zdl:DomainReference xmi:id="_kxxys00VEd2ZXcdebtSTbw" base_Association="_kxxysE0VEd2ZXcdebtSTbw"/>
+  <zdl:DomainAttribute xmi:id="_XhJGUHq4Ed2V04eiveAJwQ" base_Property="_XfECsHq4Ed2V04eiveAJwQ"/>
+  <zdl:DomainConcept xmi:id="_CHk4YLWrEd2PTvVd89HYhA" base_Class="_CHbucLWrEd2PTvVd89HYhA" iconURI=""/>
+  <zdl:DomainAttribute xmi:id="_DN6OUbWrEd2PTvVd89HYhA" base_Property="_DN6OULWrEd2PTvVd89HYhA"/>
+  <zdl:DomainAttribute xmi:id="_E0vCMbWrEd2PTvVd89HYhA" base_Property="_E0vCMLWrEd2PTvVd89HYhA"/>
+  <zdl:DomainConcept xmi:id="_OcveQLWrEd2PTvVd89HYhA" base_Class="_OcmUULWrEd2PTvVd89HYhA"/>
+  <zdl:DomainAttribute xmi:id="_PlUP4bWrEd2PTvVd89HYhA" base_Property="_PlUP4LWrEd2PTvVd89HYhA"/>
+  <zdl:DomainConcept xmi:id="_2ZPPIe1nEd2XOPM4ACfj4Q" base_Class="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
+  <zdl:DomainGeneralization xmi:id="_-F1HYe1nEd2XOPM4ACfj4Q" base_Generalization="_-F1HYO1nEd2XOPM4ACfj4Q"/>
+  <zdl:DomainGeneralization xmi:id="_-cR4ge1nEd2XOPM4ACfj4Q" base_Generalization="_-cR4gO1nEd2XOPM4ACfj4Q"/>
+  <zdl:DomainGeneralization xmi:id="_SjMjce1oEd2XOPM4ACfj4Q" base_Generalization="_SjMjcO1oEd2XOPM4ACfj4Q"/>
+  <zdl:DomainGeneralization xmi:id="_UGMAMe1oEd2XOPM4ACfj4Q" base_Generalization="_UGMAMO1oEd2XOPM4ACfj4Q"/>
+  <zdl:DomainGeneralization xmi:id="_VEeNYe1oEd2XOPM4ACfj4Q" base_Generalization="_VEeNYO1oEd2XOPM4ACfj4Q"/>
+  <zdl:DomainGeneralization xmi:id="_VdvpAe1oEd2XOPM4ACfj4Q" base_Generalization="_VdvpAO1oEd2XOPM4ACfj4Q"/>
+  <zdl:DomainGeneralization xmi:id="_Vy_gQO1oEd2XOPM4ACfj4Q" base_Generalization="_Vy2WUO1oEd2XOPM4ACfj4Q"/>
+  <zdl:DomainGeneralization xmi:id="_WRdk8e1oEd2XOPM4ACfj4Q" base_Generalization="_WRdk8O1oEd2XOPM4ACfj4Q"/>
+  <zdl:DomainGeneralization xmi:id="_Ww1Bge1oEd2XOPM4ACfj4Q" base_Generalization="_Ww1BgO1oEd2XOPM4ACfj4Q"/>
+  <zdl:DomainGeneralization xmi:id="_XHa8ke1oEd2XOPM4ACfj4Q" base_Generalization="_XHa8kO1oEd2XOPM4ACfj4Q"/>
+  <zdl:DomainGeneralization xmi:id="_Xf8xUe1oEd2XOPM4ACfj4Q" base_Generalization="_Xf8xUO1oEd2XOPM4ACfj4Q"/>
+  <zdl:DomainGeneralization xmi:id="_YCI4Ye1oEd2XOPM4ACfj4Q" base_Generalization="_YCI4YO1oEd2XOPM4ACfj4Q"/>
+  <zdl:DomainConstraint xmi:id="_hCQ1Eu1oEd2XOPM4ACfj4Q" severity="error" message="%_mesg_CORBADomain__IDL__CORBANamedElement__legal_corba_name" id="com.zeligsoft.domain.omg.corba.CORBANamedElement.legal_corba_name" base_Constraint="_hCQ1EO1oEd2XOPM4ACfj4Q"/>
+  <zdl:DomainConstraint xmi:id="_uGzbgHhnEd6JF4o51lMrwQ" message="%_mesg_CORBADomain__IDL__CORBAInterface__OnlyCORBAOperations" id="com.zeligsoft.domain.omg.corba.CORBAInterface.OnlyCORBAOperations" base_Constraint="_uGqRkHhnEd6JF4o51lMrwQ"/>
+  <zdl:DomainConstraint xmi:id="_mP-S0XuAEd6qXce-J7VhZw" message="%_mesg_CORBADomain__IDL__CORBAInterface__OnlyCORBAAttributes" id="com.zeligsoft.domain.omg.corba.CORBAInterface.OnlyCORBAAttributes" base_Constraint="_mPhm4HuAEd6qXce-J7VhZw"/>
+  <zdl:DomainGeneralization xmi:id="_3B3FMMJZEd6QAZgNaBtgeQ" base_Generalization="_3BtUMMJZEd6QAZgNaBtgeQ"/>
+  <zdl:DomainConcept xmi:id="_MotR0MJaEd6QAZgNaBtgeQ" base_Class="_MopncMJaEd6QAZgNaBtgeQ"/>
+  <zdl:DomainAttribute xmi:id="_k7kYwMJaEd6QAZgNaBtgeQ" base_Property="_k7guYMJaEd6QAZgNaBtgeQ"/>
+  <zdl:DomainConcept xmi:id="_5ZICEMJaEd6QAZgNaBtgeQ" base_Class="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_AkyXgMJbEd6QAZgNaBtgeQ" base_Generalization="_Akv7QMJbEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_DKcLIMJbEd6QAZgNaBtgeQ" base_Generalization="_DKZH0MJbEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_H3qIMMJbEd6QAZgNaBtgeQ" base_Generalization="_H3nr8MJbEd6QAZgNaBtgeQ"/>
+  <zdl:DomainAttribute xmi:id="_PHUM0MJbEd6QAZgNaBtgeQ" base_Property="_PHSXoMJbEd6QAZgNaBtgeQ"/>
+  <zdl:DomainConcept xmi:id="_Q0Q20MJbEd6QAZgNaBtgeQ" base_Class="_Q0OakMJbEd6QAZgNaBtgeQ"/>
+  <zdl:DomainReference xmi:id="_T-9RMMJbEd6QAZgNaBtgeQ" base_Association="_T-3xoMJbEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_SGvV4MJcEd6QAZgNaBtgeQ" base_Generalization="_SGs5oMJcEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_oX_xcMJcEd6QAZgNaBtgeQ" base_Generalization="_oX9VMMJcEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_GY7OcMJdEd6QAZgNaBtgeQ" base_Generalization="_GY5ZQMJdEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_IY47EMJdEd6QAZgNaBtgeQ" base_Generalization="_IY2e0MJdEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_J4YX4MJdEd6QAZgNaBtgeQ" base_Generalization="_J4V7oMJdEd6QAZgNaBtgeQ"/>
+  <zdl:DomainConcept xmi:id="_THd9oMJdEd6QAZgNaBtgeQ" base_Class="_THaTQMJdEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_Y7xekMJdEd6QAZgNaBtgeQ" base_Generalization="_Y7vCUMJdEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_ZTXfMMJdEd6QAZgNaBtgeQ" base_Generalization="_ZTUb4MJdEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_ajecMMJdEd6QAZgNaBtgeQ" base_Generalization="_ajb_8MJdEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_a5vnIMJdEd6QAZgNaBtgeQ" base_Generalization="_a5tK4MJdEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_hd20YMJdEd6QAZgNaBtgeQ" base_Generalization="_hd0YIMJdEd6QAZgNaBtgeQ"/>
+  <zdl:DomainConcept xmi:id="_kT078MJdEd6QAZgNaBtgeQ" base_Class="_kTyfsMJdEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_mKlCMMJdEd6QAZgNaBtgeQ" base_Generalization="_mKj0EMJdEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_nU45MMJdEd6QAZgNaBtgeQ" base_Generalization="_nU3EAMJdEd6QAZgNaBtgeQ"/>
+  <zdl:DomainReference xmi:id="_R-ef0MJeEd6QAZgNaBtgeQ" base_Association="_R-ZAQMJeEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_XVSzgMJeEd6QAZgNaBtgeQ" base_Generalization="_XVQ-UMJeEd6QAZgNaBtgeQ"/>
+  <zdl:DomainReference xmi:id="_eGtc8MJeEd6QAZgNaBtgeQ" base_Association="_eGn9YMJeEd6QAZgNaBtgeQ"/>
+  <zdl:DomainReference xmi:id="_sPU9cMJeEd6QAZgNaBtgeQ" base_Association="_sPPd4MJeEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_LK1zYMJfEd6QAZgNaBtgeQ" base_Generalization="_LKz-MMJfEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_MXDH0MJfEd6QAZgNaBtgeQ" base_Generalization="_MXBSoMJfEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_NH1rkMJfEd6QAZgNaBtgeQ" base_Generalization="_NHzPUMJfEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_NuUcwMJfEd6QAZgNaBtgeQ" base_Generalization="_NuSAgMJfEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_Plk5UMJfEd6QAZgNaBtgeQ" base_Generalization="_PlidEMJfEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_QQh60MJfEd6QAZgNaBtgeQ" base_Generalization="_QQgFoMJfEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_SEEVAMJfEd6QAZgNaBtgeQ" base_Generalization="_SEB4wMJfEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_UOqkUMJfEd6QAZgNaBtgeQ" base_Generalization="_UOoIEMJfEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_VVTcQMJfEd6QAZgNaBtgeQ" base_Generalization="_VVRnEMJfEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_WfHkAMJfEd6QAZgNaBtgeQ" base_Generalization="_WfFHwMJfEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_eHGpEMJfEd6QAZgNaBtgeQ" base_Generalization="_eHEM0MJfEd6QAZgNaBtgeQ"/>
+  <zdl:DomainGeneralization xmi:id="_gFkg4MJfEd6QAZgNaBtgeQ" base_Generalization="_gFirsMJfEd6QAZgNaBtgeQ"/>
+  <zdl:DomainReference xmi:id="_Ti58YMMhEd6tra_UkAvALA" base_Association="_TiXw4MMhEd6tra_UkAvALA"/>
+  <zdl:DomainConcept xmi:id="_bu_0EMMhEd6tra_UkAvALA" base_Class="_bu8JsMMhEd6tra_UkAvALA"/>
+  <zdl:DomainGeneralization xmi:id="_ekc-QMMhEd6tra_UkAvALA" base_Generalization="_ekZT4MMhEd6tra_UkAvALA"/>
+  <zdl:DomainGeneralization xmi:id="_g3WN8MMhEd6tra_UkAvALA" base_Generalization="_g3TKoMMhEd6tra_UkAvALA"/>
+  <zdl:DomainReference xmi:id="_i_XDUMMhEd6tra_UkAvALA" base_Association="_i_N5YMMhEd6tra_UkAvALA"/>
+  <zdl:DomainAttribute xmi:id="_cvNIUMMrEd6yzd-HWW9c9w" base_Property="_cu-e0MMrEd6yzd-HWW9c9w"/>
+  <zdl:DomainReference xmi:id="_zvxg8MMrEd6yzd-HWW9c9w" base_Association="_zvi3cMMrEd6yzd-HWW9c9w"/>
+  <zdl:DomainAttribute xmi:id="_QuX-QMMsEd6yzd-HWW9c9w" base_Property="_QuViAMMsEd6yzd-HWW9c9w"/>
+  <zdl:DomainReference xmi:id="__i2cQMPBEd6u_6T1TQ_XYQ" base_Association="__iLG0MPBEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainConcept xmi:id="_8UQVIMPIEd6u_6T1TQ_XYQ" base_Class="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainReference xmi:id="_BFq1sMPJEd6u_6T1TQ_XYQ" base_Association="_BFkvEMPJEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_dTBcQMPJEd6u_6T1TQ_XYQ" base_Generalization="_dS-Y8MPJEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_g1WTgMPJEd6u_6T1TQ_XYQ" base_Generalization="_g1T3QMPJEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_hTm80MPJEd6u_6T1TQ_XYQ" base_Generalization="_hTlHoMPJEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_hwY_cMPJEd6u_6T1TQ_XYQ" base_Generalization="_hwWjMMPJEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_iYqgYMPJEd6u_6T1TQ_XYQ" base_Generalization="_iYoEIMPJEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_jcG6YMPJEd6u_6T1TQ_XYQ" base_Generalization="_jcGTUMPJEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_kbnPkMPJEd6u_6T1TQ_XYQ" base_Generalization="_kbkzUMPJEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_lDfu8MPJEd6u_6T1TQ_XYQ" base_Generalization="_lDdSsMPJEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_mLJTgMPJEd6u_6T1TQ_XYQ" base_Generalization="_mLG3QMPJEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainConcept xmi:id="_5qenwMPOEd6u_6T1TQ_XYQ" base_Class="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainReference xmi:id="_9GSnUMPOEd6u_6T1TQ_XYQ" base_Association="_9GMgsMPOEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_OgDIcMPPEd6u_6T1TQ_XYQ" base_Generalization="_OgAsMMPPEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_O-0IEMPPEd6u_6T1TQ_XYQ" base_Generalization="_O-xr0MPPEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_PkN7MMPPEd6u_6T1TQ_XYQ" base_Generalization="_PkLe8MPPEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_QD8kIMPPEd6u_6T1TQ_XYQ" base_Generalization="_QD6H4MPPEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_QpEDYMPPEd6u_6T1TQ_XYQ" base_Generalization="_QpBnIMPPEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainGeneralization xmi:id="_RWoUAMPPEd6u_6T1TQ_XYQ" base_Generalization="_RWlQsMPPEd6u_6T1TQ_XYQ"/>
+  <zdl:DomainAttribute xmi:id="_-c_6gAtqEd--W7ol7Cq4tQ" base_Property="_-b8xoAtqEd--W7ol7Cq4tQ"/>
+  <zdl:DomainAttribute xmi:id="_cQPf0At2Ed-ejZ6Ziw6HnQ" base_Property="_cQFu0At2Ed-ejZ6Ziw6HnQ"/>
+  <zdl:DomainAttribute xmi:id="_riX8IAwxEd-V8dowZWqrvQ" base_Property="_riOLIAwxEd-V8dowZWqrvQ"/>
+  <zdl:DomainGeneralization xmi:id="_K-5LUA0MEd-eAsxh_buW9g" base_Generalization="_K-xPgA0MEd-eAsxh_buW9g"/>
+  <zdl:DomainConstraint xmi:id="_1XOZECF0Ed-VD6bNQmk_YQ" severity="error" message="%_mesg_CORBADomain__IDL__CORBAInterface__only_inherit_from_abstract" id="com.zeligsoft.domain.omg.corba.CORBAInterface.only_inherit_from_abstract" base_Constraint="_1XJgkCF0Ed-VD6bNQmk_YQ"/>
+  <zdl:DomainConstraint xmi:id="_ZjHC0CF9Ed-VD6bNQmk_YQ" severity="error" message="%_mesg_CORBADomain__IDL__CORBAInterface__only_inherit_from_local" id="com.zeligsoft.domain.omg.corba.CORBAInterface.only_inherit_from_local" base_Constraint="_Zi_HACF9Ed-VD6bNQmk_YQ"/>
+  <zdl:DomainConstraint xmi:id="_P5d5sCIaEd-VD6bNQmk_YQ" severity="error" message="%_mesg_CORBADomain__IDL__CORBAInterface__unique_inherited_operation_names" id="com.zeligsoft.domain.omg.corba.CORBAInterface.unique_inherited_operation_names" base_Constraint="_P4g3cCIaEd-VD6bNQmk_YQ"/>
+  <zdl:DomainConstraint xmi:id="_tOpQsCIqEd-VD6bNQmk_YQ" severity="error" message="%_mesg_CORBADomain__IDL__CORBAInterface__unique_operation_names" id="com.zeligsoft.domain.omg.corba.CORBAInterface.unique_operation_names" base_Constraint="_tOhU4CIqEd-VD6bNQmk_YQ"/>
+  <zdl:DomainConstraint xmi:id="_tUpgICIsEd-VD6bNQmk_YQ" severity="error" message="%_mesg_CORBADomain__IDL__CORBAInterface__dont_override_feature" id="com.zeligsoft.domain.omg.corba.CORBAInterface.dont_override_feature" base_Constraint="_tUiycCIsEd-VD6bNQmk_YQ"/>
+  <zdl:DomainConstraint xmi:id="_MJ7JMCJDEd-VD6bNQmk_YQ" severity="error" message="%_mesg_CORBADomain__IDL__CORBAOperation__oneway_parameters_constraint" id="com.zeligsoft.domain.omg.corba.CORBAOperation.oneway_parameters_constraint" base_Constraint="_MJz0cCJDEd-VD6bNQmk_YQ"/>
+  <zdl:DomainConstraint xmi:id="_ykfIgCPhEd-OjqI9OvrxBw" severity="error" message="%_mesg_CORBADomain__IDL__CORBANamedElement__contained_name_constraint" id="com.zeligsoft.domain.omg.corba.CORBANamedElement.contained_name_constraint" base_Constraint="_ykZB4CPhEd-OjqI9OvrxBw"/>
+  <zdl:DomainGeneralization xmi:id="_Flk74CeoEd-ccth2MPb_KA" base_Generalization="_FkYpECeoEd-ccth2MPb_KA"/>
+  <zdl:DomainConstraint xmi:id="_QXmnMCb8Ed-bI7KrIv1ElA" severity="error" message="%_mesg_CORBADomain__IDL__CORBAInterface__unique_attribute_names" id="com.zeligsoft.domain.omg.corba.CORBAInterface.unique_attribute_names" base_Constraint="_QXkyACb8Ed-bI7KrIv1ElA"/>
+  <zdl:DomainGeneralization xmi:id="_wwcnoCfJEd-hjrUbfrMI8A" base_Generalization="_wwUr0CfJEd-hjrUbfrMI8A"/>
+  <zdl:DomainGeneralization xmi:id="_0UzfMCfJEd-hjrUbfrMI8A" base_Generalization="_0Uwb4CfJEd-hjrUbfrMI8A"/>
+  <zdl:DomainReference xmi:id="_7fg6IzHUEd-p8IzobvQ3dg" base_Association="_7eUnUDHUEd-p8IzobvQ3dg"/>
+  <zdl:DomainGeneralization xmi:id="_RNq7YDQUEd-ChtLkdFBHeg" base_Generalization="_RM1N4DQUEd-ChtLkdFBHeg"/>
+  <zdl:DomainGeneralization xmi:id="_XHToQDQUEd-ChtLkdFBHeg" base_Generalization="_XHQk8DQUEd-ChtLkdFBHeg"/>
+  <zdl:DomainConstraint xmi:id="_-CEMAEZEEd-iq4zbnyRo8g" severity="error" message="%_mesg_CORBADomain__IDL__CORBAOperation__oneway_return_parameter_constraint" id="com.zeligsoft.domain.omg.corba.CORBAOperation.oneway_return_parameter_constraint" base_Constraint="_-B83QEZEEd-iq4zbnyRo8g"/>
+  <zdl:DomainConstraint xmi:id="_ASHpcEZNEd-iq4zbnyRo8g" severity="error" message="%_mesg_CORBADomain__IDL__CORBAOperation__oneway_raises_exception_constraint" id="com.zeligsoft.domain.omg.corba.CORBAOperation.oneway_raises_exception_constraint" base_Constraint="_ASGbUEZNEd-iq4zbnyRo8g"/>
+  <zdl:DomainAttribute xmi:id="_zE7wAEvqEd-ulLTKfsXDHw" base_Property="_zEo1EEvqEd-ulLTKfsXDHw"/>
+  <zdl:DomainGeneralization xmi:id="_18tV8UmbEd-TkOZJm_KBeg" base_Generalization="_18tV8EmbEd-TkOZJm_KBeg"/>
+  <zdl:DomainConstraint xmi:id="_xNETcE4vEd-ZBakZXht1qg" severity="error" message="%_mesg_CORBADomain__IDL__CORBAInterface__not_both_local_and_abstract" id="com.zeligsoft.domain.omg.corba.CORBAInterface.not_both_local_and_abstract" base_Constraint="_xM8-sE4vEd-ZBakZXht1qg"/>
+  <zdl:DomainGeneralization xmi:id="_vTLCkGN4Ed-Q5o_C4JmcFg" base_Generalization="_vTBRkGN4Ed-Q5o_C4JmcFg"/>
+  <zdl:DomainConcept xmi:id="_Q2cSoGgTEd-cdtLnmNWWNQ" base_Class="_Q2TIsGgTEd-cdtLnmNWWNQ"/>
+  <zdl:DomainGeneralization xmi:id="_Y0z3YWgTEd-cdtLnmNWWNQ" base_Generalization="_Y0z3YGgTEd-cdtLnmNWWNQ"/>
+  <zdl:DomainGeneralization xmi:id="_ZJOBIWgTEd-cdtLnmNWWNQ" base_Generalization="_ZJOBIGgTEd-cdtLnmNWWNQ"/>
+  <zdl:DomainGeneralization xmi:id="_ZcmQIWgTEd-cdtLnmNWWNQ" base_Generalization="_ZcmQIGgTEd-cdtLnmNWWNQ"/>
+  <zdl:DomainGeneralization xmi:id="_ZypYoWgTEd-cdtLnmNWWNQ" base_Generalization="_ZypYoGgTEd-cdtLnmNWWNQ"/>
+  <zdl:DomainAttribute xmi:id="_KHcGgKY5Ed-snc0XvAY1Mg" base_Property="_KHS8kKY5Ed-snc0XvAY1Mg"/>
+  <zdl:DomainConstraint xmi:id="_9qFVEau2Ed-oJr1YbDcrKw" severity="error" message="%_mesg_CORBADomain__IDL__CORBAOperation__only_corba_parameters" id="com.zeligsoft.domain.omg.corba.CORBAOperation.only_corba_parameters" base_Constraint="_9p7kEKu2Ed-oJr1YbDcrKw"/>
+  <zdl:DomainConstraint xmi:id="_3oFzkbHvEd-tbasCPUZnSQ" severity="error" message="%_mesg_CORBADomain__IDL__CORBAAttribute__read_only_exceptions" id="com.zeligsoft.domain.omg.corba.CORBAAttribute.read_only_exceptions" base_Constraint="_3n8CkLHvEd-tbasCPUZnSQ"/>
+  <zdl:DomainAttribute xmi:id="_hdI6cLd4Ed-uoOYMo_NmtQ" base_Property="_hcjEkLd4Ed-uoOYMo_NmtQ"/>
+  <zdl:DomainConstraint xmi:id="_8JWRw8vZEd-o2JgoXZ13oQ" severity="error" message="%_mesg_CORBADomain__IDL__CORBAUnion__must_have_switchType" id="com.zeligsoft.domain.omg.corba.CORBAUnion.must_have_switchType" base_Constraint="_8JWRwMvZEd-o2JgoXZ13oQ"/>
+  <zdl:DomainConstraint xmi:id="_1K0y48v5Ed-o2JgoXZ13oQ" severity="error" message="%_mesg_CORBADomain__IDL__CORBASequence__must_have_type" id="com.zeligsoft.domain.omg.corba.CORBASequence.must_have_type" base_Constraint="_1K0y4Mv5Ed-o2JgoXZ13oQ"/>
+  <zdl:DomainGeneralization xmi:id="_kEEZANCpEd-7NcdD8GVUXQ" base_Generalization="_kD7PENCpEd-7NcdD8GVUXQ"/>
+  <zdl:DomainConstraint xmi:id="_gG_YEtCsEd-7NcdD8GVUXQ" severity="error" message="%_mesg_CORBADomain__IDL__CORBAConstant__type_is_primitive" id="com.zeligsoft.domain.omg.corba.CORBAConstant.type_is_primitive" base_Constraint="_gG_YENCsEd-7NcdD8GVUXQ"/>
+  <zdl:DomainConstraint xmi:id="_Kh6zYNF4Ed-64pKc_8KmWw" severity="error" message="%_mesg_CORBADomain__IDL__CORBAParameter__parameter_type_is_set" id="com.zeligsoft.domain.omg.corba.CORBATyped.parameter_type_is_set" base_Constraint="_KhxCYNF4Ed-64pKc_8KmWw"/>
+  <zdl:DomainBlockImport xmi:id="_tU_YQDL1EeCZXvaTmQgdWA" base_PackageImport="_tUPxYDL1EeCZXvaTmQgdWA"/>
+  <zdl:DomainConstraint xmi:id="_V-b5kO-XEeCQus6uqORjzw" severity="error" message="%_mesg_CORBADomain__IDL__CORBAEnum__enumeration_must_have_literals" id="com.zeligsoft.domain.omg.corba.CORBAEnum.enumeration_must_have_literals" base_Constraint="_V-XoIO-XEeCQus6uqORjzw"/>
+  <zdl:DomainReference xmi:id="_-deqoPpgEeCS04dZxNZhOg" base_Association="_-dTEcPpgEeCS04dZxNZhOg"/>
+  <zdl:DomainConstraint xmi:id="_MZRlMPpjEeCVxf8v04aRDA" severity="error" message="%_mesg_CORBADomain__IDL__CORBAArray__must_have_type" id="com.zeligsoft.domain.omg.corba.CORBAArray.must_have_type" base_Constraint="_MZPI8PpjEeCVxf8v04aRDA"/>
+  <zdl:DomainGeneralization xmi:id="_kcbQkPsxEeCUd9Edw_GMyg" base_Generalization="_kcPqYPsxEeCUd9Edw_GMyg"/>
+  <zdl:DomainGeneralization xmi:id="_lYnzEPsxEeCUd9Edw_GMyg" base_Generalization="_lYkvwPsxEeCUd9Edw_GMyg"/>
+  <zdl:DomainGeneralization xmi:id="_l1y3QPsxEeCUd9Edw_GMyg" base_Generalization="_l1vz8PsxEeCUd9Edw_GMyg"/>
+  <zdl:DomainGeneralization xmi:id="_z5qxMCG-EeGd-Nb5_CNoPw" base_Generalization="_z5fLACG-EeGd-Nb5_CNoPw"/>
+  <zdl:DomainReference xmi:id="_7e7SYCG-EeGd-Nb5_CNoPw" base_Association="_7eGzACG-EeGd-Nb5_CNoPw"/>
+  <zdl:DomainConstraint xmi:id="_AM7jUBCMEeGHBr5dTOxUEw" evaluationMode="live" severity="error" message="%_mesg_CORBADomain__IDL__CORBAParameter__no_return_direction" id="com.zeligsoft.domain.omg.corba.CORBAParameter.no_return_direction" base_Constraint="_AMv9IBCMEeGHBr5dTOxUEw"/>
+  <zdl:DomainConcept xmi:id="_vW8hkIPiEeGRety5GrZr1Q" base_Class="_vWz-sIPiEeGRety5GrZr1Q"/>
+  <zdl:DomainAttribute xmi:id="_PCUw0I-tEeGdHIFRtaMqRA" base_Property="_PCNcEI-tEeGdHIFRtaMqRA"/>
+  <zdl:DomainReference xmi:id="_WdrIEI-tEeGdHIFRtaMqRA" base_Association="_WdcekI-tEeGdHIFRtaMqRA"/>
+  <zdl:DomainReference xmi:id="_XTU9sI-tEeGdHIFRtaMqRA" base_Association="_XTHiUI-tEeGdHIFRtaMqRA"/>
+  <zdl:DomainReference xmi:id="_4jqV8I-tEeGdHIFRtaMqRA" base_Association="_4jbscI-tEeGdHIFRtaMqRA"/>
+  <zdl:DomainConstraint xmi:id="_n3xVcJBzEeG3w4bnc767Ng" severity="error" message="%_mesg_CORBADomain__IDL__CORBAArray__bound_value_constraint" id="com.zeligsoft.domain.omg.corba.CORBAArray.bound_value_constraint" base_Constraint="_n3qnwJBzEeG3w4bnc767Ng"/>
+  <zdl:DomainConstraint xmi:id="_whm5EJBzEeG3w4bnc767Ng" severity="error" message="%_mesg_CORBADomain__IDL__CORBAField__bound_value_constraint" id="com.zeligsoft.domain.omg.corba.CORBAField.bound_value_constraint" base_Constraint="_whgLYJBzEeG3w4bnc767Ng"/>
+  <zdl:DomainReference xmi:id="_AHrk8JoKEeGUmNT_0OYWnw" base_Association="_AHZREJoKEeGUmNT_0OYWnw"/>
+  <zdl:DomainConstraint xmi:id="_EGGhs6ILEeKV6NAuBQOWiQ" severity="error" message="%_mesg_CORBADomain__IDLFileSupport__IDLFile__idlfile_not_in_idlfile_or_idlmodule" id="com.zeligsoft.domain.omg.corba.IDLFile.idlfile_not_in_idlfile_or_idlmodule" base_Constraint="_EGGhsKILEeKV6NAuBQOWiQ"/>
+  <zdl:DomainConstraint xmi:id="_BwUtoPR_EeKYqZAl_2QeUg" severity="error" message="%_mesg_CORBADomain__IDL__CORBATypeDef__typedef_should_have_type" id="com.zeligsoft.domain.omg.corba.CORBATypeDef.typedef_should_have_type" base_Constraint="_BwPOEPR_EeKYqZAl_2QeUg"/>
+  <zdl:DomainAttribute xmi:id="_aMH8QAEDEeOWHr0xAE9a0Q" base_Property="_aL-LQAEDEeOWHr0xAE9a0Q"/>
+  <zdl:DomainConstraint xmi:id="_EPIBYCYOEeOmaaY6Ob2QXw" severity="error" message="%_mesg_CORBADomain__IDL__CORBAConstant__has_enum_literal" id="com.zeligsoft.domain.omg.corba.CORBAConstant.has_enum_literal" base_Constraint="_EO7NECYOEeOmaaY6Ob2QXw"/>
+  <zdl:DomainReference xmi:id="_43KkICn-EeOV59vr0QbsTQ" base_Association="_429IwCn-EeOV59vr0QbsTQ"/>
+  <zdl:DomainReference xmi:id="_5lXG4Cn-EeOV59vr0QbsTQ" base_Association="_5lQZMCn-EeOV59vr0QbsTQ"/>
+  <zdl:DomainConstraint xmi:id="_hDx3EEFuEeODw463y6SlVg" severity="error" message="%_mesg_CORBADomain__IDL__CORBAArray__bound_value_constraint" id="com.zeligsoft.domain.omg.corba.CORBABounded.bound_value_constraint" base_Constraint="_hDm38EFuEeODw463y6SlVg"/>
+  <zdl:DomainConstraint xmi:id="_jQEvgEFuEeODw463y6SlVg" severity="error" message="%_mesg_CORBADomain__IDL__CORBAArray__bound_value_constraint" id="com.zeligsoft.domain.omg.corba.CORBASequence.bound_value_constraint" base_Constraint="_jQC6UEFuEeODw463y6SlVg"/>
+  <zdl:DomainGeneralization xmi:id="_buFsEIbkEeSjd8J8ZjsuPQ" base_Generalization="_buD24IbkEeSjd8J8ZjsuPQ"/>
+  <zdl:DomainGeneralization xmi:id="_cCB7wIbkEeSjd8J8ZjsuPQ" base_Generalization="_cB_fgIbkEeSjd8J8ZjsuPQ"/>
+  <zdl:DomainGeneralization xmi:id="_cTgtUIbkEeSjd8J8ZjsuPQ" base_Generalization="_cTb00IbkEeSjd8J8ZjsuPQ"/>
+</xmi:XMI>

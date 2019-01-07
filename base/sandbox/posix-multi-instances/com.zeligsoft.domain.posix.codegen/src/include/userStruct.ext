@@ -1,0 +1,48 @@
+import langc;
+import ZMLMM::ZML_Deployments;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+import CLanguageDomain::CLanguageDomain;
+
+extension langc::element;
+extension langc::expr;
+extension langc::stmt;
+extension langc::type;
+
+extension template::name;
+extension template::utils;
+
+create ElementList genUserStructFile( C_Struct s ) :
+	setName( s.userStructFileName() )
+ -> addElement( s.element() )
+;
+
+create Struct element( C_Struct s ) :
+    setName( s.userStructName() )
+ -> s.zdlAsComponent().attribute.createFieldIn( this )
+;
+
+/* Only create fields in the langc struct for elements with the C_Field stereotype, ignore
+ * other UML properties. */
+cached Struct createFieldIn( uml::Property attr, Struct st ) :
+    st
+;
+
+Struct createFieldIn( C_Field field, Struct st ) :
+    let ref = field.zdlAsTypedElement().type.element().type() :
+        field.isConstant ? ref.const() : null
+     -> field.isVolatile ? ref.volatile() : null
+     -> field.indirection.addIndirectionTo( ref )
+     -> st.addMember( ref, field.name )
+     -> st
+;
+
+private Void addIndirectionTo( IndirectionQualifier cvQual, ElementReference ref ) :
+    switch( cvQual.toString() ) {
+        case 'None' : ref.ptr()
+        case 'Constant' : ref.constPtr()
+        case 'Volatile' : ref.volatilePtr()
+        case 'Constant_Volatile' : ref.constVolatilePtr()
+        default : null
+    }
+;

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="com.zeligsoft.cx.codegen.ui.transformation">
+      <concept
+            type="CPPLanguageDomain::CPP_Class::CPPClass">
+         <workflow
+               path="workflow/SCAClassGeneration.oaw" label="%workflow.label.0">
+         </workflow>
+      </concept>   
+      <concept
+            type="CPPLanguageDomain::CPP_Class::CPPDataType">
+         <workflow
+               path="workflow/SCAClassGeneration.oaw" label="%workflow.label.1">
+         </workflow>
+      </concept>   
+      <concept
+            type="CPPLanguageDomain::CPP_Class::CPPPrimitiveType">
+         <workflow
+               path="workflow/SCAClassGeneration.oaw" label="%workflow.label.2">
+         </workflow>
+      </concept>      
+   </extension>
+   
+   <extension point="com.zeligsoft.cx.codegen.ui.editsource">
+        <usereditableelement
+            label="%editsource.extraheader"
+            concept="CPPLanguageDomain::CPP_Class::CPPOperation"
+            property="body"
+            codeLocator="com.zeligsoft.cx.codegen.UserEditableRegion$Locator">
+            <m2t-transformation
+                rule="templates::generateCPP::create FOR element.owner">
+                <emfmetamodelpackage value="org.eclipse.emf.ecore.EcorePackage"/>
+                <metamodelclass value="org.openarchitectureware.uml2.UML2MetaModel"/>
+                <umlprofile value="pathmap://ZML_PROFILES/ZML.profile.uml"/>
+                <umlprofile value="pathmap://SCA_PROFILES/SCADomain.profile.uml"/>
+            </m2t-transformation>
+        </usereditableelement>
+
+    </extension>
+
+</plugin>

@@ -1,0 +1,27 @@
+/// @defgroup SNA_Examples_Slave_comp Slave_comp
+/// @{
+/// 
+/// @file SNA_Examples_Slave_comp.idl
+/// @brief Slave_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_SLAVE_COMP__SRC__SNA_EXAMPLES_SLAVE_COMP_IDL
+#define CX_SLAVE_COMP__SRC__SNA_EXAMPLES_SLAVE_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao lem "SNA_Examples_Slave_compE.idl"
+#include "SNA_Examples_StateControl_obj.idl"
+
+/// @namespace SNA_Examples 
+module SNA_Examples {
+    component Slave_comp {
+        provides SNA_Examples::StateControl_obj stateControlFacet;
+    };
+
+};
+
+#endif // CX_SLAVE_COMP__SRC__SNA_EXAMPLES_SLAVE_COMP_IDL
+
+/// @}
+

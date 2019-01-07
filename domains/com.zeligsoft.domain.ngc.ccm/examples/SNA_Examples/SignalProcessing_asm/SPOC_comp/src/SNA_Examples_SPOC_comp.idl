@@ -1,0 +1,88 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+
+/**
+ * @defgroup SPOC_comp SPOC_comp Component
+ * @ingroup SignalProcessingExample
+ * @{
+ *
+ * Signal Processing Orchestration Component which subscribes to and thus
+ * receives the message published from the SPOC_Starter component.  After
+ * receiving the data, it is again output to the logger so the user can see
+ * the data was received correctly.
+ *
+ * @file   SNA_Examples_SPOC_comp.idl
+ * @brief  SPOC_comp component definition IDL file.
+ */
+
+//==============================================================================
+
+#ifndef SPOC_COMP_IDL
+#define SPOC_COMP_IDL
+
+#include <Components.idl>
+
+#include "SNA_Examples_SPOC_Data_conn.idl"
+#include "SNA_Examples_SP_Math_obj.idl"
+
+module SNA_Examples
+{
+   /**
+    * The Signal Processing Orchestration Component (SPOC) that receives data 
+    * and uses the MKC interface to perform some math.
+    */
+   component SPOC_comp
+   {
+      /**
+       *  PSAT_Write (publishing) port which uses a custom UDM (metadata
+       *  structure) appropriate for Signal Processing applications.
+       */     
+      port SNA_Examples::SPOC_Data_conn::PSAT_Write  SP_DataPub;
+      
+      /**
+       * An optional CCM facet defined as part of the DDS4CCM standard which
+       * the PSAT connector can call on status changes (such as errors).
+       *
+       * This facet is recommended in most cases as it is useful for debugging
+       * and integration.
+       * 
+       * It is recommended to have one of these provides lines for each
+       * extended port and to have them named after the associated port name.
+       */
+      provides CCM_DDS::ConnectorStatusListener      SP_DataPubConnStatus;
+
+      /**
+       *  PSAT_Listen (subscribing) port which uses a custom UDM (metadata
+       *  structure) appropriate for Signal Processing applications.
+       */
+      port SNA_Examples::SPOC_Data_conn::PSAT_Listen SP_DataSub;
+      
+      /**
+       * An optional CCM facet defined as part of the DDS4CCM standard which
+       * the PSAT connector can call on status changes (such as errors).
+       *
+       * This facet is recommended in most cases as it is useful for debugging
+       * and integration.
+       * 
+       * It is recommended to have one of these provides lines for each
+       * extended port and to have them named after the associated port name.
+       */
+      provides CCM_DDS::ConnectorStatusListener      SP_DataSubConnStatus;
+
+      /**
+       * Receptacle that can use the facet provided by the MKC to perform
+       * mathematical operations on the data.
+       */      
+      uses       SNA_Examples::SP_Math_obj           SPMathRecept;
+   };
+};
+
+#endif // SPOC_COMP_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

@@ -1,0 +1,77 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+ 
+ extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::tao_idl_utils;
+
+/*****************************************************************************
+ **
+ **
+ ** Add the _is_a_ operation to a class
+ **
+ **
+ ****************************************************************************/
+create uml::Operation standard_op__is_a(uml::Class container) :
+	this.setName("_is_a_") ->
+	// TODO : set the return type -- CORBA::Boolean
+	standard_op__is_a__parameter(this) ->
+	container.ownedOperation.add(this) ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Parameter standard_op__is_a__parameter(uml::Operation container) :
+	this.setName("type_id") ->
+	// TODO : set the type
+	container.ownedParameter.add(this) ->
+	this.addGeneratedTag() ->
+	this;
+	
+/*****************************************************************************
+ **
+ **
+ ** Add the _interface_repository_id operation to a class
+ **
+ **
+ ****************************************************************************/
+ create uml::Operation standard_op__interface_repository_id(uml::Class container) :
+ 	this.setName("_interface_repository_id") ->
+ 	// TODO : set the return type
+ 	container.ownedOperation.add(this) ->
+ 	this.addGeneratedTag() ->
+ 	this;
+ 
+/*****************************************************************************
+ **
+ **
+ ** Add the _interface_repository_id operation to a class
+ **
+ **
+ ****************************************************************************/
+ create uml::Operation standard_op__marshal(uml::Class container) :
+ 	this.setName("marshal") ->
+ 	// TODO : set the return type
+ 	standard_op__marshal__parameter(this) ->
+ 	container.ownedOperation.add(this) ->
+ 	this.addGeneratedTag() ->
+ 	this;
+ 	
+private create uml::Parameter standard_op__marshal__parameter(uml::Operation container) :
+	this.setName("cdr") ->
+	// TODO : set the type
+	container.ownedParameter.add(this) ->
+	this.addGeneratedTag() ->
+	this;
+ 

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:scadomain="http://www.zeligsoft.com/zdl/2008/SCADomain/1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xsi:schemaLocation="http://www.zeligsoft.com/zdl/2008/SCADomain/1 pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeoo0xOEd2INdt7Ch5VKg">
+  <uml:Model xmi:id="_NRAMoAwOEdmFcaeZXPdWAQ" name="OnewayOperationTests">
+    <eAnnotations xmi:id="_2HDIoF55EeKrWL0xDEkQXQ" source="cx.migration">
+      <details xmi:id="_2HDIoV55EeKrWL0xDEkQXQ" key="version" value="3.6.2"/>
+      <details xmi:id="_2HDIol55EeKrWL0xDEkQXQ" key="date" value="1417720313463"/>
+    </eAnnotations>
+    <packageImport xmi:id="_UeIAJtCzEdqK7KjEh4hvHw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_yuNc4GCTEd2SLu3A_eDD4A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_FmNkyVKKEd2qDNqT9_uj3A"/>
+    </packageImport>
+    <packageImport xmi:id="_2ULeAGCTEd2SLu3A_eDD4A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_FmFo8FKKEd2qDNqT9_uj3A"/>
+    </packageImport>
+    <packageImport xmi:id="_StFNAGr3Ed2XQPRO-zUD1A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/SCALibrary.library.uml#_HIhIAGrTEd2kob3R8-spzQ"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_uxYosEZvEd-32qpZV37WFw" name="modelConfiguration">
+      <classifier xmi:type="uml:Class" href="pathmap://SCA_LIBRARIES/SCA.uml#__EXrQP_hEeCCmLpCbcuD7A"/>
+      <slot xmi:id="_aBnfgHvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_LIBRARIES/SCA.uml#_B8FfQP_iEeCCmLpCbcuD7A"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_aBoGkHvpEeS8spAsUHvnSw" value="scx">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+      <slot xmi:id="_aBotoHvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_LIBRARIES/SCA.uml#_dgr3gHTPEeScAu3E-QvDcA"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_aBotoXvpEeS8spAsUHvnSw" value="">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+      <slot xmi:id="_aBpUsHvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_LIBRARIES/SCA.uml#_04-zoHTPEeScAu3E-QvDcA"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_aBpUsXvpEeS8spAsUHvnSw" value="_s">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+      <slot xmi:id="_aBpUsnvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_qzbt8KULEd2lg4YL0MvrHw"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_aBp7wHvpEeS8spAsUHvnSw" value="OnewayOperationTests_SRC">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_Qsvs8EcKEd-IVKiPFeSNTQ" name="Interfaces">
+      <eAnnotations xmi:id="_g_054EcKEd-IVKiPFeSNTQ" source="uml2.diagrams">
+        <contents xmi:type="notation:StandardDiagram" xmi:id="_g_054UcKEd-IVKiPFeSNTQ" type="Component" element="_Qsvs8EcKEd-IVKiPFeSNTQ" name="ComponentDiagram1" measurementUnit="Himetric">
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_8mpr8EcKEd-IVKiPFeSNTQ" element="_8ktyQEcKEd-IVKiPFeSNTQ" fontHeight="8" showListStereotype="None" lineColor="14263149">
+            <children xmi:type="notation:DecorationNode" xmi:id="_8nGX4EcKEd-IVKiPFeSNTQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_8nGX4UcKEd-IVKiPFeSNTQ" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_8nGX4kcKEd-IVKiPFeSNTQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_8nGX40cKEd-IVKiPFeSNTQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_8nGX5EcKEd-IVKiPFeSNTQ" type="Parent"/>
+            <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_8nGX5UcKEd-IVKiPFeSNTQ" type="PackageContents" collapsed="true" canonical="false"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8mpr8kcKEd-IVKiPFeSNTQ" x="7699" y="1799"/>
+          </children>
+          <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="__R38EEcKEd-IVKiPFeSNTQ" element="__RRfIEcKEd-IVKiPFeSNTQ" fontHeight="8" showListStereotype="None" lineColor="14263149" useClassifierShape="true">
+            <children xmi:type="notation:DecorationNode" xmi:id="__R38E0cKEd-IVKiPFeSNTQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="__R38FEcKEd-IVKiPFeSNTQ" width="530" height="530"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="__SBGAEcKEd-IVKiPFeSNTQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="__SBGAUcKEd-IVKiPFeSNTQ" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="__SBGAkcKEd-IVKiPFeSNTQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="__SBGA0cKEd-IVKiPFeSNTQ" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="__SK3AEcKEd-IVKiPFeSNTQ" visible="false" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="__SK3AkcKEd-IVKiPFeSNTQ" type="OperationCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="__SK3BEcKEd-IVKiPFeSNTQ" visible="false" type="SignalCompartment"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="__R38EkcKEd-IVKiPFeSNTQ" x="6657" y="5389"/>
+          </children>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_LoFDwEcLEd-IVKiPFeSNTQ" type="OwnedElement" source="_8mpr8EcKEd-IVKiPFeSNTQ" target="__R38EEcKEd-IVKiPFeSNTQ" lineColor="8421504" showStereotype="Text">
+            <element xsi:nil="true"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_LoFDwkcLEd-IVKiPFeSNTQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+          </edges>
+        </contents>
+      </eAnnotations>
+      <packagedElement xmi:type="uml:Package" xmi:id="_8ktyQEcKEd-IVKiPFeSNTQ" name="CORBAInterfaceFile">
+        <packagedElement xmi:type="uml:Interface" xmi:id="__RRfIEcKEd-IVKiPFeSNTQ" name="CORBAInterface">
+          <ownedOperation xmi:id="_IN7REEcLEd-IVKiPFeSNTQ" name="validNonOnewayOperationWithException">
+            <ownedParameter xmi:id="_v3mJ8EcLEd-IVKiPFeSNTQ" name="inParam">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_baFDkExREd2INdt7Ch5VKg"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_548TEEcLEd-IVKiPFeSNTQ" name="inoutParam" direction="inout">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_8ulqgEcLEd-IVKiPFeSNTQ" name="outParam" direction="out">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_BcMCEEcMEd-IVKiPFeSNTQ" name="returnParam" direction="return">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_DO5LQEcLEd-IVKiPFeSNTQ" name="invalidOnewayOperationWith_In_InOut_Params">
+            <ownedParameter xmi:id="_SendwEcLEd-IVKiPFeSNTQ" name="inParam">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_UQK68EcLEd-IVKiPFeSNTQ" name="outParam" direction="out">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_VR4PkEcLEd-IVKiPFeSNTQ" name="inoutParam" direction="inout">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_GkRysEcLEd-IVKiPFeSNTQ" name="invalidOneWayWithException" raisedException="_OZZ74EcLEd-IVKiPFeSNTQ"/>
+          <ownedOperation xmi:id="_E7FAQEcLEd-IVKiPFeSNTQ" name="invalidOneWayOperationWithReturnType">
+            <ownedParameter xmi:id="_JdiCUEcMEd-IVKiPFeSNTQ" name="returnParam" direction="return">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_KjO7kEcLEd-IVKiPFeSNTQ" name="validOnewayOperation">
+            <ownedParameter xmi:id="_SfP6cEcMEd-IVKiPFeSNTQ" name="inParam">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedParameter>
+          </ownedOperation>
+          <nestedClassifier xmi:type="uml:DataType" xmi:id="_OZZ74EcLEd-IVKiPFeSNTQ" name="TestException"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_UeIAINCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAIdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_UeIAItCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAI9CzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_UeIAJNCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAJdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_QcgrAGimEd2OEpKJuElDmQ">
+      <eAnnotations xmi:id="_QcgrAWimEd2OEpKJuElDmQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeoo0xOEd2INdt7Ch5VKg"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeooExOEd2INdt7Ch5VKg"/>
+    </profileApplication>
+  </uml:Model>
+  <scadomain:IDLFile xmi:id="_8k3jQEcKEd-IVKiPFeSNTQ" base_Package="_8ktyQEcKEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAInterface xmi:id="__RbQIEcKEd-IVKiPFeSNTQ" base_Interface="__RRfIEcKEd-IVKiPFeSNTQ" base_NamedElement="__RRfIEcKEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAOperation xmi:id="_DPCVMEcLEd-IVKiPFeSNTQ" base_NamedElement="_DO5LQEcLEd-IVKiPFeSNTQ" isOneWay="true" base_Operation="_DO5LQEcLEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAOperation xmi:id="_E7OKMEcLEd-IVKiPFeSNTQ" base_NamedElement="_E7FAQEcLEd-IVKiPFeSNTQ" isOneWay="true" base_Operation="_E7FAQEcLEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAOperation xmi:id="_Gka8oEcLEd-IVKiPFeSNTQ" base_NamedElement="_GkRysEcLEd-IVKiPFeSNTQ" isOneWay="true" base_Operation="_GkRysEcLEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAOperation xmi:id="_IOFCEEcLEd-IVKiPFeSNTQ" base_NamedElement="_IN7REEcLEd-IVKiPFeSNTQ" base_Operation="_IN7REEcLEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAOperation xmi:id="_KjO7kUcLEd-IVKiPFeSNTQ" base_NamedElement="_KjO7kEcLEd-IVKiPFeSNTQ" isOneWay="true" base_Operation="_KjO7kEcLEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAException xmi:id="_OZjF0EcLEd-IVKiPFeSNTQ" base_NamedElement="_OZZ74EcLEd-IVKiPFeSNTQ" base_DataType="_OZZ74EcLEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAParameter xmi:id="_SexOwEcLEd-IVKiPFeSNTQ" base_NamedElement="_SendwEcLEd-IVKiPFeSNTQ" base_Parameter="_SendwEcLEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAParameter xmi:id="_UQUE4EcLEd-IVKiPFeSNTQ" base_NamedElement="_UQK68EcLEd-IVKiPFeSNTQ" base_Parameter="_UQK68EcLEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAParameter xmi:id="_VR4PkUcLEd-IVKiPFeSNTQ" base_NamedElement="_VR4PkEcLEd-IVKiPFeSNTQ" base_Parameter="_VR4PkEcLEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAParameter xmi:id="_v3vT4EcLEd-IVKiPFeSNTQ" base_NamedElement="_v3mJ8EcLEd-IVKiPFeSNTQ" base_Parameter="_v3mJ8EcLEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAParameter xmi:id="_55POAEcLEd-IVKiPFeSNTQ" base_NamedElement="_548TEEcLEd-IVKiPFeSNTQ" base_Parameter="_548TEEcLEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAParameter xmi:id="_8uu0cEcLEd-IVKiPFeSNTQ" base_NamedElement="_8ulqgEcLEd-IVKiPFeSNTQ" base_Parameter="_8ulqgEcLEd-IVKiPFeSNTQ"/>
+  <scadomain:CORBAParameter xmi:id="_SfZEYEcMEd-IVKiPFeSNTQ" base_NamedElement="_SfP6cEcMEd-IVKiPFeSNTQ" base_Parameter="_SfP6cEcMEd-IVKiPFeSNTQ"/>
+  <scadomain:SCAModel xmi:id="_zvwaoFR2EeSx-d3TBjQpfQ" base_Model="_NRAMoAwOEdmFcaeZXPdWAQ" version="3.6.2" base_NamedElement="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+</xmi:XMI>

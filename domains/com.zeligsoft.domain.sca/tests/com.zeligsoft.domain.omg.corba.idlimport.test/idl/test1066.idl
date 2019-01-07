@@ -1,0 +1,18 @@
+// Invalid type in union
+
+
+interface int1066
+{
+
+    union u1 switch (long long)
+    {
+      case 1: int a;
+      case 2: float b;
+      case 3: bob b;
+      default: string c;
+    };
+
+    attribute u1 unionattr;
+    u1 f1( inout u1 enumparam );
+
+};

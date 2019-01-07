@@ -1,0 +1,41 @@
+
+<!-- This workflow generates only the header, once it works, it can either be copied to
+     produce code for all the needed ones, or extra targets could be added to this one
+     (and the file renamed). -->
+
+<workflow>
+
+    <property name="fileEncoding" value="ISO-8859-1"/>
+
+    <component
+        class="com.zeligsoft.base.workflow.SetupResourceSet"
+        resourceSetSlot="rset" />
+
+    <component id="readSource" class="com.zeligsoft.base.workflow.RSMReader" resourceSetSlot="rset">
+        <uri value="${modelURI}" />
+        <modelSlot value="model" />
+    </component>
+
+    <component id="resolveAll" class="com.zeligsoft.base.workflow.ResolveAll" resourceSetSlot="rset">
+        <modelSlot value="${modelURI}"/>
+    </component>
+
+    <component id="generator" class="com.zeligsoft.cx.codegen.ui.oaw.Generator" skipOnErrors="true">
+
+        <ZDLMetaModels value="${m2t-zdlMetaModels}"/>
+        <EMFMetaModelPackages value="${m2t-emfMetaModelPackages}"/>
+        <metaModelClasses value="${m2t-metaModelClasses}"/>
+        <profileMetaModels value="${m2t-profileMetaModels}"/>
+
+        <expand value="${m2t-rule}"/>
+
+        <outlet path="${src-gen}" class="com.zeligsoft.cx.codegen.io.CXGenOutlet">
+            <postprocessor class="com.zeligsoft.cx.codegen.io.FormatterDispatcher"/>
+            <vetoStrategy class="org.eclipse.xpand2.output.NoChangesVetoStrategy"/>
+        </outlet>
+
+    </component>
+    
+    <component class="com.zeligsoft.base.workflow.CleanupResourceSet" resourceSetSlot="rset" />
+
+</workflow>

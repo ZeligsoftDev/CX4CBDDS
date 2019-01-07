@@ -1,0 +1,2 @@
+importtargetdefinition -A "buildDriver/rsa.target"
+junit -l 'com.zeligsoft.releng.updatesites/tests/launch/CXUIAllTests.launch' -o 'tests.output/test-results-cxui.xml' --stdout 'tests.output/test-stdout-cxui.txt' --stderr 'tests.output/test-stderr-cxui.txt' --flatXML

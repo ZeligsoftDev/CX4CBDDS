@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "../dtd/properties.dtd">
+<!--Created with OSSIE WaveDev Beta Version 0.6.0b-->
+<!--Powered by Python-->
+<properties>
+    <simple type="string" id="DCE:f86bbd8a-aac0-47ce-a5cb-a06f093de95f" name="input_file_name" mode="readonly">
+        <description> Name of the input file</description> 
+        <value>sound_test.dat</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="string" id="DCE:240ba394-44c7-4369-84d1-29177e06b1a7" name="input_file_format" mode="readonly">
+        <description> Format of the input file(TEXT, LE, BE)</description> 
+        <value>TEXT</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="long" id="DCE:019fd89f-589f-4714-8d33-57f108d7d004" name="num_blocks" mode="readonly">
+        <description>Number of blocks of data to send.  Enter a negative number for infinite looping.</description> 
+        <value>-1</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="ulong" id="DCE:23882924-7988-11db-9fc2-00123f573a7f" name="file_repeat" mode="readonly">
+        <description>Number of times to repeat the file contents per output packet.</description> 
+        <value>1</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="float" id="DCE:07624606-7a52-11db-820d-0004236abd3a" name="inter_packet_time" mode="readonly">
+        <description>Time interval between packets.</description> 
+        <value>0.0</value> 
+        <kind kindtype="configure"/>
+    </simple>
+    <simple type="long" id="DCE:3b35cc0c-cdda-446f-9e23-5877f213f1e9" name="packet_size" mode="readonly">
+        <description>Packet size to send to next component. Use -1 for packet size of file length times file_repeat.</description> 
+        <value>-1</value> 
+        <kind kindtype="configure"/>
+    </simple>
+</properties>

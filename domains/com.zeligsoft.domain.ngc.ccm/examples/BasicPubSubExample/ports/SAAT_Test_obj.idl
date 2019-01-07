@@ -1,0 +1,30 @@
+/// @defgroup SAAT_Test_obj Test_obj
+/// @{
+/// 
+/// @file SAAT_Test_obj.idl
+/// @brief Test_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__SAAT_TEST_OBJ_IDL
+#define CX_PORTS__SAAT_TEST_OBJ_IDL
+
+#include "SAAT_Types_defn.idl"
+#pragma ciao lem "SAAT_Test_objE.idl"
+
+/// @namespace SAAT 
+module SAAT {
+
+    ///@interface Test_obj 
+    interface Test_obj {
+
+        /// @return
+        SAAT::BlockSubView_Descriptor getDescriptor();
+    };
+
+};
+
+#endif // CX_PORTS__SAAT_TEST_OBJ_IDL
+
+/// @}
+

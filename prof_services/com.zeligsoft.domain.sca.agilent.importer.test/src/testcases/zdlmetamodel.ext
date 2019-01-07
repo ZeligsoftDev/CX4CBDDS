@@ -1,0 +1,12 @@
+
+import ZMLMM::ZML_Core;
+import POSIX::POSIX_Component;
+import CLanguageDomain::CLanguageDomain;
+
+uml::Type testParameterType( uml::Parameter param ) :
+    param.type
+;
+
+String testPOSIXWorkerFunction( POSIXWorkerFunction func ) :
+	func.body
+;

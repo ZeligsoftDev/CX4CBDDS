@@ -1,0 +1,18 @@
+<project name="Install">
+	<target name="install.example.projects">
+		<subant genericantfile="${ant.file}" target="-install.single.example.project" inheritall="true">
+			<buckminster.valuepath value="${fs:example.projects}" />
+		</subant>
+	</target>
+	
+	<target name="-install.single.example.project">
+		<basename file="${basedir}" property="project.name"/>
+		<property name="target.directory" location="${sp:output}/${project.name}" />
+		
+		<mkdir dir="${target.directory}" />
+		
+		<copy todir="${target.directory}">
+			<fileset dir="${basedir}" />
+		</copy>
+	</target>
+</project>

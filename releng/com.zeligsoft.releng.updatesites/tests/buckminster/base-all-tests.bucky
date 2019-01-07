@@ -1,0 +1,2 @@
+importtargetdefinition -A "buildDriver/rsa.target"
+junit -l "com.zeligsoft.releng.updatesites/tests/launch/BaseAllTests.launch" -o 'tests.output/test-results-base.xml' --stdout 'tests.output/test-stdout-base.txt' --stderr 'tests.output/test-stderr-base.txt' --flatXML

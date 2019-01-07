@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmlns:zdl="http://www.zeligsoft.com/zdl/2008/ZDL/1" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w http://www.zeligsoft.com/zdl/2008/ZDL/1 pathmap://ZDL_PROFILES/ZDL.profile.uml#_TY7fcC_oEd2oX-fEHLus7g">
+  <uml:Model xmi:id="_NRAMoAwOEdmFcaeZXPdWAQ" name="Deployment">
+    <packageImport xmi:id="_UeIAJtCzEdqK7KjEh4hvHw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_9ihoQEuQEd2aAOSqOUjI9w" name="ZML_Deployments">
+      <packagedElement xmi:type="uml:Class" xmi:id="_Ixk6oEuREd2aAOSqOUjI9w" name="Allocation">
+        <ownedComment xmi:id="_GVNpgFdQEd2vyvkXKkpVQw" annotatedElement="_Ixk6oEuREd2aAOSqOUjI9w">
+          <body>&lt;head>&lt;/head>&lt;body>The relationship that signifies the Allocation of one or more DeployableElements to a single DeploymentTarget.&lt;br>&lt;/body></body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_b6OosEugEd2T4d7a8_GVtg" name="deployed" visibility="public" type="_XXlj8EugEd2T4d7a8_GVtg" association="_b6MMcEugEd2T4d7a8_GVtg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1RyG0EugEd2T4d7a8_GVtg" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1RxfwEugEd2T4d7a8_GVtg" value="1"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_iAYHkEugEd2T4d7a8_GVtg" name="deployedOn" visibility="public" type="_Ua_P8EugEd2T4d7a8_GVtg" association="_iAWSYEugEd2T4d7a8_GVtg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nv_80EugEd2T4d7a8_GVtg" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nv_VwEugEd2T4d7a8_GVtg" value="1"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_KPOkYEuREd2aAOSqOUjI9w" name="Deployment">
+        <ownedComment xmi:id="_raFAIFdMEd2vyvkXKkpVQw" annotatedElement="_KPOkYEuREd2aAOSqOUjI9w">
+          <body>&lt;head>&lt;/head>&lt;body>A Deployment is the top level container element for Zeligsoft deployments.&amp;nbsp; It owns all other elements that participate in the Deployment.&lt;br>&lt;/body></body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_l4XqoEuREd2aAOSqOUjI9w" name="part" visibility="public" type="_R1xfAEuREd2aAOSqOUjI9w" aggregation="composite" association="_l4VOYEuREd2aAOSqOUjI9w">
+          <ownedComment xmi:id="_v_UJEFdQEd2vyvkXKkpVQw" annotatedElement="_l4XqoEuREd2aAOSqOUjI9w">
+            <body>&lt;head>&lt;/head>&lt;body>The owned DeploymentParts for this Deployment.&lt;br>&lt;/body></body>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oVbi8EuREd2aAOSqOUjI9w" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oVa74EuREd2aAOSqOUjI9w"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_R1xfAEuREd2aAOSqOUjI9w" name="DeploymentPart">
+        <ownedComment xmi:id="_UasBUFdOEd2vyvkXKkpVQw" annotatedElement="_R1xfAEuREd2aAOSqOUjI9w">
+          <body>&lt;head>&lt;/head>&lt;body>A DeploymentPart represents a particular instance of a Zeligsoft model element in the context of the Deployment.&lt;br>&lt;/body></body>
+        </ownedComment>
+        <ownedAttribute xmi:id="_iSvLQEuSEd2aAOSqOUjI9w" name="nestedPart" visibility="public" type="_R1xfAEuREd2aAOSqOUjI9w" aggregation="shared" association="_iStWEEuSEd2aAOSqOUjI9w">
+          <ownedComment xmi:id="_Hl0gUFdREd2vyvkXKkpVQw" annotatedElement="_iSvLQEuSEd2aAOSqOUjI9w">
+            <body>&lt;head>&lt;/head>&lt;body>The list of contained DeploymentParts.&lt;br>&lt;/body></body>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lSsVQEuSEd2aAOSqOUjI9w" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lSruMEuSEd2aAOSqOUjI9w"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_MdW98EuTEd2aAOSqOUjI9w" name="modelElement" visibility="public" type="_g9WssEuSEd2aAOSqOUjI9w" association="_MdVIwEuTEd2aAOSqOUjI9w">
+          <ownedComment xmi:id="_2k_nIFdREd2vyvkXKkpVQw" annotatedElement="_MdW98EuTEd2aAOSqOUjI9w">
+            <body>&lt;head>&lt;/head>&lt;body>Reference to the Zeligsoft model element which plays a role in this Deployment.&lt;br>&lt;/body></body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_Y_ELAEuTEd2aAOSqOUjI9w" name="configuration" visibility="public" type="_fzfhoEuSEd2aAOSqOUjI9w" association="_Y_CV0EuTEd2aAOSqOUjI9w">
+          <ownedComment xmi:id="_cTjzUFdUEd2vyvkXKkpVQw" annotatedElement="_Y_ELAEuTEd2aAOSqOUjI9w">
+            <body>&lt;head>&lt;/head>&lt;body>The optional Configuration element which is applied to this DeploymentPart.&lt;br>&lt;/body></body>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aU-1EEuTEd2aAOSqOUjI9w" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aU-OAEuTEd2aAOSqOUjI9w"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_UGsYwEuREd2aAOSqOUjI9w" name="ComponentDeploymentPart">
+        <ownedComment xmi:id="_c2iJEFdKEd2vyvkXKkpVQw" annotatedElement="_UGsYwEuREd2aAOSqOUjI9w">
+          <body>&lt;head>&lt;/head>&lt;body>Specialization of the DeploymentPart which specifically supports deployed Component model elements. The specialization adds support for identifying a selected implementation and an optional Implementation Configuration.&lt;br>&lt;/body></body>
+        </ownedComment>
+        <generalization xmi:id="_scnawEuREd2aAOSqOUjI9w" general="_R1xfAEuREd2aAOSqOUjI9w"/>
+        <ownedAttribute xmi:id="_EHvW0EuTEd2aAOSqOUjI9w" name="selectedImplementation" visibility="public" type="_BdeI8EuTEd2aAOSqOUjI9w" association="_EHthoEuTEd2aAOSqOUjI9w">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Fjm34EuTEd2aAOSqOUjI9w" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FjmQ0EuTEd2aAOSqOUjI9w"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_ggtHAFdFEd2vyvkXKkpVQw" name="implementationConfiguration" visibility="public" type="_fzfhoEuSEd2aAOSqOUjI9w" association="_gggSsFdFEd2vyvkXKkpVQw">
+          <ownedComment xmi:id="_0WtqUFdUEd2vyvkXKkpVQw" annotatedElement="_ggtHAFdFEd2vyvkXKkpVQw">
+            <body>&lt;head>&lt;/head>&lt;body>Reference to the Configuration of the selected implementation.&lt;br>&lt;/body></body>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qykYYFdFEd2vyvkXKkpVQw" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qyjKQFdFEd2vyvkXKkpVQw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_l4VOYEuREd2aAOSqOUjI9w" name="" memberEnd="_l4XqoEuREd2aAOSqOUjI9w _l4aG4EuREd2aAOSqOUjI9w">
+        <ownedEnd xmi:id="_l4aG4EuREd2aAOSqOUjI9w" name="deployment" visibility="public" type="_KPOkYEuREd2aAOSqOUjI9w" association="_l4VOYEuREd2aAOSqOUjI9w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_fzfhoEuSEd2aAOSqOUjI9w" name="Configuration">
+        <ownedComment xmi:id="_vK5BgFdbEd2vyvkXKkpVQw" annotatedElement="_fzfhoEuSEd2aAOSqOUjI9w">
+          <body>&lt;head>&lt;/head>&lt;body>A re-usable specification of properties for the purpose of providing additional information.&lt;br>&lt;/body></body>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_g9WssEuSEd2aAOSqOUjI9w" name="ModelElement">
+        <ownedComment xmi:id="_YOwc8FdbEd2vyvkXKkpVQw" annotatedElement="_g9WssEuSEd2aAOSqOUjI9w">
+          <body>&lt;head>&lt;/head>&lt;body>The Zeligsoft model element.&lt;br>&lt;/body></body>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_iStWEEuSEd2aAOSqOUjI9w" name="" memberEnd="_iSvLQEuSEd2aAOSqOUjI9w _iSxngEuSEd2aAOSqOUjI9w">
+        <ownedEnd xmi:id="_iSxngEuSEd2aAOSqOUjI9w" name="nestingPart" visibility="public" type="_R1xfAEuREd2aAOSqOUjI9w" association="_iStWEEuSEd2aAOSqOUjI9w">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kjMyAEuSEd2aAOSqOUjI9w" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kjMK8EuSEd2aAOSqOUjI9w"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_BdeI8EuTEd2aAOSqOUjI9w" name="Implementation">
+        <ownedComment xmi:id="_lYCx8FdcEd2vyvkXKkpVQw" annotatedElement="_BdeI8EuTEd2aAOSqOUjI9w">
+          <body>&lt;head>&lt;/head>&lt;body>A Zeligsoft model element which provides an implementation.&lt;br>&lt;/body></body>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_EHthoEuTEd2aAOSqOUjI9w" name="" memberEnd="_EHvW0EuTEd2aAOSqOUjI9w _EHzoQEuTEd2aAOSqOUjI9w">
+        <ownedEnd xmi:id="_EHzoQEuTEd2aAOSqOUjI9w" name="deployment" visibility="public" type="_UGsYwEuREd2aAOSqOUjI9w" association="_EHthoEuTEd2aAOSqOUjI9w">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FGp2IEuTEd2aAOSqOUjI9w" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FGpPEEuTEd2aAOSqOUjI9w"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_MdVIwEuTEd2aAOSqOUjI9w" name="" memberEnd="_MdW98EuTEd2aAOSqOUjI9w _MdZaMEuTEd2aAOSqOUjI9w">
+        <ownedEnd xmi:id="_MdZaMEuTEd2aAOSqOUjI9w" name="deployment" visibility="public" type="_R1xfAEuREd2aAOSqOUjI9w" association="_MdVIwEuTEd2aAOSqOUjI9w">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QmwcQEuTEd2aAOSqOUjI9w" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Qmv1MEuTEd2aAOSqOUjI9w"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_Y_CV0EuTEd2aAOSqOUjI9w" name="" memberEnd="_Y_ELAEuTEd2aAOSqOUjI9w _Y_GnQEuTEd2aAOSqOUjI9w">
+        <ownedEnd xmi:id="_Y_GnQEuTEd2aAOSqOUjI9w" name="configured" visibility="public" type="_R1xfAEuREd2aAOSqOUjI9w" association="_Y_CV0EuTEd2aAOSqOUjI9w">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_av850EuTEd2aAOSqOUjI9w" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_av8SwEuTEd2aAOSqOUjI9w"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_Ua_P8EugEd2T4d7a8_GVtg" name="DeploymentTarget">
+        <ownedComment xmi:id="_QvbTsFdSEd2vyvkXKkpVQw" annotatedElement="_Ua_P8EugEd2T4d7a8_GVtg">
+          <body>&lt;head>&lt;/head>&lt;body>A model element that can participate in Allocations and is capable of acting as a target for certain DeployableElements.&lt;/body></body>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_XXlj8EugEd2T4d7a8_GVtg" name="DeployableElement">
+        <ownedComment xmi:id="_AGfLgFdSEd2vyvkXKkpVQw" annotatedElement="_XXlj8EugEd2T4d7a8_GVtg">
+          <body>&lt;head>&lt;/head>&lt;body>A model element that can participate in Allocations and is capable of acting as a source for certain DeploymentTargets.&lt;br>&lt;/body></body>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_b6MMcEugEd2T4d7a8_GVtg" name="" memberEnd="_b6OosEugEd2T4d7a8_GVtg _b6RE8EugEd2T4d7a8_GVtg">
+        <ownedEnd xmi:id="_b6RE8EugEd2T4d7a8_GVtg" name="allocation" visibility="public" type="_Ixk6oEuREd2aAOSqOUjI9w" association="_b6MMcEugEd2T4d7a8_GVtg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ew7wEEugEd2T4d7a8_GVtg" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ew7JAEugEd2T4d7a8_GVtg"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_iAWSYEugEd2T4d7a8_GVtg" name="" memberEnd="_iAYHkEugEd2T4d7a8_GVtg _iAbK4EugEd2T4d7a8_GVtg">
+        <ownedEnd xmi:id="_iAbK4EugEd2T4d7a8_GVtg" name="deployed" visibility="public" type="_Ixk6oEuREd2aAOSqOUjI9w" association="_iAWSYEugEd2T4d7a8_GVtg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qUHfYEugEd2T4d7a8_GVtg" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qUG4UEugEd2T4d7a8_GVtg"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_gggSsFdFEd2vyvkXKkpVQw" name="" memberEnd="_ggtHAFdFEd2vyvkXKkpVQw _ggwxYFdFEd2vyvkXKkpVQw">
+        <ownedComment xmi:id="_1QfIwFdFEd2vyvkXKkpVQw" annotatedElement="_gggSsFdFEd2vyvkXKkpVQw">
+          <body>&lt;head>&lt;/head>&lt;body>The Configuration for the selected implementation for this Component.&lt;br>&lt;/body></body>
+        </ownedComment>
+        <ownedEnd xmi:id="_ggwxYFdFEd2vyvkXKkpVQw" name="" visibility="private" type="_UGsYwEuREd2aAOSqOUjI9w" association="_gggSsFdFEd2vyvkXKkpVQw">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pFGxAFdFEd2vyvkXKkpVQw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pFE70FdFEd2vyvkXKkpVQw"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_BpHDIEuREd2aAOSqOUjI9w" name="ZeligsoftDeployment" clientDependency="_EbttoEuREd2aAOSqOUjI9w"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_EbttoEuREd2aAOSqOUjI9w" name="" supplier="_9ihoQEuQEd2aAOSqOUjI9w" client="_BpHDIEuREd2aAOSqOUjI9w"/>
+    <profileApplication xmi:id="_UeIAINCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAIdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_y9XAYEuQEd2aAOSqOUjI9w">
+      <eAnnotations xmi:id="_y9b44EuQEd2aAOSqOUjI9w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://ZDL_PROFILES/ZDL.profile.uml#_TY7fcC_oEd2oX-fEHLus7g"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://ZDL_PROFILES/ZDL.profile.uml#_Rud18OyCEdyUQcM5ztOjuQ"/>
+    </profileApplication>
+  </uml:Model>
+  <zdl:DomainModel xmi:id="_zDAVYEuQEd2aAOSqOUjI9w" base_Model="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  <zdl:DomainBlock xmi:id="_9i6p0EuQEd2aAOSqOUjI9w" base_Package="_9ihoQEuQEd2aAOSqOUjI9w"/>
+  <zdl:DomainSpecialization xmi:id="_BpSCQEuREd2aAOSqOUjI9w" base_Class="_BpHDIEuREd2aAOSqOUjI9w"/>
+  <zdl:DomainBlockReference xmi:id="_Eb7JAEuREd2aAOSqOUjI9w" base_Dependency="_EbttoEuREd2aAOSqOUjI9w"/>
+  <zdl:DomainConcept xmi:id="_IxuroEuREd2aAOSqOUjI9w" base_Class="_Ixk6oEuREd2aAOSqOUjI9w"/>
+  <zdl:DomainConcept xmi:id="_KPXuUEuREd2aAOSqOUjI9w" base_Class="_KPOkYEuREd2aAOSqOUjI9w"/>
+  <zdl:DomainConcept xmi:id="_R173EEuREd2aAOSqOUjI9w" base_Class="_R1xfAEuREd2aAOSqOUjI9w"/>
+  <zdl:DomainConcept xmi:id="_UG07oEuREd2aAOSqOUjI9w" base_Class="_UGsYwEuREd2aAOSqOUjI9w"/>
+  <zdl:DomainReference xmi:id="_l4j34EuREd2aAOSqOUjI9w" base_Association="_l4VOYEuREd2aAOSqOUjI9w"/>
+  <zdl:DomainGeneralization xmi:id="_scxy0EuREd2aAOSqOUjI9w" base_Generalization="_scnawEuREd2aAOSqOUjI9w"/>
+  <zdl:DomainConcept xmi:id="_fzndcEuSEd2aAOSqOUjI9w" base_Class="_fzfhoEuSEd2aAOSqOUjI9w"/>
+  <zdl:DomainConcept xmi:id="_g9ZwAEuSEd2aAOSqOUjI9w" base_Class="_g9WssEuSEd2aAOSqOUjI9w"/>
+  <zdl:DomainReference xmi:id="_iS4VMEuSEd2aAOSqOUjI9w" base_Association="_iStWEEuSEd2aAOSqOUjI9w"/>
+  <zdl:DomainConcept xmi:id="_BdglMEuTEd2aAOSqOUjI9w" base_Class="_BdeI8EuTEd2aAOSqOUjI9w"/>
+  <zdl:DomainReference xmi:id="_EH5u4EuTEd2aAOSqOUjI9w" base_Association="_EHthoEuTEd2aAOSqOUjI9w"/>
+  <zdl:DomainReference xmi:id="_Mde5wEuTEd2aAOSqOUjI9w" base_Association="_MdVIwEuTEd2aAOSqOUjI9w"/>
+  <zdl:DomainReference xmi:id="_Y_MG0EuTEd2aAOSqOUjI9w" base_Association="_Y_CV0EuTEd2aAOSqOUjI9w"/>
+  <zdl:DomainConcept xmi:id="_UbKPEEugEd2T4d7a8_GVtg" base_Class="_Ua_P8EugEd2T4d7a8_GVtg"/>
+  <zdl:DomainConcept xmi:id="_XXut4EugEd2T4d7a8_GVtg" base_Class="_XXlj8EugEd2T4d7a8_GVtg"/>
+  <zdl:DomainReference xmi:id="_b6Zn0EugEd2T4d7a8_GVtg" base_Association="_b6MMcEugEd2T4d7a8_GVtg"/>
+  <zdl:DomainReference xmi:id="_iAjtwEugEd2T4d7a8_GVtg" base_Association="_iAWSYEugEd2T4d7a8_GVtg"/>
+  <zdl:DomainReference xmi:id="_gg4tMFdFEd2vyvkXKkpVQw" base_Association="_gggSsFdFEd2vyvkXKkpVQw"/>
+  <Standard:ModelLibrary xmi:id="_N_X2YJAHEd2fXeHxJx3ukQ" base_Package="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+</xmi:XMI>

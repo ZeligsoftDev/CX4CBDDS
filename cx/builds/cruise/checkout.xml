@@ -1,0 +1,39 @@
+<project default="all">
+
+	<echo message="Entering checkout.xml" />
+
+	<property file="build.properties" />
+
+	<echo message="SVN Location: ${svnant.location}" />
+	
+	<target name="all">
+	
+		<echo message="Map Version tage for releng: ${mapVersionTag}" />
+		
+		<delete dir="${codir}/${releng}" failonerror="false" />
+		<echo message="destination:${codir}/${releng}" />
+		
+		<svn>
+			<checkout url="${svn.svnroot}/ce/trunk/${releng}"
+					destPath="${codir}/${releng}"
+					revision="${mapVersionTag}" />
+		</svn>
+		
+		<property file="${codir}/${releng}/maps/build.cfg" />
+		
+		<echo message="debug: ${codir}/${releng}/maps/build.cfg" />
+		
+		<echo message="Version tag for ${releng.cebuilder} is: ${ceBuilderVersion}" />
+		
+		<delete dir="${codir}/${releng.cebuilder}" failonerror="false" />
+	
+		<svn>
+			<checkout url="${svn.svnroot}/ce/trunk/${releng.cebuilder}"
+				destPath="${codir}/${releng.cebuilder}"
+				revision="${ceBuilderVersion}" />
+		</svn>
+		
+	</target>
+</project>
+	
+				

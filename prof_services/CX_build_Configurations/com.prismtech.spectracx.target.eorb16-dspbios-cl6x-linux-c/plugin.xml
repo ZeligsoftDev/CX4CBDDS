@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension point="com.ibm.xtools.uml.msl.UMLLibraries">
+      <UMLLibrary
+         name="eorb16-dspbios-cl6x-linux-c"
+         path="pathmap://BUILD_CONFIG_EORB16_DSPBIOS_CL6X_LINUX_C/eorb16-dspbios-cl6x-linux-c.library.uml">
+      </UMLLibrary>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://BUILD_CONFIG_EORB16_DSPBIOS_CL6X_LINUX_C/"
+            target="platform:/plugin/com.prismtech.spectracx.target.eorb16-dspbios-cl6x-linux-c/models/">
+      </mapping>
+   </extension>
+   <extension
+         point="com.zeligsoft.base.licensing.license_check">
+      <license_check
+            class="com.prismtech.spectracx.target.eorb16_dspbios_cl6x_linux_c.LicenseListener">
+      </license_check>
+   </extension>
+</plugin>

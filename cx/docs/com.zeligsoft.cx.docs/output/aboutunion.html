@@ -1,0 +1,139 @@
+<head>
+	<title>CORBA Elements</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="aboutunion.html" title="CORBA Elements">
+		<h1>CORBA Elements</h1>
+		<p>The following CORBA elements can be created using the palette:</p>
+		<ul>
+			<li>Enumeration</li>
+			<li>Array</li>
+			<li>Sequence</li>
+			<li>Struct</li>
+			<li>Typedef</li>
+			<li>Union </li>
+			<li>Constants </li>
+			<li>Exception </li>
+		</ul>
+		<h2>CORBA Enumeration</h2>
+		<p>To model a CORBA Enumeration, do the following:</p>
+		<ol>
+			<li>In the <strong>Palette</strong>, select <strong>Enumeration</strong>.</li>
+			<li>Add this element to an <strong>IDL File</strong>, <strong>Module</strong> or <strong>Interface</strong> in a diagram. </li>
+			<li>Name the Enumeration.</li>
+			<li>With the Enumeration selected, in the <strong>Properties View</strong> &gt; <strong>Literals</strong> tab, add the literals to the enumeration. </li><br>On the Literals tab, elements can be reordered.</ol>
+		<h2>CORBA Array</h2>
+		<p>To model a CORBA Array, do the following:</p>
+		<ol>
+			<li>In the <strong>Palette</strong>, select <strong>Array</strong>. </li>
+			<li>Add this element to an <strong>IDL File</strong>, <strong>Module</strong> or <strong>Interface</strong> in a diagram. </li>
+			<li>Name the Array.</li>
+			<li>With the Array selected in the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab set the <strong>index</strong> property.</li>
+			<li>With the Array selected, in the <strong>Properties View</strong> &gt; <strong>Attributes</strong> tab, add a <strong>public attribute</strong>
+ named <strong>members</strong>. </li>
+			<li>Select the <strong>members</strong> attribute and in the <strong>Properties View</strong> &gt; <strong>General</strong> tab set the 
+<strong>type</strong>.</li>
+		</ol>
+		<h2>CORBA Sequence</h2>
+		<p>To model a CORBA Sequence, do the following:</p>
+		<ol>
+			<li>In the <strong>Palette</strong>, select <strong>Sequence</strong>.</li>
+			<li>Add this element to an <strong>IDL File</strong>, <strong>Module</strong> or <strong>Interface</strong> in a diagram. </li>
+			<li>Name the Sequence.</li>
+			<li>With the Sequence selected, in the <strong>Properties View</strong> &gt; <strong>Attributes</strong> tab, add a 
+<strong>public attribute</strong> named <strong>members</strong>. </li>
+			<li>Select the <strong>members</strong> attribute and in the <strong>Properties View</strong> &gt; <strong>General</strong> tab set the 
+<strong>type</strong>.</li>
+		</ol>
+		<h2>CORBA Struct</h2>
+		<p>To model a CORBA Struct, do the following:</p>
+		<ol>
+			<li>In the <strong>Palette</strong>, select <strong>Struct</strong>.</li>
+			<li>Add this element to an <strong>IDL File</strong>, <strong>Module</strong> or <strong>Interface</strong> in a diagram. </li>
+			<li>Name the Struct.</li>
+			<li>With the Struct selected, in the <strong>Properties View</strong> &gt; <strong>Attributes</strong> tab, add a 
+<strong>public attribute</strong> named <strong>members</strong>. </li>
+			<li>Select the <strong>members</strong> attribute and in the <strong>Properties View</strong> &gt; <strong>General</strong> tab set the 
+<strong>type</strong>.</li><br>On the Attributes tab, elements can be reordered.</ol>
+		<h2>CORBA Typedef</h2>
+		<p>To model a CORBA Typedef, do the following:</p>
+		<ol>
+			<li>In the <strong>Palette</strong>, select <strong>Typedef</strong>. </li>
+			<li>Add this element to an <strong>IDL File</strong>, <strong>Module</strong> or <strong>Interface</strong> in a diagram. </li>
+			<li>Name the Typedef.</li>
+			<li>Add the <strong>data type</strong> the Typedef represents.</li>
+			<li>From the CORBA drawer in the Palette, select <strong>Generalization</strong> and draw a link from the <strong>Typedef</strong>
+ to the <strong>data type</strong>.</li>
+		</ol>
+		<h2>CORBA Union</h2>
+		<p>To model a CORBA Union, do the following:</p>
+		<ol>
+			<li>In the <strong>Palette</strong>, select <strong>Union</strong>. </li>
+			<li>Add this element to an <strong>IDL File</strong>, <strong>Module</strong> or <strong>Interface</strong> in a diagram. </li>
+			<li>Name the Union.</li>
+			<li>Add a new attribute called switchType to the Union and set the type to the data type you which to do the switch() on.</li>
+			<li>Create public attributes for each case statement. Set the Stereotype for these attributes to <strong>CORBACase</strong>. </li>
+			<li>Select each attribute other than switchType, open the <strong>Properties View</strong> &gt; <strong>General</strong> tab and set the 
+<strong>name</strong> property. </li><br>The name represents the attribute name inside the case statement.<li>Select each attribute other than switchType and open the <strong>Properties View</strong> &gt; <strong>General</strong> tab and set the 
+<strong>type</strong> property.</li><br>The type represents the attribute type inside the case statement.<li>Select each attribute other than switchType and open the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab and set the 
+<strong>label</strong> property to the value for the case. </li><br>The label represents the value of the case. For example, if the label is set to BLUE, case BLUE: will be generated.</ol>
+		<h2>CORBA Constants</h2>
+		<p>The following procedure details how to group constants together. These constants can then be moved anywhere inside the IDL File.</p>
+		<ol>
+			<li>In the <strong>Palette</strong>, select <strong>Constants</strong>. </li>
+			<li>Add this element to an <strong>IDL File</strong>, <strong>Module</strong> or <strong>Interface</strong> in a diagram. </li>
+			<li>Name the element.</li>
+			<li>Add public attributes to the element.</li>
+			<li>For each attribute open the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab and set the <strong>stereotype</strong>
+ to <strong>CORBAConstant</strong>.</li>
+			<li>For each attribute open the <strong>Properties View</strong> &gt; <strong>General</strong> tab and set the 
+<strong>type</strong> property.</li><br>To reorder the attributes: right click the Exception element, select UML Properties and then click OwnedAttributes.</ol>
+		<p>A constant may be added directly to an interface without the Constants element specified above.</p>
+		<ol>
+			<li>Add a public attribute to a <strong>CORBA Interface</strong> and name the attribute.</li>
+			<li>Select the attribute, open the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab and set the <strong>stereotype</strong>
+ to <strong>CORBAConstant</strong>.</li>
+			<li>Select the attribute, open the <strong>Properties View</strong> &gt; <strong>General</strong> tab and set the 
+<strong>type</strong> and <strong>value</strong> properties.</li>
+		</ol>
+		<h2>CORBA Exception</h2>
+		<p>To model a CORBA Exception, do the following:</p>
+		<ol>
+			<li>In the <strong>Palette</strong>, select <strong>Exception</strong>.</li>
+			<li>Add this element to an <strong>IDL File</strong>, <strong>Module</strong> or <strong>Interface</strong> in a diagram. </li>
+			<li>Name the element.</li>
+		</ol>
+		<p>To add attributes to the Exception:</p>
+		<ol>
+			<li>Add public attributes to the Exception element.</li>
+			<li>For each attribute, select the attribute, open the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab and 
+set the <strong>stereotype</strong>
+ to <strong>CORBAConstant</strong>.</li>
+			<li>For each attribute open the open the <strong>Properties View</strong> &gt; <strong>General</strong> tab and set the 
+<strong>type</strong>. </li><br>To reorder the attributes: right click the Exception element, select UML Properties and then click OwnedAttributes.</ol>
+		<p>To seta CORBA Interface operation to raise an Exception:</p>
+		<ol>
+			<li>Right click the <strong>CORBA Interface operation</strong> and select <strong>UML Properties</strong>.</li>
+			<li>Click  <strong>RaisedException</strong> and add an exiting Exception.</li>
+		</ol>
+		<p>To model a CORBA Union, do the following:</p>
+		<ol>
+			<li>In the <strong>Palette</strong>, select <strong>Union</strong>.</li>
+			<li>Add this element to a <strong>Module</strong>.</li>
+			<li>With the <strong>Union</strong> selected, in the <strong>Properties View</strong> &gt; <strong>Attributes</strong> tab.</li>
+			<li>Add a new attribute called <strong>switchType</strong> to the Union and set the <strong>type</strong> to <strong>CORBALong</strong>.</li>
+			<li>For each case statement you want to generate, you must add an attribute to the Union and apply the <strong>CORBACase</strong> stereotype to the 
+		attribute. To control the ordering of the case statements, right-click and select <strong>UML Properties</strong>, select <strong>
+		ownedAttributes</strong> and use the arrows.</li>
+		</ol>
+		<p>A CORBA Constant can be added at the interface or module level. To add a CORBA Constant at the 
+			interface level, add an attribute and set the <strong>Stereotype</strong> to <strong>CORBAConstant</strong>. 
+			To add a CORBA Constant at the module level, in the <strong>Palette</strong>, select <strong>Constant</strong> and 
+			drop this onto the module.</p>
+		<h3>See Also</h3><br><a href="introInterface.html">IDL Generation and Import</a><div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+/// @defgroup AGSP_CameraControlAdapter_comp CameraControlAdapter_comp
+/// @{
+/// 
+/// @file AGSP_CameraControlAdapter_comp.idl
+/// @brief CameraControlAdapter_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_COMPONENTS__CAMERACONTROLADAPTER_COMP__SRC__AGSP_CAMERACONTROLADAPTER_COMP_IDL
+#define CX_COMPONENTS__CAMERACONTROLADAPTER_COMP__SRC__AGSP_CAMERACONTROLADAPTER_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao lem "AGSP_CameraControlAdapter_compE.idl"
+#include "AGSP_CameraControl_obj.idl"
+#include "AGSP_StateControl_obj.idl"
+#include "AGSP_CameraAvailable_conn.idl"
+#include "AGSP_CC_Status_conn.idl"
+
+/// @namespace AGSP 
+module AGSP {
+    component CameraControlAdapter_comp {
+        provides AGSP::CameraControl_obj CameraControlFacet;
+        provides AGSP::StateControl_obj StateControlFacet;
+        port CameraAvailable_conn::DDS_Write CameraAvailablePub;
+        port CC_Status_conn::DDS_Write CC_StatusPub;
+    };
+
+};
+
+#endif // CX_COMPONENTS__CAMERACONTROLADAPTER_COMP__SRC__AGSP_CAMERACONTROLADAPTER_COMP_IDL
+
+/// @}
+

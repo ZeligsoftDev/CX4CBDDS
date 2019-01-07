@@ -1,0 +1,260 @@
+
+import langc;
+
+extension langc::name;
+extension langc::type;
+
+ExpressionBlob blob( String text ) :
+    let e = new ExpressionBlob :
+        e.setText( text )
+     -> e
+;
+
+ElementAccess access( Name name ) :
+    let e = new ElementAccess :
+        e.setName( name )
+     -> e
+;
+
+Expression access( VariableDeclaration var ) :
+    var.name.access()
+;
+
+MemberAccess field( Expression container, Name fieldName ) :
+    let e = new MemberAccess :
+        e.setContainer( container )
+     -> e.setName( fieldName )
+     -> e
+;
+
+MemberAccess field( Name containerName, Name fieldName ) :
+    containerName.access().field( fieldName )
+;
+
+ElementAccess param( Function function, int index ) :
+    access( function.parameters.get( index - 1 ).name )
+;
+
+ElementAccess param( Function function, String identifier ) :
+    function.param( function.name.child( identifier ) )
+;
+
+ElementAccess param( Function function, Name name ) :
+    name.access()
+;
+
+BinaryOperation assign( Expression lhs, Expression rhs ) :
+    let e = new BinaryOperation :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (Operator)Operator.getStaticProperty('assign').get() )
+     -> e
+;
+
+BinaryOperation add( Expression lhs, Expression rhs ) :
+    let e = new BinaryOperation :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (Operator)Operator.getStaticProperty('add').get() )
+     -> e
+;
+
+BinaryOperation subtract( Expression lhs, Expression rhs ) :
+    let e = new BinaryOperation :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (Operator)Operator.getStaticProperty('subtract').get() )
+     -> e
+;
+
+BinaryOperation multiply( Expression lhs, Expression rhs ) :
+    let e = new BinaryOperation :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (Operator)Operator.getStaticProperty('multiply').get() )
+     -> e
+;
+
+BinaryOperation divide( Expression lhs, Expression rhs ) :
+    let e = new BinaryOperation :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (Operator)Operator.getStaticProperty('divide').get() )
+     -> e
+;
+
+BinaryOperation or( Expression lhs, Expression rhs ) :
+    let e = new BinaryOperation :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (Operator)Operator.getStaticProperty('bitwise_or').get() )
+     -> e
+;
+
+BinaryOperation and( Expression lhs, Expression rhs ) :
+    let e = new BinaryOperation :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (Operator)Operator.getStaticProperty('bitwise_and').get() )
+     -> e
+;
+
+IntegralLiteral literal( int value ) :
+    let e = new IntegralLiteral :
+        e.setValue( value )
+     -> e
+;
+
+StringLiteral literal( String value ) :
+    let e = new StringLiteral :
+        e.setValue( value )
+     -> e
+;
+
+Expression cast( Expression expr, ElementReference ref ) :
+    let e = new CastExpr :
+        e.setTargetType( ref )
+     -> e.setExpr( expr )
+     -> e
+;
+
+SizeofType sizeof( ElementReference ref ) :
+    let e = new SizeofType :
+        e.setElement( ref )
+     -> e
+;
+
+SizeofType sizeof( Element element ) :
+    element.type().sizeof()
+;
+
+SizeofExpr sizeof( Expression expr ) :
+    let e = new SizeofExpr :
+        e.setExpr( expr )
+     -> e
+;
+
+SizeofExpr sizeof( Name name ) :
+    sizeof( name.access() )
+;
+
+SizeofExpr sizeof( VariableDeclaration var ) :
+    sizeof( var.access() )
+;
+
+AddressOfExpr addressOf( Expression expr ) :
+    let e = new AddressOfExpr :
+        e.setExpr( expr )
+     -> e
+;
+
+AddressOfExpr dereference( Expression expr ) :
+    let e = new DereferenceExpr :
+        e.setExpr( expr )
+     -> e
+;
+
+IndexExpr index( Expression array, Expression index ) :
+    let e = new IndexExpr :
+        e.setArray( array )
+     -> e.setIndex( index )
+     -> e
+;
+
+Expression unboundedArraySize() :
+    (-1).literal()
+;
+
+Expression testLessThan( Expression lhs, Expression rhs ) :
+    let e = new LogicalComparison :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (BooleanOperator)BooleanOperator.getStaticProperty('less_than').get() )
+;
+
+Expression testGreaterThan( Expression lhs, Expression rhs ) :
+    let e = new LogicalComparison :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (BooleanOperator)BooleanOperator.getStaticProperty('greater_than').get() )
+;
+
+Expression testLessThanEqual( Expression lhs, Expression rhs ) :
+    let e = new LogicalComparison :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (BooleanOperator)BooleanOperator.getStaticProperty('less_than_equal').get() )
+;
+
+Expression testGreaterThanEqual( Expression lhs, Expression rhs ) :
+    let e = new LogicalComparison :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (BooleanOperator)BooleanOperator.getStaticProperty('greater_than_equal').get() )
+;
+
+Expression testEquivalent( Expression lhs, Expression rhs ) :
+    let e = new LogicalComparison :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (BooleanOperator)BooleanOperator.getStaticProperty('equivalent').get() )
+;
+
+Expression testNotEquivalent( Expression lhs, Expression rhs ) :
+    let e = new LogicalComparison :
+        e.setLhs( lhs )
+     -> e.setRhs( rhs )
+     -> e.setOperator( (BooleanOperator)BooleanOperator.getStaticProperty('not_equivalent').get() )
+;
+
+Expression call( Function function ) :
+    let e = new FunctionCall :
+        e.setFunction( function )
+     -> e
+;
+
+Expression call( Function function, Expression arg1 ) :
+    let e = new FunctionCall :
+        e.setFunction( function )
+     -> e.arguments.add( arg1 )
+     -> e
+;
+
+Expression call( Function function, Expression arg1, Expression arg2 ) :
+    let e = new FunctionCall :
+        e.setFunction( function )
+     -> e.arguments.add( arg1 )
+     -> e.arguments.add( arg2 )
+     -> e
+;
+
+Expression call( Function function, Expression arg1, Expression arg2, Expression arg3 ) :
+    let e = new FunctionCall :
+        e.setFunction( function )
+     -> e.arguments.add( arg1 )
+     -> e.arguments.add( arg2 )
+     -> e.arguments.add( arg3 )
+     -> e
+;
+
+Expression call( Function function, Expression arg1, Expression arg2, Expression arg3, Expression arg4 ) :
+    let e = new FunctionCall :
+        e.setFunction( function )
+     -> e.arguments.add( arg1 )
+     -> e.arguments.add( arg2 )
+     -> e.arguments.add( arg3 )
+     -> e.arguments.add( arg4 )
+     -> e
+;
+
+Expression init( List[Expression] exprs ) :
+    let b = new BlockInitializer :
+        b.exprs.addAll( exprs )
+     -> b
+;
+
+Expression init( Expression expr ) :
+    let b = new BlockInitializer :
+        b.exprs.add( expr )
+     -> b
+;

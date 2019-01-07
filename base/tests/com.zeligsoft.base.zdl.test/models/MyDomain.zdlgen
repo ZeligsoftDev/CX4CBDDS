@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zdlgen:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmlns:zdlgen="http://www.zeligsoft.com/zdl/2008/ZDLGen" xmi:id="_IAZtcGsvEd2s--4g-nTlHg">
+  <ownedModel xmi:id="_IAZtcWsvEd2s--4g-nTlHg" nsURI="http://www.zeligsoft.com/test/zdl/2008">
+    <element xmi:type="zdlgen:GenDomainBlock" xmi:id="_IAZtcmsvEd2s--4g-nTlHg" rsmStereotypesSuppressed="false">
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_IAZtc2svEd2s--4g-nTlHg" category="firm">
+        <generalization xmi:id="_IAZtd2svEd2s--4g-nTlHg">
+          <general href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_kAt9ijY9Ed2Inf2dgh9lvg"/>
+          <domainGeneralization href="MyDomain.uml#__Fkn0GsrEd2s--4g-nTlHg"/>
+        </generalization>
+        <domainConcept href="MyDomain.uml#_5ffwIGsrEd2s--4g-nTlHg"/>
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_IAZtdGsvEd2s--4g-nTlHg">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement-name"/>
+          <domainAttribute href="MyDomain.uml#_8PrjUGssEd2s--4g-nTlHg"/>
+        </feature>
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_IAZtdWsvEd2s--4g-nTlHg">
+          <domainAttribute href="MyDomain.uml#_FWUXsGstEd2s--4g-nTlHg"/>
+        </feature>
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_IAZtdmsvEd2s--4g-nTlHg" target="_IAZteGsvEd2s--4g-nTlHg" source="_IAZtc2svEd2s--4g-nTlHg">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#EncapsulatedClassifier-ownedPort"/>
+          <domainAttribute href="MyDomain.uml#_RNFKUGstEd2s--4g-nTlHg"/>
+          <domainReference href="MyDomain.uml#_RM8AYGstEd2s--4g-nTlHg"/>
+        </feature>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_IAZteGsvEd2s--4g-nTlHg" category="firm">
+        <generalization xmi:id="_IAZtemsvEd2s--4g-nTlHg">
+          <general href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_kAt9kzY9Ed2Inf2dgh9lvg"/>
+          <domainGeneralization href="MyDomain.uml#_GDjtoGssEd2s--4g-nTlHg"/>
+        </generalization>
+        <domainConcept href="MyDomain.uml#_EJhC0GssEd2s--4g-nTlHg"/>
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_IAZteWsvEd2s--4g-nTlHg" type="_IAZte2svEd2s--4g-nTlHg">
+          <domainAttribute href="MyDomain.uml#_gMN4kGssEd2s--4g-nTlHg"/>
+        </feature>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainEnum" xmi:id="_IAZte2svEd2s--4g-nTlHg">
+        <domainDataType href="MyDomain.uml#_VtXUEGssEd2s--4g-nTlHg"/>
+        <literal xmi:id="_IAZtfGsvEd2s--4g-nTlHg">
+          <domainEnumLiteral href="MyDomain.uml#_aCYMgGssEd2s--4g-nTlHg"/>
+        </literal>
+        <literal xmi:id="_IAZtfWsvEd2s--4g-nTlHg">
+          <domainEnumLiteral href="MyDomain.uml#_b7OkgGssEd2s--4g-nTlHg"/>
+        </literal>
+        <literal xmi:id="_IAZtfmsvEd2s--4g-nTlHg">
+          <domainEnumLiteral href="MyDomain.uml#_c3IMEGssEd2s--4g-nTlHg"/>
+        </literal>
+        <literal xmi:id="_IAZtf2svEd2s--4g-nTlHg">
+          <domainEnumLiteral href="MyDomain.uml#_d83sIGssEd2s--4g-nTlHg"/>
+        </literal>
+      </classifier>
+      <relation xmi:type="zdlgen:GenDomainBlockImport" xmi:id="_EhK3YGs4Ed2s--4g-nTlHg">
+        <target href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_kAt9gjY9Ed2Inf2dgh9lvg"/>
+        <domainBlockRelation xmi:type="uml:PackageImport" href="MyDomain.uml#_2Zm9QGsrEd2s--4g-nTlHg"/>
+      </relation>
+      <domainBlock href="MyDomain.uml#_hpwqEGsrEd2s--4g-nTlHg"/>
+    </element>
+    <element xmi:type="zdlgen:GenDomainSpecialization" xmi:id="_IAZtgWsvEd2s--4g-nTlHg" pluginName="com.zeligsoft.base.zdl.test" resourceName="models/MyDomain.profile.uml">
+      <domainSpecialization href="MyDomain.uml#_gWwxIGsrEd2s--4g-nTlHg"/>
+      <domainBlock xmi:id="_IAZtgmsvEd2s--4g-nTlHg" target="_IAZtcmsvEd2s--4g-nTlHg">
+        <domainBlockReference href="MyDomain.uml#_kCgDEGsrEd2s--4g-nTlHg"/>
+      </domainBlock>
+    </element>
+    <domainModel href="MyDomain.uml#_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  </ownedModel>
+  <referencedModel href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_auH80DdmEd2dD_ra-wEDmw"/>
+</zdlgen:GenModel>

@@ -1,0 +1,30 @@
+/// @defgroup SAAT_Server_comp Server_comp
+/// @{
+/// 
+/// @file SAAT_Server_comp.idl
+/// @brief Server_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_COMPONENTS__SAAT_SERVER_COMP__SRC__SAAT_SERVER_COMP_IDL
+#define CX_COMPONENTS__SAAT_SERVER_COMP__SRC__SAAT_SERVER_COMP_IDL
+
+#pragma componentInterface "Server_comp" 
+#include <Components.idl>
+#pragma ciao lem "SAAT_Server_compE.idl"
+#include "SAAT_Types_defn.idl"
+#include "SAAT_Test_obj.idl"
+
+/// @namespace SAAT 
+module SAAT {
+    component Server_comp {
+        attribute SAAT::BlockSubView_Descriptor defaultDescriptor;
+        provides SAAT::Test_obj QueryServer;
+    };
+
+};
+
+#endif // CX_COMPONENTS__SAAT_SERVER_COMP__SRC__SAAT_SERVER_COMP_IDL
+
+/// @}
+

@@ -1,0 +1,3414 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "CCM_DDS.sbs";
+		- _subsystem = "";
+		- _class = "";
+		- _name = "CCM_DDS";
+		- _id = GUID 073f877f-cf70-473c-bfbc-df3202c99fb4;
+	}
+	- _id = GUID fc3addf2-62f0-4ea8-8c04-368c8b9608fe;
+	- _myState = 8192;
+	- _name = "DDS";
+	- Stereotypes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IHandle 
+			- _m2Class = "IStereotype";
+			- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+			- _subsystem = "cxDDS4CCM";
+			- _class = "";
+			- _name = "CORBAModule";
+			- _id = GUID 895383b0-0918-4ad3-b03a-7b88bc69f964;
+		}
+	}
+	- _modifiedTimeWeak = 5.7.2014::20:8:2;
+	- _lastID = 17;
+	- weakCGTime = 5.7.2014::20:8:2;
+	- strongCGTime = 5.7.2014::16:35:55;
+	- _defaultComposite = GUID c0ada995-d042-4b88-a9dc-781611ddbfab;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 6;
+		- value = 
+		{ IClass 
+			- _id = GUID c0ada995-d042-4b88-a9dc-781611ddbfab;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 5.7.2014::19:45:27;
+			- weakCGTime = 5.7.2014::19:45:27;
+			- strongCGTime = 5.7.2014::16:35:55;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID a346a94e-86ad-4a9d-b219-c87dc1bb64e5;
+			- _myState = 8192;
+			- _name = "DataReader";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAInterface";
+					- _id = GUID 3759b525-c32c-4c29-a23a-a3903287c628;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::19:8:35;
+			- _lastID = 19;
+			- weakCGTime = 5.7.2014::19:8:35;
+			- strongCGTime = 5.7.2014::18:50:55;
+			- Operations = { IRPYRawContainer 
+				- size = 19;
+				- value = 
+				{ IPrimitiveOperation 
+					- _id = GUID 2f592784-639b-4143-a654-d8643ea8668d;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "create_querycondition";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:5:33;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 7536515c-afe0-4fb8-ad9f-e262718094bf;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "create_readcondition";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:5:42;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 727e8b8e-a881-4951-b687-4ab9311b779d;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "delete_contained_entities";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:5:54;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 98e1d637-8e7a-4325-8da9-a1f74954c9fd;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "delete_readcondition";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:6:2;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 4e806941-6068-4798-a2a5-6535cd8375c6;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_listener";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:6:6;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 6fd59543-5428-475b-8053-ebd75234c895;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_liveliness_changed_status";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:6:21;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 81aa2d2f-1123-4eee-b76c-2e5c3d15fc38;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_matched_publication_data";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:6:34;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID dfc264c4-e222-47ee-9f5d-8f7fd82f6a6f;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_matched_publications";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:6:41;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID cf87a2ff-840a-486c-861b-3db5b8b47d9e;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_qos";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:6:47;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 2cbc0a1d-f6ac-4f49-a80a-92cf4883d3f7;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_requested_deadline_missed_status";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:7:33;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 1fab31f2-3614-4f54-8d90-f092796c66c5;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_requested_incompatible_qos_status";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:7:15;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 733be93b-e08b-4620-953a-74827dd1c779;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_sample_lost_status";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:7:43;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 662884af-9dad-4ce9-8b26-ed84b1b44da7;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_sample_rejected_status";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:7:51;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 5a9c723a-8573-4274-82bf-97eade91ad83;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_subscriber";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:7:57;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 4dc14a5b-00a8-40d8-8c3e-fa61a29c3172;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_subscription_matched_status";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:8:8;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID ffd0a464-c466-4faa-8adf-f9bb0b6ae8f0;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_topicdescription";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:8:15;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID a11168e2-2c4d-43b2-9629-d2b0e8b5a7f3;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "set_listener";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:8:21;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 9bfaab66-6900-44aa-b744-61e92c882aad;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "set_qos";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:8:25;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID ee9846a6-6781-49e9-b913-5080e852bbb2;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "wait_for_historical_data";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:8:35;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+			}
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID b94dd195-0d47-4916-be9d-97456db04209;
+					- _modifiedTimeWeak = 1.2.1990::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID d4f0c5e0-38db-42f1-8c9f-8aeb098f7421;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID d4f0c5e0-38db-42f1-8c9f-8aeb098f7421;
+			- _myState = 8192;
+			- _name = "Entity";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAInterface";
+					- _id = GUID 3759b525-c32c-4c29-a23a-a3903287c628;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::19:1:52;
+			- _lastID = 4;
+			- weakCGTime = 5.7.2014::19:1:52;
+			- strongCGTime = 5.7.2014::18:51:40;
+			- Operations = { IRPYRawContainer 
+				- size = 4;
+				- value = 
+				{ IPrimitiveOperation 
+					- _id = GUID 1cf837cf-7548-4340-bdc0-6f2f6bcf4560;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 2;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+									{ IPropertyMetaclass 
+										- _Name = "Type";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ReturnType";
+												- _Value = "$type";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "enable";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::18:58:44;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _id = GUID 3b4a31f1-6235-4dd7-a1f7-f8b7f925bca8;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 0caf63a6-fca5-43eb-9a30-43445bcffef0;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 2;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+									{ IPropertyMetaclass 
+										- _Name = "Type";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ReturnType";
+												- _Value = "$type";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_instance_handle";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::18:59:2;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _id = GUID 7a33fae4-9155-4daa-8c19-2557e32b5186;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID e1e7403e-e58c-4220-b496-0f801e30d413;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 2;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+									{ IPropertyMetaclass 
+										- _Name = "Type";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ReturnType";
+												- _Value = "$type";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_status_changes";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:0:11;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _id = GUID e5f738ae-c6df-4637-8924-f06f0687af3d;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 2f42bb9c-70d2-4ddf-9d29-78c69d853e66;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 2;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Class";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ReturnType";
+												- _Value = "$type";
+												- _Type = String;
+											}
+										}
+									}
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_statuscondition";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:1:52;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 265f3e13-d573-4f34-9c4a-519090decb69;
+			- _myState = 8192;
+			- _name = "Condition";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAInterface";
+					- _id = GUID 3759b525-c32c-4c29-a23a-a3903287c628;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::19:2:40;
+			- _lastID = 1;
+			- weakCGTime = 5.7.2014::19:2:40;
+			- strongCGTime = 5.7.2014::19:1:29;
+			- Operations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IPrimitiveOperation 
+					- _id = GUID 02c6d34b-cda2-451a-8566-bc409ceeac8f;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 2;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+									{ IPropertyMetaclass 
+										- _Name = "Type";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ReturnType";
+												- _Value = "$type";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_trigger_value";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:2:40;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBABoolean";
+						- _id = GUID 7c5313f9-c0dc-49d8-bd2a-61ed8998d9ae;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 9e3a818c-f606-43d1-9de7-f3519dc6cc62;
+			- _myState = 8192;
+			- _name = "StatusCondition";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAInterface";
+					- _id = GUID 3759b525-c32c-4c29-a23a-a3903287c628;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::19:4:53;
+			- _lastID = 3;
+			- weakCGTime = 5.7.2014::19:4:53;
+			- strongCGTime = 5.7.2014::19:1:37;
+			- Operations = { IRPYRawContainer 
+				- size = 3;
+				- value = 
+				{ IPrimitiveOperation 
+					- _id = GUID 9f01a15f-bc1b-4f0f-b342-5dd1a7e40f4a;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 2;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+									{ IPropertyMetaclass 
+										- _Name = "Type";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ReturnType";
+												- _Value = "$type";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_enabled_statuses";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:4:10;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _id = GUID e5f738ae-c6df-4637-8924-f06f0687af3d;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 42a042df-0635-4b1e-9f99-0b509e610f5f;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_entity";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:4:24;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IClass";
+						- _id = GUID d4f0c5e0-38db-42f1-8c9f-8aeb098f7421;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 632905f0-9a48-476f-95fe-a8d3d580691b;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 2;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+									{ IPropertyMetaclass 
+										- _Name = "Type";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ReturnType";
+												- _Value = "$type";
+												- _Type = String;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "set_enabled_statuses";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:4:53;
+					- _lastID = 1;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IArgument 
+							- _id = GUID 8dd726ad-256d-40e8-9da8-9f40dc4cdc4b;
+							- _myState = 8192;
+							- _name = "mask";
+							- Stereotypes = { IRPYRawContainer 
+								- size = 1;
+								- value = 
+								{ IHandle 
+									- _m2Class = "IStereotype";
+									- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+									- _subsystem = "cxDDS4CCM";
+									- _class = "";
+									- _name = "CORBAParameter";
+									- _id = GUID 675c020f-5a92-481d-bc3c-04a531ea16da;
+								}
+							}
+							- _modifiedTimeWeak = 5.7.2014::19:4:53;
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _id = GUID e5f738ae-c6df-4637-8924-f06f0687af3d;
+							}
+							- _isOrdered = 0;
+							- _argumentDirection = In;
+						}
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _id = GUID 3b4a31f1-6235-4dd7-a1f7-f8b7f925bca8;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+			}
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID aea5677d-43ac-4a9c-98a1-9faf6f9b9e12;
+					- _modifiedTimeWeak = 1.2.1990::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 265f3e13-d573-4f34-9c4a-519090decb69;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID e63234e7-8114-4f24-8422-ed4779e099f4;
+			- _myState = 8192;
+			- _name = "DataWriter";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAInterface";
+					- _id = GUID 3759b525-c32c-4c29-a23a-a3903287c628;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::20:10:43;
+			- _lastID = 14;
+			- weakCGTime = 5.7.2014::20:10:43;
+			- strongCGTime = 5.7.2014::20:8:4;
+			- Operations = { IRPYRawContainer 
+				- size = 14;
+				- value = 
+				{ IPrimitiveOperation 
+					- _id = GUID edcdf954-09ac-4870-8095-6cd8fe4c4be4;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "assert_liveliness";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:8:53;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID da01caa4-0acf-43e6-b47c-5789eb95899d;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_listener";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:8:59;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 97231c48-7c34-4dbe-9cae-0abd5fbe4a0c;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_liveliness_lost_status";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:9:7;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID f20a933f-e5f3-4327-ab90-06388e978854;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_matched_subscription_data";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:9:16;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID d9ebe40d-ba56-40ac-9dab-9be892cf3f7f;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_matched_subscriptions";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:9:24;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 11b64acd-7fba-4ccd-aa21-c63b6bdcea66;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_offered_deadline_missed_status";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:9:37;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 6f594ad6-ceea-4da4-a403-580ac5c1676c;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_offered_incompatible_qos_status";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:9:47;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID ed55de41-995b-470d-87e5-33e68caa5652;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_publication_matched_status";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:10:0;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 9b3596a5-eebc-41a9-8a14-9bb5cbf744c6;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_publisher";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:10:7;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID e9dbf002-3492-438c-9051-d12c7de314b7;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_qos";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:10:11;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID a096e423-f47d-4833-ac77-b52b19d92ff4;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "get_topic";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:10:18;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 53fe80c9-f134-4d3d-8234-b06f857edde5;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "set_listener";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:10:24;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID f2953fa2-5219-463f-8725-d4a2e31b7961;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "set_qos";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:10:30;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID 5d8d8287-c242-41c5-b850-31ae37bc1e0f;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "wait_for_acknowledgments";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID d812b735-b4cd-4343-80c4-755e5016aa42;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::20:10:43;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "PredefinedTypesC++.sbs";
+						- _subsystem = "PredefinedTypesCpp";
+						- _class = "";
+						- _name = "void";
+						- _id = GUID c6b70728-b655-45a0-abb7-8ea5d3da94be;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+			}
+			- Inheritances = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IGeneralization 
+					- _id = GUID 156f935d-cff6-405f-bc02-b66467367fc5;
+					- _modifiedTimeWeak = 1.2.1990::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "IClass";
+						- _id = GUID d4f0c5e0-38db-42f1-8c9f-8aeb098f7421;
+					}
+					- _inheritanceType = iPublic;
+					- _isVirtual = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- Types = { IRPYRawContainer 
+		- size = 9;
+		- value = 
+		{ IType 
+			- _id = GUID 7a33fae4-9155-4daa-8c19-2557e32b5186;
+			- _myState = 8192;
+			- _name = "InstanceHandle_t";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBATypeDef";
+					- _id = GUID fa48f988-7aa9-483a-ac62-58bb141c530c;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::18:54:54;
+			- _typedefBaseType = { IClassifierHandle 
+				- _m2Class = "IType";
+				- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+				- _subsystem = "IDLPrimitives";
+				- _class = "";
+				- _name = "CORBALong";
+				- _id = GUID f05eb06b-7ead-47f7-8c64-f084a381cb80;
+			}
+			- _typedefMultiplicity = "";
+			- _typedefIsOrdered = 0;
+			- _typedefIsReference = 0;
+			- _typedefIsConstant = 0;
+			- _kind = Typedef;
+		}
+		{ IType 
+			- _id = GUID eee66b5a-97bd-447b-b96d-3b01379aef3f;
+			- _myState = 8192;
+			- _name = "Duration_t";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAStruct";
+					- _id = GUID b8ad67e1-1dca-431a-92c4-1884e6f807a0;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::17:0:26;
+			- _lastID = 2;
+			- Attrs = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 67f93b94-89ae-43cb-bed5-a326eace23b6;
+					- _myState = 8192;
+					- _name = "nanosec";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f5ddfc55-f798-46f8-b6f5-bd8d34fac97d;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::16:59:53;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAULong";
+						- _id = GUID 271b2f89-f4ac-416b-8dd7-afc85e389803;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 0bcbd9fd-1a2c-4b02-b617-ef7bea07a38d;
+					- _myState = 8192;
+					- _name = "sec";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f5ddfc55-f798-46f8-b6f5-bd8d34fac97d;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::17:0:26;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBALong";
+						- _id = GUID f05eb06b-7ead-47f7-8c64-f084a381cb80;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID 4a80f973-9e8a-4075-b122-ea1f0da8c77e;
+			- _myState = 8192;
+			- _name = "Time_t";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAStruct";
+					- _id = GUID b8ad67e1-1dca-431a-92c4-1884e6f807a0;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::17:7:8;
+			- _lastID = 2;
+			- Attrs = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 8db294dc-041c-4f75-8073-53cae0c826c3;
+					- _myState = 8192;
+					- _name = "sec";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f5ddfc55-f798-46f8-b6f5-bd8d34fac97d;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::17:6:49;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBALong";
+						- _id = GUID f05eb06b-7ead-47f7-8c64-f084a381cb80;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID f21a19a0-1ed1-4bca-b328-da33520d5ff2;
+					- _myState = 8192;
+					- _name = "nanosec";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f5ddfc55-f798-46f8-b6f5-bd8d34fac97d;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::17:7:8;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAULong";
+						- _id = GUID 271b2f89-f4ac-416b-8dd7-afc85e389803;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID 21a56ba4-366d-4eef-9b87-822630b2fcc7;
+			- _myState = 8192;
+			- _name = "StringSeq";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBASequence";
+					- _id = GUID 6586a520-bad2-4da8-912e-11d71ce27121;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::18:19:30;
+			- _lastID = 1;
+			- Attrs = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 3eaa2ab2-c217-4e64-90b2-2904827c4f0e;
+					- _myState = 8192;
+					- _name = "members";
+					- _modifiedTimeWeak = 5.7.2014::18:19:30;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _multiplicity = "*";
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID 3b4a31f1-6235-4dd7-a1f7-f8b7f925bca8;
+			- _myState = 8192;
+			- _name = "ReturnCode_t";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBATypeDef";
+					- _id = GUID fa48f988-7aa9-483a-ac62-58bb141c530c;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::18:54:18;
+			- _typedefBaseType = { IClassifierHandle 
+				- _m2Class = "IType";
+				- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+				- _subsystem = "IDLPrimitives";
+				- _class = "";
+				- _name = "CORBALong";
+				- _id = GUID f05eb06b-7ead-47f7-8c64-f084a381cb80;
+			}
+			- _typedefMultiplicity = "1";
+			- _typedefIsOrdered = 0;
+			- _typedefIsReference = 0;
+			- _typedefIsConstant = 0;
+			- _kind = Typedef;
+		}
+		{ IType 
+			- _id = GUID e5f738ae-c6df-4637-8924-f06f0687af3d;
+			- _myState = 8192;
+			- _name = "StatusMask";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBATypeDef";
+					- _id = GUID fa48f988-7aa9-483a-ac62-58bb141c530c;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::18:59:58;
+			- _typedefBaseType = { IClassifierHandle 
+				- _m2Class = "IType";
+				- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+				- _subsystem = "IDLPrimitives";
+				- _class = "";
+				- _name = "CORBAULong";
+				- _id = GUID 271b2f89-f4ac-416b-8dd7-afc85e389803;
+			}
+			- _typedefMultiplicity = "1";
+			- _typedefIsOrdered = 0;
+			- _typedefIsReference = 0;
+			- _typedefIsConstant = 0;
+			- _kind = Typedef;
+		}
+		{ IType 
+			- _id = GUID fb5d9a4f-598e-4631-a1ac-2de31f910666;
+			- _myState = 8192;
+			- _name = "RequestedDeadlineMissedStatus";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAStruct";
+					- _id = GUID b8ad67e1-1dca-431a-92c4-1884e6f807a0;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::19:11:6;
+			- _lastID = 3;
+			- Attrs = { IRPYRawContainer 
+				- size = 3;
+				- value = 
+				{ IAttribute 
+					- _id = GUID f20b6b62-66c3-4ba2-8dc6-012377c45815;
+					- _myState = 8192;
+					- _name = "total_count";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f5ddfc55-f798-46f8-b6f5-bd8d34fac97d;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:10:36;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBALong";
+						- _id = GUID f05eb06b-7ead-47f7-8c64-f084a381cb80;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 574850d2-4be7-4fb1-9301-3c703589e5c0;
+					- _myState = 8192;
+					- _name = "total_count_change";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f5ddfc55-f798-46f8-b6f5-bd8d34fac97d;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:10:53;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBALong";
+						- _id = GUID f05eb06b-7ead-47f7-8c64-f084a381cb80;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 4bd9f622-6579-47a5-82bc-c3cc16fad799;
+					- _myState = 8192;
+					- _name = "last_instance_handle";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f5ddfc55-f798-46f8-b6f5-bd8d34fac97d;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:11:6;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _id = GUID 7a33fae4-9155-4daa-8c19-2557e32b5186;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID bd6ad779-4735-419b-99b1-3fc1bc59f5e4;
+			- _myState = 8192;
+			- _name = "SampleLostStatus";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAStruct";
+					- _id = GUID b8ad67e1-1dca-431a-92c4-1884e6f807a0;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::19:14:23;
+			- _lastID = 2;
+			- Attrs = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IAttribute 
+					- _id = GUID b9aa9ec6-93ab-48bf-9d65-5dd1b0b13ff0;
+					- _myState = 8192;
+					- _name = "total_count";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f5ddfc55-f798-46f8-b6f5-bd8d34fac97d;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:14:8;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBALong";
+						- _id = GUID f05eb06b-7ead-47f7-8c64-f084a381cb80;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID d5c7737e-bb9e-4c22-9b34-57a326f58e8c;
+					- _myState = 8192;
+					- _name = "total_count_change";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f5ddfc55-f798-46f8-b6f5-bd8d34fac97d;
+						}
+					}
+					- _modifiedTimeWeak = 5.7.2014::19:14:23;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBALong";
+						- _id = GUID f05eb06b-7ead-47f7-8c64-f084a381cb80;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID 6cbbd07f-96de-4ea1-807e-d385b17d56f6;
+			- _myState = 8192;
+			- _name = "DomainId_t";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBATypeDef";
+					- _id = GUID fa48f988-7aa9-483a-ac62-58bb141c530c;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::19:45:27;
+			- _typedefBaseType = { IClassifierHandle 
+				- _m2Class = "IType";
+				- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+				- _subsystem = "IDLPrimitives";
+				- _class = "";
+				- _name = "CORBALong";
+				- _id = GUID f05eb06b-7ead-47f7-8c64-f084a381cb80;
+			}
+			- _typedefMultiplicity = "1";
+			- _typedefIsOrdered = 0;
+			- _typedefIsReference = 0;
+			- _typedefIsConstant = 0;
+			- _kind = Typedef;
+		}
+	}
+	- _configurationRelatedTime = 1.2.1990::0:0:0;
+}
+

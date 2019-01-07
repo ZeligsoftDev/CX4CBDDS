@@ -1,0 +1,25 @@
+
+import langc;
+
+extension langc::element;
+extension langc::name;
+extension langc::type;
+
+cached LinkableArtifact simpleArtifact() :
+    let l = linkableArtifact( 'artifact01' ) :
+        l.rootElements.add( apiFunction() )
+     -> l.rootElements.add( privateFunction() )
+     -> l
+;
+
+private cached FolderName apiFolder() :
+    folder( 'apiFolder' )
+;
+
+private cached Function apiFunction() :
+    function( int32(), apiFolder().child( 'apiFunction' ) )
+;
+
+private cached Function privateFunction() :
+    function( int32(), 'privateFunction' )
+;

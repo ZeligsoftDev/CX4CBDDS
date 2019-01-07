@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mydomain="http://www.zeligsoft.com/test/zdl/2008/MyDomain/1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.zeligsoft.com/test/zdl/2008/MyDomain/1 MyDomain.profile.uml#_qeX9h2svEd2s--4g-nTlHg">
+  <uml:Model xmi:id="_NRAMoAwOEdmFcaeZXPdWAQ" name="test_model">
+    <packageImport xmi:id="_UeIAJtCzEdqK7KjEh4hvHw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_yuNc4GCTEd2SLu3A_eDD4A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_FmNkyVKKEd2qDNqT9_uj3A"/>
+    </packageImport>
+    <packageImport xmi:id="_2ULeAGCTEd2SLu3A_eDD4A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_FmFo8FKKEd2qDNqT9_uj3A"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Component" xmi:id="_qHTX4GJIEd2lYL6XQBZGFQ" name="BasicFullAdder">
+      <generalization xmi:id="_2f1hsGrWEd2yU8pVBDfvzQ" general="_94RA8GJIEd2lYL6XQBZGFQ"/>
+      <ownedAttribute xmi:id="_53HQ8GJOEd2lYL6XQBZGFQ" name="bitOrdinal" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_94RA8GJIEd2lYL6XQBZGFQ" name="FullAdder">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_hLdzYGJKEd2lYL6XQBZGFQ" name="a" visibility="public" type="_84Z0gGJKEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_mvv7UGJKEd2lYL6XQBZGFQ" name="b" visibility="public" type="_84Z0gGJKEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_ooTYYGJKEd2lYL6XQBZGFQ" name="carryIn" visibility="public" type="_84Z0gGJKEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_ygj28GJKEd2lYL6XQBZGFQ" name="carryOut" visibility="public" type="_5ZL7oGJKEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_gXE3IGJMEd2lYL6XQBZGFQ" name="sum" visibility="public" type="_5ZL7oGJKEd2lYL6XQBZGFQ" aggregation="composite"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_5ZL7oGJKEd2lYL6XQBZGFQ" name="BitPort" clientDependency="_HCr3MGJLEd2lYL6XQBZGFQ">
+      <interfaceRealization xmi:id="_HCr3MGJLEd2lYL6XQBZGFQ" name="" supplier="_CxGtQGJLEd2lYL6XQBZGFQ" client="_5ZL7oGJKEd2lYL6XQBZGFQ" contract="_CxGtQGJLEd2lYL6XQBZGFQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_84Z0gGJKEd2lYL6XQBZGFQ" name="BitPortInv" clientDependency="_TpJBYGJLEd2lYL6XQBZGFQ"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_CxGtQGJLEd2lYL6XQBZGFQ" name="Bit">
+      <ownedOperation xmi:id="_MqjeoGJLEd2lYL6XQBZGFQ" name="getBit">
+        <ownedParameter xmi:id="_N4yMUGJLEd2lYL6XQBZGFQ" name="OwnedParameter" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_zOg3MGJMEd2lYL6XQBZGFQ" name="setBit">
+        <ownedParameter xmi:id="_204g8WJMEd2lYL6XQBZGFQ" name="b">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_TpJBYGJLEd2lYL6XQBZGFQ" supplier="_CxGtQGJLEd2lYL6XQBZGFQ" client="_84Z0gGJKEd2lYL6XQBZGFQ"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_im1vwGJLEd2lYL6XQBZGFQ" name="FourBitAdder">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_P3VHMGJMEd2lYL6XQBZGFQ" name="a" visibility="public" type="_DYeZ0GJMEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_UTMOgGJMEd2lYL6XQBZGFQ" name="b" visibility="public" type="_DYeZ0GJMEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_Y9EjsGJMEd2lYL6XQBZGFQ" name="carryIn" visibility="public" type="_84Z0gGJKEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_objD4GJMEd2lYL6XQBZGFQ" name="sum" visibility="public" type="_BxzW8GJMEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_t3V-MGJMEd2lYL6XQBZGFQ" name="carryOut" visibility="public" type="_5ZL7oGJKEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedAttribute xmi:id="_HQ6OgGJNEd2lYL6XQBZGFQ" name="bit1" visibility="private" type="_94RA8GJIEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedAttribute xmi:id="_kYvgUGJNEd2lYL6XQBZGFQ" name="bit2" visibility="private" type="_94RA8GJIEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedAttribute xmi:id="_oOUDsGJNEd2lYL6XQBZGFQ" name="bit3" visibility="private" type="_94RA8GJIEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedAttribute xmi:id="_umUHkGJNEd2lYL6XQBZGFQ" name="bit4" visibility="private" type="_94RA8GJIEd2lYL6XQBZGFQ" aggregation="composite"/>
+      <ownedConnector xmi:id="_zxkEcGJNEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_zx2_YGJNEd2lYL6XQBZGFQ" role="_P3VHMGJMEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_zx2_YWJNEd2lYL6XQBZGFQ" role="_hLdzYGJKEd2lYL6XQBZGFQ" partWithPort="_HQ6OgGJNEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_1bDx0GJNEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_1bDx0WJNEd2lYL6XQBZGFQ" role="_UTMOgGJMEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_1bDx0mJNEd2lYL6XQBZGFQ" role="_mvv7UGJKEd2lYL6XQBZGFQ" partWithPort="_HQ6OgGJNEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_5CUzcGJNEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_5CUzcWJNEd2lYL6XQBZGFQ" role="_Y9EjsGJMEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_5CUzcmJNEd2lYL6XQBZGFQ" role="_ooTYYGJKEd2lYL6XQBZGFQ" partWithPort="_HQ6OgGJNEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_NBAIYGJOEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_NBAIYWJOEd2lYL6XQBZGFQ" role="_gXE3IGJMEd2lYL6XQBZGFQ" partWithPort="_HQ6OgGJNEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_NBAIYmJOEd2lYL6XQBZGFQ" role="_objD4GJMEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_a23sAGJOEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_a23sAWJOEd2lYL6XQBZGFQ" role="_UTMOgGJMEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_a23sAmJOEd2lYL6XQBZGFQ" role="_mvv7UGJKEd2lYL6XQBZGFQ" partWithPort="_umUHkGJNEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_b9NB8GJOEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_b9NB8WJOEd2lYL6XQBZGFQ" role="_UTMOgGJMEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_b9NB8mJOEd2lYL6XQBZGFQ" role="_mvv7UGJKEd2lYL6XQBZGFQ" partWithPort="_oOUDsGJNEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_dYGSoGJOEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_dYGSoWJOEd2lYL6XQBZGFQ" role="_UTMOgGJMEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_dYGSomJOEd2lYL6XQBZGFQ" role="_mvv7UGJKEd2lYL6XQBZGFQ" partWithPort="_kYvgUGJNEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_spxF4GJOEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_spxF4WJOEd2lYL6XQBZGFQ" role="_P3VHMGJMEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_spxF4mJOEd2lYL6XQBZGFQ" role="_hLdzYGJKEd2lYL6XQBZGFQ" partWithPort="_kYvgUGJNEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_tws4wGJOEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_tws4wWJOEd2lYL6XQBZGFQ" role="_P3VHMGJMEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_tws4wmJOEd2lYL6XQBZGFQ" role="_hLdzYGJKEd2lYL6XQBZGFQ" partWithPort="_oOUDsGJNEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_vLvTYGJOEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_vLvTYWJOEd2lYL6XQBZGFQ" role="_P3VHMGJMEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_vLvTYmJOEd2lYL6XQBZGFQ" role="_hLdzYGJKEd2lYL6XQBZGFQ" partWithPort="_umUHkGJNEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_yjggcGJOEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_yjggcWJOEd2lYL6XQBZGFQ" role="_ygj28GJKEd2lYL6XQBZGFQ" partWithPort="_umUHkGJNEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_yjggcmJOEd2lYL6XQBZGFQ" role="_t3V-MGJMEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_0MROAGJOEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_0MROAWJOEd2lYL6XQBZGFQ" role="_gXE3IGJMEd2lYL6XQBZGFQ" partWithPort="_kYvgUGJNEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_0MROAmJOEd2lYL6XQBZGFQ" role="_objD4GJMEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_1EcMIGJOEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_1EcMIWJOEd2lYL6XQBZGFQ" role="_gXE3IGJMEd2lYL6XQBZGFQ" partWithPort="_oOUDsGJNEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_1EcMImJOEd2lYL6XQBZGFQ" role="_objD4GJMEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_3n6OcGJOEd2lYL6XQBZGFQ" name="" kind="delegation">
+        <end xmi:id="_3n6OcWJOEd2lYL6XQBZGFQ" role="_gXE3IGJMEd2lYL6XQBZGFQ" partWithPort="_umUHkGJNEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_3n6OcmJOEd2lYL6XQBZGFQ" role="_objD4GJMEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_ppPqoIwQEd2nNpLa-Uw0uA" name="" kind="assembly">
+        <end xmi:id="_ppPqoYwQEd2nNpLa-Uw0uA" role="_ygj28GJKEd2lYL6XQBZGFQ" partWithPort="_HQ6OgGJNEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_ppPqoowQEd2nNpLa-Uw0uA" role="_ooTYYGJKEd2lYL6XQBZGFQ" partWithPort="_kYvgUGJNEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_tMfu8IwQEd2nNpLa-Uw0uA" name="" kind="assembly">
+        <end xmi:id="_tMfu8YwQEd2nNpLa-Uw0uA" role="_ygj28GJKEd2lYL6XQBZGFQ" partWithPort="_kYvgUGJNEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_tMfu8owQEd2nNpLa-Uw0uA" role="_ooTYYGJKEd2lYL6XQBZGFQ" partWithPort="_oOUDsGJNEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_vXXrEIwQEd2nNpLa-Uw0uA" name="" kind="assembly">
+        <end xmi:id="_vXXrEYwQEd2nNpLa-Uw0uA" role="_ygj28GJKEd2lYL6XQBZGFQ" partWithPort="_oOUDsGJNEd2lYL6XQBZGFQ"/>
+        <end xmi:id="_vXXrEowQEd2nNpLa-Uw0uA" role="_ooTYYGJKEd2lYL6XQBZGFQ" partWithPort="_umUHkGJNEd2lYL6XQBZGFQ"/>
+      </ownedConnector>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_8gl8AGJLEd2lYL6XQBZGFQ" name="Nibble">
+      <ownedOperation xmi:id="_9memAGJLEd2lYL6XQBZGFQ" name="getBit">
+        <ownedParameter xmi:id="__W-6UGJLEd2lYL6XQBZGFQ" name="n">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="__W-6UWJLEd2lYL6XQBZGFQ" name="OwnedParameter" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_3acFEGJMEd2lYL6XQBZGFQ" name="setBit">
+        <ownedParameter xmi:id="_7kkjMGJMEd2lYL6XQBZGFQ" name="n">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_7kkjMWJMEd2lYL6XQBZGFQ" name="b">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_BxzW8GJMEd2lYL6XQBZGFQ" name="NibblePort" clientDependency="_KqIpkGJMEd2lYL6XQBZGFQ">
+      <interfaceRealization xmi:id="_KqIpkGJMEd2lYL6XQBZGFQ" name="" supplier="_8gl8AGJLEd2lYL6XQBZGFQ" client="_BxzW8GJMEd2lYL6XQBZGFQ" contract="_8gl8AGJLEd2lYL6XQBZGFQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_DYeZ0GJMEd2lYL6XQBZGFQ" name="NibblePortInv" clientDependency="_L_90EGJMEd2lYL6XQBZGFQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_L_90EGJMEd2lYL6XQBZGFQ" supplier="_8gl8AGJLEd2lYL6XQBZGFQ" client="_DYeZ0GJMEd2lYL6XQBZGFQ"/>
+    <profileApplication xmi:id="_UeIAINCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAIdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_UeIAItCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAI9CzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_UeIAJNCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAJdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_ARbGIGJIEd2lYL6XQBZGFQ">
+      <eAnnotations xmi:id="_ARkQEGJIEd2lYL6XQBZGFQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MyDomain.profile.uml#_qeX9h2svEd2s--4g-nTlHg"/>
+      </eAnnotations>
+      <appliedProfile href="MyDomain.profile.uml#_qeX9gWsvEd2s--4g-nTlHg"/>
+    </profileApplication>
+  </uml:Model>
+  <mydomain:StructuralRealization xmi:id="_qHdI4GJIEd2lYL6XQBZGFQ" base_Component="_qHTX4GJIEd2lYL6XQBZGFQ"/>
+  <mydomain:ComponentInterface xmi:id="_943d4GJIEd2lYL6XQBZGFQ" base_Component="_94RA8GJIEd2lYL6XQBZGFQ"/>
+  <mydomain:MyPort xmi:id="_hLm9UGJKEd2lYL6XQBZGFQ" base_Port="_hLdzYGJKEd2lYL6XQBZGFQ"/>
+  <mydomain:MyPort xmi:id="_mv5sUGJKEd2lYL6XQBZGFQ" base_Port="_mvv7UGJKEd2lYL6XQBZGFQ"/>
+  <mydomain:MyPort xmi:id="_oociUGJKEd2lYL6XQBZGFQ" base_Port="_ooTYYGJKEd2lYL6XQBZGFQ"/>
+  <mydomain:MyPort xmi:id="_ygj28WJKEd2lYL6XQBZGFQ" base_Port="_ygj28GJKEd2lYL6XQBZGFQ"/>
+  <mydomain:Application xmi:id="_im1vwWJLEd2lYL6XQBZGFQ" base_Component="_im1vwGJLEd2lYL6XQBZGFQ"/>
+  <mydomain:MyPort xmi:id="_P3VHMWJMEd2lYL6XQBZGFQ" base_Port="_P3VHMGJMEd2lYL6XQBZGFQ">
+    <kind>data</kind>
+  </mydomain:MyPort>
+  <mydomain:MyPort xmi:id="_UTMOgWJMEd2lYL6XQBZGFQ" base_Port="_UTMOgGJMEd2lYL6XQBZGFQ">
+    <kind>data</kind>
+  </mydomain:MyPort>
+  <mydomain:MyPort xmi:id="_Y9NtoGJMEd2lYL6XQBZGFQ" base_Port="_Y9EjsGJMEd2lYL6XQBZGFQ">
+    <kind>data</kind>
+  </mydomain:MyPort>
+  <mydomain:MyPort xmi:id="_gXOBEGJMEd2lYL6XQBZGFQ" base_Port="_gXE3IGJMEd2lYL6XQBZGFQ"/>
+  <mydomain:MyPort xmi:id="_obs04GJMEd2lYL6XQBZGFQ" base_Port="_objD4GJMEd2lYL6XQBZGFQ">
+    <kind>responses</kind>
+    <kind>data</kind>
+  </mydomain:MyPort>
+  <mydomain:MyPort xmi:id="_t3fIIGJMEd2lYL6XQBZGFQ" base_Port="_t3V-MGJMEd2lYL6XQBZGFQ">
+    <kind>responses</kind>
+    <kind>data</kind>
+  </mydomain:MyPort>
+  <mydomain:Interface xmi:id="_JnuSIHLmEd2AAq-UeopxBA" base_Interface="_CxGtQGJLEd2lYL6XQBZGFQ"/>
+  <mydomain:Interface xmi:id="_KqevoHLmEd2AAq-UeopxBA" base_Interface="_8gl8AGJLEd2lYL6XQBZGFQ"/>
+  <mydomain:AssemblyConnector xmi:id="_ppZboIwQEd2nNpLa-Uw0uA" base_Connector="_ppPqoIwQEd2nNpLa-Uw0uA"/>
+  <mydomain:AssemblyConnector xmi:id="_tMfu84wQEd2nNpLa-Uw0uA" base_Connector="_tMfu8IwQEd2nNpLa-Uw0uA"/>
+  <mydomain:AssemblyConnector xmi:id="_vXXrE4wQEd2nNpLa-Uw0uA" base_Connector="_vXXrEIwQEd2nNpLa-Uw0uA"/>
+  <mydomain:Part xmi:id="_vXXrE4wQEd2nNpLa-Uw0uB" base_Property="_HQ6OgGJNEd2lYL6XQBZGFQ"/>
+  <mydomain:Part xmi:id="_vXXrE4wQEd2nNpLa-Uw0uC" base_Property="_kYvgUGJNEd2lYL6XQBZGFQ"/>
+  <mydomain:Part xmi:id="_vXXrE4wQEd2nNpLa-Uw0uD" base_Property="_oOUDsGJNEd2lYL6XQBZGFQ"/>
+  <mydomain:Part xmi:id="_vXXrE4wQEd2nNpLa-Uw0uE" base_Property="_umUHkGJNEd2lYL6XQBZGFQ"/>
+</xmi:XMI>

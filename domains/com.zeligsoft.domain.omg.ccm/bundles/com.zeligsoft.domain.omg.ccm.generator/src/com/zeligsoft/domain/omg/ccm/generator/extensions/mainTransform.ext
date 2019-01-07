@@ -1,0 +1,171 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+import uml;
+import CCM::CCM_Component;
+import CCM::CCM_Artifacts;
+import CORBADomain::IDL;
+
+extension org::eclipse::xtend::util::stdlib::issues;
+extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
+extension com::zeligsoft::domain::omg::ccm::generator::extensions::scopedNames;
+extension com::zeligsoft::domain::omg::ccm::generator::extensions::CCM_IDL_Utils;
+
+create idl::Specification mainTransform(IDL3File self) :
+	this.definitions.addAll(self.contents.visitContained());
+	
+create idl::Specification mainTransform(CCMComponent self) :
+	this.definitions.add(self.visitContained());
+
+create idl::ComponentDecl visitContained(CCMComponent self) :
+	this.componentHeader(self) ->
+	this.componentBody(self);
+	
+create idl::HomeDecl visitContained(Home self) :
+	this.homeHeader(self) ->
+	this.export.addAll(self.export.visitContained()) ->
+	this.comments.addAll(self.zdlAsClass().ownedComment.visitComment());
+	
+	
+private Void homeHeader(idl::HomeDecl this, Home self) :
+	this.setName(self.zdlAsNamedElement().name) ->
+	this.homeInheritanceSpec(self) ->
+	this.supportedInterfaceSpec(self) ->
+	this.setManages(manages(self))->
+	this.primaryKeySpec(self);
+	
+private Void homeInheritanceSpec(idl::HomeDecl this, Home self) :
+	if !self.zdlAsInterface().general.typeSelect(Home).isEmpty then
+		this.setBase(self.zdlAsInterface().general.typeSelect(Home).first().toScopedName(getCORBAContainer(self)));
+		
+private Void supportedInterfaceSpec(idl::HomeDecl this, Home self) :
+	this.supports.addAll(self.supportsInterface().toScopedName(getCORBAContainer(self)));
+	
+private Void primaryKeySpec(idl::HomeDecl this, Home self) :
+	{};
+	
+private idl::ScopedName manages(Home self) :
+	if !self.zdlAsInterface().clientDependency.typeSelect(Manages).isEmpty then
+		self.zdlAsInterface().clientDependency.typeSelect(Manages).first()
+			.zdlAsDependency().supplier.typeSelect(CCMComponent).first().toScopedName(getCORBAContainer(self));
+
+create idl::FactoryDcl visitContained(CCM::CCM_Component::FactoryOperation self) :
+	this.setName(self.name) ->
+	self.zdlAsPackage().ownedComment.isEmpty ? 
+		this.comments.add(new idl::IDLComment) : 
+		this.comments.addAll(self.zdlAsPackage().ownedComment.visitComment()) ->
+	setParams(self.toParamDecls()) ->
+	setRaises(self.zdlAsOperation().toExceptionList());
+	
+create idl::FinderDcl visitContained(CCM::CCM_Component::FinderOperation self) :
+	this.setName(self.name) ->	
+	self.zdlAsPackage().ownedComment.isEmpty ? 
+		this.comments.add(new idl::IDLComment) : 
+		this.comments.addAll(self.zdlAsPackage().ownedComment.visitComment()) ->
+	setParams(self.toParamDecls()) ->
+	setRaises(self.zdlAsOperation().toExceptionList());
+	
+create idl::ParameterDecls toParamDecls(CCM::CCM_Component::HomeOperation op) :
+	this.decls.addAll(op.ownedParameter.toParamDecl(op, this));
+	
+create idl::EventDcl visitContained(CCM::CCM_Component::Event self) :
+	this.eventHeader(self) ->
+	this.eventBody(self);
+	
+idl::ComponentExport visitContained(CCM::CCM_Component::InterfacePort self) :
+	if self.isUser() then { self.usesPort() } 
+	else if self.isProvider() then { self.providesPort() }
+	else if (!self.isProvider() && !self.isUser()) then {
+		reportError("Port " + self.name + " : An interface port must have its type set to a CORBAInterface.")
+		//if it's not a provider or uses port then it is a port_dcl
+		//self.portDecl()
+	};
+	
+idl::ComponentExport visitContained(CCM::CCM_Component::EventPort self) :
+	if self.isPublisher() then { self.publishesPort() }
+	else if self.isConsumer() then { self.consumesPort() }
+	else if (!self.isPublisher() && !self.isConsumer()) then {
+		reportError("Port " + self.name + " : An event port must have its type set to an Event.")
+	};
+
+	
+create idl::PublishesDcl publishesPort(CCM::CCM_Component::EventPort self) :
+	setName(self.zdlAsPort().name) ->
+	setType(self.type.toScopedName(getCORBAContainer(self))) ->
+	this.comments.addAll(self.zdlAsPort().ownedComment.visitComment());
+	
+create idl::ConsumesDcl consumesPort(CCM::CCM_Component::EventPort self) :
+	setName(self.zdlAsPort().name) ->
+	setType(self.type.toScopedName(getCORBAContainer(self))) ->
+	this.comments.addAll(self.zdlAsPort().ownedComment.visitComment());
+	
+create idl::UsesDcl usesPort(CCM::CCM_Component::InterfacePort self) :
+	this.setName(self.zdlAsPort().name) ->
+	this.setType(self.usesInterface().toScopedName(getCORBAContainer(self))) ->
+	this.setIsMultiple(self.zdlAsPort().isMultivalued()) ->
+	this.comments.addAll(self.zdlAsPort().ownedComment.visitComment());
+	
+	
+create idl::ProvidesDcl providesPort(CCM::CCM_Component::InterfacePort self) :
+	this.setName(self.zdlAsPort().name) ->
+	this.setType(self.providesInterface().toScopedName(getCORBAContainer(self))) ->
+	this.comments.addAll(self.zdlAsPort().ownedComment.visitComment());
+
+private idl::Definition visitContained(IDL3FileImport self) :
+	self.zdlAsDependency().supplier.visitContained();
+
+Void componentHeader(idl::ComponentDecl this, CCMComponent self) :
+	this.setName(self.zdlAsNamedElement().name) ->
+	this.componentInheritanceSpec(self) ->
+	this.supportedInterfaceSpec(self);
+	
+Void componentInheritanceSpec(idl::ComponentDecl this, CCMComponent self) :
+	if self.hasBaseComponent() then this.setBase(self.baseComponent().toScopedName(getCORBAContainer(self)));
+	
+Void supportedInterfaceSpec(idl::ComponentDecl this, CCMComponent self) :
+	if self.hasSupportsInterface() then
+		this.supports.addAll(self.supportsInterface().toScopedName(getCORBAContainer(self)));
+	
+Void eventHeader(idl::EventDcl this, CCM::CCM_Component::Event self) :
+	this.setName(self.zdlAsInterface().name) ->
+	this.setIsAbstract(self.isAbstract) ->
+	this.setIsCustom(self.isCustom) ->
+	this.setSpecializedInterfaces(self);
+	
+private Void eventBody(idl::EventDcl this, CCM::CCM_Component::Event self) :
+	this.export.addAll(self.zdlAsInterface().ownedMember.visitContained());
+
+private Void setSpecializedInterfaces(idl::EventDcl this, CCM::CCM_Component::Event self) :
+	this.valueInheritanceSpec(self);
+
+private Void valueInheritanceSpec(idl::EventDcl this, CCM::CCM_Component::Event self) :
+	this.setIsTruncatable(false) ->
+	this.supports.addAll(self.zdlAsInterface().general.typeSelect(CORBAInterface).toScopedName(getCORBAContainer(self))) ->
+	this.base.addAll(self.zdlAsInterface().general.typeSelect(CCM::CCM_Component::Event).select(e | !e.isAbstract).toScopedName(getCORBAContainer(self))) ->
+	this.base.addAll(self.zdlAsInterface().general.typeSelect(CCM::CCM_Component::Event).select(e | e.isAbstract).toScopedName(getCORBAContainer(self)));
+	
+Void componentBody(idl::ComponentDecl this, CCMComponent component) :
+	this.export.addAll(component.zdlAsComponent().ownedElement.visitContained());
+	
+create idl::StateMember eventStateMember(Event self) :
+	let typeName = new idl::ScopedName :
+		this.names.add("event") ->
+		this.setIsPublic(true) ->
+		typeName.name.add(self.name) ->
+		this.setType(typeName) ->
+		this;
+		
+	

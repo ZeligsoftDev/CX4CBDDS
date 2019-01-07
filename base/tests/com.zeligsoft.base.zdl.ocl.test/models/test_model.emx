@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:test_ocl="http://www.zeligsoft.com/test/2008/test_ocl/1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.zeligsoft.com/test/2008/test_ocl/1 test_ocl.profile.uml#_u7LrM1dTEd2dX8F-w7YSPA">
+  <uml:Model xmi:id="_He4AQFdQEd2QLpfwcJGR1A" name="test_model">
+    <packageImport xmi:id="_He4ARFdQEd2QLpfwcJGR1A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Component" xmi:id="_dv5yUFdQEd2QLpfwcJGR1A" name="Comp1">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_opfLAFdQEd2QLpfwcJGR1A" name="port" aggregation="composite"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_tZAOIFdQEd2QLpfwcJGR1A" name="Impl1" fileName="/usr/lib/impl1.so"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_pwAaAFgHEd25QMoLa6BX1w" name="Req"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_rlq7IFgHEd25QMoLa6BX1w" name="Prov"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_tG3oIFgHEd25QMoLa6BX1w" name="PortType" clientDependency="_v7YXIFgHEd25QMoLa6BX1w">
+      <interfaceRealization xmi:id="_v7YXIFgHEd25QMoLa6BX1w" supplier="_rlq7IFgHEd25QMoLa6BX1w" client="_tG3oIFgHEd25QMoLa6BX1w" contract="_rlq7IFgHEd25QMoLa6BX1w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_1yy2cFgHEd25QMoLa6BX1w" name="PortType~" clientDependency="_4eu4QFgHEd25QMoLa6BX1w"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4eu4QFgHEd25QMoLa6BX1w" supplier="_pwAaAFgHEd25QMoLa6BX1w" client="_1yy2cFgHEd25QMoLa6BX1w"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_TnPPQFgLEd25QMoLa6BX1w" name="Comp2">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_kUtSIFgLEd25QMoLa6BX1w" name="port2" type="_1yy2cFgHEd25QMoLa6BX1w" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_kyKqMFgLEd25QMoLa6BX1w" name="port1" type="_tG3oIFgHEd25QMoLa6BX1w" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_lMf1wFgLEd25QMoLa6BX1w" name="portX" aggregation="composite"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_FF2EwGlWEd29S-xFjaIf_A" name="Comp3">
+      <ownedAttribute xmi:id="_Lr2IYGlWEd29S-xFjaIf_A" name="prop1" visibility="private" type="_Gr3x8GlXEd29S-xFjaIf_A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Gr3x8GlXEd29S-xFjaIf_A" name="PropType1"/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_DmNmkGltEd2RnPymHYhT6g" name="AltImpl1" fileName="/usr/shared/lib/impl-alt.so"/>
+    <profileApplication xmi:id="_He4ARVdQEd2QLpfwcJGR1A">
+      <eAnnotations xmi:id="_He4ARldQEd2QLpfwcJGR1A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_He4AR1dQEd2QLpfwcJGR1A">
+      <eAnnotations xmi:id="_He4ASFdQEd2QLpfwcJGR1A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_He4ASVdQEd2QLpfwcJGR1A">
+      <eAnnotations xmi:id="_He4ASldQEd2QLpfwcJGR1A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_P6Xl4FdQEd2QLpfwcJGR1A">
+      <eAnnotations xmi:id="_P6YM8FdQEd2QLpfwcJGR1A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="test_ocl.profile.uml#_u7LrM1dTEd2dX8F-w7YSPA"/>
+      </eAnnotations>
+      <appliedProfile href="test_ocl.profile.uml#_u7LrMFdTEd2dX8F-w7YSPA"/>
+    </profileApplication>
+  </uml:Model>
+  <test_ocl:OCLComponent xmi:id="_VzI6oFdREd2dX8F-w7YSPA" implementation="_XSLrgFdREd2dX8F-w7YSPA" base_Component="_dv5yUFdQEd2QLpfwcJGR1A"/>
+  <test_ocl:OCLPort xmi:id="_WrhUIFdREd2dX8F-w7YSPA" base_Port="_opfLAFdQEd2QLpfwcJGR1A"/>
+  <test_ocl:OCLImplementation xmi:id="_XSLrgFdREd2dX8F-w7YSPA" base_Artifact="_tZAOIFdQEd2QLpfwcJGR1A"/>
+  <test_ocl:OCLPort xmi:id="_rvnkgFgLEd25QMoLa6BX1w" base_Port="_kyKqMFgLEd25QMoLa6BX1w">
+    <descriptor xmi:id="_5Rf1gGlsEd2RnPymHYhT6g" interface="_rlq7IFgHEd25QMoLa6BX1w" selectedImplementation="_XSLrgFdREd2dX8F-w7YSPA"/>
+    <descriptor xmi:id="_VRD3sGltEd2RnPymHYhT6g" interface="_Gr3x8GlXEd29S-xFjaIf_A" selectedImplementation="_GDao0GltEd2RnPymHYhT6g"/>
+  </test_ocl:OCLPort>
+  <test_ocl:OCLPort xmi:id="_siwRoFgLEd25QMoLa6BX1w" base_Port="_kUtSIFgLEd25QMoLa6BX1w"/>
+  <test_ocl:OCLPort xmi:id="_tR5PkFgLEd25QMoLa6BX1w" base_Port="_lMf1wFgLEd25QMoLa6BX1w"/>
+  <test_ocl:OCLAssembly xmi:id="_fqKEgGMBEd22R78KyY069Q" base_Component="_TnPPQFgLEd25QMoLa6BX1w">
+    <configuration xmi:id="_l55SMGltEd2RnPymHYhT6g" port="_5Rf1gGlsEd2RnPymHYhT6g _VRD3sGltEd2RnPymHYhT6g"/>
+  </test_ocl:OCLAssembly>
+  <test_ocl:OCLComponent xmi:id="_HvH0IGlWEd29S-xFjaIf_A" base_Component="_FF2EwGlWEd29S-xFjaIf_A"/>
+  <test_ocl:OCLInterface xmi:id="_IVrBUGlXEd29S-xFjaIf_A" base_Interface="_Gr3x8GlXEd29S-xFjaIf_A"/>
+  <test_ocl:OCLProperty xmi:id="_LTp1YGlXEd29S-xFjaIf_A" base_Property="_Lr2IYGlWEd29S-xFjaIf_A"/>
+  <test_ocl:OCLImplementation xmi:id="_GDao0GltEd2RnPymHYhT6g" base_Artifact="_DmNmkGltEd2RnPymHYhT6g"/>
+</xmi:XMI>

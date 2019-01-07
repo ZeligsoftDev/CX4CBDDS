@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:DeploymentPlan
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
+    xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>BasicPubSub</label>
+  <UUID>cff91e79-f397-4ac9-89bc-a005d3dffbc3</UUID>
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source/>
+    <artifact xmi:idref="CompSvrArt"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="_8c0aa8ea-cdd0-422b-a551-a67d236b605a">
+    <name>BasicPublisher_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_4d13d264-a91a-4af5-8bba-c45ec6f2a036"/>
+    <artifact xmi:idref="_9f9d1526-e205-4e5c-8651-ba2201233bb8"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_BasicPublisher_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_BasicPublisher_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_BasicPublisher_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_BasicPublisher_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.dre.vanderbilt.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="_6126784f-080e-49cf-a799-8ba178654737">
+    <name>BasicSubscriber_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_387c1386-79e3-4264-b8aa-0aee07662ddc"/>
+    <artifact xmi:idref="_2e30f51d-245e-45ee-bfa0-6d9448e32b12"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_BasicSubscriber_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_BasicSubscriber_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_BasicSubscriber_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_BasicSubscriber_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.dre.vanderbilt.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="_6f6d377b-3e63-4942-ad30-ce5ca701e18f">
+    <name>TestData_conn</name>
+    <source/>
+    <artifact xmi:idref="_79c87482-f97c-48b3-842b-66c1d90bd025"/>
+    <artifact xmi:idref="_48762a5e-e498-481a-95ca-8dddf026b94e"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_TestData_conn_DDS_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_TestData_conn_DDS_Event_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_TestData_conn_DDS_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_TestData_conn_DDS_Event_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.dre.vanderbilt.CCM.Connector</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <instance xmi:id="_d6cefc7d-343a-470d-afc8-48177fd5fd55">
+    <name>BasicPubSub_asm.BasicPublisher_comp</name>
+    <node>BasicPublisher_compNode</node>
+    <source/>
+    <implementation xmi:idref="_8c0aa8ea-cdd0-422b-a551-a67d236b605a"/>
+  </instance>
+  <instance xmi:id="_4db390cd-1e3b-4a1d-b71c-22d91bae9160">
+    <name>BasicPubSub_asm.BasicSubscriber_comp</name>
+    <node>BasicSubscriber_compNode</node>
+    <source/>
+    <implementation xmi:idref="_6126784f-080e-49cf-a799-8ba178654737"/>
+  </instance>
+  <instance xmi:id="_6fa4cfdd-6fae-41b4-9867-67b12f291c87">
+    <name>BasicPublisher_comp_ComponentServerInstance</name>
+    <node>BasicPublisher_compNode</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>BasicPublisher_comp</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>0</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>0</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_43192ad2-8ddb-4c76-b728-fc3aa7aaaa25">
+    <name>BasicSubscriber_comp_ComponentServerInstance</name>
+    <node>BasicSubscriber_compNode</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>BasicSubscriber_comp</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>0</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>0</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_9d087116-9a5a-49e3-901c-42585758729c">
+    <name>
+      BasicPubSub_asm.SNA_Examples.doc.BasicPubSub_asm.TestData_conn@BasicPublisher_compNode.BasicPublisher_comp
+    </name>
+    <node>BasicPublisher_compNode</node>
+    <source/>
+    <implementation xmi:idref="_6f6d377b-3e63-4942-ad30-ce5ca701e18f"/>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples::TestData</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>25</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA#SNA_Default</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_f4f20176-8e6a-4bf5-bd5e-592fe27c18da">
+    <name>
+      BasicPubSub_asm.SNA_Examples.doc.BasicPubSub_asm.TestData_conn@BasicSubscriber_compNode.BasicSubscriber_comp
+    </name>
+    <node>BasicSubscriber_compNode</node>
+    <source/>
+    <implementation xmi:idref="_6f6d377b-3e63-4942-ad30-ce5ca701e18f"/>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples::TestData</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>25</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA#SNA_Default</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <connection>
+    <name>
+      BasicPubSub_asm.BasicPublisher_comp.testDataPub::BasicPubSub_asm.SNA_Examples.doc.BasicPubSub_asm.TestData_conn@BasicPublisher_compNode.BasicPublisher_comp.supplier_data
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>testDataPub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_d6cefc7d-343a-470d-afc8-48177fd5fd55"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9d087116-9a5a-49e3-901c-42585758729c"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      BasicPubSub_asm.BasicPublisher_comp.testDataPub::BasicPubSub_asm.SNA_Examples.doc.BasicPubSub_asm.TestData_conn@BasicPublisher_compNode.BasicPublisher_comp.supplier_dds_entity
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>testDataPub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_d6cefc7d-343a-470d-afc8-48177fd5fd55"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9d087116-9a5a-49e3-901c-42585758729c"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      BasicPubSub_asm.BasicSubscriber_comp.testDatSub::BasicPubSub_asm.SNA_Examples.doc.BasicPubSub_asm.TestData_conn@BasicSubscriber_compNode.BasicSubscriber_comp.push_consumer_data_listener
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>testDatSub_data_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_4db390cd-1e3b-4a1d-b71c-22d91bae9160"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_f4f20176-8e6a-4bf5-bd5e-592fe27c18da"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      BasicPubSub_asm.BasicSubscriber_comp.testDatSub::BasicPubSub_asm.SNA_Examples.doc.BasicPubSub_asm.TestData_conn@BasicSubscriber_compNode.BasicSubscriber_comp.push_consumer_status
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>testDatSub_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_4db390cd-1e3b-4a1d-b71c-22d91bae9160"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_f4f20176-8e6a-4bf5-bd5e-592fe27c18da"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      BasicPubSub_asm.BasicSubscriber_comp.testDatSub::BasicPubSub_asm.SNA_Examples.doc.BasicPubSub_asm.TestData_conn@BasicSubscriber_compNode.BasicSubscriber_comp.push_consumer_data
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>testDatSub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4db390cd-1e3b-4a1d-b71c-22d91bae9160"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_f4f20176-8e6a-4bf5-bd5e-592fe27c18da"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      BasicPubSub_asm.BasicSubscriber_comp.testDatSub::BasicPubSub_asm.SNA_Examples.doc.BasicPubSub_asm.TestData_conn@BasicSubscriber_compNode.BasicSubscriber_comp.push_consumer_data_control
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>testDatSub_data_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4db390cd-1e3b-4a1d-b71c-22d91bae9160"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_f4f20176-8e6a-4bf5-bd5e-592fe27c18da"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      BasicPubSub_asm.BasicSubscriber_comp.testDatSub::BasicPubSub_asm.SNA_Examples.doc.BasicPubSub_asm.TestData_conn@BasicSubscriber_compNode.BasicSubscriber_comp.push_consumer_dds_entity
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>testDatSub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4db390cd-1e3b-4a1d-b71c-22d91bae9160"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_f4f20176-8e6a-4bf5-bd5e-592fe27c18da"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      BasicPubSub_asm.BasicSubscriber_comp.testDatSub::BasicPubSub_asm.SNA_Examples.doc.BasicPubSub_asm.TestData_conn@BasicSubscriber_compNode.BasicSubscriber_comp.push_consumer_filter_config
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>testDatSub_filter_config</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4db390cd-1e3b-4a1d-b71c-22d91bae9160"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_filter_config</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_f4f20176-8e6a-4bf5-bd5e-592fe27c18da"/>
+    </internalEndpoint>
+  </connection>
+  
+  <connection>
+    <name>ConnectorStatusListener_Missing_Connection1</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>testDataPubConnStatus</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_d6cefc7d-343a-470d-afc8-48177fd5fd55"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_9d087116-9a5a-49e3-901c-42585758729c"/>
+    </internalEndpoint>
+  </connection>
+  
+  <connection>
+    <name>ConnectorStatusListener_Missing_Connection2</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>testDataSubConnStatus</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_4db390cd-1e3b-4a1d-b71c-22d91bae9160"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_f4f20176-8e6a-4bf5-bd5e-592fe27c18da"/>
+    </internalEndpoint>
+  </connection>
+  
+  <artifact xmi:id="CompSvrArt">
+    <name>CompoSvrArtifactName</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+  <artifact xmi:id="_9f9d1526-e205-4e5c-8651-ba2201233bb8">
+    <name>SNA_Examples_BasicPublisher_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_BasicPublisher_comp_exec</location>
+  </artifact>
+  <artifact xmi:id="_2e30f51d-245e-45ee-bfa0-6d9448e32b12">
+    <name>SNA_Examples_BasicSubscriber_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_BasicSubscriber_comp_exec</location>
+  </artifact>
+  <artifact xmi:id="_4d13d264-a91a-4af5-8bba-c45ec6f2a036">
+    <name>SNA_Examples_BasicPublisher_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_BasicPublisher_comp_svnt</location>
+  </artifact>
+  <artifact xmi:id="_387c1386-79e3-4264-b8aa-0aee07662ddc">
+    <name>SNA_Examples_BasicSubscriber_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_BasicSubscriber_comp_svnt</location>
+  </artifact>
+  <artifact xmi:id="_48762a5e-e498-481a-95ca-8dddf026b94e">
+    <name>SNA_Examples_TestData_conn_DDS_Event_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_TestData_conn_exec</location>
+  </artifact>
+  <artifact xmi:id="_79c87482-f97c-48b3-842b-66c1d90bd025">
+    <name>SNA_Examples_TestData_conn_DDS_Event_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_TestData_conn_svnt</location>
+  </artifact>
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="_6fa4cfdd-6fae-41b4-9867-67b12f291c87"/>
+    <constrainedInstance xmi:idref="_d6cefc7d-343a-470d-afc8-48177fd5fd55"/>
+    <constrainedInstance xmi:idref="_9d087116-9a5a-49e3-901c-42585758729c"/>
+  </localityConstraint>
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="_43192ad2-8ddb-4c76-b728-fc3aa7aaaa25"/>
+    <constrainedInstance xmi:idref="_4db390cd-1e3b-4a1d-b71c-22d91bae9160"/>
+    <constrainedInstance xmi:idref="_f4f20176-8e6a-4bf5-bd5e-592fe27c18da"/>
+  </localityConstraint>
+</Deployment:DeploymentPlan>

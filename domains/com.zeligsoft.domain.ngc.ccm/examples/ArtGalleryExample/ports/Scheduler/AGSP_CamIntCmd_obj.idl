@@ -1,0 +1,28 @@
+/// @defgroup AGSP_CamIntCmd_obj CamIntCmd_obj
+/// @{
+/// 
+/// @file AGSP_CamIntCmd_obj.idl
+/// @brief CamIntCmd_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__SCHEDULER__AGSP_CAMINTCMD_OBJ_IDL
+#define CX_PORTS__SCHEDULER__AGSP_CAMINTCMD_OBJ_IDL
+
+#pragma ciao lem "AGSP_CamIntCmd_objE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    ///@interface CamIntCmd_obj 
+    interface CamIntCmd_obj {
+
+        void getStatus();
+    };
+
+};
+
+#endif // CX_PORTS__SCHEDULER__AGSP_CAMINTCMD_OBJ_IDL
+
+/// @}
+

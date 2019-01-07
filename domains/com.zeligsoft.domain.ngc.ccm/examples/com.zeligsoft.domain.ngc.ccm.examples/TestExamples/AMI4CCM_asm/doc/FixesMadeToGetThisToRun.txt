@@ -1,0 +1,22 @@
+AMI4CCM_asm Example - 02/13/2011
+
+The included CX-generated IDL source tree built with no errors or changes required.
+However, the CX-generated CDP file required a number of edits to fix the issues listed below in order to deploy:
+
+General Issues:
+* P2 Issue 175 - Missing <artifact> references in CDP file component & DDS4CCM connector <implementation> entries
+* P4 Issue 142 - Newlines & comments in CDP XML file for readability (added to highlight changes made to CDP file)
+
+AMI4CCM Related Issues:
+* P2 Issue 150 - MultiplexReceptacle tag incorrectly applied to AMI4CCM connector fragment port in CDP files
+* P2 Issue 157 - Missing AMI4CCM connector fragment instances in CDP file
+* P2 Issue 180 - Only 2 of 3 <connections> in CDP file for AMI4CCM connectors
+* P2 Issue 189 - Duplicate CDP file <name> tags for AMI4CCM connections
+* P2 Issue 190 - AMI4CCM connection in CDP file has wrong instance ID
+* P2 Issue 191 - CDP file <string> tag values cannot include added white space (AMI4CCM connector servant entry point)
+
+Directory Structure:
+* P2 Issue 156 - CDD/CDP files generated to target wrong directory (Deployment folder moved in attached source)
+
+Original CDP file is at:                         Deployment\descriptors\AMI4CCM.cdp
+Edited CDP file that deployed correctly is at:   Deployment\descriptors\AMI4CCMFixed.cdp

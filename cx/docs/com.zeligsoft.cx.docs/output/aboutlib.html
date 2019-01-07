@@ -1,0 +1,37 @@
+<head>
+	<title>Libraries</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="aboutlib.html" title="Libraries">
+		<h1>Libraries</h1>
+		<p>Libraries can be modeled in CX and then referenced as a software package reference dependency. This specifies a dependency to a 
+		Software Package (SPD) to the library.</p>
+		<p>For example, create a SoftPkg library component named CryptoLib:</p>
+		<ol>
+			<li>Create a package named <strong>Libraries</strong>.</li>
+			<li>Right click on the <strong>Libraries</strong> package and select <strong>Add Diagram</strong> &gt; <strong>Zeligsoft 
+		Component Diagram</strong> Name the diagram <strong>Libaries_Diag</strong>.</li>
+			<li>In the <strong>Palette</strong>, select <strong>Library</strong> and drop this element onto <strong>Libraries_Diag</strong>. </li>
+			<li>Name the element <strong>CryptoLib</strong>.</li>
+			<li>In the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab and set <strong>isSCACompliant</strong> to 
+<strong>False</strong>.</li>
+			<li>In the <strong>Palette</strong>, select <strong>Component Interface</strong> and drop this element onto Libaries_Diag. Name the 
+element <strong>CryptoLib_CI</strong>.</li>
+			<li>Draw a <strong>Generalization</strong> from <strong>CryptoLib</strong> to <strong>CryptoLib_CI</strong>.</li>
+			<li>In the <strong>Palette</strong>, select <strong>Implementation Artifact</strong> and drop this element onto the diagram. 
+Name this element <strong>CryptoLib_Linux</strong>.</li>
+			<li>Select <strong>CryptoLib_Linux</strong> and in the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab. 
+Set <strong>code values file</strong> to <strong>cryptolib.so</strong> and <strong>type</strong> to <strong>SharedLibrary</strong>.</li>
+			<li>Use the <strong>Palette</strong> to draw a <strong>Component Implementation</strong> link from the <strong>CryptoLib_Linux implementation</strong>
+ to the  <strong>CryptoLib component</strong>.</li>
+			<li>From the <strong>Palette</strong>, add <strong>OS</strong> and <strong>Processor</strong> elements to the <strong>Libraries_Diag</strong>
+ diagram.</li>
+			<li>Add <strong>OS</strong> and <strong>Processor</strong> links.</li>
+		</ol>
+		<h3>See Also</h3><br><a href="libraryprop.html">Library Properties</a><br><a href="editviewelement.html">Editing and Viewing Elements</a><br><a href="deleteelement.html">Deleting Elements</a><div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

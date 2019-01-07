@@ -1,0 +1,28 @@
+/// @defgroup AGSP_PCMM_Status_obj PCMM_Status_obj
+/// @{
+/// 
+/// @file AGSP_PCMM_Status_obj.idl
+/// @brief PCMM_Status_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__POINTCLICKMODE__AGSP_PCMM_STATUS_OBJ_IDL
+#define CX_PORTS__POINTCLICKMODE__AGSP_PCMM_STATUS_OBJ_IDL
+
+#pragma ciao lem "AGSP_PCMM_Status_objE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    ///@interface PCMM_Status_obj 
+    interface PCMM_Status_obj {
+
+        void reportAsyncStatus();
+    };
+
+};
+
+#endif // CX_PORTS__POINTCLICKMODE__AGSP_PCMM_STATUS_OBJ_IDL
+
+/// @}
+

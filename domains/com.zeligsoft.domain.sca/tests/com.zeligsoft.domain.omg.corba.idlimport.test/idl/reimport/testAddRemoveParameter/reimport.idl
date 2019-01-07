@@ -1,0 +1,43 @@
+module Reimport
+{
+
+	struct TestStruct {
+		long x;
+		float y;
+	};
+	
+	enum TestEnum {
+		FIELD1,
+		FIELD2
+	};
+	
+	exception TestException {
+		long code;
+	};
+	
+	const long BOB = 75;
+	
+	interface TestInterface {
+	
+		attribute short testReadonly;
+			
+		attribute long x setraises( TestException ) getraises ( TestException );
+		
+		long y(in long param1, out float param2, in short param3) raises( TestException );
+		
+	};
+	
+	union TestUnion switch(long)
+	{
+		case 1: string mem1;
+  		case 2: long mem2;
+		default: octet mem3;
+	};
+	
+	typedef sequence<long> LongSequence;
+	
+	typedef long FooType;
+	
+	
+	
+};

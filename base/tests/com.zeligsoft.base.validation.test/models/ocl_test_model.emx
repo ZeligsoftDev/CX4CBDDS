@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OCLTest="http:///schemas/OCLTest/_1rVSkFjCEd2XOcTgMndlVg/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/OCLTest/_1rVSkFjCEd2XOcTgMndlVg/0 ../profiles/test_ocl.profile.uml#_1rVSlFjCEd2XOcTgMndlVg">
+  <uml:Model xmi:id="_J4hE8FjAEd2XOcTgMndlVg" name="ocl_test_model">
+    <packageImport xmi:id="_J4hE9FjAEd2XOcTgMndlVg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_O2uEUFjAEd2XOcTgMndlVg" name="Amy">
+      <ownedAttribute xmi:id="_ZS69cFjAEd2XOcTgMndlVg" name="Sally" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_VJUq0FjAEd2XOcTgMndlVg" name="Joe">
+      <ownedAttribute xmi:id="_XxiDMFjAEd2XOcTgMndlVg" name="Bob" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_0FZ3IGL1Ed22R78KyY069Q" name="Zoe">
+      <ownedAttribute xmi:id="_6CIUQGL1Ed22R78KyY069Q" name="Bill" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedAttribute>
+    </packagedElement>
+    <profileApplication xmi:id="_J4hE9VjAEd2XOcTgMndlVg">
+      <eAnnotations xmi:id="_J4hE9ljAEd2XOcTgMndlVg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_J4hE91jAEd2XOcTgMndlVg">
+      <eAnnotations xmi:id="_J4hE-FjAEd2XOcTgMndlVg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_J4hE-VjAEd2XOcTgMndlVg">
+      <eAnnotations xmi:id="_J4hE-ljAEd2XOcTgMndlVg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_WQUAsFjDEd2q885a2u2Ktg">
+      <eAnnotations xmi:id="_WQcjkFjDEd2q885a2u2Ktg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../profiles/test_ocl.profile.uml#_1rVSlFjCEd2XOcTgMndlVg"/>
+      </eAnnotations>
+      <appliedProfile href="../profiles/test_ocl.profile.uml#_1rVSkVjCEd2XOcTgMndlVg"/>
+    </profileApplication>
+  </uml:Model>
+  <OCLTest:Thing xmi:id="_YUZYUFjDEd2q885a2u2Ktg" base_Classifier="_VJUq0FjAEd2XOcTgMndlVg"/>
+  <OCLTest:Thing xmi:id="_ZhnZYFjDEd2q885a2u2Ktg" base_Classifier="_O2uEUFjAEd2XOcTgMndlVg"/>
+  <OCLTest:Other xmi:id="_aazrMFjDEd2q885a2u2Ktg" base_Property="_ZS69cFjAEd2XOcTgMndlVg"/>
+  <OCLTest:Other xmi:id="_bV1JAFjDEd2q885a2u2Ktg" base_Property="_XxiDMFjAEd2XOcTgMndlVg"/>
+  <OCLTest:SubThing xmi:id="_4mL6sGL1Ed22R78KyY069Q" isEnabled="true" base_Classifier="_0FZ3IGL1Ed22R78KyY069Q"/>
+  <OCLTest:Other xmi:id="_8idjAGL1Ed22R78KyY069Q" base_Property="_6CIUQGL1Ed22R78KyY069Q"/>
+</xmi:XMI>

@@ -1,0 +1,140 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+import emf;
+import uml;
+
+
+String getCoreFramework(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getCoreFramework(org.eclipse.uml2.uml.Property)
+;
+
+String getORB(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getORB(org.eclipse.uml2.uml.Property)
+;
+
+String getIDLCompilerOutputOption(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getIDLCompilerOutputOption(org.eclipse.uml2.uml.Property)
+;
+
+String getIDLCompilerIncludeOption(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getIDLCompilerIncludeOption(org.eclipse.uml2.uml.Property)
+;
+
+String getIDLCompiler(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getIDLCompiler(org.eclipse.uml2.uml.Property)
+;
+
+String getIDLCompilerIncludePaths(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getIDLCompilerIncludePaths(org.eclipse.uml2.uml.Property)
+;
+
+String getIDLCompilerOptons(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getIDLCompilerOptons(org.eclipse.uml2.uml.Property)
+;
+
+Collection getSCAImplementations(Component component) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getSCAImplementations(org.eclipse.uml2.uml.Component)
+;
+
+String getSCATargetName(NamedElement artifact) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getSCATargetName(org.eclipse.uml2.uml.NamedElement)
+;
+
+String getSCABuildEnvironmentName(Artifact artifact) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getSCABuildEnvironmentName(org.eclipse.uml2.uml.Artifact)
+;
+
+String getIDLTarget(Property property, EObject e) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getIDLTarget(org.eclipse.uml2.uml.Property, org.eclipse.emf.ecore.EObject)
+;
+
+Property getSCABuildEnvironment(Artifact artifact) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getSCABuildEnvironment(org.eclipse.uml2.uml.Artifact)
+;
+
+boolean hasSCABuild(Artifact artifact) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.hasSCABuild(org.eclipse.uml2.uml.Artifact)
+;
+
+String getIDLName(EObject e) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getIDLName(org.eclipse.emf.ecore.EObject)
+;
+
+String getIDLDirectory(EObject obj) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getIDLDirectory(org.eclipse.emf.ecore.EObject)
+;
+
+String getCoreFrameworkDefines(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getCoreFrameworkDefines(org.eclipse.uml2.uml.Property)
+;
+
+String getCoreFrameworkIncludes(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getCoreFrameworkIncludes(org.eclipse.uml2.uml.Property)
+;
+
+String getCoreFrameworkLibraries(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getCoreFrameworkLibraries(org.eclipse.uml2.uml.Property)
+;
+
+String getCoreFrameworkLibraryPaths(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getCoreFrameworkLibraryPaths(org.eclipse.uml2.uml.Property)
+;
+
+String getORBDefines(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getORBDefines(org.eclipse.uml2.uml.Property)
+;
+
+String getORBIncludes(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getORBIncludes(org.eclipse.uml2.uml.Property)
+;
+
+String getORBLibraries(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getORBLibraries(org.eclipse.uml2.uml.Property)
+;
+
+String getORBLibraryPaths(Property buildEnv) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getORBLibraryPaths(org.eclipse.uml2.uml.Property)
+;
+
+String addSCAMakeTarget(NamedElement element, String targetName) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.addSCAMakeTarget(org.eclipse.uml2.uml.NamedElement, java.lang.String)
+;
+
+String getFullInterfaceName(Interface aInterface) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getFullInterfaceName(org.eclipse.uml2.uml.Interface)
+;
+
+Collection getSCADependentIDLFiles(EObject aInterface) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getSCADependentIDLFiles(org.eclipse.emf.ecore.EObject)
+;
+
+Collection getSCAIDLTargetFiles(Component ci) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getSCAIDLTargetFiles(org.eclipse.uml2.uml.Component)
+;
+
+Collection getSCAIDLInterfaces(Component ci) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getSCAIDLInterfaces(org.eclipse.uml2.uml.Component)
+;
+
+boolean hasSCAGeneratedSource(String dir, Interface i) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.hasSCAGeneratedSource(java.lang.String, org.eclipse.uml2.uml.Interface)
+;	
+
+Collection getSCAPorts(Component component) :
+JAVA com.zeligsoft.domain.sca.build.xtend.utils.SCABuildEnvFuncs.getSCAPorts(org.eclipse.uml2.uml.Component)
+;

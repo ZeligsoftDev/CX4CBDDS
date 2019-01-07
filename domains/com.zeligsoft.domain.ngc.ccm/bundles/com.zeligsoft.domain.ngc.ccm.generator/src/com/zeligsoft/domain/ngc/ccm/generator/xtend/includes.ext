@@ -1,0 +1,330 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+import CORBADomain::IDL;
+import CCM::CCM_Component;
+import CCM::CCM_Implementation;
+import idl;
+import ZMLMM::ZML_Component;
+import DDS4CCM::DDSExtensions;
+import IDL3Plus::Generics;
+import IDL3Plus::Connectors;
+import DDS4CCM::DDS4CCM;
+import IDL3Plus::IDL3Plus;
+
+extension org::eclipse::xtend::util::stdlib::issues;
+extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
+extension com::zeligsoft::domain::omg::ccm::generator::extensions::mainTransform;
+extension com::zeligsoft::domain::omg::ccm::generator::extensions::scopedNames;
+extension com::zeligsoft::domain::omg::ccm::generator::extensions::CCM_IDL_Utils;
+extension com::zeligsoft::domain::ngc::ccm::generator::xtend::fileNames;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::metamodel;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::utils;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::IDL3Plus_Utils;
+
+Void processIncludeDependency(IDLIncludeDependency dependency, idl::Specification spec) :
+	addIncludes(dependency.includee.fileName(), spec);
+
+cached Void createComponentsIDLIncludeForEvent(idl::Specification spec) :
+	spec.definitions.add(createIfndef("DDS_EVENTS")) ->
+	spec.createComponentsIDLInclude() ->
+	spec.definitions.add(createEndIf());
+
+Void createModuleInstantiationIncludes(idl::Specification spec, ModuleInstantiation inst ) :
+	let name = inst.moduleBinding.template.eContainer.zdlAsNamedElement().qualifiedName :
+	let include_names = getIncludeFileName(name) :
+	let include = include_names.createInclude(inst) :
+	if(!spec.definitions.containsAll(include)) then {
+		spec.definitions.addAll(include_names.createInclude(inst))
+	};
+
+create idl::Preproc_Include createInclude(String include_name, Object element ) :
+	include_name.createIncludeFileName(this);
+	
+create idl::FileName createIncludeFileName(String include_name, idl::Preproc_Include include ) :
+	this.name.add(include_name) ->
+	include.setValue(this);
+
+create idl::Preproc_Include createCCMDDSInclude(idl::Specification spec) :
+	let file = new idl::FileName :
+		file.name.add("ccm_dds.idl") ->
+		this.setValue(file) ->
+		spec.definitions.add(this);
+	
+List[String] getIncludeFileName(String name) :
+	JAVA com.zeligsoft.domain.ngc.ccm.utils.CCMXtendUtils.getIncludeFileName(java.lang.String);
+	
+	
+Void processIncludes(CORBAInterface self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	self.zdlAsInterface().getGenerals().addIncludesFor(spec) ->
+	self.ownedAttribute.idlType.addIncludesFor(spec) ->
+	self.ownedAttribute.getraises.addIncludesFor(spec) ->
+	self.ownedAttribute.setraises.addIncludesFor(spec) ->
+	self.ownedOperation.ownedParameter.idlType.addIncludesFor(spec) ->
+	self.ownedOperation.idlType.addIncludesFor(spec) ->
+	self.ownedOperation.exceptionDef.addIncludesFor(spec) ->
+	self.contents.processDefnIncludes(spec);
+	
+Void processIncludes(Home self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	self.zdlAsClass().getGenerals().addIncludesFor(spec) ->
+	self.export.typeSelect(CORBAAttribute).idlType.addIncludesFor(spec) ->
+	self.export.typeSelect(CORBAAttribute).getraises.addIncludesFor(spec) ->
+	self.export.typeSelect(CORBAAttribute).setraises.addIncludesFor(spec) ->
+	self.operation.ownedParameter.idlType.addIncludesFor(spec) ->
+	self.operation.typeSelect(CORBAOperation).idlType.addIncludesFor(spec) ->
+	self.operation.exceptionDef.addIncludesFor(spec) ->
+	self.export.processDefnIncludes(spec);
+	
+Void processIncludes(Event self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	self.zdlAsInterface().getGenerals().addIncludesFor(spec) ->
+	self.ownedAttribute.idlType.addIncludesFor(spec) ->
+	self.operation.zdlAsOperation().ownedParameter.addIncludesFor(spec);
+	
+Void processIncludes(CCMComponent self, idl::Specification spec) :
+	let messagePorts = self.ownedPort.typeSelect(InterfacePort):
+	let eventPorts = self.ownedPort.typeSelect(EventPort) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+		self.baseComponent().addIncludesFor(spec) ->
+		self.supportsInterface().addIncludesFor(spec) ->
+		self.ownedAttribute.idlType.addIncludesFor(spec) ->
+		messagePorts.usesInterface().addIncludesFor(spec) ->
+		messagePorts.providesInterface().addIncludesFor(spec) ->
+		if !eventPorts.isEmpty then processIncludesEventPortHelper(eventPorts, spec);
+		
+Void processIncludes(TemplateModule self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	// A module instantiation in the template module is an alias. The alias parameters must be a subset of the module parameters
+	// so they cannot generate an include. However the type of the module instantiation could generate an include.
+	self.zdlAsPackage().packagedElement.typeSelect(ModuleInstantiation).select( s | createModuleInstantiationIncludes(spec, s)) ->
+	self.zdlAsPackage().packagedElement.typeSelect(ConnectorDef).select(s | processIncludes(s, spec)) ->
+	self.zdlAsPackage().packagedElement.typeSelect(CORBAClassifierContained).select(s | processIncludes(s, spec)) ->
+	self.zdlAsPackage().packagedElement.typeSelect(Contained).select(s | processIncludes(s, spec));
+	
+Void processIncludes(ConnectorDef self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	self.baseConnector().addIncludesFor(spec) ->
+	self.ownedAttribute.idlType.addIncludesFor(spec) ->
+	self.ownedAttribute.getraises.addIncludesFor(spec) ->
+	self.ownedAttribute.setraises.addIncludesFor(spec);
+
+Void processIncludes(ExtendedPortType self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec);
+	
+Void processIncludes(ModuleInstantiation self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec);
+	
+private Void processIncludesEventPortHelper(List[EventPort] ports, idl::Specification spec) :
+	spec.definitions.add(createIfndef("DDS_EVENTS")) ->
+	ports.publishesEvent.addIncludesFor(spec) ->
+	ports.consumesEvent.addIncludesFor(spec)  ->
+	spec.definitions.add(createEndIf());
+
+Void processDefnIncludes(IDLIncludeDependency dependency, idl::Specification spec) :
+	{};
+	
+Void processDefnIncludes(uml::Package self, idl::Specification spec) :
+	self.packagedElement().processDefnIncludes(spec);
+	
+Void processDefnIncludes(IDLFileSpecification self, idl::Specification spec) :
+	{};
+		
+Void processDefnIncludes(CORBAModule self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	self.contents.processDefnIncludes(spec);
+	
+Void processDefnIncludes(CORBAArray self, idl::Specification spec) :
+	let arrayType = self.getType() :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	if(self.requiresInclude(arrayType)) then
+		self.getType().addIncludesFor(spec) ->
+	self.bounds.processDefnIncludes(self, spec);
+
+Void processDefnIncludes(CORBABound self, CORBAModuleContained container, idl::Specification spec) :
+    let constant = self.constant :
+    if(constant != null) then {
+		container.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+		if(container.requiresInclude(constant)) then
+			constant.addIncludesFor(spec)
+	};
+
+Void processDefnIncludes(CORBAUnion self, idl::Specification spec) :
+	let unionType = self.getType() :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	if(self.requiresInclude(unionType)) then
+		self.getType().addIncludesFor(spec) ->
+	self.zdlAsDataType().ownedAttribute.typeSelect(CORBACase).processDefnIncludes(self, spec);
+
+Void processDefnIncludes(CORBASequence self, idl::Specification spec) :
+	let seqType = self.getType() :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	if(self.requiresInclude(seqType)) then
+		self.getType().addIncludesFor(spec) ->
+	self.bounds != null ? 
+		processDefnIncludes(self.bounds, self, spec) :
+		{};
+
+Void processDefnIncludes(CORBACase self, CORBAModuleContained container, idl::Specification spec) :
+	let caseType = self.zdlAsProperty().type :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	if(container.requiresInclude(caseType)) then
+		caseType.addIncludesFor(spec);
+
+Void processDefnIncludes(CORBABounded self, idl::Specification spec) :
+	processDefnIncludes(self.bounds, self, spec);
+	
+Void processDefnIncludes(CORBAStruct self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	self.members.idlType.addIncludesFor(spec);
+	
+Void processDefnIncludes(CORBATypeDef self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	if self.type != null then self.type.addIncludesFor(spec) 
+	else self.getType().addIncludesFor(spec);
+	
+Void processDefnIncludes(CORBAException self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	self.members.idlType.addIncludesFor(spec);
+	
+Void processDefnIncludes(CORBAModuleContained self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec);
+	
+Void processDefnIncludes(CORBAInterface self, idl::Specification spec ) :
+	{}; // they get their own file
+
+Void processDefnIncludes(CCMComponent self, idl::Specification spec ) :
+	{}; // they get their own file
+
+Void processDefnIncludes(ConnectorDef self, idl::Specification spec ) :
+	{}; // they get their own file
+	
+Void processDefnIncludes(ExtendedPortType self, idl::Specification spec ) :
+	{}; // they get their own file
+
+Void processDefnIncludes(Event self, idl::Specification spec ) :
+	{}; // they get their own file
+
+Void processDefnIncludes(DDSMessage self, idl::Specification spec ) :
+	{}; // they get their own file
+
+	
+Void processDefnIncludes(MonolithicImplementation self, idl::Specification spec) :
+	{};
+	
+Void processDefnIncludes(emf::EObject self, idl::Specification spec) :
+	{};
+	
+Void processDefnIncludes(Void self, idl::Specification spec) :
+	{};
+	
+Void processIncludes(emf::EObject self, idl::Specification spec) :
+	{};
+	
+Void processIncludes(Void self, idl::Specification spec) :
+	{};
+	
+Void processIncludes(DDSMessage self, idl::Specification spec) :
+	self.zdlAsNamedElement().clientDependency.typeSelect(IDLIncludeDependency).processIncludeDependency(spec) ->
+	self.fields.idlType.addIncludesFor(spec);
+	
+Void processDefnIncludes(ModuleInstantiation self, idl::Specification spec) :
+	self.moduleBinding.parameterBinding.type.typeSelect(DDSMessage).addIncludesFor(spec);	
+	
+private cached Void addIncludesFor(CORBAModuleContained element, idl::Specification spec) :
+	addIncludesFor(element.eContainer, spec);
+	
+private cached Void addIncludesFor(CORBAModule element, idl::Specification spec) :
+	let include_names = getIncludeFileName(element.zdlAsNamedElement().qualifiedName) :
+	include_names.size > 0 ?
+	include_names.addSystemIncludes(spec) 
+	: addIncludesFor(element.eContainer, spec);
+	
+private cached Void addIncludesFor(CORBAPrimitive element, idl::Specification spec) :
+	{};
+
+private cached Void addIncludesFor(IDL3Plus::Generics::TemplateParameterType element, idl::Specification spec) :
+	{};
+	
+private cached Void addIncludesFor(uml::Package element, idl::Specification spec) :
+	addIncludes(element.fileName(), spec);
+	
+private cached Void addIncludesFor(ExtendedPortType type, idl::Specification spec) :
+	addIncludes(type.fileName(), spec);
+	
+private cached Void addIncludesFor(CORBAInterface interfaceToAddIncludeFor,idl::Specification spec) :
+	addIncludes(interfaceToAddIncludeFor.fileName(), spec);
+	
+private cached Void addIncludesFor(ConnectorDef connectorToAddIncludeFor,idl::Specification spec) :
+	addIncludes(connectorToAddIncludeFor.fileName(), spec);
+	
+private cached Void addIncludesFor(CCMComponent componentToAddIncludeFor,idl::Specification spec) :
+	addIncludes(componentToAddIncludeFor.fileName(), spec);
+	
+private cached Void addIncludesFor(Home home, idl::Specification spec) :
+	home.manages != null ? 
+		addIncludes(home.manages.component.fileName(), spec) :
+		{};
+		
+private cached Void addIncludesFor(Event eventToAddIncludeFor, idl::Specification spec) :
+	addIncludes(eventToAddIncludeFor.fileName(), spec);
+		
+/*
+ * Helper method to create includes using quotes.
+ */
+private cached Void addIncludes(String filename, idl::Specification spec) :
+	let preprocIncludes = new idl::Preproc_Include :
+	    if filename.startsWith("CCM_DDS_") 
+	    	then spec.definitions.add(createCCMDDSInclude(spec)) 
+	    	else {
+	    		preprocIncludes.setStrValue(filename + ".idl") ->
+				spec.definitions.add(preprocIncludes)
+			};
+
+/*
+ * Helper method to create includes using < > brackets.
+ */
+private cached Void addSystemIncludes(String filename, idl::Specification spec) :
+	let preprocIncludes = new idl::Preproc_Include :
+	    if filename.startsWith("CCM_DDS_") 
+	    	then spec.definitions.add(createCCMDDSInclude(spec)) 
+	    	else {
+	    		let file = new idl::FileName :
+				file.name.add(filename) ->
+				preprocIncludes.setValue(file) ->
+				spec.definitions.add(preprocIncludes)
+			};
+
+private cached Void addIncludesFor(DDSMessage element, idl::Specification spec) :
+	addIncludes(element.fileName(), spec);
+	
+private cached Void addIncludesFor(emf::EObject objToAddIncludeFor,idl::Specification spec) :
+	{};
+	
+private cached Void addIncludesFor(Void objToAddIncludeFor,idl::Specification spec) :
+	{};
+	
+private Boolean requiresInclude(CORBAModuleContained self, CORBAModuleContained ref) :
+	JAVA com.zeligsoft.domain.ngc.ccm.utils.CCMXtendUtils.requiresInclude(
+		org.eclipse.uml2.uml.Element, org.eclipse.uml2.uml.Element);
+
+private Boolean requiresInclude(CORBAModuleContained self, CORBAConstant ref) :
+	JAVA com.zeligsoft.domain.ngc.ccm.utils.CCMXtendUtils.requiresInclude(
+		org.eclipse.uml2.uml.Element, org.eclipse.uml2.uml.Element);
+				
+private Boolean requiresInclude(CORBAModuleContained self, CORBAPrimitive ref) :
+	false;

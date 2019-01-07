@@ -1,0 +1,35 @@
+/// @defgroup AGSP_Targets_defn Targets_defn
+/// @{
+/// 
+/// @file AGSP_Targets_defn.idl
+/// @brief Targets_defn definitions definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__3CAMERAMODES__AGSP_TARGETS_DEFN_IDL
+#define CX_PORTS__3CAMERAMODES__AGSP_TARGETS_DEFN_IDL
+
+#include "AGSP_Common_defn.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef TargetID_t
+    typedef long long TargetID_t;
+
+    /// @struct TargetStruct
+    struct TargetStruct {
+        AGSP::TargetID_t targetID;
+        double azOffset;
+        double elOffset;
+        AGSP::SystemTime timeTag;
+    }; //@top-level false
+
+    /// @typedef TargetListType
+    typedef sequence <TargetStruct, 100> TargetListType;
+};
+
+#endif // CX_PORTS__3CAMERAMODES__AGSP_TARGETS_DEFN_IDL
+
+/// @}
+

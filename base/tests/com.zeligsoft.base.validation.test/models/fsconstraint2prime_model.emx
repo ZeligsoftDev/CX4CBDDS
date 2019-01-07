@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:FSConstraint2PrimeTest="http:///schemas/FSConstraint2PrimeTest/_bsFv8HWDEd6Vos-2NilXtg/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/FSConstraint2PrimeTest/_bsFv8HWDEd6Vos-2NilXtg/0 ../profiles/fsconstraint2primetest.profile.uml#_bsO543WDEd6Vos-2NilXtg">
+  <uml:Model xmi:id="_4SskAnWDEd6Vos-2NilXtg" name="fsconstraint2prime_model">
+    <packageImport xmi:id="_4SskBnWDEd6Vos-2NilXtg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_60_sMHWEEd6Vos-2NilXtg" name="Simon"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_7xyroHWEEd6Vos-2NilXtg" name="Sean"/>
+    <profileApplication xmi:id="_4SskB3WDEd6Vos-2NilXtg">
+      <eAnnotations xmi:id="_4SskCHWDEd6Vos-2NilXtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_4SskCXWDEd6Vos-2NilXtg">
+      <eAnnotations xmi:id="_4SskCnWDEd6Vos-2NilXtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_4SskC3WDEd6Vos-2NilXtg">
+      <eAnnotations xmi:id="_4SskDHWDEd6Vos-2NilXtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_6wlJAHYCEd6FO6LNbMIUsg">
+      <eAnnotations xmi:id="_6wlJAXYCEd6FO6LNbMIUsg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../profiles/fsconstraint2primetest.profile.uml#_bsO543WDEd6Vos-2NilXtg"/>
+      </eAnnotations>
+      <appliedProfile href="../profiles/fsconstraint2primetest.profile.uml#_bsO54HWDEd6Vos-2NilXtg"/>
+    </profileApplication>
+  </uml:Model>
+  <FSConstraint2PrimeTest:Student xmi:id="_G6lAsHYDEd6FO6LNbMIUsg" age="19" base_Actor="_7xyroHWEEd6Vos-2NilXtg"/>
+  <FSConstraint2PrimeTest:Professional xmi:id="_JtZGkHYDEd6FO6LNbMIUsg" isWorking="true" age="21" base_Actor="_60_sMHWEEd6Vos-2NilXtg"/>
+</xmi:XMI>

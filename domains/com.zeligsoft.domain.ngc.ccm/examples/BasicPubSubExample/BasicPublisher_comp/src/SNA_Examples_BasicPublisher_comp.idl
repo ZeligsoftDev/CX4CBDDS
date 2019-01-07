@@ -1,0 +1,29 @@
+/// @defgroup SNA_Examples_BasicPublisher_comp BasicPublisher_comp
+/// @{
+/// 
+/// @file SNA_Examples_BasicPublisher_comp.idl
+/// @brief BasicPublisher_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_BASICPUBLISHER_COMP__SRC__SNA_EXAMPLES_BASICPUBLISHER_COMP_IDL
+#define CX_BASICPUBLISHER_COMP__SRC__SNA_EXAMPLES_BASICPUBLISHER_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao lem "SNA_Examples_BasicPublisher_compE.idl"
+#include "SNA_Examples_TestData_conn.idl"
+#include <ccm_dds.idl>
+
+/// @namespace SNA_Examples 
+module SNA_Examples {
+    component BasicPublisher_comp {
+        port TestData_conn::DDS_Write testDataPub;
+        provides CCM_DDS::ConnectorStatusListener testDataPubConnStatus;
+    };
+
+};
+
+#endif // CX_BASICPUBLISHER_COMP__SRC__SNA_EXAMPLES_BASICPUBLISHER_COMP_IDL
+
+/// @}
+

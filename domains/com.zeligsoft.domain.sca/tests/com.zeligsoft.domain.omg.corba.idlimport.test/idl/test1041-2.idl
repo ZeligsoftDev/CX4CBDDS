@@ -1,0 +1,8 @@
+// Attribute namespace conflict
+
+interface int1041b {
+
+attribute string attr1;
+attribute long ATTR1;	// conflict resolution is case insensitive, so this is still an error.
+
+};

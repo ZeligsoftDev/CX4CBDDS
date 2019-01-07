@@ -1,0 +1,141 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <meta name="generator" content="Adobe RoboHelp 9">
+<title>CBDDS Workflow Overview</title>
+<link rel="stylesheet" type="text/css" href="helpstyle.css">
+<script type="text/javascript" language="JavaScript">
+//<![CDATA[
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//]]>
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+-->
+</style>
+<script type="text/javascript" language="javascript1.2" src="whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whtopic.js"></script>
+
+</head>
+
+<body outputfile="workflow.html" title="CX SCA Workflow Overview"><script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+if (window.gbWhTopic)
+{
+	var strUrl = document.location.href;
+	var bc = 0;
+	var n = strUrl.toLowerCase().indexOf("bc-");
+	if(n != -1)
+	{
+		document.location.href = strUrl.substring(0, n);
+		bc = strUrl.substring(n+3);
+	}
+
+	if (window.addTocInfo)
+	{
+	addTocInfo("CX Online Help\nWorking with CX for CBDDS\nCBDDS Workflow Overview");
+
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(0);
+
+	
+	
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("index.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+
+//-->
+//]]></script>
+<h1>CBDDS Workflow Overview</h1>
+<p>CBDDS is currently 
+ used as a DDS4CCM design tool and deployment planning tool.</p>
+<h2>Designing Components and Applications</h2>
+<p>CBDDS supports both 
+ &quot;top-down&quot; and &quot;bottom-up&quot; workflows.</p>
+<p>In top-down, architects decompose the system into its constituent components 
+ and design their connections by starting with the highest level component 
+ assemblies and decomposing each component into another assembly or a monolithic 
+ component. The component interfaces are then defined in detail.</p>
+<p>Bottom-up design starts with the specification of the interfaces and 
+ messages. These interfaces may be modeled using CBDDS 
+ or imported from externally created IDL. Components are then designed 
+ with ports that implement these interfaces. Architects can then assemble 
+ these well-defined components into higher-level components or applications.</p>
+<p>CBDDS in non-prescriptive 
+ as to the workflow a development team may use. Combinations of top-down 
+ and bottom-up can be used by multi-person, multi-discipline, multi-location 
+ teams.</p>
+<p>Team members can validate their designs at any point during the workflow.</p>
+<p>Upon completion of a design workflow, CBDDS 
+ will generate the IDL 2, 3, and 3+ files that define the interfaces and 
+ components.</p>
+<h2>Deployment Planning</h2>
+<p>CBDDS is used to</p>
+<ul type="circle">
+	<li class="p"><p>Model one or more target environments</p></li>
+	<li class="p"><p>Create deployment plans</p></li>
+	<li class="p"><p>Generate deployment plans</p></li>
+</ul>
+<p>A target environment or Domain is comprised of the systems computing 
+ nodes, interconnects, and bridges. CBDDS 
+ is used to model a target (what nodes and how they are connected) and 
+ specify the resources provided and deployment planning requirements.</p>
+<p>A deployment plan consists of a specific assignment of software components 
+ to a target environment. This also includes assignment of components to 
+ processes for collocation or separation.</p>
+<p>Once a valid deployment plan has been created, CBDDS 
+ can generate the deployment artefacts required by the DAnCE deployment 
+ management software. This includes the CDD file for the target and the 
+ CDP file for the deployment.</p>
+<div class="runningfooter" id="dochomefooter">
+	<a href="mailto:support@prismtech.com" shape="rect" style="color: #0000ff; 
+		 text-decoration: underline; ">Provide feedback</a><br style="clear: none;">
+	
+	<hr align="center">
+	<br>Copyright <sup>©</sup> 2011 PrismTech Ltd. All rights 
+	 reserved.
+</div>
+<script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+
+
+highlightSearch();
+//-->
+//]]></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+/// @defgroup AMIT_Control2_obj Control2_obj
+/// @{
+/// 
+/// @file AMIT_Control2_obj.idl
+/// @brief Control2_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__AMIT_CONTROL2_OBJ_IDL
+#define CX_PORTS__AMIT_CONTROL2_OBJ_IDL
+
+#pragma ciao lem "AMIT_Control2_objE.idl"
+#pragma ami4ccm interface "AMIT::Control2_obj"
+#pragma ciao lem "AMIT_Control2_objAE.idl"
+#pragma ami4ccm idl "AMIT_Control2_objA.idl"
+
+/// @namespace AMIT 
+module AMIT {
+
+    ///@interface Control2_obj 
+    interface Control2_obj {
+
+        void bar();
+    };
+
+};
+
+#endif // CX_PORTS__AMIT_CONTROL2_OBJ_IDL
+
+/// @}
+

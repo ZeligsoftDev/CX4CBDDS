@@ -1,0 +1,416 @@
+«REM»
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+«ENDREM»
+ 
+«IMPORT uml»
+«IMPORT templates::common»
+
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::FunctionNames»
+«EXTENSION extensions::StringHelpers»
+
+
+«DEFINE requiresInterfaceSourceFile FOR Interface»
+«FILE "ifs/" + getNamedElementName(this) + "/c/Default/" + getInterfaceRequiresSourceFileName()»
+«EXPAND Copyright::copyright FOR this»
+/**
+ *
+ * FILE: «getInterfaceRequiresDefFileName(this)»
+ *
+ */
+
+#include "«getInterfaceRequiresDefFileName(this)»"
+#include "zceOperatingEnvironment.h"
+#include "zceSendHandler.h"
+
+
+struct zce_struct_RequiresPort_«name»
+{
+	/* Inherited interface */
+	«FOREACH this.getOperations() AS op»
+	void  (*«op.name»)( zceBase_«name» basePtr, «FOREACH op.ownedParameter AS p»«IF p.type.name.ToUpperCase() == "STRING"»char*«ENDIF» «p.name», «ENDFOREACH»int iPortIndex, int iConnIndex  ZCE_EXC_ENV_ARG );
+	«ENDFOREACH»
+	int internal_id_;
+	void** handlers_;
+	void** commData_;
+	int numConnection_;
+#ifdef ZCE_NAMES_
+	char friendly_id_[ZCE_NAMES_MAX_LEN_];
+#endif
+};
+
+
+/*******************************************************************
+ *
+ *
+ *  Requires Port base functions
+ *
+ *
+ *******************************************************************/ 
+void zceRequiresPort_«name»_construct(zceRequiresPort_«name» self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->internal_id_ = 0;
+	self->numConnection_ = 0;
+	self->handlers_ = NULL;
+	self->commData_ = NULL;
+#ifdef ZCE_NAMES_
+	self->friendly_id_[0] = '\0';
+#endif /* ZCE_NAMES_ */
+«FOREACH this.getOperations() AS op»
+	self->«op.name» = zceRequiresPort_«name»_«op.name»;
+«ENDFOREACH»
+	
+}
+
+void zceRequiresPort_«name»_destruct(zceRequiresPort_«name» self ZCE_EXC_ENV_ARG)
+{
+	int i = 0;
+	ZCE_ASSERT_EXCEPTION_VOID
+	ZCE_DELETE(self->handlers_);
+	for (i=0;i<self->numConnection_;i+=1)
+	{
+		ZCE_DELETE(self->commData_[i]);
+	}
+	ZCE_DELETE(self->commData_);
+#ifdef ZCE_NAMES_
+	self->friendly_id_[0] = '\0';
+#endif /* ZCE_NAMES_ */
+«FOREACH this.getOperations() AS op»
+	self->«op.name» = NULL;
+«ENDFOREACH»
+	self->internal_id_ = 0;
+	self->numConnection_ = 0;
+}
+
+zceRequiresPort_«name» zceRequiresPort_«name»_allocate(ZCE_EXC_ENV_SINGLE_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	zceRequiresPort_«name» self = ZCE_NEW(struct zce_struct_RequiresPort_«name»);
+	return self;
+}
+
+void zceRequiresPort_«name»_init(zceRequiresPort_«name» self, int numConnection ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->numConnection_ = numConnection;
+	self->handlers_ = ZCE_NEW_ARRAY(void*, numConnection ZCE_EXC_ENV_PARAM);
+	self->commData_ = ZCE_NEW_ARRAY(void*, numConnection ZCE_EXC_ENV_PARAM);
+}
+
+int zceRequiresPort_«name»_getConnNumber(zceRequiresPort_«name» self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	return self->numConnection_;
+}
+
+/*******************************************************************
+ *
+ *
+ *  Requires Port SendHandler/CommData getter and setter functions 
+ *
+ *
+ *******************************************************************/ 
+ 
+void* zceRequiresPort_«name»_getHandler(zceRequiresPort_«name» self, int index ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	return self->handlers_[index];
+}
+
+void zceRequiresPort_«name»_setHandler(zceRequiresPort_«name» self, int index, void* handler ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->handlers_[index] = handler;
+}
+
+void* zceRequiresPort_«name»_getCommData(zceRequiresPort_«name» self, int index ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	return self->commData_[index];
+}
+
+void zceRequiresPort_«name»_setCommData(zceRequiresPort_«name» self, int index, void* commData ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->commData_[index] = commData;
+}
+
+/*******************************************************************
+ *
+ *
+ *  Requires Port API functions 
+ *
+ *
+ *******************************************************************/ 
+«FOREACH this.getOperations() AS op»
+void  zceRequiresPort_«name»_«op.name»( zceBase_«name» basePtr, «FOREACH op.ownedParameter AS p»«IF p.type.name.ToUpperCase() == "STRING"»char*«ENDIF» «p.name», «ENDFOREACH»int iPortIndex, int iConnIndex  ZCE_EXC_ENV_ARG )
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+
+	zceRequiresPort_«name» port = (zceRequiresPort_«name»)basePtr;
+	void * zcebuffer = NULL;
+	/* Mashalling the sending message */
+	struct zceMarshallStruct_«name»_«op.name» * data = 0;
+	zceSendData connConf;
+	void* sendHandler;
+	int i, iStarti = 0, iLen = 0;
+	int functionid = 0;
+
+	if(iConnIndex == ZCE_PORT_BROADCAST)
+	{
+		iStarti = 0;
+		iLen = port->numConnection_;
+	}
+	else
+	{
+		iStarti = iConnIndex;
+		iLen = iConnIndex+1;
+	}
+	for(i = iStarti; i < iLen; ++i)
+	{
+		connConf = port->commData_[i];
+		sendHandler = port->handlers_[i];
+		if(connConf == NULL)
+		{
+			((zceBase_«name»)sendHandler)->«op.name»(((zceBase_«name»)sendHandler), «FOREACH op.ownedParameter AS p»«p.name», «ENDFOREACH»iPortIndex, iConnIndex ZCE_EXC_ENV_PARAM);
+		}
+		else
+		{
+			zcebuffer = ((zceSendHandler)sendHandler)->getTXBuffer(((zceSendHandler)sendHandler),connConf,sizeof(struct zceMarshallStruct_«name»_«op.name»));
+			data = (struct zceMarshallStruct_«name»_«op.name» *)zcebuffer;
+			data->iConnID = connConf->connId;
+			data->iFuncID = functionid;
+			«FOREACH op.ownedParameter AS p»
+			«IF p.type.name.ToUpperCase() == "STRING"»
+			data->«p.name»[0] = '\0';
+			OE_STRNCPY(data->«p.name», «p.name», ZCE_MAX_IDL_STR_LEN);
+			«ENDIF»
+			«ENDFOREACH»
+			((zceSendHandler)sendHandler)->sendData(((zceSendHandler)sendHandler), connConf, (char*)data, sizeof(struct zceMarshallStruct_«name»_«op.name») ZCE_EXC_ENV_PARAM);
+		}
+	}
+}
+«ENDFOREACH»
+#ifdef ZCE_NAMES_
+const char* zceRequiresPort_«name»_getFriendlyId(zceRequiresPort_«name» self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	return self->friendly_id_;
+}
+
+void zceRequiresPort_«name»_setFriendlyId(zceRequiresPort_«name» self, const char* pszFriendlyId ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	OE_STRNCPY(self->friendly_id_, pszFriendlyId, ZCE_NAMES_MAX_LEN_);
+	self->friendly_id_[ZCE_NAMES_MAX_LEN_-1] = 0;
+}
+#endif /* ZCE_NAMES_ */
+
+long zceRequiresPort_«name»_getInternalId(zceRequiresPort_«name» self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	return self->internal_id_;
+}
+
+void zceRequiresPort_«name»_setInternalId(zceRequiresPort_«name» self, long lInternalId ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->internal_id_ = lInternalId;
+}
+
+
+/* End of FILE: «getInterfaceRequiresSourceFileName()» */
+/******************************************************************/
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE requiresInterfaceHeaderFile FOR Interface»
+«FILE "ifs/" + getNamedElementName(this) + "/c/Default/" + getInterfaceRequiresDefFileName()»
+«EXPAND Copyright::copyright FOR this»
+/**
+ *
+ * FILE: «getInterfaceRequiresDefFileName()»
+ *
+ */ 
+
+#ifndef __ZCEREQUIRESPORT_«getNamedElementName().toUpperCase()»_H
+#define __ZCEREQUIRESPORT_«getNamedElementName().toUpperCase()»_H
+
+
+#include "zceBase_«name».h"
+
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+#include "zceOperatingEnvironment.h"
+
+/*******************************************************************
+ *
+ *
+ *  Interface RequiresPort struct + typedefs
+ *
+ *
+ *******************************************************************/  
+struct zce_struct_RequiresPort_«name»;
+typedef struct zce_struct_RequiresPort_«name»* zceRequiresPort_«name»;
+
+/*******************************************************************
+ *
+ *
+ *  Requires Port base functions
+ *
+ *
+ *******************************************************************/   
+/**
+ * zceRequiresPort_«name»_construct: zceRequiresPort_«name»'s constructor
+ * Following the constructor/destructor pattern, every struct has its own matching pair of construct/destruct functions
+ * @param self The zceRequiresPort_«name» struct to which this function applies to.
+ */
+void zceRequiresPort_«name»_construct(zceRequiresPort_«name» self ZCE_EXC_ENV_ARG);
+
+/**
+ * zceRequiresPort_«name»_destruct: zceRequiresPort_«name»'s destructor
+ * Following the constructor/destructor pattern, every struct has its own matching pair of construct/destruct functions
+ * @param self The zceRequiresPort_«name» struct to which this function applies to.
+ */
+void zceRequiresPort_«name»_destruct(zceRequiresPort_«name» self ZCE_EXC_ENV_ARG);
+
+/**
+ * zceRequiresPort_«name»_allocate: zceRequiresPort_«name»'s port allocator
+ * Allocate the memory for the struct
+ * @return The zceRequiresPort_«name» struct.
+ */
+zceRequiresPort_«name» zceRequiresPort_«name»_allocate(ZCE_EXC_ENV_SINGLE_ARG);
+
+/**
+ * zceRequiresPort_«name»_init: zceRequiresPort_«name»'s initialize function
+ * To init the Requires port's sendHandler and commData.
+ * @param self The zceRequiresPort_«name» struct to which this function applies to.
+ * @param numConnection The int represents the number of  SendHandler and commData for this port.
+ */
+void zceRequiresPort_«name»_init(zceRequiresPort_«name» self, int numConnection ZCE_EXC_ENV_ARG);
+
+/**
+ * zceRequiresPort_«name»_getConnNumber: zceRequiresPort_«name»'s connection number getter
+ * To get the connection number.
+ * @param self The zceRequiresPort_«name» struct to which this function applies to.
+ */
+int zceRequiresPort_«name»_getConnNumber(zceRequiresPort_«name» self ZCE_EXC_ENV_ARG);
+
+/*******************************************************************
+ *
+ *
+ *  Requires Port SendHandler/commData getter and setter functions
+ *
+ *
+ *******************************************************************/
+ 
+/**
+ * zceRequiresPort_«name»_getHandler: zceRequiresPort_«name»'s SendHandler getter
+ * Allow one to get SendHandler.
+ * @param port The zceRequiresPort_«name» struct to which this function applies to.
+ * @param index The int represents which SendHandler will be returned.
+ */
+void* zceRequiresPort_«name»_getHandler(zceRequiresPort_«name» self, int index ZCE_EXC_ENV_ARG);
+
+/**
+ * zceRequiresPort_«name»_setHandler: zceRequiresPort_«name»'s SendHandler setter
+ * Allows one to set SendHandler.
+ * @param self The zceRequiresPort_«name» struct to which this function applies to.
+ * @param index The int represents which SendHandler will be set.
+ * @param handler Reference the new handler to be set.
+ */
+void zceRequiresPort_«name»_setHandler(zceRequiresPort_«name» self, int index, void* handler ZCE_EXC_ENV_ARG);
+
+
+/**
+ * zceRequiresPort_«name»_getCommData: zceRequiresPort_«name»'s CommData getter
+ * Allow one to get CommData.
+ * @param self The zceRequiresPort_«name» struct to which this function applies to.
+ * @param index The int represents which CommData will be returned.
+ */
+void* zceRequiresPort_«name»_getCommData(zceRequiresPort_«name» self, int index ZCE_EXC_ENV_ARG);
+
+/**
+ * zceRequiresPort_«name»_setCommData: zceRequiresPort_«name»'s CommData setter
+ * Allows one to set CommData.
+ * @param self The zceRequiresPort_«name» struct to which this function applies to.
+ * @param index The int represents which CommData will be set.
+ * @param commData Reference the new commData to be set.
+ */
+void zceRequiresPort_«name»_setCommData(zceRequiresPort_«name» self, int index, void* commData ZCE_EXC_ENV_ARG);
+
+
+#ifdef ZCE_NAMES_
+/**
+ * zceRequiresPort_«name»_getFriendlyId: friendly id getter
+ * A component may have a string based friendly id if ZCE_NAMES_ is defined. This function allows one to retrieve this friendly id.
+ * @param self The zceRequiresPort_«name» struct to which this function applies to.
+ * @return A const char holding friendly id.
+ */
+const char* zceRequiresPort_«name»_getFriendlyId(zceRequiresPort_«name» self ZCE_EXC_ENV_ARG);
+
+/**
+ * zceRequiresPort_«name»_setFriendlyId: friendly id setter
+ * A component may have a string based friendly id if ZCE_NAMES_ is defined. This function allows one to retrieve this friendly id.
+ * @param self The zceRequiresPort_«name» struct to which this function applies to.
+ * @param pszFriendlyId The const char* that holds the new friendly id to be set.
+ */
+void zceRequiresPort_«name»_setFriendlyId(zceRequiresPort_«name» self, const char* pszFriendlyId ZCE_EXC_ENV_ARG);
+#endif /* ZCE_NAMES_ */
+
+/**
+ * zceRequiresPort_«name»_getInternalId: internal id getter
+ * Allows one to retrieve internal id.
+ * @param self The zceRequiresPort_«name» struct to which this function applies to.
+ * @return internal id.
+ */
+long zceRequiresPort_«name»_getInternalId(zceRequiresPort_«name» self ZCE_EXC_ENV_ARG);
+
+/**
+ * zceRequiresPort_«name»_setInternalId: internal id setter
+ * Allows one to set internal id.
+ * @param self The zceRequiresPort_«name» struct to which this function applies to.
+ * @param lInternalId The long that holds the new internal id to be set.
+ */
+void zceRequiresPort_«name»_setInternalId(zceRequiresPort_«name» self, long lInternalId ZCE_EXC_ENV_ARG);
+
+/*******************************************************************
+ *
+ *
+ *  Requires Port Interface API functions
+ *
+ *
+ *******************************************************************/ 
+«FOREACH this.getOperations() AS op»
+void  zceRequiresPort_«name»_«op.name»( zceBase_«name» basePtr, «FOREACH op.ownedParameter AS p»«IF p.type.name.ToUpperCase() == "STRING"»char*«ENDIF» «p.name», «ENDFOREACH»int iPortIndex, int iConnIndex  ZCE_EXC_ENV_ARG );
+«ENDFOREACH»
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif     /* __ZCEREQUIRESSPORT_«getNamedElementName().toUpperCase()»_H */
+
+/* End of FILE: «getInterfaceRequiresDefFileName()» */
+/******************************************************************/
+«ENDFILE»
+«ENDDEFINE»

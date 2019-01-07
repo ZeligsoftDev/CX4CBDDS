@@ -1,0 +1,234 @@
+<head>
+	<title>Tutorial 3: Platform Development</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="tutorial_3.html" title="Tutorial 3: Platform Development">
+		<h1>Tutorial 3: Platform Development</h1>
+		<p>This tutorial builds on <a href="tutorial1.html">Tutorial 1</a> and <a href="tutorial_2.html">Tutorial 2</a>. In this tutorial, you will
+learn some more advanced skills and concepts. You will learn about:</p>
+		<ul>
+			<li>devices</li>
+			<li>allocation properties</li>
+			<li>nodes</li>
+			<li>device managers</li>
+			<li>domain managers</li>
+		</ul>
+		<p>This tutorial assumes you have completed <a href="tutorial1.html">Tutorial 1</a> and <a href="tutorial_2.html">Tutorial 2</a>.</p>
+		<h2>Open the project and model</h2>
+		<p>In <a href="tutorial2.html">Tutorial 2</a> you created the following elements:</p>
+		<ul>
+			<li>an assembly controller</li>
+			<li>property types and SCA attributes</li>
+			<li>a monolithic implementation</li>
+			<li>monolithic implementation dependencies</li>
+			<li>a freestanding port</li>
+		</ul>
+		<p>In the <strong>Project Explorer</strong> expand the project and model you developed <a href="tutorial1.html">Tutorial 2</a>.</p>
+		<h2>Create a device</h2>
+		<p>The platform is divided into: devices, nodes, and platforms.</p>
+		<p>A device is an abstract software representation of a physical hardware element. Devices are the software view of the hardware element. These elements, 
+allow a platform independent SCA model to include the platform view. Devices are very similar to components - you must configure the device's interfaces and ports.</p>
+		<ol>
+			<li>In the Project Explorer, select <strong>CXTutorial_Model</strong> and create a new package called <strong>Platform</strong>.</li>
+			<li>Right click on the <strong>Platform</strong> package and from the popup menu, select <strong>Add CX</strong> &gt; <strong>Component</strong>.</li>
+			<li>Name the device <strong>Modem</strong> and set the <strong>Type</strong> to <strong>ExecutableDevice</strong>. Click <strong>Finish</strong>.</li>
+			<li>Add <strong>processor</strong> and <strong>OS dependencies</strong> from the <strong>SCADependencies diagram</strong> to the 
+<strong>Modem</strong> diagram. Using the <strong>Palette</strong>, draw <strong>OS</strong> and <strong>Processor</strong> links.</li>
+			<li>Validate the <strong>Modem</strong> package and correct any errors.</li>
+		</ol>
+		<h2>Create ports on the device interface</h2>
+		<p>This is done the same way as you did on the component interface. You will reuse the portTypes you created when adding ports to component interfaces.</p>
+		<ol>
+			<li>Open the <strong>Modem</strong> diagram.</li>
+			<li>In the <strong>Palette</strong>, select <strong>Port</strong> and drop it onto the <strong>ModemInterface</strong> component interface.</li>
+			<li>From the menu, select <strong>Existing Element</strong> and search for <strong>EncryptedDataInv</strong>. Select 
+<strong>&lt;&lt;PortType&gt;&gt; EncryptedDataInv</strong> and name the port <strong>dataSource</strong>.</li>
+			<li>Select the <strong>dataSource</strong> port and in the <strong>Properties View</strong> &gt; <strong>SCA</strong>
+ tab and set <strong>kind</strong> to <strong>data</strong>. </li>
+		</ol>
+		<h2>Define Executable Device SCA properties</h2>
+		<p>This is similar to defining the SCA properties on a component. An executable device has two properties: os_name and processor_name.</p>
+		<ol>
+			<li>Open <strong>Modem</strong> diagram.</li>
+			<li>Right click on the <strong>Modem</strong> structure realization and from the popup menu, select <strong>Add CX</strong> &gt; 
+<strong>SCA Property</strong>.
+Name the property <strong>os_name</strong>.</li>
+			<li>Select <strong>os_name</strong> and in the <strong>Properties View</strong> &gt; <strong>SCA</strong> tab.</li>
+			<li>Click <strong>Edit Type</strong> and choose <strong>os_name</strong>. Set the <strong>Value</strong> to <strong>Linux</strong>.</li>
+			<li>Right click on the <strong>Modem</strong> structure realization and select <strong>Add CX</strong> &gt; <strong>SCA Property</strong>. 
+Name the property <strong>processor_name</strong>.</li>
+			<li>Select <strong>processor_name</strong> and in the <strong>Properties View</strong> &gt; <strong>SCA</strong> tab.</li>
+			<li>Click <strong>Edit Type</strong> and choose <strong>processor_name</strong>. Set the <strong>Value</strong> to <strong>x86</strong>.</li>
+			<li>Save the model.</li>
+		</ol>
+		<h2>Define allocation properties</h2>
+		<p>Allocation properties can be used to specify services from the device. For example, using allocation properties, you can define processing 
+power and throughput for the device. When you define allocation properties, you have to set the action property: when set to external, this 
+implies that the device manages the capacity using allocateCapacity and deallocateCapacity; any other setting indicates that the Core Framework 
+manages the capacity. </p>
+		<p>SCA properties in CX are elements and as such can be reused. </p>
+		<h2>Create SCAPrimitives</h2>
+		<ol>
+			<li>In the Project Explorer open <strong>CXTutorial_Model</strong> &gt; <strong>SCAProperties</strong> &gt; <strong>SCAPropertiesDiagram</strong>. </li>
+			<li>In the <strong>Palette</strong>, select <strong>Primitive Property Type</strong> and drop this element onto the diagram.</li>
+			<li>Name the element <strong>KIPS</strong>. In the <strong>Properties View</strong> &gt; <strong>SCA</strong> tab.</li>
+			<li>Set the following properties:</li>
+			<ul>
+				<li><strong>Kind</strong> to <strong>Allocation</strong></li>
+				<li><strong>Type</strong> to <strong>Ulong</strong></li>
+				<li><strong>Action</strong> to <strong>Greater than or Equal</strong></li>
+			</ul>
+			<li>Repeat this process for a second SCAPrimitive named <strong>Throughput</strong>. Set the following properties, for this
+element:</li>
+			<ul>
+				<li><strong>Kind</strong> to <strong>Allocation</strong></li>
+				<li><strong>Type</strong> to <strong>Ulong</strong></li>
+				<li><strong>Action</strong> to <strong>Greater than or Equal</strong></li>
+			</ul>
+		</ol>
+		<h2>Create SCA Properties and assign them</h2>
+		<p>In this section you will create SCA properties for the <strong>Modem</strong> and then assign them to the SCAPrimitives you created and defined 
+above.</p>
+		<ol>
+			<li>Open <strong>Modem</strong> diagram.</li>
+			<li>Right click on <strong>Modem structure realization</strong> and from the popup menu, select <strong>Add CX</strong> &gt; <strong>SCA Property</strong>.
+Name the attribute <strong>KIPS</strong>.</li>
+			<li>Select <strong>KIPS</strong> and in the <strong>Properties View</strong> &gt; <strong>SCA</strong> tab. 
+Click <strong>Select type</strong> and choose <strong>SCA Primitive KIPS</strong>. Set the <strong>Value</strong> to <strong>50</strong>.</li>
+			<li>Right click on the <strong>Modem structure realization</strong> and select <strong>Add CX</strong> &gt; <strong>SCA Property</strong>. 
+Name the property <strong>Throughput</strong>. </li>
+			<li>Select <strong>Throughput</strong> and in the <strong>Properties View</strong> &gt; <strong>SCA</strong> tab. 
+Click <strong>Select type</strong> and choose <strong>SCA Primitive Throughput</strong>. Set the <strong>Value</strong> to <strong>100</strong>.</li>
+		</ol>
+		<h2>Validate the Modem Device</h2>
+		<p>To ensure you have not introduced any errors, right click on <strong>Modem</strong>, on the diagram or in the Project Explorer, and select <strong>SCA Validate</strong>. Correct any errors.</p>
+		<h2>Create a node</h2>
+		<p>A node is made of the set of devices under the control of a single Device Manager component. A node can contain one or more 
+devices and their connections. One of the devices in a node must be an executable device. </p>
+		<p>The concept of a node is introduced by CX. The SCA equivalent of a node is the DCD.</p>
+		<ol>
+			<li>Create a new package under the <strong>Platform</strong> package and name it <strong>DecryptorNode</strong>.</li>
+			<li>Create a diagram in the <strong>DecryptorNode</strong> package called <strong>DecryptorNode</strong>.</li>
+			<li>In the <strong>Palette</strong>, expand the <strong>SCA Platform</strong> drawer.</li>
+			<li>Select the <strong>Node</strong> element and drop it on the diagram you created.</li>
+			<li>Name the element <strong>DecryptorNode</strong>.</li>
+			<li>Resize the node to make it large enough to contain the device.</li>
+			<li>In the <strong>Project Explorer</strong> select <strong>Modem structural realization</strong> and drag it onto 
+<strong>DecryptorNode</strong>.</li><br>This creates a device instance on the node.<li>Resize and move the device instance as required.</li>
+		</ol>
+		<p>Next you need to define a Device Manager, Domain Manager, File Manager, and Log for the node.</p>
+		<h2>Core Framework elements</h2>
+		<p>The SCA defines Core Framework elements that provide services to the application and platform:</p>
+		<ul>
+			<li>Domain Manager</li>
+			<li>Device Manager</li>
+			<li>File Manager</li>
+			<li>Log</li>
+		</ul>
+		<p>These elements need to be configured on the node. Each node requires a Device Manager and the entire platform requires one Domain 
+Manager. The File Manager and Log elements are optional.</p>
+		<p>These Core Framework elements are similar to components and devices - they have attributes and implementations.</p>
+		<h2>Create a Device Manager</h2>
+		<ol>
+			<li>In the Project Explorer, right click on the <strong>Platform</strong> package and from the popup menu, select <strong>Add CX</strong>
+ &gt; <strong>Component</strong>.</li>
+			<li>Name it, <strong>DeviceManager</strong> and set the <strong>Type</strong> to <strong>DeviceManager</strong>. Click
+<strong>Finish</strong>.</li>
+			<li>Add <strong>processor</strong> and <strong>OS</strong> dependencies from the <strong>SCADependencies</strong> diagram to the 
+<strong>DeviceManager</strong> diagram. Using the <strong>Palette</strong>, create <strong>OS</strong> and <strong>Processor</strong> links.</li>
+			<li>Validate <strong>DeviceManager</strong> and correct any errors.</li>
+		</ol>
+		<h2>Create a Domain Manager</h2>
+		<ol>
+			<li>In the Project Explorer, right click on the <strong>Platform</strong> package and from the popup menu, select <strong>Add CX</strong> &gt;
+<strong>Component</strong>. </li>
+			<li>Name the CF element <strong>DomainManager</strong> and set the <strong>Type</strong> to <strong>DomainManager</strong>. Click <strong>Finish</strong>.</li>
+			<li>Add <strong>Processor</strong> and <strong>OS</strong> dependencies from the <strong>SCADependencies</strong>
+ diagram to the <strong>DomainManager</strong> diagram. Using the <strong>Palette</strong>, create <strong>OS</strong> and <strong>Processor</strong> links.</li>
+			<li>Validate <strong>DomainManager</strong> and correct any errors.</li>
+		</ol>
+		<p>Next you must define the Domain Manager Descriptor for this Domain Manager. The Domain Manager Descriptor describes the services the Domain 
+Manager connects to during startup. </p>
+		<ol>
+			<li>In the <strong>Palette</strong>, expand the <strong>SCA Platform</strong> drawer.</li>
+			<li>Select the <strong>Domain</strong> element and drop it onto the <strong>DomainManager</strong> diagram you have been using. </li>
+			<li>Change the name to <strong>myDomain</strong>. </li>
+			<li>In the <strong>Palette</strong>, select the <strong>Domain Dependency</strong> and link from <strong>myDomain</strong> to 
+				<strong>DomainManager</strong>. You can delete the label from this association if you want to.</li>
+			<li>In the <strong>Palette</strong>, select the <strong>DMD Service</strong> and drop this element onto the diagram.</li>
+			<li>Name this element <strong>LogService</strong>.</li>
+			<li>In the <strong>Palette</strong>, select the <strong>DMD Service Link</strong> and link from <strong>myDomain</strong> 
+to <strong>LogService</strong>.</li>
+			<li>In the diagram, select <strong>LogService</strong>.</li>
+			<li>In the <strong>Properties View</strong> &gt; <strong>SCA</strong> tab and configure the following mandatory properties: </li>
+			<ul>
+				<li><strong>FindBy Name</strong> to <strong>domainLog</strong></li>
+				<li><strong>FindBy Type</strong> to <strong>DomainFinder_Log</strong></li>
+				<li><strong>Uses Identifier</strong> to <strong>log</strong></li>
+			</ul>
+			<li>Save the model. </li>
+		</ol>
+		<h2>Create a Log Service</h2>
+		<ol>
+			<li>In the Project Explorer, right click on the <strong>Platform</strong> package and from the popup menu, select <strong>Add CX</strong> &gt;
+ <strong>Component</strong>.</li>
+			<li>Name the service <strong>DomainLog</strong> and set the <strong>Type</strong> to <strong>Log</strong>. Click <strong>Finish</strong>.</li>
+			<li>Add <strong>processor</strong> and <strong>OS</strong> dependencies from the <strong>SCADependencies</strong> diagram to the 
+<strong>DomainLog</strong> diagram. Using the Palette, draw <strong>OS</strong> and <strong>Processor</strong> links.</li>
+			<li>Validate <strong>DomainLog</strong> and correct any errors.</li>
+		</ol>
+		<h2>Add Core Framework elements to the node</h2>
+		<p>Now that you have created the elements and requirements of the node, you must now add them to the node.</p>
+		<ol>
+			<li>In the Project Explorer, select the <strong>DomainManager</strong> structure realization and drag it onto the <strong>DecryptorNode</strong> diagram.</li>
+			<li>Repeat for the <strong>Device Manager</strong>.</li>
+			<li>Repeat for the <strong>DomainLog</strong>. </li>
+			<li>Resize and move the <strong>DecryptorNode</strong> parts as desired.</li>
+		</ol>
+		<h2>Configure the node</h2>
+		<p>The node has attributes that need to be defined. CX automatically determines the Device Manager for the node and updates appropriately. Using the namingservice 
+property, you need to define the Domain Manager.</p>
+		<ol>
+			<li>Open the <strong>DecryptorNode</strong> diagram.</li>
+			<li>Select <strong>DecryptorNode</strong>.</li>
+			<li>In the <strong>Properties View</strong> &gt; <strong>SCA</strong> tab.</li>
+			<li>Configure the <strong>Naming Service</strong> property to be the <strong>myDomain/DomainManager</strong>. This tells the Node how to find the 
+DomainManager in the NamingService.</li>
+			<li>Save the model.</li>
+		</ol>
+		<h2>Validate the node</h2>
+		<p>Validation will ensure that you haven't missed anything or introduced any errors to the node.</p>
+		<ol>
+			<li>In <strong>Project Explorer</strong>, select the <strong>DecryptorNode</strong> and from the right-click menu select <strong>SCA Validation</strong>.</li>
+			<li>If errors are returned, navigate to the error source and debug.</li>
+		</ol>
+		<h2>Define the platform</h2>
+		<p>A platform is a set of nodes under the control of a single domain manager. A platform can contain one or more nodes,</p>
+		<p>A platform is a modeling entity introduced by  CX. The SCA equivalent of the platform is the entire set of DCDs that comprise the 
+Domain.</p>
+		<ol>
+			<li>Create a new diagram under the <strong>Platform</strong> package and name it <strong>Platform</strong>.</li>
+			<li>In the <strong>Palette</strong>, expand the <strong>SCA Platform</strong> drawer.</li>
+			<li>Select the <strong>Platform</strong> element and drop it onto the diagram.</li>
+			<li>Name the element <strong>CommunicatorPlatform</strong>.</li>
+			<li>Resize the element so it will hold the node.</li>
+			<li>In the <strong>Project Explorer</strong>, select the <strong>DecryptorNode</strong> you created and drag it onto the <strong>CommunicatorPlatform</strong>.</li>
+			<li>Validate <strong>CommunicatorPlatform</strong> and correct any errors.</li>
+			<li>Validate the <strong>Platform</strong> package and correct any errors.</li>
+			<li>Save your model.</li>
+		</ol>
+		<h2>Tutorial Summary</h2>
+		<p>In this tutorial you learned about the next step of model driven development: platform definition and creation. You became familiar with the elements in the 
+SCA Platform drawer and learned more about defining dependencies and attributes. As well you saw how you can re-use elements multiple times.</p>
+		<p>In the Tutorial 4: Finalizing the Model, you will learn about dependencies and freestanding ports.</p>
+		<p>The following images illustrate what your application and model should look like in Spectra CX:</p>
+		<p><img src="../images/tutorial3_pe.gif" border="0" alt="Project Explorer"></p>
+		<p><img src="../images/tutorial3_decryptor.gif" border="0" alt="Decryptor Node"></p>
+		<p><img src="../images/tutorial3_communicator.gif" border="0" alt="Communicator Platform"></p>
+		<div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

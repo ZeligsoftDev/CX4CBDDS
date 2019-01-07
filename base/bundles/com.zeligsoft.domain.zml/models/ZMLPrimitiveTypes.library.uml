@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w">
+  <uml:Model xmi:id="_-U2C4ImSEd2Wd_m8OSDqLA" name="ZMLPrimitiveTypes">
+    <packagedElement xmi:type="uml:DataType" xmi:id="_h-SrwImMEd2Wd_m8OSDqLA" name="Collection" isAbstract="true">
+      <ownedAttribute xmi:id="_BtWpEImOEd2Wd_m8OSDqLA" name="element" visibility="public" isUnique="false">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FCSkkYmOEd2Wd_m8OSDqLA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FCSkkImOEd2Wd_m8OSDqLA"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_tJjDQImMEd2Wd_m8OSDqLA" name="Bag">
+      <generalization xmi:id="_Fk-3YImNEd2Wd_m8OSDqLA" general="_h-SrwImMEd2Wd_m8OSDqLA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_wh6tQImMEd2Wd_m8OSDqLA" name="Set">
+      <generalization xmi:id="_GIl6wImNEd2Wd_m8OSDqLA" general="_h-SrwImMEd2Wd_m8OSDqLA"/>
+      <ownedAttribute xmi:id="_PGBTUImOEd2Wd_m8OSDqLA" name="element" visibility="public" redefinedProperty="_BtWpEImOEd2Wd_m8OSDqLA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PGBTUYmOEd2Wd_m8OSDqLA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PGBTUomOEd2Wd_m8OSDqLA"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_z3wAoImMEd2Wd_m8OSDqLA" name="Sequence">
+      <generalization xmi:id="_HIhGsImNEd2Wd_m8OSDqLA" general="_h-SrwImMEd2Wd_m8OSDqLA"/>
+      <ownedAttribute xmi:id="_PxPakImOEd2Wd_m8OSDqLA" name="element" visibility="public" isOrdered="true" isUnique="false" redefinedProperty="_BtWpEImOEd2Wd_m8OSDqLA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PxPakYmOEd2Wd_m8OSDqLA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PxPakomOEd2Wd_m8OSDqLA"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_D_p4UImNEd2Wd_m8OSDqLA" name="OrderedSet">
+      <generalization xmi:id="_KLuZAImNEd2Wd_m8OSDqLA" general="_wh6tQImMEd2Wd_m8OSDqLA"/>
+      <ownedAttribute xmi:id="_Pbel8ImOEd2Wd_m8OSDqLA" name="element" visibility="public" isOrdered="true" redefinedProperty="_PGBTUImOEd2Wd_m8OSDqLA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Pbel8YmOEd2Wd_m8OSDqLA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Pbel8omOEd2Wd_m8OSDqLA"/>
+      </ownedAttribute>
+    </packagedElement>
+    <profileApplication xmi:id="_-U2C4YmSEd2Wd_m8OSDqLA">
+      <eAnnotations xmi:id="_-U2C4omSEd2Wd_m8OSDqLA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <Standard:ModelLibrary xmi:id="_-VJk4ImSEd2Wd_m8OSDqLA" base_Package="_-U2C4ImSEd2Wd_m8OSDqLA"/>
+</xmi:XMI>

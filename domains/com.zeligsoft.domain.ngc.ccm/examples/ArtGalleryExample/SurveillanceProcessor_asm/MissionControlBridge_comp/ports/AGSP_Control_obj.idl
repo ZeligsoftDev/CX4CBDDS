@@ -1,0 +1,50 @@
+/// @defgroup AGSP_Control_obj Control_obj
+/// @{
+/// 
+/// @file AGSP_Control_obj.idl
+/// @brief Control_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__MISSIONCONTROLBRIDGE_COMP__PORTS__AGSP_CONTROL_OBJ_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__MISSIONCONTROLBRIDGE_COMP__PORTS__AGSP_CONTROL_OBJ_IDL
+
+#include "AGSP_Common_defn.idl"
+#pragma ciao lem "AGSP_Control_objE.idl"
+#pragma ciao ami4ccm interface "AGSP::Control_obj"
+#pragma ciao lem "AGSP_Control_objAE.idl"
+#pragma ciao ami4ccm idl "AGSP_Control_objA.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    ///@interface Control_obj 
+    interface Control_obj {
+
+        /// @param[in] newState
+        ///
+        /// @return
+        AGSP::ReturnStatus changeState(
+            in AGSP::SystemState newState
+            );
+
+        /// @return
+        AGSP::SystemState getCurrentState();
+
+        /// @param[in] newMode
+        ///
+        /// @return
+        AGSP::ReturnStatus setMode(
+            in AGSP::SystemMode newMode
+            );
+
+        /// @return
+        AGSP::SystemMode getCurrentMode();
+    };
+
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__MISSIONCONTROLBRIDGE_COMP__PORTS__AGSP_CONTROL_OBJ_IDL
+
+/// @}
+

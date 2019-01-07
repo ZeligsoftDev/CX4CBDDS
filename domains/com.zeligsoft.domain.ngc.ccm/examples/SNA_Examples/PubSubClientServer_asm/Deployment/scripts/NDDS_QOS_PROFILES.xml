@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- A XML configuration file -->
+<dds>
+<qos_library name="SNA_Examples">
+   <qos_profile name="PubSubClientServer" base_name="SNA::Durable_State"> 
+            
+      <datawriter_qos>
+         <durability>
+             <kind>DDS_TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+         </durability>
+      </datawriter_qos>
+      
+      <datareader_qos>
+         <durability>
+             <kind>DDS_TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+         </durability>
+      </datareader_qos>
+      
+      <!-- Use shared memory only participant settings -->
+      <participant_qos base_name="SNA::shm" />
+      
+      <!-- Use the standard networked participant settings -->
+      <!-- <participant_qos base_name="SNA::networked" /> -->
+     
+   </qos_profile>
+   
+</qos_library>
+</dds>

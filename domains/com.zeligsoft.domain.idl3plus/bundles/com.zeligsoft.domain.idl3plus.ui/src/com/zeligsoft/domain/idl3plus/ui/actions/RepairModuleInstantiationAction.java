@@ -1,0 +1,124 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+package com.zeligsoft.domain.idl3plus.ui.actions;
+
+import java.util.Collections;
+
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.commands.operations.OperationHistoryFactory;
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.common.core.command.CommandResult;
+import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.ui.IObjectActionDelegate;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.uml2.uml.Element;
+
+import com.ibm.xtools.modeler.ui.UMLModeler;
+import com.zeligsoft.base.ui.menus.actions.ICXAction;
+import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
+import com.zeligsoft.domain.idl3plus.ui.Activator;
+import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
+
+/**
+ * Action to repair a module instantiation when the instantiated template module has changed.
+ *
+ * @author Toby McClean (tmcclean)
+ *
+ */
+public class RepairModuleInstantiationAction 
+	extends Action 
+	implements ICXAction, IObjectActionDelegate {
+	
+	protected Element element;
+	
+	/**
+	 * Construct me.
+	 */
+	public RepairModuleInstantiationAction() {
+		super();
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.actions.ActionDelegate#run(org.eclipse.jface.action.IAction)
+	 */
+	public void run(IAction action) {
+		if(element == null) {
+			return;
+		}
+		
+		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
+				UMLModeler.getEditingDomain(),
+				"Repair module instantiation", //$NON-NLS-1$
+				Collections.EMPTY_MAP, null) {
+				
+			protected CommandResult doExecuteWithResult(
+					IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
+				IDL3PlusUtil.INSTANCE.repairTemplateModuleInstantiation(element);
+				return CommandResult.newOKCommandResult();
+			}
+		};
+			
+		try {
+			OperationHistoryFactory.getOperationHistory().execute(
+					editCommand, null, null);
+		} catch (ExecutionException e) {
+			Activator.getDefault().error("Error repairing instantiation", e); //$NON-NLS-1$
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.zeligsoft.base.ui.menus.actions.ICXAction#setSelection(org.eclipse.emf.ecore.EObject)
+	 */
+	@Override
+	public void setSelection(EObject context) {
+		this.element = (Element) context;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction, org.eclipse.ui.IWorkbenchPart)
+	 */
+	@Override
+	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
+		// do nothing
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
+	 */
+	@Override
+	public void selectionChanged(IAction action, ISelection selection) {
+		if (selection == null || action == null) {
+			action.setEnabled(false);
+			return;
+		}
+
+		element = (Element) BaseUIUtil.getEObjectFromSelection(selection);
+		if (element != null && ZDLUtil.isZDLConcept(element, IDL3PlusNames.MODULE_INSTANTIATION)) {
+			action.setEnabled(true);
+		} else {
+			action.setEnabled(false);
+		}
+	}	
+	
+}

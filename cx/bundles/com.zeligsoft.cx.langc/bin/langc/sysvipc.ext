@@ -1,0 +1,98 @@
+
+import langc;
+
+extension langc::element;
+extension langc::expr;
+extension langc::name;
+extension langc::libc;
+extension langc::type;
+
+create SystemFileName ipcName() : setName( 'sys/ipc.h' );
+create SystemFileName msgName() : setName( 'sys/msg.h' );
+
+Name keyTypeName() : ipcName().child( 'key_t' );
+Name ftokName()    : ipcName().child( 'ftok' );
+Name msggetName()  : msgName().child( 'msgget' );
+Name msgrcvName()  : msgName().child( 'msgrcv' );
+Name msgsndName()  : msgName().child( 'msgsnd' );
+
+Name IPC_CREATName() : ipcName().child( 'IPC_CREAT' );
+Name IPC_EXCLName()  : ipcName().child( 'IPC_EXCL' );
+
+create Typedef key_t() :
+    setElement( int32() )
+ -> setName( keyTypeName() )
+;
+
+private create Function ftok() :
+    setName( ftokName() )
+ -> setReturnType( key_t() )
+ -> addParameter( char().const().ptr(), 'path' )
+ -> addParameter( int32(), 'id' )
+;
+
+private create Function msgget() :
+    setName( msggetName() )
+ -> setReturnType( int32() )
+ -> addParameter( key_t(), 'key' )
+ -> addParameter( int32(), 'msgflg' )
+;
+
+private create Function msgrcv() :
+    setName( msgrcvName() )
+ -> setReturnType( ssize_t() )
+ -> addParameter( int32(), 'msgid' )
+ -> addParameter( void().ptr(), 'msgp' )
+ -> addParameter( size_t(), 'msgsz' )
+ -> addParameter( int32(), 'msgtyp' )
+ -> addParameter( int32(), 'msgflg' )
+;
+
+private create Function msgsnd() :
+    setName( msgsndName() )
+ -> setReturnType( int32() )
+ -> addParameter( int32(), 'msgid' )
+ -> addParameter( void().ptr(), 'msgp' )
+ -> addParameter( size_t(), 'msgsz' )
+ -> addParameter( int32(), 'msgflg' )
+;
+
+Expression ftok( String path, Expression id ) :
+    let e = new FunctionCall :
+        e.setFunction( ftok() )
+     -> e.arguments.add( path.literal() )
+     -> e.arguments.add( id )
+     -> e
+;
+
+Expression msgget( Expression key, Expression mode ) :
+    let e = new FunctionCall :
+        e.setFunction( msgget() )
+     -> e.arguments.add( key )
+     -> e.arguments.add( mode )
+     -> e
+;
+
+Expression msgrcv( Expression qfd, Expression buff, Expression size ) :
+    let e = new FunctionCall :
+        e.setFunction( msgrcv() )
+     -> e.arguments.add( qfd )
+     -> e.arguments.add( buff )
+     -> e.arguments.add( size )
+     -> e.arguments.add( 0.literal() )
+     -> e.arguments.add( 0.literal() )
+     -> e
+;
+
+Expression msgsnd( Expression qfd, Expression buff, Expression size ) :
+    let e = new FunctionCall :
+        e.setFunction( msgsnd() )
+     -> e.arguments.add( qfd )
+     -> e.arguments.add( buff )
+     -> e.arguments.add( size )
+     -> e.arguments.add( 0.literal() )
+     -> e
+;
+
+Expression IPC_CREAT() : IPC_CREATName().access();
+Expression IPC_EXCL()  : IPC_EXCLName().access();

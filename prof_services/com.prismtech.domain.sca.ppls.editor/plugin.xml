@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="VpmEditorID"
+            name="%_UI_VpmEditor_label"
+            icon="icons/full/obj16/VpmModelFile.png"
+            extensions="vpm"
+            class="com.prismtech.domain.sca.ppls.vpm.presentation.VpmEditor"
+            contributorClass="com.prismtech.domain.sca.ppls.vpm.presentation.VpmActionBarContributor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="com.zeligsoft.domain.sca.ui.views.category"
+            class="com.prismtech.domain.sca.ppls.vpm.ui.views.VPToCPMappingTreeView"
+            icon="icons/full/obj16/VpmModelFile.png"
+            id="VPToCPMappingTreeViewID"
+            name="%_UI_VPToCPView.name"
+            restorable="true">
+      </view>
+   </extension>  
+   <extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.prismtech.domain.sca.ppls.licensedPLMUIActivity"
+            name="%NonLicensedPLMUIActivity.name">
+         <enabledWhen>
+            <with
+                  variable="licensedPLM">
+               <iterate
+                     ifEmpty="false"
+                     operator="or">
+                  <equals
+                        value="grantShowLicensedPLMUI">
+                  </equals>
+               </iterate>
+            </with>
+         </enabledWhen>
+      </activity>
+      <activityPatternBinding
+            activityId="com.prismtech.domain.sca.ppls.licensedPLMUIActivity"
+            isEqualityPattern="true"
+            pattern="com.prismtech.domain.sca.ppls.editor/VPToCPMappingTreeViewID">
+     </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.prismtech.domain.sca.ppls.licensedPLMUIActivity"
+            isEqualityPattern="true"
+            pattern="com.prismtech.domain.sca.ppls.editor/VpmEditorID">
+      </activityPatternBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.services">
+      <sourceProvider
+            provider="com.prismtech.domain.sca.ppls.vpm.ui.licensing.LicensedUIProvider">
+         <variable
+               name="licensedPLM"
+               priorityLevel="workbench">
+         </variable>
+      </sourceProvider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="com.zeligsoft.domain.sca.ui.SCAPerspective">
+         <viewShortcut
+               id="VPToCPMappingTreeViewID">
+         </viewShortcut>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="com.zeligsoft.base.licensing.license_check">
+      <license_check
+            class="com.prismtech.domain.sca.ppls.licensing.LicenseListener">
+      </license_check>
+   </extension>
+
+</plugin>

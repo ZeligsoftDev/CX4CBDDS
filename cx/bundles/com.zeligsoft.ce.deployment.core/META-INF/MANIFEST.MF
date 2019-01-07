@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Core Plug-in
+Bundle-SymbolicName: com.zeligsoft.ce.deployment.core
+Bundle-Version: 1.0.0
+Bundle-ClassPath: .
+Bundle-Activator: com.zeligsoft.ce.deployment.core.Activator
+Bundle-Vendor: ZELIGSOFT
+Export-Package: com.zeligsoft.ce.deployment.core.commands, com.zeligsoft.ce.deployment.core
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.zeligsoft.ce.deployment.bridge.uml;visibility:=reexport
+Eclipse-LazyStart: true

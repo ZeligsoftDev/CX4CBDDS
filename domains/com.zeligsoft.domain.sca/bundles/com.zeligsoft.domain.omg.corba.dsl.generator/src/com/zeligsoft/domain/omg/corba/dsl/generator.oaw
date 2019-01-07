@@ -1,0 +1,14 @@
+<workflow>
+  <property name='modelFile' />
+  <property name='targetDir' value='src-gen/'/>
+  <component file='com/zeligsoft/domain/omg/corba/dsl/parser/Parser.oaw'>
+     <modelFile value='${modelFile}'/>
+     <outputSlot value='theModel'/>
+  </component>
+  <component class='oaw.workflow.common.DirectoryCleaner' directories='${targetDir}'/>
+  <component class='oaw.xpand2.Generator'>
+     <metaModel id='mm' class='org.eclipse.m2t.type.emf.EmfRegistryMetaModel'/>
+     <expand value='com::zeligsoft::domain::omg::corba::dsl::Main::main FOR theModel'/>
+     <genPath value='${targetDir}'/>
+  </component>
+</workflow>

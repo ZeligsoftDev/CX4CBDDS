@@ -1,0 +1,107 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "descriptors.sbs";
+		- _subsystem = "SNA_Examples::Deployment";
+		- _class = "";
+		- _name = "descriptors";
+		- _id = GUID 510cc373-9de7-46a2-95a7-12f4e01469a1;
+	}
+	- _id = GUID 74ef58e1-1bef-49db-b4e3-89985d7e12e6;
+	- _myState = 8192;
+	- _name = "BasicPubSub_Defaults";
+	- _modifiedTimeWeak = 5.12.2014::16:13:56;
+	- _lastID = 1;
+	- weakCGTime = 5.12.2014::16:13:56;
+	- strongCGTime = 5.12.2014::16:13:34;
+	- _defaultComposite = GUID e1857b63-d9d8-4037-9d3b-a6a049abc15a;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 2;
+		- value = 
+		{ IClass 
+			- _id = GUID e1857b63-d9d8-4037-9d3b-a6a049abc15a;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 1.2.1990::0:0:0;
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 79c1ed87-a852-4376-911f-f4f7887b4a4c;
+			- _myState = 8192;
+			- _name = "_DDS_Event";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "ConnectorDefaultValueBinding";
+					- _id = GUID 7ab37fa1-ab53-4373-be71-d06c05a649d8;
+				}
+			}
+			- _modifiedTimeWeak = 5.12.2014::16:14:44;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID c11b190f-7bd7-433f-94dd-cf7a622ad39f;
+					- _myState = 8192;
+					- _name = "definition";
+					- _modifiedTimeWeak = 5.12.2014::16:14:44;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IInstanceValue 
+							- _id = GUID ca1d3f05-0bab-4dd8-ba06-bf24c61d3f72;
+							- _modifiedTimeWeak = 1.2.1990::0:0:0;
+							- _value = { IHandle 
+								- _m2Class = "IClass";
+								- _filename = "ports.sbs";
+								- _subsystem = "SNA_Examples::BasicPublisher_comp::ports";
+								- _class = "TestData_conn";
+								- _name = "DDS_Event";
+								- _id = GUID 3a600a9b-742c-4185-af4a-a57f91a6c485;
+							}
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IStereotype";
+						- _filename = "cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "ConnectorDef";
+						- _id = GUID 0b2c2c0e-4c98-44f3-9f19-0ac1d275f4f6;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "ConnectorDefaultValueBinding";
+						- _name = "definition";
+						- _id = GUID aa454fe1-4d8a-4e3e-8cf7-32c2a21a36e7;
+					}
+				}
+			}
+			- weakCGTime = 5.12.2014::16:14:44;
+			- strongCGTime = 5.12.2014::16:14:8;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 12.31.1969::19:0:0;
+}
+

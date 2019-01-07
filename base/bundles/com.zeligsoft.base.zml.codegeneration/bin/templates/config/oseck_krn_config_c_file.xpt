@@ -1,0 +1,61 @@
+«REM»
+
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«EXTENSION extensions::DeploymentUtilsFuncs»
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::FunctionNames»
+«EXTENSION extensions::SimpleCounter»
+
+
+«DEFINE CREATE_FILES FOR ZeligsoftDeployment::DeploymentPart»
+«FILE "cfgs/"+ getNamedElementName((ZeligsoftDeployment::Deployment)this.owner)+"/"+getMySWPlatformName(this)+"/pjt/"+"krn_config.c"»
+//***********************************************************************
+// Copyright (C) 1996-2004 Enea Embedded Technology AB. All rights reserved.
+// Any reproduction without written permission is prohibited by law.
+//
+//**********************************************************************
+//
+//
+// Note,
+//
+// This file is only a place holder for the real configuration files
+// for OSEck and allows for a nicer integration with CCS project files
+// since .pcon files does not show up correctly in CodeComposeStudio projects.
+//
+// It does _NOT_ contain real c-code and should only be used for
+// preprocessing purposes.
+//
+// If you are using Makefiles to build your application this file
+// should not be used.
+//
+// appcon.pcon depenends on defines in platform_config.h and
+// when preprocessing this file the two defines MEMODEL and ENDIAN should
+// also be supplied as arguments to the c-preprocessor
+// (i.e. "cl6x -ppo -dENDIAN=BIG ...")
+//
+// CCS3.X notes, appcon.pcon will show up in the "include" folder but it is
+// not a recognised file type by CCS3.X and can therefore not be edited
+// within the IDE. You must use an external editor for this file or rename it.
+//
+//
+#include "appcon.pcon"
+/* End-Of-File */
+/* ------------------------------------------------------------------------------ */
+«ENDFILE»
+«ENDDEFINE»

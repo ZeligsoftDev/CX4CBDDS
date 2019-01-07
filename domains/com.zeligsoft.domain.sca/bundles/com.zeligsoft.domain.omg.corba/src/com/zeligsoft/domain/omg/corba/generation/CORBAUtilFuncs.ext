@@ -1,0 +1,96 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+import uml;
+
+String getReturnType(Operation operation) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getReturnTypeForOperation(
+	org.eclipse.uml2.uml.Operation);
+
+String getFullInterfaceName(Interface aInterface) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getFullInterfaceName(
+	org.eclipse.uml2.uml.Interface);
+
+cached String getQualifiedOperationName(Operation aOperation) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getQualifiedOperationName(
+	org.eclipse.uml2.uml.Operation);
+
+String getQualifiedInterfaceName(Interface aInterface) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getQualifiedInterfaceName(
+	org.eclipse.uml2.uml.Interface);
+	
+String getArguments(Operation operation, String startWithComma) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getArgumentsForOperation(
+	org.eclipse.uml2.uml.Operation, java.lang.String);
+
+String getExceptionEnvParam(Operation op) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getExceptionEnvParam(
+	org.eclipse.uml2.uml.Operation);
+	
+String getWorkerFunctionName(NamedElement element, NamedElement source) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getWorkerFunctionName(
+	org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement);
+
+// would like to eventually remove this method and only use the one with 
+// Boolean as the second parameter	
+String getParameters(Operation operation, String startWithComma) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getParametersForOperation(
+	org.eclipse.uml2.uml.Operation, java.lang.String);
+	
+String getParameters(Operation operation, Boolean startWithComma) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getParametersForOperation(
+	org.eclipse.uml2.uml.Operation, java.lang.Boolean); 
+	
+String getSignature(Operation operation, NamedElement source, NamedElement element) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getSignatureForCorbaOperation(
+	org.eclipse.uml2.uml.Operation, org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement);
+
+String getOperationName(Operation op, NamedElement source) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getOperationName(
+	org.eclipse.uml2.uml.Operation, org.eclipse.uml2.uml.NamedElement);
+
+String isCorbaType(Type type) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.isCorbaType(
+	org.eclipse.uml2.uml.Type);
+	
+String getVariableTypeFromCorbaParameter(Parameter corbaParameter) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getVariableTypeFromCorbaParameter(
+	org.eclipse.uml2.uml.Parameter);
+
+String getVariableTypeFromCorbaType(Type corbaType, String direction) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getVariableTypeFromCorbaType(
+	org.eclipse.uml2.uml.Type, java.lang.String);
+
+Type getAbsoluteType(Type type) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.getAbsoluteType(
+	org.eclipse.uml2.uml.Type);
+
+boolean isVariableLength(Type type) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.isVariableLength(
+	org.eclipse.uml2.uml.Type);
+	
+cached boolean	operationHasOutInOutParameter(Operation operation) :
+JAVA com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs.operationHasOutInOutParameter(
+	org.eclipse.uml2.uml.Operation);
+	
+// Adds an argument to the beginning of the args string with a comma if necessary
+String addFirstArgument(String arg, String args) :
+	args.length > 0 ? 
+		arg + ", " + args :
+		arg
+;
+

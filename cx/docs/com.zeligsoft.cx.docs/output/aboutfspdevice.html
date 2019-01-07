@@ -1,0 +1,29 @@
+<head>
+	<title>FSP DTLTCR and DUBTCR</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="aboutfspdevice.html" title="FSP DTLTCR and DUBTCR">
+		<h1>FSP DTLTCR and DUBTCR</h1>
+		<p>In the SCA Application drawer there are two options: FSP Device that Loaded or FSP Device Used By.</p>
+		<p>FSP Device that Loaded: the DeviceThatLoadedThisComponentRef (DTLTCR) is a type of FSP. A component port connects to the freestanding port. This kind of 
+		connection allows the Core Framework to locate the device that participates in the connection. Can be used to model a uses or provides port. 
+		The DTLTCR FSP provides information on how to discover a port at runtime by indicating which device loaded a specific component instance.</p>
+		<p>FSP Device Used By: the DeviceUsedByThisComponentRef (DUBTCR) is used a type of FSP. A component port connects to the freestanding port. This kind of 
+		connection allows the Core Framework to locate the device that participates in the connection. Can be used to model a uses or provides port. 
+		The DUBCTR FSP provides information on how to discover a port at runtime using the UsesDevice relationship. This connection is necessary for 
+		dynamic connections to devices that are not loadable.</p>
+		<p>To create an FSP Device do the following:</p>
+		<ol>
+			<li>In the <strong>Palette</strong>, select the <strong>FSP Device</strong> that you want to create.</li>
+			<li>Drop the <strong>FSP Device</strong> onto the appropriate element in the <strong>Zeligsoft Component Diagram</strong>.</li>
+			<li>From the pop-up menu, select <strong>Select Existing Element</strong> and Search or Browse for the
+		<strong>Port Type</strong> you want to use.</li>
+			<li>Click <strong>OK</strong>.</li>
+		</ol>
+		<h3>See Also</h3><br><a href="fspdeviceprop.html">FSP DTLTCR and DUBTCR Properties</a><br><a href="editviewelement.html">Editing and Viewing Elements</a><br><a href="deleteelement.html">Deleting Elements</a><div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

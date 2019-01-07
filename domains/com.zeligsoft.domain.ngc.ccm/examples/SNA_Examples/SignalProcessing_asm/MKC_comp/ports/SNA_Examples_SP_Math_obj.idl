@@ -1,0 +1,73 @@
+//==============================================================================
+//                            U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @addtogroup MKC_comp
+/// @{
+/// @file   SNA_Examples_SP_Math_obj.idl
+/// @brief  Defines interface between a SPOC (Signal Processing Orchestration
+///         Component) and an MKC (Math Kernel Component).
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_SP_MATH_OBJ_IDL
+#define SNA_EXAMPLES_SP_MATH_OBJ_IDL
+
+#pragma ciao lem "SNA_Examples_SP_Math_objE.idl"
+
+#include "SNA_SP_Data_defn.idl"
+
+module SNA_Examples
+{
+   /**
+    * @interface SP_Math_obj
+    *
+    * Interface between a SPOC (Signal Processing Orchestration Component) and
+    * an MKC (Math Kernel Component)
+    */
+   interface SP_Math_obj
+   {
+      /**
+       * This method is a placeholder for an initialization method that could
+       * be called by the SPOC to set up weight tables, initialize FFT objects,
+       * or any number of other things that can be done outside of the
+       * 'real-time' compute call.
+       */
+      void init ();
+
+      /**
+       * This is the method that is called by the SPOC (Signal Processing
+       * Orchestration Component) to perform whatever signal processing
+       * algorithm is contained within the associated MKC (Math Kernel
+       * Component) that implements this interface.
+       *
+       * @param[in]     dataInDescriptor  - The input Descriptor object
+       * @param[in,out] dataOutDescriptor - The output Descriptor object
+       * @param[in]     dataInReal        - Reference to the input data(real)
+       * @param[in]     dataInImag        - Reference to the input data(imag)
+       * @param[in,out] dataOutReal       - Reference to the output data (real)
+       * @param[in,out] dataOutImag       - Reference to the output data (imag)
+       */
+      void compute (in     SNA::SP_DataHdr      dataInDescriptor,
+                    inout  SNA::SP_DataHdr      dataOutDescriptor,
+                    in     SNA::ByteSequence dataInReal,
+                    in     SNA::ByteSequence dataInImag,
+                    inout  SNA::ByteSequence dataOutReal,
+                    inout  SNA::ByteSequence dataOutImag);
+
+      /**
+       * In the example, this only acts as a palceholder, but in a MKC (Math
+       * Kernel Component) in a fully featured signal processing mode, this
+       * would be the place where any post algorithmic cleanup that might be
+       * needed will be performed.  It is called by the SPOC after the SPOC has
+       * called the compute method.
+       */
+      void cleanup ();
+   };
+};
+#endif // SNA_EXAMPLES_SP_MATH_OBJ_IDL
+
+/// @}
+//==============================================================================
+//                            U N C L A S S I F I E D
+//==============================================================================

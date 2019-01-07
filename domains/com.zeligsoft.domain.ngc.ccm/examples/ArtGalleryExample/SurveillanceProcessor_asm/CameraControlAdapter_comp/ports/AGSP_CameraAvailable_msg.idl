@@ -1,0 +1,26 @@
+/// @defgroup AGSP_CameraAvailable_msg CameraAvailable_msg
+/// @{
+/// 
+/// @file AGSP_CameraAvailable_msg.idl
+/// @brief CameraAvailable_msg message definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__CAMERACONTROLADAPTER_COMP__PORTS__AGSP_CAMERAAVAILABLE_MSG_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__CAMERACONTROLADAPTER_COMP__PORTS__AGSP_CAMERAAVAILABLE_MSG_IDL
+
+#pragma ndds typesupport "AGSP_CameraAvailable_msgSupport.h"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @struct CameraAvailable_msg
+    struct CameraAvailable_msg {
+        boolean Busy;
+    }; //@top-level true
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__CAMERACONTROLADAPTER_COMP__PORTS__AGSP_CAMERAAVAILABLE_MSG_IDL
+
+/// @}
+

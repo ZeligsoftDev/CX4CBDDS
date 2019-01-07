@@ -1,0 +1,1251 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+import xmischema; 
+import deploymentplan;
+import DDS4CCM::DDS4CCM;
+import IDL3Plus::Connectors;
+import IDL3Plus::IDL3Plus;
+import CCM::CCM_Component;
+import CCM::CCM_Deployment;
+import CCM::CCM_Implementation;
+import CCM::CCM_Target;
+import CORBADomain::IDL;
+import ZMLMM::ZML_Deployments;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+
+
+extension org::eclipse::xtend::util::stdlib::issues;
+extension com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::cdpgenerator;
+extension com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::util;
+extension com::zeligsoft::base::zdl::util::ZDLUtil;
+
+Void enableTrace(String topic) : JAVA
+	com.zeligsoft.domain.ngc.ccm.descriptorgeneration.XDebugUtil.enableTrace(java.lang.String);
+Void trace0(String topic, String message) :JAVA
+    com.zeligsoft.domain.ngc.ccm.descriptorgeneration.XDebugUtil.trace0(java.lang.String,java.lang.String);
+Void trace1(String topic, String message, Object parm) :JAVA
+    com.zeligsoft.domain.ngc.ccm.descriptorgeneration.XDebugUtil.trace1(java.lang.String,java.lang.String,java.lang.Object);
+Void trace2(String topic, String message, Object parm0, Object parm1) :JAVA
+    com.zeligsoft.domain.ngc.ccm.descriptorgeneration.XDebugUtil.trace2(java.lang.String,java.lang.String,java.lang.Object,java.lang.Object);
+	
+create DeploymentPlan mainTransform(CCM::CCM_Deployment::DeploymentPlan deployment) :
+	let instances = deployment.allocation.deployed.select( e | e.modelElement.metaType.toString() == "CCM::CCM_Implementation::CCMPart") :
+	let homeInstances = deployment.allocation.deployed.select( e | e.modelElement.metaType.toString() == "CCM::CCM_Implementation::HomeInstance") : 
+	let connectors = deployment.part.modelElement.typeSelect(DataSpace) :
+	enableTrace("RegisterNaming") ->
+	this.label.add(deployment.zdlAsNamedElement().name) ->
+	this.label.add(getPath(deployment) + deployment.zdlAsNamedElement().name) ->
+	this.uuid.add(getUUID()) ->
+	this.createLocalityManagerElements() ->
+	instances.visit(this, deployment) -> // component part instances
+	homeInstances.visitHome(this, deployment) ->
+	deployment.part.select( e | e.modelElement.metaType.toString() == "CCM::CCM_Deployment::ContainerProcess").select( e | e.isDeployed()).visitContainerProcess(this, deployment) -> // create locality constraints
+	connectors.createInstances(this, deployment) -> // create instances for DataSpace connector fragments
+	deployment.part.modelElement.typeSelect(CCMPart).visitPortForInstances(deployment, this) -> // create AMI4CCM fragments
+	deployment.part.select( part | part.topLevelAssembly()).select( part | part.createConnections(deployment, this, part.modelElement));
+
+cached Boolean topLevelAssembly( DeploymentPart part ) :
+	part.getParentPart() == null && part.nestedPart.size > 0 && part.modelElement.isComponent();
+
+cached uml::Property getParentPart( DeploymentPart part ) :
+	JAVA com.zeligsoft.domain.zml.util.ZDeploymentUtil.getParentPart(org.eclipse.uml2.uml.Property);
+
+cached Boolean isComponent(CCMComponent comp ) :
+	true;
+	
+cached Boolean isComponent(CCM::CCM_Target::Domain ele ) :
+	false;	
+	
+Void visit(ZMLMM::ZML_Deployments::Allocation self, DeploymentPlan deployment, List[ZMLMM::ZML_Deployments::Allocation] allocations) :
+	let process = self.deployedOn :
+	let node = allocations.select(e|e.deployed.contains(process)).deployedOn.first() :
+	self.deployed.modelElement.typeSelect(CCMPart).visit(deployment, node);
+
+Void visitContainerProcess(DeploymentPart process, DeploymentPlan deployment, CCM::CCM_Deployment::DeploymentPlan zDeployment ) :
+	createPlanLocalityConstraint(process, deployment, zDeployment);
+
+create PlanLocality createPlanLocalityConstraint(DeploymentPart deploymentPart, DeploymentPlan deployment, CCM::CCM_Deployment::DeploymentPlan zDeployment ) :
+	let containerProcessInstance = createContainerProcessInstance(deploymentPart, zDeployment) :
+	deployment.localityConstraint.add(this) ->
+	deployment.instance.add(containerProcessInstance) ->
+	this.constraint.add(PlanLocalityKind::SameProcess) ->
+	this.constrainedInstance.add(createInstanceDeploymentDescription(containerProcessInstance)) ->
+	this.constrainedInstance.addAll(zDeployment.allocation.select(e | e.deployedOn == deploymentPart).deployed.createInstanceDeploymentDescription(deployment));
+	
+create InstanceDeploymentDescription createInstanceDeploymentDescription(DeploymentPart part, DeploymentPlan deployment) :
+	let partSN = part.getScopedName() :
+	let id = deployment.instance.selectFirst( i | i.name.first().matches(partSN)).id :
+	this.JavaSetAttribute("idref", id);
+	
+create InstanceDeploymentDescription createInstanceDeploymentDescription(InstanceDeploymentDescription instance) :
+	this.JavaSetAttribute("idref", instance.id);
+
+create MonolithicDeploymentDescription visit(CCMComponent inst, DeploymentPlan deployment) :
+	let artiExec = visitArtifactExec(inst) :
+	let artiSvnt = visitArtifactSvnt(inst) :
+	let artiExecRef = artiExec.visitImplArtifact() :
+	let artiSvntRef = artiSvnt.visitImplArtifact() :
+	deployment.artifact.add(artiExec) ->
+	deployment.artifact.add(artiSvnt) ->
+	this.artifact.add(artiExecRef) ->
+	this.artifact.add(artiSvntRef) ->
+	this.name.add(inst.zdlAsNamedElement().name + "Impl") ->
+	if( getHome(inst) == null ) then {
+		this.execParameter.add(inst.visitParam1()) ->
+		this.execParameter.add(inst.visitParam2()) ->
+		this.execParameter.add(inst.visitParam3()) ->
+		this.execParameter.add(inst.visitParam4()) 
+	} ->
+	this.execParameter.add(inst.visitImplementationTypeParameter()) ->
+	this.JavaSetAttribute("id", getUUID()) ->
+	inst.ownedPort.typeSelect(InterfacePort).select(e | e.isAsynchronous && e.isConjugated).porttype.visitPortType(deployment) ->
+	deployment.implementation.add(this);
+	
+create MonolithicDeploymentDescription visit(MonolithicImplementation inst, DeploymentPlan deployment) :
+	let artiExec = visitArtifactExec(inst) :
+	let artiSvnt = visitArtifactSvnt(inst) :
+	let artiExecRef = artiExec.visitImplArtifact() :
+	let artiSvntRef = artiSvnt.visitImplArtifact() :
+	deployment.artifact.add(artiExec) ->
+	deployment.artifact.add(artiSvnt) ->
+	this.artifact.add(artiExecRef) ->
+	this.artifact.add(artiSvntRef) ->
+	this.name.add(inst.zdlAsNamedElement().name + "Impl") ->
+	if( getHome(inst.interface) == null) then {
+		this.execParameter.add(inst.visitParam1()) ->
+		this.execParameter.add(inst.visitParam2()) ->
+		this.execParameter.add(inst.visitParam3()) ->
+		this.execParameter.add(inst.visitParam4()) 
+	} ->
+	this.execParameter.add(inst.visitImplementationTypeParameter()) ->
+	this.JavaSetAttribute("id", getUUID()) ->
+	inst.interface.ownedPort.typeSelect(InterfacePort).select(e | e.isAsynchronous && e.isConjugated).porttype.visitPortType(deployment) ->
+	deployment.implementation.add(this);
+	
+create MonolithicDeploymentDescription visit(ConnectorDef inst, DeploymentPlan deployment) :
+	let artiExec = visitArtifactExec(inst) :
+	let artiSvnt = visitArtifactSvnt(inst) :
+	let artiExecRef = artiExec.visitImplArtifact() :
+	let artiSvntRef = artiSvnt.visitImplArtifact() :
+	deployment.artifact.add(artiExec) ->
+	deployment.artifact.add(artiSvnt) ->
+	this.artifact.add(artiExecRef) ->
+	this.artifact.add(artiSvntRef) ->
+	this.name.add(inst.getCorbaScopedName()) ->
+	this.execParameter.add(inst.visitParam1())->
+	this.execParameter.add(inst.visitParam2())->
+	this.execParameter.add(inst.visitParam3())->
+	this.execParameter.add(inst.visitParam4())->
+	this.execParameter.add(inst.visitImplementationTypeParameter()) ->
+	this.JavaSetAttribute("id", getUUID()) ->
+	deployment.implementation.add(this);
+	
+/*
+ * This version of createImplementation gets called from visitPortType for a CORBAInterface that is both asynchronous
+ * and conjugated.
+ */
+create MonolithicDeploymentDescription createImplementation(CORBAInterface intf, DeploymentPlan deployment) :
+	let artiExec = visitArtifactExec(intf) :
+	let artiSvnt = visitArtifactSvnt(intf) :
+	let artiExecRef = artiExec.visitImplArtifact() :
+	let artiSvntRef = artiSvnt.visitImplArtifact() :
+	let componentFactoryParameter = intf.visitParam1() :
+	let executorArtifactParameter = intf.visitParam2() :
+	let servantEntryPointParameter = intf.visitParam3() :
+	let servantArtifactParameter = intf.visitParam4() :
+	deployment.artifact.add(artiExec) ->
+	deployment.artifact.add(artiSvnt) ->
+	this.name.add(intf.name) ->
+	this.artifact.add(artiExecRef) ->
+	this.artifact.add(artiSvntRef) ->
+	this.execParameter.add(componentFactoryParameter)->
+	this.execParameter.add(executorArtifactParameter)->
+	this.execParameter.add(servantEntryPointParameter)->
+	this.execParameter.add(servantArtifactParameter)->
+	this.execParameter.add(intf.visitImplementationTypeParameter()) ->
+	this.JavaSetAttribute("id", getUUID()) ->
+	deployment.implementation.add(this);
+
+create MonolithicDeploymentDescription visit(Home inst, DeploymentPlan deployment, MonolithicImplementation impl) :
+	let artiExec = visitArtifactExec(inst.manages.component) :
+	let artiSvnt = visitArtifactSvnt(inst.manages.component) :
+	let artiExecRef = artiExec.visitImplArtifact() :
+	let artiSvntRef = artiSvnt.visitImplArtifact() :
+	if( deployment.artifact.contains(artiExec) == false) then deployment.artifact.add(artiExec) ->
+	if( deployment.artifact.contains(artiSvnt) == false) then deployment.artifact.add(artiSvnt) ->
+	this.artifact.add(artiExecRef) ->
+	this.artifact.add(artiSvntRef) ->
+	impl != null ?
+		this.name.add(impl.name + "_Home" ) :
+		this.name.add(inst.zdlAsNamedElement().name + "Impl") ->
+	this.execParameter.add(inst.visitParam1(impl)) ->
+	this.execParameter.add(inst.visitParam2(impl)) ->
+	this.execParameter.add(inst.visitParam3(impl)) ->
+	this.execParameter.add(inst.visitParam4(impl)) ->
+	this.execParameter.add(inst.visitImplementationTypeParameter(impl)) ->
+	this.JavaSetAttribute("id", getUUID()) ->
+	deployment.implementation.add(this);
+		
+create InstanceDeploymentDescription visit(DeploymentPart part, DeploymentPlan deployment, CCM::CCM_Deployment::DeploymentPlan zDeployment) :
+	let comp_type = part.modelElement.definition :
+	let process = zDeployment.allocation.selectFirst( a | a.deployed.contains(part)).deployedOn :
+	let node = zDeployment.allocation.selectFirst(a | a.deployed.contains(process)).deployedOn :
+	let id = (part.getSelectedImplementation() == null ? 
+		part.modelElement.definition.visit(deployment).id :
+		part.getSelectedImplementation().visit(deployment).id
+		) :
+	this.JavaSetAttribute("id", getUUID()) ->
+	this.name.add(part.getScopedName()) ->
+	this.node.add(node.zdlAsNamedElement().name) ->
+	this.source.add(null) ->
+	this.implementation.add(id.visitInstanceImpl(this)) ->
+	// trace0("RegisterNaming", "visit: BEFORE visitConfigProperty") ->
+	part.modelElement.definition.zdlAsComponent().member.typeSelect(CORBAAttribute).visitConfigProperty(this, part) ->
+	// trace0("RegisterNaming", "visit: AFTER  visitConfigProperty") ->
+	part.modelElement.definition.zdlAsComponent().member.typeSelect(CCM::CCM_Target::Property).select(p | "edu.vanderbilt.dre.DAnCE.RegisterNaming".matches(p.name) == false || part.shouldGenerateRegisterNamingTag(p)).visitConfigProperty(this, part) ->
+	if comp_type.getHome() != null then createHomeIdProperty(this, getHomePart(zDeployment, comp_type.getHome(), part)) -> 
+	deployment.instance.add(this);
+	
+cached MonolithicImplementation getSelectedImplementation(ComponentDeploymentPart cdp ) :
+	let impls = ( cdp.modelElement.definition != null ? cdp.modelElement.definition.getMonolithicImplementations() : {} ) :
+	impls.size == 1 ?
+		impls.first() :
+		cdp.selectedImplementation;
+	
+cached List[emf::EObject] getMonolithicImplementations(CCMComponent comp ) :
+	JAVA com.zeligsoft.domain.omg.ccm.util.CCMUtil.getMonolithicImplementationsForComponent(
+		org.eclipse.emf.ecore.EObject);
+	
+/*
+ * Retrieve the deployment part pointing to a Home given a parent part for hierarchical context.
+ */
+DeploymentPart getHomePart(CCM::CCM_Deployment::DeploymentPlan zDeployment, Home home, DeploymentPart componentPart ) :
+	zDeployment.part.select( part | part.modelElement.isHomePart()).select(part | part.modelElement.definition == home).select( part | part.getParentPart() == componentPart.getParentPart()).selectFirst(part | part.getTargetPart() == componentPart.getTargetPart());
+	
+	
+Void visitConfigProperty(CORBAAttribute attribute, InstanceDeploymentDescription idd, DeploymentPart part ) :
+	let defaultSlots = createList(new java::lang::Object) :
+	defaultSlots.addAll(findDefaultSlot(attribute, part)) ->
+	if part.zdlAsProperty().defaultValue != null then
+	{
+		let slot = part.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == attribute) :
+		if( slot == null ) then 
+		{	
+			if( !defaultSlots.isEmpty ) then {
+				let defaultSlot = defaultSlots.get(0) :
+				defaultSlots.remove(defaultSlot) ->
+				defaultSlot.visitConfigProperty(idd, defaultSlots)
+			}
+		} 
+		else slot.visitConfigProperty(idd, defaultSlots)
+	} 
+	else
+	{
+		if( !defaultSlots.isEmpty ) then {
+			let defaultSlot = defaultSlots.get(0) :
+			defaultSlots.remove(defaultSlot) ->		
+			defaultSlot.visitConfigProperty(idd, defaultSlots)
+		}
+	};
+	
+Void visitConfigProperty(CCM::CCM_Target::Property property, InstanceDeploymentDescription idd, DeploymentPart part ) :
+	let defaultSlots = createList(new java::lang::Object) :
+	// check for and prevent double add of a property.
+	if(!idd.configProperty.name.exists(n | n == property.name)) then {
+		defaultSlots.addAll(findDefaultSlot(property, part)) ->
+		if part.zdlAsProperty().defaultValue != null then
+		{
+			let slot = part.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == property) :
+			if( slot == null ) then 
+			{			
+				if( !defaultSlots.isEmpty ) then {
+					let defaultSlot = defaultSlots.get(0) :
+					defaultSlots.remove(defaultSlot) ->
+					defaultSlot.visitConfigProperty(idd, defaultSlots)
+				}			
+			} 
+			else slot.visitConfigProperty(idd, defaultSlots)
+		} 
+		else
+		{
+			if( !defaultSlots.isEmpty ) then {
+				let defaultSlot = defaultSlots.get(0) :
+				defaultSlots.remove(defaultSlot) ->	
+				defaultSlot.visitConfigProperty(idd, defaultSlots)
+			}
+		}->
+		
+		// Register naming tag must be generated even if no values set
+		//
+		// IF there�s no explicit RegisterNaming property set on either the CCMComponent type (default setting) 
+		// OR on the instance of that type (override setting) in the deployment plan, 
+		// BUT there�s a CCMConnector connection definition in the deployment assembly that 
+		// connects a deployed component instance (any facet/receptacle port � just takes one) 
+		// with a non-deployed component instance, then generate the register naming tag for the deployed instance.
+		if(property.name == "edu.vanderbilt.dre.DAnCE.RegisterNaming" && !idd.configProperty.name.exists(n | n == property.name)) then {
+			idd.createRegisterNamingProperty(part.name)
+		}
+	};
+	
+	
+create Property createHomeIdProperty(InstanceDeploymentDescription idd, DeploymentPart home) :
+	idd.configProperty.add(this) ->
+	this.name.add("edu.vanderbilt.dre.CIAO.ComponentHomeId") ->
+	this.value.add(this.createHomeIdPropertyValue(home));
+
+create Any createHomeIdPropertyValue(Property property, DeploymentPart home ) :
+	let type = new DataType :
+	let value = new DataValue :
+	type.kind.add(TcKind::tkString) ->
+	this.type.add(type) ->
+	if( home != null ) then	{ // This can happen if you have not created an instance for the managing home
+		value.string.add(home.getScopedName()) ->
+		this.value.add(value)
+	};
+	
+create InstanceDeploymentDescription visitHome(DeploymentPart part, DeploymentPlan deployment, CCM::CCM_Deployment::DeploymentPlan zDeployment) :
+	let comp_type = part.modelElement.definition :
+	let process = zDeployment.allocation.selectFirst( a | a.deployed.contains(part)).deployedOn :
+	let node = zDeployment.allocation.selectFirst(a | a.deployed.contains(process)).deployedOn :
+	let componentPartImplementation = getComponentPartImplementationForHomeInstance(part, zDeployment) :
+	let id = part.modelElement.definition.visit(deployment, componentPartImplementation).id :
+	this.JavaSetAttribute("id", getUUID()) ->
+	this.name.add(part.getScopedName()) ->
+	this.node.add(node.zdlAsNamedElement().name) ->
+	this.source.add(null) ->
+	this.implementation.add(id.visitInstanceImpl(this)) ->
+	if part.zdlAsProperty().defaultValue != null then part.zdlAsProperty().defaultValue.zdlAsInstanceValue().visitConfigProperty(this) ->
+	deployment.instance.add(this);
+	
+MonolithicImplementation getComponentPartImplementationForHomeInstance(DeploymentPart homePart, CCM::CCM_Deployment::DeploymentPlan zDeployment ) :
+	let home = homePart.modelElement.definition :
+	let managedComponent = home.manages.component :
+	let parentPart = homePart.getParentPart() :
+	let componentPart = zDeployment.part.select( part | part.getParentPart() == parentPart).select( part | part.getTargetPart() == homePart.getTargetPart()).select( part | part.modelElement.definition == managedComponent).first() :
+	componentPart.getSelectedImplementation(); 
+	
+Void createInstances(DataSpace dataSpace, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment) :
+	visit(dataSpace, plan, deployment, dataSpace.zdlAsProperty().eContainer);
+	
+Void visit(DataSpace dataSpace, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, AssemblyImplementation assembly ) :
+	assembly.connector.select( c | c.end.zdlAsConnectorEnd().role.contains(dataSpace)).visit(dataSpace, plan, deployment, dataSpace);
+	
+Void visit(CCMConnector connector, DataSpace dataSpace, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, Object expansionObject) :
+	visit(connector, dataSpace, plan, deployment, expansionObject, connector);
+	
+Void visit(CCMConnector connector, DataSpace dataSpace, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, Object expansionObject, CCMConnector origConn) :
+	let compPart = connector.end.reject(e | e.partWithPort == null).partWithPort.first() :
+	let deploymentTarget = deployment.allocation.select(e | e.deployed.modelElement.contains(compPart)) :
+	if( deploymentTarget.size == 0) then {
+		// Assembly. Iterate into the assembly and generate the instances for every connected leaf component.
+		let assembly_impl = getAssembly(compPart.definition) :
+		let connectedPort = connector.end.reject(e | e.partWithPort == null).port.first() :
+		assembly_impl.connector.select( c | c.end.port.contains(connectedPort)).visit(dataSpace, plan, deployment, compPart, origConn) 
+	}  
+	else {
+		// Leaf. Generate DDS4CCM fragments for every deployed instance of this part.
+		let compPort = connector.end.reject(e | e.partWithPort == null).port.first() :
+		let origConnPart = origConn.end.reject(e | e.partWithPort == null).partWithPort.first() : // original CCMPart in the top-level connection
+		deploymentTarget.select( dt | dt.deployed.select(dep | dep.modelElement == compPart).select( part | part.hasAncestor(origConnPart)).createDDS4CCMConnectorFragmentHelper(dt.deployedOn, plan, deployment, dataSpace, compPort, origConn))
+	};
+
+/*
+ * Returns true if the deploymentPart or one of its ancestors points to the CCMPart as its modelElement
+ */
+boolean hasAncestor(DeploymentPart possibleChild, CCMPart ancestor ) :
+	possibleChild.modelElement == ancestor ? true : // base case, success
+	hasAncestor(possibleChild.getParentPart(), ancestor); // recurse on parent
+	
+boolean hasAncestor(Void possibleChild, CCMPart ancestor ) :
+	false; // if we get to a null element then the CCMPart wasn't an ancestor
+		
+/*
+ * This method uses a lazy form of filtering instead of the dispatch mechanism used by "create". This is necessary to create the
+ * connections correctly.
+ * It is therefore up to the previous callstack to make sure it's iterating through assemblies properly.
+ */
+Void createDDS4CCMConnectorFragmentHelper(DeploymentPart source, DeploymentPart target, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, DataSpace dataSpace, InterfacePort sourcePort, CCMConnector origConn ) :
+	let fragmentInstance = createDDS4CCMConnectorFragmentHelper(source, target, plan, deployment, dataSpace ) :
+	let sourceSN = source.getScopedName() : 
+	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
+		
+	// For the DDS Connector that connects them, for each provides and requires, create a connection where one endpoint is
+	// the facet/recept on the component, and the other is the connector fragment we just created.
+	// source is the component we are connecting to. 
+	createConnectionsForDDS4CCMConnectorFragment(plan, sourcePort, compInstance, fragmentInstance, dataSpace, sourcePort.porttype, origConn);
+	
+
+create InstanceDeploymentDescription createDDS4CCMConnectorFragmentHelper(DeploymentPart source, DeploymentPart target, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, DataSpace dataSpace ) :
+	let node = deployment.allocation.selectFirst(e | e.deployed.contains(target)).deployedOn :
+	let idd = this : 
+	let dataSpaceSN = dataSpace.connectorType.getCorbaScopedName() :
+	let id = visit(dataSpace.connectorType, plan).id :
+	let dataSpaceDP = deployment.part.select( part | part.modelElement == dataSpace).selectFirst( part | part.sameLocalAssembly(source)) :
+	idd.JavaSetAttribute("id", getUUID()) ->
+	idd.name.add(dataSpace.getScopedName() + "_to_" + source.name + "@" + node.name + "." + target.name) ->
+	idd.node.add(node.name) ->
+	idd.source.add(null) ->
+	idd.implementation.add(id.visitInstanceImpl(idd)) ->
+	dataSpace.connectorType.zdlAsComponent().member.typeSelect(CORBAAttribute).visitDataSpaceProperty(idd, getPerPortDP(source, dataSpace, deployment), dataSpaceDP) ->
+	dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).visitDataSpaceProperty(idd, getPerPortDP(source, dataSpace, deployment), dataSpaceDP) ->
+	plan.instance.add(idd) ->
+	addInstanceToLocalityConstraint(
+		idd, 
+		plan, 
+		deployment.allocation.selectFirst(e | e.deployedOn == target).deployed.selectFirst(e | e.modelElement.isComponentPart())
+	);
+	
+boolean sameLocalAssembly(DeploymentPart dataSpaceDP, DeploymentPart componentDP ) :
+	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.sameLocalAssembly(
+		org.eclipse.uml2.uml.Property,
+		org.eclipse.uml2.uml.Property);
+
+DeploymentPart getPerPortDP(DeploymentPart part , DataSpace dataSpace, CCM::CCM_Deployment::DeploymentPlan deployment) :
+	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.getPerPortDP(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Component);
+
+/*
+ * For an attribute on a dataspace, check if the deployment part has
+ * a slot containing an overridden value for it. If it does not, find
+ * the default value slot for the attribute on the ConnectorDefaultValueBinding.
+ * If one is found, pass that slot on instead.
+ */
+Void visitDataSpaceProperty(CORBAAttribute attribute, InstanceDeploymentDescription idd, DeploymentPart perPort, DeploymentPart dataSpace) :
+	let defaultSlots = createList(new java::lang::Object) :
+	defaultSlots.addAll(findDefaultSlot(attribute, dataSpace)) ->
+	if (perPort != null && perPort.zdlAsProperty().defaultValue != null && perPort.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == attribute) != null) then
+	{
+		let slot = perPort.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == attribute) :
+		slot.visitConfigProperty(idd, defaultSlots)
+	}
+	else if (dataSpace.zdlAsProperty().defaultValue != null) then
+	{
+		let slot = dataSpace.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == attribute) :
+		if( slot == null ) then 
+		{
+			if( !defaultSlots.isEmpty ) then {
+				let defaultSlot = defaultSlots.get(0) :
+				defaultSlots.remove(defaultSlot) ->
+				defaultSlot.visitConfigProperty(idd, defaultSlots)
+			}	
+		} 
+		else slot.visitConfigProperty(idd, defaultSlots)
+	} 
+	else
+	{
+		if( !defaultSlots.isEmpty ) then {
+				let defaultSlot = defaultSlots.get(0) :
+				defaultSlots.remove(defaultSlot) ->
+				defaultSlot.visitConfigProperty(idd, defaultSlots)
+		}
+	};
+	
+Void visitDataSpaceProperty(InterfacePort port, InstanceDeploymentDescription idd, DeploymentPart perPort, DeploymentPart dataSpace) :
+	port.porttype.ownedAttribute.visitDataSpaceProperty(port, idd, perPort, dataSpace);
+	
+Void visitDataSpaceProperty(CORBAAttribute attribute, InterfacePort port, InstanceDeploymentDescription idd, DeploymentPart perPort, DeploymentPart dataSpace ) :
+	if(perPort != null && perPort.zdlAsProperty().defaultValue != null && perPort.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == port) != null) then
+	{
+		let defaultSlots = createList(new java::lang::Object) :
+		let slot2 = perPort.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == port).value.first().zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == attribute) :
+		defaultSlots.addAll(findDefaultSlot(attribute, port, dataSpace)) ->
+		slot2.visitConfigProperty(idd, defaultSlots).addPortPrefix(port)
+	}
+	else if dataSpace.zdlAsProperty().defaultValue != null then
+	{
+		let slot = dataSpace.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst
+			( slot | slot.definingFeature == port) :
+		let defaultSlots = createList(new java::lang::Object) :
+		defaultSlots.addAll(findDefaultSlot(attribute, port, dataSpace)) ->
+		if( slot == null ) then 
+		{
+			if( !defaultSlots.isEmpty ) then {
+				let defaultSlot = defaultSlots.get(0) :
+				defaultSlots.remove(defaultSlot) ->
+				defaultSlot.visitConfigProperty(idd, defaultSlots).addPortPrefix(port)
+			}	
+		} 
+		else 
+		{
+			let slot2 = slot.value.first().zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == attribute) :
+			slot2.visitConfigProperty(idd, defaultSlots).addPortPrefix(port)
+		} 
+	} 
+	else
+	{
+		let defaultSlots = createList(new java::lang::Object) :
+		defaultSlots.addAll(findDefaultSlot(attribute, dataSpace)) ->
+		if( !defaultSlots.isEmpty ) then {
+				let defaultSlot = defaultSlots.get(0) :
+				defaultSlots.remove(defaultSlot) ->
+				defaultSlot.visitConfigProperty(idd, defaultSlots).addPortPrefix(port)
+		}
+	};
+
+Void addPortPrefix(Property prop, InterfacePort port ) :
+	let genName = prop.name.first() :
+	prop.name.remove(prop.name.first()) ->
+	prop.name.add(port.name + "_" + genName);
+
+cached List[uml::Slot] findDefaultSlot(CCM::CCM_Target::Property property, DeploymentPart part ) :
+	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.findDefaultSlot(
+		org.eclipse.uml2.uml.Property,
+		org.eclipse.uml2.uml.Property);
+			
+cached List[uml::Slot] findDefaultSlot(CORBAAttribute attribute, DeploymentPart dataSpace) :
+	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.findDefaultSlot(
+		org.eclipse.uml2.uml.Property,
+		org.eclipse.uml2.uml.Property);
+		
+cached List[uml::Slot] findDefaultSlot(CORBAAttribute attribute, InterfacePort port, DeploymentPart dataSpace) :
+	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.findDefaultSlot(
+		org.eclipse.uml2.uml.Property,
+		org.eclipse.uml2.uml.Property,
+		org.eclipse.uml2.uml.Property);	
+
+Void createConnectionsForDDS4CCMConnectorFragment(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, ExtendedPortType porttype, CCMConnector origConn) :
+	let prefix = dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).selectFirst( p | p.type == sourcePort.type).name : 
+	plan.connection.addAll(porttype.zdlAsClass().clientDependency.createDDS4CCMConnection(sourcePort, compInstance, fragmentInstance, dataSpace, prefix));
+	
+Void createConnectionsForDDS4CCMConnectorFragment(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, ExtendedPortType porttype, ConnectorStatusListenerConnection origConn) :
+	let prefix = dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).selectFirst( p | p.type == sourcePort.type).name : 
+	plan.connection.addAll(porttype.zdlAsClass().clientDependency.createDDS4CCMConnection(sourcePort, compInstance, fragmentInstance, dataSpace, prefix)) ->
+	sourcePort.hasCSL ?
+		createStatusListenerConnection(plan, sourcePort, compInstance, fragmentInstance, dataSpace, origConn) :
+		{};
+
+create PlanConnectionDescription createConnectionsForDDS4CCMConnectorFragment(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, CORBAInterface porttype, CCMConnector origConn) :
+	let prefix = dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).selectFirst( p | p.type == porttype).name :
+	this.name.add(compInstance.name.first() + "." + sourcePort.name + "::" + fragmentInstance.name.first() + "." + prefix + "_" + porttype.name) ->
+	this.deployRequirement.add(createLocalInterfaceRequirement()) ->
+	this.createEndPoint(!(sourcePort.isConjugated), false, sourcePort.name, compInstance) ->
+	this.createEndPoint((sourcePort.isConjugated), false, prefix, fragmentInstance) ->
+	plan.connection.add(this);	
+
+create PlanConnectionDescription createConnectionsForDDS4CCMConnectorFragment(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, CORBAInterface porttype, ConnectorStatusListenerConnection origConn) :
+	let prefix = dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).selectFirst( p | p.type == porttype).name :
+	this.name.add(compInstance.name.first() + "." + sourcePort.name + "::" + fragmentInstance.name.first() + "." + prefix + "_" + porttype.name) ->
+	this.deployRequirement.add(createLocalInterfaceRequirement()) ->
+	this.createEndPoint(!(sourcePort.isConjugated), false, sourcePort.name, compInstance) ->
+	this.createEndPoint((sourcePort.isConjugated), false, prefix, fragmentInstance) ->
+	plan.connection.add(this) ->
+	sourcePort.hasCSL ?
+		createStatusListenerConnection(plan, sourcePort, compInstance, fragmentInstance, dataSpace, origConn ) :
+		{};
+
+create PlanConnectionDescription createStatusListenerConnection(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, ConnectorStatusListenerConnection origConn)  :
+	let prefix = dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).selectFirst( p | p.type == porttype).name :
+	this.name.add(compInstance.name.first() + "." + sourcePort.name + "_CSL::" + fragmentInstance.name.first() + "_" + "ConnectorStatusListener") ->
+	this.deployRequirement.add(createLocalInterfaceRequirement()) ->
+	this.createEndPoint(!(sourcePort.isConjugated), false, sourcePort.name + "_CSL", compInstance) ->
+	this.createEndPoint((sourcePort.isConjugated), false, "error_listener", fragmentInstance) ->
+	plan.connection.add(this);
+
+create PlanConnectionDescription createDDS4CCMConnection(NamedElement dep, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, String prefix ) :
+	this.name.add(compInstance.name.first() + "." + sourcePort.name + "::" + fragmentInstance.name.first() + "." + prefix + "_" + dep.name) ->
+	this.deployRequirement.add(createLocalInterfaceRequirement()) ->
+	// I have to check the type of dep this way because it's always a ZML Named Element, so metaType won't work.
+	if dep.toString().startsWith("org.eclipse.uml2.uml.internal.impl.UsageImpl") then 
+	{
+		this.createEndPoint((sourcePort.isConjugated), false, sourcePort.name + "_" + dep.name, compInstance) ->
+		this.createEndPoint(!(sourcePort.isConjugated), false, prefix + "_" + dep.name, fragmentInstance)
+	} 
+	else
+	{
+		this.createEndPoint(!(sourcePort.isConjugated), false, sourcePort.name + "_" + dep.name, compInstance) ->
+		this.createEndPoint((sourcePort.isConjugated), false, prefix + "_" + dep.name, fragmentInstance)
+	};
+			
+Void addInstanceToLocalityConstraint(InstanceDeploymentDescription instance, DeploymentPlan plan, DeploymentPart deployedComp) :
+	let deployedCompSN = deployedComp.getScopedName() :
+	let compInstanceId = plan.instance.selectFirst( i | i.name.first() == deployedCompSN).id :
+	let planLocality = plan.localityConstraint.selectFirst( s | s.constrainedInstance.idref.contains(compInstanceId)) :
+	planLocality.constrainedInstance.add(createInstanceRef(instance, planLocality));
+
+create InstanceDeploymentDescription createInstanceRef(InstanceDeploymentDescription instance, Object obj) :
+	this.JavaSetAttribute("idref", instance.id);
+	
+/*
+ * Recursive method to create AMI4CCM Connector Fragments for a given facet and receptacle.
+ *
+ * The facet could be on an assembly. If it is we have to iterate through the assemblies and get
+ * the leaf parts and their facets that are actually involved in the connection.
+ *
+ * The receptacle also could be on an assembly. If it is we have to iterate through the assemblies and
+ * get the leaf parts and their receptacles that are actually involved in the connection.
+ *
+ * @param facetPart - the part containing the facet in the connection.
+ */
+Void createAMIConnectorFragment(DeploymentPart facetPart, InterfacePort facet, CCMPart receptPart, InterfacePort receptacle, CCM::CCM_Deployment::DeploymentPlan deployment, DeploymentPlan plan ) :
+	// Determine whether the facetPart is a leaf or an assembly.
+	let facetComponent = facetPart.modelElement.definition :
+	let assembly_impl = getAssembly(facetComponent) :
+	if assembly_impl.size > 0 then {
+		// Get the assembly implementation of facetPart and find all internal endpoints we must iterate into.
+		let delegationConnectorEnd = assembly_impl.connector.select( c | c.end.port.contains(facet)).end.reject( c | c.port == facet ) :
+		// Recursive call with new values for facetPart and facet, and same values for everything else.
+		delegationConnectorEnd.select
+			( dce | createAMIConnectorFragment( facetPart.nestedPart.selectFirst( p | p.modelElement == dce.partWithPort ), dce.port, receptPart, receptacle, deployment, plan ))
+	}
+	else 
+	{
+		let receptComponent = receptPart.definition :
+		let assembly_impl = getAssembly(receptComponent) :
+		if( assembly_impl.size > 0 ) then {	
+			let delegationConnectorEnd = assembly_impl.connector.select( c | c.end.port.contains(receptacle)).end.reject( c | c.port == receptacle ) :
+			// Recursive call with new values for receptPart and receptacle, and same values for everything else.
+			delegationConnectorEnd.select(
+				dce | createAMIConnectorFragment(facetPart, facet, dce.partWithPort, dce.port, deployment, plan ))
+		}
+		else
+		{
+			let receptDeploymentTarget = deployment.allocation.select( e | e.deployed.modelElement.contains( receptPart )) :
+			// Leafs for both. Create fragment.
+			//debug("receptPart = " + receptPart.name + "\nreceptacle = " + receptacle.name + "\nfacetPart = " + facetPart.name + "\nfacet = " + facet.name + "\nsource(s) = " + receptDeploymentTarget.deployed + "\ntarget(s) =" + receptDeploymentTarget.deployedOn + "\n# instances = " + plan.instance.size ) ->
+			receptDeploymentTarget.select
+				( dt | dt.deployed.select( dep | dep.modelElement == receptPart).createAMIConnectorFragmentHelper(dt.deployedOn, facet, facetPart, receptacle, plan ) 
+			// -> debug("After call, #instances = " + plan.instance.size )
+			) ->
+			deployment.part.select( part | part.modelElement == receptPart ).select( part | part.isDeployed() == false ).createAMIFacetConnection(receptacle, facetPart, facet, plan, deployment)
+		}
+	};
+	
+create PlanConnectionDescription createAMIFacetConnection(DeploymentPart undeployedReceptacle, InterfacePort receptacle, DeploymentPart facetPart, InterfacePort facet, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment) :
+	let sourceSN = facetPart.getScopedName() :
+	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
+	if( facetPart.isDeployed() ) then {
+		plan.connection.add(this) ->
+		this.name.add(facetPart.getScopedName() + "." + facet.name + "__" + undeployedReceptacle.getScopedName() + "." + receptacle.name + "_AMI4CCM_Connector_asyncdirect") ->
+		this.createEndPoint(true, false, facet.name, compInstance) ->
+		// register naming service for external connection
+		facetPart.modelElement.definition.zdlAsComponent().member.typeSelect(CCM::CCM_Target::Property).selectFirst(prop | "edu.vanderbilt.dre.DAnCE.RegisterNaming".matches(prop.name)).visitConfigProperty(facetPart.visit(plan, deployment), facetPart) ->
+		//ngc538: Do not fully qualify AMI4CCM fragment names
+		this.createExternalEndPoint(receptacle, undeployedReceptacle.name + "_" + receptacle.name + "__" + facetPart.name + "_" + facet.name, undeployedReceptacle)
+	};
+	
+/*
+ * Create a CDP Instance for an AMI4CCM Fragment and all requisite connections.
+ *
+ * @param source - The deployment part for the receptacle. This is needed in cases where a nested part in a reused assembly has the receptacle.
+ * @param target - The deployment part on which "source" is deployed. This will point to a containerProcess for its modelElement.
+ * @param facet / facetPart / receptacle - self-explanatory.
+ */	
+create InstanceDeploymentDescription createAMIConnectorFragmentHelper(DeploymentPart source, DeploymentPart target, InterfacePort facet, DeploymentPart facetPart, InterfacePort receptacle, DeploymentPlan plan ) :
+	let node = deployment.allocation.selectFirst(e | e.deployed.contains(target)).deployedOn :
+	let id = plan.implementation.selectFirst(e | e.name.first() == receptacle.porttype.name).id :
+	this.JavaSetAttribute("id", getUUID()) ->
+	this.name.add(receptacle.porttype.getScopedName() + "_AMI4CCM_Connector_for_" + facetPart.name + "_" + source.name + "@" + node.name + "." + target.name) ->
+	this.node.add(node.name) ->
+	this.source.add(null) ->
+	this.implementation.add(id.visitInstanceImpl(this)) ->
+	plan.instance.add(this) ->
+	// Because we pass the new instance into the following methods, we don't have to worry about caching. 
+	// Each instance will get the required connections.
+	plan.connection.add(this.createAMI_sendc_Connection(source, facet, plan, receptacle)) ->
+	plan.connection.add(this.createAMI_facet_Connection(facetPart, facet, source, receptacle, plan)) ->
+	plan.connection.add(this.createAMI_recept_Connection(source, facetPart, facet, plan, receptacle)) ->
+	if( facetPart.isDeployed() == false ) then {
+		//ngc538: Do not fully qualify AMI4CCM fragment names
+		this.createRegisterNamingProperty(source.name + "_" + receptacle.name + "__" + facetPart.name + "_" + facet.name) ->
+		// create a register naming for receptacle component instance
+		source.modelElement.definition.zdlAsComponent().member.typeSelect(CCM::CCM_Target::Property).selectFirst(prop | "edu.vanderbilt.dre.DAnCE.RegisterNaming".matches(prop.name)).visitConfigProperty(source.visit(plan, deployment), source)
+	} ->
+	addInstanceToLocalityConstraint(this, plan, source);
+
+/*
+ * Create register naming property with given value	
+ */
+create Property createRegisterNamingProperty(InstanceDeploymentDescription idd, String val ) :
+	this.name.add("edu.vanderbilt.dre.DAnCE.RegisterNaming") ->
+	this.value.add(this.createRegisterNamingProperty(val)) ->
+	idd.configProperty.add(this);
+
+create Any createRegisterNamingProperty(Property property, String val ) :
+	let type = new DataType :
+	let value = new DataValue :
+	type.kind.add(TcKind::tkString) ->
+	this.type.add(type) ->
+	value.string.add(val) ->
+	this.value.add(value);
+
+/*
+ * This connection has a provides endpoint which is the fragment and a requires endpoint that is the receptacle.
+ */
+create PlanConnectionDescription createAMI_sendc_Connection(InstanceDeploymentDescription idd, DeploymentPart source, InterfacePort facet, DeploymentPlan plan, InterfacePort receptacle) :
+	let sourceSN = source.getScopedName() :
+	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
+	this.name.add(sourceSN + "." + facet.name + "__" + idd.name.first()) ->
+	this.deployRequirement.add(createLocalInterfaceRequirement()) ->
+	this.createEndPoint(true, false, "ami4ccm_port_ami4ccm_provides", idd) ->
+	// AMI Fragment connections are never multiplex.
+	this.createEndPoint(false, false, "sendc_" + receptacle.name, compInstance);
+	
+create PlanConnectionDescription createAMI_recept_Connection(InstanceDeploymentDescription idd, DeploymentPart source, DeploymentPart facetPart, InterfacePort facet, DeploymentPlan plan, InterfacePort receptacle) :
+	let sourceSN = source.getScopedName() :
+	let facetSN = facetPart.getScopedName() :
+	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
+	this.name.add(sourceSN + "." + receptacle.name + "::" + facetSN + "." + facet.name) ->
+	this.deployRequirement.add(createLocalInterfaceRequirement()) ->
+	this.createEndPoint(false, true, receptacle.name, compInstance) ->
+	// AMI Fragment connections are never multiplex.
+	this.createEndPoint(true, false, "ami4ccm_port_ami4ccm_sync_provides", idd);
+	
+create PlanSubcomponentPortEndpoint createEndPoint(PlanConnectionDescription conn, Boolean provides, Boolean multiple, String portName, InstanceDeploymentDescription instance ) :
+	this.portName.add(portName) ->
+	this.kind.add(provides ? CcmComponentPortKind::Facet : 
+		(multiple ? CcmComponentPortKind::MultiplexReceptacle : CcmComponentPortKind::SimplexReceptacle)
+	) ->
+	this.provider.add( provides ? "true" : "false" ) ->
+	this.instance.add(createInstanceRef(instance, this)) ->
+	conn.internalEndpoint.add(this);
+	
+/*
+ * Create an external reference to a facet.
+ * The other endpoint is always an AMI4CCM connector fragment.
+ */
+create ExternalReferenceEndpoint createExternalEndPoint(PlanConnectionDescription connDescription, DeploymentPart connEnd, InterfacePort port) :
+	let location = getLocationPrefix(connEnd) :
+	this.location.add((location != null && location != "" ? location : "corbaname:rir:/NameService#") + getRegisterNamingValueForExternalConnection(connEnd)) ->
+	this.provider.add( "true" ) ->
+	this.portName.add(port.name) ->
+	this.supportedType.add("Meaningless") ->
+	connDescription.externalReference.add(this);
+	
+/*
+ * Create an external reference to an AMI4CCM connector fragment.
+ * The other endpoint is always a facet.
+ */
+create ExternalReferenceEndpoint createExternalEndPoint(PlanConnectionDescription connDescription, InterfacePort port, String amiFragmentName, DeploymentPart connEnd) :
+	let location = getLocationPrefix(connEnd) :
+	this.location.add((location != null && location != "" ? location : "corbaname:rir:/NameService#") + amiFragmentName ) ->
+	this.provider.add( "false" ) ->
+	this.portName.add("ami4ccm_port_ami4ccm_uses") ->
+	this.supportedType.add("Meaningless") ->
+	connDescription.externalReference.add(this);
+	
+/*
+ * This connection has a provides endpoint which is the facet and a requires endpoint that is the fragment.
+ */	
+create PlanConnectionDescription createAMI_facet_Connection(InstanceDeploymentDescription idd, DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan) :
+	let sourceSN = facetPart.getScopedName() :
+	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
+	this.name.add(facetPart.getScopedName() + "." + facet.name + "__" + receptPart.getScopedName() + "." + receptacle.name + "_AMI4CCM_Connector_asyncdirect") ->
+	//this.name.add(sourceSN + "." + facet.name + "__" + idd.name.first() + "_asyncdirect") ->
+	facetPart.isDeployed() ?
+		this.createEndPoint(true, false, facet.name, compInstance) :
+		this.createExternalEndPoint(facetPart, facet) ->
+	this.createEndPoint(false, false, "ami4ccm_port_ami4ccm_uses", idd);
+	
+cached boolean isComponentPart(CCMPart part) :
+	true;
+	
+cached boolean isComponentPart(NamedElement element) :
+	false;
+
+cached boolean isHomePart(HomeInstance part ) :
+	true;
+	
+cached boolean isHomePart(NamedElement part ) :
+	false;
+	
+/* 
+ * Create the AMI4CCM fragments and connections for a given CCM Part.
+ *
+ * @param part - A CCM Part. We will get its asynchronous receptacles and pass them to the next method.
+ */
+Void visitPortForInstances(CCMPart part, CCM::CCM_Deployment::DeploymentPlan zDeployment, DeploymentPlan plan) :
+	part.definition.ownedPort.typeSelect(InterfacePort).select(e | e.isAsynchronous && e.isConjugated).visitPortForInstances(part, zDeployment, plan);
+
+/*
+ * Get the set of facets that are connected to this receptacle and call createAMIConnectorFragment for each.
+ *
+ * @param receptacle - The receptacle that we are connected to.
+ */	
+Void visitPortForInstances(InterfacePort receptacle, CCMPart receptPart, CCM::CCM_Deployment::DeploymentPlan zDeployment, DeploymentPlan plan) :
+	if receptacle.porttype.portGeneratesFragment() then
+	{
+		// If the receptacle is connected, search for the facets to connect to the virtual dataspace(s).
+		if (receptPart.zdlAsProperty().owner.connector.end.port.contains(receptacle)) then
+		{
+			// Get the set of all possible facets in this assembly.
+			let possibleFacets = receptPart.zdlAsProperty().owner.part.definition.typeSelect(CCMComponent).ownedPort.select( zport | zport.isConjugated == false).select(zport | zport.porttype == receptacle.porttype) :
+			// Get the set of all connectors that connect this receptacle and then the set of the facets in those connections.
+			let receptacleConnectors = receptPart.zdlAsProperty().owner.connector.select( c | c.end.port.contains(receptacle)) :
+			let connectedFacets = receptacleConnectors.end.port.reject( p | p == receptacle) :
+			// Filter out the external ports by taking the intersection of the possible facets and the connected facets.
+			let generatedFacets = connectedFacets.reject( p | possibleFacets.select( p2 | p2 == p).size == 0) :			
+			generatedFacets.select( facet | getPartsForFacet(facet, receptPart, receptacle, zDeployment).createAMIConnectorFragment( facet, receptPart, receptacle, zDeployment, plan ))
+		} 
+	}; 
+
+/*
+ * Because each part containing a facet actually contains the same facet, if we connect a receptacle to three different parts of the same component (and thus the same facet), 
+ * oAW's caching mechanism causes only one AMI4CCM instance to be created. To get around this, once we know there is at least one connection to a facet, we retrieve a list of
+ * all parts that have a connection from that facet to the receptacle so that we can call the rule repeatedly for each one. 
+ */
+cached List[DeploymentPart] getPartsForFacet(InterfacePort facet, CCMPart part, InterfacePort receptacle, CCM::CCM_Deployment::DeploymentPlan zDeployment) :
+	let connectors = part.zdlAsProperty().owner.connector.select(c | c.end.port.contains(facet)).select(c | c.end.port.contains(receptacle)) :
+	let facetParts = connectors.end.reject( end | end.port == receptacle).partWithPort :
+	zDeployment.part.select( p | facetParts.contains(p.modelElement));
+
+cached boolean portGeneratesFragment(CORBAInterface type) :
+	type.isUsedAsynchronously();
+	
+cached boolean portGeneratesFragment(PortType type) :
+	false;
+
+Void visitPortType(CORBAInterface intf, DeploymentPlan plan) :
+	if intf.isUsedAsynchronously() then createImplementation(intf, plan); 
+	
+cached boolean isUsedAsynchronously(CORBAInterface self) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.isUsedAsynchronously(
+		org.eclipse.uml2.uml.Interface);
+	
+Void visitPortType(PortType o, DeploymentPlan plan) :
+	{};
+
+/*
+ * Create connections for a deployment part.
+ * 
+ * @param assemblyPart is a deployment part whose model element is an assembly.
+ *
+ * @param comp is the component interface of the assembly. Depending on where the assembly deployment
+ * part is in the deployment hierarchy, this is accessed differently relative to assemblyPart, so it 
+ * is explicitly passed in here. An alternative would be to have a rule to return the interface 
+ * passing in a deployment part, but this works well too.
+ */
+Void createConnections(DeploymentPart assemblyPart, CCM::CCM_Deployment::DeploymentPlan deployment, DeploymentPlan plan, CCMComponent comp) :
+	let assembly_impl = getAssembly(comp) :
+	let allConnectors = assembly_impl.connector :
+	let partWithPortConnectors = allConnectors.select( conn | conn.end.forAll( end | end.partWithPort != null)) :
+	let nestedAssemblies = assemblyPart.nestedPart.select( part | isZDLConcept(part.modelElement, "CCM::CCM_Implementation::CCMPart") && getAssembly(part.modelElement.definition).size > 0) :
+	partWithPortConnectors.expandEndPointsAndCreateConnections(plan, assemblyPart) ->
+	nestedAssemblies.select( asm | asm.createConnections(deployment, plan, asm.modelElement.definition)); 
+
+/*
+ * This rule is responsible for taking a CCMConnector and generating ALL the connections for it, 
+ * taking into account assembly implementations.
+ */
+Void expandEndPointsAndCreateConnections(CCMConnector conn, DeploymentPlan plan, DeploymentPart deploymentPart) :
+	let sourceEnds = conn.end.get(0).expand(deploymentPart) :
+	let targetEnds = conn.end.get(1).expand(deploymentPart) :
+	if( sourceEnds.size > 0 && targetEnds.size > 0 ) then 
+	{
+		// For some reason expand() returns a list of lists, with the external list being of size 1.
+		// We use .first() to work around that.
+		sourceEnds.select( end1 | targetEnds.select( end2 | visit(end1.first(), end2.first(), plan, deploymentPart )))
+	};
+
+/*
+ * Given a ConnectorEnd, return a list of all ConnectorEnds for leaf components that have a compatible 
+ * port endpoint. In the case of a ConnectorEnd on a leaf, it will return itself.  
+ */
+cached List[ConnectorEnd] expand(ConnectorEnd end, DeploymentPart deploymentPart) :
+	let retVal = {} :
+	let dp = deploymentPart.nestedPart.selectFirst( part | part.modelElement == end.partWithPort) :
+	let dpDef = dp.modelElement.definition :
+	let asm = getAssembly(dpDef) :
+	if( asm.size == 0 ) then
+	{
+		// Monolithic implementation. Return self.
+		retVal.add(end)
+	}
+	else
+	{
+		// Assembly implementation. Iterate into the assembly and find every ConnectorEnd connected 
+		// to the external port used in the connection. Recursively call this rule for each one and 
+		// add the result to the return list. 
+		let externalPortConnectors = asm.connector.select( conn | conn.end.port.contains(end.port)) :
+		let externalPortConnectorInternalEnds = externalPortConnectors.end.reject( cend | cend.port == end.port) :
+		retVal.addAll( externalPortConnectorInternalEnds.expand(dp))
+	} ->
+	retVal;
+
+
+/*
+ * Given two ConnectorEnds we have to see each pair of deployment parts that represent the
+ * endpoints, since the model elements could be present in the deployment more than once.
+ *
+ * In cases where there are more than one deployment part pointing to the partWithPort, 
+ * we will find pairs that have the same parent part and connect those. 
+ */
+Void visit(ConnectorEnd endpoint1, ConnectorEnd endpoint2, DeploymentPlan deployment, DeploymentPart deploymentPart ) :
+	let sourceEnds = findPartWithPortDP(endpoint1.partWithPort, deploymentPart ) :
+	let targetEnds = findPartWithPortDP(endpoint2.partWithPort, deploymentPart ) :
+	// sourceEnds and targetEnds could have size greater than one. This is the case if
+	// a facet/receptacle at the top level resolves down to a multiply nested assembly.
+	// In this case we simply generate for every deployment part.
+	sourceEnds.select( ep1 | targetEnds.select( ep2 | if (!endpoint1.port.isConjugated || !endpoint1.port.isAsynchronous || !endpoint1.port.porttype.portGeneratesFragment()) then visit(ep1, endpoint1.port, ep2, endpoint2.port, deployment, deploymentPart )));
+	
+/*
+ * Generate a D&C connection given two DeploymentParts representing the endpoints, and another DeploymentPart
+ * for context (since the same ConnectorEnds could be part of an assembly used multiple times in a 
+ * deployment).
+ */
+create PlanConnectionDescription visit(DeploymentPart endpoint1, InterfacePort port1, DeploymentPart endpoint2, InterfacePort port2, DeploymentPlan deployment, DeploymentPart deploymentPart) :
+	let connName = endpoint1.getScopedName() + "." + port1.name + "::" + endpoint2.getScopedName() + "." + port2.name :
+	this.name.add(connName) ->
+	// For each ConnectorEnd, we generate a "normal" endpoint if the component involved is deployed, 
+	// and an external reference endpoint if it is not. 
+	{ endpoint1.isDeployed() ?
+		endpoint1.visitPortEndPoint(port1, this, deployment, deploymentPart) :
+		endpoint1.visitExternalReference(port1, this)
+	} ->
+	{ endpoint2.isDeployed() ?
+		endpoint2.visitPortEndPoint(port2, this, deployment, deploymentPart) :
+		endpoint2.visitExternalReference(port2, this)
+	} ->
+	port1.type.isLocal && port2.type.isLocal ?
+		{ 
+			this.deployRequirement.add(createLocalInterfaceRequirement()) ->
+			if getTargetPart(endpoint1) != getTargetPart(endpoint2) then
+				reportError("Connection between deployment parts " + endpoint1.name + "::" + port1.name + " and " + endpoint2.name + "::" + port2.name + " on local interface requires collocation.")
+		} : { } ->
+	endpoint1.isDeployed() || endpoint2.isDeployed() ?
+		deployment.connection.add(this) :
+		{} ->
+	endpoint1.isDeployed() && !endpoint2.isDeployed() ?
+		deployment.instance.selectFirst(e | e.name.select(e | e == endpoint1.getScopedName()).size > 0).addConfigPropertyForRegisterNaming(endpoint1) :
+		{} ->
+	!endpoint1.isDeployed() && endpoint2.isDeployed() ?
+		deployment.instance.selectFirst(e | e.name.select(e | e == endpoint2.getScopedName()).size > 0).addConfigPropertyForRegisterNaming(endpoint2) :
+		{};
+
+/*
+ * Add required register naming config property for external connection
+ */
+cached Void addConfigPropertyForRegisterNaming(InstanceDeploymentDescription instance, DeploymentPart part) :
+	let property = part.modelElement.zdlAsProperty().type.zdlAsComponent().ownedAttribute.selectFirst(e | e.name == "edu.vanderbilt.dre.DAnCE.RegisterNaming"):
+	let propertyValue = part.getPropertyValue("edu.vanderbilt.dre.DAnCE.RegisterNaming") :
+	if(property != null && propertyValue == "") then {
+		let configProperty = new Property :
+		let configPropertyValue = new Any :
+		let dataValue = new DataValue :
+		setAttributeValue(dataValue, getRegisterNamingValueForExternalConnection(part), property.zdlAsProperty().type.toCDPType()) ->
+		configPropertyValue.type.add(visitAttributeType(property, configPropertyValue)) ->
+		configPropertyValue.value.add(dataValue) ->
+		
+		configProperty.name.add("edu.vanderbilt.dre.DAnCE.RegisterNaming") ->
+		configProperty.value.add(configPropertyValue) ->
+		instance.configProperty.add(configProperty)
+	};
+
+/*
+ * Returns whether the deploymentPart is deployed.
+ */
+cached boolean isDeployed(DeploymentPart deploymentPart ) :
+	getTargetPart(deploymentPart) != null;
+
+/*
+ * Generate the D&C connection endpoint information for a normal (deployed) component.
+ */
+create PlanSubcomponentPortEndpoint visitPortEndPoint(DeploymentPart connEnd, InterfacePort port, PlanConnectionDescription connDescription, DeploymentPlan deployment, DeploymentPart deploymentPart) :
+	let dpSN = connEnd.getScopedName() :
+	let instId = deployment.instance.selectFirst(e | e.name.first().matches(dpSN)).id :
+	this.portName.add(port.name) ->
+	this.provider.add( port.isConjugated ? "false" : "true" ) ->
+	this.kind.add(this.provider.first() == "true" ? CcmComponentPortKind::Facet : 
+		( port.zdlAsPort().isMultivalued() ? CcmComponentPortKind::MultiplexReceptacle : CcmComponentPortKind::SimplexReceptacle)	) ->
+	this.instance.add(connEnd.visit(instId)) -> 
+	connDescription.internalEndpoint.add(this);
+	
+/*
+ * Generate the D&C connection endpoint information for an external reference.
+ */
+create ExternalReferenceEndpoint visitExternalReference(DeploymentPart connEnd, InterfacePort port, PlanConnectionDescription connDescription) :
+	let location = getLocationPrefix(connEnd) :
+	this.location.add((location != null && location != "" ? location : "corbaname:rir:/NameService#") + getRegisterNamingValueForExternalConnection(connEnd)) ->
+	this.provider.add( port.isConjugated ? "false" : "true" ) ->
+	this.portName.add(port.name) ->
+	this.supportedType.add("Meaningless") ->
+	connDescription.externalReference.add(this);
+	
+cached String getRegisterNamingValueForExternalConnection(DeploymentPart part) :
+	let registerNaming = part.getPropertyValue("edu.vanderbilt.dre.DAnCE.RegisterNaming") :
+	registerNaming != "" ? registerNaming : part.name;
+	
+/*
+ * Given a CCMPart and the deployment part representing an assembly containing a connection, find the 
+ * deployment part(s) that points to the CCMPart as its model element.
+ * This calls out to a Java method because the CCMPart could be nested multiple levels below the 
+ * assembly's model element, which is a pain to evaluate in Xtend. 
+ * 
+ */
+cached List[DeploymentPart] findPartWithPortDP( CCMPart part, DeploymentPart asmPart ) :
+	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.findPartWithPortDP(
+		org.eclipse.uml2.uml.Property,
+		org.eclipse.uml2.uml.Property);
+		
+cached DeploymentPart getTargetPart(DeploymentPart source) :
+	JAVA com.zeligsoft.domain.zml.util.ZDeploymentUtil.getDeploymentTargetPart(
+		org.eclipse.uml2.uml.Property);
+	
+ArtifactDeploymentDescription visitImplArtifact(ArtifactDeploymentDescription artifact) :
+	let artifactReference = new ArtifactDeploymentDescription :
+	artifactReference.JavaSetAttribute("idref", artifact.id) ->
+	artifactReference;
+
+	
+create ArtifactDeploymentDescription visitArtifactExec(NamedElement inst) :
+	this.name.add(inst.getCorbaScopedName() + "_exec") ->
+	this.source.add(null) ->
+	this.node.add(null) ->
+	this.location.add(inst.getCorbaScopedName() + "_exec") ->
+	this.JavaSetAttribute("id", getUUID());
+	
+create ArtifactDeploymentDescription visitArtifactSvnt(NamedElement inst) :
+	this.name.add(inst.getCorbaScopedName() + "_svnt") ->
+	this.source.add(null) ->
+	this.node.add(null) ->
+	this.location.add(inst.getCorbaScopedName() + "_svnt") ->
+	this.JavaSetAttribute("id", getUUID());
+
+
+create ArtifactDeploymentDescription visitArtifactExec(ConnectorDef inst) :
+	this.name.add(inst.getCorbaScopedName() + "_exec") ->
+	this.source.add(null) ->
+	this.node.add(null) ->
+	this.location.add(getCorbaScopedName(inst).replaceAll("_" + inst.name, "") + "_exec") ->
+	this.JavaSetAttribute("id", getUUID());
+	
+create ArtifactDeploymentDescription visitArtifactSvnt(ConnectorDef inst) :
+	this.name.add(inst.getCorbaScopedName() + "_svnt") ->
+	this.source.add(null) ->
+	this.node.add(null) ->
+	this.location.add(getCorbaScopedName(inst).replaceAll("_" + inst.name, "") + "_svnt") ->
+	this.JavaSetAttribute("id", getUUID());
+	
+cached String getCorbaScopedName(DataSpace element ) :
+	getCorbaScopedName(element.zdlAsProperty().type);
+	
+create Property visitParam1(NamedElement inst) :
+	this.name.add("component factory") ->
+	this.value.add(visitAny("create_" + inst.getCorbaScopedName() + "_Impl"));
+	
+create Property visitParam1(CORBAInterface inst) :
+	this.name.add("component factory") ->
+	this.value.add(visitAny("create_" + inst.getCorbaScopedName().replaceAll(inst.name, "AMI4CCM_" + inst.name) + "_Connector_Impl"));
+	
+create Property visitParam1(Home inst, MonolithicImplementation impl) :
+	this.name.add("home factory") ->
+	this.value.add(visitAny("create_" + inst.getCorbaScopedName() + "_Impl"));
+	
+create Property visitParam2(NamedElement inst) :
+	this.name.add("edu.vanderbilt.dre.CIAO.ExecutorArtifact") ->
+	this.value.add(visitAny(inst.getCorbaScopedName() + "_exec"));
+	
+create Property visitParam2(Home inst, MonolithicImplementation impl) :
+	this.name.add("edu.vanderbilt.dre.CIAO.ExecutorArtifact") ->
+	this.value.add(visitAny(inst.manages.component.getCorbaScopedName() + "_exec"));
+	
+create Property visitParam3(NamedElement inst) :
+	this.name.add("edu.vanderbilt.dre.CIAO.ServantEntrypoint") ->
+	this.value.add(visitAny("create_" + inst.getCorbaScopedName() + "_Servant"));
+
+create Property visitParam3(CORBAInterface inst) :
+	this.name.add("edu.vanderbilt.dre.CIAO.ServantEntrypoint") ->
+	this.value.add(visitAny("create_" + inst.getCorbaScopedName().replaceAll(inst.name, "AMI4CCM_" + inst.name) + "_Connector_AMI4CCM_Connector_Servant"));
+
+create Property visitParam3(Home inst, MonolithicImplementation impl) :
+	this.name.add("edu.vanderbilt.dre.CIAO.ServantEntrypoint") ->
+	this.value.add(visitAny("create_" + inst.getCorbaScopedName() + "_Servant"));
+
+create Property visitParam4(NamedElement inst) :
+	this.name.add("edu.vanderbilt.dre.CIAO.ServantArtifact") ->
+	this.value.add(visitAny(inst.getCorbaScopedName() + "_svnt"));
+
+create Property visitParam4(Home inst, MonolithicImplementation impl) :
+	this.name.add("edu.vanderbilt.dre.CIAO.ServantArtifact") ->
+	this.value.add(visitAny(inst.manages.component.getCorbaScopedName() + "_svnt"));
+
+	
+/*
+<execParameter> 
+  <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name> 
+  <value> 
+    <type> 
+      <kind>tk_string</kind> 
+    </type> 
+    <value> 
+      <string>edu.vanderbilt.dre.CCM.Component</string> 
+    </value> 
+  </value> 
+</execParameter> 
+
+Valid settings for the ImplementationType <string> field are: 
+ 
+"edu.vanderbilt.dre.CCM.Component" 
+"edu.vanderbilt.dre.CCM.HomedComponent" 
+"edu.vanderbilt.dre.CCM.Connector� 
+"edu.vanderbilt.dre.DAnCE.LocalityManager" 
+"edu.vanderbilt.dre.CCM.Home" 
+"edu.vanderbilt.dre.CCM.Container" 
+ */
+create Property visitImplementationTypeParameter(CCMComponent inst ) :
+	this.name.add("edu.vanderbilt.dre.DAnCE.ImplementationType") ->
+	getHome(inst) != null ?
+	this.value.add(visitAny("edu.vanderbilt.dre.CCM.HomedComponent"))
+	: this.value.add(visitAny("edu.vanderbilt.dre.CCM.Component"));
+	
+create Property visitImplementationTypeParameter(MonolithicImplementation inst ) :
+	this.name.add("edu.vanderbilt.dre.DAnCE.ImplementationType") ->
+	getHome(inst.interface) != null ?
+	this.value.add(visitAny("edu.vanderbilt.dre.CCM.HomedComponent"))
+	: this.value.add(visitAny("edu.vanderbilt.dre.CCM.Component"));
+	
+create Property visitImplementationTypeParameter(ConnectorDef inst ) :
+	this.name.add("edu.vanderbilt.dre.DAnCE.ImplementationType") ->
+	this.value.add(visitAny("edu.vanderbilt.dre.CCM.Connector"));
+	
+create Property visitImplementationTypeParameter(CORBAInterface intf ) :
+	this.name.add("edu.vanderbilt.dre.DAnCE.ImplementationType") ->
+	this.value.add(visitAny("edu.vanderbilt.dre.CCM.Connector"));
+	
+create Property visitImplementationTypeParameter(Home home, MonolithicImplementation impl ) :
+	this.name.add("edu.vanderbilt.dre.DAnCE.ImplementationType") ->
+	this.value.add(visitAny("edu.vanderbilt.dre.CCM.Home"));
+	
+Home getHome(CCMComponent component) :
+	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.getHome(
+		org.eclipse.uml2.uml.Component);
+		
+String getPath(CCM::CCM_Deployment::DeploymentPlan element) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
+	
+String getLocationPrefix(DeploymentPart connEnd) :
+    JAVA com.zeligsoft.domain.ngc.ccm.descriptorgeneration.DDS4CCMXtendUtils.getLocationPrefix(org.eclipse.uml2.uml.Element);
+
+String shouldGenerateRegisterNamingTag(DeploymentPart part, CCM::CCM_Target::Property property) :
+    JAVA com.zeligsoft.domain.ngc.ccm.descriptorgeneration.DDS4CCMXtendUtils.shouldGenerateRegisterNamingTag(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Property);
+    
+// This should never cache
+Any visitAny(String value) :
+	let retVal = new Any :
+	retVal.type.add(visitType()) ->
+	retVal.value.add(visitValue(value)) ->
+	retVal;
+	
+DataType visitType() :
+	let type = new DataType :
+	type.kind.add(TcKind::tkString) ->
+	type;
+
+// This should never cache	
+DataValue visitValue(String value) :
+	let retVal = new DataValue :
+	retVal.string.add(value) ->
+	retVal;
+	
+/**
+ * Hard-Coded AMI4CCM Elements
+ */
+	
+/*
+<implementation xmi:id="CompSvrImpl"> 
+  <name>CompSvr</name> 
+  <source /> 
+  <artifact xmi:idref="CompSvrArt" /> 
+  <execParameter> 
+    <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name> 
+    <value> 
+      <type> 
+        <kind>tk_string</kind> 
+      </type> 
+      <value> 
+        <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string> 
+      </value> 
+    </value> 
+  </execParameter> 
+</implementation>
+*/
+Void createLocalityManagerElements(deploymentplan::DeploymentPlan plan) :
+	let artifact = createLocalityManagerArtifact() :
+	plan.artifact.add(artifact) ->
+	plan.implementation.add(createLocalityManagerImplementation(artifact));
+	
+create MonolithicDeploymentDescription createLocalityManagerImplementation(ArtifactDeploymentDescription artifact) :
+	this.name.add("CompSvr") ->
+	this.artifact.add(artifact.visitImplArtifact()) ->
+	this.execParameter.add(createImplementationTypeProperty()) ->
+	this.JavaSetAttribute("id", "CompSvrImpl");
+	
+create Property createImplementationTypeProperty() :
+	this.name.add("edu.vanderbilt.dre.DAnCE.ImplementationType") ->
+	this.value.add(visitAny("edu.vanderbilt.dre.DAnCE.LocalityManager"));
+	
+/*
+ 
+<artifact xmi:id="CompSvrArt"> 
+  <name>CompoSvrArtifactName</name> 
+  <source /> 
+  <node /> 
+  <location>dance_locality_manager</location> 
+</artifact> 
+*/
+create ArtifactDeploymentDescription createLocalityManagerArtifact() :
+	this.name.add("CompoSvrArtifactName") ->
+	this.source.add(null) ->
+	this.node.add(null) ->
+	this.location.add("dance_locality_manager") ->
+	this.JavaSetAttribute("id", "CompSvrArt");
+	
+/* 
+<instance xmi:id="CompSvrInst"> 
+  <name>ComponentServerInstance</name> 
+  <node>CPUAffinityNode</node> 
+  <source /> 
+  <implementation xmi:idref="CompSvrImpl" /> 
+  <configProperty> 
+    <name>edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity</name> 
+    <value> 
+      <type> 
+        <kind>tk_string</kind> 
+      </type> 
+      <value> 
+        <string>0</string> 
+      </value> 
+    </value> 
+  </configProperty> 
+</instance> 
+ */
+create InstanceDeploymentDescription createContainerProcessInstance(DeploymentPart process, CCM::CCM_Deployment::DeploymentPlan zDeployment) :
+	let node = zDeployment.allocation.selectFirst(a | a.deployed.contains(process)).deployedOn :
+	let properties = process.modelElement.zdlAsComponent().member.typeSelect(CCM::CCM_Target::Property) :
+	this.JavaSetAttribute("id", getUUID()) ->
+	this.name.add(process.name + "_ComponentServerInstance") ->
+	this.node.add(node.zdlAsNamedElement().name) ->
+	this.source.add(null) ->
+	this.implementation.add(visitInstanceImpl("CompSvrImpl", this)) ->
+    properties.visitConfigProperty(this, process) ->
+    if(!this.configProperty.name.exists(n | n == "edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName")) then {
+   	    // if this property does not exist then create a default one
+    	this.createProcessNameProperty(process)
+	};
+	
+create Property createProcessNameProperty(InstanceDeploymentDescription instance, DeploymentPart process ) :
+	this.name.add("edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName") ->
+	this.value.add(this.createProcessNamePropertyValue(process)) ->
+	instance.configProperty.add(this);
+
+create Any createProcessNamePropertyValue(Property property, DeploymentPart process ) :
+	let type = new DataType :
+	let value = new DataValue :
+	type.kind.add(TcKind::tkString) ->
+	this.type.add(type) ->
+	value.string.add(process.name) ->
+	this.value.add(value);	

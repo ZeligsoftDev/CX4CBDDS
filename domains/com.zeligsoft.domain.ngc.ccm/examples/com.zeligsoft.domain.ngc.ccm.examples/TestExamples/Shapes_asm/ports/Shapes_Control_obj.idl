@@ -1,0 +1,20 @@
+#ifndef CX_PORTS__SHAPES_CONTROL_OBJ_IDL
+#define CX_PORTS__SHAPES_CONTROL_OBJ_IDL
+
+#include "Shapes_defn.idl"
+#pragma ciao lem "Shapes_Control_objE.idl"
+
+module Shapes {
+    interface Control_obj {
+        ReturnStatus setSize(
+            in unsigned short size
+            );
+        ReturnStatus setLocation(
+            in unsigned short x,
+            in unsigned short y
+            );
+    };
+
+};
+
+#endif

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="model_library_configuration" name="Model Library Configurator" schema="schema/ddsmodellibrary.exsd"/>
+
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://IDL3PLUS_LIBRARIES/"
+            target="platform:/plugin/com.zeligsoft.domain.idl3plus/libraries/">
+      </mapping>
+      <mapping
+            source="pathmap://IDL3PLUS_PROFILES/"
+            target="platform:/plugin/com.zeligsoft.domain.idl3plus/profiles/">
+      </mapping>
+      <mapping
+            source="pathmap://IDL3PLUS_DOMAIN/"
+            target="platform:/plugin/com.zeligsoft.domain.idl3plus/models/">
+      </mapping>
+   </extension>
+   <extension
+         point="com.zeligsoft.base.zdl.domain_models">
+      <domainModel
+            genModel="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen"
+            path="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml"
+            uri="http://www.zeligsoft.com/domain/idl3plus/2011">
+      </domainModel>
+   </extension>
+   
+   <extension
+         id="com.zeligsoft.domain.idl3plus.profiles"
+         name="IDL3Plus Profile"
+         point="com.ibm.xtools.uml.msl.UMLProfiles">
+      <UMLProfile
+            id="com.zeligsoft.domain.idl3plus"
+            name="%profile.idl3plus.name"
+            path="pathmap://IDL3PLUS_PROFILES/idl3plus.profile.uml"
+            required="false"
+            visible="true">
+      </UMLProfile>
+   </extension>
+   
+   <extension
+         point="com.zeligsoft.base.validation.preload">
+      <zdl uri="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml" />
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            id="com.zeligsoft.base.validation.zdl/IDL3Plus/Namespace"
+            name="Namespace">
+      </category>
+      <constraintProvider
+            cache="false">
+         <package
+               namespaceUri="http://www.eclipse.org/uml2/3.0.0/UML">
+         </package>
+         <constraints
+               categories="com.zeligsoft.base.validation.zdl/IDL3Plus/Namespace">
+			<constraint
+         class="com.zeligsoft.domain.idl3plus.constraints.java.NamespaceDistinctMembersConstraint"
+         id="com.zeligsoft.domain.idl3plus.Namespace.distinct_members"
+         isEnabledByDefault="true"
+         lang="Java"
+         mode="Live"
+         name="%namespace.distinctMembers.name"
+         severity="WARNING"
+         statusCode="1">
+				<description>%namespace.distinctMembers.description</description>
+				<message>%namespace.distinctMembers.message</message>
+				<target class="NamedElement">
+				   <event name="Set">
+				      <feature name="name" />
+				   </event>
+				</target>
+				<target class="Namespace">
+				   <event name="Add">
+				      <feature name="packagedElement" />
+				      <feature name="ownedMember" />
+				      <feature name="ownedAttribute" />
+				      <feature name="ownedOperation" />
+				      <feature name="ownedReception" />
+				      <feature name="ownedParameter" />
+				   </event>
+				   <event name="Add Many">
+				      <feature name="packagedElement" />
+				      <feature name="ownedMember" />
+				      <feature name="ownedAttribute" />
+				      <feature name="ownedOperation" />
+				      <feature name="ownedReception" />
+				      <feature name="ownedParameter" />
+				   </event>
+				   <event name="Set">
+				      <feature name="packagedElement" />
+				      <feature name="ownedMember" />
+				      <feature name="ownedAttribute" />
+				      <feature name="ownedOperation" />
+				      <feature name="ownedReception" />
+				      <feature name="ownedParameter" />
+				   </event>
+				</target>
+			</constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+   
+</plugin>

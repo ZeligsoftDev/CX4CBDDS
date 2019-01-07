@@ -1,0 +1,56 @@
+ifdef BUILD_eorb17-vxworks551-gnu-ppc-pro4600-tools
+
+OE_ORB_LIBRARIES =  \
+	ec_os \
+	ec_orbs \
+	ec_util \
+	ec_orb \
+	ec_tcp \
+	ec_iiop \
+	ec_mqc \
+	ec_mqciop \
+	ec_poa \
+	ec_any \
+	ec_lwlog_c \
+	ec_lwlog_s \
+	ec_lwevent_c \
+	ec_lwevent_s \
+	ec_naming_c \
+	ec_naming_s \
+	e_orb \
+	e_mpoa \
+	e_any \
+	e_iiop \
+	e_mqciop \
+	e_lwnaming_c \
+	e_lwevent_s \
+	e_lwlog_s
+
+OE_CF_LIBRARIES =  \
+	cf_os \
+	cf_impl \
+	exdev \
+	cpporb_launcher
+
+OE_LIB_FILE_NAME = $(notdir $(shell echo %cd%))-libs.out
+
+all: create_common_lib
+
+create_common_lib: $(OBJDIR)/eorb17-vxworks551-gnu-ppc-pro4600-tools/eorb17-vxworks551-gnu-ppc-pro4600-build/cxdef/$(OE_LIB_FILE_NAME)
+
+$(OBJDIR)/eorb17-vxworks551-gnu-ppc-pro4600-tools/eorb17-vxworks551-gnu-ppc-pro4600-build/cxdef/$(OE_LIB_FILE_NAME):
+	-@echo ""
+	-@echo Building combined VxWorks library $(notdir $@)
+	-@echo ""
+	ccppc -nostdlib -r -Wl,-X -Xlinker -z -Xlinker muldefs \
+		-Xlinker --whole-archive \
+		$(foreach orblib,$(OE_ORB_LIBRARIES),-l"$(orblib)") \
+		$(foreach cflib,$(OE_CF_LIBRARIES),-l"$(cflib)") \
+		$(wildcard $(dir $@)/*/*.a) \
+		-Xlinker --no-whole-archive \
+		-L$(EORBHOME)\lib\vxworks-551-gnu-ppc8540-win32 -L$(CFHOME)\lib \
+		-o "$@"
+	$(LDPOSTPROC_eorb17-vxworks551-gnu-ppc-pro4600-build)
+	-@echo ""
+
+endif

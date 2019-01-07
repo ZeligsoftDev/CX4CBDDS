@@ -1,0 +1,49 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @addtogroup StateManager_comp
+/// @{
+/// @file   SNA_Examples_Common_defn.idl
+/// @brief  Definition of common types for the AMI4CCM example.
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_COMMON_DEFN_IDL
+#define SNA_EXAMPLES_COMMON_DEFN_IDL
+
+module SNA_Examples
+{
+   /**
+    * @enum ReturnStatus
+    * 
+    * Return statuses for state transition
+    */
+   enum ReturnStatus
+   {
+      SUCCESS,
+      FAILURE
+   };
+   
+   /**
+    * @enum SystemState
+    * 
+    * States of the state machine
+    */
+   enum SystemState
+   {
+      STARTUP_STATE,
+      STANDBY_STATE,
+      DAYTIME_OPERATIONAL_STATE,
+      NIGHTTIME_OPERATIONAL_STATE,
+      TEST_STATE,
+      SHUTDOWN_STATE
+   };
+};
+
+#endif
+
+/// @}
+//==============================================================================
+//                            U N C L A S S I F I E D                            
+//==============================================================================

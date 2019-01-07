@@ -1,0 +1,3120 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xtext:Grammar xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xtext="http://www.eclipse.org/2008/Xtext" name="com.zeligsoft.domain.omg.corba.dsl.IDL" definesHiddenTokens="true" hiddenTokens="//@rules.169 //@rules.167">
+  <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="idl">
+    <ePackage href="http://www.zeligsoft.com/2008/idl#/"/>
+  </metamodelDeclarations>
+  <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="ecore">
+    <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+  </metamodelDeclarations>
+  <rules xsi:type="xtext:ParserRule" name="Specification">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Specification"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Specification"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="imports" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.27"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="+" feature="definitions" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.28"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.2"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.4"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.5"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.6"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.7"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.10"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.11"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.12"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.13"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.14"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.25"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.26"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Include">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Include"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="#include"/>
+        <elements xsi:type="xtext:Keyword" value="&lt;"/>
+        <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.3"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=">"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="#include"/>
+        <elements xsi:type="xtext:Assignment" feature="strValue" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="FileName">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FileName"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="name" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Keyword" value="."/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Ifdef">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Ifdef"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#ifdef"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Ifndef">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Ifndef"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#ifndef"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Undef">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Undef"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#undef"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_If">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_If"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Keyword" value="#if"/>
+        <elements xsi:type="xtext:Keyword" value="#elif"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="?" feature="negation" operator="?=">
+        <terminal xsi:type="xtext:Keyword" value="!"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" cardinality="?" value="defined"/>
+      <elements xsi:type="xtext:Assignment" cardinality="+" feature="value" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.8"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_If_Compare">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_If_Compare"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.9"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="=="/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="!="/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value=">"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="&lt;"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value=">="/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="&lt;="/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.9"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_If_Val">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_If_Val"/>
+    </type>
+    <alternatives xsi:type="xtext:Assignment" feature="value" operator="=">
+      <terminal xsi:type="xtext:RuleCall" rule="//@rules.102"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Else">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Else"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Else"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="#else"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Error">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Error"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#error"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Define">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Define"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#define "/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="?" feature="exp" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.102"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Endif">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Endif"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Endif"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="#endif"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Pragma">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Pragma"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.15"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.16"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.17"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.18"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.19"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.20"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.21"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.22"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.23"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.24"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Pragma_Prefix">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Pragma_Prefix"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#pragma"/>
+      <elements xsi:type="xtext:Keyword" value="prefix"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Pragma_Ciao_Lem">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Pragma_Ciao_Lem"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#pragma"/>
+      <elements xsi:type="xtext:Keyword" value="ciao"/>
+      <elements xsi:type="xtext:Keyword" value="lem"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Pragma_Ciao_Ami4ccm_Interface">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Pragma_Ciao_Ami4ccm_Interface"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#pragma"/>
+      <elements xsi:type="xtext:Keyword" value="ciao"/>
+      <elements xsi:type="xtext:Keyword" value="ami4ccm interface"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Pragma_Ciao_Ami4ccm_Receptacle">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Pragma_Ciao_Ami4ccm_Receptacle"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#pragma"/>
+      <elements xsi:type="xtext:Keyword" value="ciao"/>
+      <elements xsi:type="xtext:Keyword" value="ami4ccm receptacle"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Pragma_Ciao_Ami4ccm_Idl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Pragma_Ciao_Ami4ccm_Idl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#pragma"/>
+      <elements xsi:type="xtext:Keyword" value="ciao"/>
+      <elements xsi:type="xtext:Keyword" value="ami4ccm idl"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Pragma_Ndds">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Pragma_Ndds"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#pragma"/>
+      <elements xsi:type="xtext:Keyword" value="ndds"/>
+      <elements xsi:type="xtext:Keyword" value="typesupport"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Pragma_Component">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Pragma_Component"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#pragma"/>
+      <elements xsi:type="xtext:Keyword" value="componentInterface"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Pragma_Home">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Pragma_Home"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#pragma"/>
+      <elements xsi:type="xtext:Keyword" value="componentHome"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Pragma_DDS4CCM_Impl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Pragma_DDS4CCM_Impl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#pragma"/>
+      <elements xsi:type="xtext:Keyword" value="dds4ccm"/>
+      <elements xsi:type="xtext:Keyword" value="impl"/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Preproc_Pragma_Misc">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Pragma_Misc"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Preproc_Pragma_Misc"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="#pragma"/>
+      <elements xsi:type="xtext:Alternatives" cardinality="*">
+        <elements xsi:type="xtext:Keyword" value="typesupport"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="File_Marker">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//File_Marker"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#file"/>
+      <elements xsi:type="xtext:Assignment" feature="file" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Excluded_File_Marker">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Excluded_File_Marker"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="#excluded_file"/>
+      <elements xsi:type="xtext:Assignment" feature="file" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Import_decl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Import_decl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="import"/>
+      <elements xsi:type="xtext:Assignment" feature="imported_scope" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=";"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Definition">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Definition"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.30"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.119"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.99"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.29"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.72"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.78"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.79"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.93"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.1"/>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.125"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.112"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.120"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.129"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.132"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.135"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.151"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Module">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Module"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="module"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="definitions" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.28"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Interface_or_Forward_Decl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Interface_or_Forward_Decl"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.31"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.32"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Interface_decl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Interface_decl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="header" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.33"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Assignment" feature="interfaceBody" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.34"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Forward_decl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Forward_decl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Alternatives" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value="abstract"/>
+        <elements xsi:type="xtext:Keyword" value="local"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="interface"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Interface_header">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Interface_header"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Alternatives" cardinality="?">
+        <elements xsi:type="xtext:Assignment" feature="isAbstract" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="abstract"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="isLocal" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="local"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="interface"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="specializes" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="specializes" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+          </elements>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="InterfaceBody">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//InterfaceBody"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//InterfaceBody"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="export" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.35"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Export">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Export"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.36"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.41"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.79"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.99"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.72"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.1"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="AttrDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//AttrDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.37"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.38"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="AttrSpec">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//AttrSpec"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="attribute"/>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.47"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="names" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Alternatives" cardinality="?">
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" value="getraises"/>
+            <elements xsi:type="xtext:Assignment" feature="getRaises" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="//@rules.39"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" value="setraises"/>
+            <elements xsi:type="xtext:Assignment" feature="setRaises" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="//@rules.39"/>
+            </elements>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" feature="names" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+          </elements>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Alternatives" cardinality="?">
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" value="getraises"/>
+            <elements xsi:type="xtext:Assignment" feature="getRaises" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="//@rules.39"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" value="setraises"/>
+            <elements xsi:type="xtext:Assignment" feature="setRaises" operator="=">
+              <terminal xsi:type="xtext:RuleCall" rule="//@rules.39"/>
+            </elements>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" feature="names" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+          </elements>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ReadOnlyAttrSpec">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ReadOnlyAttrSpec"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="readonly"/>
+      <elements xsi:type="xtext:Keyword" value="attribute"/>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.47"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="names" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Alternatives" cardinality="?">
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="raises"/>
+          <elements xsi:type="xtext:Assignment" feature="raises" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.39"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" feature="names" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+          </elements>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Alternatives" cardinality="?">
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Keyword" value="raises"/>
+          <elements xsi:type="xtext:Assignment" feature="raises" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.39"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" feature="names" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+          </elements>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="AttrRaisesExpr">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//AttrRaisesExpr"/>
+    </type>
+    <alternatives xsi:type="xtext:Assignment" feature="exceptions" operator="=">
+      <terminal xsi:type="xtext:RuleCall" rule="//@rules.40"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ExceptionList">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ExceptionList"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="("/>
+      <elements xsi:type="xtext:Assignment" feature="exception" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Keyword" value=","/>
+        <elements xsi:type="xtext:Assignment" feature="exception" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=")"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="OpDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//OpDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="?" feature="isOneway" operator="?=">
+        <terminal xsi:type="xtext:Keyword" value="oneway"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.42"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="params" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.43"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value="raises"/>
+        <elements xsi:type="xtext:Assignment" feature="raises" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.40"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="?" feature="context" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.46"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="OpTypeDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//OpTypeDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.47"/>
+      <elements xsi:type="xtext:Keyword" value="void"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ParameterDecls">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ParameterDecls"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ParameterDecls"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="("/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Assignment" feature="decls" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.44"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="decls" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.44"/>
+          </elements>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=")"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ParamDcl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ParamDcl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="direction" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.45"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.47"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:EnumRule" name="ParamDirection">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EEnum" href="http://www.zeligsoft.com/2008/idl#//ParamDirection"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:EnumLiteralDeclaration">
+        <enumLiteral href="http://www.zeligsoft.com/2008/idl#//ParamDirection/In"/>
+        <literal value="in"/>
+      </elements>
+      <elements xsi:type="xtext:EnumLiteralDeclaration">
+        <enumLiteral href="http://www.zeligsoft.com/2008/idl#//ParamDirection/Out"/>
+        <literal value="out"/>
+      </elements>
+      <elements xsi:type="xtext:EnumLiteralDeclaration">
+        <enumLiteral href="http://www.zeligsoft.com/2008/idl#//ParamDirection/InOut"/>
+        <literal value="inout"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ContextExpr">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ContextExpr"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="context"/>
+      <elements xsi:type="xtext:Keyword" value="("/>
+      <elements xsi:type="xtext:Assignment" feature="literal" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Keyword" value=","/>
+        <elements xsi:type="xtext:Assignment" feature="literal" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=")"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ParamTypeSpec">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ParamTypeSpec"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.49"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.70"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.71"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ScopedName">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ScopedName"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" cardinality="?" value="::"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Keyword" value="::"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="BaseTypeSpec">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//BaseTypeSpec"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.50"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.54"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.63"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.64"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.65"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.66"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.67"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.68"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.69"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="FloatingPtType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FloatingPtType"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.51"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.52"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.53"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="FloatType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FloatType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FloatType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="float"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="DoubleType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//DoubleType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//DoubleType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="double"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="LongDoubleType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//LongDoubleType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//LongDoubleType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="long"/>
+      <elements xsi:type="xtext:Keyword" value="double"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="IntegerType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//IntegerType"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.59"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.55"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="SignedInt">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SignedInt"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.56"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.58"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.57"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="SignedShortInt">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SignedShortInt"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SignedShortInt"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="short"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="SignedLongInt">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SignedLongInt"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SignedLongInt"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="long"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="SignedLongLongInt">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SignedLongLongInt"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SignedLongLongInt"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="long"/>
+      <elements xsi:type="xtext:Keyword" value="long"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="UnsignedInt">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UnsignedInt"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.60"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.61"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.62"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="UnsignedShortInt">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UnsignedShortInt"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UnsignedShortInt"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="unsigned"/>
+      <elements xsi:type="xtext:Keyword" value="short"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="UnsignedLongInt">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UnsignedLongInt"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UnsignedLongInt"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="unsigned"/>
+      <elements xsi:type="xtext:Keyword" value="long"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="UnsignedLongLongInt">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UnsignedLongLongInt"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UnsignedLongLongInt"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="unsigned"/>
+      <elements xsi:type="xtext:Keyword" value="long"/>
+      <elements xsi:type="xtext:Keyword" value="long"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="CharType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//CharType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//CharType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="char"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="WideCharType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//WideCharType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//WideCharType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="wchar"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="BooleanType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//BooleanType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//BooleanType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="boolean"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="OctetType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//OctetType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//OctetType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="octet"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="AnyType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//AnyType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//AnyType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="any"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ObjectType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ObjectType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ObjectType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="Object"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ValueBaseType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ValueBaseType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ValueBaseType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="ValueBase"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="StringType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//StringType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//StringType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="string"/>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value="&lt;"/>
+        <elements xsi:type="xtext:Assignment" feature="size" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.98"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=">"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="WideStringType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//WideStringType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//WideStringType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="wstring"/>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value="&lt;"/>
+        <elements xsi:type="xtext:Assignment" feature="size" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.98"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=">"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ExceptDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ExceptDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="exception"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="members" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.73"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Member">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Member"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.81"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="decl" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.74"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=";"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comment" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Declarator">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Declarator"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.75"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.77"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="SimpleDeclarator">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SimpleDeclarator"/>
+    </type>
+    <alternatives xsi:type="xtext:Assignment" feature="id" operator="=">
+      <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ComplexDeclarator">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ComplexDeclarator"/>
+    </type>
+    <alternatives xsi:type="xtext:RuleCall" rule="//@rules.77"/>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ArrayDeclarator">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ArrayDeclarator"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="id" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="+">
+        <elements xsi:type="xtext:Keyword" value="["/>
+        <elements xsi:type="xtext:Assignment" feature="size" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.102"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="]"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="StructType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//StructType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="struct"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="members" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.73"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="TypeDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//TypeDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="typedef"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.80"/>
+      </elements>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.78"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.85"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.91"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.95"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="TypeDeclarator">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//TypeDeclarator"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.81"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="+" feature="declarators" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.74"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="TypeSpec">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//TypeSpec"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.82"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.84"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="SimpleTypeSpec">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SimpleTypeSpec"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.49"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.83"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="TemplateTypeSpec">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//TemplateTypeSpec"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.92"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.70"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.71"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.94"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ConstrTypeSpec">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ConstrTypeSpec"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.78"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.85"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.91"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="UnionType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UnionType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="union"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="switch"/>
+      <elements xsi:type="xtext:Keyword" value="("/>
+      <elements xsi:type="xtext:Assignment" feature="switch" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.86"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=")"/>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Assignment" feature="body" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.87"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="SwitchTypeSpec">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SwitchTypeSpec"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.54"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.63"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.65"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.91"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="SwitchBody">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SwitchBody"/>
+    </type>
+    <alternatives xsi:type="xtext:Assignment" cardinality="+" feature="case" operator="+=">
+      <terminal xsi:type="xtext:RuleCall" rule="//@rules.88"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Case">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Case"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="+">
+        <elements xsi:type="xtext:Assignment" feature="label" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.89"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="spec" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.90"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=";"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="CaseLabel">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//CaseLabel"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="isCase" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="case"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="constExp" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.102"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" feature="isDefault" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="default"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ElementSpec">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ElementSpec"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.81"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="declarator" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.74"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="EnumType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//EnumType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="enum"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="literal" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Keyword" value=","/>
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="literal" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="SequenceType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SequenceType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="sequence"/>
+      <elements xsi:type="xtext:Keyword" value="&lt;"/>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.82"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value=","/>
+        <elements xsi:type="xtext:Assignment" feature="size" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.98"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=">"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="NativeType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//NativeType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="native"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="FixedPtType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FixedPtType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="fixed"/>
+      <elements xsi:type="xtext:Keyword" value="&lt;"/>
+      <elements xsi:type="xtext:Assignment" feature="lower" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.98"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=","/>
+      <elements xsi:type="xtext:Assignment" feature="upper" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.98"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=">"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ConstrForwardDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ConstrForwardDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.96"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.97"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="StructForwardDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//StructForwardDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="struct"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="UnionForwardDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UnionForwardDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="union"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="PositiveIntConst">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//PositiveIntConst"/>
+    </type>
+    <alternatives xsi:type="xtext:Assignment" feature="exp" operator="=">
+      <terminal xsi:type="xtext:RuleCall" rule="//@rules.102"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ConstDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ConstDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="const"/>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.100"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="="/>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.102"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ConstType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ConstType"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.54"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.63"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.64"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.65"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.50"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.70"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.71"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.101"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.66"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="FixedPtConstType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FixedPtConstType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FixedPtConstType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="fixed"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ConstExp">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ConstExp"/>
+    </type>
+    <alternatives xsi:type="xtext:RuleCall" rule="//@rules.103"/>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="OrExpr">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//OrExpr"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.104"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="|"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.103"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="XOrExpr">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//XOrExpr"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.105"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="^"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.104"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="AndExpr">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//AndExpr"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.106"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="&amp;"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.105"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ShiftExpr">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ShiftExpr"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.107"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="&lt;&lt;"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value=">>"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.106"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="AddExpr">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//AddExpr"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.108"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="+"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="-"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.107"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="MultExpr">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//MultExpr"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="lhs" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.109"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="*"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="/"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+            <terminal xsi:type="xtext:Keyword" value="%"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="rhs" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.108"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="UnaryExpr">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UnaryExpr"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Alternatives" cardinality="?">
+        <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="-"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="+"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="op" operator="=">
+          <terminal xsi:type="xtext:Keyword" value="~"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="expr" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.110"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="PrimaryExpr">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//PrimaryExpr"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.111"/>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="("/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.102"/>
+        <elements xsi:type="xtext:Keyword" value=")"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Literal">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Literal"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.157"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.166"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.159"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.158"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.156"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="value" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.160"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ComponentDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ComponentDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="component"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="base" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value="supports"/>
+        <elements xsi:type="xtext:Assignment" feature="supports" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" feature="supports" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+          </elements>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="export" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.113"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ComponentExport">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ComponentExport"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.114"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.115"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.117"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.116"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.118"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.36"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.131"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.1"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ProvidesDcl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ProvidesDcl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="provides"/>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="UsesDcl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UsesDcl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="uses"/>
+      <elements xsi:type="xtext:Assignment" cardinality="?" feature="isMultiple" operator="?=">
+        <terminal xsi:type="xtext:Keyword" value="multiple"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="PublishesDcl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//PublishesDcl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="publishes"/>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="EmitDcl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//EmitDcl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="emits"/>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ConsumesDcl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ConsumesDcl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="consumes"/>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ComponentForwardDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ComponentForwardDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="component"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="HomeDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//HomeDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="home"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="base" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value="supports"/>
+        <elements xsi:type="xtext:Assignment" feature="supports" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" feature="supports" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+          </elements>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="manages"/>
+      <elements xsi:type="xtext:Assignment" feature="manages" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="?" feature="primary_key" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.121"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="export" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.122"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="PrimaryKeySpec">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//PrimaryKeySpec"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="primarykey"/>
+      <elements xsi:type="xtext:Assignment" feature="key" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="HomeExport">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//HomeExport"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.35"/>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.123"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.124"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="FactoryDcl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FactoryDcl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="factory"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="params" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.43"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value="raises"/>
+        <elements xsi:type="xtext:Assignment" feature="raises" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.40"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="FinderDcl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FinderDcl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="finder"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="params" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.43"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value="raises"/>
+        <elements xsi:type="xtext:Assignment" feature="raises" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.40"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Event">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Event"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.126"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.128"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="EventDcl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//EventDcl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Alternatives" cardinality="?">
+        <elements xsi:type="xtext:Assignment" feature="isCustom" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="custom"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="isAbstract" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="abstract"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="eventtype"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="isTruncatable" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="truncatable"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="base" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" feature="base" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+          </elements>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value="supports"/>
+        <elements xsi:type="xtext:Assignment" feature="supports" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Keyword" value=","/>
+          <elements xsi:type="xtext:Assignment" feature="supports" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+          </elements>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Alternatives" cardinality="*">
+        <elements xsi:type="xtext:Assignment" feature="export" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.35"/>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="member" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.127"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="StateMember">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//StateMember"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Assignment" feature="isPublic" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="public"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="private"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.47"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="names" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=";"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="EventForwardDcl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//EventForwardDcl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" cardinality="?" feature="isAbstract" operator="?=">
+        <terminal xsi:type="xtext:Keyword" value="abstract"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="eventtype"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="PortTypeDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//PortTypeDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="porttype"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Assignment" cardinality="+" feature="exports" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.130"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="PortExport">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//PortExport"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.114"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.115"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.36"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="PortDecl">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//PortDecl"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Keyword" value="port"/>
+        <elements xsi:type="xtext:Assignment" feature="isMirror" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="mirrorport"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="Connector">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//Connector"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="header" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.133"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="exports" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.134"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ConnectorHeader">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ConnectorHeader"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="connector"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="base" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ConnectorExport">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ConnectorExport"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.114"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.115"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.131"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.36"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="TemplateModule">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//TemplateModule"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="module"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="&lt;"/>
+      <elements xsi:type="xtext:Assignment" feature="parameters" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.136"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Keyword" value=","/>
+        <elements xsi:type="xtext:Assignment" feature="parameters" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.136"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=">"/>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="definitions" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.148"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="FormalParameter">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FormalParameter"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.137"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="FormalParameterType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FormalParameterType"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.138"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.139"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.140"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.141"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.142"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.143"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.144"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.145"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.146"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.147"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.92"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="TypenameParamType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//TypenameParamType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//TypenameParamType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="typename"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="InterfaceParamType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//InterfaceParamType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//InterfaceParamType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="interface"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ValuetypeParamType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ValuetypeParamType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ValuetypeParamType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="valuetype"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="EventParamType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//EventParamType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//EventParamType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="eventtype"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="StructParamType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//StructParamType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//StructParamType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="struct"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="UnionParamType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UnionParamType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//UnionParamType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="union"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ExceptionParamType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ExceptionParamType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ExceptionParamType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="exception"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="EnumParamType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//EnumParamType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//EnumParamType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="enum"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="SequenceParamType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SequenceParamType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//SequenceParamType"/>
+        </type>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="sequence"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ConstParamType">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ConstParamType"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="const"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.100"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="TemplateDefinition">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//TemplateDefinition"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.79"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.99"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.72"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.31"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.149"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.78"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.93"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.125"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.112"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.120"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.129"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.132"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.153"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="FixedModule">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FixedModule"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="module"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="{"/>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="definitions" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.150"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="}"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="FixedDefinition">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//FixedDefinition"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.79"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.99"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.72"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.31"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.149"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.78"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.93"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.125"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.112"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.120"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.129"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.132"/>
+        <elements xsi:type="xtext:Keyword" value=";"/>
+      </elements>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="TemplateModuleInst">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//TemplateModuleInst"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="module"/>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="&lt;"/>
+      <elements xsi:type="xtext:Assignment" feature="parameter" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.152"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Keyword" value=","/>
+        <elements xsi:type="xtext:Assignment" feature="parameter" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.152"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=">"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="comments" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="ActualParameter">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//ActualParameter"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.102"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.81"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="TemplateModuleRef">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//TemplateModuleRef"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="alias"/>
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.48"/>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="&lt;"/>
+      <elements xsi:type="xtext:Assignment" feature="id" operator="+=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="*">
+        <elements xsi:type="xtext:Keyword" value=","/>
+        <elements xsi:type="xtext:Assignment" feature="id" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value=">"/>
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.165"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:ParserRule" name="IDLComment">
+    <type metamodel="//@metamodelDeclarations.0">
+      <classifier xsi:type="ecore:EClass" href="http://www.zeligsoft.com/2008/idl#//IDLComment"/>
+    </type>
+    <alternatives xsi:type="xtext:Assignment" feature="body" operator="=">
+      <terminal xsi:type="xtext:RuleCall" rule="//@rules.168"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="UNUSED_LITERAL">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Keyword" value="('?')"/>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="INTEGER_LITERAL">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:CharacterRange" cardinality="+">
+        <left value="0"/>
+        <right value="9"/>
+      </elements>
+      <elements xsi:type="xtext:Alternatives" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value="l"/>
+        <elements xsi:type="xtext:Keyword" value="L"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="HEX_LITERAL">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="0"/>
+      <elements xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Keyword" value="x"/>
+        <elements xsi:type="xtext:Keyword" value="X"/>
+      </elements>
+      <elements xsi:type="xtext:Alternatives" cardinality="+">
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="a"/>
+          <right value="f"/>
+        </elements>
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="A"/>
+          <right value="F"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Alternatives" cardinality="?">
+        <elements xsi:type="xtext:Keyword" value="l"/>
+        <elements xsi:type="xtext:Keyword" value="L"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="FLOATING_PT_LITERAL">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:CharacterRange" cardinality="+">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="."/>
+        <elements xsi:type="xtext:CharacterRange" cardinality="*">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Keyword" value="e"/>
+            <elements xsi:type="xtext:Keyword" value="E"/>
+          </elements>
+          <elements xsi:type="xtext:Alternatives" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="+"/>
+            <elements xsi:type="xtext:Keyword" value="-"/>
+          </elements>
+          <elements xsi:type="xtext:CharacterRange" cardinality="+">
+            <left value="0"/>
+            <right value="9"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Alternatives" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="f"/>
+          <elements xsi:type="xtext:Keyword" value="F"/>
+          <elements xsi:type="xtext:Keyword" value="d"/>
+          <elements xsi:type="xtext:Keyword" value="D"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="."/>
+        <elements xsi:type="xtext:CharacterRange" cardinality="+">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Keyword" value="e"/>
+            <elements xsi:type="xtext:Keyword" value="E"/>
+          </elements>
+          <elements xsi:type="xtext:Alternatives" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="+"/>
+            <elements xsi:type="xtext:Keyword" value="-"/>
+          </elements>
+          <elements xsi:type="xtext:CharacterRange" cardinality="+">
+            <left value="0"/>
+            <right value="9"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Alternatives" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="f"/>
+          <elements xsi:type="xtext:Keyword" value="F"/>
+          <elements xsi:type="xtext:Keyword" value="d"/>
+          <elements xsi:type="xtext:Keyword" value="D"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:CharacterRange" cardinality="+">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:Group">
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Keyword" value="e"/>
+            <elements xsi:type="xtext:Keyword" value="E"/>
+          </elements>
+          <elements xsi:type="xtext:Alternatives" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="+"/>
+            <elements xsi:type="xtext:Keyword" value="-"/>
+          </elements>
+          <elements xsi:type="xtext:CharacterRange" cardinality="+">
+            <left value="0"/>
+            <right value="9"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Alternatives" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="f"/>
+          <elements xsi:type="xtext:Keyword" value="F"/>
+          <elements xsi:type="xtext:Keyword" value="d"/>
+          <elements xsi:type="xtext:Keyword" value="D"/>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:CharacterRange" cardinality="+">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Keyword" value="e"/>
+            <elements xsi:type="xtext:Keyword" value="E"/>
+          </elements>
+          <elements xsi:type="xtext:Alternatives" cardinality="?">
+            <elements xsi:type="xtext:Keyword" value="+"/>
+            <elements xsi:type="xtext:Keyword" value="-"/>
+          </elements>
+          <elements xsi:type="xtext:CharacterRange" cardinality="+">
+            <left value="0"/>
+            <right value="9"/>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Keyword" value="f"/>
+          <elements xsi:type="xtext:Keyword" value="F"/>
+          <elements xsi:type="xtext:Keyword" value="d"/>
+          <elements xsi:type="xtext:Keyword" value="D"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="CHARACTER_LITERAL">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="'"/>
+      <elements xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.161"/>
+        <elements xsi:type="xtext:NegatedToken">
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Keyword" value="'"/>
+            <elements xsi:type="xtext:Keyword" value="\"/>
+          </terminal>
+        </elements>
+      </elements>
+      <elements xsi:type="xtext:Keyword" value="'"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="BOOLEAN_LITERAL">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Keyword" value="TRUE"/>
+      <elements xsi:type="xtext:Keyword" value="FALSE"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="ESCAPE_SEQUENCE">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Keyword" value="'\' ('b'|'t'|'n'|'f'|'r'|'v'|'a'|'?'|'&quot;'|'''|'\') | RULE_UNICODE_ESCAPE | RULE_OCTAL_ESCAPE | RULE_HEX_ESCAPE"/>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="HEX_ESCAPE">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Keyword" value="'\' ('x'|'X') ( '0'..'9' | 'a'..'f' | 'A'..'F' )+ ('l'|'L')?"/>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="OCTAL_ESCAPE">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Keyword" value="'\' ('0'..'3') ('0'..'7') ('0'..'7')&#xD;&#xA;&#x9;|&#x9;'\' ('0'..'7') ('0'..'7')&#xD;&#xA;&#x9;|&#x9;'\' ('0'..'7')"/>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="UNICODE_ESCAPE">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Keyword" value="'\' 'u' ( '0'..'9' | 'a'..'f' | 'A'..'F' ) ( '0'..'9' | 'a'..'f' | 'A'..'F' ) ( '0'..'9' | 'a'..'f' | 'A'..'F' ) ( '0'..'9' | 'a'..'f' | 'A'..'F' )"/>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="ID">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" cardinality="?" value="^"/>
+      <elements xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="a"/>
+          <right value="z"/>
+        </elements>
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="A"/>
+          <right value="Z"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="_"/>
+      </elements>
+      <elements xsi:type="xtext:Alternatives" cardinality="*">
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="a"/>
+          <right value="z"/>
+        </elements>
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="A"/>
+          <right value="Z"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="_"/>
+        <elements xsi:type="xtext:CharacterRange">
+          <left value="0"/>
+          <right value="9"/>
+        </elements>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="STRING">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives">
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="&quot;"/>
+        <elements xsi:type="xtext:Alternatives" cardinality="*">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" value="\"/>
+            <elements xsi:type="xtext:Alternatives">
+              <elements xsi:type="xtext:Keyword" value="b"/>
+              <elements xsi:type="xtext:Keyword" value="t"/>
+              <elements xsi:type="xtext:Keyword" value="n"/>
+              <elements xsi:type="xtext:Keyword" value="f"/>
+              <elements xsi:type="xtext:Keyword" value="r"/>
+              <elements xsi:type="xtext:Keyword" value="&quot;"/>
+              <elements xsi:type="xtext:Keyword" value="'"/>
+              <elements xsi:type="xtext:Keyword" value="\"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:NegatedToken">
+            <terminal xsi:type="xtext:Alternatives">
+              <elements xsi:type="xtext:Keyword" value="\"/>
+              <elements xsi:type="xtext:Keyword" value="&quot;"/>
+            </terminal>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="&quot;"/>
+      </elements>
+      <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="'"/>
+        <elements xsi:type="xtext:Alternatives" cardinality="*">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Keyword" value="\"/>
+            <elements xsi:type="xtext:Alternatives">
+              <elements xsi:type="xtext:Keyword" value="b"/>
+              <elements xsi:type="xtext:Keyword" value="t"/>
+              <elements xsi:type="xtext:Keyword" value="n"/>
+              <elements xsi:type="xtext:Keyword" value="f"/>
+              <elements xsi:type="xtext:Keyword" value="r"/>
+              <elements xsi:type="xtext:Keyword" value="&quot;"/>
+              <elements xsi:type="xtext:Keyword" value="'"/>
+              <elements xsi:type="xtext:Keyword" value="\"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:NegatedToken">
+            <terminal xsi:type="xtext:Alternatives">
+              <elements xsi:type="xtext:Keyword" value="\"/>
+              <elements xsi:type="xtext:Keyword" value="'"/>
+            </terminal>
+          </elements>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="'"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="ML_COMMENT">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="/*"/>
+      <elements xsi:type="xtext:UntilToken">
+        <terminal xsi:type="xtext:Keyword" value="*/"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="SL_COMMENT">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Keyword" value="//"/>
+      <elements xsi:type="xtext:NegatedToken" cardinality="*">
+        <terminal xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+          <elements xsi:type="xtext:Keyword" value="&#xD;"/>
+        </terminal>
+      </elements>
+      <elements xsi:type="xtext:Group" cardinality="?">
+        <elements xsi:type="xtext:Keyword" cardinality="?" value="&#xD;"/>
+        <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+      </elements>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="WS">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Alternatives" cardinality="+">
+      <elements xsi:type="xtext:Keyword" value=" "/>
+      <elements xsi:type="xtext:Keyword" value="&#x9;"/>
+      <elements xsi:type="xtext:Keyword" value="&#xD;"/>
+      <elements xsi:type="xtext:Keyword" value="&#xA;"/>
+    </alternatives>
+  </rules>
+  <rules xsi:type="xtext:TerminalRule" name="ANY_OTHER">
+    <type metamodel="//@metamodelDeclarations.1">
+      <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </type>
+    <alternatives xsi:type="xtext:Wildcard"/>
+  </rules>
+</xtext:Grammar>

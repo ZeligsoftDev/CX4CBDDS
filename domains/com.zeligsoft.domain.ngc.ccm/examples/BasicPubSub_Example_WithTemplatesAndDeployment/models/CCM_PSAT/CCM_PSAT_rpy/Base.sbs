@@ -1,0 +1,1120 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "CCM_PSAT_1.sbs";
+		- _subsystem = "CCM_PSAT::ports";
+		- _class = "";
+		- _name = "CCM_PSAT";
+		- _id = GUID 0076b1ed-3b9b-405f-9582-6087c92dcc7b;
+	}
+	- _id = GUID 2e391078-475d-4543-baef-b91d3edd8b88;
+	- _myState = 8192;
+	- _name = "Base";
+	- _modifiedTimeWeak = 8.13.2014::17:5:26;
+	- _lastID = 12;
+	- weakCGTime = 8.13.2014::17:5:26;
+	- strongCGTime = 8.13.2014::15:32:41;
+	- _defaultComposite = GUID dfee913a-cffb-48c3-a17b-01c464d63c2e;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 4;
+		- value = 
+		{ IClass 
+			- _id = GUID dfee913a-cffb-48c3-a17b-01c464d63c2e;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 1.2.1990::0:0:0;
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID d5deb778-9414-4c11-bf0a-a54417508f37;
+			- _myState = 8192;
+			- _name = "Constants";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAConstants";
+					- _id = GUID 1f459ce9-4967-4e30-9e6e-15cf7e1330ae;
+				}
+			}
+			- _modifiedTimeWeak = 8.13.2014::15:33:32;
+			- _lastID = 1;
+			- weakCGTime = 8.13.2014::15:33:32;
+			- strongCGTime = 8.13.2014::15:33:0;
+			- Attrs = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 7d10e94d-d63e-4c15-beed-010032025d24;
+					- _myState = 8192;
+					- _name = "PSAT_TIMEOUT_INFINITE";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAConstant";
+							- _id = GUID f2aabf2e-094a-4085-9500-3f97cb1ced38;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:33:32;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 1ded127e-d79d-46db-bda2-9c92521d8cd1;
+							- _modifiedTimeWeak = 8.13.2014::15:33:32;
+							- _value = "0";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 80f969b7-e5f9-48bb-8924-7ddc0373f2d9;
+			- _myState = 8192;
+			- _name = "PSAT_Listener_Control";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAInterface";
+					- _id = GUID 0ee2a060-42ca-4d4a-9e2f-a8b64ce7e43e;
+				}
+			}
+			- _modifiedTimeWeak = 8.13.2014::15:44:41;
+			- _lastID = 4;
+			- weakCGTime = 8.13.2014::15:44:41;
+			- strongCGTime = 8.13.2014::15:36:58;
+			- Operations = { IRPYRawContainer 
+				- size = 0;
+			}
+			- Attrs = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 6fce2830-b20f-484d-abe4-d02456605b17;
+					- _myState = 8192;
+					- _name = "on_metadata_intercept_enable";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAAttribute";
+							- _id = GUID 13b12779-c9de-4a51-8c07-525ff9032f77;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:44:27;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _id = GUID 86975674-f065-4ad3-8271-3ce2efad2a82;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 141afefd-4ab9-418f-be11-e47e4fd34da5;
+					- _myState = 8192;
+					- _name = "on_one_data_enable";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAAttribute";
+							- _id = GUID 13b12779-c9de-4a51-8c07-525ff9032f77;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:44:41;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _id = GUID 86975674-f065-4ad3-8271-3ce2efad2a82;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 063c497d-971f-41e3-a723-bffc2a55ed7a;
+			- _myState = 8192;
+			- _name = "PSAT_Writer_Status_Listener";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAInterface";
+					- _id = GUID 0ee2a060-42ca-4d4a-9e2f-a8b64ce7e43e;
+				}
+			}
+			- _modifiedTimeWeak = 8.13.2014::15:46:58;
+			- _lastID = 2;
+			- weakCGTime = 8.13.2014::15:46:58;
+			- strongCGTime = 8.13.2014::15:46:9;
+			- Operations = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IPrimitiveOperation 
+					- _id = GUID 5dcfe719-383c-4f08-9c5d-7d8bf33027a5;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "on_buffer_available";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID ab53dc4a-70d7-4618-8bd1-1be6399d1945;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:46:42;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAVoid";
+						- _id = GUID 03a1699e-b758-478b-b3ba-457da687a54b;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+				{ IPrimitiveOperation 
+					- _id = GUID edd4408b-8edc-4984-8e87-db161e0b9ea7;
+					- _myState = 8192;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "CPP_CG";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Operation";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "Kind";
+												- _Value = "abstract";
+												- _Type = Enum;
+												- _ExtraTypeInfo = "common,virtual,abstract";
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- _name = "on_buffer_wait_timeout";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAOperation";
+							- _id = GUID ab53dc4a-70d7-4618-8bd1-1be6399d1945;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:46:58;
+					- _virtual = 0;
+					- Args = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _returnType = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAVoid";
+						- _id = GUID 03a1699e-b758-478b-b3ba-457da687a54b;
+					}
+					- _abstract = 0;
+					- _final = 0;
+					- _concurrency = Sequential;
+					- _protection = iPublic;
+					- _static = 0;
+					- _constant = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- Types = { IRPYRawContainer 
+		- size = 8;
+		- value = 
+		{ IType 
+			- _id = GUID 86975674-f065-4ad3-8271-3ce2efad2a82;
+			- _myState = 8192;
+			- _name = "Callback_Control";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAEnum";
+					- _id = GUID 51448ffb-0184-4e06-a965-de1023e8e83d;
+				}
+			}
+			- _modifiedTimeWeak = 8.13.2014::15:36:30;
+			- _lastID = 2;
+			- Literals = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IEnumerationLiteral 
+					- _id = GUID cbee78ff-187b-464d-b015-e876f3912d12;
+					- _name = "CALLBACK_DISABLED";
+					- _modifiedTimeWeak = 8.13.2014::15:36:21;
+					- _value = "";
+				}
+				{ IEnumerationLiteral 
+					- _id = GUID c96e2e02-2e0b-48da-a57a-2ac40bd2c60c;
+					- _name = "CALLBACK_ENABLED";
+					- _modifiedTimeWeak = 8.13.2014::15:36:30;
+					- _value = "";
+				}
+			}
+			- _kind = Enumeration;
+		}
+		{ IType 
+			- _id = GUID ec12cd3b-7b0b-425d-bc26-9c4f59b278ba;
+			- _myState = 8192;
+			- _name = "AD_Buffer_None_Available_Excp";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAException";
+					- _id = GUID 03e95e69-ff47-4bbc-b740-89dbc332480e;
+				}
+			}
+			- _modifiedTimeWeak = 8.13.2014::15:48:37;
+			- _lastID = 3;
+			- Attrs = { IRPYRawContainer 
+				- size = 3;
+				- value = 
+				{ IAttribute 
+					- _id = GUID d3d51828-3e71-49c8-841f-af1b052a3ead;
+					- _myState = 8192;
+					- _name = "connector_id";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:48:7;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID ce62a1c7-e40b-4f69-9c84-86d8e2b0136a;
+					- _myState = 8192;
+					- _name = "explanation";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:48:22;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID d72e59e8-e62d-4a08-b8f4-45bd9790944f;
+					- _myState = 8192;
+					- _name = "topic_name";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:48:37;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID 0840a77a-8b6d-49fa-9449-9779f8ea3e13;
+			- _myState = 8192;
+			- _name = "Basic_UDM_msg";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "DDSMessage";
+					- _id = GUID 14cc753d-e88b-4e4f-bc3d-0edb1390a753;
+				}
+			}
+			- _modifiedTimeWeak = 8.13.2014::17:0:19;
+			- _lastID = 1;
+			- Attrs = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 10ae4902-4dc1-4e05-892d-7d25ddddfb85;
+					- _myState = 8192;
+					- _name = "psat_hdr";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "MessageField";
+							- _id = GUID 04d6ee0f-d229-4427-95ae-e703c1cda5d0;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::17:0:19;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "header_defn.sbs";
+						- _subsystem = "CCM_PSAT::ports::CCM_PSAT::header_defn";
+						- _class = "";
+						- _name = "PSAT_Header";
+						- _id = GUID 629bae6f-71fa-4d9c-a1d0-8e523101db38;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID 8a845d5b-a0db-45b2-b400-2191272d526f;
+			- _myState = 8192;
+			- _name = "Error_Callback_Info";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAStruct";
+					- _id = GUID e48b1c99-8469-4226-8c59-ea30a32092cc;
+				}
+			}
+			- _modifiedTimeWeak = 8.13.2014::17:4:39;
+			- _lastID = 3;
+			- Attrs = { IRPYRawContainer 
+				- size = 5;
+				- value = 
+				{ IAttribute 
+					- _id = GUID bfc91db2-1052-479f-a8d3-de8478993583;
+					- _myState = 8192;
+					- _name = "explanation";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::17:1:32;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 0b3e218d-b2ee-481e-94eb-0582a97397f5;
+					- _myState = 8192;
+					- _name = "connector_id";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:48:7;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 0a4a9143-4222-42e1-9971-824c68424270;
+					- _myState = 8192;
+					- _name = "name";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::17:4:8;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 8f2aa8a5-c67f-4039-9a16-b7f0c9f23eb0;
+					- _myState = 8192;
+					- _name = "id";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::17:4:17;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBALong";
+						- _id = GUID f05eb06b-7ead-47f7-8c64-f084a381cb80;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID d14bcecf-aa27-49c8-9aad-3cd9ca334210;
+					- _myState = 8192;
+					- _name = "size";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::17:4:39;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBALongLong";
+						- _id = GUID deeb6de9-1651-4efe-93b2-dab13c11633f;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID 37a32723-7bae-4d3a-8e81-85e7479507fe;
+			- _myState = 8192;
+			- _name = "Invalid_Connector_Attributes_Excp";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAException";
+					- _id = GUID 03e95e69-ff47-4bbc-b740-89dbc332480e;
+				}
+			}
+			- _modifiedTimeWeak = 8.13.2014::17:2:29;
+			- Attrs = { IRPYRawContainer 
+				- size = 3;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 1822e182-9f43-4aeb-864b-91f3d6efe0d2;
+					- _myState = 8192;
+					- _name = "connector_id";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:48:7;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID c3575b9a-b0e9-446a-bc36-000ede15ade0;
+					- _myState = 8192;
+					- _name = "explanation";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:48:22;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID bf6fdfb0-1c96-4eb4-88df-2e4f5724e874;
+					- _myState = 8192;
+					- _name = "attribute_names";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::17:2:29;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID a2f433b0-6774-46c1-bb5f-07e369353b10;
+			- _myState = 8192;
+			- _name = "Invalid_UDM_PSAT_Header_Excp";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAException";
+					- _id = GUID 03e95e69-ff47-4bbc-b740-89dbc332480e;
+				}
+			}
+			- _modifiedTimeWeak = 8.13.2014::17:3:22;
+			- Attrs = { IRPYRawContainer 
+				- size = 3;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 35171857-74a0-4eb0-85ae-b9351bffcbf0;
+					- _myState = 8192;
+					- _name = "connector_id";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:48:7;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 83e10af0-2484-4461-8079-99cbf437b180;
+					- _myState = 8192;
+					- _name = "explanation";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:48:22;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID d55dcec6-d68d-43aa-aeea-ab45c2c48739;
+					- _myState = 8192;
+					- _name = "topic_name";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:48:37;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID fe000a2a-5bda-492e-bcb1-e0a108620d9b;
+			- _myState = 8192;
+			- _name = "Shared_Mem_Access_Excp";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAException";
+					- _id = GUID 03e95e69-ff47-4bbc-b740-89dbc332480e;
+				}
+			}
+			- _modifiedTimeWeak = 8.13.2014::17:3:34;
+			- Attrs = { IRPYRawContainer 
+				- size = 3;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 4d9a202b-30ec-4220-bc85-5042d2a335c3;
+					- _myState = 8192;
+					- _name = "connector_id";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:48:7;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 3b1513db-2f8d-4f26-85f7-f11aaedf7190;
+					- _myState = 8192;
+					- _name = "explanation";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:48:22;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 642657db-0008-4140-8732-416c4357ede6;
+					- _myState = 8192;
+					- _name = "topic_name";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAField";
+							- _id = GUID f8888f95-1cb1-4d5f-a149-d2a7919f18c5;
+						}
+					}
+					- _modifiedTimeWeak = 8.13.2014::15:48:37;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _kind = Structure;
+		}
+		{ IType 
+			- _id = GUID 6d2faeae-67c2-4c42-927e-3cc283f293fc;
+			- _myState = 8192;
+			- _name = "Str_Seq";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBASequence";
+					- _id = GUID 4d4a9a4e-5618-40ee-813d-311f7bbffb34;
+				}
+			}
+			- _modifiedTimeWeak = 8.13.2014::17:5:26;
+			- _typedefBaseType = { IClassifierHandle 
+				- _m2Class = "IType";
+				- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+				- _subsystem = "IDLPrimitives";
+				- _class = "";
+				- _name = "CORBAString";
+				- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+			}
+			- _typedefMultiplicity = "1";
+			- _typedefIsOrdered = 0;
+			- _typedefIsReference = 0;
+			- _typedefIsConstant = 0;
+			- _kind = Typedef;
+		}
+	}
+	- _configurationRelatedTime = 8.13.2014::15:47:26;
+}
+

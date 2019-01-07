@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE systemvue_model SYSTEM "systemvue_model.dtd">
+<systemvue_model name="QPSK_Tx_Rx" type_name="QPSK_Tx_Rx">
+  <header_file name="QPSK_Tx_Rx.h"/>
+  <port name="input" direction="input" implementation="array" type_name="int" rate="8" rate_variable_name="input_rate"/>
+  <port name="output" direction="output" implementation="array" type_name="int" rate="8" rate_variable_name="output_rate"/>
+  <port name="I" direction="output" implementation="array" type_name="int" rate="4" rate_variable_name="I_rate"/>
+  <port name="Q" direction="output" implementation="array" type_name="int" rate="4" rate_variable_name="Q_rate"/>
+</systemvue_model>

@@ -1,0 +1,60 @@
+<!--
+
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+-->
+
+<workflow>
+	<bean class="org.eclipse.xtend.typesystem.uml2.Setup"/>
+ 
+ 	<!-- Needed to report issues -->
+  	<component class='org.eclipse.xtend.util.stdlib.ExtIssueReporter' />
+  	   
+    <component id="generator" class="org.eclipse.xtend.XtendComponent">
+    	<metaModel id="DDS4CCMMM" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+        	<zdl value="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml"/>
+     	</metaModel>
+     	<metaModel id="CCMMM" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+        	<zdl value="pathmap://CCM_DOMAIN/CCM.uml"/>
+     	</metaModel>
+      	<metaModel class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
+     	<metaModel id="idlLangMM" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel" 
+			metaModelPackage="com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage">
+		</metaModel>
+		<metaModel class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
+			<metaModelPackage value="org.eclipse.emf.ecore.EcorePackage" />
+		</metaModel>
+    	<invoke value="com::zeligsoft::domain::ngc::ccm::generator::xtend::mainTransform::mainTransform(element)"/>
+   		<extensionAdvice value="com::zeligsoft::domain::ngc::ccm::generator::xtend::advice"/>
+   		<extensionAdvice value="com::zeligsoft::domain::omg::ccm::generator::extensions::advice"/> 
+   		<extensionAdvice value="com::zeligsoft::domain::idl3plus::generator::xtend::advice"/>
+   		<outputSlot value="idlLangModel" />
+	</component>
+	
+    <component class="com.zeligsoft.domain.ngc.ccm.generator.writers.NGCWriter">
+		<modelSlot value="idlLangModel" />
+		<targetDir value="${src-gen}/" />
+		<pathnameSlot value="pathnames" />
+	</component>
+		<component class="com.zeligsoft.domain.ngc.ccm.generator.GenerateXML">
+		<modelSlot value="idlLangModel" />
+		<targetDir value="${src-gen}" />
+		<pathnameSlot value="pathnames" />
+	</component> 
+	<component class="com.zeligsoft.domain.ngc.ccm.generator.PostGeneration">
+		<pathnameSlot value="pathnames" />
+	</component> 
+    	
+</workflow>

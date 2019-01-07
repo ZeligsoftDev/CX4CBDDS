@@ -1,0 +1,265 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«IMPORT templates::common»
+
+«EXTENSION extensions::FunctionNames»
+«EXTENSION extensions::FileNames»
+
+«DEFINE containerBaseFuncDefs FOR Type»
+/****************************
+ *                          *
+ * Container base functions *
+ *                          *
+ ****************************/
+/**
+ * zce«name»Container_construct: «name»'s container constructor
+ * Following the constructor/destructor pattern, every struct has its own matching pair of construct/destruct functions
+ * @param self The zce«name»Container struct to which this function applies to.
+ * @param iInternalId The int represent the internalId of the component.
+ */
+void zce«name»Container_construct(zce«name»Container self, int iInternalId ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Container_destruct: «name»'s container destructor
+ * Following the constructor/destructor pattern, every struct has its own matching pair of construct/destruct functions
+ * @param self The zce«name»Container struct to which this function applies to.
+ */
+void zce«name»Container_destruct(zce«name»Container self ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Container_allocate: «name»'s container allocator
+ * Allocate the memory for the struct
+ * @return The zce«name»Container struct.
+ */
+zce«name»Container zce«name»Container_allocate(ZCE_EXC_ENV_SINGLE_ARG);
+
+/**
+ * zce«name»Container_receive_init: «name»'s container receive init
+ * Placeholder function for the container to set up the configurator and connections.
+ * @param self The zce«name»Container struct to which this function applies to.
+ * @param configurator Then configurator passed in at runtime.
+ */
+void zce«name»Container_receive_init(zce«name»Container self, zceBaseConfigurator configurator ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Container_send_init: «name»'s container send init
+ * Placeholder function for the container to set up the configurator and connections.
+ * @param self The zce«name»Container struct to which this function applies to.
+ * @param handler The array of SendHandler for RequiresPort.
+ * @param containers The array of containers in the thread of the current container (for setting up direct function calls between the containers)
+ */
+void zce«name»Container_send_init(zce«name»Container self, zceSendHandler* handler, void** containers ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Container_start: «name»'s container start
+ * Placeholder function for the worker to perform any sort of action at component start time.
+ * @param self The zce«name»Container struct to which this function applies to.
+ */
+void zce«name»Container_start(zce«name»Container self ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Container_stop: «name»'s container stop
+ * Placeholder function for the worker to perform any sort of action at component stop time.
+ * @param self The zce«name»Container struct to which this function applies to.
+ */
+void zce«name»Container_stop(zce«name»Container self ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Container_release: «name»'s container release
+ * Placeholder function for the worker to perform any sort of action at component release time.
+ * @param self The zce«name»Container struct to which this function applies to.
+ */
+void zce«name»Container_release(zce«name»Container self ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Container_getWorker: «name»'s container worker getter
+ * Return the worker for this container.
+ * @return  worker struct to which this function applies to.
+ */
+zce«name»Worker zce«name»Container_getWorker(zce«name»Container self ZCE_EXC_ENV_ARG);
+«ENDDEFINE»
+
+«DEFINE containerPortsFuncDefs FOR Type»
+/*******************************************
+ *                                         *
+ * Container provides and Requires port getter *
+ *                                         *
+ *******************************************/
+«FOREACH this.ownedElement AS p»
+	«FOREACH ((Port)p).getProvideds() AS provides»
+/**
+ * zce«name»Container_getProvides«((Port)p).name»: «name»'s container provides port getter
+ * Return the provides port for this container.
+ * @return  provides port struct to which this function applies to.
+ */
+zceProvidesPort_«provides.name» zce«name»Container_getProvides«((Port)p).name»(zce«name»Container self ZCE_EXC_ENV_ARG);
+	«ENDFOREACH»
+	«FOREACH ((Port)p).getRequireds() AS requires»
+/**
+ * zce«name»Container_getRequired«((Port)p).name»: «name»'s container Requires port getter
+ * Return the Requires port for this container.
+ * @return  Requires port struct to which this function applies to.
+ */
+zceRequiresPort_«requires.name» zce«name»Container_getRequired«((Port)p).name»(zce«name»Container self ZCE_EXC_ENV_ARG);
+	«ENDFOREACH»
+«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE containerBaseFuncImpls FOR Type»
+/*************************************************
+ *                                               *
+ * Container base functions                      *
+ *                                               *
+ *************************************************/
+
+void zce«name»Container_construct(zce«name»Container self, int iInternalId ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	
+	«FOREACH this.ownedElement AS p»
+		«FOREACH ((Port)p).getProvideds() AS provides»
+	self->in_«((Port)p).name»_ = «getInterfaceProvidesObjectFileName(provides)»_allocate(ZCE_EXC_ENV_SINGLE_PARAM);
+	«getInterfaceProvidesObjectFileName(provides)»_construct(self->in_«((Port)p).name»_ ZCE_EXC_ENV_PARAM);
+	«getInterfaceProvidesObjectFileName(provides)»_setInternalId(self->in_«((Port)p).name»_, «getComponentPortId(this, (Port)p)» ZCE_EXC_ENV_PARAM);	
+		«ENDFOREACH»
+		«FOREACH ((Port)p).getRequireds() AS requires»
+	self->out_«((Port)p).name»_ = «getInterfaceRequiresObjectFileName(requires)»_allocate(ZCE_EXC_ENV_SINGLE_PARAM);
+	«getInterfaceRequiresObjectFileName(requires)»_construct(self->out_«((Port)p).name»_ ZCE_EXC_ENV_PARAM);
+	«getInterfaceRequiresObjectFileName(requires)»_setInternalId(self->out_«((Port)p).name»_, «getComponentPortId(this, (Port)p)» ZCE_EXC_ENV_PARAM);	
+		«ENDFOREACH»
+	«ENDFOREACH»
+
+«EXPAND IfDefs::startIfDefZCE_NAMES FOR this»
+	«FOREACH this.ownedElement AS p»
+	«FOREACH ((Port)p).getProvideds() AS provides»
+	«getInterfaceProvidesObjectFileName(provides)»_setFriendlyId(self->in_«((Port)p).name»_, "«((Port)p).name»" ZCE_EXC_ENV_PARAM);	
+		«ENDFOREACH»
+		«FOREACH ((Port)p).getRequireds() AS requires»
+	«getInterfaceRequiresObjectFileName(requires)»_setFriendlyId(self->out_«((Port)p).name»_, "«((Port)p).name»" ZCE_EXC_ENV_PARAM);	
+		«ENDFOREACH»
+	«ENDFOREACH»
+«EXPAND IfDefs::endIfDefZCE_NAMES FOR this»
+
+	self->internal_id_ = iInternalId;
+	self->configurator_ = NULL;
+	self->worker_ = «getComponentWorkerStructName()»_allocate(ZCE_EXC_ENV_SINGLE_PARAM);
+#ifdef ZCE_NAMES_
+	self->friendly_id_[0] = '\0';
+#endif /* ZCE_NAMES_ */
+
+	«getComponentWorkerStructName()»_construct(self->worker_, self «FOREACH this.ownedElement AS p»«FOREACH ((Port)p).getRequireds() AS requires», («getInterfaceBaseObjectFileName(requires)»)self->out_«((Port)p).name»_«ENDFOREACH»«ENDFOREACH» ZCE_EXC_ENV_PARAM);
+
+}
+
+void zce«name»Container_destruct(zce«name»Container self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	zce«name»Worker_destruct(self->worker_);
+	ZCE_DELETE(self->worker_);
+	self->worker_ = NULL;
+	«FOREACH this.ownedElement AS p»
+		«FOREACH ((Port)p).getProvideds() AS provides»
+	«getInterfaceProvidesObjectFileName(provides)»_destruct(self->in_«((Port)p).name»_ ZCE_EXC_ENV_PARAM);
+	ZCE_DELETE(self->in_«((Port)p).name»_);
+	self->in_«((Port)p).name»_ = NULL;
+		«ENDFOREACH»
+		«FOREACH ((Port)p).getRequireds() AS requires»
+	«getInterfaceRequiresObjectFileName(requires)»_destruct(self->out_«((Port)p).name»_ ZCE_EXC_ENV_PARAM);
+	ZCE_DELETE(self->out_«((Port)p).name»_);
+	self->out_«((Port)p).name»_ = NULL;
+		«ENDFOREACH»
+	«ENDFOREACH»
+	self->internal_id_ = 0;
+	self->configurator_ = NULL;
+#ifdef ZCE_NAMES_
+	self->friendly_id_[0] = '\0';
+#endif /* ZCE_NAMES_ */
+}
+
+void zce«name»Container_receive_init(zce«name»Container self, zceBaseConfigurator configurator ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	
+	self->configurator_ = configurator;
+	self->configurator_->receive_config(self->configurator_ ZCE_EXC_ENV_PARAM);
+}
+
+void zce«name»Container_send_init(zce«name»Container self, zceSendHandler* handler, void** containers ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	
+	self->configurator_->send_config(self->configurator_, handler, containers ZCE_EXC_ENV_PARAM);
+}
+
+zce«name»Container zce«name»Container_allocate(ZCE_EXC_ENV_SINGLE_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	zce«name»Container self = ZCE_NEW(struct zce_struct_«name»Container);
+	return self;
+}
+
+void zce«name»Container_start(zce«name»Container self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->configurator_->start_(self->configurator_ ZCE_EXC_ENV_PARAM);
+	zce«name»Worker_start(self->worker_ ZCE_EXC_ENV_PARAM);
+}
+
+void zce«name»Container_stop(zce«name»Container self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->configurator_->stop_(self->configurator_ ZCE_EXC_ENV_PARAM);
+	zce«name»Worker_stop(self->worker_ ZCE_EXC_ENV_PARAM);
+}
+
+void zce«name»Container_release(zce«name»Container self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->configurator_->release(self->configurator_ ZCE_EXC_ENV_PARAM);
+	zce«name»Worker_release(self->worker_ ZCE_EXC_ENV_PARAM);
+}
+
+zce«name»Worker zce«name»Container_getWorker(zce«name»Container self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	return self->worker_;
+}
+«ENDDEFINE»
+
+«DEFINE containerPortsFuncImpls FOR Type»
+«FOREACH this.ownedElement AS p»
+	«FOREACH ((Port)p).getProvideds() AS provides»
+«getInterfaceProvidesObjectFileName(provides)» zce«name»Container_get«((Port)p).name»(zce«name»Container self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	return self->in_«((Port)p).name»_;
+}	
+		«ENDFOREACH»
+		«FOREACH ((Port)p).getRequireds() AS requires»
+«getInterfaceRequiresObjectFileName(requires)» zce«name»Container_get«((Port)p).name»(zce«name»Container self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	return self->out_«((Port)p).name»_;
+}
+		«ENDFOREACH»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+

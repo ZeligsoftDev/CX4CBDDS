@@ -1,0 +1,28 @@
+/// @defgroup AGSP_ScheduleStatus_conn ScheduleStatus_conn
+/// @{
+/// 
+/// @file AGSP_ScheduleStatus_conn.idl
+/// @brief ScheduleStatus_conn connector definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__CAMERASCHEDULER_ASM__SCHEDULERSERVER_COMP__PORTS__AGSP_SCHEDULESTATUS_CONN_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__CAMERASCHEDULER_ASM__SCHEDULERSERVER_COMP__PORTS__AGSP_SCHEDULESTATUS_CONN_IDL
+
+#include <Components.idl>
+#include <ccm_dds.idl>
+#include "AGSP_ScheduleStatus_msg.idl"
+#pragma ciao lem "AGSP_ScheduleStatus_connE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef ScheduleStatus_msgSeq
+    typedef sequence <ScheduleStatus_msg> ScheduleStatus_msgSeq;
+    module CCM_DDS::Typed <ScheduleStatus_msg, ScheduleStatus_msgSeq> ScheduleStatus_conn; 
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__CAMERASCHEDULER_ASM__SCHEDULERSERVER_COMP__PORTS__AGSP_SCHEDULESTATUS_CONN_IDL
+
+/// @}
+

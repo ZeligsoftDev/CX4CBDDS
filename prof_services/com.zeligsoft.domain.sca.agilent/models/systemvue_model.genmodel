@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.zeligsoft.domain.sca.agilent/src"
+    modelPluginID="com.zeligsoft.domain.sca.agilent" modelName="Systemvue_model" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>../schema/systemvue_model.xsd</foreignModel>
+  <genPackages prefix="SystemvueModel" basePackage="com.zeligsoft.domain.sca.agilent"
+      resource="XML" disposableProviderFactory="true" ecorePackage="SystemvueModel.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SystemvueModel.ecore#//DirectionType">
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//DirectionType/input"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//DirectionType/output"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SystemvueModel.ecore#//Implementation">
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//Implementation/scalar"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//Implementation/array"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//Implementation/enumeration"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SystemvueModel.ecore#//ImplementationType">
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//ImplementationType/scalar"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//ImplementationType/array"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//ImplementationType/circularBuffer"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//ImplementationType/circularBufferBus"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SystemvueModel.ecore#//TypeName">
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeName/int"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeName/double"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeName/complexDouble"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeName/char"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SystemvueModel.ecore#//TypeNameType">
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeNameType/int"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeNameType/bool"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeNameType/float"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeNameType/double"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeNameType/stdComplexDouble"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeNameType/stdComplexFloat"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeNameType/AgilentEEsofMatrixBool"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeNameType/AgilentEEsofMatrixInt"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeNameType/AgilentEEsofMatrixDouble"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeNameType/AgilentEEsofMatrixStdComplexDouble"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeNameType/AgilentEEsofMatrixFloat"/>
+      <genEnumLiterals ecoreEnumLiteral="SystemvueModel.ecore#//TypeNameType/AgilentEEsofMatrixStdComplexFloat"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="SystemvueModel.ecore#//DirectionTypeObject"/>
+    <genDataTypes ecoreDataType="SystemvueModel.ecore#//ImplementationObject"/>
+    <genDataTypes ecoreDataType="SystemvueModel.ecore#//ImplementationTypeObject"/>
+    <genDataTypes ecoreDataType="SystemvueModel.ecore#//TypeNameObject"/>
+    <genDataTypes ecoreDataType="SystemvueModel.ecore#//TypeNameTypeObject"/>
+    <genClasses ecoreClass="SystemvueModel.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference SystemvueModel.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference SystemvueModel.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SystemvueModel.ecore#//DocumentRoot/headerFile"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SystemvueModel.ecore#//DocumentRoot/parameter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SystemvueModel.ecore#//DocumentRoot/port"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SystemvueModel.ecore#//DocumentRoot/systemvueModel"/>
+    </genClasses>
+    <genClasses ecoreClass="SystemvueModel.ecore#//HeaderFile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//HeaderFile/name"/>
+    </genClasses>
+    <genClasses ecoreClass="SystemvueModel.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Parameter/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Parameter/implementation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Parameter/memberName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Parameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Parameter/sizeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Parameter/typeName"/>
+    </genClasses>
+    <genClasses ecoreClass="SystemvueModel.ecore#//Port">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Port/busSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Port/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Port/direction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Port/implementation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Port/memberName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Port/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Port/rate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Port/rateVariableName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//Port/typeName"/>
+    </genClasses>
+    <genClasses ecoreClass="SystemvueModel.ecore#//SystemvueModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//SystemvueModel/group"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference SystemvueModel.ecore#//SystemvueModel/parameter"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference SystemvueModel.ecore#//SystemvueModel/headerFile"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference SystemvueModel.ecore#//SystemvueModel/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//SystemvueModel/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//SystemvueModel/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//SystemvueModel/namespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SystemvueModel.ecore#//SystemvueModel/typeName"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

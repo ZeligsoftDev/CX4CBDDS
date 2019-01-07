@@ -1,0 +1,38 @@
+/// @defgroup SNA_Examples_Common_defn Common_defn
+/// @{
+/// 
+/// @file SNA_Examples_Common_defn.idl
+/// @brief Common_defn definitions definition IDL file
+
+//=========================================================
+
+#ifndef CX_STATEMANAGER_COMP__PORTS__SNA_EXAMPLES_COMMON_DEFN_IDL
+#define CX_STATEMANAGER_COMP__PORTS__SNA_EXAMPLES_COMMON_DEFN_IDL
+
+
+/// @namespace SNA_Examples 
+module SNA_Examples {
+
+    /// @enum ReturnStatus
+    ///
+    enum ReturnStatus {
+        SUCCESS,
+        FAILURE
+    };
+
+    /// @enum SystemState
+    ///
+    enum SystemState {
+        STARTUP_STATE,
+        STANDBY_STATE,
+        DAYTIME_OPERATIONAL_STATE,
+        NIGHTTIME_OPERATIONAL_STATE,
+        TEST_STATE,
+        SHUTDOWN_STATE
+    };
+};
+
+#endif // CX_STATEMANAGER_COMP__PORTS__SNA_EXAMPLES_COMMON_DEFN_IDL
+
+/// @}
+

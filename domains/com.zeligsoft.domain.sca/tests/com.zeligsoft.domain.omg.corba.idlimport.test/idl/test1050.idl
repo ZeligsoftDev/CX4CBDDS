@@ -1,0 +1,34 @@
+// Exception name not found
+
+module A
+{ 
+
+    exception WrongScopeException
+    {
+    };
+
+};
+
+module B
+{
+
+    module C
+    { 
+        exception AnotherWrongScopeException{};
+    };
+
+    interface int1050
+    {
+ 
+
+      void func1 (      
+        ) raises (Exception1);
+
+      void func2 (
+        ) raises (WrongScopeException);
+
+      void func3 (
+        ) raises (AnotherWrongScopeException);
+};
+
+};

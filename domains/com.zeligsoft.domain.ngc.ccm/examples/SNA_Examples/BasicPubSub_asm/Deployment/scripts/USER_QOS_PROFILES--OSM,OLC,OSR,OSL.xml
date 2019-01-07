@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- A XML configuration file -->
+
+<!-- 
+     ===============
+     ABOUT THIS FILE
+     ===============
+ 
+     This version of the QoS settings will cause the Basic Pub/Sub example
+     to have its subscriber component's OSM ("on_subscription_matched"),
+     OLC("on_liveliness_changed"), OSR ("on_sample_rejected") and OSL 
+     ("on_sample_lost") handlers to be invoked when also combined with changing 
+     the value of "numSamplesToPublishEachTime" in BasicPublisher.cfg" from 1 to 5000
+ 
+     NOTE: In order to use this file, it must temporary be copied over to
+           the name "NDDS_QOS_PROFILES.xml" in the same directory prior to
+           running --> 
+
+<dds>
+<qos_library name="SNA_Examples">
+   <qos_profile name="Basic_Pub_Sub"> 
+      
+      <!-- QOS FOR SNA CUSTOM PUB SUB ATTACHMENT DISCOVERY NOT INCLUDED
+           BECAUSE IT IS OUTSIDE THE SCOPE OF THIS EXAMPLE -->      
+      
+      
+      <!-- BEGIN NORMAL READER/WRITER QOS (USER TOPICS) -->
+      
+      <!-- reliability   = Best effort as this vastly reduces latency 
+           history kind  = keep last as this vastly reduces memory usage
+           history depth = low for lower memory usage -->
+      
+      <datawriter_qos>
+         <reliability>
+            <kind>DDS_BEST_EFFORT_RELIABILITY_QOS</kind>
+         </reliability>
+         <history>
+            <kind>DDS_KEEP_LAST_HISTORY_QOS</kind>
+            <depth>1</depth>
+         </history>
+      </datawriter_qos>
+      
+      <datareader_qos>
+         <reliability>
+            <kind>DDS_BEST_EFFORT_RELIABILITY_QOS</kind>
+         </reliability>
+         <history>
+            <kind>DDS_KEEP_LAST_HISTORY_QOS</kind>
+            <depth>2</depth>
+         </history>
+         <resource_limits>
+            <max_samples>2</max_samples>
+            <max_instances>1</max_instances>
+            <max_samples_per_instance>2</max_samples_per_instance>
+            <initial_samples>2</initial_samples>
+            <initial_instances>1</initial_instances>
+         </resource_limits>
+      </datareader_qos>
+      
+      
+      <!-- END NORMAL READER/WRITER QOS (USER TOPICS) -->
+      
+      
+      
+      <participant_qos base_name="::SNA::shm::participant">
+         <!-- 
+         
+            Add any participant QoS settings specific to Basic Pub/Sub here. 
+
+         --> 
+      </participant_qos>
+          
+
+
+   </qos_profile>
+   
+</qos_library>
+</dds>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://CCM_LIBRARIES/"
+            target="platform:/plugin/com.zeligsoft.domain.omg.ccm/libraries/">
+      </mapping>
+      <mapping
+            source="pathmap://CCM_PROFILES/"
+            target="platform:/plugin/com.zeligsoft.domain.omg.ccm/profiles/">
+      </mapping>
+      <mapping
+            source="pathmap://CCM_DOMAIN/"
+            target="platform:/plugin/com.zeligsoft.domain.omg.ccm/models/">
+      </mapping>
+   </extension>
+   <extension
+         point="com.zeligsoft.base.zdl.domain_models">
+      <domainModel
+            genModel="pathmap://CCM_DOMAIN/CCM.zdlgen"
+            path="pathmap://CCM_DOMAIN/CCM.uml"
+            uri="http://www.zeligsoft.com/domain/omg/ccm/2009">
+      </domainModel>
+   </extension>
+   <extension
+         point="com.zeligsoft.cx.codegen.workerfunctioncontributor">
+      <workerfunctioncontributor
+            class="com.zeligsoft.domain.omg.ccm.util.CCMWorkerFunctionContributor"
+            concept="CCM::CCM_Implementation::MonolithicImplementation"
+            domain="CCM"
+            id="com.zeligsoft.domain.omg.ccm.ccmWorkerfunctioncontributor">
+      </workerfunctioncontributor>
+   </extension>
+   <extension
+         point="com.zeligsoft.cx.codegen.workerfunctioncontributor">
+      <workerfunctioncontributor
+            class="com.zeligsoft.domain.zml.util.ZMLWorkerFunctionContributor"
+            concept="ZMLMM::ZML_Component::StructuralRealization"
+            domain="CCM"
+            id="com.zeligsoft.domain.omg.ccm.workerfunctioncontributor">
+      </workerfunctioncontributor>
+   </extension>
+   
+   <extension
+         point="com.zeligsoft.base.validation.preload">
+      <zdl uri="pathmap://CCM_DOMAIN/CCM.uml" />
+   </extension>
+</plugin>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         id="com.zeligsoft.domain.omg.ccm.rsm.profiles"
+         name="OMG CCM Domain Profiles"
+         point="com.ibm.xtools.uml.msl.UMLProfiles">
+      <UMLProfile
+            id="com.zeligsoft.domain.omg.ccm.rsm.CCMProfile"
+            name="OMG CCM Domain Profile"
+            path="pathmap://CCM_PROFILES/ccm.profile.uml"
+            required="false"
+            visible="true">
+      </UMLProfile>
+   </extension>
+   <extension
+         point="com.ibm.xtools.uml.msl.UMLLibraries">
+      <UMLLibrary
+            id="com.zeligsoft.domain.omg.ccm.rsm.CCMPrimitivesLibrary"
+            name="OMG CCM Primitives Library"
+            path="pathmap://CCM_LIBRARIES/IDLPrimitives.uml"
+            required="false"
+            visible="true">
+      </UMLLibrary>
+   </extension>
+
+</plugin>

@@ -1,0 +1,50 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @addtogroup DataDistributor_comp
+/// @{
+/// @file   SNA_Examples_DataMap_UDM_conn.idl
+/// @brief  Definition of SPDM templated module instantiation which defines the
+///         connector used in the SPDM example.
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_DATA_MAP_UDM_CONN_IDL
+#define SNA_EXAMPLES_DATA_MAP_UDM_CONN_IDL
+
+#include <ccm_spdm.idl>
+
+#include "SNA_Examples_DataMap_UDM_msg.idl"
+
+#pragma ciao lem "SNA_Examples_DataMap_UDM_connE.idl"
+
+module SNA_Examples
+{
+   /**
+    * @typedef DataMap_UDM_msgSeq
+    *
+    * Sequence of top-level UDM message of type DataMap_UDM_msg to use with
+    * the SPDM templated module instantiation.
+    */
+   typedef sequence<SNA_Examples::DataMap_UDM_msg> DataMap_UDM_msgSeq;
+
+   /**
+    * @cond DOXYGEN_UNDERSTANDS_IDL3_PLUS
+    * 
+    * Instantiation of the SPDM typed module for type DataMap_UDM_msg
+    */
+   module CCM_SPDM::Typed<SNA_Examples::DataMap_UDM_msg,DataMap_UDM_msgSeq>
+                                                         DataMap_UDM_conn;
+   
+   /**
+    * @endcond
+    */
+};
+
+#endif // SNA_EXAMPLES_DATA_MAP_UDM_CONN_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

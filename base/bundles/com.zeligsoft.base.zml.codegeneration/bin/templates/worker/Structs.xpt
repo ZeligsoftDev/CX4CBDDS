@@ -1,0 +1,98 @@
+«REM»
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«IMPORT templates::common»
+
+«EXTENSION extensions::FileNames»
+
+«DEFINE zceAndUsrStructs FOR Type»
+
+/*******************************************************************
+ *
+ *
+ *  ZCE and User STRUCTS
+ *
+ *
+ *******************************************************************/
+struct zce_struct_«name»Worker
+{
+    /* required members */
+    zce«name»Container container_;
+	int *** port_id_table;
+	int internal_id;
+«EXPAND IfDefs::startIfDefZCE_NAMES FOR this»
+	char friendly_id_[ZCE_NAME_MAX_LEN_];
+«EXPAND IfDefs::endIfDefZCE_NAMES FOR this»
+«FOREACH this.ownedElement AS port»
+	«FOREACH ((Port)port).getRequireds() AS required»
+	zceBase_«required.name» «((Port)port).name»_;
+	zceBase_«required.name» «((Port)port).name»_struct_;
+	«ENDFOREACH» 
+«ENDFOREACH»
+	/* add user members below */
+}; /* END zce_struct_«name»Worker */
+«ENDDEFINE»
+
+«DEFINE usrStructs FOR Component»
+/*******************************************************************
+ *
+ *
+ *  User Worker Struct
+ *
+ *
+ *******************************************************************/
+struct usr_struct_«name»Worker
+{
+	zce_struct_«name»Worker zceprivateobj; /* Note: Add usr members below this line */
+};
+ 
+typedef struct usr_struct_«name»Worker* usr«name»Worker;
+«ENDDEFINE»
+
+«DEFINE containerStructs FOR Type»
+struct zce_struct_«name»Container
+{
+	/* required members */
+	int internal_id_;
+«EXPAND IfDefs::startIfDefZCE_NAMES FOR this»
+	char friendly_id_[ZCE_NAMES_MAX_LEN_];
+«EXPAND IfDefs::endIfDefZCE_NAMES FOR this»
+	«getComponentWorkerStructName()» worker_;
+	zceBaseConfigurator configurator_;
+«FOREACH this.ownedElement AS port»
+	«FOREACH ((Port)port).getRequireds() AS required»
+	zceRequiresPort_«required.name» out_«((Port)port).name»_;
+	«ENDFOREACH» 
+	«FOREACH ((Port)port).getProvideds() AS provided»
+	zceProvidesPort_«provided.name» in_«((Port)port).name»_;
+	«ENDFOREACH» 
+«ENDFOREACH»
+};
+«ENDDEFINE»
+
+«DEFINE configuratorStructs FOR Property»
+struct zce_struct_«name»Configurator
+{
+	void (*receive_config)(zceBaseConfigurator self ZCE_EXC_ENV_ARG);
+	void (*send_config)(zceBaseConfigurator self, zceSendHandler* sendHandler, void** containers ZCE_EXC_ENV_ARG);
+	void (*start_)(zceBaseConfigurator self ZCE_EXC_ENV_ARG);
+	void (*stop_)(zceBaseConfigurator self ZCE_EXC_ENV_ARG);
+	void (*release)(zceBaseConfigurator self ZCE_EXC_ENV_ARG);
+	zce«this.type.name»Container container_;
+};
+«ENDDEFINE»

@@ -1,0 +1,348 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <meta name="generator" content="Adobe RoboHelp 9">
+<title>Decomposing Components</title>
+<link rel="StyleSheet" href="helpstyle.css" type="text/css">
+<script type="text/javascript" language="JavaScript">
+//<![CDATA[
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//]]>
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+-->
+</style>
+<script type="text/javascript" language="javascript1.2" src="whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whtopic.js"></script>
+
+</head>
+
+<body><script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+if (window.gbWhTopic)
+{
+	var strUrl = document.location.href;
+	var bc = 0;
+	var n = strUrl.toLowerCase().indexOf("bc-");
+	if(n != -1)
+	{
+		document.location.href = strUrl.substring(0, n);
+		bc = strUrl.substring(n+3);
+	}
+
+	if (window.addTocInfo)
+	{
+	addTocInfo("CX Online Help\nTutorials\nTutorial 6: Other Workflows\nDecomposing Components");
+
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(0);
+
+	
+	
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("index.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+
+//-->
+//]]></script>
+<h1>Decomposing Components</h1>
+<p>This tutorial assumes that you have completed Tutorial 1: <a href="getting_started.htm">Getting 
+ Started</a> and Tutorial 2: <a href="top-down_design.htm">Top-Down_Design</a>.</p>
+<p>You can view a video of this tutorial <a href="http://www.zeligsoft.com/files/CX_Videos/CX4CBDDS/CX4CBDDS-Decomposition/CX4CBDDS-Decomposition.html" 
+											 title="Decomposing Components video" 
+											 target="_blank">here</a>. 
+ &#160;Depending on your screen size, you may want to close the Contents 
+ frame.</p>
+<p>In this tutorial you will learn how to decompose the Philosopher component 
+ by adding a Brain and Hand Managers to the design.</p>
+<h2>Add Assembly Implementation and Diagram to the Philosopher</h2>
+<p>You need to add an Assembly Diagram to the existing <span style="font-weight: bold;"><b>Philosopher</b></span> 
+ component.</p>
+<p>To add an Assembly Implementation, follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>Right-click the <span style="font-weight: bold;"><b>Philosopher</b></span> 
+	 component and from the context menu select <span style="font-weight: bold;"><b>Add 
+	 CX &gt; Assembly Implementation.</b></span></p></li>
+	<li class="p"><p>Rename the assembly <span style="font-weight: bold;"><b>Phil_asm</b></span>.</p></li>
+	<li class="p"><p>Right-click <span style="font-weight: bold;"><b>Phil_asm</b></span> 
+	 and from the context menu select <span style="font-weight: bold;"><b>Add 
+	 Diagram &gt; Composite Structure Diagram</b></span>.</p></li>
+	<li class="p"><p>Rename the diagram <span style="font-weight: bold;"><b>Phil_asm.</b></span></p></li>
+	<li class="p"><p>Note that the assembly inherits the ports from the 
+	 <span style="font-weight: bold;"><b>Philosopher</b></span> component.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<h2>Create Sub-component Parts</h2>
+<p>The <span style="font-weight: bold;"><b>Philosopher</b></span> needs a <span 
+	 style="font-weight: bold;"><b>Brain</b></span> and managers for its left 
+ and right hands.</p>
+<p>To create sub-component parts, follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>Using the Palette, drag-and-drop a <span style="font-weight: bold;"><b>CCMPart</b></span> 
+	 onto <span style="font-weight: bold;"><b>Phil_asm</b></span>.</p></li>
+	<li class="p"><p>Name the part <span style="font-weight: bold;"><b>Brain</b></span>.</p></li>
+	<li class="p"><p>Add two more parts: <span style="font-weight: bold;"><b>LH_Manager</b></span> 
+	 and <span style="font-weight: bold;"><b>RH_Manager</b></span>.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<h3>Design HandManager</h3>
+<p>To define a <span style="font-weight: bold;"><b>HandManager</b></span>, follow 
+ these steps:</p>
+<ol type="1">
+	<li class="p"><p>Right-click the <span style="font-weight: bold;"><b>Philosopher</b></span> 
+	 package and from the context menu select <span style="font-weight: bold;"><b>Add 
+	 CX &gt; CCM Component</b></span>.<br>
+	The tool displays the <span style="font-weight: bold;"><b>New Component</b></span> 
+	 wizard.</p></li>
+	<li class="p"><p>Name the component <span style="font-weight: bold;"><b>HandManager</b></span>.</p></li>
+	<li class="p"><p>Ensure <span style="font-weight: bold;"><b>Create Assembly</b></span> 
+	 <span>is de-selected</span>.</p></li>
+	<li class="p"><p>Click <span style="font-weight: bold;"><b>Finish</b></span>.<br>
+	The tool creates the component.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<h3>Add an Interface Port to HandManager</h3>
+<p>The HandManagers have to communicate with the forks through an interface 
+ port.</p>
+<p>To add an Interface Port, follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>From the Palette, drag-and-drop an <span style="font-weight: bold;"><b>Interface 
+	 Port</b></span> onto <span style="font-weight: bold;"><b>HandManager</b></span>.</p></li>
+	<li class="p"><p>Name the port <span style="font-weight: bold;"><b>fork</b></span>.</p></li>
+	<li class="p"><p>In the Properties tab, click <img src="edit-icon.gif" alt="edit-icon.gif" style="border: none;" width="16" height="16" border="0"> 
+	 (Edit Porttype).<br>
+	The tool displays the <span style="font-weight: bold;"><b>Element Specification 
+	 Dialog</b></span>.</p></li>
+	<li class="p"><p>From the Matching items list, select <span style="font-weight: bold;"><b>ForkControl 
+	 - DiningPhilosophers::objects::interfaces::ForkControl</b></span>.</p></li>
+	<li class="p"><p>Click <span style="font-weight: bold;"><b>OK</b></span>.</p></li>
+	<li class="p"><p>In the Properties tab, check <span style="font-weight: bold;"><b>Is 
+	 Conjugated</b></span>.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<h3>Add HandManagers to Assembly</h3>
+<p>To add HandManagers to the assembly, follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>Return to the <span style="font-weight: bold;"><b>Phil_asm</b></span> 
+	 diagram.</p></li>
+	<li class="p"><p>Select both the manager blocks.</p></li>
+	<li class="p"><p>In the Properties tab, click <img src="edit-icon.gif" alt="edit-icon.gif" style="border: none;" width="16" height="16" border="0"> 
+	 (Edit Definition).<br>
+	The tool displays the <span style="font-weight: bold;"><b>Element Specification 
+	 Dialog</b></span>.</p></li>
+	<li class="p"><p>Set the type to be <span style="font-weight: bold;"><b>HandManager 
+	 - DiningPhilosophers::components::HandManager::HandManager</b></span>.</p></li>
+	<li class="p"><p>Click <span style="font-weight: bold;"><b>OK</b></span>.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<h3>Connect the fork Ports</h3>
+<p>To connect the ports, follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>From the Palette, drag-and-drop a <span style="font-weight: bold;"><b>Connection</b></span> 
+	 from the <span style="font-weight: bold;"><b>fork</b></span> port on <span 
+	 style="font-weight: bold;"><b>LH_Manager</b></span> to the external <span 
+	 style="font-weight: bold;"><b>leftHand</b></span> port on <span style="font-weight: bold;"><b>Phil_asm</b></span>.</p></li>
+	<li class="p"><p>From the Palette, drag-and-drop a <span style="font-weight: bold;"><b>Connection</b></span> 
+	 from the <span style="font-weight: bold;"><b>fork</b></span> port on <span 
+	 style="font-weight: bold;"><b>RH_Manager</b></span> to the external &#160;<span 
+	 style="font-weight: bold;"><b>rightHand</b></span> port on <span style="font-weight: bold;"><b>Phil_asm</b></span>.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<p>You now have <span style="font-weight: bold;"><b>HandManagers</b></span> that 
+ can pick up and put down forks.</p>
+<h3>Define the Brain</h3>
+<p>To add a new component, <span style="font-weight: bold;"><b>Brain</b></span>, 
+ follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>Right-click the <span style="font-weight: bold;"><b>Philosopher</b></span> 
+	 package and from the context menu select <span style="font-weight: bold;"><b>Add 
+	 CX &gt; CCM Component.</b></span><br>
+	The tool displays the <span style="font-weight: bold;"><b>New Component</b></span> 
+	 wizard.</p></li>
+	<li class="p"><p>Name the component <span style="font-weight: bold;"><b>Brain</b></span>.</p></li>
+	<li class="p"><p>Ensure Create Assembly is <span style="font-style: italic;"><i>not</i></span> 
+	 checked.</p></li>
+	<li class="p"><p>Click <span style="font-weight: bold;"><b>Finish</b></span>.<br>
+	The tool creates the component.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<h3>Add New Interface for Brain</h3>
+<p>The <span style="font-weight: bold;"><b>Brain</b></span> needs a way to control 
+ the hands.</p>
+<p>To add a new interface, follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>In the Project Explorer, open <span style="font-weight: bold;"><b>objects</b></span>.</p></li>
+	<li class="p"><p>Right-click <span style="font-weight: bold;"><b>interfaces</b></span> 
+	 and from the context menu select <span style="font-weight: bold;"><b>Add 
+	 CX &gt; Interface</b></span>.</p></li>
+	<li class="p"><p>Rename the interface <span style="font-weight: bold;"><b>HandControl</b></span>.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<h3>Add HandControl to the Brain</h3>
+<p>To add new ports to <span style="font-weight: bold;"><b>Brain</b></span>, follow 
+ these steps:</p>
+<ol type="1">
+	<li class="p"><p>From the Project Explorer, drag-and-drop <span style="font-weight: bold;"><b>HandControl</b></span> 
+	 onto the <span style="font-weight: bold;"><b>Brain</b></span>.</p></li>
+	<li class="p"><p>In the Properties tab, rename the interface <span 
+	 style="font-weight: bold;"><b>leftHand.</b></span></p></li>
+	<li class="p"><p>In the Properties tab, check <span style="font-weight: bold;"><b>Is 
+	 Conjugated</b></span>.</p></li>
+	<li class="p"><p>From the Action toolbar, select <span style="font-weight: bold;"><b>Add 
+	 Interface Port</b></span>.</p></li>
+	<li class="p"><p>Rename the port <span style="font-weight: bold;"><b>rightHand</b></span>.</p></li>
+	<li class="p"><p>In the Properties tab, check <span style="font-weight: bold;"><b>Is 
+	 Conjugated</b></span>.</p></li>
+	<li class="p"><p>In the Properties tab, click <img src="edit-icon.gif" alt="edit-icon.gif" style="border: none;" width="16" height="16" border="0"> 
+	 (Edit Porttype).<br>
+	The tool displays the <span style="font-weight: bold;"><b>Element Specification 
+	 Dialog</b></span>.</p></li>
+	<li class="p"><p>From the Matching items list, select <span style="font-weight: bold;"><b>HandControl 
+	 - DiningPhilosophers::objects::interfaces::HandControl</b></span>.</p></li>
+	<li class="p"><p>Click <span style="font-weight: bold;"><b>OK</b></span>.</p></li>
+	<li class="p"><p>In the Properties tab, check <span style="font-weight: bold;"><b>Is 
+	 Conjugated</b></span>.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<p>The Brain's <span style="font-weight: bold;"><b>leftHand</b></span> and <span 
+	 style="font-weight: bold;"><b>rightHand</b></span> control ports now implement 
+ the <span style="font-weight: bold;"><b>HandControl</b></span> interface.</p>
+<h3>Add status port to Brain</h3>
+<p>To add a status port to Brain, follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>In the Brain diagram, select the component <span style="font-weight: bold;"><b>Brain</b></span>.</p></li>
+	<li class="p"><p>From Palette, drag-and-drop an select <span style="font-weight: bold;"><b>Interface 
+	 Port</b></span> onto <span style="font-weight: bold;"><b>Brain</b></span>.</p></li>
+	<li class="p"><p>Rename the port <span style="font-weight: bold;"><b>status</b></span>.</p></li>
+	<li class="p"><p>In the Properties tab, click <img src="edit-icon.gif" alt="edit-icon.gif" style="border: none;" width="16" height="16" border="0"> 
+	 (Edit Porttype).<br>
+	The tool displays the <span style="font-weight: bold;"><b>Element Specification 
+	 Dialog</b></span>.</p></li>
+	<li class="p"><p>From the Matching items list, select <span style="font-weight: bold;"><b>DDS_Write 
+	 - DiningPhilosophers::connections::PhilStatus_conn::DDS_Write</b></span>.</p></li>
+	<li class="p"><p>Click <span style="font-weight: bold;"><b>OK</b></span>.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<p>The <span style="font-weight: bold;"><b>Brain</b></span> can now publish its 
+ status.</p>
+<h3>Define Brain type</h3>
+<p>To define the <span style="font-weight: bold;"><b>Brain</b></span> type, follow 
+ these steps:</p>
+<ol type="1">
+	<li class="p"><p>Return to the <span style="font-weight: bold;"><b>Phil_asm</b></span> 
+	 diagram.</p></li>
+	<li class="p"><p>Select <span style="font-weight: bold;"><b>Brain</b></span>.</p></li>
+	<li class="p"><p>In the Properties tab, click <img src="edit-icon.gif" alt="edit-icon.gif" style="border: none;" width="16" height="16" border="0"> 
+	 (Edit Definition).<br>
+	The tool displays the <span style="font-weight: bold;"><b>Element Specification 
+	 Dialog</b></span>.</p></li>
+	<li class="p"><p>From the Matching items list, select <span style="font-weight: bold;"><b>Brain 
+	 - DiningPhilosphers::components::Brain::Brain</b></span>.</p></li>
+	<li class="p"><p>Click <span style="font-weight: bold;"><b>OK</b></span>.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<h3>Connect status port on Brain to Phil_asm status port</h3>
+<p>To connect the ports, follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>From the Palette, drag-and-drop a <span style="font-weight: bold;"><b>Connection</b></span> 
+	 from the <span style="font-weight: bold;"><b>status</b></span> port on <span 
+	 style="font-weight: bold;"><b>Brain</b></span> to the <span style="font-weight: bold;"><b>status</b></span> 
+	 port on the <span style="font-weight: bold;"><b>Phil_asm</b></span>.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<h3>Add control ports to LH_Manager and RH_Manager</h3>
+<p>To add a control port to the manager blocks, follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>In the <span style="font-weight: bold;"><b>Phil_asm</b></span> 
+	 diagram, select <span style="font-weight: bold;"><b>LH_Manager</b></span> 
+	 and <span style="font-weight: bold;"><b>RH_Manager</b></span>.</p></li>
+	<li class="p"><p>From the Action toolbar, select <span style="font-weight: bold;"><b>Add 
+	 Interface Port</b></span>.</p></li>
+	<li class="p"><p>In the Properties tab, click <img src="edit-icon.gif" alt="edit-icon.gif" style="border: none;" width="16" height="16" border="0"> 
+	 (Edit Component).<br>
+	The tool displays the <span style="font-weight: bold;"><b>Element Specification 
+	 Dialog</b></span>.</p></li>
+	<li class="p"><p>From the Matching items list, select <span style="font-weight: bold;"><b>HandControl 
+	 - DiningPhilosophers::objects::interfaces::HandControl</b></span>.</p></li>
+	<li class="p"><p>Click <span style="font-weight: bold;"><b>OK</b></span>.</p></li>
+	<li class="p"><p>Rename the Interface Port <span style="font-weight: bold;"><b>control</b></span>.</p></li>
+	<li class="p"><p><span>Save your model.</span></p></li>
+</ol>
+<h3>Connect control ports to LH_Manager and RH_Manager to leftHand and 
+ rightHand Brain ports</h3>
+<p>To connect the ports, follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>From the Palette, drag-and-drop a <span style="font-weight: bold;"><b>Connection</b></span> 
+	 from the <span style="font-weight: bold;"><b>rightHand</b></span> port on 
+	 <span style="font-weight: bold;"><b>Brain</b></span> to the <span style="font-weight: bold;"><b>control</b></span> 
+	 port on <span style="font-weight: bold;"><b>RH_Manager</b></span> .</p></li>
+	<li class="p"><p>From the Palette, drag-and-drop a Connection from 
+	 the <span style="font-weight: bold;"><b>leftHand</b></span> port on <span 
+	 style="font-weight: bold;"><b>Brain</b></span> to the <span style="font-weight: bold;"><b>control</b></span> 
+	 port on <span style="font-weight: bold;"><b>LH_Manager</b></span> .</p></li>
+	<li class="p" style="font-weight: normal;"><p style="font-weight: normal;">Save 
+	 your model.</p></li>
+</ol>
+<h2>Tutorial Summary</h2>
+<p>In this tutorial, you learned how to decompose a component by modeling 
+ it as an assembly of components.</p>
+<div class="runningfooter" id="dochomefooter">
+	<a href="mailto:support@prismtech.com" shape="rect" style="color: #0000ff; 
+		 text-decoration: underline; ">Provide feedback</a><br style="clear: none;">
+	
+	<hr align="center">
+	<br>Copyright <sup>©</sup> 2011 PrismTech Ltd. All rights 
+	 reserved. 
+</div>
+<p>&#160;</p>
+<p>&#160;</p>
+<p>&#160;</p>
+<p>&#160;</p>
+<p>&#160;</p>
+<p>&#160;</p>
+<p>&#160;</p>
+<script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+
+
+highlightSearch();
+//-->
+//]]></script>
+</body>
+</html>

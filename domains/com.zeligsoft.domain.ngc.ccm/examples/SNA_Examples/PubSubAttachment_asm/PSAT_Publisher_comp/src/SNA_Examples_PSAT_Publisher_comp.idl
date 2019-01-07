@@ -1,0 +1,74 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+
+/**
+ * @defgroup PSAT_Publisher_comp PSAT_Publisher_comp Component
+ * @ingroup PSAT_Example
+ * @{
+ *
+ * The PSAT_Publisher_comp component is the publisher in this example.
+ * It performs the following activities:
+ *  - Creates an 8 KB attachment PSAT sample by writing 1000 64-bit integers
+ *    based on the compId attribute.
+ *  - Gives the sample to the PSAT connector to be published (with the sample
+ *    as an "attachment") to a DDS topic.
+ *  - Uses a timer associated with it to wake up every five seconds, at which
+ *    point, the process of building and publishing a sample is repeated.
+ *
+ * @file   SNA_Examples_PSAT_Publisher_comp.idl
+ * @brief  PSAT_Publisher_comp component definition IDL file.
+ */
+
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_PSAT_PUBLISHER_COMP_IDL
+#define SNA_EXAMPLES_PSAT_PUBLISHER_COMP_IDL
+
+#include <Components.idl>
+
+#include "SNA_Examples_PSAT_Example_UDM_conn.idl"
+
+module SNA_Examples
+{
+   /**
+    * This component publishes using pub-sub attachment transfer (PSAT).
+    */
+   component PSAT_Publisher_comp
+   {
+      /**
+       * Component ID attribute.
+       * This is used only for this example so that different publisher
+       * instances publish different samples.
+       * @note THIS IS NOT NECESSARY FOR ALL COMPONENTS.
+       */
+      attribute long compId;
+      
+      /**
+       * PSAT_Write (publishing) port which uses a custom UDM (metadata struct)
+       */
+      port SNA_Examples::PSAT_Example_UDM_conn::PSAT_Write numArrayPub;
+      
+      /**
+       * An optional CCM facet defined as part of the DDS4CCM standard which
+       * the PSAT connector can call on status changes (such as errors).
+       *
+       * This facet is recommended in most cases as it is useful for debugging
+       * and integration.
+       * 
+       * It is recommended to have one of these provides lines for each
+       * DDS4CCM extended port and to have them named after the associated port
+       * name.
+       */
+      provides CCM_DDS::ConnectorStatusListener numArrayPubConnStatus;
+   };
+};
+
+#endif // SNA_EXAMPLES_PSAT_PUBLISHER_COMP_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

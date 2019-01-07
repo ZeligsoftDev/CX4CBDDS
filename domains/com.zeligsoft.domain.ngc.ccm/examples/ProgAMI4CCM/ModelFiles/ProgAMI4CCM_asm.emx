@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xsi:schemaLocation="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1 pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ">
+  <uml:Model xmi:id="_jkiX8J4JEd6xhoJKj1dweA" name="ProgAMI4CCM_asm">
+    <eAnnotations xmi:id="_jkiX8Z4JEd6xhoJKj1dweA" source="uml2.diagrams"/>
+    <eAnnotations xmi:id="_BPChAPJtEd-l_NCyCY7HJw" source="com.ibm.xtools.common.ui.reduction.editingCapabilities"/>
+    <eAnnotations xmi:id="_4zf48AEpEeOWeOf_g2_p4Q" source="cx.migration">
+      <details xmi:id="_4zf48QEpEeOWeOf_g2_p4Q" key="version" value="1.4.1"/>
+      <details xmi:id="_4zggAAEpEeOWeOf_g2_p4Q" key="date" value="1427131414634"/>
+    </eAnnotations>
+    <packageImport xmi:id="_Fg29cLNIEd66L-pSY5VQBg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_DO-O0EDsEd-pwPnT_VsB_g"/>
+    </packageImport>
+    <packageImport xmi:id="_3Pps8LIdEeCe1fl9AgcR7w">
+      <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_AMI_LIBRARIES/CCM_AMI.uml#_jkiX8J4JEd6xhoJKj1dweA"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_GWLnMLIeEeCe1fl9AgcR7w" name="SNA_Examples">
+      <packagedElement xmi:type="uml:Package" xmi:id="_n_f1QLIgEeCe1fl9AgcR7w" name="Deployment">
+        <eAnnotations xmi:id="_n_hDYLIgEeCe1fl9AgcR7w" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_o0SIMLIgEeCe1fl9AgcR7w" name="descriptors">
+          <eAnnotations xmi:id="_o0SvQLIgEeCe1fl9AgcR7w" source="uml2.diagrams"/>
+          <packagedElement xmi:type="uml:Package" xmi:id="_pycZkLIgEeCe1fl9AgcR7w" name="Node">
+            <eAnnotations xmi:id="_pydnsLIgEeCe1fl9AgcR7w" source="uml2.diagrams"/>
+            <packagedElement xmi:type="uml:Component" xmi:id="_Sx8c8LIhEeCxJ7b7h4plXw" name="Node">
+              <ownedAttribute xmi:id="_Sx9EALIhEeCxJ7b7h4plXw" name="resourceProperty" type="_Sx-SILIhEeCxJ7b7h4plXw"/>
+              <ownedAttribute xmi:id="_Sx9EAbIhEeCxJ7b7h4plXw" name="_defaultInstance">
+                <defaultValue xmi:type="uml:InstanceValue" xmi:id="_Sx9EArIhEeCxJ7b7h4plXw" instance="_Sx9EBLIhEeCxJ7b7h4plXw"/>
+              </ownedAttribute>
+              <packagedElement xmi:type="uml:Package" xmi:id="_Sx9EA7IhEeCxJ7b7h4plXw" name="_Node">
+                <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_Sx9EBLIhEeCxJ7b7h4plXw" name="NodeInstance" classifier="_Sx8c8LIhEeCxJ7b7h4plXw">
+                  <slot xmi:id="_Sx9EBbIhEeCxJ7b7h4plXw" definingFeature="_Sx9EALIhEeCxJ7b7h4plXw">
+                    <value xmi:type="uml:InstanceValue" xmi:id="_Sx9EBrIhEeCxJ7b7h4plXw" instance="_Sx9EB7IhEeCxJ7b7h4plXw"/>
+                  </slot>
+                </packagedElement>
+                <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_Sx9EB7IhEeCxJ7b7h4plXw" name="NodeAddressInstance" classifier="_Sx-SILIhEeCxJ7b7h4plXw">
+                  <slot xmi:id="_Sx9ECLIhEeCxJ7b7h4plXw" definingFeature="_Sx-SIbIhEeCxJ7b7h4plXw">
+                    <value xmi:type="uml:InstanceValue" xmi:id="_Sx9ECbIhEeCxJ7b7h4plXw" instance="_Sx9ECrIhEeCxJ7b7h4plXw"/>
+                  </slot>
+                </packagedElement>
+                <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_Sx9ECrIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.StringIORInstance">
+                  <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                  <specification xmi:type="uml:LiteralString" xmi:id="_Sx9EC7IhEeCxJ7b7h4plXw" value="corbaloc:iiop:localhost:60070"/>
+                </packagedElement>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_Sx-SILIhEeCxJ7b7h4plXw" name="Node Address">
+              <ownedAttribute xmi:id="_Sx-SIbIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.StringIOR">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_qZKbULIgEeCe1fl9AgcR7w" name="Processes">
+            <eAnnotations xmi:id="_qZLpcLIgEeCe1fl9AgcR7w" source="uml2.diagrams"/>
+            <packagedElement xmi:type="uml:Component" xmi:id="_iT-ncLIhEeCxJ7b7h4plXw" name="StateManager_proc">
+              <ownedAttribute xmi:id="_iUPtMLIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_iUSJcLIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_iUVMwLIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_iUYQELIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityArguments">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Component" xmi:id="_nLizULIhEeCxJ7b7h4plXw" name="Slave1_proc">
+              <ownedAttribute xmi:id="_nLzSALIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_nL3jcLIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_nL8b8LIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_nL-4MLIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityArguments">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Component" xmi:id="_qcOg8LIhEeCxJ7b7h4plXw" name="Slave2_proc">
+              <ownedAttribute xmi:id="_qcfmsLIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_qcj4ILIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_qcp-wLIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_qcwscLIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityArguments">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Component" xmi:id="_sbr3QLIhEeCxJ7b7h4plXw" name="Slave3_proc">
+              <ownedAttribute xmi:id="_sb7H0LIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_sb-yMLIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_scE40LIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_scHVELIhEeCxJ7b7h4plXw" name="edu.vanderbilt.dre.DAnCE.LocalityArguments">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_rUcX0LIgEeCe1fl9AgcR7w" name="Defaults">
+            <eAnnotations xmi:id="_rUdl8LIgEeCe1fl9AgcR7w" source="uml2.diagrams"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Component" xmi:id="_V-vJELIhEeCxJ7b7h4plXw" name="AMI4CCM_asm_VM">
+            <eAnnotations xmi:id="_WAI3QLIhEeCxJ7b7h4plXw" source="uml2.diagrams">
+              <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_WAI3QbIhEeCxJ7b7h4plXw" type="Structure" element="_V-vJELIhEeCxJ7b7h4plXw" name="StructureDiagram1" measurementUnit="Himetric">
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_WAI3QrIhEeCxJ7b7h4plXw" type="StructureDiagramFrame" element="_V-vJELIhEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                  <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_WAI3Q7IhEeCxJ7b7h4plXw" type="StructureCompartment">
+                    <children xmi:type="umlnotation:UMLShape" xmi:id="_ezJlALIhEeCxJ7b7h4plXw" element="_eyuuQLIhEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" showListVisibility="None" showListSignature="true" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                      <eAnnotations xmi:id="_ezKzILIhEeCxJ7b7h4plXw" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                        <details xmi:id="_ezN2cLIhEeCxJ7b7h4plXw" key="ShowTypeLabelStyle" value="Represents Name and Type Name"/>
+                      </eAnnotations>
+                      <children xmi:type="notation:DecorationNode" xmi:id="_ezQ5wLIhEeCxJ7b7h4plXw" type="ImageCompartment">
+                        <layoutConstraint xmi:type="notation:Size" xmi:id="_ezQ5wbIhEeCxJ7b7h4plXw" width="1320" height="1320"/>
+                      </children>
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_ezRg0LIhEeCxJ7b7h4plXw" type="PartTextCompartment"/>
+                      <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_ezSH4LIhEeCxJ7b7h4plXw" visible="false" type="PartStructureCompartment"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ezJlAbIhEeCxJ7b7h4plXw" x="123" y="-24"/>
+                    </children>
+                    <children xmi:type="umlnotation:UMLShape" xmi:id="_8x0TALIzEeCxJ7b7h4plXw" element="_8v1WALIzEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" showListVisibility="None" showListSignature="true" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                      <eAnnotations xmi:id="_8x06ELIzEeCxJ7b7h4plXw" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                        <details xmi:id="_8x06EbIzEeCxJ7b7h4plXw" key="ShowTypeLabelStyle" value="Represents Name Only"/>
+                      </eAnnotations>
+                      <children xmi:type="notation:DecorationNode" xmi:id="_8x06ErIzEeCxJ7b7h4plXw" type="ImageCompartment">
+                        <layoutConstraint xmi:type="notation:Size" xmi:id="_8x06E7IzEeCxJ7b7h4plXw" width="1320" height="1320"/>
+                      </children>
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_8x1hILIzEeCxJ7b7h4plXw" type="PartTextCompartment"/>
+                      <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_8x1hIbIzEeCxJ7b7h4plXw" visible="false" type="PartStructureCompartment"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8x0TAbIzEeCxJ7b7h4plXw" x="1083" y="592"/>
+                    </children>
+                    <children xmi:type="umlnotation:UMLShape" xmi:id="_9heOULIzEeCxJ7b7h4plXw" element="_9fhGgLIzEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" showListVisibility="None" showListSignature="true" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                      <eAnnotations xmi:id="_9he1YLIzEeCxJ7b7h4plXw" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                        <details xmi:id="_9he1YbIzEeCxJ7b7h4plXw" key="ShowTypeLabelStyle" value="Represents Name Only"/>
+                      </eAnnotations>
+                      <children xmi:type="notation:DecorationNode" xmi:id="_9hfccLIzEeCxJ7b7h4plXw" type="ImageCompartment">
+                        <layoutConstraint xmi:type="notation:Size" xmi:id="_9hfccbIzEeCxJ7b7h4plXw" width="1320" height="1320"/>
+                      </children>
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_9hfccrIzEeCxJ7b7h4plXw" type="PartTextCompartment"/>
+                      <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_9hfcc7IzEeCxJ7b7h4plXw" visible="false" type="PartStructureCompartment"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9heOUbIzEeCxJ7b7h4plXw" x="763" y="1232"/>
+                    </children>
+                    <children xmi:type="umlnotation:UMLShape" xmi:id="_91RUELIzEeCxJ7b7h4plXw" element="_9zH_ALIzEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" showListVisibility="None" showListSignature="true" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                      <eAnnotations xmi:id="_91R7ILIzEeCxJ7b7h4plXw" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                        <details xmi:id="_91R7IbIzEeCxJ7b7h4plXw" key="ShowTypeLabelStyle" value="Represents Name Only"/>
+                      </eAnnotations>
+                      <children xmi:type="notation:DecorationNode" xmi:id="_91R7IrIzEeCxJ7b7h4plXw" type="ImageCompartment">
+                        <layoutConstraint xmi:type="notation:Size" xmi:id="_91R7I7IzEeCxJ7b7h4plXw" width="1320" height="1320"/>
+                      </children>
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_91SiMLIzEeCxJ7b7h4plXw" type="PartTextCompartment"/>
+                      <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_91SiMbIzEeCxJ7b7h4plXw" visible="false" type="PartStructureCompartment"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_91RUEbIzEeCxJ7b7h4plXw" x="2043" y="1232"/>
+                    </children>
+                  </children>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_WAI3RLIhEeCxJ7b7h4plXw" type="Name"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WAI3RbIhEeCxJ7b7h4plXw" x="165" y="165"/>
+                </children>
+              </contents>
+            </eAnnotations>
+            <ownedAttribute xmi:id="_eyuuQLIhEeCxJ7b7h4plXw" name="StateManagerNode" visibility="private" type="_Sx8c8LIhEeCxJ7b7h4plXw" aggregation="composite"/>
+            <ownedAttribute xmi:id="_8v1WALIzEeCxJ7b7h4plXw" name="Slave1Node" visibility="private" type="_Sx8c8LIhEeCxJ7b7h4plXw" aggregation="composite"/>
+            <ownedAttribute xmi:id="_9fhGgLIzEeCxJ7b7h4plXw" name="Slave2Node" visibility="private" type="_Sx8c8LIhEeCxJ7b7h4plXw" aggregation="composite"/>
+            <ownedAttribute xmi:id="_9zH_ALIzEeCxJ7b7h4plXw" name="Slave3Node" visibility="private" type="_Sx8c8LIhEeCxJ7b7h4plXw" aggregation="composite"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Component" xmi:id="_vpOxULIhEeCxJ7b7h4plXw" name="ProgAMI_prog1a">
+            <ownedAttribute xmi:id="_zR3E4LIhEeCxJ7b7h4plXw" name="AMI4CCM_asm_VM" type="_V-vJELIhEeCxJ7b7h4plXw"/>
+            <ownedAttribute xmi:id="_zSD5MLIhEeCxJ7b7h4plXw" name="StateManagerNode" type="_Sx8c8LIhEeCxJ7b7h4plXw"/>
+            <ownedAttribute xmi:id="_0RD4ELIhEeCxJ7b7h4plXw" name="Slave1_proc" clientDependency="_2StmwLIhEeCxJ7b7h4plXw" type="_nLizULIhEeCxJ7b7h4plXw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_RTGrIbJHEeCDx8ItnGOkBA" instance="_RTGrILJHEeCDx8ItnGOkBA"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_0R93ALIhEeCxJ7b7h4plXw" name="StateManager_proc" clientDependency="_2UUJQLIhEeCxJ7b7h4plXw" type="_iT-ncLIhEeCxJ7b7h4plXw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_No-iwLJHEeCDx8ItnGOkBA" instance="_No97sLJHEeCDx8ItnGOkBA"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_k0Bs4LIiEeCxJ7b7h4plXw" name="AMI4CCM_asm" type="_6VHsQLIhEeCxJ7b7h4plXw"/>
+            <ownedAttribute xmi:id="_k0N6ILIiEeCxJ7b7h4plXw" name="stateManager_comp" clientDependency="_otU5sLIiEeCxJ7b7h4plXw" type="_GXz-4LIeEeCe1fl9AgcR7w">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_0SiesNGVEeSC2LO3OzV-Lw" instance="_0ShQkNGVEeSC2LO3OzV-Lw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_k0aHYLIiEeCxJ7b7h4plXw" name="slave_comp" clientDependency="_nOHJsLIiEeCxJ7b7h4plXw" type="_GXXS8LIeEeCe1fl9AgcR7w">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_mJq9ANGJEeSC2LO3OzV-Lw" instance="_mJpu4NGJEeSC2LO3OzV-Lw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_k0ltkLIiEeCxJ7b7h4plXw" name="slave_comp2" type="_GXXS8LIeEeCe1fl9AgcR7w">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_laIWcNGJEeSC2LO3OzV-Lw" instance="_laHIUNGJEeSC2LO3OzV-Lw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_k0tCULIiEeCxJ7b7h4plXw" name="slave_comp3" type="_GXXS8LIeEeCe1fl9AgcR7w">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_jps6odGJEeSC2LO3OzV-Lw" instance="_jps6oNGJEeSC2LO3OzV-Lw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_8wUeMLIzEeCxJ7b7h4plXw" name="Slave1Node" type="_Sx8c8LIhEeCxJ7b7h4plXw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_MEvqgLI0EeCxJ7b7h4plXw" instance="_MEvDcLI0EeCxJ7b7h4plXw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_9gG8YLIzEeCxJ7b7h4plXw" name="Slave2Node" type="_Sx8c8LIhEeCxJ7b7h4plXw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_MxHoULI0EeCxJ7b7h4plXw" instance="_MxHBQLI0EeCxJ7b7h4plXw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_9z5bELIzEeCxJ7b7h4plXw" name="Slave3Node" type="_Sx8c8LIhEeCxJ7b7h4plXw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_NYE6oLI0EeCxJ7b7h4plXw" instance="_NYETkLI0EeCxJ7b7h4plXw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_VaSvQNGBEeSC2LO3OzV-Lw" name="stateControlRecept" type="_GWoTILIeEeCe1fl9AgcR7w"/>
+            <ownedAttribute xmi:id="_VafjkNGBEeSC2LO3OzV-Lw" name="stateControlFacet" type="_GWoTILIeEeCe1fl9AgcR7w"/>
+            <ownedAttribute xmi:id="_ValqMNGBEeSC2LO3OzV-Lw" name="stateControlFacet1" type="_GWoTILIeEeCe1fl9AgcR7w"/>
+            <ownedAttribute xmi:id="_VaqisNGBEeSC2LO3OzV-Lw" name="stateControlFacet2" type="_GWoTILIeEeCe1fl9AgcR7w"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_2StmwLIhEeCxJ7b7h4plXw" supplier="_8wUeMLIzEeCxJ7b7h4plXw" client="_0RD4ELIhEeCxJ7b7h4plXw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_2UUJQLIhEeCxJ7b7h4plXw" supplier="_zSD5MLIhEeCxJ7b7h4plXw" client="_0R93ALIhEeCxJ7b7h4plXw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_nOHJsLIiEeCxJ7b7h4plXw" supplier="_0RD4ELIhEeCxJ7b7h4plXw" client="_k0aHYLIiEeCxJ7b7h4plXw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_otU5sLIiEeCxJ7b7h4plXw" supplier="_0R93ALIhEeCxJ7b7h4plXw" client="_k0N6ILIiEeCxJ7b7h4plXw"/>
+            <packagedElement xmi:type="uml:Package" xmi:id="_MEtOQLI0EeCxJ7b7h4plXw" name="_Slave1Node">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_MEvDcLI0EeCxJ7b7h4plXw" name="NodeInstance" classifier="_Sx8c8LIhEeCxJ7b7h4plXw">
+                <slot xmi:id="_MEw4oLI0EeCxJ7b7h4plXw" definingFeature="_Sx9EALIhEeCxJ7b7h4plXw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_MEyGwbI0EeCxJ7b7h4plXw" instance="_MEyGwLI0EeCxJ7b7h4plXw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_MEyGwLI0EeCxJ7b7h4plXw" name="Node AddressInstance" classifier="_Sx-SILIhEeCxJ7b7h4plXw">
+                <slot xmi:id="_MEzU4LI0EeCxJ7b7h4plXw" definingFeature="_Sx-SIbIhEeCxJ7b7h4plXw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_ME0jALI0EeCxJ7b7h4plXw" instance="_MEz78LI0EeCxJ7b7h4plXw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_MEz78LI0EeCxJ7b7h4plXw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_MEz78bI0EeCxJ7b7h4plXw" value="corbaloc:iiop:localhost:60071"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_MxElALI0EeCxJ7b7h4plXw" name="_Slave2Node">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_MxHBQLI0EeCxJ7b7h4plXw" name="NodeInstance" classifier="_Sx8c8LIhEeCxJ7b7h4plXw">
+                <slot xmi:id="_MxIPYLI0EeCxJ7b7h4plXw" definingFeature="_Sx9EALIhEeCxJ7b7h4plXw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_MxJdgLI0EeCxJ7b7h4plXw" instance="_MxI2cLI0EeCxJ7b7h4plXw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_MxI2cLI0EeCxJ7b7h4plXw" name="Node AddressInstance" classifier="_Sx-SILIhEeCxJ7b7h4plXw">
+                <slot xmi:id="_MxKroLI0EeCxJ7b7h4plXw" definingFeature="_Sx-SIbIhEeCxJ7b7h4plXw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_MxL5wLI0EeCxJ7b7h4plXw" instance="_MxLSsLI0EeCxJ7b7h4plXw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_MxLSsLI0EeCxJ7b7h4plXw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_MxLSsbI0EeCxJ7b7h4plXw" value="corbaloc:iiop:localhost:60072"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_NYCeYLI0EeCxJ7b7h4plXw" name="_Slave3Node">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_NYETkLI0EeCxJ7b7h4plXw" name="NodeInstance" classifier="_Sx8c8LIhEeCxJ7b7h4plXw">
+                <slot xmi:id="_NYGIwLI0EeCxJ7b7h4plXw" definingFeature="_Sx9EALIhEeCxJ7b7h4plXw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_NYHW4LI0EeCxJ7b7h4plXw" instance="_NYGv0LI0EeCxJ7b7h4plXw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_NYGv0LI0EeCxJ7b7h4plXw" name="Node AddressInstance" classifier="_Sx-SILIhEeCxJ7b7h4plXw">
+                <slot xmi:id="_NYIlALI0EeCxJ7b7h4plXw" definingFeature="_Sx-SIbIhEeCxJ7b7h4plXw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_NYKaMLI0EeCxJ7b7h4plXw" instance="_NYJMELI0EeCxJ7b7h4plXw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_NYJMELI0EeCxJ7b7h4plXw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_NYJzILI0EeCxJ7b7h4plXw" value="corbaloc:iiop:localhost:60073"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_No8GgLJHEeCDx8ItnGOkBA" name="_StateManagerProcess">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_No97sLJHEeCDx8ItnGOkBA" name="StateManagerProcessInstance" classifier="_iT-ncLIhEeCxJ7b7h4plXw">
+                <slot xmi:id="_No_w4LJHEeCDx8ItnGOkBA" definingFeature="_iUSJcLIhEeCxJ7b7h4plXw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_NpA_AbJHEeCDx8ItnGOkBA" instance="_NpAX8LJHEeCDx8ItnGOkBA"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_NpAX8LJHEeCDx8ItnGOkBA" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_NpA_ALJHEeCDx8ItnGOkBA" value="StateManagerProcess"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_RTEO4LJHEeCDx8ItnGOkBA" name="_Slave1Process">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_RTGrILJHEeCDx8ItnGOkBA" name="Slave1ProcessInstance" classifier="_nLizULIhEeCxJ7b7h4plXw">
+                <slot xmi:id="_RTIgULJHEeCDx8ItnGOkBA" definingFeature="_nL3jcLIhEeCxJ7b7h4plXw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_RTKVgLJHEeCDx8ItnGOkBA" instance="_RTJHYLJHEeCDx8ItnGOkBA"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_RTJHYLJHEeCDx8ItnGOkBA" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_RTJucLJHEeCDx8ItnGOkBA" value="Slave1Process"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_jprFcNGJEeSC2LO3OzV-Lw" name="_slave_comp3">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_jps6oNGJEeSC2LO3OzV-Lw" name="Slave_compInstance" classifier="_GXXS8LIeEeCe1fl9AgcR7w">
+                <slot xmi:id="_jpuIwNGJEeSC2LO3OzV-Lw" definingFeature="_pTu-4NGBEeSC2LO3OzV-Lw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_m7WRkNGJEeSC2LO3OzV-Lw" instance="_m7T1UNGJEeSC2LO3OzV-Lw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_m7T1UNGJEeSC2LO3OzV-Lw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_m7VDcNGJEeSC2LO3OzV-Lw" value="333333"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_laBBsNGJEeSC2LO3OzV-Lw" name="_slave_comp2">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_laHIUNGJEeSC2LO3OzV-Lw" name="Slave_compInstance" classifier="_GXXS8LIeEeCe1fl9AgcR7w">
+                <slot xmi:id="_laLZwNGJEeSC2LO3OzV-Lw" definingFeature="_pTu-4NGBEeSC2LO3OzV-Lw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_laNO8NGJEeSC2LO3OzV-Lw" instance="_laMA0NGJEeSC2LO3OzV-Lw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_laMA0NGJEeSC2LO3OzV-Lw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_laMn4NGJEeSC2LO3OzV-Lw" value="222222"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_mJkPUNGJEeSC2LO3OzV-Lw" name="_slave_comp">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_mJpu4NGJEeSC2LO3OzV-Lw" name="Slave_compInstance" classifier="_GXXS8LIeEeCe1fl9AgcR7w">
+                <slot xmi:id="_mJunYNGJEeSC2LO3OzV-Lw" definingFeature="_pTu-4NGBEeSC2LO3OzV-Lw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_mJxqsNGJEeSC2LO3OzV-Lw" instance="_mJv1gNGJEeSC2LO3OzV-Lw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_mJv1gNGJEeSC2LO3OzV-Lw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_mJxDoNGJEeSC2LO3OzV-Lw" value="111111"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_0SbJ8NGVEeSC2LO3OzV-Lw" name="_stateManager_comp">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_0ShQkNGVEeSC2LO3OzV-Lw" name="StateManager_compInstance" classifier="_GXz-4LIeEeCe1fl9AgcR7w">
+                <slot xmi:id="_0SliANGVEeSC2LO3OzV-Lw" definingFeature="_pT1FgNGBEeSC2LO3OzV-Lw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_0SolUNGVEeSC2LO3OzV-Lw" instance="_0SmwINGVEeSC2LO3OzV-Lw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_0SmwINGVEeSC2LO3OzV-Lw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_0SnXMNGVEeSC2LO3OzV-Lw" value="ssssss"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Component" xmi:id="_Q2ER8NGIEeSC2LO3OzV-Lw" name="ProgAMI_prog1b">
+            <ownedAttribute xmi:id="_nCvvgNGIEeSC2LO3OzV-Lw" name="AMI4CCM_asm_VM" type="_V-vJELIhEeCxJ7b7h4plXw"/>
+            <ownedAttribute xmi:id="_nC9x8NGIEeSC2LO3OzV-Lw" name="StateManagerNode" type="_Sx8c8LIhEeCxJ7b7h4plXw"/>
+            <ownedAttribute xmi:id="_nDPewNGIEeSC2LO3OzV-Lw" name="Slave1Node" type="_Sx8c8LIhEeCxJ7b7h4plXw"/>
+            <ownedAttribute xmi:id="_nDbsANGIEeSC2LO3OzV-Lw" name="Slave2Node" type="_Sx8c8LIhEeCxJ7b7h4plXw"/>
+            <ownedAttribute xmi:id="_nDnSMNGIEeSC2LO3OzV-Lw" name="Slave3Node" type="_Sx8c8LIhEeCxJ7b7h4plXw"/>
+            <ownedAttribute xmi:id="_n9zpkNGIEeSC2LO3OzV-Lw" name="Slave2_proc" clientDependency="_wHOnwNGIEeSC2LO3OzV-Lw" type="_qcOg8LIhEeCxJ7b7h4plXw"/>
+            <ownedAttribute xmi:id="_oUjVoNGIEeSC2LO3OzV-Lw" name="Slave3_proc" clientDependency="_wmCDoNGIEeSC2LO3OzV-Lw" type="_sbr3QLIhEeCxJ7b7h4plXw"/>
+            <ownedAttribute xmi:id="_u1prINGIEeSC2LO3OzV-Lw" name="AMI4CCM_asm" type="_6VHsQLIhEeCxJ7b7h4plXw"/>
+            <ownedAttribute xmi:id="_u16J0NGIEeSC2LO3OzV-Lw" name="stateManager_comp" type="_GXz-4LIeEeCe1fl9AgcR7w">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_eP6fkNGWEeSC2LO3OzV-Lw" instance="_eP5RcNGWEeSC2LO3OzV-Lw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_u2Eh4NGIEeSC2LO3OzV-Lw" name="slave_comp" type="_GXXS8LIeEeCe1fl9AgcR7w"/>
+            <ownedAttribute xmi:id="_u2NEwNGIEeSC2LO3OzV-Lw" name="slave_comp2" clientDependency="_xTJoUNGIEeSC2LO3OzV-Lw" type="_GXXS8LIeEeCe1fl9AgcR7w">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_Eihx0NGKEeSC2LO3OzV-Lw" instance="_EigjsNGKEeSC2LO3OzV-Lw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_u2WOsNGIEeSC2LO3OzV-Lw" name="slave_comp3" clientDependency="_xv_8YNGIEeSC2LO3OzV-Lw" type="_GXXS8LIeEeCe1fl9AgcR7w">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_FvQqsNGKEeSC2LO3OzV-Lw" instance="_FvQDoNGKEeSC2LO3OzV-Lw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_u3h6cNGIEeSC2LO3OzV-Lw" name="stateControlRecept" type="_GWoTILIeEeCe1fl9AgcR7w"/>
+            <ownedAttribute xmi:id="_u31ccNGIEeSC2LO3OzV-Lw" name="stateControlFacet" type="_GWoTILIeEeCe1fl9AgcR7w"/>
+            <ownedAttribute xmi:id="_u4KzoNGIEeSC2LO3OzV-Lw" name="stateControlFacet_2" type="_GWoTILIeEeCe1fl9AgcR7w"/>
+            <ownedAttribute xmi:id="_u4gx4NGIEeSC2LO3OzV-Lw" name="stateControlFacet_3" type="_GWoTILIeEeCe1fl9AgcR7w"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_wHOnwNGIEeSC2LO3OzV-Lw" supplier="_nDbsANGIEeSC2LO3OzV-Lw" client="_n9zpkNGIEeSC2LO3OzV-Lw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_wmCDoNGIEeSC2LO3OzV-Lw" supplier="_nDnSMNGIEeSC2LO3OzV-Lw" client="_oUjVoNGIEeSC2LO3OzV-Lw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_xTJoUNGIEeSC2LO3OzV-Lw" supplier="_n9zpkNGIEeSC2LO3OzV-Lw" client="_u2NEwNGIEeSC2LO3OzV-Lw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_xv_8YNGIEeSC2LO3OzV-Lw" supplier="_oUjVoNGIEeSC2LO3OzV-Lw" client="_u2WOsNGIEeSC2LO3OzV-Lw"/>
+            <packagedElement xmi:type="uml:Package" xmi:id="_EibEINGKEeSC2LO3OzV-Lw" name="_slave_comp2">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_EigjsNGKEeSC2LO3OzV-Lw" name="Slave_compInstance" classifier="_GXXS8LIeEeCe1fl9AgcR7w">
+                <slot xmi:id="_EilcMNGKEeSC2LO3OzV-Lw" definingFeature="_pTu-4NGBEeSC2LO3OzV-Lw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_EiofgNGKEeSC2LO3OzV-Lw" instance="_EimqUNGKEeSC2LO3OzV-Lw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_EimqUNGKEeSC2LO3OzV-Lw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_Ein4cNGKEeSC2LO3OzV-Lw" value="222222"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_FvJV8NGKEeSC2LO3OzV-Lw" name="_slave_comp3">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_FvQDoNGKEeSC2LO3OzV-Lw" name="Slave_compInstance" classifier="_GXXS8LIeEeCe1fl9AgcR7w">
+                <slot xmi:id="_FvR40NGKEeSC2LO3OzV-Lw" definingFeature="_pTu-4NGBEeSC2LO3OzV-Lw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_FvSf4dGKEeSC2LO3OzV-Lw" instance="_FvR40dGKEeSC2LO3OzV-Lw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_FvR40dGKEeSC2LO3OzV-Lw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_FvSf4NGKEeSC2LO3OzV-Lw" value="33333"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_ePzx4NGWEeSC2LO3OzV-Lw" name="_stateManager_comp">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_eP5RcNGWEeSC2LO3OzV-Lw" name="StateManager_compInstance" classifier="_GXz-4LIeEeCe1fl9AgcR7w">
+                <slot xmi:id="_eP9i4NGWEeSC2LO3OzV-Lw" definingFeature="_pT1FgNGBEeSC2LO3OzV-Lw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_eQAmMNGWEeSC2LO3OzV-Lw" instance="_eP-xANGWEeSC2LO3OzV-Lw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_eP-xANGWEeSC2LO3OzV-Lw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_eP__INGWEeSC2LO3OzV-Lw" value="ssssss"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_ZlKSoLIgEeCe1fl9AgcR7w" name="Slave_comp">
+        <eAnnotations xmi:id="_ZlLgwLIgEeCe1fl9AgcR7w" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_amcwgLIgEeCe1fl9AgcR7w" name="ports">
+          <eAnnotations xmi:id="_amd-oLIgEeCe1fl9AgcR7w" source="uml2.diagrams"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_bSf-MLIgEeCe1fl9AgcR7w" name="src">
+          <eAnnotations xmi:id="_bShMULIgEeCe1fl9AgcR7w" source="uml2.diagrams"/>
+          <packagedElement xmi:type="uml:Component" xmi:id="_GXXS8LIeEeCe1fl9AgcR7w" name="Slave_comp">
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_GXcygLIeEeCe1fl9AgcR7w" name="stateControlFacet" type="_GWoTILIeEeCe1fl9AgcR7w"/>
+            <ownedAttribute xmi:id="_pTu-4NGBEeSC2LO3OzV-Lw" name="edu.vanderbilt.dre.DAnCE.RegisterNaming">
+              <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_Wyd7wNGEEeSC2LO3OzV-Lw" name="_defaultInstance">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_WzIDENGEEeSC2LO3OzV-Lw" instance="_WzHcANGEEeSC2LO3OzV-Lw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_T-lyANGcEeSC2LO3OzV-Lw" name="Propertyaaa" visibility="public">
+              <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <packagedElement xmi:type="uml:Package" xmi:id="_WygYANGEEeSC2LO3OzV-Lw" name="_Slave_comp">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_WzHcANGEEeSC2LO3OzV-Lw" name="Slave_compInstance" classifier="_GXXS8LIeEeCe1fl9AgcR7w">
+                <slot xmi:id="_WzJRMNGEEeSC2LO3OzV-Lw" definingFeature="_pTu-4NGBEeSC2LO3OzV-Lw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_YHkZkNGcEeSC2LO3OzV-Lw" instance="_YHikYNGcEeSC2LO3OzV-Lw"/>
+                </slot>
+                <slot xmi:id="_YHlnsNGcEeSC2LO3OzV-Lw" definingFeature="_T-lyANGcEeSC2LO3OzV-Lw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_YHoD8NGcEeSC2LO3OzV-Lw" instance="_YHmOwNGcEeSC2LO3OzV-Lw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_YHikYNGcEeSC2LO3OzV-Lw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_YHjygNGcEeSC2LO3OzV-Lw" value="1111111"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_YHmOwNGcEeSC2LO3OzV-Lw" name="CORBAStringInstance1">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_YHnc4NGcEeSC2LO3OzV-Lw" value="xxxxx"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_d9AcoLIgEeCe1fl9AgcR7w" name="StateManager_comp">
+        <eAnnotations xmi:id="_d9BqwLIgEeCe1fl9AgcR7w" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_e_WqcLIgEeCe1fl9AgcR7w" name="ports">
+          <eAnnotations xmi:id="_e_X4kLIgEeCe1fl9AgcR7w" source="uml2.diagrams"/>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_GWoTILIeEeCe1fl9AgcR7w" name="StateControl_obj">
+            <ownedOperation xmi:id="_GW28oLIeEeCe1fl9AgcR7w" name="changeState">
+              <ownedParameter xmi:id="_GW6nALIeEeCe1fl9AgcR7w" name="newState" type="_GWXNYLIeEeCe1fl9AgcR7w"/>
+              <ownedParameter xmi:id="_GXOJALIeEeCe1fl9AgcR7w" name="Parameter1" type="_GWQfsLIeEeCe1fl9AgcR7w" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_GXPXILIeEeCe1fl9AgcR7w" name="getState">
+              <ownedParameter xmi:id="_GXTBgLIeEeCe1fl9AgcR7w" name="Parameter1" type="_GWXNYLIeEeCe1fl9AgcR7w" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_iTulQLIgEeCe1fl9AgcR7w" name="Common_defn">
+            <eAnnotations xmi:id="_iTvzYLIgEeCe1fl9AgcR7w" source="uml2.diagrams"/>
+            <packagedElement xmi:type="uml:Enumeration" xmi:id="_GWQfsLIeEeCe1fl9AgcR7w" name="ReturnStatus">
+              <ownedLiteral xmi:id="_GWVYMLIeEeCe1fl9AgcR7w" name="SUCCESS" classifier="_GWQfsLIeEeCe1fl9AgcR7w"/>
+              <ownedLiteral xmi:id="_GWV_QLIeEeCe1fl9AgcR7w" name="FAILURE" classifier="_GWQfsLIeEeCe1fl9AgcR7w"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Enumeration" xmi:id="_GWXNYLIeEeCe1fl9AgcR7w" name="SystemState">
+              <ownedLiteral xmi:id="_GWZCkLIeEeCe1fl9AgcR7w" name="STARTUP_STATE" classifier="_GWXNYLIeEeCe1fl9AgcR7w"/>
+              <ownedLiteral xmi:id="_GWZCkbIeEeCe1fl9AgcR7w" name="STANDBY_STATE" classifier="_GWXNYLIeEeCe1fl9AgcR7w"/>
+              <ownedLiteral xmi:id="_GWZpoLIeEeCe1fl9AgcR7w" name="DAYTIME_OPERATIONAL_STATE" classifier="_GWXNYLIeEeCe1fl9AgcR7w"/>
+              <ownedLiteral xmi:id="_GWaQsLIeEeCe1fl9AgcR7w" name="NIGHTTIME_OPERATIONAL_STATE" classifier="_GWXNYLIeEeCe1fl9AgcR7w"/>
+              <ownedLiteral xmi:id="_GWaQsbIeEeCe1fl9AgcR7w" name="TEST_STATE" classifier="_GWXNYLIeEeCe1fl9AgcR7w"/>
+              <ownedLiteral xmi:id="_GWa3wLIeEeCe1fl9AgcR7w" name="SHUTDOWN_STATE" classifier="_GWXNYLIeEeCe1fl9AgcR7w"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_fqAxALIgEeCe1fl9AgcR7w" name="src">
+          <eAnnotations xmi:id="_fqB_ILIgEeCe1fl9AgcR7w" source="uml2.diagrams"/>
+          <packagedElement xmi:type="uml:Component" xmi:id="_GXz-4LIeEeCe1fl9AgcR7w" name="StateManager_comp">
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_GX3CMLIeEeCe1fl9AgcR7w" name="stateControlRecept" type="_GWoTILIeEeCe1fl9AgcR7w">
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GX6FgLIeEeCe1fl9AgcR7w" value="*"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_pT1FgNGBEeSC2LO3OzV-Lw" name="edu.vanderbilt.dre.DAnCE.RegisterNaming">
+              <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_qOdO0NGOEeSC2LO3OzV-Lw" name="_defaultInstance">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_qOg5MNGOEeSC2LO3OzV-Lw" instance="_qOfrENGOEeSC2LO3OzV-Lw"/>
+            </ownedAttribute>
+            <packagedElement xmi:type="uml:Package" xmi:id="_qOec8NGOEeSC2LO3OzV-Lw" name="_StateManager_comp">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_qOfrENGOEeSC2LO3OzV-Lw" name="StateManager_compInstance" classifier="_GXz-4LIeEeCe1fl9AgcR7w">
+                <slot xmi:id="_qOiuYNGOEeSC2LO3OzV-Lw" definingFeature="_pT1FgNGBEeSC2LO3OzV-Lw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_qOlKoNGOEeSC2LO3OzV-Lw" instance="_qOj8gNGOEeSC2LO3OzV-Lw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_qOj8gNGOEeSC2LO3OzV-Lw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_qOkjkNGOEeSC2LO3OzV-Lw" value="sssssss"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_6VHsQLIhEeCxJ7b7h4plXw" name="AMI4CCM_asm"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_6VUgkLIhEeCxJ7b7h4plXw" name="AMI4CCM_asm">
+        <eAnnotations xmi:id="_6Vm0cLIhEeCxJ7b7h4plXw" source="uml2.diagrams">
+          <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_6Vm0cbIhEeCxJ7b7h4plXw" type="Structure" element="_6VUgkLIhEeCxJ7b7h4plXw" name="AMI4CCM_asm" measurementUnit="Himetric">
+            <children xmi:type="umlnotation:UMLShape" xmi:id="_6Vm0crIhEeCxJ7b7h4plXw" type="StructureDiagramFrame" element="_6VUgkLIhEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+              <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_6Vm0c7IhEeCxJ7b7h4plXw" type="StructureCompartment">
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_8BVWcLIhEeCxJ7b7h4plXw" element="_78J7gLIhEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" showListVisibility="None" showListSignature="true" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                  <eAnnotations xmi:id="_8BV9gLIhEeCxJ7b7h4plXw" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                    <details xmi:id="_8BV9gbIhEeCxJ7b7h4plXw" key="ShowTypeLabelStyle" value="Represents Name and Type Name"/>
+                  </eAnnotations>
+                  <children xmi:type="notation:DecorationNode" xmi:id="_8BV9grIhEeCxJ7b7h4plXw" type="ImageCompartment">
+                    <layoutConstraint xmi:type="notation:Size" xmi:id="_8BV9g7IhEeCxJ7b7h4plXw" width="1320" height="1320"/>
+                  </children>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_8BWkkLIhEeCxJ7b7h4plXw" type="PartTextCompartment"/>
+                  <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_8BWkkbIhEeCxJ7b7h4plXw" visible="false" type="PartStructureCompartment"/>
+                  <children xmi:type="umlnotation:UMLShape" xmi:id="_8BmcMLIhEeCxJ7b7h4plXw" element="_GX3CMLIeEeCe1fl9AgcR7w" fontName="Sans" fontHeight="8" showListVisibility="None" showListSignature="true" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                    <eAnnotations xmi:id="_8BnDQLIhEeCxJ7b7h4plXw" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                      <details xmi:id="_8BnDQbIhEeCxJ7b7h4plXw" key="ShowTypeLabelStyle" value="Represents Name Only"/>
+                    </eAnnotations>
+                    <children xmi:type="notation:DecorationNode" xmi:id="_8BoRYLIhEeCxJ7b7h4plXw" type="PortName">
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_8BoRYrIhEeCxJ7b7h4plXw" type="PartTextCompartment"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8BoRYbIhEeCxJ7b7h4plXw" y="-28"/>
+                    </children>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8BmcMbIhEeCxJ7b7h4plXw" x="909" y="162"/>
+                  </children>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8BVWcbIhEeCxJ7b7h4plXw" x="123" y="532" width="958" height="344"/>
+                </children>
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_EtnxILIiEeCxJ7b7h4plXw" element="_Eon8YLIiEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" showListVisibility="None" showListSignature="true" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                  <eAnnotations xmi:id="_EtoYMLIiEeCxJ7b7h4plXw" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                    <details xmi:id="_EtoYMbIiEeCxJ7b7h4plXw" key="ShowTypeLabelStyle" value="Represents Name and Type Name"/>
+                  </eAnnotations>
+                  <children xmi:type="notation:DecorationNode" xmi:id="_EtoYMrIiEeCxJ7b7h4plXw" type="ImageCompartment">
+                    <layoutConstraint xmi:type="notation:Size" xmi:id="_EtoYM7IiEeCxJ7b7h4plXw" width="1320" height="1320"/>
+                  </children>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_Eto_QLIiEeCxJ7b7h4plXw" type="PartTextCompartment"/>
+                  <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_Eto_QbIiEeCxJ7b7h4plXw" visible="false" type="PartStructureCompartment"/>
+                  <children xmi:type="umlnotation:UMLShape" xmi:id="_EtwUALIiEeCxJ7b7h4plXw" element="_GXcygLIeEeCe1fl9AgcR7w" fontName="Sans" fontHeight="8" showListVisibility="None" showListSignature="true" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                    <eAnnotations xmi:id="_Etw7ELIiEeCxJ7b7h4plXw" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                      <details xmi:id="_Etw7EbIiEeCxJ7b7h4plXw" key="ShowTypeLabelStyle" value="Represents Name Only"/>
+                    </eAnnotations>
+                    <children xmi:type="notation:DecorationNode" xmi:id="_EtxiILIiEeCxJ7b7h4plXw" type="PortName">
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_EtxiIrIiEeCxJ7b7h4plXw" type="PartTextCompartment"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EtxiIbIiEeCxJ7b7h4plXw" y="-28"/>
+                    </children>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EtwUAbIiEeCxJ7b7h4plXw"/>
+                  </children>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EtnxIbIiEeCxJ7b7h4plXw" x="7602" y="-169"/>
+                </children>
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_FLL24LIiEeCxJ7b7h4plXw" element="_FGEtYLIiEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" showListVisibility="None" showListSignature="true" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                  <eAnnotations xmi:id="_FLMd8LIiEeCxJ7b7h4plXw" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                    <details xmi:id="_FLMd8bIiEeCxJ7b7h4plXw" key="ShowTypeLabelStyle" value="Represents Name and Type Name"/>
+                  </eAnnotations>
+                  <children xmi:type="notation:DecorationNode" xmi:id="_FLMd8rIiEeCxJ7b7h4plXw" type="ImageCompartment">
+                    <layoutConstraint xmi:type="notation:Size" xmi:id="_FLMd87IiEeCxJ7b7h4plXw" width="1320" height="1320"/>
+                  </children>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_FLMd9LIiEeCxJ7b7h4plXw" type="PartTextCompartment"/>
+                  <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_FLNFALIiEeCxJ7b7h4plXw" visible="false" type="PartStructureCompartment"/>
+                  <children xmi:type="umlnotation:UMLShape" xmi:id="_FLVn4LIiEeCxJ7b7h4plXw" element="_GXcygLIeEeCe1fl9AgcR7w" fontName="Sans" fontHeight="8" showListVisibility="None" showListSignature="true" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                    <eAnnotations xmi:id="_FLVn4rIiEeCxJ7b7h4plXw" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                      <details xmi:id="_FLVn47IiEeCxJ7b7h4plXw" key="ShowTypeLabelStyle" value="Represents Name Only"/>
+                    </eAnnotations>
+                    <children xmi:type="notation:DecorationNode" xmi:id="_FLWO8LIiEeCxJ7b7h4plXw" type="PortName">
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_FLWO8rIiEeCxJ7b7h4plXw" type="PartTextCompartment"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FLWO8bIiEeCxJ7b7h4plXw" y="-28"/>
+                    </children>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FLVn4bIiEeCxJ7b7h4plXw"/>
+                  </children>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FLL24bIiEeCxJ7b7h4plXw" x="7919" y="2684"/>
+                </children>
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_FotgYLIiEeCxJ7b7h4plXw" element="_FjqoULIiEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" showListVisibility="None" showListSignature="true" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                  <eAnnotations xmi:id="_FouHcLIiEeCxJ7b7h4plXw" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                    <details xmi:id="_FouHcbIiEeCxJ7b7h4plXw" key="ShowTypeLabelStyle" value="Represents Name and Type Name"/>
+                  </eAnnotations>
+                  <children xmi:type="notation:DecorationNode" xmi:id="_FouHcrIiEeCxJ7b7h4plXw" type="ImageCompartment">
+                    <layoutConstraint xmi:type="notation:Size" xmi:id="_FouHc7IiEeCxJ7b7h4plXw" width="1320" height="1320"/>
+                  </children>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_FouugLIiEeCxJ7b7h4plXw" type="PartTextCompartment"/>
+                  <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_FouugbIiEeCxJ7b7h4plXw" visible="false" type="PartStructureCompartment"/>
+                  <children xmi:type="umlnotation:UMLShape" xmi:id="_Fo2qULIiEeCxJ7b7h4plXw" element="_GXcygLIeEeCe1fl9AgcR7w" fontName="Sans" fontHeight="8" showListVisibility="None" showListSignature="true" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                    <eAnnotations xmi:id="_Fo3RYLIiEeCxJ7b7h4plXw" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                      <details xmi:id="_Fo3RYbIiEeCxJ7b7h4plXw" key="ShowTypeLabelStyle" value="Represents Name Only"/>
+                    </eAnnotations>
+                    <children xmi:type="notation:DecorationNode" xmi:id="_Fo3RYrIiEeCxJ7b7h4plXw" type="PortName">
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_Fo34cLIiEeCxJ7b7h4plXw" type="PartTextCompartment"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Fo3RY7IiEeCxJ7b7h4plXw" y="-28"/>
+                    </children>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Fo2qUbIiEeCxJ7b7h4plXw"/>
+                  </children>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FotgYbIiEeCxJ7b7h4plXw" x="3481" y="4903"/>
+                </children>
+              </children>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_6Vm0dLIhEeCxJ7b7h4plXw" type="Name"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6Vm0dbIhEeCxJ7b7h4plXw" x="165" y="165"/>
+            </children>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_S7-tQLIiEeCxJ7b7h4plXw" element="_S3yJwLIiEeCxJ7b7h4plXw" source="_8BmcMLIhEeCxJ7b7h4plXw" target="_FLVn4LIiEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+              <children xmi:type="notation:DecorationNode" xmi:id="_S7_UULIiEeCxJ7b7h4plXw" type="NameLabel">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_S7_UUrIiEeCxJ7b7h4plXw" type="Stereotype"/>
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_S7_7YLIiEeCxJ7b7h4plXw" type="Name"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S7_UUbIiEeCxJ7b7h4plXw" y="-39"/>
+              </children>
+              <children xmi:type="notation:DecorationNode" xmi:id="_S8JsYLIiEeCxJ7b7h4plXw" visible="false" type="ToMultiplicityLabel" element="_S3yw0bIiEeCxJ7b7h4plXw">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_S8JsYrIiEeCxJ7b7h4plXw" type="ToMultiplicity"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_S8JsYbIiEeCxJ7b7h4plXw" y="82"/>
+              </children>
+              <children xmi:type="notation:DecorationNode" xmi:id="_S8UEcLIiEeCxJ7b7h4plXw" visible="false" type="FromMultiplicityLabel" element="_S3yw0LIiEeCxJ7b7h4plXw">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_S8UEcrIiEeCxJ7b7h4plXw" type="FromMultiplicity"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_S8UEcbIiEeCxJ7b7h4plXw" y="82"/>
+              </children>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_S7-tQbIiEeCxJ7b7h4plXw" points="[50, -17, -1551, 28]$[1552, -17, -49, 28]"/>
+            </edges>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_inot0LIiEeCxJ7b7h4plXw" element="_ii3ikLIiEeCxJ7b7h4plXw" source="_8BmcMLIhEeCxJ7b7h4plXw" target="_EtwUALIiEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+              <children xmi:type="notation:DecorationNode" xmi:id="_inpU4LIiEeCxJ7b7h4plXw" type="NameLabel">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_inpU4rIiEeCxJ7b7h4plXw" type="Stereotype"/>
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_inpU47IiEeCxJ7b7h4plXw" type="Name"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_inpU4bIiEeCxJ7b7h4plXw" y="-39"/>
+              </children>
+              <children xmi:type="notation:DecorationNode" xmi:id="_in0UALIiEeCxJ7b7h4plXw" visible="false" type="ToMultiplicityLabel" element="_ii4wsLIiEeCxJ7b7h4plXw">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_in07ELIiEeCxJ7b7h4plXw" type="ToMultiplicity"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_in0UAbIiEeCxJ7b7h4plXw" y="82"/>
+              </children>
+              <children xmi:type="notation:DecorationNode" xmi:id="_in_TILIiEeCxJ7b7h4plXw" visible="false" type="FromMultiplicityLabel" element="_ii4JoLIiEeCxJ7b7h4plXw">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_in_TIrIiEeCxJ7b7h4plXw" type="FromMultiplicity"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_in_TIbIiEeCxJ7b7h4plXw" y="82"/>
+              </children>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_inot0bIiEeCxJ7b7h4plXw" points="[0, 0, -1516, 360]$[1516, -360, 0, 0]"/>
+              <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ioGn4LIiEeCxJ7b7h4plXw" id="(0.41414141414141414,0.24242424242424243)"/>
+            </edges>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_jBuo0LIiEeCxJ7b7h4plXw" element="_i9XGMLIiEeCxJ7b7h4plXw" source="_8BmcMLIhEeCxJ7b7h4plXw" target="_Fo2qULIiEeCxJ7b7h4plXw" fontName="Sans" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+              <children xmi:type="notation:DecorationNode" xmi:id="_jBuo0rIiEeCxJ7b7h4plXw" type="NameLabel">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_jBvP4LIiEeCxJ7b7h4plXw" type="Stereotype"/>
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_jBvP4bIiEeCxJ7b7h4plXw" type="Name"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jBuo07IiEeCxJ7b7h4plXw" y="-39"/>
+              </children>
+              <children xmi:type="notation:DecorationNode" xmi:id="_jB5A4LIiEeCxJ7b7h4plXw" visible="false" type="ToMultiplicityLabel" element="_i9YUULIiEeCxJ7b7h4plXw">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_jB5n8LIiEeCxJ7b7h4plXw" type="ToMultiplicity"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_jB5A4bIiEeCxJ7b7h4plXw" y="82"/>
+              </children>
+              <children xmi:type="notation:DecorationNode" xmi:id="_jCEAALIiEeCxJ7b7h4plXw" visible="false" type="FromMultiplicityLabel" element="_i9XtQLIiEeCxJ7b7h4plXw">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_jCEAArIiEeCxJ7b7h4plXw" type="FromMultiplicity"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_jCEAAbIiEeCxJ7b7h4plXw" y="82"/>
+              </children>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jBuo0bIiEeCxJ7b7h4plXw" points="[9, 3, -281, -104]$[290, 116, 0, 9]"/>
+            </edges>
+          </contents>
+        </eAnnotations>
+        <generalization xmi:id="_6Vb1ULIhEeCxJ7b7h4plXw" general="_6VHsQLIhEeCxJ7b7h4plXw"/>
+        <ownedAttribute xmi:id="_78J7gLIhEeCxJ7b7h4plXw" name="stateManager_comp" visibility="private" type="_GXz-4LIeEeCe1fl9AgcR7w" aggregation="composite"/>
+        <ownedAttribute xmi:id="_Eon8YLIiEeCxJ7b7h4plXw" name="slave_comp" visibility="private" type="_GXXS8LIeEeCe1fl9AgcR7w" aggregation="composite"/>
+        <ownedAttribute xmi:id="_FGEtYLIiEeCxJ7b7h4plXw" name="slave_comp2" visibility="private" type="_GXXS8LIeEeCe1fl9AgcR7w" aggregation="composite"/>
+        <ownedAttribute xmi:id="_FjqoULIiEeCxJ7b7h4plXw" name="slave_comp3" visibility="private" type="_GXXS8LIeEeCe1fl9AgcR7w" aggregation="composite"/>
+        <ownedConnector xmi:id="_S3yJwLIiEeCxJ7b7h4plXw" name="" kind="assembly">
+          <end xmi:id="_S3yw0LIiEeCxJ7b7h4plXw" role="_GX3CMLIeEeCe1fl9AgcR7w" partWithPort="_78J7gLIhEeCxJ7b7h4plXw"/>
+          <end xmi:id="_S3yw0bIiEeCxJ7b7h4plXw" role="_GXcygLIeEeCe1fl9AgcR7w" partWithPort="_FGEtYLIiEeCxJ7b7h4plXw"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_ii3ikLIiEeCxJ7b7h4plXw" name="" kind="assembly">
+          <end xmi:id="_ii4JoLIiEeCxJ7b7h4plXw" role="_GX3CMLIeEeCe1fl9AgcR7w" partWithPort="_78J7gLIhEeCxJ7b7h4plXw"/>
+          <end xmi:id="_ii4wsLIiEeCxJ7b7h4plXw" role="_GXcygLIeEeCe1fl9AgcR7w" partWithPort="_Eon8YLIiEeCxJ7b7h4plXw"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_i9XGMLIiEeCxJ7b7h4plXw" name="" kind="assembly">
+          <end xmi:id="_i9XtQLIiEeCxJ7b7h4plXw" role="_GX3CMLIeEeCe1fl9AgcR7w" partWithPort="_78J7gLIhEeCxJ7b7h4plXw"/>
+          <end xmi:id="_i9YUULIiEeCxJ7b7h4plXw" role="_GXcygLIeEeCe1fl9AgcR7w" partWithPort="_FjqoULIiEeCxJ7b7h4plXw"/>
+        </ownedConnector>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_p_al8LIdEeCe1fl9AgcR7w" name="modelConfiguration">
+      <classifier xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZML_C_Build.library.uml#_oDc5oKULEd2lg4YL0MvrHw"/>
+      <slot xmi:id="_p_cbILIdEeCe1fl9AgcR7w">
+        <definingFeature xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZML_C_Build.library.uml#_qzbt8KULEd2lg4YL0MvrHw"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_p_dpQLIdEeCe1fl9AgcR7w" value="">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+    </packagedElement>
+    <profileApplication xmi:id="_jkiX854JEd6xhoJKj1dweA">
+      <eAnnotations xmi:id="_jkiX9J4JEd6xhoJKj1dweA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_jkiX9Z4JEd6xhoJKj1dweA">
+      <eAnnotations xmi:id="_jkiX9p4JEd6xhoJKj1dweA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_jkiX954JEd6xhoJKj1dweA">
+      <eAnnotations xmi:id="_jkiX-J4JEd6xhoJKj1dweA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_1KTJYJ44Ed6CdqU5qRn9Dw">
+      <eAnnotations xmi:id="_1Kc6YJ44Ed6CdqU5qRn9Dw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KssEDZEd-LnsQ685SqSQ"/>
+    </profileApplication>
+  </uml:Model>
+  <dds4ccm:DDS4CCMModel xmi:id="_p_EnsLIdEeCe1fl9AgcR7w" base_Model="_jkiX8J4JEd6xhoJKj1dweA" base_NamedElement="_jkiX8J4JEd6xhoJKj1dweA"/>
+  <dds4ccm:CORBAModule xmi:id="_GYQq0LIeEeCe1fl9AgcR7w" base_NamedElement="_GWLnMLIeEeCe1fl9AgcR7w" base_Package="_GWLnMLIeEeCe1fl9AgcR7w"/>
+  <dds4ccm:CORBAEnum xmi:id="_GYQq0bIeEeCe1fl9AgcR7w" base_NamedElement="_GWQfsLIeEeCe1fl9AgcR7w" base_Enumeration="_GWQfsLIeEeCe1fl9AgcR7w"/>
+  <dds4ccm:CORBAEnum xmi:id="_GYQq0rIeEeCe1fl9AgcR7w" base_NamedElement="_GWXNYLIeEeCe1fl9AgcR7w" base_Enumeration="_GWXNYLIeEeCe1fl9AgcR7w"/>
+  <dds4ccm:CORBAInterface xmi:id="_GYRR4LIeEeCe1fl9AgcR7w" base_Interface="_GWoTILIeEeCe1fl9AgcR7w" base_NamedElement="_GWoTILIeEeCe1fl9AgcR7w" isAsynchronous="true"/>
+  <dds4ccm:CORBAOperation xmi:id="_GYRR4bIeEeCe1fl9AgcR7w" base_NamedElement="_GW28oLIeEeCe1fl9AgcR7w" base_Operation="_GW28oLIeEeCe1fl9AgcR7w"/>
+  <dds4ccm:CORBAParameter xmi:id="_GYRR4rIeEeCe1fl9AgcR7w" base_NamedElement="_GW6nALIeEeCe1fl9AgcR7w" base_Parameter="_GW6nALIeEeCe1fl9AgcR7w"/>
+  <dds4ccm:CORBAOperation xmi:id="_GYRR47IeEeCe1fl9AgcR7w" base_NamedElement="_GXPXILIeEeCe1fl9AgcR7w" base_Operation="_GXPXILIeEeCe1fl9AgcR7w"/>
+  <dds4ccm:CCMComponent xmi:id="_GYRR5LIeEeCe1fl9AgcR7w" base_Component="_GXXS8LIeEeCe1fl9AgcR7w" base_NamedElement="_GXXS8LIeEeCe1fl9AgcR7w"/>
+  <dds4ccm:InterfacePort xmi:id="_GYRR5bIeEeCe1fl9AgcR7w" base_Port="_GXcygLIeEeCe1fl9AgcR7w" isAsynchronous="true"/>
+  <dds4ccm:CCMComponent xmi:id="_GYRR5rIeEeCe1fl9AgcR7w" base_Component="_GXz-4LIeEeCe1fl9AgcR7w" base_NamedElement="_GXz-4LIeEeCe1fl9AgcR7w"/>
+  <dds4ccm:InterfacePort xmi:id="_GYRR57IeEeCe1fl9AgcR7w" base_Port="_GX3CMLIeEeCe1fl9AgcR7w" isConjugated="true" isAsynchronous="true"/>
+  <dds4ccm:Node xmi:id="_Sx-5MLIhEeCxJ7b7h4plXw" base_Component="_Sx8c8LIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:ResourceProperty xmi:id="_Sx_gQLIhEeCxJ7b7h4plXw" base_Property="_Sx9EALIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Resource xmi:id="_Sx_gQbIhEeCxJ7b7h4plXw" base_Class="_Sx-SILIhEeCxJ7b7h4plXw">
+    <resourceType>edu.vanderbilt.dre.DAnCE.NodeAddress</resourceType>
+  </dds4ccm:Resource>
+  <dds4ccm:SatisfierProperty xmi:id="_Sx_gQrIhEeCxJ7b7h4plXw" kind="Attribute" base_Property="_Sx-SIbIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Domain xmi:id="_V_AO0LIhEeCxJ7b7h4plXw" UUID="_6706bb44-24d6-47ca-bc87-102a4bcc8045" base_Component="_V-vJELIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:NodeInstance xmi:id="_ey004LIhEeCxJ7b7h4plXw" base_Property="_eyuuQLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:ContainerProcess xmi:id="_iUK0sLIhEeCxJ7b7h4plXw" base_Component="_iT-ncLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_iUQUQLIhEeCxJ7b7h4plXw" base_NamedElement="_iUPtMLIhEeCxJ7b7h4plXw" base_Property="_iUPtMLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_iUSwgLIhEeCxJ7b7h4plXw" value="ContainerProcess" base_NamedElement="_iUSJcLIhEeCxJ7b7h4plXw" base_Property="_iUSJcLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_iUVz0LIhEeCxJ7b7h4plXw" base_NamedElement="_iUVMwLIhEeCxJ7b7h4plXw" base_Property="_iUVMwLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_iUY3ILIhEeCxJ7b7h4plXw" base_NamedElement="_iUYQELIhEeCxJ7b7h4plXw" base_Property="_iUYQELIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:ContainerProcess xmi:id="_nLxc0LIhEeCxJ7b7h4plXw" base_Component="_nLizULIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_nL0gILIhEeCxJ7b7h4plXw" base_NamedElement="_nLzSALIhEeCxJ7b7h4plXw" base_Property="_nLzSALIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_nL4xkLIhEeCxJ7b7h4plXw" value="ContainerProcess" base_NamedElement="_nL3jcLIhEeCxJ7b7h4plXw" base_Property="_nL3jcLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_nL9DALIhEeCxJ7b7h4plXw" base_NamedElement="_nL8b8LIhEeCxJ7b7h4plXw" base_Property="_nL8b8LIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_nL_fQLIhEeCxJ7b7h4plXw" base_NamedElement="_nL-4MLIhEeCxJ7b7h4plXw" base_Property="_nL-4MLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:ContainerProcess xmi:id="_qcdxgLIhEeCxJ7b7h4plXw" base_Component="_qcOg8LIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_qcg00LIhEeCxJ7b7h4plXw" base_NamedElement="_qcfmsLIhEeCxJ7b7h4plXw" base_Property="_qcfmsLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_qclGQLIhEeCxJ7b7h4plXw" value="ContainerProcess" base_NamedElement="_qcj4ILIhEeCxJ7b7h4plXw" base_Property="_qcj4ILIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_qcql0LIhEeCxJ7b7h4plXw" base_NamedElement="_qcp-wLIhEeCxJ7b7h4plXw" base_Property="_qcp-wLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_qcxTgLIhEeCxJ7b7h4plXw" base_NamedElement="_qcwscLIhEeCxJ7b7h4plXw" base_Property="_qcwscLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:ContainerProcess xmi:id="_sb5SoLIhEeCxJ7b7h4plXw" base_Component="_sbr3QLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_sb7u4LIhEeCxJ7b7h4plXw" base_NamedElement="_sb7H0LIhEeCxJ7b7h4plXw" base_Property="_sb7H0LIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_scAAULIhEeCxJ7b7h4plXw" value="ContainerProcess" base_NamedElement="_sb-yMLIhEeCxJ7b7h4plXw" base_Property="_sb-yMLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_scFf4LIhEeCxJ7b7h4plXw" base_NamedElement="_scE40LIhEeCxJ7b7h4plXw" base_Property="_scE40LIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Property xmi:id="_scH8ILIhEeCxJ7b7h4plXw" base_NamedElement="_scHVELIhEeCxJ7b7h4plXw" base_Property="_scHVELIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:DeploymentPlan xmi:id="_vpa-kLIhEeCxJ7b7h4plXw" base_Component="_vpOxULIhEeCxJ7b7h4plXw" id="_2616c404-5ce3-4712-82c5-726bba2b37c3"/>
+  <dds4ccm:DeploymentPart xmi:id="_zR46ELIhEeCxJ7b7h4plXw" nestedPart="_zSFHULIhEeCxJ7b7h4plXw _8wVsULIzEeCxJ7b7h4plXw _9gHjcLIzEeCxJ7b7h4plXw _9z6CILIzEeCxJ7b7h4plXw" modelElement="_V-vJELIhEeCxJ7b7h4plXw" base_Property="_zR3E4LIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:DeploymentPart xmi:id="_zSFHULIhEeCxJ7b7h4plXw" modelElement="_eyuuQLIhEeCxJ7b7h4plXw" base_Property="_zSD5MLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:DeploymentPart xmi:id="_0RFGMLIhEeCxJ7b7h4plXw" modelElement="_nLizULIhEeCxJ7b7h4plXw" base_Property="_0RD4ELIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:DeploymentPart xmi:id="_0R-eELIhEeCxJ7b7h4plXw" modelElement="_iT-ncLIhEeCxJ7b7h4plXw" base_Property="_0R93ALIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Allocation xmi:id="_2SxRILIhEeCxJ7b7h4plXw" base_Dependency="_2StmwLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:Allocation xmi:id="_2UVXYLIhEeCxJ7b7h4plXw" base_Dependency="_2UUJQLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:CCMComponent xmi:id="_6VSEULIhEeCxJ7b7h4plXw" base_Component="_6VHsQLIhEeCxJ7b7h4plXw" base_NamedElement="_6VHsQLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:AssemblyImplementation xmi:id="_6VbOQLIhEeCxJ7b7h4plXw" base_Component="_6VUgkLIhEeCxJ7b7h4plXw" base_NamedElement="_6VUgkLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:CCMPart xmi:id="_78ZzILIhEeCxJ7b7h4plXw" base_Property="_78J7gLIhEeCxJ7b7h4plXw" base_NamedElement="_78J7gLIhEeCxJ7b7h4plXw"/>
+  <dds4ccm:CCMPart xmi:id="_Eoy7gLIiEeCxJ7b7h4plXw" base_Property="_Eon8YLIiEeCxJ7b7h4plXw" base_NamedElement="_Eon8YLIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:CCMPart xmi:id="_FGSIwLIiEeCxJ7b7h4plXw" base_Property="_FGEtYLIiEeCxJ7b7h4plXw" base_NamedElement="_FGEtYLIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:CCMPart xmi:id="_Fj5R0LIiEeCxJ7b7h4plXw" base_Property="_FjqoULIiEeCxJ7b7h4plXw" base_NamedElement="_FjqoULIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:CCMConnector xmi:id="_S343cLIiEeCxJ7b7h4plXw" base_Connector="_S3yJwLIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:CCMConnector xmi:id="_ijDv0LIiEeCxJ7b7h4plXw" base_Connector="_ii3ikLIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:CCMConnector xmi:id="_i9heQLIiEeCxJ7b7h4plXw" base_Connector="_i9XGMLIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:DeploymentPart xmi:id="_k0C7ALIiEeCxJ7b7h4plXw" nestedPart="_k0PvULIiEeCxJ7b7h4plXw _k0bVgLIiEeCxJ7b7h4plXw _k0m7sLIiEeCxJ7b7h4plXw _k0tpYLIiEeCxJ7b7h4plXw" modelElement="_6VHsQLIhEeCxJ7b7h4plXw" base_Property="_k0Bs4LIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_k0PvULIiEeCxJ7b7h4plXw" nestedPart="_VaXnwNGBEeSC2LO3OzV-Lw" modelElement="_78J7gLIhEeCxJ7b7h4plXw" base_Property="_k0N6ILIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_k0bVgLIiEeCxJ7b7h4plXw" nestedPart="_VagxsNGBEeSC2LO3OzV-Lw" modelElement="_Eon8YLIiEeCxJ7b7h4plXw" base_Property="_k0aHYLIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_k0m7sLIiEeCxJ7b7h4plXw" nestedPart="_VamRQNGBEeSC2LO3OzV-Lw" modelElement="_FGEtYLIiEeCxJ7b7h4plXw" base_Property="_k0ltkLIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_k0tpYLIiEeCxJ7b7h4plXw" nestedPart="_VarJwNGBEeSC2LO3OzV-Lw" modelElement="_FjqoULIiEeCxJ7b7h4plXw" base_Property="_k0tCULIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:Allocation xmi:id="_nOIX0LIiEeCxJ7b7h4plXw" base_Dependency="_nOHJsLIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:Allocation xmi:id="_otWH0LIiEeCxJ7b7h4plXw" base_Dependency="_otU5sLIiEeCxJ7b7h4plXw"/>
+  <dds4ccm:NodeInstance xmi:id="_8wNJcLIzEeCxJ7b7h4plXw" base_Property="_8v1WALIzEeCxJ7b7h4plXw"/>
+  <dds4ccm:DeploymentPart xmi:id="_8wVsULIzEeCxJ7b7h4plXw" modelElement="_8v1WALIzEeCxJ7b7h4plXw" base_Property="_8wUeMLIzEeCxJ7b7h4plXw"/>
+  <dds4ccm:NodeInstance xmi:id="_9f_AkLIzEeCxJ7b7h4plXw" base_Property="_9fhGgLIzEeCxJ7b7h4plXw"/>
+  <dds4ccm:DeploymentPart xmi:id="_9gHjcLIzEeCxJ7b7h4plXw" modelElement="_9fhGgLIzEeCxJ7b7h4plXw" base_Property="_9gG8YLIzEeCxJ7b7h4plXw"/>
+  <dds4ccm:NodeInstance xmi:id="_9zw4MLIzEeCxJ7b7h4plXw" base_Property="_9zH_ALIzEeCxJ7b7h4plXw"/>
+  <dds4ccm:DeploymentPart xmi:id="_9z6CILIzEeCxJ7b7h4plXw" modelElement="_9zH_ALIzEeCxJ7b7h4plXw" base_Property="_9z5bELIzEeCxJ7b7h4plXw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_VaXnwNGBEeSC2LO3OzV-Lw" modelElement="_GX3CMLIeEeCe1fl9AgcR7w" base_Property="_VaSvQNGBEeSC2LO3OzV-Lw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_VagxsNGBEeSC2LO3OzV-Lw" modelElement="_GXcygLIeEeCe1fl9AgcR7w" base_Property="_VafjkNGBEeSC2LO3OzV-Lw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_VamRQNGBEeSC2LO3OzV-Lw" modelElement="_GXcygLIeEeCe1fl9AgcR7w" base_Property="_ValqMNGBEeSC2LO3OzV-Lw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_VarJwNGBEeSC2LO3OzV-Lw" modelElement="_GXcygLIeEeCe1fl9AgcR7w" base_Property="_VaqisNGBEeSC2LO3OzV-Lw"/>
+  <dds4ccm:Property xmi:id="_pTyCMNGBEeSC2LO3OzV-Lw" base_NamedElement="_pTu-4NGBEeSC2LO3OzV-Lw" base_Property="_pTu-4NGBEeSC2LO3OzV-Lw"/>
+  <dds4ccm:Property xmi:id="_pT1skNGBEeSC2LO3OzV-Lw" base_NamedElement="_pT1FgNGBEeSC2LO3OzV-Lw" base_Property="_pT1FgNGBEeSC2LO3OzV-Lw"/>
+  <dds4ccm:DeploymentPlan xmi:id="_Q2S7cNGIEeSC2LO3OzV-Lw" base_Component="_Q2ER8NGIEeSC2LO3OzV-Lw" id="_d4c00637-eb80-411b-998c-a735ce023b33"/>
+  <dds4ccm:DeploymentPart xmi:id="_nCw9oNGIEeSC2LO3OzV-Lw" nestedPart="_nC_nINGIEeSC2LO3OzV-Lw _nDQs4NGIEeSC2LO3OzV-Lw _nDcTENGIEeSC2LO3OzV-Lw _nDn5QNGIEeSC2LO3OzV-Lw" modelElement="_V-vJELIhEeCxJ7b7h4plXw" base_Property="_nCvvgNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:DeploymentPart xmi:id="_nC_nINGIEeSC2LO3OzV-Lw" modelElement="_eyuuQLIhEeCxJ7b7h4plXw" base_Property="_nC9x8NGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:DeploymentPart xmi:id="_nDQs4NGIEeSC2LO3OzV-Lw" modelElement="_8v1WALIzEeCxJ7b7h4plXw" base_Property="_nDPewNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:DeploymentPart xmi:id="_nDcTENGIEeSC2LO3OzV-Lw" modelElement="_9fhGgLIzEeCxJ7b7h4plXw" base_Property="_nDbsANGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:DeploymentPart xmi:id="_nDn5QNGIEeSC2LO3OzV-Lw" modelElement="_9zH_ALIzEeCxJ7b7h4plXw" base_Property="_nDnSMNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:DeploymentPart xmi:id="_n92F0NGIEeSC2LO3OzV-Lw" modelElement="_qcOg8LIhEeCxJ7b7h4plXw" base_Property="_n9zpkNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:DeploymentPart xmi:id="_oUlK0NGIEeSC2LO3OzV-Lw" modelElement="_sbr3QLIhEeCxJ7b7h4plXw" base_Property="_oUjVoNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_u1sucNGIEeSC2LO3OzV-Lw" nestedPart="_u17X8NGIEeSC2LO3OzV-Lw _u2FwANGIEeSC2LO3OzV-Lw _u2OS4NGIEeSC2LO3OzV-Lw _u2W1wNGIEeSC2LO3OzV-Lw" modelElement="_6VHsQLIhEeCxJ7b7h4plXw" base_Property="_u1prINGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_u17X8NGIEeSC2LO3OzV-Lw" nestedPart="_u3ihgNGIEeSC2LO3OzV-Lw" modelElement="_78J7gLIhEeCxJ7b7h4plXw" base_Property="_u16J0NGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_u2FwANGIEeSC2LO3OzV-Lw" nestedPart="_u32DgNGIEeSC2LO3OzV-Lw" modelElement="_Eon8YLIiEeCxJ7b7h4plXw" base_Property="_u2Eh4NGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_u2OS4NGIEeSC2LO3OzV-Lw" nestedPart="_u4LasNGIEeSC2LO3OzV-Lw" modelElement="_FGEtYLIiEeCxJ7b7h4plXw" base_Property="_u2NEwNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_u2W1wNGIEeSC2LO3OzV-Lw" nestedPart="_u4iAANGIEeSC2LO3OzV-Lw" modelElement="_FjqoULIiEeCxJ7b7h4plXw" base_Property="_u2WOsNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_u3ihgNGIEeSC2LO3OzV-Lw" modelElement="_GX3CMLIeEeCe1fl9AgcR7w" base_Property="_u3h6cNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_u32DgNGIEeSC2LO3OzV-Lw" modelElement="_GXcygLIeEeCe1fl9AgcR7w" base_Property="_u31ccNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_u4LasNGIEeSC2LO3OzV-Lw" modelElement="_GXcygLIeEeCe1fl9AgcR7w" base_Property="_u4KzoNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_u4iAANGIEeSC2LO3OzV-Lw" modelElement="_GXcygLIeEeCe1fl9AgcR7w" base_Property="_u4gx4NGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:Allocation xmi:id="_wHP14NGIEeSC2LO3OzV-Lw" base_Dependency="_wHOnwNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:Allocation xmi:id="_wmD40NGIEeSC2LO3OzV-Lw" base_Dependency="_wmCDoNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:Allocation xmi:id="_xTK2cNGIEeSC2LO3OzV-Lw" base_Dependency="_xTJoUNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:Allocation xmi:id="_xwBKgNGIEeSC2LO3OzV-Lw" base_Dependency="_xv_8YNGIEeSC2LO3OzV-Lw"/>
+  <dds4ccm:Property xmi:id="_T-23wNGcEeSC2LO3OzV-Lw" base_NamedElement="_T-lyANGcEeSC2LO3OzV-Lw" base_Property="_T-lyANGcEeSC2LO3OzV-Lw"/>
+</xmi:XMI>

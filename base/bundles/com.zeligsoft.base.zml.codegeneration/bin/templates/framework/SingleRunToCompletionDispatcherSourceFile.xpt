@@ -1,0 +1,170 @@
+«REM»
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+«ENDREM»
+ 
+«IMPORT uml»
+
+«EXTENSION templates::common»
+
+
+«DEFINE singleRunToCompletionDispatcherSourceFile FOR Model»
+«FILE "fwk/C/dispatchers/SingleMsgRunToCompletion/zceSingleMsgRunToCompletionDispatcher.c"»
+
+/****************************************************************************************/
+/*																						*/
+/*     FILE: zceSingleMsgRunToCompletionDispatcher.c									*/
+/*																						*/
+/****************************************************************************************/
+
+
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "zceSendHandler.h"
+#include "zceSingleMsgRunToCompletionDispatcher.h"
+
+/********************
+ * Global variables *
+ ********************/
+
+
+struct zce_struct_SingleMsgRunToCompletionDispatcher
+{
+	/* zceDispatcher required members */
+	void (*receivingLoop)(zceDispatcher self ZCE_EXC_ENV_ARG);
+	void (*processBuffer)(zceDispatcher self, char* buffer, int bufLen ZCE_EXC_ENV_ARG);
+	zceMsg (*GetBuffer)(zceDispatcher self ZCE_EXC_ENV_ARG);
+	zceReceiveHandler* handlers_;
+	struct zceDispatcherTable * component_port_table_;
+	int numConnection_;
+};
+
+
+void zceSingleMsgRunToCompletionDispatcher_construct(zceSingleMsgRunToCompletionDispatcher self, int numConnection ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->handlers_ = ZCE_NEW_ARRAY(zceReceiveHandler, numConnection);
+	self->component_port_table_ = NULL;
+	self->numConnection_ = numConnection;
+	self->receivingLoop = zceSingleMsgRunToCompletionDispatcher_receivingLoop;
+	self->processBuffer = zceSingleMsgRunToCompletionDispatcher_processBuffer;
+}
+
+void zceSingleMsgRunToCompletionDispatcher_destruct(zceSingleMsgRunToCompletionDispatcher self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+
+	self->numConnection_ = 0;
+	ZCE_DELETE(self->handlers_);
+	ZCE_DELETE(self->component_port_table_->api_);
+	ZCE_DELETE(self->component_port_table_);
+	self->component_port_table_ = NULL;
+	self->handlers_ = NULL;
+	self->receivingLoop = NULL;
+	self->processBuffer = NULL;
+	self->GetBuffer = NULL;
+}
+
+zceSingleMsgRunToCompletionDispatcher zceSingleMsgRunToCompletionDispatcher_allocate(ZCE_EXC_ENV_SINGLE_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	zceSingleMsgRunToCompletionDispatcher self = ZCE_NEW(struct zce_struct_SingleMsgRunToCompletionDispatcher);
+	return self;
+}
+
+/*******************************************
+ *								           *
+ * Dispatcher component port table setup   *
+ *								           *
+ *******************************************/
+void zceSingleMsgRunToCompletionDispatcher_setComponentPortTable(zceSingleMsgRunToCompletionDispatcher self, struct zceDispatcherTable* table ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->component_port_table_ = table;	
+}
+
+void zceSingleMsgRunToCompletionDispatcher_setComponentPortTableEntry(zceSingleMsgRunToCompletionDispatcher self, int index, DispatchCallbackApiTypedef* api, void* data, int port_index, int conn_index ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->component_port_table_[index].api_ = api;	
+	self->component_port_table_[index].data_ = data;
+	self->component_port_table_[index].port_index_ = port_index;
+	self->component_port_table_[index].conn_index_ = conn_index;
+}
+
+const zceDispatcherTable*  zceSingleMsgRunToCompletionDispatcher_getComponentPortTableEntry(zceSingleMsgRunToCompletionDispatcher self, int index ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	return &(self->component_port_table_[index]);	
+}
+
+void zceSingleMsgRunToCompletionDispatcher_setReceiveHandler(zceSingleMsgRunToCompletionDispatcher self, int index, zceReceiveHandler handler ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->handlers_[index] = handler;
+}
+
+zceReceiveHandler zceSingleMsgRunToCompletionDispatcher_getReceiveHandler(zceSingleMsgRunToCompletionDispatcher self, int index ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	return self->handlers_[index];
+}
+
+/*******************************
+ *							   *
+ * Dispatcher Receiving loop   *
+ *							   *
+ *******************************/
+void zceSingleMsgRunToCompletionDispatcher_receivingLoop(zceDispatcher basePtr ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	/* receiving loop to process the message and relay it to the correct component provides port */	
+}
+
+void zceSingleMsgRunToCompletionDispatcher_processBuffer(zceDispatcher basePtr, char* buffer, int bufLen ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	
+	struct zceCallbackInfo
+	{
+		int connection_id;
+		int function_id;
+	};
+
+	struct zceDispatcherTable* compTable = NULL; 
+	struct zceCallbackInfo * callbackinfo = (struct zceCallbackInfo*)buffer;
+	
+	/* Callback function to deliver the msg to provides port */
+	
+	zceSingleMsgRunToCompletionDispatcher self = (zceSingleMsgRunToCompletionDispatcher)basePtr;
+	
+	if(bufLen >= sizeof(struct zceCallbackInfo)) 
+	{ 
+		compTable = &(self->component_port_table_[callbackinfo->connection_id]);
+		if (compTable==0)
+		{
+			return;
+		}
+		compTable->api_[callbackinfo->function_id](compTable->data_, (char*)buffer, bufLen - sizeof(struct zceCallbackInfo), compTable->port_index_, compTable->conn_index_ ZCE_EXC_ENV_PARAM); 
+	}
+}
+
+
+
+/* End-Of-File */
+/* ------------------------------------------------------------------------------ */
+«ENDFILE»
+«ENDDEFINE»

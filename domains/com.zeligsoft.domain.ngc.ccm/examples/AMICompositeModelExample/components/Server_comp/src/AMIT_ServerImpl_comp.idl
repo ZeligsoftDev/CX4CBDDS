@@ -1,0 +1,30 @@
+/// @defgroup AMIT_ServerImpl_comp ServerImpl_comp
+/// @{
+/// 
+/// @file AMIT_ServerImpl_comp.idl
+/// @brief ServerImpl_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_COMPONENTS__SERVER_COMP__SRC__AMIT_SERVERIMPL_COMP_IDL
+#define CX_COMPONENTS__SERVER_COMP__SRC__AMIT_SERVERIMPL_COMP_IDL
+
+#pragma componentInterface "Server_comp" 
+#include <Components.idl>
+#pragma ciao lem "AMIT_ServerImpl_compE.idl"
+#include "AMIT_Control1_obj.idl"
+#include "AMIT_Control2_obj.idl"
+
+/// @namespace AMIT 
+module AMIT {
+    component ServerImpl_comp {
+        provides AMIT::Control1_obj Control1Server;
+        provides AMIT::Control2_obj Control2Server;
+    };
+
+};
+
+#endif // CX_COMPONENTS__SERVER_COMP__SRC__AMIT_SERVERIMPL_COMP_IDL
+
+/// @}
+

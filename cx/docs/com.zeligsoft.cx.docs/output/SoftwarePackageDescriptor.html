@@ -1,0 +1,157 @@
+<head>
+	<title>Software Package Descriptor</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="SoftwarePackageDescriptor.html" title="Software Package Descriptor">
+		<h1>Software Package Descriptor DTD</h1>
+		<p>The following is the DTD for the SCA Software Package Descriptor.  Click to link to the associated topics in the online help.</p>
+		<pre>
+&lt;!ELEMENT softpkg
+       ( title?
+       , author+
+       , description?
+       , propertyfile?
+       , descriptor?
+       , implementation+
+       , usesdevice*
+       )&gt;
+&lt;!ATTLIST softpkg
+       id          ID   #REQUIRED
+       name        CDATA #REQUIRED
+       type        (sca_compliant | sca_non_compliant)  "sca_compliant"
+       version     CDATA #IMPLIED &gt;
+
+&lt;!ELEMENT propertyfile
+       (localfile
+       )&gt;
+&lt;!ATTLIST propertyfile
+       type        CDATA #IMPLIED&gt;
+
+&lt;!ELEMENT localfile EMPTY&gt;
+&lt;!ATTLIST localfile
+       name        CDATA #REQUIRED&gt;
+
+&lt;!ELEMENT title (#PCDATA)&gt;
+
+&lt;!ELEMENT author
+       ( name*
+       , company?
+       , webpage?
+       )&gt;
+
+&lt;!ELEMENT name (#PCDATA)&gt;
+
+&lt;!ELEMENT company (#PCDATA)&gt;
+
+&lt;!ELEMENT webpage (#PCDATA)&gt;
+
+&lt;!ELEMENT descriptor
+       (localfile
+       )&gt;
+&lt;!ATTLIST descriptor
+       name        CDATA #IMPLIED&gt;
+
+&lt;!ELEMENT implementation
+       ( description?
+       , propertyfile?
+       , code
+       , compiler?
+       , programminglanguage?
+       , humanlanguage?
+       , runtime?
+       , ( os
+         | processor
+         | dependency
+         )+
+       , usesdevice*
+       )&gt;
+&lt;!ATTLIST implementation
+       id          ID   #REQUIRED
+       aepcompliance (aep_compliant | aep_non_compliant) aep_compliant&gt;
+
+&lt;!ELEMENT propertyfile
+       (localfile
+       )&gt;
+&lt;!ATTLIST code propertyfile
+       type        CDATA #IMPLIED&gt;
+
+&lt;!ELEMENT description (#PCDATA)&gt;
+
+&lt;!ELEMENT code
+       ( localfile
+       , entrypoint?
+       , stacksize?
+       , priority?
+       )&gt;
+&lt;!ATTLIST code
+       type        CDATA #IMPLIED&gt;
+
+&lt;!ELEMENT entrypoint (#PCDATA)&gt;
+
+&lt;!ELEMENT stacksize (#PCDATA)&gt;
+
+&lt;!ELEMENT priority (#PCDATA)&gt;
+
+&lt;!ELEMENT compiler EMPTY&gt;
+&lt;!ATTLIST compiler
+       name        CDATA #REQUIRED
+       version     CDATA #IMPLIED&gt;
+
+&lt;!ELEMENT programminglanguage EMPTY&gt;
+&lt;!ATTLIST programminglanguage
+       name        CDATA #REQUIRED
+       version     CDATA #IMPLIED&gt;
+
+&lt;!ELEMENT humanlanguage EMPTY&gt;
+&lt;!ATTLIST humanlanguage
+       name        CDATA #REQUIRED&gt;
+
+&lt;!ELEMENT os EMPTY&gt;
+&lt;!ATTLIST os
+       name        CDATA #REQUIRED
+       version     CDATA #IMPLIED&gt;
+
+&lt;!ELEMENT processor EMPTY&gt;
+&lt;!ATTLIST processor
+       name        CDATA #REQUIRED&gt;
+
+&lt;!ELEMENT dependency
+       ( softpkgref
+       | propertyref
+       )&gt;
+&lt;!ATTLIST dependency
+       type        CDATA #REQUIRED&gt;
+
+&lt;!ELEMENT softpkgref
+       ( localfile
+       , implref?
+       )&gt;
+
+&lt;!ELEMENT implref EMPTY&gt;
+&lt;!ATTLIST implref
+       refid       CDATA #REQUIRED&gt;
+
+&lt;!ELEMENT propertyref EMPTY&gt;
+&lt;!ATTLIST propertyref
+       refid       CDATA #REQUIRED
+       value       CDATA #REQUIRED&gt;
+
+&lt;!ELEMENT runtime EMPTY&gt;
+&lt;!ATTLIST runtime
+       name        CDATA #REQUIRED
+       version     CDATA #IMPLIED&gt;
+
+&lt;!ELEMENT  usesdevice
+       ( propertyref+
+       )&gt;
+&lt;!ATTLIST usesdevice
+       id          ID   #REQUIRED
+       type        CDATA #REQUIRED&gt;
+</pre>
+		<div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

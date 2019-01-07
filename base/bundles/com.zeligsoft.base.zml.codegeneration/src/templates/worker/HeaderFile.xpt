@@ -1,0 +1,46 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«IMPORT templates::worker»
+«IMPORT templates::common»
+
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::FunctionNames»
+
+
+«DEFINE headerFile FOR Type»
+«FILE "cmps/"+ getTypedElementName(this)+"/worker/C/"+getComponentHeaderFileName()»
+«EXPAND Copyright::copyright FOR this.getModel()»
+«EXPAND Common::startHeaderFile FOR getComponentHeaderFileName()»
+«EXPAND IfDefs::startHeaderIfDefs FOR getComponentWorkerStructName().toUpperCase()»
+«EXPAND Includes::headerIncludes FOR this»
+«EXPAND IfDefs::startIfDefCPP FOR this»
+«EXPAND Structs::zceAndUsrStructs FOR this»
+«EXPAND BaseFunctions::workerBaseFunctionDefs FOR this»
+«EXPAND LifeCycleFunctions::lifecycleFunctionDefs FOR this»
+«EXPAND RequiresPortFunctions::requiresPortFuntionDefs FOR this»
+«EXPAND IfDefs::startIfDefZCE_NAMES FOR this»
+«EXPAND FriendlyFunctions::zceFriendlyFunctionDefs FOR getComponentWorkerStructName()»
+«EXPAND IfDefs::endIfDefZCE_NAMES FOR this»
+«EXPAND ProvidesPortFunctions::providesPortsFunctionDefs FOR this»
+«EXPAND IfDefs::endIfDefCPP FOR this» 
+«EXPAND IfDefs::endHeaderIfDefs FOR getComponentWorkerStructName().toUpperCase()»
+«EXPAND Common::endHeaderFile FOR getComponentHeaderFileName()»
+«ENDFILE»
+«ENDDEFINE»

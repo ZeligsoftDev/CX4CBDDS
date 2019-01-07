@@ -1,0 +1,16 @@
+#ifndef CX_PSAT_SUBSCRIBER_COMP__SRC__SNA_EXAMPLES_PSAT_SUBSCRIBER_COMP_IDL
+#define CX_PSAT_SUBSCRIBER_COMP__SRC__SNA_EXAMPLES_PSAT_SUBSCRIBER_COMP_IDL
+
+#include <Components.idl>
+#include "SNA_Examples_PSAT_Example_UDM_conn.idl"
+#include <ccm_dds.idl>
+
+module SNA_Examples {
+    component PSAT_Subscriber_comp {
+        port PSAT_Example_UDM_conn::PSAT_Listen numArraySub;
+        provides CCM_DDS::ConnectorStatusListener numArraySubConnStatus;
+    };
+
+};
+
+#endif

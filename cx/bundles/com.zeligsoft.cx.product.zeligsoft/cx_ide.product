@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="%productName" id="com.zeligsoft.cx.product.zeligsoft.ide" application="org.eclipse.ui.ide.workbench" version="3.1.0.@QUALIFIER@" useFeatures="true" includeLaunchers="true">
+
+   <aboutInfo>
+      <image path="zeligsoft_lg.gif"/>
+      <text>
+         %productBlurb
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>--launcher.XXMaxPermSize
+256m</programArgs>
+      <vmArgs>-Xms128m
+-Xmx512m</vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="/com.zeligsoft.cx.product.zeligsoft/zlogo16.gif" i32="/com.zeligsoft.cx.product.zeligsoft/zlogo32.gif" i48="/com.zeligsoft.cx.product.zeligsoft/zlogo48.gif" i64="/com.zeligsoft.cx.product.zeligsoft/zlogo.gif"/>
+
+   <splash
+      location="com.zeligsoft.cx.product.zeligsoft"
+      startupProgressRect="0,325,500,15"
+      startupMessageRect="10,298,380,20"
+      startupForegroundColor="000080" />
+   <launcher name="cx">
+      <linux icon="/com.zeligsoft.cx.product.zeligsoft/icons/linux/zlogo.xpm"/>
+      <solaris/>
+      <win useIco="true">
+         <ico path="/com.zeligsoft.cx.product.zeligsoft/icons/win32/zlogo.ico"/>
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+
+</product>

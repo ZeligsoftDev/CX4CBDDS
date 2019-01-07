@@ -1,0 +1,261 @@
+<head>
+	<title>Tutorial 7: Deploying on VxWorks 5.5.1</title>
+	<link rel="stylesheet" type="text/css" href="helpStyle.css">
+	<meta http-equiv="Content-type" content="text/html;charset=ISO-8859-1">
+</head>
+<html>
+	<body outputFile="VxWorksTutorial.html" title="Tutorial 7: Deploying on VxWorks 5.5.1">
+		<h1>Tutorial 7: Deploying on VxWorks 5.5.1</h1>
+		<p> This tutorial assumes you have completed Tutorials 1-6. </p>
+		<p>
+In Tutorial 6 components were amended to make them deployable on the Spectra Core Framework on Linux.
+		</p>
+		<p>
+In this tutorial, you will:
+
+			<ul>
+				<li>Amend components to make them deployable on VxWorks 5.5.1</li>
+				<li>Build the generated source code</li>
+				<li>Start an OE platform (created in Tutorial 3)</li>
+				<li>Load and run the Application (created in Tutorial 2)</li>
+			</ul>
+		</p>
+		<p>
+			<h1>Amending Components for VxWorks 5.5.1</h1>
+			<p>Throughout this section, it is assumed that you have <strong>e*ORB</strong>
+			installed in <strong>$EORBHOME</strong> and <strong>Spectra Core Framework</strong>
+			installed in <strong>$CFHOME</strong>.</p>
+			<h1>Open the project and model</h1>
+		</p>
+		<p>
+In the Project Explorer expand the project and model you worked with in Tutorial 6.
+</p>
+		<h1>Amending Component Implementations</h1>
+		<p>
+VxWorks 5.5.1 components are based on shared libraries that share a single address space rather than executable binaries
+each having their own address space. As such the implementations on each component need to be updated. 
+		</p>
+		
+		<h3>Import VxWorks 5.5.1 Build Configuration</h3>
+		<p>
+			<ol>
+				<li>Right click the model in the Project Explorer and select Import Model Library...</li>
+				<li>From the Deployed Library drop down list select the eorb16-vxworks551-gnu-ppc option</li>
+				<li>Click the OK button</li>
+				<li>Save the model</li>
+			</ol>
+		</p>
+		
+		<h3>DeviceManager</h3>
+		<p>
+			<ol>
+				<li>Open the DeviceManager diagram</li>
+				<li>Select the DeviceManagerImpl artifact and in the Properties View  &gt;  SCA tab</li>
+				<li>Click Select code to bring up a properties dialog box</li>
+				<li>Add the extension .out to the file name property</li>
+				<li>Set the entrypoint property to DeviceManager_main</li>
+				<li>Set the type property to Shared Library</li>
+				<li>Click the Close button</li>
+				<li>Right click the DeviceManagerImpl artifact and select Build Configuration...</li>
+				<li>Change the base build configuration to the eorb16-vxworks551-gnu-ppc::eorb16-vxworks551-gnu-ppc-build option</li>
+				<li>Change the binary location to $CFHOME/bin/DeviceManager.out</li>
+				<li>Click the OK button</li>
+				<li>Save the model</li>
+			</ol>
+		</p>
+		<h3>DomainLog</h3>
+		<p>
+			<ol>
+				<li>Open the DomainLog diagram</li>
+				<li>Select the DomainLogImpl artifact and in the Properties View  &gt;  SCA tab</li>
+				<li>Click Select code to bring up a properties dialog box</li>
+				<li>Set the file property to LogService.out</li>
+				<li>Set the entrypoint property to LogService_main</li>
+				<li>Set the type property to Shared Library</li>
+				<li>Click the Close button</li>
+				<li>Right click the DomainLogImpl artifact and select Build Configuration...</li>
+				<li>Change the base build configuration to the eorb16-vxworks551-gnu-ppc::eorb16-vxworks551-gnu-ppc-build option</li>
+				<li>Change the binary location to $CFHOME/bin/LogService.out</li>
+				<li>Click the OK button</li>
+				<li>Save the model</li>
+			</ol>
+		</p>
+		<h3>DomainManager</h3>
+		<p>
+			<ol>
+				<li>Open the DomainManager diagram</li>
+				<li>Select the DomainManagerImpl artifact and in the Properties View  &gt;  SCA tab</li>
+				<li>Click Select code to bring up a properties dialog box</li>
+				<li>Add the extension .out to the file name property</li>
+				<li>Set the entrypoint property to DomainManager_main</li>
+				<li>Set the type property to Shared Library</li>
+				<li>Click the Close button</li>
+				<li>Right click the DomainManagerImpl artifact and select Build Configuration...</li>
+				<li>Change the base build configuration to the eorb16-vxworks551-gnu-ppc::eorb16-vxworks551-gnu-ppc-build option</li>
+				<li>Change the binary location to $CFHOME/bin/DomainManager.out</li>
+				<li>Click the OK button</li>
+				<li>Save the model</li>
+			</ol>
+		</p>
+		<h3>Modem</h3>
+		<p>
+			<ol>
+				<li>Open the Modem diagram</li>
+				<li>Select the ModemImpl artifact and in the Properties View  &gt;  SCA tab</li>
+				<li>Click Select code to bring up a properties dialog box</li>
+				<li>Add the extension .out to the file name property</li>
+				<li>Set the entrypoint property to oeModem</li>
+				<li>Set the type property to Shared Library</li>
+				<li>Click the Close button</li>
+				<li>Right click the ModemImpl artifact and select Build Configuration...</li>
+				<li>Change the base build configuration to the eorb16-vxworks551-gnu-ppc::eorb16-vxworks551-gnu-ppc-build option</li>
+				<li>Click the OK button</li>
+				<li>Save the model</li>
+			</ol>
+		</p>
+		<h3>AssemblyController</h3>
+		<p>
+			<ol>
+				<li>Open the AssemblyController diagram</li>
+				<li>Select the AssemblyControllerImpl artifact and in the Properties View  &gt;  SCA tab</li>
+				<li>Click Select code to bring up a properties dialog box</li>
+				<li>Add the extension .out to the file name property</li>
+				<li>Set the type property to Shared Library</li>
+				<li>Click the Close button</li>
+				<li>Right click the AssemblyControllerImpl artifact and select Build Configuration...</li>
+				<li>Change the base build configuration to the eorb16-vxworks551-gnu-ppc::eorb16-vxworks551-gnu-ppc-build option</li>
+				<li>Click the OK button</li>
+				<li>Save the model</li>
+			</ol>
+		</p>
+		<h3>CryptoLib</h3>
+		<p>
+			<ol>
+				<li>Open the CryptoLib diagram</li>
+				<li>Select the CryptoLib_Linux artifact and in the Properties View  &gt;  SCA tab</li>
+				<li>Change the name to CryptoLib_VxWorks</li>
+				<li>Right click the CryptoLib_Linux artifact and select Build Configuration...</li>
+				<li>Change the base build configuration to the eorb16-vxworks551-gnu-ppc::eorb16-vxworks551-gnu-ppc-build option</li>
+				<li>Click the OK button</li>
+				<li>Save the model</li>
+			</ol>
+		</p>
+		<h3>Decryptor</h3>
+		<p>
+			<ol>
+				<li>Open the Decryptor diagram</li>
+				<li>Select the DecryptorImpl artifact and in the Properties View  &gt;  SCA tab</li>
+				<li>Click Select code to bring up a properties dialog box</li>
+				<li>Add the extension .out to the file name property</li>
+				<li>Set the entrypoint property to oeDecryptor</li>
+				<li>Set the type property to Shared Library</li>
+				<li>Click the Close button</li>
+				<li>Right click the DecryptorImpl artifact and select Build Configuration...</li>
+				<li>Change the base build configuration to the eorb16-vxworks551-gnu-ppc::eorb16-vxworks551-gnu-ppc-build option</li>
+				<li>Click the OK button</li>
+				<li>Save the model</li>
+			</ol>
+		</p>
+		<h3>Filter</h3>
+		<p>
+			<ol>
+				<li>Open the Filter diagram</li>
+				<li>Select the FilterImpl artifact and in the Properties View  &gt;  SCA tab</li>
+				<li>Click Select code to bring up a properties dialog box</li>
+				<li>Add the extension .out to the file name property</li>
+				<li>Set the entrypoint property to oeFilter</li>
+				<li>Set the type property to Shared Library</li>
+				<li>Click the Close button</li>
+				<li>Right click the FilterImpl artifact and select Build Configuration...</li>
+				<li>Change the base build configuration to the eorb16-vxworks551-gnu-ppc::eorb16-vxworks551-gnu-ppc-build option</li>
+				<li>Click the OK button</li>
+				<li>Save the model</li>
+			</ol>
+		</p>
+		
+		<h1>Amending the OS and Processor Values</h1>
+		<p>
+In previous tutorials a model was built up based on the Linux operating system and the x86 processor. To support VxWorks 5.5.1
+on PowerPC it is necessary to modify the OS and Processor dependencies as well as properties on the components.
+		</p>
+		<h3>OS and Processor Dependencies</h3>
+		<p>
+			<ol>
+				<li>Open the Dependencies diagram</li>
+				<li>Select the Linux O/S artifact and in the Properties View  &gt;  SCA tab</li>
+				<li>Change the Name property to VxWorks</li>
+				<li>Change the Version property to 5.5.1</li>
+				<li>Select the x86 processor artifact and in the Properties View  &gt;  SCA tab</li>
+				<li>Change the Name property to PPC</li>
+				<li>Save the model</li>
+			</ol>
+		</p>
+		
+		<h3>Component Properties</h3>
+		<p>
+			<ol>
+				<li>Open the DeviceManager diagram</li>
+				<li>Select the os_name property and in the Properties View  &gt;  SCA tab</li>
+				<li>Change the value to VxWorks</li>
+				<li>Select the os_version property and in the Properties View  &gt;  SCA tab</li>
+				<li>Change the value to 5.5.1</li>
+				<li>Select the processor_name property and in the Properties View  &gt;  SCA tab</li>
+				<li>Change the value to PPC</li>
+				<li>Save the model</li>
+			</ol>
+		</p>
+		<p>
+Repeat the above steps for the Modem component.
+		</p>
+
+		<h1>Building Source Code</h1>
+		<p>
+Your source code must be rebuilt after changes to generated components. Please refer back to 
+Tutorial 5 Generate Code step for instructions on how to generate. After generation of 
+source code, follow Tutorial 5 Compile the Source and Tutorial 5 Descriptor Generation 
+again to ensure all binary and domain profiles are consistent with the new model changes for 
+Spectra Core Framework deployment. 
+</p>
+		<h1>
+Testing the components
+</h1>
+		<p>
+Before loading the generated TargetLoader onto the board the eORB-CPP.out library
+(found in $EORBHOME/lib/$EORBTARGETENV) must be loaded. Once this library and the
+generated TargetLoader has been loaded invoke the entry point function and run the
+tests as normal.
+		</p>
+
+		<h1>
+Running OE Platform
+</h1>
+		<p>
+The process of starting the DeviceManager is significantly different on VxWorks 5.5.1, which is outlined below:
+		</p>
+		
+		<ul>
+			<li>Load the required libraries onto the board:</li>
+				<ul>
+					<li>ld 1,0,"OE.out" (found in $CFHOME/lib)</li>
+					<li>ld 1,0,"eorbCpp.out" (found in $CFHOME/lib)</li>
+					<li>ld 1,0,"cfCpp.out" (found in $CFHOME/lib)</li>
+					<li>ld 1,0,"BootLoader.out" (found in $CFHOME/bin)</li>
+				</ul>
+			<li>Run BootLoader without any parameters</li>
+				<ul>
+					<li>BootLoader_main</li>
+				</ul>
+			<li>Pass the parameters to the BootLoader prompt once it is running</li>
+				<ul>
+					<li>BootLoader > -DCD_FILENAME DecryptorNode.dcd.xml</li>
+				</ul>
+		</ul>
+		
+		<p>
+Please refer back to the steps in Tutorial 6 to run the application.
+		</p>
+		<div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright &#169; 2010 PrismTech Ltd. All rights reserved.
+		</div>
+	</body>
+</html>

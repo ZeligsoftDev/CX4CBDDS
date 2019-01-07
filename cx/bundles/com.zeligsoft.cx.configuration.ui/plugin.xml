@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+
+<!--
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+-->
+
+<plugin>
+   
+   <extension
+         point="org.eclipse.gmf.runtime.common.ui.services.action.actionFilterProviders">
+      <ActionFilterProvider
+            class="com.zeligsoft.cx.configuration.ui.actions.ConfigurationActionFilterProvider">
+         <Priority name="Highest"/>
+         <Attribute name="canConfigure"/>    
+         <Attribute name="canUnconfigure"/>          
+      </ActionFilterProvider>      
+   </extension>   
+   <extension
+         id="com.zeligsoft.configuration.Unconfigure"
+         name="Zeligsoft Unconfigure Action"
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="com.zeligsoft.configuration.rsm.ui.UnconfigureObjectContribution"
+            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
+         <visibility>
+	           <objectState name="canUnconfigure" value="true"/>      
+         </visibility>
+         <action
+               class="com.zeligsoft.cx.configuration.ui.actions.UnconfigureActionDelegate"
+               id="com.zeligsoft.configuration.rsm.ui.Unconfigure"
+               menubarPath="additions"
+               icon="icons/Unconfigure.gif"
+               label="%unconfigureAction.label"
+               tooltip="%unconfigureAction.tooltip"
+               enablesFor="*">
+         </action>     
+      </objectContribution>
+   </extension>
+   <extension
+         id="com.zeligsoft.configuration.ConfigureAction"
+         name="Zeligsoft Configure Action"
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="com.zeligsoft.configuration.rsm.ui.ConfigureActionObjectContribution"
+            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
+         <visibility>
+	          <objectState name="canConfigure" value="true"/>    
+         </visibility>
+         <action
+               class="com.zeligsoft.cx.configuration.ui.actions.ConfigureActionDelegate"
+               id="com.zeligsoft.configuration.rsm.ui.Configure"
+               menubarPath="additions"
+               icon="icons/Configure.gif"
+               label="%configureAction.label"
+               tooltip="%configureAction.tooltip"
+               enablesFor="*">
+         </action>     
+      </objectContribution>
+   </extension>   
+</plugin>

@@ -1,0 +1,61 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+
+import CCM::CCM_Component;
+
+extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::tao_idl_utils;
+
+cached Void operations_from_components_sessioncomponent(uml::Class self, uml::NamedElement source) :
+	self.add_operation_set_session_context().createTrace(source, "add_operation_set_session_context") ->
+	self.add_operation_configuration_complete().createTrace(source, "add_operation_configuration_complete") ->
+	self.add_operation_ccm_activate().createTrace(source, "add_operation_ccm_activate") ->
+	self.add_operation_ccm_passivate().createTrace(source, "add_operation_ccm_passivate") ->
+	self.add_operation_ccm_remove().createTrace(source, "add_operation_ccm_remove");
+	
+private create uml::Operation add_operation_set_session_context(uml::Class container) :
+	container.ownedOperation.add(this) ->
+	this.setName("set_session_context") ->
+	// TODO : add the parameter
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Operation add_operation_configuration_complete(uml::Class container) :
+	container.ownedOperation.add(this) ->
+	this.setName("configuration_complete") ->
+	// TODO : add the parameter
+	this.addGeneratedTag() ->
+	this
+	;
+	
+private create uml::Operation add_operation_ccm_activate(uml::Class container) :
+	container.ownedOperation.add(this) ->
+	this.setName("ccm_activate") ->
+	this.addGeneratedTag() ->
+	this;
+	
+private create uml::Operation add_operation_ccm_passivate(uml::Class container) :
+	container.ownedOperation.add(this) ->
+	this.setName("ccm_passivate") ->
+	this.addGeneratedTag() ->
+	this;
+
+private create uml::Operation add_operation_ccm_remove(uml::Class container) :
+	container.ownedOperation.add(this) ->
+	this.setName("ccm_remove") ->
+	this.addGeneratedTag() ->
+	this;

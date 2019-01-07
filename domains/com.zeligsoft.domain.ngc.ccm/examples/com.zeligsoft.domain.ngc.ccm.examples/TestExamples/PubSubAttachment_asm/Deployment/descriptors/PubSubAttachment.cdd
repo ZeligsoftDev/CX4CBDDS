@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:Domain
+    xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <label>PubSubAttachment</label>
+  <UUID>bde0c579-3c57-4e9f-80ab-14fe8baae9f0</UUID>
+  <node>
+    <name>PSAT_Publishers_Node</name>
+    <label/>
+    <resource>
+      <name>Node Address</name>
+      <resourceType>edu.vanderbilt.dre.DAnCE.NodeAddress</resourceType>
+      <property>
+        <name>edu.vanderbilt.dre.DAnCE.StringIOR</name>
+        <kind>Attribute</kind>
+        <dynamic>false</dynamic>
+        <value>
+          <type>
+            <kind>tk_string</kind>
+          </type>
+          <value>
+            <string>corbaloc:iiop:localhost:31151</string>
+          </value>
+        </value>
+      </property>
+    </resource>
+  </node>
+  <node>
+    <name>PSAT_Subscribers_Node</name>
+    <label/>
+    <resource>
+      <name>Node Address</name>
+      <resourceType>edu.vanderbilt.dre.DAnCE.NodeAddress</resourceType>
+      <property>
+        <name>edu.vanderbilt.dre.DAnCE.StringIOR</name>
+        <kind>Attribute</kind>
+        <dynamic>false</dynamic>
+        <value>
+          <type>
+            <kind>tk_string</kind>
+          </type>
+          <value>
+            <string>corbaloc:iiop:localhost:31152</string>
+          </value>
+        </value>
+      </property>
+    </resource>
+  </node>
+</Deployment:Domain>

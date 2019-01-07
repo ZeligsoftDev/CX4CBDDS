@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmlns:zdl="http://www.zeligsoft.com/zdl/2008/ZDL/1" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w http://www.zeligsoft.com/zdl/2008/ZDL/1 pathmap://ZDL_PROFILES/ZDL.profile.uml#_TY7fcC_oEd2oX-fEHLus7g">
+  <uml:Model xmi:id="_NRAMoAwOEdmFcaeZXPdWAQ" name="DeploymentDomain">
+    <packageImport xmi:id="_UeIAJtCzEdqK7KjEh4hvHw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_y60sMOdAEd2EMdwp67NLFg">
+      <importedPackage xmi:type="uml:Model" href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_NRAMoAwOEdmFcaeZXPdWAQ"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GWBgoOdBEd2EMdwp67NLFg" name="DeploymentTest" clientDependency="_IEjZkOfyEd2odtmO_4xnUQ"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_jjRqcOfwEd2odtmO_4xnUQ" name="DeploymentConstraints">
+      <packageImport xmi:id="_NtTx0OfyEd2odtmO_4xnUQ">
+        <importedPackage href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_ihBukCBTEd2fK6BRw108zQ"/>
+      </packageImport>
+      <ownedRule xmi:id="_pLOqEOfzEd2odtmO_4xnUQ" name="configureSR">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_pLOqEefzEd2odtmO_4xnUQ">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="_plAcAOfzEd2odtmO_4xnUQ" name="configureCI">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_plAcAefzEd2odtmO_4xnUQ">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="_p_1W0OfzEd2odtmO_4xnUQ" name="SR">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_p_1W0efzEd2odtmO_4xnUQ">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="_qazbkOfzEd2odtmO_4xnUQ" name="SRPartCI">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qazbkefzEd2odtmO_4xnUQ">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="_qpszMOfzEd2odtmO_4xnUQ" name="CIPartSR">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qp2kMOfzEd2odtmO_4xnUQ">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="_q7SScOfzEd2odtmO_4xnUQ" name="CI">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_q7SScefzEd2odtmO_4xnUQ">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_IEjZkOfyEd2odtmO_4xnUQ" name="Domain Block Reference" supplier="_jjRqcOfwEd2odtmO_4xnUQ" client="_GWBgoOdBEd2EMdwp67NLFg"/>
+    <profileApplication xmi:id="_UeIAINCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAIdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_pzt6sLTgEd2mvdJhLmUqrw">
+      <eAnnotations xmi:id="_pz3EoLTgEd2mvdJhLmUqrw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://ZDL_PROFILES/ZDL.profile.uml#_TY7fcC_oEd2oX-fEHLus7g"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://ZDL_PROFILES/ZDL.profile.uml#_Rud18OyCEdyUQcM5ztOjuQ"/>
+    </profileApplication>
+  </uml:Model>
+  <zdl:DomainModel xmi:id="_PhvGQi2JEd2LuvOo-ahhJw" base_Model="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  <Standard:ModelLibrary xmi:id="_yu3wUOc_Ed2EMdwp67NLFg" base_Package="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  <zdl:DomainSpecialization xmi:id="_GWUbkOdBEd2EMdwp67NLFg" base_Class="_GWBgoOdBEd2EMdwp67NLFg"/>
+  <zdl:DomainBlock xmi:id="_jjRqcefwEd2odtmO_4xnUQ" base_Package="_jjRqcOfwEd2odtmO_4xnUQ"/>
+  <zdl:DomainBlockReference xmi:id="_IEtKkOfyEd2odtmO_4xnUQ" base_Dependency="_IEjZkOfyEd2odtmO_4xnUQ"/>
+  <zdl:DomainBlockImport xmi:id="_NtTx0efyEd2odtmO_4xnUQ" base_PackageImport="_NtTx0OfyEd2odtmO_4xnUQ"/>
+  <zdl:DomainLinkConstraint xmi:id="_pLYbEOfzEd2odtmO_4xnUQ" kind="deployment" base_Constraint="_pLOqEOfzEd2odtmO_4xnUQ">
+    <source href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_wOcEUSBUEd2fK6BRw108zQ"/>
+    <target href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_F3ykX5oYEd2hFaSxSorjOg"/>
+  </zdl:DomainLinkConstraint>
+  <zdl:DomainLinkConstraint xmi:id="_plAcAufzEd2odtmO_4xnUQ" kind="deployment" base_Constraint="_plAcAOfzEd2odtmO_4xnUQ">
+    <source href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_sCExkSBUEd2fK6BRw108zQ"/>
+    <target href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_F3ykX5oYEd2hFaSxSorjOg"/>
+  </zdl:DomainLinkConstraint>
+  <zdl:DomainLinkConstraint xmi:id="_p_1W0ufzEd2odtmO_4xnUQ" kind="deployment" base_Constraint="_p_1W0OfzEd2odtmO_4xnUQ">
+    <source href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_wOcEUSBUEd2fK6BRw108zQ"/>
+    <target href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_wOcEUSBUEd2fK6BRw108zQ"/>
+  </zdl:DomainLinkConstraint>
+  <zdl:DomainLinkConstraint xmi:id="_qazbkufzEd2odtmO_4xnUQ" kind="deployment" base_Constraint="_qazbkOfzEd2odtmO_4xnUQ">
+    <source href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_wOcEUSBUEd2fK6BRw108zQ"/>
+    <target href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_sCExkSBUEd2fK6BRw108zQ"/>
+  </zdl:DomainLinkConstraint>
+  <zdl:DomainLinkConstraint xmi:id="_qp2kMefzEd2odtmO_4xnUQ" kind="deployment" base_Constraint="_qpszMOfzEd2odtmO_4xnUQ">
+    <source href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_sCExkSBUEd2fK6BRw108zQ"/>
+    <target href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_wOcEUSBUEd2fK6BRw108zQ"/>
+  </zdl:DomainLinkConstraint>
+  <zdl:DomainLinkConstraint xmi:id="_q7SScufzEd2odtmO_4xnUQ" kind="deployment" base_Constraint="_q7SScOfzEd2odtmO_4xnUQ">
+    <source href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_sCExkSBUEd2fK6BRw108zQ"/>
+    <target href="../../com.zeligsoft.domain.zml/models/ZMLMM.uml#_sCExkSBUEd2fK6BRw108zQ"/>
+  </zdl:DomainLinkConstraint>
+</xmi:XMI>

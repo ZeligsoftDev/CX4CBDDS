@@ -1,0 +1,30 @@
+<head>
+	<title>Generation Overview</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="codegenoverview.html" title="Generation Overview">
+		<h1>Generation Overview</h1>
+		<p>Code generation works from the component or device definition.  You can generate 100% of the code, including all of the code 
+for the CF interface: <code>CF::Resource</code> (for components) or <code>CF::Device, CF::LoadableDevice, CF::ExecutableDevice, or 
+CF::AggregateDevice</code> (for devices).  You do not have to modify this code.  You will also generate skeletons for the functional code, which 
+you can extend.</p>
+		<p>Component code is the code that handles the <code>CF::Resource</code> interface. Device code is the code that handles the 
+<code>CF::Device, CF::LoadableDevice, CF::ExecutableDevice, or 
+CF::AggregateDevice</code>. The Interface code manages the uses and provides ports. 
+The Functional code contains the actual signal processing or control behavior of the component or device. The Code Generator generates an empty 
+(but compilable) skeleton for this functional code. You then extends the skeleton with your own code.</p>
+		<h5><a name="fig1">Figure 1: Generation Overview</a></h5>
+		<p><img src="../images/ComponentVisualization.gif" width="548" height="327" border="0" alt="Generation Overview"></p>
+		<p>In <a href="#fig1">Figure 1</a>, the functional code (the orange part) can be seen as surrounded by the SCA component code (the grey part). 
+The grey part is 100% generated from the Code Generator. You implement the orange part by extending the skeleton code. The same visual image can be applied 
+to the SCA device code.</p>
+		<h3>Source directory structure</h3>
+		<p>The generated source directory structure contains: functional code, component code, target specific code, and port code.</p>
+		<p><img src="../images/directory.gif" width="548" height="327" border="0" alt="Directory Structure"></p>
+		<h3>See Also</h3><br><a href="codegenworkflow.html">Code Generation Workflow</a><br><a href="runcodegen.html">Running Code Generation</a><br><a href="codegenresp.html">SCA Code Responsibilities</a><br><a href="codegencodepattern.html">Code Pattern</a><div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

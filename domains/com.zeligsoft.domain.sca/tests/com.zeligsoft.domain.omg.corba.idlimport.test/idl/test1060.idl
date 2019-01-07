@@ -1,0 +1,14 @@
+// Invalid parameter types
+
+module A
+{
+    typedef long LongType;
+};
+
+interface int1060
+{
+      void func1 ( in bob Bob);			// non-existent type
+      void func2 ( out interface par1 );	// illegal type
+      void func3 ( in LongType par1 );		// type out of scope
+      void func4 ( in unsigned float par1 );	// non-existent type
+};

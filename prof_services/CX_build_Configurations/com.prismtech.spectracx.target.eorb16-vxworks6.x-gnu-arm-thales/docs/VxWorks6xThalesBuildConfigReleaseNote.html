@@ -1,0 +1,110 @@
+<html><head>
+   <title>VxWorks 6.x.0 e*ORB 1.6 ARM Build Configuration Release Notes</title>
+   <link rel="stylesheet" type="text/css" href="helpStyle.css">
+   <meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1">
+
+   </head><body outputfile="vxworks6.x0BuildConfigReleaseNote.html" title="VxWorks 6.x.0 e*ORB 1.6 ARM Build Configuration Release Notes">
+      <h1>VxWorks 6.x.0 e*ORB 1.6 ARM Build Configuration Release Notes</h1>
+      <p><strong>Version: </strong>0.1.1</p>
+      <p><strong>Release Date: </strong>August 2010</p>
+      <systemrequirements>
+         <h2>System Requirements</h2>        
+         <!-- Host Linux, Target VxWorks 6.8 or 6.9, BSP support OMAP35xx -->
+         <table summary="System Requirements">
+            <tbody><tr>
+               <td><strong>Host Operating System</strong></td>
+               <td>Linux (Red Hat Enterprise 5.4)</td>
+            </tr>
+            <tr>
+               <td><strong>Target Operating System</strong></td>
+               <td>VxWorks 6.8 or 6.9</td>
+            </tr>
+            <tr>
+               <td><strong>Supported BSPs</strong></td>
+               <td>OMAP 35XX</td>
+            </tr>
+         </tbody></table>
+      </systemrequirements>
+      <environmentvariables>
+         <h3>Environment Variables</h3>
+         <p>The following environment variables must be set before starting Spectra CX.</p>
+         <ol>
+            <li><strong>EORBHOME</strong> - set to the directory where e*Orb is installed.</li>
+            <li><strong>EORBTARGETENV</strong> - set to the following value: vxworks-68-gnu-arm-linux or vxworks-69-gnu-arm-linux</li>
+            <li><strong>The VxWorks environment variables need to be set</strong></li>
+            <ol>
+				<li><strong>WIND_BASE</strong></li>
+				<li><strong>WIND_USR</strong></li>
+				<li><strong>WIND_HOME</strong></li>
+				<li><strong>WIND_GNU_PATH</strong></li>
+				<li><strong>WIND_HOST_TYPE</strong></li>
+	  		</ol>  
+         </ol>
+      </installationinstructions>
+      <usageinstructions>
+         <h3>Usage Instructions</h3>
+         <p>Before starting Spectra CX, ensure that the WindRiver environment has been set up, and
+         that the version of make on the PATH is version 3.81.</p>
+         
+         <p>The following changes have to be made to components modeled in Spectra CX to generate correct XML for deployment:</p>
+         <ul>
+            <li>Change the SCA code properties of each component implementation to the following:
+               <ul>
+                  <li>Filename: ensure this ends in .vxe</li>
+               </ul>
+            </li>
+            <li>Set the OS dependency name to VxWorks and version to 6.8.0 or 6.9.0</li>
+            <li>Set the processor dependency name to ARM</li>
+            <li>Update the os_name, os_version and processor_name properties of the Devices and DeviceManagers to the above values.</li>
+         </ul> 
+      </usageinstructions>
+      <knownissues>
+         <h3>Known Issues</h3>
+         <id val="1">
+            <h4>Upgrading from version 0.1.0</h4>
+            <p>Users upgrading from version 0.1.0 of this build configuration may find that the
+         compiler defines aren't updated correctly. This is due to Spectra CX caching
+         the previous values. To ensure the new values are correctly picked up users should do
+         the following for each project which uses this build configuration:</p>
+            <ol>
+               <li>Delete the existing build configuration import from your model (if still shown)
+            and re-import the new new build configuration.</li>
+               <li>On each modeled implementation switch to the new build configuration. </li>
+            </ol>
+         </id>
+         <id val="2">
+         	<h4>Monitor may timeout when creating applications</h4>
+         	<p>If the monitor reports a failure when creating an application, but no errors
+         	are visible in the VxWorks console, this may just be Spectra CX reaching a time 
+         	limit. Try closing the monitor and re-opening after a short time to check whether 
+         	the application is available.</p>
+         	<p>This is caused by a bottleneck in the TCP/IP loopback mechanism which is used
+         	by the ExecutableDevice when loading resources. This, coupled with resource file
+         	sizes of around 2MB, can result in application creation times of around 25 
+         	seconds when deploying the tutorial waveform.</p>
+         </id>
+      </knownissues>
+                <contact>
+         <support>
+            <h3>Contact PrismTech</h3>
+            <p>Product support: <a href="mailto:crc@prismtech.com">crc@prismtech.com</a>.</p>
+            <p> General enquiries: <a href="mailto:info@prismtech.com"> info@prismtech.com</a></p>
+            <p> Web: <a href="http://www.prismtech.com"> www.prismtech.com</a></p>
+            <h3>European Headquarters </h3><strong><p>PrismTech Limited</p>
+               <p>PrismTech House, </p>
+               <p>5th Avenue Business Park, </p>
+               <p>Gateshead, Tyne and Wear, </p>
+               <p>NE11 0NG, </p>
+               <p>United Kingdom</p>
+Tel: +44 (0) 191-4979900
+Fax: +44 (0) 191-4979901
+</strong><h3>USA Corporate Headquarters - PrismTech Corporation</h3><strong><p>400 Tradecenter, </p>
+               <p>Suite 5900, </p>
+               <p>Woburn, MA, </p>
+               <p>01801-7471, </p>
+               <p>USA</p>
+Tel: (1) 781-5695819
+Fax: (1) 781-9333347
+</strong></support>
+      </contact>
+   </body></html>

@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:DeploymentPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
+    xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>ControlRoom_prog</label>
+  <UUID>_659260ea-151b-499a-9c69-cb86c176a713</UUID>
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source/>
+    <artifact xmi:idref="CompSvrArt"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_5d1fffc0-d2fd-41ec-b17e-e43f4547ddbd">
+    <name>SP_Control_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_8ab58dbb-77cc-4a65-bc93-7124c10bac1f"/>
+    <artifact xmi:idref="_2949ed08-2207-4ff9-8984-64d8bb43017f"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AGControl_SP_Control_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AGControl_SP_Control_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AGControl_SP_Control_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AGControl_SP_Control_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_92fb9937-d46e-429c-bfc6-4307c0389c75">
+    <name>AGSP_SystemImages_conn_PSAT_Event</name>
+    <source/>
+    <artifact xmi:idref="_f6e7b5e9-ff88-47c7-b74a-f4938dd9ec8e"/>
+    <artifact xmi:idref="_f4c0fe9e-edab-4c3d-95a8-c8c12d4b18f1"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AGSP_SystemImages_conn_PSAT_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AGSP_SystemImages_conn_PSAT_Event_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AGSP_SystemImages_conn_PSAT_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AGSP_SystemImages_conn_PSAT_Event_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Connector</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_318efba6-9c75-465d-be8a-a0fc9b1864fd">
+    <name>AGSP_SystemTargets_conn_DDS_Event</name>
+    <source/>
+    <artifact xmi:idref="_6b2e85d8-32a4-49de-822f-231b61fbf1c1"/>
+    <artifact xmi:idref="_522a4b02-bdc4-4cfd-8437-df65f4b8d90c"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AGSP_SystemTargets_conn_DDS_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AGSP_SystemTargets_conn_DDS_Event_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_AGSP_SystemTargets_conn_DDS_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AGSP_SystemTargets_conn_DDS_Event_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Connector</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_09a35cfa-2d33-4fae-916b-508d4a971b15">
+    <name>ArtGallery.SP_Control_comp</name>
+    <node>ControlNode</node>
+    <source/>
+    <implementation xmi:idref="_5d1fffc0-d2fd-41ec-b17e-e43f4547ddbd"/>
+  </instance>
+
+  <instance xmi:id="_bb71928d-7fb7-4af1-828f-088afdbcfecc">
+    <name>SP_Control_proc_ComponentServerInstance</name>
+    <node>ControlNode</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SP_Control_proc</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>0</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>0</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_c21d0235-f9e8-43e4-b3a9-c2f7e1dcbd16">
+    <name>ArtGallery.assemblies.ArtGallery.SystemImages_conn_to_SP_Control_comp@ControlNode.SP_Control_proc</name>
+    <node>ControlNode</node>
+    <source/>
+    <implementation xmi:idref="_92fb9937-d46e-429c-bfc6-4307c0389c75"/>
+    <configProperty>
+      <name>max_sample_size</name>
+      <value>
+        <type>
+          <kind>tk_longlong</kind>
+        </type>
+        <value>
+          <longlong>20000</longlong>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AGSP::SystemImages_msg</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>11</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA#SNA_Default</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_2a839ae6-0320-4ed2-a81a-3d2549f1c384">
+    <name>ArtGallery.assemblies.ArtGallery.SystemTargets_conn_to_SP_Control_comp@ControlNode.SP_Control_proc</name>
+    <node>ControlNode</node>
+    <source/>
+    <implementation xmi:idref="_318efba6-9c75-465d-be8a-a0fc9b1864fd"/>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AGSP::SystemTargets_msg</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>11</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA#SNA_Default</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.SystemImagesSub::ArtGallery.assemblies.ArtGallery.SystemImages_conn_to_SP_Control_comp@ControlNode.SP_Control_proc.consumer_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>SystemImagesSub_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_c21d0235-f9e8-43e4-b3a9-c2f7e1dcbd16"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.SystemImagesSub::ArtGallery.assemblies.ArtGallery.SystemImages_conn_to_SP_Control_comp@ControlNode.SP_Control_proc.consumer_status</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>SystemImagesSub_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_c21d0235-f9e8-43e4-b3a9-c2f7e1dcbd16"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.SystemImagesSub::ArtGallery.assemblies.ArtGallery.SystemImages_conn_to_SP_Control_comp@ControlNode.SP_Control_proc.consumer_attachment_control</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>SystemImagesSub_attachment_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_attachment_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_c21d0235-f9e8-43e4-b3a9-c2f7e1dcbd16"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.SystemImagesSub::ArtGallery.assemblies.ArtGallery.SystemImages_conn_to_SP_Control_comp@ControlNode.SP_Control_proc.consumer_filter_config</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>SystemImagesSub_filter_config</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_filter_config</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_c21d0235-f9e8-43e4-b3a9-c2f7e1dcbd16"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.SystemImagesSub::ArtGallery.assemblies.ArtGallery.SystemImages_conn_to_SP_Control_comp@ControlNode.SP_Control_proc.consumer_dds_entity</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>SystemImagesSub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_c21d0235-f9e8-43e4-b3a9-c2f7e1dcbd16"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.SystemImagesSub::ArtGallery.assemblies.ArtGallery.SystemImages_conn_to_SP_Control_comp@ControlNode.SP_Control_proc.consumer_listener_control</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>SystemImagesSub_listener_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_listener_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_c21d0235-f9e8-43e4-b3a9-c2f7e1dcbd16"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.SystemTargetsSub::ArtGallery.assemblies.ArtGallery.SystemTargets_conn_to_SP_Control_comp@ControlNode.SP_Control_proc.push_consumer_data_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>SystemTargetsSub_data_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_2a839ae6-0320-4ed2-a81a-3d2549f1c384"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.SystemTargetsSub::ArtGallery.assemblies.ArtGallery.SystemTargets_conn_to_SP_Control_comp@ControlNode.SP_Control_proc.push_consumer_status</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>SystemTargetsSub_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_2a839ae6-0320-4ed2-a81a-3d2549f1c384"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.SystemTargetsSub::ArtGallery.assemblies.ArtGallery.SystemTargets_conn_to_SP_Control_comp@ControlNode.SP_Control_proc.push_consumer_data</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>SystemTargetsSub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_2a839ae6-0320-4ed2-a81a-3d2549f1c384"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.SystemTargetsSub::ArtGallery.assemblies.ArtGallery.SystemTargets_conn_to_SP_Control_comp@ControlNode.SP_Control_proc.push_consumer_data_control</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>SystemTargetsSub_data_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_2a839ae6-0320-4ed2-a81a-3d2549f1c384"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.SystemTargetsSub::ArtGallery.assemblies.ArtGallery.SystemTargets_conn_to_SP_Control_comp@ControlNode.SP_Control_proc.push_consumer_dds_entity</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>SystemTargetsSub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_2a839ae6-0320-4ed2-a81a-3d2549f1c384"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.SystemTargetsSub::ArtGallery.assemblies.ArtGallery.SystemTargets_conn_to_SP_Control_comp@ControlNode.SP_Control_proc.push_consumer_filter_config</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>SystemTargetsSub_filter_config</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_filter_config</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_2a839ae6-0320-4ed2-a81a-3d2549f1c384"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>ArtGallery.SP_Control_comp.ControlRecept::ArtGallery.SurveillanceProcessor_asm.MissionControlBridge_comp.ControlFacet</name>
+    <internalEndpoint>
+      <portName>ControlRecept</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    </internalEndpoint>
+    <externalReference>
+      <location>snatopic:dds:/NameService#MissionControlBridge_comp</location>
+      <provider>true</provider>
+      <portName>ControlFacet</portName>
+      <supportedType>Meaningless</supportedType>
+    </externalReference>
+  </connection>
+
+  <artifact xmi:id="CompSvrArt">
+    <name>CompoSvrArtifactName</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+
+  <artifact xmi:id="_8ab58dbb-77cc-4a65-bc93-7124c10bac1f">
+    <name>AGControl_SP_Control_comp_exec</name>
+    <source/>
+    <node/>
+    <location>AGControl_SP_Control_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_2949ed08-2207-4ff9-8984-64d8bb43017f">
+    <name>AGControl_SP_Control_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>AGControl_SP_Control_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_f6e7b5e9-ff88-47c7-b74a-f4938dd9ec8e">
+    <name>AGSP_SystemImages_conn_PSAT_Event_exec</name>
+    <source/>
+    <node/>
+    <location>AGSP_SystemImages_conn_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_f4c0fe9e-edab-4c3d-95a8-c8c12d4b18f1">
+    <name>AGSP_SystemImages_conn_PSAT_Event_svnt</name>
+    <source/>
+    <node/>
+    <location>AGSP_SystemImages_conn_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_6b2e85d8-32a4-49de-822f-231b61fbf1c1">
+    <name>AGSP_SystemTargets_conn_DDS_Event_exec</name>
+    <source/>
+    <node/>
+    <location>AGSP_SystemTargets_conn_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_522a4b02-bdc4-4cfd-8437-df65f4b8d90c">
+    <name>AGSP_SystemTargets_conn_DDS_Event_svnt</name>
+    <source/>
+    <node/>
+    <location>AGSP_SystemTargets_conn_svnt</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <!-- This is referencing [SP_Control_proc_ComponentServerInstance] -->
+    <constrainedInstance xmi:idref="_bb71928d-7fb7-4af1-828f-088afdbcfecc"/>
+    <!-- This is referencing [ArtGallery.SP_Control_comp] -->
+    <constrainedInstance xmi:idref="_09a35cfa-2d33-4fae-916b-508d4a971b15"/>
+    <!-- This is referencing [ArtGallery.assemblies.ArtGallery.SystemImages_conn_to_SP_Control_comp@ControlNode.SP_Control_proc] -->
+    <constrainedInstance xmi:idref="_c21d0235-f9e8-43e4-b3a9-c2f7e1dcbd16"/>
+    <!-- This is referencing [ArtGallery.assemblies.ArtGallery.SystemTargets_conn_to_SP_Control_comp@ControlNode.SP_Control_proc] -->
+    <constrainedInstance xmi:idref="_2a839ae6-0320-4ed2-a81a-3d2549f1c384"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

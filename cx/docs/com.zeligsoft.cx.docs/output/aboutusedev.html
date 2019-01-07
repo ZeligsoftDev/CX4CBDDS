@@ -1,0 +1,43 @@
+<head>
+	<title>Uses Devices</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="aboutusedev.html" title="Uses Devices">
+		<h1>Uses Devices</h1>
+		<p>This element is used to specify dynamic connections using DUBTCR FindBy ports. This element is needed because not all devices are loadable or executable. </p>
+		<p>A Uses Device is a requirement of something from a device - it documents that a component needs the device. 
+This is different then 'depends on device'. This relationship can later be used to configure connections.</p>
+		<p>The source for this element is a definition or implementation. The element target is an allocation property.</p>
+		<p>A Uses Device can be defined on a component or device definition or implementation and points to one or more allocation properties on a 
+definition or implementation.</p>
+		<p>To create a uses device, do the following:</p>
+		<ol>
+			<li>In the <strong>Palette</strong>, expand the <strong>SCA Platform</strong> drawer and select <strong>UsesDevice</strong>.</li>
+			<li>Drop the element onto the diagram and name the element.</li>
+			<li>In the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab and set the 
+<strong>type</strong>.</li>
+			<li>Create an <strong>Implementation Artifact</strong> and name the element.</li>
+			<li>In the <strong>Palette</strong>, select <strong>UsesDevice Dependency</strong> and in the 
+diagram, connect the <strong>Component structure realization </strong> or <strong>Implementation Artifact</strong> to the <strong>UsesDevice</strong>.</li>
+			<li>Add one or more allocation properties to the diagram.</li>
+			<li>Draw a Property Dependency from a UsesDevice to the allocation property</li>
+			<li>Set the value for the Property Dependency</li>
+		</ol>
+		<h2>Uses Device Dependency</h2>
+		<p>This element is used to specify dependencies between a UsesDevice element and one or more allocation properties.</p>
+		<p>To define a uses device dependency, do the following:</p>
+		<ol>
+			<li>Add a <strong>UsesDevice</strong> to the <strong>Zeligsoft Component Diagram</strong>. </li>
+			<li>In the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab and configure the <strong>Type</strong> property. </li>
+			<li>In the <strong>Palette</strong>, select <strong>UsesDevice Dependency</strong> and connect either a component structure realization or an implementation to the UsesDevice element.</li>
+			<li>Add one or more allocation property references to the diagram. </li>
+			<li>For each allocation property, add a Property Dependency from a UsesDevice element to the allocation property.</li>
+			<li>Set a value for each <strong>Property Dependency</strong>.</li>
+		</ol>
+		<h3>See Also</h3><br><a href="editviewelement.html">Editing and Viewing Elements</a><br><a href="deleteelement.html">Deleting Elements</a><div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

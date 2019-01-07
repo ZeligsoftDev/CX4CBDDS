@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.zeligsoft.domain.dds4ccm" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.zeligsoft.domain.dds4ccm" id="model_libary_configuration" name="Model Library Configuration"/>
+      </appInfo>
+      <documentation>
+         This element provides a mechanism to configure DDS connectors and other elements.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <choice>
+               <element ref="connector"/>
+               <element ref="module"/>
+            </choice>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="connector">
+      <annotation>
+         <documentation>
+            Configures a connector
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="generationOptions"/>
+            <element ref="importOptions"/>
+            <element ref="portIcon" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  Name of the connector
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="generationOptions">
+      <complexType>
+         <sequence>
+            <element ref="includeFile" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="includeFile" type="string">
+   </element>
+
+   <element name="importOptions" type="string">
+   </element>
+
+   <element name="module">
+      <complexType>
+         <sequence>
+            <element ref="generationOptions"/>
+            <element ref="portIcon" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  Name of the module
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="portIcon">
+      <annotation>
+         <documentation>
+            Customize port icons for extended port type.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Fully qualified name of the port type or interface object in the connector  module that will be customized (e.g., DDS_DCPS::CCM_DDS::Typed::DDS_Write).
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="portIcon" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Custom icon for non-confugated port.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="conjugatedPortIcon" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Custom icon  for confugated port.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+
+</schema>

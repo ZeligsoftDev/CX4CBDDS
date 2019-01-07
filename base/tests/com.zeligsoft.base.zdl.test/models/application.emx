@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:test="http://www.zeligsoft.com/test/2008/basezdl/test/1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.zeligsoft.com/test/2008/basezdl/test/1 test.profile.uml#_paOrM0bYEd2RGvEf11ad3A">
+  <uml:Model xmi:id="_k37IMEbZEd2RGvEf11ad3A" name="application">
+    <eAnnotations xmi:id="_k37IMUbZEd2RGvEf11ad3A" source="uml2.diagrams"/>
+    <packageImport xmi:id="_k37IMkbZEd2RGvEf11ad3A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Component" xmi:id="_qa5okEbZEd2RGvEf11ad3A" name="Comp1">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_uSx5EEbZEd2RGvEf11ad3A" name="port1" visibility="public" aggregation="composite"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_r-T8EEbZEd2RGvEf11ad3A" name="Comp2">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_v9ThMEbZEd2RGvEf11ad3A" name="port2" visibility="public" aggregation="composite" isService="false"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_8eGvUEbZEd2RGvEf11ad3A" name="Comp3"/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_zf8UgExKEd2y4563FRkTog" name="impl"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_VWsJULzuEd6jKvZoFONIHA" name="Comp4"/>
+    <profileApplication xmi:id="_k37IM0bZEd2RGvEf11ad3A">
+      <eAnnotations xmi:id="_k37INEbZEd2RGvEf11ad3A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_k37INUbZEd2RGvEf11ad3A">
+      <eAnnotations xmi:id="_k37INkbZEd2RGvEf11ad3A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_k37IN0bZEd2RGvEf11ad3A">
+      <eAnnotations xmi:id="_k37IOEbZEd2RGvEf11ad3A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_nPmKMEbZEd2RGvEf11ad3A">
+      <eAnnotations xmi:id="_nPmxQEbZEd2RGvEf11ad3A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="test.profile.uml#_paOrM0bYEd2RGvEf11ad3A"/>
+      </eAnnotations>
+      <appliedProfile href="test.profile.uml#_paOrMEbYEd2RGvEf11ad3A"/>
+    </profileApplication>
+  </uml:Model>
+  <test:ComponentInterface xmi:id="_2AMQsEbZEd2RGvEf11ad3A" base_Component="_qa5okEbZEd2RGvEf11ad3A" realization="_24ET4EbZEd2RGvEf11ad3A _98OTIEbZEd2RGvEf11ad3A"/>
+  <test:StructuralRealization xmi:id="_24ET4EbZEd2RGvEf11ad3A" base_Component="_r-T8EEbZEd2RGvEf11ad3A" isDefault="true"/>
+  <test:StructuralRealization xmi:id="_98OTIEbZEd2RGvEf11ad3A" base_Component="_8eGvUEbZEd2RGvEf11ad3A" implementation="_zf8UgExKEd2y4563FRkTog"/>
+  <test:Port xmi:id="_ORoJYEbcEd2RGvEf11ad3A" base_Port="_uSx5EEbZEd2RGvEf11ad3A"/>
+  <test:Port xmi:id="_PMP-kEbcEd2RGvEf11ad3A" base_Port="_v9ThMEbZEd2RGvEf11ad3A"/>
+  <test:ClassifyingComponent xmi:id="_aiJhkLzuEd6jKvZoFONIHA" base_Component="_VWsJULzuEd6jKvZoFONIHA"/>
+</xmi:XMI>

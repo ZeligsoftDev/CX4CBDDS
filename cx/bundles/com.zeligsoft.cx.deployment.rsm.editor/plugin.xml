@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.zeligsoft.cx.deployment.rsm.editor.ui.DeploymentTableEditor"
+            icon="icons/sample.gif"
+            id="com.zeligsoft.cx.deployment.rsm.editor"
+            name="Deployment Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="com.zeligsoft.deployment.rsm.editor.popupmenu"
+            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
+         <visibility>
+            <and>
+               <objectState
+                     name="umlStrictType"
+                     value="Component">
+               </objectState>
+               <objectState
+                     name="hasStereotype"
+                     value="ZeligsoftDeployment::Deployment">
+               </objectState>
+            </and>
+         </visibility>
+         <action
+               class="com.zeligsoft.cx.deployment.rsm.editor.ui.DeploymentCreationPopupAction"
+               enablesFor="1"
+               id="com.zeligsoft.deployment.rsm.editor.OpenDeploymentEditorAction"
+               label="%action.label.1"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders">
+      <GlobalActionHandlerProvider
+            class="com.zeligsoft.cx.deployment.rsm.editor.providers.DeploymentTableGlobalActionHandlerProvider"
+            id="com.zeligsoft.cx.deployment.rsm.editor.GlobalActionHandlerProvider">
+         <Priority
+               name="Low">
+         </Priority>
+         <Policy class="com.zeligsoft.cx.deployment.rsm.editor.policies.DeploymentTableGlobalActionHandlerPolicy"/>
+         <ViewId
+               id="org.eclipse.ui.navigator.ProjectExplorer">
+            <ElementType
+                  class="com.ibm.xtools.uml.navigator.IModelServerElement">
+               <GlobalActionId
+                     actionId="open">
+               </GlobalActionId>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>   
+
+</plugin>

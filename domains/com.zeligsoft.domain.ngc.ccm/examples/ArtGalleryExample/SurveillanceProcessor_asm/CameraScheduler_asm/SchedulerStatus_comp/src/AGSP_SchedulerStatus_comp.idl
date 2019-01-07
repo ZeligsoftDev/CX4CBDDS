@@ -1,0 +1,39 @@
+/// @defgroup AGSP_SchedulerStatus_comp SchedulerStatus_comp
+/// @{
+/// 
+/// @file AGSP_SchedulerStatus_comp.idl
+/// @brief SchedulerStatus_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__CAMERASCHEDULER_ASM__SCHEDULERSTATUS_COMP__SRC__AGSP_SCHEDULERSTATUS_COMP_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__CAMERASCHEDULER_ASM__SCHEDULERSTATUS_COMP__SRC__AGSP_SCHEDULERSTATUS_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao lem "AGSP_SchedulerStatus_compE.idl"
+#include "AGSP_CamIntStatus_obj.idl"
+#include "AGSP_CamIntCmd_obj.idl"
+#include <ccm_dds.idl>
+#include "AGSP_AuxSensorStatus_conn.idl"
+#include "AGSP_CameraAvailable_conn.idl"
+#include "AGSP_GPS_conn.idl"
+
+/// @namespace AGSP 
+module AGSP {
+    component SchedulerStatus_comp {
+        uses AGSP::CamIntStatus_obj CamIntStatusRecept;
+        provides AGSP::CamIntCmd_obj CamIntCmdFacet;
+        provides CCM_DDS::ConnectorStatusListener AuxSensorStatusSubStatus;
+        provides CCM_DDS::ConnectorStatusListener CameraAvailableSubStatus;
+        provides CCM_DDS::ConnectorStatusListener GPS_SubStatus;
+        port AuxSensorStatus_conn::DDS_Listen AuxSensorStatusSub;
+        port CameraAvailable_conn::DDS_Listen CameraAvailableSub;
+        port GPS_conn::DDS_Listen GPS_Sub;
+    };
+
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__CAMERASCHEDULER_ASM__SCHEDULERSTATUS_COMP__SRC__AGSP_SCHEDULERSTATUS_COMP_IDL
+
+/// @}
+

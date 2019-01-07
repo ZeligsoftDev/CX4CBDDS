@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:DeploymentPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
+    xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>ProgAMI_prog1a</label>
+  <UUID>_31a55dd4-0049-4d86-ab80-a2cb5dbedd87</UUID>
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source/>
+    <artifact xmi:idref="CompSvrArt"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_b85b5e82-8160-4c25-89a0-ed1f6a112c3e">
+    <name>Slave_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_ebcda23e-53f3-4ac4-90c0-2226483df6d1"/>
+    <artifact xmi:idref="_cf9398ce-e4f5-4cec-94be-5bcf0a4d04a1"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_Slave_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_Slave_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_Slave_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_Slave_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_9e77a396-fb11-4da7-9d15-7ba0e829405f">
+    <name>StateControl_obj</name>
+    <source/>
+    <artifact xmi:idref="_9e5f8ac8-3467-44f1-8f51-8d1123cd0b17"/>
+    <artifact xmi:idref="_fe63e8bc-c5ef-4465-9e10-e0e89e02c679"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_AMI4CCM_StateControl_obj_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_StateControl_obj_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_AMI4CCM_StateControl_obj_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_StateControl_obj_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Connector</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_796172ee-383f-476a-b5be-61e5927e7c8c">
+    <name>StateManager_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_2b5d963d-edc6-4062-a53a-545c9ceada94"/>
+    <artifact xmi:idref="_0acfa8b1-e1d8-4343-b51c-218cf8150bee"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_StateManager_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_StateManager_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_StateManager_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_StateManager_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_58665851-2457-4b8a-b8ad-cdd89ed872fd">
+    <name>AMI4CCM_asm.slave_comp</name>
+    <node>Slave1Node</node>
+    <source/>
+    <implementation xmi:idref="_b85b5e82-8160-4c25-89a0-ed1f6a112c3e"/>
+    <configProperty>
+      <name>Propertyaaa</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>xxxxx</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_0f437449-0883-4416-809f-b756298bbecd">
+    <name>AMI4CCM_asm.stateManager_comp</name>
+    <node>StateManagerNode</node>
+    <source/>
+    <implementation xmi:idref="_796172ee-383f-476a-b5be-61e5927e7c8c"/>
+  </instance>
+
+  <instance xmi:id="_adc9c24d-a228-471f-8b52-3a2a4ecc7885">
+    <name>Slave1_proc_ComponentServerInstance</name>
+    <node>Slave1Node</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Slave1_proc</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Slave1Process</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_20992116-722a-43ea-849c-e4f814b6d4c1">
+    <name>StateManager_proc_ComponentServerInstance</name>
+    <node>StateManagerNode</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>StateManager_proc</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>StateManagerProcess</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_57506f56-3f97-47bc-835c-54201d41f9b4">
+    <name>ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp_stateManager_comp@StateManagerNode.StateManager_proc</name>
+    <node>StateManagerNode</node>
+    <source/>
+    <implementation xmi:idref="_9e77a396-fb11-4da7-9d15-7ba0e829405f"/>
+  </instance>
+
+  <instance xmi:id="_b536ba11-c663-448c-bd45-a8e25f815fa6">
+    <name>ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp2_stateManager_comp@StateManagerNode.StateManager_proc</name>
+    <node>StateManagerNode</node>
+    <source/>
+    <implementation xmi:idref="_9e77a396-fb11-4da7-9d15-7ba0e829405f"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.RegisterNaming</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AMI4CCM_asm::stateManager_comp_stateControlRecept__AMI4CCM_asm::slave_comp2_stateControlFacet</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_1ed6973f-7545-44aa-9237-75ff8c3a4713">
+    <name>ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp3_stateManager_comp@StateManagerNode.StateManager_proc</name>
+    <node>StateManagerNode</node>
+    <source/>
+    <implementation xmi:idref="_9e77a396-fb11-4da7-9d15-7ba0e829405f"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.RegisterNaming</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AMI4CCM_asm::stateManager_comp_stateControlRecept__AMI4CCM_asm::slave_comp3_stateControlFacet</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>AMI4CCM_asm.stateManager_comp.stateControlFacet__ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp_stateManager_comp@StateManagerNode.StateManager_proc</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_57506f56-3f97-47bc-835c-54201d41f9b4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>sendc_stateControlRecept</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMI4CCM_asm.slave_comp.stateControlFacet__AMI4CCM_asm.stateManager_comp.stateControlRecept_AMI4CCM_Connector_asyncdirect</name>
+    <internalEndpoint>
+      <portName>stateControlFacet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_58665851-2457-4b8a-b8ad-cdd89ed872fd"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_57506f56-3f97-47bc-835c-54201d41f9b4"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMI4CCM_asm.stateManager_comp.stateControlRecept::AMI4CCM_asm.slave_comp.stateControlFacet</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>stateControlRecept</portName>
+      <provider>false</provider>
+      <kind>MultiplexReceptacle</kind>
+      <instance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_57506f56-3f97-47bc-835c-54201d41f9b4"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMI4CCM_asm.stateManager_comp.stateControlFacet__ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp2_stateManager_comp@StateManagerNode.StateManager_proc</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_b536ba11-c663-448c-bd45-a8e25f815fa6"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>sendc_stateControlRecept</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMI4CCM_asm.slave_comp2.stateControlFacet__AMI4CCM_asm.stateManager_comp.stateControlRecept_AMI4CCM_Connector_asyncdirect</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_b536ba11-c663-448c-bd45-a8e25f815fa6"/>
+    </internalEndpoint>
+    <externalReference>
+      <location>corbaname:rir:/NameService#222222</location>
+      <provider>true</provider>
+      <portName>stateControlFacet</portName>
+      <supportedType>Meaningless</supportedType>
+    </externalReference>
+  </connection>
+
+  <connection>
+    <name>AMI4CCM_asm.stateManager_comp.stateControlRecept::AMI4CCM_asm.slave_comp2.stateControlFacet</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>stateControlRecept</portName>
+      <provider>false</provider>
+      <kind>MultiplexReceptacle</kind>
+      <instance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_b536ba11-c663-448c-bd45-a8e25f815fa6"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMI4CCM_asm.stateManager_comp.stateControlFacet__ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp3_stateManager_comp@StateManagerNode.StateManager_proc</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_1ed6973f-7545-44aa-9237-75ff8c3a4713"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>sendc_stateControlRecept</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>AMI4CCM_asm.slave_comp3.stateControlFacet__AMI4CCM_asm.stateManager_comp.stateControlRecept_AMI4CCM_Connector_asyncdirect</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_1ed6973f-7545-44aa-9237-75ff8c3a4713"/>
+    </internalEndpoint>
+    <externalReference>
+      <location>corbaname:rir:/NameService#333333</location>
+      <provider>true</provider>
+      <portName>stateControlFacet</portName>
+      <supportedType>Meaningless</supportedType>
+    </externalReference>
+  </connection>
+
+  <connection>
+    <name>AMI4CCM_asm.stateManager_comp.stateControlRecept::AMI4CCM_asm.slave_comp3.stateControlFacet</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>stateControlRecept</portName>
+      <provider>false</provider>
+      <kind>MultiplexReceptacle</kind>
+      <instance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_1ed6973f-7545-44aa-9237-75ff8c3a4713"/>
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="CompSvrArt">
+    <name>CompoSvrArtifactName</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+
+  <artifact xmi:id="_ebcda23e-53f3-4ac4-90c0-2226483df6d1">
+    <name>SNA_Examples_Slave_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_Slave_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_cf9398ce-e4f5-4cec-94be-5bcf0a4d04a1">
+    <name>SNA_Examples_Slave_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_Slave_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_2b5d963d-edc6-4062-a53a-545c9ceada94">
+    <name>SNA_Examples_StateManager_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_StateManager_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_0acfa8b1-e1d8-4343-b51c-218cf8150bee">
+    <name>SNA_Examples_StateManager_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_StateManager_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_9e5f8ac8-3467-44f1-8f51-8d1123cd0b17">
+    <name>SNA_Examples_StateControl_obj_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_StateControl_obj_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_fe63e8bc-c5ef-4465-9e10-e0e89e02c679">
+    <name>SNA_Examples_StateControl_obj_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_StateControl_obj_svnt</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <!-- This is referencing [Slave1_proc_ComponentServerInstance] -->
+    <constrainedInstance xmi:idref="_adc9c24d-a228-471f-8b52-3a2a4ecc7885"/>
+    <!-- This is referencing [AMI4CCM_asm.slave_comp] -->
+    <constrainedInstance xmi:idref="_58665851-2457-4b8a-b8ad-cdd89ed872fd"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <!-- This is referencing [StateManager_proc_ComponentServerInstance] -->
+    <constrainedInstance xmi:idref="_20992116-722a-43ea-849c-e4f814b6d4c1"/>
+    <!-- This is referencing [AMI4CCM_asm.stateManager_comp] -->
+    <constrainedInstance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+    <!-- This is referencing [ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp_stateManager_comp@StateManagerNode.StateManager_proc] -->
+    <constrainedInstance xmi:idref="_57506f56-3f97-47bc-835c-54201d41f9b4"/>
+    <!-- This is referencing [ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp2_stateManager_comp@StateManagerNode.StateManager_proc] -->
+    <constrainedInstance xmi:idref="_b536ba11-c663-448c-bd45-a8e25f815fa6"/>
+    <!-- This is referencing [ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp3_stateManager_comp@StateManagerNode.StateManager_proc] -->
+    <constrainedInstance xmi:idref="_1ed6973f-7545-44aa-9237-75ff8c3a4713"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

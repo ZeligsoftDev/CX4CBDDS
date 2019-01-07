@@ -1,0 +1,19 @@
+#ifndef CX_CONTROL_COMP__SRC__SHAPES_CONTROL_COMP_IDL
+#define CX_CONTROL_COMP__SRC__SHAPES_CONTROL_COMP_IDL
+
+#include <Components.idl>
+#include "Shapes_Control_obj.idl"
+
+module Shapes {
+    component Control_comp {
+        uses Control_obj control;
+        attribute long rate;
+        attribute long max_x;
+        attribute long max_y;
+        attribute long max_size;
+        attribute boolean resize_shape;
+    };
+
+};
+
+#endif

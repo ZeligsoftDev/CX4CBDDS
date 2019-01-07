@@ -1,0 +1,49 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+
+/**
+ * @defgroup DataTransformer_MKC_comp DataTransformer_MKC_comp Component
+ * @ingroup SPDM_Example
+ * @{
+ *
+ * The MKC portion of the Data Transformer assembly will provide a math function
+ * which allows input data to be scaled and copied into the given output
+ * buffer.
+ *
+ * @file   SNA_Examples_DataTransformer_MKC_comp.idl
+ * @brief  DataTransformer_MKC_comp component definition IDL file.
+ */
+
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_DATA_TRANSFORMER_MKC_COMP_IDL
+#define SNA_EXAMPLES_DATA_TRANSFORMER_MKC_COMP_IDL
+
+#include <Components.idl>
+
+#include "SNA_Examples_DataTransformerMath_obj.idl"
+
+module SNA_Examples
+{
+   /**
+    * This component operates on data forwarded from the SPOC.
+    */
+   component DataTransformer_MKC_comp
+   {
+      /**
+       * Receptacle that can use the facet provided by the MKC to perform
+       * mathematical operations on the data.
+       */      
+      provides       DataTransformerMath_obj  mathRecept;
+   };
+};
+
+#endif // SNA_EXAMPLES_DATA_TRANSFORMER_MKC_COMP_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

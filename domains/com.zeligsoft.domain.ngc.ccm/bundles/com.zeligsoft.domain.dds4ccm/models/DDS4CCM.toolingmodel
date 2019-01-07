@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="ASCII"?>
+<tool:MenuModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tool="http://www.zeligsoft.com/zdl/2008/tooling" xsi:schemaLocation="http://www.zeligsoft.com/zdl/2008/tooling java://com.zeligsoft.base.toolingmodel.ToolingModelPackage" generated="true">
+  <item xsi:type="tool:DelegateAction" generated="true" name="Package" className="com.zeligsoft.cx.ui.actions.AddCXPackageAction" hostBundle="com.zeligsoft.cx.ui"/>
+  <item xsi:type="tool:MenuSeparator" name="zeligsoft.menuSeparator.CORBA.packageSeparator"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Array" createConcept="CORBADomain::IDL::CORBAArray">
+    <expression xsi:type="tool:OawXtend" name="Configure" expression="configureArray" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Enum" createConcept="CORBADomain::IDL::CORBAEnum"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Exception" createConcept="CORBADomain::IDL::CORBAException"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Sequence" createConcept="CORBADomain::IDL::CORBASequence">
+    <expression xsi:type="tool:OawXtend" name="Configure" expression="configureSequence" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Struct" createConcept="CORBADomain::IDL::CORBAStruct"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="TypeDef" createConcept="CORBADomain::IDL::CORBATypeDef"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Union" createConcept="CORBADomain::IDL::CORBAUnion">
+    <expression xsi:type="tool:OawXtend" name="Configure" expression="configureUnion" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="WString" createConcept="CORBADomain::IDL::CORBAWString"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="String" createConcept="CORBADomain::IDL::CORBAString"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Native" description="" createConcept="CORBADomain::IDL::Native"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Module" createConcept="CORBADomain::IDL::CORBAModule"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Interface" createConcept="CORBADomain::IDL::CORBAInterface"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Constants" createConcept="CORBADomain::IDL::CORBAConstants"/>
+  <item xsi:type="tool:DelegateAction" generated="true" name="PortType" className="com.zeligsoft.cx.ui.actions.AddPortTypeAction" hostBundle="com.zeligsoft.cx.ui"/>
+  <item xsi:type="tool:MenuSeparator" name="zeligsoft.menuSeparator.CCM.idl2 separator"/>
+  <item xsi:type="tool:DelegateAction" generated="true" name="CCM Component" className="com.zeligsoft.domain.omg.ccm.ui.actions.CCMComponentWizardAction" hostBundle="com.zeligsoft.domain.omg.ccm.ui"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Home" description="Create a Home" createConcept="CCM::CCM_Component::Home"/>
+  <item xsi:type="tool:DelegateAction" generated="true" name="DDS4CCM Connector Type" description="" className="com.zeligsoft.domain.dds4ccm.ui.actions.DDSMessageWizardAction" hostBundle="com.zeligsoft.domain.dds4ccm.ui"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Message" createConcept="DDS4CCM::DDSExtensions::DDSMessage"/>
+  <item xsi:type="tool:MenuSeparator" name="menuSeparator1"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Deployment Plan" createConcept="CCM::CCM_Deployment::DeploymentPlan">
+    <expression xsi:type="tool:OawXtend" name="configure" expression="configureDeploymentPlan" extensionFile="com::zeligsoft::domain::omg::ccm::util::config">
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Container Process" description="" createConcept="CCM::CCM_Deployment::ContainerProcess"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Domain" createConcept="CCM::CCM_Target::Domain" typeHint=""/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Node" createConcept="CCM::CCM_Target::Node"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Bridge" description="" createConcept="CCM::CCM_Target::Bridge"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Interconnect" createConcept="CCM::CCM_Target::Interconnect"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Resource" createConcept="CCM::CCM_Target::Resource"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Requirement" description="" createConcept="CCM::CCM_Target::Requirement"/>
+  <item xsi:type="tool:MenuSeparator" name="menuSeparator2"/>
+  <item xsi:type="tool:Menu" generated="true" name="Other...">
+    <item xsi:type="tool:Menu" generated="true" name="Component">
+      <item xsi:type="tool:CreateAction" generated="true" name="Component" description="" createConcept="CCM::CCM_Component::CCMComponent" typeHint=""/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Event" createConcept="CCM::CCM_Component::Event"/>
+    </item>
+    <item xsi:type="tool:Menu" generated="true" name="Implementation">
+      <item xsi:type="tool:CreateAction" generated="true" name="Assembly Implementation" createConcept="CCM::CCM_Implementation::AssemblyImplementation"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Monolithic Implementation" createConcept="CCM::CCM_Implementation::MonolithicImplementation"/>
+    </item>
+    <item xsi:type="tool:Menu" generated="true" name="Connector">
+      <item xsi:type="tool:CreateAction" generated="true" name="Connector" createConcept="IDL3Plus::Connectors::ConnectorDef"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Connector Fragment" createConcept="IDL3Plus::Connectors::ConnectorFragment"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Fragment Assembly" createConcept="IDL3Plus::Connectors::FragmentAssembly"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Monolithic Fragment" createConcept="IDL3Plus::Connectors::FragmentImplementation"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Connector Assembly" description="" createConcept="IDL3Plus::Connectors::ConnectorAssembly"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Monolithic Connector" createConcept="IDL3Plus::Connectors::ConnectorImplementation"/>
+    </item>
+    <item xsi:type="tool:CreateAction" generated="true" name="Template Module" createConcept="IDL3Plus::Generics::TemplateModule"/>
+    <item xsi:type="tool:DelegateAction" generated="true" name="Instantiate Template Module" className="com.zeligsoft.domain.idl3plus.ui.actions.InstantiateTemplateModule" hostBundle="com.zeligsoft.domain.idl3plus.ui"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="QoS Profile" createConcept="DDS4CCM::QoSProfiles::QoSProfile"/>
+    <item xsi:type="tool:Menu" generated="true" name="QoS Policy">
+      <item xsi:type="tool:CreateAction" generated="true" name="Deadline Policy" createConcept="DDS::QOS::deadlineQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Destination Order Policy" createConcept="DDS::QOS::doQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Durability Policy" createConcept="DDS::QOS::durabilityQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="DurabilityService" createConcept="DDS::QOS::dsQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Entity Factory Policy" createConcept="DDS::QOS::efQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Group Data Policy" createConcept="DDS::QOS::gdQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="History Policy" createConcept="DDS::QOS::historyQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Latency Budget Policy" createConcept="DDS::QOS::lbQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Lifespan Policy" createConcept="DDS::QOS::lifespanQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Liveliness Policy" createConcept="DDS::QOS::livelinessQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Ownership Policy" createConcept="DDS::QOS::ownershipQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Ownership Strength Policy" createConcept="DDS::QOS::osQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Partition Policy" createConcept="DDS::QOS::partitionQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Presentation Policy" createConcept="DDS::QOS::presentationQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Reader Data Lifecycle Policy" createConcept="DDS::QOS::rdlQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Realibility Policy" createConcept="DDS::QOS::reliabilityQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Resource Limits Policy" createConcept="DDS::QOS::rlQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Time Based Filter Policy" createConcept="DDS::QOS::tbfQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Transport Priority Policy" createConcept="DDS::QOS::tpQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="User Data Policy" createConcept="DDS::QOS::udQosPolicy"/>
+      <item xsi:type="tool:CreateAction" generated="true" name="Writer Data Lifecycle Policy" createConcept="DDS::QOS::wdlQosPolicy"/>
+    </item>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Constant" createConcept="CORBADomain::IDL::CORBAConstant">
+    <expression xsi:type="tool:OawXtend" name="Configure" expression="configureConstant" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Enumeration Literal" description="" typeHint="com.ibm.xtools.uml.enumerationLiteral"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Field" createConcept="CORBADomain::IDL::CORBAField">
+    <expression xsi:type="tool:OawXtend" name="Configure" expression="configureCORBAField" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Attribute" createConcept="CORBADomain::IDL::CORBAAttribute">
+    <expression xsi:type="tool:OawXtend" name="Configure" expression="configureCORBAAttribute" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Operation" createConcept="CORBADomain::IDL::CORBAOperation"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Case" createConcept="CORBADomain::IDL::CORBACase"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Parameter" createConcept="CORBADomain::IDL::CORBAParameter"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Message Port" createConcept="ZMLMM::ZML_Component::MessagePort"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Operation" createConcept="ZMLMM::ZML_Component::Operation"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="QoS Property" createConcept="DDS::QOS::qosProperty" typeHint="">
+    <expression xsi:type="tool:OawXtend" name="Configure" expression="configureQoSProperty" extensionFile="com::zeligsoft::domain::omg::dds::util::config">
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Field" createConcept="DDS4CCM::DDSExtensions::MessageField">
+    <expression xsi:type="tool:OawXtend" name="configure" expression="configureMessageField" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
+      <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Data Reader QoS" createConcept="DDS4CCM::QoSProfiles::DataReaderQoS">
+    <expression xsi:type="tool:OawXtend" name="configure" expression="configureDataReaderQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
+      <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Data Writer QoS" createConcept="DDS4CCM::QoSProfiles::DataWriterQoS">
+    <expression xsi:type="tool:OawXtend" name="configure" expression="configureDataWriterQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
+      <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Participant QoS" createConcept="DDS4CCM::QoSProfiles::ParticipantQoS">
+    <expression xsi:type="tool:OawXtend" name="configure" expression="configureParticipantQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
+      <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Publisher QoS" createConcept="DDS4CCM::QoSProfiles::PublisherQoS">
+    <expression xsi:type="tool:OawXtend" name="configure" expression="configurePublisherQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
+      <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Subscriber QoS" createConcept="DDS4CCM::QoSProfiles::SubscriberQoS">
+    <expression xsi:type="tool:OawXtend" name="configure" expression="configureSubscriberQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
+      <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Topic QoS" createConcept="DDS4CCM::QoSProfiles::TopicQoS">
+    <expression xsi:type="tool:OawXtend" name="configure" expression="configureTopicQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
+      <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Shared Resource" createConcept="CCM::CCM_Target::SharedResource"/>
+  <item xsi:type="tool:DelegateAction" generated="true" name="Connector Default Value Binding" className="com.zeligsoft.domain.idl3plus.ui.actions.ConnectorDefaultValueBinding" hostBundle="com.zeligsoft.domain.idl3plus.ui"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Resource Property" description="" createConcept="CCM::CCM_Target::ResourceProperty" typeHint=""/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Satisfier Property" description="" createConcept="CCM::CCM_Target::SatisfierProperty" typeHint=""/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Connector" createConcept="IDL3Plus::Connectors::ConnectorDef"/>
+  <item xsi:type="tool:DelegateAction" generated="true" name="Template Parameter" className="com.zeligsoft.domain.idl3plus.ui.actions.CreateTemplateParameter" hostBundle="com.zeligsoft.domain.idl3plus.ui"/>
+  <item xsi:type="tool:DelegateAction" generated="true" name="Instantiate Template Module" className="com.zeligsoft.domain.idl3plus.ui.actions.InstantiateTemplateModule" hostBundle="com.zeligsoft.domain.idl3plus.ui"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Interface Port" description="Create an interface port" createConcept="CCM::CCM_Component::InterfacePort"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Property" description="Creates a property." createConcept="CCM::CCM_Target::Property">
+    <expression xsi:type="tool:OawXtend" name="config" expression="configureProperty" extensionFile="com::zeligsoft::domain::omg::ccm::util::config">
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+    </expression>
+  </item>
+  <item xsi:type="tool:DelegateAction" generated="true" name="Monolithic Implementation" className="com.zeligsoft.domain.omg.ccm.ui.actions.AddMonolithicImplementation" hostBundle="com.zeligsoft.domain.omg.ccm.ui"/>
+  <item xsi:type="tool:DelegateAction" generated="true" name="Assembly Implementation" description="" className="com.zeligsoft.domain.omg.ccm.ui.actions.AddAssemblyImplementation" hostBundle="com.zeligsoft.domain.omg.ccm.ui"/>
+  <item xsi:type="tool:DelegateAction" generated="true" name="Home" description="Create a Home for a Component" className="com.zeligsoft.domain.omg.ccm.ui.actions.AddHomeToComponentAction" hostBundle="com.zeligsoft.domain.omg.ccm.ui"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="StateMember" description="" createConcept="CCM::CCM_Component::StateMember"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Factory" description="Factory" createConcept="CCM::CCM_Component::FactoryOperation" typeHint=""/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Finder" description="Finder" createConcept="CCM::CCM_Component::FinderOperation"/>
+  <item xsi:type="tool:Menu" generated="true" name="Component">
+    <item xsi:type="tool:CreateAction" generated="true" name="Component" description="" createConcept="CCM::CCM_Component::CCMComponent" typeHint=""/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Event" createConcept="CCM::CCM_Component::Event"/>
+  </item>
+  <item xsi:type="tool:Menu" generated="true" name="Implementation">
+    <item xsi:type="tool:CreateAction" generated="true" name="Assembly Implementation" createConcept="CCM::CCM_Implementation::AssemblyImplementation"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Monolithic Implementation" createConcept="CCM::CCM_Implementation::MonolithicImplementation"/>
+  </item>
+  <item xsi:type="tool:Menu" generated="true" name="Deployment">
+    <item xsi:type="tool:CreateAction" generated="true" name="Deployment Plan" createConcept="CCM::CCM_Deployment::DeploymentPlan">
+      <expression xsi:type="tool:OawXtend" name="configure" expression="configureDeploymentPlan" extensionFile="com::zeligsoft::domain::omg::ccm::util::config">
+        <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
+        <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+        <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      </expression>
+    </item>
+    <item xsi:type="tool:MenuSeparator" name="zeligsoft.menuSeparator.CCM.deploymentMenuTargetSeparator"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Container Process" description="" createConcept="CCM::CCM_Deployment::ContainerProcess"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Domain" createConcept="CCM::CCM_Target::Domain" typeHint=""/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Node" createConcept="CCM::CCM_Target::Node"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Interconnect" createConcept="CCM::CCM_Target::Interconnect"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Bridge" description="" createConcept="CCM::CCM_Target::Bridge"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Resource" createConcept="CCM::CCM_Target::Resource"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Requirement" description="" createConcept="CCM::CCM_Target::Requirement"/>
+  </item>
+  <item xsi:type="tool:DelegateAction" generated="true" name="Interface Port" description="" className="com.zeligsoft.domain.omg.ccm.ui.actions.AddInterfacePortToCCMPartAction" hostBundle="com.zeligsoft.domain.omg.ccm.ui"/>
+  <item xsi:type="tool:DelegateAction" generated="true" name="Attribute" description="" className="com.zeligsoft.domain.omg.ccm.ui.actions.AddAttributeToCCMPartAction" hostBundle="com.zeligsoft.domain.omg.ccm.ui"/>
+  <item xsi:type="tool:MenuSeparator" name="zeligsoft.menuSeparator.IDL3Plus.ConnectorGroup"/>
+  <item xsi:type="tool:Menu" generated="true" name="Connector">
+    <item xsi:type="tool:CreateAction" generated="true" name="Connector" createConcept="IDL3Plus::Connectors::ConnectorDef"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Connector Fragment" createConcept="IDL3Plus::Connectors::ConnectorFragment"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Fragment Assembly" createConcept="IDL3Plus::Connectors::FragmentAssembly"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Monolithic Fragment" createConcept="IDL3Plus::Connectors::FragmentImplementation"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Connector Assembly" description="" createConcept="IDL3Plus::Connectors::ConnectorAssembly"/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Monolithic Connector" createConcept="IDL3Plus::Connectors::ConnectorImplementation"/>
+  </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Template Module" createConcept="IDL3Plus::Generics::TemplateModule"/>
+  <menu generated="true" concept="DDS4CCM::DDS4CCM::DDS4CCMModel" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.18 //@item.19 //@item.20 //@item.21 //@item.22 //@item.23 //@item.24 //@item.25 //@item.26 //@item.27 //@item.28 //@item.29 //@item.30 //@item.31"/>
+  <menu generated="true" concept="CORBADomain::IDL::CORBAConstants" item="//@item.32"/>
+  <menu generated="true" concept="CORBADomain::IDL::CORBAEnum" item="//@item.33"/>
+  <menu generated="true" concept="CORBADomain::IDL::CORBAException" item="//@item.34"/>
+  <menu generated="true" concept="CORBADomain::IDL::CORBAInterface" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.35 //@item.36 //@item.32"/>
+  <menu generated="true" concept="CORBADomain::IDL::CORBAStruct" item="//@item.34"/>
+  <menu generated="true" concept="CORBADomain::IDL::CORBAUnion" item="//@item.37"/>
+  <menu generated="true" concept="CORBADomain::IDL::CORBAModule" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.18 //@item.19 //@item.20 //@item.21 //@item.22 //@item.23 //@item.24 //@item.25 //@item.26 //@item.27 //@item.28 //@item.29 //@item.30 //@item.31"/>
+  <menu generated="true" concept="CORBADomain::IDL::CORBAOperation" item="//@item.38"/>
+  <menu generated="true" concept="ZMLMM::ZML_Component::ComponentInterface" item="//@item.39"/>
+  <menu generated="true" concept="ZMLMM::ZML_Component::Interface" item="//@item.40"/>
+  <menu generated="true" concept="DDS::Topics::Topic" item="//@item.41"/>
+  <menu generated="true" concept="DDS4CCM::DDSExtensions::DDSMessage" item="//@item.42"/>
+  <menu generated="true" concept="DDS4CCM::QoSProfiles::QoSProfile" item="//@item.43 //@item.44 //@item.45 //@item.46 //@item.47 //@item.48"/>
+  <menu generated="true" concept="CCM::CCM_Target::Domain" item="//@item.49 //@item.50"/>
+  <menu generated="true" concept="CCM::CCM_Target::Node" item="//@item.51"/>
+  <menu generated="true" concept="CCM::CCM_Target::Interconnect" item="//@item.51"/>
+  <menu generated="true" concept="CCM::CCM_Target::Bridge" item="//@item.51"/>
+  <menu generated="true" concept="CCM::CCM_Target::Resource" item="//@item.52"/>
+  <menu generated="true" concept="IDL3Plus::Generics::TemplateModule" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.53 //@item.54 //@item.55"/>
+  <menu generated="true" concept="CCM::CCM_Component::CCMComponent" item="//@item.0 //@item.1 //@item.56 //@item.35 //@item.57 //@item.58 //@item.59 //@item.60"/>
+  <menu generated="true" concept="CCM::CCM_Component::Event" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.35 //@item.36 //@item.32 //@item.61"/>
+  <menu generated="true" concept="CCM::CCM_Component::Home" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.35 //@item.36 //@item.32 //@item.62 //@item.63"/>
+  <menu generated="true" concept="CCM::CCM_Component::FinderOperation" item="//@item.38"/>
+  <menu generated="true" concept="CCM::CCM_Component::FactoryOperation" item="//@item.38"/>
+  <menu generated="true" concept="IDL3Plus::Connectors::ConnectorDef" item="//@item.56"/>
+  <menu generated="true" concept="IDL3Plus::Connectors::ConnectorFragment" item="//@item.56"/>
+  <menu generated="true" concept="CCM::CCM_Core::CCMModel" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.64 //@item.65 //@item.66"/>
+  <menu generated="true" concept="CCM::CCM_Implementation::CCMPart" item="//@item.67 //@item.68"/>
+  <menu generated="true" concept="CCM::CCM_Deployment::ContainerProcess" item="//@item.57"/>
+  <menu generated="true" concept="IDL3Plus::IDL3Plus::IDL3PlusModel" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.64 //@item.65 //@item.66 //@item.69 //@item.70 //@item.71 //@item.55"/>
+  <menu generated="true" concept="IDL3Plus::IDL3Plus::ExtendedPortType" item="//@item.35"/>
+  <menu generated="true" concept="org.eclipse.uml2.uml.Package" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.18 //@item.19 //@item.20 //@item.21 //@item.22 //@item.23 //@item.24 //@item.25 //@item.26 //@item.27 //@item.28 //@item.29 //@item.30 //@item.31"/>
+</tool:MenuModel>

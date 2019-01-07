@@ -1,0 +1,28 @@
+/// @defgroup SNA_Examples_TestData_conn TestData_conn
+/// @{
+/// 
+/// @file SNA_Examples_TestData_conn.idl
+/// @brief TestData_conn connector definition IDL file
+
+//=========================================================
+
+#ifndef CX_BASICPUBLISHER_COMP__PORTS__SNA_EXAMPLES_TESTDATA_CONN_IDL
+#define CX_BASICPUBLISHER_COMP__PORTS__SNA_EXAMPLES_TESTDATA_CONN_IDL
+
+#include <Components.idl>
+#include <ccm_dds.idl>
+#include "SNA_Examples_TestData_msg.idl"
+#pragma ciao lem "SNA_Examples_TestData_connE.idl"
+
+/// @namespace SNA_Examples 
+module SNA_Examples {
+
+    /// @typedef TestData_msgSeq
+    typedef sequence <TestData_msg> TestData_msgSeq;
+    module CCM_DDS::Typed <TestData_msg, TestData_msgSeq> TestData_conn; 
+};
+
+#endif // CX_BASICPUBLISHER_COMP__PORTS__SNA_EXAMPLES_TESTDATA_CONN_IDL
+
+/// @}
+

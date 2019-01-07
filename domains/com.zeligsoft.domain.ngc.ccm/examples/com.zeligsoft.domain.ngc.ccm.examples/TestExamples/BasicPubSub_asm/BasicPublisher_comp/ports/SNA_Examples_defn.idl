@@ -1,0 +1,18 @@
+#ifndef CX_BASICPUBLISHER_COMP__PORTS__SNA_EXAMPLES_DEFN_IDL
+#define CX_BASICPUBLISHER_COMP__PORTS__SNA_EXAMPLES_DEFN_IDL
+
+
+module SNA_Examples {
+    enum State {
+        STATE_PASS,
+        STATE_FAIL
+    };
+    enum Color {
+        COLOR_RED,
+        COLOR_GREEN,
+        COLOR_BLUE
+    };
+    typedef string<512> BoundedString;
+};
+
+#endif

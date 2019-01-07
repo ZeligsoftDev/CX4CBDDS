@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ASCII"?>
+<tool:MenuModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tool="http://www.zeligsoft.com/zdl/2008/tooling">
+  <item xsi:type="tool:CreateAction" name="Struct" description="Create a Structconcept" createConcept="DDS::Types::Struct"/>
+  <item xsi:type="tool:CreateAction" name="Typedef" description="Create a Typedefconcept" createConcept="DDS::Types::Typedef"/>
+  <item xsi:type="tool:CreateAction" name="Sequence" description="Create a Sequenceconcept" createConcept="DDS::Types::Sequence"/>
+  <item xsi:type="tool:CreateAction" name="Array" description="Create a Arrayconcept" createConcept="DDS::Types::Array"/>
+  <item xsi:type="tool:CreateAction" name="String" description="Create a Stringconcept" createConcept="DDS::Types::String"/>
+  <item xsi:type="tool:CreateAction" name="Union" description="Create a Unionconcept" createConcept="DDS::Types::Union"/>
+  <item xsi:type="tool:CreateAction" name="ValueType" description="Create a ValueTypeconcept" createConcept="DDS::Types::ValueType"/>
+  <item xsi:type="tool:CreateAction" name="Case" description="Create a Caseconcept" createConcept="DDS::Types::Case"/>
+  <item xsi:type="tool:CreateAction" name="Boolean" description="Create a Booleanconcept" createConcept="DDS::Types::Boolean"/>
+  <item xsi:type="tool:CreateAction" name="Char" description="Create a Charconcept" createConcept="DDS::Types::Char"/>
+  <item xsi:type="tool:CreateAction" name="Enum" description="Create a Enumconcept" createConcept="DDS::Types::Enum"/>
+  <item xsi:type="tool:CreateAction" name="Octet" description="Create a Octetconcept" createConcept="DDS::Types::Octet"/>
+  <item xsi:type="tool:CreateAction" name="EnumLiteral" description="Create a EnumLiteralconcept" createConcept="DDS::Types::EnumLiteral"/>
+  <item xsi:type="tool:CreateAction" name="Short" description="Create a Shortconcept" createConcept="DDS::Types::Short"/>
+  <item xsi:type="tool:CreateAction" name="Integer" description="Create a Integerconcept" createConcept="DDS::Types::Integer"/>
+  <item xsi:type="tool:CreateAction" name="Long" description="Create a Longconcept" createConcept="DDS::Types::Long"/>
+  <item xsi:type="tool:CreateAction" name="LongLong" description="Create a LongLongconcept" createConcept="DDS::Types::LongLong"/>
+  <item xsi:type="tool:CreateAction" name="UInteger" description="Create a UIntegerconcept" createConcept="DDS::Types::UInteger"/>
+  <item xsi:type="tool:CreateAction" name="ULongLong" description="Create a ULongLongconcept" createConcept="DDS::Types::ULongLong"/>
+  <item xsi:type="tool:CreateAction" name="UShort" description="Create a UShortconcept" createConcept="DDS::Types::UShort"/>
+  <item xsi:type="tool:CreateAction" name="ULong" description="Create a ULongconcept" createConcept="DDS::Types::ULong"/>
+  <item xsi:type="tool:CreateAction" name="Double" description="Create a Doubleconcept" createConcept="DDS::Types::Double"/>
+  <item xsi:type="tool:CreateAction" name="Float" description="Create a Floatconcept" createConcept="DDS::Types::Float"/>
+  <item xsi:type="tool:CreateAction" name="Topic" description="Create a Topicconcept" createConcept="DDS::Topics::Topic"/>
+  <item xsi:type="tool:CreateAction" name="ContentFilteredTopic" description="Create a ContentFilteredTopicconcept" createConcept="DDS::Topics::ContentFilteredTopic"/>
+  <item xsi:type="tool:CreateAction" name="MultiTopic" description="Create a MultiTopicconcept" createConcept="DDS::Topics::MultiTopic"/>
+  <item xsi:type="tool:CreateAction" name="TopicField" description="Create a TopicFieldconcept" createConcept="DDS::Topics::TopicField"/>
+  <item xsi:type="tool:CreateAction" name="TopicType" description="Create a TopicTypeconcept" createConcept="DDS::Topics::TopicType"/>
+  <item xsi:type="tool:CreateAction" name="QoSProperty" description="Create a QoSPropertyconcept" createConcept="DDS::Domain::QoSProperty"/>
+  <item xsi:type="tool:CreateAction" name="Subscriber" description="Create a Subscriberconcept" createConcept="DDS::DCPS::Subscriber"/>
+  <item xsi:type="tool:CreateAction" name="Publisher" description="Create a Publisherconcept" createConcept="DDS::DCPS::Publisher"/>
+  <item xsi:type="tool:CreateAction" name="DataWriter" description="Create a DataWriterconcept" createConcept="DDS::DCPS::DataWriter"/>
+  <item xsi:type="tool:CreateAction" name="DataReader" description="Create a DataReaderconcept" createConcept="DDS::DCPS::DataReader"/>
+  <item xsi:type="tool:CreateAction" name="DataReaderWriter" description="Create a DataReaderWriterconcept" createConcept="DDS::DCPS::DataReaderWriter"/>
+  <item xsi:type="tool:CreateAction" name="DDSComponent" description="Create a DDSComponentconcept" createConcept="DDS::DCPS::DDSComponent"/>
+  <item xsi:type="tool:CreateAction" name="Domain" description="Create a Domainconcept" createConcept="DDS::DCPS::Domain"/>
+  <item xsi:type="tool:CreateAction" name="DomainParticipant" description="Create a DomainParticipantconcept" createConcept="DDS::DCPS::DomainParticipant"/>
+  <item xsi:type="tool:CreateAction" name="DomainTopic" description="Create a DomainTopicconcept" createConcept="DDS::DCPS::DomainTopic"/>
+  <item xsi:type="tool:CreateAction" name="ComponentPart" description="Create a ComponentPartconcept" createConcept="DDS::DCPS::ComponentPart"/>
+  <item xsi:type="tool:CreateAction" name="TopicConnector" description="Create a TopicConnectorconcept" createConcept="DDS::DCPS::TopicConnector"/>
+  <item xsi:type="tool:CreateAction" name="ParticipantEnd" description="Create a ParticipantEndconcept" createConcept="DDS::DCPS::ParticipantEnd"/>
+  <item xsi:type="tool:CreateAction" name="TopicEnd" description="Create a TopicEndconcept" createConcept="DDS::DCPS::TopicEnd"/>
+  <menu concept="DDS::DCPS::Domain" item="//@item.36"/>
+</tool:MenuModel>

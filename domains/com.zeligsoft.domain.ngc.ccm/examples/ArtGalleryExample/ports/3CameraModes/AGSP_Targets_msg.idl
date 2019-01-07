@@ -1,0 +1,28 @@
+/// @defgroup AGSP_Targets_msg Targets_msg
+/// @{
+/// 
+/// @file AGSP_Targets_msg.idl
+/// @brief Targets_msg message definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__3CAMERAMODES__AGSP_TARGETS_MSG_IDL
+#define CX_PORTS__3CAMERAMODES__AGSP_TARGETS_MSG_IDL
+
+#include "AGSP_Targets_defn.idl"
+#pragma ndds typesupport "AGSP_Targets_msgSupport.h"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @struct Targets_msg
+    struct Targets_msg {
+        long numTargets;
+        AGSP::TargetListType targetList;
+    }; //@top-level true
+};
+
+#endif // CX_PORTS__3CAMERAMODES__AGSP_TARGETS_MSG_IDL
+
+/// @}
+

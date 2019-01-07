@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zdlgen:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmlns:zdlgen="http://www.zeligsoft.com/zdl/2008/ZDLGen" xmi:id="_Y7yVEOf1Ed2bTpv9uufueA">
+  <ownedModel xmi:id="_Y7yVEef1Ed2bTpv9uufueA">
+    <element xmi:type="zdlgen:GenDomainBlock" xmi:id="_Y7yVEuf1Ed2bTpv9uufueA">
+      <relation xmi:type="zdlgen:GenDomainBlockImport" xmi:id="_Y7yVE-f1Ed2bTpv9uufueA">
+        <target href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_kAt9gjY9Ed2Inf2dgh9lvg"/>
+        <domainBlockRelation xmi:type="uml:PackageImport" href="DeploymentDomain.emx#_NtTx0OfyEd2odtmO_4xnUQ"/>
+      </relation>
+      <domainBlock href="DeploymentDomain.emx#_jjRqcOfwEd2odtmO_4xnUQ"/>
+    </element>
+    <element xmi:type="zdlgen:GenDomainSpecialization" xmi:id="_Y7yVFOf1Ed2bTpv9uufueA" pluginName="com.zeligsoft.cx.deployment.test" resourceName="/profiles/DeploymentTest.profile.uml">
+      <domainSpecialization href="DeploymentDomain.emx#_GWBgoOdBEd2EMdwp67NLFg"/>
+      <domainBlock xmi:id="_Y7yVFef1Ed2bTpv9uufueA" target="_Y7yVEuf1Ed2bTpv9uufueA">
+        <domainBlockReference href="DeploymentDomain.emx#_IEjZkOfyEd2odtmO_4xnUQ"/>
+      </domainBlock>
+    </element>
+    <domainModel href="DeploymentDomain.emx#_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  </ownedModel>
+  <referencedModel href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_auH80DdmEd2dD_ra-wEDmw"/>
+</zdlgen:GenModel>

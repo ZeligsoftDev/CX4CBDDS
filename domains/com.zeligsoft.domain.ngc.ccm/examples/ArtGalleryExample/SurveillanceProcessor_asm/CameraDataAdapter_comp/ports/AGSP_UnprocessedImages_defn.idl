@@ -1,0 +1,23 @@
+/// @defgroup AGSP_UnprocessedImages_defn UnprocessedImages_defn
+/// @{
+/// 
+/// @file AGSP_UnprocessedImages_defn.idl
+/// @brief UnprocessedImages_defn definitions definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__CAMERADATAADAPTER_COMP__PORTS__AGSP_UNPROCESSEDIMAGES_DEFN_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__CAMERADATAADAPTER_COMP__PORTS__AGSP_UNPROCESSEDIMAGES_DEFN_IDL
+
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef PixArray
+    typedef octet PixArray[19999-0+1];
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__CAMERADATAADAPTER_COMP__PORTS__AGSP_UNPROCESSEDIMAGES_DEFN_IDL
+
+/// @}
+

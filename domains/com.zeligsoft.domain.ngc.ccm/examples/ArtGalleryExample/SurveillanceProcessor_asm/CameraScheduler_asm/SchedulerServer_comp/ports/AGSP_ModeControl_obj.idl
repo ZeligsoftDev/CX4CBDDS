@@ -1,0 +1,37 @@
+/// @defgroup AGSP_ModeControl_obj ModeControl_obj
+/// @{
+/// 
+/// @file AGSP_ModeControl_obj.idl
+/// @brief ModeControl_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__CAMERASCHEDULER_ASM__SCHEDULERSERVER_COMP__PORTS__AGSP_MODECONTROL_OBJ_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__CAMERASCHEDULER_ASM__SCHEDULERSERVER_COMP__PORTS__AGSP_MODECONTROL_OBJ_IDL
+
+#include "AGSP_Common_defn.idl"
+#pragma ciao lem "AGSP_ModeControl_objE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    ///@interface ModeControl_obj 
+    interface ModeControl_obj {
+
+        /// @param[in] newMode
+        ///
+        /// @return
+        AGSP::ReturnStatus setMode(
+            in AGSP::SystemMode newMode
+            );
+
+        /// @return
+        AGSP::SystemMode getCurrentMode();
+    };
+
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__CAMERASCHEDULER_ASM__SCHEDULERSERVER_COMP__PORTS__AGSP_MODECONTROL_OBJ_IDL
+
+/// @}
+

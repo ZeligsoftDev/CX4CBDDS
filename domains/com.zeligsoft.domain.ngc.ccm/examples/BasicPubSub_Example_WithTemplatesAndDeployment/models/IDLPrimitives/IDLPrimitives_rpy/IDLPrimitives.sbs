@@ -1,0 +1,1111 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ ISubsystem 
+	- _id = GUID 32e5b23a-3e69-45e3-a578-4bece4e48f68;
+	- _myState = 8192;
+	- _name = "IDLPrimitives";
+	- Stereotypes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IHandle 
+			- _m2Class = "IStereotype";
+			- _filename = "PredefinedTypes.sbs";
+			- _subsystem = "PredefinedTypes";
+			- _class = "";
+			- _name = "ModelLibrary";
+			- _id = GUID 8518812a-fc16-43c2-80fa-e34d61c1ca6c;
+		}
+	}
+	- _modifiedTimeWeak = 5.7.2014::15:44:13;
+	- _lastID = 19;
+	- weakCGTime = 5.7.2014::15:44:13;
+	- strongCGTime = 5.7.2014::15:35:42;
+	- _defaultComposite = GUID 2e78c6e8-3970-4ca3-a1ba-a6f139b9a914;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID 2e78c6e8-3970-4ca3-a1ba-a6f139b9a914;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 1.2.1990::0:0:0;
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- Types = { IRPYRawContainer 
+		- size = 19;
+		- value = 
+		{ IType 
+			- _id = GUID b2bb061a-2152-449b-b878-8908cb97fed5;
+			- _myState = 8192;
+			- _name = "CORBAAny";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:41:11;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 15ed74de-40f2-4a3b-8084-bd2b420d4753;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:36:14;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 188457e7-5b9f-4ec7-89b2-31252b911a57;
+							- _modifiedTimeWeak = 5.7.2014::15:36:14;
+							- _value = "CORBAAny";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 7c5313f9-c0dc-49d8-bd2a-61ed8998d9ae;
+			- _myState = 8192;
+			- _name = "CORBABoolean";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:37:23;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID eade4295-8b1f-456e-9000-f1605c4db960;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:37:23;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID eef587ba-7ac8-4862-aec3-1a0f059dd5d3;
+							- _modifiedTimeWeak = 5.7.2014::15:37:23;
+							- _value = "CORBABoolean";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 435fd03f-ff2d-4e82-83d4-d44c81f17e38;
+			- _myState = 8192;
+			- _name = "CORBAChar";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:37:56;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 5ddd044f-e17e-45c6-a2ea-79e44f8a934d;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:37:56;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID c8cf406e-1543-41ad-bc1d-b827d76f068c;
+							- _modifiedTimeWeak = 5.7.2014::15:37:56;
+							- _value = "CORBAChar";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID f51abf5e-f06c-4379-9e68-8314b7a8fc37;
+			- _myState = 8192;
+			- _name = "CORBADouble";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:38:19;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 5e2dbc23-d2bc-4625-b915-2f815e4760ec;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:38:19;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 04b91b1d-7e99-4013-b5e9-02e2b22cd163;
+							- _modifiedTimeWeak = 5.7.2014::15:38:19;
+							- _value = "CORBADouble";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID fb5bfba1-f276-4c5a-85b8-1faff684197c;
+			- _myState = 8192;
+			- _name = "CORBAFloat";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:38:42;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID fca06c88-1890-491a-9ffc-866e7e6f8757;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:38:42;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID e185ffef-7e68-4e55-9876-65fb6fd6fcec;
+							- _modifiedTimeWeak = 5.7.2014::15:38:42;
+							- _value = "CORBAFloat";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID f05eb06b-7ead-47f7-8c64-f084a381cb80;
+			- _myState = 8192;
+			- _name = "CORBALong";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:39:7;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 5ea2aa2e-4c6b-42a7-bdbd-82c133ef4db3;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:39:7;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 9772026e-2b58-407e-b77e-f36686439f66;
+							- _modifiedTimeWeak = 5.7.2014::15:39:7;
+							- _value = "CORBALong";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 1e40a2c0-0059-4ead-8f94-138b97e1c4b1;
+			- _myState = 8192;
+			- _name = "CORBALongDouble";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:39:29;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID efad61c6-359a-4086-b41e-725341170680;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:39:29;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 0c325ce1-96c3-4036-8a97-67f4f89557e1;
+							- _modifiedTimeWeak = 5.7.2014::15:39:29;
+							- _value = "CORBALongDouble";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID deeb6de9-1651-4efe-93b2-dab13c11633f;
+			- _myState = 8192;
+			- _name = "CORBALongLong";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:39:49;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 376dc152-3993-4c0a-9667-9c71267348f3;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:39:49;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 8145462a-7e44-4174-8446-023adf61a769;
+							- _modifiedTimeWeak = 5.7.2014::15:39:49;
+							- _value = "CORBALongLong";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 3f07b0a6-b57d-488f-8cfa-dc3c318631f3;
+			- _myState = 8192;
+			- _name = "CORBAObjref";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:40:14;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 6c8bbda1-f1d2-49ea-9a06-0fcf7c44b740;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:40:14;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID f86bcbed-e5db-468c-b4b6-91c36bd789f7;
+							- _modifiedTimeWeak = 5.7.2014::15:40:14;
+							- _value = "CORBAObjectRef";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 985f8c85-e327-4b98-82e2-dfd5490e6307;
+			- _myState = 8192;
+			- _name = "CORBAOctet";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:40:37;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 324decd1-8b3f-451d-8555-331c0b718c28;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:40:37;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 6b26d02b-4707-4e40-883f-003c9e74ce92;
+							- _modifiedTimeWeak = 5.7.2014::15:40:37;
+							- _value = "CORBAOctet";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 2760ecf2-c4e3-43fe-b967-b282f2d758ef;
+			- _myState = 8192;
+			- _name = "CORBAShort";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:40:55;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 1d00055d-87c1-4bc2-a578-b2e7bc22fc78;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:40:55;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID fa540890-2e19-4898-b041-97699794f3cc;
+							- _modifiedTimeWeak = 5.7.2014::15:40:55;
+							- _value = "CORBAShort";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+			- _myState = 8192;
+			- _name = "CORBAString";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:41:30;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 8acb961f-36d8-4af3-999a-9041bd63592a;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:41:30;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID f8a75f1b-a4fc-4b7f-a64b-b86bf51c9e06;
+							- _modifiedTimeWeak = 5.7.2014::15:41:30;
+							- _value = "CORBAString";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID cb8ba6a9-25f2-438f-833b-24bb54038d9c;
+			- _myState = 8192;
+			- _name = "CORBATypecode";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:41:49;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 3cdc7359-626e-4fcf-b752-6096ffbef5d9;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:41:49;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID a19181ce-2d30-4efb-8c55-8e55a190c536;
+							- _modifiedTimeWeak = 5.7.2014::15:41:49;
+							- _value = "CORBATypecode";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 271b2f89-f4ac-416b-8dd7-afc85e389803;
+			- _myState = 8192;
+			- _name = "CORBAULong";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:42:14;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID d3a30b70-0281-460b-98f9-c88059177e1a;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:42:14;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 655297da-1e82-4e53-b878-6d73ac3c65d5;
+							- _modifiedTimeWeak = 5.7.2014::15:42:14;
+							- _value = "CORBAUnsignedLong";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 3bd59889-8f13-4592-b1db-2046210391a8;
+			- _myState = 8192;
+			- _name = "CORBAULongLong";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:42:36;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID dfc3878f-8d94-4249-a2fc-797cb1f7ff52;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:42:36;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 740b76a2-3fee-4cb1-bd43-72c94c1b96d6;
+							- _modifiedTimeWeak = 5.7.2014::15:42:36;
+							- _value = "CORBAUnsignedLongLong";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID bbe95e62-b321-4387-91fe-8d185a35918d;
+			- _myState = 8192;
+			- _name = "CORBAUShort";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:43:4;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 879ffc6c-e73e-42b5-8f65-523c9ea8a71d;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:43:4;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 20d18224-5f19-44bd-949b-e8cb0da8d320;
+							- _modifiedTimeWeak = 5.7.2014::15:43:4;
+							- _value = "CORBAUnsignedShort";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID 03a1699e-b758-478b-b3ba-457da687a54b;
+			- _myState = 8192;
+			- _name = "CORBAVoid";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:43:28;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID ae6245c5-2ba3-4225-a18e-6ed1f93c3b69;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:43:28;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID e9003f9c-8a3f-4d82-afe9-5a47aec4fcee;
+							- _modifiedTimeWeak = 5.7.2014::15:43:28;
+							- _value = "CORBAVoid";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID f8da50f3-c791-47c5-a925-e0baba2f96ad;
+			- _myState = 8192;
+			- _name = "CORBAWChar";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:43:52;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 41d47851-d91f-4202-8360-09111a89061f;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:43:52;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 1c110bf5-c5e5-4877-9c13-bf97370f6ceb;
+							- _modifiedTimeWeak = 5.7.2014::15:43:52;
+							- _value = "CORBAWChar";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+		{ IType 
+			- _id = GUID dd533ed2-1ef4-4aea-9eb8-ba8752452dd0;
+			- _myState = 8192;
+			- _name = "CORBAWString";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAPrimitive";
+					- _id = GUID f9bb9d9d-18e8-4bfc-af54-c12607256cea;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::15:44:13;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 4df1519b-60e7-429b-abfd-7ddb5541f894;
+					- _myState = 8192;
+					- _name = "type";
+					- _modifiedTimeWeak = 5.7.2014::15:44:13;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID bfec04ab-fddc-4f14-8b49-a8a3dba5455b;
+							- _modifiedTimeWeak = 5.7.2014::15:44:13;
+							- _value = "CORBAWString";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBAPrimitiveKind";
+						- _id = GUID 174230a9-3186-465b-8c64-0730f270e668;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAPrimitive";
+						- _name = "type";
+						- _id = GUID 500d2795-024d-49bb-b662-f315b8c1370a;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+	}
+	- _configurationRelatedTime = 12.31.1969::19:0:0;
+}
+

@@ -1,0 +1,29 @@
+/// @defgroup AMIT_LocalImpl_comp LocalImpl_comp
+/// @{
+/// 
+/// @file AMIT_LocalImpl_comp.idl
+/// @brief LocalImpl_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_COMPONENTS__LOCAL_COMP__SRC__AMIT_LOCALIMPL_COMP_IDL
+#define CX_COMPONENTS__LOCAL_COMP__SRC__AMIT_LOCALIMPL_COMP_IDL
+
+#pragma componentInterface "Local_comp" 
+#include <Components.idl>
+#pragma ciao lem "AMIT_LocalImpl_compE.idl"
+#pragma ami4ccm receptacle "AMIT::LocalImpl_comp::Control1Client"
+#include "AMIT_Control1_obj.idl"
+
+/// @namespace AMIT 
+module AMIT {
+    component LocalImpl_comp {
+        uses AMIT::Control1_obj Control1Client;
+    };
+
+};
+
+#endif // CX_COMPONENTS__LOCAL_COMP__SRC__AMIT_LOCALIMPL_COMP_IDL
+
+/// @}
+

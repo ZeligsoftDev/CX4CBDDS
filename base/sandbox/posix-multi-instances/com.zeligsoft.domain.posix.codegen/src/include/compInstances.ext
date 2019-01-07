@@ -1,0 +1,32 @@
+import langc;
+import ZMLMM::ZML_Deployments;
+import POSIX::POSIX;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+
+extension langc::element;
+extension langc::expr;
+extension langc::stmt;
+extension langc::type;
+
+extension template::name;
+extension template::utils;
+extension include::compInterface;
+
+create ElementList getCompInstanceFile(ComponentInterface ci, DeploymentPart target) :
+	setName(ci.compInstanceIncludeFileName(target))
+;
+
+cached ElementList genCompInstanceFile(ComponentInterface ci, DeploymentPart source) :
+	let target = source.getTargetForSourcePart() :
+	let compInstanceFile = ci.getCompInstanceFile(target) :
+	compInstanceFile.addElement(getMultiInstanceNames(source.modelElement).genInstanceVariable(ci))
+	-> compInstanceFile
+;
+
+cached VariableDeclaration genInstanceVariable(String instName, ComponentInterface ci) :
+	let v = variable(ci.compInterfaceStruct().constPtr(), instName) :
+	v.setLinkage(extern())
+	-> v
+;
+

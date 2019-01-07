@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension point="com.ibm.xtools.uml.msl.UMLLibraries">
+      <UMLLibrary
+         name="eorb16-linux-gcc-arm"
+         path="pathmap://BUILD_CONFIG_EORB16_LINUX_GCC_ARM/eorb16-linux-gcc-arm.library.uml">
+      </UMLLibrary>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://BUILD_CONFIG_EORB16_LINUX_GCC_ARM/"
+            target="platform:/plugin/com.prismtech.spectracx.target.eorb16-linux-gcc-arm/models/">
+      </mapping>
+   </extension>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="docs_toc.xml"
+            primary="true">
+      </toc>
+   </extension>
+   <extension
+         point="com.zeligsoft.base.licensing.license_check">
+      <license_check
+            class="com.prismtech.spectracx.target.eorb16_linux_gcc_arm.LicenseListener">
+      </license_check>
+   </extension>
+</plugin>

@@ -1,0 +1,1057 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:DeploymentPlan
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
+    xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>PubSubAttachment</label>
+  <UUID>b6cec6c0-b1ec-4c3c-afd8-3e6db95bb03f</UUID>
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source/>
+    <artifact xmi:idref="CompSvrArt"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="_4fdc467f-8044-4767-b6f8-e94c1f838bbd">
+    <name>PSAT_Publisher_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_070265b9-1884-489e-90c8-e95178aaa0e9"/>
+    <artifact xmi:idref="_32a870b2-3e55-49af-a4ec-a48e64bb893c"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PSAT_Publisher_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSAT_Publisher_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PSAT_Publisher_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSAT_Publisher_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.dre.vanderbilt.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="_54e015a6-939b-4ebb-a56c-82de273d144e">
+    <name>PSAT_Subscriber_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_2f8e0ce8-45de-4b05-80c9-bd4845413eb8"/>
+    <artifact xmi:idref="_234afe83-cf3f-45cf-9a68-974007366beb"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PSAT_Subscriber_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSAT_Subscriber_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PSAT_Subscriber_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSAT_Subscriber_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.dre.vanderbilt.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="_1be9134d-3837-4788-9ed2-e692751f1ca6">
+    <name>PSAT_Example_UDM_conn</name>
+    <source/>
+    <artifact xmi:idref="_77753867-376d-44a2-acf2-bdef5483dae3"/>
+    <artifact xmi:idref="_a86b1b67-879c-40c8-8168-ec27c267dbe2"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PSAT_Example_UDM_conn_PSAT_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSAT_Example_UDM_conn_PSAT_Event_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PSAT_Example_UDM_conn_PSAT_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSAT_Example_UDM_conn_PSAT_Event_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.dre.vanderbilt.CCM.Connector</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <instance xmi:id="_cf7d2480-3b5c-41aa-9511-563fe18e7705">
+    <name>PubSubAttachment_asm.PSAT_Publisher1</name>
+    <node>PSAT_Publishers_Node</node>
+    <source/>
+    <implementation xmi:idref="_4fdc467f-8044-4767-b6f8-e94c1f838bbd"/>
+    <configProperty>
+      <name>compID</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>1</long>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_f47e7cb3-5875-41dd-8898-436d788c6ac2">
+    <name>PubSubAttachment_asm.PSAT_Publisher2</name>
+    <node>PSAT_Publishers_Node</node>
+    <source/>
+    <implementation xmi:idref="_4fdc467f-8044-4767-b6f8-e94c1f838bbd"/>
+    <configProperty>
+      <name>compID</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>2</long>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_e992f730-9e88-4796-83d1-b55c9c293b0d">
+    <name>PubSubAttachment_asm.PSAT_Subscriber1</name>
+    <node>PSAT_Subscribers_Node</node>
+    <source/>
+    <implementation xmi:idref="_54e015a6-939b-4ebb-a56c-82de273d144e"/>
+  </instance>
+  <instance xmi:id="_2ac06b67-a5e1-4ce7-960d-8c4055399c69">
+    <name>PubSubAttachment_asm.PSAT_Subscriber2</name>
+    <node>PSAT_Subscribers_Node</node>
+    <source/>
+    <implementation xmi:idref="_54e015a6-939b-4ebb-a56c-82de273d144e"/>
+  </instance>
+  <instance xmi:id="_bfc9f2d9-7a46-4e45-a81d-2c07ce6d667a">
+    <name>PublisherProcess1_ComponentServerInstance</name>
+    <node>PSAT_Publishers_Node</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PublisherProcess1</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_812d1329-6f44-43b5-a562-14b84e358c87">
+    <name>PublisherProcess2_ComponentServerInstance</name>
+    <node>PSAT_Publishers_Node</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PublisherProcess2</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_a8765bf4-cc80-4b5c-b700-ff9b10df53b8">
+    <name>SubscriberProcess1_ComponentServerInstance</name>
+    <node>PSAT_Subscribers_Node</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SubscriberProcess1</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_2e54ff12-e0fe-4070-b40b-6ca7b2017744">
+    <name>SubscriberProcess2_ComponentServerInstance</name>
+    <node>PSAT_Subscribers_Node</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SubscriberProcess2</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_68e5af60-dff6-4cfa-a03a-197a77ef5eff">
+    <name>
+      PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Publishers_Node.PublisherProcess1
+    </name>
+    <node>PSAT_Publishers_Node</node>
+    <source/>
+    <implementation xmi:idref="_1be9134d-3837-4788-9ed2-e692751f1ca6"/>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>25</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>max_sample_size</name>
+      <value>
+        <type>
+          <kind>tk_longlong</kind>
+        </type>
+        <value>
+          <longlong>8000</longlong>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples::PSAT_Example</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA#SNA_Default</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_07f480fc-5f2a-4f96-9aa7-53431540d5b6">
+    <name>
+      PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess1
+    </name>
+    <node>PSAT_Subscribers_Node</node>
+    <source/>
+    <implementation xmi:idref="_1be9134d-3837-4788-9ed2-e692751f1ca6"/>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>25</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>max_sample_size</name>
+      <value>
+        <type>
+          <kind>tk_longlong</kind>
+        </type>
+        <value>
+          <longlong>8000</longlong>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples::PSAT_Example</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA#SNA_Default</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_c55c2023-90a0-4a1c-8711-84fa625873f4">
+    <name>
+      PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Publishers_Node.PublisherProcess2
+    </name>
+    <node>PSAT_Publishers_Node</node>
+    <source/>
+    <implementation xmi:idref="_1be9134d-3837-4788-9ed2-e692751f1ca6"/>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>25</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>max_sample_size</name>
+      <value>
+        <type>
+          <kind>tk_longlong</kind>
+        </type>
+        <value>
+          <longlong>8000</longlong>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples::PSAT_Example</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA#SNA_Default</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_2c6dc431-3feb-4d55-9e3f-6dc2cdfb1e0b">
+    <name>
+      PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess2
+    </name>
+    <node>PSAT_Subscribers_Node</node>
+    <source/>
+    <implementation xmi:idref="_1be9134d-3837-4788-9ed2-e692751f1ca6"/>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>25</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>max_sample_size</name>
+      <value>
+        <type>
+          <kind>tk_longlong</kind>
+        </type>
+        <value>
+          <longlong>8000</longlong>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples::PSAT_Example</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA#SNA_Default</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Publisher1.numArrayPub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Publishers_Node.PublisherProcess1.supplier_status
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArrayPub_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_cf7d2480-3b5c-41aa-9511-563fe18e7705"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_68e5af60-dff6-4cfa-a03a-197a77ef5eff"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Publisher1.numArrayPub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Publishers_Node.PublisherProcess1.supplier_dds_entity
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArrayPub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_cf7d2480-3b5c-41aa-9511-563fe18e7705"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_68e5af60-dff6-4cfa-a03a-197a77ef5eff"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Publisher1.numArrayPub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Publishers_Node.PublisherProcess1.supplier_data
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArrayPub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_cf7d2480-3b5c-41aa-9511-563fe18e7705"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_68e5af60-dff6-4cfa-a03a-197a77ef5eff"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Subscriber1.numArraySub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess1.consumer_listener
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySub_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_e992f730-9e88-4796-83d1-b55c9c293b0d"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_07f480fc-5f2a-4f96-9aa7-53431540d5b6"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Subscriber1.numArraySub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess1.consumer_status
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySub_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_e992f730-9e88-4796-83d1-b55c9c293b0d"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_07f480fc-5f2a-4f96-9aa7-53431540d5b6"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Subscriber1.numArraySub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess1.consumer_attachment_control
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySub_attachment_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_e992f730-9e88-4796-83d1-b55c9c293b0d"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_attachment_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_07f480fc-5f2a-4f96-9aa7-53431540d5b6"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Subscriber1.numArraySub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess1.consumer_filter_config
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySub_filter_config</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_e992f730-9e88-4796-83d1-b55c9c293b0d"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_filter_config</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_07f480fc-5f2a-4f96-9aa7-53431540d5b6"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Subscriber1.numArraySub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess1.consumer_dds_entity
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_e992f730-9e88-4796-83d1-b55c9c293b0d"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_07f480fc-5f2a-4f96-9aa7-53431540d5b6"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Subscriber1.numArraySub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess1.consumer_listener_control
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySub_listener_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_e992f730-9e88-4796-83d1-b55c9c293b0d"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_listener_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_07f480fc-5f2a-4f96-9aa7-53431540d5b6"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Publisher2.numArrayPub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Publishers_Node.PublisherProcess2.supplier_status
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArrayPub_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_f47e7cb3-5875-41dd-8898-436d788c6ac2"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_c55c2023-90a0-4a1c-8711-84fa625873f4"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Publisher2.numArrayPub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Publishers_Node.PublisherProcess2.supplier_dds_entity
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArrayPub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_f47e7cb3-5875-41dd-8898-436d788c6ac2"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_c55c2023-90a0-4a1c-8711-84fa625873f4"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Publisher2.numArrayPub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Publishers_Node.PublisherProcess2.supplier_data
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArrayPub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_f47e7cb3-5875-41dd-8898-436d788c6ac2"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_c55c2023-90a0-4a1c-8711-84fa625873f4"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Subscriber2.numArraySub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess2.consumer_listener
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySub_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_2ac06b67-a5e1-4ce7-960d-8c4055399c69"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_2c6dc431-3feb-4d55-9e3f-6dc2cdfb1e0b"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Subscriber2.numArraySub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess2.consumer_status
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySub_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_2ac06b67-a5e1-4ce7-960d-8c4055399c69"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_2c6dc431-3feb-4d55-9e3f-6dc2cdfb1e0b"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Subscriber2.numArraySub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess2.consumer_attachment_control
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySub_attachment_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_2ac06b67-a5e1-4ce7-960d-8c4055399c69"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_attachment_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_2c6dc431-3feb-4d55-9e3f-6dc2cdfb1e0b"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Subscriber2.numArraySub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess2.consumer_filter_config
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySub_filter_config</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_2ac06b67-a5e1-4ce7-960d-8c4055399c69"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_filter_config</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_2c6dc431-3feb-4d55-9e3f-6dc2cdfb1e0b"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Subscriber2.numArraySub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess2.consumer_dds_entity
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_2ac06b67-a5e1-4ce7-960d-8c4055399c69"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_2c6dc431-3feb-4d55-9e3f-6dc2cdfb1e0b"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      PubSubAttachment_asm.PSAT_Subscriber2.numArraySub::PubSubAttachment_asm.SNA_Examples.doc.PubSubAttachment_asm.PSAT_Example_UDM_conn@PSAT_Subscribers_Node.SubscriberProcess2.consumer_listener_control
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySub_listener_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_2ac06b67-a5e1-4ce7-960d-8c4055399c69"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_listener_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_2c6dc431-3feb-4d55-9e3f-6dc2cdfb1e0b"/>
+    </internalEndpoint>
+  </connection>
+  
+  <connection>
+    <name>ConnectorStatusListener_Missing_Connection_Pub1</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArrayPubConnStatus</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_cf7d2480-3b5c-41aa-9511-563fe18e7705"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_68e5af60-dff6-4cfa-a03a-197a77ef5eff"/>
+    </internalEndpoint>
+  </connection>
+  
+  <connection>
+    <name>ConnectorStatusListener_Missing_Connection_Pub2</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArrayPubConnStatus</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_f47e7cb3-5875-41dd-8898-436d788c6ac2"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_c55c2023-90a0-4a1c-8711-84fa625873f4"/>
+    </internalEndpoint>
+  </connection>
+  
+  <connection>
+    <name>ConnectorStatusListener_Missing_Connection_Sub1</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySubConnStatus</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_e992f730-9e88-4796-83d1-b55c9c293b0d"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_07f480fc-5f2a-4f96-9aa7-53431540d5b6"/>
+    </internalEndpoint>
+  </connection>
+  
+  <connection>
+    <name>ConnectorStatusListener_Missing_Connection_Sub2</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numArraySubConnStatus</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_2ac06b67-a5e1-4ce7-960d-8c4055399c69"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_2c6dc431-3feb-4d55-9e3f-6dc2cdfb1e0b"/>
+    </internalEndpoint>
+  </connection>
+  
+  <artifact xmi:id="CompSvrArt">
+    <name>CompoSvrArtifactName</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+  <artifact xmi:id="_32a870b2-3e55-49af-a4ec-a48e64bb893c">
+    <name>SNA_Examples_PSAT_Publisher_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PSAT_Publisher_comp_exec</location>
+  </artifact>
+  <artifact xmi:id="_234afe83-cf3f-45cf-9a68-974007366beb">
+    <name>SNA_Examples_PSAT_Subscriber_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PSAT_Subscriber_comp_exec</location>
+  </artifact>
+  <artifact xmi:id="_070265b9-1884-489e-90c8-e95178aaa0e9">
+    <name>SNA_Examples_PSAT_Publisher_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PSAT_Publisher_comp_svnt</location>
+  </artifact>
+  <artifact xmi:id="_2f8e0ce8-45de-4b05-80c9-bd4845413eb8">
+    <name>SNA_Examples_PSAT_Subscriber_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PSAT_Subscriber_comp_svnt</location>
+  </artifact>
+  <artifact xmi:id="_a86b1b67-879c-40c8-8168-ec27c267dbe2">
+    <name>SNA_Examples_PSAT_Example_UDM_conn_PSAT_Event_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PSAT_Example_UDM_conn_exec</location>
+  </artifact>
+  <artifact xmi:id="_77753867-376d-44a2-acf2-bdef5483dae3">
+    <name>SNA_Examples_PSAT_Example_UDM_conn_PSAT_Event_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PSAT_Example_UDM_conn_svnt</location>
+  </artifact>
+  <localityConstraint>
+    <!-- Publisher1 -->
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="_bfc9f2d9-7a46-4e45-a81d-2c07ce6d667a"/>
+    <constrainedInstance xmi:idref="_cf7d2480-3b5c-41aa-9511-563fe18e7705"/>
+    <constrainedInstance xmi:idref="_68e5af60-dff6-4cfa-a03a-197a77ef5eff"/>
+  </localityConstraint>
+  <localityConstraint>
+    <!-- Publisher2 -->
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="_812d1329-6f44-43b5-a562-14b84e358c87"/>
+    <constrainedInstance xmi:idref="_f47e7cb3-5875-41dd-8898-436d788c6ac2"/>
+    <constrainedInstance xmi:idref="_c55c2023-90a0-4a1c-8711-84fa625873f4"/>
+  </localityConstraint>
+  <localityConstraint>
+    <!-- Subscriber1 -->
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="_a8765bf4-cc80-4b5c-b700-ff9b10df53b8"/>
+    <constrainedInstance xmi:idref="_e992f730-9e88-4796-83d1-b55c9c293b0d"/>
+    <constrainedInstance xmi:idref="_07f480fc-5f2a-4f96-9aa7-53431540d5b6"/>
+  </localityConstraint>
+  <localityConstraint>
+    <!-- Subscriber2 -->
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="_2e54ff12-e0fe-4070-b40b-6ca7b2017744"/>
+    <constrainedInstance xmi:idref="_2ac06b67-a5e1-4ce7-960d-8c4055399c69"/>
+    <constrainedInstance xmi:idref="_2c6dc431-3feb-4d55-9e3f-6dc2cdfb1e0b"/>
+  </localityConstraint>
+</Deployment:DeploymentPlan>

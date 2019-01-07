@@ -1,0 +1,170 @@
+<head>
+	<title>Anatomy of Component-Oriented Engineering</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="coeanatomy.html" title="Anatomy of Component-Oriented Engineering">
+		<h1>Anatomy of Component-Oriented Engineering</h1>
+		<p>This topic provides an introduction to the concept of Component-Oriented Engineering.</p>
+		<h2>What is Component-Oriented Engineering?</h2>
+		<p>Component Oriented Engineering (COE) pulls together a number of different software engineering concepts and combines them with 
+			the goal of improving the art of software development. Benefits include improvements in product quality and development 
+			times (building better products faster), but also improvements in the run-time properties of a system as for example more 
+			data throughput, higher density of calls or reduced processor load, memory footprint or latency.</p>
+		<p>One of the benefits of COE is that it can generate code that is perfectly adapted to the environment of a particular system. In 
+			many current day projects the software development team has a lot of knowledge as to how to build software for their domain. 
+			COE can be customized through domain specific modeling to visualize and automate that knowledge to offload the development team and 
+			allow them to make the next jump in software development productivity.</p>
+		<h2>COE Concepts</h2>
+		<p>The following sections details the COE concepts used to build systems.</p>
+		<h3>Components</h3>
+		<p>COE is based around structuring applications as assemblies of components. Components have been said to deliver benefits 
+			above and beyond what objects promised to deliver in object oriented development. COE uses components to represent 
+			all layers of a software-intensive system. Examples of these systems are the nodes in a wireless infrastructure network, 
+			the infotainment system in a vehicle, industrial control applications, aerospace and defense applications and many more. </p>
+		<h3>Interfaces</h3>
+		<p>A component has a purpose -- provides a service  -- and performs that purpose well. A component may need to communicate with other 
+			components to provide the service; this required communication is indicated on the interface of the component. </p>
+		<p>The interface of a component is indicated through ports that provide and require services. The ports ensure the encapsulation of the 
+			component and delegate communication. Ports receive messages for a component; the component performs its behaviour and send responses 
+			out to the environment.</p>
+		<h3>Layering</h3>
+		<p>When COE refers to layers in a system, it refers to the software layers, the logical platform (or service layers) as well as the physical 
+			platform layers. Every layer provides services to the layers above and uses services from the layers below.</p>
+		<p>Layering is an often-used architectural concept that provides de-coupling between layers. De-coupling allows layers to evolve 
+			independently of one-another, which is crucial in large development projects. Evolve independently here means that design, implementation, 
+			test, release and maintenance cycles can happen for one layer independently of any other layer.</p>
+		<h3>Assemblies</h3>
+		<p>The layers in a COE design are built-up as assemblies of components, each component is an independent entity and encapsulates it contents 
+			through its well-defined interface. Components can be assembled into larger entities. To this extent components are connected together through 
+			connectors. The assembled components represent another, larger component. The final assembly of components is the layer. An assembly does 
+			not limit itself to execution on a particular processor or process space.</p>
+		<p>The whole nature of an assembly is a set of communicating components. The assembly description is platform independent by nature; 
+			deployment (allocation) of parts of the assembly to execution environments is deferred until a later part of the development cycle. 
+			This provides support for late-binding, which provides the development team with the option to delay decisions until later in the development 
+			process where they have more information to base these decisions on. It also offers the design team the ability to revisit these decisions 
+			and make changes easily and unobtrusively.</p>
+		<h3>Domain Specialization</h3>
+		<p>The concept of a component that we introduced is an example of a domain specific concept. It embodies a well-encapsulated, structural 
+			entity that a developer can use to describe part of the behavior of the system in a re-usable container. The entity can then be generated 
+			into compiled and executable source code.</p>
+		<p>The component concept is but one of many cases where it can be beneficial for the software development team to customize the language 
+			they use to conceive, design and build systems - their domain. The ability to customize the software tools for a domain is known as 
+			Domain Specific Modeling (DSM) using Domain Specific Languages (DSL) or domain specialization. Some other examples of concepts that can be 
+			embodied in Domain Specific Languages are the events and alarms in network infrastructure systems, traffic events in an infotainment device, 
+			and configuration of specific paper types in a high-speed printer.</p>
+		<p>A DSL is created by the domain experts, it captures the knowledge that the software development team has about the domain that they are 
+			building products for. Translation from the domain concepts to implementation concepts is also built by these domain experts. The result 
+			is really a development environment with a raised abstraction level, it re-uses the domain knowledge of the development team to increase 
+			productivity.</p>
+		<h2>Component Details</h2>
+		<p>The following sections provide more detail on the ideas and concepts introduced above.</p>
+		<h3>Component Interface</h3>
+		<p>The component interface defines the provided and required interfaces that the component uses to communicate with its environment. 
+			The component interface also defines properties. Properties are configurable parameters of the component interface, it allows the 
+			interface to be configured for a specific use. For example, if the component interface describes the interface for a phone switch, 
+			a property could describe the maximum number of calls that the component is able to handle. </p>
+		<p>The communication a component can perform is done through ports, named and typed elements on the components interface that allow 
+			for the receipt and sending of named messages with information. The messages on the port are defined through PortTypes. PortTypes 
+			are a set of incoming and outgoing interfaces used for communication.</p>
+		<p>Component interfaces are platform independent by definition. The interface describes the communication that a component will be able to 
+			provide, and has no relation to the communication technology that will be used in the final implementation.</p>
+		<h3>PortTypes and Interfaces</h3>
+		<p>Interfaces are a grouping of cohesive operations. That is, operations that are related and are used to achieve a particular purpose. 
+			For example a callSetup interface with addCall and removeCall operations, or a locationInformation interface with a currentLocation operation. 
+			Interfaces are uni-directional. </p>
+		<p>The operations within an interface can be either synchronous or asynchronous, blocking or non-blocking respectively.</p>
+		<p>PortTypes define a complete bi-directional collaboration between two parties through a set of incoming and outgoing interfaces. PortTypes 
+			are applied to ports.</p>
+		<p>Every PortType also has an inverse, which conjugates the incoming and outgoing interfaces. A port based on PortType X can communicate 
+			with a port based on the inverse of PortType X. PortType compatibility is defined as the fact that the receiver needs to be able to 
+			receive at least those operations that the sender is able to send.</p>
+		<h3>Component Realization</h3>
+		<p>A component interface is realized by a component realization, the realization is the modeling entity that ensures that the messages on 
+			the ports of the component interface are handled. A single component interface can be realized by one or more component realizations.</p>
+		<p>A component realization can come in the form of structure, that is, the component contains an assembly of component parts. The messages 
+			on the interface of the component are delivered to its parts for processing. The parts within the realization are defined by component 
+			interfaces, which themselves have component realizations, thereby allowing for an unlimited level of hierarchical structure.</p>
+		<p>A component realization can also come in the form of a behavioural description. This behavioural description can be code in a programming 
+			language (C, C++, Java, Ada, Perl, etc), but can also be a description in other modeling paradigms, for example IBM Rational RoseRT or 
+			IBM Rational Rhapsody.</p>
+		<p>Component realizations can contain a mix of behaviour and structure. Some of the ports on a component interface can be implemented in 
+			structure and some of it in behaviour.</p>
+		<h3>Component Structure</h3>
+		<p>The component realization can be defined through structure, an assembly of component parts connected through connectors. </p>
+		<p>A component part defines an instance of a component interface that will be present at run-time, a part is to a component-interface 
+			what an attribute is to the class that defines that attribute (in C++ or Java for example). The ports on the parts in a structure can be 
+			connected together, only compatible ports can be connected together.</p>
+		<h3>Component Implementation</h3>
+		<p>As mentioned in the previous section, a component realization can contain behaviour in source code format, either 3GL type or executable 
+			languages like executable UML. When a component realization contains behaviour, then it also contains one or more implementation. The 
+			reason for the implementation is to represent the platform specific information with relation to the code. These dependencies are settings 
+			like compilation flags, libraries, inclusion paths and the like. The implementation also contains code that is specific to a particular
+			 operating environment, for example code to handle device level issues if required.</p>
+		<p>Platform independence is important in embedded systems. One question to answer when striving for platform independence is what the 
+			application needs to be independent of. In COE the separation between Component Interface, Component Realization and Component Implementations 
+			provides this flexibility with regards to independence.</p>
+		<h2>Physical and Logical Layers</h2>
+		<p>The days that an embedded system was just a couple of threads, executing on an embedded processor are past. Today's embedded systems 
+			contain multiple process spaces, multiple processors, fast communication busses and so forth.</p>
+		<p>COE recognizes this and allows the design team to express these concepts, again, in a domain specific fashion. The logical and physical 
+			layers are model-representations of these layers. The layers are usually the responsibility of a 'platforms' or 'HAL' team, though this 
+			team has different names in different organizations. The model is there to represent the artifacts that this team has developed.</p>
+		<h3>Physical Platform</h3>
+		<p>This layer describes the actual processing environment that the software will execute on. In many domains this is an optional layer. 
+			The physical layer is important if the design team wants to include real-time considerations in their modeling, for example by using the 
+			MARTE  standard.</p>
+		<p>Concepts in the physical platform would be the processors used, for example PPC, ARM, or system-on-chip processors like the TIC6488. 
+			Systems can be as simple as a single board, or as complex as a multi-card ATCA telecom system.</p>
+		<p>The physical platform is typically abstracted through the logical platform.</p>
+		<h3>Logical Platform</h3>
+		<p>The logical platform describes the places where software can be executed. </p>
+		<p>Most embedded systems use the concepts of process, thread and logical communication bus. However, depending on the domain this could be a 
+			'logical device' (SCA), CORBA bus, TIPC bus and so forth. Buses can be best effort based, like TCP/IP, or more deterministic, they can 
+			send data immediately for low latency, or they can send data in a buffered fashion.</p>
+		<p>All these concepts can be described in the DSL that describes this logical layer. The developer can then be presented with multiple 
+			different logical layers, one for the current hardware set and some for possible evolutions of the physical hardware sets that 
+			the product will need to support.</p>
+		<h2>Deployment and Configuration</h2>
+		<p>Deployment is a new concept introduced by COE, it brings together the software layers with the platform layers. It models a mapping from 
+			software components and the connections between these components to the different platform layers. The deployment can be seen as a 
+			model-based representation of something that many teams call 'integration'.</p>
+		<p>A deployment can include a configuration. A configuration assigns values to the properties on the component interface. Take, for example a 
+			PBX, different configurations of the PBX can exist, with a maximum number of calls and with a maximum number of incoming/outgoing lines. 
+			These types of properties can be configured on the Deployment.</p>
+		<p>The deployment and configuration is the final step in integrating software on hardware, it describes which software subsystems need to be 
+			included, how to configure them and how to map them to the execution environment. </p>
+		<p>Once the deployment and configuration has been modeled we have all the information that we need to do efficient and finely tuned code 
+			generation. The deployment is where 'the rubber hits the road', the software is assigned to hardware. Any software application can be mapped 
+			to many hardware configurations in a number of different ways.</p>
+		<p>The deployment and configuration is, as with anything, domain specific. The SCA domain for example abstracts all communication 
+			through CORBA and hence mapping of connections to busses is irrelevant, while in a baseband DSP domain this is a major point of concern 
+			and optimization is critical.</p>
+		<h2>Validation and Transformation</h2>
+		<p>Modeling of course is not a goal; it is a means to an end. Modeling is often done primarily for communication and documentation. However, 
+			the DSL approach in COE makes the model more powerful, it can now be used to validate designs as well as transforming of designs into 
+			high performance executable code.</p>
+		<h3>Validation</h3>
+		<p>Validation of an existing model evaluates the deployment and flags problems when they are found. Problems could be entirely contained within the 
+			software layer, for example incompatible software components that are connected, say component A provides an interface foo, where component 
+			B requires interface bar from A. Validation will flag this to the designer and allow him to resolve these issues.</p>
+		<p>Validation is something that the design team can use in early design days and express how they think the system will perform. These 
+			requirements are part of the model and can be refined during the development of the system. Treating these requirements as first class model 
+			entities avoids costly surprises late in the development cycle.</p>
+		<p>Validation also allows the team to explore alternate designs and receive immediate feedback on whether certain designs are feasible. The 
+			validation provides information on whether timing constraints can be met or not.</p>
+		<h3>Transformation</h3>
+		<p>Transformation deals with the topic of transforming model elements into executable source code. Executable source code can be in the 3GL 
+			category (C, C++, Java), or can be other models (such as IBM Rational RoseRT or IBM Telelogic Rhapsody).</p>
+		<p>COE can use both the domain specific information as well the information in the deployment during generation. The domain specific information
+			 provides additional information about the type of the model element, as mentioned before, it adds additional levels of abstraction to the 
+			 modeling space, abstractions that the generator understands and can use.</p>
+		<p>This deployment has the information for all of the usages of a particular entity or component and hence can optimize generation of that 
+			entity based on 'global information'. COE also knows how the entity is used within the context of the logical platform and can optimize 
+			based on that.</p>
+		<div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <label/>
+
+  <UUID>AB7108E0-9C1C-11E0-8000-000325596CA4</UUID>
+
+  <implementation xmi:id="_224440C0-9C1A-11E0-8002-000325596CA4">
+    <name>WeatherExample_asm.ComponentImplementations.SNA_Examples_Airplane_compImpl.SNA_Examples_Airplane_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_224440C0-9C1A-11E0-8000-000325596CA4"/>
+    <artifact xmi:idref="_224440C0-9C1A-11E0-8001-000325596CA4"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_Airplane_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_Airplane_compArtifacts.SNA_Examples_Airplane_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_Airplane_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_Airplane_compArtifacts.SNA_Examples_Airplane_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_224440C0-9C1A-11E0-8005-000325596CA4">
+    <name>WeatherExample_asm.ConnectorImplementations.SNA_Examples_TemperatureReading_conn_DDS_StateImpl.SNA_Examples_TemperatureReading_conn_DDS_StateImpl</name>
+    <source/>
+    <artifact xmi:idref="_224440C0-9C1A-11E0-8003-000325596CA4"/>
+    <artifact xmi:idref="_224440C0-9C1A-11E0-8004-000325596CA4"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_TemperatureReading_conn_DDS_State_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_TemperatureReading_conn_DDS_StateArtifacts.SNA_Examples_TemperatureReading_conn_DDS_State_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_TemperatureReading_conn_DDS_State_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_TemperatureReading_conn_DDS_StateArtifacts.SNA_Examples_TemperatureReading_conn_DDS_State_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_224440C0-9C1A-11E0-800B-000325596CA4">
+    <name>WeatherExample_asm.ComponentImplementations.SNA_Examples_TemperatureSensor_compImpl.SNA_Examples_TemperatureSensor_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_224440C0-9C1A-11E0-8009-000325596CA4"/>
+    <artifact xmi:idref="_224440C0-9C1A-11E0-800A-000325596CA4"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_TemperatureSensor_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_TemperatureSensor_compArtifacts.SNA_Examples_TemperatureSensor_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_TemperatureSensor_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_TemperatureSensor_compArtifacts.SNA_Examples_TemperatureSensor_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_224440C0-9C1A-11E0-800E-000325596CA4">
+    <name>WeatherExample_asm.ComponentImplementations.SNA_Examples_WeatherStation_compImpl.SNA_Examples_WeatherStation_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_224440C0-9C1A-11E0-800C-000325596CA4"/>
+    <artifact xmi:idref="_224440C0-9C1A-11E0-800D-000325596CA4"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_WeatherStation_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_WeatherStation_compArtifacts.SNA_Examples_WeatherStation_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_WeatherStation_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_WeatherStation_compArtifacts.SNA_Examples_WeatherStation_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_1C073253-AACD-4130-B0A8-6AED69931E25_">
+    <name>DAnCE_LocalityManager_Impl</name>
+    <source/>
+    <artifact xmi:idref="_2DBE7BA9-5DB7-48e2-A260-D141CB66DEB1"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_98639260-9C1A-11E0-8000-000325596CA4">
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.Airplane_comp</name>
+    <node>Airplane_node</node>
+    <source/>
+    <implementation xmi:idref="_224440C0-9C1A-11E0-8002-000325596CA4"/>
+  </instance>
+
+  <instance xmi:id="_9AE8A700-9C1A-11E0-8000-000325596CA4">
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureSensor_comp</name>
+    <node>TemperatureSensor_node</node>
+    <source/>
+    <implementation xmi:idref="_224440C0-9C1A-11E0-800B-000325596CA4"/>
+  </instance>
+
+  <instance xmi:id="_9DBEAA60-9C1A-11E0-8000-000325596CA4">
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.WeatherStation_comp</name>
+    <node>WeatherStation_node</node>
+    <source/>
+    <implementation xmi:idref="_224440C0-9C1A-11E0-800E-000325596CA4"/>
+  </instance>
+
+  <instance xmi:id="_A1CA5A60-9C1E-11E0-8000-000325596CA4">
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@TemperatureSensor_node.DefaultGroup</name>
+    <node>TemperatureSensor_node</node>
+    <source/>
+    <implementation xmi:idref="_224440C0-9C1A-11E0-8005-000325596CA4"/>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>25</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>TemperatureReading_msg</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples#Weather</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_A1D64140-9C1E-11E0-8000-000325596CA4">
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@WeatherStation_node.DefaultGroup</name>
+    <node>WeatherStation_node</node>
+    <source/>
+    <implementation xmi:idref="_224440C0-9C1A-11E0-8005-000325596CA4"/>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>25</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>TemperatureReading_msg</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples#Weather</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="Airplane_node.DefaultGroup">
+    <name>Airplane_node.DefaultGroup</name>
+    <node>Airplane_node</node>
+    <source/>
+    <implementation xmi:idref="_1C073253-AACD-4130-B0A8-6AED69931E25_"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>DefaultGroup</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="TemperatureSensor_node.DefaultGroup">
+    <name>TemperatureSensor_node.DefaultGroup</name>
+    <node>TemperatureSensor_node</node>
+    <source/>
+    <implementation xmi:idref="_1C073253-AACD-4130-B0A8-6AED69931E25_"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>DefaultGroup</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="WeatherStation_node.DefaultGroup">
+    <name>WeatherStation_node.DefaultGroup</name>
+    <node>WeatherStation_node</node>
+    <source/>
+    <implementation xmi:idref="_1C073253-AACD-4130-B0A8-6AED69931E25_"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>DefaultGroup</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.Airplane_comp.weatherInformationRecept::WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.WeatherStation_comp.weatherInformationFacet</name>
+    <internalEndpoint>
+      <portName>weatherInformationRecept</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_98639260-9C1A-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>weatherInformationFacet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9DBEAA60-9C1A-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureSensor_comp.temperatureReadingPub_dds_entity::WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@TemperatureSensor_node.DefaultGroup.observable_dds_entity</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>temperatureReadingPub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_9AE8A700-9C1A-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>observable_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_A1CA5A60-9C1E-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureSensor_comp.temperatureReadingPub_data::WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@TemperatureSensor_node.DefaultGroup.observable_data</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>temperatureReadingPub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_9AE8A700-9C1A-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>observable_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_A1CA5A60-9C1E-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureSensor_comp.temperatureReadingConnStatus::WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@TemperatureSensor_node.DefaultGroup.error_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>temperatureReadingConnStatus</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9AE8A700-9C1A-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_A1CA5A60-9C1E-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.WeatherStation_comp.temperatureReadingSub_filter_config::WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@WeatherStation_node.DefaultGroup.push_state_observer_filter_config</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>temperatureReadingSub_filter_config</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_9DBEAA60-9C1A-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_state_observer_filter_config</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_A1D64140-9C1E-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.WeatherStation_comp.temperatureReadingSub_dds_entity::WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@WeatherStation_node.DefaultGroup.push_state_observer_dds_entity</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>temperatureReadingSub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_9DBEAA60-9C1A-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_state_observer_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_A1D64140-9C1E-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.WeatherStation_comp.temperatureReadingSub_data_control::WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@WeatherStation_node.DefaultGroup.push_state_observer_data_control</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>temperatureReadingSub_data_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_9DBEAA60-9C1A-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_state_observer_data_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_A1D64140-9C1E-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.WeatherStation_comp.temperatureReadingSub_data::WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@WeatherStation_node.DefaultGroup.push_state_observer_data</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>temperatureReadingSub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_9DBEAA60-9C1A-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_state_observer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_A1D64140-9C1E-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.WeatherStation_comp.temperatureReadingSub_status::WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@WeatherStation_node.DefaultGroup.push_state_observer_status</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>temperatureReadingSub_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9DBEAA60-9C1A-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_state_observer_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_A1D64140-9C1E-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.WeatherStation_comp.temperatureReadingSub_data_listener::WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@WeatherStation_node.DefaultGroup.push_state_observer_data_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>temperatureReadingSub_data_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9DBEAA60-9C1A-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_state_observer_data_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_A1D64140-9C1E-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.WeatherStation_comp.temperatureReadingConnStatus::WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@WeatherStation_node.DefaultGroup.error_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>temperatureReadingConnStatus</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9DBEAA60-9C1A-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_A1D64140-9C1E-11E0-8000-000325596CA4"/>
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="_224440C0-9C1A-11E0-8000-000325596CA4">
+    <name>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_Airplane_compArtifacts.SNA_Examples_Airplane_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_Airplane_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_224440C0-9C1A-11E0-8001-000325596CA4">
+    <name>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_Airplane_compArtifacts.SNA_Examples_Airplane_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_Airplane_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_224440C0-9C1A-11E0-8003-000325596CA4">
+    <name>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_TemperatureReading_conn_DDS_StateArtifacts.SNA_Examples_TemperatureReading_conn_DDS_State_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_TemperatureReading_conn_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_224440C0-9C1A-11E0-8004-000325596CA4">
+    <name>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_TemperatureReading_conn_DDS_StateArtifacts.SNA_Examples_TemperatureReading_conn_DDS_State_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_TemperatureReading_conn_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_224440C0-9C1A-11E0-8009-000325596CA4">
+    <name>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_TemperatureSensor_compArtifacts.SNA_Examples_TemperatureSensor_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_TemperatureSensor_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_224440C0-9C1A-11E0-800A-000325596CA4">
+    <name>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_TemperatureSensor_compArtifacts.SNA_Examples_TemperatureSensor_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_TemperatureSensor_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_224440C0-9C1A-11E0-800C-000325596CA4">
+    <name>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_WeatherStation_compArtifacts.SNA_Examples_WeatherStation_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_WeatherStation_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_224440C0-9C1A-11E0-800D-000325596CA4">
+    <name>WeatherExample_asm.ImplementationArtifacts.SNA_Examples_WeatherStation_compArtifacts.SNA_Examples_WeatherStation_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_WeatherStation_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_2DBE7BA9-5DB7-48e2-A260-D141CB66DEB1">
+    <name>DAnCE_LocalityManager_Artifact</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="WeatherStation_node.DefaultGroup"/>
+    <!--WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.WeatherStation_comp-->
+    <constrainedInstance xmi:idref="_9DBEAA60-9C1A-11E0-8000-000325596CA4"/>
+    <!--WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@WeatherStation_node.DefaultGroup-->
+    <constrainedInstance xmi:idref="_A1D64140-9C1E-11E0-8000-000325596CA4"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="TemperatureSensor_node.DefaultGroup"/>
+    <!--WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureSensor_comp-->
+    <constrainedInstance xmi:idref="_9AE8A700-9C1A-11E0-8000-000325596CA4"/>
+    <!--WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.TemperatureReading_DDS_State@TemperatureSensor_node.DefaultGroup-->
+    <constrainedInstance xmi:idref="_A1CA5A60-9C1E-11E0-8000-000325596CA4"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="Airplane_node.DefaultGroup"/>
+    <!--WeatherExample_asm.ComponentImplementations.WeatherExample_asm.WeatherExample_asm.Airplane_comp-->
+    <constrainedInstance xmi:idref="_98639260-9C1A-11E0-8000-000325596CA4"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

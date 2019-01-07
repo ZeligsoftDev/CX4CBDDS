@@ -1,0 +1,56 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @addtogroup SPOC_comp
+/// @{
+/// @file   SNA_Examples_SPOC_Data_msg.idl
+/// @brief  Definition of SPOC_Data_msg message.
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_SPOC_DATA_MSG_IDL
+#define SNA_EXAMPLES_SPOC_DATA_MSG_IDL
+
+// Structure that holds the PSAT_Header structure
+#include "ccm_psat_header_defn.idl"
+
+#include "SNA_SP_Data_defn.idl"
+
+#pragma ndds typesupport "SNA_Examples_SPOC_Data_msgSupport.h"
+
+module SNA_Examples
+{
+   /**
+    * @struct SPOC_Data_msg
+    *
+    * Structure for the actual signal processing PSAT (Pub/Sub Attachment
+    * Transfer) message (sample).
+    */
+   struct SPOC_Data_msg
+   {
+      
+      /**
+       * PSAT_Header struct required for every UDM
+       */
+      ::CCM_PSAT::PSAT_Header psat_hdr;
+      
+      /**
+       * This is metadata describing the signal processing sample data in the
+       * remainder of this message.
+       *
+       * @note: This is NOT the same as the meta data that is published by DDS
+       *        that describes how to transfer this message using PSAT.
+       */
+      SNA::SP_DataHdr         vsiplMetaData;
+      
+   };//@top-level true
+
+}; // end module SNA_Examples
+
+#endif // SNA_EXAMPLES_SPOC_DATA_MSG_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

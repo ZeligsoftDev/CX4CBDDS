@@ -1,0 +1,280 @@
+<head>
+	<title>Tutorial 6: Deploying on a Spectra Core Framework</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="tutorial6.html" title="Tutorial 6: Deploying on a Spectra Core Framework">
+		<h1>Tutorial 6: Deploying on a Spectra Core Framework</h1>
+		<p> This tutorial assumes you have completed Tutorial 1, Tutorial 2, Tutorial 3, Tutorial 4 and Tutorial 5. </p>
+		<p>
+In Tutorial 5 components were associated with implementations; build configurations were specified; domain descriptors and source code were generated.
+</p>
+		<p>
+In this tutorial, you will:
+
+			<ul>
+				<li>Amend components to make them deployable on Spectra Core Framework</li>
+				<li>Build the generated source code</li>
+				<li>Start an OE platform (created in Tutorial 3)</li>
+				<li>Load and run the Application (created in Tutorial 2)</li>
+			</ul>
+		</p>
+		<p>
+			<h1>Amending Components for Spectra CF</h1>
+			<p>Throughout this section, it is assumed that you are working on Linux and you have 
+<strong>e*ORB</strong> installed in <strong>$EORBHOME</strong> and <strong>Spectra 
+Core Framework</strong> installed in <strong>$CFHOME</strong>.</p>
+			<h1>Open the project and model</h1>
+		</p>
+		<p>
+In the Project Explorer expand the project and model you worked with in Tutorial 5.
+</p>
+		<h1>
+Adding Properties
+</h1>
+		<p>
+To deploy an application successfully, the runtime must be able to match all Resource and Device properties.  
+This step adds the properties to Spectra CX generated components and 
+Spectra CF components to correctly setup for a successful application deployment.
+</p>
+		<p><strong>Spectra CF Components</strong></p>
+		<p><strong>DeviceManager</strong></p>
+		<p>
+DeviceManager requires os_name, processor and os_version properties. In addition for logging PRODUCER_LOG_LEVEL is required. 
+</p>
+		<p>
+			<ol>
+				<li>Open the DeviceManager diagram</li>
+				<li>Right click on the DeviceManager component and from the popup menu, select Add CX  &gt; SCA Property. Name the attribute os_name. </li>
+				<li>Select os_name and in the Properties View  &gt;  SCA tab.    </li>
+				<li>Click Select type and browse to SCA Primitive CXTutorial_Model  &gt;  (SCALibrary)  &gt;  os_name. Set the Value to Linux.</li>
+				<li>Right click on the DeviceManager component and select Add CX  &gt;  SCA Property. Name the attribute processor_name.    </li>
+				<li>Select processor_name and in the Properties View  &gt;  SCA tab.</li>
+				<li>Click Select type and browse to SCA Primitive CXTutorial_Model  &gt;  (SCALibrary)  &gt;  processor_name. Set the Value to x86.</li>
+				<li>Open the SCAPropertiesDiagram </li>
+				<li>In the Palette, expand the SCA Platform drawer.     </li>
+				<li>In the Property Types drop-down list, select Primitive Property Type.      </li>
+				<li>Drop this element onto the SCAPropertiesDiagram.</li>
+				<li>Name the property os_version. </li>
+				<li>In the Properties View &gt; SCA tab.</li><br> Set the following attributes: <br>ID: DCE:cf250630-4ba8-11da-8cd6-0800200c9a66<br>Action: Equal<br>Kind: Allocation<br>Type: String<li>Right click on DeviceManager component and from the popup menu, select Add CX  &gt;  SCA Property. Name the attribute os_version.</li>
+				<li>Select os_version and in the Properties View  &gt;  SCA tab. Click Type: and browse to SCA Primitive os_version.</li>
+				<li>Set the Value: field to 2.6.</li>
+				<li>Right click on the DeviceManager component and from the popup menu, select Add CX &gt; SCA Property. Name the attribute PRODUCER_LOG_LEVEL.</li>
+				<li>Select the <strong>PRODUCER_LOG_LEVEL</strong> property.</li>
+				<li>In the <strong>Properties View &gt; SCA</strong> tab, click Select type and browse to SCA Primitive CXTutorial_Model &gt; (SCALibrary) &gt; PRODUCER_LOG_LEVEL.</li>
+				<li>In the <strong>Properties View &gt; General</strong> tab, set the <strong>Multiplicity</strong> to <strong>*</strong></li>
+				<li>In the <strong>Properties View &gt; General</strong> tab, set the <strong>Default Value</strong> to <strong>2,8</strong></li>
+				<li>Save the model.</li>
+			</ol>
+		</p>
+		<p>
+			<h1>DomainManager</h1>
+		</p>
+		<p>
+The DomainManager requires two properties to work with SpectraCX generated components. In addition, for logging PRODUCER_LOG_LEVEL is required.
+</p>
+		<p>
+Threadpool Settings
+</p>
+		<p>
+			<ol>
+				<li>Open the SCAPropertiesDiagram</li>
+				<li>In the Palette, expand the SCA Platform drawer.</li>
+				<li>In the Property Types drop-down list, select Primitive Property Type.</li>
+				<li>Drop this element onto the SCAPropertiesDiagram. </li>
+				<li>Name the property THREADPOOL_NO_POOL. </li>
+				<li>In the Properties View  &gt;  SCA tab. </li><br>Set the following attributes:<br>ID: THREADPOOL_NO_POOL<br>Action: Equal<br>Kind: Exec<br>Type: Ulong<li>Open the DomainManager diagram.</li>
+				<li>Right click on DomainManager component and from the popup menu, select Add CX  &gt;  SCA Property. Name the attribute THREADPOOL_NO_POOL.</li>
+				<li>Select THREADPOOL_NO_POOL and in the Properties View  &gt;  SCA tab. Click Type: and browse to SCA Primitive THREADPOOL_NO_POOL.</li>
+				<li>Set the Value: field to 1.</li>
+				<li>Save the model.</li>
+			</ol>
+		</p>
+
+DomainManager domain profile
+
+		<p>
+			<ol>
+				<li>Open the SCAPropertiesDiagram</li>
+				<li>In the Palette, expand the SCA Platform drawer.</li>
+				<li>In the Property Types drop-down list, select Primitive Property Type.</li>
+				<li>Drop this element onto the SCAPropertiesDiagram.</li>
+				<li>Name the property DMD_FILENAME.</li>
+				<li>In the Properties View  &gt;  SCA tab.</li>
+				<p>
+Set the following attributes: 
+<br>ID: DMD_FILENAME<br>Action: Equal<br>Kind: Exec<br>Type: String</p>
+				<li>Open the DomainManager diagram.</li>
+				<li>Right click on DomainManager component and from the popup menu, select Add CX  &gt;  SCA Property. Name the attribute DMD_FILENAME.</li>
+				<li>Select DMD_FILENAME and in the Properties View &gt; SCA tab. Click Type: and browse to SCA Primitive DMD_FILENAME.</li>
+				<li>Set the Value: field to /dmfs/DomainManager.dmd.xml</li>
+				<li>Save the model.</li>
+			</ol>
+		</p>
+
+PRODUCER_LOG_LEVEL
+
+		<p>
+			<ol>
+				<li>Right click on the DomainManager component and from the popup menu, select Add CX &gt; SCA Property. Name the attribute PRODUCER_LOG_LEVEL.</li>
+				<li>Select the <strong>PRODUCER_LOG_LEVEL</strong> property.</li>
+				<li>In the <strong>Properties View &gt; SCA</strong> tab, click Select type and browse to SCA Primitive CXTutorial_Model &gt; (SCALibrary) &gt; PRODUCER_LOG_LEVEL.</li>
+				<li>In the <strong>Properties View &gt; General</strong> tab, set the <strong>Multiplicity</strong> to <strong>*</strong></li>
+				<li>In the <strong>Properties View &gt; General</strong> tab, set the <strong>Default Value</strong> to <strong>2,8</strong></li>
+			</ol>
+		</p>
+		<h1>
+Spectra CX Components
+</h1>
+
+Modem
+
+		<p>
+			<ol>
+				<li>Open Modem diagram.</li>
+				<li>Right click on Modem structure realization and from the popup menu, select Add CX &gt; SCA Property. Name the attribute os_version.</li>
+				<li>Select os_version and in the Properties View &gt; SCA tab. Click Select type and browse to SCA Primitive os_version.</li>
+				<li>Set the Value: to 2.6.</li>
+			</ol>
+		</p>
+		<h1>
+Building Source Code
+</h1>
+		<p>
+Your source code must be rebuilt after changes to generated components. Please refer back to 
+Tutorial 5 â&#8364;&#8220; Generate Code step for instructions on how to generate. After generation of 
+source code, follow Tutorial 5 â&#8364;&#8220; Compile the Source and Tutorial 5 â&#8364;&#8220; Descriptor Generation 
+again to ensure all binary and domain profiles are consistent with the new model changes for 
+Spectra Core Framework deployment. 
+</p>
+		<h1>
+Testing the components
+</h1>
+		<p>
+Before deploying your components they need to be tested. Spectra CX can generate tests for your components. 
+<br>
+To configure your model for test generation:
+<ol>
+				<li>	In the Project Explorer, select the <strong>CXTutorial_Model</strong> model.</li>
+				<li>	Right click and select <strong>Import Model Library...</strong>.</li>
+				<li>	Select the <b>Deployed Library</b> checkbox.</li>
+				<li>	Choose the <strong>TargetLoader</strong> library from the drop down list and click OK.</li>li&gt; 
+
+				<li>	In the Project Explorer, select the <strong>CXTutorial_Model</strong> model.</li>
+				<li>	Right click and select <strong>Add CX &gt; SCA Target Loader</strong>.</li>
+				<li>	In the Project Explorer, select the <strong>SCATargetLoader</strong>.</li>
+				<li>	In the Properties pane select the SCA tab and configure SCATargetLoader as follows:</li>
+				<ul>
+					<li>	Name: SCATargetLoader</li>
+					<li>	Object Ref: corbaloc:iiop:1.1@&lt;IP ADDRESS OR HOST NAME&gt;:8277/TargetLoader</li>
+					<li>	Timeout: 60000</li>
+				</ul>
+			</ol>
+
+To generate and run tests for your components:
+
+			<ol>
+				<li>	Open the Modem diagram.</li>
+				<li>	Drag the <strong>SCATargetLoader</strong> from the Project Explorer onto the diagram.</li>
+				<li>	Select "Target Loader Dependency" from the palette.</li>
+				<li>	Add a dependency from <strong>ModemImpl</strong> to <strong>SCATargetLoader</strong>.</li>
+				<li>	Select the <strong>Modem structural realization</strong>.</li>
+				<li>	Right click and select <strong>CX Generate -&gt; Tests</strong>.</li>
+				<li>	Run the <strong>$CFHOME/bin/TargetLoader</strong> binary in a terminal.</li>
+				<li>	In the Project Explorer, select <strong>CXTutorial_Model_src/utests/tests/CXTutorial_Model/Platform/Modem/ModemImplSCATargetLoaderTest.java</strong>.</li>
+				<li>	Right click and select <strong>Run As -&gt; JUnit Test</strong>.</li>
+				<li>	Repeat steps 1 to 4 for the <strong>DomainLog</strong>, <strong>Decryptor</strong>, <strong>Filter</strong> and <strong>AssemblyController</strong>.</li>
+			</ol>
+
+To generate and run test suites for your assemblies:
+
+			<ol>
+				<li>	In the Project Explorer, select <strong>CommunicatorPlatform</strong>.</li>
+				<li>	Right click and select <strong>CX Generate -&gt; Tests</strong>.</li>
+				<li>	Run the <strong>$CFHOME/bin/TargetLoader</strong> binary in a terminal.</li>
+				<li>	In the Project Explorer, select <strong>CXTutorial_Model_src/utests/tests/CXTutorial_Model/Platform/CommunicatorPlatformTestSuite.java</strong>.</li>
+				<li>	Right click and select <strong>Run As -&gt; JUnit Test</strong>.</li>
+				<li>	The will run the tests for the Modem and the DomainLog.</li>
+				<li>	Repeat this process for the <strong>TutorialApplication</strong> (TutorialApplicationTestSuite.java will run the tests for the Decryptor, the Filter and the AssemblyController).</li>
+			</ol>
+		</p>
+		<h1>
+Running OE Platform
+</h1>
+		<p>
+In order to run the platform you will need to change directory into CXTutorial_Model_src/descriptors.
+</p>
+		<p>
+At the terminal prompt enter:
+</p>
+		<p>
+$CFHOME/bin/BootLoader -DCD_FILENAME DecryptorNode.dcd.xml -ORBInitRef NameService=corbaloc:iiop:1.1@ &lt; IP ADDRESS OR HOST NAME &gt; :2809/NameService
+</p>
+		<p>
+You should see output similar to the following, if not check your steps again.
+</p>
+		<p>
+$ cd ~/spectracx/workspace/Tutorial_Model_src/descriptors
+</p>
+		<p>
+$ /home/cf/spectracx/release/3.1-GA/oe/bin/BootLoader -DCD_FILENAME DecryptorNode.dcd.xml -ORBInitRef NameService=corbaloc:iiop:1.1@10.1.0.23:2809/NameService
+<br>Use the following line as an argument when starting LogServices or
+Devices:<br>
+-DEVICE_MGR_IOR
+IOR:010000001900000049444c3a43462f4465766963654d616e616765723a312e3000000000010000000000000044000000010101000a00000031302e312e302e3233001e9a2800000001921800654f52427a910020030000000e4465766963654d616e616765720000040000000f00000000000000
+<br>
+ORB Args:</p>
+		<p>
+Use the following line as an argument when starting DeviceManager:
+</p>
+		<p>
+-ORBInitRef NameService=corbaloc:iiop:1.1@10.1.0.23:2809/NameService
+</p>
+		<p>
+Or:
+</p>
+		<p>
+-ORBInitRef
+</p>
+		<p>
+NameService=IOR:010000002800000049444c3a6f6d672e6f72672f436f734e616d696e672f4e616d696e67436f6e746578743a312e3000010000000000000050000000010101000a00000031302e312e302e323300f90a3200000001820a00654f5242000000000e446f6d61696e4d616e6167657200000b0000004e414d494e475f504f410000020000003000000000000000
+</p>
+
+DomainManager waiting for requests ....
+
+		<h1>
+Loading and Running Application
+</h1>
+		<p>
+In order to run an application you need to add a Monitor to the model.
+</p>
+		<p>
+			<ol>
+				<li>	In the Project Explorer, select the <strong>CXTutorial_Model</strong> model.</li>
+				<li>	Right click and select <strong>Add CX &gt; Monitor</strong></li>
+				<li>	New Monitor Wizard will appear, set</li>
+				<ul>
+					<li>	Name: Monitor</li>
+					<li>	Domain Manager: myDomain/DomainManager</li>
+					<li>	Naming Service: corbaloc:iiop:1.1@&lt;IP ADDRESS OR HOST NAME&gt;:2809/NameService</li>
+				</ul>
+				<li>	Click the Finish button.</li>
+				<li>	Select the new <strong>Monitor</strong> object in <strong>CXTutorial_Model</strong>.</li>
+				<li>	Right click Monitor  &gt;  Open SCA Monitor</li>
+				<li>	The Monitor view will appear showing Control and Deployment panes.  The view will contain running OE components (DeviceManager, DomainManager, ModemDevice).</li>
+				<li>	In the Control pane, right click Application Folder  &gt;  Install Application Factory</li>
+				<li>	The Enter SAD window will appear. Enter the path to the SAD file, which is <strong>/dmfs/TutorialApplication.sad.xml</strong></li>
+				<li>	Click OK.</li>
+				<li>	In the <strong>Control</strong> window you will see the <strong>TutorialApplication</strong> application factory deployed.</li>
+				<li>	Right click on the <strong>TutorialApplication</strong> factory and select <strong>Create Application</strong></li>
+				<li>	Enter <strong>app1</strong> as the application name, and click <strong>OK</strong></li>
+				<li>	The new application instance <strong>app1</strong> will show up in the <strong>Control</strong> window and, in the <strong>Deployment</strong> window, you will see its constituent resources executing on the <strong>Modem</strong> device.</li>
+				<li>	Right clicking on <strong>app1</strong> will let you control the lifecycle of your application instance. There are options to Start, Stop and Release your instance.</li>
+			</ol>
+		</p>
+		<div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

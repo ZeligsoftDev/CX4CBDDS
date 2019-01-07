@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://DDS4CCM_LIBRARIES/"
+            target="platform:/plugin/com.zeligsoft.domain.dds4ccm/libraries/">
+      </mapping>
+      <mapping
+            source="pathmap://DDS4CCM_PROFILES/"
+            target="platform:/plugin/com.zeligsoft.domain.dds4ccm/profiles/">
+      </mapping>
+      <mapping
+            source="pathmap://DDS4CCM_DOMAIN/"
+            target="platform:/plugin/com.zeligsoft.domain.dds4ccm/models/">
+      </mapping>
+   </extension>
+   <extension
+         point="com.zeligsoft.base.zdl.domain_models">
+      <domainModel
+            genModel="pathmap://DDS4CCM_DOMAIN/DDS4CCM.zdlgen"
+            path="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml"
+            uri="http://www.zeligsoft.com/domain/dds4ccm/2010">
+      </domainModel>
+   </extension>
+   
+   <extension
+         point="com.zeligsoft.base.validation.preload">
+      <zdl uri="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml" />
+   </extension>
+   
+   <extension
+         point="com.zeligsoft.cx.codegen.workerfunctioncontributor">
+      <workerfunctioncontributor
+            class="com.zeligsoft.domain.dds4ccm.utils.DDS4CCMWorkerFunctionContributor"
+            concept="CCM::CCM_Implementation::MonolithicImplementation"
+            domain="cxDDS4CCM"
+            id="com.zeligsoft.domain.dds4ccm.ccmWorkerfunctioncontributor">
+      </workerfunctioncontributor>
+   </extension>
+   
+   <extension
+         point="org.eclipse.emf.transaction.listeners">
+      <listener
+            class="com.zeligsoft.domain.dds4ccm.utils.DDS4CCMPortOperationsTrigger">
+         <editingDomain
+               id="org.eclipse.gmf.runtime.emf.core.compatibility.MSLEditingDomain">
+         </editingDomain>
+      </listener>
+   </extension>   
+   
+</plugin>

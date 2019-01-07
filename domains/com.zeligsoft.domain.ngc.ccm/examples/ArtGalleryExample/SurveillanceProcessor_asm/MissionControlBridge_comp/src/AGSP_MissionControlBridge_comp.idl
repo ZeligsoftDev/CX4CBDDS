@@ -1,0 +1,43 @@
+/// @defgroup AGSP_MissionControlBridge_comp MissionControlBridge_comp
+/// @{
+/// 
+/// @file AGSP_MissionControlBridge_comp.idl
+/// @brief MissionControlBridge_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__MISSIONCONTROLBRIDGE_COMP__SRC__AGSP_MISSIONCONTROLBRIDGE_COMP_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__MISSIONCONTROLBRIDGE_COMP__SRC__AGSP_MISSIONCONTROLBRIDGE_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao lem "AGSP_MissionControlBridge_compE.idl"
+#pragma ciao ami4ccm receptacle "AGSP::MissionControlBridge_comp::ExtCommandsRecept"
+#include "AGSP_ExtCommands_obj.idl"
+#include "AGSP_Control_obj.idl"
+#include "AGSP_StateControl_obj.idl"
+#include "AGSP_SystemImages_conn.idl"
+#include "AGSP_SystemTargets_conn.idl"
+#include "AGSP_Images_conn.idl"
+#include "AGSP_SubsystemStatus_conn.idl"
+#include "AGSP_Targets_conn.idl"
+
+/// @namespace AGSP 
+module AGSP {
+    component MissionControlBridge_comp {
+        uses AGSP::ExtCommands_obj ExtCommandsRecept;
+        provides AGSP::Control_obj ControlFacet;
+        provides AGSP::StateControl_obj StateControlFacet;
+        port SystemImages_conn::PSAT_Write SystemImagesPub;
+        port SystemTargets_conn::DDS_Write SystemTargetsPub;
+        port Images_conn::PSAT_Listen ImagesSub;
+        port SubsystemStatus_conn::DDS_Listen SubsystemStatusSub;
+        port SubsystemStatus_conn::DDS_Get SubsystemStatusSub2;
+        port Targets_conn::DDS_Listen TargetsSub;
+    };
+
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__MISSIONCONTROLBRIDGE_COMP__SRC__AGSP_MISSIONCONTROLBRIDGE_COMP_IDL
+
+/// @}
+

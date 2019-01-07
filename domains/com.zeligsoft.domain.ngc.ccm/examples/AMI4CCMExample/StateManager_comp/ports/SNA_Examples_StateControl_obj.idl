@@ -1,0 +1,40 @@
+/// @defgroup SNA_Examples_StateControl_obj StateControl_obj
+/// @{
+/// 
+/// @file SNA_Examples_StateControl_obj.idl
+/// @brief StateControl_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_STATEMANAGER_COMP__PORTS__SNA_EXAMPLES_STATECONTROL_OBJ_IDL
+#define CX_STATEMANAGER_COMP__PORTS__SNA_EXAMPLES_STATECONTROL_OBJ_IDL
+
+#include "SNA_Examples_Common_defn.idl"
+#pragma ciao lem "SNA_Examples_StateControl_objE.idl"
+#pragma ami4ccm interface "SNA_Examples::StateControl_obj"
+#pragma ciao lem "SNA_Examples_StateControl_objAE.idl"
+#pragma ami4ccm idl "SNA_Examples_StateControl_objA.idl"
+
+/// @namespace SNA_Examples 
+module SNA_Examples {
+
+    ///@interface StateControl_obj 
+    interface StateControl_obj {
+
+        /// @param[in] newState
+        ///
+        /// @return
+        SNA_Examples::ReturnStatus changeState(
+            in SNA_Examples::SystemState newState
+            );
+
+        /// @return
+        SNA_Examples::SystemState getState();
+    };
+
+};
+
+#endif // CX_STATEMANAGER_COMP__PORTS__SNA_EXAMPLES_STATECONTROL_OBJ_IDL
+
+/// @}
+

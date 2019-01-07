@@ -1,0 +1,24 @@
+<workflow>
+	<bean class="org.eclipse.xtend.typesystem.uml2.Setup"/>
+ 
+ 	<!-- Needed to report issues -->
+  	<component class='org.eclipse.xtend.util.stdlib.ExtIssueReporter' />
+  	   
+    <component id="generator" class="com.zeligsoft.base.zdl.oaw.ZXtendGenerator">
+    	<metaModel id="codetaginfo" class="com.zeligsoft.base.zdl.oaw.XMLSchemaMetamodel">
+			<schemaFile value="/xsd/codetaginfo.xsd" />
+		</metaModel>
+     	<metaModel id="DDS4CCM" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+        	<zdl value="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml"/>
+     	</metaModel>
+       <metaModel id="uml" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
+    	<invoke value="template::codetaggenerator::mainTransform(element)"/> 
+   		<outputSlot value="xsdMetaModel" />
+	</component>
+       
+	<component id="writer" class="org.eclipse.xpand2.Generator" skipOnErrors="true">
+  		<metaModel idRef="codetaginfo"/>
+    	<expand value="template::m2t::generate FOR xsdMetaModel"/>
+		<genPath value="${src-gen}/"/>
+	</component>
+</workflow>

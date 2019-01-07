@@ -1,0 +1,33 @@
+<workflow>
+	<bean class="oaw.uml2.Setup"/>
+	<property name="parsedSrcGen" value="${src-gen}.replaceAll('\\','/')" />
+ 
+ 	<!-- Needed to report issues -->
+  	<component class='org.eclipse.xtend.util.stdlib.ExtIssueReporter' />
+  	   
+    <component id="generator" class="oaw.xtend.XtendComponent">
+    	<metaModel id="cdp" class="com.zeligsoft.base.zdl.oaw.XMLSchemaMetamodel">
+			<schemaFile value="xsd/deploymentplan.xsd" />
+		</metaModel>
+     	<metaModel id="CCMMM" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+        	<zdl value="pathmap://CCM_DOMAIN/CCM.uml"/>
+     	</metaModel>
+       <metaModel class="oaw.uml2.UML2MetaModel"/>
+		<!-- <metaModel class="oaw.type.emf.EmfMetaModel">
+			<metaModelPackage value="org.eclipse.emf.ecore.EcorePackage" />
+		</metaModel>-->
+    	<invoke value="template::cdpgenerator::mainTransform(element)"/>
+   		<outputSlot value="xsdMetaModel" />
+	</component>
+    
+   
+	<component class="org.eclipse.xtend.typesystem.xsd.XMLWriter">
+	  	<metaModel idRef="cdp" />
+	  	<metaModel id="CCMMM" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+        	<zdl value="pathmap://CCM_DOMAIN/CCM.uml"/>
+     	</metaModel>
+	  	<modelSlot value="xsdMetaModel" />
+	  	<!--<uriExpression varName="docroot" expression="${parsedSrcGen} +template::cdpgenerator::getFileName(docroot)" />-->
+	  	<uri value="${src-gen}/DeploymentPlan.cdp.xml" />
+	</component>
+</workflow>

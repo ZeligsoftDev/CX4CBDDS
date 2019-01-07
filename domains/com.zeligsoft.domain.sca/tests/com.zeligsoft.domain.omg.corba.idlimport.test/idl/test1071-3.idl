@@ -1,0 +1,11 @@
+// Inheritance namespace conflict
+
+interface A
+{
+  void a();
+};
+
+interface B : A
+{
+   readonly attribute long a;
+};

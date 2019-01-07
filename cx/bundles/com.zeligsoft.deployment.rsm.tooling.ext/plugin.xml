@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+
+<!--
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<plugin>
+
+    <extension
+         point="org.eclipse.emf.transaction.listeners">
+      <listener
+            class="com.zeligsoft.cx.deployment.ui.listeners.DeploymentEMFNotificationBroker">
+         <editingDomain
+               id="org.eclipse.gmf.runtime.emf.core.compatibility.MSLEditingDomain">
+         </editingDomain>
+      </listener>
+   </extension>   
+   
+   <extension
+         id="base.deployment.navigator.viewer.ID"
+         point="org.eclipse.ui.navigator.viewer">               
+      <viewerContentBinding
+        viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension
+              pattern="com.zeligsoft.base.deployment.rsm.tooling.filters.*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>           
+   </extension>   
+   <extension
+         id="base.deployment.navigatorContent.ID"
+         name="name"
+         point="org.eclipse.ui.navigator.navigatorContent">
+        <commonFilter
+          activeByDefault="true"
+          class="com.zeligsoft.cx.deployment.ui.filters.DeploymentViewerFilter"
+          description="%DeploymentViewerFilter.description"
+          id="com.zeligsoft.base.deployment.rsm.tooling.filters.deploymentPart"
+          name="%DeploymentViewerFilter.name">       
+        </commonFilter>
+   </extension>  
+   
+</plugin>

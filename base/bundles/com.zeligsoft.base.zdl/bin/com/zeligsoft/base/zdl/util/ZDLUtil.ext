@@ -1,0 +1,61 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+import ZDL;
+
+Object getZDLValue(emf::EObject modelElement, uml::Class concept, String property) :
+	JAVA com.zeligsoft.base.zdl.util.ZDLUtil
+		.getValue(org.eclipse.emf.ecore.EObject, org.eclipse.uml2.uml.Class, java.lang.String);
+	
+Object getZDLValue(emf::EObject modelElement, String concept, String property) :
+	JAVA com.zeligsoft.base.zdl.util.ZDLUtil
+		.getValue(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.String);
+		
+uml::Class getZDLConcept(emf::EObject modelElement) :
+	JAVA com.zeligsoft.base.zdl.util.ZDLUtil
+		.getZDLConcept(org.eclipse.emf.ecore.EObject);
+		
+uml::Class getZDLConcept(emf::EObject modelElement, String qualifiedName) :
+	JAVA com.zeligsoft.base.zdl.util.ZDLUtil
+		.getZDLConcept(org.eclipse.emf.ecore.EObject, java.lang.String);
+		
+List[uml::Class] getZDLConcepts(emf::EObject modelElement):
+	JAVA com.zeligsoft.base.zdl.util.ZDLUtil
+		.getZDLConcepts(org.eclipse.emf.ecore.EObject);
+		
+uml::EnumerationLiteral getZDLEnumLiteral(emf::EObject ctx, String enumeration, String literal):
+	JAVA com.zeligsoft.base.zdl.util.ZDLUtil
+		.getZDLEnumLiteral(org.eclipse.emf.ecore.EObject, java.lang.String, java.lang.String);
+		
+boolean isZDLConcept(emf::EObject modelElement, uml::Class concept) :
+	JAVA com.zeligsoft.base.zdl.util.ZDLUtil
+		.isZDLConcept(org.eclipse.emf.ecore.EObject, org.eclipse.uml2.uml.Class);
+		
+boolean isZDLConcept(emf::EObject modelElement, String concept) :
+	JAVA com.zeligsoft.base.zdl.util.ZDLUtil
+		.isZDLConcept(org.eclipse.emf.ecore.EObject, java.lang.String);
+		
+String enumerationLiteralName(Object literal) :
+	literal != null && uml::EnumerationLiteral.isInstance(literal) ?
+		((uml::EnumerationLiteral) literal).name :
+		"";
+
+Void addZDLConcept(uml::Element modelElement, String concept) :
+	JAVA com.zeligsoft.base.zdl.util.ZDLUtil
+		.addZDLConcept(org.eclipse.uml2.uml.Element, java.lang.String);
+
+boolean isEmpty(String string) :
+	JAVA org.eclipse.uml2.common.util.UML2Util.isEmpty(java.lang.String);

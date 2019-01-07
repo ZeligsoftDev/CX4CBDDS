@@ -1,0 +1,16 @@
+// Typedefed complex parameter types
+
+interface int1059
+{
+      struct s1 { short a; };
+      enum e1 { VALUE };
+      union u1 switch (long) { default: double a; };
+
+      typedef u1 UnionType;
+      typedef e1 EnumType;
+      typedef s1 StructType;
+      typedef EnumType TypeDefType;
+
+      void func1 ( in StructType structparam, out EnumType enumparam, inout UnionType unionparam, 
+                   in TypeDefType t1 );
+};

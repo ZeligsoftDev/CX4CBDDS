@@ -1,0 +1,14 @@
+/*
+ * This check file is used to specify expensive constraints for the derived
+ * metamodels. They will only be executed when triggered explicitly or
+ * at generation time.
+ *
+ * import myDsl;
+ *
+ * extension org::xtext::example::validation::MyDslExtensions; 
+ *
+ * context Model ERROR "Inconsistent Model" :
+ *    invariantThatIsComplexToCheck();
+ */
+
+extension com::zeligsoft::domain::omg::corba::dsl::validation::IDLExtensions;

@@ -1,0 +1,474 @@
+
+import langc;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+import ZMLMM::ZML_Deployments;
+
+extension langc::debug;
+
+extension langc::element;
+extension langc::expr;
+extension langc::libc;
+extension langc::mqueue;
+extension langc::name;
+extension langc::stmt;
+extension langc::type;
+extension langc::util;
+extension structure::posixfile;
+extension util::lookup;
+extension template::utils;
+
+/* There is one linkable artifact for each process in the deployment. */
+create LinkableArtifact artifact( DeploymentPart process ) :
+    setName( process.zdlAsNamedElement().name )
+;
+
+cached Void visitComponentInstance( DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    let re = process.artifact().rootElements :
+        re.add( component.componentInstance( deployment, process ) )
+     -> component.visitPortInstances( deployment, process )
+;
+
+cached Void finalizeProcess( Deployment deployment, DeploymentPart process ) :
+    let c = defaultClause() :
+        c.addStatement( returnStmt( NULL() ) )
+     -> deployment.portIteratorSwitch( process ).addCase( c )
+;
+
+cached Void finalizeComponentInstance( DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    component.ci().finalizeComponent( deployment, process )
+;
+
+private cached Void finalizeComponent( ComponentInterface ci, Deployment deployment, DeploymentPart process ) :
+    ci.providesPorts().finalizeElements( ci, deployment, process )
+;
+
+private cached Void finalizeElements( Port port, ComponentInterface ci, Deployment deployment, DeploymentPart process ) :
+    port.portContextImpl( ci, deployment, process )
+        .addStatement( returnStmt( NULL() ) )
+;
+
+/* For each component, a struct is generated to maintain the type-specific
+ * data.  This struct has a field for each user-define attribute.  Instances
+ * of this type are passed to worker functions, etc. */
+create Struct element( ComponentInterface ci ) :
+    setName( ci.header().child( ci.zdlAsNamedElement().name ) )
+ -> ci.zdlAsComponent().attribute.addComponentInterfaceField( this )
+;
+
+/* Fields are not generated for Ports. */
+private Void addComponentInterfaceField( MessagePort port, Struct struct ) : null;
+private Void addComponentInterfaceField( uml::Property attr, Struct struct ) :
+    struct.addMember( attr.getPropertyType().element(), attr.name )
+;
+
+/* TODO This needs to handle replicated instances. */
+/* A process-private variable is created for each instance of each component. */
+cached VariableDeclaration componentInstance( DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    let v = variable(
+                component.ci().element().constPtr(),
+                deployment.privateHeader( process ).child( component.zdlAsNamedElement().name ) ) :
+        v.setDefn( deployment.entryFile( process ) )
+     -> v.setLinkage( extern() )
+     -> v.setInitializer( component.storageAddress( deployment, process ) )
+     -> v
+;
+
+private cached VariableDeclaration storageVariable( DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    let v = variable(
+                component.ci().storageType(),
+                'zcx_store_' + component.modelElement.name ) :
+        v.setDefn( deployment.entryFile( process ) )
+     -> v.setLinkage( static() )
+     -> v.setKind( implOnly() )
+     -> v
+;
+
+cached Boolean hasUserAttributes( ComponentInterface ci ) :
+    ci.element().members.size > 0
+;
+
+private ElementReference storageType( uml::Type nothing ) : null;
+private ElementReference storageType( ComponentInterface ci ) :
+    ci.hasUserAttributes()
+        ? ci.element().type()
+        : uint8().type()
+;
+
+private cached Expression storageAddress( DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    component.ci().hasUserAttributes()
+        ? component.storageVariable( deployment, process ).access().addressOf()
+        : component.storageVariable( deployment, process ).access().addressOf()
+            .cast( component.ci().element().ptr() )
+;
+
+/*****************************************
+ * Port context array
+ *
+ *	static const zcx_context_t ctx[]
+ *	= {
+ *	    { Process1_PRODUCER_IN_0 },
+ *	    { Process1_PRODUCER_OUT_0 }, 
+ *	    { Process1_CONSUMER_OUT_0 }, 
+ *	    { Process1_CONSUMER_IN_0 }
+ *	};
+ */
+private cached Struct portContextStruct() :
+    let s = struct( frameworkHeader().child( 'zcx_context_t' ) ) :
+        s.addMember( uint32(), 'port_inst_id' )
+     -> s
+;
+
+// TEMP public so it can be added as a root element
+cached VariableDeclaration portContextArray( Deployment deployment, DeploymentPart process ) :
+    let v = variable( portContextStruct().const().array(), 'ctx' ) :
+        v.setDefn( deployment.entryFile( process ) )
+     -> v.setLinkage( static() )
+     -> v.setKind( implOnly() )
+     -> v.setInitializer( deployment.portContextArrayInitializer( process ) )
+     -> process.artifact().rootElements.add( v )
+     -> v
+;
+
+private cached BlockInitializer portContextArrayInitializer( Deployment deployment, DeploymentPart process ) :
+    new BlockInitializer
+;
+
+/*****************************************
+ * Port context functions
+ *
+ *  const void * TokenOwner_out( const TokenOwner * self )
+ *  {
+ *	    if( self == client_a )
+ *	        return &ctx[Process2_CLIENT_A_OUT_0];
+ *	    if( self == client_b )
+ *	        return &ctx[Process2_CLIENT_B_OUT_0];
+ *	    return NULL;
+ *	}
+ */
+private cached FunctionImplementation portContextImpl( Port port, ComponentInterface ci, Deployment deployment, DeploymentPart process ) :
+    port.portContextFunction( ci, process )
+        .impl( process.artifact(), deployment.entryFile( process ) )
+;
+
+private cached FunctionImplementation portContextImpl( Port port, DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    port.portContextImpl( component.ci(), deployment, process )
+;
+
+private create Function portContextFunction( Port port, ComponentInterface ci ) :
+    setLinkage( extern() )
+ -> setReturnType( void().const().ptr() )
+ -> setName( ci.header().child( ci.zdlAsNamedElement().name + '_' + port.zdlAsNamedElement().name ) )
+ -> addParameter( ci.element().const().ptr(), 'self' )
+;
+
+private cached Function portContextFunction( Port port, ComponentInterface ci, DeploymentPart process ) :
+    let f = port.portContextFunction( ci ) :
+        process.artifact().rootElements.add( f )
+     -> f
+;
+
+/*****************************************
+ * The port instance enum provides a unique value for each port instance.
+ *
+ *	enum Process1_Component_Port_id
+ *	{
+ *	    Process1_PRODUCER_IN_0,
+ *	    Process1_PRODUCER_OUT_0,
+ *	    Process1_CONSUMER_OUT_0,
+ *	    Process1_CONSUMER_IN_0
+ *	};
+ */
+private create Enum portInstanceEnum( Deployment deployment, DeploymentPart process ) :
+    setName( deployment.header( process ).child( process.zdlAsNamedElement().name + '_Component_Port_id' ) )
+ -> process.artifact().rootElements.add( this )
+;
+
+private cached Void visitPortInstances( DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    component.ci()
+        .ownedPort.visitPortInstances( component, deployment, process )
+;
+
+private cached int highestPortInstance( Port port, DeploymentPart component ) :
+    ( port.upperBound * component.modelElement.zdlAsMultiplicityElement().upperBound() ) - 1
+;
+
+private cached Void visitPortInstances( Port port, DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    let portInstances = port.portInstances( component, deployment, process ) :
+	    portInstances.visitPortInstance( port, component, deployment, process )
+	 -> port.selectProvidesPorts()
+	        .portContextImpl( component, deployment, process )
+	        .addStatement(
+	            port.portContextFunction( component.ci() )
+	                .param( 'self' )
+	                .testEquivalent( component.componentInstance( deployment, process ).access() )
+	                .ifStmt()
+	                .addStatement( returnStmt(
+	                    deployment.portContextArray( process )
+	                        .access()
+	                        .index( portInstances.first().name.access() ) ) ) )
+     -> port.zdlAsPort().required.isEmpty
+            ? null
+            : portInstances.createPortIteratorClauses( deployment, process )
+;
+
+private cached Expression accessNextPortInstance( List[Enumerator] portInstanceIds ) :
+    switch( portInstanceIds.size ) {
+    case 0: null
+    case 1: NULL()
+    default: portInstanceIds.get( 1 ).name.access()
+    }
+;
+
+private cached List[Enumerator] portInstances( Port port, DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    let id
+        = process.zdlAsNamedElement().name + '_'
+            + component.zdlAsNamedElement().name.toUpperCase() + '_'
+            + port.zdlAsNamedElement().name.toUpperCase() :
+    0.upTo( port.highestPortInstance( component ) )
+        .collect( e | id + '_' + e )
+        .createPortInstance( port, component, deployment, process )
+;
+
+private cached Enumerator createPortInstance( String portInstanceName, Port port, DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    deployment.portInstanceEnum( process ).enumerator( portInstanceName )
+;
+
+private cached Void visitPortInstance( Enumerator portInstance, Port port, DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    deployment.portContextArrayInitializer( process ).exprs.add(
+        let b = new BlockInitializer :
+            b.exprs.add( portInstance.name.access() )
+         -> b )
+;
+
+/*****************************************
+ * Each process has a set of elements for managing its incoming message queue.
+ *
+ *	extern const char * const Process1_queuename;
+ *	extern mqd_t Process1_mqd;
+ *	extern int  Process1_mqinit();
+ *	extern void Process1_mqrelease();
+ */
+create VariableDeclaration queueName( Deployment deployment, DeploymentPart process ) :
+    let n = process.zdlAsNamedElement().name :
+    setElement( char().const().ptr().const() )
+ -> setName( deployment.header( process ).child( 'ZCX_' + n + '_queuename' ) )
+ -> setInitializer( literal( '/ZCX_' + n + '_mq' ) )
+ -> setLinkage( extern() )
+ -> process.artifact().rootElements.add( this )
+;
+
+private create VariableDeclaration queue( Deployment deployment, DeploymentPart process ) :
+    setElement( mqd_t().type() )
+ -> setName( deployment.header( process ).child( 'ZCX_' + process.zdlAsNamedElement().name + '_mqd' ) )
+ -> setInitializer( literal( -1 ) )
+ -> setLinkage( extern() )
+ -> process.artifact().rootElements.add( this )
+;
+
+cached Function queueInit( Deployment deployment, DeploymentPart process ) :
+    let f = function( int32(), deployment.header( process ).child( 'ZCX_' + process.zdlAsNamedElement().name + '_mqinit' ) ) :
+        f.setLinkage( extern() )
+     -> process.artifact().rootElements.add( f )
+     -> f.impl( process.artifact() )
+            .addStatement(
+                while( deployment.queue( process ).access().testLessThanEqual( 0.literal() ) )
+                    .addStatement(
+                        deployment.queue( process ).access().assign(
+                            openMQueue( deployment.queueName( process ).name ) ) )
+                    .addStatement( sleep( 1.literal() ) ) )
+            .addStatement( returnStmt( 1.literal() ) )
+     -> f
+;
+
+cached Function queueRelease( Deployment deployment, DeploymentPart process ) :
+    let f = function( void(), deployment.header( process ).child( 'ZCX_' + process.zdlAsNamedElement().name + '_mqrelease' ) ) :
+        f.setLinkage( extern() )
+     -> process.artifact().rootElements.add( f )
+     -> f.impl( process.artifact() )
+            .addStatement( mq_close( deployment.queue( process ).access() ) )
+     -> f
+;
+
+/*****************************************
+ * An API function to provide the 'next' part of the port iterator.
+ *
+ *	const void * zcx_next_context( const void * prev )
+ *	{
+ *	    switch( ( (unsigned int)prev - (unsigned int)ctx ) / sizeof( ctx[0] ) )
+ *	    {
+ *	    case Process2_CLIENT_A_IN_0:
+ *	        return NULL;
+ *	    case Process2_CLIENT_A_OUT_0:
+ *	        return &ctx[Process2_CLIENT_A_OUT_1];
+ *	    case Process2_CLIENT_A_OUT_1:
+ *	        return NULL;
+ *	    case Process2_CLIENT_B_IN_0:
+ *  ...
+ *	}
+ */
+private create Function portIteratorFunction() :
+    setName( apiFile().child( 'zcx_next_context' ) )
+ -> setReturnType( void().const().ptr() )
+ -> addParameter( void().const().ptr(), 'prev' )
+;
+
+cached portIteratorImpl( Deployment deployment, DeploymentPart process ) :
+    portIteratorFunction().impl( process.artifact(), deployment.entryFile( process ) )
+        .addStatement( deployment.portIteratorSwitch( process ) )
+;
+
+private cached SwitchStatement portIteratorSwitch( Deployment deployment, DeploymentPart process ) :
+    let ctx = deployment.portContextArray( process ) :
+    switchStmt(
+        portIteratorFunction().param( 'prev' )
+            .cast( uint32().type() )
+            .subtract( ctx.access().cast( uint32().type() ) )
+            .divide( sizeof( ctx.access().index( 0.literal() ) ) ) )
+;
+
+private cached Void createPortIteratorClauses( List[Enumerator] portInstances, Deployment deployment, DeploymentPart process ) :
+    switch( portInstances.size ) {
+    case 0: null
+    case 1:
+        deployment.portIteratorSwitch( process ).clauses.add(
+            portInstances.first().name.access().labeledClause()
+                .addStatement( returnStmt( NULL() ) ) )
+    default:
+      ( deployment.portIteratorSwitch( process ).clauses.add(
+            portInstances.first().name.access().labeledClause()
+                .addStatement(
+                    returnStmt(
+                        addressOf(
+	                        deployment.portContextArray( process ).access().index(
+	                            portInstances.get( 1 ).name.access() ) ) ) ) )
+     -> portInstances.withoutFirst().createPortIteratorClauses( deployment, process ) )
+    }
+;
+
+/*****************************************
+ * The three responsibilities of the entry point are to open the process' message queues,
+ * to run the dispatch loop, and then close all message queues.  
+ */
+private create Function entryPoint( Deployment deployment, DeploymentPart process ) :
+    setName( deployment.entryFile( process ).child( 'main' ) )
+ -> setKind( implOnly() )
+ -> setReturnType( int32() )
+ -> addParameter( int32(), 'argc' )
+ -> addParameter( char().const().ptr().array(), 'argv' )
+;
+
+cached FunctionImplementation entryImpl( Deployment deployment, DeploymentPart process ) :
+    let impl = deployment.entryPoint( process ).impl( process.artifact(), deployment.entryFile( process ) ) :
+        impl.addStatement( printf( 'Starting ' + process.zdlAsNamedElement().name + ' ...' ) )
+
+     /* call the init lifecycle function (if it exists) */
+     -> process.getSourcesForTargetPart().callLifecycleFunction( 'init', impl, deployment, process )
+
+     /* open a message queue for this component instance */
+     -> impl.addStatement( deployment.recvMq( process ) )
+
+     /* open a queue to all processes that are connected to this instance */
+     -> deployment.connectedProcesses( process )
+            .collect( otherProcess |
+                impl.addStatement( deployment.queueInit( otherProcess ).call() ) )
+
+     /* call the init lifecycle function (if it exists) */
+     -> process.getSourcesForTargetPart().callLifecycleFunction( 'start', impl, deployment, process )
+     -> impl.addStatement( printf( 'Running ...' ) )
+
+     /*****************************/
+     /*                           */
+     /*    TODO: dispatch loop    */
+     /*                           */
+     /*****************************/
+
+     /* There is a problem because there is no intra-process synchronization during shutdown,
+      * see the codegen wiki for more detail. */
+     -> impl.addStatement( printf( 'Stopping ...' ) )
+     -> process.getSourcesForTargetPart().callLifecycleFunction( 'stop', impl, deployment, process )
+
+     /* close the queues to all processes that are connected to this instance */
+     -> deployment.connectedProcesses( process )
+            .collect( otherProcess |
+                impl.addStatement( deployment.queueRelease( otherProcess ).call() ) )
+
+     /* allow the user to release their resources only after the local queue has been closed */
+     -> process.getSourcesForTargetPart().callLifecycleFunction( 'release', impl, deployment, process )
+
+     /* close this process' queue */
+     -> impl.addStatement( mq_close( deployment.recvMq( process ).access() ) )
+     -> impl.addStatement( printf( 'Done' ) )
+
+     -> impl.addStatement( returnStmt( EXIT_SUCCESS() ) )
+
+     -> impl
+;
+
+private cached VariableDeclaration recvMq( Deployment deployment, DeploymentPart process ) :
+    let v = variable( mqd_t(), 'recv_mq' ) :
+        v.setInitializer( createMQueue( deployment.queueName( process ).name ) )
+     -> v
+;
+
+private cached List[DeploymentPart] connectedProcesses( Deployment deployment, DeploymentPart process ) :
+    deployment.eAllContents.typeSelect( DeploymentPart )
+        .select( e |
+	        ( ! e.getProcessDefinition().isEmpty )
+	            && ( ! getSourcesForTargetPart( e ).isEmpty ) )
+        .sortBy( e | e.zdlAsNamedElement().name )
+;
+
+/*****************************************
+ * A lifecycle function is generated for each ComponentRealization for each of of 4
+ * conditions (init, start, stop, release).  The function is only generated (and called)
+ * if the user has provided an implementation.
+ *
+ *	extern void SlowProducer_init( Producer * self );
+ *	extern void SlowProducer_start( Producer * self );
+ *	extern void SlowProducer_stop( Producer * self );
+ *	extern void SlowProducer_release( Producer * self );
+ */
+private cached Void callLifecycleFunction( DeploymentPart component, String lfIdentifier, FunctionImplementation impl, Deployment deployment, DeploymentPart process ) :
+    let f = lfIdentifier.lifecycleFunction( component, deployment, process ) :
+        f == null
+            ? null
+            : impl.addStatement(
+                f.call( component.componentInstance( deployment, process ).access() ) )
+;
+
+private cached Function lifecycleFunction( String lfIdentifier, DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+
+    /* A limitation of R1 is that only a single SR is permitted for each Component */
+    let sr = component.ci().getStructuralRealizations().first() :
+    let operation
+        = sr.worker.portOperation.select( e |
+            e.zdlAsOperation().name.matches( lfIdentifier ) ).first() :
+    let body
+        = sr.worker.select( e |
+            e.portOperation.zdlAsOperation().name.matches( lfIdentifier ) ).body.first() :
+    body == null
+        ? null
+        : function(
+            void(),
+            component.srHeader().child(
+                sr.zdlAsNamedElement().name + '_' + operation.zdlAsNamedElement().name ) )
+;
+
+//////////////////////////////////////////
+
+// Make private rule public so it can be reached from the junit test case.
+VariableDeclaration junit_storageVariable( DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    storageVariable( component, deployment, process )
+;
+Expression junit_storageAddress( DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    storageAddress( component, deployment, process )
+;
+List[Enumerator] junit_portInstances( Port port, DeploymentPart component, Deployment deployment, DeploymentPart process ) :
+    portInstances( port, component, deployment, process )
+;
+SwitchStatement junit_portIteratorSwitch( Deployment deployment, DeploymentPart process, DeploymentPart component1, DeploymentPart component2 ) :
+    component1.visitComponentInstance( deployment, process )
+ -> component2.visitComponentInstance( deployment, process )
+ -> portIteratorSwitch( deployment, process )
+;

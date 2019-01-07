@@ -1,0 +1,172 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "PEExample.sbs";
+		- _subsystem = "";
+		- _class = "";
+		- _name = "PEExample";
+		- _id = GUID c6b3bd15-4c24-4bfd-a062-c3729ebbb784;
+	}
+	- _id = GUID f35ac35f-d5de-4923-9f9d-abc47217089f;
+	- _myState = 8192;
+	- _name = "Subscriber_comp";
+	- _modifiedTimeWeak = 7.15.2014::17:16:18;
+	- _lastID = 1;
+	- weakCGTime = 7.15.2014::17:16:18;
+	- strongCGTime = 5.22.2014::18:58:46;
+	- _defaultComposite = GUID db7a646d-2792-4550-be34-11d407c91b1d;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 2;
+		- value = 
+		{ IClass 
+			- _id = GUID db7a646d-2792-4550-be34-11d407c91b1d;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 5.22.2014::18:59:9;
+			- weakCGTime = 5.22.2014::18:59:9;
+			- strongCGTime = 5.22.2014::18:58:46;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID db0b7044-03a0-479e-a9c0-20a2d19806ee;
+			- _myState = 8192;
+			- _name = "Subscriber_comp";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "D:\\workspaces9\\runtime-NGC\\BasicPubSub_Example_WithTemplatesAndDeployment\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CCMComponent";
+					- _id = GUID bed0843e-d7ae-4614-9615-e54012a1234d;
+				}
+			}
+			- _modifiedTimeWeak = 5.22.2014::19:4:43;
+			- _theMainDiagram = { IHandle 
+				- _m2Class = "IStructureDiagram";
+				- _filename = "PubSubSystem.sbs";
+				- _subsystem = "PEExample::PubSubSystem";
+				- _class = "PubSubSystem_impl";
+				- _name = "PubSubSystem_diag";
+				- _id = GUID e0c70501-b91d-434f-a8bf-0eb80650370e;
+			}
+			- _lastID = 3;
+			- weakCGTime = 5.22.2014::19:4:43;
+			- strongCGTime = 5.22.2014::18:59:13;
+			- Ports = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IPort 
+					- _id = GUID 8501f92e-8a43-4dd8-839e-670dee54289b;
+					- _myState = 8192;
+					- _name = "imDataSub";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "D:\\workspaces9\\runtime-NGC\\BasicPubSub_Example_WithTemplatesAndDeployment\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "InterfazePort";
+							- _id = GUID a3a136b2-94b1-4494-9f1d-4975258bc22c;
+						}
+					}
+					- _modifiedTimeWeak = 5.22.2014::19:0:47;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "Publisher_comp.sbs";
+						- _subsystem = "PEExample::Publisher_comp";
+						- _class = "IMData_conn";
+						- _name = "DDS_Listen";
+						- _id = GUID f9cf93de-fb5d-4742-b9ae-a89857eca8a9;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+				}
+				{ IPort 
+					- _id = GUID bb86088d-0c30-407e-8d66-7bb691e00a03;
+					- _myState = 8192;
+					- _name = "imDataSubConnStatus";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "D:\\workspaces9\\runtime-NGC\\BasicPubSub_Example_WithTemplatesAndDeployment\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "InterfazePort";
+							- _id = GUID a3a136b2-94b1-4494-9f1d-4975258bc22c;
+						}
+					}
+					- _modifiedTimeWeak = 5.22.2014::19:1:5;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "D:\\workspaces9\\runtime-NGC\\BasicPubSub_Example_WithTemplatesAndDeployment\\models\\DDS_DCPS\\DDS_DCPS_rpy\\CCM_DDS.sbs";
+						- _subsystem = "CCM_DDS";
+						- _class = "";
+						- _name = "ConnectorStatusListener";
+						- _id = GUID d3b214d8-3481-4a8e-a705-3db02f1fc47f;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+				}
+			}
+			- Attrs = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 8f3ed9eb-9202-4622-9981-75c4e1df32b6;
+					- _myState = 8192;
+					- _name = "edu_vanderbilt_dre_DAnCE_RegisterNaming";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "D:\\workspaces9\\runtime-NGC\\BasicPubSub_Example_WithTemplatesAndDeployment\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "CORBAAttribute";
+							- _id = GUID 6fb61422-49a1-4d58-a8b3-fcdc5d713b46;
+						}
+					}
+					- _modifiedTimeWeak = 5.22.2014::19:0:31;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "D:\\workspaces9\\runtime-NGC\\BasicPubSub_Example_WithTemplatesAndDeployment\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 1.2.1990::0:0:0;
+}
+

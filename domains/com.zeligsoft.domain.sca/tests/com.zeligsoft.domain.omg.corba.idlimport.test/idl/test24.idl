@@ -1,0 +1,12 @@
+interface test24intfB;
+
+interface intfA : test24intfB {
+};
+
+module Test24Mod {
+
+// I am defined in a module so forward declaration resolution will fail.
+
+interface test24intfB;
+
+};

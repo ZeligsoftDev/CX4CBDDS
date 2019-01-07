@@ -1,0 +1,69 @@
+
+import langc;
+
+Collection[Name] transitiveClosure( SubSystem subsystem ) :
+    let files = {}.toSet() :
+        subsystem.files.resolve( files )
+     -> files
+;
+
+private Collection[Name] resolve( Void none, Collection[Name] files ) :
+    files
+;
+
+private Collection[Name] resolve( ElementList elementList, Collection[Name] files ) :
+    elementList.name.resolve( files )
+ -> elementList.elements.resolve( files )
+ -> files
+;
+
+private Collection[Name] resolve( UserElement element, Collection[Name] files ) :
+    files
+;
+
+private Collection[Name] resolve( FunctionImplementation impl, Collection[Name] files ) :
+    impl.body.resolve( files )
+ -> files
+;
+
+private Collection[Name] resolve( CodeBlock block, Collection[Name] files ) :
+    block.statements.resolve( files )
+ -> files
+;
+
+private Collection[Name] resolve( Statement stmt, Collection[Name] files ) :
+    files
+;
+
+private Collection[Name] resolve( ExpressionStatement stmt, Collection[Name] files ) :
+    stmt.expr.resolve( files )
+ -> files
+;
+
+private Collection[Name] resolve( SwitchStatement stmt, Collection[Name] files ) :
+    stmt.clauses.resolve( files )
+ -> files
+;
+
+private Collection[Name] resolve( Expression expr, Collection[Name] files ) :
+    files
+;
+
+private Collection[Name] resolve( FunctionCall call, Collection[Name] files ) :
+    call.function.name.resolve( files )
+ -> files
+;
+
+private FileName resolve( Name name, Collection[Name] files ) :
+    name.parent.resolve( files )
+ -> files
+;
+
+private FileName resolve( FileName name, Collection[Name] files ) :
+    name.hasObjectCode ? files.add( name ) : null
+ -> files
+;
+
+private FileName resolve( SystemFileName name, Collection[Name] files ) :
+    files
+;

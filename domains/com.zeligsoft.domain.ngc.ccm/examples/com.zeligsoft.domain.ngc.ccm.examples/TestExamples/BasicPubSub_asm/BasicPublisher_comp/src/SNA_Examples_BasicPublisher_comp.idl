@@ -1,0 +1,16 @@
+#ifndef CX_BASICPUBLISHER_COMP__SRC__SNA_EXAMPLES_BASICPUBLISHER_COMP_IDL
+#define CX_BASICPUBLISHER_COMP__SRC__SNA_EXAMPLES_BASICPUBLISHER_COMP_IDL
+
+#include <Components.idl>
+#include "SNA_Examples_TestData_conn.idl"
+#include <ccm_dds.idl>
+
+module SNA_Examples {
+    component BasicPublisher_comp {
+        port TestData_conn::DDS_Write testDataPub;
+        provides CCM_DDS::ConnectorStatusListener testDataPubConnStatus;
+    };
+
+};
+
+#endif

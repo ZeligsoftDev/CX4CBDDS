@@ -1,0 +1,28 @@
+/// @defgroup AGSP_PCPC_Status_obj PCPC_Status_obj
+/// @{
+/// 
+/// @file AGSP_PCPC_Status_obj.idl
+/// @brief PCPC_Status_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__POINTCLICKMODE__AGSP_PCPC_STATUS_OBJ_IDL
+#define CX_PORTS__POINTCLICKMODE__AGSP_PCPC_STATUS_OBJ_IDL
+
+#pragma ciao lem "AGSP_PCPC_Status_objE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    ///@interface PCPC_Status_obj 
+    interface PCPC_Status_obj {
+
+        void reportAsyncStatus();
+    };
+
+};
+
+#endif // CX_PORTS__POINTCLICKMODE__AGSP_PCPC_STATUS_OBJ_IDL
+
+/// @}
+

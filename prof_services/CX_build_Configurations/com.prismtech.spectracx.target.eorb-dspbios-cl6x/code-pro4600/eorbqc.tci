@@ -1,0 +1,8 @@
+// eORB quicComm task entry point
+
+bios.enableTskManager (prog);
+
+bios.tskQC = bios.TSK.create ("EORBTask");
+bios.tskQC.fxn = prog.extern ("EORB_main_task");
+bios.tskQC.stackSize = 0x1000
+bios.tskQC.priority = 0x8;

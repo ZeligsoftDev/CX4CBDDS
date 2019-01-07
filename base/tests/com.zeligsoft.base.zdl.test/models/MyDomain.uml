@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmlns:zdl="http://www.zeligsoft.com/zdl/2008/ZDL/1" xsi:schemaLocation="http://www.zeligsoft.com/zdl/2008/ZDL/1 pathmap://ZDL_PROFILES/ZDL.profile.uml#_TY7fcC_oEd2oX-fEHLus7g">
+  <uml:Model xmi:id="_NRAMoAwOEdmFcaeZXPdWAQ" name="MyDomain">
+    <packageImport xmi:id="_UeIAJtCzEdqK7KjEh4hvHw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_uH3wkGsrEd2s--4g-nTlHg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_NRAMoAwOEdmFcaeZXPdWAQ"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_gWwxIGsrEd2s--4g-nTlHg" name="MyDomain" clientDependency="_kCgDEGsrEd2s--4g-nTlHg"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_hpwqEGsrEd2s--4g-nTlHg" name="MyBlock">
+      <packageImport xmi:id="_2Zm9QGsrEd2s--4g-nTlHg">
+        <importedPackage href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_ihBukCBTEd2fK6BRw108zQ"/>
+      </packageImport>
+      <packagedElement xmi:type="uml:Class" xmi:id="_5ffwIGsrEd2s--4g-nTlHg" name="Application">
+        <generalization xmi:id="__Fkn0GsrEd2s--4g-nTlHg">
+          <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_wOcEUCBUEd2fK6BRw108zQ"/>
+        </generalization>
+        <ownedAttribute xmi:id="_8PrjUGssEd2s--4g-nTlHg" name="name" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_FWUXsGstEd2s--4g-nTlHg" name="id" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_RNFKUGstEd2s--4g-nTlHg" name="port" visibility="public" type="_EJhC0GssEd2s--4g-nTlHg" aggregation="composite" association="_RM8AYGstEd2s--4g-nTlHg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RNO7UWstEd2s--4g-nTlHg" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RNO7UGstEd2s--4g-nTlHg"/>
+          <redefinedProperty href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_RdFmkS2zEd2LuvOo-ahhJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_EJhC0GssEd2s--4g-nTlHg" name="MyPort">
+        <generalization xmi:id="_GDjtoGssEd2s--4g-nTlHg">
+          <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_NzBNcCBeEd2fK6BRw108zQ"/>
+        </generalization>
+        <ownedAttribute xmi:id="_gMN4kGssEd2s--4g-nTlHg" name="kind" visibility="public" type="_VtXUEGssEd2s--4g-nTlHg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_kbHh8WssEd2s--4g-nTlHg" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kbHh8GssEd2s--4g-nTlHg"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_VtXUEGssEd2s--4g-nTlHg" name="PortKind">
+        <ownedLiteral xmi:id="_aCYMgGssEd2s--4g-nTlHg" name="control" classifier="_VtXUEGssEd2s--4g-nTlHg"/>
+        <ownedLiteral xmi:id="_b7OkgGssEd2s--4g-nTlHg" name="data" classifier="_VtXUEGssEd2s--4g-nTlHg"/>
+        <ownedLiteral xmi:id="_c3IMEGssEd2s--4g-nTlHg" name="responses" classifier="_VtXUEGssEd2s--4g-nTlHg"/>
+        <ownedLiteral xmi:id="_d83sIGssEd2s--4g-nTlHg" name="text" classifier="_VtXUEGssEd2s--4g-nTlHg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_RM8AYGstEd2s--4g-nTlHg" name="" memberEnd="_RNFKUGstEd2s--4g-nTlHg _RNO7UmstEd2s--4g-nTlHg">
+        <generalization xmi:id="_c_PJwGstEd2s--4g-nTlHg">
+          <general xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_RdFmkC2zEd2LuvOo-ahhJw"/>
+        </generalization>
+        <ownedEnd xmi:id="_RNO7UmstEd2s--4g-nTlHg" name="" visibility="private" type="_5ffwIGsrEd2s--4g-nTlHg" association="_RM8AYGstEd2s--4g-nTlHg">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RNO7VGstEd2s--4g-nTlHg" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RNO7U2stEd2s--4g-nTlHg" value="1"/>
+          <redefinedProperty href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_RdOwgC2zEd2LuvOo-ahhJw"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_kCgDEGsrEd2s--4g-nTlHg" name="" supplier="_hpwqEGsrEd2s--4g-nTlHg" client="_gWwxIGsrEd2s--4g-nTlHg"/>
+    <profileApplication xmi:id="_UeIAINCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAIdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_c5ojJ2srEd2s--4g-nTlHg">
+      <eAnnotations xmi:id="_c5ojKGsrEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://ZDL_PROFILES/ZDL.profile.uml#_TY7fcC_oEd2oX-fEHLus7g"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://ZDL_PROFILES/ZDL.profile.uml#_Rud18OyCEdyUQcM5ztOjuQ"/>
+    </profileApplication>
+  </uml:Model>
+  <zdl:DomainModel xmi:id="_c_vK8GsrEd2s--4g-nTlHg" base_Model="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  <zdl:DomainSpecialization xmi:id="_gXETIGsrEd2s--4g-nTlHg" base_Class="_gWwxIGsrEd2s--4g-nTlHg"/>
+  <zdl:DomainBlock xmi:id="_hpwqEWsrEd2s--4g-nTlHg" base_Package="_hpwqEGsrEd2s--4g-nTlHg"/>
+  <zdl:DomainBlockReference xmi:id="_kCgDEWsrEd2s--4g-nTlHg" base_Dependency="_kCgDEGsrEd2s--4g-nTlHg"/>
+  <zdl:DomainBlockImport xmi:id="_2Zm9QWsrEd2s--4g-nTlHg" base_PackageImport="_2Zm9QGsrEd2s--4g-nTlHg"/>
+  <zdl:DomainConcept xmi:id="_5ffwIWsrEd2s--4g-nTlHg" base_Class="_5ffwIGsrEd2s--4g-nTlHg"/>
+  <zdl:DomainGeneralization xmi:id="__FtxwGsrEd2s--4g-nTlHg" base_Generalization="__Fkn0GsrEd2s--4g-nTlHg"/>
+  <zdl:DomainConcept xmi:id="_EJhC0WssEd2s--4g-nTlHg" base_Class="_EJhC0GssEd2s--4g-nTlHg"/>
+  <zdl:DomainGeneralization xmi:id="_GDjtoWssEd2s--4g-nTlHg" base_Generalization="_GDjtoGssEd2s--4g-nTlHg"/>
+  <zdl:DomainEnum xmi:id="_VtXUEWssEd2s--4g-nTlHg" base_DataType="_VtXUEGssEd2s--4g-nTlHg" base_Enumeration="_VtXUEGssEd2s--4g-nTlHg"/>
+  <zdl:DomainEnumLiteral xmi:id="_aCYMgWssEd2s--4g-nTlHg" base_EnumerationLiteral="_aCYMgGssEd2s--4g-nTlHg"/>
+  <zdl:DomainEnumLiteral xmi:id="_b7OkgWssEd2s--4g-nTlHg" base_EnumerationLiteral="_b7OkgGssEd2s--4g-nTlHg"/>
+  <zdl:DomainEnumLiteral xmi:id="_c3R9EGssEd2s--4g-nTlHg" base_EnumerationLiteral="_c3IMEGssEd2s--4g-nTlHg"/>
+  <zdl:DomainEnumLiteral xmi:id="_d83sIWssEd2s--4g-nTlHg" base_EnumerationLiteral="_d83sIGssEd2s--4g-nTlHg"/>
+  <zdl:DomainAttribute xmi:id="_gMN4kWssEd2s--4g-nTlHg" base_Property="_gMN4kGssEd2s--4g-nTlHg"/>
+  <zdl:DomainAttribute xmi:id="_8PrjUWssEd2s--4g-nTlHg" base_Property="_8PrjUGssEd2s--4g-nTlHg"/>
+  <zdl:DomainAttribute xmi:id="_FWeIsGstEd2s--4g-nTlHg" base_Property="_FWUXsGstEd2s--4g-nTlHg"/>
+  <zdl:DomainReference xmi:id="_RNh2QGstEd2s--4g-nTlHg" base_Association="_RM8AYGstEd2s--4g-nTlHg"/>
+</xmi:XMI>

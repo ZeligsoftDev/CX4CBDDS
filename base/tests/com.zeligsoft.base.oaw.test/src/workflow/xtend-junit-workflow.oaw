@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<workflow>
+    <property name="fileEncoding" value="ISO-8859-1"/>
+
+    <component class="com.zeligsoft.base.oaw.test.OawWorkflowComponent" id="transformer">
+
+        <zdlMMZdlUris value="${zdlMMZdlUris}"/>
+        <emfMMPackages value="${emfMMPackages}"/>
+
+        <outputSlot value="result"/>
+        <invoke value="${xtend-rule}"/>
+
+    </component>
+
+</workflow>

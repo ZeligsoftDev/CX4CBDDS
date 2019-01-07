@@ -1,0 +1,90 @@
+//
+// This file provides some debug utilities.  Both can be called on any element in the
+// language model and will return instance on which they are called.
+//
+// Println( String msg ) will write the argument message
+// Debug()               will call toString on the receiver
+// Debug( String msg )   will call toString on the receiver and append the argument message
+//
+// TODO There is now a debug extension in the base codegen plugin.  This one should be removed
+//      and that one used instead.  The problem is that the base codegen plugin still has UI
+//      deps.  We need to make a new, headless version of that plugin.  Then the debug.ext
+//      template can be moved there, and this one removed.
+
+import langc;
+
+extension codegen::debug;
+
+Void Inspect( int condition, Object obj ) : condition.BaseInspect( obj );
+Void Inspect( Object obj, int condition ) : condition.BaseInspect( obj );
+Void Inspect( int condition, int obj )    : condition.BaseInspect( obj );
+Void Inspect( int condition, Void obj )   : condition.BaseInspect( obj );
+Void Inspect( Void obj, int condition )   : condition.BaseInspect( obj );
+
+SubSystem   Println( SubSystem obj,   String msg ) : obj.BaseDebug( msg );
+ElementList Println( ElementList obj, String msg ) : obj.BaseDebug( msg );
+
+ElementReference Println( ElementReference obj, String msg ) : obj.BaseDebug( msg );
+Element          Println( Element obj,          String msg ) : obj.BaseDebug( msg );
+Name             Println( Name obj,             String msg ) : obj.BaseDebug( msg );
+FileName         Println( FileName obj,         String msg ) : obj.BaseDebug( msg );
+
+DependencyList Println( DependencyList obj, String msg ) : obj.BaseDebug( msg );
+Dependency Println( Dependency obj, String msg ) : obj.BaseDebug( msg );
+Expression Println( Expression obj, String msg ) : obj.BaseDebug( msg );
+Statement  Println( Statement obj,  String msg ) : obj.BaseDebug( msg );
+
+NamedReference Println( NamedReference obj, String msg ) : obj.BaseDebug( msg );
+
+
+System      Debug( System obj,      String msg ) : obj.BaseDebug( msg );
+SubSystem   Debug( SubSystem obj,   String msg ) : obj.BaseDebug( msg );
+ElementList Debug( ElementList obj, String msg ) : obj.BaseDebug( msg );
+
+ElementReference Debug( ElementReference obj, String msg ) : obj.BaseDebug( msg );
+Element          Debug( Element obj,          String msg ) : obj.BaseDebug( msg );
+Name             Debug( Name obj,             String msg ) : obj.BaseDebug( msg );
+FileName         Debug( FileName obj,         String msg ) : obj.BaseDebug( msg );
+
+Structure       Debug( Structure obj,       String msg ) : obj.BaseDebug( msg );
+VariableDeclaration Debug( VariableDeclaration obj, String msg ) : obj.BaseDebug( msg );
+Typedef         Debug( Typedef obj,         String msg ) : obj.BaseDebug( msg );
+FunctionPointer Debug( FunctionPointer obj, String msg ) : obj.BaseDebug( msg );
+
+NamedElement Debug( NamedElement obj, String msg ) : obj.BaseDebug( msg );
+Function     Debug( Function obj,     String msg ) : obj.BaseDebug( msg );
+
+DependencyList Debug( DependencyList obj, String msg ) : obj.BaseDebug( msg );
+Dependency Debug( Dependency obj, String msg ) : obj.BaseDebug( msg );
+Expression Debug( Expression obj, String msg ) : obj.BaseDebug( msg );
+Statement  Debug( Statement obj,  String msg ) : obj.BaseDebug( msg );
+
+CodeBlock Debug( CodeBlock obj, String msg ) : obj.BaseDebug( msg );
+NamedReference Debug( NamedReference obj, String msg ) : obj.BaseDebug( msg );
+
+SwitchClause Debug( SwitchClause obj, String msg ) : obj.BaseDebug( msg );
+
+CastExpr Debug( CastExpr obj, String msg ) : obj.BaseDebug( msg );
+
+
+System      Debug( System obj )      : obj.BaseDebug();
+SubSystem   Debug( SubSystem obj )   : obj.BaseDebug();
+ElementList Debug( ElementList obj ) : obj.BaseDebug();
+
+ElementReference Debug( ElementReference obj ) : obj.BaseDebug();
+Element          Debug( Element obj )          : obj.BaseDebug();
+Name             Debug( Name obj )             : obj.BaseDebug();
+FileName         Debug( FileName obj )         : obj.BaseDebug();
+
+NamedElement Debug( NamedElement obj ) : obj.BaseDebug();
+Function     Debug( Function obj ) :     obj.BaseDebug();
+
+DependencyList Debug( DependencyList obj ) : obj.BaseDebug();
+Dependency Debug( Dependency obj ) : obj.BaseDebug();
+Expression Debug( Expression obj ) : obj.BaseDebug();
+Statement  Debug( Statement obj )  : obj.BaseDebug();
+
+CodeBlock Debug( CodeBlock obj )  :          obj.BaseDebug();
+NamedReference Debug( NamedReference obj ) : obj.BaseDebug();
+
+SwitchClause Debug( SwitchClause obj ) : obj.BaseDebug();

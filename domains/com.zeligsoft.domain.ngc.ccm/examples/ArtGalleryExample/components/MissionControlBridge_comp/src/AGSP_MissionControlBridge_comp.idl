@@ -1,0 +1,67 @@
+/// @defgroup AGSP_MissionControlBridge_comp MissionControlBridge_comp
+/// @{
+/// 
+/// @file AGSP_MissionControlBridge_comp.idl
+/// @brief MissionControlBridge_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_COMPONENTS__MISSIONCONTROLBRIDGE_COMP__SRC__AGSP_MISSIONCONTROLBRIDGE_COMP_IDL
+#define CX_COMPONENTS__MISSIONCONTROLBRIDGE_COMP__SRC__AGSP_MISSIONCONTROLBRIDGE_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao lem "AGSP_MissionControlBridge_compE.idl"
+#pragma ami4ccm receptacle "AGSP::MissionControlBridge_comp::ExtCommandsRecept"
+#include "AGSP_ExtCommands_obj.idl"
+#include "AGSP_Control_obj.idl"
+#include "AGSP_StateControl_obj.idl"
+#include "AGSP_SystemImages_conn.idl"
+#include "AGSP_SystemTargets_conn.idl"
+#include "AGSP_Images_conn.idl"
+#include "AGSP_SubsystemStatus_conn.idl"
+#include "AGSP_Targets_conn.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// The MissionControlBridge_comp component is a standard Bridge pattern SNA
+    /// adapter component. It sits on the edge of the SurveillanceProcessor_asm
+    /// assembly, spanning its internal Class 2 domain and an external Class 3
+    /// domain to expose select data and services for the processor. It provides
+    /// the sole control interface (and published image and target output
+    /// products) for an SP to the Class 3 Art Gallery control room.
+    component MissionControlBridge_comp {
+
+        /// Internal facing control port for executing commands initiated by the
+        /// Class 3 Art Gallery control room via the ControlFacet port
+        uses AGSP::ExtCommands_obj ExtCommandsRecept;
+
+        /// This is the Class 3 control port exposed to the Art Gallery control
+        /// room to control the SP
+        provides AGSP::Control_obj ControlFacet;
+
+        /// Internal facing control service that every SP component has
+        provides AGSP::StateControl_obj StateControlFacet;
+
+        /// Class 3 publisher port for publishing images to the Art Gallery
+        /// control room
+        port SystemImages_conn::PSAT_Write SystemImagesPub;
+
+        /// Class 3 publisher port for publishing targets to the Art Gallery
+        /// control room
+        port SystemTargets_conn::DDS_Write SystemTargetsPub;
+
+        /// Internal facing subscriber port for picking up images published by
+        /// the camera modes
+        port Images_conn::PSAT_Listen ImagesSub;
+        port SubsystemStatus_conn::DDS_Listen SubsystemStatusSub;
+        port SubsystemStatus_conn::DDS_Get SubsystemStatusSub2;
+        port Targets_conn::DDS_Listen TargetsSub;
+    };
+
+};
+
+#endif // CX_COMPONENTS__MISSIONCONTROLBRIDGE_COMP__SRC__AGSP_MISSIONCONTROLBRIDGE_COMP_IDL
+
+/// @}
+

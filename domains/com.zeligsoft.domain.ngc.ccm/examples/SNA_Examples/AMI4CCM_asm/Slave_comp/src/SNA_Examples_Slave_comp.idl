@@ -1,0 +1,50 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+
+/**
+ * @defgroup Slave_comp   Slave_comp Component
+ * @ingroup AMI4CCM_Example
+ * @{
+ * The Slave_comp component provides an interface used to control an internal
+ * state machine. The interface is mocked so that the changeState operation
+ * takes several seconds to complete in order to more easily show the benefits
+ * of AMI4CCM. 
+ * 
+ *
+ * @file   SNA_Examples_Slave_comp.idl
+ * @brief  Slave_comp component definition IDL file.
+ */
+
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_SLAVE_COMP_IDL
+#define SNA_EXAMPLES_SLAVE_COMP_IDL
+
+#include <Components.idl>
+
+#include "SNA_Examples_StateControl_obj.idl"
+
+module SNA_Examples
+{
+   /**
+    * This component simulates a state machine.
+    */
+   component Slave_comp
+   {
+      /**
+       * A facet/service used by others to control this component's state
+       * machine.
+       */
+      provides StateControl_obj stateControlFacet;
+   };
+};
+
+#endif
+
+/// @}
+//==============================================================================
+//                            U N C L A S S I F I E D                            
+//==============================================================================

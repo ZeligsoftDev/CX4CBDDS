@@ -1,0 +1,23 @@
+/// @defgroup AGSP_UnprocessedImages_defn UnprocessedImages_defn
+/// @{
+/// 
+/// @file AGSP_UnprocessedImages_defn.idl
+/// @brief UnprocessedImages_defn definitions definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__CAMERA__AGSP_UNPROCESSEDIMAGES_DEFN_IDL
+#define CX_PORTS__CAMERA__AGSP_UNPROCESSEDIMAGES_DEFN_IDL
+
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef PixArray
+    typedef octet PixArray[20000];
+};
+
+#endif // CX_PORTS__CAMERA__AGSP_UNPROCESSEDIMAGES_DEFN_IDL
+
+/// @}
+

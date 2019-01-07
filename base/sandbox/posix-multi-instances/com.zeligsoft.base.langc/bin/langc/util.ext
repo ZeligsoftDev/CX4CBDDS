@@ -1,0 +1,27 @@
+
+import langc;
+
+extension langc::debug;
+extension langc::expr;
+extension langc::libc;
+extension langc::mqueue;
+
+// TODO It might be useful for this api to accept a CodeBlock and then add the
+//      statement directly into the block.  This would allow multi-statement
+//      insertions instead of just creation of expressions.
+
+Expression createMQueue( Name qName ) :
+    mq_create( qName, O_RDONLY().or( O_CREAT() ).or( O_EXCL() ), S_IRWXU() )
+;
+
+Expression openMQueue( Name qName ) :
+    mq_open( qName, O_WRONLY() )
+;
+
+Expression mQueueSend( Name qName, VariableDeclaration buffVar ) :
+    mq_send( qName, buffVar.access(), buffVar.sizeof() )
+;
+
+Expression mQueueReceive( Name qName, VariableDeclaration buffVar ) :
+    mq_receive( qName, buffVar.access(), buffVar.sizeof() )
+;

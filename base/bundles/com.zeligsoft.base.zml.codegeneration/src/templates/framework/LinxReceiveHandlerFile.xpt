@@ -1,0 +1,121 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+ 
+«IMPORT uml»
+
+«EXTENSION templates::common»
+
+
+«DEFINE linxReceiveHandlerHeaderFile FOR Model»
+«FILE "fwk/C/transports/receive/LinxReceiveHandler/zceLinxReceiveHandler.h"»
+/**
+ * @file: zceLinxReceiveHandler.h
+ * 
+ */
+
+#ifndef __ZCELINXRECEIVEHANDLER_H
+#define __ZCELINXRECEIVEHANDLER_H
+
+
+#include "zceReceiveHandler.h"
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+	
+	
+/****************************************
+ *								        *
+ * LinxReceiveHandler struct + typedefs *
+ *								        *
+ ****************************************/
+
+/**
+ * The zce_struct_LinxReceiveHandler forward declared (implementation hidden from the user)
+ */
+struct zce_struct_LinxReceiveHandler;
+typedef struct zce_struct_LinxReceiveHandler* zceLinxReceiveHandler;
+typedef void (*timeOutFuncPtr)(void* compWorker ZCE_EXC_ENV_ARG);
+
+
+	
+/*************************************
+ *							         *
+ * LinxReceiveHandler base functions *
+ *                                   *
+ *************************************/
+
+/**
+ * zceLinxReceiveHandler_construct: LinxReceiveHandler constructor
+ * Following the constructor/destructor pattern, every struct has its own matching pair of construct/destruct functions
+ * @param self The zceLinxReceiveHandler struct to which this function applies to.
+ */
+void zceLinxReceiveHandler_construct(zceLinxReceiveHandler self, zceDispatcher dispatcher ZCE_EXC_ENV_ARG);
+
+/**
+ * zceLinxReceiveHandler_destruct: C1's container destructor
+ * Following the constructor/destructor pattern, every struct has its own matching pair of construct/destruct functions
+ * @param self The zceLinxReceiveHandler struct to which this function applies to.
+ */
+void zceLinxReceiveHandler_destruct(zceLinxReceiveHandler self ZCE_EXC_ENV_ARG);
+
+zceLinxReceiveHandler zceLinxReceiveHandler_allocate(ZCE_EXC_ENV_SINGLE_ARG);
+
+/**
+ * zceLinxReceiveHandler_release: LinxReceiveHandler release function
+ * Placeholder function for the self to set up the Linx connections.
+ * @param self The zceLinxReceiveHandler struct to which this function applies to.
+ */
+void zceLinxReceiveHandler_release(zceLinxReceiveHandler self ZCE_EXC_ENV_ARG);
+
+/*******************************************
+ *							               *
+ * LinxReceiveHandler MSG listen functions *
+ *                                         *
+ *******************************************/
+void zceLinxReceiveHandler_listen(zceReceiveHandler self, Boolean isPeriodDriven ZCE_EXC_ENV_ARG);
+
+void zceLinxReceiveHandler_dispatcher(zceReceiveHandler self ZCE_EXC_ENV_ARG);
+
+void zceLinxReceiveHandler_periodDispatcher(zceReceiveHandler self ZCE_EXC_ENV_ARG);
+
+/********************************************
+ *							                *
+ * LinxReceiveHandler period driven setting *
+ *                                          *
+ ********************************************/
+void zceLinxReceiveHandler_setTimeOutHandler(zceLinxReceiveHandler self, timeOutFuncPtr funcHandler, void* timeoutComp ZCE_EXC_ENV_ARG);
+
+void zceLinxReceiveHandler_setTimeOutPeriod(zceLinxReceiveHandler self, int period);
+
+void zceLinxReceiveHandler_nextTimeOut(zceLinxReceiveHandler self, int period);
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif     /* __ZCELINXRECEIVEHANDLER_H */
+
+
+/* End-Of-File */
+/* ------------------------------------------------------------------------------ */
+«ENDFILE»
+«ENDDEFINE»

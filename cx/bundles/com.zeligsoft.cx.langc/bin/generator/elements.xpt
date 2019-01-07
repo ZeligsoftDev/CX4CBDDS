@@ -1,0 +1,68 @@
+
+«IMPORT langc»
+«EXTENSION codegen::debug»
+«EXTENSION codegen::progress»
+«EXTENSION generator::extend_util»
+«EXTENSION generator::filepartitioner»
+«EXTENSION langc::element»
+
+«REM»Do nothing if the system is null.  This could happen if an incremental generation
+     operation found no significant changes.«ENDREM»
+«DEFINE System(String destProjectName, Object progressMonitor) FOR Void»
+
+    «REM»In the future this information may be kept (within the session) for incremental
+         generation.  For now its a waste of memory, so clear it all.«ENDREM»
+    «resetBindings()»
+«ENDDEFINE»
+
+«DEFINE System(String destProjectName, Object progressMonitor) FOR System»
+    «progressMonitor.beginTask( 'Generating files in ' + destProjectName + ' ...', 1 )»
+
+    «EXPAND SubSystem(destProjectName) FOREACH subSystems»
+    «EXPAND manifestfile::ManifestFile FOR this»
+
+    «REM»In the future this information may be kept (within the session) for incremental
+         generation.  For now its a waste of memory, so clear it all.«ENDREM»
+    «resetBindings()»
+
+    «progressMonitor.worked( 1 )»
+    «progressMonitor.done()»
+«ENDDEFINE»
+
+«DEFINE SubSystem(String destProjectName) FOR SubSystem»
+    «FOREACH files AS file»
+        «EXPAND ElementList(destProjectName) FOR file»
+    «ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE ElementList(String destProjectName) FOR ElementList»
+    «resolveDependencies()»
+    «generate(destProjectName)»
+«ENDDEFINE»
+
+«DEFINE OpenEditors( String destProjectName, Object element, Object desc ) FOR ElementList»
+    «EXPAND ElementList( destProjectName )»
+    «openEditors( destProjectName, element, desc )»
+«ENDDEFINE» 
+
+«REM»           Dependencies            «ENDREM»
+
+«DEFINE Include(Name context) FOR DependencyList»
+«EXPAND Include(context) FOREACH dependencies.typeSelect(UserInclude).sortBy(e|e.filename)»
+«EXPAND Include(context) FOREACH dependencies.typeSelect(DependencyBlob).sortBy(e|e.text)»
+«EXPAND Include(context) FOREACH dependencies.typeSelect(SystemInclude).sortBy(e|e.filename)»
+«ENDDEFINE»
+
+«DEFINE Include(Name context) FOR Dependency»GEN-Dependency-GEN«ENDDEFINE»
+
+«DEFINE Include(Name context) FOR SystemInclude-»
+#include <«filename»>
+«ENDDEFINE»
+
+«DEFINE Include(Name context) FOR UserInclude-»
+«IF filename != context»#include "«filename.includePath()»"«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Include(Name context) FOR DependencyBlob-»
+«text»
+«ENDDEFINE»

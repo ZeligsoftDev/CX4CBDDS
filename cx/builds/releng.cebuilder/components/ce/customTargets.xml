@@ -1,0 +1,241 @@
+<project name="Build specific targets and properties"
+         default="noDefault">
+
+    <property name="postingDirectory"
+              value="${buildDirectory}" />
+
+    <!-- ===================================================================== -->
+    <!-- Run a given ${target} on all elements being built -->
+    <!-- Add on <ant> task for each top level element being built. -->
+    <!-- ===================================================================== -->
+    <target name="allElements">
+        <echo message="Target:${target} " />
+        <echo message="basedir: ${basedir}" />
+        <echo message="component: ${component}" />
+        <echo message="buildDirectory: ${buildDirectory}" />
+        <echo message="baseLocation: ${baseLocation}" />
+    	
+        <ant antfile="${genericTargets}" target="${target}">
+            <property name="type" value="feature" />
+            <property name="id" value="com.zeligsoft.ce" />
+        </ant>
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Targets to assemble the built elements for particular configurations  -->
+    <!-- These generally call the generated assemble scripts (named in -->
+    <!-- ${assembleScriptName}) but may also add pre and post processing -->
+    <!-- Add one target for each root element and each configuration -->
+    <!-- ===================================================================== -->
+
+    <target name="assemble.com.zeligsoft.ce">
+        <property name="archiveName"
+                  value="ce-incubation-${buildLabel}.zip" />
+        <ant antfile="${assembleScriptName}"
+             dir="${buildDirectory}" />
+
+        <mkdir dir="${postingDirectory}/${buildLabel}/checksum" />
+        <checksum file="${postingDirectory}/${buildLabel}/ce-incubation-${buildLabel}.zip"
+                  property="md5" />
+        <echo message="${md5} *ce-incubation-${buildLabel}.zip"
+              file="${postingDirectory}/${buildLabel}/checksum/ce-incubation-${buildLabel}.zip.md5" />
+        <echo message="${md5}"
+              file="${postingDirectory}/${buildLabel}/checksum/ce-incubation-${buildLabel}.zip.md5antformat" />
+
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Check out map files from correct repository -->
+    <!-- Replace values for cvsRoot, package and mapVersionTag as desired. -->
+    <!-- ===================================================================== -->
+    <target name="checkLocal">
+        <available property="mapsLocal"
+                   file="${buildDirectory}/maps/releng" />
+    </target>
+    <target name="getMapFiles"
+            depends="checkLocal"
+            unless="mapsLocal">
+    	<svn>
+    		<checkout url="${svn.svnroot}/ce/trunk/${releng}"
+    		          destPath="${buildDirectory}/maps/build/releng"
+    		          revision="${mapVersionTag}" />
+    	</svn>
+        <!--tag the map files project-->
+        <antcall target="tagMapFiles">
+        </antcall>
+    </target>
+
+    <target name="tagMapFiles" if="tagMaps">
+		<!-- TODO -->
+    </target>
+
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do before setup -->
+    <!-- ===================================================================== -->
+    <target name="preSetup">
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do after setup but before starting the build proper -->
+    <!-- ===================================================================== -->
+    <target name="postSetup">
+        <dirname file="${ant.file}"
+                 property="component.dir" />
+        <ant antfile="${component.dir}/dependency.xml"
+             target="get">
+            <property name="dependency.properties"
+                      value="${buildDirectory}/maps/build/releng/maps/dependencies.properties" />
+            <property name="base.install.dir"
+                      value="${buildRoot}" />
+        </ant>
+
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do before fetching the build elements -->
+    <!-- ===================================================================== -->
+    <target name="preFetch">
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do after fetching the build elements -->
+    <!-- ===================================================================== -->
+    <target name="postFetch">
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do before generating the build scripts. -->
+    <!-- ===================================================================== -->
+    <target name="preGenerate">
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do after generating the build scripts. -->
+    <!-- ===================================================================== -->
+    <target name="postGenerate">
+    </target>
+
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do before running the build.xmls for the elements being built. -->
+    <!-- ===================================================================== -->
+    <target name="preProcess">
+        <replace dir="${buildDirectory}/plugins"
+                 value="${timestamp}"
+                 token="@build@">
+            <include name="**/about.mappings" />
+        </replace>
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do after running the build.xmls for the elements being built. -->
+    <!-- ===================================================================== -->
+    <target name="postProcess">
+        <condition property="logsAvailable">
+            <istrue value="${javacVerbose}" />
+        </condition>
+        <antcall target="gatherLogs" />
+    </target>
+
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do before running assemble. -->
+    <!-- ===================================================================== -->
+    <target name="preAssemble">
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do after  running assemble. -->
+    <!-- ===================================================================== -->
+    <target name="postAssemble">
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do after the build is done. -->
+    <!-- ===================================================================== -->
+    <target name="postBuild">
+        <!-- create zipped up versions for update site -->
+        <property name="UpdateSiteStagingLocation"
+            value="${buildDirectory}/${buildLabel}/updateSite" />
+        <antcall target="generateUpdateSite" />
+    </target>
+
+    <target name="generateUpdateSite">
+        <!-- Create the directory structure -->
+        <mkdir dir="${UpdateSiteStagingLocation}" />
+        <mkdir dir="${UpdateSiteStagingLocation}/features" />
+        <mkdir dir="${UpdateSiteStagingLocation}/plugins" />
+        <!-- Build the jar files -->
+        <antcall target="allElements">
+            <param name="genericTargets"
+                   value="${builder}/customTargets.xml" />
+            <param name="target" value="updateSiteExport" />
+        </antcall>
+        <antcall target="copySiteXmlFromCvs" />
+        <antcall target="createNightlyBuildSiteXml" />
+    </target>
+    <target name="updateSiteExport">
+        <ant antfile="build.xml"
+             dir="${buildDirectory}/features/${id}/"
+             target="build.update.jar">
+            <property name="feature.destination"
+                      value="${UpdateSiteStagingLocation}/features" />
+            <property name="plugin.destination"
+                      value="${UpdateSiteStagingLocation}/plugins" />
+        </ant>
+    </target>
+    <target name="copySiteXmlFromCvs"
+            unless="isNightlyBuild">
+        <!-- connect to CVS and fetch site.xml, copy to ${UpdateSiteStagingLocation}/site.xml afterwards -->
+    </target>
+    <target name="createNightlyBuildSiteXml"
+            if="isNightlyBuild">
+        <!-- create ${UpdateSiteStagingLocation}/site.xml which contains only the nighlty build version -->
+    </target>
+
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do to test the build results -->
+    <!-- ===================================================================== -->
+    <target name="test">
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Steps to do to publish the build results -->
+    <!-- ===================================================================== -->
+    <target name="publish">
+    </target>
+
+
+    <!-- ===================================================================== -->
+    <!-- Helper targets -->
+    <!-- ===================================================================== -->
+    <target name="gatherLogs" if="logsAvailable">
+        <mkdir dir="${buildDirectory}/${buildLabel}/compilelogs" />
+        <antcall target="allElements">
+            <param name="target" value="gatherLogs" />
+        </antcall>
+
+        <unzip dest="${buildDirectory}/${buildLabel}/compilelogs"
+               overwrite="true">
+            <fileset dir="${buildDirectory}/features/com.zeligsoft.ce">
+                <include name="*.log.zip" />
+            </fileset>
+        </unzip>
+    </target>
+
+    <target name="clean" unless="noclean">
+        <antcall target="allElements">
+            <param name="target" value="cleanElement" />
+        </antcall>
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Default target                                                        -->
+    <!-- ===================================================================== -->
+    <target name="noDefault">
+        <echo message="You must specify a target when invoking this file" />
+    </target>
+
+</project>

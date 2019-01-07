@@ -1,0 +1,146 @@
+<html>
+   <head>
+      <title>Spectra ORB Integrity PPC C++ Target Support Plug-in Release Notes</title>
+      <link rel="stylesheet" type="text/css" href="helpStyle.css">
+      <meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1">
+   </head>
+   <body>
+      <h1>Spectra ORB Integrity PPC C++ Target Support Plug-in Release Notes</h1>
+      
+      <table>
+         <tbody>
+            <tr>
+               <td><strong>Version</strong></td>
+               <td>3.6.5</td>
+            </tr>
+            <tr>
+               <td><strong>Release Date</strong></td>
+               <td>March 2015</td>
+            </tr>
+         </tbody>
+      </table>
+      
+      <supportedbuildconfigurations>
+      <h2>Supported Build Configurations</h2>
+
+      <table border="1">
+         <tbody>
+            <tr>
+               <td><strong>Build Configuration Name</strong></td>
+               <td><strong>Host OS</strong></td>
+               <td><strong>Target OS</strong></td>
+               <td><strong>BSP</strong></td>
+               <td><strong>ORB Version</strong></td>
+               <td><strong>Notes</strong></td>
+            </tr>
+            <tr>
+               <td>eorb20-integrity-5-10-multi-ppc-noexc-build</td>
+               <td>Windows 7 (64 bit)</td>
+               <td>Integrity 10.0.2</td>
+               <td>sim800</td>
+               <td>2.0.x</td>
+               <td>No Exceptions</td>
+            </tr>
+            <tr>
+               <td>eorb20-integrity-5-10-multi-ppc-noexc-build</td>
+               <td>Windows 7 (64 bit)</td>
+               <td>Integrity 10.0.2</td>
+               <td>cw-p4080</td>
+               <td>2.0.x</td>
+               <td>No Exceptions</td>
+            </tr>
+            <tr>
+               <td>eorb20-integrity-11+-multi-ppc-noexc-build</td>
+               <td>Windows 7 (64 bit)</td>
+               <td>Integrity 11.0.4</td>
+               <td>sim800</td>
+               <td>2.0.x</td>
+               <td>No Exceptions</td>
+            </tr>
+            <tr>
+               <td>eorb20-integrity-11+-multi-ppc-noexc-build</td>
+               <td>Windows 7 (64 bit)</td>
+               <td>Integrity 11.0.4</td>
+               <td>devtree-fsl-e500mc</td>
+               <td>2.0.x</td>
+               <td>No Exceptions</td>
+            </tr>
+         </tbody>
+      </table>
+      </supportedbuildconfigurations>
+      
+      <environmentvariables>
+      <h2>Environment Variables</h2>
+      
+      <p>The following environment variables must be set for all build configurations before starting Spectra CX.</p>
+      <ol>
+         <li><strong>EORBHOME</strong> - set to the directory where Spectra ORB is installed.</li>
+         <li><strong>EORBTARGETENV</strong> - set to the EORBENV value of the target ORB.</li>
+         <li><strong>INTEGRITY_BSP</strong> - set to the name of the BSP.</li>
+         <li><strong>INTEGRITY_BASE </strong> - set to the base location of the Integrity install.</li>
+         <li><strong>INTEGRITY_COMP_DIR</strong> - set to the install location of the Multi compiler.</li>
+      </ol>
+      </environmentvariables>
+      
+      <usageinstructions>
+      <h2>Usage Instructions</h2>
+      
+      <p>The following settings are required for components modeled in Spectra CX to generate correct XML for deployment:</p>
+      <ul>
+         <li>The SCA code properties of each component implementation should be set to:
+            <ul>
+               <li>Filename: ensure this ends in .mod</li>
+            </ul>
+         </li>
+         <li>The OS dependency name should be set to INTEGRITY and the correct version</li>
+         <li>The processor dependency name should be set to PPC</li>
+         <li>The os_name, os_version and processor_name properties of DeviceManagers, LoadableDevices and ExecutableDevices should match the above values.</li>
+      </ul> 
+      </usageinstructions>
+      
+      <knownissues>
+      <h2>Known Issues</h2>
+      
+      <p>None</p>
+      </knownissues>
+
+      <contact>
+      <support>
+      <h2>Contact PrismTech</h2>
+      
+      <p>Product support: <a href="mailto:crc@prismtech.com">crc@prismtech.com</a></p>
+      <p> General enquiries: <a href="mailto:info@prismtech.com">info@prismtech.com</a></p>
+      <p> Web: <a href="http://www.prismtech.com">www.prismtech.com</a></p>
+      
+      <h3>European Headquarters </h3>
+      <strong>
+         <p>PrismTech Limited</p>
+         <p>PrismTech House</p>
+         <p>5th Avenue Business Park</p>
+         <p>Gateshead, Tyne and Wear</p>
+         <p>NE11 0NG</p>
+         <p>United Kingdom</p>
+         <p>Tel: +44 (0) 191-4979900</p>
+         <p>Fax: +44 (0) 191-4979901</p>
+      </strong>
+
+      <h3>USA Corporate Headquarters</h3>
+      <strong>
+         <p>PrismTech Corporation</p>
+         <p>400 TradeCenter</p>
+         <p>Suite 5900</p>
+         <p>Woburn, MA</p>
+         <p>01801</p>
+         <p>USA</p>
+         <p>Tel: (1) 781-569-5819</p>
+      </strong>
+      </support>
+      </contact>
+
+      <div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a>
+         <br clear="none">
+         <hr>  
+         Copyright &#169; 2015 PrismTech Canada Inc. All rights reserved.
+      </div>
+   </body>
+</html>

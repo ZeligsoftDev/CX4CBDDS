@@ -1,0 +1,216 @@
+<head>
+	<title>Tutorial 1: Learning the Basics</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="tutorial1.html" title="Tutorial 1: Learning the Basics">
+		<h1>Tutorial 1: Learning the Basics</h1>
+		<p>Spectra CX is the backbone of SCA development. Using components, UML 2.0, and domain specializations you can dynamically build and design systems. 
+CX takes you to the next step by combining the model and the code for a true model driven development process. With CX you model structure and implementations to define
+SCA compliant applications and platforms. The validation feature takes things one step further, to ensure that SCA compliance is guaranteed.</p>
+		<p>In this introductory tutorial you will learn how to:</p>
+		<ul>
+			<li>create projects and models</li>
+			<li>define preferences</li>
+			<li>create elements, including applications, components, ports, and connectors</li>
+		</ul>
+		<h2>Create a new project and model</h2>
+		<p>Models are saved in EMX format. A single project can have multiple models - you can use the elements from different models within one project.
+ Additionally, you may want to have separate platform and application models. However, for simplicity, this tutorial will use just one model.</p>
+		<ol>
+			<li>From the <strong>File</strong> menu, select <strong>New &gt; SCA Model Project</strong>.</li>
+			<li>In the <strong>Project Name</strong> field, type <strong>CXTutorial</strong> and click <strong>Next</strong>.</li>
+			<li>In the <strong>Model Name</strong> field, type <strong>CXTutorial_Model</strong>.</li>
+			<li>In the <strong>CDT Project Name</strong> field, type <strong>CXTutorial_Model_src</strong> and click <strong>Finish</strong>.</li>
+		</ol>
+		<p>The model project is displayed in the Project Explorer. This model project folder contains a Diagrams folder and a Models folder. These folders are not real folders, in the file system. Rather, they provide a logical view of elements in your model. The Diagrams 
+folder contains all the diagrams in your project. </p>
+		<p>In the Models folder, a <strong>modelConfiguration</strong> entry is listed in the Project Explorer. Use this to view and edit the model configuration.</p>
+		<h2>Define preference settings</h2>
+		<p>CX preferences are organized into three categories: Modeling, SCA, and Validation.</p>
+		<p>In this section you will configure the Modeling and SCA preferences and review the default Validation preference settings.</p>
+		<p>The Modeling preferences include:</p>
+		<ul>
+			<li>Post-fix for Inverse Port Type: allows you to control how the inverse port type is named. By default this attribute is set to Inv.
+		</li>
+			<li>Make location: location of the make application used to build applications. Type the location or click Browse.</li>
+		</ul>
+		<p>The SCA preferences include the following:</p>
+		<ul>
+			<li>CORBA Version: the default value is 2.2. Ensure this attribute is configured to match your system.</li>
+			<li>Repository Version Identifier: the default value is 1.0.</li>
+			<li>Author properties: configure the Name, Company, and Webpage properties.</li>
+			<li>Component wizard options: configure the default executable file extension for elements created with the Component Creation Wizard.</li>
+			<li>SCA 2.2.2 Extension: select when modeling SCA 2.2.2 Extension elements. Enables SCA 2.2.2 Extension DTD files.</li>
+		</ul>
+		<ol>
+			<li>From the <strong>Windows</strong> menu, select <strong>Preferences</strong>.</li>
+			<li>In the Preferences window, expand <strong>Spectra CX</strong>.</li>
+			<p>The Modeling and Validation sections are displayed.</p>
+			<li>To view the suffix for inverse PortType and Make location options, select <strong>Modeling</strong>. By default the inverse PortType option is enabled 
+		and set to Inv.</li>
+			<li>Select <strong>SCA</strong> to display the SCA preferences.</li>
+			<li>In the <strong>Author properties</strong> section, type your <strong>Name</strong>, <strong>Company</strong>, and <strong>Webpage</strong> information.</li>
+			<p>The CORBA Version and Repository Version Identifier are configured with default values.</p>
+			<li>Click <strong>Apply</strong>.</li>
+			<li>Review the <strong>Component options</strong>.</li>
+			<li>Select <strong>Validation</strong> and review the validation constraints. By default all constraints are enabled.</li>
+			<li>Click <strong>OK</strong>.</li>
+		</ol>
+		<h2>Create a package</h2>
+		<p>You can use packages to group or contain common elements and to help you better organize your elements.</p>
+		<ol>
+			<li>In Project Explorer, right-click on <strong>CXTutorial_Model</strong> and from the popup menu, 
+select <strong>Add CX</strong> &gt; <strong>Package</strong>. </li>
+			<li>Name the Package, <strong>TutorialApplication</strong>.</li>
+			<p>The package is added to the Project Explorer.</p>
+		</ol>
+		<p>You will use this package to "hold" or "contain" the elements you create in this tutorial.</p>
+		<h2>Create a component</h2>
+		<p>A component represents a software module (source code, binary code, executable, DLL, etc.) with a well-defined interface. The interface of a component is represented by one or 
+		several interface elements that the component provides. Components are used to show compiler and run-time dependencies, as well as interface and calling dependencies among software modules. 
+		</p>
+		<p>Using the Component Wizard you will create a component and the corresponding associated component interface, implementation, package, and diagram.</p>
+		<ol>
+			<li>In the <strong>Project Explorer</strong>, select the <strong>TutorialApplication</strong> package.</li>
+			<li>To open the <strong>Component Wizard</strong>, right-click the <strong>TutorialApplication</strong> package and select 
+<strong>Add CX</strong> &gt; <strong>Component</strong>.</li>
+			<li>In the <strong>Component Name</strong> field, type <strong>Decryptor</strong>.</li><br>All other fields in the wizard are optional but enabled. <br>The wizard will create a corresponding Component Interface, Implementation, Executable File, Package, and Diagram for the component.<li>In the <strong>Component Interface</strong>, select <strong>Resource</strong> from the <strong>Type</strong> drop-down list.</li>
+			<li>Click <strong>Finish</strong>.</li>
+			<li>In the <strong>CX Component Diagram</strong>, select <strong>DecryptorInterface</strong>.</li>
+			<li>Select the <strong>Properties View</strong> &gt; <strong>SCA</strong> tab. This is where SCA component property values can be viewed and/or set.</li>
+			<li>Create a second component, in the <strong>TutorialApplication</strong> package, named <strong>Filter</strong>.</li>
+		</ol>
+		<p>The new elements are displayed on the diagram you created with the Component Wizard.</p>
+		<h2>Add User IDL to the Model</h2>
+		<p>IDL is used to specify interfaces used for communication. PortTypes are then created from this IDL to specify how the interface is 
+used (i.e. provides or uses ports). IDL may be modeled or imported.</p>
+		<ol>
+			<li>In <strong>Project Explorer</strong>, select <strong>CXTutorial_Model</strong> and create a 
+new package called <strong>Communication</strong>.</li>
+			<li>In <strong>Project Explorer</strong>, select the <strong>Communication</strong> package, right-click and
+from the popup menu, select <strong>Add Diagram</strong> and select: <strong>CX 
+		Component Diagram</strong>.</li>
+			<li>Name the diagram, <strong>Communication</strong>.</li>
+			<li>In the <strong>Palette</strong>, expand the <strong>CORBA</strong> drawer and select <strong>IDL File</strong>.</li>
+			<li>Drop the element onto the new diagram. Name the element, <strong>DataFile</strong>.</li>
+			<li>This IDL file depends on <strong>CF.idl</strong>. In the <strong>Project Explorer</strong> drag <strong>CXTutorial_Model::CF_IDL::CF</strong>
+ onto the <strong>Communication</strong> diagram.</li>
+			<li>In the <strong>Palette</strong> select <strong>IDL Include</strong> link and draw a link from the <strong>DataFile</strong> to <strong>CF</strong>
+ on the <strong>Communication</strong> diagram. This will cause a #include &lt;CF.idl&gt; to be generated in the DataFile.idl file.</li>
+			<li>In the <strong>CORBA</strong> drawer, select <strong>Module</strong> and drop the element onto the diagram.</li>
+			<li>Name the element, <strong>Data</strong>.</li>
+			<li>In the <strong>CORBA</strong> drawer, select <strong>Interface</strong> and drop it onto the diagram.</li>
+			<li>Name the element, <strong>EncryptedData</strong>.</li>
+			<li>Create two more <strong>Interface</strong> elements and name them <strong>OpenData</strong> and <strong>ProcessedData</strong>.</li>
+			<li>In the <strong>Project Explorer</strong>, move the elements so that <strong>Data</strong> is in the <strong>DataFile</strong> element and that 
+the three new Interfaces (<strong>EncryptedData</strong>, <strong>OpenData</strong>, and <strong>ProcessedData</strong>) are in the 
+<strong>Data</strong> element.</li>
+			<li>Right-click on the <strong>Communication</strong> diagram and from the popup menu, select <strong>Filters</strong> &gt; <strong>Show/Hide 
+Relationships</strong> and then click <strong>OK</strong>.</li><br>The containment relationships are now displayed on the diagram.<li>In the <strong>Project Explorer</strong>, select <strong>EncryptedData</strong>.</li>
+			<li>In the <strong>Properties View</strong> &gt; <strong>Operations</strong> tab.</li>
+			<li>Click the <strong>Insert New Operation</strong> button. Be careful to click the drop down arrow, rather than the button itself. This will reveal a menu from which you should select <strong>CORBA Operation</strong></li>
+			<li> Create a new operation called <strong>pushEncryptedData</strong>.</li>
+			<li>In the <strong>Project Explorer</strong>, select <strong>pushEncryptedData</strong>.</li>
+			<li>In the <strong>Properties View</strong> &gt; <strong>Parameters</strong> tab.</li>
+			<li>Click the <strong>Insert New Parameter</strong> button and create a parameter called <strong>pkt</strong>. 
+Set the <strong>type</strong> for the new parameter to <strong>CF::OctetSequence</strong> and set the <strong>direction</strong> 
+to <strong>in</strong>.</li>
+			<li>Repeat the above for <strong>OpenData</strong>. Create an <strong>operation</strong> called <strong>pushOpenData</strong></li>
+			<li> Create a parameter of type <strong>CF::OctetSequence</strong> called <strong>pkt</strong>.</li>
+			<li>Repeat the above for <strong>ProcessedData</strong>. Create an <strong>operation</strong> called <strong>pushProcessedData</strong>
+and create a parameter of type <strong>CF::OctetSequence</strong> called <strong>pkt</strong>.</li>
+			<li>In the <strong>Project Explorer</strong>, right-click on <strong>DataFile</strong> and from the popup menu, select 
+<strong>CX Generate</strong> &gt; <strong>Generate IDL</strong>. </li><br>A file <strong>CXTutorial_Model_src/idl/DataFile.idl</strong> is generated and displayed in the <strong>Project Explorer</strong>. Also, because <strong>DataFile.idl</strong> includes <strong>CF.idl</strong> which in turn includes <strong>PortTypes.idl</strong>, these two additional IDL files are also generated.</ol>
+		<p>Note that the new <strong>CXTutorial_Model_src</strong> project has an error. This can be safely ignored for now. It occurs because the project is created as a CDT project but it does not yet contain a makefile. When we generate code later, a makefile will also be generated which will solve this error.</p>
+		<h2>Create a port type</h2>
+		<p>The port type defines how the interface is used as a port. The port realizes all interfaces that the port type 
+realizes and uses all the interfaces that the port type uses. In the SCA, a port type can only realize or use one interface and is unidirectional.</p>
+		<ol>
+			<li>In the <strong>Project Explorer</strong>, right-click the <strong>Communication</strong> package
+ and choose <strong>Add CX</strong> &gt; <strong>PortType</strong>.</li>
+			<li>In the <strong>Name</strong> field, type <strong>EncryptedData</strong>.</li><br>Use the default <strong>Inverse Name</strong>.<li>Select the <strong>EncryptedData</strong> Interface.</li>
+			<li>Click <strong>Finish</strong>.</li>
+			<li>Create two more port types named <strong>OpenData</strong> and <strong>ProcessedData</strong>. 
+Select the appropriate interface for each one.</li>
+		</ol>
+		<p>The new port type and the inverse port type are added to the Project Explorer in the <strong>Communication</strong> package. </p>
+		<h2>Create ports</h2>
+		<p>Ports isolate a component from its environment and its environment from the component. Each port has one interface. Each port has a 
+direction: provides or uses. CX uses UML 2.0 notation to indicate the port interface direction. The interface's direction is 
+called its conjugation. SCA ports are unidirectional and support a single interface.</p>
+		<ol>
+			<li>In the <strong>Project Explorer</strong>, open the <strong>Decryptor</strong> diagram you created with the Component Wizard.</li><br>This diagram is in the <strong>CXTutorial_Model::TutorialApplication::Decryptor</strong> package.<br>The component, component interface and implementation are displayed.<li>In the <strong>Palette</strong>, expand the <strong>SCA Application</strong> drawer.</li>
+			<li>Select <strong>Port</strong> and drop the port onto the <strong>Component Interface</strong>.</li>
+			<li>From the pop-up menu, select <strong>Select Existing Element</strong>.</li>
+			<li>Click <strong>Search</strong> and type <strong>EncryptedData</strong>.</li>
+			<li>Select the <strong>&lt;&lt;PortType&gt;&gt; EncryptedData</strong>  and click <strong>OK</strong>.</li>
+			<li>Name the port <strong>dataIn</strong>.</li><br>When naming a port, ensure the name indicates: how the component uses the environment (uses port) and how the environment uses the component (provides port).
+		The key to successful use of ports is to name from the viewpoint of the component.<li>With the <strong>dataIn</strong> port selected, goto the <strong>Properties View</strong> &gt; <strong>SCA</strong> tab.</li>
+			<li>In the <strong>Kind</strong> field, click the Edit Kind.</li>
+			<li>In the <strong>Properties</strong> window, click <strong>Add New Kind</strong>.</li>
+			<li>Click in the <strong>Value</strong> field and from the drop-down list, select <strong>0-data</strong> and click <strong>Close</strong>.</li>
+			<li>Create a uses port on the <strong>Decryptor</strong> component interface. Select <strong>&lt;&lt;PortType&gt;&gt; OpenDataInv</strong>
+		and name the port <strong>dataOut</strong>. Set the <strong>Kind</strong> to <strong>Data</strong>.</li>
+			<li>In the <strong>Project Explorer</strong>, open the <strong>Filter</strong> diagram you created with the Component Wizard.</li><br>This diagram is in the <strong>CXTutorial_Model::TutorialApplication::Filter</strong> package.<li>Create a provides port on <strong>Filter</strong> component interface. Select <strong>&lt;&lt;PortType&gt;&gt; OpenData</strong>
+and name the port <strong>dataIn</strong>. Set the <strong>Kind</strong> to <strong>Data</strong>.</li>
+			<li>Create a uses port on the <strong>Filter</strong> component interface. Select <strong>&lt;&lt;PortType&gt;&gt; ProcessedDataInv</strong>
+and name the port <strong>dataOut</strong>. Set the <strong>Kind</strong> to <strong>0-data</strong>.</li>
+		</ol>
+		<h2>Create an application</h2>
+		<p>An application is a set of components in a communicating architecture.</p>
+		<ol>
+			<li>In the <strong>Project Explorer</strong>, select the <strong>TutorialApplication</strong> package and
+ from the right-click menu choose <strong>Add Diagram</strong> &gt; <strong>CX
+Component Diagram</strong>.</li>
+			<li>Name the diagram, <strong>ApplicationDiagram</strong>.</li>
+			<li>In the <strong>Palette</strong>, expand the <strong>SCA Application</strong> drawer.</li>
+			<li>Select <strong>Application</strong> and drop the element on the CX Component Diagram.</li>
+			<li>Name the application <strong>TutorialApplication</strong>.</li>
+			<li>Select the application border and drag to resize the application to fill the whitespace.</li>
+			<li>In the <strong>Project Explorer</strong>, select the <strong>TutorialApplication::Decryptor::Decryptor</strong> component structural realization
+ you created and drag it onto the application. </li>
+			<li>In the <strong>Project Explorer</strong>, select the <strong>TutorialApplication::Filter::Filter</strong> component structure realization you created and 
+ drag it onto the application. </li>
+			<li>Resize the components and position them evenly on the application.</li>
+		</ol>
+		<h2>Create connections</h2>
+		<p>Connections are used to show which elements communicate with each other. Uses ports connect to provides ports (or supports interface). 
+Connectors can also be used with external ports. In this case, a uses port is connected to a uses port and a provides port is connected to a 
+provides port.</p>
+		<p>When creating connections, keep in mind that all the elements and labels in the CX Component Diagram can be moved and resized. Additionally,
+you can control the font type, size and color to make the diagram more visually dynamic.</p>
+		<ol>
+			<li>Open the <strong>ApplicationDiagram</strong>.</li>
+			<li>In the <strong>Palette</strong>, expand the <strong>SCA Application</strong> drawer and select <strong>Connector</strong>.</li>
+			<li>Draw a connection from <strong>Decryptor dataOut port</strong> to <strong>Filter dataIn port</strong>.</li>
+			<li>Delete the connector name. </li>
+		</ol>
+		<h2>Application port development</h2>
+		<p>Applications can have external ports. These are created on the application's border using the same procedure as when creating internal ports. </p>
+		<ol>
+			<li>Create a port on <strong>TutorialApplication</strong> based on an existing element.</li>
+			<li>Search for <strong>ProcesssedData</strong> and select <strong>&lt;&lt;PortType&gt;&gt; ProcessedDataInv</strong>. 
+Name the port, <strong>dataOut</strong>. The port is displayed on the border of TutorialApplication.</li>
+			<li>Draw a connection from the <strong>Filter dataOut port</strong> to the <strong>TutorialApplication dataOut port</strong>.</li>
+			<li>Delete the connector name.</li>
+		</ol>
+		<h2>Save project and model</h2>
+		<p>On the toolbar, click the <strong>Save</strong> icon.</p>
+		<h2>Tutorial Summary</h2>
+		<p>In this tutorial you became familiar with the CX user interface, created some basic elements, learned about components, 
+ports, port types, applications and connectors, and saw how the
+versatility of CX enables you to manage and develop large applications.</p>
+		<p>In Tutorial 2: Developing the Model, you will learn about:</p>
+		<ul>
+			<li>validation</li>
+			<li>property types</li>
+			<li>definitions, implementations, and instances</li>
+			<li>freestanding ports</li>
+		</ul>
+		<div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

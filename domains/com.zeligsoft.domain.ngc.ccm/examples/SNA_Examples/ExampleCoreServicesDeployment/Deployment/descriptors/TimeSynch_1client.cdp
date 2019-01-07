@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <label/>
+
+  <UUID>7E5FA8A0-56E6-11E0-8000-005056C00008</UUID>
+
+  <implementation xmi:id="_42C68530-564A-11E0-8002-005056C00008">
+    <name>TimeSynch.ConnectorImplementations.SNA_Int_Time_Request_conn_DDS_EventImpl.SNA_Int_Time_Request_conn_DDS_EventImpl</name>
+    <source/>
+    <artifact xmi:idref="_42C68530-564A-11E0-8000-005056C00008"/>
+    <artifact xmi:idref="_42C68530-564A-11E0-8001-005056C00008"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Int_Time_Request_conn_DDS_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>TimeSynch.ImplementationArtifacts.SNA_Int_Time_Request_conn_DDS_EventArtifacts.SNA_Int_Time_Request_conn_DDS_Event_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Int_Time_Request_conn_DDS_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>TimeSynch.ImplementationArtifacts.SNA_Int_Time_Request_conn_DDS_EventArtifacts.SNA_Int_Time_Request_conn_DDS_Event_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_42C72170-564A-11E0-8001-005056C00008">
+    <name>TimeSynch.ConnectorImplementations.SNA_Int_Time_Reply_conn_DDS_EventImpl.SNA_Int_Time_Reply_conn_DDS_EventImpl</name>
+    <source/>
+    <artifact xmi:idref="_42C6FA60-564A-11E0-8000-005056C00008"/>
+    <artifact xmi:idref="_42C72170-564A-11E0-8000-005056C00008"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Int_Time_Reply_conn_DDS_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>TimeSynch.ImplementationArtifacts.SNA_Int_Time_Reply_conn_DDS_EventArtifacts.SNA_Int_Time_Reply_conn_DDS_Event_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Int_Time_Reply_conn_DDS_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>TimeSynch.ImplementationArtifacts.SNA_Int_Time_Reply_conn_DDS_EventArtifacts.SNA_Int_Time_Reply_conn_DDS_Event_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_42C6AC40-564A-11E0-8002-005056C00008">
+    <name>TimeSynch.ComponentImplementations.SNA_Int_TimeClient_compImpl.SNA_Int_TimeClient_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_42C6AC40-564A-11E0-8000-005056C00008"/>
+    <artifact xmi:idref="_42C6AC40-564A-11E0-8001-005056C00008"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Int_TimeClient_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>TimeSynch.ImplementationArtifacts.SNA_Int_TimeClient_compArtifacts.SNA_Int_TimeClient_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Int_TimeClient_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>TimeSynch.ImplementationArtifacts.SNA_Int_TimeClient_compArtifacts.SNA_Int_TimeClient_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_42C74880-564A-11E0-8002-005056C00008">
+    <name>TimeSynch.ComponentImplementations.SNA_Int_TimeServer_compImpl.SNA_Int_TimeServer_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_42C74880-564A-11E0-8000-005056C00008"/>
+    <artifact xmi:idref="_42C74880-564A-11E0-8001-005056C00008"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Int_TimeServer_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>TimeSynch.ImplementationArtifacts.SNA_Int_TimeServer_compArtifacts.SNA_Int_TimeServer_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Int_TimeServer_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>TimeSynch.ImplementationArtifacts.SNA_Int_TimeServer_compArtifacts.SNA_Int_TimeServer_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_1C073253-AACD-4130-B0A8-6AED69931E25_">
+    <name>DAnCE_LocalityManager_Impl</name>
+    <source/>
+    <artifact xmi:idref="_2DBE7BA9-5DB7-48e2-A260-D141CB66DEB1"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_4B373F50-564C-11E0-8000-005056C00008">
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Client</name>
+    <node>ClientNode</node>
+    <source/>
+    <implementation xmi:idref="_42C6AC40-564A-11E0-8002-005056C00008"/>
+    <configProperty>
+      <name>configFilePath</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_TimeClient.cfg</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_4DEF0C50-564C-11E0-8000-005056C00008">
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Server</name>
+    <node>ServerNode</node>
+    <source/>
+    <implementation xmi:idref="_42C74880-564A-11E0-8002-005056C00008"/>
+    <configProperty>
+      <name>configFilePath</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_TimeServerUnsupervised.cfg</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_047A1FC0-5BDC-11E0-8000-005056C00008">
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.ReplyConnector@SingletonNode.ClientGroup</name>
+    <node>ClientNode</node>
+    <source/>
+    <implementation xmi:idref="_42C72170-564A-11E0-8001-005056C00008"/>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>13</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Int::TimeReply</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA#SNA_Default</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>push_consumer_filter</name>
+      <value>
+        <type>
+          <kind>tk_struct</kind>
+          <struct>
+            <name>QueryFilter</name>
+            <typeId>IDL:CCM_DDS/QueryFilter:1.0</typeId>
+            <member>
+              <name>expression</name>
+              <type>
+                <kind>tk_string</kind>
+              </type>
+            </member>
+            <member>
+              <name>parameters</name>
+              <type>
+                <kind>tk_sequence</kind>
+                <sequence>
+                  <elementType>
+                    <kind>tk_string</kind>
+                  </elementType>
+                </sequence>
+              </type>
+            </member>
+          </struct>
+        </type>
+        <value>
+          <member>
+            <name>expression</name>
+            <value>
+              <string>( ClientIdentifier = %0 )</string>
+            </value>
+          </member>
+          <member>
+            <name>parameters</name>
+            <value>
+              <element>
+                <string>0</string>
+              </element>
+              <element>
+                <string/>
+              </element>
+            </value>
+          </member>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_047B5840-5BDC-11E0-8000-005056C00008">
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.RequestConnector@SingletonNode.ClientGroup</name>
+    <node>ClientNode</node>
+    <source/>
+    <implementation xmi:idref="_42C68530-564A-11E0-8002-005056C00008"/>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA#SNA_Default</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>13</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Int::TimeRequest</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_047C42A0-5BDC-11E0-8000-005056C00008">
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.RequestConnector@SingletonNode.ServerGroup</name>
+    <node>ServerNode</node>
+    <source/>
+    <implementation xmi:idref="_42C68530-564A-11E0-8002-005056C00008"/>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA#SNA_Default</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>13</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Int::TimeRequest</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_047CDEE0-5BDC-11E0-8000-005056C00008">
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.ReplyConnector@SingletonNode.ServerGroup</name>
+    <node>ServerNode</node>
+    <source/>
+    <implementation xmi:idref="_42C72170-564A-11E0-8001-005056C00008"/>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>13</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Int::TimeReply</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA#SNA_Default</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>push_consumer_filter</name>
+      <value>
+        <type>
+          <kind>tk_struct</kind>
+          <struct>
+            <name>QueryFilter</name>
+            <typeId>IDL:CCM_DDS/QueryFilter:1.0</typeId>
+            <member>
+              <name>expression</name>
+              <type>
+                <kind>tk_string</kind>
+              </type>
+            </member>
+            <member>
+              <name>parameters</name>
+              <type>
+                <kind>tk_sequence</kind>
+                <sequence>
+                  <elementType>
+                    <kind>tk_string</kind>
+                  </elementType>
+                </sequence>
+              </type>
+            </member>
+          </struct>
+        </type>
+        <value>
+          <member>
+            <name>expression</name>
+            <value>
+              <string>( ClientIdentifier = %0 )</string>
+            </value>
+          </member>
+          <member>
+            <name>parameters</name>
+            <value>
+              <element>
+                <string>0</string>
+              </element>
+              <element>
+                <string/>
+              </element>
+            </value>
+          </member>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="ServerNode.ServerGroup">
+    <name>ServerNode.ServerGroup</name>
+    <node>ServerNode</node>
+    <source/>
+    <implementation xmi:idref="_1C073253-AACD-4130-B0A8-6AED69931E25_"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ServerGroup</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="ClientNode.ClientGroup">
+    <name>ClientNode.ClientGroup</name>
+    <node>ClientNode</node>
+    <source/>
+    <implementation xmi:idref="_1C073253-AACD-4130-B0A8-6AED69931E25_"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ClientGroup</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Client.replySub_data_control::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.ReplyConnector@SingletonNode.ClientGroup.push_consumer_data_control</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>replySub_data_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4B373F50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_047A1FC0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Client.replySub_dds_entity::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.ReplyConnector@SingletonNode.ClientGroup.push_consumer_dds_entity</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>replySub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4B373F50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_047A1FC0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Client.replySub_data::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.ReplyConnector@SingletonNode.ClientGroup.push_consumer_data</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>replySub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4B373F50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_047A1FC0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Client.replySub_filter_config::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.ReplyConnector@SingletonNode.ClientGroup.push_consumer_filter_config</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>replySub_filter_config</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4B373F50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_filter_config</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_047A1FC0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Client.replySub_data_listener::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.ReplyConnector@SingletonNode.ClientGroup.push_consumer_data_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>replySub_data_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_4B373F50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_047A1FC0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Client.replySub_status::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.ReplyConnector@SingletonNode.ClientGroup.push_consumer_status</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>replySub_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_4B373F50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_047A1FC0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Client.requestPub_data::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.RequestConnector@SingletonNode.ClientGroup.supplier_data</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>requestPub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4B373F50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_047B5840-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Client.requestPub_dds_entity::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.RequestConnector@SingletonNode.ClientGroup.supplier_dds_entity</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>requestPub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4B373F50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_047B5840-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Server.requestSub_data::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.RequestConnector@SingletonNode.ServerGroup.push_consumer_data</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>requestSub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4DEF0C50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_047C42A0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Server.requestSub_filter_config::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.RequestConnector@SingletonNode.ServerGroup.push_consumer_filter_config</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>requestSub_filter_config</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4DEF0C50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_filter_config</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_047C42A0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Server.requestSub_data_control::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.RequestConnector@SingletonNode.ServerGroup.push_consumer_data_control</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>requestSub_data_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4DEF0C50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_047C42A0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Server.requestSub_dds_entity::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.RequestConnector@SingletonNode.ServerGroup.push_consumer_dds_entity</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>requestSub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4DEF0C50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_047C42A0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Server.requestSub_data_listener::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.RequestConnector@SingletonNode.ServerGroup.push_consumer_data_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>requestSub_data_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_4DEF0C50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_047C42A0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Server.requestSub_status::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.RequestConnector@SingletonNode.ServerGroup.push_consumer_status</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>requestSub_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_4DEF0C50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_047C42A0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Server.replyPub_data::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.ReplyConnector@SingletonNode.ServerGroup.supplier_data</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>replyPub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4DEF0C50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_047CDEE0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Server.replyPub_dds_entity::TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.ReplyConnector@SingletonNode.ServerGroup.supplier_dds_entity</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>replyPub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_4DEF0C50-564C-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_047CDEE0-5BDC-11E0-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="_42C68530-564A-11E0-8000-005056C00008">
+    <name>TimeSynch.ImplementationArtifacts.SNA_Int_Time_Request_conn_DDS_EventArtifacts.SNA_Int_Time_Request_conn_DDS_Event_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Int_Time_Request_conn_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_42C68530-564A-11E0-8001-005056C00008">
+    <name>TimeSynch.ImplementationArtifacts.SNA_Int_Time_Request_conn_DDS_EventArtifacts.SNA_Int_Time_Request_conn_DDS_Event_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Int_Time_Request_conn_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_42C6AC40-564A-11E0-8000-005056C00008">
+    <name>TimeSynch.ImplementationArtifacts.SNA_Int_TimeClient_compArtifacts.SNA_Int_TimeClient_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Int_TimeClient_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_42C6AC40-564A-11E0-8001-005056C00008">
+    <name>TimeSynch.ImplementationArtifacts.SNA_Int_TimeClient_compArtifacts.SNA_Int_TimeClient_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Int_TimeClient_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_42C6FA60-564A-11E0-8000-005056C00008">
+    <name>TimeSynch.ImplementationArtifacts.SNA_Int_Time_Reply_conn_DDS_EventArtifacts.SNA_Int_Time_Reply_conn_DDS_Event_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Int_Time_Reply_conn_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_42C72170-564A-11E0-8000-005056C00008">
+    <name>TimeSynch.ImplementationArtifacts.SNA_Int_Time_Reply_conn_DDS_EventArtifacts.SNA_Int_Time_Reply_conn_DDS_Event_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Int_Time_Reply_conn_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_42C74880-564A-11E0-8000-005056C00008">
+    <name>TimeSynch.ImplementationArtifacts.SNA_Int_TimeServer_compArtifacts.SNA_Int_TimeServer_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Int_TimeServer_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_42C74880-564A-11E0-8001-005056C00008">
+    <name>TimeSynch.ImplementationArtifacts.SNA_Int_TimeServer_compArtifacts.SNA_Int_TimeServer_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Int_TimeServer_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_2DBE7BA9-5DB7-48e2-A260-D141CB66DEB1">
+    <name>DAnCE_LocalityManager_Artifact</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="ServerNode.ServerGroup"/>
+    <!--TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Server-->
+    <constrainedInstance xmi:idref="_4DEF0C50-564C-11E0-8000-005056C00008"/>
+    <!--TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.RequestConnector@SingletonNode.ServerGroup-->
+    <constrainedInstance xmi:idref="_047C42A0-5BDC-11E0-8000-005056C00008"/>
+    <!--TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.ReplyConnector@SingletonNode.ServerGroup-->
+    <constrainedInstance xmi:idref="_047CDEE0-5BDC-11E0-8000-005056C00008"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="ClientNode.ClientGroup"/>
+    <!--TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.Client-->
+    <constrainedInstance xmi:idref="_4B373F50-564C-11E0-8000-005056C00008"/>
+    <!--TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.ReplyConnector@SingletonNode.ClientGroup-->
+    <constrainedInstance xmi:idref="_047A1FC0-5BDC-11E0-8000-005056C00008"/>
+    <!--TimeSynch.Assemblies.TimeSynch1client_asm.TimeSynch_asm.RequestConnector@SingletonNode.ClientGroup-->
+    <constrainedInstance xmi:idref="_047B5840-5BDC-11E0-8000-005056C00008"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

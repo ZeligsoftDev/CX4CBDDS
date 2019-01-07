@@ -1,0 +1,28 @@
+/// @defgroup AGSP_MS_Status_conn MS_Status_conn
+/// @{
+/// 
+/// @file AGSP_MS_Status_conn.idl
+/// @brief MS_Status_conn connector definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__MOTIONSENSOR__AGSP_MS_STATUS_CONN_IDL
+#define CX_PORTS__MOTIONSENSOR__AGSP_MS_STATUS_CONN_IDL
+
+#include <Components.idl>
+#include <ccm_dds.idl>
+#include "AGSP_MS_Status_msg.idl"
+#pragma ciao lem "AGSP_MS_Status_connE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef MS_Status_msgSeq
+    typedef sequence <MS_Status_msg> MS_Status_msgSeq;
+    module CCM_DDS::Typed <MS_Status_msg, MS_Status_msgSeq> MS_Status_conn; 
+};
+
+#endif // CX_PORTS__MOTIONSENSOR__AGSP_MS_STATUS_CONN_IDL
+
+/// @}
+

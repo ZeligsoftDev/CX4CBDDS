@@ -1,0 +1,52 @@
+
+import langc;
+
+extension langc::debug;
+extension langc::element;
+extension langc::type;
+extension generator::filepartitioner;
+
+private create UserInclude include( int i ) : setFilename( depName( i ) );
+private create FileName depName( int i )    : setName( 'dep_' + i );
+
+/****************************************/
+
+create ElementList uniqueIncludesElementList() :
+    setName( depName( 0 ) )
+ -> declIncludes().add( include( 1 ) )
+ -> declIncludes().add( include( 2 ) )
+;
+
+/****************************************/
+
+create ElementList duplicateIncludesElementList() :
+    setName( depName( 0 ) )
+ -> declIncludes().add( include( 1 ) )
+ -> declIncludes().add( include( 1 ) )
+;
+
+/****************************************/
+
+create ElementList twoElementDepElementList() :
+    setName( fileName() )
+ -> addElement(createVar(var1Name()))
+ -> addElement(createVar(var2Name()))
+ -> addElement(createVar(var3Name()))
+ -> resolveDependencies()
+;
+
+private create Struct depStruct() :
+    setName( depStructName() )
+;
+
+private create VariableDeclaration createVar( Name name ) :
+    setElement(depStruct().ptr())
+ -> setName(name)
+;
+
+private create FileName fileName()    : setName( 'file' );
+private create FileName depFileName() : setName( 'dep' );
+private create Name depStructName() : setParent( depFileName() ) -> setName( 'depStruct' );
+private create Name var1Name()      : setParent( fileName() ) -> setName( 'var1' );
+private create Name var2Name()      : setParent( fileName() ) -> setName( 'var2' );
+private create Name var3Name()      : setParent( fileName() ) -> setName( 'var3' );

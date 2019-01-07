@@ -1,0 +1,48 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @addtogroup PubSubClientServer_comp
+/// @{
+/// @file   SNA_Examples_EchoNumber_obj.idl
+/// @brief  Definition of number accessor CORBA interface.
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_ECHONUMBER_OBJ_IDL
+#define SNA_EXAMPLES_ECHONUMBER_OBJ_IDL
+
+#pragma ciao lem "SNA_Examples_EchoNumber_objE.idl"
+
+// the module keyword is similar to "namespace" in c++
+module SNA_Examples
+{
+   // interface keyword is similar to "class" in c++
+   
+   /**
+    * @interface EchoNumber_obj
+    *
+    * Number accessor CORBA interface used by the PubSubClientServer example. 
+    * 
+    * @note This interface could be used with other components or with a
+    * regular CORBA application. It is not tied to CCM.
+    * 
+    * @note Components which "provide" this interface will need to implement the
+    * method(s) in it. 
+    */
+   interface EchoNumber_obj
+   {
+      /**
+       * Accessor for current number.
+       * @return current number (long = signed 32-bit integer)
+       */
+      long getCurrentNum();
+   };
+};
+
+#endif // SNA_EXAMPLES_ECHONUMBER_OBJ_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

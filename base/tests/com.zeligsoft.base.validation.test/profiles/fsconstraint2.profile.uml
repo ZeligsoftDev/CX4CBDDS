@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_eeKO8XWDEd6Vos-2NilXtg" name="FSConstraint2Test" metamodelReference="_eeKPA3WDEd6Vos-2NilXtg">
+  <eAnnotations xmi:id="_eeKO8nWDEd6Vos-2NilXtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+    <references xmi:type="uml:Class" href="../models/test_validation.emx#_IdAzUHWAEd6Vos-2NilXtg"/>
+  </eAnnotations>
+  <eAnnotations xmi:id="_eeKO83WDEd6Vos-2NilXtg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_eeKO9HWDEd6Vos-2NilXtg" name="FSConstraint2Test" nsURI="http:///schemas/FSConstraint2Test/_eeKO8HWDEd6Vos-2NilXtg/0" nsPrefix="FSConstraint2Test">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_eeKO9XWDEd6Vos-2NilXtg" name="Person" abstract="true">
+        <eAnnotations xmi:id="_eeKO9nWDEd6Vos-2NilXtg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_eeKPBXWDEd6Vos-2NilXtg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_eeKO93WDEd6Vos-2NilXtg" name="isWorking" ordered="false" lowerBound="1" defaultValueLiteral="false">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_eeKO-XWDEd6Vos-2NilXtg" name="age" ordered="false" lowerBound="1" defaultValueLiteral="0">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_eeKO-3WDEd6Vos-2NilXtg" name="base_Actor" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Actor"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_eeKO_XWDEd6Vos-2NilXtg" name="Professional" eSuperTypes="_eeKO9XWDEd6Vos-2NilXtg">
+        <eAnnotations xmi:id="_eeKO_nWDEd6Vos-2NilXtg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_eeKPFHWDEd6Vos-2NilXtg"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_eeKPAHWDEd6Vos-2NilXtg" name="Student" eSuperTypes="_eeKO9XWDEd6Vos-2NilXtg">
+        <eAnnotations xmi:id="_eeKPAXWDEd6Vos-2NilXtg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_eeKPF3WDEd6Vos-2NilXtg"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <packageImport xmi:id="_eeKPA3WDEd6Vos-2NilXtg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_eeKPBHWDEd6Vos-2NilXtg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_eeKPBXWDEd6Vos-2NilXtg" name="Person" isAbstract="true">
+    <eAnnotations xmi:id="_eeKPBnWDEd6Vos-2NilXtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="../models/test_validation.emx#_GsfqMHV7Ed6Vos-2NilXtg"/>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_eeKPB3WDEd6Vos-2NilXtg" name="isWorking">
+      <eAnnotations xmi:id="_eeKPCHWDEd6Vos-2NilXtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Property" href="../models/test_validation.emx#_TAnuQHV7Ed6Vos-2NilXtg"/>
+      </eAnnotations>
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eeKPCXWDEd6Vos-2NilXtg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eeKPCnWDEd6Vos-2NilXtg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_eeKPC3WDEd6Vos-2NilXtg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_eeKPDHWDEd6Vos-2NilXtg" name="age">
+      <eAnnotations xmi:id="_eeKPDXWDEd6Vos-2NilXtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Property" href="../models/test_validation.emx#_q0HmYHWAEd6Vos-2NilXtg"/>
+      </eAnnotations>
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eeKPDnWDEd6Vos-2NilXtg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eeKPD3WDEd6Vos-2NilXtg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_eeKPEHWDEd6Vos-2NilXtg"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_eeKPEXWDEd6Vos-2NilXtg" name="base_Actor" association="_eeKPEnWDEd6Vos-2NilXtg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Actor"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_eeKPEnWDEd6Vos-2NilXtg" name="Actor_Person" memberEnd="_eeKPE3WDEd6Vos-2NilXtg _eeKPEXWDEd6Vos-2NilXtg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_eeKPE3WDEd6Vos-2NilXtg" name="extension_Person" type="_eeKPBXWDEd6Vos-2NilXtg" aggregation="composite" association="_eeKPEnWDEd6Vos-2NilXtg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_eeKPFHWDEd6Vos-2NilXtg" name="Professional">
+    <eAnnotations xmi:id="_eeKPFXWDEd6Vos-2NilXtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="../models/test_validation.emx#_MpOHUHV7Ed6Vos-2NilXtg"/>
+    </eAnnotations>
+    <generalization xmi:id="_eeKPFnWDEd6Vos-2NilXtg" general="_eeKPBXWDEd6Vos-2NilXtg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_eeKPF3WDEd6Vos-2NilXtg" name="Student">
+    <eAnnotations xmi:id="_eeKPGHWDEd6Vos-2NilXtg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="../models/test_validation.emx#_aqaxMHV7Ed6Vos-2NilXtg"/>
+    </eAnnotations>
+    <generalization xmi:id="_eeKPGXWDEd6Vos-2NilXtg" general="_eeKPBXWDEd6Vos-2NilXtg"/>
+  </packagedElement>
+</uml:Profile>

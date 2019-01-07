@@ -1,0 +1,177 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "ports.sbs";
+		- _subsystem = "SNA_Examples::BasicPublisher_comp";
+		- _class = "";
+		- _name = "ports";
+		- _id = GUID 6ab69637-4cd0-434b-a832-9b2414453480;
+	}
+	- _id = GUID c91567ba-5d4c-4246-b146-a75d689a3925;
+	- _myState = 8192;
+	- _name = "defn";
+	- _modifiedTimeWeak = 5.7.2014::20:28:56;
+	- _lastID = 3;
+	- weakCGTime = 5.7.2014::20:28:56;
+	- strongCGTime = 5.7.2014::14:28:43;
+	- _defaultComposite = GUID 93ce3743-c3c2-4910-b191-246c489803de;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID 93ce3743-c3c2-4910-b191-246c489803de;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 5.7.2014::14:28:43;
+			- weakCGTime = 5.7.2014::14:28:43;
+			- strongCGTime = 5.7.2014::14:28:43;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- Types = { IRPYRawContainer 
+		- size = 3;
+		- value = 
+		{ IType 
+			- _id = GUID 9b801c33-996b-4148-a0fa-6e805dec0974;
+			- _myState = 8192;
+			- _name = "Color";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAEnum";
+					- _id = GUID f6c0fb0e-3c90-41e6-a5a3-2b8bbafe0df2;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::20:27:38;
+			- _lastID = 3;
+			- Literals = { IRPYRawContainer 
+				- size = 3;
+				- value = 
+				{ IEnumerationLiteral 
+					- _id = GUID 5377ecf5-d2d1-4be5-88ba-627280841ae0;
+					- _name = "COLOR_RED";
+					- _modifiedTimeWeak = 5.7.2014::20:27:30;
+					- _value = "";
+				}
+				{ IEnumerationLiteral 
+					- _id = GUID ddc12d15-f10c-419a-a75d-354477d5a8ab;
+					- _name = "COLOR_GREEN";
+					- _modifiedTimeWeak = 5.7.2014::20:27:34;
+					- _value = "";
+				}
+				{ IEnumerationLiteral 
+					- _id = GUID 90f39ae4-fce5-4cb3-8683-ced99c8af8e0;
+					- _name = "COLOR_BLUE";
+					- _modifiedTimeWeak = 5.7.2014::20:27:38;
+					- _value = "";
+				}
+			}
+			- _kind = Enumeration;
+		}
+		{ IType 
+			- _id = GUID 7eeca099-1960-4cb1-b6a9-14eb4dbc4f92;
+			- _myState = 8192;
+			- _name = "State";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAEnum";
+					- _id = GUID f6c0fb0e-3c90-41e6-a5a3-2b8bbafe0df2;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::20:28:8;
+			- _lastID = 2;
+			- Literals = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IEnumerationLiteral 
+					- _id = GUID 0c546952-76e9-48a4-b747-a9f1a1894ecc;
+					- _name = "STATE_PASS";
+					- _modifiedTimeWeak = 5.7.2014::20:28:2;
+					- _value = "";
+				}
+				{ IEnumerationLiteral 
+					- _id = GUID 3a96d4cf-4eba-4a43-9344-def3e2113860;
+					- _name = "STATE_FAIL";
+					- _modifiedTimeWeak = 5.7.2014::20:28:8;
+					- _value = "";
+				}
+			}
+			- _kind = Enumeration;
+		}
+		{ IType 
+			- _id = GUID 428d9c65-99cd-4770-8ffa-6b3e8d36296c;
+			- _myState = 8192;
+			- _name = "BoundedString";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CORBAString";
+					- _id = GUID 26e9a902-c076-4624-8cae-369d9e052891;
+				}
+			}
+			- _modifiedTimeWeak = 5.7.2014::20:28:56;
+			- Tags = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ ITag 
+					- _id = GUID 1a905766-a459-402d-9d8e-eb34defb4561;
+					- _myState = 8192;
+					- _name = "bounds";
+					- _modifiedTimeWeak = 5.7.2014::20:28:56;
+					- ValueSpecifications = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 03054d77-c09c-4485-881f-a845f337e003;
+							- _modifiedTimeWeak = 5.7.2014::20:28:56;
+							- _value = "512";
+						}
+					}
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "";
+						- _name = "CORBABound";
+						- _id = GUID db319dc4-c309-4fce-b613-af0bb01ccf33;
+					}
+					- _isOrdered = 0;
+					- _base = { IHandle 
+						- _m2Class = "ITag";
+						- _filename = "cxDDS4CCM.sbs";
+						- _subsystem = "cxDDS4CCM";
+						- _class = "CORBAString";
+						- _name = "bounds";
+						- _id = GUID b254d8b7-4f91-4d0b-a0bb-9674c6a71de5;
+					}
+				}
+			}
+			- _declaration = "";
+			- _kind = Language;
+		}
+	}
+	- _configurationRelatedTime = 1.2.1990::0:0:0;
+}
+

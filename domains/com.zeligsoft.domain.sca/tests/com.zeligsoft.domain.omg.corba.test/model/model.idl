@@ -1,0 +1,27 @@
+module CosLwLog {
+    interface LogConsumer: LogStatus {
+        CosLwLog::LogRecordSequence retrieve_records(
+            inout CosLwLog::RecordId currentId,
+            inout unsigned long howMany
+            );
+        CosLwLog::RecordId get_record_id_from_time(
+            in CosLwLog::LogTime fromTime
+            );
+        CosLwLog::LogRecordSequence retrieve_records_by_level(
+            inout CosLwLog::RecordId currentId,
+            in CosLwLog::LogLevelSequence valueList,
+            inout unsigned long howMany
+            );
+        CosLwLog::LogRecordSequence retrieve_records_by_producer_id(
+            inout CosLwLog::RecordId currentId,
+            in CosLwLog::StringSeq valueList,
+            inout unsigned long howMany
+            );
+        CosLwLog::LogRecordSequence retrieve_records_by_producer_name(
+            inout CosLwLog::RecordId currentId,
+            in CosLwLog::LogLevelSequence valueList,
+            inout unsigned long howMany
+            );
+    };
+
+};

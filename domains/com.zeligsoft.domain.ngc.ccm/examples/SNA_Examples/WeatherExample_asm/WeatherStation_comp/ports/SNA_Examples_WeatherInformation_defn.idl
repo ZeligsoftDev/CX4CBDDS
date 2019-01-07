@@ -1,0 +1,41 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @addtogroup WeatherStation_comp
+/// @{
+/// @file   SNA_Examples_WeatherInformation_defn.idl
+/// @brief  Definition of enumerations used in example DDS message.
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_WEATHERINFORMATION_DEFN
+#define SNA_EXAMPLES_WEATHERINFORMATION_DEFN
+
+module SNA_Examples
+{
+   /**
+    * This structure is returned by the query method on the Weather Station.
+    * The structure holds the last temperature processed by the weather station
+    * and the average temperature over the last 100 readings.
+    */
+   struct WeatherInformation
+   {
+      /**
+       * The temperature reading in degrees celsius
+       */
+      double      lastTemperature;
+      
+      /**
+       * Average temperature over the last 100 readings
+       */
+      double     averageTemperature;
+   };
+};
+
+#endif // SNA_EXAMPLES_WEATHERINFORMATION_DEFN
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

@@ -1,0 +1,9 @@
+<workflow>
+    <property name="doCheck" value="false"/>
+    <bean class="org.eclipse.emf.mwe.utils.StandaloneSetup"/>
+    <!-- <bean class="com.zeligsoft.domain.omg.corba.dsl.MetaModelRegistration"/> --> 
+	<component id="IDL-parser" class="com.zeligsoft.domain.omg.corba.idlimport.IDLParserComponent">
+		<processedIDLFileSlot value="${processedIDLFileSlot}"/>
+		<outputSlot value="${outputSlot}"/>
+	</component>
+</workflow>

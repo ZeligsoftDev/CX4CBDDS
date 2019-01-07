@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <label/>
+
+  <UUID>3081A6E4-F12C-11DF-8000-005056C00008</UUID>
+
+  <implementation xmi:id="_F8EEB75E-F12A-11DF-8002-005056C00008">
+    <name>ClientServer_asm.ComponentImplementations.SNA_Examples_EchoServer_compImpl.SNA_Examples_EchoServer_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_F8EEB75E-F12A-11DF-8000-005056C00008"/>
+    <artifact xmi:idref="_F8EEB75E-F12A-11DF-8001-005056C00008"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_EchoServer_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ClientServer_asm.ImplementationArtifacts.SNA_Examples_EchoServer_compArtifacts.SNA_Examples_EchoServer_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_EchoServer_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ClientServer_asm.ImplementationArtifacts.SNA_Examples_EchoServer_compArtifacts.SNA_Examples_EchoServer_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_F8F119B8-F12A-11DF-8002-005056C00008">
+    <name>ClientServer_asm.ComponentImplementations.SNA_Examples_SourceClient_compImpl.SNA_Examples_SourceClient_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_F8F119B8-F12A-11DF-8000-005056C00008"/>
+    <artifact xmi:idref="_F8F119B8-F12A-11DF-8001-005056C00008"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_SourceClient_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ClientServer_asm.ImplementationArtifacts.SNA_Examples_SourceClient_compArtifacts.SNA_Examples_SourceClient_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_SourceClient_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ClientServer_asm.ImplementationArtifacts.SNA_Examples_SourceClient_compArtifacts.SNA_Examples_SourceClient_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_1C073253-AACD-4130-B0A8-6AED69931E25_">
+    <name>DAnCE_LocalityManager_Impl</name>
+    <source/>
+    <artifact xmi:idref="_2DBE7BA9-5DB7-48e2-A260-D141CB66DEB1"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_88376A28-F12B-11DF-8000-005056C00008">
+    <name>ClientServer_asm.Assemblies.ClientServer_asm.ClientServer_asm.SourceClient_comp</name>
+    <node>SourceClient_comp_node</node>
+    <source/>
+    <implementation xmi:idref="_F8F119B8-F12A-11DF-8002-005056C00008"/>
+  </instance>
+
+  <instance xmi:id="_8D3091E4-F12B-11DF-8000-005056C00008">
+    <name>ClientServer_asm.Assemblies.ClientServer_asm.ClientServer_asm.EchoServer_comp</name>
+    <node>EchoServer_comp_node</node>
+    <source/>
+    <implementation xmi:idref="_F8EEB75E-F12A-11DF-8002-005056C00008"/>
+  </instance>
+
+  <instance xmi:id="SourceClient_comp_node.SourceClient_comp">
+    <name>SourceClient_comp_node.SourceClient_comp</name>
+    <node>SourceClient_comp_node</node>
+    <source/>
+    <implementation xmi:idref="_1C073253-AACD-4130-B0A8-6AED69931E25_"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SourceClient_comp</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="EchoServer_comp_node.EchoServer_comp">
+    <name>EchoServer_comp_node.EchoServer_comp</name>
+    <node>EchoServer_comp_node</node>
+    <source/>
+    <implementation xmi:idref="_1C073253-AACD-4130-B0A8-6AED69931E25_"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>EchoServer_comp</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>ClientServer_asm.Assemblies.ClientServer_asm.ClientServer_asm.SourceClient_comp.echoConnectRecept::ClientServer_asm.Assemblies.ClientServer_asm.ClientServer_asm.EchoServer_comp.echoConnectFacet</name>
+    <internalEndpoint>
+      <portName>echoConnectRecept</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_88376A28-F12B-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>echoConnectFacet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_8D3091E4-F12B-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="_F8EEB75E-F12A-11DF-8000-005056C00008">
+    <name>ClientServer_asm.ImplementationArtifacts.SNA_Examples_EchoServer_compArtifacts.SNA_Examples_EchoServer_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_EchoServer_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_F8EEB75E-F12A-11DF-8001-005056C00008">
+    <name>ClientServer_asm.ImplementationArtifacts.SNA_Examples_EchoServer_compArtifacts.SNA_Examples_EchoServer_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_EchoServer_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_F8F119B8-F12A-11DF-8000-005056C00008">
+    <name>ClientServer_asm.ImplementationArtifacts.SNA_Examples_SourceClient_compArtifacts.SNA_Examples_SourceClient_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_SourceClient_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_F8F119B8-F12A-11DF-8001-005056C00008">
+    <name>ClientServer_asm.ImplementationArtifacts.SNA_Examples_SourceClient_compArtifacts.SNA_Examples_SourceClient_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_SourceClient_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_2DBE7BA9-5DB7-48e2-A260-D141CB66DEB1">
+    <name>DAnCE_LocalityManager_Artifact</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="EchoServer_comp_node.EchoServer_comp"/>
+    <!--ClientServer_asm.Assemblies.ClientServer_asm.ClientServer_asm.EchoServer_comp-->
+    <constrainedInstance xmi:idref="_8D3091E4-F12B-11DF-8000-005056C00008"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="SourceClient_comp_node.SourceClient_comp"/>
+    <!--ClientServer_asm.Assemblies.ClientServer_asm.ClientServer_asm.SourceClient_comp-->
+    <constrainedInstance xmi:idref="_88376A28-F12B-11DF-8000-005056C00008"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

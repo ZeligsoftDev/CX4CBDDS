@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.zeligsoft.cx.ui" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="com.zeligsoft.cx.ui" id="com.zeligsoft.cx.ui.portTypeCreation" name="Port Type Creation Dialog Configuration"/>
+      </appinfo>
+      <documentation>
+         This exention point allows users to configure the domain specific setting of the port type dialog. Refer to the attribute specific documentation for detailed description of each attribute setting.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+         <documentation>
+            This is a extension point where users can configure port type creation dialog for a specific domain.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="PortType"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="PortType">
+      <annotation>
+         <appinfo>
+            <meta.element labelAttribute="domain"/>
+         </appinfo>
+         <documentation>
+            Port type creation dialog configuration element.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="domain" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Provide fully qualified domain profile name where this port type creation dialog wizard will be applied to. For example, SCADomain is the fully qualified domain name for this SCA domain.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="concept" type="string" use="default" value="ZMLMM::ZML_Component::Interface">
+            <annotation>
+               <documentation>
+                  Fully qualified ZDL Concept for the interface type. i.e., CORBADomain::IDL::CORBAInterface for Corba interface type. If this attribute is not set then the ZMLMM::ZML_Component::Interface will be used. This attribute is used to filter the interface list and also used to create an interface if the allowInterfaceCreation attribute is enabled.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="allowInterfaceCreation" type="boolean" use="required">
+            <annotation>
+               <documentation>
+                  Allow creation of the interface within the dialog. Users will be able to create an interface of type specified in the concept attribute of this extension point by pressing the &quot;create Interface&quot; button from the port type dialog. This &quot;Create Interface&quot; button will not apprear if this attribute is set to false.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="enableMultiSelection" type="boolean" use="required">
+            <annotation>
+               <documentation>
+                  Enable users to select multiple interfaces from the list which means that users will be able to multi-select the interfaces from both provide or uses interface list.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="enableNameSelection" type="boolean">
+            <annotation>
+               <documentation>
+                  Enable users to name relationship for each selected interface.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="showUsesList" type="boolean" use="required">
+            <annotation>
+               <documentation>
+                  Set this attribute to true to show the interface list of available selection of &quot;Uses List&quot; along with &quot;Provides List&quot;. Users will be able to make either single or multiple selection depending on the enableMultiSelection attribute from this extension point.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="portTypeConcept" type="string">
+            <annotation>
+               <documentation>
+                  Fully qualified ZDL Concept for the port type.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="createInversePortType" type="boolean">
+            <annotation>
+               <documentation>
+                  Automatically create a inverse port type from the port type dialog.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiInfo"/>
+      </appinfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         [Enter extension point usage example here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+
+</schema>

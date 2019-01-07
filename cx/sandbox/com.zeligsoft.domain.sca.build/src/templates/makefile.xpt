@@ -1,0 +1,105 @@
+�REM�
+
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+�ENDREM�
+�IMPORT uml�
+
+
+�DEFINE generate FOR Model�
+
+�FILE "Makefile"�
+
+�EXPAND templates::copyright::generate FOR this�
+
+#include host specific definitions
+-include host.mk
+-include blds/variables.mk
+
+# set up variables required by various includes
+BLDENVS=
+OBJDIR= obj
+IDLDIR= idl
+
+
+all: prepare $(BLDLIST)
+
+prepare: 
+	-@echo "Ready to build..."
+
+clean: 
+	-@$(RMDIR) "$(OBJDIR)" 2> $(NUL) 
+
+rebuild: clean all
+
+# include all the supported build environments
+-include blds/*.mk
+
+# include application and component specific dependencies
+-include deps/apps/*.dep
+-include deps/comps/*.dep
+
+
+##############################################################
+# template for rules
+
+define Rules_template
+
+BLDENV = $1
+
+# only build things that are supported on this host
+ifeq ($$(HOST_$1),$(LOCALHOST))
+
+# drag in shared dependency files
+-include deps/common/*.dep
+
+# for generated source
+$$(OBJDIR)/$1/%$$(OBJEXT_$1) : %.cpp
+	-@$(MKDIR) "$$(dir $$@)" 2> $(NUL)
+	$$(CC_$1) $$(CFLAGS_$1) $$(CPPFLAGS_$1)  $$(OBJOPT_$1)$$@ $$<
+
+# for idl generated source
+%$$(OBJEXT_$1) : %.cpp
+	-@$(MKDIR) "$$(dir $$@)" 2> $(NUL)
+	$$(CC_$1) $$(CFLAGS_$1) $$(CPPFLAGS_$1)  $$(OBJOPT_$1)$$@ $$<
+	
+$$(OBJDIR)/$1/%$$(LIBEXT_$1):
+	-@echo "Building library $$@"
+	$$(AR_$1)  $$(ARFLAGS_$1) $$(LIBOUTOPT_$1)$$@ $$^
+
+$$(OBJDIR)/$1/%$$(EXEEXT_$1):
+	-@echo "Building executable $$@"
+	 $$(LD_$1) $$(LDFLAGS_$1) $$(LDOUTOPT_$1)"$$@" $$^
+
+$$(OBJDIR)/$1/$$(IDLDIR)%.cpp : %.idl
+	-@$(MKDIR) "$$(dir $$@)" 2> $(NUL)
+	$$(IDLCOMPILER_$1) $$(IDLFLAGS_$1)  $$(IDLOUTOPT_$1) "$$(dir $$@)" $$<
+	
+else
+
+$$(OBJDIR)/$1/%.exe:
+	-@echo "NOT Building executable $$@ - Host mismatch"
+
+$$(OBJDIR)/$1/%.lib:
+	-@echo "NOT Building library $$@ - Host mismatch"
+
+endif
+
+endef
+
+$(foreach bldenv,$(BLDENVS),$(eval $(call Rules_template,$(bldenv))))
+
+�ENDFILE�
+�ENDDEFINE�

@@ -1,0 +1,123 @@
+import langc;
+import ZMLMM::ZML_Deployments;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+
+extension langc::element;
+extension langc::expr;
+extension langc::stmt;
+extension langc::type;
+extension langc::libc;
+extension langc::mqueue;
+
+extension template::name;
+extension template::utils;
+extension include::compInterface;
+extension fwk::message;
+extension fwk::zcx_context;
+
+create ElementList getSendFile(ComponentInterface sourceDef, DeploymentPart target) :
+	setName(target.sendFileName(sourceDef))
+;
+
+cached ElementList genSendFile(DeploymentPart source, DeploymentPart target, Deployment d) :
+	let sourceDef = source.getComponentInterface().get(0) :
+	let sendFile = sourceDef.getSendFile(target) :
+	sendFile.addElement(sourceDef.ownedPort.typeSelect(MessagePort).select(e|!e.requiredInterface.isEmpty).getSendFunction(sourceDef, target, source, d))
+;
+
+
+cached Function getSendFunction(MessagePort p, ComponentInterface ci, DeploymentPart dp, DeploymentPart source, Deployment d) :
+	p.requiredInterface.genSendFunction(p, ci, dp, source, d)
+;
+
+cached Function genSendFunction(Interface i, MessagePort p, ComponentInterface ci, DeploymentPart dp, DeploymentPart source, Deployment d) :
+	i.operation.genSendOperation(p, ci, dp, i, source, d)
+;
+
+cached Function sendFunction( Operation o, MessagePort p, ComponentInterface ci, DeploymentPart dp ) :
+    let f = function(void(), o.sendFunctionName(p, ci, dp)) :
+        f
+;
+
+
+cached Function genSendOperation(Operation o, MessagePort p, ComponentInterface ci, DeploymentPart dp, Interface i, DeploymentPart source, Deployment d) :
+	let f = sendFunction( o, p, ci, dp ) :
+	f.addParameter(void().const().ptr(), 'src_ctx')
+	-> f.parameters.addAll(o.zdlAsOperation().ownedParameter.collect(e|named(e.getParameterType().getUserAttributeType(), e.paramNameOperation(o, p, ci, dp))))
+	-> f.addStatement(o.buffVar(p, ci, dp))
+	-> f.addStatement(o.sendFuncBuffVarName(p, ci, dp).access().cast(genMessageStruct().ptr()).field(messageStructMember2Name()).assign(o.operationIdName(i).access()))
+	-> f.genMemcpyStatement(o, p, ci, dp)
+	-> f.addStatement(f.switchOnPortId(o, p, ci, dp, source, d))
+	-> f
+;
+
+cached Function genMemcpyStatement(Function f, Operation o, MessagePort p, ComponentInterface ci, DeploymentPart dp) :
+	o.zdlAsOperation().ownedParameter.isEmpty
+	? " "
+	: f.addStatement(memcpy(o.sendFuncBuffVarName(p, ci, dp).access().cast(genMessageStruct().ptr()).field(messageStructMember3Name()).addressOf(), o.zdlAsOperation().ownedParameter.get(0).paramNameOperation(o,p,ci,dp).access().addressOf(),  sizeof(o.zdlAsOperation().ownedParameter.get(0).paramNameOperation(o,p,ci,dp)) ))
+	-> f
+;
+
+private cached Name paramNameOperation(uml::Parameter p, Operation o, MessagePort port, ComponentInterface ci, DeploymentPart dp) :
+	let pName = new Name :
+	pName.setParent(o.sendFunctionName(port, ci, dp))
+	-> pName.setName(p.name)
+	-> pName
+;
+
+cached VariableDeclaration buffVarDecl(Operation o, MessagePort p, ComponentInterface ci, DeploymentPart dp) :
+	let v = variable(int8(), o.sendFuncBuffVarName(p, ci, dp)) :
+	v
+;
+
+cached VariableDeclaration buffVar(Operation o, MessagePort p, ComponentInterface ci, DeploymentPart dp) :
+	let v = o.buffVarDecl(p, ci, dp) :
+	o.zdlAsOperation().ownedParameter.isEmpty
+	? v.element.setArrayBounds({sizeof(genMessageStruct())})
+	: v.element.setArrayBounds({sizeof(genMessageStruct()).add(sizeof(o.zdlAsOperation().ownedParameter.first().paramNameOperation(o,p,ci,dp)))})
+	-> v
+;
+
+cached SwitchStatement sendSwitch( Function f ) : 
+	switchStmt(f.param(1).cast(genContextStruct().ptr()).field(contextStructMemberName()))
+;
+
+
+SwitchStatement switchOnPortId( Function f, Operation o, MessagePort p, ComponentInterface ci, DeploymentPart dp, DeploymentPart source, Deployment d) :
+	let idList = p.getProcessCompPortIds(source.modelElement) :
+	let s = f.sendSwitch()  :
+	let connectorList = d.getMSGQBusDeployed(source, p) :
+	!connectorList.isEmpty
+	? ( s.addCase(idList.collect(e|e.processCompIdNames(dp, d).portIdCase(dp, d, p, source, o, ci, idList.indexOf(e))))
+		-> s
+	  )
+	: s
+;
+
+SwitchClause portIdCase(Name idEnumName, DeploymentPart dp, Deployment d, MessagePort p, DeploymentPart source, Operation o, ComponentInterface ci, Integer index) :
+	let name =  d.getMSGQBusDeployed(source, p).collect(e|e.port.getProcessCompPortIds(e.zdlAsConnectorEnd().partWithPort)).flatten().get(index) : 
+	let otherSourceList = d.getMSGQBusDeployed(source, p).collect(e|e.zdlAsConnectorEnd().partWithPort).flatten() :
+	let otherSource = ((List[uml::Property])otherSourceList).select(e|((String)name).getCompInstNameFromId(e.name) ):
+	let otherSourceTarget = d.eAllContents.typeSelect(DeploymentPart).select(e|(!e.getComponentInterface().isEmpty)&&(e.modelElement.matchOtherSource(otherSource)!=null)).getTargetForSourcePart() :
+	let l = labeledClause(idEnumName.access()) :
+	l.addStatement(o.sendFuncBuffVarName(p, ci, dp).access().cast(genMessageStruct().ptr()).field(messageStructMember1Name()).assign(((String)name).processCompIdNames(otherSourceTarget.get(0),d).access()))
+	-> l.addStatement(mq_send(otherSourceTarget.get(0).msgqName(d), o.sendFuncBuffVarName(p, ci, dp).access(), sizeof(o.sendFuncBuffVarName(p, ci, dp)) ))
+	-> l
+;
+
+cached List[ConnectorEnd] getMSGQBusDeployed(Deployment d, DeploymentPart source, MessagePort p) :
+	d.eAllContents.typeSelect(Allocation).deployedOn.typeSelect(DeploymentPart).select(e|!e.getMSGQDefinition().isEmpty).getConnectorDeployed(source, p)
+;
+
+cached List[ConnectorEnd] getConnectorDeployed(DeploymentPart msgq, DeploymentPart source, MessagePort p) :
+	let connectorList = msgq.getSourcesConnectionForTargetPart() :
+	connectorList.select(e|e.modelElement.getOtherConnectorEndPart(source.modelElement, p, e)!= null).collect(e|e.modelElement.getOtherConnectorEndPart(source.modelElement, p, e)).flatten()
+;
+
+cached uml::Property matchOtherSource(uml::Property source, List[uml::Property] sourceList) :
+	source.getCorrespondingProperty(sourceList)
+;
+
+
+

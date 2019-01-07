@@ -1,0 +1,173 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ IComponent 
+	- _id = GUID e6fb1abd-4388-498a-9a91-b465bae93bcc;
+	- _myState = 139264;
+	- _name = "DefaultComponent";
+	- _modifiedTimeWeak = 8.12.2014::19:41:12;
+	- m_buildType = Executable;
+	- m_libraries = "";
+	- m_additionalSources = "";
+	- m_standardHeaders = "";
+	- m_includePath = "";
+	- m_initializationCode = "";
+	- m_folder = { IFolder 
+		- _id = GUID aa447c16-59a6-4849-88ed-8ff7acf5e380;
+		- _myState = 73728;
+		- _name = "Files";
+		- _modifiedTimeWeak = 8.12.2014::19:41:11;
+		- m_path = "";
+		- Elements = { IRPYRawContainer 
+			- size = 0;
+		}
+		- Files = { IRPYRawContainer 
+			- size = 0;
+		}
+	}
+	- m_configActive = { ICodeGenConfigInfoHandle 
+		- _m2Class = "ICodeGenConfigInfo";
+		- _id = GUID d2e5f18b-1191-45db-bdf2-e7ebc5a93ff2;
+	}
+	- Configs = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ ICodeGenConfigInfo 
+			- _id = GUID d2e5f18b-1191-45db-bdf2-e7ebc5a93ff2;
+			- _myState = 8192;
+			- _name = "DefaultConfig";
+			- _modifiedTimeWeak = 1.2.1990::0:0:0;
+			- HyperLinks = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IMHyperLink 
+					- _id = GUID b62a21bc-116d-4522-8b4d-5c21896bdd65;
+					- _modifiedTimeWeak = 1.2.1990::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "";
+					}
+					- _linkDispName = "Edit Makefile";
+					- _linkType = "FREE";
+					- _linkTarget = "D:\\workspaces9\\runtime-NGC\\BasicPubSub_Example_WithTemplatesAndDeployment\\models\\ArtGallery\\DefaultComponent\\DefaultConfig\\DefaultComponent.mak";
+					- isConfigurationFileHyperLink = 1;
+				}
+				{ IMHyperLink 
+					- _id = GUID c9b7aeae-23da-4e2b-82ee-a9990270b929;
+					- _modifiedTimeWeak = 1.2.1990::0:0:0;
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "";
+					}
+					- _linkDispName = "Edit Main File";
+					- _linkType = "FREE";
+					- _linkTarget = "D:\\workspaces9\\runtime-NGC\\BasicPubSub_Example_WithTemplatesAndDeployment\\models\\ArtGallery\\DefaultComponent\\DefaultConfig\\MainDefaultComponent";
+					- isConfigurationFileHyperLink = 1;
+				}
+			}
+			- _scopeType = Explicit;
+			- _libraries = "";
+			- _additionalSources = "";
+			- _standardHeaders = "";
+			- _includePath = "";
+			- _targetMain = "";
+			- _instrumentation = None;
+			- _timeModel = RealTime;
+			- m_generateActors = 1;
+			- _statechartImplementation = Flat;
+			- _initializationCode = "";
+			- _checksList = 0 ;
+			- ScopeElements = { IRPYRawContainer 
+				- size = 0;
+			}
+			- InitialInstances = { IRPYRawContainer 
+				- size = 0;
+			}
+			- _root = { IFolder 
+				- _id = GUID 47b16fe7-c235-4b3c-b7bb-640292d58ebe;
+				- _myState = 8192;
+				- _name = "DefaultConfig";
+				- _modifiedTimeWeak = 1.2.1990::0:0:0;
+				- m_path = "";
+				- Elements = { IRPYRawContainer 
+					- size = 0;
+				}
+				- Files = { IRPYRawContainer 
+					- size = 0;
+				}
+			}
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- AnimScopeElements = { IRPYRawContainer 
+				- size = 0;
+			}
+			- m_allInAnimScope = 1;
+			- m_generateUsecases = 0;
+		}
+	}
+	- HandlesInMe = { IRPYRawContainer 
+		- size = 7;
+		- value = 
+		{ IHandle 
+			- _m2Class = "ISubsystem";
+			- _filename = "Default.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "Default";
+			- _id = GUID ea7e3d6b-ad42-4738-bb7d-2969a055dc12;
+		}
+		{ IHandle 
+			- _m2Class = "IProfile";
+			- _filename = "$OMROOT\\Profiles\\CX\\CX.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "CX";
+			- _id = GUID 2173cb78-d7b9-4000-8aeb-c411d58d1f48;
+		}
+		{ IHandle 
+			- _m2Class = "IProfile";
+			- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "cxDDS4CCM";
+			- _id = GUID b7405579-87b3-4e16-b934-47844c1644cd;
+		}
+		{ IHandle 
+			- _m2Class = "ISubsystem";
+			- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "IDLPrimitives";
+			- _id = GUID 32e5b23a-3e69-45e3-a578-4bece4e48f68;
+		}
+		{ IHandle 
+			- _m2Class = "ISubsystem";
+			- _filename = "$OMROOT\\Profiles\\CX\\DDS_DCPS.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "DDS_DCPS";
+			- _id = GUID 2fab8e32-403f-4402-83ca-91952c6cafd0;
+		}
+		{ IHandle 
+			- _m2Class = "ISubsystem";
+			- _filename = "ArtGallery.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "ArtGallery";
+			- _id = GUID e4a4c7db-d9a3-4ced-8a22-ea74ba1470e0;
+		}
+		{ IHandle 
+			- _m2Class = "ISubsystem";
+			- _filename = "$OMROOT\\Profiles\\CX\\CCM_PSAT.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "CCM_PSAT";
+			- _id = GUID 6e0ec8a2-577d-405e-9e37-84b4b1e132a0;
+		}
+	}
+	- VariationPoints = { IRPYRawContainer 
+		- size = 0;
+	}
+	- SelectedVariants = { IRPYRawContainer 
+		- size = 0;
+	}
+	- weakCGTime = 8.12.2014::19:41:12;
+	- strongCGTime = 1.2.1990::0:0:0;
+}
+

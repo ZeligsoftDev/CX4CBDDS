@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.zeligsoft.cx.codegen.ui" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.zeligsoft.cx.codegen.ui" id="workerfunctioncontributor" name="Worker Function Contributor"/>
+      </appInfo>
+      <documentation>
+         This element provides a worker function repair.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+         <documentation>
+            This extension point is used to contributte to the Zeligsoft Open Editor menu dynamically.  Extentions are required to provide mappings for ZDLConcepts to both a workflow resource and a label. When a ZDLConcept is mapped to multiple workflows, the UI will present an option to execute all workflows for the ZDLConcept.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="workerfunctioncontributor" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="workerfunctioncontributor">
+      <annotation>
+         <documentation>
+            Contribute a worker function
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  An id used to identify this eobject provider in error messages.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The fully qualified class name of the WorkerFunctionContributor class.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":com.zeligsoft.cx.codegen.workerfunctioncontributor.WorkerFunctionContributor"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="domain" type="string">
+            <annotation>
+               <documentation>
+                  The domain that this applies to, if left blank it will apply to all domains that have the concept.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="concept" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The concept to which to contribute worker functions.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="workerFunctionConcept" type="string">
+            <annotation>
+               <documentation>
+                  The concept to be applied to the worker function when it is created.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+</schema>

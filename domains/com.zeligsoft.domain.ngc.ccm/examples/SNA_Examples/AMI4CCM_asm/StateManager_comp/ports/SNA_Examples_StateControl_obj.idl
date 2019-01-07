@@ -1,0 +1,56 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @addtogroup StateManager_comp
+/// @{
+/// @file   SNA_Examples_StateControl_obj.idl
+/// @brief  Definition of AMI4CCM-enabled interface to control state.
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_STATECONTROL_OBJ_IDL
+#define SNA_EXAMPLES_STATECONTROL_OBJ_IDL
+
+#include "SNA_Examples_Common_defn.idl"
+
+// These pragmas inform the IDL compiler to generate the code needed for AMI4CCM 
+#pragma ciao lem "SNA_Examples_StateControl_objE.idl"
+#pragma ciao ami4ccm interface "SNA_Examples::StateControl_obj"
+#pragma ciao lem "SNA_Examples_StateControl_objAE.idl"
+#pragma ciao ami4ccm idl "SNA_Examples_StateControl_objA.idl"
+
+module SNA_Examples
+{
+   /**
+    * @interface StateControl_obj
+    * 
+    * Interface to control state machine
+    */
+   interface StateControl_obj
+   {
+      /**
+       * Change state of internal state machine.
+       * 
+       * @param[in] newState - state to which to attempt to transition
+       * 
+       * @return SNA_Examples::SUCCESS on successful state transition,
+       *         SNA_Examples::FAILURE otherwise
+       */
+      ReturnStatus changeState(in SystemState newState);
+      
+      /**
+       * Accessor for current state.
+       * 
+       * @return current state
+       */
+      SystemState getState();
+   };
+};
+
+#endif
+
+/// @}
+//==============================================================================
+//                            U N C L A S S I F I E D                            
+//==============================================================================

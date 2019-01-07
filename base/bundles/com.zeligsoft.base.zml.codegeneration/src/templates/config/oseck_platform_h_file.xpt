@@ -1,0 +1,268 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«EXTENSION extensions::DeploymentUtilsFuncs»
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::FunctionNames»
+
+
+«DEFINE CREATE_FILES FOR ZeligsoftDeployment::DeploymentPart»
+	«FILE "cfgs/"+ getNamedElementName((ZeligsoftDeployment::Deployment)this.owner)+"/"+getMySWPlatformName(this)+"/"+"platform.h"»	
+
+/**
+ * @file: platform.h
+ * 
+ */
+
+#ifndef PLATFORM_H
+#define PLATFORM_H
+
+/* If there is no pfm_config.h then USE_XXX directives
+ * should be specified in the Makfile
+ */
+#ifdef USE_PFM_CONFIG_H
+#include "pfm_config.h"
+#endif
+
+#include "osetypes.h"
+#include "ose_err.h"
+#include "ts.h"
+#include "heap.h"
+#include "heap_err.h"
+
+/* MS_TO_TICKS:
+ *   Convert time in ms to ticks used in delay and receive_w_tmo().
+ */
+extern U32 pfm_ms_per_tick;
+#define MS_TO_TICKS(t) ((U32)(t) / pfm_ms_per_tick)
+
+/* MS_TO_TS0_TICKS
+ *   Convert time in ms to ticks used for timeout in ts0.
+ */
+#define MS_TO_TS0_TICKS(t) ((U32)(t) * (bsp_tsdriver0_frequency / 1000))
+
+/* MS_TO_TS1_TICKS
+ *   Convert time in ms to ticks used for timeout in ts1.
+ */
+#define MS_TO_TS1_TICKS(t) ((U32)(t) * (bsp_tsdriver1_frequency / 1000))
+
+
+/* Accessing following global variables will generate link errors unless
+ * the corresponding define in pfm_config.h is enabled.
+ */
+extern Heap_t heap0;
+extern struct Ts* ts0;
+extern struct Ts* ts1;
+extern U32 bsp_tsdriver0_frequency;
+extern U32 bsp_tsdriver1_frequency;
+
+
+/* These enumerations are here to make the errorcodes readable in the
+ * debugger.
+ */
+enum BspErrorFunction {
+    KRN_ADDRESSEE         = OSE_ADDRESSEE,
+    KRN_ALLOC             = OSE_ALLOC,
+    KRN_CREATE_SEM        = OSE_CREATE_SEM,
+    KRN_DELAY             = OSE_DELAY,
+    KRN_FREE_BUF          = OSE_FREE_BUF,
+    KRN_GET_FSEM          = OSE_GET_FSEM,
+    KRN_GET_PRI           = OSE_GET_PRI,
+    KRN_GET_SEM           = OSE_GET_SEM,
+    KRN_GET_TICKS         = OSE_GET_TICKS,
+    KRN_KILL_SEM          = OSE_KILL_SEM,
+    KRN_RECEIVE           = OSE_RECEIVE,
+    KRN_RECEIVE_W_TMO     = OSE_RECEIVE_W_TMO,
+    KRN_RESTORE           = OSE_RESTORE,
+    KRN_SEND              = OSE_SEND,
+    KRN_SENDER            = OSE_SENDER,
+    KRN_SEND_W_S          = OSE_SEND_W_S,
+    KRN_SET_FSEM          = OSE_SET_FSEM,
+    KRN_SET_PRI           = OSE_SET_PRI,
+    KRN_SIGNAL_FSEM       = OSE_SIGNAL_FSEM,
+    KRN_SIGNAL_SEM        = OSE_SIGNAL_SEM,
+    KRN_SIGSIZE           = OSE_SIGSIZE,
+    KRN_START             = OSE_START,
+    KRN_START_OSE         = OSE_START_OSE,
+    KRN_STOP              = OSE_STOP,
+    KRN_TICK              = OSE_TICK,
+    KRN_WAIT_FSEM         = OSE_WAIT_FSEM,
+    KRN_WAIT_SEM          = OSE_WAIT_SEM,
+    KRN_WAKE_UP           = OSE_WAKE_UP,
+    KRN_SET_SIGSIZE       = OSE_SET_SIGSIZE,
+    KRN_CREATE_PROCESS    = OSE_CREATE_PROCESS,
+    KRN_S_CREATE_PROCESS  = OSE_S_CREATE_PROCESS,
+    KRN_KILL_PROC         = OSE_KILL_PROC,
+    KRN_HUNT              = OSE_HUNT,
+    KRN_ALLOC_NIL         = OSE_ALLOC_NIL,
+    KRN_RESET_POOL        = OSE_RESET_POOL,
+    KRN_S_ALLOC           = OSE_S_ALLOC,
+    KRN_S_ALLOC_NIL       = OSE_S_ALLOC_NIL,
+    KRN_USER_PROC         = OSE_USER_PROC,
+    KRN_KERNEL            = OSE_KERNEL,
+    KRN_S_CREATE_POOL     = OSE_S_CREATE_POOL,
+    KRN_S_DISPATCH_LOCK   = OSE_S_DISPATCH_LOCK,
+    KRN_S_DISPATCH_UNLOCK = OSE_S_DISPATCH_UNLOCK,
+    KRN_S_KILL_POOL       = OSE_S_KILL_POOL,
+    KRN_COND_HALT         = OSE_COND_HALT,
+    KRN_ADD_TICKS         = OSE_ADD_TICKS
+};
+
+enum BspErrorCode {
+    /* Kernel error codes.
+     */
+    ERR_EUSED_NIL_POINTER         = OSE_EUSED_NIL_POINTER,
+    ERR_EBAD_PARAMETER            = OSE_EBAD_PARAMETER,
+    ERR_EILLEGAL_PROCESS_ID       = OSE_EILLEGAL_PROCESS_ID,
+    ERR_ENOT_SIG_OWNER            = OSE_ENOT_SIG_OWNER,
+    ERR_EWILD_SIG_POINTER         = OSE_EWILD_SIG_POINTER,
+    ERR_ENO_BUFFER_END_MARK       = OSE_ENO_BUFFER_END_MARK,
+    ERR_EUSER_STACK_OVERFLOW      = OSE_EUSER_STACK_OVERFLOW,
+    ERR_EINTERRUPT_STACK_OVERFLOW = OSE_EINTERRUPT_STACK_OVERFLOW,
+    ERR_EILLEGAL_SYSTEM_CALL      = OSE_EILLEGAL_SYSTEM_CALL,
+    ERR_EILLEGAL_SYSTEMCALL       = OSE_EILLEGAL_SYSTEMCALL,
+    ERR_EILLEGAL_USER_CALL        = OSE_EILLEGAL_USER_CALL,
+    ERR_EKILLED_SEMAPHORE_IN_USE  = OSE_EKILLED_SEMAPHORE_IN_USE,
+    ERR_EPROCESS_ENDED            = OSE_EPROCESS_ENDED,
+    ERR_EALREADY_STARTED          = OSE_EALREADY_STARTED,
+    ERR_EUNEXPECTED_EXCEPTION     = OSE_EUNEXPECTED_EXCEPTION,
+    ERR_EBAD_PROCESS_TYPE         = OSE_EBAD_PROCESS_TYPE,
+    ERR_ESPURIOUS_INTERRUPT       = OSE_ESPURIOUS_INTERRUPT,
+    ERR_EUNKNOWN_INTERRUPT        = OSE_EUNKNOWN_INTERRUPT,
+    ERR_EILLEGAL_SEMAPHORE        = OSE_EILLEGAL_SEMAPHORE,
+    ERR_EILLEGAL_POOL             = OSE_EILLEGAL_POOL,
+    ERR_ETOO_MANY_PROCESSES       = OSE_ETOO_MANY_PROCESSES,
+    ERR_ESPURIOUS_SYSTEM_SIGNAL   = OSE_ESPURIOUS_SYSTEM_SIGNAL,
+    ERR_ESIZE_INVALID             = OSE_ESIZE_INVALID,
+    ERR_ENO_POOL_SPACE            = OSE_ENO_POOL_SPACE,
+    ERR_EOVERSIZED_BUFFER         = OSE_EOVERSIZED_BUFFER,
+    ERR_EINTERRUPT_PROCESS        = OSE_EINTERRUPT_PROCESS,
+    ERR_EPROCESS_IS_WAITING       = OSE_EPROCESS_IS_WAITING,
+    ERR_EVECTOR_BUSY              = OSE_EVECTOR_BUSY,
+    ERR_EDISPATCHER_LOCKED        = OSE_EDISPATCHER_LOCKED,
+    ERR_ENO_SYSTEM_DAEMON         = OSE_ENO_SYSTEM_DAEMON,
+    ERR_ETOO_MANY_POOLS           = OSE_ETOO_MANY_POOLS,
+    ERR_EQUEUE_NOT_EMPTY          = OSE_EQUEUE_NOT_EMPTY,
+    ERR_EPOOL_IN_USE              = OSE_EPOOL_IN_USE,
+    ERR_ENO_POWER_OFF_HANDLER     = OSE_ENO_POWER_OFF_HANDLER,
+    ERR_EINTERNAL0                = OSE_EINTERNAL0,
+    ERR_EINTERNAL1                = OSE_EINTERNAL1,
+    ERR_EINTERNAL2                = OSE_EINTERNAL2,
+
+    /* Heap error codes.
+     */
+    ERR_HEAP_ESIZE_TOO_LARGE      = OSE_HEAP_ESIZE_TOO_LARGE,
+    ERR_HEAP_EPTR_INVALID         = OSE_HEAP_EPTR_INVALID,
+    ERR_HEAP_EPROCESS_NOT_OWNER   = OSE_HEAP_EPROCESS_NOT_OWNER,
+    ERR_HEAP_EENDMARK_OVERWRITTEN = OSE_HEAP_EENDMARK_OVERWRITTEN,
+    ERR_HEAP_EHEAPSIZE_TOO_SMALL  = OSE_HEAP_EHEAPSIZE_TOO_SMALL,
+    ERR_HEAP_EBUFFER_FREE         = OSE_HEAP_EBUFFER_FREE,
+    ERR_HEAP_EHEAP_EXHAUSTED      = OSE_HEAP_EHEAP_EXHAUSTED,
+    ERR_HEAP_EUNKNOWN             = OSE_HEAP_EUNKNOWN,
+
+    /* TS error codes.
+     */
+    ERR_TS_BAD_PARAMETER          = OSE_TS_BAD_PARAMETER,
+    ERR_TS_FULL_QUEUE             = OSE_TS_FULL_QUEUE,
+    ERR_TS_CALLBACK_INTERRUPTED   = OSE_TS_CALLBACK_INTERRUPTED
+
+};
+
+/***********************************************************************
+ * Function:
+ *      pfm_get_node_number
+ *
+ * Return Value:
+ *      Node number for this node.
+ *
+ * Purpose:
+ *      Return the node number for this node.
+ *      Node 0 is reserved. Node 1 is reserved for OSE Gateway
+ *      (or other OSE node) if present. The first target node is node 1.
+ *
+ ***********************************************************************
+ */
+extern int pfm_get_node_number(void);
+
+/***********************************************************************
+ * Function:
+ *      pfm_get_highest_node_number
+ *
+ * Return Value:
+ *      A node number for the highest available node in the cluster.
+ *
+ * Purpose:
+ *      Returns the highest available node number in this cluster.
+ *
+ ***********************************************************************
+ */
+extern int pfm_get_highest_node_number(void);
+
+/***********************************************************************
+ * Function:
+ *      pfm_get_default_stack_size()
+ *
+ * Return Value:
+ *      Default stack size for priority processes
+ *
+ * Purpose:
+ *      Returns the default stack size for priority processes
+ *
+ ***********************************************************************
+ */
+extern OSADDRESS pfm_get_default_stack_size(void);
+
+/***********************************************************************
+ * Function:
+ *      pfm_init2()
+ *
+ * Return Value:
+ *      Default stack size for priority processes
+ *
+ * Purpose:
+ *      Initialization function for start handler 2.
+ *
+ ***********************************************************************
+ */
+extern void pfm_init2(void);
+
+/***********************************************************************
+ * Function:
+ *       pfm_error_handler();
+ *
+ * Return Value:
+ *      Whether to return on non-fatal errors or not.
+ *
+ * Purpose:
+ *      Error handler callback function
+ *
+ ***********************************************************************
+ */
+extern OSBOOLEAN pfm_error_handler(OSBOOLEAN user_called,
+                                   OSERRCODE errcode,
+                                   OSERRCODE extra);
+
+#endif /* PLATFORM_H */
+
+
+/* End-Of-File */
+/* ------------------------------------------------------------------------------ */
+	
+	«ENDFILE»
+«ENDDEFINE»

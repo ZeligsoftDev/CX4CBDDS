@@ -1,0 +1,28 @@
+/// @defgroup AGSP_SubsystemStatus_conn SubsystemStatus_conn
+/// @{
+/// 
+/// @file AGSP_SubsystemStatus_conn.idl
+/// @brief SubsystemStatus_conn connector definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__HSMANAGER_COMP__PORTS__AGSP_SUBSYSTEMSTATUS_CONN_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__HSMANAGER_COMP__PORTS__AGSP_SUBSYSTEMSTATUS_CONN_IDL
+
+#include <Components.idl>
+#include <ccm_dds.idl>
+#include "AGSP_SubsystemStatus_msg.idl"
+#pragma ciao lem "AGSP_SubsystemStatus_connE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef SubsystemStatus_msgSeq
+    typedef sequence <SubsystemStatus_msg> SubsystemStatus_msgSeq;
+    module CCM_DDS::Typed <SubsystemStatus_msg, SubsystemStatus_msgSeq> SubsystemStatus_conn; 
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__HSMANAGER_COMP__PORTS__AGSP_SUBSYSTEMSTATUS_CONN_IDL
+
+/// @}
+

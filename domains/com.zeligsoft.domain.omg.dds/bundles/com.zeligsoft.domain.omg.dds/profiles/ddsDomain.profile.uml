@@ -1,0 +1,1128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:tool="http://www.zeligsoft.com/zdl/2008/tooling" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_mNkIsJcDEd6c29WKN97z5Q" name="DDS" metamodelReference="_mNkv35cDEd6c29WKN97z5Q">
+    <eAnnotations xmi:id="_mNkIsZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_BDVNQJS_Ed6jzaDewott1A"/>
+    </eAnnotations>
+    <eAnnotations xmi:id="_mNkIspcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/tooling">
+      <contents xmi:type="tool:Palette" xmi:id="_mNkIs5cDEd6c29WKN97z5Q" name="DDS">
+        <drawer xmi:id="_mNkItJcDEd6c29WKN97z5Q" name="DCPS">
+          <tool xmi:type="tool:Stack" xmi:id="_mNkItZcDEd6c29WKN97z5Q" name="PublisherSubscriber">
+            <tool xmi:type="tool:CreationTool" xmi:id="_mNkItpcDEd6c29WKN97z5Q" name="Publisher">
+              <concept href="pathmap://DDS_LIBRARIES/dds.uml#_o1Ix0JToEd6jzaDewott1A"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_mNkIt5cDEd6c29WKN97z5Q" name="Subscriber">
+              <concept href="pathmap://DDS_LIBRARIES/dds.uml#_n_8PMJToEd6jzaDewott1A"/>
+            </tool>
+            <targetDiagram>Freeform</targetDiagram>
+            <targetDiagram>Zeligsoft Component</targetDiagram>
+          </tool>
+          <tool xmi:type="tool:Stack" xmi:id="_mNkIuJcDEd6c29WKN97z5Q" name="ReaderWriter">
+            <tool xmi:type="tool:CreationTool" xmi:id="_mNkIuZcDEd6c29WKN97z5Q" name="Reader">
+              <concept href="pathmap://DDS_LIBRARIES/dds.uml#_rxCiQJToEd6jzaDewott1A"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_mNkIupcDEd6c29WKN97z5Q" name="Writer">
+              <concept href="pathmap://DDS_LIBRARIES/dds.uml#_qsf8EJToEd6jzaDewott1A"/>
+            </tool>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_mNkIu5cDEd6c29WKN97z5Q" name="Component">
+            <concept href="pathmap://DDS_LIBRARIES/dds.uml#_iaAiMJV8Ed6jzaDewott1A"/>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_mNkIvJcDEd6c29WKN97z5Q" name="Part">
+            <concept href="pathmap://DDS_LIBRARIES/dds.uml#_hb5ncJW5Ed6jzaDewott1A"/>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_oqsKOpf6Ed6epMGSRZJclw" name="Topic Connector" elementTypeHint="assemblyConnector">
+            <concept href="pathmap://DDS_LIBRARIES/dds.uml#_gy2BAJf2Ed6gZ9LI9YKG5g"/>
+          </tool>
+          <targetDiagram>Freeform</targetDiagram>
+          <targetDiagram>Zeligsoft Component</targetDiagram>
+        </drawer>
+      </contents>
+    </eAnnotations>
+    <eAnnotations xmi:id="_mNkIvZcDEd6c29WKN97z5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_WMOpgJloEd6BR6iTUbzhSw" name="dds" nsURI="http://www.zeligsoft.com/zdl/2009/DDS/1" nsPrefix="dds">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpgZloEd6BR6iTUbzhSw" name="NamedEntity" abstract="true">
+          <eAnnotations xmi:id="_WMOpgploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkv4ZcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpg5loEd6BR6iTUbzhSw" name="Specification" abstract="true" eSuperTypes="_WMOpiploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOphJloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkv55cDEd6c29WKN97z5Q"/>
+          <eAnnotations xmi:id="_WMOphZloEd6BR6iTUbzhSw" source="duplicates">
+            <contents xmi:type="ecore:EReference" xmi:id="_WMOphploEd6BR6iTUbzhSw" name="base_Class" ordered="false" lowerBound="1">
+              <eAnnotations xmi:id="_WMOph5loEd6BR6iTUbzhSw" source="redefines" references="_WMOpjJloEd6BR6iTUbzhSw"/>
+              <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+            </contents>
+          </eAnnotations>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpiploEd6BR6iTUbzhSw" name="Classifier" abstract="true" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpi5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkv7ZcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOpjJloEd6BR6iTUbzhSw" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpj5loEd6BR6iTUbzhSw" name="TypedEntity" abstract="true" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpkJloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkv-JcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOpkZloEd6BR6iTUbzhSw" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOplJloEd6BR6iTUbzhSw" name="Struct" eSuperTypes="_WMOpmZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOplZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwAZcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOplploEd6BR6iTUbzhSw" name="members" ordered="false" lowerBound="1" upperBound="-1" eType="_WMOpnJloEd6BR6iTUbzhSw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpmZloEd6BR6iTUbzhSw" name="ConstructedType" abstract="true" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpmploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwCpcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpnJloEd6BR6iTUbzhSw" name="Field" abstract="true" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpnZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwD5cDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpn5loEd6BR6iTUbzhSw" name="Simple" abstract="true" eSuperTypes="_WMOpnJloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpoJloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwGZcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpoploEd6BR6iTUbzhSw" name="Collection" abstract="true" eSuperTypes="_WMOpnJloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpo5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwHJcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOppZloEd6BR6iTUbzhSw" name="Typedef" eSuperTypes="_WMOpnJloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOppploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwH5cDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOpp5loEd6BR6iTUbzhSw" name="type" ordered="false" lowerBound="1" eType="_WMOpnJloEd6BR6iTUbzhSw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpqploEd6BR6iTUbzhSw" name="Sequence" eSuperTypes="_WMOpoploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpq5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwK5cDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOprJloEd6BR6iTUbzhSw" name="subtype" ordered="false" lowerBound="1" eType="_WMOpnJloEd6BR6iTUbzhSw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpr5loEd6BR6iTUbzhSw" name="Array" eSuperTypes="_WMOpoploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpsJloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwN5cDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOpsZloEd6BR6iTUbzhSw" name="subtype" ordered="false" lowerBound="1" eType="_WMOpnJloEd6BR6iTUbzhSw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOptJloEd6BR6iTUbzhSw" name="String" eSuperTypes="_WMOpoploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOptZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwQ5cDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpt5loEd6BR6iTUbzhSw" name="Union" eSuperTypes="_WMOpmZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpuJloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwRpcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOpuZloEd6BR6iTUbzhSw" name="cases" ordered="false" lowerBound="1" upperBound="-1" eType="_WMOpvploEd6BR6iTUbzhSw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOpu5loEd6BR6iTUbzhSw" name="switch" ordered="false" lowerBound="1" eType="_WMOpnJloEd6BR6iTUbzhSw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpvploEd6BR6iTUbzhSw" name="Case">
+          <eAnnotations xmi:id="_WMOpv5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwUZcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOpwJloEd6BR6iTUbzhSw" name="element_spec" ordered="false" eType="_WMOpnJloEd6BR6iTUbzhSw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpwploEd6BR6iTUbzhSw" name="ValueType" eSuperTypes="_WMOplJloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpw5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwZpcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOpxJloEd6BR6iTUbzhSw" name="baseType" ordered="false" eType="_WMOpwploEd6BR6iTUbzhSw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpx5loEd6BR6iTUbzhSw" name="Boolean" eSuperTypes="_WMOpn5loEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpyJloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwcpcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpyploEd6BR6iTUbzhSw" name="Char" eSuperTypes="_WMOpn5loEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpy5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwdZcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOpzZloEd6BR6iTUbzhSw" name="Enum" eSuperTypes="_WMOpn5loEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOpzploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkweJcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOpz5loEd6BR6iTUbzhSw" name="labels" ordered="false" lowerBound="1" upperBound="-1" eType="_WMOp0ploEd6BR6iTUbzhSw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp0ploEd6BR6iTUbzhSw" name="EnumLiteral">
+          <eAnnotations xmi:id="_WMOp05loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwf5cDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WMOp1JloEd6BR6iTUbzhSw" name="label" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp1ploEd6BR6iTUbzhSw" name="FloatingPoint" abstract="true" eSuperTypes="_WMOpn5loEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp15loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwipcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp2ZloEd6BR6iTUbzhSw" name="Int" abstract="true" eSuperTypes="_WMOpn5loEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp2ploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwjZcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp3JloEd6BR6iTUbzhSw" name="Octet" eSuperTypes="_WMOpn5loEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp3ZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwkJcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp35loEd6BR6iTUbzhSw" name="SignedInt" abstract="true" eSuperTypes="_WMOp2ZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp4JloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwk5cDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp4ploEd6BR6iTUbzhSw" name="UnsignedInt" abstract="true" eSuperTypes="_WMOp2ZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp45loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNkwlpcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp5ZloEd6BR6iTUbzhSw" name="Short" eSuperTypes="_WMOp35loEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp5ploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW0pcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp6JloEd6BR6iTUbzhSw" name="Integer" eSuperTypes="_WMOp35loEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp6ZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW1ZcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp65loEd6BR6iTUbzhSw" name="Long" eSuperTypes="_WMOp35loEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp7JloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW2JcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp7ploEd6BR6iTUbzhSw" name="LongLong" eSuperTypes="_WMOp35loEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp75loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW25cDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp8ZloEd6BR6iTUbzhSw" name="UInteger" eSuperTypes="_WMOp4ploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp8ploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW3pcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp9JloEd6BR6iTUbzhSw" name="ULongLong" eSuperTypes="_WMOp4ploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp9ZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW4ZcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp95loEd6BR6iTUbzhSw" name="UShort" eSuperTypes="_WMOp4ploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp-JloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW5JcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp-ploEd6BR6iTUbzhSw" name="ULong" eSuperTypes="_WMOp4ploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp-5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW55cDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOp_ZloEd6BR6iTUbzhSw" name="Double" eSuperTypes="_WMOp1ploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOp_ploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW6pcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqAJloEd6BR6iTUbzhSw" name="Float" eSuperTypes="_WMOp1ploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqAZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW7ZcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqA5loEd6BR6iTUbzhSw" name="Topic" eSuperTypes="_WMOqBploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqBJloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW8JcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqBploEd6BR6iTUbzhSw" name="TopicDescription" abstract="true" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqB5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW9ZcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqCJloEd6BR6iTUbzhSw" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqC5loEd6BR6iTUbzhSw" name="ContentFilteredTopic" eSuperTypes="_WMOqBploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqDJloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlW_pcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqDZloEd6BR6iTUbzhSw" name="related_topic" ordered="false" lowerBound="1" eType="_WMOqA5loEd6BR6iTUbzhSw"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WMOqD5loEd6BR6iTUbzhSw" name="filter_expression" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqEploEd6BR6iTUbzhSw" name="MultiTopic" eSuperTypes="_WMOqBploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqE5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlXEJcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqFJloEd6BR6iTUbzhSw" name="related_topics" ordered="false" lowerBound="1" upperBound="-1" eType="_WMOqA5loEd6BR6iTUbzhSw"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WMOqFploEd6BR6iTUbzhSw" name="subscription_expression" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqGZloEd6BR6iTUbzhSw" name="TopicField" eSuperTypes="_WMOpnJloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqGploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlXIpcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WMOqG5loEd6BR6iTUbzhSw" name="isDCPSKey" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqHZloEd6BR6iTUbzhSw" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqIJloEd6BR6iTUbzhSw" name="TopicType" eSuperTypes="_WMOplJloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqIZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlXLpcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqIploEd6BR6iTUbzhSw" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqJZloEd6BR6iTUbzhSw" name="DDSEntity" abstract="true" eSuperTypes="_WMOpiploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqJploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlXN5cDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqKJloEd6BR6iTUbzhSw" name="QoSProperty" eSuperTypes="_WMOpj5loEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqKZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlXPZcDEd6c29WKN97z5Q"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqK5loEd6BR6iTUbzhSw" name="Subscriber" eSuperTypes="_WMOqMJloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqLJloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlXQpcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqLZloEd6BR6iTUbzhSw" name="readers" ordered="false" lowerBound="1" upperBound="-1" eType="_WMOqNZloEd6BR6iTUbzhSw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqMJloEd6BR6iTUbzhSw" name="PublisherSubscriber" abstract="true" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqMZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlXS5cDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqMploEd6BR6iTUbzhSw" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqNZloEd6BR6iTUbzhSw" name="DataReader" eSuperTypes="_WMOqOploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqNploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlXVJcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqN5loEd6BR6iTUbzhSw" name="topic" ordered="false" lowerBound="1" eType="_WMOqBploEd6BR6iTUbzhSw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqOploEd6BR6iTUbzhSw" name="DataReaderWriter" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqO5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlXXZcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqPJloEd6BR6iTUbzhSw" name="base_Port" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Port"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqP5loEd6BR6iTUbzhSw" name="Publisher" eSuperTypes="_WMOqMJloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqQJloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlXb5cDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqQZloEd6BR6iTUbzhSw" name="writers" ordered="false" lowerBound="1" upperBound="-1" eType="_WMOqRJloEd6BR6iTUbzhSw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqRJloEd6BR6iTUbzhSw" name="DataWriter" eSuperTypes="_WMOqOploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqRZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlXeJcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqRploEd6BR6iTUbzhSw" name="topic" ordered="false" lowerBound="1" eType="_WMOqA5loEd6BR6iTUbzhSw"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqSZloEd6BR6iTUbzhSw" name="DDSComponent" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqSploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNlXi5cDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqT5loEd6BR6iTUbzhSw" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqUploEd6BR6iTUbzhSw" name="ComponentPart" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqU5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_xbS_0JfcEd6BcNuMyjTIJQ"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqVJloEd6BR6iTUbzhSw" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqV5loEd6BR6iTUbzhSw" name="TopicConnector" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqWJloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_oqsKMJf6Ed6epMGSRZJclw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqWZloEd6BR6iTUbzhSw" name="base_Connector" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Connector"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMOqXJloEd6BR6iTUbzhSw" name="Domain" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMOqXZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNl945cDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMOqYJloEd6BR6iTUbzhSw" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMPQkJloEd6BR6iTUbzhSw" name="DomainParticipant" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMPQkZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNl97ZcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMPQkploEd6BR6iTUbzhSw" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMPQlZloEd6BR6iTUbzhSw" name="DomainTopic" eSuperTypes="_WMOpgZloEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMPQlploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_mNl99pcDEd6c29WKN97z5Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMPQl5loEd6BR6iTUbzhSw" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMPQmploEd6BR6iTUbzhSw" name="ConnectorEnd" abstract="true">
+          <eAnnotations xmi:id="_WMPQm5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Cj7EvJiNEd6hMsdoC9gQWg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_WMPQnJloEd6BR6iTUbzhSw" name="base_ConnectorEnd" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//ConnectorEnd"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMPQnploEd6BR6iTUbzhSw" name="ParticipantEnd" eSuperTypes="_WMPQmploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMPQn5loEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Cj7rwpiNEd6hMsdoC9gQWg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_WMPQoZloEd6BR6iTUbzhSw" name="TopicEnd" eSuperTypes="_WMPQmploEd6BR6iTUbzhSw">
+          <eAnnotations xmi:id="_WMPQoploEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Cj7ryZiNEd6hMsdoC9gQWg"/>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <eAnnotations xmi:id="_nSO-INLBEd6w7_AprTvTvA" source="CXMenuModel">
+      <details xmi:id="_nSPlMNLBEd6w7_AprTvTvA" key="uri" value="platform:/plugin/com.zeligsoft.domain.omg.ddspathmap://DDS_PROFILES/ddsDomain.menus.toolingmodel"/>
+    </eAnnotations>
+    <packageImport xmi:id="_mNkv35cDEd6c29WKN97z5Q">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_mNkv4JcDEd6c29WKN97z5Q">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNkv4ZcDEd6c29WKN97z5Q" name="NamedEntity" isAbstract="true">
+      <eAnnotations xmi:id="_mNkv4pcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_mNkv45cDEd6c29WKN97z5Q" key="name" value="name"/>
+        <details xmi:id="_mNkv5JcDEd6c29WKN97z5Q" key="ownedEntity" value="ownedElement"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_N6xZwJS_Ed6jzaDewott1A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNkv5ZcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNkv5pcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNkv55cDEd6c29WKN97z5Q" name="Specification" isAbstract="true">
+      <eAnnotations xmi:id="_mNkv6JcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNkv6ZcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNkv6pcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_YN_9EJS_Ed6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkv65cDEd6c29WKN97z5Q" general="_mNkv7ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNkv7JcDEd6c29WKN97z5Q" name="base_Class" association="_mNkv9pcDEd6c29WKN97z5Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNkv7ZcDEd6c29WKN97z5Q" name="Classifier" isAbstract="true">
+      <eAnnotations xmi:id="_mNkv7pcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_mNkv75cDEd6c29WKN97z5Q" key="property" value="ownedAttribute"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_OqExsJVtEd6jzaDewott1A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNkv8JcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNkv8ZcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkv8pcDEd6c29WKN97z5Q" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNkv85cDEd6c29WKN97z5Q" name="base_Class" association="_mNkv9JcDEd6c29WKN97z5Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_mNkv9JcDEd6c29WKN97z5Q" name="Class_Classifier" memberEnd="_mNkv9ZcDEd6c29WKN97z5Q _mNkv85cDEd6c29WKN97z5Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mNkv9ZcDEd6c29WKN97z5Q" name="extension_Classifier" type="_mNkv7ZcDEd6c29WKN97z5Q" aggregation="composite" association="_mNkv9JcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_mNkv9pcDEd6c29WKN97z5Q" name="Class_Specification" memberEnd="_mNkv95cDEd6c29WKN97z5Q _mNkv7JcDEd6c29WKN97z5Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mNkv95cDEd6c29WKN97z5Q" name="extension_Specification" type="_mNkv55cDEd6c29WKN97z5Q" aggregation="composite" association="_mNkv9pcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNkv-JcDEd6c29WKN97z5Q" name="TypedEntity" isAbstract="true">
+      <eAnnotations xmi:id="_mNkv-ZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_mNkv-pcDEd6c29WKN97z5Q" key="type" value="type"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_anMCAJS_Ed6jzaDewott1A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNkv-5cDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNkv_JcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkv_ZcDEd6c29WKN97z5Q" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNkv_pcDEd6c29WKN97z5Q" name="base_Property" association="_mNkv_5cDEd6c29WKN97z5Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_mNkv_5cDEd6c29WKN97z5Q" name="Property_TypedEntity" memberEnd="_mNkwAJcDEd6c29WKN97z5Q _mNkv_pcDEd6c29WKN97z5Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mNkwAJcDEd6c29WKN97z5Q" name="extension_TypedEntity" type="_mNkv-JcDEd6c29WKN97z5Q" aggregation="composite" association="_mNkv_5cDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNkwAZcDEd6c29WKN97z5Q" name="Struct">
+      <eAnnotations xmi:id="_mNkwApcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNkwA5cDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNkwBJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_6cW1EJTFEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwBZcDEd6c29WKN97z5Q" general="_mNkwCpcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNkwBpcDEd6c29WKN97z5Q" name="members" type="_mNkwD5cDEd6c29WKN97z5Q" association="_mNkwFJcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNkwB5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_HyhvgZTHEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwCJcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwCZcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNkwCpcDEd6c29WKN97z5Q" name="ConstructedType" isAbstract="true">
+      <eAnnotations xmi:id="_mNkwC5cDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNkwDJcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNkwDZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_lM14cJTHEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwDpcDEd6c29WKN97z5Q" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNkwD5cDEd6c29WKN97z5Q" name="Field" isAbstract="true">
+      <eAnnotations xmi:id="_mNkwEJcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNkwEZcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNkwEpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_42BT8JTGEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwE5cDEd6c29WKN97z5Q" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNkwFJcDEd6c29WKN97z5Q" memberEnd="_mNkwBpcDEd6c29WKN97z5Q _mNkwFpcDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNkwFZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_HyhvgJTHEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNkwFpcDEd6c29WKN97z5Q" name="" type="_mNkwAZcDEd6c29WKN97z5Q" association="_mNkwFJcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwF5cDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwGJcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwGZcDEd6c29WKN97z5Q" name="Simple" isAbstract="true">
+      <eAnnotations xmi:id="_mNkwGpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_g8L_8JTlEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwG5cDEd6c29WKN97z5Q" general="_mNkwD5cDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwHJcDEd6c29WKN97z5Q" name="Collection" isAbstract="true">
+      <eAnnotations xmi:id="_mNkwHZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_issUQJTlEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwHpcDEd6c29WKN97z5Q" general="_mNkwD5cDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwH5cDEd6c29WKN97z5Q" name="Typedef">
+      <eAnnotations xmi:id="_mNkwIJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_j-M_cJTlEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwIZcDEd6c29WKN97z5Q" general="_mNkwD5cDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNkwIpcDEd6c29WKN97z5Q" name="type" type="_mNkwD5cDEd6c29WKN97z5Q" association="_mNkwJpcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNkwI5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_sB0bIZTmEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwJJcDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwJZcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNkwJpcDEd6c29WKN97z5Q" memberEnd="_mNkwIpcDEd6c29WKN97z5Q _mNkwKJcDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNkwJ5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_sB0bIJTmEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNkwKJcDEd6c29WKN97z5Q" name="" type="_mNkwH5cDEd6c29WKN97z5Q" association="_mNkwJpcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwKZcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwKpcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwK5cDEd6c29WKN97z5Q" name="Sequence">
+      <eAnnotations xmi:id="_mNkwLJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_o1MjkJTlEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwLZcDEd6c29WKN97z5Q" general="_mNkwHJcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNkwLpcDEd6c29WKN97z5Q" name="subtype" type="_mNkwD5cDEd6c29WKN97z5Q" association="_mNkwMpcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNkwL5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_bOscMZTmEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwMJcDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwMZcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNkwMpcDEd6c29WKN97z5Q" memberEnd="_mNkwLpcDEd6c29WKN97z5Q _mNkwNJcDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNkwM5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_bOscMJTmEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNkwNJcDEd6c29WKN97z5Q" name="" type="_mNkwK5cDEd6c29WKN97z5Q" association="_mNkwMpcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwNZcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwNpcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwN5cDEd6c29WKN97z5Q" name="Array">
+      <eAnnotations xmi:id="_mNkwOJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_pnQ5sJTlEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwOZcDEd6c29WKN97z5Q" general="_mNkwHJcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNkwOpcDEd6c29WKN97z5Q" name="subtype" type="_mNkwD5cDEd6c29WKN97z5Q" association="_mNkwPpcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNkwO5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_ifKZIZTmEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwPJcDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwPZcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNkwPpcDEd6c29WKN97z5Q" memberEnd="_mNkwOpcDEd6c29WKN97z5Q _mNkwQJcDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNkwP5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_ifKZIJTmEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNkwQJcDEd6c29WKN97z5Q" name="" type="_mNkwN5cDEd6c29WKN97z5Q" association="_mNkwPpcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwQZcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwQpcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwQ5cDEd6c29WKN97z5Q" name="String">
+      <eAnnotations xmi:id="_mNkwRJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_qZ7FsJTlEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwRZcDEd6c29WKN97z5Q" general="_mNkwHJcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwRpcDEd6c29WKN97z5Q" name="Union">
+      <eAnnotations xmi:id="_mNkwR5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_uOwCMJTlEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwSJcDEd6c29WKN97z5Q" general="_mNkwCpcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNkwSZcDEd6c29WKN97z5Q" name="cases" type="_mNkwUZcDEd6c29WKN97z5Q" association="_mNkwXJcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNkwSpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#__O1fEZTlEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwS5cDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwTJcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_mNkwTZcDEd6c29WKN97z5Q" name="switch" type="_mNkwD5cDEd6c29WKN97z5Q" association="_mNkwYZcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNkwTpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_wmLXIZTmEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwT5cDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwUJcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwUZcDEd6c29WKN97z5Q" name="Case">
+      <eAnnotations xmi:id="_mNkwUpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_6HdVkJTlEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_mNkwU5cDEd6c29WKN97z5Q" name="element_spec" type="_mNkwD5cDEd6c29WKN97z5Q" association="_mNkwV5cDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNkwVJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_MID0QZTmEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwVZcDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwVpcDEd6c29WKN97z5Q"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNkwV5cDEd6c29WKN97z5Q" memberEnd="_mNkwU5cDEd6c29WKN97z5Q _mNkwWZcDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNkwWJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_MID0QJTmEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNkwWZcDEd6c29WKN97z5Q" name="" type="_mNkwUZcDEd6c29WKN97z5Q" association="_mNkwV5cDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwWpcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwW5cDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNkwXJcDEd6c29WKN97z5Q" memberEnd="_mNkwSZcDEd6c29WKN97z5Q _mNkwXpcDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNkwXZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#__O1fEJTlEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNkwXpcDEd6c29WKN97z5Q" name="" type="_mNkwRpcDEd6c29WKN97z5Q" association="_mNkwXJcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwX5cDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwYJcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNkwYZcDEd6c29WKN97z5Q" memberEnd="_mNkwTZcDEd6c29WKN97z5Q _mNkwY5cDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNkwYpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_wmLXIJTmEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNkwY5cDEd6c29WKN97z5Q" name="" type="_mNkwRpcDEd6c29WKN97z5Q" association="_mNkwYZcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwZJcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwZZcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwZpcDEd6c29WKN97z5Q" name="ValueType">
+      <eAnnotations xmi:id="_mNkwZ5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_2r9fEJTlEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwaJcDEd6c29WKN97z5Q" general="_mNkwAZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNkwaZcDEd6c29WKN97z5Q" name="baseType" type="_mNkwZpcDEd6c29WKN97z5Q" association="_mNkwbZcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNkwapcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_EkhKUZTmEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwa5cDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwbJcDEd6c29WKN97z5Q"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNkwbZcDEd6c29WKN97z5Q" memberEnd="_mNkwaZcDEd6c29WKN97z5Q _mNkwb5cDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNkwbpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_EkhKUJTmEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNkwb5cDEd6c29WKN97z5Q" name="" type="_mNkwZpcDEd6c29WKN97z5Q" association="_mNkwbZcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwcJcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwcZcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwcpcDEd6c29WKN97z5Q" name="Boolean">
+      <eAnnotations xmi:id="_mNkwc5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_79Dv0JTmEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwdJcDEd6c29WKN97z5Q" general="_mNkwGZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwdZcDEd6c29WKN97z5Q" name="Char">
+      <eAnnotations xmi:id="_mNkwdpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_8slvUJTmEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwd5cDEd6c29WKN97z5Q" general="_mNkwGZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkweJcDEd6c29WKN97z5Q" name="Enum">
+      <eAnnotations xmi:id="_mNkweZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_9tQiIJTmEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwepcDEd6c29WKN97z5Q" general="_mNkwGZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNkwe5cDEd6c29WKN97z5Q" name="labels" type="_mNkwf5cDEd6c29WKN97z5Q" association="_mNkwhZcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNkwfJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_JuA-QZTnEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwfZcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwfpcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwf5cDEd6c29WKN97z5Q" name="EnumLiteral">
+      <eAnnotations xmi:id="_mNkwgJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_F-sz4JTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_mNkwgZcDEd6c29WKN97z5Q" name="label">
+        <eAnnotations xmi:id="_mNkwgpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_H-_3sJTnEd6jzaDewott1A"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwg5cDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwhJcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNkwhZcDEd6c29WKN97z5Q" memberEnd="_mNkwe5cDEd6c29WKN97z5Q _mNkwh5cDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNkwhpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_JuA-QJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNkwh5cDEd6c29WKN97z5Q" name="" type="_mNkweJcDEd6c29WKN97z5Q" association="_mNkwhZcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNkwiJcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNkwiZcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwipcDEd6c29WKN97z5Q" name="FloatingPoint" isAbstract="true">
+      <eAnnotations xmi:id="_mNkwi5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_-l4zQJTmEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwjJcDEd6c29WKN97z5Q" general="_mNkwGZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwjZcDEd6c29WKN97z5Q" name="Int" isAbstract="true">
+      <eAnnotations xmi:id="_mNkwjpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_AeIuUJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwj5cDEd6c29WKN97z5Q" general="_mNkwGZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwkJcDEd6c29WKN97z5Q" name="Octet">
+      <eAnnotations xmi:id="_mNkwkZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_BoMtsJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwkpcDEd6c29WKN97z5Q" general="_mNkwGZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwk5cDEd6c29WKN97z5Q" name="SignedInt" isAbstract="true">
+      <eAnnotations xmi:id="_mNkwlJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_SdP_QJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNkwlZcDEd6c29WKN97z5Q" general="_mNkwjZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNkwlpcDEd6c29WKN97z5Q" name="UnsignedInt" isAbstract="true">
+      <eAnnotations xmi:id="_mNlW0JcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_TlYE8JTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW0ZcDEd6c29WKN97z5Q" general="_mNkwjZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNlW0pcDEd6c29WKN97z5Q" name="Short">
+      <eAnnotations xmi:id="_mNlW05cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_WGwckJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW1JcDEd6c29WKN97z5Q" general="_mNkwk5cDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNlW1ZcDEd6c29WKN97z5Q" name="Integer">
+      <eAnnotations xmi:id="_mNlW1pcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_WyHtwJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW15cDEd6c29WKN97z5Q" general="_mNkwk5cDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNlW2JcDEd6c29WKN97z5Q" name="Long">
+      <eAnnotations xmi:id="_mNlW2ZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_XYkCsJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW2pcDEd6c29WKN97z5Q" general="_mNkwk5cDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNlW25cDEd6c29WKN97z5Q" name="LongLong">
+      <eAnnotations xmi:id="_mNlW3JcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_YGKIgJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW3ZcDEd6c29WKN97z5Q" general="_mNkwk5cDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNlW3pcDEd6c29WKN97z5Q" name="UInteger">
+      <eAnnotations xmi:id="_mNlW35cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_ZfHfgJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW4JcDEd6c29WKN97z5Q" general="_mNkwlpcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNlW4ZcDEd6c29WKN97z5Q" name="ULongLong">
+      <eAnnotations xmi:id="_mNlW4pcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_ax0dgJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW45cDEd6c29WKN97z5Q" general="_mNkwlpcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNlW5JcDEd6c29WKN97z5Q" name="UShort">
+      <eAnnotations xmi:id="_mNlW5ZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_b2XqwJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW5pcDEd6c29WKN97z5Q" general="_mNkwlpcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNlW55cDEd6c29WKN97z5Q" name="ULong">
+      <eAnnotations xmi:id="_mNlW6JcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_dJEBsJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW6ZcDEd6c29WKN97z5Q" general="_mNkwlpcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNlW6pcDEd6c29WKN97z5Q" name="Double">
+      <eAnnotations xmi:id="_mNlW65cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_oVXiEJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW7JcDEd6c29WKN97z5Q" general="_mNkwipcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_mNlW7ZcDEd6c29WKN97z5Q" name="Float">
+      <eAnnotations xmi:id="_mNlW7pcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_o4O-kJTnEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW75cDEd6c29WKN97z5Q" general="_mNkwipcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlW8JcDEd6c29WKN97z5Q" name="Topic">
+      <eAnnotations xmi:id="_mNlW8ZcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlW8pcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlW85cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_-1_u0JTFEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW9JcDEd6c29WKN97z5Q" general="_mNlW9ZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlW9ZcDEd6c29WKN97z5Q" name="TopicDescription" isAbstract="true">
+      <eAnnotations xmi:id="_mNlW9pcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_mNlW95cDEd6c29WKN97z5Q" key="type" value="type"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_C5kR8JTGEd6jzaDewott1A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlW-JcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlW-ZcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlW-pcDEd6c29WKN97z5Q" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNlW-5cDEd6c29WKN97z5Q" name="base_Property" association="_mNlW_JcDEd6c29WKN97z5Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_mNlW_JcDEd6c29WKN97z5Q" name="Property_TopicDescription" memberEnd="_mNlW_ZcDEd6c29WKN97z5Q _mNlW-5cDEd6c29WKN97z5Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mNlW_ZcDEd6c29WKN97z5Q" name="extension_TopicDescription" type="_mNlW9ZcDEd6c29WKN97z5Q" aggregation="composite" association="_mNlW_JcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlW_pcDEd6c29WKN97z5Q" name="ContentFilteredTopic">
+      <eAnnotations xmi:id="_mNlW_5cDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXAJcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXAZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_AdjigJTGEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXApcDEd6c29WKN97z5Q" general="_mNlW9ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNlXA5cDEd6c29WKN97z5Q" name="related_topic" type="_mNlW8JcDEd6c29WKN97z5Q" association="_mNlXC5cDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNlXBJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_gboosZTGEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXBZcDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXBpcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_mNlXB5cDEd6c29WKN97z5Q" name="filter_expression">
+        <eAnnotations xmi:id="_mNlXCJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_hQbT8JTMEd6jzaDewott1A"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXCZcDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXCpcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNlXC5cDEd6c29WKN97z5Q" memberEnd="_mNlXA5cDEd6c29WKN97z5Q _mNlXDZcDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNlXDJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_gboosJTGEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNlXDZcDEd6c29WKN97z5Q" name="" type="_mNlW_pcDEd6c29WKN97z5Q" association="_mNlXC5cDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXDpcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXD5cDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlXEJcDEd6c29WKN97z5Q" name="MultiTopic">
+      <eAnnotations xmi:id="_mNlXEZcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXEpcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXE5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_B036wJTGEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXFJcDEd6c29WKN97z5Q" general="_mNlW9ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNlXFZcDEd6c29WKN97z5Q" name="related_topics" type="_mNlW8JcDEd6c29WKN97z5Q" association="_mNlXHZcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNlXFpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_UZP04JTGEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXF5cDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXGJcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_mNlXGZcDEd6c29WKN97z5Q" name="subscription_expression">
+        <eAnnotations xmi:id="_mNlXGpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_mtjrAJTMEd6jzaDewott1A"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXG5cDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXHJcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNlXHZcDEd6c29WKN97z5Q" memberEnd="_mNlXFZcDEd6c29WKN97z5Q _mNlXH5cDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNlXHpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_UZGD4JTGEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNlXH5cDEd6c29WKN97z5Q" name="" type="_mNlXEJcDEd6c29WKN97z5Q" association="_mNlXHZcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXIJcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXIZcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlXIpcDEd6c29WKN97z5Q" name="TopicField">
+      <eAnnotations xmi:id="_mNlXI5cDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXJJcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXJZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_GL-d4JTGEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXJpcDEd6c29WKN97z5Q" general="_mNkwD5cDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNlXJ5cDEd6c29WKN97z5Q" name="isDCPSKey">
+        <eAnnotations xmi:id="_mNlXKJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_yIA8IJTMEd6jzaDewott1A"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXKZcDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXKpcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_mNlXK5cDEd6c29WKN97z5Q" name="base_Property" association="_mNlXLJcDEd6c29WKN97z5Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_mNlXLJcDEd6c29WKN97z5Q" name="Property_TopicField" memberEnd="_mNlXLZcDEd6c29WKN97z5Q _mNlXK5cDEd6c29WKN97z5Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mNlXLZcDEd6c29WKN97z5Q" name="extension_TopicField" type="_mNlXIpcDEd6c29WKN97z5Q" aggregation="composite" association="_mNlXLJcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlXLpcDEd6c29WKN97z5Q" name="TopicType">
+      <eAnnotations xmi:id="_mNlXL5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_mNlXMJcDEd6c29WKN97z5Q" key="members" value="ownedAttribute"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_HmkzoJTGEd6jzaDewott1A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXMZcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXMpcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXM5cDEd6c29WKN97z5Q" general="_mNkwAZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNlXNJcDEd6c29WKN97z5Q" name="base_Class" association="_mNlXNZcDEd6c29WKN97z5Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_mNlXNZcDEd6c29WKN97z5Q" name="Class_TopicType" memberEnd="_mNlXNpcDEd6c29WKN97z5Q _mNlXNJcDEd6c29WKN97z5Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mNlXNpcDEd6c29WKN97z5Q" name="extension_TopicType" type="_mNlXLpcDEd6c29WKN97z5Q" aggregation="composite" association="_mNlXNZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlXN5cDEd6c29WKN97z5Q" name="DDSEntity" isAbstract="true">
+      <eAnnotations xmi:id="_mNlXOJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_mNlXOZcDEd6c29WKN97z5Q" key="qosPolicy" value="ownedAttribute"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_QdFWwJTFEd6jzaDewott1A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXOpcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXO5cDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXPJcDEd6c29WKN97z5Q" general="_mNkv7ZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlXPZcDEd6c29WKN97z5Q" name="QoSProperty">
+      <eAnnotations xmi:id="_mNlXPpcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXP5cDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXQJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_UhaH0JTFEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXQZcDEd6c29WKN97z5Q" general="_mNkv-JcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlXQpcDEd6c29WKN97z5Q" name="Subscriber">
+      <eAnnotations xmi:id="_mNlXQ5cDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXRJcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXRZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_n_8PMJToEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXRpcDEd6c29WKN97z5Q" general="_mNlXS5cDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNlXR5cDEd6c29WKN97z5Q" name="readers" type="_mNlXVJcDEd6c29WKN97z5Q" association="_mNlXapcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNlXSJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_a1wQYZTpEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXSZcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXSpcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlXS5cDEd6c29WKN97z5Q" name="PublisherSubscriber" isAbstract="true">
+      <eAnnotations xmi:id="_mNlXTJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_mNlXTZcDEd6c29WKN97z5Q" key="data" value="ownedAttribute"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_l0KU4JV8Ed6jzaDewott1A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXTpcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXT5cDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXUJcDEd6c29WKN97z5Q" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNlXUZcDEd6c29WKN97z5Q" name="base_Class" association="_mNlXUpcDEd6c29WKN97z5Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_mNlXUpcDEd6c29WKN97z5Q" name="Class_PublisherSubscriber" memberEnd="_mNlXU5cDEd6c29WKN97z5Q _mNlXUZcDEd6c29WKN97z5Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mNlXU5cDEd6c29WKN97z5Q" name="extension_PublisherSubscriber" type="_mNlXS5cDEd6c29WKN97z5Q" aggregation="composite" association="_mNlXUpcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlXVJcDEd6c29WKN97z5Q" name="DataReader">
+      <eAnnotations xmi:id="_mNlXVZcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXVpcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXV5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_rxCiQJToEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXWJcDEd6c29WKN97z5Q" general="_mNlXXZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNlXWZcDEd6c29WKN97z5Q" name="topic" type="_mNlW9ZcDEd6c29WKN97z5Q" association="_mNlXZZcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNlXWpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_kCzOwZTpEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXW5cDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXXJcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlXXZcDEd6c29WKN97z5Q" name="DataReaderWriter">
+      <eAnnotations xmi:id="_mNlXXpcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXX5cDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXYJcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_oMAWAJV8Ed6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXYZcDEd6c29WKN97z5Q" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNlXYpcDEd6c29WKN97z5Q" name="base_Port" association="_mNlXY5cDEd6c29WKN97z5Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_mNlXY5cDEd6c29WKN97z5Q" name="Port_DataReaderWriter" memberEnd="_mNlXZJcDEd6c29WKN97z5Q _mNlXYpcDEd6c29WKN97z5Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mNlXZJcDEd6c29WKN97z5Q" name="extension_DataReaderWriter" type="_mNlXXZcDEd6c29WKN97z5Q" aggregation="composite" association="_mNlXY5cDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNlXZZcDEd6c29WKN97z5Q" memberEnd="_mNlXWZcDEd6c29WKN97z5Q _mNlXZ5cDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNlXZpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_kCzOwJTpEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNlXZ5cDEd6c29WKN97z5Q" name="" type="_mNlXVJcDEd6c29WKN97z5Q" association="_mNlXZZcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXaJcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXaZcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNlXapcDEd6c29WKN97z5Q" memberEnd="_mNlXR5cDEd6c29WKN97z5Q _mNlXbJcDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNlXa5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_a1wQYJTpEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNlXbJcDEd6c29WKN97z5Q" name="" type="_mNlXQpcDEd6c29WKN97z5Q" association="_mNlXapcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXbZcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXbpcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlXb5cDEd6c29WKN97z5Q" name="Publisher">
+      <eAnnotations xmi:id="_mNlXcJcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXcZcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXcpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_o1Ix0JToEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXc5cDEd6c29WKN97z5Q" general="_mNlXS5cDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNlXdJcDEd6c29WKN97z5Q" name="writers" type="_mNlXeJcDEd6c29WKN97z5Q" association="_mNlXhpcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNlXdZcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_Vzl-EZTpEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXdpcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXd5cDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlXeJcDEd6c29WKN97z5Q" name="DataWriter">
+      <eAnnotations xmi:id="_mNlXeZcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXepcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXe5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_qsf8EJToEd6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXfJcDEd6c29WKN97z5Q" general="_mNlXXZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNlXfZcDEd6c29WKN97z5Q" name="topic" type="_mNlW8JcDEd6c29WKN97z5Q" association="_mNlXgZcDEd6c29WKN97z5Q">
+        <eAnnotations xmi:id="_mNlXfpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS_LIBRARIES/dds.uml#_h94JoZTpEd6jzaDewott1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXf5cDEd6c29WKN97z5Q" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXgJcDEd6c29WKN97z5Q" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNlXgZcDEd6c29WKN97z5Q" memberEnd="_mNlXfZcDEd6c29WKN97z5Q _mNlXg5cDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNlXgpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_h94JoJTpEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNlXg5cDEd6c29WKN97z5Q" name="" type="_mNlXeJcDEd6c29WKN97z5Q" association="_mNlXgZcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXhJcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXhZcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_mNlXhpcDEd6c29WKN97z5Q" memberEnd="_mNlXdJcDEd6c29WKN97z5Q _mNlXiJcDEd6c29WKN97z5Q">
+      <eAnnotations xmi:id="_mNlXh5cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://DDS_LIBRARIES/dds.uml#_Vzl-EJTpEd6jzaDewott1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_mNlXiJcDEd6c29WKN97z5Q" name="" type="_mNlXb5cDEd6c29WKN97z5Q" association="_mNlXhpcDEd6c29WKN97z5Q">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mNlXiZcDEd6c29WKN97z5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mNlXipcDEd6c29WKN97z5Q"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNlXi5cDEd6c29WKN97z5Q" name="DDSComponent">
+      <eAnnotations xmi:id="_mNlXjJcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNlXjZcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNlXjpcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_yM7O8Jl6Ed6EmfcIdFsqgQ" key="participants" value="ownedAttribute"/>
+        <details xmi:id="_yM7O8Zl6Ed6EmfcIdFsqgQ" key="topicConnector" value="ownedConnector"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_iaAiMJV8Ed6jzaDewott1A"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNlXj5cDEd6c29WKN97z5Q" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNlXlJcDEd6c29WKN97z5Q" name="base_Component" association="_mNl94ZcDEd6c29WKN97z5Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_mNl94ZcDEd6c29WKN97z5Q" name="Component_DDSComponent" memberEnd="_mNl94pcDEd6c29WKN97z5Q _mNlXlJcDEd6c29WKN97z5Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mNl94pcDEd6c29WKN97z5Q" name="extension_DDSComponent" type="_mNlXi5cDEd6c29WKN97z5Q" aggregation="composite" association="_mNl94ZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNl945cDEd6c29WKN97z5Q" name="Domain">
+      <eAnnotations xmi:id="_mNl95JcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_mNl95ZcDEd6c29WKN97z5Q" key="domainTopic" value="ownedAttribute"/>
+        <details xmi:id="_mNl95pcDEd6c29WKN97z5Q" key="participant" value="ownedAttribute"/>
+        <details xmi:id="_yM72AJl6Ed6EmfcIdFsqgQ" key="connector" value="ownedConnector"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_eUMjYJV8Ed6jzaDewott1A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNl955cDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNl96JcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNl96ZcDEd6c29WKN97z5Q" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNl96pcDEd6c29WKN97z5Q" name="base_Component" association="_mNl965cDEd6c29WKN97z5Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_mNl965cDEd6c29WKN97z5Q" name="Component_Domain" memberEnd="_mNl97JcDEd6c29WKN97z5Q _mNl96pcDEd6c29WKN97z5Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mNl97JcDEd6c29WKN97z5Q" name="extension_Domain" type="_mNl945cDEd6c29WKN97z5Q" aggregation="composite" association="_mNl965cDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNl97ZcDEd6c29WKN97z5Q" name="DomainParticipant">
+      <eAnnotations xmi:id="_mNl97pcDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_mNl975cDEd6c29WKN97z5Q" key="type" value="type"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_fZ8DcJV8Ed6jzaDewott1A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNl98JcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNl98ZcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNl98pcDEd6c29WKN97z5Q" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNl985cDEd6c29WKN97z5Q" name="base_Property" association="_mNl99JcDEd6c29WKN97z5Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_mNl99JcDEd6c29WKN97z5Q" name="Property_DomainParticipant" memberEnd="_mNl99ZcDEd6c29WKN97z5Q _mNl985cDEd6c29WKN97z5Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mNl99ZcDEd6c29WKN97z5Q" name="extension_DomainParticipant" type="_mNl97ZcDEd6c29WKN97z5Q" aggregation="composite" association="_mNl99JcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_mNl99pcDEd6c29WKN97z5Q" name="DomainTopic">
+      <eAnnotations xmi:id="_mNl995cDEd6c29WKN97z5Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_mNl9-JcDEd6c29WKN97z5Q" key="type" value="type"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_OY1dcJV9Ed6jzaDewott1A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_mNl9-ZcDEd6c29WKN97z5Q" source="uml2.extensions">
+        <details xmi:id="_mNl9-pcDEd6c29WKN97z5Q" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_mNl9-5cDEd6c29WKN97z5Q" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_mNl9_JcDEd6c29WKN97z5Q" name="base_Property" association="_mNl9_ZcDEd6c29WKN97z5Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_mNl9_ZcDEd6c29WKN97z5Q" name="Property_DomainTopic" memberEnd="_mNl9_pcDEd6c29WKN97z5Q _mNl9_JcDEd6c29WKN97z5Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_mNl9_pcDEd6c29WKN97z5Q" name="extension_DomainTopic" type="_mNl99pcDEd6c29WKN97z5Q" aggregation="composite" association="_mNl9_ZcDEd6c29WKN97z5Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_xbS_0JfcEd6BcNuMyjTIJQ" name="ComponentPart">
+      <eAnnotations xmi:id="_xbS_0ZfcEd6BcNuMyjTIJQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_xbS_0pfcEd6BcNuMyjTIJQ" key="type" value="type"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_hb5ncJW5Ed6jzaDewott1A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_xbS_05fcEd6BcNuMyjTIJQ" source="uml2.extensions">
+        <details xmi:id="_xbS_1JfcEd6BcNuMyjTIJQ" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_xbS_1ZfcEd6BcNuMyjTIJQ" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_xbS_1pfcEd6BcNuMyjTIJQ" name="base_Property" association="_xbS_15fcEd6BcNuMyjTIJQ">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_xbS_15fcEd6BcNuMyjTIJQ" name="Property_ComponentPart" memberEnd="_xbS_2JfcEd6BcNuMyjTIJQ _xbS_1pfcEd6BcNuMyjTIJQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_xbS_2JfcEd6BcNuMyjTIJQ" name="extension_ComponentPart" type="_xbS_0JfcEd6BcNuMyjTIJQ" aggregation="composite" association="_xbS_15fcEd6BcNuMyjTIJQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_oqsKMJf6Ed6epMGSRZJclw" name="TopicConnector">
+      <eAnnotations xmi:id="_oqsKMZf6Ed6epMGSRZJclw" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_CkUtUZiNEd6hMsdoC9gQWg" key="end" value="end"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_gy2BAJf2Ed6gZ9LI9YKG5g"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_oqsKNJf6Ed6epMGSRZJclw" source="uml2.extensions">
+        <details xmi:id="_oqsKNZf6Ed6epMGSRZJclw" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_oqsKNpf6Ed6epMGSRZJclw" general="_mNkv4ZcDEd6c29WKN97z5Q"/>
+      <ownedAttribute xmi:id="_CkUtUJiNEd6hMsdoC9gQWg" name="base_Connector" association="_Cj7EsJiNEd6hMsdoC9gQWg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_Cj7EsJiNEd6hMsdoC9gQWg" name="Connector_TopicConnector" memberEnd="_Cj7EsZiNEd6hMsdoC9gQWg _CkUtUJiNEd6hMsdoC9gQWg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Cj7EsZiNEd6hMsdoC9gQWg" name="extension_TopicConnector" type="_oqsKMJf6Ed6epMGSRZJclw" aggregation="composite" association="_Cj7EsJiNEd6hMsdoC9gQWg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_Cj7EvJiNEd6hMsdoC9gQWg" name="ConnectorEnd" isAbstract="true">
+      <eAnnotations xmi:id="_Cj7EvZiNEd6hMsdoC9gQWg" source="uml2.extensions">
+        <details xmi:id="_Cj7EvpiNEd6hMsdoC9gQWg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_Cj7Ev5iNEd6hMsdoC9gQWg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_rPS54JiHEd6hMsdoC9gQWg"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_Cj7EwJiNEd6hMsdoC9gQWg" name="base_ConnectorEnd" association="_Cj7rwJiNEd6hMsdoC9gQWg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ConnectorEnd"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_Cj7rwJiNEd6hMsdoC9gQWg" name="ConnectorEnd_ConnectorEnd" memberEnd="_Cj7rwZiNEd6hMsdoC9gQWg _Cj7EwJiNEd6hMsdoC9gQWg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Cj7rwZiNEd6hMsdoC9gQWg" name="extension_ConnectorEnd" type="_Cj7EvJiNEd6hMsdoC9gQWg" aggregation="composite" association="_Cj7rwJiNEd6hMsdoC9gQWg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_Cj7rwpiNEd6hMsdoC9gQWg" name="ParticipantEnd">
+      <eAnnotations xmi:id="_Cj7rw5iNEd6hMsdoC9gQWg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_Cj7rxJiNEd6hMsdoC9gQWg" key="readerWriter" value="role"/>
+        <details xmi:id="_Cj7rxZiNEd6hMsdoC9gQWg" key="participant" value="partWithPort"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_XErlQJiIEd6hMsdoC9gQWg"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_Cj7rxpiNEd6hMsdoC9gQWg" source="uml2.extensions">
+        <details xmi:id="_Cj7rx5iNEd6hMsdoC9gQWg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_Cj7ryJiNEd6hMsdoC9gQWg" general="_Cj7EvJiNEd6hMsdoC9gQWg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_Cj7ryZiNEd6hMsdoC9gQWg" name="TopicEnd">
+      <eAnnotations xmi:id="_Cj7rypiNEd6hMsdoC9gQWg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_Cj7ry5iNEd6hMsdoC9gQWg" key="topic" value="role"/>
+        <references xmi:type="uml:Class" href="pathmap://DDS_LIBRARIES/dds.uml#_aN1HgJiIEd6hMsdoC9gQWg"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_Cj7rzJiNEd6hMsdoC9gQWg" source="uml2.extensions">
+        <details xmi:id="_Cj7rzZiNEd6hMsdoC9gQWg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_Cj7rzpiNEd6hMsdoC9gQWg" general="_Cj7EvJiNEd6hMsdoC9gQWg"/>
+    </packagedElement>
+    <profileApplication xmi:id="_WMNbYJloEd6BR6iTUbzhSw">
+      <eAnnotations xmi:id="_WMNbYZloEd6BR6iTUbzhSw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_WM7NEJloEd6BR6iTUbzhSw" base_Package="_mNkIsJcDEd6c29WKN97z5Q" packageName="dds" nsPrefix="dds" nsURI="http://www.zeligsoft.com/zdl/2009/DDS/1" prefix="DDS"/>
+</xmi:XMI>

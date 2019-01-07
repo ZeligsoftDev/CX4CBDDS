@@ -1,0 +1,14 @@
+#ifndef CX_PSAT_PUBLISHER_COMP__PORTS__SNA_EXAMPLES_PSAT_EXAMPLE_UDM_MSG_IDL
+#define CX_PSAT_PUBLISHER_COMP__PORTS__SNA_EXAMPLES_PSAT_EXAMPLE_UDM_MSG_IDL
+
+#include "ccm_psat_header_defn.idl"
+#pragma ndds typesupport "SNA_Examples_PSAT_Example_UDM_msgSupport.h"
+
+module SNA_Examples {
+    struct PSAT_Example_UDM_msg {
+        CCM_PSAT::PSAT_Header psat_hdr;
+        long long sequenceNum;
+    }; //@top-level true
+};
+
+#endif

@@ -1,0 +1,63 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @addtogroup PSAT_Publisher_comp
+/// @{
+/// @file   SNA_Examples_PSAT_Example_UDM_msg.idl
+/// @brief  Definition of PSAT UDM used in the PSAT example.
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_PSAT_EXAMPLE_UDM_MSG_IDL
+#define SNA_EXAMPLES_PSAT_EXAMPLE_UDM_MSG_IDL
+
+#include "ccm_psat_header_defn.idl"
+
+#pragma ndds typesupport "SNA_Examples_PSAT_Example_UDM_msgSupport.h"
+
+module SNA_Examples
+{   
+   /**
+    * @struct PSAT_Example_UDM_msg
+    * 
+    * UDM message type for PSAT example
+    */
+   struct PSAT_Example_UDM_msg
+   {
+      /**
+       * PSAT header which is required in all UDM messages
+       */
+      ::CCM_PSAT::PSAT_Header psat_hdr;
+
+      /**
+       * Identifier used to distinguish which PSAT publisher this message
+       * came from.  This is only used to make the logging output from the
+       * example a little easier to follow.
+       * 
+       * @note THIS IS NOT NECESSARY FOR ALL COMPONENTS.
+       */
+      long                    publisherId;
+      
+      /**
+       * This is the message count that was reported (in logging) by the
+       * publisher when it published this message.This is only used to make the
+       * logging output from the example a little easier to follow.
+       * 
+       * @note THIS IS NOT NECESSARY FOR ALL COMPONENTS.
+       */
+      long                    msgCnt;
+
+      /**
+       * A monotonically increasing sequence number for a particular publisher.
+       */
+      long long sequenceNum;
+   }; //@top-level true
+};
+
+#endif // SNA_EXAMPLES_PSAT_EXAMPLE_UDM_MSG_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

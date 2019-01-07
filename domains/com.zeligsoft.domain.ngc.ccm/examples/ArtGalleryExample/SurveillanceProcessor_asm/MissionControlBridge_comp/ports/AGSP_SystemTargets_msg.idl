@@ -1,0 +1,30 @@
+/// @defgroup AGSP_SystemTargets_msg SystemTargets_msg
+/// @{
+/// 
+/// @file AGSP_SystemTargets_msg.idl
+/// @brief SystemTargets_msg message definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__MISSIONCONTROLBRIDGE_COMP__PORTS__AGSP_SYSTEMTARGETS_MSG_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__MISSIONCONTROLBRIDGE_COMP__PORTS__AGSP_SYSTEMTARGETS_MSG_IDL
+
+#include "AGSP_SystemTargets_defn.idl"
+#pragma ndds typesupport "AGSP_SystemTargets_msgSupport.h"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @struct SystemTargets_msg
+    struct SystemTargets_msg {
+
+        /// // Placeholder for a sequence of target reports
+        long numTargets;
+        AGSP::SystemTargetListType targetList;
+    }; //@top-level true
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__MISSIONCONTROLBRIDGE_COMP__PORTS__AGSP_SYSTEMTARGETS_MSG_IDL
+
+/// @}
+

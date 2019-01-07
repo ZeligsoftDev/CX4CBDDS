@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<plugin>
+
+<extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://DATASOFT_PROFILES/"
+            target="platform:/plugin/com.zeligsoft.domain.sca.datasoft/profiles/" />
+      <mapping
+            source="pathmap://DATASOFT_DOMAIN/"
+            target="platform:/plugin/com.zeligsoft.domain.sca.datasoft/models/" />
+   </extension>
+   
+   <extension
+         id="com.zeligsoft.domain.sca.datasoft.profiles"
+         name="DataSoft Profiles"
+         point="com.ibm.xtools.uml.msl.UMLProfiles">
+      <UMLProfile
+            id="com.zeligsoft.domain.sca.datasoft.DataSoft"
+            name="%profile.ds.name"
+            path="pathmap://DATASOFT_PROFILES/DSDomain.profile.uml"
+            required="false"
+            visible="true">
+      </UMLProfile>
+   </extension>
+   
+   <extension
+         point="com.zeligsoft.base.zdl.domain_models">
+      <domainModel
+            genModel="pathmap://SCA_DOMAIN/DSDomain.zdlgen"
+            path="pathmap://SCA_DOMAIN/DSDomain.uml"
+            uri="http://www.zeligsoft.com/zdl/2008/DS">
+      </domainModel>
+   </extension>
+   
+	<extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="com.zeligsoft.domain.sca.datasoft.Contribution"
+            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
+         <action
+               class="com.zeligsoft.domain.sca.datasoft.ui.actions.CCCCReportAction"
+               enablesFor="*"
+               id="com.zeligsoft.sca.datasoft.ccccReportAction"
+               label="%action.label.0">
+         </action>         
+         <visibility>
+             <objectState
+                    name="isZDLConcept"
+                    value="SCA::SCA_ComponentModel::SCAApplication">
+             </objectState>
+         </visibility>            
+      </objectContribution>
+	</extension>
+	<extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="com.zeligsoft.domain.sca.datasoft.Contribution"
+            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
+         <action
+               class="com.zeligsoft.domain.sca.datasoft.ui.actions.RUReportAction"
+               enablesFor="*"
+               id="com.zeligsoft.sca.datasoft.ruReportAction"
+               label="%action.label.3">
+         </action>         
+         <visibility>
+             <objectState
+                    name="isZDLConcept"
+                    value="SCA::SCA_ComponentModel::SCAApplication">
+             </objectState>
+         </visibility>            
+      </objectContribution>
+	</extension>
+	<extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="com.zeligsoft.domain.sca.datasoft.Contribution2"
+            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
+         <action
+               class="com.zeligsoft.domain.sca.datasoft.ui.actions.PDMLReportAction"
+               enablesFor="*"
+               id="com.zeligsoft.sca.datasoft.pdmlReportAction"
+               label="%action.label.1" >
+         </action>         
+         <visibility>
+             <objectState
+                    name="isZDLConcept"
+                    value="SCA::SCA_ComponentModel::SCAPart">
+             </objectState>
+         </visibility>             
+      </objectContribution>
+	</extension>
+	<extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="com.zeligsoft.domain.sca.datasoft.Contribution3"
+            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
+         <action
+               class="com.zeligsoft.domain.sca.datasoft.ui.actions.PDMLReportAction"
+               enablesFor="*"
+               id="com.zeligsoft.sca.datasoft.pdmlReportAction"
+               label="%action.label.2">
+         </action>         
+         <visibility>
+             <objectState
+                    name="isZDLConcept"
+                    value="SCA::SCA_ComponentModel::SCAPort">
+             </objectState>
+         </visibility>             
+      </objectContribution>
+	</extension>
+	
+</plugin>

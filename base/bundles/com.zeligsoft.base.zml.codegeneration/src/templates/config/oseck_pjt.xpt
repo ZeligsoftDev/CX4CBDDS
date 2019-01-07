@@ -1,0 +1,207 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«EXTENSION extensions::DeploymentUtilsFuncs»
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::FunctionNames»
+«EXTENSION extensions::StringBuilderFactory»
+
+
+«DEFINE CREATE_FILES FOR ZeligsoftDeployment::DeploymentPart»
+	«FILE "cfgs/"+ getNamedElementName((ZeligsoftDeployment::Deployment)this.owner)+"/"+getMySWPlatformName(this)+"/pjt/"+getNamedElementName(this)+".pjt" -»	
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+[Project Settings]
+«CreateStringBuilder("ProjectDir") -»
+«StringBuilderConcat("ProjectDir", "ProjectDir=\"") -»
+«StringBuilderConcat("ProjectDir", getDeploymentCDTPrjDir((uml::Component)this.owner)) -»
+«StringBuilderConcat("ProjectDir", "/cfgs/") -»
+«StringBuilderConcat("ProjectDir", getNamedElementName((ZeligsoftDeployment::Deployment)this.owner)) -»
+«StringBuilderConcat("ProjectDir", "/") -»
+«StringBuilderConcat("ProjectDir", getMySWPlatformName(this)) -»
+«StringBuilderConcat("ProjectDir", "/pjt/\"") -»
+«StringBuilderGet("ProjectDir")»
+ProjectType=Executable
+CPUFamily=TMS320C64XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+
+[Project Dependencies]
+Source="C:\OSE\OSEck_3.3.1\320c64x+_be\bsp-evm6488\build\bsp-evm6488.pjt"
+
+["C:\OSE\OSEck_3.3.1\320c64x+_be\bsp-evm6488\build\bsp-evm6488.pjt" Settings: "Debug"]
+Config="Release"
+
+[Source Files]
+Source="C:\OSE\OSEck_3.3.1\320c64x+_be\bsp-evm6488\src\bspboard.c"
+Source="platform.c"
+Source="krn_config.c"
+Source=".\linkscript.cmd""
+Source="..\..\..\..\fwk\c\OSEck_3_3_1_TMS320TCI6488_CCS33_Default\zceOEPrintfHelpers.c"
+Source="..\..\..\..\fwk\c\transports\receive\LinxReceiveHandler\zceLinxReceiveHandler.c"
+Source="..\..\..\..\fwk\c\transports\send\LinxSendHandler\zceLinxSendHandler.c"
+Source="..\..\..\..\fwk\c\dispatchers\SingleMsgRunToCompletion\zceSingleMsgRunToCompletionDispatcher.c"
+Source="..\..\..\..\cfgs\«getNamedElementName((ZeligsoftDeployment::Deployment)this.owner)»\«getMySWPlatformName(this)»\app.c"
+«FOREACH this.owner.ownedElement.typeSelect(ZeligsoftDeployment::Allocation) AS alloc -»
+	«FOREACH alloc.target.typeSelect(ZeligsoftDeployment::DeploymentPart) AS targetpart -»				
+		«IF targetpart == this -»
+			«FOREACH alloc.source.typeSelect(ZeligsoftDeployment::DeploymentPart) AS sourcepart -»			
+				«IF isStereotypeAppliedOnPart(sourcepart.type, "ZML::SwSchedulableResource")!=null -»					
+Source="..\..\..\..\cfgs\«getNamedElementName((ZeligsoftDeployment::Deployment)this.owner)»\«getMySWPlatformName(this)»\zce«getNamedElementName(sourcepart)».c
+					«FOREACH this.owner.ownedElement.typeSelect(ZeligsoftDeployment::Allocation) AS process_alloc -»
+						«FOREACH process_alloc.target.typeSelect(ZeligsoftDeployment::DeploymentPart) AS process_target -»				
+							«IF process_target == sourcepart -»			
+								«FOREACH process_alloc.source.typeSelect(ZeligsoftDeployment::DeploymentPart) AS process_source -»				
+									«IF isStereotypeAppliedOnPart(process_source.type, "ZML::ComponentInterface")!=null -»	
+Source="..\..\..\..\cfgs\«getConfiguratorPath(process_source)»\Default\C\OSEck_3_3_1_TMS320TCI6488_CCS33\zce«process_source.name»Configurator.c"
+Source="..\..\..\..\cmps\«process_source.type.name»\c\Default\zce«process_source.type.name»Container.c"
+Source="..\..\..\..\cmps\«process_source.type.name»\worker\c\zce«process_source.type.name»Worker.c"
+									«ENDIF-»
+								«ENDFOREACH-»
+							«ENDIF-»
+					«ENDFOREACH-»
+				«ENDFOREACH-»
+				«ENDIF-»
+			«ENDFOREACH-»
+		«ENDIF-»
+	«ENDFOREACH-»
+«ENDFOREACH-»
+«FOREACH this.getModel().eAllContents.typeSelect(Component).ownedPort.provided.union(this.getModel().eAllContents.typeSelect(Component).ownedPort.required) AS intf -»
+Source="..\..\..\..\ifs\«getNamedElementName(intf)»/c/Default/«getInterfaceProvidesSourceFileName(intf)»
+Source="..\..\..\..\ifs\«getNamedElementName(intf)»/c/Default/«getInterfaceRequiresSourceFileName(intf)»
+«ENDFOREACH-»
+
+
+[Generated Files]
+Source="appcon_asm.asm"
+Source="appcon_c.c"
+
+["Compiler" Settings: "Debug"]
+«CreateStringBuilder("Compiler Settings String") -»
+«StringBuilderConcat("Compiler Settings String", "Options=-g -k -qq -al  -fr\"$(Proj_dir)/Debug\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"C:/OSE/OSEck_3.3.1/320c64x+_be/krn-320c64x+/include\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"C:/OSE/OSEck_3.3.1/320c64x+_be/include\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"C:/OSE/OSEck_3.3.1/320c64x+_be/bsp-evm6488/include\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"C:/OSE/OSEck_3.3.1/320c64x+_be/bsp-evm6488/src\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(CSL_6488)/inc\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../fwk/c/transports/LINXSignals\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../fwk/c/transports/receive\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../fwk/c/transports/receive/LinxReceiveHandler\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../fwk/c/transports/send\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../fwk/c/transports/send/LinxSendHandler\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../fwk/c/dispatchers\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../fwk/c/dispatchers/SingleMsgRunToCompletion\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../fwk/c/OSEck_3_3_1_TMS320TCI6488_CCS33_Default\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../fwk/c\" ") -»
+«FOREACH this.owner.ownedElement.typeSelect(ZeligsoftDeployment::Allocation) AS alloc -»
+	«FOREACH alloc.target.typeSelect(ZeligsoftDeployment::DeploymentPart) AS targetpart -»				
+		«IF targetpart == this -»
+			«FOREACH alloc.source.typeSelect(ZeligsoftDeployment::DeploymentPart) AS sourcepart -»			
+				«IF isStereotypeAppliedOnPart(sourcepart.type, "ZML::SwSchedulableResource")!=null -»					
+					«FOREACH this.owner.ownedElement.typeSelect(ZeligsoftDeployment::Allocation) AS process_alloc -»
+						«FOREACH process_alloc.target.typeSelect(ZeligsoftDeployment::DeploymentPart) AS process_target -»				
+							«IF process_target == sourcepart -»			
+								«FOREACH process_alloc.source.typeSelect(ZeligsoftDeployment::DeploymentPart) AS process_source -»				
+									«IF isStereotypeAppliedOnPart(process_source.type, "ZML::ComponentInterface")!=null -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../cfgs/") -»
+«StringBuilderConcat("Compiler Settings String", getConfiguratorPath(process_source)) -»
+«StringBuilderConcat("Compiler Settings String", "/Default/C/OSEck_3_3_1_TMS320TCI6488_CCS33\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../cmps/") -»
+«StringBuilderConcat("Compiler Settings String", getTypedElementName(process_source.type)) -»
+«StringBuilderConcat("Compiler Settings String", "/c/Default\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../cmps/") -»
+«StringBuilderConcat("Compiler Settings String", getTypedElementName(process_source.type)) -»
+«StringBuilderConcat("Compiler Settings String", "/worker/c\" ") -»									
+									«ENDIF -»
+								«ENDFOREACH -»
+							«ENDIF -»
+						«ENDFOREACH -»
+					«ENDFOREACH -»
+				«ENDIF -»
+			«ENDFOREACH -»
+		«ENDIF -»
+	«ENDFOREACH -»
+«ENDFOREACH -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../TARGET0_0/\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../TARGET0_1/\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../TARGET0_2/\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../ifs/common/c/Default\" ") -»
+«FOREACH this.getModel().eAllContents.typeSelect(Component).ownedPort.provided.union(this.getModel().eAllContents.typeSelect(Component).ownedPort.required) AS intf -»
+«StringBuilderConcat("Compiler Settings String", "-i\"$(Proj_dir)/../../../../ifs/") -»
+«StringBuilderConcat("Compiler Settings String", getNamedElementName(intf)) -»
+«StringBuilderConcat("Compiler Settings String", "/c/Default\" ") -»
+«ENDFOREACH-»
+«StringBuilderConcat("Compiler Settings String", "-i\"%CSL_INSTALL_DIR%/include\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"%CSL_INSTALL_DIR%/csl_c6488/inc\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-i\"%DDK_INSTALL_DIR%/packages/.\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-d\"_DEBUG\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-d\"DEBUG_MSGS\" ") -» 
+«StringBuilderConcat("Compiler Settings String", "-d\"OS_DEBUG\" ") -»
+«StringBuilderConcat("Compiler Settings String", "-d\"USE_CCS=1\" ") -» 
+«StringBuilderConcat("Compiler Settings String", "-d\"evm6488\" ") -» 
+«StringBuilderConcat("Compiler Settings String", "-d\"USE_PFM_CONFIG_H\" ") -» 
+«StringBuilderConcat("Compiler Settings String", "-d\"USE_BSP_CONFIG_H\" ") -» 
+«StringBuilderConcat("Compiler Settings String", "-d\"CHIP_6488\" ") -» 
+«StringBuilderConcat("Compiler Settings String", "-me ") -»
+«StringBuilderConcat("Compiler Settings String", "--mem_model:data=far ") -» 
+«StringBuilderConcat("Compiler Settings String", "--c64p_l1d_workaround=on ") -» 
+«StringBuilderConcat("Compiler Settings String", "-c ") -» 
+«StringBuilderConcat("Compiler Settings String", "-mv64+ ") -»
+«StringBuilderGet("Compiler Settings String")»
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v6x
+
+
+["Linker" Settings: "Debug"]
+«CreateStringBuilder("Linker Settings String") -»
+«StringBuilderConcat("Linker Settings String", "Options=-q -a -c -m\"./Debug/tm.map\" ") -»
+«StringBuilderConcat("Linker Settings String", "-o\"./Debug/tm.out\" ") -» 
+«StringBuilderConcat("Linker Settings String", "-stack768 -w -x ") -»
+«StringBuilderConcat("Linker Settings String", "-i\"C:/OSE/OSEck_3.3.1/320c64x+_be/bsp-evm6488/build\" ") -» 
+«StringBuilderConcat("Linker Settings String", "-i\"C:/OSE/OSEck_3.3.1/320c64x+_be/lib\" ") -»
+«StringBuilderConcat("Linker Settings String", "-i\"C:/OSE/OSEck_3.3.1/320c64x+_be/krn-320c64x+/lib\" ") -» 
+«StringBuilderConcat("Linker Settings String", "-i\"$(CSL_6488)/lib\" ") -» 
+«StringBuilderConcat("Linker Settings String", "-l\"libbsp.lib\" ") -» 
+«StringBuilderConcat("Linker Settings String", "-l\"libheap.lib\" ") -» 
+«StringBuilderConcat("Linker Settings String", "-l\"libts.lib\" ") -» 
+«StringBuilderConcat("Linker Settings String", "-l\"libosbpsh.lib\" ") -» 
+«StringBuilderConcat("Linker Settings String", "-l\"librlnh.lib\" ") -» 
+«StringBuilderConcat("Linker Settings String", "-l\"librlnhcmeth.lib\" ") -» 
+«StringBuilderConcat("Linker Settings String", "-l\"librlnhcmptp.lib\" ") -» 
+«StringBuilderConcat("Linker Settings String", "-l\"rts64pluse.lib\" ") -» 
+«StringBuilderConcat("Linker Settings String", "-l\"csl_c6488e.lib\" ") -» 
+«StringBuilderGet("Linker Settings String")»
+
+["krn_config.c" Settings: "Debug"]
+UseCustomBuild=true
+CustomBuildCmd=cmd /c genconfig.bat LARGE BIG
+CustomBuildOutput="appcon_c.c"
+CustomBuildOutput="appcon_asm.asm"
+
+
+["linkscript.cmd" Settings: "Release"]
+LinkOrder=1
+	
+	«ENDFILE-»
+«ENDDEFINE»

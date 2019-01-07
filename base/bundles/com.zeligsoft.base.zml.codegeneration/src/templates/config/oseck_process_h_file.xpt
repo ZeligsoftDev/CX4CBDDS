@@ -1,0 +1,57 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«IMPORT ZML»
+«EXTENSION extensions::DeploymentUtilsFuncs»
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::FunctionNames»
+«EXTENSION extensions::CounterFactoryToString»
+
+«DEFINE CREATE_FILES FOR ZeligsoftDeployment::DeploymentPart»
+
+«FOREACH this.owner.ownedElement.typeSelect(ZeligsoftDeployment::Allocation) AS alloc»
+		«FOREACH alloc.target.typeSelect(ZeligsoftDeployment::DeploymentPart) AS targetpart»				
+			«IF targetpart == this »			
+				«FOREACH alloc.source.typeSelect(ZeligsoftDeployment::DeploymentPart) AS sourcepart»								
+					«IF isStereotypeAppliedOnPart(sourcepart.type, "ZML::SwSchedulableResource")!=null »					
+						«FILE "cfgs/"+ getNamedElementName((ZeligsoftDeployment::Deployment)this.owner)+"/"+getMySWPlatformName(this)+"/zce"+getNamedElementName(sourcepart)+".h"»												
+
+#ifndef __ZCE_PROCESS_«getNamedElementName(sourcepart)»_H
+#define __ZCE_PROCESS_«getNamedElementName(sourcepart)»_H
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+
+void «getNamedElementName(sourcepart)»Entry();
+
+
+#ifdef __cplusplus
+}
+#endif
+#endif     /*ZCE_PROCESS_«getNamedElementName(sourcepart)»_H*/						
+						
+						«ENDFILE»
+					«ENDIF»									
+				«ENDFOREACH»			
+			«ENDIF»			
+		«ENDFOREACH»	
+	«ENDFOREACH»
+«ENDDEFINE»

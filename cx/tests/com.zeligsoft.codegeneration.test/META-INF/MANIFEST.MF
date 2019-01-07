@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test Plug-in
+Bundle-SymbolicName: com.zeligsoft.codegeneration.test;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.zeligsoft.codegeneration.test.Activator
+Bundle-Vendor: ZELIGSOFT
+Require-Bundle: com.ibm.xtools.modeler.ui,
+ org.openarchitectureware.dependencies,
+ org.openarchitectureware.uml2.adapter,
+ org.junit,
+ com.zeligsoft.ce.codegeneration.ui,
+ org.openarchitectureware.adapter.rsdp,
+ com.zeligsoft.adapter.rsm,
+ org.eclipse.hyades.test.tools.core
+Eclipse-LazyStart: true

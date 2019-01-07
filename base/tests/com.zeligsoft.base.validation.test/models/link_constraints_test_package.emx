@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:LinksConstraintsTest="http:///schemas/LinksConstraintsTest/_3SsCQLJkEd2eS5gi4elN2w/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http:///schemas/LinksConstraintsTest/_3SsCQLJkEd2eS5gi4elN2w/0 ../profiles/LinkConstraintsTest.profile.uml#_3SsCRLJkEd2eS5gi4elN2w">
+  <uml:Package xmi:id="_SHCZErJmEd2eS5gi4elN2w" name="link_constraints_test_package">
+    <packageImport xmi:id="_SHCZFrJmEd2eS5gi4elN2w">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_JY3SkLJnEd2eS5gi4elN2w" name="Actor1"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_KhIiMLJnEd2eS5gi4elN2w" name="UseCase1"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Oj0UgLJnEd2eS5gi4elN2w" name="UseCase2"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_OMiwQLUVEd2Qi7FgDx1H8g" name="RefTarget1"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Q5QOILUVEd2Qi7FgDx1H8g" name="RefSource" useCase="_uEhOcLUVEd2Qi7FgDx1H8g"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_uEhOcLUVEd2Qi7FgDx1H8g" name="RefTarget2" subject="_Q5QOILUVEd2Qi7FgDx1H8g"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="__spJYLXeEd2Y0IR1etzmsw" name="Actor1"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Cv2bsLXfEd2Y0IR1etzmsw" name="Actor2"/>
+    <profileApplication xmi:id="_SHCZF7JmEd2eS5gi4elN2w">
+      <eAnnotations xmi:id="_SHCZGLJmEd2eS5gi4elN2w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_SHCZGbJmEd2eS5gi4elN2w">
+      <eAnnotations xmi:id="_SHCZGrJmEd2eS5gi4elN2w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_SHCZG7JmEd2eS5gi4elN2w">
+      <eAnnotations xmi:id="_SHCZHLJmEd2eS5gi4elN2w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_GMIQ0LJnEd2eS5gi4elN2w">
+      <eAnnotations xmi:id="_GMIQ0bJnEd2eS5gi4elN2w" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="../profiles/LinkConstraintsTest.profile.uml#_3SsCRLJkEd2eS5gi4elN2w"/>
+      </eAnnotations>
+      <appliedProfile href="../profiles/LinkConstraintsTest.profile.uml#_3SsCQbJkEd2eS5gi4elN2w"/>
+    </profileApplication>
+  </uml:Package>
+  <LinksConstraintsTest:DragSource xmi:id="_LyDXgLJnEd2eS5gi4elN2w" base_Actor="_JY3SkLJnEd2eS5gi4elN2w"/>
+  <LinksConstraintsTest:DropTarget xmi:id="_MeKPkLJnEd2eS5gi4elN2w" dependency="_LyDXgLJnEd2eS5gi4elN2w" base_UseCase="_KhIiMLJnEd2eS5gi4elN2w"/>
+  <LinksConstraintsTest:DropTarget xmi:id="_Pm4UALJnEd2eS5gi4elN2w" base_UseCase="_Oj0UgLJnEd2eS5gi4elN2w"/>
+  <LinksConstraintsTest:SubRefTarget xmi:id="_PfsaMLUVEd2Qi7FgDx1H8g" base_UseCase="_OMiwQLUVEd2Qi7FgDx1H8g"/>
+  <LinksConstraintsTest:SubRefTarget xmi:id="_uEhOcbUVEd2Qi7FgDx1H8g" base_UseCase="_uEhOcLUVEd2Qi7FgDx1H8g"/>
+  <LinksConstraintsTest:SubRefSource xmi:id="_5tVZwLUXEd2Qi7FgDx1H8g" base_Class="_Q5QOILUVEd2Qi7FgDx1H8g"/>
+  <LinksConstraintsTest:PackageOwnedSource xmi:id="_9FCYgLXfEd2DQ9rgADw5Vw" base_Classifier="__spJYLXeEd2Y0IR1etzmsw"/>
+  <LinksConstraintsTest:PackageOwnedSource xmi:id="__GX-ILXfEd2DQ9rgADw5Vw" base_Classifier="_Cv2bsLXfEd2Y0IR1etzmsw"/>
+</xmi:XMI>

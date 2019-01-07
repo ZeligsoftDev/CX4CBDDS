@@ -1,0 +1,33 @@
+/// @defgroup AGSP_Gimbal_GPS_Adapter_comp Gimbal_GPS_Adapter_comp
+/// @{
+/// 
+/// @file AGSP_Gimbal_GPS_Adapter_comp.idl
+/// @brief Gimbal_GPS_Adapter_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_COMPONENTS__GIMBAL_GPS_ADAPTER_COMP__SRC__AGSP_GIMBAL_GPS_ADAPTER_COMP_IDL
+#define CX_COMPONENTS__GIMBAL_GPS_ADAPTER_COMP__SRC__AGSP_GIMBAL_GPS_ADAPTER_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao lem "AGSP_Gimbal_GPS_Adapter_compE.idl"
+#include "AGSP_GimbalControl_obj.idl"
+#include "AGSP_StateControl_obj.idl"
+#include "AGSP_GG_Status_conn.idl"
+#include "AGSP_GPS_conn.idl"
+
+/// @namespace AGSP 
+module AGSP {
+    component Gimbal_GPS_Adapter_comp {
+        provides AGSP::GimbalControl_obj GimbalControlFacet;
+        provides AGSP::StateControl_obj StateControlFacet;
+        port GG_Status_conn::DDS_Write GG_StatusPub;
+        port GPS_conn::DDS_Write GPS_Pub;
+    };
+
+};
+
+#endif // CX_COMPONENTS__GIMBAL_GPS_ADAPTER_COMP__SRC__AGSP_GIMBAL_GPS_ADAPTER_COMP_IDL
+
+/// @}
+

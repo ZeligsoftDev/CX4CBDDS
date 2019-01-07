@@ -1,0 +1,98 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«IMPORT templates::common»
+«IMPORT templates::worker»
+
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::DeploymentUtilsFuncs»
+«EXTENSION extensions::FunctionNames»
+«EXTENSION extensions::StringHelpers»
+
+«DEFINE CREATE_FILES FOR Property»
+«FILE "cfgs/" + getConfiguratorPath(this) + "/Default/C/OSEck_3_3_1_TMS320TCI6488_CCS33/zce"+getNamedElementName(this)+"ConfiguratorIds.h"  »
+/**
+ * @FILE: zce«getNamedElementName(this)»ConfiguratorIds.h
+ *
+ */
+
+#ifndef __ZCE«getNamedElementName(this)»CONFIGURATORIDS_H
+#define __ZCE«getNamedElementName(this)»CONFIGURATORIDS_H
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+«REM»
+Ok this is ugly ugly ugly code ... it creates 1 enum for each port on the component ... and adds 1 entry to the enum for every connection to that port ... possibly this can be reorganized?
+«ENDREM»
+
+	«FOREACH this.owner.ownedElement.typeSelect(ZeligsoftDeployment::Allocation) AS process_alloc -»
+		«FOREACH process_alloc.target.typeSelect(ZeligsoftDeployment::DeploymentPart) AS bus_target -»									
+			«FOREACH process_alloc.source.typeSelect(ZeligsoftDeployment::DeploymentPart) AS connection_source -»						
+				«IF getModelElementForConnector(connection_source)!=null -»					
+					«IF isStereotypeAppliedOnPart(bus_target.type,"ZML::SwBus")!=null -»	
+						«IF ((Connector)getModelElementForConnector(connection_source)) !=null»
+							«FOREACH ((Connector)getModelElementForConnector(connection_source)).end AS end»
+								«IF end.partWithPort.type == this.type»								
+enum ComponentInstance_«getNamedElementName(this)»_«end.role.name»
+{
+	«FOREACH this.owner.ownedElement.typeSelect(ZeligsoftDeployment::Allocation) AS process_alloc2 -»
+		«FOREACH process_alloc2.target.typeSelect(ZeligsoftDeployment::DeploymentPart) AS bus_target2 -»									
+			«FOREACH process_alloc2.source.typeSelect(ZeligsoftDeployment::DeploymentPart) AS connection_source2 -»						
+				«IF getModelElementForConnector(connection_source2)!=null -»					
+					«IF isStereotypeAppliedOnPart(bus_target2.type,"ZML::SwBus")!=null -»	
+						«IF ((Connector)getModelElementForConnector(connection_source2)) !=null -»
+							«FOREACH ((Connector)getModelElementForConnector(connection_source2)).end AS end2 -»							
+								«IF end2==end -»
+	e«ToUpperCase(end.role.name)»_«ToUpperCase(connection_source.name)»_INT_ID,
+								«ENDIF -»							
+							«ENDFOREACH -»
+						«ENDIF -»
+					«ENDIF -»
+				«ENDIF -»
+			«ENDFOREACH -»
+		«ENDFOREACH -»
+	«ENDFOREACH -»	
+	eEND_OF_COMPONENT_INSTANCE_«ToUpperCase(getNamedElementName(this))»_«ToUpperCase(end.role.name)»
+};																	
+							«ENDIF»
+							«ENDFOREACH»
+						«ENDIF»
+											
+					«ENDIF -»					
+				«ENDIF -»							
+			«ENDFOREACH -»
+		«ENDFOREACH -»
+	«ENDFOREACH -»	
+
+
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif     /* __ZCEC11CONFIGURATORIDS_H */
+
+/* End-Of-File */
+/* ------------------------------------------------------------------------------ */
+«ENDFILE»
+«ENDDEFINE»

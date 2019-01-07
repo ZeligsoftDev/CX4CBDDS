@@ -1,0 +1,2 @@
+importtargetdefinition -A "buildDriver/rsa.target"
+junit -l 'com.zeligsoft.releng.updatesites/tests/launch/SCAAllTests.launch' -o 'tests.output/test-results-sca.xml' --stdout 'tests.output/test-stdout-sca.txt' --stderr 'tests.output/test-stderr-sca.txt' --flatXML

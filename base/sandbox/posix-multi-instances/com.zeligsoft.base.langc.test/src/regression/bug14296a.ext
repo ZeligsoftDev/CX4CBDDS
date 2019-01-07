@@ -1,0 +1,51 @@
+
+import langc;
+
+extension langc::element;
+extension langc::expr;
+extension langc::name;
+extension langc::stmt;
+extension langc::type;
+extension langc::libc;
+extension generator::extend_util;
+
+private create FileName filename()  : setName( 'bug14296a' );
+private cached Name structName()    : filename().child( 'AType' );
+private cached Name fieldName()     : structName().child( 'field' );
+private cached Name functionName1() : filename().child( 'function1' );
+private cached Name functionName2() : filename().child( 'function2' );
+private cached Name varName1()      : functionName1().child( 'variable' );
+private cached Name varName2()      : functionName2().child( 'variable' );
+
+create ElementList lookupFieldInWhile() :
+    setName( filename() )
+ -> addElement( struct() )
+ -> addElement( addToFunction() )
+ -> addElement( addToWhile() )
+;
+
+private cached Struct struct() :
+    let s = struct( structName() ) :
+        s.addMember( int32(), fieldName() )
+     -> s
+; 
+
+private Function addToFunction() :
+    let v = variable( struct().ptr(), 'varName', NULL() ) :
+    let f = function( int32(), functionName1() ) :
+    let w = while( 1.literal() ) :
+        f.addStatement( v )
+     -> f.addStatement( w )
+     -> w.addStatement( returnStmt( v.name.field( fieldName() ) ) )
+     -> f
+;
+
+private Function addToWhile() :
+    let v = variable( struct().ptr(), 'varName', NULL() ) :
+    let f = function( int32(), functionName2() ) :
+    let w = while( 1.literal() ) :
+        w.addStatement( v )
+     -> f.addStatement( w )
+     -> w.addStatement( returnStmt( v.name.field( fieldName() ) ) )
+     -> f
+;

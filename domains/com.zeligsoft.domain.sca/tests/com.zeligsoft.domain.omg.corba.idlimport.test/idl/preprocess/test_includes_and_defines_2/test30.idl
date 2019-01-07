@@ -1,0 +1,14 @@
+module A
+{
+  module B
+  {
+     interface C
+     {};
+   };
+};
+
+#ifdef TEST
+module testD{
+  interface aa{};
+};
+#endif

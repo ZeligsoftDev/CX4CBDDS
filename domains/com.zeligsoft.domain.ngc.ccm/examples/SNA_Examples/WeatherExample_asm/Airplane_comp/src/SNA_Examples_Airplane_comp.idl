@@ -1,0 +1,48 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/**
+ * @defgroup Airplane_comp Airplane_comp Component
+ * @ingroup WeatherExample
+ * @{
+ * The Airplane_comp component is client for the weather station component. 
+ * It performs the following activities:
+ *    - Queries the weather information facet for the lastest temperature reading
+ *    - Prints the temperature reading to the screen.
+ * @file    SNA_Examples_Airplane_comp.idl
+ * @brief   Airplane_comp component definition IDL file.
+ */
+
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_AIRPLANE_COMP_IDL
+#define SNA_EXAMPLES_AIRPLANE_COMP_IDL
+
+#include <Components.idl>
+
+#include "SNA_Examples_WeatherInformation_obj.idl"
+
+module SNA_Examples
+{
+   /**
+    * This component uses the weather information receptacle to query
+    * temperature reading statistics provided by the WeatherStation component.
+    */
+   component Airplane_comp
+   {
+      /**
+       * The airplane component has a weather information receptacle used to
+       * query information from the weather station
+       */
+      uses SNA_Examples::WeatherInformation_obj weatherInformationRecept;
+   };
+};
+
+#endif // SNA_EXAMPLES_AIRPLANE_COMP_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

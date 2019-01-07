@@ -1,0 +1,69 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+
+
+«DEFINE exceptionDef FOR Model»
+«FILE "fwk/C/OSEck_3_3_1_TMS320TCI6488_CCS33_Default/zceOEExceptions.h"»
+«EXPAND templates::common::Copyright::copyright FOR this»
+/**
+ *
+ * FILE: zceOEExceptions.h
+ *
+ */
+
+
+#ifndef __ZCEOEEXCEPTIONS_H
+#define __ZCEOEEXCEPTIONS_H
+	
+	#define ZCE_EXC_ENV 
+	
+	#define ZCE_EXC_ENV_ARG  
+	#define ZCE_EXC_ENV_SINGLE_ARG  
+	#define ZCE_EXC_ENV_ARG_WITH_DEFAULT  
+	#define ZCE_EXC_ENV_SINGLE_ARG_WITH_DEFAULT  
+	
+	#define ZCE_MACRO_ENV_ARG
+	
+	#define ZCE_EXC_ENV_PARAM 
+	#define ZCE_EXC_ENV_SINGLE_PARAM
+		
+	#define ZCE_EXC_TRY if (1) {
+	#define ZCE_EXC_CATCH(CLASS, VAR) } if (0) {
+	#define ZCE_EXC_CATCHTYPE(CLASS) } if (0) {
+	#define ZCE_EXC_CATCHANY } if (0) {
+	#define ZCE_EXC_NONE } if (1) {	
+	#define ZCE_EXC_ENDTRY(RC) }
+	#define ZCE_EXC_ENDTRY_VOID }
+	
+	#define ZCE_EXC_THROW(EXCEPTYPE, CONSPARAMS)
+	#define ZCE_EXC_THROW_VOID(EXCEPTYPE, CONSPARAMS)
+	#define ZCE_EXC_THROW_RC(EXCEPTYPE, CONSPARAMS, RC)
+	#define ZCE_EXC_RETHROW
+	#define ZCE_EXC_RETHROW_VOID
+	#define ZCE_EXC_RETHROW_RC(RC)
+	#define ZCE_ASSERT_EXCEPTION(RC)
+	#define ZCE_ASSERT_EXCEPTION_VOID
+	
+#endif     /*__ZCEOEEXCEPTIONS_H*/
+
+/* End of FILE: zceOEExceptions.h */
+/******************************************************************/
+«ENDFILE»
+«ENDDEFINE»

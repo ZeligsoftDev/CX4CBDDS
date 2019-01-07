@@ -1,0 +1,27 @@
+<head>
+	<title>IDL Files</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="aboutidlfile.html" title="IDL Files">
+		<h1>IDL Files</h1>
+		<p>This element is used to represent the IDL file. Modules and interfaces and other IDL constructs are within these files.</p>
+		<p>Each IDL File has an option called location. You need to configure the location of the IDL file if you choose to reference an 
+		existing IDL file. If you wish to generate the IDL file from CX or Copy external IDL into the generated source folder, this field is ignored. This applies to both the Core Framework IDL file 
+		and user-defined IDL files.</p>
+		<ol>
+			<li>In the <strong>Project Explorer</strong>, select the IDL file folder.</li>
+			<li>In the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab.</li>
+			<li>Define the <strong>location</strong> property. For example, the CF IDL file element location is set to $(CF_FILE_LOCATION)</li>
+			<li>Select <strong>Window</strong> &gt; <strong>Preferences</strong> and expand <strong>General</strong> &gt; <strong>Workspace</strong>
+		 &gt; <strong>Linked Resources</strong>. Add a path variable and set the value to the location of the external IDL file.</li>
+		</ol>
+		<h3>IDL Import</h3>
+		<p>This palette element is used to show a relationship between IDL files. It shows that one IDL file is including other IDL files and 
+		creates a #include statement when generating the IDL file.</p>
+		<h3>See Also</h3><br><a href="editviewelement.html">Editing and Viewing Elements</a><br><a href="deleteelement.html">Deleting Elements</a><div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

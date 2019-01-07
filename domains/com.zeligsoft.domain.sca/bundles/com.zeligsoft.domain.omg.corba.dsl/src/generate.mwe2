@@ -1,0 +1,80 @@
+module com.zeligsoft.domain.omg.corba.dsl.GenerateIDLDSL
+
+import org.eclipse.emf.mwe.utils.*
+import org.eclipse.xtext.generator.*
+import org.eclipse.xtext.ui.generator.*
+
+var grammarURI = "classpath:/IDL.xtext"
+var file.extensions = "idl"
+var projectName = "com.zeligsoft.domain.omg.corba.dsl"
+var runtimeProject = "../${projectName}"
+
+Workflow {
+
+	bean = StandaloneSetup {
+		platformUri = "${runtimeProject}/.."
+	}
+
+	component = DirectoryCleaner {
+		directory = "${runtimeProject}/src-gen"
+	}
+
+	component = DirectoryCleaner {
+		directory = "${runtimeProject}.editor/src-gen"
+	}
+	
+	
+
+	component = Generator {
+		pathRtProject = runtimeProject
+		pathUiProject = "${runtimeProject}.editor"
+		projectNameRt = projectName
+		projectNameUi = "${projectName}.editor"
+		language = {
+			uri = grammarURI
+			fileExtensions = file.extensions
+
+			// Java API to access grammar elements (required by several other fragments)
+			fragment = grammarAccess.GrammarAccessFragment {}
+
+			// Generate java classes for Ecore models
+			fragment = ecore.EcoreGeneratorFragment {
+				genModel="platform:/resource/com.zeligsoft.domain.omg.corba.dsl/src/IDL.genmodel"
+			}
+
+			// the serialization component
+			fragment = parseTreeConstructor.ParseTreeConstructorFragment {}
+
+			// a custom ResourceFactory for use with EMF 
+			fragment = resourceFactory.ResourceFactoryFragment {
+				fileExtensions = file.extensions
+			}
+
+			// the following fragment tries to use the Antlr Generator fragment which can be installed via update manager from http://download.itemis.com/updates/ -->
+			fragment = parser.antlr.XtextAntlrGeneratorFragment {
+				options = {
+					backtrack = true
+					memoize = true
+				}
+			}
+
+			// Check based validation 
+			fragment = validation.JavaValidatorFragment{}
+
+			// labeling API 
+			fragment = labeling.LabelProviderFragment {}
+
+			// outline API
+			fragment = outline.OutlineTreeProviderFragment {}
+            fragment = outline.QuickOutlineFragment {}
+
+			// java-based API for content assistance 
+			fragment = contentAssist.JavaBasedContentAssistFragment {}
+			fragment = parser.antlr.XtextAntlrUiGeneratorFragment {
+				options = { 
+					backtrack=true
+				}
+			}
+		}
+	}
+}

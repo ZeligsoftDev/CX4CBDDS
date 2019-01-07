@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Localization: plugin
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: com.zeligsoft.cx.deployment.rsm.editor;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.zeligsoft.cx.deployment.rsm.editor.ui.Activator
+Bundle-Vendor: %Bundle-Vendor.0
+Require-Bundle: com.ibm.xtools.modeler,
+ com.zeligsoft.base.rsm.tooling,
+ com.zeligsoft.deployment.rsm.tooling.ext,
+ com.zeligsoft.ce.tableeditor,
+ org.eclipse.gmf.runtime.common.ui.action.ide
+Eclipse-LazyStart: true
+Export-Package: com.zeligsoft.cx.deployment.rsm.editor

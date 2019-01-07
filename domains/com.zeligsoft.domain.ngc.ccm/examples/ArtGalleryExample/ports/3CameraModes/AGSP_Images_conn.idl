@@ -1,0 +1,27 @@
+/// @defgroup AGSP_Images_conn Images_conn
+/// @{
+/// 
+/// @file AGSP_Images_conn.idl
+/// @brief Images_conn connector definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__3CAMERAMODES__AGSP_IMAGES_CONN_IDL
+#define CX_PORTS__3CAMERAMODES__AGSP_IMAGES_CONN_IDL
+
+#include <ccm_psat.idl>
+#include "AGSP_Images_msg.idl"
+#pragma ciao lem "AGSP_Images_connE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef Images_msgSeq
+    typedef sequence <Images_msg> Images_msgSeq;
+    module CCM_PSAT::Typed <Images_msg, Images_msgSeq> Images_conn; 
+};
+
+#endif // CX_PORTS__3CAMERAMODES__AGSP_IMAGES_CONN_IDL
+
+/// @}
+

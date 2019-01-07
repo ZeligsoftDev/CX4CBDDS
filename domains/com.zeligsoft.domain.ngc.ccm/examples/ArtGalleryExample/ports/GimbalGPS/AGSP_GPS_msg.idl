@@ -1,0 +1,33 @@
+/// @defgroup AGSP_GPS_msg GPS_msg
+/// @{
+/// 
+/// @file AGSP_GPS_msg.idl
+/// @brief GPS_msg message definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__GIMBALGPS__AGSP_GPS_MSG_IDL
+#define CX_PORTS__GIMBALGPS__AGSP_GPS_MSG_IDL
+
+#include "AGSP_Common_defn.idl"
+#pragma ndds typesupport "AGSP_GPS_msgSupport.h"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @struct GPS_msg
+    struct GPS_msg {
+        AGSP::SystemTime gpsTime;
+        double gpsLat;
+        double gpsLon;
+        double floorHeight;
+        double azCenterOffset;
+        double azAngle;
+        double elAngle;
+    }; //@top-level true
+};
+
+#endif // CX_PORTS__GIMBALGPS__AGSP_GPS_MSG_IDL
+
+/// @}
+

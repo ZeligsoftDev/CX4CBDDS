@@ -1,0 +1,128 @@
+<project default="build"  basedir=".">
+
+<!--	<target name="build"  depends="getBaseBuilder"> -->
+	<target name="build">
+        <antcall target="buildOneComponent" />
+        <antcall target="buildAllComponent" />
+    </target>
+
+    <target name="buildOneComponent" if="build.component">
+		<dirname file="${ant.file}" property="distribution.ce.build.dir"/>
+		<property file="${ce.builder.home}/build.properties" />
+		<property name="buildTargets" value="${ce.builder.home}/scripts/build/build.xml" />
+		<ant antfile="${buildTargets}" >
+			<property name="component" value="${build.component}" />
+		</ant>
+    </target>
+
+	<target name="buildAllComponent" unless="build.component">
+		<dirname file="${ant.file}" property="distribution.ce.build.dir"/>
+		<property file="${ce.builder.home}/build.properties" />
+		<property name="buildTargets" value="${ce.builder.home}/scripts/build/build.xml" />
+
+		<ant antfile="${buildTargets}" >
+			<property name="component" value="ce" />
+		</ant>
+		
+		<ant antfile="${ce.builder.home}/scripts/build/label.xml" />
+		<property name="monitorTargets" value="${ce.builder.home}/scripts/monitoring/build.xml" />
+		<property file="${buildDirectory}/label.properties" />
+
+		<!-- package a completed zip file for ce -->
+		<antcall target="package" />
+		
+		<!-- package an all in one zip file for ce -->
+		<antcall target="allInOne" />
+		
+<!--	Guess this has something to do with mailing results..	
+		<ant antfile="${monitorTargets}" target="notifyBuild" >
+			<property name="testManifest" value="${distribution.ce.build.dir}/../ce.site/testManifest.xml"/>
+			<property name="buildBranch" value="${buildBranch}"/>
+		</ant>
+-->		
+	</target>
+	
+<!--	
+	<target name="getBaseBuilder" if="eclipse.builder.fetch">
+		<echo message="...executing getBaseBuilder..." />
+		<dirname file="${ant.file}" property="cebuilder.dir"/>
+		<property name="buildTargets" value="${ce.builder.home}/scripts/build/build.xml" />
+		<ant antfile="${buildTargets}" target="getBaseBuilder" />
+	</target>
+-->
+	
+	<!-- package a completed zip file for ce -->
+	<target name="package">
+		<antcall target="combineArchives">
+			<param name="corename" value=""/>
+		</antcall>
+	<!--
+		<antcall target="combineArchives">
+			<param name="corename" value="-sdk"/>
+		</antcall>
+		
+		<antcall target="combineArchives">
+			<param name="corename" value="-Automated-Tests"/>
+		</antcall>
+		-->
+	</target>
+	
+	<!-- package an all in one zip file for ce -->
+	<target name="allInOne">
+		<dirname file="${ant.file}" property="build.allinone.dir" />
+		<property name="archiveName" value="ce-all-in-one-incubation-${buildLabel}.zip" />
+		
+		<delete dir="${buildDirectory}/tempforrezipping" failonerror="false"/>
+
+		<ant antfile="${build.allinone.dir}/allInOneDependency.xml">
+			<property name="dependencyTargets" value="${ce.builder.home}/scripts/dependency/build.xml" />
+			<property name="base.install.dir" value="${buildDirectory}/tempforrezipping" />
+            <property name="dependency.properties"
+                      value="${buildDirectory}/maps/build/releng/maps/dependencies.properties" />
+			<property name="local.cache.dir" value="${build.home}/${build.local.repository}" />
+		</ant>
+
+		<exec dir="${buildDirectory}/${buildLabel}" executable="unzip" failonerror="false">
+			<arg line="-o -qq ce-all-incubation-${buildLabel}.zip -d ${buildDirectory}/tempforrezipping" />
+		</exec>
+		
+		<zip destfile="${buildDirectory}/${buildLabel}/${archiveName}" basedir="${buildDirectory}/tempforrezipping" />
+
+		<delete dir="${buildDirectory}/tempforrezipping" failonerror="false"/>
+
+		<checksum file="${buildDirectory}/${buildLabel}/${archiveName}"
+                  property="md5" />
+        <echo message="${md5} *${archiveName}"
+              file="${buildDirectory}/${buildLabel}/checksum/${archiveName}.md5" />
+        <echo message="${md5}"
+              file="${buildDirectory}/${buildLabel}/checksum/${archiveName}.md5antformat" />
+
+	</target>
+	
+	<target name="combineArchives">
+		<property name="archiveName" value="ce-all-incubation${corename}-${buildLabel}.zip" />
+		<delete dir="${buildDirectory}/tempforrezipping" failonerror="false"/>
+		
+		<exec dir="${buildDirectory}/${buildLabel}" executable="unzip" failonerror="false">
+			<arg line="-o -qq ce${corename}-incubation-${buildLabel}.zip -d ${buildDirectory}/tempforrezipping" />
+		</exec>
+<!--	
+add other archives to be included...
+		<exec dir="${buildDirectory}/${buildLabel}" executable="unzip" failonerror="false">
+			<arg line="-o -qq ce-${corename}-incubation-${buildLabel}.zip -d ${buildDirectory}/tempforrezipping" />
+		</exec>
+	-->	
+		<zip destfile="${buildDirectory}/${buildLabel}/${archiveName}" basedir="${buildDirectory}/tempforrezipping" />
+	
+		<delete dir="${buildDirectory}/tempforrezipping" failonerror="false"/>
+		
+        
+		<checksum file="${buildDirectory}/${buildLabel}/${archiveName}"
+                  property="md5" />
+        <echo message="${md5} *${archiveName}"
+              file="${buildDirectory}/${buildLabel}/checksum/${archiveName}.md5" />
+        <echo message="${md5}"
+              file="${buildDirectory}/${buildLabel}/checksum/${archiveName}.md5antformat" />
+	</target>
+
+</project>

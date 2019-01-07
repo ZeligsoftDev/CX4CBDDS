@@ -1,0 +1,2 @@
+importtargetdefinition -A "buildDriver/rsa.target"
+junit -l 'com.zeligsoft.releng.updatesites/tests/launch/SCASpectraImportAllTests.launch' -o 'tests.output/test-results-scaspectraimport.xml' --stdout 'tests.output/test-stdout-scaspectraimport.txt' --stderr 'tests.output/test-stderr-scaspectraimport.txt' --flatXML

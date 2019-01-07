@@ -1,0 +1,83 @@
+/// @defgroup AGSP_Common_defn Common_defn
+/// @{
+/// 
+/// @file AGSP_Common_defn.idl
+/// @brief Common_defn definitions definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__1ARTGALLERY__AGSP_COMMON_DEFN_IDL
+#define CX_PORTS__1ARTGALLERY__AGSP_COMMON_DEFN_IDL
+
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// Constant added to test modeling & IDL generation
+    const long TEST_CONSTANT = 9876;
+
+    /// @typedef SystemTime
+    ///
+    /// Consistent time type used across many SurveillanceProcessor_asm
+    /// interfaces and messages
+    typedef double SystemTime;
+
+    /// @enum ReturnStatus
+    ///
+    /// Pass/fail enum for service calls
+    enum ReturnStatus {
+
+        SUCCESS,
+
+        FAILURE
+    };
+
+    /// @enum SystemState
+    ///
+    /// System state enums
+    enum SystemState {
+        STARTUP_STATE,
+        STANDBY_STATE,
+        DAYTIME_OPERATIONAL_STATE,
+        NIGHTTIME_OPERATIONAL_STATE,
+        TEST_STATE,
+        SHUTDOWN_STATE
+    };
+
+    /// @typedef BoundedString
+    ///
+    /// Bounded string types in IDL must be typedef'd, to avoid the IDL
+    /// restriction on anonymous types
+    typedef string<512> BoundedString;
+
+    /// @enum SystemMode
+    ///
+    /// Currently defined set of camera processing modes
+    enum SystemMode {
+
+        /// Idle mode - no active processing or camera collections
+        IDLE_MODE,
+
+        /// User interactive, direct remote control mode wherein a control room
+        /// operator an directly control the SP to point the camera and take
+        /// pictures as desired.
+        POINT_CLICK_MODE,
+
+        /// Mode for tracking humans in a room, with a moving target output
+        /// product
+        HUMAN_TRACKER_MODE,
+
+        /// Mode for doing periodic image diffs to check for changes in pictures
+        /// status, such as a missing item in a room.  Most useful for night
+        /// surveillance.
+        IMAGE_DIFF_MODE
+    };
+
+    /// @typedef JobID_t
+    typedef long JobID_t;
+};
+
+#endif // CX_PORTS__1ARTGALLERY__AGSP_COMMON_DEFN_IDL
+
+/// @}
+

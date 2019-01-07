@@ -1,0 +1,66 @@
+/// @defgroup AGSP_HSManager_defn HSManager_defn
+/// @{
+/// 
+/// @file AGSP_HSManager_defn.idl
+/// @brief HSManager_defn definitions definition IDL file
+/// This definitions package capture types used by both the HSManager_comp
+/// component itself, as well as for reporting H&S throughout the SP assembly
+/// 
+/// Character test for IDL comment gen: < & > ' " / \
+
+//=========================================================
+
+#ifndef CX_PORTS__2SURVEILLANCEPROCESSOR__AGSP_HSMANAGER_DEFN_IDL
+#define CX_PORTS__2SURVEILLANCEPROCESSOR__AGSP_HSMANAGER_DEFN_IDL
+
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @enum SPStatus
+    ///
+    enum SPStatus {
+        SP_STATUS_PASS,
+        SP_STATUS_DEGRADED,
+        SP_STATUS_FAIL
+    };
+
+    /// @enum SensorStatus
+    ///
+    enum SensorStatus {
+        SENSOR_PASS,
+        SENSOR_FAIL
+    };
+
+    /// @typedef StrSeq
+    ///
+    /// Type defining a sequence of strings, to avoid the IDL anonymous type
+    /// restriction
+    typedef sequence <string> StrSeq;
+
+    /// @struct HSConfigAttr
+    ///
+    /// Struct type for defining component attributes for the HSManager_comp
+    /// component
+    struct HSConfigAttr {
+
+        /// Dummy string field to test setting of struct field in a component
+        /// attribute property during deployment planning
+        string masterName;
+
+        /// Dummy ID field for testing
+        long long masterId;
+
+        /// List of child names
+        AGSP::StrSeq childNames;
+
+        /// Dummy boolean field to support setting of properties during
+        /// deployment planning
+        boolean report;
+    }; //@top-level false
+};
+
+#endif // CX_PORTS__2SURVEILLANCEPROCESSOR__AGSP_HSMANAGER_DEFN_IDL
+
+/// @}
+

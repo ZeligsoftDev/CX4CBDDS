@@ -1,0 +1,84 @@
+<project default="build" basedir=".">
+
+
+
+	<target name="build" depends="init">
+		<ant antfile="${ce.builder.home}/distribution/${build.distribution}.build/build.xml">
+			<property name="ce.builder.home" value="${ce.builder.home}" />
+			<property name="buildBranch" value="${buildBranch}" />
+		</ant>
+	</target>
+
+
+	<target name="site" depends="init">
+		<ant antfile="${ce.builder.home}/distribution/${build.distribution}.site/build.xml">
+			<property name="ce.builder.home" value="${ce.builder.home}" />
+			<property name="buildBranch" value="${buildBranch}" />
+		</ant>
+	</target>
+
+	<target name="api" depends="init">
+		<ant antfile="${ce.builder.home}/distribution/${build.distribution}.api/build.xml">
+			<property name="ce.builder.home" value="${ce.builder.home}" />
+			<property name="buildBranch" value="${buildBranch}" />
+		</ant>
+	</target>
+	
+	<target name="test" depends="init">
+		<ant antfile="${ce.builder.home}/distribution/${build.distribution}.tests/build.xml">
+			<property name="ce.builder.home" value="${ce.builder.home}" />
+			<property name="buildBranch" value="${buildBranch}" />
+			<property name="testRoot" value="${build.home}/${build.tests}-${build.distribution}-${buildType}" />
+			<property name="dependencyTargets" value="${ce.builder.home}/scripts/dependency/build.xml" />
+			<property name="local.cache.dir" value="${build.home}/${build.local.repository}" />
+		</ant>
+	</target>
+
+	<target name="upload" depends="init">
+		<ant antfile="${ce.builder.home}/distribution/${build.distribution}.upload/build.xml">
+			<property name="ce.builder.home" value="${ce.builder.home}" />
+		</ant>
+	</target>
+
+	<target name="whatisfixed" depends="init">
+		<ant antfile="${ce.builder.home}/distribution/${build.distribution}.whatisfixed/build.xml">
+			<property name="ce.builder.home" value="${ce.builder.home}" />
+			<property name="buildBranch" value="${buildBranch}" />
+		</ant>
+	</target>
+	
+	
+	
+	
+	
+	<target name="init">
+		<dirname file="${ant.file}" property="ce.builder.home" />
+		<condition property="buildBranch" value="R1.0">
+			<equals arg1="${mapVersionTag}" arg2="HEAD" />
+		</condition>
+		<condition property="buildBranch" value="R1.5">
+			<equals arg1="${mapVersionTag}" arg2="HEAD" />
+		</condition>
+		<condition property="buildBranch" value="R0.7 Maintenance">
+			<equals arg1="${mapVersionTag}" arg2="R0_7_maintenance" />
+		</condition>
+		<condition property="buildBranch" value="R1.0 Maintenance">
+			<equals arg1="${mapVersionTag}" arg2="R1_0_maintenance" />
+		</condition>
+
+		<property file="${ce.builder.home}/build.properties" />
+		<ant antfile="${ce.builder.home}/scripts/build/label.xml" />
+		<property file="${buildDirectory}/label.properties" />
+
+		<!--fetch the HEAD stream of all projects if build type specified as N-->
+		<condition property="fetchTag" value="HEAD">
+			<equals arg1="${buildType}" arg2="N" />
+		</condition>
+
+		<condition property="tagMaps">
+			<equals arg1="${build.trial}" arg2="false" />
+		</condition>
+	</target>
+
+
+</project>

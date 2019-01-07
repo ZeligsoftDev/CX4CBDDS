@@ -1,0 +1,52 @@
+
+import langc;
+
+extension langc::element;
+extension langc::expr;
+extension langc::name;
+extension langc::stmt;
+extension langc::type;
+extension langc::libc;
+extension generator::extend_util;
+
+private create FileName filename1() : setName( 'bug14296b1' );
+private create FileName filename2() : setName( 'bug14296b2' );
+private cached Name structName()    : filename1().child( 'T' );
+private cached Name fieldName()     : structName().child( 'f' );
+private cached Name functionName()  : filename2().child( 'function' );
+
+create SubSystem nestedNames() :
+    setFiles( { file1(), file2() } )
+;
+
+create ElementList file1() :
+    setName( filename1() )
+ -> addElement( struct() )
+;
+
+create ElementList file2() :
+    setName( filename2() )
+ -> addElement( function() )
+;
+
+private cached Structure struct() :
+    let s = struct( structName() ) :
+        s.addMember( int32(), fieldName() )
+     -> s
+;
+
+private cached Function function() :
+    let f = function( int32(), functionName() ) :
+    let v1 = variable( struct(), 'v1' ) :
+    let v2 = variable( struct().ptr(), 'v2' ) :
+    let v3 = variable( int32(), 'v3' ) :
+    let w1 = while( 1.literal() ) :
+    let w2 = while( 2.literal() ) :
+        f.addStatement( v1 )
+     -> f.addStatement( w1 )
+     -> w1.addStatement( v2 )
+     -> w1.addStatement( w2 )
+     -> w2.addStatement( v3 )
+     -> w2.addStatement( v3.name.field( fieldName() ).returnStmt() )
+     -> f
+;

@@ -1,0 +1,35 @@
+
+«IMPORT langc»
+«EXTENSION generator::extend_util»
+«EXTENSION generator::filepartitioner»
+«EXTENSION generator::systempartitioner2»
+«EXTENSION generator::objects»
+«EXTENSION langc::debug»
+«EXTENSION langc::element»
+
+«DEFINE GenerateAs(String destProjectName) FOR System»
+
+    «REM»Prepare the generator (and CWriter cache) for writing into a new project«ENDREM»
+    «initializeGenerator( destProjectName )»
+
+    «EXPAND Generate FOREACH artifacts»
+    «EXPAND manifestfile2::ManifestFile FOR this»
+
+    «REM»In the future this information may be kept (within the session) for incremental
+         generation.  For now its a waste of memory, so clear it all.«ENDREM»
+    «resetBindings()»
+
+    «REM»TODO This needs to be called from a finally clause somewhere so that partially
+              generated files will be closed on error.«ENDREM»
+    «finalizeGenerator()»
+«ENDDEFINE»
+
+«DEFINE Generate FOR LinkableArtifact»
+    «EXPAND Generate( this ) FOREACH transitiveClosure()»
+«ENDDEFINE»
+
+«DEFINE Generate( LinkableArtifact artifact ) FOR UserElement»
+    «IF ! written»
+        «generate( declarationFile(), definitionFile( artifact ) )»
+    «ENDIF»
+«ENDDEFINE»

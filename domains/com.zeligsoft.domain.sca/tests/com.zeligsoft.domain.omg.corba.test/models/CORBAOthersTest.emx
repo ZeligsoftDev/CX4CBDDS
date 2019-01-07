@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:scadomain="http://www.zeligsoft.com/zdl/2008/SCADomain/1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xsi:schemaLocation="http://www.zeligsoft.com/zdl/2008/SCADomain/1 pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeoo0xOEd2INdt7Ch5VKg">
+  <uml:Model xmi:id="_NRAMoAwOEdmFcaeZXPdWAQ" name="CORBAOthersTest">
+    <eAnnotations xmi:id="_NRAMoQwOEdmFcaeZXPdWAQ" source="uml2.diagrams"/>
+    <eAnnotations xmi:id="_Jx6z8DktEeCRp42qN36_lg" source="com.ibm.xtools.common.ui.reduction.editingCapabilities"/>
+    <eAnnotations xmi:id="_VLaCcGUkEeC0s_9RI12V4w" source="cx_version">
+      <details xmi:id="_VLhXMGUkEeC0s_9RI12V4w" key="version" value="3.3.0"/>
+    </eAnnotations>
+    <eAnnotations xmi:id="_NSo4cCdNEeGR_KqrS_ZRLw" source="cx.migration">
+      <details xmi:id="_NSo4cSdNEeGR_KqrS_ZRLw" key="version" value="3.6.2"/>
+      <details xmi:id="_NSo4cidNEeGR_KqrS_ZRLw" key="date" value="1417720312699"/>
+    </eAnnotations>
+    <packageImport xmi:id="_UeIAJtCzEdqK7KjEh4hvHw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_yuNc4GCTEd2SLu3A_eDD4A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_FmNkyVKKEd2qDNqT9_uj3A"/>
+    </packageImport>
+    <packageImport xmi:id="_2ULeAGCTEd2SLu3A_eDD4A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_FmFo8FKKEd2qDNqT9_uj3A"/>
+    </packageImport>
+    <packageImport xmi:id="_StFNAGr3Ed2XQPRO-zUD1A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/SCALibrary.library.uml#_HIhIAGrTEd2kob3R8-spzQ"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_hCdcIJLbEeC0OucdcUUg4w" name="modelConfiguration">
+      <classifier xmi:type="uml:Class" href="pathmap://SCA_LIBRARIES/SCA.uml#__EXrQP_hEeCCmLpCbcuD7A"/>
+      <slot xmi:id="_Z6T9oHvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_LIBRARIES/SCA.uml#_B8FfQP_iEeCCmLpCbcuD7A"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_Z6UksHvpEeS8spAsUHvnSw" value="scx">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+      <slot xmi:id="_Z6VLwHvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_LIBRARIES/SCA.uml#_dgr3gHTPEeScAu3E-QvDcA"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_Z6VLwXvpEeS8spAsUHvnSw" value="">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+      <slot xmi:id="_Z6Vy0HvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_LIBRARIES/SCA.uml#_04-zoHTPEeScAu3E-QvDcA"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_Z6WZ4HvpEeS8spAsUHvnSw" value="_s">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+      <slot xmi:id="_Z6WZ4XvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_qzbt8KULEd2lg4YL0MvrHw"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_Z6XA8HvpEeS8spAsUHvnSw" value="CORBAOthersTest_generatedSRC">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_kLYU4JLbEeC0OucdcUUg4w" name="sequence">
+      <eAnnotations xmi:id="_kLaKEJLbEeC0OucdcUUg4w" source="uml2.diagrams"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_ovgnYJLbEeC0OucdcUUg4w" name="CORBAInterface">
+        <nestedClassifier xmi:type="uml:DataType" xmi:id="_pzX4IJLbEeC0OucdcUUg4w" name="Sequence">
+          <ownedAttribute xmi:id="_pzpk8JLbEeC0OucdcUUg4w" name="members">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_83uJ8ExPEd2INdt7Ch5VKg"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pzpk8ZLbEeC0OucdcUUg4w" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pzpk8pLbEeC0OucdcUUg4w"/>
+          </ownedAttribute>
+        </nestedClassifier>
+        <nestedClassifier xmi:type="uml:DataType" xmi:id="_sVMUoJLbEeC0OucdcUUg4w" name="Sequence_no_type">
+          <ownedAttribute xmi:id="_sVgdsJLbEeC0OucdcUUg4w" name="members">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sVgdsZLbEeC0OucdcUUg4w" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sVgdspLbEeC0OucdcUUg4w"/>
+          </ownedAttribute>
+        </nestedClassifier>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_yeG5kJXOEeCfOYQMXAhDfQ" name="IDLFile">
+        <eAnnotations xmi:id="_yeabkJXOEeCfOYQMXAhDfQ" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_ztYJEJXOEeCfOYQMXAhDfQ" name="Sequence">
+          <ownedAttribute xmi:id="_ztp14JXOEeCfOYQMXAhDfQ" name="members">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_5iZXcExQEd2INdt7Ch5VKg"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ztp14ZXOEeCfOYQMXAhDfQ" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ztp14pXOEeCfOYQMXAhDfQ"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_113fkJXOEeCfOYQMXAhDfQ" name="Sequence_no_type">
+          <ownedAttribute xmi:id="_12JMYJXOEeCfOYQMXAhDfQ" name="members">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_12JMYZXOEeCfOYQMXAhDfQ" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_12JMYpXOEeCfOYQMXAhDfQ"/>
+          </ownedAttribute>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_8qlUoJXOEeCfOYQMXAhDfQ" name="CORBAModule">
+        <eAnnotations xmi:id="_8q42oJXOEeCfOYQMXAhDfQ" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_-QMnkJXOEeCfOYQMXAhDfQ" name="Sequence">
+          <ownedAttribute xmi:id="_-QgJkJXOEeCfOYQMXAhDfQ" name="members">
+            <type xmi:type="uml:Interface" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_FXKzsE0aEd2_sIJPOmkZ7w"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-QgJkZXOEeCfOYQMXAhDfQ" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-QgJkpXOEeCfOYQMXAhDfQ"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="__vyyEJXOEeCfOYQMXAhDfQ" name="Sequence_no_type">
+          <ownedAttribute xmi:id="__wFF8JXOEeCfOYQMXAhDfQ" name="members">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__wFF8ZXOEeCfOYQMXAhDfQ" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__wFF8pXOEeCfOYQMXAhDfQ"/>
+          </ownedAttribute>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="__I3l4JNmEeC-mLnDC30WDg" name="NamedElement">
+      <eAnnotations xmi:id="__KaeAJNmEeC-mLnDC30WDg" source="uml2.diagrams">
+        <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_Fr_X0JNrEeC-mLnDC30WDg" type="Component" name="ComponentDiagram1">
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_Gvn_EJNrEeC-mLnDC30WDg" element="_fUresJNqEeC-mLnDC30WDg" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+            <children xmi:type="notation:DecorationNode" xmi:id="_GvyXIJNrEeC-mLnDC30WDg" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_GvyXIZNrEeC-mLnDC30WDg" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_Gvy-MJNrEeC-mLnDC30WDg" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_GvzlQJNrEeC-mLnDC30WDg" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_Gv0MUJNrEeC-mLnDC30WDg" type="Parent"/>
+            <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_Gv0zYJNrEeC-mLnDC30WDg" type="PackageContents" collapsed="true" canonical="false"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gvn_EZNrEeC-mLnDC30WDg" x="6657" y="3170"/>
+          </children>
+          <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_HZnXQJNrEeC-mLnDC30WDg" element="_m6mHMJNqEeC-mLnDC30WDg" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" useClassifierShape="true">
+            <children xmi:type="notation:DecorationNode" xmi:id="_HZpMcJNrEeC-mLnDC30WDg" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_HZpMcZNrEeC-mLnDC30WDg" width="530" height="530"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_HZpzgJNrEeC-mLnDC30WDg" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_HZqakJNrEeC-mLnDC30WDg" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_HZqakZNrEeC-mLnDC30WDg" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_HZrBoJNrEeC-mLnDC30WDg" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_HZrosJNrEeC-mLnDC30WDg" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_HZtd4JNrEeC-mLnDC30WDg" type="OperationCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_HZuE8JNrEeC-mLnDC30WDg" visible="false" type="SignalCompartment"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HZnXQZNrEeC-mLnDC30WDg" x="4121" y="6340"/>
+          </children>
+          <element xsi:nil="true"/>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_HaQQcJNrEeC-mLnDC30WDg" type="OwnedElement" source="_Gvn_EJNrEeC-mLnDC30WDg" target="_HZnXQJNrEeC-mLnDC30WDg" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+            <element xsi:nil="true"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HaQQcZNrEeC-mLnDC30WDg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+          </edges>
+        </contents>
+      </eAnnotations>
+      <packagedElement xmi:type="uml:Package" xmi:id="_6_7TMJNpEeC-mLnDC30WDg" name="CORBAModule">
+        <eAnnotations xmi:id="_7ANnEJNpEeC-mLnDC30WDg" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_9HpNoJNpEeC-mLnDC30WDg" name="123_abc">
+          <eAnnotations xmi:id="_9H-k0JNpEeC-mLnDC30WDg" source="uml2.diagrams"/>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_ENo_8JNqEeC-mLnDC30WDg" name="_">
+            <ownedAttribute xmi:id="_PQr2oJNqEeC-mLnDC30WDg" name="CORBAAttribute" visibility="public">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_xJ8ewExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedOperation xmi:id="_Qald8JNqEeC-mLnDC30WDg" name="CORBAOperation">
+              <ownedParameter xmi:id="_Qa2jsJNqEeC-mLnDC30WDg" name="ReturnParameter" direction="return"/>
+              <ownedParameter xmi:id="_ZgTsUJNqEeC-mLnDC30WDg" name="CORBAParameter">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_J4nX8ExREd2INdt7Ch5VKg"/>
+              </ownedParameter>
+            </ownedOperation>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_fUresJNqEeC-mLnDC30WDg" name="^InvaliadModulePack">
+        <eAnnotations xmi:id="_fU-ZoJNqEeC-mLnDC30WDg" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_m6mHMJNqEeC-mLnDC30WDg" name="--+">
+          <ownedAttribute xmi:id="_8rx7kJNqEeC-mLnDC30WDg" name="ui?" visibility="public"/>
+          <ownedOperation xmi:id="_r1xnwJNqEeC-mLnDC30WDg" name="C&amp;ORBAOperation">
+            <ownedParameter xmi:id="_zMf9sJNqEeC-mLnDC30WDg" name="CORBA Parameter"/>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_7NB-QJNtEeC-mLnDC30WDg" name="containerName">
+        <eAnnotations xmi:id="_7NRO0JNtEeC-mLnDC30WDg" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_-hy6oJNtEeC-mLnDC30WDg" name="CORBAModule">
+          <eAnnotations xmi:id="_-iEncJNtEeC-mLnDC30WDg" source="uml2.diagrams"/>
+          <packagedElement xmi:type="uml:Package" xmi:id="__h0NMJNtEeC-mLnDC30WDg" name="CORBAModule">
+            <eAnnotations xmi:id="__iI9UJNtEeC-mLnDC30WDg" source="uml2.diagrams"/>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_YXIusJNzEeC-mLnDC30WDg" name="CORBAModule">
+              <ownedAttribute xmi:id="_NKSw4JN1EeC-mLnDC30WDg" name="CORBAModule" visibility="public"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_bFVaUJNzEeC-mLnDC30WDg" name="CORBAInterface">
+              <ownedAttribute xmi:id="_mXKT4JNzEeC-mLnDC30WDg" name="CORBAAttribute" visibility="public"/>
+              <ownedOperation xmi:id="_eUmysJNzEeC-mLnDC30WDg" name="CORBAOperation">
+                <ownedParameter xmi:id="_eU5GkJNzEeC-mLnDC30WDg" name="ReturnParameter" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_xRwZMJNzEeC-mLnDC30WDg" name="CORBAParameter"/>
+                <ownedParameter xmi:id="_ykz8gJNzEeC-mLnDC30WDg" name="CORBAOperation"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_f9O9YJNzEeC-mLnDC30WDg" name="CORBAInterface">
+                <ownedParameter xmi:id="_f9eN8JNzEeC-mLnDC30WDg" name="ReturnParameter" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_WkS4EJNzEeC-mLnDC30WDg" name="CORBAModule2">
+            <eAnnotations xmi:id="_Wkkk4JNzEeC-mLnDC30WDg" source="uml2.diagrams"/>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_XJd6UJN2EeC-mLnDC30WDg" name="Operation">
+      <eAnnotations xmi:id="_XJfIcJN2EeC-mLnDC30WDg" source="uml2.diagrams"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_ZZxwEJN2EeC-mLnDC30WDg" name="CORBAModule">
+        <eAnnotations xmi:id="_ZaBAoJN2EeC-mLnDC30WDg" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_aa85MJN2EeC-mLnDC30WDg" name="CORBAInterface">
+          <ownedAttribute xmi:id="_iIf-QJN3EeC-mLnDC30WDg" name="CORBAConstant" visibility="public">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_5wQ5wJN3EeC-mLnDC30WDg" value="999"/>
+          </ownedAttribute>
+          <ownedOperation xmi:id="_bdLLMJN2EeC-mLnDC30WDg" name="CORBAOperation">
+            <ownedParameter xmi:id="_bdabwJN2EeC-mLnDC30WDg" name="ReturnParameter" direction="return">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_cE7uwJN2EeC-mLnDC30WDg" name="CORBAParameter">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_sEWP8IAvEd2HmJ2iA-bEzA"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_uuTBIJN3EeC-mLnDC30WDg" name="CORBAConstants">
+          <ownedAttribute xmi:id="_KopzMJN4EeC-mLnDC30WDg" name="CORBAConstant" visibility="public"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_fa5KgJXSEeCfOYQMXAhDfQ" name="CORBAInterface">
+        <ownedOperation xmi:id="_gHBQsJXSEeCfOYQMXAhDfQ" name="CORBAOperation">
+          <ownedParameter xmi:id="_gHTkkJXSEeCfOYQMXAhDfQ" name="ReturnParameter" direction="return">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_Ak7NEKBmEd2wdfxnWx1nIA"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_F8eSkJXWEeCfOYQMXAhDfQ" name="CORBAParameter"/>
+        </ownedOperation>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_5LP2QJN5EeC-mLnDC30WDg" name="constant">
+      <eAnnotations xmi:id="_5LQdUJN5EeC-mLnDC30WDg" source="uml2.diagrams"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_7gEYkJN5EeC-mLnDC30WDg" name="primitive">
+        <ownedAttribute xmi:id="_8WnmEJN5EeC-mLnDC30WDg" name="CORBAConstant_any" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_up6K8ExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_-hlo0JN5EeC-mLnDC30WDg" name="CORBAConstant_boolean" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_v027IExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_AUZDMJN6EeC-mLnDC30WDg" name="CORBAConstant_char" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_xJ8ewExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_Bxy1UJN6EeC-mLnDC30WDg" name="CORBAConstant_double" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_yUdKEExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_DQZhUJN6EeC-mLnDC30WDg" name="CORBAConstant_float" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_zlEdYExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_E0ua0JN6EeC-mLnDC30WDg" name="CORBAConstant_long" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_GBtLUJN6EeC-mLnDC30WDg" name="CORBAConstant_longdouble" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_baFDkExREd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_IZgwMJN6EeC-mLnDC30WDg" name="CORBAConstant_longlong" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_Go4skExREd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_KbhrQJN6EeC-mLnDC30WDg" name="CORBAConstant_Object" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_5iZXcExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_MEhCUJN6EeC-mLnDC30WDg" name="CORBAConstant_octet" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_7MfhwExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_PW4yAJN6EeC-mLnDC30WDg" name="CORBAConstant_short" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_83uJ8ExPEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_Q5cJ4JN6EeC-mLnDC30WDg" name="CORBAConstant_string" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_S6liQJN6EeC-mLnDC30WDg" name="CORBAConstant_typecode" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_AhIrMExREd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_Uz7CcJN6EeC-mLnDC30WDg" name="CORBAConstant_void" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_WxBoUJN6EeC-mLnDC30WDg" name="CORBAConstant_unsignedlong" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_FpjWgExREd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_ZxvnUJN6EeC-mLnDC30WDg" name="CORBAConstant_unsignedlonglong" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_Go4skExREd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_bj3FMJN6EeC-mLnDC30WDg" name="CORBAConstant_unsignedshort" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_H3a8QExREd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_dubfUJN6EeC-mLnDC30WDg" name="CORBAConstant_wchar" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_J4nX8ExREd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_oUbNoJN6EeC-mLnDC30WDg" name="CORBAConstant_wstring" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_K8QmQExREd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_ntUU4JN7EeC-mLnDC30WDg" name="non-primitive">
+        <ownedAttribute xmi:id="_ppkmMJN7EeC-mLnDC30WDg" name="CORBAConstant_no_type" visibility="public"/>
+        <ownedAttribute xmi:id="_vGgI8JN7EeC-mLnDC30WDg" name="CORBAConstant_cx" visibility="public">
+          <type xmi:type="uml:Enumeration" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_NIMb0E0hEd2_sIJPOmkZ7w"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_J2g4sJOFEeC-mLnDC30WDg" name="union">
+      <eAnnotations xmi:id="_J2iG0JOFEeC-mLnDC30WDg" source="uml2.diagrams"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_MgDGwJOFEeC-mLnDC30WDg" name="CORBAInterface">
+        <nestedClassifier xmi:type="uml:DataType" xmi:id="_NjBmsJOFEeC-mLnDC30WDg" name="CORBAUnion">
+          <ownedAttribute xmi:id="_-BWDMCdNEeGfROXqt7OJfQ" name="switchType">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_xJ8ewExQEd2INdt7Ch5VKg"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-BWDMSdNEeGfROXqt7OJfQ" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-BWDMidNEeGfROXqt7OJfQ"/>
+          </ownedAttribute>
+        </nestedClassifier>
+        <nestedClassifier xmi:type="uml:DataType" xmi:id="_uFJJsJXYEeCfOYQMXAhDfQ" name="CORBAUnion_no_switchtype"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_tAHfsJOFEeC-mLnDC30WDg" name="CORBAModule">
+        <eAnnotations xmi:id="_tAaaoJOFEeC-mLnDC30WDg" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_uPfc4JOFEeC-mLnDC30WDg" name="CORBAUnion">
+          <ownedAttribute xmi:id="_BGPjoJOKEeC-mLnDC30WDg" name="CORBACase" visibility="private">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_83uJ8ExPEd2INdt7Ch5VKg"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Bti0MJOKEeC-mLnDC30WDg" name="CORBACase2" visibility="private">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_83mz8CdNEeGfROXqt7OJfQ" name="switchType">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_xJ8ewExQEd2INdt7Ch5VKg"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_83mz8SdNEeGfROXqt7OJfQ" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_83mz8idNEeGfROXqt7OJfQ"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_jHwPEJXYEeCfOYQMXAhDfQ" name="CORBAUnion_no_switchtype"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_qLLrMJOLEeC-mLnDC30WDg" name="IDLFile">
+        <eAnnotations xmi:id="_qLZGkJOLEeC-mLnDC30WDg" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_3TzRoJXYEeCfOYQMXAhDfQ" name="CORBAUnion_no_switchtype"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_sQtTICdNEeGfROXqt7OJfQ" name="CORBAUnion">
+          <ownedAttribute xmi:id="_sw5PECdNEeGfROXqt7OJfQ" name="switchType">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_xJ8ewExQEd2INdt7Ch5VKg"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sw5PESdNEeGfROXqt7OJfQ" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sw5PEidNEeGfROXqt7OJfQ"/>
+          </ownedAttribute>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_O-guEJXGEeCfOYQMXAhDfQ" name="Parameter">
+      <eAnnotations xmi:id="_PAZkcJXGEeCfOYQMXAhDfQ" source="uml2.diagrams"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_SlT1oJXGEeCfOYQMXAhDfQ" name="CORBAInterface">
+        <ownedOperation xmi:id="_TzWWEJXGEeCfOYQMXAhDfQ" name="CORBAOperation">
+          <ownedParameter xmi:id="_TzoC4JXGEeCfOYQMXAhDfQ" name="ReturnParameter" direction="return">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_UhhqsJXGEeCfOYQMXAhDfQ" name="p1_typed">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_7MfhwExQEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_tlawgJXHEeCfOYQMXAhDfQ" name="p2_no_type"/>
+        </ownedOperation>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_R-X0oJXKEeCfOYQMXAhDfQ" name="typedef">
+      <eAnnotations xmi:id="_R-ZCwJXKEeCfOYQMXAhDfQ" source="uml2.diagrams">
+        <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_QPT1UJXLEeCfOYQMXAhDfQ" type="Component" name="ComponentDiagram1">
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_ROpLYJXLEeCfOYQMXAhDfQ" element="_VMDRkJXKEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+            <children xmi:type="notation:DecorationNode" xmi:id="_ROsOsJXLEeCfOYQMXAhDfQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_ROsOsZXLEeCfOYQMXAhDfQ" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_ROs1wJXLEeCfOYQMXAhDfQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_ROtc0JXLEeCfOYQMXAhDfQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_ROtc0ZXLEeCfOYQMXAhDfQ" type="Parent"/>
+            <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_ROuD4JXLEeCfOYQMXAhDfQ" type="PackageContents" collapsed="true" canonical="false"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ROpLYZXLEeCfOYQMXAhDfQ" x="6657"/>
+          </children>
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_RlsZcJXLEeCfOYQMXAhDfQ" element="_WR6GYJXKEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1">
+            <children xmi:type="notation:DecorationNode" xmi:id="_RltAgJXLEeCfOYQMXAhDfQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_RltAgZXLEeCfOYQMXAhDfQ" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RltnkJXLEeCfOYQMXAhDfQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RltnkZXLEeCfOYQMXAhDfQ" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RluOoJXLEeCfOYQMXAhDfQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RluOoZXLEeCfOYQMXAhDfQ" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_Rlu1sJXLEeCfOYQMXAhDfQ" visible="false" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_RlvcwJXLEeCfOYQMXAhDfQ" visible="false" type="OperationCompartment"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RlsZcZXLEeCfOYQMXAhDfQ" x="9193" y="3170"/>
+          </children>
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_X76UoJXLEeCfOYQMXAhDfQ" element="_WrEX0JXLEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1">
+            <children xmi:type="notation:DecorationNode" xmi:id="_X77iwJXLEeCfOYQMXAhDfQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_X77iwZXLEeCfOYQMXAhDfQ" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_X77iwpXLEeCfOYQMXAhDfQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_X78J0JXLEeCfOYQMXAhDfQ" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_X78w4JXLEeCfOYQMXAhDfQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_X78w4ZXLEeCfOYQMXAhDfQ" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_X78w4pXLEeCfOYQMXAhDfQ" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_X79X8JXLEeCfOYQMXAhDfQ" visible="false" type="OperationCompartment"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X76UoZXLEeCfOYQMXAhDfQ" x="19020" y="6340"/>
+          </children>
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_IiYwcJXMEeCfOYQMXAhDfQ" element="_FEaNsJXMEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1">
+            <children xmi:type="notation:DecorationNode" xmi:id="_IiZ-kJXMEeCfOYQMXAhDfQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_IiZ-kZXMEeCfOYQMXAhDfQ" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_IiZ-kpXMEeCfOYQMXAhDfQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_IialoJXMEeCfOYQMXAhDfQ" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_IialoZXMEeCfOYQMXAhDfQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_Iik9sJXMEeCfOYQMXAhDfQ" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_Iik9sZXMEeCfOYQMXAhDfQ" visible="false" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_IilkwJXMEeCfOYQMXAhDfQ" visible="false" type="OperationCompartment"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IiYwcZXMEeCfOYQMXAhDfQ" x="317" y="3487"/>
+          </children>
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_RDXTAJXMEeCfOYQMXAhDfQ" element="_LrIqEJXMEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+            <children xmi:type="notation:DecorationNode" xmi:id="_RDX6EJXMEeCfOYQMXAhDfQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_RDX6EZXMEeCfOYQMXAhDfQ" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RDYhIJXMEeCfOYQMXAhDfQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RDZIMJXMEeCfOYQMXAhDfQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RDZIMZXMEeCfOYQMXAhDfQ" type="Parent"/>
+            <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_RDZIMpXMEeCfOYQMXAhDfQ" type="PackageContents" collapsed="true" canonical="false"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RDXTAZXMEeCfOYQMXAhDfQ" x="6023" y="5389"/>
+          </children>
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_RbKH8JXMEeCfOYQMXAhDfQ" element="_NlNxIJXMEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1">
+            <children xmi:type="notation:DecorationNode" xmi:id="_RbLWEJXMEeCfOYQMXAhDfQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_RbLWEZXMEeCfOYQMXAhDfQ" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RbL9IJXMEeCfOYQMXAhDfQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RbL9IZXMEeCfOYQMXAhDfQ" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RbMkMJXMEeCfOYQMXAhDfQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RbMkMZXMEeCfOYQMXAhDfQ" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_RbMkMpXMEeCfOYQMXAhDfQ" visible="false" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_RbNLQJXMEeCfOYQMXAhDfQ" visible="false" type="OperationCompartment"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RbKH8ZXMEeCfOYQMXAhDfQ" x="10461" y="7291"/>
+          </children>
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_RtOvYJXMEeCfOYQMXAhDfQ" element="_PFaYkJXMEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1">
+            <children xmi:type="notation:DecorationNode" xmi:id="_RtP9gJXMEeCfOYQMXAhDfQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_RtP9gZXMEeCfOYQMXAhDfQ" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RtP9gpXMEeCfOYQMXAhDfQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RtQkkJXMEeCfOYQMXAhDfQ" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RtQkkZXMEeCfOYQMXAhDfQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_RtQkkpXMEeCfOYQMXAhDfQ" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_RtRLoJXMEeCfOYQMXAhDfQ" visible="false" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_RtRLoZXMEeCfOYQMXAhDfQ" visible="false" type="OperationCompartment"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RtOvYZXMEeCfOYQMXAhDfQ" x="634" y="7608"/>
+          </children>
+          <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_Z_kZAJXMEeCfOYQMXAhDfQ" element="_Wu1oEJXMEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" useClassifierShape="true">
+            <children xmi:type="notation:DecorationNode" xmi:id="_Z_lnIJXMEeCfOYQMXAhDfQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_Z_lnIZXMEeCfOYQMXAhDfQ" width="530" height="530"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_Z_lnIpXMEeCfOYQMXAhDfQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_Z_mOMJXMEeCfOYQMXAhDfQ" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_Z_mOMZXMEeCfOYQMXAhDfQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_Z_m1QJXMEeCfOYQMXAhDfQ" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_Z_m1QZXMEeCfOYQMXAhDfQ" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_Z_ncUJXMEeCfOYQMXAhDfQ" type="OperationCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_Z_oDYJXMEeCfOYQMXAhDfQ" visible="false" type="SignalCompartment"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Z_kZAZXMEeCfOYQMXAhDfQ" x="7291" y="9827"/>
+          </children>
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_aYsqsJXMEeCfOYQMXAhDfQ" element="_X6rwIJXMEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1">
+            <children xmi:type="notation:DecorationNode" xmi:id="_aYt40JXMEeCfOYQMXAhDfQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_aYt40ZXMEeCfOYQMXAhDfQ" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_aYt40pXMEeCfOYQMXAhDfQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_aYuf4JXMEeCfOYQMXAhDfQ" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_aYuf4ZXMEeCfOYQMXAhDfQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_aYvG8JXMEeCfOYQMXAhDfQ" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_aYvG8ZXMEeCfOYQMXAhDfQ" visible="false" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_aYvuAJXMEeCfOYQMXAhDfQ" visible="false" type="OperationCompartment"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aYsqsZXMEeCfOYQMXAhDfQ" x="14763" y="12435"/>
+          </children>
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_aprtAJXMEeCfOYQMXAhDfQ" element="_YhSdIJXMEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1">
+            <children xmi:type="notation:DecorationNode" xmi:id="_aps7IJXMEeCfOYQMXAhDfQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_aps7IZXMEeCfOYQMXAhDfQ" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_aps7IpXMEeCfOYQMXAhDfQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_aptiMJXMEeCfOYQMXAhDfQ" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_aptiMZXMEeCfOYQMXAhDfQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_aptiMpXMEeCfOYQMXAhDfQ" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_apuJQJXMEeCfOYQMXAhDfQ" visible="false" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_apuJQZXMEeCfOYQMXAhDfQ" visible="false" type="OperationCompartment"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aprtAZXMEeCfOYQMXAhDfQ" x="1585" y="12680"/>
+          </children>
+          <element xsi:nil="true"/>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_RlygEJXLEeCfOYQMXAhDfQ" type="OwnedElement" source="_ROpLYJXLEeCfOYQMXAhDfQ" target="_RlsZcJXLEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+            <element xsi:nil="true"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RlygEZXLEeCfOYQMXAhDfQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+          </edges>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_b1eAIJXLEeCfOYQMXAhDfQ" element="_b1Io8JXLEeCfOYQMXAhDfQ" source="_RlsZcJXLEeCfOYQMXAhDfQ" target="_X76UoJXLEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+            <children xmi:type="notation:DecorationNode" xmi:id="_b1fOQJXLEeCfOYQMXAhDfQ" type="NameLabel">
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_b1f1UJXLEeCfOYQMXAhDfQ" type="Stereotype"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_b1f1UZXLEeCfOYQMXAhDfQ" type="Name"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_b1fOQZXLEeCfOYQMXAhDfQ" y="-186"/>
+            </children>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_b1eAIZXLEeCfOYQMXAhDfQ" points="[10, -12, -136, 171]$[149, -163, 3, 20]"/>
+          </edges>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_Iimy4JXMEeCfOYQMXAhDfQ" type="OwnedElement" source="_ROpLYJXLEeCfOYQMXAhDfQ" target="_IiYwcJXMEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+            <element xsi:nil="true"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Iimy4ZXMEeCfOYQMXAhDfQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+          </edges>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_RbNyUJXMEeCfOYQMXAhDfQ" type="OwnedElement" source="_RDXTAJXMEeCfOYQMXAhDfQ" target="_RbKH8JXMEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+            <element xsi:nil="true"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RbNyUZXMEeCfOYQMXAhDfQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+          </edges>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_RtSZwJXMEeCfOYQMXAhDfQ" type="OwnedElement" source="_RDXTAJXMEeCfOYQMXAhDfQ" target="_RtOvYJXMEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+            <element xsi:nil="true"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RtSZwZXMEeCfOYQMXAhDfQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+          </edges>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_TOUHoJXMEeCfOYQMXAhDfQ" element="_TODB4JXMEeCfOYQMXAhDfQ" source="_RbKH8JXMEeCfOYQMXAhDfQ" target="_X76UoJXLEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+            <children xmi:type="notation:DecorationNode" xmi:id="_TOUusJXMEeCfOYQMXAhDfQ" type="NameLabel">
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_TOUuspXMEeCfOYQMXAhDfQ" type="Stereotype"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_TOVVwJXMEeCfOYQMXAhDfQ" type="Name"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TOUusZXMEeCfOYQMXAhDfQ" y="-186"/>
+            </children>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_TOUHoZXMEeCfOYQMXAhDfQ" points="[11, -12, -276, 267]$[223, -265, -64, 14]"/>
+          </edges>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_aYwVEJXMEeCfOYQMXAhDfQ" type="OwnedElement" source="_Z_kZAJXMEeCfOYQMXAhDfQ" target="_aYsqsJXMEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+            <element xsi:nil="true"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_aYwVEZXMEeCfOYQMXAhDfQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+          </edges>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_apuwUJXMEeCfOYQMXAhDfQ" type="OwnedElement" source="_Z_kZAJXMEeCfOYQMXAhDfQ" target="_aprtAJXMEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+            <element xsi:nil="true"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_apuwUZXMEeCfOYQMXAhDfQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+          </edges>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_b4u6EJXMEeCfOYQMXAhDfQ" element="_b4Zi4JXMEeCfOYQMXAhDfQ" source="_aYsqsJXMEeCfOYQMXAhDfQ" target="_X76UoJXLEeCfOYQMXAhDfQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+            <children xmi:type="notation:DecorationNode" xmi:id="_b4vhIJXMEeCfOYQMXAhDfQ" type="NameLabel">
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_b4wIMJXMEeCfOYQMXAhDfQ" type="Stereotype"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_b4wIMZXMEeCfOYQMXAhDfQ" type="Name"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_b4vhIZXMEeCfOYQMXAhDfQ" y="-186"/>
+            </children>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_b4u6EZXMEeCfOYQMXAhDfQ" points="[9, -12, -155, 209]$[146, -201, -18, 20]"/>
+          </edges>
+        </contents>
+      </eAnnotations>
+      <packagedElement xmi:type="uml:Package" xmi:id="_VMDRkJXKEeCfOYQMXAhDfQ" name="IDLFile">
+        <eAnnotations xmi:id="_VMiZwJXKEeCfOYQMXAhDfQ" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_WR6GYJXKEeCfOYQMXAhDfQ" name="CORBATypeDef">
+          <generalization xmi:id="_b1Io8JXLEeCfOYQMXAhDfQ" general="_WrEX0JXLEeCfOYQMXAhDfQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_FEaNsJXMEeCfOYQMXAhDfQ" name="CORBATypeDef_no_def"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_WrEX0JXLEeCfOYQMXAhDfQ" name="CORBASequence">
+        <ownedAttribute xmi:id="_X7NxEJXLEeCfOYQMXAhDfQ" name="members">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_X7NxEZXLEeCfOYQMXAhDfQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_X7NxEpXLEeCfOYQMXAhDfQ"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_LrIqEJXMEeCfOYQMXAhDfQ" name="CORBAModule">
+        <eAnnotations xmi:id="_LrX6oJXMEeCfOYQMXAhDfQ" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_NlNxIJXMEeCfOYQMXAhDfQ" name="CORBATypeDef">
+          <generalization xmi:id="_TODB4JXMEeCfOYQMXAhDfQ" general="_WrEX0JXLEeCfOYQMXAhDfQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_PFaYkJXMEeCfOYQMXAhDfQ" name="CORBATypeDef_no_def"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_Wu1oEJXMEeCfOYQMXAhDfQ" name="CORBAInterface">
+        <nestedClassifier xmi:type="uml:DataType" xmi:id="_X6rwIJXMEeCfOYQMXAhDfQ" name="CORBATypeDef">
+          <generalization xmi:id="_b4Zi4JXMEeCfOYQMXAhDfQ" general="_WrEX0JXLEeCfOYQMXAhDfQ"/>
+        </nestedClassifier>
+        <nestedClassifier xmi:type="uml:DataType" xmi:id="_YhSdIJXMEeCfOYQMXAhDfQ" name="CORBATypeDef_no_def"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_E-lCMCpbEeGa8Z5ND9nM9A" name="CORBAModule">
+      <eAnnotations xmi:id="_E_LfICpbEeGa8Z5ND9nM9A" source="uml2.diagrams"/>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_GCIJ4CpbEeGa8Z5ND9nM9A" name="GoodEnum">
+        <ownedLiteral xmi:id="_HAcMQCpbEeGa8Z5ND9nM9A" name="EnumerationLiteral1" classifier="_GCIJ4CpbEeGa8Z5ND9nM9A"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_H0LWUCpbEeGa8Z5ND9nM9A" name="BadEnum"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_I7jOECpbEeGa8Z5ND9nM9A" name="GoodArray">
+        <ownedAttribute xmi:id="_JYTbgCpbEeGa8Z5ND9nM9A" name="members">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_KWosACpbEeGa8Z5ND9nM9A" name="BadArray">
+        <ownedAttribute xmi:id="_KW7m8SpbEeGa8Z5ND9nM9A" name="members"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_SaXR4CpbEeGa8Z5ND9nM9A" name="Intf">
+        <ownedOperation xmi:id="_SaXR4SpbEeGa8Z5ND9nM9A" name="op">
+          <ownedParameter xmi:id="_SaXR4ipbEeGa8Z5ND9nM9A" name="badParam" direction="return">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_OS1HQHbQEeKZmLbwH5zvaQ" name="CX3.5_array_field_bound_typedef">
+      <eAnnotations xmi:id="_OUeGAHbQEeKZmLbwH5zvaQ" source="uml2.diagrams"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_KcxJwHbSEeK2o_KIKP0mww" name="IDLFile">
+        <eAnnotations xmi:id="_Kfl0QHbSEeK2o_KIKP0mww" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_L2LMsHbSEeK2o_KIKP0mww" name="CORBAArray_nobounds">
+          <ownedAttribute xmi:id="_MkJtAHbSEeK2o_KIKP0mww" name="members">
+            <type xmi:type="uml:Interface" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_hl4EMExhEd2INdt7Ch5VKg"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MkJtAXbSEeK2o_KIKP0mww" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MkJtAnbSEeK2o_KIKP0mww"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_NW6KMHbTEeK2o_KIKP0mww" name="CORBAArray_number">
+          <ownedAttribute xmi:id="_NXW2IXbTEeK2o_KIKP0mww" name="members">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_Qs25kE0aEd2_sIJPOmkZ7w"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NXW2InbTEeK2o_KIKP0mww" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NXW2I3bTEeK2o_KIKP0mww"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_Thwi4HbTEeK2o_KIKP0mww" name="CORBAArray_const">
+          <ownedAttribute xmi:id="_TiDd0HbTEeK2o_KIKP0mww" name="members">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_Qs25kE0aEd2_sIJPOmkZ7w"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TiDd0XbTEeK2o_KIKP0mww" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TiDd0nbTEeK2o_KIKP0mww"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_e_9rkHbTEeK2o_KIKP0mww" name="CORBAArray_both">
+          <ownedAttribute xmi:id="_fAaXgHbTEeK2o_KIKP0mww" name="members">
+            <type xmi:type="uml:Interface" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_gVG_4ExhEd2INdt7Ch5VKg"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fAaXgXbTEeK2o_KIKP0mww" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fAaXgnbTEeK2o_KIKP0mww"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_n3POQHbTEeK2o_KIKP0mww" name="CORBAException">
+          <ownedAttribute xmi:id="_oYaosHbTEeK2o_KIKP0mww" name="CORBAField_nobounds" visibility="public">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_Qs25kE0aEd2_sIJPOmkZ7w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_S-dMEHbUEeK2o_KIKP0mww" name="CORBAField_numbers" visibility="public">
+            <type xmi:type="uml:Interface" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_A3T9AEz1Ed2ZXcdebtSTbw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_X8-7kHbUEeK2o_KIKP0mww" name="CORBAField_consts_number_together" visibility="public">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_rWJFUE0aEd2_sIJPOmkZ7w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_JkQGAHbVEeK2o_KIKP0mww" name="CORBAField_consts" visibility="public"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_va4T8HbVEeK2o_KIKP0mww" name="CORBATypeDef"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_zInxAHbVEeK2o_KIKP0mww" name="CORBATypeDef_notype"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_O_NIYKOvEeKnsbETm8qB6A" name="IDLFileContainment">
+      <eAnnotations xmi:id="_PAGgQKOvEeKnsbETm8qB6A" source="uml2.diagrams"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_ZZIOwKOdEeKKO8zjmV_8Jg" name="passFile">
+        <eAnnotations xmi:id="_ZZbwwaOdEeKKO8zjmV_8Jg" source="uml2.diagrams"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_gDB68KOdEeKKO8zjmV_8Jg" name="parentFile">
+        <eAnnotations xmi:id="_gDU14aOdEeKKO8zjmV_8Jg" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_hIK-EKOdEeKKO8zjmV_8Jg" name="package">
+          <eAnnotations xmi:id="_hIK-EaOdEeKKO8zjmV_8Jg" source="uml2.diagrams"/>
+          <packagedElement xmi:type="uml:Package" xmi:id="_othl4KOdEeKKO8zjmV_8Jg" name="failFile">
+            <eAnnotations xmi:id="_otrW4aOdEeKKO8zjmV_8Jg" source="uml2.diagrams"/>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_r_ZwILQhEeKkV6i51Y8b_g" name="checkboundvalueconstraint">
+      <eAnnotations xmi:id="_r_ZwIbQhEeKkV6i51Y8b_g" source="uml2.diagrams"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_r_ZwIrQhEeKkV6i51Y8b_g" name="Module">
+        <eAnnotations xmi:id="_r_ZwI7QhEeKkV6i51Y8b_g" source="uml2.diagrams"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_r_ZwJLQhEeKkV6i51Y8b_g" name="passArray">
+          <ownedAttribute xmi:id="_r_ZwJbQhEeKkV6i51Y8b_g" name="members">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_83uJ8ExPEd2INdt7Ch5VKg"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r_ZwJrQhEeKkV6i51Y8b_g" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r_ZwJ7QhEeKkV6i51Y8b_g"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_r_ZwKLQhEeKkV6i51Y8b_g" name="failArray">
+          <ownedAttribute xmi:id="_r_ZwKbQhEeKkV6i51Y8b_g" name="members">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_83uJ8ExPEd2INdt7Ch5VKg"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r_ZwKrQhEeKkV6i51Y8b_g" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r_ZwK7QhEeKkV6i51Y8b_g"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_r_ZwLLQhEeKkV6i51Y8b_g" name="passSequence">
+          <ownedAttribute xmi:id="_r_ZwLbQhEeKkV6i51Y8b_g" name="members">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_83uJ8ExPEd2INdt7Ch5VKg"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r_ZwLrQhEeKkV6i51Y8b_g" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r_ZwL7QhEeKkV6i51Y8b_g"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_r_ZwMLQhEeKkV6i51Y8b_g" name="failSequence">
+          <ownedAttribute xmi:id="_r_ZwMbQhEeKkV6i51Y8b_g" name="members">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_83uJ8ExPEd2INdt7Ch5VKg"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r_ZwMrQhEeKkV6i51Y8b_g" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r_ZwM7QhEeKkV6i51Y8b_g"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_r_ZwNLQhEeKkV6i51Y8b_g" name="passString"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_r_ZwNbQhEeKkV6i51Y8b_g" name="failString"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_r_ZwNrQhEeKkV6i51Y8b_g" name="faillwString"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_r_ZwN7QhEeKkV6i51Y8b_g" name="failWstring"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_r_ZwOLQhEeKkV6i51Y8b_g" name="failstruct">
+          <ownedAttribute xmi:id="_r_ZwObQhEeKkV6i51Y8b_g" name="failfield2" visibility="public">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_83uJ8ExPEd2INdt7Ch5VKg"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_r_ZwOrQhEeKkV6i51Y8b_g" name="failfield" visibility="public">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_83uJ8ExPEd2INdt7Ch5VKg"/>
+          </ownedAttribute>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_UeIAINCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAIdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_UeIAItCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAI9CzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_UeIAJNCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAJdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_QcgrAGimEd2OEpKJuElDmQ">
+      <eAnnotations xmi:id="_QcgrAWimEd2OEpKJuElDmQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeoo0xOEd2INdt7Ch5VKg"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeooExOEd2INdt7Ch5VKg"/>
+    </profileApplication>
+  </uml:Model>
+  <scadomain:CORBAInterface xmi:id="_ovuCwJLbEeC0OucdcUUg4w" base_Interface="_ovgnYJLbEeC0OucdcUUg4w" base_NamedElement="_ovgnYJLbEeC0OucdcUUg4w"/>
+  <scadomain:CORBASequence xmi:id="_pznIsJLbEeC0OucdcUUg4w" base_NamedElement="_pzX4IJLbEeC0OucdcUUg4w" base_DataType="_pzX4IJLbEeC0OucdcUUg4w"/>
+  <scadomain:CORBASequence xmi:id="_sVeBcJLbEeC0OucdcUUg4w" base_NamedElement="_sVMUoJLbEeC0OucdcUUg4w" base_DataType="_sVMUoJLbEeC0OucdcUUg4w"/>
+  <scadomain:CORBAModule xmi:id="_7ALx4JNpEeC-mLnDC30WDg" base_NamedElement="_6_7TMJNpEeC-mLnDC30WDg" base_Package="_6_7TMJNpEeC-mLnDC30WDg"/>
+  <scadomain:CORBAModule xmi:id="_9H9WsJNpEeC-mLnDC30WDg" base_NamedElement="_9HpNoJNpEeC-mLnDC30WDg" base_Package="_9HpNoJNpEeC-mLnDC30WDg"/>
+  <scadomain:CORBAInterface xmi:id="_EN10QJNqEeC-mLnDC30WDg" base_Interface="_ENo_8JNqEeC-mLnDC30WDg" base_NamedElement="_ENo_8JNqEeC-mLnDC30WDg"/>
+  <scadomain:CORBAAttribute xmi:id="_PQ-xkJNqEeC-mLnDC30WDg" base_NamedElement="_PQr2oJNqEeC-mLnDC30WDg" base_Property="_PQr2oJNqEeC-mLnDC30WDg"/>
+  <scadomain:CORBAOperation xmi:id="_Qa0ugJNqEeC-mLnDC30WDg" base_NamedElement="_Qald8JNqEeC-mLnDC30WDg" base_Operation="_Qald8JNqEeC-mLnDC30WDg"/>
+  <scadomain:CORBAParameter xmi:id="_Zgi84JNqEeC-mLnDC30WDg" base_NamedElement="_ZgTsUJNqEeC-mLnDC30WDg" base_Parameter="_ZgTsUJNqEeC-mLnDC30WDg"/>
+  <scadomain:CORBAModule xmi:id="_fU9LgJNqEeC-mLnDC30WDg" base_NamedElement="_fUresJNqEeC-mLnDC30WDg" base_Package="_fUresJNqEeC-mLnDC30WDg"/>
+  <scadomain:CORBAInterface xmi:id="_m60wsJNqEeC-mLnDC30WDg" base_Interface="_m6mHMJNqEeC-mLnDC30WDg" base_NamedElement="_m6mHMJNqEeC-mLnDC30WDg"/>
+  <scadomain:CORBAOperation xmi:id="_r2DUkJNqEeC-mLnDC30WDg" base_NamedElement="_r1xnwJNqEeC-mLnDC30WDg" base_Operation="_r1xnwJNqEeC-mLnDC30WDg"/>
+  <scadomain:CORBAParameter xmi:id="_zMunMJNqEeC-mLnDC30WDg" base_NamedElement="_zMf9sJNqEeC-mLnDC30WDg" base_Parameter="_zMf9sJNqEeC-mLnDC30WDg"/>
+  <scadomain:CORBAAttribute xmi:id="_8sEPcJNqEeC-mLnDC30WDg" base_NamedElement="_8rx7kJNqEeC-mLnDC30WDg" base_Property="_8rx7kJNqEeC-mLnDC30WDg"/>
+  <scadomain:CORBAModule xmi:id="_7NQAsJNtEeC-mLnDC30WDg" base_NamedElement="_7NB-QJNtEeC-mLnDC30WDg" base_Package="_7NB-QJNtEeC-mLnDC30WDg"/>
+  <scadomain:CORBAModule xmi:id="_-iDZUJNtEeC-mLnDC30WDg" base_NamedElement="_-hy6oJNtEeC-mLnDC30WDg" base_Package="_-hy6oJNtEeC-mLnDC30WDg"/>
+  <scadomain:CORBAModule xmi:id="__iHvMJNtEeC-mLnDC30WDg" base_NamedElement="__h0NMJNtEeC-mLnDC30WDg" base_Package="__h0NMJNtEeC-mLnDC30WDg"/>
+  <scadomain:CORBAModule xmi:id="_WkivsJNzEeC-mLnDC30WDg" base_NamedElement="_WkS4EJNzEeC-mLnDC30WDg" base_Package="_WkS4EJNzEeC-mLnDC30WDg"/>
+  <scadomain:CORBAInterface xmi:id="_YXc3wJNzEeC-mLnDC30WDg" base_Interface="_YXIusJNzEeC-mLnDC30WDg" base_NamedElement="_YXIusJNzEeC-mLnDC30WDg"/>
+  <scadomain:CORBAInterface xmi:id="_bFhnkJNzEeC-mLnDC30WDg" base_Interface="_bFVaUJNzEeC-mLnDC30WDg" base_NamedElement="_bFVaUJNzEeC-mLnDC30WDg"/>
+  <scadomain:CORBAOperation xmi:id="_eU34cJNzEeC-mLnDC30WDg" base_NamedElement="_eUmysJNzEeC-mLnDC30WDg" base_Operation="_eUmysJNzEeC-mLnDC30WDg"/>
+  <scadomain:CORBAOperation xmi:id="_f9c_0JNzEeC-mLnDC30WDg" base_NamedElement="_f9O9YJNzEeC-mLnDC30WDg" base_Operation="_f9O9YJNzEeC-mLnDC30WDg"/>
+  <scadomain:CORBAAttribute xmi:id="_mXXvQJNzEeC-mLnDC30WDg" base_NamedElement="_mXKT4JNzEeC-mLnDC30WDg" base_Property="_mXKT4JNzEeC-mLnDC30WDg"/>
+  <scadomain:CORBAParameter xmi:id="_xR_pwJNzEeC-mLnDC30WDg" base_NamedElement="_xRwZMJNzEeC-mLnDC30WDg" base_Parameter="_xRwZMJNzEeC-mLnDC30WDg"/>
+  <scadomain:CORBAParameter xmi:id="_ylM-EJNzEeC-mLnDC30WDg" base_NamedElement="_ykz8gJNzEeC-mLnDC30WDg" base_Parameter="_ykz8gJNzEeC-mLnDC30WDg"/>
+  <scadomain:CORBAAttribute xmi:id="_NKhaYJN1EeC-mLnDC30WDg" base_NamedElement="_NKSw4JN1EeC-mLnDC30WDg" base_Property="_NKSw4JN1EeC-mLnDC30WDg"/>
+  <scadomain:CORBAModule xmi:id="_ZZ_ygJN2EeC-mLnDC30WDg" base_NamedElement="_ZZxwEJN2EeC-mLnDC30WDg" base_Package="_ZZxwEJN2EeC-mLnDC30WDg"/>
+  <scadomain:CORBAInterface xmi:id="_abN-8JN2EeC-mLnDC30WDg" base_Interface="_aa85MJN2EeC-mLnDC30WDg" base_NamedElement="_aa85MJN2EeC-mLnDC30WDg"/>
+  <scadomain:CORBAOperation xmi:id="_bdZNoJN2EeC-mLnDC30WDg" base_NamedElement="_bdLLMJN2EeC-mLnDC30WDg" base_Operation="_bdLLMJN2EeC-mLnDC30WDg"/>
+  <scadomain:CORBAParameter xmi:id="_cFLmYJN2EeC-mLnDC30WDg" base_NamedElement="_cE7uwJN2EeC-mLnDC30WDg" base_Parameter="_cE7uwJN2EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_iIy5MJN3EeC-mLnDC30WDg" base_NamedElement="_iIf-QJN3EeC-mLnDC30WDg" base_Property="_iIf-QJN3EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstants xmi:id="_uukt8JN3EeC-mLnDC30WDg" base_NamedElement="_uuTBIJN3EeC-mLnDC30WDg" base_Class="_uuTBIJN3EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_Ko7gAJN4EeC-mLnDC30WDg" base_NamedElement="_KopzMJN4EeC-mLnDC30WDg" base_Property="_KopzMJN4EeC-mLnDC30WDg"/>
+  <scadomain:CORBAInterface xmi:id="_7gRz8JN5EeC-mLnDC30WDg" base_Interface="_7gEYkJN5EeC-mLnDC30WDg" base_NamedElement="_7gEYkJN5EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_8W2PkJN5EeC-mLnDC30WDg" base_NamedElement="_8WnmEJN5EeC-mLnDC30WDg" base_Property="_8WnmEJN5EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_-h2ukJN5EeC-mLnDC30WDg" base_NamedElement="_-hlo0JN5EeC-mLnDC30WDg" base_Property="_-hlo0JN5EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_AUnssJN6EeC-mLnDC30WDg" base_NamedElement="_AUZDMJN6EeC-mLnDC30WDg" base_Property="_AUZDMJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_ByFwQJN6EeC-mLnDC30WDg" base_NamedElement="_Bxy1UJN6EeC-mLnDC30WDg" base_Property="_Bxy1UJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_DQm8sJN6EeC-mLnDC30WDg" base_NamedElement="_DQZhUJN6EeC-mLnDC30WDg" base_Property="_DQZhUJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_E0-ScJN6EeC-mLnDC30WDg" base_NamedElement="_E0ua0JN6EeC-mLnDC30WDg" base_Property="_E0ua0JN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_GB8b4JN6EeC-mLnDC30WDg" base_NamedElement="_GBtLUJN6EeC-mLnDC30WDg" base_Property="_GBtLUJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_IZ0SMJN6EeC-mLnDC30WDg" base_NamedElement="_IZgwMJN6EeC-mLnDC30WDg" base_Property="_IZgwMJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_KbwUwJN6EeC-mLnDC30WDg" base_NamedElement="_KbhrQJN6EeC-mLnDC30WDg" base_Property="_KbhrQJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_MEwS4JN6EeC-mLnDC30WDg" base_NamedElement="_MEhCUJN6EeC-mLnDC30WDg" base_Property="_MEhCUJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_PXGNYJN6EeC-mLnDC30WDg" base_NamedElement="_PW4yAJN6EeC-mLnDC30WDg" base_Property="_PW4yAJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_Q5t2sJN6EeC-mLnDC30WDg" base_NamedElement="_Q5cJ4JN6EeC-mLnDC30WDg" base_Property="_Q5cJ4JN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_S60LwJN6EeC-mLnDC30WDg" base_NamedElement="_S6liQJN6EeC-mLnDC30WDg" base_Property="_S6liQJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_U0JE4JN6EeC-mLnDC30WDg" base_NamedElement="_Uz7CcJN6EeC-mLnDC30WDg" base_Property="_Uz7CcJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_WxOcoJN6EeC-mLnDC30WDg" base_NamedElement="_WxBoUJN6EeC-mLnDC30WDg" base_Property="_WxBoUJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_Zx_e8JN6EeC-mLnDC30WDg" base_NamedElement="_ZxvnUJN6EeC-mLnDC30WDg" base_Property="_ZxvnUJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_bkFusJN6EeC-mLnDC30WDg" base_NamedElement="_bj3FMJN6EeC-mLnDC30WDg" base_Property="_bj3FMJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_duoToJN6EeC-mLnDC30WDg" base_NamedElement="_dubfUJN6EeC-mLnDC30WDg" base_Property="_dubfUJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_oUqeMJN6EeC-mLnDC30WDg" base_NamedElement="_oUbNoJN6EeC-mLnDC30WDg" base_Property="_oUbNoJN6EeC-mLnDC30WDg"/>
+  <scadomain:CORBAInterface xmi:id="_ntkMgJN7EeC-mLnDC30WDg" base_Interface="_ntUU4JN7EeC-mLnDC30WDg" base_NamedElement="_ntUU4JN7EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_ppyBkJN7EeC-mLnDC30WDg" base_NamedElement="_ppkmMJN7EeC-mLnDC30WDg" base_Property="_ppkmMJN7EeC-mLnDC30WDg"/>
+  <scadomain:CORBAConstant xmi:id="_vGwAkJN7EeC-mLnDC30WDg" base_NamedElement="_vGgI8JN7EeC-mLnDC30WDg" base_Property="_vGgI8JN7EeC-mLnDC30WDg"/>
+  <scadomain:CORBAInterface xmi:id="_MgQiIJOFEeC-mLnDC30WDg" base_Interface="_MgDGwJOFEeC-mLnDC30WDg" base_NamedElement="_MgDGwJOFEeC-mLnDC30WDg"/>
+  <scadomain:CORBAUnion xmi:id="_Njp40JOFEeC-mLnDC30WDg" base_NamedElement="_NjBmsJOFEeC-mLnDC30WDg" base_DataType="_NjBmsJOFEeC-mLnDC30WDg"/>
+  <scadomain:CORBAModule xmi:id="_tAZMgJOFEeC-mLnDC30WDg" base_NamedElement="_tAHfsJOFEeC-mLnDC30WDg" base_Package="_tAHfsJOFEeC-mLnDC30WDg"/>
+  <scadomain:CORBAUnion xmi:id="_uPuGYJOFEeC-mLnDC30WDg" base_NamedElement="_uPfc4JOFEeC-mLnDC30WDg" base_DataType="_uPfc4JOFEeC-mLnDC30WDg"/>
+  <scadomain:CORBACase xmi:id="_BGe0MJOKEeC-mLnDC30WDg" base_NamedElement="_BGPjoJOKEeC-mLnDC30WDg" base_Property="_BGPjoJOKEeC-mLnDC30WDg">
+    <label></label>
+  </scadomain:CORBACase>
+  <scadomain:CORBACase xmi:id="_Bt1vIJOKEeC-mLnDC30WDg" base_NamedElement="_Bti0MJOKEeC-mLnDC30WDg" base_Property="_Bti0MJOKEeC-mLnDC30WDg">
+    <label></label>
+  </scadomain:CORBACase>
+  <scadomain:IDLFile xmi:id="_qLXRYJOLEeC-mLnDC30WDg" base_Package="_qLLrMJOLEeC-mLnDC30WDg"/>
+  <scadomain:CORBAInterface xmi:id="_Sl-kAJXGEeCfOYQMXAhDfQ" base_Interface="_SlT1oJXGEeCfOYQMXAhDfQ" base_NamedElement="_SlT1oJXGEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAOperation xmi:id="_TzmNsJXGEeCfOYQMXAhDfQ" base_NamedElement="_TzWWEJXGEeCfOYQMXAhDfQ" base_Operation="_TzWWEJXGEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAParameter xmi:id="_Uh1MsJXGEeCfOYQMXAhDfQ" base_NamedElement="_UhhqsJXGEeCfOYQMXAhDfQ" base_Parameter="_UhhqsJXGEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAParameter xmi:id="_tlqBEJXHEeCfOYQMXAhDfQ" base_NamedElement="_tlawgJXHEeCfOYQMXAhDfQ" base_Parameter="_tlawgJXHEeCfOYQMXAhDfQ"/>
+  <scadomain:IDLFile xmi:id="_VMWzkJXKEeCfOYQMXAhDfQ" base_Package="_VMDRkJXKEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBATypeDef xmi:id="_WSO2gJXKEeCfOYQMXAhDfQ" base_NamedElement="_WR6GYJXKEeCfOYQMXAhDfQ" base_DataType="_WR6GYJXKEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBASequence xmi:id="_WrTBUJXLEeCfOYQMXAhDfQ" base_NamedElement="_WrEX0JXLEeCfOYQMXAhDfQ" base_DataType="_WrEX0JXLEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBATypeDef xmi:id="_FEqFUJXMEeCfOYQMXAhDfQ" base_NamedElement="_FEaNsJXMEeCfOYQMXAhDfQ" base_DataType="_FEaNsJXMEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAModule xmi:id="_LrWsgJXMEeCfOYQMXAhDfQ" base_NamedElement="_LrIqEJXMEeCfOYQMXAhDfQ" base_Package="_LrIqEJXMEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBATypeDef xmi:id="_Nle24JXMEeCfOYQMXAhDfQ" base_NamedElement="_NlNxIJXMEeCfOYQMXAhDfQ" base_DataType="_NlNxIJXMEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBATypeDef xmi:id="_PFpCEJXMEeCfOYQMXAhDfQ" base_NamedElement="_PFaYkJXMEeCfOYQMXAhDfQ" base_DataType="_PFaYkJXMEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAInterface xmi:id="_WvGt0JXMEeCfOYQMXAhDfQ" base_Interface="_Wu1oEJXMEeCfOYQMXAhDfQ" base_NamedElement="_Wu1oEJXMEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBATypeDef xmi:id="_X68O0JXMEeCfOYQMXAhDfQ" base_NamedElement="_X6rwIJXMEeCfOYQMXAhDfQ" base_DataType="_X6rwIJXMEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBATypeDef xmi:id="_YhiUwJXMEeCfOYQMXAhDfQ" base_NamedElement="_YhSdIJXMEeCfOYQMXAhDfQ" base_DataType="_YhSdIJXMEeCfOYQMXAhDfQ"/>
+  <scadomain:IDLFile xmi:id="_yeYmYJXOEeCfOYQMXAhDfQ" base_Package="_yeG5kJXOEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBASequence xmi:id="_ztoAsJXOEeCfOYQMXAhDfQ" base_NamedElement="_ztYJEJXOEeCfOYQMXAhDfQ" base_DataType="_ztYJEJXOEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBASequence xmi:id="_12GJEJXOEeCfOYQMXAhDfQ" base_NamedElement="_113fkJXOEeCfOYQMXAhDfQ" base_DataType="_113fkJXOEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAModule xmi:id="_8q3ogJXOEeCfOYQMXAhDfQ" base_NamedElement="_8qlUoJXOEeCfOYQMXAhDfQ" base_Package="_8qlUoJXOEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBASequence xmi:id="_-QeUYJXOEeCfOYQMXAhDfQ" base_NamedElement="_-QMnkJXOEeCfOYQMXAhDfQ" base_DataType="_-QMnkJXOEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBASequence xmi:id="__wDQwJXOEeCfOYQMXAhDfQ" base_NamedElement="__vyyEJXOEeCfOYQMXAhDfQ" base_DataType="__vyyEJXOEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAInterface xmi:id="_fbJpMJXSEeCfOYQMXAhDfQ" base_Interface="_fa5KgJXSEeCfOYQMXAhDfQ" base_NamedElement="_fa5KgJXSEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAOperation xmi:id="_gHSWcJXSEeCfOYQMXAhDfQ" base_NamedElement="_gHBQsJXSEeCfOYQMXAhDfQ" base_Operation="_gHBQsJXSEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAParameter xmi:id="_F8sVAJXWEeCfOYQMXAhDfQ" base_NamedElement="_F8eSkJXWEeCfOYQMXAhDfQ" base_Parameter="_F8eSkJXWEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAUnion xmi:id="_jIAGsJXYEeCfOYQMXAhDfQ" base_NamedElement="_jHwPEJXYEeCfOYQMXAhDfQ" base_DataType="_jHwPEJXYEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAUnion xmi:id="_uFdSwJXYEeCfOYQMXAhDfQ" base_NamedElement="_uFJJsJXYEeCfOYQMXAhDfQ" base_DataType="_uFJJsJXYEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAUnion xmi:id="_3UDJQJXYEeCfOYQMXAhDfQ" base_NamedElement="_3TzRoJXYEeCfOYQMXAhDfQ" base_DataType="_3TzRoJXYEeCfOYQMXAhDfQ"/>
+  <scadomain:CORBAUnion xmi:id="_sRKmICdNEeGfROXqt7OJfQ" base_NamedElement="_sQtTICdNEeGfROXqt7OJfQ" base_DataType="_sQtTICdNEeGfROXqt7OJfQ"/>
+  <scadomain:CORBAModule xmi:id="_E-39ICpbEeGa8Z5ND9nM9A" base_NamedElement="_E-lCMCpbEeGa8Z5ND9nM9A" base_Package="_E-lCMCpbEeGa8Z5ND9nM9A"/>
+  <scadomain:CORBAEnum xmi:id="_GCbE0CpbEeGa8Z5ND9nM9A" base_NamedElement="_GCIJ4CpbEeGa8Z5ND9nM9A" base_Enumeration="_GCIJ4CpbEeGa8Z5ND9nM9A"/>
+  <scadomain:CORBAEnum xmi:id="_H0oCQCpbEeGa8Z5ND9nM9A" base_NamedElement="_H0LWUCpbEeGa8Z5ND9nM9A" base_Enumeration="_H0LWUCpbEeGa8Z5ND9nM9A"/>
+  <scadomain:CORBAArray xmi:id="_I7_6ACpbEeGa8Z5ND9nM9A" base_NamedElement="_I7jOECpbEeGa8Z5ND9nM9A" base_DataType="_I7jOECpbEeGa8Z5ND9nM9A">
+    <bounds xmi:id="_02VHoF55EeKrWL0xDEkQXQ" value="5"/>
+  </scadomain:CORBAArray>
+  <scadomain:CORBAArray xmi:id="_KW7m8CpbEeGa8Z5ND9nM9A" base_NamedElement="_KWosACpbEeGa8Z5ND9nM9A" base_DataType="_KWosACpbEeGa8Z5ND9nM9A">
+    <bounds xmi:id="_02WVwF55EeKrWL0xDEkQXQ" value="5"/>
+  </scadomain:CORBAArray>
+  <scadomain:CORBAInterface xmi:id="_SahC4CpbEeGa8Z5ND9nM9A" base_Interface="_SaXR4CpbEeGa8Z5ND9nM9A" base_NamedElement="_SaXR4CpbEeGa8Z5ND9nM9A"/>
+  <scadomain:CORBAOperation xmi:id="_SahC4SpbEeGa8Z5ND9nM9A" base_NamedElement="_SaXR4SpbEeGa8Z5ND9nM9A" base_Operation="_SaXR4SpbEeGa8Z5ND9nM9A"/>
+  <scadomain:CORBAParameter xmi:id="_SahC4ipbEeGa8Z5ND9nM9A" base_NamedElement="_SaXR4ipbEeGa8Z5ND9nM9A" base_Parameter="_SaXR4ipbEeGa8Z5ND9nM9A"/>
+  <scadomain:IDLFile xmi:id="_Kdp6kHbSEeK2o_KIKP0mww" base_Package="_KcxJwHbSEeK2o_KIKP0mww"/>
+  <scadomain:CORBAArray xmi:id="_L2n4oHbSEeK2o_KIKP0mww" base_NamedElement="_L2LMsHbSEeK2o_KIKP0mww" base_DataType="_L2LMsHbSEeK2o_KIKP0mww">
+    <bounds xmi:id="_81lF4HbSEeK2o_KIKP0mww" value=""/>
+  </scadomain:CORBAArray>
+  <scadomain:CORBAArray xmi:id="_NXW2IHbTEeK2o_KIKP0mww" base_NamedElement="_NW6KMHbTEeK2o_KIKP0mww" base_DataType="_NW6KMHbTEeK2o_KIKP0mww">
+    <bounds xmi:id="_OPTKwHbTEeK2o_KIKP0mww" value="11"/>
+  </scadomain:CORBAArray>
+  <scadomain:CORBAArray xmi:id="_Th5s0HbTEeK2o_KIKP0mww" base_NamedElement="_Thwi4HbTEeK2o_KIKP0mww" base_DataType="_Thwi4HbTEeK2o_KIKP0mww">
+    <bounds xmi:id="_VyXTkHbTEeK2o_KIKP0mww" constant="_DQm8sJN6EeC-mLnDC30WDg" value=""/>
+  </scadomain:CORBAArray>
+  <scadomain:CORBAArray xmi:id="_fAQmgHbTEeK2o_KIKP0mww" base_NamedElement="_e_9rkHbTEeK2o_KIKP0mww" base_DataType="_e_9rkHbTEeK2o_KIKP0mww">
+    <bounds xmi:id="_gm6bQHbTEeK2o_KIKP0mww" value="1"/>
+    <bounds xmi:id="_hO7dgHbTEeK2o_KIKP0mww" value="2"/>
+    <bounds xmi:id="_h_4ZUHbTEeK2o_KIKP0mww" constant="_E0-ScJN6EeC-mLnDC30WDg" value=""/>
+    <bounds xmi:id="_jaCqMHbTEeK2o_KIKP0mww" constant="_PXGNYJN6EeC-mLnDC30WDg" value=""/>
+  </scadomain:CORBAArray>
+  <scadomain:CORBAException xmi:id="_n3YYMHbTEeK2o_KIKP0mww" base_NamedElement="_n3POQHbTEeK2o_KIKP0mww" base_DataType="_n3POQHbTEeK2o_KIKP0mww"/>
+  <scadomain:CORBAField xmi:id="_oY2tkHbTEeK2o_KIKP0mww" base_NamedElement="_oYaosHbTEeK2o_KIKP0mww" base_Property="_oYaosHbTEeK2o_KIKP0mww">
+    <bounds xmi:id="_qI4gwHbTEeK2o_KIKP0mww" value=""/>
+    <bounds xmi:id="_qgiy0HbTEeK2o_KIKP0mww" value=""/>
+  </scadomain:CORBAField>
+  <scadomain:CORBAField xmi:id="_S-wHAHbUEeK2o_KIKP0mww" base_NamedElement="_S-dMEHbUEeK2o_KIKP0mww" base_Property="_S-dMEHbUEeK2o_KIKP0mww">
+    <bounds xmi:id="_U3QgwHbUEeK2o_KIKP0mww" value="1"/>
+    <bounds xmi:id="_VdpLUHbUEeK2o_KIKP0mww" value="2"/>
+  </scadomain:CORBAField>
+  <scadomain:CORBAField xmi:id="_X9R2gHbUEeK2o_KIKP0mww" base_NamedElement="_X8-7kHbUEeK2o_KIKP0mww" base_Property="_X8-7kHbUEeK2o_KIKP0mww">
+    <bounds xmi:id="_atR48HbUEeK2o_KIKP0mww" value="12">
+      <constant href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_vpTvccfBEd2D1-xs8ScBFA"/>
+    </bounds>
+  </scadomain:CORBAField>
+  <scadomain:CORBAField xmi:id="_JkjA8HbVEeK2o_KIKP0mww" base_NamedElement="_JkQGAHbVEeK2o_KIKP0mww" base_Property="_JkQGAHbVEeK2o_KIKP0mww">
+    <bounds xmi:id="_Ln6m4HbVEeK2o_KIKP0mww" value="">
+      <constant href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_vpTvccfBEd2D1-xs8ScBFA"/>
+    </bounds>
+    <bounds xmi:id="_MlELoHbVEeK2o_KIKP0mww" constant="_KbwUwJN6EeC-mLnDC30WDg" value=""/>
+  </scadomain:CORBAField>
+  <scadomain:CORBATypeDef xmi:id="_vbLO4HbVEeK2o_KIKP0mww" base_NamedElement="_va4T8HbVEeK2o_KIKP0mww" base_DataType="_va4T8HbVEeK2o_KIKP0mww">
+    <type xmi:type="scadomain:CORBAInterface" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_vpdgT8fBEd2D1-xs8ScBFA"/>
+  </scadomain:CORBATypeDef>
+  <scadomain:CORBATypeDef xmi:id="_zI6r8HbVEeK2o_KIKP0mww" base_NamedElement="_zInxAHbVEeK2o_KIKP0mww" base_DataType="_zInxAHbVEeK2o_KIKP0mww"/>
+  <scadomain:IDLFile xmi:id="_gDU14KOdEeKKO8zjmV_8Jg" base_Package="_gDB68KOdEeKKO8zjmV_8Jg"/>
+  <scadomain:IDLFile xmi:id="_otrW4KOdEeKKO8zjmV_8Jg" base_Package="_othl4KOdEeKKO8zjmV_8Jg"/>
+  <scadomain:IDLFile xmi:id="_ZZbwwKOdEeKKO8zjmV_8Jg" base_Package="_ZZIOwKOdEeKKO8zjmV_8Jg"/>
+  <scadomain:IDLFile xmi:id="_r_cMYLQhEeKkV6i51Y8b_g" base_Package="_r_ZwILQhEeKkV6i51Y8b_g"/>
+  <scadomain:CORBAModule xmi:id="_r_cMYbQhEeKkV6i51Y8b_g" base_NamedElement="_r_ZwIrQhEeKkV6i51Y8b_g" base_Package="_r_ZwIrQhEeKkV6i51Y8b_g"/>
+  <scadomain:CORBAArray xmi:id="_r_czcLQhEeKkV6i51Y8b_g" base_NamedElement="_r_ZwJLQhEeKkV6i51Y8b_g" base_DataType="_r_ZwJLQhEeKkV6i51Y8b_g">
+    <bounds xmi:id="_r_czcbQhEeKkV6i51Y8b_g" value="10"/>
+  </scadomain:CORBAArray>
+  <scadomain:CORBAArray xmi:id="_r_czcrQhEeKkV6i51Y8b_g" base_NamedElement="_r_ZwKLQhEeKkV6i51Y8b_g" base_DataType="_r_ZwKLQhEeKkV6i51Y8b_g">
+    <bounds xmi:id="_r_czc7QhEeKkV6i51Y8b_g" value="-10"/>
+  </scadomain:CORBAArray>
+  <scadomain:CORBASequence xmi:id="_r_czdLQhEeKkV6i51Y8b_g" base_NamedElement="_r_ZwLLQhEeKkV6i51Y8b_g" base_DataType="_r_ZwLLQhEeKkV6i51Y8b_g" bound="10">
+    <bounds xmi:id="_zvi_QFR2EeSx-d3TBjQpfQ" value="10"/>
+  </scadomain:CORBASequence>
+  <scadomain:CORBASequence xmi:id="_r_dagLQhEeKkV6i51Y8b_g" base_NamedElement="_r_ZwMLQhEeKkV6i51Y8b_g" base_DataType="_r_ZwMLQhEeKkV6i51Y8b_g" bound="10.7">
+    <bounds xmi:id="_zvkNYFR2EeSx-d3TBjQpfQ" value="10.7"/>
+  </scadomain:CORBASequence>
+  <scadomain:CORBAString xmi:id="_r_dagbQhEeKkV6i51Y8b_g" base_NamedElement="_r_ZwNLQhEeKkV6i51Y8b_g" bound="10" base_DataType="_r_ZwNLQhEeKkV6i51Y8b_g">
+    <bounds xmi:id="_zvmpoFR2EeSx-d3TBjQpfQ" value="10"/>
+  </scadomain:CORBAString>
+  <scadomain:CORBAString xmi:id="_r_dagrQhEeKkV6i51Y8b_g" base_NamedElement="_r_ZwNbQhEeKkV6i51Y8b_g" bound="-10" base_DataType="_r_ZwNbQhEeKkV6i51Y8b_g">
+    <bounds xmi:id="_zvn3wFR2EeSx-d3TBjQpfQ" value="-10"/>
+  </scadomain:CORBAString>
+  <scadomain:CORBAWString xmi:id="_r_dag7QhEeKkV6i51Y8b_g" base_NamedElement="_r_ZwNrQhEeKkV6i51Y8b_g" bound=" " base_DataType="_r_ZwNrQhEeKkV6i51Y8b_g">
+    <bounds xmi:id="_zvpF4FR2EeSx-d3TBjQpfQ" value=" "/>
+  </scadomain:CORBAWString>
+  <scadomain:CORBAWString xmi:id="_r_dahLQhEeKkV6i51Y8b_g" base_NamedElement="_r_ZwN7QhEeKkV6i51Y8b_g" bound="prismtech" base_DataType="_r_ZwN7QhEeKkV6i51Y8b_g">
+    <bounds xmi:id="_zvq7EFR2EeSx-d3TBjQpfQ" value="prismtech"/>
+  </scadomain:CORBAWString>
+  <scadomain:CORBAStruct xmi:id="_r_eBkLQhEeKkV6i51Y8b_g" base_NamedElement="_r_ZwOLQhEeKkV6i51Y8b_g" base_DataType="_r_ZwOLQhEeKkV6i51Y8b_g"/>
+  <scadomain:CORBAField xmi:id="_r_eBkbQhEeKkV6i51Y8b_g" base_NamedElement="_r_ZwObQhEeKkV6i51Y8b_g" base_Property="_r_ZwObQhEeKkV6i51Y8b_g">
+    <bounds xmi:id="_r_eBkrQhEeKkV6i51Y8b_g" value="prismtech"/>
+  </scadomain:CORBAField>
+  <scadomain:CORBAField xmi:id="_r_eBk7QhEeKkV6i51Y8b_g" base_NamedElement="_r_ZwOrQhEeKkV6i51Y8b_g" base_Property="_r_ZwOrQhEeKkV6i51Y8b_g">
+    <bounds xmi:id="_r_eBlLQhEeKkV6i51Y8b_g" value="10.7"/>
+  </scadomain:CORBAField>
+  <scadomain:SCAModel xmi:id="_zvsJMFR2EeSx-d3TBjQpfQ" base_Model="_NRAMoAwOEdmFcaeZXPdWAQ" version="3.6.2" base_NamedElement="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+</xmi:XMI>

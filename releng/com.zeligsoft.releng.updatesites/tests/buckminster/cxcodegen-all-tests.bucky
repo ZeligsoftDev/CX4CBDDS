@@ -1,0 +1,2 @@
+importtargetdefinition -A "buildDriver/rsa.target"
+junit -l 'com.zeligsoft.releng.updatesites/tests/launch/CXCodegenAllTests.launch' -o 'tests.output/test-results-cxcodegen.xml' --stdout 'tests.output/test-stdout-cxcodegen.txt' --stderr 'tests.output/test-stderr-cxcodegen.txt' --flatXML

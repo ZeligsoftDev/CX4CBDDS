@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:scadomain="http://www.zeligsoft.com/zdl/2008/SCADomain/1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xsi:schemaLocation="http://www.zeligsoft.com/zdl/2008/SCADomain/1 pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeoo0xOEd2INdt7Ch5VKg">
+  <uml:Model xmi:id="_NRAMoAwOEdmFcaeZXPdWAQ" name="AttributeTypeSetValidation">
+    <eAnnotations xmi:id="_NRAMoQwOEdmFcaeZXPdWAQ" source="uml2.diagrams"/>
+    <eAnnotations xmi:id="_voOEAF55EeKrWL0xDEkQXQ" source="cx.migration">
+      <details xmi:id="_voOEAV55EeKrWL0xDEkQXQ" key="version" value="3.6.2"/>
+      <details xmi:id="_voOEAl55EeKrWL0xDEkQXQ" key="date" value="1417720311163"/>
+    </eAnnotations>
+    <packageImport xmi:id="_UeIAJtCzEdqK7KjEh4hvHw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_yuNc4GCTEd2SLu3A_eDD4A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_FmNkyVKKEd2qDNqT9_uj3A"/>
+    </packageImport>
+    <packageImport xmi:id="_2ULeAGCTEd2SLu3A_eDD4A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_FmFo8FKKEd2qDNqT9_uj3A"/>
+    </packageImport>
+    <packageImport xmi:id="_StFNAGr3Ed2XQPRO-zUD1A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/SCALibrary.library.uml#_HIhIAGrTEd2kob3R8-spzQ"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_dHwT0EjFEd-0IIjeu3bNRQ" name="modelConfiguration">
+      <classifier xmi:type="uml:Class" href="pathmap://SCA_LIBRARIES/SCA.uml#__EXrQP_hEeCCmLpCbcuD7A"/>
+      <slot xmi:id="_ZrqdoHvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_LIBRARIES/SCA.uml#_B8FfQP_iEeCCmLpCbcuD7A"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_ZrrEsHvpEeS8spAsUHvnSw" value="scx">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+      <slot xmi:id="_ZrrEsXvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_LIBRARIES/SCA.uml#_dgr3gHTPEeScAu3E-QvDcA"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_ZrrrwHvpEeS8spAsUHvnSw" value="">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+      <slot xmi:id="_ZrrrwXvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_LIBRARIES/SCA.uml#_04-zoHTPEeScAu3E-QvDcA"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_ZrrrwnvpEeS8spAsUHvnSw" value="_s">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+      <slot xmi:id="_ZrsS0HvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_qzbt8KULEd2lg4YL0MvrHw"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_ZrsS0XvpEeS8spAsUHvnSw" value="AttributeTypeSetValidation_SRC">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_lHETwEjFEd-0IIjeu3bNRQ" name="Interfaces">
+      <packagedElement xmi:type="uml:Package" xmi:id="_nxFqAEjFEd-0IIjeu3bNRQ" name="ValidIDL">
+        <eAnnotations xmi:id="_w7Kz8EjFEd-0IIjeu3bNRQ" source="uml2.diagrams">
+          <contents xmi:type="notation:StandardDiagram" xmi:id="_w7LbAEjFEd-0IIjeu3bNRQ" type="Component" element="_nxFqAEjFEd-0IIjeu3bNRQ" name="valid_diag" measurementUnit="Himetric">
+            <children xmi:type="umlnotation:UMLShape" xmi:id="_C1iu0EjGEd-0IIjeu3bNRQ" element="_C0_8QEjGEd-0IIjeu3bNRQ" fontName="Sans" fontHeight="8" showListStereotype="None" lineColor="14263149">
+              <children xmi:type="notation:DecorationNode" xmi:id="_C1j88EjGEd-0IIjeu3bNRQ" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_C1j88UjGEd-0IIjeu3bNRQ" width="1320" height="1320"/>
+              </children>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_C1j88kjGEd-0IIjeu3bNRQ" type="Stereotype"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_C1kkAEjGEd-0IIjeu3bNRQ" type="Name"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_C1kkAUjGEd-0IIjeu3bNRQ" type="Parent"/>
+              <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_C1kkAkjGEd-0IIjeu3bNRQ" type="PackageContents" collapsed="true" canonical="false"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C1iu0kjGEd-0IIjeu3bNRQ" x="3023" y="1290"/>
+            </children>
+            <children xmi:type="umlnotation:UMLShape" xmi:id="_D-vLgEjGEd-0IIjeu3bNRQ" element="_D-OOIEjGEd-0IIjeu3bNRQ" fontName="Sans" fontHeight="8" showListStereotype="None" lineColor="14263149">
+              <children xmi:type="notation:DecorationNode" xmi:id="_D-vykEjGEd-0IIjeu3bNRQ" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_D-vykUjGEd-0IIjeu3bNRQ" width="1320" height="1320"/>
+              </children>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_D-wZoEjGEd-0IIjeu3bNRQ" type="Stereotype"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_D-wZoUjGEd-0IIjeu3bNRQ" type="Name"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_D-xnwEjGEd-0IIjeu3bNRQ" type="Parent"/>
+              <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_D-xnwUjGEd-0IIjeu3bNRQ" type="PackageContents" collapsed="true" canonical="false"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D-vLgkjGEd-0IIjeu3bNRQ" x="2898" y="3542"/>
+            </children>
+            <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_FQhjgEjGEd-0IIjeu3bNRQ" element="_FPPxIEjGEd-0IIjeu3bNRQ" fontName="Sans" fontHeight="8" showListStereotype="None" lineColor="14263149" useClassifierShape="true">
+              <children xmi:type="notation:DecorationNode" xmi:id="_FQixoEjGEd-0IIjeu3bNRQ" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_FQixoUjGEd-0IIjeu3bNRQ" width="530" height="530"/>
+              </children>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_FQixokjGEd-0IIjeu3bNRQ" type="Stereotype"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_FQjYsEjGEd-0IIjeu3bNRQ" type="Kind"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_FQjYsUjGEd-0IIjeu3bNRQ" type="Name"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_FQj_wEjGEd-0IIjeu3bNRQ" type="Parent"/>
+              <children xmi:type="notation:SemanticListCompartment" xmi:id="_FQj_wUjGEd-0IIjeu3bNRQ" visible="false" type="AttributeCompartment"/>
+              <children xmi:type="notation:SemanticListCompartment" xmi:id="_FQj_w0jGEd-0IIjeu3bNRQ" type="OperationCompartment"/>
+              <children xmi:type="notation:SemanticListCompartment" xmi:id="_FQlN4EjGEd-0IIjeu3bNRQ" visible="false" type="SignalCompartment"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FQhjgkjGEd-0IIjeu3bNRQ" x="3346" y="5846"/>
+            </children>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_HYYn4EjGEd-0IIjeu3bNRQ" type="OwnedElement" source="_D-vLgEjGEd-0IIjeu3bNRQ" target="_FQhjgEjGEd-0IIjeu3bNRQ" fontName="Sans" lineColor="8421504" showStereotype="Text">
+              <element xsi:nil="true"/>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HYYn4kjGEd-0IIjeu3bNRQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+            </edges>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_HYZO8EjGEd-0IIjeu3bNRQ" type="OwnedElement" source="_C1iu0EjGEd-0IIjeu3bNRQ" target="_D-vLgEjGEd-0IIjeu3bNRQ" fontName="Sans" lineColor="8421504" showStereotype="Text">
+              <element xsi:nil="true"/>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HYZO8kjGEd-0IIjeu3bNRQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+            </edges>
+          </contents>
+        </eAnnotations>
+        <packagedElement xmi:type="uml:Package" xmi:id="_C0_8QEjGEd-0IIjeu3bNRQ" name="ValidIDLFile">
+          <packagedElement xmi:type="uml:Package" xmi:id="_D-OOIEjGEd-0IIjeu3bNRQ" name="ValidModule">
+            <packagedElement xmi:type="uml:Interface" xmi:id="_FPPxIEjGEd-0IIjeu3bNRQ" name="ValidInterface">
+              <ownedAttribute xmi:id="_MBYMQEjGEd-0IIjeu3bNRQ" name="aLong" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_VFBXAEjGEd-0IIjeu3bNRQ" name="aFloat" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_zlEdYExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_VKXKAEjGEd-0IIjeu3bNRQ" name="aBoolean" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_v027IExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_VUUXQEjGEd-0IIjeu3bNRQ" name="anAny" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_up6K8ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_VYVUkEjGEd-0IIjeu3bNRQ" name="aLongLong" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_VcusYEjGEd-0IIjeu3bNRQ" name="aLongDouble" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_baFDkExREd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_VhDywEjGEd-0IIjeu3bNRQ" name="aChar" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_xJ8ewExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_Vp9QEEjGEd-0IIjeu3bNRQ" name="aDouble" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_yUdKEExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_Vt_78EldEd-6zcfyT6iaGg" name="anObjref" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_5iZXcExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_V1jVcEldEd-6zcfyT6iaGg" name="anOctet" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_7MfhwExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_V5T0EEldEd-6zcfyT6iaGg" name="aShort" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_83uJ8ExPEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_V8PMQEldEd-6zcfyT6iaGg" name="aString" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_rKc2cEldEd-6zcfyT6iaGg" name="aTypeCode" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_AhIrMExREd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_vfwp0EldEd-6zcfyT6iaGg" name="aUlong" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_FpjWgExREd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_vi_kAEldEd-6zcfyT6iaGg" name="aUlongLong" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_Go4skExREd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_8Xme8EldEd-6zcfyT6iaGg" name="aUshort" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_H3a8QExREd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_8a8t4EldEd-6zcfyT6iaGg" name="aWchar" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_J4nX8ExREd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_HkfOIEleEd-6zcfyT6iaGg" name="aWstring" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_K8QmQExREd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_pR1rEEjFEd-0IIjeu3bNRQ" name="InvalidIDL">
+        <eAnnotations xmi:id="_u_fKYEjFEd-0IIjeu3bNRQ" source="uml2.diagrams">
+          <contents xmi:type="notation:StandardDiagram" xmi:id="_u_r-sEjFEd-0IIjeu3bNRQ" type="Component" element="_pR1rEEjFEd-0IIjeu3bNRQ" name="Invalid_diag" measurementUnit="Himetric">
+            <children xmi:type="umlnotation:UMLShape" xmi:id="_zikUAEjFEd-0IIjeu3bNRQ" element="_zg_msEjFEd-0IIjeu3bNRQ" fontName="Sans" fontHeight="8" showListStereotype="None" lineColor="14263149">
+              <children xmi:type="notation:DecorationNode" xmi:id="_zipMgEjFEd-0IIjeu3bNRQ" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_zipMgUjFEd-0IIjeu3bNRQ" width="1320" height="1320"/>
+              </children>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_ziqaoEjFEd-0IIjeu3bNRQ" type="Stereotype"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_zirBsEjFEd-0IIjeu3bNRQ" type="Name"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_zirowEjFEd-0IIjeu3bNRQ" type="Parent"/>
+              <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_zisP0EjFEd-0IIjeu3bNRQ" type="PackageContents" collapsed="true" canonical="false"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zikUAkjFEd-0IIjeu3bNRQ" x="2254" y="1288"/>
+            </children>
+            <children xmi:type="umlnotation:UMLShape" xmi:id="_4A45cEjFEd-0IIjeu3bNRQ" element="_4AXVAEjFEd-0IIjeu3bNRQ" fontName="Sans" fontHeight="8" showListStereotype="None" lineColor="14263149">
+              <children xmi:type="notation:DecorationNode" xmi:id="_4A6HkEjFEd-0IIjeu3bNRQ" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_4A6HkUjFEd-0IIjeu3bNRQ" width="1320" height="1320"/>
+              </children>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_4A6HkkjFEd-0IIjeu3bNRQ" type="Stereotype"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_4A6uoEjFEd-0IIjeu3bNRQ" type="Name"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_4A6uoUjFEd-0IIjeu3bNRQ" type="Parent"/>
+              <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_4A7VsEjFEd-0IIjeu3bNRQ" type="PackageContents" collapsed="true" canonical="false"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4A45ckjFEd-0IIjeu3bNRQ" x="1932" y="3542"/>
+            </children>
+            <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_5xn3QEjFEd-0IIjeu3bNRQ" element="_5xD2kEjFEd-0IIjeu3bNRQ" fontName="Sans" fontHeight="8" showListStereotype="None" lineColor="14263149" useClassifierShape="true">
+              <children xmi:type="notation:DecorationNode" xmi:id="_5xpFYEjFEd-0IIjeu3bNRQ" type="ImageCompartment">
+                <layoutConstraint xmi:type="notation:Size" xmi:id="_5xpFYUjFEd-0IIjeu3bNRQ" width="530" height="530"/>
+              </children>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_5xpFYkjFEd-0IIjeu3bNRQ" type="Stereotype"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_5xqTgEjFEd-0IIjeu3bNRQ" type="Kind"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_5xqTgUjFEd-0IIjeu3bNRQ" type="Name"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_5xq6kEjFEd-0IIjeu3bNRQ" type="Parent"/>
+              <children xmi:type="notation:SemanticListCompartment" xmi:id="_5xsIsEjFEd-0IIjeu3bNRQ" visible="false" type="AttributeCompartment"/>
+              <children xmi:type="notation:SemanticListCompartment" xmi:id="_5xsvwEjFEd-0IIjeu3bNRQ" type="OperationCompartment"/>
+              <children xmi:type="notation:SemanticListCompartment" xmi:id="_5xt94EjFEd-0IIjeu3bNRQ" visible="false" type="SignalCompartment"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5xn3QkjFEd-0IIjeu3bNRQ" x="2156" y="5926"/>
+            </children>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_9wYy4EjFEd-0IIjeu3bNRQ" type="OwnedElement" source="_4A45cEjFEd-0IIjeu3bNRQ" target="_5xn3QEjFEd-0IIjeu3bNRQ" fontName="Sans" lineColor="8421504" showStereotype="Text">
+              <element xsi:nil="true"/>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_9wYy4kjFEd-0IIjeu3bNRQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+            </edges>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_9waBAEjFEd-0IIjeu3bNRQ" type="OwnedElement" source="_zikUAEjFEd-0IIjeu3bNRQ" target="_4A45cEjFEd-0IIjeu3bNRQ" fontName="Sans" lineColor="8421504" showStereotype="Text">
+              <element xsi:nil="true"/>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_9waBAkjFEd-0IIjeu3bNRQ" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+            </edges>
+          </contents>
+        </eAnnotations>
+        <packagedElement xmi:type="uml:Package" xmi:id="_zg_msEjFEd-0IIjeu3bNRQ" name="InvalidIDLFile">
+          <packagedElement xmi:type="uml:Package" xmi:id="_4AXVAEjFEd-0IIjeu3bNRQ" name="InvalidModule">
+            <packagedElement xmi:type="uml:Interface" xmi:id="_5xD2kEjFEd-0IIjeu3bNRQ" name="InvalidInterface">
+              <ownedAttribute xmi:id="_SCtggEleEd-6zcfyT6iaGg" name="aBoolean" visibility="public"/>
+              <ownedAttribute xmi:id="_SCtggUleEd-6zcfyT6iaGg" name="aDouble" visibility="public"/>
+              <ownedAttribute xmi:id="_SCtggkleEd-6zcfyT6iaGg" name="aWstring" visibility="public"/>
+              <ownedAttribute xmi:id="_SCv8wEleEd-6zcfyT6iaGg" name="aLongLong" visibility="public"/>
+              <ownedAttribute xmi:id="_SCzAEEleEd-6zcfyT6iaGg" name="aVoid" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_SCzAEUleEd-6zcfyT6iaGg" name="aWchar" visibility="public"/>
+              <ownedAttribute xmi:id="_SCznIEleEd-6zcfyT6iaGg" name="aTypeCode" visibility="public"/>
+              <ownedAttribute xmi:id="_SCznIUleEd-6zcfyT6iaGg" name="aString" visibility="public"/>
+              <ownedAttribute xmi:id="_SC0OMEleEd-6zcfyT6iaGg" name="aFloat" visibility="public"/>
+              <ownedAttribute xmi:id="_SC0OMUleEd-6zcfyT6iaGg" name="aChar" visibility="public"/>
+              <ownedAttribute xmi:id="_SC0OMkleEd-6zcfyT6iaGg" name="aLongDouble" visibility="public"/>
+              <ownedAttribute xmi:id="_SC01QEleEd-6zcfyT6iaGg" name="anObjref" visibility="public"/>
+              <ownedAttribute xmi:id="_SC01QUleEd-6zcfyT6iaGg" name="aShort" visibility="public"/>
+              <ownedAttribute xmi:id="_SC1cUEleEd-6zcfyT6iaGg" name="anOctet" visibility="public"/>
+              <ownedAttribute xmi:id="_SC1cUUleEd-6zcfyT6iaGg" name="aLong" visibility="public"/>
+              <ownedAttribute xmi:id="_SC2DYEleEd-6zcfyT6iaGg" name="aUlong" visibility="public"/>
+              <ownedAttribute xmi:id="_SC2DYUleEd-6zcfyT6iaGg" name="anAny" visibility="public"/>
+              <ownedAttribute xmi:id="_SC2qcEleEd-6zcfyT6iaGg" name="aUlongLong" visibility="public"/>
+              <ownedAttribute xmi:id="_SC2qcUleEd-6zcfyT6iaGg" name="aUshort" visibility="public"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_dY9_MJLWEeC0OucdcUUg4w" name="readonly">
+      <eAnnotations xmi:id="_dZrJ0JLWEeC0OucdcUUg4w" source="uml2.diagrams"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_lX5koJLWEeC0OucdcUUg4w" name="CORBAInterface">
+        <ownedAttribute xmi:id="_1oq-EJLOEeC0OucdcUUg4w" name="readonly_nosetraise" visibility="public" isReadOnly="true">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_rWJFUE0aEd2_sIJPOmkZ7w"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_IlDrYJLWEeC0OucdcUUg4w" name="readonly_setraise" visibility="public" isReadOnly="true">
+          <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_la3HkEz3Ed2ZXcdebtSTbw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:id="_RDi6oJLWEeC0OucdcUUg4w" name="nonreadonly_setraise" visibility="public">
+          <type xmi:type="uml:Interface" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_hl4EMExhEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_UeIAINCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAIdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_UeIAItCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAI9CzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_UeIAJNCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAJdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_QcgrAGimEd2OEpKJuElDmQ">
+      <eAnnotations xmi:id="_QcgrAWimEd2OEpKJuElDmQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeoo0xOEd2INdt7Ch5VKg"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeooExOEd2INdt7Ch5VKg"/>
+    </profileApplication>
+  </uml:Model>
+  <scadomain:IDLFile xmi:id="_zhNpIEjFEd-0IIjeu3bNRQ" base_Package="_zg_msEjFEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAModule xmi:id="_4AhtEEjFEd-0IIjeu3bNRQ" base_NamedElement="_4AXVAEjFEd-0IIjeu3bNRQ" base_Package="_4AXVAEjFEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAInterface xmi:id="_5xO1sEjFEd-0IIjeu3bNRQ" base_Interface="_5xD2kEjFEd-0IIjeu3bNRQ" base_NamedElement="_5xD2kEjFEd-0IIjeu3bNRQ"/>
+  <scadomain:IDLFile xmi:id="_C1MJgEjGEd-0IIjeu3bNRQ" base_Package="_C0_8QEjGEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAModule xmi:id="_D-Z0UEjGEd-0IIjeu3bNRQ" base_NamedElement="_D-OOIEjGEd-0IIjeu3bNRQ" base_Package="_D-OOIEjGEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAInterface xmi:id="_FPaJMEjGEd-0IIjeu3bNRQ" base_Interface="_FPPxIEjGEd-0IIjeu3bNRQ" base_NamedElement="_FPPxIEjGEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAAttribute xmi:id="_MBwmwEjGEd-0IIjeu3bNRQ" base_NamedElement="_MBYMQEjGEd-0IIjeu3bNRQ" base_Property="_MBYMQEjGEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAAttribute xmi:id="_VFClIEjGEd-0IIjeu3bNRQ" base_NamedElement="_VFBXAEjGEd-0IIjeu3bNRQ" base_Property="_VFBXAEjGEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAAttribute xmi:id="_VKXxEEjGEd-0IIjeu3bNRQ" base_NamedElement="_VKXKAEjGEd-0IIjeu3bNRQ" base_Property="_VKXKAEjGEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAAttribute xmi:id="_VUU-UEjGEd-0IIjeu3bNRQ" base_NamedElement="_VUUXQEjGEd-0IIjeu3bNRQ" base_Property="_VUUXQEjGEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAAttribute xmi:id="_VYV7oEjGEd-0IIjeu3bNRQ" base_NamedElement="_VYVUkEjGEd-0IIjeu3bNRQ" base_Property="_VYVUkEjGEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAAttribute xmi:id="_VcvTcEjGEd-0IIjeu3bNRQ" base_NamedElement="_VcusYEjGEd-0IIjeu3bNRQ" base_Property="_VcusYEjGEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAAttribute xmi:id="_VhEZ0EjGEd-0IIjeu3bNRQ" base_NamedElement="_VhDywEjGEd-0IIjeu3bNRQ" base_Property="_VhDywEjGEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAAttribute xmi:id="_Vp93IEjGEd-0IIjeu3bNRQ" base_NamedElement="_Vp9QEEjGEd-0IIjeu3bNRQ" base_Property="_Vp9QEEjGEd-0IIjeu3bNRQ"/>
+  <scadomain:CORBAAttribute xmi:id="_Vt_78UldEd-6zcfyT6iaGg" base_NamedElement="_Vt_78EldEd-6zcfyT6iaGg" base_Property="_Vt_78EldEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_V1j8gEldEd-6zcfyT6iaGg" base_NamedElement="_V1jVcEldEd-6zcfyT6iaGg" base_Property="_V1jVcEldEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_V5T0EUldEd-6zcfyT6iaGg" base_NamedElement="_V5T0EEldEd-6zcfyT6iaGg" base_Property="_V5T0EEldEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_V8PzUEldEd-6zcfyT6iaGg" base_NamedElement="_V8PMQEldEd-6zcfyT6iaGg" base_Property="_V8PMQEldEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_rKc2cUldEd-6zcfyT6iaGg" base_NamedElement="_rKc2cEldEd-6zcfyT6iaGg" base_Property="_rKc2cEldEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_vfxQ4EldEd-6zcfyT6iaGg" base_NamedElement="_vfwp0EldEd-6zcfyT6iaGg" base_Property="_vfwp0EldEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_vjAyIEldEd-6zcfyT6iaGg" base_NamedElement="_vi_kAEldEd-6zcfyT6iaGg" base_Property="_vi_kAEldEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_8XnGAEldEd-6zcfyT6iaGg" base_NamedElement="_8Xme8EldEd-6zcfyT6iaGg" base_Property="_8Xme8EldEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_8bA_UEldEd-6zcfyT6iaGg" base_NamedElement="_8a8t4EldEd-6zcfyT6iaGg" base_Property="_8a8t4EldEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_Hkf1MEleEd-6zcfyT6iaGg" base_NamedElement="_HkfOIEleEd-6zcfyT6iaGg" base_Property="_HkfOIEleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC3RgEleEd-6zcfyT6iaGg" base_NamedElement="_SCtggEleEd-6zcfyT6iaGg" base_Property="_SCtggEleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC3RgUleEd-6zcfyT6iaGg" base_NamedElement="_SCtggUleEd-6zcfyT6iaGg" base_Property="_SCtggUleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC3RgkleEd-6zcfyT6iaGg" base_NamedElement="_SCtggkleEd-6zcfyT6iaGg" base_Property="_SCtggkleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC3Rg0leEd-6zcfyT6iaGg" base_NamedElement="_SCv8wEleEd-6zcfyT6iaGg" base_Property="_SCv8wEleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC3RhEleEd-6zcfyT6iaGg" base_NamedElement="_SCzAEEleEd-6zcfyT6iaGg" base_Property="_SCzAEEleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC3RhUleEd-6zcfyT6iaGg" base_NamedElement="_SCzAEUleEd-6zcfyT6iaGg" base_Property="_SCzAEUleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC3RhkleEd-6zcfyT6iaGg" base_NamedElement="_SCznIEleEd-6zcfyT6iaGg" base_Property="_SCznIEleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC34kEleEd-6zcfyT6iaGg" base_NamedElement="_SCznIUleEd-6zcfyT6iaGg" base_Property="_SCznIUleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC34kUleEd-6zcfyT6iaGg" base_NamedElement="_SC0OMEleEd-6zcfyT6iaGg" base_Property="_SC0OMEleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC34kkleEd-6zcfyT6iaGg" base_NamedElement="_SC0OMUleEd-6zcfyT6iaGg" base_Property="_SC0OMUleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC34k0leEd-6zcfyT6iaGg" base_NamedElement="_SC0OMkleEd-6zcfyT6iaGg" base_Property="_SC0OMkleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC34lEleEd-6zcfyT6iaGg" base_NamedElement="_SC01QEleEd-6zcfyT6iaGg" base_Property="_SC01QEleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC34lUleEd-6zcfyT6iaGg" base_NamedElement="_SC01QUleEd-6zcfyT6iaGg" base_Property="_SC01QUleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC4foEleEd-6zcfyT6iaGg" base_NamedElement="_SC1cUEleEd-6zcfyT6iaGg" base_Property="_SC1cUEleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC4foUleEd-6zcfyT6iaGg" base_NamedElement="_SC1cUUleEd-6zcfyT6iaGg" base_Property="_SC1cUUleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC4fokleEd-6zcfyT6iaGg" base_NamedElement="_SC2DYEleEd-6zcfyT6iaGg" base_Property="_SC2DYEleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC4fo0leEd-6zcfyT6iaGg" base_NamedElement="_SC2DYUleEd-6zcfyT6iaGg" base_Property="_SC2DYUleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC4fpEleEd-6zcfyT6iaGg" base_NamedElement="_SC2qcEleEd-6zcfyT6iaGg" base_Property="_SC2qcEleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAAttribute xmi:id="_SC4fpUleEd-6zcfyT6iaGg" base_NamedElement="_SC2qcUleEd-6zcfyT6iaGg" base_Property="_SC2qcUleEd-6zcfyT6iaGg"/>
+  <scadomain:CORBAInterface xmi:id="_lYL4gJLWEeC0OucdcUUg4w" base_Interface="_lX5koJLWEeC0OucdcUUg4w" base_NamedElement="_lX5koJLWEeC0OucdcUUg4w"/>
+  <scadomain:CORBAAttribute xmi:id="_mOLsYJLWEeC0OucdcUUg4w" base_NamedElement="_1oq-EJLOEeC0OucdcUUg4w" base_Property="_1oq-EJLOEeC0OucdcUUg4w"/>
+  <scadomain:CORBAAttribute xmi:id="_mOLsYZLWEeC0OucdcUUg4w" base_NamedElement="_IlDrYJLWEeC0OucdcUUg4w" base_Property="_IlDrYJLWEeC0OucdcUUg4w">
+    <setraises href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_vpdgNsfBEd2D1-xs8ScBFA"/>
+  </scadomain:CORBAAttribute>
+  <scadomain:CORBAAttribute xmi:id="_mOLsYpLWEeC0OucdcUUg4w" base_NamedElement="_RDi6oJLWEeC0OucdcUUg4w" base_Property="_RDi6oJLWEeC0OucdcUUg4w">
+    <setraises href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_vpdgJMfBEd2D1-xs8ScBFA"/>
+  </scadomain:CORBAAttribute>
+  <scadomain:SCAModel xmi:id="_zvIIgFR2EeSx-d3TBjQpfQ" base_Model="_NRAMoAwOEdmFcaeZXPdWAQ" version="3.6.2" base_NamedElement="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+</xmi:XMI>

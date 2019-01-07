@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_uAKuobvTEd2HfIqkhZCizQ" name="LinkConstraintPackagingTest" metamodelReference="_uAKuxLvTEd2HfIqkhZCizQ">
+  <eAnnotations xmi:id="_uAKuorvTEd2HfIqkhZCizQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+    <eAnnotations xmi:id="_uAKuo7vTEd2HfIqkhZCizQ" source="test_link_constraints::Constructs::PackageOwnedTarget">
+      <details xmi:id="_uAKupLvTEd2HfIqkhZCizQ" key="name" value="name"/>
+    </eAnnotations>
+    <details xmi:id="_uAKupbvTEd2HfIqkhZCizQ" key="test_link_constraints::Constructs::PackageOwnedTarget" value="NamedElement"/>
+    <references xmi:type="uml:Class" href="../models/test_link_constraints.emx#_6kzJULvSEd2HfIqkhZCizQ"/>
+  </eAnnotations>
+  <eAnnotations xmi:id="_uAKuprvTEd2HfIqkhZCizQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_uAKup7vTEd2HfIqkhZCizQ" name="LinkConstraintPackagingTest" nsURI="http:///schemas/LinkConstraintPackagingTest/_uAKuoLvTEd2HfIqkhZCizQ/0" nsPrefix="LinkConstraintPackagingTest">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_uAKuqLvTEd2HfIqkhZCizQ" name="DragSource">
+        <eAnnotations xmi:id="_uAKuqbvTEd2HfIqkhZCizQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_uAKuxrvTEd2HfIqkhZCizQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_uAKuqrvTEd2HfIqkhZCizQ" name="base_Actor" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Actor"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_uAKurLvTEd2HfIqkhZCizQ" name="DropTarget">
+        <eAnnotations xmi:id="_uAKurbvTEd2HfIqkhZCizQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_uAKuy7vTEd2HfIqkhZCizQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_uAKurrvTEd2HfIqkhZCizQ" name="dependency" ordered="false" upperBound="-1" eType="_uAKuqLvTEd2HfIqkhZCizQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_uAKusLvTEd2HfIqkhZCizQ" name="base_UseCase" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//UseCase"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_uAKusrvTEd2HfIqkhZCizQ" name="RefSource">
+        <eAnnotations xmi:id="_uAKus7vTEd2HfIqkhZCizQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_uAKu2bvTEd2HfIqkhZCizQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_uAKutLvTEd2HfIqkhZCizQ" name="base_Class" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_uAKutrvTEd2HfIqkhZCizQ" name="RefTarget">
+        <eAnnotations xmi:id="_uAKut7vTEd2HfIqkhZCizQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_uAKu37vTEd2HfIqkhZCizQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_uAKuuLvTEd2HfIqkhZCizQ" name="base_UseCase" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//UseCase"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_uAKuurvTEd2HfIqkhZCizQ" name="SubRefSource" eSuperTypes="_uAKusrvTEd2HfIqkhZCizQ">
+        <eAnnotations xmi:id="_uAKuu7vTEd2HfIqkhZCizQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_uAKu5bvTEd2HfIqkhZCizQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_uAKuvbvTEd2HfIqkhZCizQ" name="SubRefTarget" eSuperTypes="_uAKutrvTEd2HfIqkhZCizQ">
+        <eAnnotations xmi:id="_uAKuvrvTEd2HfIqkhZCizQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_uAKu6LvTEd2HfIqkhZCizQ"/>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_uAKuwLvTEd2HfIqkhZCizQ" name="PackageOwnedSource">
+        <eAnnotations xmi:id="_uAKuwbvTEd2HfIqkhZCizQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_uAKu67vTEd2HfIqkhZCizQ"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_uAKuwrvTEd2HfIqkhZCizQ" name="base_Classifier" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Classifier"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <packageImport xmi:id="_uAKuxLvTEd2HfIqkhZCizQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_uAKuxbvTEd2HfIqkhZCizQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_uAKuxrvTEd2HfIqkhZCizQ" name="DragSource">
+    <eAnnotations xmi:id="_uAKux7vTEd2HfIqkhZCizQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="../models/test_link_constraints.emx#_0grVALJhEd2eS5gi4elN2w"/>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_uAKuyLvTEd2HfIqkhZCizQ" name="base_Actor" association="_uAKuybvTEd2HfIqkhZCizQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Actor"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_uAKuybvTEd2HfIqkhZCizQ" name="Actor_DragSource" memberEnd="_uAKuyrvTEd2HfIqkhZCizQ _uAKuyLvTEd2HfIqkhZCizQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_uAKuyrvTEd2HfIqkhZCizQ" name="extension_DragSource" type="_uAKuxrvTEd2HfIqkhZCizQ" aggregation="composite" association="_uAKuybvTEd2HfIqkhZCizQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_uAKuy7vTEd2HfIqkhZCizQ" name="DropTarget">
+    <eAnnotations xmi:id="_uAKuzLvTEd2HfIqkhZCizQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="../models/test_link_constraints.emx#_7e9VwLJhEd2eS5gi4elN2w"/>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_uAKuzbvTEd2HfIqkhZCizQ" name="dependency" type="_uAKuxrvTEd2HfIqkhZCizQ" association="_uAKu0rvTEd2HfIqkhZCizQ">
+      <eAnnotations xmi:id="_uAKuzrvTEd2HfIqkhZCizQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Property" href="../models/test_link_constraints.emx#_BrXYMLJjEd2eS5gi4elN2w"/>
+      </eAnnotations>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uAKuz7vTEd2HfIqkhZCizQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uAKu0LvTEd2HfIqkhZCizQ"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_uAKu0bvTEd2HfIqkhZCizQ" name="base_UseCase" association="_uAKu17vTEd2HfIqkhZCizQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#UseCase"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_uAKu0rvTEd2HfIqkhZCizQ" memberEnd="_uAKuzbvTEd2HfIqkhZCizQ _uAKu1LvTEd2HfIqkhZCizQ">
+    <eAnnotations xmi:id="_uAKu07vTEd2HfIqkhZCizQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Association" href="../models/test_link_constraints.emx#_BrNnMLJjEd2eS5gi4elN2w"/>
+    </eAnnotations>
+    <ownedEnd xmi:id="_uAKu1LvTEd2HfIqkhZCizQ" name="" type="_uAKuy7vTEd2HfIqkhZCizQ" association="_uAKu0rvTEd2HfIqkhZCizQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uAKu1bvTEd2HfIqkhZCizQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uAKu1rvTEd2HfIqkhZCizQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_uAKu17vTEd2HfIqkhZCizQ" name="UseCase_DropTarget" memberEnd="_uAKu2LvTEd2HfIqkhZCizQ _uAKu0bvTEd2HfIqkhZCizQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_uAKu2LvTEd2HfIqkhZCizQ" name="extension_DropTarget" type="_uAKuy7vTEd2HfIqkhZCizQ" aggregation="composite" association="_uAKu17vTEd2HfIqkhZCizQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_uAKu2bvTEd2HfIqkhZCizQ" name="RefSource">
+    <eAnnotations xmi:id="_uAKu2rvTEd2HfIqkhZCizQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details xmi:id="_uAKu27vTEd2HfIqkhZCizQ" key="that" value="useCase"/>
+      <references xmi:type="uml:Class" href="../models/test_link_constraints.emx#_C7I8MLUPEd2Dkr9N3vQCyQ"/>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_uAKu3LvTEd2HfIqkhZCizQ" name="base_Class" association="_uAKu3bvTEd2HfIqkhZCizQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_uAKu3bvTEd2HfIqkhZCizQ" name="Class_RefSource" memberEnd="_uAKu3rvTEd2HfIqkhZCizQ _uAKu3LvTEd2HfIqkhZCizQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_uAKu3rvTEd2HfIqkhZCizQ" name="extension_RefSource" type="_uAKu2bvTEd2HfIqkhZCizQ" aggregation="composite" association="_uAKu3bvTEd2HfIqkhZCizQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_uAKu37vTEd2HfIqkhZCizQ" name="RefTarget">
+    <eAnnotations xmi:id="_uAKu4LvTEd2HfIqkhZCizQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details xmi:id="_uAKu4bvTEd2HfIqkhZCizQ" key="this" value="subject"/>
+      <references xmi:type="uml:Class" href="../models/test_link_constraints.emx#_EmuUQLUPEd2Dkr9N3vQCyQ"/>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_uAKu4rvTEd2HfIqkhZCizQ" name="base_UseCase" association="_uAKu47vTEd2HfIqkhZCizQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#UseCase"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_uAKu47vTEd2HfIqkhZCizQ" name="UseCase_RefTarget" memberEnd="_uAKu5LvTEd2HfIqkhZCizQ _uAKu4rvTEd2HfIqkhZCizQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_uAKu5LvTEd2HfIqkhZCizQ" name="extension_RefTarget" type="_uAKu37vTEd2HfIqkhZCizQ" aggregation="composite" association="_uAKu47vTEd2HfIqkhZCizQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_uAKu5bvTEd2HfIqkhZCizQ" name="SubRefSource">
+    <eAnnotations xmi:id="_uAKu5rvTEd2HfIqkhZCizQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="../models/test_link_constraints.emx#_l1B-sLV8Ed2Qi7FgDx1H8g"/>
+    </eAnnotations>
+    <generalization xmi:id="_uAKu57vTEd2HfIqkhZCizQ" general="_uAKu2bvTEd2HfIqkhZCizQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_uAKu6LvTEd2HfIqkhZCizQ" name="SubRefTarget">
+    <eAnnotations xmi:id="_uAKu6bvTEd2HfIqkhZCizQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="../models/test_link_constraints.emx#_nI7PgLV8Ed2Qi7FgDx1H8g"/>
+    </eAnnotations>
+    <generalization xmi:id="_uAKu6rvTEd2HfIqkhZCizQ" general="_uAKu37vTEd2HfIqkhZCizQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_uAKu67vTEd2HfIqkhZCizQ" name="PackageOwnedSource">
+    <eAnnotations xmi:id="_uAKu7LvTEd2HfIqkhZCizQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details xmi:id="_uAKu7bvTEd2HfIqkhZCizQ" key="name" value="name"/>
+      <references xmi:type="uml:Class" href="../models/test_link_constraints.emx#_yOR8QLXdEd2Y0IR1etzmsw"/>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_uAKu7rvTEd2HfIqkhZCizQ" name="base_Classifier" association="_uAKu77vTEd2HfIqkhZCizQ">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Classifier"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_uAKu77vTEd2HfIqkhZCizQ" name="Classifier_PackageOwnedSource" memberEnd="_uAKu8LvTEd2HfIqkhZCizQ _uAKu7rvTEd2HfIqkhZCizQ">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_uAKu8LvTEd2HfIqkhZCizQ" name="extension_PackageOwnedSource" type="_uAKu67vTEd2HfIqkhZCizQ" aggregation="composite" association="_uAKu77vTEd2HfIqkhZCizQ"/>
+  </packagedElement>
+</uml:Profile>

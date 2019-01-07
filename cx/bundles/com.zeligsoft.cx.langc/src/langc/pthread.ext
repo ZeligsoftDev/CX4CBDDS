@@ -1,0 +1,71 @@
+import langc;
+
+extension langc::element;
+extension langc::expr;
+extension langc::libc;
+extension langc::name;
+extension langc::type;
+
+private create SystemFileName pthreadFileName() : setName( 'pthread.h' );
+
+private cached Name pthread_tName() : pthreadFileName().child( 'pthread_t' );
+private cached Name pthread_attr_tName() : pthreadFileName().child( 'pthread_attr_t' );
+private cached Name pthread_createName() : pthreadFileName().child( 'pthread_create' );
+private cached Name pthread_joinName() : pthreadFileName().child( 'pthread_join' );
+
+create Typedef pthread_t() :
+    setElement( uint32() )
+ -> setName( pthread_tName() )
+;
+
+create Typedef pthread_attr_t() :
+    setElement( uint32() )
+ -> setName( pthread_attr_tName() )
+;
+
+private create FunctionPointer startRoutineType() :
+    setReturnType( void().ptr() )
+ -> parameters.add( void().ptr() )
+;
+
+private create Function pthread_create() :
+    setName( pthread_createName() )
+ -> setReturnType( int32() )
+ -> addParameter( pthread_t().ptr(), 'thread' )
+ -> addParameter( pthread_t().ptr(), 'attr' )
+ -> addParameter( startRoutineType().type(), 'start_routine' )
+ -> addParameter( void().ptr(), 'arg' )
+;
+
+private create Function pthread_join() :
+    setName( pthread_joinName() )
+ -> setReturnType( int32() )
+ -> addParameter( pthread_t(), 'thread' )
+ -> addParameter( void().ptr().ptr(), 'value_ptr' )
+;
+
+cached Function createPthreadEntry( Name name ) :
+    let f = function( void().ptr(), name ) :
+        f.setLinkage( static() )
+     -> f.setKind( implOnly() )
+     -> f.addParameter( void().ptr(), 'param' )
+     -> f
+;
+
+Expression pthread_create( Function entry, VariableDeclaration threadVar ) :
+    let e = new FunctionCall :
+        e.setFunction( pthread_create() )
+     -> e.arguments.add( threadVar.access().addressOf() )
+     -> e.arguments.add( NULL() )
+     -> e.arguments.add( entry.name.access() )
+     -> e.arguments.add( NULL() )
+     -> e
+;
+
+Expression pthread_join( VariableDeclaration threadVar ) :
+    let e = new FunctionCall :
+        e.setFunction( pthread_join() )
+     -> e.arguments.add( threadVar.access() )
+     -> e.arguments.add( NULL() )
+     -> e
+;

@@ -1,0 +1,115 @@
+import langc;
+import ZMLMM::ZML_Deployments;
+import POSIX::POSIX_SwPlatform;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+import CLanguageDomain::CLanguageDomain;
+
+extension langc::element;
+extension langc::expr;
+extension langc::stmt;
+extension langc::type;
+
+extension include::userStruct;
+
+// java utils calls
+
+cached List[uml::Dependency] getDependencysForTargetPart(uml::Property target) :
+	JAVA com.zeligsoft.domain.zml.util.ZDeploymentUtil.getAllocationsForTargetPart(org.eclipse.uml2.uml.Property)
+;
+
+cached uml::Dependency getDependencyForSourcePart(uml::Property source) :
+	JAVA com.zeligsoft.domain.zml.util.ZDeploymentUtil.getAllocationForSourcePart(org.eclipse.uml2.uml.Property)
+;
+
+cached List[uml::String] getMultiInstanceNames(uml::Property source) :
+	JAVA com.zeligsoft.domain.posix.codegen.utils.DeploymentUtils.getMultiInstanceNames(org.eclipse.uml2.uml.Property)
+;
+
+cached List[uml::String] getProcessCompPortIds(uml::Port port, uml::Property source) :
+	JAVA com.zeligsoft.domain.posix.codegen.utils.DeploymentUtils.getProcessCompPortIds(org.eclipse.uml2.uml.Port, org.eclipse.uml2.uml.Property)
+;
+
+cached List[uml::Component] getCompStructuralRealizations(uml::Component comp) :
+	JAVA com.zeligsoft.domain.zml.util.ZMLUtil.getStructuralRealizations(org.eclipse.uml2.uml.Component)
+;
+
+cached List[uml::ConnectorEnd] getOtherConnectorEndPart(uml::NamedElement conn, uml::Property part, uml::Port usesEnd, uml::Property target) :
+	JAVA com.zeligsoft.domain.posix.codegen.utils.DeploymentUtils.getOtherConnectorEndPart(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Port, org.eclipse.uml2.uml.Property)
+;
+
+cached uml::Property getCorrespondingProperty(uml::Property source, List[uml::Property] sourceList) :
+	JAVA com.zeligsoft.domain.posix.codegen.utils.DeploymentUtils.getCorrespondingProperty(org.eclipse.uml2.uml.Property, java.util.Collection)
+;
+
+cached Boolean getCompInstNameFromId(String idName, String instName) :
+	JAVA com.zeligsoft.domain.posix.codegen.utils.DeploymentUtils.getCompInstNameFromId(java.lang.String, java.lang.String)
+;
+
+cached uml::Type getParameterType(uml::Parameter param) :
+	JAVA com.zeligsoft.domain.posix.codegen.utils.DeploymentUtils.getParameterType(org.eclipse.uml2.uml.Parameter)
+;
+
+cached uml::Type getPropertyType(uml::Property attr) :
+	JAVA com.zeligsoft.domain.posix.codegen.utils.DeploymentUtils.getPropertyType(org.eclipse.uml2.uml.Property)
+;
+
+cached List[ComponentInterface] getComponentInterface(DeploymentPart dp) :
+	{dp}.zdlAsProperty().type.typeSelect(ComponentInterface)
+;
+
+cached List[PProcess] getProcessDefinition(DeploymentPart dp) :
+	{dp}.zdlAsProperty().type.typeSelect(PProcess)
+;
+
+cached List[PMSGQ] getMSGQDefinition(DeploymentPart dp) :
+	{dp}.zdlAsProperty().type.typeSelect(PMSGQ)
+;
+
+private cached List[Allocation] getAllocationsForTargetPart(uml::Property target) :
+	(List[Allocation])target.getDependencysForTargetPart()
+;
+
+private cached Allocation getAllocationForSourcePart(uml::Property source) :
+	(Allocation)source.getDependencyForSourcePart()
+;
+
+cached List[DeploymentPart] getSourcesForTargetPart(uml::Property target) :
+	target.getAllocationsForTargetPart().deployed.select(e|!e.getComponentInterface().isEmpty)
+;
+
+cached List[DeploymentPart] getSourcesConnectionForTargetPart(uml::Property target) :
+	target.getAllocationsForTargetPart().deployed
+;
+
+cached DeploymentPart getTargetForSourcePart(uml::Property source) :
+	source.getAllocationForSourcePart().deployedOn
+;
+
+cached List[StructuralRealization] getStructuralRealizations(uml::Component comp) :
+	(List[StructuralRealization])comp.getCompStructuralRealizations()
+;
+
+ElementReference getUserAttributeType( uml::Type attr ) :
+    attr.element().type()
+;
+
+/* Only create langc elements for types in the CLanguageDomain, ignore general UML Types. */
+cached Element element( uml::Type attr ) :
+    void()
+;
+
+cached Element element( C_PrimitiveType cPrimType ) :
+    switch( cPrimType.name ) {
+        case 'char' : char()
+        case 'double' : double()
+        case 'float' : float()
+	    case 'int8' : int8()
+	    case 'int16' : int16()
+	    case 'int32' : int32()
+	    case 'uint8' : uint8()
+	    case 'uint16' : uint16()
+	    case 'uint32' : uint32()
+	    default : void()
+    }
+;

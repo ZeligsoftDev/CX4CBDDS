@@ -1,0 +1,83 @@
+environment["ti.bios.oldMemoryNames"] = true;
+
+/* loading the generic platform */
+var params = {};
+params.clockRate = 600.000000;
+params.deviceName = "6416";
+params.catalogName = "ti.catalog.c6000";
+params.regs = {};
+params.regs.l2Mode = "4-way cache (0k)";
+utils.loadPlatform("ti.platforms.generic", params);
+
+
+/* enabling DSP/BIOS components */
+bios.GBL.ENABLEINST = true;
+bios.MEM.NOMEMORYHEAPS = false;
+bios.RTDX.ENABLERTDX = true;
+bios.HST.HOSTLINKTYPE = "RTDX";
+bios.TSK.ENABLETSK = true;
+bios.GBL.ENABLEALLTRC = true;
+
+bios.GBL.ENDIANMODE = "little";
+
+bios.GBL.C641XCONFIGUREL2 = true;
+bios.ISRAM.createHeap = true;
+bios.ISRAM.heapSize = 0x8000;
+
+bios.MEM.BIOSOBJSEG = prog.get("ISRAM");
+bios.MEM.MALLOCSEG = prog.get("ISRAM");
+bios.TSK.STACKSEG = prog.get("ISRAM");
+
+
+/* applying user changes */
+bios.SDRAM = bios.MEM.create("SDRAM");
+
+bios.SDRAM.comment = "16MB SDRAM (default)";
+
+bios.SDRAM.base = 0x80010000;
+
+bios.SDRAM.len = 0xff0000;
+
+bios.SDRAM.createHeap = 0;
+
+bios.SDRAM.space = "code/data";
+
+bios.MEM.ARGSSIZE = 0x100;
+
+bios.MEM.STACKSIZE = 0x8000;
+
+bios.MEM.USERCOMMANDFILE = 1;
+
+bios.ISRAM.heapSize = 0x10000;
+
+bios.LNK_dataPump.order = 1;
+
+bios.RTA_dispatcher.order = 0x2;
+
+bios.IDL_cpuLoad.order = 0x3;
+
+bios.PRD_clock.order = 1;
+
+bios.HWI_INT4.fxn = prog.extern("turingFabricTxIntHandler");
+
+bios.HWI_INT4.useDispatcher = 1;
+
+bios.HWI_INT5.fxn = prog.extern("turingFabricRxIntHandler");
+
+bios.HWI_INT5.useDispatcher = 1;
+
+bios.HWI_INT6.fxn = prog.extern("teslaUserTxIntHandler");
+
+bios.HWI_INT6.useDispatcher = 1;
+
+bios.HWI_INT7.fxn = prog.extern("teslaUserRxIntHandler");
+
+bios.HWI_INT7.useDispatcher = 1;
+
+bios.HWI_INT8.fxn = prog.extern("edmaInterruptHandler");
+
+bios.HWI_INT8.useDispatcher = 1;
+
+bios.HWI_INT13.fxn = prog.extern("dspIntHandler");
+
+bios.HWI_INT13.useDispatcher = 1;

@@ -1,0 +1,79 @@
+<head>
+	<title>CX SCA Workflow Overview</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="workflow.html" title="CX SCA Workflow Overview">
+		<h1>CX SCA Workflow Overview</h1>
+		<p>Use this workflow overview as a guide when planning your modeling process. Your model may contain other elements and properties, but 
+			you can use this as a "loose" guide to help you understand the modeling workflow in CX.</p>
+		<h3>Create a new project and model.</h3>
+		<p>Open the Spectra CX perspective and create a new SCA model project. The name of the project and the model will appear in the Project 
+			Explorer. The CDT Project Name determines the name of the folder source code will be generated to.</p>
+		<p>This project can contain one or more SCA models. 
+</p>
+		<p>When planning your model development, you may want to consider using multiple diagrams to visualize model elements and
+			the relationships.</p>
+		<h3>Model Waveform</h3>
+		<ol>
+			<li>Create a new package.</li>
+			<p>You can use packages to group or contain common elements and to help you better organize your elements.</p>
+			<p>In this workflow example, this package will represent a controller.</p>
+			<li>Within this new package, create a Zeligsoft Component Diagram.</li>
+			<p>Creating a diagram for each package allows you to manage the visual modeling more easily and to prevent diagrams from becoming 
+			cluttered.</p>
+			<li>In the Zeligsoft Component Diagram, create the following elements:</li>
+			<ul>
+				<li>component interface</li>
+				<li>component structural realization</li>
+				<li>implementation artifact: you can create as many implementations as required by your system. For example, you may want to create an 
+implementation for each supported operating system.</li>
+				<li>interface realization: shows the relationship between the component interface and the interface it implements (usually CF::Resource interface)</li>
+				<li>generalization: shows the relationship between the component structure realization and the component interface </li>
+			</ul>
+			<p>Note: The component wizard can be used for steps 1, 2, and 3.</p>
+			<li>To manage the implementation dependencies such as the operating system, processors, etc. add:</li>
+			<ul>
+				<li>operating system </li>
+				<li>operating system link: connect the implementation artifact and operating system</li>
+				<li>processor </li>
+				<li>processor link </li>
+			</ul>
+			<li>Create PortTypes and add ports on the component interface.</li>
+			<li>Create other components.</li><br>Create a new package and Zeligsoft Component Diagram to represent your application. In the Zeligsoft Component Diagram: <ul>
+				<li>create an application and resize it</li>
+				<li>drag the component structural realization you created above from the Project Explorer onto the application structure - this creates 
+			component parts</li>
+				<li>using the connector tool, connect the ports</li>
+			</ul>
+			<li>Validate your application and components.</li>
+		</ol>
+		<h3>Elaborate Elements</h3>
+		<p>Now that you have created your elements, you can define them by editing the properties, adding property types from the palette, and 
+			adding user-defined attributes.</p>
+		<p>Use enumeration property type, primitive property type, struct property type, and struct sequence property type to define element properties. 
+			As well you can add property dependencies to further define elements and element relationships.</p>
+		<h3>Model Platform</h3>
+		<ol>
+			<li>Create a new package and diagram for the platform.</li>
+			<li>Within this package, create a new package and diagram to represent a node.</li>
+			<li>Within the platform package, use the Component Wizard to create the device.</li>
+			<li>Define attributes for the device.</li>
+			<li>Add the device to the node.</li>
+			<p>In the Project Explorer, select the device structural realization and drag it onto the node in the Zeligsoft Component Diagram.</p>
+			<li>Add a DeviceManager and DomainManager to the Node.</li>
+			<li>Validate the Platform, Node, and Devices.</li>
+		</ol>
+		<h3>Generate Code</h3>
+		<ol>
+			<li>Select the application and generate the component source code and the XML descriptors. Select the node and generate the device source 
+			code and XML descriptors.</li>
+			<li>Add user code to the worker methods.</li>
+			<li>Compile the source code.</li>
+		</ol>
+		<div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

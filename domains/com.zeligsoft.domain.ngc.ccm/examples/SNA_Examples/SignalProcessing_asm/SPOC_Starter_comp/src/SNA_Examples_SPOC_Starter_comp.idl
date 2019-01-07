@@ -1,0 +1,66 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+
+/**
+ * @defgroup SPOC_Starter_comp SPOC_Starter_comp Component
+ * @ingroup SignalProcessingExample
+ * @{
+ *
+ * Signal Processing Orchestration Component which creates a VSIPL++ data
+ * object (a matrix of complex values, in this case) and initializes each
+ * element such that its value is equal to its index (the imaginary values are
+ * set to be the negative index, so element (1,1) would have a value of (1,-1),
+ * for example).  This matrix is output to the logger, and then the data object
+ * is published
+ *
+ * @file   SNA_Examples_SPOC_Starter_comp.idl
+ * @brief  SPOC_Starter_comp component definition IDL file.
+ */
+
+//==============================================================================
+
+#ifndef SPOC_STARTER_COMP_IDL
+#define SPOC_STARTER_COMP_IDL
+
+#include <Components.idl>
+
+#include "SNA_Examples_SPOC_Data_conn.idl"
+
+module SNA_Examples
+{
+   /**
+    * The component that creates some initial data and then publishes it 
+    * to the SPOC_comp using PSAT
+    */
+   component SPOC_Starter_comp
+   {
+      /**
+       *  PSAT_Write (publishing) port which uses a custom UDM (metadata
+       *  structure) appropriate for Signal Processing applications.
+       */
+      port SNA_Examples::SPOC_Data_conn::PSAT_Write SP_DataPub;
+      
+      /**
+       * An optional CCM facet defined as part of the DDS4CCM standard which
+       * the PSAT connector can call on status changes (such as errors).
+       *
+       * This facet is recommended in most cases as it is useful for debugging
+       * and integration.
+       * 
+       * It is recommended to have one of these provides lines for each
+       * extended port and to have them named after the associated port name.
+       */
+      provides CCM_DDS::ConnectorStatusListener     SP_DataPubConnStatus;
+   };
+
+}; // end module SNA_Examples
+
+#endif // SPOC_STARTER_COMP_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

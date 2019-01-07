@@ -1,0 +1,16 @@
+<workflow>
+   
+  <bean class="oaw.uml2.Setup"/>
+  <!-- initializes resourcemaps, urimaps, etc. -->
+   
+	<component id="generator" class="oaw.xpand2.Generator" skipOnErrors="true">
+		<metaModel id="CCM" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+        	<zdl value="pathmap://CCM_DOMAIN/CCM.uml"/>
+     	</metaModel>  
+		<expand value="template::MainCCMCodegenTemplate::CREATE_FILES( '${generatedProject}' ) FOR element"/>
+   		<outlet path="${src-gen}" class="com.zeligsoft.cx.codegen.io.CXGenOutlet">
+			<postprocessor class="com.zeligsoft.cx.codegen.io.FormatterDispatcher"/>
+          	<vetoStrategy class="org.eclipse.xpand2.output.NoChangesVetoStrategy"/>
+        </outlet>
+	</component>
+</workflow>

@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: com.zeligsoft.cx.configuration.ui;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Activator: com.zeligsoft.cx.configuration.ui.Activator
+Bundle-Vendor: %Bundle-Vendor.0
+Bundle-Localization: plugin
+Require-Bundle: com.zeligsoft.base.zdl;bundle-version="[1.0.0,2.0.0)",
+ com.zeligsoft.base.ui;bundle-version="[1.0.0,2.0.0)",
+ com.zeligsoft.domain.zml;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="[1.1.0,2.0.0)",
+ org.eclipse.ui;bundle-version="[3.4.0,4.0.0)"
+Export-Package: com.zeligsoft.cx.configuration.ui,
+ com.zeligsoft.cx.configuration.ui.actions,
+ com.zeligsoft.cx.configuration.ui.commands,
+ com.zeligsoft.cx.configuration.ui.l10n,
+ com.zeligsoft.cx.configuration.ui.utils
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+

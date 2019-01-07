@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: com.zeligsoft.cx;singleton:=true
+Bundle-Version: 3.5.0.qualifier
+Bundle-Vendor: %Bundle-Vendor.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Localization: plugin
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: com.zeligsoft.cx.CXActivator
+Require-Bundle: com.zeligsoft.base;bundle-version="[3.5.0,3.6.0)";visibility:=reexport
+Export-Package: com.zeligsoft.cx,
+ com.zeligsoft.cx.preferences

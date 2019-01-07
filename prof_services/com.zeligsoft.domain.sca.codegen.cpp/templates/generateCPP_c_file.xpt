@@ -1,0 +1,65 @@
+�REM�*
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ *�ENDREM�
+ 
+�IMPORT uml�
+�IMPORT Standard�
+�IMPORT ZML�
+�IMPORT SCADomain�
+
+�EXTENSION codegen::regions�
+�EXTENSION extensions::MainSCADescriptorXtendFile�
+�EXTENSION extensions::SCAPropertyUtils�
+�EXTENSION extensions::CounterFactoryToString�
+�EXTENSION extensions::CodeGeneratorUtil�
+
+�EXTENSION com::zeligsoft::base::zdl::util::ZDLUtil�
+
+�DEFINE create FOR SCADomain::CPPClass�
+
+�FILE "classes"+"/"+this.name+".cpp" -�
+
+#include "�this.name�.h"
+
+�REM�CPP operations�ENDREM�
+�FOREACH this.ownedOperation.typeSelect(SCADomain::CPPOperation) AS operation -�
+
+	�IF operation.getType() == null�
+		�REM� Construtors �ENDREM�
+		�IF operation.name == this.name� 
+			�this.name�::�operation.name��getParameters(operation)�{	
+		�ENDIF�
+		�REM� Destrutors �ENDREM�
+		�IF operation.name == "~" + this.name� 
+			 �this.name�::�operation.name��getParameters(operation)�{	
+		�ENDIF�
+		�REM� Normal Operations �ENDREM�
+		�IF operation.name != this.name && operation.name != "~" + this.name�
+			void �this.name�::�operation.name��getParameters(operation)�{
+		�ENDIF�
+	�ENDIF�	
+	�IF operation.getType() != null�
+		�operation.getType().name� �this.name�::�operation.name��getParameters(operation)�{	
+	�ENDIF�	   
+		�userEditBegin(operation,"CPPLanguageDomain::CPP_Class::CPPOperation", "body")�
+		�IF getZDLValue(operation, "CPPLanguageDomain::CPP_Class::CPPOperation", "body") != null�
+	�getZDLValue(operation, "CPPLanguageDomain::CPP_Class::CPPOperation", "body").toString() -�
+				�ENDIF�
+		�userEditEnd()�
+	}
+�ENDFOREACH�
+�ENDFILE -�
+�ENDDEFINE�

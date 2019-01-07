@@ -1,0 +1,30 @@
+// Interface with a wide variety of return types.
+
+interface int1046
+{
+  struct StructType
+  {
+    long a;
+  };
+
+  enum EnumType
+  {
+    VALUE_1
+  };
+
+  union UnionType switch( long )
+  {
+    case 1: long a;
+    default: float b;
+  };
+
+  typedef StructType StructTypeType;
+  typedef EnumType EnumTypeType;
+  typedef UnionType UnionTypeType;
+  typedef UnionTypeType UnionTypeTypeType;
+
+  StructTypeType returnStruct ();
+  EnumTypeType returnEnum ();
+  UnionTypeType returnUnion();
+  UnionTypeTypeType returnUnion2();
+};

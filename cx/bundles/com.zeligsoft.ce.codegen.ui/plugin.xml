@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+-->
+
+<plugin>
+    <extension-point id="editsource" name="Edit Source Menus" schema="schema/editsource.exsd"/>
+	<extension-point id="transformation" name="Transformation Mapping Registry" schema="schema/transformation.exsd"/>
+
+    <extension point="com.zeligsoft.cx.codegen.eobjectlocator">
+        <eobjectlocator
+            id="%eobjectlocator.id.0"
+            class="com.zeligsoft.cx.codegen.ui.oaw.UMLModelerEObjectLocator"/>
+    </extension>
+
+    <extension point="com.zeligsoft.cx.codegen.editoropener">
+        <handler
+            id="%handler.id.0"
+            class="com.zeligsoft.cx.codegen.ui.internal.UserEditableEditorOpener"/>
+    </extension>
+
+    <extension point="org.eclipse.ui.navigator.navigatorContent">
+        <actionProvider
+            class="com.zeligsoft.cx.codegen.ui.providers.EditSourceProvider"
+            id="com.zeligsoft.cx.codegen.ui.providers.EditSourceProvider"
+            priority="highest">
+            <enablement>
+                <instanceof value="com.ibm.xtools.uml.navigator.IModelServerElement"/>
+            </enablement>
+        </actionProvider>
+    </extension>  
+
+    <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="com.zeligsoft.cx.codegen.ui.repairWorkerFunctions"
+            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
+         <action
+               class="com.zeligsoft.cx.codegen.ui.actions.RepairWorkerFunctionsActionDelegate"
+               enablesFor="*"
+               id="com.zeligsoft.cx.codegen.ui.repairWorkerFunctionsAction"
+               label="%repairWorkerFunctions.action.label"
+               menubarPath="additions">
+         </action>
+         <visibility> 
+           <or>
+            <objectState
+                  name="isZDLConcept"
+                  value="ZMLMM::ZML_Component::StructuralRealization">
+            </objectState>
+            <objectState
+                  name="isZDLConcept"
+                  value="ZMLMM::ZML_Component::ComponentInterface">
+            </objectState>
+           </or>
+         </visibility>
+      </objectContribution>      
+	</extension>
+ 	<extension
+		id="com.zeligsoft.cx.codegen.ui.providers.GenerateContributionItemProviderId"
+		name="Zeligsoft Generate ContributionItemProvider" 
+		point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+      <contributionItemProvider class="com.zeligsoft.cx.codegen.ui.providers.GenerateContributionItemProvider" checkPluginLoaded="false">
+         <Priority name="Medium">
+         </Priority>
+			<popupContribution
+               class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria
+                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart">
+            </popupStructuredContributionCriteria>         
+	            <popupActionGroup
+	        	   	  path="/"
+	                  id="generateGroup">
+	            </popupActionGroup>                            
+         </popupContribution>
+      </contributionItemProvider>
+   </extension>
+    <extension point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders"
+        id="com.zeligsoft.cx.codegen.ui.providers.EditSourceContributionItemProviderId"
+        name="Edit Source ContributionItemProvider">
+        <contributionItemProvider
+            class="com.zeligsoft.cx.codegen.ui.providers.EditSourceContributionItemProvider"
+            checkPluginLoaded="false">
+            <Priority name="Medium"/>
+            <popupContribution
+                class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+                <popupStructuredContributionCriteria
+                    objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart"/>
+                <popupActionGroup path="/" id="editSourceGroup"/>
+            </popupContribution>
+        </contributionItemProvider>
+    </extension>
+   <extension
+		point="org.eclipse.ui.navigator.viewer">
+		<viewerActionBinding
+			viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+			<includes>
+				<actionExtension pattern="com.zeligsoft.cx.codegen.ui.provider.*" />
+			</includes>
+		</viewerActionBinding>			
+   </extension>
+   <extension
+       point="org.eclipse.ui.navigator.navigatorContent">
+    <actionProvider
+          class="com.zeligsoft.cx.codegen.ui.providers.GenerateActionProvider"
+          id="com.zeligsoft.cx.codegen.ui.provider.GenerateActionProvider"
+          priority="highest">
+       <enablement>
+          <instanceof
+                value="com.ibm.xtools.uml.navigator.IModelServerElement">
+          </instanceof>
+       </enablement>
+    </actionProvider>
+   </extension>  
+</plugin>

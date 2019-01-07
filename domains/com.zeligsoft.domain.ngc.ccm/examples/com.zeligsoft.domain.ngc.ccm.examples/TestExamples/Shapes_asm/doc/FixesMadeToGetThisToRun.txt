@@ -1,0 +1,48 @@
+Shapes_asm Example - 02/13/2011
+
+The original hand-crafted source for this example is in the DOC Group repository on the Internet at:
+
+https://svn.dre.vanderbilt.edu/viewvc/Middleware/trunk/CIAO/connectors/dds4ccm/tutorials/Shapes/Shapes_asm/
+
+That "Shapes" example was used in an interop demo with RTI, PT & Twin Oaks at the last OMG meeting.
+It MUST use the DDS ShapeType message as defined, outside a module, to enabled cross-vendor interoperability.
+This is a good example of adapting models to support both internal & external naming/definition conventions.
+
+Below are the fixes made to this CX-generated source tree in order to get it to successfully
+build and deploy, including the issue number assigned to each.
+
+************* MODEL CHANGES ***************
+
+The original hand-crafted source defines ushorts and ulongs as component attribute types on the Control_comp.
+Due to issue 185, these had to be temporarily changed to all longs to make the example deployable error-free.
+To debug this issue, suggest changing these attributes back in the model - CORBA Shorts, UShorts & ULongs don't work.
+
+* P2 Issue 185 - Only CORBA longs and strings are supported for component attributes in CDP file
+
+************* IDL GENERATION ERROR ****************
+
+Due to issue 184, one of the IDL files generated from the included CX model was wrong, and had to be edited.
+A single missing line, the typedef for the DDS message sequence, was added to the repaired file.
+
+Original file is at:                                 ports\Shapes_ShapeType_conn.idl_orig
+Edited file that built & deployed correctly is at:   ports\Shapes_ShapeType_conn.idl
+
+* P2 Issue 184 - Connector IDL generation error when using messages not in a module (missing typedef for msg sequence)
+
+************* CDP GENERATION ERRORS ***************
+
+A number of edits were required to the generated CDP file to address the following issues:
+
+General Issues:
+* P2 Issue 175 - Missing <artifact> references in CDP file component & DDS4CCM connector <implementation> entries
+* P4 Issue 142 - Newlines & comments in CDP XML file for readability (added to highlight changes made to CDP file)
+
+DDS4CCM Related Issues:
+* P2 Issue 145 - Local SimplexReceptacle ports on CDP file DDS4CCM connectors incorrectly tagged as Facets
+* P2 Issue 188 - DDS4CCM connector <location> tags wrong in CDP file <artifact> entries
+
+Directory Structure:
+* P2 Issue 156 - CDD/CDP files generated to target wrong directory (Deployment folder moved in attached source)
+
+Original file is at:                         Deployment\descriptors\Plan.cdp
+Edited file that deployed correctly is at:   Deployment\descriptors\PlanFixed.cdp

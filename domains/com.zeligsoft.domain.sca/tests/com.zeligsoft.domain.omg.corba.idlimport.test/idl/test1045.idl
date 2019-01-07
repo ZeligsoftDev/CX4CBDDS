@@ -1,0 +1,35 @@
+// Interface with a wide variety of return types.
+
+// typedef void VoidType;     /* you cannot typedef void */
+typedef string StringType;
+typedef short ShortType;
+typedef long LongType;
+typedef long long LongLongType;
+typedef unsigned short UnsignedShortType;
+typedef unsigned long UnsignedLongType;
+typedef unsigned long long UnsignedLongLongType;
+typedef float FloatType;
+typedef double DoubleType;
+typedef long double LongDoubleType;
+typedef char CharType;
+typedef wchar WCharType;
+typedef boolean BooleanType;
+typedef octet OctetType;
+
+interface int1045
+{
+  StringType returnString ();
+  ShortType returnShort();
+  LongType returnLong();
+  LongLongType returnLongLong();
+  UnsignedShortType returnUnsignedShort();
+  UnsignedLongType returnUnsignedLong();
+  UnsignedLongLongType returnUnsignedLongLong();
+  FloatType returnFloat();
+  DoubleType returnDouble();
+  LongDoubleType returnLongDouble();
+  CharType returnChar();
+  WCharType returnWChar();
+  BooleanType returnBoolean();
+  OctetType returnOctet();
+};

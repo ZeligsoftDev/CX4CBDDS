@@ -1,0 +1,33 @@
+/// @defgroup SNA_Examples_BasicSubscriber_comp BasicSubscriber_comp
+/// @{
+/// 
+/// @file SNA_Examples_BasicSubscriber_comp.idl
+/// @brief BasicSubscriber_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_BASICSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_BASICSUBSCRIBER_COMP_IDL
+#define CX_BASICSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_BASICSUBSCRIBER_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao lem "SNA_Examples_BasicSubscriber_compE.idl"
+#include "SNA_Examples_TestData_conn.idl"
+#include <ccm_dds.idl>
+
+/// @namespace SNA_Examples 
+module SNA_Examples {
+
+    /// // A DDS4CCM listen port which listens for samples/messages of type
+    /// // SNA_Examples::TestData_msg on a DDS topic. The name and QoS of that
+    /// // topic are defined in the deployment plan.
+    component BasicSubscriber_comp {
+        port TestData_conn::DDS_Listen testDatSub;
+        provides CCM_DDS::ConnectorStatusListener testDataSubConnStatus;
+    };
+
+};
+
+#endif // CX_BASICSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_BASICSUBSCRIBER_COMP_IDL
+
+/// @}
+

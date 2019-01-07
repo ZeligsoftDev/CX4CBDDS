@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="com.zeligsoft.cx.deployment.treeeditor.DeploymentEditorPopupMenu" name="Extension point to contribute pop-up action to the deployment editor" schema="schema/com.zeligsoft.cx.deployment.treeeditor.DeploymentEditorPopupMenu.exsd"/>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.zeligsoft.cx.deployment.treeeditor.ui.DeploymentTreeEditor"
+            contributorClass="com.zeligsoft.cx.deployment.treeeditor.ui.TreeEditorContributor"
+            icon="icons/deployment.gif"
+            id="DEPLOYMENT_TREE_EDITOR_ID"
+            name="%editor.name.0">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="com.zeligsoft.deployment.rsm.editor.popupmenu"
+            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
+         <visibility>
+            <objectState
+                  name="isZDLConcept"
+                  value="ZMLMM::ZML_Deployments::Deployment">
+            </objectState>
+         </visibility>
+         <action
+               class="com.zeligsoft.cx.deployment.treeeditor.actions.DeploymentCreationPopupAction"
+               enablesFor="1"
+               id="com.zeligsoft.deployment.rsm.editor.OpenDeploymentEditorAction"
+               label="%action.label.1"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders">
+      <GlobalActionHandlerProvider
+            class="com.zeligsoft.cx.deployment.treeeditor.providers.DeploymentTreeGlobalActionHandlerProvider"
+            id="com.zeligsoft.cx.deployment.editor.GlobalActionHandlerProvider">
+         <Priority
+               name="Low">
+         </Priority>
+         <Policy class="com.zeligsoft.cx.deployment.treeeditor.policies.DeploymentTreeGlobalActionHandlerPolicy"/>
+         <ViewId
+               id="org.eclipse.ui.navigator.ProjectExplorer">
+            <ElementType
+                  class="com.ibm.xtools.uml.navigator.IModelServerElement">
+               <GlobalActionId
+                     actionId="open">
+               </GlobalActionId>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="properties.DeploymentTreeEditor">
+         <propertyCategory category="deployment"/>
+      </propertyContributor>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="properties.DeploymentTreeEditor">
+         <propertyTab
+               category="deployment"
+               id="propertyTab.general"
+               label="%propertyTab.general.label"/>
+      </propertyTabs>
+    </extension>    
+    <extension
+          point="org.eclipse.ui.views.properties.tabbed.propertySections">
+       <propertySections
+             contributorId="properties.DeploymentTreeEditor">
+          <propertySection
+                class="com.zeligsoft.cx.ui.properties.sections.DomainPropertySection"
+                id="deployment.general.DomainPropertySection"
+                tab="propertyTab.general">
+             <input
+                   type="org.eclipse.uml2.uml.Property">
+             </input>            
+          </propertySection>
+       </propertySections>
+    </extension>
+    <extension
+          point="org.eclipse.emf.validation.validationListeners">
+       <listener
+             class="com.zeligsoft.cx.deployment.treeeditor.providers.DeploymentPartValidationObserver">
+       </listener>
+    </extension>     
+   
+</plugin>

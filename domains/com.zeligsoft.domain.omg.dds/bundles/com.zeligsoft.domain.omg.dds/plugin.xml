@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://DDS_LIBRARIES/"
+            target="platform:/plugin/com.zeligsoft.domain.omg.dds/models/">
+      </mapping>
+      <mapping
+            source="pathmap://DDS_PROFILES/"
+            target="platform:/plugin/com.zeligsoft.domain.omg.dds/profiles/">
+      </mapping>
+      <mapping
+            source="pathmap://DDS_DOMAIN/"
+            target="platform:/plugin/com.zeligsoft.domain.omg.dds/models/">
+      </mapping>
+   </extension>
+   <extension
+         point="com.zeligsoft.base.zdl.domain_models">
+      <domainModel
+            genModel="pathmap://DDS_DOMAIN/dds.zdlgen"
+            path="pathmap://DDS_DOMAIN/dds.uml"
+            uri="http://www.zeligsoft.com/domain/omg/dds/2009">
+      </domainModel>
+   </extension>
+   <extension
+         point="com.ibm.xtools.uml.msl.UMLLibraries">
+      <UMLLibrary
+            name="DDS Domain"
+            path="pathmap://DDS_DOMAIN/dds.uml"
+            visible="true">
+      </UMLLibrary>
+   </extension>
+
+</plugin>

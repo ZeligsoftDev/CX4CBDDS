@@ -1,0 +1,56 @@
+/// @defgroup AGSP_Common_defn Common_defn
+/// @{
+/// 
+/// @file AGSP_Common_defn.idl
+/// @brief Common_defn definitions definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__PORTS__AGSP_COMMON_DEFN_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__PORTS__AGSP_COMMON_DEFN_IDL
+
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef SystemTime
+    typedef double SystemTime;
+
+    /// @enum ReturnStatus
+    ///
+    enum ReturnStatus {
+        SUCCESS,
+        FAILURE
+    };
+
+    /// @enum SystemState
+    ///
+    enum SystemState {
+        STARTUP_STATE,
+        STANDBY_STATE,
+        DAYTIME_OPERATIONAL_STATE,
+        NIGHTTIME_OPERATIONAL_STATE,
+        TEST_STATE,
+        SHUTDOWN_STATE
+    };
+
+    /// @typedef BoundedString
+    typedef string<512> BoundedString;
+
+    /// @enum SystemMode
+    ///
+    enum SystemMode {
+        IDLE_MODE,
+        POINT_CLICK_MODE,
+        HUMAN_TRACKER_MODE,
+        IMAGE_DIFF_MODE
+    };
+
+    /// @typedef JobID_t
+    typedef long JobID_t;
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__PORTS__AGSP_COMMON_DEFN_IDL
+
+/// @}
+

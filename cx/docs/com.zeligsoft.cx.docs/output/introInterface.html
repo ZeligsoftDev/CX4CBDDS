@@ -1,0 +1,83 @@
+<head>
+	<title>IDL Modeling, Import, and Generation</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="introInterface.html" title="IDL Modeling, Import, and Generation">
+		<h1>IDL Modeling, Import, and Generation</h1>
+		<p>CX can be used to model new IDL or import existing IDL and generate IDL.</p>
+		<p>An IDL interface is a set of operations and attributes used for CORBA communication. Ports on components are a realization of these 
+interfaces and are used to allow the component to communicate with its environment and the environment to communicate with the component.
+</p>
+		<p>The component does not know who is using its interface nor does the environment know about the internals of the component. All communication 
+			must go through the component's ports. This facilitates reuse of interface-based components in multiple applications.</p>
+		<h2>Modeling IDL</h2>
+		<ol>
+			<li>In the <strong>Palette</strong>, open the <strong>CORBA</strong> drawer and select <strong>IDL File</strong>.</li>
+			<li>Drop the <strong>IDL File</strong> onto your diagram and draw the element quite large.</li>
+			<li>In the element, click the small arrow/triangle so that it is open or pointing down.</li>
+			<p>This enables you to add elements to the <strong>IDL File</strong> element.</p>
+			<li>In the <strong>Palette</strong>, select <strong>Module</strong>.</li>
+			<li>Drop the <strong>Module</strong> onto the <strong>IDL File</strong> in the compartment you opened.</li>
+			<li>In the <strong>Module</strong>, click the small arrow/triangle so that it is open or pointing down.</li>
+			<p>This enables you to add elements to the <strong>Module</strong> element.</p>
+			<li>In the <strong>Palette</strong>, select <strong>Interface</strong>.</li>
+			<li>Drop the <strong>Interface</strong> onto the <strong>Module</strong> in the compartment you opened.</li>
+			<li>Using the <strong>Properties View</strong> &gt; <strong>Attributes</strong> tab you can add and 
+			define CORBA attributes on this interface.</li>
+			<p>To show the attributes in the diagram, select the <strong>Appearance</strong> tab and enable 
+			<strong>Show Attributes</strong>.</p>
+			<p>If you added attributes to the interface, you need to ensure the correct stereotype is applied. In the 
+			<strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab, click <strong>Apply Stereotype</strong> 
+			and select <strong>CORBAAttribute</strong>.</p>
+			<p>Using the <strong>Properties View</strong> &gt; <strong>Operations</strong> tab, you can add operations to the 
+			interface. Ensure you apply the <strong>CORBAOperation</strong> stereotype to the operation.</p>
+			<li>To add a CORBA Exception to the module, in the <strong>Palette</strong>, select <strong>Exception</strong> and 
+			drop the element into the compartment on the module. To show the exception, use the <strong>Appearance</strong> 
+			tab in the <strong>Properties View</strong>.</li>
+			<li>A CORBA Constant can be added at the interface or module level. To add a CORBA Constant at the 
+			interface level, add an attribute and set the <strong>Stereotypes</strong> to <strong>CORBAConstant</strong>. 
+			To add a CORBA Constant at the module level, in the <strong>Palette</strong>, select <strong>Constant</strong> and 
+			drop this onto the module.</li>
+		</ol>
+		<p>Using the <strong>UML Properties</strong> option on the right-click pop-up menu you can do the following:</p>
+		<ul>
+			<li>control the order of elements in the generated IDL file: select <strong>Package Element</strong> and use the 
+			arrows to control the element order.</li>
+			<li>define an exception on an operation on an interface: select <strong>RaisedException</strong> and then select 
+			the exception.</li>
+		</ul>
+		<h2>IDL Import</h2>
+		<p>CX IDL import will merge external IDL changes into existing IDL elements in the CX model. All model references to the 
+			IDL elements are maintained in the model. Because of this CX supports iterative workflows where IDL is changed outside the 
+			CX and re-imported. </p>
+		<p>To import the IDL into your model do the following:</p>
+		<ol>
+			<li>Copy and paste the IDL file into your project folder in <strong>Project Explorer</strong>.</li>
+			<li>In the <strong>Project Explorer</strong> select the <strong>Model</strong> and using the <strong>CTRL key</strong>, select 
+				the <strong>IDL files or folder</strong>. </li>
+			<li>With both elements selected, right-click and from the context menu select <strong>Import</strong>. Select  
+<strong>Spectra CX</strong> and select <strong>IDL</strong>. The Import window will open. </li>
+			<li>Browse to the Source folder and select the IDL to import. </li>
+			<li>Browse to the SCA model where the IDL is to be imported to. </li>
+			<li>Add any <strong>include directories</strong> and <strong>defines</strong> that are necessary for the IDL. </li>
+			<li><strong>Files to exclude</strong>. This is used to exclude IDL files from IDL import. This could be IDL files that are 
+				referenced by the IDL to be imported. An example where this is useful is when importing IDL that references the SCA CF.idl. 
+				This IDL is already present in the SCA model in a read only library. Since this element is read only, if this file is not 
+				excluded from the import, a new CF element will be created in the model. If the file is excluded, the existing CF element 
+				will be referenced in the model</li>
+			<li>Click <strong>OK</strong>. </li>
+		</ol>
+		<p>After import, the IDL Model Elements should appear in the model in an IDL_Import_Results package. Once all files have been imported, 
+			the IDL directory can be deleted from the Spectra CX Project.</p>
+		<h2>Generating IDL</h2>
+		<p>To generate your IDL file, select and right-click the <strong>IDL File</strong> and from the context menu, select 
+			<strong>CX Generate</strong> &gt; <strong> Generate IDL</strong>. </p>
+		<p>The generated IDL file is added to the Project Explorer in a folder that is named based on the CDT Project Name you defined 
+when you created your model. To view your IDL file, select and double-click the file. This opens the CX editor.</p>
+		<div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

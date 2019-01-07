@@ -1,0 +1,19 @@
+import langc;
+import ZMLMM::ZML_Deployments;
+
+extension langc::element;
+extension langc::expr;
+extension langc::stmt;
+extension langc::type;
+
+extension template::name;
+
+create ElementList getFrameworkContextFile(Deployment d) :
+	setName(contextFileName())
+	-> addElement(genContextStruct())
+;
+
+create Struct genContextStruct() :
+	setName(contextStructName())
+	-> addMember(uint32(), contextStructMemberName())
+;

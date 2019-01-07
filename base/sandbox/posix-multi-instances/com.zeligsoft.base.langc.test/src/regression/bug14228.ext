@@ -1,0 +1,13 @@
+
+import langc;
+
+extension langc::element;
+extension langc::expr;
+extension langc::stmt;
+extension langc::type;
+
+VariableDeclaration testCharArray() :
+    let v = variable( char(), 'var' ) :
+        v.element.arrayBounds.add( 5.literal() )
+     -> v
+;

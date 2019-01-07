@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.zeligsoft.base.zdl">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.zeligsoft.base.zdl" id="com.zeligsoft.base.zdl.domain_models" name="Registered Zeligsoft Domain Models"/>
+      </appInfo>
+      <documentation>
+         A registry of ZDL instance models and their associated ZDLGen generator models.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="domainModel" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The extension point identifier.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  A unique identifier for this particular extension.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  A localizable name for this particular extension.
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="domainModel">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="uri"/>
+         </appInfo>
+      </annotation>
+      <complexType>
+         <attribute name="uri" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The namespace URI under which to register the given ZDL model instance.  It must match the &lt;tt&gt;namespaceURI&lt;/tt&gt; attribute of the root &lt;tt&gt;DomainModel&lt;/tt&gt; element of the ZDL model.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="path" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The path, relative to the root of the plug-in, or an absolute location URI of the ZDL domain model.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="genModel" type="string">
+            <annotation>
+               <documentation>
+                  The path, relative to the root of the plug-in, or an absolute location URI of the &lt;tt&gt;*.zdlgen&lt;/tt&gt; generator model for the registered domain model.  Although it is optional, it is highly recommended to provide the generator model so that users of the registered domain will not have to define it, themselves.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         [Enter extension point usage example here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         This extension point provides static registration of ZDL models in the &lt;code&gt;com.zeligsoft.base.zdl.DomainModelRegistry&lt;/code&gt;.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+</schema>

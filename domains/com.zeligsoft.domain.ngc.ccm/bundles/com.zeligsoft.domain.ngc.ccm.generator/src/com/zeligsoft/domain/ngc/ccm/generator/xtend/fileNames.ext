@@ -1,0 +1,182 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+import CORBADomain::IDL;
+import CCM::CCM_Component;
+import CCM::CCM_Core;
+import CCM::CCM_Implementation;
+import idl;
+import DDS4CCM::DDSExtensions;
+import IDL3Plus::Generics;
+import DDS4CCM::DDS4CCM;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+
+extension com::zeligsoft::domain::idl3plus::generator::xtend::annotations;
+extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
+	
+create ecore::EAnnotation createFileName(CORBAInterface self) :
+	this.setSource("zcx") ->
+	this.details.add(createDetail("filename", self.path() + self.fileName())) ->
+	this.details.add(createDetail("entityname", self.name)) ->
+	this.details.add(createDetail("entitytype", "interface"));
+	
+create ecore::EAnnotation createFileName(CCMComponent self) :
+	this.setSource("zcx") ->
+	this.details.add(createDetail("filename", self.path() + self.fileName())) ->
+	this.details.add(createDetail("entityname", self.name)) ->
+	this.details.add(createDetail("entitytype", "component"));
+
+create ecore::EAnnotation createFileName(MonolithicImplementation self) :
+	this.setSource("zcx") ->
+	this.details.add(createDetail("filename", self.path() + self.fileName())) ->
+	this.details.add(createDetail("entityname", self.name)) ->
+	this.details.add(createDetail("entitytype", "component"));
+	
+create ecore::EAnnotation createFileName(ModuleInstantiation self) :
+	this.setSource("zcx") ->
+	this.details.add(createDetail("filename", self.path() + self.fileName())) ->
+	this.details.add(createDetail("entityname", self.name)) ->
+	this.details.add(createDetail("entitytype", "connector"));
+	
+create ecore::EAnnotation createFileName(DDSMessage self) :
+	this.setSource("zcx") ->
+	this.details.add(createDetail("filename", self.path() + self.fileName())) ->
+	this.details.add(createDetail("entityname", self.name)) ->
+	this.details.add(createDetail("entitytype", "message"));
+	
+create ecore::EAnnotation createFileName(Event self) :
+	this.setSource("zcx") ->
+	this.details.add(createDetail("filename", self.path() + self.fileName()));
+	
+create ecore::EAnnotation createFileName(uml::Package self) :
+	this.setSource("zcx") ->
+	this.details.add(createDetail("filename", self.path() + self.fileName())) ->
+	this.details.add(createDetail("filetype", "package")) ->
+	this.details.add(createDetail("entityname", self.name)) ->
+	this.details.add(createDetail("entitytype", "definitions")) ->
+	this.details.add(createDetail("generatedir", getAnnotationValueForGenerateDir(self)));
+		
+create ecore::EAnnotation createFileName(CCM::CCM_Core::CCMModel self) :
+	this.setSource("zcx") ->
+	this.details.add(createDetail("filename", self.fileName()));
+	
+
+String path(CCMComponent self) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
+
+String path(CCMModel self) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
+	
+String path(uml::Package self) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
+	
+String path(CORBAInterface self) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
+	
+String path(Event self) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
+
+String fileName(NamedElement self ) :
+	let filedependency = self.zdlAsNamedElement().clientDependency.typeSelect(IDLFileDependency) :
+	filedependency.size > 0 ?
+		filedependency.get(0).file.filename :
+		_fileName(self);
+		
+String fileName(uml::NamedElement self ) :
+	let filedependency = self.clientDependency.typeSelect(IDLFileDependency) :
+	filedependency.size > 0 ? 
+		filedependency.get(0).file.filename :
+		_fileName(self);
+		
+private String _fileName(CCMComponent self) :
+	_fileName(self.eContainer, self.name);
+		
+private String _fileName(CORBAInterface self) :
+	_fileName(self.eContainer, self.name);
+	
+private String _fileName(Event self) :
+	_fileName(self.eContainer, self.name);
+
+private String _fileName(PortType self) :
+	_fileName(self.eContainer, self.name);
+	
+private String _fileName(uml::Package self) :
+	_fileName(self.eContainer, self.name);
+	
+private String _fileName(CORBAModule self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(CORBAEnum self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(CORBAStruct self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(CORBAException self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(CORBASequence self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(CORBATypeDef self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(CORBAUnion self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(CORBAWString self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(CORBAString self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(Native self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(CORBAArray self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(CORBAConstants self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(CORBAConstant self) :
+	_fileName(self.eContainer);
+	
+private String _fileName(DDSMessage self) :
+	_fileName(self.eContainer, self.name);
+
+private String _fileName(CCM::CCM_Core::CCMModel self) :
+	self.zdlAsPackage().name;	
+	
+private String _fileName(uml::Package self, String name) :
+	_fileName(self.eContainer, name);
+
+private String _fileName(ModuleInstantiation self, String name) :
+	_fileName(self.eContainer, self.name);
+		
+private String _fileName(CORBAModule self, String name) :
+	let filedependency = self.zdlAsNamedElement().clientDependency.typeSelect(IDLFileDependency) :
+	filedependency.size > 0 ? 
+		_fileName(self.eContainer, filedependency.get(0).file.filename + "_" + name) :
+		_fileName(self.eContainer, self.name + "_" + name);
+	
+private String _fileName(Void self, String name) :
+	name;
+	
+private String getAnnotationValueForGenerateDir(Object self) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.getAnnotationValueForGenerateDir(java.lang.Object);
+	

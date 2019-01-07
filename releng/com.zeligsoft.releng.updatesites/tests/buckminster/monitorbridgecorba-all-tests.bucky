@@ -1,0 +1,2 @@
+importtargetdefinition -A "buildDriver/rsa.target"
+junit -l 'com.zeligsoft.releng.updatesites/tests/launch/MonitorBridgeCorbaAllTests.launch' -o 'tests.output/test-results-monitorbridgecorba.xml' --stdout 'tests.output/test-stdout-monitorbridgecorba.txt' --stderr 'tests.output/test-stderr-monitorbridgecorba.txt' --flatXML

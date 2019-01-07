@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="&#xD;&#xA;Copyright (c) 2008 Zeligsoft Inc.&#xD;&#xA;&#xD;&#xA;All rights reserved. &#xD;&#xA; &#xD;&#xA;THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND&#xD;&#xA;IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, &#xD;&#xA;DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,&#xD;&#xA;IS STRICTLY PROHIBITED.&#xD;&#xA;"
+    modelDirectory="/com.zeligsoft.base.toolingmodel/src" editDirectory="/com.zeligsoft.base.toolingmodel.edit/src"
+    editorDirectory="/com.zeligsoft.base.toolingmodel.editor/src" modelPluginID="com.zeligsoft.base.toolingmodel"
+    modelName="ToolingModel" nonNLSMarkers="true" codeFormatting="true" testsDirectory="/com.zeligsoft.base.toolingmodel.test/src"
+    testSuiteClass="com.zeligsoft.base.toolingmodel.test.AllTests" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" binaryCompatibleReflectiveMethods="true"
+    usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml">
+  <foreignModel>toolingmodel.ecore</foreignModel>
+  <genPackages prefix="ToolingModel" basePackage="com.zeligsoft.base" resource="XMI"
+      disposableProviderFactory="true" ecorePackage="toolingmodel.ecore#/">
+    <genClasses image="false" ecoreClass="toolingmodel.ecore#//PaletteItem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//PaletteItem/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//PaletteItem/description"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//Palette">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//Palette/drawer"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="toolingmodel.ecore#//Tool"/>
+    <genClasses image="false" ecoreClass="toolingmodel.ecore#//ToolContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//ToolContainer/tool"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//ToolContainer/targetDiagram"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//Drawer"/>
+    <genClasses ecoreClass="toolingmodel.ecore#//Stack">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//Stack/activeTool"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//CreationTool">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//CreationTool/concept"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//CreationTool/elementTypeHint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//CreationTool/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//LinkTool">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//LinkTool/reference"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//PropertySource">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//PropertySource/definition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//PropertySource/conceptName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//PropertySource/order"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//PropertyDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//PropertyDefinition/readOnly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//PropertyDefinition/visible"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//PropertyDefinition/contentHint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//PropertyDefinition/section"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//PropertySheet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//PropertySheet/domainModelURI"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//PropertySheet/propertySource"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//PropertySheet/propertyDefinition"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//TextualDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//TextualDefinition/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//TextualDefinition/numRows"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="toolingmodel.ecore#//PrimitiveDefinition"/>
+    <genClasses ecoreClass="toolingmodel.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//MenuModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//MenuModel/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//MenuModel/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//MenuModel/item"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//MenuModel/menu"/>
+      <genOperations ecoreOperation="toolingmodel.ecore#//MenuModel/getItems">
+        <genParameters ecoreParameter="toolingmodel.ecore#//MenuModel/getItems/concept"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//MenuInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//MenuInstance/concept"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//MenuInstance/item"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="toolingmodel.ecore#//MenuItem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//MenuItem/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//MenuItem/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//MenuItem/container"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//Menu">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//Menu/item"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="toolingmodel.ecore#//MenuAction"/>
+    <genClasses ecoreClass="toolingmodel.ecore#//CreateAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//CreateAction/createConcept"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//CreateAction/typeHint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference toolingmodel.ecore#//CreateAction/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//DelegateAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//DelegateAction/className"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//DelegateAction/hostBundle"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//MenuSeparator"/>
+    <genClasses image="false" ecoreClass="toolingmodel.ecore#//MenuObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//MenuObject/generated"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="toolingmodel.ecore#//Expression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//Expression/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//Expression/expression"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="toolingmodel.ecore#//OawBaseExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//OawBaseExpression/metamodel"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//OawExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//OawExpression/variableName"/>
+    </genClasses>
+    <genClasses ecoreClass="toolingmodel.ecore#//OawXtend">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute toolingmodel.ecore#//OawXtend/extensionFile"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="toolingmodel.ecore#//PropertiesObject"/>
+  </genPackages>
+</genmodel:GenModel>

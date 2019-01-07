@@ -1,0 +1,27 @@
+import langc;
+import ZMLMM::ZML_Deployments;
+import POSIX::POSIX;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+
+extension langc::element;
+extension langc::expr;
+extension langc::stmt;
+extension langc::type;
+
+extension posix::name;
+
+create ElementList genBaseInterfaceFile(Interface i) :
+	setName(i.baseInterfaceFileName())
+	->addElement(i.baseInterfaceStruct())
+	->addElement(i.baseInterfaceTypedef())
+;
+
+create Struct baseInterfaceStruct(Interface i) :
+	setName(i.baseInterfaceStructname())
+;
+
+create Typedef baseInterfaceTypedef(Interface i) :
+	setName(i.baseInterfaceStructPtrname())
+	-> setElement(i.baseInterfaceStruct().ptr())
+;

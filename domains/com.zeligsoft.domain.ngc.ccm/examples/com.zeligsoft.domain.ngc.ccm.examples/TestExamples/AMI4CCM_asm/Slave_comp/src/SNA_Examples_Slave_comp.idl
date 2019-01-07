@@ -1,0 +1,14 @@
+#ifndef CX_SLAVE_COMP__SRC__SNA_EXAMPLES_SLAVE_COMP_IDL
+#define CX_SLAVE_COMP__SRC__SNA_EXAMPLES_SLAVE_COMP_IDL
+
+#include <Components.idl>
+#include "SNA_Examples_StateControl_obj.idl"
+
+module SNA_Examples {
+    component Slave_comp {
+        provides StateControl_obj stateControlFacet;
+    };
+
+};
+
+#endif

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_u7LrMFdTEd2dX8F-w7YSPA" name="test_ocl" metamodelReference="_u7LrRFdTEd2dX8F-w7YSPA">
+    <eAnnotations xmi:id="_u7LrMVdTEd2dX8F-w7YSPA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <eAnnotations xmi:id="_oSkFgLQmEd2znunpcPUHwA" source="test_ocl::OCLTest::Interface">
+        <details xmi:id="_oSkFgbQmEd2znunpcPUHwA" key="name" value="name"/>
+      </eAnnotations>
+      <details xmi:id="_P3xfdFgBEd21NtXMLX6w-g" key="test_ocl::OCLTest::Interface" value="Interface"/>
+      <references xmi:type="uml:Class" href="test_ocl.emx#_zoN8sFdAEd2QLpfwcJGR1A"/>
+    </eAnnotations>
+    <eAnnotations xmi:id="_u7LrMldTEd2dX8F-w7YSPA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_u7LrM1dTEd2dX8F-w7YSPA" name="test_ocl" nsURI="http://www.zeligsoft.com/test/2008/test_ocl/1" nsPrefix="test_ocl">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_u7LrNFdTEd2dX8F-w7YSPA" name="OCLComponent">
+          <eAnnotations xmi:id="_u7LrNVdTEd2dX8F-w7YSPA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_u7LrRldTEd2dX8F-w7YSPA"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_u7LrNldTEd2dX8F-w7YSPA" name="implementation" ordered="false" upperBound="-1" eType="_u7LrPFdTEd2dX8F-w7YSPA"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_u7LrOFdTEd2dX8F-w7YSPA" name="isMonolithic" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_u7LrOldTEd2dX8F-w7YSPA" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Component"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_wphJQFjoEd2q885a2u2Ktg" name="availability" ordered="false" lowerBound="1" eType="_wpgiMFjoEd2q885a2u2Ktg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_u7LrPFdTEd2dX8F-w7YSPA" name="OCLImplementation">
+          <eAnnotations xmi:id="_u7LrPVdTEd2dX8F-w7YSPA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_u7LrVVdTEd2dX8F-w7YSPA"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_u7LrPldTEd2dX8F-w7YSPA" name="base_Artifact" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Artifact"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_u7LrQFdTEd2dX8F-w7YSPA" name="OCLPort">
+          <eAnnotations xmi:id="_u7LrQVdTEd2dX8F-w7YSPA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_u7LrY1dTEd2dX8F-w7YSPA"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_u7LrQldTEd2dX8F-w7YSPA" name="base_Port" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Port"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_6OvP0FdjEd2oevF1rAUfFQ" name="isExternal" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_9ykpcGlrEd29S-xFjaIf_A" name="descriptor" ordered="false" upperBound="-1" eType="_9ya4mWlrEd29S-xFjaIf_A" containment="true"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_P3yGgFgBEd21NtXMLX6w-g" name="OCLInterface">
+          <eAnnotations xmi:id="_P3yGgVgBEd21NtXMLX6w-g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_P3xfcFgBEd21NtXMLX6w-g"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_slnxsFgGEd2xUM6g0GTsIw" name="base_Interface" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_bnRHfWlPEd2jP-b4ke1YDQ" name="synchronization" ordered="false" lowerBound="1" eType="_bnRHeGlPEd2jP-b4ke1YDQ" defaultValueLiteral="unspecified"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_wpgiMFjoEd2q885a2u2Ktg" name="AvailabilityKind">
+          <eAnnotations xmi:id="_wpgiMVjoEd2q885a2u2Ktg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_wpetAFjoEd2q885a2u2Ktg"/>
+          <eLiterals xmi:id="_wpgiMljoEd2q885a2u2Ktg" name="closed"/>
+          <eLiterals xmi:id="_wpgiM1joEd2q885a2u2Ktg" name="open" value="1"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_OvSe02MBEd22R78KyY069Q" name="OCLAssembly" eSuperTypes="_u7LrNFdTEd2dX8F-w7YSPA">
+          <eAnnotations xmi:id="_OvSe1GMBEd22R78KyY069Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_OvSe0GMBEd22R78KyY069Q"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_9yuacGlrEd29S-xFjaIf_A" name="configuration" ordered="false" eType="_9ya4n2lrEd29S-xFjaIf_A" containment="true"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_bnRHeGlPEd2jP-b4ke1YDQ" name="SynchronizationKind">
+          <eAnnotations xmi:id="_bnRHeWlPEd2jP-b4ke1YDQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_bnRHcGlPEd2jP-b4ke1YDQ"/>
+          <eLiterals xmi:id="_bnRHemlPEd2jP-b4ke1YDQ" name="synchronous"/>
+          <eLiterals xmi:id="_bnRHe2lPEd2jP-b4ke1YDQ" name="asynchronous" value="1"/>
+          <eLiterals xmi:id="_bnRHfGlPEd2jP-b4ke1YDQ" name="unspecified" value="2"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_3EwsdmlREd2jP-b4ke1YDQ" name="OCLProperty">
+          <eAnnotations xmi:id="_3Ewsd2lREd2jP-b4ke1YDQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_3EwscGlREd2jP-b4ke1YDQ"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_3EwseGlREd2jP-b4ke1YDQ" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_9ya4mWlrEd29S-xFjaIf_A" name="OCLPortInterfaceDescriptor">
+          <eAnnotations xmi:id="_9ya4mmlrEd29S-xFjaIf_A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ya4cGlrEd29S-xFjaIf_A"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_9ya4m2lrEd29S-xFjaIf_A" name="interface" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_9ya4nWlrEd29S-xFjaIf_A" name="selectedImplementation" ordered="false" lowerBound="1" eType="_u7LrPFdTEd2dX8F-w7YSPA"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_9ya4n2lrEd29S-xFjaIf_A" name="OCLConfiguration">
+          <eAnnotations xmi:id="_9ya4oGlrEd29S-xFjaIf_A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9ya4iWlrEd29S-xFjaIf_A"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_9ya4oWlrEd29S-xFjaIf_A" name="port" ordered="false" upperBound="-1" eType="_9ya4mWlrEd29S-xFjaIf_A"/>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <packageImport xmi:id="_u7LrRFdTEd2dX8F-w7YSPA">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_u7LrRVdTEd2dX8F-w7YSPA">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_u7LrRldTEd2dX8F-w7YSPA" name="OCLComponent">
+      <eAnnotations xmi:id="_u7LrR1dTEd2dX8F-w7YSPA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_u7LrSFdTEd2dX8F-w7YSPA" key="isAbstract" value="isAbstract"/>
+        <details xmi:id="_u7LrSVdTEd2dX8F-w7YSPA" key="port" value="ownedPort"/>
+        <details xmi:id="_3EwsemlREd2jP-b4ke1YDQ" key="property" value="ownedAttribute"/>
+        <references xmi:type="uml:Class" href="test_ocl.emx#_5FSCUFdAEd2QLpfwcJGR1A"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_u7LrTFdTEd2dX8F-w7YSPA" name="implementation" type="_u7LrVVdTEd2dX8F-w7YSPA" association="_u7LrXFdTEd2dX8F-w7YSPA">
+        <eAnnotations xmi:id="_u7LrTVdTEd2dX8F-w7YSPA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test_ocl.emx#_LF0PkFdBEd2QLpfwcJGR1A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_u7LrTldTEd2dX8F-w7YSPA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_u7LrT1dTEd2dX8F-w7YSPA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_u7LrUFdTEd2dX8F-w7YSPA" name="isMonolithic">
+        <eAnnotations xmi:id="_u7LrUVdTEd2dX8F-w7YSPA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test_ocl.emx#_ahi9wFdBEd2QLpfwcJGR1A"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_u7LrUldTEd2dX8F-w7YSPA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_u7LrU1dTEd2dX8F-w7YSPA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_u7LrVFdTEd2dX8F-w7YSPA" name="base_Component" association="_u7LrYVdTEd2dX8F-w7YSPA">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_wpmo0FjoEd2q885a2u2Ktg" name="availability" type="_wpetAFjoEd2q885a2u2Ktg">
+        <eAnnotations xmi:id="_wpmo0VjoEd2q885a2u2Ktg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test_ocl.emx#_MaXhYFjmEd2q885a2u2Ktg"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wpmo0ljoEd2q885a2u2Ktg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wpmo01joEd2q885a2u2Ktg" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_u7LrVVdTEd2dX8F-w7YSPA" name="OCLImplementation">
+      <eAnnotations xmi:id="_u7LrWFdTEd2dX8F-w7YSPA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_9y3kYGlrEd29S-xFjaIf_A" key="fileName" value="fileName"/>
+        <references xmi:type="uml:Class" href="test_ocl.emx#_JzmZwFdBEd2QLpfwcJGR1A"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_u7LrWVdTEd2dX8F-w7YSPA" name="base_Artifact" association="_u7LrWldTEd2dX8F-w7YSPA">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_u7LrWldTEd2dX8F-w7YSPA" name="Artifact_OCLImplementation" memberEnd="_u7LrW1dTEd2dX8F-w7YSPA _u7LrWVdTEd2dX8F-w7YSPA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_u7LrW1dTEd2dX8F-w7YSPA" name="extension_OCLImplementation" type="_u7LrVVdTEd2dX8F-w7YSPA" aggregation="composite" association="_u7LrWldTEd2dX8F-w7YSPA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_u7LrXFdTEd2dX8F-w7YSPA" memberEnd="_u7LrTFdTEd2dX8F-w7YSPA _u7LrXldTEd2dX8F-w7YSPA">
+      <eAnnotations xmi:id="_u7LrXVdTEd2dX8F-w7YSPA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="test_ocl.emx#_LFyaYFdBEd2QLpfwcJGR1A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_u7LrXldTEd2dX8F-w7YSPA" name="specification" type="_u7LrRldTEd2dX8F-w7YSPA" association="_u7LrXFdTEd2dX8F-w7YSPA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_u7LrX1dTEd2dX8F-w7YSPA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_u7LrYFdTEd2dX8F-w7YSPA"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_u7LrYVdTEd2dX8F-w7YSPA" name="Component_OCLComponent" memberEnd="_u7LrYldTEd2dX8F-w7YSPA _u7LrVFdTEd2dX8F-w7YSPA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_u7LrYldTEd2dX8F-w7YSPA" name="extension_OCLComponent" type="_u7LrRldTEd2dX8F-w7YSPA" aggregation="composite" association="_u7LrYVdTEd2dX8F-w7YSPA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_u7LrY1dTEd2dX8F-w7YSPA" name="OCLPort">
+      <eAnnotations xmi:id="_u7LrZldTEd2dX8F-w7YSPA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_P33mElgBEd21NtXMLX6w-g" key="required" value="required"/>
+        <details xmi:id="_P33mE1gBEd21NtXMLX6w-g" key="provided" value="provided"/>
+        <details xmi:id="_wqYE4FjoEd2q885a2u2Ktg" key="visibility" value="visibility"/>
+        <references xmi:type="uml:Class" href="test_ocl.emx#_97qicFdAEd2QLpfwcJGR1A"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_u7LrZ1dTEd2dX8F-w7YSPA" name="base_Port" association="_u7LraFdTEd2dX8F-w7YSPA">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_6Oy6MldjEd2oevF1rAUfFQ" name="isExternal">
+        <eAnnotations xmi:id="_6Oy6M1djEd2oevF1rAUfFQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test_ocl.emx#_brK_0FdjEd2oevF1rAUfFQ"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6Oy6NFdjEd2oevF1rAUfFQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6Oy6NVdjEd2oevF1rAUfFQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_9y3kYWlrEd29S-xFjaIf_A" name="descriptor" type="_9ya4cGlrEd29S-xFjaIf_A" aggregation="composite" association="_9ya4hGlrEd29S-xFjaIf_A">
+        <eAnnotations xmi:id="_9y3kYmlrEd29S-xFjaIf_A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test_ocl.emx#_QisLcWlqEd29S-xFjaIf_A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9y3kY2lrEd29S-xFjaIf_A" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9y3kZGlrEd29S-xFjaIf_A"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_u7LraFdTEd2dX8F-w7YSPA" name="Port_OCLPort" memberEnd="_u7LraVdTEd2dX8F-w7YSPA _u7LrZ1dTEd2dX8F-w7YSPA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_u7LraVdTEd2dX8F-w7YSPA" name="extension_OCLPort" type="_u7LrY1dTEd2dX8F-w7YSPA" aggregation="composite" association="_u7LraFdTEd2dX8F-w7YSPA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_P3xfcFgBEd21NtXMLX6w-g" name="OCLInterface">
+      <eAnnotations xmi:id="_P3xfc1gBEd21NtXMLX6w-g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="test_ocl.emx#_vecdIFf_Ed21NtXMLX6w-g"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_slsqMFgGEd2xUM6g0GTsIw" name="base_Interface" association="_sllVcFgGEd2xUM6g0GTsIw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_brcc0GlPEd2jP-b4ke1YDQ" name="synchronization" type="_bnRHcGlPEd2jP-b4ke1YDQ">
+        <eAnnotations xmi:id="_brcc0WlPEd2jP-b4ke1YDQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test_ocl.emx#_kAG3IGlOEd2jP-b4ke1YDQ"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_brcc0mlPEd2jP-b4ke1YDQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_brcc02lPEd2jP-b4ke1YDQ" value="1"/>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_brcc1GlPEd2jP-b4ke1YDQ" instance="_bnRHdmlPEd2jP-b4ke1YDQ"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_sllVcFgGEd2xUM6g0GTsIw" name="Interface_OCLInterface" memberEnd="_sllVcVgGEd2xUM6g0GTsIw _slsqMFgGEd2xUM6g0GTsIw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_sllVcVgGEd2xUM6g0GTsIw" name="extension_OCLInterface" type="_P3xfcFgBEd21NtXMLX6w-g" aggregation="composite" association="_sllVcFgGEd2xUM6g0GTsIw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_wpetAFjoEd2q885a2u2Ktg" name="AvailabilityKind">
+      <eAnnotations xmi:id="_wpetAVjoEd2q885a2u2Ktg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Enumeration" href="test_ocl.emx#_Gqz9kFjmEd2q885a2u2Ktg"/>
+      </eAnnotations>
+      <ownedLiteral xmi:id="_wpetAljoEd2q885a2u2Ktg" name="closed">
+        <eAnnotations xmi:id="_wpetA1joEd2q885a2u2Ktg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="test_ocl.emx#_JDiIcFjmEd2q885a2u2Ktg"/>
+        </eAnnotations>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_wpetBFjoEd2q885a2u2Ktg" name="open">
+        <eAnnotations xmi:id="_wpetBVjoEd2q885a2u2Ktg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="test_ocl.emx#_J9IC4FjmEd2q885a2u2Ktg"/>
+        </eAnnotations>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_OvSe0GMBEd22R78KyY069Q" name="OCLAssembly">
+      <eAnnotations xmi:id="_OvSe0WMBEd22R78KyY069Q" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="test_ocl.emx#_5Gyh0GL_Ed22R78KyY069Q"/>
+      </eAnnotations>
+      <generalization xmi:id="_OvSe0mMBEd22R78KyY069Q" general="_u7LrRldTEd2dX8F-w7YSPA"/>
+      <ownedAttribute xmi:id="_9y3kZWlrEd29S-xFjaIf_A" name="configuration" type="_9ya4iWlrEd29S-xFjaIf_A" aggregation="composite" association="_9ya4lGlrEd29S-xFjaIf_A">
+        <eAnnotations xmi:id="_9y3kZmlrEd29S-xFjaIf_A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test_ocl.emx#_HKUt4GlqEd29S-xFjaIf_A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9y3kZ2lrEd29S-xFjaIf_A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9y3kaGlrEd29S-xFjaIf_A"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_bnRHcGlPEd2jP-b4ke1YDQ" name="SynchronizationKind">
+      <eAnnotations xmi:id="_bnRHcWlPEd2jP-b4ke1YDQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Enumeration" href="test_ocl.emx#_NrvdMGlOEd2jP-b4ke1YDQ"/>
+      </eAnnotations>
+      <ownedLiteral xmi:id="_bnRHcmlPEd2jP-b4ke1YDQ" name="synchronous">
+        <eAnnotations xmi:id="_bnRHc2lPEd2jP-b4ke1YDQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="test_ocl.emx#_Yh9Y0GlOEd2jP-b4ke1YDQ"/>
+        </eAnnotations>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_bnRHdGlPEd2jP-b4ke1YDQ" name="asynchronous">
+        <eAnnotations xmi:id="_bnRHdWlPEd2jP-b4ke1YDQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="test_ocl.emx#_cyCt8GlOEd2jP-b4ke1YDQ"/>
+        </eAnnotations>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_bnRHdmlPEd2jP-b4ke1YDQ" name="unspecified">
+        <eAnnotations xmi:id="_bnRHd2lPEd2jP-b4ke1YDQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="test_ocl.emx#_ePKzQGlOEd2jP-b4ke1YDQ"/>
+        </eAnnotations>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_3EwscGlREd2jP-b4ke1YDQ" name="OCLProperty">
+      <eAnnotations xmi:id="_3EwscWlREd2jP-b4ke1YDQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_3EwscmlREd2jP-b4ke1YDQ" key="type" value="type"/>
+        <references xmi:type="uml:Class" href="test_ocl.emx#_aSsEsGlQEd2jP-b4ke1YDQ"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_3Ewsc2lREd2jP-b4ke1YDQ" name="base_Property" association="_3EwsdGlREd2jP-b4ke1YDQ">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_3EwsdGlREd2jP-b4ke1YDQ" name="Property_OCLProperty" memberEnd="_3EwsdWlREd2jP-b4ke1YDQ _3Ewsc2lREd2jP-b4ke1YDQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_3EwsdWlREd2jP-b4ke1YDQ" name="extension_OCLProperty" type="_3EwscGlREd2jP-b4ke1YDQ" aggregation="composite" association="_3EwsdGlREd2jP-b4ke1YDQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_9ya4cGlrEd29S-xFjaIf_A" name="OCLPortInterfaceDescriptor">
+      <eAnnotations xmi:id="_9ya4cWlrEd29S-xFjaIf_A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="test_ocl.emx#_g8A_wGlpEd29S-xFjaIf_A"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_9ya4cmlrEd29S-xFjaIf_A" name="interface" association="_9ya4emlrEd29S-xFjaIf_A">
+        <eAnnotations xmi:id="_9ya4c2lrEd29S-xFjaIf_A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test_ocl.emx#_otuMEWlqEd29S-xFjaIf_A"/>
+        </eAnnotations>
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9ya4dGlrEd29S-xFjaIf_A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9ya4dWlrEd29S-xFjaIf_A" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_9ya4dmlrEd29S-xFjaIf_A" name="selectedImplementation" type="_u7LrVVdTEd2dX8F-w7YSPA" association="_9ya4f2lrEd29S-xFjaIf_A">
+        <eAnnotations xmi:id="_9ya4d2lrEd29S-xFjaIf_A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test_ocl.emx#_38QLwWlqEd29S-xFjaIf_A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9ya4eGlrEd29S-xFjaIf_A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9ya4eWlrEd29S-xFjaIf_A" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9ya4emlrEd29S-xFjaIf_A" memberEnd="_9ya4cmlrEd29S-xFjaIf_A _9ya4fGlrEd29S-xFjaIf_A">
+      <eAnnotations xmi:id="_9ya4e2lrEd29S-xFjaIf_A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="test_ocl.emx#_otuMEGlqEd29S-xFjaIf_A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_9ya4fGlrEd29S-xFjaIf_A" name="" type="_9ya4cGlrEd29S-xFjaIf_A" association="_9ya4emlrEd29S-xFjaIf_A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9ya4fWlrEd29S-xFjaIf_A" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9ya4fmlrEd29S-xFjaIf_A"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9ya4f2lrEd29S-xFjaIf_A" memberEnd="_9ya4dmlrEd29S-xFjaIf_A _9ya4gWlrEd29S-xFjaIf_A">
+      <eAnnotations xmi:id="_9ya4gGlrEd29S-xFjaIf_A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="test_ocl.emx#_38QLwGlqEd29S-xFjaIf_A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_9ya4gWlrEd29S-xFjaIf_A" name="" type="_9ya4cGlrEd29S-xFjaIf_A" association="_9ya4f2lrEd29S-xFjaIf_A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9ya4gmlrEd29S-xFjaIf_A" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9ya4g2lrEd29S-xFjaIf_A"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9ya4hGlrEd29S-xFjaIf_A" memberEnd="_9y3kYWlrEd29S-xFjaIf_A _9ya4hmlrEd29S-xFjaIf_A">
+      <eAnnotations xmi:id="_9ya4hWlrEd29S-xFjaIf_A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="test_ocl.emx#_QisLcGlqEd29S-xFjaIf_A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_9ya4hmlrEd29S-xFjaIf_A" name="" type="_u7LrY1dTEd2dX8F-w7YSPA" association="_9ya4hGlrEd29S-xFjaIf_A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9ya4h2lrEd29S-xFjaIf_A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9ya4iGlrEd29S-xFjaIf_A" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_9ya4iWlrEd29S-xFjaIf_A" name="OCLConfiguration">
+      <eAnnotations xmi:id="_9ya4imlrEd29S-xFjaIf_A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="test_ocl.emx#_eZcVUGlpEd29S-xFjaIf_A"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_9ya4i2lrEd29S-xFjaIf_A" name="port" type="_9ya4cGlrEd29S-xFjaIf_A" association="_9ya4j2lrEd29S-xFjaIf_A">
+        <eAnnotations xmi:id="_9ya4jGlrEd29S-xFjaIf_A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test_ocl.emx#_NiBaUWlrEd29S-xFjaIf_A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9ya4jWlrEd29S-xFjaIf_A" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9ya4jmlrEd29S-xFjaIf_A"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9ya4j2lrEd29S-xFjaIf_A" memberEnd="_9ya4i2lrEd29S-xFjaIf_A _9ya4kWlrEd29S-xFjaIf_A">
+      <eAnnotations xmi:id="_9ya4kGlrEd29S-xFjaIf_A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="test_ocl.emx#_NiBaUGlrEd29S-xFjaIf_A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_9ya4kWlrEd29S-xFjaIf_A" name="" type="_9ya4iWlrEd29S-xFjaIf_A" association="_9ya4j2lrEd29S-xFjaIf_A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9ya4kmlrEd29S-xFjaIf_A" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9ya4k2lrEd29S-xFjaIf_A"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9ya4lGlrEd29S-xFjaIf_A" memberEnd="_9y3kZWlrEd29S-xFjaIf_A _9ya4lmlrEd29S-xFjaIf_A">
+      <eAnnotations xmi:id="_9ya4lWlrEd29S-xFjaIf_A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="test_ocl.emx#_HKBy8GlqEd29S-xFjaIf_A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_9ya4lmlrEd29S-xFjaIf_A" name="" type="_OvSe0GMBEd22R78KyY069Q" association="_9ya4lGlrEd29S-xFjaIf_A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9ya4l2lrEd29S-xFjaIf_A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9ya4mGlrEd29S-xFjaIf_A" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <profileApplication xmi:id="_u7LraldTEd2dX8F-w7YSPA">
+      <eAnnotations xmi:id="_u7Lra1dTEd2dX8F-w7YSPA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_oTAxcLQmEd2znunpcPUHwA" base_Package="_u7LrMFdTEd2dX8F-w7YSPA" packageName="test_ocl" nsPrefix="test_ocl" nsURI="http://www.zeligsoft.com/test/2008/test_ocl/1" prefix="test_ocl"/>
+</xmi:XMI>

@@ -1,0 +1,35 @@
+<head>
+	<title>Descriptor Generation</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="descriptgen.html" title="Descriptor Generation">
+		<h1>Descriptor Generation</h1>
+		<p>
+CX generates SCA-compliant XML descriptor files from the UML 2.0 model that you define. The XML is generated from the modeling elements, their 
+connections, and the attributes of these model elements. CX creates all the XML descriptor files as specified in the Domain Profile: 
+</p>
+		<ul>
+			<li><a href="spdOverview.html">Software Package Descriptor (SPD)</a></li>
+			<li><a href="dpdOverview.html">Device Package Descriptor (DPD)</a></li>
+			<li><a href="prfOverview.html">Properties Descriptor (PRF)</a></li>
+			<li><a href="scdOverview.html">Software Component Descriptor (SCD)</a></li>
+			<li><a href="sadOverview.html">Software Assembly Descriptor (SAD)</a></li>
+			<li><a href="dcdOverview.html">Device Configuration Descriptor (DCD)</a></li>
+			<li><a href="dmdOverview.html">DomainManager Configuration Descriptor (DMD)</a></li>
+		</ul>
+		<p>CX generates the Software Assembly Descriptor for the application.  It also generates the Software Component and Software Package 
+			Descriptors for each component contained in the application. If you have defined properties for the components, CX generates the 
+			Properties Descriptors, as well. </p>
+		<p>CX generates the Device Configuration Descriptor for the node.  It also generates the Software Component and Software Package Descriptors 
+			for each device or Core Framework entity contained in the node.  If you have defined properties for the devices or Core Framework entities, 
+			CX generates the Property Descriptors, as well. </p>
+		<p>The CX user interface is intuitive: model settings are generated into their relevant descriptors. For example, the placement of 
+			component instances in an application and the connection of those components is generated into the Software Assembly Descriptor, 
+			while the component PackageAttributes are generated into the Software Package Descriptor. </p>
+		<div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

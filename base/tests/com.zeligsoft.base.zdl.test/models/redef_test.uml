@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:redef="http://www.zeligsoft.com/zdl/2008/test/Redef/1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.zeligsoft.com/zdl/2008/test/Redef/1 redef.profile.uml#_wS5904WPEd2YV8iS_hWlHQ">
+  <uml:Model xmi:id="_ZH-S0IWQEd2YV8iS_hWlHQ" name="redef_test">
+    <packagedElement xmi:type="uml:Component" xmi:id="_kLLhkIWQEd2YV8iS_hWlHQ" name="aTree">
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_cnX8cIWREd2YV8iS_hWlHQ" name="aNode"/>
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_e2Rc8IWREd2YV8iS_hWlHQ" name="aTreeNode"/>
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_wYL0gIWREd2YV8iS_hWlHQ" name="anotherTreeNode"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_iwdakIWREd2YV8iS_hWlHQ" name="notAnOtherTree"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_m8_FYIWREd2YV8iS_hWlHQ" name="anOtherTree"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_sC4BIIWREd2YV8iS_hWlHQ" name="anotherOtherTree"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_c2a80IaIEd2Cx527lyc0-g" name="aThing"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_jNX30IaIEd2Cx527lyc0-g" name="anOther"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_mZXSsIaIEd2Cx527lyc0-g" name="anotherOther"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_0attkIaIEd2Cx527lyc0-g" name="aMyThing"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_0attkYaIEd2Cx527lyc0-g" name="aMyOther"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_0attkoaIEd2Cx527lyc0-g" name="anotherMyOther"/>
+    <profileApplication xmi:id="_hDpv8IWQEd2YV8iS_hWlHQ">
+      <eAnnotations xmi:id="_hDpv8YWQEd2YV8iS_hWlHQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="redef.profile.uml#_wS5904WPEd2YV8iS_hWlHQ"/>
+      </eAnnotations>
+      <appliedProfile href="redef.profile.uml#_wS590IWPEd2YV8iS_hWlHQ"/>
+    </profileApplication>
+  </uml:Model>
+  <redef:Tree xmi:id="_2ecoIIWREd2YV8iS_hWlHQ" base_Class="_kLLhkIWQEd2YV8iS_hWlHQ" base_Component="_kLLhkIWQEd2YV8iS_hWlHQ"/>
+  <redef:Node xmi:id="_4ecJ8IWREd2YV8iS_hWlHQ" base_Class="_cnX8cIWREd2YV8iS_hWlHQ"/>
+  <redef:Tree xmi:id="_6e4-wIWREd2YV8iS_hWlHQ" base_Class="_e2Rc8IWREd2YV8iS_hWlHQ" base_Component="_e2Rc8IWREd2YV8iS_hWlHQ"/>
+  <redef:Tree xmi:id="_8IidIIWREd2YV8iS_hWlHQ" base_Class="_wYL0gIWREd2YV8iS_hWlHQ" base_Component="_wYL0gIWREd2YV8iS_hWlHQ"/>
+  <redef:Node xmi:id="_9-G3oIWREd2YV8iS_hWlHQ" base_Class="_iwdakIWREd2YV8iS_hWlHQ"/>
+  <redef:Tree xmi:id="__xmOgIWREd2YV8iS_hWlHQ" base_Class="_m8_FYIWREd2YV8iS_hWlHQ" base_Component="_m8_FYIWREd2YV8iS_hWlHQ"/>
+  <redef:Tree xmi:id="_BYHgYIWSEd2YV8iS_hWlHQ" base_Class="_sC4BIIWREd2YV8iS_hWlHQ" base_Component="_sC4BIIWREd2YV8iS_hWlHQ"/>
+  <redef:Thing xmi:id="_pzEZcIaIEd2Cx527lyc0-g" other="_rnAcQIaIEd2Cx527lyc0-g _tVbF4IaIEd2Cx527lyc0-g" base_Actor="_c2a80IaIEd2Cx527lyc0-g"/>
+  <redef:Other xmi:id="_rnAcQIaIEd2Cx527lyc0-g" thing="_pzEZcIaIEd2Cx527lyc0-g" base_UseCase="_jNX30IaIEd2Cx527lyc0-g"/>
+  <redef:Other xmi:id="_tVbF4IaIEd2Cx527lyc0-g" base_UseCase="_mZXSsIaIEd2Cx527lyc0-g"/>
+  <redef:MyThing xmi:id="_5nAzUIaIEd2Cx527lyc0-g" other="_7DsMsIaIEd2Cx527lyc0-g _8huQ8IaIEd2Cx527lyc0-g" base_Actor="_0attkIaIEd2Cx527lyc0-g"/>
+  <redef:MyOther xmi:id="_7DsMsIaIEd2Cx527lyc0-g" base_UseCase="_0attkYaIEd2Cx527lyc0-g" myThing="_5nAzUIaIEd2Cx527lyc0-g"/>
+  <redef:MyOther xmi:id="_8huQ8IaIEd2Cx527lyc0-g" base_UseCase="_0attkoaIEd2Cx527lyc0-g"/>
+</xmi:XMI>

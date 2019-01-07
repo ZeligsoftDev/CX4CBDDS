@@ -1,0 +1,83 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7139044
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "Default.sbs";
+		- _subsystem = "";
+		- _class = "";
+		- _name = "Default";
+		- _id = GUID 657adefe-b334-4124-90fc-25bf1d779342;
+	}
+	- _id = GUID f9b67def-b433-4a14-b7b5-ea8b7ab470e5;
+	- _myState = 8192;
+	- _name = "DeployPlanMockup_Values";
+	- _modifiedTimeWeak = 5.29.2014::14:17:31;
+	- _lastID = 1;
+	- weakCGTime = 5.29.2014::14:17:31;
+	- strongCGTime = 5.29.2014::14:16:11;
+	- _defaultComposite = GUID 06ffd181-66ee-48b7-be1f-8fc9edf84e3a;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID 06ffd181-66ee-48b7-be1f-8fc9edf84e3a;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 1.2.1990::0:0:0;
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- InstanceSpecifications = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IInstanceSpecification 
+			- _id = GUID 6b299de2-41b8-4772-a2ab-71b10c2b3dde;
+			- _name = "DeployableArtifactInstance";
+			- _modifiedTimeWeak = 5.29.2014::14:17:31;
+			- _itsClassifier = { IHandle 
+				- _m2Class = "IClass";
+				- _filename = "Default.sbs";
+				- _subsystem = "Default";
+				- _class = "";
+				- _name = "DeployableArtifact";
+				- _id = GUID 02ca5846-b169-40ee-9791-fe644de6a61d;
+			}
+			- InstanceSlots = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IInstanceSlot 
+					- _id = GUID 856289dc-d595-43aa-a2e1-8ecd3b1885ca;
+					- _myState = 2048;
+					- _name = "instanceslot_0";
+					- _modifiedTimeWeak = 5.29.2014::14:17:31;
+					- _itsSlotProperty = { IHandle 
+						- _m2Class = "IAttribute";
+						- _filename = "Default.sbs";
+						- _subsystem = "Default";
+						- _class = "DeployableArtifact";
+						- _name = "deployableProperty";
+						- _id = GUID 24e36953-f68d-400c-b1f6-a2869a0df5c0;
+					}
+					- Values = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ILiteralSpecification 
+							- _id = GUID 3379c35f-df91-4596-b94f-3ddfa7e32b21;
+							- _modifiedTimeWeak = 5.29.2014::14:17:31;
+							- _value = "Fred";
+						}
+					}
+				}
+			}
+		}
+	}
+	- _configurationRelatedTime = 12.31.1969::19:0:0;
+}
+

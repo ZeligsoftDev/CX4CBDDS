@@ -1,0 +1,125 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <meta name="generator" content="Adobe RoboHelp 9">
+<title>IDL Files</title>
+<link rel="stylesheet" type="text/css" href="helpstyle.css">
+<script type="text/javascript" language="JavaScript">
+//<![CDATA[
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//]]>
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+-->
+</style>
+<script type="text/javascript" language="javascript1.2" src="whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whtopic.js"></script>
+
+</head>
+
+<body outputfile="aboutidlfile.html" title="IDL Files"><script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+if (window.gbWhTopic)
+{
+	var strUrl = document.location.href;
+	var bc = 0;
+	var n = strUrl.toLowerCase().indexOf("bc-");
+	if(n != -1)
+	{
+		document.location.href = strUrl.substring(0, n);
+		bc = strUrl.substring(n+3);
+	}
+
+	if (window.addTocInfo)
+	{
+	
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(0);
+
+	
+	
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("index.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+
+//-->
+//]]></script>
+<h1>IDL Files</h1>
+<p>This element is used to represent the IDL file. Modules and interfaces 
+ and other IDL constructs are within these files.</p>
+<p>Each IDL File has an option called location. You need to configure the 
+ location of the IDL file if you choose to reference an existing IDL file. 
+ If you wish to generate the IDL file from CX or Copy external IDL into 
+ the generated source folder, this field is ignored. This applies to both 
+ the Core Framework IDL file and user-defined IDL files.</p>
+<ol>
+	<li>In the <strong>Project Explorer</strong>, select the IDL file folder.</li>
+	<li>In the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> 
+	 tab.</li>
+	<li>Define the <strong>location</strong> property. For example, the 
+	 CF IDL file element location is set to $(CF_FILE_LOCATION)</li>
+	<li>Select <strong>Window</strong> &gt; <strong>Preferences</strong> 
+	 and expand <strong>General</strong> &gt; <strong>Workspace</strong> 
+	 &gt; <strong>Linked Resources</strong>. Add a path variable and set 
+	 the value to the location of the external IDL file.</li>
+</ol>
+<h3>IDL Import</h3>
+<p>This palette element is used to show a relationship between IDL files. 
+ It shows that one IDL file is including other IDL files and creates a 
+ #include statement when generating the IDL file.</p>
+<h3>See Also</h3>
+&#160; 
+<br><br>
+<div class="runningfooter" id="dochomefooter">
+	<a href="mailto:support@prismtech.com" shape="rect" style="color: #0000ff; 
+		 text-decoration: underline; ">Provide feedback</a><br style="clear: none;">
+	
+	<hr align="center">
+	<br>Copyright <sup>©</sup> 2011 PrismTech Ltd. All rights 
+	 reserved.
+</div>
+<script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+
+
+highlightSearch();
+//-->
+//]]></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.zeligsoft.domain.omg.ccm_feature"
+      label="%featureName"
+      version="3.5.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://www.zeligsoft.com/tools/zeligsoft-cx">
+      %description
+   </description>
+
+   <copyright>
+      Copyright 2018 ADLINK Technology Limited.
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime" version="3.6.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.6.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.core" version="1.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base.zdl" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.zml" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.corba" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.codegen" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.codegen.ui" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.ccm" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.corba.codegen" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.corba.dsl" version="3.4.0" match="compatible"/>
+      <import plugin="com.ibm.xtools.uml.msl" version="7.70.0" match="compatible"/>
+      <import plugin="org.eclipse.ui" version="3.4.1" match="compatible"/>
+      <import plugin="org.eclipse.core.resources" version="3.4.1" match="compatible"/>
+      <import plugin="org.eclipse.ui.ide" version="3.4.1" match="compatible"/>
+      <import plugin="org.eclipse.emf.common" version="2.4.0" match="compatible"/>
+      <import plugin="org.eclipse.uml2.uml" version="3.1.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base.ui" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.ui" version="3.4.0" match="compatible"/>
+      <import plugin="com.ibm.xtools.modeler.ui" version="7.5.0" match="greaterOrEqual"/>
+      <import plugin="com.zeligsoft.domain.zml.ui" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.ui.properties" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base.ui.menus" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.deployment.treeeditor" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base.diagram" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.zml.oaw" version="3.4.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.core" version="1.1.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.build" version="3.4.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.4.0" match="greaterOrEqual"/>
+      <import plugin="org.antlr.runtime" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.log4j" version="1.2.15" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.logging" version="1.0.4" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.editors" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.corba.dsl" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.notation" version="1.4.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.edit" version="2.6.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.common.ui" version="2.4.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.notation" version="1.1.1" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.core" version="1.1.2" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.corba.idlimport" version="3.4.0" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.ccm"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.ccm.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.ccm.generator"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.ccm.rsm"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.ccm.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.ccm.codegen"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.corba"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.corba.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.corba.codegen"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.corba.dsl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.corba.dsl.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.corba.idlimport"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.corba.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.omg.ccm.idlimport"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

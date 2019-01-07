@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<plugin>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="cxPreferenceRoot"
+            class="com.zeligsoft.base.validation.ui.preferences.ConstraintsPreferencePage"
+            id="com.zeligsoft.validation.constraints"
+            name="%prefs.page.constraints">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintBindings">
+      
+      <!-- Register this binding in the UI plug-in because UML Modeler's context
+           is registered in a UI plug-in. -->
+      <binding
+            context="com.ibm.xtools.modeler.validation.client">
+         <category
+               ref="com.zeligsoft.base.validation.zdl">
+         </category>
+      </binding>
+   </extension>
+
+</plugin>

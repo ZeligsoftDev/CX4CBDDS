@@ -1,0 +1,638 @@
+
+import langc;
+
+extension langc::debug;
+extension langc::expr;
+extension langc::name;
+extension langc::stmt;
+extension langc::type;
+
+create SubSystem subSystem( String name ) :
+    setName( name )
+;
+
+create LinkableArtifact artifact( String name ) :
+    setName( name )
+;
+
+private Void bind( Name name, BindableValue value ) :
+    JAVA com.zeligsoft.cx.langc.util.Namespace.bind(com.zeligsoft.cx.langc.Name, com.zeligsoft.cx.langc.BindableValue )
+;
+
+private Void rebind( Name name, Name parent, BindableValue value ) :
+    JAVA com.zeligsoft.cx.langc.util.Namespace.rebind(com.zeligsoft.cx.langc.Name, com.zeligsoft.cx.langc.Name, com.zeligsoft.cx.langc.BindableValue )
+;
+
+LinkageSpec extern() :
+    LinkageSpec.getStaticProperty('extern').get()
+;
+
+LinkageSpec static() :
+    LinkageSpec.getStaticProperty('static').get()
+;
+
+ElementKind headerOnly() :
+    ElementKind.getStaticProperty('headerOnly').get()
+;
+
+ElementKind implOnly() :
+    ElementKind.getStaticProperty('implOnly').get()
+;
+
+private Void addTo( UserElement element, ElementList list ) :
+    list.elements.add( element )
+;
+
+private Void addTo( CodeBlock block, ElementList list ) :
+    { block.eContainer }.typeSelect( FunctionImplementation ).addTo( list )
+;
+
+private Void addTo( Function function, ElementList list ) :
+    list.elements.add( function )
+ -> ( function.defaultImpl != null ? list.elements.add( function.defaultImpl ) : null )
+;
+
+ElementList addElement( ElementList list, Void none ) :
+    list
+;
+
+/* Only UserElements can be added to an ElementList */
+ElementList addElement( ElementList list, Element element ) :
+    list
+;
+
+ElementList addElement( ElementList list, UserElement element ) :
+    element.addTo( list )
+ -> list
+;
+
+ElementList addElement( ElementList list, List[UserElement] elements ) :
+    elements
+        .select( e | e != null )
+        .addTo( list )
+ -> list
+;
+
+create langc::Enumerator enumerator( Name name ) :
+    setName( name )
+;
+
+langc::Enumerator enumerator( Name name, IntegralLiteral value ) :
+    let e = enumerator( name ) :
+        e.setValue( value )
+     -> e
+;
+
+create ElementList file( FileName name ) :
+    setName( name )
+ -> setElements( {} )
+;
+
+ElementList file( String ident ) :
+    file( ident.filename() )
+;
+
+create Struct struct( Name name ) :
+    setName( name )
+ -> name.bind( this )
+;
+
+Struct struct( String ident ) :
+    struct( ident.name() )
+;
+
+/* There should be no more than one implementation in each artifact. */
+cached FunctionImplementation implementationFor( Function function, LinkableArtifact artifact ) :
+    let impls = artifact.functionImplementations.select( e | e.function == function ) :
+        switch( impls.size )
+        {
+        case 0: function.defaultImpl
+        case 1: impls.first()
+        default: null
+        }
+;
+
+create FunctionImplementation impl( Function function, LinkableArtifact artifact, FileName defn ) :
+    setFunction( function )
+ -> setDefn( defn )
+ -> setBody( new CodeBlock )
+ -> body.setForceBraces( true )
+ -> artifact == null ? null : artifact.functionImplementations.add( this )
+;
+
+cached FunctionImplementation impl( Function function, LinkableArtifact artifact ) :
+    function.impl( artifact, (FileName)function.name.parent )
+;
+
+private create FunctionImplementation functionImpl_EL( Function function, ElementList elementList ) :
+    setDefn( elementList.name )
+ -> setFunction( function )
+ -> setBody( new CodeBlock )
+ -> body.setForceBraces( true )
+ -> ( elementList != null ? elementList.addElement( this ) : null )
+;
+
+/* The function should be cached only on the name.  This ensures that the element is
+ * not recreated (and the name rebound) for each instance of the return type.  C functions
+ * cannot have the same name with different return types (and cannot be overloaded based
+ * on parameter types). */
+create Function function( Name name ) :
+    setName( name )
+ -> name.bind( this )
+;
+
+Function function( ElementReference ref, Name name ) :
+    let f = name.function() :
+        f.returnType == null
+            ? f.setReturnType( ref )
+            : null
+     -> f
+;
+
+Function function( ElementReference ref, String ident ) :
+    function( ref, ident.name() )
+;
+
+Function function( Element element, Name name ) :
+    function( element.type(), name )
+;
+
+Function function( Element element, String ident ) :
+    function( element.type(), ident.name() )
+;
+
+create VariableDeclaration variable( ElementReference ref, Name name ) :
+    setElement( ref )
+ -> setName( name )
+ -> name.bind( this )
+;
+
+VariableDeclaration variable( ElementReference ref, Name name, Expression initializer ) :
+    let v = variable( ref, name ) :
+        v.setInitializer( initializer )
+     -> v
+;
+
+/* TODO This needs to allow an unresolved type, right now unresolvedType.type returns
+ *      null and everything fails. */
+VariableDeclaration variable( NamedReference unresolvedType, Name name ) :
+    variable( unresolvedType.type, name )
+;
+
+VariableDeclaration variable( NamedReference unresolvedType, Name name, Expression initializer ) :
+    let v = variable( unresolvedType, name ) :
+        v.setInitializer( initializer )
+     -> v
+;
+
+VariableDeclaration variable( Name typename, Name name ) :
+    variable( typename.type(), name )
+;
+
+VariableDeclaration variable( Name typename, Name name, Expression initializer ) :
+    let v = variable( typename, name ) :
+        v.setInitializer( initializer )
+     -> v
+;
+
+VariableDeclaration variable( Element element, Name name ) :
+    variable( element.type(), name )
+;
+
+VariableDeclaration variable( Element element, Name name, Expression initializer ) :
+    let v = variable( element, name ) :
+        v.setInitializer( initializer )
+     -> v
+;
+
+VariableDeclaration variable( ElementReference ref, String ident ) :
+    variable( ref, ident.name() )
+;
+
+VariableDeclaration variable( ElementReference ref, String ident, Expression initializer ) :
+    let v = variable( ref, ident ) :
+        v.setInitializer( initializer )
+     -> v
+;
+
+VariableDeclaration variable( Name name, String ident ) :
+    variable( name, ident.name() )
+;
+
+VariableDeclaration variable( Name name, String ident, Expression initializer ) :
+    let v = variable( name, ident ) :
+        v.setInitializer( initializer )
+     -> v
+;
+
+VariableDeclaration variable( Element element, String ident ) :
+    variable( element.type(), ident.name() )
+;
+
+VariableDeclaration variable( Element element, String ident, Expression initializer ) :
+    let v = variable( element, ident ) :
+        v.setInitializer( initializer )
+     -> v
+;
+
+private Name name( String ident ) :
+    let n = new Name :
+        n.setName( ident )
+     -> n
+;
+
+private FileName filename( String ident ) :
+    let n = new FileName :
+        n.setName( ident )
+     -> n
+;
+
+String includePath( Name name ) :
+    JAVA com.zeligsoft.cx.langc.util.Partitioner.includePath( com.zeligsoft.cx.langc.Name )
+;
+
+String headerPathname( Name name ) :
+    JAVA com.zeligsoft.cx.langc.util.Partitioner.headerPathname( com.zeligsoft.cx.langc.Name )
+;
+
+String implPathname( Name name ) :
+    JAVA com.zeligsoft.cx.langc.util.Partitioner.implPathname( com.zeligsoft.cx.langc.Name )
+;
+
+private Enum addTo( Enumerator enumerator, Enum enum ) :
+    enum.enumerators.add( enumerator )
+ -> enumerator.name.bind( enumerator )
+ -> enum
+;
+
+create Enum enum( Name name ) :
+    setName( name )
+;
+
+cached Enumerator enumerator( Enum enum, String identifier ) :
+    let e = enum.name.child( identifier ).enumerator() :
+        e.addTo( enum )
+     -> e
+;
+
+cached Enumerator enumerator( Enum enum, String identifier, IntegralLiteral value ) :
+    let e = enum.name.child( identifier ).enumerator( value ) :
+        e.addTo( enum )
+     -> e
+;
+
+cached Enum addEnumerator( Enum enum, List[String] identifers ) :
+    let le = identifers.collect( e | enum.name.child( e ).enumerator() ) :
+        le.addTo( enum )
+     -> enum
+;
+
+cached Enum addEnumerator( Enum enum, Name name ) :
+    let e = name.enumerator() :
+        e.addTo( enum )
+     -> enum
+;
+
+cached Enum addEnumerator( Enum enum, Name name, IntegralLiteral value ) :
+    let e = name.enumerator( value ) :
+        e.addTo( enum )
+     -> enum
+;
+
+cached Enum addEnumerator( Enum enum, List[Name] names ) :
+    let e = names.enumerator() :
+        e.addTo( enum )
+     -> enum
+;
+
+cached NamedReference named( ElementReference ref, Name name ) :
+    let n = new NamedReference :
+        n.setType( ref )
+     -> n.setName( name )
+     -> n
+;
+
+NamedReference named_u( ElementReference ref, Name name ) :
+    let n = new NamedReference :
+        n.setType( ref )
+     -> n.setName( name )
+     -> n
+;
+
+Structure addMember( Structure structure, ElementReference type, Name name ) :
+    structure.members.add( named( type, name ) )
+ -> name.bind( type )
+ -> structure
+;
+
+Structure addMember( Structure structure, ElementReference type, Name name ) :
+    structure.members.add( named( type, name ) )
+ -> name.bind( type )
+ -> structure
+;
+
+Structure addMember( Structure structure, ElementReference type, String identifier ) :
+    addMember( structure, type, structure.name.child( identifier ) )
+;
+
+Function addParameter( Function function, ElementReference type, Name name ) :
+    function.parameters.add( named( type, name ) )
+ -> name.bind( type )
+ -> function
+;
+
+Function addParameter( Function function, ElementReference type, String name ) :
+    addParameter( function, type, function.name.child( name ) )
+;
+
+Function addParameter( Function function, Element element, Name name ) :
+    function.addParameter( element.ref(), name )
+;
+
+Function addParameter( Function function, Element element, String name ) :
+    function.addParameter( element, function.name.child( name ) )
+;
+
+Function addParameter( Function function, NamedReference param ) :
+    param == null
+        ? null
+        : function.parameters.add( param )
+ -> function
+;
+
+Function addParameters( Function function, List[NamedReference] params ) :
+    function.parameters.addAll( params.select( param | param != null ) )
+ -> function
+;
+
+FunctionImplementation addStatement( FunctionImplementation impl, Void v ) :
+    impl
+;
+
+FunctionImplementation addStatement( FunctionImplementation impl, Object obj ) :
+    impl
+;
+
+FunctionImplementation addStatement( FunctionImplementation impl, Statement statement ) :
+    impl.body.addStatement( statement )
+ -> impl
+;
+
+FunctionImplementation addStatement( FunctionImplementation impl, Expression expr ) :
+    impl.addStatement( let s = new ExpressionStatement : s.setExpr( expr ) -> s )
+;
+
+/* XTend does not allow overloading based on the type of List.  A generic List is specified
+ * here and an explicit loop is used to call the type appropriate rule. */
+FunctionImplementation addStatement( FunctionImplementation impl, List elements ) :
+    elements
+        .select( e | e != null )
+        .collect( element | impl.addStatement( element ) )
+ -> impl
+;
+
+FunctionImplementation addStatement( FunctionImplementation impl, Name valueName ) :
+    impl.addStatement( valueName.access() )
+;
+
+FunctionImplementation addStatement( FunctionImplementation impl, VariableDeclaration var ) :
+    impl.addStatement( var.stmt() )
+;
+
+private FunctionImplementation defaultImpl( Function function ) :
+    ( ( function.defaultImpl == null )
+        ? ( function.setDefaultImpl( function.impl( null, null ) ) )
+        : null )
+ ->  function.defaultImpl
+;
+
+Function addStatement( Function function, Void v ) :
+    function
+;
+
+Function addStatement( Function function, Statement statement ) :
+    function.defaultImpl().addStatement( statement )
+;
+
+Function addStatement( Function function, Expression expr ) :
+    function.defaultImpl().addStatement( expr )
+;
+
+Function addStatement( Function function, List[Statement] statements ) :
+    function.defaultImpl().addStatement( statements )
+;
+
+Function addStatement( Function function, List[Expression] exprs ) :
+    function.defaultImpl().addStatement( exprs )
+;
+
+Function addStatement( Function function, List[VariableDeclaration] decls ) :
+    function.defaultImpl().addStatement( decls )
+;
+
+Function addStatement( Function function, Name valueName ) :
+    function.defaultImpl().addStatement( valueName )
+;
+
+Function addStatement( Function function, VariableDeclaration var ) :
+    function.defaultImpl().addStatement( var )
+;
+
+Function setBody( Function function, CodeBlock block ) :
+    function.defaultImpl().setBody( block )
+;
+
+Function addStatement( Function function, ElementList elementList, Statement statement ) :
+    function.functionImpl_EL( elementList ).addStatement( statement )
+ -> function
+;
+/*
+Function addStatement( Function function, ElementList elementList, Expression expr ) :
+    function.functionImpl_EL( elementList ).addStatement( expr )
+ -> function
+;
+
+Function addStatement( Function function, ElementList elementList, List[Statement] statements ) :
+    function.functionImpl_EL( elementList ).addStatement( statements )
+ -> function
+;
+
+Function addStatement( Function function, ElementList elementList, Name valueName ) :
+    function.functionImpl_EL( elementList ).addStatement( valueName )
+ -> function
+;
+
+Function addStatement( Function function, ElementList elementList, VariableDeclaration var ) :
+    function.functionImpl_EL( elementList ).addStatement( var )
+ -> function
+;
+
+Function setBody( Function function, ElementList elementList, CodeBlock block ) :
+    function.functionImpl_EL( elementList ).setBody( block )
+ -> function
+;
+*/
+//
+/*
+FunctionImplementation addStatement( Function function, LinkableArtifact artifact, FileName defn, Statement statement ) :
+    function.functionImpl( artifact, defn ).addStatement( statement )
+;
+
+FunctionImplementation addStatement( Function function, LinkableArtifact artifact, FileName defn, Expression expr ) :
+    function.functionImpl( artifact, defn ).addStatement( expr )
+;
+
+FunctionImplementation addStatement( Function function, LinkableArtifact artifact, FileName defn, List[Statement] statements ) :
+    function.functionImpl( artifact, defn ).addStatement( statements )
+;
+
+FunctionImplementation addStatement( Function function, LinkableArtifact artifact, FileName defn, Name valueName ) :
+    function.functionImpl( artifact, defn ).addStatement( valueName )
+;
+
+FunctionImplementation addStatement( Function function, LinkableArtifact artifact, FileName defn, VariableDeclaration var ) :
+    function.functionImpl( artifact, defn ).addStatement( var )
+;
+
+FunctionImplementation setBody( Function function, LinkableArtifact artifact, FileName defn, CodeBlock block ) :
+    let fi = function.functionImpl( artifact, defn ) :
+        fi.setBody( block )
+     -> fi
+;
+*/
+//
+
+NamedReference named( Element element, Name name ) :
+    named( element.ref(), name )
+;
+
+NamedReference named( Element element, Name name ) :
+    named( element, name )
+;
+
+Structure addMember( Structure structure, Element element, Name name ) :
+    let n = named( element, name ) :
+        structure.members.add( n )
+     -> name.bind( n.type )
+     -> structure
+;
+
+Structure addMember( Structure structure, Element element, String ident ) :
+    structure.addMember( element, structure.name.child( ident ) )
+;
+
+Dependency include( FileName name ) :
+    let u = new UserInclude :
+        u.setFilename( name )
+     -> u
+;
+
+DependencyList add( DependencyList list, Void none ) :
+    list
+;
+
+DependencyList add( DependencyList list, Dependency dep ) :
+    list.dependencies.add( dep )
+ -> list
+;
+
+DependencyList add( DependencyList list, List[Dependency] dep ) :
+    list.dependencies.addAll( dep )
+ -> list
+;
+
+DependencyList declIncludes( ElementList elementList ) :
+    elementList.declIncludes != null
+        ? elementList.declIncludes
+        : ( let dl = new DependencyList : elementList.setDeclIncludes( dl ) -> dl )
+;
+
+DependencyList defnIncludes( ElementList elementList ) :
+    elementList.defnIncludes != null
+        ? elementList.defnIncludes
+        : ( let dl = new DependencyList : elementList.setDefnIncludes( dl ) -> dl )
+;
+
+ElementList declInclude( ElementList elementList, FileName name ) :
+    elementList.declIncludes().add( include( name ) )
+ -> elementList
+;
+
+ElementList defnInclude( ElementList elementList, FileName name ) :
+    elementList.defnIncludes().add( include( name ) )
+ -> elementList
+;
+
+Function setReturnType( Function function, Element element ) :
+    function.setReturnType( element.type() )
+ -> function
+;
+
+Typedef setElement( Typedef typedef, Element element ) :
+    typedef.setElement( element.type() )
+ -> typedef
+;
+
+SwitchClause caseClause( SwitchStatement switchStmt, Expression label, List[Statement] stmts ) :
+    let c = labeledClause( label ) :
+        c.setStatements( stmts )
+     -> switchStmt.clauses.add( c )
+     -> c
+;
+
+SwitchClause caseClause( SwitchStatement switchStmt, List[Expression] labels, List[Statement] stmts ) :
+    let c = labeledClause( labels ) :
+        c.setStatements( stmts )
+     -> switchStmt.clauses.add( c )
+     -> c
+;
+
+SwitchStatement addCase( SwitchStatement switchStmt, SwitchClause clause ) :
+    switchStmt.clauses.add(
+        clause.fallthrough
+            ? clause
+            : clause.ensureBreakLast( clause.statements.last() ) )
+ -> switchStmt
+;
+
+SwitchStatement addCase( SwitchStatement switchStmt, List[SwitchClause] clause ) :
+    clause.addToSwitch( switchStmt )
+ -> switchStmt
+;
+
+private Void addToSwitch( SwitchClause clause, SwitchStatement switchStmt ) :
+    switchStmt.addCase( clause )
+;
+
+SwitchClause addStatement( SwitchClause clause, Statement stmt ) :
+    clause.statements.add( stmt )
+ -> clause
+;
+
+SwitchClause addStatement( SwitchClause clause, Expression expr ) :
+    clause.statements.add( expr.stmt() )
+ -> clause
+;
+
+SwitchClause addStatement( SwitchClause clause, VariableDeclaration var ) :
+    clause.addStatement( var.stmt() )
+;
+
+private SwitchClause ensureBreakLast( SwitchClause clause, BreakStatement lastStmt ) : clause;
+private SwitchClause ensureBreakLast( SwitchClause clause, ReturnStatement lastStmt ) : clause;
+
+private SwitchClause ensureBreakLast( SwitchClause clause, Statement stmt ) :
+    clause.statements.add( breakStmt() )
+ -> clause
+;
+
+private SwitchClause ensureBreakLast( SwitchClause clause, Void noStmt ) :
+    clause.statements.add( breakStmt() )
+ -> clause
+;
+
+private ElementReference ref( Element element ) :
+    let r = new ElementReference :
+        r.setElement( element )
+     -> r
+;

@@ -1,0 +1,62 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7139044
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "Examples.sbs";
+		- _subsystem = "Examples::Deployment";
+		- _class = "";
+		- _name = "_DeploymentValues";
+		- _id = GUID 3c91d296-ac8d-47c1-98dc-3954761f6319;
+	}
+	- _id = GUID 11b58392-de6c-45f0-b6c6-4796fa436d6b;
+	- _myState = 8192;
+	- _name = "DP2";
+	- _modifiedTimeWeak = 7.18.2014::20:10:44;
+	- Declaratives = { IRPYRawContainer 
+		- size = 5;
+		- value = 
+		{ ISubsystem 
+			- fileName = "publisher_Node";
+			- _id = GUID d1f8901d-29bd-47d3-932b-076d39fbe6af;
+		}
+		{ ISubsystem 
+			- fileName = "IMData_DDSEvent";
+			- _id = GUID 010e05fb-969d-4537-a9be-098e12be028c;
+		}
+		{ ISubsystem 
+			- fileName = "imDataPub";
+			- _id = GUID 01acf57c-c5f1-4213-8a13-1ba3087cdef1;
+		}
+		{ ISubsystem 
+			- fileName = "Subscriber_Process";
+			- _id = GUID 92ebb311-02fa-45ab-82cc-1f5b2b251f48;
+		}
+		{ ISubsystem 
+			- fileName = "Publisher_Process";
+			- _id = GUID 4646600f-3de0-4ba3-a508-a2a8b4c32889;
+		}
+	}
+	- weakCGTime = 7.18.2014::20:10:44;
+	- strongCGTime = 7.18.2014::20:4:25;
+	- _defaultComposite = GUID d45de750-cced-4f4f-aa6b-1920c1bbd82e;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID d45de750-cced-4f4f-aa6b-1920c1bbd82e;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 1.2.1990::0:0:0;
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 12.31.1969::19:0:0;
+}
+

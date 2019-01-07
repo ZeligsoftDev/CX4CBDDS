@@ -1,0 +1,143 @@
+
+import langc;
+import ZMLMM::ZML_Deployments;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+import CLanguageDomain::CLanguageDomain;
+
+
+extension langc::name;
+
+// Folder and file names
+FolderName rootFolderName() : folder('src-gen');
+FolderName rootComponentFolderName() : rootFolderName().subfolder( 'cmps' );
+cached FolderName rootIncludeFolderName() :
+    let f = rootFolderName().subfolder( 'include' ) :
+        f.setApi( true )
+     -> f
+;
+FolderName processIncludeFolderName(DeploymentPart dp) : rootIncludeFolderName().subfolder(dp.zdlAsNamedElement().name);
+FolderName cmpsFolderName(ComponentInterface ci) : rootFolderName().subfolder(ci.zdlAsNamedElement().name);
+FolderName cfgsFolderName(Deployment d) : rootFolderName().subfolder(d.zdlAsNamedElement().name);
+FolderName ifsFolderName() : rootFolderName().subfolder('ifs');
+FolderName fwkFolderName() : rootFolderName().subfolder('fwk');
+FolderName userFolderName() : rootFolderName().subfolder('usercode');
+
+FileName userTypesFileName(uml::Class c) : rootIncludeFolderName().child( c.name );
+FileName recvFuncsFileName(ComponentInterface ci, StructuralRealization sr) : ci.cmpsFolderName().child(sr.zdlAsNamedElement().name);
+FileName compDefIncludeFileName(ComponentInterface ci) : rootIncludeFolderName().child(ci.zdlAsNamedElement().name);
+FileName instancesFileName(DeploymentPart dp, ComponentInterface ci) : ci.cmpsFolderName().child('instances-' + dp.zdlAsNamedElement().name);
+FileName sendFileName(DeploymentPart dp, ComponentInterface ci) : ci.cmpsFolderName().child('send-' + dp.zdlAsNamedElement().name);
+FileName processFileName(DeploymentPart dp, Deployment d) : d.cfgsFolderName().child(dp.zdlAsNamedElement().name);
+FileName processEntryFileName(DeploymentPart dp, Deployment d) : d.cfgsFolderName().child(dp.zdlAsNamedElement().name + '-entry');
+FileName interfaceFileName(Interface i) : ifsFolderName().child(i.zdlAsInterface().name);
+FileName apiFileName() : fwkFolderName().child('zcx_api');
+FileName contextFileName() : fwkFolderName().child('zcx_context');
+FileName messageFileName() : fwkFolderName().child('zcx_message');
+FileName userWorkerFileName(Operation o, MessagePort p, StructuralRealization sr ) :
+	userFolderName().child(sr.zdlAsNamedElement().name + '_' + p.zdlAsNamedElement().name + '_' + o.zdlAsNamedElement().name);
+FileName lifeCycleWorkerFileName(Operation o, StructuralRealization sr ) :
+	userFolderName().child(sr.zdlAsNamedElement().name + '_' + o.zdlAsNamedElement().name);
+FileName compInstanceIncludeFileName(ComponentInterface ci, DeploymentPart dp) :
+	rootIncludeFolderName().child(ci.zdlAsNamedElement().name + '-' + dp.zdlAsNamedElement().name);
+FileName userStructFileName(C_Struct struct) : rootIncludeFolderName().child(struct.name);
+
+//struct  name
+
+Name userTypesStructMemberName(uml::Property p, ComponentInterface ci) : ci.compDefStructName().child(p.name);
+Name workerFunctionName(Operation o, MessagePort p, ComponentInterface ci, StructuralRealization sr) :
+	recvFuncsFileName(ci, sr).child(sr.zdlAsNamedElement().name + '_' + p.zdlAsNamedElement().name + '_' + o.zdlAsNamedElement().name);
+Name lifeCycleFunctionName(Operation o, ComponentInterface ci, StructuralRealization sr) :
+	recvFuncsFileName(ci, sr).child(sr.zdlAsNamedElement().name + '_' + o.zdlAsNamedElement().name);
+Name userWorkerFunctionName(Operation o, MessagePort p, ComponentInterface ci, StructuralRealization sr) :
+	userWorkerFileName(o, p, sr).child(sr.zdlAsNamedElement().name + '_' + p.zdlAsNamedElement().name + '_' + o.zdlAsNamedElement().name);
+Name lifeCycleFunctionName(Operation o, StructuralRealization sr) :
+	lifeCycleWorkerFileName(o, sr).child(sr.zdlAsNamedElement().name + '_' + o.zdlAsNamedElement().name);
+Name sendFunctionName(Operation o, MessagePort p, ComponentInterface ci, DeploymentPart dp) :
+	sendFileName(dp, ci).child(ci.zdlAsNamedElement().name + '_' + p.zdlAsNamedElement().name + '_' + o.zdlAsNamedElement().name);
+Name sendFuncBuffVarName(Operation o, MessagePort p, ComponentInterface ci, DeploymentPart dp):
+	o.sendFunctionName(p, ci, dp).child('buff');
+	
+cached Name compDefStructName(ComponentInterface ci) : ci.compDefIncludeFileName().child(ci.zdlAsNamedElement().name);
+
+cached Name userStructName(C_Struct struct) : struct.userStructFileName().child(struct.name);
+
+cached Name compDefStructMemberName(ComponentInterface ci) : ci.compDefStructName().child('value');
+
+cached Name compDefPortFuncName(Port p, ComponentInterface ci) : ci.compDefIncludeFileName().child(ci.zdlAsNamedElement(). name + '_' + p.zdlAsPort().name);
+
+cached Name compDefUsesSendFuncName(Operation o, MessagePort p, ComponentInterface ci) : ci.compDefIncludeFileName().child(ci.zdlAsNamedElement().name + '_' + p.zdlAsNamedElement().name + '_' + o.zdlAsNamedElement().name);
+
+cached Name paramName(uml::Parameter p, ComponentInterface ci) :
+	let pName = new Name :
+	pName.setParent(ci.compDefIncludeFileName())
+	-> pName.setName(p.name)
+	-> pName;
+
+//variable name	
+cached Name compInstancesName(String instName, DeploymentPart target, ComponentInterface ci) :
+	target.instancesFileName(ci).child(instName  + '_inst')
+;
+
+cached Name compUserInstancesName(String instName, DeploymentPart target, ComponentInterface ci) :
+	target.instancesFileName(ci).child(instName)
+;
+
+cached Name processCompIdEnumName(DeploymentPart dp, Deployment d) :
+	dp.processFileName(d).child(dp.zdlAsNamedElement().name + '_Component_Port_id')
+;
+
+cached Name processCompIdNames(String id, DeploymentPart dp, Deployment d) :
+	dp.processCompIdEnumName(d).child(dp.zdlAsNamedElement().name + '_' + id)
+;
+
+cached Name msgqInitFuncName(DeploymentPart dp, Deployment d) :
+	dp.processFileName(d).child(dp.zdlAsNamedElement().name + '_mqinit')
+;
+
+cached Name msgqReleaseFuncName(DeploymentPart dp, Deployment d) :
+	dp.processFileName(d).child(dp.zdlAsNamedElement().name + '_mqrelease')
+;
+
+cached Name msgqName(DeploymentPart dp, Deployment d) :
+	dp.processFileName(d).child(dp.zdlAsNamedElement().name + '_mqd')
+;
+
+cached Name processMsgqName(DeploymentPart dp, Deployment d) :
+	dp.processFileName(d).child(dp.zdlAsNamedElement().name + '_queuename')
+;
+
+cached Name processCompUsesPortFuncName(Port p, ComponentInterface ci, DeploymentPart dp, Deployment d) :
+	dp.processEntryFileName(d).child(ci.zdlAsNamedElement().name + '_' + p.zdlAsNamedElement().name)
+;
+
+cached Name mainFuncName(DeploymentPart dp, Deployment d) :
+	dp.processEntryFileName(d).child('main')
+;
+
+cached Name receiveQueueName(DeploymentPart dp, Deployment d) : dp.mainFuncName(d).child('recv_mq');
+
+cached Name priorityName(DeploymentPart dp, Deployment d) : dp.mainFuncName(d).child('priority');
+cached Name buffName(DeploymentPart dp, Deployment d) : dp.mainFuncName(d).child('buff');
+
+cached Name interfaceEnumName(Interface i) : i.interfaceFileName().child(i.zdlAsInterface().name);
+
+cached Name operationIdName(Operation o, Interface i) : i.interfaceEnumName().child(i.zdlAsInterface().name.toUpperCase() + '_' + o.zdlAsOperation().name.toUpperCase());
+
+cached Name ctxParamName() : apiFileName().child('ctx');
+
+cached Name contextStructName() : contextFileName().child('zcx_context_t');
+
+cached Name messageStructName() : messageFileName().child('zcx_message_t');
+
+cached Name contextStructMemberName() : contextStructName().child('port_inst_id');
+
+cached Name messageStructMember1Name() : messageStructName().child('port_inst_id');
+
+cached Name messageStructMember2Name() : messageStructName().child('signal_id');
+
+cached Name messageStructMember3Name() : messageStructName().child('payload');
+
+cached Name MQueueMacroName(DeploymentPart dp, Deployment d) : dp.processEntryFileName(d).child('MQ_NAME');
+
+cached Name maxMSGSizeMacroName(DeploymentPart dp, Deployment d) : dp.processEntryFileName(d).child('MAX_MESSAGE_SIZE');

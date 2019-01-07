@@ -1,0 +1,51 @@
+<project default="Build">
+	
+	<property file="build.properties" />
+	
+	<path id="svnant.classpath">
+		<fileset dir="${svnant.location}">
+    		<include name="**/*.jar"/>
+    	</fileset>
+	</path>
+	
+	<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="svnant.classpath" />
+	
+	<target name="Build">
+		<echo message="Build Target...." />		
+
+		<property name="ceBuilder" value="${build.home}/build-node/checkout/${build.distribution}-${buildType}/${releng.cebuilder}/build.xml" />
+		<antcall target="clean" />
+
+		<ant antfile="checkout.xml" target="all" dir="." inheritall="false">
+			<property name="codir" value="${build.home}/build-node/checkout/${build.distribution}-${buildType}" />
+			<property name="buildType" value="${buildType}" />
+			<property name="mapVersionTag" value="${mapVersionTag}" />
+		</ant>
+
+		<ant antfile="${ceBuilder}" target="build" >
+			<property name="codir" value="${build.home}/build-node/checkout/${build.distribution}-${buildType}" />
+		</ant>
+		<!--	
+	    <ant antfile="${ceBuilder}" target="test" />
+    	<ant antfile="${ceBuilder}" target="site" />
+    	<ant antfile="${ceBuilder}" target="upload" />
+-->
+	</target>
+	
+	<target name="clean" if="build.clean">
+		<echo message="Clear Target...." />
+		
+		<!-- Since the scripts expect the eclipse target in the working directory, we created
+		     a symbolic link to the target eclipse in the working directory. We need to be careful
+		     not to delete the target eclipse. -->
+		<delete>
+			<fileset dir="${build.home}/build-${build.distribution}-${buildType}" followsymlinks="false" />
+			<dirset dir="${build.home}/build-${build.distribution}-${buildType}/." followsymlinks="false" />
+		</delete>
+<!--		
+		<delete dir="${build.home}/build-${build.distribution}-${buildType}" failonerror="false" />
+-->		
+		<delete dir="${build.home}/test-${build.distribution}-${buildType}" failonerror="false" />		
+	</target>
+	
+</project>

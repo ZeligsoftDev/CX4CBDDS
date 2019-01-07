@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.zeligsoft.base.tests"
+      label="Base Tests"
+      version="1.0.100.qualifier"
+      provider-name="Zeligsoft (2009) Ltd.">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime" version="3.4.0" match="compatible"/>
+      <import plugin="org.junit" version="3.8.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.type.core" version="1.1.1" match="compatible"/>
+      <import plugin="com.ibm.xtools.modeler.ui" version="7.5.0" match="compatible"/>
+      <import plugin="org.eclipse.uml2.uml" version="2.2.0" match="compatible"/>
+      <import plugin="com.ibm.xtools.emf.core" version="7.0.300" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.commands.core" version="1.1.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.4.0" match="compatible"/>
+      <import plugin="org.apache.commons.logging" version="1.0.4" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.cli" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.antlr.runtime" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="com.zeligsoft.base.zdl" version="3.1.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base" version="3.1.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base.validation" version="3.1.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base.zdl.ocl" version="3.1.0" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="com.zeligsoft.base.zdl.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.zeligsoft.base.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.zeligsoft.base.validation.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.zeligsoft.base.zdl.ocl.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+
+   <plugin
+         id="com.zeligsoft.base.oaw.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>

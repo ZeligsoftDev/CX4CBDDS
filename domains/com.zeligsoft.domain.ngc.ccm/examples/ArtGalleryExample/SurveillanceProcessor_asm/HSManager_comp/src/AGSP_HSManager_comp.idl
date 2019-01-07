@@ -1,0 +1,39 @@
+/// @defgroup AGSP_HSManager_comp HSManager_comp
+/// @{
+/// 
+/// @file AGSP_HSManager_comp.idl
+/// @brief HSManager_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__HSMANAGER_COMP__SRC__AGSP_HSMANAGER_COMP_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__HSMANAGER_COMP__SRC__AGSP_HSMANAGER_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao lem "AGSP_HSManager_compE.idl"
+#include "AGSP_HSManager_defn.idl"
+#include "AGSP_StateControl_obj.idl"
+#include "AGSP_SubsystemStatus_conn.idl"
+#include "AGSP_AuxSensorStatus_conn.idl"
+#include "AGSP_GPS_conn.idl"
+#include "AGSP_SystemStatus_conn.idl"
+
+/// @namespace AGSP 
+module AGSP {
+    component HSManager_comp {
+        provides AGSP::StateControl_obj StateControlFacet;
+        port SubsystemStatus_conn::DDS_Write SubsystemStatusPub;
+        port AuxSensorStatus_conn::DDS_Listen AuxSensorStatusSub;
+        port AuxSensorStatus_conn::DDS_Get AuxSensorStatusSub2;
+        port GPS_conn::DDS_Listen GPS_Sub;
+        port SystemStatus_conn::DDS_Listen SystemStatusSub;
+        attribute AGSP::HSConfigAttr HSConfig
+            setraises (CCM_DDS::NonChangeable);
+    };
+
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__HSMANAGER_COMP__SRC__AGSP_HSMANAGER_COMP_IDL
+
+/// @}
+

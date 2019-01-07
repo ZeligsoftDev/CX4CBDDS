@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.zeligsoft.cx.tests"
+      label="CX Tests"
+      version="3.4.0.qualifier"
+      provider-name="Zeligsoft (2009) Ltd.">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import plugin="org.junit" version="3.8.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base.zdl" version="3.1.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.zml" version="3.1.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.ui" version="3.1.0" match="compatible"/>
+      <import plugin="com.ibm.xtools.modeler.ui" version="7.5.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.deployment.ui" version="3.1.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.langc" version="3.1.0" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="com.zeligsoft.cx.ui.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.zeligsoft.cx.deployment.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.cx.langc.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.zeligsoft.domain.zml.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.zeligsoft.cx.codegen.test"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>

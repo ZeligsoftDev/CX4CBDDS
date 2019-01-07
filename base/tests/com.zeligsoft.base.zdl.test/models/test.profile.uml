@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_paOrMEbYEd2RGvEf11ad3A" name="test" metamodelReference="_paOrRkbYEd2RGvEf11ad3A">
+    <eAnnotations xmi:id="_paOrMUbYEd2RGvEf11ad3A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details xmi:id="_i0Q_YExgEd2XQqnroqr3eQ" key="test::block1::Implementation" value="Artifact"/>
+      <details xmi:id="_hHNd4E9kEd26robMQDPvOQ" key="test::block1::Classifier" value="Classifier"/>
+      <details xmi:id="_bGrgELzwEd6jKvZoFONIHA" key="test::block1::StructuredClassifier" value="StructuredClassifier"/>
+      <references xmi:type="uml:Class" href="test.uml#_44RYcEbWEd2RGvEf11ad3A"/>
+    </eAnnotations>
+    <eAnnotations xmi:id="_paOrMkbYEd2RGvEf11ad3A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_paOrM0bYEd2RGvEf11ad3A" name="test" nsURI="http://www.zeligsoft.com/test/2008/basezdl/test/1" nsPrefix="test">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_paOrNEbYEd2RGvEf11ad3A" name="ComponentInterface" eSuperTypes="_paOrOUbYEd2RGvEf11ad3A">
+          <eAnnotations xmi:id="_paOrNUbYEd2RGvEf11ad3A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_paOrSEbYEd2RGvEf11ad3A"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_paOrNkbYEd2RGvEf11ad3A" name="realization" ordered="false" upperBound="-1" eType="_paOrPUbYEd2RGvEf11ad3A"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_paOrOUbYEd2RGvEf11ad3A" name="CXComponent" abstract="true">
+          <eAnnotations xmi:id="_paOrOkbYEd2RGvEf11ad3A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_paOrT0bYEd2RGvEf11ad3A"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_paOrO0bYEd2RGvEf11ad3A" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_paOrPUbYEd2RGvEf11ad3A" name="StructuralRealization" eSuperTypes="_paOrOUbYEd2RGvEf11ad3A">
+          <eAnnotations xmi:id="_paOrPkbYEd2RGvEf11ad3A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_paOrVUbYEd2RGvEf11ad3A"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_paOrP0bYEd2RGvEf11ad3A" name="isDefault" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_i0S0kExgEd2XQqnroqr3eQ" name="implementation" ordered="false" upperBound="-1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Artifact"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_h3UUsFQQEd2RONrlpNkisQ" name="binary" ordered="false" upperBound="-1" eType="_h3TGkFQQEd2RONrlpNkisQ" containment="true"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_paOrQkbYEd2RGvEf11ad3A" name="Port">
+          <eAnnotations xmi:id="_paOrQ0bYEd2RGvEf11ad3A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_paOrYUbYEd2RGvEf11ad3A"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_paOrREbYEd2RGvEf11ad3A" name="base_Port" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Port"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_h3TGkFQQEd2RONrlpNkisQ" name="Binary">
+          <eAnnotations xmi:id="_h3TGkVQQEd2RONrlpNkisQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_h3R4cFQQEd2RONrlpNkisQ"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_h3TGklQQEd2RONrlpNkisQ" name="tag" ordered="false" upperBound="-1" eType="_h3TGmFQQEd2RONrlpNkisQ" containment="true"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_h3TGlFQQEd2RONrlpNkisQ" name="name" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_h3TGllQQEd2RONrlpNkisQ" name="linkage" ordered="false" lowerBound="1" eType="_h3TtpFQQEd2RONrlpNkisQ"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_9fIkYFUEEd2AZfexwRCnRw" name="visibility" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EEnum" href="http://www.eclipse.org/uml2/2.1.0/UML#//VisibilityKind"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_h3TGmFQQEd2RONrlpNkisQ" name="Tag">
+          <eAnnotations xmi:id="_h3TGmVQQEd2RONrlpNkisQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_h3SfgFQQEd2RONrlpNkisQ"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_h3TtoFQQEd2RONrlpNkisQ" name="name" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_h3TtolQQEd2RONrlpNkisQ" name="value" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_h3TtpFQQEd2RONrlpNkisQ" name="Linkage">
+          <eAnnotations xmi:id="_h3TtpVQQEd2RONrlpNkisQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_h3Sfj1QQEd2RONrlpNkisQ"/>
+          <eLiterals xmi:id="_h3TtplQQEd2RONrlpNkisQ" name="static"/>
+          <eLiterals xmi:id="_h3Ttp1QQEd2RONrlpNkisQ" name="dynamic" value="1"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_Lk1NsrzuEd6jKvZoFONIHA" name="ClassifyingComponent">
+          <eAnnotations xmi:id="_Lk1Ns7zuEd6jKvZoFONIHA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Lk0moLzuEd6jKvZoFONIHA"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Lk1NtLzuEd6jKvZoFONIHA" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <packageImport xmi:id="_paOrRkbYEd2RGvEf11ad3A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_paOrR0bYEd2RGvEf11ad3A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_paOrSEbYEd2RGvEf11ad3A" name="ComponentInterface">
+      <eAnnotations xmi:id="_paOrSUbYEd2RGvEf11ad3A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="test.uml#_9H-TEEbWEd2RGvEf11ad3A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_i0UCsExgEd2XQqnroqr3eQ" source="uml2.extensions">
+        <details xmi:id="_i0UCsUxgEd2XQqnroqr3eQ" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_paOrSkbYEd2RGvEf11ad3A" general="_paOrT0bYEd2RGvEf11ad3A"/>
+      <ownedAttribute xmi:id="_paOrS0bYEd2RGvEf11ad3A" name="realization" type="_paOrVUbYEd2RGvEf11ad3A" association="_paOrXEbYEd2RGvEf11ad3A">
+        <eAnnotations xmi:id="_paOrTEbYEd2RGvEf11ad3A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test.uml#_Sd_OYEbXEd2RGvEf11ad3A"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_paOrTUbYEd2RGvEf11ad3A" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_paOrTkbYEd2RGvEf11ad3A"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_paOrT0bYEd2RGvEf11ad3A" name="CXComponent" isAbstract="true">
+      <eAnnotations xmi:id="_paOrUEbYEd2RGvEf11ad3A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_paOrUUbYEd2RGvEf11ad3A" key="port" value="ownedPort"/>
+        <references xmi:type="uml:Class" href="test.uml#_ZkEgQEbXEd2RGvEf11ad3A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_i0VQ0ExgEd2XQqnroqr3eQ" source="uml2.extensions">
+        <details xmi:id="_i0VQ0UxgEd2XQqnroqr3eQ" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_paOrUkbYEd2RGvEf11ad3A" name="base_Component" association="_paOrU0bYEd2RGvEf11ad3A">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_paOrU0bYEd2RGvEf11ad3A" name="Component_CXComponent" memberEnd="_paOrVEbYEd2RGvEf11ad3A _paOrUkbYEd2RGvEf11ad3A">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_paOrVEbYEd2RGvEf11ad3A" name="extension_CXComponent" type="_paOrT0bYEd2RGvEf11ad3A" aggregation="composite" association="_paOrU0bYEd2RGvEf11ad3A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_paOrVUbYEd2RGvEf11ad3A" name="StructuralRealization">
+      <eAnnotations xmi:id="_paOrVkbYEd2RGvEf11ad3A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_ZtCDkHYtEd2x_7TZU0TgqA" key="interface" value="superClass"/>
+        <references xmi:type="uml:Class" href="test.uml#_PhBuAEbXEd2RGvEf11ad3A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_i0V34ExgEd2XQqnroqr3eQ" source="uml2.extensions">
+        <details xmi:id="_i0V34UxgEd2XQqnroqr3eQ" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_paOrV0bYEd2RGvEf11ad3A" general="_paOrT0bYEd2RGvEf11ad3A"/>
+      <ownedAttribute xmi:id="_i0V34kxgEd2XQqnroqr3eQ" name="implementation" association="_i0QYUExgEd2XQqnroqr3eQ">
+        <eAnnotations xmi:id="_i0V340xgEd2XQqnroqr3eQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test.uml#_D3dZsExEEd2y4563FRkTog"/>
+        </eAnnotations>
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Artifact"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_i0V35ExgEd2XQqnroqr3eQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_i0V35UxgEd2XQqnroqr3eQ"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_h3X_EFQQEd2RONrlpNkisQ" name="binary" type="_h3R4cFQQEd2RONrlpNkisQ" aggregation="composite" association="_h3SflVQQEd2RONrlpNkisQ">
+        <eAnnotations xmi:id="_h3X_EVQQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test.uml#_xTbo8FQGEd2yIZMDeP0YzA"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h3X_ElQQEd2RONrlpNkisQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h3X_E1QQEd2RONrlpNkisQ"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_paOrWEbYEd2RGvEf11ad3A" name="isDefault">
+        <eAnnotations xmi:id="_paOrWUbYEd2RGvEf11ad3A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test.uml#_3ebbMEbXEd2RGvEf11ad3A"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_paOrWkbYEd2RGvEf11ad3A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_paOrW0bYEd2RGvEf11ad3A" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_paOrXEbYEd2RGvEf11ad3A" memberEnd="_paOrS0bYEd2RGvEf11ad3A _paOrXkbYEd2RGvEf11ad3A">
+      <eAnnotations xmi:id="_paOrXUbYEd2RGvEf11ad3A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="test.uml#_Sd35oEbXEd2RGvEf11ad3A"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_paOrXkbYEd2RGvEf11ad3A" name="" type="_paOrSEbYEd2RGvEf11ad3A" association="_paOrXEbYEd2RGvEf11ad3A">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_paOrX0bYEd2RGvEf11ad3A" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_paOrYEbYEd2RGvEf11ad3A"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_paOrYUbYEd2RGvEf11ad3A" name="Port">
+      <eAnnotations xmi:id="_paOrYkbYEd2RGvEf11ad3A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_paOrY0bYEd2RGvEf11ad3A" key="isExternal" value="isService"/>
+        <references xmi:type="uml:Class" href="test.uml#_deGF0EbXEd2RGvEf11ad3A"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_i0XtEExgEd2XQqnroqr3eQ" source="uml2.extensions">
+        <details xmi:id="_i0XtEUxgEd2XQqnroqr3eQ" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_paOrZEbYEd2RGvEf11ad3A" name="base_Port" association="_paOrZUbYEd2RGvEf11ad3A">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_paOrZUbYEd2RGvEf11ad3A" name="Port_Port" memberEnd="_paOrZkbYEd2RGvEf11ad3A _paOrZEbYEd2RGvEf11ad3A">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_paOrZkbYEd2RGvEf11ad3A" name="extension_Port" type="_paOrYUbYEd2RGvEf11ad3A" aggregation="composite" association="_paOrZUbYEd2RGvEf11ad3A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_i0QYUExgEd2XQqnroqr3eQ" memberEnd="_i0V34kxgEd2XQqnroqr3eQ _i0QYUkxgEd2XQqnroqr3eQ">
+      <eAnnotations xmi:id="_i0QYUUxgEd2XQqnroqr3eQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Property" href="test.uml#_D3dZsExEEd2y4563FRkTog"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_i0QYUkxgEd2XQqnroqr3eQ" type="_paOrVUbYEd2RGvEf11ad3A" association="_i0QYUExgEd2XQqnroqr3eQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_i0QYU0xgEd2XQqnroqr3eQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_i0QYVExgEd2XQqnroqr3eQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_h3R4cFQQEd2RONrlpNkisQ" name="Binary">
+      <eAnnotations xmi:id="_h3R4cVQQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="test.uml#_7hemwFQFEd2yIZMDeP0YzA"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_h3R4clQQEd2RONrlpNkisQ" name="tag" type="_h3SfgFQQEd2RONrlpNkisQ" aggregation="composite" association="_h3SfilQQEd2RONrlpNkisQ">
+        <eAnnotations xmi:id="_h3R4c1QQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test.uml#_NhNiwFQGEd2yIZMDeP0YzA"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h3R4dFQQEd2RONrlpNkisQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h3R4dVQQEd2RONrlpNkisQ"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_h3R4dlQQEd2RONrlpNkisQ" name="name">
+        <eAnnotations xmi:id="_h3R4d1QQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test.uml#_GknkEFQGEd2yIZMDeP0YzA"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h3R4eFQQEd2RONrlpNkisQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h3R4eVQQEd2RONrlpNkisQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_h3R4elQQEd2RONrlpNkisQ" name="linkage" type="_h3Sfj1QQEd2RONrlpNkisQ">
+        <eAnnotations xmi:id="_h3R4e1QQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test.uml#_bxcRsFQHEd2yIZMDeP0YzA"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h3R4fFQQEd2RONrlpNkisQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h3R4fVQQEd2RONrlpNkisQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_9fOD8FUEEd2AZfexwRCnRw" name="visibility">
+        <eAnnotations xmi:id="_9fOD8VUEEd2AZfexwRCnRw" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test.uml#_rH68gFUEEd2AZfexwRCnRw"/>
+        </eAnnotations>
+        <type xmi:type="uml:Enumeration" href="pathmap://UML_METAMODELS/UML.metamodel.uml#VisibilityKind"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9fOD8lUEEd2AZfexwRCnRw" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9fOD81UEEd2AZfexwRCnRw" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_h3SfgFQQEd2RONrlpNkisQ" name="Tag">
+      <eAnnotations xmi:id="_h3SfgVQQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="test.uml#_WHKr8FQGEd2yIZMDeP0YzA"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_h3SfglQQEd2RONrlpNkisQ" name="name">
+        <eAnnotations xmi:id="_h3Sfg1QQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test.uml#_jUclkFQGEd2yIZMDeP0YzA"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h3SfhFQQEd2RONrlpNkisQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h3SfhVQQEd2RONrlpNkisQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_h3SfhlQQEd2RONrlpNkisQ" name="value">
+        <eAnnotations xmi:id="_h3Sfh1QQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="test.uml#_j2eUkFQGEd2yIZMDeP0YzA"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h3SfiFQQEd2RONrlpNkisQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h3SfiVQQEd2RONrlpNkisQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_h3SfilQQEd2RONrlpNkisQ" memberEnd="_h3R4clQQEd2RONrlpNkisQ _h3SfjFQQEd2RONrlpNkisQ">
+      <eAnnotations xmi:id="_h3Sfi1QQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="test.uml#_oK13UFQHEd2yIZMDeP0YzA"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_h3SfjFQQEd2RONrlpNkisQ" type="_h3R4cFQQEd2RONrlpNkisQ" association="_h3SfilQQEd2RONrlpNkisQ">
+        <name xsi:nil="true"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h3SfjVQQEd2RONrlpNkisQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h3SfjlQQEd2RONrlpNkisQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_h3Sfj1QQEd2RONrlpNkisQ" name="Linkage">
+      <eAnnotations xmi:id="_h3SfkFQQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Enumeration" href="test.uml#_PEZXUFQHEd2yIZMDeP0YzA"/>
+      </eAnnotations>
+      <ownedLiteral xmi:id="_h3SfkVQQEd2RONrlpNkisQ" name="static">
+        <eAnnotations xmi:id="_h3SfklQQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="test.uml#_UrEr8FQHEd2yIZMDeP0YzA"/>
+        </eAnnotations>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_h3Sfk1QQEd2RONrlpNkisQ" name="dynamic">
+        <eAnnotations xmi:id="_h3SflFQQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="test.uml#_WHFW8FQHEd2yIZMDeP0YzA"/>
+        </eAnnotations>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_h3SflVQQEd2RONrlpNkisQ" memberEnd="_h3X_EFQQEd2RONrlpNkisQ _h3Sfl1QQEd2RONrlpNkisQ">
+      <eAnnotations xmi:id="_h3SfllQQEd2RONrlpNkisQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="test.uml#_8B6k4FQGEd2yIZMDeP0YzA"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_h3Sfl1QQEd2RONrlpNkisQ" name="" type="_paOrVUbYEd2RGvEf11ad3A" association="_h3SflVQQEd2RONrlpNkisQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_h3SfmFQQEd2RONrlpNkisQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_h3SfmVQQEd2RONrlpNkisQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_Lk0moLzuEd6jKvZoFONIHA" name="ClassifyingComponent">
+      <eAnnotations xmi:id="_Lk0mobzuEd6jKvZoFONIHA" source="uml2.extensions">
+        <details xmi:id="_Lk0morzuEd6jKvZoFONIHA" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_Lk0mo7zuEd6jKvZoFONIHA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="test.uml#_mqclkLztEd6jKvZoFONIHA"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_Lk0mpLzuEd6jKvZoFONIHA" name="base_Component" association="_Lk1NsLzuEd6jKvZoFONIHA">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_Lk1NsLzuEd6jKvZoFONIHA" name="Component_ClassifyingComponent" memberEnd="_Lk1NsbzuEd6jKvZoFONIHA _Lk0mpLzuEd6jKvZoFONIHA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Lk1NsbzuEd6jKvZoFONIHA" name="extension_ClassifyingComponent" type="_Lk0moLzuEd6jKvZoFONIHA" aggregation="composite" association="_Lk1NsLzuEd6jKvZoFONIHA"/>
+    </packagedElement>
+    <profileApplication xmi:id="_paOraUbYEd2RGvEf11ad3A">
+      <eAnnotations xmi:id="_paOrakbYEd2RGvEf11ad3A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_9fWm0FUEEd2AZfexwRCnRw" base_Package="_paOrMEbYEd2RGvEf11ad3A" packageName="test" nsPrefix="test" nsURI="http://www.zeligsoft.com/test/2008/basezdl/test/1" prefix="test"/>
+</xmi:XMI>

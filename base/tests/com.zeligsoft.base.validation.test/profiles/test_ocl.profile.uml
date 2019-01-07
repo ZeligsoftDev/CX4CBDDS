@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_1rVSkVjCEd2XOcTgMndlVg" name="OCLTest" metamodelReference="_1rVSn1jCEd2XOcTgMndlVg">
+  <eAnnotations xmi:id="_1rVSkljCEd2XOcTgMndlVg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+    <references xmi:type="uml:Class" href="../models/test_validation.emx#_TI_8YFjBEd2XOcTgMndlVg"/>
+  </eAnnotations>
+  <eAnnotations xmi:id="_1rVSk1jCEd2XOcTgMndlVg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_1rVSlFjCEd2XOcTgMndlVg" name="OCLTest" nsURI="http:///schemas/OCLTest/_1rVSkFjCEd2XOcTgMndlVg/0" nsPrefix="OCLTest">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_1rVSlVjCEd2XOcTgMndlVg" name="Thing">
+        <eAnnotations xmi:id="_1rVSlljCEd2XOcTgMndlVg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_1rVSoVjCEd2XOcTgMndlVg"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_1rVSl1jCEd2XOcTgMndlVg" name="isEnabled" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1rVSmVjCEd2XOcTgMndlVg" name="base_Classifier" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Classifier"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_1rVSm1jCEd2XOcTgMndlVg" name="Other">
+        <eAnnotations xmi:id="_1rVSnFjCEd2XOcTgMndlVg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_1rVSrVjCEd2XOcTgMndlVg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_1rVSnVjCEd2XOcTgMndlVg" name="base_Property" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_3KbEKGLxEd2Ub_AtUWxu5A" name="SubThing" eSuperTypes="_1rVSlVjCEd2XOcTgMndlVg">
+        <eAnnotations xmi:id="_3KbEKWLxEd2Ub_AtUWxu5A" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_3KbEI2LxEd2Ub_AtUWxu5A"/>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <packageImport xmi:id="_1rVSn1jCEd2XOcTgMndlVg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_1rVSoFjCEd2XOcTgMndlVg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_1rVSoVjCEd2XOcTgMndlVg" name="Thing">
+    <eAnnotations xmi:id="_1rVSoljCEd2XOcTgMndlVg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details xmi:id="_1rVSo1jCEd2XOcTgMndlVg" key="other" value="attribute"/>
+      <references xmi:type="uml:Class" href="../models/test_validation.emx#_R1a1gFB6Ed2qWP4r03uXIg"/>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_1rVSpljCEd2XOcTgMndlVg" name="isEnabled">
+      <eAnnotations xmi:id="_1rVSp1jCEd2XOcTgMndlVg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Property" href="../models/test_validation.emx#_EKNs8FB-Ed20sOqCvAm01Q"/>
+      </eAnnotations>
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1rVSqFjCEd2XOcTgMndlVg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1rVSqVjCEd2XOcTgMndlVg" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_1rVSqljCEd2XOcTgMndlVg" name="base_Classifier" association="_1rVSq1jCEd2XOcTgMndlVg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Classifier"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_1rVSq1jCEd2XOcTgMndlVg" name="Classifier_Thing" memberEnd="_1rVSrFjCEd2XOcTgMndlVg _1rVSqljCEd2XOcTgMndlVg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_1rVSrFjCEd2XOcTgMndlVg" name="extension_Thing" type="_1rVSoVjCEd2XOcTgMndlVg" aggregation="composite" association="_1rVSq1jCEd2XOcTgMndlVg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_1rVSrVjCEd2XOcTgMndlVg" name="Other">
+    <eAnnotations xmi:id="_1rVSrljCEd2XOcTgMndlVg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details xmi:id="_1rVSr1jCEd2XOcTgMndlVg" key="name" value="name"/>
+      <references xmi:type="uml:Class" href="../models/test_validation.emx#_XwqPcFB7Ed20sOqCvAm01Q"/>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_1rVSsljCEd2XOcTgMndlVg" name="base_Property" association="_1rVSs1jCEd2XOcTgMndlVg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_1rVSs1jCEd2XOcTgMndlVg" name="Property_Other" memberEnd="_1rVStFjCEd2XOcTgMndlVg _1rVSsljCEd2XOcTgMndlVg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_1rVStFjCEd2XOcTgMndlVg" name="extension_Other" type="_1rVSrVjCEd2XOcTgMndlVg" aggregation="composite" association="_1rVSs1jCEd2XOcTgMndlVg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_3KbEI2LxEd2Ub_AtUWxu5A" name="SubThing">
+    <eAnnotations xmi:id="_3KbEJmLxEd2Ub_AtUWxu5A" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <references xmi:type="uml:Class" href="../models/test_validation.emx#_VBkIcGLxEd2Ub_AtUWxu5A"/>
+    </eAnnotations>
+    <generalization xmi:id="_3KbEJ2LxEd2Ub_AtUWxu5A" general="_1rVSoVjCEd2XOcTgMndlVg"/>
+  </packagedElement>
+</uml:Profile>

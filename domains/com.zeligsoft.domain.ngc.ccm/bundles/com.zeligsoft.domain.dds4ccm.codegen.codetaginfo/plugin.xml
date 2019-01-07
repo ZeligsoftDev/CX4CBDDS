@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.zeligsoft.com/2012/codetaginfo"
+            class="com.zeligsoft.domain.dds4ccm.codegen.codetaginfo.codetaginfo.CodetaginfoPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="codetaginfo"
+            class="com.zeligsoft.domain.dds4ccm.codegen.codetaginfo.codetaginfo.util.CodetaginfoResourceFactoryImpl"/>
+   </extension>
+
+</plugin>

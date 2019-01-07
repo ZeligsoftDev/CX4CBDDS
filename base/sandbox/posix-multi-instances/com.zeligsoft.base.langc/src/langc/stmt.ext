@@ -1,0 +1,133 @@
+
+import langc;
+
+extension langc::debug;
+extension langc::expr;
+
+CodeBlock block( List[Statement] stmts ) :
+    let b = new CodeBlock :
+        b.setStatements( stmts )
+     -> b
+;
+
+CodeBlock block( Statement stmt ) :
+    let b = new CodeBlock :
+        b.statements.add( stmt )
+     -> b
+;
+
+ExpressionStatement stmt( Expression expr ) :
+    let e = new ExpressionStatement :
+        e.setExpr( expr )
+     -> e
+;
+
+BreakStatement  breakStmt()  : new BreakStatement;
+ReturnStatement returnStmt() : new ReturnStatement;
+ReturnStatement returnStmt( Expression expr ) :
+    let s = new ReturnStatement :
+        s.setExpr( expr )
+     -> s
+;
+
+SwitchStatement switchStmt( Expression condition ) :
+    let s = new SwitchStatement :
+        s.setCondition( condition )
+     -> s.setClauses( {} )
+     -> s
+;
+
+SwitchClause defaultClause() :
+    let l = new SwitchClause :
+        l.setStatements( {} )
+     -> l
+;
+
+SwitchClause labeledClause( Expression label ) :
+    let l = new LabeledClause :
+        l.setLabels( { label } )
+     -> l.setStatements( {} )
+     -> l
+;
+
+SwitchClause labeledClause( List[Expression] labels ) :
+    let l = new LabeledClause :
+        l.setLabels( labels )
+     -> l.setStatements( {} )
+     -> l
+;
+
+SwitchClause labeledClause( List[Expression] labels, List[Statement] stmts ) :
+    let l = new LabeledClause :
+        l.setLabels( labels )
+     -> l.setStatements( stmts )
+     -> l
+;
+
+WhileStatement while( Expression condition ) :
+    let s = new WhileStatement :
+        s.setCondition( condition )
+     -> s
+;
+
+ConditionalStatement ifStmt( Expression condition ) :
+    let s = new ConditionalStatement :
+        s.setCondition( condition )
+     -> s
+;
+
+CodeBlock addStatement( CodeBlock block, WhileStatement stmt ) :
+    block.statements == null
+        ? block.setStatements( { stmt } )
+        : block.statements.add( stmt )
+ -> block
+;
+
+CodeBlock addStatement( CodeBlock block, Statement stmt ) :
+    block.statements == null
+        ? block.setStatements( { stmt } )
+        : block.statements.add( stmt )
+ -> block
+;
+
+CodeBlock addStatement( CodeBlock block, List[Statement] stmts ) :
+    block.statements == null
+        ? block.setStatements( stmts )
+        : block.statements.addAll( stmts )
+ -> block
+;
+
+CodeBlock addStatement( CodeBlock block, Expression expr ) :
+    block.addStatement( expr.stmt() )
+;
+
+CodeBlock addStatement( CodeBlock block, VariableDeclaration var ) :
+    block.addStatement( var.stmt() )
+;
+
+Statement stmt( VariableDeclaration var ) :
+    let s = new VariableDeclarationStatement :
+        s.setVariable( var )
+     -> s
+;
+
+CodeBlock userCode( String text ) :
+    let b = new CodeBlob :
+        b.setForceBraces( true )
+     -> b.setText( text )
+     -> b
+;
+
+CodeBlock userCode( String deps, String text ) :
+    let b = new CodeBlob :
+        b.setForceBraces( true )
+     -> b.setDependencies( depBlob( deps ) )
+     -> b.setText( text )
+     -> b
+;
+
+private DependencyBlob depBlob( String text ) :
+    let b = new DependencyBlob :
+        b.setText( text )
+     -> b
+;

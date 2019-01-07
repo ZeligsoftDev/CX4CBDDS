@@ -1,0 +1,129 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "BasicPublisher_comp.sbs";
+		- _subsystem = "SNA_Examples";
+		- _class = "";
+		- _name = "BasicPublisher_comp";
+		- _id = GUID 692a7e6d-6327-4d2e-8851-1108fb91232a;
+	}
+	- _id = GUID 8937966f-f3cf-4c8b-8a64-7b729df44c31;
+	- _myState = 8192;
+	- _name = "src";
+	- _modifiedTimeWeak = 5.8.2014::19:24:10;
+	- _lastID = 1;
+	- weakCGTime = 5.8.2014::19:24:10;
+	- strongCGTime = 5.7.2014::14:27:59;
+	- _defaultComposite = GUID ab3d22ef-2531-4df7-b5ca-98e92641fb8d;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 2;
+		- value = 
+		{ IClass 
+			- _id = GUID ab3d22ef-2531-4df7-b5ca-98e92641fb8d;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 5.7.2014::14:27:59;
+			- weakCGTime = 5.7.2014::14:27:59;
+			- strongCGTime = 5.7.2014::14:27:59;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 027f537a-9be7-4bee-9931-25658892d13a;
+			- _myState = 8192;
+			- _name = "BasicPublisher_comp";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CCMComponent";
+					- _id = GUID a5f424da-8aae-4a23-9df3-94505b00f54f;
+				}
+			}
+			- _modifiedTimeWeak = 5.8.2014::19:26:16;
+			- _lastID = 2;
+			- weakCGTime = 5.8.2014::19:26:16;
+			- strongCGTime = 5.8.2014::19:24:18;
+			- Ports = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IPort 
+					- _id = GUID 3c6105ca-0fd8-4abf-b920-b24ef4539ea5;
+					- _myState = 8192;
+					- _name = "testDataPub";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "InterfazePort";
+							- _id = GUID 51459a32-661d-4d12-bd2d-1d2e6ffef6f6;
+						}
+					}
+					- _modifiedTimeWeak = 5.8.2014::19:25:50;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "ports.sbs";
+						- _subsystem = "SNA_Examples::BasicPublisher_comp::ports";
+						- _class = "TestData_conn";
+						- _name = "DDS_Write";
+						- _id = GUID 3925008c-ed7c-4dd5-a752-9113076349b5;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+				}
+				{ IPort 
+					- _id = GUID c3ea6076-36c4-41c8-8d23-a2e1a1dc7ff7;
+					- _myState = 8192;
+					- _name = "testDataPubConnStatus";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "InterfazePort";
+							- _id = GUID 51459a32-661d-4d12-bd2d-1d2e6ffef6f6;
+						}
+					}
+					- _modifiedTimeWeak = 5.8.2014::19:26:16;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\DDS_DCPS\\DDS_DCPS_rpy\\CCM_DDS.sbs";
+						- _subsystem = "CCM_DDS";
+						- _class = "";
+						- _name = "ConnectorStatusListener";
+						- _id = GUID d3b214d8-3481-4a8e-a705-3db02f1fc47f;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 1.2.1990::0:0:0;
+}
+

@@ -1,0 +1,24 @@
+// Parameters of all basic types
+
+interface int1056
+{
+      void func1
+        (
+          inout ptr string returnString,
+          inout ptr short returnShort,
+          in ptr long returnLong,
+          out ptr long long returnLongLong, 
+          out ptr unsigned short returnUnsignedShort, 
+          out ptr unsigned long returnUnsignedLong,
+          in ptr unsigned long long returnUnsignedLongLong, 
+          inout ptr float returnFloat, 
+          out ptr double returnDouble,
+          in ptr long double returnLongDouble,
+          in ptr char returnChar,
+          inout ptr wchar returnWChar,
+          out ptr boolean returnBoolean,
+          in ptr octet returnOctet,
+          inout ptr any returnAny
+        );
+};
+

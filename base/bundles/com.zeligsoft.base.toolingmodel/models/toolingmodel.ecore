@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="toolingmodel" nsURI="http://www.zeligsoft.com/zdl/2008/tooling"
+    nsPrefix="tool">
+  <eClassifiers xsi:type="ecore:EClass" name="PaletteItem" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Palette" eSuperTypes="#//PaletteItem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="drawer" upperBound="-1"
+        eType="#//Drawer" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tool" abstract="true" eSuperTypes="#//PaletteItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ToolContainer" abstract="true" eSuperTypes="#//PaletteItem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tool" upperBound="-1" eType="#//Tool"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetDiagram" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Drawer" eSuperTypes="#//ToolContainer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Stack" eSuperTypes="#//Tool #//ToolContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activeTool" eType="#//Tool"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CreationTool" eSuperTypes="#//Tool">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concept" lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="elementTypeHint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinkTool" eSuperTypes="#//Tool">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertySource" eSuperTypes="#//PropertiesObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="definition" lowerBound="1"
+        upperBound="-1" eType="#//PropertyDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="conceptName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="7326"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyDefinition" eSuperTypes="#//NamedElement #//PropertiesObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="readOnly" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentHint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="section" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertySheet" eSuperTypes="#//PropertiesObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainModelURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propertySource" ordered="false"
+        upperBound="-1" eType="#//PropertySource" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propertyDefinition" ordered="false"
+        upperBound="-1" eType="#//PropertyDefinition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextualDefinition" eSuperTypes="#//PrimitiveDefinition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"
+        defaultValueLiteral="150"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numRows" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrimitiveDefinition" eSuperTypes="#//PropertyDefinition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MenuModel" eSuperTypes="#//MenuObject">
+    <eOperations name="getItems" upperBound="-1" eType="#//MenuItem">
+      <eParameters name="concept" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//String"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" upperBound="-1" eType="#//MenuItem"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="menu" upperBound="-1" eType="#//MenuInstance"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MenuInstance" eSuperTypes="#//MenuObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="concept" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" upperBound="-1" eType="#//MenuItem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MenuItem" abstract="true" eSuperTypes="#//MenuObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//Menu"
+        eOpposite="#//Menu/item"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Menu" eSuperTypes="#//MenuItem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" upperBound="-1" eType="#//MenuItem"
+        containment="true" eOpposite="#//MenuItem/container"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MenuAction" abstract="true" eSuperTypes="#//MenuItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CreateAction" eSuperTypes="#//MenuAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createConcept" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeHint" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DelegateAction" eSuperTypes="#//MenuAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="className" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostBundle" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MenuSeparator" eSuperTypes="#//MenuItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MenuObject" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generated" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Boolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OawBaseExpression" abstract="true" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metamodel" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OawExpression" eSuperTypes="#//OawBaseExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OawXtend" eSuperTypes="#//OawBaseExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extensionFile" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertiesObject" abstract="true"/>
+</ecore:EPackage>

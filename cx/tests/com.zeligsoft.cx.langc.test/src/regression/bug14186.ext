@@ -1,0 +1,44 @@
+
+import langc;
+
+extension generator::filepartitioner;
+extension langc::element;
+extension langc::expr;
+extension langc::name;
+extension langc::stmt;
+extension langc::type;
+
+FolderName folderName() : folder( 'folder' );
+FileName enumFileName() : folderName().child( 'enum_file' );
+FileName funcFileName() : folderName().child( 'func_file' );
+
+Name enumerationName() : enumFileName().child( 'enumeration' );
+Name enumeratorName()  : enumFileName().child( 'enumerator' );
+Name functionName() : funcFileName().child( 'func' );
+
+create SubSystem bug14186() :
+    setFolders( { folderName() } )
+ -> setFiles( { enumFile(), funcFile().resolveDependencies() } )
+;
+
+create ElementList enumFile() :
+    setName( enumFileName() )
+ -> addElement( enumeration() )
+;
+
+create Enum enumeration() :
+    setName( enumerationName() )
+ -> addEnumerator( enumeratorName() )
+;
+
+create ElementList funcFile() :
+    setName( funcFileName() )
+ -> addElement( function() )
+;
+
+Function function() :
+    let f = function( int32(), functionName() ) :
+        f.setLinkage( static() )
+     -> f.addStatement( returnStmt( enumeratorName().access().cast( int32().type() ) ) )
+     -> f
+;

@@ -1,0 +1,251 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "descriptors.sbs";
+		- _subsystem = "SNA_Examples::Deployment";
+		- _class = "";
+		- _name = "descriptors";
+		- _id = GUID 510cc373-9de7-46a2-95a7-12f4e01469a1;
+	}
+	- _id = GUID 5d02d34d-6135-4285-b1f4-d467bbdd768b;
+	- _myState = 8192;
+	- _name = "Procceses";
+	- _modifiedTimeWeak = 5.8.2014::19:59:51;
+	- _lastID = 2;
+	- weakCGTime = 5.8.2014::19:59:51;
+	- strongCGTime = 5.8.2014::19:44:12;
+	- _defaultComposite = GUID 812a2e57-cf0b-42f0-aaad-0232df53d6f6;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 3;
+		- value = 
+		{ IClass 
+			- _id = GUID 812a2e57-cf0b-42f0-aaad-0232df53d6f6;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 5.8.2014::19:44:12;
+			- weakCGTime = 5.8.2014::19:44:12;
+			- strongCGTime = 5.8.2014::19:44:12;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 4f36d005-3109-4e5c-beab-b5d62595d0e2;
+			- _myState = 8192;
+			- _name = "BasicPublisher_comp";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "ContainerProcess";
+					- _id = GUID e528291f-ad99-4025-aa1c-b2b0284d4b84;
+				}
+			}
+			- _modifiedTimeWeak = 5.8.2014::20:2:36;
+			- _lastID = 4;
+			- weakCGTime = 5.8.2014::20:2:36;
+			- strongCGTime = 5.8.2014::19:56:10;
+			- Attrs = { IRPYRawContainer 
+				- size = 4;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 806d0c6d-4448-45fd-b581-7316b775ef33;
+					- _myState = 8192;
+					- _name = "edu_vanderbuilt_dre_DAnCE_LocalityArguments";
+					- _modifiedTimeWeak = 5.8.2014::20:1:56;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 1828d710-2285-474a-b387-85d53386ec9a;
+					- _myState = 8192;
+					- _name = "edu_vanderbuilt_dre_DAnCE_LocalityManager_CPUAffinity";
+					- _modifiedTimeWeak = 5.8.2014::20:2:9;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 44e42d4e-505f-48fd-9ad7-3f875c7f9d06;
+					- _myState = 8192;
+					- _name = "edu_vanderbuilt_dre_DAnCE_LocalityManager_ProcessName";
+					- _modifiedTimeWeak = 5.8.2014::20:2:22;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 60980715-6094-4a78-bb4f-71f5375cc622;
+					- _myState = 8192;
+					- _name = "edu_vanderbuilt_dre_DAnCE_LocalityManager_ProcessPriority";
+					- _modifiedTimeWeak = 5.8.2014::20:2:36;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 64ee12c8-e170-40b2-8322-80c6ff4040c6;
+			- _myState = 8192;
+			- _name = "BasicSubscriber_comp";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "ContainerProcess";
+					- _id = GUID e528291f-ad99-4025-aa1c-b2b0284d4b84;
+				}
+			}
+			- _modifiedTimeWeak = 5.8.2014::20:4:9;
+			- _lastID = 4;
+			- weakCGTime = 5.8.2014::20:4:9;
+			- strongCGTime = 5.8.2014::19:56:22;
+			- Attrs = { IRPYRawContainer 
+				- size = 4;
+				- value = 
+				{ IAttribute 
+					- _id = GUID 8a454c79-b227-4f97-8639-36cf90ef4982;
+					- _myState = 8192;
+					- _name = "edu_vanderbuilt_dre_DAnCE_LocalityArguments";
+					- _modifiedTimeWeak = 5.8.2014::20:3:30;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 3c5239da-ebd5-4cb2-9c6e-0179dafb331c;
+					- _myState = 8192;
+					- _name = "edu_vanderbuilt_dre_DAnCE_LocalityManager_CPUAffinity";
+					- _modifiedTimeWeak = 5.8.2014::20:3:45;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID a79e1384-ce24-4df2-9813-0cbe7b20e657;
+					- _myState = 8192;
+					- _name = "edu_vanderbuilt_dre_DAnCE_LocalityManager_ProcessName";
+					- _modifiedTimeWeak = 5.8.2014::20:3:56;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+				{ IAttribute 
+					- _id = GUID 029a13f6-2ae5-4ecb-b978-d4118e5ed3bf;
+					- _myState = 8192;
+					- _name = "edu_vanderbuilt_dre_DAnCE_LocalityManager_ProcessPriority";
+					- _modifiedTimeWeak = 5.8.2014::20:4:9;
+					- _typeOf = { IHandle 
+						- _m2Class = "IType";
+						- _filename = "C:\\Users\\Paul Elder\\IBM\\rationalsdp\\runtime-workbench\\com.prismtech.domain.dds4ccm.rhapsody\\models\\IDLPrimitives\\IDLPrimitives_rpy\\IDLPrimitives.sbs";
+						- _subsystem = "IDLPrimitives";
+						- _class = "";
+						- _name = "CORBAString";
+						- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+					}
+					- _isOrdered = 0;
+					- _protection = iPublic;
+					- _static = 0;
+					- _isReference = 0;
+					- _isConstant = 0;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 1.2.1990::0:0:0;
+}
+

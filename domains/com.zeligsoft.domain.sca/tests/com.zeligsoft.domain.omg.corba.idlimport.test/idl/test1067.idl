@@ -1,0 +1,19 @@
+// Forward declare union
+
+union u1;
+
+interface int1067
+{
+
+
+    attribute u1 unionattr;
+    u1 f1( inout u1 enumparam );
+
+};
+
+    union u1 switch (long long)
+    {
+      case 1: long a;
+      case 2: float b;
+      default: string c;
+    };

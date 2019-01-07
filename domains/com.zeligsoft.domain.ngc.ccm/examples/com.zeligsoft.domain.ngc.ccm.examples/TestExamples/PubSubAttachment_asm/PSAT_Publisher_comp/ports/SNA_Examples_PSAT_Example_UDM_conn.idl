@@ -1,0 +1,13 @@
+#ifndef CX_PSAT_PUBLISHER_COMP__PORTS__SNA_EXAMPLES_PSAT_EXAMPLE_UDM_CONN_IDL
+#define CX_PSAT_PUBLISHER_COMP__PORTS__SNA_EXAMPLES_PSAT_EXAMPLE_UDM_CONN_IDL
+
+#include <ccm_psat.idl>
+#include "SNA_Examples_PSAT_Example_UDM_msg.idl"
+#pragma ciao lem "SNA_Examples_PSAT_Example_UDM_connE.idl"
+
+module SNA_Examples {
+    typedef sequence <PSAT_Example_UDM_msg> PSAT_Example_UDM_msgSeq;
+    module CCM_PSAT::Typed <PSAT_Example_UDM_msg, PSAT_Example_UDM_msgSeq> PSAT_Example_UDM_conn; 
+};
+
+#endif

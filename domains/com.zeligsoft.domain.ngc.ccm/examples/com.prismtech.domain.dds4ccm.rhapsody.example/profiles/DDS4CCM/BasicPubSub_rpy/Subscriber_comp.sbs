@@ -1,0 +1,136 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "BasicPubSub.sbs";
+		- _subsystem = "";
+		- _class = "";
+		- _name = "BasicPubSub";
+		- _id = GUID ef2a1be4-9363-442e-a6b4-ddcd6af26aa6;
+	}
+	- _id = GUID 78aa6483-4b11-47f6-98d4-a975562b6045;
+	- _myState = 8192;
+	- _name = "Subscriber_comp";
+	- _modifiedTimeWeak = 5.15.2014::19:14:27;
+	- weakCGTime = 5.15.2014::19:14:27;
+	- strongCGTime = 4.14.2014::20:31:44;
+	- _defaultComposite = GUID 6fa48e60-5f18-4ccf-a077-2c9b51a56eab;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 2;
+		- value = 
+		{ IClass 
+			- _id = GUID 6fa48e60-5f18-4ccf-a077-2c9b51a56eab;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 5.14.2014::19:4:13;
+			- weakCGTime = 5.14.2014::19:4:13;
+			- strongCGTime = 4.14.2014::20:31:44;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID 0e579ead-4889-47b4-ad59-10b15a2d9eaa;
+			- _myState = 8192;
+			- _name = "BasicSubscriber_comp";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "D:\\workspaces9\\runtime-NGC\\com.prismtech.domain.dds4ccm.rhapsody.example\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CCMComponent";
+					- _id = GUID 579c457b-bf31-469a-97f6-f1cfac2e6807;
+				}
+			}
+			- _modifiedTimeWeak = 5.15.2014::19:15:48;
+			- _lastID = 3;
+			- weakCGTime = 5.15.2014::19:15:48;
+			- strongCGTime = 4.14.2014::20:31:47;
+			- Ports = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IPort 
+					- _id = GUID 7f2aef52-2ae0-4f5d-bc73-cd43b9f54600;
+					- _myState = 8192;
+					- _name = "testDataSub";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "D:\\workspaces9\\runtime-NGC\\com.prismtech.domain.dds4ccm.rhapsody.example\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "InterfazePort";
+							- _id = GUID 5b3310fd-4246-4c64-bb6e-c55df4fa5c46;
+						}
+					}
+					- _modifiedTimeWeak = 5.15.2014::19:15:42;
+					- Tags = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _lastID = 1;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "TestData_Conn.sbs";
+						- _subsystem = "BasicPubSub::Publisher_comp::ports::TestData_Conn";
+						- _class = "";
+						- _name = "DDS_Listen";
+						- _id = GUID cb48a0a6-eef9-4b06-b8fe-185c64e6e815;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+				}
+				{ IPort 
+					- _id = GUID 3c4df6c8-f338-4907-a46d-e74e5d8af5ab;
+					- _myState = 8192;
+					- _name = "testDataSubConnStatus";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "D:\\workspaces9\\runtime-NGC\\com.prismtech.domain.dds4ccm.rhapsody.example\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "InterfazePort";
+							- _id = GUID 5b3310fd-4246-4c64-bb6e-c55df4fa5c46;
+						}
+					}
+					- _modifiedTimeWeak = 5.15.2014::19:15:48;
+					- Tags = { IRPYRawContainer 
+						- size = 0;
+					}
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "TestData_Conn.sbs";
+						- _subsystem = "BasicPubSub::Publisher_comp::ports::TestData_Conn";
+						- _class = "";
+						- _name = "ConnectorStatusListener";
+						- _id = GUID f3b1dbcd-51bc-4f7d-9403-bc006a5816d9;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _reversed = 1;
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 1.2.1990::0:0:0;
+}
+

@@ -1,0 +1,15 @@
+#ifndef CX_SHAPES_ASM__PORTS__SHAPES_SHAPETYPE_CONN_IDL
+#define CX_SHAPES_ASM__PORTS__SHAPES_SHAPETYPE_CONN_IDL
+
+#include <Components.idl>
+#include <ccm_dds.idl>
+#include "Shapes_ShapeType_msg.idl"
+#pragma ciao lem "Shapes_ShapeType_connE.idl"
+
+typedef sequence <ShapeType> ShapeTypeSeq;
+
+module Shapes {
+    module CCM_DDS::Typed <ShapeType, ShapeTypeSeq> ShapeType_conn; 
+};
+
+#endif

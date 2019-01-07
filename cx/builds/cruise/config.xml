@@ -1,0 +1,39 @@
+<cruisecontrol>
+
+	<property file="cruise.properties"/>
+	
+    <project name="ce-I">
+
+        <bootstrappers>
+            <antbootstrapper target="clean" usedebug="true" uselogger="true" buildfile="build.xml" />
+        </bootstrappers>
+
+        <listeners>
+            <currentbuildstatuslistener file="${build.home}/logs/${project.name}/buildstatus.txt" />         
+        </listeners>
+
+        <modificationset quietperiod="${time.quietperiod}">
+        	<!-- alwaysbuild username="tniro@zeligsoft.com" / -->
+            <svn repositoryLocation="${svn.svnroot}" />            
+        </modificationset>
+
+        <schedule interval="${time.interval}">
+            <!-- when we don't run from our cruise directory, we'll need to specify a path for the build file -->         
+            <ant target="Build" usedebug="true" showAntOutput="true" uselogger="true" buildfile="build.xml"/>
+        </schedule>
+
+        <log dir="${build.home}/logs/${project.name}" >      
+            <delete unit="DAY" every="1" ignoreSuffix="true" />
+        </log>
+
+        <publishers>
+            <currentbuildstatuspublisher file="${build.home}/logs/${project.name}/buildstatus.txt" />      
+            <email mailhost="${mail.host}" 
+                   returnaddress="${build.buildmaster.email}" 
+                   buildresultsurl="build.not.ready.yet" >
+                   <always address="tniro@zeligsoft.com" />
+            </email>
+        </publishers>
+
+    </project>
+</cruisecontrol>

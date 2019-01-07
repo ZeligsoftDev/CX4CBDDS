@@ -1,0 +1,42 @@
+/// @defgroup AGSP_AuxControl_obj AuxControl_obj
+/// @{
+/// 
+/// @file AGSP_AuxControl_obj.idl
+/// @brief AuxControl_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__2SURVEILLANCEPROCESSOR__AGSP_AUXCONTROL_OBJ_IDL
+#define CX_PORTS__2SURVEILLANCEPROCESSOR__AGSP_AUXCONTROL_OBJ_IDL
+
+#include "AGSP_Common_defn.idl"
+#pragma ciao lem "AGSP_AuxControl_objE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    ///@interface AuxControl_obj 
+    interface AuxControl_obj {
+
+        /// @return
+        AGSP::ReturnStatus activate();
+
+        /// @return
+        AGSP::ReturnStatus deactivate();
+
+        /// @param[in] sensitivity
+        ///
+        void setSensitivity(
+            in long sensitivity
+            );
+
+        /// @return
+        long getSensitivity();
+    };
+
+};
+
+#endif // CX_PORTS__2SURVEILLANCEPROCESSOR__AGSP_AUXCONTROL_OBJ_IDL
+
+/// @}
+

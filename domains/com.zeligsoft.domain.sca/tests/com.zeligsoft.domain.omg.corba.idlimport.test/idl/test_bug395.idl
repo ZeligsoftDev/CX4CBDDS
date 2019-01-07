@@ -1,0 +1,13 @@
+struct structDefinitionA
+{
+    octet           fieldA1;
+    unsigned short  fieldA2;
+    unsigned short  fieldA3;
+    unsigned short  fieldA4;
+};
+
+struct structDefinitionB
+{
+    octet             fieldB1;
+    structDefinitionA fieldB2[6];
+};

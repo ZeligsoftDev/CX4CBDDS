@@ -1,0 +1,33 @@
+struct StructType
+{
+  string mem1;
+  string mem2;
+  string mem3;
+};
+
+enum EnumType
+{
+  VALUE1,
+  VALUE2,
+  VAULE3
+};
+
+union UnionType switch(long)
+{
+  case 1: string mem1;
+  case 2: long mem2;
+  default: octet mem3;
+};
+
+typedef sequence<long> LongSequence;
+
+interface int1035 {
+
+attribute StructType i_am_a_struct;
+attribute EnumType i_am_an_enum;
+attribute UnionType i_am_a_union;
+attribute LongSequence i_am_a_sequence;
+// for some reason if I do not typedef this does not work:
+// attribute sequence <long> i_am_also_a_sequence;
+// Not sure if this is a bug in the tool or a quirk about IDL.
+};

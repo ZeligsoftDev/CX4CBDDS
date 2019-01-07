@@ -1,0 +1,63 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ ISubsystem 
+	- _id = GUID c6b3bd15-4c24-4bfd-a062-c3729ebbb784;
+	- _myState = 8192;
+	- _name = "PEExample";
+	- Stereotypes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IHandle 
+			- _m2Class = "IStereotype";
+			- _filename = "D:\\workspaces9\\runtime-NGC\\BasicPubSub_Example_WithTemplatesAndDeployment\\profiles\\DDS4CCM\\DDS4CCM_rpy\\cxDDS4CCM.sbs";
+			- _subsystem = "cxDDS4CCM";
+			- _class = "";
+			- _name = "CORBAModule";
+			- _id = GUID 867f44f5-1087-4024-ac92-868ca54daed7;
+		}
+	}
+	- _modifiedTimeWeak = 6.10.2014::17:49:39;
+	- _lastID = 4;
+	- Declaratives = { IRPYRawContainer 
+		- size = 4;
+		- value = 
+		{ ISubsystem 
+			- fileName = "Publisher_comp";
+			- _id = GUID 93bc6df1-5d51-431c-928f-92ba13b975c1;
+		}
+		{ ISubsystem 
+			- fileName = "Deployment";
+			- _id = GUID 59655bbf-008b-44c3-8f50-412ab84ddb19;
+		}
+		{ ISubsystem 
+			- fileName = "Subscriber_comp";
+			- _id = GUID f35ac35f-d5de-4923-9f9d-abc47217089f;
+		}
+		{ ISubsystem 
+			- fileName = "PubSubSystem";
+			- _id = GUID dae4049b-ee04-4101-bc17-3d65b4a07d84;
+		}
+	}
+	- weakCGTime = 6.10.2014::17:49:39;
+	- strongCGTime = 5.22.2014::15:10:58;
+	- _defaultComposite = GUID 39f7028b-1f55-4ff4-a063-afb5e3c5d1a0;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID 39f7028b-1f55-4ff4-a063-afb5e3c5d1a0;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 5.29.2014::17:38:40;
+			- weakCGTime = 5.29.2014::17:38:40;
+			- strongCGTime = 5.22.2014::15:10:58;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 6.10.2014::17:49:39;
+}
+

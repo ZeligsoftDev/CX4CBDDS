@@ -1,0 +1,16 @@
+exception GlobalException
+{
+};
+
+interface int1049
+{
+  exception Exception1
+  {
+  };
+
+  void func1 (      
+    ) raises (Exception1);
+
+  void func2 (
+    ) raises (Exception1, GlobalException);
+};

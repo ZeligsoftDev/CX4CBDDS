@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://DDS4CCM_AMI_LIBRARIES/"
+            target="platform:/plugin/com.zeligsoft.domain.dds4ccm.amiconnector/models/">
+      </mapping>
+   </extension>
+   <extension
+         point="com.ibm.xtools.uml.msl.UMLLibraries">
+      <UMLLibrary
+            name="CCM AMI Connector"
+            path="pathmap://DDS4CCM_AMI_LIBRARIES/CCM_AMI.uml">
+      </UMLLibrary>
+   </extension>
+</plugin>

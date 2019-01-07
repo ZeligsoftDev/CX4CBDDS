@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.profile.tooling.signature" version="7.1.200"><feature description="The Profile Integration Feature allows custom tooling to be generated for profiles." name="Profile Integration Feature (com.ibm.xtools.uml.profile.tooling.feature)" url="http://www.ibm.com/rational" version="7.1.200"/></signature>?>
+<profileGenModel:ProfileGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/uml2/1.1.0/GenModel" xmlns:gmfmap="http://www.eclipse.org/gmf/2006/mappings" xmlns:profileGenModel="http://www.ibm.com/rational/uml/profile/tooling/profileGenModel/1.0.0/" xmlns:profileToolMapping="http://www.ibm.com/rational/uml/profile/tooling/mapping/1.0.0/" xmi:id="_M97noCzXEd2yXKsDUguUzg" elementTypesPkgQName="com.zeligsoft.base.deployment.rsm.tooling.types" editHelpersPkgQName="com.zeligsoft.base.deployment.rsm.tooling.edithelpers" editPartsPkgQName="com.zeligsoft.base.deployment.rsm.tooling.editparts" figuresPkgQName="com.zeligsoft.base.deployment.rsm.tooling.figures" l10nPkgQName="com.zeligsoft.base.deployment.rsm.tooling.l10n" menuPkgQName="com.zeligsoft.base.deployment.rsm.tooling.menu" palettePkgQName="com.zeligsoft.base.deployment.rsm.tooling.palette" providersPkgQName="com.zeligsoft.base.deployment.rsm.tooling.providers" viewFactoriesPkgQName="com.zeligsoft.base.deployment.rsm.tooling.viewfactories" utilsPkgQName="com.zeligsoft.base.deployment.rsm.tooling.utils" messagesClassName="ZeligsoftDeploymentMessages" viewProviderClassName="ZeligsoftDeploymentViewProvider" editPartProviderClassName="ZeligsoftDeploymentEditPartProvider" modelingAssistantClassName="ZeligsoftDeploymentModelingAssistant" contributionItemProviderClassName="ZeligsoftDeploymentContributionItemProvider" defaultViewProviderClassName="ZeligsoftDeploymentDefaultViewProvider" semanticHintsClassName="ZeligsoftDeploymentSemanticHints" elementTypesClassName="ZeligsoftDeploymentElementTypes" domainUtilClassName="ZeligsoftDeploymentUtil" applyProfileAdviceClassName="ZeligsoftDeploymentApplyProfileAdvice" baseEditHelperAdviceClassName="ZeligsoftDeploymentBaseEditHelperAdvice" baseEditHelperClassName="ZeligsoftDeploymentBaseEditHelper" applicationName="ZeligsoftDeployment" basePackage="com.zeligsoft.base.deployment.rsm.tooling" RSMVersion="7.0.5" projectName="com.zeligsoft.base.deployment.rsm.tooling">
+  <profile xmi:id="_M97noSzXEd2yXKsDUguUzg" id="com.zeligsoft.base.deployment.rsm.tooling.ZeligsoftDeployment" name="ZeligsoftDeployment" visible="true" profileSourceLocation="platform:/resource/com.zeligsoft.base.deployment.rsm.profile/profiles/ZeligsoftDeployment.epx"/>
+  <pathMap xmi:id="_M97noizXEd2yXKsDUguUzg" name="ZELIGSOFT_DEPLOYMENT" location="profiles"/>
+  <plugin xmi:id="_M97noyzXEd2yXKsDUguUzg" id="com.zeligsoft.base.deployment.rsm.tooling" name="ZeligsoftDeployment" vendor="Zeligsoft Inc." version="1.0.0.qualifier" activatorClassName="ZeligsoftDeploymentPlugin" copyright=" Copyright (c) 2008 Zeligsoft Inc. &#xD;&#xA; All rights reserved. &#xA; &#xA; THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND&#xA; IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, &#xA; DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,&#xA; IS STRICTLY PROHIBITED." javaVersion="V1_5">
+    <classpath>.</classpath>
+    <requiredBundles>com.ibm.xtools.uml.ui.diagram;bundle-version=&quot;[7.0.0,8.0.0)&quot;</requiredBundles>
+    <requiredBundles>org.eclipse.ocl.uml;bundle-version=&quot;[1.1.0,2.0.0)&quot;</requiredBundles>
+    <requiredBundles>org.eclipse.gmf.runtime.emf.ui.properties;bundle-version=&quot;[1.0.2,2.0.0)&quot;</requiredBundles>
+    <requiredBundles>org.eclipse.gmf.runtime.diagram.ui;bundle-version=&quot;[1.0.1,2.0.0)&quot;</requiredBundles>
+    <requiredBundles>org.eclipse.uml2.uml.edit;visibility:=reexport;bundle-version=&quot;[2.1.0,3.0.0)&quot;</requiredBundles>
+    <requiredBundles>org.eclipse.emf.query.ocl;visibility:=reexport;bundle-version=&quot;[1.1.0,2.0.0)&quot;</requiredBundles>
+    <requiredBundles>com.ibm.xtools.uml.msl;bundle-version=&quot;[7.0.0,8.0.0)&quot;</requiredBundles>
+    <requiredBundles>com.ibm.xtools.common.ui.reduction;bundle-version=&quot;[7.0.200,8.0.0)&quot;</requiredBundles>
+    <requiredBundles>com.ibm.xtools.common.ui.wizards;bundle-version=&quot;[7.0.200,8.0.0)&quot;</requiredBundles>
+    <requiredBundles>com.ibm.xtools.modeler.ui;bundle-version=&quot;[7.0.0,8.0.0)&quot;</requiredBundles>
+    <projectNatures>org.eclipse.pde.PluginNature</projectNatures>
+    <projectNatures>org.eclipse.jdt.core.javanature</projectNatures>
+  </plugin>
+  <elementTypes xmi:type="profileGenModel:StereotypeSpecializationElementType" xmi:id="_M97npCzXEd2yXKsDUguUzg" id="com.zeligsoft.base.deployment.rsm.tooling.DeploymentPartProperty" displayName="&lt;DeploymentPart> Property" icon="icons/full/obj16/DeploymentPart.gif" kind="com.ibm.xtools.uml.type.IStereotypedElementType" matcherClassName="DeploymentPartPropertyMatcher" adviceClassName="DeploymentPartPropertyEditHelperAdvice" specializesId="com.ibm.xtools.uml.property">
+    <mappingEntry xmi:type="profileToolMapping:StereotypeNodeMappingWithMenus" href="ZeligsoftDeployment.epxmap#_Mr2ZISzXEd2yXKsDUguUzg?%3CMapping%3E/%3CTopNodeReference%3E/%3CStereotypeNodeMappingWithMenus%3E?"/>
+    <stereotypeGenClass xmi:type="genmodel:GenClass" href="profileGenModel:/platform/resource/com.zeligsoft.base.deployment.rsm.profile/profiles/ZeligsoftDeployment.epx#_Z5ZqfizVEd2yXKsDUguUzg"/>
+  </elementTypes>
+  <elementTypes xmi:type="profileGenModel:StereotypeLinkSpecializationElementType" xmi:id="_M97npSzXEd2yXKsDUguUzg" id="com.zeligsoft.base.deployment.rsm.tooling.AllocationDependency" displayName="&lt;Allocation> Dependency" icon="icons/full/obj16/Allocation.gif" kind="com.ibm.xtools.uml.type.IStereotypedElementType" matcherClassName="AllocationDependencyMatcher" adviceClassName="AllocationDependencyEditHelperAdvice" specializesId="com.ibm.xtools.uml.dependency">
+    <mappingEntry xmi:type="profileToolMapping:StereotypeLinkMapping" href="ZeligsoftDeployment.epxmap#_Mr1LACzXEd2yXKsDUguUzg?%3CMapping%3E/%3CStereotypeLinkMapping%3E?"/>
+    <stereotypeGenClass xmi:type="genmodel:GenClass" href="profileGenModel:/platform/resource/com.zeligsoft.base.deployment.rsm.profile/profiles/ZeligsoftDeployment.epx#_Z5ZqeCzVEd2yXKsDUguUzg"/>
+  </elementTypes>
+  <elementTypes xmi:type="profileGenModel:StereotypeSpecializationElementType" xmi:id="_fpscMC0kEd29rMOQWhd2wQ" id="com.zeligsoft.base.deployment.rsm.tooling.DeploymentComponent" displayName="&lt;Deployment> Component" icon="icons/full/obj16/Deployment.gif" kind="com.ibm.xtools.uml.type.IStereotypedElementType" matcherClassName="DeploymentPartPropertyMatcher" adviceClassName="DeploymentComponentEditHelperAdvice" specializesId="com.ibm.xtools.uml.component">
+    <mappingEntry xmi:type="gmfmap:NodeMapping" href="platform:/plugin/com.ibm.xtools.uml.profile.tooling/models/uml.epxmap#_jM0pmzVvEdynwaW58PI2LQ?%3CMapping%3E/%3CTopNodeReference%3E/%3CNodeMapping%3E?"/>
+    <stereotypeGenClass xmi:type="genmodel:GenClass" href="profileGenModel:/platform/resource/com.zeligsoft.base.deployment.rsm.profile/profiles/ZeligsoftDeployment.epx#_Z5ZqcizVEd2yXKsDUguUzg"/>
+  </elementTypes>
+  <elementTypes xmi:type="profileGenModel:StereotypeSpecializationElementType" xmi:id="_cW200DccEd2ul_x-_XTe_g" id="com.zeligsoft.base.deployment.rsm.tooling.ComponentDeploymentPartProperty" displayName="&lt;ComponentDeploymentPart> Property" icon="icons/full/obj16/ComponentDeploymentPart.gif" kind="com.ibm.xtools.uml.type.IStereotypedElementType" matcherClassName="ComponentDeploymentPartPropertyMatcher" adviceClassName="ComponentDeploymentPartPropertyEditHelperAdvice" specializesId="com.zeligsoft.base.deployment.rsm.tooling.DeploymentPartProperty">
+    <mappingEntry xmi:type="profileToolMapping:StereotypeNodeMappingWithMenus" href="ZeligsoftDeployment.epxmap#_OanmoTcgEd2ul_x-_XTe_g?%3CMapping%3E/%3CTopNodeReference%3E/%3CStereotypeNodeMappingWithMenus%3E?"/>
+    <stereotypeGenClass xmi:type="genmodel:GenClass" href="profileGenModel:/platform/resource/com.zeligsoft.base.deployment.rsm.profile/profiles/ZeligsoftDeployment.epx#_uoUExzb1Ed2ul_x-_XTe_g"/>
+  </elementTypes>
+  <palettes xmi:id="_M97npizXEd2yXKsDUguUzg" providerClassName="ZeligsoftDeploymentPaletteProvider" factoryClassName="ZeligsoftDeploymentPaletteFactory">
+    <children xmi:type="profileGenModel:PaletteDrawer" xmi:id="_M97npyzXEd2yXKsDUguUzg" name="Zeligsoft Deployment" description="Zeligsoft Deployment" largeIcon="/icons/default.gif" smallIcon="/icons/default.gif" id="Zeligsoft_Deployment">
+      <children xmi:type="profileGenModel:PaletteCreationToolEntry" xmi:id="_M97nqCzXEd2yXKsDUguUzg" name="Allocation" description="Create an allocation relationship in a Zeligsoft deployment specification" largeIcon="" id="Zeligsoft_Deployment.Allocation" elementType="_M97npSzXEd2yXKsDUguUzg"/>
+      <children xmi:type="profileGenModel:PaletteCreationToolEntry" xmi:id="_M97nqSzXEd2yXKsDUguUzg" name="Deployment Part" description="Create a deployment part in a Zeligsoft deployment specification" id="Zeligsoft_Deployment.Deployment_Part" elementType="_M97npCzXEd2yXKsDUguUzg"/>
+      <children xmi:type="profileGenModel:PaletteCreationToolEntry" xmi:id="_yNBP0DccEd2ul_x-_XTe_g" name="Component Deployment Part" description="Create a component deployment part in a Zeligsoft deployment specification" id="Zeligsoft_Deployment.Component_Deployment_Part" elementType="_cW200DccEd2ul_x-_XTe_g"/>
+    </children>
+    <editorId>ModelerDiagramEditor</editorId>
+    <diagramKind>Class</diagramKind>
+    <diagramKind>Freeform</diagramKind>
+  </palettes>
+  <contextMenus xmi:id="_M97nqizXEd2yXKsDUguUzg">
+    <context xmi:type="profileGenModel:MetamodelElementType" href="platform:/plugin/com.ibm.xtools.uml.profile.tooling/models/uml.epxgen#_jMxmUTVvEdynwaW58PI2LQ?%3CProfileGenModel%3E/%3CMetamodelElementType%3E?"/>
+    <entries xmi:type="profileGenModel:FlyoutMenu" xmi:id="_M97nqyzXEd2yXKsDUguUzg" name="Add Zeligsoft Deployment" id="Add_Zeligsoft_Deployment">
+      <children xmi:type="profileGenModel:MenuGroup" xmi:id="_M97nrCzXEd2yXKsDUguUzg" name="Zeligsoft Deployment" id="Zeligsoft Deployment">
+        <children xmi:type="profileGenModel:MenuCreationAction" xmi:id="_M97nrSzXEd2yXKsDUguUzg" name="Deployment Part" id="Deployment_Part" elementType="_M97npCzXEd2yXKsDUguUzg"/>
+        <children xmi:type="profileGenModel:MenuCreationAction" xmi:id="_6JA2ADccEd2ul_x-_XTe_g" name="Component Deployment Part" id="Component_Deployment_Part" elementType="_cW200DccEd2ul_x-_XTe_g"/>
+      </children>
+    </entries>
+  </contextMenus>
+  <editParts xmi:type="profileGenModel:NodeEditPart" xmi:id="_M97nrizXEd2yXKsDUguUzg" editPartClassName="DeploymentPartPropertyEditPart" viewFactoryClassName="DeploymentPartPropertyViewFactory" elementType="_M97npCzXEd2yXKsDUguUzg">
+    <figure xmi:id="_M97nryzXEd2yXKsDUguUzg" className="DeploymentPartPropertyFigure"/>
+    <styles xmi:id="_M97nsCzXEd2yXKsDUguUzg">
+      <styleEClass href="http://www.eclipse.org/gmf/runtime/1.0.1/notation#//FontStyle"/>
+    </styles>
+    <styles xmi:id="_M97nsSzXEd2yXKsDUguUzg">
+      <styleEClass href="http://www.eclipse.org/gmf/runtime/1.0.1/notation#//DescriptionStyle"/>
+    </styles>
+    <styles xmi:id="_M97nsizXEd2yXKsDUguUzg">
+      <styleEClass href="http://www.eclipse.org/gmf/runtime/1.0.1/notation#//FillStyle"/>
+    </styles>
+    <styles xmi:id="_M97nsyzXEd2yXKsDUguUzg">
+      <styleEClass href="http://www.eclipse.org/gmf/runtime/1.0.1/notation#//LineStyle"/>
+    </styles>
+    <children xmi:type="profileGenModel:TextEditPart" xmi:id="_M97ntCzXEd2yXKsDUguUzg" editPartClassName="DeploymentPartPropertyTextEditPart" viewFactoryClassName="DeploymentPartPropertyTextViewFactory" semanticHint="ZeligsoftDeploymentDeploymentPartPropertyTextEditPart"/>
+  </editParts>
+  <editParts xmi:type="profileGenModel:LinkEditPart" xmi:id="_M97ntSzXEd2yXKsDUguUzg" editPartClassName="AllocationDependencyEditPart" viewFactoryClassName="AllocationDependencyViewFactory" elementType="_M97npSzXEd2yXKsDUguUzg">
+    <styles xmi:id="_M97ntizXEd2yXKsDUguUzg">
+      <styleEClass href="http://www.eclipse.org/gmf/runtime/1.0.1/notation#//FontStyle"/>
+    </styles>
+    <styles xmi:id="_M97ntyzXEd2yXKsDUguUzg">
+      <styleEClass href="http://www.eclipse.org/gmf/runtime/1.0.1/notation#//LineStyle"/>
+    </styles>
+    <styles xmi:id="_M97nuCzXEd2yXKsDUguUzg">
+      <styleEClass href="http://www.eclipse.org/gmf/runtime/1.0.1/notation#//RoutingStyle"/>
+    </styles>
+    <children xmi:type="profileGenModel:LabelEditPart" xmi:id="_M97nuSzXEd2yXKsDUguUzg" editPartClassName="AllocationDependencyLabelEditPart" viewFactoryClassName="AllocationDependencyLabelViewFactory" semanticHint="ZeligsoftDeploymentAllocationDependencyLabelEditPart">
+      <children xmi:type="profileGenModel:TextEditPart" xmi:id="_M97nuizXEd2yXKsDUguUzg" editPartClassName="AllocationDependencyTextEditPart" viewFactoryClassName="AllocationDependencyTextViewFactory" semanticHint="ZeligsoftDeploymentAllocationDependencyTextEditPart"/>
+    </children>
+  </editParts>
+  <editParts xmi:type="profileGenModel:NodeEditPart" xmi:id="_T_oOsDcdEd2ul_x-_XTe_g" editPartClassName="ComponentDeploymentPartPropertyEditPart" viewFactoryClassName="DeploymentPartPropertyViewFactory" elementType="_M97npCzXEd2yXKsDUguUzg">
+    <figure xmi:id="_T_oOsTcdEd2ul_x-_XTe_g" className="DeploymentPartPropertyFigure"/>
+    <styles xmi:id="_T_oOsjcdEd2ul_x-_XTe_g">
+      <styleEClass href="http://www.eclipse.org/gmf/runtime/1.0.1/notation#//FontStyle"/>
+    </styles>
+    <styles xmi:id="_T_oOszcdEd2ul_x-_XTe_g">
+      <styleEClass href="http://www.eclipse.org/gmf/runtime/1.0.1/notation#//DescriptionStyle"/>
+    </styles>
+    <styles xmi:id="_T_oOtDcdEd2ul_x-_XTe_g">
+      <styleEClass href="http://www.eclipse.org/gmf/runtime/1.0.1/notation#//FillStyle"/>
+    </styles>
+    <styles xmi:id="_T_oOtTcdEd2ul_x-_XTe_g">
+      <styleEClass href="http://www.eclipse.org/gmf/runtime/1.0.1/notation#//LineStyle"/>
+    </styles>
+    <children xmi:type="profileGenModel:TextEditPart" xmi:id="_T_oOtzcdEd2ul_x-_XTe_g" editPartClassName="ComponentDeploymentPartPropertyTextEditPart" viewFactoryClassName="ComponentDeploymentPartPropertyTextViewFactory" semanticHint="ZeligsoftDeploymentComponentDeploymentPartPropertyTextEditPart"/>
+  </editParts>
+  <uiReductionActivity xmi:id="_M97nuyzXEd2yXKsDUguUzg" id="com.zeligsoft.base.deployment.rsm.tooling.uireduction.activity" name="ZeligsoftDeployment Tooling"/>
+  <wizardContribution xmi:id="_M97nvCzXEd2yXKsDUguUzg" templateModelHandlerClassName="ZeligsoftDeploymentTemplateModelHandler" templateDirectory="templates">
+    <templateActivity xmi:id="_M97nvSzXEd2yXKsDUguUzg" id="com.zeligsoft.base.deployment.rsm.tooling.core.activity" name="ZeligsoftDeployment Core" description="Activity for com.zeligsoft.base.deployment.rsm.tooling"/>
+    <template xmi:id="_M97nvizXEd2yXKsDUguUzg" id="com.zeligsoft.base.deployment.rsm.tooling.core.templates.ZeligsoftDeploymentModel" name="ZeligsoftDeployment Model" description="Create a ZeligsoftDeployment Model" modelName="ZeligsoftDeployment Model" icon="ZeligsoftDeploymentModel.gif" templateFile="ZeligsoftDeploymentModel.emx"/>
+    <templateCategory xmi:id="_M97nvyzXEd2yXKsDUguUzg" id="com.zeligsoft.base.deployment.rsm.tooling.core.category" name="ZeligsoftDeployment"/>
+  </wizardContribution>
+</profileGenModel:ProfileGenModel>

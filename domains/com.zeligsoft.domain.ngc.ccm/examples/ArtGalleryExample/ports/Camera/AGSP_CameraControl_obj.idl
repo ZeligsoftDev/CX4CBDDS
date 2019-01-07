@@ -1,0 +1,61 @@
+/// @defgroup AGSP_CameraControl_obj CameraControl_obj
+/// @{
+/// 
+/// @file AGSP_CameraControl_obj.idl
+/// @brief CameraControl_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__CAMERA__AGSP_CAMERACONTROL_OBJ_IDL
+#define CX_PORTS__CAMERA__AGSP_CAMERACONTROL_OBJ_IDL
+
+#include "AGSP_Common_defn.idl"
+#pragma ciao lem "AGSP_CameraControl_objE.idl"
+#pragma ami4ccm interface "AGSP::CameraControl_obj"
+#pragma ciao lem "AGSP_CameraControl_objAE.idl"
+#pragma ami4ccm idl "AGSP_CameraControl_objA.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    ///@interface CameraControl_obj 
+    interface CameraControl_obj {
+
+        /// @enum CameraBand
+        ///
+        enum CameraBand {
+            VISIBLE_BAND,
+            IR_BAND
+        };
+
+        /// @return
+        AGSP::ReturnStatus takePicture();
+
+        /// @param[in] distance
+        ///
+        /// @return
+        AGSP::ReturnStatus setFocus(
+            in double distance
+            );
+
+        /// @param[in] band
+        ///
+        /// @return
+        AGSP::ReturnStatus selectBand(
+            in CameraControl_obj::CameraBand band
+            );
+
+        /// @param[in] mag
+        ///
+        /// @return
+        AGSP::ReturnStatus setZoom(
+            in double mag
+            );
+    };
+
+};
+
+#endif // CX_PORTS__CAMERA__AGSP_CAMERACONTROL_OBJ_IDL
+
+/// @}
+

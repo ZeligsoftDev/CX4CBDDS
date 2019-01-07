@@ -1,0 +1,677 @@
+//specify your DSL grammar rules here ...
+//IMPORTANT: You should change the property 'overwrite.pluginresources=true' in the properties file to 'overwrite.pluginresources=false' AFTER first generation
+
+grammar com.zeligsoft.domain.omg.corba.dsl.IDL hidden(WS, ML_COMMENT)
+
+generate idl "http://www.zeligsoft.com/2008/idl"
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+Specification :
+	{Specification}
+	(imports += Import_decl )*
+	(definitions += Definition)+;
+
+Preproc :
+	Preproc_Include | Preproc_Ifdef | Preproc_Ifndef | Preproc_Undef | Preproc_If | Preproc_Else | Preproc_Error | Preproc_Define | Preproc_Endif | Preproc_Pragma | File_Marker | Excluded_File_Marker;
+	
+Preproc_Include :
+	("#include" "<" value=FileName ">") | ("#include" strValue=STRING);
+	
+FileName :
+	name+=ID ("." name+=ID)* ;
+  
+Preproc_Ifdef :
+	"#ifdef" value=ID;
+	
+Preproc_Ifndef :
+	"#ifndef" value=ID;
+	
+Preproc_Undef :
+	"#undef" value=ID;
+	
+Preproc_If :
+	("#if" | "#elif") (negation?="!")? "defined"? (value+=Preproc_If_Compare)+;
+	
+Preproc_If_Compare :
+	lhs=Preproc_If_Val ((op="==" | op="!=" | op=">" | op="<" | op=">=" | op="<=") (rhs=Preproc_If_Val))*;
+
+Preproc_If_Val :
+	value=ConstExp;	
+
+Preproc_Else : {Preproc_Else}
+	"#else";
+	
+Preproc_Error :
+	"#error" value=STRING;
+	
+Preproc_Define :
+	"#define " value=ID (exp=ConstExp)?;
+	
+Preproc_Endif : {Preproc_Endif}
+	"#endif";
+	
+Preproc_Pragma :
+	Preproc_Pragma_Prefix
+	| Preproc_Pragma_Ciao_Lem
+	| Preproc_Pragma_Ciao_Ami4ccm_Interface
+	| Preproc_Pragma_Ciao_Ami4ccm_Receptacle
+	| Preproc_Pragma_Ciao_Ami4ccm_Idl
+	| Preproc_Pragma_Ndds
+	| Preproc_Pragma_Component
+	| Preproc_Pragma_Home
+	| Preproc_Pragma_DDS4CCM_Impl
+	| Preproc_Pragma_Misc;
+
+Preproc_Pragma_Prefix :
+	"#pragma" "prefix" value=STRING;
+	
+Preproc_Pragma_Ciao_Lem :
+	"#pragma" "ciao" "lem" value=STRING;
+	
+Preproc_Pragma_Ciao_Ami4ccm_Interface :
+	"#pragma" "ciao" "ami4ccm interface" value=STRING;
+	
+Preproc_Pragma_Ciao_Ami4ccm_Receptacle :
+	"#pragma" "ciao" "ami4ccm receptacle" value=STRING;
+	
+Preproc_Pragma_Ciao_Ami4ccm_Idl :
+	"#pragma" "ciao" "ami4ccm idl" value=STRING;
+	
+Preproc_Pragma_Ndds :
+	"#pragma" "ndds" "typesupport" value=STRING;
+	
+Preproc_Pragma_Component :
+	"#pragma" "componentInterface" value=STRING;
+	
+Preproc_Pragma_Home :
+	"#pragma" "componentHome" value=STRING;
+
+Preproc_Pragma_DDS4CCM_Impl :
+	"#pragma" "dds4ccm" "impl" value=STRING;
+	
+Preproc_Pragma_Misc : {Preproc_Pragma_Misc}
+	"#pragma" ("typesupport" | STRING | ID)*;
+
+File_Marker :
+	"#file" file=STRING;
+	
+Excluded_File_Marker :
+	"#excluded_file" file=STRING;
+		
+Import_decl :
+	"import" imported_scope=STRING ";";
+
+Definition :
+	Interface_or_Forward_Decl ";"
+	| ComponentForwardDecl ";"
+	| ConstDecl ";"
+	| Module ";"
+	| ExceptDecl ";"
+	| StructType ";"
+	| TypeDecl ";"
+	| NativeType ";"
+	| Preproc
+	// IDL3
+	| Event ";"
+	| ComponentDecl ";"
+	| HomeDecl ";"
+	// DDS4CCM
+	| PortTypeDecl ";"
+	| Connector ";"
+	| TemplateModule ";"
+	| TemplateModuleInst ";"
+	| IDLComment
+	;
+	
+Module :
+	"module" name=ID (comments+=IDLComment)* "{" (definitions+=Definition)* "}";
+
+Interface_or_Forward_Decl :
+		Interface_decl
+	|	Forward_decl;
+	
+Interface_decl :
+	header=Interface_header "{" interfaceBody=InterfaceBody "}";
+	
+Forward_decl :
+	("abstract" | "local")? "interface" name=ID;
+	
+Interface_header :
+	(isAbstract?="abstract" | isLocal?="local")? "interface" name=ID (":" specializes+=ScopedName ("," (comments+=IDLComment)* specializes+=ScopedName)*)? (comments+=IDLComment)*;
+	
+InterfaceBody : {InterfaceBody}
+	(export+=Export)*
+	;
+	
+Export :
+		AttrDecl ";"
+	|	OpDecl ";"
+	|	TypeDecl ";"
+	|	ConstDecl ";"
+	|	ExceptDecl ";"
+	|   Preproc
+	|	IDLComment
+	;
+	
+AttrDecl :
+	AttrSpec |
+	ReadOnlyAttrSpec;
+	
+AttrSpec :
+	(comments+=IDLComment)* "attribute" type=ParamTypeSpec names+=ID ( ("getraises" getRaises=AttrRaisesExpr | "setraises" setRaises=AttrRaisesExpr) | ("," names+=ID)*)?  ( ("getraises" getRaises=AttrRaisesExpr | "setraises" setRaises=AttrRaisesExpr) | ("," names+=ID)*)? (comments+=IDLComment)*
+	;
+
+ReadOnlyAttrSpec :
+	(comments+=IDLComment)* "readonly" "attribute" type=ParamTypeSpec names+=ID ( ("raises" raises=AttrRaisesExpr ) | ("," names+=ID)*)?  ( ("raises" raises=AttrRaisesExpr ) | ("," names+=ID)*)? (comments+=IDLComment)*
+	;
+
+	
+AttrRaisesExpr :
+	exceptions=ExceptionList
+	;
+
+ExceptionList :
+	"(" exception+=ScopedName ("," exception+=ScopedName)* ")"
+	;
+	
+OpDecl :
+	(comments+=IDLComment)*
+	(isOneway?="oneway")?
+	type=OpTypeDecl
+	name=ID
+	params=ParameterDecls
+	("raises" raises=ExceptionList)?
+	(context=ContextExpr)?
+	;
+	
+OpTypeDecl :
+	ParamTypeSpec | "void"
+	;
+	
+ParameterDecls : {ParameterDecls}
+	"(" (comments+=IDLComment)* (decls+=ParamDcl ("," (comments+=IDLComment)* decls+=ParamDcl)*)? ")"
+	;
+	
+ParamDcl :
+	direction=ParamDirection type=ParamTypeSpec name=ID
+	;
+	
+enum ParamDirection :
+	In="in" | Out="out" | InOut="inout";
+	
+ContextExpr :
+	"context" "(" literal+=STRING ("," literal+=STRING)* ")"
+	;
+	
+ParamTypeSpec :
+	BaseTypeSpec
+	| StringType
+	| WideStringType
+	| ScopedName
+	;
+	
+ScopedName :
+	("::")? name+=ID ("::" name+=ID)*
+	;
+	
+BaseTypeSpec :
+	  FloatingPtType
+	| IntegerType
+	| CharType
+	| WideCharType
+	| BooleanType
+	| OctetType
+	| AnyType
+	| ObjectType
+	| ValueBaseType
+	;
+	
+FloatingPtType :
+	  FloatType
+	| DoubleType
+	| LongDoubleType
+	;
+	
+FloatType : {FloatType}
+	"float"
+	;
+
+DoubleType : {DoubleType}
+	"double"
+	;
+
+LongDoubleType : {LongDoubleType}
+	"long" "double"
+	;
+	
+IntegerType : 
+	  UnsignedInt
+	| SignedInt
+	;
+	
+SignedInt : 
+	  SignedShortInt
+	| SignedLongLongInt
+	| SignedLongInt
+	
+	;
+	
+SignedShortInt : {SignedShortInt}
+	"short";
+	
+SignedLongInt : {SignedLongInt}
+	"long";
+	
+SignedLongLongInt : {SignedLongLongInt}
+	"long" "long";
+	
+UnsignedInt :
+	  UnsignedShortInt
+	| UnsignedLongInt
+	| UnsignedLongLongInt
+	;
+	
+UnsignedShortInt : {UnsignedShortInt}
+	"unsigned" "short";
+	
+UnsignedLongInt : {UnsignedLongInt}
+	"unsigned" "long";
+	
+UnsignedLongLongInt : {UnsignedLongLongInt}
+	"unsigned" "long" "long";
+	
+CharType : {CharType}
+	"char";
+	
+WideCharType : {WideCharType}
+	"wchar";
+	
+BooleanType : {BooleanType}
+	"boolean";
+	
+OctetType : {OctetType}
+	"octet";
+	
+AnyType : {AnyType}
+	"any";
+	
+ObjectType : {ObjectType}
+	"Object";
+	
+ValueBaseType : {ValueBaseType}
+	"ValueBase";
+
+StringType : {StringType}
+	"string" ("<" size=PositiveIntConst ">")?
+	;
+	
+WideStringType : {WideStringType}
+	"wstring" ("<" size=PositiveIntConst ">")?
+	;
+	
+ExceptDecl :
+	"exception" name=ID (comments+=IDLComment)* "{" (comments+=IDLComment)* (members+=Member)* "}";
+
+Member :
+	type=TypeSpec decl=Declarator ";" (comment+=IDLComment)*;
+
+Declarator :
+	SimpleDeclarator | ArrayDeclarator;
+	
+SimpleDeclarator :
+	id=ID;
+	
+ComplexDeclarator :
+	ArrayDeclarator;
+	
+ArrayDeclarator :
+	id=ID("["size+=ConstExp"]")+;
+	
+StructType :
+	"struct" name=ID (comments+=IDLComment)* "{" (comments+=IDLComment)* (members+=Member)* "}";
+
+TypeDecl :
+	"typedef" 	TypeDeclarator 
+			|	StructType
+			|	UnionType
+			| 	EnumType
+			|	ConstrForwardDecl;
+			
+TypeDeclarator :
+	(comments+=IDLComment)* type=TypeSpec (declarators+=Declarator)+;
+
+TypeSpec :
+	SimpleTypeSpec | ConstrTypeSpec;
+	
+SimpleTypeSpec :
+	BaseTypeSpec | TemplateTypeSpec | ScopedName;
+	
+TemplateTypeSpec :
+	SequenceType | StringType | WideStringType | FixedPtType;
+	
+ConstrTypeSpec :
+	StructType | UnionType | EnumType;
+			
+UnionType :
+	"union" name=ID (comments+=IDLComment)* "switch" "(" switch=SwitchTypeSpec ")" "{" body=SwitchBody "}";
+
+SwitchTypeSpec :
+	IntegerType | CharType | BooleanType | EnumType | ScopedName;
+	
+SwitchBody :
+	(case+=Case)+;
+
+Case :
+	(comments+=IDLComment)* (label+=CaseLabel (comments+=IDLComment)*)+ (comments+=IDLComment)* spec=ElementSpec ";" (comments+=IDLComment)*;	
+
+CaseLabel :
+	isCase?="case" constExp=ConstExp ":" | isDefault?="default" ":";
+
+ElementSpec :
+	type=TypeSpec declarator=Declarator;
+	
+EnumType :
+	"enum" name=ID (comments+=IDLComment)* "{" (comments+=IDLComment)* literal+=ID ("," (comments+=IDLComment)* literal+=ID)* (comments+=IDLComment)* "}";
+	
+SequenceType :
+	"sequence" "<" type=SimpleTypeSpec ("," size=PositiveIntConst)? ">";
+	
+NativeType :
+	"native" name=ID;
+	
+FixedPtType :
+	"fixed""<"lower=PositiveIntConst","upper=PositiveIntConst">";
+	
+ConstrForwardDecl :
+	StructForwardDecl | UnionForwardDecl;
+	
+StructForwardDecl :
+	"struct" name=ID;
+
+UnionForwardDecl :
+	"union" name=ID;
+	
+PositiveIntConst :
+	exp=ConstExp;
+	
+ConstDecl :
+	"const" type=ConstType name=ID "=" value=ConstExp (comments+=IDLComment)*;
+	
+ConstType :
+	IntegerType | CharType | WideCharType | BooleanType | FloatingPtType | StringType | WideStringType | FixedPtConstType | ScopedName | OctetType;
+	
+FixedPtConstType : {FixedPtConstType}
+	"fixed";
+	
+ConstExp :
+	OrExpr;
+	
+OrExpr :
+	lhs=XOrExpr (op="|" rhs=OrExpr)*;
+
+XOrExpr :
+	lhs=AndExpr (op="^" rhs=XOrExpr)*;
+
+AndExpr :
+	lhs=ShiftExpr (op="&" rhs=AndExpr)*;
+
+ShiftExpr :
+	lhs=AddExpr ((op="<<"|op=">>") rhs=ShiftExpr)*;
+
+AddExpr :
+	lhs=MultExpr ((op="+" | op="-") rhs=AddExpr)*;
+	
+MultExpr :
+	lhs=UnaryExpr ((op="*" | op="/" | op="%" ) rhs=MultExpr)*;
+	
+UnaryExpr :
+	(op="-" | op="+" | op="~")? expr=PrimaryExpr;
+
+PrimaryExpr : 
+		ScopedName
+	|	Literal
+	|	"(" ConstExp ")"
+	;
+
+Literal :
+	value=HEX_LITERAL
+	|	value=STRING
+	|	value=CHARACTER_LITERAL
+	| value=FLOATING_PT_LITERAL
+	| 	value=INTEGER_LITERAL
+	|	value=BOOLEAN_LITERAL
+	;
+	
+/*
+ * IDL3 Definitions
+ */
+ComponentDecl :
+	(comments+=IDLComment)* "component" name=ID (":" base=ScopedName)? ("supports" supports+=ScopedName ("," supports+=ScopedName)*)?
+	"{" (export+=ComponentExport)* "}";
+	
+ComponentExport :
+	ProvidesDcl";" | UsesDcl";" | EmitDcl";" | PublishesDcl";" | ConsumesDcl";" | AttrDecl";" | PortDecl";" | Preproc | IDLComment;
+	
+ProvidesDcl :
+	"provides" type=ScopedName name=ID (comments+=IDLComment)*;
+	
+UsesDcl :
+	"uses" (isMultiple?="multiple")? type=ScopedName name=ID (comments+=IDLComment)*;
+	
+PublishesDcl :
+	"publishes" type=ScopedName name=ID (comments+=IDLComment)*;
+	
+EmitDcl :
+	"emits" type=ScopedName name=ID (comments+=IDLComment)*;
+
+ConsumesDcl :
+	"consumes" type=ScopedName name=ID (comments+=IDLComment)*;
+
+ComponentForwardDecl :
+	"component" name=ID;
+	
+HomeDecl :
+	"home" (comments+=IDLComment)* name=ID (":" base=ScopedName)? ("supports" supports+=ScopedName ("," supports+=ScopedName)*)? "manages" manages=ScopedName (primary_key=PrimaryKeySpec)? "{" (export+=HomeExport)* "}";
+
+PrimaryKeySpec :
+	"primarykey" key=ScopedName;
+	
+HomeExport :
+	Export | FactoryDcl ";" | FinderDcl ";";
+	
+FactoryDcl :
+	(comments+=IDLComment)* "factory" name=ID params=ParameterDecls ("raises" raises=ExceptionList)?;
+	
+FinderDcl :
+	(comments+=IDLComment)* "finder" name=ID params=ParameterDecls ("raises" raises=ExceptionList)?;
+	
+Event :
+		EventDcl
+	|	EventForwardDcl;
+
+EventDcl :
+	(isCustom?="custom" | isAbstract?="abstract")? "eventtype" name=ID (":" (isTruncatable?="truncatable")? base+=ScopedName ("," base+=ScopedName)*)?
+	("supports" supports+=ScopedName ("," supports+=ScopedName)*)? "{" (export+=Export | member+=StateMember)* "}";
+	
+StateMember :
+	(isPublic?="public" | "private") type=ParamTypeSpec names+=ID ";"
+	;
+	
+//EventAbsDcl :
+//	"abstract" "eventtype" name=ID (":" (isTruncatable?="truncatable")? base+=ScopedName ("," base+=ScopedName)*)?
+//	("supports" supports+=ScopedName ("," supports+=ScopedName)*)? "{" (export+=Export)* "}";
+
+EventForwardDcl :
+	(isAbstract?="abstract")? "eventtype" name=ID;
+	
+/*
+ * DDS4CCM Definitions
+ */
+PortTypeDecl :
+	"porttype" (comments+=IDLComment)* name=ID "{" (exports+=PortExport)+ "}";
+
+PortExport :
+	ProvidesDcl ";" | UsesDcl ";" | AttrDecl ";" | IDLComment;
+	
+PortDecl :
+	("port" | isMirror?="mirrorport") type=ScopedName name=ID (comments+=IDLComment)*;
+	
+Connector :
+	header=ConnectorHeader "{" (exports+=ConnectorExport)* "}";
+	
+ConnectorHeader :
+	"connector" name=ID  (":" base=ScopedName)?;
+	
+ConnectorExport :
+	ProvidesDcl ";" | UsesDcl ";" | PortDecl ";" | AttrDecl ";" | IDLComment;
+	
+TemplateModule :
+	"module" name=ID "<" parameters+=FormalParameter ("," parameters+=FormalParameter)* ">" "{" (definitions+=TemplateDefinition)* "}";
+	
+FormalParameter :
+	type=FormalParameterType name=ID; 
+	
+FormalParameterType :
+	TypenameParamType 
+	| InterfaceParamType
+	| ValuetypeParamType
+	| EventParamType
+	| StructParamType
+	| UnionParamType
+	| ExceptionParamType
+	| EnumParamType
+	| SequenceParamType
+	| ConstParamType
+	| SequenceType;
+	
+TypenameParamType : {TypenameParamType}
+	"typename";
+	
+InterfaceParamType : {InterfaceParamType}
+	"interface";
+	
+ValuetypeParamType : {ValuetypeParamType}
+	"valuetype";
+	
+EventParamType : {EventParamType}
+	"eventtype";
+	
+StructParamType : {StructParamType}
+	"struct";
+
+UnionParamType : {UnionParamType}
+	"union";
+	
+ExceptionParamType : {ExceptionParamType}
+	"exception";
+	
+EnumParamType : {EnumParamType}
+	"enum";
+	
+SequenceParamType : {SequenceParamType}
+	"sequence";
+	
+ConstParamType : 
+	"const" ConstType;
+
+TemplateDefinition :
+	TypeDecl ";"
+	| ConstDecl ";"
+	| ExceptDecl ";"
+	| Interface_decl ";" 
+	| FixedModule ";"
+	| StructType ";"
+	| NativeType ";"
+	| Event ";"
+	| ComponentDecl ";"
+	| HomeDecl ";"
+	| PortTypeDecl ";"
+	| Connector ";"
+	| TemplateModuleRef ";"
+	| IDLComment;
+	
+FixedModule :
+	"module" name=ID "{" (definitions+=FixedDefinition)* "}";
+	
+FixedDefinition :
+	TypeDecl ";"
+	| ConstDecl ";"
+	| ExceptDecl ";"
+	| Interface_decl ";"
+	| FixedModule ";"
+	| StructType ";"
+	| NativeType ";"
+	| Event ";"
+	| ComponentDecl ";"
+	| HomeDecl ";"
+	| PortTypeDecl ";"
+	| Connector ";"
+	| IDLComment;
+	
+TemplateModuleInst :
+	"module" type=ScopedName "<" parameter+=ActualParameter ("," parameter+=ActualParameter)* ">" name=ID (comments+=IDLComment)*;
+	
+ActualParameter :
+	ConstExp | TypeSpec;
+	
+TemplateModuleRef :
+	"alias" type=ScopedName "<" id+=ID ("," id+=ID )* ">" name=ID;
+	
+IDLComment :
+	body=SL_COMMENT;
+ 
+//Need to define some literals that are not used, otherwise parser will
+//freeze the application
+terminal UNUSED_LITERAL : "('?')";
+
+terminal INTEGER_LITERAL: ('0'..'9')+ ('l'|'L')?;
+
+terminal HEX_LITERAL : '0' ('x'|'X') ( '0'..'9' | 'a'..'f' | 'A'..'F' )+ ('l'|'L')? ;
+
+terminal FLOATING_PT_LITERAL
+	:	('0'..'9')+ '.' ('0'..'9')* (('e'|'E') ('+'|'-')? ('0'..'9')+)? ('f'|'F'|'d'|'D')?
+	|	'.' ('0'..'9')+ (('e'|'E') ('+'|'-')? ('0'..'9')+)? ('f'|'F'|'d'|'D')?
+	|	('0'..'9')+ (('e'|'E') ('+'|'-')? ('0'..'9')+) ('f'|'F'|'d'|'D')?
+	|	('0'..'9')+ (('e'|'E') ('+'|'-')? ('0'..'9')+)? ('f'|'F'|'d'|'D')
+	;
+
+//terminal EXPONENT : "" ;
+	
+terminal CHARACTER_LITERAL
+	:	'\'' ( ESCAPE_SEQUENCE | !('\''|'\\') ) '\''
+	;
+	
+terminal BOOLEAN_LITERAL :
+	'TRUE' |'FALSE'
+	;
+	
+terminal ESCAPE_SEQUENCE :	
+	"'\\' ('b'|'t'|'n'|'f'|'r'|'v'|'a'|'?'|'\"'|'\''|'\\') | RULE_UNICODE_ESCAPE | RULE_OCTAL_ESCAPE | RULE_HEX_ESCAPE"
+	;
+	
+terminal HEX_ESCAPE : "'\\' ('x'|'X') ( '0'..'9' | 'a'..'f' | 'A'..'F' )+ ('l'|'L')?" ;
+	
+terminal OCTAL_ESCAPE
+	:	"'\\' ('0'..'3') ('0'..'7') ('0'..'7')
+	|	'\\' ('0'..'7') ('0'..'7')
+	|	'\\' ('0'..'7')"
+	;
+	
+terminal UNICODE_ESCAPE
+	:	"'\\' 'u' ( '0'..'9' | 'a'..'f' | 'A'..'F' ) ( '0'..'9' | 'a'..'f' | 'A'..'F' ) ( '0'..'9' | 'a'..'f' | 'A'..'F' ) ( '0'..'9' | 'a'..'f' | 'A'..'F' )"
+	;
+	
+terminal ID  		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+//terminal INT returns ecore::EInt: ('0'..'9')+;
+terminal STRING	: 
+			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
+			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|"'") )* "'"
+		; 
+		
+terminal ML_COMMENT	: '/*' -> '*/';
+terminal SL_COMMENT 	: '//' !('\n'|'\r')* ('\r'? '\n')?;
+
+terminal WS			: (' '|'\t'|'\r'|'\n')+;
+
+terminal ANY_OTHER: .;

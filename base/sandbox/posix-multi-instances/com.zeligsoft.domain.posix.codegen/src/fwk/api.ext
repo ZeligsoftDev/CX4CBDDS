@@ -1,0 +1,46 @@
+import langc;
+import ZMLMM::ZML_Deployments;
+
+extension langc::element;
+extension langc::expr;
+extension langc::stmt;
+extension langc::type;
+
+extension template::name;
+
+create ElementList getFrameworkApiFile(Deployment d) :
+	setName(apiFileName())
+	-> addElement(genBroadCastVar())
+	-> addElement(genEndVar())
+	-> addElement(genContextIteratorFunc())
+	-> addElement(genContextNextFunc())
+;
+
+
+
+VariableDeclaration genBroadCastVar() :
+	let v = variable(void().constPtr().const(), 'zcx_broadcast') :
+	v.setLinkage(extern())
+	-> v
+;
+
+VariableDeclaration genEndVar() :
+	let v = variable(void().constPtr().const(), 'zcx_end') :
+	v.setLinkage(extern())
+	-> v
+;
+
+Function genContextIteratorFunc() :
+	let f = function(void().const().ptr(), 'zcx_context_iterator') :
+	    f.setLinkage( extern() )
+     -> f.addParameter(void().const().ptr(), ctxParamName())
+	 -> f.addStatement(returnStmt(ctxParamName().access()))
+	 -> f
+;
+
+cached Function genContextNextFunc() :
+    let f = function(void().const().ptr(), 'zcx_next_context') :
+        f.setLinkage( extern() )
+     -> f.addParameter(void().const().ptr(), 'prev')
+	 -> f
+;

@@ -1,0 +1,257 @@
+«REM»
+
+Copyright 2018 ADLINK Technology Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+«IMPORT ZML»
+
+«EXTENSION extensions::FileNames»
+«EXTENSION extensions::DeploymentUtilsFuncs»
+
+
+«DEFINE configuratorBaseFunctionDefs FOR Property»
+/***********************************
+ *								   *
+ * Configurator struct + typedefs  *
+ *								   *
+ ***********************************/
+struct zce_struct_«name»Configurator;
+typedef struct zce_struct_«name»Configurator* zce«name»Configurator;
+
+/*******************************
+ *                             *
+ * Configurator base functions *
+ *                             *
+ *******************************/
+/**
+ * zce«name»Configurator_construct: «name»'s configurator constructor
+ * Following the constructor/destructor pattern, every struct has its own matching pair of construct/destruct functions
+ * @param self The zce«name»Configurator struct to which this function applies to.
+ * @param container The Container struct for the configurator.
+ */
+void zce«name»Configurator_construct(zce«name»Configurator self, «getComponentContainerStructName(this.type)» container ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Configurator_destruct: «name»'s configurator destructor
+ * Following the constructor/destructor pattern, every struct has its own matching pair of construct/destruct functions
+ * @param self The zce«name»Configurator struct to which this function applies to.
+ */
+void zce«name»Configurator_destruct(zce«name»Configurator self ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Configurator_allocate: «name»'s configurator allocator
+ * Allocate the memory for the struct
+ * @return The zce«name»Configurator struct.
+ */
+ zce«name»Configurator zce«name»Configurator_allocate(ZCE_EXC_ENV_SINGLE_ARG);
+
+/**
+ * zce«name»Configurator_start: «name»'s configurator start
+ * Placeholder function for the worker to perform any sort of action at component start time.
+ * @param self The zce«name»Configurator struct to which this function applies to.
+ */
+void zce«name»Configurator_start(zceBaseConfigurator self ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Configurator_stop: «name»'s configurator stop
+ * Placeholder function for the worker to perform any sort of action at component stop time.
+ * @param self The zce«name»Configurator struct to which this function applies to.
+ */
+void zce«name»Configurator_stop(zceBaseConfigurator self ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Configurator_release: «name»'s configurator release
+ * Placeholder function for the worker to perform any sort of action at component release time.
+ * @param self The zce«name»Configurator struct to which this function applies to.
+ */
+void zce«name»Configurator_release(zceBaseConfigurator self ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Configurator_receive_config: «name»'s configurator receive side config
+ * @param basePtr The zce«name»Configurator struct to which this function applies to.
+ */
+void zce«name»Configurator_receive_config(zceBaseConfigurator basePtr ZCE_EXC_ENV_ARG);
+
+/**
+ * zce«name»Configurator_send_config: «name»'s configurator config
+ * @param basePtr The zcec11Configurator struct to which this function applies to.
+ * @param handler The array of SendHandler for RequiresPort.
+ * @param containers The array of containers in the thread of the current container (for setting up direct function calls between the containers)
+ */
+void zce«name»Configurator_send_config(zceBaseConfigurator basePtr, zceSendHandler* handler, void** containers ZCE_EXC_ENV_ARG);
+«ENDDEFINE»
+
+«DEFINE configuratorBaseFuncImpls FOR Property»
+/********************************
+ *                              *
+ * Configurator base functions  *
+ *                              *
+ ********************************/
+
+void zce«name»Configurator_construct(zce«name»Configurator self, zce«this.type.name»Container container ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->container_ = container;
+	zce«this.type.name»Container_getWorker(self->container_ ZCE_EXC_ENV_PARAM);
+	self->send_config = zce«name»Configurator_send_config;
+	self->receive_config = zce«name»Configurator_receive_config;
+	self->start_ = zce«name»Configurator_start;
+	self->stop_ = zce«name»Configurator_stop;
+	self->release = zce«name»Configurator_release;
+}
+
+void zce«name»Configurator_destruct(zce«name»Configurator self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	self->container_ = NULL;
+	self->receive_config = NULL;
+	self->send_config = NULL;
+	self->start_ = NULL;
+	self->stop_ = NULL;
+	self->release = NULL;
+}
+
+ zce«name»Configurator zce«name»Configurator_allocate(ZCE_EXC_ENV_SINGLE_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	zce«name»Configurator self = ZCE_NEW(struct zce_struct_«name»Configurator);
+	return self;
+}
+
+void zce«name»Configurator_start(zceBaseConfigurator self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+}
+
+void zce«name»Configurator_stop(zceBaseConfigurator self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+}
+
+void zce«name»Configurator_release(zceBaseConfigurator self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+}
+
+void zce«name»Configurator_receive_config(zceBaseConfigurator basePtr ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	zce«name»Configurator self = (zce«name»Configurator)basePtr;
+	«FOREACH this.type.ownedElement.typeSelect(Port) AS p»
+		«FOREACH ((Port)p).getProvideds() AS provides»
+	zceBase_«provides.name» callbacktable_«provides.name» = 0;
+		«ENDFOREACH»
+	«ENDFOREACH»
+	/* number of connection for this port */
+	«FOREACH this.type.ownedElement.typeSelect(Port) AS p»
+		«FOREACH ((Port)p).getProvideds() AS provides»
+	zceProvidesPort_«provides.name»_setConnNumber(
+		(zceProvidesPort_«provides.name»)zce«this.type.name»Container_get«((Port)p).name»(self->container_), 1 );	
+		«ENDFOREACH»
+	«ENDFOREACH»
+	/*Set up callbacks for provides ports*/
+	«FOREACH this.type.ownedElement.typeSelect(Port) AS p»
+		«FOREACH ((Port)p).getProvideds() AS provides»
+	zceProvidesPort_«provides.name»_setCons( 
+		(zceProvidesPort_«provides.name»)zce«this.type.name»Container_get«((Port)p).name»(self->container_), 
+		zce«this.type.name»Container_getWorker(self->container_)
+	);
+	/*one table contains all function ptrs required for this interface*/
+	callbacktable_«provides.name» = ZCE_NEW(struct zce_struct_Base_«provides.name»);
+			«FOREACH provides.getOperations() AS op»
+	callbacktable_«provides.name»->«op.name» = zce«this.type.name»Worker_«provides.name»_«op.name»;
+			«ENDFOREACH»
+	zceProvidesPort_«provides.name»_setConsTable(
+		(zceProvidesPort_«provides.name»)zce«this.type.name»Container_get«((Port)p).name»(self->container_), 
+		callbacktable_«provides.name»
+	);
+		«ENDFOREACH»
+	«ENDFOREACH»
+	
+}
+
+void zce«name»Configurator_send_config(zceBaseConfigurator basePtr, zceSendHandler* handler, void** containers ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+
+	zce«name»Configurator self = (zce«name»Configurator)basePtr;
+	zceLinxSendData data = 0;
+	int i;
+
+	/* number of connection for this port */
+	«FOREACH this.type.ownedElement.typeSelect(Port) AS p»
+		«FOREACH ((Port)p).getRequireds() AS requires»
+	zceRequiresPort_«requires.name»_init(
+		(zceRequiresPort_«requires.name»)zce«this.type.name»Container_get«((Port)p).name»(self->container_), 1 );
+	zce«this.type.name»Worker_init(
+		zce«this.type.name»Container_getWorker(self->container_), «getComponentPortId(this.type, (Port)p)», 1 );
+		«ENDFOREACH»
+	«ENDFOREACH»
+	i = 0;
+	
+	«FOREACH this.owner.ownedElement.typeSelect(ZeligsoftDeployment::Allocation) AS deployed»
+		«FOREACH deployed.target.typeSelect(ZeligsoftDeployment::DeploymentPart) AS targetPart»
+		 	«IF isStereotypeAppliedOnPart(targetPart.type, "ZML::SwBus") != null»
+		 		«FOREACH deployed.source.typeSelect(ZeligsoftDeployment::DeploymentPart) AS sourcePart»
+		 			«IF getModelElementForConnector(sourcePart) != null»
+		 			«IF isDeploymentPartTypeNamed(targetPart, "LINX_SRIO")=="true"»
+		 			«FOREACH this.type.ownedElement.typeSelect(Port) AS p»
+		 				«FOREACH ((Port)p).getRequireds() AS requires»
+	/*Set up linx rpc for connection: «sourcePart.name»*/
+	data = zceLinxSendData_allocate();
+	zceLinxSendData_construct(data, eCONN_«sourcePart.name»_INT_ID, 0, ZCE_FALSE, "«getOtherComponentDeployedOnProecssName(this,(Connector)getModelElementForConnector((Property)sourcePart)).name»Fxn");
+	zceLinxSendHandler_init((zceLinxSendHandler)handler[e_«getOtherComponentDeployedOnProecssName(this,(Connector)getModelElementForConnector((Property)sourcePart)).name»_SENDHANDLER_Linx], (void*)data);
+	
+	zceRequiresPort_«requires.name»_setCommData(
+		(zceRequiresPort_«requires.name»)zce«this.type.name»Container_get«((Port)p).name»(self->container_),
+		i,
+		(void*)data
+	);
+	zceRequiresPort_«requires.name»_setHandler(
+		(zceRequiresPort_«requires.name»)zce«this.type.name»Container_get«((Port)p).name»(self->container_),
+		i++,
+		handler[e_«getOtherComponentDeployedOnProecssName(this,(Connector)getModelElementForConnector((Property)sourcePart)).name»_SENDHANDLER_Linx]
+	);
+	zce«this.type.name»Worker_set_RequiresPort_Ids(
+		zce«this.type.name»Container_getWorker(self->container_), «getComponentPortId(this.type, (Port)p)», 0, 0, ZCE_UNUSED);
+		 				«ENDFOREACH»
+		 			«ENDFOREACH»
+		 			«ENDIF»
+		 			
+				«IF isDeploymentPartTypeNamed(targetPart, "FUNCBus")=="true"»
+		 			«FOREACH this.type.ownedElement.typeSelect(Port) AS p»
+		 				«FOREACH ((Port)p).getRequireds() AS requires»
+	/*Set up direct function calls for connection: «sourcePart.name»*/
+	zce«this.type.name»Worker_set_«((Port)p).name»(zce«this.type.name»Container_getWorker(self->container_), zceProvidesPort_«requires.name»_getConsTable(zce«this.type.name»Container_getport1(((zce«this.type.name»Container)(containers[e_T1_COMPPART_c21])) ZCE_EXC_ENV_PARAM) ZCE_EXC_ENV_PARAM) ZCE_EXC_ENV_PARAM);
+	zce«this.type.name»Worker_set_«((Port)p).name»_struct(zce«this.type.name»Container_getWorker(self->container_), (zceBase_«requires.name»)zce«this.type.name»Container_getWorker((zce«this.type.name»Container)(containers[e_T1_COMPPART_c21]) ZCE_EXC_ENV_PARAM) ZCE_EXC_ENV_PARAM);
+	zce«this.type.name»Worker_set_RequiresPort_Ids(
+		zce«this.type.name»Container_getWorker(self->container_), eC1_USES_PORT_PORT2_INT_ID, 0, 0, eC2_PORT_PORT1_INT_ID);
+
+	/*Optimize the Ids for DFC when there is only one connection to broadcast to.*/
+	zce«this.type.name»Worker_set_requiresPort_Ids(
+		zce«this.type.name»Container_getWorker(self->container_), eC1_USES_PORT_PORT2_INT_ID, -1, 0, eC2_PORT_PORT1_INT_ID);
+		 				«ENDFOREACH»
+		 			«ENDFOREACH»
+		 			«ENDIF»
+		 			«ENDIF»
+		 		«ENDFOREACH»
+		 	«ENDIF»
+		«ENDFOREACH»
+	«ENDFOREACH»
+	
+}	
+«ENDDEFINE»

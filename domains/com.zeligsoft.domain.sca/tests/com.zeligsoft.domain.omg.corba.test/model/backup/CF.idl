@@ -1,0 +1,580 @@
+module CF {
+    exception InvalidObjectReference {
+        string msg;
+    };
+
+    interface Device: CF::Resource {
+        exception InvalidState {
+            string msg;
+        };
+        exception InvalidCapacity {
+            string msg;
+            CF::Properties capacities;
+        };
+        enum AdminType {
+            LOCKED,
+            SHUTTING_DOWN,
+            UNLOCKED
+        };
+        enum OperationalType {
+            ENABLED,
+            DISABLED
+        };
+        enum UsageType {
+            IDLE,
+            ACTIVE,
+            BUSY
+        };
+        readonly attribute CF::Device::UsageType usageState;
+        attribute CF::Device::AdminType adminState;
+        readonly attribute CF::Device::OperationalType operationalState;
+        readonly attribute string softwareProfile;
+        readonly attribute string label;
+        readonly attribute CF::AggregateDevice compositeDevice;
+        boolean allocateCapacity(
+            in CF::Properties capacities
+            )
+            raises (InvalidCapacity, InvalidState);
+        void deallocateCapacity(
+            in CF::Properties capacities
+            )
+            raises (InvalidCapacity, InvalidState);
+    };
+
+    interface File {
+        exception IOException {
+            CF::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception InvalidFilePointer {
+        };
+        readonly attribute string fileName;
+        readonly attribute unsigned long filePointer;
+        void read(
+            out CF::OctetSequence data,
+            in unsigned long length
+            )
+            raises (IOException);
+        void write(
+            in CF::OctetSequence data
+            )
+            raises (IOException);
+        unsigned long sizeOf()
+            raises (FileException);
+        void close()
+            raises (FileException);
+        void setFilePointer(
+            in unsigned long filePointer
+            )
+            raises (InvalidFilePointer, FileException);
+    };
+
+    interface Resource: CF::LifeCycle, CF::TestableObject, CF::PropertySet, CF::PortSupplier {
+        exception StartError {
+            CF::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception StopError {
+            CF::ErrorNumberType errorNumber;
+            string msg;
+        };
+        readonly attribute string identifier;
+        void start()
+            raises (StartError);
+        void stop()
+            raises (StopError);
+    };
+
+    interface Application: CF::Resource {
+        struct ComponentProcessIdType {
+            string componentId;
+            unsigned long processId;
+        };
+        typedef sequence <CF::Application::ComponentProcessIdType> ComponentProcessIdSequence;
+        struct ComponentElementType {
+            string componentId;
+            string elementId;
+        };
+        typedef sequence <CF::Application::ComponentElementType> ComponentElementSequence;
+        readonly attribute CF::Application::ComponentElementSequence componentNamingContexts;
+        readonly attribute CF::Application::ComponentProcessIdSequence componentProcessIds;
+        readonly attribute CF::DeviceAssignmentSequence componentDevices;
+        readonly attribute CF::Application::ComponentElementSequence componentImplementations;
+        readonly attribute string profile;
+        readonly attribute string name;
+    };
+
+    interface ApplicationFactory {
+        exception CreateApplicationRequestError {
+            CF::DeviceAssignmentSequence invalidAssignments;
+        };
+        exception CreateApplicationError {
+            CF::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception InvalidInitConfiguration {
+            CF::Properties invalidProperties;
+        };
+        readonly attribute string name;
+        readonly attribute string identifier;
+        readonly attribute string softwareProfile;
+        CF::Application create(
+            in string name,
+            in CF::Properties initConfiguration,
+            in CF::DeviceAssignmentSequence deviceAssignments
+            )
+            raises (CreateApplicationError, CreateApplicationRequestError, InvalidInitConfiguration);
+    };
+
+    interface DeviceManager: CF::PropertySet, CF::PortSupplier {
+        struct ServiceType {
+            Object serviceObject;
+            string serviceName;
+        };
+        typedef sequence <CF::DeviceManager::ServiceType> ServiceSequence;
+        readonly attribute string deviceConfigurationProfile;
+        readonly attribute CF::FileSystem fileSys;
+        readonly attribute string identifier;
+        readonly attribute string label;
+        readonly attribute CF::DeviceSequence registeredDevices;
+        readonly attribute CF::DeviceManager::ServiceSequence registeredServices;
+        void registerDevice(
+            in CF::Device registeringDevice
+            )
+            raises (InvalidObjectReference);
+        void unregisterDevice(
+            in CF::Device registeredDevice
+            )
+            raises (InvalidObjectReference);
+        void shutdown();
+        void registerService(
+            in Object registeringService,
+            in string name
+            )
+            raises (InvalidObjectReference);
+        void unregisterService(
+            in Object unregisteringService,
+            in string name
+            )
+            raises (InvalidObjectReference);
+        string getComponentImplementationId(
+            in string componentInstantiationId
+            );
+    };
+
+    struct DataType {
+        string id;
+        any value;
+    };
+
+    exception InvalidProfile {
+    };
+
+    typedef sequence <CF::DataType> Properties;
+
+    typedef sequence <octet> OctetSequence;
+
+    typedef sequence <string> StringSequence;
+
+    exception UnknownProperties {
+        CF::Properties invalidProperties;
+    };
+
+    struct DeviceAssignmentType {
+        string componentId;
+        string assignedDeviceId;
+    };
+
+    typedef sequence <CF::DeviceAssignmentType> DeviceAssignmentSequence;
+
+    enum ErrorNumberType {
+        CFEPERM,
+        CFNOTSET,
+        CFE2BIG,
+        CFEACCES,
+        CFEAGAIN,
+        CFEBADF,
+        CFEBADMSG,
+        CFEBUSY,
+        CFECANCELED,
+        CFECHILD,
+        CFEDEADLK,
+        CFEDOM,
+        CFEEXIST,
+        CFEFAULT,
+        CFEFBIG,
+        CFEINPROGRESS,
+        CFEINTR,
+        CFEINVAL,
+        CFEIO,
+        CFEISDIR,
+        CFEMFILE,
+        CFEMLINK,
+        CFEMSGSIZE,
+        CFENAMETOOLONG,
+        CFENFILE,
+        CFENODEV,
+        CFENOENT,
+        CFENOEXEC,
+        CFENOLCK,
+        CFENOMEM,
+        CFENOSPC,
+        CFENOSYS,
+        CFENOTDIR,
+        CFENOTEMPTY,
+        CFENOTSUP,
+        CFENOTTY,
+        CFENXIO,
+        CFEPIPE,
+        CFERANGE,
+        CFEROFS,
+        CFESPIPE,
+        CFESRCH,
+        CFETIMEDOUT,
+        CFEXDEV
+    };
+
+    exception InvalidFileName {
+        CF::ErrorNumberType errorNumber;
+        string msg;
+    };
+
+    exception FileException {
+        CF::ErrorNumberType errorNumber;
+        string msg;
+    };
+
+    typedef sequence <CF::Device> DeviceSequence;
+
+    interface AggregateDevice {
+        readonly attribute CF::DeviceSequence devices;
+        void addDevice(
+            in CF::Device associatedDevice
+            )
+            raises (InvalidObjectReference);
+        void removeDevice(
+            in CF::Device associatedDevice
+            )
+            raises (InvalidObjectReference);
+    };
+
+    interface FileSystem {
+        exception UnknownFileSystemProperties {
+            CF::Properties invalidProperties;
+        };
+        enum FileType {
+            PLAIN,
+            DIRECTORY,
+            FILE_SYSTEM
+        };
+        struct FileInformationType {
+            string name;
+            CF::FileSystem::FileType kind;
+            unsigned long long size;
+            CF::Properties fileProperties;
+        };
+        typedef sequence <CF::FileSystem::FileInformationType> FileInformationSequence;
+        const string SIZE = "SIZE";
+        const string AVAILABLE_SPACE = "AVAILABLE_SPACE";
+        const string CREATED_TIME_ID = "CREATE_TIME";
+        const string MODIFIED_TIME_ID = "MODIFIED_TIME";
+        const string LAST_ACCESS_TIME_ID = "LAST_ACCESS_TIME";
+        void remove(
+            in string fileName
+            )
+            raises (FileException, InvalidFileName);
+        void copy(
+            in string sourceFileName,
+            in string destinationFileName
+            )
+            raises (InvalidFileName, FileException);
+        void exists(
+            in string fileName
+            )
+            raises (InvalidFileName);
+        CF::FileSystem::FileInformationSequence list(
+            in string pattern
+            )
+            raises (FileException, InvalidFileName);
+        CF::File create(
+            in string fileName
+            )
+            raises (InvalidFileName, FileException);
+        CF::File open(
+            in string fileName,
+            in boolean read_Only
+            )
+            raises (InvalidFileName, FileException);
+        void mkdir(
+            in string directoryName
+            )
+            raises (FileException, InvalidFileName);
+        void rmdir(
+            in string directoryName
+            )
+            raises (InvalidFileName, FileException);
+        void query(
+            inout CF::Properties fileSystemProperties
+            )
+            raises (UnknownFileSystemProperties);
+    };
+
+    interface ResourceFactory {
+        exception InvalidResourceId {
+        };
+        exception ShutdownFailure {
+            string msg;
+        };
+        exception CreateResourceFailure {
+            CF::ErrorNumberType errorNumber;
+            string msg;
+        };
+        readonly attribute string identifier;
+        CF::Resource createResource(
+            in string resourceId,
+            in CF::Properties qualifiers
+            )
+            raises (CreateResourceFailure);
+        void releaseResource(
+            in string resourceId
+            )
+            raises (InvalidResourceId);
+        void shutdown()
+            raises (ShutdownFailure);
+    };
+
+    interface FileManager: CF::FileSystem {
+        struct MountType {
+            string mountPoint;
+            CF::FileSystem fs;
+        };
+        typedef sequence <CF::FileManager::MountType> MountSequence;
+        exception NonExistentMount {
+        };
+        exception InvalidFileSystem {
+        };
+        exception MountPointAlreadyExists {
+        };
+        void mount(
+            in string mountPoint,
+            in CF::FileSystem file_System
+            )
+            raises (InvalidFileName, InvalidFileSystem, MountPointAlreadyExists);
+        void unmount(
+            in string mountPoint
+            )
+            raises (NonExistentMount);
+        CF::FileManager::MountSequence getMounts();
+    };
+
+    interface Port {
+        exception InvalidPort {
+            unsigned short errorCode;
+            string msg;
+        };
+        exception OccupiedPort {
+        };
+        void connectPort(
+            in Object connection,
+            in string connectionId
+            )
+            raises (InvalidPort, OccupiedPort);
+        void disconnectPort(
+            in string connectionId
+            )
+            raises (InvalidPort);
+    };
+
+    interface LifeCycle {
+        exception InitializeError {
+            CF::StringSequence errorMessages;
+        };
+        exception ReleaseError {
+            CF::StringSequence errorMessages;
+        };
+        void initialize()
+            raises (InitializeError);
+        void releaseObject()
+            raises (ReleaseError);
+    };
+
+    interface TestableObject {
+        exception UnknownTest {
+        };
+        void runTest(
+            in unsigned long testid,
+            inout CF::Properties testValues
+            )
+            raises (UnknownTest, UnknownProperties);
+    };
+
+    interface PropertySet {
+        exception InvalidConfiguration {
+            string msg;
+            CF::Properties invalidProperties;
+        };
+        exception PartialConfiguration {
+            CF::Properties invalidProperties;
+        };
+        void configure(
+            in CF::Properties configProperties
+            )
+            raises (InvalidConfiguration, PartialConfiguration);
+        void query(
+            inout CF::Properties configProperties
+            )
+            raises (UnknownProperties);
+    };
+
+    interface DomainManager: CF::PropertySet {
+        exception ApplicationInstallationError {
+            CF::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception ApplicationAlreadyInstalled {
+        };
+        typedef sequence <CF::Application> ApplicationSequence;
+        typedef sequence <CF::ApplicationFactory> ApplicationFactorySequence;
+        typedef sequence <CF::DeviceManager> DeviceManagerSequence;
+        exception InvalidIdentifier {
+        };
+        exception DeviceManagerNotRegistered {
+        };
+        exception ApplicationUninstallationError {
+            CF::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception RegisterError {
+            CF::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception UnregisterError {
+            CF::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception NotConnected {
+        };
+        exception InvalidEventChannelName {
+        };
+        readonly attribute string domainManagerProfile;
+        readonly attribute CF::DomainManager::DeviceManagerSequence deviceManagers;
+        readonly attribute CF::DomainManager::ApplicationSequence applications;
+        readonly attribute CF::DomainManager::ApplicationFactorySequence applicationFactories;
+        readonly attribute CF::FileManager fileMgr;
+        readonly attribute string identifier;
+        void registerDevice(
+            in CF::Device registeringDevice,
+            in CF::DeviceManager registeredDeviceMgr
+            )
+            raises (InvalidObjectReference, InvalidProfile, DeviceManagerNotRegistered, RegisterError);
+        void registerDeviceManager(
+            in CF::DeviceManager deviceMgr
+            )
+            raises (InvalidObjectReference, InvalidProfile, RegisterError);
+        void unregisterDeviceManager(
+            in CF::DeviceManager deviceMgr
+            )
+            raises (InvalidObjectReference, UnregisterError);
+        void unregisterDevice(
+            in CF::Device unregisteringDevice
+            )
+            raises (InvalidObjectReference, UnregisterError);
+        void installApplication(
+            in string profileFileName
+            )
+            raises (InvalidProfile, InvalidFileName, ApplicationInstallationError, ApplicationAlreadyInstalled);
+        void uninstallApplication(
+            in string applicationId
+            )
+            raises (InvalidIdentifier, ApplicationUninstallationError);
+        void registerService(
+            in Object registeringService,
+            in CF::DeviceManager registeredDeviceMgr,
+            in string name
+            )
+            raises (InvalidObjectReference, DeviceManagerNotRegistered, RegisterError);
+        void unregisterService(
+            in Object unregisteringService,
+            in string name
+            )
+            raises (InvalidObjectReference, UnregisterError);
+        void registerWithEventChannel(
+            in Object registeringObject,
+            in string registeringId,
+            in string eventChannelName
+            )
+            raises (InvalidObjectReference, InvalidEventChannelName, NotConnected);
+        void unregisterFromEventChannel(
+            in string unregisteringId,
+            in string eventChannelName
+            )
+            raises (InvalidEventChannelName, NotConnected);
+    };
+
+    interface PortSupplier {
+        exception UnknownPort {
+        };
+        Object getPort(
+            in string name
+            )
+            raises (UnknownPort);
+    };
+
+    interface LoadableDevice: CF::Device {
+        enum LoadType {
+            KERNEL_MODULE,
+            DRIVER,
+            SHARED_LIBRARY,
+            EXECUTABLE
+        };
+        exception InvalidLoadKind {
+        };
+        exception LoadFail {
+            CF::ErrorNumberType errorNumber;
+            string msg;
+        };
+        void load(
+            in CF::FileSystem fs,
+            in string fileName,
+            in CF::LoadableDevice::LoadType loadKind
+            )
+            raises (InvalidState, InvalidLoadKind, InvalidFileName, LoadFail);
+        void unload(
+            in string fileName
+            )
+            raises (InvalidState, InvalidFileName);
+    };
+
+    interface ExecutableDevice: CF::LoadableDevice {
+        exception InvalidProcess {
+            CF::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception InvalidFunction {
+        };
+        typedef long ProcessID_Type;
+        exception InvalidParameters {
+            CF::Properties invalidParms;
+        };
+        exception InvalidOptions {
+            CF::Properties invalidOpts;
+        };
+        exception ExecuteFail {
+            CF::ErrorNumberType errorNumber;
+            string msg;
+        };
+        const string STACK_SIZE_ID = "STACK_SIZE";
+        const string PRIORITY_ID = "PRIORITY";
+        void terminate(
+            in CF::ExecutableDevice::ProcessID_Type processId
+            )
+            raises (InvalidProcess, InvalidState);
+        CF::ExecutableDevice::ProcessID_Type execute(
+            in string name,
+            in CF::Properties options,
+            in CF::Properties parameters
+            )
+            raises (InvalidState, InvalidFunction, InvalidParameters, InvalidOptions, InvalidFileName, ExecuteFail);
+    };
+
+};

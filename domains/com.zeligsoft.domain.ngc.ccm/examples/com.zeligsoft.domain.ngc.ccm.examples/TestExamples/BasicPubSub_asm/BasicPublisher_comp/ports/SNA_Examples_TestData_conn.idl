@@ -1,0 +1,14 @@
+#ifndef CX_BASICPUBLISHER_COMP__PORTS__SNA_EXAMPLES_TESTDATA_CONN_IDL
+#define CX_BASICPUBLISHER_COMP__PORTS__SNA_EXAMPLES_TESTDATA_CONN_IDL
+
+#include <Components.idl>
+#include <ccm_dds.idl>
+#include "SNA_Examples_TestData_msg.idl"
+#pragma ciao lem "SNA_Examples_TestData_connE.idl"
+
+module SNA_Examples {
+    typedef sequence <TestData_msg> TestData_msgSeq;
+    module CCM_DDS::Typed <TestData_msg, TestData_msgSeq> TestData_conn; 
+};
+
+#endif

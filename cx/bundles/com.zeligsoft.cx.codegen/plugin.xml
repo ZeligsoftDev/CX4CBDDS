@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+    <extension-point id="codestreamobserver" name="Code Stream Listener" schema="schema/codestreamobserver.exsd"/>
+    <extension-point id="eobjectlocator" name="EObject Location Service" schema="schema/eobjectlocator.exsd"/>
+    <extension-point id="editoropener" name="Editor Opening Service" schema="schema/editoropener.exsd"/>
+    <extension-point id="workerfunctioncontributor" name="Worker Function Contributor" schema="schema/workerfunctioncontributor.exsd"/>
+    <extension-point id="codeeditorpostprocessor" name="Code Editor Postprocessor" schema="schema/codeeditorpostprocessor.exsd"/>
+
+    <extension point="org.eclipse.core.filesystem.filesystems">
+        <filesystem
+            scheme="cxgen">
+            <run class="com.zeligsoft.cx.codegen.io.CXGenFileSystem"/>
+        </filesystem>
+    </extension>
+
+</plugin>

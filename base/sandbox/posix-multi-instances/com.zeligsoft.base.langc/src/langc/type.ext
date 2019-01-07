@@ -1,0 +1,127 @@
+
+// I haven't been able to access enums properly so this sample has an ugly work around, instead
+// of CVQualifier::CONST it uses:
+//      (CVQualifier)CVQualifier.getStaticProperty('const').get()
+
+import langc;
+
+extension langc::expr;
+
+create BuiltInType int8()   : setType( (PrimitiveType)PrimitiveType.getStaticProperty('int8').get() );
+create BuiltInType int16()  : setType( (PrimitiveType)PrimitiveType.getStaticProperty('int16').get() );
+create BuiltInType int32()  : setType( (PrimitiveType)PrimitiveType.getStaticProperty('int32').get() );
+create BuiltInType uint8()  : setType( (PrimitiveType)PrimitiveType.getStaticProperty('uint8').get() );
+create BuiltInType uint16() : setType( (PrimitiveType)PrimitiveType.getStaticProperty('uint16').get() );
+create BuiltInType uint32() : setType( (PrimitiveType)PrimitiveType.getStaticProperty('uint32').get() );
+create BuiltInType char()   : setType( (PrimitiveType)PrimitiveType.getStaticProperty('char').get() );
+create BuiltInType float()  : setType( (PrimitiveType)PrimitiveType.getStaticProperty('float').get() );
+create BuiltInType double() : setType( (PrimitiveType)PrimitiveType.getStaticProperty('double').get() );
+create BuiltInType void()   : setType( (PrimitiveType)PrimitiveType.getStaticProperty('void').get() );
+
+ElementReference type( Element element ) :
+    let r = new ElementReference :
+        r.setElement( element )
+     -> r
+;
+
+/* TODO: This is needed to create a variable from a name.  The model should be changed to
+ *       allow an unresolved name to be used instead of requiring the actual type. */
+NamedReference type( Name name ) :
+    let n = new NamedReference :
+        n.setName( name )
+     -> n
+;
+
+ElementReference const( Element element ) :
+    element.type().const()
+;
+
+ElementReference ptr( Element element ) :
+    element.type().ptr()
+;
+
+ElementReference constPtr( Element element ) :
+    element.type().constPtr()
+;
+
+ElementReference array( Element element ) :
+    element.array( unboundedArraySize() )
+;
+
+ElementReference array( Element element, Expression bounds ) :
+    element.type().array( bounds )
+;
+
+ElementReference const( ElementReference ref ) :
+    ref.setCvQualifier( (CVQualifier)CVQualifier.getStaticProperty('const').get() )
+ -> ref
+;
+
+ElementReference mutable( ElementReference ref ) :
+    ref.setCvQualifier( (CVQualifier)CVQualifier.getStaticProperty('unqualified').get() )
+ -> ref
+;
+
+ElementReference volatile( ElementReference ref ) :
+    ref.setCvQualifier( (CVQualifier)CVQualifier.getStaticProperty('volatile').get() )
+ -> ref
+;
+
+ElementReference ptr( ElementReference ref ) :
+    ref.pointerSpec.add( (Pointer)Pointer.getStaticProperty('pointer').get() )
+ -> ref
+;
+
+ElementReference constPtr( ElementReference ref ) :
+    ref.pointerSpec.add( (Pointer)Pointer.getStaticProperty('const_pointer').get() )
+ -> ref
+;
+
+ElementReference volatilePtr( ElementReference ref ) :
+    ref.pointerSpec.add( (Pointer)Pointer.getStaticProperty('volatile_pointer').get() )
+ -> ref
+;
+
+ElementReference constVolatilePtr( ElementReference ref ) :
+    ref.pointerSpec.add( (Pointer)Pointer.getStaticProperty('const_volatile_pointer').get() )
+ -> ref
+;
+
+ElementReference array( ElementReference ref ) :
+    ref.array( unboundedArraySize() )
+;
+
+ElementReference array( ElementReference ref, Expression bounds ) :
+    ref.arrayBounds == null
+        ? ref.setArrayBounds( { bounds } )
+        : ref.arrayBounds.add( bounds )
+ -> ref
+;
+
+ElementReference const( Name name ) :
+    name.type().type.const()
+;
+
+ElementReference mutable( Name name ) :
+    name.type().type.mutable()
+;
+
+ElementReference volatile( Name name ) :
+    name.type().type.volatile()
+;
+
+ElementReference ptr( Name name ) :
+    name.type().type.ptr()
+;
+
+ElementReference constPtr( Name name ) :
+    name.type().type.constPtr()
+;
+
+ElementReference array( Name name ) :
+    name.array( unboundedArraySize() )
+;
+
+ElementReference array( Name name, Expression bounds ) :
+    name.type().type.array( bounds )
+;

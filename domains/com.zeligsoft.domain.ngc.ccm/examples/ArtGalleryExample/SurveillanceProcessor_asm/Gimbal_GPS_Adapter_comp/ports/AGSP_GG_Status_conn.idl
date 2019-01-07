@@ -1,0 +1,28 @@
+/// @defgroup AGSP_GG_Status_conn GG_Status_conn
+/// @{
+/// 
+/// @file AGSP_GG_Status_conn.idl
+/// @brief GG_Status_conn connector definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__GIMBAL_GPS_ADAPTER_COMP__PORTS__AGSP_GG_STATUS_CONN_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__GIMBAL_GPS_ADAPTER_COMP__PORTS__AGSP_GG_STATUS_CONN_IDL
+
+#include <Components.idl>
+#include <ccm_dds.idl>
+#include "AGSP_GG_Status_msg.idl"
+#pragma ciao lem "AGSP_GG_Status_connE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef GG_Status_msgSeq
+    typedef sequence <GG_Status_msg> GG_Status_msgSeq;
+    module CCM_DDS::Typed <GG_Status_msg, GG_Status_msgSeq> GG_Status_conn; 
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__GIMBAL_GPS_ADAPTER_COMP__PORTS__AGSP_GG_STATUS_CONN_IDL
+
+/// @}
+

@@ -1,0 +1,120 @@
+«REM»
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+«ENDREM»
+
+«IMPORT uml»
+
+«EXTENSION extensions::StringUtils»
+
+
+«DEFINE requiresPortFuntionDefs FOR Type»
+/*******************************************************************
+ *
+ *
+ *  User Worker uses port getter setter functions
+ *
+ *
+ *******************************************************************/
+«FOREACH this.ownedElement AS port»
+   «FOREACH ((Port)port).getRequireds() AS required»
+/**
+ * zce«name»Worker_get_«((Port)port).name»: worker uses port getter function.
+ * @param self The zce«name»Worker struct to which this function applies.
+ * @return Reference to «required.name» uses port struct.
+ */
+zceBase_«required.name» zce«name»Worker_get_«((Port)port).name»(zce«name»Worker self ZCE_EXC_ENV_ARG);
+  
+/**
+ * zce«name»Worker_set_«((Port)port).name»: worker uses port setter function.
+ * @param self The zce«name»Worker struct to which this function applies.
+ * @param dataOut Reference to the new uses port struct.
+ */
+void zce«name»Worker_set_«((Port)port).name»(zce«name»Worker self, zceBase_«required.name» «((Port)port).name» ZCE_EXC_ENV_ARG);
+  
+/**
+ * zce«name»Worker_get_«((Port)port).name»_struct: worker uses port getter function.
+ * @param self The zce«name»Worker struct to which this function applies.
+ * @return Reference to the dataOut uses port struct.
+ */
+zceBase_«required.name» zce«name»Worker_get_«((Port)port).name»_struct(zce«name»Worker self ZCE_EXC_ENV_ARG);
+  
+/**
+ * zce«name»Worker_set_«((Port)port).name»_struct: workers uses port setter function
+ * @param self The zce«name»Worker struct to which this function applies.
+ * @param Reference to the new uses port.
+ */
+void zce«name»Worker_set_«((Port)port).name»_struct(zce«name»Worker self, zceBase_«required.name» «((Port)port).name» ZCE_EXC_ENV_SINGLE_ARG);
+
+/**
+ * zce«name»Worker_set_RequiresPort_Ids: worker uses port Id setter function
+ * @param self The zce«name»Worker struct to which this function applies to.
+ * @param portIndex represent which uses port being set.
+ * @param connIndex represent which connection uses port has.
+ * @param iConnId represent the real connId for the uses port.
+ * @param iPortId represent the real portId for the uses port.
+ */
+void zce«name»Worker_set_RequiresPort_Ids(zce«name»Worker self, int portIndex, int connIndex, int iConnId, int iPortId ZCE_EXC_ENV_ARG);  
+  «ENDFOREACH»	
+«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE requiresPortFuntionImpls FOR Type»
+«FOREACH this.ownedElement AS port»
+   «FOREACH ((Port)port).getRequireds() AS required»
+/************************************************
+ *                                              *
+ * Worker uses port getter and setter functions *
+ *                                              *
+ ************************************************/
+zceBase_«required.name» zce«name»Worker_get_«((Port)port).name»(zce«name»Worker self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	
+	return self->«((Port)port).name»_;
+}
+
+void zce«name»Worker_set_«((Port)port).name»(zce«name»Worker self, zceBase_«required.name» «((Port)port).name» ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	
+	self->«((Port)port).name»_ = «((Port)port).name»;
+}
+
+zceBase_«required.name» zce«name»Worker_get_«((Port)port).name»_struct(zce«name»Worker self ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION(NULL)
+	
+	return self->«((Port)port).name»_struct_;
+}
+
+void zce«name»Worker_set_«((Port)port).name»_struct(zce«name»Worker self, zceBase_«required.name» «((Port)port).name» ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	
+	self->«((Port)port).name»_struct_ = «((Port)port).name»;
+}
+
+void zce«name»Worker_set_RequiresPort_Ids(zce«name»Worker self, int portIndex, int connIndex, int iConnId, int iPortId ZCE_EXC_ENV_ARG)
+{
+	ZCE_ASSERT_EXCEPTION_VOID
+	
+	self->port_id_table[portIndex][connIndex+1][0] = iPortId;
+	self->port_id_table[portIndex][connIndex+1][1] = iConnId;
+}
+   «ENDFOREACH»
+«ENDFOREACH»
+«ENDDEFINE»
+

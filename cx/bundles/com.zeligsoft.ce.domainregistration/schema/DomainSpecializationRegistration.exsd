@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="Domain Specialization Registration">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="Domain Specialization Registration" id="domainregistration" name="domainregistration"/>
+      </appInfo>
+      <documentation>
+         Extension point that enables the registration of a domain specialization
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <documentation>
+            Extension point that enables the registration of a domain specialization
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="profile" minOccurs="0" maxOccurs="unbounded"/>
+            <element ref="model-library" minOccurs="0" maxOccurs="unbounded"/>
+            <element ref="analysis" minOccurs="0" maxOccurs="unbounded"/>
+            <element ref="transformation" minOccurs="0" maxOccurs="unbounded"/>
+            <element ref="description"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  The id of the domain specialization
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  The name of the domain specialization
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="profile">
+      <annotation>
+         <documentation>
+            IBM UML profile (&lt;a href=&quot;http://127.0.0.1:49703/help/index.jsp?topic=/com.ibm.xtools.uml.doc.isv/reference/extension-points/com_ibm_xtools_uml_msl_UMLProfiles.html&quot;&gt;com.ibm.xtools.uml.msl.UMLProfiles&lt;/a&gt;)
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The name of the IBM UML profile (&lt;a href=&quot;http://127.0.0.1:49703/help/index.jsp?topic=/com.ibm.xtools.uml.doc.isv/reference/extension-points/com_ibm_xtools_uml_msl_UMLProfiles.html&quot;&gt;com.ibm.xtools.uml.msl.UMLProfiles&lt;/a&gt;)
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="model-library">
+      <annotation>
+         <documentation>
+            Model library (&lt;a href=&quot;http://127.0.0.1:49703/help/index.jsp?topic=/com.ibm.xtools.uml.doc.isv/reference/extension-points/com_ibm_xtools_uml_msl_UMLProfiles.html&quot;&gt;com.ibm.xtools.uml.msl.UMLLibraries&lt;/a&gt;)
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  The name of the model library (&lt;a href=&quot;http://127.0.0.1:49703/help/index.jsp?topic=/com.ibm.xtools.uml.doc.isv/reference/extension-points/com_ibm_xtools_uml_msl_UMLProfiles.html&quot;&gt;com.ibm.xtools.uml.msl.UMLLibraries&lt;/a&gt;)
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="analysis">
+      <annotation>
+         <documentation>
+            Analysis rule set
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  The name of the analysis rule set
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  The id of the analysis rule set
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="transformation">
+      <annotation>
+         <documentation>
+            Code generation template
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  The name of the transformation template
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  The id of the transformation template
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="description">
+      <annotation>
+         <documentation>
+            The description of the domain specialization
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="description" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         Example below:
+  &lt;extension
+         id=&quot;OSEck_domain_specialization&quot;
+         name=&quot;OSEck_domain_specialization&quot;
+         point=&quot;com.zeligsoft.ce.domainregistration&quot;&gt;
+      &lt;version
+            version=&quot;1.0&quot;&gt;
+      &lt;/version&gt;      
+      &lt;profile
+            name=&quot;com.zeligsoft.ce.profile.OSEck&quot;&gt;
+      &lt;/profile&gt;
+      &lt;transformation
+            id=&quot;com.zeligsoft.ce.codegeneration.ui.EObjectTransformationArtifacts&quot;
+            name=&quot;com.zeligsoft.ce.codegeneration.ui.EObjectTransformationArtifacts&quot;&gt;
+      &lt;/transformation&gt;
+      &lt;model-library
+            name=&quot;com.zeligsoft.ce.library.OSEck&quot;&gt;
+      &lt;/model-library&gt;      
+   &lt;/extension&gt;
+
+Another example:
+
+  &lt;extension
+         id=&quot;TI_himalaya_domain_specialization&quot;
+         name=&quot;TI_himalaya_domain_specialization&quot;
+         point=&quot;com.zeligsoft.ce.domainregistration&quot;&gt;
+      &lt;version
+            version=&quot;1.4&quot;&gt;
+      &lt;/version&gt;
+      &lt;profile
+            name=&quot;com.zeligsoft.ce.profile.TI_himalaya&quot;&gt;
+      &lt;/profile&gt;
+      &lt;model-library
+            name=&quot;com.zeligsoft.ce.library.TI_himalaya&quot;&gt;
+      &lt;/model-library&gt;
+      &lt;analysis
+            id=&quot;com.zeligsoft.ce.analysis.components&quot;
+            name=&quot;com.zeligsoft.ce.analysis.components&quot;&gt;
+         &lt;version
+               maxValue=&quot;1.9&quot;
+               minValue=&quot;1.0&quot;
+               version=&quot;1.4&quot;&gt;
+         &lt;/version&gt;
+      &lt;/analysis&gt;
+      &lt;analysis
+            name=&quot;com.zeligsoft.ce.analysis.devices&quot;&gt;
+         &lt;version
+               maxValue=&quot;1.9&quot;
+               minValue=&quot;1.0&quot;
+               version=&quot;1.3&quot;&gt;
+         &lt;/version&gt;
+      &lt;/analysis&gt;
+      &lt;transformation
+            id=&quot;com.zeligsoft.ce.codegeneration.ui.EObjectTransformationArtifacts&quot;
+            name=&quot;com.zeligsoft.ce.codegeneration.ui.EObjectTransformationArtifacts&quot;&gt;
+      &lt;/transformation&gt;
+   &lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         n/a
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         n/a
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+</schema>

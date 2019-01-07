@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:scadomain="http://www.zeligsoft.com/zdl/2008/SCADomain/1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w http://www.zeligsoft.com/zdl/2008/SCADomain/1 pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeoo0xOEd2INdt7Ch5VKg">
+  <uml:Model xmi:id="_NRAMoAwOEdmFcaeZXPdWAQ" name="eorb17-dspbios-cl6x-linux-dtp4700">
+    <eAnnotations xmi:id="_NRAMoQwOEdmFcaeZXPdWAQ" source="uml2.diagrams"/>
+    <eAnnotations xmi:id="_9QkS0HvkEeS8spAsUHvnSw" source="cx.migration">
+      <details xmi:id="_9QkS0XvkEeS8spAsUHvnSw" key="version" value="3.6.2"/>
+      <details xmi:id="_9QkS0nvkEeS8spAsUHvnSw" key="date" value="1417718402173"/>
+    </eAnnotations>
+    <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_zxRGENcLEeGtV-Adxh59AA" name="eorb17-dspbios-cl6x-linux-c-dtp4700-build">
+      <classifier xmi:type="uml:Class" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_BbBhMJocEd2RDaFGFVH-tg"/>
+      <slot xmi:id="_zxRGEdcLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_arHMwJoZEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:InstanceValue" xmi:id="_W-aL8IWlEeKpurWD0VDwSQ" instance="_oV5RoIWkEeKpurWD0VDwSQ"/>
+      </slot>
+      <slot xmi:id="_zxRGE9cLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_UIzy0JoYEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGFNcLEeGtV-Adxh59AA" value="-r"/>
+      </slot>
+      <slot xmi:id="_zxRGFdcLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_lOMRUJoWEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGFtcLEeGtV-Adxh59AA" value="-ms2"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGF9cLEeGtV-Adxh59AA" value="-o3"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGGNcLEeGtV-Adxh59AA" value="-mv6400+"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGGdcLEeGtV-Adxh59AA" value="-c"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGGtcLEeGtV-Adxh59AA" value="-mo"/>
+      </slot>
+      <slot xmi:id="_zxRGG9cLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_Uk0nIJodEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGHNcLEeGtV-Adxh59AA" value="-gen_any"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGHdcLEeGtV-Adxh59AA" value="-both"/>
+      </slot>
+      <slot xmi:id="_zxRGHtcLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_qg65wJoXEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGH9cLEeGtV-Adxh59AA" value="dsplink.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGINcLEeGtV-Adxh59AA" value="dsplinkpool.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGIdcLEeGtV-Adxh59AA" value="dsplinkmpcs.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGItcLEeGtV-Adxh59AA" value="dsplinkmplist.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGI9cLEeGtV-Adxh59AA" value="dsplinkmsg.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGJNcLEeGtV-Adxh59AA" value="dsplinkdata.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGJdcLEeGtV-Adxh59AA" value="dsplinknotify.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGJtcLEeGtV-Adxh59AA" value="dsplinkringio.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGJ9cLEeGtV-Adxh59AA" value="$(@D)/$(subst .out,,$(@F))cfg.obj"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGKNcLEeGtV-Adxh59AA" value="$(@D)/$(subst .out,,$(@F))cfg_c.obj"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGKdcLEeGtV-Adxh59AA" value="$(@D)/$(subst .out,,$(@F))cfg.cmd"/>
+      </slot>
+      <slot xmi:id="_zxRGKtcLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_Ak0cgJodEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGK9cLEeGtV-Adxh59AA" value="dspbios_cl6x_linux"/>
+      </slot>
+      <slot xmi:id="_zxRGLNcLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_DrAKUJodEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGLdcLEeGtV-Adxh59AA" value="$(EORBHOME)/include"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGLtcLEeGtV-Adxh59AA" value="$(EORBHOME)/include/eOrbC/services/full"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGL9cLEeGtV-Adxh59AA" value="$(EORBHOME)/include/eOrbC/os/dspbios"/>
+      </slot>
+      <slot xmi:id="_zxRGMNcLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_LkvtwJodEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGMdcLEeGtV-Adxh59AA" value="ec_any.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGMtcLEeGtV-Adxh59AA" value="ec_fixed.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGM9cLEeGtV-Adxh59AA" value="ec_lwevent_c.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGNNcLEeGtV-Adxh59AA" value="ec_lwevent_s.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGNdcLEeGtV-Adxh59AA" value="ec_lwlog_c.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGNtcLEeGtV-Adxh59AA" value="ec_lwlog_s.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGN9cLEeGtV-Adxh59AA" value="ec_lwnaming_c.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGONcLEeGtV-Adxh59AA" value="ec_lwnaming_s.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGO9cLEeGtV-Adxh59AA" value="ec_orb.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGPNcLEeGtV-Adxh59AA" value="ec_orbs.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGPdcLEeGtV-Adxh59AA" value="ec_os.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGPtcLEeGtV-Adxh59AA" value="ec_poa.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGP9cLEeGtV-Adxh59AA" value="ec_util.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGQNcLEeGtV-Adxh59AA" value="ec_msgq.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGQdcLEeGtV-Adxh59AA" value="ec_msgqiop.lib"/>
+      </slot>
+      <slot xmi:id="_zxRGQtcLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_PMKgYJodEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGQ9cLEeGtV-Adxh59AA" value="$(EORBHOME)/lib/dspbios-cl6x-linux"/>
+      </slot>
+      <slot xmi:id="_zxRGRNcLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_ugBzoJoXEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGRdcLEeGtV-Adxh59AA" value="$(C6X_INSTALL_DIR)/lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGRtcLEeGtV-Adxh59AA" value="$(DSPLINK)/dsp/BUILD/OMAP3530_0/EXPORT/RELEASE"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGR9cLEeGtV-Adxh59AA" value="$(BIOS_INSTALL_DIR)/packages/ti/bios/lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGSNcLEeGtV-Adxh59AA" value="$(BIOS_INSTALL_DIR)/packages/ti/rtdx/lib/c6000"/>
+      </slot>
+      <slot xmi:id="_zxRGSdcLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_3NwOMJoWEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGStcLEeGtV-Adxh59AA" value="CHIP_OMAP3530"/>
+      </slot>
+      <slot xmi:id="_zxRGS9cLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_z94Y4JoWEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGTNcLEeGtV-Adxh59AA" value="$(C6X_INSTALL_DIR)/include"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGTdcLEeGtV-Adxh59AA" value="$(BIOS_INSTALL_DIR)/packages/ti/bios/include"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGTtcLEeGtV-Adxh59AA" value="$(DSPLINK)/dsp/inc"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGT9cLEeGtV-Adxh59AA" value="$(DSPLINK)/dsp/inc/DspBios/5.XX"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGUNcLEeGtV-Adxh59AA" value="$(DSPLINK)/dsp/inc/DspBios/5.XX/OMAP3530"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGUdcLEeGtV-Adxh59AA" value="$(DSPLINK)/dsp/inc/OMAP3530"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGUtcLEeGtV-Adxh59AA" value="$(DSPLINK)/dsp/inc/C64XX"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGU9cLEeGtV-Adxh59AA" value="$(DSPLINK)/dsp/inc/DspBios"/>
+      </slot>
+      <slot xmi:id="_zxRGVNcLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_mEw3gJoXEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGVdcLEeGtV-Adxh59AA" name="" value="-z"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGVtcLEeGtV-Adxh59AA" name="" value="-ms2"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGV9cLEeGtV-Adxh59AA" name="" value="-mo"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGWNcLEeGtV-Adxh59AA" name="" value="-mv6400+"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGWdcLEeGtV-Adxh59AA" name="" value="-m=$(@D)/$(subst .out,,$(@F)).map"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGWtcLEeGtV-Adxh59AA" name="" value="-x"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGW9cLEeGtV-Adxh59AA" name="" value="-c"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGXNcLEeGtV-Adxh59AA" value="-o3"/>
+      </slot>
+      <slot xmi:id="_zxRGXdcLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_T8CNkBz1EeGI7oxrgnnvpA"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGXtcLEeGtV-Adxh59AA" value="cp oe/eorb17-dspbios-cl6x-linux-c-dtp4700-tools/dtp4700dsplink.tcf $(@D)/$(subst .out,,$(@F)).tcf"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGX9cLEeGtV-Adxh59AA" name="" value="cp oe/eorb17-dspbios-cl6x-linux-c-dtp4700-tools/dtp4700dsplink.tci $(@D)"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGYNcLEeGtV-Adxh59AA" value="cd $(@D)/ &amp;&amp; $(XDCTOOLS_DIR)/tconf -b -Dconfig.importPath=&quot;$(BIOS_INSTALL_DIR)/packages;$(DVSDK)/nimbus_sdk/dsp_modules/dsplink/DspBios&quot; $(subst .out,,$(@F)).tcf 0 &amp;&amp; cd -"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_zxRGYdcLEeGtV-Adxh59AA" value="cl6x $(CFLAGS) $(foreach def,$(DEFINES),-D&quot;$(def)&quot;) $(foreach inc,$(INCLUDES),-i&quot;$(subst |, ,$(inc))&quot;) -fr=$(@D) $(@D)/$(subst .out,,$(@F))cfg.s62"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_BbYnIOCYEeGOdrf-ZC6QAw" value="cl6x $(CFLAGS) $(foreach def,$(DEFINES),-D&quot;$(def)&quot;) $(foreach inc,$(INCLUDES),-i&quot;$(subst |, ,$(inc))&quot;) -fr=$(@D) $(@D)/$(subst .out,,$(@F))cfg_c.c"/>
+      </slot>
+      <slot xmi:id="_zxRGYtcLEeGtV-Adxh59AA">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_YpurwBz1EeGI7oxrgnnvpA"/>
+      </slot>
+    </packagedElement>
+    <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_oV5RoIWkEeKpurWD0VDwSQ" name="eorb17-dspbios-cl6x-linux-c-dtp4700-tools">
+      <classifier xmi:type="uml:Class" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_KV3KsJobEd2RDaFGFVH-tg"/>
+      <slot xmi:id="_vWK2cIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_M_7roJoYEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWK2cYWkEeKpurWD0VDwSQ">
+          <language></language>
+          <body>ar6x</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWMEkIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_BsdBsJoXEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWMEkYWkEeKpurWD0VDwSQ">
+          <language></language>
+          <body>-D</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWMEkoWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_JPswsJoXEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWMroIWkEeKpurWD0VDwSQ">
+          <language></language>
+          <body>-i</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWNSsYWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_GO4EAJoXEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWNSsoWkEeKpurWD0VDwSQ">
+          <language></language>
+          <body>-U</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWN5wIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_jBhlcJoWEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWN5wYWkEeKpurWD0VDwSQ">
+          <language></language>
+          <body>cl6x</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWOg0IWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_SRY20JobEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWOg0YWkEeKpurWD0VDwSQ">
+          <language></language>
+          <body>scf26</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWPH4IWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_pB46gJoYEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWPH4YWkEeKpurWD0VDwSQ">
+          <body>.d</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWPu8IWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_cSDK0JoYEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWPu8YWkEeKpurWD0VDwSQ">
+          <language></language>
+          <body>.out</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWQWAIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_lkAeYJoYEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWQWAYWkEeKpurWD0VDwSQ">
+          <language></language>
+          <body>.lib</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWQWAoWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_FGVGINBSEd2ALbl4YJCUpQ"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWQWA4WkEeKpurWD0VDwSQ" value=".lib"/>
+      </slot>
+      <slot xmi:id="_vWQ9EIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_Y89eUJoYEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWQ9EYWkEeKpurWD0VDwSQ">
+          <language></language>
+          <body>.obj</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWRkIIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_pSXfIJobEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWRkIYWkEeKpurWD0VDwSQ">
+          <body>-I</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWSLMIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_8_Ao4JobEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWSLMYWkEeKpurWD0VDwSQ" value="@mv $(basename $(notdir $3)).h $(dir $2)"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWSLMoWkEeKpurWD0VDwSQ" value="mv $(basename $(notdir $3))B.c $(dir $2)"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWSLM4WkEeKpurWD0VDwSQ" value="mv $(basename $(notdir $3))C.c $(dir $2)"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWSLNIWkEeKpurWD0VDwSQ" value="mv $(basename $(notdir $3))C.h $(dir $2)"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWSLNYWkEeKpurWD0VDwSQ" value="mv $(basename $(notdir $3))S.c $(dir $2)"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWSLNoWkEeKpurWD0VDwSQ" value="mv $(basename $(notdir $3))S.h $(dir $2)"/>
+      </slot>
+      <slot xmi:id="_vWSyQIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_ltC-QJobEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWSyQYWkEeKpurWD0VDwSQ" value="$(EORBHOME)/bin/linux-gcc-x86/idlc"/>
+      </slot>
+      <slot xmi:id="_vWTZUIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_DcY40JoYEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWTZUYWkEeKpurWD0VDwSQ" value="-l"/>
+      </slot>
+      <slot xmi:id="_vWUAYIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_HeVEQJoYEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWUAYYWkEeKpurWD0VDwSQ">
+          <language></language>
+          <body>-i</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWUncIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#__ZtGgJoXEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWUncYWkEeKpurWD0VDwSQ" value="-o$(SP)"/>
+      </slot>
+      <slot xmi:id="_vWVOgIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_ioOfMJoXEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWVOgYWkEeKpurWD0VDwSQ">
+          <language></language>
+          <body>cl6x</body>
+        </value>
+      </slot>
+      <slot xmi:id="_vWV1kIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_Xy2UQJobEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWV1kYWkEeKpurWD0VDwSQ" value="eorb173"/>
+      </slot>
+      <slot xmi:id="_vWWcoIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_OddEcJoWEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWWcoYWkEeKpurWD0VDwSQ" value="linux"/>
+      </slot>
+      <slot xmi:id="_vWXDsIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_Toj3YJoWEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWXDsYWkEeKpurWD0VDwSQ" value="linux"/>
+      </slot>
+      <slot xmi:id="_vWXDsoWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_suz4MJoYEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWXDs4WkEeKpurWD0VDwSQ" value=""/>
+      </slot>
+      <slot xmi:id="_vWXqwIWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_WWAVEJoWEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWXqwYWkEeKpurWD0VDwSQ" value="TMS320C64XX"/>
+      </slot>
+      <slot xmi:id="_vWYR0IWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_VNOBAMI3Ed2qmdmmanra_Q"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWYR0YWkEeKpurWD0VDwSQ" value="2.2.2"/>
+      </slot>
+      <slot xmi:id="_vWY44IWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_esEBEJoWEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_vWY44YWkEeKpurWD0VDwSQ" value="gcc"/>
+      </slot>
+      <slot xmi:id="_vWY44oWkEeKpurWD0VDwSQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_jqHSELvZEd2_H_jMCFfNbw"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vWY444WkEeKpurWD0VDwSQ">
+          <language></language>
+          <body>platform:/plugin/com.prismtech.spectracx.target.eorb-dspbios-cl6x/code/</body>
+        </value>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_vXtiEGEIEeSo5rygjr0bHA">
+          <language></language>
+          <body>platform:/plugin/com.prismtech.spectracx.target.eorb-dspbios-cl6x/code-dtp4700/</body>
+        </value>
+      </slot>
+      <slot xmi:id="_IFY3UIWnEeKFmPQhBh7bvQ">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_ncGQ8IWmEeKoxcx_qv0RKQ"/>
+        <value xmi:type="uml:OpaqueExpression" xmi:id="_J7ZWsIWnEeKFmPQhBh7bvQ">
+          <language></language>
+          <body>-fr=$(@D)$(SP)</body>
+        </value>
+      </slot>
+      <slot xmi:id="_F9NMMLIyEeS6292p530A9w">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_TpwtwLFsEeSJWevkszPbug"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_HFY8QLIyEeS6292p530A9w" value="C"/>
+      </slot>
+    </packagedElement>
+    <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_nMUjULx_EeKGX8VVvjpwKg" name="eorb17-dspbios-cl6x-linux-c-dtp4700-debug-build">
+      <classifier xmi:type="uml:Class" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_BbBhMJocEd2RDaFGFVH-tg"/>
+      <slot xmi:id="_nMUjUbx_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_arHMwJoZEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:InstanceValue" xmi:id="_nMUjUrx_EeKGX8VVvjpwKg" instance="_oV5RoIWkEeKpurWD0VDwSQ"/>
+      </slot>
+      <slot xmi:id="_nMUjU7x_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_UIzy0JoYEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjVLx_EeKGX8VVvjpwKg" value="-r"/>
+      </slot>
+      <slot xmi:id="_nMUjVbx_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_lOMRUJoWEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjVrx_EeKGX8VVvjpwKg" value="-ms2"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjV7x_EeKGX8VVvjpwKg" value="-g"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjWLx_EeKGX8VVvjpwKg" value="-mv6400+"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjWbx_EeKGX8VVvjpwKg" value="-c"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjWrx_EeKGX8VVvjpwKg" value="-mo"/>
+      </slot>
+      <slot xmi:id="_nMUjW7x_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_Uk0nIJodEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjXLx_EeKGX8VVvjpwKg" value="-gen_any"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjXbx_EeKGX8VVvjpwKg" value="-both"/>
+      </slot>
+      <slot xmi:id="_nMUjXrx_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_qg65wJoXEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjX7x_EeKGX8VVvjpwKg" value="dsplink.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjYLx_EeKGX8VVvjpwKg" value="dsplinkpool.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjYbx_EeKGX8VVvjpwKg" value="dsplinkmpcs.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjYrx_EeKGX8VVvjpwKg" value="dsplinkmplist.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjY7x_EeKGX8VVvjpwKg" value="dsplinkmsg.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjZLx_EeKGX8VVvjpwKg" value="dsplinkdata.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjZbx_EeKGX8VVvjpwKg" value="dsplinknotify.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjZrx_EeKGX8VVvjpwKg" value="dsplinkringio.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjZ7x_EeKGX8VVvjpwKg" value="$(@D)/$(subst .out,,$(@F))cfg.obj"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjaLx_EeKGX8VVvjpwKg" value="$(@D)/$(subst .out,,$(@F))cfg_c.obj"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjabx_EeKGX8VVvjpwKg" value="$(@D)/$(subst .out,,$(@F))cfg.cmd"/>
+      </slot>
+      <slot xmi:id="_nMUjarx_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_Ak0cgJodEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUja7x_EeKGX8VVvjpwKg" value="dspbios_cl6x_linux"/>
+      </slot>
+      <slot xmi:id="_nMUjbLx_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_DrAKUJodEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjbbx_EeKGX8VVvjpwKg" value="$(EORBHOME)/include"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjbrx_EeKGX8VVvjpwKg" value="$(EORBHOME)/include/eOrbC/services/full"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjb7x_EeKGX8VVvjpwKg" value="$(EORBHOME)/include/eOrbC/os/dspbios"/>
+      </slot>
+      <slot xmi:id="_nMUjcLx_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_LkvtwJodEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjcbx_EeKGX8VVvjpwKg" value="ec_any_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjcrx_EeKGX8VVvjpwKg" value="ec_fixed_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjc7x_EeKGX8VVvjpwKg" value="ec_lwevent_c_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjdLx_EeKGX8VVvjpwKg" value="ec_lwevent_s_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjdbx_EeKGX8VVvjpwKg" value="ec_lwlog_c_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjdrx_EeKGX8VVvjpwKg" value="ec_lwlog_s_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjd7x_EeKGX8VVvjpwKg" value="ec_lwnaming_c_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjeLx_EeKGX8VVvjpwKg" value="ec_lwnaming_s_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUje7x_EeKGX8VVvjpwKg" value="ec_orb_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjfLx_EeKGX8VVvjpwKg" value="ec_orbs_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjfbx_EeKGX8VVvjpwKg" value="ec_os_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjfrx_EeKGX8VVvjpwKg" value="ec_poa_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjf7x_EeKGX8VVvjpwKg" value="ec_util_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjgLx_EeKGX8VVvjpwKg" value="ec_msgq_g.lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjgbx_EeKGX8VVvjpwKg" value="ec_msgqiop_g.lib"/>
+      </slot>
+      <slot xmi:id="_nMUjgrx_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/SCABuild.library.uml#_PMKgYJodEd2RDaFGFVH-tg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjg7x_EeKGX8VVvjpwKg" value="$(EORBHOME)/lib/dspbios-cl6x-linux"/>
+      </slot>
+      <slot xmi:id="_nMUjhLx_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_ugBzoJoXEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjhbx_EeKGX8VVvjpwKg" value="$(C6X_INSTALL_DIR)/lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjhrx_EeKGX8VVvjpwKg" value="$(DSPLINK)/dsp/BUILD/OMAP3530_0/EXPORT/DEBUG"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjh7x_EeKGX8VVvjpwKg" value="$(BIOS_INSTALL_DIR)/packages/ti/bios/lib"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjiLx_EeKGX8VVvjpwKg" value="$(BIOS_INSTALL_DIR)/packages/ti/rtdx/lib/c6000"/>
+      </slot>
+      <slot xmi:id="_nMUjibx_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_3NwOMJoWEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjirx_EeKGX8VVvjpwKg" value="CHIP_OMAP3530"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_gYTcYLyAEeKGX8VVvjpwKg" value="DEBUG_MSGS"/>
+      </slot>
+      <slot xmi:id="_nMUji7x_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_z94Y4JoWEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjjLx_EeKGX8VVvjpwKg" value="$(C6X_INSTALL_DIR)/include"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjjbx_EeKGX8VVvjpwKg" value="$(BIOS_INSTALL_DIR)/packages/ti/bios/include"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjjrx_EeKGX8VVvjpwKg" value="$(DSPLINK)/dsp/inc"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjj7x_EeKGX8VVvjpwKg" value="$(DSPLINK)/dsp/inc/DspBios/5.XX"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjkLx_EeKGX8VVvjpwKg" value="$(DSPLINK)/dsp/inc/DspBios/5.XX/OMAP3530"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMUjkbx_EeKGX8VVvjpwKg" value="$(DSPLINK)/dsp/inc/OMAP3530"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKYLx_EeKGX8VVvjpwKg" value="$(DSPLINK)/dsp/inc/C64XX"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKYbx_EeKGX8VVvjpwKg" value="$(DSPLINK)/dsp/inc/DspBios"/>
+      </slot>
+      <slot xmi:id="_nMVKYrx_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_mEw3gJoXEd2-vtOXh_LiEg"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKY7x_EeKGX8VVvjpwKg" name="" value="-z"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKZLx_EeKGX8VVvjpwKg" name="" value="-ms2"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKZbx_EeKGX8VVvjpwKg" name="" value="-mo"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKZrx_EeKGX8VVvjpwKg" name="" value="-mv6400+"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKZ7x_EeKGX8VVvjpwKg" name="" value="-m=$(@D)/$(subst .out,,$(@F)).map"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKaLx_EeKGX8VVvjpwKg" name="" value="-x"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKabx_EeKGX8VVvjpwKg" name="" value="-c"/>
+      </slot>
+      <slot xmi:id="_nMVKa7x_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_T8CNkBz1EeGI7oxrgnnvpA"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKbLx_EeKGX8VVvjpwKg" value="cp oe/eorb17-dspbios-cl6x-linux-c-dtp4700-tools/dtp4700dsplink.tcf $(@D)/$(subst .out,,$(@F)).tcf"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKbbx_EeKGX8VVvjpwKg" name="" value="cp oe/eorb17-dspbios-cl6x-linux-c-dtp4700-tools/dtp4700dsplink.tci $(@D)"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKbrx_EeKGX8VVvjpwKg" value="cd $(@D)/ &amp;&amp; $(XDCTOOLS_DIR)/tconf -b -Dconfig.importPath=&quot;$(BIOS_INSTALL_DIR)/packages;$(DVSDK)/nimbus_sdk/dsp_modules/dsplink/DspBios&quot; $(subst .out,,$(@F)).tcf 0 &amp;&amp; cd -"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKb7x_EeKGX8VVvjpwKg" value="cl6x $(CFLAGS) $(foreach def,$(DEFINES),-D&quot;$(def)&quot;) $(foreach inc,$(INCLUDES),-i&quot;$(subst |, ,$(inc))&quot;) -fr=$(@D) $(@D)/$(subst .out,,$(@F))cfg.s62"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_nMVKcLx_EeKGX8VVvjpwKg" value="cl6x $(CFLAGS) $(foreach def,$(DEFINES),-D&quot;$(def)&quot;) $(foreach inc,$(INCLUDES),-i&quot;$(subst |, ,$(inc))&quot;) -fr=$(@D) $(@D)/$(subst .out,,$(@F))cfg_c.c"/>
+      </slot>
+      <slot xmi:id="_nMVKcbx_EeKGX8VVvjpwKg">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_DOMAIN/ZML_C_Build.library.uml#_YpurwBz1EeGI7oxrgnnvpA"/>
+      </slot>
+    </packagedElement>
+    <profileApplication xmi:id="_UeIAINCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAIdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_UeIAItCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAI9CzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_UeIAJNCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAJdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_QcgrAGimEd2OEpKJuElDmQ">
+      <eAnnotations xmi:id="_QcgrAWimEd2OEpKJuElDmQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeoo0xOEd2INdt7Ch5VKg"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeooExOEd2INdt7Ch5VKg"/>
+    </profileApplication>
+  </uml:Model>
+  <Standard:ModelLibrary xmi:id="_Z_KNgCV3EeC4oZ2_5WiMbQ" base_Package="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  <scadomain:SCAModel xmi:id="_9OGNoHvkEeS8spAsUHvnSw" base_Model="_NRAMoAwOEdmFcaeZXPdWAQ" version="3.6.2" base_NamedElement="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+</xmi:XMI>

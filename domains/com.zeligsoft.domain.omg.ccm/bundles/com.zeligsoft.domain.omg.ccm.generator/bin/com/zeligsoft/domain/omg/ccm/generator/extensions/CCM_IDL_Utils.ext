@@ -1,0 +1,79 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+import ZMLMM::ZML_Component;
+import CCM::CCM_Component;
+
+boolean hasSupportsInterface(CCMComponent self) :
+	!self.zdlAsComponent().interfaceRealization.zdlAsInterfaceRealization().contract.typeSelect(CORBADomain::IDL::CORBAInterface).isEmpty;
+
+List[CORBADomain::IDL::CORBAInterface] supportsInterface(CCMComponent self) :
+	self.zdlAsComponent().interfaceRealization.zdlAsInterfaceRealization().contract.typeSelect(CORBADomain::IDL::CORBAInterface);
+	
+List[CORBADomain::IDL::CORBAInterface] supportsInterface(Home self) :
+	self.zdlAsInterface().general.typeSelect(CORBADomain::IDL::CORBAInterface);
+
+boolean hasBaseComponent(CCMComponent self) :
+	!self.zdlAsComponent().general.typeSelect(CCMComponent).isEmpty;
+	
+CCMComponent baseComponent(CCMComponent self) :
+	self.zdlAsComponent().general.typeSelect(CCMComponent).first();
+
+CCM::CCM_Component::Event event(EventPort self) :
+	self.zdlAsPort().provided.typeSelect(CCM::CCM_Component::Event).first();
+
+//CCM::CCM_Component::Event event(Consumes self) :
+//	self.zdlAsPort().provided.typeSelect(CCM::CCM_Component::Event).first();
+	
+//CCM::CCM_Component::Event event(Emits self) :
+//	self.zdlAsPort().required.typeSelect(CCM::CCM_Component::Event).first();
+
+boolean typeIsInterface(CORBADomain::IDL::CORBAInterface intf) :
+	true;
+	
+boolean typeIsInterface(CCM::CCM_Component::Event intf) :
+	true;
+	
+boolean typeIsInterface(Object o ) :
+	false;
+	
+boolean typeIsInterface(Void v) :
+	false;
+	
+boolean isUser(InterfacePort self) :
+	typeIsInterface(self.type) && self.isConjugated;
+	
+boolean isProvider(InterfacePort self) :
+	typeIsInterface(self.type) && !self.isConjugated;
+	
+boolean isPublisher(EventPort self) :
+	typeIsInterface(self.type) && self.isConjugated;
+	
+boolean isConsumer(EventPort self) :
+	typeIsInterface(self.type) && !self.isConjugated;
+	
+CORBADomain::IDL::CORBAInterface usesInterface(InterfacePort self) :
+	self.type;
+	
+CORBADomain::IDL::CORBAInterface providesInterface(InterfacePort self) :
+	self.type;
+	
+CORBADomain::IDL::CORBAInterface usesInterface(MessagePort self) :
+	self.type;
+	
+CORBADomain::IDL::CORBAInterface providesInterface(MessagePort self) :
+	self.type;

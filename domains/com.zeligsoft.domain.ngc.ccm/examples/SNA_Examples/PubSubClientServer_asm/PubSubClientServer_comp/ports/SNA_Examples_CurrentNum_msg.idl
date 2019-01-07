@@ -1,0 +1,38 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @addtogroup PubSubClientServer_comp
+/// @{
+/// @file   SNA_Examples_CurrentNum_msg.idl
+/// @brief  Definition of DDS message used in the PubSubClientServer example.
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_CURRENTNUM_MSG_IDL
+#define SNA_EXAMPLES_CURRENTNUM_MSG_IDL
+
+#pragma ndds typesupport "SNA_Examples_CurrentNum_msgSupport.h"
+
+module SNA_Examples
+{   
+   /**
+    * @struct CurrentNum_msg
+    *
+    * DDS message structure for the current number message.
+    */
+   struct CurrentNum_msg
+   {
+      /**
+       * Current number in count.
+       */
+      unsigned long      theCurrNum;
+   }; //@top-level true
+};
+
+#endif // SNA_EXAMPLES_CURRENTNUM_MSG_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

@@ -1,0 +1,49 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @addtogroup BasicPublisher_comp
+/// @{
+/// @file   SNA_Examples_TestData_conn.idl
+/// @brief  Definition of DDS connector used in the BasicPubSub example.
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_TESTDATA_CONN_IDL
+#define SNA_EXAMPLES_TESTDATA_CONN_IDL
+
+#include <ccm_dds.idl>
+
+// Must include message definition to use with connector
+#include "SNA_Examples_TestData_msg.idl"
+
+#pragma ciao lem "SNA_Examples_TestData_connE.idl"
+
+module SNA_Examples
+{
+   /**
+    * @typedef TestData_msgSeq
+    *
+    * Sequence of top-level message of type SNA_Examples::TestData_msg to use
+    * with the DDS4CCM templated module instantiation.
+    */
+   typedef sequence<TestData_msg> TestData_msgSeq;
+
+   /**
+    * @cond DOXYGEN_UNDERSTANDS_IDL3_PLUS
+    * 
+    * Instantiation of the DDS4CCM typed module for type TestData_msg
+    */
+   module CCM_DDS::Typed<TestData_msg, TestData_msgSeq> TestData_conn;
+   
+   /**
+    * @endcond
+    */
+};
+
+#endif // SNA_EXAMPLES_TESTDATA_CONN_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

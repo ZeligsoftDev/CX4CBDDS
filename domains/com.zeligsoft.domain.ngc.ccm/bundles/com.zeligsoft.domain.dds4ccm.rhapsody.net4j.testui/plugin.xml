@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="CX Model Services"
+            id="com.zeligsoft.cx.rhapsody.modelservices.testui">
+      </category>
+      <view
+            name="CX ModelServices Activity"
+            icon="icons/sample.gif"
+            category="com.zeligsoft.cx.rhapsody.modelservices.testui"
+            class="com.zeligsoft.domain.dds4ccm.rhapsody.net4j.testui.views.CXModelServicesView"
+            id="com.zeligsoft.cx.rhapsody.modelservices.testui.views.CXModelServicesView">
+      </view>
+   </extension>
+
+</plugin>

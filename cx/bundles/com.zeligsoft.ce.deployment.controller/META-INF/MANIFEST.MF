@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Controller Plug-in
+Bundle-SymbolicName: com.zeligsoft.ce.deployment.controller
+Bundle-Version: 1.0.0
+Bundle-Activator: com.zeligsoft.ce.deployment.controller.Activator
+Bundle-Vendor: ZELIGSOFT
+Export-Package: com.zeligsoft.ce.deployment.controller
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.transaction;visibility:=reexport,
+ com.zeligsoft.deployment.rsm.tooling.ext 
+Eclipse-LazyStart: true

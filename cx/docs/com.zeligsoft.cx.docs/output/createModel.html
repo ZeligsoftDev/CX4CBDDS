@@ -1,0 +1,53 @@
+<head>
+	<title>Creating Project Models</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="createModel.html" title="Creating Project Models">
+		<h1>Creating Project Models</h1>
+		<p>			<!--A default model is provided with the CX installation. This model contains xxxTBDxxx and is located in xxxTBDxxx.-->
+ Models are saved
+		in EMX format. A single project can have multiple models - you can use the elements from different models within one project. For example, 
+		you can use an element from Model A in Model B. Additionally, you may want to have separate platform and application models.</p>
+		<h2>To create a project model</h2>
+		<ol>
+			<li>From the <strong>File</strong> menu, select <strong>New &gt; SCA 2.2.2 Model Project</strong>.</li>
+			<li>In the Zeligsoft Project window, type a <strong>Project Name</strong> and click <strong>Next</strong>.</li>
+			<li>Type a <strong>Model Name</strong>.</li>
+			<li>Type a <strong>CDT Project Name</strong> and click <strong>Finish</strong>.</li>
+			<p>This attribute determines the project to target during code generation. You can use an existing CDT 
+		project. If you do not specify a value, the default value of <i>modelname</i>_source is used.</p>
+		</ol>
+		<p>The model project is displayed in the Project Explorer. This model project folder contains a Diagrams folder and a Models folder.
+		The Diagrams folder contains all the diagrams in your model. </p>
+		<p>The Models folder includes the following folders:</p>
+		<ul>
+			<li>(CF_IDL): contains the core framework IDL interfaces and port types.</li>
+			<li>(IDLPrimitives): contains the CORBA IDL</li>
+			<li>(SCA_BuildEnvironments): contains the the default build configuration files required for Zeligsoft code generation</li>
+			<li>(SCALibrary): contains PortTypes for CF interfaces and some common SCA DataTypes</li>
+			<li>(UMLPrimitiveTypes): contains the UML primitive types</li>
+		</ul>
+		<p>A <strong>modelConfiguration</strong> entry is displayed in the Project Explorer. Use this entry to view and edit the model configuration.</p>
+		<p>You can create multiple models within one model project. The elements created for one model within a model project 
+		can be re-used in another model in the same project model. To create a model, do the following:</p>
+		<ol>
+			<li>In the Project Explorer, select the Model Project in which you want to create the model.</li>
+			<li>From the <strong>File</strong> menu, select <strong>New &gt; SCA 2.2.2 Model</strong>.</li>
+			<li>Type a <strong>Model Name</strong>. The default model name is SCA Model.</li>
+			<li>Type a <strong>CDT Project Name</strong>.</li>
+			<p>This attribute determines the project to target during code generation. You can use an existing CDT 
+		project. If you do not specify a value, the default value of <i>modelname</i>_source is used.</p>
+			<li>Select a Destination Folder, by default the model project you selected is displayed.</li>
+			<li>Click <strong>Finish</strong>.</li>
+		</ol>
+		<p>The model is added to the Models folder for the model project and a corresponding Zeligsoft Component Diagram is added to the 
+		diagrams folder.</p>
+		<p>To define and view model capabilities, select the <strong>Capabilities</strong> tab in the <strong>Properties View</strong>. The 
+		enabled and available capabilities are displayed, allowing you to add or remove UML capabilities.</p>
+		<div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

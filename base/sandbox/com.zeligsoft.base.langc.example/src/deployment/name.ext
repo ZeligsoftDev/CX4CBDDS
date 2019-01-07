@@ -1,0 +1,17 @@
+import langc;
+import ZMLMM::ZML_Deployments;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+
+
+extension langc::name;
+extension posix::name;
+
+FolderName rootDeploymentFolderName() : rootFolderName().subfolder('cfgs');
+FolderName configuratorFolderName(StructuralRealization sr, Deployment d) : 
+	rootDeploymentFolderName().subfolder(d.zdlAsNamedElement().name + '/' + sr.zdlAsNamedElement().name);
+
+FileName configuratorFileName(StructuralRealization sr, Deployment d) : sr.configuratorFolderName(d).child('zce' + sr.zdlAsNamedElement().name + 'Configurator');
+
+
+	

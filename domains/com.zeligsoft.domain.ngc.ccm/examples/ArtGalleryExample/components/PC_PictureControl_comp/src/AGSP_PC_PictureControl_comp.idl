@@ -1,0 +1,46 @@
+/// @defgroup AGSP_PC_PictureControl_comp PC_PictureControl_comp
+/// @{
+/// 
+/// @file AGSP_PC_PictureControl_comp.idl
+/// @brief PC_PictureControl_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_COMPONENTS__PC_PICTURECONTROL_COMP__SRC__AGSP_PC_PICTURECONTROL_COMP_IDL
+#define CX_COMPONENTS__PC_PICTURECONTROL_COMP__SRC__AGSP_PC_PICTURECONTROL_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao lem "AGSP_PC_PictureControl_compE.idl"
+#pragma ami4ccm receptacle "AGSP::PC_PictureControl_comp::CameraControlRecept"
+#include "AGSP_CameraControl_obj.idl"
+#include "AGSP_GimbalControl_obj.idl"
+#include "AGSP_ModeUtilities_obj.idl"
+#include "AGSP_PCIP_Cmd_obj.idl"
+#include "AGSP_PCMM_Status_obj.idl"
+#include "AGSP_ScheduleRequest_obj.idl"
+#include "AGSP_PCPC_Cmd_obj.idl"
+#include "AGSP_PCPC_Status_obj.idl"
+#include "AGSP_CameraAvailable_conn.idl"
+#include "AGSP_ScheduleStatus_conn.idl"
+
+/// @namespace AGSP 
+module AGSP {
+    component PC_PictureControl_comp {
+        uses AGSP::CameraControl_obj CameraControlRecept;
+        uses AGSP::GimbalControl_obj GimbalControlRecept;
+        uses AGSP::ModeUtilities_obj ModeUtilitiesRecept;
+        uses AGSP::PCIP_Cmd_obj PCIP_CmdRecept;
+        uses AGSP::PCMM_Status_obj PCMM_StatusRecept;
+        uses AGSP::ScheduleRequest_obj ScheduleRequestRecept;
+        provides AGSP::PCPC_Cmd_obj PCPC_CmdFacet;
+        provides AGSP::PCPC_Status_obj PCPC_StatusFacet;
+        port CameraAvailable_conn::DDS_Listen CameraAvailableSub;
+        port ScheduleStatus_conn::DDS_StateListen ScheduleStatusSub;
+    };
+
+};
+
+#endif // CX_COMPONENTS__PC_PICTURECONTROL_COMP__SRC__AGSP_PC_PICTURECONTROL_COMP_IDL
+
+/// @}
+

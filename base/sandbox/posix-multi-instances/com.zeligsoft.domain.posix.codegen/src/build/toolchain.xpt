@@ -1,0 +1,85 @@
+�REM�
+
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+�ENDREM�
+
+�IMPORT uml�
+
+�EXTENSION extensions::BuildEnvFuncs�
+
+
+�REM�
+	The instance specification is expected to be a Toolchain.
+�ENDREM�
+
+�DEFINE generate FOR Object�
+�FILE "blds/linux_x86_gcc_tools.mk"�
+�REM�
+�EXPAND copyright::generate FOR this�
+�ENDREM�
+
+TOOLCHAINS +=linux_x86_gcc_tools
+
+HOST_OS_linux_x86_gcc_tools:= linux
+
+# important target information
+OS_linux_x86_gcc_tools:= linux
+PROCESSOR_linux_x86_gcc_tools:= x86
+TOOLCHAIN_linux_x86_gcc_tools:= gcc
+CF_linux_x86_gcc_tools:= zcf100_sca22
+ORB_linux_x86_gcc_tools:= omni410
+
+TARGET_linux_x86_gcc_tools:= $(OS_linux_x86_gcc_tools)_$(PROCESSOR_linux_x86_gcc_tools)_$(TOOLCHAIN_linux_x86_gcc_tools)_$(CF_linux_x86_gcc_tools)_$(ORB_linux_x86_gcc_tools)
+
+# target specific file details
+# file extensions and prefixes
+OBJEXT_linux_x86_gcc_tools:= .o
+EXEEXT_linux_x86_gcc_tools:= 
+LIBEXT_linux_x86_gcc_tools:= .a
+LIBPREFIX_linux_x86_gcc_tools:= lib
+DEPEXT_linux_x86_gcc_tools:= .d
+
+# command options
+OBJOPT_linux_x86_gcc_tools:= -o
+INCOPT_linux_x86_gcc_tools:= -I
+DEFOPT_linux_x86_gcc_tools:= -D
+UNDEFOPT_linux_x86_gcc_tools:= -U
+IDLOUTOPT_linux_x86_gcc_tools:= -C
+IDLINCOPT_linux_x86_gcc_tools:= -I
+LIBOUTOPT_linux_x86_gcc_tools:= 
+LDOUTOPT_linux_x86_gcc_tools:= -o
+LDLIBOPT_linux_x86_gcc_tools:= -l
+LDLIBPATHOPT_linux_x86_gcc_tools:= -L
+
+# compiler			
+CC_linux_x86_gcc_tools:= gcc
+
+# MAKEDEPEND command
+MAKEDEPEND_linux_x86_gcc_tools = $(CC_$(TOOL)) $(CPPFLAGS_linux_x86_gcc_tools) \
+  $(foreach def,$(DEFINES),$(DEFOPT_$(TOOL))"$(def)") \
+  $(foreach und, $(UNDEFINES),$(UNDEFOPT_$(TOOL))"$(und)") \
+  $(foreach inc,$(INCLUDES),$(INCOPT_$(TOOL))"$(subst |, ,$(inc))") \
+  $(INCOPT_$(TOOL))$(OBJDIR)/$(TOOL)/$(IDLDIR) \
+  -MM -MT $(basename $@)$(OBJEXT_$(TOOL)) -MF $(basename $@)$(DEPEXT_$(TOOL)) $<
+
+# linker
+LD_linux_x86_gcc_tools:= gcc
+
+# archiver
+AR_linux_x86_gcc_tools:= ar
+
+�ENDFILE�
+�ENDDEFINE�

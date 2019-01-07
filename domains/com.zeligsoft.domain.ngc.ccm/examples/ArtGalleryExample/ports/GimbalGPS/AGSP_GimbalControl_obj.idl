@@ -1,0 +1,57 @@
+/// @defgroup AGSP_GimbalControl_obj GimbalControl_obj
+/// @{
+/// 
+/// @file AGSP_GimbalControl_obj.idl
+/// @brief GimbalControl_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__GIMBALGPS__AGSP_GIMBALCONTROL_OBJ_IDL
+#define CX_PORTS__GIMBALGPS__AGSP_GIMBALCONTROL_OBJ_IDL
+
+#include "AGSP_Common_defn.idl"
+#pragma ciao lem "AGSP_GimbalControl_objE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    ///@interface GimbalControl_obj 
+    interface GimbalControl_obj {
+
+        /// @param[in] azAngle
+        ///
+        /// @param[in] elAngle
+        ///
+        void setPointingAngle(
+            in double azAngle,
+            in double elAngle
+            );
+
+        /// @param[out] azAngle
+        ///
+        /// @param[out] elAngle
+        ///
+        void getPointingAngle(
+            out double azAngle,
+            out double elAngle
+            );
+
+        /// @param[out] floorHeight
+        ///
+        /// @param[out] azCenterOffset
+        ///
+        void getInstallationSettings(
+            out double floorHeight,
+            out double azCenterOffset
+            );
+
+        /// @return
+        AGSP::SystemTime getTime();
+    };
+
+};
+
+#endif // CX_PORTS__GIMBALGPS__AGSP_GIMBALCONTROL_OBJ_IDL
+
+/// @}
+

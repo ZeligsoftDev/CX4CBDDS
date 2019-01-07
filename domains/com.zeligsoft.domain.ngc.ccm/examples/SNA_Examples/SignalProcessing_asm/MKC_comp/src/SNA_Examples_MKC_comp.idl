@@ -1,0 +1,57 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+
+/**
+ * @defgroup MKC_comp MKC_comp Component
+ * @ingroup SignalProcessingExample
+ * @{
+ *
+ * Math Kernel Component which will perform a simple arithmetic operation on
+ * the data (in this example, (10,-10) is added to each element in the matrix).
+ *
+ * Both the input and output data objects are output to the logger within the
+ * MKC.  The final output data object is then output by the SPOC after the
+ * computation call to the MKC has completed.
+ *
+ * The result shows that the value (10,-10) has indeed been added to each
+ * element.  The original input data is also displayed to show that it has not
+ * changed (the operation was done ‘out of place’ as opposed to in place)
+ *
+ * @file   SNA_Examples_MKC_comp.idl
+ * @brief  MKC_comp component definition IDL file.
+ */
+
+//==============================================================================
+
+#ifndef MKC_COMP_IDL
+#define MKC_COMP_IDL
+
+#include <Components.idl>
+
+#include "SNA_Examples_SP_Math_obj.idl"
+
+module SNA_Examples
+{
+   /**
+    * The Math Kernel Component that will provide an interface to the SPOC
+    * to perform some math
+    */
+   component MKC_comp
+   {
+      /**
+       * The facet that provides the interface to the SPOC
+       */
+      provides SNA_Examples::SP_Math_obj SPMathFacet_;
+   };
+
+}; // end module SNA_Examples
+
+#endif // MKC_COMP_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

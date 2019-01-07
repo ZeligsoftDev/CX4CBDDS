@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+-->
+<workflow>
+	<property name="unload" value="true" />
+	
+	<bean class="org.eclipse.xtend.typesystem.uml2.Setup"/>
+	
+	<component class="com.zeligsoft.base.workflow.SetupResourceSet" >
+		<resourceSetSlot value="rset" />
+	</component>
+	
+	<!-- Resolve all proxies to ensure consistent generation of library dependencies. -->
+    <component id="resolveAll" class="com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCM2UMLResolveAll"
+           resourceSetSlot="rset">
+        <targetModelURI value="${src-gen}/models/" />
+        <modelSlot value="element" />
+    </component>
+    
+    <!-- Resolve all proxies to ensure consistent generation of library dependencies. -->
+    <component id="createTarget" class="com.zeligsoft.domain.ngc.ccm.idltouml.utils.CreateTargetPackageComponent"
+           resourceSetSlot="rset">
+        <uri value="${src-gen}/temp/" />
+        <modelSlot value="newModel" />
+    </component>
+    
+   <!--  generate code -->
+	<component class="org.eclipse.xtend.XtendComponent">
+		<metaModel id="CorbaMM" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+        	<zdl value="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml"/>
+     	</metaModel>
+    	<metaModel id="CCMMM" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+        	<zdl value="pathmap://CCM_DOMAIN/CCM.uml"/>
+     	</metaModel>
+     	<metaModel id="DDS4CCMMM" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+        	<zdl value="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml"/>
+     	</metaModel>
+     	<metaModel id="ZMLMM" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+        	<zdl value="pathmap://ZML_LIBRARIES/ZMLMM.uml"/>
+     	</metaModel>
+     	<metaModel class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
+
+		<invoke value="com::zeligsoft::domain::ngc::ccm::idltouml::transforms::tao_idl::tao_idl(element, newModel)"/>
+   		<outputSlot value="transformedModel"/>
+	</component>
+	
+	<component id="umlMerge" class="com.zeligsoft.domain.ngc.ccm.idltouml.merge.UMLModelMerge"
+           resourceSetSlot="rset">
+        <bundle value="com.zeligsoft.domain.ngc.ccm.idltouml" />
+        <merger value="com.zeligsoft.domain.ngc.ccm.idltouml.merge.ClassModelMerger" />
+        <modelSlot value="transformedModel" />
+        <uri value="${src-gen}/models/" />
+    </component>
+    
+    <component class="com.zeligsoft.base.workflow.CleanupResourceSet" >
+		<resourceSetSlot value="rset" />
+	</component>
+
+</workflow>

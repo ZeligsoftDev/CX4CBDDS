@@ -1,0 +1,29 @@
+<head>
+	<title>Devices</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="aboutdevice.html" title="Devices">
+		<h1>Devices</h1>
+		<p>The following device elements are available:</p>
+		<ul>
+			<li>Executable Device: according to the SCA (v 2.2.2) an executable device extends the LoadableDevice interface by adding execute and terminate behavior to a Device.</li>
+			<li>Loadable Device: according to the SCA (v 2.2.2) a loadable device extends the Device interface by adding software loading and unloading behavior to a Device.</li>
+			<li>Device: according to the SCA (v 2.2.2) a device is a type of Resource within the domain and has the requirements as stated in the Resource interface. This interface defines additional 
+		capabilities and attributes for any logical Device in the domain. A logical Device is a functional abstraction for a set (e.g., zero or more) of hardware devices</li>
+			<li>Aggregate Device: according to the SCA (v 2.2) an aggregate device provides aggregate behavior that can be used to add and remove Devices from an aggregate Device. This interface can be 
+		provided via inheritance or as a provides port for any Device that is capable of an aggregate relationship. Aggregated Devices use this interface to add or remove themselves from composite 
+		Devices when being created or torn-down.</li>
+		</ul>
+		<p>The author attribute must be configured for all devices. The os_name and processor_name attributes must be configured for executable devices.</p>
+		<ol>
+			<li>In the Zeligsoft Component Diagram, select the device.</li>
+			<li>In the <strong>Properties View</strong> &gt; <strong>Stereotypes</strong> tab.</li>
+			<li>Configure the appropriate attribute: author, os_name, or processor_name.</li>
+		</ol>
+		<h3>See Also</h3><br><a href="deviceprop.html">Device Properties</a><br><a href="editviewelement.html">Editing and Viewing Elements</a><br><a href="deleteelement.html">Deleting Elements</a><div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

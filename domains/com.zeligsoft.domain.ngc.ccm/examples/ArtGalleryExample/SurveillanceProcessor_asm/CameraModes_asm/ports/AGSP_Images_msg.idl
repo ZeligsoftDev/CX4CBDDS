@@ -1,0 +1,33 @@
+/// @defgroup AGSP_Images_msg Images_msg
+/// @{
+/// 
+/// @file AGSP_Images_msg.idl
+/// @brief Images_msg message definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__CAMERAMODES_ASM__PORTS__AGSP_IMAGES_MSG_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__CAMERAMODES_ASM__PORTS__AGSP_IMAGES_MSG_IDL
+
+#include "ccm_psat_header_defn.idl"
+#include "AGSP_Common_defn.idl"
+#include "AGSP_Images_defn.idl"
+#pragma ndds typesupport "AGSP_Images_msgSupport.h"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @struct Images_msg
+    struct Images_msg {
+        CCM_PSAT::PSAT_Header psat_hdr;
+
+        /// // Placeholder for image array blob
+        AGSP::SystemTime timeStamp;
+        AGSP::IntImageArray image;
+    }; //@top-level true
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__CAMERAMODES_ASM__PORTS__AGSP_IMAGES_MSG_IDL
+
+/// @}
+

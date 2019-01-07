@@ -1,0 +1,41 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+import CORBADomain::IDL;
+import idl;
+
+extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::annotations;
+
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::visitStructAttribute(CORBAField p) :
+    createMember(p);
+
+private create idl::Member createMember(CORBAField p) :
+	let value = getCORBAFieldKeyAnnotationValue(p, "fieldkey", "false") :
+	this.setDecl(p.createDeclarator(p.idlType)) ->
+	this.comment.addAll(p.zdlAsProperty().ownedComment.visitComment()) ->	
+	p.idlType == null ? setType(new ScopedName) : this.setMemberType(p.idlType, p) ->
+	"true" == value ? 
+		this.getEAnnotations().add(p.createKeyAnnotation()) :
+		{};
+			
+String getCORBAFieldKeyAnnotationValue(CORBAField field, String detail, String defaultValue) :
+	JAVA com.zeligsoft.domain.omg.ccm.util.CCMUtil.getZCXAnnotationDetail(org.eclipse.uml2.uml.Element, java.lang.String, java.lang.String);		
+
+private create ecore::EAnnotation createKeyAnnotation(CORBAField self) :
+	let detail = new ecore::EStringToStringMapEntry :
+	this.setSource("zcx") ->
+	this.details.add(createDetail("comment", " //@key"));

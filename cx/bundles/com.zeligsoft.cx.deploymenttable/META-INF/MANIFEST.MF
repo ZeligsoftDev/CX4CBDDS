@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Deploymenttable2 Plug-in
+Bundle-SymbolicName: com.zeligsoft.ce.deploymenttable;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.zeligsoft.ce.deploymenttable.Activator
+Bundle-Vendor: ZELIGSOFT
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.draw2d,
+ org.eclipse.emf,
+ org.eclipse.emf.edit.ui,
+ com.ibm.xtools.modeler,
+ com.zeligsoft.ce.deployment,
+ com.zeligsoft.ce.deployment.controller.rsm,
+ com.zeligsoft.ce.deployment.core,
+ com.zeligsoft.ce.deployment.edit,
+ com.zeligsoft.ce.tableeditor
+Eclipse-LazyStart: true

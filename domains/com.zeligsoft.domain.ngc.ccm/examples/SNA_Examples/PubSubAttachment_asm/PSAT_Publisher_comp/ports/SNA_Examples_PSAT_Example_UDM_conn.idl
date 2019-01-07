@@ -1,0 +1,50 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @addtogroup PSAT_Publisher_comp
+/// @{
+/// @file   SNA_Examples_PSAT_Example_UDM_conn.idl
+/// @brief  Definition of PSAT templated module instantiation which defines the
+///         connector used in the PSAT example.
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_PSAT_EXAMPLE_UDM_CONN_IDL
+#define SNA_EXAMPLES_PSAT_EXAMPLE_UDM_CONN_IDL
+
+#include <ccm_psat.idl>
+
+#include "SNA_Examples_PSAT_Example_UDM_msg.idl"
+
+#pragma ciao lem "SNA_Examples_PSAT_Example_UDM_connE.idl"
+
+module SNA_Examples
+{
+   /**
+    * @typedef PSAT_Example_UDM_msgSeq
+    *
+    * Sequence of top-level UDM message of type PSAT_Example_UDM_msg to use with
+    * the PSAT templated module instantiation.
+    */
+   typedef sequence<SNA_Examples::PSAT_Example_UDM_msg> PSAT_Example_UDM_msgSeq;
+
+   /**
+    * @cond DOXYGEN_UNDERSTANDS_IDL3_PLUS
+    * 
+    * Instantiation of the PSAT typed module for type PSAT_Example_UDM_msg
+    */
+   module CCM_PSAT::Typed<SNA_Examples::PSAT_Example_UDM_msg,
+                          PSAT_Example_UDM_msgSeq>        PSAT_Example_UDM_conn;
+   
+   /**
+    * @endcond
+    */
+};
+
+#endif // SNA_EXAMPLES_PSAT_EXAMPLE_UDM_CONN_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

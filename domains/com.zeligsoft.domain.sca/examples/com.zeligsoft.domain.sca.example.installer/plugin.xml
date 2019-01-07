@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="examples" name="CX Examples" schema="schema/examples.exsd"/>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="com.zeligsoft.domain.sca.examples.category"
+            name="%category.name"
+            parentCategory="org.eclipse.ui.Examples">
+      </category>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/com.zeligsoft.domain.sca.examples.category"
+            class="com.zeligsoft.domain.sca.example.installer.wizards.ExampleInstallerWizard"
+            icon="icons/obj16/spectra.png"
+            id="com.zeligsoft.domain.sca.example.TutorialModelWizard"
+            name="%wizard.name"
+            project="true">
+         <description>
+            %wizard.description
+         </description>
+      </wizard>
+      <wizard
+            canFinishEarly="true"
+            category="org.eclipse.ui.Examples/com.zeligsoft.domain.sca.examples.category"
+            class="com.zeligsoft.domain.sca.example.installer.wizards.ExampleInstallerWizard"
+            icon="icons/obj16/spectra.png"
+            id="com.zeligsoft.domain.sca.example.OptimizedTutorialModelWizard"
+            name="%wizard.optimized.name"
+            project="true">
+         <description>
+            %wizard.optimized.description
+         </description>
+      </wizard>
+   </extension>
+   <extension
+         point="com.zeligsoft.domain.sca.example.installer.examples">
+      <example
+            pageDescription="%spectracx.tutorial.pageDescription"
+            pageTitle="%spectracx.tutorial.pageTitle"
+            wizardID="com.zeligsoft.domain.sca.example.TutorialModelWizard">
+         <projectDescriptor
+               contentURI="examples/CXTutorial/"
+               name="CXTutorial">
+         </projectDescriptor>
+         <fileToOpen
+               location="/CXTutorial/CXTutorial_Model.emx">
+         </fileToOpen>
+      </example>
+      <example
+            pageDescription="%spectracx.tutorial.pageDescription"
+            pageTitle="%spectracx.tutorial_optimized.pageTitle"
+            wizardID="com.zeligsoft.domain.sca.example.OptimizedTutorialModelWizard">
+         <projectDescriptor
+               contentURI="examples/CXTutorial_Optimized/"
+               name="CXTutorial_Optimized">
+         </projectDescriptor>
+         <fileToOpen
+               location="/CXTutorial_Optimized/CXTutorial_Model_Optimized.emx">
+         </fileToOpen>
+      </example>
+   </extension>
+
+</plugin>

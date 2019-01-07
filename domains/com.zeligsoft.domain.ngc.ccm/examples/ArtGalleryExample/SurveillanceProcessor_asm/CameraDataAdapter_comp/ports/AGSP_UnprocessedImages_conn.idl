@@ -1,0 +1,27 @@
+/// @defgroup AGSP_UnprocessedImages_conn UnprocessedImages_conn
+/// @{
+/// 
+/// @file AGSP_UnprocessedImages_conn.idl
+/// @brief UnprocessedImages_conn connector definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__CAMERADATAADAPTER_COMP__PORTS__AGSP_UNPROCESSEDIMAGES_CONN_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__CAMERADATAADAPTER_COMP__PORTS__AGSP_UNPROCESSEDIMAGES_CONN_IDL
+
+#include <ccm_psat.idl>
+#include "AGSP_UnprocessedImages_msg.idl"
+#pragma ciao lem "AGSP_UnprocessedImages_connE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef UnprocessedImages_msgSeq
+    typedef sequence <UnprocessedImages_msg> UnprocessedImages_msgSeq;
+    module CCM_PSAT::Typed <UnprocessedImages_msg, UnprocessedImages_msgSeq> UnprocessedImages_conn; 
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__CAMERADATAADAPTER_COMP__PORTS__AGSP_UNPROCESSEDIMAGES_CONN_IDL
+
+/// @}
+

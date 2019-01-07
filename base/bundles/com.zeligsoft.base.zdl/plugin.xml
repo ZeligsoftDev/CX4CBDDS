@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<plugin>
+   
+   <extension-point
+         id="com.zeligsoft.base.zdl.domain_models"
+         name="Registered ZDL Models"
+         schema="schema/com.zeligsoft.base.zdl.domain_models.exsd"/>
+   
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://ZDL_PROFILES/"
+            target="platform:/plugin/com.zeligsoft.base.zdl/profiles/">
+      </mapping>
+   </extension>
+   
+   <extension
+         point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+      <elementTypeFactory
+            factory="com.zeligsoft.base.zdl.type.ZDLElementTypeFactory"
+            kind="com.zeligsoft.zdl.concept"
+            params="concept,reference">
+      </elementTypeFactory>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/3.0.0/UML">
+         <adviceBinding
+            id="com.zeligsoft.base.zdl.destroyReferenceAdvice"
+            typeId="com.ibm.xtools.uml.element"
+            class="com.zeligsoft.base.zdl.type.ZDLDestroyReferenceAdvice"
+            inheritance="all">
+         </adviceBinding>
+      </metamodel>    
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings">
+      <binding context="com.ibm.xtools.uml.type.context">
+         <advice ref="com.zeligsoft.base.zdl.destroyReferenceAdvice"/>
+      </binding>
+   </extension>
+    <extension
+         point="org.eclipse.emf.transaction.listeners">
+      <listener
+            class="com.zeligsoft.base.zdl.listeners.ZDLElementTypeResourceSetListener">
+         <editingDomain
+               id="org.eclipse.gmf.runtime.emf.core.compatibility.MSLEditingDomain">
+         </editingDomain>
+      </listener>
+    </extension>
+    
+    <extension
+         point="org.eclipse.xtend.shared.ui.metamodelContributor">
+      <metamodelContributor
+            class="com.zeligsoft.base.zdl.oaw.ZDLMetamodelContributor"
+            name="%zdl.contributor.name">
+      </metamodelContributor>
+   </extension>
+</plugin>

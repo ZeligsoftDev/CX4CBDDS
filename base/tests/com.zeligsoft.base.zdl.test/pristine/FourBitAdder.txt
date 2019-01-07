@@ -1,0 +1,29 @@
+Application name: FourBitAdder
+ID: 
+External Port Summary
+=====================
+Port a: NibblePortInv [1..1]
+Port types: [data]
+Wiring: connector
+Provides no interfaces
+Requires Nibble
+Port b: NibblePortInv [1..1]
+Port types: [data]
+Wiring: connector
+Provides no interfaces
+Requires Nibble
+Port carryIn: BitPortInv [1..1]
+Port types: [data]
+Wiring: connector
+Provides no interfaces
+Requires Bit
+Port sum: NibblePort [1..1]
+Port types: [responses, data]
+Wiring: connector
+Provides Nibble
+Requires no interfaces
+Port carryOut: BitPort [1..1]
+Port types: [responses, data]
+Wiring: connector
+Provides Bit
+Requires no interfaces

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ 
+-->
+<feature
+      id="com.zeligsoft.base"
+      label="%featureName"
+      version="3.6.5.qualifier"
+      provider-name="%providerName"
+      plugin="com.zeligsoft.base">
+
+   <description url="http://www.zeligsoft.com/tools/zeligsoft-cx">
+      %description
+   </description>
+
+   <copyright>
+      Copyright 2018 ADLINK Technology Limited.
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.emf.validation.ui"/>
+      <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="org.eclipse.gmf.runtime.common.ui.services"/>
+      <import plugin="com.ibm.xtools.uml.type" version="7.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.core"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.providers"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.type.ui"/>
+      <import plugin="com.ibm.xtools.uml.navigator" version="7.60.0" match="compatible"/>
+      <import plugin="com.ibm.xtools.common.ui.navigator" version="7.60.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui"/>
+      <import plugin="com.ibm.xtools.modeler.ui" version="7.60.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.6.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.validation"/>
+      <import plugin="org.eclipse.emf.edit" version="2.6.0" match="compatible"/>
+      <import plugin="org.eclipse.ocl.ecore"/>
+      <import plugin="org.eclipse.emf.validation.ocl"/>
+      <import plugin="org.eclipse.emf.query.ocl"/>
+      <import plugin="org.eclipse.osgi"/>
+      <import plugin="org.eclipse.ocl.uml"/>
+      <import plugin="org.eclipse.uml2.uml"/>
+      <import plugin="org.eclipse.core.resources" version="3.6.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.type.core"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.emf.mwe.core"/>
+      <import plugin="org.eclipse.emf.mwe.utils"/>
+      <import plugin="org.eclipse.xtend.typesystem.emf"/>
+      <import plugin="org.eclipse.xtend.typesystem.uml2"/>
+      <import plugin="org.eclipse.xtend"/>
+      <import plugin="org.eclipse.xtend.shared.ui"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.core"/>
+      <import plugin="org.eclipse.ui.navigator"/>
+      <import plugin="org.eclipse.emf.edit.ui" version="2.4.1" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.zeligsoft.base.diagram"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base.validation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base.validation.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base.zdl.ocl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base.toolingmodel"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base.zdl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base.zdl.staticapi"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base.licensing"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base.licensing.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base.ui.menus"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.base.testsupport"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

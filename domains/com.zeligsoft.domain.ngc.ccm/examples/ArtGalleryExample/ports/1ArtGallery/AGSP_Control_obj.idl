@@ -1,0 +1,74 @@
+/// @defgroup AGSP_Control_obj Control_obj
+/// @{
+/// 
+/// @file AGSP_Control_obj.idl
+/// @brief Control_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__1ARTGALLERY__AGSP_CONTROL_OBJ_IDL
+#define CX_PORTS__1ARTGALLERY__AGSP_CONTROL_OBJ_IDL
+
+#include "AGSP_Common_defn.idl"
+#pragma ciao lem "AGSP_Control_objE.idl"
+#pragma ami4ccm interface "AGSP::Control_obj"
+#pragma ciao lem "AGSP_Control_objAE.idl"
+#pragma ami4ccm idl "AGSP_Control_objA.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    ///@interface Control_obj 
+    ///
+    /// This interface is used by a client control component in the Class 3 Art
+    /// Gallery control room to control a room-specific instance of the
+    /// Surveillance Processor.  This includes changing both processor state, as
+    /// well as the ability to set the current operating mode of the sensor
+    /// sub-system.
+    interface Control_obj {
+
+        /// @typedef ObjectType
+        ///
+        /// Typedef added to test comments and generation order for types
+        /// defined inside of an IDL interface
+        typedef long ObjectType;
+
+        /// Attribute added to test comments and generation order for
+        /// non-operations defined inside of an IDL interface
+        attribute Control_obj::ObjectType objectNum;
+
+        /// Service call for changing the current operating state of the
+        /// processor
+        ///
+        /// @param[in] newState
+        /// New state to change to
+        ///
+        /// @return
+        /// SUCCESS or FAILURE returned
+        AGSP::ReturnStatus changeState(
+            in AGSP::SystemState newState
+            );
+
+        /// @return
+        AGSP::SystemState getCurrentState();
+
+        /// @param[in] newMode
+        ///
+        /// @return
+        AGSP::ReturnStatus setMode(
+            in AGSP::SystemMode newMode
+            );
+
+        /// Service call for querying the current processor operating mode
+        ///
+        /// @return
+        /// The current operating mode of the processor is the return value
+        AGSP::SystemMode getCurrentMode();
+    };
+
+};
+
+#endif // CX_PORTS__1ARTGALLERY__AGSP_CONTROL_OBJ_IDL
+
+/// @}
+

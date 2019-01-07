@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
+      <editpolicyProvider
+            class="com.zeligsoft.domain.zml.ui.providers.ZMLComponentEditPolicyProvider">
+         <Priority
+               name="Highest">
+         </Priority>
+         <context
+               editparts="PrimaryPart">
+         </context>
+         <object
+               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
+               id="PrimaryPart">
+         </object>
+      </editpolicyProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.transaction.listeners">
+      <listener
+            class="com.zeligsoft.domain.zml.ui.WorkerFunctionImplListener">
+      </listener>
+      <listener
+            class="com.zeligsoft.domain.zml.ui.PortConjugationListener">
+      </listener>
+   </extension>
+</plugin>

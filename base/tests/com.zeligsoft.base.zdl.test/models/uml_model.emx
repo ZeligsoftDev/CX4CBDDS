@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_iNOwQGs7Ed2s--4g-nTlHg" name="uml_model">
+  <packageImport xmi:id="_iNOwRGs7Ed2s--4g-nTlHg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Component" xmi:id="_nWZpgGs7Ed2s--4g-nTlHg" name="Component1">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_rJb2QGs7Ed2s--4g-nTlHg" name="bob" type="_rJSsUGs7Ed2s--4g-nTlHg" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_ty3WoWs7Ed2s--4g-nTlHg" name="fred" type="_ty3WoGs7Ed2s--4g-nTlHg" aggregation="composite"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_rJSsUGs7Ed2s--4g-nTlHg" name="Bob" clientDependency="_0ygCQWs7Ed2s--4g-nTlHg"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ty3WoGs7Ed2s--4g-nTlHg" name="Fred" clientDependency="_zfDdYWs7Ed2s--4g-nTlHg">
+      <interfaceRealization xmi:id="_zfDdYWs7Ed2s--4g-nTlHg" supplier="_zfDdYGs7Ed2s--4g-nTlHg" client="_ty3WoGs7Ed2s--4g-nTlHg" contract="_zfDdYGs7Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_zfDdYGs7Ed2s--4g-nTlHg" name="Interface1"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_0ygCQGs7Ed2s--4g-nTlHg" name="Interface2"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_0ygCQWs7Ed2s--4g-nTlHg" supplier="_0ygCQGs7Ed2s--4g-nTlHg" client="_rJSsUGs7Ed2s--4g-nTlHg"/>
+  <profileApplication xmi:id="_iNOwRWs7Ed2s--4g-nTlHg">
+    <eAnnotations xmi:id="_iNOwRms7Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </profileApplication>
+  <profileApplication xmi:id="_iNOwR2s7Ed2s--4g-nTlHg">
+    <eAnnotations xmi:id="_iNOwSGs7Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+  </profileApplication>
+  <profileApplication xmi:id="_iNOwSWs7Ed2s--4g-nTlHg">
+    <eAnnotations xmi:id="_iNOwSms7Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+  </profileApplication>
+</uml:Model>

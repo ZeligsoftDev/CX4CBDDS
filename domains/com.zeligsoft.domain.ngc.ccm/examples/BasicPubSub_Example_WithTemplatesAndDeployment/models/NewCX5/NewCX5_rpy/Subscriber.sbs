@@ -1,0 +1,210 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "Example.sbs";
+		- _subsystem = "";
+		- _class = "";
+		- _name = "Example";
+		- _id = GUID df4260d3-e428-4604-8f77-b39c477f739d;
+	}
+	- _id = GUID f9750315-f33a-4a2b-84e1-82347f73a613;
+	- _myState = 8192;
+	- _name = "Subscriber";
+	- _modifiedTimeWeak = 7.30.2014::15:28:22;
+	- Declaratives = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IComponentDiagram 
+			- _id = GUID 37788559-7a71-47fd-8d5c-0212f8a09d9f;
+			- _myState = 8192;
+			- _name = "Subscriber_diag";
+			- _modifiedTimeWeak = 1.2.1990::0:0:0;
+			- _lastModifiedTime = "7.30.2014::15:28:22";
+			- _graphicChart = { CGIClassChart 
+				- _id = GUID fa291487-9a0a-46be-8a26-64ccf084b8b1;
+				- m_type = 0;
+				- m_pModelObject = { IHandle 
+					- _m2Class = "IComponentDiagram";
+					- _id = GUID 37788559-7a71-47fd-8d5c-0212f8a09d9f;
+				}
+				- m_pParent = ;
+				- m_name = { CGIText 
+					- m_str = "";
+					- m_style = "Arial" 10 0 0 0 1 ;
+					- m_color = { IColor 
+						- m_fgColor = 0;
+						- m_bgColor = 0;
+						- m_bgFlag = 0;
+					}
+					- m_position = 1 0 0  ;
+					- m_nIdent = 0;
+					- m_bImplicitSetRectPoints = 0;
+					- m_nOrientationCtrlPt = 8;
+				}
+				- m_drawBehavior = 0;
+				- m_bIsPreferencesInitialized = 0;
+				- elementList = 1;
+				{ CGIBox 
+					- _id = GUID 2c2b1539-4632-4f01-8b85-50f0cd46900d;
+					- m_type = 146;
+					- m_pModelObject = { IHandle 
+						- _m2Class = "ISubsystem";
+						- _id = GUID f9750315-f33a-4a2b-84e1-82347f73a613;
+					}
+					- m_pParent = ;
+					- m_name = { CGIText 
+						- m_str = "";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_drawBehavior = 0;
+					- m_bIsPreferencesInitialized = 0;
+					- m_polygon = 0 ;
+					- m_nNameFormat = 0;
+					- m_nIsNameFormat = 0;
+					- Compartments = { IRPYRawContainer 
+						- size = 0;
+					}
+				}
+				
+				- m_access = 'Z';
+				- m_modified = 'N';
+				- m_fileVersion = "";
+				- m_nModifyDate = 0;
+				- m_nCreateDate = 0;
+				- m_creator = "";
+				- m_bScaleWithZoom = 1;
+				- m_arrowStyle = 'S';
+				- m_pRoot = GUID 2c2b1539-4632-4f01-8b85-50f0cd46900d;
+				- m_currentLeftTop = 0 0 ;
+				- m_currentRightBottom = 0 0 ;
+			}
+			- _defaultSubsystem = { IHandle 
+				- _m2Class = "ISubsystem";
+				- _id = GUID f9750315-f33a-4a2b-84e1-82347f73a613;
+			}
+		}
+	}
+	- weakCGTime = 7.30.2014::15:28:22;
+	- strongCGTime = 7.30.2014::15:28:22;
+	- _defaultComposite = GUID 9445a095-c877-4198-9004-e9c13aeb72ae;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 2;
+		- value = 
+		{ IClass 
+			- _id = GUID 9445a095-c877-4198-9004-e9c13aeb72ae;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 1.2.1990::0:0:0;
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+		{ IClass 
+			- _id = GUID d67fec50-7528-42d4-baeb-0de46cf96c8f;
+			- _myState = 8192;
+			- _name = "Subscriber";
+			- Stereotypes = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IHandle 
+					- _m2Class = "IStereotype";
+					- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+					- _subsystem = "cxDDS4CCM";
+					- _class = "";
+					- _name = "CCMComponent";
+					- _id = GUID c2b53fb6-0397-419a-93dc-b053f7bd35a6;
+				}
+			}
+			- _modifiedTimeWeak = 7.30.2014::15:29:18;
+			- _lastID = 2;
+			- weakCGTime = 7.30.2014::15:29:18;
+			- strongCGTime = 7.30.2014::15:28:22;
+			- Ports = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IPort 
+					- _id = GUID 1d70a28e-5dc0-4978-811a-9015dd8fdb96;
+					- _myState = 8192;
+					- _name = "imDataSub";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "InterfazePort";
+							- _id = GUID dcc12eb0-780d-4b5e-9ed5-30f50966c158;
+						}
+					}
+					- _modifiedTimeWeak = 7.30.2014::15:28:54;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "Publisher.sbs";
+						- _subsystem = "Example::Publisher";
+						- _class = "IMData_conn";
+						- _name = "DDS_Listen";
+						- _id = GUID 089b4649-2d99-4bcf-ac03-5e977b3ae9e8;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+				}
+				{ IPort 
+					- _id = GUID e8336a05-88ac-46cc-853b-f943950cd98d;
+					- _myState = 8192;
+					- _name = "imDataSubStatus";
+					- Stereotypes = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IStereotype";
+							- _filename = "$OMROOT/Profiles/CX/\\cxDDS4CCM.sbs";
+							- _subsystem = "cxDDS4CCM";
+							- _class = "";
+							- _name = "InterfazePort";
+							- _id = GUID dcc12eb0-780d-4b5e-9ed5-30f50966c158;
+						}
+					}
+					- _modifiedTimeWeak = 7.30.2014::15:29:18;
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "$OMROOT\\Profiles\\CX\\DDS_DCPS.sbs";
+						- _subsystem = "DDS_DCPS::CCM_DDS";
+						- _class = "";
+						- _name = "ConnectorStatusListener";
+						- _id = GUID d3b214d8-3481-4a8e-a705-3db02f1fc47f;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+				}
+			}
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 12.31.1969::19:0:0;
+}
+

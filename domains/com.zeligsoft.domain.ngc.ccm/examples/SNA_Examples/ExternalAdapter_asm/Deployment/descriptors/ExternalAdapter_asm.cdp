@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <label/>
+
+  <UUID>E3F1A944-F187-11DF-8000-005056C00008</UUID>
+
+  <implementation xmi:id="_BCA213CE-F187-11DF-8002-005056C00008">
+    <name>ExternalAdapter_asm.ComponentImplementations.SNA_Examples_Adapter_compImpl.SNA_Examples_Adapter_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_BCA213CE-F187-11DF-8000-005056C00008"/>
+    <artifact xmi:idref="_BCA213CE-F187-11DF-8001-005056C00008"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_Adapter_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ExternalAdapter_asm.ImplementationArtifacts.SNA_Examples_Adapter_compArtifacts.SNA_Examples_Adapter_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_Adapter_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ExternalAdapter_asm.ImplementationArtifacts.SNA_Examples_Adapter_compArtifacts.SNA_Examples_Adapter_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_BCA47628-F187-11DF-8002-005056C00008">
+    <name>ExternalAdapter_asm.ComponentImplementations.SNA_Examples_RelayServer_compImpl.SNA_Examples_RelayServer_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_BCA47628-F187-11DF-8000-005056C00008"/>
+    <artifact xmi:idref="_BCA47628-F187-11DF-8001-005056C00008"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_RelayServer_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ExternalAdapter_asm.ImplementationArtifacts.SNA_Examples_RelayServer_compArtifacts.SNA_Examples_RelayServer_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_RelayServer_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ExternalAdapter_asm.ImplementationArtifacts.SNA_Examples_RelayServer_compArtifacts.SNA_Examples_RelayServer_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_1C073253-AACD-4130-B0A8-6AED69931E25_">
+    <name>DAnCE_LocalityManager_Impl</name>
+    <source/>
+    <artifact xmi:idref="_2DBE7BA9-5DB7-48e2-A260-D141CB66DEB1"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_E95FA1F6-F187-11DF-8000-005056C00008">
+    <name>ExternalAdapter_asm.Assemblies.ExternalAdapter_asm.ExternalAdapter_asm.RelyServer_comp</name>
+    <node>RelayServer_compNode</node>
+    <source/>
+    <implementation xmi:idref="_BCA47628-F187-11DF-8002-005056C00008"/>
+  </instance>
+
+  <instance xmi:id="_14EE65F0-F188-11DF-8000-005056C00008">
+    <name>ExternalAdapter_asm.Assemblies.ExternalAdapter_asm.ExternalAdapter_asm.Adapter_comp</name>
+    <node>Adapter_compNode</node>
+    <source/>
+    <implementation xmi:idref="_BCA213CE-F187-11DF-8002-005056C00008"/>
+  </instance>
+
+  <instance xmi:id="Adapter_compNode.Adapter_comp">
+    <name>Adapter_compNode.Adapter_comp</name>
+    <node>Adapter_compNode</node>
+    <source/>
+    <implementation xmi:idref="_1C073253-AACD-4130-B0A8-6AED69931E25_"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Adapter_comp</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="RelayServer_compNode.RelaySever_comp">
+    <name>RelayServer_compNode.RelaySever_comp</name>
+    <node>RelayServer_compNode</node>
+    <source/>
+    <implementation xmi:idref="_1C073253-AACD-4130-B0A8-6AED69931E25_"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>RelaySever_comp</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>ExternalAdapter_asm.Assemblies.ExternalAdapter_asm.ExternalAdapter_asm.Adapter_comp.relayServerRecept::ExternalAdapter_asm.Assemblies.ExternalAdapter_asm.ExternalAdapter_asm.RelyServer_comp.relayServerFacet</name>
+    <internalEndpoint>
+      <portName>relayServerRecept</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_14EE65F0-F188-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>relayServerFacet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_E95FA1F6-F187-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="_BCA213CE-F187-11DF-8000-005056C00008">
+    <name>ExternalAdapter_asm.ImplementationArtifacts.SNA_Examples_Adapter_compArtifacts.SNA_Examples_Adapter_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_Adapter_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_BCA213CE-F187-11DF-8001-005056C00008">
+    <name>ExternalAdapter_asm.ImplementationArtifacts.SNA_Examples_Adapter_compArtifacts.SNA_Examples_Adapter_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_Adapter_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_BCA47628-F187-11DF-8000-005056C00008">
+    <name>ExternalAdapter_asm.ImplementationArtifacts.SNA_Examples_RelayServer_compArtifacts.SNA_Examples_RelayServer_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_RelayServer_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_BCA47628-F187-11DF-8001-005056C00008">
+    <name>ExternalAdapter_asm.ImplementationArtifacts.SNA_Examples_RelayServer_compArtifacts.SNA_Examples_RelayServer_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_RelayServer_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_2DBE7BA9-5DB7-48e2-A260-D141CB66DEB1">
+    <name>DAnCE_LocalityManager_Artifact</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="Adapter_compNode.Adapter_comp"/>
+    <!--ExternalAdapter_asm.Assemblies.ExternalAdapter_asm.ExternalAdapter_asm.Adapter_comp-->
+    <constrainedInstance xmi:idref="_14EE65F0-F188-11DF-8000-005056C00008"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="RelayServer_compNode.RelaySever_comp"/>
+    <!--ExternalAdapter_asm.Assemblies.ExternalAdapter_asm.ExternalAdapter_asm.RelyServer_comp-->
+    <constrainedInstance xmi:idref="_E95FA1F6-F187-11DF-8000-005056C00008"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

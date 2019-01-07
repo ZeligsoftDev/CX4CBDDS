@@ -1,0 +1,25 @@
+/// @defgroup AGSP_Images_defn Images_defn
+/// @{
+/// 
+/// @file AGSP_Images_defn.idl
+/// @brief Images_defn definitions definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__3CAMERAMODES__AGSP_IMAGES_DEFN_IDL
+#define CX_PORTS__3CAMERAMODES__AGSP_IMAGES_DEFN_IDL
+
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @typedef IntImageArray
+    ///
+    /// The IntImageArray type defines a proxy for storage imagery pixels
+    typedef octet IntImageArray[64000];
+};
+
+#endif // CX_PORTS__3CAMERAMODES__AGSP_IMAGES_DEFN_IDL
+
+/// @}
+

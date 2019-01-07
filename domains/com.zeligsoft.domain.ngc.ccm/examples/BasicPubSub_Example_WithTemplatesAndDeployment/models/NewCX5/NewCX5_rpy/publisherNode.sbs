@@ -1,0 +1,433 @@
+I-Logix-RPY-Archive version 8.9.0 C++ 7155907
+{ ISubsystem 
+	- _ownerHandle = { IHandle 
+		- _m2Class = "ISubsystem";
+		- _filename = "PubSubPlan.sbs";
+		- _subsystem = "Example::Deployment::_DeploymentValues";
+		- _class = "";
+		- _name = "PubSubPlan";
+		- _id = GUID 12f552e5-9abe-476a-998f-4f4839b3d119;
+	}
+	- _id = GUID 3344ebb3-a5c8-4685-a0bd-6c9a4364fba5;
+	- _myState = 8192;
+	- _name = "publisherNode";
+	- _modifiedTimeWeak = 7.30.2014::15:41:38;
+	- weakCGTime = 7.30.2014::15:41:38;
+	- strongCGTime = 7.30.2014::15:41:38;
+	- _defaultComposite = GUID d5bd5c97-d694-44e3-ac4b-15e0b36fb74a;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID d5bd5c97-d694-44e3-ac4b-15e0b36fb74a;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _modifiedTimeWeak = 7.30.2014::15:41:38;
+			- weakCGTime = 7.30.2014::15:41:38;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 3;
+				- value = 
+				{ IPart 
+					- _id = GUID 525adc10-e5f5-464c-a7f8-15b24b8732c6;
+					- _myState = 8192;
+					- _name = "CORBAStringInstance";
+					- _modifiedTimeWeak = 7.30.2014::15:41:38;
+					- Tags = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ITag 
+							- _id = GUID cbcfe7bc-fa86-4b50-8745-6d94fc392274;
+							- _myState = 8192;
+							- _name = "classifier";
+							- _modifiedTimeWeak = 7.30.2014::15:41:38;
+							- ValueSpecifications = { IRPYRawContainer 
+								- size = 1;
+								- value = 
+								{ IInstanceValue 
+									- _id = GUID 339856e5-1c0b-4e65-9a72-7807d496fff5;
+									- _modifiedTimeWeak = 1.2.1990::0:0:0;
+									- _value = { IHandle 
+										- _m2Class = "IType";
+										- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+										- _subsystem = "IDLPrimitives";
+										- _class = "";
+										- _name = "CORBAString";
+										- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+									}
+								}
+							}
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypes.sbs";
+								- _subsystem = "PredefinedTypes";
+								- _class = "";
+								- _name = "RhpString";
+								- _id = GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35;
+							}
+							- _isOrdered = 0;
+							- _metaClass = "Type";
+						}
+					}
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 19aac139-7ee5-4680-9394-ce373b66b91e;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _implicitClass = { IClass 
+						- _id = GUID 19aac139-7ee5-4680-9394-ce373b66b91e;
+						- _myState = 10240;
+						- _name = "CORBAStringInstance";
+						- _modifiedTimeWeak = 7.30.2014::15:41:38;
+						- Tags = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ ITag 
+								- _id = GUID bef7cc27-4f96-4444-b09d-252f98adf985;
+								- _myState = 8192;
+								- _name = "value";
+								- _modifiedTimeWeak = 7.30.2014::15:41:38;
+								- ValueSpecifications = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ ILiteralSpecification 
+										- _id = GUID aa5c57e7-796c-4686-aa71-d7bea9abdbee;
+										- _modifiedTimeWeak = 7.30.2014::15:41:38;
+										- _value = "10.0.15.22";
+									}
+								}
+								- _typeOf = { IHandle 
+									- _m2Class = "IType";
+									- _filename = "PredefinedTypes.sbs";
+									- _subsystem = "PredefinedTypes";
+									- _class = "";
+									- _name = "RhpString";
+									- _id = GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35;
+								}
+								- _isOrdered = 0;
+							}
+						}
+						- weakCGTime = 7.30.2014::15:41:38;
+						- strongCGTime = 7.30.2014::15:41:38;
+						- _multiplicity = "";
+						- _itsStateChart = { IHandle 
+							- _m2Class = "";
+						}
+						- _classModifier = Unspecified;
+					}
+				}
+				{ IPart 
+					- _id = GUID 1b2bbe3f-6eac-40f5-b773-9960eb228422;
+					- _myState = 8192;
+					- _name = "NodeAddressInstance";
+					- _modifiedTimeWeak = 7.30.2014::15:41:38;
+					- Tags = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ITag 
+							- _id = GUID 16b4ea12-8673-47ab-9b6b-212be7232f22;
+							- _myState = 8192;
+							- _name = "classifier";
+							- _modifiedTimeWeak = 7.30.2014::15:41:38;
+							- ValueSpecifications = { IRPYRawContainer 
+								- size = 1;
+								- value = 
+								{ IInstanceValue 
+									- _id = GUID 4ec68834-1223-4c0e-bc4f-ee6b04d8eff4;
+									- _modifiedTimeWeak = 1.2.1990::0:0:0;
+									- _value = { IHandle 
+										- _m2Class = "IClass";
+										- _filename = "Deployment.sbs";
+										- _subsystem = "Example::Deployment";
+										- _class = "";
+										- _name = "NodeAddress";
+										- _id = GUID 8434cdb0-8fc1-457a-bd4e-6eba6f082683;
+									}
+								}
+							}
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypes.sbs";
+								- _subsystem = "PredefinedTypes";
+								- _class = "";
+								- _name = "RhpString";
+								- _id = GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35;
+							}
+							- _isOrdered = 0;
+							- _metaClass = "Class";
+						}
+					}
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID 52b9ec96-1b3b-473b-8806-097a90baef75;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _implicitClass = { IClass 
+						- _id = GUID 52b9ec96-1b3b-473b-8806-097a90baef75;
+						- _myState = 10240;
+						- _name = "NodeAddressInstance";
+						- _modifiedTimeWeak = 7.30.2014::15:41:38;
+						- weakCGTime = 7.30.2014::15:41:38;
+						- strongCGTime = 7.30.2014::15:41:38;
+						- Attrs = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IAttribute 
+								- _id = GUID 2191bbe5-8380-44e7-aad5-af56a25c353a;
+								- _myState = 8192;
+								- _name = "edu_vanderbilt_dre_DAnCE_IORString";
+								- _modifiedTimeWeak = 7.30.2014::15:41:38;
+								- Tags = { IRPYRawContainer 
+									- size = 2;
+									- value = 
+									{ ITag 
+										- _id = GUID bb5520d0-1ca4-4419-82e4-c35249110902;
+										- _myState = 8192;
+										- _name = "definingFeature";
+										- _modifiedTimeWeak = 7.30.2014::15:41:38;
+										- ValueSpecifications = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IInstanceValue 
+												- _id = GUID 23e5bf64-cc77-4a99-b65d-333c061b1338;
+												- _modifiedTimeWeak = 1.2.1990::0:0:0;
+												- _value = { IHandle 
+													- _m2Class = "IAttribute";
+													- _filename = "Deployment.sbs";
+													- _subsystem = "Example::Deployment";
+													- _class = "NodeAddress";
+													- _name = "edu_vanderbilt_dre_DAnCE_IORString";
+													- _id = GUID 8c66279f-ac52-4b13-811f-0ed86676cea4;
+												}
+											}
+										}
+										- _typeOf = { IHandle 
+											- _m2Class = "IType";
+											- _filename = "PredefinedTypes.sbs";
+											- _subsystem = "PredefinedTypes";
+											- _class = "";
+											- _name = "RhpString";
+											- _id = GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35;
+										}
+										- _isOrdered = 0;
+										- _metaClass = "Attribute";
+									}
+									{ ITag 
+										- _id = GUID 378c44f2-11d3-4f52-a012-4f0c799bd854;
+										- _myState = 8192;
+										- _name = "instanceValue";
+										- _modifiedTimeWeak = 7.30.2014::15:41:38;
+										- ValueSpecifications = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IInstanceValue 
+												- _id = GUID 3583e7c5-5d35-4f8f-8bbc-a2ac6e1e1e88;
+												- _modifiedTimeWeak = 1.2.1990::0:0:0;
+												- _value = { IHandle 
+													- _m2Class = "IPart";
+													- _id = GUID 525adc10-e5f5-464c-a7f8-15b24b8732c6;
+												}
+											}
+										}
+										- _typeOf = { IHandle 
+											- _m2Class = "IType";
+											- _filename = "PredefinedTypes.sbs";
+											- _subsystem = "PredefinedTypes";
+											- _class = "";
+											- _name = "RhpString";
+											- _id = GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35;
+										}
+										- _isOrdered = 0;
+										- _metaClass = "Object";
+									}
+								}
+								- _typeOf = { IHandle 
+									- _m2Class = "IType";
+									- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+									- _subsystem = "IDLPrimitives";
+									- _class = "";
+									- _name = "CORBAString";
+									- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+								}
+								- _isOrdered = 0;
+								- _protection = iPublic;
+								- _static = 0;
+								- _isReference = 0;
+								- _isConstant = 0;
+							}
+						}
+						- _multiplicity = "";
+						- _itsStateChart = { IHandle 
+							- _m2Class = "";
+						}
+						- _classModifier = Unspecified;
+					}
+				}
+				{ IPart 
+					- _id = GUID 3ce5d2d5-1e51-4623-b55f-5da6fb3b6e61;
+					- _myState = 8192;
+					- _name = "ComputeNodeInstance";
+					- _modifiedTimeWeak = 7.30.2014::15:41:38;
+					- Tags = { IRPYRawContainer 
+						- size = 1;
+						- value = 
+						{ ITag 
+							- _id = GUID 1a9ea81c-1bb5-4899-9022-1a68dec1219b;
+							- _myState = 8192;
+							- _name = "classifier";
+							- _modifiedTimeWeak = 7.30.2014::15:41:38;
+							- ValueSpecifications = { IRPYRawContainer 
+								- size = 1;
+								- value = 
+								{ IInstanceValue 
+									- _id = GUID 8ef9747f-e588-489b-b352-f21baab6cd36;
+									- _modifiedTimeWeak = 1.2.1990::0:0:0;
+									- _value = { IHandle 
+										- _m2Class = "IClass";
+										- _filename = "Deployment.sbs";
+										- _subsystem = "Example::Deployment";
+										- _class = "";
+										- _name = "ComputeNode";
+										- _id = GUID b8c28d27-9820-4932-9cad-837a75f52d11;
+									}
+								}
+							}
+							- _typeOf = { IHandle 
+								- _m2Class = "IType";
+								- _filename = "PredefinedTypes.sbs";
+								- _subsystem = "PredefinedTypes";
+								- _class = "";
+								- _name = "RhpString";
+								- _id = GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35;
+							}
+							- _isOrdered = 0;
+							- _metaClass = "Class";
+						}
+					}
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _id = GUID dd4f6a21-f248-4da3-88d5-aabf1cbcb025;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "";
+					}
+					- _implicitClass = { IClass 
+						- _id = GUID dd4f6a21-f248-4da3-88d5-aabf1cbcb025;
+						- _myState = 10240;
+						- _name = "ComputeNodeInstance";
+						- _modifiedTimeWeak = 7.30.2014::15:41:38;
+						- weakCGTime = 7.30.2014::15:41:38;
+						- strongCGTime = 7.30.2014::15:41:38;
+						- Attrs = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IAttribute 
+								- _id = GUID 752e3a6e-1f0c-4e52-a74b-2015bba502a9;
+								- _myState = 8192;
+								- _name = "address";
+								- _modifiedTimeWeak = 7.30.2014::15:41:38;
+								- Tags = { IRPYRawContainer 
+									- size = 2;
+									- value = 
+									{ ITag 
+										- _id = GUID cc1ee745-ab95-408c-902a-348c00b36393;
+										- _myState = 8192;
+										- _name = "definingFeature";
+										- _modifiedTimeWeak = 7.30.2014::15:41:38;
+										- ValueSpecifications = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IInstanceValue 
+												- _id = GUID cbd2c3bf-b9f4-4d1c-b65d-448f7990f50b;
+												- _modifiedTimeWeak = 1.2.1990::0:0:0;
+												- _value = { IHandle 
+													- _m2Class = "IAttribute";
+													- _filename = "Deployment.sbs";
+													- _subsystem = "Example::Deployment";
+													- _class = "ComputeNode";
+													- _name = "address";
+													- _id = GUID 39116bc6-1704-40e6-a02b-61ce2e0a5624;
+												}
+											}
+										}
+										- _typeOf = { IHandle 
+											- _m2Class = "IType";
+											- _filename = "PredefinedTypes.sbs";
+											- _subsystem = "PredefinedTypes";
+											- _class = "";
+											- _name = "RhpString";
+											- _id = GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35;
+										}
+										- _isOrdered = 0;
+										- _metaClass = "Attribute";
+									}
+									{ ITag 
+										- _id = GUID 03357144-3b48-44d4-9fe7-6a7c3b6f75f6;
+										- _myState = 8192;
+										- _name = "instanceValue";
+										- _modifiedTimeWeak = 7.30.2014::15:41:38;
+										- ValueSpecifications = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IInstanceValue 
+												- _id = GUID 61ea6e32-2348-4551-8e19-95caeb1bf63f;
+												- _modifiedTimeWeak = 1.2.1990::0:0:0;
+												- _value = { IHandle 
+													- _m2Class = "IPart";
+													- _id = GUID 1b2bbe3f-6eac-40f5-b773-9960eb228422;
+												}
+											}
+										}
+										- _typeOf = { IHandle 
+											- _m2Class = "IType";
+											- _filename = "PredefinedTypes.sbs";
+											- _subsystem = "PredefinedTypes";
+											- _class = "";
+											- _name = "RhpString";
+											- _id = GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35;
+										}
+										- _isOrdered = 0;
+										- _metaClass = "Object";
+									}
+								}
+								- _typeOf = { IHandle 
+									- _m2Class = "IType";
+									- _filename = "$OMROOT\\Profiles\\CX\\IDLPrimitives.sbs";
+									- _subsystem = "IDLPrimitives";
+									- _class = "";
+									- _name = "CORBAString";
+									- _id = GUID 70cde620-589b-401b-98dc-bcee52325ace;
+								}
+								- _isOrdered = 0;
+								- _protection = iPublic;
+								- _static = 0;
+								- _isReference = 0;
+								- _isConstant = 0;
+							}
+						}
+						- _multiplicity = "";
+						- _itsStateChart = { IHandle 
+							- _m2Class = "";
+						}
+						- _classModifier = Unspecified;
+					}
+				}
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 7.30.2014::15:41:38;
+}
+

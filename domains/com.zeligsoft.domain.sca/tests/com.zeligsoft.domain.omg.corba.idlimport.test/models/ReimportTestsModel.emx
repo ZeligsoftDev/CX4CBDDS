@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:scadomain="http://www.zeligsoft.com/zdl/2008/SCADomain/1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xsi:schemaLocation="http://www.zeligsoft.com/zdl/2008/SCADomain/1 pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeoo0xOEd2INdt7Ch5VKg">
+  <uml:Model xmi:id="_NRAMoAwOEdmFcaeZXPdWAQ" name="ReimportTestsModel">
+    <eAnnotations xmi:id="_KNBN0F55EeKrWL0xDEkQXQ" source="cx.migration">
+      <details xmi:id="_KNBN0V55EeKrWL0xDEkQXQ" key="version" value="3.6.2"/>
+      <details xmi:id="_KNBN0l55EeKrWL0xDEkQXQ" key="date" value="1417720308855"/>
+    </eAnnotations>
+    <packageImport xmi:id="_UeIAJtCzEdqK7KjEh4hvHw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_yuNc4GCTEd2SLu3A_eDD4A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_FmNkyVKKEd2qDNqT9_uj3A"/>
+    </packageImport>
+    <packageImport xmi:id="_2ULeAGCTEd2SLu3A_eDD4A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_FmFo8FKKEd2qDNqT9_uj3A"/>
+    </packageImport>
+    <packageImport xmi:id="_StFNAGr3Ed2XQPRO-zUD1A">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/SCALibrary.library.uml#_HIhIAGrTEd2kob3R8-spzQ"/>
+    </packageImport>
+    <packageImport xmi:id="_YUmYEHUcEd2Cne2lISz2GA">
+      <importedPackage xmi:type="uml:Model" href="pathmap://SCA_LIBRARIES/SCABuild.library.uml#_ol6DIGSkEd2ePabsGOrjAw"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_gk4PAb2EEd61GPRyD0yAAA" name="modelConfiguration">
+      <classifier xmi:type="uml:Class" href="pathmap://SCA_LIBRARIES/SCA.uml#__EXrQP_hEeCCmLpCbcuD7A"/>
+      <slot xmi:id="_ZVpxYHvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_LIBRARIES/SCA.uml#_B8FfQP_iEeCCmLpCbcuD7A"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_ZVqYcHvpEeS8spAsUHvnSw" value="scx">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+      <slot xmi:id="_ZVq_gHvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_LIBRARIES/SCA.uml#_dgr3gHTPEeScAu3E-QvDcA"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_ZVq_gXvpEeS8spAsUHvnSw" value="">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+      <slot xmi:id="_ZVrmkHvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://SCA_LIBRARIES/SCA.uml#_04-zoHTPEeScAu3E-QvDcA"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_ZVrmkXvpEeS8spAsUHvnSw" value="_s">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+      <slot xmi:id="_ZVsNoHvpEeS8spAsUHvnSw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_qzbt8KULEd2lg4YL0MvrHw"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_ZVsNoXvpEeS8spAsUHvnSw" value="ReimportTestsModel_generatedSRC">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_oJ6toL2EEd61GPRyD0yAAA" name="Comp">
+      <eAnnotations xmi:id="_oNfmEL2EEd61GPRyD0yAAA" source="uml2.diagrams">
+        <contents xmi:type="notation:StandardDiagram" xmi:id="_oNyhAL2EEd61GPRyD0yAAA" type="Component" element="_oJ6toL2EEd61GPRyD0yAAA" name="Comp" measurementUnit="Himetric">
+          <children xmi:type="umlnotation:UMLComponent" xmi:id="_oW4LkL2EEd61GPRyD0yAAA" element="_oKgjgL2EEd61GPRyD0yAAA" fontHeight="8" showListStereotype="None" lineColor="14263149" showWhiteBox="true">
+            <children xmi:type="notation:DecorationNode" xmi:id="_oXB8kL2EEd61GPRyD0yAAA" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_oXB8kb2EEd61GPRyD0yAAA" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_oXB8kr2EEd61GPRyD0yAAA" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_oXB8k72EEd61GPRyD0yAAA" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_oXB8lL2EEd61GPRyD0yAAA" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_oXB8lb2EEd61GPRyD0yAAA" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_oXB8lr2EEd61GPRyD0yAAA" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_oXB8mL2EEd61GPRyD0yAAA" visible="false" type="OperationCompartment"/>
+            <children xmi:type="notation:ListCompartment" xmi:id="_oXB8mr2EEd61GPRyD0yAAA" visible="false" type="RealizationListCompartment"/>
+            <children xmi:type="notation:ListCompartment" xmi:id="_oXLGgL2EEd61GPRyD0yAAA" visible="false" type="RequiredInterfaceListCompartment"/>
+            <children xmi:type="notation:ListCompartment" xmi:id="_oXLGgr2EEd61GPRyD0yAAA" visible="false" type="ProvidedInterfaceListCompartment"/>
+            <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_oXLGhL2EEd61GPRyD0yAAA" visible="false" type="StructureCompartment"/>
+            <children xmi:type="notation:ListCompartment" xmi:id="_oXnycL2EEd61GPRyD0yAAA" type="PortOperationsListCompartment"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oW4Lkr2EEd61GPRyD0yAAA" x="2645" y="3968"/>
+          </children>
+          <children xmi:type="umlnotation:UMLComponent" xmi:id="_oeU3YL2EEd61GPRyD0yAAA" element="_oLZ7Yb2EEd61GPRyD0yAAA" fontHeight="8" showListStereotype="None" lineColor="14263149" showWhiteBox="true">
+            <children xmi:type="notation:DecorationNode" xmi:id="_oeU3Y72EEd61GPRyD0yAAA" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_oeU3ZL2EEd61GPRyD0yAAA" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_oeU3Zb2EEd61GPRyD0yAAA" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_oeU3Zr2EEd61GPRyD0yAAA" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_oeU3Z72EEd61GPRyD0yAAA" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_oeU3aL2EEd61GPRyD0yAAA" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_oeU3ab2EEd61GPRyD0yAAA" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_oeU3a72EEd61GPRyD0yAAA" visible="false" type="OperationCompartment"/>
+            <children xmi:type="notation:ListCompartment" xmi:id="_oeU3bb2EEd61GPRyD0yAAA" visible="false" type="RealizationListCompartment"/>
+            <children xmi:type="notation:ListCompartment" xmi:id="_oeU3b72EEd61GPRyD0yAAA" visible="false" type="RequiredInterfaceListCompartment"/>
+            <children xmi:type="notation:ListCompartment" xmi:id="_oeU3cb2EEd61GPRyD0yAAA" visible="false" type="ProvidedInterfaceListCompartment"/>
+            <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_oeU3c72EEd61GPRyD0yAAA" visible="false" type="StructureCompartment"/>
+            <children xmi:type="umlnotation:UMLShape" xmi:id="_oeeoYL2EEd61GPRyD0yAAA" type="InterfaceProvided" fontHeight="8" showListStereotype="None" lineColor="14263149">
+              <children xmi:type="notation:DecorationNode" xmi:id="_oeeoY72EEd61GPRyD0yAAA" type="InterfaceProvidedLabel">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_oeeoZb2EEd61GPRyD0yAAA" type="InterfaceProvidedLabelTextCompartment"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oeeoZL2EEd61GPRyD0yAAA" y="-265"/>
+              </children>
+              <element xmi:type="uml:Interface" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_et2HIExhEd2INdt7Ch5VKg"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oeeoYr2EEd61GPRyD0yAAA"/>
+            </children>
+            <children xmi:type="umlnotation:UMLShape" xmi:id="_snkksL2EEd61GPRyD0yAAA" element="_smOg4L2EEd61GPRyD0yAAA" fontHeight="8" showListStereotype="None" showListVisibility="None" showListSignature="true" fillColor="16116705" lineColor="14263149">
+              <eAnnotations xmi:id="_snkks72EEd61GPRyD0yAAA" source="com.ibm.xtools.uml.ui.diagram.internal.styles">
+                <details xmi:id="_snkktL2EEd61GPRyD0yAAA" key="ShowTypeLabelStyle" value="Represents Name and Type Name"/>
+              </eAnnotations>
+              <children xmi:type="notation:DecorationNode" xmi:id="_snkktb2EEd61GPRyD0yAAA" type="PortName">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_snkkt72EEd61GPRyD0yAAA" type="PartTextCompartment"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_snkktr2EEd61GPRyD0yAAA" y="-133"/>
+              </children>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_snkksr2EEd61GPRyD0yAAA"/>
+            </children>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oeU3Yr2EEd61GPRyD0yAAA" x="2645" y="1322"/>
+          </children>
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_ofEeQL2EEd61GPRyD0yAAA" element="_oMJiQL2EEd61GPRyD0yAAA" fontHeight="8" showListStereotype="None" lineColor="14263149">
+            <children xmi:type="notation:DecorationNode" xmi:id="_ofEeQ72EEd61GPRyD0yAAA" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_ofEeRL2EEd61GPRyD0yAAA" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_ofEeRb2EEd61GPRyD0yAAA" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_ofEeRr2EEd61GPRyD0yAAA" type="Kind"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_ofEeR72EEd61GPRyD0yAAA" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_ofEeSL2EEd61GPRyD0yAAA" type="Parent"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_ofEeSb2EEd61GPRyD0yAAA" type="AttributeCompartment"/>
+            <children xmi:type="notation:SemanticListCompartment" xmi:id="_ofEeS72EEd61GPRyD0yAAA" visible="false" type="OperationCompartment"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ofEeQr2EEd61GPRyD0yAAA" x="10583" y="3968"/>
+          </children>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_of0sML2EEd61GPRyD0yAAA" element="_oL2nUb2EEd61GPRyD0yAAA" source="_oW4LkL2EEd61GPRyD0yAAA" target="_oeU3YL2EEd61GPRyD0yAAA" lineColor="8421504" showStereotype="Text">
+            <children xmi:type="notation:DecorationNode" xmi:id="_of0sM72EEd61GPRyD0yAAA" type="NameLabel">
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_of0sNb2EEd61GPRyD0yAAA" type="Stereotype"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_of0sNr2EEd61GPRyD0yAAA" type="Name"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_of0sNL2EEd61GPRyD0yAAA" y="-186"/>
+            </children>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_of0sMr2EEd61GPRyD0yAAA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+          </edges>
+          <edges xmi:type="umlnotation:UMLConnector" xmi:id="_ogHnIL2EEd61GPRyD0yAAA" element="_oMTTQb2EEd61GPRyD0yAAA" source="_ofEeQL2EEd61GPRyD0yAAA" target="_oW4LkL2EEd61GPRyD0yAAA" lineColor="8421504">
+            <children xmi:type="notation:DecorationNode" xmi:id="_ogHnI72EEd61GPRyD0yAAA" type="KindLabel">
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_ogHnJb2EEd61GPRyD0yAAA" type="Stereotype"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_ogHnJ72EEd61GPRyD0yAAA" type="Kind"/>
+              <children xmi:type="notation:BasicDecorationNode" xmi:id="_ogHnJr2EEd61GPRyD0yAAA" type="Name"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ogHnJL2EEd61GPRyD0yAAA" y="-186"/>
+            </children>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ogHnIr2EEd61GPRyD0yAAA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+          </edges>
+        </contents>
+      </eAnnotations>
+      <packagedElement xmi:type="uml:Component" xmi:id="_oKgjgL2EEd61GPRyD0yAAA" name="Comp">
+        <generalization xmi:id="_oL2nUb2EEd61GPRyD0yAAA" general="_oLZ7Yb2EEd61GPRyD0yAAA"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMmXEV55EeKrWL0xDEkQXQ" name="_ctorImpl" visibility="private" specification="_KMlwAF55EeKrWL0xDEkQXQ"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMnlMF55EeKrWL0xDEkQXQ" name="_dtorImpl" visibility="private" specification="_KMm-IV55EeKrWL0xDEkQXQ"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMozUF55EeKrWL0xDEkQXQ" name="_sourceImpl" visibility="private" specification="_KMnlMl55EeKrWL0xDEkQXQ"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMpaYV55EeKrWL0xDEkQXQ" name="_headerImpl" visibility="private" specification="_KMozUl55EeKrWL0xDEkQXQ"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMqogF55EeKrWL0xDEkQXQ" name="_header_defnImpl" visibility="private" specification="_KMqBcV55EeKrWL0xDEkQXQ"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMr2oF55EeKrWL0xDEkQXQ" name="startImpl" visibility="private" specification="_ojiukL2EEd61GPRyD0yAAA"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMsdsV55EeKrWL0xDEkQXQ" name="stopImpl" visibility="private" specification="_ojiukr2EEd61GPRyD0yAAA"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMtEwF55EeKrWL0xDEkQXQ" name="initializeImpl" visibility="private" specification="_ojiulL2EEd61GPRyD0yAAA"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMtEwl55EeKrWL0xDEkQXQ" name="releaseObjectImpl" visibility="private" specification="_ojiulr2EEd61GPRyD0yAAA"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMtr0V55EeKrWL0xDEkQXQ" name="runTestImpl" visibility="private" specification="_ojsfkL2EEd61GPRyD0yAAA">
+          <ownedParameter xmi:id="_KMtr0l55EeKrWL0xDEkQXQ" name="testid">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_FpjWgExREd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_KMtr0155EeKrWL0xDEkQXQ" name="testValues" direction="inout">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_w4A8EExiEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMuS4F55EeKrWL0xDEkQXQ" name="configureImpl" visibility="private" specification="_ojsflL2EEd61GPRyD0yAAA">
+          <ownedParameter xmi:id="_KMuS4V55EeKrWL0xDEkQXQ" name="configProperties">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_w4A8EExiEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMuS4155EeKrWL0xDEkQXQ" name="queryImpl" visibility="private" specification="_ojsfl72EEd61GPRyD0yAAA">
+          <ownedParameter xmi:id="_KMuS5F55EeKrWL0xDEkQXQ" name="configProperties" direction="inout">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_w4A8EExiEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMu58V55EeKrWL0xDEkQXQ" name="getPortImpl" visibility="private" specification="_ojsfmr2EEd61GPRyD0yAAA">
+          <ownedParameter xmi:id="_KMu58l55EeKrWL0xDEkQXQ" name="Parameter1" direction="return">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_5iZXcExQEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_KMu58155EeKrWL0xDEkQXQ" name="name">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KMvhAV55EeKrWL0xDEkQXQ" name="SCAPort_yImpl" visibility="private" specification="_VnZB0EvHEd-4u8HIrIc0Kg">
+          <ownedParameter xmi:id="_KMvhAl55EeKrWL0xDEkQXQ" name="param1">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_KMvhA155EeKrWL0xDEkQXQ" name="param2" direction="out">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_zlEdYExQEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_zs-MYFR2EeSx-d3TBjQpfQ" name="Parameter1">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+        </ownedBehavior>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_zuczEFR2EeSx-d3TBjQpfQ" name="_header_endImpl" visibility="private" specification="_zubk8FR2EeSx-d3TBjQpfQ"/>
+        <ownedOperation xmi:id="_ojiukL2EEd61GPRyD0yAAA" name="start" visibility="private" method="_KMr2oF55EeKrWL0xDEkQXQ">
+          <raisedException xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_AGvNIE0gEd2_sIJPOmkZ7w"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_ojiukr2EEd61GPRyD0yAAA" name="stop" visibility="private" method="_KMsdsV55EeKrWL0xDEkQXQ">
+          <raisedException xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_BquIYE0gEd2_sIJPOmkZ7w"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_ojiulL2EEd61GPRyD0yAAA" name="initialize" visibility="private" method="_KMtEwF55EeKrWL0xDEkQXQ">
+          <raisedException xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_wzD_0E0AEd2ZXcdebtSTbw"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_ojiulr2EEd61GPRyD0yAAA" name="releaseObject" visibility="private" method="_KMtEwl55EeKrWL0xDEkQXQ">
+          <raisedException xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_4z9UIE0AEd2ZXcdebtSTbw"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_ojsfkL2EEd61GPRyD0yAAA" name="runTest" visibility="private" method="_KMtr0V55EeKrWL0xDEkQXQ">
+          <ownedParameter xmi:id="_ojsfkb2EEd61GPRyD0yAAA" name="testid">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_FpjWgExREd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_ojsfkr2EEd61GPRyD0yAAA" name="testValues" direction="inout">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_w4A8EExiEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <raisedException xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_rb-WoE0REd2ZXcdebtSTbw"/>
+          <raisedException xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_HuTh4ExkEd2INdt7Ch5VKg"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_ojsflL2EEd61GPRyD0yAAA" name="configure" visibility="private" method="_KMuS4F55EeKrWL0xDEkQXQ">
+          <ownedParameter xmi:id="_ojsflb2EEd61GPRyD0yAAA" name="configProperties">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_w4A8EExiEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <raisedException xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#__p1-IE0REd2ZXcdebtSTbw"/>
+          <raisedException xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_IxqeQE0SEd2ZXcdebtSTbw"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_ojsfl72EEd61GPRyD0yAAA" name="query" visibility="private" method="_KMuS4155EeKrWL0xDEkQXQ">
+          <ownedParameter xmi:id="_ojsfmL2EEd61GPRyD0yAAA" name="configProperties" direction="inout">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_w4A8EExiEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <raisedException xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_HuTh4ExkEd2INdt7Ch5VKg"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_ojsfmr2EEd61GPRyD0yAAA" name="getPort" visibility="private" method="_KMu58V55EeKrWL0xDEkQXQ">
+          <ownedParameter xmi:id="_ojsfm72EEd61GPRyD0yAAA" name="Parameter1" direction="return">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_5iZXcExQEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_ojsfnL2EEd61GPRyD0yAAA" name="name">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <raisedException xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_eqL90E0fEd2_sIJPOmkZ7w"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_VnZB0EvHEd-4u8HIrIc0Kg" name="SCAPort_y" visibility="private" method="_KMvhAV55EeKrWL0xDEkQXQ" raisedException="_AFMEokvHEd-tmeLJg8fZuA">
+          <ownedParameter xmi:id="_VnZB0UvHEd-4u8HIrIc0Kg" name="param1">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_VnZB0kvHEd-4u8HIrIc0Kg" name="param2" direction="out">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_zlEdYExQEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+          <ownedParameter xmi:id="_zs8-QFR2EeSx-d3TBjQpfQ" name="Parameter1">
+            <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_KMlwAF55EeKrWL0xDEkQXQ" name="_ctor" visibility="private" method="_KMmXEV55EeKrWL0xDEkQXQ"/>
+        <ownedOperation xmi:id="_KMm-IV55EeKrWL0xDEkQXQ" name="_dtor" visibility="private" method="_KMnlMF55EeKrWL0xDEkQXQ"/>
+        <ownedOperation xmi:id="_KMnlMl55EeKrWL0xDEkQXQ" name="_source" visibility="private" method="_KMozUF55EeKrWL0xDEkQXQ"/>
+        <ownedOperation xmi:id="_KMozUl55EeKrWL0xDEkQXQ" name="_header" visibility="private" method="_KMpaYV55EeKrWL0xDEkQXQ"/>
+        <ownedOperation xmi:id="_KMqBcV55EeKrWL0xDEkQXQ" name="_header_defn" visibility="private" method="_KMqogF55EeKrWL0xDEkQXQ"/>
+        <ownedOperation xmi:id="_zubk8FR2EeSx-d3TBjQpfQ" name="_header_end" visibility="private" method="_zuczEFR2EeSx-d3TBjQpfQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_oLZ7Yb2EEd61GPRyD0yAAA" name="CompInterface" clientDependency="_oL2nUL2EEd61GPRyD0yAAA">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_smOg4L2EEd61GPRyD0yAAA" name="SCAPort" type="_AHkqQUvHEd-tmeLJg8fZuA" aggregation="composite"/>
+        <interfaceRealization xmi:id="_oL2nUL2EEd61GPRyD0yAAA" client="_oLZ7Yb2EEd61GPRyD0yAAA">
+          <supplier xmi:type="uml:Interface" href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_et2HIExhEd2INdt7Ch5VKg"/>
+          <contract href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_et2HIExhEd2INdt7Ch5VKg"/>
+        </interfaceRealization>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Artifact" xmi:id="_oMJiQL2EEd61GPRyD0yAAA" name="CompImpl" clientDependency="_oMTTQb2EEd61GPRyD0yAAA">
+        <manifestation xmi:id="_oMTTQb2EEd61GPRyD0yAAA" supplier="_oKgjgL2EEd61GPRyD0yAAA" client="_oMJiQL2EEd61GPRyD0yAAA" utilizedElement="_oKgjgL2EEd61GPRyD0yAAA"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_ACzfAEvHEd-tmeLJg8fZuA" name="IDL_Import_Results">
+      <packagedElement xmi:type="uml:Package" xmi:id="_ACzfA0vHEd-tmeLJg8fZuA" name="reimport">
+        <packagedElement xmi:type="uml:Package" xmi:id="_ACzfBUvHEd-tmeLJg8fZuA" name="Reimport">
+          <packagedElement xmi:type="uml:DataType" xmi:id="_AC8o8EvHEd-tmeLJg8fZuA" name="TestStruct">
+            <ownedAttribute xmi:id="_AC8o8UvHEd-tmeLJg8fZuA" name="x">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_ADQK8EvHEd-tmeLJg8fZuA" name="y">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_zlEdYExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Enumeration" xmi:id="_ADZU4EvHEd-tmeLJg8fZuA" name="TestEnum">
+            <ownedLiteral xmi:id="_zWd6EFonEeC4rZdj0dRXIw" name="FIELD1" classifier="_ADZU4EvHEd-tmeLJg8fZuA"/>
+            <ownedLiteral xmi:id="_zWd6EVonEeC4rZdj0dRXIw" name="FIELD2" classifier="_ADZU4EvHEd-tmeLJg8fZuA"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_AFMEokvHEd-tmeLJg8fZuA" name="TestException">
+            <ownedAttribute xmi:id="_AFMEo0vHEd-tmeLJg8fZuA" name="code">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_AHkqQUvHEd-tmeLJg8fZuA" name="TestInterface">
+            <ownedAttribute xmi:id="_zW3isFonEeC4rZdj0dRXIw" name="testReadonly">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_83uJ8ExPEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_AHt0MEvHEd-tmeLJg8fZuA" name="x">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedOperation xmi:id="_AKZ70EvHEd-tmeLJg8fZuA" name="y" raisedException="_AFMEokvHEd-tmeLJg8fZuA">
+              <ownedParameter xmi:id="_AKZ70UvHEd-tmeLJg8fZuA" name="param1">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_AMMEgEvHEd-tmeLJg8fZuA" name="param2" direction="out">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_zlEdYExQEd2INdt7Ch5VKg"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_zYeFMFonEeC4rZdj0dRXIw" name="Parameter1" direction="return">
+                <type xmi:type="uml:DataType" href="pathmap://SCA_LIBRARIES/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+              </ownedParameter>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_APLHEEvHEd-tmeLJg8fZuA" name="TestUnion">
+            <ownedAttribute xmi:id="_zY1RkFonEeC4rZdj0dRXIw" name="switchType">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_AQgj0UvHEd-tmeLJg8fZuA" name="mem1">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_AQgj00vHEd-tmeLJg8fZuA" name="mem2">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_AQgj1UvHEd-tmeLJg8fZuA" name="mem3">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_7MfhwExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+          </packagedElement>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_AQgj10vHEd-tmeLJg8fZuA" name="LongSequence">
+            <ownedAttribute xmi:id="_zY-bgVonEeC4rZdj0dRXIw" name="member">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+          </packagedElement>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_AQqU1EvHEd-tmeLJg8fZuA" name="FooType">
+            <generalization xmi:id="_zZAQsVonEeC4rZdj0dRXIw">
+              <general xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+            </generalization>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_zWo5MFonEeC4rZdj0dRXIw" name="Reimport_Constants">
+            <ownedAttribute xmi:id="_zWpgQVonEeC4rZdj0dRXIw" name="BOB">
+              <type xmi:type="uml:DataType" href="pathmap://SCA_DOMAIN/IDLPrimitives.library.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_zWuYwFonEeC4rZdj0dRXIw" value="75"/>
+            </ownedAttribute>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_UeIAINCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAIdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_UeIAItCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAI9CzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_UeIAJNCzEdqK7KjEh4hvHw">
+      <eAnnotations xmi:id="_UeIAJdCzEdqK7KjEh4hvHw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_QcgrAGimEd2OEpKJuElDmQ">
+      <eAnnotations xmi:id="_QcgrAWimEd2OEpKJuElDmQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeoo0xOEd2INdt7Ch5VKg"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://SCA_PROFILES/SCADomain.profile.uml#_WVeooExOEd2INdt7Ch5VKg"/>
+    </profileApplication>
+  </uml:Model>
+  <scadomain:SCAComponent xmi:id="_oLQKYL2EEd61GPRyD0yAAA" base_StructuredClassifier="_oKgjgL2EEd61GPRyD0yAAA" base_Component="_oKgjgL2EEd61GPRyD0yAAA" id="DCE:0f32763c-1145-4206-8b2a-72325c976fc4" base_NamedElement="_oKgjgL2EEd61GPRyD0yAAA">
+    <author xmi:id="_oLZ7YL2EEd61GPRyD0yAAA" company="" webpage="">
+      <name>tniro</name>
+    </author>
+  </scadomain:SCAComponent>
+  <scadomain:SCAComponentInterface xmi:id="_oLjsYL2EEd61GPRyD0yAAA" base_StructuredClassifier="_oLZ7Yb2EEd61GPRyD0yAAA" base_Component="_oLZ7Yb2EEd61GPRyD0yAAA" base_NamedElement="_oLZ7Yb2EEd61GPRyD0yAAA" corbaversion="2.2">
+    <repositoryId href="pathmap://SCA_DOMAIN/SCA_2_2_2.library.uml#_vpdgO8fBEd2D1-xs8ScBFA"/>
+  </scadomain:SCAComponentInterface>
+  <scadomain:SCAImplementation xmi:id="_oMTTQL2EEd61GPRyD0yAAA" id="DCE:b84877f0-be1a-4e83-b932-590c7e696c76" base_NamedElement="_oMJiQL2EEd61GPRyD0yAAA" base_Artifact="_oMJiQL2EEd61GPRyD0yAAA">
+    <code xmi:id="_oMTTQ72EEd61GPRyD0yAAA" file="Comp"/>
+  </scadomain:SCAImplementation>
+  <scadomain:SCAComponentImplementation xmi:id="_oMTTQr2EEd61GPRyD0yAAA" base_Manifestation="_oMTTQb2EEd61GPRyD0yAAA"/>
+  <scadomain:WorkerFunction xmi:id="_ojiukb2EEd61GPRyD0yAAA" base_Operation="_ojiukL2EEd61GPRyD0yAAA">
+    <portOperation href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_iqqUME0gEd2_sIJPOmkZ7w"/>
+  </scadomain:WorkerFunction>
+  <scadomain:WorkerFunction xmi:id="_ojiuk72EEd61GPRyD0yAAA" base_Operation="_ojiukr2EEd61GPRyD0yAAA">
+    <portOperation href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_lUsRgE0gEd2_sIJPOmkZ7w"/>
+  </scadomain:WorkerFunction>
+  <scadomain:WorkerFunction xmi:id="_ojiulb2EEd61GPRyD0yAAA" base_Operation="_ojiulL2EEd61GPRyD0yAAA">
+    <portOperation href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_DAL3kE0BEd2ZXcdebtSTbw"/>
+  </scadomain:WorkerFunction>
+  <scadomain:WorkerFunction xmi:id="_ojiul72EEd61GPRyD0yAAA" base_Operation="_ojiulr2EEd61GPRyD0yAAA">
+    <portOperation href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_GnmDIE0BEd2ZXcdebtSTbw"/>
+  </scadomain:WorkerFunction>
+  <scadomain:WorkerFunction xmi:id="_ojsfk72EEd61GPRyD0yAAA" base_Operation="_ojsfkL2EEd61GPRyD0yAAA">
+    <portOperation href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_x9NPAE0REd2ZXcdebtSTbw"/>
+  </scadomain:WorkerFunction>
+  <scadomain:WorkerFunction xmi:id="_ojsflr2EEd61GPRyD0yAAA" base_Operation="_ojsflL2EEd61GPRyD0yAAA">
+    <portOperation href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_RDsl4E0SEd2ZXcdebtSTbw"/>
+  </scadomain:WorkerFunction>
+  <scadomain:WorkerFunction xmi:id="_ojsfmb2EEd61GPRyD0yAAA" base_Operation="_ojsfl72EEd61GPRyD0yAAA">
+    <portOperation href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_pLOUoE0UEd2ZXcdebtSTbw"/>
+  </scadomain:WorkerFunction>
+  <scadomain:WorkerFunction xmi:id="_ojsfnb2EEd61GPRyD0yAAA" base_Operation="_ojsfmr2EEd61GPRyD0yAAA">
+    <portOperation href="pathmap://SCA_LIBRARIES/SCA_2_2_2.library.uml#_jtsT8E0fEd2_sIJPOmkZ7w"/>
+  </scadomain:WorkerFunction>
+  <scadomain:SCAPort xmi:id="_sm-HwL2EEd61GPRyD0yAAA" base_Port="_smOg4L2EEd61GPRyD0yAAA" base_NamedElement="_smOg4L2EEd61GPRyD0yAAA"/>
+  <scadomain:WorkerFunction xmi:id="_snaztL2EEd61GPRyD0yAAA" receivingPort="_sm-HwL2EEd61GPRyD0yAAA"/>
+  <scadomain:WorkerFunction xmi:id="_MefZFEvGEd-4u8HIrIc0Kg" receivingPort="_sm-HwL2EEd61GPRyD0yAAA"/>
+  <scadomain:IDLFile xmi:id="_ACzfBEvHEd-tmeLJg8fZuA" base_Package="_ACzfA0vHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBACase xmi:id="_AQgj0kvHEd-tmeLJg8fZuA" base_NamedElement="_AQgj0UvHEd-tmeLJg8fZuA" base_Property="_AQgj0UvHEd-tmeLJg8fZuA">
+    <label>1</label>
+  </scadomain:CORBACase>
+  <scadomain:CORBACase xmi:id="_AQgj1EvHEd-tmeLJg8fZuA" base_NamedElement="_AQgj00vHEd-tmeLJg8fZuA" base_Property="_AQgj00vHEd-tmeLJg8fZuA">
+    <label>2</label>
+  </scadomain:CORBACase>
+  <scadomain:CORBACase xmi:id="_AQgj1kvHEd-tmeLJg8fZuA" base_NamedElement="_AQgj1UvHEd-tmeLJg8fZuA" base_Property="_AQgj1UvHEd-tmeLJg8fZuA">
+    <label>default</label>
+  </scadomain:CORBACase>
+  <scadomain:CORBASequence xmi:id="_AQqU0EvHEd-tmeLJg8fZuA" base_NamedElement="_AQgj10vHEd-tmeLJg8fZuA" base_DataType="_AQgj10vHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBATypeDef xmi:id="_AQqU1UvHEd-tmeLJg8fZuA" base_NamedElement="_AQqU1EvHEd-tmeLJg8fZuA" base_DataType="_AQqU1EvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAModule xmi:id="_AQqU10vHEd-tmeLJg8fZuA" base_NamedElement="_ACzfBUvHEd-tmeLJg8fZuA" base_Package="_ACzfBUvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAStruct xmi:id="_AQqU2EvHEd-tmeLJg8fZuA" base_NamedElement="_AC8o8EvHEd-tmeLJg8fZuA" base_DataType="_AC8o8EvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAField xmi:id="_AQqU2UvHEd-tmeLJg8fZuA" base_NamedElement="_AC8o8UvHEd-tmeLJg8fZuA" base_Property="_AC8o8UvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAField xmi:id="_AQqU2kvHEd-tmeLJg8fZuA" base_NamedElement="_ADQK8EvHEd-tmeLJg8fZuA" base_Property="_ADQK8EvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAEnum xmi:id="_AQqU20vHEd-tmeLJg8fZuA" base_NamedElement="_ADZU4EvHEd-tmeLJg8fZuA" base_Enumeration="_ADZU4EvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAException xmi:id="_AQqU3EvHEd-tmeLJg8fZuA" base_NamedElement="_AFMEokvHEd-tmeLJg8fZuA" base_DataType="_AFMEokvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAField xmi:id="_AQqU3UvHEd-tmeLJg8fZuA" base_NamedElement="_AFMEo0vHEd-tmeLJg8fZuA" base_Property="_AFMEo0vHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAConstant xmi:id="_AQqU3kvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAInterface xmi:id="_AQqU30vHEd-tmeLJg8fZuA" base_Interface="_AHkqQUvHEd-tmeLJg8fZuA" base_NamedElement="_AHkqQUvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAAttribute xmi:id="_AQqU4EvHEd-tmeLJg8fZuA" base_NamedElement="_AHt0MEvHEd-tmeLJg8fZuA" setraises="_AQqU3EvHEd-tmeLJg8fZuA" getraises="_AQqU3EvHEd-tmeLJg8fZuA" base_Property="_AHt0MEvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAOperation xmi:id="_AQqU4UvHEd-tmeLJg8fZuA" base_NamedElement="_AKZ70EvHEd-tmeLJg8fZuA" base_Operation="_AKZ70EvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAParameter xmi:id="_AQqU4kvHEd-tmeLJg8fZuA" base_NamedElement="_AKZ70UvHEd-tmeLJg8fZuA" base_Parameter="_AKZ70UvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAParameter xmi:id="_AQqU40vHEd-tmeLJg8fZuA" base_NamedElement="_AMMEgEvHEd-tmeLJg8fZuA" base_Parameter="_AMMEgEvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAUnion xmi:id="_AQqU5EvHEd-tmeLJg8fZuA" base_NamedElement="_APLHEEvHEd-tmeLJg8fZuA" base_DataType="_APLHEEvHEd-tmeLJg8fZuA"/>
+  <scadomain:WorkerFunction xmi:id="_VnZB1EvHEd-4u8HIrIc0Kg" receivingPort="_sm-HwL2EEd61GPRyD0yAAA" base_Operation="_VnZB0EvHEd-4u8HIrIc0Kg" portOperation="_AKZ70EvHEd-tmeLJg8fZuA"/>
+  <scadomain:CORBAConstants xmi:id="_zWpgQFonEeC4rZdj0dRXIw" base_NamedElement="_zWo5MFonEeC4rZdj0dRXIw" base_Class="_zWo5MFonEeC4rZdj0dRXIw"/>
+  <scadomain:CORBAConstant xmi:id="_zZCs91onEeC4rZdj0dRXIw" base_NamedElement="_zWpgQVonEeC4rZdj0dRXIw" base_Property="_zWpgQVonEeC4rZdj0dRXIw"/>
+  <scadomain:CORBAAttribute xmi:id="_zZDUAFonEeC4rZdj0dRXIw" base_NamedElement="_zW3isFonEeC4rZdj0dRXIw" base_Property="_zW3isFonEeC4rZdj0dRXIw"/>
+  <scadomain:WorkerFunction xmi:id="_KMmXEF55EeKrWL0xDEkQXQ" base_Operation="_KMlwAF55EeKrWL0xDEkQXQ" uuid="0bc1c7d7-ae6d-40c5-a511-229aca19a4fa"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMm-IF55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMmXEV55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunction xmi:id="_KMm-Il55EeKrWL0xDEkQXQ" base_Operation="_KMm-IV55EeKrWL0xDEkQXQ" uuid="8aa08375-274e-4316-9e3a-e75573c0b5a8"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMnlMV55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMnlMF55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunction xmi:id="_KMoMQF55EeKrWL0xDEkQXQ" base_Operation="_KMnlMl55EeKrWL0xDEkQXQ" uuid="916fd18e-0547-41c9-b6c9-801b7b5e0ebb"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMozUV55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMozUF55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunction xmi:id="_KMpaYF55EeKrWL0xDEkQXQ" base_Operation="_KMozUl55EeKrWL0xDEkQXQ" uuid="85a0ba2c-f984-41af-8711-e2dd3ed76bef"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMqBcF55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMpaYV55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunction xmi:id="_KMqBcl55EeKrWL0xDEkQXQ" base_Operation="_KMqBcV55EeKrWL0xDEkQXQ" uuid="a82f7381-9d3d-49e5-9f0a-03e8f863a61a"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMqogV55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMqogF55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMsdsF55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMr2oF55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMsdsl55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMsdsV55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMtEwV55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMtEwF55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMtr0F55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMtEwl55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMtr1F55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMtr0V55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMuS4l55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMuS4F55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMu58F55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMuS4155EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMvhAF55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMu58V55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_KMvhBV55EeKrWL0xDEkQXQ" base_OpaqueBehavior="_KMvhAV55EeKrWL0xDEkQXQ"/>
+  <scadomain:WorkerFunction xmi:id="_zucMAFR2EeSx-d3TBjQpfQ" base_Operation="_zubk8FR2EeSx-d3TBjQpfQ" uuid="d8868c1b-b3ef-4154-b903-28875ef1d237"/>
+  <scadomain:WorkerFunctionImpl xmi:id="_zuczEVR2EeSx-d3TBjQpfQ" base_OpaqueBehavior="_zuczEFR2EeSx-d3TBjQpfQ"/>
+  <scadomain:SCAModel xmi:id="_zu0mgFR2EeSx-d3TBjQpfQ" base_Model="_NRAMoAwOEdmFcaeZXPdWAQ" version="3.6.2" base_NamedElement="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+</xmi:XMI>

@@ -1,0 +1,32 @@
+/// @defgroup AMIT_RemoteImpl_comp RemoteImpl_comp
+/// @{
+/// 
+/// @file AMIT_RemoteImpl_comp.idl
+/// @brief RemoteImpl_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_COMPONENTS__REMOTE_COMP__SRC__AMIT_REMOTEIMPL_COMP_IDL
+#define CX_COMPONENTS__REMOTE_COMP__SRC__AMIT_REMOTEIMPL_COMP_IDL
+
+#pragma componentInterface "Remote_comp" 
+#include <Components.idl>
+#pragma ciao lem "AMIT_RemoteImpl_compE.idl"
+#pragma ami4ccm receptacle "AMIT::RemoteImpl_comp::Control1Client"
+#pragma ami4ccm receptacle "AMIT::RemoteImpl_comp::Control2Client"
+#include "AMIT_Control1_obj.idl"
+#include "AMIT_Control2_obj.idl"
+
+/// @namespace AMIT 
+module AMIT {
+    component RemoteImpl_comp {
+        uses AMIT::Control1_obj Control1Client;
+        uses AMIT::Control2_obj Control2Client;
+    };
+
+};
+
+#endif // CX_COMPONENTS__REMOTE_COMP__SRC__AMIT_REMOTEIMPL_COMP_IDL
+
+/// @}
+

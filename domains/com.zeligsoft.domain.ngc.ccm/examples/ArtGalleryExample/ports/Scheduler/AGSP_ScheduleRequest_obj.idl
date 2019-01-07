@@ -1,0 +1,67 @@
+/// @defgroup AGSP_ScheduleRequest_obj ScheduleRequest_obj
+/// @{
+/// 
+/// @file AGSP_ScheduleRequest_obj.idl
+/// @brief ScheduleRequest_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__SCHEDULER__AGSP_SCHEDULEREQUEST_OBJ_IDL
+#define CX_PORTS__SCHEDULER__AGSP_SCHEDULEREQUEST_OBJ_IDL
+
+#include "AGSP_Common_defn.idl"
+#pragma ciao lem "AGSP_ScheduleRequest_objE.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    ///@interface ScheduleRequest_obj 
+    interface ScheduleRequest_obj {
+
+        /// @struct SchedulerTimeRequest
+        struct SchedulerTimeRequest {
+            unsigned long long duration;
+            unsigned long long setup;
+            AGSP::SystemTime earliestStartTime;
+            AGSP::SystemTime latestEndTime;
+            unsigned long priority;
+            unsigned long count;
+            long clientID;
+            AGSP::JobID_t jobID;
+            AGSP::SystemMode modeID;
+        }; //@top-level false
+
+        /// @return
+        AGSP::JobID_t getJobID();
+
+        /// @param[in] theRequest
+        ///
+        oneway void requestTime(
+            in ScheduleRequest_obj::SchedulerTimeRequest theRequest
+            );
+
+        /// @param[in] theJobID
+        ///
+        oneway void deleteJob(
+            in AGSP::JobID_t theJobID
+            );
+
+        /// @param[in] theJobID
+        ///
+        oneway void terminateJob(
+            in AGSP::JobID_t theJobID
+            );
+
+        /// @param[in] theJobID
+        ///
+        oneway void statusJob(
+            in AGSP::JobID_t theJobID
+            );
+    };
+
+};
+
+#endif // CX_PORTS__SCHEDULER__AGSP_SCHEDULEREQUEST_OBJ_IDL
+
+/// @}
+

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zdlgen:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:zdlgen="http://www.zeligsoft.com/zdl/2008/ZDLGen" xmi:id="_U_mMgLJkEd2eS5gi4elN2w">
+  <ownedModel xmi:id="_U_v9gLJkEd2eS5gi4elN2w">
+    <element xmi:type="zdlgen:GenDomainBlock" xmi:id="_U_v9gbJkEd2eS5gi4elN2w" rsmStereotypesSuppressed="false">
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_U_v9grJkEd2eS5gi4elN2w" category="firm">
+        <domainConcept href="test_link_constraints.emx#_0grVALJhEd2eS5gi4elN2w"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Actor"/>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_U_v9g7JkEd2eS5gi4elN2w" category="firm">
+        <domainConcept href="test_link_constraints.emx#_7e9VwLJhEd2eS5gi4elN2w"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#UseCase"/>
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_U_v9hLJkEd2eS5gi4elN2w" target="_U_v9grJkEd2eS5gi4elN2w" source="_U_v9g7JkEd2eS5gi4elN2w">
+          <domainAttribute href="test_link_constraints.emx#_BrXYMLJjEd2eS5gi4elN2w"/>
+          <domainReference href="test_link_constraints.emx#_BrNnMLJjEd2eS5gi4elN2w"/>
+        </feature>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_njjRQLUUEd2Qi7FgDx1H8g" category="firm">
+        <domainConcept href="test_link_constraints.emx#_C7I8MLUPEd2Dkr9N3vQCyQ"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_njjRQbUUEd2Qi7FgDx1H8g" target="_njjRQrUUEd2Qi7FgDx1H8g" source="_njjRQLUUEd2Qi7FgDx1H8g">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#Classifier-useCase"/>
+          <domainAttribute href="test_link_constraints.emx#_OfooMbUREd2hj9yhtSDKnA"/>
+          <domainReference href="test_link_constraints.emx#_OfooMLUREd2hj9yhtSDKnA"/>
+        </feature>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_njjRQrUUEd2Qi7FgDx1H8g" category="firm">
+        <domainConcept href="test_link_constraints.emx#_EmuUQLUPEd2Dkr9N3vQCyQ"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#UseCase"/>
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_njjRQ7UUEd2Qi7FgDx1H8g" target="_njjRQLUUEd2Qi7FgDx1H8g" source="_njjRQrUUEd2Qi7FgDx1H8g">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#UseCase-subject"/>
+          <domainAttribute href="test_link_constraints.emx#_PxPE4LUPEd2Dkr9N3vQCyQ"/>
+          <domainReference href="test_link_constraints.emx#_PxFT4LUPEd2Dkr9N3vQCyQ"/>
+        </feature>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_uuG4MLV8Ed2Qi7FgDx1H8g" category="firm">
+        <generalization xmi:id="_uuG4MbV8Ed2Qi7FgDx1H8g" general="_njjRQLUUEd2Qi7FgDx1H8g">
+          <domainGeneralization href="test_link_constraints.emx#_p5WvwLV8Ed2Qi7FgDx1H8g"/>
+        </generalization>
+        <domainConcept href="test_link_constraints.emx#_l1B-sLV8Ed2Qi7FgDx1H8g"/>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_uuG4MrV8Ed2Qi7FgDx1H8g" category="firm">
+        <generalization xmi:id="_uuG4M7V8Ed2Qi7FgDx1H8g" general="_njjRQrUUEd2Qi7FgDx1H8g">
+          <domainGeneralization href="test_link_constraints.emx#_pe_H8LV8Ed2Qi7FgDx1H8g"/>
+        </generalization>
+        <domainConcept href="test_link_constraints.emx#_nI7PgLV8Ed2Qi7FgDx1H8g"/>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_Sz_qMLXeEd2Y0IR1etzmsw" category="firm">
+        <domainConcept href="test_link_constraints.emx#_yOR8QLXdEd2Y0IR1etzmsw"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Classifier"/>
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_Sz_qMbXeEd2Y0IR1etzmsw">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement-name"/>
+          <domainAttribute href="test_link_constraints.emx#_49XqcLXdEd2Y0IR1etzmsw"/>
+        </feature>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_Sz_qMrXeEd2Y0IR1etzmsw">
+        <domainConcept href="test_link_constraints.emx#_0TDQYLXdEd2Y0IR1etzmsw"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement"/>
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_Sz_qM7XeEd2Y0IR1etzmsw">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement-name"/>
+          <domainAttribute href="test_link_constraints.emx#_-gnQkLXdEd2Y0IR1etzmsw"/>
+        </feature>
+      </classifier>
+      <domainBlock href="test_link_constraints.emx#_wqxP4LJgEd2eS5gi4elN2w"/>
+    </element>
+    <element xmi:type="zdlgen:GenDomainBlock" xmi:id="_cjn_QLvTEd2HfIqkhZCizQ">
+      <domainBlock href="test_link_constraints.emx#_XYyHgLvSEd2HfIqkhZCizQ"/>
+    </element>
+    <element xmi:type="zdlgen:GenDomainSpecialization" xmi:id="_U_v9hbJkEd2eS5gi4elN2w" pluginName="com.zeligsoft.base.validation.test" resourceName="profiles/LinkConstraintsTest.profile.uml">
+      <domainSpecialization href="test_link_constraints.emx#_4aYm8LJgEd2eS5gi4elN2w"/>
+      <domainBlock xmi:id="_U_v9hrJkEd2eS5gi4elN2w" target="_U_v9gbJkEd2eS5gi4elN2w">
+        <domainBlockReference href="test_link_constraints.emx#_8y-X0LJgEd2eS5gi4elN2w"/>
+      </domainBlock>
+      <domainBlock xmi:id="_cjn_Q7vTEd2HfIqkhZCizQ" target="_cjn_QLvTEd2HfIqkhZCizQ">
+        <domainBlockReference href="test_link_constraints.emx#_GdWrsLvTEd2HfIqkhZCizQ"/>
+      </domainBlock>
+    </element>
+    <element xmi:type="zdlgen:GenDomainSpecialization" xmi:id="_cjn_QbvTEd2HfIqkhZCizQ" pluginName="com.zeligsoft.base.validation.test" resourceName="profiles/LinkConstraintPackagingTest.profile.uml">
+      <domainSpecialization href="test_link_constraints.emx#_6kzJULvSEd2HfIqkhZCizQ"/>
+      <domainBlock xmi:id="_cjn_QrvTEd2HfIqkhZCizQ" target="_U_v9gbJkEd2eS5gi4elN2w">
+        <domainBlockReference href="test_link_constraints.emx#_Hh5R4LvTEd2HfIqkhZCizQ"/>
+      </domainBlock>
+    </element>
+    <domainModel href="test_link_constraints.emx#_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  </ownedModel>
+</zdlgen:GenModel>

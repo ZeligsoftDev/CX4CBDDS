@@ -1,0 +1,80 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+ 
+create ecore::EAnnotation addAnnotation(uml::Element element, String source, String key, String value) :
+	this.setSource(source) ->
+	this.addDetail(key, value) ->
+	element.eAnnotations.add(this) ->
+	this;
+
+String getXMIId(uml::NamedElement element) :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.getXMIId(org.eclipse.uml2.uml.NamedElement);
+
+Void addDetail(ecore::EAnnotation self, String key, String value) :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.addDetail(org.eclipse.emf.ecore.EAnnotation, java.lang.String, java.lang.String);
+
+String getDetail(ecore::EAnnotation self, String key) :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.getDetail(org.eclipse.emf.ecore.EAnnotation, java.lang.String);
+	
+Void initializeModel(uml::Package newModel, uml::Package sourceModel) :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.initializeNewModel(org.eclipse.uml2.uml.Package, org.eclipse.uml2.uml.Package);
+
+Void makePublic(uml::NamedElement element) :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.makePublic(org.eclipse.uml2.uml.NamedElement);
+	
+Void makePrivate(uml::NamedElement element) :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.makePrivate(org.eclipse.uml2.uml.NamedElement);
+	
+Void makeProtected(uml::NamedElement element) :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.makeProtected(org.eclipse.uml2.uml.NamedElement);
+	
+Void makePackage(uml::NamedElement element) :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.makePackage(org.eclipse.uml2.uml.NamedElement);
+	
+uml::AggregationKind aggregation_kind_composite() :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.aggregation_kind_COMPOSITE();
+	
+uml::AggregationKind aggregation_kind_shared() :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.aggregation_kind_SHARED();
+	
+uml::AggregationKind aggregation_kind_none() :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.aggregation_kind_NONE();
+	
+uml::ParameterDirectionKind parameter_direction_kind_in() :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.parameter_direction_kind_IN();
+	
+uml::ParameterDirectionKind parameter_direction_kind_out() :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.parameter_direction_kind_OUT();
+	
+uml::ParameterDirectionKind parameter_direction_kind_inout() :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.parameter_direction_kind_INOUT();
+	
+uml::ParameterDirectionKind parameter_direction_kind_return() :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.parameter_direction_kind_RETURN();
+	
+uml::VisibilityKind visibility_kind_public() :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.visibility_kind_PUBLIC();
+	
+uml::VisibilityKind visibility_kind_private() :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.visibility_kind_PRIVATE();
+	
+uml::VisibilityKind visibility_kind_protected() :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.visibility_kind_PROTECTED();
+	
+uml::VisibilityKind visibility_kind_package() :
+	JAVA com.zeligsoft.domain.ngc.ccm.idltouml.utils.CCMPSMUtils.visibility_kind_PACKAGE();

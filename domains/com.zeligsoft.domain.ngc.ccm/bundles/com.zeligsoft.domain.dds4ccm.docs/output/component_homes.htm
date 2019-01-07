@@ -1,0 +1,166 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <meta name="generator" content="Adobe RoboHelp 9">
+<title>Component Homes</title>
+<link rel="StyleSheet" href="helpstyle.css" type="text/css">
+<script type="text/javascript" language="JavaScript">
+//<![CDATA[
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//]]>
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+-->
+</style>
+<script type="text/javascript" language="javascript1.2" src="whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="whtopic.js"></script>
+
+</head>
+
+<body><script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+if (window.gbWhTopic)
+{
+	var strUrl = document.location.href;
+	var bc = 0;
+	var n = strUrl.toLowerCase().indexOf("bc-");
+	if(n != -1)
+	{
+		document.location.href = strUrl.substring(0, n);
+		bc = strUrl.substring(n+3);
+	}
+
+	if (window.addTocInfo)
+	{
+	addTocInfo("CX Online Help\nTutorials\nTutorial 6: Other Workflows\nComponent Homes");
+
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(0);
+
+	
+	
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("index.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+
+//-->
+//]]></script>
+<h1>Component Homes</h1>
+<p>This tutorial assumes that you have completed Tutorial 1: <a href="getting_started.htm">Getting 
+ Started</a> through Tutorial 5: <a href="deployment_modeling.htm">Deployment 
+ Modeling</a>.</p>
+<p>You can view a video of this tutorial <a href="http://www.zeligsoft.com/files/CX_Videos/CX4CBDDS/CX4CBDDS-Homes/CX4CBDDS-Homes.html" 
+											 target="_blank" title="Modeling Component Homes video">here</a>. 
+ &#160;Depending on your screen size, you may want to close the Contents 
+ frame.</p>
+<p>In this tutorial you will learn how to add and deploy a Component Home.</p>
+<h2>Create a Component Home for the Fork</h2>
+<p>To add a Component Home, follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>Right-click the <span style="font-weight: bold;"><b>Fork 
+	 </b></span>component and from the context menu select <span style="font-weight: bold;"><b>Add 
+	 CX &gt; Component Home.</b></span></p></li>
+	<li class="p"><p>Notice<span style="font-weight: bold;"><b> </b></span>that 
+	 this adds <span style="font-weight: bold;"><b>ForkHome</b></span> into the 
+	 <span style="font-weight: bold;"><b>Fork</b></span> package and that it <span 
+	 style="font-weight: bold;"><b>Manages</b></span> the <span style="font-weight: bold;"><b>Fork</b></span> 
+	 type.</p></li>
+	<li class="p"><p>To show this relationship graphically, drag-and-drop 
+	 <span style="font-weight: bold;"><b>ForkHome</b></span> onto the <span style="font-weight: bold;"><b>Fork_diagram</b></span>.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<h2>Add the Component Home to the Assembly for the Forks</h2>
+<p>Component Homes need to be added to assemblies of their component types 
+ in order to manage the component instances.</p>
+<p>To do this, follow these steps:</p>
+<ol type="1">
+	<li class="p"><p>Drag-and-drop <span style="font-weight: bold;"><b>ForkHome</b></span> 
+	 onto the <span style="font-weight: bold;"><b>DiningPhilopsophers_asm 
+	 </b></span>structure diagram. This part is not connected to the <span 
+	 style="font-weight: bold;"><b>Fork</b></span> parts.<br>
+	<span style="font-weight: bold;"><b><br>
+	Note</b></span>: The Name will change to <span style="font-weight: bold;"><b>forkHome</b></span> 
+	 to adhere to the naming standard.<br>
+	</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<h2>Add the Component Home to the Deployment Plans</h2>
+<p>Component Homes need to be deployed in the same <span style="font-weight: bold;"><b>Container 
+ Process</b></span> in order to manage the component instances.</p>
+<p>To deploy a <span style="font-weight: bold;"><b>Home</b></span>, follow these 
+ steps:</p>
+<ol type="1">
+	<li class="p"><p>Return to the <span style="font-weight: bold;"><b>FourPhilosophersOnTwoProcessors 
+	 </b></span>Deployment Plan. <span style="font-weight: bold;"><b>forkHome</b></span> 
+	 will now be displayed in the Configure list without a check mark indicating 
+	 it needs to be deployed.</p></li>
+	<li class="p"><p>Drag-and-drop <span style="font-weight: bold;"><b>forkHome</b></span> 
+	 onto the <span style="font-weight: bold;"><b>ForkProcess</b></span> in the 
+	 Deploy list.</p></li>
+	<li class="p"><p>Right-click <span style="font-weight: bold;"><b>FourPhilosophersOnTwoProcessors</b></span> 
+	 and from the context menu select <span style="font-weight: bold;"><b>Generate 
+	 Descriptor Files</b></span>.</p></li>
+	<li class="p"><p>Save your model.</p></li>
+</ol>
+<h2>Tutorial Summary</h2>
+<p>In this tutorial, you learned how to add and deploy a component home.</p>
+<div class="runningfooter" id="dochomefooter">
+	<a href="mailto:support@prismtech.com" shape="rect" style="color: #0000ff; 
+		 text-decoration: underline; ">Provide feedback</a><br style="clear: none;">
+	
+	<hr align="center">
+	<br>Copyright <sup>©</sup> 2011 PrismTech Ltd. All rights 
+	 reserved. 
+</div>
+<p>&#160;</p>
+<p>&#160;</p>
+<p>&#160;</p>
+<p>&#160;</p>
+<p>&#160;</p>
+<p>&#160;</p>
+<p>&#160;</p>
+<script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+
+
+highlightSearch();
+//-->
+//]]></script>
+</body>
+</html>

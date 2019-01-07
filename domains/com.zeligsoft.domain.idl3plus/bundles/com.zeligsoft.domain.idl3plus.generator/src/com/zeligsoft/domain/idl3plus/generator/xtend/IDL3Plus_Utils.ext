@@ -1,0 +1,59 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+import IDL3Plus::Connectors;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+import IDL3Plus::Generics;
+import CORBADomain::IDL;
+
+boolean hasBaseConnector(ConnectorDef self) :
+	!self.zdlAsComponent().general.typeSelect(ConnectorDef).isEmpty;
+	
+ConnectorDef baseConnector(ConnectorDef self) :
+	self.general.first();
+	
+//TemplateModule utils
+String getTypeParameterName(TypeParameter self) :
+	JAVA com.zeligsoft.domain.idl3plus.generator.utils.IDL3PlusXtendUtils.getTypeParameterName(org.eclipse.uml2.uml.ClassifierTemplateParameter);
+	
+	
+List[NamedElement] getPortTypeProvides(PortType self) :
+	JAVA com.zeligsoft.domain.idl3plus.generator.utils.IDL3PlusXtendUtils.getPortTypeProvides(org.eclipse.uml2.uml.Class);
+	
+List[NamedElement] getPortTypeUses(PortType self) :
+	JAVA com.zeligsoft.domain.idl3plus.generator.utils.IDL3PlusXtendUtils.getPortTypeUses(org.eclipse.uml2.uml.Class);
+
+/**
+* Returns the IDL repository ID for a repository object passed in as a NamedElement.
+*/
+cached String scopedNameFromNamedElementForIDL3(Object element) :
+	JAVA com.zeligsoft.domain.idl3plus.generator.utils.IDL3PlusXtendUtils.scopedNameFromNamedElementForIDL3(org.eclipse.uml2.uml.NamedElement);
+	
+boolean isContainedInModuleInstParam(NamedElement self) :
+	JAVA com.zeligsoft.domain.idl3plus.generator.utils.IDL3PlusXtendUtils.isContainedInModuleInstParam(org.eclipse.uml2.uml.NamedElement);
+
+/*
+ * Rule to create a hard-coded "#include <Components.idl>"
+ */
+create idl::Preproc_Include createComponentsIDLInclude(idl::Specification spec) :
+	let file = new idl::FileName :
+		file.name.add("Components.idl") ->
+		this.setValue(file) ->
+		spec.definitions.add(this)
+	;
+	
+	

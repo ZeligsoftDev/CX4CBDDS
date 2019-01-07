@@ -1,0 +1,53 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+
+/**
+ * @defgroup SourceClient_comp SourceClient_comp Component
+ * @ingroup SourceClientExample
+ * @{
+ *
+ * The SourceClient_comp component is the service requestor in this example.
+ * It performs the following activities:
+ *  - Maintains a counter for the number of messages that it has processed.
+ *  - Builds a message that includes the message counter and uses a CORBA call
+ *    to send the data to the server.
+ *  - Uses a timer associated with it to wake up every five seconds, at which
+ *    point, the process of building and sending a message is repeated.
+ *
+ * @file   SNA_Examples_SourceClient_comp.idl
+ * @brief  SourceClient_comp component definition IDL file.
+ */
+
+//==============================================================================
+
+#ifndef SNA_EXAMPLES_SOURCECLIENT_COMP_IDL
+#define SNA_EXAMPLES_SOURCECLIENT_COMP_IDL
+
+#include <Components.idl>
+
+// EXAMPLE:
+// we need to include the definition of the EchoConnect_obj interface here.
+#include "SNA_Examples_EchoConnect_obj.idl"
+
+// EXAMPLE:
+// the module keyword specifies a namespace for the EchoServer component
+module SNA_Examples
+{
+   /**
+    * This component uses (calls) one CORBA interface/service.
+    */
+   component SourceClient_comp
+   {
+      uses SNA_Examples::EchoConnect_obj echoConnectRecept;
+   };
+};
+
+#endif // SNA_EXAMPLES_SOURCECLIENT_COMP_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

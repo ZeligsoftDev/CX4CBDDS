@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License. 
+-->
+<plugin>
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://ZML_LIBRARIES/"
+            target="platform:/plugin/com.zeligsoft.domain.zml/models/" />
+      <mapping
+            source="pathmap://ZML_PROFILES/"
+            target="platform:/plugin/com.zeligsoft.domain.zml/profiles/" />
+   </extension>
+   
+   <extension
+         point="com.zeligsoft.base.zdl.domain_models">
+     <domainModel
+           uri="http://www.zeligsoft.com/zdl/2008/ZML"
+           path="pathmap://ZML_LIBRARIES/ZMLMM.uml"
+           genModel="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen"/>
+   </extension>
+   
+   <extension
+         point="com.zeligsoft.base.validation.preload">
+      <zdl uri="pathmap://ZML_LIBRARIES/ZMLMM.uml" />
+   </extension>
+   <extension
+         point="org.eclipse.emf.transaction.listeners">
+      <listener
+            class="com.zeligsoft.domain.zml.util.PortOperationsTrigger">
+         <editingDomain
+               id="org.eclipse.gmf.runtime.emf.core.compatibility.MSLEditingDomain">
+         </editingDomain>
+      </listener>
+   </extension>   
+    <extension
+         id="Base ElementTypes"
+         name="Base ElementTypes"
+         point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">         	
+         <metamodel
+             nsURI="http://www.eclipse.org/uml2/3.0.0/UML">
+         	<adviceBinding
+            	id="com.zeligsoft.domain.zml.Connector"
+            	typeId="com.ibm.xtools.uml.component"            
+            	class="com.zeligsoft.domain.zml.edithelpers.ConnectorEditHelperAdvice"
+            	inheritance="all">
+         	</adviceBinding>          
+            <adviceBinding
+                id="com.zeligsoft.domain.zml.DirectedRelationshipAdvice"
+                typeId="com.ibm.xtools.uml.namedElement"            
+                class="com.zeligsoft.domain.zml.edithelpers.DirectedRelationshipEditHelperAdvice"
+                inheritance="all">
+            </adviceBinding>
+      	</metamodel>            
+    </extension>   
+    <extension
+         id="Base ElementTypeBindings"
+         name="Base ElementTypeBindings"
+         point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings">
+      <binding context="com.ibm.xtools.uml.type.context">
+         <advice
+               pattern="com.zeligsoft.domain.zml.*"/>                     
+      </binding>
+       <binding context="com.ibm.xtools.mmi.core.context">
+         <advice
+               pattern="com.zeligsoft.domain.zml.*"/>                     
+      </binding>
+    </extension>   
+    
+   
+</plugin>

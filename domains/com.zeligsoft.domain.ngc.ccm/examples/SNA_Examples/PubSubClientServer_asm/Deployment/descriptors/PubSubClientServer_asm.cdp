@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <label/>
+
+  <UUID>D0CA992E-F133-11DF-8000-005056C00008</UUID>
+
+  <implementation xmi:id="_BB36709C-F133-11DF-8005-005056C00008">
+    <name>PubSubClientServer_asm.ConnectorImplementations.SNA_Examples_NumAssert_conn_DDS_EventImpl.SNA_Examples_NumAssert_conn_DDS_EventImpl</name>
+    <source/>
+    <artifact xmi:idref="_BB36709C-F133-11DF-8003-005056C00008"/>
+    <artifact xmi:idref="_BB36709C-F133-11DF-8004-005056C00008"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_NumAssert_conn_DDS_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_NumAssert_conn_DDS_EventArtifacts.SNA_Examples_NumAssert_conn_DDS_Event_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_NumAssert_conn_DDS_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_NumAssert_conn_DDS_EventArtifacts.SNA_Examples_NumAssert_conn_DDS_Event_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_BB38D2F6-F133-11DF-8008-005056C00008">
+    <name>PubSubClientServer_asm.ConnectorImplementations.SNA_Examples_CurrentNum_conn_DDS_EventImpl.SNA_Examples_CurrentNum_conn_DDS_EventImpl</name>
+    <source/>
+    <artifact xmi:idref="_BB38D2F6-F133-11DF-8006-005056C00008"/>
+    <artifact xmi:idref="_BB38D2F6-F133-11DF-8007-005056C00008"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_CurrentNum_conn_DDS_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_CurrentNum_conn_DDS_EventArtifacts.SNA_Examples_CurrentNum_conn_DDS_Event_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_CurrentNum_conn_DDS_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_CurrentNum_conn_DDS_EventArtifacts.SNA_Examples_CurrentNum_conn_DDS_Event_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_BB38D2F6-F133-11DF-8002-005056C00008">
+    <name>PubSubClientServer_asm.ComponentImplementations.SNA_Examples_Echo_compImpl.SNA_Examples_Echo_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_BB38D2F6-F133-11DF-8000-005056C00008"/>
+    <artifact xmi:idref="_BB38D2F6-F133-11DF-8001-005056C00008"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_Echo_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_Echo_compArtifacts.SNA_Examples_Echo_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_Echo_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_Echo_compArtifacts.SNA_Examples_Echo_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_BB38D2F6-F133-11DF-800B-005056C00008">
+    <name>PubSubClientServer_asm.ComponentImplementations.SNA_Examples_PubSubClientServer_compImpl.SNA_Examples_PubSubClientServer_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_BB38D2F6-F133-11DF-8009-005056C00008"/>
+    <artifact xmi:idref="_BB38D2F6-F133-11DF-800A-005056C00008"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PubSubClientServer_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_PubSubClientServer_compArtifacts.SNA_Examples_PubSubClientServer_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PubSubClientServer_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_PubSubClientServer_compArtifacts.SNA_Examples_PubSubClientServer_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_1C073253-AACD-4130-B0A8-6AED69931E25_">
+    <name>DAnCE_LocalityManager_Impl</name>
+    <source/>
+    <artifact xmi:idref="_2DBE7BA9-5DB7-48e2-A260-D141CB66DEB1"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_FD6E0038-F133-11DF-8000-005056C00008">
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp</name>
+    <node>Echo_compNode</node>
+    <source/>
+    <implementation xmi:idref="_BB38D2F6-F133-11DF-8002-005056C00008"/>
+  </instance>
+
+  <instance xmi:id="_032F6D7C-F134-11DF-8000-005056C00008">
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp</name>
+    <node>PubSubClientServer_compNode</node>
+    <source/>
+    <implementation xmi:idref="_BB38D2F6-F133-11DF-800B-005056C00008"/>
+  </instance>
+
+  <instance xmi:id="_9026D7EA-1F4E-11E0-A038-002481A1E995">
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.NumAssert@Echo_compNode.DefaultGroup</name>
+    <node>Echo_compNode</node>
+    <source/>
+    <implementation xmi:idref="_BB36709C-F133-11DF-8005-005056C00008"/>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>36</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples#PubSubClientServer</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples::NumAssert</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_9026D7EA-1F4E-11E0-A039-002481A1E995">
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@Echo_compNode.DefaultGroup</name>
+    <node>Echo_compNode</node>
+    <source/>
+    <implementation xmi:idref="_BB38D2F6-F133-11DF-8008-005056C00008"/>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>36</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples#PubSubClientServer</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples::CurrentNum</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_90293A44-1F4E-11E0-8000-002481A1E995">
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.NumAssert@PubSubClientServer_compNode.DefaultGroup</name>
+    <node>PubSubClientServer_compNode</node>
+    <source/>
+    <implementation xmi:idref="_BB36709C-F133-11DF-8005-005056C00008"/>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>36</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples#PubSubClientServer</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples::NumAssert</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_90293A44-1F4E-11E0-8001-002481A1E995">
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@PubSubClientServer_compNode.DefaultGroup</name>
+    <node>PubSubClientServer_compNode</node>
+    <source/>
+    <implementation xmi:idref="_BB38D2F6-F133-11DF-8008-005056C00008"/>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>36</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples#PubSubClientServer</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples::CurrentNum</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="Echo_compNode.DefaultGroup">
+    <name>Echo_compNode.DefaultGroup</name>
+    <node>Echo_compNode</node>
+    <source/>
+    <implementation xmi:idref="_1C073253-AACD-4130-B0A8-6AED69931E25_"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>DefaultGroup</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="PubSubClientServer_compNode.DefaultGroup">
+    <name>PubSubClientServer_compNode.DefaultGroup</name>
+    <node>PubSubClientServer_compNode</node>
+    <source/>
+    <implementation xmi:idref="_1C073253-AACD-4130-B0A8-6AED69931E25_"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>DefaultGroup</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp.echoNumberRecept::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp.echoNumberFacet</name>
+    <internalEndpoint>
+      <portName>echoNumberRecept</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>echoNumberFacet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp.echoAssertRecept::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp.echoAssertFacet</name>
+    <internalEndpoint>
+      <portName>echoAssertRecept</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>echoAssertFacet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp.numAssertPub_data::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.NumAssert@Echo_compNode.DefaultGroup.supplier_data</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numAssertPub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9026D7EA-1F4E-11E0-A038-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp.numAssertPub_dds_entity::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.NumAssert@Echo_compNode.DefaultGroup.supplier_dds_entity</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numAssertPub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9026D7EA-1F4E-11E0-A038-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp.currentNumSub_data::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@Echo_compNode.DefaultGroup.push_consumer_data</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>currentNumSub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9026D7EA-1F4E-11E0-A039-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp.currentNumSub_data_control::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@Echo_compNode.DefaultGroup.push_consumer_data_control</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>currentNumSub_data_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9026D7EA-1F4E-11E0-A039-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp.currentNumSub_dds_entity::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@Echo_compNode.DefaultGroup.push_consumer_dds_entity</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>currentNumSub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9026D7EA-1F4E-11E0-A039-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp.currentNumSub_filter_config::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@Echo_compNode.DefaultGroup.push_consumer_filter_config</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>currentNumSub_filter_config</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_filter_config</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_9026D7EA-1F4E-11E0-A039-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp.currentNumSub_data_listener::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@Echo_compNode.DefaultGroup.push_consumer_data_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>currentNumSub_data_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_9026D7EA-1F4E-11E0-A039-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp.currentNumSub_status::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@Echo_compNode.DefaultGroup.push_consumer_status</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>currentNumSub_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_9026D7EA-1F4E-11E0-A039-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp.currentNumSubConnStatus::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@Echo_compNode.DefaultGroup.error_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>currentNumSubConnStatus</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_9026D7EA-1F4E-11E0-A039-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp.numAssertPubConnStatus::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@Echo_compNode.DefaultGroup.error_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numAssertPubConnStatus</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_9026D7EA-1F4E-11E0-A038-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp.numAssertSub_data::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.NumAssert@PubSubClientServer_compNode.DefaultGroup.push_consumer_data</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numAssertSub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_90293A44-1F4E-11E0-8000-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp.numAssertSub_data_control::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.NumAssert@PubSubClientServer_compNode.DefaultGroup.push_consumer_data_control</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numAssertSub_data_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_90293A44-1F4E-11E0-8000-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp.numAssertSub_dds_entity::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.NumAssert@PubSubClientServer_compNode.DefaultGroup.push_consumer_dds_entity</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numAssertSub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_90293A44-1F4E-11E0-8000-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp.numAssertSub_filter_config::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.NumAssert@PubSubClientServer_compNode.DefaultGroup.push_consumer_filter_config</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numAssertSub_filter_config</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_filter_config</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_90293A44-1F4E-11E0-8000-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp.numAssertSub_data_listener::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.NumAssert@PubSubClientServer_compNode.DefaultGroup.push_consumer_data_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numAssertSub_data_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_90293A44-1F4E-11E0-8000-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp.numAssertSub_status::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.NumAssert@PubSubClientServer_compNode.DefaultGroup.push_consumer_status</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numAssertSub_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_90293A44-1F4E-11E0-8000-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp.currentNumPub_data::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@PubSubClientServer_compNode.DefaultGroup.supplier_data</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>currentNumPub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_90293A44-1F4E-11E0-8001-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp.currentNumPub_dds_entity::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@PubSubClientServer_compNode.DefaultGroup.supplier_dds_entity</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>currentNumPub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_90293A44-1F4E-11E0-8001-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp.numAssertSubConnStatus::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@PubSubClientServer_compNode.DefaultGroup.error_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>numAssertSubConnStatus</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_90293A44-1F4E-11E0-8000-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp.currentNumPubConnStatus::PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@PubSubClientServer_compNode.DefaultGroup.error_listener</name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>currentNumPubConnStatus</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_90293A44-1F4E-11E0-8001-002481A1E995"/>
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="_BB36709C-F133-11DF-8003-005056C00008">
+    <name>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_NumAssert_conn_DDS_EventArtifacts.SNA_Examples_NumAssert_conn_DDS_Event_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_NumAssert_conn_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_BB36709C-F133-11DF-8004-005056C00008">
+    <name>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_NumAssert_conn_DDS_EventArtifacts.SNA_Examples_NumAssert_conn_DDS_Event_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_NumAssert_conn_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_BB38D2F6-F133-11DF-8000-005056C00008">
+    <name>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_Echo_compArtifacts.SNA_Examples_Echo_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_Echo_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_BB38D2F6-F133-11DF-8001-005056C00008">
+    <name>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_Echo_compArtifacts.SNA_Examples_Echo_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_Echo_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_BB38D2F6-F133-11DF-8006-005056C00008">
+    <name>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_CurrentNum_conn_DDS_EventArtifacts.SNA_Examples_CurrentNum_conn_DDS_Event_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_CurrentNum_conn_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_BB38D2F6-F133-11DF-8007-005056C00008">
+    <name>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_CurrentNum_conn_DDS_EventArtifacts.SNA_Examples_CurrentNum_conn_DDS_Event_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_CurrentNum_conn_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_BB38D2F6-F133-11DF-8009-005056C00008">
+    <name>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_PubSubClientServer_compArtifacts.SNA_Examples_PubSubClientServer_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PubSubClientServer_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_BB38D2F6-F133-11DF-800A-005056C00008">
+    <name>PubSubClientServer_asm.ImplementationArtifacts.SNA_Examples_PubSubClientServer_compArtifacts.SNA_Examples_PubSubClientServer_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PubSubClientServer_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_2DBE7BA9-5DB7-48e2-A260-D141CB66DEB1">
+    <name>DAnCE_LocalityManager_Artifact</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="Echo_compNode.DefaultGroup"/>
+    <!--PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.Echo_comp-->
+    <constrainedInstance xmi:idref="_FD6E0038-F133-11DF-8000-005056C00008"/>
+    <!--PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.NumAssert@Echo_compNode.DefaultGroup-->
+    <constrainedInstance xmi:idref="_9026D7EA-1F4E-11E0-A038-002481A1E995"/>
+    <!--PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@Echo_compNode.DefaultGroup-->
+    <constrainedInstance xmi:idref="_9026D7EA-1F4E-11E0-A039-002481A1E995"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="PubSubClientServer_compNode.DefaultGroup"/>
+    <!--PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.PubSubClientServer_comp-->
+    <constrainedInstance xmi:idref="_032F6D7C-F134-11DF-8000-005056C00008"/>
+    <!--PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.NumAssert@PubSubClientServer_compNode.DefaultGroup-->
+    <constrainedInstance xmi:idref="_90293A44-1F4E-11E0-8000-002481A1E995"/>
+    <!--PubSubClientServer_asm.Assemblies.PubSubClientServer_asm.PubSubClientServer_asm.CurrentNum@PubSubClientServer_compNode.DefaultGroup-->
+    <constrainedInstance xmi:idref="_90293A44-1F4E-11E0-8001-002481A1E995"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

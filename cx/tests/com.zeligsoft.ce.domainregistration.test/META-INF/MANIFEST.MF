@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test2 Plug-in
+Bundle-SymbolicName: com.zeligsoft.ce.domainregistration.test;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.zeligsoft.ce.domainregistration.test.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.zeligsoft.ce.domainregistration,
+ org.junit,
+ com.zeligsoft.ce.rsm.ui.wizard,
+ org.eclipse.uml2.uml
+Eclipse-LazyStart: true
+Export-Package: com.zeligsoft.ce.domainregistration.test

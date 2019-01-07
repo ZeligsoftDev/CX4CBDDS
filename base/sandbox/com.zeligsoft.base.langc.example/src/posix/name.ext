@@ -1,0 +1,75 @@
+
+import langc;
+import ZMLMM::ZML_Deployments;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+
+
+extension langc::name;
+
+// Folder and file names
+FolderName rootFolderName() : folder('src');
+FolderName rootComponentFolderName() : rootFolderName().subfolder( 'cmps' );
+FolderName componentFolderName(ComponentInterface c) : rootComponentFolderName().subfolder(c.zdlAsNamedElement().name);
+FolderName componentWorkerFolderName(ComponentInterface c) : c.componentFolderName().subfolder('worker');
+FolderName rootInterfaceFolderName() : rootFolderName().subfolder('ifs');
+FolderName interfaceFolderName(Interface i) : rootInterfaceFolderName().subfolder(i.zdlAsInterface().name);
+
+FileName componentWorkerFilename(ComponentInterface c) : c.componentWorkerFolderName().child('zce' + c.zdlAsNamedElement().name + 'Worker');
+FileName componentContainerFilename(ComponentInterface c) : c.componentFolderName().child('zce' + c.zdlAsNamedElement().name + 'Container');
+FileName componentFwdDeclareFilename(ComponentInterface c) : c.componentFolderName().child('zce' + c.zdlAsNamedElement().name + 'FwdDeclares');
+FileName baseInterfaceFileName(Interface i) : i.interfaceFolderName().child('zceBase_' + i.zdlAsInterface().name);
+
+create FileName operatingEnvironment() : setName('zceOperatingEnvironment');
+
+// interface struct name
+Name baseInterfaceStructname(Interface i) : i.baseInterfaceFileName().child('zce_struct_Base_' + i.zdlAsInterface().name);
+Name baseInterfaceStructPtrname(Interface i) : i.baseInterfaceFileName().child('zceBase_' + i.zdlAsInterface().name);
+
+//component worker/container struct name
+Name componentWorkerStructname(ComponentInterface c) : c.componentWorkerFilename().child('zce_struct_' + c.zdlAsNamedElement().name + 'Worker');
+Name componentContainerStructname(ComponentInterface c) : c.componentContainerFilename().child('zce_struct_' + c.zdlAsNamedElement().name + 'Container');
+Name componentWorkerStructPtrName(ComponentInterface c) : c.componentFwdDeclareFilename().child('zce' + c.zdlAsNamedElement().name + 'Worker');
+Name componentContainerStructPtrName(ComponentInterface c) : c.componentFwdDeclareFilename().child('zce' + c.zdlAsNamedElement().name + 'Container');
+
+// worker function name
+Name workerFunctionName(Operation o, Interface i, ComponentInterface c) : c.componentWorkerFilename().child('zce' + c.zdlAsNamedElement().name + 'Worker_' + i.zdlAsInterface().name + '_' + o.zdlAsOperation().name);
+Name workerConstructFuncName(ComponentInterface c) : c.componentWorkerFilename().child('zce' + c.zdlAsNamedElement().name + 'Worker_construct');
+Name workerDestructFuncName(ComponentInterface c) : c.componentWorkerFilename().child('zce' + c.zdlAsNamedElement().name + 'Worker_destruct');
+Name workerAllocateFuncName(ComponentInterface c) : c.componentWorkerFilename().child('zce' + c.zdlAsNamedElement().name + 'Worker_allocate');
+Name workerInitFuncName(ComponentInterface c) : c.componentWorkerFilename().child('zce' + c.zdlAsNamedElement().name + 'Worker_init');
+Name workerStartFuncName(ComponentInterface c) : c.componentWorkerFilename().child('zce' + c.zdlAsNamedElement().name + 'Worker_start');
+Name workerStopFuncName(ComponentInterface c) : c.componentWorkerFilename().child('zce' + c.zdlAsNamedElement().name + 'Worker_stop');
+Name workerReleaseFuncName(ComponentInterface c) : c.componentWorkerFilename().child('zce' + c.zdlAsNamedElement().name + 'Worker_release');
+Name workerRequiredPortGetterFuncName(ComponentInterface c, MessagePort p) : c.componentWorkerFilename().child('zce' + c.zdlAsNamedElement().name + 'Worker_get_' + p.zdlAsPort().name);
+
+// variable name
+Name portIdName(ComponentInterface c) : c.componentWorkerStructname().child('port_id_table');
+Name internalIdName(ComponentInterface c) : c.componentWorkerStructname().child('internal_id_');
+Name friendlyIdName(ComponentInterface c) : c.componentWorkerStructname().child('friendly_id_[ZCE_NAMES_MAX_LEN_]');
+Name containerInstance(ComponentInterface c) : c.componentWorkerStructname().child('container_');
+
+
+Name paramName(uml::Parameter p, ComponentInterface c) :
+	let pName = new Name :
+	pName.setParent(c.componentWorkerFilename())
+	-> pName.setName(p.name)
+	-> pName;
+
+Name portName(MessagePort p, ComponentInterface c) :
+	let pName = new Name :
+	pName.setParent(c.componentWorkerFilename())
+	-> pName.setName(p.zdlAsPort().name)
+	-> pName;
+
+Name portMemberName(MessagePort p, ComponentInterface c) :
+	let pName = new Name :
+	pName.setParent(c.componentWorkerFilename())
+	-> pName.setName(p.zdlAsPort().name + '_')
+	-> pName;	
+
+Name portStructMemberName(MessagePort p, ComponentInterface c) :
+	let pName = new Name :
+	pName.setParent(c.componentWorkerFilename())
+	-> pName.setName(p.zdlAsPort().name + '_struct_')
+	-> pName;	

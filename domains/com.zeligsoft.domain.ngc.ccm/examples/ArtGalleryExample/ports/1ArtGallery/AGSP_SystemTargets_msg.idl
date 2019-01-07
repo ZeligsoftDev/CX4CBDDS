@@ -1,0 +1,28 @@
+/// @defgroup AGSP_SystemTargets_msg SystemTargets_msg
+/// @{
+/// 
+/// @file AGSP_SystemTargets_msg.idl
+/// @brief SystemTargets_msg message definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__1ARTGALLERY__AGSP_SYSTEMTARGETS_MSG_IDL
+#define CX_PORTS__1ARTGALLERY__AGSP_SYSTEMTARGETS_MSG_IDL
+
+#include "AGSP_SystemTargets_defn.idl"
+#pragma ndds typesupport "AGSP_SystemTargets_msgSupport.h"
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @struct SystemTargets_msg
+    struct SystemTargets_msg {
+        long numTargets;
+        AGSP::SystemTargetListType targetList;
+    }; //@top-level true
+};
+
+#endif // CX_PORTS__1ARTGALLERY__AGSP_SYSTEMTARGETS_MSG_IDL
+
+/// @}
+

@@ -1,0 +1,40 @@
+/// @defgroup AGSP_StateControl_obj StateControl_obj
+/// @{
+/// 
+/// @file AGSP_StateControl_obj.idl
+/// @brief StateControl_obj interface definition IDL file
+
+//=========================================================
+
+#ifndef CX_SURVEILLANCEPROCESSOR_ASM__SYSTEMMANAGER_COMP__PORTS__AGSP_STATECONTROL_OBJ_IDL
+#define CX_SURVEILLANCEPROCESSOR_ASM__SYSTEMMANAGER_COMP__PORTS__AGSP_STATECONTROL_OBJ_IDL
+
+#include "AGSP_Common_defn.idl"
+#pragma ciao lem "AGSP_StateControl_objE.idl"
+#pragma ciao ami4ccm interface "AGSP::StateControl_obj"
+#pragma ciao lem "AGSP_StateControl_objAE.idl"
+#pragma ciao ami4ccm idl "AGSP_StateControl_objA.idl"
+
+/// @namespace AGSP 
+module AGSP {
+
+    ///@interface StateControl_obj 
+    interface StateControl_obj {
+
+        /// @param[in] newState
+        ///
+        /// @return
+        AGSP::ReturnStatus changeState(
+            in AGSP::SystemState newState
+            );
+
+        /// @return
+        AGSP::SystemState getCurrentState();
+    };
+
+};
+
+#endif // CX_SURVEILLANCEPROCESSOR_ASM__SYSTEMMANAGER_COMP__PORTS__AGSP_STATECONTROL_OBJ_IDL
+
+/// @}
+

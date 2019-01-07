@@ -1,0 +1,14 @@
+// Enum positive
+
+interface int1064
+{
+    enum e1 
+    {
+      VALUE1,
+      VALUE2,
+      VALUE3
+    };
+
+    attribute e1 enumattr;
+    e1 f1( inout e1 enumparam );
+};

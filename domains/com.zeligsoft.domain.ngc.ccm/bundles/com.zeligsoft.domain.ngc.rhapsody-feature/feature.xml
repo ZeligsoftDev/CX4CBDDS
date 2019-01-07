@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.zeligsoft.domain.ngc.rhapsody_feature"
+      label="NGC CCM Rhapsody Plugins"
+      version="0.9.1.qualifier"
+      provider-name="PrismTech Canada">
+
+   <description url="http://www.zeligsoft.com/tools/zeligsoft-cx">
+      %description
+   </description>
+
+   <copyright>
+      Copyright 2018 ADLINK Technology Limited.
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.ui" version="3.6.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.6.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.ccm.generator" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.corba.codegen" version="3.4.0" match="compatible"/>
+      <import plugin="org.eclipse.uml2.uml" version="3.1.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base.zdl" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.ccm" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.idl3plus" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.idl3plus.ui" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.corba" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.corba.dsl" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.dds4ccm" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.zml" version="3.4.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.mwe.utils" version="1.0.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.mwe.core" version="1.0.0" match="compatible"/>
+      <import plugin="org.eclipse.xpand" version="1.0.1" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.6.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.dds" version="0.4.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.validation" version="1.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.ccm.idlimport" version="3.4.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.edit" version="2.6.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.ide" version="3.6.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.ui" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.corba.ui" version="3.4.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.4.1" match="compatible"/>
+      <import plugin="com.ibm.xtools.uml.type" version="7.60.0" match="compatible"/>
+      <import plugin="com.ibm.xtools.modeler.ui" version="7.60.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.ui.properties" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base.ui.menus" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base.ui" version="3.4.0" match="compatible"/>
+      <import plugin="org.eclipse.core.resources" version="3.6.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.zml.ui" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.dds4ccm.ddsdcpsconnector" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.ccm.ui" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.deployment.treeeditor" version="3.4.0" match="compatible"/>
+      <import plugin="com.ibm.xtools.uml.ui.diagrams.structure" version="7.60.0" match="compatible"/>
+      <import plugin="org.eclipse.uml2.uml.edit" version="3.1.0" match="compatible"/>
+      <import plugin="com.zeligsoft.base" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.codegen.ui" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.codegen" version="3.4.0" match="compatible"/>
+      <import plugin="org.eclipse.xtend.typesystem.uml2" version="1.0.1" match="compatible"/>
+      <import plugin="org.eclipse.xtend.typesystem.xsd" version="1.0.1" match="compatible"/>
+      <import plugin="com.zeligsoft.cx.codegen.ui" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="com.zeligsoft.domain.omg.ccm.descriptorgenerator" version="3.4.0" match="compatible"/>
+      <import plugin="com.zeligsoft.domain.omg.ccm" version="3.4.0" match="compatible"/>
+      <import plugin="org.eclipse.xpand" version="1.0.0" match="compatible"/>
+      <import plugin="org.apache.commons.logging" version="1.0.4" match="greaterOrEqual"/>
+      <import plugin="com.ibm.xtools.uml.msl" version="7.70.0" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="com.zeligsoft.domain.dds4ccm.rhapsody"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.dds4ccm.rhapsody.net4j.protocols"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.zeligsoft.domain.dds4ccm.rhapsody.net4j.server"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

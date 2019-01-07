@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:DeploymentPlan
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
+    xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>Plan</label>
+  <UUID>_b2dee362-e90d-4115-bf8d-b3e45862fd2a</UUID>
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source/>
+    <artifact xmi:idref="CompSvrArt"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="_939e46d8-0258-4427-acdd-dd6d8d7a07d9">
+    <name>Control_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_4b9173ab-3e7d-4759-94dc-ad794be49fc5"/>
+    <artifact xmi:idref="_383c9f4c-278b-4ec4-a94d-206450362035"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_Control_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Shapes_Control_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_Control_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Shapes_Control_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.dre.vanderbilt.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="_47ed870c-de92-4898-9224-9aed201ddca3">
+    <name>Receiver_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_c9c76a7f-0d57-4d1c-950f-f2e78b9f2b74"/>
+    <artifact xmi:idref="_a398f4a6-8e56-464f-b69a-8073f7735ff4"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_Receiver_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Shapes_Receiver_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_Receiver_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Shapes_Receiver_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.dre.vanderbilt.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="_2dd74fe4-3fbe-406d-bdc1-1cdd2d5f291e">
+    <name>Sender_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_ed43eab6-dd16-4c24-a49f-86e704326fe1"/>
+    <artifact xmi:idref="_44e4b446-aa29-4591-b246-9c0586d73200"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_Sender_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Shapes_Sender_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_Sender_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Shapes_Sender_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.dre.vanderbilt.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="_631599de-3c42-4f2e-8dac-aa3090a176fc">
+    <name>ShapeType_conn</name>
+    <source/>
+    <artifact xmi:idref="_00c71980-ab3b-4089-b60c-4eb71679ee63"/>
+    <artifact xmi:idref="_005ce9e1-759d-475b-bd75-2c5b08e89109"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_ShapeType_conn_DDS_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Shapes_ShapeType_conn_DDS_Event_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_ShapeType_conn_DDS_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Shapes_ShapeType_conn_DDS_Event_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.dre.vanderbilt.CCM.Connector</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <instance xmi:id="_a322ad8e-9337-45d3-8375-5efc9aabecd4">
+    <name>Shapes_asm.Control_comp</name>
+    <node>ControlNode</node>
+    <source/>
+    <implementation xmi:idref="_939e46d8-0258-4427-acdd-dd6d8d7a07d9"/>
+    <configProperty>
+      <name>rate</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>10</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>max_x</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>250</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>max_y</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>225</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>max_size</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>25</long>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>resize_shape</name>
+      <value>
+        <type>
+          <kind>tk_boolean</kind>
+        </type>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_75067f5f-72bf-4700-af9a-3390db550181">
+    <name>Shapes_asm.Receiver_comp</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="_47ed870c-de92-4898-9224-9aed201ddca3"/>
+  </instance>
+  <instance xmi:id="_eaa6c810-071a-4d9d-abd2-59991443b340">
+    <name>Shapes_asm.Sender_comp</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="_2dd74fe4-3fbe-406d-bdc1-1cdd2d5f291e"/>
+  </instance>
+  <instance xmi:id="_191e8fc3-44ab-487f-820f-b5f259c0bb9b">
+    <name>Control_proc_ComponentServerInstance</name>
+    <node>ControlNode</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Control_proc</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_d543199c-d559-4a57-af2a-8bb32cd726d9">
+    <name>Receiver_proc_ComponentServerInstance</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Receiver_proc</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_a861bf28-59ac-49cc-ba5e-e0b40b0eec08">
+    <name>Sender_proc_ComponentServerInstance</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Sender_proc</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_4447e88f-91fb-4e35-b994-152cc22c52a4">
+    <name>Shapes.Shapes_asm.doc.Shapes_asm.ShapeType_conn@SenderNode.Sender_proc</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="_631599de-3c42-4f2e-8dac-aa3090a176fc"/>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Square</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>0</long>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="_246ce4d2-4a84-416c-9e60-79fc07fdd2f5">
+    <name>Shapes.Shapes_asm.doc.Shapes_asm.ShapeType_conn@ReceiverNode.Receiver_proc</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="_631599de-3c42-4f2e-8dac-aa3090a176fc"/>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Square</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>domain_id</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>0</long>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <connection>
+    <name>
+      Shapes_asm.Sender_comp.info_write::Shapes.Shapes_asm.doc.Shapes_asm.ShapeType_conn@SenderNode.Sender_proc.supplier_data
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>info_write_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_eaa6c810-071a-4d9d-abd2-59991443b340"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_4447e88f-91fb-4e35-b994-152cc22c52a4"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      Shapes_asm.Sender_comp.info_write::Shapes.Shapes_asm.doc.Shapes_asm.ShapeType_conn@SenderNode.Sender_proc.supplier_dds_entity
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>info_write_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_eaa6c810-071a-4d9d-abd2-59991443b340"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_4447e88f-91fb-4e35-b994-152cc22c52a4"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      Shapes_asm.Receiver_comp.info_out::Shapes.Shapes_asm.doc.Shapes_asm.ShapeType_conn@ReceiverNode.Receiver_proc.push_consumer_data_listener
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>info_out_data_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_75067f5f-72bf-4700-af9a-3390db550181"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_246ce4d2-4a84-416c-9e60-79fc07fdd2f5"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      Shapes_asm.Receiver_comp.info_out::Shapes.Shapes_asm.doc.Shapes_asm.ShapeType_conn@ReceiverNode.Receiver_proc.push_consumer_status
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>info_out_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_75067f5f-72bf-4700-af9a-3390db550181"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_246ce4d2-4a84-416c-9e60-79fc07fdd2f5"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      Shapes_asm.Receiver_comp.info_out::Shapes.Shapes_asm.doc.Shapes_asm.ShapeType_conn@ReceiverNode.Receiver_proc.push_consumer_data
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>info_out_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_75067f5f-72bf-4700-af9a-3390db550181"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_246ce4d2-4a84-416c-9e60-79fc07fdd2f5"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      Shapes_asm.Receiver_comp.info_out::Shapes.Shapes_asm.doc.Shapes_asm.ShapeType_conn@ReceiverNode.Receiver_proc.push_consumer_data_control
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>info_out_data_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_75067f5f-72bf-4700-af9a-3390db550181"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_246ce4d2-4a84-416c-9e60-79fc07fdd2f5"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      Shapes_asm.Receiver_comp.info_out::Shapes.Shapes_asm.doc.Shapes_asm.ShapeType_conn@ReceiverNode.Receiver_proc.push_consumer_dds_entity
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>info_out_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_75067f5f-72bf-4700-af9a-3390db550181"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_246ce4d2-4a84-416c-9e60-79fc07fdd2f5"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      Shapes_asm.Receiver_comp.info_out::Shapes.Shapes_asm.doc.Shapes_asm.ShapeType_conn@ReceiverNode.Receiver_proc.push_consumer_filter_config
+    </name>
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+    <internalEndpoint>
+      <portName>info_out_filter_config</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_75067f5f-72bf-4700-af9a-3390db550181"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_filter_config</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_246ce4d2-4a84-416c-9e60-79fc07fdd2f5"/>
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>
+      Shapes.Shapes_asm.doc.Shapes_asm.Control_comp.control::Shapes.Shapes_asm.doc.Shapes_asm.Sender_comp.control
+    </name>
+    <internalEndpoint>
+      <portName>control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_a322ad8e-9337-45d3-8375-5efc9aabecd4"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_eaa6c810-071a-4d9d-abd2-59991443b340"/>
+    </internalEndpoint>
+  </connection>
+  <artifact xmi:id="CompSvrArt">
+    <name>CompoSvrArtifactName</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+  <artifact xmi:id="_383c9f4c-278b-4ec4-a94d-206450362035">
+    <name>Shapes_Control_comp_exec</name>
+    <source/>
+    <node/>
+    <location>Shapes_Control_comp_exec</location>
+  </artifact>
+  <artifact xmi:id="_a398f4a6-8e56-464f-b69a-8073f7735ff4">
+    <name>Shapes_Receiver_comp_exec</name>
+    <source/>
+    <node/>
+    <location>Shapes_Receiver_comp_exec</location>
+  </artifact>
+  <artifact xmi:id="_44e4b446-aa29-4591-b246-9c0586d73200">
+    <name>Shapes_Sender_comp_exec</name>
+    <source/>
+    <node/>
+    <location>Shapes_Sender_comp_exec</location>
+  </artifact>
+  <artifact xmi:id="_4b9173ab-3e7d-4759-94dc-ad794be49fc5">
+    <name>Shapes_Control_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>Shapes_Control_comp_svnt</location>
+  </artifact>
+  <artifact xmi:id="_c9c76a7f-0d57-4d1c-950f-f2e78b9f2b74">
+    <name>Shapes_Receiver_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>Shapes_Receiver_comp_svnt</location>
+  </artifact>
+  <artifact xmi:id="_ed43eab6-dd16-4c24-a49f-86e704326fe1">
+    <name>Shapes_Sender_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>Shapes_Sender_comp_svnt</location>
+  </artifact>
+  <artifact xmi:id="_005ce9e1-759d-475b-bd75-2c5b08e89109">
+    <name>Shapes_ShapeType_conn_DDS_Event_exec</name>
+    <source/>
+    <node/>
+    <location>Shapes_ShapeType_conn_exec</location>
+  </artifact>
+  <artifact xmi:id="_00c71980-ab3b-4089-b60c-4eb71679ee63">
+    <name>Shapes_ShapeType_conn_DDS_Event_svnt</name>
+    <source/>
+    <node/>
+    <location>Shapes_ShapeType_conn_svnt</location>
+  </artifact>
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="_191e8fc3-44ab-487f-820f-b5f259c0bb9b"/>
+    <constrainedInstance xmi:idref="_a322ad8e-9337-45d3-8375-5efc9aabecd4"/>
+  </localityConstraint>
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="_d543199c-d559-4a57-af2a-8bb32cd726d9"/>
+    <constrainedInstance xmi:idref="_75067f5f-72bf-4700-af9a-3390db550181"/>
+    <constrainedInstance xmi:idref="_246ce4d2-4a84-416c-9e60-79fc07fdd2f5"/>
+  </localityConstraint>
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="_a861bf28-59ac-49cc-ba5e-e0b40b0eec08"/>
+    <constrainedInstance xmi:idref="_eaa6c810-071a-4d9d-abd2-59991443b340"/>
+    <constrainedInstance xmi:idref="_4447e88f-91fb-4e35-b994-152cc22c52a4"/>
+  </localityConstraint>
+</Deployment:DeploymentPlan>

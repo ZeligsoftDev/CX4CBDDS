@@ -1,0 +1,40 @@
+// Parameters of all basic types
+
+typedef string StringType;
+typedef short ShortType;
+typedef long LongType;
+typedef long long LongLongType;
+typedef unsigned short UnsignedShortType;
+typedef unsigned long UnsignedLongType;
+typedef unsigned long long UnsignedLongLongType;
+typedef float FloatType;
+typedef double DoubleType;
+typedef long double LongDoubleType;
+typedef char CharType;
+typedef wchar WCharType;
+typedef boolean BooleanType;
+typedef octet OctetType;
+typedef any anyType;
+
+interface int1058
+{
+      void func1
+        (
+          inout StringType returnString,
+          inout ShortType returnShort,
+          in LongType returnLong,
+          out LongLongType returnLongLong, 
+          out UnsignedShortType returnUnsignedShort, 
+          out UnsignedLongType returnUnsignedLong,
+          in UnsignedLongLongType returnUnsignedLongLong, 
+          inout FloatType returnFloat, 
+          out DoubleType returnDouble,
+          in LongDoubleType returnLongDouble,
+          in CharType returnChar,
+          inout WCharType returnWChar,
+          out BooleanType returnBoolean,
+          in OctetType returnOctet,
+          inout anyType returnAny
+        );
+};
+

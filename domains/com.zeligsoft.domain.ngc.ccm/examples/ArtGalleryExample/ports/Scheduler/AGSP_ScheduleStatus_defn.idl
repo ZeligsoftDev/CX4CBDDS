@@ -1,0 +1,45 @@
+/// @defgroup AGSP_ScheduleStatus_defn ScheduleStatus_defn
+/// @{
+/// 
+/// @file AGSP_ScheduleStatus_defn.idl
+/// @brief ScheduleStatus_defn definitions definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__SCHEDULER__AGSP_SCHEDULESTATUS_DEFN_IDL
+#define CX_PORTS__SCHEDULER__AGSP_SCHEDULESTATUS_DEFN_IDL
+
+
+/// @namespace AGSP 
+module AGSP {
+
+    /// @enum SchedStatusEnum
+    ///
+    enum SchedStatusEnum {
+        SCHED_ERROR,
+        SCHED_NORMAL,
+        SCHED_DUMMY,
+        SCHED_RUNNING,
+        SCHED_FILLER,
+        SCHED_PARTIAL,
+        SCHED_CANCEL
+    };
+
+    /// @enum SchedErrorEnum
+    ///
+    enum SchedErrorEnum {
+        SCHED_INVALID,
+        SCHED_DEBUG_COMMANDED,
+        SCHED_INTERRUPTED,
+        SCHED_UNABLE_TO_SCHEDULE,
+        SCHED_LATE_CONTROLS,
+        SCHED_JOB_RUNNING,
+        SCHED_INVALID_JOB,
+        SCHED_BUFFER_ERROR
+    };
+};
+
+#endif // CX_PORTS__SCHEDULER__AGSP_SCHEDULESTATUS_DEFN_IDL
+
+/// @}
+

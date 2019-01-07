@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tableviewer Plug-in
+Bundle-SymbolicName: com.zeligsoft.ce.deployment.tableeditor;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.zeligsoft.ce.deployment.tableeditor.Activator
+Bundle-Vendor: ZELIGSOFT
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.ui.editors,
+ org.eclipse.gef,
+ com.zeligsoft.ce.deployment2;visibility:=reexport,
+ com.zeligsoft.ce.deployment2.edit,
+ org.eclipse.emf.edit.ui,
+ com.ibm.xtools.modeler.ui,
+ com.zeligsoft.ce.deployment.core,
+ com.zeligsoft.ce.deployment.bridge.rsm
+Eclipse-LazyStart: true

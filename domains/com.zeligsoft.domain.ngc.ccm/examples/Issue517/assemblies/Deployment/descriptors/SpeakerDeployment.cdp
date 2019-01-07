@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:DeploymentPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
+    xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>SpeakerDeployment</label>
+  <UUID>_8333b6eb-07bb-4d6b-843a-ca8197c4afa6</UUID>
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source/>
+    <artifact xmi:idref="CompSvrArt"/>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.DAnCE.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_722071ce-c0a5-41f0-96d5-a4d8d2e161fd">
+    <name>Speaker_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_8882e938-540c-4c0d-8bd1-20dd368bb01b"/>
+    <artifact xmi:idref="_c7cd7005-0451-4043-9d4b-84d8699fcd86"/>
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Speaker_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Speaker_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Speaker_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Speaker_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.DAnCE.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>edu.vanderbilt.dre.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_fc01c6b3-ded0-47f8-995c-e4673f755e81">
+    <name>Speaker_asm.speaker_comp</name>
+    <node>node</node>
+    <source/>
+    <implementation xmi:idref="_722071ce-c0a5-41f0-96d5-a4d8d2e161fd"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.RegisterNaming</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Speaker</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_9e4b6eeb-93ca-4ee8-9242-4422630b30f9">
+    <name>ContainerProcess_ComponentServerInstance</name>
+    <node>node</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ContainerProcess</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>Speaker_asm.speaker_comp.speakerFacet::Speaker_asm.commander.speakerRecept</name>
+    <internalEndpoint>
+      <portName>speakerFacet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_fc01c6b3-ded0-47f8-995c-e4673f755e81"/>
+    </internalEndpoint>
+    <externalReference>
+      <location>corbaname:rir:/NameService#commander</location>
+      <provider>false</provider>
+      <portName>speakerRecept</portName>
+      <supportedType>Meaningless</supportedType>
+    </externalReference>
+  </connection>
+
+  <connection>
+    <name>Speaker_asm.speaker_comp.commandRecept::Speaker_asm.commander.commandFacet</name>
+    <internalEndpoint>
+      <portName>commandRecept</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_fc01c6b3-ded0-47f8-995c-e4673f755e81"/>
+    </internalEndpoint>
+    <externalReference>
+      <location>corbaname:rir:/NameService#commander</location>
+      <provider>true</provider>
+      <portName>commandFacet</portName>
+      <supportedType>Meaningless</supportedType>
+    </externalReference>
+  </connection>
+
+  <artifact xmi:id="CompSvrArt">
+    <name>CompoSvrArtifactName</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+
+  <artifact xmi:id="_8882e938-540c-4c0d-8bd1-20dd368bb01b">
+    <name>Speaker_comp_exec</name>
+    <source/>
+    <node/>
+    <location>Speaker_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_c7cd7005-0451-4043-9d4b-84d8699fcd86">
+    <name>Speaker_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>Speaker_comp_svnt</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <!-- This is referencing [ContainerProcess_ComponentServerInstance] -->
+    <constrainedInstance xmi:idref="_9e4b6eeb-93ca-4ee8-9242-4422630b30f9"/>
+    <!-- This is referencing [Speaker_asm.speaker_comp] -->
+    <constrainedInstance xmi:idref="_fc01c6b3-ded0-47f8-995c-e4673f755e81"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

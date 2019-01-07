@@ -1,0 +1,31 @@
+/// @defgroup AGControl_SP_Control_comp SP_Control_comp
+/// @{
+/// 
+/// @file AGControl_SP_Control_comp.idl
+/// @brief SP_Control_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_SP_CONTROL_COMP__SRC__AGCONTROL_SP_CONTROL_COMP_IDL
+#define CX_SP_CONTROL_COMP__SRC__AGCONTROL_SP_CONTROL_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao lem "AGControl_SP_Control_compE.idl"
+#include "AGSP_SystemImages_conn.idl"
+#include "AGSP_SystemTargets_conn.idl"
+#include "AGSP_Control_obj.idl"
+
+/// @namespace AGControl 
+module AGControl {
+    component SP_Control_comp {
+        port AGSP::SystemImages_conn::PSAT_Listen SystemImagesSub;
+        port AGSP::SystemTargets_conn::DDS_Listen SystemTargetsSub;
+        uses AGSP::Control_obj ControlRecept;
+    };
+
+};
+
+#endif // CX_SP_CONTROL_COMP__SRC__AGCONTROL_SP_CONTROL_COMP_IDL
+
+/// @}
+

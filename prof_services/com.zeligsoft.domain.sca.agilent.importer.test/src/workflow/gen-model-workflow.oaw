@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<workflow>
+    <property name="fileEncoding" value="ISO-8859-1"/>
+
+    <component
+        class="com.zeligsoft.base.workflow.SetupResourceSet"
+        resourceSetSlot="rset" />
+        
+    <!-- Load the source model. -->
+    <component id="readSource" class="com.zeligsoft.base.workflow.RSMReader" resourceSetSlot="rset">
+        <uri value="platform:/plugin/com.zeligsoft.domain.sca.agilent.importer.test/models/SCATestModel.emx" />
+        <modelSlot value="ZDLModel" />
+    </component>
+    
+    <!-- Resolve all proxies to ensure consistent generation of library dependencies. -->
+    <component id="resolveAll" class="com.zeligsoft.base.workflow.ResolveAll"
+           resourceSetSlot="rset">
+        <modelSlot value="${sourceModel}" />
+    </component>
+
+    <component class="com.zeligsoft.base.oaw.test.OawWorkflowComponent" id="transformer">
+		<metaModel id="agilentMM" class="com.zeligsoft.base.zdl.oaw.EcoreMetamodel" 
+			metaModelPackage="com.zeligsoft.domain.sca.agilent.SystemvueModel.SystemvueModelPackage">
+		</metaModel>		
+   		<metaModel id="SCA" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+        	<zdl value="pathmap://SCA_DOMAIN/SCA.uml"/>
+     	</metaModel>
+        <outputSlot value="result"/>
+        <invoke value="${xtend-top-rule}"/>
+    </component>
+
+</workflow>

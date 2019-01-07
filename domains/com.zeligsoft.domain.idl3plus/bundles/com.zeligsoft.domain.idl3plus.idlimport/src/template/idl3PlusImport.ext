@@ -1,0 +1,285 @@
+import CORBADomain::IDLFileSupport; // needed for IDLFile and similar
+import CORBADomain::IDL; // needed for CORBAModule etc.
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+import CCM::CCM_Component;
+import CCM::CCM_Core;
+import IDL3Plus::IDL3Plus;
+import IDL3Plus::Connectors;
+import IDL3Plus::Generics;
+import idl; // needed for IDL DSL
+
+extension com::zeligsoft::base::zdl::util::ZDLUtil reexport;
+extension com::zeligsoft::domain::zml::oaw::importutils::ZMLImportUtils;
+extension template::idl3Import reexport;
+
+
+/**
+ * This is a clone of the IDL3 main transformation, until the "organizing" rules at the end.
+ */
+create uml::Package mainTransform(Specification model, IDL3PlusModel zdlmodel, String idlFileName, String profileToApply) :
+	idl3importInit(this, model, zdlmodel, idlFileName, profileToApply) ->
+	addIdl3PlusScope() ->
+	model.definitions.visitContained(this) ->
+    resolveUnresolvedLookups() ->
+    resolveUnresolvedIdl3Lookups();
+   // convertStateMembers() ->
+   // if this.getPortTypePackage().packagedElement.size == 0 then this.getPortTypePackage().destroy();
+  
+Void addIdl3PlusScope() :
+	JAVA com.zeligsoft.domain.idl3plus.idlimport.ImportUtils.addIdl3PlusScope();
+	
+
+/*
+ * IDL3+ Concept Support
+ */
+create ExtendedPortType visitContained(PortTypeDecl porttype, uml::Package container) :
+	container.packagedElement.add(this) ->
+	this.configurePortType(porttype);
+
+create ExtendedPortType visitContained(PortTypeDecl porttype, TemplateModule container) :
+	container.zdlAsPackage().packagedElement.add(this) ->
+	this.configurePortType(porttype);
+	
+create ExtendedPortType visitContained(PortTypeDecl porttype, CORBAModule container) :
+	container.zdlAsPackage().packagedElement.add(this) ->
+	this.configurePortType(porttype);
+	
+Void configurePortType(ExtendedPortType zPortType, PortTypeDecl porttype) :
+	zPortType.setName(porttype.name) ->
+	porttype.exports.visitContained(zPortType);
+	
+Void visitContained(PortExport export, ExtendedPortType zPortType ) :
+	{};
+	
+Void visitContained(ProvidesDcl provides, ExtendedPortType zPortType ) :
+	JAVA com.zeligsoft.domain.idl3plus.idlimport.ImportUtils.createProvides(
+		com.zeligsoft.domain.omg.corba.dsl.idl.ProvidesDcl,
+		org.eclipse.uml2.uml.Class
+		);
+	
+Void visitContained(UsesDcl uses, ExtendedPortType zPortType ) :
+	JAVA com.zeligsoft.domain.idl3plus.idlimport.ImportUtils.createUses(
+		com.zeligsoft.domain.omg.corba.dsl.idl.UsesDcl,
+		org.eclipse.uml2.uml.Class
+		);
+		
+create CORBAAttribute visitContained(AttrDecl attr, ExtendedPortType zPortType ) :
+	zPortType.ownedAttribute.add(this) ->
+	this.configureAttribute(attr);
+		
+create ConnectorDef visitContained(idl::Connector connector, uml::Package container) :
+	container.packagedElement.add(this) ->
+	configureConnector(this, connector, container);
+	
+create ConnectorDef visitContained(idl::Connector connector, TemplateModule container) :
+	container.zdlAsPackage().packagedElement.add(this) ->
+	configureConnector(this, connector, container);	
+	
+create ConnectorDef visitContained(idl::Connector connector, CORBAModule module) :
+	module.contents.add(this) ->
+	configureConnector(this, connector, module);
+	
+Void configureConnector(ConnectorDef zConnector, idl::Connector connector, uml::Package container) :
+	zConnector.setName(connector.header.name) ->
+	configureConnectorGeneralization(zConnector, connector) ->
+	connector.exports.visitContained(zConnector);
+	
+Void configureConnectorGeneralization(ConnectorDef zConnector, Connector connector ) :
+	JAVA com.zeligsoft.domain.idl3plus.idlimport.ImportUtils.addConnectorGeneralization(
+		org.eclipse.uml2.uml.Component,
+		com.zeligsoft.domain.omg.corba.dsl.idl.Connector);
+
+Void visitContained(ConnectorExport export, ConnectorDef zConnector) :
+	{};
+
+create InterfacePort visitContained(ProvidesDcl prov, ConnectorDef zConnector) :
+	zConnector.ownedPort.add(this) ->
+	this.setName(prov.name) ->
+	if getInterface(prov.type, zConnector) != null then this.zdlAsPort().setType(getInterface(prov.type, zConnector));
+		
+create InterfacePort visitContained(UsesDcl uses, ConnectorDef zConnector) :
+	zConnector.ownedPort.add(this) ->
+	this.setName(uses.name) ->
+	if getInterface(uses.type, zConnector) != null then this.zdlAsPort().setType(getInterface(uses.type, zConnector)) ->
+	this.setIsConjugated(true);
+	
+create CORBAAttribute visitContained(AttrSpec attr, ConnectorDef zConnector) :
+	zConnector.ownedAttribute.add(this) ->
+	this.configureAttribute(attr);
+
+create CORBAAttribute visitContained(ReadOnlyAttrSpec attr, ConnectorDef zConnector) :
+	zConnector.ownedAttribute.add(this) ->
+	this.configureAttribute(attr);
+
+create InterfacePort visitContained(PortDecl portDecl, ConnectorDef zConnector) :
+	zConnector.ownedPort.add(this) ->
+	this.configurePort(portDecl);
+	
+create InterfacePort visitContained(PortDecl portDecl, CCMComponent zComponent ) :
+	zComponent.ownedPort.add(this) ->
+	this.configurePort(portDecl);
+
+Void configurePort(InterfacePort zPort, PortDecl portDecl) :
+	zPort.setName(portDecl.name) ->
+	zPort.setIsConjugated(portDecl.isMirror) ->
+	zPort.setType(findPortType(zPort.zdlAsPort().owner, portDecl.type));
+	
+PortType findPortType(uml::Element e, ScopedName s) :
+	JAVA com.zeligsoft.domain.idl3plus.idlimport.ImportUtils.findPortType(
+		org.eclipse.uml2.uml.Element,
+		com.zeligsoft.domain.omg.corba.dsl.idl.ScopedName);
+		
+create IDL3Plus::Generics::TemplateModule visitContained(idl::TemplateModule module, uml::Package container) :
+	container.packagedElement.add(this) ->
+	configureTemplateModule(this, module);
+
+create IDL3Plus::Generics::TemplateModule visitContained(idl::TemplateModule module, CORBAModule zModule) :
+	zModule.contents.add(this) ->
+	configureTemplateModule(this, module);
+	
+Void configureTemplateModule(IDL3Plus::Generics::TemplateModule zModule, idl::TemplateModule module ) :
+	zModule.setName(module.name) ->
+	module.parameters.visitContained(zModule) ->
+	module.definitions.visitContained(zModule);
+		
+cached TypeParameter visitContained(FormalParameter parameter, IDL3Plus::Generics::TemplateModule zModule) :
+	JAVA com.zeligsoft.domain.idl3plus.idlimport.ImportUtils.createTemplateParameter( 
+		com.zeligsoft.domain.omg.corba.dsl.idl.FormalParameter,
+		org.eclipse.uml2.uml.Package);
+		
+Void visitContained(idl::TemplateDefinition defn, TemplateModule module) :
+	{};
+	
+Void visitContained(IDLComment defn, TemplateModule module) :
+	{};
+	
+create CORBAModule visitContained(FixedModule module, TemplateModule zModule ) :
+	zModule.zdlAsPackage().packagedElement.add(this) -> // bug 15537
+	configureFixedModule(this, module);
+
+create CORBAEnum visitContained(idl::EnumType enum, IDL3Plus::Generics::TemplateModule package) :
+	package.zdlAsPackage().packagedElement.add(this) ->
+	this.configureEnum(enum);
+
+create CORBAModule visitContained(FixedModule module, CORBAModule zModule ) :
+	zModule.contents.add(this) ->
+	configureFixedModule(this, module);
+
+Void configureFixedModule(CORBAModule zModule, FixedModule module) :
+	zModule.setName(module.name) ->
+	module.definitions.visitContained(zModule);	
+
+Void visitContained(FixedDefinition fixedDef, CORBAModule module ) :
+	debug(fixedDef);
+
+Void visitContained(TemplateModuleRef moduleRef, TemplateModule module ) :
+	JAVA com.zeligsoft.domain.idl3plus.idlimport.ImportUtils.createModuleInstantiation(
+		com.zeligsoft.domain.omg.corba.dsl.idl.TemplateModuleRef,
+		org.eclipse.uml2.uml.Package);
+	
+/* Bug 15538	
+create TemplateModuleAlias visitContained(TemplateModuleRef moduleRef, TemplateModule module ) :
+	module.zdlAsPackage().packagedElement.add(this) ->
+	this.setName(moduleRef.name);
+	// I don't even know if I'm creating the right thing 
+*/
+
+/*
+ * Adding IDL2/IDL3 concepts to TemplateModules
+ */	
+create CORBAInterface visitContained(Interface_decl intf, IDL3Plus::Generics::TemplateModule container) :
+	container.zdlAsPackage().packagedElement.add(this) ->
+	this.configureInterface(intf);
+	
+create CORBAConstant visitContained(ConstDecl const, IDL3Plus::Generics::TemplateModule file) :
+	file.addConstant(this) ->
+	this.setName(const.name) ->
+	this.setTypedElementType(const.type) ->
+	this.setDefault(const.value.getConstValue());
+	
+create uml::DataType visitContained(TypeDeclarator typedef, IDL3Plus::Generics::TemplateModule file) :
+	// could be a typedef, a sequence, or an array.
+	file.zdlAsPackage().packagedElement.add(this) ->
+	this.setName(typedef.declarators.get(0).id) ->	
+	this.applyTypedefConcept(typedef);	
+	
+create CORBAStruct visitContained(StructType struct, IDL3Plus::Generics::TemplateModule package ) :
+	package.zdlAsPackage().packagedElement.add(this) ->
+	this.configureStruct(struct);
+	
+create CORBAException visitContained(ExceptDecl exception, IDL3Plus::Generics::TemplateModule package ) :
+	package.zdlAsPackage().packagedElement.add(this) ->
+	this.configureException(exception);
+
+create Native visitContained(NativeType native, IDL3Plus::Generics::TemplateModule package) :
+	package.zdlAsPackage().packagedElement.add(this) -> // bug 15537
+	this.setName(native.name);
+	
+create CCM::CCM_Component::Event visitContained(EventDcl event, TemplateModule container) :
+	container.zdlAsPackage().packagedElement.add(this) ->
+	configureEvent(this, event);
+
+create CCMComponent visitContained(ComponentDecl comp, TemplateModule container) :
+	container.zdlAsPackage().packagedElement.add(this) ->
+	this.configureComponent(comp);
+
+create Home visitContained(HomeDecl home, TemplateModule container ) :
+	container.zdlAsPackage().packagedElement.add(this) ->
+	this.configureHome(home);
+	
+/*
+ * IDL2 CORBAModules
+ */
+private Void visitContained(Module module, uml::Package container ) :
+	container.packagedElement.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).size > 0 ?
+		module.definitions.visitContained(
+			container.packagedElement.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).get(0)) :
+		createModule(module, container); 
+		
+private create CORBAModule createModule(Module module, uml::Package container) :
+	container.packagedElement.add(this) ->
+	this.setName(module.name) ->
+	module.definitions.visitContained(this);
+
+private Void visitContained(Module module, CORBAModule container ) :
+	container.contents.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).size > 0 ?
+		module.definitions.visitContained(
+			container.contents.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).get(0)) :
+		createModule(module, container); 
+	
+private create CORBAModule createModule(Module module, CORBAModule container) :
+	container.contents.add(this) ->
+	this.setName(module.name) ->
+	module.definitions.visitContained(this);
+	 		
+/*
+ * Module Instantiation
+ */
+Void visitContained(idl::TemplateModuleInst inst, uml::Package container) :
+	JAVA com.zeligsoft.domain.idl3plus.idlimport.ImportUtils.createModuleInstantiation(
+		com.zeligsoft.domain.omg.corba.dsl.idl.TemplateModuleInst,
+		org.eclipse.uml2.uml.Package);
+
+Void visitContained(idl::TemplateModuleInst inst, CORBAModule container) :
+	JAVA com.zeligsoft.domain.idl3plus.idlimport.ImportUtils.createModuleInstantiation(
+		com.zeligsoft.domain.omg.corba.dsl.idl.TemplateModuleInst,
+		org.eclipse.uml2.uml.Package);
+		
+Void convertStateMembers(uml::Package package) :
+	package.getEvents().convertStateMembers(package);
+	
+Void convertStateMembers(Event event, uml::Package package) :
+	event.member.convertStateMember(event) ->
+	event.member.zdlAsElement().destroy();
+	
+Void convertStateMember(StateMember member, Event event) :
+	let struct = member.idlType : // Assumption: it's a CORBAStruct
+	struct.members.createEventAttribute(event) ->
+	struct.zdlAsElement().destroy();
+		
+create CORBAAttribute createEventAttribute(CORBAField field, Event event ) :
+	event.ownedAttribute.add(this) ->
+	this.setName(field.name) ->
+	this.zdlAsProperty().setType(field.idlType);
+	

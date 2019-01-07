@@ -1,0 +1,106 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2010 -- ALL RIGHTS RESERVED
+//==============================================================================
+
+/**
+ * @defgroup Echo_comp Echo_comp Component
+ * @ingroup PubSubClientServerExample
+ * @{
+ *
+ * The Echo_comp component is very similar to the PubSubClientServer_comp
+ * component. It provides the DDS publisher, DDS subscriber, CORBA client, and
+ * CORBA server that are on the opposite side of the PubSubClientServer_comp
+ * component’s interfaces.
+ *
+ * This component complements the PubSubClientServer_comp component’s data
+ * transactions to keep the communications loop supplied with publications and
+ * server responses.
+ *
+ * @file   SNA_Examples_Echo_comp.idl
+ * @brief  Echo_comp component definition IDL file.
+ */
+
+//==============================================================================
+
+#ifndef ECHO_COMP_IDL
+#define ECHO_COMP_IDL
+
+// EXAMPLE:
+// "Components.idl" is required for idl3 types
+#include <Components.idl>
+
+#include "SNA_Examples_NumAssert_conn.idl"
+#include "SNA_Examples_CurrentNum_conn.idl"
+
+// EXAMPLE:
+// we need to include definitions of the EchoNumber_obj and EchoAssert_obj
+// interfaces
+#include "SNA_Examples_EchoNumber_obj.idl"
+#include "SNA_Examples_EchoAssert_obj.idl"
+
+// EXAMPLE:
+// the module keyword specifies a namespace for the Echo_comp component
+module SNA_Examples
+{
+   /**
+    * This component uses (calls) an interface, provides (implements) an 
+    * interface, publishes a DDS message, and subscribes to a DDS message.
+    */
+   component Echo_comp
+   {
+      /**
+       * Uses/calls methods on the SNA_Examples::EchoNumber_obj interface
+       */
+      uses SNA_Examples::EchoNumber_obj              echoNumberRecept;
+
+      /**
+       * Provides and implements the SNA_Examples::EchoAssert_obj interface
+       */
+      provides SNA_Examples::EchoAssert_obj          echoAssertFacet;
+
+      /**
+       * Publishes (DDS_Write) type SNA_Examples::NumAssert_msg
+       */
+      port SNA_Examples::NumAssert_conn::DDS_Write   numAssertPub;
+
+      /**
+       * Subscribes (DDS_Listen) to type SNA_Examples::CurrentNum_msg
+       */
+      port SNA_Examples::CurrentNum_conn::DDS_Listen currentNumSub;
+      
+      /**
+       * An optional CCM facet defined as part of the DDS4CCM standard which
+       * the DDS4CCM connector can call on status changes (such as errors).
+       *
+       * This facet is recommended in most cases as it is useful for debugging
+       * and integration.
+       * 
+       * It is recommended to have one of these provides lines for each
+       * DDS4CCM extended port and to have them named after the associated port
+       * name.
+       */
+      provides CCM_DDS::ConnectorStatusListener      numAssertPubConnStatus;
+      
+      /**
+       * An optional CCM facet defined as part of the DDS4CCM standard which
+       * the DDS4CCM connector can call on status changes (such as errors).
+       *
+       * This facet is recommended in most cases as it is useful for debugging
+       * and integration.
+       * 
+       * It is recommended to have one of these provides lines for each
+       * DDS4CCM extended port and to have them named after the associated port
+       * name.
+       */
+      provides CCM_DDS::ConnectorStatusListener      currentNumSubConnStatus;
+   };
+};
+
+#endif // ECHO_COMP_IDL
+
+/// @}
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================

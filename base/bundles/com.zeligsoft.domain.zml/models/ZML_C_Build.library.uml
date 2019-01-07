@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:zml="http://www.zeligsoft.com/zdl/2008/ZML/1" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w http://www.zeligsoft.com/zdl/2008/ZML/1 pathmap://ZML_PROFILES/ZML.profile.uml#_fzFl8TcuEd24vvV8bUFsGQ">
+  <uml:Model xmi:id="_G1YPwEr5Ed2it8TAgyFr2Q" name="ZML C Build">
+    <packagedElement xmi:type="uml:Class" xmi:id="_B_8a4JoWEd2-vtOXh_LiEg" name="Toolchain">
+      <ownedAttribute xmi:id="_esEBEJoWEd2-vtOXh_LiEg" name="toolchain" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_TpwtwLFsEeSJWevkszPbug" name="codegen_language" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_-FosYLLIEeStObktNbgmtQ" value="CPP">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_OddEcJoWEd2-vtOXh_LiEg" name="os_host" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Toj3YJoWEd2-vtOXh_LiEg" name="os_target" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_WWAVEJoWEd2-vtOXh_LiEg" name="processor_target" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_jBhlcJoWEd2-vtOXh_LiEg" name="cc_tool" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_BsdBsJoXEd2-vtOXh_LiEg" name="cc_option_define" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_GO4EAJoXEd2-vtOXh_LiEg" name="cc_option_undefine" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_JPswsJoXEd2-vtOXh_LiEg" name="cc_option_include" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_M6_WsJoXEd2-vtOXh_LiEg" name="cc_option_obj" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_bJ5FYJoXEd2-vtOXh_LiEg" name="cc_makedepend" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_e2-bIJoXEd2-vtOXh_LiEg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_e20qIJoXEd2-vtOXh_LiEg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ioOfMJoXEd2-vtOXh_LiEg" name="ld_tool" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="__ZtGgJoXEd2-vtOXh_LiEg" name="ld_option_out" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_DcY40JoYEd2-vtOXh_LiEg" name="ld_option_lib" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_HeVEQJoYEd2-vtOXh_LiEg" name="ld_option_libpath" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_M_7roJoYEd2-vtOXh_LiEg" name="ar_tool" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_QZ8UYJoYEd2-vtOXh_LiEg" name="ar_option_out" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Y89eUJoYEd2-vtOXh_LiEg" name="extension_obj" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_cSDK0JoYEd2-vtOXh_LiEg" name="extension_exe" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_lkAeYJoYEd2-vtOXh_LiEg" name="extension_lib" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_FGVGINBSEd2ALbl4YJCUpQ" name="extension_linklib" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_pB46gJoYEd2-vtOXh_LiEg" name="extension_dep" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_suz4MJoYEd2-vtOXh_LiEg" name="prefix_lib" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_jqHSELvZEd2_H_jMCFfNbw" name="target_specific_dir" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ncGQ8IWmEeKoxcx_qv0RKQ" name="cc_option_alt_obj" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Kf_JUJoWEd2-vtOXh_LiEg" name="BuildConfiguration">
+      <ownedAttribute xmi:id="_lOMRUJoWEd2-vtOXh_LiEg" name="cc_flags" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_n-U2oZoWEd2-vtOXh_LiEg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n-U2oJoWEd2-vtOXh_LiEg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_pAVGMJoWEd2-vtOXh_LiEg" name="cc_ppflags" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rbAY4ZoWEd2-vtOXh_LiEg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rbAY4JoWEd2-vtOXh_LiEg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_z94Y4JoWEd2-vtOXh_LiEg" name="cc_include_paths" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2yLsgZoWEd2-vtOXh_LiEg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2yLsgJoWEd2-vtOXh_LiEg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_3NwOMJoWEd2-vtOXh_LiEg" name="cc_defines" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_93x2MZoWEd2-vtOXh_LiEg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_93x2MJoWEd2-vtOXh_LiEg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_-dB4UJoWEd2-vtOXh_LiEg" name="cc_undefines" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A1UlYZoXEd2-vtOXh_LiEg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A1UlYJoXEd2-vtOXh_LiEg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_mEw3gJoXEd2-vtOXh_LiEg" name="ld_flags" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_p0X80ZoXEd2-vtOXh_LiEg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_p0X80JoXEd2-vtOXh_LiEg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_qg65wJoXEd2-vtOXh_LiEg" name="ld_libraries" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uQ-rAZoXEd2-vtOXh_LiEg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uQ-rAJoXEd2-vtOXh_LiEg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ugBzoJoXEd2-vtOXh_LiEg" name="ld_library_paths" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yIfIEZoXEd2-vtOXh_LiEg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yIfIEJoXEd2-vtOXh_LiEg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_UIzy0JoYEd2-vtOXh_LiEg" name="ar_flags" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WggC8JoYEd2-vtOXh_LiEg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WgWR8JoYEd2-vtOXh_LiEg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_arHMwJoZEd2-vtOXh_LiEg" name="toolchainref" visibility="public" type="_B_8a4JoWEd2-vtOXh_LiEg" association="_aqqg0JoZEd2-vtOXh_LiEg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_arHMwpoZEd2-vtOXh_LiEg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_arHMwZoZEd2-vtOXh_LiEg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_bRzP0Ju6Ed2e6uofgJchtQ" name="buildconfiguration" visibility="public" type="_Kf_JUJoWEd2-vtOXh_LiEg" association="_bRpe0Ju6Ed2e6uofgJchtQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bRzP0pu6Ed2e6uofgJchtQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bRzP0Zu6Ed2e6uofgJchtQ"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_T8CNkBz1EeGI7oxrgnnvpA" name="ld_pre_process" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Xi94ARz1EeGI7oxrgnnvpA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Xi94ABz1EeGI7oxrgnnvpA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_YpurwBz1EeGI7oxrgnnvpA" name="ld_post_process" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b9-qwBz1EeGI7oxrgnnvpA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b9-DsBz1EeGI7oxrgnnvpA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ZflGkFdJEeGKooykLI1A5Q" name="ar_post_process" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eUj4gFdJEeGKooykLI1A5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eUiqYFdJEeGKooykLI1A5Q"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_fNuVIFdJEeGKooykLI1A5Q" name="ar_pre_process" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_i9HYAFdJEeGKooykLI1A5Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_i9Gw8FdJEeGKooykLI1A5Q"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_j6d1oHeiEeKc9MsRJXS7-Q" name="ld_objs" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pdYEkHeiEeKc9MsRJXS7-Q" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pdXdgHeiEeKc9MsRJXS7-Q"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_bRpe0Ju6Ed2e6uofgJchtQ" memberEnd="_bRzP0Ju6Ed2e6uofgJchtQ _bRzP05u6Ed2e6uofgJchtQ">
+      <ownedEnd xmi:id="_bRzP05u6Ed2e6uofgJchtQ" name="" visibility="private" type="_Kf_JUJoWEd2-vtOXh_LiEg" association="_bRpe0Ju6Ed2e6uofgJchtQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bRzP1Zu6Ed2e6uofgJchtQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bRzP1Ju6Ed2e6uofgJchtQ" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_aqqg0JoZEd2-vtOXh_LiEg" memberEnd="_arHMwJoZEd2-vtOXh_LiEg _arHMw5oZEd2-vtOXh_LiEg">
+      <ownedEnd xmi:id="_arHMw5oZEd2-vtOXh_LiEg" name="" visibility="private" type="_Kf_JUJoWEd2-vtOXh_LiEg" association="_aqqg0JoZEd2-vtOXh_LiEg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_arHMxZoZEd2-vtOXh_LiEg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_arHMxJoZEd2-vtOXh_LiEg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_oDc5oKULEd2lg4YL0MvrHw" name="ModelConfiguration">
+      <ownedAttribute xmi:id="_qzbt8KULEd2lg4YL0MvrHw" name="generatedProjectName" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_A6_TkKUPEd2GrfTTD4dQsQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_A62JoKUPEd2GrfTTD4dQsQ"/>
+      </ownedAttribute>
+    </packagedElement>
+    <profileApplication xmi:id="_G1Y20Er5Ed2it8TAgyFr2Q">
+      <eAnnotations xmi:id="_G1Y20Ur5Ed2it8TAgyFr2Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_G1Y20kr5Ed2it8TAgyFr2Q">
+      <eAnnotations xmi:id="_G1Y200r5Ed2it8TAgyFr2Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://ZML_PROFILES/ZML.profile.uml#_fzFl8TcuEd24vvV8bUFsGQ"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://ZML_PROFILES/ZML.profile.uml#_fzAGYDcuEd24vvV8bUFsGQ"/>
+    </profileApplication>
+  </uml:Model>
+  <Standard:ModelLibrary xmi:id="_G1Y21Er5Ed2it8TAgyFr2Q" base_Package="_G1YPwEr5Ed2it8TAgyFr2Q"/>
+  <zml:BuildConfiguration xmi:id="_GLZl0E5NEeCL1eOXCwMGAQ" base_Class="_B_8a4JoWEd2-vtOXh_LiEg"/>
+  <zml:BuildConfiguration xmi:id="_GLZl0U5NEeCL1eOXCwMGAQ" base_Class="_Kf_JUJoWEd2-vtOXh_LiEg"/>
+  <zml:BuildConfiguration xmi:id="_GLaM4E5NEeCL1eOXCwMGAQ" base_Class="_oDc5oKULEd2lg4YL0MvrHw"/>
+</xmi:XMI>

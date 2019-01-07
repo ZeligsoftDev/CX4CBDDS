@@ -1,0 +1,587 @@
+#ifndef CX_CF_IDL
+#define CX_CF_IDL
+
+#include <PortTypes.idl>
+
+module CF2 {
+    exception InvalidObjectReference {
+        string msg;
+    };
+
+    interface Device: CF2::Resource {
+        exception InvalidState {
+            string msg;
+        };
+        exception InvalidCapacity {
+            string msg;
+            CF2::Properties capacities;
+        };
+        enum AdminType {
+            LOCKED,
+            SHUTTING_DOWN,
+            UNLOCKED
+        };
+        enum OperationalType {
+            ENABLED,
+            DISABLED
+        };
+        enum UsageType {
+            IDLE,
+            ACTIVE,
+            BUSY
+        };
+        readonly attribute CF2::Device::UsageType usageState;
+        attribute CF2::Device::AdminType adminState;
+        readonly attribute CF2::Device::OperationalType operationalState;
+        readonly attribute string softwareProfile;
+        readonly attribute string label;
+        readonly attribute CF2::AggregateDevice compositeDevice;
+        boolean allocateCapacity(
+            in CF2::Properties capacities
+            )
+            raises (InvalidCapacity, InvalidState);
+        void deallocateCapacity(
+            in CF2::Properties capacities
+            )
+            raises (InvalidCapacity, InvalidState);
+    };
+
+    interface File {
+        exception IOException {
+            CF2::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception InvalidFilePointer {
+        };
+        readonly attribute string fileName;
+        readonly attribute unsigned long filePointer;
+        void read(
+            out CF2::OctetSequence data,
+            in unsigned long length
+            )
+            raises (IOException);
+        void write(
+            in CF2::OctetSequence data
+            )
+            raises (IOException);
+        unsigned long sizeOf()
+            raises (FileException);
+        void close()
+            raises (FileException);
+        void setFilePointer(
+            in unsigned long filePointer
+            )
+            raises (InvalidFilePointer, FileException);
+    };
+
+    interface Resource: CF2::LifeCycle, CF2::TestableObject, CF2::PropertySet, CF2::PortSupplier {
+        exception StartError {
+            CF2::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception StopError {
+            CF2::ErrorNumberType errorNumber;
+            string msg;
+        };
+        readonly attribute string identifier;
+        void start()
+            raises (StartError);
+        void stop()
+            raises (StopError);
+    };
+
+    interface Application: CF2::Resource {
+        struct ComponentProcessIdType {
+            string componentId;
+            unsigned long processId;
+        };
+        typedef sequence <CF2::Application::ComponentProcessIdType> ComponentProcessIdSequence;
+        struct ComponentElementType {
+            string componentId;
+            string elementId;
+        };
+        typedef sequence <CF2::Application::ComponentElementType> ComponentElementSequence;
+        readonly attribute CF2::Application::ComponentElementSequence componentNamingContexts;
+        readonly attribute CF2::Application::ComponentProcessIdSequence componentProcessIds;
+        readonly attribute CF2::DeviceAssignmentSequence componentDevices;
+        readonly attribute CF2::Application::ComponentElementSequence componentImplementations;
+        readonly attribute string profile;
+        readonly attribute string name;
+    };
+
+    interface ApplicationFactory {
+        exception CreateApplicationRequestError {
+            CF2::DeviceAssignmentSequence invalidAssignments;
+        };
+        exception CreateApplicationError {
+            CF2::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception InvalidInitConfiguration {
+            CF2::Properties invalidProperties;
+        };
+        readonly attribute string name;
+        readonly attribute string identifier;
+        readonly attribute string softwareProfile;
+        CF2::Application create(
+            in string name,
+            in CF2::Properties initConfiguration,
+            in CF2::DeviceAssignmentSequence deviceAssignments
+            )
+            raises (CreateApplicationError, CreateApplicationRequestError, InvalidInitConfiguration);
+    };
+
+    interface DeviceManager: CF2::PropertySet, CF2::PortSupplier {
+        struct ServiceType {
+            Object serviceObject;
+            string serviceName;
+        };
+        typedef sequence <CF2::DeviceManager::ServiceType> ServiceSequence;
+        readonly attribute string deviceConfigurationProfile;
+        readonly attribute CF2::FileSystem fileSys;
+        readonly attribute string identifier;
+        readonly attribute string label;
+        readonly attribute CF2::DeviceSequence registeredDevices;
+        readonly attribute CF2::DeviceManager::ServiceSequence registeredServices;
+        void registerDevice(
+            in CF2::Device registeringDevice
+            )
+            raises (InvalidObjectReference);
+        void unregisterDevice(
+            in CF2::Device registeredDevice
+            )
+            raises (InvalidObjectReference);
+        void shutdown();
+        void registerService(
+            in Object registeringService,
+            in string name
+            )
+            raises (InvalidObjectReference);
+        void unregisterService(
+            in Object unregisteringService,
+            in string name
+            )
+            raises (InvalidObjectReference);
+        string getComponentImplementationId(
+            in string componentInstantiationId
+            );
+    };
+
+    struct DataType {
+        string id;
+        any value;
+    };
+
+    exception InvalidProfile {
+    };
+
+    typedef sequence <CF2::DataType> Properties;
+
+    typedef sequence <octet> OctetSequence;
+
+    typedef sequence <string> StringSequence;
+
+    exception UnknownProperties {
+        CF2::Properties invalidProperties;
+    };
+
+    struct DeviceAssignmentType {
+        string componentId;
+        string assignedDeviceId;
+    };
+
+    typedef sequence <CF2::DeviceAssignmentType> DeviceAssignmentSequence;
+
+    enum ErrorNumberType {
+        CFEPERM,
+        CFNOTSET,
+        CFE2BIG,
+        CFEACCES,
+        CFEAGAIN,
+        CFEBADF,
+        CFEBADMSG,
+        CFEBUSY,
+        CFECANCELED,
+        CFECHILD,
+        CFEDEADLK,
+        CFEDOM,
+        CFEEXIST,
+        CFEFAULT,
+        CFEFBIG,
+        CFEINPROGRESS,
+        CFEINTR,
+        CFEINVAL,
+        CFEIO,
+        CFEISDIR,
+        CFEMFILE,
+        CFEMLINK,
+        CFEMSGSIZE,
+        CFENAMETOOLONG,
+        CFENFILE,
+        CFENODEV,
+        CFENOENT,
+        CFENOEXEC,
+        CFENOLCK,
+        CFENOMEM,
+        CFENOSPC,
+        CFENOSYS,
+        CFENOTDIR,
+        CFENOTEMPTY,
+        CFENOTSUP,
+        CFENOTTY,
+        CFENXIO,
+        CFEPIPE,
+        CFERANGE,
+        CFEROFS,
+        CFESPIPE,
+        CFESRCH,
+        CFETIMEDOUT,
+        CFEXDEV
+    };
+
+    exception InvalidFileName {
+        CF2::ErrorNumberType errorNumber;
+        string msg;
+    };
+
+    exception FileException {
+        CF2::ErrorNumberType errorNumber;
+        string msg;
+    };
+
+    typedef sequence <CF2::Device> DeviceSequence;
+
+    interface AggregateDevice {
+        readonly attribute CF2::DeviceSequence devices;
+        void addDevice(
+            in CF2::Device associatedDevice
+            )
+            raises (InvalidObjectReference);
+        void removeDevice(
+            in CF2::Device associatedDevice
+            )
+            raises (InvalidObjectReference);
+    };
+
+    interface FileSystem {
+        exception UnknownFileSystemProperties {
+            CF2::Properties invalidProperties;
+        };
+        enum FileType {
+            PLAIN,
+            DIRECTORY,
+            FILE_SYSTEM
+        };
+        struct FileInformationType {
+            string name;
+            CF2::FileSystem::FileType kind;
+            unsigned long long size;
+            CF2::Properties fileProperties;
+        };
+        typedef sequence <CF2::FileSystem::FileInformationType> FileInformationSequence;
+        const string SIZE = "SIZE";
+        const string AVAILABLE_SPACE = "AVAILABLE_SPACE";
+        const string CREATED_TIME_ID = "CREATE_TIME";
+        const string MODIFIED_TIME_ID = "MODIFIED_TIME";
+        const string LAST_ACCESS_TIME_ID = "LAST_ACCESS_TIME";
+        void remove(
+            in string fileName
+            )
+            raises (FileException, InvalidFileName);
+        void copy(
+            in string sourceFileName,
+            in string destinationFileName
+            )
+            raises (InvalidFileName, FileException);
+        void exists(
+            in string fileName
+            )
+            raises (InvalidFileName);
+        CF2::FileSystem::FileInformationSequence list(
+            in string pattern
+            )
+            raises (FileException, InvalidFileName);
+        CF2::File create(
+            in string fileName
+            )
+            raises (InvalidFileName, FileException);
+        CF2::File open(
+            in string fileName,
+            in boolean read_Only
+            )
+            raises (InvalidFileName, FileException);
+        void mkdir(
+            in string directoryName
+            )
+            raises (FileException, InvalidFileName);
+        void rmdir(
+            in string directoryName
+            )
+            raises (InvalidFileName, FileException);
+        void query(
+            inout CF2::Properties fileSystemProperties
+            )
+            raises (UnknownFileSystemProperties);
+    };
+
+    interface ResourceFactory {
+        exception InvalidResourceId {
+        };
+        exception ShutdownFailure {
+            string msg;
+        };
+        exception CreateResourceFailure {
+            CF2::ErrorNumberType errorNumber;
+            string msg;
+        };
+        readonly attribute string identifier;
+        CF2::Resource createResource(
+            in string resourceId,
+            in CF2::Properties qualifiers
+            )
+            raises (CreateResourceFailure);
+        void releaseResource(
+            in string resourceId
+            )
+            raises (InvalidResourceId);
+        void shutdown()
+            raises (ShutdownFailure);
+    };
+
+    interface FileManager: CF2::FileSystem {
+        struct MountType {
+            string mountPoint;
+            CF2::FileSystem fs;
+        };
+        typedef sequence <CF2::FileManager::MountType> MountSequence;
+        exception NonExistentMount {
+        };
+        exception InvalidFileSystem {
+        };
+        exception MountPointAlreadyExists {
+        };
+        void mount(
+            in string mountPoint,
+            in CF2::FileSystem file_System
+            )
+            raises (InvalidFileName, InvalidFileSystem, MountPointAlreadyExists);
+        void unmount(
+            in string mountPoint
+            )
+            raises (NonExistentMount);
+        CF2::FileManager::MountSequence getMounts();
+    };
+
+    interface Port {
+        exception InvalidPort {
+            unsigned short errorCode;
+            string msg;
+        };
+        exception OccupiedPort {
+        };
+        void connectPort(
+            in Object connection,
+            in string connectionId
+            )
+            raises (InvalidPort, OccupiedPort);
+        void disconnectPort(
+            in string connectionId
+            )
+            raises (InvalidPort);
+    };
+
+    interface LifeCycle {
+        exception InitializeError {
+            CF2::StringSequence errorMessages;
+        };
+        exception ReleaseError {
+            CF2::StringSequence errorMessages;
+        };
+        void initialize()
+            raises (InitializeError);
+        void releaseObject()
+            raises (ReleaseError);
+    };
+
+    interface TestableObject {
+        exception UnknownTest {
+        };
+        void runTest(
+            in unsigned long testid,
+            inout CF2::Properties testValues
+            )
+            raises (UnknownTest, UnknownProperties);
+    };
+
+    interface PropertySet {
+        exception InvalidConfiguration {
+            string msg;
+            CF2::Properties invalidProperties;
+        };
+        exception PartialConfiguration {
+            CF2::Properties invalidProperties;
+        };
+        void configure(
+            in CF2::Properties configProperties
+            )
+            raises (InvalidConfiguration, PartialConfiguration);
+        void query(
+            inout CF2::Properties configProperties
+            )
+            raises (UnknownProperties);
+    };
+
+    interface DomainManager: CF2::PropertySet {
+        exception ApplicationInstallationError {
+            CF2::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception ApplicationAlreadyInstalled {
+        };
+        typedef sequence <CF2::Application> ApplicationSequence;
+        typedef sequence <CF2::ApplicationFactory> ApplicationFactorySequence;
+        typedef sequence <CF2::DeviceManager> DeviceManagerSequence;
+        exception InvalidIdentifier {
+        };
+        exception DeviceManagerNotRegistered {
+        };
+        exception ApplicationUninstallationError {
+            CF2::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception RegisterError {
+            CF2::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception UnregisterError {
+            CF2::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception NotConnected {
+        };
+        exception InvalidEventChannelName {
+        };
+        readonly attribute string domainManagerProfile;
+        readonly attribute CF2::DomainManager::DeviceManagerSequence deviceManagers;
+        readonly attribute CF2::DomainManager::ApplicationSequence applications;
+        readonly attribute CF2::DomainManager::ApplicationFactorySequence applicationFactories;
+        readonly attribute CF2::FileManager fileMgr;
+        readonly attribute string identifier;
+        void registerDevice(
+            in CF2::Device registeringDevice,
+            in CF2::DeviceManager registeredDeviceMgr
+            )
+            raises (InvalidObjectReference, InvalidProfile, DeviceManagerNotRegistered, RegisterError);
+        void registerDeviceManager(
+            in CF2::DeviceManager deviceMgr
+            )
+            raises (InvalidObjectReference, InvalidProfile, RegisterError);
+        void unregisterDeviceManager(
+            in CF2::DeviceManager deviceMgr
+            )
+            raises (InvalidObjectReference, UnregisterError);
+        void unregisterDevice(
+            in CF2::Device unregisteringDevice
+            )
+            raises (InvalidObjectReference, UnregisterError);
+        void installApplication(
+            in string profileFileName
+            )
+            raises (InvalidProfile, InvalidFileName, ApplicationInstallationError, ApplicationAlreadyInstalled);
+        void uninstallApplication(
+            in string applicationId
+            )
+            raises (InvalidIdentifier, ApplicationUninstallationError);
+        void registerService(
+            in Object registeringService,
+            in CF2::DeviceManager registeredDeviceMgr,
+            in string name
+            )
+            raises (InvalidObjectReference, DeviceManagerNotRegistered, RegisterError);
+        void unregisterService(
+            in Object unregisteringService,
+            in string name
+            )
+            raises (InvalidObjectReference, UnregisterError);
+        void registerWithEventChannel(
+            in Object registeringObject,
+            in string registeringId,
+            in string eventChannelName
+            )
+            raises (InvalidObjectReference, InvalidEventChannelName, NotConnected);
+        void unregisterFromEventChannel(
+            in string unregisteringId,
+            in string eventChannelName
+            )
+            raises (InvalidEventChannelName, NotConnected);
+    };
+
+    interface PortSupplier {
+        exception UnknownPort {
+        };
+        Object getPort(
+            in string name
+            )
+            raises (UnknownPort);
+    };
+
+    interface LoadableDevice: CF2::Device {
+        enum LoadType {
+            KERNEL_MODULE,
+            DRIVER,
+            SHARED_LIBRARY,
+            EXECUTABLE
+        };
+        exception InvalidLoadKind {
+        };
+        exception LoadFail {
+            CF2::ErrorNumberType errorNumber;
+            string msg;
+        };
+        void load(
+            in CF2::FileSystem fs,
+            in string fileName,
+            in CF2::LoadableDevice::LoadType loadKind
+            )
+            raises (InvalidState, InvalidLoadKind, InvalidFileName, LoadFail);
+        void unload(
+            in string fileName
+            )
+            raises (InvalidState, InvalidFileName);
+    };
+
+    interface ExecutableDevice: CF2::LoadableDevice {
+        exception InvalidProcess {
+            CF2::ErrorNumberType errorNumber;
+            string msg;
+        };
+        exception InvalidFunction {
+        };
+        typedef long ProcessID_Type;
+        exception InvalidParameters {
+            CF2::Properties invalidParms;
+        };
+        exception InvalidOptions {
+            CF2::Properties invalidOpts;
+        };
+        exception ExecuteFail {
+            CF2::ErrorNumberType errorNumber;
+            string msg;
+        };
+        const string STACK_SIZE_ID = "STACK_SIZE";
+        const string PRIORITY_ID = "PRIORITY";
+        void terminate(
+            in CF2::ExecutableDevice::ProcessID_Type processId
+            )
+            raises (InvalidProcess, InvalidState);
+        CF2::ExecutableDevice::ProcessID_Type execute(
+            in string name,
+            in CF2::Properties options,
+            in CF2::Properties parameters
+            )
+            raises (InvalidState, InvalidFunction, InvalidParameters, InvalidOptions, InvalidFileName, ExecuteFail);
+    };
+
+};
+
+#endif

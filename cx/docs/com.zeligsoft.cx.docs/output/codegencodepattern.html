@@ -1,0 +1,73 @@
+<head>
+	<title>Code Pattern</title>
+	<link rel="stylesheet" type="text/css" href="../helpStyle.css">
+</head>
+<html>
+	<body outputFile="codegencodepattern.html" title="Code Pattern">
+		<h1>Code Pattern</h1>
+		<p>The following code pattern applies to both component and device code. The component CF Interface is <code>CF::Resource</code>.
+The device CF Interfaces are: <code>CF::Device, CF::LoadableDevice, CF::ExecutableDevice</code>, and <code>CF::AggregateDevice</code>.</p>
+		<h2>SCA Code Pattern</h2>
+		<p>The generated source code follows a strict pattern: </p>
+		<ul>
+			<li><a href="#m">Main class</a>: Startup</li>
+			<li><a href="#s">Servant</a>: CF::Interface</li>
+			<li><a href="#w">Worker</a>: Functional</li>
+			<li><a href="#p">Ports</a>: Communication objects</li>
+		</ul>
+		<h5><a name="fig1">Figure 1: Code Pattern</a></h5>
+		<p><img src="../images/CodePattern.gif" width="677" height="496" border="0" alt="Code Pattern"></p>
+		<h2><a name="m">Main Class</a></h2>
+		<p>The Main class manages startup, including</p>
+		<ul>
+			<li>parsing executable parameters</li>
+			<li>creating the CORBA object for the component or device</li>
+			<li>registering components or devices in the namingservice</li>
+			<li>starting the ORB (if required)</li>
+		</ul>
+		<p>You don't need to modify the Main class.</p>
+		<h2><a name="s">Servant Class</a></h2>
+		<p>The Servant class manages the following:</p>
+		<ul>
+			<li>implements all of <code>CF::Interface</code> (inherits from <code>POA_CF::Resource</code>)</li>
+			<li>creates the worker</li>
+			<li>creates the ports</li>
+			<li>forwards calls to the worker when necessary</li>
+		</ul>
+		<p>You don't need to modify the Servant class.</p>
+		<h2><a name="w">Worker Class</a></h2>
+		<p>The Worker class manages the following:</p>
+		<ul>
+			<li>termination of <strong>CF::Interface</strong> operations, including user-defined additions to initialize, releaseObject, start, stop</li>
+			<li>runs <code>config_&lt;propertyid&gt;</code>, <code>query_&lt;propertyid&gt;</code>, which are correctly casted from the configure/query methods</li>
+			<li>runs test properties using <code>runTest_&lt;id&gt;</code></li>
+		</ul>
+		<h2><a name="p">Port Class</a></h2>
+		<p>The Provides port implements the CORBA servant for the interface defined on the port. It receives CORBA calls and forwards them to the worker 
+through C++ calls. The worker inherits from an abstract interface to implement the functionality of the operations on the port. The Port class 
+performs no functional processing.  It provides the connection boundary.</p>
+		<p>The abstract interface that the worker inherits from is called <code>zceMyModule_MyInterfaceHandle</code>. It has 
+operations <code>MyInterface_MyOperation</code> for every operation <code>MyOperation</code> on interface <code>MyInterface</code> in 
+module <code>MyModule</code>. The operations have the same parameters as the functions definition in the IDL file, with the addition of 
+one parameter (the first in the list), which is an integer <code>portIdentifier</code>.
+The <code>portIdentifier</code> parameter allows the user to identify which port a particular function call came in on. This can be done 
+through an if-statement or a switch-statement for example. The switch-statement will provide better performance especially with a high volume 
+of messages.</p>
+		<p>The worker inherits from this port handler class.</p>
+		<h3>Provides Port</h3>
+		<p>The Provides port has a user interface to the CORBA servant. It receives CORBA calls and forwards them to the worker. The worker method looks at 
+the port identifier and then calls the appropriate method &lt;portname&gt;_&lt;method&gt;. This allows the components to support multiple 
+provides ports of the same interface.</p>
+		<h3>Uses Port</h3>
+		<p>The Uses port implements a CORBA client. It receives calls from the worker and forwards them to the CORBA object on the other end of 
+the connection. The uses port also implements the <code>CF::Port</code> interface as per the SCA standard. By default, the uses port only 
+supports single connections. You need to modify the uses port class if multiple definitions are required.</p>
+		<p>The uses port is available as an attribute within the worker class (<code>myPort_</code>).  You can make C++ calls on this object and the
+ calls are directly translated into CORBA calls.</p>
+		<p>The class for the uses port can be found in <code>&lt;Source Directory&gt;/ports/&lt;Module&gt;_&lt;Interface&gt;</code>.</p>
+		<h3>See Also</h3><br><a href="codegenworkflow.html">Code Generation Workflow</a><br><a href="codegenoverview.html">Generation Overview</a><br><a href="codegenresp.html">SCA Code Responsibilities</a><br><a href="runcodegen.html">Running Code Generation</a><div class="runningfooter" id="dochomefooter"><a href="http://www.prismtech.com/contact" shape="rect" target="_blank">Provide feedback</a><br clear="none"><hr>  
+			Copyright <sup>©</sup> 2010 Zeligsoft Ltd. All rights reserved.
+			
+		</div>
+	</body>
+</html>

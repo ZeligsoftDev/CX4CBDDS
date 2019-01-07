@@ -1,0 +1,17 @@
+// Union positive
+
+
+interface int1065
+{
+
+    union u1 switch (long long)
+    {
+      case 1: short a;
+      case 2: float b;
+      default: string c;
+    };
+
+    attribute u1 unionattr;
+    u1 f1( inout u1 enumparam );
+
+};

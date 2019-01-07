@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright 2018 ADLINK Technology Limited.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<plugin>
+   
+   <extension
+         id="com.zeligsoft.domain.zml.rsm.tooling.libraries"
+         name="ZML Libraries"
+         point="com.ibm.xtools.uml.msl.UMLLibraries">
+      <UMLLibrary
+            id="com.zeligsoft.domain.zml.rsm.tooling.library"
+            name="%library.zml.name"
+            path="pathmap://ZML_LIBRARIES/ZMLMM.uml"
+            visible="true">
+      </UMLLibrary>
+      <UMLLibrary
+            id="com.zeligsoft.domain.zml.rsm.tooling.library.cBuild"
+            name="%library.zmlCBuild.name"
+            path="pathmap://ZML_LIBRARIES/ZML_C_Build.library.uml"
+            visible="true">
+      </UMLLibrary>
+   </extension>
+   
+   <extension
+         id="com.zeligsoft.domain.zml.rsm.tooling.profiles"
+         name="ZML Profiles"
+         point="com.ibm.xtools.uml.msl.UMLProfiles">
+      <UMLProfile
+            id="com.zeligsoft.domain.zml.rsm.tooling.ZML"
+            name="%profile.zml.name"
+            path="pathmap://ZML_PROFILES/ZML.profile.uml"
+            required="false"
+            visible="true">
+      </UMLProfile>
+   </extension>
+   
+   <extension
+         id="ZML ElementTypes"
+         name="ZML ElementTypes"
+         point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.BuildConfigurationClass"
+               name="%_UI_ElementType__BuildConfiguration__Class_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.BuildConfigurationClassEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::BuildConfiguration"/>
+            <specializes id="com.ibm.xtools.uml.class"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.BuildConfigurationClassMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.ConfigurationClass"
+               name="%_UI_ElementType__Configuration__Class_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.ConfigurationClassEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::Configuration"/>
+            <specializes id="com.ibm.xtools.uml.class"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.ConfigurationClassMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.SwBusComponent"
+               name="%_UI_ElementType__SwBus__Component_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.SwBusComponentEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::SwBus"/>
+            <specializes id="com.ibm.xtools.uml.component"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.SwBusComponentMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.SwPortPort"
+               name="%_UI_ElementType__SwPort__Port_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.SwPortPortEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::SwPort"/>
+            <specializes id="com.ibm.xtools.uml.port"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.SwPortPortMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.HwCardComponent"
+               name="%_UI_ElementType__HwCard__Component_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.HwCardComponentEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::HwCard"/>
+            <specializes id="com.ibm.xtools.uml.component"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.HwCardComponentMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.HwPortPort"
+               name="%_UI_ElementType__HwPort__Port_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.HwPortPortEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::HwPort"/>
+            <specializes id="com.ibm.xtools.uml.port"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.HwPortPortMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.FlowPortPort"
+               name="%_UI_ElementType__FlowPort__Port_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.FlowPortPortEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::FlowPort"/>
+            <specializes id="com.ibm.xtools.uml.port"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.FlowPortPortMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.SwSchedulableResourceComponent"
+               name="%_UI_ElementType__SwSchedulableResource__Component_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.SwSchedulableResourceComponentEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::SwSchedulableResource"/>
+            <specializes id="com.ibm.xtools.uml.component"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.SwSchedulableResourceComponentMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.HwProcessorComponent"
+               name="%_UI_ElementType__HwProcessor__Component_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.HwProcessorComponentEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::HwProcessor"/>
+            <specializes id="com.ibm.xtools.uml.component"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.HwProcessorComponentMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.ImplementationArtifact"
+               name="%_UI_ElementType__Implementation__Artifact_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.ImplementationArtifactEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::Implementation"/>
+            <specializes id="com.ibm.xtools.uml.artifact"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.ImplementationArtifactMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.StructuralRealizationComponent"
+               name="%_UI_ElementType__StructuralRealization__Component_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.StructuralRealizationComponentEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::StructuralRealization"/>
+            <specializes id="com.ibm.xtools.uml.component"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.StructuralRealizationComponentMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.HwCoreComponent"
+               name="%_UI_ElementType__HwCore__Component_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.HwCoreComponentEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::HwCore"/>
+            <specializes id="com.ibm.xtools.uml.component"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.HwCoreComponentMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.HwBusComponent"
+               name="%_UI_ElementType__HwBus__Component_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.HwBusComponentEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::HwBus"/>
+            <specializes id="com.ibm.xtools.uml.component"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.HwBusComponentMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.ComponentInterfaceComponent"
+               name="%_UI_ElementType__ComponentInterface__Component_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.ComponentInterfaceComponentEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::ComponentInterface"/>
+            <specializes id="com.ibm.xtools.uml.component"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.ComponentInterfaceComponentMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.PartProperty"
+               name="%_UI_ElementType__Part__Property_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.PartPropertyEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::Part"/>
+            <specializes id="com.ibm.xtools.uml.property"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.PartPropertyMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.InterfaceInterface"
+               name="%_UI_ElementType__Interface__Interface_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.InterfaceInterfaceEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::Interface"/>
+            <specializes id="com.ibm.xtools.uml.interface"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.InterfaceInterfaceMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.ConfigurationInstanceSpecification"
+               name="%_UI_ElementType__Configuration__InstanceSpecification_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.ConfigurationInstanceSpecificationEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::Configuration"/>
+            <specializes id="com.ibm.xtools.uml.instanceSpecification"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.ConfigurationInstanceSpecificationMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.SwPlatformComponent"
+               name="%_UI_ElementType__SwPlatform__Component_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.SwPlatformComponentEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::SwPlatform"/>
+            <specializes id="com.ibm.xtools.uml.component"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.SwPlatformComponentMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.MessagePortPort"
+               name="%_UI_ElementType__MessagePort__Port_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.MessagePortPortEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::MessagePort"/>
+            <specializes id="com.ibm.xtools.uml.port"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.MessagePortPortMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.BuildConfigurationInstanceSpecification"
+               name="%_UI_ElementType__BuildConfiguration__InstanceSpecification_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.BuildConfigurationInstanceSpecificationEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::BuildConfiguration"/>
+            <specializes id="com.ibm.xtools.uml.instanceSpecification"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.BuildConfigurationInstanceSpecificationMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.SwPartProperty"
+               name="%_UI_ElementType__SwPart__Property_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.SwPartPropertyEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::SwPart"/>
+            <specializes id="com.ibm.xtools.uml.property"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.SwPartPropertyMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.WorkerFunctionOperation"
+               name="%_UI_ElementType__WorkerFunction__Operation_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.WorkerFunctionOperationEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::WorkerFunction"/>
+            <specializes id="com.ibm.xtools.uml.operation"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.WorkerFunctionOperationMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.HwPartProperty"
+               name="%_UI_ElementType__HwPart__Property_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.HwPartPropertyEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::HwPart"/>
+            <specializes id="com.ibm.xtools.uml.property"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.HwPartPropertyMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.SwOperatingSystemComponent"
+               name="%_UI_ElementType__SwOperatingSystem__Component_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.SwOperatingSystemComponentEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::SwOperatingSystem"/>
+            <specializes id="com.ibm.xtools.uml.component"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.SwOperatingSystemComponentMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.AssemblyConnectorConnector"
+               name="%_UI_ElementType__AssemblyConnector__Connector_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.AssemblyConnectorConnectorEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::AssemblyConnector"/>
+            <specializes id="com.ibm.xtools.uml.assemblyConnector"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.AssemblyConnectorConnectorMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.SwConnectorConnector"
+               name="%_UI_ElementType__SwConnector__Connector_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.SwConnectorConnectorEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::SwConnector"/>
+            <specializes id="com.ibm.xtools.uml.assemblyConnector"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.SwConnectorConnectorMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.HwConnectorConnector"
+               name="%_UI_ElementType__HwConnector__Connector_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.HwConnectorConnectorEditHelperAdvice"
+               kind="com.ibm.xtools.uml.type.IStereotypedElementType">
+            <param
+                  name="stereotype"
+                  value="ZML::HwConnector"/>
+            <specializes id="com.ibm.xtools.uml.assemblyConnector"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.HwConnectorConnectorMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.StructuralRealizationimplementationImplementation"
+               icon="/icons/default.gif"
+               name="%_UI_ElementType_StructuralRealization_implementation_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.StructuralRealizationimplementationImplementationEditHelperAdvice">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.StructuralRealizationimplementationImplementationMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.ComponentInterfacerealizationStructuralRealization"
+               icon="/icons/default.gif"
+               name="%_UI_ElementType_ComponentInterface_realization_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.ComponentInterfacerealizationStructuralRealizationEditHelperAdvice">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.ComponentInterfacerealizationStructuralRealizationMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <specializationType
+               id="com.zeligsoft.domain.zml.rsm.tooling.WorkerFunctionreceivingPortMessagePort"
+               icon="/icons/default.gif"
+               name="%_UI_ElementType_WorkerFunction_receivingPort_name"
+               edithelperadvice="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.WorkerFunctionreceivingPortMessagePortEditHelperAdvice">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <matcher class="com.zeligsoft.domain.zml.rsm.tooling.types.WorkerFunctionreceivingPortMessagePortMatcher"/>
+         </specializationType>
+      </metamodel>
+      <metamodel
+             nsURI="http://www.eclipse.org/uml2/2.1.0/UML">
+         <adviceBinding
+            id="com.zeligsoft.domain.zml.rsm.tooling.applyProfileAdvice"
+            typeId="com.ibm.xtools.uml.package"
+            class="com.zeligsoft.domain.zml.rsm.tooling.edithelpers.ZMLApplyProfileAdvice"
+            inheritance="all">
+         </adviceBinding>
+      </metamodel>
+   </extension>
+    
+   <extension
+         id="ZML ElementTypeBindings"
+         name="ZML ElementTypeBindings"
+         point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings">
+      <binding context="com.ibm.xtools.uml.type.context">
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.BuildConfigurationClass"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.ConfigurationClass"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.SwBusComponent"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.SwPortPort"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.HwCardComponent"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.HwPortPort"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.FlowPortPort"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.SwSchedulableResourceComponent"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.HwProcessorComponent"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.ImplementationArtifact"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.StructuralRealizationComponent"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.HwCoreComponent"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.HwBusComponent"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.ComponentInterfaceComponent"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.PartProperty"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.InterfaceInterface"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.ConfigurationInstanceSpecification"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.SwPlatformComponent"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.MessagePortPort"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.BuildConfigurationInstanceSpecification"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.SwPartProperty"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.WorkerFunctionOperation"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.HwPartProperty"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.SwOperatingSystemComponent"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.AssemblyConnectorConnector"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.SwConnectorConnector"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.HwConnectorConnector"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.StructuralRealizationimplementationImplementation"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.ComponentInterfacerealizationStructuralRealization"/>
+         <elementType ref="com.zeligsoft.domain.zml.rsm.tooling.WorkerFunctionreceivingPortMessagePort"/>
+         <advice ref="com.zeligsoft.domain.zml.rsm.tooling.applyProfileAdvice"/>
+      </binding>
+   </extension>
+
+   <extension
+         id="ZML ContributionItemProvider"
+         name="ZML ContributionItemProvider"
+         point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+      <contributionItemProvider
+            class="com.zeligsoft.domain.zml.rsm.tooling.providers.ZMLContributionItemProvider"
+            checkPluginLoaded="false">
+         <Priority
+               name="Medium">
+         </Priority>
+         <popupContribution
+               class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria
+                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <method
+                     name="getDiagramEditDomain().getEditorPart().getSite().getId()"
+                     value="ModelerDiagramEditor">
+               </method>
+            </popupStructuredContributionCriteria>
+         </popupContribution>
+      </contributionItemProvider>
+   </extension>
+
+   <!--<extension
+         id="ZML PaletteProviders"
+         name="ZML PaletteProviders"
+         point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+      <paletteProvider class="com.zeligsoft.domain.zml.rsm.tooling.palette.ZMLPaletteProvider">
+         <Priority name="Medium"/>
+         <editor id="ModelerDiagramEditor"/>
+         <content>
+            <method
+                  name="getDiagram().getType()"
+                  value="Zeligsoft Component, Zeligsoft Configuration"/>
+         </content>
+      </paletteProvider>
+   </extension>-->
+   
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+      <contributionItemProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContributionItemProvider"
+            checkPluginLoaded="false">
+         <Priority name="Low"/>
+         <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="com.zeligsoft.domain.zml.rsm.tooling.editparts.StructuralRealizationimplementationImplementationEditPart"/>
+            <popupPredefinedItem id="deleteFromModelAction" remove="true"/>
+         </popupContribution>
+         <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="com.zeligsoft.domain.zml.rsm.tooling.editparts.ComponentInterfacerealizationStructuralRealizationEditPart"/>
+            <popupPredefinedItem id="deleteFromModelAction" remove="true"/>
+         </popupContribution>
+         <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="com.zeligsoft.domain.zml.rsm.tooling.editparts.WorkerFunctionreceivingPortMessagePortEditPart"/>
+            <popupPredefinedItem id="deleteFromModelAction" remove="true"/>
+         </popupContribution>
+      </contributionItemProvider>
+   </extension>
+   
+   <extension
+         id="ZML ViewProviders"
+         name="ZML ViewProviders"
+         point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.zeligsoft.domain.zml.rsm.tooling.providers.ZMLViewProvider">
+         <Priority name="Medium"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge"/>
+      </viewProvider>
+   </extension>
+
+   <extension
+         id="ZML EditpartProviders"
+         name="ZML EditpartProviders"
+         point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider class="com.zeligsoft.domain.zml.rsm.tooling.providers.ZMLEditPartProvider">
+         <Priority name="Medium"/>
+      </editpartProvider>
+   </extension>   
+   <extension
+         id="ZML DefaultViewProviders"
+         name="ZML DefaultViewProviders"
+         point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider class="com.zeligsoft.domain.zml.rsm.tooling.providers.ZMLDefaultViewProvider">
+         <Priority name="High"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge"/>
+      </viewProvider>
+   </extension>
+
+   <extension
+         id="ZML ModelingAssistantProviders"
+         name="ZML ModelingAssistantProviders"
+         point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders">
+      <modelingAssistantProvider class="com.zeligsoft.domain.zml.rsm.tooling.providers.ZMLModelingAssistant">
+         <Priority name="Medium"/>
+      </modelingAssistantProvider>
+   </extension>
+
+   <extension
+         id="ZML Activities"
+         name="ZML Activities"
+         point="org.eclipse.ui.activities">
+      <category
+            id="com.zeligsoft.domain.zml.rsm.tooling.activities.category"
+            name="%_UI_ActivityCategoryName">
+      </category>
+   </extension>
+   <extension
+         id="ZML EditingCapabilities"
+         name="ZML EditingCapabilities"
+         point="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+      <activity
+            match="equals"
+            ref="com.zeligsoft.domain.zml.rsm.tooling.uireduction.activity">
+      </activity>
+   </extension>
+
+   <extension
+         id="ZML Activities"
+         name="ZML Activities"
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.zeligsoft.domain.zml.rsm.tooling.uireduction.activity"
+            name="%_UI_Activity_uiReduction_name"
+            description="%_UI_Activity_uiReduction_description">
+      </activity>
+      <activityPatternBinding
+            activityId="com.zeligsoft.domain.zml.rsm.tooling.uireduction.activity"
+            pattern="com\.zeligsoft\.domain\.zml\.rsm\.tooling/.*[^com.zeligsoft.domain.zml.rsm.tooling.core.templates.ZMLModel].*">
+      </activityPatternBinding>
+      <activityRequirementBinding
+            activityId="com.zeligsoft.domain.zml.rsm.tooling.uireduction.activity"
+            requiredActivityId="com.zeligsoft.domain.zml.rsm.tooling.core.activity">
+      </activityRequirementBinding>
+      <categoryActivityBinding
+            activityId="com.zeligsoft.domain.zml.rsm.tooling.uireduction.activity"
+            categoryId="com.zeligsoft.domain.zml.rsm.tooling.activities.category">
+      </categoryActivityBinding>
+   </extension>
+
+   <extension
+         id="ZML Activities"
+         name="ZML Activities"
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.zeligsoft.domain.zml.rsm.tooling.core.activity"
+            name="%_UI_Activity_template_name"
+            description="%_UI_Activity_template_description">
+      </activity>
+      <activityPatternBinding
+            activityId="com.zeligsoft.domain.zml.rsm.tooling.core.activity"
+            pattern="com\.zeligsoft\.domain\.zml\.rsm\.tooling/com\.zeligsoft\.domain\.zml\.rsm\.tooling\.core\.templates\.ZMLModel">
+      </activityPatternBinding>
+      <categoryActivityBinding
+            activityId="com.zeligsoft.domain.zml.rsm.tooling.core.activity"
+            categoryId="com.zeligsoft.domain.zml.rsm.tooling.activities.category">
+      </categoryActivityBinding>
+   </extension>
+<!--
+   <extension
+         id="ZML NewModelWizard"
+         name="ZML NewModelWizard"
+         point="com.ibm.xtools.common.ui.wizards.newModelWizard">
+      <templateDirectory
+            path="templates"
+            handler="com.zeligsoft.domain.zml.rsm.tooling.wizards.ZMLTemplateModelHandler">
+      </templateDirectory>
+      <category
+            id="com.zeligsoft.domain.zml.rsm.tooling.core.category"
+            label="%_UI_NewModelWizard_CategoryName">
+      </category>
+      <templateCategoryBinding
+            categoryRef="com.zeligsoft.domain.zml.rsm.tooling.core.category">
+         <template
+               match="equals"
+               ref="com.zeligsoft.domain.zml.rsm.tooling.core.templates.ZMLModel">
+         </template>
+      </templateCategoryBinding>
+      <activityTemplateBinding
+            required="true">
+         <template
+               match="equals"
+               ref="com.zeligsoft.domain.zml.rsm.tooling.core.templates.ZMLModel">
+         </template>
+         <activity
+               match="equals"
+               ref="com.zeligsoft.domain.zml.rsm.tooling.uireduction.activity">
+         </activity>
+      </activityTemplateBinding>
+      <templateConfigurationPageGroup
+            afterRef=".*"
+            afterMatch="pattern"
+            class="com.ibm.xtools.common.ui.wizards.pagegroups.ActivitiesTemplateConfigurationPageGroup"
+            id="com.zeligsoft.domain.zml.rsm.tooling.wizards.pagegroups.ActivitiesTemplateConfigurationPageGroup">
+         <template
+               ref="com.zeligsoft.domain.zml.rsm.tooling.core.templates.ZMLModel"
+               match="equals"/>
+      </templateConfigurationPageGroup>
+   </extension>
+   -->
+</plugin>

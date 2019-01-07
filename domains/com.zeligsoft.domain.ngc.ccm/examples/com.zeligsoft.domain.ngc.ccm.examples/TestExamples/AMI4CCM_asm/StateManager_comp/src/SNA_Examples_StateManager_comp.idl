@@ -1,0 +1,15 @@
+#ifndef CX_STATEMANAGER_COMP__SRC__SNA_EXAMPLES_STATEMANAGER_COMP_IDL
+#define CX_STATEMANAGER_COMP__SRC__SNA_EXAMPLES_STATEMANAGER_COMP_IDL
+
+#include <Components.idl>
+#pragma ciao ami4ccm receptacle "SNA_Examples::StateManager_comp::stateControlRecept"
+#include "SNA_Examples_StateControl_obj.idl"
+
+module SNA_Examples {
+    component StateManager_comp {
+        uses multiple StateControl_obj stateControlRecept;
+    };
+
+};
+
+#endif

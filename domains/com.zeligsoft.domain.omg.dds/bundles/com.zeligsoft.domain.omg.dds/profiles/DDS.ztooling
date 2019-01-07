@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tool:PropertySheet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tool="http://www.zeligsoft.com/zdl/2008/tooling" domainModelURI="platform:/resource/com.zeligsoft.domain.omg.dds/models/dds.uml">
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::Core::Classifier::property"/>
+  <propertySource definition="//@propertyDefinition.4" conceptName="DDS::Core::NamedEntity::name" order="10"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::Core::NamedEntity::ownedEntity"/>
+  <propertySource definition="//@propertyDefinition.0" conceptName="DDS::Core::TypedEntity::type" order="20"/>
+  <propertySource definition="//@propertyDefinition.0" conceptName="DDS::DCPS::ComponentPart::type" order="20"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::DataReader::topic"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::DataWriter::topic"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::DDSComponent::participants"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::DDSComponent::topicConnector"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::Domain::connector"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::Domain::domainTopic"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::Domain::participant"/>
+  <propertySource definition="//@propertyDefinition.0" conceptName="DDS::DCPS::DomainParticipant::type" order="20"/>
+  <propertySource definition="//@propertyDefinition.0" conceptName="DDS::DCPS::DomainTopic::type" order="20"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::ParticipantEnd::participant"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::ParticipantEnd::readerWriter"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::Publisher::writers"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::PublisherSubscriber::data"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::Subscriber::readers"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::TopicConnector::end"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::DCPS::TopicEnd::topic"/>
+  <propertySource definition="//@propertyDefinition.0" conceptName="DDS::Domain::DDSEntity::qosPolicy"/>
+  <propertySource definition="//@propertyDefinition.4 //@propertyDefinition.0" conceptName="DDS::Topics::ContentFilteredTopic::filter_expression"/>
+  <propertySource definition="//@propertyDefinition.0" conceptName="DDS::Topics::ContentFilteredTopic::related_topic"/>
+  <propertySource definition="//@propertyDefinition.0" conceptName="DDS::Topics::MultiTopic::related_topics"/>
+  <propertySource definition="//@propertyDefinition.0 //@propertyDefinition.4" conceptName="DDS::Topics::MultiTopic::subscription_expression"/>
+  <propertySource definition="//@propertyDefinition.0" conceptName="DDS::Topics::TopicDescription::type" order="20"/>
+  <propertySource definition="//@propertyDefinition.0" conceptName="DDS::Topics::TopicField::isDCPSKey"/>
+  <propertySource definition="//@propertyDefinition.1" conceptName="DDS::Topics::TopicType::members"/>
+  <propertyDefinition name="Property Visible"/>
+  <propertyDefinition name="Property Hidden" visible="false"/>
+  <propertyDefinition name="Property Read Only" readOnly="true"/>
+  <propertyDefinition xsi:type="tool:PrimitiveDefinition" name="Primitve"/>
+  <propertyDefinition xsi:type="tool:TextualDefinition" name="Text"/>
+  <propertyDefinition xsi:type="tool:TextualDefinition" name="Multi Text"/>
+</tool:PropertySheet>

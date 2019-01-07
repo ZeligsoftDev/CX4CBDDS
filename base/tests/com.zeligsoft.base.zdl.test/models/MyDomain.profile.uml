@@ -1,0 +1,1292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:tool="http://www.zeligsoft.com/zdl/2008/tooling" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_qeX9gWsvEd2s--4g-nTlHg" name="MyDomain" metamodelReference="_qeX942svEd2s--4g-nTlHg">
+    <eAnnotations xmi:id="_qeX9gmsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <eAnnotations xmi:id="_WsS4nIwQEd2nNpLa-Uw0uA" source="ZMLMM::ZML_Component::ConnectorEnd">
+        <details xmi:id="_WsS4nYwQEd2nNpLa-Uw0uA" key="port" value="role"/>
+        <details xmi:id="_WsS4nowQEd2nNpLa-Uw0uA" key="part" value="role"/>
+        <details xmi:id="_WsS4n4wQEd2nNpLa-Uw0uA" key="partWithPort" value="partWithPort"/>
+      </eAnnotations>
+      <details xmi:id="_qeX9g2svEd2s--4g-nTlHg" key="ZMLMM::ZML_Core::Type" value="Classifier"/>
+      <details xmi:id="_qeX9hGsvEd2s--4g-nTlHg" key="ZMLMM::ZML_Core::NamedElement" value="NamedElement"/>
+      <details xmi:id="_qeX9hWsvEd2s--4g-nTlHg" key="ZMLMM::ZML_Core::Namespace" value="Namespace"/>
+      <details xmi:id="_oEAq5XLlEd2AAq-UeopxBA" key="ZMLMM::ZML_Component::Operation" value="Operation"/>
+      <details xmi:id="_WsS4oIwQEd2nNpLa-Uw0uA" key="ZMLMM::ZML_Component::ConnectorEnd" value="ConnectorEnd"/>
+      <details xmi:id="_Ua7XjrQnEd2znunpcPUHwA" key="ZMLMM::ZML_Deployments::DeploymentTarget" value="Classifier"/>
+      <details xmi:id="_Ua7Xj7QnEd2znunpcPUHwA" key="ZMLMM::ZML_Deployments::DeployableElement" value="Classifier"/>
+      <details xmi:id="_Ua7XkLQnEd2znunpcPUHwA" key="ZMLMM::ZML_Deployments::DeploymentSpecification" value="Classifier"/>
+      <references xmi:type="uml:Class" href="MyDomain.uml#_gWwxIGsrEd2s--4g-nTlHg"/>
+    </eAnnotations>
+    <eAnnotations xmi:id="_qeX9hmsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_qeX9h2svEd2s--4g-nTlHg" name="mydomain" nsURI="http://www.zeligsoft.com/test/zdl/2008/MyDomain/1" nsPrefix="mydomain">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9iGsvEd2s--4g-nTlHg" name="Application" eSuperTypes="_qeX9jWsvEd2s--4g-nTlHg">
+          <eAnnotations xmi:id="_qeX9iWsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX95WsvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_qeX9imsvEd2s--4g-nTlHg" name="id" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9jWsvEd2s--4g-nTlHg" name="StructuralRealization">
+          <eAnnotations xmi:id="_qeX9jmsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX98GsvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX9kWsvEd2s--4g-nTlHg" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9k2svEd2s--4g-nTlHg" name="Implementation">
+          <eAnnotations xmi:id="_qeX9lGsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX9_msvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX9lWsvEd2s--4g-nTlHg" name="base_Artifact" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Artifact"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9l2svEd2s--4g-nTlHg" name="MyPort" eSuperTypes="_qeX9nGsvEd2s--4g-nTlHg">
+          <eAnnotations xmi:id="_qeX9mGsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-DWsvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_qeX9mWsvEd2s--4g-nTlHg" name="kind" ordered="false" upperBound="-1" eType="_qeX9r2svEd2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9nGsvEd2s--4g-nTlHg" name="MessagePort" eSuperTypes="_qeX9n2svEd2s--4g-nTlHg">
+          <eAnnotations xmi:id="_qeX9nWsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-FmsvEd2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9n2svEd2s--4g-nTlHg" name="Port" abstract="true" eSuperTypes="_qeX9pmsvEd2s--4g-nTlHg">
+          <eAnnotations xmi:id="_qeX9oGsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-HWsvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_qeX9oWsvEd2s--4g-nTlHg" name="wiring" ordered="false" lowerBound="1" eType="_qeX9qmsvEd2s--4g-nTlHg" defaultValueLiteral="connector"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX9o2svEd2s--4g-nTlHg" name="base_Port" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Port"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9pmsvEd2s--4g-nTlHg" name="TypedElement" abstract="true">
+          <eAnnotations xmi:id="_qeX9p2svEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-KWsvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_qeX9qGsvEd2s--4g-nTlHg" name="indirection" ordered="false" lowerBound="1" defaultValueLiteral="0">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_qeX9qmsvEd2s--4g-nTlHg" name="WiringKind">
+          <eAnnotations xmi:id="_qeX9q2svEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-NWsvEd2s--4g-nTlHg"/>
+          <eLiterals xmi:id="_qeX9rGsvEd2s--4g-nTlHg" name="connector"/>
+          <eLiterals xmi:id="_qeX9rWsvEd2s--4g-nTlHg" name="sap" value="1"/>
+          <eLiterals xmi:id="_qeX9rmsvEd2s--4g-nTlHg" name="spp" value="2"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_qeX9r2svEd2s--4g-nTlHg" name="PortKind">
+          <eAnnotations xmi:id="_qeX9sGsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-P2svEd2s--4g-nTlHg"/>
+          <eLiterals xmi:id="_qeX9sWsvEd2s--4g-nTlHg" name="control"/>
+          <eLiterals xmi:id="_qeX9smsvEd2s--4g-nTlHg" name="data" value="1"/>
+          <eLiterals xmi:id="_qeX9s2svEd2s--4g-nTlHg" name="responses" value="2"/>
+          <eLiterals xmi:id="_qeX9tGsvEd2s--4g-nTlHg" name="text" value="3"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9tWsvEd2s--4g-nTlHg" name="ComponentInterface">
+          <eAnnotations xmi:id="_qeX9tmsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-SWsvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX9t2svEd2s--4g-nTlHg" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9uWsvEd2s--4g-nTlHg" name="FlowPort" eSuperTypes="_qeX9n2svEd2s--4g-nTlHg">
+          <eAnnotations xmi:id="_qeX9umsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-UWsvEd2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9vGsvEd2s--4g-nTlHg" name="Part">
+          <eAnnotations xmi:id="_qeX9vWsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-VmsvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX9vmsvEd2s--4g-nTlHg" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9wGsvEd2s--4g-nTlHg" name="AssemblyConnector">
+          <eAnnotations xmi:id="_qeX9wWsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-XmsvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX9wmsvEd2s--4g-nTlHg" name="portEnd" ordered="false" upperBound="-1" eType="_qeX9n2svEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX9xGsvEd2s--4g-nTlHg" name="base_Connector" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Connector"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9xmsvEd2s--4g-nTlHg" name="Interface">
+          <eAnnotations xmi:id="_qeX9x2svEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-bmsvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX9yGsvEd2s--4g-nTlHg" name="base_Interface" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Interface"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX9ymsvEd2s--4g-nTlHg" name="WorkerFunction">
+          <eAnnotations xmi:id="_qeX9y2svEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-dWsvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX9zGsvEd2s--4g-nTlHg" name="receivingPort" ordered="false" eType="_qeX9n2svEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_qeX9zmsvEd2s--4g-nTlHg" name="body" ordered="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX90GsvEd2s--4g-nTlHg" name="base_Operation" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_oEAq5nLlEd2AAq-UeopxBA" name="portOperation" ordered="false">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Operation"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX90msvEd2s--4g-nTlHg" name="PortType">
+          <eAnnotations xmi:id="_qeX902svEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-iGsvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX91GsvEd2s--4g-nTlHg" name="inverse" ordered="false" lowerBound="1" eType="_qeX90msvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX91msvEd2s--4g-nTlHg" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_qeX92GsvEd2s--4g-nTlHg" name="Parameter" eSuperTypes="_qeX9pmsvEd2s--4g-nTlHg">
+          <eAnnotations xmi:id="_qeX92WsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-lmsvEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_qeX92msvEd2s--4g-nTlHg" name="passBy" ordered="false" lowerBound="1" eType="_qeX932svEd2s--4g-nTlHg" defaultValueLiteral="value"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_qeX93GsvEd2s--4g-nTlHg" name="base_Parameter" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Parameter"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_qeX932svEd2s--4g-nTlHg" name="PassByKind">
+          <eAnnotations xmi:id="_qeX94GsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qeX-n2svEd2s--4g-nTlHg"/>
+          <eLiterals xmi:id="_qeX94WsvEd2s--4g-nTlHg" name="value"/>
+          <eLiterals xmi:id="_qeX94msvEd2s--4g-nTlHg" name="reference" value="1"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLf2s4Ed2s--4g-nTlHg" name="SwComponent" abstract="true">
+          <eAnnotations xmi:id="_HceLgGs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HcVA8Gs4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceLgWs4Ed2s--4g-nTlHg" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLg2s4Ed2s--4g-nTlHg" name="SwPart">
+          <eAnnotations xmi:id="_HceLhGs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceK4ms4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceLhWs4Ed2s--4g-nTlHg" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLh2s4Ed2s--4g-nTlHg" name="SwPort" eSuperTypes="_HceLjGs4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceLiGs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceK6ms4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceLiWs4Ed2s--4g-nTlHg" name="base_Port" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Port"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLjGs4Ed2s--4g-nTlHg" name="SwCommunicationEndPoint" abstract="true">
+          <eAnnotations xmi:id="_HceLjWs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceK8Gs4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceLjms4Ed2s--4g-nTlHg" name="base_ConnectableElement" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//ConnectableElement"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLkGs4Ed2s--4g-nTlHg" name="SwConnector" eSuperTypes="_HceLl2s4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceLkWs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceK-Ws4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceLkms4Ed2s--4g-nTlHg" name="end" ordered="false" lowerBound="2" upperBound="-1" eType="_HceLjGs4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceLlGs4Ed2s--4g-nTlHg" name="base_Connector" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Connector"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLl2s4Ed2s--4g-nTlHg" name="SwCommunicationMedium" abstract="true">
+          <eAnnotations xmi:id="_HceLmGs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLA2s4Ed2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLmWs4Ed2s--4g-nTlHg" name="SwBus" eSuperTypes="_HceLjGs4Ed2s--4g-nTlHg _HceLl2s4Ed2s--4g-nTlHg _HceLf2s4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceLmms4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLDms4Ed2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLnms4Ed2s--4g-nTlHg" name="SwSchedulableResource" eSuperTypes="_HceLf2s4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceLn2s4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLFWs4Ed2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLoWs4Ed2s--4g-nTlHg" name="SwOperatingSystem" eSuperTypes="_HceLf2s4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceLoms4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLGms4Ed2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLpGs4Ed2s--4g-nTlHg" name="SwPlatform" eSuperTypes="_HceLf2s4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceLpWs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLH2s4Ed2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLp2s4Ed2s--4g-nTlHg" name="HwComponent" abstract="true">
+          <eAnnotations xmi:id="_HceLqGs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLJGs4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceLqWs4Ed2s--4g-nTlHg" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLq2s4Ed2s--4g-nTlHg" name="HwProcessor" eSuperTypes="_HceLp2s4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceLrGs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLLms4Ed2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLrms4Ed2s--4g-nTlHg" name="HwCore" eSuperTypes="_HceLp2s4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceLr2s4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLM2s4Ed2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLsWs4Ed2s--4g-nTlHg" name="HwPort" eSuperTypes="_HceLtms4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceLsms4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLOGs4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceLs2s4Ed2s--4g-nTlHg" name="base_Port" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Port"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLtms4Ed2s--4g-nTlHg" name="HwCommunicationEndPoint" abstract="true">
+          <eAnnotations xmi:id="_HceLt2s4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLPms4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceLuGs4Ed2s--4g-nTlHg" name="base_ConnectableElement" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//ConnectableElement"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLums4Ed2s--4g-nTlHg" name="HwBus" eSuperTypes="_HceLv2s4Ed2s--4g-nTlHg _HceLtms4Ed2s--4g-nTlHg _HceLp2s4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceLu2s4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLR2s4Ed2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLv2s4Ed2s--4g-nTlHg" name="HwCommunicationMedium" abstract="true">
+          <eAnnotations xmi:id="_HceLwGs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLTms4Ed2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLwWs4Ed2s--4g-nTlHg" name="HwConnector" eSuperTypes="_HceLv2s4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceLwms4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLUms4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceLw2s4Ed2s--4g-nTlHg" name="end" ordered="false" lowerBound="2" upperBound="-1" eType="_HceLtms4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceLxWs4Ed2s--4g-nTlHg" name="base_Connector" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Connector"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLyGs4Ed2s--4g-nTlHg" name="HwPart">
+          <eAnnotations xmi:id="_HceLyWs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLY2s4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceLyms4Ed2s--4g-nTlHg" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLzGs4Ed2s--4g-nTlHg" name="HwCard" eSuperTypes="_HceLp2s4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceLzWs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLa2s4Ed2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceLz2s4Ed2s--4g-nTlHg" name="Configuration">
+          <eAnnotations xmi:id="_HceL0Gs4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLcGs4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceL0Ws4Ed2s--4g-nTlHg" name="base_Class" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Class"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HceL02s4Ed2s--4g-nTlHg" name="base_InstanceSpecification" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//InstanceSpecification"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HceL1Ws4Ed2s--4g-nTlHg" name="BuildConfiguration" eSuperTypes="_HceLz2s4Ed2s--4g-nTlHg">
+          <eAnnotations xmi:id="_HceL1ms4Ed2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HceLems4Ed2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_Ua7XmrQnEd2znunpcPUHwA" name="ConfigurationSlot">
+          <eAnnotations xmi:id="_Ua7Xm7QnEd2znunpcPUHwA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UayNULQnEd2znunpcPUHwA"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_Ua7XnLQnEd2znunpcPUHwA" name="slotKind" ordered="false" lowerBound="1" eType="_Ua7XoLQnEd2znunpcPUHwA" defaultValueLiteral="additive"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Ua7XnrQnEd2znunpcPUHwA" name="base_Slot" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Slot"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_Ua7XoLQnEd2znunpcPUHwA" name="ConfigurationSlotKind">
+          <eAnnotations xmi:id="_Ua7XobQnEd2znunpcPUHwA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UayNWrQnEd2znunpcPUHwA"/>
+          <eLiterals xmi:id="_Ua7XorQnEd2znunpcPUHwA" name="additive"/>
+          <eLiterals xmi:id="_Ua7Xo7QnEd2znunpcPUHwA" name="override" value="1"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_Ua7XpLQnEd2znunpcPUHwA" name="Allocation">
+          <eAnnotations xmi:id="_Ua7XpbQnEd2znunpcPUHwA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Ua7XQrQnEd2znunpcPUHwA"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Ua7XprQnEd2znunpcPUHwA" name="base_Dependency" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Dependency"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_Ua7XqLQnEd2znunpcPUHwA" name="Deployment">
+          <eAnnotations xmi:id="_Ua7XqbQnEd2znunpcPUHwA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Ua7XS7QnEd2znunpcPUHwA"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Ua7XqrQnEd2znunpcPUHwA" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_Ua7XrLQnEd2znunpcPUHwA" name="DeploymentPart">
+          <eAnnotations xmi:id="_Ua7XrbQnEd2znunpcPUHwA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Ua7XVLQnEd2znunpcPUHwA"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Ua7XrrQnEd2znunpcPUHwA" name="nestedPart" ordered="false" upperBound="-1" eType="_Ua7XrLQnEd2znunpcPUHwA"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Ua7XsLQnEd2znunpcPUHwA" name="configuration" ordered="false" eType="_HceLz2s4Ed2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Ua7XsrQnEd2znunpcPUHwA" name="modelElement" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//NamedElement"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Ua7XtLQnEd2znunpcPUHwA" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_Ua7XtrQnEd2znunpcPUHwA" name="ComponentDeploymentPart" eSuperTypes="_Ua7XrLQnEd2znunpcPUHwA">
+          <eAnnotations xmi:id="_Ua7Xt7QnEd2znunpcPUHwA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Ua7Xd7QnEd2znunpcPUHwA"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Ua7XuLQnEd2znunpcPUHwA" name="selectedImplementation" ordered="false" eType="_qeX9k2svEd2s--4g-nTlHg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Ua7XurQnEd2znunpcPUHwA" name="implementationConfiguration" ordered="false" eType="_HceLz2s4Ed2s--4g-nTlHg"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_HN2bYMu0Ed2xvcABYZlkxQ" name="ComponentImplementation">
+          <eAnnotations xmi:id="_HN2bYcu0Ed2xvcABYZlkxQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HNsqYMu0Ed2xvcABYZlkxQ"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HN2bYsu0Ed2xvcABYZlkxQ" name="base_Manifestation" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Manifestation"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <eAnnotations xmi:id="_WsS4cIwQEd2nNpLa-Uw0uA" source="http://www.zeligsoft.com/zdl/2008/tooling">
+      <contents xmi:type="tool:Palette" xmi:id="_WsS4cYwQEd2nNpLa-Uw0uA" name="MyDomain">
+        <drawer xmi:id="_WsS4cowQEd2nNpLa-Uw0uA" name="Components" description="Generic component creation tools">
+          <tool xmi:type="tool:CreationTool" xmi:id="_Ua7XkbQnEd2znunpcPUHwA" name="Package" description="Create a Package" elementTypeHint="package"/>
+          <tool xmi:type="tool:Stack" xmi:id="_WsS4c4wQEd2nNpLa-Uw0uA" name="Components" description="Creation tools for component definitions" activeTool="_WsS4dIwQEd2nNpLa-Uw0uA">
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4dIwQEd2nNpLa-Uw0uA" name="Component Interface" description="Create a component interface">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_sCExkCBUEd2fK6BRw108zQ"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4dYwQEd2nNpLa-Uw0uA" name="Structural realization" description="Create a structural realization of a component interface">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_wOcEUCBUEd2fK6BRw108zQ"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4dowQEd2nNpLa-Uw0uA" name="Implementation" description="Create a component implementation">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_nF-KUCBcEd2fK6BRw108zQ"/>
+            </tool>
+          </tool>
+          <tool xmi:type="tool:Stack" xmi:id="_WsS4d4wQEd2nNpLa-Uw0uA" name="Port" description="Port creation tools" activeTool="_WsS4eIwQEd2nNpLa-Uw0uA">
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4eIwQEd2nNpLa-Uw0uA" name="Message Port" description="Create a message port">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_NzBNcCBeEd2fK6BRw108zQ"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4eYwQEd2nNpLa-Uw0uA" name="Flow Port" description="Create a flow port">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_L-8AsCBeEd2fK6BRw108zQ"/>
+            </tool>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_WsS4eowQEd2nNpLa-Uw0uA" name="Part" description="Create a part in a structural realization">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_1iDHcCBeEd2fK6BRw108zQ"/>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_WsS4e4wQEd2nNpLa-Uw0uA" name="Assembly Connector" description="Create an assembly connector" elementTypeHint="assemblyConnector">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_x7Nu8CDzEd2fK6BRw108zQ"/>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_HNsqbsu0Ed2xvcABYZlkxQ" name="Component Implementation" description="Associate a component implementation with a structural realization">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_1nK84LQrEd2l4KifYM_oHA"/>
+          </tool>
+          <tool xmi:type="tool:Stack" xmi:id="_Ua7XkrQnEd2znunpcPUHwA" name="Component relationship types" description="Relationship creation tools for Components" activeTool="_Ua7Xk7QnEd2znunpcPUHwA">
+            <tool xmi:type="tool:CreationTool" xmi:id="_Ua7Xk7QnEd2znunpcPUHwA" name="Generalization" description="Create a Generalization" elementTypeHint="generalization"/>
+            <tool xmi:type="tool:CreationTool" xmi:id="_Ua7XlLQnEd2znunpcPUHwA" name="Component Interface Realization" description="Create a Component Interface Realization" elementTypeHint="interfaceRealization"/>
+          </tool>
+          <targetDiagram>Zeligsoft Component</targetDiagram>
+        </drawer>
+        <drawer xmi:id="_WsS4fYwQEd2nNpLa-Uw0uA" name="Interfaces" description="Generic interface and related element creation tools">
+          <tool xmi:type="tool:CreationTool" xmi:id="_Ua7XlbQnEd2znunpcPUHwA" name="Package" description="Create a Package" elementTypeHint="package"/>
+          <tool xmi:type="tool:Stack" xmi:id="_WsS4fowQEd2nNpLa-Uw0uA" name="Port Types" description="Port type creation tools" activeTool="_WsS4f4wQEd2nNpLa-Uw0uA">
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4f4wQEd2nNpLa-Uw0uA" name="Port Type" description="Create a port type">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_catfUGSpEd2ru6Ucg5fhHQ"/>
+            </tool>
+            <tool xmi:type="tool:LinkTool" xmi:id="_WsS4gIwQEd2nNpLa-Uw0uA" name="Inverse Link" description="Associate a port type with its inverse">
+              <reference href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_s6STUGStEd2ru6Ucg5fhHQ"/>
+            </tool>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_WsS4gYwQEd2nNpLa-Uw0uA" name="Interface" description="Create a port interface">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_5P3U8C2vEd2LuvOo-ahhJw"/>
+          </tool>
+          <tool xmi:type="tool:Stack" xmi:id="_Ua7XlrQnEd2znunpcPUHwA" name="Relationships" description="Relationship connector tools" activeTool="_Ua7Xl7QnEd2znunpcPUHwA">
+            <tool xmi:type="tool:CreationTool" xmi:id="_Ua7Xl7QnEd2znunpcPUHwA" name="Generalization" description="Create a Generalization" elementTypeHint="generalization"/>
+            <tool xmi:type="tool:CreationTool" xmi:id="_Ua7XmLQnEd2znunpcPUHwA" name="Interface Realization" description="Create a InterfaceRealization" elementTypeHint="interfaceRealization"/>
+            <tool xmi:type="tool:CreationTool" xmi:id="_Ua7XmbQnEd2znunpcPUHwA" name="Usage" description="Create a Usage" elementTypeHint="usage"/>
+          </tool>
+          <targetDiagram>Zeligsoft Component</targetDiagram>
+        </drawer>
+        <drawer xmi:id="_WsS4h4wQEd2nNpLa-Uw0uA" name="Hardware Platform" description="Generic hardware model creation tools">
+          <tool xmi:type="tool:Stack" xmi:id="_WsS4iIwQEd2nNpLa-Uw0uA" name="Components" description="Hardware component creation tools" activeTool="_WsS4iowQEd2nNpLa-Uw0uA">
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4iYwQEd2nNpLa-Uw0uA" name="Core" description="Create a processor core in the hardware platform">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_6qaO0C5IEd2RX7SmZ4Q97g"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4iowQEd2nNpLa-Uw0uA" name="Processor" description="Create a processor in the hardware platform">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_1fdM4C5IEd2RX7SmZ4Q97g"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4i4wQEd2nNpLa-Uw0uA" name="Card" description="Create a card in the hardware platform">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_BxFH0C5PEd2RX7SmZ4Q97g"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4jIwQEd2nNpLa-Uw0uA" name="Bus" description="Create a bus in the hardware platform">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_CkTjQC5JEd2RX7SmZ4Q97g"/>
+            </tool>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_WsS4jYwQEd2nNpLa-Uw0uA" name="Part" description="Create a part in a hardware component">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_HNszcC5NEd2RX7SmZ4Q97g"/>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_WsS4jowQEd2nNpLa-Uw0uA" name="Port" description="Create a port on a hardware component">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_-1u_wC5IEd2RX7SmZ4Q97g"/>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_WsS4j4wQEd2nNpLa-Uw0uA" name="Connector" description="Create an assembly connector between hardware ports" elementTypeHint="assemblyConnector">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_D7VAkC5JEd2RX7SmZ4Q97g"/>
+          </tool>
+          <targetDiagram>Zeligsoft Component</targetDiagram>
+        </drawer>
+        <drawer xmi:id="_WsS4kIwQEd2nNpLa-Uw0uA" name="Software Platform" description="Generic software platform model creation tools">
+          <tool xmi:type="tool:Stack" xmi:id="_WsS4kYwQEd2nNpLa-Uw0uA" name="Components" description="Software platform component creation tools" activeTool="_WsS4kowQEd2nNpLa-Uw0uA">
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4kowQEd2nNpLa-Uw0uA" name="Schedulable Resource" description="Create a schedulable resource in the software platform">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_RB6wcC5WEd2RX7SmZ4Q97g"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4k4wQEd2nNpLa-Uw0uA" name="Bus" description="Create a software bus in the software platform">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_ExONIC5REd2RX7SmZ4Q97g"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4lIwQEd2nNpLa-Uw0uA" name="Operating System" description="Create an operating system in the software platform">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_mO0MAC5WEd2RX7SmZ4Q97g"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_WsS4lYwQEd2nNpLa-Uw0uA" name="Software Platform" description="Create a software platform model">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_1SoJcC5WEd2RX7SmZ4Q97g"/>
+            </tool>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_WsS4lowQEd2nNpLa-Uw0uA" name="Part" description="Create a part in a software platform component">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_qF_goC5QEd2RX7SmZ4Q97g"/>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_WsS4l4wQEd2nNpLa-Uw0uA" name="Port" description="Create a port on a software platform component">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_AweUgC5REd2RX7SmZ4Q97g"/>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_WsS4mIwQEd2nNpLa-Uw0uA" name="Connector" description="Create a connector between ports in the software platform" elementTypeHint="assemblyConnector">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_ChHywC5REd2RX7SmZ4Q97g"/>
+          </tool>
+          <targetDiagram>Zeligsoft Component</targetDiagram>
+        </drawer>
+        <drawer xmi:id="_WsS4mYwQEd2nNpLa-Uw0uA" name="Configurations" description="Generic configuration element creation tools">
+          <tool xmi:type="tool:CreationTool" xmi:id="_WsS4mowQEd2nNpLa-Uw0uA" name="Configuration Type" description="Create a configuration definition">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_tG7ZYDmFEd2Ey5t-NY5l-w"/>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_WsS4m4wQEd2nNpLa-Uw0uA" name="Build Configuration Type" description="Create a build configuration definition">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_vfFjkDmFEd2Ey5t-NY5l-w"/>
+          </tool>
+          <targetDiagram>Zeligsoft Configuration</targetDiagram>
+        </drawer>
+        <drawer xmi:id="_HNsqacu0Ed2xvcABYZlkxQ" name="Structure" description="Tools for modeling the structure of a component.">
+          <tool xmi:type="tool:CreationTool" xmi:id="_HNsqasu0Ed2xvcABYZlkxQ" name="Assembly Connector" description="Create an assembly connector" elementTypeHint="assemblyConnector">
+            <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_x7Nu8CDzEd2fK6BRw108zQ"/>
+          </tool>
+          <tool xmi:type="tool:Stack" xmi:id="_HNsqa8u0Ed2xvcABYZlkxQ" name="Ports" description="Port creation tools" activeTool="_HNsqbcu0Ed2xvcABYZlkxQ">
+            <tool xmi:type="tool:CreationTool" xmi:id="_HNsqbMu0Ed2xvcABYZlkxQ" name="Flow Port" description="Create a flow port">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_L-8AsCBeEd2fK6BRw108zQ"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_HNsqbcu0Ed2xvcABYZlkxQ" name="Message Port" description="Create a message port">
+              <concept href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_NzBNcCBeEd2fK6BRw108zQ"/>
+            </tool>
+            <targetDiagram>Structure</targetDiagram>
+          </tool>
+          <targetDiagram>Structure</targetDiagram>
+        </drawer>
+      </contents>
+    </eAnnotations>
+    <packageImport xmi:id="_qeX942svEd2s--4g-nTlHg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_qeX95GsvEd2s--4g-nTlHg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX95WsvEd2s--4g-nTlHg" name="Application">
+      <eAnnotations xmi:id="_qeX95msvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_qeX952svEd2s--4g-nTlHg" key="name" value="name"/>
+        <details xmi:id="_qeX96GsvEd2s--4g-nTlHg" key="port" value="ownedPort"/>
+        <references xmi:type="uml:Class" href="MyDomain.uml#_5ffwIGsrEd2s--4g-nTlHg"/>
+      </eAnnotations>
+      <generalization xmi:id="_qeX962svEd2s--4g-nTlHg" general="_qeX98GsvEd2s--4g-nTlHg"/>
+      <ownedAttribute xmi:id="_qeX97GsvEd2s--4g-nTlHg" name="id">
+        <eAnnotations xmi:id="_qeX97WsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="MyDomain.uml#_FWUXsGstEd2s--4g-nTlHg"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qeX97msvEd2s--4g-nTlHg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qeX972svEd2s--4g-nTlHg" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX98GsvEd2s--4g-nTlHg" name="StructuralRealization">
+      <eAnnotations xmi:id="_qeX98WsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_qeX98msvEd2s--4g-nTlHg" key="part" value="part"/>
+        <details xmi:id="_qeX982svEd2s--4g-nTlHg" key="connector" value="ownedConnector"/>
+        <details xmi:id="_qeX99GsvEd2s--4g-nTlHg" key="ownedPort" value="ownedPort"/>
+        <details xmi:id="_qeX99WsvEd2s--4g-nTlHg" key="worker" value="ownedOperation"/>
+        <details xmi:id="_qeX99msvEd2s--4g-nTlHg" key="interface" value="superClass"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_wOcEUCBUEd2fK6BRw108zQ"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_qeX992svEd2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_qeX9-GsvEd2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_qeX9_WsvEd2s--4g-nTlHg" name="base_Component" association="_qeX-C2svEd2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX9_msvEd2s--4g-nTlHg" name="Implementation">
+      <eAnnotations xmi:id="_qeX9_2svEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_qeX-AGsvEd2s--4g-nTlHg" key="worker" value="ownedOperation"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_nF-KUCBcEd2fK6BRw108zQ"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_qeX-AWsvEd2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_qeX-AmsvEd2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_qeX-A2svEd2s--4g-nTlHg" name="base_Artifact" association="_qeX-BGsvEd2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qeX-BGsvEd2s--4g-nTlHg" name="Artifact_Implementation" memberEnd="_qeX-BWsvEd2s--4g-nTlHg _qeX-A2svEd2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qeX-BWsvEd2s--4g-nTlHg" name="extension_Implementation" type="_qeX9_msvEd2s--4g-nTlHg" aggregation="composite" association="_qeX-BGsvEd2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qeX-C2svEd2s--4g-nTlHg" name="Component_StructuralRealization" memberEnd="_qeX-DGsvEd2s--4g-nTlHg _qeX9_WsvEd2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qeX-DGsvEd2s--4g-nTlHg" name="extension_StructuralRealization" type="_qeX98GsvEd2s--4g-nTlHg" aggregation="composite" association="_qeX-C2svEd2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX-DWsvEd2s--4g-nTlHg" name="MyPort">
+      <eAnnotations xmi:id="_qeX-EGsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="MyDomain.uml#_EJhC0GssEd2s--4g-nTlHg"/>
+      </eAnnotations>
+      <generalization xmi:id="_qeX-EWsvEd2s--4g-nTlHg" general="_qeX-FmsvEd2s--4g-nTlHg"/>
+      <ownedAttribute xmi:id="_qeX-EmsvEd2s--4g-nTlHg" name="kind" type="_qeX-P2svEd2s--4g-nTlHg">
+        <eAnnotations xmi:id="_qeX-E2svEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="MyDomain.uml#_gMN4kGssEd2s--4g-nTlHg"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qeX-FGsvEd2s--4g-nTlHg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qeX-FWsvEd2s--4g-nTlHg"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX-FmsvEd2s--4g-nTlHg" name="MessagePort">
+      <eAnnotations xmi:id="_qeX-F2svEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_qeX-GGsvEd2s--4g-nTlHg" key="providedInterface" value="provided"/>
+        <details xmi:id="_qeX-GWsvEd2s--4g-nTlHg" key="requiredInterface" value="required"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_NzBNcCBeEd2fK6BRw108zQ"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_qeX-GmsvEd2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_qeX-G2svEd2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_qeX-HGsvEd2s--4g-nTlHg" general="_qeX-HWsvEd2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX-HWsvEd2s--4g-nTlHg" name="Port" isAbstract="true">
+      <eAnnotations xmi:id="_qeX-HmsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_qeX-H2svEd2s--4g-nTlHg" key="isExternal" value="isService"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_HwoNMCBeEd2fK6BRw108zQ"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_qeX-IGsvEd2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_qeX-IWsvEd2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <generalization xmi:id="_qeX-ImsvEd2s--4g-nTlHg" general="_qeX-KWsvEd2s--4g-nTlHg"/>
+      <ownedAttribute xmi:id="_qeX-I2svEd2s--4g-nTlHg" name="wiring" type="_qeX-NWsvEd2s--4g-nTlHg">
+        <eAnnotations xmi:id="_qeX-JGsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_Jlq-8GPYEd2iC-BKsB30ZA"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qeX-JWsvEd2s--4g-nTlHg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qeX-JmsvEd2s--4g-nTlHg" value="1"/>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_qeX-J2svEd2s--4g-nTlHg" instance="_qeX-N2svEd2s--4g-nTlHg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_qeX-KGsvEd2s--4g-nTlHg" name="base_Port" association="_qeX-PWsvEd2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX-KWsvEd2s--4g-nTlHg" name="TypedElement" isAbstract="true">
+      <eAnnotations xmi:id="_qeX-KmsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_qeX-K2svEd2s--4g-nTlHg" key="upperBound" value="upper"/>
+        <details xmi:id="_qeX-LGsvEd2s--4g-nTlHg" key="lowerBound" value="lower"/>
+        <details xmi:id="_qeX-LWsvEd2s--4g-nTlHg" key="type" value="type"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_wo6aoGSAEd2454WIHspjPA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_qeX-LmsvEd2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_qeX-L2svEd2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_qeX-MGsvEd2s--4g-nTlHg" name="indirection">
+        <eAnnotations xmi:id="_qeX-MWsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_P5ED0GSBEd2454WIHspjPA"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qeX-MmsvEd2s--4g-nTlHg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qeX-M2svEd2s--4g-nTlHg" value="1"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_qeX-NGsvEd2s--4g-nTlHg"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_qeX-NWsvEd2s--4g-nTlHg" name="WiringKind">
+      <eAnnotations xmi:id="_qeX-NmsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Enumeration" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_TB43MGPXEd2iC-BKsB30ZA"/>
+      </eAnnotations>
+      <ownedLiteral xmi:id="_qeX-N2svEd2s--4g-nTlHg" name="connector">
+        <eAnnotations xmi:id="_qeX-OGsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_WLfscGPXEd2iC-BKsB30ZA"/>
+        </eAnnotations>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_qeX-OWsvEd2s--4g-nTlHg" name="sap">
+        <eAnnotations xmi:id="_qeX-OmsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_Xfr4MGPXEd2iC-BKsB30ZA"/>
+        </eAnnotations>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_qeX-O2svEd2s--4g-nTlHg" name="spp">
+        <eAnnotations xmi:id="_qeX-PGsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_ZdTbcGPXEd2iC-BKsB30ZA"/>
+        </eAnnotations>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qeX-PWsvEd2s--4g-nTlHg" name="Port_Port" memberEnd="_qeX-PmsvEd2s--4g-nTlHg _qeX-KGsvEd2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qeX-PmsvEd2s--4g-nTlHg" name="extension_Port" type="_qeX-HWsvEd2s--4g-nTlHg" aggregation="composite" association="_qeX-PWsvEd2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_qeX-P2svEd2s--4g-nTlHg" name="PortKind">
+      <eAnnotations xmi:id="_qeX-QGsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Enumeration" href="MyDomain.uml#_VtXUEGssEd2s--4g-nTlHg"/>
+      </eAnnotations>
+      <ownedLiteral xmi:id="_qeX-QWsvEd2s--4g-nTlHg" name="control">
+        <eAnnotations xmi:id="_qeX-QmsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="MyDomain.uml#_aCYMgGssEd2s--4g-nTlHg"/>
+        </eAnnotations>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_qeX-Q2svEd2s--4g-nTlHg" name="data">
+        <eAnnotations xmi:id="_qeX-RGsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="MyDomain.uml#_b7OkgGssEd2s--4g-nTlHg"/>
+        </eAnnotations>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_qeX-RWsvEd2s--4g-nTlHg" name="responses">
+        <eAnnotations xmi:id="_qeX-RmsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="MyDomain.uml#_c3IMEGssEd2s--4g-nTlHg"/>
+        </eAnnotations>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_qeX-R2svEd2s--4g-nTlHg" name="text">
+        <eAnnotations xmi:id="_qeX-SGsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="MyDomain.uml#_d83sIGssEd2s--4g-nTlHg"/>
+        </eAnnotations>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX-SWsvEd2s--4g-nTlHg" name="ComponentInterface">
+      <eAnnotations xmi:id="_qeX-SmsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_qeX-S2svEd2s--4g-nTlHg" key="ownedPort" value="ownedPort"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_sCExkCBUEd2fK6BRw108zQ"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_qeX-TGsvEd2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_qeX-TWsvEd2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_qeX-TmsvEd2s--4g-nTlHg" name="base_Component" association="_qeX-T2svEd2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qeX-T2svEd2s--4g-nTlHg" name="Component_ComponentInterface" memberEnd="_qeX-UGsvEd2s--4g-nTlHg _qeX-TmsvEd2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qeX-UGsvEd2s--4g-nTlHg" name="extension_ComponentInterface" type="_qeX-SWsvEd2s--4g-nTlHg" aggregation="composite" association="_qeX-T2svEd2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX-UWsvEd2s--4g-nTlHg" name="FlowPort">
+      <eAnnotations xmi:id="_qeX-UmsvEd2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_qeX-U2svEd2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_qeX-VGsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_L-8AsCBeEd2fK6BRw108zQ"/>
+      </eAnnotations>
+      <generalization xmi:id="_qeX-VWsvEd2s--4g-nTlHg" general="_qeX-HWsvEd2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX-VmsvEd2s--4g-nTlHg" name="Part">
+      <eAnnotations xmi:id="_qeX-V2svEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_qeX-WGsvEd2s--4g-nTlHg" key="definition" value="type"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_1iDHcCBeEd2fK6BRw108zQ"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_qeX-WWsvEd2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_qeX-WmsvEd2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_qeX-W2svEd2s--4g-nTlHg" name="base_Property" association="_qeX-XGsvEd2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qeX-XGsvEd2s--4g-nTlHg" name="Property_Part" memberEnd="_qeX-XWsvEd2s--4g-nTlHg _qeX-W2svEd2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qeX-XWsvEd2s--4g-nTlHg" name="extension_Part" type="_qeX-VmsvEd2s--4g-nTlHg" aggregation="composite" association="_qeX-XGsvEd2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX-XmsvEd2s--4g-nTlHg" name="AssemblyConnector">
+      <eAnnotations xmi:id="_qeX-X2svEd2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_qeX-YGsvEd2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_qeX-YWsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_WtCfUIwQEd2nNpLa-Uw0uA" key="end" value="end"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_x7Nu8CDzEd2fK6BRw108zQ"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_qeX-YmsvEd2s--4g-nTlHg" name="portEnd" type="_qeX-HWsvEd2s--4g-nTlHg" association="_qeX-Z2svEd2s--4g-nTlHg">
+        <eAnnotations xmi:id="_qeX-Y2svEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_cUH1QCD0Ed2fK6BRw108zQ"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qeX-ZGsvEd2s--4g-nTlHg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qeX-ZWsvEd2s--4g-nTlHg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_qeX-ZmsvEd2s--4g-nTlHg" name="base_Connector" association="_qeX-bGsvEd2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_qeX-Z2svEd2s--4g-nTlHg" memberEnd="_qeX-YmsvEd2s--4g-nTlHg _qeX-aWsvEd2s--4g-nTlHg">
+      <eAnnotations xmi:id="_qeX-aGsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_cT-rUCD0Ed2fK6BRw108zQ"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_qeX-aWsvEd2s--4g-nTlHg" name="" type="_qeX-XmsvEd2s--4g-nTlHg" association="_qeX-Z2svEd2s--4g-nTlHg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qeX-amsvEd2s--4g-nTlHg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qeX-a2svEd2s--4g-nTlHg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qeX-bGsvEd2s--4g-nTlHg" name="Connector_AssemblyConnector" memberEnd="_qeX-bWsvEd2s--4g-nTlHg _qeX-ZmsvEd2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qeX-bWsvEd2s--4g-nTlHg" name="extension_AssemblyConnector" type="_qeX-XmsvEd2s--4g-nTlHg" aggregation="composite" association="_qeX-bGsvEd2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX-bmsvEd2s--4g-nTlHg" name="Interface">
+      <eAnnotations xmi:id="_qeX-b2svEd2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_qeX-cGsvEd2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_qeX-cWsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_oEUM4HLlEd2AAq-UeopxBA" key="operation" value="ownedOperation"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_5P3U8C2vEd2LuvOo-ahhJw"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_qeX-cmsvEd2s--4g-nTlHg" name="base_Interface" association="_qeX-c2svEd2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qeX-c2svEd2s--4g-nTlHg" name="Interface_Interface" memberEnd="_qeX-dGsvEd2s--4g-nTlHg _qeX-cmsvEd2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qeX-dGsvEd2s--4g-nTlHg" name="extension_Interface" type="_qeX-bmsvEd2s--4g-nTlHg" aggregation="composite" association="_qeX-c2svEd2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX-dWsvEd2s--4g-nTlHg" name="WorkerFunction">
+      <eAnnotations xmi:id="_qeX-dmsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_qeX-d2svEd2s--4g-nTlHg" key="parameter" value="ownedParameter"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_Xnkc8DyHEd2rZuYLoz8KmQ"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_qeX-eGsvEd2s--4g-nTlHg" name="receivingPort" type="_qeX-HWsvEd2s--4g-nTlHg" association="_qeX-gWsvEd2s--4g-nTlHg">
+        <eAnnotations xmi:id="_qeX-eWsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_gVe9YDyJEd2rZuYLoz8KmQ"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qeX-emsvEd2s--4g-nTlHg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qeX-e2svEd2s--4g-nTlHg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_oEUM4XLlEd2AAq-UeopxBA" name="portOperation" association="_oEAq4HLlEd2AAq-UeopxBA">
+        <eAnnotations xmi:id="_oEUM4nLlEd2AAq-UeopxBA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_VmtFgW1oEd2QsdnDLpauDg"/>
+        </eAnnotations>
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oEUM43LlEd2AAq-UeopxBA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oEUM5HLlEd2AAq-UeopxBA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_qeX-fGsvEd2s--4g-nTlHg" name="body">
+        <eAnnotations xmi:id="_qeX-fWsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_5IYrwDyIEd2rZuYLoz8KmQ"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qeX-fmsvEd2s--4g-nTlHg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ua7XvbQnEd2znunpcPUHwA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_qeX-gGsvEd2s--4g-nTlHg" name="base_Operation" association="_qeX-hmsvEd2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_qeX-gWsvEd2s--4g-nTlHg" memberEnd="_qeX-eGsvEd2s--4g-nTlHg _qeX-g2svEd2s--4g-nTlHg">
+      <eAnnotations xmi:id="_qeX-gmsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_gVb6EDyJEd2rZuYLoz8KmQ"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_qeX-g2svEd2s--4g-nTlHg" name="" type="_qeX-dWsvEd2s--4g-nTlHg" association="_qeX-gWsvEd2s--4g-nTlHg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qeX-hGsvEd2s--4g-nTlHg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qeX-hWsvEd2s--4g-nTlHg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qeX-hmsvEd2s--4g-nTlHg" name="Operation_WorkerFunction" memberEnd="_qeX-h2svEd2s--4g-nTlHg _qeX-gGsvEd2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qeX-h2svEd2s--4g-nTlHg" name="extension_WorkerFunction" type="_qeX-dWsvEd2s--4g-nTlHg" aggregation="composite" association="_qeX-hmsvEd2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX-iGsvEd2s--4g-nTlHg" name="PortType">
+      <eAnnotations xmi:id="_qeX-iWsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_catfUGSpEd2ru6Ucg5fhHQ"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_qeX-imsvEd2s--4g-nTlHg" name="inverse" type="_qeX-iGsvEd2s--4g-nTlHg" association="_qeX-j2svEd2s--4g-nTlHg">
+        <eAnnotations xmi:id="_qeX-i2svEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_s6STUGStEd2ru6Ucg5fhHQ"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qeX-jGsvEd2s--4g-nTlHg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qeX-jWsvEd2s--4g-nTlHg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_qeX-jmsvEd2s--4g-nTlHg" name="base_Class" association="_qeX-lGsvEd2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_qeX-j2svEd2s--4g-nTlHg" memberEnd="_qeX-imsvEd2s--4g-nTlHg _qeX-kWsvEd2s--4g-nTlHg">
+      <eAnnotations xmi:id="_qeX-kGsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_s6IiUGStEd2ru6Ucg5fhHQ"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_qeX-kWsvEd2s--4g-nTlHg" name="" type="_qeX-iGsvEd2s--4g-nTlHg" association="_qeX-j2svEd2s--4g-nTlHg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qeX-kmsvEd2s--4g-nTlHg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qeX-k2svEd2s--4g-nTlHg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qeX-lGsvEd2s--4g-nTlHg" name="Class_PortType" memberEnd="_qeX-lWsvEd2s--4g-nTlHg _qeX-jmsvEd2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qeX-lWsvEd2s--4g-nTlHg" name="extension_PortType" type="_qeX-iGsvEd2s--4g-nTlHg" aggregation="composite" association="_qeX-lGsvEd2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qeX-lmsvEd2s--4g-nTlHg" name="Parameter">
+      <eAnnotations xmi:id="_qeX-l2svEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_5bjDAGSCEd2454WIHspjPA"/>
+      </eAnnotations>
+      <generalization xmi:id="_qeX-mGsvEd2s--4g-nTlHg" general="_qeX-KWsvEd2s--4g-nTlHg"/>
+      <ownedAttribute xmi:id="_qeX-mWsvEd2s--4g-nTlHg" name="passBy" type="_qeX-n2svEd2s--4g-nTlHg">
+        <eAnnotations xmi:id="_qeX-mmsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_GFEA4GSGEd2454WIHspjPA"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qeX-m2svEd2s--4g-nTlHg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qeX-nGsvEd2s--4g-nTlHg" value="1"/>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_qeX-nWsvEd2s--4g-nTlHg" instance="_qeX-oWsvEd2s--4g-nTlHg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_qeX-nmsvEd2s--4g-nTlHg" name="base_Parameter" association="_qeX-pWsvEd2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_qeX-n2svEd2s--4g-nTlHg" name="PassByKind">
+      <eAnnotations xmi:id="_qeX-oGsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Enumeration" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#__hIZ0GSFEd2454WIHspjPA"/>
+      </eAnnotations>
+      <ownedLiteral xmi:id="_qeX-oWsvEd2s--4g-nTlHg" name="value">
+        <eAnnotations xmi:id="_qeX-omsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_CkyYEGSGEd2454WIHspjPA"/>
+        </eAnnotations>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_qeX-o2svEd2s--4g-nTlHg" name="reference">
+        <eAnnotations xmi:id="_qeX-pGsvEd2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_EDa5QGSGEd2454WIHspjPA"/>
+        </eAnnotations>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qeX-pWsvEd2s--4g-nTlHg" name="Parameter_Parameter" memberEnd="_qeX-pmsvEd2s--4g-nTlHg _qeX-nmsvEd2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qeX-pmsvEd2s--4g-nTlHg" name="extension_Parameter" type="_qeX-lmsvEd2s--4g-nTlHg" aggregation="composite" association="_qeX-pWsvEd2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HcVA8Gs4Ed2s--4g-nTlHg" name="SwComponent" isAbstract="true">
+      <eAnnotations xmi:id="_HcVA8Ws4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_HcVA8ms4Ed2s--4g-nTlHg" key="part" value="part"/>
+        <details xmi:id="_HcVA82s4Ed2s--4g-nTlHg" key="port" value="ownedPort"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_nvMBUC5QEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HcVA9Gs4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HcVA9Ws4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_HcVA9ms4Ed2s--4g-nTlHg" name="base_Component" association="_HceK4Gs4Ed2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HceK4Gs4Ed2s--4g-nTlHg" name="Component_SwComponent" memberEnd="_HceK4Ws4Ed2s--4g-nTlHg _HcVA9ms4Ed2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HceK4Ws4Ed2s--4g-nTlHg" name="extension_SwComponent" type="_HcVA8Gs4Ed2s--4g-nTlHg" aggregation="composite" association="_HceK4Gs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceK4ms4Ed2s--4g-nTlHg" name="SwPart">
+      <eAnnotations xmi:id="_HceK42s4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_HceK5Gs4Ed2s--4g-nTlHg" key="definition" value="type"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_qF_goC5QEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceK5Ws4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceK5ms4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_HceK52s4Ed2s--4g-nTlHg" name="base_Property" association="_HceK6Gs4Ed2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HceK6Gs4Ed2s--4g-nTlHg" name="Property_SwPart" memberEnd="_HceK6Ws4Ed2s--4g-nTlHg _HceK52s4Ed2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HceK6Ws4Ed2s--4g-nTlHg" name="extension_SwPart" type="_HceK4ms4Ed2s--4g-nTlHg" aggregation="composite" association="_HceK6Gs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceK6ms4Ed2s--4g-nTlHg" name="SwPort">
+      <eAnnotations xmi:id="_HceK62s4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceK7Gs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceK7Ws4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_AweUgC5REd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceK7ms4Ed2s--4g-nTlHg" general="_HceK8Gs4Ed2s--4g-nTlHg"/>
+      <ownedAttribute xmi:id="_HceK72s4Ed2s--4g-nTlHg" name="base_Port" association="_HceK92s4Ed2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceK8Gs4Ed2s--4g-nTlHg" name="SwCommunicationEndPoint" isAbstract="true">
+      <eAnnotations xmi:id="_HceK8Ws4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceK8ms4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceK82s4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_I4rKsC5REd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_HceK9Gs4Ed2s--4g-nTlHg" name="base_ConnectableElement" association="_HceK9Ws4Ed2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ConnectableElement"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HceK9Ws4Ed2s--4g-nTlHg" name="ConnectableElement_SwCommunicationEndPoint" memberEnd="_HceK9ms4Ed2s--4g-nTlHg _HceK9Gs4Ed2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HceK9ms4Ed2s--4g-nTlHg" name="extension_SwCommunicationEndPoint" type="_HceK8Gs4Ed2s--4g-nTlHg" aggregation="composite" association="_HceK9Ws4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HceK92s4Ed2s--4g-nTlHg" name="Port_SwPort" memberEnd="_HceK-Gs4Ed2s--4g-nTlHg _HceK72s4Ed2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HceK-Gs4Ed2s--4g-nTlHg" name="extension_SwPort" type="_HceK6ms4Ed2s--4g-nTlHg" aggregation="composite" association="_HceK92s4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceK-Ws4Ed2s--4g-nTlHg" name="SwConnector">
+      <eAnnotations xmi:id="_HceK-ms4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceK-2s4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceK_Gs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_ChHywC5REd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceK_Ws4Ed2s--4g-nTlHg" general="_HceLA2s4Ed2s--4g-nTlHg"/>
+      <ownedAttribute xmi:id="_HceK_ms4Ed2s--4g-nTlHg" name="end" type="_HceK8Gs4Ed2s--4g-nTlHg" association="_HceLB2s4Ed2s--4g-nTlHg">
+        <eAnnotations xmi:id="_HceK_2s4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_lkw-4S5VEd2RX7SmZ4Q97g"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HceLAGs4Ed2s--4g-nTlHg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HceLAWs4Ed2s--4g-nTlHg" value="2"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_HceLAms4Ed2s--4g-nTlHg" name="base_Connector" association="_HceLDGs4Ed2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLA2s4Ed2s--4g-nTlHg" name="SwCommunicationMedium" isAbstract="true">
+      <eAnnotations xmi:id="_HceLBGs4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLBWs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLBms4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_Fo8fUC5REd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_HceLB2s4Ed2s--4g-nTlHg" memberEnd="_HceK_ms4Ed2s--4g-nTlHg _HceLCWs4Ed2s--4g-nTlHg">
+      <eAnnotations xmi:id="_HceLCGs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_lkw-4C5VEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_HceLCWs4Ed2s--4g-nTlHg" name="" type="_HceK-Ws4Ed2s--4g-nTlHg" association="_HceLB2s4Ed2s--4g-nTlHg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HceLCms4Ed2s--4g-nTlHg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HceLC2s4Ed2s--4g-nTlHg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HceLDGs4Ed2s--4g-nTlHg" name="Connector_SwConnector" memberEnd="_HceLDWs4Ed2s--4g-nTlHg _HceLAms4Ed2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HceLDWs4Ed2s--4g-nTlHg" name="extension_SwConnector" type="_HceK-Ws4Ed2s--4g-nTlHg" aggregation="composite" association="_HceLDGs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLDms4Ed2s--4g-nTlHg" name="SwBus">
+      <eAnnotations xmi:id="_HceLD2s4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLEGs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLEWs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_ExONIC5REd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceLEms4Ed2s--4g-nTlHg" general="_HceK8Gs4Ed2s--4g-nTlHg"/>
+      <generalization xmi:id="_HceLE2s4Ed2s--4g-nTlHg" general="_HceLA2s4Ed2s--4g-nTlHg"/>
+      <generalization xmi:id="_HceLFGs4Ed2s--4g-nTlHg" general="_HcVA8Gs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLFWs4Ed2s--4g-nTlHg" name="SwSchedulableResource">
+      <eAnnotations xmi:id="_HceLFms4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLF2s4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLGGs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_RB6wcC5WEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceLGWs4Ed2s--4g-nTlHg" general="_HcVA8Gs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLGms4Ed2s--4g-nTlHg" name="SwOperatingSystem">
+      <eAnnotations xmi:id="_HceLG2s4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLHGs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLHWs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_mO0MAC5WEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceLHms4Ed2s--4g-nTlHg" general="_HcVA8Gs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLH2s4Ed2s--4g-nTlHg" name="SwPlatform">
+      <eAnnotations xmi:id="_HceLIGs4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLIWs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLIms4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_1SoJcC5WEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceLI2s4Ed2s--4g-nTlHg" general="_HcVA8Gs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLJGs4Ed2s--4g-nTlHg" name="HwComponent" isAbstract="true">
+      <eAnnotations xmi:id="_HceLJWs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_HceLJms4Ed2s--4g-nTlHg" key="port" value="ownedPort"/>
+        <details xmi:id="_HceLJ2s4Ed2s--4g-nTlHg" key="part" value="ownedAttribute"/>
+        <details xmi:id="_HceLKGs4Ed2s--4g-nTlHg" key="connector" value="ownedConnector"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_pnVvYC5IEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLKWs4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLKms4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_HceLK2s4Ed2s--4g-nTlHg" name="base_Component" association="_HceLLGs4Ed2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HceLLGs4Ed2s--4g-nTlHg" name="Component_HwComponent" memberEnd="_HceLLWs4Ed2s--4g-nTlHg _HceLK2s4Ed2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HceLLWs4Ed2s--4g-nTlHg" name="extension_HwComponent" type="_HceLJGs4Ed2s--4g-nTlHg" aggregation="composite" association="_HceLLGs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLLms4Ed2s--4g-nTlHg" name="HwProcessor">
+      <eAnnotations xmi:id="_HceLL2s4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLMGs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLMWs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_1fdM4C5IEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceLMms4Ed2s--4g-nTlHg" general="_HceLJGs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLM2s4Ed2s--4g-nTlHg" name="HwCore">
+      <eAnnotations xmi:id="_HceLNGs4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLNWs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLNms4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_6qaO0C5IEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceLN2s4Ed2s--4g-nTlHg" general="_HceLJGs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLOGs4Ed2s--4g-nTlHg" name="HwPort">
+      <eAnnotations xmi:id="_HceLOWs4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLOms4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLO2s4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_-1u_wC5IEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceLPGs4Ed2s--4g-nTlHg" general="_HceLPms4Ed2s--4g-nTlHg"/>
+      <ownedAttribute xmi:id="_HceLPWs4Ed2s--4g-nTlHg" name="base_Port" association="_HceLRWs4Ed2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLPms4Ed2s--4g-nTlHg" name="HwCommunicationEndPoint" isAbstract="true">
+      <eAnnotations xmi:id="_HceLP2s4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLQGs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLQWs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_USk70C5JEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_HceLQms4Ed2s--4g-nTlHg" name="base_ConnectableElement" association="_HceLQ2s4Ed2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ConnectableElement"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HceLQ2s4Ed2s--4g-nTlHg" name="ConnectableElement_HwCommunicationEndPoint" memberEnd="_HceLRGs4Ed2s--4g-nTlHg _HceLQms4Ed2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HceLRGs4Ed2s--4g-nTlHg" name="extension_HwCommunicationEndPoint" type="_HceLPms4Ed2s--4g-nTlHg" aggregation="composite" association="_HceLQ2s4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HceLRWs4Ed2s--4g-nTlHg" name="Port_HwPort" memberEnd="_HceLRms4Ed2s--4g-nTlHg _HceLPWs4Ed2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HceLRms4Ed2s--4g-nTlHg" name="extension_HwPort" type="_HceLOGs4Ed2s--4g-nTlHg" aggregation="composite" association="_HceLRWs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLR2s4Ed2s--4g-nTlHg" name="HwBus">
+      <eAnnotations xmi:id="_HceLSGs4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLSWs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLSms4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_CkTjQC5JEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceLS2s4Ed2s--4g-nTlHg" general="_HceLTms4Ed2s--4g-nTlHg"/>
+      <generalization xmi:id="_HceLTGs4Ed2s--4g-nTlHg" general="_HceLPms4Ed2s--4g-nTlHg"/>
+      <generalization xmi:id="_HceLTWs4Ed2s--4g-nTlHg" general="_HceLJGs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLTms4Ed2s--4g-nTlHg" name="HwCommunicationMedium" isAbstract="true">
+      <eAnnotations xmi:id="_HceLT2s4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLUGs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLUWs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_L0n4EC5JEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLUms4Ed2s--4g-nTlHg" name="HwConnector">
+      <eAnnotations xmi:id="_HceLU2s4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLVGs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLVWs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_D7VAkC5JEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceLVms4Ed2s--4g-nTlHg" general="_HceLTms4Ed2s--4g-nTlHg"/>
+      <ownedAttribute xmi:id="_HceLV2s4Ed2s--4g-nTlHg" name="end" type="_HceLPms4Ed2s--4g-nTlHg" association="_HceLXGs4Ed2s--4g-nTlHg">
+        <eAnnotations xmi:id="_HceLWGs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_igvqsC5JEd2RX7SmZ4Q97g"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HceLWWs4Ed2s--4g-nTlHg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HceLWms4Ed2s--4g-nTlHg" value="2"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_HceLW2s4Ed2s--4g-nTlHg" name="base_Connector" association="_HceLYWs4Ed2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_HceLXGs4Ed2s--4g-nTlHg" memberEnd="_HceLV2s4Ed2s--4g-nTlHg _HceLXms4Ed2s--4g-nTlHg">
+      <eAnnotations xmi:id="_HceLXWs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_igl5sC5JEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_HceLXms4Ed2s--4g-nTlHg" name="" type="_HceLUms4Ed2s--4g-nTlHg" association="_HceLXGs4Ed2s--4g-nTlHg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HceLX2s4Ed2s--4g-nTlHg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HceLYGs4Ed2s--4g-nTlHg" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HceLYWs4Ed2s--4g-nTlHg" name="Connector_HwConnector" memberEnd="_HceLYms4Ed2s--4g-nTlHg _HceLW2s4Ed2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HceLYms4Ed2s--4g-nTlHg" name="extension_HwConnector" type="_HceLUms4Ed2s--4g-nTlHg" aggregation="composite" association="_HceLYWs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLY2s4Ed2s--4g-nTlHg" name="HwPart">
+      <eAnnotations xmi:id="_HceLZGs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_HceLZWs4Ed2s--4g-nTlHg" key="definition" value="type"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_HNszcC5NEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLZms4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLZ2s4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_HceLaGs4Ed2s--4g-nTlHg" name="base_Property" association="_HceLaWs4Ed2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HceLaWs4Ed2s--4g-nTlHg" name="Property_HwPart" memberEnd="_HceLams4Ed2s--4g-nTlHg _HceLaGs4Ed2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HceLams4Ed2s--4g-nTlHg" name="extension_HwPart" type="_HceLY2s4Ed2s--4g-nTlHg" aggregation="composite" association="_HceLaWs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLa2s4Ed2s--4g-nTlHg" name="HwCard">
+      <eAnnotations xmi:id="_HceLbGs4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLbWs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLbms4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_BxFH0C5PEd2RX7SmZ4Q97g"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceLb2s4Ed2s--4g-nTlHg" general="_HceLJGs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLcGs4Ed2s--4g-nTlHg" name="Configuration">
+      <eAnnotations xmi:id="_HceLcWs4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLcms4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLc2s4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_tG7ZYDmFEd2Ey5t-NY5l-w"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_HceLdGs4Ed2s--4g-nTlHg" name="base_Class" association="_HceLdms4Ed2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_HceLdWs4Ed2s--4g-nTlHg" name="base_InstanceSpecification" association="_HceLeGs4Ed2s--4g-nTlHg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#InstanceSpecification"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HceLdms4Ed2s--4g-nTlHg" name="Class_Configuration" memberEnd="_HceLd2s4Ed2s--4g-nTlHg _HceLdGs4Ed2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HceLd2s4Ed2s--4g-nTlHg" name="extension_Configuration" type="_HceLcGs4Ed2s--4g-nTlHg" aggregation="composite" association="_HceLdms4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HceLeGs4Ed2s--4g-nTlHg" name="InstanceSpecification_Configuration" memberEnd="_HceLeWs4Ed2s--4g-nTlHg _HceLdWs4Ed2s--4g-nTlHg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HceLeWs4Ed2s--4g-nTlHg" name="extension_Configuration" type="_HceLcGs4Ed2s--4g-nTlHg" aggregation="composite" association="_HceLeGs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HceLems4Ed2s--4g-nTlHg" name="BuildConfiguration">
+      <eAnnotations xmi:id="_HceLe2s4Ed2s--4g-nTlHg" source="uml2.extensions">
+        <details xmi:id="_HceLfGs4Ed2s--4g-nTlHg" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HceLfWs4Ed2s--4g-nTlHg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_vfFjkDmFEd2Ey5t-NY5l-w"/>
+      </eAnnotations>
+      <generalization xmi:id="_HceLfms4Ed2s--4g-nTlHg" general="_HceLcGs4Ed2s--4g-nTlHg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_oEAq4HLlEd2AAq-UeopxBA" memberEnd="_oEUM4XLlEd2AAq-UeopxBA _oEAq4nLlEd2AAq-UeopxBA">
+      <eAnnotations xmi:id="_oEAq4XLlEd2AAq-UeopxBA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_VmtFgG1oEd2QsdnDLpauDg"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_oEAq4nLlEd2AAq-UeopxBA" name="" type="_qeX-dWsvEd2s--4g-nTlHg" association="_oEAq4HLlEd2AAq-UeopxBA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oEAq43LlEd2AAq-UeopxBA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oEAq5HLlEd2AAq-UeopxBA"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_UayNULQnEd2znunpcPUHwA" name="ConfigurationSlot">
+      <eAnnotations xmi:id="_UayNUbQnEd2znunpcPUHwA" source="uml2.extensions">
+        <details xmi:id="_UayNUrQnEd2znunpcPUHwA" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_UayNU7QnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_nYqT8Ju6Ed2e6uofgJchtQ"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_UayNVLQnEd2znunpcPUHwA" name="slotKind" type="_UayNWrQnEd2znunpcPUHwA">
+        <eAnnotations xmi:id="_UayNVbQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_X1C2wJ94Ed2-P64Lj7TZgQ"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UayNVrQnEd2znunpcPUHwA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UayNV7QnEd2znunpcPUHwA" value="1"/>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_UayNWLQnEd2znunpcPUHwA" instance="_UayNXLQnEd2znunpcPUHwA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_UayNWbQnEd2znunpcPUHwA" name="base_Slot" association="_Ua7XQLQnEd2znunpcPUHwA">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Slot"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_UayNWrQnEd2znunpcPUHwA" name="ConfigurationSlotKind">
+      <eAnnotations xmi:id="_UayNW7QnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Enumeration" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_qWNDIJu6Ed2e6uofgJchtQ"/>
+      </eAnnotations>
+      <ownedLiteral xmi:id="_UayNXLQnEd2znunpcPUHwA" name="additive">
+        <eAnnotations xmi:id="_UayNXbQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_whYL8Ju6Ed2e6uofgJchtQ"/>
+        </eAnnotations>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_UayNXrQnEd2znunpcPUHwA" name="override">
+        <eAnnotations xmi:id="_UayNX7QnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_xy43IJu6Ed2e6uofgJchtQ"/>
+        </eAnnotations>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_Ua7XQLQnEd2znunpcPUHwA" name="Slot_ConfigurationSlot" memberEnd="_Ua7XQbQnEd2znunpcPUHwA _UayNWbQnEd2znunpcPUHwA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Ua7XQbQnEd2znunpcPUHwA" name="extension_ConfigurationSlot" type="_UayNULQnEd2znunpcPUHwA" aggregation="composite" association="_Ua7XQLQnEd2znunpcPUHwA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_Ua7XQrQnEd2znunpcPUHwA" name="Allocation">
+      <eAnnotations xmi:id="_Ua7XQ7QnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_Ua7XRLQnEd2znunpcPUHwA" key="deployed" value="client"/>
+        <details xmi:id="_Ua7XRbQnEd2znunpcPUHwA" key="deployedOn" value="supplier"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_Ixk6oEuREd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_Ua7XRrQnEd2znunpcPUHwA" source="uml2.extensions">
+        <details xmi:id="_Ua7XR7QnEd2znunpcPUHwA" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_Ua7XSLQnEd2znunpcPUHwA" name="base_Dependency" association="_Ua7XSbQnEd2znunpcPUHwA">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_Ua7XSbQnEd2znunpcPUHwA" name="Dependency_Allocation" memberEnd="_Ua7XSrQnEd2znunpcPUHwA _Ua7XSLQnEd2znunpcPUHwA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Ua7XSrQnEd2znunpcPUHwA" name="extension_Allocation" type="_Ua7XQrQnEd2znunpcPUHwA" aggregation="composite" association="_Ua7XSbQnEd2znunpcPUHwA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_Ua7XS7QnEd2znunpcPUHwA" name="Deployment">
+      <eAnnotations xmi:id="_Ua7XTLQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_Ua7XTbQnEd2znunpcPUHwA" key="part" value="ownedAttribute"/>
+        <details xmi:id="_Ua7XTrQnEd2znunpcPUHwA" key="allocation" value="packagedElement"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_KPOkYEuREd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_Ua7XT7QnEd2znunpcPUHwA" source="uml2.extensions">
+        <details xmi:id="_Ua7XULQnEd2znunpcPUHwA" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_Ua7XUbQnEd2znunpcPUHwA" name="base_Component" association="_Ua7XUrQnEd2znunpcPUHwA">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_Ua7XUrQnEd2znunpcPUHwA" name="Component_Deployment" memberEnd="_Ua7XU7QnEd2znunpcPUHwA _Ua7XUbQnEd2znunpcPUHwA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Ua7XU7QnEd2znunpcPUHwA" name="extension_Deployment" type="_Ua7XS7QnEd2znunpcPUHwA" aggregation="composite" association="_Ua7XUrQnEd2znunpcPUHwA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_Ua7XVLQnEd2znunpcPUHwA" name="DeploymentPart">
+      <eAnnotations xmi:id="_Ua7XVbQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_Ua7XVrQnEd2znunpcPUHwA" key="specification" value="type"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_R1xfAEuREd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_Ua7XV7QnEd2znunpcPUHwA" source="uml2.extensions">
+        <details xmi:id="_Ua7XWLQnEd2znunpcPUHwA" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_Ua7XWbQnEd2znunpcPUHwA" name="nestedPart" type="_Ua7XVLQnEd2znunpcPUHwA" association="_Ua7XZrQnEd2znunpcPUHwA">
+        <eAnnotations xmi:id="_Ua7XWrQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_iSvLQEuSEd2aAOSqOUjI9w"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ua7XW7QnEd2znunpcPUHwA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ua7XXLQnEd2znunpcPUHwA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Ua7XXbQnEd2znunpcPUHwA" name="configuration" type="_HceLcGs4Ed2s--4g-nTlHg" association="_Ua7Xa7QnEd2znunpcPUHwA">
+        <eAnnotations xmi:id="_Ua7XXrQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_Y_ELAEuTEd2aAOSqOUjI9w"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ua7XX7QnEd2znunpcPUHwA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ua7XYLQnEd2znunpcPUHwA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Ua7XYbQnEd2znunpcPUHwA" name="modelElement" association="_Ua7XcLQnEd2znunpcPUHwA">
+        <eAnnotations xmi:id="_Ua7XYrQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_MdW98EuTEd2aAOSqOUjI9w"/>
+        </eAnnotations>
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ua7XY7QnEd2znunpcPUHwA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ua7XZLQnEd2znunpcPUHwA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Ua7XZbQnEd2znunpcPUHwA" name="base_Property" association="_Ua7XdbQnEd2znunpcPUHwA">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Ua7XZrQnEd2znunpcPUHwA" memberEnd="_Ua7XWbQnEd2znunpcPUHwA _Ua7XaLQnEd2znunpcPUHwA">
+      <eAnnotations xmi:id="_Ua7XZ7QnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_iStWEEuSEd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_Ua7XaLQnEd2znunpcPUHwA" name="nestingPart" type="_Ua7XVLQnEd2znunpcPUHwA" association="_Ua7XZrQnEd2znunpcPUHwA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ua7XabQnEd2znunpcPUHwA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ua7XarQnEd2znunpcPUHwA"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Ua7Xa7QnEd2znunpcPUHwA" memberEnd="_Ua7XXbQnEd2znunpcPUHwA _Ua7XbbQnEd2znunpcPUHwA">
+      <eAnnotations xmi:id="_Ua7XbLQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_Y_CV0EuTEd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_Ua7XbbQnEd2znunpcPUHwA" name="configured" type="_Ua7XVLQnEd2znunpcPUHwA" association="_Ua7Xa7QnEd2znunpcPUHwA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ua7XbrQnEd2znunpcPUHwA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ua7Xb7QnEd2znunpcPUHwA"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Ua7XcLQnEd2znunpcPUHwA" memberEnd="_Ua7XYbQnEd2znunpcPUHwA _Ua7XcrQnEd2znunpcPUHwA">
+      <eAnnotations xmi:id="_Ua7XcbQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_MdVIwEuTEd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_Ua7XcrQnEd2znunpcPUHwA" name="deployment" type="_Ua7XVLQnEd2znunpcPUHwA" association="_Ua7XcLQnEd2znunpcPUHwA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ua7Xc7QnEd2znunpcPUHwA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ua7XdLQnEd2znunpcPUHwA"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_Ua7XdbQnEd2znunpcPUHwA" name="Property_DeploymentPart" memberEnd="_Ua7XdrQnEd2znunpcPUHwA _Ua7XZbQnEd2znunpcPUHwA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_Ua7XdrQnEd2znunpcPUHwA" name="extension_DeploymentPart" type="_Ua7XVLQnEd2znunpcPUHwA" aggregation="composite" association="_Ua7XdbQnEd2znunpcPUHwA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_Ua7Xd7QnEd2znunpcPUHwA" name="ComponentDeploymentPart">
+      <eAnnotations xmi:id="_Ua7XeLQnEd2znunpcPUHwA" source="uml2.extensions">
+        <details xmi:id="_Ua7XebQnEd2znunpcPUHwA" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_Ua7XerQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_UGsYwEuREd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <generalization xmi:id="_Ua7Xe7QnEd2znunpcPUHwA" general="_Ua7XVLQnEd2znunpcPUHwA"/>
+      <ownedAttribute xmi:id="_Ua7XfLQnEd2znunpcPUHwA" name="selectedImplementation" type="_qeX9_msvEd2s--4g-nTlHg" association="_Ua7XhLQnEd2znunpcPUHwA">
+        <eAnnotations xmi:id="_Ua7XfbQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_EHvW0EuTEd2aAOSqOUjI9w"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ua7XfrQnEd2znunpcPUHwA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ua7Xf7QnEd2znunpcPUHwA"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Ua7XgLQnEd2znunpcPUHwA" name="implementationConfiguration" type="_HceLcGs4Ed2s--4g-nTlHg" association="_Ua7XibQnEd2znunpcPUHwA">
+        <eAnnotations xmi:id="_Ua7XgbQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_ggtHAFdFEd2vyvkXKkpVQw"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ua7XgrQnEd2znunpcPUHwA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ua7Xg7QnEd2znunpcPUHwA"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Ua7XhLQnEd2znunpcPUHwA" memberEnd="_Ua7XfLQnEd2znunpcPUHwA _Ua7XhrQnEd2znunpcPUHwA">
+      <eAnnotations xmi:id="_Ua7XhbQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_EHthoEuTEd2aAOSqOUjI9w"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_Ua7XhrQnEd2znunpcPUHwA" name="deployment" type="_Ua7Xd7QnEd2znunpcPUHwA" association="_Ua7XhLQnEd2znunpcPUHwA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ua7Xh7QnEd2znunpcPUHwA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ua7XiLQnEd2znunpcPUHwA"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Ua7XibQnEd2znunpcPUHwA" memberEnd="_Ua7XgLQnEd2znunpcPUHwA _Ua7Xi7QnEd2znunpcPUHwA">
+      <eAnnotations xmi:id="_Ua7XirQnEd2znunpcPUHwA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_gggSsFdFEd2vyvkXKkpVQw"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_Ua7Xi7QnEd2znunpcPUHwA" name="" type="_Ua7Xd7QnEd2znunpcPUHwA" association="_Ua7XibQnEd2znunpcPUHwA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ua7XjLQnEd2znunpcPUHwA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ua7XjbQnEd2znunpcPUHwA"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HNsqYMu0Ed2xvcABYZlkxQ" name="ComponentImplementation">
+      <eAnnotations xmi:id="_HNsqYcu0Ed2xvcABYZlkxQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <details xmi:id="_HNsqYsu0Ed2xvcABYZlkxQ" key="structuralRealization" value="utilizedElement"/>
+        <details xmi:id="_HNsqY8u0Ed2xvcABYZlkxQ" key="implementation" value="client"/>
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_1nK84LQrEd2l4KifYM_oHA"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_HNsqZMu0Ed2xvcABYZlkxQ" source="uml2.extensions">
+        <details xmi:id="_HNsqZcu0Ed2xvcABYZlkxQ" key="suppressed" value="true"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_HNsqZsu0Ed2xvcABYZlkxQ" name="base_Manifestation" association="_HNsqZ8u0Ed2xvcABYZlkxQ">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Manifestation"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HNsqZ8u0Ed2xvcABYZlkxQ" name="Manifestation_ComponentImplementation" memberEnd="_HNsqaMu0Ed2xvcABYZlkxQ _HNsqZsu0Ed2xvcABYZlkxQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HNsqaMu0Ed2xvcABYZlkxQ" name="extension_ComponentImplementation" type="_HNsqYMu0Ed2xvcABYZlkxQ" aggregation="composite" association="_HNsqZ8u0Ed2xvcABYZlkxQ"/>
+    </packagedElement>
+    <profileApplication xmi:id="_qeX-p2svEd2s--4g-nTlHg">
+      <eAnnotations xmi:id="_qeX-qGsvEd2s--4g-nTlHg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_UbFITLQnEd2znunpcPUHwA" base_Package="_qeX9gWsvEd2s--4g-nTlHg" packageName="mydomain" nsPrefix="mydomain" nsURI="http://www.zeligsoft.com/test/zdl/2008/MyDomain/1" prefix="MyDomain"/>
+</xmi:XMI>

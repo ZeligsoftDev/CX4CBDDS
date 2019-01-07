@@ -1,0 +1,20 @@
+<workflow>
+	<bean class="org.eclipse.xtend.typesystem.uml2.Setup"/>
+	
+	<component id="generator" class="com.zeligsoft.base.zdl.oaw.ZXtendGenerator">
+		<metaModel id="SCAMetamodel" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+        	<zdl value="pathmap://SCA_DOMAIN/SCA.uml"/>
+     	</metaModel>
+     	<metaModel id="vpm" class="com.zeligsoft.base.zdl.oaw.ZEmfMetaModel" 
+			metaModelPackage="com.prismtech.domain.sca.ppls.vpm.VpmPackage">
+		</metaModel>
+		<invoke value="xtend::generateVPM::mainTransform(element)" />
+		<outputSlot value="resultModel" />
+	</component>
+		  
+	<component class="com.prismtech.domain.sca.ppls.modelwriter.WriterComponent">
+		<modelSlot value="resultModel" />
+		<targetDir value="${src-gen}/" />
+	</component>
+		 
+</workflow>

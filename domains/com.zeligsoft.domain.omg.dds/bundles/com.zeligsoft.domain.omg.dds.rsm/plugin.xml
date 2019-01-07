@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         id="com.zeligsoft.domain.omg.dds.rsm.profiles"
+         name="OMG DDS Domain Profiles"
+         point="com.ibm.xtools.uml.msl.UMLProfiles">
+      <UMLProfile
+            id="com.zeligsoft.domain.omg.dds.rsm.DDSProfile"
+            name="OMG DDS Domain Profile"
+            path="pathmap://DDS_PROFILES/ddsDomain.profile.uml"
+            required="false"
+            visible="true">
+      </UMLProfile>
+   </extension>
+   <extension
+         id="DDS DefaultViewProviders"
+         name="DDS DefaultViewProviders"
+         point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <viewProvider
+            class="com.zeligsoft.domain.omg.dds.rsm.ui.providers.DDSDefaultViewProvider">
+         <Priority
+               name="Highest">
+         </Priority>
+         <context
+               viewClass="org.eclipse.gmf.runtime.notation.Node">
+         </context>
+      </viewProvider>
+   </extension>
+
+</plugin>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tool:MenuModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tool="http://www.zeligsoft.com/zdl/2008/tooling" name="Test domain menu model">
+  <item xsi:type="tool:CreateAction" name="Create Component Interface" description="Create a component interface from the test domain" createConcept="TestDomain::ComponentBlock::ComponentInterface"/>
+  <item xsi:type="tool:CreateAction" name="Create Operation" typeHint="operation"/>
+  <item xsi:type="tool:DelegateAction" name="TestDynamicAction" className="com.zeligsoft.base.ui.menus.test.actions.TestActionDelegate" hostBundle="com.zeligsoft.base.ui.menus.test"/>
+  <menu concept="TestDomain::ComponentBlock::Package" item="//@item.0"/>
+  <menu concept="TestDomain::ComponentBlock::ComponentStructure" item="//@item.1"/>
+  <menu concept="TestDomain::ComponentBlock::ComponentInterface" item="//@item.2"/>
+</tool:MenuModel>
