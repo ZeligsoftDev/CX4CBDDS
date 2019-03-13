@@ -1,8 +1,0 @@
-importtargetdefinition -A "buildDriver/rsa.target"
-resolve "buildDriver/spectracx.cquery"
-resolve "buildDriver/tests/licensing_dev.cquery"
-resolve "buildDriver/tests/base_tests.cquery"
-resolve "buildDriver/tests/cx_tests.cquery"
-resolve "buildDriver/tests/domain_sca_test.cquery"
-resolve "buildDriver/tests/releng_updatesites.cquery"
-build --thorough

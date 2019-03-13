@@ -1,0 +1,19 @@
+<project>
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>com.zeligsoft.dds4ccm</groupId>
+ <artifactId>com.zeligsoft.dds4ccm.root</artifactId>
+ <version>1.5.14-SNAPSHOT</version>
+ <packaging>pom</packaging>
+ <parent>
+   <groupId>com.zeligsoft.dds4ccm</groupId>
+   <artifactId>com.zeligsoft.dds4ccm.configuration</artifactId>
+   <version>1.5.14-SNAPSHOT</version>
+  <relativePath>./releng/com.zeligsoft.dds4ccm.configuration</relativePath>
+ </parent>
+
+    <modules>
+        <module>bundles</module>
+        <module>features</module>
+        <module>releng</module>
+    </modules>
+</project>

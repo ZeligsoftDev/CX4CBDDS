@@ -1,0 +1,387 @@
+«IMPORT uml»
+«IMPORT deploymentplan»
+
+«EXTENSION com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::deploymentUtil»
+ 
+«DEFINE descriptors FOR deploymentplan::DeploymentPlan»
+«FILE label.get(1) + ".cdp"»
+«resetNameSet()»
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+	<label>«IF label != null»«label.first().xmlSanitize()»«ENDIF»</label>
+	<UUID>«IF uuid != null»«uuid.first().xmlSanitize()»«ENDIF»</UUID>
+	«EXPAND descriptors FOREACH implementation»
+	«EXPAND descriptors FOREACH instance»
+	«EXPAND descriptors FOREACH connection»
+	«EXPAND descriptors FOREACH artifact»
+	«EXPAND descriptors FOREACH localityConstraint»
+</Deployment:DeploymentPlan>
+«ENDFILE»
+«ENDDEFINE»
+
+
+
+«DEFINE descriptors FOR deploymentplan::MonolithicDeploymentDescription»
+	«IF this != null»
+		<implementation xmi:id="«JavaGetAttribute(this, "id")»">
+			<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+			«checkName(name.first().xmlSanitize())»
+	  	<source>«IF source != null»«source.first().xmlSanitize()»«ENDIF»</source>
+	  	«FOREACH artifact AS artifact»
+	  	<artifact xmi:idref="«JavaGetAttribute(artifact, "idref")»"/>
+	  	«ENDFOREACH»
+	  	«FOREACH execParameter AS execParam»
+			<execParameter>
+				«EXPAND descriptors FOR execParam»
+			</execParameter>
+			«ENDFOREACH»
+		</implementation>
+	«ENDIF»
+«ENDDEFINE»
+
+
+«DEFINE descriptors FOR deploymentplan::InstanceDeploymentDescription»
+	«IF this != null»
+		<instance xmi:id="«JavaGetAttribute(this, "id")»">
+			<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+			«checkName(name.first().xmlSanitize())»
+			<node>«IF node != null»«node.first().xmlSanitize()»«ENDIF»</node>
+			<source>«IF source != null»«source.first().xmlSanitize()»«ENDIF»</source>
+			«FOREACH implementation AS impl»
+				<implementation xmi:idref="«JavaGetAttribute(impl, "idref")»"/>
+			«ENDFOREACH»
+			«FOREACH configProperty AS configProp»
+				<configProperty>
+					«EXPAND descriptors FOR configProp»
+				</configProperty>
+			«ENDFOREACH»
+		</instance>
+	«ENDIF»
+«ENDDEFINE»
+
+
+
+«DEFINE descriptors FOR deploymentplan::ArtifactDeploymentDescription»
+	«IF this != null»
+		<artifact xmi:id="«JavaGetAttribute(this, "id")»">
+			<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+			«checkName(name.first().xmlSanitize())»
+			<source>«IF source != null»«source.first().xmlSanitize()»«ENDIF»</source>
+			<node>«IF node != null»«node.first().xmlSanitize()»«ENDIF»</node>
+			<location>«IF location != null»«location.first().xmlSanitize()»«ENDIF»</location>
+		</artifact>
+	«ENDIF»
+«ENDDEFINE»
+
+
+«DEFINE descriptors FOR deploymentplan::PlanConnectionDescription»
+	<connection>
+		<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+		«checkName(name.first().xmlSanitize())»
+		«EXPAND descriptors FOREACH deployRequirement»
+		«EXPAND descriptors FOREACH externalEndpoint»
+		«EXPAND descriptors FOREACH internalEndpoint»
+		«EXPAND descriptors FOREACH externalReference»
+		«EXPAND descriptors FOREACH deployedResource»
+	</connection>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::Property»
+	<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+	«EXPAND descriptors FOREACH value»
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::PlanLocality»
+	<localityConstraint>
+		<constraint>«constraint.first()»</constraint>
+		«FOREACH constrainedInstance AS instance»
+			<!-- This is referencing «findObjectWithId(instance, (String)JavaGetAttribute(instance, "idref"))» -->
+			<constrainedInstance xmi:idref="«JavaGetAttribute(instance, "idref")»"/>
+		«ENDFOREACH»
+	</localityConstraint>
+«ENDDEFINE»
+
+
+«DEFINE descriptors FOR deploymentplan::Requirement»
+	<deployRequirement>
+		<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+		<resourceType>«IF resourceType != null»«resourceType.first().xmlSanitize()»«ENDIF»</resourceType>
+	</deployRequirement>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::ComponentExternalPortEndpoint»
+	<externalEndpoint>
+		<portName>«IF portName != null»«portName.first().xmlSanitize()»«ENDIF»</portName>
+	</externalEndpoint>
+«ENDDEFINE»
+
+
+«DEFINE descriptors FOR deploymentplan::PlanSubcomponentPortEndpoint»
+	<internalEndpoint>
+		<portName>«IF portName != null»«portName.first().xmlSanitize()»«ENDIF»</portName>
+		<provider>«IF provider != null»«provider.first().xmlSanitize()»«ENDIF»</provider>
+		<kind>«IF kind != null»«kind.first()»«ENDIF»</kind>		
+		«FOREACH instance AS inst»
+			<instance xmi:idref="«JavaGetAttribute(inst, "idref")»"/>
+		«ENDFOREACH»
+	</internalEndpoint>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::ExternalReferenceEndpoint»
+	<externalReference>
+		<location>«location.first().xmlSanitize()»</location>
+		<provider>«provider.first().xmlSanitize()»</provider>
+		<portName>«portName.first().xmlSanitize()»</portName>
+		<supportedType>«supportedType.first().xmlSanitize()»</supportedType>
+	</externalReference>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::ConnectionResourceDeploymentDescription»
+«ENDDEFINE»
+
+
+«DEFINE descriptors FOR List[deploymentplan::Domain]»
+	«EXPAND descriptors FOREACH this»
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::Domain»
+«FILE label.get(1) + ".cdd"»
+«resetNameSet()»
+<Deployment:domain xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+	<UUID>«IF uuid != null»«uuid.first().xmlSanitize()»«ENDIF»</UUID>
+	<label>«IF label != null»«label.first().xmlSanitize()»«ENDIF»</label>
+	«EXPAND descriptors FOREACH node»
+	«EXPAND descriptors FOREACH sharedResource»
+	«EXPAND descriptors FOREACH interconnect»
+	«EXPAND descriptors FOREACH bridge»
+	«EXPAND descriptors FOREACH infoProperty»
+</Deployment:domain>
+«ENDFILE»
+«ENDDEFINE»
+
+
+«DEFINE descriptors FOR deploymentplan::Bridge»
+	<bridge>
+		<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+		<label>«IF label != null»«label.first().xmlSanitize()»«ENDIF»</label>
+		«EXPAND descriptors FOREACH connect»
+		«EXPAND descriptors FOREACH resource»
+	</bridge>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::Interconnect»
+	<interconnect>
+		<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+		<label>«IF label != null»«label.first().xmlSanitize()»«ENDIF»</label>
+		«EXPAND descriptors FOREACH connection»
+		«EXPAND descriptors FOREACH connect»
+		«EXPAND descriptors FOREACH resource»
+	</interconnect>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::SharedResource»
+	<sharedResource>
+		<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+		<resourceType>«IF resourceType != null»«resourceType.first().xmlSanitize()»«ENDIF»</resourceType>
+		«EXPAND descriptors FOREACH node»
+		«EXPAND descriptors FOREACH property»
+	</sharedResource>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::Node»
+	<node>
+		<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+		<label>«IF label != null»«label.first().xmlSanitize()»«ENDIF»</label>
+		«EXPAND descriptors FOREACH connection»
+		«EXPAND descriptors FOREACH sharedResource»
+		«EXPAND descriptors FOREACH resource»
+	</node>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::Resource»
+	<resource>
+		<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+		«FOREACH resourceType AS rType»
+			<resourceType>«rType»</resourceType>
+		«ENDFOREACH»
+		«EXPAND descriptors FOREACH property»
+	</resource>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::SatisfierProperty»
+	<property>
+		<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+		«EXPAND descriptors FOREACH kind»
+		<dynamic>«IF dynamic != null»«dynamic.first().xmlSanitize()»«ENDIF»</dynamic>
+		«EXPAND descriptors FOREACH value»
+	</property>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::SatisfierPropertyKind»
+	<kind>«this.toString()»</kind>
+«ENDDEFINE»
+
+
+
+
+
+«DEFINE descriptors FOR deploymentplan::Property»
+	<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+	«EXPAND descriptors FOREACH value»
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::Any»
+	<value>
+		«EXPAND descriptors FOREACH type»
+		«EXPAND descriptors FOREACH value»
+	</value>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::DataType»
+	<type>
+		<kind>«IF kind != null»«kind.first()»«ENDIF»</kind>
+		«EXPAND descriptors FOREACH enum»
+		«EXPAND descriptors FOREACH objref»
+		«EXPAND descriptors FOREACH boundedString»
+		«EXPAND descriptors FOREACH fixed»
+		«EXPAND descriptors FOREACH array»
+		«EXPAND descriptors FOREACH sequence»
+		«EXPAND descriptors FOREACH alias»
+		«EXPAND descriptors FOREACH struct»
+		«EXPAND descriptors FOREACH value»
+		«EXPAND descriptors FOREACH union»
+	</type>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::DataValue»
+	<value>
+		«EXPAND internalValue FOR this»
+	</value>
+«ENDDEFINE»
+
+«DEFINE element FOR deploymentplan::DataValue»
+	<element>
+		«EXPAND internalValue FOR this»
+	</element>
+«ENDDEFINE»
+
+«DEFINE internalValue FOR deploymentplan::DataValue»
+		«IF (short != null) && !(short.isEmpty)»<short>«short.first()»</short>«ENDIF»
+		«IF (long != null) && !(long.isEmpty)»<long>«long.first()»</long>«ENDIF»
+		«IF (ushort != null) && !(ushort.isEmpty)»<ushort>«ushort.first()»</ushort>«ENDIF»
+		«IF (ulong != null) && !(ulong.isEmpty)»<ulong>«ulong.first()»</ulong>«ENDIF»
+		«IF (float != null) && !(float.isEmpty)»<float>«float.first()»</float>«ENDIF»
+		«IF (double != null) && !(double.isEmpty)»<double>«double.first()»</double>«ENDIF»
+		«IF (boolean != null) && !(boolean.isEmpty)»<boolean>«boolean.first()»</boolean>«ENDIF»
+		«IF (octet != null) && !(octet.isEmpty)»<octect>«octet.first()»</octet>«ENDIF»
+		«IF (opaque != null) && !(opaque.isEmpty)»<opaque>«opaque.first()»</opaque>«ENDIF»
+		«IF (objref != null) && !(objref.isEmpty)»<objref>«objref.first()»</objref>«ENDIF»
+		«IF (enum != null) && !(enum.isEmpty)»<enum>«enum.first()»</enum>«ENDIF»
+		«IF (string != null) && !(string.isEmpty)»<string>«string.first().xmlSanitize()»</string>«ENDIF»
+		«IF (longlong != null) && !(longlong.isEmpty)»<longlong>«longlong.first()»</longlong>«ENDIF»
+		«IF (longdouble != null) && !(longdouble.isEmpty)»<longdouble>«longdouble.first()»</longdouble>«ENDIF»
+		«IF (fixed != null) && !(fixed.isEmpty)»<fixed>«fixed.first()»</fixed>«ENDIF»
+		«IF (any != null) && !(any.isEmpty)»<any>«any.first()»</any>«ENDIF»
+		«IF (typecode != null) && !(typecode.isEmpty)»<typecode>«typecode.first()»</typecode>«ENDIF»
+		«IF (element != null) && !(element.isEmpty)»«EXPAND element FOREACH element»«ENDIF»
+		«IF (discriminator != null) && !(discriminator.isEmpty)»<discriminator>«discriminator.first()»</discriminator>«ENDIF»
+		«IF (value != null) && !(value.isEmpty)»<value>«value.first()»</value>«ENDIF»
+		«IF (boxedValue != null) && !(boxedValue.isEmpty)»<boxedValue>«boxedValue.first()»</boxedValue>«ENDIF»
+		«IF (member != null) && !(member.isEmpty)»«EXPAND descriptors FOREACH member»«ENDIF»
+«ENDDEFINE»
+
+
+«DEFINE descriptors FOR deploymentplan::ObjrefType»
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::BoundedStringType»
+	<boundedString>
+		<bound>«bound.first()»</bound>
+	</boundedString>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::FixedType»
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::ArrayType»
+	<array>
+	    <length>«length.first()»</length>
+		<elementType>
+			«FOREACH elementType AS element»
+				<kind>«IF (element.kind != null) && !(element.kind.isEmpty)»«element.kind.first()»«ENDIF»</kind>
+				«IF (element.struct != null)»
+					«FOREACH element.struct AS struct»
+					«EXPAND descriptors FOR struct»
+					«ENDFOREACH»
+				«ENDIF»
+				«IF (element.boundedString != null)»
+					«FOREACH element.boundedString AS boundedString»
+					«EXPAND descriptors FOR boundedString»
+					«ENDFOREACH»
+				«ENDIF»
+			«ENDFOREACH»
+		</elementType>
+	</array>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::SequenceType»
+	<sequence>
+		<elementType>
+			«FOREACH elementType AS element»
+				<kind>«IF (element.kind != null) && !(element.kind.isEmpty)»«element.kind.first()»«ENDIF»</kind>
+				«IF (element.struct != null)»
+					«FOREACH element.struct AS struct»
+					«EXPAND descriptors FOR struct»
+					«ENDFOREACH»
+				«ENDIF»
+				«IF (element.boundedString != null)»
+					«FOREACH element.boundedString AS boundedString»
+					«EXPAND descriptors FOR boundedString»
+					«ENDFOREACH»
+				«ENDIF»
+			«ENDFOREACH»
+		</elementType>
+	</sequence>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::AliasType»
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::StructType»
+	<struct>
+		<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+		<typeId>«IF name != null»«typeId.first().xmlSanitize()»«ENDIF»</typeId>
+		«EXPAND descriptors FOREACH member»
+	</struct>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::StructMemberType»
+	<member>
+		<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+		«EXPAND descriptors FOREACH type»
+	</member>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::ValueType»
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::AliasType»
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::UnionType»
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::EnumType»
+	<enum>
+		<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+		<typeId>«IF typeId != null»«typeId.first().xmlSanitize()»«ENDIF»</typeId>
+		«FOREACH member AS literal»<member>«literal»</member>«ENDFOREACH»
+	</enum>
+«ENDDEFINE»
+
+«DEFINE descriptors FOR deploymentplan::NamedValue»
+	<member>
+		<name>«IF name != null»«name.first().xmlSanitize()»«ENDIF»</name>
+		«EXPAND descriptors FOREACH value»
+		«IF value.isEmpty»<value/>«ENDIF»
+	</member>
+«ENDDEFINE»

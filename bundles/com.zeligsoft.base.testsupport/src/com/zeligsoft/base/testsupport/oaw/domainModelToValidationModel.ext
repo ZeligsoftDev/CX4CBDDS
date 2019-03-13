@@ -1,0 +1,34 @@
+/**
+ * Copyright (c) 2011 PrismTech Canada Ltd., All Rights Reserved.
+ * 
+ */
+import uml;
+import ZDL::Constructs;
+import ZDL::Validation;
+import ValidationModel;
+
+//TODO: This transformation does not determine where multiplicity constraints should be generated and validated.
+// It is possibly more appropriate to test the multiplicity constraint on its own anyway.
+
+create TestContainer mainTransform(DomainModel m) :
+	m.zdlAsPackage().packagedElement.visit(this);
+	
+Void debug(Object o ) :
+	JAVA com.zeligsoft.base.testsupport.oaw.DomainModelToValidationModelUtils.debug(java.lang.Object);
+
+Void visit(DomainConcept concept, TestContainer container) :
+	concept.zdlAsNamespace().ownedRule.typeSelect(DomainConstraint).processRule(container);
+	
+Void visit(DomainBlock block, TestContainer container ) :
+	block.zdlAsNamespace().ownedRule.typeSelect(DomainConstraint).processRule(container) ->
+	block.zdlAsPackage().packagedElement.visit(container);
+	
+Void visit(uml::PackageableElement pe, TestContainer container ) :
+	{};
+	
+// ExternalDomainConstraints generalize DomainConstraint so this rule works for them as well.
+create UnitTest processRule(DomainConstraint constraint, TestContainer container ) :
+	container.tests.add(this) ->
+	this.setName(constraint.zdlAsNamedElement().name) ->
+	this.setId(constraint.id) ->
+	this.setIsTested(false);

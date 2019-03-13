@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.zeligsoft.domain.omg.dds;singleton:=true
+Bundle-Version: 0.4.1.qualifier
+Bundle-Vendor: %pluginProvider
+Require-Bundle: org.eclipse.emf.ecore;bundle-version="[2.6.0,3.0.0)",
+ com.zeligsoft.base.zdl;bundle-version="[3.5.0,3.6.0)",
+ com.ibm.xtools.uml.msl;bundle-version="[7.70.0,8.0.0)"
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: com.zeligsoft.domain.omg.dds,
+ com.zeligsoft.domain.omg.dds.util
