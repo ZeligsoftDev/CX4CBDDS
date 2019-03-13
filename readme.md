@@ -18,8 +18,13 @@ The build requires:
 
 	\# increase Maven memory
 	export MAVEN_OPTS="-Xmx1024m"
-	\# build DDS4CCM
-	mvn -D "dds4ccm.root=`pwd`" clean verify
+	\# build 
+	mvn -D "dds4ccm.root=\`pwd\`" clean verify
+
+On macOS, it was is necessary to increase the shell's maximum number of open files.
+The following was found to be acceptable:
+
+	ulimit -Sn 1024
 	
 The p2 repository produced by the build will be found in `releng/com.zeligsoft.dds4ccm.update/target`:
 
