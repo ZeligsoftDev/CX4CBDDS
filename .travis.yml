@@ -1,6 +1,7 @@
 language: java
 env:
   - MAVEN_OPTS="-Xmx1024m"
-  -
+  - dds4ccm.root=$TRAVIS_BUILD_DIR
+
 script:
-  - mvn -D "dds4ccm.root=$TRAVIS_BUILD_DIR" verify
+  - mvn verify
