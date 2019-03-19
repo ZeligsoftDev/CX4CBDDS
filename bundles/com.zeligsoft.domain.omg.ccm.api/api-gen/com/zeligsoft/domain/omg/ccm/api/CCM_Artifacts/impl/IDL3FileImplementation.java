@@ -17,6 +17,7 @@ public class IDL3FileImplementation extends NamedElementImplementation
 		super(element);
 	}
 
+	@Override
 	public java.util.List<IDL3FileImport> getContents() {
 		if (_contents == null) {
 			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
@@ -37,6 +38,7 @@ public class IDL3FileImplementation extends NamedElementImplementation
 		return _contents;
 	}
 
+	@Override
 	public void addContents(IDL3FileImport val) {
 		// make sure the contents list is created
 		getContents();
@@ -51,6 +53,7 @@ public class IDL3FileImplementation extends NamedElementImplementation
 		}
 	}
 
+	@Override
 	public <T extends IDL3FileImport> T addContents(Class<T> typeToCreate,
 			String concept) {
 		// make sure the contents list is created
@@ -58,13 +61,14 @@ public class IDL3FileImplementation extends NamedElementImplementation
 		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
 				element, "CCM::CCM_Artifacts::IDL3File", "contents", concept);
 		T element = ZDLFactoryRegistry.INSTANCE.create(
-				(org.eclipse.emf.ecore.EObject) newConcept, typeToCreate);
+				newConcept, typeToCreate);
 		if (_contents != null) {
 			_contents.add(element);
 		}
 		return element;
 	}
 
+	@Override
 	public IDL3FileImport addContents() {
 		// make sure the contents list is created
 		getContents();
@@ -72,7 +76,7 @@ public class IDL3FileImplementation extends NamedElementImplementation
 				element, "CCM::CCM_Artifacts::IDL3File", "contents",
 				"CCM::CCM_Artifacts::IDL3FileImport");
 		IDL3FileImport element = ZDLFactoryRegistry.INSTANCE.create(
-				(org.eclipse.emf.ecore.EObject) newConcept,
+				newConcept,
 				IDL3FileImport.class);
 		if (_contents != null) {
 			_contents.add(element);
@@ -80,12 +84,14 @@ public class IDL3FileImplementation extends NamedElementImplementation
 		return element;
 	}
 
+	@Override
 	public String getLocation() {
 		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
 				eObject(), "CCM::CCM_Artifacts::IDL3File", "location");
 		return (String) rawValue;
 	}
 
+	@Override
 	public void setLocation(String val) {
 		ZDLUtil.setValue(element, "CCM::CCM_Artifacts::IDL3File", "location",
 				val);

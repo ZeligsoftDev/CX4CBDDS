@@ -3,8 +3,8 @@ package com.zeligsoft.domain.omg.ccm.api.CCM_Component;
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
 import com.zeligsoft.domain.omg.corba.api.IDL.CORBANamedElement;
 import com.zeligsoft.domain.zml.api.ZML_Component.Interface;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAAttribute;
 import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModuleContained;
+import com.zeligsoft.domain.omg.corba.api.IDL.CORBAAttribute;
 
 public interface Event extends Interface, CORBAModuleContained,
 		CORBANamedElement {

@@ -334,6 +334,11 @@ or not(type.oclAsType(CORBADomain::IDL::CORBAInterface).isLocal)</body>
         <ownedAttribute xmi:id="_KmETcCs9EeGtwangT5G8rQ" name="hasCSL" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
         </ownedAttribute>
+        <ownedAttribute xmi:id="_9cPLcDqyEemag5F7DMuukA" name="connectorType" visibility="public" association="_9cAh8DqyEemag5F7DMuukA">
+          <type xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_sCExkCBUEd2fK6BRw108zQ"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9cWgMDqyEemag5F7DMuukA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9cUrADqyEemag5F7DMuukA"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_hKTA8GjqEd-YqNvSF1CLqw" name="CCMComponentGenerals" memberEnd="_hKUPEGjqEd-YqNvSF1CLqw _hKWEQGjqEd-YqNvSF1CLqw">
         <ownedEnd xmi:id="_hKWEQGjqEd-YqNvSF1CLqw" name="" visibility="public" type="_i3eu4JyvEd6nTLqaytm5hw" association="_hKTA8GjqEd-YqNvSF1CLqw">
@@ -421,6 +426,12 @@ or not(type.oclAsType(CORBADomain::IDL::CORBAInterface).isLocal)</body>
         <ownedEnd xmi:id="_fMnxAEJGEeOQHrsrLvRL4g" name="" visibility="public" type="_wM5NoJyrEd6NpPmb0eU83g" association="_fMenEEJGEeOQHrsrLvRL4g">
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fMoYEUJGEeOQHrsrLvRL4g" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fMoYEEJGEeOQHrsrLvRL4g"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_9cAh8DqyEemag5F7DMuukA" name="portConnectorType" memberEnd="_9cPLcDqyEemag5F7DMuukA _9cXHQDqyEemag5F7DMuukA">
+        <ownedEnd xmi:id="_9cXHQDqyEemag5F7DMuukA" name="" visibility="public" type="_CaJgQF3jEd-xDs-FOeJ7CA" association="_9cAh8DqyEemag5F7DMuukA">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9cZjgDqyEemag5F7DMuukA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9cY8cDqyEemag5F7DMuukA"/>
         </ownedEnd>
       </packagedElement>
     </packagedElement>
@@ -1344,4 +1355,5 @@ or not(type.oclAsType(CORBADomain::IDL::CORBAInterface).isLocal)</body>
   <zdl:DomainGeneralization xmi:id="_zQ1ksIbkEeSjd8J8ZjsuPQ" base_Generalization="_zQwFIIbkEeSjd8J8ZjsuPQ"/>
   <zdl:DomainGeneralization xmi:id="_4fxuwIbkEeSjd8J8ZjsuPQ" base_Generalization="_4fuEYIbkEeSjd8J8ZjsuPQ"/>
   <zdl:DomainGeneralization xmi:id="_CNrXcIblEeSjd8J8ZjsuPQ" base_Generalization="_CNo7MIblEeSjd8J8ZjsuPQ"/>
+  <zdl:DomainReference xmi:id="_9ccm0DqyEemag5F7DMuukA" base_Association="_9cAh8DqyEemag5F7DMuukA"/>
 </xmi:XMI>

@@ -6,7 +6,11 @@ import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
 public interface Duration extends ZObject {
 	Integer getSecond();
 
+	void setSecond(Integer val);
+
 	Integer getNanosecond();
+
+	void setNanosecond(Integer val);
 
 	/**
 	 * A predicate which returns true if the Object is an

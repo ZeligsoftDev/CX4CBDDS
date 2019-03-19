@@ -7,6 +7,8 @@ import com.zeligsoft.domain.omg.dds.api.Core.impl.NamedEntityZImpl;
 
 import com.zeligsoft.domain.omg.dds.api.DCPS.DDSComponent;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public class DomainParticipantZImpl extends NamedEntityZImpl implements
 		DomainParticipant {
 	protected DDSComponent _type;
@@ -27,6 +29,12 @@ public class DomainParticipantZImpl extends NamedEntityZImpl implements
 			}
 		}
 		return _type;
+	}
+
+	@Override
+	public void setType(DDSComponent val) {
+		ZDLUtil.setValue(element, "DDS::DCPS::DomainParticipant", "type",
+				val.eObject());
 	}
 
 	@Override

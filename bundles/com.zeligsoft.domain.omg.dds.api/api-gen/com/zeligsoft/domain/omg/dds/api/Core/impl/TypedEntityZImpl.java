@@ -7,6 +7,8 @@ import com.zeligsoft.domain.omg.dds.api.Core.impl.NamedEntityZImpl;
 
 import com.zeligsoft.domain.omg.dds.api.Core.Specification;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public abstract class TypedEntityZImpl extends NamedEntityZImpl implements
 		TypedEntity {
 	protected Specification _type;
@@ -27,6 +29,12 @@ public abstract class TypedEntityZImpl extends NamedEntityZImpl implements
 			}
 		}
 		return _type;
+	}
+
+	@Override
+	public void setType(Specification val) {
+		ZDLUtil.setValue(element, "DDS::Core::TypedEntity", "type",
+				val.eObject());
 	}
 
 	@Override

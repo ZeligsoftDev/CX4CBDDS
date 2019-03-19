@@ -15,8 +15,8 @@ public class DeploymentPartImplementation extends NamedElementImplementation
 		implements DeploymentPart {
 	protected DeploymentSpecification _specification;
 	protected java.util.List<DeploymentPart> _nestedPart;
-	protected Configuration _configuration;
 	protected NamedElement _modelElement;
+	protected Configuration _configuration;
 
 	public DeploymentPartImplementation(org.eclipse.emf.ecore.EObject element) {
 		super(element);
@@ -82,28 +82,6 @@ public class DeploymentPartImplementation extends NamedElementImplementation
 	}
 
 	@Override
-	public Configuration getConfiguration() {
-		if (_configuration == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"ZMLMM::ZML_Deployments::DeploymentPart",
-							"configuration");
-			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_configuration = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
-						Configuration.class);
-			}
-		}
-		return _configuration;
-	}
-
-	@Override
-	public void setConfiguration(Configuration val) {
-		ZDLUtil.setValue(element, "ZMLMM::ZML_Deployments::DeploymentPart",
-				"configuration", val.eObject());
-	}
-
-	@Override
 	public NamedElement getModelElement() {
 		if (_modelElement == null) {
 			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
@@ -123,6 +101,28 @@ public class DeploymentPartImplementation extends NamedElementImplementation
 	public void setModelElement(NamedElement val) {
 		ZDLUtil.setValue(element, "ZMLMM::ZML_Deployments::DeploymentPart",
 				"modelElement", val.eObject());
+	}
+
+	@Override
+	public Configuration getConfiguration() {
+		if (_configuration == null) {
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
+					.getValue(eObject(),
+							"ZMLMM::ZML_Deployments::DeploymentPart",
+							"configuration");
+			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
+				_configuration = ZDLFactoryRegistry.INSTANCE.create(
+						(org.eclipse.emf.ecore.EObject) rawValue,
+						Configuration.class);
+			}
+		}
+		return _configuration;
+	}
+
+	@Override
+	public void setConfiguration(Configuration val) {
+		ZDLUtil.setValue(element, "ZMLMM::ZML_Deployments::DeploymentPart",
+				"configuration", val.eObject());
 	}
 
 	@Override

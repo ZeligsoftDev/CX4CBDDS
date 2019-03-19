@@ -22,6 +22,9 @@ public class DDSFactoryImpl extends AbstractBaseZDLFactory {
 				"ZMLMM::ZML_Core::Model",
 				com.zeligsoft.domain.zml.api.ZML_Core.impl.ModelImplementation.class);
 		registry.put(
+				"ZMLMM::ZML_Core::HideableElement",
+				com.zeligsoft.domain.zml.api.ZML_Core.impl.HideableElementImplementation.class);
+		registry.put(
 				"CORBADomain::IDL::CORBAWString",
 				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAWStringImplementation.class);
 		registry.put(
@@ -121,20 +124,11 @@ public class DDSFactoryImpl extends AbstractBaseZDLFactory {
 				"ZMLMM::ZML_Component::Implementation",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.ImplementationImplementation.class);
 		registry.put(
-				"ZMLMM::ZML_Component::FlowPort",
-				com.zeligsoft.domain.zml.api.ZML_Component.impl.FlowPortImplementation.class);
-		registry.put(
 				"ZMLMM::ZML_Component::MessagePort",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.MessagePortImplementation.class);
 		registry.put(
-				"ZMLMM::ZML_Component::Part",
-				com.zeligsoft.domain.zml.api.ZML_Component.impl.PartImplementation.class);
-		registry.put(
 				"ZMLMM::ZML_Component::AssemblyConnector",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.AssemblyConnectorImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::Interface",
-				com.zeligsoft.domain.zml.api.ZML_Component.impl.InterfaceImplementation.class);
 		registry.put(
 				"ZMLMM::ZML_Component::WorkerFunction",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.WorkerFunctionImplementation.class);
@@ -163,6 +157,9 @@ public class DDSFactoryImpl extends AbstractBaseZDLFactory {
 				"ZMLMM::ZML_Component::ConjugatedPort",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.ConjugatedPortImplementation.class);
 		registry.put(
+				"ZMLMM::ZML_Component::WorkerFunctionIdentifiable",
+				com.zeligsoft.domain.zml.api.ZML_Component.impl.WorkerFunctionIdentifiableImplementation.class);
+		registry.put(
 				"ZMLMM::ZML_Deployments::Allocation",
 				com.zeligsoft.domain.zml.api.ZML_Deployments.impl.AllocationImplementation.class);
 		registry.put(
@@ -180,9 +177,6 @@ public class DDSFactoryImpl extends AbstractBaseZDLFactory {
 		registry.put(
 				"ZMLMM::ZML_Deployments::DeployableElement",
 				com.zeligsoft.domain.zml.api.ZML_Deployments.impl.DeployableElementImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Configurations::Configuration",
-				com.zeligsoft.domain.zml.api.ZML_Configurations.impl.ConfigurationImplementation.class);
 		registry.put(
 				"ZMLMM::ZML_Configurations::BuildConfiguration",
 				com.zeligsoft.domain.zml.api.ZML_Configurations.impl.BuildConfigurationImplementation.class);

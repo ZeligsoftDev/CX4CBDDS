@@ -7,6 +7,8 @@ import com.zeligsoft.domain.zml.api.ZML_Core.impl.NamedElementImplementation;
 
 import com.zeligsoft.domain.omg.dds.api.QOS.qosPolicy;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public class qosPropertyZImpl extends NamedElementImplementation implements
 		qosProperty {
 	protected qosPolicy _policy;
@@ -27,6 +29,12 @@ public class qosPropertyZImpl extends NamedElementImplementation implements
 			}
 		}
 		return _policy;
+	}
+
+	@Override
+	public void setPolicy(qosPolicy val) {
+		ZDLUtil.setValue(element, "DDS::QOS::qosProperty", "policy",
+				val.eObject());
 	}
 
 	@Override

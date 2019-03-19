@@ -13,12 +13,68 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 
 public class WorkerFunctionImplementation extends OperationImplementation
 		implements WorkerFunction {
+	protected Port _receivingPort;
 	protected Operation _portOperation;
 	protected java.util.List<Parameter> _parameter;
-	protected Port _receivingPort;
 
 	public WorkerFunctionImplementation(org.eclipse.emf.ecore.EObject element) {
 		super(element);
+	}
+
+	@Override
+	public Boolean getDelegate() {
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
+				eObject(), "ZMLMM::ZML_Component::WorkerFunction", "delegate");
+		return (Boolean) rawValue;
+	}
+
+	@Override
+	public void setDelegate(Boolean val) {
+		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::WorkerFunction",
+				"delegate", val);
+	}
+
+	@Override
+	public Port getReceivingPort() {
+		if (_receivingPort == null) {
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
+					.getValue(eObject(),
+							"ZMLMM::ZML_Component::WorkerFunction",
+							"receivingPort");
+			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
+				_receivingPort = ZDLFactoryRegistry.INSTANCE.create(
+						(org.eclipse.emf.ecore.EObject) rawValue, Port.class);
+			}
+		}
+		return _receivingPort;
+	}
+
+	@Override
+	public void setReceivingPort(Port val) {
+		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::WorkerFunction",
+				"receivingPort", val.eObject());
+	}
+
+	@Override
+	public Operation getPortOperation() {
+		if (_portOperation == null) {
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
+					.getValue(eObject(),
+							"ZMLMM::ZML_Component::WorkerFunction",
+							"portOperation");
+			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
+				_portOperation = ZDLFactoryRegistry.INSTANCE.create(
+						(org.eclipse.emf.ecore.EObject) rawValue,
+						Operation.class);
+			}
+		}
+		return _portOperation;
+	}
+
+	@Override
+	public void setPortOperation(Operation val) {
+		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::WorkerFunction",
+				"portOperation", val.eObject());
 	}
 
 	@Override
@@ -45,28 +101,6 @@ public class WorkerFunctionImplementation extends OperationImplementation
 	public void setUuid(String val) {
 		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::WorkerFunction",
 				"uuid", val);
-	}
-
-	@Override
-	public Operation getPortOperation() {
-		if (_portOperation == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"ZMLMM::ZML_Component::WorkerFunction",
-							"portOperation");
-			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_portOperation = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
-						Operation.class);
-			}
-		}
-		return _portOperation;
-	}
-
-	@Override
-	public void setPortOperation(Operation val) {
-		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::WorkerFunction",
-				"portOperation", val.eObject());
 	}
 
 	@Override
@@ -134,40 +168,6 @@ public class WorkerFunctionImplementation extends OperationImplementation
 			_parameter.add(element);
 		}
 		return element;
-	}
-
-	@Override
-	public Port getReceivingPort() {
-		if (_receivingPort == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"ZMLMM::ZML_Component::WorkerFunction",
-							"receivingPort");
-			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_receivingPort = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue, Port.class);
-			}
-		}
-		return _receivingPort;
-	}
-
-	@Override
-	public void setReceivingPort(Port val) {
-		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::WorkerFunction",
-				"receivingPort", val.eObject());
-	}
-
-	@Override
-	public Boolean getDelegate() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "ZMLMM::ZML_Component::WorkerFunction", "delegate");
-		return (Boolean) rawValue;
-	}
-
-	@Override
-	public void setDelegate(Boolean val) {
-		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::WorkerFunction",
-				"delegate", val);
 	}
 
 }

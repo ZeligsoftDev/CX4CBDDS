@@ -5,7 +5,11 @@ import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
 public interface historyQosPolicy extends qosPolicy {
 	Integer getDepth();
 
+	void setDepth(Integer val);
+
 	HistoryQosPolicyKind getKind();
+
+	void setKind(HistoryQosPolicyKind val);
 
 	/**
 	 * A predicate which returns true if the Object is an

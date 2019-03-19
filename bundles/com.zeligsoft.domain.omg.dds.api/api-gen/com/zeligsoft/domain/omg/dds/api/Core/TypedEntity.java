@@ -5,6 +5,8 @@ import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
 public interface TypedEntity extends NamedEntity {
 	Specification getType();
 
+	void setType(Specification val);
+
 	org.eclipse.uml2.uml.Property asProperty();
 
 	/**

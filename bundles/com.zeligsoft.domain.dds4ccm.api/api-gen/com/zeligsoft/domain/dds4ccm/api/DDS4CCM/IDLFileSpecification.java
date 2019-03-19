@@ -16,5 +16,5 @@ public interface IDLFileSpecification extends ZObject {
 	 */
 	static final TypeSelectPredicate<IDLFileSpecification> type = new TypeSelectPredicate<IDLFileSpecification>(
 			"DDS4CCM::DDS4CCM::IDLFileSpecification", //$NON-NLS-1$
-			IDLFileSpecification.class); 
+			IDLFileSpecification.class);
 }

@@ -14,5 +14,5 @@ public interface CORBATyped extends ZObject {
 	 */
 	static final TypeSelectPredicate<CORBATyped> type = new TypeSelectPredicate<CORBATyped>(
 			"CORBADomain::IDL::CORBATyped", //$NON-NLS-1$
-			CORBATyped.class); 
+			CORBATyped.class);
 }

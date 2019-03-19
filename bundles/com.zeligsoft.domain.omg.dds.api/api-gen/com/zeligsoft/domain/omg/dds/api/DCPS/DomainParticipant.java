@@ -6,6 +6,8 @@ import com.zeligsoft.domain.omg.dds.api.Core.NamedEntity;
 public interface DomainParticipant extends NamedEntity {
 	DDSComponent getType();
 
+	void setType(DDSComponent val);
+
 	org.eclipse.uml2.uml.Property asProperty();
 
 	/**

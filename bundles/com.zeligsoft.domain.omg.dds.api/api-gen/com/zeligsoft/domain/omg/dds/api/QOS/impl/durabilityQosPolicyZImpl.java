@@ -5,6 +5,8 @@ import com.zeligsoft.domain.omg.dds.api.QOS.impl.qosPolicyZImpl;
 
 import com.zeligsoft.domain.omg.dds.api.QOS.DurabilityQosPolicyKind;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public class durabilityQosPolicyZImpl extends qosPolicyZImpl implements
 		durabilityQosPolicy {
 	protected DurabilityQosPolicyKind _kind;
@@ -25,6 +27,12 @@ public class durabilityQosPolicyZImpl extends qosPolicyZImpl implements
 			}
 		}
 		return _kind;
+	}
+
+	@Override
+	public void setKind(DurabilityQosPolicyKind val) {
+		ZDLUtil.setValue(element, "DDS::QOS::durabilityQosPolicy", "kind",
+				val.eObject(element));
 	}
 
 }

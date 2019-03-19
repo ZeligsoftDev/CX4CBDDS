@@ -9,5 +9,5 @@ public interface CORBADefault extends CORBAUnionField {
 	 */
 	static final TypeSelectPredicate<CORBADefault> type = new TypeSelectPredicate<CORBADefault>(
 			"CORBADomain::IDL::CORBADefault", //$NON-NLS-1$
-			CORBADefault.class); 
+			CORBADefault.class);
 }

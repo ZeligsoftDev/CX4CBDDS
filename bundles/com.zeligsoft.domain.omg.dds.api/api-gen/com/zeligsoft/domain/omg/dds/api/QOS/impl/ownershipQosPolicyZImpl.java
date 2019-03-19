@@ -5,6 +5,8 @@ import com.zeligsoft.domain.omg.dds.api.QOS.impl.qosPolicyZImpl;
 
 import com.zeligsoft.domain.omg.dds.api.QOS.OwnershipQosPolicyKind;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public class ownershipQosPolicyZImpl extends qosPolicyZImpl implements
 		ownershipQosPolicy {
 	protected OwnershipQosPolicyKind _kind;
@@ -25,6 +27,12 @@ public class ownershipQosPolicyZImpl extends qosPolicyZImpl implements
 			}
 		}
 		return _kind;
+	}
+
+	@Override
+	public void setKind(OwnershipQosPolicyKind val) {
+		ZDLUtil.setValue(element, "DDS::QOS::ownershipQosPolicy", "kind",
+				val.eObject(element));
 	}
 
 }
