@@ -114,8 +114,10 @@ public class Messages
 	public static String Migrate_Noop;	
 	public static String Migrate_Error;
 	public static String MigrateModelAction_CommandLabel;
+	public static String MigrateModelTypeAction_CommandLabel;
 	public static String MigrateModelAction_DialogTitle;
 	public static String MigrateModelAction_MonitorTask;
+	public static String MigrateModelTypeAction_MonitorTask;
 	public static String PortDecorationImages_IconNotFoundError;
 	public static String ShowSourceActionDelegate_0;
 	public static String ShowSourceActionDelegate_1;

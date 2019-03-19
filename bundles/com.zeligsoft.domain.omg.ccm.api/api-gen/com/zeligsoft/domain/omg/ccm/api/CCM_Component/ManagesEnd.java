@@ -10,5 +10,5 @@ public interface ManagesEnd extends ZObject {
 	 */
 	static final TypeSelectPredicate<ManagesEnd> type = new TypeSelectPredicate<ManagesEnd>(
 			"CCM::CCM_Component::ManagesEnd", //$NON-NLS-1$
-			ManagesEnd.class); 
+			ManagesEnd.class);
 }

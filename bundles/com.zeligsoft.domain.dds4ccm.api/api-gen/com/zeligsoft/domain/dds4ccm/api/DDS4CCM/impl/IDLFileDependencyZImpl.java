@@ -19,6 +19,7 @@ public class IDLFileDependencyZImpl extends ZObjectImpl implements
 		super(element);
 	}
 
+	@Override
 	public IDLFileSpecification getFile() {
 		if (_file == null) {
 			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
@@ -33,11 +34,13 @@ public class IDLFileDependencyZImpl extends ZObjectImpl implements
 		return _file;
 	}
 
+	@Override
 	public void setFile(IDLFileSpecification val) {
 		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::IDLFileDependency",
 				"file", val.eObject());
 	}
 
+	@Override
 	public CORBANamedElement getElement() {
 		if (_element == null) {
 			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
@@ -52,6 +55,7 @@ public class IDLFileDependencyZImpl extends ZObjectImpl implements
 		return _element;
 	}
 
+	@Override
 	public void setElement(CORBANamedElement val) {
 		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::IDLFileDependency",
 				"element", val.eObject());

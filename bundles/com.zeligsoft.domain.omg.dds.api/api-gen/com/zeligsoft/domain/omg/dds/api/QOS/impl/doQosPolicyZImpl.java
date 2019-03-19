@@ -5,6 +5,8 @@ import com.zeligsoft.domain.omg.dds.api.QOS.impl.qosPolicyZImpl;
 
 import com.zeligsoft.domain.omg.dds.api.QOS.DestinationOrderQosPolicyKind;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public class doQosPolicyZImpl extends qosPolicyZImpl implements doQosPolicy {
 	protected DestinationOrderQosPolicyKind _kind;
 
@@ -24,6 +26,12 @@ public class doQosPolicyZImpl extends qosPolicyZImpl implements doQosPolicy {
 			}
 		}
 		return _kind;
+	}
+
+	@Override
+	public void setKind(DestinationOrderQosPolicyKind val) {
+		ZDLUtil.setValue(element, "DDS::QOS::doQosPolicy", "kind",
+				val.eObject(element));
 	}
 
 }

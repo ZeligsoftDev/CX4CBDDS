@@ -12,11 +12,47 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 
 public class AssemblyConnectorImplementation extends ZObjectImpl implements
 		AssemblyConnector {
-	protected java.util.List<ConnectorEnd> _end;
 	protected java.util.List<Port> _portEnd;
+	protected java.util.List<ConnectorEnd> _end;
 
 	public AssemblyConnectorImplementation(org.eclipse.emf.ecore.EObject element) {
 		super(element);
+	}
+
+	@Override
+	public java.util.List<Port> getPortEnd() {
+		if (_portEnd == null) {
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
+					.getValue(eObject(),
+							"ZMLMM::ZML_Component::AssemblyConnector",
+							"portEnd");
+			_portEnd = new java.util.ArrayList<Port>();
+			@SuppressWarnings("unchecked")
+			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
+			for (Object next : rawList) {
+				if (next instanceof org.eclipse.emf.ecore.EObject) {
+					Port nextWrapper = ZDLFactoryRegistry.INSTANCE.create(
+							(org.eclipse.emf.ecore.EObject) next, Port.class);
+					_portEnd.add(nextWrapper);
+				}
+			}
+		}
+		return _portEnd;
+	}
+
+	@Override
+	public void addPortEnd(Port val) {
+		// make sure the portEnd list is created
+		getPortEnd();
+
+		final Object rawValue = ZDLUtil.getValue(element,
+				"ZMLMM::ZML_Component::AssemblyConnector", "portEnd");
+		@SuppressWarnings("unchecked")
+		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
+		rawList.add(val.eObject());
+		if (_portEnd != null) {
+			_portEnd.add(val);
+		}
 	}
 
 	@Override
@@ -84,42 +120,6 @@ public class AssemblyConnectorImplementation extends ZObjectImpl implements
 			_end.add(element);
 		}
 		return element;
-	}
-
-	@Override
-	public java.util.List<Port> getPortEnd() {
-		if (_portEnd == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"ZMLMM::ZML_Component::AssemblyConnector",
-							"portEnd");
-			_portEnd = new java.util.ArrayList<Port>();
-			@SuppressWarnings("unchecked")
-			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
-			for (Object next : rawList) {
-				if (next instanceof org.eclipse.emf.ecore.EObject) {
-					Port nextWrapper = ZDLFactoryRegistry.INSTANCE.create(
-							(org.eclipse.emf.ecore.EObject) next, Port.class);
-					_portEnd.add(nextWrapper);
-				}
-			}
-		}
-		return _portEnd;
-	}
-
-	@Override
-	public void addPortEnd(Port val) {
-		// make sure the portEnd list is created
-		getPortEnd();
-
-		final Object rawValue = ZDLUtil.getValue(element,
-				"ZMLMM::ZML_Component::AssemblyConnector", "portEnd");
-		@SuppressWarnings("unchecked")
-		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
-		rawList.add(val.eObject());
-		if (_portEnd != null) {
-			_portEnd.add(val);
-		}
 	}
 
 	@Override

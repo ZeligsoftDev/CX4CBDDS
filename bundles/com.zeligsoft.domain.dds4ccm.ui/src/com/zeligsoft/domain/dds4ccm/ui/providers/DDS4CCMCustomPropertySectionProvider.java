@@ -16,6 +16,7 @@
  */
 package com.zeligsoft.domain.dds4ccm.ui.providers;
 
+import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,12 +50,17 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.TemplateParameter;
+import org.eclipse.uml2.uml.TemplateSignature;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
@@ -88,7 +94,7 @@ public class DDS4CCMCustomPropertySectionProvider implements
 	@Override
 	public Map<String, Control> createSection(Composite parent,
 			CXPropertyDescriptor descriptor, Property property) {
-
+	
 		if (property.getName().equals(DDS4CCMNames.DDS4_CCMMODEL__FIXED_HEADER)
 				|| property.getName().equals(
 						DDS4CCMNames.DDS4_CCMMODEL__FIXED_FOOTER)) {
@@ -167,8 +173,58 @@ public class DDS4CCMCustomPropertySectionProvider implements
 			};
 			return CXPropertiesWidgetFactory.createSectionForReferenceType(
 					parent, descriptor, filter);
+		
+		}else if (property.getName().equals(
+				CCMNames.INTERFACE_PORT__CONNECTOR_TYPE)) {
 
-		} else {
+			IFilter filter = new IFilter() {
+
+				@Override
+				public boolean select(Object toTest) {
+					EObject eo = null;
+
+					if (toTest instanceof EObject) {
+						eo = (EObject) toTest;
+					} else if (toTest instanceof IAdaptable) {
+						eo = (EObject) ((IAdaptable) toTest)
+								.getAdapter(EObject.class);
+					} else if (toTest instanceof IStructuredSelection) {
+						eo = BaseUIUtil
+								.getEObjectFromSelection((IStructuredSelection) toTest);
+					}
+					if (eo == null
+							|| !ZDLUtil.isZDLConcept(eo,
+									IDL3PlusNames.CONNECTOR_DEF)) {
+						return false;
+					}
+					
+					EObject eoContainer = eo.eContainer();
+					if(eoContainer == null 
+							|| !ZDLUtil.isZDLConcept(eoContainer,
+							IDL3PlusNames.TEMPLATE_MODULE)){
+						return false;
+					}
+					Package templateModulePackage = (Package) eoContainer;
+					
+					TemplateSignature ts = templateModulePackage.getOwnedTemplateSignature();
+					for(TemplateParameter typeParam: ts.getOwnedParameters()){
+				
+						if(ZDLUtil.isZDLConcept(typeParam,
+								IDL3PlusNames.TYPE_PARAMETER)){
+							if(!(typeParam.getOwnedParameteredElement() instanceof Interface)){
+								return false;
+							}
+						}
+					}
+					
+					return true;
+				}
+
+			};
+			return CXPropertiesWidgetFactory.createSectionForReferenceType(
+					parent, descriptor, filter);
+
+		}else {
 			Map<String, Control> widgetMap = CXPropertiesWidgetFactory
 					.createSectionForStringType(parent, descriptor);
 

@@ -6,6 +6,8 @@ import com.zeligsoft.domain.omg.dds.api.Topics.Topic;
 public interface DataWriter extends DataReaderWriter {
 	Topic getTopic();
 
+	void setTopic(Topic val);
+
 	/**
 	 * A predicate which returns true if the Object is an
 	 * instance of DataWriter

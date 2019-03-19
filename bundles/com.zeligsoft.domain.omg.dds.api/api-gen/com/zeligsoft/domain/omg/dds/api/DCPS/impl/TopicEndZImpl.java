@@ -7,6 +7,8 @@ import com.zeligsoft.domain.omg.dds.api.DCPS.impl.ConnectorEndZImpl;
 
 import com.zeligsoft.domain.omg.dds.api.DCPS.DomainTopic;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public class TopicEndZImpl extends ConnectorEndZImpl implements TopicEnd {
 	protected DomainTopic _topic;
 
@@ -26,6 +28,11 @@ public class TopicEndZImpl extends ConnectorEndZImpl implements TopicEnd {
 			}
 		}
 		return _topic;
+	}
+
+	@Override
+	public void setTopic(DomainTopic val) {
+		ZDLUtil.setValue(element, "DDS::DCPS::TopicEnd", "topic", val.eObject());
 	}
 
 }

@@ -7,6 +7,8 @@ import com.zeligsoft.domain.omg.dds.api.QOS.impl.qosPolicyZImpl;
 
 import com.zeligsoft.domain.omg.dds.api.QOS.Duration;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public class lifespanQosPolicyZImpl extends qosPolicyZImpl implements
 		lifespanQosPolicy {
 	protected Duration _duration;
@@ -28,6 +30,32 @@ public class lifespanQosPolicyZImpl extends qosPolicyZImpl implements
 			}
 		}
 		return _duration;
+	}
+
+	@Override
+	public void setDuration(Duration val) {
+		ZDLUtil.setValue(element, "DDS::QOS::lifespanQosPolicy", "duration",
+				val.eObject());
+	}
+
+	@Override
+	public <T extends Duration> T createDuration(Class<T> typeToCreate,
+			String concept) {
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
+				element, "DDS::QOS::lifespanQosPolicy", "duration", concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(
+				newConcept, typeToCreate);
+		return element;
+	}
+
+	@Override
+	public Duration createDuration() {
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
+				element, "DDS::QOS::lifespanQosPolicy", "duration",
+				"DDS::QOS::Duration");
+		Duration element = ZDLFactoryRegistry.INSTANCE.create(
+				newConcept, Duration.class);
+		return element;
 	}
 
 }

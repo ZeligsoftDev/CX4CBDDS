@@ -10,32 +10,11 @@ import com.zeligsoft.domain.zml.api.ZML_Deployments.DeploymentPart;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
 public class AllocationImplementation extends ZObjectImpl implements Allocation {
-	protected DeploymentPart _deployedOn;
 	protected java.util.List<DeploymentPart> _deployed;
+	protected DeploymentPart _deployedOn;
 
 	public AllocationImplementation(org.eclipse.emf.ecore.EObject element) {
 		super(element);
-	}
-
-	@Override
-	public DeploymentPart getDeployedOn() {
-		if (_deployedOn == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "ZMLMM::ZML_Deployments::Allocation",
-							"deployedOn");
-			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_deployedOn = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
-						DeploymentPart.class);
-			}
-		}
-		return _deployedOn;
-	}
-
-	@Override
-	public void setDeployedOn(DeploymentPart val) {
-		ZDLUtil.setValue(element, "ZMLMM::ZML_Deployments::Allocation",
-				"deployedOn", val.eObject());
 	}
 
 	@Override
@@ -72,6 +51,27 @@ public class AllocationImplementation extends ZObjectImpl implements Allocation 
 		if (_deployed != null) {
 			_deployed.add(val);
 		}
+	}
+
+	@Override
+	public DeploymentPart getDeployedOn() {
+		if (_deployedOn == null) {
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
+					.getValue(eObject(), "ZMLMM::ZML_Deployments::Allocation",
+							"deployedOn");
+			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
+				_deployedOn = ZDLFactoryRegistry.INSTANCE.create(
+						(org.eclipse.emf.ecore.EObject) rawValue,
+						DeploymentPart.class);
+			}
+		}
+		return _deployedOn;
+	}
+
+	@Override
+	public void setDeployedOn(DeploymentPart val) {
+		ZDLUtil.setValue(element, "ZMLMM::ZML_Deployments::Allocation",
+				"deployedOn", val.eObject());
 	}
 
 	@Override

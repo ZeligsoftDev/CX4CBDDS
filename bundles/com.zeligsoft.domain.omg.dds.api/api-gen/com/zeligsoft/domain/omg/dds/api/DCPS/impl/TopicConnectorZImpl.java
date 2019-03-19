@@ -7,6 +7,8 @@ import com.zeligsoft.domain.omg.dds.api.Core.impl.NamedEntityZImpl;
 
 import com.zeligsoft.domain.omg.dds.api.DCPS.ConnectorEnd;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public class TopicConnectorZImpl extends NamedEntityZImpl implements
 		TopicConnector {
 	protected java.util.List<ConnectorEnd> _end;
@@ -33,6 +35,36 @@ public class TopicConnectorZImpl extends NamedEntityZImpl implements
 			}
 		}
 		return _end;
+	}
+
+	@Override
+	public void addEnd(ConnectorEnd val) {
+		// make sure the end list is created
+		getEnd();
+
+		final Object rawValue = ZDLUtil.getValue(element,
+				"DDS::DCPS::TopicConnector", "end");
+		@SuppressWarnings("unchecked")
+		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
+		rawList.add(val.eObject());
+		if (_end != null) {
+			_end.add(val);
+		}
+	}
+
+	@Override
+	public <T extends ConnectorEnd> T addEnd(Class<T> typeToCreate,
+			String concept) {
+		// make sure the end list is created
+		getEnd();
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
+				element, "DDS::DCPS::TopicConnector", "end", concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(
+				newConcept, typeToCreate);
+		if (_end != null) {
+			_end.add(element);
+		}
+		return element;
 	}
 
 	@Override

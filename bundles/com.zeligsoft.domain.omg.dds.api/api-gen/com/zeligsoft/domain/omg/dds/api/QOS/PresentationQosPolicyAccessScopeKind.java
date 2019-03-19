@@ -15,23 +15,71 @@ public enum PresentationQosPolicyAccessScopeKind {
 	 * 
 	 *
 	 */
-	INSTANCE,
+	INSTANCE {
+		@Override
+		public EObject eObject(EObject context) {
+			return ZDLUtil.getZDLEnumLiteral(context,
+					"DDS::QOS::PresentationQosPolicyAccessScopeKind",
+					"INSTANCE");
+		}
+
+		@Override
+		public EObject eObject(
+				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+			return eObject(context.eObject());
+		}
+	},
 
 	/**
 	 * 
 	 *
 	 */
-	TOPIC,
+	TOPIC {
+		@Override
+		public EObject eObject(EObject context) {
+			return ZDLUtil.getZDLEnumLiteral(context,
+					"DDS::QOS::PresentationQosPolicyAccessScopeKind", "TOPIC");
+		}
+
+		@Override
+		public EObject eObject(
+				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+			return eObject(context.eObject());
+		}
+	},
 
 	/**
 	 * 
 	 *
 	 */
-	GROUP,
+	GROUP {
+		@Override
+		public EObject eObject(EObject context) {
+			return ZDLUtil.getZDLEnumLiteral(context,
+					"DDS::QOS::PresentationQosPolicyAccessScopeKind", "GROUP");
+		}
+
+		@Override
+		public EObject eObject(
+				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+			return eObject(context.eObject());
+		}
+	},
 	/**
 	 * Literal for cases when the value is UNKNOWN
 	 */
-	UNKNOWN;
+	UNKNOWN {
+		@Override
+		public EObject eObject(EObject context) {
+			return null;
+		}
+
+		@Override
+		public EObject eObject(
+				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+			return null;
+		}
+	};
 
 	/**
 	 * @param literal
@@ -54,4 +102,9 @@ public enum PresentationQosPolicyAccessScopeKind {
 			return UNKNOWN;
 		}
 	}
+
+	public abstract EObject eObject(EObject context);
+
+	public abstract EObject eObject(
+			com.zeligsoft.base.zdl.staticapi.core.ZObject context);
 }

@@ -5,6 +5,8 @@ import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
 public interface durabilityQosPolicy extends qosPolicy {
 	DurabilityQosPolicyKind getKind();
 
+	void setKind(DurabilityQosPolicyKind val);
+
 	/**
 	 * A predicate which returns true if the Object is an
 	 * instance of durabilityQosPolicy

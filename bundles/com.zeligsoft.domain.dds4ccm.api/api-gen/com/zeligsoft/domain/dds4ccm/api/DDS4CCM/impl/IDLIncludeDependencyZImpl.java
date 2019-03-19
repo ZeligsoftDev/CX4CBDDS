@@ -18,6 +18,7 @@ public class IDLIncludeDependencyZImpl extends ZObjectImpl implements
 		super(element);
 	}
 
+	@Override
 	public CORBANamedElement getIncludee() {
 		if (_includee == null) {
 			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
@@ -33,11 +34,13 @@ public class IDLIncludeDependencyZImpl extends ZObjectImpl implements
 		return _includee;
 	}
 
+	@Override
 	public void setIncludee(CORBANamedElement val) {
 		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::IDLIncludeDependency",
 				"includee", val.eObject());
 	}
 
+	@Override
 	public CORBANamedElement getIncluder() {
 		if (_includer == null) {
 			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
@@ -53,6 +56,7 @@ public class IDLIncludeDependencyZImpl extends ZObjectImpl implements
 		return _includer;
 	}
 
+	@Override
 	public void setIncluder(CORBANamedElement val) {
 		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::IDLIncludeDependency",
 				"includer", val.eObject());

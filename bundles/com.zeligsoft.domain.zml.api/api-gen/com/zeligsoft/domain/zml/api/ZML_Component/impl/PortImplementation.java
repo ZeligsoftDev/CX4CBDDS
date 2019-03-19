@@ -12,51 +12,11 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 
 public abstract class PortImplementation extends TypedElementImplementation
 		implements Port {
-	protected WiringKind _wiring;
 	protected PortTypeable _porttype;
+	protected WiringKind _wiring;
 
 	public PortImplementation(org.eclipse.emf.ecore.EObject element) {
 		super(element);
-	}
-
-	@Override
-	public WiringKind getWiring() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "ZMLMM::ZML_Component::Port", "wiring");
-
-		if (_wiring == null) {
-			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_wiring = WiringKind
-						.create((org.eclipse.emf.ecore.EObject) rawValue);
-			}
-		}
-		return _wiring;
-	}
-
-	@Override
-	public void setWiring(WiringKind val) {
-		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::Port", "wiring",
-				val.eObject(element));
-	}
-
-	@Override
-	public Boolean getIsExternal() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "ZMLMM::ZML_Component::Port", "isExternal");
-		return (Boolean) rawValue;
-	}
-
-	@Override
-	public void setIsExternal(Boolean val) {
-		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::Port", "isExternal",
-				val);
-	}
-
-	@Override
-	public String getQualifiedName() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "ZMLMM::ZML_Core::NamedElement", "qualifiedName");
-		return (String) rawValue;
 	}
 
 	@Override
@@ -90,6 +50,46 @@ public abstract class PortImplementation extends TypedElementImplementation
 	public void setPorttype(PortTypeable val) {
 		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::Port", "porttype",
 				val.eObject());
+	}
+
+	@Override
+	public Boolean getIsExternal() {
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
+				eObject(), "ZMLMM::ZML_Component::Port", "isExternal");
+		return (Boolean) rawValue;
+	}
+
+	@Override
+	public void setIsExternal(Boolean val) {
+		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::Port", "isExternal",
+				val);
+	}
+
+	@Override
+	public String getQualifiedName() {
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
+				eObject(), "ZMLMM::ZML_Core::NamedElement", "qualifiedName");
+		return (String) rawValue;
+	}
+
+	@Override
+	public WiringKind getWiring() {
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
+				eObject(), "ZMLMM::ZML_Component::Port", "wiring");
+
+		if (_wiring == null) {
+			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
+				_wiring = WiringKind
+						.create((org.eclipse.emf.ecore.EObject) rawValue);
+			}
+		}
+		return _wiring;
+	}
+
+	@Override
+	public void setWiring(WiringKind val) {
+		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::Port", "wiring",
+				val.eObject(element));
 	}
 
 	@Override

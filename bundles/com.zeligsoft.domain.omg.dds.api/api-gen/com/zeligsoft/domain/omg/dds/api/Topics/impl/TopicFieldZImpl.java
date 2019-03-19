@@ -7,6 +7,8 @@ import com.zeligsoft.domain.zml.api.ZML_Core.impl.NamedElementImplementation;
 
 import com.zeligsoft.domain.omg.corba.api.IDL.CORBAType;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public class TopicFieldZImpl extends NamedElementImplementation implements
 		TopicField {
 	protected CORBAType _type;
@@ -27,6 +29,12 @@ public class TopicFieldZImpl extends NamedElementImplementation implements
 			}
 		}
 		return _type;
+	}
+
+	@Override
+	public void setType(CORBAType val) {
+		ZDLUtil.setValue(element, "DDS::Topics::TopicField", "type",
+				val.eObject());
 	}
 
 	@Override

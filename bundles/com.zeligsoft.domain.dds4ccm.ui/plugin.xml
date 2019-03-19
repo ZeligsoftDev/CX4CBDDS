@@ -515,6 +515,44 @@
              </and>
           </visibility>
        </viewerContribution>
+       
+       
+       <viewerContribution
+             id="com.zeligsoft.migrateModelType.popupmenu"
+             targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">
+          <action
+                class="com.zeligsoft.domain.dds4ccm.ui.actions.MigrateModelTypeAction"
+                enablesFor="1"
+                id="com.zeligsoft.domain.dds4ccm.ui.actions.MigrateModelTypeAction"
+                label="%action.label.MigrateModelType"
+                menubarPath="org.eclipse.gmf.runtime.common.ui.actions.RefactorMenu/additions">
+          </action>
+          <visibility>
+             <and>
+                <or>
+                   <objectState
+                         name="isZDLConcept"
+                         value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                   </objectState>
+                   <objectState
+                         name="isZDLConcept"
+                         value="CCM::CCM_Component::CCMComponent">
+                   </objectState>
+                   <objectState
+                   		name="isZDLConcept"
+                   		value="CCM::CCM_Component::Home">
+                   	</objectState>
+                </or>
+                <objectState
+                      name="isZDLProfile"
+                      value="cxDDS4CCM">
+                </objectState>
+             </and>
+          </visibility>
+       </viewerContribution>
+       
+       
+       
        <viewerContribution
              id="com.zeligsoft.refactorCleanComments.popupmenu"
              targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">
@@ -767,6 +805,14 @@
              concept="DDS4CCM::DDS4CCM::DDS4CCMModel"
              property="fixedFooter">
        </PropertySection>
+       
+       <PropertySection
+             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
+             concept="CCM::CCM_Component::InterfacePort"
+             domain="cxDDS4CCM"
+             property="connectorType">
+       </PropertySection>
+       
     </extension>
        <extension
          point="org.eclipse.ui.popupMenus">

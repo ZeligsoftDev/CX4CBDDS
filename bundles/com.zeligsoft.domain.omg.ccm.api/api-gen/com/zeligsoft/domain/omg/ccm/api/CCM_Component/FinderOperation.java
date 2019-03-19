@@ -9,5 +9,5 @@ public interface FinderOperation extends HomeOperation {
 	 */
 	static final TypeSelectPredicate<FinderOperation> type = new TypeSelectPredicate<FinderOperation>(
 			"CCM::CCM_Component::FinderOperation", //$NON-NLS-1$
-			FinderOperation.class); 
+			FinderOperation.class);
 }

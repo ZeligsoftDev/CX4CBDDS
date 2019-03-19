@@ -440,6 +440,13 @@ public final class CCMNames {
 	public static final String INTERFACE_PORT = "CCM::CCM_Component::InterfacePort";//$NON-NLS-1$
 
 	/**
+	 * ZDL DomainReference: InterfacePort::connectorType. 
+	 * Lower: 0 Upper: 1 
+	 * @generated
+	 */
+	public static final String INTERFACE_PORT__CONNECTOR_TYPE = "connectorType";//$NON-NLS-1$ 
+
+	/**
 	 * ZDL DomainAttribute: InterfacePort::hasCSL. 
 	 * Multiplicity: 1  
 	 * @generated
@@ -452,6 +459,13 @@ public final class CCMNames {
 	 * @generated
 	 */
 	public static final String INTERFACE_PORT__IS_ASYNCHRONOUS = "isAsynchronous";//$NON-NLS-1$  
+
+	/**
+	 * ZDL DomainReference: InterfacePort::testAttr. 
+	 * Lower: 0 Upper: 1 
+	 * @generated
+	 */
+	public static final String INTERFACE_PORT__TEST_ATTR = "testAttr";//$NON-NLS-1$ 
 
 	/**
 	 * Fully qualified name for the ZDL DomainConcept: Manages. 

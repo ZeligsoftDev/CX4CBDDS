@@ -46,9 +46,20 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.util.NamingUtil;
+import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
+import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMMigrationModelTypeUtil;
+import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
+import com.zeligsoft.domain.dds4ccm.utils.PropertyVariable;
+import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
+import com.zeligsoft.domain.omg.ccm.api.CCM_Target.Resource;
+import com.zeligsoft.domain.omg.ccm.api.CCM_Target.SatisfierProperty;
+import com.zeligsoft.domain.omg.ccm.api.CCM_Target.SatisfierPropertyKind;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
+import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.api.IDL.CORBAString;
 import com.zeligsoft.domain.omg.corba.util.CORBAUtil;
 
 /**
@@ -61,10 +72,9 @@ public class TargetNodeEditHelperAdvice extends AbstractEditHelperAdvice {
 
 	private static final String INSTANCE_POSTFIX = "Instance"; //$NON-NLS-1$
 
-	private static final String SATISFIER_PROPERTY_NAME = "edu.vanderbilt.dre.DAnCE.StringIOR"; //$NON-NLS-1$
-
 	private static final String SATISFIER_PROPERTY_VALUE = "corbaloc:iiop:localhost:60070"; //$NON-NLS-1$
 
+	
 	@Override
 	protected ICommand getAfterCreateCommand(final CreateElementRequest request) {
 
@@ -91,32 +101,34 @@ public class TargetNodeEditHelperAdvice extends AbstractEditHelperAdvice {
 
 				EObject resource = findTargetResource(newEObject);
 				Property satisfierProperty;
+				final String modelType = DDS4CCMUtil.getModelType((Element) container);
 				if (resource != null) {
-					satisfierProperty = ((Class) resource).getOwnedAttribute(
-							SATISFIER_PROPERTY_NAME, null);
+					satisfierProperty = getSatisfierProperty(resource, modelType);										
 				} else {
 
-					// if no Resource is found then create one
-					resource = ((Package) container).createOwnedClass(
-							NamingUtil.generateUniqueName("NodeAddress", //$NON-NLS-1$
-									container.eContents()), false);
-					if (resource == null) {
-						return null;
-					}
-					ZDLUtil.addZDLConcept((Element) resource, CCMNames.RESOURCE);
-					satisfierProperty = ((Class) resource)
-							.createOwnedAttribute(SATISFIER_PROPERTY_NAME,
-									(Type) CORBAUtil.getCORBAPrimitiveType(
-											resource, "CORBAString")); //$NON-NLS-1$
+					// Going to create a new NodeAddress 'Resource'. Generate a unique name for it.
+					final String nodeAddressName = NamingUtil.generateUniqueName("NodeAddress", //$NON-NLS-1$
+							container.eContents());
+					// Create the Resource in the container
+					final Resource nodeAddress = ZDLFactoryRegistry.INSTANCE
+							.create(ZDLUtil.createZDLConceptIn(container,
+									CCMNames.RESOURCE), Resource.class);
+					nodeAddress.setName(nodeAddressName);
 					
-					@SuppressWarnings("unchecked")
-					List<String> resourceTypes = (List<String>)ZDLUtil.getValue(resource, CCMNames.REQUIREMENT_SATISFIER, CCMNames.REQUIREMENT_SATISFIER__RESOURCE_TYPE);
-					resourceTypes.add("edu.vanderbilt.dre.DAnCE.NodeAddress");  //$NON-NLS-1$
-					ZDLUtil.addZDLConcept(satisfierProperty,
-							CCMNames.SATISFIER_PROPERTY);
+					// The resource needs a NodeAddress 'satisfierProperty..
+					final SatisfierProperty satisfierProp = nodeAddress.addProperty();
+					satisfierProp.setKind(SatisfierPropertyKind.ATTRIBUTE);
+					final String satisfierPropName = PropertyVariable.NODE_IOR.getName(modelType);	//	DDS4CCMUtil.getPropertyName(modelType, PropertyVariable.NODE_IOR);
 					
-					EnumerationLiteral literal = ZDLUtil.getZDLEnumLiteral(satisfierProperty, CCMNames.SATISFIER_PROPERTY_KIND, CCMNames.SATISFIER_PROPERTY_KIND___ATTRIBUTE);
-					ZDLUtil.setValue(satisfierProperty, CCMNames.SATISFIER_PROPERTY, CCMNames.SATISFIER_PROPERTY__KIND, literal);
+					satisfierProp.setName(satisfierPropName);
+					satisfierProp.setTypeOverride(ZDLFactoryRegistry.INSTANCE
+							.create(CORBAUtil.getCORBAPrimitiveType(
+									nodeAddress.asClass(), "CORBAString"),
+									CORBAString.class));
+					
+					// set values used in code below
+					resource = nodeAddress.asClass();
+					satisfierProperty = satisfierProp.asProperty();				
 				}
 
 				// create resource property
@@ -200,7 +212,7 @@ public class TargetNodeEditHelperAdvice extends AbstractEditHelperAdvice {
 	 * @param context
 	 * @return
 	 */
-	private EObject findTargetResource(EObject context) {
+	private EObject findTargetResource(EObject context) throws ExecutionException{
 		EObject root = EcoreUtil.getRootContainer(context);
 		TreeIterator<Object> itor = EcoreUtil.getAllContents(root, true);
 		while (itor.hasNext()) {
@@ -213,12 +225,42 @@ public class TargetNodeEditHelperAdvice extends AbstractEditHelperAdvice {
 				continue;
 			}
 			if (ZDLUtil.isZDLConcept((EObject) obj, CCMNames.RESOURCE)) {
-				if (((Class) obj).getOwnedAttribute(SATISFIER_PROPERTY_NAME,
-						null) != null) {
+				Property satisfierProperty = getSatisfierProperty((Class)obj, DDS4CCMUtil.getModelType((Class)obj));
+				if (satisfierProperty != null) {
 					return (EObject) obj;
 				}
+				/**
+				 * satisfierProperty = ((Class) resource).getOwnedAttribute(
+							SATISFIER_PROPERTY_NAME, null);
+				 * */
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * Find model type specific satisfierProperty for a given NodeAddress
+	 * 
+	 *  @param resource
+	 *  			represents a NodeAddress
+	 *  @param modelType
+	 *  			type of the model: ATCD or AXCIOMA
+	 *  @return	modelType specific StringIOR property instance for the NodeAddress
+	 */	
+	private Property getSatisfierProperty(EObject resource, String modelType) throws ExecutionException{
+		
+		final Resource nodeAddress = ZDLFactoryRegistry.INSTANCE.create(resource, Resource.class);
+		Property satisfierProperty = null;
+		for(SatisfierProperty sp : nodeAddress.getProperty()) {
+			if(PropertyVariable.NODE_IOR.matches(sp.getName(), modelType)) {							
+				satisfierProperty = sp.asProperty();
+				break;
+			}
+		}
+		if(satisfierProperty == null){
+			throw new ExecutionException("Model is not well formed. Resource instance found without having a StringIOR property");
+		}
+		return satisfierProperty;
+		
 	}
 }

@@ -15,29 +15,88 @@ public enum DurabilityQosPolicyKind {
 	 * 
 	 *
 	 */
-	TRANSIENT,
+	TRANSIENT {
+		@Override
+		public EObject eObject(EObject context) {
+			return ZDLUtil.getZDLEnumLiteral(context,
+					"DDS::QOS::DurabilityQosPolicyKind", "TRANSIENT");
+		}
+
+		@Override
+		public EObject eObject(
+				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+			return eObject(context.eObject());
+		}
+	},
 
 	/**
 	 * 
 	 *
 	 */
-	TRANSIENT_LOCAL,
+	TRANSIENT_LOCAL {
+		@Override
+		public EObject eObject(EObject context) {
+			return ZDLUtil.getZDLEnumLiteral(context,
+					"DDS::QOS::DurabilityQosPolicyKind", "TRANSIENT_LOCAL");
+		}
+
+		@Override
+		public EObject eObject(
+				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+			return eObject(context.eObject());
+		}
+	},
 
 	/**
 	 * 
 	 *
 	 */
-	VOLATILE,
+	VOLATILE {
+		@Override
+		public EObject eObject(EObject context) {
+			return ZDLUtil.getZDLEnumLiteral(context,
+					"DDS::QOS::DurabilityQosPolicyKind", "VOLATILE");
+		}
+
+		@Override
+		public EObject eObject(
+				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+			return eObject(context.eObject());
+		}
+	},
 
 	/**
 	 * 
 	 *
 	 */
-	PERSISTENT,
+	PERSISTENT {
+		@Override
+		public EObject eObject(EObject context) {
+			return ZDLUtil.getZDLEnumLiteral(context,
+					"DDS::QOS::DurabilityQosPolicyKind", "PERSISTENT");
+		}
+
+		@Override
+		public EObject eObject(
+				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+			return eObject(context.eObject());
+		}
+	},
 	/**
 	 * Literal for cases when the value is UNKNOWN
 	 */
-	UNKNOWN;
+	UNKNOWN {
+		@Override
+		public EObject eObject(EObject context) {
+			return null;
+		}
+
+		@Override
+		public EObject eObject(
+				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+			return null;
+		}
+	};
 
 	/**
 	 * @param literal
@@ -63,4 +122,9 @@ public enum DurabilityQosPolicyKind {
 			return UNKNOWN;
 		}
 	}
+
+	public abstract EObject eObject(EObject context);
+
+	public abstract EObject eObject(
+			com.zeligsoft.base.zdl.staticapi.core.ZObject context);
 }

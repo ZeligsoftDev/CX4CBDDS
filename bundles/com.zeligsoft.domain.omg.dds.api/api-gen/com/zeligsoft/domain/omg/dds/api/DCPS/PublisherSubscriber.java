@@ -6,6 +6,12 @@ import com.zeligsoft.domain.omg.dds.api.Core.NamedEntity;
 public interface PublisherSubscriber extends NamedEntity {
 	java.util.List<DataReaderWriter> getData();
 
+	void addData(DataReaderWriter val);
+
+	<T extends DataReaderWriter> T addData(Class<T> typeToCreate, String concept);
+
+	DataReaderWriter addData();
+
 	org.eclipse.uml2.uml.Class asClass();
 
 	/**

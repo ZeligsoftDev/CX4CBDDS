@@ -5,6 +5,8 @@ import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
 public interface TopicEnd extends ConnectorEnd {
 	DomainTopic getTopic();
 
+	void setTopic(DomainTopic val);
+
 	/**
 	 * A predicate which returns true if the Object is an
 	 * instance of TopicEnd

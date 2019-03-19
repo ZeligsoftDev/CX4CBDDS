@@ -138,7 +138,7 @@
           <tool xmi:type="tool:Stack" xmi:id="_iEvmu5wFEeCNXMuDxOfhTg" name="IDL Data Types" description="CORBA IDL data type creation tools" activeTool="_iEvmvpwFEeCNXMuDxOfhTg">
             <tool xmi:type="tool:CreationTool" xmi:id="_iEvmvJwFEeCNXMuDxOfhTg" name="Array" description="Create a CORBA IDL array type">
               <concept href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_9qchQEk3Ed2eBKZvQ89d6g"/>
-              <expression xmi:type="tool:OawXtend" xmi:id="_9xVQgEJGEeOQHrsrLvRL4g" name="Configure" expression="configureArray" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
+              <expression xmi:type="tool:OawXtend" xmi:id="_0jKcgDqzEemag5F7DMuukA" name="Configure" expression="configureArray" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
                 <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
                 <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
               </expression>
@@ -148,7 +148,7 @@
             </tool>
             <tool xmi:type="tool:CreationTool" xmi:id="_iEvmv5wFEeCNXMuDxOfhTg" name="Sequence" description="Create a CORBA IDL sequence type">
               <concept href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_AO9FYEk4Ed2eBKZvQ89d6g"/>
-              <expression xmi:type="tool:OawXtend" xmi:id="_9xVQgUJGEeOQHrsrLvRL4g" name="Configure" expression="configureSequence" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
+              <expression xmi:type="tool:OawXtend" xmi:id="_0jKcgTqzEemag5F7DMuukA" name="Configure" expression="configureSequence" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
                 <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
                 <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
               </expression>
@@ -161,7 +161,7 @@
             </tool>
             <tool xmi:type="tool:CreationTool" xmi:id="_iEvmw5wFEeCNXMuDxOfhTg" name="Union" description="Create a CORBA IDL union type">
               <concept href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_sX40UEk3Ed2eBKZvQ89d6g"/>
-              <expression xmi:type="tool:OawXtend" xmi:id="_9xVQgkJGEeOQHrsrLvRL4g" name="Configure" expression="configureUnion" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
+              <expression xmi:type="tool:OawXtend" xmi:id="_0jKcgjqzEemag5F7DMuukA" name="Configure" expression="configureUnion" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
                 <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
                 <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
               </expression>
@@ -882,7 +882,7 @@
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnAJwFEeCNXMuDxOfhTg" name="Interface" eSuperTypes="_iEvnBZwFEeCNXMuDxOfhTg">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnAJwFEeCNXMuDxOfhTg" name="Interface" abstract="true" eSuperTypes="_iEvnBZwFEeCNXMuDxOfhTg">
           <eAnnotations xmi:id="_iEvnAZwFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_llw0IZyyEd6nTLqaytm5hw"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iEvnApwFEeCNXMuDxOfhTg" name="base_Interface" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Interface"/>
@@ -891,7 +891,7 @@
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnBZwFEeCNXMuDxOfhTg" name="PortTypeable">
           <eAnnotations xmi:id="_iEvnBpwFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_U8JOIHWEEd-hLtuvFmpF4Q"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnB5wFEeCNXMuDxOfhTg" name="Home" eSuperTypes="_iEvm75wFEeCNXMuDxOfhTg _iEvm85wFEeCNXMuDxOfhTg _iEvm8ZwFEeCNXMuDxOfhTg">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnB5wFEeCNXMuDxOfhTg" name="Home" eSuperTypes="_iEvm75wFEeCNXMuDxOfhTg _iEvm85wFEeCNXMuDxOfhTg _iEvm8ZwFEeCNXMuDxOfhTg _0jLDkDqzEemag5F7DMuukA">
           <eAnnotations xmi:id="_iEvnCJwFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_rcwVpKIgEd6HXsAyqfpkfQ"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iEvnCZwFEeCNXMuDxOfhTg" name="base_Class" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
@@ -912,7 +912,7 @@
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnGZwFEeCNXMuDxOfhTg" name="CORBATyped" abstract="true">
           <eAnnotations xmi:id="_iEvnGpwFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_qDFPc-BGEd6BWLzI5dNVYw"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnG5wFEeCNXMuDxOfhTg" name="InterfacePort" eSuperTypes="_iEvnIZwFEeCNXMuDxOfhTg _iEvm4ZwFEeCNXMuDxOfhTg">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnG5wFEeCNXMuDxOfhTg" name="InterfacePort" eSuperTypes="_iEvnIZwFEeCNXMuDxOfhTg _iEvm4ZwFEeCNXMuDxOfhTg _0jLDkDqzEemag5F7DMuukA">
           <eAnnotations xmi:id="_iEvnHJwFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_F3ds8F3pEd-zGe4Hpna54g"/>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iEvnHZwFEeCNXMuDxOfhTg" name="isAsynchronous" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -920,6 +920,7 @@
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_Kfoe0Cs-EeGtwangT5G8rQ" name="hasCSL" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
           </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_0jLqoTqzEemag5F7DMuukA" name="connectorType" ordered="false" eType="_iEvm65wFEeCNXMuDxOfhTg"/>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnIZwFEeCNXMuDxOfhTg" name="MessagePort" eSuperTypes="_iEvm05wFEeCNXMuDxOfhTg">
           <eAnnotations xmi:id="_iEvnIpwFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_llw0TJyyEd6nTLqaytm5hw"/>
@@ -936,10 +937,10 @@
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Artifact"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnLJwFEeCNXMuDxOfhTg" name="FlowPort" eSuperTypes="_iEvm05wFEeCNXMuDxOfhTg">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnLJwFEeCNXMuDxOfhTg" name="FlowPort" abstract="true" eSuperTypes="_iEvm05wFEeCNXMuDxOfhTg">
           <eAnnotations xmi:id="_iEvnLZwFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_llw0R5yyEd6nTLqaytm5hw"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnL5wFEeCNXMuDxOfhTg" name="Part">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iEvnL5wFEeCNXMuDxOfhTg" name="Part" abstract="true">
           <eAnnotations xmi:id="_iEvnMJwFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_llw0U5yyEd6nTLqaytm5hw"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iEvnMZwFEeCNXMuDxOfhTg" name="base_Property" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
@@ -1094,7 +1095,7 @@
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_iE4w4pwFEeCNXMuDxOfhTg" name="CORBAException" eSuperTypes="_iE4w0ZwFEeCNXMuDxOfhTg _iE4wrZwFEeCNXMuDxOfhTg _iEvm8ZwFEeCNXMuDxOfhTg _iE4wz5wFEeCNXMuDxOfhTg _iE4wlpwFEeCNXMuDxOfhTg">
           <eAnnotations xmi:id="_iE4w45wFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_llw1G5yyEd6nTLqaytm5hw"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iE4w6JwFEeCNXMuDxOfhTg" name="CORBAInterface" eSuperTypes="_iEvnAJwFEeCNXMuDxOfhTg _iEvm85wFEeCNXMuDxOfhTg _iE4wlpwFEeCNXMuDxOfhTg _iE4wrZwFEeCNXMuDxOfhTg _iE4w9ZwFEeCNXMuDxOfhTg">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iE4w6JwFEeCNXMuDxOfhTg" name="CORBAInterface" eSuperTypes="_iEvnAJwFEeCNXMuDxOfhTg _iEvm85wFEeCNXMuDxOfhTg _iE4wlpwFEeCNXMuDxOfhTg _iE4wrZwFEeCNXMuDxOfhTg _iE4w9ZwFEeCNXMuDxOfhTg _0jLDkDqzEemag5F7DMuukA">
           <eAnnotations xmi:id="_iE4w6ZwFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_llw1IJyyEd6nTLqaytm5hw"/>
           <eAnnotations xmi:id="_iE4w6pwFEeCNXMuDxOfhTg" source="duplicates">
             <contents xmi:type="ecore:EReference" xmi:id="_iE4w65wFEeCNXMuDxOfhTg" name="base_Interface" ordered="false" lowerBound="1">
@@ -1191,7 +1192,7 @@
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Package"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iE4xUZwFEeCNXMuDxOfhTg" name="CORBAAttribute" eSuperTypes="_iEvm85wFEeCNXMuDxOfhTg _iEvnGZwFEeCNXMuDxOfhTg">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iE4xUZwFEeCNXMuDxOfhTg" name="CORBAAttribute" eSuperTypes="_iEvm85wFEeCNXMuDxOfhTg _iEvnGZwFEeCNXMuDxOfhTg _0jLDkDqzEemag5F7DMuukA">
           <eAnnotations xmi:id="_iE4xUpwFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_llw1n5yyEd6nTLqaytm5hw"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iE4xU5wFEeCNXMuDxOfhTg" name="setraises" ordered="false" upperBound="-1" eType="_iE4w4pwFEeCNXMuDxOfhTg"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iE4xVZwFEeCNXMuDxOfhTg" name="getraises" ordered="false" upperBound="-1" eType="_iE4w4pwFEeCNXMuDxOfhTg"/>
@@ -1199,7 +1200,7 @@
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iE4xW5wFEeCNXMuDxOfhTg" name="CORBAOperation" eSuperTypes="_iEvm85wFEeCNXMuDxOfhTg _iEvnGZwFEeCNXMuDxOfhTg">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iE4xW5wFEeCNXMuDxOfhTg" name="CORBAOperation" eSuperTypes="_iEvm85wFEeCNXMuDxOfhTg _iEvnGZwFEeCNXMuDxOfhTg _0jLDkDqzEemag5F7DMuukA">
           <eAnnotations xmi:id="_iE4xXJwFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_llw1uJyyEd6nTLqaytm5hw"/>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iE4xXZwFEeCNXMuDxOfhTg" name="isOneWay" ordered="false" lowerBound="1" defaultValueLiteral="false">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -1263,7 +1264,7 @@
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Dependency"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iE4xkpwFEeCNXMuDxOfhTg" name="MonolithicImplementation" eSuperTypes="_iEvnJJwFEeCNXMuDxOfhTg _iE4xjJwFEeCNXMuDxOfhTg _iEvnKJwFEeCNXMuDxOfhTg">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iE4xkpwFEeCNXMuDxOfhTg" name="MonolithicImplementation" eSuperTypes="_iEvnJJwFEeCNXMuDxOfhTg _iE4xjJwFEeCNXMuDxOfhTg _iEvnKJwFEeCNXMuDxOfhTg _0jLDkDqzEemag5F7DMuukA">
           <eAnnotations xmi:id="_iE4xk5wFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Uy-YXaPAEd67GLoXBGWUmA"/>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iE4xlJwFEeCNXMuDxOfhTg" name="category" ordered="false" lowerBound="1" eType="_iE4xmpwFEeCNXMuDxOfhTg"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iE4xlpwFEeCNXMuDxOfhTg" name="base_NamedElement" ordered="false" lowerBound="1">
@@ -1459,7 +1460,7 @@
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Property"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iE4yLZwFEeCNXMuDxOfhTg" name="Configuration">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_iE4yLZwFEeCNXMuDxOfhTg" name="Configuration" abstract="true">
           <eAnnotations xmi:id="_iE4yLpwFEeCNXMuDxOfhTg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ZgUZMJQyEd-TfMHkrqIL3w"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_iE4yL5wFEeCNXMuDxOfhTg" name="base_Class" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
@@ -1497,7 +1498,7 @@
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_kpaYYBCVEeGm_rLIwBhecg" name="FinderOperation" eSuperTypes="_kpaYYxCVEeGm_rLIwBhecg">
           <eAnnotations xmi:id="_kpaYYRCVEeGm_rLIwBhecg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_kpX8IBCVEeGm_rLIwBhecg"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_kpaYYxCVEeGm_rLIwBhecg" name="HomeOperation" eSuperTypes="_iEvm85wFEeCNXMuDxOfhTg">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_kpaYYxCVEeGm_rLIwBhecg" name="HomeOperation" eSuperTypes="_iEvm85wFEeCNXMuDxOfhTg _0jLDkDqzEemag5F7DMuukA">
           <eAnnotations xmi:id="_kpaYZBCVEeGm_rLIwBhecg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_kpX8JRCVEeGm_rLIwBhecg"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_kpaYZRCVEeGm_rLIwBhecg" name="base_Operation" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Operation"/>
@@ -1523,6 +1524,12 @@
           <eAnnotations xmi:id="_9xV3kUJGEeOQHrsrLvRL4g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_9xUCYEJGEeOQHrsrLvRL4g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_9xV3kkJGEeOQHrsrLvRL4g" name="base_NamedElement" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_0jLDkDqzEemag5F7DMuukA" name="WorkerFunctionIdentifiable">
+          <eAnnotations xmi:id="_0jLDkTqzEemag5F7DMuukA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_0jJ1cDqzEemag5F7DMuukA"/>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_0jLDkjqzEemag5F7DMuukA" name="uuid" ordered="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
           </eStructuralFeatures>
         </eClassifiers>
       </contents>
@@ -1636,7 +1643,7 @@
     <packagedElement xmi:type="uml:Extension" xmi:id="_llw0FpyyEd6nTLqaytm5hw" name="Component_ComponentInterface" memberEnd="_llw0F5yyEd6nTLqaytm5hw _llw0FZyyEd6nTLqaytm5hw">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_llw0F5yyEd6nTLqaytm5hw" name="extension_ComponentInterface" type="_llw0EJyyEd6nTLqaytm5hw" aggregation="composite" association="_llw0FpyyEd6nTLqaytm5hw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_llw0IZyyEd6nTLqaytm5hw" name="Interface">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_llw0IZyyEd6nTLqaytm5hw" name="Interface" isAbstract="true">
       <eAnnotations xmi:id="_llw0IpyyEd6nTLqaytm5hw" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_llw0I5yyEd6nTLqaytm5hw" key="operation" value="ownedOperation"/>
         <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_5P3U8C2vEd2LuvOo-ahhJw"/>
@@ -1681,7 +1688,7 @@
         <details xmi:id="_llw0Q5yyEd6nTLqaytm5hw" key="suppressed" value="true"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_llw0R5yyEd6nTLqaytm5hw" name="FlowPort">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_llw0R5yyEd6nTLqaytm5hw" name="FlowPort" isAbstract="true">
       <eAnnotations xmi:id="_llw0SJyyEd6nTLqaytm5hw" source="uml2.extensions">
         <details xmi:id="_llw0SZyyEd6nTLqaytm5hw" key="suppressed" value="true"/>
       </eAnnotations>
@@ -1702,7 +1709,7 @@
       </eAnnotations>
       <generalization xmi:id="_llw0UpyyEd6nTLqaytm5hw" general="_llwz2pyyEd6nTLqaytm5hw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_llw0U5yyEd6nTLqaytm5hw" name="Part">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_llw0U5yyEd6nTLqaytm5hw" name="Part" isAbstract="true">
       <eAnnotations xmi:id="_llw0VJyyEd6nTLqaytm5hw" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_llw0VZyyEd6nTLqaytm5hw" key="definition" value="type"/>
         <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_1iDHcCBeEd2fK6BRw108zQ"/>
@@ -1738,7 +1745,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_llw0ZZyyEd6nTLqaytm5hw" memberEnd="_llw0YJyyEd6nTLqaytm5hw _llw0Z5yyEd6nTLqaytm5hw">
       <eAnnotations xmi:id="_llw0ZpyyEd6nTLqaytm5hw" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_cT-rUCD0Ed2fK6BRw108zQ"/>
+        <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_cUH1QCD0Ed2fK6BRw108zQ"/>
       </eAnnotations>
       <ownedEnd xmi:id="_llw0Z5yyEd6nTLqaytm5hw" name="" type="_llw0W5yyEd6nTLqaytm5hw" association="_llw0ZZyyEd6nTLqaytm5hw">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_llw0aJyyEd6nTLqaytm5hw" value="*"/>
@@ -1802,7 +1809,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_llw0fJyyEd6nTLqaytm5hw" memberEnd="_llw0b5yyEd6nTLqaytm5hw _llw0fpyyEd6nTLqaytm5hw">
       <eAnnotations xmi:id="_llw0fZyyEd6nTLqaytm5hw" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_gVb6EDyJEd2rZuYLoz8KmQ"/>
+        <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_gVe9YDyJEd2rZuYLoz8KmQ"/>
       </eAnnotations>
       <ownedEnd xmi:id="_llw0fpyyEd6nTLqaytm5hw" name="" type="_llw0bJyyEd6nTLqaytm5hw" association="_llw0fJyyEd6nTLqaytm5hw">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_llw0f5yyEd6nTLqaytm5hw" value="1"/>
@@ -1811,7 +1818,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_llw0gZyyEd6nTLqaytm5hw" memberEnd="_llw0c5yyEd6nTLqaytm5hw _llw0g5yyEd6nTLqaytm5hw">
       <eAnnotations xmi:id="_llw0gpyyEd6nTLqaytm5hw" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_VmtFgG1oEd2QsdnDLpauDg"/>
+        <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_VmtFgW1oEd2QsdnDLpauDg"/>
       </eAnnotations>
       <ownedEnd xmi:id="_llw0g5yyEd6nTLqaytm5hw" name="" type="_llw0bJyyEd6nTLqaytm5hw" association="_llw0gZyyEd6nTLqaytm5hw">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_llw0hJyyEd6nTLqaytm5hw" value="*"/>
@@ -1843,7 +1850,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_llw0j5yyEd6nTLqaytm5hw" memberEnd="_llw0ipyyEd6nTLqaytm5hw _llw0kZyyEd6nTLqaytm5hw">
       <eAnnotations xmi:id="_llw0kJyyEd6nTLqaytm5hw" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_s6IiUGStEd2ru6Ucg5fhHQ"/>
+        <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_s6STUGStEd2ru6Ucg5fhHQ"/>
       </eAnnotations>
       <ownedEnd xmi:id="_llw0kZyyEd6nTLqaytm5hw" name="" type="_llw0iJyyEd6nTLqaytm5hw" association="_llw0j5yyEd6nTLqaytm5hw">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_llw0kpyyEd6nTLqaytm5hw" value="1"/>
@@ -2174,6 +2181,7 @@
       <generalization xmi:id="_qDampOBGEd6BWLzI5dNVYw" general="_qDEoYuBGEd6BWLzI5dNVYw"/>
       <generalization xmi:id="_qDampeBGEd6BWLzI5dNVYw" general="_qDEoZuBGEd6BWLzI5dNVYw"/>
       <generalization xmi:id="_qDampuBGEd6BWLzI5dNVYw" general="_qDFPfOBGEd6BWLzI5dNVYw"/>
+      <generalization xmi:id="_0jUNgDqzEemag5F7DMuukA" general="_0jJ1cDqzEemag5F7DMuukA"/>
       <ownedAttribute xmi:id="_llw1JpyyEd6nTLqaytm5hw" name="isLocal">
         <eAnnotations xmi:id="_llw1J5yyEd6nTLqaytm5hw" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:Property" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_eU3a8Ek2Ed2eBKZvQ89d6g"/>
@@ -2498,6 +2506,7 @@
       </eAnnotations>
       <generalization xmi:id="_llw1opyyEd6nTLqaytm5hw" general="_llw00pyyEd6nTLqaytm5hw"/>
       <generalization xmi:id="_qDe4E-BGEd6BWLzI5dNVYw" general="_qDFPc-BGEd6BWLzI5dNVYw"/>
+      <generalization xmi:id="_0jVboDqzEemag5F7DMuukA" general="_0jJ1cDqzEemag5F7DMuukA"/>
       <ownedAttribute xmi:id="_llw1o5yyEd6nTLqaytm5hw" name="setraises" type="_llw1G5yyEd6nTLqaytm5hw" association="_llw1rJyyEd6nTLqaytm5hw">
         <eAnnotations xmi:id="_llw1pJyyEd6nTLqaytm5hw" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:Property" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_DN6OULWrEd2PTvVd89HYhA"/>
@@ -2550,6 +2559,7 @@
       </eAnnotations>
       <generalization xmi:id="_llw1upyyEd6nTLqaytm5hw" general="_llw00pyyEd6nTLqaytm5hw"/>
       <generalization xmi:id="_qDffIOBGEd6BWLzI5dNVYw" general="_qDFPc-BGEd6BWLzI5dNVYw"/>
+      <generalization xmi:id="_0jWCsDqzEemag5F7DMuukA" general="_0jJ1cDqzEemag5F7DMuukA"/>
       <ownedAttribute xmi:id="_llw1u5yyEd6nTLqaytm5hw" name="isOneWay">
         <eAnnotations xmi:id="_llw1vJyyEd6nTLqaytm5hw" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:Property" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_PlUP4LWrEd2PTvVd89HYhA"/>
@@ -2620,6 +2630,7 @@
       <generalization xmi:id="_rcwVqaIgEd6HXsAyqfpkfQ" general="_rcwVoKIgEd6HXsAyqfpkfQ"/>
       <generalization xmi:id="_cCt_4Ce_Ed-YFpBEe7mH2A" general="_llw00pyyEd6nTLqaytm5hw"/>
       <generalization xmi:id="_2ov1gCrvEd-6jY64hpJFaQ" general="_qDEoauBGEd6BWLzI5dNVYw"/>
+      <generalization xmi:id="_0jQjIDqzEemag5F7DMuukA" general="_0jJ1cDqzEemag5F7DMuukA"/>
       <ownedAttribute xmi:id="_rcwVqqIgEd6HXsAyqfpkfQ" name="base_Class" association="_rcwVq6IgEd6HXsAyqfpkfQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
       </ownedAttribute>
@@ -2738,6 +2749,7 @@
       <generalization xmi:id="_Uy-YYaPAEd67GLoXBGWUmA" general="_llw0M5yyEd6nTLqaytm5hw"/>
       <generalization xmi:id="_Uy-YYqPAEd67GLoXBGWUmA" general="_Uy-YUKPAEd67GLoXBGWUmA"/>
       <generalization xmi:id="_eKbvIPpiEeCVxf8v04aRDA" general="_llw0P5yyEd6nTLqaytm5hw"/>
+      <generalization xmi:id="_0jX34DqzEemag5F7DMuukA" general="_0jJ1cDqzEemag5F7DMuukA"/>
       <ownedAttribute xmi:id="_Uy-YY6PAEd67GLoXBGWUmA" name="category" type="_Uy-YZ6PAEd67GLoXBGWUmA">
         <eAnnotations xmi:id="_Uy-YZKPAEd67GLoXBGWUmA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:Property" href="pathmap://CCM_DOMAIN/CCM.uml#_biOwgKO-Ed67GLoXBGWUmA"/>
@@ -2938,6 +2950,14 @@
       </eAnnotations>
       <generalization xmi:id="_F3ds9F3pEd-zGe4Hpna54g" general="_llw0TJyyEd6nTLqaytm5hw"/>
       <generalization xmi:id="_CtQTUHSpEd--Ifm7ono7eg" general="_CtGiUHSpEd--Ifm7ono7eg"/>
+      <generalization xmi:id="_0jRKMDqzEemag5F7DMuukA" general="_0jJ1cDqzEemag5F7DMuukA"/>
+      <ownedAttribute xmi:id="_0jRKMTqzEemag5F7DMuukA" name="connectorType" type="_llw0EJyyEd6nTLqaytm5hw" association="_0jJ1eDqzEemag5F7DMuukA">
+        <eAnnotations xmi:id="_0jRKMjqzEemag5F7DMuukA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://CCM_DOMAIN/CCM.uml#_9cPLcDqyEemag5F7DMuukA"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0jRKMzqzEemag5F7DMuukA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0jRKNDqzEemag5F7DMuukA"/>
+      </ownedAttribute>
       <ownedAttribute xmi:id="_QkWEMI6uEd-hWf8wAbyQJQ" name="isAsynchronous">
         <eAnnotations xmi:id="_QkWEMY6uEd-hWf8wAbyQJQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:Property" href="pathmap://CCM_DOMAIN/CCM.uml#_-8e1oI6tEd-hWf8wAbyQJQ"/>
@@ -3267,14 +3287,14 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_ZgUZK5QyEd-TfMHkrqIL3w" memberEnd="_ZgUZHpQyEd-TfMHkrqIL3w _ZgUZLZQyEd-TfMHkrqIL3w">
       <eAnnotations xmi:id="_ZgUZLJQyEd-TfMHkrqIL3w" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_iStWEEuSEd2aAOSqOUjI9w"/>
+        <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_iSvLQEuSEd2aAOSqOUjI9w"/>
       </eAnnotations>
       <ownedEnd xmi:id="_ZgUZLZQyEd-TfMHkrqIL3w" name="nestingPart" type="_ZgUZGZQyEd-TfMHkrqIL3w" association="_ZgUZK5QyEd-TfMHkrqIL3w">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZgUZLpQyEd-TfMHkrqIL3w" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZgUZL5QyEd-TfMHkrqIL3w"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_ZgUZMJQyEd-TfMHkrqIL3w" name="Configuration">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_ZgUZMJQyEd-TfMHkrqIL3w" name="Configuration" isAbstract="true">
       <eAnnotations xmi:id="_ZgUZMZQyEd-TfMHkrqIL3w" source="uml2.extensions">
         <details xmi:id="_ZgUZMpQyEd-TfMHkrqIL3w" key="suppressed" value="true"/>
       </eAnnotations>
@@ -3296,7 +3316,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_ZgUZOpQyEd-TfMHkrqIL3w" memberEnd="_ZgUZIpQyEd-TfMHkrqIL3w _ZgUZPJQyEd-TfMHkrqIL3w">
       <eAnnotations xmi:id="_ZgUZO5QyEd-TfMHkrqIL3w" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_Y_CV0EuTEd2aAOSqOUjI9w"/>
+        <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_Y_ELAEuTEd2aAOSqOUjI9w"/>
       </eAnnotations>
       <ownedEnd xmi:id="_ZgUZPJQyEd-TfMHkrqIL3w" name="configured" type="_ZgUZGZQyEd-TfMHkrqIL3w" association="_ZgUZOpQyEd-TfMHkrqIL3w">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZgUZPZQyEd-TfMHkrqIL3w" value="1"/>
@@ -3305,7 +3325,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_ZgUZP5QyEd-TfMHkrqIL3w" memberEnd="_ZgUZJpQyEd-TfMHkrqIL3w _ZgUZQZQyEd-TfMHkrqIL3w">
       <eAnnotations xmi:id="_ZgUZQJQyEd-TfMHkrqIL3w" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_MdVIwEuTEd2aAOSqOUjI9w"/>
+        <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_MdW98EuTEd2aAOSqOUjI9w"/>
       </eAnnotations>
       <ownedEnd xmi:id="_ZgUZQZQyEd-TfMHkrqIL3w" name="deployment" type="_ZgUZGZQyEd-TfMHkrqIL3w" association="_ZgUZP5QyEd-TfMHkrqIL3w">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZgUZQpQyEd-TfMHkrqIL3w" value="*"/>
@@ -3340,7 +3360,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_ZgUZU5QyEd-TfMHkrqIL3w" memberEnd="_ZgUZS5QyEd-TfMHkrqIL3w _ZgUZVZQyEd-TfMHkrqIL3w">
       <eAnnotations xmi:id="_ZgUZVJQyEd-TfMHkrqIL3w" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_EHthoEuTEd2aAOSqOUjI9w"/>
+        <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_EHvW0EuTEd2aAOSqOUjI9w"/>
       </eAnnotations>
       <ownedEnd xmi:id="_ZgUZVZQyEd-TfMHkrqIL3w" name="deployment" type="_ZgUZRpQyEd-TfMHkrqIL3w" association="_ZgUZU5QyEd-TfMHkrqIL3w">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZgUZVpQyEd-TfMHkrqIL3w" value="1"/>
@@ -3349,7 +3369,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_ZgUZWJQyEd-TfMHkrqIL3w" memberEnd="_ZgUZT5QyEd-TfMHkrqIL3w _ZgUZWpQyEd-TfMHkrqIL3w">
       <eAnnotations xmi:id="_ZgUZWZQyEd-TfMHkrqIL3w" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_gggSsFdFEd2vyvkXKkpVQw"/>
+        <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_ggtHAFdFEd2vyvkXKkpVQw"/>
       </eAnnotations>
       <ownedEnd xmi:id="_ZgUZWpQyEd-TfMHkrqIL3w" name="" type="_ZgUZRpQyEd-TfMHkrqIL3w" association="_ZgUZWJQyEd-TfMHkrqIL3w">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZgUZW5QyEd-TfMHkrqIL3w" value="*"/>
@@ -3542,7 +3562,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_o-r9EZQ4Ed-TfMHkrqIL3w" memberEnd="_o-r9CJQ4Ed-TfMHkrqIL3w _o-r9E5Q4Ed-TfMHkrqIL3w">
       <eAnnotations xmi:id="_o-r9EpQ4Ed-TfMHkrqIL3w" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://CCM_DOMAIN/CCM.uml#_67W_wJQiEd-pMONGe9Wqnw"/>
+        <references xmi:type="uml:Property" href="pathmap://CCM_DOMAIN/CCM.uml#_67gwwJQiEd-pMONGe9Wqnw"/>
       </eAnnotations>
       <ownedEnd xmi:id="_o-r9E5Q4Ed-TfMHkrqIL3w" name="" type="_o-r9BJQ4Ed-TfMHkrqIL3w" association="_o-r9EZQ4Ed-TfMHkrqIL3w">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_o-r9FJQ4Ed-TfMHkrqIL3w" value="*"/>
@@ -3649,6 +3669,7 @@
         <details xmi:id="_kpX8KxCVEeGm_rLIwBhecg" key="suppressed" value="true"/>
       </eAnnotations>
       <generalization xmi:id="_kpX8LBCVEeGm_rLIwBhecg" general="_llw00pyyEd6nTLqaytm5hw"/>
+      <generalization xmi:id="_0jRKNTqzEemag5F7DMuukA" general="_0jJ1cDqzEemag5F7DMuukA"/>
       <ownedAttribute xmi:id="_kpX8LRCVEeGm_rLIwBhecg" name="base_Operation" association="_kpYjMBCVEeGm_rLIwBhecg">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
       </ownedAttribute>
@@ -3683,7 +3704,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_ooD14CHFEeGd-Nb5_CNoPw" memberEnd="_ooZ0ICHFEeGd-Nb5_CNoPw _ooD14iHFEeGd-Nb5_CNoPw">
       <eAnnotations xmi:id="_ooD14SHFEeGd-Nb5_CNoPw" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_7eGzACG-EeGd-Nb5_CNoPw"/>
+        <references xmi:type="uml:Property" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_7ektECG-EeGd-Nb5_CNoPw"/>
       </eAnnotations>
       <ownedEnd xmi:id="_ooD14iHFEeGd-Nb5_CNoPw" name="" type="_llw1d5yyEd6nTLqaytm5hw" association="_ooD14CHFEeGd-Nb5_CNoPw">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ooEc8CHFEeGd-Nb5_CNoPw" value="*"/>
@@ -3712,7 +3733,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_zvvzqmGmEeKOXpAyzakgRg" memberEnd="_zvvzomGmEeKOXpAyzakgRg _zvvzrGGmEeKOXpAyzakgRg">
       <eAnnotations xmi:id="_zvvzq2GmEeKOXpAyzakgRg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_4jbscI-tEeGdHIFRtaMqRA"/>
+        <references xmi:type="uml:Property" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_4jeIsI-tEeGdHIFRtaMqRA"/>
       </eAnnotations>
       <ownedEnd xmi:id="_zvvzrGGmEeKOXpAyzakgRg" name="" type="_zvvzoGGmEeKOXpAyzakgRg" association="_zvvzqmGmEeKOXpAyzakgRg">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zvvzrWGmEeKOXpAyzakgRg" value="*"/>
@@ -3721,7 +3742,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_zvvzr2GmEeKOXpAyzakgRg" memberEnd="_zv5kqWGmEeKOXpAyzakgRg _zvvzsWGmEeKOXpAyzakgRg">
       <eAnnotations xmi:id="_zvvzsGGmEeKOXpAyzakgRg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_WdcekI-tEeGdHIFRtaMqRA"/>
+        <references xmi:type="uml:Property" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_WdjMQI-tEeGdHIFRtaMqRA"/>
       </eAnnotations>
       <ownedEnd xmi:id="_zvvzsWGmEeKOXpAyzakgRg" name="" type="_llw0w5yyEd6nTLqaytm5hw" association="_zvvzr2GmEeKOXpAyzakgRg">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zvvzsmGmEeKOXpAyzakgRg" value="1"/>
@@ -3730,7 +3751,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_zvvztGGmEeKOXpAyzakgRg" memberEnd="_zv5kr2GmEeKOXpAyzakgRg _zvvztmGmEeKOXpAyzakgRg">
       <eAnnotations xmi:id="_zvvztWGmEeKOXpAyzakgRg" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_XTHiUI-tEeGdHIFRtaMqRA"/>
+        <references xmi:type="uml:Property" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_XTJXgI-tEeGdHIFRtaMqRA"/>
       </eAnnotations>
       <ownedEnd xmi:id="_zvvztmGmEeKOXpAyzakgRg" name="" type="_qDFPheBGEd6BWLzI5dNVYw" association="_zvvztGGmEeKOXpAyzakgRg">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zvvzt2GmEeKOXpAyzakgRg" value="1"/>
@@ -3753,7 +3774,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_9xUCZ0JGEeOQHrsrLvRL4g" memberEnd="_9xg2sEJGEeOQHrsrLvRL4g _9xUCaUJGEeOQHrsrLvRL4g">
       <eAnnotations xmi:id="_9xUCaEJGEeOQHrsrLvRL4g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_5lQZMCn-EeOV59vr0QbsTQ"/>
+        <references xmi:type="uml:Property" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_5lRAQCn-EeOV59vr0QbsTQ"/>
       </eAnnotations>
       <ownedEnd xmi:id="_9xUCaUJGEeOQHrsrLvRL4g" name="" type="_llw0qpyyEd6nTLqaytm5hw" association="_9xUCZ0JGEeOQHrsrLvRL4g">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9xUCakJGEeOQHrsrLvRL4g" value="1"/>
@@ -3762,11 +3783,36 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_9xUpcEJGEeOQHrsrLvRL4g" memberEnd="_9xjS8EJGEeOQHrsrLvRL4g _9xUpckJGEeOQHrsrLvRL4g">
       <eAnnotations xmi:id="_9xUpcUJGEeOQHrsrLvRL4g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
-        <references xmi:type="uml:Association" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_429IwCn-EeOV59vr0QbsTQ"/>
+        <references xmi:type="uml:Property" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_43DPYCn-EeOV59vr0QbsTQ"/>
       </eAnnotations>
       <ownedEnd xmi:id="_9xUpckJGEeOQHrsrLvRL4g" name="" type="_llw1YZyyEd6nTLqaytm5hw" association="_9xUpcEJGEeOQHrsrLvRL4g">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9xUpc0JGEeOQHrsrLvRL4g" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9xUpdEJGEeOQHrsrLvRL4g" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_0jJ1cDqzEemag5F7DMuukA" name="WorkerFunctionIdentifiable">
+      <eAnnotations xmi:id="_0jJ1cTqzEemag5F7DMuukA" source="uml2.extensions">
+        <details xmi:id="_0jJ1cjqzEemag5F7DMuukA" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_0jJ1czqzEemag5F7DMuukA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_iYmHIIbiEeSjd8J8ZjsuPQ"/>
+      </eAnnotations>
+      <ownedAttribute xmi:id="_0jJ1dDqzEemag5F7DMuukA" name="uuid">
+        <eAnnotations xmi:id="_0jJ1dTqzEemag5F7DMuukA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_nN8sgIbiEeSjd8J8ZjsuPQ"/>
+        </eAnnotations>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0jJ1djqzEemag5F7DMuukA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0jJ1dzqzEemag5F7DMuukA"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_0jJ1eDqzEemag5F7DMuukA" memberEnd="_0jRKMTqzEemag5F7DMuukA _0jJ1ejqzEemag5F7DMuukA">
+      <eAnnotations xmi:id="_0jJ1eTqzEemag5F7DMuukA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Property" href="pathmap://CCM_DOMAIN/CCM.uml#_9cPLcDqyEemag5F7DMuukA"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_0jJ1ejqzEemag5F7DMuukA" name="" type="_F3ds8F3pEd-zGe4Hpna54g" association="_0jJ1eDqzEemag5F7DMuukA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0jJ1ezqzEemag5F7DMuukA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0jJ1fDqzEemag5F7DMuukA"/>
       </ownedEnd>
     </packagedElement>
     <profileApplication xmi:id="_llw1w5yyEd6nTLqaytm5hw">

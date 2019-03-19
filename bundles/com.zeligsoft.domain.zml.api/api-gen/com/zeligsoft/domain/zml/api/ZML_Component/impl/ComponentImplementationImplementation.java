@@ -5,42 +5,19 @@ import com.zeligsoft.base.zdl.staticapi.internal.core.ZObjectImpl;
 
 import com.zeligsoft.domain.zml.api.ZML_Component.ComponentImplementation;
 
-import com.zeligsoft.domain.zml.api.ZML_Component.Implementation;
 import com.zeligsoft.domain.zml.api.ZML_Component.StructuralRealization;
+import com.zeligsoft.domain.zml.api.ZML_Component.Implementation;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
 public class ComponentImplementationImplementation extends ZObjectImpl
 		implements ComponentImplementation {
-	protected Implementation _implementation;
 	protected StructuralRealization _structuralRealization;
+	protected Implementation _implementation;
 
 	public ComponentImplementationImplementation(
 			org.eclipse.emf.ecore.EObject element) {
 		super(element);
-	}
-
-	@Override
-	public Implementation getImplementation() {
-		if (_implementation == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"ZMLMM::ZML_Component::ComponentImplementation",
-							"implementation");
-			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_implementation = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
-						Implementation.class);
-			}
-		}
-		return _implementation;
-	}
-
-	@Override
-	public void setImplementation(Implementation val) {
-		ZDLUtil.setValue(element,
-				"ZMLMM::ZML_Component::ComponentImplementation",
-				"implementation", val.eObject());
 	}
 
 	@Override
@@ -64,6 +41,29 @@ public class ComponentImplementationImplementation extends ZObjectImpl
 		ZDLUtil.setValue(element,
 				"ZMLMM::ZML_Component::ComponentImplementation",
 				"structuralRealization", val.eObject());
+	}
+
+	@Override
+	public Implementation getImplementation() {
+		if (_implementation == null) {
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
+					.getValue(eObject(),
+							"ZMLMM::ZML_Component::ComponentImplementation",
+							"implementation");
+			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
+				_implementation = ZDLFactoryRegistry.INSTANCE.create(
+						(org.eclipse.emf.ecore.EObject) rawValue,
+						Implementation.class);
+			}
+		}
+		return _implementation;
+	}
+
+	@Override
+	public void setImplementation(Implementation val) {
+		ZDLUtil.setValue(element,
+				"ZMLMM::ZML_Component::ComponentImplementation",
+				"implementation", val.eObject());
 	}
 
 	@Override

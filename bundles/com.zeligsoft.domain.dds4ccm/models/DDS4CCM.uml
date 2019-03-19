@@ -42,6 +42,9 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dwmh8UkfEeKqQL8utZve1Q" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dwmh8EkfEeKqQL8utZve1Q"/>
         </ownedAttribute>
+        <ownedAttribute xmi:id="_cmuHYAIREemxSNFUunBY-w" name="modelType" visibility="public" type="_Hv30UAIREemxSNFUunBY-w">
+          <defaultValue xmi:type="uml:InstanceValue" xmi:id="_i4K3UAIREemxSNFUunBY-w" name="ATCD" type="_Hv30UAIREemxSNFUunBY-w" instance="_RbaFgAIREemxSNFUunBY-w"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_wB8bUMZYEd-tAY_HctmkAw" name="IDLFileSpecification">
         <ownedAttribute xmi:id="_LRxiUMZcEd-XG_BORqpl5A" name="filename" visibility="public">
@@ -102,6 +105,14 @@
         <generalization xmi:id="_OljG8Ok1EeCG1fXcL6IPFQ">
           <general xmi:type="uml:Class" href="pathmap://CCM_DOMAIN/CCM.uml#_Sbi74BWYEd-iXJ2fHwNJGg"/>
         </generalization>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_Hv30UAIREemxSNFUunBY-w" name="ModelTypeEnum">
+        <ownedLiteral xmi:id="_RbaFgAIREemxSNFUunBY-w" name="ATCD" classifier="_Hv30UAIREemxSNFUunBY-w">
+          <specification xmi:type="uml:LiteralInteger" xmi:id="_UVZxcAIREemxSNFUunBY-w"/>
+        </ownedLiteral>
+        <ownedLiteral xmi:id="_ShHwYAIREemxSNFUunBY-w" name="AXCIOMA" classifier="_Hv30UAIREemxSNFUunBY-w">
+          <specification xmi:type="uml:LiteralInteger" xmi:id="_VPmI0AIREemxSNFUunBY-w" value="1"/>
+        </ownedLiteral>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_fP0CMEDSEd-VnJuJyqILLA" name="DDS4CCM" clientDependency="_sjamQEDSEd-VnJuJyqILLA _RbSOcEDqEd-pwPnT_VsB_g _9-M4wEDrEd-pwPnT_VsB_g _6CxrAHPuEd-cLIhOd_8awg _92occHTFEd-8WZ4XFQyopg _KBTe0HmCEd-H7NKXnrpkvQ _5oyq4JNBEd-oFoYAcRoNfQ _ojMkcJFAEeCRAOU4nmQMcQ _qLFIQJFAEeCRAOU4nmQMcQ _tebIUJFAEeCRAOU4nmQMcQ _VxdOkJICEeCsrOl-W1K_Dg _WVER8JICEeCsrOl-W1K_Dg _FzJs4JIEEeCsrOl-W1K_Dg _9-4P0OR3EeCaze562T5Rgw _TQsi0B9sEeGEWf0BDHdksQ"/>
@@ -430,4 +441,8 @@ endif&#xD;
   <zdl:DomainAttribute xmi:id="_a-3aIUkfEeKqQL8utZve1Q" base_Property="_a-3aIEkfEeKqQL8utZve1Q"/>
   <zdl:ExternalDomainConstraint xmi:id="_l_vLsO_VEeKGXLYI7i62jA" severity="error" message="%_mesg_DDS4CCM__Constraints__corba_operation_return_type_not_null" id="com.zeligsoft.domain.dds4ccm.Constraints.corba_operation_return_type_not_null" base_Constraint="_l_rhUO_VEeKGXLYI7i62jA"/>
   <zdl:DomainConstraint xmi:id="_I7eIMLtdEeOBIbmUBrobaQ" severity="error" message="%_mesg_DDS4CCM__DDSExtensions__MessageField__sub_structure_is_key" id="com.zeligsoft.domain.dds4ccm.MessageField.sub_structure_is_key" base_Constraint="_I7Z2wLtdEeOBIbmUBrobaQ"/>
+  <zdl:DomainEnum xmi:id="_HwITAAIREemxSNFUunBY-w" base_DataType="_Hv30UAIREemxSNFUunBY-w" base_Enumeration="_Hv30UAIREemxSNFUunBY-w"/>
+  <zdl:DomainEnumLiteral xmi:id="_RbiBUAIREemxSNFUunBY-w" base_EnumerationLiteral="_RbaFgAIREemxSNFUunBY-w"/>
+  <zdl:DomainEnumLiteral xmi:id="_ShKMoAIREemxSNFUunBY-w" base_EnumerationLiteral="_ShHwYAIREemxSNFUunBY-w"/>
+  <zdl:DomainAttribute xmi:id="_cm2DMAIREemxSNFUunBY-w" base_Property="_cmuHYAIREemxSNFUunBY-w"/>
 </xmi:XMI>

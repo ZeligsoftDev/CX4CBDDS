@@ -80,37 +80,6 @@
           </tool>
           <targetDiagram>Component</targetDiagram>
         </drawer>
-        <drawer xmi:id="_2XjUyz-QEeClSLfhVt_MWw" name="DCPS">
-          <tool xmi:type="tool:Stack" xmi:id="_2XjUzD-QEeClSLfhVt_MWw" name="PublisherSubscriber">
-            <tool xmi:type="tool:CreationTool" xmi:id="_2XjUzT-QEeClSLfhVt_MWw" name="Publisher">
-              <concept href="pathmap://DDS_DOMAIN/dds.uml#_o1Ix0JToEd6jzaDewott1A"/>
-            </tool>
-            <tool xmi:type="tool:CreationTool" xmi:id="_2XjUzj-QEeClSLfhVt_MWw" name="Subscriber">
-              <concept href="pathmap://DDS_DOMAIN/dds.uml#_n_8PMJToEd6jzaDewott1A"/>
-            </tool>
-            <targetDiagram>Freeform</targetDiagram>
-            <targetDiagram>Component</targetDiagram>
-          </tool>
-          <tool xmi:type="tool:Stack" xmi:id="_2XjUzz-QEeClSLfhVt_MWw" name="ReaderWriter">
-            <tool xmi:type="tool:CreationTool" xmi:id="_2XjU0D-QEeClSLfhVt_MWw" name="Reader">
-              <concept href="pathmap://DDS_DOMAIN/dds.uml#_rxCiQJToEd6jzaDewott1A"/>
-            </tool>
-            <tool xmi:type="tool:CreationTool" xmi:id="_2XjU0T-QEeClSLfhVt_MWw" name="Writer">
-              <concept href="pathmap://DDS_DOMAIN/dds.uml#_qsf8EJToEd6jzaDewott1A"/>
-            </tool>
-          </tool>
-          <tool xmi:type="tool:CreationTool" xmi:id="_2XjU0j-QEeClSLfhVt_MWw" name="Component">
-            <concept href="pathmap://DDS_DOMAIN/dds.uml#_iaAiMJV8Ed6jzaDewott1A"/>
-          </tool>
-          <tool xmi:type="tool:CreationTool" xmi:id="_2XjU0z-QEeClSLfhVt_MWw" name="Part">
-            <concept href="pathmap://DDS_DOMAIN/dds.uml#_hb5ncJW5Ed6jzaDewott1A"/>
-          </tool>
-          <tool xmi:type="tool:CreationTool" xmi:id="_2XjU1D-QEeClSLfhVt_MWw" name="Topic Connector" elementTypeHint="assemblyConnector">
-            <concept href="pathmap://DDS_DOMAIN/dds.uml#_gy2BAJf2Ed6gZ9LI9YKG5g"/>
-          </tool>
-          <targetDiagram>Freeform</targetDiagram>
-          <targetDiagram>Component</targetDiagram>
-        </drawer>
         <drawer xmi:id="_2XjU1T-QEeClSLfhVt_MWw" name="CORBA" description="Basic CORBA model element creation tools">
           <tool xmi:type="tool:Stack" xmi:id="_2XjU1z-QEeClSLfhVt_MWw" name="IDL Resource Types" activeTool="_2XjU2D-QEeClSLfhVt_MWw">
             <tool xmi:type="tool:CreationTool" xmi:id="_2XjU2D-QEeClSLfhVt_MWw" name="IDL File" description="Create a CORBA IDL file">
@@ -126,7 +95,7 @@
           <tool xmi:type="tool:Stack" xmi:id="_2XjU2z-QEeClSLfhVt_MWw" name="IDL Data Types" description="CORBA IDL data type creation tools" activeTool="_2XjU3j-QEeClSLfhVt_MWw">
             <tool xmi:type="tool:CreationTool" xmi:id="_2XjU3D-QEeClSLfhVt_MWw" name="Array" description="Create a CORBA IDL array type">
               <concept href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_9qchQEk3Ed2eBKZvQ89d6g"/>
-              <expression xmi:type="tool:OawXtend" xmi:id="_9HbkcIbmEeSjd8J8ZjsuPQ" name="Configure" expression="configureArray" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
+              <expression xmi:type="tool:OawXtend" xmi:id="_P0PEED6xEemaAsKtm1T6_g" name="Configure" expression="configureArray" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
                 <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
                 <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
               </expression>
@@ -136,7 +105,7 @@
             </tool>
             <tool xmi:type="tool:CreationTool" xmi:id="_2XjU3z-QEeClSLfhVt_MWw" name="Sequence" description="Create a CORBA IDL sequence type">
               <concept href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_AO9FYEk4Ed2eBKZvQ89d6g"/>
-              <expression xmi:type="tool:OawXtend" xmi:id="_9HbkcYbmEeSjd8J8ZjsuPQ" name="Configure" expression="configureSequence" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
+              <expression xmi:type="tool:OawXtend" xmi:id="_P0PEET6xEemaAsKtm1T6_g" name="Configure" expression="configureSequence" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
                 <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
                 <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
               </expression>
@@ -149,7 +118,7 @@
             </tool>
             <tool xmi:type="tool:CreationTool" xmi:id="_2XjU4z-QEeClSLfhVt_MWw" name="Union" description="Create a CORBA IDL union type">
               <concept href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_sX40UEk3Ed2eBKZvQ89d6g"/>
-              <expression xmi:type="tool:OawXtend" xmi:id="_9HbkcobmEeSjd8J8ZjsuPQ" name="Configure" expression="configureUnion" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
+              <expression xmi:type="tool:OawXtend" xmi:id="_P0PEEj6xEemaAsKtm1T6_g" name="Configure" expression="configureUnion" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
                 <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
                 <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
               </expression>
@@ -266,6 +235,37 @@
             <concept href="pathmap://CCM_DOMAIN/CCM.uml#_l4Z6wJA6Ed-41qlhZES-dg"/>
           </tool>
           <targetDiagram>Structure</targetDiagram>
+        </drawer>
+        <drawer xmi:id="_2XjUyz-QEeClSLfhVt_MWw" name="DCPS">
+          <tool xmi:type="tool:Stack" xmi:id="_2XjUzD-QEeClSLfhVt_MWw" name="PublisherSubscriber">
+            <tool xmi:type="tool:CreationTool" xmi:id="_2XjUzT-QEeClSLfhVt_MWw" name="Publisher">
+              <concept href="pathmap://DDS_DOMAIN/dds.uml#_o1Ix0JToEd6jzaDewott1A"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_2XjUzj-QEeClSLfhVt_MWw" name="Subscriber">
+              <concept href="pathmap://DDS_DOMAIN/dds.uml#_n_8PMJToEd6jzaDewott1A"/>
+            </tool>
+            <targetDiagram>Freeform</targetDiagram>
+            <targetDiagram>Component</targetDiagram>
+          </tool>
+          <tool xmi:type="tool:Stack" xmi:id="_2XjUzz-QEeClSLfhVt_MWw" name="ReaderWriter">
+            <tool xmi:type="tool:CreationTool" xmi:id="_2XjU0D-QEeClSLfhVt_MWw" name="Reader">
+              <concept href="pathmap://DDS_DOMAIN/dds.uml#_rxCiQJToEd6jzaDewott1A"/>
+            </tool>
+            <tool xmi:type="tool:CreationTool" xmi:id="_2XjU0T-QEeClSLfhVt_MWw" name="Writer">
+              <concept href="pathmap://DDS_DOMAIN/dds.uml#_qsf8EJToEd6jzaDewott1A"/>
+            </tool>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_2XjU0j-QEeClSLfhVt_MWw" name="Component">
+            <concept href="pathmap://DDS_DOMAIN/dds.uml#_iaAiMJV8Ed6jzaDewott1A"/>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_2XjU0z-QEeClSLfhVt_MWw" name="Part">
+            <concept href="pathmap://DDS_DOMAIN/dds.uml#_hb5ncJW5Ed6jzaDewott1A"/>
+          </tool>
+          <tool xmi:type="tool:CreationTool" xmi:id="_2XjU1D-QEeClSLfhVt_MWw" name="Topic Connector" elementTypeHint="assemblyConnector">
+            <concept href="pathmap://DDS_DOMAIN/dds.uml#_gy2BAJf2Ed6gZ9LI9YKG5g"/>
+          </tool>
+          <targetDiagram>Freeform</targetDiagram>
+          <targetDiagram>Component</targetDiagram>
         </drawer>
       </contents>
     </eAnnotations>
@@ -466,6 +466,7 @@
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_gt5fEklXEeK3Ob_fgdPatg" name="fixedFooter" ordered="false">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
           </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_HrOShDq0Eemag5F7DMuukA" name="modelType" ordered="false" lowerBound="1" eType="_HrOSgDq0Eemag5F7DMuukA" defaultValueLiteral="ATCD"/>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_eBb2r0DqEd-pwPnT_VsB_g" name="CCMModel" eSuperTypes="_g0Kti0DZEd-LnsQ685SqSQ">
           <eAnnotations xmi:id="_eBb2sEDqEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_eBb2pUDqEd-pwPnT_VsB_g"/>
@@ -808,6 +809,7 @@
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_U34FACs-EeGtwangT5G8rQ" name="hasCSL" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
           </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HrVAMDq0Eemag5F7DMuukA" name="connectorType" ordered="false" eType="_g0KtYEDZEd-LnsQ685SqSQ"/>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_58WtzmgYEd-cdtLnmNWWNQ" name="Native" eSuperTypes="_g0KtmkDZEd-LnsQ685SqSQ _DM4kuEDsEd-pwPnT_VsB_g _g0KtnEDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_58Wtz2gYEd-cdtLnmNWWNQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_58WtwGgYEd-cdtLnmNWWNQ"/>
@@ -1406,6 +1408,11 @@
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_9HcLgobmEeSjd8J8ZjsuPQ" name="uuid" ordered="false">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
           </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_HrOSgDq0Eemag5F7DMuukA" name="ModelTypeEnum">
+          <eAnnotations xmi:id="_HrOSgTq0Eemag5F7DMuukA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HrMdUDq0Eemag5F7DMuukA"/>
+          <eLiterals xmi:id="_HrOSgjq0Eemag5F7DMuukA" name="ATCD"/>
+          <eLiterals xmi:id="_HrOSgzq0Eemag5F7DMuukA" name="AXCIOMA" value="1"/>
         </eClassifiers>
       </contents>
     </eAnnotations>
@@ -2014,6 +2021,14 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_guFFQklXEeK3Ob_fgdPatg" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_guFFQ0lXEeK3Ob_fgdPatg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_HrWOUDq0Eemag5F7DMuukA" name="modelType" type="_HrMdUDq0Eemag5F7DMuukA">
+        <eAnnotations xmi:id="_HrWOUTq0Eemag5F7DMuukA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_cmuHYAIREemxSNFUunBY-w"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HrWOUjq0Eemag5F7DMuukA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HrWOUzq0Eemag5F7DMuukA" value="1"/>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_HrWOVDq0Eemag5F7DMuukA" instance="_HrMdUjq0Eemag5F7DMuukA"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_eBb2pUDqEd-pwPnT_VsB_g" name="CCMModel">
@@ -3069,6 +3084,13 @@
       <generalization xmi:id="_uIO4o17GEd-Y8NUNUhhENg" general="_g0KuQEDZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_GfGNQHSpEd--Ifm7ono7eg" general="_GezSUHSpEd--Ifm7ono7eg"/>
       <generalization xmi:id="_9H9v8IbmEeSjd8J8ZjsuPQ" general="_9HaWUIbmEeSjd8J8ZjsuPQ"/>
+      <ownedAttribute xmi:id="_HrmF8Dq0Eemag5F7DMuukA" name="connectorType" type="_g0KuK0DZEd-LnsQ685SqSQ" association="_HrNEYDq0Eemag5F7DMuukA">
+        <eAnnotations xmi:id="_HrmF8Tq0Eemag5F7DMuukA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://CCM_DOMAIN/CCM.uml#_9cPLcDqyEemag5F7DMuukA"/>
+        </eAnnotations>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HrmF8jq0Eemag5F7DMuukA" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HrmF8zq0Eemag5F7DMuukA"/>
+      </ownedAttribute>
       <ownedAttribute xmi:id="_XVrOEI6uEd-hWf8wAbyQJQ" name="isAsynchronous">
         <eAnnotations xmi:id="_XVrOEY6uEd-hWf8wAbyQJQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:Property" href="pathmap://CCM_DOMAIN/CCM.uml#_-8e1oI6tEd-hWf8wAbyQJQ"/>
@@ -5070,6 +5092,30 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9HaWVobmEeSjd8J8ZjsuPQ" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9HaWV4bmEeSjd8J8ZjsuPQ"/>
       </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_HrMdUDq0Eemag5F7DMuukA" name="ModelTypeEnum">
+      <eAnnotations xmi:id="_HrMdUTq0Eemag5F7DMuukA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Enumeration" href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_Hv30UAIREemxSNFUunBY-w"/>
+      </eAnnotations>
+      <ownedLiteral xmi:id="_HrMdUjq0Eemag5F7DMuukA" name="ATCD">
+        <eAnnotations xmi:id="_HrMdUzq0Eemag5F7DMuukA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_RbaFgAIREemxSNFUunBY-w"/>
+        </eAnnotations>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_HrMdVDq0Eemag5F7DMuukA" name="AXCIOMA">
+        <eAnnotations xmi:id="_HrMdVTq0Eemag5F7DMuukA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:EnumerationLiteral" href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_ShHwYAIREemxSNFUunBY-w"/>
+        </eAnnotations>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_HrNEYDq0Eemag5F7DMuukA" memberEnd="_HrmF8Dq0Eemag5F7DMuukA _HrNEYjq0Eemag5F7DMuukA">
+      <eAnnotations xmi:id="_HrNEYTq0Eemag5F7DMuukA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Property" href="pathmap://CCM_DOMAIN/CCM.uml#_9cPLcDqyEemag5F7DMuukA"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_HrNEYjq0Eemag5F7DMuukA" name="" type="_uIORkF7GEd-Y8NUNUhhENg" association="_HrNEYDq0Eemag5F7DMuukA">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HrNEYzq0Eemag5F7DMuukA" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HrNEZDq0Eemag5F7DMuukA"/>
+      </ownedEnd>
     </packagedElement>
     <profileApplication xmi:id="_g0Ku00DZEd-LnsQ685SqSQ">
       <eAnnotations xmi:id="_g0Ku1EDZEd-LnsQ685SqSQ" source="http://www.eclipse.org/uml2/2.0.0/UML">

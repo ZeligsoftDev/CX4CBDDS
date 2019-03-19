@@ -14,6 +14,7 @@
  * limitations under the License.
  *
  */
+
 package com.zeligsoft.domain.dds4ccm;
 
 /**
@@ -59,6 +60,13 @@ public final class DDS4CCMNames {
 	 * @generated
 	 */
 	public static final String DDS4_CCMMODEL__LOCATION_PREFIX = "locationPrefix";//$NON-NLS-1$  
+
+	/**
+	 * ZDL DomainAttribute: DDS4CCMModel::modelType. 
+	 * Multiplicity: 1  
+	 * @generated
+	 */
+	public static final String DDS4_CCMMODEL__MODEL_TYPE = "modelType";//$NON-NLS-1$  
 
 	/**
 	 * Fully qualified name for the ZDL DomainConcept: DDSMessage. 
@@ -246,5 +254,23 @@ public final class DDS4CCMNames {
 	 * @generated
 	 */
 	public static final String TOPIC_QO_S = "DDS4CCM::QoSProfiles::TopicQoS";//$NON-NLS-1$
+
+	/**
+	 * ZDL DomainEnum: ModelTypeEnum. 
+	 * @generated
+	 */
+	public static final String MODEL_TYPE_ENUM = "DDS4CCM::DDS4CCM::ModelTypeEnum";//$NON-NLS-1$
+
+	/**
+	 * ZDL DomainEnumLiteral: ModelTypeEnum::ATCD. 
+	 * @generated
+	 */
+	public static final String MODEL_TYPE_ENUM___ATCD = "ATCD";//$NON-NLS-1$
+
+	/**
+	 * ZDL DomainEnumLiteral: ModelTypeEnum::AXCIOMA. 
+	 * @generated
+	 */
+	public static final String MODEL_TYPE_ENUM___AXCIOMA = "AXCIOMA";//$NON-NLS-1$
 
 }

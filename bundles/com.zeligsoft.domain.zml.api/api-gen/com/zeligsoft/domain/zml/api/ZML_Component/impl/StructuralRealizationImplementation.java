@@ -5,23 +5,23 @@ import com.zeligsoft.base.zdl.staticapi.internal.core.ZObjectImpl;
 
 import com.zeligsoft.domain.zml.api.ZML_Component.StructuralRealization;
 
-import com.zeligsoft.domain.zml.api.ZML_Component.ComponentInterface;
-import com.zeligsoft.domain.zml.api.ZML_Component.Port;
 import com.zeligsoft.domain.zml.api.ZML_Component.AssemblyConnector;
+import com.zeligsoft.domain.zml.api.ZML_Component.Port;
 import com.zeligsoft.domain.zml.api.ZML_Component.Part;
-import com.zeligsoft.domain.zml.api.ZML_Component.WorkerFunction;
+import com.zeligsoft.domain.zml.api.ZML_Component.ComponentInterface;
 import com.zeligsoft.domain.zml.api.ZML_Component.WorkerFunctionImpl;
+import com.zeligsoft.domain.zml.api.ZML_Component.WorkerFunction;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
 public class StructuralRealizationImplementation extends ZObjectImpl implements
 		StructuralRealization {
-	protected java.util.List<WorkerFunction> _worker;
-	protected java.util.List<AssemblyConnector> _connector;
 	protected java.util.List<Port> _ownedPort;
+	protected java.util.List<AssemblyConnector> _connector;
+	protected java.util.List<WorkerFunction> _worker;
 	protected ComponentInterface _interface;
-	protected java.util.List<Part> _part;
 	protected java.util.List<WorkerFunctionImpl> _workerImpl;
+	protected java.util.List<Part> _part;
 
 	public StructuralRealizationImplementation(
 			org.eclipse.emf.ecore.EObject element) {
@@ -29,70 +29,52 @@ public class StructuralRealizationImplementation extends ZObjectImpl implements
 	}
 
 	@Override
-	public java.util.List<WorkerFunction> getWorker() {
-		if (_worker == null) {
+	public java.util.List<Port> getOwnedPort() {
+		if (_ownedPort == null) {
 			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
 					.getValue(eObject(),
 							"ZMLMM::ZML_Component::StructuralRealization",
-							"worker");
-			_worker = new java.util.ArrayList<WorkerFunction>();
+							"ownedPort");
+			_ownedPort = new java.util.ArrayList<Port>();
 			@SuppressWarnings("unchecked")
 			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 			for (Object next : rawList) {
 				if (next instanceof org.eclipse.emf.ecore.EObject) {
-					WorkerFunction nextWrapper = ZDLFactoryRegistry.INSTANCE
-							.create((org.eclipse.emf.ecore.EObject) next,
-									WorkerFunction.class);
-					_worker.add(nextWrapper);
+					Port nextWrapper = ZDLFactoryRegistry.INSTANCE.create(
+							(org.eclipse.emf.ecore.EObject) next, Port.class);
+					_ownedPort.add(nextWrapper);
 				}
 			}
 		}
-		return _worker;
+		return _ownedPort;
 	}
 
 	@Override
-	public void addWorker(WorkerFunction val) {
-		// make sure the worker list is created
-		getWorker();
+	public void addOwnedPort(Port val) {
+		// make sure the ownedPort list is created
+		getOwnedPort();
 
 		final Object rawValue = ZDLUtil.getValue(element,
-				"ZMLMM::ZML_Component::StructuralRealization", "worker");
+				"ZMLMM::ZML_Component::StructuralRealization", "ownedPort");
 		@SuppressWarnings("unchecked")
 		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 		rawList.add(val.eObject());
-		if (_worker != null) {
-			_worker.add(val);
+		if (_ownedPort != null) {
+			_ownedPort.add(val);
 		}
 	}
 
 	@Override
-	public <T extends WorkerFunction> T addWorker(Class<T> typeToCreate,
-			String concept) {
-		// make sure the worker list is created
-		getWorker();
+	public <T extends Port> T addOwnedPort(Class<T> typeToCreate, String concept) {
+		// make sure the ownedPort list is created
+		getOwnedPort();
 		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
 				element, "ZMLMM::ZML_Component::StructuralRealization",
-				"worker", concept);
+				"ownedPort", concept);
 		T element = ZDLFactoryRegistry.INSTANCE.create(
 				newConcept, typeToCreate);
-		if (_worker != null) {
-			_worker.add(element);
-		}
-		return element;
-	}
-
-	@Override
-	public WorkerFunction addWorker() {
-		// make sure the worker list is created
-		getWorker();
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "ZMLMM::ZML_Component::StructuralRealization",
-				"worker", "ZMLMM::ZML_Component::WorkerFunction");
-		WorkerFunction element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept,
-				WorkerFunction.class);
-		if (_worker != null) {
-			_worker.add(element);
+		if (_ownedPort != null) {
+			_ownedPort.add(element);
 		}
 		return element;
 	}
@@ -167,52 +149,70 @@ public class StructuralRealizationImplementation extends ZObjectImpl implements
 	}
 
 	@Override
-	public java.util.List<Port> getOwnedPort() {
-		if (_ownedPort == null) {
+	public java.util.List<WorkerFunction> getWorker() {
+		if (_worker == null) {
 			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
 					.getValue(eObject(),
 							"ZMLMM::ZML_Component::StructuralRealization",
-							"ownedPort");
-			_ownedPort = new java.util.ArrayList<Port>();
+							"worker");
+			_worker = new java.util.ArrayList<WorkerFunction>();
 			@SuppressWarnings("unchecked")
 			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 			for (Object next : rawList) {
 				if (next instanceof org.eclipse.emf.ecore.EObject) {
-					Port nextWrapper = ZDLFactoryRegistry.INSTANCE.create(
-							(org.eclipse.emf.ecore.EObject) next, Port.class);
-					_ownedPort.add(nextWrapper);
+					WorkerFunction nextWrapper = ZDLFactoryRegistry.INSTANCE
+							.create((org.eclipse.emf.ecore.EObject) next,
+									WorkerFunction.class);
+					_worker.add(nextWrapper);
 				}
 			}
 		}
-		return _ownedPort;
+		return _worker;
 	}
 
 	@Override
-	public void addOwnedPort(Port val) {
-		// make sure the ownedPort list is created
-		getOwnedPort();
+	public void addWorker(WorkerFunction val) {
+		// make sure the worker list is created
+		getWorker();
 
 		final Object rawValue = ZDLUtil.getValue(element,
-				"ZMLMM::ZML_Component::StructuralRealization", "ownedPort");
+				"ZMLMM::ZML_Component::StructuralRealization", "worker");
 		@SuppressWarnings("unchecked")
 		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 		rawList.add(val.eObject());
-		if (_ownedPort != null) {
-			_ownedPort.add(val);
+		if (_worker != null) {
+			_worker.add(val);
 		}
 	}
 
 	@Override
-	public <T extends Port> T addOwnedPort(Class<T> typeToCreate, String concept) {
-		// make sure the ownedPort list is created
-		getOwnedPort();
+	public <T extends WorkerFunction> T addWorker(Class<T> typeToCreate,
+			String concept) {
+		// make sure the worker list is created
+		getWorker();
 		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
 				element, "ZMLMM::ZML_Component::StructuralRealization",
-				"ownedPort", concept);
+				"worker", concept);
 		T element = ZDLFactoryRegistry.INSTANCE.create(
 				newConcept, typeToCreate);
-		if (_ownedPort != null) {
-			_ownedPort.add(element);
+		if (_worker != null) {
+			_worker.add(element);
+		}
+		return element;
+	}
+
+	@Override
+	public WorkerFunction addWorker() {
+		// make sure the worker list is created
+		getWorker();
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
+				element, "ZMLMM::ZML_Component::StructuralRealization",
+				"worker", "ZMLMM::ZML_Component::WorkerFunction");
+		WorkerFunction element = ZDLFactoryRegistry.INSTANCE.create(
+				newConcept,
+				WorkerFunction.class);
+		if (_worker != null) {
+			_worker.add(element);
 		}
 		return element;
 	}
@@ -238,57 +238,6 @@ public class StructuralRealizationImplementation extends ZObjectImpl implements
 		ZDLUtil.setValue(element,
 				"ZMLMM::ZML_Component::StructuralRealization", "interface",
 				val.eObject());
-	}
-
-	@Override
-	public java.util.List<Part> getPart() {
-		if (_part == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"ZMLMM::ZML_Component::StructuralRealization",
-							"part");
-			_part = new java.util.ArrayList<Part>();
-			@SuppressWarnings("unchecked")
-			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
-			for (Object next : rawList) {
-				if (next instanceof org.eclipse.emf.ecore.EObject) {
-					Part nextWrapper = ZDLFactoryRegistry.INSTANCE.create(
-							(org.eclipse.emf.ecore.EObject) next, Part.class);
-					_part.add(nextWrapper);
-				}
-			}
-		}
-		return _part;
-	}
-
-	@Override
-	public void addPart(Part val) {
-		// make sure the part list is created
-		getPart();
-
-		final Object rawValue = ZDLUtil.getValue(element,
-				"ZMLMM::ZML_Component::StructuralRealization", "part");
-		@SuppressWarnings("unchecked")
-		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
-		rawList.add(val.eObject());
-		if (_part != null) {
-			_part.add(val);
-		}
-	}
-
-	@Override
-	public <T extends Part> T addPart(Class<T> typeToCreate, String concept) {
-		// make sure the part list is created
-		getPart();
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "ZMLMM::ZML_Component::StructuralRealization", "part",
-				concept);
-		T element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, typeToCreate);
-		if (_part != null) {
-			_part.add(element);
-		}
-		return element;
 	}
 
 	@Override
@@ -356,6 +305,57 @@ public class StructuralRealizationImplementation extends ZObjectImpl implements
 				WorkerFunctionImpl.class);
 		if (_workerImpl != null) {
 			_workerImpl.add(element);
+		}
+		return element;
+	}
+
+	@Override
+	public java.util.List<Part> getPart() {
+		if (_part == null) {
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
+					.getValue(eObject(),
+							"ZMLMM::ZML_Component::StructuralRealization",
+							"part");
+			_part = new java.util.ArrayList<Part>();
+			@SuppressWarnings("unchecked")
+			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
+			for (Object next : rawList) {
+				if (next instanceof org.eclipse.emf.ecore.EObject) {
+					Part nextWrapper = ZDLFactoryRegistry.INSTANCE.create(
+							(org.eclipse.emf.ecore.EObject) next, Part.class);
+					_part.add(nextWrapper);
+				}
+			}
+		}
+		return _part;
+	}
+
+	@Override
+	public void addPart(Part val) {
+		// make sure the part list is created
+		getPart();
+
+		final Object rawValue = ZDLUtil.getValue(element,
+				"ZMLMM::ZML_Component::StructuralRealization", "part");
+		@SuppressWarnings("unchecked")
+		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
+		rawList.add(val.eObject());
+		if (_part != null) {
+			_part.add(val);
+		}
+	}
+
+	@Override
+	public <T extends Part> T addPart(Class<T> typeToCreate, String concept) {
+		// make sure the part list is created
+		getPart();
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
+				element, "ZMLMM::ZML_Component::StructuralRealization", "part",
+				concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(
+				newConcept, typeToCreate);
+		if (_part != null) {
+			_part.add(element);
 		}
 		return element;
 	}

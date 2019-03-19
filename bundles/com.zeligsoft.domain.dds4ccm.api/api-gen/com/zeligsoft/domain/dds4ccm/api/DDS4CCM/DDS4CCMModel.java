@@ -16,6 +16,10 @@ public interface DDS4CCMModel extends IDL3PlusModel {
 
 	void setFixedFooter(String val);
 
+	ModelTypeEnum getModelType();
+
+	void setModelType(ModelTypeEnum val);
+
 	/**
 	 * A predicate which returns true if the Object is an
 	 * instance of DDS4CCMModel

@@ -6,6 +6,8 @@ import com.zeligsoft.domain.zml.api.ZML_Core.NamedElement;
 public interface qosProperty extends NamedElement {
 	qosPolicy getPolicy();
 
+	void setPolicy(qosPolicy val);
+
 	org.eclipse.uml2.uml.Property asProperty();
 
 	/**
