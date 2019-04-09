@@ -1,466 +1,469 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.zeligsoft.domain.omg.corba.dsl/src-gen"
-    editDirectory="/com.zeligsoft.domain.omg.corba.dsl.edit/src" editorDirectory="/com.zeligsoft.domain.omg.corba.dsl.editor/src"
-    modelPluginID="com.zeligsoft.domain.omg.corba.dsl" forceOverwrite="true" modelName="IDL"
-    updateClasspath="false" rootExtendsInterface="org.eclipse.emf.ecore.EModelElement"
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.zeligsoft.domain.omg.corba.dsl/src-gen" editDirectory="/com.zeligsoft.domain.omg.corba.dsl.edit/src"
+    editorDirectory="/com.zeligsoft.domain.omg.corba.dsl.editor/src" modelPluginID="com.zeligsoft.domain.omg.corba.dsl"
+    forceOverwrite="true" modelName="IDL" updateClasspath="false" rootExtendsInterface="org.eclipse.emf.ecore.EModelElement"
     rootExtendsClass="org.eclipse.emf.ecore.impl.EModelElementImpl" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="5.0" copyrightFields="false" editPluginID="com.zeligsoft.domain.omg.corba.dsl.edit"
     editorPluginID="com.zeligsoft.domain.omg.corba.dsl.editor">
   <foreignModel>../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore</foreignModel>
   <genPackages prefix="Idl" basePackage="com.zeligsoft.domain.omg.corba.dsl" disposableProviderFactory="true"
-      loadInitialization="true" ecorePackage="IDL.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="IDL.ecore#//ParamDirection">
-      <genEnumLiterals ecoreEnumLiteral="IDL.ecore#//ParamDirection/In"/>
-      <genEnumLiterals ecoreEnumLiteral="IDL.ecore#//ParamDirection/Out"/>
-      <genEnumLiterals ecoreEnumLiteral="IDL.ecore#//ParamDirection/InOut"/>
+      loadInitialization="true" ecorePackage="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ParamDirection">
+      <genEnumLiterals ecoreEnumLiteral="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ParamDirection/In"/>
+      <genEnumLiterals ecoreEnumLiteral="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ParamDirection/Out"/>
+      <genEnumLiterals ecoreEnumLiteral="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ParamDirection/InOut"/>
     </genEnums>
-    <genClasses ecoreClass="IDL.ecore#//Specification">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Specification/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Specification/definitions"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Specification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Specification/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Specification/definitions"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc"/>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Include">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Preproc_Include/value"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Include/strValue"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Include">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Include/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Include/strValue"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//FileName">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//FileName/name"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FileName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FileName/name"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Ifdef">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Ifdef/value"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Ifdef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Ifdef/value"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Ifndef">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Ifndef/value"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Ifndef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Ifndef/value"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Undef">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Undef/value"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Undef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Undef/value"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_If">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_If/negation"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Preproc_If/value"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_If">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_If/negation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_If/value"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_If_Compare">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Preproc_If_Compare/lhs"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_If_Compare/op"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Preproc_If_Compare/rhs"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_If_Compare">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_If_Compare/lhs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_If_Compare/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_If_Compare/rhs"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_If_Val">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Preproc_If_Val/value"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_If_Val">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_If_Val/value"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Else"/>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Error">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Error/value"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Else"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Error">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Error/value"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Define">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Define/value"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Preproc_Define/exp"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Define">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Define/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Define/exp"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Endif"/>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Pragma"/>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Pragma_Prefix">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Pragma_Prefix/value"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Endif"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Prefix">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Prefix/value"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Conn_Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Conn_Type/valuePort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Conn_Type/valueConnType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Conn_Type/value"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Pragma_Ciao_Lem">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Pragma_Ciao_Lem/value"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Ciao_Lem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Ciao_Lem/value"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Ciao_Ami4ccm_Interface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Ciao_Ami4ccm_Interface/value"/>
     </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Pragma_Ciao_Ami4ccm_Interface">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Pragma_Ciao_Ami4ccm_Interface/value"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Pragma_Ciao_Ami4ccm_Receptacle">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Pragma_Ciao_Ami4ccm_Receptacle/value"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Pragma_Ciao_Ami4ccm_Idl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Pragma_Ciao_Ami4ccm_Idl/value"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Pragma_Ndds">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Pragma_Ndds/value"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Pragma_Component">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Pragma_Component/value"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Pragma_Home">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Pragma_Home/value"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Pragma_DDS4CCM_Impl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Preproc_Pragma_DDS4CCM_Impl/value"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Preproc_Pragma_Misc"/>
-    <genClasses ecoreClass="IDL.ecore#//File_Marker">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//File_Marker/file"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Excluded_File_Marker">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Excluded_File_Marker/file"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Import_decl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Import_decl/imported_scope"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Definition"/>
-    <genClasses ecoreClass="IDL.ecore#//Module">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Module/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Module/comments"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Module/definitions"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Interface_or_Forward_Decl"/>
-    <genClasses ecoreClass="IDL.ecore#//Interface_decl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Interface_decl/header"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Interface_decl/interfaceBody"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Forward_decl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Forward_decl/name"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Interface_header">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Interface_header/isAbstract"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Interface_header/isLocal"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Interface_header/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Interface_header/specializes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Interface_header/comments"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//InterfaceBody">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//InterfaceBody/export"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Export"/>
-    <genClasses ecoreClass="IDL.ecore#//AttrDecl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//AttrDecl/comments"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//AttrDecl/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//AttrDecl/names"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//AttrSpec">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//AttrSpec/getRaises"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//AttrSpec/setRaises"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ReadOnlyAttrSpec">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ReadOnlyAttrSpec/raises"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//AttrRaisesExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//AttrRaisesExpr/exceptions"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ExceptionList">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ExceptionList/exception"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//OpDecl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//OpDecl/comments"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//OpDecl/isOneway"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//OpDecl/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//OpDecl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//OpDecl/params"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//OpDecl/raises"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//OpDecl/context"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//OpTypeDecl"/>
-    <genClasses ecoreClass="IDL.ecore#//ParameterDecls">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ParameterDecls/comments"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ParameterDecls/decls"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ParamDcl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ParamDcl/direction"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ParamDcl/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ParamDcl/name"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ContextExpr">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ContextExpr/literal"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ParamTypeSpec"/>
-    <genClasses ecoreClass="IDL.ecore#//ScopedName">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ScopedName/name"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//BaseTypeSpec"/>
-    <genClasses ecoreClass="IDL.ecore#//FloatingPtType"/>
-    <genClasses ecoreClass="IDL.ecore#//FloatType"/>
-    <genClasses ecoreClass="IDL.ecore#//DoubleType"/>
-    <genClasses ecoreClass="IDL.ecore#//LongDoubleType"/>
-    <genClasses ecoreClass="IDL.ecore#//IntegerType"/>
-    <genClasses ecoreClass="IDL.ecore#//SignedInt"/>
-    <genClasses ecoreClass="IDL.ecore#//SignedShortInt"/>
-    <genClasses ecoreClass="IDL.ecore#//SignedLongInt"/>
-    <genClasses ecoreClass="IDL.ecore#//SignedLongLongInt"/>
-    <genClasses ecoreClass="IDL.ecore#//UnsignedInt"/>
-    <genClasses ecoreClass="IDL.ecore#//UnsignedShortInt"/>
-    <genClasses ecoreClass="IDL.ecore#//UnsignedLongInt"/>
-    <genClasses ecoreClass="IDL.ecore#//UnsignedLongLongInt"/>
-    <genClasses ecoreClass="IDL.ecore#//CharType"/>
-    <genClasses ecoreClass="IDL.ecore#//WideCharType"/>
-    <genClasses ecoreClass="IDL.ecore#//BooleanType"/>
-    <genClasses ecoreClass="IDL.ecore#//OctetType"/>
-    <genClasses ecoreClass="IDL.ecore#//AnyType"/>
-    <genClasses ecoreClass="IDL.ecore#//ObjectType"/>
-    <genClasses ecoreClass="IDL.ecore#//ValueBaseType"/>
-    <genClasses ecoreClass="IDL.ecore#//StringType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//StringType/size"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//WideStringType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//WideStringType/size"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ExceptDecl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ExceptDecl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ExceptDecl/comments"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ExceptDecl/members"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Member">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Member/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Member/decl"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Member/comment"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Declarator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Declarator/id"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//SimpleDeclarator"/>
-    <genClasses ecoreClass="IDL.ecore#//ComplexDeclarator"/>
-    <genClasses ecoreClass="IDL.ecore#//ArrayDeclarator">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ArrayDeclarator/size"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//StructType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//StructType/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//StructType/comments"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//StructType/members"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//TypeDecl"/>
-    <genClasses ecoreClass="IDL.ecore#//TypeDeclarator">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//TypeDeclarator/comments"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//TypeDeclarator/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//TypeDeclarator/declarators"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//TypeSpec"/>
-    <genClasses ecoreClass="IDL.ecore#//SimpleTypeSpec"/>
-    <genClasses ecoreClass="IDL.ecore#//TemplateTypeSpec"/>
-    <genClasses ecoreClass="IDL.ecore#//ConstrTypeSpec"/>
-    <genClasses ecoreClass="IDL.ecore#//UnionType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//UnionType/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//UnionType/comments"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//UnionType/switch"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//UnionType/body"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//SwitchTypeSpec"/>
-    <genClasses ecoreClass="IDL.ecore#//SwitchBody">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//SwitchBody/case"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Case">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Case/comments"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Case/label"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Case/spec"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//CaseLabel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//CaseLabel/isCase"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//CaseLabel/constExp"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//CaseLabel/isDefault"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ElementSpec">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ElementSpec/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ElementSpec/declarator"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//EnumType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//EnumType/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//EnumType/comments"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//EnumType/literal"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//SequenceType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//SequenceType/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//SequenceType/size"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//NativeType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//NativeType/name"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//FixedPtType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//FixedPtType/lower"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//FixedPtType/upper"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ConstrForwardDecl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ConstrForwardDecl/name"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//StructForwardDecl"/>
-    <genClasses ecoreClass="IDL.ecore#//UnionForwardDecl"/>
-    <genClasses ecoreClass="IDL.ecore#//PositiveIntConst">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//PositiveIntConst/exp"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ConstDecl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ConstDecl/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ConstDecl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ConstDecl/value"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ConstDecl/comments"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ConstType"/>
-    <genClasses ecoreClass="IDL.ecore#//FixedPtConstType"/>
-    <genClasses ecoreClass="IDL.ecore#//ConstExp"/>
-    <genClasses ecoreClass="IDL.ecore#//OrExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//OrExpr/lhs"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//OrExpr/op"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//OrExpr/rhs"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//XOrExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//XOrExpr/lhs"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//XOrExpr/op"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//XOrExpr/rhs"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//AndExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//AndExpr/lhs"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//AndExpr/op"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//AndExpr/rhs"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ShiftExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ShiftExpr/lhs"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ShiftExpr/op"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ShiftExpr/rhs"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//AddExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//AddExpr/lhs"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//AddExpr/op"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//AddExpr/rhs"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//MultExpr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//MultExpr/lhs"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//MultExpr/op"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//MultExpr/rhs"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//UnaryExpr">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//UnaryExpr/op"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//UnaryExpr/expr"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//PrimaryExpr"/>
-    <genClasses ecoreClass="IDL.ecore#//Literal">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Literal/value"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ComponentDecl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ComponentDecl/comments"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ComponentDecl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ComponentDecl/base"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ComponentDecl/supports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ComponentDecl/export"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ComponentExport"/>
-    <genClasses ecoreClass="IDL.ecore#//ProvidesDcl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ProvidesDcl/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ProvidesDcl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ProvidesDcl/comments"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//UsesDcl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//UsesDcl/isMultiple"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//UsesDcl/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//UsesDcl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//UsesDcl/comments"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//PublishesDcl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//PublishesDcl/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//PublishesDcl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//PublishesDcl/comments"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//EmitDcl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//EmitDcl/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//EmitDcl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//EmitDcl/comments"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ConsumesDcl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ConsumesDcl/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ConsumesDcl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ConsumesDcl/comments"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ComponentForwardDecl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ComponentForwardDecl/name"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//HomeDecl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//HomeDecl/comments"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//HomeDecl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//HomeDecl/base"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//HomeDecl/supports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//HomeDecl/manages"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//HomeDecl/primary_key"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//HomeDecl/export"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//PrimaryKeySpec">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//PrimaryKeySpec/key"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//HomeExport"/>
-    <genClasses ecoreClass="IDL.ecore#//FactoryDcl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//FactoryDcl/comments"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//FactoryDcl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//FactoryDcl/params"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//FactoryDcl/raises"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//FinderDcl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//FinderDcl/comments"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//FinderDcl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//FinderDcl/params"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//FinderDcl/raises"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Event">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Event/isAbstract"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//Event/name"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//EventDcl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//EventDcl/isCustom"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//EventDcl/isTruncatable"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//EventDcl/base"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//EventDcl/supports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//EventDcl/export"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//EventDcl/member"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//StateMember">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//StateMember/isPublic"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//StateMember/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//StateMember/names"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//EventForwardDcl"/>
-    <genClasses ecoreClass="IDL.ecore#//PortTypeDecl">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//PortTypeDecl/comments"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//PortTypeDecl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//PortTypeDecl/exports"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//PortExport"/>
-    <genClasses ecoreClass="IDL.ecore#//PortDecl">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//PortDecl/isMirror"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//PortDecl/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//PortDecl/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//PortDecl/comments"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//Connector">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Connector/header"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//Connector/exports"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ConnectorHeader">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//ConnectorHeader/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//ConnectorHeader/base"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ConnectorExport"/>
-    <genClasses ecoreClass="IDL.ecore#//TemplateModule">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//TemplateModule/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//TemplateModule/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//TemplateModule/definitions"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//FormalParameter">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//FormalParameter/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//FormalParameter/name"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//FormalParameterType"/>
-    <genClasses ecoreClass="IDL.ecore#//TypenameParamType"/>
-    <genClasses ecoreClass="IDL.ecore#//InterfaceParamType"/>
-    <genClasses ecoreClass="IDL.ecore#//ValuetypeParamType"/>
-    <genClasses ecoreClass="IDL.ecore#//EventParamType"/>
-    <genClasses ecoreClass="IDL.ecore#//StructParamType"/>
-    <genClasses ecoreClass="IDL.ecore#//UnionParamType"/>
-    <genClasses ecoreClass="IDL.ecore#//ExceptionParamType"/>
-    <genClasses ecoreClass="IDL.ecore#//EnumParamType"/>
-    <genClasses ecoreClass="IDL.ecore#//SequenceParamType"/>
-    <genClasses ecoreClass="IDL.ecore#//ConstParamType"/>
-    <genClasses ecoreClass="IDL.ecore#//TemplateDefinition"/>
-    <genClasses ecoreClass="IDL.ecore#//FixedModule">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//FixedModule/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//FixedModule/definitions"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//FixedDefinition"/>
-    <genClasses ecoreClass="IDL.ecore#//TemplateModuleInst">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//TemplateModuleInst/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//TemplateModuleInst/parameter"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//TemplateModuleInst/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//TemplateModuleInst/comments"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//ActualParameter"/>
-    <genClasses ecoreClass="IDL.ecore#//TemplateModuleRef">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDL.ecore#//TemplateModuleRef/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//TemplateModuleRef/id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//TemplateModuleRef/name"/>
-    </genClasses>
-    <genClasses ecoreClass="IDL.ecore#//IDLComment">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDL.ecore#//IDLComment/body"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Ciao_Ami4ccm_Receptacle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Ciao_Ami4ccm_Receptacle/value"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Ciao_Ami4ccm_Idl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Ciao_Ami4ccm_Idl/value"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Ndds">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Ndds/value"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Component">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Component/value"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Home">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Home/value"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_DDS4CCM_Impl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_DDS4CCM_Impl/value"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Misc"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//File_Marker">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//File_Marker/file"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Excluded_File_Marker">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Excluded_File_Marker/file"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Import_decl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Import_decl/imported_scope"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Definition"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Module">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Module/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Module/comments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Module/definitions"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Interface_or_Forward_Decl"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Interface_decl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Interface_decl/header"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Interface_decl/interfaceBody"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Forward_decl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Forward_decl/name"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Interface_header">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Interface_header/isAbstract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Interface_header/isLocal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Interface_header/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Interface_header/specializes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Interface_header/comments"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//InterfaceBody">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//InterfaceBody/export"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Export"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AttrDecl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AttrDecl/comments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AttrDecl/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AttrDecl/names"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AttrSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AttrSpec/getRaises"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AttrSpec/setRaises"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ReadOnlyAttrSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ReadOnlyAttrSpec/raises"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AttrRaisesExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AttrRaisesExpr/exceptions"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ExceptionList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ExceptionList/exception"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OpDecl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OpDecl/comments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OpDecl/isOneway"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OpDecl/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OpDecl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OpDecl/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OpDecl/raises"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OpDecl/context"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OpTypeDecl"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ParameterDecls">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ParameterDecls/comments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ParameterDecls/decls"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ParamDcl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ParamDcl/direction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ParamDcl/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ParamDcl/name"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ContextExpr">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ContextExpr/literal"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ParamTypeSpec"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ScopedName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ScopedName/name"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//BaseTypeSpec"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FloatingPtType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FloatType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//DoubleType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//LongDoubleType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//IntegerType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SignedInt"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SignedShortInt"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SignedLongInt"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SignedLongLongInt"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnsignedInt"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnsignedShortInt"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnsignedLongInt"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnsignedLongLongInt"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//CharType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//WideCharType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//BooleanType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OctetType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AnyType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ObjectType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ValueBaseType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StringType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StringType/size"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//WideStringType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//WideStringType/size"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ExceptDecl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ExceptDecl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ExceptDecl/comments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ExceptDecl/members"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Member">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Member/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Member/decl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Member/comment"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Declarator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Declarator/id"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SimpleDeclarator"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ComplexDeclarator"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ArrayDeclarator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ArrayDeclarator/size"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructType/comments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructType/members"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TypeDecl"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TypeDeclarator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TypeDeclarator/comments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TypeDeclarator/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TypeDeclarator/declarators"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TypeSpec"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SimpleTypeSpec"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateTypeSpec"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConstrTypeSpec"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionType/comments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionType/switch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionType/body"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SwitchTypeSpec"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SwitchBody">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SwitchBody/case"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Case">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Case/comments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Case/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Case/spec"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//CaseLabel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//CaseLabel/isCase"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//CaseLabel/constExp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//CaseLabel/isDefault"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ElementSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ElementSpec/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ElementSpec/declarator"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EnumType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EnumType/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EnumType/comments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EnumType/literal"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SequenceType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SequenceType/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SequenceType/size"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//NativeType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//NativeType/name"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FixedPtType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FixedPtType/lower"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FixedPtType/upper"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConstrForwardDecl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConstrForwardDecl/name"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructForwardDecl"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionForwardDecl"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PositiveIntConst">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PositiveIntConst/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConstDecl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConstDecl/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConstDecl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConstDecl/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConstDecl/comments"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConstType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FixedPtConstType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConstExp"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OrExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OrExpr/lhs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OrExpr/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//OrExpr/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//XOrExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//XOrExpr/lhs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//XOrExpr/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//XOrExpr/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AndExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AndExpr/lhs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AndExpr/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AndExpr/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ShiftExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ShiftExpr/lhs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ShiftExpr/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ShiftExpr/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AddExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AddExpr/lhs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AddExpr/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//AddExpr/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//MultExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//MultExpr/lhs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//MultExpr/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//MultExpr/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnaryExpr">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnaryExpr/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnaryExpr/expr"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PrimaryExpr"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Literal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Literal/value"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ComponentDecl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ComponentDecl/comments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ComponentDecl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ComponentDecl/base"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ComponentDecl/supports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ComponentDecl/export"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ComponentExport"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ProvidesDcl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ProvidesDcl/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ProvidesDcl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ProvidesDcl/comments"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UsesDcl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UsesDcl/isMultiple"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UsesDcl/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UsesDcl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UsesDcl/comments"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PublishesDcl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PublishesDcl/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PublishesDcl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PublishesDcl/comments"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EmitDcl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EmitDcl/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EmitDcl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EmitDcl/comments"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConsumesDcl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConsumesDcl/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConsumesDcl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConsumesDcl/comments"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ComponentForwardDecl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ComponentForwardDecl/name"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//HomeDecl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//HomeDecl/comments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//HomeDecl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//HomeDecl/base"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//HomeDecl/supports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//HomeDecl/manages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//HomeDecl/primary_key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//HomeDecl/export"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PrimaryKeySpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PrimaryKeySpec/key"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//HomeExport"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FactoryDcl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FactoryDcl/comments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FactoryDcl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FactoryDcl/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FactoryDcl/raises"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FinderDcl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FinderDcl/comments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FinderDcl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FinderDcl/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FinderDcl/raises"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Event">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Event/isAbstract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Event/name"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EventDcl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EventDcl/isCustom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EventDcl/isTruncatable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EventDcl/base"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EventDcl/supports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EventDcl/export"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EventDcl/member"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StateMember">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StateMember/isPublic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StateMember/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StateMember/names"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EventForwardDcl"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PortTypeDecl">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PortTypeDecl/comments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PortTypeDecl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PortTypeDecl/exports"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PortExport"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PortDecl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PortDecl/isMirror"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PortDecl/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PortDecl/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//PortDecl/comments"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Connector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Connector/header"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Connector/exports"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConnectorHeader">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConnectorHeader/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConnectorHeader/base"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConnectorExport"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModule/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModule/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModule/definitions"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FormalParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FormalParameter/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FormalParameter/name"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FormalParameterType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TypenameParamType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//InterfaceParamType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ValuetypeParamType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EventParamType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructParamType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionParamType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ExceptionParamType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//EnumParamType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//SequenceParamType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConstParamType"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateDefinition"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FixedModule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FixedModule/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FixedModule/definitions"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//FixedDefinition"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModuleInst">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModuleInst/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModuleInst/parameter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModuleInst/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModuleInst/comments"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ActualParameter"/>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModuleRef">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModuleRef/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModuleRef/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateModuleRef/name"/>
+    </genClasses>
+    <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//IDLComment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//IDLComment/body"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

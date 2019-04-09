@@ -12,146 +12,147 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalIDLLexer extends Lexer {
-    public static final int RULE_ID=5;
-    public static final int T__29=29;
-    public static final int RULE_BOOLEAN_LITERAL=10;
-    public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int RULE_ANY_OTHER=19;
-    public static final int T__21=21;
-    public static final int T__20=20;
-    public static final int EOF=-1;
-    public static final int T__93=93;
-    public static final int T__94=94;
-    public static final int T__91=91;
-    public static final int T__92=92;
-    public static final int T__90=90;
-    public static final int RULE_HEX_LITERAL=6;
-    public static final int T__99=99;
-    public static final int T__98=98;
-    public static final int T__97=97;
-    public static final int RULE_CHARACTER_LITERAL=7;
-    public static final int T__96=96;
-    public static final int T__95=95;
-    public static final int T__139=139;
-    public static final int T__138=138;
-    public static final int T__137=137;
-    public static final int T__136=136;
-    public static final int T__80=80;
-    public static final int T__81=81;
-    public static final int T__82=82;
-    public static final int T__83=83;
-    public static final int RULE_HEX_ESCAPE=14;
-    public static final int T__85=85;
-    public static final int T__141=141;
-    public static final int T__84=84;
-    public static final int T__142=142;
-    public static final int T__87=87;
+    public static final int T__143=143;
+    public static final int T__50=50;
     public static final int T__140=140;
-    public static final int T__86=86;
-    public static final int T__89=89;
-    public static final int T__88=88;
-    public static final int RULE_ML_COMMENT=17;
-    public static final int T__126=126;
-    public static final int T__125=125;
-    public static final int T__128=128;
-    public static final int RULE_STRING=4;
-    public static final int T__127=127;
-    public static final int T__71=71;
-    public static final int T__129=129;
-    public static final int T__72=72;
-    public static final int T__70=70;
-    public static final int RULE_UNUSED_LITERAL=12;
-    public static final int T__76=76;
-    public static final int T__75=75;
-    public static final int T__130=130;
-    public static final int T__74=74;
-    public static final int T__131=131;
-    public static final int T__73=73;
-    public static final int T__132=132;
-    public static final int T__133=133;
-    public static final int T__79=79;
-    public static final int T__134=134;
-    public static final int T__78=78;
-    public static final int T__135=135;
-    public static final int T__77=77;
-    public static final int T__68=68;
-    public static final int T__69=69;
-    public static final int T__66=66;
-    public static final int T__67=67;
-    public static final int T__64=64;
-    public static final int T__65=65;
-    public static final int T__62=62;
-    public static final int T__63=63;
-    public static final int RULE_OCTAL_ESCAPE=15;
-    public static final int RULE_ESCAPE_SEQUENCE=13;
-    public static final int T__118=118;
-    public static final int T__119=119;
-    public static final int T__116=116;
-    public static final int T__117=117;
-    public static final int T__114=114;
-    public static final int T__115=115;
-    public static final int T__124=124;
-    public static final int T__123=123;
-    public static final int T__122=122;
-    public static final int T__121=121;
-    public static final int T__120=120;
-    public static final int RULE_INTEGER_LITERAL=9;
-    public static final int T__61=61;
-    public static final int T__60=60;
+    public static final int T__142=142;
+    public static final int T__141=141;
+    public static final int RULE_HEX_LITERAL=6;
+    public static final int T__59=59;
     public static final int T__55=55;
     public static final int T__56=56;
     public static final int T__57=57;
     public static final int T__58=58;
     public static final int T__51=51;
-    public static final int RULE_FLOATING_PT_LITERAL=8;
+    public static final int T__137=137;
     public static final int T__52=52;
+    public static final int T__136=136;
     public static final int T__53=53;
+    public static final int T__139=139;
     public static final int T__54=54;
-    public static final int T__107=107;
-    public static final int T__108=108;
-    public static final int T__109=109;
-    public static final int T__103=103;
-    public static final int T__59=59;
-    public static final int T__104=104;
-    public static final int T__105=105;
-    public static final int T__106=106;
-    public static final int T__111=111;
-    public static final int T__110=110;
-    public static final int T__113=113;
+    public static final int T__138=138;
+    public static final int T__133=133;
+    public static final int T__132=132;
+    public static final int T__60=60;
+    public static final int T__135=135;
+    public static final int T__61=61;
+    public static final int T__134=134;
+    public static final int RULE_ID=5;
+    public static final int RULE_BOOLEAN_LITERAL=10;
+    public static final int T__131=131;
+    public static final int T__130=130;
+    public static final int RULE_INTEGER_LITERAL=9;
+    public static final int T__66=66;
+    public static final int RULE_OCTAL_ESCAPE=15;
+    public static final int RULE_ML_COMMENT=17;
+    public static final int T__67=67;
+    public static final int T__129=129;
+    public static final int T__68=68;
+    public static final int T__69=69;
+    public static final int T__62=62;
+    public static final int T__126=126;
+    public static final int T__63=63;
+    public static final int T__125=125;
+    public static final int T__64=64;
+    public static final int T__128=128;
+    public static final int T__65=65;
+    public static final int T__127=127;
     public static final int RULE_UNICODE_ESCAPE=16;
-    public static final int T__112=112;
-    public static final int T__50=50;
-    public static final int T__42=42;
-    public static final int T__43=43;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__46=46;
-    public static final int T__47=47;
-    public static final int T__44=44;
-    public static final int T__45=45;
-    public static final int T__48=48;
-    public static final int T__49=49;
-    public static final int T__102=102;
-    public static final int T__101=101;
-    public static final int T__100=100;
-    public static final int RULE_SL_COMMENT=11;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__37=37;
+    public static final int RULE_FLOATING_PT_LITERAL=8;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int RULE_CHARACTER_LITERAL=7;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
+    public static final int T__91=91;
+    public static final int T__100=100;
+    public static final int T__92=92;
+    public static final int T__93=93;
+    public static final int T__102=102;
+    public static final int T__94=94;
+    public static final int T__101=101;
+    public static final int T__90=90;
+    public static final int T__99=99;
+    public static final int RULE_HEX_ESCAPE=14;
+    public static final int T__95=95;
+    public static final int T__96=96;
+    public static final int T__97=97;
+    public static final int T__98=98;
+    public static final int RULE_ESCAPE_SEQUENCE=13;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
+    public static final int T__29=29;
+    public static final int T__22=22;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
+    public static final int T__122=122;
+    public static final int T__70=70;
+    public static final int T__121=121;
+    public static final int T__71=71;
+    public static final int T__124=124;
+    public static final int T__72=72;
+    public static final int T__123=123;
+    public static final int T__120=120;
+    public static final int RULE_STRING=4;
+    public static final int RULE_SL_COMMENT=11;
+    public static final int T__77=77;
+    public static final int T__119=119;
+    public static final int T__78=78;
+    public static final int T__118=118;
+    public static final int T__79=79;
+    public static final int T__73=73;
+    public static final int T__115=115;
+    public static final int EOF=-1;
+    public static final int T__74=74;
+    public static final int T__114=114;
+    public static final int RULE_UNUSED_LITERAL=12;
+    public static final int T__75=75;
+    public static final int T__117=117;
+    public static final int T__76=76;
+    public static final int T__116=116;
+    public static final int T__80=80;
+    public static final int T__111=111;
+    public static final int T__81=81;
+    public static final int T__110=110;
+    public static final int T__82=82;
+    public static final int T__113=113;
+    public static final int T__83=83;
+    public static final int T__112=112;
     public static final int RULE_WS=18;
+    public static final int RULE_ANY_OTHER=19;
+    public static final int T__88=88;
+    public static final int T__108=108;
+    public static final int T__89=89;
+    public static final int T__107=107;
+    public static final int T__109=109;
+    public static final int T__84=84;
+    public static final int T__104=104;
+    public static final int T__85=85;
+    public static final int T__103=103;
+    public static final int T__86=86;
+    public static final int T__106=106;
+    public static final int T__87=87;
+    public static final int T__105=105;
 
     // delegates
     // delegators
@@ -693,10 +694,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:36:7: ( 'ciao' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:36:9: 'ciao'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:36:7: ( 'conntype' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:36:9: 'conntype'
             {
-            match("ciao"); 
+            match("conntype"); 
 
 
             }
@@ -714,10 +715,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:37:7: ( 'lem' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:37:9: 'lem'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:37:7: ( '::' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:37:9: '::'
             {
-            match("lem"); 
+            match("::"); 
 
 
             }
@@ -735,10 +736,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:38:7: ( 'ami4ccm interface' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:38:9: 'ami4ccm interface'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:38:7: ( 'ciao' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:38:9: 'ciao'
             {
-            match("ami4ccm interface"); 
+            match("ciao"); 
 
 
             }
@@ -756,10 +757,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:39:7: ( 'ami4ccm receptacle' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:39:9: 'ami4ccm receptacle'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:39:7: ( 'lem' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:39:9: 'lem'
             {
-            match("ami4ccm receptacle"); 
+            match("lem"); 
 
 
             }
@@ -777,10 +778,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:40:7: ( 'ami4ccm idl' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:40:9: 'ami4ccm idl'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:40:7: ( 'ami4ccm interface' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:40:9: 'ami4ccm interface'
             {
-            match("ami4ccm idl"); 
+            match("ami4ccm interface"); 
 
 
             }
@@ -798,10 +799,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:41:7: ( 'ndds' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:41:9: 'ndds'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:41:7: ( 'ami4ccm receptacle' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:41:9: 'ami4ccm receptacle'
             {
-            match("ndds"); 
+            match("ami4ccm receptacle"); 
 
 
             }
@@ -819,10 +820,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:42:7: ( 'componentInterface' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:42:9: 'componentInterface'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:42:7: ( 'ami4ccm idl' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:42:9: 'ami4ccm idl'
             {
-            match("componentInterface"); 
+            match("ami4ccm idl"); 
 
 
             }
@@ -840,10 +841,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:43:7: ( 'componentHome' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:43:9: 'componentHome'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:43:7: ( 'ndds' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:43:9: 'ndds'
             {
-            match("componentHome"); 
+            match("ndds"); 
 
 
             }
@@ -861,10 +862,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:44:7: ( 'dds4ccm' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:44:9: 'dds4ccm'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:44:7: ( 'componentInterface' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:44:9: 'componentInterface'
             {
-            match("dds4ccm"); 
+            match("componentInterface"); 
 
 
             }
@@ -882,10 +883,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:45:7: ( 'impl' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:45:9: 'impl'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:45:7: ( 'componentHome' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:45:9: 'componentHome'
             {
-            match("impl"); 
+            match("componentHome"); 
 
 
             }
@@ -903,10 +904,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:46:7: ( '#file' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:46:9: '#file'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:46:7: ( 'dds4ccm' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:46:9: 'dds4ccm'
             {
-            match("#file"); 
+            match("dds4ccm"); 
 
 
             }
@@ -924,10 +925,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:47:7: ( '#excluded_file' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:47:9: '#excluded_file'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:47:7: ( 'impl' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:47:9: 'impl'
             {
-            match("#excluded_file"); 
+            match("impl"); 
 
 
             }
@@ -945,10 +946,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:48:7: ( 'import' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:48:9: 'import'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:48:7: ( '#file' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:48:9: '#file'
             {
-            match("import"); 
+            match("#file"); 
 
 
             }
@@ -966,10 +967,11 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:49:7: ( ';' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:49:9: ';'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:49:7: ( '#excluded_file' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:49:9: '#excluded_file'
             {
-            match(';'); 
+            match("#excluded_file"); 
+
 
             }
 
@@ -986,10 +988,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:50:7: ( 'module' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:50:9: 'module'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:50:7: ( 'import' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:50:9: 'import'
             {
-            match("module"); 
+            match("import"); 
 
 
             }
@@ -1007,10 +1009,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:51:7: ( '{' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:51:9: '{'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:51:7: ( ';' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:51:9: ';'
             {
-            match('{'); 
+            match(';'); 
 
             }
 
@@ -1027,10 +1029,11 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:52:7: ( '}' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:52:9: '}'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:52:7: ( 'module' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:52:9: 'module'
             {
-            match('}'); 
+            match("module"); 
+
 
             }
 
@@ -1047,11 +1050,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:53:7: ( 'interface' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:53:9: 'interface'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:53:7: ( '{' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:53:9: '{'
             {
-            match("interface"); 
-
+            match('{'); 
 
             }
 
@@ -1068,10 +1070,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:54:7: ( ':' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:54:9: ':'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:54:7: ( '}' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:54:9: '}'
             {
-            match(':'); 
+            match('}'); 
 
             }
 
@@ -1088,10 +1090,11 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:55:7: ( ',' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:55:9: ','
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:55:7: ( 'interface' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:55:9: 'interface'
             {
-            match(','); 
+            match("interface"); 
+
 
             }
 
@@ -1108,11 +1111,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:56:7: ( 'attribute' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:56:9: 'attribute'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:56:7: ( ':' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:56:9: ':'
             {
-            match("attribute"); 
-
+            match(':'); 
 
             }
 
@@ -1129,11 +1131,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:57:7: ( 'getraises' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:57:9: 'getraises'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:57:7: ( ',' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:57:9: ','
             {
-            match("getraises"); 
-
+            match(','); 
 
             }
 
@@ -1150,10 +1151,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:58:7: ( 'setraises' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:58:9: 'setraises'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:58:7: ( 'attribute' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:58:9: 'attribute'
             {
-            match("setraises"); 
+            match("attribute"); 
 
 
             }
@@ -1171,10 +1172,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__68;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:59:7: ( 'readonly' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:59:9: 'readonly'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:59:7: ( 'getraises' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:59:9: 'getraises'
             {
-            match("readonly"); 
+            match("getraises"); 
 
 
             }
@@ -1192,10 +1193,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__69;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:60:7: ( 'raises' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:60:9: 'raises'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:60:7: ( 'setraises' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:60:9: 'setraises'
             {
-            match("raises"); 
+            match("setraises"); 
 
 
             }
@@ -1213,10 +1214,11 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__70;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:61:7: ( '(' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:61:9: '('
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:61:7: ( 'readonly' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:61:9: 'readonly'
             {
-            match('('); 
+            match("readonly"); 
+
 
             }
 
@@ -1233,10 +1235,11 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__71;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:62:7: ( ')' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:62:9: ')'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:62:7: ( 'raises' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:62:9: 'raises'
             {
-            match(')'); 
+            match("raises"); 
+
 
             }
 
@@ -1253,11 +1256,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__72;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:63:7: ( 'context' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:63:9: 'context'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:63:7: ( '(' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:63:9: '('
             {
-            match("context"); 
-
+            match('('); 
 
             }
 
@@ -1274,11 +1276,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__73;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:64:7: ( '::' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:64:9: '::'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:64:7: ( ')' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:64:9: ')'
             {
-            match("::"); 
-
+            match(')'); 
 
             }
 
@@ -1295,10 +1296,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__74;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:65:7: ( 'float' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:65:9: 'float'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:65:7: ( 'context' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:65:9: 'context'
             {
-            match("float"); 
+            match("context"); 
 
 
             }
@@ -1316,10 +1317,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__75;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:66:7: ( 'double' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:66:9: 'double'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:66:7: ( 'float' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:66:9: 'float'
             {
-            match("double"); 
+            match("float"); 
 
 
             }
@@ -1337,10 +1338,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__76;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:67:7: ( 'long' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:67:9: 'long'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:67:7: ( 'double' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:67:9: 'double'
             {
-            match("long"); 
+            match("double"); 
 
 
             }
@@ -1358,10 +1359,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__77;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:68:7: ( 'short' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:68:9: 'short'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:68:7: ( 'long' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:68:9: 'long'
             {
-            match("short"); 
+            match("long"); 
 
 
             }
@@ -1379,10 +1380,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__78;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:69:7: ( 'unsigned' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:69:9: 'unsigned'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:69:7: ( 'short' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:69:9: 'short'
             {
-            match("unsigned"); 
+            match("short"); 
 
 
             }
@@ -1400,10 +1401,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__79;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:70:7: ( 'char' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:70:9: 'char'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:70:7: ( 'unsigned' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:70:9: 'unsigned'
             {
-            match("char"); 
+            match("unsigned"); 
 
 
             }
@@ -1421,10 +1422,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__80;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:71:7: ( 'wchar' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:71:9: 'wchar'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:71:7: ( 'char' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:71:9: 'char'
             {
-            match("wchar"); 
+            match("char"); 
 
 
             }
@@ -1442,10 +1443,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__81;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:72:7: ( 'boolean' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:72:9: 'boolean'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:72:7: ( 'wchar' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:72:9: 'wchar'
             {
-            match("boolean"); 
+            match("wchar"); 
 
 
             }
@@ -1463,10 +1464,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__82;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:73:7: ( 'octet' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:73:9: 'octet'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:73:7: ( 'boolean' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:73:9: 'boolean'
             {
-            match("octet"); 
+            match("boolean"); 
 
 
             }
@@ -1484,10 +1485,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__83;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:74:7: ( 'any' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:74:9: 'any'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:74:7: ( 'octet' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:74:9: 'octet'
             {
-            match("any"); 
+            match("octet"); 
 
 
             }
@@ -1505,10 +1506,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__84;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:75:7: ( 'Object' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:75:9: 'Object'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:75:7: ( 'any' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:75:9: 'any'
             {
-            match("Object"); 
+            match("any"); 
 
 
             }
@@ -1526,10 +1527,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__85;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:76:7: ( 'ValueBase' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:76:9: 'ValueBase'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:76:7: ( 'Object' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:76:9: 'Object'
             {
-            match("ValueBase"); 
+            match("Object"); 
 
 
             }
@@ -1547,10 +1548,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__86;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:77:7: ( 'string' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:77:9: 'string'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:77:7: ( 'ValueBase' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:77:9: 'ValueBase'
             {
-            match("string"); 
+            match("ValueBase"); 
 
 
             }
@@ -1568,10 +1569,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__87;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:78:7: ( 'wstring' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:78:9: 'wstring'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:78:7: ( 'string' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:78:9: 'string'
             {
-            match("wstring"); 
+            match("string"); 
 
 
             }
@@ -1589,10 +1590,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__88;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:79:7: ( 'exception' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:79:9: 'exception'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:79:7: ( 'wstring' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:79:9: 'wstring'
             {
-            match("exception"); 
+            match("wstring"); 
 
 
             }
@@ -1610,10 +1611,11 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__89;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:80:7: ( '[' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:80:9: '['
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:80:7: ( 'exception' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:80:9: 'exception'
             {
-            match('['); 
+            match("exception"); 
+
 
             }
 
@@ -1630,10 +1632,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__90;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:81:7: ( ']' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:81:9: ']'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:81:7: ( '[' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:81:9: '['
             {
-            match(']'); 
+            match('['); 
 
             }
 
@@ -1650,11 +1652,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__91;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:82:7: ( 'struct' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:82:9: 'struct'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:82:7: ( ']' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:82:9: ']'
             {
-            match("struct"); 
-
+            match(']'); 
 
             }
 
@@ -1671,10 +1672,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__92;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:83:7: ( 'typedef' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:83:9: 'typedef'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:83:7: ( 'struct' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:83:9: 'struct'
             {
-            match("typedef"); 
+            match("struct"); 
 
 
             }
@@ -1692,10 +1693,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__93;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:84:7: ( 'union' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:84:9: 'union'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:84:7: ( 'typedef' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:84:9: 'typedef'
             {
-            match("union"); 
+            match("typedef"); 
 
 
             }
@@ -1713,10 +1714,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__94;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:85:7: ( 'switch' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:85:9: 'switch'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:85:7: ( 'union' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:85:9: 'union'
             {
-            match("switch"); 
+            match("union"); 
 
 
             }
@@ -1734,10 +1735,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__95;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:86:7: ( 'enum' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:86:9: 'enum'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:86:7: ( 'switch' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:86:9: 'switch'
             {
-            match("enum"); 
+            match("switch"); 
 
 
             }
@@ -1755,10 +1756,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__96;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:87:7: ( 'sequence' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:87:9: 'sequence'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:87:7: ( 'enum' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:87:9: 'enum'
             {
-            match("sequence"); 
+            match("enum"); 
 
 
             }
@@ -1776,10 +1777,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__97;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:88:7: ( 'native' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:88:9: 'native'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:88:7: ( 'sequence' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:88:9: 'sequence'
             {
-            match("native"); 
+            match("sequence"); 
 
 
             }
@@ -1797,10 +1798,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__98;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:89:7: ( 'fixed' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:89:9: 'fixed'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:89:7: ( 'native' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:89:9: 'native'
             {
-            match("fixed"); 
+            match("native"); 
 
 
             }
@@ -1818,10 +1819,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__99;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:90:7: ( 'const' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:90:9: 'const'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:90:7: ( 'fixed' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:90:9: 'fixed'
             {
-            match("const"); 
+            match("fixed"); 
 
 
             }
@@ -1839,10 +1840,11 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__100;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:91:8: ( '=' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:91:10: '='
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:91:8: ( 'const' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:91:10: 'const'
             {
-            match('='); 
+            match("const"); 
+
 
             }
 
@@ -1859,11 +1861,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__101;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:92:8: ( 'component' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:92:10: 'component'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:92:8: ( '=' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:92:10: '='
             {
-            match("component"); 
-
+            match('='); 
 
             }
 
@@ -1880,10 +1881,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__102;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:93:8: ( 'supports' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:93:10: 'supports'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:93:8: ( 'component' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:93:10: 'component'
             {
-            match("supports"); 
+            match("component"); 
 
 
             }
@@ -1901,10 +1902,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__103;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:94:8: ( 'provides' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:94:10: 'provides'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:94:8: ( 'supports' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:94:10: 'supports'
             {
-            match("provides"); 
+            match("supports"); 
 
 
             }
@@ -1922,10 +1923,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__104;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:95:8: ( 'uses' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:95:10: 'uses'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:95:8: ( 'provides' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:95:10: 'provides'
             {
-            match("uses"); 
+            match("provides"); 
 
 
             }
@@ -1943,10 +1944,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__105;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:96:8: ( 'publishes' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:96:10: 'publishes'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:96:8: ( 'uses' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:96:10: 'uses'
             {
-            match("publishes"); 
+            match("uses"); 
 
 
             }
@@ -1964,10 +1965,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__106;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:97:8: ( 'emits' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:97:10: 'emits'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:97:8: ( 'publishes' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:97:10: 'publishes'
             {
-            match("emits"); 
+            match("publishes"); 
 
 
             }
@@ -1985,10 +1986,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__107;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:98:8: ( 'consumes' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:98:10: 'consumes'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:98:8: ( 'emits' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:98:10: 'emits'
             {
-            match("consumes"); 
+            match("emits"); 
 
 
             }
@@ -2006,10 +2007,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__108;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:99:8: ( 'home' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:99:10: 'home'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:99:8: ( 'consumes' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:99:10: 'consumes'
             {
-            match("home"); 
+            match("consumes"); 
 
 
             }
@@ -2027,10 +2028,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__109;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:100:8: ( 'manages' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:100:10: 'manages'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:100:8: ( 'home' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:100:10: 'home'
             {
-            match("manages"); 
+            match("home"); 
 
 
             }
@@ -2048,10 +2049,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__110;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:101:8: ( 'primarykey' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:101:10: 'primarykey'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:101:8: ( 'manages' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:101:10: 'manages'
             {
-            match("primarykey"); 
+            match("manages"); 
 
 
             }
@@ -2069,10 +2070,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__111;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:102:8: ( 'factory' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:102:10: 'factory'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:102:8: ( 'primarykey' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:102:10: 'primarykey'
             {
-            match("factory"); 
+            match("primarykey"); 
 
 
             }
@@ -2090,10 +2091,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__112;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:103:8: ( 'finder' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:103:10: 'finder'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:103:8: ( 'factory' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:103:10: 'factory'
             {
-            match("finder"); 
+            match("factory"); 
 
 
             }
@@ -2111,10 +2112,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__113;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:104:8: ( 'eventtype' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:104:10: 'eventtype'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:104:8: ( 'finder' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:104:10: 'finder'
             {
-            match("eventtype"); 
+            match("finder"); 
 
 
             }
@@ -2132,10 +2133,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__114;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:105:8: ( 'porttype' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:105:10: 'porttype'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:105:8: ( 'eventtype' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:105:10: 'eventtype'
             {
-            match("porttype"); 
+            match("eventtype"); 
 
 
             }
@@ -2153,10 +2154,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__115;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:106:8: ( 'connector' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:106:10: 'connector'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:106:8: ( 'porttype' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:106:10: 'porttype'
             {
-            match("connector"); 
+            match("porttype"); 
 
 
             }
@@ -2174,10 +2175,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__116;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:107:8: ( 'typename' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:107:10: 'typename'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:107:8: ( 'connector' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:107:10: 'connector'
             {
-            match("typename"); 
+            match("connector"); 
 
 
             }
@@ -2195,10 +2196,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__117;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:108:8: ( 'valuetype' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:108:10: 'valuetype'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:108:8: ( 'typename' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:108:10: 'typename'
             {
-            match("valuetype"); 
+            match("typename"); 
 
 
             }
@@ -2216,10 +2217,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__118;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:109:8: ( 'alias' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:109:10: 'alias'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:109:8: ( 'valuetype' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:109:10: 'valuetype'
             {
-            match("alias"); 
+            match("valuetype"); 
 
 
             }
@@ -2237,10 +2238,11 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__119;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:110:8: ( '!' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:110:10: '!'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:110:8: ( 'alias' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:110:10: 'alias'
             {
-            match('!'); 
+            match("alias"); 
+
 
             }
 
@@ -2257,11 +2259,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__120;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:111:8: ( '==' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:111:10: '=='
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:111:8: ( '!' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:111:10: '!'
             {
-            match("=="); 
-
+            match('!'); 
 
             }
 
@@ -2278,10 +2279,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__121;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:112:8: ( '!=' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:112:10: '!='
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:112:8: ( '==' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:112:10: '=='
             {
-            match("!="); 
+            match("=="); 
 
 
             }
@@ -2299,10 +2300,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__122;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:113:8: ( '>=' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:113:10: '>='
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:113:8: ( '!=' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:113:10: '!='
             {
-            match(">="); 
+            match("!="); 
 
 
             }
@@ -2320,10 +2321,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__123;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:114:8: ( '<=' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:114:10: '<='
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:114:8: ( '>=' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:114:10: '>='
             {
-            match("<="); 
+            match(">="); 
 
 
             }
@@ -2341,10 +2342,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__124;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:115:8: ( 'oneway' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:115:10: 'oneway'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:115:8: ( '<=' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:115:10: '<='
             {
-            match("oneway"); 
+            match("<="); 
 
 
             }
@@ -2362,10 +2363,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__125;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:116:8: ( 'case' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:116:10: 'case'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:116:8: ( 'oneway' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:116:10: 'oneway'
             {
-            match("case"); 
+            match("oneway"); 
 
 
             }
@@ -2383,10 +2384,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__126;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:117:8: ( 'default' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:117:10: 'default'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:117:8: ( 'case' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:117:10: 'case'
             {
-            match("default"); 
+            match("case"); 
 
 
             }
@@ -2404,10 +2405,11 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__127;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:118:8: ( '|' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:118:10: '|'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:118:8: ( 'default' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:118:10: 'default'
             {
-            match('|'); 
+            match("default"); 
+
 
             }
 
@@ -2424,10 +2426,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__128;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:119:8: ( '^' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:119:10: '^'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:119:8: ( '|' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:119:10: '|'
             {
-            match('^'); 
+            match('|'); 
 
             }
 
@@ -2444,10 +2446,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__129;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:120:8: ( '&' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:120:10: '&'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:120:8: ( '^' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:120:10: '^'
             {
-            match('&'); 
+            match('^'); 
 
             }
 
@@ -2464,11 +2466,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__130;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:121:8: ( '<<' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:121:10: '<<'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:121:8: ( '&' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:121:10: '&'
             {
-            match("<<"); 
-
+            match('&'); 
 
             }
 
@@ -2485,10 +2486,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__131;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:122:8: ( '>>' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:122:10: '>>'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:122:8: ( '<<' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:122:10: '<<'
             {
-            match(">>"); 
+            match("<<"); 
 
 
             }
@@ -2506,10 +2507,11 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__132;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:123:8: ( '+' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:123:10: '+'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:123:8: ( '>>' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:123:10: '>>'
             {
-            match('+'); 
+            match(">>"); 
+
 
             }
 
@@ -2526,10 +2528,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__133;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:124:8: ( '-' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:124:10: '-'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:124:8: ( '+' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:124:10: '+'
             {
-            match('-'); 
+            match('+'); 
 
             }
 
@@ -2546,10 +2548,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__134;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:125:8: ( '*' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:125:10: '*'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:125:8: ( '-' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:125:10: '-'
             {
-            match('*'); 
+            match('-'); 
 
             }
 
@@ -2566,10 +2568,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__135;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:126:8: ( '/' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:126:10: '/'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:126:8: ( '*' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:126:10: '*'
             {
-            match('/'); 
+            match('*'); 
 
             }
 
@@ -2586,10 +2588,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__136;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:127:8: ( '%' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:127:10: '%'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:127:8: ( '/' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:127:10: '/'
             {
-            match('%'); 
+            match('/'); 
 
             }
 
@@ -2606,10 +2608,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__137;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:128:8: ( '~' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:128:10: '~'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:128:8: ( '%' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:128:10: '%'
             {
-            match('~'); 
+            match('%'); 
 
             }
 
@@ -2626,11 +2628,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__138;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:129:8: ( 'multiple' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:129:10: 'multiple'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:129:8: ( '~' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:129:10: '~'
             {
-            match("multiple"); 
-
+            match('~'); 
 
             }
 
@@ -2647,10 +2648,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__139;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:130:8: ( 'custom' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:130:10: 'custom'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:130:8: ( 'multiple' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:130:10: 'multiple'
             {
-            match("custom"); 
+            match("multiple"); 
 
 
             }
@@ -2668,10 +2669,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__140;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:131:8: ( 'truncatable' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:131:10: 'truncatable'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:131:8: ( 'custom' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:131:10: 'custom'
             {
-            match("truncatable"); 
+            match("custom"); 
 
 
             }
@@ -2689,10 +2690,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__141;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:132:8: ( 'public' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:132:10: 'public'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:132:8: ( 'truncatable' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:132:10: 'truncatable'
             {
-            match("public"); 
+            match("truncatable"); 
 
 
             }
@@ -2710,10 +2711,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = T__142;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:133:8: ( 'mirrorport' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:133:10: 'mirrorport'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:133:8: ( 'public' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:133:10: 'public'
             {
-            match("mirrorport"); 
+            match("public"); 
 
 
             }
@@ -2726,13 +2727,34 @@ public class InternalIDLLexer extends Lexer {
     }
     // $ANTLR end "T__142"
 
+    // $ANTLR start "T__143"
+    public final void mT__143() throws RecognitionException {
+        try {
+            int _type = T__143;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:134:8: ( 'mirrorport' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:134:10: 'mirrorport'
+            {
+            match("mirrorport"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__143"
+
     // $ANTLR start "RULE_UNUSED_LITERAL"
     public final void mRULE_UNUSED_LITERAL() throws RecognitionException {
         try {
             int _type = RULE_UNUSED_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30973:21: ( '(\\'?\\')' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30973:23: '(\\'?\\')'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31258:21: ( '(\\'?\\')' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31258:23: '(\\'?\\')'
             {
             match("('?')"); 
 
@@ -2752,10 +2774,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_INTEGER_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30975:22: ( ( '0' .. '9' )+ ( 'l' | 'L' )? )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30975:24: ( '0' .. '9' )+ ( 'l' | 'L' )?
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31260:22: ( ( '0' .. '9' )+ ( 'l' | 'L' )? )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31260:24: ( '0' .. '9' )+ ( 'l' | 'L' )?
             {
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30975:24: ( '0' .. '9' )+
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31260:24: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -2769,7 +2791,7 @@ public class InternalIDLLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30975:25: '0' .. '9'
+            	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31260:25: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -2785,7 +2807,7 @@ public class InternalIDLLexer extends Lexer {
                 cnt1++;
             } while (true);
 
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30975:36: ( 'l' | 'L' )?
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31260:36: ( 'l' | 'L' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -2827,8 +2849,8 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_HEX_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30977:18: ( '0' ( 'x' | 'X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ ( 'l' | 'L' )? )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30977:20: '0' ( 'x' | 'X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ ( 'l' | 'L' )?
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31262:18: ( '0' ( 'x' | 'X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ ( 'l' | 'L' )? )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31262:20: '0' ( 'x' | 'X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ ( 'l' | 'L' )?
             {
             match('0'); 
             if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
@@ -2840,7 +2862,7 @@ public class InternalIDLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30977:34: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31262:34: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
             int cnt3=0;
             loop3:
             do {
@@ -2878,7 +2900,7 @@ public class InternalIDLLexer extends Lexer {
                 cnt3++;
             } while (true);
 
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30977:64: ( 'l' | 'L' )?
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31262:64: ( 'l' | 'L' )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -2920,17 +2942,17 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_FLOATING_PT_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:26: ( ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) ) )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:28: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:26: ( ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) ) )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:28: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) )
             {
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:28: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:28: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) )
             int alt24=4;
             alt24 = dfa24.predict(input);
             switch (alt24) {
                 case 1 :
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:29: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )?
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:29: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )?
                     {
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:29: ( '0' .. '9' )+
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:29: ( '0' .. '9' )+
                     int cnt5=0;
                     loop5:
                     do {
@@ -2944,7 +2966,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:30: '0' .. '9'
+                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:30: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -2961,7 +2983,7 @@ public class InternalIDLLexer extends Lexer {
                     } while (true);
 
                     match('.'); 
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:45: ( '0' .. '9' )*
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:45: ( '0' .. '9' )*
                     loop6:
                     do {
                         int alt6=2;
@@ -2974,7 +2996,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:46: '0' .. '9'
+                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:46: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -2986,7 +3008,7 @@ public class InternalIDLLexer extends Lexer {
                         }
                     } while (true);
 
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:57: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )?
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:57: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -2995,7 +3017,7 @@ public class InternalIDLLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:58: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:58: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
                             {
                             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                                 input.consume();
@@ -3006,7 +3028,7 @@ public class InternalIDLLexer extends Lexer {
                                 recover(mse);
                                 throw mse;}
 
-                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:68: ( '+' | '-' )?
+                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:68: ( '+' | '-' )?
                             int alt7=2;
                             int LA7_0 = input.LA(1);
 
@@ -3032,7 +3054,7 @@ public class InternalIDLLexer extends Lexer {
 
                             }
 
-                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:79: ( '0' .. '9' )+
+                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:79: ( '0' .. '9' )+
                             int cnt8=0;
                             loop8:
                             do {
@@ -3046,7 +3068,7 @@ public class InternalIDLLexer extends Lexer {
 
                                 switch (alt8) {
                             	case 1 :
-                            	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:80: '0' .. '9'
+                            	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:80: '0' .. '9'
                             	    {
                             	    matchRange('0','9'); 
 
@@ -3068,7 +3090,7 @@ public class InternalIDLLexer extends Lexer {
 
                     }
 
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:93: ( 'f' | 'F' | 'd' | 'D' )?
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:93: ( 'f' | 'F' | 'd' | 'D' )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -3098,10 +3120,10 @@ public class InternalIDLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:112: '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )?
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:112: '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )?
                     {
                     match('.'); 
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:116: ( '0' .. '9' )+
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:116: ( '0' .. '9' )+
                     int cnt11=0;
                     loop11:
                     do {
@@ -3115,7 +3137,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:117: '0' .. '9'
+                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:117: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -3131,7 +3153,7 @@ public class InternalIDLLexer extends Lexer {
                         cnt11++;
                     } while (true);
 
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:128: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )?
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:128: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )?
                     int alt14=2;
                     int LA14_0 = input.LA(1);
 
@@ -3140,7 +3162,7 @@ public class InternalIDLLexer extends Lexer {
                     }
                     switch (alt14) {
                         case 1 :
-                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:129: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:129: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
                             {
                             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                                 input.consume();
@@ -3151,7 +3173,7 @@ public class InternalIDLLexer extends Lexer {
                                 recover(mse);
                                 throw mse;}
 
-                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:139: ( '+' | '-' )?
+                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:139: ( '+' | '-' )?
                             int alt12=2;
                             int LA12_0 = input.LA(1);
 
@@ -3177,7 +3199,7 @@ public class InternalIDLLexer extends Lexer {
 
                             }
 
-                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:150: ( '0' .. '9' )+
+                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:150: ( '0' .. '9' )+
                             int cnt13=0;
                             loop13:
                             do {
@@ -3191,7 +3213,7 @@ public class InternalIDLLexer extends Lexer {
 
                                 switch (alt13) {
                             	case 1 :
-                            	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:151: '0' .. '9'
+                            	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:151: '0' .. '9'
                             	    {
                             	    matchRange('0','9'); 
 
@@ -3213,7 +3235,7 @@ public class InternalIDLLexer extends Lexer {
 
                     }
 
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:164: ( 'f' | 'F' | 'd' | 'D' )?
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:164: ( 'f' | 'F' | 'd' | 'D' )?
                     int alt15=2;
                     int LA15_0 = input.LA(1);
 
@@ -3243,9 +3265,9 @@ public class InternalIDLLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:183: ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )?
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:183: ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )?
                     {
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:183: ( '0' .. '9' )+
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:183: ( '0' .. '9' )+
                     int cnt16=0;
                     loop16:
                     do {
@@ -3259,7 +3281,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt16) {
                     	case 1 :
-                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:184: '0' .. '9'
+                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:184: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -3284,7 +3306,7 @@ public class InternalIDLLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:205: ( '+' | '-' )?
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:205: ( '+' | '-' )?
                     int alt17=2;
                     int LA17_0 = input.LA(1);
 
@@ -3310,7 +3332,7 @@ public class InternalIDLLexer extends Lexer {
 
                     }
 
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:216: ( '0' .. '9' )+
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:216: ( '0' .. '9' )+
                     int cnt18=0;
                     loop18:
                     do {
@@ -3324,7 +3346,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt18) {
                     	case 1 :
-                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:217: '0' .. '9'
+                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:217: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -3340,7 +3362,7 @@ public class InternalIDLLexer extends Lexer {
                         cnt18++;
                     } while (true);
 
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:228: ( 'f' | 'F' | 'd' | 'D' )?
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:228: ( 'f' | 'F' | 'd' | 'D' )?
                     int alt19=2;
                     int LA19_0 = input.LA(1);
 
@@ -3370,9 +3392,9 @@ public class InternalIDLLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:247: ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:247: ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )
                     {
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:247: ( '0' .. '9' )+
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:247: ( '0' .. '9' )+
                     int cnt20=0;
                     loop20:
                     do {
@@ -3386,7 +3408,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt20) {
                     	case 1 :
-                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:248: '0' .. '9'
+                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:248: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -3402,7 +3424,7 @@ public class InternalIDLLexer extends Lexer {
                         cnt20++;
                     } while (true);
 
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:259: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )?
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:259: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )?
                     int alt23=2;
                     int LA23_0 = input.LA(1);
 
@@ -3411,7 +3433,7 @@ public class InternalIDLLexer extends Lexer {
                     }
                     switch (alt23) {
                         case 1 :
-                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:260: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:260: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
                             {
                             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                                 input.consume();
@@ -3422,7 +3444,7 @@ public class InternalIDLLexer extends Lexer {
                                 recover(mse);
                                 throw mse;}
 
-                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:270: ( '+' | '-' )?
+                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:270: ( '+' | '-' )?
                             int alt21=2;
                             int LA21_0 = input.LA(1);
 
@@ -3448,7 +3470,7 @@ public class InternalIDLLexer extends Lexer {
 
                             }
 
-                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:281: ( '0' .. '9' )+
+                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:281: ( '0' .. '9' )+
                             int cnt22=0;
                             loop22:
                             do {
@@ -3462,7 +3484,7 @@ public class InternalIDLLexer extends Lexer {
 
                                 switch (alt22) {
                             	case 1 :
-                            	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30979:282: '0' .. '9'
+                            	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31264:282: '0' .. '9'
                             	    {
                             	    matchRange('0','9'); 
 
@@ -3515,11 +3537,11 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_CHARACTER_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30981:24: ( '\\'' ( RULE_ESCAPE_SEQUENCE | ~ ( ( '\\'' | '\\\\' ) ) ) '\\'' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30981:26: '\\'' ( RULE_ESCAPE_SEQUENCE | ~ ( ( '\\'' | '\\\\' ) ) ) '\\''
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31266:24: ( '\\'' ( RULE_ESCAPE_SEQUENCE | ~ ( ( '\\'' | '\\\\' ) ) ) '\\'' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31266:26: '\\'' ( RULE_ESCAPE_SEQUENCE | ~ ( ( '\\'' | '\\\\' ) ) ) '\\''
             {
             match('\''); 
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30981:31: ( RULE_ESCAPE_SEQUENCE | ~ ( ( '\\'' | '\\\\' ) ) )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31266:31: ( RULE_ESCAPE_SEQUENCE | ~ ( ( '\\'' | '\\\\' ) ) )
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -3537,14 +3559,14 @@ public class InternalIDLLexer extends Lexer {
             }
             switch (alt25) {
                 case 1 :
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30981:32: RULE_ESCAPE_SEQUENCE
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31266:32: RULE_ESCAPE_SEQUENCE
                     {
                     mRULE_ESCAPE_SEQUENCE(); 
 
                     }
                     break;
                 case 2 :
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30981:53: ~ ( ( '\\'' | '\\\\' ) )
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31266:53: ~ ( ( '\\'' | '\\\\' ) )
                     {
                     if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                         input.consume();
@@ -3578,10 +3600,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_BOOLEAN_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30983:22: ( ( 'TRUE' | 'FALSE' ) )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30983:24: ( 'TRUE' | 'FALSE' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31268:22: ( ( 'TRUE' | 'FALSE' ) )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31268:24: ( 'TRUE' | 'FALSE' )
             {
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30983:24: ( 'TRUE' | 'FALSE' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31268:24: ( 'TRUE' | 'FALSE' )
             int alt26=2;
             int LA26_0 = input.LA(1);
 
@@ -3599,7 +3621,7 @@ public class InternalIDLLexer extends Lexer {
             }
             switch (alt26) {
                 case 1 :
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30983:25: 'TRUE'
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31268:25: 'TRUE'
                     {
                     match("TRUE"); 
 
@@ -3607,7 +3629,7 @@ public class InternalIDLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30983:32: 'FALSE'
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31268:32: 'FALSE'
                     {
                     match("FALSE"); 
 
@@ -3633,8 +3655,8 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_ESCAPE_SEQUENCE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30985:22: ( '\\'\\\\\\' (\\'b\\'|\\'t\\'|\\'n\\'|\\'f\\'|\\'r\\'|\\'v\\'|\\'a\\'|\\'?\\'|\\'\"\\'|\\'\\'\\'|\\'\\\\\\') | RULE_UNICODE_ESCAPE | RULE_OCTAL_ESCAPE | RULE_HEX_ESCAPE' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30985:24: '\\'\\\\\\' (\\'b\\'|\\'t\\'|\\'n\\'|\\'f\\'|\\'r\\'|\\'v\\'|\\'a\\'|\\'?\\'|\\'\"\\'|\\'\\'\\'|\\'\\\\\\') | RULE_UNICODE_ESCAPE | RULE_OCTAL_ESCAPE | RULE_HEX_ESCAPE'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31270:22: ( '\\'\\\\\\' (\\'b\\'|\\'t\\'|\\'n\\'|\\'f\\'|\\'r\\'|\\'v\\'|\\'a\\'|\\'?\\'|\\'\"\\'|\\'\\'\\'|\\'\\\\\\') | RULE_UNICODE_ESCAPE | RULE_OCTAL_ESCAPE | RULE_HEX_ESCAPE' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31270:24: '\\'\\\\\\' (\\'b\\'|\\'t\\'|\\'n\\'|\\'f\\'|\\'r\\'|\\'v\\'|\\'a\\'|\\'?\\'|\\'\"\\'|\\'\\'\\'|\\'\\\\\\') | RULE_UNICODE_ESCAPE | RULE_OCTAL_ESCAPE | RULE_HEX_ESCAPE'
             {
             match("'\\' ('b'|'t'|'n'|'f'|'r'|'v'|'a'|'?'|'\"'|'''|'\\') | RULE_UNICODE_ESCAPE | RULE_OCTAL_ESCAPE | RULE_HEX_ESCAPE"); 
 
@@ -3654,8 +3676,8 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_HEX_ESCAPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30987:17: ( '\\'\\\\\\' (\\'x\\'|\\'X\\') ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )+ (\\'l\\'|\\'L\\')?' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30987:19: '\\'\\\\\\' (\\'x\\'|\\'X\\') ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )+ (\\'l\\'|\\'L\\')?'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31272:17: ( '\\'\\\\\\' (\\'x\\'|\\'X\\') ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )+ (\\'l\\'|\\'L\\')?' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31272:19: '\\'\\\\\\' (\\'x\\'|\\'X\\') ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )+ (\\'l\\'|\\'L\\')?'
             {
             match("'\\' ('x'|'X') ( '0'..'9' | 'a'..'f' | 'A'..'F' )+ ('l'|'L')?"); 
 
@@ -3675,8 +3697,8 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_OCTAL_ESCAPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30989:19: ( '\\'\\\\\\' (\\'0\\'..\\'3\\') (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\')' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30989:21: '\\'\\\\\\' (\\'0\\'..\\'3\\') (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\')'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31274:19: ( '\\'\\\\\\' (\\'0\\'..\\'3\\') (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\')' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31274:21: '\\'\\\\\\' (\\'0\\'..\\'3\\') (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\')'
             {
             match("'\\' ('0'..'3') ('0'..'7') ('0'..'7')\r\n\t|\t'\\' ('0'..'7') ('0'..'7')\r\n\t|\t'\\' ('0'..'7')"); 
 
@@ -3696,8 +3718,8 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_UNICODE_ESCAPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30991:21: ( '\\'\\\\\\' \\'u\\' ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30991:23: '\\'\\\\\\' \\'u\\' ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31276:21: ( '\\'\\\\\\' \\'u\\' ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31276:23: '\\'\\\\\\' \\'u\\' ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )'
             {
             match("'\\' 'u' ( '0'..'9' | 'a'..'f' | 'A'..'F' ) ( '0'..'9' | 'a'..'f' | 'A'..'F' ) ( '0'..'9' | 'a'..'f' | 'A'..'F' ) ( '0'..'9' | 'a'..'f' | 'A'..'F' )"); 
 
@@ -3717,10 +3739,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30993:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30993:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31278:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31278:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30993:11: ( '^' )?
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31278:11: ( '^' )?
             int alt27=2;
             int LA27_0 = input.LA(1);
 
@@ -3729,7 +3751,7 @@ public class InternalIDLLexer extends Lexer {
             }
             switch (alt27) {
                 case 1 :
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30993:11: '^'
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31278:11: '^'
                     {
                     match('^'); 
 
@@ -3747,7 +3769,7 @@ public class InternalIDLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30993:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31278:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop28:
             do {
                 int alt28=2;
@@ -3796,10 +3818,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30995:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30995:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31280:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31280:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30995:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31280:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt31=2;
             int LA31_0 = input.LA(1);
 
@@ -3817,10 +3839,10 @@ public class InternalIDLLexer extends Lexer {
             }
             switch (alt31) {
                 case 1 :
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30995:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31280:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30995:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31280:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop29:
                     do {
                         int alt29=3;
@@ -3836,7 +3858,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt29) {
                     	case 1 :
-                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30995:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31280:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -3852,7 +3874,7 @@ public class InternalIDLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30995:62: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31280:62: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3877,10 +3899,10 @@ public class InternalIDLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30995:82: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31280:82: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30995:87: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31280:87: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop30:
                     do {
                         int alt30=3;
@@ -3896,7 +3918,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt30) {
                     	case 1 :
-                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30995:88: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31280:88: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -3912,7 +3934,7 @@ public class InternalIDLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30995:129: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31280:129: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3955,12 +3977,12 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30997:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30997:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31282:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31282:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30997:24: ( options {greedy=false; } : . )*
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31282:24: ( options {greedy=false; } : . )*
             loop32:
             do {
                 int alt32=2;
@@ -3985,7 +4007,7 @@ public class InternalIDLLexer extends Lexer {
 
                 switch (alt32) {
             	case 1 :
-            	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30997:52: .
+            	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31282:52: .
             	    {
             	    matchAny(); 
 
@@ -4015,12 +4037,12 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30999:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30999:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31284:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31284:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30999:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31284:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop33:
             do {
                 int alt33=2;
@@ -4033,7 +4055,7 @@ public class InternalIDLLexer extends Lexer {
 
                 switch (alt33) {
             	case 1 :
-            	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30999:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31284:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -4053,7 +4075,7 @@ public class InternalIDLLexer extends Lexer {
                 }
             } while (true);
 
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30999:40: ( ( '\\r' )? '\\n' )?
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31284:40: ( ( '\\r' )? '\\n' )?
             int alt35=2;
             int LA35_0 = input.LA(1);
 
@@ -4062,9 +4084,9 @@ public class InternalIDLLexer extends Lexer {
             }
             switch (alt35) {
                 case 1 :
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30999:41: ( '\\r' )? '\\n'
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31284:41: ( '\\r' )? '\\n'
                     {
-                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30999:41: ( '\\r' )?
+                    // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31284:41: ( '\\r' )?
                     int alt34=2;
                     int LA34_0 = input.LA(1);
 
@@ -4073,7 +4095,7 @@ public class InternalIDLLexer extends Lexer {
                     }
                     switch (alt34) {
                         case 1 :
-                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:30999:41: '\\r'
+                            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31284:41: '\\r'
                             {
                             match('\r'); 
 
@@ -4105,10 +4127,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31001:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31001:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31286:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31286:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31001:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31286:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt36=0;
             loop36:
             do {
@@ -4162,8 +4184,8 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31003:16: ( . )
-            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31003:18: .
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31288:16: ( . )
+            // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:31288:18: .
             {
             matchAny(); 
 
@@ -4178,8 +4200,8 @@ public class InternalIDLLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:8: ( T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | T__121 | T__122 | T__123 | T__124 | T__125 | T__126 | T__127 | T__128 | T__129 | T__130 | T__131 | T__132 | T__133 | T__134 | T__135 | T__136 | T__137 | T__138 | T__139 | T__140 | T__141 | T__142 | RULE_UNUSED_LITERAL | RULE_INTEGER_LITERAL | RULE_HEX_LITERAL | RULE_FLOATING_PT_LITERAL | RULE_CHARACTER_LITERAL | RULE_BOOLEAN_LITERAL | RULE_ESCAPE_SEQUENCE | RULE_HEX_ESCAPE | RULE_OCTAL_ESCAPE | RULE_UNICODE_ESCAPE | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt37=139;
+        // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:8: ( T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | T__121 | T__122 | T__123 | T__124 | T__125 | T__126 | T__127 | T__128 | T__129 | T__130 | T__131 | T__132 | T__133 | T__134 | T__135 | T__136 | T__137 | T__138 | T__139 | T__140 | T__141 | T__142 | T__143 | RULE_UNUSED_LITERAL | RULE_INTEGER_LITERAL | RULE_HEX_LITERAL | RULE_FLOATING_PT_LITERAL | RULE_CHARACTER_LITERAL | RULE_BOOLEAN_LITERAL | RULE_ESCAPE_SEQUENCE | RULE_HEX_ESCAPE | RULE_OCTAL_ESCAPE | RULE_UNICODE_ESCAPE | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt37=140;
         alt37 = dfa37.predict(input);
         switch (alt37) {
             case 1 :
@@ -5044,112 +5066,119 @@ public class InternalIDLLexer extends Lexer {
                 }
                 break;
             case 124 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:791: RULE_UNUSED_LITERAL
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:791: T__143
+                {
+                mT__143(); 
+
+                }
+                break;
+            case 125 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:798: RULE_UNUSED_LITERAL
                 {
                 mRULE_UNUSED_LITERAL(); 
 
                 }
                 break;
-            case 125 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:811: RULE_INTEGER_LITERAL
+            case 126 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:818: RULE_INTEGER_LITERAL
                 {
                 mRULE_INTEGER_LITERAL(); 
 
                 }
                 break;
-            case 126 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:832: RULE_HEX_LITERAL
+            case 127 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:839: RULE_HEX_LITERAL
                 {
                 mRULE_HEX_LITERAL(); 
 
                 }
                 break;
-            case 127 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:849: RULE_FLOATING_PT_LITERAL
+            case 128 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:856: RULE_FLOATING_PT_LITERAL
                 {
                 mRULE_FLOATING_PT_LITERAL(); 
 
                 }
                 break;
-            case 128 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:874: RULE_CHARACTER_LITERAL
+            case 129 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:881: RULE_CHARACTER_LITERAL
                 {
                 mRULE_CHARACTER_LITERAL(); 
 
                 }
                 break;
-            case 129 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:897: RULE_BOOLEAN_LITERAL
+            case 130 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:904: RULE_BOOLEAN_LITERAL
                 {
                 mRULE_BOOLEAN_LITERAL(); 
 
                 }
                 break;
-            case 130 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:918: RULE_ESCAPE_SEQUENCE
+            case 131 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:925: RULE_ESCAPE_SEQUENCE
                 {
                 mRULE_ESCAPE_SEQUENCE(); 
 
                 }
                 break;
-            case 131 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:939: RULE_HEX_ESCAPE
+            case 132 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:946: RULE_HEX_ESCAPE
                 {
                 mRULE_HEX_ESCAPE(); 
 
                 }
                 break;
-            case 132 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:955: RULE_OCTAL_ESCAPE
+            case 133 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:962: RULE_OCTAL_ESCAPE
                 {
                 mRULE_OCTAL_ESCAPE(); 
 
                 }
                 break;
-            case 133 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:973: RULE_UNICODE_ESCAPE
+            case 134 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:980: RULE_UNICODE_ESCAPE
                 {
                 mRULE_UNICODE_ESCAPE(); 
 
                 }
                 break;
-            case 134 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:993: RULE_ID
+            case 135 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:1000: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 135 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:1001: RULE_STRING
+            case 136 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:1008: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 136 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:1013: RULE_ML_COMMENT
+            case 137 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:1020: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 137 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:1029: RULE_SL_COMMENT
+            case 138 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:1036: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 138 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:1045: RULE_WS
+            case 139 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:1052: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 139 :
-                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:1053: RULE_ANY_OTHER
+            case 140 :
+                // ../com.zeligsoft.domain.omg.corba.dsl.editor/src-gen/com/zeligsoft/domain/omg/corba/dsl/ui/contentassist/antlr/internal/InternalIDL.g:1:1060: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -5172,12 +5201,12 @@ public class InternalIDLLexer extends Lexer {
     static final String DFA24_maxS =
         "\1\71\1\146\1\uffff\1\71\2\uffff\2\71\1\uffff";
     static final String DFA24_acceptS =
-        "\2\uffff\1\2\1\uffff\1\4\1\1\2\uffff\1\3";
+        "\2\uffff\1\2\1\uffff\1\1\1\4\2\uffff\1\3";
     static final String DFA24_specialS =
         "\11\uffff}>";
     static final String[] DFA24_transitionS = {
             "\1\2\1\uffff\12\1",
-            "\1\5\1\uffff\12\1\12\uffff\1\4\1\3\1\4\35\uffff\1\4\1\3\1\4",
+            "\1\4\1\uffff\12\1\12\uffff\1\5\1\3\1\5\35\uffff\1\5\1\3\1\5",
             "",
             "\1\6\1\uffff\1\6\2\uffff\12\7",
             "",
@@ -5217,173 +5246,23 @@ public class InternalIDLLexer extends Lexer {
             this.transition = DFA24_transition;
         }
         public String getDescription() {
-            return "30979:28: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) )";
+            return "31264:28: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) )";
         }
     }
     static final String DFA37_eotS =
-        "\1\uffff\1\67\7\100\1\124\1\127\1\131\3\100\1\uffff\1\100\2\uffff"+
-        "\1\154\1\uffff\3\100\1\167\1\uffff\7\100\2\uffff\1\u008a\1\100\1"+
-        "\u008d\1\uffff\1\u008f\4\uffff\1\u0096\2\uffff\2\u009a\1\67\2\100"+
-        "\1\uffff\1\67\10\uffff\2\100\1\uffff\14\100\1\u00bc\4\100\10\uffff"+
-        "\12\100\1\uffff\4\100\5\uffff\10\100\3\uffff\16\100\4\uffff\1\100"+
-        "\17\uffff\1\u009a\2\uffff\1\u00a1\2\100\2\uffff\1\u00f1\5\uffff"+
-        "\5\100\1\u00f9\3\100\1\u00fd\11\100\1\uffff\1\100\1\u010a\53\100"+
-        "\3\uffff\2\100\5\uffff\5\100\1\uffff\2\100\1\u0146\1\uffff\1\u0147"+
-        "\5\100\1\u014e\3\100\1\u0152\1\100\1\uffff\6\100\1\u015a\4\100\1"+
-        "\u0160\1\u0161\1\100\1\u0163\25\100\1\u0179\6\100\1\u0180\2\100"+
-        "\1\u0183\1\uffff\1\u0186\10\100\1\u018f\1\u0190\2\uffff\6\100\1"+
-        "\uffff\1\100\1\u0199\1\100\1\uffff\1\100\1\u019c\5\100\1\uffff\2"+
-        "\100\1\u01a4\2\100\2\uffff\1\100\1\uffff\10\100\1\u01b0\6\100\1"+
-        "\u01b7\1\u01b8\3\100\1\u01bc\1\uffff\1\u01bd\5\100\1\uffff\1\u01c3"+
-        "\1\100\2\uffff\1\u00a1\1\uffff\1\u0186\7\100\2\uffff\3\100\1\u01d1"+
-        "\3\100\1\u01d5\1\uffff\1\100\1\u01d7\1\uffff\1\u01d8\3\100\1\u01dc"+
-        "\2\100\1\uffff\2\100\1\u01e1\1\u01e2\1\u01e3\6\100\1\uffff\1\u01ea"+
-        "\1\u01eb\1\u01ec\2\100\1\u01ef\2\uffff\1\u01f0\2\100\2\uffff\2\100"+
-        "\1\u01f5\2\100\1\uffff\1\100\1\u00a1\1\uffff\1\100\1\u01fd\6\100"+
-        "\1\u0204\1\100\1\uffff\3\100\1\uffff\1\100\2\uffff\1\u020a\1\u020b"+
-        "\1\u020c\1\uffff\1\100\1\u020e\2\100\3\uffff\1\u0211\5\100\3\uffff"+
-        "\2\100\2\uffff\1\u0219\1\100\1\u021b\1\u021c\1\uffff\3\100\3\uffff"+
-        "\1\100\1\uffff\1\u0221\1\100\1\u0223\1\uffff\2\100\1\uffff\1\100"+
-        "\1\u0229\1\u022a\2\100\3\uffff\1\100\1\uffff\1\u022e\1\100\1\uffff"+
-        "\1\u0230\3\100\1\u0234\1\u0235\1\u0236\1\uffff\1\u0237\2\uffff\4"+
-        "\100\1\uffff\1\100\3\uffff\1\u023f\1\u0240\1\100\2\uffff\1\u0242"+
-        "\1\u0243\1\u0246\1\uffff\1\u0247\1\uffff\1\100\1\u0249\1\u024a\4"+
-        "\uffff\1\u024b\1\u024c\1\u024d\2\100\4\uffff\1\u0250\2\uffff\2\100"+
-        "\2\uffff\1\u0253\5\uffff\1\u0254\1\u0255\1\uffff\2\100\3\uffff\3"+
-        "\100\1\u025b\1\100\1\uffff\3\100\1\u0260\1\uffff";
+        "\1\uffff\1\67\7\100\1\124\1\127\1\130\2\100\1\143\1\100\1\uffff\1\100\3\uffff\3\100\1\167\1\uffff\7\100\2\uffff\1\u008a\1\100\1\u008d\1\uffff\1\u008f\4\uffff\1\u0096\2\uffff\2\u009b\1\67\2\100\1\uffff\1\67\10\uffff\2\100\1\uffff\14\100\1\u00bc\4\100\10\uffff\10\100\2\uffff\2\100\1\uffff\4\100\3\uffff\10\100\3\uffff\16\100\4\uffff\1\100\16\uffff\1\u009b\3\uffff\1\u00a1\2\100\2\uffff\1\u00f1\5\uffff\5\100\1\u00f9\3\100\1\u00fd\11\100\1\uffff\1\100\1\u010a\53\100\3\uffff\2\100\5\uffff\5\100\1\uffff\2\100\1\u0146\1\uffff\1\u0147\5\100\1\u014e\3\100\1\u0152\1\100\1\uffff\12\100\1\u0160\1\u0161\1\u0162\1\100\1\u0164\25\100\1\u017a\6\100\1\u0181\2\100\1\u0184\1\uffff\1\u0187\10\100\1\u0190\1\u0191\2\uffff\6\100\1\uffff\1\100\1\u019a\1\100\1\uffff\1\100\1\u019d\10\100\1\u01a6\2\100\3\uffff\1\100\1\uffff\10\100\1\u01b2\6\100\1\u01b9\1\u01ba\3\100\1\u01be\1\uffff\1\u01bf\5\100\1\uffff\1\u01c5\1\100\2\uffff\1\u00a1\1\uffff\1\u0187\7\100\2\uffff\3\100\1\u01d3\3\100\1\u01d7\1\uffff\1\100\1\u01d9\1\uffff\1\u01da\3\100\1\u01de\3\100\1\uffff\2\100\1\u01e4\1\u01e5\1\u01e6\6\100\1\uffff\1\u01ed\1\u01ee\1\u01ef\2\100\1\u01f2\2\uffff\1\u01f3\2\100\2\uffff\2\100\1\u01f8\2\100\1\uffff\1\100\1\u00a1\1\uffff\1\100\1\u0200\6\100\1\u0207\1\100\1\uffff\3\100\1\uffff\1\100\2\uffff\1\u020d\1\u020e\1\u020f\1\uffff\2\100\1\u0212\2\100\3\uffff\1\u0215\5\100\3\uffff\2\100\2\uffff\1\u021d\1\100\1\u021f\1\u0220\1\uffff\3\100\3\uffff\1\100\1\uffff\1\u0225\1\100\1\u0227\1\uffff\2\100\1\uffff\1\100\1\u022d\1\u022e\2\100\3\uffff\1\u0231\1\100\1\uffff\1\u0233\1\100\1\uffff\1\u0235\3\100\1\u0239\1\u023a\1\u023b\1\uffff\1\u023c\2\uffff\4\100\1\uffff\1\100\3\uffff\1\u0244\1\u0245\1\100\2\uffff\1\u0247\1\u0248\1\uffff\1\u0249\1\uffff\1\u024c\1\uffff\1\100\1\u024e\1\u024f\4\uffff\1\u0250\1\u0251\1\u0252\2\100\4\uffff\1\u0255\3\uffff\2\100\1\uffff\1\u0258\5\uffff\1\u0259\1\u025a\1\uffff\2\100\3\uffff\3\100\1\u0260\1\100\1\uffff\3\100\1\u0265\1\uffff";
     static final String DFA37_eofS =
-        "\u0261\uffff";
+        "\u0266\uffff";
     static final String DFA37_minS =
-        "\1\0\1\144\1\162\1\142\1\145\1\141\1\157\1\155\1\143\1\74\1\75\1"+
-        "\60\1\144\2\141\1\uffff\1\141\2\uffff\1\72\1\uffff\2\145\1\141\1"+
-        "\47\1\uffff\1\141\1\156\1\143\1\157\1\142\1\141\1\155\2\uffff\1"+
-        "\75\1\157\1\75\1\uffff\1\101\4\uffff\1\52\2\uffff\2\56\1\0\1\122"+
-        "\1\101\1\uffff\1\0\2\uffff\1\146\1\154\4\uffff\1\160\1\165\1\uffff"+
-        "\1\163\1\151\1\164\1\171\1\151\1\143\1\155\1\151\1\154\1\145\1\162"+
-        "\1\142\1\60\1\160\2\164\1\145\10\uffff\1\146\1\163\1\165\1\141\1"+
-        "\155\1\141\2\163\1\144\1\164\1\uffff\1\144\1\156\1\154\1\162\5\uffff"+
-        "\1\164\1\161\1\157\1\162\1\151\1\160\1\141\1\151\3\uffff\1\157\1"+
-        "\156\1\143\1\151\1\145\1\150\1\164\1\157\1\152\1\154\1\143\1\165"+
-        "\1\151\1\145\4\uffff\1\155\17\uffff\1\56\1\42\1\0\1\134\1\125\1"+
-        "\114\2\uffff\1\144\1\uffff\1\151\3\uffff\1\145\1\156\1\164\1\64"+
-        "\1\162\1\60\2\141\1\147\1\60\1\144\1\165\1\155\1\146\1\166\1\164"+
-        "\1\154\1\165\1\145\1\uffff\1\154\1\60\1\145\1\167\1\141\1\64\1\142"+
-        "\1\157\1\160\1\156\1\162\1\145\1\164\1\163\1\151\1\165\1\141\1\164"+
-        "\3\162\1\165\1\162\1\151\1\164\1\160\1\144\1\163\1\141\1\145\1\144"+
-        "\1\164\1\151\1\157\1\163\1\141\1\162\1\154\1\145\1\165\1\145\1\155"+
-        "\1\164\1\156\1\145\1\0\2\uffff\1\105\1\123\5\uffff\1\144\1\143\1"+
-        "\162\1\143\1\151\1\uffff\1\163\1\154\1\60\1\uffff\1\60\1\145\2\141"+
-        "\2\151\1\60\1\151\1\164\1\162\1\60\1\162\1\uffff\1\164\1\141\1\156"+
-        "\1\165\1\143\1\154\1\60\1\157\1\145\1\164\1\145\2\60\1\157\1\60"+
-        "\1\166\1\154\1\147\1\151\1\157\2\141\1\145\1\164\1\156\2\143\2\157"+
-        "\1\145\1\164\1\144\1\145\1\157\1\147\1\156\1\60\1\162\1\151\1\145"+
-        "\1\143\1\145\1\160\1\60\1\163\1\164\1\60\1\0\1\60\1\105\1\165\1"+
-        "\145\3\141\1\143\1\142\2\60\2\uffff\2\164\1\162\1\170\1\144\1\171"+
-        "\1\uffff\1\143\1\60\1\146\1\uffff\1\164\1\60\1\171\1\145\1\154\1"+
-        "\143\1\145\1\uffff\1\156\1\170\1\60\1\155\1\143\2\uffff\1\155\1"+
-        "\uffff\3\145\1\160\1\162\2\151\1\156\1\60\1\147\1\164\1\150\1\162"+
-        "\1\156\1\163\2\60\2\162\1\156\1\60\1\uffff\1\60\1\156\1\141\1\164"+
-        "\1\102\1\164\1\uffff\1\60\1\164\1\uffff\1\0\1\165\1\uffff\1\60\1"+
-        "\160\1\146\1\155\1\164\1\143\1\155\1\165\2\uffff\1\171\1\145\1\171"+
-        "\1\60\1\145\1\160\1\150\1\60\1\uffff\1\141\1\60\1\uffff\1\60\1\144"+
-        "\1\164\1\155\1\60\1\145\1\164\1\uffff\1\145\1\164\3\60\1\163\1\154"+
-        "\1\160\2\163\1\143\1\uffff\3\60\1\164\1\154\1\60\2\uffff\1\60\1"+
-        "\171\1\145\2\uffff\1\147\1\156\1\60\1\141\1\151\1\uffff\1\171\1"+
-        "\60\1\uffff\1\160\1\60\1\145\1\141\1\164\1\40\1\164\1\160\1\60\1"+
-        "\153\1\uffff\1\163\2\145\1\uffff\1\143\2\uffff\3\60\1\uffff\1\156"+
-        "\1\60\1\163\1\157\3\uffff\1\60\1\145\1\157\3\145\3\uffff\1\163\1"+
-        "\171\2\uffff\1\60\1\144\2\60\1\uffff\1\163\1\157\1\160\3\uffff\1"+
-        "\157\1\uffff\1\60\1\142\1\60\1\151\2\145\1\uffff\1\145\2\60\1\163"+
-        "\1\145\3\uffff\1\164\1\uffff\1\60\1\162\1\uffff\1\60\1\162\2\163"+
-        "\3\60\1\uffff\1\60\2\uffff\1\145\1\156\1\145\1\162\1\uffff\1\154"+
-        "\1\uffff\1\144\1\uffff\2\60\1\171\2\uffff\3\60\1\uffff\1\60\1\uffff"+
-        "\1\164\2\60\4\uffff\3\60\1\164\1\145\4\uffff\1\60\2\uffff\1\156"+
-        "\1\157\2\uffff\1\60\5\uffff\2\60\1\uffff\1\164\1\155\3\uffff\2\145"+
-        "\1\162\1\60\1\146\1\uffff\1\141\1\143\1\145\1\60\1\uffff";
+        "\1\0\1\144\1\162\1\142\1\145\1\141\1\157\1\155\1\143\1\74\1\75\1\60\1\144\1\141\1\72\1\141\1\uffff\1\141\3\uffff\2\145\1\141\1\47\1\uffff\1\141\1\156\1\143\1\157\1\142\1\141\1\155\2\uffff\1\75\1\157\1\75\1\uffff\1\101\4\uffff\1\52\2\uffff\2\56\1\0\1\122\1\101\1\uffff\1\0\2\uffff\1\146\1\154\4\uffff\1\160\1\165\1\uffff\1\163\1\151\1\164\1\171\1\151\1\143\1\155\1\151\1\154\1\145\1\162\1\142\1\60\1\160\2\164\1\145\10\uffff\1\146\1\163\1\165\1\155\2\141\2\163\2\uffff\1\144\1\164\1\uffff\1\144\1\156\1\154\1\162\3\uffff\1\164\1\161\1\157\1\162\1\151\1\160\1\141\1\151\3\uffff\1\157\1\156\1\143\1\151\1\145\1\150\1\164\1\157\1\152\1\154\1\143\1\165\1\151\1\145\4\uffff\1\155\16\uffff\1\56\1\uffff\1\42\1\0\1\134\1\125\1\114\2\uffff\1\144\1\uffff\1\151\3\uffff\1\145\1\156\1\164\1\64\1\162\1\60\2\141\1\147\1\60\1\144\1\165\1\155\1\146\1\166\1\164\1\154\1\165\1\145\1\uffff\1\154\1\60\1\145\1\167\1\141\1\64\1\142\1\156\1\160\1\157\1\162\1\145\1\164\1\163\1\151\1\165\1\141\1\164\3\162\1\165\1\162\1\151\1\164\1\160\1\144\1\163\1\141\1\145\1\144\1\164\1\151\1\157\1\163\1\141\1\162\1\154\1\145\1\165\1\145\1\155\1\164\1\156\1\145\1\0\2\uffff\1\105\1\123\5\uffff\1\144\1\143\1\162\1\143\1\151\1\uffff\1\163\1\154\1\60\1\uffff\1\60\1\145\2\141\2\151\1\60\1\151\1\164\1\162\1\60\1\162\1\uffff\1\164\1\141\1\156\1\165\1\143\1\154\2\145\1\164\1\157\3\60\1\157\1\60\1\166\1\154\1\147\1\151\1\157\2\141\1\145\1\164\1\156\2\143\2\157\1\145\1\164\1\144\1\145\1\157\1\147\1\156\1\60\1\162\1\151\1\145\1\143\1\145\1\160\1\60\1\163\1\164\1\60\1\0\1\60\1\105\1\165\1\145\3\141\1\143\1\142\2\60\2\uffff\2\164\1\162\1\170\1\144\1\171\1\uffff\1\143\1\60\1\146\1\uffff\1\164\1\60\1\171\1\145\1\154\1\143\1\145\1\171\1\143\1\170\1\60\1\155\1\156\3\uffff\1\155\1\uffff\3\145\1\160\1\162\2\151\1\156\1\60\1\147\1\164\1\150\1\162\1\156\1\163\2\60\2\162\1\156\1\60\1\uffff\1\60\1\156\1\141\1\164\1\102\1\164\1\uffff\1\60\1\164\1\uffff\1\0\1\165\1\uffff\1\60\1\160\1\146\1\155\1\164\1\143\1\155\1\165\2\uffff\1\171\1\145\1\171\1\60\1\145\1\160\1\150\1\60\1\uffff\1\141\1\60\1\uffff\1\60\1\144\1\164\1\155\1\60\1\160\2\164\1\uffff\2\145\3\60\1\163\1\154\1\160\2\163\1\143\1\uffff\3\60\1\164\1\154\1\60\2\uffff\1\60\1\171\1\145\2\uffff\1\147\1\156\1\60\1\141\1\151\1\uffff\1\171\1\60\1\uffff\1\160\1\60\1\145\1\141\1\164\1\40\1\164\1\160\1\60\1\153\1\uffff\1\163\2\145\1\uffff\1\143\2\uffff\3\60\1\uffff\1\145\1\157\1\60\1\163\1\156\3\uffff\1\60\1\145\1\157\3\145\3\uffff\1\163\1\171\2\uffff\1\60\1\144\2\60\1\uffff\1\163\1\157\1\160\3\uffff\1\157\1\uffff\1\60\1\142\1\60\1\151\2\145\1\uffff\1\145\2\60\1\163\1\145\3\uffff\1\60\1\162\1\uffff\1\60\1\164\1\uffff\1\60\1\162\2\163\3\60\1\uffff\1\60\2\uffff\1\145\1\156\1\145\1\162\1\uffff\1\154\1\uffff\1\144\1\uffff\2\60\1\171\2\uffff\2\60\1\uffff\1\60\1\uffff\1\60\1\uffff\1\164\2\60\4\uffff\3\60\1\164\1\145\4\uffff\1\60\3\uffff\1\156\1\157\1\uffff\1\60\5\uffff\2\60\1\uffff\1\164\1\155\3\uffff\2\145\1\162\1\60\1\146\1\uffff\1\141\1\143\1\145\1\60\1\uffff";
     static final String DFA37_maxS =
-        "\1\uffff\1\165\1\171\1\164\2\157\1\165\1\156\1\165\1\75\1\76\1\71"+
-        "\1\157\1\165\1\144\1\uffff\1\165\2\uffff\1\72\1\uffff\1\145\1\167"+
-        "\1\145\1\47\1\uffff\1\154\2\163\1\157\1\142\1\141\1\170\2\uffff"+
-        "\1\75\1\157\1\75\1\uffff\1\172\4\uffff\1\57\2\uffff\1\170\1\146"+
-        "\1\uffff\1\122\1\101\1\uffff\1\uffff\2\uffff\1\156\1\170\4\uffff"+
-        "\1\160\1\165\1\uffff\1\163\1\151\1\164\1\171\1\151\1\156\1\155\1"+
-        "\151\1\154\1\157\1\162\1\142\1\172\1\160\2\164\1\145\10\uffff\1"+
-        "\146\1\163\1\165\1\141\1\156\1\141\2\163\1\144\1\164\1\uffff\1\144"+
-        "\1\156\1\154\1\162\5\uffff\2\164\1\157\1\162\1\151\1\160\1\141\1"+
-        "\151\3\uffff\1\157\1\170\1\143\1\163\1\145\1\150\1\164\1\157\1\152"+
-        "\1\154\1\143\1\165\1\151\1\145\4\uffff\1\155\17\uffff\1\146\1\164"+
-        "\1\uffff\1\134\1\125\1\114\2\uffff\1\156\1\uffff\1\163\3\uffff\1"+
-        "\145\1\156\1\164\1\64\1\162\1\172\2\141\1\147\1\172\1\144\1\165"+
-        "\1\166\1\146\1\166\1\164\1\154\1\165\1\145\1\uffff\1\157\1\172\1"+
-        "\145\1\167\1\151\1\64\1\142\1\157\1\160\1\164\1\162\1\145\1\164"+
-        "\1\163\1\151\1\165\1\141\1\164\3\162\1\165\1\162\1\165\1\164\1\160"+
-        "\1\144\1\163\1\141\1\145\1\144\1\164\1\151\1\157\1\163\1\141\1\162"+
-        "\1\154\1\145\1\165\1\145\1\155\1\164\1\156\1\145\1\uffff\2\uffff"+
-        "\1\105\1\123\5\uffff\1\163\1\143\1\162\1\143\1\151\1\uffff\1\163"+
-        "\1\154\1\172\1\uffff\1\172\1\145\2\141\2\151\1\172\1\151\1\164\1"+
-        "\162\1\172\1\162\1\uffff\1\164\1\141\1\156\1\165\1\143\1\154\1\172"+
-        "\1\157\1\145\1\165\1\145\2\172\1\157\1\172\1\166\1\154\1\147\1\151"+
-        "\1\157\2\141\1\145\1\164\1\156\2\143\2\157\1\145\1\164\1\144\1\145"+
-        "\1\157\1\147\1\156\1\172\1\162\1\151\1\145\1\143\1\145\1\160\1\172"+
-        "\1\163\1\164\1\172\1\uffff\1\172\1\105\1\165\1\145\3\141\1\143\1"+
-        "\142\2\172\2\uffff\2\164\1\162\1\170\1\144\1\171\1\uffff\1\163\1"+
-        "\172\1\146\1\uffff\1\164\1\172\1\171\1\145\1\154\1\143\1\145\1\uffff"+
-        "\1\156\1\170\1\172\1\155\1\143\2\uffff\1\155\1\uffff\3\145\1\160"+
-        "\1\162\2\151\1\156\1\172\1\147\1\164\1\150\1\162\1\156\1\163\2\172"+
-        "\2\162\1\156\1\172\1\uffff\1\172\1\156\1\141\1\164\1\102\1\164\1"+
-        "\uffff\1\172\1\164\1\uffff\1\uffff\1\165\1\uffff\1\172\1\160\1\146"+
-        "\1\155\1\164\1\143\1\155\1\165\2\uffff\1\171\1\145\1\171\1\172\1"+
-        "\145\1\160\1\150\1\172\1\uffff\1\141\1\172\1\uffff\1\172\1\144\1"+
-        "\164\1\155\1\172\1\145\1\164\1\uffff\1\145\1\164\3\172\1\163\1\154"+
-        "\1\160\2\163\1\143\1\uffff\3\172\1\164\1\154\1\172\2\uffff\1\172"+
-        "\1\171\1\145\2\uffff\1\147\1\156\1\172\1\141\1\151\1\uffff\1\171"+
-        "\1\170\1\uffff\1\160\1\172\1\145\1\141\1\164\1\40\1\164\1\160\1"+
-        "\172\1\153\1\uffff\1\163\2\145\1\uffff\1\143\2\uffff\3\172\1\uffff"+
-        "\1\156\1\172\1\163\1\157\3\uffff\1\172\1\145\1\157\3\145\3\uffff"+
-        "\1\163\1\171\2\uffff\1\172\1\144\2\172\1\uffff\1\163\1\157\1\160"+
-        "\3\uffff\1\157\1\uffff\1\172\1\142\1\172\1\162\2\145\1\uffff\1\145"+
-        "\2\172\1\163\1\145\3\uffff\1\164\1\uffff\1\172\1\162\1\uffff\1\172"+
-        "\1\162\2\163\3\172\1\uffff\1\172\2\uffff\1\145\1\156\1\145\1\162"+
-        "\1\uffff\1\154\1\uffff\1\156\1\uffff\2\172\1\171\2\uffff\3\172\1"+
-        "\uffff\1\172\1\uffff\1\164\2\172\4\uffff\3\172\1\164\1\145\4\uffff"+
-        "\1\172\2\uffff\1\156\1\157\2\uffff\1\172\5\uffff\2\172\1\uffff\1"+
-        "\164\1\155\3\uffff\2\145\1\162\1\172\1\146\1\uffff\1\141\1\143\1"+
-        "\145\1\172\1\uffff";
+        "\1\uffff\1\165\1\171\1\164\2\157\1\165\1\156\1\165\1\75\1\76\1\71\1\157\1\165\1\72\1\144\1\uffff\1\165\3\uffff\1\145\1\167\1\145\1\47\1\uffff\1\154\2\163\1\157\1\142\1\141\1\170\2\uffff\1\75\1\157\1\75\1\uffff\1\172\4\uffff\1\57\2\uffff\1\170\1\146\1\uffff\1\122\1\101\1\uffff\1\uffff\2\uffff\1\156\1\170\4\uffff\1\160\1\165\1\uffff\1\163\1\151\1\164\1\171\1\151\1\156\1\155\1\151\1\154\1\157\1\162\1\142\1\172\1\160\2\164\1\145\10\uffff\1\146\1\163\1\165\1\156\2\141\2\163\2\uffff\1\144\1\164\1\uffff\1\144\1\156\1\154\1\162\3\uffff\2\164\1\157\1\162\1\151\1\160\1\141\1\151\3\uffff\1\157\1\170\1\143\1\163\1\145\1\150\1\164\1\157\1\152\1\154\1\143\1\165\1\151\1\145\4\uffff\1\155\16\uffff\1\146\1\uffff\1\164\1\uffff\1\134\1\125\1\114\2\uffff\1\156\1\uffff\1\163\3\uffff\1\145\1\156\1\164\1\64\1\162\1\172\2\141\1\147\1\172\1\144\1\165\1\166\1\146\1\166\1\164\1\154\1\165\1\145\1\uffff\1\157\1\172\1\145\1\167\1\151\1\64\1\142\1\164\1\160\1\157\1\162\1\145\1\164\1\163\1\151\1\165\1\141\1\164\3\162\1\165\1\162\1\165\1\164\1\160\1\144\1\163\1\141\1\145\1\144\1\164\1\151\1\157\1\163\1\141\1\162\1\154\1\145\1\165\1\145\1\155\1\164\1\156\1\145\1\uffff\2\uffff\1\105\1\123\5\uffff\1\163\1\143\1\162\1\143\1\151\1\uffff\1\163\1\154\1\172\1\uffff\1\172\1\145\2\141\2\151\1\172\1\151\1\164\1\162\1\172\1\162\1\uffff\1\164\1\141\1\156\1\165\1\143\1\154\1\164\1\145\1\165\1\157\3\172\1\157\1\172\1\166\1\154\1\147\1\151\1\157\2\141\1\145\1\164\1\156\2\143\2\157\1\145\1\164\1\144\1\145\1\157\1\147\1\156\1\172\1\162\1\151\1\145\1\143\1\145\1\160\1\172\1\163\1\164\1\172\1\uffff\1\172\1\105\1\165\1\145\3\141\1\143\1\142\2\172\2\uffff\2\164\1\162\1\170\1\144\1\171\1\uffff\1\163\1\172\1\146\1\uffff\1\164\1\172\1\171\1\145\1\154\1\143\1\145\1\171\1\143\1\170\1\172\1\155\1\156\3\uffff\1\155\1\uffff\3\145\1\160\1\162\2\151\1\156\1\172\1\147\1\164\1\150\1\162\1\156\1\163\2\172\2\162\1\156\1\172\1\uffff\1\172\1\156\1\141\1\164\1\102\1\164\1\uffff\1\172\1\164\1\uffff\1\uffff\1\165\1\uffff\1\172\1\160\1\146\1\155\1\164\1\143\1\155\1\165\2\uffff\1\171\1\145\1\171\1\172\1\145\1\160\1\150\1\172\1\uffff\1\141\1\172\1\uffff\1\172\1\144\1\164\1\155\1\172\1\160\2\164\1\uffff\2\145\3\172\1\163\1\154\1\160\2\163\1\143\1\uffff\3\172\1\164\1\154\1\172\2\uffff\1\172\1\171\1\145\2\uffff\1\147\1\156\1\172\1\141\1\151\1\uffff\1\171\1\170\1\uffff\1\160\1\172\1\145\1\141\1\164\1\40\1\164\1\160\1\172\1\153\1\uffff\1\163\2\145\1\uffff\1\143\2\uffff\3\172\1\uffff\1\145\1\157\1\172\1\163\1\156\3\uffff\1\172\1\145\1\157\3\145\3\uffff\1\163\1\171\2\uffff\1\172\1\144\2\172\1\uffff\1\163\1\157\1\160\3\uffff\1\157\1\uffff\1\172\1\142\1\172\1\162\2\145\1\uffff\1\145\2\172\1\163\1\145\3\uffff\1\172\1\162\1\uffff\1\172\1\164\1\uffff\1\172\1\162\2\163\3\172\1\uffff\1\172\2\uffff\1\145\1\156\1\145\1\162\1\uffff\1\154\1\uffff\1\156\1\uffff\2\172\1\171\2\uffff\2\172\1\uffff\1\172\1\uffff\1\172\1\uffff\1\164\2\172\4\uffff\3\172\1\164\1\145\4\uffff\1\172\3\uffff\1\156\1\157\1\uffff\1\172\5\uffff\2\172\1\uffff\1\164\1\155\3\uffff\2\145\1\162\1\172\1\146\1\uffff\1\141\1\143\1\145\1\172\1\uffff";
     static final String DFA37_acceptS =
-        "\17\uffff\1\47\1\uffff\1\51\1\52\1\uffff\1\55\4\uffff\1\64\7\uffff"+
-        "\1\106\1\107\3\uffff\1\154\1\uffff\1\156\1\161\1\162\1\163\1\uffff"+
-        "\1\165\1\166\5\uffff\1\u0086\1\uffff\1\u008a\1\u008b\2\uffff\1\22"+
-        "\1\26\1\30\1\44\2\uffff\1\u0086\21\uffff\1\150\1\157\1\15\1\147"+
-        "\1\160\1\16\1\177\1\17\12\uffff\1\47\4\uffff\1\51\1\52\1\66\1\54"+
-        "\1\55\10\uffff\1\174\1\63\1\64\16\uffff\1\106\1\107\1\145\1\121"+
-        "\1\uffff\1\146\1\144\1\154\1\155\1\156\1\161\1\162\1\163\1\u0088"+
-        "\1\u0089\1\164\1\165\1\166\1\176\1\175\6\uffff\1\u0087\1\u008a\1"+
-        "\uffff\1\14\1\uffff\1\25\1\27\1\45\23\uffff\1\11\56\uffff\2\u0080"+
-        "\2\uffff\1\20\1\21\1\1\1\2\1\24\5\uffff\1\100\3\uffff\1\33\14\uffff"+
-        "\1\12\73\uffff\1\71\1\6\6\uffff\1\10\3\uffff\1\43\7\uffff\1\32\5"+
-        "\uffff\1\74\1\152\1\uffff\1\37\25\uffff\1\125\6\uffff\1\114\2\uffff"+
-        "\1\131\2\uffff\1\u0081\10\uffff\1\143\1\5\10\uffff\1\13\2\uffff"+
-        "\1\77\7\uffff\1\120\13\uffff\1\72\6\uffff\1\67\1\117\3\uffff\1\112"+
-        "\1\75\5\uffff\1\127\2\uffff\1\u0085\12\uffff\1\31\3\uffff\1\172"+
-        "\1\uffff\1\46\1\151\3\uffff\1\70\4\uffff\1\170\1\116\1\50\6\uffff"+
-        "\1\103\1\110\1\113\2\uffff\1\62\1\135\4\uffff\1\101\3\uffff\1\u0082"+
-        "\1\u0083\1\u0084\1\uffff\1\111\6\uffff\1\7\5\uffff\1\23\1\153\1"+
-        "\42\1\uffff\1\65\2\uffff\1\132\7\uffff\1\134\1\uffff\1\104\1\76"+
-        "\4\uffff\1\141\1\uffff\1\4\1\uffff\1\35\3\uffff\1\124\1\137\3\uffff"+
-        "\1\130\1\uffff\1\167\3\uffff\1\115\1\123\1\61\1\73\5\uffff\1\34"+
-        "\1\36\1\56\1\142\1\uffff\1\126\1\53\2\uffff\1\122\1\140\1\uffff"+
-        "\1\57\1\60\1\102\1\105\1\136\2\uffff\1\133\2\uffff\1\173\1\3\1\171"+
-        "\5\uffff\1\41\4\uffff\1\40";
+        "\20\uffff\1\51\1\uffff\1\53\1\54\1\57\4\uffff\1\66\7\uffff\1\107\1\110\3\uffff\1\155\1\uffff\1\157\1\162\1\163\1\164\1\uffff\1\166\1\167\5\uffff\1\u0087\1\uffff\1\u008b\1\u008c\2\uffff\1\22\1\26\1\30\1\46\2\uffff\1\u0087\21\uffff\1\151\1\160\1\15\1\150\1\161\1\16\1\17\1\u0080\10\uffff\1\33\1\56\2\uffff\1\51\4\uffff\1\53\1\54\1\57\10\uffff\1\175\1\65\1\66\16\uffff\1\107\1\110\1\146\1\122\1\uffff\1\147\1\145\1\155\1\156\1\157\1\162\1\163\1\164\1\u0089\1\u008a\1\165\1\166\1\167\1\177\1\uffff\1\176\5\uffff\1\u0088\1\u008b\1\uffff\1\14\1\uffff\1\25\1\27\1\47\23\uffff\1\11\56\uffff\2\u0081\2\uffff\1\20\1\21\1\1\1\2\1\24\5\uffff\1\101\3\uffff\1\35\14\uffff\1\12\73\uffff\1\72\1\6\6\uffff\1\10\3\uffff\1\45\15\uffff\1\34\1\75\1\153\1\uffff\1\41\25\uffff\1\126\6\uffff\1\115\2\uffff\1\132\2\uffff\1\u0082\10\uffff\1\144\1\5\10\uffff\1\13\2\uffff\1\100\10\uffff\1\121\13\uffff\1\73\6\uffff\1\70\1\120\3\uffff\1\113\1\76\5\uffff\1\130\2\uffff\1\u0086\12\uffff\1\31\3\uffff\1\173\1\uffff\1\50\1\152\3\uffff\1\71\5\uffff\1\171\1\117\1\52\6\uffff\1\104\1\111\1\114\2\uffff\1\64\1\136\4\uffff\1\102\3\uffff\1\u0083\1\u0084\1\u0085\1\uffff\1\112\6\uffff\1\7\5\uffff\1\23\1\154\1\44\2\uffff\1\67\2\uffff\1\133\7\uffff\1\135\1\uffff\1\105\1\77\4\uffff\1\142\1\uffff\1\4\1\uffff\1\37\3\uffff\1\125\1\140\2\uffff\1\32\1\uffff\1\131\1\uffff\1\170\3\uffff\1\116\1\124\1\63\1\74\5\uffff\1\36\1\40\1\60\1\143\1\uffff\1\127\1\55\1\141\2\uffff\1\123\1\uffff\1\61\1\62\1\103\1\106\1\137\2\uffff\1\134\2\uffff\1\174\1\3\1\172\5\uffff\1\43\4\uffff\1\42";
     static final String DFA37_specialS =
-        "\1\2\60\uffff\1\4\3\uffff\1\3\147\uffff\1\1\114\uffff\1\5\117\uffff"+
-        "\1\6\111\uffff\1\0\u00dc\uffff}>";
+        "\1\0\60\uffff\1\3\3\uffff\1\6\147\uffff\1\5\114\uffff\1\1\117\uffff\1\2\112\uffff\1\4\u00e0\uffff}>";
     static final String[] DFA37_transitionS = {
-            "\11\67\2\66\2\67\1\66\22\67\1\66\1\45\1\65\1\1\1\67\1\55\1\50"+
-            "\1\61\1\30\1\31\1\53\1\51\1\24\1\52\1\13\1\54\1\57\11\60\1\23"+
-            "\1\17\1\11\1\43\1\12\2\67\5\64\1\63\10\64\1\36\4\64\1\62\1\64"+
-            "\1\37\4\64\1\41\1\67\1\42\1\47\1\64\1\67\1\3\1\35\1\15\1\14"+
-            "\1\40\1\32\1\25\1\44\1\7\2\64\1\4\1\20\1\16\1\10\1\6\1\64\1"+
-            "\27\1\26\1\2\1\33\1\5\1\34\3\64\1\21\1\46\1\22\1\56\uff81\67",
+            "\11\67\2\66\2\67\1\66\22\67\1\66\1\45\1\65\1\1\1\67\1\55\1\50\1\61\1\30\1\31\1\53\1\51\1\24\1\52\1\13\1\54\1\57\11\60\1\16\1\20\1\11\1\43\1\12\2\67\5\64\1\63\10\64\1\36\4\64\1\62\1\64\1\37\4\64\1\41\1\67\1\42\1\47\1\64\1\67\1\3\1\35\1\15\1\14\1\40\1\32\1\25\1\44\1\7\2\64\1\4\1\21\1\17\1\10\1\6\1\64\1\27\1\26\1\2\1\33\1\5\1\34\3\64\1\22\1\46\1\23\1\56\uff81\67",
             "\1\73\1\71\1\75\2\uffff\1\70\6\uffff\1\74\4\uffff\1\72",
             "\1\77\6\uffff\1\76",
             "\1\101\11\uffff\1\105\1\102\1\104\5\uffff\1\103",
@@ -5394,15 +5273,15 @@ public class InternalIDLLexer extends Lexer {
             "\1\120\12\uffff\1\121\6\uffff\1\117",
             "\1\123\1\122",
             "\1\125\1\126",
-            "\12\130",
+            "\12\131",
             "\1\133\1\132\11\uffff\1\134",
-            "\1\140\6\uffff\1\137\1\135\5\uffff\1\136\5\uffff\1\141",
-            "\1\143\2\uffff\1\142",
+            "\1\140\6\uffff\1\137\1\136\5\uffff\1\135\5\uffff\1\141",
+            "\1\142",
+            "\1\145\2\uffff\1\144",
             "",
-            "\1\146\7\uffff\1\150\5\uffff\1\145\5\uffff\1\147",
+            "\1\150\7\uffff\1\152\5\uffff\1\147\5\uffff\1\151",
             "",
             "",
-            "\1\153",
             "",
             "\1\156",
             "\1\157\2\uffff\1\160\13\uffff\1\161\1\163\1\uffff\1\162",
@@ -5430,9 +5309,8 @@ public class InternalIDLLexer extends Lexer {
             "\1\u0094\4\uffff\1\u0095",
             "",
             "",
-            "\1\130\1\uffff\12\u009b\12\uffff\3\130\21\uffff\1\u0099\13"+
-            "\uffff\3\130\21\uffff\1\u0099",
-            "\1\130\1\uffff\12\u009b\12\uffff\3\130\35\uffff\3\130",
+            "\1\131\1\uffff\12\u009a\12\uffff\3\131\21\uffff\1\u0099\13\uffff\3\131\21\uffff\1\u0099",
+            "\1\131\1\uffff\12\u009a\12\uffff\3\131\35\uffff\3\131",
             "\47\u009d\1\u009e\64\u009d\1\u009c\uffa3\u009d",
             "\1\u009f",
             "\1\u00a0",
@@ -5461,8 +5339,7 @@ public class InternalIDLLexer extends Lexer {
             "\1\u00b6\3\uffff\1\u00b5\5\uffff\1\u00b7",
             "\1\u00b8",
             "\1\u00b9",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\16\100\1\u00ba"+
-            "\4\100\1\u00bb\6\100",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\16\100\1\u00ba\4\100\1\u00bb\6\100",
             "\1\u00bd",
             "\1\u00be",
             "\1\u00bf",
@@ -5478,11 +5355,13 @@ public class InternalIDLLexer extends Lexer {
             "\1\u00c1",
             "\1\u00c2",
             "\1\u00c3",
-            "\1\u00c4",
-            "\1\u00c5\1\u00c6",
+            "\1\u00c5\1\u00c4",
+            "\1\u00c6",
             "\1\u00c7",
             "\1\u00c8",
             "\1\u00c9",
+            "",
+            "",
             "\1\u00ca",
             "\1\u00cb",
             "",
@@ -5490,8 +5369,6 @@ public class InternalIDLLexer extends Lexer {
             "\1\u00cd",
             "\1\u00ce",
             "\1\u00cf",
-            "",
-            "",
             "",
             "",
             "",
@@ -5539,10 +5416,9 @@ public class InternalIDLLexer extends Lexer {
             "",
             "",
             "",
+            "\1\131\1\uffff\12\u009a\12\uffff\3\131\35\uffff\3\131",
             "",
-            "\1\130\1\uffff\12\u009b\12\uffff\3\130\35\uffff\3\130",
-            "\1\u00a1\4\uffff\1\u00ea\64\uffff\1\u00a1\5\uffff\1\u00a1\3"+
-            "\uffff\1\u00a1\7\uffff\1\u00a1\3\uffff\1\u00a1\1\uffff\1\u00a1",
+            "\1\u00a1\4\uffff\1\u00ea\64\uffff\1\u00a1\5\uffff\1\u00a1\3\uffff\1\u00a1\7\uffff\1\u00a1\3\uffff\1\u00a1\1\uffff\1\u00a1",
             "\47\u00a1\1\u00eb\uffd8\u00a1",
             "\1\u00ec",
             "\1\u00ed",
@@ -5582,9 +5458,9 @@ public class InternalIDLLexer extends Lexer {
             "\1\u010e\7\uffff\1\u010d",
             "\1\u010f",
             "\1\u0110",
-            "\1\u0111",
-            "\1\u0112",
-            "\1\u0115\4\uffff\1\u0114\1\u0113",
+            "\1\u0111\4\uffff\1\u0113\1\u0112",
+            "\1\u0114",
+            "\1\u0115",
             "\1\u0116",
             "\1\u0117",
             "\1\u0118",
@@ -5646,8 +5522,7 @@ public class InternalIDLLexer extends Lexer {
             "\1\u014a",
             "\1\u014b",
             "\1\u014c",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\23\100\1\u014d"+
-            "\6\100",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\23\100\1\u014d\6\100",
             "\1\u014f",
             "\1\u0150",
             "\1\u0151",
@@ -5660,16 +5535,15 @@ public class InternalIDLLexer extends Lexer {
             "\1\u0157",
             "\1\u0158",
             "\1\u0159",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u015b",
+            "\1\u015b\16\uffff\1\u015a",
             "\1\u015c",
             "\1\u015d\1\u015e",
             "\1\u015f",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u0162",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u0164",
+            "\1\u0163",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\1\u0165",
             "\1\u0166",
             "\1\u0167",
@@ -5690,20 +5564,20 @@ public class InternalIDLLexer extends Lexer {
             "\1\u0176",
             "\1\u0177",
             "\1\u0178",
+            "\1\u0179",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u017a",
             "\1\u017b",
             "\1\u017c",
             "\1\u017d",
             "\1\u017e",
             "\1\u017f",
+            "\1\u0180",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u0181",
             "\1\u0182",
+            "\1\u0183",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\47\u00a1\1\u0185\1\u0184\uffd7\u00a1",
+            "\47\u00a1\1\u0186\1\u0185\uffd7\u00a1",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u0187",
             "\1\u0188",
             "\1\u0189",
             "\1\u018a",
@@ -5711,290 +5585,295 @@ public class InternalIDLLexer extends Lexer {
             "\1\u018c",
             "\1\u018d",
             "\1\u018e",
+            "\1\u018f",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "",
             "",
-            "\1\u0191",
             "\1\u0192",
             "\1\u0193",
             "\1\u0194",
             "\1\u0195",
             "\1\u0196",
+            "\1\u0197",
             "",
-            "\1\u0198\17\uffff\1\u0197",
+            "\1\u0199\17\uffff\1\u0198",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u019a",
-            "",
             "\1\u019b",
+            "",
+            "\1\u019c",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u019d",
             "\1\u019e",
             "\1\u019f",
             "\1\u01a0",
             "\1\u01a1",
-            "",
             "\1\u01a2",
             "\1\u01a3",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u01a4",
             "\1\u01a5",
-            "\1\u01a6",
-            "",
-            "",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\1\u01a7",
-            "",
             "\1\u01a8",
+            "",
+            "",
+            "",
             "\1\u01a9",
+            "",
             "\1\u01aa",
             "\1\u01ab",
             "\1\u01ac",
             "\1\u01ad",
             "\1\u01ae",
             "\1\u01af",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u01b0",
             "\1\u01b1",
-            "\1\u01b2",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\1\u01b3",
             "\1\u01b4",
             "\1\u01b5",
             "\1\u01b6",
+            "\1\u01b7",
+            "\1\u01b8",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u01b9",
-            "\1\u01ba",
             "\1\u01bb",
+            "\1\u01bc",
+            "\1\u01bd",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u01be",
-            "\1\u01bf",
             "\1\u01c0",
             "\1\u01c1",
             "\1\u01c2",
-            "",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u01c3",
             "\1\u01c4",
             "",
-            "\47\u00a1\1\u01c5\uffd8\u00a1",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\1\u01c6",
             "",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u01c7",
+            "\47\u00a1\1\u01c7\uffd8\u00a1",
             "\1\u01c8",
+            "",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\1\u01c9",
             "\1\u01ca",
             "\1\u01cb",
             "\1\u01cc",
             "\1\u01cd",
-            "",
-            "",
             "\1\u01ce",
             "\1\u01cf",
-            "\1\u01d0",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u01d2",
-            "\1\u01d3",
-            "\1\u01d4",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "",
+            "",
+            "\1\u01d0",
+            "\1\u01d1",
+            "\1\u01d2",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u01d4",
+            "\1\u01d5",
             "\1\u01d6",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "",
+            "\1\u01d8",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u01d9",
-            "\1\u01da",
-            "\1\u01db",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u01dd",
-            "\1\u01de",
             "",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u01db",
+            "\1\u01dc",
+            "\1\u01dd",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\1\u01df",
             "\1\u01e0",
+            "\1\u01e1",
+            "",
+            "\1\u01e2",
+            "\1\u01e3",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u01e4",
-            "\1\u01e5",
-            "\1\u01e6",
             "\1\u01e7",
             "\1\u01e8",
             "\1\u01e9",
+            "\1\u01ea",
+            "\1\u01eb",
+            "\1\u01ec",
             "",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u01ed",
-            "\1\u01ee",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "",
-            "",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u01f0",
             "\1\u01f1",
-            "\1\u01f2",
-            "",
-            "",
-            "\1\u01f3",
-            "\1\u01f4",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "",
+            "",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u01f4",
+            "\1\u01f5",
+            "",
+            "",
             "\1\u01f6",
             "\1\u01f7",
-            "",
-            "\1\u01f8",
-            "\1\u01fb\61\uffff\1\u01f9\25\uffff\1\u01fa",
-            "",
-            "\1\u01fc",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u01fe",
+            "\1\u01f9",
+            "\1\u01fa",
+            "",
+            "\1\u01fb",
+            "\1\u01fe\61\uffff\1\u01fc\25\uffff\1\u01fd",
+            "",
             "\1\u01ff",
-            "\1\u0200",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\1\u0201",
             "\1\u0202",
             "\1\u0203",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u0204",
             "\1\u0205",
-            "",
             "\1\u0206",
-            "\1\u0207",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\1\u0208",
             "",
             "\1\u0209",
+            "\1\u020a",
+            "\1\u020b",
+            "",
+            "\1\u020c",
             "",
             "",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "",
-            "\1\u020d",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u020f",
             "\1\u0210",
-            "",
-            "",
-            "",
+            "\1\u0211",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u0212",
             "\1\u0213",
             "\1\u0214",
-            "\1\u0215",
+            "",
+            "",
+            "",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\1\u0216",
-            "",
-            "",
-            "",
             "\1\u0217",
             "\1\u0218",
-            "",
-            "",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u0219",
             "\1\u021a",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "",
-            "\1\u021d",
+            "",
+            "",
+            "\1\u021b",
+            "\1\u021c",
+            "",
+            "",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\1\u021e",
-            "\1\u021f",
-            "",
-            "",
-            "",
-            "\1\u0220",
-            "",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "",
+            "\1\u0221",
             "\1\u0222",
+            "\1\u0223",
+            "",
+            "",
+            "",
+            "\1\u0224",
+            "",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u0224\10\uffff\1\u0225",
             "\1\u0226",
-            "\1\u0227",
-            "",
-            "\1\u0228",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u0228\10\uffff\1\u0229",
+            "\1\u022a",
             "\1\u022b",
+            "",
             "\1\u022c",
-            "",
-            "",
-            "",
-            "\1\u022d",
-            "",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\1\u022f",
+            "\1\u0230",
+            "",
+            "",
             "",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u0231",
             "\1\u0232",
-            "\1\u0233",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u0234",
             "",
-            "",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u0236",
+            "\1\u0237",
             "\1\u0238",
-            "\1\u0239",
-            "\1\u023a",
-            "\1\u023b",
-            "",
-            "\1\u023c",
-            "",
-            "\1\u023e\11\uffff\1\u023d",
-            "",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "",
+            "",
+            "\1\u023d",
+            "\1\u023e",
+            "\1\u023f",
+            "\1\u0240",
+            "",
             "\1\u0241",
             "",
+            "\1\u0243\11\uffff\1\u0242",
             "",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\12\100\7\uffff\7\100\1\u0245\1\u0244\21\100\4\uffff\1\100"+
-            "\1\uffff\32\100",
-            "",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "",
-            "\1\u0248",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "",
-            "",
+            "\1\u0246",
             "",
             "",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "\1\u024e",
-            "\1\u024f",
-            "",
-            "",
-            "",
             "",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "",
+            "\12\100\7\uffff\7\100\1\u024b\1\u024a\21\100\4\uffff\1\100\1\uffff\32\100",
             "",
-            "\1\u0251",
-            "\1\u0252",
-            "",
-            "",
+            "\1\u024d",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
-            "",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "",
             "",
             "",
             "",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u0253",
+            "\1\u0254",
+            "",
+            "",
+            "",
+            "",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "",
+            "",
             "",
             "\1\u0256",
             "\1\u0257",
             "",
-            "",
-            "",
-            "\1\u0258",
-            "\1\u0259",
-            "\1\u025a",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "",
+            "\1\u025b",
             "\1\u025c",
+            "",
+            "",
             "",
             "\1\u025d",
             "\1\u025e",
             "\1\u025f",
+            "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
+            "\1\u0261",
+            "",
+            "\1\u0262",
+            "\1\u0263",
+            "\1\u0264",
             "\12\100\7\uffff\32\100\4\uffff\1\100\1\uffff\32\100",
             ""
     };
@@ -6029,33 +5908,13 @@ public class InternalIDLLexer extends Lexer {
             this.transition = DFA37_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | T__121 | T__122 | T__123 | T__124 | T__125 | T__126 | T__127 | T__128 | T__129 | T__130 | T__131 | T__132 | T__133 | T__134 | T__135 | T__136 | T__137 | T__138 | T__139 | T__140 | T__141 | T__142 | RULE_UNUSED_LITERAL | RULE_INTEGER_LITERAL | RULE_HEX_LITERAL | RULE_FLOATING_PT_LITERAL | RULE_CHARACTER_LITERAL | RULE_BOOLEAN_LITERAL | RULE_ESCAPE_SEQUENCE | RULE_HEX_ESCAPE | RULE_OCTAL_ESCAPE | RULE_UNICODE_ESCAPE | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | T__121 | T__122 | T__123 | T__124 | T__125 | T__126 | T__127 | T__128 | T__129 | T__130 | T__131 | T__132 | T__133 | T__134 | T__135 | T__136 | T__137 | T__138 | T__139 | T__140 | T__141 | T__142 | T__143 | RULE_UNUSED_LITERAL | RULE_INTEGER_LITERAL | RULE_HEX_LITERAL | RULE_FLOATING_PT_LITERAL | RULE_CHARACTER_LITERAL | RULE_BOOLEAN_LITERAL | RULE_ESCAPE_SEQUENCE | RULE_HEX_ESCAPE | RULE_OCTAL_ESCAPE | RULE_UNICODE_ESCAPE | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA37_388 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA37_388=='\'') ) {s = 453;}
-
-                        else if ( ((LA37_388>='\u0000' && LA37_388<='&')||(LA37_388>='(' && LA37_388<='\uFFFF')) ) {s = 161;}
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA37_157 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA37_157=='\'') ) {s = 235;}
-
-                        else if ( ((LA37_157>='\u0000' && LA37_157<='&')||(LA37_157>='(' && LA37_157<='\uFFFF')) ) {s = 161;}
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
                         int LA37_0 = input.LA(1);
 
                         s = -1;
@@ -6085,17 +5944,17 @@ public class InternalIDLLexer extends Lexer {
 
                         else if ( (LA37_0=='c') ) {s = 13;}
 
-                        else if ( (LA37_0=='n') ) {s = 14;}
+                        else if ( (LA37_0==':') ) {s = 14;}
 
-                        else if ( (LA37_0==';') ) {s = 15;}
+                        else if ( (LA37_0=='n') ) {s = 15;}
 
-                        else if ( (LA37_0=='m') ) {s = 16;}
+                        else if ( (LA37_0==';') ) {s = 16;}
 
-                        else if ( (LA37_0=='{') ) {s = 17;}
+                        else if ( (LA37_0=='m') ) {s = 17;}
 
-                        else if ( (LA37_0=='}') ) {s = 18;}
+                        else if ( (LA37_0=='{') ) {s = 18;}
 
-                        else if ( (LA37_0==':') ) {s = 19;}
+                        else if ( (LA37_0=='}') ) {s = 19;}
 
                         else if ( (LA37_0==',') ) {s = 20;}
 
@@ -6171,17 +6030,29 @@ public class InternalIDLLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 3 : 
-                        int LA37_53 = input.LA(1);
+                    case 1 : 
+                        int LA37_234 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA37_53>='\u0000' && LA37_53<='\uFFFF')) ) {s = 161;}
+                        if ( (LA37_234==' ') ) {s = 314;}
 
-                        else s = 55;
+                        else if ( ((LA37_234>='\u0000' && LA37_234<='\u001F')||(LA37_234>='!' && LA37_234<='\uFFFF')) ) {s = 161;}
 
                         if ( s>=0 ) return s;
                         break;
-                    case 4 : 
+                    case 2 : 
+                        int LA37_314 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA37_314=='(') ) {s = 389;}
+
+                        else if ( (LA37_314=='\'') ) {s = 390;}
+
+                        else if ( ((LA37_314>='\u0000' && LA37_314<='&')||(LA37_314>=')' && LA37_314<='\uFFFF')) ) {s = 161;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
                         int LA37_49 = input.LA(1);
 
                         s = -1;
@@ -6195,25 +6066,33 @@ public class InternalIDLLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 5 : 
-                        int LA37_234 = input.LA(1);
+                    case 4 : 
+                        int LA37_389 = input.LA(1);
 
                         s = -1;
-                        if ( (LA37_234==' ') ) {s = 314;}
+                        if ( (LA37_389=='\'') ) {s = 455;}
 
-                        else if ( ((LA37_234>='\u0000' && LA37_234<='\u001F')||(LA37_234>='!' && LA37_234<='\uFFFF')) ) {s = 161;}
+                        else if ( ((LA37_389>='\u0000' && LA37_389<='&')||(LA37_389>='(' && LA37_389<='\uFFFF')) ) {s = 161;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 5 : 
+                        int LA37_157 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA37_157=='\'') ) {s = 235;}
+
+                        else if ( ((LA37_157>='\u0000' && LA37_157<='&')||(LA37_157>='(' && LA37_157<='\uFFFF')) ) {s = 161;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 6 : 
-                        int LA37_314 = input.LA(1);
+                        int LA37_53 = input.LA(1);
 
                         s = -1;
-                        if ( (LA37_314=='(') ) {s = 388;}
+                        if ( ((LA37_53>='\u0000' && LA37_53<='\uFFFF')) ) {s = 161;}
 
-                        else if ( (LA37_314=='\'') ) {s = 389;}
-
-                        else if ( ((LA37_314>='\u0000' && LA37_314<='&')||(LA37_314>=')' && LA37_314<='\uFFFF')) ) {s = 161;}
+                        else s = 55;
 
                         if ( s>=0 ) return s;
                         break;

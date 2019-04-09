@@ -16,9 +16,6 @@
  */
 package com.zeligsoft.domain.dds4ccm.utils;
 
-import java.util.EnumMap;
-import java.util.Map;
-
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IStatus;
@@ -39,6 +36,7 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.VisibilityKind;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.Activator;
+import com.zeligsoft.domain.dds4ccm.ConnectorType;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
@@ -431,5 +429,27 @@ public class DDS4CCMUtil {
 		EnumerationLiteral modelType = (EnumerationLiteral) rawValue;
 		
 		return modelType.getName();
+	}
+	
+	public static boolean isAsyncCapableConnector(String connectorType){
+		try{
+			ConnectorType ct = ConnectorType.valueOf(connectorType);
+			return ct.isAsyncCapable();
+		}catch(IllegalArgumentException ex){
+			return false;
+		}catch(NullPointerException ex){
+			return false;
+		}
+	}
+	
+	public static boolean isSyncCapableConnector(String connectorType){
+		try{
+			ConnectorType ct = ConnectorType.valueOf(connectorType);
+			return ct.isSyncCapable();
+		}catch(IllegalArgumentException ex){
+			return false;
+		}catch(NullPointerException ex){
+			return false;
+		}
 	}
 }

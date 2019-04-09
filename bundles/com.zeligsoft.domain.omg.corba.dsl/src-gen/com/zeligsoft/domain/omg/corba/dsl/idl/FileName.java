@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl;
 
@@ -27,21 +23,22 @@ import org.eclipse.emf.ecore.EModelElement;
  * @extends EModelElement
  * @generated
  */
-public interface FileName extends EModelElement {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute list.
-	 * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getFileName_Name()
-	 * @model unique="false"
-	 * @generated
-	 */
-	EList<String> getName();
+public interface FileName extends EModelElement
+{
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Name</em>' attribute list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute list.
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getFileName_Name()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getName();
 
 } // FileName

@@ -1039,11 +1039,11 @@ rulePreproc_Pragma returns [EObject current=null]
 	  /* */ 
 	}
     { 
-        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_LemParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Conn_TypeParserRuleCall_1()); 
     }
-    this_Preproc_Pragma_Ciao_Lem_1=rulePreproc_Pragma_Ciao_Lem
+    this_Preproc_Pragma_Conn_Type_1=rulePreproc_Pragma_Conn_Type
     { 
-        $current = $this_Preproc_Pragma_Ciao_Lem_1.current; 
+        $current = $this_Preproc_Pragma_Conn_Type_1.current; 
         afterParserOrEnumRuleCall();
     }
 
@@ -1052,11 +1052,11 @@ rulePreproc_Pragma returns [EObject current=null]
 	  /* */ 
 	}
     { 
-        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_Ami4ccm_InterfaceParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_LemParserRuleCall_2()); 
     }
-    this_Preproc_Pragma_Ciao_Ami4ccm_Interface_2=rulePreproc_Pragma_Ciao_Ami4ccm_Interface
+    this_Preproc_Pragma_Ciao_Lem_2=rulePreproc_Pragma_Ciao_Lem
     { 
-        $current = $this_Preproc_Pragma_Ciao_Ami4ccm_Interface_2.current; 
+        $current = $this_Preproc_Pragma_Ciao_Lem_2.current; 
         afterParserOrEnumRuleCall();
     }
 
@@ -1065,11 +1065,11 @@ rulePreproc_Pragma returns [EObject current=null]
 	  /* */ 
 	}
     { 
-        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleParserRuleCall_3()); 
+        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_Ami4ccm_InterfaceParserRuleCall_3()); 
     }
-    this_Preproc_Pragma_Ciao_Ami4ccm_Receptacle_3=rulePreproc_Pragma_Ciao_Ami4ccm_Receptacle
+    this_Preproc_Pragma_Ciao_Ami4ccm_Interface_3=rulePreproc_Pragma_Ciao_Ami4ccm_Interface
     { 
-        $current = $this_Preproc_Pragma_Ciao_Ami4ccm_Receptacle_3.current; 
+        $current = $this_Preproc_Pragma_Ciao_Ami4ccm_Interface_3.current; 
         afterParserOrEnumRuleCall();
     }
 
@@ -1078,11 +1078,11 @@ rulePreproc_Pragma returns [EObject current=null]
 	  /* */ 
 	}
     { 
-        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_Ami4ccm_IdlParserRuleCall_4()); 
+        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleParserRuleCall_4()); 
     }
-    this_Preproc_Pragma_Ciao_Ami4ccm_Idl_4=rulePreproc_Pragma_Ciao_Ami4ccm_Idl
+    this_Preproc_Pragma_Ciao_Ami4ccm_Receptacle_4=rulePreproc_Pragma_Ciao_Ami4ccm_Receptacle
     { 
-        $current = $this_Preproc_Pragma_Ciao_Ami4ccm_Idl_4.current; 
+        $current = $this_Preproc_Pragma_Ciao_Ami4ccm_Receptacle_4.current; 
         afterParserOrEnumRuleCall();
     }
 
@@ -1091,11 +1091,11 @@ rulePreproc_Pragma returns [EObject current=null]
 	  /* */ 
 	}
     { 
-        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_NddsParserRuleCall_5()); 
+        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_Ami4ccm_IdlParserRuleCall_5()); 
     }
-    this_Preproc_Pragma_Ndds_5=rulePreproc_Pragma_Ndds
+    this_Preproc_Pragma_Ciao_Ami4ccm_Idl_5=rulePreproc_Pragma_Ciao_Ami4ccm_Idl
     { 
-        $current = $this_Preproc_Pragma_Ndds_5.current; 
+        $current = $this_Preproc_Pragma_Ciao_Ami4ccm_Idl_5.current; 
         afterParserOrEnumRuleCall();
     }
 
@@ -1104,11 +1104,11 @@ rulePreproc_Pragma returns [EObject current=null]
 	  /* */ 
 	}
     { 
-        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_ComponentParserRuleCall_6()); 
+        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_NddsParserRuleCall_6()); 
     }
-    this_Preproc_Pragma_Component_6=rulePreproc_Pragma_Component
+    this_Preproc_Pragma_Ndds_6=rulePreproc_Pragma_Ndds
     { 
-        $current = $this_Preproc_Pragma_Component_6.current; 
+        $current = $this_Preproc_Pragma_Ndds_6.current; 
         afterParserOrEnumRuleCall();
     }
 
@@ -1117,11 +1117,11 @@ rulePreproc_Pragma returns [EObject current=null]
 	  /* */ 
 	}
     { 
-        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_HomeParserRuleCall_7()); 
+        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_ComponentParserRuleCall_7()); 
     }
-    this_Preproc_Pragma_Home_7=rulePreproc_Pragma_Home
+    this_Preproc_Pragma_Component_7=rulePreproc_Pragma_Component
     { 
-        $current = $this_Preproc_Pragma_Home_7.current; 
+        $current = $this_Preproc_Pragma_Component_7.current; 
         afterParserOrEnumRuleCall();
     }
 
@@ -1130,11 +1130,11 @@ rulePreproc_Pragma returns [EObject current=null]
 	  /* */ 
 	}
     { 
-        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_DDS4CCM_ImplParserRuleCall_8()); 
+        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_HomeParserRuleCall_8()); 
     }
-    this_Preproc_Pragma_DDS4CCM_Impl_8=rulePreproc_Pragma_DDS4CCM_Impl
+    this_Preproc_Pragma_Home_8=rulePreproc_Pragma_Home
     { 
-        $current = $this_Preproc_Pragma_DDS4CCM_Impl_8.current; 
+        $current = $this_Preproc_Pragma_Home_8.current; 
         afterParserOrEnumRuleCall();
     }
 
@@ -1143,11 +1143,24 @@ rulePreproc_Pragma returns [EObject current=null]
 	  /* */ 
 	}
     { 
-        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_MiscParserRuleCall_9()); 
+        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_DDS4CCM_ImplParserRuleCall_9()); 
     }
-    this_Preproc_Pragma_Misc_9=rulePreproc_Pragma_Misc
+    this_Preproc_Pragma_DDS4CCM_Impl_9=rulePreproc_Pragma_DDS4CCM_Impl
     { 
-        $current = $this_Preproc_Pragma_Misc_9.current; 
+        $current = $this_Preproc_Pragma_DDS4CCM_Impl_9.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+	{ 
+	  /* */ 
+	}
+    { 
+        newCompositeNode(grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_MiscParserRuleCall_10()); 
+    }
+    this_Preproc_Pragma_Misc_10=rulePreproc_Pragma_Misc
+    { 
+        $current = $this_Preproc_Pragma_Misc_10.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -1194,6 +1207,79 @@ rulePreproc_Pragma_Prefix returns [EObject current=null]
        			"value",
         		lv_value_2_0, 
         		"STRING");
+	    }
+
+)
+))
+;
+
+
+
+
+
+// Entry rule entryRulePreproc_Pragma_Conn_Type
+entryRulePreproc_Pragma_Conn_Type returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getPreproc_Pragma_Conn_TypeRule()); }
+	 iv_rulePreproc_Pragma_Conn_Type=rulePreproc_Pragma_Conn_Type 
+	 { $current=$iv_rulePreproc_Pragma_Conn_Type.current; } 
+	 EOF 
+;
+
+// Rule Preproc_Pragma_Conn_Type
+rulePreproc_Pragma_Conn_Type returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='#pragma' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getPragmaKeyword_0());
+    }
+	otherlv_1='conntype' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getConntypeKeyword_1());
+    }
+(
+(
+		lv_valuePort_2_0=RULE_ID
+		{
+			newLeafNode(lv_valuePort_2_0, grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getValuePortIDTerminalRuleCall_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPreproc_Pragma_Conn_TypeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"valuePort",
+        		lv_valuePort_2_0, 
+        		"ID");
+	    }
+
+)
+)(	otherlv_3='::' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getColonColonKeyword_3_0());
+    }
+this_ID_4=RULE_ID
+    { 
+    newLeafNode(this_ID_4, grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getIDTerminalRuleCall_3_1()); 
+    }
+)*(
+(
+		lv_valueConnType_5_0=RULE_ID
+		{
+			newLeafNode(lv_valueConnType_5_0, grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getValueConnTypeIDTerminalRuleCall_4_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPreproc_Pragma_Conn_TypeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"valueConnType",
+        		lv_valueConnType_5_0, 
+        		"ID");
 	    }
 
 )

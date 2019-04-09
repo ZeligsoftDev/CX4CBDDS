@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl.impl;
 
@@ -22,24 +18,27 @@ import org.eclipse.emf.ecore.impl.EModelElementImpl;
  *
  * @generated
  */
-public class ConnectorExportImpl extends EModelElementImpl implements ConnectorExport {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ConnectorExportImpl() {
-		super();
-	}
+public class ConnectorExportImpl extends EModelElementImpl implements ConnectorExport
+{
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ConnectorExportImpl()
+  {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return IdlPackage.Literals.CONNECTOR_EXPORT;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return IdlPackage.Literals.CONNECTOR_EXPORT;
+  }
 
 } //ConnectorExportImpl

@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl;
 
@@ -23,31 +19,32 @@ package com.zeligsoft.domain.omg.corba.dsl.idl;
  * @model
  * @generated
  */
-public interface IDLComment extends Definition, Export, ComponentExport, PortExport, ConnectorExport, TemplateDefinition, FixedDefinition {
-	/**
-	 * Returns the value of the '<em><b>Body</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Body</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Body</em>' attribute.
-	 * @see #setBody(String)
-	 * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getIDLComment_Body()
-	 * @model
-	 * @generated
-	 */
-	String getBody();
+public interface IDLComment extends Definition, Export, ComponentExport, PortExport, ConnectorExport, TemplateDefinition, FixedDefinition
+{
+  /**
+   * Returns the value of the '<em><b>Body</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Body</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Body</em>' attribute.
+   * @see #setBody(String)
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getIDLComment_Body()
+   * @model
+   * @generated
+   */
+  String getBody();
 
-	/**
-	 * Sets the value of the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment#getBody <em>Body</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Body</em>' attribute.
-	 * @see #getBody()
-	 * @generated
-	 */
-	void setBody(String value);
+  /**
+   * Sets the value of the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment#getBody <em>Body</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Body</em>' attribute.
+   * @see #getBody()
+   * @generated
+   */
+  void setBody(String value);
 
 } // IDLComment

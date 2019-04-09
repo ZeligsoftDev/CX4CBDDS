@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl.impl;
 
@@ -22,24 +18,27 @@ import org.eclipse.emf.ecore.impl.EModelElementImpl;
  *
  * @generated
  */
-public class ActualParameterImpl extends EModelElementImpl implements ActualParameter {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ActualParameterImpl() {
-		super();
-	}
+public class ActualParameterImpl extends EModelElementImpl implements ActualParameter
+{
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ActualParameterImpl()
+  {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return IdlPackage.Literals.ACTUAL_PARAMETER;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return IdlPackage.Literals.ACTUAL_PARAMETER;
+  }
 
 } //ActualParameterImpl

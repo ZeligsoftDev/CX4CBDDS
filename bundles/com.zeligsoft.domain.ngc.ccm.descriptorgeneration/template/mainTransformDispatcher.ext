@@ -20,6 +20,7 @@ import deploymentplan;
 import CCM::CCM_Deployment;
 
 extension org::eclipse::xtend::util::stdlib::issues;
+extension com::zeligsoft::domain::dds4ccm::utils::codeGenUtils;
 extension template::mainTransformAtcd;
 extension template::mainTransformAxcioma;
 
@@ -27,14 +28,14 @@ extension template::mainTransformAxcioma;
  * Depending on the type of the model, call transformation for ATCD or AXCIOMA model
  */
 DeploymentPlan mainTransformDispatcher(CCM::CCM_Deployment::DeploymentPlan deployment) :
+	
 	let modelType = deployment.getModelType():
-	(modelType == "ATCD")? deployment.mainTransform():
-			((modelType == "AXCIOMA")? deployment.mainTransformAxcioma():
-					reportError("Unsupported model type! CDP generation failed."));
-
-/*
- * Retrieve the type of the model that owns the given model element: ATCD or AXCIOMA
- */
-cached String getModelType(CCM::CCM_Deployment::DeploymentPlan deployment) :
-	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.getModelType(
-		org.eclipse.uml2.uml.Element);
+	let deploymentPlan = {}:
+		{if(modelType == "ATCD") then{
+			deploymentPlan.add(deployment.mainTransform())
+		}else if(modelType == "AXCIOMA") then{
+			deploymentPlan.add(deployment.mainTransformAxcioma())			
+		}else{	// this should not be entered if everything works normally
+			reportError("Unsupported model type! CDP generation failed.")
+		}}->		
+		deploymentPlan.first();

@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl.impl;
 
@@ -22,24 +18,27 @@ import org.eclipse.emf.ecore.impl.EModelElementImpl;
  *
  * @generated
  */
-public class SwitchTypeSpecImpl extends EModelElementImpl implements SwitchTypeSpec {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SwitchTypeSpecImpl() {
-		super();
-	}
+public class SwitchTypeSpecImpl extends EModelElementImpl implements SwitchTypeSpec
+{
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected SwitchTypeSpecImpl()
+  {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return IdlPackage.Literals.SWITCH_TYPE_SPEC;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return IdlPackage.Literals.SWITCH_TYPE_SPEC;
+  }
 
 } //SwitchTypeSpecImpl

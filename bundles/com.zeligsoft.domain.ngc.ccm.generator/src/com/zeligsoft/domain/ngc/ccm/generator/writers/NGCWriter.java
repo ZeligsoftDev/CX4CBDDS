@@ -59,6 +59,7 @@ import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Ciao_Ami4ccm_Interf
 import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Ciao_Ami4ccm_Receptacle;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Ciao_Lem;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Component;
+import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Conn_Type;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_DDS4CCM_Impl;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Home;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Ndds;
@@ -120,8 +121,7 @@ public class NGCWriter extends IDL3PlusWriter {
 			Issues issues) {
 		
 		Object generated = ctx.get(getModelSlot());
-		List<Object> generatedList;
-		
+		List<Object> generatedList;		
 		if(IdlPackage.Literals.SPECIFICATION.isInstance(generated)) {
 			generatedList = Collections.singletonList(generated);
 		} else if (generated instanceof List) {
@@ -299,6 +299,16 @@ public class NGCWriter extends IDL3PlusWriter {
 		public NGCWriterSwitch(String fileName, boolean isModelLibrary) {
 			super(fileName);
 			this.isModelLibrary = isModelLibrary;
+		}
+		
+		@Override
+		public Object casePreproc_Pragma_Conn_Type(Preproc_Pragma_Conn_Type object) {
+
+			// No matter how many quotes are in the pragma value (0...*), write exactly one.
+			buf.append(String.format(
+					"#pragma conntype %s %s%n", object.getValuePort().replaceAll("\"", ""), 
+					object.getValueConnType().replaceAll("\"", ""))); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			return buf.toString();
 		}
 		
 		@Override
