@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl.impl;
 
@@ -20,24 +16,27 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class Preproc_PragmaImpl extends PreprocImpl implements Preproc_Pragma {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Preproc_PragmaImpl() {
-		super();
-	}
+public class Preproc_PragmaImpl extends PreprocImpl implements Preproc_Pragma
+{
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected Preproc_PragmaImpl()
+  {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return IdlPackage.Literals.PREPROC_PRAGMA;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return IdlPackage.Literals.PREPROC_PRAGMA;
+  }
 
 } //Preproc_PragmaImpl

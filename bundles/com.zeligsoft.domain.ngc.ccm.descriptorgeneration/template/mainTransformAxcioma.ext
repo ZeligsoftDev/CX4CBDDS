@@ -29,11 +29,11 @@ import ZMLMM::ZML_Deployments;
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
 
-
 extension org::eclipse::xtend::util::stdlib::issues;
 extension com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::cdpgenerator;
 extension com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::util;
 extension com::zeligsoft::base::zdl::util::ZDLUtil;
+extension com::zeligsoft::domain::dds4ccm::utils::codeGenUtils;
 extension org::eclipse::xtend::util::stdlib::globalvar;
 extension org::eclipse::xtend::util::stdlib::io;
 
@@ -62,15 +62,19 @@ create DeploymentPlan mainTransformAxcioma(CCM::CCM_Deployment::DeploymentPlan d
 	homeInstances.visitHome(this, deployment) ->
 	deployment.part.select( e | e.modelElement.metaType.toString() == "CCM::CCM_Deployment::ContainerProcess").select( e | e.isDeployed()).visitContainerProcess(this, deployment) -> // create locality constraints
 	connectors.createInstances(this, deployment) -> // create instances for DataSpace connector fragments
-	// Generate appropriate connector fragments for port-types only if certain conditions are met  
-	{if(parts.definition.ownedPort.typeSelect(InterfacePort).select(e | e.isConjugated && e.isUsedAsynchronously()).forAll(e | e.connectorType.name == "AMI4CCM_Connector")
-	&& parts.definition.ownedPort.typeSelect(InterfacePort).select(e | e.isConjugated && e.isUsedSynchronously()).forAll(e | e.connectorType.name == "CORBA4CCM_Connector")) then{
+	// Generate appropriate connector fragments for port-types only if certain conditions are met		
+	{if(parts.definition.ownedPort.typeSelect(InterfacePort).select(e | e.isConjugated && e.isUsedAsynchronously())
+	.forAll(e | isAsyncCapableConnector(e.connectorType.name))
+	&& parts.definition.ownedPort.typeSelect(InterfacePort).select(e | e.isConjugated && e.isUsedSynchronously())
+	.forAll(e | isSyncCapableConnector(e.connectorType.name))) then{
 		parts.visitPortForInstances(deployment, this) // create AMI4CCM/CORBA4CCM fragments
 	}else{
 	// This else statement is just for defensive coding. It should not be hit as long as the model is properly validated
 		reportError("Incompatible connector type detected! CDP generation failed.")
 	}}->
 	deployment.part.select( part | part.topLevelAssembly()).select( part | part.createConnections(deployment, this, part.modelElement));
+
+ 
 
 cached Boolean topLevelAssembly( DeploymentPart part ) :
 	part.getParentPart() == null && part.nestedPart.size > 0 && part.modelElement.isComponent();
@@ -120,7 +124,7 @@ create MonolithicDeploymentDescription visit(CCMComponent inst, DeploymentPlan d
 	this.artifact.add(artiExecRef) ->
 	this.artifact.add(artiSvntRef) ->
 	this.name.add(inst.zdlAsNamedElement().name + "Impl") ->
-	if( getHome(inst) == null ) then {
+	if( getHome(inst) == null ) then {		
 		this.execParameter.add(inst.visitParam1()) ->
 		this.execParameter.add(inst.visitParam2()) ->
 		this.execParameter.add(inst.visitParam3()) ->
@@ -149,7 +153,7 @@ create MonolithicDeploymentDescription visit(MonolithicImplementation inst, Depl
 	} ->
 	this.execParameter.add(inst.visitImplementationTypeParameter()) ->
 	this.JavaSetAttribute("id", getUUID()) ->
-	inst.ownedPort.typeSelect(InterfacePort).select(e | (e.isUsedAsynchronously() || e.isUsedSynchronously()) && e.isConjugated).select(e |e.porttype.visitPortType(e.connectorType.name, deployment, zDeployment)) ->
+	inst.interface.ownedPort.typeSelect(InterfacePort).select(e | (e.isUsedAsynchronously() || e.isUsedSynchronously()) && e.isConjugated).select(e |e.porttype.visitPortType(e.connectorType.name, deployment, zDeployment)) ->
 	deployment.implementation.add(this);
 
 create MonolithicDeploymentDescription visit(ConnectorDef inst, DeploymentPlan deployment) :
@@ -174,7 +178,7 @@ create MonolithicDeploymentDescription visit(ConnectorDef inst, DeploymentPlan d
  * This version of createImplementation gets called for porttype of client ports that are used asynchronously. 
  * It creates server side CORBA4CCM fragment for an asynchronous client port 
  */
-create MonolithicDeploymentDescription createImplementationAsyncCORBA(String connectorType, CORBAInterface intf, DeploymentPlan deployment) :
+create MonolithicDeploymentDescription createImplementationAsyncServer(String connectorType, CORBAInterface intf, DeploymentPlan deployment) :
 	let paramServer = connectorType + "_SERVER":
 	let artiExec = visitArtifactExec(intf, paramServer) :
 	let artiExecRef = artiExec.visitImplArtifact() :
@@ -196,7 +200,7 @@ create MonolithicDeploymentDescription createImplementationAsyncCORBA(String con
 /*
  * This version of createImplementation gets called for porttype of client ports that are used asynchronously 
  */
-create MonolithicDeploymentDescription createImplementationAMI(String connectorType, CORBAInterface intf, DeploymentPlan deployment) :
+create MonolithicDeploymentDescription createImplementationAsyncClient(String connectorType, CORBAInterface intf, DeploymentPlan deployment) :
 	let paramClient = connectorType + "_CLIENT":
 	let artiExec = visitArtifactExec(intf, paramClient) :
 	let artiExecRef = artiExec.visitImplArtifact() :
@@ -218,7 +222,7 @@ create MonolithicDeploymentDescription createImplementationAMI(String connectorT
 /*
  * This version of createImplementation gets called for porttype of client ports that are used synchronously 
  */
-create MonolithicDeploymentDescription createImplementationSyncCORBA(String connectorType, CORBAInterface intf, DeploymentPlan deployment, CCM::CCM_Deployment::DeploymentPlan zDeployment) :
+create MonolithicDeploymentDescription createImplementationSync(String connectorType, CORBAInterface intf, DeploymentPlan deployment, CCM::CCM_Deployment::DeploymentPlan zDeployment) :
 	let artiExec = visitArtifactExec(intf, connectorType) :
 	let artiExecRef = artiExec.visitImplArtifact() :
 	let impleName = intf.visitName(connectorType):
@@ -226,7 +230,7 @@ create MonolithicDeploymentDescription createImplementationSyncCORBA(String conn
 	let executorArtifactParameter = intf.visitParam2(connectorType) :
 	let servantEntryPointParameter = intf.visitParam3(connectorType) :
 	let servantArtifactParameter = intf.visitParam4(connectorType) :
-
+//
 	deployment.artifact.add(artiExec) ->
 	this.name.add(impleName) ->
 	this.artifact.add(artiExecRef) ->
@@ -348,10 +352,10 @@ Void visitConfigProperty(CCM::CCM_Target::Property property, InstanceDeploymentD
 		
 		// Register naming tag must be generated even if no values set
 		//
-		// IF there’s no explicit RegisterNaming property set on either the CCMComponent type (default setting) 
+		// IF thereï¿½s no explicit RegisterNaming property set on either the CCMComponent type (default setting) 
 		// OR on the instance of that type (override setting) in the deployment plan, 
-		// BUT there’s a CCMConnector connection definition in the deployment assembly that 
-		// connects a deployed component instance (any facet/receptacle port – just takes one) 
+		// BUT thereï¿½s a CCMConnector connection definition in the deployment assembly that 
+		// connects a deployed component instance (any facet/receptacle port ï¿½ just takes one) 
 		// with a non-deployed component instance, then generate the register naming tag for the deployed instance.
 		if(property.name == getModelTypeSpecificProperty("REGISTER_NAMING") && !idd.configProperty.name.exists(n | n == property.name)) then {
 			idd.createRegisterNamingProperty(part.name)
@@ -652,9 +656,7 @@ Void createConnectorFragment(DeploymentPart facetPart, InterfacePort facet, CCMP
 		// Recursive call with new values for facetPart and facet, and same values for everything else.
 		delegationConnectorEnd.select
 			( dce | createConnectorFragment( facetPart.nestedPart.selectFirst( p | p.modelElement == dce.partWithPort ), dce.port, receptPart, receptacle, deployment, plan ))
-	}
-	else 
-	{
+	}else{
 		let receptComponent = receptPart.definition :
 		let assembly_impl = getAssembly(receptComponent) :
 		if( assembly_impl.size > 0 ) then {	
@@ -662,47 +664,51 @@ Void createConnectorFragment(DeploymentPart facetPart, InterfacePort facet, CCMP
 			// Recursive call with new values for receptPart and receptacle, and same values for everything else.
 			delegationConnectorEnd.select(
 				dce | createConnectorFragment(facetPart, facet, dce.partWithPort, dce.port, deployment, plan ))
-		}
-		else
-		{
+		}else{
 			let receptDeploymentTarget = deployment.allocation.select( e | e.deployed.modelElement.contains( receptPart )) :
 			// Leafs for both. Create fragment.
-			//debug("receptPart = " + receptPart.name + "\nreceptacle = " + receptacle.name + "\nfacetPart = " + facetPart.name + "\nfacet = " + facet.name + "\nsource(s) = " + receptDeploymentTarget.deployed + "\ntarget(s) =" + receptDeploymentTarget.deployedOn + "\n# instances = " + plan.instance.size ) ->
-			
-			receptacle.isUsedAsynchronously()?
-			(receptDeploymentTarget.select
-				( dt | dt.deployed.select( dep | dep.modelElement == receptPart).createAMIConnectorFragmentHelper(dt.deployedOn, facet, facetPart, receptacle, plan )) ->
-			 deployment.part.select( part | part.modelElement == receptPart ).select( part | part.isDeployed() == false ).createAMIFacetConnection(receptacle, facetPart, facet, plan, deployment)):
-			(receptDeploymentTarget.select
-				( dt | dt.deployed.select( dep | dep.modelElement == receptPart).createCORBA2ConnectorFragmentHelper(dt.deployedOn, facet, facetPart, receptacle, plan )) ->
-			deployment.part.select( part | part.modelElement == receptPart ).select( part | part.isDeployed() == false ).createCORBA2FacetConnection(receptacle, facetPart, facet, plan, deployment)) 	
+			if(receptacle.isUsedAsynchronously()) then{// AMI4CCM
+				(receptDeploymentTarget.select
+				( dt | dt.deployed.select( dep | dep.modelElement == receptPart).createAsyncConnectorFragmentHelper(dt.deployedOn, facet, facetPart, receptacle, plan )) ->
+			 	deployment.part.select( part | part.modelElement == receptPart ).select( part | part.isDeployed() == false )
+			 	.createAsyncUndeployedReceptPartConnection(receptacle, facetPart, facet, plan, deployment))
+			}else{	// CORBA4CCM/AMI4CCM
+				(receptDeploymentTarget.select
+				( dt | dt.deployed.select( dep | dep.modelElement == receptPart).createSyncConnectorFragmentHelper(dt.deployedOn, facet, facetPart, receptacle, plan )) ->
+				deployment.part.select( part | part.modelElement == receptPart ).select( part | part.isDeployed() == false )
+				.createSyncUndeployedReceptPartConnection(receptacle, facetPart, facet, plan, deployment))
+			}	 	
 		}
 	};
 	
-create PlanConnectionDescription createCORBA2FacetConnection(DeploymentPart undeployedReceptacle, InterfacePort receptacle, DeploymentPart facetPart, InterfacePort facet, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment) :
+create PlanConnectionDescription createSyncUndeployedReceptPartConnection(DeploymentPart undeployedReceptPart, InterfacePort receptacle, DeploymentPart facetPart, InterfacePort facet, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment) :
 	let sourceSN = facetPart.getScopedName() :
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
+	let connectorType = receptacle.connectorType.name:
+	//
 	if( facetPart.isDeployed() ) then {
 		plan.connection.add(this) ->
-		this.name.add(facetPart.getScopedName() + "." + facet.name + "__" + undeployedReceptacle.getScopedName() + "." + receptacle.name + "_CORBA4CCM_Connector") ->
+		this.name.add(facetPart.getScopedName() + "." + facet.name + "__" + undeployedReceptPart.getScopedName() + "." + receptacle.name + "_" + connectorType  + "_syncdirect") ->
 		this.createEndPoint(true, false, facet.name, compInstance) ->
 		// register naming service for external connection
 		facetPart.modelElement.definition.zdlAsComponent().member.typeSelect(CCM::CCM_Target::Property).selectFirst(prop | getModelTypeSpecificProperty("REGISTER_NAMING").matches(prop.name)).visitConfigProperty(facetPart.visit(plan, deployment), facetPart) ->
 		//ngc538
-		this.createExternalEndPoint(receptacle, undeployedReceptacle.name + "_" + receptacle.name + "__" + facetPart.name + "_" + facet.name, undeployedReceptacle)
+		this.createExternalEndPoint(receptacle, undeployedReceptPart.name + "_" + receptacle.name + "__" + facetPart.name + "_" + facet.name, undeployedReceptPart)
 	};	
 	
-create PlanConnectionDescription createAMIFacetConnection(DeploymentPart undeployedReceptacle, InterfacePort receptacle, DeploymentPart facetPart, InterfacePort facet, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment) :
+create PlanConnectionDescription createAsyncUndeployedReceptPartConnection(DeploymentPart undeployedReceptPart, InterfacePort receptacle, DeploymentPart facetPart, InterfacePort facet, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment) :
 	let sourceSN = facetPart.getScopedName() :
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
+	let connectorType = receptacle.connectorType.name:
+	//
 	if( facetPart.isDeployed() ) then {
 		plan.connection.add(this) ->
-		this.name.add(facetPart.getScopedName() + "." + facet.name + "__" + undeployedReceptacle.getScopedName() + "." + receptacle.name + "_AMI4CCM_Connector_asyncdirect") ->
+		this.name.add(facetPart.getScopedName() + "." + facet.name + "__" + undeployedReceptPart.getScopedName() + "." + receptacle.name + "_" + connectorType + "_asyncdirect") ->
 		this.createEndPoint(true, false, facet.name, compInstance) ->
 		// register naming service for external connection
 		facetPart.modelElement.definition.zdlAsComponent().member.typeSelect(CCM::CCM_Target::Property).selectFirst(prop | getModelTypeSpecificProperty("REGISTER_NAMING").matches(prop.name)).visitConfigProperty(facetPart.visit(plan, deployment), facetPart) ->
 		//ngc538: Do not fully qualify AMI4CCM fragment names
-		this.createExternalEndPoint(receptacle, undeployedReceptacle.name + "_" + receptacle.name + "__" + facetPart.name + "_" + facet.name, undeployedReceptacle)
+		this.createExternalEndPoint(receptacle, undeployedReceptPart.name + "_" + receptacle.name + "__" + facetPart.name + "_" + facet.name, undeployedReceptPart)
 	};
 	
 /*
@@ -713,9 +719,11 @@ create PlanConnectionDescription createAMIFacetConnection(DeploymentPart undeplo
  * @param target - The deployment part on which "source" is deployed. This will point to a containerProcess for its modelElement.
  * @param facet / facetPart / receptacle - self-explanatory.
  */	
-create InstanceDeploymentDescription createCORBA2ConnectorFragmentHelper(DeploymentPart source, DeploymentPart target, InterfacePort facet, DeploymentPart facetPart, InterfacePort receptacle, DeploymentPlan plan ) :
+create InstanceDeploymentDescription createSyncConnectorFragmentHelper(DeploymentPart source, DeploymentPart target, InterfacePort facet, 
+								DeploymentPart facetPart, InterfacePort receptacle, DeploymentPlan plan ) :
+	let connectorType = receptacle.connectorType.name:
 	let node = deployment.allocation.selectFirst(e | e.deployed.contains(target)).deployedOn :
-	let id = plan.implementation.selectFirst(e | e.name.first() == receptacle.porttype.visitName("CORBA4CCM_Connector")).id :
+	let id = plan.implementation.selectFirst(e | e.name.first() == receptacle.porttype.visitName(connectorType)).id :
 	let name = source.getScopedName() + "." + receptacle.porttype.name:
 	let srrInstance = facetPart.isDeployed() ? createSRRInstance(source, receptacle, facetPart, facet, plan):null:
 	
@@ -725,13 +733,12 @@ create InstanceDeploymentDescription createCORBA2ConnectorFragmentHelper(Deploym
 	this.source.add(null) ->
 	this.implementation.add(id.visitInstanceImpl(this)) ->
 	plan.instance.add(this) ->
-	
-	plan.connection.add(this.createCORBA2_SRR_facet_Receptacle_Connection(srrInstance, facetPart, facet, source, receptacle, plan)) ->
+	plan.connection.add(this.createSyncClientServerConnection(srrInstance, facetPart, facet, source, receptacle, plan)) ->
 	if(srrInstance != null) then
 	{
-		plan.connection.add(srrInstance.createCORBA2_SRR_Receptacle_Connection(facetPart, facet, source, receptacle, plan)) 
+		plan.connection.add(srrInstance.createSyncServerSideConnection(facetPart, facet, source, receptacle, plan)) 
 	} ->
-	plan.connection.add(this.createCORBA2_Recept_Connection(source, facetPart, facet, plan, receptacle)) ->
+	plan.connection.add(this.createSyncClientSideConnection(source, facetPart, facet, plan, receptacle)) ->
 	
 	if( facetPart.isDeployed() == false ) then {
 		//ngc538: Do not fully qualify AMI4CCM fragment names
@@ -739,7 +746,10 @@ create InstanceDeploymentDescription createCORBA2ConnectorFragmentHelper(Deploym
 		// create a register naming for receptacle component instance
 		source.modelElement.definition.zdlAsComponent().member.typeSelect(CCM::CCM_Target::Property).selectFirst(prop | getModelTypeSpecificProperty("REGISTER_NAMING").matches(prop.name)).visitConfigProperty(source.visit(plan, deployment), source)
 	} ->
-	((srrInstance != null) ? addInstanceToLocalityConstraint(srrInstance, plan, facetPart):"") ->
+	
+	if(srrInstance != null) then{
+		addInstanceToLocalityConstraint(srrInstance, plan, facetPart)
+	} ->
 	addInstanceToLocalityConstraint(this, plan, source);
 	
 /*
@@ -749,9 +759,11 @@ create InstanceDeploymentDescription createCORBA2ConnectorFragmentHelper(Deploym
  * @param target - The deployment part on which "source" is deployed. This will point to a containerProcess for its modelElement.
  * @param facet / facetPart / receptacle - self-explanatory.
  */	
-create InstanceDeploymentDescription createAMIConnectorFragmentHelper(DeploymentPart source, DeploymentPart target, InterfacePort facet, DeploymentPart facetPart, InterfacePort receptacle, DeploymentPlan plan ) :
+create InstanceDeploymentDescription createAsyncConnectorFragmentHelper(DeploymentPart source, DeploymentPart target, InterfacePort facet, 
+													DeploymentPart facetPart, InterfacePort receptacle, DeploymentPlan plan ) :
+	let connectorType = receptacle.connectorType.name:
 	let node = deployment.allocation.selectFirst(e | e.deployed.contains(target)).deployedOn :
-	let id = plan.implementation.selectFirst(e | e.name.first() == receptacle.porttype.visitName("AMI4CCM_Connector_CLIENT")).id :
+	let id = plan.implementation.selectFirst(e | e.name.first() == receptacle.porttype.visitName(connectorType + "_CLIENT")).id :
 	let name = source.getScopedName() + "." + "Async" + receptacle.porttype.name:
 	let srrInstance = facetPart.isDeployed() ? createSRRInstance(source, receptacle, facetPart, facet, plan):null:
 	
@@ -762,13 +774,13 @@ create InstanceDeploymentDescription createAMIConnectorFragmentHelper(Deployment
 	this.implementation.add(id.visitInstanceImpl(this)) ->
 	plan.instance.add(this) ->
 	
-	plan.connection.add(this.createAMI_sendc_Connection(source, facet, plan, receptacle)) ->
-	plan.connection.add(this.createAMI_SRR_facet_Connection(srrInstance, facetPart, facet, source, receptacle, plan)) ->
+	plan.connection.add(this.createAsyncClientSideSendcConnection(source, facet, plan, receptacle)) ->
+	plan.connection.add(this.createAsyncClientServerConnection(srrInstance, facetPart, facet, source, receptacle, plan)) ->
 	if(srrInstance != null) then
 	{
-		plan.connection.add(srrInstance.createAMI_SRR_receptacle_Connection(facetPart, facet, source, receptacle, plan)) 
+		plan.connection.add(srrInstance.createAsyncServerSideConnection(facetPart, facet, source, receptacle, plan)) 
 	} ->
-	plan.connection.add(this.createAMI_recept_Connection(source, facetPart, facet, plan, receptacle)) ->
+	plan.connection.add(this.createAsyncClientSideSyncProvidesConnection(source, facetPart, facet, plan, receptacle)) ->
 	
 	if( facetPart.isDeployed() == false ) then {
 		//ngc538: Do not fully qualify AMI4CCM fragment names
@@ -776,10 +788,12 @@ create InstanceDeploymentDescription createAMIConnectorFragmentHelper(Deployment
 		// create a register naming for receptacle component instance
 		source.modelElement.definition.zdlAsComponent().member.typeSelect(CCM::CCM_Target::Property).selectFirst(prop | getModelTypeSpecificProperty("REGISTER_NAMING").matches(prop.name)).visitConfigProperty(source.visit(plan, deployment), source)
 	} ->
-	((srrInstance != null) ? addInstanceToLocalityConstraint(srrInstance, plan, facetPart):"") ->
+	
+	if(srrInstance != null) then{
+		addInstanceToLocalityConstraint(srrInstance, plan, facetPart)
+	} ->
 	addInstanceToLocalityConstraint(this, plan, source);
 	
-
 /*
  * Create register naming property with given value	
  */
@@ -797,26 +811,36 @@ create Any createRegisterNamingProperty(Property property, String val ) :
 	this.value.add(value);
 
 /*
- * This connection has a provides endpoint which is the fragment and a requires endpoint that is the receptacle.
+ * Axcioma (async): Connection between sendC of Recept and connector. Both in client side.
  */
-create PlanConnectionDescription createAMI_sendc_Connection(InstanceDeploymentDescription idd, DeploymentPart source, InterfacePort facet, DeploymentPlan plan, InterfacePort receptacle) :
+create PlanConnectionDescription createAsyncClientSideSendcConnection(InstanceDeploymentDescription idd, DeploymentPart source, InterfacePort facet, DeploymentPlan plan, InterfacePort receptacle) :
 	let sourceSN = source.getScopedName() :
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
-	this.name.add(sourceSN + "." + receptacle.name + "::" + idd.name.first() + ".ami4ccm_port_ami4ccm_provides") ->
-	this.createEndPoint(true, false, "ami4ccm_port_ami4ccm_provides", idd) ->
-	// AMI Fragment connections are never multiplex.
-	this.createEndPoint(false, false, "sendc_" + receptacle.name, compInstance);
+	let connectorType = receptacle.connectorType.name:
+//	
+	if(connectorType == "AMI4CCM_Connector") then{
+		this.name.add(sourceSN + "." + receptacle.name + "::" + idd.name.first() + ".ami4ccm_port_ami4ccm_provides") ->
+		this.createEndPoint(true, false, "ami4ccm_port_ami4ccm_provides", idd) ->
+		// AMI Fragment connections are never multiplex.
+		this.createEndPoint(false, false, "sendc_" + receptacle.name, compInstance)
+	};
 	
-create PlanConnectionDescription createAMI_recept_Connection(InstanceDeploymentDescription idd, DeploymentPart source, DeploymentPart facetPart, InterfacePort facet, DeploymentPlan plan, InterfacePort receptacle) :
+
+/*
+ * Axcioma (Async port): Connection between sync_provides of the connector instance and Recept. Both in client side.
+ */	
+create PlanConnectionDescription createAsyncClientSideSyncProvidesConnection(InstanceDeploymentDescription idd, DeploymentPart source, DeploymentPart facetPart, InterfacePort facet, DeploymentPlan plan, InterfacePort receptacle) :
 	let sourceSN = source.getScopedName() :
 	let facetSN = facetPart.getScopedName() :
-	
+	let connectorType = receptacle.connectorType.name:
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
-//	this.name.add(sourceSN + "." + receptacle.porttype.name + "::" + facetSN + "." + facet.name) ->
-	this.name.add(sourceSN + "." + receptacle.name + "::" + idd.name.first() + ".ami4ccm_port_ami4ccm_sync_provides") ->
-	this.createEndPoint(false, true, receptacle.name, compInstance) ->
-	// AMI Fragment connections are never multiplex.
-	this.createEndPoint(true, false, "ami4ccm_port_ami4ccm_sync_provides", idd);
+//
+	if(connectorType == "AMI4CCM_Connector") then{
+		this.name.add(sourceSN + "." + receptacle.name + "::" + idd.name.first() + ".ami4ccm_port_ami4ccm_sync_provides") ->
+		this.createEndPoint(false, true, receptacle.name, compInstance) ->
+		// AMI Fragment connections are never multiplex.
+		this.createEndPoint(true, false, "ami4ccm_port_ami4ccm_sync_provides", idd)
+	};
 	
 create PlanSubcomponentPortEndpoint createEndPoint(PlanConnectionDescription conn, Boolean provides, Boolean multiple, String portName, InstanceDeploymentDescription instance ) :
 	this.portName.add(portName) ->
@@ -843,19 +867,25 @@ create ExternalReferenceEndpoint createExternalEndPoint(PlanConnectionDescriptio
  * Create an external reference to an AMI4CCM connector fragment.
  * The other endpoint is always a facet.
  */
-create ExternalReferenceEndpoint createExternalEndPoint(PlanConnectionDescription connDescription, InterfacePort port, String amiFragmentName, DeploymentPart connEnd) :
+create ExternalReferenceEndpoint createExternalEndPoint(PlanConnectionDescription connDescription, InterfacePort port, String connFragmentName, DeploymentPart connEnd) :
 	let location = getLocationPrefix(connEnd) :
-	this.location.add((location != null && location != "" ? location : "corbaname:rir:/NameService#") + amiFragmentName ) ->
+	this.location.add((location != null && location != "" ? location : "corbaname:rir:/NameService#") + connFragmentName ) ->
 	this.provider.add( "false" ) ->
-	this.portName.add("ami4ccm_port_ami4ccm_uses") ->
+	{if(port.connectorType.name == "AMI4CCM_Connector") then{
+		this.portName.add("ami4ccm_port_ami4ccm_uses")
+	}else if(port.connectorType.name == "CORBA4CCM_Connector") then{
+		this.portName.add("srr_receptacle")
+	}else{
+		this.portName.add("unknown")
+	}} ->
+	
 	this.supportedType.add("Meaningless") ->
 	connDescription.externalReference.add(this);
 
 /*
- * This connection has a provides endpoint which is the recept and a requires endpoint that is the fragment.
- * CORBA2: connection between recept-srr_facet
+ * Axcioma: connection between recept and srr_facet. Both in client side.
  */	
-create PlanConnectionDescription createCORBA2_Recept_Connection(InstanceDeploymentDescription idd, DeploymentPart source, DeploymentPart facetPart, InterfacePort facet, DeploymentPlan plan, InterfacePort receptacle) :
+create PlanConnectionDescription createSyncClientSideConnection(InstanceDeploymentDescription idd, DeploymentPart source, DeploymentPart facetPart, InterfacePort facet, DeploymentPlan plan, InterfacePort receptacle) :
 	let sourceSN = source.getScopedName() :
 	let facetSN = facetPart.getScopedName() :
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
@@ -864,63 +894,76 @@ create PlanConnectionDescription createCORBA2_Recept_Connection(InstanceDeployme
 	// AMI Fragment connections are never multiplex.
 	this.createEndPoint(true, false, "srr_facet", idd);	
 /*
- * This connection has a provides endpoint which is the facet and a requires endpoint that is the fragment.
- * CORBA2: connection between AMI-CORBAFacet
+ * Axcioma Sync: connection between srr_receptacle in client side and srr_facet in server side
  */	
-create PlanConnectionDescription createCORBA2_SRR_facet_Receptacle_Connection(InstanceDeploymentDescription idd, InstanceDeploymentDescription srrInstance,  
+create PlanConnectionDescription createSyncClientServerConnection(InstanceDeploymentDescription idd, InstanceDeploymentDescription srrInstance,  
 		DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan) :
 	let facetSN = facetPart.getScopedName():
 	let name = idd.name.first() + ".srr_receptacle" + "::" + (srrInstance != null? srrInstance.name.first() + ".srr_facet":
 					facetSN + "." + facet.name):
 	this.name.add(name) ->
-	facetPart.isDeployed() ?
-		this.createEndPoint(true, false, "srr_facet", srrInstance) :
-		this.createExternalEndPoint(facetPart, facet) ->	
+	
+	{if(facetPart.isDeployed()) then{
+		this.createEndPoint(true, false, "srr_facet", srrInstance)
+	}else{
+		this.createExternalEndPoint(facetPart, facet)
+	}}->
 	this.createEndPoint(false, false, "srr_receptacle", idd);
 
 /*
- * This connection has a provides endpoint which is the facet and a requires endpoint that is the fragment.
- * CORBA2: Connection between srr_receptacle and facet
+ * Axcioma: Connection between srr_receptacle and facet. Both in server side 
  */	
-create PlanConnectionDescription createCORBA2_SRR_Receptacle_Connection(InstanceDeploymentDescription srrInstance, 
+create PlanConnectionDescription createSyncServerSideConnection(InstanceDeploymentDescription srrInstance, 
 		DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan):
 	let facetSN = facetPart.getScopedName() :
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(facetSN)) :
 	let name = facetSN + "." + facet.name + "::" + srrInstance.name.first() + ".srr_receptacle" :
-	this.name.add(name) ->//facetPart.getScopedName() + "." + facet.name + "__" + receptPart.getScopedName() + "." + receptacle.name + "_AMI4CCM_Connector_asyncdirect") ->
-	facetPart.isDeployed() ?
-		this.createEndPoint(true, false, facet.name, compInstance) :
-		this.createExternalEndPoint(facetPart, facet) ->
+	this.name.add(name) ->
+	
+	{if(facetPart.isDeployed()) then{
+		this.createEndPoint(true, false, facet.name, compInstance)
+	}else{
+		this.createExternalEndPoint(facetPart, facet)
+	}}->
 	this.createEndPoint(false, false, "srr_receptacle", srrInstance);
 		
 /*
- * This connection has a provides endpoint which is the facet and a requires endpoint that is the fragment.
- * AXCIOMA: connection between AMI-CORBAFacet
+ * AXCIOMA (async): connection between client and server.
  */	
-create PlanConnectionDescription createAMI_SRR_facet_Connection(InstanceDeploymentDescription idd, InstanceDeploymentDescription srrInstance,  
+create PlanConnectionDescription createAsyncClientServerConnection(InstanceDeploymentDescription idd, InstanceDeploymentDescription srrInstance,  
 		DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan) :
 	let facetSN = facetPart.getScopedName():
-	let name = idd.name.first() + ".ami4ccm_port_ami4ccm_uses" + "::" + (srrInstance != null? srrInstance.name.first() + ".srr_facet":
+	let connectorType = receptacle.connectorType.name:
+	
+	if(connectorType == "AMI4CCM_Connector") then{
+		let name = idd.name.first() + ".ami4ccm_port_ami4ccm_uses" + "::" + (srrInstance != null? srrInstance.name.first() + ".srr_facet":
 						facetSN + "." + facet.name):
-	this.name.add(name) ->
-	facetPart.isDeployed() ?
-		this.createEndPoint(true, false, "srr_facet", srrInstance) :
-		this.createExternalEndPoint(facetPart, facet) ->	
-	this.createEndPoint(false, false, "ami4ccm_port_ami4ccm_uses", idd);
+		this.name.add(name) ->
+		
+		{if(facetPart.isDeployed()) then{
+			this.createEndPoint(true, false, "srr_facet", srrInstance)
+		}else{
+			this.createExternalEndPoint(facetPart, facet)
+		}}->			
+		this.createEndPoint(false, false, "ami4ccm_port_ami4ccm_uses", idd)
+	};
 	
 /*
- * This connection has a provides endpoint which is the facet and a requires endpoint that is the fragment.
- * AXCIOMA: Connection between CORBAReceptacle - Facet (AMI)
+ * AXCIOMA (async): Connection between srr_receptacle and Facet. Both in server side.
  */	
-create PlanConnectionDescription createAMI_SRR_receptacle_Connection(InstanceDeploymentDescription srrInstance, 
+create PlanConnectionDescription createAsyncServerSideConnection(InstanceDeploymentDescription srrInstance, 
 		DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan):
 	let facetSN = facetPart.getScopedName() :
+	let connectorType = receptacle.connectorType.name:
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(facetSN)) :
 	let name = facetSN + "." + facet.name + "::" + srrInstance.name.first() + ".srr_receptacle" :
-	this.name.add(name) ->//facetPart.getScopedName() + "." + facet.name + "__" + receptPart.getScopedName() + "." + receptacle.name + "_AMI4CCM_Connector_asyncdirect") ->
-	facetPart.isDeployed() ?
-		this.createEndPoint(true, false, facet.name, compInstance) :
-		this.createExternalEndPoint(facetPart, facet) ->
+	this.name.add(name) ->
+	
+	{if(facetPart.isDeployed()) then{
+		this.createEndPoint(true, false, facet.name, compInstance)
+	}else{
+		this.createExternalEndPoint(facetPart, facet)
+	}}->
 	this.createEndPoint(false, false, "srr_receptacle", srrInstance);	
 	
 /*
@@ -928,12 +971,13 @@ create PlanConnectionDescription createAMI_SRR_receptacle_Connection(InstanceDep
 */
 
 create InstanceDeploymentDescription createSRRInstance(DeploymentPart receptPart, InterfacePort receptacle, DeploymentPart facetPart, InterfacePort facet, DeploymentPlan plan)://, DeploymentPart facetPart, InterfacePort receptacle, DeploymentPlan plan ) :
+	// This can be entered only for server side: sync or async 
 	let portConnectorType = receptacle.connectorType.name:
 	let processor = deployment.allocation.selectFirst(e | e.deployed.contains(facetPart)).deployedOn:
 	let node = deployment.allocation.selectFirst(e | e.deployed.contains(processor)).deployedOn:
-	let id = plan.implementation.selectFirst(e | e.name.first() == receptacle.porttype.visitName(portConnectorType + ((portConnectorType == "AMI4CCM_Connector") ? "_SERVER":""))).id:
-	let name = facetPart.getScopedName() + "." + ((portConnectorType == "AMI4CCM_Connector") ? "Async":"") + facet.porttype.name:
-	
+	// Number of 'implementation' generated for synchronous port is 1. For asynchronous, it is 2. 
+	let id = plan.implementation.selectFirst(e | e.name.first() == receptacle.porttype.visitName(portConnectorType + (receptacle.isUsedAsynchronously() ? "_SERVER":""))).id:
+	let name = facetPart.getScopedName() + "." + (receptacle.isUsedAsynchronously() ? "Async":"") + facet.porttype.name:	
 	// facetPart that are not deployed should not come here
 	this.JavaSetAttribute("id", getUUID()) ->
 	this.name.add(name) ->
@@ -970,7 +1014,6 @@ cached boolean isHomePart(NamedElement part ) :
  */
 Void visitPortForInstances(CCMPart part, CCM::CCM_Deployment::DeploymentPlan zDeployment, DeploymentPlan plan) :
 	part.definition.ownedPort.typeSelect(InterfacePort).select(e | (e.isUsedSynchronously() || e.isUsedAsynchronously()) && e.isConjugated).visitPortForInstances(part, zDeployment, plan);
-//	part.definition.ownedPort.typeSelect(InterfacePort).select(e | e.isUsedSynchronously() && e.isConjugated).visitPortForInstances(part, zDeployment, plan);
 
 /*
  * Get the set of facets that are connected to this receptacle and call createAMIConnectorFragment for each.
@@ -1012,13 +1055,13 @@ cached boolean portGeneratesFragment(PortType type) :
 	false;
 
 Void visitPortType(CORBAInterface intf, String connectorType, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan zDeployment) :
-	if (connectorType == "AMI4CCM_Connector" && intf.isUsedAsynchronously()) then 
+	if (isAsyncCapableConnector(connectorType) && intf.isUsedAsynchronously()) then 
 	{	
-		createImplementationAsyncCORBA(connectorType, intf, plan) ->
-		createImplementationAMI(connectorType, intf, plan)
-	}else if (connectorType == "CORBA4CCM_Connector" && (intf.isUsedSynchronously() || intf.isUsedAsynchronously())) then{
+		createImplementationAsyncServer(connectorType, intf, plan) ->
+		createImplementationAsyncClient(connectorType, intf, plan)
+	}else if (isSyncCapableConnector(connectorType) && (intf.isUsedSynchronously() || intf.isUsedAsynchronously())) then{
 	// A port can be synchronous even if its interface type is asynchronous
-		createImplementationSyncCORBA(connectorType, intf, plan, zDeployment)
+		createImplementationSync(connectorType, intf, plan, zDeployment)
 	};
 	
 cached boolean isUsedSynchronously(CORBAInterface self) :
@@ -1030,10 +1073,26 @@ cached boolean isUsedAsynchronously(CORBAInterface self) :
 		org.eclipse.uml2.uml.Interface);
 		
 cached boolean isUsedSynchronously(InterfacePort port) :
-	!port.isAsynchronous && !port.type.isLocal; 
+	let metaTypeOfPortType = port.porttype.metaType.toString():
+	let isNonLocalSync = {}:
+	
+	{if(metaTypeOfPortType == "CORBADomain::IDL::CORBAInterface") then{
+		isNonLocalSync.add(!port.isAsynchronous && !port.type.isLocal)				
+	}else{
+		isNonLocalSync.add(false) // metaTypeOfPortType == "IDL3Plus::IDL3Plus::ExtendedPortType"
+	}} ->
+	isNonLocalSync.first(); 
 	
 cached boolean isUsedAsynchronously(InterfacePort port) :
-	port.isAsynchronous && !port.type.isLocal;		
+	let metaTypeOfPortType = port.porttype.metaType.toString():
+	let isNonLocalAsync = {}:
+	
+	{if(metaTypeOfPortType == "CORBADomain::IDL::CORBAInterface") then{
+		isNonLocalAsync.add(port.isAsynchronous && !port.type.isLocal)				
+	}else{
+		isNonLocalAsync.add(false) // metaTypeOfPortType == "IDL3Plus::IDL3Plus::ExtendedPortType"
+	}} ->
+	isNonLocalAsync.first();	
 	
 Void visitPortType(PortType o, DeploymentPlan plan) :
 	{};
@@ -1233,14 +1292,24 @@ create ArtifactDeploymentDescription visitArtifactExec(NamedElement inst) :
 * @param connectorType: a string value passed from the caller indicating the specific type of connector for which fragments are being generated  
 */
 create ArtifactDeploymentDescription visitArtifactExec(NamedElement inst, String connectorType) :
-	let name = (("AMI4CCM_Connector_CLIENT" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, "Async"+inst.name+"_ami"):
-		(("AMI4CCM_Connector_SERVER" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, "Async"+inst.name+"_corba"):
-		(("CORBA4CCM_Connector" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, inst.name+"_corba"):
-		inst.name))) + "_exec":
-	this.name.add(name) ->
+	let name = {}:
+//
+	{if(connectorType == "AMI4CCM_Connector_CLIENT") then{
+		name.add(inst.getCorbaScopedName().replaceAll(inst.name, "Async"+inst.name+"_ami"))
+	}else if(connectorType == "AMI4CCM_Connector_SERVER") then{
+		name.add(inst.getCorbaScopedName().replaceAll(inst.name, "Async"+inst.name+"_corba"))
+	}else if(connectorType == "CORBA4CCM_Connector") then{
+		name.add(inst.getCorbaScopedName().replaceAll(inst.name, inst.name+"_corba"))
+	}else if(connectorType == "AMI4CCM_Connector") then{
+		name.add(inst.getCorbaScopedName().replaceAll(inst.name, inst.name+"_ami"))
+	}else{
+		name.add(inst.name)
+	}}->
+			
+	this.name.add(name.first() + "_exec") ->
 	this.source.add(null) ->
 	this.node.add(null) ->
-	this.location.add(name) ->
+	this.location.add(name.first() + "_exec") ->
 	this.JavaSetAttribute("id", getUUID());	
 	
 create ArtifactDeploymentDescription visitArtifactSvnt(NamedElement inst) :
@@ -1273,11 +1342,21 @@ cached String getCorbaScopedName(DataSpace element ) :
 * @param connectorType: a string value passed from the caller indicating the specific type of connector for which fragments are being generated  
 */
 cached String visitName(CORBAInterface inst, String connectorType):
-	let name = ("AMI4CCM_Connector_CLIENT" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, "Async"+inst.name+"_AMI_Connector"):
-		(("AMI4CCM_Connector_SERVER" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, "Async"+inst.name+"_SRR_CORBA_Connector"):
-		(("CORBA4CCM_Connector" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, inst.name+"_SRR_CORBA_Connector"):
-		inst.name)):
-	name;	
+	let name = {}:
+//	
+	{if(connectorType == "AMI4CCM_Connector_CLIENT") then{
+		name.add(inst.getCorbaScopedName().replaceAll(inst.name, "Async"+inst.name+"_AMI_Connector"))
+	}else if(connectorType == "AMI4CCM_Connector_SERVER") then{
+		name.add(inst.getCorbaScopedName().replaceAll(inst.name, "Async"+inst.name+"_SRR_CORBA_Connector"))
+	}else if(connectorType == "CORBA4CCM_Connector") then{
+		name.add(inst.getCorbaScopedName().replaceAll(inst.name, inst.name+"_SRR_CORBA_Connector"))
+	}else if(connectorType == "AMI4CCM_Connector") then{
+		name.add(inst.getCorbaScopedName().replaceAll(inst.name, inst.name+"_SRR_AMI_Connector"))
+	}else{
+		name.add(inst.name)
+	}}->
+		
+	name.first();	
 	
 create Property visitParam1(NamedElement inst) :
 	this.name.add(getModelTypeSpecificProperty("COMPONENT_FACTORY")) ->
@@ -1288,12 +1367,22 @@ create Property visitParam1(NamedElement inst) :
 * @param connectorType: a string value passed from the caller indicating the specific type of connector for which fragments are being generated  
 */	
 create Property visitParam1(CORBAInterface inst, String connectorType) :
-	let valueStr = "create_" + (("AMI4CCM_Connector_CLIENT" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, "AMI4CCM_Async" +inst.name) + "_Connector_AMI4CCM":
-		(("AMI4CCM_Connector_SERVER" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, "Async" +inst.name) + "_SRR_CORBA":
-		(("CORBA4CCM_Connector" == connectorType)? inst.getCorbaScopedName() + "_SRR_CORBA":
-		inst.name))) + "_Connector_Impl":
+	let valueStr = {}:
+//	
+	{if(connectorType == "AMI4CCM_Connector_CLIENT") then{
+		valueStr.add(inst.getCorbaScopedName().replaceAll(inst.name, "Async" +inst.name) + "_AMI")
+	}else if(connectorType == "AMI4CCM_Connector_SERVER") then{
+		valueStr.add(inst.getCorbaScopedName().replaceAll(inst.name, "Async" +inst.name) + "_SRR_CORBA")
+	}else if(connectorType == "CORBA4CCM_Connector") then{
+		valueStr.add(inst.getCorbaScopedName() + "_SRR_CORBA")
+	}else if(connectorType == "AMI4CCM_Connector") then{
+		valueStr.add(inst.getCorbaScopedName() + "_SRR_AMI")
+	}else{
+		valueStr.add(inst.name)
+	}}->
+			
 	this.name.add(getModelTypeSpecificProperty("COMPONENT_FACTORY")) ->
-	this.value.add(visitAny(valueStr));
+	this.value.add(visitAny("create_" + valueStr.first() + "_Connector_Impl"));
 		
 create Property visitParam1(CORBAInterface inst) :
 	this.name.add(getModelTypeSpecificProperty("COMPONENT_FACTORY")) ->
@@ -1312,12 +1401,22 @@ create Property visitParam2(NamedElement inst) :
 * @param connectorType: a string value passed from the caller indicating the specific type of connector for which fragments are being generated  
 */	
 create Property visitParam2(NamedElement inst, String connectorType) :
-	let valueStr = ("AMI4CCM_Connector_CLIENT" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, "Async"+inst.name+"_ami_exec"):
-		(("AMI4CCM_Connector_SERVER" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, "Async"+inst.name+"_corba_exec"):
-		(("CORBA4CCM_Connector" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, inst.name+"_corba_exec"):
-		inst.name)):
+	let valueStr = {}:
+//	
+	{if(connectorType == "AMI4CCM_Connector_CLIENT") then{
+		valueStr.add(inst.getCorbaScopedName().replaceAll(inst.name, "Async"+ inst.name + "_AMI_exec"))
+	}else if(connectorType == "AMI4CCM_Connector_SERVER") then{
+		valueStr.add(inst.getCorbaScopedName().replaceAll(inst.name, "Async" + inst.name + "_CORBA_exec"))
+	}else if(connectorType == "CORBA4CCM_Connector") then{
+		valueStr.add(inst.getCorbaScopedName().replaceAll(inst.name, inst.name + "_CORBA_exec"))
+	}else if(connectorType == "AMI4CCM_Connector") then{
+		valueStr.add(inst.getCorbaScopedName().replaceAll(inst.name, inst.name + "_AMI_exec"))
+	}else{
+		valueStr.add(inst.name)
+	}}->
+			
 	this.name.add(getModelTypeSpecificProperty("EXEC_ARTIFACT")) ->
-	this.value.add(visitAny(valueStr));	
+	this.value.add(visitAny(valueStr.first()));	
 	
 create Property visitParam2(Home inst, MonolithicImplementation impl) :
 	this.name.add(getModelTypeSpecificProperty("EXEC_ARTIFACT")) ->
@@ -1332,12 +1431,22 @@ create Property visitParam3(NamedElement inst) :
 * @param connectorType: a string value passed from the caller indicating the specific type of connector for which fragments are being generated  
 */
 create Property visitParam3(CORBAInterface inst, String connectorType) :
-	let valueStr = "create_" + (("AMI4CCM_Connector_CLIENT" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, "AMI4CCM_Async" +inst.name) + "_Connector_AMI4CCM":
-		(("AMI4CCM_Connector_SERVER" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, "Async" +inst.name) + "_SRR_CORBA":
-		(("CORBA4CCM_Connector" == connectorType)? inst.getCorbaScopedName() + "_SRR_CORBA":
-		inst.name))) + "_Connector_Servant":
+	let valueStr = {}:
+//	
+	{if(connectorType == "AMI4CCM_Connector_CLIENT") then{
+		valueStr.add(inst.getCorbaScopedName().replaceAll(inst.name, "Async" + inst.name) + "_AMI")
+	}else if(connectorType == "AMI4CCM_Connector_SERVER") then{
+		valueStr.add(inst.getCorbaScopedName().replaceAll(inst.name, "Async" + inst.name) + "_SRR_CORBA")
+	}else if(connectorType == "CORBA4CCM_Connector") then{
+		valueStr.add(inst.getCorbaScopedName() + "_SRR_CORBA")
+	}else if(connectorType == "AMI4CCM_Connector") then{
+		valueStr.add(inst.getCorbaScopedName() + "_SRR_AMI")
+	}else{
+		valueStr.add(inst.name)
+	}}->
+		
 	this.name.add(getModelTypeSpecificProperty("SVNT_ENTRYPT")) ->
-	this.value.add(visitAny(valueStr));	
+	this.value.add(visitAny("create_" + valueStr.first() + "_Connector_Servant"));	
 
 create Property visitParam3(CORBAInterface inst) :
 	this.name.add(getModelTypeSpecificProperty("SVNT_ENTRYPT")) ->
@@ -1356,12 +1465,22 @@ create Property visitParam4(NamedElement inst) :
 * @param connectorType: a string value passed from the caller indicating the specific type of connector for which fragments are being generated  
 */	
 create Property visitParam4(NamedElement inst, String connectorType) :
-	let valueStr = ("AMI4CCM_Connector_CLIENT" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, "Async"+inst.name+"_ami_exec"):
-		(("AMI4CCM_Connector_SERVER" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, "Async"+inst.name+"_corba_exec"):
-		(("CORBA4CCM_Connector" == connectorType)? inst.getCorbaScopedName().replaceAll(inst.name, inst.name+"_corba_exec"):
-		inst.name)):
+	let valueStr = {}:
+//	
+	{if(connectorType == "AMI4CCM_Connector_CLIENT") then{
+		valueStr.add(inst.getCorbaScopedName().replaceAll(inst.name, "Async" + inst.name + "_AMI_exec"))
+	}else if(connectorType == "AMI4CCM_Connector_SERVER") then{
+		valueStr.add(inst.getCorbaScopedName().replaceAll(inst.name, "Async" + inst.name + "_CORBA_exec"))
+	}else if(connectorType == "CORBA4CCM_Connector") then{
+		valueStr.add(inst.getCorbaScopedName().replaceAll(inst.name, inst.name + "_CORBA_exec"))
+	}else if(connectorType == "AMI4CCM_Connector") then{
+		valueStr.add(inst.getCorbaScopedName().replaceAll(inst.name, inst.name + "_AMI_exec"))
+	}else{
+		valueStr.add(inst.name)
+	}}->
+			
 	this.name.add(getModelTypeSpecificProperty("SVNT_ARTIFACT")) ->
-	this.value.add(visitAny(valueStr));	
+	this.value.add(visitAny(valueStr.first()));	
 
 create Property visitParam4(Home inst, MonolithicImplementation impl) :
 	this.name.add(getModelTypeSpecificProperty("SVNT_ARTIFACT")) ->
@@ -1470,11 +1589,7 @@ create Any createProcessNamePropertyValue(Property property, DeploymentPart proc
 	this.type.add(type) ->
 	value.string.add(process.name) ->
 	this.value.add(value);
-	
-String getModelType(CCM::CCM_Deployment::DeploymentPlan deployment) :
-	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.getModelType(
-		org.eclipse.uml2.uml.Element);
-		
+
 String getModelTypeSpecificProperty(String property):
 	let modelType = (String)getGlobalVar("modelType"):
 	getModelTypeSpecificProperty(modelType, property);

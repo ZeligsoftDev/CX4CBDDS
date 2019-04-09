@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl.impl;
 
@@ -20,24 +16,27 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class IntegerTypeImpl extends BaseTypeSpecImpl implements IntegerType {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IntegerTypeImpl() {
-		super();
-	}
+public class IntegerTypeImpl extends BaseTypeSpecImpl implements IntegerType
+{
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected IntegerTypeImpl()
+  {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return IdlPackage.Literals.INTEGER_TYPE;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return IdlPackage.Literals.INTEGER_TYPE;
+  }
 
 } //IntegerTypeImpl

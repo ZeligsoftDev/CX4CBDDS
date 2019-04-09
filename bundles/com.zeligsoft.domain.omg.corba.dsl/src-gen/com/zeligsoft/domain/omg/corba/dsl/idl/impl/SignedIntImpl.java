@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl.impl;
 
@@ -20,24 +16,27 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class SignedIntImpl extends IntegerTypeImpl implements SignedInt {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SignedIntImpl() {
-		super();
-	}
+public class SignedIntImpl extends IntegerTypeImpl implements SignedInt
+{
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected SignedIntImpl()
+  {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return IdlPackage.Literals.SIGNED_INT;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return IdlPackage.Literals.SIGNED_INT;
+  }
 
 } //SignedIntImpl

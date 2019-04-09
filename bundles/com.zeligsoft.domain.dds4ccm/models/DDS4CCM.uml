@@ -344,6 +344,26 @@ endif&#xD;
           <body>self.idlType &lt;> null</body>
         </specification>
       </ownedRule>
+      <ownedRule xmi:id="_JV7pcFAAEemk3qCdFFbT1g" name="connector_type_compatibility">
+        <ownedComment xmi:id="_JWRAoFAAEemk3qCdFFbT1g">
+          <body>%_desc_DDS4CCM__Constraints__connector_type_compatibility</body>
+        </ownedComment>
+        <constrainedElement xmi:type="uml:Class" href="pathmap://CCM_DOMAIN/CCM.uml#_CaJgQF3jEd-xDs-FOeJ7CA"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_JWH2sFAAEemk3qCdFFbT1g">
+          <language>Java</language>
+          <body>com.zeligsoft.domain.dds4ccm.constraints.java.ConnectorTypeCompatibilityConstraint</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="_AAldwFStEemfNon6R1wyIA" name="connector_type_not_empty">
+        <ownedComment xmi:id="_AAohEFStEemfNon6R1wyIA">
+          <body>%_desc_DDS4CCM__Constraints__connector_type_not_empty</body>
+        </ownedComment>
+        <constrainedElement xmi:type="uml:Class" href="pathmap://CCM_DOMAIN/CCM.uml#_CaJgQF3jEd-xDs-FOeJ7CA"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_AAmr4FStEemfNon6R1wyIA">
+          <language>Java</language>
+          <body>com.zeligsoft.domain.dds4ccm.constraints.java.ConnectorTypeNotEmptyConstraint</body>
+        </specification>
+      </ownedRule>
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_9-4P0OR3EeCaze562T5Rgw" supplier="_4JyrwOR3EeCaze562T5Rgw" client="_fP0CMEDSEd-VnJuJyqILLA"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_TQsi0B9sEeGEWf0BDHdksQ" client="_fP0CMEDSEd-VnJuJyqILLA">
@@ -445,4 +465,6 @@ endif&#xD;
   <zdl:DomainEnumLiteral xmi:id="_RbiBUAIREemxSNFUunBY-w" base_EnumerationLiteral="_RbaFgAIREemxSNFUunBY-w"/>
   <zdl:DomainEnumLiteral xmi:id="_ShKMoAIREemxSNFUunBY-w" base_EnumerationLiteral="_ShHwYAIREemxSNFUunBY-w"/>
   <zdl:DomainAttribute xmi:id="_cm2DMAIREemxSNFUunBY-w" base_Property="_cmuHYAIREemxSNFUunBY-w"/>
+  <zdl:ExternalDomainConstraint xmi:id="_JWN9UFAAEemk3qCdFFbT1g" severity="error" message="%_mesg_DDS4CCM__Constraints__connector_type_compatibility" id="com.zeligsoft.domain.dds4ccm.Constraints.connector_type_compatibility" base_Constraint="_JV7pcFAAEemk3qCdFFbT1g"/>
+  <zdl:ExternalDomainConstraint xmi:id="_AAn6AFStEemfNon6R1wyIA" severity="error" message="%_mesg_DDS4CCM__Constraints__connector_type_not_empty" id="com.zeligsoft.domain.dds4ccm.Constraints.connector_type_not_empty" base_Constraint="_AAldwFStEemfNon6R1wyIA"/>
 </xmi:XMI>

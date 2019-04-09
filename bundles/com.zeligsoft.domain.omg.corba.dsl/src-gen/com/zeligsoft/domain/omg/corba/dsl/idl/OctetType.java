@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl;
 
@@ -17,5 +13,6 @@ package com.zeligsoft.domain.omg.corba.dsl.idl;
  * @model
  * @generated
  */
-public interface OctetType extends BaseTypeSpec, ConstType {
+public interface OctetType extends BaseTypeSpec, ConstType
+{
 } // OctetType

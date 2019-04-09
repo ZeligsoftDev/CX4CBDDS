@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl.impl;
 
@@ -20,24 +16,27 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class SignedLongIntImpl extends SignedIntImpl implements SignedLongInt {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SignedLongIntImpl() {
-		super();
-	}
+public class SignedLongIntImpl extends SignedIntImpl implements SignedLongInt
+{
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected SignedLongIntImpl()
+  {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return IdlPackage.Literals.SIGNED_LONG_INT;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return IdlPackage.Literals.SIGNED_LONG_INT;
+  }
 
 } //SignedLongIntImpl

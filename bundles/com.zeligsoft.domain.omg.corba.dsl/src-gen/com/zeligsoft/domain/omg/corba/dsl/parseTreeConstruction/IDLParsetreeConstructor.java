@@ -6,14 +6,13 @@ package com.zeligsoft.domain.omg.corba.dsl.parseTreeConstruction;
 import org.eclipse.emf.ecore.*;
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.parsetree.reconstr.IEObjectConsumer;
-import org.eclipse.xtext.parsetree.reconstr.impl.AbstractParseTreeConstructor;
 
 import com.zeligsoft.domain.omg.corba.dsl.services.IDLGrammarAccess;
 
 import com.google.inject.Inject;
 
 @SuppressWarnings("all")
-public class IDLParsetreeConstructor extends AbstractParseTreeConstructor {
+public class IDLParsetreeConstructor extends org.eclipse.xtext.parsetree.reconstr.impl.AbstractParseTreeConstructor {
 		
 	@Inject
 	private IDLGrammarAccess grammarAccess;
@@ -47,144 +46,145 @@ protected class ThisRootNode extends RootToken {
 			case 13: return new Preproc_Endif_Group(this, this, 13, inst);
 			case 14: return new Preproc_Pragma_Alternatives(this, this, 14, inst);
 			case 15: return new Preproc_Pragma_Prefix_Group(this, this, 15, inst);
-			case 16: return new Preproc_Pragma_Ciao_Lem_Group(this, this, 16, inst);
-			case 17: return new Preproc_Pragma_Ciao_Ami4ccm_Interface_Group(this, this, 17, inst);
-			case 18: return new Preproc_Pragma_Ciao_Ami4ccm_Receptacle_Group(this, this, 18, inst);
-			case 19: return new Preproc_Pragma_Ciao_Ami4ccm_Idl_Group(this, this, 19, inst);
-			case 20: return new Preproc_Pragma_Ndds_Group(this, this, 20, inst);
-			case 21: return new Preproc_Pragma_Component_Group(this, this, 21, inst);
-			case 22: return new Preproc_Pragma_Home_Group(this, this, 22, inst);
-			case 23: return new Preproc_Pragma_DDS4CCM_Impl_Group(this, this, 23, inst);
-			case 24: return new Preproc_Pragma_Misc_Group(this, this, 24, inst);
-			case 25: return new File_Marker_Group(this, this, 25, inst);
-			case 26: return new Excluded_File_Marker_Group(this, this, 26, inst);
-			case 27: return new Import_decl_Group(this, this, 27, inst);
-			case 28: return new Definition_Alternatives(this, this, 28, inst);
-			case 29: return new Module_Group(this, this, 29, inst);
-			case 30: return new Interface_or_Forward_Decl_Alternatives(this, this, 30, inst);
-			case 31: return new Interface_decl_Group(this, this, 31, inst);
-			case 32: return new Forward_decl_Group(this, this, 32, inst);
-			case 33: return new Interface_header_Group(this, this, 33, inst);
-			case 34: return new InterfaceBody_Group(this, this, 34, inst);
-			case 35: return new Export_Alternatives(this, this, 35, inst);
-			case 36: return new AttrDecl_Alternatives(this, this, 36, inst);
-			case 37: return new AttrSpec_Group(this, this, 37, inst);
-			case 38: return new ReadOnlyAttrSpec_Group(this, this, 38, inst);
-			case 39: return new AttrRaisesExpr_ExceptionsAssignment(this, this, 39, inst);
-			case 40: return new ExceptionList_Group(this, this, 40, inst);
-			case 41: return new OpDecl_Group(this, this, 41, inst);
-			case 42: return new OpTypeDecl_Alternatives(this, this, 42, inst);
-			case 43: return new ParameterDecls_Group(this, this, 43, inst);
-			case 44: return new ParamDcl_Group(this, this, 44, inst);
-			case 45: return new ContextExpr_Group(this, this, 45, inst);
-			case 46: return new ParamTypeSpec_Alternatives(this, this, 46, inst);
-			case 47: return new ScopedName_Group(this, this, 47, inst);
-			case 48: return new BaseTypeSpec_Alternatives(this, this, 48, inst);
-			case 49: return new FloatingPtType_Alternatives(this, this, 49, inst);
-			case 50: return new FloatType_Group(this, this, 50, inst);
-			case 51: return new DoubleType_Group(this, this, 51, inst);
-			case 52: return new LongDoubleType_Group(this, this, 52, inst);
-			case 53: return new IntegerType_Alternatives(this, this, 53, inst);
-			case 54: return new SignedInt_Alternatives(this, this, 54, inst);
-			case 55: return new SignedShortInt_Group(this, this, 55, inst);
-			case 56: return new SignedLongInt_Group(this, this, 56, inst);
-			case 57: return new SignedLongLongInt_Group(this, this, 57, inst);
-			case 58: return new UnsignedInt_Alternatives(this, this, 58, inst);
-			case 59: return new UnsignedShortInt_Group(this, this, 59, inst);
-			case 60: return new UnsignedLongInt_Group(this, this, 60, inst);
-			case 61: return new UnsignedLongLongInt_Group(this, this, 61, inst);
-			case 62: return new CharType_Group(this, this, 62, inst);
-			case 63: return new WideCharType_Group(this, this, 63, inst);
-			case 64: return new BooleanType_Group(this, this, 64, inst);
-			case 65: return new OctetType_Group(this, this, 65, inst);
-			case 66: return new AnyType_Group(this, this, 66, inst);
-			case 67: return new ObjectType_Group(this, this, 67, inst);
-			case 68: return new ValueBaseType_Group(this, this, 68, inst);
-			case 69: return new StringType_Group(this, this, 69, inst);
-			case 70: return new WideStringType_Group(this, this, 70, inst);
-			case 71: return new ExceptDecl_Group(this, this, 71, inst);
-			case 72: return new Member_Group(this, this, 72, inst);
-			case 73: return new Declarator_Alternatives(this, this, 73, inst);
-			case 74: return new SimpleDeclarator_IdAssignment(this, this, 74, inst);
-			case 75: return new ComplexDeclarator_ArrayDeclaratorParserRuleCall(this, this, 75, inst);
-			case 76: return new ArrayDeclarator_Group(this, this, 76, inst);
-			case 77: return new StructType_Group(this, this, 77, inst);
-			case 78: return new TypeDecl_Alternatives(this, this, 78, inst);
-			case 79: return new TypeDeclarator_Group(this, this, 79, inst);
-			case 80: return new TypeSpec_Alternatives(this, this, 80, inst);
-			case 81: return new SimpleTypeSpec_Alternatives(this, this, 81, inst);
-			case 82: return new TemplateTypeSpec_Alternatives(this, this, 82, inst);
-			case 83: return new ConstrTypeSpec_Alternatives(this, this, 83, inst);
-			case 84: return new UnionType_Group(this, this, 84, inst);
-			case 85: return new SwitchTypeSpec_Alternatives(this, this, 85, inst);
-			case 86: return new SwitchBody_CaseAssignment(this, this, 86, inst);
-			case 87: return new Case_Group(this, this, 87, inst);
-			case 88: return new CaseLabel_Alternatives(this, this, 88, inst);
-			case 89: return new ElementSpec_Group(this, this, 89, inst);
-			case 90: return new EnumType_Group(this, this, 90, inst);
-			case 91: return new SequenceType_Group(this, this, 91, inst);
-			case 92: return new NativeType_Group(this, this, 92, inst);
-			case 93: return new FixedPtType_Group(this, this, 93, inst);
-			case 94: return new ConstrForwardDecl_Alternatives(this, this, 94, inst);
-			case 95: return new StructForwardDecl_Group(this, this, 95, inst);
-			case 96: return new UnionForwardDecl_Group(this, this, 96, inst);
-			case 97: return new PositiveIntConst_ExpAssignment(this, this, 97, inst);
-			case 98: return new ConstDecl_Group(this, this, 98, inst);
-			case 99: return new ConstType_Alternatives(this, this, 99, inst);
-			case 100: return new FixedPtConstType_Group(this, this, 100, inst);
-			case 101: return new ConstExp_OrExprParserRuleCall(this, this, 101, inst);
-			case 102: return new OrExpr_Group(this, this, 102, inst);
-			case 103: return new XOrExpr_Group(this, this, 103, inst);
-			case 104: return new AndExpr_Group(this, this, 104, inst);
-			case 105: return new ShiftExpr_Group(this, this, 105, inst);
-			case 106: return new AddExpr_Group(this, this, 106, inst);
-			case 107: return new MultExpr_Group(this, this, 107, inst);
-			case 108: return new UnaryExpr_Group(this, this, 108, inst);
-			case 109: return new PrimaryExpr_Alternatives(this, this, 109, inst);
-			case 110: return new Literal_Alternatives(this, this, 110, inst);
-			case 111: return new ComponentDecl_Group(this, this, 111, inst);
-			case 112: return new ComponentExport_Alternatives(this, this, 112, inst);
-			case 113: return new ProvidesDcl_Group(this, this, 113, inst);
-			case 114: return new UsesDcl_Group(this, this, 114, inst);
-			case 115: return new PublishesDcl_Group(this, this, 115, inst);
-			case 116: return new EmitDcl_Group(this, this, 116, inst);
-			case 117: return new ConsumesDcl_Group(this, this, 117, inst);
-			case 118: return new ComponentForwardDecl_Group(this, this, 118, inst);
-			case 119: return new HomeDecl_Group(this, this, 119, inst);
-			case 120: return new PrimaryKeySpec_Group(this, this, 120, inst);
-			case 121: return new HomeExport_Alternatives(this, this, 121, inst);
-			case 122: return new FactoryDcl_Group(this, this, 122, inst);
-			case 123: return new FinderDcl_Group(this, this, 123, inst);
-			case 124: return new Event_Alternatives(this, this, 124, inst);
-			case 125: return new EventDcl_Group(this, this, 125, inst);
-			case 126: return new StateMember_Group(this, this, 126, inst);
-			case 127: return new EventForwardDcl_Group(this, this, 127, inst);
-			case 128: return new PortTypeDecl_Group(this, this, 128, inst);
-			case 129: return new PortExport_Alternatives(this, this, 129, inst);
-			case 130: return new PortDecl_Group(this, this, 130, inst);
-			case 131: return new Connector_Group(this, this, 131, inst);
-			case 132: return new ConnectorHeader_Group(this, this, 132, inst);
-			case 133: return new ConnectorExport_Alternatives(this, this, 133, inst);
-			case 134: return new TemplateModule_Group(this, this, 134, inst);
-			case 135: return new FormalParameter_Group(this, this, 135, inst);
-			case 136: return new FormalParameterType_Alternatives(this, this, 136, inst);
-			case 137: return new TypenameParamType_Group(this, this, 137, inst);
-			case 138: return new InterfaceParamType_Group(this, this, 138, inst);
-			case 139: return new ValuetypeParamType_Group(this, this, 139, inst);
-			case 140: return new EventParamType_Group(this, this, 140, inst);
-			case 141: return new StructParamType_Group(this, this, 141, inst);
-			case 142: return new UnionParamType_Group(this, this, 142, inst);
-			case 143: return new ExceptionParamType_Group(this, this, 143, inst);
-			case 144: return new EnumParamType_Group(this, this, 144, inst);
-			case 145: return new SequenceParamType_Group(this, this, 145, inst);
-			case 146: return new ConstParamType_Group(this, this, 146, inst);
-			case 147: return new TemplateDefinition_Alternatives(this, this, 147, inst);
-			case 148: return new FixedModule_Group(this, this, 148, inst);
-			case 149: return new FixedDefinition_Alternatives(this, this, 149, inst);
-			case 150: return new TemplateModuleInst_Group(this, this, 150, inst);
-			case 151: return new ActualParameter_Alternatives(this, this, 151, inst);
-			case 152: return new TemplateModuleRef_Group(this, this, 152, inst);
-			case 153: return new IDLComment_BodyAssignment(this, this, 153, inst);
+			case 16: return new Preproc_Pragma_Conn_Type_Group(this, this, 16, inst);
+			case 17: return new Preproc_Pragma_Ciao_Lem_Group(this, this, 17, inst);
+			case 18: return new Preproc_Pragma_Ciao_Ami4ccm_Interface_Group(this, this, 18, inst);
+			case 19: return new Preproc_Pragma_Ciao_Ami4ccm_Receptacle_Group(this, this, 19, inst);
+			case 20: return new Preproc_Pragma_Ciao_Ami4ccm_Idl_Group(this, this, 20, inst);
+			case 21: return new Preproc_Pragma_Ndds_Group(this, this, 21, inst);
+			case 22: return new Preproc_Pragma_Component_Group(this, this, 22, inst);
+			case 23: return new Preproc_Pragma_Home_Group(this, this, 23, inst);
+			case 24: return new Preproc_Pragma_DDS4CCM_Impl_Group(this, this, 24, inst);
+			case 25: return new Preproc_Pragma_Misc_Group(this, this, 25, inst);
+			case 26: return new File_Marker_Group(this, this, 26, inst);
+			case 27: return new Excluded_File_Marker_Group(this, this, 27, inst);
+			case 28: return new Import_decl_Group(this, this, 28, inst);
+			case 29: return new Definition_Alternatives(this, this, 29, inst);
+			case 30: return new Module_Group(this, this, 30, inst);
+			case 31: return new Interface_or_Forward_Decl_Alternatives(this, this, 31, inst);
+			case 32: return new Interface_decl_Group(this, this, 32, inst);
+			case 33: return new Forward_decl_Group(this, this, 33, inst);
+			case 34: return new Interface_header_Group(this, this, 34, inst);
+			case 35: return new InterfaceBody_Group(this, this, 35, inst);
+			case 36: return new Export_Alternatives(this, this, 36, inst);
+			case 37: return new AttrDecl_Alternatives(this, this, 37, inst);
+			case 38: return new AttrSpec_Group(this, this, 38, inst);
+			case 39: return new ReadOnlyAttrSpec_Group(this, this, 39, inst);
+			case 40: return new AttrRaisesExpr_ExceptionsAssignment(this, this, 40, inst);
+			case 41: return new ExceptionList_Group(this, this, 41, inst);
+			case 42: return new OpDecl_Group(this, this, 42, inst);
+			case 43: return new OpTypeDecl_Alternatives(this, this, 43, inst);
+			case 44: return new ParameterDecls_Group(this, this, 44, inst);
+			case 45: return new ParamDcl_Group(this, this, 45, inst);
+			case 46: return new ContextExpr_Group(this, this, 46, inst);
+			case 47: return new ParamTypeSpec_Alternatives(this, this, 47, inst);
+			case 48: return new ScopedName_Group(this, this, 48, inst);
+			case 49: return new BaseTypeSpec_Alternatives(this, this, 49, inst);
+			case 50: return new FloatingPtType_Alternatives(this, this, 50, inst);
+			case 51: return new FloatType_Group(this, this, 51, inst);
+			case 52: return new DoubleType_Group(this, this, 52, inst);
+			case 53: return new LongDoubleType_Group(this, this, 53, inst);
+			case 54: return new IntegerType_Alternatives(this, this, 54, inst);
+			case 55: return new SignedInt_Alternatives(this, this, 55, inst);
+			case 56: return new SignedShortInt_Group(this, this, 56, inst);
+			case 57: return new SignedLongInt_Group(this, this, 57, inst);
+			case 58: return new SignedLongLongInt_Group(this, this, 58, inst);
+			case 59: return new UnsignedInt_Alternatives(this, this, 59, inst);
+			case 60: return new UnsignedShortInt_Group(this, this, 60, inst);
+			case 61: return new UnsignedLongInt_Group(this, this, 61, inst);
+			case 62: return new UnsignedLongLongInt_Group(this, this, 62, inst);
+			case 63: return new CharType_Group(this, this, 63, inst);
+			case 64: return new WideCharType_Group(this, this, 64, inst);
+			case 65: return new BooleanType_Group(this, this, 65, inst);
+			case 66: return new OctetType_Group(this, this, 66, inst);
+			case 67: return new AnyType_Group(this, this, 67, inst);
+			case 68: return new ObjectType_Group(this, this, 68, inst);
+			case 69: return new ValueBaseType_Group(this, this, 69, inst);
+			case 70: return new StringType_Group(this, this, 70, inst);
+			case 71: return new WideStringType_Group(this, this, 71, inst);
+			case 72: return new ExceptDecl_Group(this, this, 72, inst);
+			case 73: return new Member_Group(this, this, 73, inst);
+			case 74: return new Declarator_Alternatives(this, this, 74, inst);
+			case 75: return new SimpleDeclarator_IdAssignment(this, this, 75, inst);
+			case 76: return new ComplexDeclarator_ArrayDeclaratorParserRuleCall(this, this, 76, inst);
+			case 77: return new ArrayDeclarator_Group(this, this, 77, inst);
+			case 78: return new StructType_Group(this, this, 78, inst);
+			case 79: return new TypeDecl_Alternatives(this, this, 79, inst);
+			case 80: return new TypeDeclarator_Group(this, this, 80, inst);
+			case 81: return new TypeSpec_Alternatives(this, this, 81, inst);
+			case 82: return new SimpleTypeSpec_Alternatives(this, this, 82, inst);
+			case 83: return new TemplateTypeSpec_Alternatives(this, this, 83, inst);
+			case 84: return new ConstrTypeSpec_Alternatives(this, this, 84, inst);
+			case 85: return new UnionType_Group(this, this, 85, inst);
+			case 86: return new SwitchTypeSpec_Alternatives(this, this, 86, inst);
+			case 87: return new SwitchBody_CaseAssignment(this, this, 87, inst);
+			case 88: return new Case_Group(this, this, 88, inst);
+			case 89: return new CaseLabel_Alternatives(this, this, 89, inst);
+			case 90: return new ElementSpec_Group(this, this, 90, inst);
+			case 91: return new EnumType_Group(this, this, 91, inst);
+			case 92: return new SequenceType_Group(this, this, 92, inst);
+			case 93: return new NativeType_Group(this, this, 93, inst);
+			case 94: return new FixedPtType_Group(this, this, 94, inst);
+			case 95: return new ConstrForwardDecl_Alternatives(this, this, 95, inst);
+			case 96: return new StructForwardDecl_Group(this, this, 96, inst);
+			case 97: return new UnionForwardDecl_Group(this, this, 97, inst);
+			case 98: return new PositiveIntConst_ExpAssignment(this, this, 98, inst);
+			case 99: return new ConstDecl_Group(this, this, 99, inst);
+			case 100: return new ConstType_Alternatives(this, this, 100, inst);
+			case 101: return new FixedPtConstType_Group(this, this, 101, inst);
+			case 102: return new ConstExp_OrExprParserRuleCall(this, this, 102, inst);
+			case 103: return new OrExpr_Group(this, this, 103, inst);
+			case 104: return new XOrExpr_Group(this, this, 104, inst);
+			case 105: return new AndExpr_Group(this, this, 105, inst);
+			case 106: return new ShiftExpr_Group(this, this, 106, inst);
+			case 107: return new AddExpr_Group(this, this, 107, inst);
+			case 108: return new MultExpr_Group(this, this, 108, inst);
+			case 109: return new UnaryExpr_Group(this, this, 109, inst);
+			case 110: return new PrimaryExpr_Alternatives(this, this, 110, inst);
+			case 111: return new Literal_Alternatives(this, this, 111, inst);
+			case 112: return new ComponentDecl_Group(this, this, 112, inst);
+			case 113: return new ComponentExport_Alternatives(this, this, 113, inst);
+			case 114: return new ProvidesDcl_Group(this, this, 114, inst);
+			case 115: return new UsesDcl_Group(this, this, 115, inst);
+			case 116: return new PublishesDcl_Group(this, this, 116, inst);
+			case 117: return new EmitDcl_Group(this, this, 117, inst);
+			case 118: return new ConsumesDcl_Group(this, this, 118, inst);
+			case 119: return new ComponentForwardDecl_Group(this, this, 119, inst);
+			case 120: return new HomeDecl_Group(this, this, 120, inst);
+			case 121: return new PrimaryKeySpec_Group(this, this, 121, inst);
+			case 122: return new HomeExport_Alternatives(this, this, 122, inst);
+			case 123: return new FactoryDcl_Group(this, this, 123, inst);
+			case 124: return new FinderDcl_Group(this, this, 124, inst);
+			case 125: return new Event_Alternatives(this, this, 125, inst);
+			case 126: return new EventDcl_Group(this, this, 126, inst);
+			case 127: return new StateMember_Group(this, this, 127, inst);
+			case 128: return new EventForwardDcl_Group(this, this, 128, inst);
+			case 129: return new PortTypeDecl_Group(this, this, 129, inst);
+			case 130: return new PortExport_Alternatives(this, this, 130, inst);
+			case 131: return new PortDecl_Group(this, this, 131, inst);
+			case 132: return new Connector_Group(this, this, 132, inst);
+			case 133: return new ConnectorHeader_Group(this, this, 133, inst);
+			case 134: return new ConnectorExport_Alternatives(this, this, 134, inst);
+			case 135: return new TemplateModule_Group(this, this, 135, inst);
+			case 136: return new FormalParameter_Group(this, this, 136, inst);
+			case 137: return new FormalParameterType_Alternatives(this, this, 137, inst);
+			case 138: return new TypenameParamType_Group(this, this, 138, inst);
+			case 139: return new InterfaceParamType_Group(this, this, 139, inst);
+			case 140: return new ValuetypeParamType_Group(this, this, 140, inst);
+			case 141: return new EventParamType_Group(this, this, 141, inst);
+			case 142: return new StructParamType_Group(this, this, 142, inst);
+			case 143: return new UnionParamType_Group(this, this, 143, inst);
+			case 144: return new ExceptionParamType_Group(this, this, 144, inst);
+			case 145: return new EnumParamType_Group(this, this, 145, inst);
+			case 146: return new SequenceParamType_Group(this, this, 146, inst);
+			case 147: return new ConstParamType_Group(this, this, 147, inst);
+			case 148: return new TemplateDefinition_Alternatives(this, this, 148, inst);
+			case 149: return new FixedModule_Group(this, this, 149, inst);
+			case 150: return new FixedDefinition_Alternatives(this, this, 150, inst);
+			case 151: return new TemplateModuleInst_Group(this, this, 151, inst);
+			case 152: return new ActualParameter_Alternatives(this, this, 152, inst);
+			case 153: return new TemplateModuleRef_Group(this, this, 153, inst);
+			case 154: return new IDLComment_BodyAssignment(this, this, 154, inst);
 			default: return null;
 		}	
 	}	
@@ -409,6 +409,7 @@ protected class Preproc_Alternatives extends AlternativesToken {
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_LemRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_ComponentRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_DDS4CCM_ImplRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_HomeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_MiscAccess().getPreproc_Pragma_MiscAction_0().getType().getClassifier() && 
@@ -772,6 +773,7 @@ protected class Preproc_Preproc_PragmaParserRuleCall_9 extends RuleCallToken {
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_LemRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_ComponentRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_DDS4CCM_ImplRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_HomeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_MiscAccess().getPreproc_Pragma_MiscAction_0().getType().getClassifier() && 
@@ -2590,13 +2592,13 @@ protected class Preproc_Endif_EndifKeyword_1 extends KeywordToken  {
 /************ begin Rule Preproc_Pragma ****************
  *
  * Preproc_Pragma:
- * 	Preproc_Pragma_Prefix | Preproc_Pragma_Ciao_Lem | Preproc_Pragma_Ciao_Ami4ccm_Interface |
+ * 	Preproc_Pragma_Prefix | Preproc_Pragma_Conn_Type | Preproc_Pragma_Ciao_Lem | Preproc_Pragma_Ciao_Ami4ccm_Interface |
  * 	Preproc_Pragma_Ciao_Ami4ccm_Receptacle | Preproc_Pragma_Ciao_Ami4ccm_Idl | Preproc_Pragma_Ndds |
  * 	Preproc_Pragma_Component | Preproc_Pragma_Home | Preproc_Pragma_DDS4CCM_Impl | Preproc_Pragma_Misc;
  *
  **/
 
-// Preproc_Pragma_Prefix | Preproc_Pragma_Ciao_Lem | Preproc_Pragma_Ciao_Ami4ccm_Interface |
+// Preproc_Pragma_Prefix | Preproc_Pragma_Conn_Type | Preproc_Pragma_Ciao_Lem | Preproc_Pragma_Ciao_Ami4ccm_Interface |
 // Preproc_Pragma_Ciao_Ami4ccm_Receptacle | Preproc_Pragma_Ciao_Ami4ccm_Idl | Preproc_Pragma_Ndds |
 // Preproc_Pragma_Component | Preproc_Pragma_Home | Preproc_Pragma_DDS4CCM_Impl | Preproc_Pragma_Misc
 protected class Preproc_Pragma_Alternatives extends AlternativesToken {
@@ -2614,15 +2616,16 @@ protected class Preproc_Pragma_Alternatives extends AlternativesToken {
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
 			case 0: return new Preproc_Pragma_Preproc_Pragma_PrefixParserRuleCall_0(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new Preproc_Pragma_Preproc_Pragma_Ciao_LemParserRuleCall_1(lastRuleCallOrigin, this, 1, inst);
-			case 2: return new Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_InterfaceParserRuleCall_2(lastRuleCallOrigin, this, 2, inst);
-			case 3: return new Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_ReceptacleParserRuleCall_3(lastRuleCallOrigin, this, 3, inst);
-			case 4: return new Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_IdlParserRuleCall_4(lastRuleCallOrigin, this, 4, inst);
-			case 5: return new Preproc_Pragma_Preproc_Pragma_NddsParserRuleCall_5(lastRuleCallOrigin, this, 5, inst);
-			case 6: return new Preproc_Pragma_Preproc_Pragma_ComponentParserRuleCall_6(lastRuleCallOrigin, this, 6, inst);
-			case 7: return new Preproc_Pragma_Preproc_Pragma_HomeParserRuleCall_7(lastRuleCallOrigin, this, 7, inst);
-			case 8: return new Preproc_Pragma_Preproc_Pragma_DDS4CCM_ImplParserRuleCall_8(lastRuleCallOrigin, this, 8, inst);
-			case 9: return new Preproc_Pragma_Preproc_Pragma_MiscParserRuleCall_9(lastRuleCallOrigin, this, 9, inst);
+			case 1: return new Preproc_Pragma_Preproc_Pragma_Conn_TypeParserRuleCall_1(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new Preproc_Pragma_Preproc_Pragma_Ciao_LemParserRuleCall_2(lastRuleCallOrigin, this, 2, inst);
+			case 3: return new Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_InterfaceParserRuleCall_3(lastRuleCallOrigin, this, 3, inst);
+			case 4: return new Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_ReceptacleParserRuleCall_4(lastRuleCallOrigin, this, 4, inst);
+			case 5: return new Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_IdlParserRuleCall_5(lastRuleCallOrigin, this, 5, inst);
+			case 6: return new Preproc_Pragma_Preproc_Pragma_NddsParserRuleCall_6(lastRuleCallOrigin, this, 6, inst);
+			case 7: return new Preproc_Pragma_Preproc_Pragma_ComponentParserRuleCall_7(lastRuleCallOrigin, this, 7, inst);
+			case 8: return new Preproc_Pragma_Preproc_Pragma_HomeParserRuleCall_8(lastRuleCallOrigin, this, 8, inst);
+			case 9: return new Preproc_Pragma_Preproc_Pragma_DDS4CCM_ImplParserRuleCall_9(lastRuleCallOrigin, this, 9, inst);
+			case 10: return new Preproc_Pragma_Preproc_Pragma_MiscParserRuleCall_10(lastRuleCallOrigin, this, 10, inst);
 			default: return null;
 		}	
 	}
@@ -2634,6 +2637,7 @@ protected class Preproc_Pragma_Alternatives extends AlternativesToken {
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_LemRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_ComponentRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_DDS4CCM_ImplRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_HomeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_MiscAccess().getPreproc_Pragma_MiscAction_0().getType().getClassifier() && 
@@ -2681,16 +2685,52 @@ protected class Preproc_Pragma_Preproc_Pragma_PrefixParserRuleCall_0 extends Rul
 	}	
 }
 
-// Preproc_Pragma_Ciao_Lem
-protected class Preproc_Pragma_Preproc_Pragma_Ciao_LemParserRuleCall_1 extends RuleCallToken {
+// Preproc_Pragma_Conn_Type
+protected class Preproc_Pragma_Preproc_Pragma_Conn_TypeParserRuleCall_1 extends RuleCallToken {
 	
-	public Preproc_Pragma_Preproc_Pragma_Ciao_LemParserRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Preproc_Pragma_Preproc_Pragma_Conn_TypeParserRuleCall_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_LemParserRuleCall_1();
+		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Conn_TypeParserRuleCall_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Preproc_Pragma_Conn_Type_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier())
+			return null;
+		if(checkForRecursion(Preproc_Pragma_Conn_Type_Group.class, eObjectConsumer)) return null;
+		return eObjectConsumer;
+	}
+	
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(next, actIndex , index, inst);
+		}	
+	}	
+}
+
+// Preproc_Pragma_Ciao_Lem
+protected class Preproc_Pragma_Preproc_Pragma_Ciao_LemParserRuleCall_2 extends RuleCallToken {
+	
+	public Preproc_Pragma_Preproc_Pragma_Ciao_LemParserRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_LemParserRuleCall_2();
 	}
 
     @Override
@@ -2718,15 +2758,15 @@ protected class Preproc_Pragma_Preproc_Pragma_Ciao_LemParserRuleCall_1 extends R
 }
 
 // Preproc_Pragma_Ciao_Ami4ccm_Interface
-protected class Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_InterfaceParserRuleCall_2 extends RuleCallToken {
+protected class Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_InterfaceParserRuleCall_3 extends RuleCallToken {
 	
-	public Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_InterfaceParserRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_InterfaceParserRuleCall_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_Ami4ccm_InterfaceParserRuleCall_2();
+		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_Ami4ccm_InterfaceParserRuleCall_3();
 	}
 
     @Override
@@ -2754,15 +2794,15 @@ protected class Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_InterfaceParserRuleCa
 }
 
 // Preproc_Pragma_Ciao_Ami4ccm_Receptacle
-protected class Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_ReceptacleParserRuleCall_3 extends RuleCallToken {
+protected class Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_ReceptacleParserRuleCall_4 extends RuleCallToken {
 	
-	public Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_ReceptacleParserRuleCall_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_ReceptacleParserRuleCall_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleParserRuleCall_3();
+		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleParserRuleCall_4();
 	}
 
     @Override
@@ -2790,15 +2830,15 @@ protected class Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_ReceptacleParserRuleC
 }
 
 // Preproc_Pragma_Ciao_Ami4ccm_Idl
-protected class Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_IdlParserRuleCall_4 extends RuleCallToken {
+protected class Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_IdlParserRuleCall_5 extends RuleCallToken {
 	
-	public Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_IdlParserRuleCall_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_IdlParserRuleCall_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_Ami4ccm_IdlParserRuleCall_4();
+		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_Ciao_Ami4ccm_IdlParserRuleCall_5();
 	}
 
     @Override
@@ -2826,15 +2866,15 @@ protected class Preproc_Pragma_Preproc_Pragma_Ciao_Ami4ccm_IdlParserRuleCall_4 e
 }
 
 // Preproc_Pragma_Ndds
-protected class Preproc_Pragma_Preproc_Pragma_NddsParserRuleCall_5 extends RuleCallToken {
+protected class Preproc_Pragma_Preproc_Pragma_NddsParserRuleCall_6 extends RuleCallToken {
 	
-	public Preproc_Pragma_Preproc_Pragma_NddsParserRuleCall_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Preproc_Pragma_Preproc_Pragma_NddsParserRuleCall_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_NddsParserRuleCall_5();
+		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_NddsParserRuleCall_6();
 	}
 
     @Override
@@ -2862,15 +2902,15 @@ protected class Preproc_Pragma_Preproc_Pragma_NddsParserRuleCall_5 extends RuleC
 }
 
 // Preproc_Pragma_Component
-protected class Preproc_Pragma_Preproc_Pragma_ComponentParserRuleCall_6 extends RuleCallToken {
+protected class Preproc_Pragma_Preproc_Pragma_ComponentParserRuleCall_7 extends RuleCallToken {
 	
-	public Preproc_Pragma_Preproc_Pragma_ComponentParserRuleCall_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Preproc_Pragma_Preproc_Pragma_ComponentParserRuleCall_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_ComponentParserRuleCall_6();
+		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_ComponentParserRuleCall_7();
 	}
 
     @Override
@@ -2898,15 +2938,15 @@ protected class Preproc_Pragma_Preproc_Pragma_ComponentParserRuleCall_6 extends 
 }
 
 // Preproc_Pragma_Home
-protected class Preproc_Pragma_Preproc_Pragma_HomeParserRuleCall_7 extends RuleCallToken {
+protected class Preproc_Pragma_Preproc_Pragma_HomeParserRuleCall_8 extends RuleCallToken {
 	
-	public Preproc_Pragma_Preproc_Pragma_HomeParserRuleCall_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Preproc_Pragma_Preproc_Pragma_HomeParserRuleCall_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_HomeParserRuleCall_7();
+		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_HomeParserRuleCall_8();
 	}
 
     @Override
@@ -2934,15 +2974,15 @@ protected class Preproc_Pragma_Preproc_Pragma_HomeParserRuleCall_7 extends RuleC
 }
 
 // Preproc_Pragma_DDS4CCM_Impl
-protected class Preproc_Pragma_Preproc_Pragma_DDS4CCM_ImplParserRuleCall_8 extends RuleCallToken {
+protected class Preproc_Pragma_Preproc_Pragma_DDS4CCM_ImplParserRuleCall_9 extends RuleCallToken {
 	
-	public Preproc_Pragma_Preproc_Pragma_DDS4CCM_ImplParserRuleCall_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Preproc_Pragma_Preproc_Pragma_DDS4CCM_ImplParserRuleCall_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_DDS4CCM_ImplParserRuleCall_8();
+		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_DDS4CCM_ImplParserRuleCall_9();
 	}
 
     @Override
@@ -2970,15 +3010,15 @@ protected class Preproc_Pragma_Preproc_Pragma_DDS4CCM_ImplParserRuleCall_8 exten
 }
 
 // Preproc_Pragma_Misc
-protected class Preproc_Pragma_Preproc_Pragma_MiscParserRuleCall_9 extends RuleCallToken {
+protected class Preproc_Pragma_Preproc_Pragma_MiscParserRuleCall_10 extends RuleCallToken {
 	
-	public Preproc_Pragma_Preproc_Pragma_MiscParserRuleCall_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public Preproc_Pragma_Preproc_Pragma_MiscParserRuleCall_10(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_MiscParserRuleCall_9();
+		return grammarAccess.getPreproc_PragmaAccess().getPreproc_Pragma_MiscParserRuleCall_10();
 	}
 
     @Override
@@ -3124,6 +3164,157 @@ protected class Preproc_Pragma_Prefix_ValueAssignment_2 extends AssignmentToken 
 
 
 /************ end Rule Preproc_Pragma_Prefix ****************/
+
+
+/************ begin Rule Preproc_Pragma_Conn_Type ****************
+ *
+ * Preproc_Pragma_Conn_Type:
+ * 	"#pragma" "conntype" valuePort=ID ("::" ID)* valueConnType=ID;
+ *
+ **/
+
+// "#pragma" "conntype" valuePort=ID ("::" ID)* valueConnType=ID
+protected class Preproc_Pragma_Conn_Type_Group extends GroupToken {
+	
+	public Preproc_Pragma_Conn_Type_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Preproc_Pragma_Conn_Type_ValueConnTypeAssignment_4(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// "#pragma"
+protected class Preproc_Pragma_Conn_Type_PragmaKeyword_0 extends KeywordToken  {
+	
+	public Preproc_Pragma_Conn_Type_PragmaKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getPragmaKeyword_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+}
+
+// "conntype"
+protected class Preproc_Pragma_Conn_Type_ConntypeKeyword_1 extends KeywordToken  {
+	
+	public Preproc_Pragma_Conn_Type_ConntypeKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getConntypeKeyword_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Preproc_Pragma_Conn_Type_PragmaKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// valuePort=ID
+protected class Preproc_Pragma_Conn_Type_ValuePortAssignment_2 extends AssignmentToken  {
+	
+	public Preproc_Pragma_Conn_Type_ValuePortAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getValuePortAssignment_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Preproc_Pragma_Conn_Type_ConntypeKeyword_1(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("valuePort",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("valuePort");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getValuePortIDTerminalRuleCall_2_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getValuePortIDTerminalRuleCall_2_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// valueConnType=ID
+protected class Preproc_Pragma_Conn_Type_ValueConnTypeAssignment_4 extends AssignmentToken  {
+	
+	public Preproc_Pragma_Conn_Type_ValueConnTypeAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getValueConnTypeAssignment_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new Preproc_Pragma_Conn_Type_ValuePortAssignment_2(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("valueConnType",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("valueConnType");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getValueConnTypeIDTerminalRuleCall_4_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getValueConnTypeIDTerminalRuleCall_4_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+/************ end Rule Preproc_Pragma_Conn_Type ****************/
 
 
 /************ begin Rule Preproc_Pragma_Ciao_Lem ****************
@@ -4593,9 +4784,7 @@ protected class Import_decl_SemicolonKeyword_2 extends KeywordToken  {
  *
  * Definition:
  * 	Interface_or_Forward_Decl ";" // IDL3
- * 
  * 	// DDS4CCM
- * 
  * 	| ComponentForwardDecl ";" | ConstDecl ";" | Module ";" | ExceptDecl ";" | StructType ";" | TypeDecl ";" | NativeType
  * 	";" | Preproc | Event ";" | ComponentDecl ";" | HomeDecl ";" | PortTypeDecl ";" | Connector ";" | TemplateModule ";" |
  * 	TemplateModuleInst ";" | IDLComment;
@@ -4603,9 +4792,7 @@ protected class Import_decl_SemicolonKeyword_2 extends KeywordToken  {
  **/
 
 // Interface_or_Forward_Decl ";" // IDL3
-// 
 // // DDS4CCM
-// 
 // | ComponentForwardDecl ";" | ConstDecl ";" | Module ";" | ExceptDecl ";" | StructType ";" | TypeDecl ";" | NativeType
 // ";" | Preproc | Event ";" | ComponentDecl ";" | HomeDecl ";" | PortTypeDecl ";" | Connector ";" | TemplateModule ";" |
 // TemplateModuleInst ";" | IDLComment
@@ -4676,6 +4863,7 @@ protected class Definition_Alternatives extends AlternativesToken {
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_LemRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_ComponentRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_DDS4CCM_ImplRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_HomeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_MiscAccess().getPreproc_Pragma_MiscAction_0().getType().getClassifier() && 
@@ -5426,6 +5614,7 @@ protected class Definition_PreprocParserRuleCall_8 extends RuleCallToken {
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_LemRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_ComponentRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_DDS4CCM_ImplRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_HomeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_MiscAccess().getPreproc_Pragma_MiscAction_0().getType().getClassifier() && 
@@ -7347,6 +7536,7 @@ protected class Export_Alternatives extends AlternativesToken {
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_LemRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_ComponentRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_DDS4CCM_ImplRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_HomeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_MiscAccess().getPreproc_Pragma_MiscAction_0().getType().getClassifier() && 
@@ -7838,6 +8028,7 @@ protected class Export_PreprocParserRuleCall_5 extends RuleCallToken {
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_LemRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_ComponentRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_DDS4CCM_ImplRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_HomeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_MiscAccess().getPreproc_Pragma_MiscAction_0().getType().getClassifier() && 
@@ -22268,9 +22459,7 @@ protected class Literal_ValueAssignment_5 extends AssignmentToken  {
 /************ begin Rule ComponentDecl ****************
  *
  * / *
- * 
  *  * IDL3 Definitions
- * 
  *  * / ComponentDecl:
  * 	comments+=IDLComment* "component" name=ID (":" base=ScopedName)? ("supports" supports+=ScopedName (","
  * 	supports+=ScopedName)*)? "{" export+=ComponentExport* "}";
@@ -22842,6 +23031,7 @@ protected class ComponentExport_Alternatives extends AlternativesToken {
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_LemRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_ComponentRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_DDS4CCM_ImplRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_HomeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_MiscAccess().getPreproc_Pragma_MiscAction_0().getType().getClassifier() && 
@@ -23498,6 +23688,7 @@ protected class ComponentExport_PreprocParserRuleCall_7 extends RuleCallToken {
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_LemRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_ComponentRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_DDS4CCM_ImplRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_HomeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_MiscAccess().getPreproc_Pragma_MiscAction_0().getType().getClassifier() && 
@@ -25423,6 +25614,7 @@ protected class HomeExport_Alternatives extends AlternativesToken {
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_LemRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_ComponentRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_DDS4CCM_ImplRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_HomeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_MiscAccess().getPreproc_Pragma_MiscAction_0().getType().getClassifier() && 
@@ -25484,6 +25676,7 @@ protected class HomeExport_ExportParserRuleCall_0 extends RuleCallToken {
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Ciao_LemRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_ComponentRule().getType().getClassifier() && 
+		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_Conn_TypeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_DDS4CCM_ImplRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_HomeRule().getType().getClassifier() && 
 		   getEObject().eClass() != grammarAccess.getPreproc_Pragma_MiscAccess().getPreproc_Pragma_MiscAction_0().getType().getClassifier() && 
@@ -27341,11 +27534,8 @@ protected class StateMember_SemicolonKeyword_3 extends KeywordToken  {
 /************ begin Rule EventForwardDcl ****************
  *
  * //EventAbsDcl :
- * 
  * //	"abstract" "eventtype" name=ID (":" (isTruncatable?="truncatable")? base+=ScopedName ("," base+=ScopedName)*)?
- * 
  * //	("supports" supports+=ScopedName ("," supports+=ScopedName)*)? "{" (export+=Export)* "}";
- * 
  * EventForwardDcl:
  * 	isAbstract?="abstract"? "eventtype" name=ID;
  *
@@ -27476,9 +27666,7 @@ protected class EventForwardDcl_NameAssignment_2 extends AssignmentToken  {
 /************ begin Rule PortTypeDecl ****************
  *
  * / *
- * 
  *  * DDS4CCM Definitions
- * 
  *  * / PortTypeDecl:
  * 	"porttype" comments+=IDLComment* name=ID "{" exports+=PortExport+ "}";
  *

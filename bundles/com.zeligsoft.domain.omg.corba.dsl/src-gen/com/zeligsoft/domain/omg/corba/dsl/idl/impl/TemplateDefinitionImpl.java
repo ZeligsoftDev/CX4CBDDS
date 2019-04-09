@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl.impl;
 
@@ -22,24 +18,27 @@ import org.eclipse.emf.ecore.impl.EModelElementImpl;
  *
  * @generated
  */
-public class TemplateDefinitionImpl extends EModelElementImpl implements TemplateDefinition {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TemplateDefinitionImpl() {
-		super();
-	}
+public class TemplateDefinitionImpl extends EModelElementImpl implements TemplateDefinition
+{
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected TemplateDefinitionImpl()
+  {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return IdlPackage.Literals.TEMPLATE_DEFINITION;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return IdlPackage.Literals.TEMPLATE_DEFINITION;
+  }
 
 } //TemplateDefinitionImpl

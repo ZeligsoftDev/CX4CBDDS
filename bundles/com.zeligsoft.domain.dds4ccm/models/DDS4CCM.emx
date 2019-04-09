@@ -325,7 +325,7 @@
     <packageImport xmi:id="_ocjekEDSEd-VnJuJyqILLA">
       <importedPackage xmi:type="uml:Model" href="pathmap://CCM_DOMAIN/CCM.uml#_NRAMoAwOEdmFcaeZXPdWAQ"/>
     </packageImport>
-    <packageImport xmi:id="_txqUIHPtEd-Hgbsz-Pq3fg">
+    <packageImport xmi:id="_txqUIHPtEd-Hgbsz-Pq3fg">      
       <importedPackage xmi:type="uml:Model" href="pathmap://DDS_LIBRARIES/dds.uml#_NRAMoAwOEdmFcaeZXPdWAQ"/>
     </packageImport>
     <packagedElement xmi:type="uml:Package" xmi:id="_eP42QEDSEd-VnJuJyqILLA" name="DDS4CCM" clientDependency="_TsGEkJICEeCsrOl-W1K_Dg">
@@ -1664,6 +1664,24 @@
             <children xmi:type="notation:BasicDecorationNode" xmi:id="_l_6x4e_VEeKGXLYI7i62jA" type="ValueSpecification"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l_48se_VEeKGXLYI7i62jA" x="14541" y="2963"/>
           </children>
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_JXP4EFAAEemk3qCdFFbT1g" element="_JV7pcFAAEemk3qCdFFbT1g" fontName="Ubuntu" fontHeight="8" fillColor="14277119" transparency="0" lineColor="12632258" lineWidth="1" showStereotype="Label">
+            <children xmi:type="notation:DecorationNode" xmi:id="_JXTicFAAEemk3qCdFFbT1g" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_JXTicVAAEemk3qCdFFbT1g" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_JXUwkFAAEemk3qCdFFbT1g" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_JXV-sFAAEemk3qCdFFbT1g" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_JXXM0FAAEemk3qCdFFbT1g" type="ValueSpecification"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JXP4EVAAEemk3qCdFFbT1g" x="3148" y="6323" width="13917" height="1534"/>
+          </children>
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_AJVxIFStEemfNon6R1wyIA" element="_AAldwFStEemfNon6R1wyIA" fontName="Ubuntu" fontHeight="8" fillColor="14277119" transparency="0" lineColor="12632258" lineWidth="1" showStereotype="Label">
+            <children xmi:type="notation:DecorationNode" xmi:id="_AJYNYFStEemfNon6R1wyIA" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_AJYNYVStEemfNon6R1wyIA" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_AJY0cFStEemfNon6R1wyIA" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_AJZbgFStEemfNon6R1wyIA" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_AJZbgVStEemfNon6R1wyIA" type="ValueSpecification"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AJVxIVStEemfNon6R1wyIA" x="2831" y="8863" width="14234" height="2804"/>
+          </children>
           <element xsi:nil="true"/>
         </contents>
       </eAnnotations>
@@ -1700,6 +1718,26 @@ endif&#xD;
         <specification xmi:type="uml:OpaqueExpression" xmi:id="_l_sIYO_VEeKGXLYI7i62jA">
           <language>OCL</language>
           <body>self.idlType &lt;> null</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="_JV7pcFAAEemk3qCdFFbT1g" name="connector_type_compatibility">
+        <ownedComment xmi:id="_JWRAoFAAEemk3qCdFFbT1g">
+          <body>%_desc_DDS4CCM__Constraints__connector_type_compatibility</body>
+        </ownedComment>
+        <constrainedElement xmi:type="uml:Class" href="pathmap://CCM_DOMAIN/CCM.uml#_CaJgQF3jEd-xDs-FOeJ7CA"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_JWH2sFAAEemk3qCdFFbT1g">
+          <language>Java</language>
+          <body>com.zeligsoft.domain.dds4ccm.constraints.java.ConnectorTypeCompatibilityConstraint</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="_AAldwFStEemfNon6R1wyIA" name="connector_type_not_empty">
+        <ownedComment xmi:id="_AAohEFStEemfNon6R1wyIA">
+          <body>%_desc_DDS4CCM__Constraints__connector_type_not_empty</body>
+        </ownedComment>
+        <constrainedElement xmi:type="uml:Class" href="pathmap://CCM_DOMAIN/CCM.uml#_CaJgQF3jEd-xDs-FOeJ7CA"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_AAmr4FStEemfNon6R1wyIA">
+          <language>Java</language>
+          <body>com.zeligsoft.domain.dds4ccm.constraints.java.ConnectorTypeNotEmptyConstraint</body>
         </specification>
       </ownedRule>
     </packagedElement>
@@ -1815,4 +1853,6 @@ endif&#xD;
   <zdl:DomainEnumLiteral xmi:id="_RbiBUAIREemxSNFUunBY-w" base_EnumerationLiteral="_RbaFgAIREemxSNFUunBY-w"/>
   <zdl:DomainEnumLiteral xmi:id="_ShKMoAIREemxSNFUunBY-w" base_EnumerationLiteral="_ShHwYAIREemxSNFUunBY-w"/>
   <zdl:DomainAttribute xmi:id="_cm2DMAIREemxSNFUunBY-w" base_Property="_cmuHYAIREemxSNFUunBY-w"/>
+  <zdl:ExternalDomainConstraint xmi:id="_JWN9UFAAEemk3qCdFFbT1g" severity="error" message="%_mesg_DDS4CCM__Constraints__connector_type_compatibility" id="com.zeligsoft.domain.dds4ccm.Constraints.connector_type_compatibility" base_Constraint="_JV7pcFAAEemk3qCdFFbT1g"/>
+  <zdl:ExternalDomainConstraint xmi:id="_AAn6AFStEemfNon6R1wyIA" severity="error" message="%_mesg_DDS4CCM__Constraints__connector_type_not_empty" id="com.zeligsoft.domain.dds4ccm.Constraints.connector_type_not_empty" base_Constraint="_AAldwFStEemfNon6R1wyIA"/>
 </xmi:XMI>
