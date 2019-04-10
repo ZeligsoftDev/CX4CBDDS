@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1 pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ">
-  <uml:Model xmi:id="_jkiX8J4JEd6xhoJKj1dweA" name="CCM_CORBA">
-    <packageImport xmi:id="_Fg29cLNIEd66L-pSY5VQBg">
+  <uml:Model xmi:id="_sf09plvBEem5b9Kc66gT5Q" name="CCM_CORBA">
+    <packageImport xmi:id="_sf09rVvBEem5b9Kc66gT5Q">
       <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_DO-O0EDsEd-pwPnT_VsB_g"/>
     </packageImport>
-    <packagedElement xmi:type="uml:Package" xmi:id="_tpDlkGgXEd-Cd7UvmqIY3g" name="CCM_CORBA">
-      <packagedElement xmi:type="uml:DataType" xmi:id="_07aOYGnDEd-qrsLCnIpYUg" name="UserExceptionBase"/>
-      <packagedElement xmi:type="uml:Interface" xmi:id="_v2vlIGgXEd-Cd7UvmqIY3g" name="ExceptionHolder">
-        <ownedOperation xmi:id="_yc69MGgXEd-Cd7UvmqIY3g" name="raise_exception" raisedException="_07aOYGnDEd-qrsLCnIpYUg"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_sf09rlvBEem5b9Kc66gT5Q" name="CCM_CORBA">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_sf09r1vBEem5b9Kc66gT5Q" name="UserExceptionBase"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_sf09sFvBEem5b9Kc66gT5Q" name="ExceptionHolder">
+        <ownedOperation xmi:id="_sf09sVvBEem5b9Kc66gT5Q" name="raise_exception" raisedException="_sf09r1vBEem5b9Kc66gT5Q"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Interface" xmi:id="_1qOmsGgXEd-Cd7UvmqIY3g" name="ReplyHandler"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_4cJ7wGgXEd-Cd7UvmqIY3g" name="CORBA4CCM_Base"/>
-      <packagedElement xmi:type="uml:Package" xmi:id="_6PvZQGgXEd-Cd7UvmqIY3g" name="Connector_T">
-        <ownedTemplateSignature xmi:id="_eHC28GgcEd-PPPx81e4jRQ" parameter="_eHQ5YGgcEd-PPPx81e4jRQ _j-cvMGgcEd-PPPx81e4jRQ">
-          <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_eHQ5YGgcEd-PPPx81e4jRQ" parameteredElement="_eHm3oGgcEd-PPPx81e4jRQ">
-            <ownedParameteredElement xmi:type="uml:Interface" xmi:id="_eHm3oGgcEd-PPPx81e4jRQ" name="T" templateParameter="_eHQ5YGgcEd-PPPx81e4jRQ"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_sf09slvBEem5b9Kc66gT5Q" name="ReplyHandler"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_sf09s1vBEem5b9Kc66gT5Q" name="CORBA4CCM_Base"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_sf09tFvBEem5b9Kc66gT5Q" name="Connector_T">
+        <ownedTemplateSignature xmi:id="_sf0-GFvBEem5b9Kc66gT5Q" parameter="_sf0-GVvBEem5b9Kc66gT5Q _sf0-G1vBEem5b9Kc66gT5Q">
+          <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_sf0-GVvBEem5b9Kc66gT5Q" parameteredElement="_sf0-GlvBEem5b9Kc66gT5Q">
+            <ownedParameteredElement xmi:type="uml:Interface" xmi:id="_sf0-GlvBEem5b9Kc66gT5Q" name="T" templateParameter="_sf0-GVvBEem5b9Kc66gT5Q"/>
           </ownedParameter>
-          <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_j-cvMGgcEd-PPPx81e4jRQ" parameteredElement="_j-cvMmgcEd-PPPx81e4jRQ">
-            <ownedParameteredElement xmi:type="uml:Interface" xmi:id="_j-cvMmgcEd-PPPx81e4jRQ" name="CORBA4CCM_T" templateParameter="_j-cvMGgcEd-PPPx81e4jRQ"/>
+          <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_sf0-G1vBEem5b9Kc66gT5Q" parameteredElement="_sf0-HFvBEem5b9Kc66gT5Q">
+            <ownedParameteredElement xmi:type="uml:Interface" xmi:id="_sf0-HFvBEem5b9Kc66gT5Q" name="CORBA4CCM_T" templateParameter="_sf0-G1vBEem5b9Kc66gT5Q"/>
           </ownedParameter>
         </ownedTemplateSignature>
-        <packagedElement xmi:type="uml:Class" xmi:id="_9tRL4GgeEd-PPPx81e4jRQ" name="CORBA4CCM_Port_Type" clientDependency="_Hq0aIGgfEd-PPPx81e4jRQ _IaLagGgfEd-PPPx81e4jRQ">
-          <interfaceRealization xmi:id="_Hq0aIGgfEd-PPPx81e4jRQ" name="corba4ccm_provides" supplier="_j-cvMmgcEd-PPPx81e4jRQ" client="_9tRL4GgeEd-PPPx81e4jRQ" contract="_j-cvMmgcEd-PPPx81e4jRQ"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_sf0-HVvBEem5b9Kc66gT5Q" name="CORBA4CCM_Port_Type" clientDependency="_sf0-HlvBEem5b9Kc66gT5Q _sf0-H1vBEem5b9Kc66gT5Q">
+          <interfaceRealization xmi:id="_sf0-HlvBEem5b9Kc66gT5Q" name="corba4ccm_provides" supplier="_sf0-HFvBEem5b9Kc66gT5Q" client="_sf0-HVvBEem5b9Kc66gT5Q" contract="_sf0-HFvBEem5b9Kc66gT5Q"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:Usage" xmi:id="_IaLagGgfEd-PPPx81e4jRQ" name="corba4ccm_uses" supplier="_eHm3oGgcEd-PPPx81e4jRQ" client="_9tRL4GgeEd-PPPx81e4jRQ"/>
-        <packagedElement xmi:type="uml:Component" xmi:id="_MqsNcGgfEd-PPPx81e4jRQ" name="CORBA4CCM_Connector">
-          <generalization xmi:id="_STea4GgfEd-PPPx81e4jRQ" general="_4cJ7wGgXEd-Cd7UvmqIY3g"/>
-          <ownedAttribute xmi:type="uml:Port" xmi:id="_nkwAIGgfEd-PPPx81e4jRQ" name="corba4ccm_port" type="_9tRL4GgeEd-PPPx81e4jRQ" aggregation="composite"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_sf0-H1vBEem5b9Kc66gT5Q" name="corba4ccm_uses" supplier="_sf0-GlvBEem5b9Kc66gT5Q" client="_sf0-HVvBEem5b9Kc66gT5Q"/>
+        <packagedElement xmi:type="uml:Component" xmi:id="_sf0-IFvBEem5b9Kc66gT5Q" name="CORBA4CCM_Connector">
+          <generalization xmi:id="_sf0-IVvBEem5b9Kc66gT5Q" general="_sf09s1vBEem5b9Kc66gT5Q"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_sf0-IlvBEem5b9Kc66gT5Q" name="corba4ccm_port" type="_sf0-HVvBEem5b9Kc66gT5Q" aggregation="composite"/>
         </packagedElement>
       </packagedElement>
     </packagedElement>
-    <profileApplication xmi:id="_jkiX854JEd6xhoJKj1dweA">
-      <eAnnotations xmi:id="_jkiX9J4JEd6xhoJKj1dweA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <profileApplication xmi:id="_sf0-I1vBEem5b9Kc66gT5Q">
+      <eAnnotations xmi:id="_sf0-JFvBEem5b9Kc66gT5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
       </eAnnotations>
       <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
     </profileApplication>
-    <profileApplication xmi:id="_1KTJYJ44Ed6CdqU5qRn9Dw">
-      <eAnnotations xmi:id="_1Kc6YJ44Ed6CdqU5qRn9Dw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <profileApplication xmi:id="_sf0-KVvBEem5b9Kc66gT5Q">
+      <eAnnotations xmi:id="_sf0-KlvBEem5b9Kc66gT5Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ"/>
       </eAnnotations>
       <appliedProfile href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KssEDZEd-LnsQ685SqSQ"/>
     </profileApplication>
   </uml:Model>
-  <dds4ccm:DDS4CCMModel xmi:id="_kpTcUGgXEd-Cd7UvmqIY3g" base_Model="_jkiX8J4JEd6xhoJKj1dweA"/>
-  <dds4ccm:CORBAModule xmi:id="_tpecUGgXEd-Cd7UvmqIY3g" base_NamedElement="_tpDlkGgXEd-Cd7UvmqIY3g" base_Package="_tpDlkGgXEd-Cd7UvmqIY3g"/>
-  <dds4ccm:CORBAInterface xmi:id="_v23g8GgXEd-Cd7UvmqIY3g" base_Interface="_v2vlIGgXEd-Cd7UvmqIY3g" base_NamedElement="_v2vlIGgXEd-Cd7UvmqIY3g" isLocal="true"/>
-  <dds4ccm:CORBAOperation xmi:id="_ydI_oGgXEd-Cd7UvmqIY3g" base_NamedElement="_yc69MGgXEd-Cd7UvmqIY3g" base_Operation="_yc69MGgXEd-Cd7UvmqIY3g"/>
-  <dds4ccm:CORBAInterface xmi:id="_1qWigGgXEd-Cd7UvmqIY3g" base_Interface="_1qOmsGgXEd-Cd7UvmqIY3g" base_NamedElement="_1qOmsGgXEd-Cd7UvmqIY3g" isLocal="true"/>
-  <dds4ccm:ConnectorDef xmi:id="_4cer4GgXEd-Cd7UvmqIY3g" base_Component="_4cJ7wGgXEd-Cd7UvmqIY3g" base_NamedElement="_4cJ7wGgXEd-Cd7UvmqIY3g"/>
-  <dds4ccm:TemplateModule xmi:id="_6P9bsGgXEd-Cd7UvmqIY3g" base_NamedElement="_6PvZQGgXEd-Cd7UvmqIY3g" base_Package="_6PvZQGgXEd-Cd7UvmqIY3g"/>
-  <dds4ccm:TemplateSignature xmi:id="_eHLZ0GgcEd-PPPx81e4jRQ" base_TemplateSignature="_eHC28GgcEd-PPPx81e4jRQ"/>
-  <dds4ccm:TypeParameter xmi:id="_eHSHgGgcEd-PPPx81e4jRQ" base_ClassifierTemplateParameter="_eHQ5YGgcEd-PPPx81e4jRQ" constraint="interface"/>
-  <dds4ccm:TypeParameter xmi:id="_j-cvMWgcEd-PPPx81e4jRQ" base_ClassifierTemplateParameter="_j-cvMGgcEd-PPPx81e4jRQ" constraint="interface"/>
-  <dds4ccm:PortType xmi:id="_9tToIGgeEd-PPPx81e4jRQ" base_Class="_9tRL4GgeEd-PPPx81e4jRQ"/>
-  <dds4ccm:ConnectorDef xmi:id="_Mq4asGgfEd-PPPx81e4jRQ" base_Component="_MqsNcGgfEd-PPPx81e4jRQ" base_NamedElement="_MqsNcGgfEd-PPPx81e4jRQ"/>
-  <dds4ccm:InterfacePort xmi:id="_nmGD8GgfEd-PPPx81e4jRQ" base_Port="_nkwAIGgfEd-PPPx81e4jRQ"/>
-  <dds4ccm:Native xmi:id="_07lNgGnDEd-qrsLCnIpYUg" base_NamedElement="_07aOYGnDEd-qrsLCnIpYUg" base_DataType="_07aOYGnDEd-qrsLCnIpYUg"/>
-  <Standard:ModelLibrary xmi:id="_SOGU0GpSEd-qrsLCnIpYUg" base_Package="_jkiX8J4JEd6xhoJKj1dweA"/>
-  <dds4ccm:TemplateParameterType xmi:id="_JXSFYJqHEd-SA6GLYgdl1A" base_Interface="_j-cvMmgcEd-PPPx81e4jRQ"/>
-  <dds4ccm:TemplateParameterType xmi:id="_KBmNsJqHEd-SA6GLYgdl1A" base_Interface="_eHm3oGgcEd-PPPx81e4jRQ"/>
+  <dds4ccm:DDS4CCMModel xmi:id="_sf0-K1vBEem5b9Kc66gT5Q" base_Model="_sf09plvBEem5b9Kc66gT5Q"/>
+  <dds4ccm:CORBAModule xmi:id="_sf0-LFvBEem5b9Kc66gT5Q" base_NamedElement="_sf09rlvBEem5b9Kc66gT5Q" base_Package="_sf09rlvBEem5b9Kc66gT5Q"/>
+  <dds4ccm:CORBAInterface xmi:id="_sf0-LVvBEem5b9Kc66gT5Q" base_Interface="_sf09sFvBEem5b9Kc66gT5Q" base_NamedElement="_sf09sFvBEem5b9Kc66gT5Q" isLocal="true"/>
+  <dds4ccm:CORBAOperation xmi:id="_sf0-LlvBEem5b9Kc66gT5Q" base_NamedElement="_sf09sVvBEem5b9Kc66gT5Q" base_Operation="_sf09sVvBEem5b9Kc66gT5Q"/>
+  <dds4ccm:CORBAInterface xmi:id="_sf0-L1vBEem5b9Kc66gT5Q" base_Interface="_sf09slvBEem5b9Kc66gT5Q" base_NamedElement="_sf09slvBEem5b9Kc66gT5Q" isLocal="true"/>
+  <dds4ccm:ConnectorDef xmi:id="_sf0-MFvBEem5b9Kc66gT5Q" base_Component="_sf09s1vBEem5b9Kc66gT5Q" base_NamedElement="_sf09s1vBEem5b9Kc66gT5Q"/>
+  <dds4ccm:TemplateModule xmi:id="_sf0-MVvBEem5b9Kc66gT5Q" base_NamedElement="_sf09tFvBEem5b9Kc66gT5Q" base_Package="_sf09tFvBEem5b9Kc66gT5Q"/>
+  <dds4ccm:TemplateSignature xmi:id="_sf0-MlvBEem5b9Kc66gT5Q" base_TemplateSignature="_sf0-GFvBEem5b9Kc66gT5Q"/>
+  <dds4ccm:TypeParameter xmi:id="_sf0-M1vBEem5b9Kc66gT5Q" base_ClassifierTemplateParameter="_sf0-GVvBEem5b9Kc66gT5Q" constraint="interface"/>
+  <dds4ccm:TypeParameter xmi:id="_sf0-NFvBEem5b9Kc66gT5Q" base_ClassifierTemplateParameter="_sf0-G1vBEem5b9Kc66gT5Q" constraint="interface"/>
+  <dds4ccm:PortType xmi:id="_sf0-NVvBEem5b9Kc66gT5Q" base_Class="_sf0-HVvBEem5b9Kc66gT5Q"/>
+  <dds4ccm:ConnectorDef xmi:id="_sf0-NlvBEem5b9Kc66gT5Q" base_Component="_sf0-IFvBEem5b9Kc66gT5Q" base_NamedElement="_sf0-IFvBEem5b9Kc66gT5Q"/>
+  <dds4ccm:InterfacePort xmi:id="_sf0-N1vBEem5b9Kc66gT5Q" base_Port="_sf0-IlvBEem5b9Kc66gT5Q"/>
+  <dds4ccm:Native xmi:id="_sf0-OFvBEem5b9Kc66gT5Q" base_NamedElement="_sf09r1vBEem5b9Kc66gT5Q" base_DataType="_sf09r1vBEem5b9Kc66gT5Q"/>
+  <Standard:ModelLibrary xmi:id="_sf0-OVvBEem5b9Kc66gT5Q" base_Package="_sf09plvBEem5b9Kc66gT5Q"/>
+  <dds4ccm:TemplateParameterType xmi:id="_sf0-OlvBEem5b9Kc66gT5Q" base_Interface="_sf0-HFvBEem5b9Kc66gT5Q"/>
+  <dds4ccm:TemplateParameterType xmi:id="_sf0-O1vBEem5b9Kc66gT5Q" base_Interface="_sf0-GlvBEem5b9Kc66gT5Q"/>
 </xmi:XMI>
