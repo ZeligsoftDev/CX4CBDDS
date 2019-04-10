@@ -9,6 +9,7 @@ import com.zeligsoft.base.zdl.staticapi.xtend.ZDLStandardLibrary;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.codegen.UserEditableRegion;
 import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.IDLFileDependency;
+import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.IDLFileSpecification;
 import com.zeligsoft.domain.dds4ccm.codegen.codetaginfo.codetaginfo.CodeTag;
 import com.zeligsoft.domain.dds4ccm.codegen.codetaginfo.codetaginfo.CodeTagContext;
 import com.zeligsoft.domain.dds4ccm.codegen.codetaginfo.codetaginfo.CodeTagInfo;
@@ -39,6 +40,7 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -218,7 +220,10 @@ public class MainTransform {
     if (_startsWith) {
       EList<String> _class_name = result.getClass_name();
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("�worker.home.name�_exec_i");
+      Home _home = this.getHome(worker);
+      String _name_1 = _home.getName();
+      _builder.append(_name_1, "");
+      _builder.append("_exec_i");
       String _string = _builder.toString();
       _class_name.add(_string);
     } else {
@@ -305,7 +310,11 @@ public class MainTransform {
           final IDLFileDependency firstFileDependency = IterableExtensions.<IDLFileDependency>head(filedependency);
           Object _zContainer = self.zContainer();
           StringConcatenation _builder = new StringConcatenation();
-          _builder.append("�firstFileDependency.file.filename�_�name�");
+          IDLFileSpecification _file = firstFileDependency.getFile();
+          String _filename = _file.getFilename();
+          _builder.append(_filename, "");
+          _builder.append("_");
+          _builder.append(name, "");
           String _string = _builder.toString();
           _xblockexpression_1 = this.fileName(_zContainer, _string);
         }
@@ -313,7 +322,10 @@ public class MainTransform {
       } else {
         Object _zContainer = self.zContainer();
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("�self.name�_�name�");
+        String _name = self.getName();
+        _builder.append(_name, "");
+        _builder.append("_");
+        _builder.append(name, "");
         String _string = _builder.toString();
         _xifexpression = this.fileName(_zContainer, _string);
       }
@@ -764,7 +776,9 @@ public class MainTransform {
     boolean _notEquals = (!Objects.equal(home, null));
     if (_notEquals) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("_home_�home.name�");
+      _builder.append("_home_");
+      String _name = home.getName();
+      _builder.append(_name, "");
       _xifexpression = _builder.toString();
     } else {
       _xifexpression = "";
@@ -925,7 +939,8 @@ public class MainTransform {
                   {
                     final String ownerName = ((NamedElement) owner).getName();
                     StringConcatenation _builder = new StringConcatenation();
-                    _builder.append("�ownerName�_exec_i");
+                    _builder.append(ownerName, "");
+                    _builder.append("_exec_i");
                     _xblockexpression_1 = _builder.toString();
                   }
                   _xifexpression_5 = _xblockexpression_1;
@@ -955,11 +970,21 @@ public class MainTransform {
     Boolean _isConjugated = port.getIsConjugated();
     if ((_isConjugated).booleanValue()) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("AMI4CCM_�port.asPort.type.name�ReplyHandler_�port.name�_i");
+      _builder.append("AMI4CCM_");
+      org.eclipse.uml2.uml.Port _asPort = port.asPort();
+      Type _type = _asPort.getType();
+      String _name = _type.getName();
+      _builder.append(_name, "");
+      _builder.append("ReplyHandler_");
+      String _name_1 = port.getName();
+      _builder.append(_name_1, "");
+      _builder.append("_i");
       _xifexpression = _builder.toString();
     } else {
       StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("�port.name�_exec_i");
+      String _name_2 = port.getName();
+      _builder_1.append(_name_2, "");
+      _builder_1.append("_exec_i");
       _xifexpression = _builder_1.toString();
     }
     return _xifexpression;
@@ -975,12 +1000,19 @@ public class MainTransform {
   
   private CharSequence workerCode(final WorkerFunction worker, final String language) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("�UserEditableRegion::userEditBegin(worker.asOperation, ZMLMMNames::WORKER_FUNCTION, ZMLMMNames::WORKER_FUNCTION__BODY,language)�");
-    _builder.newLine();
-    _builder.append("�WorkerFunctionUtil::getWorkerFunctionImplementationCode(worker.asOperation.owner, worker.asOperation, language)�");
-    _builder.newLine();
-    _builder.append("�UserEditableRegion::userEditEnd�");
-    _builder.newLine();
+    Operation _asOperation = worker.asOperation();
+    String _userEditBegin = UserEditableRegion.userEditBegin(_asOperation, ZMLMMNames.WORKER_FUNCTION, ZMLMMNames.WORKER_FUNCTION__BODY, language);
+    _builder.append(_userEditBegin, "");
+    _builder.newLineIfNotEmpty();
+    Operation _asOperation_1 = worker.asOperation();
+    Element _owner = _asOperation_1.getOwner();
+    Operation _asOperation_2 = worker.asOperation();
+    String _workerFunctionImplementationCode = WorkerFunctionUtil.getWorkerFunctionImplementationCode(_owner, _asOperation_2, language);
+    _builder.append(_workerFunctionImplementationCode, "");
+    _builder.newLineIfNotEmpty();
+    String _userEditEnd = UserEditableRegion.userEditEnd();
+    _builder.append(_userEditEnd, "");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     return _builder;
   }
@@ -996,7 +1028,7 @@ public class MainTransform {
         {
           final String ownerName = ((NamedElement) owner).getName();
           StringConcatenation _builder = new StringConcatenation();
-          _builder.append("�ownerName�");
+          _builder.append(ownerName, "");
           _xblockexpression_1 = _builder.toString();
         }
         _xifexpression = _xblockexpression_1;
