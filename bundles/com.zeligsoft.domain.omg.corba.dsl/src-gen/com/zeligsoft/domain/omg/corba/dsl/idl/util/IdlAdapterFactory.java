@@ -3,6 +3,7 @@
 package com.zeligsoft.domain.omg.corba.dsl.idl.util;
 
 import com.zeligsoft.domain.omg.corba.dsl.idl.*;
+import com.zeligsoft.domain.omg.corba.dsl.idl.Module;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;

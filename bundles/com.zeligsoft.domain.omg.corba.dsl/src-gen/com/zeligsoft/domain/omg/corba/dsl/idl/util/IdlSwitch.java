@@ -3,6 +3,7 @@
 package com.zeligsoft.domain.omg.corba.dsl.idl.util;
 
 import com.zeligsoft.domain.omg.corba.dsl.idl.*;
+import com.zeligsoft.domain.omg.corba.dsl.idl.Module;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
