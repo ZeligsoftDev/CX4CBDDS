@@ -18,14 +18,13 @@ package com.zeligsoft.domain.dds4ccm.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.Enumeration;
-import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Model;
 import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
+import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.DDS4CCMModel;
+import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.ModelTypeEnum;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Target.Resource;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Target.SatisfierProperty;
@@ -49,19 +48,14 @@ public final class DDS4CCMMigrationModelTypeUtil {
 	private static boolean migrateAll(Model model, boolean dryrun) {
 		boolean result = false;
 		
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				model, "DDS4CCM::DDS4CCM::DDS4CCMModel", "modelType");
-		if(!(rawValue instanceof EnumerationLiteral)){
-			return result;
-		}
-		EnumerationLiteral modelType = (EnumerationLiteral) rawValue;
+		DDS4CCMModel contextModel =  ZDLFactoryRegistry.INSTANCE.create(model, DDS4CCMModel.class);
+		ModelTypeEnum modelType = contextModel.getModelType();
 		
-		if(modelType.getName().equals("ATCD")){
+		if(modelType.equals(ModelTypeEnum.ATCD)){
 			result = true;
 			if(!dryrun){
 				migrateToAxciomaProperty(model);
-				com.zeligsoft.base.zdl.util.ZDLUtil.setValue(
-						model, "DDS4CCM::DDS4CCM::DDS4CCMModel", "modelType", ((Enumeration)modelType.eContainer()).getOwnedLiteral("AXCIOMA"));
+				contextModel.setModelType(ModelTypeEnum.AXCIOMA);
 			}			
 		}
 		
@@ -117,16 +111,15 @@ public final class DDS4CCMMigrationModelTypeUtil {
 		if(atcdStr == null){
 			return atcdStr;
 		}
-		
-		String axciomaStr = "";		
-		PropertyVariable[] pr = PropertyVariable.values();		
-		for(int i=0; i<pr.length; i++){
-			if(pr[i].matches(atcdStr, ModelTypeDDS4CCM.ATCD.name())){
-				axciomaStr = pr[i].getMigratedName();
+		String axciomaStr = "";
+				
+		for(PropertyVariable pr: PropertyVariable.values()){			
+			if(pr.matches(atcdStr, ModelTypeDDS4CCM.ATCD.name())){
+				axciomaStr = pr.getMigratedName();
 				break;
 			}
 		}
-		return axciomaStr.equals("")? atcdStr : axciomaStr;
+		return axciomaStr.isEmpty()? atcdStr : axciomaStr;
 	}
 	
 	/**
