@@ -114,6 +114,7 @@ public class TargetNodeEditHelperAdvice extends AbstractEditHelperAdvice {
 							.create(ZDLUtil.createZDLConceptIn(container,
 									CCMNames.RESOURCE), Resource.class);
 					nodeAddress.setName(nodeAddressName);
+					nodeAddress.addResourceType(PropertyVariable.NODE_RESOURCE_TYPE.getName(modelType));
 					
 					// The resource needs a NodeAddress 'satisfierProperty..
 					final SatisfierProperty satisfierProp = nodeAddress.addProperty();
