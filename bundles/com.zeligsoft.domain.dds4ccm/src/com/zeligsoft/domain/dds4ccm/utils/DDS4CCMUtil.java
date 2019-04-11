@@ -34,10 +34,13 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.VisibilityKind;
+
+import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.Activator;
 import com.zeligsoft.domain.dds4ccm.ConnectorType;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
+import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.DDS4CCMModel;
 import com.zeligsoft.domain.dds4ccm.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.corba.CORBADomainNames;
@@ -421,35 +424,17 @@ public class DDS4CCMUtil {
 	 *                    
 	 */
 	private static String getModelTypeValue(Model model){
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				model, "DDS4CCM::DDS4CCM::DDS4CCMModel", "modelType");
-		if(!(rawValue instanceof EnumerationLiteral)){
-			return "";
-		}
-		EnumerationLiteral modelType = (EnumerationLiteral) rawValue;
-		
-		return modelType.getName();
+		DDS4CCMModel contextModel =  ZDLFactoryRegistry.INSTANCE.create(model, DDS4CCMModel.class);
+		return contextModel.getModelType().name();		
 	}
 	
 	public static boolean isAsyncCapableConnector(String connectorType){
-		try{
-			ConnectorType ct = ConnectorType.valueOf(connectorType);
-			return ct.isAsyncCapable();
-		}catch(IllegalArgumentException ex){
-			return false;
-		}catch(NullPointerException ex){
-			return false;
-		}
+		ConnectorType ct = ConnectorType.valueOf(connectorType);
+		return ct.isAsyncCapable();		
 	}
 	
 	public static boolean isSyncCapableConnector(String connectorType){
-		try{
-			ConnectorType ct = ConnectorType.valueOf(connectorType);
-			return ct.isSyncCapable();
-		}catch(IllegalArgumentException ex){
-			return false;
-		}catch(NullPointerException ex){
-			return false;
-		}
+		ConnectorType ct = ConnectorType.valueOf(connectorType);
+		return ct.isSyncCapable();		
 	}
 }
