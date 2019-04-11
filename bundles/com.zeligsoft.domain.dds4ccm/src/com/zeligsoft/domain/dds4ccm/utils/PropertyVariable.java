@@ -13,12 +13,12 @@ public enum PropertyVariable {
 	CCM_COMPONENT("edu.vanderbilt.dre.CCM.Component", "nl.remedy.it.CCM.Component"),
 	CCM_HOMEDCOMPONENT("edu.vanderbilt.dre.CCM.HomedComponent", "nl.remedy.it.CCM.HomedComponent"),
 	CCM_CONNECTOR("edu.vanderbilt.dre.CCM.Connector", "nl.remedy.it.CCM.Connector"),
-	DANCE_LOCALITYMANAGER("edu.vanderbilt.dre.DAnCE.LocalityManager", "nl.remedy.it.DnCX11.LocalityManager"),
+	LOCALITYMANAGER("edu.vanderbilt.dre.DAnCE.LocalityManager", "nl.remedy.it.DnCX11.LocalityManager"),
 	CCM_HOME("edu.vanderbilt.dre.CCM.Home", "nl.remedy.it.CCM.Home"),
 	CCM_CONTAINER("edu.vanderbilt.dre.CCM.Container", "nl.remedy.it.CCM.Container"),
-	DANCE_LM_CPUAFFINITY("edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity", "nl.remedy.it.DnCX11.LocalityManager.CPUAffinity"),
-	DANCE_LM_PROCESSNAME("edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName", "nl.remedy.it.DnCX11.LocalityManager.ProcessName"),
-	DANCE_LM_PROCESSPRIORITY("edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority", "nl.remedy.it.DnCX11.LocalityManager.ProcessPriority"),
+	LM_CPUAFFINITY("edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity", "nl.remedy.it.DnCX11.LocalityManager.CPUAffinity"),
+	LM_PROCESSNAME("edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName", "nl.remedy.it.DnCX11.LocalityManager.ProcessName"),
+	LM_PROCESSPRIORITY("edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority", "nl.remedy.it.DnCX11.LocalityManager.ProcessPriority"),
 	LOCALITY_ARGUMENTS("edu.vanderbilt.dre.DAnCE.LocalityArguments", "nl.remedy.it.DnCX11.LocalityArguments");
 
 	private final String axciomaName;

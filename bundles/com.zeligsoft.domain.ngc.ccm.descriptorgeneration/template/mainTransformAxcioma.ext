@@ -1554,13 +1554,13 @@ create MonolithicDeploymentDescription createLocalityManagerImplementation(Artif
 	
 create Property createImplementationTypeProperty() :
 	this.name.add(getModelTypeSpecificProperty("IMPL_TYPE")) ->
-	this.value.add(visitAny(getModelTypeSpecificProperty("DANCE_LOCALITYMANAGER")));
+	this.value.add(visitAny(getModelTypeSpecificProperty("LOCALITYMANAGER")));
 	
 create ArtifactDeploymentDescription createLocalityManagerArtifact() :
 	this.name.add("CompoSvrArtifactName") ->
 	this.source.add(null) ->
 	this.node.add(null) ->
-	this.location.add("dance_locality_manager") ->
+	this.location.add("locality_manager") ->
 	this.JavaSetAttribute("id", "CompSvrArt");
 	
 create InstanceDeploymentDescription createContainerProcessInstance(DeploymentPart process, CCM::CCM_Deployment::DeploymentPlan zDeployment) :
@@ -1572,13 +1572,13 @@ create InstanceDeploymentDescription createContainerProcessInstance(DeploymentPa
 	this.source.add(null) ->
 	this.implementation.add(visitInstanceImpl("CompSvrImpl", this)) ->
     properties.visitConfigProperty(this, process) ->
-    if(!this.configProperty.name.exists(n | n == getModelTypeSpecificProperty("DANCE_LM_PROCESSNAME"))) then {
+    if(!this.configProperty.name.exists(n | n == getModelTypeSpecificProperty("LM_PROCESSNAME"))) then {
    	    // if this property does not exist then create a default one
     	this.createProcessNameProperty(process)
 	};
 	
 create Property createProcessNameProperty(InstanceDeploymentDescription instance, DeploymentPart process ) :
-	this.name.add(getModelTypeSpecificProperty("DANCE_LM_PROCESSNAME")) ->
+	this.name.add(getModelTypeSpecificProperty("LM_PROCESSNAME")) ->
 	this.value.add(this.createProcessNamePropertyValue(process)) ->
 	instance.configProperty.add(this);
 

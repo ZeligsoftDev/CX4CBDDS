@@ -148,11 +148,11 @@ public class DDS4CCMUtil {
 
 		String modelType = DDS4CCMUtil.getModelType(containerProcess);
 
-		final String cpuAffinity = PropertyVariable.DANCE_LM_CPUAFFINITY.getName(modelType);//$NON-NLS-1$
+		final String cpuAffinity = PropertyVariable.LM_CPUAFFINITY.getName(modelType);//$NON-NLS-1$
 
-		final String processName = PropertyVariable.DANCE_LM_PROCESSNAME.getName(modelType);
+		final String processName = PropertyVariable.LM_PROCESSNAME.getName(modelType);
 
-		final String processPriority = PropertyVariable.DANCE_LM_PROCESSPRIORITY.getName(modelType);
+		final String processPriority = PropertyVariable.LM_PROCESSPRIORITY.getName(modelType);
  
 		final String localityArgs = PropertyVariable.LOCALITY_ARGUMENTS.getName(modelType);
 				
