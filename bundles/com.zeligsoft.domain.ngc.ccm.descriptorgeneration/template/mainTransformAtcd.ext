@@ -846,7 +846,9 @@ Void expandEndPointsAndCreateConnections(CCMConnector conn, DeploymentPlan plan,
 	let targetEnds = conn.end.get(1).expand(deploymentPart) :
 	if( sourceEnds.size > 0 && targetEnds.size > 0 ) then 
 	{
-		// force 'sourceEnds' variable to be the conjugated side, if it is not the case
+		// Force 'sourceEnds' variable to be the conjugated side, if it is not the case.
+		// Interchanging two variables cannot be done using 3 lines of code in this language as 
+		// the assignment (=) statement can only be used during the declaration of a variable using the 'let' keyword.
 		if(!sourceEnds.first().port.isConjugated.first() && targetEnds.first().port.isConjugated.first()) then{
 			let temp = {}:
 			temp.addAll(sourceEnds) ->
