@@ -846,6 +846,15 @@ Void expandEndPointsAndCreateConnections(CCMConnector conn, DeploymentPlan plan,
 	let targetEnds = conn.end.get(1).expand(deploymentPart) :
 	if( sourceEnds.size > 0 && targetEnds.size > 0 ) then 
 	{
+		// force 'sourceEnds' variable to be the conjugated side, if it is not the case
+		if(!sourceEnds.first().port.isConjugated.first() && targetEnds.first().port.isConjugated.first()) then{
+			let temp = {}:
+			temp.addAll(sourceEnds) ->
+			sourceEnds.removeAll(sourceEnds) ->
+			sourceEnds.addAll(targetEnds) ->
+			targetEnds.removeAll(targetEnds) ->
+			targetEnds.addAll(temp)
+		} ->
 		// For some reason expand() returns a list of lists, with the external list being of size 1.
 		// We use .first() to work around that.
 		sourceEnds.select( end1 | targetEnds.select( end2 | visit(end1.first(), end2.first(), plan, deploymentPart )))
