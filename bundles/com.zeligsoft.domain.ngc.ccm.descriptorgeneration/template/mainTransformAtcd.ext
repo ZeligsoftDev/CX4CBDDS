@@ -842,26 +842,16 @@ Void createConnections(DeploymentPart assemblyPart, CCM::CCM_Deployment::Deploym
  * taking into account assembly implementations.
  */
 Void expandEndPointsAndCreateConnections(CCMConnector conn, DeploymentPlan plan, DeploymentPart deploymentPart) :
-	let sourceEnds = conn.end.get(0).expand(deploymentPart) :
-	let targetEnds = conn.end.get(1).expand(deploymentPart) :
+    let sourceEnds = conn.end.select( end | end.port.isConjugated ).expand(deploymentPart):
+    let targetEnds = conn.end.select( end | !end.port.isConjugated ).expand(deploymentPart):
+	
 	if( sourceEnds.size > 0 && targetEnds.size > 0 ) then 
 	{
-		// Force 'sourceEnds' variable to be the conjugated side, if it is not the case.
-		// Interchanging two variables cannot be done using 3 lines of code in this language as 
-		// the assignment (=) statement can only be used during the declaration of a variable using the 'let' keyword.
-		if(!sourceEnds.first().port.isConjugated.first() && targetEnds.first().port.isConjugated.first()) then{
-			let temp = {}:
-			temp.addAll(sourceEnds) ->
-			sourceEnds.removeAll(sourceEnds) ->
-			sourceEnds.addAll(targetEnds) ->
-			targetEnds.removeAll(targetEnds) ->
-			targetEnds.addAll(temp)
-		} ->
 		// For some reason expand() returns a list of lists, with the external list being of size 1.
 		// We use .first() to work around that.
 		sourceEnds.select( end1 | targetEnds.select( end2 | visit(end1.first(), end2.first(), plan, deploymentPart )))
 	};
-
+	
 /*
  * Given a ConnectorEnd, return a list of all ConnectorEnds for leaf components that have a compatible 
  * port endpoint. In the case of a ConnectorEnd on a leaf, it will return itself.  
