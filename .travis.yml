@@ -6,14 +6,18 @@ env:
 
 # Default script is 'mvn test'; We don't have any tests, as we require RSA. Echo something useful, instead
 script:
-- echo Built releng/com.zeligsoft.dds4ccm.update/target/*.*20*.zip
+- echo Built releng/com.zeligsoft.dds4ccm.update/target/dds4ccm_*.v*.zip
+
+before_deploy:
+    - "mkdir releng/com.zeligsoft.dds4ccm.update/target/archive"
+    - "cp releng/com.zeligsoft.dds4ccm.update/target/dds4ccm_*.v*.zip releng/com.zeligsoft.dds4ccm.update/target/archive"
 
 # Deploy the built zip back to git hub, on releases only
 deploy:
   provider: releases
   api_key:
     secure: SA6nCllZgAwm1ILqRTriCLePtlLLYr9ikSlOrJwMY1TuV/Nzu75LTO/qy2UsR1B7dDUzcglFsoJAhSSCh+YcHlwubRHvpJ1kEZh7CrE0oUZz/Lb/hTAKO6PWQWaBoZCVyDrYcs0y4rIn1snnWhfDRIhPQSt8WPFszBYlW4Ybxi7I6cjS68cK2V3U8QwIUmWGHzC79UIiZ2ibKnUXiWIziwgdd7l1oOWBoVjtm+7Lui0QFgywJrDC5uK4EuCNm51GmZz6ZD2JNHswcvo3URUfSP1ZG3P6Fa9nj3WHgXS2az5aQPWRak/pd3deDFW6jWQxzeCwZZFlvlFxbW8YRGsALqtEfisYcPxZxwAxi/744imrv3bvyQbbFC9tgOopR4bkun1BexQ8Cf3aXhzHXMeiQsZKjf+kiCkvraUz/VkfGrVuYvyQoHrWsehmg/Csl11l1GGvo2wCtKfVNkZ2s3vjdeR9cl87GyN0tm1WkuSLPgULjBgbkgENkLPSr2dGrBvsWSXComF6uhc49oqTDKeLeXE2SVcMrhomq5NZ+25EYCfK5bfGjwJ17MLI2IkRL/zwxlyQTMRRkZGnICtR+zcniRLDucAsgJ98zm7vkN06pK1AI7ZvPemp+yya33iGlcPSpU/RKEU8HW6PiH8s1AX8TwfVrknHwXxrn4MUKLWQV5I=
-  file: releng/com.zeligsoft.dds4ccm.update/target/*.*20*.zip
+  file: releng/com.zeligsoft.dds4ccm.update/target/archive/*
   on:
     repo: ZeligsoftDev/CX4CBDDS
     tags: true
