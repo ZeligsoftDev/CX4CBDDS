@@ -1029,7 +1029,7 @@ Void visitPortForInstances(InterfacePort receptacle, CCMPart receptPart, CCM::CC
 			// Get the set of all possible facets in this assembly.
 			let possibleFacets = receptPart.zdlAsProperty().owner.part.definition.typeSelect(CCMComponent).ownedPort.select( zport | zport.isConjugated == false).select(zport | zport.porttype == receptacle.porttype) :
 			// Get the set of all connectors that connect this receptacle and then the set of the facets in those connections.
-			let receptacleConnectors = receptPart.zdlAsProperty().owner.connector.select( c | c.end.port.contains(receptacle)) :
+			let receptacleConnectors = receptPart.zdlAsProperty().owner.connector.select( c | c.end.exists(ce | (ce.port == receptacle) && (ce.partWithPort == receptPart))) :
 			let connectedFacets = receptacleConnectors.end.port.reject( p | p == receptacle) :
 			// Filter out the external ports by taking the intersection of the possible facets and the connected facets.
 			let generatedFacets = connectedFacets.reject( p | possibleFacets.select( p2 | p2 == p).size == 0) :			
@@ -1043,7 +1043,7 @@ Void visitPortForInstances(InterfacePort receptacle, CCMPart receptPart, CCM::CC
  * all parts that have a connection from that facet to the receptacle so that we can call the rule repeatedly for each one. 
  */
 cached List[DeploymentPart] getPartsForFacet(InterfacePort facet, CCMPart part, InterfacePort receptacle, CCM::CCM_Deployment::DeploymentPlan zDeployment) :
-	let connectors = part.zdlAsProperty().owner.connector.select(c | c.end.port.contains(facet)).select(c | c.end.port.contains(receptacle)) :
+	let connectors = part.zdlAsProperty().owner.connector.select(c | c.end.port.contains(facet)).select(c | c.end.exists(ce | (ce.port == receptacle) && (ce.partWithPort == part))) :
 	let facetParts = connectors.end.reject( end | end.port == receptacle).partWithPort :
 	zDeployment.part.select( p | facetParts.contains(p.modelElement));
 
