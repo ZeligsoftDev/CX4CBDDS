@@ -16,11 +16,9 @@
  */
 package com.zeligsoft.domain.dds4ccm.ui.providers;
 
-import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
@@ -50,19 +48,15 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
-import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.TemplateParameter;
-import org.eclipse.uml2.uml.TemplateSignature;
-
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.pages.ListTableViewerPage;
 import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
@@ -72,11 +66,20 @@ import com.zeligsoft.cx.ui.utils.CXWidgetFactory;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
+import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
+import com.zeligsoft.domain.dds4ccm.utils.ModelTypeDDS4CCM;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
+import com.zeligsoft.domain.idl3plus.api.Connectors.ConnectorDef;
+import com.zeligsoft.domain.idl3plus.api.Generics.TemplateModule;
+import com.zeligsoft.domain.idl3plus.api.Generics.TypeParameter;
+import com.zeligsoft.domain.idl3plus.api.Generics.TemplateSignature;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
+import com.zeligsoft.domain.omg.ccm.api.CCM_Component.InterfacePort;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.api.IDL.CORBAInterface;
 import com.zeligsoft.domain.omg.corba.ui.providers.CORBACustomPropertySection;
+import com.zeligsoft.domain.zml.api.ZML_Component.PortTypeable;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -176,7 +179,13 @@ public class DDS4CCMCustomPropertySectionProvider implements
 		
 		}else if (property.getName().equals(
 				CCMNames.INTERFACE_PORT__CONNECTOR_TYPE)) {
-
+			
+			InterfacePort ip = ZDLFactoryRegistry.INSTANCE.create(descriptor.getContext(), InterfacePort.class);
+			
+			if(!isConnectorTypeRequired(ip)){
+				return null;
+			}
+			
 			IFilter filter = new IFilter() {
 
 				@Override
@@ -198,32 +207,28 @@ public class DDS4CCMCustomPropertySectionProvider implements
 						return false;
 					}
 					
-					EObject eoContainer = eo.eContainer();
-					if(eoContainer == null 
-							|| !ZDLUtil.isZDLConcept(eoContainer,
-							IDL3PlusNames.TEMPLATE_MODULE)){
+					ConnectorDef connDef = ZDLFactoryRegistry.INSTANCE.create(eo, ConnectorDef.class);
+					
+					Object container = connDef.zContainer();
+					if(!(container instanceof TemplateModule)){
 						return false;
 					}
-					Package templateModulePackage = (Package) eoContainer;
+					TemplateModule tModule = (TemplateModule) container;
 					
-					TemplateSignature ts = templateModulePackage.getOwnedTemplateSignature();
-					for(TemplateParameter typeParam: ts.getOwnedParameters()){
-				
-						if(ZDLUtil.isZDLConcept(typeParam,
-								IDL3PlusNames.TYPE_PARAMETER)){
-							if(!(typeParam.getOwnedParameteredElement() instanceof Interface)){
-								return false;
-							}
+					TemplateSignature ts = tModule.getSignature();
+					
+					for(TypeParameter typeParam: ts.getTypeParameter()){					
+						if(!(typeParam.asClassifierTemplateParameter().getOwnedParameteredElement() instanceof Interface)){
+							return false;
 						}
 					}
-					
 					return true;
 				}
 
 			};
 			return CXPropertiesWidgetFactory.createSectionForReferenceType(
 					parent, descriptor, filter);
-
+	
 		}else {
 			Map<String, Control> widgetMap = CXPropertiesWidgetFactory
 					.createSectionForStringType(parent, descriptor);
@@ -253,6 +258,24 @@ public class DDS4CCMCustomPropertySectionProvider implements
 
 			return widgetMap;
 		}
+	}
+	
+	private boolean isConnectorTypeRequired(InterfacePort ip){
+		
+		if(DDS4CCMUtil.getModelType(ip.asPort()).equals(ModelTypeDDS4CCM.ATCD.name())){
+			return false;
+		}
+		PortTypeable pt = ip.getPorttype();
+		
+		if(!(pt instanceof CORBAInterface)){
+			return false;
+		}	
+		CORBAInterface portType = (CORBAInterface) pt;
+				
+		if(portType.getIsLocal()){
+			return false;
+		}		
+		return true;
 	}
 
 	private Map<String, Control> createStructFieldKeySection(Composite parent,
