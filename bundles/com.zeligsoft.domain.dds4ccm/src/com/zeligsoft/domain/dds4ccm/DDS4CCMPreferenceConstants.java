@@ -61,6 +61,27 @@ public final class DDS4CCMPreferenceConstants {
 	public static final String GLOBAL_LOCATION_PREFIX = "GOBAL_LOCATION_PREFIX"; //$NON-NLS-1$
 
 	public static final String DEFAULT_GLOBAL_LOCATION_PREFIX = ""; //$NON-NLS-1$
+	
+	/**
+	 * Asynchronous connector type for axcioma migration
+	 */
+	public static final String ASYNC_CONNECTOR_TYPE_AXCIOMA_MIGRATION = "ASYNC_CONNECTOR_TYPE_AXCIOMA_MIGRATION"; //$NON-NLS-1$
+
+	/**
+	 * Default value for asynchronous connector type for axcioma migration
+	 */
+	public static final String DEFAULT_ASYNC_CONNECTOR_TYPE_AXCIOMA_MIGRATION = ConnectorType.AMI4CCM_Connector.name(); //$NON-NLS-1$
+	
+	/**
+	 * Synchronous connector type for axcioma migration
+	 */
+	public static final String SYNC_CONNECTOR_TYPE_AXCIOMA_MIGRATION = "SYNC_CONNECTOR_TYPE_AXCIOMA_MIGRATION"; //$NON-NLS-1$
+
+	/**
+	 * Default value for synchronous connector type for axcioma migration
+	 */
+	public static final String DEFAULT_SYNC_CONNECTOR_TYPE_AXCIOMA_MIGRATION = ConnectorType.CORBA4CCM_Connector.name(); //$NON-NLS-1$
+
 
 	
 }
