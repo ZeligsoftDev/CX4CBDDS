@@ -95,7 +95,7 @@ public class NewCCMModelWizard extends Wizard implements INewWizard {
 		return ZeligsoftModelWizardContentCreator.createContent(projectName, 
 				destFolder, modelName, modelName, CCMNames.CCMMODEL,
 				modelPage.getCdtProjectName(), templateURI, 
-				CCMWizardPageCreator.MODEL_FILE_NAME, CCMPerspective.ID);
+				CCMWizardPageCreator.MODEL_FILE_NAME, CCMPerspective.ID, null);
 	}
 
 	/**

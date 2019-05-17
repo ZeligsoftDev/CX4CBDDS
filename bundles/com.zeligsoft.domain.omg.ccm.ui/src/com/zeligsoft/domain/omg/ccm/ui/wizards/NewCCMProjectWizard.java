@@ -65,7 +65,7 @@ public class NewCCMProjectWizard
 			.getProjectName(), projectPage.useDefaults() ? null : projectPage.getLocationPath().toString(), 
 					modelName, modelName, 
 					CCMNames.CCMMODEL, modelPage.getCdtProjectName(),
-					templateURI, CCMWizardPageCreator.MODEL_FILE_NAME, CCMPerspective.ID);
+					templateURI, CCMWizardPageCreator.MODEL_FILE_NAME, CCMPerspective.ID, null);
 
 	}
 
