@@ -55,7 +55,8 @@ public class ConnectorTypeCompatibilityConstraint extends AbstractModelConstrain
 		
 		InterfacePort ip = ZDLFactoryRegistry.INSTANCE.create(objToVerify, InterfacePort.class);
 		
-		if(!(ip.getPorttype() instanceof CORBAInterface)){
+		// for axcioma generation, we only care about synchronous or asynchronous property of a client port 
+		if(!ip.getIsConjugated() || !(ip.getPorttype() instanceof CORBAInterface)){
 			return ctx.createSuccessStatus();
 		}
 		
