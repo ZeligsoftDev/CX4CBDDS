@@ -42,3 +42,18 @@ cached Boolean isAsyncCapableConnector(String connectorType) :
 cached Boolean isSyncCapableConnector(String connectorType) :
 	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.isSyncCapableConnector(
 		java.lang.String);
+
+/*
+ * Check if the given connector is an assembly connector
+ */
+cached Boolean isAssemblyConnector(CCM::CCM_Implementation::CCMConnector connector) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.isAssemblyConnector(
+		org.eclipse.uml2.uml.Connector);		
+
+/*
+ * Check if the given connector is a delegation connector
+ */
+cached Boolean isDelegationConnector(CCM::CCM_Implementation::CCMConnector connector) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.isDelegationConnector(
+		org.eclipse.uml2.uml.Connector);
+		

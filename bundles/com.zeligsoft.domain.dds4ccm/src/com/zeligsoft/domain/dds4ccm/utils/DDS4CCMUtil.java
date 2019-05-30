@@ -27,6 +27,8 @@ import org.eclipse.gmf.runtime.emf.commands.core.commands.DestroyEObjectCommand;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.ConnectorKind;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Interface;
@@ -436,5 +438,13 @@ public class DDS4CCMUtil {
 	public static boolean isSyncCapableConnector(String connectorType){
 		ConnectorType ct = ConnectorType.valueOf(connectorType);
 		return ct.isSyncCapable();		
+	}
+	
+	public static boolean isAssemblyConnector(Connector connector){
+		return connector.getKind().equals(ConnectorKind.ASSEMBLY_LITERAL);
+	}
+	
+	public static boolean isDelegationConnector(Connector connector){
+		return connector.getKind().equals(ConnectorKind.DELEGATION_LITERAL);
 	}
 }
