@@ -1079,9 +1079,9 @@ create MonolithicDeploymentDescription createAMIConnectorImplementation(CORBAInt
 	let fullInterfaceName = intf.getCorbaScopedName() :
 	let modifiedInterfaceName = intf.getModifiedCorbaScopedName("AMI4CCM_") :
 	let name = getNameAMI(intf)://fullInterfaceName + "_AMI_Connector" :
-	let componentFactoryParameter = intf.createProperty("COMPONENT_FACTORY", "create_", modifiedInterfaceName, "Connector_AMI4CCM_Connector_Impl") :
+	let componentFactoryParameter = intf.createProperty("COMPONENT_FACTORY", "create_", modifiedInterfaceName, "_Connector_AMI4CCM_Connector_Impl") :
 	let executorArtifactParameter = intf.createProperty("EXEC_ARTIFACT", "", artifact.name.first(), "") :
-	let servantEntryPointParameter = intf.createProperty("SVNT_ENTRYPT", "create_", modifiedInterfaceName, "Connector_AMI4CCM_Connector_Servant") :
+	let servantEntryPointParameter = intf.createProperty("SVNT_ENTRYPT", "create_", modifiedInterfaceName, "_Connector_AMI4CCM_Connector_Servant") :
 	let servantArtifactParameter = intf.createProperty("SVNT_ARTIFACT", "", artifact.name.first(), "") :
 	deployment.artifact.add(artifact) ->
 	this.name.add(name) ->
