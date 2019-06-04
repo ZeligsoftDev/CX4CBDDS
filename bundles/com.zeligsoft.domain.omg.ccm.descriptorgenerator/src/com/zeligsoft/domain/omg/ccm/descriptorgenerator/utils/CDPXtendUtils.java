@@ -137,6 +137,21 @@ public class CDPXtendUtils {
 		}
 	}
 
+	public static String getModifiedCorbaScopedName(NamedElement element, String prefix) {
+		final boolean restrictToCORBA = ZDLUtil.isZDLConcept(element, CORBADomainNames.CORBANAMED_ELEMENT)
+				|| ZDLUtil.isZDLConcept(element, CCMNames.MONOLITHIC_IMPLEMENTATION);
+		
+		final String parentName = element.getOwner() instanceof NamedElement ?
+				getScopedName((NamedElement)(element.getOwner()), restrictToCORBA).replaceAll("\\.", "_")
+				: "";
+		final StringBuilder buffer = new StringBuilder();
+		if(!parentName.isEmpty()) {
+			buffer.append(parentName).append('_');
+		}
+		buffer.append(prefix).append(element.getName());
+		return buffer.toString();
+	}
+
 	private static String getScopedName(NamedElement element,
 			boolean restrictToCORBA) {
 
