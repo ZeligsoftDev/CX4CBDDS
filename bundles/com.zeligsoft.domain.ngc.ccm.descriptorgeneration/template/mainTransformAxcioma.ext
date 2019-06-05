@@ -825,7 +825,7 @@ create PlanConnectionDescription createAsyncClientSideSyncProvidesConnection(Ins
 //
 	if(receptacleConnectorType == "AMI4CCM_Connector") then{
 		this.name.add(sourceSN + "." + receptacle.name + "::" + idd.name.first() + ".ami4ccm_port_ami4ccm_sync_provides") ->
-		this.createEndPoint(false, true, receptacle.name, compInstance) ->
+		this.createEndPoint(false, false, receptacle.name, compInstance) ->
 		// AMI Fragment connections are never multiplex.
 		this.createEndPoint(true, false, "ami4ccm_port_ami4ccm_sync_provides", idd)
 	};
@@ -881,7 +881,13 @@ create PlanConnectionDescription createSyncClientSideConnection(InstanceDeployme
 	let connectorPortName = getConnectorProvidesPortName(receptacleConnectorType): 
 	
 	this.name.add(sourceSN + "." + receptacle.name + "::" + idd.name.first() + "." + connectorPortName) ->
-	this.createEndPoint(false, true, receptacle.name, compInstance) ->
+	{if(receptacleConnectorType == "AMI4CCM_Connector") then{
+	// the only facet used from AMI4CCM connector in sync connection is 'ami4ccm_port_ami4ccm_sync_provides' 
+		this.createEndPoint(false, false, receptacle.name, compInstance)
+	}else{
+		this.createEndPoint(false, true, receptacle.name, compInstance)
+	}} ->
+		
 	// AMI Fragment connections are never multiplex.
 	this.createEndPoint(true, false, connectorPortName, idd);	
 /*
