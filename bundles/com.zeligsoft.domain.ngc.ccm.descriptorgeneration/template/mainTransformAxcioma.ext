@@ -784,7 +784,6 @@ create PlanConnectionDescription createAsyncClientSideSendcConnection(InstanceDe
 		this.createEndPoint(false, false, "sendc_" + receptacle.name, compInstance)
 	};
 	
-
 /*
  * Axcioma (Async port): Connection between sync_provides of the connector instance and Recept. Both in client side.
  */	
@@ -848,26 +847,49 @@ create PlanConnectionDescription createSyncClientSideConnection(InstanceDeployme
 	let sourceSN = source.getScopedName() :
 	let facetSN = facetPart.getScopedName() :
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
-	this.name.add(sourceSN + "." + receptacle.name + "::" + idd.name.first() + ".srr_facet") ->
+	let receptacleConnectorType = receptacle.connectorType.name:
+	let connectorPortName = {}: 
+	{if (receptacleConnectorType == "AMI4CCM_Connector") then {
+		connectorPortName.add("ami4ccm_port_ami4ccm_sync_provides")
+	} else if (receptacleConnectorType == "CORBA4CCM_Connector") then {
+	    connectorPortName.add("srr_facet")
+	}}->
+	this.name.add(sourceSN + "." + receptacle.name + "::" + idd.name.first() + "." + connectorPortName.first()) ->
 	this.createEndPoint(false, true, receptacle.name, compInstance) ->
 	// AMI Fragment connections are never multiplex.
-	this.createEndPoint(true, false, "srr_facet", idd);	
+	this.createEndPoint(true, false, connectorPortName.first(), idd);	
 /*
  * Axcioma Sync: connection between srr_receptacle in client side and srr_facet in server side
  */	
 create PlanConnectionDescription createSyncClientServerConnection(InstanceDeploymentDescription idd, InstanceDeploymentDescription srrInstance,  
 		DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan) :
 	let facetSN = facetPart.getScopedName():
-	let name = idd.name.first() + ".srr_receptacle" + "::" + (srrInstance != null? srrInstance.name.first() + ".srr_facet":
-					facetSN + "." + facet.name):
-	this.name.add(name) ->
+	let receptacleConnectorType = receptacle.connectorType.name:
+	let facetConnectorType = facet.connectorType.name:
+	let clientConnectorPortName = {}:
+	let serverConnectorPortName = {}:
+	
+	{if (receptacleConnectorType == "AMI4CCM_Connector") then {
+		clientConnectorPortName.add("ami4ccm_port_ami4ccm_uses")     
+	} else if (receptacleConnectorType == "CORBA4CCM_Connector") then {
+	    clientConnectorPortName.add("srr_receptacle")
+	}}->
+	
+	{if (facetConnectorType == "AMI4CCM_Connector") then {
+		serverConnectorPortName.add("ami4ccm_port_ami4ccm_sync_provides")     
+	} else if (facetConnectorType == "CORBA4CCM_Connector") then {
+	    serverConnectorPortName.add("srr_facet")
+	}}->
+	
+	this.name.add(idd.name.first() + "." + clientConnectorPortName.first() + "::" + (srrInstance != null? srrInstance.name.first() + "." + serverConnectorPortName.first():
+					facetSN + "." + facet.name)) ->
 	
 	{if(facetPart.isDeployed()) then{
-		this.createEndPoint(true, false, "srr_facet", srrInstance)
+		this.createEndPoint(true, false, serverConnectorPortName.first(), srrInstance)
 	}else{
 		this.createExternalEndPoint(facetPart, facet)
 	}}->
-	this.createEndPoint(false, false, "srr_receptacle", idd);
+	this.createEndPoint(false, false, clientConnectorPortName.first(), idd);
 
 /*
  * Axcioma: Connection between srr_receptacle and facet. Both in server side 
@@ -876,15 +898,23 @@ create PlanConnectionDescription createSyncServerSideConnection(InstanceDeployme
 		DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan):
 	let facetSN = facetPart.getScopedName() :
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(facetSN)) :
-	let name = facetSN + "." + facet.name + "::" + srrInstance.name.first() + ".srr_receptacle" :
-	this.name.add(name) ->
+	let facetConnectorType = facet.connectorType.name:
+	let connectorPortName = {}:
+	
+	{if (facetConnectorType == "AMI4CCM_Connector") then {
+		connectorPortName.add("ami4ccm_port_ami4ccm_uses")
+	} else if (facetConnectorType == "CORBA4CCM_Connector") then {
+	    connectorPortName.add("srr_receptacle")
+	}}->
+	
+	this.name.add(facetSN + "." + facet.name + "::" + srrInstance.name.first() + "." + connectorPortName.first()) ->
 	
 	{if(facetPart.isDeployed()) then{
 		this.createEndPoint(true, false, facet.name, compInstance)
 	}else{
 		this.createExternalEndPoint(facetPart, facet)
 	}}->
-	this.createEndPoint(false, false, "srr_receptacle", srrInstance);
+	this.createEndPoint(false, false, connectorPortName.first(), srrInstance);
 		
 /*
  * AXCIOMA (async): connection between client and server.
@@ -893,19 +923,29 @@ create PlanConnectionDescription createAsyncClientServerConnection(InstanceDeplo
 		DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan) :
 	let facetSN = facetPart.getScopedName():
 	let receptacleConnectorType = receptacle.connectorType.name:
+	let facetConnectorType = facet.connectorType.name:
+	let clientConnectorPortName = {}:
+	let serverConnectorPortName = {}:
 	
 	if(receptacleConnectorType == "AMI4CCM_Connector") then{
-		let name = idd.name.first() + ".ami4ccm_port_ami4ccm_uses" + "::" + (srrInstance != null? srrInstance.name.first() + ".srr_facet":
-						facetSN + "." + facet.name):
-		this.name.add(name) ->
+		clientConnectorPortName.add("ami4ccm_port_ami4ccm_uses")
+	}->
+	
+	{if (facetConnectorType == "AMI4CCM_Connector") then {
+		serverConnectorPortName.add("ami4ccm_port_ami4ccm_sync_provides")     
+	} else if (facetConnectorType == "CORBA4CCM_Connector") then {
+	    serverConnectorPortName.add("srr_facet")
+	}}->
+	
+	this.name.add(idd.name.first() + "." + clientConnectorPortName.first() + "::" + (srrInstance != null? srrInstance.name.first() + "." + serverConnectorPortName.first():
+						facetSN + "." + facet.name)) ->
 		
-		{if(facetPart.isDeployed()) then{
-			this.createEndPoint(true, false, "srr_facet", srrInstance)
-		}else{
-			this.createExternalEndPoint(facetPart, facet)
-		}}->			
-		this.createEndPoint(false, false, "ami4ccm_port_ami4ccm_uses", idd)
-	};
+	{if(facetPart.isDeployed()) then{
+		this.createEndPoint(true, false, serverConnectorPortName.first(), srrInstance)
+	}else{
+		this.createExternalEndPoint(facetPart, facet)
+	}}->			
+	this.createEndPoint(false, false, clientConnectorPortName.first(), idd);
 	
 /*
  * AXCIOMA (async): Connection between srr_receptacle and Facet. Both in server side.
@@ -913,17 +953,24 @@ create PlanConnectionDescription createAsyncClientServerConnection(InstanceDeplo
 create PlanConnectionDescription createAsyncServerSideConnection(InstanceDeploymentDescription srrInstance, 
 		DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan):
 	let facetSN = facetPart.getScopedName() :
-	let receptacleConnectorType = receptacle.connectorType.name:
+	let facetConnectorType = facet.connectorType.name:
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(facetSN)) :
-	let name = facetSN + "." + facet.name + "::" + srrInstance.name.first() + ".srr_receptacle" :
-	this.name.add(name) ->
+	let connectorPortName = {}:
+	
+	{if (facetConnectorType == "AMI4CCM_Connector") then {
+		connectorPortName.add("ami4ccm_port_ami4ccm_uses")     
+	} else if (facetConnectorType == "CORBA4CCM_Connector") then {
+	    connectorPortName.add("srr_receptacle")
+	}}->
+	
+	this.name.add(facetSN + "." + facet.name + "::" + srrInstance.name.first() + "." + connectorPortName.first()) ->
 	
 	{if(facetPart.isDeployed()) then{
 		this.createEndPoint(true, false, facet.name, compInstance)
 	}else{
 		this.createExternalEndPoint(facetPart, facet)
 	}}->
-	this.createEndPoint(false, false, "srr_receptacle", srrInstance);	
+	this.createEndPoint(false, false, connectorPortName.first(), srrInstance);	
 	
 /*
 * Generates connector instance in the server side: either CORBA4CCM or AsyncCORBA4CCM
