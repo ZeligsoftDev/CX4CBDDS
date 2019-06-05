@@ -1100,9 +1100,9 @@ Void visitPortType(CORBAInterface intf, InterfacePort receptacle, DeploymentPlan
  * Create a SRR_CORBA_Connector implementation.
  */
 create MonolithicDeploymentDescription createCORBASRRConnectorImplementation(CORBAInterface intf, DeploymentPlan deployment) :
-	let artifact = createArtifact(intf, "_corba_exec") :
+	let artifact = createArtifact(intf, "_cc") :
 	let artifactRef = artifact.visitImplArtifact() :
-	let name = getNameCORBA(intf)://intf.getCorbaScopedName() + "_SRR_CORBA_Connector" :
+	let name = getNameCORBA(intf):
 	let componentFactoryParameter = intf.createProperty("COMPONENT_FACTORY", "create_", name, "_Impl") :
 	let executorArtifactParameter = intf.createProperty("EXEC_ARTIFACT", "", artifact.name.first(), "") :
 	let servantEntryPointParameter = intf.createProperty("SVNT_ENTRYPT", "create_", name, "_Servant") :
@@ -1125,7 +1125,7 @@ create MonolithicDeploymentDescription createAMIConnectorImplementation(CORBAInt
 	let artifactRef = artifact.visitImplArtifact() :
 	let fullInterfaceName = intf.getCorbaScopedName() :
 	let modifiedInterfaceName = intf.getModifiedCorbaScopedName("AMI4CCM_") :
-	let name = getNameAMI(intf)://fullInterfaceName + "_AMI_Connector" :
+	let name = getNameAMI(intf):
 	let componentFactoryParameter = intf.createProperty("COMPONENT_FACTORY", "create_", modifiedInterfaceName, "_Connector_AMI4CCM_Connector_Impl") :
 	let executorArtifactParameter = intf.createProperty("EXEC_ARTIFACT", "", artifact.name.first(), "") :
 	let servantEntryPointParameter = intf.createProperty("SVNT_ENTRYPT", "create_", modifiedInterfaceName, "_Connector_AMI4CCM_Connector_Servant") :
