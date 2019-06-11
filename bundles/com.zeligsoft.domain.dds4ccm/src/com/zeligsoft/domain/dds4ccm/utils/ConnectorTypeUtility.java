@@ -47,7 +47,7 @@ public class ConnectorTypeUtility {
 	 *         
 	 */
 	
-	static String getPathmapConnectorLib(String preferredConnectorType){
+	private static String getPathmapConnectorLib(String preferredConnectorType){
 		
 		String pathmapConnectorLib = "";
 		
@@ -72,7 +72,7 @@ public class ConnectorTypeUtility {
 	 * @return the associated 'ConnectorDef' object  
 	 *         
 	 */	
-	static ConnectorDef getConnectorDef(Package connectorLibPackage){
+	private static ConnectorDef getConnectorDef(Package connectorLibPackage){
 		// Argument to this method should be an imported connector library package
 		
 		ConnectorDef cd = null;
@@ -118,7 +118,7 @@ public class ConnectorTypeUtility {
 	 *         	default connectorType set in preferences. To be used in the 'uses' port during migration  
 	 *          
 	 */
-	static String getDefaultConnectorTypeProvides(String defaultConnectorTypeUses){
+	public static String getDefaultConnectorTypeProvides(String defaultConnectorTypeUses){
 		if(defaultConnectorTypeUses.equals(ConnectorType.AMI4CCM_Connector.name())){
 			return ConnectorType.CORBA4CCM_Connector.name();
 		}else if(defaultConnectorTypeUses.equals(ConnectorType.CORBA4CCM_Connector.name())){
@@ -141,9 +141,9 @@ public class ConnectorTypeUtility {
 	 * @throws IOException 
 	 *         
 	 */
-	static Package getImportedConnectorPackage(Model model, URI packageUri) throws IOException{
+	public static Package getImportedPackage(Model model, URI packageUri) throws IOException{
 		
-		Package importedConnectorPackage = null;
+		Package importedPackage = null;
 		boolean isAlreadyImported = false;
 	
 		List<PackageImport> listPackageImport = model.getPackageImports();
@@ -152,7 +152,7 @@ public class ConnectorTypeUtility {
 			
 			if(pi.getImportedPackage().eResource().getURI().equals(packageUri)){
 				isAlreadyImported = true;
-				importedConnectorPackage = pi.getImportedPackage();
+				importedPackage = pi.getImportedPackage();
 				break;
 			}
 		}
@@ -160,10 +160,10 @@ public class ConnectorTypeUtility {
 		if(!isAlreadyImported){			
 			Package library = (Package) UMLModeler.openModelResource(packageUri);
 			final PackageImport pi = model.createPackageImport(library);
-			importedConnectorPackage = pi.getImportedPackage();		
+			importedPackage = pi.getImportedPackage();		
 		}
 		
-		return importedConnectorPackage;		
+		return importedPackage;		
 	}
 
 	/**
@@ -176,14 +176,14 @@ public class ConnectorTypeUtility {
 	 * @return a 'ConnectorDef' object that corresponds to the default value of the 'ConnectorType' 
 	 *         
 	 */  
-	static ConnectorDef getDefaultConnectorDef(String defaultConnectorType, Model model){
+	public static ConnectorDef getDefaultConnectorDef(String defaultConnectorType, Model model){
 		
 		String pathmapConnectorLib = getPathmapConnectorLib(defaultConnectorType);
 		URI uriConnectorLib = URI.createURI(pathmapConnectorLib);
 		
 		Package packageConnectorLib = null;
 		try {
-			packageConnectorLib = getImportedConnectorPackage(model, uriConnectorLib);
+			packageConnectorLib = getImportedPackage(model, uriConnectorLib);
 		} catch (IOException e) {
 			Activator.getDefault().error("Importing connector library failed for pathmap: "+pathmapConnectorLib, e);
 		}
