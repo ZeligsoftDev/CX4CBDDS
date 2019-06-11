@@ -787,7 +787,8 @@ create PlanConnectionDescription createAsyncClientSideSendcConnection(InstanceDe
 /*
 * Depending on the given connectorType, return corresponding 'provides' port name
 */
-cached String getConnectorProvidesPortName(String connectorType):
+cached String getConnectorProvidesPortName(InterfacePort port):
+	let connectorType = port.connectorType.name:
 	let portName = {}:
 	{if(connectorType == "AMI4CCM_Connector") then{
 		portName.add("ami4ccm_port_ami4ccm_sync_provides")
@@ -802,7 +803,8 @@ cached String getConnectorProvidesPortName(String connectorType):
 /*
 * Depending on the given connectorType, return corresponding 'uses' port name
 */
-cached String getConnectorUsesPortName(String connectorType):
+cached String getConnectorUsesPortName(InterfacePort port):
+	let connectorType = port.connectorType.name:
 	let portName = {}:
 	{if(connectorType == "AMI4CCM_Connector") then{
 		portName.add("ami4ccm_port_ami4ccm_uses")
@@ -878,7 +880,7 @@ create PlanConnectionDescription createSyncClientSideConnection(InstanceDeployme
 	let facetSN = facetPart.getScopedName() :
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
 	let receptacleConnectorType = receptacle.connectorType.name:
-	let connectorPortName = getConnectorProvidesPortName(receptacleConnectorType): 
+	let connectorPortName = getConnectorProvidesPortName(receptacle): 
 	
 	this.name.add(sourceSN + "." + receptacle.name + "::" + idd.name.first() + "." + connectorPortName) ->
 	{if(receptacleConnectorType == "AMI4CCM_Connector") then{
@@ -896,10 +898,8 @@ create PlanConnectionDescription createSyncClientSideConnection(InstanceDeployme
 create PlanConnectionDescription createSyncClientServerConnection(InstanceDeploymentDescription idd, InstanceDeploymentDescription srrInstance,  
 		DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan) :
 	let facetSN = facetPart.getScopedName():
-	let receptacleConnectorType = receptacle.connectorType.name:
-	let facetConnectorType = facet.connectorType.name:
-	let clientConnectorPortName = getConnectorUsesPortName(receptacleConnectorType):
-	let serverConnectorPortName = getConnectorProvidesPortName(facetConnectorType):
+	let clientConnectorPortName = getConnectorUsesPortName(receptacle):
+	let serverConnectorPortName = getConnectorProvidesPortName(facet):
 	
 	this.name.add(idd.name.first() + "." + clientConnectorPortName + "::" + (srrInstance != null? srrInstance.name.first() + "." + serverConnectorPortName:
 					facetSN + "." + facet.name)) ->
@@ -918,8 +918,7 @@ create PlanConnectionDescription createSyncServerSideConnection(InstanceDeployme
 		DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan):
 	let facetSN = facetPart.getScopedName() :
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(facetSN)) :
-	let facetConnectorType = facet.connectorType.name:
-	let connectorPortName = getConnectorUsesPortName(facetConnectorType):
+	let connectorPortName = getConnectorUsesPortName(facet):
 	
 	this.name.add(facetSN + "." + facet.name + "::" + srrInstance.name.first() + "." + connectorPortName) ->
 	
@@ -936,10 +935,8 @@ create PlanConnectionDescription createSyncServerSideConnection(InstanceDeployme
 create PlanConnectionDescription createAsyncClientServerConnection(InstanceDeploymentDescription idd, InstanceDeploymentDescription srrInstance,  
 		DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan) :
 	let facetSN = facetPart.getScopedName():
-	let receptacleConnectorType = receptacle.connectorType.name:
-	let facetConnectorType = facet.connectorType.name:
-	let clientConnectorPortName = getConnectorUsesPortName(receptacleConnectorType):
-	let serverConnectorPortName = getConnectorProvidesPortName(facetConnectorType):
+	let clientConnectorPortName = getConnectorUsesPortName(receptacle):
+	let serverConnectorPortName = getConnectorProvidesPortName(facet):
 	
 	this.name.add(idd.name.first() + "." + clientConnectorPortName + "::" + (srrInstance != null? srrInstance.name.first() + "." + serverConnectorPortName:
 						facetSN + "." + facet.name)) ->
@@ -957,9 +954,8 @@ create PlanConnectionDescription createAsyncClientServerConnection(InstanceDeplo
 create PlanConnectionDescription createAsyncServerSideConnection(InstanceDeploymentDescription srrInstance, 
 		DeploymentPart facetPart, InterfacePort facet, DeploymentPart receptPart, InterfacePort receptacle, DeploymentPlan plan):
 	let facetSN = facetPart.getScopedName() :
-	let facetConnectorType = facet.connectorType.name:
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(facetSN)) :
-	let connectorPortName = getConnectorUsesPortName(facetConnectorType):
+	let connectorPortName = getConnectorUsesPortName(facet):
 	
 	this.name.add(facetSN + "." + facet.name + "::" + srrInstance.name.first() + "." + connectorPortName) ->
 	
