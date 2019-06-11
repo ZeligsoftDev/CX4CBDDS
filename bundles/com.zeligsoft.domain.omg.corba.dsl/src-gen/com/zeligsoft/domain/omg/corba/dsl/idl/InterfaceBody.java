@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl;
 
@@ -27,21 +23,22 @@ import org.eclipse.emf.ecore.EModelElement;
  * @extends EModelElement
  * @generated
  */
-public interface InterfaceBody extends EModelElement {
-	/**
-	 * Returns the value of the '<em><b>Export</b></em>' containment reference list.
-	 * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.Export}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Export</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Export</em>' containment reference list.
-	 * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getInterfaceBody_Export()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Export> getExport();
+public interface InterfaceBody extends EModelElement
+{
+  /**
+   * Returns the value of the '<em><b>Export</b></em>' containment reference list.
+   * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.Export}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Export</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Export</em>' containment reference list.
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getInterfaceBody_Export()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Export> getExport();
 
 } // InterfaceBody

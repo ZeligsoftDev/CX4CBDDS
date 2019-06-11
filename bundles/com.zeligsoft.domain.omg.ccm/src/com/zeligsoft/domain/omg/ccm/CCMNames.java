@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ *  
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -438,6 +438,13 @@ public final class CCMNames {
 	 * @generated
 	 */
 	public static final String INTERFACE_PORT = "CCM::CCM_Component::InterfacePort";//$NON-NLS-1$
+
+	/**
+	 * ZDL DomainReference: InterfacePort::connectorType. 
+	 * Lower: 0 Upper: 1 
+	 * @generated
+	 */
+	public static final String INTERFACE_PORT__CONNECTOR_TYPE = "connectorType";//$NON-NLS-1$ 
 
 	/**
 	 * ZDL DomainAttribute: InterfacePort::hasCSL. 

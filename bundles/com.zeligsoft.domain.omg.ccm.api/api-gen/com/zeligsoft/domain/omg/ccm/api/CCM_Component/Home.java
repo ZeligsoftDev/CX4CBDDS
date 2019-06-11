@@ -2,9 +2,9 @@ package com.zeligsoft.domain.omg.ccm.api.CCM_Component;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
 import com.zeligsoft.domain.omg.corba.api.IDL.CORBANamedElement;
-import com.zeligsoft.domain.zml.api.ZML_Component.WorkerFunctionIdentifiable;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAAttribute;
 import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModuleContained;
+import com.zeligsoft.domain.omg.corba.api.IDL.CORBAAttribute;
+import com.zeligsoft.domain.zml.api.ZML_Component.WorkerFunctionIdentifiable;
 
 public interface Home extends ManagesEnd, CORBANamedElement,
 		CORBAModuleContained, WorkerFunctionIdentifiable {
@@ -48,6 +48,6 @@ public interface Home extends ManagesEnd, CORBANamedElement,
 	 * instance of Home
 	 */
 	static final TypeSelectPredicate<Home> type = new TypeSelectPredicate<Home>(
-      "CCM::CCM_Component::Home", //$NON-NLS-1$
-        Home.class); 
+			"CCM::CCM_Component::Home", //$NON-NLS-1$
+			Home.class);
 }

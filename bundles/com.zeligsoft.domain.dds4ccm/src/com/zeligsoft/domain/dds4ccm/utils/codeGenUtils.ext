@@ -1,0 +1,59 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+import ZMLMM::ZML_Core;
+/*
+import CCM::CCM_Implementation;
+import CCM::CCM_Component;
+import ZMLMM::ZML_Deployments;
+import CORBADomain::IDL;
+*/
+/*
+ * Retrieve the type of the model that owns the given model element: ATCD or AXCIOMA
+ */
+cached String getModelType(NamedElement ne) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.getModelType(
+		org.eclipse.uml2.uml.Element);
+
+/*
+ * Check if the given connector type has asynchronous capability
+ */
+cached Boolean isAsyncCapableConnector(String connectorType) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.isAsyncCapableConnector(
+		java.lang.String);
+
+/*
+ * Check if the given connector type has synchronous capability
+ */
+cached Boolean isSyncCapableConnector(String connectorType) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.isSyncCapableConnector(
+		java.lang.String);
+
+/*
+ * Check if the given connector is an assembly connector
+ */
+cached Boolean isAssemblyConnector(CCM::CCM_Implementation::CCMConnector connector) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.isAssemblyConnector(
+		org.eclipse.uml2.uml.Connector);		
+
+/*
+ * Check if the given connector is a delegation connector
+ */
+cached Boolean isDelegationConnector(CCM::CCM_Implementation::CCMConnector connector) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.isDelegationConnector(
+		org.eclipse.uml2.uml.Connector);
+		

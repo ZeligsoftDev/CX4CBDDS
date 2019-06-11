@@ -6,6 +6,9 @@ public interface partitionQosPolicy extends qosPolicy {
 	@Override
 	String getName();
 
+	@Override
+	void setName(String val);
+
 	/**
 	 * A predicate which returns true if the Object is an
 	 * instance of partitionQosPolicy

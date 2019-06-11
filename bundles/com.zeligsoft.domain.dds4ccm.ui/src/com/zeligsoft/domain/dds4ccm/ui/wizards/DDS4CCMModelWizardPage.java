@@ -17,10 +17,19 @@
 package com.zeligsoft.domain.dds4ccm.ui.wizards;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.uml2.common.util.UML2Util;
 
 import com.zeligsoft.cx.ui.l10n.Messages;
 import com.zeligsoft.cx.ui.pages.ZeligsoftModelWizardPage;
+import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.ModelTypeEnum;
+
+import org.eclipse.swt.widgets.Button;
 
 /**
  * DDS4CCM Model Wizard Page
@@ -29,6 +38,10 @@ import com.zeligsoft.cx.ui.pages.ZeligsoftModelWizardPage;
  * 
  */
 public class DDS4CCMModelWizardPage extends ZeligsoftModelWizardPage {
+	
+	protected Button atcdSelectionButton;
+	protected Button axciomaSelectionButton;
+	private static ModelTypeEnum DEFAULT_Target_PSM = ModelTypeEnum.ATCD;
 
 	public DDS4CCMModelWizardPage(String pageName) {
 		super(pageName);
@@ -59,8 +72,55 @@ public class DDS4CCMModelWizardPage extends ZeligsoftModelWizardPage {
 		return true;
 	}
 
+	public static void updateDefaultTargetPSM(ModelTypeEnum value){
+		DEFAULT_Target_PSM = value;
+	}
 	@Override
 	protected String getDefaultCdtProjectName() {
 		return defaultCdtProjectName;
+	}
+	
+	@Override
+	public void createControl(Composite parent) {
+		// TODO Auto-generated method stub
+		super.createControl(parent);
+		final Composite composite = (Composite) getControl();
+		// create a Group and two Radio buttons (Button) within it.
+		createModelTypeGroup(composite);
+		
+	}
+	
+	protected void createModelTypeGroup(Composite composite){
+		{
+			Label modelTypeSelectionLabel = new Label(composite, SWT.NULL);
+			modelTypeSelectionLabel.setText("Target Runtime PSM: ");
+			modelTypeSelectionLabel.setLayoutData(new GridData());
+			
+			GridData data = new GridData(GridData.FILL_HORIZONTAL);
+			data.horizontalSpan = 1;
+			
+			GridLayout modelTypeSelectionLayout = new GridLayout(2, true);
+			
+			Group modelTypeSelectionGroup = new Group(composite, SWT.NONE);
+			modelTypeSelectionGroup.setLayout(modelTypeSelectionLayout);
+			modelTypeSelectionGroup.setLayoutData(data);			
+						
+			atcdSelectionButton = new Button(modelTypeSelectionGroup, SWT.RADIO);
+			atcdSelectionButton.setText(ModelTypeEnum.ATCD.name());
+			
+			axciomaSelectionButton = new Button(modelTypeSelectionGroup, SWT.RADIO);
+			axciomaSelectionButton.setText(ModelTypeEnum.AXCIOMA.name());
+			
+			if(DEFAULT_Target_PSM.equals(ModelTypeEnum.ATCD)){
+				atcdSelectionButton.setSelection(true);
+			}else if(DEFAULT_Target_PSM.equals(ModelTypeEnum.AXCIOMA)){
+				axciomaSelectionButton.setSelection(true);
+			}
+		}
+	}
+	
+	public ModelTypeEnum getTargetModelType(){
+		
+		return atcdSelectionButton.getSelection()? ModelTypeEnum.ATCD : ModelTypeEnum.AXCIOMA;
 	}
 }

@@ -6,6 +6,10 @@ import com.zeligsoft.domain.omg.dds.api.Core.NamedEntity;
 public interface TopicConnector extends NamedEntity {
 	java.util.List<ConnectorEnd> getEnd();
 
+	void addEnd(ConnectorEnd val);
+
+	<T extends ConnectorEnd> T addEnd(Class<T> typeToCreate, String concept);
+
 	org.eclipse.uml2.uml.Connector asConnector();
 
 	/**

@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl;
 
@@ -17,5 +13,6 @@ package com.zeligsoft.domain.omg.corba.dsl.idl;
  * @model
  * @generated
  */
-public interface TypeDecl extends Definition, Export, TemplateDefinition, FixedDefinition {
+public interface TypeDecl extends Definition, Export, TemplateDefinition, FixedDefinition
+{
 } // TypeDecl

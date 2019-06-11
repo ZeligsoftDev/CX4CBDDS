@@ -12,9 +12,6 @@
    <feature url="features/com.zeligsoft.cx_3.6.6.qualifier.jar" id="com.zeligsoft.cx" version="3.6.6.qualifier">
       <category name="com.zeligsoft.dds4ccmmaster.category"/>
    </feature>
-   <feature url="features/com.zeligsoft.domain.ngc.ccm_feature_1.5.14.qualifier.jar" id="com.zeligsoft.domain.ngc.ccm_feature" version="1.5.14.qualifier">
-      <category name="com.zeligsoft.dds4ccmmaster.category"/>
-   </feature>
    <feature url="features/org.eclipse.cdt.sdk_8.6.0.201502131403.jar" id="org.eclipse.cdt.sdk" version="8.6.0.201502131403">
       <category name="com.zelgisoft.dds4ccm.cdt.category"/>
    </feature>
@@ -61,6 +58,9 @@
    <feature url="features/org.eclipse.xtend.typesystem.xsd_2.0.0.v201406030414.jar" id="org.eclipse.xtend.typesystem.xsd" version="2.0.0.v201406030414">
       <category name="com.zelgisoft.dds4ccm.deps.category"/>
    </feature>
+   <feature url="features/com.zeligsoft.domain.ngc.ccm_feature_1.6.0.qualifier.jar" id="com.zeligsoft.domain.ngc.ccm_feature" version="1.6.0.qualifier">
+      <category name="com.zeligsoft.dds4ccmmaster.category"/>
+   </feature>
    <bundle id="com.google.guava" version="15.0.0.v201403281430">
       <category name="com.zelgisoft.dds4ccm.deps.category"/>
    </bundle>
@@ -88,7 +88,6 @@
    <bundle id="org.eclipse.xtend.lib.macro" version="2.7.3.v201411190455">
       <category name="com.zelgisoft.dds4ccm.deps.category"/>
    </bundle>
-   
    <category-def name="com.zelgisoft.dds4ccm.cdt.category" label="CDT">
       <description>
          Supplemental C/C++ Development tools, version 8.6. Based on Eclipse Luna (4.4),

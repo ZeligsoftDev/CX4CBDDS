@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl;
 
@@ -19,5 +15,6 @@ import org.eclipse.emf.ecore.EModelElement;
  * @extends EModelElement
  * @generated
  */
-public interface OpTypeDecl extends EModelElement {
+public interface OpTypeDecl extends EModelElement
+{
 } // OpTypeDecl

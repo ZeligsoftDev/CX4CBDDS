@@ -6,6 +6,8 @@ import com.zeligsoft.domain.omg.dds.api.Core.NamedEntity;
 public interface ComponentPart extends NamedEntity {
 	PublisherSubscriber getType();
 
+	void setType(PublisherSubscriber val);
+
 	org.eclipse.uml2.uml.Property asProperty();
 
 	/**

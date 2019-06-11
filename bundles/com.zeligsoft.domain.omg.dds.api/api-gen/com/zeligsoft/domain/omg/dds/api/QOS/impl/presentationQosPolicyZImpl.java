@@ -5,12 +5,27 @@ import com.zeligsoft.domain.omg.dds.api.QOS.impl.qosPolicyZImpl;
 
 import com.zeligsoft.domain.omg.dds.api.QOS.PresentationQosPolicyAccessScopeKind;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public class presentationQosPolicyZImpl extends qosPolicyZImpl implements
 		presentationQosPolicy {
 	protected PresentationQosPolicyAccessScopeKind _access_scope;
 
 	public presentationQosPolicyZImpl(org.eclipse.emf.ecore.EObject element) {
 		super(element);
+	}
+
+	@Override
+	public Boolean getOrdered_access() {
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
+				eObject(), "DDS::QOS::presentationQosPolicy", "ordered_access");
+		return (Boolean) rawValue;
+	}
+
+	@Override
+	public void setOrdered_access(Boolean val) {
+		ZDLUtil.setValue(element, "DDS::QOS::presentationQosPolicy",
+				"ordered_access", val);
 	}
 
 	@Override
@@ -28,6 +43,12 @@ public class presentationQosPolicyZImpl extends qosPolicyZImpl implements
 	}
 
 	@Override
+	public void setAccess_scope(PresentationQosPolicyAccessScopeKind val) {
+		ZDLUtil.setValue(element, "DDS::QOS::presentationQosPolicy",
+				"access_scope", val.eObject(element));
+	}
+
+	@Override
 	public Boolean getCoherent_access() {
 		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
 				.getValue(eObject(), "DDS::QOS::presentationQosPolicy",
@@ -36,10 +57,9 @@ public class presentationQosPolicyZImpl extends qosPolicyZImpl implements
 	}
 
 	@Override
-	public Boolean getOrdered_access() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "DDS::QOS::presentationQosPolicy", "ordered_access");
-		return (Boolean) rawValue;
+	public void setCoherent_access(Boolean val) {
+		ZDLUtil.setValue(element, "DDS::QOS::presentationQosPolicy",
+				"coherent_access", val);
 	}
 
 }

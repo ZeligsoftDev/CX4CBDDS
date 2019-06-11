@@ -5,6 +5,8 @@ import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
 public interface osQosPolicy extends qosPolicy {
 	Integer getValue();
 
+	void setValue(Integer val);
+
 	/**
 	 * A predicate which returns true if the Object is an
 	 * instance of osQosPolicy

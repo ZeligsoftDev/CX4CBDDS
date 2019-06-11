@@ -1,0 +1,589 @@
+/**
+ * Copyright 2018 ADLINK Technology Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+import CORBADomain::IDL;
+import CCM::CCM_Component;
+import IDL3Plus::Connectors;
+import IDL3Plus::Generics;
+import IDL3Plus::IDL3Plus;
+import DDS4CCM::DDSExtensions;
+import DDS4CCM::DDS4CCM;
+import ZMLMM::ZML_Component;
+import ZMLMM::ZML_Core;
+import CCM::CCM_Implementation;
+import idl;
+
+extension org::eclipse::xtend::util::stdlib::issues;
+extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
+extension com::zeligsoft::domain::omg::ccm::generator::extensions::mainTransform;
+extension com::zeligsoft::domain::omg::ccm::generator::extensions::scopedNames;
+extension com::zeligsoft::domain::omg::ccm::generator::extensions::CCM_IDL_Utils;
+extension com::zeligsoft::domain::ngc::ccm::generator::xtend::ngcUtil;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::annotations;
+extension com::zeligsoft::domain::ngc::ccm::generator::xtend::fileNames;
+extension com::zeligsoft::domain::ngc::ccm::generator::xtend::includes;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::metamodel;
+extension com::zeligsoft::domain::ngc::ccm::generator::xtend::metamodel;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::utils;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::IDL3Plus_Utils;
+extension com::zeligsoft::domain::idl3plus::generator::xtend::idl3PlusTransform;
+extension org::eclipse::xtend::util::stdlib::io;
+
+create List[Specification] mainTransformAxcioma(CORBAModule self) :
+	this.addAll(self.contents.typeSelect(CORBAInterface).mainTransformAxcioma()) ->
+	this.addAll(self.contents.typeSelect(Event).mainTransformAxcioma()) ->
+	this.addAll(self.contents.typeSelect(CCMComponent).mainTransformAxcioma()) ->
+	this.addAll(self.contents.typeSelect(ConnectorDef).mainTransformAxcioma()) ->
+	this.addAll(self.contents.typeSelect(TemplateModule).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(ExtendedPortType).mainTransformAxcioma()) ->
+	this.addAll(self.contents.typeSelect(ModuleInstantiation).mainTransformAxcioma()) ->
+	this.addAll(self.contents.typeSelect(DDSMessage).mainTransformAxcioma()) ->
+	this.add(self.processModule()) ->
+	this.addAll(self.nestedPackage().mainTransformAxcioma());
+	
+
+create List[Specification] mainTransformAxcioma(CCM::CCM_Core::CCMModel self) :
+	this.addAll(self.packagedElement().typeSelect(CORBAInterface).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(Event).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(CCMComponent).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(ConnectorDef).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(TemplateModule).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(PortType).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(ModuleInstantiation).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(DDSMessage).mainTransformAxcioma()) ->
+	this.add(self.processModel()) ->
+	this.addAll(self.nestedPackage().mainTransformAxcioma());
+
+create List[Specification] mainTransformAxcioma(CCM::CCM_Implementation::CCMPart part) :
+	this.addAll(part.definition.mainTransformAxcioma());
+
+create List[Specification] mainTransformAxcioma(uml::Package self) :
+	this.addAll(self.packagedElement().typeSelect(CORBAInterface).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(Event).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(CCMComponent).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(ConnectorDef).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(TemplateModule).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(PortType).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(ModuleInstantiation).mainTransformAxcioma()) ->
+	this.addAll(self.packagedElement().typeSelect(DDSMessage).mainTransformAxcioma()) ->
+	this.add(self.processPackage()) ->
+	this.addAll(self.nestedPackage().mainTransformAxcioma());
+	
+List[Specification] mainTransformAxcioma(IDL3Plus::Connectors::ConnectorDefaultValueBinding self ) :
+	{};
+
+create Specification mainTransformAxcioma(CORBAInterface self) :
+	this.getEAnnotations().add(self.createFileName()) ->
+	self.processIncludes(this) ->
+	this.definitions.add(createPragmaCiaoLem(self, "E")) ->
+	if self.isUsedAsynchronously() then {
+		this.definitions.add(self.createPragmaAmiInterface()) ->
+		this.definitions.add(self.createPragmaCiaoLem("AE")) ->
+		this.definitions.add(self.createPragmaAmiIdl())
+	} ->
+	this.definitions.addAll(visit(self.visitContained(), self.eContainer));
+
+/******************************************************************************
+ *
+ *	IDL3+ STUFF
+ *
+ *****************************************************************************/
+create Specification mainTransformAxcioma(ConnectorDef self) :
+	let idlConnDef = self.visitContained() :
+		this.getEAnnotations().add(self.createFileName()) ->
+		self.processIncludes(this) ->
+		this.definitions.addAll(visit(idlConnDef, self.eContainer));
+		
+create Specification mainTransformAxcioma(TemplateModule self) :
+	let idlTemplateModule = self.visitContained() :
+		this.getEAnnotations().add(self.createFileName()) ->
+		self.processIncludes(this) ->
+		this.definitions.addAll(self.zdlAsPackage().packagedElement.typeSelect(ConnectorDef).select(e| self.zdlAsPackage().getModel().zdlAsPackage().isModelLibrary()).createPragmaDDS4CCMImpl()) ->
+		this.definitions.addAll(visit(idlTemplateModule, self.eContainer));
+
+create Preproc_Pragma_DDS4CCM_Impl createPragmaDDS4CCMImpl(ConnectorDef self) :
+	this.setValue(self.name + "_Connector_T.h");
+		
+create Specification mainTransformAxcioma(ExtendedPortType self) :
+	let idlPortType = self.visitContained() :
+		this.getEAnnotations().add(self.createFileName()) ->
+		self.processIncludes(this) ->
+		this.definitions.addAll(visit(idlPortType, self.eContainer));
+		
+create Specification mainTransformAxcioma(ModuleInstantiation self) :
+    let zSequence = self.eContainer.getCORBASequence(self) :
+    let createdSequence = (zSequence != null ? zSequence.visitContained() : null) :
+	let idlModuleInstantiation = self.getModuleInstDefn(zSequence, createdSequence) :
+		this.getEAnnotations().add(self.createFileName()) ->
+		this.createModuleInstantiationIncludes(self) ->
+		self.processDefnIncludes(this) ->
+		self.processIncludes(this) ->
+		this.definitions.add(createPragmaCiaoLem(self, "E")) ->
+		zSequence != null && zSequence.zdlAsElement().owner != self.zdlAsElement().owner ? 			
+			this.definitions.add(createdSequence.createModuleStructure(zSequence)) : {} ->
+		this.definitions.addAll(visit(idlModuleInstantiation, self.eContainer));
+
+private idl::Module createModuleStructure(idl::Definition def, CORBASequence zSequence) :
+	createModuleStructure(def, zSequence.zdlAsElement().owner);
+	
+private idl::Module createModuleStructure(idl::Definition def, CORBAModule zModule) :
+	// use new instead of create so that the last module created ultimately gets returned to the original method.
+	let newModule = new idl::Module :
+	newModule.setName(zModule.name) ->
+	newModule.definitions.add(def) ->
+	createModuleStructure(newModule, zModule.zdlAsElement().owner);
+
+private idl::Module createModuleStructure(idl::Definition def, Object o) :
+	createModuleStructure(def, o.zdlAsElement().owner);
+	
+private idl::Module createModuleStructure(idl::Definition def, Void o) :
+	def;
+
+private create List[Definition] getModuleInstDefn(ModuleInstantiation self, CORBASequence zSequence, idl::Definition createdSequence) :
+	zSequence != null && zSequence.zdlAsElement().owner == self.zdlAsElement().owner ? 
+		this.add(createdSequence) : {} ->
+	this.add(self.visitContained());
+
+boolean isUsedAsynchronously(CORBAInterface self) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.isUsedAsynchronously(
+		org.eclipse.uml2.uml.Interface);
+
+List[AssemblyImplementation] getAssemblyImpl(uml::Package self) :
+	let asm_impls = self.nestedPackage().typeSelect(AssemblyImplementation) :
+	asm_impls.addAll(self.packagedElement().typeSelect(AssemblyImplementation)) ->
+	asm_impls.addAll(self.nestedPackage().getAssemblyImpl()); 
+	
+List[AssemblyImplementation] getAssemblyImpl(IDL3Plus::Connectors::ConnectorDefaultValueBinding binding) :
+	{};
+
+create List[Specification] mainTransformAxcioma(CCMComponent self) :
+	let asm_impls = self.zdlAsComponent().getModel().getAssemblyImpl() :
+	if asm_impls.flatten().zdlAsComponent().generalization.general.contains(self) then {}
+	else {
+		let mono_impls = getMonolithicImplementations(self) :
+		mono_impls.size > 0 ? 
+		this.addAll(mono_impls.mainTransformImplementation())
+		: this.add(mainTransformComponent(self))
+	};
+	
+List[MonolithicImplementation] getMonolithicImplementations(CCMComponent self) :
+	JAVA com.zeligsoft.domain.ngc.ccm.utils.CCMXtendUtils.getMonolithicImplementations(
+		org.eclipse.uml2.uml.Component);
+	
+create Specification mainTransformComponent(CCMComponent self) :
+	let idlComp = self.visitContained() : 
+	let homes = getComponentsHomes(self).visitContained() :
+	let definitions = {idlComp, homes} :
+		idlComp.setExport(idlComp.postProcessExports()) ->
+		idlComp.comments.addAll(self.zdlAsPackage().ownedComment.visitComment()) ->
+		this.getEAnnotations().add(self.createFileName()) ->
+		this.createComponentsIDLInclude() ->
+		this.definitions.add(createPragmaCiaoLem(self, "E")) ->
+		self.ownedPort.typeSelect(InterfacePort).select(e|e.isUser()).select(e|e.isAsynchronous).createPragmaAmiReceptacle(this) ->
+		self.ownedPort.typeSelect(InterfacePort).createPragmaConnType(this) ->
+		self.processIncludes(this) ->
+		self.getComponentsHomes().processIncludes(this) ->
+		this.definitions.addAll(visit(definitions.flatten(), self.eContainer));
+	
+create Specification mainTransformImplementation(MonolithicImplementation self) :
+	let idlComp = self.interface.visitContained() : 
+	let idlCompCopy = idlComp.copy(this) :
+	let homes = getComponentsHomes(self.interface).visitContained() :
+	let homeCopy = homes.copy(this) :
+	let definitions = {idlCompCopy, homeCopy} :
+	let managesScopedName = new ScopedName :
+		this.definitions.add(createPragmaComponent(self)) ->
+		homeCopy.size > 0 ? this.definitions.add(createPragmaHome(homeCopy.first())) : {} ->
+		idlCompCopy.setName(self.name) ->
+		managesScopedName.name.add(self.name) ->
+		homeCopy.setManages(managesScopedName) ->
+		idlCompCopy.setExport(idlCompCopy.postProcessExports()) ->
+		idlCompCopy.comments.addAll(self.interface.zdlAsPackage().ownedComment.visitComment()) ->
+		this.getEAnnotations().add(self.createFileName()) ->
+		this.createComponentsIDLInclude() ->
+		this.definitions.add(createPragmaCiaoLem(self, "E")) ->
+		self.interface.ownedPort.typeSelect(InterfacePort).select(e|e.isUser()).select(e|e.isAsynchronous).createPragmaAmiReceptacle(this, self) ->
+		self.interface.ownedPort.typeSelect(InterfacePort).createPragmaConnType(this) ->
+		self.interface.processIncludes(this) ->
+		self.interface.getComponentsHomes().processIncludes(this) ->
+		this.definitions.addAll(visit(definitions.flatten(), self.interface.eContainer));
+		
+emf::EObject copy(emf::EObject original, emf::EObject copyTo ) :
+	JAVA com.zeligsoft.domain.ngc.ccm.utils.CCMXtendUtils.copy(
+		org.eclipse.emf.ecore.EObject,
+		org.eclipse.emf.ecore.EObject);
+
+create Specification mainTransformAxcioma(Event self) :
+	this.getEAnnotations().add(self.createFileName()) ->
+	this.createComponentsIDLIncludeForEvent() ->
+	self.processIncludes(this) ->
+	this.definitions.addAll(visit(self.visitEvent(), self.eContainer));
+	
+List[idl::Definition] visitEvent(Event self) :
+	let struct = new StructType :
+	let event = new EventDcl:
+		struct.setName(self.name) ->
+		struct.members.addAll(self.ownedAttribute.attributeToMember()) ->
+		eventHeader(event, self) ->
+		event.setName(self.eventName()) ->
+		event.member.add(self.eventStateMember()) ->
+		{struct, createIfndef("DDS_EVENTS"), event, createEndIf()};
+		
+String eventName(Event self) :
+	self.name + "_event";
+	
+create Member attributeToMember(CORBAAttribute property) :
+	let declarator = new SimpleDeclarator :
+	setType(property.zdlAsProperty().type.toScopedName(getCORBAContainer(property))) ->
+	this.setDecl(declarator) ->
+	declarator.setId(property.name);
+
+/******************************************************************************
+ *
+ * PRAGMA SUPPORT
+ *
+ ******************************************************************************/
+create Preproc_Pragma_Ciao_Lem createPragmaCiaoLem(NamedElement intf, String suffix) :
+	this.setValue(intf.fileName() + suffix);
+
+create Preproc_Pragma_Conn_Type createPragmaConnType(InterfacePort port, Specification spec) :
+	let metaTypeOfPortType = port.porttype.metaType.toString():
+	let valueConnType = {}:
+		{if(metaTypeOfPortType == "CORBADomain::IDL::CORBAInterface") then{
+			valueConnType.add(port.connectorType != null? port.connectorType.name : "null")			
+		}else if(metaTypeOfPortType == "IDL3Plus::IDL3Plus::ExtendedPortType") then{
+			valueConnType.add(port.porttype.name)
+		}else{
+			valueConnType.add("unknown")
+		}}->
+		this.setValuePort(port.scopedNameFromNamedElementForIDL3()) ->		
+		this.setValueConnType(valueConnType.first()) ->	
+		spec.definitions.add(this);	
+	/*
+	let valueConnType = 
+		(metaTypeOfPortType == "CORBADomain::IDL::CORBAInterface")?
+			((port.connectorType != null)? port.connectorType.name : "null"):
+			((metaTypeOfPortType == "IDL3Plus::IDL3Plus::ExtendedPortType")?
+				port.porttype.name : "unknown"): // should not be the case
+		this.setValuePort(port.scopedNameFromNamedElementForIDL3()) ->		
+		this.setValueConnType(valueConnType) ->		
+		spec.definitions.add(this);
+	*/	
+		
+create Preproc_Pragma_Ciao_Lem createPragmaCiaoLem(ModuleInstantiation inst, String suffix) :
+	this.setValue(inst.fileName() + suffix);
+	
+create Preproc_Pragma_Ndds createPragmaNdds(DDSMessage msg) :
+	this.setValue(msg.fileName());
+
+create Preproc_Pragma_Ciao_Ami4ccm_Receptacle createPragmaAmiReceptacle(InterfacePort port, Specification spec) :
+	this.setValue(port.scopedNameFromNamedElementForIDL3()) ->
+	spec.definitions.add(this);
+
+create Preproc_Pragma_Ciao_Ami4ccm_Receptacle createPragmaAmiReceptacle(InterfacePort port, Specification spec, MonolithicImplementation impl) :
+	this.setValue(impl.scopedNameFromNamedElementForIDL3() + "::" + port.name) ->
+	spec.definitions.add(this);
+
+create Preproc_Pragma_Ciao_Ami4ccm_Interface createPragmaAmiInterface(CORBAInterface intf) :
+	this.setValue(intf.scopedNameFromNamedElementForIDL3());
+	
+create Preproc_Pragma_Ciao_Ami4ccm_Idl createPragmaAmiIdl(CORBAInterface intf) :
+	this.setValue(intf.fileName() + "A");
+
+create Preproc_Pragma_Component createPragmaComponent(MonolithicImplementation impl) :
+	this.setValue(impl.interface.name);
+	
+create Preproc_Pragma_Home createPragmaHome(HomeDecl home) :
+	this.setValue(home.name);
+
+/******************************************************************************
+ *
+ *	IDL2 STUFF
+ *
+ *****************************************************************************/
+
+create Specification mainTransformAxcioma(CORBAModuleContained self) :
+	self.eContainer.processContainer(this) ->
+	this;
+	
+create Specification processModule(CORBAModule mod) :
+	processContainer(mod, this) ->
+	this;
+	
+create Specification processPackage(uml::Package pkg) :
+	processContainer(pkg, this) ->
+	this;
+	
+create Specification processModel(CCM::CCM_Core::CCMModel model) :
+	processContainer(model, this) ->
+	this;
+
+private Void processContainer(CORBAModule mod, Specification spec) :
+	mod.eContainer.processContainer(spec);
+	
+private Void processContainer(uml::Package pkg, Specification spec) :
+	let definitions = pkg.packagedElement().visitDefinition() :
+	spec.getEAnnotations().add(pkg.createFileName()) ->
+	spec.definitions.addAll(pkg.zdlAsPackage().ownedComment.visitComment()) ->
+	if definitions != Void && !definitions.isEmpty then pkg.processDefnIncludes(spec) ->
+	if definitions != Void && !definitions.isEmpty then spec.definitions.addAll(visit(definitions, pkg.eContainer));
+
+private Void processContainer(CCM::CCM_Core::CCMModel pkg, Specification spec) :
+	let definitions = pkg.packagedElement().visitDefinition() :
+	spec.getEAnnotations().add(pkg.createFileName()) ->
+	if definitions != Void && !definitions.isEmpty then pkg.processDefnIncludes(spec) ->
+	if definitions != Void && !definitions.isEmpty then spec.definitions.addAll(visit(definitions, pkg.eContainer));
+	
+private Void processContainer(emf::EObject container, Specification spec):
+	{};
+	
+private List[idl::Definition] visitDefinition(CORBAModuleContained self) :
+	self.visitContained();
+
+/**
+  *
+  *	Filter out CORBQSequence since it gets generated to MOduleInstantiation file
+  *
+  */
+private List[idl::Definition] visitDefinition(CORBASequence self) :
+	if !(self.isContainedInModuleInstParam()) then {self.visitContained()} else {};
+	
+	
+private List[idl::Definition] visitDefinition(CORBAConstants self) :
+	self.visitContained();
+	
+/**
+  *
+  *	Filter out CCMComponent since it gets generated to its own file
+  *
+  */
+private List[idl::Definition] visitDefinition(CCMComponent self/*, idl::Module mod*/) :
+	{};
+
+/**
+  *
+  *	Filter out CCMComponent's Home since it gets generated to its CCMComponent file
+  *
+  */
+private List[idl::Definition] visitDefinition(Home self/*, idl::Module mod*/) :
+	{};
+	
+/**
+  *
+  *	Filter out CORBAInterface since it gets generated to its own file
+  *
+  */
+private List[idl::Definition] visitDefinition(CORBAInterface self/*, idl::Module mod*/) :
+	{};
+
+/**
+  *
+  *	Filter out Events since it gets generated to its own file
+  *
+  */	
+private List[idl::Definition] visitDefinition(Event self/*, idl::Module mod*/) :
+	{};
+
+/**
+  *
+  *	Filter out Events since it gets generated to its own file
+  *
+  */
+	
+private List[idl::Definition] visitDefinition(CORBAModule self/*, Specification spec*/) :
+	let mod = new idl::Module :
+		mod.setName(self.name) ->
+		mod.definitions.addAll(self.contents.visitDefinition()) ->
+		mod.comments.addAll(self.zdlAsPackage().ownedComment.visitComment()) ->
+		if !(mod.definitions.isEmpty) then {mod} else {};
+	
+private Void visitDefinition(emf::EObject self/*, idl::Module mod*/) :
+	{};
+
+
+
+create Specification mainTransformAxcioma(DDSMessage self) :
+	let idlDDSMessage = self.visitContained() :
+		this.getEAnnotations().add(self.createFileName()) ->
+		self.processIncludes(this) ->
+		this.definitions.add(self.createPragmaNdds()) ->
+		this.definitions.addAll(visit(idlDDSMessage, self.eContainer));
+				
+
+
+/**
+  *
+  *	Filter out ModuleInstantiation since it gets generated to its own file
+  *
+  */
+private List[idl::Definition] visitDefinition(ModuleInstantiation self) :
+	{};
+	
+
+
+/**
+  *
+  *	Filter out PortType since it gets generated to its own file
+  *
+  */
+private List[idl::Definition] visitDefinition(ExtendedPortType self) :
+	{};
+	
+
+
+/**
+  *
+  *	Filter out TemplateModule since it gets generated to its own file
+  *
+  */
+private List[idl::Definition] visitDefinition(TemplateModule self) :
+	{};
+		
+
+	
+	
+/**
+  *
+  *	Filter out DDSMessage since it gets generated to its own file
+  *
+  */
+private List[idl::Definition] visitDefinition(DDSMessage self) :
+	{};
+	
+create StructType visitContained(DDSMessage self) :
+	setName(self.name) ->
+	this.getEAnnotations().add(self.createDDSAnnotation()) ->
+	this.comments.addAll(self.zdlAsPackage().ownedComment.visitComment()) ->
+	members.addAll(self.fields.visitStructAttribute());	
+
+create ecore::EAnnotation createDDSAnnotation(DDSMessage self) :
+	let detail = new ecore::EStringToStringMapEntry :
+	this.setSource("zcx") ->
+	this.details.add(createDetail("toplevel", "true"));
+		
+create Member visitStructAttribute(MessageField p) :
+	this.setDecl(p.createDeclarator(p.idlType)) ->
+	p.idlType == null ? setType(new ScopedName) : this.setMemberType(p.idlType, p) ->
+	this.comment.addAll(p.zdlAsProperty().ownedComment.visitComment()) ->
+	if p.isKey then this.getEAnnotations().add(p.createKeyAnnotation());
+
+create ecore::EAnnotation createKeyAnnotation(MessageField self) :
+	let detail = new ecore::EStringToStringMapEntry :
+	this.setSource("zcx") ->
+	this.details.add(createDetail("comment", " //@key"));
+	
+
+	
+	
+/**
+  *
+  *	Filter out ConnectorDef since it gets generated to its own file
+  *
+  */
+private List[idl::Definition] visitDefinition(ConnectorDef self) :
+	{};
+
+	
+
+/******************************************************************************
+ ******************************************************************************
+ *	Component Post-Processing
+ *****************************************************************************
+ *****************************************************************************/
+create List[idl::ComponentExport] postProcessExports(idl::ComponentDecl self) :
+	let eventPorts = self.export.postProcessEventPortExport() :
+	this.addAll(self.export.postProcessExport()) ->
+	if ! eventPorts.isEmpty then this.add(createIfndef("DDS_EVENTS")) ->
+	if ! eventPorts.isEmpty then this.addAll(eventPorts) ->
+	if ! eventPorts.isEmpty then this.add(createEndIf());
+
+List[idl::ComponentExport] postProcessExport(idl::ComponentExport self) :
+	{self};
+	
+List[idl::ComponentExport] postProcessExport(idl::ConsumesDcl self) :
+	{};
+	
+List[idl::ComponentExport] postProcessExport(idl::PublishesDcl self) :
+	{};
+	
+create List[idl::ComponentExport] postProcessEventPortExport(List[idl::ComponentExport] self):
+	this.addAll(self.postProcessEventPortExportHelper());
+	
+List[idl::ComponentExport] postProcessEventPortExportHelper(idl::ComponentExport self) :
+	{};
+	
+List[idl::ComponentExport] postProcessEventPortExportHelper(idl::ConsumesDcl self) :
+	self.updateTypeName() ->
+	{self};
+	
+List[idl::ComponentExport] postProcessEventPortExportHelper(idl::PublishesDcl self) :
+	self.updateTypeName() ->
+	{self};
+	
+private Void updateTypeName(idl::ConsumesDcl self) :
+	JAVA  com.zeligsoft.domain.ngc.ccm.utils.CCMXtendUtils.updateTypeName(com.zeligsoft.domain.omg.corba.dsl.idl.ConsumesDcl);
+
+private Void updateTypeName(idl::PublishesDcl self) :
+	JAVA  com.zeligsoft.domain.ngc.ccm.utils.CCMXtendUtils.updateTypeName(com.zeligsoft.domain.omg.corba.dsl.idl.PublishesDcl);
+
+
+/******************************************************************************
+ ******************************************************************************
+ *	Component Home
+ *****************************************************************************
+ *****************************************************************************/
+ private List[Home] getComponentsHomes(CCMComponent self) :
+	JAVA  com.zeligsoft.domain.ngc.ccm.utils.CCMXtendUtils.getComponentsHomes(org.eclipse.uml2.uml.Component);
+	
+	
+/******************************************************************************
+ ******************************************************************************
+ *	UTILS
+ *****************************************************************************
+ *****************************************************************************/
+	
+idl::Definition visit(List[Definition] self, Void container) :
+	self;
+	
+idl::Definition visit(List[Definition] self, emf::EObject container) : 
+	self;
+	
+idl::Definition visit(List[Definition] self, CORBAModule container) :
+	let idlModule = new idl::Module :
+		idlModule.setName(container.name) ->
+		idlModule.definitions.addAll(self) ->
+		idlModule.comments.addAll(container.zdlAsPackage().ownedComment.visitComment()) ->
+		if self.isEmpty then {} else visit(idlModule, container.eContainer);
+		
+idl::Definition visit(List[Definition] self, uml::Package container) :
+	visit(self, container.eContainer);
+		
+idl::Definition visit(Definition self, Void container) :
+	{self};
+	
+idl::Definition visit(Definition self, emf::EObject container) : 
+	{self};
+	
+idl::Definition visit(Definition self, CORBAModule container) :
+	let idlModule = new idl::Module :
+		idlModule.setName(container.name) ->
+		idlModule.definitions.add(self) ->
+		idlModule.comments.addAll(container.zdlAsPackage().ownedComment.visitComment()) ->
+		visit(idlModule, container.eContainer);
+
+idl::Definition visit(Definition self, uml::Package container) :
+	visit(self, container.eContainer);
+	

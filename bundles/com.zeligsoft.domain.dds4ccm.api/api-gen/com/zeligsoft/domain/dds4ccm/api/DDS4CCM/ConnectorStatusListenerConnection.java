@@ -10,5 +10,5 @@ public interface ConnectorStatusListenerConnection extends CCMConnector {
 	 */
 	static final TypeSelectPredicate<ConnectorStatusListenerConnection> type = new TypeSelectPredicate<ConnectorStatusListenerConnection>(
 			"DDS4CCM::DDS4CCM::ConnectorStatusListenerConnection", //$NON-NLS-1$
-			ConnectorStatusListenerConnection.class); 
+			ConnectorStatusListenerConnection.class);
 }

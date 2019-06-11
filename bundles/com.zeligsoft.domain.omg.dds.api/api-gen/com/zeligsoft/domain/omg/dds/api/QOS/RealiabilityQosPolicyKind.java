@@ -15,17 +15,52 @@ public enum RealiabilityQosPolicyKind {
 	 * 
 	 *
 	 */
-	BEST_EFFORT,
+	BEST_EFFORT {
+		@Override
+		public EObject eObject(EObject context) {
+			return ZDLUtil.getZDLEnumLiteral(context,
+					"DDS::QOS::RealiabilityQosPolicyKind", "BEST_EFFORT");
+		}
+
+		@Override
+		public EObject eObject(
+				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+			return eObject(context.eObject());
+		}
+	},
 
 	/**
 	 * 
 	 *
 	 */
-	RELIABLE,
+	RELIABLE {
+		@Override
+		public EObject eObject(EObject context) {
+			return ZDLUtil.getZDLEnumLiteral(context,
+					"DDS::QOS::RealiabilityQosPolicyKind", "RELIABLE");
+		}
+
+		@Override
+		public EObject eObject(
+				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+			return eObject(context.eObject());
+		}
+	},
 	/**
 	 * Literal for cases when the value is UNKNOWN
 	 */
-	UNKNOWN;
+	UNKNOWN {
+		@Override
+		public EObject eObject(EObject context) {
+			return null;
+		}
+
+		@Override
+		public EObject eObject(
+				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+			return null;
+		}
+	};
 
 	/**
 	 * @param literal
@@ -45,4 +80,9 @@ public enum RealiabilityQosPolicyKind {
 			return UNKNOWN;
 		}
 	}
+
+	public abstract EObject eObject(EObject context);
+
+	public abstract EObject eObject(
+			com.zeligsoft.base.zdl.staticapi.core.ZObject context);
 }

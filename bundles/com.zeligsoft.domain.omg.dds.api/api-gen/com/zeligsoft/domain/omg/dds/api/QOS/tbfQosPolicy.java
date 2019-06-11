@@ -5,6 +5,13 @@ import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
 public interface tbfQosPolicy extends qosPolicy {
 	Duration getMinimum_separation();
 
+	void setMinimum_separation(Duration val);
+
+	<T extends Duration> T createMinimum_separation(Class<T> typeToCreate,
+			String concept);
+
+	Duration createMinimum_separation();
+
 	/**
 	 * A predicate which returns true if the Object is an
 	 * instance of tbfQosPolicy

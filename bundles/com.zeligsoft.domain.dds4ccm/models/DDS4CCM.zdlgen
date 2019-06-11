@@ -12,6 +12,9 @@
         <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_KlkWAUlXEeK3Ob_fgdPatg">
           <domainAttribute href="DDS4CCM.uml#_a-3aIEkfEeKqQL8utZve1Q"/>
         </feature>
+        <feature xmi:type="zdlgen:GenDomainAttribute" xmi:id="_Do-lEzq0Eemag5F7DMuukA" readOnly="true" type="_Do-lEDq0Eemag5F7DMuukA">
+          <domainAttribute href="DDS4CCM.uml#_cmuHYAIREemxSNFUunBY-w"/>
+        </feature>
         <domainConcept href="DDS4CCM.uml#_1fSP4EDkEd-LnsQ685SqSQ"/>
         <rhapsodyAddNew>Package</rhapsodyAddNew>
         <generalization xmi:id="_YvzuwJFBEeCRAOU4nmQMcQ">
@@ -66,6 +69,15 @@
           <general href="pathmap://CCM_DOMAIN/CCM.zdlgen#_3zrBMBWeEd-iXJ2fHwNJGg"/>
           <domainGeneralization href="DDS4CCM.uml#_OljG8Ok1EeCG1fXcL6IPFQ"/>
         </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainEnum" xmi:id="_Do-lEDq0Eemag5F7DMuukA">
+        <domainDataType href="DDS4CCM.uml#_Hv30UAIREemxSNFUunBY-w"/>
+        <literal xmi:id="_Do-lETq0Eemag5F7DMuukA">
+          <domainEnumLiteral href="DDS4CCM.uml#_RbaFgAIREemxSNFUunBY-w"/>
+        </literal>
+        <literal xmi:id="_Do-lEjq0Eemag5F7DMuukA">
+          <domainEnumLiteral href="DDS4CCM.uml#_ShHwYAIREemxSNFUunBY-w"/>
+        </literal>
       </classifier>
       <domainBlock href="DDS4CCM.uml#_eP42QEDSEd-VnJuJyqILLA"/>
     </element>
@@ -423,9 +435,9 @@
       </items>
     </menuModel>
   </ownedModel>
-  <referencedModel href="pathmap://DDS_DOMAIN/dds.zdlgen#_0HUlsZQBEd6cD695LnAvug"/>
   <referencedModel href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_rwgN0JBXEeCN25huR8QT_w"/>
-  <referencedModel href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_AJ-wcExGEd2q8K1oAnPrnA"/>
   <referencedModel href="pathmap://CCM_DOMAIN/CCM.zdlgen#_ghB8QZysEd6NpPmb0eU83g"/>
+  <referencedModel href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_AJ-wcExGEd2q8K1oAnPrnA"/>
+  <referencedModel href="pathmap://DDS_DOMAIN/dds.zdlgen#_0HUlsZQBEd6cD695LnAvug"/>
   <referencedModel href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_auH80DdmEd2dD_ra-wEDmw"/>
 </zdlgen:GenModel>

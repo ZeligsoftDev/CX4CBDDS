@@ -7,6 +7,8 @@ import com.zeligsoft.domain.omg.dds.api.DCPS.impl.DataReaderWriterZImpl;
 
 import com.zeligsoft.domain.omg.dds.api.Topics.Topic;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public class DataWriterZImpl extends DataReaderWriterZImpl implements
 		DataWriter {
 	protected Topic _topic;
@@ -26,6 +28,12 @@ public class DataWriterZImpl extends DataReaderWriterZImpl implements
 			}
 		}
 		return _topic;
+	}
+
+	@Override
+	public void setTopic(Topic val) {
+		ZDLUtil.setValue(element, "DDS::DCPS::DataWriter", "topic",
+				val.eObject());
 	}
 
 }

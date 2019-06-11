@@ -10,5 +10,5 @@ public interface ConnectorFragment extends ComponentInterface {
 	 */
 	static final TypeSelectPredicate<ConnectorFragment> type = new TypeSelectPredicate<ConnectorFragment>(
 			"IDL3Plus::Connectors::ConnectorFragment", //$NON-NLS-1$
-			ConnectorFragment.class); 
+			ConnectorFragment.class);
 }

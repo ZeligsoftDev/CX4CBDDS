@@ -27,15 +27,22 @@ import org.eclipse.gmf.runtime.emf.commands.core.commands.DestroyEObjectCommand;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.ConnectorKind;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.VisibilityKind;
 
+import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.Activator;
+import com.zeligsoft.domain.dds4ccm.ConnectorType;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
+import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.DDS4CCMModel;
 import com.zeligsoft.domain.dds4ccm.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.corba.CORBADomainNames;
@@ -52,8 +59,6 @@ public class DDS4CCMUtil {
 
 	public static final DDS4CCMUtil INSTANCE;
 
-	private static final String registerNaming = "edu.vanderbilt.dre.DAnCE.RegisterNaming"; //$NON-NLS-1$
-
 	static {
 		INSTANCE = new DDS4CCMUtil();
 	}
@@ -64,9 +69,7 @@ public class DDS4CCMUtil {
 	protected DDS4CCMUtil() {
 		// I have no state, so we will use a singleton
 	}
-
-
-
+	
 	public static void addStereotypesToResource(EObject container,
 			EObject containee) {
 		if (container == null) {
@@ -118,6 +121,27 @@ public class DDS4CCMUtil {
 				CORBADomainNames.CORBAINTERFACE,
 				CORBADomainNames.CORBAINTERFACE__IS_ASYNCHRONOUS);
 	}
+	
+	/**
+	 * Returns true if the CORBAInterface is neither local nor asynchronous.
+	 * 
+	 * @param intf
+	 * @return
+	 */
+	public static boolean isUsedSynchronously(Interface intf) {
+
+		if (ZDLUtil.isZDLConcept(intf, CORBADomainNames.CORBAINTERFACE) == false) {
+			return false;
+		}
+		boolean isAsynchronous = (Boolean) ZDLUtil.getValue(intf,
+				CORBADomainNames.CORBAINTERFACE,
+				CORBADomainNames.CORBAINTERFACE__IS_ASYNCHRONOUS);
+		boolean isLocal = (Boolean) ZDLUtil.getValue(intf,
+				CORBADomainNames.CORBAINTERFACE,
+				CORBADomainNames.CORBAINTERFACE__IS_LOCAL);
+		return !isAsynchronous && !isLocal;
+	}
+
 
 	/**
 	 * 
@@ -127,11 +151,16 @@ public class DDS4CCMUtil {
 	public static boolean setupContainerProcessResources(
 			Component containerProcess) {
 
-		final String cpuAffinity = "edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity"; //$NON-NLS-1$
-		final String processName = "edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName"; //$NON-NLS-1$
-		final String processPriority = "edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority"; //$NON-NLS-1$
-		final String localityArgs = "edu.vanderbilt.dre.DAnCE.LocalityArguments"; //$NON-NLS-1$
+		String modelType = DDS4CCMUtil.getModelType(containerProcess);
 
+		final String cpuAffinity = PropertyVariable.LM_CPUAFFINITY.getName(modelType);//$NON-NLS-1$
+
+		final String processName = PropertyVariable.LM_PROCESSNAME.getName(modelType);
+
+		final String processPriority = PropertyVariable.LM_PROCESSPRIORITY.getName(modelType);
+ 
+		final String localityArgs = PropertyVariable.LOCALITY_ARGUMENTS.getName(modelType);
+				
 		EObject corbaStringType = CORBAUtil.getCORBAPrimitiveType(containerProcess, "CORBAString"); //$NON-NLS-1$
 		boolean b_containerProcessModified = false;
 
@@ -201,6 +230,8 @@ public class DDS4CCMUtil {
 	
 	public static boolean addRegisterNamingProperty(Class zdlClass) {
 		
+		String modelType = DDS4CCMUtil.getModelType(zdlClass);
+		
 		boolean b_componentModified = false;
 		
 		EObject corbaStringType = CORBAUtil.getCORBAPrimitiveType(zdlClass, "CORBAString"); //$NON-NLS-1$
@@ -211,7 +242,7 @@ public class DDS4CCMUtil {
 			boolean b_hasRegisterNaming = false;
 			
 			for (Property p : zdlClass.getOwnedAttributes()) {
-				if (p.getName().matches(registerNaming)) {
+				if (p.getName().matches(PropertyVariable.REGISTER_NAMING.getName(modelType))) {
 					b_hasRegisterNaming = true;
 				}
 			}
@@ -221,7 +252,7 @@ public class DDS4CCMUtil {
 				EObject property = ZDLUtil.createZDLConceptIn(zdlClass,
 						CCMNames.PROPERTY);
 				ZDLUtil.setValue(property, CCMNames.PROPERTY,
-						ZMLMMNames.NAMED_ELEMENT__NAME, registerNaming);
+						ZMLMMNames.NAMED_ELEMENT__NAME, PropertyVariable.REGISTER_NAMING.getName(modelType));
 				ZDLUtil.setValue(property, CCMNames.PROPERTY,
 						ZMLMMNames.TYPED_ELEMENT__TYPE, corbaStringType);
 			}
@@ -333,7 +364,9 @@ public class DDS4CCMUtil {
 	 * @param component
 	 */
 	public static void removeRegisterNamingProperty(Component component) {
-		Property p = component.getOwnedAttribute(registerNaming, null);
+		String modelType = DDS4CCMUtil.getModelType(component);
+		
+		Property p = component.getOwnedAttribute(PropertyVariable.REGISTER_NAMING.getName(modelType), null);
 		if (p == null) {
 			return;
 		}
@@ -352,5 +385,66 @@ public class DDS4CCMUtil {
 	public static Status createStatus(String pluginId, int severity, String msg) {
 		Status status = new Status(severity, pluginId, IStatus.OK, msg, null);
 		return status;
+	}
+
+	public static String getPropertyName(String modelType, String propertyKey){
+		String propertyName = "";
+		PropertyVariable pv = PropertyVariable.valueOf(propertyKey);
+		if(pv == null){
+			return propertyName;
+		}
+		propertyName = pv.getName(modelType);		
+		return propertyName;
+	}
+	/**
+	 * Browse the containers of the given element for the root of the model and find out the model type    
+	 * 
+	 * @param model
+	 * 			Element instance to be checked
+	 * 
+	 * @return modelType
+	 *                    
+	 */
+	public static String getModelType(Element model){
+		Model rootModel = null;
+		while(model.getOwner()!=null){
+			model = model.getOwner();
+		}
+		if(model instanceof Model){
+			rootModel = (Model) model;
+		}
+		return getModelTypeValue(rootModel);
+	}
+
+	/**
+	 * Get the type of a model: ATCD or AXCIOMA   
+	 * 
+	 * @param model
+	 * 			model instance to be checked
+	 * 
+	 * @return modelType
+	 *                    
+	 */
+	private static String getModelTypeValue(Model model){
+		DDS4CCMModel contextModel =  ZDLFactoryRegistry.INSTANCE.create(model, DDS4CCMModel.class);
+		return contextModel.getModelType().name();		
+	}
+	
+	public static boolean isAsyncCapableConnector(String connectorType){
+		ConnectorType ct = ConnectorType.valueOf(connectorType);
+		return ct.isAsyncCapable();		
+	}
+	
+	public static boolean isSyncCapableConnector(String connectorType){
+		ConnectorType ct = ConnectorType.valueOf(connectorType);
+		return ct.isSyncCapable();		
+	}
+	
+	public static boolean isAssemblyConnector(Connector connector){
+		return connector.getKind().equals(ConnectorKind.ASSEMBLY_LITERAL);
+	}
+	
+	public static boolean isDelegationConnector(Connector connector){
+		return connector.getKind().equals(ConnectorKind.DELEGATION_LITERAL);
 	}
 }

@@ -7,6 +7,8 @@ import com.zeligsoft.domain.zml.api.ZML_Core.NamedElement;
 public interface TopicField extends NamedElement {
 	CORBAType getType();
 
+	void setType(CORBAType val);
+
 	org.eclipse.uml2.uml.Property asProperty();
 
 	/**

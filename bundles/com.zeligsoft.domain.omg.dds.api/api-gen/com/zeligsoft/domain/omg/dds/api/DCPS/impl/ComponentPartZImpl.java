@@ -7,6 +7,8 @@ import com.zeligsoft.domain.omg.dds.api.Core.impl.NamedEntityZImpl;
 
 import com.zeligsoft.domain.omg.dds.api.DCPS.PublisherSubscriber;
 
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+
 public class ComponentPartZImpl extends NamedEntityZImpl implements
 		ComponentPart {
 	protected PublisherSubscriber _type;
@@ -27,6 +29,12 @@ public class ComponentPartZImpl extends NamedEntityZImpl implements
 			}
 		}
 		return _type;
+	}
+
+	@Override
+	public void setType(PublisherSubscriber val) {
+		ZDLUtil.setValue(element, "DDS::DCPS::ComponentPart", "type",
+				val.eObject());
 	}
 
 	@Override

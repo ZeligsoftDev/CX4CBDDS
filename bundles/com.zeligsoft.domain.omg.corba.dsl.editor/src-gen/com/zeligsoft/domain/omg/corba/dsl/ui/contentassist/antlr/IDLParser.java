@@ -108,6 +108,8 @@ public class IDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPreproc_DefineAccess().getGroup(), "rule__Preproc_Define__Group__0");
 					put(grammarAccess.getPreproc_EndifAccess().getGroup(), "rule__Preproc_Endif__Group__0");
 					put(grammarAccess.getPreproc_Pragma_PrefixAccess().getGroup(), "rule__Preproc_Pragma_Prefix__Group__0");
+					put(grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getGroup(), "rule__Preproc_Pragma_Conn_Type__Group__0");
+					put(grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getGroup_3(), "rule__Preproc_Pragma_Conn_Type__Group_3__0");
 					put(grammarAccess.getPreproc_Pragma_Ciao_LemAccess().getGroup(), "rule__Preproc_Pragma_Ciao_Lem__Group__0");
 					put(grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_InterfaceAccess().getGroup(), "rule__Preproc_Pragma_Ciao_Ami4ccm_Interface__Group__0");
 					put(grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleAccess().getGroup(), "rule__Preproc_Pragma_Ciao_Ami4ccm_Receptacle__Group__0");
@@ -342,6 +344,8 @@ public class IDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPreproc_DefineAccess().getValueAssignment_1(), "rule__Preproc_Define__ValueAssignment_1");
 					put(grammarAccess.getPreproc_DefineAccess().getExpAssignment_2(), "rule__Preproc_Define__ExpAssignment_2");
 					put(grammarAccess.getPreproc_Pragma_PrefixAccess().getValueAssignment_2(), "rule__Preproc_Pragma_Prefix__ValueAssignment_2");
+					put(grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getValuePortAssignment_2(), "rule__Preproc_Pragma_Conn_Type__ValuePortAssignment_2");
+					put(grammarAccess.getPreproc_Pragma_Conn_TypeAccess().getValueConnTypeAssignment_4(), "rule__Preproc_Pragma_Conn_Type__ValueConnTypeAssignment_4");
 					put(grammarAccess.getPreproc_Pragma_Ciao_LemAccess().getValueAssignment_3(), "rule__Preproc_Pragma_Ciao_Lem__ValueAssignment_3");
 					put(grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_InterfaceAccess().getValueAssignment_3(), "rule__Preproc_Pragma_Ciao_Ami4ccm_Interface__ValueAssignment_3");
 					put(grammarAccess.getPreproc_Pragma_Ciao_Ami4ccm_ReceptacleAccess().getValueAssignment_3(), "rule__Preproc_Pragma_Ciao_Ami4ccm_Receptacle__ValueAssignment_3");

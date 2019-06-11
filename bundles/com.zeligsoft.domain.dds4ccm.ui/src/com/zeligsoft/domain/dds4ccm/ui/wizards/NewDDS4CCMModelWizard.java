@@ -29,11 +29,17 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Package;
 import org.osgi.framework.Bundle;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.cx.ui.wizard.INewModelCustomizer;
 import com.zeligsoft.cx.ui.wizard.ZeligsoftModelWizardContentCreator;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
+import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.DDS4CCMModel;
+import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.ModelTypeEnum;
 import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.dds4ccm.ui.perspectives.DDS4CCMPerspective;
@@ -73,6 +79,23 @@ public class NewDDS4CCMModelWizard extends Wizard implements INewWizard {
 	 * using wizard as execution context.
 	 */
 	public boolean performFinish() {
+		
+		INewModelCustomizer modelCustomizer = null;
+		
+		if(modelPage.getTargetModelType().equals(ModelTypeEnum.AXCIOMA)){
+			modelCustomizer = new INewModelCustomizer() {
+				
+				@Override
+				public void customizeModel(Package newModel) {
+					// TODO Auto-generated method stub
+					if(ZDLUtil.isZDLConcept(newModel, DDS4CCMNames.DDS4_CCMMODEL)){
+						DDS4CCMModel dds4ccmModel = ZDLFactoryRegistry.INSTANCE.create(newModel, DDS4CCMModel.class);
+						dds4ccmModel.setModelType(ModelTypeEnum.AXCIOMA);						
+					}
+				}
+			};
+		}
+		
 		final URI templateURI = URI.createPlatformPluginURI(
 				"/" + Activator.PLUGIN_ID + DDS4CCMWizardPageCreator.TEMPLATE_FILE_PATH, true); //$NON-NLS-1$
 		
@@ -90,10 +113,12 @@ public class NewDDS4CCMModelWizard extends Wizard implements INewWizard {
 			destFolder = modelPage.getFolderPath();
 		}
 		
+		DDS4CCMModelWizardPage.updateDefaultTargetPSM(modelPage.getTargetModelType());
+		
 		return ZeligsoftModelWizardContentCreator.createContent(projectName, 
 				destFolder, "ModelFiles", modelName, DDS4CCMNames.DDS4_CCMMODEL, //$NON-NLS-1$
 				modelPage.getCdtProjectName(), templateURI, 
-				DDS4CCMWizardPageCreator.MODEL_FILE_NAME, DDS4CCMPerspective.ID);
+				DDS4CCMWizardPageCreator.MODEL_FILE_NAME, DDS4CCMPerspective.ID, modelCustomizer);
 	}
 
 	/**

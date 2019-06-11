@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl;
 
@@ -26,57 +22,58 @@ import org.eclipse.emf.ecore.EModelElement;
  * @extends EModelElement
  * @generated
  */
-public interface ElementSpec extends EModelElement {
-	/**
-	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Type</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' containment reference.
-	 * @see #setType(TypeSpec)
-	 * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getElementSpec_Type()
-	 * @model containment="true"
-	 * @generated
-	 */
-	TypeSpec getType();
+public interface ElementSpec extends EModelElement
+{
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(TypeSpec)
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getElementSpec_Type()
+   * @model containment="true"
+   * @generated
+   */
+  TypeSpec getType();
 
-	/**
-	 * Sets the value of the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.ElementSpec#getType <em>Type</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' containment reference.
-	 * @see #getType()
-	 * @generated
-	 */
-	void setType(TypeSpec value);
+  /**
+   * Sets the value of the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.ElementSpec#getType <em>Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @see #getType()
+   * @generated
+   */
+  void setType(TypeSpec value);
 
-	/**
-	 * Returns the value of the '<em><b>Declarator</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Declarator</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Declarator</em>' containment reference.
-	 * @see #setDeclarator(Declarator)
-	 * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getElementSpec_Declarator()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Declarator getDeclarator();
+  /**
+   * Returns the value of the '<em><b>Declarator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Declarator</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Declarator</em>' containment reference.
+   * @see #setDeclarator(Declarator)
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getElementSpec_Declarator()
+   * @model containment="true"
+   * @generated
+   */
+  Declarator getDeclarator();
 
-	/**
-	 * Sets the value of the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.ElementSpec#getDeclarator <em>Declarator</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Declarator</em>' containment reference.
-	 * @see #getDeclarator()
-	 * @generated
-	 */
-	void setDeclarator(Declarator value);
+  /**
+   * Sets the value of the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.ElementSpec#getDeclarator <em>Declarator</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Declarator</em>' containment reference.
+   * @see #getDeclarator()
+   * @generated
+   */
+  void setDeclarator(Declarator value);
 
 } // ElementSpec

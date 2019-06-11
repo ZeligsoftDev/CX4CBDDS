@@ -54,6 +54,9 @@ public class Messages
 	public static String DDS4CCMPreferencePage_GlobalPrefixLabel;
 	public static String DDS4CCMPreferencePage_IDLGenerationGroupTitle;
 	public static String DDS4CCMPreferencePage_LocationPrefixLabel;
+	public static String DDS4CCMPreferencePage_AxciomaMigrationConnectorTypeSelectionGroupLabel;
+	public static String DDS4CCMPreferencePage_AxciomaMigrationConnectorTypeSelectionAsyncLabel;
+	public static String DDS4CCMPreferencePage_AxciomaMigrationConnectorTypeSelectionSyncLabel;
 	public static String DDS4CCMWizardPageCreator_ModelPageName;
 	public static String DDS4CCMWizardPageCreator_ProjectPageName;
 	public static String DDSConnectorInstanceWizard_CommandLabel;
@@ -114,8 +117,10 @@ public class Messages
 	public static String Migrate_Noop;	
 	public static String Migrate_Error;
 	public static String MigrateModelAction_CommandLabel;
+	public static String MigrateModelTypeAction_CommandLabel;
 	public static String MigrateModelAction_DialogTitle;
 	public static String MigrateModelAction_MonitorTask;
+	public static String MigrateModelTypeAction_MonitorTask;
 	public static String PortDecorationImages_IconNotFoundError;
 	public static String ShowSourceActionDelegate_0;
 	public static String ShowSourceActionDelegate_1;

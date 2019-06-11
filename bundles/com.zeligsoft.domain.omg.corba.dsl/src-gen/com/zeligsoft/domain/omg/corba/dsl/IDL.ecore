@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="idl"
-    nsURI="http://www.zeligsoft.com/2008/idl" nsPrefix="idl">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="idl" nsURI="http://www.zeligsoft.com/2008/idl" nsPrefix="idl">
   <eClassifiers xsi:type="ecore:EClass" name="Specification">
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//Import_decl" containment="true"/>
@@ -57,6 +55,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="Preproc_Pragma" eSuperTypes="#//Preproc"/>
   <eClassifiers xsi:type="ecore:EClass" name="Preproc_Pragma_Prefix" eSuperTypes="#//Preproc_Pragma">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Preproc_Pragma_Conn_Type" eSuperTypes="#//Preproc_Pragma">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valuePort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueConnType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Preproc_Pragma_Ciao_Lem" eSuperTypes="#//Preproc_Pragma">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package com.zeligsoft.domain.omg.corba.dsl.idl;
 
@@ -28,37 +24,38 @@ import org.eclipse.emf.ecore.EModelElement;
  * @extends EModelElement
  * @generated
  */
-public interface ParameterDecls extends EModelElement {
-	/**
-	 * Returns the value of the '<em><b>Comments</b></em>' containment reference list.
-	 * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Comments</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Comments</em>' containment reference list.
-	 * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getParameterDecls_Comments()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<IDLComment> getComments();
+public interface ParameterDecls extends EModelElement
+{
+  /**
+   * Returns the value of the '<em><b>Comments</b></em>' containment reference list.
+   * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Comments</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Comments</em>' containment reference list.
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getParameterDecls_Comments()
+   * @model containment="true"
+   * @generated
+   */
+  EList<IDLComment> getComments();
 
-	/**
-	 * Returns the value of the '<em><b>Decls</b></em>' containment reference list.
-	 * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.ParamDcl}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Decls</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Decls</em>' containment reference list.
-	 * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getParameterDecls_Decls()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<ParamDcl> getDecls();
+  /**
+   * Returns the value of the '<em><b>Decls</b></em>' containment reference list.
+   * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.ParamDcl}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Decls</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Decls</em>' containment reference list.
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getParameterDecls_Decls()
+   * @model containment="true"
+   * @generated
+   */
+  EList<ParamDcl> getDecls();
 
 } // ParameterDecls

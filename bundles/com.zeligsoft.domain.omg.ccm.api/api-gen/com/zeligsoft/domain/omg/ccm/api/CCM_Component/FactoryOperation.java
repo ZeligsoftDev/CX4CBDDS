@@ -9,5 +9,5 @@ public interface FactoryOperation extends HomeOperation {
 	 */
 	static final TypeSelectPredicate<FactoryOperation> type = new TypeSelectPredicate<FactoryOperation>(
 			"CCM::CCM_Component::FactoryOperation", //$NON-NLS-1$
-			FactoryOperation.class); 
+			FactoryOperation.class);
 }

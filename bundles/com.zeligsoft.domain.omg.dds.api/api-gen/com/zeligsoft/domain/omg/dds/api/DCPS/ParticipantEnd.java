@@ -5,7 +5,11 @@ import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
 public interface ParticipantEnd extends ConnectorEnd {
 	DataReaderWriter getReaderWriter();
 
+	void setReaderWriter(DataReaderWriter val);
+
 	DomainParticipant getParticipant();
+
+	void setParticipant(DomainParticipant val);
 
 	/**
 	 * A predicate which returns true if the Object is an

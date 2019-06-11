@@ -53,6 +53,7 @@ Preproc_Endif : {Preproc_Endif}
 	
 Preproc_Pragma :
 	Preproc_Pragma_Prefix
+	| Preproc_Pragma_Conn_Type
 	| Preproc_Pragma_Ciao_Lem
 	| Preproc_Pragma_Ciao_Ami4ccm_Interface
 	| Preproc_Pragma_Ciao_Ami4ccm_Receptacle
@@ -65,6 +66,9 @@ Preproc_Pragma :
 
 Preproc_Pragma_Prefix :
 	"#pragma" "prefix" value=STRING;
+
+Preproc_Pragma_Conn_Type :
+	"#pragma" "conntype" valuePort=ID("::" ID)* valueConnType=ID;
 	
 Preproc_Pragma_Ciao_Lem :
 	"#pragma" "ciao" "lem" value=STRING;
