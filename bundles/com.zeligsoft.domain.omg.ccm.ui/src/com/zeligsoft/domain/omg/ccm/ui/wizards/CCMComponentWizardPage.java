@@ -183,8 +183,6 @@ public class CCMComponentWizardPage extends WizardPage {
 							.setText(calculateDefaultName(
 									nameField.getText(),
 									preferenceStore
-											.getString(CCMPreferenceConstants.EXPECTED_COMPONENT_SUFFIX),
-									preferenceStore
 											.getString(CCMPreferenceConstants.DIAGRAM_SUFFIX)));
 				}
 
@@ -203,16 +201,12 @@ public class CCMComponentWizardPage extends WizardPage {
 					implementationNameField
 							.setText(calculateDefaultName(
 									nameField.getText(),
-									preferenceStore
-											.getString(CCMPreferenceConstants.EXPECTED_COMPONENT_SUFFIX),
 									suffix));
 				}
 				
 				if (useDefaultStructureDiagramButton.getSelection()) {
 					structureDiagramNameField.setText(calculateDefaultName(nameField
 							.getText(), preferenceStore
-							.getString(CCMPreferenceConstants.EXPECTED_COMPONENT_SUFFIX),
-							preferenceStore
 									.getString(CCMPreferenceConstants.DIAGRAM_SUFFIX)));
 				}
 				validate();
@@ -247,8 +241,6 @@ public class CCMComponentWizardPage extends WizardPage {
 		String packageName;	
 		packageName = calculateDefaultName(
 					nameField.getText(),
-					preferenceStore
-							.getString(CCMPreferenceConstants.EXPECTED_COMPONENT_SUFFIX),
 					preferenceStore
 							.getString(CCMPreferenceConstants.PACKAGE_SUFFIX));
 		return packageName;	
@@ -389,8 +381,6 @@ public class CCMComponentWizardPage extends WizardPage {
 								.setText(calculateDefaultName(
 										nameField.getText(),
 										preferenceStore
-												.getString(CCMPreferenceConstants.EXPECTED_COMPONENT_SUFFIX),
-										preferenceStore
 												.getString(CCMPreferenceConstants.DIAGRAM_SUFFIX)));
 
 					}
@@ -416,17 +406,11 @@ public class CCMComponentWizardPage extends WizardPage {
 	 * 
 	 * @return
 	 */
-	private String calculateDefaultName(String name, String token, String suffix) {
+	private String calculateDefaultName(String name, String suffix) {
 		if (name == null || name.equals(UML2Util.EMPTY_STRING)) {
 			return UML2Util.EMPTY_STRING;
 		}
-		String defaultName;
-		if (name.endsWith(token)) {
-			defaultName = name.replace(token, suffix);
-		} else {
-			defaultName = name + suffix;
-		}
-		return defaultName;
+		return name + suffix;
 	}
 
 	protected boolean validate() {
@@ -641,8 +625,6 @@ public class CCMComponentWizardPage extends WizardPage {
 						implementationNameField
 								.setText(calculateDefaultName(
 										nameField.getText(),
-										preferenceStore
-												.getString(CCMPreferenceConstants.EXPECTED_COMPONENT_SUFFIX),
 										suffix));
 
 					}
@@ -752,8 +734,6 @@ public class CCMComponentWizardPage extends WizardPage {
 								.setText(calculateDefaultName(
 										nameField.getText(),
 										preferenceStore
-												.getString(CCMPreferenceConstants.EXPECTED_COMPONENT_SUFFIX),
-										preferenceStore
 												.getString(CCMPreferenceConstants.DIAGRAM_SUFFIX)));
 
 					}
@@ -861,8 +841,6 @@ public class CCMComponentWizardPage extends WizardPage {
 		implementationNameField
 				.setText(calculateDefaultName(
 						nameField.getText(),
-						preferenceStore
-								.getString(CCMPreferenceConstants.EXPECTED_COMPONENT_SUFFIX),
 						suffix));
 		validate();
 	}
