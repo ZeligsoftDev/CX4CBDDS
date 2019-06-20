@@ -1,5 +1,7 @@
 # Building DDS4CCM
 
+A trivial change
+
 DDS4CCM is a Rational Software Architect (RSA) add-in for modeling component based systems
 according to the OMG CCM standard.
 
