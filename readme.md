@@ -12,6 +12,8 @@ The build requires:
 
 ## Building
 
+Another trival change
+
 1. Clone the DDS4CCM git repository.
 2. Start a shell, and change directory to the repository root.
 3. To run the build, execute the following commands
