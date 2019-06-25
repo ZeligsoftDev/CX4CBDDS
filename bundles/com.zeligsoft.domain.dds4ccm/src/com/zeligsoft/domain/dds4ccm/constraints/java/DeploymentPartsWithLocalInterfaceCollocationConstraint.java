@@ -103,7 +103,7 @@ public class DeploymentPartsWithLocalInterfaceCollocationConstraint extends Abst
 		}
 
 		
-		DeploymentPart dPartToCheckDeployed = dPartAllocation.getDeployed().get(0); // 1-to-1 between dpConfigured and dpDepoloyed, right?
+		DeploymentPart dPartToCheckDeployed = dPartAllocation.getDeployed().get(0); // 1-to-1 relationship between dpConfigured and dpDepoloyed
 
 		if(!(dPartToCheckDeployed.getModelElement() instanceof CCMPart)){
 			return ctx.createSuccessStatus();
@@ -130,7 +130,7 @@ public class DeploymentPartsWithLocalInterfaceCollocationConstraint extends Abst
 				continue;
 			}
 
-			DeploymentPart dPartToCompareDeployed = allocationToCompare.getDeployed().get(0); // confirm this
+			DeploymentPart dPartToCompareDeployed = allocationToCompare.getDeployed().get(0); 
 
 			CCMPart partToCompare = ZDLFactoryRegistry.INSTANCE.create(dPartToCompareDeployed.getModelElement().eObject(), CCMPart.class);
 
