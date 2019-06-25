@@ -35,7 +35,9 @@ public class DescriptorBeautifier extends XMLBeautifier {
 		super.beforeWriteAndClose(impl);
 		// we want to place an extra new line between certain element tags
 		String buffer = impl.getBuffer().toString();
-		buffer = buffer.replace("zcxgt;", "&gt;").replace("zcxapos;", "&apos;").replace("&#xD;", "");
+		buffer = buffer.replace("zcxlt;", "&lt;").replace("zcxgt;", "&gt;")
+				.replace("zcxapos;", "&apos;").replace("&#xD;", "")
+				.replace("zcxamp;", "&amp;").replace("zcxquot;", "&quot;");
 		
 		for (String tag : separators){
 			String toReplace = "(</" + tag + ">)";
