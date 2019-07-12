@@ -73,7 +73,7 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 
 	public static CodeGenUtil INSTANCE = new CodeGenUtil();
 
-	private CodeGenUtil() {
+	private CodeGenUtil() { 
 		DDS4CCMGenerationUtils.addGenerationListener(this);
 	}
 
