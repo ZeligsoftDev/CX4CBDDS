@@ -84,10 +84,26 @@ public class DDS4CCMModelWizardPage extends ZeligsoftModelWizardPage {
 	public void createControl(Composite parent) {
 		// TODO Auto-generated method stub
 		super.createControl(parent);
-		final Composite composite = (Composite) getControl();
-		// create a Group and two Radio buttons (Button) within it.
-		createModelTypeGroup(composite);
 		
+		if(isAxciomaSupported()){
+			final Composite composite = (Composite) getControl();
+			// create a Group and two Radio buttons (Button) within it.
+			createModelTypeGroup(composite);
+		}
+	}
+	
+	public boolean isAxciomaSupported(){
+		boolean isAxciomaSupported = true;
+		try {
+			Class axciomaClass = Class.forName("com.zeligsoft.domain.dds4ccm.ui.axcioma.AxciomaSupport");
+			if(axciomaClass == null){
+				isAxciomaSupported = false;
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			isAxciomaSupported = false;
+		}
+		return isAxciomaSupported;
 	}
 	
 	protected void createModelTypeGroup(Composite composite){
@@ -120,7 +136,10 @@ public class DDS4CCMModelWizardPage extends ZeligsoftModelWizardPage {
 	} 
 	
 	public ModelTypeEnum getTargetModelType(){
-		
+		if(atcdSelectionButton == null){
+			// this will be entered for atcd-only version as the 'createModelTypeGroup' method will not be executed
+			return ModelTypeEnum.ATCD;
+		}
 		return atcdSelectionButton.getSelection()? ModelTypeEnum.ATCD : ModelTypeEnum.AXCIOMA;
 	}
 }
