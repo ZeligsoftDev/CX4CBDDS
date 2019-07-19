@@ -117,7 +117,7 @@ public class DDS4CCMModelWizardPage extends ZeligsoftModelWizardPage {
 				axciomaSelectionButton.setSelection(true);
 			}
 		}
-	}
+	} 
 	
 	public ModelTypeEnum getTargetModelType(){
 		
