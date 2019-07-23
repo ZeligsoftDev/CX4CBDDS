@@ -28,6 +28,7 @@ import org.eclipse.uml2.common.util.UML2Util;
 import com.zeligsoft.cx.ui.l10n.Messages;
 import com.zeligsoft.cx.ui.pages.ZeligsoftModelWizardPage;
 import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.ModelTypeEnum;
+import com.zeligsoft.domain.dds4ccm.ui.utils.DDS4CCMUIUtil;
 
 import org.eclipse.swt.widgets.Button;
 
@@ -85,25 +86,11 @@ public class DDS4CCMModelWizardPage extends ZeligsoftModelWizardPage {
 		// TODO Auto-generated method stub
 		super.createControl(parent);
 		
-		if(isAxciomaSupported()){
+		if(DDS4CCMUIUtil.isAxciomaSupported()){
 			final Composite composite = (Composite) getControl();
 			// create a Group and two Radio buttons (Button) within it.
 			createModelTypeGroup(composite);
 		}
-	}
-	
-	public boolean isAxciomaSupported(){
-		boolean isAxciomaSupported = true;
-		try {
-			Class axciomaClass = Class.forName("com.zeligsoft.domain.dds4ccm.ui.axcioma.AxciomaSupport");
-			if(axciomaClass == null){
-				isAxciomaSupported = false;
-			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			isAxciomaSupported = false;
-		}
-		return isAxciomaSupported;
 	}
 	
 	protected void createModelTypeGroup(Composite composite){
@@ -136,8 +123,7 @@ public class DDS4CCMModelWizardPage extends ZeligsoftModelWizardPage {
 	} 
 	
 	public ModelTypeEnum getTargetModelType(){
-		if(atcdSelectionButton == null){
-			// this will be entered for atcd-only version as the 'createModelTypeGroup' method will not be executed
+		if(!DDS4CCMUIUtil.isAxciomaSupported()){
 			return ModelTypeEnum.ATCD;
 		}
 		return atcdSelectionButton.getSelection()? ModelTypeEnum.ATCD : ModelTypeEnum.AXCIOMA;
