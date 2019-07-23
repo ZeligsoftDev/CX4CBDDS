@@ -37,5 +37,14 @@
           </visibility>
        </viewerContribution>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+       <page
+            category="cxModelingPreference"
+            class="com.zeligsoft.domain.dds4ccm.ui.preferences.DDS4CCMAxciomaMigrationPreferencePage"
+            id="com.zeligsoft.DDS4CCM.Axcioma"
+            name="%AXCIOMAPreferencePage.name">
+       </page>
+   </extension>      
 
 </fragment>
