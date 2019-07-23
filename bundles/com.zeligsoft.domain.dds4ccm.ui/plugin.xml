@@ -12,7 +12,7 @@
                enableNameSelection="true"
                showUsesList="true">
          </PortType>
-    </extension>
+    </extension> 
 	<extension
          point="org.eclipse.ui.newWizards">
       <category
@@ -515,44 +515,6 @@
              </and>
           </visibility>
        </viewerContribution>
-       
-       
-       <viewerContribution
-             id="com.zeligsoft.migrateModelType.popupmenu"
-             targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">
-          <action
-                class="com.zeligsoft.domain.dds4ccm.ui.actions.MigrateModelTypeAction"
-                enablesFor="1"
-                id="com.zeligsoft.domain.dds4ccm.ui.actions.MigrateModelTypeAction"
-                label="%action.label.MigrateModelType"
-                menubarPath="org.eclipse.gmf.runtime.common.ui.actions.RefactorMenu/additions">
-          </action>
-          <visibility>
-             <and>
-                <or>
-                   <objectState
-                         name="isZDLConcept"
-                         value="DDS4CCM::DDS4CCM::DDS4CCMModel">
-                   </objectState>
-                   <objectState
-                         name="isZDLConcept"
-                         value="CCM::CCM_Component::CCMComponent">
-                   </objectState>
-                   <objectState
-                   		name="isZDLConcept"
-                   		value="CCM::CCM_Component::Home">
-                   	</objectState>
-                </or>
-                <objectState
-                      name="isZDLProfile"
-                      value="cxDDS4CCM">
-                </objectState>
-             </and>
-          </visibility>
-       </viewerContribution>
-       
-       
-       
        <viewerContribution
              id="com.zeligsoft.refactorCleanComments.popupmenu"
              targetID="org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">
@@ -727,12 +689,6 @@
             class="com.zeligsoft.domain.dds4ccm.ui.preferences.DDS4CCMPreferencePage"
             id="com.zeligsoft.DDS4CCM"
             name="%DDS4CCMPreferencePage.name">
-      </page>
-      <page
-            category="cxModelingPreference"
-            class="com.zeligsoft.domain.dds4ccm.ui.preferences.DDS4CCMAxciomaMigrationPreferencePage"
-            id="com.zeligsoft.DDS4CCM.Axcioma"
-            name="AXCIOMA">
       </page>
     </extension>
    <extension
