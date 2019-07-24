@@ -33,10 +33,12 @@ The following was found to be acceptable:
 	ulimit -Sn 1024
 </pre>
 
-The p2 repository produced by the build will be found in `releng/com.zeligsoft.dds4ccm.update/target`:
+The p2 repositories produced by the build will be found in `releng/com.zeligsoft.dds4ccm.update.atcd/target` 
+and `releng/com.zeligsoft.dds4ccm.update.axcioma/target`:
 
-* The sub directory `repository` is the created p2 repository. 
-* The file `com.zeligsoft.dds4cmm.update-<version>-SNAPSHOT.zip` is zip of this repository.
+* The sub directory `repository` in both of the above mentioned directories is the created p2 repository. 
+* The files `com.zeligsoft.dds4cmm.update.atcd-<version>-SNAPSHOT.zip` and `com.zeligsoft.dds4cmm.update.axcioma-<version>-SNAPSHOT.zip` 
+are the zip files for this repository.
 * The build also creates a ZIP file with a date, in place of SNAPSHOT. The files are identical.
 The later file is useful for distributing regular builds to a file server, allowing you
 to distinguish build between results of successive builds.
