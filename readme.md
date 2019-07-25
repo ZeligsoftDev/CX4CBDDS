@@ -3,6 +3,10 @@
 DDS4CCM is a Rational Software Architect (RSA) add-in for modeling component based systems
 according to the OMG CCM standard.
 
+DDS4CCM has support for the following CCM implementations:
+- [CIAO](https://www.dre.vanderbilt.edu/~schmidt/CIAO.html)
+- [AXCIOMA](https://www.axcioma.com)
+
 ## Build requirements
 
 The build requires:
@@ -35,7 +39,7 @@ The following was found to be acceptable:
 
 The p2 repository produced by the build will be found in `releng/com.zeligsoft.dds4ccm.update/target`:
 
-* The sub directory `repository` is the created p2 repository. 
+* The sub directory `repository` is the created p2 repository.
 * The file `com.zeligsoft.dds4cmm.update-<version>-SNAPSHOT.zip` is zip of this repository.
 * The build also creates a ZIP file with a date, in place of SNAPSHOT. The files are identical.
 The later file is useful for distributing regular builds to a file server, allowing you
