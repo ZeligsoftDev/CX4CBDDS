@@ -37,10 +37,12 @@ The following was found to be acceptable:
 	ulimit -Sn 1024
 </pre>
 
-The p2 repository produced by the build will be found in `releng/com.zeligsoft.dds4ccm.update/target`:
+The p2 repositories produced by the build will be found in `releng/com.zeligsoft.dds4ccm.update.atcd/target` 
+and `releng/com.zeligsoft.dds4ccm.update.axcioma/target`:
 
-* The sub directory `repository` is the created p2 repository.
-* The file `com.zeligsoft.dds4cmm.update-<version>-SNAPSHOT.zip` is zip of this repository.
+* The sub directory `repository` is the created p2 repository. 
+* The files `com.zeligsoft.dds4cmm.update.atcd-<version>-SNAPSHOT.zip` and `com.zeligsoft.dds4cmm.update.axcioma-<version>-SNAPSHOT.zip` 
+are zip archives of these repositories.
 * The build also creates a ZIP file with a date, in place of SNAPSHOT. The files are identical.
 The later file is useful for distributing regular builds to a file server, allowing you
 to distinguish build between results of successive builds.
@@ -54,7 +56,7 @@ A default RSA installation should be sufficient. To install:
 2. From the **Help** menu, choose **Install New Software** to start the **Install** wizard.
 3. On the **Available Software** page, click the **Add** button, to add a new software site.
 4. In the **Add Repository** dialog, click the **Archive** button, and in the dialog, browse for
-the `com.zeligsoft.dds4ccm.update-*.zip` file. Click **OK**.
+the `com.zeligsoft.dds4ccm.update.atcd-*.zip` or `com.zeligsoft.dd44ccm.update.axcioma-*.zip` file. Click **OK**.
 5. Click **OK** to close the **Add Repository** dialog.
 6. On returning to the **Install** dialog, check the checkbox beside **CX CBDDS**.
 Optionally, you may check **CDT** to install the C/C++ development tools.
