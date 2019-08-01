@@ -165,7 +165,7 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 		boolean isExistentURI = UMLModeler.getEditingDomain().getResourceSet().getURIConverter().exists(uri, null);
 		
 		if(!isExistentURI){
-			return createStatus(IStatus.INFO, "No resource exists with URI: "+uri);
+			return createStatus(IStatus.ERROR, "No resource exists with URI: "+uri);
 		}
 		
 		DDS4CCMValidationFactory factory = new DDS4CCMValidationFactory();
