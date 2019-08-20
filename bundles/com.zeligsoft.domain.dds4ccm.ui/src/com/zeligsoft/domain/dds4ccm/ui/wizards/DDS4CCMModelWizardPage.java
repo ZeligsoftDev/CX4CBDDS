@@ -28,6 +28,7 @@ import org.eclipse.uml2.common.util.UML2Util;
 import com.zeligsoft.cx.ui.l10n.Messages;
 import com.zeligsoft.cx.ui.pages.ZeligsoftModelWizardPage;
 import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.ModelTypeEnum;
+import com.zeligsoft.domain.dds4ccm.ui.utils.DDS4CCMUIUtil;
 
 import org.eclipse.swt.widgets.Button;
 
@@ -84,10 +85,12 @@ public class DDS4CCMModelWizardPage extends ZeligsoftModelWizardPage {
 	public void createControl(Composite parent) {
 		// TODO Auto-generated method stub
 		super.createControl(parent);
-		final Composite composite = (Composite) getControl();
-		// create a Group and two Radio buttons (Button) within it.
-		createModelTypeGroup(composite);
 		
+		if(DDS4CCMUIUtil.isAxciomaSupported()){
+			final Composite composite = (Composite) getControl();
+			// create a Group and two Radio buttons (Button) within it.
+			createModelTypeGroup(composite);
+		}
 	}
 	
 	protected void createModelTypeGroup(Composite composite){
@@ -117,10 +120,12 @@ public class DDS4CCMModelWizardPage extends ZeligsoftModelWizardPage {
 				axciomaSelectionButton.setSelection(true);
 			}
 		}
-	}
+	} 
 	
 	public ModelTypeEnum getTargetModelType(){
-		
+		if(!DDS4CCMUIUtil.isAxciomaSupported()){
+			return ModelTypeEnum.ATCD;
+		}
 		return atcdSelectionButton.getSelection()? ModelTypeEnum.ATCD : ModelTypeEnum.AXCIOMA;
 	}
 }

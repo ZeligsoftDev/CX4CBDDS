@@ -160,6 +160,7 @@ public class ClassModelMerger extends ModelMerger<EObject, IHierarchicalKey> {
 		MERGEABLE_FEATURES.add(UMLPackage.Literals.TYPED_ELEMENT__TYPE);
 		MERGEABLE_FEATURES.add(UMLPackage.Literals.PROPERTY__AGGREGATION);
 		MERGEABLE_FEATURES.add(UMLPackage.Literals.INTERFACE_REALIZATION__CONTRACT);
+		MERGEABLE_FEATURES.add(UMLPackage.Literals.ELEMENT__OWNED_COMMENT);
 
 		// no ordering is significant in Ecore except for the operation
 		// parameters list and generic type parameters list (both "signatures")
@@ -429,8 +430,7 @@ public class ClassModelMerger extends ModelMerger<EObject, IHierarchicalKey> {
 		 */
 		@Override
 		public List<EObject> casePackage(Package object) {
-			List<EObject> result = safeList(basicGetContentsToMerge(object,
-					phase), phase);
+			List<EObject> result = this.caseElement(object);
 			
 			result.remove(object.getEAnnotation(DIAGRAMS_ANNOTATION));
 			result.remove(object.getEAnnotation(UI_CAPABILITIES_ANNOTATION));
@@ -438,6 +438,19 @@ public class ClassModelMerger extends ModelMerger<EObject, IHierarchicalKey> {
 			return result;
 		}
 
+		/**
+		 * Don't merge comments
+		 */
+	
+		@Override
+		public List<EObject> caseElement(Element object) {
+			List<EObject> result = safeList(basicGetContentsToMerge(object,
+					phase), phase);
+			result.removeAll(object.getOwnedComments());
+			
+			return result;
+		}
+		
 	}
 
 	/**
