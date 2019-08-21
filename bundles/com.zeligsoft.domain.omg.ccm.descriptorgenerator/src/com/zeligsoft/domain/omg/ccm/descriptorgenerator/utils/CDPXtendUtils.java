@@ -253,9 +253,9 @@ public class CDPXtendUtils {
 	}
 
 	public static String xmlSanitize(String value) {
-		return (value == null) ? "" : value.replace("&", "&amp;")
-				.replace("<", "&lt;").replace(">", "zcxgt;")
-				.replace("'", "zcxapos;");
+		return (value == null) ? "" : value.replace("&", "zcxamp;")
+				.replace("<", "zcxlt;").replace(">", "zcxgt;")
+				.replace("'", "zcxapos;").replace("\"", "zcxquot;");
 	}
 
 	public static String replaceLast(String string, String replace,

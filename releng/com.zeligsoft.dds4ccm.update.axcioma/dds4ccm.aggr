@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/cbi/p2repo/2011/aggregator/1.1.0" label="DDS4CCM" buildRoot="/Users/pelder/git/dds4ccm.zeligsoft/aggr-repo">
+  <validationSets label="DDS4CCM">
+    <contributions label="DDS4CCM">
+      <repositories location="file:///Users/pelder/git/dds4ccm.zeligsoft/releng/com.zeligsoft.dds4ccm.update/target/repository" categoryPrefix="DDS4CCM">
+        <features name="com.zeligsoft.base.feature.group" versionRange="3.6.6.201903060408"/>
+        <features name="com.zeligsoft.cx.feature.group" versionRange="3.6.6.201903060408"/>
+        <features name="com.zeligsoft.domain.idl3plus_feature.feature.group" versionRange="3.5.1.201903060408"/>
+        <features name="com.zeligsoft.domain.ngc.ccm_feature.feature.group" versionRange="1.5.14.201903060408"/>
+        <features name="com.zeligsoft.domain.omg.ccm_feature.feature.group" versionRange="3.5.1.201903060408"/>
+        <categories name="201903060408.com.zeligsoft.dds4ccmmaster.category" versionRange="1.0.0.7P7q7scLsvvE7cIThImJDIwJX"/>
+      </repositories>
+    </contributions>
+    <contributions label="CDT 8">
+      <repositories location="http://download.eclipse.org/tools/cdt/releases/8.6">
+        <features name="org.eclipse.cdt.sdk.feature.group" versionRange="8.6.0.201502131403" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.cdt']"/>
+        <features name="org.eclipse.cdt.gdb.feature.group" versionRange="8.6.0.201502131403" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.cdt']"/>
+        <features name="org.eclipse.cdt.platform.feature.group" versionRange="8.6.0.201502131403" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.dependencies'] //@customCategories[identifier='com.zeligsoft.dds4ccm.cdt']"/>
+        <features name="org.eclipse.cdt.native.feature.group" versionRange="8.6.0.201502131403" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.cdt']"/>
+        <features name="org.eclipse.cdt.feature.group" versionRange="8.6.0.201502131403" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.cdt']"/>
+        <features name="org.eclipse.cdt.gnu.dsf.feature.group" versionRange="8.6.0.201502131403" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.cdt']"/>
+        <features name="org.eclipse.cdt.gnu.build.feature.group" versionRange="8.6.0.201502131403" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.cdt']"/>
+        <features name="org.eclipse.cdt.gnu.debug.feature.group" versionRange="8.6.0.201502131403" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.cdt']"/>
+      </repositories>
+    </contributions>
+    <contributions label="Luna (4.4) Release Train">
+      <repositories location="http://download.eclipse.org/releases/luna/">
+        <features name="org.eclipse.xtext.runtime.feature.group" versionRange="2.7.3.v201411190455" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.dependencies']"/>
+        <features name="org.eclipse.xtext.ui.feature.group" versionRange="2.7.3.v201411190455" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.dependencies']"/>
+        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.7.3.v201411190455" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.dependencies']"/>
+        <features name="org.eclipse.xtend.typesystem.uml2.feature.group" versionRange="2.0.0.v201406030414" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.dependencies']"/>
+        <features name="org.eclipse.xtend.typesystem.xsd.feature.group" versionRange="2.0.0.v201406030414" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.dependencies']"/>
+        <features name="org.eclipse.xtend.feature.group" versionRange="2.0.0.v201406030414" categories="//@customCategories[identifier='com.zeligsoft.dds4ccm.dependencies']"/>
+      </repositories>
+    </contributions>
+    <validationRepositories location="http://download.eclipse.org/eclipse/updates/4.4"/>
+    <validationRepositories location="file:///Users/pelder/git/dds4ccm.zeligsoft/deps/cx95_target_p2"/>
+  </validationSets>
+  <configurations operatingSystem="linux" windowSystem="gtk" architecture="x86_64"/>
+  <configurations operatingSystem="linux" windowSystem="gtk"/>
+  <configurations architecture="x86_64"/>
+  <configurations/>
+  <configurations enabled="false" operatingSystem="macosx" windowSystem="cocoa" architecture="x86_64"/>
+  <customCategories identifier="com.zeligsoft.dds4ccm.dependencies" label="DDS4CCM Dependencies" description="Features required by DDS4CCM. These will be installed, whether you select them or not." features="//@validationSets[label='DDS4CCM']/@contributions[label='Luna%20(4.4)%20Release%20Train']/@repositories.0/@features.0 //@validationSets[label='DDS4CCM']/@contributions[label='Luna%20(4.4)%20Release%20Train']/@repositories.0/@features.1 //@validationSets[label='DDS4CCM']/@contributions[label='Luna%20(4.4)%20Release%20Train']/@repositories.0/@features.2 //@validationSets[label='DDS4CCM']/@contributions[label='Luna%20(4.4)%20Release%20Train']/@repositories.0/@features.3 //@validationSets[label='DDS4CCM']/@contributions[label='Luna%20(4.4)%20Release%20Train']/@repositories.0/@features.4 //@validationSets[label='DDS4CCM']/@contributions[label='Luna%20(4.4)%20Release%20Train']/@repositories.0/@features.5 //@validationSets[label='DDS4CCM']/@contributions[label='CDT%208']/@repositories.0/@features.2"/>
+  <customCategories identifier="com.zeligsoft.dds4ccm.cdt" label="CDT" description="C/C++ Development Tools repository." features="//@validationSets[label='DDS4CCM']/@contributions[label='CDT%208']/@repositories.0/@features.0 //@validationSets[label='DDS4CCM']/@contributions[label='CDT%208']/@repositories.0/@features.1 //@validationSets[label='DDS4CCM']/@contributions[label='CDT%208']/@repositories.0/@features.2 //@validationSets[label='DDS4CCM']/@contributions[label='CDT%208']/@repositories.0/@features.3 //@validationSets[label='DDS4CCM']/@contributions[label='CDT%208']/@repositories.0/@features.4 //@validationSets[label='DDS4CCM']/@contributions[label='CDT%208']/@repositories.0/@features.5 //@validationSets[label='DDS4CCM']/@contributions[label='CDT%208']/@repositories.0/@features.6 //@validationSets[label='DDS4CCM']/@contributions[label='CDT%208']/@repositories.0/@features.7"/>
+</aggregator:Aggregation>
