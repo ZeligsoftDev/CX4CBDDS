@@ -52,7 +52,7 @@ timestamp=$(echo /opt/cx-axcioma/*.zip | sed -rn 's/.*\.v([0-9]*)\.zip/\1/p')
    -application org.eclipse.equinox.p2.director \
    -nosplash \
    -repository \
-   jar:file:/opt/cx-axcioma/dds4ccm_%{ver}.v${timestamp}.zip\!/ \
+   jar:file:/opt/cx-axcioma/dds4ccm_axcioma_%{ver}.v${timestamp}.zip\!/ \
    -installIU com.zeligsoft.base.feature.group  \
    -installIU com.zeligsoft.cx.feature.group  \
    -installIU com.zeligsoft.domain.idl3plus_feature.feature.group  \
