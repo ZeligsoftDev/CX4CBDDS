@@ -7,6 +7,8 @@
 %define ifdef()   %if %{expand:%%{?%{1}:1}%%{!?%{1}:0}}
 %define ver       1.6.0
 %define rel       0.%(date "+%y%m%d%H%M")
+%define _rpmdir   %{_projectdir}/rpm_build/
+%define _targetdir %{_projectdir}/target
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Define packages
@@ -31,7 +33,7 @@ based systems built on AXCIOMA according to the OMG CCM standard.
 
 %install
 %{__mkdir_p} %{buildroot}/opt/cx-axcioma
-cp releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axcioma_*.zip %{buildroot}/opt/cx-axcioma/
+cp %{_targetdir}/dds4ccm_*.v*.zip %{buildroot}/opt/cx-axcioma/
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Allocate files
