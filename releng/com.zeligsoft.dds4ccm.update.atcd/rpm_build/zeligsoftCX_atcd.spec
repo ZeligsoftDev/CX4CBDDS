@@ -31,7 +31,7 @@ based systems built on ACE+TAO+CIAO+DAnCE according to the OMG CCM standard.
 
 %install
 %{__mkdir_p} %{buildroot}/opt/cx-atcd
-cp releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_*.v*.zip %{buildroot}/opt/cx-atcd/
+cp releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip %{buildroot}/opt/cx-atcd/
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Allocate files
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

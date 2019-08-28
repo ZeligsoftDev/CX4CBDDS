@@ -31,7 +31,7 @@ based systems built on AXCIOMA according to the OMG CCM standard.
 
 %install
 %{__mkdir_p} %{buildroot}/opt/cx-axcioma
-cp releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_*.v*.zip %{buildroot}/opt/cx-axcioma/
+cp releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axcioma_*.zip %{buildroot}/opt/cx-axcioma/
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Allocate files
