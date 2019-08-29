@@ -56,7 +56,7 @@ timestamp=$(echo /opt/cx-axcioma/*.zip | sed -rn 's/.*\.v([0-9]*)\.zip/\1/p')
    -installIU com.zeligsoft.base.feature.group  \
    -installIU com.zeligsoft.cx.feature.group  \
    -installIU com.zeligsoft.domain.idl3plus_feature.feature.group  \
-   -installIU com.zeligsoft.domain.ngc.ccm_feature.feature.group  \
+   -installIU com.zeligsoft.domain.ngc.ccm.axcioma_feature.feature.group  \
    -installIU com.zeligsoft.domain.omg.ccm_feature.feature.group
 
 %postun
@@ -66,7 +66,7 @@ timestamp=$(echo /opt/cx-axcioma/*.zip | sed -rn 's/.*\.v([0-9]*)\.zip/\1/p')
    -uninstallIU com.zeligsoft.base.feature.group  \
    -uninstallIU com.zeligsoft.cx.feature.group  \
    -uninstallIU com.zeligsoft.domain.idl3plus_feature.feature.group  \
-   -uninstallIU com.zeligsoft.domain.ngc.ccm_feature.feature.group  \
+   -uninstallIU com.zeligsoft.domain.ngc.ccm.axcioma_feature.feature.group  \
    -uninstallIU com.zeligsoft.domain.omg.ccm_feature.feature.group \
    -vmargs \
    -Xms512m \
