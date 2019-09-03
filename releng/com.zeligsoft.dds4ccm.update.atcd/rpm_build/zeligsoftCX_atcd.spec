@@ -44,6 +44,42 @@ cp %{_targetdir}/dds4ccm_*.v*.zip %{buildroot}/opt/cx-atcd/
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Define RPM scripts (%%pre and %%post sections)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%pre
+axciomaInstalledFeature=$(/opt/IBM/SDP/eclipse -application org.eclipse.equinox.p2.director -listInstalledRoots -nosplash | grep com.zeligsoft.domain.ngc.ccm.axcioma_feature.feature.group)
+atcdInstalledFeature=$(/opt/IBM/SDP/eclipse -application org.eclipse.equinox.p2.director -listInstalledRoots -nosplash | grep com.zeligsoft.domain.ngc.ccm_feature.feature.group)
+
+if [[ ${atcdInstalledFeature} != "" ]]; then 		# atcd is already installed
+/opt/IBM/SDP/eclipse \
+   -application org.eclipse.equinox.p2.director \
+   -nosplash \
+   -uninstallIU com.zeligsoft.base.feature.group  \
+   -uninstallIU com.zeligsoft.cx.feature.group  \
+   -uninstallIU com.zeligsoft.domain.idl3plus_feature.feature.group  \
+   -uninstallIU com.zeligsoft.domain.ngc.ccm_feature.feature.group  \
+   -uninstallIU com.zeligsoft.domain.omg.ccm_feature.feature.group \
+   -vmargs \
+   -Xms512m \
+   -Xmx1024m \
+   -XX:+UseParallelGC \
+   -XX:PermSize=256M \
+   -XX:MaxPermSize=512M
+elif [[ ${axciomaInstalledFeature} != "" ]]; then 		# axcioma is already installed
+/opt/IBM/SDP/eclipse \
+   -application org.eclipse.equinox.p2.director \
+   -nosplash \
+   -uninstallIU com.zeligsoft.base.feature.group  \
+   -uninstallIU com.zeligsoft.cx.feature.group  \
+   -uninstallIU com.zeligsoft.domain.idl3plus_feature.feature.group \
+   -uninstallIU com.zeligsoft.domain.ngc.ccm.axcioma_feature.feature.group \
+   -uninstallIU com.zeligsoft.domain.omg.ccm_feature.feature.group \
+   -vmargs \
+   -Xms512m \
+   -Xmx1024m \
+   -XX:+UseParallelGC \
+   -XX:PermSize=256M \
+   -XX:MaxPermSize=512M
+fi
+
 %post
 # Get timestamp of CX zip file
 timestamp=$(echo /opt/cx-atcd/*.zip | sed -rn 's/.*\.v([0-9]*)\.zip/\1/p')
@@ -59,6 +95,7 @@ timestamp=$(echo /opt/cx-atcd/*.zip | sed -rn 's/.*\.v([0-9]*)\.zip/\1/p')
    -installIU com.zeligsoft.domain.omg.ccm_feature.feature.group
 
 %postun
+if [ $1 == 0 ] ; then			# this is an uninstallation, not an upgrade
 /opt/IBM/SDP/eclipse \
    -application org.eclipse.equinox.p2.director \
    -nosplash \
@@ -73,6 +110,7 @@ timestamp=$(echo /opt/cx-atcd/*.zip | sed -rn 's/.*\.v([0-9]*)\.zip/\1/p')
    -XX:+UseParallelGC \
    -XX:PermSize=256M \
    -XX:MaxPermSize=512M
+fi
 #===============================================================================
 #                            U N C L A S S I F I E D
 #===============================================================================
