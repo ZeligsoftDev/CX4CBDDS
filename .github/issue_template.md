@@ -1,7 +1,6 @@
 
 # **Issue and tracking information**
 
-  ## To be filled by ## Developer
 
 ### Developer's time Estimated effort to fix (hours):
 
