@@ -175,8 +175,8 @@ public class CXElementCreationPage
 					if (property.getType() instanceof PrimitiveType) {
 						String type = property.getType().getName();
 
-						if (type.equals(UMLPackage.Literals.STRING.getName())
-							|| type.equals(UMLPackage.Literals.INTEGER
+						if (type.equals(UMLPackage.Literals.LITERAL_STRING.getName())
+							|| type.equals(UMLPackage.Literals.LITERAL_INTEGER
 								.getName())) {
 							widgets = CXPropertiesWidgetFactory
 								.createSectionForStringType(composite,
@@ -211,7 +211,7 @@ public class CXElementCreationPage
 											}
 										});
 							}
-						}else if (type.equals(UMLPackage.Literals.BOOLEAN
+						}else if (type.equals(UMLPackage.Literals.LITERAL_BOOLEAN
 							.getName())) {
 							CXPropertiesWidgetFactory.createSectionForBooleanType(
 								composite, subDescriptor);

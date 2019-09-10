@@ -33,8 +33,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Profile;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
-import com.ibm.xtools.uml.type.UMLElementFactory;
 import com.zeligsoft.base.ui.menus.actions.ICXAction;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
@@ -65,41 +63,41 @@ public class AddAssemblyImplementation
 	
 	@Override
 	public void run() {
-		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(UMLModeler.getEditingDomain(),
-				Messages.AddCCMAssemblyImplementationToComponent,
-				Collections.EMPTY_MAP, null){
-			
-			@Override
-			protected CommandResult doExecuteWithResult(IProgressMonitor arg0,
-					IAdaptable arg1) throws ExecutionException{
-				
-				Class concept = ZDLUtil.getZDLConcept(context.eContainer(), CCMNames.ASSEMBLY_IMPLEMENTATION);
-				Profile profile = ZDLUtil.getZDLProfile(context.eContainer(), concept);
-			    String id = ZDLElementTypeUtil.getZDLSpecializationElementTypeId(profile, concept);
-						
-				
-				CreateElementRequest request = new CreateElementRequest(context
-						.eContainer(), BaseUIUtil.getElementType(id));
-				CommandResult result = BaseUIUtil.createModelElement(request);
-				newElement = (EObject) result.getReturnValue();
-				if (newElement != null) {
-					UMLElementFactory.createRelationship(newElement,
-							ZDLElementTypeManager.INSTANCE
-									.getElementTypeFromHint("generalization"), //$NON-NLS-1$
-							newElement, context, null);
-				}
-				return CommandResult.newOKCommandResult();
-			}
-		};
-		
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(
-					editCommand, null, null);
-		} catch (ExecutionException e) {
-			Activator.getDefault().error("Error creating Assembly Implementation", e); //$NON-NLS-1$
-		}
-
-		performPostCreateAction();
+//		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(UMLModeler.getEditingDomain(),
+//				Messages.AddCCMAssemblyImplementationToComponent,
+//				Collections.EMPTY_MAP, null){
+//			
+//			@Override
+//			protected CommandResult doExecuteWithResult(IProgressMonitor arg0,
+//					IAdaptable arg1) throws ExecutionException{
+//				
+//				Class concept = ZDLUtil.getZDLConcept(context.eContainer(), CCMNames.ASSEMBLY_IMPLEMENTATION);
+//				Profile profile = ZDLUtil.getZDLProfile(context.eContainer(), concept);
+//			    String id = ZDLElementTypeUtil.getZDLSpecializationElementTypeId(profile, concept);
+//						
+//				
+//				CreateElementRequest request = new CreateElementRequest(context
+//						.eContainer(), BaseUIUtil.getElementType(id));
+//				CommandResult result = BaseUIUtil.createModelElement(request);
+//				newElement = (EObject) result.getReturnValue();
+//				if (newElement != null) {
+//					UMLElementFactory.createRelationship(newElement,
+//							ZDLElementTypeManager.INSTANCE
+//									.getElementTypeFromHint("generalization"), //$NON-NLS-1$
+//							newElement, context, null);
+//				}
+//				return CommandResult.newOKCommandResult();
+//			}
+//		};
+//		
+//		try {
+//			OperationHistoryFactory.getOperationHistory().execute(
+//					editCommand, null, null);
+//		} catch (ExecutionException e) {
+//			Activator.getDefault().error("Error creating Assembly Implementation", e); //$NON-NLS-1$
+//		}
+//
+//		performPostCreateAction();
 	}
 	
 	
@@ -112,8 +110,8 @@ public class AddAssemblyImplementation
 	 */
 	private void performPostCreateAction(){
 		
-		if(newElement != null){
-			BaseUIUtil.startInLineEdit(newElement);
-		}
+//		if(newElement != null){
+//			BaseUIUtil.startInLineEdit(newElement);
+//		}
 	}
 }

@@ -118,7 +118,7 @@ public class CXPropertyEditingSupport
 			if (type instanceof PrimitiveType) {
 				Object newValue;
 				if (type.getName()
-					.equals(UMLPackage.Literals.INTEGER.getName())) {
+					.equals(UMLPackage.Literals.LITERAL_INTEGER.getName())) {
 					newValue = new Integer((String) value);
 				} else {
 					newValue = value;

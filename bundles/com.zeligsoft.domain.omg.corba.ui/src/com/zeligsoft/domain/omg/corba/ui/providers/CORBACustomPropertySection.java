@@ -311,15 +311,16 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 		if (object == null) {
 			viewToolBar.getItem(0).setEnabled(false);
 		}
-		viewToolBar.getItem(0).addSelectionListener(new SelectionAdapter() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (object != null) {
-					BaseUIUtil.showInProjectExplorer(object);
-				}
-			}
-		});
+		// ToDoPapyrus:
+//		viewToolBar.getItem(0).addSelectionListener(new SelectionAdapter() {
+//
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				if (object != null) {
+//					BaseUIUtil.showInProjectExplorer(object);
+//				}
+//			}
+//		});
 
 		return widgetMap;
 

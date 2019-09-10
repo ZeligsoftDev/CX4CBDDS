@@ -23,7 +23,6 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.Activator;
@@ -158,9 +157,9 @@ public class ConnectorTypeUtility {
 		}
 		
 		if(!isAlreadyImported){			
-			Package library = (Package) UMLModeler.openModelResource(packageUri);
-			final PackageImport pi = model.createPackageImport(library);
-			importedPackage = pi.getImportedPackage();		
+//			Package library = (Package) UMLModeler.openModelResource(packageUri);
+//			final PackageImport pi = model.createPackageImport(library);
+//			importedPackage = pi.getImportedPackage();		
 		}
 		
 		return importedPackage;		

@@ -78,12 +78,6 @@ public abstract class AbstractZeligsoftActionDelegate
 		execute(command, progressMonitor, null);
 
 		CommandResult result = command.getCommandResult();
-
-		if (result != null) {
-			BaseUIUtil.startInLineEdit((EObject) result
-				.getReturnValue());
-		}
-
 	}
 
 }

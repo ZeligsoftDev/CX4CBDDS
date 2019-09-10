@@ -37,9 +37,6 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Package;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
-import com.ibm.xtools.uml.type.UMLElementFactory;
-import com.zeligsoft.base.diagram.utils.BaseDiagramUtil;
 import com.zeligsoft.base.ui.commands.CreatePackageWithoutDiagramCommand;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
@@ -73,102 +70,102 @@ public class CCMComponentWizard extends Wizard {
 
 	@Override
 	public boolean performFinish() {
-		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-				UMLModeler.getEditingDomain(), Messages.CCMComponentWizard_CommandLabel,
-				Collections.EMPTY_MAP, null) {
-
-			@Override
-			protected CommandResult doExecuteWithResult(IProgressMonitor arg0,
-					IAdaptable arg1) throws ExecutionException {
-
-				Package container = getPackageContainer();
-				if(container == null){
-					return CommandResult.newCancelledCommandResult();
-				}
-				
-				component = createComponent(container);
-				if (page.isCreateImplementation()) {
-					
-					if (page.isAssemblyType()){  
-						//assembly implementation type
-						Component assembly = null;
-						assembly = createAssembly(container);
-						UMLElementFactory.createRelationship(assembly,
-								ZDLElementTypeManager.INSTANCE
-										.getElementTypeFromHint("generalization"), //$NON-NLS-1$
-								assembly, 
-								component, 
-								null);
-						if (page.isCreateStructureDiagram()) {
-							ICommand command = UMLElementFactory.getCreateElementCommand(assembly,
-									ElementTypeRegistry.getInstance().getType(
-											"org.eclipse.gmf.runtime.notation.structureDiagram")); //$NON-NLS-1$
-							command.execute(null, null);
-							CommandResult commandResult = command.getCommandResult();
-							Diagram diagram = (Diagram) commandResult.getReturnValue();
-							diagram.setName(page.getStructureDiagramName());
-							OpenDiagramCommand openCommand = new OpenDiagramCommand(diagram);
-							openCommand.execute(null, null);
-						}		
-					}
-					else { 
-						//monolithic implementation type
-						Package monoContainer = getMonolithicImplContainer(container);
-						if(monoContainer == null){
-							return CommandResult.newCancelledCommandResult();
-						}
-						
-						Component monolithic = null;
-						monolithic = createMonolithic(monoContainer);
-						UMLElementFactory.createRelationship(monolithic,
-								ZDLElementTypeManager.INSTANCE
-										.getElementTypeFromHint("generalization"), //$NON-NLS-1$
-										monolithic, 
-										component, 
-										null);
-					}			
-				}
-				
-				if (page.isCreateComponentDiagram()) {
-					Diagram diagram = createDiagram(component);
-					diagram.setName(page.getComponentDiagramName());
-					OpenDiagramCommand openCommand = new OpenDiagramCommand(
-							diagram);
-
-					// Open diagram editor
-					IStatus result = null;
-					if (openCommand.canExecute()) {
-						result = openCommand.execute(null, null);
-					}
-
-					if (result != null && result.getSeverity() == IStatus.OK) {
-
-						DiagramEditPart editPart = BaseDiagramUtil
-								.getDiagramEditPart();
-
-						// Drop elements to the diagram view
-						BaseDiagramUtil.dropElement(editPart, new Point(100,
-								150), component);
-
-						// Refresh the diagram
-						Request refreshRequest = new Request("refresh"); //$NON-NLS-1$
-						org.eclipse.gef.commands.Command refreshCommand = editPart
-								.getCommand(refreshRequest);
-						refreshCommand.execute();
-					}
-				}
-				return CommandResult.newOKCommandResult();
-			}
-
-		};
-
-		try {
-			OperationHistoryFactory.getOperationHistory()
-					.execute(editCommand, null, null);
-
-		} catch (ExecutionException e) {
-			Activator.getDefault().error(Messages.CCMComponentWizard_ErrorMsg, e);
-		}
+//		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
+//				UMLModeler.getEditingDomain(), Messages.CCMComponentWizard_CommandLabel,
+//				Collections.EMPTY_MAP, null) {
+//
+//			@Override
+//			protected CommandResult doExecuteWithResult(IProgressMonitor arg0,
+//					IAdaptable arg1) throws ExecutionException {
+//
+//				Package container = getPackageContainer();
+//				if(container == null){
+//					return CommandResult.newCancelledCommandResult();
+//				}
+//				
+//				component = createComponent(container);
+//				if (page.isCreateImplementation()) {
+//					
+//					if (page.isAssemblyType()){  
+//						//assembly implementation type
+//						Component assembly = null;
+//						assembly = createAssembly(container);
+//						UMLElementFactory.createRelationship(assembly,
+//								ZDLElementTypeManager.INSTANCE
+//										.getElementTypeFromHint("generalization"), //$NON-NLS-1$
+//								assembly, 
+//								component, 
+//								null);
+//						if (page.isCreateStructureDiagram()) {
+//							ICommand command = UMLElementFactory.getCreateElementCommand(assembly,
+//									ElementTypeRegistry.getInstance().getType(
+//											"org.eclipse.gmf.runtime.notation.structureDiagram")); //$NON-NLS-1$
+//							command.execute(null, null);
+//							CommandResult commandResult = command.getCommandResult();
+//							Diagram diagram = (Diagram) commandResult.getReturnValue();
+//							diagram.setName(page.getStructureDiagramName());
+//							OpenDiagramCommand openCommand = new OpenDiagramCommand(diagram);
+//							openCommand.execute(null, null);
+//						}		
+//					}
+//					else { 
+//						//monolithic implementation type
+//						Package monoContainer = getMonolithicImplContainer(container);
+//						if(monoContainer == null){
+//							return CommandResult.newCancelledCommandResult();
+//						}
+//						
+//						Component monolithic = null;
+//						monolithic = createMonolithic(monoContainer);
+//						UMLElementFactory.createRelationship(monolithic,
+//								ZDLElementTypeManager.INSTANCE
+//										.getElementTypeFromHint("generalization"), //$NON-NLS-1$
+//										monolithic, 
+//										component, 
+//										null);
+//					}			
+//				}
+//				
+//				if (page.isCreateComponentDiagram()) {
+//					Diagram diagram = createDiagram(component);
+//					diagram.setName(page.getComponentDiagramName());
+//					OpenDiagramCommand openCommand = new OpenDiagramCommand(
+//							diagram);
+//
+//					// Open diagram editor
+//					IStatus result = null;
+//					if (openCommand.canExecute()) {
+//						result = openCommand.execute(null, null);
+//					}
+//
+//					if (result != null && result.getSeverity() == IStatus.OK) {
+//
+//						DiagramEditPart editPart = BaseDiagramUtil
+//								.getDiagramEditPart();
+//
+//						// Drop elements to the diagram view
+//						BaseDiagramUtil.dropElement(editPart, new Point(100,
+//								150), component);
+//
+//						// Refresh the diagram
+//						Request refreshRequest = new Request("refresh"); //$NON-NLS-1$
+//						org.eclipse.gef.commands.Command refreshCommand = editPart
+//								.getCommand(refreshRequest);
+//						refreshCommand.execute();
+//					}
+//				}
+//				return CommandResult.newOKCommandResult();
+//			}
+//
+//		};
+//
+//		try {
+//			OperationHistoryFactory.getOperationHistory()
+//					.execute(editCommand, null, null);
+//
+//		} catch (ExecutionException e) {
+//			Activator.getDefault().error(Messages.CCMComponentWizard_ErrorMsg, e);
+//		}
 
 		return true;
 	}
@@ -235,10 +232,10 @@ public class CCMComponentWizard extends Wizard {
 
 	}
 
-	private Diagram createDiagram(EObject container) throws ExecutionException {
-		return BaseDiagramUtil.createComponentDiagram(container);
-
-	}
+//	private Diagram createDiagram(EObject container) throws ExecutionException {
+//		return BaseDiagramUtil.createComponentDiagram(container);
+//
+//	}
 
 	private Component createAssembly(Package container) throws ExecutionException {
 		Component assembly = (Component) BaseUIUtil.createZDLModelElement(container,

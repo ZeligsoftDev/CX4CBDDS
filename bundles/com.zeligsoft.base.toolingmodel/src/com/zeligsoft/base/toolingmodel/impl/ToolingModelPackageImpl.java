@@ -1360,11 +1360,11 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 				"MenuModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(
 				getMenuModel_Name(),
-				theUMLPackage.getString(),
+				theUMLPackage.getLiteralString(),
 				"name", null, 1, 1, MenuModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
 				getMenuModel_Description(),
-				theUMLPackage.getString(),
+				theUMLPackage.getLiteralString(),
 				"description", null, 0, 1, MenuModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 				getMenuModel_Item(),
@@ -1379,7 +1379,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 
 		EOperation op = addEOperation(menuModelEClass, this.getMenuItem(),
 				"getItems", 0, -1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, theUMLPackage.getString(),
+		addEParameter(op, theUMLPackage.getLiteralString(),
 				"concept", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(
@@ -1388,7 +1388,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 				"MenuInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(
 				getMenuInstance_Concept(),
-				theUMLPackage.getString(),
+				theUMLPackage.getLiteralString(),
 				"concept", null, 1, 1, MenuInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 				getMenuInstance_Item(),
@@ -1402,11 +1402,11 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 				"MenuItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(
 				getMenuItem_Name(),
-				theUMLPackage.getString(),
+				theUMLPackage.getLiteralString(),
 				"name", null, 1, 1, MenuItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
 				getMenuItem_Description(),
-				theUMLPackage.getString(),
+				theUMLPackage.getLiteralString(),
 				"description", null, 0, 1, MenuItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 				getMenuItem_Container(),
@@ -1435,11 +1435,11 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 				"CreateAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(
 				getCreateAction_CreateConcept(),
-				theUMLPackage.getString(),
+				theUMLPackage.getLiteralString(),
 				"createConcept", null, 0, 1, CreateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
 				getCreateAction_TypeHint(),
-				theUMLPackage.getString(),
+				theUMLPackage.getLiteralString(),
 				"typeHint", null, 0, 1, CreateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(
 				getCreateAction_Expression(),
@@ -1453,11 +1453,11 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 				"DelegateAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(
 				getDelegateAction_ClassName(),
-				theUMLPackage.getString(),
+				theUMLPackage.getLiteralString(),
 				"className", null, 1, 1, DelegateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(
 				getDelegateAction_HostBundle(),
-				theUMLPackage.getString(),
+				theUMLPackage.getLiteralString(),
 				"hostBundle", null, 0, 1, DelegateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(
@@ -1471,7 +1471,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 				"MenuObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(
 				getMenuObject_Generated(),
-				theUMLPackage.getBoolean(),
+				theUMLPackage.getLiteralBoolean(),
 				"generated", "false", 0, 1, MenuObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
 		initEClass(

@@ -25,7 +25,6 @@ import com.zeligsoft.base.util.ZeligsoftURIConverter;
 import com.zeligsoft.cx.codegen.editor.ICodeLocator;
 import com.zeligsoft.cx.codegen.editor.IUserEditableElementDescriptor;
 import com.zeligsoft.cx.codegen.editor.IValidationFactory;
-import com.zeligsoft.cx.codegen.editor.UIProviderLicenser;
 import com.zeligsoft.cx.codegen.ui.utils.EditSourceJob;
 
 /**
@@ -64,8 +63,6 @@ public class EditSourceAction extends Action implements IUserEditableElementDesc
 	public ICodeLocator getCodeLocator() { return desc.getCodeLocator(); }
 	@Override
 	public IValidationFactory getValidationFactory() { return desc.getValidationFactory(); }
-	@Override
-	public UIProviderLicenser getLicenser() { return desc.getLicenser(); }
 	
 	@Override
 	public Iterable<IM2MTransformationDescriptor> getM2MDescriptors() { return desc.getM2MDescriptors(); }

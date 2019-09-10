@@ -131,7 +131,7 @@
          <context viewClass="org.eclipse.gmf.runtime.notation.Node"/>         
       </viewProvider>
    </extension>  
-   
+   <!--
    	<extension
          id="CCM ElementTypes"
          name="CCM ElementTypes"
@@ -296,6 +296,7 @@
 	      </propertySection>
 	   </propertySections>
 	</extension>
+	-->
    <extension
          point="com.zeligsoft.cx.ui.properties.customPropertySection">
       <PropertySection
@@ -335,74 +336,6 @@
             concept="CCM::CCM_Deployment::ContainerProcess"
             property="name">
       </PropertySection>         
-   </extension>
-   <extension
-         point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders">
-      <modelingAssistantProvider
-            class="com.zeligsoft.domain.omg.ccm.ui.providers.CCMModelingAssistantProvider">
-         <Priority
-               name="High">
-         </Priority>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="ccm__component_">
-            <method
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="Component">
-            </method>
-         </object>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="ccm__port_">
-            <method
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="Port">
-            </method>
-         </object>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="ccm__interface_">
-            <method
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="Interface">
-            </method>
-         </object>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="ccm__datatype_">
-            <method
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="DataType">
-            </method>
-         </object>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="ccm__enum_">
-            <method
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="Enumeration">
-            </method>
-         </object>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="ccm__part_">
-            <method
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="Property">
-            </method>
-         </object>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="ccm_home">
-            <method
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="Class">
-            </method>
-         </object>         
-         <context
-               elements="ccm__component_, ccm__port_, ccm__interface_, ccm__datatype_, ccm__enum_, ccm__part_, ccm_home">
-         </context>
-      </modelingAssistantProvider>
    </extension>
    
      <extension

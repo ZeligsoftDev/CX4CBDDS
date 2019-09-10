@@ -16,25 +16,9 @@
  */
 package com.zeligsoft.domain.omg.ccm.ui.edithelpers;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
-import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditorInput;
-import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramEditorInput;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
-import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
 import org.eclipse.gmf.runtime.emf.type.core.edithelper.AbstractEditHelperAdvice;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
-import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.ui.PlatformUI;
-
-import com.ibm.xtools.uml.type.UMLElementFactory;
-import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.ccm.CCMNames;
 
 /**
  * Create and open structure diagram when Domain is created
@@ -48,62 +32,63 @@ public class CCMDomainEditHelperAdvice extends AbstractEditHelperAdvice {
 	protected ICommand getAfterCreateCommand(CreateElementRequest request) {
 		final CreateElementRequest editRequest = request;
 
-		return new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(request.getContainer()),
-				"DomainEditHelper", null) { //$NON-NLS-1$
+//		return new AbstractTransactionalCommand(
+//				TransactionUtil.getEditingDomain(request.getContainer()),
+//				"DomainEditHelper", null) { //$NON-NLS-1$
+//
+//			@Override
+//			protected CommandResult doExecuteWithResult(
+//					IProgressMonitor monitor, IAdaptable info)
+//					throws ExecutionException {
+//
+//				EObject newEObject = editRequest.getNewElement();
+//				if (newEObject == null) {
+//					return null;
+//				}
+//
+//				if (!ZDLUtil.isZDLConcept(newEObject, CCMNames.DOMAIN)) {
+//					return null;
+//				}
 
-			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
-					throws ExecutionException {
-
-				EObject newEObject = editRequest.getNewElement();
-				if (newEObject == null) {
-					return null;
-				}
-
-				if (!ZDLUtil.isZDLConcept(newEObject, CCMNames.DOMAIN)) {
-					return null;
-				}
-
-				ICommand command = UMLElementFactory
-						.getCreateElementCommand(
-								newEObject,
-								ElementTypeRegistry
-										.getInstance()
-										.getType(
-												"org.eclipse.gmf.runtime.notation.structureDiagram")); //$NON-NLS-1$
-				try {
-					command.execute(null, null);
-
-					final CommandResult result = command.getCommandResult();
-
-					if (result != null
-							&& result.getReturnValue() instanceof Diagram) {
-						getEditingDomain().runExclusive(new Runnable() {
-
-							public void run() {
-								try {
-									IDiagramEditorInput diagramInput = new DiagramEditorInput(
-											(Diagram) result.getReturnValue());
-
-									PlatformUI
-											.getWorkbench()
-											.getActiveWorkbenchWindow()
-											.getActivePage()
-											.openEditor(diagramInput,
-													"ModelerDiagramEditor");//$NON-NLS-1$
-								} catch (Exception e) {
-									// do nothing
-								}
-							}
-						});
-					}
-				} catch (Exception e) {
-					// do nothing
-				}
-				return CommandResult.newOKCommandResult();
-			}
-		};
+//				ICommand command = UMLElementFactory
+//						.getCreateElementCommand(
+//								newEObject,
+//								ElementTypeRegistry
+//										.getInstance()
+//										.getType(
+//												"org.eclipse.gmf.runtime.notation.structureDiagram")); //$NON-NLS-1$
+//				try {
+//					command.execute(null, null);
+//
+//					final CommandResult result = command.getCommandResult();
+//
+//					if (result != null
+//							&& result.getReturnValue() instanceof Diagram) {
+//						getEditingDomain().runExclusive(new Runnable() {
+//
+//							public void run() {
+//								try {
+//									IDiagramEditorInput diagramInput = new DiagramEditorInput(
+//											(Diagram) result.getReturnValue());
+//
+//									PlatformUI
+//											.getWorkbench()
+//											.getActiveWorkbenchWindow()
+//											.getActivePage()
+//											.openEditor(diagramInput,
+//													"ModelerDiagramEditor");//$NON-NLS-1$
+//								} catch (Exception e) {
+//									// do nothing
+//								}
+//							}
+//						});
+//					}
+//				} catch (Exception e) {
+//					// do nothing
+//				}
+//				return CommandResult.newOKCommandResult();
+//			}
+//		};
+		return null;
 	}
 }

@@ -20,6 +20,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
 import com.zeligsoft.base.zdl.staticapi.core.ZObject;
@@ -53,6 +54,6 @@ public class ZIteratorExtensions {
             e.printStackTrace();
         }
         
-        return Iterators.emptyIterator();
+        return ImmutableSet.<T>of().iterator();
     }
 }

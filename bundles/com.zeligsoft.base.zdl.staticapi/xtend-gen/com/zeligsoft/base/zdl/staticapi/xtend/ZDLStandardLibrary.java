@@ -34,14 +34,12 @@ public class ZDLStandardLibrary {
     EObject _eContainer = self.eContainer();
     boolean _notEquals = (!Objects.equal(_eContainer, null));
     if (_notEquals) {
-      EObject _eContainer_1 = self.eContainer();
-      Object _create = ZDLFactoryRegistry.INSTANCE.<Object>create(_eContainer_1, Object.class);
-      zContainer = _create;
+      zContainer = ZDLFactoryRegistry.INSTANCE.<Object>create(
+        self.eContainer(), Object.class);
     }
     boolean _equals = Objects.equal(zContainer, null);
     if (_equals) {
-      EObject _eContainer_2 = self.eContainer();
-      zContainer = _eContainer_2;
+      zContainer = self.eContainer();
     }
     return zContainer;
   }
@@ -64,8 +62,7 @@ public class ZDLStandardLibrary {
       List<ZObject> retVal = new ArrayList<ZObject>();
       for (final Element next : elements) {
         {
-          ZObject _create = ZDLFactoryRegistry.INSTANCE.<ZObject>create(next, ZObject.class);
-          zWrapper = _create;
+          zWrapper = ZDLFactoryRegistry.INSTANCE.<ZObject>create(next, ZObject.class);
           boolean _notEquals = (!Objects.equal(zWrapper, null));
           if (_notEquals) {
             retVal.add(zWrapper);
@@ -111,8 +108,7 @@ public class ZDLStandardLibrary {
       List retVal = new ArrayList<Object>();
       for (final Object element : initialList) {
         if ((element instanceof List)) {
-          List _flatten = this.flatten(((List) element));
-          retVal.addAll(_flatten);
+          retVal.addAll(this.flatten(((List) element)));
         } else {
           retVal.add(element);
         }

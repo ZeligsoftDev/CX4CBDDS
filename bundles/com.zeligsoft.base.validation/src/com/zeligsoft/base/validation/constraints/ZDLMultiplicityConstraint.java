@@ -29,6 +29,7 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.emf.validation.model.ModelConstraint;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
+import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.Property;
 
 import com.zeligsoft.base.validation.l10n.Messages;
@@ -89,7 +90,7 @@ public class ZDLMultiplicityConstraint
 				: 1;
 		}
 
-		if (!attribute.includesCardinality(cardinality)) {
+		if (attribute.isMultivalued()) {
 			int lower = attribute.getLower();
 			int upper = attribute.getUpper();
 

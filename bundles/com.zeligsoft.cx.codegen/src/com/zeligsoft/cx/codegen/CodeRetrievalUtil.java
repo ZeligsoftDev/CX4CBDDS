@@ -26,13 +26,9 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.uml2.uml.NamedElement;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.codegen.io.CXGenFileStore;
 import com.zeligsoft.domain.zml.util.WorkerFunctionUtil;
@@ -188,21 +184,21 @@ public class CodeRetrievalUtil {
 
 	protected static EObject getModel(String modelURI) {
 
-		URI uri = URI.createURI(modelURI);
-		Resource res = UMLModeler.getEditingDomain().getResourceSet().getResource(uri, true);
-		EObject result = null;
-
-		if( res == null || !res.getErrors().isEmpty()) {
-			if( res == null ) { 
-				CodeGenPlugin.getDefault().error("Result of resource load is null for " + modelURI, null);
-			}
-			for( Diagnostic error : res.getErrors() ) {
-				CodeGenPlugin.getDefault().error("Error opening " + modelURI + ": " + error.getMessage(), null);
-			}
-		}
+//		URI uri = URI.createURI(modelURI);
+//		Resource res = UMLModeler.getEditingDomain().getResourceSet().getResource(uri, true);
+//		EObject result = null;
+//
+//		if( res == null || !res.getErrors().isEmpty()) {
+//			if( res == null ) { 
+//				CodeGenPlugin.getDefault().error("Result of resource load is null for " + modelURI, null);
+//			}
+//			for( Diagnostic error : res.getErrors() ) {
+//				CodeGenPlugin.getDefault().error("Error opening " + modelURI + ": " + error.getMessage(), null);
+//			}
+//		}
+//		
+//		result = res.getContents().get(0);
 		
-		result = res.getContents().get(0);
-		
-		return result;
+		return null;
 	}
 }

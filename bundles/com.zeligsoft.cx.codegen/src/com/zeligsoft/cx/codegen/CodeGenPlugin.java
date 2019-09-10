@@ -64,13 +64,13 @@ public class CodeGenPlugin extends ZeligsoftAbstractPlugin
 	public void start( BundleContext context ) throws Exception
 	{
 		super.start(context);
-		this.eobjectLocator.load();
+		//this.eobjectLocator.load();
 	}
 
 	@Override
 	public void stop( BundleContext context ) throws Exception
 	{
-		this.eobjectLocator.dispose();
+		//this.eobjectLocator.dispose();
 		super.stop(context);
 	}
 }

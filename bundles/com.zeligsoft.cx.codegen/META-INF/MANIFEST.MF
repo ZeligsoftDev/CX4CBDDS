@@ -17,9 +17,8 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.4.1",
  org.apache.commons.logging;bundle-version="1.0.4",
  org.eclipse.emf.mwe.core;bundle-version="[1.0.0,2.0.0)",
  org.eclipse.emf.mwe.utils;bundle-version="[1.0.0,2.0.0)",
- org.eclipse.xpand;bundle-version="[1.0.0,2.1.0)",
- com.zeligsoft.domain.zml;bundle-version="[3.5.0,3.6.0)",
- com.ibm.xtools.modeler;bundle-version="[7.60.0,8.0.0)"
+ org.eclipse.xpand;bundle-version="2.2.0",
+ com.zeligsoft.domain.zml;bundle-version="[3.5.0,3.6.0)"
 Export-Package: com.zeligsoft.cx.codegen,
  com.zeligsoft.cx.codegen.editor,
  com.zeligsoft.cx.codegen.io,
@@ -28,4 +27,3 @@ Export-Package: com.zeligsoft.cx.codegen,
 Bundle-Activator: com.zeligsoft.cx.codegen.CodeGenPlugin
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Import-Package: com.zeligsoft.base.licensing

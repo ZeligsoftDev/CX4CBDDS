@@ -25,7 +25,6 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Profile;
 
-import com.ibm.xtools.uml.navigator.ModelServerElement;
 import com.zeligsoft.base.ui.menus.providers.DomainSpecificMenuProvider;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
@@ -43,12 +42,13 @@ public class CXMenuPropertyTester extends PropertyTester {
 		EObject testObject = null;
 		if (receiver instanceof List && ((List<Object>) receiver).size() > 0) {
 			Object obj = ((List<Object>) receiver).get(0);
-			if (obj instanceof ModelServerElement) {
-				Object element = ((ModelServerElement) obj).getElement();
-				if (element instanceof EObject) {
-					testObject = (EObject) element;
-				}
-			}
+			// to do: papyrus model explorer element
+//			if (obj instanceof ModelServerElement) {
+//				Object element = ((ModelServerElement) obj).getElement();
+//				if (element instanceof EObject) {
+//					testObject = (EObject) element;
+//				}
+//			}
 		}
 		if (testObject != null) {
 			if (testObject instanceof Element) {

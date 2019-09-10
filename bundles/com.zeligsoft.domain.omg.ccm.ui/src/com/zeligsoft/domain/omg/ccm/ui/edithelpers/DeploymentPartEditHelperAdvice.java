@@ -30,7 +30,6 @@ import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.Package;
 
-import com.ibm.xtools.uml.type.UMLElementFactory;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
@@ -67,7 +66,7 @@ public class DeploymentPartEditHelperAdvice extends AbstractEditHelperAdvice {
 				InstanceSpecification partInstance = instanceValue.getInstance();
 				if (partInstance != null) {
 					Package instanceContainer = (Package) partInstance.eContainer();
-					UMLElementFactory.destroyElement(instanceContainer, null);
+					//UMLElementFactory.destroyElement(instanceContainer, null);
 				}
 				return CommandResult.newOKCommandResult();
 			}

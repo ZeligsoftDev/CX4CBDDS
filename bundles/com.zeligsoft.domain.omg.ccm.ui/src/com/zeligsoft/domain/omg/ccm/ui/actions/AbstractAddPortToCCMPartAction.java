@@ -36,8 +36,6 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Port;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
-import com.zeligsoft.base.diagram.utils.BaseDiagramUtil;
 import com.zeligsoft.base.ui.menus.actions.ICXAction;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeUtil;
@@ -89,39 +87,39 @@ public abstract class AbstractAddPortToCCMPartAction extends Action implements I
 		if (type == null || definition == null) {
 			return;
 		}
-		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-				UMLModeler.getEditingDomain(),
-				Messages.AddCCMAssemblyImplementationToComponent, Collections.EMPTY_MAP,
-				null) {
-
-			@Override
-			protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-					IAdaptable info) throws ExecutionException {
-
-				CreateElementRequest request = new CreateElementRequest(definition, type);
-				request.setParameter("uml.port.type", "unspecified"); //$NON-NLS-1$//$NON-NLS-2$
-				try {
-					CommandResult cmdResult = BaseUIUtil.createModelElement(request);
-					if (cmdResult.getReturnValue() != null
-							&& cmdResult.getReturnValue() instanceof Port) {
-						port = (Port) cmdResult.getReturnValue();
-					}
-				} catch (ExecutionException e) {
-					throw e;
-				}
-
-				return CommandResult.newOKCommandResult();
-			}
-		};
-		try {
-			OperationHistoryFactory.getOperationHistory()
-					.execute(editCommand, null, null);
-		} catch (ExecutionException e) {
-			Activator.getDefault().error("Failed to create requested port", e); //$NON-NLS-1$
-		}
-		if (port != null && !BaseDiagramUtil.startInlineEdit(port)) {
-			BaseUIUtil.startInLineEdit(port);
-		}
+//		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
+//				UMLModeler.getEditingDomain(),
+//				Messages.AddCCMAssemblyImplementationToComponent, Collections.EMPTY_MAP,
+//				null) {
+//
+//			@Override
+//			protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
+//					IAdaptable info) throws ExecutionException {
+//
+//				CreateElementRequest request = new CreateElementRequest(definition, type);
+//				request.setParameter("uml.port.type", "unspecified"); //$NON-NLS-1$//$NON-NLS-2$
+//				try {
+//					CommandResult cmdResult = BaseUIUtil.createModelElement(request);
+//					if (cmdResult.getReturnValue() != null
+//							&& cmdResult.getReturnValue() instanceof Port) {
+//						port = (Port) cmdResult.getReturnValue();
+//					}
+//				} catch (ExecutionException e) {
+//					throw e;
+//				}
+//
+//				return CommandResult.newOKCommandResult();
+//			}
+//		};
+//		try {
+//			OperationHistoryFactory.getOperationHistory()
+//					.execute(editCommand, null, null);
+//		} catch (ExecutionException e) {
+//			Activator.getDefault().error("Failed to create requested port", e); //$NON-NLS-1$
+//		}
+//		if (port != null && !BaseDiagramUtil.startInlineEdit(port)) {
+//			BaseUIUtil.startInLineEdit(port);
+//		}
 	}
 
 	/**

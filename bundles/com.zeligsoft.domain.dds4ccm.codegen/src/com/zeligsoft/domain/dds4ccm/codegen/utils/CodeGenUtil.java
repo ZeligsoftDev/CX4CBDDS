@@ -39,11 +39,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.uml2.uml.NamedElement;
 import org.osgi.framework.Bundle;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.util.WorkflowUtil;
 import com.zeligsoft.cx.build.factory.ProjectFactory;
 import com.zeligsoft.cx.codegen.CodeGenWorkflowConstants;
@@ -52,7 +50,6 @@ import com.zeligsoft.domain.dds4ccm.codegen.l10n.Messages;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.DDS4CCMGenerationListener;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
-import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMValidationFactory;
 import com.zeligsoft.domain.dds4ccm.utils.ICodeGenEvent;
 
 /**
@@ -162,55 +159,55 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 	 */
 	public IStatus validateModel(URI uri) {
 		
-		boolean isExistentURI = UMLModeler.getEditingDomain().getResourceSet().getURIConverter().exists(uri, null);
-		
-		if(!isExistentURI){
-			return createStatus(IStatus.ERROR, "No resource exists with URI: "+uri);
-		}
-		
-		DDS4CCMValidationFactory factory = new DDS4CCMValidationFactory();
-		IBatchValidator validator = factory.createValidator();
-		validator.setIncludeLiveConstraints(true);
-		
-		boolean isResourceLoadedAtEntry = true;
-		// For a closed model: 
-		//	 - for the first execution, resource is 'null' because resource with uri does not exist in UMLModeler editing domain resourceSet.
-		//   - for subsequent executions, resource is 'not null' and 'not loaded'
-		// For an opened model: resource is 'not null' and 'loaded'
-		
-		Resource resource = UMLModeler.getEditingDomain().getResourceSet().getResource(uri, false);
-		
-		if(resource == null){
-		
-			resource = UMLModeler.getEditingDomain().getResourceSet().getResource(uri, true);
-			isResourceLoadedAtEntry = false;
-			
-			// if resource is still null, return a failure status
-			if(resource == null){
-				return createStatus(IStatus.ERROR, "Failed to create resource for URI: "+uri);
-			}
-		}else{
-			isResourceLoadedAtEntry = resource.isLoaded();
-			
-			if(!isResourceLoadedAtEntry){
-				try{
-					resource.load(Collections.EMPTY_MAP);
-				}catch(IOException e) {
-					return createStatus(IStatus.ERROR, e.getMessage());
-				}	
-			}
-			
-		}
-		
-		IStatus result = validator.validate(resource.getContents().get(0));
-	
-		// An unchecked exception java.util.ConcurrentModificationException can occur for once during validation 
-		// due to an issue with an IBM constraint: "com.ibm.xtools.uml.validation.components.assembly"; ignore
-				
-		if(!isResourceLoadedAtEntry && resource.isLoaded()){
-			resource.unload();
-		}
-		return result;
+//		boolean isExistentURI = UMLModeler.getEditingDomain().getResourceSet().getURIConverter().exists(uri, null);
+//		
+//		if(!isExistentURI){
+//			return createStatus(IStatus.ERROR, "No resource exists with URI: "+uri);
+//		}
+//		
+//		DDS4CCMValidationFactory factory = new DDS4CCMValidationFactory();
+//		IBatchValidator validator = factory.createValidator();
+//		validator.setIncludeLiveConstraints(true);
+//		
+//		boolean isResourceLoadedAtEntry = true;
+//		// For a closed model: 
+//		//	 - for the first execution, resource is 'null' because resource with uri does not exist in UMLModeler editing domain resourceSet.
+//		//   - for subsequent executions, resource is 'not null' and 'not loaded'
+//		// For an opened model: resource is 'not null' and 'loaded'
+//		
+//		Resource resource = UMLModeler.getEditingDomain().getResourceSet().getResource(uri, false);
+//		
+//		if(resource == null){
+//		
+//			resource = UMLModeler.getEditingDomain().getResourceSet().getResource(uri, true);
+//			isResourceLoadedAtEntry = false;
+//			
+//			// if resource is still null, return a failure status
+//			if(resource == null){
+//				return createStatus(IStatus.ERROR, "Failed to create resource for URI: "+uri);
+//			}
+//		}else{
+//			isResourceLoadedAtEntry = resource.isLoaded();
+//			
+//			if(!isResourceLoadedAtEntry){
+//				try{
+//					resource.load(Collections.EMPTY_MAP);
+//				}catch(IOException e) {
+//					return createStatus(IStatus.ERROR, e.getMessage());
+//				}	
+//			}
+//			
+//		}
+//		
+//		IStatus result = validator.validate(resource.getContents().get(0));
+//	
+//		// An unchecked exception java.util.ConcurrentModificationException can occur for once during validation 
+//		// due to an issue with an IBM constraint: "com.ibm.xtools.uml.validation.components.assembly"; ignore
+//				
+//		if(!isResourceLoadedAtEntry && resource.isLoaded()){
+//			resource.unload();
+//		}
+		return Status.OK_STATUS;
 	}
 
 	private IStatus doTransform(String pluginId, String workflowPath, URI uri) {

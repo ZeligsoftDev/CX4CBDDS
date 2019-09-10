@@ -38,7 +38,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.uml2.uml.Package;
 
-import com.zeligsoft.base.diagram.utils.BaseDiagramUtil;
 import com.zeligsoft.base.ui.commands.DestroyDefaultDiagramCommand;
 import com.zeligsoft.base.ui.menus.Activator;
 import com.zeligsoft.base.ui.menus.l10.Messages;
@@ -117,9 +116,6 @@ public class CreateConceptAction extends Action {
 	public void run() {
 		// set up the create request
 		final CreateElementRequest req = new CreateElementRequest(context, type);
-		if (BaseUIUtil.isUMLPort(type)) {
-			req.setParameter("uml.port.type", "unspecified"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
 		final ICommand createCommand = BaseUIUtil.getCommand(req);;
 
 		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
@@ -163,9 +159,6 @@ public class CreateConceptAction extends Action {
 				} catch (ExecutionException e) {
 					// do nothing.
 				}
-			}
-			if (!BaseDiagramUtil.startInlineEdit((EObject) result)) {
-				BaseUIUtil.startInLineEdit((EObject) result);
 			}
 		}
 	}

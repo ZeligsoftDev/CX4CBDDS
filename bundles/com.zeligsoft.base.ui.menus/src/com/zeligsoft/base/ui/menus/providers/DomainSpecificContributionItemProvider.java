@@ -22,8 +22,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.common.ui.action.ActionMenuManager;
 import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.AbstractContributionItemProvider;
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
-import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
@@ -40,7 +38,6 @@ import org.eclipse.ui.actions.ActionGroup;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.uml2.uml.Element;
 
-import com.zeligsoft.base.diagram.utils.BaseDiagramUtil;
 import com.zeligsoft.base.ui.menus.l10.Messages;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 
@@ -107,11 +104,6 @@ public class DomainSpecificContributionItemProvider extends
 				return;
 			}
 			Element element = (Element) selectedEObject;
-			
-			View partView = BaseDiagramUtil.getContextEditPartView();
-			if(partView instanceof Diagram){
-				return;
-			}
 			
 			if(element != null) {
 				

@@ -9,13 +9,6 @@
       </mapping>
    </extension>
    <extension
-         point="com.ibm.xtools.uml.msl.UMLLibraries">
-      <UMLLibrary
-            name="DDS DCPS Connector"
-            path="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml">
-      </UMLLibrary>
-   </extension>
-   <extension
    		point="com.zeligsoft.domain.idl3plus.model_library_configuration">
    		<connector name="DDS_DCPS::CCM_DDS::Typed">
    			<generationOptions>
@@ -60,4 +53,11 @@
    			</generationOptions>
    		</module>
    	</extension>
+   <extension
+         point="org.eclipse.papyrus.uml.extensionpoints.UMLLibrary">
+      <library
+            name="DDS DCPS Connector"
+            path="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml">
+      </library>
+   </extension>
 </plugin>

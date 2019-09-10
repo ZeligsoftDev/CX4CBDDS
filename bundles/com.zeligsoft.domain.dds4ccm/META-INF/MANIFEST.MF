@@ -16,7 +16,6 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.6.0,4.0.0)",
  org.eclipse.emf.validation;bundle-version="[1.4.0,2.0.0)",
  com.zeligsoft.cx.codegen;bundle-version="[3.5.0,3.6.0)",
  com.zeligsoft.domain.idl3plus;bundle-version="[3.5.0,3.6.0)";visibility:=reexport,
- org.eclipse.gmf.runtime.emf.core.compatibility;bundle-version="[1.60.0,2.0.0)",
  org.eclipse.gmf.runtime.emf.commands.core;bundle-version="[1.4.0,2.0.0)",
  com.zeligsoft.domain.dds4ccm.api;bundle-version="3.5.0",
  com.zeligsoft.domain.omg.ccm.api;bundle-version="3.5.0",
@@ -24,9 +23,10 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.6.0,4.0.0)",
  com.zeligsoft.domain.zml.api;bundle-version="3.5.0",
  com.zeligsoft.domain.omg.corba.api;bundle-version="3.5.0",
  com.zeligsoft.domain.idl3plus.api;bundle-version="3.5.0",
- com.ibm.xtools.modeler.ui
+ org.eclipse.papyrus.uml.extensionpoints
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: com.zeligsoft.domain.dds4ccm,
  com.zeligsoft.domain.dds4ccm.utils
 Bundle-Localization: plugin
+Automatic-Module-Name: com.zeligsoft.domain.dds4ccm

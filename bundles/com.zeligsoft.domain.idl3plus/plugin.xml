@@ -28,19 +28,6 @@
    </extension>
    
    <extension
-         id="com.zeligsoft.domain.idl3plus.profiles"
-         name="IDL3Plus Profile"
-         point="com.ibm.xtools.uml.msl.UMLProfiles">
-      <UMLProfile
-            id="com.zeligsoft.domain.idl3plus"
-            name="%profile.idl3plus.name"
-            path="pathmap://IDL3PLUS_PROFILES/idl3plus.profile.uml"
-            required="false"
-            visible="true">
-      </UMLProfile>
-   </extension>
-   
-   <extension
          point="com.zeligsoft.base.validation.preload">
       <zdl uri="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml" />
    </extension>

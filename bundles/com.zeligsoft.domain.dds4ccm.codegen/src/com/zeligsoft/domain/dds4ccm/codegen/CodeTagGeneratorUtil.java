@@ -39,6 +39,7 @@ import org.eclipse.emf.mwe.core.WorkflowEngine;
 import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.issues.IssuesImpl;
 import org.eclipse.emf.mwe.core.monitor.NullProgressMonitor;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Operation;
@@ -48,7 +49,6 @@ import org.eclipse.xpand2.output.Outlet;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.build.factory.ProjectFactory;
 import com.zeligsoft.cx.codegen.CodeGenPlugin;
@@ -202,7 +202,7 @@ public class CodeTagGeneratorUtil extends CodeRetrievalUtil {
 				xmlPath = xmlPath.append(filename);
 				IPath tempPath = xmlPath.addFileExtension("generated");
 
-				ResourceSet rset = UMLModeler.getEditingDomain()
+				ResourceSet rset = TransactionUtil.getEditingDomain(monolithicImplementation)
 						.getResourceSet();
 				Resource res = rset.createResource(URI
 						.createPlatformResourceURI(tempPath.toString(), true));

@@ -492,15 +492,15 @@ public class CXPropertiesWidgetFactory extends CXWidgetFactory{
 			if (object == null) {
 				viewToolBar.getItem(0).setEnabled(false);
 			}
-			viewToolBar.getItem(0).addSelectionListener(new SelectionAdapter() {
-
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					if (object != null) {
-						BaseUIUtil.showInProjectExplorer(object);
-					}
-				}
-			});
+//			viewToolBar.getItem(0).addSelectionListener(new SelectionAdapter() {
+//
+//				@Override
+//				public void widgetSelected(SelectionEvent e) {
+//					if (object != null) {
+//						BaseUIUtil.showInProjectExplorer(object);
+//					}
+//				}
+//			});
 		}
 		
 		return widgetMap;
@@ -806,7 +806,7 @@ public class CXPropertiesWidgetFactory extends CXWidgetFactory{
 		final boolean isIntegerType;
 
 		if (descriptor.getProperty().getType().getLabel().equals(
-			UMLPackage.Literals.INTEGER.getName())) {
+			UMLPackage.Literals.LITERAL_INTEGER.getName())) {
 			isIntegerType = true;
 		} else {
 			isIntegerType = false;

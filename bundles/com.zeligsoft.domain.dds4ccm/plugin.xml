@@ -54,6 +54,13 @@
                id="org.eclipse.gmf.runtime.emf.core.compatibility.MSLEditingDomain">
          </editingDomain>
       </listener>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.uml.extensionpoints.UMLProfile">
+      <profile
+            name="cxDDS4CCM"
+            path="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml">
+      </profile>
    </extension>   
    
 </plugin>

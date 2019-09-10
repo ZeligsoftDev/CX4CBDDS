@@ -95,7 +95,7 @@ public class ZDLMultiplicityConstraintProvider
 	Collection<? extends IModelConstraint> getConstraints(Class concept) {
 		CacheAdapter cache = CacheAdapter.getCacheAdapter(concept);
 		if (cache == null) {
-			cache = CacheAdapter.INSTANCE;
+			cache = CacheAdapter.getInstance();
 			cache.adapt(concept);
 		}
 

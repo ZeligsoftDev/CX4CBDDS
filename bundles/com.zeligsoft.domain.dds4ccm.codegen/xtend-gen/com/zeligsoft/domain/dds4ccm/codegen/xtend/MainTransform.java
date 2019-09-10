@@ -9,7 +9,6 @@ import com.zeligsoft.base.zdl.staticapi.xtend.ZDLStandardLibrary;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.codegen.UserEditableRegion;
 import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.IDLFileDependency;
-import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.IDLFileSpecification;
 import com.zeligsoft.domain.dds4ccm.codegen.codetaginfo.codetaginfo.CodeTag;
 import com.zeligsoft.domain.dds4ccm.codegen.codetaginfo.codetaginfo.CodeTagContext;
 import com.zeligsoft.domain.dds4ccm.codegen.codetaginfo.codetaginfo.CodeTagInfo;
@@ -24,6 +23,7 @@ import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModule;
 import com.zeligsoft.domain.zml.api.ZML_Component.ComponentInterface;
 import com.zeligsoft.domain.zml.api.ZML_Component.Port;
 import com.zeligsoft.domain.zml.api.ZML_Component.WorkerFunction;
+import com.zeligsoft.domain.zml.api.ZML_Core.NamedElement;
 import com.zeligsoft.domain.zml.util.WorkerFunctionUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 import java.util.ArrayList;
@@ -35,12 +35,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.uml2.common.util.UML2Util;
-import org.eclipse.uml2.uml.Component;
-import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
-import org.eclipse.uml2.uml.Type;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -75,19 +71,13 @@ public class MainTransform {
   private final HashMap<ArrayList<?>, CodeTagInfo> _createCache_mainTransform = CollectionLiterals.newHashMap();
   
   private void _init_mainTransform(final CodeTagInfo result, final MonolithicImplementation impl) {
-    EList<String> _filename = result.getFilename();
-    String _fileName = this.fileName(impl);
-    _filename.add(_fileName);
-    Component _asComponent = impl.asComponent();
-    EList<Operation> _ownedOperations = _asComponent.getOwnedOperations();
-    final List sortedOps = BaseUtil.sortEObjectsByName(_ownedOperations);
+    result.getFilename().add(this.fileName(impl));
+    final List sortedOps = BaseUtil.sortEObjectsByName(impl.asComponent().getOwnedOperations());
     for (final Object op : sortedOps) {
       {
         final ZObject worker = this._zDLStandardLibrary.zObject(((Operation) op));
         if ((worker instanceof WorkerFunction)) {
-          EList<CodeTag> _codetag = result.getCodetag();
-          CodeTag _createCodeTag = this.createCodeTag(((WorkerFunction) worker), impl);
-          CollectionExtensions.<CodeTag>addAll(_codetag, _createCodeTag);
+          CollectionExtensions.<CodeTag>addAll(result.getCodetag(), this.createCodeTag(((WorkerFunction) worker), impl));
         }
       }
     }
@@ -111,86 +101,51 @@ public class MainTransform {
   private final HashMap<ArrayList<?>, CodeTag> _createCache_createCodeTag = CollectionLiterals.newHashMap();
   
   private void _init_createCodeTag(final CodeTag result, final WorkerFunction worker, final MonolithicImplementation impl) {
-    String _name = worker.getName();
-    boolean _startsWith = _name.startsWith("_attr_");
+    boolean _startsWith = worker.getName().startsWith("_attr_");
     if (_startsWith) {
-      EList<String> _name_1 = result.getName();
-      String _name_2 = worker.getName();
-      String _name_3 = worker.getName();
-      int _length = _name_3.length();
+      String _name = worker.getName();
+      int _length = worker.getName().length();
       int _minus = (_length - 4);
-      String _substring = _name_2.substring(6, _minus);
-      _name_1.add(_substring);
+      result.getName().add(_name.substring(6, _minus));
     } else {
-      String _name_4 = worker.getName();
-      boolean _startsWith_1 = _name_4.startsWith("_pattr_");
+      boolean _startsWith_1 = worker.getName().startsWith("_pattr_");
       if (_startsWith_1) {
-        EList<String> _name_5 = result.getName();
-        String _name_6 = worker.getName();
-        String _name_7 = worker.getName();
-        int _length_1 = _name_7.length();
+        String _name_1 = worker.getName();
+        int _length_1 = worker.getName().length();
         int _minus_1 = (_length_1 - 4);
-        String _substring_1 = _name_6.substring(7, _minus_1);
-        String[] _split = _substring_1.split("___");
-        String _get = _split[1];
-        _name_5.add(_get);
+        result.getName().add(_name_1.substring(7, _minus_1).split("___")[1]);
       } else {
-        String _name_8 = worker.getName();
-        boolean _startsWith_2 = _name_8.startsWith("_hattr_");
+        boolean _startsWith_2 = worker.getName().startsWith("_hattr_");
         if (_startsWith_2) {
-          EList<String> _name_9 = result.getName();
-          String _name_10 = worker.getName();
-          String _name_11 = worker.getName();
-          int _length_2 = _name_11.length();
+          String _name_2 = worker.getName();
+          int _length_2 = worker.getName().length();
           int _minus_2 = (_length_2 - 4);
-          String _substring_2 = _name_10.substring(7, _minus_2);
-          String[] _split_1 = _substring_2.split("___");
-          String _get_1 = _split_1[1];
-          _name_9.add(_get_1);
+          result.getName().add(_name_2.substring(7, _minus_2).split("___")[1]);
         } else {
           boolean _prependName = this.prependName(worker);
           if (_prependName) {
-            EList<String> _name_12 = result.getName();
-            String _name_13 = impl.getName();
-            String _name_14 = worker.getName();
-            String _plus = (_name_13 + _name_14);
-            _name_12.add(_plus);
+            EList<String> _name_3 = result.getName();
+            String _name_4 = impl.getName();
+            String _name_5 = worker.getName();
+            String _plus = (_name_4 + _name_5);
+            _name_3.add(_plus);
           } else {
-            String _name_15 = worker.getName();
-            boolean _contains = _name_15.contains("_EPI_");
+            boolean _contains = worker.getName().contains("_EPI_");
             if (_contains) {
-              EList<String> _name_16 = result.getName();
-              String _name_17 = worker.getName();
-              String _replace = _name_17.replace("_EPI_", "_");
-              _name_16.add(_replace);
+              result.getName().add(worker.getName().replace("_EPI_", "_"));
             } else {
-              EList<String> _name_18 = result.getName();
-              String _name_19 = worker.getName();
-              _name_18.add(_name_19);
+              result.getName().add(worker.getName());
             }
           }
         }
       }
     }
-    EList<String> _uuid = result.getUuid();
-    String _uuid_1 = worker.getUuid();
-    _uuid.add(_uuid_1);
-    EList<CodeTagType> _type = result.getType();
-    CodeTagType _workerType = this.getWorkerType(worker);
-    _type.add(_workerType);
-    EList<String> _tag_begin = result.getTag_begin();
-    String _userEditBegin = this.userEditBegin(worker, "C++");
-    _tag_begin.add(_userEditBegin);
-    EList<String> _contents = result.getContents();
-    String _workerFunctionCode = this.workerFunctionCode(worker, "C++");
-    String _xmlEncode = this.xmlEncode(_workerFunctionCode);
-    _contents.add(_xmlEncode);
-    EList<String> _tag_end = result.getTag_end();
-    String _userEditEnd = this.userEditEnd();
-    _tag_end.add(_userEditEnd);
-    EList<CodeTagContext> _contextinfo = result.getContextinfo();
-    CodeTagContext _createContext = this.createContext(worker);
-    _contextinfo.add(_createContext);
+    result.getUuid().add(worker.getUuid());
+    result.getType().add(this.getWorkerType(worker));
+    result.getTag_begin().add(this.userEditBegin(worker, "C++"));
+    result.getContents().add(this.xmlEncode(this.workerFunctionCode(worker, "C++")));
+    result.getTag_end().add(this.userEditEnd());
+    result.getContextinfo().add(this.createContext(worker));
   }
   
   public CodeTagContext createContext(final WorkerFunction worker) {
@@ -212,34 +167,21 @@ public class MainTransform {
   
   private void _init_createContext(final CodeTagContext result, final WorkerFunction worker) {
     final CodeTagType workerType = this.getWorkerType(worker);
-    EList<String> _component_name = result.getComponent_name();
-    String _workerOwnerName = this.workerOwnerName(worker);
-    _component_name.add(_workerOwnerName);
-    String _name = worker.getName();
-    boolean _startsWith = _name.startsWith("_home_");
+    result.getComponent_name().add(this.workerOwnerName(worker));
+    boolean _startsWith = worker.getName().startsWith("_home_");
     if (_startsWith) {
-      EList<String> _class_name = result.getClass_name();
       StringConcatenation _builder = new StringConcatenation();
-      Home _home = this.getHome(worker);
-      String _name_1 = _home.getName();
-      _builder.append(_name_1, "");
-      _builder.append("_exec_i");
-      String _string = _builder.toString();
-      _class_name.add(_string);
+      _builder.append("咸orker.home.name\ufffd_exec_i");
+      result.getClass_name().add(_builder.toString());
     } else {
       boolean _hasClassName = this.hasClassName(worker);
       if (_hasClassName) {
-        EList<String> _class_name_1 = result.getClass_name();
-        String _className = this.getClassName(worker);
-        _class_name_1.add(_className);
+        result.getClass_name().add(this.getClassName(worker));
       }
     }
     boolean _equals = Objects.equal(workerType, CodeTagType.CLASSGENERATEDOPERATIONIMPL);
     if (_equals) {
-      EList<String> _operation_name = result.getOperation_name();
-      EList<String> _class_name_2 = result.getClass_name();
-      String _operationName = this.getOperationName(worker, _class_name_2);
-      _operation_name.add(_operationName);
+      result.getOperation_name().add(this.getOperationName(worker, result.getClass_name()));
     }
   }
   
@@ -247,26 +189,14 @@ public class MainTransform {
     String _xblockexpression = null;
     {
       String result = this.trimPrefix(worker);
-      boolean _or = false;
-      String _name = worker.getName();
-      boolean _endsWith = _name.endsWith("destructor_operation_impl");
-      if (_endsWith) {
-        _or = true;
-      } else {
-        String _name_1 = worker.getName();
-        boolean _endsWith_1 = _name_1.endsWith("constructor_operation_impl");
-        _or = _endsWith_1;
-      }
-      if (_or) {
+      if ((worker.getName().endsWith("destructor_operation_impl") || worker.getName().endsWith("constructor_operation_impl"))) {
         boolean _isEmpty = class_name.isEmpty();
         boolean _not = (!_isEmpty);
         if (_not) {
-          String _get = class_name.get(0);
-          result = _get;
+          result = class_name.get(0);
         }
-        String _name_2 = worker.getName();
-        boolean _endsWith_2 = _name_2.endsWith("destructor_operation_impl");
-        if (_endsWith_2) {
+        boolean _endsWith = worker.getName().endsWith("destructor_operation_impl");
+        if (_endsWith) {
           result = ("~" + result);
         }
       }
@@ -279,9 +209,7 @@ public class MainTransform {
     String _xblockexpression = null;
     {
       final Object container = self.zContainer();
-      NamedElement _asNamedElement = self.asNamedElement();
-      String _name = _asNamedElement.getName();
-      String _fileName = this.fileName(container, _name);
+      String _fileName = this.fileName(container, self.asNamedElement().getName());
       _xblockexpression = (_fileName + ".taginfo.xml");
     }
     return _xblockexpression;
@@ -298,9 +226,7 @@ public class MainTransform {
   private String _fileName(final CORBAModule self, final String name) {
     String _xblockexpression = null;
     {
-      NamedElement _asNamedElement = self.asNamedElement();
-      EList<Dependency> _clientDependencies = _asNamedElement.getClientDependencies();
-      final List<IDLFileDependency> filedependency = this._zListExtensions.<IDLFileDependency>typeSelect(_clientDependencies, IDLFileDependency.type);
+      final List<IDLFileDependency> filedependency = this._zListExtensions.<IDLFileDependency>typeSelect(self.asNamedElement().getClientDependencies(), IDLFileDependency.type);
       String _xifexpression = null;
       boolean _isEmpty = filedependency.isEmpty();
       boolean _not = (!_isEmpty);
@@ -308,26 +234,15 @@ public class MainTransform {
         String _xblockexpression_1 = null;
         {
           final IDLFileDependency firstFileDependency = IterableExtensions.<IDLFileDependency>head(filedependency);
-          Object _zContainer = self.zContainer();
           StringConcatenation _builder = new StringConcatenation();
-          IDLFileSpecification _file = firstFileDependency.getFile();
-          String _filename = _file.getFilename();
-          _builder.append(_filename, "");
-          _builder.append("_");
-          _builder.append(name, "");
-          String _string = _builder.toString();
-          _xblockexpression_1 = this.fileName(_zContainer, _string);
+          _builder.append("剌irstFileDependency.file.filename\ufffd_南ame\ufffd");
+          _xblockexpression_1 = this.fileName(self.zContainer(), _builder.toString());
         }
         _xifexpression = _xblockexpression_1;
       } else {
-        Object _zContainer = self.zContainer();
         StringConcatenation _builder = new StringConcatenation();
-        String _name = self.getName();
-        _builder.append(_name, "");
-        _builder.append("_");
-        _builder.append(name, "");
-        String _string = _builder.toString();
-        _xifexpression = this.fileName(_zContainer, _string);
+        _builder.append("哀elf.name\ufffd_南ame\ufffd");
+        _xifexpression = this.fileName(self.zContainer(), _builder.toString());
       }
       _xblockexpression = _xifexpression;
     }
@@ -338,20 +253,17 @@ public class MainTransform {
     return name;
   }
   
-  private String _fileName(final com.zeligsoft.domain.zml.api.ZML_Core.NamedElement self, final String name) {
-    Object _zContainer = self.zContainer();
-    return this.fileName(_zContainer, name);
+  private String _fileName(final NamedElement self, final String name) {
+    return this.fileName(self.zContainer(), name);
   }
   
   private String _fileName(final org.eclipse.uml2.uml.Package self, final String name) {
-    Object _zContainer = this._zDLStandardLibrary.zContainer(self);
-    return this.fileName(_zContainer, name);
+    return this.fileName(this._zDLStandardLibrary.zContainer(self), name);
   }
   
   private boolean prependName(final WorkerFunction worker) {
     boolean _xifexpression = false;
-    String _name = worker.getName();
-    boolean _startsWith = _name.startsWith("_home_");
+    boolean _startsWith = worker.getName().startsWith("_home_");
     if (_startsWith) {
       _xifexpression = true;
     } else {
@@ -360,17 +272,7 @@ public class MainTransform {
       boolean _notEquals = (!Objects.equal(_workerTypeForNullPort, CodeTagType.CLASSGENERATEDOPERATIONIMPL));
       if (_notEquals) {
         boolean _xifexpression_2 = false;
-        boolean _or = false;
-        String _name_1 = worker.getName();
-        boolean _contains = _name_1.contains("_CSL_");
-        if (_contains) {
-          _or = true;
-        } else {
-          String _name_2 = worker.getName();
-          boolean _contains_1 = _name_2.contains("_EPI_");
-          _or = _contains_1;
-        }
-        if (_or) {
+        if ((worker.getName().contains("_CSL_") || worker.getName().contains("_EPI_"))) {
           _xifexpression_2 = false;
         } else {
           _xifexpression_2 = true;
@@ -378,42 +280,30 @@ public class MainTransform {
         _xifexpression_1 = _xifexpression_2;
       } else {
         boolean _xifexpression_3 = false;
-        boolean _or_1 = false;
-        String _name_3 = worker.getName();
-        boolean _equals = _name_3.equals("_destructor_operation_impl");
-        if (_equals) {
-          _or_1 = true;
-        } else {
-          String _name_4 = worker.getName();
-          boolean _equals_1 = _name_4.equals("_constructor_operation_impl");
-          _or_1 = _equals_1;
-        }
-        if (_or_1) {
+        if ((worker.getName().equals("_destructor_operation_impl") || worker.getName().equals("_constructor_operation_impl"))) {
           return true;
         } else {
           boolean _switchResult = false;
-          String _name_5 = worker.getName();
+          String _name = worker.getName();
           boolean _matched = false;
+          if (Objects.equal(_name, "_ccm_activate")) {
+            _matched=true;
+            _switchResult = true;
+          }
           if (!_matched) {
-            if (Objects.equal(_name_5, "_ccm_activate")) {
+            if (Objects.equal(_name, "_ccm_passivate")) {
               _matched=true;
               _switchResult = true;
             }
           }
           if (!_matched) {
-            if (Objects.equal(_name_5, "_ccm_passivate")) {
+            if (Objects.equal(_name, "_ccm_remove")) {
               _matched=true;
               _switchResult = true;
             }
           }
           if (!_matched) {
-            if (Objects.equal(_name_5, "_ccm_remove")) {
-              _matched=true;
-              _switchResult = true;
-            }
-          }
-          if (!_matched) {
-            if (Objects.equal(_name_5, "_configuration_complete")) {
+            if (Objects.equal(_name, "_configuration_complete")) {
               _matched=true;
               _switchResult = true;
             }
@@ -438,28 +328,11 @@ public class MainTransform {
       _xifexpression = this.getWorkerTypeForNonNullPort(worker);
     } else {
       CodeTagType _xifexpression_1 = null;
-      boolean _or = false;
-      boolean _or_1 = false;
-      String _name = worker.getName();
-      boolean _startsWith = _name.startsWith("_attr_");
-      if (_startsWith) {
-        _or_1 = true;
-      } else {
-        String _name_1 = worker.getName();
-        boolean _startsWith_1 = _name_1.startsWith("_pattr_");
-        _or_1 = _startsWith_1;
-      }
-      if (_or_1) {
-        _or = true;
-      } else {
-        String _name_2 = worker.getName();
-        boolean _startsWith_2 = _name_2.startsWith("_hattr_");
-        _or = _startsWith_2;
-      }
-      if (_or) {
+      if (((worker.getName().startsWith("_attr_") || 
+        worker.getName().startsWith("_pattr_")) || 
+        worker.getName().startsWith("_hattr_"))) {
         CodeTagType _xifexpression_2 = null;
-        String _name_3 = worker.getName();
-        boolean _endsWith = _name_3.endsWith("_get");
+        boolean _endsWith = worker.getName().endsWith("_get");
         if (_endsWith) {
           _xifexpression_2 = CodeTagType.CLASSGENERATEDATTRIBUTEGET;
         } else {
@@ -477,16 +350,13 @@ public class MainTransform {
   public CodeTagType getWorkerTypeForNonNullPort(final WorkerFunction worker) {
     CodeTagType _xblockexpression = null;
     {
-      Port _receivingPort = worker.getReceivingPort();
-      final String portname = _receivingPort.getName();
+      final String portname = worker.getReceivingPort().getName();
       CodeTagType _switchResult = null;
       String _name = worker.getName();
       boolean _matched = false;
-      if (!_matched) {
-        if (Objects.equal(_name, (portname + "_constructor_init_list"))) {
-          _matched=true;
-          _switchResult = CodeTagType.CONSTRUCTORINITLIST;
-        }
+      if (Objects.equal(_name, (portname + "_constructor_init_list"))) {
+        _matched=true;
+        _switchResult = CodeTagType.CONSTRUCTORINITLIST;
       }
       if (!_matched) {
         if (Objects.equal(_name, (portname + "_class_public_methods_section_declare"))) {
@@ -529,55 +399,38 @@ public class MainTransform {
   public CodeTagType getWorkerTypeForNullPort(final WorkerFunction worker) {
     CodeTagType _xblockexpression = null;
     {
-      Object _zContainer = worker.zContainer();
-      final Home home = this.getHome(_zContainer);
+      final Home home = this.getHome(worker.zContainer());
       final String homePrefix = this.homePrefix(home);
       CodeTagType _xifexpression = null;
-      boolean _or = false;
-      String _name = worker.getName();
-      boolean _contains = _name.contains("_CSL_");
-      if (_contains) {
-        _or = true;
-      } else {
-        String _name_1 = worker.getName();
-        boolean _contains_1 = _name_1.contains("_EPI_");
-        _or = _contains_1;
-      }
-      if (_or) {
+      if ((worker.getName().contains("_CSL_") || worker.getName().contains("_EPI_"))) {
         CodeTagType _xifexpression_1 = null;
-        String _name_2 = worker.getName();
-        boolean _contains_2 = _name_2.contains("_constructor_init_list");
-        if (_contains_2) {
+        boolean _contains = worker.getName().contains("_constructor_init_list");
+        if (_contains) {
           _xifexpression_1 = CodeTagType.CONSTRUCTORINITLIST;
         } else {
           CodeTagType _xifexpression_2 = null;
-          String _name_3 = worker.getName();
-          boolean _contains_3 = _name_3.contains("_class_public_methods_section_declare");
-          if (_contains_3) {
+          boolean _contains_1 = worker.getName().contains("_class_public_methods_section_declare");
+          if (_contains_1) {
             _xifexpression_2 = CodeTagType.CLASSPUBLICMETHODSSECTIONDECLARE;
           } else {
             CodeTagType _xifexpression_3 = null;
-            String _name_4 = worker.getName();
-            boolean _contains_4 = _name_4.contains("_class_public_methods_section_impl");
-            if (_contains_4) {
+            boolean _contains_2 = worker.getName().contains("_class_public_methods_section_impl");
+            if (_contains_2) {
               _xifexpression_3 = CodeTagType.CLASSPUBLICMETHODSSECTIONIMPL;
             } else {
               CodeTagType _xifexpression_4 = null;
-              String _name_5 = worker.getName();
-              boolean _contains_5 = _name_5.contains("_class_private_methods_section_declare");
-              if (_contains_5) {
+              boolean _contains_3 = worker.getName().contains("_class_private_methods_section_declare");
+              if (_contains_3) {
                 _xifexpression_4 = CodeTagType.CLASSPRIVATEMETHODSSECTIONDECLARE;
               } else {
                 CodeTagType _xifexpression_5 = null;
-                String _name_6 = worker.getName();
-                boolean _contains_6 = _name_6.contains("_class_private_methods_section_impl");
-                if (_contains_6) {
+                boolean _contains_4 = worker.getName().contains("_class_private_methods_section_impl");
+                if (_contains_4) {
                   _xifexpression_5 = CodeTagType.CLASSPRIVATEMETHODSSECTIONIMPL;
                 } else {
                   CodeTagType _xifexpression_6 = null;
-                  String _name_7 = worker.getName();
-                  boolean _contains_7 = _name_7.contains("_class_private_members_section_declare");
-                  if (_contains_7) {
+                  boolean _contains_5 = worker.getName().contains("_class_private_members_section_declare");
+                  if (_contains_5) {
                     _xifexpression_6 = CodeTagType.CLASSPRIVATEMEMBERSSECTIONDECLARE;
                   } else {
                     _xifexpression_6 = CodeTagType.CLASSGENERATEDOPERATIONIMPL;
@@ -595,112 +448,110 @@ public class MainTransform {
         _xifexpression = _xifexpression_1;
       } else {
         CodeTagType _switchResult = null;
-        String _name_8 = worker.getName();
+        String _name = worker.getName();
         boolean _matched = false;
-        if (!_matched) {
-          if (Objects.equal(_name_8, "_file_header_h")) {
-            _matched=true;
-            _switchResult = CodeTagType.FILEHEADERH;
-          }
+        if (Objects.equal(_name, "_file_header_h")) {
+          _matched=true;
+          _switchResult = CodeTagType.FILEHEADERH;
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, "_file_header_cpp")) {
+          if (Objects.equal(_name, "_file_header_cpp")) {
             _matched=true;
             _switchResult = CodeTagType.FILEHEADERCPP;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, "_file_footer_h")) {
+          if (Objects.equal(_name, "_file_footer_h")) {
             _matched=true;
             _switchResult = CodeTagType.FILEFOOTERH;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, "_file_footer_cpp")) {
+          if (Objects.equal(_name, "_file_footer_cpp")) {
             _matched=true;
             _switchResult = CodeTagType.FILEFOOTERCPP;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, "_file_includes_h")) {
+          if (Objects.equal(_name, "_file_includes_h")) {
             _matched=true;
             _switchResult = CodeTagType.FILEINCLUDESH;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, "_file_includes_cpp")) {
+          if (Objects.equal(_name, "_file_includes_cpp")) {
             _matched=true;
             _switchResult = CodeTagType.FILEINCLUDESCPP;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, "_constructor_init_list")) {
+          if (Objects.equal(_name, "_constructor_init_list")) {
             _matched=true;
             _switchResult = CodeTagType.CONSTRUCTORINITLIST;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, "_class_public_methods_section_declare")) {
+          if (Objects.equal(_name, "_class_public_methods_section_declare")) {
             _matched=true;
             _switchResult = CodeTagType.CLASSPUBLICMETHODSSECTIONDECLARE;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, "_class_public_methods_section_impl")) {
+          if (Objects.equal(_name, "_class_public_methods_section_impl")) {
             _matched=true;
             _switchResult = CodeTagType.CLASSPUBLICMETHODSSECTIONIMPL;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, "_class_private_methods_section_declare")) {
+          if (Objects.equal(_name, "_class_private_methods_section_declare")) {
             _matched=true;
             _switchResult = CodeTagType.CLASSPRIVATEMETHODSSECTIONDECLARE;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, "_class_private_methods_section_impl")) {
+          if (Objects.equal(_name, "_class_private_methods_section_impl")) {
             _matched=true;
             _switchResult = CodeTagType.CLASSPRIVATEMETHODSSECTIONIMPL;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, "_class_private_members_section_declare")) {
+          if (Objects.equal(_name, "_class_private_members_section_declare")) {
             _matched=true;
             _switchResult = CodeTagType.CLASSPRIVATEMEMBERSSECTIONDECLARE;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, (homePrefix + "_constructor_init_list"))) {
+          if (Objects.equal(_name, (homePrefix + "_constructor_init_list"))) {
             _matched=true;
             _switchResult = CodeTagType.CONSTRUCTORINITLIST;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, (homePrefix + "_class_public_methods_section_declare"))) {
+          if (Objects.equal(_name, (homePrefix + "_class_public_methods_section_declare"))) {
             _matched=true;
             _switchResult = CodeTagType.CLASSPUBLICMETHODSSECTIONDECLARE;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, (homePrefix + "_class_public_methods_section_impl"))) {
+          if (Objects.equal(_name, (homePrefix + "_class_public_methods_section_impl"))) {
             _matched=true;
             _switchResult = CodeTagType.CLASSPUBLICMETHODSSECTIONIMPL;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, (homePrefix + "_class_private_methods_section_declare"))) {
+          if (Objects.equal(_name, (homePrefix + "_class_private_methods_section_declare"))) {
             _matched=true;
             _switchResult = CodeTagType.CLASSPRIVATEMETHODSSECTIONDECLARE;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, (homePrefix + "_class_private_methods_section_impl"))) {
+          if (Objects.equal(_name, (homePrefix + "_class_private_methods_section_impl"))) {
             _matched=true;
             _switchResult = CodeTagType.CLASSPRIVATEMETHODSSECTIONIMPL;
           }
         }
         if (!_matched) {
-          if (Objects.equal(_name_8, (homePrefix + "_class_private_members_section_declare"))) {
+          if (Objects.equal(_name, (homePrefix + "_class_private_members_section_declare"))) {
             _matched=true;
             _switchResult = CodeTagType.CLASSPRIVATEMEMBERSSECTIONDECLARE;
           }
@@ -718,8 +569,7 @@ public class MainTransform {
   protected Home _getHome(final WorkerFunction worker) {
     Home _xblockexpression = null;
     {
-      Operation _asOperation = worker.asOperation();
-      final Object owner = this._zDLStandardLibrary.zContainer(_asOperation);
+      final Object owner = this._zDLStandardLibrary.zContainer(worker.asOperation());
       boolean _equals = Objects.equal(owner, null);
       if (_equals) {
         throw new IllegalArgumentException("Worker needs to have an owner");
@@ -733,30 +583,17 @@ public class MainTransform {
   }
   
   protected Home _getHome(final MonolithicImplementation impl) {
-    ComponentInterface _interface = impl.getInterface();
-    return this.getHome(_interface);
+    return this.getHome(impl.getInterface());
   }
   
   protected Home _getHome(final CCMComponent component) {
     Home _xblockexpression = null;
     {
       Home home = null;
-      Component _asComponent = component.asComponent();
-      Collection<EStructuralFeature.Setting> _inverseReferences = UML2Util.getInverseReferences(_asComponent);
+      Collection<EStructuralFeature.Setting> _inverseReferences = UML2Util.getInverseReferences(component.asComponent());
       for (final EStructuralFeature.Setting s : _inverseReferences) {
-        boolean _and = false;
-        EObject _eObject = s.getEObject();
-        boolean _notEquals = (!Objects.equal(_eObject, null));
-        if (!_notEquals) {
-          _and = false;
-        } else {
-          EObject _eObject_1 = s.getEObject();
-          boolean _isZDLConcept = ZDLUtil.isZDLConcept(_eObject_1, "CCM::CCM_Component::Manages");
-          _and = _isZDLConcept;
-        }
-        if (_and) {
-          EObject _eObject_2 = s.getEObject();
-          Object _value = ZDLUtil.getValue(_eObject_2, "CCM::CCM_Component::Manages", "home");
+        if (((!Objects.equal(s.getEObject(), null)) && ZDLUtil.isZDLConcept(s.getEObject(), "CCM::CCM_Component::Manages"))) {
+          Object _value = ZDLUtil.getValue(s.getEObject(), "CCM::CCM_Component::Manages", "home");
           final EObject value = ((EObject) _value);
           HomeImplementation _homeImplementation = new HomeImplementation(value);
           home = _homeImplementation;
@@ -776,9 +613,7 @@ public class MainTransform {
     boolean _notEquals = (!Objects.equal(home, null));
     if (_notEquals) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("_home_");
-      String _name = home.getName();
-      _builder.append(_name, "");
+      _builder.append("_home_則ome.name\ufffd");
       _xifexpression = _builder.toString();
     } else {
       _xifexpression = "";
@@ -794,40 +629,26 @@ public class MainTransform {
       String portName = null;
       boolean _notEquals = (!Objects.equal(port, null));
       if (_notEquals) {
-        String _name = port.getName();
-        portName = _name;
+        portName = port.getName();
       }
       boolean _notEquals_1 = (!Objects.equal(portName, null));
       if (_notEquals_1) {
         boolean _startsWith = workerName.startsWith(portName);
         if (_startsWith) {
-          int _length = portName.length();
-          String _substring = workerName.substring(_length);
-          workerName = _substring;
+          workerName = workerName.substring(portName.length());
         }
       }
-      boolean _and = false;
-      boolean _startsWith_1 = workerName.startsWith("_home");
-      if (!_startsWith_1) {
-        _and = false;
-      } else {
-        boolean _endsWith = workerName.endsWith("_create");
-        _and = _endsWith;
-      }
-      if (_and) {
+      if ((workerName.startsWith("_home") && workerName.endsWith("_create"))) {
         workerName = "create";
       }
-      boolean _startsWith_2 = workerName.startsWith("_");
-      if (_startsWith_2) {
-        String _substring_1 = workerName.substring(1);
-        workerName = _substring_1;
+      boolean _startsWith_1 = workerName.startsWith("_");
+      if (_startsWith_1) {
+        workerName = workerName.substring(1);
       }
       com.zeligsoft.domain.zml.api.ZML_Component.Operation _portOperation = worker.getPortOperation();
       boolean _notEquals_2 = (!Objects.equal(_portOperation, null));
       if (_notEquals_2) {
-        com.zeligsoft.domain.zml.api.ZML_Component.Operation _portOperation_1 = worker.getPortOperation();
-        String _name_1 = _portOperation_1.getName();
-        workerName = _name_1;
+        workerName = worker.getPortOperation().getName();
       }
       _xblockexpression = workerName;
     }
@@ -838,11 +659,9 @@ public class MainTransform {
     boolean _switchResult = false;
     String _name = worker.getName();
     boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_name, "_file_header_h")) {
-        _matched=true;
-        _switchResult = false;
-      }
+    if (Objects.equal(_name, "_file_header_h")) {
+      _matched=true;
+      _switchResult = false;
     }
     if (!_matched) {
       if (Objects.equal(_name, "_file_header_cpp")) {
@@ -882,29 +701,21 @@ public class MainTransform {
   
   public String getClassName(final WorkerFunction worker) {
     String _xifexpression = null;
-    String _name = worker.getName();
-    boolean _startsWith = _name.startsWith("_pattr_");
+    boolean _startsWith = worker.getName().startsWith("_pattr_");
     if (_startsWith) {
-      String _name_1 = worker.getName();
-      String _name_2 = worker.getName();
-      int _length = _name_2.length();
+      String _name = worker.getName();
+      int _length = worker.getName().length();
       int _minus = (_length - 4);
-      String _substring = _name_1.substring(7, _minus);
-      String[] _split = _substring.split("___");
-      String _get = _split[0];
+      String _get = _name.substring(7, _minus).split("___")[0];
       _xifexpression = (_get + "_exec_i");
     } else {
       String _xifexpression_1 = null;
-      String _name_3 = worker.getName();
-      boolean _startsWith_1 = _name_3.startsWith("_hattr_");
+      boolean _startsWith_1 = worker.getName().startsWith("_hattr_");
       if (_startsWith_1) {
-        String _name_4 = worker.getName();
-        String _name_5 = worker.getName();
-        int _length_1 = _name_5.length();
+        String _name_1 = worker.getName();
+        int _length_1 = worker.getName().length();
         int _minus_1 = (_length_1 - 4);
-        String _substring_1 = _name_4.substring(7, _minus_1);
-        String[] _split_1 = _substring_1.split("___");
-        String _get_1 = _split_1[0];
+        String _get_1 = _name_1.substring(7, _minus_1).split("___")[0];
         _xifexpression_1 = (_get_1 + "_exec_i");
       } else {
         String _xifexpression_2 = null;
@@ -913,34 +724,26 @@ public class MainTransform {
         if (_equals) {
           String _xblockexpression = null;
           {
-            Operation _asOperation = worker.asOperation();
-            final Element owner = _asOperation.getOwner();
+            final Element owner = worker.asOperation().getOwner();
             String _xifexpression_3 = null;
-            String _name_6 = worker.getName();
-            boolean _contains = _name_6.contains("_CSL_");
+            boolean _contains = worker.getName().contains("_CSL_");
             if (_contains) {
-              String _name_7 = worker.getName();
-              String[] _split_2 = _name_7.split("_CSL_");
-              String _get_2 = _split_2[0];
+              String _get_2 = worker.getName().split("_CSL_")[0];
               _xifexpression_3 = (_get_2 + "_CSL_exec_i");
             } else {
               String _xifexpression_4 = null;
-              String _name_8 = worker.getName();
-              boolean _contains_1 = _name_8.contains("_EPI_");
+              boolean _contains_1 = worker.getName().contains("_EPI_");
               if (_contains_1) {
-                String _name_9 = worker.getName();
-                String[] _split_3 = _name_9.split("_EPI_");
-                String _get_3 = _split_3[0];
+                String _get_3 = worker.getName().split("_EPI_")[0];
                 _xifexpression_4 = (_get_3 + "_exec_i");
               } else {
                 String _xifexpression_5 = null;
-                if ((owner instanceof NamedElement)) {
+                if ((owner instanceof org.eclipse.uml2.uml.NamedElement)) {
                   String _xblockexpression_1 = null;
                   {
-                    final String ownerName = ((NamedElement) owner).getName();
+                    final String ownerName = ((org.eclipse.uml2.uml.NamedElement) owner).getName();
                     StringConcatenation _builder = new StringConcatenation();
-                    _builder.append(ownerName, "");
-                    _builder.append("_exec_i");
+                    _builder.append("卻wnerName\ufffd_exec_i");
                     _xblockexpression_1 = _builder.toString();
                   }
                   _xifexpression_5 = _xblockexpression_1;
@@ -955,8 +758,7 @@ public class MainTransform {
           }
           _xifexpression_2 = _xblockexpression;
         } else {
-          Port _receivingPort_1 = worker.getReceivingPort();
-          _xifexpression_2 = this.getClassName(worker, _receivingPort_1);
+          _xifexpression_2 = this.getClassName(worker, worker.getReceivingPort());
         }
         _xifexpression_1 = _xifexpression_2;
       }
@@ -970,21 +772,11 @@ public class MainTransform {
     Boolean _isConjugated = port.getIsConjugated();
     if ((_isConjugated).booleanValue()) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("AMI4CCM_");
-      org.eclipse.uml2.uml.Port _asPort = port.asPort();
-      Type _type = _asPort.getType();
-      String _name = _type.getName();
-      _builder.append(_name, "");
-      _builder.append("ReplyHandler_");
-      String _name_1 = port.getName();
-      _builder.append(_name_1, "");
-      _builder.append("_i");
+      _builder.append("AMI4CCM_厚ort.asPort.type.name舞eplyHandler_厚ort.name\ufffd_i");
       _xifexpression = _builder.toString();
     } else {
       StringConcatenation _builder_1 = new StringConcatenation();
-      String _name_2 = port.getName();
-      _builder_1.append(_name_2, "");
-      _builder_1.append("_exec_i");
+      _builder_1.append("厚ort.name\ufffd_exec_i");
       _xifexpression = _builder_1.toString();
     }
     return _xifexpression;
@@ -1000,19 +792,12 @@ public class MainTransform {
   
   private CharSequence workerCode(final WorkerFunction worker, final String language) {
     StringConcatenation _builder = new StringConcatenation();
-    Operation _asOperation = worker.asOperation();
-    String _userEditBegin = UserEditableRegion.userEditBegin(_asOperation, ZMLMMNames.WORKER_FUNCTION, ZMLMMNames.WORKER_FUNCTION__BODY, language);
-    _builder.append(_userEditBegin, "");
-    _builder.newLineIfNotEmpty();
-    Operation _asOperation_1 = worker.asOperation();
-    Element _owner = _asOperation_1.getOwner();
-    Operation _asOperation_2 = worker.asOperation();
-    String _workerFunctionImplementationCode = WorkerFunctionUtil.getWorkerFunctionImplementationCode(_owner, _asOperation_2, language);
-    _builder.append(_workerFunctionImplementationCode, "");
-    _builder.newLineIfNotEmpty();
-    String _userEditEnd = UserEditableRegion.userEditEnd();
-    _builder.append(_userEditEnd, "");
-    _builder.newLineIfNotEmpty();
+    _builder.append("俗serEditableRegion::userEditBegin(worker.asOperation, ZMLMMNames::WORKER_FUNCTION, ZMLMMNames::WORKER_FUNCTION__BODY,language)\ufffd");
+    _builder.newLine();
+    _builder.append("俐orkerFunctionUtil::getWorkerFunctionImplementationCode(worker.asOperation.owner, worker.asOperation, language)\ufffd");
+    _builder.newLine();
+    _builder.append("俗serEditableRegion::userEditEnd\ufffd");
+    _builder.newLine();
     _builder.newLine();
     return _builder;
   }
@@ -1020,15 +805,14 @@ public class MainTransform {
   private String workerOwnerName(final WorkerFunction worker) {
     String _xblockexpression = null;
     {
-      Operation _asOperation = worker.asOperation();
-      final Element owner = _asOperation.getOwner();
+      final Element owner = worker.asOperation().getOwner();
       String _xifexpression = null;
-      if ((owner instanceof NamedElement)) {
+      if ((owner instanceof org.eclipse.uml2.uml.NamedElement)) {
         String _xblockexpression_1 = null;
         {
-          final String ownerName = ((NamedElement) owner).getName();
+          final String ownerName = ((org.eclipse.uml2.uml.NamedElement) owner).getName();
           StringConcatenation _builder = new StringConcatenation();
-          _builder.append(ownerName, "");
+          _builder.append("卻wnerName\ufffd");
           _xblockexpression_1 = _builder.toString();
         }
         _xifexpression = _xblockexpression_1;
@@ -1041,8 +825,7 @@ public class MainTransform {
   }
   
   private String userEditBegin(final WorkerFunction worker, final String language) {
-    EObject _eObject = worker.eObject();
-    return UserEditableRegion.userEditBegin(_eObject, ZMLMMNames.WORKER_FUNCTION, "body", language);
+    return UserEditableRegion.userEditBegin(worker.eObject(), ZMLMMNames.WORKER_FUNCTION, "body", language);
   }
   
   private String userEditEnd() {
@@ -1050,15 +833,11 @@ public class MainTransform {
   }
   
   private String workerFunctionCode(final WorkerFunction worker, final String language) {
-    Operation _asOperation = worker.asOperation();
-    Element _owner = _asOperation.getOwner();
-    Operation _asOperation_1 = worker.asOperation();
-    return WorkerFunctionUtil.getWorkerFunctionImplementationCode(_owner, _asOperation_1, language);
+    return WorkerFunctionUtil.getWorkerFunctionImplementationCode(worker.asOperation().getOwner(), worker.asOperation(), language);
   }
   
   private String xmlEncode(final String s) {
-    String _replaceAll = s.replaceAll(">", "zcxgt;");
-    return _replaceAll.replaceAll("\'", "zcxapos;");
+    return s.replaceAll(">", "zcxgt;").replaceAll("\'", "zcxapos;");
   }
   
   private String fileName(final ZObject self) {
@@ -1077,8 +856,8 @@ public class MainTransform {
       return _fileName((org.eclipse.uml2.uml.Package)self, name);
     } else if (self instanceof CORBAModule) {
       return _fileName((CORBAModule)self, name);
-    } else if (self instanceof com.zeligsoft.domain.zml.api.ZML_Core.NamedElement) {
-      return _fileName((com.zeligsoft.domain.zml.api.ZML_Core.NamedElement)self, name);
+    } else if (self instanceof NamedElement) {
+      return _fileName((NamedElement)self, name);
     } else if (self == null) {
       return _fileName((Void)null, name);
     } else if (self != null) {

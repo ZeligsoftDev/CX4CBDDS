@@ -37,41 +37,6 @@ import com.zeligsoft.cx.codegen.editor.IValidationFactory;
  */
 public class WorkflowEntry {
 	
-	/**
-	 * Get all transform workflows for the specified concept and EObject. This
-	 * includes workflows in the {@link TransformRegistry} registered directly
-	 * against the ZDL concept, or registered against the {@link IElementType}
-	 * as found in the {@link ElementTypeRegistry}
-	 * 
-	 * @param concept
-	 *            the ZDL Concept. Cannot be <code>null</code>, but may be
-	 *            empty.
-	 * @param eObj
-	 *            the model object. May be <code>null</code>.
-	 * @return a list of workflow entries, which may be empty.
-	 */
-	public static List<WorkflowEntry> getWorkflows(String concept, EObject eObj) {
-		List<WorkflowEntry> workflowEntries = TransformRegistry.INSTANCE
-				.getTransformationWorkflows(concept, eObj);
-		List<URL> paths = new ArrayList<URL>();
-		for (WorkflowEntry entry : workflowEntries) {
-			paths.add(entry.getWorkflowURL());
-		}
-		// Get entries registered against element type id.
-		if(eObj != null) {
-			IElementType type = ElementTypeRegistry.getInstance()
-					.getElementType(eObj);
-			for (WorkflowEntry entry : TransformRegistry.INSTANCE
-					.getTransformationWorkflows(type.getId(), eObj)) {
-				if (!paths.contains(entry.getWorkflowURL())) {
-					// do not add if entry exists with same URL
-					workflowEntries.add(entry);
-				}
-			}
-		}
-		return workflowEntries;
-	}
-
 	private URL workflowURL;
 
 	private String displayLabel;

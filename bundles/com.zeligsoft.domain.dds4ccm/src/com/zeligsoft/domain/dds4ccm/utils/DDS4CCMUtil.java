@@ -16,21 +16,17 @@
  */
 package com.zeligsoft.domain.dds4ccm.utils;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.emf.commands.core.commands.DestroyEObjectCommand;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorKind;
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Property;
@@ -39,7 +35,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
 
 import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.dds4ccm.Activator;
 import com.zeligsoft.domain.dds4ccm.ConnectorType;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.DDS4CCMModel;
@@ -102,6 +97,9 @@ public class DDS4CCMUtil {
 	}
 
 
+	public static void debug(Object o) {
+		o.getClass();
+	}
 
 	/**
 	 * Returns true if a CORBAInterface types a port that is asynchronous.
@@ -192,18 +190,19 @@ public class DDS4CCMUtil {
 						ZMLMMNames.TYPED_ELEMENT__TYPE, corbaStringType);
 			}
 			if (b_hasProcessName) {
-				DestroyEObjectCommand command = new DestroyEObjectCommand(
-						TransactionUtil.getEditingDomain(containerProcess),
-						Messages.DDS4CCMUtil_DeleteProcessNameCommandLabel,
-						containerProcess.getOwnedMember(processName));
-				try {
-					command.execute(null, null);
-				} catch (ExecutionException e) {
-					Activator
-							.getDefault()
-							.error(Messages.DDS4CCMUtil_DeleteProcessNameFailedMessage,
-									e);
-				}
+//				DestroyEObjectCommand command = new DestroyEObjectCommand(
+//						TransactionUtil.getEditingDomain(containerProcess),
+//						Messages.DDS4CCMUtil_DeleteProcessNameCommandLabel,
+//						containerProcess.getOwnedMember(processName));
+//				try {
+//					command.execute(null, null);
+//				} catch (ExecutionException e) {
+//					Activator
+//							.getDefault()
+//							.error(Messages.DDS4CCMUtil_DeleteProcessNameFailedMessage,
+//									e);
+//				}
+				EcoreUtil.delete(containerProcess.getOwnedMember(processName));
 			}
 			if (!b_hasProcessPriority) {
 				b_containerProcessModified = true;
@@ -370,16 +369,17 @@ public class DDS4CCMUtil {
 		if (p == null) {
 			return;
 		}
-		DestroyEObjectCommand cmd = new DestroyEObjectCommand(
-				TransactionUtil.getEditingDomain(component),
-				Messages.DDS4CCMUtil_RemoveRegisterNamingCommandLabel, p);
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(cmd, null,
-					null);
-		} catch (ExecutionException e) {
-			Activator.getDefault().error(
-					Messages.DDS4CCMUtil_RemoveRegisterNamingFailedMessage, e);
-		}
+		EcoreUtil.delete(p);
+//		DestroyEObjectCommand cmd = new DestroyEObjectCommand(
+//				TransactionUtil.getEditingDomain(component),
+//				Messages.DDS4CCMUtil_RemoveRegisterNamingCommandLabel, p);
+//		try {
+//			OperationHistoryFactory.getOperationHistory().execute(cmd, null,
+//					null);
+//		} catch (ExecutionException e) {
+//			Activator.getDefault().error(
+//					Messages.DDS4CCMUtil_RemoveRegisterNamingFailedMessage, e);
+//		}
 	}
 
 	public static Status createStatus(String pluginId, int severity, String msg) {

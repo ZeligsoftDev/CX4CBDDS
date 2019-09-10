@@ -41,20 +41,6 @@
    		</ActionFilterProvider>
    </extension>
    <extension
-         point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
-      <decoratorProvider
-            class="com.zeligsoft.base.ui.providers.MultiplicityDecoratorProvider">
-         <Priority
-               name="High">
-         </Priority>
-         <object
-         		class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart"
-               id="PrimaryPart">
-         </object>
-         <context decoratorTargets="PrimaryPart" />
-      </decoratorProvider>
-   </extension>
-   <extension
          point="org.eclipse.ui.newWizards">
       <category
             id="com.zeligsoft"
@@ -62,39 +48,6 @@
       </category>
    </extension>
 
-   <extension
-         point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
-      <paletteProvider
-            class="com.zeligsoft.base.ui.providers.ZDLPaletteProvider">
-         <Priority
-               name="Low">
-         </Priority>
-         <content>
-            <method
-                  name="getDiagram().getType()"
-                  value="Statechart, Structure, Component"/>
-         </content>         
-      </paletteProvider>
-   </extension>
-   <extension
-         point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
-      <viewProvider class="com.zeligsoft.base.ui.providers.ZDLDefaultViewProvider">
-         <Priority name="Medium"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Edge"/>
-      </viewProvider>
-      <viewProvider class="com.zeligsoft.base.ui.providers.ZDLViewProvider">
-         <Priority name="Medium"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Edge"/>
-      </viewProvider>
-   </extension>
-   <extension
-         point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
-      <editpartProvider class="com.zeligsoft.base.ui.providers.ZDLEditPartProvider">
-         <Priority name="Medium"/>
-      </editpartProvider>
-   </extension>
    <extension
          point="org.eclipse.gmf.runtime.common.ui.services.iconProviders">
       <IconProvider
@@ -104,23 +57,6 @@
          </Priority>
       </IconProvider>
    </extension>   
-   <extension
-   		 id="com.zeligsoft.base.ui.providers.zeligsoftViewCustomizerViewProviderId"
-   		 name="Zeligsoft ViewCustomizer ViewProvider"
-         point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
-      <viewProvider class="com.zeligsoft.base.ui.providers.CustomizerViewProvider">
-         <Priority name="Medium"/>
-         <object class ="org.eclipse.gmf.runtime.emf.type.core.IElementType(org.eclipse.gmf.runtime.emf.type.core)" 
-                 id="NodesByType_EClass">
-                 <staticMethod 
-                 	name="com.ibm.xtools.uml.type/com.ibm.xtools.uml.type.util.UMLElementTypesUtil.getMetaModelElementID(%Context[org.eclipse.gmf.runtime.emf.type.core/org.eclipse.gmf.runtime.emf.type.core.IElementType])" 
-                 	value="uml.Component,uml.Interface,uml.Class,uml.Manifestation">
-                 </staticMethod>
-         </object>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Edge"/>         
-      </viewProvider>
-   </extension>
     <extension
          point="org.eclipse.ui.preferencePages">
        <page

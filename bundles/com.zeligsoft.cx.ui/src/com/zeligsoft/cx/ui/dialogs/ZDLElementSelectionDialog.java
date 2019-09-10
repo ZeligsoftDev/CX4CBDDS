@@ -16,11 +16,9 @@
  */
 package com.zeligsoft.cx.ui.dialogs;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TrayDialog;
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -43,10 +41,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
-import org.eclipse.uml2.uml.TypedElement;
 
-import com.ibm.xtools.uml.navigator.IModelServerElement;
-import com.ibm.xtools.uml.navigator.factory.UMLNavigatorWrapperFactory;
 import com.zeligsoft.cx.ui.l10n.Messages;
 
 /**
@@ -71,8 +66,6 @@ public class ZDLElementSelectionDialog
 	private String compositeTitle = null;
 
 	private ZDLElementSelectionComposite searchComposite = null;
-
-	private ZDLElementBrowseComposite browseComposite;
 
 	private IFilter filter;
 	
@@ -259,74 +252,24 @@ public class ZDLElementSelectionDialog
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					if (e.item == browseTab) {
-						if (!isBrowseTabShown) {
-							createBrowseContent(rootFolder);
-							isBrowseTabShown = true;
-						}
-						if(browseComposite.getSelection().isEmpty()){
-							getButton(IDialogConstants.OK_ID).setEnabled(false);
-						}
-						lastSelectedTabItem = "browse"; //$NON-NLS-1$
-					} else if (e.item == searchTab) {
-						if(searchComposite.getSelection().isEmpty()){
-							getButton(IDialogConstants.OK_ID).setEnabled(false);
-						}
-						lastSelectedTabItem = "search"; //$NON-NLS-1$
+					if (searchComposite.getSelection().isEmpty()) {
+						getButton(IDialogConstants.OK_ID).setEnabled(false);
 					}
+					lastSelectedTabItem = "search"; //$NON-NLS-1$
 				}
 			});
 		}
 	}
 	
-	private void createBrowseContent(Composite parent) {
-		EObject initialSelectionElement = null;
-		if (context instanceof TypedElement && ((TypedElement) context).getType() != null) {
-			initialSelectionElement = ((TypedElement) context).getType();
-		} else {
-			initialSelectionElement = EcoreUtil.getRootContainer(context);
-		}
-		@SuppressWarnings("rawtypes")
-		List initialSelection = Collections.EMPTY_LIST;
-		if (initialSelectionElement != null) {
-			IModelServerElement modelElement = UMLNavigatorWrapperFactory.getInstance()
-					.getViewerElement(initialSelectionElement);
-			initialSelection = Collections.singletonList(modelElement);
-		}
 
-		browseComposite = new ZDLElementBrowseComposite(
-				Messages.ZDLElementSelectionDialog_BrowseCompositeTitle, false,
-				initialSelection, concepts){
-			@Override
-			public void handleSelection(boolean isValid) {
-				super.handleSelection(isValid);
-				getButton(IDialogConstants.OK_ID).setEnabled(isValid);
-			}
-		};
-		browseComposite.setFilter(filter);
-		browseComposite.setContextObject(EcoreUtil.getRootContainer(context));
-		Composite resultComposite = browseComposite.createComposite(parent);
-		browseComposite.handleSelectionChange();
-
-		if (resultComposite != null) {
-			browseTab.setControl(resultComposite);
-		}
-	}
-	
 	/**
 	 * Queries the selected element
 	 * 
 	 * @return
 	 */
 	public IStructuredSelection getSelectedElements() {
-		if (lastSelectedTabItem.equals("browse")) { //$NON-NLS-1$
-			if (browseComposite != null) {
-				return browseComposite.getSelection();
-			}
-		} else {
-			if (searchComposite != null) {
-				return searchComposite.getSelection();
-			}
+		if (searchComposite != null) {
+			return searchComposite.getSelection();
 		}
 		return new StructuredSelection();
 	}

@@ -44,7 +44,6 @@ import com.zeligsoft.base.toolingmodel.OawExpression;
 import com.zeligsoft.base.toolingmodel.OawXtend;
 import com.zeligsoft.base.ui.l10n.Messages;
 import com.zeligsoft.base.ui.menus.util.CXMenuUtil;
-import com.zeligsoft.base.ui.providers.ZDLPaletteFactory;
 import com.zeligsoft.base.zdl.util.OawEvaluationUtil;
 import com.zeligsoft.base.zdl.util.OawEvaluationUtil.OawDescriptor;
 import com.zeligsoft.base.zdl.util.OawEvaluationUtil.OawExpressionDescriptor;
@@ -87,31 +86,6 @@ public class DomainConfigurationEditHelperAdvice extends
 					return CommandResult.newOKCommandResult();
 				}
 
-				// Run configuration from palette entry
-				@SuppressWarnings("unchecked")
-				List<OawDescriptor> paletteExpressions = (List<OawDescriptor>) request
-						.getParameter(ZDLPaletteFactory.CONFIGURE_EXPRESSIONS);
-				Set<String> rawPaletteExpressions = new HashSet<String>();
-
-				if (paletteExpressions != null && !paletteExpressions.isEmpty()) {
-					for (OawDescriptor oed : paletteExpressions) {
-						oed.setObj(newElement);
-						OawEvaluationUtil.INSTANCE.evaluate(oed);
-						if (oed instanceof OawXtendDescriptor) {
-							rawPaletteExpressions.add(oed.getExpression()
-									.get(0)
-									+ "::" //$NON-NLS-1$
-									+ ((OawXtendDescriptor) oed).getExtFile());
-						} else if (oed instanceof OawExpressionDescriptor) {
-							rawPaletteExpressions.add(oed.getExpression()
-									.get(0)
-									+ "::" //$NON-NLS-1$
-									+ ((OawExpressionDescriptor) oed)
-											.getVariableName());
-						}
-					}
-				}
-
 				// Run configuration from menu model
 				MenuModel menuModel = CXMenuUtil.getMenuModel(profiles
 						.iterator().next());
@@ -132,14 +106,6 @@ public class DomainConfigurationEditHelperAdvice extends
 								OawDescriptor descriptor = null;
 								if (rawexpr instanceof OawXtend) {
 									OawXtend expr = (OawXtend) rawexpr;
-									// Check if this expression has been already
-									// run by palette entry
-									if (rawPaletteExpressions.contains(expr
-											.getExpression()
-											+ "::" //$NON-NLS-1$
-											+ expr.getExtensionFile())) {
-										continue;
-									}
 									descriptor = new OawXtendDescriptor(
 											newElement,
 											Collections.singletonList(expr
@@ -149,14 +115,6 @@ public class DomainConfigurationEditHelperAdvice extends
 
 								} else if (rawexpr instanceof OawExpression) {
 									OawExpression expr = (OawExpression) rawexpr;
-									// Check if this expression has been already
-									// run by palette entry
-									if (rawPaletteExpressions.contains(expr
-											.getExpression()
-											+ "::" //$NON-NLS-1$
-											+ expr.getVariableName())) {
-										continue;
-									}
 									descriptor = new OawExpressionDescriptor(
 											newElement,
 											Collections.singletonList(expr
@@ -176,38 +134,5 @@ public class DomainConfigurationEditHelperAdvice extends
 				return CommandResult.newOKCommandResult();
 			}
 		};
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	protected ICommand getAfterCreateRelationshipCommand(
-			final CreateRelationshipRequest request) {
-		final List<OawDescriptor> expressions = (List<OawDescriptor>) request
-				.getParameter(ZDLPaletteFactory.CONFIGURE_EXPRESSIONS);
-
-		if (expressions != null && !expressions.isEmpty()) {
-			return new AbstractTransactionalCommand(
-					request.getEditingDomain(),
-					Messages.CommandLabel_PaletteEditHelperAdvice_getAfterCreateCommand,
-					null) {
-				@Override
-				protected CommandResult doExecuteWithResult(
-						IProgressMonitor progressMonitor, IAdaptable info)
-						throws ExecutionException {
-					Element element2Configure = (Element) request
-							.getNewElement();
-
-					// Evaluate expressions of palette's connection tool entry
-					for (OawDescriptor oed : expressions) {
-						oed.setObj(element2Configure);
-						OawEvaluationUtil.INSTANCE.evaluate(oed);
-					}
-
-					return CommandResult.newOKCommandResult(element2Configure);
-				}
-			};
-		} else {
-			return super.getAfterCreateRelationshipCommand(request);
-		}
 	}
 }

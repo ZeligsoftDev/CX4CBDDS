@@ -30,30 +30,6 @@
             target="platform:/plugin/com.zeligsoft.base.zdl/profiles/">
       </mapping>
    </extension>
-   
-   <extension
-         point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
-      <elementTypeFactory
-            factory="com.zeligsoft.base.zdl.type.ZDLElementTypeFactory"
-            kind="com.zeligsoft.zdl.concept"
-            params="concept,reference">
-      </elementTypeFactory>
-      <metamodel
-             nsURI="http://www.eclipse.org/uml2/3.0.0/UML">
-         <adviceBinding
-            id="com.zeligsoft.base.zdl.destroyReferenceAdvice"
-            typeId="com.ibm.xtools.uml.element"
-            class="com.zeligsoft.base.zdl.type.ZDLDestroyReferenceAdvice"
-            inheritance="all">
-         </adviceBinding>
-      </metamodel>    
-   </extension>
-   <extension
-         point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings">
-      <binding context="com.ibm.xtools.uml.type.context">
-         <advice ref="com.zeligsoft.base.zdl.destroyReferenceAdvice"/>
-      </binding>
-   </extension>
     <extension
          point="org.eclipse.emf.transaction.listeners">
       <listener

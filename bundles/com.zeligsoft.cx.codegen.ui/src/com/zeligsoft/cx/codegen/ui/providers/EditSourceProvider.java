@@ -113,10 +113,6 @@ public class EditSourceProvider extends CommonActionProvider
 			if( ! ZDLUtil.isZDLConcept( object.eContainer(), desc.getContainerConcept() ) )
 				return null;
 
-		if (desc.getLicenser() != null && desc.getLicenser().check().getSeverity() != IStatus.OK){
-			return null;
-		}
-		
 		return new EditSourceAction( label, object, desc );
 	}
 

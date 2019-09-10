@@ -10,10 +10,9 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)",
  org.eclipse.core.resources;bundle-version="[3.4.1,4.0.0)",
  org.eclipse.ui.ide;bundle-version="[3.4.1,4.0.0)",
  org.eclipse.emf.common;bundle-version="[2.4.0,3.0.0)",
- org.eclipse.uml2.uml;bundle-version="[3.1.0,4.0.0)",
+ org.eclipse.uml2.uml;bundle-version="5.5.0",
  com.zeligsoft.base.ui;bundle-version="[3.5.0,3.6.0)",
  com.zeligsoft.cx.ui;bundle-version="[3.5.0,3.6.0)",
- com.ibm.xtools.modeler.ui;bundle-version="7.5.0",
  com.zeligsoft.domain.omg.ccm;bundle-version="[3.5.0,3.6.0)",
  com.zeligsoft.base.zdl;bundle-version="[3.5.0,3.6.0)",
  com.zeligsoft.domain.omg.corba;bundle-version="[3.5.0,3.6.0)",
@@ -21,8 +20,11 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)",
  com.zeligsoft.domain.zml.ui;bundle-version="[3.5.0,3.6.0)",
  com.zeligsoft.cx.ui.properties;bundle-version="[3.5.0,3.6.0)",
  com.zeligsoft.base.ui.menus;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.cx.deployment.treeeditor;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.base.diagram;bundle-version="[3.5.0,3.6.0)"
+ org.eclipse.gmf.runtime.emf.type.ui;bundle-version="1.7.0",
+ org.eclipse.draw2d;bundle-version="3.10.100",
+ org.eclipse.gef;bundle-version="3.11.0",
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0";visibility:=reexport,
+ org.eclipse.gmf.runtime.common.ui.services.properties;bundle-version="1.9.0";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -30,5 +32,4 @@ Export-Package: com.zeligsoft.domain.omg.ccm.ui.actions,
  com.zeligsoft.domain.omg.ccm.ui.edithelpers,
  com.zeligsoft.domain.omg.ccm.ui.filters,
  com.zeligsoft.domain.omg.ccm.ui.providers,
- com.zeligsoft.domain.omg.ccm.ui.viewcustomizers,
  com.zeligsoft.domain.omg.ccm.ui.wizards

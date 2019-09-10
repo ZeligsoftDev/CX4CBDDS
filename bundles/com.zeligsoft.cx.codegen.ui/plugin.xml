@@ -33,7 +33,44 @@
             id="%handler.id.0"
             class="com.zeligsoft.cx.codegen.ui.internal.UserEditableEditorOpener"/>
     </extension>
-
+    <!--
+       <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="com.zeligsoft.cbdds.ui.commands"
+            name="CBDDS Model Editing Commands"
+            description="Commands for editing of CBDDST elements.">
+      </category>
+      <command
+            id="com.zeligsoft.cbdds.ui.generate"
+            name="CBDDS Generate"
+            description="Generate CBDDS models"
+            categoryId="com.zeligsoft.cbdds.ui.commands">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="com.zeligsoft.cbdds.ui.generate"
+            class="com.zeligsoft.domain.cbdds.ui.handlers.GenerateHandler">
+      </handler>
+   </extension>
+   -->
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup">
+         <menu
+               id="com.zeligsoft.cx.ui.generate.menu"
+               label="Generate">
+            <dynamic
+                  class="com.zeligsoft.cx.codegen.ui.providers.DynamicGenerateMenuProvider"
+                  id="com.zeligsoft.cbdds.ui.generateDynamic">
+            </dynamic>
+         </menu>
+      </menuContribution>
+   </extension>
+<!--
     <extension point="org.eclipse.ui.navigator.navigatorContent">
         <actionProvider
             class="com.zeligsoft.cx.codegen.ui.providers.EditSourceProvider"
@@ -126,5 +163,6 @@
           </instanceof>
        </enablement>
     </actionProvider>
-   </extension>  
+   </extension>
+   -->  
 </plugin>

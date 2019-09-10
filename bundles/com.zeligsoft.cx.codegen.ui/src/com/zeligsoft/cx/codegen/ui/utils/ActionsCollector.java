@@ -50,7 +50,7 @@ public class ActionsCollector {
 			IElementType type = ElementTypeRegistry.getInstance()
 					.getElementType(eObj);
 			for (WorkflowEntry entry : TransformRegistry.INSTANCE
-					.getTransformationWorkflows(type.getId(), eObj)) {
+					.getTransformationWorkflows(concept, eObj)) {
 				if (!paths.contains(entry.getWorkflowURL())) {
 					// do not add if entry exists with same URL
 					workflowEntries.add(entry);

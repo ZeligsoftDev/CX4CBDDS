@@ -35,7 +35,6 @@ import org.osgi.framework.Bundle;
 
 import com.zeligsoft.cx.codegen.editor.ICheckCodeShouldGenerate;
 import com.zeligsoft.cx.codegen.editor.IValidationFactory;
-import com.zeligsoft.cx.codegen.editor.UIProviderLicenser;
 import com.zeligsoft.cx.codegen.ui.CodeGenUIPlugin;
 import com.zeligsoft.cx.codegen.ui.l10n.Messages;
 
@@ -78,8 +77,6 @@ public class TransformRegistry {
 	private static final String EXT_ENTRY_WORKFLOWENTRY_LICENSER = "licenser"; //$NON-NLS-1$
 	
 	private static final String EXT_ENTRY_CANCEL_ON_ERROR = "cancelOnValidationError"; //$NON-NLS-1$
-	
-	private static final String CHECK_CODE_SHOULD_GENERATE = "checkShouldGenerateCode"; //$NON-NLS-1$
 	
 	private static final String EXT_ENTRY_VISIBILITY_TEST = "visibilityTest"; //$NON-NLS-1$ 	
 	
@@ -168,22 +165,6 @@ public class TransformRegistry {
 							continue;
 						}
 						
-						UIProviderLicenser licenser = null;
-						if( workflowEntryLicenser != null ) {
-							// WorkflowEntryLicenser is optional, but if specified must be valid.
-							try {
-								if (bundle == null) {
-									throw new IllegalArgumentException(
-										NLS.bind("Cannot find bundle " + pluginId, pluginId)); //$NON-NLS-1$
-								}
-								@SuppressWarnings("unchecked")					
-								Class<UIProviderLicenser> clazz = (Class<UIProviderLicenser>) bundle.loadClass(workflowEntryLicenser);
-								licenser = clazz.newInstance();
-							} catch( Exception e ) {
-								CodeGenUIPlugin.getDefault().error
-									(Messages.TransformRegistry_InvalidWorkflowEntryLicenser, e);
-							}
-						}
 						// optional visibilityTest field to determine whether or not the entry should be added
 						// to the workflow and shown in the Generate menu
 						IFilter visibilityFilter = null;
@@ -203,7 +184,7 @@ public class TransformRegistry {
 						
 						// only if the workflowEntry is correctly licensed, OR if there is no license required
 						// do we create the workflowEntry
-						if (workflowEntryLicenser == null || licenser.check().getSeverity() == IStatus.OK){
+						if (workflowEntryLicenser == null){
 							
 							IValidationFactory factory = null;
 							if( validationFactory != null ) {
@@ -248,69 +229,6 @@ public class TransformRegistry {
 		}
 	}
 	
-	private ICheckCodeShouldGenerate checkCodeShouldGenerateObject(){
-		
-		IExtension[] extensions = Platform.getExtensionRegistry()
-				.getExtensionPoint(PLUG_IN_CODEGEN_NAME, EXT_ROOT_NODE_NAME)
-				.getExtensions();
-
-		if (extensions.length <= 0) {
-			return null;
-		}
-
-		for (int i = 0; i < extensions.length; i += 1) {
-			IConfigurationElement[] entries = extensions[i]
-					.getConfigurationElements();
-
-			// Loop thru <concept> tags
-			for (int i2 = 0; i2 < entries.length; i2 += 1) {
-				String pluginId = entries[i2].getDeclaringExtension()
-						.getNamespaceIdentifier();
-				Bundle bundle = Platform.getBundle(pluginId);
-				String concept = entries[i2].getAttribute(EXT_ENTRY_TYPE);
-
-				if (UML2Util.isEmpty(concept)) {
-					concept = entries[i2].getAttribute(EXT_ENTRY_UMLTYPE);
-				}
-
-				if (concept != null) {
-					// transformation
-
-					IConfigurationElement[] workflows = entries[i2]
-							.getChildren();
-
-					for (int i3 = 0; i3 < workflows.length; i3 += 1) {
-						String checkCodeShouldGenerate = workflows[i3]
-								.getAttribute(CHECK_CODE_SHOULD_GENERATE);
-
-						ICheckCodeShouldGenerate shouldGenerate = null;
-						if (checkCodeShouldGenerate != null) {
-							if (bundle == null) {
-								throw new IllegalArgumentException(
-										NLS.bind(
-												"Cannot find bundle " + pluginId, pluginId)); //$NON-NLS-1$
-							}
-							try {
-								@SuppressWarnings("unchecked")
-								Class<UIProviderLicenser> clazz = (Class<UIProviderLicenser>) bundle
-										.loadClass(checkCodeShouldGenerate);
-								shouldGenerate = (ICheckCodeShouldGenerate) clazz
-										.newInstance();
-							} catch (Exception e) {
-								CodeGenUIPlugin
-										.getDefault()
-										.error(Messages.TransformRegistry_ClassNotFound,
-												e);
-							}
-							return shouldGenerate;
-						}
-					}
-				}
-			}
-		}
-		return null;
-	}
-	
 	/**
 	 * Returns the relates workflow urls applicable to the given concept.
 	 * 
@@ -319,37 +237,8 @@ public class TransformRegistry {
 	 */
 	public List<WorkflowEntry> getTransformationWorkflows(String concept, EObject eObject) {
 		
-		boolean GenerateC = true;
-		boolean GenerateCPP = true;
-		ICheckCodeShouldGenerate shouldGenerate = checkCodeShouldGenerateObject();
-		if (shouldGenerate != null) {
-			GenerateC = shouldGenerate.shouldGenerateC(eObject);
-			GenerateCPP = shouldGenerate.shouldGenerateCPP(eObject);
-		}
-		List<WorkflowEntry> entries = new ArrayList<WorkflowEntry>();
-		List<WorkflowEntry> registeredEntries = TransformRegistry
+		return TransformRegistry
 				.getTransformMap().get(concept);
 
-		if (null != registeredEntries) {
-			for (WorkflowEntry entry : registeredEntries) {
-				if (!vetoId.contains(entry.getId())) {
-					if (!GenerateC && !GenerateCPP) {
-						entry.getWorkflowURL();
-						entries.add(entry);
-					} else if (!GenerateC) {
-						if (!entry.getDisplayLabel().equals("SCA C Code")) { //$NON-NLS-1$
-							entries.add(entry);
-						}
-					} else if (!GenerateCPP) {
-						if (!entry.getDisplayLabel().equals("SCA Code")) { //$NON-NLS-1$
-							entries.add(entry);
-						}
-					} else if (GenerateC && GenerateCPP) {
-						entries.add(entry);
-					}
-				}
-			}
-		}
-		return entries;
 	}
 }

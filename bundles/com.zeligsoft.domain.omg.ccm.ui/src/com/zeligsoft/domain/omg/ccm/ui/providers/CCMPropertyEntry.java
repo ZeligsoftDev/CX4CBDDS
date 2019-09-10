@@ -27,6 +27,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
@@ -49,7 +50,6 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
-import com.ibm.xtools.uml.type.UMLElementFactory;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.util.NamingUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
@@ -892,8 +892,8 @@ public class CCMPropertyEntry implements IPropertyEntry {
 							(Property) modelObject, list);
 					InstanceSpecification instance = ((InstanceValue) parentSlot
 							.getValues().get(0)).getInstance();
-					UMLElementFactory.destroyElement(
-							instance.getSpecification(), null);
+					EcoreUtil.delete(
+							instance.getSpecification());
 					slot = instance.createSlot();
 					slot.setDefiningFeature(member);
 				}
@@ -1040,9 +1040,9 @@ public class CCMPropertyEntry implements IPropertyEntry {
 		Package container = getRootInstanceContainer();
 		cleanInstanceValue(instanceValue, false);
 		if (container.getPackagedElements().isEmpty()) {
-			UMLElementFactory.destroyElement(container, null);
+			EcoreUtil.delete(container);
 			if (entry.getModelObject() instanceof Component) {
-				UMLElementFactory.destroyElement(property, null);
+				EcoreUtil.delete(property);
 			}
 		}
 	}
@@ -1091,7 +1091,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 			if (memberInstanceValue && !cleanMemberInstanceValue) {
 				return;
 			}
-			UMLElementFactory.destroyElement(instanceValue, null);
+			EcoreUtil.delete(instanceValue);
 		}
 	}
 
@@ -1121,7 +1121,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 				}
 			}
 			if (slot.getValues().isEmpty()) {
-				UMLElementFactory.destroyElement(slot, null);
+				EcoreUtil.delete(slot);
 			}
 		}
 		if (instance.getSlots().isEmpty()
@@ -1129,7 +1129,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 			if (!cleanMemberInstanceValue && isMemberInstanceValueInstance) {
 				return;
 			}
-			UMLElementFactory.destroyElement(instance, null);
+			EcoreUtil.delete(instance);
 		}
 	}
 
@@ -1259,9 +1259,8 @@ public class CCMPropertyEntry implements IPropertyEntry {
 												.setInstance(attributeInstance);
 									}
 								}
-								UMLElementFactory
-										.destroyElement(value.getInstance()
-												.getSpecification(), null);
+								EcoreUtil.delete(value.getInstance()
+												.getSpecification());
 
 								return CommandResult.newOKCommandResult();
 							}

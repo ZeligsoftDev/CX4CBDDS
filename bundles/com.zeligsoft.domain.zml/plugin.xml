@@ -38,6 +38,7 @@
          point="com.zeligsoft.base.validation.preload">
       <zdl uri="pathmap://ZML_LIBRARIES/ZMLMM.uml" />
    </extension>
+   <!--   
    <extension
          point="org.eclipse.emf.transaction.listeners">
       <listener
@@ -46,7 +47,8 @@
                id="org.eclipse.gmf.runtime.emf.core.compatibility.MSLEditingDomain">
          </editingDomain>
       </listener>
-   </extension>   
+   </extension>  
+
     <extension
          id="Base ElementTypes"
          name="Base ElementTypes"
@@ -67,6 +69,7 @@
             </adviceBinding>
       	</metamodel>            
     </extension>   
+
     <extension
          id="Base ElementTypeBindings"
          name="Base ElementTypeBindings"
@@ -75,11 +78,8 @@
          <advice
                pattern="com.zeligsoft.domain.zml.*"/>                     
       </binding>
-       <binding context="com.ibm.xtools.mmi.core.context">
-         <advice
-               pattern="com.zeligsoft.domain.zml.*"/>                     
       </binding>
     </extension>   
     
-   
+   -->
 </plugin>
