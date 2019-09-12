@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<elementtypesconfigurations:ElementTypeSetConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:applystereotypeadvice="http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:stereotypematcher="http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1" xmi:id="__9aOENlrEemxYe7UBOzDEQ" description="CBDDS Element Type Set Configuration" identifier="com.zeligsoft.domain.cbdds.elementTypeSet" name="CBDDS" metamodelNsURI="http://www.eclipse.org/uml2/5.0.0/UML">
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_yIuAENl0EemrTpxWHY38pg" identifier="com.zeligsoft.domain.cbdds.CCMComponent" name="CCMComponent" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <editHelperAdviceConfiguration xmi:type="elementtypesconfigurations:EditHelperAdviceConfiguration" xmi:id="_Be0EgNluEemxYe7UBOzDEQ" description="Advuce for CCMComponent" editHelperAdviceClassName="com.zeligsoft.domain.cbdds.architecture.types.advices.ComponentEditHelperAdvice"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_BRGFsNl7EemnrJXzXhOv6Q">
+      <stereotypesQualifiedNames>cxDDS4CCM::CCMComponent</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Component"/>
+  </elementTypeConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_8LLD0NlxEemxYe7UBOzDEQ" identifier="com.zeligsoft.domain.cbdds.ccmcomponent" target="_yIuAENl0EemrTpxWHY38pg">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_Q4x7UNlyEemxYe7UBOzDEQ" stereotypeQualifiedName="cxDDS4CCM::CCMComponent">
+      <requiredProfiles>cxDDS4CCM</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+</elementtypesconfigurations:ElementTypeSetConfiguration>

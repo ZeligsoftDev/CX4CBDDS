@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <decoratorProvider
+            class="com.zeligsoft.domain.cbdds.ui.providers.PortDecoratorProvider">
+         <Priority
+               name="Medium">
+         </Priority>
+      </decoratorProvider>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider
+            class="com.zeligsoft.domain.cbdds.ui.editparts.ConnectorEditpartProvider">
+         <Priority
+               name="Highest">
+         </Priority>
+      </editpartProvider>
+   </extension>
+<!--
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="com.zeligsoft.cbdds.ui.commands"
+            name="CBDDS Model Editing Commands"
+            description="Commands for editing of CBDDST elements.">
+      </category>
+      <command
+            id="com.zeligsoft.cbdds.ui.generate"
+            name="CBDDS Generate"
+            description="Generate CBDDS models"
+            categoryId="com.zeligsoft.cbdds.ui.commands">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="com.zeligsoft.cbdds.ui.generate"
+            class="com.zeligsoft.domain.cbdds.ui.handlers.GenerateHandler">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup">
+         <command
+               commandId="com.zeligsoft.cbdds.ui.generate">
+            <visibleWhen
+                  checkEnabled="false">
+                  <iterate ifEmpty="false" operator="and">
+				  <adapt type="org.eclipse.emf.ecore.EObject">
+					 <instanceof  value="org.eclipse.uml2.uml.Model"/>
+				  </adapt>
+			   </iterate>
+            </visibleWhen>
+         </command>
+         <dynamic
+               class="com.zeligsoft.domain.cbdds.ui.ContributionItem1"
+               id="com.zeligsoft.domain.cbdds.ui.dynamic1">
+         </dynamic>
+      </menuContribution>
+   </extension>
+   -->
+</plugin>
