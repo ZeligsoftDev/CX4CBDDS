@@ -325,7 +325,7 @@
     <packageImport xmi:id="_ocjekEDSEd-VnJuJyqILLA">
       <importedPackage xmi:type="uml:Model" href="pathmap://CCM_DOMAIN/CCM.uml#_NRAMoAwOEdmFcaeZXPdWAQ"/>
     </packageImport>
-    <packageImport xmi:id="_txqUIHPtEd-Hgbsz-Pq3fg">      
+    <packageImport xmi:id="_txqUIHPtEd-Hgbsz-Pq3fg">
       <importedPackage xmi:type="uml:Model" href="pathmap://DDS_LIBRARIES/dds.uml#_NRAMoAwOEdmFcaeZXPdWAQ"/>
     </packageImport>
     <packagedElement xmi:type="uml:Package" xmi:id="_eP42QEDSEd-VnJuJyqILLA" name="DDS4CCM" clientDependency="_TsGEkJICEeCsrOl-W1K_Dg">
@@ -1682,6 +1682,15 @@
             <children xmi:type="notation:BasicDecorationNode" xmi:id="_AJZbgVStEemfNon6R1wyIA" type="ValueSpecification"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AJVxIVStEemfNon6R1wyIA" x="2831" y="8863" width="14234" height="2804"/>
           </children>
+          <children xmi:type="umlnotation:UMLShape" xmi:id="_Zl_LAI0eEemXDpqpOiiboQ" element="_ZlYHAI0eEemXDpqpOiiboQ" fontName="Ubuntu" fontHeight="8" fillColor="14277119" transparency="0" lineColor="12632258" lineWidth="1" showStereotype="Label">
+            <children xmi:type="notation:DecorationNode" xmi:id="_ZmBnQI0eEemXDpqpOiiboQ" type="ImageCompartment">
+              <layoutConstraint xmi:type="notation:Size" xmi:id="_ZmBnQY0eEemXDpqpOiiboQ" width="1320" height="1320"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_ZmCOUI0eEemXDpqpOiiboQ" type="Name"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_ZmC1YI0eEemXDpqpOiiboQ" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_ZmC1YY0eEemXDpqpOiiboQ" type="ValueSpecification"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Zl_LAY0eEemXDpqpOiiboQ" x="2831" y="12991" width="15187" height="2804"/>
+          </children>
           <element xsi:nil="true"/>
         </contents>
       </eAnnotations>
@@ -1738,6 +1747,16 @@ endif&#xD;
         <specification xmi:type="uml:OpaqueExpression" xmi:id="_AAmr4FStEemfNon6R1wyIA">
           <language>Java</language>
           <body>com.zeligsoft.domain.dds4ccm.constraints.java.ConnectorTypeNotEmptyConstraint</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="_ZlYHAI0eEemXDpqpOiiboQ" name="deployment_parts_with_local_interface_collocation">
+        <ownedComment xmi:id="_ZlfbwI0eEemXDpqpOiiboQ">
+          <body>%_desc_DDS4CCM__Constraints__deployment_parts_with_local_interface_collocation</body>
+        </ownedComment>
+        <constrainedElement xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.emx#_R1xfAEuREd2aAOSqOUjI9w?ZMLMM/ZML_Deployments/DeploymentPart?"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_ZlYuEI0eEemXDpqpOiiboQ">
+          <language>Java</language>
+          <body>com.zeligsoft.domain.dds4ccm.constraints.java.DeploymentPartsWithLocalInterfaceCollocationConstraint</body>
         </specification>
       </ownedRule>
     </packagedElement>
@@ -1855,4 +1874,5 @@ endif&#xD;
   <zdl:DomainAttribute xmi:id="_cm2DMAIREemxSNFUunBY-w" base_Property="_cmuHYAIREemxSNFUunBY-w"/>
   <zdl:ExternalDomainConstraint xmi:id="_JWN9UFAAEemk3qCdFFbT1g" severity="error" message="%_mesg_DDS4CCM__Constraints__connector_type_compatibility" id="com.zeligsoft.domain.dds4ccm.Constraints.connector_type_compatibility" base_Constraint="_JV7pcFAAEemk3qCdFFbT1g"/>
   <zdl:ExternalDomainConstraint xmi:id="_AAn6AFStEemfNon6R1wyIA" severity="error" message="%_mesg_DDS4CCM__Constraints__connector_type_not_empty" id="com.zeligsoft.domain.dds4ccm.Constraints.connector_type_not_empty" base_Constraint="_AAldwFStEemfNon6R1wyIA"/>
+  <zdl:ExternalDomainConstraint xmi:id="_Zle0sI0eEemXDpqpOiiboQ" severity="error" message="%_mesg_DDS4CCM__Constraints__deployment_parts_with_local_interface_collocation" id="com.zeligsoft.domain.dds4ccm.Constraints.deployment_parts_with_local_interface_collocation" base_Constraint="_ZlYHAI0eEemXDpqpOiiboQ"/>
 </xmi:XMI>
