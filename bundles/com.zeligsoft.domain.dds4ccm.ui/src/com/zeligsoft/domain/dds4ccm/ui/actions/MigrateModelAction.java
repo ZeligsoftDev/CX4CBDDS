@@ -27,6 +27,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.action.IAction;
@@ -40,7 +41,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Model;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
@@ -84,7 +84,7 @@ public class MigrateModelAction implements IViewActionDelegate {
 						true);
 			}
 			final AbstractTransactionalCommand migrationCommand = new AbstractTransactionalCommand(
-					UMLModeler.getEditingDomain(),
+					TransactionUtil.getEditingDomain(selObject),
 					Messages.MigrateModelAction_CommandLabel, null) {
 
 				@Override

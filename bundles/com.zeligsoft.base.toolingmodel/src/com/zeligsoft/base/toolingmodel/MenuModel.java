@@ -25,13 +25,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.MenuModel#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.MenuModel#getDescription <em>Description</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.MenuModel#getItem <em>Item</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.MenuModel#getMenu <em>Menu</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getMenuModel()
  * @model
@@ -81,7 +81,7 @@ public interface MenuModel extends MenuObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getMenuModel_Name()
-	 * @model dataType="org.eclipse.uml2.uml.String" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
@@ -107,7 +107,7 @@ public interface MenuModel extends MenuObject {
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
 	 * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getMenuModel_Description()
-	 * @model dataType="org.eclipse.uml2.uml.String"
+	 * @model
 	 * @generated
 	 */
 	String getDescription();
@@ -125,7 +125,7 @@ public interface MenuModel extends MenuObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model conceptDataType="org.eclipse.uml2.uml.String" conceptRequired="true"
+	 * @model conceptRequired="true"
 	 * @generated
 	 */
 	EList<MenuItem> getItems(String concept);

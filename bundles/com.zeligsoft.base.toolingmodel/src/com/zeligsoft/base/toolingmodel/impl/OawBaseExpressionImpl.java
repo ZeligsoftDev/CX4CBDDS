@@ -31,15 +31,14 @@ import com.zeligsoft.base.toolingmodel.ToolingModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.OawBaseExpressionImpl#getMetamodel <em>Metamodel</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class OawBaseExpressionImpl extends ExpressionImpl implements
-		OawBaseExpression {
+public abstract class OawBaseExpressionImpl extends ExpressionImpl implements OawBaseExpression {
 	/**
 	 * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}' attribute list.
 	 * <!-- begin-user-doc -->
@@ -152,7 +151,7 @@ public abstract class OawBaseExpressionImpl extends ExpressionImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (metamodel: "); //$NON-NLS-1$
 		result.append(metamodel);
 		result.append(')');

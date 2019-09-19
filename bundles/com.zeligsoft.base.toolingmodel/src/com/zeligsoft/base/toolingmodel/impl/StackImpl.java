@@ -43,12 +43,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.StackImpl#getTool <em>Tool</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.StackImpl#getTargetDiagram <em>Target Diagram</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.StackImpl#getActiveTool <em>Active Tool</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -110,8 +110,7 @@ public class StackImpl extends ToolImpl implements Stack {
 	 */
 	public EList<Tool> getTool() {
 		if (tool == null) {
-			tool = new EObjectContainmentEList<Tool>(Tool.class, this,
-					ToolingModelPackage.STACK__TOOL);
+			tool = new EObjectContainmentEList<Tool>(Tool.class, this, ToolingModelPackage.STACK__TOOL);
 		}
 		return tool;
 	}
@@ -123,8 +122,8 @@ public class StackImpl extends ToolImpl implements Stack {
 	 */
 	public EList<String> getTargetDiagram() {
 		if (targetDiagram == null) {
-			targetDiagram = new EDataTypeUniqueEList<String>(String.class,
-					this, ToolingModelPackage.STACK__TARGET_DIAGRAM);
+			targetDiagram = new EDataTypeUniqueEList<String>(String.class, this,
+					ToolingModelPackage.STACK__TARGET_DIAGRAM);
 		}
 		return targetDiagram;
 	}
@@ -140,8 +139,7 @@ public class StackImpl extends ToolImpl implements Stack {
 			activeTool = (Tool) eResolveProxy(oldActiveTool);
 			if (activeTool != oldActiveTool) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ToolingModelPackage.STACK__ACTIVE_TOOL,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolingModelPackage.STACK__ACTIVE_TOOL,
 							oldActiveTool, activeTool));
 			}
 		}
@@ -166,8 +164,7 @@ public class StackImpl extends ToolImpl implements Stack {
 		Tool oldActiveTool = activeTool;
 		activeTool = newActiveTool;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.STACK__ACTIVE_TOOL, oldActiveTool,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.STACK__ACTIVE_TOOL, oldActiveTool,
 					activeTool));
 	}
 
@@ -177,8 +174,7 @@ public class StackImpl extends ToolImpl implements Stack {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ToolingModelPackage.STACK__TOOL:
 			return ((InternalEList<?>) getTool()).basicRemove(otherEnd, msgs);
@@ -319,7 +315,7 @@ public class StackImpl extends ToolImpl implements Stack {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (targetDiagram: "); //$NON-NLS-1$
 		result.append(targetDiagram);
 		result.append(')');

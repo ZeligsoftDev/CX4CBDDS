@@ -39,7 +39,6 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Property;
 
-import com.ibm.xtools.uml.type.UMLElementFactory;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
@@ -154,7 +153,7 @@ public class RefactorCleanCommentsAction implements IViewActionDelegate {
 			}
 
 			for (Comment c : commentToRemove) {
-				UMLElementFactory.destroyElement(c, null);
+				EcoreUtil.delete(c);
 				refactorCount++;
 			}
 

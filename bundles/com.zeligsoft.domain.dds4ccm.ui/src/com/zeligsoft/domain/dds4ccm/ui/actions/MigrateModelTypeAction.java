@@ -17,7 +17,6 @@
 package com.zeligsoft.domain.dds4ccm.ui.actions;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -27,9 +26,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
@@ -42,21 +39,12 @@ import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.uml2.uml.Component;
-import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Model;
-import org.eclipse.uml2.uml.Relationship;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
-import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMMigrationModelTypeUtil;
-import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
-import com.zeligsoft.domain.omg.ccm.CCMNames;
 
 /**
  * Refactoring model type.
@@ -104,7 +92,7 @@ public class MigrateModelTypeAction
 				}
 				
 				final AbstractTransactionalCommand migrationCommand = new AbstractTransactionalCommand(
-						UMLModeler.getEditingDomain(),
+						TransactionUtil.getEditingDomain(selObject),
 						Messages.MigrateModelTypeAction_CommandLabel, null) {
 
 					@Override

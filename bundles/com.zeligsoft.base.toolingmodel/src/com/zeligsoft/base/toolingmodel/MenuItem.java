@@ -23,12 +23,12 @@ package com.zeligsoft.base.toolingmodel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.MenuItem#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.MenuItem#getDescription <em>Description</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.MenuItem#getContainer <em>Container</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getMenuItem()
  * @model abstract="true"
@@ -46,7 +46,7 @@ public interface MenuItem extends MenuObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getMenuItem_Name()
-	 * @model dataType="org.eclipse.uml2.uml.String" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
@@ -72,7 +72,7 @@ public interface MenuItem extends MenuObject {
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
 	 * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getMenuItem_Description()
-	 * @model dataType="org.eclipse.uml2.uml.String"
+	 * @model
 	 * @generated
 	 */
 	String getDescription();

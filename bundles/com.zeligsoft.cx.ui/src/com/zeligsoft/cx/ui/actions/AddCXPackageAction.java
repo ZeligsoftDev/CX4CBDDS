@@ -28,10 +28,8 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.uml2.uml.Package;
 
-import com.zeligsoft.base.diagram.utils.BaseDiagramUtil;
 import com.zeligsoft.base.ui.commands.CreatePackageWithoutDiagramCommand;
 import com.zeligsoft.base.ui.menus.actions.ICXAction;
-import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
 import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
 
@@ -83,9 +81,6 @@ public class AddCXPackageAction extends Action implements ICXAction {
 		if (result != null && result.getReturnValue() != null) {
 			if (result.getReturnValue() instanceof Package) {
 				Package pkg = (Package) result.getReturnValue();
-				if (!BaseDiagramUtil.startInlineEdit(pkg)) {
-					BaseUIUtil.startInLineEdit(pkg);
-				}
 			}
 		}
 	}

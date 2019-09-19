@@ -38,12 +38,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.CreateActionImpl#getCreateConcept <em>Create Concept</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.CreateActionImpl#getTypeHint <em>Type Hint</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.CreateActionImpl#getExpression <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -135,8 +135,7 @@ public class CreateActionImpl extends MenuActionImpl implements CreateAction {
 		String oldCreateConcept = createConcept;
 		createConcept = newCreateConcept;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.CREATE_ACTION__CREATE_CONCEPT,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.CREATE_ACTION__CREATE_CONCEPT,
 					oldCreateConcept, createConcept));
 	}
 
@@ -158,9 +157,8 @@ public class CreateActionImpl extends MenuActionImpl implements CreateAction {
 		String oldTypeHint = typeHint;
 		typeHint = newTypeHint;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.CREATE_ACTION__TYPE_HINT, oldTypeHint,
-					typeHint));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.CREATE_ACTION__TYPE_HINT,
+					oldTypeHint, typeHint));
 	}
 
 	/**
@@ -170,8 +168,7 @@ public class CreateActionImpl extends MenuActionImpl implements CreateAction {
 	 */
 	public EList<Expression> getExpression() {
 		if (expression == null) {
-			expression = new EObjectContainmentEList<Expression>(
-					Expression.class, this,
+			expression = new EObjectContainmentEList<Expression>(Expression.class, this,
 					ToolingModelPackage.CREATE_ACTION__EXPRESSION);
 		}
 		return expression;
@@ -183,12 +180,10 @@ public class CreateActionImpl extends MenuActionImpl implements CreateAction {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ToolingModelPackage.CREATE_ACTION__EXPRESSION:
-			return ((InternalEList<?>) getExpression()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getExpression()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -267,8 +262,7 @@ public class CreateActionImpl extends MenuActionImpl implements CreateAction {
 			return CREATE_CONCEPT_EDEFAULT == null ? createConcept != null
 					: !CREATE_CONCEPT_EDEFAULT.equals(createConcept);
 		case ToolingModelPackage.CREATE_ACTION__TYPE_HINT:
-			return TYPE_HINT_EDEFAULT == null ? typeHint != null
-					: !TYPE_HINT_EDEFAULT.equals(typeHint);
+			return TYPE_HINT_EDEFAULT == null ? typeHint != null : !TYPE_HINT_EDEFAULT.equals(typeHint);
 		case ToolingModelPackage.CREATE_ACTION__EXPRESSION:
 			return expression != null && !expression.isEmpty();
 		}
@@ -285,7 +279,7 @@ public class CreateActionImpl extends MenuActionImpl implements CreateAction {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (createConcept: "); //$NON-NLS-1$
 		result.append(createConcept);
 		result.append(", typeHint: "); //$NON-NLS-1$

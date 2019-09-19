@@ -75,7 +75,7 @@ public class ZDLElementTypeManager {
 		// bind the types that we will generate to the UML context
 		// TODO RSM-dependent
 		ClientContextManager.getInstance().getClientContext(
-			"com.ibm.xtools.uml.type.context").bindPattern( //$NON-NLS-1$
+			"com.zeligsoft.domain.cbdds.atcd.architecture").bindPattern( //$NON-NLS-1$
 			Pattern.compile("com\\.zeligsoft\\.zdl\\..*")); //$NON-NLS-1$
 	}
 
@@ -97,8 +97,7 @@ public class ZDLElementTypeManager {
 
 			ISpecializationTypeDescriptor desc = new ZDLConceptTypeDescriptor(
 				id, concept);
-			IElementTypeFactory factory = reg.getElementTypeFactory(desc
-				.getKindName());
+			IElementTypeFactory factory = reg.getElementTypeFactory(desc.getKindName());
 
 			result = factory.createSpecializationType(desc);
 
@@ -449,8 +448,7 @@ public class ZDLElementTypeManager {
 		}
 
 		public String getKindName() {
-			// TODO RSM-dependent
-			return "com.ibm.xtools.uml.type.IStereotypedElementType"; //$NON-NLS-1$
+			return "org.eclipse.gmf.runtime.emf.type.core.IHintedType"; //$NON-NLS-1$
 		}
 
 		public String getParamValue(String paramName) {

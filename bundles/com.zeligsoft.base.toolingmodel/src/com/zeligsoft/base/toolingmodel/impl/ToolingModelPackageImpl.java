@@ -21,7 +21,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.uml2.types.TypesPackage;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.toolingmodel.CreateAction;
@@ -61,8 +63,7 @@ import com.zeligsoft.base.toolingmodel.ToolingModelPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ToolingModelPackageImpl extends EPackageImpl implements
-		ToolingModelPackage {
+public class ToolingModelPackageImpl extends EPackageImpl implements ToolingModelPackage {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -288,7 +289,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link ToolingModelPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -300,18 +301,20 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 */
 	public static ToolingModelPackage init() {
 		if (isInited)
-			return (ToolingModelPackage) EPackage.Registry.INSTANCE
-					.getEPackage(ToolingModelPackage.eNS_URI);
+			return (ToolingModelPackage) EPackage.Registry.INSTANCE.getEPackage(ToolingModelPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ToolingModelPackageImpl theToolingModelPackage = (ToolingModelPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof ToolingModelPackageImpl ? EPackage.Registry.INSTANCE
-				.get(eNS_URI) : new ToolingModelPackageImpl());
+		Object registeredToolingModelPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		ToolingModelPackageImpl theToolingModelPackage = registeredToolingModelPackage instanceof ToolingModelPackageImpl
+				? (ToolingModelPackageImpl) registeredToolingModelPackage
+				: new ToolingModelPackageImpl();
 
 		isInited = true;
 
 		// Initialize simple dependencies
+		EcorePackage.eINSTANCE.eClass();
 		UMLPackage.eINSTANCE.eClass();
+		TypesPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theToolingModelPackage.createPackageContents();
@@ -323,8 +326,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 		theToolingModelPackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(ToolingModelPackage.eNS_URI,
-				theToolingModelPackage);
+		EPackage.Registry.INSTANCE.put(ToolingModelPackage.eNS_URI, theToolingModelPackage);
 		return theToolingModelPackage;
 	}
 
@@ -505,8 +507,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getPropertySource_Definition() {
-		return (EReference) propertySourceEClass.getEStructuralFeatures()
-				.get(0);
+		return (EReference) propertySourceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -515,8 +516,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPropertySource_ConceptName() {
-		return (EAttribute) propertySourceEClass.getEStructuralFeatures()
-				.get(1);
+		return (EAttribute) propertySourceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -525,8 +525,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPropertySource_Order() {
-		return (EAttribute) propertySourceEClass.getEStructuralFeatures()
-				.get(2);
+		return (EAttribute) propertySourceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -544,8 +543,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPropertyDefinition_ReadOnly() {
-		return (EAttribute) propertyDefinitionEClass.getEStructuralFeatures()
-				.get(0);
+		return (EAttribute) propertyDefinitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -554,8 +552,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPropertyDefinition_Visible() {
-		return (EAttribute) propertyDefinitionEClass.getEStructuralFeatures()
-				.get(1);
+		return (EAttribute) propertyDefinitionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -564,8 +561,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPropertyDefinition_ContentHint() {
-		return (EAttribute) propertyDefinitionEClass.getEStructuralFeatures()
-				.get(2);
+		return (EAttribute) propertyDefinitionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -574,8 +570,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getPropertyDefinition_Section() {
-		return (EAttribute) propertyDefinitionEClass.getEStructuralFeatures()
-				.get(3);
+		return (EAttribute) propertyDefinitionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -629,8 +624,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getTextualDefinition_Width() {
-		return (EAttribute) textualDefinitionEClass.getEStructuralFeatures()
-				.get(0);
+		return (EAttribute) textualDefinitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -639,8 +633,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getTextualDefinition_NumRows() {
-		return (EAttribute) textualDefinitionEClass.getEStructuralFeatures()
-				.get(1);
+		return (EAttribute) textualDefinitionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -856,8 +849,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getDelegateAction_ClassName() {
-		return (EAttribute) delegateActionEClass.getEStructuralFeatures()
-				.get(0);
+		return (EAttribute) delegateActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -866,8 +858,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getDelegateAction_HostBundle() {
-		return (EAttribute) delegateActionEClass.getEStructuralFeatures()
-				.get(1);
+		return (EAttribute) delegateActionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -939,8 +930,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getOawBaseExpression_Metamodel() {
-		return (EAttribute) oawBaseExpressionEClass.getEStructuralFeatures()
-				.get(0);
+		return (EAttribute) oawBaseExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1049,18 +1039,15 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 		createEAttribute(propertySourceEClass, PROPERTY_SOURCE__ORDER);
 
 		propertyDefinitionEClass = createEClass(PROPERTY_DEFINITION);
-		createEAttribute(propertyDefinitionEClass,
-				PROPERTY_DEFINITION__READ_ONLY);
+		createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__READ_ONLY);
 		createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__VISIBLE);
-		createEAttribute(propertyDefinitionEClass,
-				PROPERTY_DEFINITION__CONTENT_HINT);
+		createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__CONTENT_HINT);
 		createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__SECTION);
 
 		propertySheetEClass = createEClass(PROPERTY_SHEET);
 		createEAttribute(propertySheetEClass, PROPERTY_SHEET__DOMAIN_MODEL_URI);
 		createEReference(propertySheetEClass, PROPERTY_SHEET__PROPERTY_SOURCE);
-		createEReference(propertySheetEClass,
-				PROPERTY_SHEET__PROPERTY_DEFINITION);
+		createEReference(propertySheetEClass, PROPERTY_SHEET__PROPERTY_DEFINITION);
 
 		textualDefinitionEClass = createEClass(TEXTUAL_DEFINITION);
 		createEAttribute(textualDefinitionEClass, TEXTUAL_DEFINITION__WIDTH);
@@ -1110,8 +1097,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 		createEAttribute(expressionEClass, EXPRESSION__EXPRESSION);
 
 		oawBaseExpressionEClass = createEClass(OAW_BASE_EXPRESSION);
-		createEAttribute(oawBaseExpressionEClass,
-				OAW_BASE_EXPRESSION__METAMODEL);
+		createEAttribute(oawBaseExpressionEClass, OAW_BASE_EXPRESSION__METAMODEL);
 
 		oawExpressionEClass = createEClass(OAW_EXPRESSION);
 		createEAttribute(oawExpressionEClass, OAW_EXPRESSION__VARIABLE_NAME);
@@ -1147,8 +1133,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		UMLPackage theUMLPackage = (UMLPackage) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI);
+		UMLPackage theUMLPackage = (UMLPackage) EPackage.Registry.INSTANCE.getEPackage(UMLPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -1165,13 +1150,10 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 		linkToolEClass.getESuperTypes().add(this.getTool());
 		propertySourceEClass.getESuperTypes().add(this.getPropertiesObject());
 		propertyDefinitionEClass.getESuperTypes().add(this.getNamedElement());
-		propertyDefinitionEClass.getESuperTypes().add(
-				this.getPropertiesObject());
+		propertyDefinitionEClass.getESuperTypes().add(this.getPropertiesObject());
 		propertySheetEClass.getESuperTypes().add(this.getPropertiesObject());
-		textualDefinitionEClass.getESuperTypes().add(
-				this.getPrimitiveDefinition());
-		primitiveDefinitionEClass.getESuperTypes().add(
-				this.getPropertyDefinition());
+		textualDefinitionEClass.getESuperTypes().add(this.getPrimitiveDefinition());
+		primitiveDefinitionEClass.getESuperTypes().add(this.getPropertyDefinition());
 		menuModelEClass.getESuperTypes().add(this.getMenuObject());
 		menuInstanceEClass.getESuperTypes().add(this.getMenuObject());
 		menuItemEClass.getESuperTypes().add(this.getMenuObject());
@@ -1185,339 +1167,210 @@ public class ToolingModelPackageImpl extends EPackageImpl implements
 		oawXtendEClass.getESuperTypes().add(this.getOawBaseExpression());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(
-				paletteItemEClass,
-				PaletteItem.class,
-				"PaletteItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getPaletteItem_Name(),
-				ecorePackage.getEString(),
-				"name", null, 1, 1, PaletteItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getPaletteItem_Description(),
-				ecorePackage.getEString(),
-				"description", null, 0, 1, PaletteItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(paletteItemEClass, PaletteItem.class, "PaletteItem", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPaletteItem_Name(), ecorePackage.getEString(), "name", null, 1, 1, PaletteItem.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPaletteItem_Description(), ecorePackage.getEString(), "description", null, 0, 1, //$NON-NLS-1$
+				PaletteItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				paletteEClass,
-				Palette.class,
-				"Palette", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getPalette_Drawer(),
-				this.getDrawer(),
-				null,
-				"drawer", null, 0, -1, Palette.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(paletteEClass, Palette.class, "Palette", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getPalette_Drawer(), this.getDrawer(), null, "drawer", null, 0, -1, Palette.class, !IS_TRANSIENT, //$NON-NLS-1$
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(toolEClass, Tool.class,
-				"Tool", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(toolEClass, Tool.class, "Tool", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		initEClass(
-				toolContainerEClass,
-				ToolContainer.class,
-				"ToolContainer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getToolContainer_Tool(),
-				this.getTool(),
-				null,
-				"tool", null, 0, -1, ToolContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getToolContainer_TargetDiagram(),
-				ecorePackage.getEString(),
-				"targetDiagram", null, 0, -1, ToolContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(toolContainerEClass, ToolContainer.class, "ToolContainer", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getToolContainer_Tool(), this.getTool(), null, "tool", null, 0, -1, ToolContainer.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getToolContainer_TargetDiagram(), ecorePackage.getEString(), "targetDiagram", null, 0, -1, //$NON-NLS-1$
+				ToolContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				drawerEClass,
-				Drawer.class,
-				"Drawer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(drawerEClass, Drawer.class, "Drawer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-		initEClass(
-				stackEClass,
-				Stack.class,
-				"Stack", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getStack_ActiveTool(),
-				this.getTool(),
-				null,
-				"activeTool", null, 0, 1, Stack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(stackEClass, Stack.class, "Stack", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getStack_ActiveTool(), this.getTool(), null, "activeTool", null, 0, 1, Stack.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				creationToolEClass,
-				CreationTool.class,
-				"CreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getCreationTool_Concept(),
-				theUMLPackage.getClass_(),
-				null,
-				"concept", null, 1, 1, CreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getCreationTool_ElementTypeHint(),
-				ecorePackage.getEString(),
-				"elementTypeHint", null, 0, 1, CreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getCreationTool_Expression(),
-				this.getExpression(),
-				null,
-				"expression", null, 0, -1, CreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(creationToolEClass, CreationTool.class, "CreationTool", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCreationTool_Concept(), theUMLPackage.getClass_(), null, "concept", null, 1, 1, //$NON-NLS-1$
+				CreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCreationTool_ElementTypeHint(), ecorePackage.getEString(), "elementTypeHint", null, 0, 1, //$NON-NLS-1$
+				CreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getCreationTool_Expression(), this.getExpression(), null, "expression", null, 0, -1, //$NON-NLS-1$
+				CreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				linkToolEClass,
-				LinkTool.class,
-				"LinkTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getLinkTool_Reference(),
-				theUMLPackage.getProperty(),
-				null,
-				"reference", null, 0, 1, LinkTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(linkToolEClass, LinkTool.class, "LinkTool", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLinkTool_Reference(), theUMLPackage.getProperty(), null, "reference", null, 0, 1, //$NON-NLS-1$
+				LinkTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				propertySourceEClass,
-				PropertySource.class,
-				"PropertySource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getPropertySource_Definition(),
-				this.getPropertyDefinition(),
-				null,
-				"definition", null, 1, -1, PropertySource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getPropertySource_ConceptName(),
-				ecorePackage.getEString(),
-				"conceptName", null, 0, 1, PropertySource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getPropertySource_Order(),
-				ecorePackage.getEInt(),
-				"order", "7326", 0, 1, PropertySource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEClass(propertySourceEClass, PropertySource.class, "PropertySource", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPropertySource_Definition(), this.getPropertyDefinition(), null, "definition", null, 1, -1, //$NON-NLS-1$
+				PropertySource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertySource_ConceptName(), ecorePackage.getEString(), "conceptName", null, 0, 1, //$NON-NLS-1$
+				PropertySource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertySource_Order(), ecorePackage.getEInt(), "order", "7326", 0, 1, PropertySource.class, //$NON-NLS-1$//$NON-NLS-2$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				propertyDefinitionEClass,
-				PropertyDefinition.class,
-				"PropertyDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getPropertyDefinition_ReadOnly(),
-				ecorePackage.getEBoolean(),
-				"readOnly", "false", 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEAttribute(
-				getPropertyDefinition_Visible(),
-				ecorePackage.getEBoolean(),
-				"visible", "true", 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEAttribute(
-				getPropertyDefinition_ContentHint(),
-				ecorePackage.getEString(),
-				"contentHint", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getPropertyDefinition_Section(),
-				ecorePackage.getEString(),
-				"section", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(propertyDefinitionEClass, PropertyDefinition.class, "PropertyDefinition", !IS_ABSTRACT, //$NON-NLS-1$
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPropertyDefinition_ReadOnly(), ecorePackage.getEBoolean(), "readOnly", "false", 0, 1, //$NON-NLS-1$//$NON-NLS-2$
+				PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyDefinition_Visible(), ecorePackage.getEBoolean(), "visible", "true", 0, 1, //$NON-NLS-1$//$NON-NLS-2$
+				PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyDefinition_ContentHint(), ecorePackage.getEString(), "contentHint", null, 0, 1, //$NON-NLS-1$
+				PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyDefinition_Section(), ecorePackage.getEString(), "section", null, 0, 1, //$NON-NLS-1$
+				PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				propertySheetEClass,
-				PropertySheet.class,
-				"PropertySheet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getPropertySheet_DomainModelURI(),
-				ecorePackage.getEString(),
-				"domainModelURI", "", 0, 1, PropertySheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEReference(
-				getPropertySheet_PropertySource(),
-				this.getPropertySource(),
-				null,
-				"propertySource", null, 0, -1, PropertySheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getPropertySheet_PropertyDefinition(),
-				this.getPropertyDefinition(),
-				null,
-				"propertyDefinition", null, 0, -1, PropertySheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED); //$NON-NLS-1$
+		initEClass(propertySheetEClass, PropertySheet.class, "PropertySheet", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPropertySheet_DomainModelURI(), ecorePackage.getEString(), "domainModelURI", "", 0, 1, //$NON-NLS-1$//$NON-NLS-2$
+				PropertySheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getPropertySheet_PropertySource(), this.getPropertySource(), null, "propertySource", null, 0, -1, //$NON-NLS-1$
+				PropertySheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getPropertySheet_PropertyDefinition(), this.getPropertyDefinition(), null, "propertyDefinition", //$NON-NLS-1$
+				null, 0, -1, PropertySheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(
-				textualDefinitionEClass,
-				TextualDefinition.class,
-				"TextualDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getTextualDefinition_Width(),
-				ecorePackage.getEShort(),
-				"width", "150", 0, 1, TextualDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEAttribute(
-				getTextualDefinition_NumRows(),
-				ecorePackage.getEShort(),
-				"numRows", "1", 0, 1, TextualDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEClass(textualDefinitionEClass, TextualDefinition.class, "TextualDefinition", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTextualDefinition_Width(), ecorePackage.getEShort(), "width", "150", 0, 1, //$NON-NLS-1$//$NON-NLS-2$
+				TextualDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTextualDefinition_NumRows(), ecorePackage.getEShort(), "numRows", "1", 0, 1, //$NON-NLS-1$//$NON-NLS-2$
+				TextualDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				primitiveDefinitionEClass,
-				PrimitiveDefinition.class,
-				"PrimitiveDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(primitiveDefinitionEClass, PrimitiveDefinition.class, "PrimitiveDefinition", !IS_ABSTRACT, //$NON-NLS-1$
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(
-				namedElementEClass,
-				NamedElement.class,
-				"NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getNamedElement_Name(),
-				ecorePackage.getEString(),
-				"name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				menuModelEClass,
-				MenuModel.class,
-				"MenuModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getMenuModel_Name(),
-				theUMLPackage.getLiteralString(),
-				"name", null, 1, 1, MenuModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getMenuModel_Description(),
-				theUMLPackage.getLiteralString(),
-				"description", null, 0, 1, MenuModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getMenuModel_Item(),
-				this.getMenuItem(),
-				null,
-				"item", null, 0, -1, MenuModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getMenuModel_Menu(),
-				this.getMenuInstance(),
-				null,
-				"menu", null, 0, -1, MenuModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(menuModelEClass, MenuModel.class, "MenuModel", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMenuModel_Name(), ecorePackage.getEString(), "name", null, 1, 1, MenuModel.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMenuModel_Description(), ecorePackage.getEString(), "description", null, 0, 1, //$NON-NLS-1$
+				MenuModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getMenuModel_Item(), this.getMenuItem(), null, "item", null, 0, -1, MenuModel.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMenuModel_Menu(), this.getMenuInstance(), null, "menu", null, 0, -1, MenuModel.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(menuModelEClass, this.getMenuItem(),
-				"getItems", 0, -1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, theUMLPackage.getLiteralString(),
-				"concept", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		EOperation op = addEOperation(menuModelEClass, this.getMenuItem(), "getItems", 0, -1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, ecorePackage.getEString(), "concept", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(
-				menuInstanceEClass,
-				MenuInstance.class,
-				"MenuInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getMenuInstance_Concept(),
-				theUMLPackage.getLiteralString(),
-				"concept", null, 1, 1, MenuInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getMenuInstance_Item(),
-				this.getMenuItem(),
-				null,
-				"item", null, 0, -1, MenuInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(menuInstanceEClass, MenuInstance.class, "MenuInstance", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMenuInstance_Concept(), ecorePackage.getEString(), "concept", null, 1, 1, MenuInstance.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMenuInstance_Item(), this.getMenuItem(), null, "item", null, 0, -1, MenuInstance.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				menuItemEClass,
-				MenuItem.class,
-				"MenuItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getMenuItem_Name(),
-				theUMLPackage.getLiteralString(),
-				"name", null, 1, 1, MenuItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getMenuItem_Description(),
-				theUMLPackage.getLiteralString(),
-				"description", null, 0, 1, MenuItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getMenuItem_Container(),
-				this.getMenu(),
-				this.getMenu_Item(),
-				"container", null, 0, 1, MenuItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(menuItemEClass, MenuItem.class, "MenuItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getMenuItem_Name(), ecorePackage.getEString(), "name", null, 1, 1, MenuItem.class, !IS_TRANSIENT, //$NON-NLS-1$
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMenuItem_Description(), ecorePackage.getEString(), "description", null, 0, 1, MenuItem.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMenuItem_Container(), this.getMenu(), this.getMenu_Item(), "container", null, 0, 1, //$NON-NLS-1$
+				MenuItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				menuEClass,
-				Menu.class,
-				"Menu", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(
-				getMenu_Item(),
-				this.getMenuItem(),
-				this.getMenuItem_Container(),
-				"item", null, 0, -1, Menu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(menuEClass, Menu.class, "Menu", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getMenu_Item(), this.getMenuItem(), this.getMenuItem_Container(), "item", null, 0, -1, //$NON-NLS-1$
+				Menu.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				menuActionEClass,
-				MenuAction.class,
-				"MenuAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(menuActionEClass, MenuAction.class, "MenuAction", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(
-				createActionEClass,
-				CreateAction.class,
-				"CreateAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getCreateAction_CreateConcept(),
-				theUMLPackage.getLiteralString(),
-				"createConcept", null, 0, 1, CreateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getCreateAction_TypeHint(),
-				theUMLPackage.getLiteralString(),
-				"typeHint", null, 0, 1, CreateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(
-				getCreateAction_Expression(),
-				this.getExpression(),
-				null,
-				"expression", null, 0, -1, CreateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(createActionEClass, CreateAction.class, "CreateAction", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCreateAction_CreateConcept(), ecorePackage.getEString(), "createConcept", null, 0, 1, //$NON-NLS-1$
+				CreateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCreateAction_TypeHint(), ecorePackage.getEString(), "typeHint", null, 0, 1, //$NON-NLS-1$
+				CreateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getCreateAction_Expression(), this.getExpression(), null, "expression", null, 0, -1, //$NON-NLS-1$
+				CreateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				delegateActionEClass,
-				DelegateAction.class,
-				"DelegateAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getDelegateAction_ClassName(),
-				theUMLPackage.getLiteralString(),
-				"className", null, 1, 1, DelegateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getDelegateAction_HostBundle(),
-				theUMLPackage.getLiteralString(),
-				"hostBundle", null, 0, 1, DelegateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(delegateActionEClass, DelegateAction.class, "DelegateAction", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDelegateAction_ClassName(), ecorePackage.getEString(), "className", null, 1, 1, //$NON-NLS-1$
+				DelegateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDelegateAction_HostBundle(), ecorePackage.getEString(), "hostBundle", null, 0, 1, //$NON-NLS-1$
+				DelegateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				menuSeparatorEClass,
-				MenuSeparator.class,
-				"MenuSeparator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(menuSeparatorEClass, MenuSeparator.class, "MenuSeparator", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(
-				menuObjectEClass,
-				MenuObject.class,
-				"MenuObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getMenuObject_Generated(),
-				theUMLPackage.getLiteralBoolean(),
-				"generated", "false", 0, 1, MenuObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEClass(menuObjectEClass, MenuObject.class, "MenuObject", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMenuObject_Generated(), ecorePackage.getEBoolean(), "generated", "false", 0, 1, //$NON-NLS-1$//$NON-NLS-2$
+				MenuObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				expressionEClass,
-				Expression.class,
-				"Expression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getExpression_Name(),
-				ecorePackage.getEString(),
-				"name", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(
-				getExpression_Expression(),
-				ecorePackage.getEString(),
-				"expression", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getExpression_Name(), ecorePackage.getEString(), "name", null, 0, 1, Expression.class, //$NON-NLS-1$
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExpression_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, //$NON-NLS-1$
+				Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				oawBaseExpressionEClass,
-				OawBaseExpression.class,
-				"OawBaseExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getOawBaseExpression_Metamodel(),
-				ecorePackage.getEString(),
-				"metamodel", null, 0, -1, OawBaseExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(oawBaseExpressionEClass, OawBaseExpression.class, "OawBaseExpression", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOawBaseExpression_Metamodel(), ecorePackage.getEString(), "metamodel", null, 0, -1, //$NON-NLS-1$
+				OawBaseExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				oawExpressionEClass,
-				OawExpression.class,
-				"OawExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getOawExpression_VariableName(),
-				ecorePackage.getEString(),
-				"variableName", null, 1, 1, OawExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(oawExpressionEClass, OawExpression.class, "OawExpression", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOawExpression_VariableName(), ecorePackage.getEString(), "variableName", null, 1, 1, //$NON-NLS-1$
+				OawExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				oawXtendEClass,
-				OawXtend.class,
-				"OawXtend", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(
-				getOawXtend_ExtensionFile(),
-				ecorePackage.getEString(),
-				"extensionFile", null, 1, 1, OawXtend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(oawXtendEClass, OawXtend.class, "OawXtend", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOawXtend_ExtensionFile(), ecorePackage.getEString(), "extensionFile", null, 1, 1, //$NON-NLS-1$
+				OawXtend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(
-				propertiesObjectEClass,
-				PropertiesObject.class,
-				"PropertiesObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(propertiesObjectEClass, PropertiesObject.class, "PropertiesObject", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
+				IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

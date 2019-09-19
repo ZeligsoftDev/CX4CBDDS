@@ -32,11 +32,11 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.ExpressionImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.ExpressionImpl#getExpression <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -118,8 +118,7 @@ public abstract class ExpressionImpl extends EObjectImpl implements Expression {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.EXPRESSION__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.EXPRESSION__NAME, oldName, name));
 	}
 
 	/**
@@ -140,9 +139,8 @@ public abstract class ExpressionImpl extends EObjectImpl implements Expression {
 		String oldExpression = expression;
 		expression = newExpression;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.EXPRESSION__EXPRESSION, oldExpression,
-					expression));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.EXPRESSION__EXPRESSION,
+					oldExpression, expression));
 	}
 
 	/**
@@ -206,11 +204,9 @@ public abstract class ExpressionImpl extends EObjectImpl implements Expression {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ToolingModelPackage.EXPRESSION__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case ToolingModelPackage.EXPRESSION__EXPRESSION:
-			return EXPRESSION_EDEFAULT == null ? expression != null
-					: !EXPRESSION_EDEFAULT.equals(expression);
+			return EXPRESSION_EDEFAULT == null ? expression != null : !EXPRESSION_EDEFAULT.equals(expression);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -225,7 +221,7 @@ public abstract class ExpressionImpl extends EObjectImpl implements Expression {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", expression: "); //$NON-NLS-1$

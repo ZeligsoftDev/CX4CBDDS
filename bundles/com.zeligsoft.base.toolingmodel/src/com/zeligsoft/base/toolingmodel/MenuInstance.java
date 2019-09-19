@@ -25,11 +25,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.MenuInstance#getConcept <em>Concept</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.MenuInstance#getItem <em>Item</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getMenuInstance()
  * @model
@@ -47,7 +47,7 @@ public interface MenuInstance extends MenuObject {
 	 * @return the value of the '<em>Concept</em>' attribute.
 	 * @see #setConcept(String)
 	 * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getMenuInstance_Concept()
-	 * @model dataType="org.eclipse.uml2.uml.String" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getConcept();

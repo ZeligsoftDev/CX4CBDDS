@@ -23,11 +23,11 @@ package com.zeligsoft.base.toolingmodel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.TextualDefinition#getWidth <em>Width</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.TextualDefinition#getNumRows <em>Num Rows</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getTextualDefinition()
  * @model

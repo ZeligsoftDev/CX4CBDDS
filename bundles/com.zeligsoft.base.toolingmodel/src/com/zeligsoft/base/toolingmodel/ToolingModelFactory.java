@@ -34,8 +34,7 @@ public interface ToolingModelFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ToolingModelFactory eINSTANCE = com.zeligsoft.base.toolingmodel.impl.ToolingModelFactoryImpl
-			.init();
+	ToolingModelFactory eINSTANCE = com.zeligsoft.base.toolingmodel.impl.ToolingModelFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Palette</em>'.

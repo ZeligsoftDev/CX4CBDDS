@@ -38,12 +38,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.CreationToolImpl#getConcept <em>Concept</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.CreationToolImpl#getElementTypeHint <em>Element Type Hint</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.CreationToolImpl#getExpression <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -120,8 +120,7 @@ public class CreationToolImpl extends ToolImpl implements CreationTool {
 			if (concept != oldConcept) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ToolingModelPackage.CREATION_TOOL__CONCEPT,
-							oldConcept, concept));
+							ToolingModelPackage.CREATION_TOOL__CONCEPT, oldConcept, concept));
 			}
 		}
 		return concept;
@@ -145,9 +144,8 @@ public class CreationToolImpl extends ToolImpl implements CreationTool {
 		org.eclipse.uml2.uml.Class oldConcept = concept;
 		concept = newConcept;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.CREATION_TOOL__CONCEPT, oldConcept,
-					concept));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.CREATION_TOOL__CONCEPT,
+					oldConcept, concept));
 	}
 
 	/**
@@ -168,8 +166,7 @@ public class CreationToolImpl extends ToolImpl implements CreationTool {
 		String oldElementTypeHint = elementTypeHint;
 		elementTypeHint = newElementTypeHint;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.CREATION_TOOL__ELEMENT_TYPE_HINT,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.CREATION_TOOL__ELEMENT_TYPE_HINT,
 					oldElementTypeHint, elementTypeHint));
 	}
 
@@ -180,8 +177,7 @@ public class CreationToolImpl extends ToolImpl implements CreationTool {
 	 */
 	public EList<Expression> getExpression() {
 		if (expression == null) {
-			expression = new EObjectContainmentEList<Expression>(
-					Expression.class, this,
+			expression = new EObjectContainmentEList<Expression>(Expression.class, this,
 					ToolingModelPackage.CREATION_TOOL__EXPRESSION);
 		}
 		return expression;
@@ -193,12 +189,10 @@ public class CreationToolImpl extends ToolImpl implements CreationTool {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ToolingModelPackage.CREATION_TOOL__EXPRESSION:
-			return ((InternalEList<?>) getExpression()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getExpression()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -296,7 +290,7 @@ public class CreationToolImpl extends ToolImpl implements CreationTool {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (elementTypeHint: "); //$NON-NLS-1$
 		result.append(elementTypeHint);
 		result.append(')');

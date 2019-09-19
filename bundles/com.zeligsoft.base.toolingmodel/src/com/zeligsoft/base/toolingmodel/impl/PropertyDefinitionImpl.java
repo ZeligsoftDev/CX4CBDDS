@@ -31,18 +31,17 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertyDefinitionImpl#isReadOnly <em>Read Only</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertyDefinitionImpl#isVisible <em>Visible</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertyDefinitionImpl#getContentHint <em>Content Hint</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertyDefinitionImpl#getSection <em>Section</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class PropertyDefinitionImpl extends NamedElementImpl implements
-		PropertyDefinition {
+public class PropertyDefinitionImpl extends NamedElementImpl implements PropertyDefinition {
 
 	/**
 	 * The default value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute.
@@ -161,8 +160,7 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements
 		boolean oldReadOnly = readOnly;
 		readOnly = newReadOnly;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.PROPERTY_DEFINITION__READ_ONLY,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.PROPERTY_DEFINITION__READ_ONLY,
 					oldReadOnly, readOnly));
 	}
 
@@ -184,8 +182,7 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements
 		boolean oldVisible = visible;
 		visible = newVisible;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.PROPERTY_DEFINITION__VISIBLE,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.PROPERTY_DEFINITION__VISIBLE,
 					oldVisible, visible));
 	}
 
@@ -207,8 +204,7 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements
 		String oldContentHint = contentHint;
 		contentHint = newContentHint;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.PROPERTY_DEFINITION__CONTENT_HINT,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.PROPERTY_DEFINITION__CONTENT_HINT,
 					oldContentHint, contentHint));
 	}
 
@@ -230,8 +226,7 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements
 		String oldSection = section;
 		section = newSection;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.PROPERTY_DEFINITION__SECTION,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.PROPERTY_DEFINITION__SECTION,
 					oldSection, section));
 	}
 
@@ -316,11 +311,9 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements
 		case ToolingModelPackage.PROPERTY_DEFINITION__VISIBLE:
 			return visible != VISIBLE_EDEFAULT;
 		case ToolingModelPackage.PROPERTY_DEFINITION__CONTENT_HINT:
-			return CONTENT_HINT_EDEFAULT == null ? contentHint != null
-					: !CONTENT_HINT_EDEFAULT.equals(contentHint);
+			return CONTENT_HINT_EDEFAULT == null ? contentHint != null : !CONTENT_HINT_EDEFAULT.equals(contentHint);
 		case ToolingModelPackage.PROPERTY_DEFINITION__SECTION:
-			return SECTION_EDEFAULT == null ? section != null
-					: !SECTION_EDEFAULT.equals(section);
+			return SECTION_EDEFAULT == null ? section != null : !SECTION_EDEFAULT.equals(section);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -335,7 +328,7 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (readOnly: "); //$NON-NLS-1$
 		result.append(readOnly);
 		result.append(", visible: "); //$NON-NLS-1$

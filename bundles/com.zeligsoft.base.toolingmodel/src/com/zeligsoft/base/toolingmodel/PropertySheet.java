@@ -25,12 +25,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertySheet#getDomainModelURI <em>Domain Model URI</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertySheet#getPropertySource <em>Property Source</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertySheet#getPropertyDefinition <em>Property Definition</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getPropertySheet()
  * @model

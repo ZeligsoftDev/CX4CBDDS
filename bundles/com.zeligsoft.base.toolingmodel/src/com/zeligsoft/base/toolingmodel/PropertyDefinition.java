@@ -23,13 +23,13 @@ package com.zeligsoft.base.toolingmodel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertyDefinition#isReadOnly <em>Read Only</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertyDefinition#isVisible <em>Visible</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertyDefinition#getContentHint <em>Content Hint</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertyDefinition#getSection <em>Section</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getPropertyDefinition()
  * @model

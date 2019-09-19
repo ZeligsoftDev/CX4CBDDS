@@ -32,10 +32,10 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.MenuObjectImpl#isGenerated <em>Generated</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -97,9 +97,8 @@ public abstract class MenuObjectImpl extends EObjectImpl implements MenuObject {
 		boolean oldGenerated = generated;
 		generated = newGenerated;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.MENU_OBJECT__GENERATED, oldGenerated,
-					generated));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.MENU_OBJECT__GENERATED,
+					oldGenerated, generated));
 	}
 
 	/**
@@ -170,7 +169,7 @@ public abstract class MenuObjectImpl extends EObjectImpl implements MenuObject {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (generated: "); //$NON-NLS-1$
 		result.append(generated);
 		result.append(')');

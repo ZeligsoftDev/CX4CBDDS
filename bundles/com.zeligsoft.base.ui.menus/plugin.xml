@@ -11,6 +11,21 @@
           type="java.lang.Object">
     </propertyTester>
  </extension>
+    <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup">
+         <menu
+               id="com.zeligsoft.base.ui.menu.addcx"
+               label="AddCX">
+            <dynamic
+                  class="com.zeligsoft.base.ui.menus.providers.DomainSpecificMenuProvider"
+                  id="com.zeligsoft.menu.generateDynamic">
+            </dynamic>
+         </menu>
+      </menuContribution>
+   </extension>
+ 
  <!--
    <extension
 		point="org.eclipse.ui.navigator.viewer">
@@ -20,6 +35,20 @@
 				<actionExtension pattern="com.zeligsoft.base.ui.menu.provider.*" />
 			</includes>
 		</viewerActionBinding>			
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup">
+         <menu
+               id="com.zeligsoft.base.ui.menu.addcx"
+               label="AddCX">
+            <dynamic
+                  class="com.zeligsoft.cx.codegen.ui.providers.DynamicGenerateMenuProvider"
+                  id="com.zeligsoft.menu.generateDynamic">
+            </dynamic>
+         </menu>
+      </menuContribution>
    </extension>
    <extension
        point="org.eclipse.ui.navigator.navigatorContent">

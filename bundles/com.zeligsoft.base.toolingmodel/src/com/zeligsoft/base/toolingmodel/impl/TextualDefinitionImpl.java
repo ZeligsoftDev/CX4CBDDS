@@ -31,16 +31,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.TextualDefinitionImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.TextualDefinitionImpl#getNumRows <em>Num Rows</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class TextualDefinitionImpl extends PrimitiveDefinitionImpl implements
-		TextualDefinition {
+public class TextualDefinitionImpl extends PrimitiveDefinitionImpl implements TextualDefinition {
 
 	/**
 	 * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
@@ -119,9 +118,8 @@ public class TextualDefinitionImpl extends PrimitiveDefinitionImpl implements
 		short oldWidth = width;
 		width = newWidth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.TEXTUAL_DEFINITION__WIDTH, oldWidth,
-					width));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.TEXTUAL_DEFINITION__WIDTH,
+					oldWidth, width));
 	}
 
 	/**
@@ -142,8 +140,7 @@ public class TextualDefinitionImpl extends PrimitiveDefinitionImpl implements
 		short oldNumRows = numRows;
 		numRows = newNumRows;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.TEXTUAL_DEFINITION__NUM_ROWS,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.TEXTUAL_DEFINITION__NUM_ROWS,
 					oldNumRows, numRows));
 	}
 
@@ -225,7 +222,7 @@ public class TextualDefinitionImpl extends PrimitiveDefinitionImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (width: "); //$NON-NLS-1$
 		result.append(width);
 		result.append(", numRows: "); //$NON-NLS-1$

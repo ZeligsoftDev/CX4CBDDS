@@ -25,12 +25,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.CreationTool#getConcept <em>Concept</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.CreationTool#getElementTypeHint <em>Element Type Hint</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.CreationTool#getExpression <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getCreationTool()
  * @model

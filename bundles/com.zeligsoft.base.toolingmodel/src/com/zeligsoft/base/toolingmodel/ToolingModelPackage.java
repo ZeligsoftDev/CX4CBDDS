@@ -68,8 +68,7 @@ public interface ToolingModelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ToolingModelPackage eINSTANCE = com.zeligsoft.base.toolingmodel.impl.ToolingModelPackageImpl
-			.init();
+	ToolingModelPackage eINSTANCE = com.zeligsoft.base.toolingmodel.impl.ToolingModelPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link com.zeligsoft.base.toolingmodel.impl.PaletteItemImpl <em>Palette Item</em>}' class.
@@ -2350,8 +2349,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PALETTE_ITEM__DESCRIPTION = eINSTANCE
-				.getPaletteItem_Description();
+		EAttribute PALETTE_ITEM__DESCRIPTION = eINSTANCE.getPaletteItem_Description();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.PaletteImpl <em>Palette</em>}' class.
@@ -2405,8 +2403,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TOOL_CONTAINER__TARGET_DIAGRAM = eINSTANCE
-				.getToolContainer_TargetDiagram();
+		EAttribute TOOL_CONTAINER__TARGET_DIAGRAM = eINSTANCE.getToolContainer_TargetDiagram();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.DrawerImpl <em>Drawer</em>}' class.
@@ -2460,8 +2457,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CREATION_TOOL__ELEMENT_TYPE_HINT = eINSTANCE
-				.getCreationTool_ElementTypeHint();
+		EAttribute CREATION_TOOL__ELEMENT_TYPE_HINT = eINSTANCE.getCreationTool_ElementTypeHint();
 
 		/**
 		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference list feature.
@@ -2469,8 +2465,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CREATION_TOOL__EXPRESSION = eINSTANCE
-				.getCreationTool_Expression();
+		EReference CREATION_TOOL__EXPRESSION = eINSTANCE.getCreationTool_Expression();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.LinkToolImpl <em>Link Tool</em>}' class.
@@ -2506,8 +2501,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PROPERTY_SOURCE__DEFINITION = eINSTANCE
-				.getPropertySource_Definition();
+		EReference PROPERTY_SOURCE__DEFINITION = eINSTANCE.getPropertySource_Definition();
 
 		/**
 		 * The meta object literal for the '<em><b>Concept Name</b></em>' attribute feature.
@@ -2515,8 +2509,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_SOURCE__CONCEPT_NAME = eINSTANCE
-				.getPropertySource_ConceptName();
+		EAttribute PROPERTY_SOURCE__CONCEPT_NAME = eINSTANCE.getPropertySource_ConceptName();
 
 		/**
 		 * The meta object literal for the '<em><b>Order</b></em>' attribute feature.
@@ -2542,8 +2535,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_DEFINITION__READ_ONLY = eINSTANCE
-				.getPropertyDefinition_ReadOnly();
+		EAttribute PROPERTY_DEFINITION__READ_ONLY = eINSTANCE.getPropertyDefinition_ReadOnly();
 
 		/**
 		 * The meta object literal for the '<em><b>Visible</b></em>' attribute feature.
@@ -2551,8 +2543,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_DEFINITION__VISIBLE = eINSTANCE
-				.getPropertyDefinition_Visible();
+		EAttribute PROPERTY_DEFINITION__VISIBLE = eINSTANCE.getPropertyDefinition_Visible();
 
 		/**
 		 * The meta object literal for the '<em><b>Content Hint</b></em>' attribute feature.
@@ -2560,8 +2551,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_DEFINITION__CONTENT_HINT = eINSTANCE
-				.getPropertyDefinition_ContentHint();
+		EAttribute PROPERTY_DEFINITION__CONTENT_HINT = eINSTANCE.getPropertyDefinition_ContentHint();
 
 		/**
 		 * The meta object literal for the '<em><b>Section</b></em>' attribute feature.
@@ -2569,8 +2559,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_DEFINITION__SECTION = eINSTANCE
-				.getPropertyDefinition_Section();
+		EAttribute PROPERTY_DEFINITION__SECTION = eINSTANCE.getPropertyDefinition_Section();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.PropertySheetImpl <em>Property Sheet</em>}' class.
@@ -2588,8 +2577,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROPERTY_SHEET__DOMAIN_MODEL_URI = eINSTANCE
-				.getPropertySheet_DomainModelURI();
+		EAttribute PROPERTY_SHEET__DOMAIN_MODEL_URI = eINSTANCE.getPropertySheet_DomainModelURI();
 
 		/**
 		 * The meta object literal for the '<em><b>Property Source</b></em>' containment reference list feature.
@@ -2597,8 +2585,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PROPERTY_SHEET__PROPERTY_SOURCE = eINSTANCE
-				.getPropertySheet_PropertySource();
+		EReference PROPERTY_SHEET__PROPERTY_SOURCE = eINSTANCE.getPropertySheet_PropertySource();
 
 		/**
 		 * The meta object literal for the '<em><b>Property Definition</b></em>' containment reference list feature.
@@ -2606,8 +2593,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PROPERTY_SHEET__PROPERTY_DEFINITION = eINSTANCE
-				.getPropertySheet_PropertyDefinition();
+		EReference PROPERTY_SHEET__PROPERTY_DEFINITION = eINSTANCE.getPropertySheet_PropertyDefinition();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.TextualDefinitionImpl <em>Textual Definition</em>}' class.
@@ -2625,8 +2611,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TEXTUAL_DEFINITION__WIDTH = eINSTANCE
-				.getTextualDefinition_Width();
+		EAttribute TEXTUAL_DEFINITION__WIDTH = eINSTANCE.getTextualDefinition_Width();
 
 		/**
 		 * The meta object literal for the '<em><b>Num Rows</b></em>' attribute feature.
@@ -2634,8 +2619,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TEXTUAL_DEFINITION__NUM_ROWS = eINSTANCE
-				.getTextualDefinition_NumRows();
+		EAttribute TEXTUAL_DEFINITION__NUM_ROWS = eINSTANCE.getTextualDefinition_NumRows();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.PrimitiveDefinitionImpl <em>Primitive Definition</em>}' class.
@@ -2731,8 +2715,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MENU_MODEL__DESCRIPTION = eINSTANCE
-				.getMenuModel_Description();
+		EAttribute MENU_MODEL__DESCRIPTION = eINSTANCE.getMenuModel_Description();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.MenuItemImpl <em>Menu Item</em>}' class.
@@ -2812,8 +2795,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CREATE_ACTION__CREATE_CONCEPT = eINSTANCE
-				.getCreateAction_CreateConcept();
+		EAttribute CREATE_ACTION__CREATE_CONCEPT = eINSTANCE.getCreateAction_CreateConcept();
 
 		/**
 		 * The meta object literal for the '<em><b>Type Hint</b></em>' attribute feature.
@@ -2821,8 +2803,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CREATE_ACTION__TYPE_HINT = eINSTANCE
-				.getCreateAction_TypeHint();
+		EAttribute CREATE_ACTION__TYPE_HINT = eINSTANCE.getCreateAction_TypeHint();
 
 		/**
 		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference list feature.
@@ -2830,8 +2811,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CREATE_ACTION__EXPRESSION = eINSTANCE
-				.getCreateAction_Expression();
+		EReference CREATE_ACTION__EXPRESSION = eINSTANCE.getCreateAction_Expression();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.DelegateActionImpl <em>Delegate Action</em>}' class.
@@ -2849,8 +2829,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DELEGATE_ACTION__CLASS_NAME = eINSTANCE
-				.getDelegateAction_ClassName();
+		EAttribute DELEGATE_ACTION__CLASS_NAME = eINSTANCE.getDelegateAction_ClassName();
 
 		/**
 		 * The meta object literal for the '<em><b>Host Bundle</b></em>' attribute feature.
@@ -2858,8 +2837,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DELEGATE_ACTION__HOST_BUNDLE = eINSTANCE
-				.getDelegateAction_HostBundle();
+		EAttribute DELEGATE_ACTION__HOST_BUNDLE = eINSTANCE.getDelegateAction_HostBundle();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.MenuSeparatorImpl <em>Menu Separator</em>}' class.
@@ -2913,8 +2891,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EXPRESSION__EXPRESSION = eINSTANCE
-				.getExpression_Expression();
+		EAttribute EXPRESSION__EXPRESSION = eINSTANCE.getExpression_Expression();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.OawBaseExpressionImpl <em>Oaw Base Expression</em>}' class.
@@ -2932,8 +2909,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OAW_BASE_EXPRESSION__METAMODEL = eINSTANCE
-				.getOawBaseExpression_Metamodel();
+		EAttribute OAW_BASE_EXPRESSION__METAMODEL = eINSTANCE.getOawBaseExpression_Metamodel();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.OawExpressionImpl <em>Oaw Expression</em>}' class.
@@ -2951,8 +2927,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OAW_EXPRESSION__VARIABLE_NAME = eINSTANCE
-				.getOawExpression_VariableName();
+		EAttribute OAW_EXPRESSION__VARIABLE_NAME = eINSTANCE.getOawExpression_VariableName();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.OawXtendImpl <em>Oaw Xtend</em>}' class.
@@ -2970,8 +2945,7 @@ public interface ToolingModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OAW_XTEND__EXTENSION_FILE = eINSTANCE
-				.getOawXtend_ExtensionFile();
+		EAttribute OAW_XTEND__EXTENSION_FILE = eINSTANCE.getOawXtend_ExtensionFile();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.PropertiesObjectImpl <em>Properties Object</em>}' class.

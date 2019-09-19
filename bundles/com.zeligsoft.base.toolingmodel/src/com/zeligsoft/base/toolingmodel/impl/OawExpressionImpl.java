@@ -29,15 +29,14 @@ import com.zeligsoft.base.toolingmodel.ToolingModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.OawExpressionImpl#getVariableName <em>Variable Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class OawExpressionImpl extends OawBaseExpressionImpl implements
-		OawExpression {
+public class OawExpressionImpl extends OawBaseExpressionImpl implements OawExpression {
 	/**
 	 * The default value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -95,8 +94,7 @@ public class OawExpressionImpl extends OawBaseExpressionImpl implements
 		String oldVariableName = variableName;
 		variableName = newVariableName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.OAW_EXPRESSION__VARIABLE_NAME,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.OAW_EXPRESSION__VARIABLE_NAME,
 					oldVariableName, variableName));
 	}
 
@@ -153,8 +151,7 @@ public class OawExpressionImpl extends OawBaseExpressionImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ToolingModelPackage.OAW_EXPRESSION__VARIABLE_NAME:
-			return VARIABLE_NAME_EDEFAULT == null ? variableName != null
-					: !VARIABLE_NAME_EDEFAULT.equals(variableName);
+			return VARIABLE_NAME_EDEFAULT == null ? variableName != null : !VARIABLE_NAME_EDEFAULT.equals(variableName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -169,7 +166,7 @@ public class OawExpressionImpl extends OawBaseExpressionImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (variableName: "); //$NON-NLS-1$
 		result.append(variableName);
 		result.append(')');

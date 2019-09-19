@@ -39,6 +39,14 @@
          </editingDomain>
       </listener>
     </extension>
+    <extension
+         point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+      <elementTypeFactory
+            factory="com.zeligsoft.base.zdl.type.ZDLElementTypeFactory"
+            kind="com.zeligsoft.zdl.concept"
+            params="concept,reference">
+      </elementTypeFactory>
+      </extension>
     
     <extension
          point="org.eclipse.xtend.shared.ui.metamodelContributor">

@@ -25,12 +25,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.CreateAction#getCreateConcept <em>Create Concept</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.CreateAction#getTypeHint <em>Type Hint</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.CreateAction#getExpression <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getCreateAction()
  * @model
@@ -48,7 +48,7 @@ public interface CreateAction extends MenuAction {
 	 * @return the value of the '<em>Create Concept</em>' attribute.
 	 * @see #setCreateConcept(String)
 	 * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getCreateAction_CreateConcept()
-	 * @model dataType="org.eclipse.uml2.uml.String"
+	 * @model
 	 * @generated
 	 */
 	String getCreateConcept();
@@ -74,7 +74,7 @@ public interface CreateAction extends MenuAction {
 	 * @return the value of the '<em>Type Hint</em>' attribute.
 	 * @see #setTypeHint(String)
 	 * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getCreateAction_TypeHint()
-	 * @model dataType="org.eclipse.uml2.uml.String"
+	 * @model
 	 * @generated
 	 */
 	String getTypeHint();

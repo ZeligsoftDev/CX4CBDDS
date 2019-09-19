@@ -32,8 +32,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ToolingModelFactoryImpl extends EFactoryImpl implements
-		ToolingModelFactory {
+public class ToolingModelFactoryImpl extends EFactoryImpl implements ToolingModelFactory {
 
 	/**
 	 * Creates the default factory implementation.
@@ -44,7 +43,7 @@ public class ToolingModelFactoryImpl extends EFactoryImpl implements
 	public static ToolingModelFactory init() {
 		try {
 			ToolingModelFactory theToolingModelFactory = (ToolingModelFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://www.zeligsoft.com/zdl/2008/tooling"); //$NON-NLS-1$ 
+					.getEFactory(ToolingModelPackage.eNS_URI);
 			if (theToolingModelFactory != null) {
 				return theToolingModelFactory;
 			}
@@ -111,8 +110,7 @@ public class ToolingModelFactoryImpl extends EFactoryImpl implements
 		case ToolingModelPackage.OAW_XTEND:
 			return createOawXtend();
 		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 

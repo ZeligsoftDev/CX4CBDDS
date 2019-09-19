@@ -40,13 +40,13 @@ import com.zeligsoft.base.toolingmodel.ToolingModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.MenuModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.MenuModelImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.MenuModelImpl#getItem <em>Item</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.MenuModelImpl#getMenu <em>Menu</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -137,8 +137,7 @@ public class MenuModelImpl extends MenuObjectImpl implements MenuModel {
 	 */
 	public EList<MenuItem> getItem() {
 		if (item == null) {
-			item = new EObjectContainmentEList<MenuItem>(MenuItem.class, this,
-					ToolingModelPackage.MENU_MODEL__ITEM);
+			item = new EObjectContainmentEList<MenuItem>(MenuItem.class, this, ToolingModelPackage.MENU_MODEL__ITEM);
 		}
 		return item;
 	}
@@ -150,8 +149,7 @@ public class MenuModelImpl extends MenuObjectImpl implements MenuModel {
 	 */
 	public EList<MenuInstance> getMenu() {
 		if (menu == null) {
-			menu = new EObjectContainmentEList<MenuInstance>(
-					MenuInstance.class, this,
+			menu = new EObjectContainmentEList<MenuInstance>(MenuInstance.class, this,
 					ToolingModelPackage.MENU_MODEL__MENU);
 		}
 		return menu;
@@ -175,8 +173,7 @@ public class MenuModelImpl extends MenuObjectImpl implements MenuModel {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.MENU_MODEL__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.MENU_MODEL__NAME, oldName, name));
 	}
 
 	/**
@@ -197,8 +194,7 @@ public class MenuModelImpl extends MenuObjectImpl implements MenuModel {
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.MENU_MODEL__DESCRIPTION,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.MENU_MODEL__DESCRIPTION,
 					oldDescription, description));
 	}
 
@@ -224,8 +220,7 @@ public class MenuModelImpl extends MenuObjectImpl implements MenuModel {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ToolingModelPackage.MENU_MODEL__ITEM:
 			return ((InternalEList<?>) getItem()).basicRemove(otherEnd, msgs);
@@ -315,11 +310,9 @@ public class MenuModelImpl extends MenuObjectImpl implements MenuModel {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ToolingModelPackage.MENU_MODEL__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case ToolingModelPackage.MENU_MODEL__DESCRIPTION:
-			return DESCRIPTION_EDEFAULT == null ? description != null
-					: !DESCRIPTION_EDEFAULT.equals(description);
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		case ToolingModelPackage.MENU_MODEL__ITEM:
 			return item != null && !item.isEmpty();
 		case ToolingModelPackage.MENU_MODEL__MENU:
@@ -338,7 +331,7 @@ public class MenuModelImpl extends MenuObjectImpl implements MenuModel {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", description: "); //$NON-NLS-1$

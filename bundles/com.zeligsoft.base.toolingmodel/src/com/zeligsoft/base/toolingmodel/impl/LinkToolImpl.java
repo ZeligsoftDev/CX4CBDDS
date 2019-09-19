@@ -34,10 +34,10 @@ import org.eclipse.uml2.uml.Property;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.LinkToolImpl#getReference <em>Reference</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -83,8 +83,7 @@ public class LinkToolImpl extends ToolImpl implements LinkTool {
 			reference = (Property) eResolveProxy(oldReference);
 			if (reference != oldReference) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ToolingModelPackage.LINK_TOOL__REFERENCE,
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolingModelPackage.LINK_TOOL__REFERENCE,
 							oldReference, reference));
 			}
 		}
@@ -109,9 +108,8 @@ public class LinkToolImpl extends ToolImpl implements LinkTool {
 		Property oldReference = reference;
 		reference = newReference;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.LINK_TOOL__REFERENCE, oldReference,
-					reference));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.LINK_TOOL__REFERENCE,
+					oldReference, reference));
 	}
 
 	/**

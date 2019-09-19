@@ -39,16 +39,15 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.ToolContainerImpl#getTool <em>Tool</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.ToolContainerImpl#getTargetDiagram <em>Target Diagram</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class ToolContainerImpl extends PaletteItemImpl implements
-		ToolContainer {
+public abstract class ToolContainerImpl extends PaletteItemImpl implements ToolContainer {
 
 	/**
 	 * The cached value of the '{@link #getTool() <em>Tool</em>}' containment reference list.
@@ -96,8 +95,7 @@ public abstract class ToolContainerImpl extends PaletteItemImpl implements
 	 */
 	public EList<Tool> getTool() {
 		if (tool == null) {
-			tool = new EObjectContainmentEList<Tool>(Tool.class, this,
-					ToolingModelPackage.TOOL_CONTAINER__TOOL);
+			tool = new EObjectContainmentEList<Tool>(Tool.class, this, ToolingModelPackage.TOOL_CONTAINER__TOOL);
 		}
 		return tool;
 	}
@@ -109,8 +107,8 @@ public abstract class ToolContainerImpl extends PaletteItemImpl implements
 	 */
 	public EList<String> getTargetDiagram() {
 		if (targetDiagram == null) {
-			targetDiagram = new EDataTypeUniqueEList<String>(String.class,
-					this, ToolingModelPackage.TOOL_CONTAINER__TARGET_DIAGRAM);
+			targetDiagram = new EDataTypeUniqueEList<String>(String.class, this,
+					ToolingModelPackage.TOOL_CONTAINER__TARGET_DIAGRAM);
 		}
 		return targetDiagram;
 	}
@@ -121,8 +119,7 @@ public abstract class ToolContainerImpl extends PaletteItemImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ToolingModelPackage.TOOL_CONTAINER__TOOL:
 			return ((InternalEList<?>) getTool()).basicRemove(otherEnd, msgs);
@@ -211,7 +208,7 @@ public abstract class ToolContainerImpl extends PaletteItemImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (targetDiagram: "); //$NON-NLS-1$
 		result.append(targetDiagram);
 		result.append(')');

@@ -25,11 +25,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.Expression#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.Expression#getExpression <em>Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getExpression()
  * @model abstract="true"

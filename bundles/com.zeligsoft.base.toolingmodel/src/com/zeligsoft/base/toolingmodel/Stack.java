@@ -23,10 +23,10 @@ package com.zeligsoft.base.toolingmodel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.Stack#getActiveTool <em>Active Tool</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getStack()
  * @model

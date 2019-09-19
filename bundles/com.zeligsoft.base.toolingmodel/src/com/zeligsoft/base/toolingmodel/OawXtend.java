@@ -23,10 +23,10 @@ package com.zeligsoft.base.toolingmodel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.OawXtend#getExtensionFile <em>Extension File</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getOawXtend()
  * @model

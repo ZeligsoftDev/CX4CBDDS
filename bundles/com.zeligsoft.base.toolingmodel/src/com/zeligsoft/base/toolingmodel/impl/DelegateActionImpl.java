@@ -29,16 +29,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.DelegateActionImpl#getClassName <em>Class Name</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.DelegateActionImpl#getHostBundle <em>Host Bundle</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class DelegateActionImpl extends MenuActionImpl implements
-		DelegateAction {
+public class DelegateActionImpl extends MenuActionImpl implements DelegateAction {
 	/**
 	 * The default value of the '{@link #getClassName() <em>Class Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -113,8 +112,7 @@ public class DelegateActionImpl extends MenuActionImpl implements
 		String oldClassName = className;
 		className = newClassName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.DELEGATE_ACTION__CLASS_NAME,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.DELEGATE_ACTION__CLASS_NAME,
 					oldClassName, className));
 	}
 
@@ -136,8 +134,7 @@ public class DelegateActionImpl extends MenuActionImpl implements
 		String oldHostBundle = hostBundle;
 		hostBundle = newHostBundle;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.DELEGATE_ACTION__HOST_BUNDLE,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.DELEGATE_ACTION__HOST_BUNDLE,
 					oldHostBundle, hostBundle));
 	}
 
@@ -202,11 +199,9 @@ public class DelegateActionImpl extends MenuActionImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ToolingModelPackage.DELEGATE_ACTION__CLASS_NAME:
-			return CLASS_NAME_EDEFAULT == null ? className != null
-					: !CLASS_NAME_EDEFAULT.equals(className);
+			return CLASS_NAME_EDEFAULT == null ? className != null : !CLASS_NAME_EDEFAULT.equals(className);
 		case ToolingModelPackage.DELEGATE_ACTION__HOST_BUNDLE:
-			return HOST_BUNDLE_EDEFAULT == null ? hostBundle != null
-					: !HOST_BUNDLE_EDEFAULT.equals(hostBundle);
+			return HOST_BUNDLE_EDEFAULT == null ? hostBundle != null : !HOST_BUNDLE_EDEFAULT.equals(hostBundle);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -221,7 +216,7 @@ public class DelegateActionImpl extends MenuActionImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (className: "); //$NON-NLS-1$
 		result.append(className);
 		result.append(", hostBundle: "); //$NON-NLS-1$

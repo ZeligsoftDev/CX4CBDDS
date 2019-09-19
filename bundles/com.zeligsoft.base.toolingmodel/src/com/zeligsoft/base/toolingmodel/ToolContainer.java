@@ -25,11 +25,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.ToolContainer#getTool <em>Tool</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.ToolContainer#getTargetDiagram <em>Target Diagram</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getToolContainer()
  * @model abstract="true"

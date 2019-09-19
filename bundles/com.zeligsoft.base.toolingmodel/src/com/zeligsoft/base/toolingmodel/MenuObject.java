@@ -25,10 +25,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.MenuObject#isGenerated <em>Generated</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getMenuObject()
  * @model abstract="true"
@@ -47,7 +47,7 @@ public interface MenuObject extends EObject {
 	 * @return the value of the '<em>Generated</em>' attribute.
 	 * @see #setGenerated(boolean)
 	 * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getMenuObject_Generated()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean"
+	 * @model default="false"
 	 * @generated
 	 */
 	boolean isGenerated();

@@ -17,16 +17,21 @@
 
 package com.zeligsoft.base.zdl.listeners;
 
+import java.io.IOException;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
@@ -35,7 +40,7 @@ import org.eclipse.gmf.runtime.emf.type.core.ClientContextManager;
 import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
 import org.eclipse.gmf.runtime.emf.type.core.IClientContext;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
-import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.papyrus.infra.types.ElementTypeSetConfiguration;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Extension;
@@ -45,11 +50,10 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 
-import com.zeligsoft.base.toolingmodel.CreationTool;
-import com.zeligsoft.base.toolingmodel.ToolingModelPackage;
 import com.zeligsoft.base.zdl.type.ZDLElementType;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.base.zdl.xtend.MainTransform;
 
 /**
  * ResourceSetListener which creates ZDLElementTypes when ZDL generated profiles
@@ -168,37 +172,49 @@ public class ZDLElementTypeResourceSetListener
 					}
 				}
 			} else if (next instanceof EAnnotation) {
-				EAnnotation annotation = (EAnnotation) next;
-				if (ToolingModelPackage.eNS_URI.equals(annotation.getSource())) {
-
-					// Generation any specialized palette tooling types
-					TreeIterator<EObject> i = annotation.eAllContents();
-					while (i.hasNext()) {
-						EObject eObject = i.next();
-						if (eObject instanceof CreationTool) {
-							CreationTool creationTool = (CreationTool) eObject;
-							String hint = creationTool.getElementTypeHint();
-							Class conceptClass = creationTool.getConcept();
-
-							if (!UML2Util.isEmpty(hint) && conceptClass != null) {
-								ZDLElementType zdlType = (ZDLElementType) ZDLElementTypeManager.INSTANCE
-									.getElementType(creationTool.getConcept());
-								Stereotype stereotype = (Stereotype) ZDLUtil
-									.getProfileClass(profile, conceptClass);
-								if (stereotype != null) {
-									// Concept not mapped to a Stereotype?
-									ZDLElementTypeManager.INSTANCE
-										.getHintedStereotypedType(zdlType, hint,
-											stereotype);
-								}
-							}
-						}
-					}
-				}
+				// ignore palette tooling model for now
+//				EAnnotation annotation = (EAnnotation) next;
+//				if (ToolingModelPackage.eNS_URI.equals(annotation.getSource())) {
+//
+//					// Generation any specialized palette tooling types
+//					TreeIterator<EObject> i = annotation.eAllContents();
+//					while (i.hasNext()) {
+//						EObject eObject = i.next();
+//						if (eObject instanceof CreationTool) {
+//							CreationTool creationTool = (CreationTool) eObject;
+//							String hint = creationTool.getElementTypeHint();
+//							Class conceptClass = creationTool.getConcept();
+//
+//							if (!UML2Util.isEmpty(hint) && conceptClass != null) {
+//								ZDLElementType zdlType = (ZDLElementType) ZDLElementTypeManager.INSTANCE
+//									.getElementType(creationTool.getConcept());
+//								Stereotype stereotype = (Stereotype) ZDLUtil
+//									.getProfileClass(profile, conceptClass);
+//								if (stereotype != null) {
+//									// Concept not mapped to a Stereotype?
+//									ZDLElementTypeManager.INSTANCE
+//										.getHintedStereotypedType(zdlType, hint,
+//											stereotype);
+//								}
+//							}
+//						}
+//					}
+//				}
 			} else if (next instanceof org.eclipse.uml2.uml.Class) {
 				// TODO: Handle profile classes, when supported.
 
 			}
+		}
+		ResourceSet rset = new ResourceSetImpl();
+		Resource umlElementType = rset.getResource(URI.createURI("platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations"), true);
+		MainTransform translator = new MainTransform();
+		Resource resource = rset.createResource(URI.createURI("platform:/resource/com.zeligsoft.base.zdl/models/" + profile.getName() + ".elementtypesconfigurations"));
+		translator.mainTransform(profile, (ElementTypeSetConfiguration)umlElementType.getContents().get(0), resource);
+		try {
+			resource.save(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

@@ -25,12 +25,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertySource#getDefinition <em>Definition</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertySource#getConceptName <em>Concept Name</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertySource#getOrder <em>Order</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getPropertySource()
  * @model

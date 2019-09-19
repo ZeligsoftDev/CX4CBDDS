@@ -38,10 +38,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PaletteImpl#getDrawer <em>Drawer</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -83,8 +83,7 @@ public class PaletteImpl extends PaletteItemImpl implements Palette {
 	 */
 	public EList<Drawer> getDrawer() {
 		if (drawer == null) {
-			drawer = new EObjectContainmentEList<Drawer>(Drawer.class, this,
-					ToolingModelPackage.PALETTE__DRAWER);
+			drawer = new EObjectContainmentEList<Drawer>(Drawer.class, this, ToolingModelPackage.PALETTE__DRAWER);
 		}
 		return drawer;
 	}
@@ -95,8 +94,7 @@ public class PaletteImpl extends PaletteItemImpl implements Palette {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ToolingModelPackage.PALETTE__DRAWER:
 			return ((InternalEList<?>) getDrawer()).basicRemove(otherEnd, msgs);

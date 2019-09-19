@@ -38,17 +38,16 @@ import com.zeligsoft.base.toolingmodel.ToolingModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertySheetImpl#getDomainModelURI <em>Domain Model URI</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertySheetImpl#getPropertySource <em>Property Source</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertySheetImpl#getPropertyDefinition <em>Property Definition</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class PropertySheetImpl extends PropertiesObjectImpl implements
-		PropertySheet {
+public class PropertySheetImpl extends PropertiesObjectImpl implements PropertySheet {
 
 	/**
 	 * The default value of the '{@link #getDomainModelURI() <em>Domain Model URI</em>}' attribute.
@@ -127,8 +126,7 @@ public class PropertySheetImpl extends PropertiesObjectImpl implements
 		String oldDomainModelURI = domainModelURI;
 		domainModelURI = newDomainModelURI;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.PROPERTY_SHEET__DOMAIN_MODEL_URI,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.PROPERTY_SHEET__DOMAIN_MODEL_URI,
 					oldDomainModelURI, domainModelURI));
 	}
 
@@ -139,8 +137,7 @@ public class PropertySheetImpl extends PropertiesObjectImpl implements
 	 */
 	public EList<PropertySource> getPropertySource() {
 		if (propertySource == null) {
-			propertySource = new EObjectContainmentEList<PropertySource>(
-					PropertySource.class, this,
+			propertySource = new EObjectContainmentEList<PropertySource>(PropertySource.class, this,
 					ToolingModelPackage.PROPERTY_SHEET__PROPERTY_SOURCE);
 		}
 		return propertySource;
@@ -153,8 +150,7 @@ public class PropertySheetImpl extends PropertiesObjectImpl implements
 	 */
 	public EList<PropertyDefinition> getPropertyDefinition() {
 		if (propertyDefinition == null) {
-			propertyDefinition = new EObjectContainmentEList<PropertyDefinition>(
-					PropertyDefinition.class, this,
+			propertyDefinition = new EObjectContainmentEList<PropertyDefinition>(PropertyDefinition.class, this,
 					ToolingModelPackage.PROPERTY_SHEET__PROPERTY_DEFINITION);
 		}
 		return propertyDefinition;
@@ -166,15 +162,12 @@ public class PropertySheetImpl extends PropertiesObjectImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ToolingModelPackage.PROPERTY_SHEET__PROPERTY_SOURCE:
-			return ((InternalEList<?>) getPropertySource()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getPropertySource()).basicRemove(otherEnd, msgs);
 		case ToolingModelPackage.PROPERTY_SHEET__PROPERTY_DEFINITION:
-			return ((InternalEList<?>) getPropertyDefinition()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getPropertyDefinition()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -211,13 +204,11 @@ public class PropertySheetImpl extends PropertiesObjectImpl implements
 			return;
 		case ToolingModelPackage.PROPERTY_SHEET__PROPERTY_SOURCE:
 			getPropertySource().clear();
-			getPropertySource().addAll(
-					(Collection<? extends PropertySource>) newValue);
+			getPropertySource().addAll((Collection<? extends PropertySource>) newValue);
 			return;
 		case ToolingModelPackage.PROPERTY_SHEET__PROPERTY_DEFINITION:
 			getPropertyDefinition().clear();
-			getPropertyDefinition().addAll(
-					(Collection<? extends PropertyDefinition>) newValue);
+			getPropertyDefinition().addAll((Collection<? extends PropertyDefinition>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -273,7 +264,7 @@ public class PropertySheetImpl extends PropertiesObjectImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (domainModelURI: "); //$NON-NLS-1$
 		result.append(domainModelURI);
 		result.append(')');

@@ -34,17 +34,16 @@ import com.zeligsoft.base.toolingmodel.ToolingModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertySourceImpl#getDefinition <em>Definition</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertySourceImpl#getConceptName <em>Concept Name</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertySourceImpl#getOrder <em>Order</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class PropertySourceImpl extends PropertiesObjectImpl implements
-		PropertySource {
+public class PropertySourceImpl extends PropertiesObjectImpl implements PropertySource {
 
 	/**
 	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' reference list.
@@ -122,8 +121,7 @@ public class PropertySourceImpl extends PropertiesObjectImpl implements
 	 */
 	public EList<PropertyDefinition> getDefinition() {
 		if (definition == null) {
-			definition = new EObjectResolvingEList<PropertyDefinition>(
-					PropertyDefinition.class, this,
+			definition = new EObjectResolvingEList<PropertyDefinition>(PropertyDefinition.class, this,
 					ToolingModelPackage.PROPERTY_SOURCE__DEFINITION);
 		}
 		return definition;
@@ -147,8 +145,7 @@ public class PropertySourceImpl extends PropertiesObjectImpl implements
 		String oldConceptName = conceptName;
 		conceptName = newConceptName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.PROPERTY_SOURCE__CONCEPT_NAME,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.PROPERTY_SOURCE__CONCEPT_NAME,
 					oldConceptName, conceptName));
 	}
 
@@ -170,8 +167,8 @@ public class PropertySourceImpl extends PropertiesObjectImpl implements
 		int oldOrder = order;
 		order = newOrder;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.PROPERTY_SOURCE__ORDER, oldOrder, order));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.PROPERTY_SOURCE__ORDER, oldOrder,
+					order));
 	}
 
 	/**
@@ -203,8 +200,7 @@ public class PropertySourceImpl extends PropertiesObjectImpl implements
 		switch (featureID) {
 		case ToolingModelPackage.PROPERTY_SOURCE__DEFINITION:
 			getDefinition().clear();
-			getDefinition().addAll(
-					(Collection<? extends PropertyDefinition>) newValue);
+			getDefinition().addAll((Collection<? extends PropertyDefinition>) newValue);
 			return;
 		case ToolingModelPackage.PROPERTY_SOURCE__CONCEPT_NAME:
 			setConceptName((String) newValue);
@@ -248,8 +244,7 @@ public class PropertySourceImpl extends PropertiesObjectImpl implements
 		case ToolingModelPackage.PROPERTY_SOURCE__DEFINITION:
 			return definition != null && !definition.isEmpty();
 		case ToolingModelPackage.PROPERTY_SOURCE__CONCEPT_NAME:
-			return CONCEPT_NAME_EDEFAULT == null ? conceptName != null
-					: !CONCEPT_NAME_EDEFAULT.equals(conceptName);
+			return CONCEPT_NAME_EDEFAULT == null ? conceptName != null : !CONCEPT_NAME_EDEFAULT.equals(conceptName);
 		case ToolingModelPackage.PROPERTY_SOURCE__ORDER:
 			return order != ORDER_EDEFAULT;
 		}
@@ -266,7 +261,7 @@ public class PropertySourceImpl extends PropertiesObjectImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (conceptName: "); //$NON-NLS-1$
 		result.append(conceptName);
 		result.append(", order: "); //$NON-NLS-1$

@@ -34,11 +34,11 @@ import com.zeligsoft.base.toolingmodel.ToolingModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.MenuInstanceImpl#getConcept <em>Concept</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.MenuInstanceImpl#getItem <em>Item</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -110,9 +110,8 @@ public class MenuInstanceImpl extends MenuObjectImpl implements MenuInstance {
 		String oldConcept = concept;
 		concept = newConcept;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.MENU_INSTANCE__CONCEPT, oldConcept,
-					concept));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.MENU_INSTANCE__CONCEPT,
+					oldConcept, concept));
 	}
 
 	/**
@@ -122,8 +121,7 @@ public class MenuInstanceImpl extends MenuObjectImpl implements MenuInstance {
 	 */
 	public EList<MenuItem> getItem() {
 		if (item == null) {
-			item = new EObjectResolvingEList<MenuItem>(MenuItem.class, this,
-					ToolingModelPackage.MENU_INSTANCE__ITEM);
+			item = new EObjectResolvingEList<MenuItem>(MenuItem.class, this, ToolingModelPackage.MENU_INSTANCE__ITEM);
 		}
 		return item;
 	}
@@ -191,8 +189,7 @@ public class MenuInstanceImpl extends MenuObjectImpl implements MenuInstance {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ToolingModelPackage.MENU_INSTANCE__CONCEPT:
-			return CONCEPT_EDEFAULT == null ? concept != null
-					: !CONCEPT_EDEFAULT.equals(concept);
+			return CONCEPT_EDEFAULT == null ? concept != null : !CONCEPT_EDEFAULT.equals(concept);
 		case ToolingModelPackage.MENU_INSTANCE__ITEM:
 			return item != null && !item.isEmpty();
 		}
@@ -209,7 +206,7 @@ public class MenuInstanceImpl extends MenuObjectImpl implements MenuInstance {
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (concept: "); //$NON-NLS-1$
 		result.append(concept);
 		result.append(')');

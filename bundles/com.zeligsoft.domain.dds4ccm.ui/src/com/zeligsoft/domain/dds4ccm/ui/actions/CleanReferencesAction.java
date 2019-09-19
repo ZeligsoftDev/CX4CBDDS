@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
@@ -48,7 +49,6 @@ import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.Usage;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.util.FilteringList;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
@@ -98,7 +98,7 @@ public class CleanReferencesAction implements IViewActionDelegate {
 	 */
 	protected void cleanModelLibraryReferences(EObject model) {
 		TreeIterator<EObject> itor = model.eAllContents();
-		TransactionalEditingDomain domain = UMLModeler.getEditingDomain();
+		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(model);
 		CompositeCommand compositeCommand = new CompositeCommand(
 				Messages.RefactorCleanModelReferencesNoLongerValid_CommandLabel);
 		EObject next = null;

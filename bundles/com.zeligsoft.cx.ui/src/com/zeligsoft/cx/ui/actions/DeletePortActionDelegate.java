@@ -34,7 +34,6 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
-import com.ibm.xtools.uml.type.UMLElementFactory;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
@@ -74,7 +73,7 @@ public class DeletePortActionDelegate implements IObjectActionDelegate {
 
 				for (EObject port : ports) {
 					if (ZDLUtil.isZDLConcept(port, ZMLMMNames.PORT)) {
-						UMLElementFactory.destroyElement(port, null);
+//						UMLElementFactory.destroyElement(port, null);
 					}
 				}
 				return CommandResult.newOKCommandResult();

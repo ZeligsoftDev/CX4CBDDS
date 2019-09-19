@@ -23,11 +23,11 @@ package com.zeligsoft.base.toolingmodel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.DelegateAction#getClassName <em>Class Name</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.DelegateAction#getHostBundle <em>Host Bundle</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getDelegateAction()
  * @model
@@ -46,7 +46,7 @@ public interface DelegateAction extends MenuAction {
 	 * @return the value of the '<em>Class Name</em>' attribute.
 	 * @see #setClassName(String)
 	 * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getDelegateAction_ClassName()
-	 * @model dataType="org.eclipse.uml2.uml.String" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getClassName();
@@ -72,7 +72,7 @@ public interface DelegateAction extends MenuAction {
 	 * @return the value of the '<em>Host Bundle</em>' attribute.
 	 * @see #setHostBundle(String)
 	 * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getDelegateAction_HostBundle()
-	 * @model dataType="org.eclipse.uml2.uml.String"
+	 * @model
 	 * @generated
 	 */
 	String getHostBundle();

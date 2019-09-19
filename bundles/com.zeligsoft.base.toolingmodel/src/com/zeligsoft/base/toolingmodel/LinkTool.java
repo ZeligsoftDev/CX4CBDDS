@@ -25,10 +25,10 @@ import org.eclipse.uml2.uml.Property;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.LinkTool#getReference <em>Reference</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getLinkTool()
  * @model

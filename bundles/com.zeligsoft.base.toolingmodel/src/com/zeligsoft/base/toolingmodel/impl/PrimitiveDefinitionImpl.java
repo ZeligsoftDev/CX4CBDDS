@@ -25,13 +25,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Primitive Definition</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public class PrimitiveDefinitionImpl extends PropertyDefinitionImpl implements
-		PrimitiveDefinition {
+public class PrimitiveDefinitionImpl extends PropertyDefinitionImpl implements PrimitiveDefinition {
 
 	/**
 	 * <!-- begin-user-doc -->

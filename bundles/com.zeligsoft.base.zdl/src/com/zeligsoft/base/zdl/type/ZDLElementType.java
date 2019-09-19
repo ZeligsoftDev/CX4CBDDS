@@ -21,10 +21,12 @@ import java.net.URL;
 import org.eclipse.gmf.runtime.emf.type.core.IContainerDescriptor;
 import org.eclipse.gmf.runtime.emf.type.core.IElementMatcher;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.gmf.runtime.emf.type.core.IHintedType;
 import org.eclipse.gmf.runtime.emf.type.core.NullElementType;
 import org.eclipse.gmf.runtime.emf.type.core.SpecializationType;
 import org.eclipse.gmf.runtime.emf.type.core.edithelper.IEditHelper;
 import org.eclipse.gmf.runtime.emf.type.core.edithelper.IEditHelperAdvice;
+import org.eclipse.gmf.runtime.emf.type.core.internal.impl.HintedTypeFactory;
 
 /**
  * The definition of a ZDL element type, applicable both to ZDL concepts and to
@@ -33,7 +35,7 @@ import org.eclipse.gmf.runtime.emf.type.core.edithelper.IEditHelperAdvice;
  * @author Christian W. Damus (cdamus)
  */
 public class ZDLElementType
-		extends SpecializationType {
+		extends SpecializationType{
 	
 	/**
 	 * The pre-fix for all ZDLElementTypes ids.

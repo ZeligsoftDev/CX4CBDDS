@@ -35,10 +35,10 @@ import com.zeligsoft.base.toolingmodel.ToolingModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.MenuImpl#getItem <em>Item</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -79,9 +79,8 @@ public class MenuImpl extends MenuItemImpl implements Menu {
 	 */
 	public EList<MenuItem> getItem() {
 		if (item == null) {
-			item = new EObjectContainmentWithInverseEList<MenuItem>(
-					MenuItem.class, this, ToolingModelPackage.MENU__ITEM,
-					ToolingModelPackage.MENU_ITEM__CONTAINER);
+			item = new EObjectContainmentWithInverseEList<MenuItem>(MenuItem.class, this,
+					ToolingModelPackage.MENU__ITEM, ToolingModelPackage.MENU_ITEM__CONTAINER);
 		}
 		return item;
 	}
@@ -93,12 +92,10 @@ public class MenuImpl extends MenuItemImpl implements Menu {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ToolingModelPackage.MENU__ITEM:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getItem())
-					.basicAdd(otherEnd, msgs);
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getItem()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -109,8 +106,7 @@ public class MenuImpl extends MenuItemImpl implements Menu {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ToolingModelPackage.MENU__ITEM:
 			return ((InternalEList<?>) getItem()).basicRemove(otherEnd, msgs);

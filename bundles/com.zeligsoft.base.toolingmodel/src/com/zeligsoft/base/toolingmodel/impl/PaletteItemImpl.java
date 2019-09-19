@@ -32,16 +32,15 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PaletteItemImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PaletteItemImpl#getDescription <em>Description</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class PaletteItemImpl extends EObjectImpl implements
-		PaletteItem {
+public abstract class PaletteItemImpl extends EObjectImpl implements PaletteItem {
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -120,8 +119,8 @@ public abstract class PaletteItemImpl extends EObjectImpl implements
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.PALETTE_ITEM__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.PALETTE_ITEM__NAME, oldName,
+					name));
 	}
 
 	/**
@@ -142,8 +141,7 @@ public abstract class PaletteItemImpl extends EObjectImpl implements
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ToolingModelPackage.PALETTE_ITEM__DESCRIPTION,
+			eNotify(new ENotificationImpl(this, Notification.SET, ToolingModelPackage.PALETTE_ITEM__DESCRIPTION,
 					oldDescription, description));
 	}
 
@@ -208,11 +206,9 @@ public abstract class PaletteItemImpl extends EObjectImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case ToolingModelPackage.PALETTE_ITEM__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case ToolingModelPackage.PALETTE_ITEM__DESCRIPTION:
-			return DESCRIPTION_EDEFAULT == null ? description != null
-					: !DESCRIPTION_EDEFAULT.equals(description);
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -227,7 +223,7 @@ public abstract class PaletteItemImpl extends EObjectImpl implements
 		if (eIsProxy())
 			return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", description: "); //$NON-NLS-1$
