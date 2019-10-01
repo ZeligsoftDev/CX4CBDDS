@@ -41,6 +41,7 @@ import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
 import org.eclipse.gmf.runtime.emf.type.core.IClientContext;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.papyrus.infra.types.ElementTypeSetConfiguration;
+import org.eclipse.papyrus.infra.types.ElementTypesConfigurationsFactory;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Extension;
@@ -102,7 +103,18 @@ public class ZDLElementTypeResourceSetListener
 
 				Iterator<Profile> i = zdlProfiles.iterator();
 				while (i.hasNext()) {
-					registerZDLElementTypes(i.next());
+					Profile profile = i.next();
+//					ResourceSet rset = new ResourceSetImpl();
+//					Resource umlElementType = rset.getResource(URI.createURI("platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations"), true);
+//					MainTransform translator = new MainTransform();
+//					Resource resource = rset.createResource(URI.createURI("platform:/resource/com.zeligsoft.domain.cbdds.architecture/elementtypes/" + profile.getName() + ".elementtypesconfigurations"));
+//					translator.mainTransform(profile, (ElementTypeSetConfiguration)umlElementType.getContents().get(0), resource);
+//					try {
+//						resource.save(Collections.EMPTY_MAP);
+//					} catch (IOException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
 				}
 			}
 		}
@@ -204,17 +216,6 @@ public class ZDLElementTypeResourceSetListener
 				// TODO: Handle profile classes, when supported.
 
 			}
-		}
-		ResourceSet rset = new ResourceSetImpl();
-		Resource umlElementType = rset.getResource(URI.createURI("platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations"), true);
-		MainTransform translator = new MainTransform();
-		Resource resource = rset.createResource(URI.createURI("platform:/resource/com.zeligsoft.base.zdl/models/" + profile.getName() + ".elementtypesconfigurations"));
-		translator.mainTransform(profile, (ElementTypeSetConfiguration)umlElementType.getContents().get(0), resource);
-		try {
-			resource.save(Collections.EMPTY_MAP);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 

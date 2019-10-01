@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
+<!--    
     <extension
           point="org.eclipse.ui.popupMenus">
        <objectContribution
@@ -52,6 +53,7 @@
           </visibility>
        </objectContribution>
     </extension>
+
     <extension
          id="IDL3Plus ElementTypes"
          name="IDL3Plus ElementTypes"
@@ -131,6 +133,7 @@
          <context viewClass="org.eclipse.gmf.runtime.notation.Node"/>         
       </viewProvider>
     </extension>
+    -->
     <extension
          point="com.zeligsoft.cx.ui.properties.customPropertySection">
        <PropertySection
@@ -167,6 +170,7 @@
             property="connectorType">
       </PropertySection>
     </extension>
+    <!--
     <extension
          point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
       <decoratorProvider
@@ -244,7 +248,6 @@
              name="%category.name.0">
        </category>
     </extension>
-    <!-- 
     <extension   
        point="org.eclipse.ui.importWizards"> 
     	<wizard
@@ -259,7 +262,7 @@
          <selection class="org.eclipse.core.resources.IFile"/> 
       </wizard>
    </extension>
-   --> 
+ 
    <extension
          point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders">
       <modelingAssistantProvider
@@ -317,5 +320,6 @@
       <listener
             class="com.zeligsoft.domain.idl3plus.ui.listeners.IDL3PlusDeploymentListener">
       </listener>
-   </extension>     
+   </extension>
+      -->     
 </plugin>

@@ -25,24 +25,31 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
+import org.eclipse.gmf.runtime.emf.type.core.IClientContext;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.ui.ElementTypeImageDescriptor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.uml2.uml.Package;
+import org.eclipse.papyrus.infra.core.services.ServiceException;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
+import org.eclipse.papyrus.infra.services.edit.context.TypeContext;
+import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
+import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
 
-import com.zeligsoft.base.ui.commands.DestroyDefaultDiagramCommand;
 import com.zeligsoft.base.ui.menus.Activator;
 import com.zeligsoft.base.ui.menus.l10.Messages;
 import com.zeligsoft.base.ui.menus.util.CXMenuUtil;
-import com.zeligsoft.base.ui.utils.BaseUIUtil;
 
 /**
  * An action to create a ZDL concept.
@@ -51,7 +58,7 @@ import com.zeligsoft.base.ui.utils.BaseUIUtil;
  * 
  */
 public class CreateConceptAction extends Action {
-	private EObject context;
+	private EObject selectedEObject;
 	private org.eclipse.uml2.uml.Class concept;
 	private IElementType type;
 	private String label;
@@ -63,31 +70,23 @@ public class CreateConceptAction extends Action {
 	/**
 	 * Create me!
 	 * 
-	 * @param context
-	 *            The object that will own the created concept
-	 * @param concept
-	 *            The concept that is to be created
+	 * @param context The object that will own the created concept
+	 * @param concept The concept that is to be created
 	 */
-	public CreateConceptAction(EObject context,
-			org.eclipse.uml2.uml.Class concept) {
+	public CreateConceptAction(EObject context, org.eclipse.uml2.uml.Class concept) {
 		this(context, concept, null, null);
 	}
 
 	/**
 	 * Create me!
 	 * 
-	 * @param context
-	 *            The object that will own the created concept
-	 * @param concept
-	 *            The concept that is to be created
-	 * @param typeHint
-	 *            A hint to help in creating the concept
-	 * @param label
-	 *            The label that will be displayed
+	 * @param context  The object that will own the created concept
+	 * @param concept  The concept that is to be created
+	 * @param typeHint A hint to help in creating the concept
+	 * @param label    The label that will be displayed
 	 */
-	public CreateConceptAction(EObject context,
-			org.eclipse.uml2.uml.Class concept, String typeHint, String label) {
-		this.context = context;
+	public CreateConceptAction(EObject context, org.eclipse.uml2.uml.Class concept, String typeHint, String label) {
+		this.selectedEObject = context;
 		this.concept = concept;
 		this.label = label;
 		// get the instantiable element type
@@ -114,65 +113,72 @@ public class CreateConceptAction extends Action {
 
 	@Override
 	public void run() {
-		// set up the create request
-		final CreateElementRequest req = new CreateElementRequest(context, type);
-		final ICommand createCommand = BaseUIUtil.getCommand(req);;
-
+		final Command command = buildCommand();
+		if (!command.canExecute()) {
+			return;
+		}
 		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(context), NLS.bind(
-						Messages.GenericCreateConceptAction_label, getText()),
-				Collections.EMPTY_MAP, null) {
+				TransactionUtil.getEditingDomain(selectedEObject),
+				NLS.bind(Messages.GenericCreateConceptAction_label, getText()), Collections.EMPTY_MAP, null) {
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
+			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
-				createCommand.execute(monitor, info);
-				CommandResult cmdResult = createCommand.getCommandResult();
-				if (cmdResult.getStatus().isOK()) {
-					result = cmdResult.getReturnValue();
-				}
-				return createCommand.getCommandResult();
+				command.execute();
+				return CommandResult.newOKCommandResult();
 			}
 		};
 		try {
-			IStatus status = OperationHistoryFactory.getOperationHistory()
-					.execute(editCommand, null, null);
+			IStatus status = OperationHistoryFactory.getOperationHistory().execute(editCommand, null, null);
 			if (!status.isOK()) {
 				return;
 			}
 		} catch (ExecutionException e) {
-			Activator.getDefault().error(
-					NLS.bind(Messages.GenericCreateConceptAction_failed,
-							concept.getLabel()), e);
+			Activator.getDefault().error(NLS.bind(Messages.GenericCreateConceptAction_failed, concept.getLabel()), e);
 			return;
-		}
-
-		if (result != null && result instanceof EObject) {
-
-			if (result instanceof Package) {
-				// Delete default diagram if the concept element type is a
-				// package
-				ICommand command = new DestroyDefaultDiagramCommand(
-						(Package) result);
-				try {
-					command.execute(null, null);
-				} catch (ExecutionException e) {
-					// do nothing.
-				}
-			}
 		}
 	}
 
+	protected Command buildCommand() {
+
+		// set up the create request
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(selectedEObject);
+		IClientContext context = null;
+		try {
+			context = TypeContext.getContext(selectedEObject);
+		} catch (ServiceException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return UnexecutableCommand.INSTANCE;
+		}
+		final CreateElementRequest req = new CreateElementRequest(editingDomain, selectedEObject, type);
+		final EObject target = ElementEditServiceUtils.getTargetFromContext(editingDomain, selectedEObject, req);
+		if (target == null) {
+			return UnexecutableCommand.INSTANCE;
+		}
+
+		IElementEditService provider = ElementEditServiceUtils.getCommandProvider(target, context);
+		if (provider == null) {
+			return UnexecutableCommand.INSTANCE;
+		}
+
+		EReference reference = null;
+		ICommand createGMFCommand = provider.getEditCommand(req);
+
+		if (createGMFCommand != null) {
+			return GMFtoEMFCommandWrapper.wrap(createGMFCommand);
+		}
+		return UnexecutableCommand.INSTANCE;
+	}
+
 	/**
-	 * Calculate the image descriptor for the given element type. It will return
-	 * the default UML icon, if there isn't one specific to the domain.
+	 * Calculate the image descriptor for the given element type. It will return the
+	 * default UML icon, if there isn't one specific to the domain.
 	 * 
 	 * @param elementType
 	 * 
 	 * @return The image descriptor for the concepts icon.
 	 */
-	private ImageDescriptor getElementTypeImageDescriptor(
-			IElementType elementType) {
+	private ImageDescriptor getElementTypeImageDescriptor(IElementType elementType) {
 		ElementTypeImageDescriptor desc = imageDescriptors.get(elementType);
 		if (desc == null) {
 			desc = new ElementTypeImageDescriptor(elementType);

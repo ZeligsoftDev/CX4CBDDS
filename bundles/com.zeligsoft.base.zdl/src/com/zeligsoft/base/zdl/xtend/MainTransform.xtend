@@ -58,7 +58,7 @@ class MainTransform {
 		val eclass = UMLPackage.eINSTANCE.getEClassifier(metaclass.getName()) as EClass;
 		val umlType = ElementTypeRegistry.getInstance().getElementType(eclass, clientCtx);
 		result.name = concept.getLabel()
-		result.identifier = ZDLElementTypeUtil.getZDLElementTypeId(concept)
+		result.identifier = ZDLElementTypeUtil.getZDLSpecializationElementTypeId(profile, concept)
 		result.kind = "org.eclipse.gmf.runtime.emf.type.core.IHintedType"
 		for (supertype : concept.superClasses) {
 			if (ZDLUtil.getBaseMetaclass(profile, supertype) !== null) {
