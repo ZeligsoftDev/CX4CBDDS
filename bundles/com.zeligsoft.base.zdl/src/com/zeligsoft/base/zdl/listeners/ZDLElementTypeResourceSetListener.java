@@ -107,8 +107,15 @@ public class ZDLElementTypeResourceSetListener
 //					ResourceSet rset = new ResourceSetImpl();
 //					Resource umlElementType = rset.getResource(URI.createURI("platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations"), true);
 //					MainTransform translator = new MainTransform();
-//					Resource resource = rset.createResource(URI.createURI("platform:/resource/com.zeligsoft.domain.cbdds.architecture/elementtypes/" + profile.getName() + ".elementtypesconfigurations"));
-//					translator.mainTransform(profile, (ElementTypeSetConfiguration)umlElementType.getContents().get(0), resource);
+//					Resource resource = rset.getResource(URI.createURI("platform:/resource/com.zeligsoft.domain.cbdds.architecture/elementtypes/" + profile.getName() + ".elementtypesconfigurations"), true);
+//					ElementTypeSetConfiguration config;
+//					if(resource.getContents().isEmpty()) {
+//						config = ElementTypesConfigurationsFactory.eINSTANCE.createElementTypeSetConfiguration();
+//						resource.getContents().add(config);
+//					}else {
+//						config = (ElementTypeSetConfiguration) resource.getContents().get(0);
+//					}
+//					translator.mainTransform(profile, (ElementTypeSetConfiguration)umlElementType.getContents().get(0), config);
 //					try {
 //						resource.save(Collections.EMPTY_MAP);
 //					} catch (IOException e) {

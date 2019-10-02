@@ -2,10 +2,19 @@
 <?eclipse version="3.2"?>
 <plugin>
    <extension
+         point="org.eclipse.papyrus.infra.architecture.models">
+      <model
+            path="models/cbdds.architecture">
+      </model>
+   </extension>
+<!--
+   <extension
          point="org.eclipse.papyrus.infra.newchild">
       <menuCreationModel
             model="newchildmenu/cbdds.creationmenumodel">
       </menuCreationModel>
    </extension>
+   
+-->   
    
 </plugin>

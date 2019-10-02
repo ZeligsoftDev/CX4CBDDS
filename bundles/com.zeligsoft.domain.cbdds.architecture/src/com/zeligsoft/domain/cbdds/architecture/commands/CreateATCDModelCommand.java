@@ -29,8 +29,10 @@ import org.eclipse.papyrus.infra.core.resource.ModelSet;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.papyrus.uml.tools.model.UmlUtils;
 import org.eclipse.papyrus.uml.tools.utils.PackageUtil;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.resource.UMLResource;
 
@@ -112,7 +114,10 @@ public class CreateATCDModelCommand implements IModelCreationCommand {
 		Profile profile = (Profile) PackageUtil.loadPackage(URI.createURI("pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml"),
 				owner.eResource().getResourceSet());
 		if (profile != null) {
-			PackageUtil.applyProfile(((org.eclipse.uml2.uml.Package) owner), profile, true);
+			Package model = (org.eclipse.uml2.uml.Package) owner;
+			PackageUtil.applyProfile(model, profile, true);
+			Stereotype st = model.getApplicableStereotype("cxDDS4CCM::DDS4CCMModel");
+			model.applyStereotype(st);
 		} else {
 			com.zeligsoft.domain.cbdds.architecture.Activator.log.error("Impossible to find CBDDS profile", null);
 		}

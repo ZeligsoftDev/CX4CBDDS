@@ -16,40 +16,32 @@
  */
 package com.zeligsoft.base.ui.menus.actions;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.IClientContext;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.ui.ElementTypeImageDescriptor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.papyrus.infra.core.services.ServiceException;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.papyrus.infra.services.edit.context.TypeContext;
 import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
 import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
+import org.eclipse.ui.IViewPart;
 
 import com.zeligsoft.base.ui.menus.Activator;
 import com.zeligsoft.base.ui.menus.l10.Messages;
 import com.zeligsoft.base.ui.menus.util.CXMenuUtil;
+import com.zeligsoft.base.ui.utils.BaseUIUtil;
 
 /**
  * An action to create a ZDL concept.
@@ -113,55 +105,43 @@ public class CreateConceptAction extends Action {
 
 	@Override
 	public void run() {
-		final Command command = buildCommand();
-		if (!command.canExecute()) {
-			return;
-		}
-		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(selectedEObject),
-				NLS.bind(Messages.GenericCreateConceptAction_label, getText()), Collections.EMPTY_MAP, null) {
-			@Override
-			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-					throws ExecutionException {
-				command.execute();
-				return CommandResult.newOKCommandResult();
-			}
-		};
-		try {
-			IStatus status = OperationHistoryFactory.getOperationHistory().execute(editCommand, null, null);
-			if (!status.isOK()) {
-				return;
-			}
-		} catch (ExecutionException e) {
-			Activator.getDefault().error(NLS.bind(Messages.GenericCreateConceptAction_failed, concept.getLabel()), e);
-			return;
-		}
-	}
-
-	protected Command buildCommand() {
-
 		// set up the create request
 		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(selectedEObject);
 		IClientContext context = null;
 		try {
 			context = TypeContext.getContext(selectedEObject);
-		} catch (ServiceException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			return UnexecutableCommand.INSTANCE;
+		} catch (ServiceException e) {
+			Activator.getDefault().error(e.getMessage(), e);
+			return;
 		}
 		final CreateElementRequest req = new CreateElementRequest(editingDomain, selectedEObject, type);
 		final EObject target = ElementEditServiceUtils.getTargetFromContext(editingDomain, selectedEObject, req);
 		if (target == null) {
-			return UnexecutableCommand.INSTANCE;
+			return;
 		}
+
+		Command command = buildCommand(editingDomain, context, req, target);
+		if (command == null || !command.canExecute()) {
+			return;
+		}
+		// Wrap command to select created element
+		command = BaseUIUtil.getRevealCommand(command, target);
+		if (command != null) {
+			command = BaseUIUtil.getDirectEditCommand(command);
+		}
+		if (command != null && command.canExecute()) {
+			editingDomain.getCommandStack().execute(command);
+		}
+	}
+
+	protected Command buildCommand(TransactionalEditingDomain editingDomain, IClientContext context,
+			CreateElementRequest req, EObject target) {
 
 		IElementEditService provider = ElementEditServiceUtils.getCommandProvider(target, context);
 		if (provider == null) {
 			return UnexecutableCommand.INSTANCE;
 		}
 
-		EReference reference = null;
 		ICommand createGMFCommand = provider.getEditCommand(req);
 
 		if (createGMFCommand != null) {
@@ -181,7 +161,9 @@ public class CreateConceptAction extends Action {
 	private ImageDescriptor getElementTypeImageDescriptor(IElementType elementType) {
 		ElementTypeImageDescriptor desc = imageDescriptors.get(elementType);
 		if (desc == null) {
-			desc = new ElementTypeImageDescriptor(elementType);
+			if (elementType.getIconURL() != null) {
+				desc = new ElementTypeImageDescriptor(elementType);
+			}
 			imageDescriptors.put(elementType, desc);
 		}
 		return desc;
