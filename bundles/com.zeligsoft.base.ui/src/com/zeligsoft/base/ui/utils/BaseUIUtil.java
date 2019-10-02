@@ -34,13 +34,16 @@ import org.eclipse.core.runtime.IProduct;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.ui.services.icon.IconService;
 import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
+import org.eclipse.gmf.runtime.emf.type.core.IClientContext;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.type.core.ISpecializationType;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
@@ -49,6 +52,9 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
+import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
+import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
 import org.eclipse.papyrus.infra.widgets.util.RevealResultCommand;
 import org.eclipse.papyrus.views.modelexplorer.ModelExplorerPageBookView;
 import org.eclipse.papyrus.views.modelexplorer.core.ui.pagebookview.MultiViewPageBookView;
@@ -86,6 +92,22 @@ public class BaseUIUtil {
 
 	public static String BUILD_CONFIG_PROPERTY_NAME = "build_config"; //$NON-NLS-1$
 
+	public static Command buildCommand(TransactionalEditingDomain editingDomain, IClientContext context,
+			CreateElementRequest req, EObject target) {
+
+		IElementEditService provider = ElementEditServiceUtils.getCommandProvider(target, context);
+		if (provider == null) {
+			return UnexecutableCommand.INSTANCE;
+		}
+
+		ICommand createGMFCommand = provider.getEditCommand(req);
+
+		if (createGMFCommand != null) {
+			return GMFtoEMFCommandWrapper.wrap(createGMFCommand);
+		}
+		return UnexecutableCommand.INSTANCE;
+	}
+
 	public static Command getRevealCommand(Command command, EObject container) {
 		IViewPart viewPart = getActiveViewPart();
 		if (viewPart != null) {
@@ -122,6 +144,10 @@ public class BaseUIUtil {
 		return activeView;
 	}
 
+	
+	
+	
+	
 	/**
 	 * Get the first selected EObject from the given selection object
 	 * 

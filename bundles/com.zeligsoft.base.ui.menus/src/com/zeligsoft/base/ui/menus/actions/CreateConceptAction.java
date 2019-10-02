@@ -120,7 +120,7 @@ public class CreateConceptAction extends Action {
 			return;
 		}
 
-		Command command = buildCommand(editingDomain, context, req, target);
+		Command command = BaseUIUtil.buildCommand(editingDomain, context, req, target);
 		if (command == null || !command.canExecute()) {
 			return;
 		}
@@ -132,22 +132,6 @@ public class CreateConceptAction extends Action {
 		if (command != null && command.canExecute()) {
 			editingDomain.getCommandStack().execute(command);
 		}
-	}
-
-	protected Command buildCommand(TransactionalEditingDomain editingDomain, IClientContext context,
-			CreateElementRequest req, EObject target) {
-
-		IElementEditService provider = ElementEditServiceUtils.getCommandProvider(target, context);
-		if (provider == null) {
-			return UnexecutableCommand.INSTANCE;
-		}
-
-		ICommand createGMFCommand = provider.getEditCommand(req);
-
-		if (createGMFCommand != null) {
-			return GMFtoEMFCommandWrapper.wrap(createGMFCommand);
-		}
-		return UnexecutableCommand.INSTANCE;
 	}
 
 	/**

@@ -17,21 +17,24 @@
 
 package com.zeligsoft.cx.ui.actions;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.common.core.command.ICommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gmf.runtime.emf.type.core.IClientContext;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
+import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.ui.ElementTypeImageDescriptor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.uml2.uml.Package;
+import org.eclipse.papyrus.infra.core.services.ServiceException;
+import org.eclipse.papyrus.infra.services.edit.context.TypeContext;
+import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
 
-import com.zeligsoft.base.ui.commands.CreatePackageWithoutDiagramCommand;
+import com.zeligsoft.base.ui.menus.Activator;
 import com.zeligsoft.base.ui.menus.actions.ICXAction;
+import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
-import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
 
 /**
  * Action delegate for "Add Package" context menu.
@@ -42,7 +45,7 @@ import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
 
 public class AddCXPackageAction extends Action implements ICXAction {
 
-	protected EObject context;
+	protected EObject selectedEObject;
 
 	/**
 	 * The IElementType for Package
@@ -59,29 +62,39 @@ public class AddCXPackageAction extends Action implements ICXAction {
 
 	@Override
 	public void setSelection(EObject context) {
-		this.context = context;
+		this.selectedEObject = context;
 	}
 
 	@Override
 	public void run() {
-		if (context == null) {
+		if (selectedEObject == null) {
+			return;
+		}
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(selectedEObject);
+		IClientContext context = null;
+		try {
+			context = TypeContext.getContext(selectedEObject);
+		} catch (ServiceException e) {
+			Activator.getDefault().error(e.getMessage(), e);
+			return;
+		}
+		final CreateElementRequest req = new CreateElementRequest(editingDomain, selectedEObject, PACKAGE_ELEMENT_TYPE);
+		final EObject target = ElementEditServiceUtils.getTargetFromContext(editingDomain, selectedEObject, req);
+		if (target == null) {
 			return;
 		}
 
-		ICommand command = new CreatePackageWithoutDiagramCommand(context);
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					null, null);
-		} catch (ExecutionException e) {
-			ZeligsoftCXUIPlugin.getDefault().error(
-					"Failed to create a package", e); //$NON-NLS-1$
+		Command command = BaseUIUtil.buildCommand(editingDomain, context, req, target);
+		if (command == null || !command.canExecute()) {
 			return;
 		}
-		CommandResult result = command.getCommandResult();
-		if (result != null && result.getReturnValue() != null) {
-			if (result.getReturnValue() instanceof Package) {
-				Package pkg = (Package) result.getReturnValue();
-			}
+		// Wrap command to select created element
+		command = BaseUIUtil.getRevealCommand(command, target);
+		if (command != null) {
+			command = BaseUIUtil.getDirectEditCommand(command);
+		}
+		if (command != null && command.canExecute()) {
+			editingDomain.getCommandStack().execute(command);
 		}
 	}
 
