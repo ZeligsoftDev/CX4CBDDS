@@ -16,6 +16,7 @@
  */
 package com.zeligsoft.cx.ui.properties.sections;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -63,7 +64,7 @@ public abstract class AbstractCXPropertySection extends AbstractPropertySection
 
 	private EObject selectedEObject = null;
 
-	private List<EObject> selectedEObjects = null;
+	private List<EObject> selectedEObjects = new ArrayList<EObject>();
 
 	private Composite mainComposite = null;
 
@@ -285,6 +286,17 @@ public abstract class AbstractCXPropertySection extends AbstractPropertySection
 	 */
 	protected abstract Composite createContents(Composite parent);
 
+	public void setInput(EObject input) {
+		selectedEObject = input;
+		selectedEObjects.clear();
+		selectedEObjects.add(selectedEObject);
+		if (domain == null) {
+			domain = TransactionUtil.getEditingDomain(selectedEObject);
+			domain.addResourceSetListener(resourceSetListener);
+		}
+
+		internalRefresh();
+	}
 	@Override
 	public void setInput(IWorkbenchPart part, ISelection selection) {
 		super.setInput(part, selection);

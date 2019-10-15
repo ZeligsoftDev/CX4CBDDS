@@ -13,6 +13,7 @@
                showUsesList="true">
          </PortType>
     </extension> 
+    <!--
 	<extension
          point="org.eclipse.ui.newWizards">
       <category
@@ -737,6 +738,8 @@
              </object>
         </decoratorProvider>
     </extension>
+    
+    -->
     <extension
           point="com.zeligsoft.cx.ui.properties.customPropertySection">
        <PropertySection
@@ -774,7 +777,7 @@
              domain="cxDDS4CCM"
              property="connectorType">
        </PropertySection>
-       
+       <!--
     </extension>
        <extension
          point="org.eclipse.ui.popupMenus">
@@ -900,5 +903,5 @@
                 class="com.zeligsoft.domain.dds4ccm.ui.listeners.DDS4CCMListener">
           </listener>
        </extension>
-    
+    -->
 </plugin>

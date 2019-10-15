@@ -190,11 +190,11 @@ public class DomainPropertySection extends AbstractCXPropertySection {
 					if (property.getType() instanceof PrimitiveType) {
 						String type = property.getType().getName();
 
-						if (type.equals(UMLPackage.Literals.LITERAL_STRING.getName())
+						if (type.equals(UMLPackage.Literals.LITERAL_STRING.getName().replace("Literal", ""))
 								|| type.equals(UMLPackage.Literals.LITERAL_INTEGER.getName())) {
 							widgets = CXPropertiesWidgetFactory.createSectionForStringType(
 									composite, descriptor);
-						} else if (type.equals(UMLPackage.Literals.LITERAL_BOOLEAN.getName())) {
+						} else if (type.equals(UMLPackage.Literals.LITERAL_BOOLEAN.getName().replace("Literal", ""))) {
 							CXPropertiesWidgetFactory.createSectionForBooleanType(composite,
 									descriptor);
 						}

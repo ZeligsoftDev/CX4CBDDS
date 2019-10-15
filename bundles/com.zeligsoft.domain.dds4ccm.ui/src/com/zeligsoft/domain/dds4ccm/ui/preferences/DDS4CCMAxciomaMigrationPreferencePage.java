@@ -19,31 +19,23 @@ package com.zeligsoft.domain.dds4ccm.ui.preferences;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Predicate;
-
-import javax.swing.ButtonGroup;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.preference.PreferencePage;
-import org.eclipse.ocl.util.CollectionUtil;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.osgi.service.prefs.BackingStoreException;
 
-import com.zeligsoft.base.ui.utils.PreferencePageValidStringListener;
 import com.zeligsoft.cx.CXActivator;
 import com.zeligsoft.domain.dds4ccm.Activator;
 import com.zeligsoft.domain.dds4ccm.ConnectorType;

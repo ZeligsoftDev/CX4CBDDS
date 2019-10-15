@@ -26,6 +26,7 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.wizard.Wizard;
@@ -35,7 +36,6 @@ import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.ui.Activator;
@@ -68,7 +68,7 @@ public class DDSConnectorInstanceWizard extends Wizard {
 	public boolean performFinish() {
 
 		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-				UMLModeler.getEditingDomain(), Messages.DDSConnectorInstanceWizard_CommandLabel,
+				TransactionUtil.getEditingDomain(context), Messages.DDSConnectorInstanceWizard_CommandLabel,
 				Collections.EMPTY_MAP, null) {
 
 			@Override
