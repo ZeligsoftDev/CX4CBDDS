@@ -16,10 +16,6 @@
  */
 package com.zeligsoft.domain.dds4ccm.ui.internal.providers.decorators;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
@@ -27,8 +23,6 @@ import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.core.service.AbstractProvider;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
@@ -37,19 +31,13 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.AbstractDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.CreateDecoratorsOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorProvider;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 
-import com.ibm.xtools.rmp.ui.diagram.figures.FigureUtilities;
-import com.ibm.xtools.rmp.ui.diagram.figures.RMPDiagramColorConstants;
-import com.ibm.xtools.umlnotation.UMLShape;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 
 /**
  * Decorator for assembly CCMPart
@@ -115,11 +103,11 @@ public class AssemblyPartDecoratorProvider extends AbstractProvider implements
 	public static class DDS4CCMAssemblyDecorator extends AbstractDecorator {
 
 		private static TransactionalEditingDomain domain;
-		private static final int lightBlue = FigureUtilities
-				.RGBToInteger(RMPDiagramColorConstants.diagramLightBlue
-						.getRGB());
-		private static final int white = FigureUtilities
-				.RGBToInteger(ColorConstants.white.getRGB());
+//		private static final int lightBlue = FigureUtilities
+//				.RGBToInteger(RMPDiagramColorConstants.diagramLightBlue
+//						.getRGB());
+//		private static final int white = FigureUtilities
+//				.RGBToInteger(ColorConstants.white.getRGB());
 
 		public DDS4CCMAssemblyDecorator(IDecoratorTarget decoratorTarget) {
 			super(decoratorTarget);
@@ -140,41 +128,41 @@ public class AssemblyPartDecoratorProvider extends AbstractProvider implements
 			EditPart editPart = (EditPart) getDecoratorTarget().getAdapter(
 					EditPart.class);
 
-			if (editPart.getModel() instanceof UMLShape) {
-				final UMLShape model = (UMLShape) editPart.getModel();
-
-				EObject element = ViewUtil.resolveSemanticElement(model);
-
-				final int color;
-				if (CCMUtil.isAssemblyPart(element)) {
-					color = lightBlue;
-				} else {
-					color = white;
-				}
-				if (model.getFillColor() != white
-						&& model.getFillColor() != lightBlue) {
-					return;
-				}
-				if (model.getFillColor() != color) {
-					ICommand command = new AbstractTransactionalCommand(
-							TransactionUtil.getEditingDomain(element),
-							"Set Part FillColor", null) { //$NON-NLS-1$
-
-						@Override
-						protected CommandResult doExecuteWithResult(
-								IProgressMonitor monitor, IAdaptable info)
-								throws ExecutionException {
-							model.setFillColor(color);
-							return CommandResult.newOKCommandResult();
-						}
-					};
-					try {
-						command.execute(null, null);
-					} catch (ExecutionException e) {
-						Activator.getDefault().error(e.getMessage(), e);
-					}
-				}
-			}
+//			if (editPart.getModel() instanceof UMLShape) {
+//				final UMLShape model = (UMLShape) editPart.getModel();
+//
+//				EObject element = ViewUtil.resolveSemanticElement(model);
+//
+//				final int color;
+//				if (CCMUtil.isAssemblyPart(element)) {
+//					color = lightBlue;
+//				} else {
+//					color = white;
+//				}
+//				if (model.getFillColor() != white
+//						&& model.getFillColor() != lightBlue) {
+//					return;
+//				}
+//				if (model.getFillColor() != color) {
+//					ICommand command = new AbstractTransactionalCommand(
+//							TransactionUtil.getEditingDomain(element),
+//							"Set Part FillColor", null) { //$NON-NLS-1$
+//
+//						@Override
+//						protected CommandResult doExecuteWithResult(
+//								IProgressMonitor monitor, IAdaptable info)
+//								throws ExecutionException {
+//							model.setFillColor(color);
+//							return CommandResult.newOKCommandResult();
+//						}
+//					};
+//					try {
+//						command.execute(null, null);
+//					} catch (ExecutionException e) {
+//						Activator.getDefault().error(e.getMessage(), e);
+//					}
+//				}
+//			}
 		}
 
 		private ResourceSetListenerImpl listener = new ResourceSetListenerImpl() {

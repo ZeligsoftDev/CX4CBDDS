@@ -18,8 +18,6 @@ package com.zeligsoft.domain.idl3plus.ui.internal.providers.filter;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.emf.core.edit.MObjectType;
-import org.eclipse.gmf.runtime.emf.core.util.EObjectUtil;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
@@ -77,10 +75,10 @@ public class TemplateModuleContentsFilter extends ViewerFilter {
 					.getAdapter(EObject.class);
 		}
 
-		if ((returnValue != null)
-				&& (EObjectUtil.getType(returnValue) != MObjectType.MODELING)) {
-			returnValue = null;
-		}
+//		if ((returnValue != null)
+//				&& (EObjectUtil.getType(returnValue) != MObjectType.MODELING)) {
+//			returnValue = null;
+//		}
 
 		return returnValue;
 	}

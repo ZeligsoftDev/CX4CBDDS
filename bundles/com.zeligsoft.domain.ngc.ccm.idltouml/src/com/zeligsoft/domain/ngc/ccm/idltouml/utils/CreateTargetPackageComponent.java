@@ -27,6 +27,7 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.resource.UMLResource;
 
 import com.zeligsoft.base.workflow.AbstractEMFComponentWithResourceSet;
+import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 
 /**
  * @author Toby McClean (tmcclean)
@@ -51,7 +52,7 @@ public class CreateTargetPackageComponent extends AbstractEMFComponentWithResour
 		Resource res =getResourceSet().createResource(URI.createURI(getUri() + "NewModel.emx"));
 		Package newModel = UMLFactory.eINSTANCE.createPackage();
 		Profile standardProfile =
-			com.zeligsoft.base.util.RSMUtil.loadPackage(getResourceSet(), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+			CCMPSMUtils.loadPackage(getResourceSet(), UMLResource.STANDARD_PROFILE_URI);
 		newModel.applyProfile(standardProfile);
 		res.getContents().add(newModel);
 		

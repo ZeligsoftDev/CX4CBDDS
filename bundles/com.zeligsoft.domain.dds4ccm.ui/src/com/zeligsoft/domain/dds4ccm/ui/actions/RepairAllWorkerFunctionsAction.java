@@ -38,6 +38,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
@@ -51,7 +53,6 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.UMLPackage;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
@@ -88,64 +89,53 @@ public class RepairAllWorkerFunctionsAction implements IViewActionDelegate {
 					monitor = (IProgressMonitor) new NullProgressMonitor();
 				}
 
-				monitor.beginTask(REPAIR_ALL_WORKER_FUNCTIONS,
-						IProgressMonitor.UNKNOWN);
+				monitor.beginTask(REPAIR_ALL_WORKER_FUNCTIONS, IProgressMonitor.UNKNOWN);
 
 				ICommand command = null;
-				if (eobject != null
-						&& ZDLUtil.isZDLConcept(eobject,
-								DDS4CCMNames.DDS4_CCMMODEL)) {
+				if (eobject != null && ZDLUtil.isZDLConcept(eobject, DDS4CCMNames.DDS4_CCMMODEL)) {
 
 					if ("ModelLevel".equals(action.getId())) { //$NON-NLS-1$
-						command = new AbstractTransactionalCommand(
-								UMLModeler.getEditingDomain(),
+						command = new AbstractTransactionalCommand(TransactionUtil.getEditingDomain(eobject),
 								REPAIR_ALL_WORKER_FUNCTIONS, null) {
 
 							@Override
-							protected CommandResult doExecuteWithResult(
-									IProgressMonitor arg0, IAdaptable arg1)
+							protected CommandResult doExecuteWithResult(IProgressMonitor arg0, IAdaptable arg1)
 									throws ExecutionException {
-								DDS4CCMMigrationUtil
-										.repairAllWorkerfunctions((Model) eobject);
+								DDS4CCMMigrationUtil.repairAllWorkerfunctions((Model) eobject);
 								return CommandResult.newOKCommandResult();
 							}
 						};
 					} else if ("ProjectLevel".equals(action.getId())) { //$NON-NLS-1$
-						final IProject project = WorkspaceSynchronizer.getFile(
-								eobject.eResource()).getProject();
+						final IProject project = WorkspaceSynchronizer.getFile(eobject.eResource()).getProject();
 
 						if (project != null) {
 
-							command = new AbstractTransactionalCommand(
-									UMLModeler.getEditingDomain(),
+							command = new AbstractTransactionalCommand(TransactionUtil.getEditingDomain(eobject),
 									REPAIR_ALL_WORKER_FUNCTIONS, null) {
 
 								@Override
-								protected CommandResult doExecuteWithResult(
-										IProgressMonitor arg0, IAdaptable arg1)
+								protected CommandResult doExecuteWithResult(IProgressMonitor arg0, IAdaptable arg1)
 										throws ExecutionException {
-									repairAllWorkerFunctionsInProject(project);
+									repairAllWorkerFunctionsInProject(project,
+											TransactionUtil.getEditingDomain(eobject));
 									return CommandResult.newOKCommandResult();
 								}
 							};
 						}
 					} else if ("WorkspaceLevel".equals(action.getId())) { //$NON-NLS-1$
-						final IWorkspace workspace = ResourcesPlugin
-								.getWorkspace();
+						final IWorkspace workspace = ResourcesPlugin.getWorkspace();
 
 						if (workspace != null) {
 
-							command = new AbstractTransactionalCommand(
-									UMLModeler.getEditingDomain(),
+							command = new AbstractTransactionalCommand(TransactionUtil.getEditingDomain(eobject),
 									REPAIR_ALL_WORKER_FUNCTIONS, null) {
 
 								@Override
-								protected CommandResult doExecuteWithResult(
-										IProgressMonitor arg0, IAdaptable arg1)
+								protected CommandResult doExecuteWithResult(IProgressMonitor arg0, IAdaptable arg1)
 										throws ExecutionException {
-									for (IProject project : workspace.getRoot()
-											.getProjects()) {
-										repairAllWorkerFunctionsInProject(project);
+									for (IProject project : workspace.getRoot().getProjects()) {
+										repairAllWorkerFunctionsInProject(project,
+												TransactionUtil.getEditingDomain(eobject));
 									}
 									return CommandResult.newOKCommandResult();
 								}
@@ -155,13 +145,10 @@ public class RepairAllWorkerFunctionsAction implements IViewActionDelegate {
 
 					if (command != null) {
 						try {
-							OperationHistoryFactory.getOperationHistory()
-									.execute(command, null, null);
+							OperationHistoryFactory.getOperationHistory().execute(command, null, null);
 						} catch (Exception e) {
-							Activator.getDefault().error(
-									Messages.Migrate_Error, e);
-							MessageDialog.openError(Display.getCurrent()
-									.getActiveShell(), Messages.Migrate_Error,
+							Activator.getDefault().error(Messages.Migrate_Error, e);
+							MessageDialog.openError(Display.getCurrent().getActiveShell(), Messages.Migrate_Error,
 									e.getMessage());
 						}
 					}
@@ -175,16 +162,15 @@ public class RepairAllWorkerFunctionsAction implements IViewActionDelegate {
 	}
 
 	/**
-	 * Searches for all models in a project and repairs their worker functions
-	 * then
+	 * Searches for all models in a project and repairs their worker functions then
 	 * 
 	 * @param project
 	 */
-	private void repairAllWorkerFunctionsInProject(IProject project) {
+	private void repairAllWorkerFunctionsInProject(IProject project, TransactionalEditingDomain editingDomain) {
 		List<IResource> files = getModelFiles(project);
 
 		for (IResource file : files) {
-			Model model = loadDDS4CCMModel(file);
+			Model model = loadDDS4CCMModel(file, editingDomain);
 			if (model != null) {
 				DDS4CCMMigrationUtil.repairAllWorkerfunctions(model);
 			}
@@ -200,8 +186,7 @@ public class RepairAllWorkerFunctionsAction implements IViewActionDelegate {
 	private List<IResource> getModelFiles(IResource res) {
 		List<IResource> result = new ArrayList<IResource>();
 
-		if (res instanceof IFile
-				&& "emx".equals(((IFile) res).getFileExtension())) { //$NON-NLS-1$
+		if (res instanceof IFile && "emx".equals(((IFile) res).getFileExtension())) { //$NON-NLS-1$
 			result.add(res);
 		} else if (res instanceof IContainer) {
 			try {
@@ -221,13 +206,11 @@ public class RepairAllWorkerFunctionsAction implements IViewActionDelegate {
 	 * @param res
 	 * @return
 	 */
-	private Model loadDDS4CCMModel(IResource res) {
+	private Model loadDDS4CCMModel(IResource res, TransactionalEditingDomain editingDomain) {
 		String uriJava = res.getLocationURI().toString();
 		URI uri = org.eclipse.emf.common.util.URI.createURI(uriJava, true);
-		Resource loadedRes = UMLModeler.getEditingDomain().getResourceSet()
-				.getResource(uri, true);
-		EObject foundModel = (EObject) EcoreUtil.getObjectByType(
-				loadedRes.getContents(), UMLPackage.Literals.PACKAGE);
+		Resource loadedRes = editingDomain.getResourceSet().getResource(uri, true);
+		EObject foundModel = (EObject) EcoreUtil.getObjectByType(loadedRes.getContents(), UMLPackage.Literals.PACKAGE);
 
 		if (ZDLUtil.isZDLConcept(foundModel, DDS4CCMNames.DDS4_CCMMODEL)) {
 			return (Model) foundModel;

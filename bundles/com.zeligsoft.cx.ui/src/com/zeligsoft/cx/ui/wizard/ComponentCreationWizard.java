@@ -16,28 +16,14 @@
  */
 package com.zeligsoft.cx.ui.wizard;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gef.Request;
-import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.diagram.ui.commands.OpenDiagramCommand;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
-import org.eclipse.gmf.runtime.diagram.ui.requests.DropObjectsRequest;
-import org.eclipse.gmf.runtime.diagram.ui.requests.ShowHideRelationshipsRequest;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
@@ -45,18 +31,13 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.Package;
 
-import com.zeligsoft.base.diagram.utils.BaseDiagramUtil;
-import com.zeligsoft.base.ui.commands.CreatePackageWithoutDiagramCommand;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
-import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
@@ -138,47 +119,47 @@ public class ComponentCreationWizard
 						// configure diagram
 						if (page.getCreateDiagram()) {
 
-							Diagram diagram = createDiagram(container);
-							OpenDiagramCommand openCommand = new OpenDiagramCommand(
-								diagram);
-
-							// Open diagram editor
-							IStatus result = null;
-							if (openCommand.canExecute()) {
-								result = openCommand.execute(null, null);
-							}
-
-							if (result.getSeverity() == IStatus.OK) {
-
-								IWorkbenchPage page = PlatformUI.getWorkbench()
-									.getActiveWorkbenchWindow().getActivePage();
-
-								DiagramEditPart editPart = getDiagramEditPart(page);
-
-								// Drop elements to the diagram view
-								dropElement(editPart, new Point(100, 150),
-									component);
-
-								if (autoCI) {
-									dropElement(editPart, new Point(100, 50),
-										componentInterface);
-
-								}
-								if (autoImpl) {
-									dropElement(editPart, new Point(400, 150),
-										implementation);
-								}
-
-								// Show relationships between views
-								showRelationships(editPart, component);
-
-								// Refresh the diagram
-								Request refreshRequest = new Request("refresh"); //$NON-NLS-1$
-								org.eclipse.gef.commands.Command refreshCommand = editPart
-									.getCommand(refreshRequest);
-								refreshCommand.execute();
-
-							}
+//							Diagram diagram = createDiagram(container);
+//							OpenDiagramCommand openCommand = new OpenDiagramCommand(
+//								diagram);
+//
+//							// Open diagram editor
+//							IStatus result = null;
+//							if (openCommand.canExecute()) {
+//								result = openCommand.execute(null, null);
+//							}
+//
+//							if (result.getSeverity() == IStatus.OK) {
+//
+//								IWorkbenchPage page = PlatformUI.getWorkbench()
+//									.getActiveWorkbenchWindow().getActivePage();
+//
+//								DiagramEditPart editPart = getDiagramEditPart(page);
+//
+//								// Drop elements to the diagram view
+//								dropElement(editPart, new Point(100, 150),
+//									component);
+//
+//								if (autoCI) {
+//									dropElement(editPart, new Point(100, 50),
+//										componentInterface);
+//
+//								}
+//								if (autoImpl) {
+//									dropElement(editPart, new Point(400, 150),
+//										implementation);
+//								}
+//
+//								// Show relationships between views
+//								showRelationships(editPart, component);
+//
+//								// Refresh the diagram
+//								Request refreshRequest = new Request("refresh"); //$NON-NLS-1$
+//								org.eclipse.gef.commands.Command refreshCommand = editPart
+//									.getCommand(refreshRequest);
+//								refreshCommand.execute();
+//
+//							}
 						}
 
 						return CommandResult.newOKCommandResult();
@@ -204,20 +185,10 @@ public class ComponentCreationWizard
 
 		Package elementResult = null;
 		if (page.getCreatePackage()) {
-			CreatePackageWithoutDiagramCommand command = new CreatePackageWithoutDiagramCommand(context);
-
-			try {
-				OperationHistoryFactory.getOperationHistory().execute(command,
-						null, null);
-				elementResult = (Package)  command.getCommandResult().getReturnValue();
-				elementResult.setName(page.getPackageName());
-			} catch (ExecutionException e) {
-				ZeligsoftCXUIPlugin.getDefault().error(
-					NLS.bind(
-						Messages.ComponentCreationWizard_ErrorCreatingElement,
-						page.getPackageName()), e);
-
-			}
+			org.eclipse.emf.common.command.Command command = BaseUIUtil.getCreatePackageCommand(context);
+			TransactionUtil.getEditingDomain(context).getCommandStack().execute(command);
+			elementResult = (Package) command.getResult().iterator().next();
+			elementResult.setName(page.getPackageName());
 		} else if (context instanceof Package) {
 			elementResult = (Package) context;
 		}
@@ -330,11 +301,11 @@ public class ComponentCreationWizard
 	protected Diagram createDiagram(Package container) {
 
 		if (page.getCreateDiagram()) {
-			Diagram diagram = BaseDiagramUtil.createComponentDiagram(container);
-			if (diagram != null) {
-				diagram.setName(page.getDiagramName());
-				return diagram;
-			}
+//			Diagram diagram = BaseDiagramUtil.createComponentDiagram(container);
+//			if (diagram != null) {
+//				diagram.setName(page.getDiagramName());
+//				return diagram;
+//			}
 		}
 		return null;
 	}
@@ -345,44 +316,44 @@ public class ComponentCreationWizard
 	 * @param page
 	 * @return
 	 */
-	protected DiagramEditPart getDiagramEditPart(IWorkbenchPage page) {
-		if (page.getActiveEditor() instanceof IDiagramWorkbenchPart) {
-			IDiagramWorkbenchPart diagramPart = (IDiagramWorkbenchPart) page
-				.getActiveEditor();
-			if (diagramPart != null) {
-				return diagramPart.getDiagramEditPart();
-			}
-		}
-		return null;
-	}
+//	protected DiagramEditPart getDiagramEditPart(IWorkbenchPage page) {
+//		if (page.getActiveEditor() instanceof IDiagramWorkbenchPart) {
+//			IDiagramWorkbenchPart diagramPart = (IDiagramWorkbenchPart) page
+//				.getActiveEditor();
+//			if (diagramPart != null) {
+//				return diagramPart.getDiagramEditPart();
+//			}
+//		}
+//		return null;
+//	}
 
 	/**
 	 * Show required relationships for the given object.
 	 * 
 	 * @param editPart
 	 * @param object
-	 */
-	protected void showRelationships(DiagramEditPart editPart, EObject object) {
-		List<Object> typeToShow = new ArrayList<Object>();
-		IElementType genElementType = ZDLElementTypeManager.INSTANCE
-			.getElementTypeFromHint("generalization");//$NON-NLS-1$
-		IElementType manElementType = ZDLElementTypeManager.INSTANCE
-			.getElementTypeFromHint("manifestation");//$NON-NLS-1$
-		IElementType depElementType = ZDLElementTypeManager.INSTANCE
-		.getElementTypeFromHint("dependency");//$NON-NLS-1$
-		typeToShow.add(genElementType);
-		typeToShow.add(manElementType);
-		typeToShow.add(depElementType);
-
-		List<Object> selectedShapes = new ArrayList<Object>();
-		selectedShapes.add(editPart.findEditPart(null, object));
-		ShowHideRelationshipsRequest showRelationshipRequest = new ShowHideRelationshipsRequest(
-			selectedShapes, typeToShow, Collections.EMPTY_LIST);
-
-		Command showRelationshipCommand = editPart
-			.getCommand(showRelationshipRequest);
-		showRelationshipCommand.execute();
-	}
+//	 */
+//	protected void showRelationships(DiagramEditPart editPart, EObject object) {
+//		List<Object> typeToShow = new ArrayList<Object>();
+//		IElementType genElementType = ZDLElementTypeManager.INSTANCE
+//			.getElementTypeFromHint("generalization");//$NON-NLS-1$
+//		IElementType manElementType = ZDLElementTypeManager.INSTANCE
+//			.getElementTypeFromHint("manifestation");//$NON-NLS-1$
+//		IElementType depElementType = ZDLElementTypeManager.INSTANCE
+//		.getElementTypeFromHint("dependency");//$NON-NLS-1$
+//		typeToShow.add(genElementType);
+//		typeToShow.add(manElementType);
+//		typeToShow.add(depElementType);
+//
+//		List<Object> selectedShapes = new ArrayList<Object>();
+//		selectedShapes.add(editPart.findEditPart(null, object));
+//		ShowHideRelationshipsRequest showRelationshipRequest = new ShowHideRelationshipsRequest(
+//			selectedShapes, typeToShow, Collections.EMPTY_LIST);
+//
+//		Command showRelationshipCommand = editPart
+//			.getCommand(showRelationshipRequest);
+//		showRelationshipCommand.execute();
+//	}
 
 	/**
 	 * Drop object to a diagram.
@@ -391,23 +362,23 @@ public class ComponentCreationWizard
 	 * @param dropLocation
 	 * @param object
 	 */
-	protected void dropElement(DiagramEditPart editPart, Point dropLocation,
-			EObject object) {
-
-		// Drop interface
-		EList<EObject> elementToDrop = new BasicEList<EObject>();
-		elementToDrop.add(object);
-
-		DropObjectsRequest dropRequest = new DropObjectsRequest();
-		dropRequest.setObjects(elementToDrop);
-		dropRequest.setAllowedDetail(1);
-		dropRequest.setLocation(dropLocation);
-
-		org.eclipse.gef.commands.Command command = editPart
-			.getCommand(dropRequest);
-
-		command.execute();
-	}
+//	protected void dropElement(DiagramEditPart editPart, Point dropLocation,
+//			EObject object) {
+//
+//		// Drop interface
+//		EList<EObject> elementToDrop = new BasicEList<EObject>();
+//		elementToDrop.add(object);
+//
+//		DropObjectsRequest dropRequest = new DropObjectsRequest();
+//		dropRequest.setObjects(elementToDrop);
+//		dropRequest.setAllowedDetail(1);
+//		dropRequest.setLocation(dropLocation);
+//
+//		org.eclipse.gef.commands.Command command = editPart
+//			.getCommand(dropRequest);
+//
+//		command.execute();
+//	}
 	
 	
 	public String getComponentInterfaceConcept() {

@@ -19,6 +19,7 @@ package com.zeligsoft.cx.deployment.treeeditor.ui;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -49,8 +50,6 @@ import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.UMLPackage;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
-import com.ibm.xtools.uml.msl.resources.ILogicalResource;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.deployment.treeeditor.DeploymentEditorInput;
 import com.zeligsoft.cx.deployment.treeeditor.l10n.DeploymentEditorMessages;
@@ -212,7 +211,7 @@ public class DeploymentTreeEditor extends FormEditor implements
 	public void doSave(IProgressMonitor monitor) {
 		Model model = deployment.getModel();
 		try {
-			UMLModeler.saveModel(model);
+			model.eResource().save(Collections.EMPTY_MAP);
 		} catch (Exception e) {
 			Activator
 					.getDefault()
@@ -252,12 +251,14 @@ public class DeploymentTreeEditor extends FormEditor implements
 		if (domain == null || deployment == null) {
 			return false;
 		}
-		ILogicalResource logicalResource = UMLModeler
-				.getLogicalResource(deployment);
-		if (logicalResource == null) {
-			return false;
-		}
-		return logicalResource.isModified();
+//		ILogicalResource logicalResource = UMLModeler
+//				.getLogicalResource(deployment);
+//		if (logicalResource == null) {
+//			return false;
+//		}
+//		return logicalResource.isModified();
+		// ToDO:
+		return true;
 	}
 
 	// Added to support properties view

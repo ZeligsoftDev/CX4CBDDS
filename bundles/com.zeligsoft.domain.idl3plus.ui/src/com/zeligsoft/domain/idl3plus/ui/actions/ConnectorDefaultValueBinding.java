@@ -22,7 +22,10 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
@@ -38,8 +41,6 @@ import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Package;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
-import com.zeligsoft.base.ui.commands.CreatePackageWithoutDiagramCommand;
 import com.zeligsoft.base.ui.menus.actions.ICXAction;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.util.NamingUtil;
@@ -122,9 +123,11 @@ public class ConnectorDefaultValueBinding extends Action implements ICXAction {
 			}
 			final Component connectorDef = (Component) selectedElements
 					.getFirstElement();
+			
+			final TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(context);
 
 			AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-					UMLModeler.getEditingDomain(),
+					editingDomain,
 					Messages.ConnectorDefaultValueBinding_CreateCommandLabel,
 					Collections.EMPTY_MAP, null) {
 
@@ -132,11 +135,9 @@ public class ConnectorDefaultValueBinding extends Action implements ICXAction {
 				protected CommandResult doExecuteWithResult(
 						IProgressMonitor monitor, IAdaptable info)
 						throws ExecutionException {
-					CreatePackageWithoutDiagramCommand command = new CreatePackageWithoutDiagramCommand(
-							context);
-					command.execute(null, null);
-					result = (Package) command.getCommandResult()
-							.getReturnValue();
+					Command command = BaseUIUtil.getCreatePackageCommand(context);
+					editingDomain.getCommandStack().execute(command);
+					result = (Package) command.getResult().iterator().next();
 					if (result != null) {
 						String containerName = NamingUtil.generateUniqueName(
 								"_" + connectorDef.getName(), //$NON-NLS-1$
@@ -162,7 +163,7 @@ public class ConnectorDefaultValueBinding extends Action implements ICXAction {
 						Messages.ConnectorDefaultValueBinding_ErrorMessage, e);
 			}
 			if (result != null) {
-				BaseUIUtil.startInLineEdit(result);
+				// ToDo:BaseUIUtil.startInLineEdit(result);
 			}
 		}
 	}

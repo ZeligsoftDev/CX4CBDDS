@@ -35,10 +35,12 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.ui.services.icon.IconService;
@@ -52,7 +54,9 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.papyrus.infra.core.services.ServiceException;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
+import org.eclipse.papyrus.infra.services.edit.context.TypeContext;
 import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
 import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
 import org.eclipse.papyrus.infra.widgets.util.RevealResultCommand;
@@ -78,6 +82,7 @@ import org.osgi.framework.Bundle;
 
 import com.zeligsoft.base.ui.commands.EditResultCommand;
 import com.zeligsoft.base.util.BaseUtil;
+import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
@@ -90,6 +95,9 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 @SuppressWarnings("rawtypes")
 public class BaseUIUtil {
 
+	public static IElementType PACKAGE_ELEMENT_TYPE = ZDLElementTypeManager.INSTANCE
+			.getElementTypeFromHint("package");//$NON-NLS-1$;
+	
 	public static String BUILD_CONFIG_PROPERTY_NAME = "build_config"; //$NON-NLS-1$
 
 	public static Command buildCommand(TransactionalEditingDomain editingDomain, IClientContext context,
@@ -122,6 +130,25 @@ public class BaseUIUtil {
 			return EditResultCommand.wrap(command, viewPart);
 		}
 		return null;
+
+	}
+	
+	public static Command getCreatePackageCommand(EObject selectedEObject) {
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(selectedEObject);
+		IClientContext context = null;
+		try {
+			context = TypeContext.getContext(selectedEObject);
+		} catch (ServiceException e) {
+			com.zeligsoft.base.ui.Activator.getDefault().error(e.getMessage(), e);
+			return UnexecutableCommand.INSTANCE;
+		}
+		final CreateElementRequest req = new CreateElementRequest(editingDomain, selectedEObject, PACKAGE_ELEMENT_TYPE);
+		final EObject target = ElementEditServiceUtils.getTargetFromContext(editingDomain, selectedEObject, req);
+		if (target == null) {
+			return UnexecutableCommand.INSTANCE;
+		}
+
+		return BaseUIUtil.buildCommand(editingDomain, context, req, target);
 
 	}
 
@@ -564,4 +591,24 @@ public class BaseUIUtil {
 	public static List sortEObjectsByName(Collection elements) throws IllegalArgumentException {
 		return BaseUtil.sortEObjectsByName(elements);
 	}
+	
+	public static String getProfileApplyingConcept(URI modelURI, String conceptHint,
+			TransactionalEditingDomain editingDomain) {
+		Resource res = editingDomain.getResourceSet().getResource(modelURI, true);
+		if (!res.isLoaded() || res.getContents().isEmpty()) {
+			return null;
+		}
+
+		org.eclipse.uml2.uml.Package p = (org.eclipse.uml2.uml.Package) res.getContents().get(0);
+
+		for (Profile profile : p.getAllAppliedProfiles()) {
+
+			if (profile.getPackagedElement(conceptHint) != null) {
+				return profile.eResource().getURI().toString();
+			}
+		}
+
+		return null;
+	}
+
 }

@@ -23,6 +23,7 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.action.Action;
@@ -30,7 +31,6 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.ui.menus.actions.ICXAction;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.idl3plus.ui.Activator;
@@ -81,7 +81,7 @@ public class CreateTemplateParameter extends Action implements ICXAction {
 			final String parameterName = dialog.getName();
 			final String parameterTypeConstraint = dialog.getTypeConstraint();
 			AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-					UMLModeler.getEditingDomain(),
+					TransactionUtil.getEditingDomain(context),
 					Messages.CreateTemplateParameter_CommandLabel,
 					Collections.EMPTY_MAP, null) {
 

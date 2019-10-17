@@ -72,16 +72,18 @@ public class ShowPortTypeActionDelegate implements IObjectActionDelegate {
 							.getOwnedParameteredElement();
 					String formalName = EMFCoreUtil.getName(formal);
 					if ("T".equals(formalName.toUpperCase())) { //$NON-NLS-1$
-						BaseUIUtil.showInProjectExplorer(pe);
+						// ToDo: Navigate to target
+						//BaseUIUtil.showInProjectExplorer(pe);
 						return;
 					}
 					target = pe;
 				}
-				BaseUIUtil.showInProjectExplorer(target);
+				// ToDo: Navigate to target
+				// BaseUIUtil.showInProjectExplorer(target);
 				return;
 			}
 		}
-		BaseUIUtil.showInProjectExplorer(type);
+		// BaseUIUtil.showInProjectExplorer(type);
 
 	}
 

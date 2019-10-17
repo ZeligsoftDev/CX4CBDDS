@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.util.StringStatics;
 import org.eclipse.gmf.runtime.common.ui.services.properties.extended.IPropertyAction;
 import org.eclipse.gmf.runtime.common.ui.services.properties.extended.MultiButtonCellEditor;
@@ -314,7 +315,7 @@ public class CCMPropertyEditingSupport extends EditingSupport {
 	}
 
 	private CellEditor getCellEditorForArray(final IPropertyEntry element,
-			DataType sequence) {
+			final DataType sequence) {
 
 		return new MultiButtonCellEditor((Tree) getViewer().getControl(),
 				SWT.NONE) {
@@ -368,7 +369,7 @@ public class CCMPropertyEditingSupport extends EditingSupport {
 												: slot.getValues(),
 										((Property) entry.getModelObject())
 												.getType().getName(),
-										new SequenceValueLabelProvider());
+										new SequenceValueLabelProvider(), TransactionUtil.getEditingDomain(sequence));
 								dialog.getPreferenceManager().addToRoot(
 										new PreferenceNode(StringStatics.BLANK,
 												page));
@@ -385,7 +386,7 @@ public class CCMPropertyEditingSupport extends EditingSupport {
 	}
 
 	private CellEditor getCellEditorForSequence(final IPropertyEntry element,
-			DataType sequence) {
+			final DataType sequence) {
 
 		return new MultiButtonCellEditor((Tree) getViewer().getControl(),
 				SWT.NONE) {
@@ -439,7 +440,7 @@ public class CCMPropertyEditingSupport extends EditingSupport {
 												: slot.getValues(),
 										((Property) entry.getModelObject())
 												.getType().getName(),
-										new SequenceValueLabelProvider());
+										new SequenceValueLabelProvider(), TransactionUtil.getEditingDomain(sequence));
 								dialog.getPreferenceManager().addToRoot(
 										new PreferenceNode(StringStatics.BLANK,
 												page));

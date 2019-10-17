@@ -29,12 +29,10 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.uml2.common.edit.command.ChangeCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.osgi.framework.Bundle;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.util.WorkflowUtil;
 import com.zeligsoft.domain.idl3plus.ui.Activator;
@@ -74,15 +72,13 @@ public class IDL3PlusIDLImportWizard extends AbstractIDLImportWizard {
 					// do nothing
 				}
 				
-				TransactionalEditingDomain editingDomain = UMLModeler.getEditingDomain();
-				
 				Map<String, String> properties = new HashMap<String, String>();
 				properties.put(
 						"targetModel", targetModel.toPlatformString(false)); //$NON-NLS-1$
 
 				String conceptHint = "CCMComponent"; //$NON-NLS-1$
 				String profileToApply = BaseUIUtil.getProfileApplyingConcept(
-						targetModel, conceptHint);
+						targetModel, conceptHint, editingDomain);
 
 				properties.put("profileToApply", profileToApply); //$NON-NLS-1$
 

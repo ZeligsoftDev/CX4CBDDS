@@ -16,7 +16,6 @@
  */
 package com.zeligsoft.domain.idl3plus.ui.internal.providers.decorator;
 
-import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.core.service.AbstractProvider;
@@ -27,10 +26,8 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.AbstractDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.CreateDecoratorsOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorProvider;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.notation.View;
 
-import com.ibm.xtools.rmp.ui.diagram.editparts.ConnectionNodeEditPart;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 
@@ -112,16 +109,16 @@ public class ConnectorDecoratorProvider extends AbstractProvider implements
 			if (editPart == null || !(editPart instanceof IPrimaryEditPart)) {
 				return;
 			}
-			if (editPart instanceof ConnectionNodeEditPart) {
-				IFigure figure = ((ConnectionNodeEditPart) editPart)
-						.getFigure();
-				if (figure != null && figure instanceof PolylineConnectionEx) {
-					PolylineConnectionEx polyFigure = (PolylineConnectionEx) ((ConnectionNodeEditPart) editPart)
-							.getFigure();
-					polyFigure.setLineStyle(1);
-					polyFigure.refreshLine();
-				}
-			}
+//			if (editPart instanceof ConnectionNodeEditPart) {
+//				IFigure figure = ((ConnectionNodeEditPart) editPart)
+//						.getFigure();
+//				if (figure != null && figure instanceof PolylineConnectionEx) {
+//					PolylineConnectionEx polyFigure = (PolylineConnectionEx) ((ConnectionNodeEditPart) editPart)
+//							.getFigure();
+//					polyFigure.setLineStyle(1);
+//					polyFigure.refreshLine();
+//				}
+//			}
 		}
 	}
 }

@@ -421,7 +421,8 @@ public class DDS4CCMCustomPropertySectionProvider implements
 												((Package) descriptor
 														.getContext())
 														.getPackagedElements(),
-												Messages.DDS4CCMCustomPropertySectionProvider_PackagedElementsDialogTitle)));
+												Messages.DDS4CCMCustomPropertySectionProvider_PackagedElementsDialogTitle, 
+												TransactionUtil.getEditingDomain(descriptor.getContext()))));
 				dialog.open();
 			}
 		});

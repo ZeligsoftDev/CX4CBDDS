@@ -120,7 +120,7 @@ public class IDL3PlusDataSpaceCustomPropertySectionProvider implements
 				if (selection == null) {
 					return;
 				}
-				BaseUIUtil.showInProjectExplorer(selection);
+				// ToDo: BaseUIUtil.showInProjectExplorer(selection);
 			}
 		});
 		tableViewer.setInput(descriptor.getContext());

@@ -24,6 +24,7 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
@@ -49,7 +50,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.uml2.common.util.UML2Util;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
 import com.zeligsoft.cx.ui.l10n.Messages;
@@ -72,23 +72,26 @@ public class ListTableViewerPage extends PreferencePage {
 	private Button upButton;
 
 	private Button downButton;
-	
+
 	private LabelProvider labelProvider = null;
-	
+
+	private TransactionalEditingDomain editingDomain;
+
 	/**
 	 * Constructor
 	 * 
 	 * @param propertyDescriptor
 	 */
-	public ListTableViewerPage(List list, String label) {
-		this(list, label, null);
+	public ListTableViewerPage(List list, String label, TransactionalEditingDomain domain) {
+		this(list, label, null, domain);
 	}
 
-	public ListTableViewerPage(List list, String label,
-			LabelProvider labelProvider) {
+	public ListTableViewerPage(List list, String label, LabelProvider labelProvider,
+			TransactionalEditingDomain domain) {
 		super(label);
 		this.list = list;
 		this.labelProvider = labelProvider;
+		this.editingDomain = domain;
 	}
 
 	@Override
@@ -96,8 +99,7 @@ public class ListTableViewerPage extends PreferencePage {
 
 		noDefaultAndApplyButton();
 
-		Composite composite = CXWidgetFactory.createGridComposite(parent, 2,
-				GridData.FILL_BOTH);
+		Composite composite = CXWidgetFactory.createGridComposite(parent, 2, GridData.FILL_BOTH);
 
 		createTableViewer(composite);
 
@@ -112,13 +114,11 @@ public class ListTableViewerPage extends PreferencePage {
 	 * @param parent
 	 */
 	private void createButtonArea(Composite parent) {
-		Composite composite = CXWidgetFactory.createGridComposite(parent, 1,
-				GridData.VERTICAL_ALIGN_BEGINNING);
+		Composite composite = CXWidgetFactory.createGridComposite(parent, 1, GridData.VERTICAL_ALIGN_BEGINNING);
 
 		GridData data = new GridData();
 
-		upButton = CXWidgetFactory.createImageButton(composite,
-				CXWidgetFactory.UP_NAV_IMAGE);
+		upButton = CXWidgetFactory.createImageButton(composite, CXWidgetFactory.UP_NAV_IMAGE);
 		upButton.setLayoutData(data);
 		upButton.setEnabled(false);
 		upButton.addSelectionListener(new SelectionAdapter() {
@@ -130,17 +130,13 @@ public class ListTableViewerPage extends PreferencePage {
 					final StructuredSelection selection = (StructuredSelection) o;
 					if (!selection.isEmpty()) {
 
-						final int index = list.indexOf(selection
-								.getFirstElement());
+						final int index = list.indexOf(selection.getFirstElement());
 
-						ICommand command = new AbstractTransactionalCommand(
-								UMLModeler.getEditingDomain(),
-								Messages.ListTableViewerPage_MoveUpCmdLabel,
-								Collections.EMPTY_MAP, null) {
+						ICommand command = new AbstractTransactionalCommand(editingDomain,
+								Messages.ListTableViewerPage_MoveUpCmdLabel, Collections.EMPTY_MAP, null) {
 
 							@Override
-							protected CommandResult doExecuteWithResult(
-									IProgressMonitor monitor, IAdaptable info)
+							protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 									throws ExecutionException {
 								list.remove(selection.getFirstElement());
 								list.add(index - 1, selection.getFirstElement());
@@ -148,11 +144,9 @@ public class ListTableViewerPage extends PreferencePage {
 							}
 						};
 						try {
-							OperationHistoryFactory.getOperationHistory()
-									.execute(command, null, null);
+							OperationHistoryFactory.getOperationHistory().execute(command, null, null);
 						} catch (ExecutionException e1) {
-							ZeligsoftCXUIPlugin.getDefault().error(
-									Messages.ListTableViewerPage_FailedMsg, e1);
+							ZeligsoftCXUIPlugin.getDefault().error(Messages.ListTableViewerPage_FailedMsg, e1);
 							return;
 						}
 
@@ -174,8 +168,7 @@ public class ListTableViewerPage extends PreferencePage {
 			}
 		});
 
-		downButton = CXWidgetFactory.createImageButton(composite,
-				CXWidgetFactory.DOWN_NAV_IMAGE);
+		downButton = CXWidgetFactory.createImageButton(composite, CXWidgetFactory.DOWN_NAV_IMAGE);
 		downButton.setLayoutData(data);
 		downButton.setEnabled(false);
 		downButton.addSelectionListener(new SelectionAdapter() {
@@ -187,16 +180,12 @@ public class ListTableViewerPage extends PreferencePage {
 					final StructuredSelection selection = (StructuredSelection) o;
 					if (!selection.isEmpty()) {
 
-						final int index = list.indexOf(selection
-								.getFirstElement());
-						ICommand command = new AbstractTransactionalCommand(
-								UMLModeler.getEditingDomain(),
-								Messages.ListTableViewerPage_MoveDownCmdMsg,
-								Collections.EMPTY_MAP, null) {
+						final int index = list.indexOf(selection.getFirstElement());
+						ICommand command = new AbstractTransactionalCommand(editingDomain,
+								Messages.ListTableViewerPage_MoveDownCmdMsg, Collections.EMPTY_MAP, null) {
 
 							@Override
-							protected CommandResult doExecuteWithResult(
-									IProgressMonitor monitor, IAdaptable info)
+							protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 									throws ExecutionException {
 								list.remove(selection.getFirstElement());
 								list.add(index + 1, selection.getFirstElement());
@@ -204,11 +193,9 @@ public class ListTableViewerPage extends PreferencePage {
 							}
 						};
 						try {
-							OperationHistoryFactory.getOperationHistory()
-									.execute(command, null, null);
+							OperationHistoryFactory.getOperationHistory().execute(command, null, null);
 						} catch (ExecutionException e1) {
-							ZeligsoftCXUIPlugin.getDefault().error(
-									Messages.ListTableViewerPage_FailedMsg, e1);
+							ZeligsoftCXUIPlugin.getDefault().error(Messages.ListTableViewerPage_FailedMsg, e1);
 							return;
 						}
 
@@ -240,19 +227,16 @@ public class ListTableViewerPage extends PreferencePage {
 		Table table = viewer.getTable();
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
-		GridData data = new GridData(GridData.FILL_HORIZONTAL
-				| GridData.GRAB_HORIZONTAL);
+		GridData data = new GridData(GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL);
 		data.heightHint = 400;
 		table.setLayoutData(data);
 
 		TableViewerColumn valueColumn = new TableViewerColumn(viewer, 1);
 		valueColumn.getColumn().setWidth(300);
-		valueColumn.getColumn().setText(
-				Messages.ListTableViewerPage_ColumnLabel);
+		valueColumn.getColumn().setText(Messages.ListTableViewerPage_ColumnLabel);
 
 		viewer.setContentProvider(new ListContentProvider());
-		viewer.setLabelProvider(labelProvider == null ? new EObjectLabelProvider()
-				: labelProvider);
+		viewer.setLabelProvider(labelProvider == null ? new EObjectLabelProvider() : labelProvider);
 		viewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			@Override
@@ -260,8 +244,7 @@ public class ListTableViewerPage extends PreferencePage {
 				Object o = viewer.getSelection();
 				if (o != null && o instanceof StructuredSelection) {
 					if (!((StructuredSelection) o).isEmpty()) {
-						Object selectedObject = ((StructuredSelection) o)
-								.getFirstElement();
+						Object selectedObject = ((StructuredSelection) o).getFirstElement();
 						if (list.indexOf(selectedObject) < list.size() - 1) {
 							downButton.setEnabled(true);
 						} else {
@@ -285,8 +268,7 @@ public class ListTableViewerPage extends PreferencePage {
 	 * @author ysroh
 	 * 
 	 */
-	private class EObjectLabelProvider extends LabelProvider implements
-			ITableLabelProvider {
+	private class EObjectLabelProvider extends LabelProvider implements ITableLabelProvider {
 
 		@Override
 		public Image getColumnImage(Object element, int columnIndex) {

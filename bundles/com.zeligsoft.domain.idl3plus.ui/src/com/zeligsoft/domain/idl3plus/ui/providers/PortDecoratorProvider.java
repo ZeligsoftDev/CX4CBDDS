@@ -17,15 +17,10 @@
 package com.zeligsoft.domain.idl3plus.ui.providers;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LayoutListener;
@@ -35,7 +30,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.service.AbstractProvider;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
@@ -51,7 +45,6 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.CreateDecoratorsOpe
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorProvider;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
@@ -63,11 +56,9 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.idl3plus.connectorregistry.ConnectorRegistry;
 import com.zeligsoft.domain.idl3plus.connectorregistry.ConnectorRegistry.PortIconConfiguration;
-import com.zeligsoft.domain.idl3plus.ui.Activator;
 import com.zeligsoft.domain.idl3plus.ui.utils.PortDecorationImages;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
@@ -241,31 +232,31 @@ public class PortDecoratorProvider extends AbstractProvider implements IDecorato
 			if (nodesToHide.size() == 0) {
 				return;
 			}
-			AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-					UMLModeler.getEditingDomain(),
-					"HidePortInterfaceDecorator", Collections.EMPTY_MAP, null) { //$NON-NLS-1$
-
-				@Override
-				protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-						IAdaptable info) throws ExecutionException {
-					for (Node node : nodesToHide) {
-						node.setVisible(false);
-					}
-					return CommandResult.newOKCommandResult();
-				}
-
-				@Override
-				public boolean canUndo() {
-					return false;
-		}
-			};
-
-			try {
-				OperationHistoryFactory.getOperationHistory().execute(editCommand, null,
-						null);
-			} catch (ExecutionException e) {
-				Activator.getDefault().error("Error hiding port interface decoration", e); //$NON-NLS-1$
-			}
+//			AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
+//					UMLModeler.getEditingDomain(),
+//					"HidePortInterfaceDecorator", Collections.EMPTY_MAP, null) { //$NON-NLS-1$
+//
+//				@Override
+//				protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
+//						IAdaptable info) throws ExecutionException {
+//					for (Node node : nodesToHide) {
+//						node.setVisible(false);
+//					}
+//					return CommandResult.newOKCommandResult();
+//				}
+//
+//				@Override
+//				public boolean canUndo() {
+//					return false;
+//		}
+//			};
+//
+//			try {
+//				OperationHistoryFactory.getOperationHistory().execute(editCommand, null,
+//						null);
+//			} catch (ExecutionException e) {
+//				Activator.getDefault().error("Error hiding port interface decoration", e); //$NON-NLS-1$
+//			}
 		} 
 		
 		/**

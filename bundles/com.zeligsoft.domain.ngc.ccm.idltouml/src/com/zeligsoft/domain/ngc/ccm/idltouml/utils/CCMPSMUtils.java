@@ -156,9 +156,9 @@ public class CCMPSMUtils {
 	 *            the package's location URI
 	 * @return the package at the specified location URI
 	 */
-	private static <T extends Package> T loadPackage(ResourceSet rset,
+	public static <T extends Package> T loadPackage(ResourceSet rset,
 			String uri) {
-		return com.zeligsoft.base.util.RSMUtil.loadPackage(rset, URI.createURI(uri));
+		return (T) rset.getResource(URI.createURI(uri), true).getContents().get(0);
 	}
 	
 	public static void applyTraceStereotype(org.eclipse.uml2.uml.Abstraction obj) {

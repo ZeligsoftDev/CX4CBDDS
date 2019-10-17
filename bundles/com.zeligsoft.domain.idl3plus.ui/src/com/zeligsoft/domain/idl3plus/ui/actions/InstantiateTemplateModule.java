@@ -24,6 +24,7 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.action.Action;
@@ -32,9 +33,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.ui.menus.actions.ICXAction;
-import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.idl3plus.ui.Activator;
 import com.zeligsoft.domain.idl3plus.ui.dialogs.InstantiateTemplateModuleDialog;
@@ -93,7 +92,7 @@ public class InstantiateTemplateModule extends Action implements ICXAction {
 					.getFirstElement();
 
 			AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-					UMLModeler.getEditingDomain(),
+					TransactionUtil.getEditingDomain(context),
 					Messages.InstantiateTemplateModule_CommandLabel,
 					Collections.EMPTY_MAP, null) {
 
@@ -104,7 +103,7 @@ public class InstantiateTemplateModule extends Action implements ICXAction {
 					EObject instantiatedModule = IDL3PlusUtil.INSTANCE.instantiateTemplateModule(context,
 							templateModule, dialog.getInstantiationMap());
 					if (instantiatedModule != null) {
-						BaseUIUtil.startInLineEdit(instantiatedModule);
+						//ToDo:BaseUIUtil.startInLineEdit(instantiatedModule);
 					}
 					return CommandResult.newOKCommandResult();
 				}

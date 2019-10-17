@@ -23,6 +23,7 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.action.Action;
@@ -32,7 +33,6 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.uml2.uml.Element;
 
-import com.ibm.xtools.modeler.ui.UMLModeler;
 import com.zeligsoft.base.ui.menus.actions.ICXAction;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
@@ -68,7 +68,7 @@ public class RepairModuleInstantiationAction
 		}
 		
 		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-				UMLModeler.getEditingDomain(),
+				TransactionUtil.getEditingDomain(element),
 				"Repair module instantiation", //$NON-NLS-1$
 				Collections.EMPTY_MAP, null) {
 				

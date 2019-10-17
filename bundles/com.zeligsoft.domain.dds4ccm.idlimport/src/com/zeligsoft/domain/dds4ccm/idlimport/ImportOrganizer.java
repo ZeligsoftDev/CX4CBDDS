@@ -180,7 +180,8 @@ public class ImportOrganizer {
 			Property constant = (Property)((Class)element).getOwnedMember(elementName);
 			constants.getOwnedAttributes().add(constant);
 			if( element.getOwnedElements().size() == 0) {
-				UMLElementFactory.destroyElement(element, null);
+				
+				// ToDo: UMLElementFactory.destroyElement(element, null);
 			}
 		} else {
 			currentPackage.getPackagedElements().add(element);
@@ -211,15 +212,15 @@ public class ImportOrganizer {
 							ZDLUtil.isZDLConcept(s.getEObject(), CCMNames.MANAGES)) {
 						Element home = (Element) ZDLUtil.getValue(s.getEObject(), CCMNames.MANAGES, CCMNames.MANAGES__HOME);
 						if( destroy ) {
-							UMLElementFactory.destroyElement(home, null);
-							UMLElementFactory.destroyElement(s.getEObject(), null);
+							// ToDo:UMLElementFactory.destroyElement(home, null);
+							// ToDo:UMLElementFactory.destroyElement(s.getEObject(), null);
 							break;
 						} else {
 							ZDLUtil.setValue(s.getEObject(), CCMNames.MANAGES, CCMNames.MANAGES__COMPONENT, currentPackageComponent);
 						}
 					}
 				}
-				UMLElementFactory.destroyElement(ci, null);
+				// ToDo:UMLElementFactory.destroyElement(ci, null);
 			} else {
 				currentPackage.getPackagedElements().add(ci);
 			}

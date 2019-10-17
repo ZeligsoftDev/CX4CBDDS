@@ -32,7 +32,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
-import org.eclipse.gmf.runtime.emf.core.util.ResourceUtil;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
@@ -102,7 +101,7 @@ public class ZDLElementContentProvider implements IStructuredContentProvider {
 
 		if (searchWorkspace) {
 			if (workspaceContentList.isEmpty()) {
-				Object[] resources = ResourceUtil.getResourceSet()
+				Object[] resources = context.eResource().getResourceSet()
 						.getResources().toArray();
 				for (Object o : resources) {
 					workspaceContentList.addAll(getZDLElements((Resource) o,
@@ -116,7 +115,7 @@ public class ZDLElementContentProvider implements IStructuredContentProvider {
 			if (projectContentList.isEmpty()) {
 				projectContentList.addAll(getZDLElements(context.eResource(),
 						includeImportedPackages));
-				Object[] resources = ResourceUtil.getResourceSet()
+				Object[] resources = context.eResource().getResourceSet()
 						.getResources().toArray();
 				for (Object res : resources) {
 					IFile f = WorkspaceSynchronizer.getFile((Resource) res);

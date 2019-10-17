@@ -16,33 +16,16 @@
  */
 package com.zeligsoft.domain.omg.ccm.ui.wizards;
 
-import java.util.Collections;
-
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gef.Request;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.common.core.command.ICommand;
-import org.eclipse.gmf.runtime.diagram.ui.commands.OpenDiagramCommand;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
-import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
-import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Package;
 
-import com.zeligsoft.base.ui.commands.CreatePackageWithoutDiagramCommand;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
-import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
-import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.ccm.ui.Activator;
 import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
 
 /**
@@ -178,54 +161,31 @@ public class CCMComponentWizard extends Wizard {
 	private Package getPackageContainer() {
 		Package pkg = (Package) context;
 		if (page.isCreatePkg()) {
-			ICommand command = new CreatePackageWithoutDiagramCommand(context);
-			try {
-				OperationHistoryFactory.getOperationHistory().execute(command,
-						null, null);
-			} catch (ExecutionException e) {
-				ZeligsoftCXUIPlugin.getDefault().error(
-						"Failed to create a package", e); //$NON-NLS-1$
-				return null;
-			}
-			CommandResult result = command.getCommandResult();
-			if (result != null && result.getReturnValue() != null) {
-				if (result.getReturnValue() instanceof Package) {
-					pkg = (Package) result.getReturnValue();
-					pkg.setName(page.getPkgName());
-				}
+			Command command = BaseUIUtil.getCreatePackageCommand(context);
+			TransactionUtil.getEditingDomain(context).getCommandStack().execute(command);
+			Object result = command.getResult().iterator().next();
+			if (result instanceof Package) {
+				((Package) result).setName(page.getPkgName());
 			}
 		}
 		return pkg;
 	}
-	
-	
+
 	private Package getMonolithicImplContainer(Package defaultContainer) {
-		
+
 		if (page.isAddIntoSubpackage()) {
-			ICommand command = new CreatePackageWithoutDiagramCommand(defaultContainer);
-			try {
-				OperationHistoryFactory.getOperationHistory().execute(command,
-						null, null);
-			} catch (ExecutionException e) {
-				ZeligsoftCXUIPlugin.getDefault().error(
-						"Failed to create a subpackage", e); //$NON-NLS-1$
-				return null;
-			}
-			CommandResult result = command.getCommandResult();
-			if (result != null && result.getReturnValue() != null) {
-				if (result.getReturnValue() instanceof Package) {
-					Package newSubpackage = (Package) result.getReturnValue();
-					newSubpackage.setName(page.getSubpackageName());
-					return newSubpackage;
-				}
+			Command command = BaseUIUtil.getCreatePackageCommand(defaultContainer);
+			TransactionUtil.getEditingDomain(context).getCommandStack().execute(command);
+			Object result = command.getResult().iterator().next();
+			if (result instanceof Package) {
+				((Package) result).setName(page.getSubpackageName());
 			}
 		}
 		return defaultContainer;
 	}
 
 	private Component createComponent(Package container) throws ExecutionException {
-		Component component = (Component) BaseUIUtil.createZDLModelElement(container,
-				CCMNames.CCMCOMPONENT);
+		Component component = (Component) BaseUIUtil.createZDLModelElement(container, CCMNames.CCMCOMPONENT);
 		component.setName(page.getComponentName());
 
 		return component;
@@ -238,12 +198,11 @@ public class CCMComponentWizard extends Wizard {
 //	}
 
 	private Component createAssembly(Package container) throws ExecutionException {
-		Component assembly = (Component) BaseUIUtil.createZDLModelElement(container,
-				CCMNames.ASSEMBLY_IMPLEMENTATION);
+		Component assembly = (Component) BaseUIUtil.createZDLModelElement(container, CCMNames.ASSEMBLY_IMPLEMENTATION);
 		assembly.setName(page.getImplementationName());
 		return assembly;
 	}
-	
+
 	private Component createMonolithic(Package container) throws ExecutionException {
 		Component monolithic = (Component) BaseUIUtil.createZDLModelElement(container,
 				CCMNames.MONOLITHIC_IMPLEMENTATION);

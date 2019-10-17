@@ -16,15 +16,8 @@
  */
 package com.zeligsoft.domain.dds4ccm.ui.internal.providers.decorators;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.core.service.AbstractProvider;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
@@ -33,15 +26,9 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.AbstractDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.CreateDecoratorsOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorProvider;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.swt.graphics.RGB;
 
-import com.ibm.xtools.rmp.ui.diagram.figures.FigureUtilities;
-import com.ibm.xtools.umlnotation.UMLConnector;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
-import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 
 /**
@@ -107,10 +94,10 @@ public class ConnectorDecoratorProvider extends AbstractProvider implements
 	 */
 	public static class DDS4CCMConnectorDecorator extends AbstractDecorator {
 
-		private static int LINE_COLOR = FigureUtilities.RGBToInteger(new RGB(
-				88, 88, 225));
-		private static int DEFAULT_COLOR = FigureUtilities
-				.RGBToInteger(ColorConstants.gray.getRGB());
+//		private static int LINE_COLOR = FigureUtilities.RGBToInteger(new RGB(
+//				88, 88, 225));
+//		private static int DEFAULT_COLOR = FigureUtilities
+//				.RGBToInteger(ColorConstants.gray.getRGB());
 
 		public DDS4CCMConnectorDecorator(IDecoratorTarget decoratorTarget) {
 			super(decoratorTarget);
@@ -127,42 +114,42 @@ public class ConnectorDecoratorProvider extends AbstractProvider implements
 				return;
 			}
 
-			if (editPart.getModel() instanceof UMLConnector) {
-				final UMLConnector connector = (UMLConnector) editPart
-						.getModel();
-
-				final EObject element = ViewUtil
-						.resolveSemanticElement((View) connector);
-				ICommand command = new AbstractTransactionalCommand(
-						TransactionUtil.getEditingDomain(element),
-						"Set LineColor", null) { //$NON-NLS-1$
-
-					@Override
-					protected CommandResult doExecuteWithResult(
-							IProgressMonitor monitor, IAdaptable info)
-							throws ExecutionException {
-						if (ZDLUtil
-								.isZDLConcept(
-										element,
-										DDS4CCMNames.CONNECTOR_STATUS_LISTENER_CONNECTION)) {
-							if (connector.getLineColor() != LINE_COLOR) {
-								connector.setLineColor(LINE_COLOR);
-							}
-						} else {
-							if (connector.getLineColor() != DEFAULT_COLOR) {
-								connector.setLineColor(DEFAULT_COLOR);
-							}
-						}
-						return CommandResult.newOKCommandResult();
-					}
-				};
-
-				try {
-					command.execute(null, null);
-				} catch (ExecutionException e) {
-					Activator.getDefault().error(e.getMessage(), e);
-				}
-			}
+//			if (editPart.getModel() instanceof UMLConnector) {
+//				final UMLConnector connector = (UMLConnector) editPart
+//						.getModel();
+//
+//				final EObject element = ViewUtil
+//						.resolveSemanticElement((View) connector);
+//				ICommand command = new AbstractTransactionalCommand(
+//						TransactionUtil.getEditingDomain(element),
+//						"Set LineColor", null) { //$NON-NLS-1$
+//
+//					@Override
+//					protected CommandResult doExecuteWithResult(
+//							IProgressMonitor monitor, IAdaptable info)
+//							throws ExecutionException {
+//						if (ZDLUtil
+//								.isZDLConcept(
+//										element,
+//										DDS4CCMNames.CONNECTOR_STATUS_LISTENER_CONNECTION)) {
+//							if (connector.getLineColor() != LINE_COLOR) {
+//								connector.setLineColor(LINE_COLOR);
+//							}
+//						} else {
+//							if (connector.getLineColor() != DEFAULT_COLOR) {
+//								connector.setLineColor(DEFAULT_COLOR);
+//							}
+//						}
+//						return CommandResult.newOKCommandResult();
+//					}
+//				};
+//
+//				try {
+//					command.execute(null, null);
+//				} catch (ExecutionException e) {
+//					Activator.getDefault().error(e.getMessage(), e);
+//				}
+//			}
 		}
 	}
 }

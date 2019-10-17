@@ -23,6 +23,9 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -55,6 +58,7 @@ public abstract class AbstractIDLImportWizard extends Wizard implements
 
 	protected IDLImportWizardPage page;
 
+	protected TransactionalEditingDomain editingDomain;
 	/**
 	 * Constructor
 	 */
@@ -108,6 +112,10 @@ public abstract class AbstractIDLImportWizard extends Wizard implements
 				.computeSelectedResources(currentSelection);
 		if (!selectedResources.isEmpty()) {
 			this.selection = new StructuredSelection(selectedResources);
+		}
+		EObject eo = BaseUIUtil.getEObjectFromSelection(selection);
+		if(eo != null) {
+			editingDomain = TransactionUtil.getEditingDomain(eo);
 		}
 
 		setWindowTitle(Messages.getString("IDLImportWizard.0")); //$NON-NLS-1$
