@@ -33,7 +33,9 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.layout.GridLayout;
@@ -91,6 +93,12 @@ public abstract class AbstractCXPropertySection extends AbstractPropertySection
 				return;
 			}
 			String className = event.getOperation().getClass().getName();
+			if (event.getOperation() instanceof EMFCommandOperation) {
+				if (((EMFCommandOperation) event.getOperation()).getCommand() instanceof GMFtoEMFCommandWrapper) {
+					className = ((GMFtoEMFCommandWrapper) ((EMFCommandOperation) event.getOperation()).getCommand())
+							.getGMFCommand().getClass().getName();
+				}
+			}
 			if (!className.startsWith("com.zeligsoft")) { //$NON-NLS-1$
 				return;
 			}

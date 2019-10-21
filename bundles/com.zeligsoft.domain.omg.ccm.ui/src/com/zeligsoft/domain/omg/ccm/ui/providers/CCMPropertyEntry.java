@@ -28,11 +28,13 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
@@ -452,9 +454,10 @@ public class CCMPropertyEntry implements IPropertyEntry {
 		if (parent == null) {
 			return;
 		}
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(modelObject);
+
 		ICommand command = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(TransactionUtil
-						.getEditingDomain(modelObject)),
+				editingDomain,
 				Messages.CCMPropertiesDialog_ActionLabel, null) {
 
 			@Override
@@ -484,14 +487,8 @@ public class CCMPropertyEntry implements IPropertyEntry {
 				return CommandResult.newOKCommandResult();
 			}
 		};
+		editingDomain.getCommandStack().execute(GMFtoEMFCommandWrapper.wrap(command));
 
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					null, null);
-		} catch (ExecutionException e) {
-			Activator.getDefault().error(
-					Messages.CCMPropertyEntry_SaveErrorMessage, e);
-		}
 	}
 
 	/**

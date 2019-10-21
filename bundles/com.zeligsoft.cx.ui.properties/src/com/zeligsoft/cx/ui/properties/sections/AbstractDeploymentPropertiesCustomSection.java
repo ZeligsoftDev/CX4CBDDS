@@ -24,10 +24,12 @@ import org.eclipse.core.commands.operations.IOperationHistoryListener;
 import org.eclipse.core.commands.operations.OperationHistoryEvent;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -73,6 +75,12 @@ public abstract class AbstractDeploymentPropertiesCustomSection implements
 				return;
 			}
 			String className = event.getOperation().getClass().getName();
+			if (event.getOperation() instanceof EMFCommandOperation) {
+				if (((EMFCommandOperation) event.getOperation()).getCommand() instanceof GMFtoEMFCommandWrapper) {
+					className = ((GMFtoEMFCommandWrapper) ((EMFCommandOperation) event.getOperation()).getCommand())
+							.getGMFCommand().getClass().getName();
+				}
+			}
 			if (!className.startsWith("com.zeligsoft")) { //$NON-NLS-1$
 				return;
 			}

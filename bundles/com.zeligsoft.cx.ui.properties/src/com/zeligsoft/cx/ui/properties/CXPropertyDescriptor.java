@@ -26,7 +26,9 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
@@ -34,6 +36,7 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCo
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Property;
 
@@ -66,17 +69,12 @@ public class CXPropertyDescriptor {
 	/**
 	 * Constructor
 	 * 
-	 * @param object
-	 *            concept owner
-	 * @param concept
-	 *            ZDL concept
-	 * @param property
-	 *            property
-	 * @param pd
-	 *            property definition
+	 * @param object   concept owner
+	 * @param concept  ZDL concept
+	 * @param property property
+	 * @param pd       property definition
 	 */
-	public CXPropertyDescriptor(EObject object, Class concept,
-			Property property, PropertyDefinition pd) {
+	public CXPropertyDescriptor(EObject object, Class concept, Property property, PropertyDefinition pd) {
 		this.concept = concept;
 		this.property = property;
 		this.context = object;
@@ -84,9 +82,9 @@ public class CXPropertyDescriptor {
 	}
 
 	/**
-	 * Add additional EObjects that will be synchronized when property value is
-	 * set. In other words, if you change the value of this property then the
-	 * value will be save to the same property of all EObjects in this list.
+	 * Add additional EObjects that will be synchronized when property value is set.
+	 * In other words, if you change the value of this property then the value will
+	 * be save to the same property of all EObjects in this list.
 	 * 
 	 * @param list
 	 */
@@ -172,8 +170,7 @@ public class CXPropertyDescriptor {
 	/**
 	 * Set the ordering index of the property
 	 * 
-	 * @param order
-	 *            The new order index
+	 * @param order The new order index
 	 */
 	public void setOrder(int order) {
 		this.index = order;
@@ -191,20 +188,16 @@ public class CXPropertyDescriptor {
 
 		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
 				TransactionUtil.getEditingDomain(context),
-				NLS.bind(
-						Messages.CXPropertyDescriptor_CreateConceptTransactionLabel,
-						propertyConcept.getName()), Collections.EMPTY_MAP, null) {
+				NLS.bind(Messages.CXPropertyDescriptor_CreateConceptTransactionLabel, propertyConcept.getName()),
+				Collections.EMPTY_MAP, null) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
+			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
 
-				EObject object = BaseUIUtil.createZDLModelElement(context,
-						propertyConcept.getQualifiedName());
+				EObject object = BaseUIUtil.createZDLModelElement(context, propertyConcept.getQualifiedName());
 				if (object == null) {
-					object = ZDLUtil.createZDLConcept(context, concept,
-							property.getName(), propertyConcept);
+					object = ZDLUtil.createZDLConcept(context, concept, property.getName(), propertyConcept);
 				}
 				list.add(object);
 
@@ -213,15 +206,11 @@ public class CXPropertyDescriptor {
 		};
 
 		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					null, null);
+			OperationHistoryFactory.getOperationHistory().execute(command, null, null);
 		} catch (ExecutionException e) {
 
-			Activator
-					.getDefault()
-					.error(NLS.bind(
-							Messages.CXPropertyDescriptor_ElementCreationFailedLog,
-							propertyConcept.getName()), e);
+			Activator.getDefault().error(
+					NLS.bind(Messages.CXPropertyDescriptor_ElementCreationFailedLog, propertyConcept.getName()), e);
 		}
 
 		if (!list.isEmpty()) {
@@ -238,39 +227,33 @@ public class CXPropertyDescriptor {
 	/**
 	 * Set value for the property or add value to the property if multi-valued
 	 * 
-	 * @param value
-	 *            value to set
+	 * @param value value to set
 	 */
 	public void setValue(final Object value, final ICommand additionalCommand) {
 
 		if (property.isMultivalued()) {
 			return;
 		}
-		ICommand command = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(context),
-				NLS.bind(
-						Messages.CXPropertyDescriptor_ChangePropertyValueTransactionLabel,
-						property.getName()), Collections.EMPTY_MAP, null) {
+
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(context);
+
+		ICommand command = new AbstractTransactionalCommand(editingDomain,
+				NLS.bind(Messages.CXPropertyDescriptor_ChangePropertyValueTransactionLabel, property.getName()),
+				Collections.EMPTY_MAP, null) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
+			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
 				try {
 
 					Object oldValue = getValue();
-					if (value == null && oldValue != null
-							&& oldValue instanceof EObject
-							&& property.isComposite()) {
-						DestroyElementRequest request = new DestroyElementRequest(
-								(EObject) oldValue, false);
-						DestroyElementCommand command = new DestroyElementCommand(
-								request);
+					if (value == null && oldValue != null && oldValue instanceof EObject && property.isComposite()) {
+						DestroyElementRequest request = new DestroyElementRequest((EObject) oldValue, false);
+						DestroyElementCommand command = new DestroyElementCommand(request);
 						command.execute(null, null);
 					}
 
-					ZDLUtil.setValue(context, concept, property.getName(),
-							value);
+					ZDLUtil.setValue(context, concept, property.getName(), value);
 
 					Iterator<EObject> iter = eObjectsToSynchronize.iterator();
 					while (iter.hasNext()) {
@@ -283,8 +266,7 @@ public class CXPropertyDescriptor {
 							}
 						}
 						if (rightConcept != null) {
-							ZDLUtil.setValue(next, rightConcept,
-									property.getName(), value);
+							ZDLUtil.setValue(next, rightConcept, property.getName(), value);
 						}
 					}
 
@@ -300,43 +282,33 @@ public class CXPropertyDescriptor {
 			}
 		};
 
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					null, null);
-		} catch (ExecutionException e) {
-
-			Activator
-					.getDefault()
-					.error(Messages.CXPropertyDescriptor_ChangingPropertyValueFailedLog,
-							e);
-		}
+		Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+		editingDomain.getCommandStack().execute(emfCommand);
 	}
 
 	public void addValue(final Object value) {
 		if (!property.isMultivalued()) {
 			return;
 		}
-		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(context),
-				NLS.bind(
-						Messages.CXPropertyDescriptor_ChangePropertyValueTransactionLabel,
-						property.getName()), Collections.EMPTY_MAP, null) {
+
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(context);
+
+		AbstractTransactionalCommand command = new AbstractTransactionalCommand(editingDomain,
+				NLS.bind(Messages.CXPropertyDescriptor_ChangePropertyValueTransactionLabel, property.getName()),
+				Collections.EMPTY_MAP, null) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
+			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
 				try {
 					List values = (List) getValue();
 					values.add(value);
 
 					if (!property.isComposite()) {
-						Iterator<EObject> iter = eObjectsToSynchronize
-								.iterator();
+						Iterator<EObject> iter = eObjectsToSynchronize.iterator();
 						while (iter.hasNext()) {
 							EObject eo = iter.next();
-							List eoValues = (List) ZDLUtil.getValue(eo,
-									concept, property.getName());
+							List eoValues = (List) ZDLUtil.getValue(eo, concept, property.getName());
 							eoValues.clear();
 							eoValues.addAll(values);
 						}
@@ -350,16 +322,8 @@ public class CXPropertyDescriptor {
 			}
 		};
 
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					null, null);
-		} catch (ExecutionException e) {
-
-			Activator
-					.getDefault()
-					.error(Messages.CXPropertyDescriptor_ChangingPropertyValueFailedLog,
-							e);
-		}
+		Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+		editingDomain.getCommandStack().execute(emfCommand);
 	}
 
 	/**
@@ -372,24 +336,20 @@ public class CXPropertyDescriptor {
 		if (!property.isMultivalued()) {
 			return;
 		}
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(context);
 
-		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(context),
-				NLS.bind(
-						Messages.CXPropertyDescriptor_RemovePropertyValueTransactionLabel,
-						property.getName()), Collections.EMPTY_MAP, null) {
+		AbstractTransactionalCommand command = new AbstractTransactionalCommand(editingDomain,
+				NLS.bind(Messages.CXPropertyDescriptor_RemovePropertyValueTransactionLabel, property.getName()),
+				Collections.EMPTY_MAP, null) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
+			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
 
 				if (property.isComposite()) {
 					if (value != null && value instanceof EObject) {
-						DestroyElementRequest request = new DestroyElementRequest(
-								(EObject) value, false);
-						DestroyElementCommand command = new DestroyElementCommand(
-								request);
+						DestroyElementRequest request = new DestroyElementRequest((EObject) value, false);
+						DestroyElementCommand command = new DestroyElementCommand(request);
 						command.execute(null, null);
 					}
 				}
@@ -401,8 +361,7 @@ public class CXPropertyDescriptor {
 					Iterator<EObject> iter = eObjectsToSynchronize.iterator();
 					while (iter.hasNext()) {
 						EObject eo = iter.next();
-						List eoValues = (List) ZDLUtil.getValue(eo, concept,
-								property.getName());
+						List eoValues = (List) ZDLUtil.getValue(eo, concept, property.getName());
 						eoValues.clear();
 						eoValues.addAll(values);
 					}
@@ -412,40 +371,29 @@ public class CXPropertyDescriptor {
 			}
 		};
 
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					null, null);
-		} catch (ExecutionException e) {
-
-			Activator.getDefault().error(
-					Messages.CXPropertyDescriptor_RemovePropertyValueFailedLog,
-					e);
-		}
+		Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+		editingDomain.getCommandStack().execute(emfCommand);
 	}
 
 	/**
 	 * Replace value with new value from the value list.
 	 * 
-	 * @param oldValue
-	 *            value to remove
-	 * @param newValue
-	 *            value to replace
+	 * @param oldValue value to remove
+	 * @param newValue value to replace
 	 */
 	public void replaceValue(final Object oldValue, final Object newValue) {
 
 		if (!property.isMultivalued() && property.isComposite()) {
 			return;
 		}
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(context);
 
-		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(context),
-				NLS.bind(
-						Messages.CXPropertyDescriptor_ChangePropertyValueTransactionLabel,
-						property.getName()), Collections.EMPTY_MAP, null) {
+		AbstractTransactionalCommand command = new AbstractTransactionalCommand(editingDomain,
+				NLS.bind(Messages.CXPropertyDescriptor_ChangePropertyValueTransactionLabel, property.getName()),
+				Collections.EMPTY_MAP, null) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
+			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
 				try {
 
@@ -461,8 +409,7 @@ public class CXPropertyDescriptor {
 					Iterator<EObject> iter = eObjectsToSynchronize.iterator();
 					while (iter.hasNext()) {
 						EObject eo = iter.next();
-						List eoValues = (List) ZDLUtil.getValue(eo, concept,
-								property.getName());
+						List eoValues = (List) ZDLUtil.getValue(eo, concept, property.getName());
 						eoValues.clear();
 						eoValues.addAll(values);
 					}
@@ -475,16 +422,8 @@ public class CXPropertyDescriptor {
 			}
 		};
 
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					null, null);
-		} catch (ExecutionException e) {
-
-			Activator
-					.getDefault()
-					.error(Messages.CXPropertyDescriptor_ChangingPropertyValueFailedLog,
-							e);
-		}
+		Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+		editingDomain.getCommandStack().execute(emfCommand);
 	}
 
 	/**
@@ -492,8 +431,7 @@ public class CXPropertyDescriptor {
 	 * @return
 	 */
 	public boolean isReadOnly() {
-		return propertyDefinition == null ? false : propertyDefinition
-				.isReadOnly();
+		return propertyDefinition == null ? false : propertyDefinition.isReadOnly();
 	}
 
 	/**
@@ -501,8 +439,7 @@ public class CXPropertyDescriptor {
 	 * @return
 	 */
 	public String getContentHint() {
-		return propertyDefinition == null ? null : propertyDefinition
-				.getContentHint();
+		return propertyDefinition == null ? null : propertyDefinition.getContentHint();
 	}
 
 	/**
@@ -510,8 +447,7 @@ public class CXPropertyDescriptor {
 	 * @return
 	 */
 	public boolean isWorkerCode() {
-		return CXPropertyDefinitionManager.WORKER_CODE_CONTENT_HINT
-				.equals(getContentHint());
+		return CXPropertyDefinitionManager.WORKER_CODE_CONTENT_HINT.equals(getContentHint());
 	}
 
 	/**
@@ -538,14 +474,13 @@ public class CXPropertyDescriptor {
 	}
 
 	/**
-	 * Compare two CXPropertyDescriptors, by looking at their index and if this
-	 * is equal comparing the name of the property.
+	 * Compare two CXPropertyDescriptors, by looking at their index and if this is
+	 * equal comparing the name of the property.
 	 * 
 	 * @author Toby McClean
 	 * 
 	 */
-	public static class CXPropertyDescriptorComparator implements
-			Comparator<CXPropertyDescriptor> {
+	public static class CXPropertyDescriptorComparator implements Comparator<CXPropertyDescriptor> {
 
 		@Override
 		public int compare(CXPropertyDescriptor o1, CXPropertyDescriptor o2) {
