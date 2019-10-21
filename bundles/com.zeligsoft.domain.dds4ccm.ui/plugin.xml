@@ -12,7 +12,73 @@
                enableNameSelection="true"
                showUsesList="true">
          </PortType>
-    </extension> 
+    </extension>
+    
+    <!-- CBDDS properties tab and sections -->
+    <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="TreeOutlinePage">
+         <propertyTab
+               afterTab="uml"
+               category="org.eclipse.papyrus"
+               id="cbdds"
+               label="CBDDS"/>
+      </propertyTabs>
+    </extension>    
+    <extension
+          point="org.eclipse.ui.views.properties.tabbed.propertySections">
+       <propertySections
+             contributorId="TreeOutlinePage">
+          <propertySection
+                class="com.zeligsoft.cx.ui.properties.sections.DomainPropertySection"
+                filter="com.zeligsoft.domain.dds4ccm.ui.internal.filters.CBDDSPropertiesFilter"
+                id="cbdds.Sections"
+                tab="cbdds">
+          </propertySection>
+       </propertySections>
+    </extension>
+    
+    <!-- Custom properties sections -->
+    <extension
+          point="com.zeligsoft.cx.ui.properties.customPropertySection">
+       <PropertySection
+             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
+             concept="ZMLMM::ZML_Core::NamedElement"
+             domain="cxDDS4CCM"
+             property="name">
+       </PropertySection>
+       <PropertySection
+             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
+             concept="ZMLMM::ZML_Deployments::ComponentDeploymentPart"
+             domain="cxDDS4CCM"
+             property="selectedImplementation">
+       </PropertySection>
+       <PropertySection
+             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
+             concept="CORBADomain::IDL::CORBAField"
+             domain="cxDDS4CCM"
+             property="bound">
+       </PropertySection>
+       <PropertySection
+             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
+             concept="DDS4CCM::DDS4CCM::DDS4CCMModel"
+             property="fixedHeader">
+       </PropertySection>
+       <PropertySection
+             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
+             concept="DDS4CCM::DDS4CCM::DDS4CCMModel"
+             property="fixedFooter">
+       </PropertySection>
+       
+       <PropertySection
+             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
+             concept="CCM::CCM_Component::InterfacePort"
+             domain="cxDDS4CCM"
+             property="connectorType">
+       </PropertySection>
+    </extension>
+
+    
+    
     <!--
 	<extension
          point="org.eclipse.ui.newWizards">
@@ -740,45 +806,7 @@
     </extension>
     
     -->
-    <extension
-          point="com.zeligsoft.cx.ui.properties.customPropertySection">
-       <PropertySection
-             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
-             concept="ZMLMM::ZML_Core::NamedElement"
-             domain="cxDDS4CCM"
-             property="name">
-       </PropertySection>
-       <PropertySection
-             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
-             concept="ZMLMM::ZML_Deployments::ComponentDeploymentPart"
-             domain="cxDDS4CCM"
-             property="selectedImplementation">
-       </PropertySection>
-       <PropertySection
-             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
-             concept="CORBADomain::IDL::CORBAField"
-             domain="cxDDS4CCM"
-             property="bound">
-       </PropertySection>
-       <PropertySection
-             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
-             concept="DDS4CCM::DDS4CCM::DDS4CCMModel"
-             property="fixedHeader">
-       </PropertySection>
-       <PropertySection
-             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
-             concept="DDS4CCM::DDS4CCM::DDS4CCMModel"
-             property="fixedFooter">
-       </PropertySection>
-       
-       <PropertySection
-             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCustomPropertySectionProvider"
-             concept="CCM::CCM_Component::InterfacePort"
-             domain="cxDDS4CCM"
-             property="connectorType">
-       </PropertySection>
-    </extension>
-           <!--
+    <!--
        <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
