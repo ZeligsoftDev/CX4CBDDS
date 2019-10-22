@@ -189,42 +189,6 @@
       </decoratorProvider>
     </extension>
     <extension
-         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
-      <propertyTabs
-            contributorId="com.ibm.xtools.modeler.ui.properties">
-         <propertyTab
-               category="Core"
-               id="com.zeligsoft.propertyTab.IDL3PlusPropertyTab"
-               label="IDL3Plus">
-         </propertyTab>
-      </propertyTabs>
-    </extension>
-    <extension
-          point="org.eclipse.ui.views.properties.tabbed.propertySections">
-       <propertySections
-             contributorId="com.ibm.xtools.modeler.ui.properties">
-          <propertySection
-                class="com.zeligsoft.cx.ui.properties.sections.DomainPropertySection"
-                filter="com.zeligsoft.domain.idl3plus.ui.filters.IDL3PlusDomainFilter"
-                id="com.zeligsoft.propertyTab.IDL3PlusPropertySection"
-                tab="com.zeligsoft.propertyTab.IDL3PlusPropertyTab">
-          </propertySection>
-       </propertySections>
-    </extension>
-    <extension
-          point="org.eclipse.ui.views.properties.tabbed.propertySections">
-       <propertySections
-             contributorId="com.ibm.xtools.modeler.ui.properties">
-          <propertySection
-                afterSection="modeler.property.section.AggregationPropertySection"
-                class="com.zeligsoft.cx.ui.properties.sections.CXPropertyTabControllerSection"
-                filter="com.zeligsoft.domain.idl3plus.ui.internal.filters.GeneralSectionControllerFilter"
-                id="com.zeligsoft.domain.idl3plus.ui.generalSectionController"
-                tab="modeler.property.tab.GeneralPropertySection">
-          </propertySection>
-       </propertySections>
-    </extension>
-    <extension
          point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
           <decoratorProvider
                 class="com.zeligsoft.domain.idl3plus.ui.internal.providers.decorator.ConnectorDecoratorProvider">

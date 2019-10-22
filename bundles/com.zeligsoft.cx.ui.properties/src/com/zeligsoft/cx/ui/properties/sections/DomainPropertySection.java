@@ -39,7 +39,6 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.properties.CXCustomPropertySectionRegistryReader;
@@ -190,11 +189,11 @@ public class DomainPropertySection extends AbstractCXPropertySection {
 					if (property.getType() instanceof PrimitiveType) {
 						String type = property.getType().getName();
 
-						if (type.equals(UMLPackage.Literals.LITERAL_STRING.getName().replace("Literal", ""))
-								|| type.equals(UMLPackage.Literals.LITERAL_INTEGER.getName())) {
+						if (type.equals(String.class.getSimpleName())
+								|| type.equals(Integer.class.getSimpleName())) {
 							widgets = CXPropertiesWidgetFactory.createSectionForStringType(
 									composite, descriptor);
-						} else if (type.equals(UMLPackage.Literals.LITERAL_BOOLEAN.getName().replace("Literal", ""))) {
+						} else if (type.equals(Boolean.class.getSimpleName())) {
 							CXPropertiesWidgetFactory.createSectionForBooleanType(composite,
 									descriptor);
 						}

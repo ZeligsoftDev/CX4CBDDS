@@ -22,9 +22,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -57,7 +57,6 @@ import com.zeligsoft.base.util.NamingUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.providers.IPropertyEntry;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.ccm.ui.Activator;
 import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 import com.zeligsoft.domain.omg.corba.CORBADomainNames;
@@ -109,6 +108,23 @@ public class CCMPropertyEntry implements IPropertyEntry {
 		return children;
 	}
 
+	@Override
+	public int hashCode() {
+		return modelObject.hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) {
+			return true;
+		}
+		if (obj instanceof IPropertyEntry) {
+			IPropertyEntry entry = (IPropertyEntry) obj;
+			return parent == entry.getParent() && modelObject == entry.getModelObject();
+		}
+		return false;
+	}
+	
 	/**
 	 * Queries the default value
 	 */
@@ -455,7 +471,6 @@ public class CCMPropertyEntry implements IPropertyEntry {
 			return;
 		}
 		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(modelObject);
-
 		ICommand command = new AbstractTransactionalCommand(
 				editingDomain,
 				Messages.CCMPropertiesDialog_ActionLabel, null) {
@@ -870,10 +885,9 @@ public class CCMPropertyEntry implements IPropertyEntry {
 			return;
 		}
 		final List<EObject> list = getDefiningFeaturesForAncestorSlots(this);
-
-		ICommand command = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(modelObject),
-				Messages.CCMPropertiesDialog_ActionLabel, null) {
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(modelObject);
+		ICommand command = new AbstractTransactionalCommand(editingDomain, Messages.CCMPropertiesDialog_ActionLabel,
+				null) {
 
 			@Override
 			protected CommandResult doExecuteWithResult(
@@ -917,14 +931,9 @@ public class CCMPropertyEntry implements IPropertyEntry {
 				return CommandResult.newOKCommandResult();
 			}
 		};
-
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					null, null);
-		} catch (ExecutionException e) {
-			Activator.getDefault().error(
-					Messages.CCMPropertyEntry_SaveErrorMessage, e);
-		}
+		
+		Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+		editingDomain.getCommandStack().execute(emfCommand);
 	}
 
 	private void addMemberInstance(Property member, Slot slot) {
@@ -964,11 +973,9 @@ public class CCMPropertyEntry implements IPropertyEntry {
 		if (!isMultiValue()) {
 			return;
 		}
-
-		ICommand command = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(TransactionUtil
-						.getEditingDomain(modelObject)),
-				Messages.CCMPropertiesDialog_ActionLabel, null) {
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(modelObject);
+		ICommand command = new AbstractTransactionalCommand(editingDomain, Messages.CCMPropertiesDialog_ActionLabel,
+				null) {
 
 			@Override
 			protected CommandResult doExecuteWithResult(
@@ -1003,14 +1010,9 @@ public class CCMPropertyEntry implements IPropertyEntry {
 				return CommandResult.newOKCommandResult();
 			}
 		};
-
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					null, null);
-		} catch (ExecutionException e) {
-			Activator.getDefault().error(
-					Messages.CCMPropertyEntry_SaveErrorMessage, e);
-		}
+		
+		Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+		editingDomain.getCommandStack().execute(emfCommand);
 	}
 
 	/**
@@ -1173,9 +1175,8 @@ public class CCMPropertyEntry implements IPropertyEntry {
 									.getDefiningFeaturesForAncestorSlots(this));
 					if (slot != null && !slot.getValues().isEmpty()) {
 
-						ICommand command = new AbstractTransactionalCommand(
-								TransactionUtil.getEditingDomain(TransactionUtil
-										.getEditingDomain(modelObject)),
+						TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(modelObject);
+						ICommand command = new AbstractTransactionalCommand(editingDomain,
 								Messages.CCMPropertiesDialog_ActionLabel, null) {
 
 							@Override
@@ -1263,13 +1264,8 @@ public class CCMPropertyEntry implements IPropertyEntry {
 							}
 						};
 
-						try {
-							command.execute(null, null);
-						} catch (ExecutionException e) {
-							Activator.getDefault().error(
-									Messages.CCMPropertyEntry_SaveErrorMessage,
-									e);
-						}
+						Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+						editingDomain.getCommandStack().execute(emfCommand);
 					}
 				}
 			}

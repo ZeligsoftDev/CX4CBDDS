@@ -52,8 +52,7 @@ public class DeploymentViewerFilter
 		// the zdl DeploymentNames.DEPLOYMENT_PART concept applied.
 		EObject eObject = null;
 		if (element instanceof IAdaptable) {
-			eObject = (EObject) ((IAdaptable) element)
-				.getAdapter(EObject.class);
+			eObject = ((IAdaptable) element).getAdapter(EObject.class);
 		} else if (element instanceof EObject) {
 			eObject = (EObject) element;
 		}
