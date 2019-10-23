@@ -16,6 +16,7 @@
  */
 package com.zeligsoft.cx.ui.properties.utils;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -492,15 +493,15 @@ public class CXPropertiesWidgetFactory extends CXWidgetFactory{
 			if (object == null) {
 				viewToolBar.getItem(0).setEnabled(false);
 			}
-//			viewToolBar.getItem(0).addSelectionListener(new SelectionAdapter() {
-//
-//				@Override
-//				public void widgetSelected(SelectionEvent e) {
-//					if (object != null) {
-//						BaseUIUtil.showInProjectExplorer(object);
-//					}
-//				}
-//			});
+			viewToolBar.getItem(0).addSelectionListener(new SelectionAdapter() {
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if (object != null) {
+						BaseUIUtil.revealTarget(Arrays.asList(object));
+					}
+				}
+			});
 		}
 		
 		return widgetMap;

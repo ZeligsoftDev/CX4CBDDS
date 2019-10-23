@@ -18,6 +18,7 @@ package com.zeligsoft.base.ui.utils;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -59,10 +60,13 @@ import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.papyrus.infra.services.edit.context.TypeContext;
 import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
 import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
+import org.eclipse.papyrus.infra.widgets.util.IRevealSemanticElement;
 import org.eclipse.papyrus.infra.widgets.util.RevealResultCommand;
 import org.eclipse.papyrus.views.modelexplorer.ModelExplorerPageBookView;
+import org.eclipse.papyrus.views.modelexplorer.ModelExplorerView;
 import org.eclipse.papyrus.views.modelexplorer.core.ui.pagebookview.MultiViewPageBookView;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
@@ -117,15 +121,37 @@ public class BaseUIUtil {
 	}
 
 	public static Command getRevealCommand(Command command, EObject container) {
-		IViewPart viewPart = getActiveViewPart();
+		IViewPart viewPart = getModelExplorerViewPart();
 		if (viewPart != null) {
 			return RevealResultCommand.wrap(command, viewPart, container);
 		}
 		return null;
 	}
+	
+	public static void revealTarget(EObject target) {
+		revealTarget(Arrays.asList(target));
+	}
+	
+	/**
+	 * Reveal target elements in the model explorer
+	 * @param target
+	 */
+	public static void revealTarget(final List<?> target) {
+		Display.getCurrent().asyncExec(new Runnable() {
+
+			@Override
+			public void run() {
+				IViewPart viewPart = getModelExplorerViewPart();
+				if (viewPart instanceof ModelExplorerView) {
+					((IRevealSemanticElement) viewPart).revealSemanticElement(target);
+					((ModelExplorerView) viewPart).setFocus();
+				}
+			}
+		});
+	}
 
 	public static Command getDirectEditCommand(Command command) {
-		IViewPart viewPart = getActiveViewPart();
+		IViewPart viewPart = getModelExplorerViewPart();
 		if (viewPart != null) {
 			return EditResultCommand.wrap(command, viewPart);
 		}
@@ -157,7 +183,7 @@ public class BaseUIUtil {
 	 *
 	 * @return the active view part
 	 */
-	public static IViewPart getActiveViewPart() {
+	public static IViewPart getModelExplorerViewPart() {
 		IViewPart activeView = null;
 		// Get Model Explorer view part
 		IViewPart modelExplorerView = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
@@ -195,7 +221,7 @@ public class BaseUIUtil {
 
 			if (tempObject instanceof IAdaptable) {
 				IAdaptable tempAdaptableObject = (IAdaptable) tempObject;
-				return (EObject) (tempAdaptableObject.getAdapter(EObject.class));
+				return (tempAdaptableObject.getAdapter(EObject.class));
 			} else if (tempObject instanceof EObject) {
 				return (EObject) tempObject;
 			}
@@ -222,7 +248,7 @@ public class BaseUIUtil {
 				Object tempObject = selections.get(i);
 				if (tempObject instanceof IAdaptable) {
 					IAdaptable tempAdaptableObject = (IAdaptable) tempObject;
-					EObject eo = (EObject) (tempAdaptableObject.getAdapter(EObject.class));
+					EObject eo = (tempAdaptableObject.getAdapter(EObject.class));
 					if (eo != null) {
 						eObjects.add(eo);
 					}
@@ -250,7 +276,7 @@ public class BaseUIUtil {
 		if (tempObject != null) {
 			if (tempObject instanceof IAdaptable) {
 				// check for EObject
-				EObject eObject = (EObject) (((IAdaptable) tempObject).getAdapter(EObject.class));
+				EObject eObject = (((IAdaptable) tempObject).getAdapter(EObject.class));
 
 				if (eObject != null && eObject.eResource().getURI().toPlatformString(true) != null) {
 					resource = ResourcesPlugin.getWorkspace().getRoot()
