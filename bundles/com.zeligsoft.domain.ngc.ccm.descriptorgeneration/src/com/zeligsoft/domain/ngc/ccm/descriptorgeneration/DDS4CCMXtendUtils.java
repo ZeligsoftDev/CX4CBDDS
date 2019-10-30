@@ -37,6 +37,8 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.Activator;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMPreferenceConstants;
+import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
+import com.zeligsoft.domain.dds4ccm.utils.ModelTypeDDS4CCM;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 import com.zeligsoft.domain.omg.corba.CORBADomainNames;
@@ -135,7 +137,9 @@ public class DDS4CCMXtendUtils {
 		if (ZDeploymentUtil.getDeploymentTargetPart(deploymentPart) == null) {
 			return false;
 		}
-
+		if(!DDS4CCMUtil.getModelType(definition).equals(ModelTypeDDS4CCM.ATCD.name())){
+			return false;
+		}	
 		for (Port sourcePort : definition.getOwnedPorts()) {
 			// AMI connection is covered during the AMI connection generation
 			// so we can safely ignore.
