@@ -286,10 +286,10 @@ Void visitConfigProperty(CCM::CCM_Target::Property property, InstanceDeploymentD
 		
 		// Register naming tag must be generated even if no values set
 		//
-		// IF there�s no explicit RegisterNaming property set on either the CCMComponent type (default setting) 
+		// IF there占퐏 no explicit RegisterNaming property set on either the CCMComponent type (default setting) 
 		// OR on the instance of that type (override setting) in the deployment plan, 
-		// BUT there�s a CCMConnector connection definition in the deployment assembly that 
-		// connects a deployed component instance (any facet/receptacle port � just takes one) 
+		// BUT there占퐏 a CCMConnector connection definition in the deployment assembly that 
+		// connects a deployed component instance (any facet/receptacle port 占� just takes one) 
 		// with a non-deployed component instance, then generate the register naming tag for the deployed instance.
 		if(property.name == getModelTypeSpecificProperty("REGISTER_NAMING") && !idd.configProperty.name.exists(n | n == property.name)) then {
 			idd.createRegisterNamingProperty(part.name)
@@ -751,15 +751,15 @@ Void visitPartForExternalConnectons(DeploymentPart partDP, CCM::CCM_Deployment::
 	portsForGeneration.select(port| visitPortForExternalConnectons(partDP, port, zDeployment, plan));
 
 Void visitPortForExternalConnectons(DeploymentPart partDP, InterfacePort port, CCM::CCM_Deployment::DeploymentPlan deployment, DeploymentPlan plan) : 
-	let terminalConnectedEnds = getTerminalConnectedCE(port, partDP, deployment):
-	terminalConnectedEnds.select(tce| visitPortForExternalConnectons(partDP, port, tce.partWithPort, tce.port, deployment, plan));
+	let terminalConnectedPortDP = getTerminalConnectedPortDP(port, partDP, deployment):
+	terminalConnectedPortDP.select(tce| visitPortForExternalConnectons(partDP, port, tce.getParentPart(), tce.modelElement, deployment, plan));
 
 cached Allocation getDeploymentTarget(CCM::CCM_Deployment::DeploymentPlan deployment, CCMPart part):
 	deployment.allocation.select( e | e.deployed.modelElement.contains( part ));
 
 // Assumption: 'port' for which the method is called for from another method is a terminal port as well 
-cached List[ConnectorEnd] getTerminalConnectedCE(InterfacePort port, DeploymentPart partDP, CCM::CCM_Deployment::DeploymentPlan zDeployment):
-	let terminalConnectedCE = {}:
+cached List[DeploymentPart] getTerminalConnectedPortDP(InterfacePort port, DeploymentPart partDP, CCM::CCM_Deployment::DeploymentPlan zDeployment):
+	let terminalConnectedPortDP = {}:
 	let part = partDP.modelElement:
 	
 	if (part.isPortConnectedInOwnerAssemblyOfPart(port)) then{
@@ -773,13 +773,13 @@ cached List[ConnectorEnd] getTerminalConnectedCE(InterfacePort port, DeploymentP
 		let connectedCEDelegation = portConnectorsDelegation.end.reject(e| e.port == port) :
 		
 		if (connectedCEAssembly.size > 0) then{	
-			connectedCEAssembly.select(ca_ce | terminalConnectedCE.addAll(getTerminalConnectedCEHelper(partDP, ca_ce).reject( ce | ce.getPossibleConnectedPorts(port).select( p2 | p2 == ce.port).size == 0)))	//			getTerminalConnectedCEHelper(connectedCEAssembly).reject( ce | possibleConnectedPorts.select( p2 | p2 == ce.port).size == 0))
+			connectedCEAssembly.select(ca_ce | terminalConnectedPortDP.addAll(getTerminalConnectedPortHelperDP(partDP.getParentPart(), ca_ce)))
 		} ->
 		if (connectedCEDelegation.size > 0) then{
-			connectedCEDelegation.select(ce| terminalConnectedCE.addAll(ce.port.getTerminalConnectedCE(partDP.getParentPart(), zDeployment))) 
+			connectedCEDelegation.select(ce| terminalConnectedPortDP.addAll(ce.port.getTerminalConnectedPortDP(partDP.getParentPart(), zDeployment))) 
 		}
 	} ->
-	terminalConnectedCE;
+	terminalConnectedPortDP;
 
 cached Boolean isPortConnectedInOwnerAssemblyOfPart(CCMPart part, InterfacePort port):
 	part.zdlAsProperty().owner.connector.end.port.contains(port);
@@ -787,29 +787,47 @@ cached Boolean isPortConnectedInOwnerAssemblyOfPart(CCMPart part, InterfacePort 
 cached getPossibleConnectedPorts(ConnectorEnd connectedCE, InterfacePort port):
 	connectedCE.partWithPort.zdlAsProperty().owner.part.definition.typeSelect(CCMComponent).ownedPort.select( zport | zport.isConjugated != port.isConjugated).select(zport | zport.porttype == port.porttype);
 			
-cached List[ConnectorEnd] getTerminalConnectedCEHelper(DeploymentPart containerPartDP, ConnectorEnd connectedCEAssembly):
-	let terminalConnectedCE = {}:
+cached List[DeploymentPart] getTerminalConnectedPortHelperDP(DeploymentPart containerPartDP, ConnectorEnd connectedCEAssembly):
+	let terminalConnectedPortDP = {}:
 	let assembly_impl = getAssembly(connectedCEAssembly.partWithPort.definition) :
+	let partDP = containerPartDP.nestedPart.select( np | np.modelElement == connectedCEAssembly.partWithPort).first():
 	
 	{if(assembly_impl.size == 0) then{
 		// Filter out the external ports by taking the intersection of the possible connected ports and the connected assembly ports.
-		terminalConnectedCE.add(connectedCEAssembly)
+		let portDP = partDP.nestedPart.select( np | np.modelElement == connectedCEAssembly.port).first():
+		
+		terminalConnectedPortDP.add(portDP)
 	}else{	// delegation exists in the connected part
-		let partDP = containerPartDP.nestedPart.select( np | np.modelElement == connectedCEAssembly.partWithPort).first():
-		let connectedCEInDelegation = assembly_impl.connector.end.reject( e | e.port == connectedCEAssembly.port):
-		connectedCEInDelegation.select(ce_de| terminalConnectedCE.addAll(getTerminalConnectedCEHelper(partDP, ce_de)))
+		
+		let connectedCEInDelegation = assembly_impl.connector.select(c| c.end.port.contains(connectedCEAssembly.port)).end.reject( e | e.port == connectedCEAssembly.port):		
+		connectedCEInDelegation.select(ce_de| terminalConnectedPortDP.addAll(getTerminalConnectedPortHelperDP(partDP, ce_de)))
 	}} ->
-	terminalConnectedCE;
+	terminalConnectedPortDP;
 
-Void visitPortForExternalConnectons(DeploymentPart partDP, InterfacePort port, CCMPart connectedPart, InterfacePort connectedPort, CCM::CCM_Deployment::DeploymentPlan deployment, DeploymentPlan plan) :	
+Void visitPortForExternalConnectons(DeploymentPart partDP, InterfacePort port, DeploymentPart connectedPartDP, InterfacePort connectedPort, CCM::CCM_Deployment::DeploymentPlan deployment, DeploymentPlan plan) :	
 	
-	let connectedPartDP = deployment.part.select( p | p.modelElement == connectedPart):
-	// Maintain same signature for avoiding duplicated connetions
-	if(port.isConjugated) then{
-		connectedPartDP.select(cpdp| createClientServerConnection(partDP, port, cpdp, connectedPort, plan))
+	let receptPartDP = {}:
+	let receptacle = {}:
+	let facetPartDP = {}:
+	let facet = {}:
+	
+	{if(port.isConjugated) then{
+		receptPartDP.add(partDP) ->
+		receptacle.add(port) ->
+		facetPartDP.add(connectedPartDP) ->
+		facet.add(connectedPort)
 	}else{
-		connectedPartDP.select(cpdp| createClientServerConnection(cpdp, connectedPort, partDP, port, plan))
+		receptPartDP.add(connectedPartDP) ->
+		receptacle.add(connectedPort) ->
+		facetPartDP.add(partDP) ->
+		facet.add(port)
+	}} ->	
+	
+	// generate external connection only if 'receptPartDP' is deployed
+	if(receptPartDP.first().isDeployed()) then{
+		createClientServerConnection(receptPartDP.first(), receptacle.first(), facetPartDP.first(), facet.first(), plan)
 	};
+	
 	
 // return connetorInstance corresponding to the 'port' owned by the 'part' 	
 cached InstanceDeploymentDescription getConnectorInstance(DeploymentPart partDP, InterfacePort port, CCM::CCM_Deployment::DeploymentPlan deployment, DeploymentPlan plan):
@@ -832,12 +850,7 @@ create PlanConnectionDescription createClientServerConnection(DeploymentPart rec
 		this.name.add(receptPartDP.getScopedName() + "." + receptacle.name + '_' + rConnectorType + "__" + facetPartDP.getScopedName() + "." + facet.name + "_" + fConnectorType  
 				+ (receptacle.isUsedSynchronously()? "_syncdirect" : "_asyncdirect")) ->
 		this.createEndPoint(false, false, getConnectorUsesPortName(receptacle), receptacleConnectorInstance) ->
-		this.createExternalEndPoint(receptPartDP.name + "_" + receptacle.name + "__" + facetPartDP.name + "_" + facet.name, facet, facetPartDP)	
-	}else if(facetPartDP.isDeployed()) then{
-		this.name.add(receptPartDP.getScopedName() + "." + receptacle.name + '_' + rConnectorType + "__" + facetPartDP.getScopedName() + "." + facet.name + "_" + fConnectorType  
-				+ (facet.isUsedSynchronously()? "_syncdirect" : "_asyncdirect")) ->
-		this.createEndPoint(true, false, getConnectorProvidesPortName(facet).first(), facetConnectorInstance) ->
-		this.createExternalEndPoint(receptPartDP.name + "_" + receptacle.name + "__" + facetPartDP.name + "_" + facet.name, receptacle, receptPartDP)
+		this.createExternalEndPoint(getRegisterNamingPropertyVal(facetPartDP, facet), facet, facetPartDP)
 	}}->
 	plan.connection.add(this) ->
 	this;
@@ -896,19 +909,18 @@ create InstanceDeploymentDescription createInternalConnectorFragments(Deployment
 	}} ->
 	
 	if(existsUndeployedConnectedPart(partDP, port, deployment)) then{
-		this.createRegisterNamingProperty(partDP.name + "_" + port.name)
+		this.createRegisterNamingProperty(getRegisterNamingPropertyVal(partDP, port))
 	} ->
 	
 	addInstanceToLocalityConstraint(this, plan, partDP);
 	
+cached String getRegisterNamingPropertyVal(DeploymentPart partDP, InterfacePort port):
+	partDP.name + "_" + port.name;
 	
 cached Boolean existsUndeployedConnectedPart(DeploymentPart partDP, InterfacePort port, CCM::CCM_Deployment::DeploymentPlan deployment):
-	let terminalConnectedEnds = getTerminalConnectedCE(port, partDP, deployment):
-	let connectedParts = terminalConnectedEnds.partWithPort:
-	let connectedPartsDP = deployment.part.select( p | connectedParts.contains(p.modelElement)):
-	connectedPartsDP.exists(cpDP| !cpDP.isDeployed());
+	let terminalConnectedPortDP = getTerminalConnectedPortDP(port, partDP, deployment):	
+	terminalConnectedPortDP.exists(cpDP| !cpDP.getParentPart().isDeployed());
 	
-
 cached String getConnectorFragmentScopedName(DeploymentPart partDP, InterfacePort port):
 	partDP.getScopedName() + "." + port.name;
 	
@@ -1350,7 +1362,7 @@ create InstanceDeploymentDescription createContainerProcessInstance(DeploymentPa
    	    // if this property does not exist then create a default one
     	this.createProcessNameProperty(process)
 	};
-	
+
 create Property createProcessNameProperty(InstanceDeploymentDescription instance, DeploymentPart process ) :
 	this.name.add(getModelTypeSpecificProperty("LM_PROCESSNAME")) ->
 	this.value.add(this.createProcessNamePropertyValue(process)) ->
