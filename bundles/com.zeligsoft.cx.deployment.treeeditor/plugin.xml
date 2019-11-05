@@ -12,6 +12,46 @@
             name="%editor.name.0">
       </editor>
    </extension>
+   
+      <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=additions">
+         <command
+               commandId="com.zeligsoft.command.deployment.editor"
+               label="Open Deployment Editor"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.zdl.tester.isZDLConcept"
+                        value="ZMLMM::ZML_Deployments::Deployment">
+                  </test>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.zeligsoft.cx.deployment.treeeditor.actions.OpenDeploymentEditorHandler"
+            id="com.zeligsoft.command.deployment.editor"
+            name="Open Deployment Editor">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.papyrus.infra.ui.papyrusDiagram">
+      <editorDiagram
+            contextId="com.cea.papyrus.gmf.editor.context"
+            factoryClass="com.zeligsoft.cx.deployment.treeeditor.providers.DeploymentEditorFactory">
+      </editorDiagram>
+   </extension>
+   <!--
    <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
@@ -33,6 +73,7 @@
          </action>
       </objectContribution>
    </extension>
+   -->
    <extension
          point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders">
       <GlobalActionHandlerProvider
@@ -43,9 +84,9 @@
          </Priority>
          <Policy class="com.zeligsoft.cx.deployment.treeeditor.policies.DeploymentTreeGlobalActionHandlerPolicy"/>
          <ViewId
-               id="org.eclipse.ui.navigator.ProjectExplorer">
+               id="org.eclipse.papyrus.views.modelexplorer.modelexplorer">
             <ElementType
-                  class="com.ibm.xtools.uml.navigator.IModelServerElement">
+                  class="java.lang.Object">
                <GlobalActionId
                      actionId="open">
                </GlobalActionId>

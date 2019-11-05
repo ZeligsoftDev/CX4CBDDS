@@ -82,6 +82,10 @@ public class DeploymentTreeEditor extends FormEditor implements
 
 	protected Viewer currentViewer;
 
+	
+	public DeploymentTreeEditor(Component deployment) {
+		this.deployment = deployment;
+	}
 	@Override
 	public String getContributorId() {
 		return "properties.DeploymentTreeEditor";//$NON-NLS-1$
@@ -106,7 +110,11 @@ public class DeploymentTreeEditor extends FormEditor implements
 			throws PartInitException {
 
 		setSite(site);
-		setInput(input);	
+		DeploymentEditorInput realInput = new DeploymentEditorInput();
+		realInput.setName(deployment.getName());
+		realInput.setToolTipText(deployment.getName());
+		realInput.setDeployment(deployment);
+		setInput(realInput);	
 		site.setSelectionProvider(this);
 		
 
@@ -286,6 +294,9 @@ public class DeploymentTreeEditor extends FormEditor implements
 	 */
 	@Override
 	public ISelection getSelection() {
+		if(editorSelection == null) {
+			return StructuredSelection.EMPTY;
+		}
 		return editorSelection;
 	}
 

@@ -197,10 +197,6 @@ public class BaseUIUtil {
 		return activeView;
 	}
 
-	
-	
-	
-	
 	/**
 	 * Get the first selected EObject from the given selection object
 	 * 
