@@ -32,7 +32,9 @@ public class CBDDSPropertiesFilter implements IFilter {
 	@Override
 	public boolean select(Object toTest) {
 		EObject eo = null;
-		if (toTest instanceof IAdaptable) {
+		if (toTest instanceof EObject) {
+			eo = (EObject) toTest;
+		} else if (toTest instanceof IAdaptable) {
 			eo = ((IAdaptable) toTest).getAdapter(EObject.class);
 		} else if (toTest instanceof IStructuredSelection) {
 			IStructuredSelection selection = (IStructuredSelection) toTest;

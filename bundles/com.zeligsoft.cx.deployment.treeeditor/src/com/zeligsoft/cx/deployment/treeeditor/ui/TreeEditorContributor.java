@@ -17,10 +17,7 @@
 
 package com.zeligsoft.cx.deployment.treeeditor.ui;
 
-import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.actions.ActionFactory;
-import org.eclipse.ui.part.EditorActionBarContributor;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramActionBarContributor;
 
 /**
  * This is the contributor for the tree editor.  This is where the UNDO, REDO and DELETE actions are
@@ -29,36 +26,47 @@ import org.eclipse.ui.part.EditorActionBarContributor;
  * @author sduchesneau
  *
  */
-public class TreeEditorContributor extends EditorActionBarContributor
+public class TreeEditorContributor extends DiagramActionBarContributor
 {
-	public TreeEditorContributor()
-	{
-		super();
+//	public TreeEditorContributor()
+//	{
+//		super();
+//	}
+//	
+//	/*
+//	 * (non-Javadoc)
+//	 * @see org.eclipse.ui.part.EditorActionBarContributor#setActiveEditor(org.eclipse.ui.IEditorPart)
+//	 */
+//	@Override
+//	public void setActiveEditor(IEditorPart part)
+//	{
+//		if (part instanceof DeploymentTreeEditor)
+//		{
+//			DeploymentTreeEditor editor = (DeploymentTreeEditor) part;
+//
+//			IActionBars actionBars = getActionBars();
+//			
+//			if (editor.getActivePageInstance() instanceof DeploymentFormPage)
+//			{
+//				DeploymentFormPage page = (DeploymentFormPage) editor.getActivePageInstance();
+//			
+//				actionBars.setGlobalActionHandler(ActionFactory.UNDO.getId(),page.getTreeEditorAction(ActionFactory.UNDO.getId()));
+//				actionBars.setGlobalActionHandler(ActionFactory.REDO.getId(), page.getTreeEditorAction(ActionFactory.REDO.getId()));
+//				actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), page.getTreeEditorAction(ActionFactory.DELETE.getId()));			
+//			
+//				actionBars.updateActionBars();
+//			}
+//		}		
+//	}
+
+	@Override
+	protected String getEditorId() {
+		return DeploymentTreeEditor.DEPLOYMENT_TREE_EDITOR_ID;
+	}
+
+	@Override
+	protected Class getEditorClass() {
+		return DeploymentTreeEditor.class;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.part.EditorActionBarContributor#setActiveEditor(org.eclipse.ui.IEditorPart)
-	 */
-	@Override
-	public void setActiveEditor(IEditorPart part)
-	{
-		if (part instanceof DeploymentTreeEditor)
-		{
-			DeploymentTreeEditor editor = (DeploymentTreeEditor) part;
-
-			IActionBars actionBars = getActionBars();
-			
-			if (editor.getActivePageInstance() instanceof DeploymentFormPage)
-			{
-				DeploymentFormPage page = (DeploymentFormPage) editor.getActivePageInstance();
-			
-				actionBars.setGlobalActionHandler(ActionFactory.UNDO.getId(),page.getTreeEditorAction(ActionFactory.UNDO.getId()));
-				actionBars.setGlobalActionHandler(ActionFactory.REDO.getId(), page.getTreeEditorAction(ActionFactory.REDO.getId()));
-				actionBars.setGlobalActionHandler(ActionFactory.DELETE.getId(), page.getTreeEditorAction(ActionFactory.DELETE.getId()));			
-			
-				actionBars.updateActionBars();
-			}
-		}		
-	}	
 }

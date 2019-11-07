@@ -192,11 +192,12 @@ public class RightTreeContentProvider
 	@SuppressWarnings("unchecked")
 	public Object[] getElements(Object inputElement) {
 		ArrayList<Property> childList = new ArrayList<Property>();
-
 		if (inputElement instanceof DeploymentView) {
 			view = (DeploymentView) inputElement;
 			setDeployment(view.getDeployment());
-
+			if(domain == null) {
+				return childList.toArray();
+			}
 			if (listener == null) {
 				listener = new ResourceSetListenerImpl() {
 
@@ -248,7 +249,9 @@ public class RightTreeContentProvider
 				}
 
 			};
-
+			if(domain == null) {
+				return childList.toArray();
+			}
 			Collection<Property> col = null;
 			try {
 				col = (Collection<Property>) domain.runExclusive(runnable1);
@@ -259,7 +262,7 @@ public class RightTreeContentProvider
 						DeploymentEditorMessages.RightTreeContentProvider_ReadingFromModelErrorMsg,
 						e);
 			}
-
+			
 			for (final Property prop : col) {
 				RunnableWithResult<Property> runnable2 = new RunnableWithResult.Impl<Property>() {
 

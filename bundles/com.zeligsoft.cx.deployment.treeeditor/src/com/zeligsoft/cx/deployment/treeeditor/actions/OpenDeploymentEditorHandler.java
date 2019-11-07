@@ -23,18 +23,12 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.papyrus.infra.core.sasheditor.editor.IPage;
-import org.eclipse.papyrus.infra.core.sasheditor.editor.ISashWindowsContainer;
 import org.eclipse.papyrus.infra.core.sashwindows.di.service.IPageManager;
 import org.eclipse.papyrus.infra.core.services.ServiceException;
 import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
 import org.eclipse.papyrus.infra.core.utils.ServiceUtils;
 import org.eclipse.papyrus.infra.ui.editor.IMultiDiagramEditor;
-import org.eclipse.papyrus.infra.ui.util.ServiceUtilsForWorkbenchPage;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchPartSite;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
@@ -59,16 +53,8 @@ public class OpenDeploymentEditorHandler extends AbstractHandler {
 		if (eo == null || !ZDLUtil.isZDLConcept(eo, ZMLMMNames.DEPLOYMENT)) {
 			return null;
 		}
-		// we find the workbench window, then the right page,
-		// then we open the tree editor.
-		IWorkbenchPartSite site = BaseUIUtil.getModelExplorerViewPart().getSite();
-		IWorkbenchWindow window = site.getWorkbenchWindow();
-		IWorkbenchPage workbenchPage = window.getActivePage();
 
 		try {
-			ISashWindowsContainer windowsContainer = ServiceUtilsForWorkbenchPage.getInstance()
-					.getService(ISashWindowsContainer.class, workbenchPage);
-			IPage page = windowsContainer.lookupModelPage(eo);
 			IPageManager pageManager = ServiceUtils.getInstance().getIPageManager(serviceRegistry);
 			if (pageManager.isOpen(eo)) {
 				pageManager.selectPage(eo);

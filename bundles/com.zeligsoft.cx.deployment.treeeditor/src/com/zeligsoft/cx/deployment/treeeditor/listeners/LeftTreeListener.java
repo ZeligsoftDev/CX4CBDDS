@@ -20,7 +20,7 @@ package com.zeligsoft.cx.deployment.treeeditor.listeners;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -30,6 +30,7 @@ import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
@@ -184,25 +185,20 @@ public class LeftTreeListener
 					DeploymentEditorMessages.LeftTreeListener_AddComponentCmd);
 			compositeCommand.add(command);
 		}
+		
+		final Command emfCommand = GMFtoEMFCommandWrapper.wrap(compositeCommand);
 
-		Runnable runCommand = new Runnable() {
+		if (emfCommand.canExecute()) {
+			Runnable runCommand = new Runnable() {
 
-			@Override
-			public void run() {
-				try {
-					OperationHistoryFactory.getOperationHistory().execute(
-							compositeCommand, null, null);
-				} catch (Exception e) {
-					Activator
-							.getDefault()
-							.error(DeploymentEditorMessages.LeftTreeListener_AddingPartErrorMsg,
-									e);
+				@Override
+				public void run() {
+					view.getEditingDomain().getCommandStack().execute(emfCommand);
 				}
-			}
-		};
+			};
 
-		BusyIndicator.showWhile(Display.getCurrent(), runCommand);
-
+			BusyIndicator.showWhile(Display.getCurrent(), runCommand);
+		}
 		formPage.refresh();
 
 		return true;

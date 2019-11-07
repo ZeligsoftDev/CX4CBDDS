@@ -21,14 +21,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
 import org.eclipse.swt.dnd.TransferData;
@@ -43,7 +44,6 @@ import com.zeligsoft.base.zdl.LinkConstraintContext;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.deployment.treeeditor.DeploymentView;
 import com.zeligsoft.cx.deployment.treeeditor.l10n.DeploymentEditorMessages;
-import com.zeligsoft.cx.deployment.treeeditor.ui.Activator;
 import com.zeligsoft.cx.deployment.treeeditor.ui.DeploymentFormPage;
 import com.zeligsoft.cx.deployment.treeeditor.ui.DeploymentTreeEditor;
 import com.zeligsoft.cx.deployment.ui.commands.CreateAllocationCommand;
@@ -219,14 +219,13 @@ public class RightTreeListener extends ViewerDropAdapter implements
 
 			}
 		}
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(compositeCommand, null, null);
-		} catch (Exception e) {
-			Activator.getDefault().error(
-					DeploymentEditorMessages.RightTreeListener_AllocationErrorMessage, e);
-			return false;
+		
+		final Command emfCommand = GMFtoEMFCommandWrapper.wrap(compositeCommand);
+
+		if (emfCommand.canExecute()) {
+			view.getEditingDomain().getCommandStack().execute(emfCommand);
+			view.add(partsToDeploy);
 		}
-		view.add(partsToDeploy);
 		return true;
 	}
 

@@ -38,6 +38,7 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.deployment.treeeditor.DeploymentEditorInput;
 import com.zeligsoft.cx.deployment.treeeditor.ui.DeploymentFormPage;
 import com.zeligsoft.cx.deployment.treeeditor.ui.DeploymentTreeEditor;
+import com.zeligsoft.cx.deployment.treeeditor.ui.TreeEditorContributor;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -88,7 +89,7 @@ public class DeploymentEditorFactory implements IPluggableEditorFactory {
 
 		@Override
 		public String getTabTitle() {
-			return "Deployment";
+			return deployment.getLabel();
 		}
 
 		@Override
@@ -116,13 +117,14 @@ public class DeploymentEditorFactory implements IPluggableEditorFactory {
 		@Override
 		public IEditorPart createIEditorPart() throws PartInitException {
 
-			// ToDo: Check if deployment edit part already exist for this deployment
+			// ToDo: Check if deployment editor part already exist for this deployment
 			DeploymentTreeEditor editor = new DeploymentTreeEditor(deployment);
 			return editor;
 		}
 
 		@Override
 		public EditorActionBarContributor getActionBarContributor() {
+			//return new TreeEditorContributor();
 			return null;
 		}
 

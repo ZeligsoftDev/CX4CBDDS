@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -28,6 +28,7 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Property;
@@ -35,7 +36,6 @@ import org.eclipse.uml2.uml.Property;
 import com.zeligsoft.cx.deployment.treeeditor.DeploymentView;
 import com.zeligsoft.cx.deployment.treeeditor.l10n.DeploymentEditorMessages;
 import com.zeligsoft.cx.deployment.treeeditor.providers.LeftTreeContentProvider;
-import com.zeligsoft.cx.deployment.treeeditor.ui.Activator;
 import com.zeligsoft.cx.deployment.ui.commands.DeleteDeploymentPartCommand;
 import com.zeligsoft.domain.zml.util.ZDeploymentUtil;
 
@@ -89,23 +89,12 @@ public class DeleteDeploymentPartAction
 
 		if (command == null)
 			return;
-
-		view.remove(selectedParts);
-
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command, null, null);
-		} catch (Exception e) {
-			Activator
-					.getDefault()
-					.error(
-							DeploymentEditorMessages.DeleteDeploymentPartActionHandler_DeletePartErrorMsg,
-							e);
-
-			if (ZDeploymentUtil.getDeploymentParts(view.getDeployment()).contains(
-					selectedParts))
-				for (Property part : selectedParts) {
-					view.add(part);
-				}
+		
+		Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+		
+		if(emfCommand.canExecute()) {
+			view.remove(selectedParts);
+			view.getEditingDomain().getCommandStack().execute(emfCommand);
 		}
 	}
 
