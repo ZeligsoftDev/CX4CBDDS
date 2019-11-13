@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.papyrus.infra.architecture.commands.IModelCreationCommand;
 import org.eclipse.papyrus.infra.core.resource.ModelSet;
+import org.eclipse.papyrus.infra.core.utils.EMFHelper;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.papyrus.uml.tools.model.UmlUtils;
 import org.eclipse.papyrus.uml.tools.utils.PackageUtil;
@@ -110,6 +111,14 @@ public class CreateATCDModelCommand implements IModelCreationCommand {
 			packageOwner.getPackageImports().add(pi);
 		}
 
+		org.eclipse.uml2.uml.Package idlPrimitiveTypes = PackageUtil.loadPackage(
+				URI.createURI("pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml"), owner.eResource().getResourceSet());
+		if (idlPrimitiveTypes != null) {
+			PackageImport pi = UMLFactory.eINSTANCE.createPackageImport();
+			pi.setImportedPackage(idlPrimitiveTypes);
+			packageOwner.getPackageImports().add(pi);
+		}
+		
 		// Retrieve PO SysML profile and apply with Sub-profile
 		Profile profile = (Profile) PackageUtil.loadPackage(URI.createURI("pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml"),
 				owner.eResource().getResourceSet());

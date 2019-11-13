@@ -16,16 +16,26 @@
  */
 package com.zeligsoft.domain.omg.ccm.ui.wizards;
 
+import java.util.Collections;
+
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.commands.operations.OperationHistoryFactory;
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gmf.runtime.common.core.command.CommandResult;
+import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Package;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
+import com.zeligsoft.domain.omg.ccm.ui.Activator;
 import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
 
 /**
@@ -53,33 +63,29 @@ public class CCMComponentWizard extends Wizard {
 
 	@Override
 	public boolean performFinish() {
-//		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-//				UMLModeler.getEditingDomain(), Messages.CCMComponentWizard_CommandLabel,
-//				Collections.EMPTY_MAP, null) {
-//
-//			@Override
-//			protected CommandResult doExecuteWithResult(IProgressMonitor arg0,
-//					IAdaptable arg1) throws ExecutionException {
-//
-//				Package container = getPackageContainer();
-//				if(container == null){
-//					return CommandResult.newCancelledCommandResult();
-//				}
-//				
-//				component = createComponent(container);
-//				if (page.isCreateImplementation()) {
-//					
-//					if (page.isAssemblyType()){  
-//						//assembly implementation type
-//						Component assembly = null;
-//						assembly = createAssembly(container);
-//						UMLElementFactory.createRelationship(assembly,
-//								ZDLElementTypeManager.INSTANCE
-//										.getElementTypeFromHint("generalization"), //$NON-NLS-1$
-//								assembly, 
-//								component, 
-//								null);
-//						if (page.isCreateStructureDiagram()) {
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(context);
+		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
+				editingDomain, Messages.CCMComponentWizard_CommandLabel,
+				Collections.EMPTY_MAP, null) {
+
+			@Override
+			protected CommandResult doExecuteWithResult(IProgressMonitor arg0,
+					IAdaptable arg1) throws ExecutionException {
+
+				Package container = getPackageContainer();
+				if(container == null){
+					return CommandResult.newCancelledCommandResult();
+				}
+				
+				component = createComponent(container);
+				if (page.isCreateImplementation()) {
+					
+					if (page.isAssemblyType()){  
+						//assembly implementation type
+						Component assembly = null;
+						assembly = createAssembly(container);
+						assembly.createGeneralization(component);
+						if (page.isCreateStructureDiagram()) {
 //							ICommand command = UMLElementFactory.getCreateElementCommand(assembly,
 //									ElementTypeRegistry.getInstance().getType(
 //											"org.eclipse.gmf.runtime.notation.structureDiagram")); //$NON-NLS-1$
@@ -89,27 +95,22 @@ public class CCMComponentWizard extends Wizard {
 //							diagram.setName(page.getStructureDiagramName());
 //							OpenDiagramCommand openCommand = new OpenDiagramCommand(diagram);
 //							openCommand.execute(null, null);
-//						}		
-//					}
-//					else { 
-//						//monolithic implementation type
-//						Package monoContainer = getMonolithicImplContainer(container);
-//						if(monoContainer == null){
-//							return CommandResult.newCancelledCommandResult();
-//						}
-//						
-//						Component monolithic = null;
-//						monolithic = createMonolithic(monoContainer);
-//						UMLElementFactory.createRelationship(monolithic,
-//								ZDLElementTypeManager.INSTANCE
-//										.getElementTypeFromHint("generalization"), //$NON-NLS-1$
-//										monolithic, 
-//										component, 
-//										null);
-//					}			
-//				}
-//				
-//				if (page.isCreateComponentDiagram()) {
+						}		
+					}
+					else { 
+						//monolithic implementation type
+						Package monoContainer = getMonolithicImplContainer(container);
+						if(monoContainer == null){
+							return CommandResult.newCancelledCommandResult();
+						}
+						
+						Component monolithic = null;
+						monolithic = createMonolithic(monoContainer);
+						monolithic.createGeneralization(component);
+					}			
+				}
+				
+				if (page.isCreateComponentDiagram()) {
 //					Diagram diagram = createDiagram(component);
 //					diagram.setName(page.getComponentDiagramName());
 //					OpenDiagramCommand openCommand = new OpenDiagramCommand(
@@ -136,21 +137,18 @@ public class CCMComponentWizard extends Wizard {
 //								.getCommand(refreshRequest);
 //						refreshCommand.execute();
 //					}
-//				}
-//				return CommandResult.newOKCommandResult();
-//			}
-//
-//		};
-//
-//		try {
-//			OperationHistoryFactory.getOperationHistory()
-//					.execute(editCommand, null, null);
-//
-//		} catch (ExecutionException e) {
-//			Activator.getDefault().error(Messages.CCMComponentWizard_ErrorMsg, e);
-//		}
+				}
+				return CommandResult.newOKCommandResult();
+			}
 
-		return true;
+		};
+
+		Command emfCommand = GMFtoEMFCommandWrapper.wrap(editCommand);
+		if (emfCommand.canExecute()) {
+			editingDomain.getCommandStack().execute(emfCommand);
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -166,6 +164,7 @@ public class CCMComponentWizard extends Wizard {
 			Object result = command.getResult().iterator().next();
 			if (result instanceof Package) {
 				((Package) result).setName(page.getPkgName());
+				return (Package) result;
 			}
 		}
 		return pkg;

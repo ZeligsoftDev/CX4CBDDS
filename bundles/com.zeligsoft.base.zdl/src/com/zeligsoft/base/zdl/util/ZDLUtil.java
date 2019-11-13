@@ -51,6 +51,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.gmf.runtime.emf.core.util.PackageUtil;
 import org.eclipse.osgi.util.NLS;
@@ -3571,7 +3572,13 @@ public class ZDLUtil
 				value = valueMapping.transformForSet(value);
 
 				// store the value
-				owner.eSet(feature, value);
+				try {
+					owner.eSet(feature, value);
+				} catch (IllegalArgumentException e) {
+					// ToDo: ZDL mapping to be fixed when DDK is updated
+					Activator.getDefault()
+							.warning("The feature '" + feature.getName() + "' is not a valid changeable feature");
+				}
 			}
 		}
 

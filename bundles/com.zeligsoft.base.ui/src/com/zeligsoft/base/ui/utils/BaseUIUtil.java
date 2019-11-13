@@ -196,6 +196,52 @@ public class BaseUIUtil {
 
 		return activeView;
 	}
+	
+	/**
+	 * Create a ZDL element with given context and concept
+	 * 
+	 * @param context
+	 * @param conceptToCreate
+	 * @return
+	 */
+	public static EObject createZDLModelElement(EObject container, String conceptToCreate) {
+
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(container);
+		IClientContext context = null;
+		try {
+			context = TypeContext.getContext(container);
+		} catch (ServiceException e) {
+			com.zeligsoft.base.ui.Activator.getDefault().error(e.getMessage(), e);
+			return null;
+		}
+		IElementType type = ZDLElementTypeUtil.getElementType(container, conceptToCreate);
+
+		final CreateElementRequest req = new CreateElementRequest(editingDomain, container, type);
+		final EObject target = ElementEditServiceUtils.getTargetFromContext(editingDomain, container, req);
+		if (target == null) {
+			return null;
+		}
+
+		Command command = BaseUIUtil.buildCommand(editingDomain, context, req, target);
+		if (command == null || !command.canExecute()) {
+			return null;
+		}
+		
+		editingDomain.getCommandStack().execute(command);
+		if(!command.getResult().isEmpty()) {
+			return (EObject)command.getResult().iterator().next();
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * Get the first selected EObject from the given selection object
@@ -551,27 +597,6 @@ public class BaseUIUtil {
 		return imageDescriptor;
 	}
 
-	/**
-	 * Create a ZDL element with given context and concept
-	 * 
-	 * @param context
-	 * @param conceptToCreate
-	 * @return
-	 */
-	public static EObject createZDLModelElement(EObject context, String conceptToCreate) {
-
-		IElementType type = null;
-		try {
-			type = ZDLElementTypeUtil.getElementType(context, conceptToCreate);
-			CreateElementRequest request = new CreateElementRequest(context, type);
-			CommandResult result = BaseUIUtil.createModelElement(request);
-
-			return (EObject) result.getReturnValue();
-		} catch (Exception e) {
-			// do nothing
-		}
-		return null;
-	}
 
 	/**
 	 * Queries if the type1 is same or subtype of type2

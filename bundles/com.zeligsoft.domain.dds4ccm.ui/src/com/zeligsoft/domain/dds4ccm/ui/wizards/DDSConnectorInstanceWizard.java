@@ -25,11 +25,14 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.DataType;
@@ -67,8 +70,9 @@ public class DDSConnectorInstanceWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(context);
 		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(context), Messages.DDSConnectorInstanceWizard_CommandLabel,
+				editingDomain, Messages.DDSConnectorInstanceWizard_CommandLabel,
 				Collections.EMPTY_MAP, null) {
 
 			@Override
@@ -105,13 +109,12 @@ public class DDSConnectorInstanceWizard extends Wizard {
 
 		};
 
-		try {
-			OperationHistoryFactory.getOperationHistory()
-					.execute(editCommand, null, null);
-		} catch (ExecutionException e) {
-			Activator.getDefault().error(Messages.DDSConnectorInstanceWizard_ErrorMessage, e);
+		Command emfCommand = GMFtoEMFCommandWrapper.wrap(editCommand);
+		if (emfCommand.canExecute()) {
+			editingDomain.getCommandStack().execute(emfCommand);
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	private Package instantiateConnectorTemplateParameter(DataType message,
