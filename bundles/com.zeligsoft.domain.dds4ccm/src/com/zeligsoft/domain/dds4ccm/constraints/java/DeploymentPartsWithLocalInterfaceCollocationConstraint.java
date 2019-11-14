@@ -29,6 +29,7 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Relationship;
 
+import com.zeligsoft.base.zdl.staticapi.core.ZObject;
 import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
@@ -221,16 +222,17 @@ public class DeploymentPartsWithLocalInterfaceCollocationConstraint extends Abst
 			}
 		}else{
 			// connected to a provides port on a Monolithic Component
-			DeploymentPart connectedProvidesPartTargetProcessDP = getDeploymentTarget(topLevelAssemblyDP, connectedProvidesPart);
-			// check for 'not deployed' is done at caller end
 			DeploymentPart connectedProvidesPartDP = getConnectedPartDP(contextAssemblyDP, connectedProvidesPart);
-			ConnectedProvidesPartInfo cppi = new ConnectedProvidesPartInfo();
-			cppi.connectedProvidesPartDP = connectedProvidesPartDP;
-			cppi.connectedProvidesPartTargetProcessDP = connectedProvidesPartTargetProcessDP;
-			cppi.connectedProvidesPort = connectedProvidesPort;
+			DeploymentPart connectedProvidesPartTargetProcessDP = getDeploymentTarget(topLevelAssemblyDP, connectedProvidesPartDP);
 			
-			listConnectedProvidesPartInfo.add(cppi);
-
+			if(connectedProvidesPartTargetProcessDP != null){
+				ConnectedProvidesPartInfo cppi = new ConnectedProvidesPartInfo();
+				cppi.connectedProvidesPartDP = connectedProvidesPartDP;
+				cppi.connectedProvidesPartTargetProcessDP = connectedProvidesPartTargetProcessDP;
+				cppi.connectedProvidesPort = connectedProvidesPort;
+				
+				listConnectedProvidesPartInfo.add(cppi);
+			}
 		}
 		return listConnectedProvidesPartInfo;
 	}
@@ -262,8 +264,8 @@ public class DeploymentPartsWithLocalInterfaceCollocationConstraint extends Abst
 		DelegationUsesPartInfo usesDelegationPartInfo = new DelegationUsesPartInfo();
 		CCMPart connectedPart = null;
 		DeploymentPart contextAssemblyOwnerDP = getParentDP(contextAssemblyDP);
-		CCMComponent contextAssemblyOwnerComp = (CCMComponent) contextAssemblyOwnerDP.getModelElement();
-		AssemblyImplementation contextAssemblyOwner = getAssembly(contextAssemblyOwnerComp);	
+		// modelElement of contextAssemblyOwnerDP can be a CCMPart or a CCMComponent
+		AssemblyImplementation contextAssemblyOwner = getAssembly(contextAssemblyOwnerDP.getModelElement());	
 		
 		for(Part part: contextAssemblyOwner.getPart()){
 			if(part.equals(contextAssemblyDP.getModelElement())){
@@ -279,6 +281,15 @@ public class DeploymentPartsWithLocalInterfaceCollocationConstraint extends Abst
 		usesDelegationPartInfo.assemblyDP = contextAssemblyOwnerDP;
 		
 		return usesDelegationPartInfo; 
+	}
+	
+	private AssemblyImplementation getAssembly(ZObject zObject){
+		if(zObject instanceof CCMPart){
+			return getAssembly((CCMPart) zObject);
+		}else if(zObject instanceof CCMComponent){
+			return getAssembly((CCMComponent) zObject);
+		}
+		return null;
 	}
 	
 	private DeploymentPart getParentDP(DeploymentPart childDP){
@@ -346,7 +357,7 @@ public class DeploymentPartsWithLocalInterfaceCollocationConstraint extends Abst
 		return matchedConnectors;
 	}
 	
-	private DeploymentPart getDeploymentTarget(DeploymentPart topLevelAssemblyDP, CCMPart part){
+	private DeploymentPart getDeploymentTarget(DeploymentPart topLevelAssemblyDP, DeploymentPart partDP){
 		
 		List<DeploymentPart> nestedParts = topLevelAssemblyDP.getNestedPart();
 		
@@ -354,11 +365,11 @@ public class DeploymentPartsWithLocalInterfaceCollocationConstraint extends Abst
 			if(!(dp instanceof ComponentDeploymentPart)){
 				continue;
 			}
-			if(dp.getModelElement() == part){
+			if(dp == partDP){
 				return getTargetProcessInDeploy((ComponentDeploymentPart) dp);
 			}
 			if(!dp.getNestedPart().isEmpty()){
-				DeploymentPart target = getDeploymentTarget(dp, part);
+				DeploymentPart target = getDeploymentTarget(dp, partDP);
 				if(target != null){
 					return target;
 				}
