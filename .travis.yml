@@ -1,9 +1,5 @@
 language: java
 
-# Need to tell the Maven build the root directory of the build...
-env:
-- DDS4CCM_ROOT=$TRAVIS_BUILD_DIR
-
 # Default script is 'mvn test'; We don't have any tests, as we require RSA. Echo something useful, instead
 before_install:
   - sudo apt-get update
