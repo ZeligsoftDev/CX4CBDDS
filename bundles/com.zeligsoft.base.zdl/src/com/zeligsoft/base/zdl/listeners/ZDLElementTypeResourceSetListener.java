@@ -54,7 +54,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 import com.zeligsoft.base.zdl.type.ZDLElementType;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.base.zdl.xtend.MainTransform;
+//import com.zeligsoft.base.zdl.xtend.MainTransform;
 
 /**
  * ResourceSetListener which creates ZDLElementTypes when ZDL generated profiles

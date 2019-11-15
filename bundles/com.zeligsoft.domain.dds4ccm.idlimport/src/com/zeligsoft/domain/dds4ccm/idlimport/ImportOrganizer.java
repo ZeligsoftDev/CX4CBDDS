@@ -35,7 +35,7 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Property;
 
-import com.ibm.xtools.uml.type.UMLElementFactory;
+//import com.ibm.xtools.uml.type.UMLElementFactory;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
