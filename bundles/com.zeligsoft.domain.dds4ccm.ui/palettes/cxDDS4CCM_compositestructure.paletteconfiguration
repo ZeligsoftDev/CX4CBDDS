@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<paletteconfiguration:PaletteConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:paletteconfiguration="http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.8" id="com.zeligsoft.cbdds.diagram.composite.palette" label="CBDDS">
+  <drawerConfigurations xmi:type="paletteconfiguration:DrawerConfiguration" id="cbdds.composite.nodes" label="CBDDS" description="CBDDS Drawer">
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.edges.CCMConnector" label="CCM Connector" description="Create a CCM Connector" kind="ConnectionTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Connector.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/cxDDS4CCM_compositestructure.elementtypesconfigurations#_bMmmMArjEeq7m5nPQx9iPA"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+  </drawerConfigurations>
+  <requiredProfiles>UMLRealTime</requiredProfiles>
+</paletteconfiguration:PaletteConfiguration>
