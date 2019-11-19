@@ -4,11 +4,23 @@
 # Copyright (c) Northrop Grumman Corporation 2019 -- ALL RIGHTS RESERVED
 #===============================================================================
 
-%define ifdef()   %if %{expand:%%{?%{1}:1}%%{!?%{1}:0}}
-%define ver       1.6.1
-%define rel       0.%(date "+%y%m%d%H%M")
-%define _rpmdir   %{_projectdir}/rpm_build/
-%define _targetdir %{_projectdir}/target
+%define ifdef()   	%if %{expand:%%{?%{1}:1}%%{!?%{1}:0}}
+%define ver       	1.6.1
+%define _defaultRel	0.%(date "+%y%m%d%H%M")
+%define _rpmdir   	%{_projectdir}/rpm_build/
+%define _targetdir 	%{_projectdir}/target
+
+# Set the release of the RPM according to the value of the 'parameterized' input
+# variables, or use a string constant
+%if 0%{?_travis_commit:1} && 0%{?_travis_tag:1}
+	%define rel %{_defaultRel}_%{_travis_commit}_%{_travis_tag}
+%else
+	%if 0%{?_travis_commit:1}
+		%define rel %{_defaultRel}_%{_travis_commit}
+	%else
+		%define rel %{_defaultRel}
+	%endif
+%endif
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Define packages

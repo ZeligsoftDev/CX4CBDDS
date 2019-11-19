@@ -12,8 +12,8 @@ before_install:
 script:
 - echo Built releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_*.v*.zip
 - echo Built releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_*.v*.zip
-- rpmbuild -ba --clean -vv --define "_projectdir $TRAVIS_BUILD_DIR/releng/com.zeligsoft.dds4ccm.update.axcioma" releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec
-- rpmbuild -ba --clean -vv --define "_projectdir $TRAVIS_BUILD_DIR/releng/com.zeligsoft.dds4ccm.update.atcd" releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec
+- rpmbuild -ba --clean -vv --define "_projectdir $TRAVIS_BUILD_DIR/releng/com.zeligsoft.dds4ccm.update.axcioma" --define "_travis_commit $TRAVIS_COMMIT" --define "_travis_tag $TRAVIS_TAG" releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec
+- rpmbuild -ba --clean -vv --define "_projectdir $TRAVIS_BUILD_DIR/releng/com.zeligsoft.dds4ccm.update.atcd" --define "_travis_commit $TRAVIS_COMMIT" --define "_travis_tag $TRAVIS_TAG" releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec
 
 before_deploy:
     - "mkdir releng/com.zeligsoft.dds4ccm.update.atcd/target/archive"
