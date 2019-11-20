@@ -4,6 +4,7 @@ DDS4CCM is a Papyrus add-in for modeling component based systems
 according to the OMG CCM standard.
 
 DDS4CCM has support for the following CCM implementations:
+- [CIAO](https://www.dre.vanderbilt.edu/~schmidt/CIAO.html)
 - [AXCIOMA](https://www.axcioma.org)
 
 ## Build requirements
