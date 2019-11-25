@@ -76,6 +76,12 @@
              property="connectorType">
        </PropertySection>
     </extension>
+    <extension
+          point="org.eclipse.papyrus.infra.gmfdiag.dnd.dropStrategy">
+       <strategy
+             strategy="com.zeligsoft.domain.dds4ccm.ui.drop.CCMComponentToCCMPartDropStrategy">
+       </strategy>
+    </extension>
     
     <!--
 	<extension

@@ -88,91 +88,58 @@ public class CCMComponentEditHelperAdvice extends AbstractEditHelperAdvice {
 					return CommandResult.newOKCommandResult(newEObject);
 				}
 
-				Property newProperty = (Property) newEObject;
+				// Papyrus ToDo: Should we keep this?
+				
+//				Property newProperty = (Property) newEObject;
+//
+//				Type propertyType = newProperty.getType();
+//				if (propertyType == null) {
+//
+//					if (Activator.getDefault().getPluginPreferences().getBoolean(
+//							CCMPreferenceConstants.AUTO_TYPE_SELECTION_DIALOG)) {
+//						ZDLElementSelectionDialog dialog = new ZDLElementSelectionDialog(
+//								Display.getCurrent().getActiveShell(), container,
+//								Collections.EMPTY_LIST, true, true);
+//
+//						if (ZDLUtil.isZDLConcept(newProperty, ZMLMMNames.CONJUGATED_PORT)) {
+//
+//							dialog.setElementFilter(new ElementSelectionFilter(
+//									ZMLMMNames.PORT, ZMLMMNames.PORT__PORTTYPE));
+//
+//						} else if (ZDLUtil.isZDLConcept(newProperty, CCMNames.CCMPART)) {
+//							dialog.setElementFilter(new ElementSelectionFilter(
+//									CCMNames.CCMPART, ZMLMMNames.PART__DEFINITION));
+//						} else if (ZDLUtil.isZDLConcept(newProperty,
+//								CCMNames.NODE_INSTANCE)) {
+//							dialog
+//									.setElementFilter(new ElementSelectionFilter(
+//											CCMNames.NODE_INSTANCE,
+//											CCMNames.NODE_INSTANCE__TYPE));
+//						} else if (ZDLUtil.isZDLConcept(newProperty,
+//								CCMNames.BRIDGE_INSTANCE)) {
+//							dialog.setElementFilter(new ElementSelectionFilter(
+//									CCMNames.BRIDGE_INSTANCE,
+//									CCMNames.BRIDGE_INSTANCE__TYPE));
+//						} else if (ZDLUtil.isZDLConcept(newProperty,
+//								CCMNames.INTERCONNECT_INSTANCE)) {
+//							dialog.setElementFilter(new ElementSelectionFilter(
+//									CCMNames.INTERCONNECT_INSTANCE,
+//									CCMNames.INTERCONNECT_INSTANCE__TYPE));
+//						} else {
+//							return CommandResult.newOKCommandResult(newProperty);
+//						}
+//						if (dialog.open() == Window.OK) {
+//							if (!dialog.getSelectedElements().isEmpty()
+//									&& dialog.getSelectedElements().getFirstElement() != null) {
+//								newProperty.setType((Type) dialog.getSelectedElements()
+//										.getFirstElement());
+//							}
+//						}
+//					}
+//					return CommandResult.newOKCommandResult(newProperty);
+//				}
 
-				Type propertyType = newProperty.getType();
-				if (propertyType == null) {
-
-					if (Activator.getDefault().getPluginPreferences().getBoolean(
-							CCMPreferenceConstants.AUTO_TYPE_SELECTION_DIALOG)) {
-						ZDLElementSelectionDialog dialog = new ZDLElementSelectionDialog(
-								Display.getCurrent().getActiveShell(), container,
-								Collections.EMPTY_LIST, true, true);
-
-						if (ZDLUtil.isZDLConcept(newProperty, ZMLMMNames.CONJUGATED_PORT)) {
-
-							dialog.setElementFilter(new ElementSelectionFilter(
-									ZMLMMNames.PORT, ZMLMMNames.PORT__PORTTYPE));
-
-						} else if (ZDLUtil.isZDLConcept(newProperty, CCMNames.CCMPART)) {
-							dialog.setElementFilter(new ElementSelectionFilter(
-									CCMNames.CCMPART, ZMLMMNames.PART__DEFINITION));
-						} else if (ZDLUtil.isZDLConcept(newProperty,
-								CCMNames.NODE_INSTANCE)) {
-							dialog
-									.setElementFilter(new ElementSelectionFilter(
-											CCMNames.NODE_INSTANCE,
-											CCMNames.NODE_INSTANCE__TYPE));
-						} else if (ZDLUtil.isZDLConcept(newProperty,
-								CCMNames.BRIDGE_INSTANCE)) {
-							dialog.setElementFilter(new ElementSelectionFilter(
-									CCMNames.BRIDGE_INSTANCE,
-									CCMNames.BRIDGE_INSTANCE__TYPE));
-						} else if (ZDLUtil.isZDLConcept(newProperty,
-								CCMNames.INTERCONNECT_INSTANCE)) {
-							dialog.setElementFilter(new ElementSelectionFilter(
-									CCMNames.INTERCONNECT_INSTANCE,
-									CCMNames.INTERCONNECT_INSTANCE__TYPE));
-						} else {
-							return CommandResult.newOKCommandResult(newProperty);
-						}
-						if (dialog.open() == Window.OK) {
-							if (!dialog.getSelectedElements().isEmpty()
-									&& dialog.getSelectedElements().getFirstElement() != null) {
-								newProperty.setType((Type) dialog.getSelectedElements()
-										.getFirstElement());
-							}
-						}
-					}
-					return CommandResult.newOKCommandResult(newProperty);
-				}
-
-				if (ZDLUtil.isZDLConcept(container, CCMNames.ASSEMBLY_IMPLEMENTATION)) {
-					if (ZDLUtil.isZDLConcept(propertyType, CCMNames.CCMCOMPONENT)) {
-						if (!ZDLUtil.isZDLConcept(newProperty, CCMNames.CCMPART)) {
-							ZDLUtil.addZDLConcept(newProperty, CCMNames.CCMPART);
-						}
-					} else if( ZDLUtil.isZDLConcept(propertyType, CCMNames.HOME)) {
-						if( !ZDLUtil.isZDLConcept(newProperty, CCMNames.HOME_INSTANCE)) {
-							ZDLUtil.addZDLConcept(newProperty, CCMNames.HOME_INSTANCE);
-						}
-					}
-				}
-				if (ZDLUtil.isZDLConcept(container, CCMNames.DOMAIN)) {
-					if (ZDLUtil.isZDLConcept(propertyType, CCMNames.NODE)) {
-						if (!ZDLUtil.isZDLConcept(newProperty, CCMNames.NODE_INSTANCE)) {
-							ZDLUtil.addZDLConcept(newProperty, CCMNames.NODE_INSTANCE);
-						}
-					} else if (ZDLUtil.isZDLConcept(propertyType, CCMNames.INTERCONNECT)) {
-						if (!ZDLUtil.isZDLConcept(newProperty,
-								CCMNames.INTERCONNECT_INSTANCE)) {
-							ZDLUtil.addZDLConcept(newProperty,
-									CCMNames.INTERCONNECT_INSTANCE);
-						}
-					} else if (ZDLUtil.isZDLConcept(propertyType, CCMNames.BRIDGE)) {
-						if (!ZDLUtil.isZDLConcept(newProperty, CCMNames.BRIDGE_INSTANCE)) {
-							ZDLUtil.addZDLConcept(newProperty, CCMNames.BRIDGE_INSTANCE);
-						}
-					} else if (ZDLUtil.isZDLConcept(propertyType, CCMNames.RESOURCE)) {
-						if (!ZDLUtil
-								.isZDLConcept(newProperty, CCMNames.RESOURCE_PROPERTY)) {
-							ZDLUtil
-									.addZDLConcept(newProperty,
-											CCMNames.RESOURCE_PROPERTY);
-						}
-					}
-				}
-				return CommandResult.newOKCommandResult(newProperty);
+				return CommandResult.newOKCommandResult();
 			}
 
 		};
