@@ -45,26 +45,26 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.zdl.type.ZDLElementTypeUtil;
-import com.zeligsoft.domain.omg.ccm.CCMNames;
+import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 
 /**
- * Command to create a CCM Part, add it to a parent Assembly and display it to the
+ * Command to create a DataSpace, add it to a parent Assembly and display it to the
  * given location
  */
-public class CreateCCMPartAndDisplayCommand extends AbstractCommand {
+public class CreateDataSpaceAndDisplayCommand extends AbstractCommand {
 
 	protected Component targetComponent;
-	protected String ccmPartId;
+	protected String dataSpaceId;
 	protected EReference componentFeature;
 	protected EObject droppedObject;
 	protected Point location;
 	protected EditPart targetEditPart;
 
-	public CreateCCMPartAndDisplayCommand(Component targetComponent, String ccmPartId, EReference componentFeature,
+	public CreateDataSpaceAndDisplayCommand(Component targetComponent, String dataSpaceId, EReference componentFeature,
 			EObject droppedObject, Point location, EditPart targetEditPart) {
 		super("");
 		this.targetComponent = targetComponent;
-		this.ccmPartId = ccmPartId;
+		this.dataSpaceId = dataSpaceId;
 		this.componentFeature = componentFeature;
 		this.droppedObject = droppedObject;
 		this.location = new Point(location);
@@ -90,7 +90,7 @@ public class CreateCCMPartAndDisplayCommand extends AbstractCommand {
 			com.zeligsoft.domain.dds4ccm.ui.Activator.getDefault().error(e.getMessage(), e);
 			return CommandResult.newErrorCommandResult(e);
 		}
-		Property CCMPart = createCCMPart(editingDomain);
+		Property CCMPart = createDataSpace(editingDomain);
 		setCCMAsType(editingDomain, CCMPart, droppedObject);
 		dropCCMPart(CCMPart);
 
@@ -131,10 +131,10 @@ public class CreateCCMPartAndDisplayCommand extends AbstractCommand {
 	/**
 	 * 
 	 */
-	protected Property createCCMPart(TransactionalEditingDomain editingDomain) {
+	protected Property createDataSpace(TransactionalEditingDomain editingDomain) {
 		Property createdProperty = null;
 		CreateElementRequest createElementRequest = new CreateElementRequest(editingDomain, targetComponent,
-				ZDLElementTypeUtil.getElementType(targetComponent, CCMNames.CCMPART));
+				ZDLElementTypeUtil.getElementType(targetComponent, IDL3PlusNames.DATA_SPACE));
 
 		IElementEditService provider = ElementEditServiceUtils.getCommandProvider(targetComponent);
 		if (provider != null) {

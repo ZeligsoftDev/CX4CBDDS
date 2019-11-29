@@ -35,27 +35,28 @@ import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.zdl.type.ZDLElementTypeUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 
 /**
  * Drop strategy to create a CCM part
  */
-public class CCMComponentToCCMPartDropStrategy extends TransactionalDropStrategy {
+public class ConnectorDefToDataSpaceDropStrategy extends TransactionalDropStrategy {
 
 	/**
 	 * Constructor.
 	 */
-	public CCMComponentToCCMPartDropStrategy() {
+	public ConnectorDefToDataSpaceDropStrategy() {
 	}
 
 	@Override
 	public String getLabel() {
-		return "CCMComponent drop to create CCMPart";
+		return "ConnectorDef drop to create DadaSpace";
 	}
 
 	@Override
 	public String getDescription() {
-		return "CCMComponent drop to create CCMPart";
+		return "ConnectorDef drop to create DadaSpace";
 	}
 
 	@Override
@@ -65,7 +66,7 @@ public class CCMComponentToCCMPartDropStrategy extends TransactionalDropStrategy
 
 	@Override
 	public String getID() {
-		return com.zeligsoft.domain.dds4ccm.ui.Activator.PLUGIN_ID + ".CCMComponentToCCMPartDrop";
+		return com.zeligsoft.domain.dds4ccm.ui.Activator.PLUGIN_ID + ".ConnectorDefToDataSpaceDrop";
 	}
 
 	@Override
@@ -109,8 +110,8 @@ public class CCMComponentToCCMPartDropStrategy extends TransactionalDropStrategy
 	 */
 	protected Command getCreateAndDropObjectCommand(EObject droppedObject, Component targetComponent, Point location,
 			EditPart targetEditPart) {
-		IElementType type = ZDLElementTypeUtil.getElementType(targetComponent, CCMNames.CCMPART);
-		CreateCCMPartAndDisplayCommand command = new CreateCCMPartAndDisplayCommand(targetComponent, type.getId(),
+		IElementType type = ZDLElementTypeUtil.getElementType(targetComponent, IDL3PlusNames.DATA_SPACE);
+		CreateDataSpaceAndDisplayCommand command = new CreateDataSpaceAndDisplayCommand(targetComponent, type.getId(),
 				UMLPackage.eINSTANCE.getNamespace_OwnedMember(), droppedObject, location, targetEditPart);
 		return new ICommandProxy(command);
 	}
@@ -120,7 +121,7 @@ public class CCMComponentToCCMPartDropStrategy extends TransactionalDropStrategy
 		List<Component> result = new ArrayList<Component>();
 		if (droppedObjects != null) {
 			for (EObject droppedObject : droppedObjects) {
-				if (ZDLUtil.isZDLConcept(droppedObject, CCMNames.CCMCOMPONENT)) {
+				if (ZDLUtil.isZDLConcept(droppedObject, IDL3PlusNames.CONNECTOR_DEF)) {
 					result.add((Component) droppedObject);
 				}
 			}
