@@ -84,9 +84,9 @@ public class ConnectorPartEditPart extends PropertyPartEditPartCN {
 	public EditPolicy getPrimaryDragEditPolicy() {
 		return new NonResizableEditPolicyEx();
 	}
-	
+
 	@Override
-	protected void addChild(EditPart child, int index) {
+	protected void refreshChildren() {
 		return;
 	}
 }
