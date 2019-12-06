@@ -18,6 +18,7 @@ package com.zeligsoft.domain.idl3plus.ui.internal.editparts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableEditPolicyEx;
@@ -67,7 +68,6 @@ public class ConnectorPartEditPart extends PropertyPartEditPartCN {
 		removeEditPolicy(ShowHideCompartmentEditPolicy.SHOW_HIDE_COMPARTMENT_POLICY);
 		removeEditPolicy(AffixedNodeAlignmentEditPolicy.AFFIXED_CHILD_ALIGNMENT_ROLE);
 		removeEditPolicy(ShowHideRelatedContentsEditPolicy.SHOW_HIDE_RELATED_CONTENTS_POLICY);
-		removeEditPolicy(ShowHideRelatedContentsEditPolicy.SHOW_HIDE_RELATED_CONTENTS_POLICY);
 		removeEditPolicy(IMaskManagedLabelEditPolicy.MASK_MANAGED_LABEL_EDIT_POLICY);
 		removeEditPolicy(EditPolicy.LAYOUT_ROLE);
 		removeEditPolicy(EditPolicyRoles.CREATION_ROLE);
@@ -83,5 +83,10 @@ public class ConnectorPartEditPart extends PropertyPartEditPartCN {
 	@Override
 	public EditPolicy getPrimaryDragEditPolicy() {
 		return new NonResizableEditPolicyEx();
+	}
+	
+	@Override
+	protected void addChild(EditPart child, int index) {
+		return;
 	}
 }

@@ -36,6 +36,7 @@ public class ConnectorPartCustomFigure extends PropertyPartFigure {
 		setOpaque(true);
 		Dimension dim = new Dimension(MapModeUtil.getMapMode().DPtoLP(2), MapModeUtil.getMapMode().DPtoLP(2));
 		setSize(dim);
+		setBorder(null);
 		setMinimumSize(dim);
 		setPreferredSize(dim);
 		setLayoutManager(new ConstrainedToolbarLayout());
@@ -48,5 +49,6 @@ public class ConnectorPartCustomFigure extends PropertyPartFigure {
 		graphics.setForegroundColor(ColorConstants.black);
 		graphics.fillOval(rectangle);
 		graphics.drawOval(rectangle);
+		graphics.setLineWidth(0);
 	}
 }
