@@ -1,0 +1,50 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2008-2019 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @defgroup SNA_Examples_BasicSubscriber_comp BasicSubscriber_comp
+/// @{
+/// 
+/// @file SNA_Examples_BasicSubscriber_comp.idl
+/// @brief BasicSubscriber_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_COMPONENTS__BASICSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_BASICSUBSCRIBER_COMP_IDL
+#define CX_COMPONENTS__BASICSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_BASICSUBSCRIBER_COMP_IDL
+
+#pragma componentInterface "BasicSubscriber_comp" 
+#include <Components.idl>
+#pragma ciao lem "SNA_Examples_BasicSubscriber_compE.idl"
+#pragma conntype SNA_Examples::BasicSubscriber_comp::testDataSub DDS_Listen
+#include "SNA_Examples_TestData_conn.idl"
+
+/// @brief SNA_Examples 
+module SNA_Examples {
+
+    /// The BasicSubscriber_comp component is the subscriber in this example. It
+    /// subscribes to a DDS topic. When a sample is published to that topic,
+    /// this component is notified, and it reads the sample (message), and logs
+    /// it.
+    component BasicSubscriber_comp {
+
+        /// A DDS4CCM listen port which listens for samples/messages of type
+        /// SNA_Examples::TestData_msg on a DDS topic. The name and QoS of that
+        /// topic are defined in the deployment plan.
+        port TestData_conn::DDS_Listen testDataSub;
+
+        /// A DDS4CCM listen port which listens for samples/messages of type
+        /// SNA_Examples::TestData_msg on a DDS topic. The name and QoS of that
+        /// topic are defined in the deployment plan.
+        provides CCM_DDS::ConnectorStatusListener testDataSub_CSL;
+    };
+
+};
+
+#endif // CX_COMPONENTS__BASICSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_BASICSUBSCRIBER_COMP_IDL
+
+/// @}
+//==============================================================================
+//                            U N C L A S S I F I E D                            
+//==============================================================================
