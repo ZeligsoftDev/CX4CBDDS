@@ -1,0 +1,57 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2008-2019 -- ALL RIGHTS RESERVED
+//==============================================================================
+/// @defgroup SNA_Examples_BasicPublisher_comp BasicPublisher_comp
+/// @{
+/// 
+/// @file SNA_Examples_BasicPublisher_comp.idl
+/// @brief BasicPublisher_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_COMPONENTS__BASICPUBLISHER_COMP__SRC__SNA_EXAMPLES_BASICPUBLISHER_COMP_IDL
+#define CX_COMPONENTS__BASICPUBLISHER_COMP__SRC__SNA_EXAMPLES_BASICPUBLISHER_COMP_IDL
+
+#pragma componentInterface "BasicPublisher_comp" 
+#include <Components.idl>
+#pragma ciao lem "SNA_Examples_BasicPublisher_compE.idl"
+#pragma conntype SNA_Examples::BasicPublisher_comp::testDataPub DDS_Write
+#include "SNA_Examples_TestData_conn.idl"
+
+/// @brief SNA_Examples 
+module SNA_Examples {
+
+    /// The BasicPublisher_comp component is the publisher in this example. It
+    /// performs the following activities:
+    ///   - creates a message (sample) according to a predefined structure
+    /// (SNA_Examples::TestData_msg)
+    ///   - Each time it wakes up to publish, it gives a configurable number of
+    /// samples to the data writer who in turn publishes them to a DDS topic.
+    ///   - Uses a timer associated with it to wake up every five seconds, at
+    /// which point, the publication process is repeated.
+    component BasicPublisher_comp {
+
+        /// A DDS4CCM write port which publishes samples/messages of type
+        /// SNA_Examples::TestData_msg into a DDS topic. The name and QoS of
+        /// that topic are defined in the deployment plan.
+        port TestData_conn::DDS_Write testDataPub;
+
+        /// Added to access config file name.
+        attribute string BasicPublisher_config;
+
+        /// A DDS4CCM write port which publishes samples/messages of type
+        /// SNA_Examples::TestData_msg into a DDS topic. The name and QoS of
+        /// that topic are defined in the deployment plan.
+        provides CCM_DDS::ConnectorStatusListener testDataPub_CSL;
+    };
+
+};
+
+#endif // CX_COMPONENTS__BASICPUBLISHER_COMP__SRC__SNA_EXAMPLES_BASICPUBLISHER_COMP_IDL
+
+/// @}
+//==============================================================================
+//                            U N C L A S S I F I E D                            
+//==============================================================================
