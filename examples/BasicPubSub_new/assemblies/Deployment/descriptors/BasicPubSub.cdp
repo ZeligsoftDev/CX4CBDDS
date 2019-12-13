@@ -2,7 +2,7 @@
 <Deployment:DeploymentPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
     xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
   <label>BasicPubSub</label>
-  <UUID>_73663ce1-fd00-489e-9ded-b332aa85788a</UUID>
+  <UUID>_8fe26a2d-56ff-4254-b592-b6ee368f880b</UUID>
   <implementation xmi:id="CompSvrImpl">
     <name>CompSvr</name>
     <source/>
@@ -20,11 +20,11 @@
     </execParameter>
   </implementation>
 
-  <implementation xmi:id="_d311c1ff-1cb1-4f73-afc0-e238d23612ae">
+  <implementation xmi:id="_be226417-e695-4541-83ef-5748800ca59f">
     <name>BasicPublisher_compImpl</name>
     <source/>
-    <artifact xmi:idref="_5b80b6df-feec-426d-9aea-d74be5d4780f"/>
-    <artifact xmi:idref="_7026955e-1fca-4300-8a85-9671b0e6ad46"/>
+    <artifact xmi:idref="_d54d6bf7-7279-419e-9974-a88cff6985d9"/>
+    <artifact xmi:idref="_15a955cf-02c7-4a50-8900-b09ec19197db"/>
     <execParameter>
       <name>nl.remedy.it.DnCX11.Executor.Factory</name>
       <value>
@@ -82,11 +82,11 @@
     </execParameter>
   </implementation>
 
-  <implementation xmi:id="_9410cf2c-8b9c-48ed-85ea-4746ffd50954">
+  <implementation xmi:id="_0dd4ddbf-9faa-48c6-8730-2ce4bc221002">
     <name>BasicSubscriber_compImpl</name>
     <source/>
-    <artifact xmi:idref="_435aada9-2e66-4ef4-b7db-5f2604e8240c"/>
-    <artifact xmi:idref="_147c7579-3c1c-405d-b9d7-fddcd10ee33a"/>
+    <artifact xmi:idref="_30f55056-c2a8-413b-9ddf-5cf9ab038bd6"/>
+    <artifact xmi:idref="_5866bb9e-c2e4-400a-9c12-76986295f7e0"/>
     <execParameter>
       <name>nl.remedy.it.DnCX11.Executor.Factory</name>
       <value>
@@ -144,11 +144,11 @@
     </execParameter>
   </implementation>
 
-  <implementation xmi:id="_42e1c7a7-1114-4d0a-b361-34d89a3b4849">
+  <implementation xmi:id="_dcc0d23f-8438-49b5-af26-72c311b92ea3">
     <name>SNA_Examples_TestData_conn_DDS_Event</name>
     <source/>
-    <artifact xmi:idref="_5df952ee-5249-4af2-acef-3451095ff0be"/>
-    <artifact xmi:idref="_2ae9b9bc-3aec-4caa-af01-41ddfd92994c"/>
+    <artifact xmi:idref="_6d35d75d-e236-4a97-814a-f96c137535b8"/>
+    <artifact xmi:idref="_16f30d92-d6db-44b0-9ec1-f55cbd88b91d"/>
     <execParameter>
       <name>nl.remedy.it.DnCX11.Executor.Factory</name>
       <value>
@@ -206,32 +206,7 @@
     </execParameter>
   </implementation>
 
-  <instance xmi:id="_dcef0485-f8f8-4728-a905-842fa4648646">
-    <name>BasicPubSub_asm.basicPublisher_comp</name>
-    <node>node1</node>
-    <source/>
-    <implementation xmi:idref="_d311c1ff-1cb1-4f73-afc0-e238d23612ae"/>
-    <configProperty>
-      <name>BasicPublisher_config</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>SNA_Examples_BasicPublisher.cfg</string>
-        </value>
-      </value>
-    </configProperty>
-  </instance>
-
-  <instance xmi:id="_9b95b70a-3fc2-4130-b226-bbff06086523">
-    <name>BasicPubSub_asm.basicSubscriber_comp</name>
-    <node>node2</node>
-    <source/>
-    <implementation xmi:idref="_9410cf2c-8b9c-48ed-85ea-4746ffd50954"/>
-  </instance>
-
-  <instance xmi:id="_2f000d18-8191-4f9c-9599-8d10782df787">
+  <instance xmi:id="_c8d587d2-e8db-47ca-bde3-b8149ebd62f5">
     <name>BasicPublisher_proc_ComponentServerInstance</name>
     <node>node1</node>
     <source/>
@@ -249,7 +224,7 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="_6d292904-8774-4698-88fa-adccc5d4f0f5">
+  <instance xmi:id="_60ee11af-7906-4950-9dee-13489d931c49">
     <name>BasicSubscriber_proc_ComponentServerInstance</name>
     <node>node2</node>
     <source/>
@@ -267,11 +242,36 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="_3b914204-c4e8-479f-9f8f-0a02fd1892d0">
+  <instance xmi:id="_53f83368-1c16-4c85-a64c-c6adf939609f">
+    <name>BasicPubSub_asm.basicPublisher_comp</name>
+    <node>node1</node>
+    <source/>
+    <implementation xmi:idref="_be226417-e695-4541-83ef-5748800ca59f"/>
+    <configProperty>
+      <name>BasicPublisher_config</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_BasicPublisher.cfg</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_63418528-bf4a-492a-aa34-5b8dbf771f7c">
+    <name>BasicPubSub_asm.basicSubscriber_comp</name>
+    <node>node2</node>
+    <source/>
+    <implementation xmi:idref="_0dd4ddbf-9faa-48c6-8730-2ce4bc221002"/>
+  </instance>
+
+  <instance xmi:id="_65b50cb6-02cd-4680-963a-d5ac498d4473">
     <name>BasicPubSub.assemblies.BasicPubSub_asm.BasicPubSub_asm.TestData_conn_to_basicSubscriber_comp@node2.BasicSubscriber_proc</name>
     <node>node2</node>
     <source/>
-    <implementation xmi:idref="_42e1c7a7-1114-4d0a-b361-34d89a3b4849"/>
+    <implementation xmi:idref="_dcc0d23f-8438-49b5-af26-72c311b92ea3"/>
     <configProperty>
       <name>topic_name</name>
       <value>
@@ -307,11 +307,11 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="_2bdef7e8-cbdf-4a24-94ee-05208a490bb6">
+  <instance xmi:id="_96b5536d-03aa-430c-bb15-fcc711f11e48">
     <name>BasicPubSub.assemblies.BasicPubSub_asm.BasicPubSub_asm.TestData_conn_to_basicPublisher_comp@node1.BasicPublisher_proc</name>
     <node>node1</node>
     <source/>
-    <implementation xmi:idref="_42e1c7a7-1114-4d0a-b361-34d89a3b4849"/>
+    <implementation xmi:idref="_dcc0d23f-8438-49b5-af26-72c311b92ea3"/>
     <configProperty>
       <name>topic_name</name>
       <value>
@@ -353,13 +353,13 @@
       <portName>testDataSub_data_listener</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_9b95b70a-3fc2-4130-b226-bbff06086523"/>
+      <instance xmi:idref="_63418528-bf4a-492a-aa34-5b8dbf771f7c"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>push_consumer_data_listener</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_3b914204-c4e8-479f-9f8f-0a02fd1892d0"/>
+      <instance xmi:idref="_65b50cb6-02cd-4680-963a-d5ac498d4473"/>
     </internalEndpoint>
   </connection>
 
@@ -369,13 +369,13 @@
       <portName>testDataSub_status</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_9b95b70a-3fc2-4130-b226-bbff06086523"/>
+      <instance xmi:idref="_63418528-bf4a-492a-aa34-5b8dbf771f7c"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>push_consumer_status</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_3b914204-c4e8-479f-9f8f-0a02fd1892d0"/>
+      <instance xmi:idref="_65b50cb6-02cd-4680-963a-d5ac498d4473"/>
     </internalEndpoint>
   </connection>
 
@@ -385,13 +385,13 @@
       <portName>testDataSub_data</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_9b95b70a-3fc2-4130-b226-bbff06086523"/>
+      <instance xmi:idref="_63418528-bf4a-492a-aa34-5b8dbf771f7c"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>push_consumer_data</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_3b914204-c4e8-479f-9f8f-0a02fd1892d0"/>
+      <instance xmi:idref="_65b50cb6-02cd-4680-963a-d5ac498d4473"/>
     </internalEndpoint>
   </connection>
 
@@ -401,13 +401,13 @@
       <portName>testDataSub_data_control</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_9b95b70a-3fc2-4130-b226-bbff06086523"/>
+      <instance xmi:idref="_63418528-bf4a-492a-aa34-5b8dbf771f7c"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>push_consumer_data_control</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_3b914204-c4e8-479f-9f8f-0a02fd1892d0"/>
+      <instance xmi:idref="_65b50cb6-02cd-4680-963a-d5ac498d4473"/>
     </internalEndpoint>
   </connection>
 
@@ -417,13 +417,13 @@
       <portName>testDataSub_dds_entity</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_9b95b70a-3fc2-4130-b226-bbff06086523"/>
+      <instance xmi:idref="_63418528-bf4a-492a-aa34-5b8dbf771f7c"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>push_consumer_dds_entity</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_3b914204-c4e8-479f-9f8f-0a02fd1892d0"/>
+      <instance xmi:idref="_65b50cb6-02cd-4680-963a-d5ac498d4473"/>
     </internalEndpoint>
   </connection>
 
@@ -433,13 +433,13 @@
       <portName>testDataSub_filter_config</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_9b95b70a-3fc2-4130-b226-bbff06086523"/>
+      <instance xmi:idref="_63418528-bf4a-492a-aa34-5b8dbf771f7c"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>push_consumer_filter_config</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_3b914204-c4e8-479f-9f8f-0a02fd1892d0"/>
+      <instance xmi:idref="_65b50cb6-02cd-4680-963a-d5ac498d4473"/>
     </internalEndpoint>
   </connection>
 
@@ -449,13 +449,13 @@
       <portName>testDataSub_CSL</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_9b95b70a-3fc2-4130-b226-bbff06086523"/>
+      <instance xmi:idref="_63418528-bf4a-492a-aa34-5b8dbf771f7c"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>error_listener</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_3b914204-c4e8-479f-9f8f-0a02fd1892d0"/>
+      <instance xmi:idref="_65b50cb6-02cd-4680-963a-d5ac498d4473"/>
     </internalEndpoint>
   </connection>
 
@@ -465,13 +465,13 @@
       <portName>testDataPub_data</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_dcef0485-f8f8-4728-a905-842fa4648646"/>
+      <instance xmi:idref="_53f83368-1c16-4c85-a64c-c6adf939609f"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>supplier_data</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_2bdef7e8-cbdf-4a24-94ee-05208a490bb6"/>
+      <instance xmi:idref="_96b5536d-03aa-430c-bb15-fcc711f11e48"/>
     </internalEndpoint>
   </connection>
 
@@ -481,13 +481,13 @@
       <portName>testDataPub_dds_entity</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_dcef0485-f8f8-4728-a905-842fa4648646"/>
+      <instance xmi:idref="_53f83368-1c16-4c85-a64c-c6adf939609f"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>supplier_dds_entity</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_2bdef7e8-cbdf-4a24-94ee-05208a490bb6"/>
+      <instance xmi:idref="_96b5536d-03aa-430c-bb15-fcc711f11e48"/>
     </internalEndpoint>
   </connection>
 
@@ -497,13 +497,13 @@
       <portName>testDataPub_CSL</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_dcef0485-f8f8-4728-a905-842fa4648646"/>
+      <instance xmi:idref="_53f83368-1c16-4c85-a64c-c6adf939609f"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>error_listener</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_2bdef7e8-cbdf-4a24-94ee-05208a490bb6"/>
+      <instance xmi:idref="_96b5536d-03aa-430c-bb15-fcc711f11e48"/>
     </internalEndpoint>
   </connection>
 
@@ -514,42 +514,42 @@
     <location>locality_manager</location>
   </artifact>
 
-  <artifact xmi:id="_5b80b6df-feec-426d-9aea-d74be5d4780f">
+  <artifact xmi:id="_d54d6bf7-7279-419e-9974-a88cff6985d9">
     <name>SNA_Examples_BasicPublisher_comp_exec</name>
     <source/>
     <node/>
     <location>SNA_Examples_BasicPublisher_comp_exec</location>
   </artifact>
 
-  <artifact xmi:id="_7026955e-1fca-4300-8a85-9671b0e6ad46">
+  <artifact xmi:id="_15a955cf-02c7-4a50-8900-b09ec19197db">
     <name>SNA_Examples_BasicPublisher_comp_svnt</name>
     <source/>
     <node/>
     <location>SNA_Examples_BasicPublisher_comp_svnt</location>
   </artifact>
 
-  <artifact xmi:id="_435aada9-2e66-4ef4-b7db-5f2604e8240c">
+  <artifact xmi:id="_30f55056-c2a8-413b-9ddf-5cf9ab038bd6">
     <name>SNA_Examples_BasicSubscriber_comp_exec</name>
     <source/>
     <node/>
     <location>SNA_Examples_BasicSubscriber_comp_exec</location>
   </artifact>
 
-  <artifact xmi:id="_147c7579-3c1c-405d-b9d7-fddcd10ee33a">
+  <artifact xmi:id="_5866bb9e-c2e4-400a-9c12-76986295f7e0">
     <name>SNA_Examples_BasicSubscriber_comp_svnt</name>
     <source/>
     <node/>
     <location>SNA_Examples_BasicSubscriber_comp_svnt</location>
   </artifact>
 
-  <artifact xmi:id="_5df952ee-5249-4af2-acef-3451095ff0be">
+  <artifact xmi:id="_6d35d75d-e236-4a97-814a-f96c137535b8">
     <name>SNA_Examples_TestData_conn_DDS_Event_exec</name>
     <source/>
     <node/>
     <location>SNA_Examples_TestData_conn_exec</location>
   </artifact>
 
-  <artifact xmi:id="_2ae9b9bc-3aec-4caa-af01-41ddfd92994c">
+  <artifact xmi:id="_16f30d92-d6db-44b0-9ec1-f55cbd88b91d">
     <name>SNA_Examples_TestData_conn_DDS_Event_svnt</name>
     <source/>
     <node/>
@@ -559,21 +559,21 @@
   <localityConstraint>
     <constraint>SameProcess</constraint>
     <!-- This is referencing [BasicPublisher_proc_ComponentServerInstance] -->
-    <constrainedInstance xmi:idref="_2f000d18-8191-4f9c-9599-8d10782df787"/>
+    <constrainedInstance xmi:idref="_c8d587d2-e8db-47ca-bde3-b8149ebd62f5"/>
     <!-- This is referencing [BasicPubSub_asm.basicPublisher_comp] -->
-    <constrainedInstance xmi:idref="_dcef0485-f8f8-4728-a905-842fa4648646"/>
+    <constrainedInstance xmi:idref="_53f83368-1c16-4c85-a64c-c6adf939609f"/>
     <!-- This is referencing [BasicPubSub.assemblies.BasicPubSub_asm.BasicPubSub_asm.TestData_conn_to_basicPublisher_comp@node1.BasicPublisher_proc] -->
-    <constrainedInstance xmi:idref="_2bdef7e8-cbdf-4a24-94ee-05208a490bb6"/>
+    <constrainedInstance xmi:idref="_96b5536d-03aa-430c-bb15-fcc711f11e48"/>
   </localityConstraint>
 
   <localityConstraint>
     <constraint>SameProcess</constraint>
     <!-- This is referencing [BasicSubscriber_proc_ComponentServerInstance] -->
-    <constrainedInstance xmi:idref="_6d292904-8774-4698-88fa-adccc5d4f0f5"/>
+    <constrainedInstance xmi:idref="_60ee11af-7906-4950-9dee-13489d931c49"/>
     <!-- This is referencing [BasicPubSub_asm.basicSubscriber_comp] -->
-    <constrainedInstance xmi:idref="_9b95b70a-3fc2-4130-b226-bbff06086523"/>
+    <constrainedInstance xmi:idref="_63418528-bf4a-492a-aa34-5b8dbf771f7c"/>
     <!-- This is referencing [BasicPubSub.assemblies.BasicPubSub_asm.BasicPubSub_asm.TestData_conn_to_basicSubscriber_comp@node2.BasicSubscriber_proc] -->
-    <constrainedInstance xmi:idref="_3b914204-c4e8-479f-9f8f-0a02fd1892d0"/>
+    <constrainedInstance xmi:idref="_65b50cb6-02cd-4680-963a-d5ac498d4473"/>
   </localityConstraint>
 
 </Deployment:DeploymentPlan>
