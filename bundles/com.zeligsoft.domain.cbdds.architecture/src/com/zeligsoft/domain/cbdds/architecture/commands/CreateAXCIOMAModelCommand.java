@@ -32,9 +32,14 @@ import org.eclipse.papyrus.uml.tools.utils.PackageUtil;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Profile;
-import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.resource.UMLResource;
+
+import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
+import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.DDS4CCMModel;
+import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.ModelTypeEnum;
 
 /**
  * The Class CreateSysMLModelCommand.
@@ -124,8 +129,9 @@ public class CreateAXCIOMAModelCommand implements IModelCreationCommand {
 		if (profile != null) {
 			Package model = (org.eclipse.uml2.uml.Package) owner;
 			PackageUtil.applyProfile(model, profile, true);
-			Stereotype st = model.getApplicableStereotype("cxDDS4CCM::DDS4CCMModel");
-			model.applyStereotype(st);
+			ZDLUtil.addZDLConcept(model, DDS4CCMNames.DDS4_CCMMODEL);
+			DDS4CCMModel contextModel = ZDLFactoryRegistry.INSTANCE.create(model, DDS4CCMModel.class);
+			contextModel.setModelType(ModelTypeEnum.AXCIOMA);
 		} else {
 			com.zeligsoft.domain.cbdds.architecture.Activator.log.error("Impossible to find CBDDS profile", null);
 		}
