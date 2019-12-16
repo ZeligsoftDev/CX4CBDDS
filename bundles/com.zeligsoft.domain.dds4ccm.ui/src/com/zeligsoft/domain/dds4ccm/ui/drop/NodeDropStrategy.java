@@ -40,22 +40,22 @@ import com.zeligsoft.domain.omg.ccm.CCMNames;
 /**
  * Drop strategy to create a CCM part
  */
-public class CCMComponentToCCMPartDropStrategy extends TransactionalDropStrategy {
+public class NodeDropStrategy extends TransactionalDropStrategy {
 
 	/**
 	 * Constructor.
 	 */
-	public CCMComponentToCCMPartDropStrategy() {
+	public NodeDropStrategy() {
 	}
 
 	@Override
 	public String getLabel() {
-		return "CCMComponent drop to create CCMPart";
+		return "Node drop to create NodeInstance";
 	}
 
 	@Override
 	public String getDescription() {
-		return "CCMComponent drop to create CCMPart";
+		return "Node drop to create CCMPart";
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class CCMComponentToCCMPartDropStrategy extends TransactionalDropStrategy
 
 	@Override
 	public String getID() {
-		return com.zeligsoft.domain.dds4ccm.ui.Activator.PLUGIN_ID + ".CCMComponentToCCMPartDrop";
+		return com.zeligsoft.domain.dds4ccm.ui.Activator.PLUGIN_ID + ".NodeToNodeInstanceDrop";
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class CCMComponentToCCMPartDropStrategy extends TransactionalDropStrategy
 		if (dropReq == null) {
 			return null;
 		}
-		List<Component> handledDroppedObjects = getDroppedCCMComponents(dropReq);
+		List<Component> handledDroppedObjects = getDroppedNodes(dropReq);
 		EObject targetElement = getTargetSemanticElement(targetEditPart);
 
 		if (!canHandleRequest(handledDroppedObjects, targetElement)) {
@@ -109,18 +109,18 @@ public class CCMComponentToCCMPartDropStrategy extends TransactionalDropStrategy
 	 */
 	protected Command getCreateAndDropObjectCommand(EObject droppedObject, Component targetComponent, Point location,
 			EditPart targetEditPart) {
-		IElementType type = ZDLElementTypeUtil.getElementType(targetComponent, CCMNames.CCMPART);
-		CreateCCMPartAndDisplayCommand command = new CreateCCMPartAndDisplayCommand(targetComponent, type.getId(),
-				UMLPackage.eINSTANCE.getNamespace_OwnedMember(), droppedObject, location, targetEditPart);
+		IElementType type = ZDLElementTypeUtil.getElementType(targetComponent, CCMNames.NODE_INSTANCE);
+		CreatePartAndDisplayCommand command = new CreatePartAndDisplayCommand(targetComponent,
+				type, UMLPackage.eINSTANCE.getNamespace_OwnedMember(), droppedObject, location, targetEditPart);
 		return new ICommandProxy(command);
 	}
 
-	protected List<Component> getDroppedCCMComponents(Request req) {
+	protected List<Component> getDroppedNodes(Request req) {
 		List<EObject> droppedObjects = getSourceEObjects(req);
 		List<Component> result = new ArrayList<Component>();
 		if (droppedObjects != null) {
 			for (EObject droppedObject : droppedObjects) {
-				if (ZDLUtil.isZDLConcept(droppedObject, CCMNames.CCMCOMPONENT)) {
+				if (ZDLUtil.isZDLConcept(droppedObject, CCMNames.NODE)) {
 					result.add((Component) droppedObject);
 				}
 			}
@@ -131,7 +131,7 @@ public class CCMComponentToCCMPartDropStrategy extends TransactionalDropStrategy
 	protected boolean canHandleRequest(List<Component> droppedObjects, EObject targetElement) {
 		boolean result = false;
 		if (!droppedObjects.isEmpty()) {
-			result = ZDLUtil.isZDLConcept(targetElement, CCMNames.ASSEMBLY_IMPLEMENTATION);
+			result = ZDLUtil.isZDLConcept(targetElement, CCMNames.DOMAIN);
 		}
 		return result;
 	}

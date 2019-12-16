@@ -41,12 +41,12 @@ import com.zeligsoft.domain.omg.ccm.CCMNames;
 /**
  * Drop strategy to create a CCM part
  */
-public class ConnectorDefToDataSpaceDropStrategy extends TransactionalDropStrategy {
+public class ConnectorDropStrategy extends TransactionalDropStrategy {
 
 	/**
 	 * Constructor.
 	 */
-	public ConnectorDefToDataSpaceDropStrategy() {
+	public ConnectorDropStrategy() {
 	}
 
 	@Override
@@ -111,7 +111,7 @@ public class ConnectorDefToDataSpaceDropStrategy extends TransactionalDropStrate
 	protected Command getCreateAndDropObjectCommand(EObject droppedObject, Component targetComponent, Point location,
 			EditPart targetEditPart) {
 		IElementType type = ZDLElementTypeUtil.getElementType(targetComponent, IDL3PlusNames.DATA_SPACE);
-		CreateDataSpaceAndDisplayCommand command = new CreateDataSpaceAndDisplayCommand(targetComponent, type.getId(),
+		CreatePartAndDisplayCommand command = new CreatePartAndDisplayCommand(targetComponent, type,
 				UMLPackage.eINSTANCE.getNamespace_OwnedMember(), droppedObject, location, targetEditPart);
 		return new ICommandProxy(command);
 	}

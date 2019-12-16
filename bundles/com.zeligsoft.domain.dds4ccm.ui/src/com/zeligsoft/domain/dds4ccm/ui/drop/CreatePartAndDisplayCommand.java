@@ -34,6 +34,7 @@ import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.diagram.core.edithelpers.CreateElementRequestAdapter;
 import org.eclipse.gmf.runtime.diagram.ui.requests.DropObjectsRequest;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.papyrus.infra.core.services.ServiceException;
@@ -44,27 +45,24 @@ import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLPackage;
 
-import com.zeligsoft.base.zdl.type.ZDLElementTypeUtil;
-import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
-
 /**
- * Command to create a DataSpace, add it to a parent Assembly and display it to the
- * given location
+ * Command to create a CCM Part, add it to a parent Assembly and display it to
+ * the given location
  */
-public class CreateDataSpaceAndDisplayCommand extends AbstractCommand {
+public class CreatePartAndDisplayCommand extends AbstractCommand {
 
 	protected Component targetComponent;
-	protected String dataSpaceId;
+	protected IElementType instanceType;
 	protected EReference componentFeature;
 	protected EObject droppedObject;
 	protected Point location;
 	protected EditPart targetEditPart;
 
-	public CreateDataSpaceAndDisplayCommand(Component targetComponent, String dataSpaceId, EReference componentFeature,
-			EObject droppedObject, Point location, EditPart targetEditPart) {
+	public CreatePartAndDisplayCommand(Component targetComponent, IElementType type,
+			EReference componentFeature, EObject droppedObject, Point location, EditPart targetEditPart) {
 		super("");
 		this.targetComponent = targetComponent;
-		this.dataSpaceId = dataSpaceId;
+		this.instanceType = type;
 		this.componentFeature = componentFeature;
 		this.droppedObject = droppedObject;
 		this.location = new Point(location);
@@ -90,15 +88,15 @@ public class CreateDataSpaceAndDisplayCommand extends AbstractCommand {
 			com.zeligsoft.domain.dds4ccm.ui.Activator.getDefault().error(e.getMessage(), e);
 			return CommandResult.newErrorCommandResult(e);
 		}
-		Property CCMPart = createDataSpace(editingDomain);
-		setCCMAsType(editingDomain, CCMPart, droppedObject);
-		dropCCMPart(CCMPart);
+		Property instance = createInstance(editingDomain);
+		setInstanceType(editingDomain, instance, droppedObject);
+		dropInstance(instance);
 
-		return CommandResult.newOKCommandResult(CCMPart);
+		return CommandResult.newOKCommandResult(instance);
 	}
 
-	protected void setCCMAsType(TransactionalEditingDomain editingDomain, Property CCMPart, EObject type) {
-		SetRequest setRequest = new SetRequest(editingDomain, CCMPart, UMLPackage.eINSTANCE.getTypedElement_Type(),
+	protected void setInstanceType(TransactionalEditingDomain editingDomain, Property instance, EObject type) {
+		SetRequest setRequest = new SetRequest(editingDomain, instance, UMLPackage.eINSTANCE.getTypedElement_Type(),
 				type);
 
 		IElementEditService provider = ElementEditServiceUtils.getCommandProvider(targetComponent);
@@ -118,7 +116,7 @@ public class CreateDataSpaceAndDisplayCommand extends AbstractCommand {
 	/**
 	 * @param createdNode
 	 */
-	protected void dropCCMPart(Property createdCCMPart) {
+	protected void dropInstance(Property createdCCMPart) {
 		DropObjectsRequest dropReq = new DropObjectsRequest();
 		dropReq.setObjects(Arrays.asList(createdCCMPart));
 		dropReq.setLocation(location);
@@ -131,10 +129,10 @@ public class CreateDataSpaceAndDisplayCommand extends AbstractCommand {
 	/**
 	 * 
 	 */
-	protected Property createDataSpace(TransactionalEditingDomain editingDomain) {
+	protected Property createInstance(TransactionalEditingDomain editingDomain) {
 		Property createdProperty = null;
 		CreateElementRequest createElementRequest = new CreateElementRequest(editingDomain, targetComponent,
-				ZDLElementTypeUtil.getElementType(targetComponent, IDL3PlusNames.DATA_SPACE));
+				instanceType);
 
 		IElementEditService provider = ElementEditServiceUtils.getCommandProvider(targetComponent);
 		if (provider != null) {

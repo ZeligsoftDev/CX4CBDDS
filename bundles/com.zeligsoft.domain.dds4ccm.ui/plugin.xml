@@ -79,10 +79,22 @@
     <extension
           point="org.eclipse.papyrus.infra.gmfdiag.dnd.dropStrategy">
        <strategy
-             strategy="com.zeligsoft.domain.dds4ccm.ui.drop.CCMComponentToCCMPartDropStrategy">
+             strategy="com.zeligsoft.domain.dds4ccm.ui.drop.CCMComponentDropStrategy">
        </strategy>
        <strategy
-             strategy="com.zeligsoft.domain.dds4ccm.ui.drop.ConnectorDefToDataSpaceDropStrategy">
+             strategy="com.zeligsoft.domain.dds4ccm.ui.drop.ConnectorDropStrategy">
+       </strategy>
+       <strategy
+             strategy="com.zeligsoft.domain.dds4ccm.ui.drop.NodeDropStrategy">
+       </strategy>
+       <strategy
+             strategy="com.zeligsoft.domain.dds4ccm.ui.drop.BridgeDropStrategy">
+       </strategy>
+       <strategy
+             strategy="com.zeligsoft.domain.dds4ccm.ui.drop.InterconnectDropStrategy">
+       </strategy>
+       <strategy
+             strategy="com.zeligsoft.domain.dds4ccm.ui.drop.HomeDropStrategy">
        </strategy>
     </extension>
     
