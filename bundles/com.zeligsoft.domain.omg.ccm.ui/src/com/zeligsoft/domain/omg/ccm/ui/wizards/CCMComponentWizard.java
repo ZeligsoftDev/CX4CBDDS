@@ -19,7 +19,6 @@ package com.zeligsoft.domain.omg.ccm.ui.wizards;
 import java.util.Collections;
 
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -35,7 +34,6 @@ import org.eclipse.uml2.uml.Package;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.ccm.ui.Activator;
 import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
 
 /**
@@ -178,6 +176,7 @@ public class CCMComponentWizard extends Wizard {
 			Object result = command.getResult().iterator().next();
 			if (result instanceof Package) {
 				((Package) result).setName(page.getSubpackageName());
+				return (Package) result;
 			}
 		}
 		return defaultContainer;
