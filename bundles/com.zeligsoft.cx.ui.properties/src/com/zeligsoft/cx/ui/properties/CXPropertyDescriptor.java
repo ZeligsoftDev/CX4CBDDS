@@ -23,7 +23,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -184,10 +183,9 @@ public class CXPropertyDescriptor {
 	 */
 	public Object createConcept(final Class propertyConcept) {
 
-		final ArrayList<Object> list = new ArrayList<Object>();
-
+		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(context);
 		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(context),
+				domain,
 				NLS.bind(Messages.CXPropertyDescriptor_CreateConceptTransactionLabel, propertyConcept.getName()),
 				Collections.EMPTY_MAP, null) {
 
@@ -199,22 +197,16 @@ public class CXPropertyDescriptor {
 				if (object == null) {
 					object = ZDLUtil.createZDLConcept(context, concept, property.getName(), propertyConcept);
 				}
-				list.add(object);
 
-				return CommandResult.newOKCommandResult();
+				return CommandResult.newOKCommandResult(object);
 			}
 		};
+		
+		Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
 
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command, null, null);
-		} catch (ExecutionException e) {
-
-			Activator.getDefault().error(
-					NLS.bind(Messages.CXPropertyDescriptor_ElementCreationFailedLog, propertyConcept.getName()), e);
-		}
-
-		if (!list.isEmpty()) {
-			return list.get(0);
+		if(emfCommand.canExecute()) {
+			domain.getCommandStack().execute(emfCommand);
+			return emfCommand.getResult().iterator().next();
 		}
 		return null;
 

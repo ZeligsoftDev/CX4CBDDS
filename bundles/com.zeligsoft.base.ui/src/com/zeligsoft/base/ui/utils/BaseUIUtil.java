@@ -214,7 +214,14 @@ public class BaseUIUtil {
 			com.zeligsoft.base.ui.Activator.getDefault().error(e.getMessage(), e);
 			return null;
 		}
-		IElementType type = ZDLElementTypeUtil.getElementType(container, conceptToCreate);
+		
+		IElementType type = null;
+		try {
+			type = ZDLElementTypeUtil.getElementType(container, conceptToCreate);
+		} catch (IllegalArgumentException e) {
+			// There was problem getting element type so return null
+			return null;
+		}
 
 		final CreateElementRequest req = new CreateElementRequest(editingDomain, container, type);
 		final EObject target = ElementEditServiceUtils.getTargetFromContext(editingDomain, container, req);

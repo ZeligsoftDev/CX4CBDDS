@@ -39,7 +39,6 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.toolingmodel.PropertyDefinition;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
@@ -175,9 +174,8 @@ public class CXElementCreationPage
 					if (property.getType() instanceof PrimitiveType) {
 						String type = property.getType().getName();
 
-						if (type.equals(UMLPackage.Literals.LITERAL_STRING.getName())
-							|| type.equals(UMLPackage.Literals.LITERAL_INTEGER
-								.getName())) {
+						if (type.equals(String.class.getSimpleName())
+							|| type.equals(Integer.class.getSimpleName())) {
 							widgets = CXPropertiesWidgetFactory
 								.createSectionForStringType(composite,
 									subDescriptor);
@@ -211,8 +209,7 @@ public class CXElementCreationPage
 											}
 										});
 							}
-						}else if (type.equals(UMLPackage.Literals.LITERAL_BOOLEAN
-							.getName())) {
+						}else if (type.equals(Boolean.class.getSimpleName())) {
 							CXPropertiesWidgetFactory.createSectionForBooleanType(
 								composite, subDescriptor);
 						}
