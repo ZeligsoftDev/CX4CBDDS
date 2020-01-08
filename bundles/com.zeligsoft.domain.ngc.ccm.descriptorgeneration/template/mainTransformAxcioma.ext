@@ -816,12 +816,28 @@ cached List[DeploymentPart] getTerminalConnectedPortHelperDP(DeploymentPart cont
 
 Void visitPortForExternalConnectons(DeploymentPart partDP, InterfacePort port, DeploymentPart connectedPartDP, InterfacePort connectedPort, CCM::CCM_Deployment::DeploymentPlan deployment, DeploymentPlan plan) :	
 	
-	// Maintain same signature for avoiding duplicated connetions
-	if(port.isConjugated) then{
-		createClientServerConnection(partDP, port, connectedPartDP, connectedPort, plan)
+	let receptPartDP = {}:
+	let receptacle = {}:
+	let facetPartDP = {}:
+	let facet = {}:
+	
+	{if(port.isConjugated) then{
+		receptPartDP.add(partDP) ->
+		receptacle.add(port) ->
+		facetPartDP.add(connectedPartDP) ->
+		facet.add(connectedPort)
 	}else{
-		createClientServerConnection(connectedPartDP, connectedPort, partDP, port, plan)
+		receptPartDP.add(connectedPartDP) ->
+		receptacle.add(connectedPort) ->
+		facetPartDP.add(partDP) ->
+		facet.add(port)
+	}} ->	
+	
+	// generate external connection only if 'receptPartDP' is deployed
+	if(receptPartDP.first().isDeployed()) then{
+		createClientServerConnection(receptPartDP.first(), receptacle.first(), facetPartDP.first(), facet.first(), plan)
 	};
+	
 	
 // return connetorInstance corresponding to the 'port' owned by the 'part' 	
 cached InstanceDeploymentDescription getConnectorInstance(DeploymentPart partDP, InterfacePort port, CCM::CCM_Deployment::DeploymentPlan deployment, DeploymentPlan plan):
@@ -844,12 +860,7 @@ create PlanConnectionDescription createClientServerConnection(DeploymentPart rec
 		this.name.add(receptPartDP.getScopedName() + "." + receptacle.name + '_' + rConnectorType + "__" + facetPartDP.getScopedName() + "." + facet.name + "_" + fConnectorType  
 				+ (receptacle.isUsedSynchronously()? "_syncdirect" : "_asyncdirect")) ->
 		this.createEndPoint(false, false, getConnectorUsesPortName(receptacle), receptacleConnectorInstance) ->
-		this.createExternalEndPoint(receptPartDP.name + "_" + receptacle.name + "__" + facetPartDP.name + "_" + facet.name, facet, facetPartDP)	
-	}else if(facetPartDP.isDeployed()) then{
-		this.name.add(receptPartDP.getScopedName() + "." + receptacle.name + '_' + rConnectorType + "__" + facetPartDP.getScopedName() + "." + facet.name + "_" + fConnectorType  
-				+ (facet.isUsedSynchronously()? "_syncdirect" : "_asyncdirect")) ->
-		this.createEndPoint(true, false, getConnectorProvidesPortName(facet).first(), facetConnectorInstance) ->
-		this.createExternalEndPoint(receptPartDP.name + "_" + receptacle.name + "__" + facetPartDP.name + "_" + facet.name, receptacle, receptPartDP)
+		this.createExternalEndPoint(getRegisterNamingPropertyVal(facetPartDP, facet), facet, facetPartDP)
 	}}->
 	plan.connection.add(this) ->
 	this;
@@ -908,11 +919,13 @@ create InstanceDeploymentDescription createInternalConnectorFragments(Deployment
 	}} ->
 	
 	if(existsUndeployedConnectedPart(partDP, port, deployment)) then{
-		this.createRegisterNamingProperty(partDP.name + "_" + port.name)
+		this.createRegisterNamingProperty(getRegisterNamingPropertyVal(partDP, port))
 	} ->
 	
 	addInstanceToLocalityConstraint(this, plan, partDP);
 	
+cached String getRegisterNamingPropertyVal(DeploymentPart partDP, InterfacePort port):
+	partDP.name + "_" + port.name;
 	
 cached Boolean existsUndeployedConnectedPart(DeploymentPart partDP, InterfacePort port, CCM::CCM_Deployment::DeploymentPlan deployment):
 	let terminalConnectedPortDP = getTerminalConnectedPortDP(port, partDP, deployment):	
