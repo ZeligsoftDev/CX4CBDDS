@@ -27,6 +27,7 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.requests.DropObjectsRequest;
+import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.papyrus.infra.gmfdiag.dnd.strategy.TransactionalDropStrategy;
 import org.eclipse.swt.graphics.Image;
@@ -111,8 +112,14 @@ public class ConnectorDropStrategy extends TransactionalDropStrategy {
 	protected Command getCreateAndDropObjectCommand(EObject droppedObject, Component targetComponent, Point location,
 			EditPart targetEditPart) {
 		IElementType type = ZDLElementTypeUtil.getElementType(targetComponent, IDL3PlusNames.DATA_SPACE);
+
+		String partName = "";
+		if (droppedObject != null && ZDLUtil.isZDLConcept(droppedObject, IDL3PlusNames.CONNECTOR_DEF)
+				&& ZDLUtil.isZDLConcept(droppedObject.eContainer(), IDL3PlusNames.MODULE_INSTANTIATION)) {
+			partName = EMFCoreUtil.getName(droppedObject.eContainer());
+		}
 		CreatePartAndDisplayCommand command = new CreatePartAndDisplayCommand(targetComponent, type,
-				UMLPackage.eINSTANCE.getNamespace_OwnedMember(), droppedObject, location, targetEditPart);
+				UMLPackage.eINSTANCE.getNamespace_OwnedMember(), droppedObject, location, targetEditPart, partName);
 		return new ICommandProxy(command);
 	}
 

@@ -41,6 +41,7 @@ import org.eclipse.papyrus.infra.core.services.ServiceException;
 import org.eclipse.papyrus.infra.emf.utils.ServiceUtilsForEObject;
 import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
 import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -52,21 +53,28 @@ import org.eclipse.uml2.uml.UMLPackage;
 public class CreatePartAndDisplayCommand extends AbstractCommand {
 
 	protected Component targetComponent;
-	protected IElementType instanceType;
+	protected IElementType partType;
 	protected EReference componentFeature;
 	protected EObject droppedObject;
 	protected Point location;
 	protected EditPart targetEditPart;
+	protected String partName;
+
+	public CreatePartAndDisplayCommand(Component targetComponent, IElementType type, EReference componentFeature,
+			EObject droppedObject, Point location, EditPart targetEditPart) {
+		this(targetComponent, type, componentFeature, droppedObject, location, targetEditPart, "");
+	}
 
 	public CreatePartAndDisplayCommand(Component targetComponent, IElementType type,
-			EReference componentFeature, EObject droppedObject, Point location, EditPart targetEditPart) {
+			EReference componentFeature, EObject droppedObject, Point location, EditPart targetEditPart, String partName) {
 		super("");
 		this.targetComponent = targetComponent;
-		this.instanceType = type;
+		this.partType = type;
 		this.componentFeature = componentFeature;
 		this.droppedObject = droppedObject;
 		this.location = new Point(location);
 		this.targetEditPart = targetEditPart;
+		this.partName = partName;
 	}
 
 	/**
@@ -132,7 +140,7 @@ public class CreatePartAndDisplayCommand extends AbstractCommand {
 	protected Property createInstance(TransactionalEditingDomain editingDomain) {
 		Property createdProperty = null;
 		CreateElementRequest createElementRequest = new CreateElementRequest(editingDomain, targetComponent,
-				instanceType);
+				partType);
 
 		IElementEditService provider = ElementEditServiceUtils.getCommandProvider(targetComponent);
 		if (provider != null) {
@@ -147,6 +155,9 @@ public class CreatePartAndDisplayCommand extends AbstractCommand {
 				}
 				CommandResult result = createCommand.getCommandResult();
 				createdProperty = getCreatedObject(result);
+				if(!UML2Util.isEmpty(partName)) {
+					createdProperty.setName(partName);
+				}
 				return createdProperty;
 			}
 

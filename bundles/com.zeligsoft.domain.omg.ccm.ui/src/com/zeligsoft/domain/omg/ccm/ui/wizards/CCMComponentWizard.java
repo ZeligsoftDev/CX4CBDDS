@@ -33,6 +33,7 @@ import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Package;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
 
@@ -82,7 +83,10 @@ public class CCMComponentWizard extends Wizard {
 						//assembly implementation type
 						Component assembly = null;
 						assembly = createAssembly(container);
-						assembly.createGeneralization(component);
+						// the "BaseUIUtil.createRelationship" method is created for replacing the RSA specific "UMLElementFactory.createRelationship" method  
+						BaseUIUtil.createRelationship(assembly, ZDLElementTypeManager.INSTANCE
+								.getElementTypeFromHint("generalization"), assembly, component);
+			
 						if (page.isCreateStructureDiagram()) {
 //							ICommand command = UMLElementFactory.getCreateElementCommand(assembly,
 //									ElementTypeRegistry.getInstance().getType(

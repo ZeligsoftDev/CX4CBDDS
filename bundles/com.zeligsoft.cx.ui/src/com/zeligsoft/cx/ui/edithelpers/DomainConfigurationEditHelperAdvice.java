@@ -18,9 +18,6 @@ package com.zeligsoft.cx.ui.edithelpers;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -32,7 +29,6 @@ import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.edithelper.AbstractEditHelperAdvice;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
-import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Profile;
 
@@ -42,7 +38,6 @@ import com.zeligsoft.base.toolingmodel.MenuItem;
 import com.zeligsoft.base.toolingmodel.MenuModel;
 import com.zeligsoft.base.toolingmodel.OawExpression;
 import com.zeligsoft.base.toolingmodel.OawXtend;
-import com.zeligsoft.base.ui.l10n.Messages;
 import com.zeligsoft.base.ui.menus.util.CXMenuUtil;
 import com.zeligsoft.base.zdl.util.OawEvaluationUtil;
 import com.zeligsoft.base.zdl.util.OawEvaluationUtil.OawDescriptor;

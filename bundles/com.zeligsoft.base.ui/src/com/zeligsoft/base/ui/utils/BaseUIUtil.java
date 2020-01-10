@@ -50,6 +50,7 @@ import org.eclipse.gmf.runtime.emf.type.core.IClientContext;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.type.core.ISpecializationType;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
+import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -195,6 +196,47 @@ public class BaseUIUtil {
 		}
 
 		return activeView;
+	}
+	
+	/**
+	 * Create a Relationship instance with the given container, type, source and target
+	 * 
+	 * @param container
+	 * @param typeToCreate
+	 * @param source
+	 * @param target
+	 * 
+	 * @return the created Relationship instance, or null, if the instance is failed to be created
+	 */
+	public static EObject createRelationship(EObject container, IElementType typeToCreate, EObject source, EObject target) {
+		
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(container);	
+		final CreateRelationshipRequest req = new CreateRelationshipRequest(container, source, target, typeToCreate);
+		final EObject targetFromContext = ElementEditServiceUtils.getTargetFromContext(editingDomain, container, req);
+		
+		if (targetFromContext == null) {
+			return null;
+		}
+
+		IClientContext context = null;
+		try {
+			context = TypeContext.getContext(container);
+		} catch (ServiceException e) {
+			com.zeligsoft.base.ui.Activator.getDefault().error(e.getMessage(), e);
+			return null;
+		}
+		Command command = BaseUIUtil.buildCommand(editingDomain, context, req, targetFromContext);
+		if (command == null || !command.canExecute()) {
+			return null;
+		}
+		
+		editingDomain.getCommandStack().execute(command);
+		
+		if(!command.getResult().isEmpty()) {
+			return (EObject)command.getResult().iterator().next();
+		}
+		
+		return null;
 	}
 	
 	/**
