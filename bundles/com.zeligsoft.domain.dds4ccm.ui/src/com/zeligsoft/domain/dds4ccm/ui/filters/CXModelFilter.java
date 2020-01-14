@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Package;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
@@ -32,7 +33,7 @@ import com.zeligsoft.domain.zml.util.ZMLMMNames;
  * @author ysroh
  * 
  */
-public class WorkerFunctionFilter extends ViewerFilter {
+public class CXModelFilter extends ViewerFilter {
 
 	@Override
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
@@ -40,16 +41,22 @@ public class WorkerFunctionFilter extends ViewerFilter {
 
 		EObject eObject = null;
 		if (element instanceof IAdaptable) {
-			eObject = (EObject) ((IAdaptable) element)
-					.getAdapter(EObject.class);
+			eObject = (EObject) ((IAdaptable) element).getAdapter(EObject.class);
 		} else if (element instanceof EObject) {
 			eObject = (EObject) element;
 		}
-		if (eObject != null && eObject instanceof Element) {
-			if (ZDLUtil.isZDLProfile((Element) eObject,
-					DDS4CCMDomainFilter.DDS4CCM_PROFILE_NAME)
-					&& (ZDLUtil.isZDLConcept(eObject,
-							ZMLMMNames.WORKER_FUNCTION))) {
+		if (eObject instanceof Element
+				&& ZDLUtil.isZDLProfile((Element) eObject, DDS4CCMDomainFilter.DDS4CCM_PROFILE_NAME)) {
+			if (ZDLUtil.isZDLConcept(eObject, ZMLMMNames.WORKER_FUNCTION)) {
+				return false;
+			}
+			if ((ZDLUtil.isZDLConcept(eObject, ZMLMMNames.DEPLOYMENT_PART))
+					|| (ZDLUtil.isZDLConcept(eObject, ZMLMMNames.ALLOCATION))) {
+				return false;
+			}
+			// hide packages containing instance specification for CCM properties
+			if (eObject instanceof Package && eObject.eContainer() != null
+					&& ZDLUtil.isZDLConcept(eObject.eContainer(), ZMLMMNames.DEPLOYMENT)) {
 				return false;
 			}
 		}

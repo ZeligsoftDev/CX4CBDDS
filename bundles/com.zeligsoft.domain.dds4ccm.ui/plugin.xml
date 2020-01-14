@@ -20,8 +20,8 @@
          <propertyTab
                afterTab="uml"
                category="org.eclipse.papyrus"
-               id="cbdds"
-               label="CBDDS"/>
+               id="cx"
+               label="CX"/>
       </propertyTabs>
     </extension>    
     <extension
@@ -31,8 +31,8 @@
           <propertySection
                 class="com.zeligsoft.cx.ui.properties.sections.DomainPropertySection"
                 filter="com.zeligsoft.domain.dds4ccm.ui.internal.filters.CBDDSPropertiesFilter"
-                id="cbdds.Sections"
-                tab="cbdds">
+                id="cx.Sections"
+                tab="cx">
           </propertySection>
        </propertySections>
     </extension>
@@ -97,7 +97,34 @@
              strategy="com.zeligsoft.domain.dds4ccm.ui.drop.HomeDropStrategy">
        </strategy>
     </extension>
+    <extension
+          point="org.eclipse.papyrus.emf.facet.util.emf.core.modeldeclaration">
+       <modeldeclaration
+             file="facets/SupressStereotypeDisplay.custom">
+       </modeldeclaration>
+    </extension>
     
+       <extension
+         point="org.eclipse.ui.navigator.viewer">               
+      <viewerContentBinding
+        viewerId="org.eclipse.papyrus.views.modelexplorer.modelexplorer">
+         <includes>
+            <contentExtension
+              pattern="com.zeligsoft.domain.dds4ccm.ui.filters.*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>           
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+        <commonFilter
+              activeByDefault="true"
+              class="com.zeligsoft.domain.dds4ccm.ui.filters.CXModelFilter"
+              description="%filter.description"
+              id="com.zeligsoft.domain.dds4ccm.ui.filters.cxModelFilter"
+              name="%filter.name">       
+        </commonFilter>
+   </extension>
     <!--
 	<extension
          point="org.eclipse.ui.newWizards">

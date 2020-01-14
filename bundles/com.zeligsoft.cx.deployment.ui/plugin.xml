@@ -28,30 +28,5 @@
          </editingDomain>
       </listener>
    </extension>   
-   
-   <extension
-         id="base.deployment.navigator.viewer.ID"
-         point="org.eclipse.ui.navigator.viewer">               
-      <viewerContentBinding
-        viewerId="org.eclipse.ui.navigator.ProjectExplorer">
-         <includes>
-            <contentExtension
-              pattern="com.zeligsoft.base.deployment.rsm.tooling.filters.*">
-            </contentExtension>
-         </includes>
-      </viewerContentBinding>           
-   </extension>   
-   <extension
-         id="base.deployment.navigatorContent.ID"
-         name="name"
-         point="org.eclipse.ui.navigator.navigatorContent">
-        <commonFilter
-          activeByDefault="true"
-          class="com.zeligsoft.cx.deployment.ui.filters.DeploymentViewerFilter"
-          description="%DeploymentViewerFilter.description"
-          id="com.zeligsoft.base.deployment.rsm.tooling.filters.deploymentPart"
-          name="%DeploymentViewerFilter.name">       
-        </commonFilter>
-   </extension>  
-   
+
 </plugin>
