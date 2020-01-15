@@ -124,7 +124,7 @@ public class TargetNodeEditHelperAdvice extends AbstractEditHelperAdvice {
 					satisfierProp.setName(satisfierPropName);
 					satisfierProp.setTypeOverride(ZDLFactoryRegistry.INSTANCE
 							.create(CORBAUtil.getCORBAPrimitiveType(
-									nodeAddress.asClass(), "CORBAString"),
+									nodeAddress.asClass(), "CXString"),
 									CORBAString.class));
 					
 					// set values used in code below

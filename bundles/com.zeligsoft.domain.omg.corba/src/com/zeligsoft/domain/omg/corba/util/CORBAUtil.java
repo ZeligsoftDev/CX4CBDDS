@@ -202,7 +202,7 @@ public class CORBAUtil {
 	public static EObject getCORBAPrimitiveType(EObject context, String string) {
 		EObject root = EcoreUtil.getRootContainer(context);
 		for (PackageImport pi : ((Package) root).getPackageImports()) {
-			if ("IDLPrimitives".equals(pi.getImportedPackage().getName())) { //$NON-NLS-1$
+			if ("CXPrimitives".equals(pi.getImportedPackage().getName())) { //$NON-NLS-1$
 				return pi.getImportedPackage().getOwnedMember(string); 
 			}
 		}

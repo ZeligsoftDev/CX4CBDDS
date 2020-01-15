@@ -159,7 +159,7 @@ public class DDS4CCMUtil {
  
 		final String localityArgs = PropertyVariable.LOCALITY_ARGUMENTS.getName(modelType);
 				
-		EObject corbaStringType = CORBAUtil.getCORBAPrimitiveType(containerProcess, "CORBAString"); //$NON-NLS-1$
+		EObject corbaStringType = CORBAUtil.getCORBAPrimitiveType(containerProcess, "CXString"); //$NON-NLS-1$
 		boolean b_containerProcessModified = false;
 
 		boolean b_hasAffinity = false;
@@ -233,7 +233,7 @@ public class DDS4CCMUtil {
 		
 		boolean b_componentModified = false;
 		
-		EObject corbaStringType = CORBAUtil.getCORBAPrimitiveType(zdlClass, "CORBAString"); //$NON-NLS-1$
+		EObject corbaStringType = CORBAUtil.getCORBAPrimitiveType(zdlClass, "CXString"); //$NON-NLS-1$
 		
 		if (ZDLUtil.isZDLConcept(zdlClass, CCMNames.CCMCOMPONENT)
 			|| ZDLUtil.isZDLConcept(zdlClass, CCMNames.HOME)) {
