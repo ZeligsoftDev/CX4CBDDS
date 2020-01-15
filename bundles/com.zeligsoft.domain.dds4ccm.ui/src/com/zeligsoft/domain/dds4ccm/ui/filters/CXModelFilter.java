@@ -18,17 +18,20 @@
 package com.zeligsoft.domain.dds4ccm.ui.filters;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
- * WorkerFunctionImpl filter
+ * CX model explore content filter
  * 
  * @author ysroh
  * 
@@ -50,6 +53,9 @@ public class CXModelFilter extends ViewerFilter {
 			if (ZDLUtil.isZDLConcept(eObject, ZMLMMNames.WORKER_FUNCTION)) {
 				return false;
 			}
+			if (ZDLUtil.isZDLConcept(eObject, ZMLMMNames.WORKER_FUNCTION_IMPL)) {
+				return false;
+			}
 			if ((ZDLUtil.isZDLConcept(eObject, ZMLMMNames.DEPLOYMENT_PART))
 					|| (ZDLUtil.isZDLConcept(eObject, ZMLMMNames.ALLOCATION))) {
 				return false;
@@ -57,6 +63,20 @@ public class CXModelFilter extends ViewerFilter {
 			// hide packages containing instance specification for CCM properties
 			if (eObject instanceof Package && eObject.eContainer() != null
 					&& ZDLUtil.isZDLConcept(eObject.eContainer(), ZMLMMNames.DEPLOYMENT)) {
+				return false;
+			}
+			if (eObject instanceof NamedElement) {
+				NamedElement ne = (NamedElement) eObject;
+				if (ne.getName().startsWith("_")) {
+					return false;
+				}
+			}
+		}
+
+		if (eObject instanceof EAnnotation) {
+			EAnnotation ea = (EAnnotation) eObject;
+			String source = ea.getSource();
+			if (!UML2Util.isEmpty(source) && (source.startsWith("cx") || source.startsWith("zcx"))) {
 				return false;
 			}
 		}
