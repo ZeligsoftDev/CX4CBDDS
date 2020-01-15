@@ -17,16 +17,17 @@
 
 package com.zeligsoft.domain.dds4ccm.ui.filters;
 
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.papyrus.infra.emf.utils.EMFHelper;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 
+import com.zeligsoft.base.zdl.ZDLNames;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
@@ -42,14 +43,14 @@ public class CXModelFilter extends ViewerFilter {
 	public boolean select(Viewer viewer, Object parentElement, Object element) {
 		boolean result = true;
 
-		EObject eObject = null;
-		if (element instanceof IAdaptable) {
-			eObject = (EObject) ((IAdaptable) element).getAdapter(EObject.class);
-		} else if (element instanceof EObject) {
-			eObject = (EObject) element;
+		EObject eObject = EMFHelper.getEObject(element);
+		if(eObject == null) {
+			return result;
 		}
+		
 		if (eObject instanceof Element
 				&& ZDLUtil.isZDLProfile((Element) eObject, DDS4CCMDomainFilter.DDS4CCM_PROFILE_NAME)) {
+			// filter out elements from CX model
 			if (ZDLUtil.isZDLConcept(eObject, ZMLMMNames.WORKER_FUNCTION)) {
 				return false;
 			}
@@ -73,12 +74,18 @@ public class CXModelFilter extends ViewerFilter {
 			}
 		}
 
+		// filter out CX annotations
 		if (eObject instanceof EAnnotation) {
 			EAnnotation ea = (EAnnotation) eObject;
 			String source = ea.getSource();
 			if (!UML2Util.isEmpty(source) && (source.startsWith("cx") || source.startsWith("zcx"))) {
 				return false;
 			}
+		}
+		
+		// filter out CX Domain models
+		if(ZDLUtil.isZDLConcept(eObject, ZDLNames.DOMAIN_MODEL)) {
+			return false;
 		}
 
 		return result;
