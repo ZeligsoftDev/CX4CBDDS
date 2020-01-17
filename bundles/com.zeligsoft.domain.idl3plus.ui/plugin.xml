@@ -11,6 +11,16 @@
          </Priority>
       </editpartProvider>
    </extension>
+   
+   <extension
+         point="org.eclipse.emf.transaction.listeners">
+      <listener
+            class="com.zeligsoft.domain.idl3plus.ui.listeners.IDL3PlusDeploymentListener">
+         <editingDomain
+               id="org.eclipse.papyrus.SharedEditingDomainID">
+         </editingDomain>
+      </listener>
+   </extension>
 <!--    
     <extension
           point="org.eclipse.ui.popupMenus">
@@ -288,12 +298,6 @@
                elements="idl3plus__component_, idl3plus__port_,idl3plus__interface_, idl3plus__datatype_, idl3plus__part_">
          </context>
       </modelingAssistantProvider>
-   </extension>
-   <extension
-         point="org.eclipse.emf.transaction.listeners">
-      <listener
-            class="com.zeligsoft.domain.idl3plus.ui.listeners.IDL3PlusDeploymentListener">
-      </listener>
    </extension>
       -->     
 </plugin>

@@ -125,6 +125,20 @@
               name="%filter.name">       
         </commonFilter>
    </extension>
+   
+   <extension
+         point="org.eclipse.emf.transaction.listeners">
+      <listener
+            class="com.zeligsoft.domain.dds4ccm.ui.listeners.CCMPartMoveOperationListener">
+         <editingDomain
+               id="org.eclipse.papyrus.SharedEditingDomainID">
+         </editingDomain>
+      </listener>
+      <listener
+            class="com.zeligsoft.domain.dds4ccm.ui.listeners.DDS4CCMListener">
+      </listener>
+   </extension>
+       
     <!--
 	<extension
          point="org.eclipse.ui.newWizards">
@@ -964,18 +978,6 @@
                    menubarPath="menu.repairAllWorkerFunctions/repairAllWorkerFunctions.separator">
              </action>
           </viewerContribution>
-       </extension>
-       <extension
-             point="org.eclipse.emf.transaction.listeners">
-          <listener
-                class="com.zeligsoft.domain.dds4ccm.ui.listeners.CCMPartMoveOperationListener">
-             <editingDomain
-                   id="org.eclipse.gmf.runtime.emf.core.compatibility.MSLEditingDomain">
-             </editingDomain>
-          </listener>
-          <listener
-                class="com.zeligsoft.domain.dds4ccm.ui.listeners.DDS4CCMListener">
-          </listener>
        </extension>
     -->
 </plugin>

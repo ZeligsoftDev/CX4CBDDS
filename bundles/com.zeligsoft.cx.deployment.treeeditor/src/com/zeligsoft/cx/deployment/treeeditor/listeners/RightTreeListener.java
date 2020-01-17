@@ -224,8 +224,8 @@ public class RightTreeListener extends ViewerDropAdapter implements
 
 		if (emfCommand.canExecute()) {
 			view.getEditingDomain().getCommandStack().execute(emfCommand);
-			view.add(partsToDeploy);
 		}
+		view.add(partsToDeploy);
 		return true;
 	}
 

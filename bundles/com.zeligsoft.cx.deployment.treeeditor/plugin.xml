@@ -6,7 +6,6 @@
          point="org.eclipse.ui.editors">
       <editor
             class="com.zeligsoft.cx.deployment.treeeditor.ui.DeploymentTreeEditor"
-            contributorClass="com.zeligsoft.cx.deployment.treeeditor.ui.TreeEditorContributor"
             icon="icons/deployment.gif"
             id="DEPLOYMENT_TREE_EDITOR_ID"
             name="%editor.name.0">
@@ -47,34 +46,9 @@
    <extension
          point="org.eclipse.papyrus.infra.ui.papyrusDiagram">
       <editorDiagram
-            actionBarContributorId="com.zeligsoft.cx.deployment.treeeditor.ui.TreeEditorContributor"
-            contextId="com.cea.papyrus.gmf.editor.context"
             factoryClass="com.zeligsoft.cx.deployment.treeeditor.providers.DeploymentEditorFactory">
       </editorDiagram>
    </extension>
-   <!--
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="false"
-            id="com.zeligsoft.deployment.rsm.editor.popupmenu"
-            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
-         <visibility>
-            <objectState
-                  name="isZDLConcept"
-                  value="ZMLMM::ZML_Deployments::Deployment">
-            </objectState>
-         </visibility>
-         <action
-               class="com.zeligsoft.cx.deployment.treeeditor.actions.DeploymentCreationPopupAction"
-               enablesFor="1"
-               id="com.zeligsoft.deployment.rsm.editor.OpenDeploymentEditorAction"
-               label="%action.label.1"
-               menubarPath="additions">
-         </action>
-      </objectContribution>
-   </extension>
-   -->
    <extension
          point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders">
       <GlobalActionHandlerProvider

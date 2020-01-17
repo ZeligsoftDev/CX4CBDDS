@@ -38,17 +38,17 @@
          point="com.zeligsoft.base.validation.preload">
       <zdl uri="pathmap://ZML_LIBRARIES/ZMLMM.uml" />
    </extension>
-   <!--   
    <extension
          point="org.eclipse.emf.transaction.listeners">
       <listener
             class="com.zeligsoft.domain.zml.util.PortOperationsTrigger">
          <editingDomain
-               id="org.eclipse.gmf.runtime.emf.core.compatibility.MSLEditingDomain">
+               id="org.eclipse.papyrus.SharedEditingDomainID">
          </editingDomain>
       </listener>
-   </extension>  
-
+   </extension>
+     
+   <!--   
     <extension
          id="Base ElementTypes"
          name="Base ElementTypes"

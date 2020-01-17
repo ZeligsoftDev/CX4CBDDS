@@ -55,6 +55,7 @@ public class DeploymentView
 
 	private TransactionalEditingDomain editingDomain;
 	
+	@SuppressWarnings("rawtypes")
 	private ListenerList listenerList;
 
 	/**
@@ -62,6 +63,7 @@ public class DeploymentView
 	 * 
 	 * @param deployment
 	 */
+	@SuppressWarnings("rawtypes")
 	public DeploymentView(Component deployment) {
 		visibleItems = new HashSet<Property>();
 		this.deployment = deployment;
@@ -173,6 +175,7 @@ public class DeploymentView
 	 * 
 	 * @see org.eclipse.emf.edit.provider.IChangeNotifier#addListener(org.eclipse.emf.edit.provider.INotifyChangedListener)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void addListener(INotifyChangedListener listener) {
 		listenerList.add(listener);

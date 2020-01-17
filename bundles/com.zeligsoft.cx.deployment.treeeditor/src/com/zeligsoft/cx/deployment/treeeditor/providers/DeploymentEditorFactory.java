@@ -35,10 +35,7 @@ import org.eclipse.ui.part.EditorActionBarContributor;
 import org.eclipse.uml2.uml.Component;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.cx.deployment.treeeditor.DeploymentEditorInput;
-import com.zeligsoft.cx.deployment.treeeditor.ui.DeploymentFormPage;
 import com.zeligsoft.cx.deployment.treeeditor.ui.DeploymentTreeEditor;
-import com.zeligsoft.cx.deployment.treeeditor.ui.TreeEditorContributor;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -46,7 +43,7 @@ import com.zeligsoft.domain.zml.util.ZMLMMNames;
  */
 public class DeploymentEditorFactory implements IPluggableEditorFactory {
 
-	private ServicesRegistry services;
+	protected ServicesRegistry services;
 
 	private ImageDescriptor icon;
 

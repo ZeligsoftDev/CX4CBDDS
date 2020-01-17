@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
+   <extension
+         point="org.eclipse.emf.transaction.listeners">
+      <listener
+            class="com.zeligsoft.domain.zml.ui.WorkerFunctionImplListener">
+         <editingDomain
+               id="org.eclipse.papyrus.SharedEditingDomainID">
+         </editingDomain>
+       </listener>
+   </extension>
 <!--
    <extension
          point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
@@ -18,14 +27,14 @@
          </object>
       </editpolicyProvider>
    </extension>
-   -->
    <extension
          point="org.eclipse.emf.transaction.listeners">
       <listener
-            class="com.zeligsoft.domain.zml.ui.WorkerFunctionImplListener">
-      </listener>
-      <listener
             class="com.zeligsoft.domain.zml.ui.PortConjugationListener">
+         <editingDomain
+               id="org.eclipse.papyrus.SharedEditingDomainID">
+         </editingDomain>
       </listener>
    </extension>
+   -->
 </plugin>
