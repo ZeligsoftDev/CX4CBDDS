@@ -57,10 +57,10 @@ public class DDS4CCMListener extends ResourceSetListenerImpl {
 
 		for (Notification notification : event.getNotifications()) {
 			final Object notifier = notification.getNotifier();
+			EStructuralFeature feature = (EStructuralFeature) notification
+					.getFeature();
 
-			if (notifier instanceof EObject) {
-				EStructuralFeature feature = (EStructuralFeature) notification
-						.getFeature();
+			if (notifier instanceof EObject && feature != null) {
 				TransactionalEditingDomain domain = TransactionUtil
 						.getEditingDomain((EObject) notifier);
 				if (ZDLUtil.isZDLConcept((EObject) notifier,
