@@ -95,7 +95,7 @@ create Any toValue(CCM::CCM_Target::SatisfierProperty property, DeploymentPart p
 	if resourceValue != null then {
 		let propertyValue = resourceValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.select(
 			slot | slot.definingFeature == property).value.first() :
-		this.value.add(visitAttributeValue(this, propertyValue.zdlAsInstanceValue(), property.type.name.toCDPType()))
+		this.value.add(visitAttributeValue(this, propertyValue.zdlAsInstanceValue(), property.type.toCDPType()))
 	} else {
 		// Get the _nodeInstance property and get the default value from it (if possible).
 		let modelElement = part.modelElement.type :
@@ -106,11 +106,11 @@ create Any toValue(CCM::CCM_Target::SatisfierProperty property, DeploymentPart p
 			if( defaultValue != null ) then {
 				let propertyValue = defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.select(
 					slot | slot.definingFeature == property).value.first() :
-				this.value.add(visitAttributeValue(this, propertyValue.zdlAsInstanceValue(), property.type.name.toCDPType()))
+				this.value.add(visitAttributeValue(this, propertyValue.zdlAsInstanceValue(), property.type.toCDPType()))
 			}
 		}
 	};
 	
 create DataType createType(CCM::CCM_Target::SatisfierProperty property, DeploymentPart part) :
-	this.kind.add(property.type.name.toCDPType());
+	this.kind.add(property.type.toCDPType());
 	
