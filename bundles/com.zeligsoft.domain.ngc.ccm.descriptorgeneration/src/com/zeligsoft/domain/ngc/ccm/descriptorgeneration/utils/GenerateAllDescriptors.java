@@ -128,8 +128,12 @@ public class GenerateAllDescriptors extends AbstractWorkflowComponent {
 			}
 			final boolean executeOK = workflow.executeWorkflow(
 					externalSlotContents, issuesImpl);
-			pathnames.addAll((Set<String>) workflow.getContext().get(
-					getPathnameSlot()));
+			final Set<String> paths = (Set<String>) workflow.getContext().get(
+					getPathnameSlot());
+			// prevent NPE in the event the pathname slot is unset because of error
+			if(paths != null) {
+				pathnames.addAll(paths);
+			}
 			if (!executeOK || issuesImpl.getErrors().length > 0) {
 				String errString = Messages.GenerateAllDescriptors_FailureExecutingWorkflow
 						+ defaultFlow + " on " + modelUriString; //$NON-NLS-1$
