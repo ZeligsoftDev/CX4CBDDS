@@ -263,7 +263,13 @@ Void visitConfigProperty(CORBAAttribute attribute, InstanceDeploymentDescription
 			defaultSlot.visitConfigProperty(idd, defaultSlots)
 		}
 	};
-	
+
+Void visitConfigProperty(Void property, InstanceDeploymentDescription idd, DeploymentPart part ) :
+    // handle missing RegisterNaming property on Components
+    // This method merely prevents an abort. It does not add
+    // the missing RegisterNaming property.
+    ;
+    
 Void visitConfigProperty(CCM::CCM_Target::Property property, InstanceDeploymentDescription idd, DeploymentPart part ) :
 	let defaultSlots = createList(new java::lang::Object) :
 	// check for and prevent double add of a property.
@@ -293,10 +299,10 @@ Void visitConfigProperty(CCM::CCM_Target::Property property, InstanceDeploymentD
 		
 		// Register naming tag must be generated even if no values set
 		//
-		// IF there’s no explicit RegisterNaming property set on either the CCMComponent type (default setting) 
+		// IF thereï¿½s no explicit RegisterNaming property set on either the CCMComponent type (default setting) 
 		// OR on the instance of that type (override setting) in the deployment plan, 
-		// BUT there’s a CCMConnector connection definition in the deployment assembly that 
-		// connects a deployed component instance (any facet/receptacle port – just takes one) 
+		// BUT thereï¿½s a CCMConnector connection definition in the deployment assembly that 
+		// connects a deployed component instance (any facet/receptacle port ï¿½ just takes one) 
 		// with a non-deployed component instance, then generate the register naming tag for the deployed instance.
 		if(property.name == "edu.vanderbilt.dre.DAnCE.RegisterNaming" && !idd.configProperty.name.exists(n | n == property.name)) then {
 			idd.createRegisterNamingProperty(part.name)
