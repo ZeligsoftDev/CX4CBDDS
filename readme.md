@@ -12,7 +12,7 @@ DDS4CCM has support for the following CCM implementations:
 The build requires:
 
 - a Java 8 or later JRE
-- Maven 3.6.0 or later.
+- The build will automatically install an appropriate Maven version
 
 ## Building
 
@@ -24,11 +24,20 @@ The build requires:
 	# increase Maven memory
 	export MAVEN_OPTS="-Xmx1024m"
 	# build
-	mvn -D "dds4ccm.root=`pwd`" clean verify
+	./mvnw -D "dds4ccm.root=`pwd`" clean verify
 </pre>
 
 In Windows environments, you can use the fully qualified path name of the current
-directory rather than using the result of the embedded `pwd` command.
+directory rather than using the result of the embedded `pwd` command, or set the
+DDS4CCM_ROOT environment variable before running:
+
+<pre>
+        REM increase Maven memory
+        set MAVEN_OPTS="-Xmx1024m"
+        REM set build directory variable
+        set DDS4CMM_ROOT=<fully qualified build path>
+        mvnw.cmd clean verify
+</pre>
 
 On macOS, it was is necessary to increase the shell's maximum number of open files.
 The following was found to be acceptable:
