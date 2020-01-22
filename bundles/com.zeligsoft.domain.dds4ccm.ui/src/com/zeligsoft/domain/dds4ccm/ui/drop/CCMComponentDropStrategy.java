@@ -27,12 +27,14 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.requests.DropObjectsRequest;
+import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.papyrus.infra.gmfdiag.dnd.strategy.TransactionalDropStrategy;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import com.zeligsoft.base.util.NamingUtil;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
@@ -110,8 +112,11 @@ public class CCMComponentDropStrategy extends TransactionalDropStrategy {
 	protected Command getCreateAndDropObjectCommand(EObject droppedObject, Component targetComponent, Point location,
 			EditPart targetEditPart) {
 		IElementType type = ZDLElementTypeUtil.getElementType(targetComponent, CCMNames.CCMPART);
+		String partName = EMFCoreUtil.getName(droppedObject);
+		partName = Character.toLowerCase(partName.charAt(0)) + partName.substring(1);
+		partName = NamingUtil.generateUniqueName(partName, targetComponent.getOwnedAttributes());
 		CreatePartAndDisplayCommand command = new CreatePartAndDisplayCommand(targetComponent, type,
-				UMLPackage.eINSTANCE.getNamespace_OwnedMember(), droppedObject, location, targetEditPart);
+				UMLPackage.eINSTANCE.getNamespace_OwnedMember(), droppedObject, location, targetEditPart, partName);
 		return new ICommandProxy(command);
 	}
 

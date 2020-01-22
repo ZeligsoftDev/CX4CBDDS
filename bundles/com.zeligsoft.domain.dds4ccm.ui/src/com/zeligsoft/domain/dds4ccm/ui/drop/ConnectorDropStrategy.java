@@ -34,6 +34,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import com.zeligsoft.base.util.NamingUtil;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
@@ -114,9 +115,10 @@ public class ConnectorDropStrategy extends TransactionalDropStrategy {
 		IElementType type = ZDLElementTypeUtil.getElementType(targetComponent, IDL3PlusNames.DATA_SPACE);
 
 		String partName = "";
-		if (droppedObject != null && ZDLUtil.isZDLConcept(droppedObject, IDL3PlusNames.CONNECTOR_DEF)
+		if (ZDLUtil.isZDLConcept(droppedObject, IDL3PlusNames.CONNECTOR_DEF)
 				&& ZDLUtil.isZDLConcept(droppedObject.eContainer(), IDL3PlusNames.MODULE_INSTANTIATION)) {
 			partName = EMFCoreUtil.getName(droppedObject.eContainer());
+			partName = NamingUtil.generateUniqueName(partName, targetComponent.getOwnedAttributes());
 		}
 		CreatePartAndDisplayCommand command = new CreatePartAndDisplayCommand(targetComponent, type,
 				UMLPackage.eINSTANCE.getNamespace_OwnedMember(), droppedObject, location, targetEditPart, partName);
