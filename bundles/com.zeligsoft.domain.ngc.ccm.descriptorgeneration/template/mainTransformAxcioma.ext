@@ -185,21 +185,20 @@ create MonolithicDeploymentDescription visit(Home inst, DeploymentPlan deploymen
 create InstanceDeploymentDescription visit(DeploymentPart partDP, DeploymentPlan deployment, CCM::CCM_Deployment::DeploymentPlan zDeployment) :
 	let part = partDP.modelElement:
 	let comp_type = part.definition :
+	let interfacePortsGeneratingFragments = comp_type.ownedPort.typeSelect(InterfacePort).select(e | e.porttype.portGeneratesFragment()) :
 	let process = zDeployment.allocation.selectFirst( a | a.deployed.contains(partDP)).deployedOn :
 	let node = zDeployment.allocation.selectFirst(a | a.deployed.contains(process)).deployedOn :
 	let planLocality = createPlanLocalityConstraint(process, deployment, zDeployment):
 	
 	let id = partDP.getSelectedImplementation() == null ?
 		(
-			part.definition.ownedPort.typeSelect(InterfacePort).select(e | e.porttype.portGeneratesFragment()).select(e | visitPortType(e, deployment)) -> 
 			part.definition.visit(deployment, zDeployment).id
 		) 
 		:
 		(
-			partDP.getSelectedImplementation().interface.ownedPort.typeSelect(InterfacePort).select(e | e.porttype.portGeneratesFragment()).select(e | visitPortType(e, deployment)) ->
 			partDP.getSelectedImplementation().visit(deployment, zDeployment).id
 		) :	
-	
+	interfacePortsGeneratingFragments.forAll(ifp | visitPortType(ifp, deployment)) ->
 	this.JavaSetAttribute("id", getUUID()) ->	
 	this.name.add(partDP.getScopedName()) ->
 	this.node.add(node.zdlAsNamedElement().name) ->
@@ -213,17 +212,8 @@ create InstanceDeploymentDescription visit(DeploymentPart partDP, DeploymentPlan
 	deployment.instance.add(this) ->
 	planLocality.constrainedInstance.add(partDP.createInstanceDeploymentDescription(deployment)) ->
 	
-	// Generate appropriate connector fragments for port-types only if certain conditions are met		
-	{if(comp_type.ownedPort.typeSelect(InterfacePort).select(e | e.isUsedAsynchronously())
-	.forAll(e | isAsyncCapableConnector(e.connectorType.name))
-	&& comp_type.ownedPort.typeSelect(InterfacePort).select(e | e.isUsedSynchronously())
-	.forAll(e | isSyncCapableConnector(e.connectorType.name))) then{
-	// create connector instances, corresponding internal connections with component, and localityConstraints
-		partDP.visitPartForConnectorFragments(zDeployment, deployment)
-	}else{
-	// This else statement is just for defensive coding. It should not be hit as long as the model is properly validated
-		reportError("Incompatible connector type detected! CDP generation failed.")
-	}};	
+	// Generate appropriate connector fragments for port-types only if certain conditions are met	
+    partDP.visitPartForConnectorFragments(zDeployment, deployment); 
 	
 cached MonolithicImplementation getSelectedImplementation(ComponentDeploymentPart cdp ) :
 	let impls = ( cdp.modelElement.definition != null ? cdp.modelElement.definition.getMonolithicImplementations() : {} ) :
@@ -296,10 +286,10 @@ Void visitConfigProperty(CCM::CCM_Target::Property property, InstanceDeploymentD
 		
 		// Register naming tag must be generated even if no values set
 		//
-		// IF there’s no explicit RegisterNaming property set on either the CCMComponent type (default setting) 
+		// IF thereï¿½s no explicit RegisterNaming property set on either the CCMComponent type (default setting) 
 		// OR on the instance of that type (override setting) in the deployment plan, 
-		// BUT there’s a CCMConnector connection definition in the deployment assembly that 
-		// connects a deployed component instance (any facet/receptacle port – just takes one) 
+		// BUT thereï¿½s a CCMConnector connection definition in the deployment assembly that 
+		// connects a deployed component instance (any facet/receptacle port ï¿½ just takes one) 
 		// with a non-deployed component instance, then generate the register naming tag for the deployed instance.
 		if(property.name == getModelTypeSpecificProperty("REGISTER_NAMING") && !idd.configProperty.name.exists(n | n == property.name)) then {
 			idd.createRegisterNamingProperty(part.name)
