@@ -20,11 +20,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.type.core.IClientContext;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
@@ -32,11 +30,8 @@ import org.eclipse.gmf.runtime.emf.type.ui.ElementTypeImageDescriptor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.papyrus.infra.core.services.ServiceException;
-import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.papyrus.infra.services.edit.context.TypeContext;
 import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
-import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
-import org.eclipse.ui.IViewPart;
 
 import com.zeligsoft.base.ui.menus.Activator;
 import com.zeligsoft.base.ui.menus.l10.Messages;
@@ -54,7 +49,6 @@ public class CreateConceptAction extends Action {
 	private org.eclipse.uml2.uml.Class concept;
 	private IElementType type;
 	private String label;
-	private Object result;
 
 	static private Map<IElementType, ElementTypeImageDescriptor> imageDescriptors = new HashMap<IElementType, ElementTypeImageDescriptor>(
 			11);
@@ -124,6 +118,11 @@ public class CreateConceptAction extends Action {
 		if (command == null || !command.canExecute()) {
 			return;
 		}
+
+		if (req.getElementType().getDisplayName().startsWith("CORBA")) {
+			command = ReplaceResultNameCommand.wrap(command, "CORBA", "");
+		}
+
 		// Wrap command to select created element
 		command = BaseUIUtil.getRevealCommand(command, target);
 		if (command != null) {

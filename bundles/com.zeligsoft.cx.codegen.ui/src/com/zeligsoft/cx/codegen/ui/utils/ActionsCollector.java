@@ -42,6 +42,9 @@ public class ActionsCollector {
 		{
 			List<WorkflowEntry> workflowEntries = TransformRegistry.INSTANCE
 					.getTransformationWorkflows(concept, eObj);
+			if(workflowEntries == null) {
+				return;
+			}
 			List<URL> paths = new ArrayList<URL>();
 			for (WorkflowEntry entry : workflowEntries) {
 				paths.add(entry.getWorkflowURL());
