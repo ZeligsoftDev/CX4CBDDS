@@ -73,7 +73,7 @@ class MainTransform {
         val workerType = worker.workerType
         result.component_name.add(worker.workerOwnerName)
         if(worker.name.startsWith("_home_")) {
-            result.class_name.add('''«worker.home.name»_exec_i'''.toString)
+            result.class_name.add('''Â«worker.home.nameÂ»_exec_i'''.toString)
         } else if(worker.hasClassName) {
             result.class_name.add(worker.getClassName())
         }
@@ -113,9 +113,9 @@ class MainTransform {
 	    val List<IDLFileDependency> filedependency = self.asNamedElement.clientDependencies.typeSelect(IDLFileDependency::type)//self.asPackage.clientDependencies.filter(IDLFileDependency::typeSelect).map(CreateZDLWrapper::create(IDLFileDependency.class))
 	    if(!filedependency.empty) {
 	        val firstFileDependency = filedependency.head
-	        self.zContainer.fileName('''«firstFileDependency.file.filename»_«name»'''.toString)
+	        self.zContainer.fileName('''Â«firstFileDependency.file.filenameÂ»_Â«nameÂ»'''.toString)
 	    } else {
-	        self.zContainer.fileName('''«self.name»_«name»'''.toString)
+	        self.zContainer.fileName('''Â«self.nameÂ»_Â«nameÂ»'''.toString)
 	    }
 	    
 	}
@@ -298,7 +298,7 @@ class MainTransform {
 	
 	def homePrefix(Home home) {
 	    if(home != null) {
-	        '''_home_«home.name»'''.toString
+	        '''_home_Â«home.nameÂ»'''.toString
 	    } else {
 	        ""
 	    }
@@ -370,7 +370,7 @@ class MainTransform {
 	        }
 	        else if(owner instanceof org.eclipse.uml2.uml.NamedElement){
 	            val ownerName = (owner as org.eclipse.uml2.uml.NamedElement).name
-	            '''«ownerName»_exec_i'''.toString
+	            '''Â«ownerNameÂ»_exec_i'''.toString
 	        } else {
 	            throw new IllegalArgumentException()
 	        }
@@ -381,9 +381,9 @@ class MainTransform {
 	
 	def dispatch String getClassName(WorkerFunction worker, InterfacePort port) {
 	    if(port.isConjugated) {
-	        '''AMI4CCM_«port.asPort.type.name»ReplyHandler_«port.name»_i'''.toString
+	        '''AMI4CCM_Â«port.asPort.type.nameÂ»ReplyHandler_Â«port.nameÂ»_i'''.toString
 	    } else {
-	        '''«port.name»_exec_i'''.toString
+	        '''Â«port.nameÂ»_exec_i'''.toString
 	    }
 	}
 	
@@ -396,9 +396,9 @@ class MainTransform {
 	}
 	
 	def private workerCode(WorkerFunction worker, String language) '''
-	   «UserEditableRegion::userEditBegin(worker.asOperation, ZMLMMNames::WORKER_FUNCTION, ZMLMMNames::WORKER_FUNCTION__BODY,language)»
-	   «WorkerFunctionUtil::getWorkerFunctionImplementationCode(worker.asOperation.owner, worker.asOperation, language)»
-	   «UserEditableRegion::userEditEnd»
+	   Â«UserEditableRegion::userEditBegin(worker.asOperation, ZMLMMNames::WORKER_FUNCTION, ZMLMMNames::WORKER_FUNCTION__BODY,language)Â»
+	   Â«WorkerFunctionUtil::getWorkerFunctionImplementationCode(worker.asOperation.owner, worker.asOperation, language)Â»
+	   Â«UserEditableRegion::userEditEndÂ»
 	   
 	    '''
 	
@@ -407,7 +407,7 @@ class MainTransform {
 	    val owner = worker.asOperation.owner 
         if(owner instanceof org.eclipse.uml2.uml.NamedElement){
             val ownerName = (owner as org.eclipse.uml2.uml.NamedElement).name
-            '''«ownerName»'''.toString
+            '''Â«ownerNameÂ»'''.toString
         } else {
             ""
         }

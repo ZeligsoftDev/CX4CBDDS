@@ -171,7 +171,9 @@ public class MainTransform {
     boolean _startsWith = worker.getName().startsWith("_home_");
     if (_startsWith) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("咸orker.home.name\ufffd_exec_i");
+      String _name = this.getHome(worker).getName();
+      _builder.append(_name);
+      _builder.append("_exec_i");
       result.getClass_name().add(_builder.toString());
     } else {
       boolean _hasClassName = this.hasClassName(worker);
@@ -235,13 +237,19 @@ public class MainTransform {
         {
           final IDLFileDependency firstFileDependency = IterableExtensions.<IDLFileDependency>head(filedependency);
           StringConcatenation _builder = new StringConcatenation();
-          _builder.append("剌irstFileDependency.file.filename\ufffd_南ame\ufffd");
+          String _filename = firstFileDependency.getFile().getFilename();
+          _builder.append(_filename);
+          _builder.append("_");
+          _builder.append(name);
           _xblockexpression_1 = this.fileName(self.zContainer(), _builder.toString());
         }
         _xifexpression = _xblockexpression_1;
       } else {
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("哀elf.name\ufffd_南ame\ufffd");
+        String _name = self.getName();
+        _builder.append(_name);
+        _builder.append("_");
+        _builder.append(name);
         _xifexpression = this.fileName(self.zContainer(), _builder.toString());
       }
       _xblockexpression = _xifexpression;
@@ -613,7 +621,9 @@ public class MainTransform {
     boolean _notEquals = (!Objects.equal(home, null));
     if (_notEquals) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("_home_則ome.name\ufffd");
+      _builder.append("_home_");
+      String _name = home.getName();
+      _builder.append(_name);
       _xifexpression = _builder.toString();
     } else {
       _xifexpression = "";
@@ -743,7 +753,8 @@ public class MainTransform {
                   {
                     final String ownerName = ((org.eclipse.uml2.uml.NamedElement) owner).getName();
                     StringConcatenation _builder = new StringConcatenation();
-                    _builder.append("卻wnerName\ufffd_exec_i");
+                    _builder.append(ownerName);
+                    _builder.append("_exec_i");
                     _xblockexpression_1 = _builder.toString();
                   }
                   _xifexpression_5 = _xblockexpression_1;
@@ -772,11 +783,19 @@ public class MainTransform {
     Boolean _isConjugated = port.getIsConjugated();
     if ((_isConjugated).booleanValue()) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("AMI4CCM_厚ort.asPort.type.name舞eplyHandler_厚ort.name\ufffd_i");
+      _builder.append("AMI4CCM_");
+      String _name = port.asPort().getType().getName();
+      _builder.append(_name);
+      _builder.append("ReplyHandler_");
+      String _name_1 = port.getName();
+      _builder.append(_name_1);
+      _builder.append("_i");
       _xifexpression = _builder.toString();
     } else {
       StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("厚ort.name\ufffd_exec_i");
+      String _name_2 = port.getName();
+      _builder_1.append(_name_2);
+      _builder_1.append("_exec_i");
       _xifexpression = _builder_1.toString();
     }
     return _xifexpression;
@@ -792,12 +811,15 @@ public class MainTransform {
   
   private CharSequence workerCode(final WorkerFunction worker, final String language) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("俗serEditableRegion::userEditBegin(worker.asOperation, ZMLMMNames::WORKER_FUNCTION, ZMLMMNames::WORKER_FUNCTION__BODY,language)\ufffd");
-    _builder.newLine();
-    _builder.append("俐orkerFunctionUtil::getWorkerFunctionImplementationCode(worker.asOperation.owner, worker.asOperation, language)\ufffd");
-    _builder.newLine();
-    _builder.append("俗serEditableRegion::userEditEnd\ufffd");
-    _builder.newLine();
+    String _userEditBegin = UserEditableRegion.userEditBegin(worker.asOperation(), ZMLMMNames.WORKER_FUNCTION, ZMLMMNames.WORKER_FUNCTION__BODY, language);
+    _builder.append(_userEditBegin);
+    _builder.newLineIfNotEmpty();
+    String _workerFunctionImplementationCode = WorkerFunctionUtil.getWorkerFunctionImplementationCode(worker.asOperation().getOwner(), worker.asOperation(), language);
+    _builder.append(_workerFunctionImplementationCode);
+    _builder.newLineIfNotEmpty();
+    String _userEditEnd = UserEditableRegion.userEditEnd();
+    _builder.append(_userEditEnd);
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     return _builder;
   }
@@ -812,7 +834,7 @@ public class MainTransform {
         {
           final String ownerName = ((org.eclipse.uml2.uml.NamedElement) owner).getName();
           StringConcatenation _builder = new StringConcatenation();
-          _builder.append("卻wnerName\ufffd");
+          _builder.append(ownerName);
           _xblockexpression_1 = _builder.toString();
         }
         _xifexpression = _xblockexpression_1;

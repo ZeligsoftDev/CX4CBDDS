@@ -35,11 +35,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.mwe.core.WorkflowEngine;
 import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.issues.IssuesImpl;
 import org.eclipse.emf.mwe.core.monitor.NullProgressMonitor;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Operation;
@@ -202,8 +202,7 @@ public class CodeTagGeneratorUtil extends CodeRetrievalUtil {
 				xmlPath = xmlPath.append(filename);
 				IPath tempPath = xmlPath.addFileExtension("generated");
 
-				ResourceSet rset = TransactionUtil.getEditingDomain(monolithicImplementation)
-						.getResourceSet();
+				ResourceSet rset =  new ResourceSetImpl();
 				Resource res = rset.createResource(URI
 						.createPlatformResourceURI(tempPath.toString(), true));
 				info.getFilename().clear();
