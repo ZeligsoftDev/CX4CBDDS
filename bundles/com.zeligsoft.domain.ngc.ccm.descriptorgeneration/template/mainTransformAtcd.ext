@@ -268,7 +268,7 @@ Void visitConfigProperty(Void property, InstanceDeploymentDescription idd, Deplo
     // handle missing RegisterNaming property on Components
     // This method merely prevents an abort. It does not add
     // the missing RegisterNaming property.
-    ;
+    {};
     
 Void visitConfigProperty(CCM::CCM_Target::Property property, InstanceDeploymentDescription idd, DeploymentPart part ) :
 	let defaultSlots = createList(new java::lang::Object) :
