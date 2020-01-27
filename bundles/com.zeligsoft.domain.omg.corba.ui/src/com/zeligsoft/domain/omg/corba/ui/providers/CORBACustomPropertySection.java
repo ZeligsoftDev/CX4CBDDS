@@ -18,6 +18,7 @@
 package com.zeligsoft.domain.omg.corba.ui.providers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,13 +29,19 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
+import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
+import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -52,6 +59,7 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.Property;
@@ -60,6 +68,7 @@ import org.eclipse.uml2.uml.Type;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.dialogs.ZDLElementSelectionDialog;
+import com.zeligsoft.cx.ui.filters.ElementSelectionFilter;
 import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
 import com.zeligsoft.cx.ui.properties.sections.ICXCustomPropertySection;
 import com.zeligsoft.cx.ui.properties.utils.CXPropertiesWidgetFactory;
@@ -89,7 +98,8 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 		}
 
 		if (property.getName().equals(CORBADomainNames.CORBATYPED__IDL_TYPE)) {
-			return CXPropertiesWidgetFactory.createSectionForReferenceType(
+			// ToDo: Revert after Papyrus DDK port and operation change return type 
+			return createSectionForReturnType(
 					parent, descriptor, CORBA_OPERATION_TYPE_LABEL);
 		}
 
@@ -108,6 +118,168 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 			return map;
 		}
 		return new HashMap<String, Control>();
+	}
+	
+	/**
+	 * Temporary fix for CORBAOperation return type. This custom section should be
+	 * removed once DDK is ported to Papyrus
+	 * 
+	 * @param parent
+	 * @param descriptor
+	 * @param propertyLabel
+	 * @return
+	 */
+	public static Map<String, Control> createSectionForReturnType(Composite parent,
+			final CXPropertyDescriptor descriptor, String propertyLabel) {
+
+		Map<String, Control> widgetMap = new HashMap<String, Control>();
+
+		String label = descriptor.getProperty().getLabel();
+		if (propertyLabel != null && propertyLabel.length() != 0) {
+			label = propertyLabel;
+		}
+
+		widgetMap.put(CXPropertiesWidgetFactory.PROPERTY_LABEL,
+				CXWidgetFactory.createLabel(parent, label + " : ", parent.getBackground())); //$NON-NLS-1$
+
+		final Composite composite = CXWidgetFactory.createFlatGridComposite(parent, 3,
+				GridData.HORIZONTAL_ALIGN_BEGINNING);
+		composite.setBackground(parent.getBackground());
+
+		final Label imageLabel = new Label(composite, SWT.ICON);
+		imageLabel.setLayoutData(new GridData());
+		imageLabel.setBackground(parent.getBackground());
+		final Label textLabel = new Label(composite, SWT.NULL);
+		textLabel.setLayoutData(new GridData());
+		textLabel.setBackground(parent.getBackground());
+
+		widgetMap.put(CXPropertiesWidgetFactory.PROPERTY_VALUE_ICON, imageLabel);
+		widgetMap.put(CXPropertiesWidgetFactory.PROPERTY_VALUE, textLabel);
+
+		final org.eclipse.jface.dialogs.Dialog dialog;
+
+		final Object value = descriptor.getValue();
+
+		ZDLElementSelectionDialog selectionDialog;
+		selectionDialog = new ZDLElementSelectionDialog(Display.getCurrent().getActiveShell(),
+				com.zeligsoft.cx.ui.properties.l10n.Messages.CXWidgetFactory_ElementSelectionDialogTitle,
+				descriptor.getContext(), Collections.<String>emptyList(), true, true);
+		selectionDialog.setElementFilter(new ElementSelectionFilter(descriptor.getConcept().getQualifiedName(),
+				descriptor.getProperty().getName()));
+
+		dialog = selectionDialog;
+
+		if (value != null) {
+			if (value instanceof EObject) {
+
+				Image icon = BaseUIUtil.getIcon((EObject) value);
+				if (icon != null) {
+					imageLabel.setImage(icon);
+				}
+				textLabel.setText(EMFCoreUtil.getQualifiedName((EObject) value, true));
+			} else {
+				return widgetMap;
+			}
+		} else {
+			textLabel.setText(com.zeligsoft.cx.ui.properties.l10n.Messages.CXWidgetFactory_NullValueString);
+		}
+
+		Composite buttonComposite = CXWidgetFactory.createNoMarginGridComposite(composite, 2,
+				GridData.HORIZONTAL_ALIGN_BEGINNING);
+		buttonComposite.setBackground(composite.getBackground());
+
+		if (value != null && !descriptor.getProperty().isMultivalued() && !descriptor.isReadOnly()) {
+			((GridLayout) buttonComposite.getLayout()).numColumns++;
+			final ToolBar deleteToolBar = CXWidgetFactory.createToolbarButton(buttonComposite,
+					CXWidgetFactory.DELETE_OBJECT_IMAGE);
+			deleteToolBar.getItem(0)
+					.setToolTipText(com.zeligsoft.cx.ui.properties.l10n.Messages.CXWidgetFactory_DeleteButtonTooltip);
+			deleteToolBar.getItem(0).addSelectionListener(new SelectionAdapter() {
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					final Operation op = (Operation) descriptor.getContext();
+					final Parameter rp = op.getReturnResult();
+					if (rp != null) {
+						TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(op);
+						DestroyElementRequest request = new DestroyElementRequest( rp, false);
+						DestroyElementCommand command = new DestroyElementCommand(request);
+						Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+						domain.getCommandStack().execute(emfCommand);
+					}
+				}
+			});
+			widgetMap.put(CXPropertiesWidgetFactory.PROPERTY_DELETE_BUTTON, deleteToolBar);
+
+		}
+
+		final ToolBar addToolBar = CXWidgetFactory.createToolbarButton(buttonComposite,
+				CXWidgetFactory.EDIT_OBJECT_IMAGE);
+		addToolBar.getItem(0)
+				.setToolTipText(com.zeligsoft.cx.ui.properties.l10n.Messages.CXWidgetFactory_EditButtonTooltip
+						+ descriptor.getProperty().getLabel());
+		addToolBar.getItem(0).addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				int result = dialog.open();
+				if (result == org.eclipse.jface.window.Window.OK) {
+					if (dialog instanceof ZDLElementSelectionDialog) {
+						if (!((ZDLElementSelectionDialog) dialog).getSelectedElements().isEmpty()) {
+							final EObject selectedElement = (EObject) ((ZDLElementSelectionDialog) dialog)
+									.getSelectedElements().iterator().next();
+							if (selectedElement != null) {
+								final Operation op = (Operation) descriptor.getContext();
+								TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(op);
+								Command cmd = new RecordingCommand(domain, "Set Value") { //$NON-NLS-1$
+
+									@Override
+									protected void doExecute() {
+										final Parameter rp = op.getReturnResult();
+										if (rp != null) {
+											rp.setType((Type) selectedElement);
+										} else {
+											op.createReturnResult("ReturnParameter", (Type) selectedElement); //$NON-NLS-1$
+										}
+									}
+								};
+								domain.getCommandStack().execute(cmd);
+							}
+						}
+					}
+				}
+			}
+		});
+		widgetMap.put(CXPropertiesWidgetFactory.PROPERTY_EDIT_BUTTON, addToolBar);
+
+		if (descriptor.isReadOnly()) {
+			addToolBar.getItem(0).setEnabled(false);
+		}
+
+		// If the property is reference type, then add button to view its
+		// properties view
+		if (!descriptor.getProperty().isMultivalued()) {
+			final EObject object = (EObject) descriptor.getValue();
+
+			final ToolBar viewToolBar = CXWidgetFactory.createToolbarButton(buttonComposite,
+					CXWidgetFactory.FORWARD_NAV_IMAGE);
+			viewToolBar.getItem(0)
+					.setToolTipText(com.zeligsoft.cx.ui.properties.l10n.Messages.CXWidgetFactory_ShowPropertiesToolTip);
+			if (object == null) {
+				viewToolBar.getItem(0).setEnabled(false);
+			}
+			viewToolBar.getItem(0).addSelectionListener(new SelectionAdapter() {
+
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					if (object != null) {
+						BaseUIUtil.revealTarget(Arrays.asList(object));
+					}
+				}
+			});
+		}
+
+		return widgetMap;
 	}
 
 	private Map<String, Control> createSectionForConstantDefault(
