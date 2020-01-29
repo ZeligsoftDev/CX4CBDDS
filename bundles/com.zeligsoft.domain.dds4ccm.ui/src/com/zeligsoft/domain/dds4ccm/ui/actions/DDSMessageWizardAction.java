@@ -56,7 +56,7 @@ public class DDSMessageWizardAction extends Action implements ICXAction {
 	public ImageDescriptor getImageDescriptor() {
 		Bundle pluginBundle = Platform.getBundle("org.eclipse.ui"); //$NON-NLS-1$
 		return ImageDescriptor.createFromURL(pluginBundle
-				.getEntry("icons/full/etool16/new_wiz.gif")); //$NON-NLS-1$
+				.getEntry("icons/full/etool16/new_wiz.png")); //$NON-NLS-1$
 	}
 	
 	/*

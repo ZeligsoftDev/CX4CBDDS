@@ -8,4 +8,11 @@
             target="platform:/plugin/com.zeligsoft.domain.dds4ccm.corbaconnector/models/">
       </mapping>
    </extension>
+   <extension
+         point="org.eclipse.papyrus.uml.extensionpoints.UMLLibrary">
+      <library
+            name="CCM CORBA Connector"
+            path="pathmap://DDS4CCM_CORBA_LIBRARIES/CCM_CORBA.uml">
+      </library>
+   </extension>
 </plugin>

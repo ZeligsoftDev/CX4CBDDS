@@ -8,4 +8,11 @@
             target="platform:/plugin/com.zeligsoft.domain.dds4ccm.amiconnector/models/">
       </mapping>
    </extension>
+   <extension
+         point="org.eclipse.papyrus.uml.extensionpoints.UMLLibrary">
+      <library
+            name="CCM AMI Connector"
+            path="pathmap://DDS4CCM_AMI_LIBRARIES/CCM_AMI.uml">
+      </library>
+   </extension>
 </plugin>
