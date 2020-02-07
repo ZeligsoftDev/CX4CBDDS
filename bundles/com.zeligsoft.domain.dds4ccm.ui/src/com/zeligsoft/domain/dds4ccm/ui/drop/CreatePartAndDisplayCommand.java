@@ -166,6 +166,7 @@ public class CreatePartAndDisplayCommand extends AbstractCommand {
 		return createdProperty;
 	}
 
+	@SuppressWarnings("unchecked")
 	public static <T extends EObject> T getCreatedObject(CommandResult commandResult) {
 		Object objectResult = commandResult.getReturnValue();
 		if (objectResult instanceof List) {

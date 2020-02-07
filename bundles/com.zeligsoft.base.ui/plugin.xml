@@ -16,38 +16,10 @@
  limitations under the License.
 -->
 <plugin>
-<!--
-   <extension
-   		point="org.eclipse.gmf.runtime.common.ui.services.action.actionFilterProviders">
-   		<ActionFilterProvider
-   			class="com.zeligsoft.base.ui.providers.ZDLActionFilterProvider">
-   			<Priority
-   				name="Highest">
-   			</Priority>
-   			<Attribute name="isZDLConcept" />
-            <Attribute name="isZDLProfile"/>
-            <Attribute name="hasAnyZDLProfile"/>
-            <Attribute
-                  name="isZDLStructureDiagram">
-            </Attribute>
-            <Attribute
-                  name="needDeletePortMenu">
-            </Attribute>
-            <Attribute
-                  name="isZDLDomain">
-            </Attribute>
-            <Attribute
-                  name="isMultipleSelection">
-            </Attribute>            
-   		</ActionFilterProvider>
-   </extension>
-   -->
-   <extension point="org.eclipse.core.expressions.propertyTesters">
+<extension point="org.eclipse.core.expressions.propertyTesters">
    <propertyTester class="com.zeligsoft.base.ui.providers.ZDLPropertyTest" id="com.zeligsoft.zdl.tester" namespace="com.zeligsoft.zdl.tester" properties="isZDLConcept" type="org.eclipse.jface.viewers.IStructuredSelection">
    </propertyTester>
 </extension>
-   
-   
    <extension
          point="org.eclipse.ui.newWizards">
       <category

@@ -39,7 +39,6 @@ import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 
-import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
 import com.zeligsoft.cx.ui.properties.sections.ICXCustomPropertySection;

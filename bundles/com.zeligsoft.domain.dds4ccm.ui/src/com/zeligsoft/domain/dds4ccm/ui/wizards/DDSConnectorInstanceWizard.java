@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -41,7 +40,6 @@ import org.eclipse.uml2.uml.Property;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
-import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
 import com.zeligsoft.domain.omg.corba.CORBADomainNames;

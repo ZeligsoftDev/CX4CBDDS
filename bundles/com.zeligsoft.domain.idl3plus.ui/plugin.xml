@@ -75,31 +75,6 @@
     </extension>
 
     <extension
-         id="IDL3Plus ElementTypes"
-         name="IDL3Plus ElementTypes"
-         point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">    
-         <metamodel
-             nsURI="http://www.eclipse.org/uml2/3.0.0/UML">
-         	<adviceBinding
-            	id="com.zeligsoft.domain.idl3plus.ui.Connector"
-            	typeId="com.ibm.xtools.uml.component"            
-            	class="com.zeligsoft.domain.idl3plus.ui.edithelpers.IDL3PlusConnectorEditHelperAdvice"
-            	inheritance="all">
-         	</adviceBinding>
-      	</metamodel>    
-    </extension>   
-    <extension
-         id="IDL3Plus ElementTypeBindings"
-         name="IDL3Plus ElementTypeBindings"
-         point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings">
-      <binding context="com.ibm.xtools.uml.type.context">
-         <advice ref="com.zeligsoft.domain.idl3plus.ui.Connector"/>
-      </binding>
-      <binding context="com.ibm.xtools.mmi.core.context">
-         <advice ref="com.zeligsoft.domain.idl3plus.ui.Connector"/>                     
-      </binding>
-    </extension>
-    <extension
          id="com.zeligsoft.domain.idl3plus.ui.navigator.navigatorContent.ID"
          name="name"
          point="org.eclipse.ui.navigator.navigatorContent">
@@ -129,30 +104,6 @@
           </context>
        </editpolicyProvider>
     </extension>  
-    <extension
-          point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
-       <editpartProvider
-             class="com.zeligsoft.domain.idl3plus.ui.providers.ConnectorEditPartProvider">
-          <Priority
-                name="High">
-          </Priority>
-          <object
-                class="org.eclipse.gmf.runtime.notation.Node"
-                id="ConnectorPart">
-             <staticMethod
-                   name="org.eclipse.gmf.runtime.diagram.core/org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.getSemanticEClassName(%Context[org.eclipse.gmf.runtime.notation/org.eclipse.gmf.runtime.notation.View])"
-                   value="uml.Property">
-             </staticMethod>
-          </object>
-       </editpartProvider>
-    </extension>
-    <extension
-         point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
-      <viewProvider class="com.zeligsoft.domain.idl3plus.ui.providers.IDL3PlusDefaultViewProvider">
-         <Priority name="Highest"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node"/>         
-      </viewProvider>
-    </extension>
     -->
     <extension
          point="com.zeligsoft.cx.ui.properties.customPropertySection">
@@ -245,59 +196,6 @@
          </description> 
          <selection class="org.eclipse.core.resources.IFile"/> 
       </wizard>
-   </extension>
- 
-   <extension
-         point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders">
-      <modelingAssistantProvider
-            class="com.zeligsoft.domain.idl3plus.ui.providers.IDL3PlusModelingAssistantProvider">
-         <Priority
-               name="Medium">
-         </Priority>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="idl3plus__component_">
-            <method
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="Component">
-            </method>
-         </object>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="idl3plus__port_">
-            <method
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="Port">
-            </method>
-         </object>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="idl3plus__interface_">
-            <method
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="Interface">
-            </method>
-         </object>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="idl3plus__datatype_">
-            <method
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="DataType">
-            </method>
-         </object>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="idl3plus__part_">
-            <method
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="Property">
-            </method>
-         </object>         
-         <context
-               elements="idl3plus__component_, idl3plus__port_,idl3plus__interface_, idl3plus__datatype_, idl3plus__part_">
-         </context>
-      </modelingAssistantProvider>
    </extension>
       -->     
 </plugin>

@@ -20,6 +20,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
@@ -66,7 +67,7 @@ public class DeploymentPartEditHelperAdvice extends AbstractEditHelperAdvice {
 				InstanceSpecification partInstance = instanceValue.getInstance();
 				if (partInstance != null) {
 					Package instanceContainer = (Package) partInstance.eContainer();
-					//UMLElementFactory.destroyElement(instanceContainer, null);
+					EcoreUtil.delete(instanceContainer);
 				}
 				return CommandResult.newOKCommandResult();
 			}

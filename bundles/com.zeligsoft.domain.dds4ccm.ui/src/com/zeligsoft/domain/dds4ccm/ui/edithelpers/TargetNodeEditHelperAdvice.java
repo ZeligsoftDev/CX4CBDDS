@@ -16,8 +16,6 @@
  */
 package com.zeligsoft.domain.dds4ccm.ui.edithelpers;
 
-import java.util.List;
-
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -34,7 +32,6 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.LiteralString;
@@ -42,23 +39,18 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.StructuralFeature;
-import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.util.NamingUtil;
 import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
-import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMMigrationModelTypeUtil;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
 import com.zeligsoft.domain.dds4ccm.utils.PropertyVariable;
-import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Target.Resource;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Target.SatisfierProperty;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Target.SatisfierPropertyKind;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
 import com.zeligsoft.domain.omg.corba.api.IDL.CORBAString;
 import com.zeligsoft.domain.omg.corba.util.CORBAUtil;
 

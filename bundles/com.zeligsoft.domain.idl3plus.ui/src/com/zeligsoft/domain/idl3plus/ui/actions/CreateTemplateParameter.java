@@ -89,7 +89,7 @@ public class CreateTemplateParameter extends Action implements ICXAction {
 				protected CommandResult doExecuteWithResult(
 						IProgressMonitor monitor, IAdaptable info)
 						throws ExecutionException {
-					IDL3PlusUtil.INSTANCE.createTemplateParameter(context,
+					IDL3PlusUtil.createTemplateParameter(context,
 							parameterName, parameterTypeConstraint);
 					return CommandResult.newOKCommandResult();
 				}
