@@ -1225,7 +1225,7 @@ public abstract class ModelMerger<T extends EObject, K> {
 
 		private IHierarchicalKey parent;
 
-		private EClass metaclass;
+		public EClass metaclass;
 
 		/**
 		 * Initializes me with my element.

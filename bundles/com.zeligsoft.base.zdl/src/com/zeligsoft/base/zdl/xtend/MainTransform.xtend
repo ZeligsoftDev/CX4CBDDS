@@ -23,6 +23,8 @@ import org.eclipse.uml2.uml.Class
 import org.eclipse.uml2.uml.Profile
 import org.eclipse.uml2.uml.Stereotype
 import org.eclipse.uml2.uml.UMLPackage
+import java.nio.file.Path
+import java.nio.file.Paths
 
 class MainTransform {
 	ElementTypeSetConfiguration umlElementType
@@ -157,7 +159,8 @@ class MainTransform {
 	def createIconEntry(IconEntry iconEntry) {
 		var result = ElementTypesConfigurationsFactory::eINSTANCE.createIconEntry
 		result.bundleId = iconEntry.bundleId
-		result.iconPath = iconEntry.iconPath
+		var path = Paths.get(iconEntry.iconPath)
+		result.iconPath = path.normalize.toString
 		return result
 	}
 
