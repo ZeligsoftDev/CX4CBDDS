@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: com.zeligsoft.base.zdl.domain.staticapi
 Bundle-SymbolicName: com.zeligsoft.base.zdl.domain.staticapi;singleton:=true
-Bundle-Version: 0.7.1.qualifier
+Bundle-Version: 4.0.0.qualifier
 Bundle-Vendor: Zeligsoft (2009) Ltd.
 Require-Bundle: org.eclipse.uml2.uml,
  com.google.guava,
- com.zeligsoft.base.zdl,
- com.zeligsoft.base.zdl.staticapi
+ com.zeligsoft.base.zdl;bundle-version="4.0.0",
+ com.zeligsoft.base.zdl.staticapi;bundle-version="4.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

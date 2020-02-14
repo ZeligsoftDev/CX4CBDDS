@@ -2,26 +2,26 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %bundle.name
 Bundle-SymbolicName: com.zeligsoft.domain.omg.ccm.descriptorgenerator;singleton:=true
-Bundle-Version: 3.5.1.qualifier
+Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: com.zeligsoft.domain.omg.ccm.descriptorgenerator.Activator
 Bundle-Vendor: %bundle.provider
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)",
- com.zeligsoft.base.zdl;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.cx.codegen.ui;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.domain.omg.ccm;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.domain.zml;bundle-version="[3.5.0,3.6.0)",
+ com.zeligsoft.base.zdl;bundle-version="4.0.0",
+ com.zeligsoft.cx.codegen.ui;bundle-version="4.0.0",
+ com.zeligsoft.domain.omg.ccm;bundle-version="4.0.0",
+ com.zeligsoft.domain.zml;bundle-version="4.0.0",
  org.eclipse.xtend.typesystem.xsd;bundle-version="2.2.0",
  org.eclipse.xtend.util.stdlib;bundle-version="2.2.0",
- org.eclipse.emf.mwe.core;bundle-version="[1.0.0,2.0.0)",
- org.eclipse.emf.mwe.utils;bundle-version="[1.0.0,2.0.0)",
- com.zeligsoft.domain.zml;bundle-version="[3.5.0,3.6.0)",
+ org.eclipse.emf.mwe.core;bundle-version="1.4.0",
+ org.eclipse.emf.mwe.utils;bundle-version="1.4.0",
+ com.zeligsoft.domain.zml;bundle-version="4.0.0",
  org.eclipse.xpand;bundle-version="2.2.0",
  org.apache.commons.logging;bundle-version="1.0.4",
- com.zeligsoft.domain.omg.corba;bundle-version="[3.5.0,3.6.0)"
+ com.zeligsoft.domain.omg.corba;bundle-version="4.0.0"
 Bundle-ClassPath: .,
  lib/dom4j-1.6.1.jar,
  lib/fornax-utilities-formatter-xml-2.0.1.jar,
  lib/xml-apis-1.0.b2.jar
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

@@ -2,35 +2,35 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.zeligsoft.domain.dds4ccm.ui;singleton:=true
-Bundle-Version: 3.5.1.qualifier
+Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: com.zeligsoft.domain.dds4ccm.ui.Activator
 Bundle-Vendor: %pluginProvider
-Require-Bundle: com.zeligsoft.cx.ui;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.domain.dds4ccm;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.domain.omg.corba.ui;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.cx.ui.properties;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.base.ui.menus;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.domain.dds4ccm.ddsdcpsconnector;bundle-version="[3.4.0,3.5.0)",
- com.zeligsoft.domain.omg.ccm.ui;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.cx.deployment.treeeditor;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.domain.idl3plus.ui;bundle-version="[3.5.0,3.6.0)",
- org.eclipse.ui.navigator;bundle-version="[3.5.0,4.0.0)",
- com.zeligsoft.domain.dds4ccm.codegen;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.cx.build;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.cx;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.cx.deployment.ui;bundle-version="[3.5.0,3.6.0)",
+Require-Bundle: com.zeligsoft.cx.ui;bundle-version="4.0.0",
+ com.zeligsoft.domain.dds4ccm;bundle-version="4.0.0",
+ com.zeligsoft.domain.omg.corba.ui;bundle-version="4.0.0",
+ com.zeligsoft.cx.ui.properties;bundle-version="4.0.0",
+ com.zeligsoft.base.ui.menus;bundle-version="4.0.0",
+ com.zeligsoft.domain.dds4ccm.ddsdcpsconnector;bundle-version="4.0.0",
+ com.zeligsoft.domain.omg.ccm.ui;bundle-version="4.0.0",
+ com.zeligsoft.cx.deployment.treeeditor;bundle-version="4.0.0",
+ com.zeligsoft.domain.idl3plus.ui;bundle-version="4.0.0",
+ org.eclipse.ui.navigator;bundle-version="3.8.0",
+ com.zeligsoft.domain.dds4ccm.codegen;bundle-version="4.0.0",
+ com.zeligsoft.cx.build;bundle-version="4.0.0",
+ com.zeligsoft.cx;bundle-version="4.0.0",
+ com.zeligsoft.cx.deployment.ui;bundle-version="4.0.0",
+ com.zeligsoft.domain.zml.api;bundle-version="4.0.0",
  com.zeligsoft.base.zdl.staticapi,
  com.zeligsoft.domain.omg.corba.api,
- com.zeligsoft.domain.zml.api;bundle-version="3.5.0",
  com.zeligsoft.domain.omg.ccm.api,
  com.zeligsoft.domain.idl3plus.api,
  com.zeligsoft.domain.dds4ccm.api,
  org.eclipse.papyrus.infra.emf;bundle-version="3.0.0",
- org.eclipse.papyrus.infra.architecture,
+ org.eclipse.papyrus.infra.architecture;bundle-version="2.0.0",
  org.eclipse.papyrus.infra.gmfdiag.dnd;bundle-version="1.4.0",
  org.eclipse.papyrus.emf.facet.query.java.core;bundle-version="2.0.0",
  org.eclipse.papyrus.uml.tools;bundle-version="4.1.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: com.zeligsoft.domain.dds4ccm.ui.actions,

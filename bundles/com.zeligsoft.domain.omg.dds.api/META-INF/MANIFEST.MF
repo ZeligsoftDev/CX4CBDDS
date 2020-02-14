@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: OMG DDS Static API
 Bundle-SymbolicName: com.zeligsoft.domain.omg.dds.api;singleton:=true
-Bundle-Version: 3.5.1.qualifier
+Bundle-Version: 4.0.0.qualifier
 Bundle-Vendor: PrismTech Canada
 Export-Package: com.zeligsoft.domain.omg.dds.api.Core,
  com.zeligsoft.domain.omg.dds.api.Core.impl,
@@ -16,10 +16,10 @@ Export-Package: com.zeligsoft.domain.omg.dds.api.Core,
  com.zeligsoft.domain.omg.dds.api.Topics,
  com.zeligsoft.domain.omg.dds.api.Topics.impl
 Require-Bundle: org.eclipse.uml2.uml;bundle-version="5.5.0",
- com.zeligsoft.base.zdl.staticapi;bundle-version="[3.5.0,3.6.0)",
+ com.zeligsoft.base.zdl.staticapi;bundle-version="4.0.0",
  com.google.guava;bundle-version="21.0.0",
- com.zeligsoft.base.zdl;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.domain.omg.corba.api;bundle-version="[3.5.0,3.6.0)",
- com.zeligsoft.domain.zml.api;bundle-version="[3.5.0,3.6.0)"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+ com.zeligsoft.base.zdl;bundle-version="4.0.0",
+ com.zeligsoft.domain.omg.corba.api;bundle-version="4.0.0",
+ com.zeligsoft.domain.zml.api;bundle-version="4.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
