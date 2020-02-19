@@ -937,10 +937,9 @@ create InstanceDeploymentDescription findOrCreateClientSideConnectorFragment(
     let clientProcessDP = getTargetPart(clientCompDP):
     let portConnectorType = facet.connectorType.name:
     let node = getTargetPart(clientProcessDP) :
-    let name = receptacle.porttype.getScopedName() + "_" + receptacle.connectorType.name 
-        + "_for_" + serverCompDP.name + "." + facet.name 
-        + "__" + clientCompDP.name + "." + receptacle.name 
-        + "@" + node.name + "." + clientProcessDP.name :
+    let name = clientCompDP.getScopedName() + "." + receptacle.name
+          + "_" + receptacle.connectorType.name + "_for_"
+          + serverCompDP.getScopedName() + "." + facet.name :
     let id = findOrCreateInterfacePortConnector(receptacle.porttype, receptacle.connectorType, plan).id:
     
     trace0("Connectors", "Entering findOrCreateClientSideConnectorFragment") ->
