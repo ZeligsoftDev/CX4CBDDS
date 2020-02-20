@@ -833,8 +833,10 @@ Void visitPortForExternalConnectons(DeploymentPart partDP, InterfacePort port, D
     trace2("Connection", "facetPartDP(facet) = %s(%s)", facetPartDP.first().name, facet.first().name) ->
 	
 	// generate external connection only if 'receptPartDP' is deployed
-	if(receptPartDP.first().isDeployed()) then{
+	if(receptPartDP.first().isDeployed() && facetPartDP.first().isDeployed()) then{
 		createClientServerConnection(receptPartDP.first(), receptacle.first(), facetPartDP.first(), facet.first(), deployment, plan)
+	} else if(receptPartDP.first().isDeployed()) then {
+        createClientConnectionToExternalServer(receptPartDP.first(), receptacle.first(), facetPartDP.first(), facet.first(), deployment, plan)
 	} ->
 	
 	trace0("Connection", "Exiting visitPortForExternalConnectons")
@@ -845,6 +847,26 @@ Void visitPortForExternalConnectons(DeploymentPart partDP, InterfacePort port, D
 cached InstanceDeploymentDescription getConnectorInstance(DeploymentPart partDP, InterfacePort port, CCM::CCM_Deployment::DeploymentPlan deployment, DeploymentPlan plan):
 	let connectorFragmentSN = partDP.getConnectorFragmentScopedName(port):
 	plan.instance.selectFirst( i | i.name.first().matches(connectorFragmentSN));
+
+create PlanConnectionDescription createClientConnectionToExternalServer(
+        DeploymentPart clientCompDP, InterfacePort receptacle, 
+        DeploymentPart serverCompDP, InterfacePort facet, 
+        CCM::CCM_Deployment::DeploymentPlan deployment, DeploymentPlan plan) :
+    
+    let receptacleConnectorInstance = findOrCreateClientSideConnectorFragment(clientCompDP, receptacle, serverCompDP, facet, plan):
+    let rConnectorType = receptacle.connectorType.name:
+    let fConnectorType = facet.connectorType.name:
+    
+    trace0("Connection", "Entering createClientConnectionToExternalServer") ->
+
+    this.name.add(clientCompDP.getScopedName() + "." + receptacle.name + '_' + rConnectorType + "__" + serverCompDP.getScopedName() + "." + facet.name + "_" + fConnectorType  
+            + (receptacle.isUsedSynchronously()? "_syncdirect" : "_asyncdirect")) ->
+    this.createEndPoint(false, false, getConnectorUsesPortName(receptacle), receptacleConnectorInstance) ->
+    this.createExternalEndPoint(getRegisterNamingPropertyVal(serverCompDP, facet), facet, serverCompDP) ->
+    plan.connection.add(this) ->
+    
+    trace1("Connection", "Client to external Server: %s", this.name) ->
+    this;
 
 create PlanConnectionDescription createClientServerConnection(
         DeploymentPart clientCompDP, InterfacePort receptacle, 
@@ -857,17 +879,10 @@ create PlanConnectionDescription createClientServerConnection(
 	let fConnectorType = facet.connectorType.name:
 	
 	trace0("Connection", "Entering createClientServerConnection") ->
-	{if(clientCompDP.isDeployed() && serverCompDP.isDeployed()) then{
-		this.name.add(receptacleConnectorInstance.name.first() + "." + getConnectorUsesPortName(receptacle) + "::" + 
-			facetConnectorInstance.name.first() + "." + getConnectorProvidesPortName(facet).first()) ->
-		this.createEndPoint(false, false, getConnectorUsesPortName(receptacle), receptacleConnectorInstance) ->
-		this.createEndPoint(true, false, getConnectorProvidesPortName(facet).first(), facetConnectorInstance)
-	}else if(clientCompDP.isDeployed()) then{
-		this.name.add(clientCompDP.getScopedName() + "." + receptacle.name + '_' + rConnectorType + "__" + serverCompDP.getScopedName() + "." + facet.name + "_" + fConnectorType  
-				+ (receptacle.isUsedSynchronously()? "_syncdirect" : "_asyncdirect")) ->
-		this.createEndPoint(false, false, getConnectorUsesPortName(receptacle), receptacleConnectorInstance) ->
-		this.createExternalEndPoint(getRegisterNamingPropertyVal(serverCompDP, facet), facet, serverCompDP)
-	}}->
+    this.name.add(receptacleConnectorInstance.name.first() + "." + getConnectorUsesPortName(receptacle) + "::" + 
+		facetConnectorInstance.name.first() + "." + getConnectorProvidesPortName(facet).first()) ->
+	this.createEndPoint(false, false, getConnectorUsesPortName(receptacle), receptacleConnectorInstance) ->
+	this.createEndPoint(true, false, getConnectorProvidesPortName(facet).first(), facetConnectorInstance)->
 	plan.connection.add(this) ->
 	
 	trace1("Connection", "Client Server: %s", this.name) ->
