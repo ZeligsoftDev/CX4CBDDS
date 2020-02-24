@@ -67,6 +67,8 @@ public class ZDLElementSelectionDialog
 
 	private ZDLElementSelectionComposite searchComposite = null;
 
+	private ZDLElementBrowseComposite browseComposite;
+
 	private IFilter filter;
 	
 	private IContentProvider contentProvider;
@@ -252,24 +254,55 @@ public class ZDLElementSelectionDialog
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					if (searchComposite.getSelection().isEmpty()) {
-						getButton(IDialogConstants.OK_ID).setEnabled(false);
+					if (e.item == browseTab) {
+						if (!isBrowseTabShown) {
+							createBrowseContent(rootFolder);
+							isBrowseTabShown = true;
+						}
+						if(browseComposite.getSelection().isEmpty()){
+							getButton(IDialogConstants.OK_ID).setEnabled(false);
+						}
+						lastSelectedTabItem = "browse"; //$NON-NLS-1$
+					} else if (e.item == searchTab) {
+						if(searchComposite.getSelection().isEmpty()){
+							getButton(IDialogConstants.OK_ID).setEnabled(false);
+						}
+						lastSelectedTabItem = "search"; //$NON-NLS-1$
 					}
-					lastSelectedTabItem = "search"; //$NON-NLS-1$
 				}
 			});
 		}
 	}
 	
+	private void createBrowseContent(Composite parent) {
+		browseComposite = new ZDLElementBrowseComposite(context, concepts, includeImportedPackages){
+			@Override
+			public void handleSelection(IStructuredSelection selection) {
+				getButton(IDialogConstants.OK_ID).setEnabled(isValidSelection());
+			}
+		};
+		browseComposite.setFilter(filter);
+		Composite resultComposite = browseComposite.createComposite(parent);
 
+		if (resultComposite != null) {
+			browseTab.setControl(resultComposite);
+		}
+	}
+	
 	/**
 	 * Queries the selected element
 	 * 
 	 * @return
 	 */
 	public IStructuredSelection getSelectedElements() {
-		if (searchComposite != null) {
-			return searchComposite.getSelection();
+		if (lastSelectedTabItem.equals("browse")) { //$NON-NLS-1$
+			if (browseComposite != null) {
+				return browseComposite.getSelection();
+			}
+		} else {
+			if (searchComposite != null) {
+				return searchComposite.getSelection();
+			}
 		}
 		return new StructuredSelection();
 	}

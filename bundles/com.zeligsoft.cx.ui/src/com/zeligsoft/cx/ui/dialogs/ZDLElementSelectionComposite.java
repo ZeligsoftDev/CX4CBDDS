@@ -210,7 +210,7 @@ public abstract class ZDLElementSelectionComposite {
 				}
 			});
 
-		final IEclipsePreferences store = new InstanceScope()
+		final IEclipsePreferences store = InstanceScope.INSTANCE
 				.getNode(ZeligsoftCXUIPlugin.PLUGIN_ID);
 		boolean searchWorkspace = store.getBoolean(
 				CXPreferenceConstants.SEARCH_WORKSPACE,

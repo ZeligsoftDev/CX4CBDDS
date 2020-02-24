@@ -37,10 +37,16 @@ public class ZDLElementLabelProvider extends LabelProvider implements ITableLabe
 
 	@SuppressWarnings("unused")
 	private StructuredViewer viewer = null;
+	private boolean showQualifiedName = true;
 
 	public ZDLElementLabelProvider(StructuredViewer viewer) {
 		super();
 		this.viewer = viewer;
+	}
+	
+	public ZDLElementLabelProvider() {
+		this(null);
+		showQualifiedName = false;
 	}
 
 	@Override
@@ -80,15 +86,15 @@ public class ZDLElementLabelProvider extends LabelProvider implements ITableLabe
 		}
 
 		String label = EMFCoreUtil.getName((EObject) object);
-		String qualifiedName = EMFCoreUtil.getQualifiedName((EObject) object,
-				true);
-		// Remove any unnamed element from the qualified name
-		qualifiedName = qualifiedName.replaceAll("::<.+>", //$NON-NLS-1$
-				UML2Util.EMPTY_STRING);
+		
+		if (showQualifiedName) {
+			String qualifiedName = EMFCoreUtil.getQualifiedName((EObject) object, true);
+			// Remove any unnamed element from the qualified name
+			qualifiedName = qualifiedName.replaceAll("::<.+>", //$NON-NLS-1$
+					UML2Util.EMPTY_STRING);
 
-		label += Messages.ZDLElementLabelProvider_QualifiedNameConnectionLabel
-				+ qualifiedName;
-
+			label += Messages.ZDLElementLabelProvider_QualifiedNameConnectionLabel + qualifiedName;
+		}
 		return label;
 	}
 
