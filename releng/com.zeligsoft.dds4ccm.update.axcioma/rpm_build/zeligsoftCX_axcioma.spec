@@ -46,11 +46,11 @@ cp %{_targetdir}/dds4ccm_*.v*.zip %{buildroot}/opt/cx-axcioma/
 # Define RPM scripts (%%pre and %%post sections)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %pre
-axciomaInstalledFeature=$(/opt/Papyrus/eclipse -application org.eclipse.equinox.p2.director -listInstalledRoots -nosplash | grep com.zeligsoft.domain.ngc.ccm.axcioma_feature.feature.group)
-atcdInstalledFeature=$(/opt/Papyrus/eclipse -application org.eclipse.equinox.p2.director -listInstalledRoots -nosplash | grep com.zeligsoft.domain.ngc.ccm_feature.feature.group)
+axciomaInstalledFeature=$(/opt/Papyrus/papyrus -application org.eclipse.equinox.p2.director -listInstalledRoots -nosplash | grep com.zeligsoft.domain.ngc.ccm.axcioma_feature.feature.group)
+atcdInstalledFeature=$(/opt/Papyrus/papyrus -application org.eclipse.equinox.p2.director -listInstalledRoots -nosplash | grep com.zeligsoft.domain.ngc.ccm_feature.feature.group)
 
 if [[ ${axciomaInstalledFeature} != "" ]]; then 		# axcioma is already installed
-/opt/Papyrus/eclipse \
+/opt/Papyrus/papyrus \
    -application org.eclipse.equinox.p2.director \
    -nosplash \
    -uninstallIU com.zeligsoft.base_feature.feature.group  \
@@ -65,7 +65,7 @@ if [[ ${axciomaInstalledFeature} != "" ]]; then 		# axcioma is already installed
    -XX:PermSize=256M \
    -XX:MaxPermSize=512M
 elif [[ ${atcdInstalledFeature} != "" ]]; then 		# atcd is already installed
-/opt/Papyrus/eclipse \
+/opt/Papyrus/papyrus \
    -application org.eclipse.equinox.p2.director \
    -nosplash \
    -uninstallIU com.zeligsoft.base_feature.feature.group  \
@@ -84,7 +84,7 @@ fi
 %post
 # Get timestamp of CX zip file
 timestamp=$(echo /opt/cx-axcioma/*.zip | sed -rn 's/.*\.v([0-9]*)\.zip/\1/p')
-/opt/Papyrus/eclipse \
+/opt/Papyrus/papyrus \
    -application org.eclipse.equinox.p2.director \
    -nosplash \
    -repository \
@@ -97,7 +97,7 @@ timestamp=$(echo /opt/cx-axcioma/*.zip | sed -rn 's/.*\.v([0-9]*)\.zip/\1/p')
 
 %postun
 if [ $1 == 0 ] ; then					# this is an uninstallation, not an upgrade
-/opt/Papyrus/eclipse \
+/opt/Papyrus/papyrus \
    -application org.eclipse.equinox.p2.director \
    -nosplash \
    -uninstallIU com.zeligsoft.base_feature.feature.group  \
