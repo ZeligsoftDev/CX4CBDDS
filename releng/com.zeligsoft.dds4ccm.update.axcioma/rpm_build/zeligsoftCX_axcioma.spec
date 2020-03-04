@@ -58,6 +58,14 @@ if [[ ${axciomaInstalledFeature} != "" ]]; then 		# axcioma is already installed
    -uninstallIU com.zeligsoft.domain.idl3plus_feature.feature.group  \
    -uninstallIU com.zeligsoft.domain.ngc.ccm.axcioma_feature.feature.group  \
    -uninstallIU com.zeligsoft.domain.omg.ccm_feature.feature.group \
+   -uninstallIU org.eclipse.cdt.feature.group \
+   -uninstallIU org.eclipse.cdt.gdb.feature.group \
+   -uninstallIU org.eclipse.cdt.gnu.build.feature.group \
+   -uninstallIU org.eclipse.cdt.gnu.debug.feature.group \
+   -uninstallIU org.eclipse.cdt.gnu.dsf.feature.group \
+   -uninstallIU org.eclipse.cdt.native.feature.group \
+   -uninstallIU org.eclipse.cdt.platform.feature.group \
+   -uninstallIU org.eclipse.cdt.sdk.feature.group \
    -vmargs \
    -Xms512m \
    -Xmx1024m \
@@ -73,6 +81,14 @@ elif [[ ${atcdInstalledFeature} != "" ]]; then 		# atcd is already installed
    -uninstallIU com.zeligsoft.domain.idl3plus_feature.feature.group  \
    -uninstallIU com.zeligsoft.domain.ngc.ccm_feature.feature.group  \
    -uninstallIU com.zeligsoft.domain.omg.ccm_feature.feature.group \
+   -uninstallIU org.eclipse.cdt.feature.group \
+   -uninstallIU org.eclipse.cdt.gdb.feature.group \
+   -uninstallIU org.eclipse.cdt.gnu.build.feature.group \
+   -uninstallIU org.eclipse.cdt.gnu.debug.feature.group \
+   -uninstallIU org.eclipse.cdt.gnu.dsf.feature.group \
+   -uninstallIU org.eclipse.cdt.native.feature.group \
+   -uninstallIU org.eclipse.cdt.platform.feature.group \
+   -uninstallIU org.eclipse.cdt.sdk.feature.group \
    -vmargs \
    -Xms512m \
    -Xmx1024m \
@@ -89,6 +105,14 @@ timestamp=$(echo /opt/cx-axcioma/*.zip | sed -rn 's/.*\.v([0-9]*)\.zip/\1/p')
    -nosplash \
    -repository \
    jar:file:/opt/cx-axcioma/dds4ccm_axcioma_%{ver}.v${timestamp}.zip\!/ \
+   -installIU org.eclipse.cdt.feature.group \
+   -installIU org.eclipse.cdt.gdb.feature.group \
+   -installIU org.eclipse.cdt.gnu.build.feature.group \
+   -installIU org.eclipse.cdt.gnu.debug.feature.group \
+   -installIU org.eclipse.cdt.gnu.dsf.feature.group \
+   -installIU org.eclipse.cdt.native.feature.group \
+   -installIU org.eclipse.cdt.platform.feature.group \
+   -installIU org.eclipse.cdt.sdk.feature.group \
    -installIU com.zeligsoft.base_feature.feature.group  \
    -installIU com.zeligsoft.cx_feature.feature.group  \
    -installIU com.zeligsoft.domain.idl3plus_feature.feature.group  \
@@ -105,6 +129,14 @@ if [ $1 == 0 ] ; then					# this is an uninstallation, not an upgrade
    -uninstallIU com.zeligsoft.domain.idl3plus_feature.feature.group  \
    -uninstallIU com.zeligsoft.domain.ngc.ccm.axcioma_feature.feature.group  \
    -uninstallIU com.zeligsoft.domain.omg.ccm_feature.feature.group \
+   -uninstallIU org.eclipse.cdt.feature.group \
+   -uninstallIU org.eclipse.cdt.gdb.feature.group \
+   -uninstallIU org.eclipse.cdt.gnu.build.feature.group \
+   -uninstallIU org.eclipse.cdt.gnu.debug.feature.group \
+   -uninstallIU org.eclipse.cdt.gnu.dsf.feature.group \
+   -uninstallIU org.eclipse.cdt.native.feature.group \
+   -uninstallIU org.eclipse.cdt.platform.feature.group \
+   -uninstallIU org.eclipse.cdt.sdk.feature.group \
    -vmargs \
    -Xms512m \
    -Xmx1024m \
