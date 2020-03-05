@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Zeligsoft 2009 Limited.
+ * Copyright 2020 Northrop Grumman Systems Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ public class InterconnectDropStrategy extends TransactionalDropStrategy {
 
 	@Override
 	public String getDescription() {
-		return "Interconnect drop to create CCMPart";
+		return "Interconnect drop to create InterconnectInstance";
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class InterconnectDropStrategy extends TransactionalDropStrategy {
 
 	@Override
 	public String getID() {
-		return com.zeligsoft.domain.dds4ccm.ui.Activator.PLUGIN_ID + ".InterconnectToInterconnectInstanceDrop";
+		return com.zeligsoft.domain.dds4ccm.ui.Activator.PLUGIN_ID + ".part.InterconnectToInterconnectInstanceDrop";
 	}
 
 	@Override
