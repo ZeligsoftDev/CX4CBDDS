@@ -7,6 +7,12 @@ DDS4CCM has support for the following CCM implementations:
 - [CIAO](https://www.dre.vanderbilt.edu/~schmidt/CIAO.html)
 - [AXCIOMA](https://www.axcioma.org)
 
+DDS4CCM has support for the following OMG standards:
+- [CCM](https://www.omg.org/spec/CORBA)
+- [IDL 3.5](https://www.omg.org/spec/IDL/3.5)
+- [DDS4CCM](https://www.omg.org/spec/DDS4CCM/)
+- [AMI4CCM](https://www.omg.org/spec/AMI4CCM)
+
 ## Build requirements
 
 The build requires:
