@@ -215,8 +215,15 @@
           </Priority>
        </editpolicyProvider>
     </extension>
-   
-   
+    <extension
+          point="org.eclipse.papyrus.infra.gmfdiag.css.theme">
+       <themeContribution
+             id="org.eclipse.papyrus.css.papyrus_theme">
+          <stylesheet
+                stylesheetPath="stylesheets/cxstyle.css">
+          </stylesheet>
+       </themeContribution>
+    </extension>
     <!--
  
    <extension
@@ -430,23 +437,6 @@
             id="com.zeligsoft.DDS4CCM"
             name="%DDS4CCMPreferencePage.name">
       </page>
-    </extension>
-    <extension
-         point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
-          <decoratorProvider
-                class="com.zeligsoft.domain.dds4ccm.ui.internal.providers.decorators.ConnectorDecoratorProvider">
-             <Priority
-                   name="Highest">
-             </Priority>
-             <object
-                   class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart"
-                   id="com.zeligsoft.domain.dds4ccm.ui.DDS4CCMConnectorDecoratorProvider">
-                <staticMethod
-                      name="resolveSemanticElement().eClass().getName()"
-                      value="Connector">
-                </staticMethod>
-             </object>
-        </decoratorProvider>
     </extension>
     
     -->

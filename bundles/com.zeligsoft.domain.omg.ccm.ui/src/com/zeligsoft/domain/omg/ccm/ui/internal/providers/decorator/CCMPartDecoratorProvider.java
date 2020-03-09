@@ -20,12 +20,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.core.service.AbstractProvider;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
-import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.CreateDecoratorsOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorProvider;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
-import org.eclipse.gmf.runtime.notation.View;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
@@ -59,23 +57,14 @@ public class CCMPartDecoratorProvider extends AbstractProvider implements
 	 */
 	@Override
 	public boolean provides(IOperation operation) {
-		if(!(operation instanceof CreateDecoratorsOperation)) {
+
+		if (!(operation instanceof CreateDecoratorsOperation)) {
 			return false;
 		}
-		
-		IDecoratorTarget decoratorTarget = 
-			((CreateDecoratorsOperation) operation).getDecoratorTarget();
-		EditPart editPart = (EditPart) 
-			decoratorTarget.getAdapter(EditPart.class);
-		if(editPart != null && editPart instanceof IPrimaryEditPart) {
-			Object model = editPart.getModel();
-			if(!(model instanceof View)){
-				return false;
-			}
-			EObject element = ViewUtil.resolveSemanticElement((View) model);
-			return (element != null) && ZDLUtil.isZDLConcept(element, CCMNames.CCMPART);
-		}
-		return false;
+
+		EObject referenceElement = ((CreateDecoratorsOperation) operation).getDecoratorTarget()
+				.getAdapter(EObject.class);
+		return (referenceElement != null) && ZDLUtil.isZDLConcept(referenceElement, CCMNames.CCMPART);
 	}
 
 }

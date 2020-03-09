@@ -160,23 +160,6 @@
       </decoratorProvider>
     </extension>
     <extension
-         point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
-          <decoratorProvider
-                class="com.zeligsoft.domain.idl3plus.ui.internal.providers.decorator.ConnectorDecoratorProvider">
-             <Priority
-                   name="High">
-             </Priority>
-             <object
-                   class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart"
-                   id="com.zeligsoft.domain.idl3plus.ui.idl3plusConnectorDecoratorProvider">
-                <staticMethod
-                      name="resolveSemanticElement().eClass().getName()"
-                      value="Connector">
-                </staticMethod>
-             </object>
-        </decoratorProvider>
-    </extension>
-    <extension
           point="org.eclipse.ui.importWizards">
        <category
              id="idl3PlusImportID"

@@ -22,26 +22,18 @@ import java.util.List;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
-import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
-import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.AbstractDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
-import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Port;
-import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -57,8 +49,7 @@ import com.zeligsoft.domain.zml.util.ZMLMMNames;
  *
  */
 public class CCMPartDecorator
-	extends AbstractDecorator
-	implements NotificationListener {
+	extends AbstractDecorator{
 
 	/**
 	 * Size of the decorator
@@ -86,10 +77,6 @@ public class CCMPartDecorator
 	 */
 	@Override
 	public void activate() {
-		// We must add our own listener since we do not own the target
-		// EditPart and therefore cannot add a notification listener on it
-		addListener();
-		
 		refresh();
 	}
 
@@ -98,7 +85,6 @@ public class CCMPartDecorator
 	 */
 	@Override
 	public void deactivate() {
-		removeListener();
 		super.deactivate();
 	}
 
@@ -114,8 +100,7 @@ public class CCMPartDecorator
 			return;
 		}
 		
-		View view = (View) getDecoratorTarget().getAdapter(View.class);
-		EObject element = ViewUtil.resolveSemanticElement(view);
+		EObject element = (EObject) getDecoratorTarget().getAdapter(EObject.class);
 		
 		if(ZDLUtil.isZDLConcept(element, CCMNames.CCMPART)) {
 			EObject partType = (EObject) ZDLUtil.getValue(element, ZMLMMNames.PART, 
@@ -141,8 +126,8 @@ public class CCMPartDecorator
 						Ellipse filledCircle = new Ellipse();
 						filledCircle.setSize(new Dimension(radius, radius));
 						filledCircle.setOpaque(true);
-						filledCircle.setForegroundColor(ColorConstants.lightGray);
-						filledCircle.setBackgroundColor(ColorConstants.lightGray);
+						filledCircle.setForegroundColor(ColorConstants.gray);
+						filledCircle.setBackgroundColor(ColorConstants.gray);
 
 						setDecoration(getDecoratorTarget().addShapeDecoration(
 							filledCircle, element instanceof Port
@@ -154,63 +139,6 @@ public class CCMPartDecorator
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener#notifyChanged(org.eclipse.emf.common.notify.Notification)
-	 */
-	@Override
-	public void notifyChanged(Notification notification) {
-		if (notification.getFeature() == null) {
-			return;
-		}
-
-		if(getElement() == null){
-			return;
-		}
-		if (notification.getFeature().equals(
-			UMLPackage.eINSTANCE.getTypedElement_Type())) {
-
-			if (notification.getEventType() == Notification.SET) {
-				if (notification.getNewValue() != null
-					&& notification.getOldValue() == null) {
-					TransactionalEditingDomain txDomain = TransactionUtil
-						.getEditingDomain(getElement());
-					DiagramEventBroker.getInstance(txDomain)
-						.addNotificationListener(
-							((Property) getElement()).getType(), this);
-				} else if (notification.getNewValue() == null
-					&& notification.getOldValue() != null) {
-					TransactionalEditingDomain txDomain = TransactionUtil
-						.getEditingDomain(getElement());
-					DiagramEventBroker.getInstance(txDomain)
-						.removeNotificationListener(
-							((Property) getElement()).getType(), this);
-				}
-			}
-			EditPart editPart = (EditPart) getDecoratorTarget().getAdapter(
-				EditPart.class);
-			if (editPart.isActive()) {
-				editPart.refresh();
-			}
-
-		} 
-	}
-
-	/**
-	 * Returns the model element which is represented by the target.
-	 * 
-	 * @return
-	 */
-	private EObject getElement() {
-		EditPart editPart = (EditPart) getDecoratorTarget().getAdapter(
-			EditPart.class);
-		Object model = editPart.getModel();
-		if (!(model instanceof View)) {
-			return null;
-		}
-		return ViewUtil.resolveSemanticElement((View) model);
-
-	}
-	
 	/**
 	 * Returns the offset based on the type of the semantic element.
 	 * 
@@ -225,47 +153,6 @@ public class CCMPartDecorator
 
 		return MapModeUtil.getMapMode(((ShapeEditPart) editPart).getFigure())
 			.DPtoLP(offSet);
-
-	}
-	
-	/**
-	 * Adds this as listener to the DiagramEventBroker.
-	 */
-	private void addListener() {
-		EObject element = getElement();
-		TransactionalEditingDomain txDomain = TransactionUtil
-			.getEditingDomain(element);
-		DiagramEventBroker.getInstance(txDomain).addNotificationListener(
-			element, this);
-		DiagramEventBroker.getInstance(txDomain).addNotificationListener(
-			((Property) element).getType(), this);
-	}
-	
-	/**
-	 * Removes this as listener to the DiagramEventBroker.
-	 */
-	private void removeListener() {
-
-		EObject element = getElement();
-
-		if (element == null) {
-			// Safe to return since the listener implementation
-			// uses a weak reference to cache listeners.
-			return;
-		}
-
-		TransactionalEditingDomain txDomain = TransactionUtil
-			.getEditingDomain(element);
-
-		if (txDomain == null) {
-			return;
-		}
-		DiagramEventBroker.getInstance(txDomain).removeNotificationListener(
-			element, this);
-
-		DiagramEventBroker.getInstance(txDomain)
-				.removeNotificationListener(
-					((Property) element).getType(), this);
 
 	}
 }
