@@ -40,12 +40,12 @@ CompositeStructureDiagram Component{
 }
 
 CompositeStructureDiagram Port{
-    maskLabel: name, conjugated;
+    maskLabel: name, type, conjugated;
     isPortResizable:false;
 }
 
 CompositeStructureDiagram Property[appliedStereotypes~=CCMPart]{
-    maskLabel: name;
+    maskLabel: name, type;
     canonical: true;
 }
 
