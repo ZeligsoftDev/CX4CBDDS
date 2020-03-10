@@ -34,7 +34,8 @@ public class ConnectorPartCustomFigure extends PropertyPartFigure {
 
 	public ConnectorPartCustomFigure() {
 		setOpaque(true);
-		Dimension dim = new Dimension(MapModeUtil.getMapMode().DPtoLP(2), MapModeUtil.getMapMode().DPtoLP(2));
+		
+		Dimension dim = new Dimension(MapModeUtil.getMapMode().DPtoLP(1), MapModeUtil.getMapMode().DPtoLP(1));
 		setSize(dim);
 		setBorder(null);
 		setMinimumSize(dim);

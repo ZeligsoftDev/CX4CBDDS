@@ -54,7 +54,7 @@ public class CCMPartDecorator
 	/**
 	 * Size of the decorator
 	 */
-	private int decoratorSize = 6;
+	private int decoratorSize = 7;
 	
 	/**
 	 * Offset for the decoration in a CCMPart, an offset is necessary since

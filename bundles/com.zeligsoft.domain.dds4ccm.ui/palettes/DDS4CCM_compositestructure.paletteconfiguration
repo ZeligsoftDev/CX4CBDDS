@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <paletteconfiguration:PaletteConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:paletteconfiguration="http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.8" id="com.zeligsoft.cbdds.diagram.composite.palette" label="CBDDS">
-  <drawerConfigurations xmi:type="paletteconfiguration:DrawerConfiguration" id="cbdds.composite.nodes" label="CBDDS" description="CBDDS Drawer">
-    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.edges.CCMConnector" label="CCM Connector" description="Create a CCM Connector" kind="ConnectionTool">
+  <drawerConfigurations xmi:type="paletteconfiguration:DrawerConfiguration" id="cbdds.composite.nodes" label="Assembly" description="Assembly Drawer">
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.edges.CCMConnector" label="Connection" description="Create a connection" kind="ConnectionTool">
       <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Connector.gif"/>
       <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
         <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/DDS4CCM_compositestructure.elementtypesconfigurations#_bMmmMArjEeq7m5nPQx9iPA"/>
       </elementDescriptors>
     </ownedConfigurations>
-    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.edges.ConnectorStatusListenerConnector" label="ConnectorStatusListener Connector" description="Create a ConnectorStatusListener Connector" kind="ConnectionTool" toolClassName="">
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.edges.ConnectorStatusListenerConnector" label="ConnectorStatusListenerConnection" description="Create a ConnectorStatusListener Connection" kind="ConnectionTool" toolClassName="">
       <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Connector.gif"/>
       <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
         <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/DDS4CCM_compositestructure.elementtypesconfigurations#_U6FKIDu1Eeqdu80buh87MA"/>

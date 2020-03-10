@@ -26,8 +26,13 @@ Connector[appliedStereotypes~=ConnectorStatusListenerConnection] > Label {
     visible: false;
 }
 
+Connector[appliedStereotypes~=CCMConnector] {
+    routing: Rectilinear;
+}
+
 Connector[appliedStereotypes~=ConnectorStatusListenerConnection] {
     lineColor: royalblue;
+    routing: Rectilinear;
 }
 
 CompositeStructureDiagram Component{
@@ -36,6 +41,7 @@ CompositeStructureDiagram Component{
 
 CompositeStructureDiagram Port{
     maskLabel: name, conjugated;
+    isPortResizable:false;
 }
 
 CompositeStructureDiagram Property[appliedStereotypes~=CCMPart]{
