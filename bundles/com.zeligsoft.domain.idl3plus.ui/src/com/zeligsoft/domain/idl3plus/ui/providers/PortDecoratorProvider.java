@@ -16,11 +16,6 @@
  */
 package com.zeligsoft.domain.idl3plus.ui.providers;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LayoutListener;
@@ -46,7 +41,6 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorProvider;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
-import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.uml2.common.util.UML2Util;
@@ -84,25 +78,13 @@ public class PortDecoratorProvider extends AbstractProvider implements IDecorato
 	 * @see org.eclipse.gmf.runtime.common.core.service.IProvider#provides(org.eclipse.gmf.runtime.common.core.service.IOperation)
 	 */
 	public boolean provides(IOperation operation) {
-		if(!(operation instanceof CreateDecoratorsOperation)) {
+		if (!(operation instanceof CreateDecoratorsOperation)) {
 			return false;
 		}
-		IDecoratorTarget decoratorTarget = ((CreateDecoratorsOperation) operation)
-				.getDecoratorTarget();
-		EditPart editPart = (EditPart) decoratorTarget
-				.getAdapter(EditPart.class);
-		if(editPart != null && editPart instanceof IPrimaryEditPart) {
-			Object model = editPart.getModel();
-			if(!(model instanceof View)) {
-				return false;
-			}
-			EObject element = ViewUtil.resolveSemanticElement((View) model);
-			return (element != null)
-					&& (ZDLUtil.isZDLConcept(element, CCMNames.INTERFACE_PORT) || ZDLUtil
-							.isZDLConcept(element, CCMNames.EVENT_PORT));
-		}
-		
-		return false;
+		EObject element = ((CreateDecoratorsOperation) operation).getDecoratorTarget().getAdapter(EObject.class);
+
+		return (element != null) && (ZDLUtil.isZDLConcept(element, CCMNames.INTERFACE_PORT)
+				|| ZDLUtil.isZDLConcept(element, CCMNames.EVENT_PORT));
 	}
 	
 	public static class CCMPortDecorator
@@ -207,57 +189,6 @@ public class PortDecoratorProvider extends AbstractProvider implements IDecorato
 			}
 			updateImage();
 		}
-		
-		@SuppressWarnings("unchecked")
-		private void hideAntena() {
-			View view = (View) getDecoratorTarget().getAdapter(View.class);
-			
-			final List<Node> nodesToHide = new ArrayList<Node>();
-			Set<Object> viewChildren = new HashSet<Object>();
-			viewChildren.addAll(view.getTransientChildren());
-			if (viewChildren.isEmpty()) {
-				viewChildren.addAll(view.getPersistedChildren());
-			}
-			for (final Object o : viewChildren) {
-				if (o instanceof Node) {
-					if (!((Node) o).isVisible()) {
-						continue;
-					}
-					if (((Node) o).getType() == "InterfaceRequired" //$NON-NLS-1$
-							|| ((Node) o).getType() == "InterfaceProvided") { //$NON-NLS-1$
-						nodesToHide.add((Node) o);
-					}
-				}
-			}
-			if (nodesToHide.size() == 0) {
-				return;
-			}
-//			AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-//					UMLModeler.getEditingDomain(),
-//					"HidePortInterfaceDecorator", Collections.EMPTY_MAP, null) { //$NON-NLS-1$
-//
-//				@Override
-//				protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-//						IAdaptable info) throws ExecutionException {
-//					for (Node node : nodesToHide) {
-//						node.setVisible(false);
-//					}
-//					return CommandResult.newOKCommandResult();
-//				}
-//
-//				@Override
-//				public boolean canUndo() {
-//					return false;
-//		}
-//			};
-//
-//			try {
-//				OperationHistoryFactory.getOperationHistory().execute(editCommand, null,
-//						null);
-//			} catch (ExecutionException e) {
-//				Activator.getDefault().error("Error hiding port interface decoration", e); //$NON-NLS-1$
-//			}
-		} 
 		
 		/**
 		 * Returns the offset based on the type of the semantic element.
@@ -512,7 +443,6 @@ public class PortDecoratorProvider extends AbstractProvider implements IDecorato
 										: IDecoratorTarget.Direction.SOUTH_WEST,
 								getOffset(), false));
 			}
-			hideAntena();
 		}
 
 		/* (non-Javadoc)

@@ -141,7 +141,6 @@
             property="connectorType">
       </PropertySection>
     </extension>
-    <!--
     <extension
          point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
       <decoratorProvider
@@ -149,16 +148,10 @@
          <Priority
                name="Highest">
          </Priority>
-         <object
-               class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart"
-               id="com.zeligsoft.domain.idl3plus.ui.object1">
-            <staticMethod
-                  name="resolveSemanticElement().eClass().getName()"
-                  value="Port">
-            </staticMethod>
-         </object>
       </decoratorProvider>
     </extension>
+    <!--
+
     <extension
           point="org.eclipse.ui.importWizards">
        <category

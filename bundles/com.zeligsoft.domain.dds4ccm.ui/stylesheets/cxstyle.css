@@ -21,6 +21,21 @@ Label[kind=StereotypeLabel]{ /* Hide all stereotype labels */
     visible: false;
 }
 
+Port{
+    maskLabel: name, type, conjugated;
+    isPortResizable:false;
+}
+
+Property{
+    maskLabel: name, type;
+    canonical: true;
+}
+
+Component{
+    canonical: true;
+}
+
+/* Composite Structure Diagram */ 
 Connector[appliedStereotypes~=CCMConnector] > Label,
 Connector[appliedStereotypes~=ConnectorStatusListenerConnection] > Label {
     visible: false;
@@ -33,20 +48,6 @@ Connector[appliedStereotypes~=CCMConnector] {
 Connector[appliedStereotypes~=ConnectorStatusListenerConnection] {
     lineColor: royalblue;
     routing: Rectilinear;
-}
-
-CompositeStructureDiagram Component{
-    canonical: true;
-}
-
-CompositeStructureDiagram Port{
-    maskLabel: name, type, conjugated;
-    isPortResizable:false;
-}
-
-CompositeStructureDiagram Property[appliedStereotypes~=CCMPart]{
-    maskLabel: name, type;
-    canonical: true;
 }
 
 CompositeStructureDiagram Property[appliedStereotypes~=CCMPart] > Compartment[kind=internalstructure]{
