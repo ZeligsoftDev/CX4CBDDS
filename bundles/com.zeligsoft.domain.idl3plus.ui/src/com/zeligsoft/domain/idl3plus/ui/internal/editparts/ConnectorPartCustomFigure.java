@@ -21,7 +21,6 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
-import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.papyrus.uml.diagram.composite.custom.figures.PropertyPartFigure;
 
 /**
@@ -35,8 +34,8 @@ public class ConnectorPartCustomFigure extends PropertyPartFigure {
 	public ConnectorPartCustomFigure() {
 		setOpaque(true);
 		
-		Dimension dim = new Dimension(MapModeUtil.getMapMode().DPtoLP(1), MapModeUtil.getMapMode().DPtoLP(1));
-		setSize(dim);
+		Dimension dim = new Dimension(18, 18);
+		getBounds().setSize(dim);
 		setBorder(null);
 		setMinimumSize(dim);
 		setPreferredSize(dim);
