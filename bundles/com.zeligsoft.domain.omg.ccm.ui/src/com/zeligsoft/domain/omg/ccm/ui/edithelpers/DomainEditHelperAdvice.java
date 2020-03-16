@@ -90,7 +90,7 @@ public class DomainEditHelperAdvice extends AbstractEditHelperAdvice {
 				Property newProperty = (Property) newEObject;
 
 				Type propertyType = newProperty.getType();
-				if (propertyType == null) {
+				if (editRequest.getParameter("type") == null && propertyType == null) {
 					if (InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID)
 							.getBoolean(CCMPreferenceConstants.AUTO_TYPE_SELECTION_DIALOG, true)) {
 						ZDLElementSelectionDialog dialog = new ZDLElementSelectionDialog(
