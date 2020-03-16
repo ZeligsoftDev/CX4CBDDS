@@ -16,9 +16,12 @@
  */
 package com.zeligsoft.domain.omg.ccm.ui.edithelpers;
 
+import java.util.Collections;
+
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
@@ -26,13 +29,21 @@ import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.edithelper.AbstractEditHelperAdvice;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
+import org.eclipse.jface.window.Window;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.cx.ui.dialogs.ZDLElementSelectionDialog;
+import com.zeligsoft.cx.ui.filters.ElementSelectionFilter;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
+import com.zeligsoft.domain.omg.ccm.preferences.CCMPreferenceConstants;
+import com.zeligsoft.domain.omg.ccm.ui.Activator;
 import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
+import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
  * Edit helper advice for components in the CCM domain.
@@ -58,6 +69,7 @@ public class CCMComponentEditHelperAdvice extends AbstractEditHelperAdvice {
 				Messages.CommandLabel_SCAComponentPartEditHelperAdvice_getAfterCreateCommand,
 				null) {
 
+			@SuppressWarnings("unchecked")
 			@Override
 			protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
 					IAdaptable info) throws ExecutionException {
@@ -66,6 +78,7 @@ public class CCMComponentEditHelperAdvice extends AbstractEditHelperAdvice {
 				if (newEObject == null) {
 					return null;
 				}
+				EObject container = editRequest.getContainer();
 				if (ZDLUtil.isZDLConcept(newEObject, CCMNames.CCMCONNECTOR)
 						|| ZDLUtil.isZDLConcept(newEObject,
 								CCMNames.TARGET_ASSEMBLY_CONNECTOR)) {
@@ -74,6 +87,43 @@ public class CCMComponentEditHelperAdvice extends AbstractEditHelperAdvice {
 				}
 				if (!(newEObject instanceof Property)) {
 					return CommandResult.newOKCommandResult(newEObject);
+				}
+
+				Property newProperty = (Property) newEObject;
+
+				Type propertyType = newProperty.getType();
+				if (propertyType == null) {
+					if (InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID)
+							.getBoolean(CCMPreferenceConstants.AUTO_TYPE_SELECTION_DIALOG, true)) {
+						ZDLElementSelectionDialog dialog = new ZDLElementSelectionDialog(
+								Display.getCurrent().getActiveShell(), container, Collections.EMPTY_LIST, true, true);
+
+						if (ZDLUtil.isZDLConcept(newProperty, ZMLMMNames.CONJUGATED_PORT)) {
+							dialog.setElementFilter(
+									new ElementSelectionFilter(ZMLMMNames.PORT, ZMLMMNames.PORT__PORTTYPE));
+						} else if (ZDLUtil.isZDLConcept(newProperty, CCMNames.CCMPART)) {
+							dialog.setElementFilter(
+									new ElementSelectionFilter(CCMNames.CCMPART, ZMLMMNames.PART__DEFINITION));
+						} else if (ZDLUtil.isZDLConcept(newProperty, CCMNames.NODE_INSTANCE)) {
+							dialog.setElementFilter(
+									new ElementSelectionFilter(CCMNames.NODE_INSTANCE, CCMNames.NODE_INSTANCE__TYPE));
+						} else if (ZDLUtil.isZDLConcept(newProperty, CCMNames.BRIDGE_INSTANCE)) {
+							dialog.setElementFilter(new ElementSelectionFilter(CCMNames.BRIDGE_INSTANCE,
+									CCMNames.BRIDGE_INSTANCE__TYPE));
+						} else if (ZDLUtil.isZDLConcept(newProperty, CCMNames.INTERCONNECT_INSTANCE)) {
+							dialog.setElementFilter(new ElementSelectionFilter(CCMNames.INTERCONNECT_INSTANCE,
+									CCMNames.INTERCONNECT_INSTANCE__TYPE));
+						} else {
+							return CommandResult.newOKCommandResult(newProperty);
+						}
+						if (dialog.open() == Window.OK) {
+							if (!dialog.getSelectedElements().isEmpty()
+									&& dialog.getSelectedElements().getFirstElement() != null) {
+								newProperty.setType((Type) dialog.getSelectedElements().getFirstElement());
+							}
+						}
+					}
+					return CommandResult.newOKCommandResult(newProperty);
 				}
 
 				return CommandResult.newOKCommandResult();

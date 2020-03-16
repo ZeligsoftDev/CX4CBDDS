@@ -22,6 +22,7 @@ import java.util.List;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
@@ -40,7 +41,6 @@ import com.zeligsoft.cx.ui.dialogs.ZDLElementSelectionDialog;
 import com.zeligsoft.cx.ui.filters.ElementSelectionFilter;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.idl3plus.ui.l10n.Messages;
-import com.zeligsoft.domain.omg.ccm.Activator;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.preferences.CCMPreferenceConstants;
 
@@ -67,7 +67,6 @@ public class IDL3PlusConnectorEditHelperAdvice extends AbstractEditHelperAdvice 
 				.getEditingDomain(request.getContainer()),
 				Messages.IDL3PlusConnectorEditHelperAdvice_CommandLabel, null) {
 
-			@SuppressWarnings("deprecation")
 			@Override
 			protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
 					IAdaptable info) throws ExecutionException {
@@ -89,8 +88,8 @@ public class IDL3PlusConnectorEditHelperAdvice extends AbstractEditHelperAdvice 
 					Type propertyType = newProperty.getType();
 					if (propertyType == null) {
 						if (ZDLUtil.isZDLConcept(newProperty, IDL3PlusNames.DATA_SPACE)) {
-							if (Activator.getDefault().getPluginPreferences().getBoolean(
-									CCMPreferenceConstants.AUTO_TYPE_SELECTION_DIALOG)) {
+							if (InstanceScope.INSTANCE.getNode(com.zeligsoft.domain.idl3plus.ui.Activator.PLUGIN_ID)
+									.getBoolean(CCMPreferenceConstants.AUTO_TYPE_SELECTION_DIALOG, true)) {
 								List<String> concepts = new ArrayList<String>();
 
 								ZDLElementSelectionDialog dialog = new ZDLElementSelectionDialog(
