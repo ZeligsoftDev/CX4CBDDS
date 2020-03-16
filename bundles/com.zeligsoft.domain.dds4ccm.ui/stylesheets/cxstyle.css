@@ -35,16 +35,15 @@ Component{
     canonical: true;
 }
 
-/* Composite Structure Diagram */ 
-Connector[appliedStereotypes~=CCMConnector] > Label,
-Connector[appliedStereotypes~=ConnectorStatusListenerConnection] > Label {
+Connector > Label {
     visible: false;
 }
 
-Connector[appliedStereotypes~=CCMConnector] {
+Connector {
     routing: Rectilinear;
 }
 
+/* Composite Structure Diagram */ 
 Connector[appliedStereotypes~=ConnectorStatusListenerConnection] {
     lineColor: royalblue;
     routing: Rectilinear;

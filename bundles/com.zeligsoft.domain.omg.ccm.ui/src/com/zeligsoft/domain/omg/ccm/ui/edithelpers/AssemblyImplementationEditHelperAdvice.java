@@ -46,20 +46,26 @@ import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
- * Edit helper advice for components in the CCM domain.
+ * CCM Implementation edit helper adivce
  * 
- * @author smcfee
+ * @author ysroh
  * 
  */
-public class CCMComponentEditHelperAdvice extends AbstractEditHelperAdvice {
+public class AssemblyImplementationEditHelperAdvice extends AbstractEditHelperAdvice {
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.gmf.runtime.emf.type.core.edithelper.AbstractEditHelperAdvice
-	 * #getAfterCreateCommand(org.eclipse.gmf.runtime.emf.type.core.requests.
-	 * CreateElementRequest)
-	 */
+	@Override
+	protected ICommand getBeforeCreateCommand(CreateElementRequest request) {
+		if ("com.zeligsoft.domain.dds4ccm.ui.diagram.InterfacePort_Shape"
+				.contentEquals(request.getElementType().getId())) {
+			EObject obj = ZDLUtil.getEValue(request.getContainer(), CCMNames.ASSEMBLY_IMPLEMENTATION,
+					ZMLMMNames.STRUCTURAL_REALIZATION__INTERFACE);
+			if (obj != null) {
+				request.setContainer(obj);
+			}
+		}
+		return super.getBeforeCreateCommand(request);
+	}
+	
 	@Override
 	protected ICommand getAfterCreateCommand(CreateElementRequest request) {
 		final CreateElementRequest editRequest = request;
@@ -98,21 +104,9 @@ public class CCMComponentEditHelperAdvice extends AbstractEditHelperAdvice {
 						ZDLElementSelectionDialog dialog = new ZDLElementSelectionDialog(
 								Display.getCurrent().getActiveShell(), container, Collections.EMPTY_LIST, true, true);
 
-						if (ZDLUtil.isZDLConcept(newProperty, ZMLMMNames.CONJUGATED_PORT)) {
-							dialog.setElementFilter(
-									new ElementSelectionFilter(ZMLMMNames.PORT, ZMLMMNames.PORT__PORTTYPE));
-						} else if (ZDLUtil.isZDLConcept(newProperty, CCMNames.CCMPART)) {
+						if (ZDLUtil.isZDLConcept(newProperty, CCMNames.CCMPART)) {
 							dialog.setElementFilter(
 									new ElementSelectionFilter(CCMNames.CCMPART, ZMLMMNames.PART__DEFINITION));
-						} else if (ZDLUtil.isZDLConcept(newProperty, CCMNames.NODE_INSTANCE)) {
-							dialog.setElementFilter(
-									new ElementSelectionFilter(CCMNames.NODE_INSTANCE, CCMNames.NODE_INSTANCE__TYPE));
-						} else if (ZDLUtil.isZDLConcept(newProperty, CCMNames.BRIDGE_INSTANCE)) {
-							dialog.setElementFilter(new ElementSelectionFilter(CCMNames.BRIDGE_INSTANCE,
-									CCMNames.BRIDGE_INSTANCE__TYPE));
-						} else if (ZDLUtil.isZDLConcept(newProperty, CCMNames.INTERCONNECT_INSTANCE)) {
-							dialog.setElementFilter(new ElementSelectionFilter(CCMNames.INTERCONNECT_INSTANCE,
-									CCMNames.INTERCONNECT_INSTANCE__TYPE));
 						} else {
 							return CommandResult.newOKCommandResult(newProperty);
 						}
@@ -131,5 +125,4 @@ public class CCMComponentEditHelperAdvice extends AbstractEditHelperAdvice {
 
 		};
 	}
-
 }
