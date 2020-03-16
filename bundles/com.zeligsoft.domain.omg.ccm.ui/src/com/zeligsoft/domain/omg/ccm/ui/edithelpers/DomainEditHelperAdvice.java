@@ -16,9 +16,12 @@
  */
 package com.zeligsoft.domain.omg.ccm.ui.edithelpers;
 
+import java.util.Collections;
+
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
@@ -26,13 +29,19 @@ import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.edithelper.AbstractEditHelperAdvice;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
+import org.eclipse.jface.window.Window;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.cx.ui.dialogs.ZDLElementSelectionDialog;
+import com.zeligsoft.cx.ui.filters.ElementSelectionFilter;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
+import com.zeligsoft.domain.omg.ccm.preferences.CCMPreferenceConstants;
+import com.zeligsoft.domain.omg.ccm.ui.Activator;
 import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
 
 /**
@@ -58,6 +67,7 @@ public class DomainEditHelperAdvice extends AbstractEditHelperAdvice {
 		return new AbstractTransactionalCommand(TransactionUtil.getEditingDomain(request.getContainer()),
 				Messages.CommandLabel_SCAComponentPartEditHelperAdvice_getAfterCreateCommand, null) {
 
+			@SuppressWarnings("unchecked")
 			@Override
 			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
 					throws ExecutionException {
@@ -66,6 +76,8 @@ public class DomainEditHelperAdvice extends AbstractEditHelperAdvice {
 				if (newEObject == null) {
 					return null;
 				}
+				
+				EObject container = editRequest.getContainer();
 				if (ZDLUtil.isZDLConcept(newEObject, CCMNames.CCMCONNECTOR)
 						|| ZDLUtil.isZDLConcept(newEObject, CCMNames.TARGET_ASSEMBLY_CONNECTOR)) {
 					((Connector) newEObject).setName(UML2Util.EMPTY_STRING);
@@ -78,24 +90,34 @@ public class DomainEditHelperAdvice extends AbstractEditHelperAdvice {
 				Property newProperty = (Property) newEObject;
 
 				Type propertyType = newProperty.getType();
+				if (editRequest.getParameter("type") == null && propertyType == null) {
+					if (InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID)
+							.getBoolean(CCMPreferenceConstants.AUTO_TYPE_SELECTION_DIALOG, true)) {
+						ZDLElementSelectionDialog dialog = new ZDLElementSelectionDialog(
+								Display.getCurrent().getActiveShell(), container, Collections.EMPTY_LIST, true, true);
 
-				if (ZDLUtil.isZDLConcept(propertyType, CCMNames.NODE)) {
-					if (!ZDLUtil.isZDLConcept(newProperty, CCMNames.NODE_INSTANCE)) {
-						ZDLUtil.addZDLConcept(newProperty, CCMNames.NODE_INSTANCE);
+						if (ZDLUtil.isZDLConcept(newProperty, CCMNames.NODE_INSTANCE)) {
+							dialog.setElementFilter(
+									new ElementSelectionFilter(CCMNames.NODE_INSTANCE, CCMNames.NODE_INSTANCE__TYPE));
+						} else if (ZDLUtil.isZDLConcept(newProperty, CCMNames.BRIDGE_INSTANCE)) {
+							dialog.setElementFilter(new ElementSelectionFilter(CCMNames.BRIDGE_INSTANCE,
+									CCMNames.BRIDGE_INSTANCE__TYPE));
+						} else if (ZDLUtil.isZDLConcept(newProperty, CCMNames.INTERCONNECT_INSTANCE)) {
+							dialog.setElementFilter(new ElementSelectionFilter(CCMNames.INTERCONNECT_INSTANCE,
+									CCMNames.INTERCONNECT_INSTANCE__TYPE));
+						} else {
+							return CommandResult.newOKCommandResult(newProperty);
+						}
+						if (dialog.open() == Window.OK) {
+							if (!dialog.getSelectedElements().isEmpty()
+									&& dialog.getSelectedElements().getFirstElement() != null) {
+								newProperty.setType((Type) dialog.getSelectedElements().getFirstElement());
+							}
+						}
 					}
-				} else if (ZDLUtil.isZDLConcept(propertyType, CCMNames.INTERCONNECT)) {
-					if (!ZDLUtil.isZDLConcept(newProperty, CCMNames.INTERCONNECT_INSTANCE)) {
-						ZDLUtil.addZDLConcept(newProperty, CCMNames.INTERCONNECT_INSTANCE);
-					}
-				} else if (ZDLUtil.isZDLConcept(propertyType, CCMNames.BRIDGE)) {
-					if (!ZDLUtil.isZDLConcept(newProperty, CCMNames.BRIDGE_INSTANCE)) {
-						ZDLUtil.addZDLConcept(newProperty, CCMNames.BRIDGE_INSTANCE);
-					}
-				} else if (ZDLUtil.isZDLConcept(propertyType, CCMNames.RESOURCE)) {
-					if (!ZDLUtil.isZDLConcept(newProperty, CCMNames.RESOURCE_PROPERTY)) {
-						ZDLUtil.addZDLConcept(newProperty, CCMNames.RESOURCE_PROPERTY);
-					}
+					return CommandResult.newOKCommandResult(newProperty);
 				}
+
 				return CommandResult.newOKCommandResult(newProperty);
 			}
 		};

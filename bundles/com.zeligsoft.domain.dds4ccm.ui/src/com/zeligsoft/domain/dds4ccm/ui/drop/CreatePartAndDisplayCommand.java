@@ -141,6 +141,7 @@ public class CreatePartAndDisplayCommand extends AbstractCommand {
 		Property createdProperty = null;
 		CreateElementRequest createElementRequest = new CreateElementRequest(editingDomain, targetComponent,
 				partType);
+		createElementRequest.setParameter("type", droppedObject);
 
 		IElementEditService provider = ElementEditServiceUtils.getCommandProvider(targetComponent);
 		if (provider != null) {

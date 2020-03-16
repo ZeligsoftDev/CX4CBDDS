@@ -16,9 +16,12 @@
  */
 package com.zeligsoft.domain.omg.ccm.ui.edithelpers;
 
+import java.util.Collections;
+
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
@@ -26,48 +29,65 @@ import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.edithelper.AbstractEditHelperAdvice;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
+import org.eclipse.jface.window.Window;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.cx.ui.dialogs.ZDLElementSelectionDialog;
+import com.zeligsoft.cx.ui.filters.ElementSelectionFilter;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
+import com.zeligsoft.domain.omg.ccm.preferences.CCMPreferenceConstants;
+import com.zeligsoft.domain.omg.ccm.ui.Activator;
 import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
+import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
- * Edit helper advice for components in the CCM domain.
+ * CCM Implementation edit helper adivce
  * 
- * @author smcfee
+ * @author ysroh
  * 
  */
 public class AssemblyImplementationEditHelperAdvice extends AbstractEditHelperAdvice {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.gmf.runtime.emf.type.core.edithelper.AbstractEditHelperAdvice
-	 * #getAfterCreateCommand(org.eclipse.gmf.runtime.emf.type.core.requests.
-	 * CreateElementRequest)
-	 */
+	@Override
+	protected ICommand getBeforeCreateCommand(CreateElementRequest request) {
+		if ("com.zeligsoft.domain.dds4ccm.ui.diagram.InterfacePort_Shape"
+				.contentEquals(request.getElementType().getId())) {
+			EObject obj = ZDLUtil.getEValue(request.getContainer(), CCMNames.ASSEMBLY_IMPLEMENTATION,
+					ZMLMMNames.STRUCTURAL_REALIZATION__INTERFACE);
+			if (obj != null) {
+				request.setContainer(obj);
+			}
+		}
+		return super.getBeforeCreateCommand(request);
+	}
+	
 	@Override
 	protected ICommand getAfterCreateCommand(CreateElementRequest request) {
 		final CreateElementRequest editRequest = request;
 
-		return new AbstractTransactionalCommand(TransactionUtil.getEditingDomain(request.getContainer()),
-				Messages.CommandLabel_SCAComponentPartEditHelperAdvice_getAfterCreateCommand, null) {
+		return new AbstractTransactionalCommand(
+				TransactionUtil.getEditingDomain(request.getContainer()),
+				Messages.CommandLabel_SCAComponentPartEditHelperAdvice_getAfterCreateCommand,
+				null) {
 
+			@SuppressWarnings("unchecked")
 			@Override
-			protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-					throws ExecutionException {
+			protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
+					IAdaptable info) throws ExecutionException {
 
 				EObject newEObject = editRequest.getNewElement();
 				if (newEObject == null) {
 					return null;
 				}
+				EObject container = editRequest.getContainer();
 				if (ZDLUtil.isZDLConcept(newEObject, CCMNames.CCMCONNECTOR)
-						|| ZDLUtil.isZDLConcept(newEObject, CCMNames.TARGET_ASSEMBLY_CONNECTOR)) {
+						|| ZDLUtil.isZDLConcept(newEObject,
+								CCMNames.TARGET_ASSEMBLY_CONNECTOR)) {
 					((Connector) newEObject).setName(UML2Util.EMPTY_STRING);
 					return CommandResult.newOKCommandResult(newEObject);
 				}
@@ -78,22 +98,31 @@ public class AssemblyImplementationEditHelperAdvice extends AbstractEditHelperAd
 				Property newProperty = (Property) newEObject;
 
 				Type propertyType = newProperty.getType();
+				if (editRequest.getParameter("type") == null && propertyType == null) {
+					if (InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID)
+							.getBoolean(CCMPreferenceConstants.AUTO_TYPE_SELECTION_DIALOG, true)) {
+						ZDLElementSelectionDialog dialog = new ZDLElementSelectionDialog(
+								Display.getCurrent().getActiveShell(), container, Collections.EMPTY_LIST, true, true);
 
-				if (propertyType != null) {
-					if (ZDLUtil.isZDLConcept(propertyType, CCMNames.CCMCOMPONENT)) {
-						if (!ZDLUtil.isZDLConcept(newProperty, CCMNames.CCMPART)) {
-							ZDLUtil.addZDLConcept(newProperty, CCMNames.CCMPART);
+						if (ZDLUtil.isZDLConcept(newProperty, CCMNames.CCMPART)) {
+							dialog.setElementFilter(
+									new ElementSelectionFilter(CCMNames.CCMPART, ZMLMMNames.PART__DEFINITION));
+						} else {
+							return CommandResult.newOKCommandResult(newProperty);
 						}
-					} else if (ZDLUtil.isZDLConcept(propertyType, CCMNames.HOME)) {
-						if (!ZDLUtil.isZDLConcept(newProperty, CCMNames.HOME_INSTANCE)) {
-							ZDLUtil.addZDLConcept(newProperty, CCMNames.HOME_INSTANCE);
+						if (dialog.open() == Window.OK) {
+							if (!dialog.getSelectedElements().isEmpty()
+									&& dialog.getSelectedElements().getFirstElement() != null) {
+								newProperty.setType((Type) dialog.getSelectedElements().getFirstElement());
+							}
 						}
 					}
+					return CommandResult.newOKCommandResult(newProperty);
 				}
-				return CommandResult.newOKCommandResult(newProperty);
+
+				return CommandResult.newOKCommandResult();
 			}
 
 		};
 	}
-
 }

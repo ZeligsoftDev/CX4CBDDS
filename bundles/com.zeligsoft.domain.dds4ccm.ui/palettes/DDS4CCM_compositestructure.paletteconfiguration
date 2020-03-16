@@ -7,10 +7,54 @@
         <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/DDS4CCM_compositestructure.elementtypesconfigurations#_bMmmMArjEeq7m5nPQx9iPA"/>
       </elementDescriptors>
     </ownedConfigurations>
-    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.edges.ConnectorStatusListenerConnector" label="ConnectorStatusListenerConnection" description="Create a ConnectorStatusListener Connection" kind="ConnectionTool" toolClassName="">
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.edges.ConnectorStatusListenerConnector" label="ConnectorStatusListener Connection" description="Create a ConnectorStatusListener Connection" kind="ConnectionTool" toolClassName="">
       <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Connector.gif"/>
       <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
         <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/DDS4CCM_compositestructure.elementtypesconfigurations#_U6FKIDu1Eeqdu80buh87MA"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.nodes.InterfacePort" label="Interface Port" description="Create an InterfacePort" kind="CreationTool" toolClassName="">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Port.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/DDS4CCM_compositestructure.elementtypesconfigurations#_l5JCkGVSEeqPtKtL0oDezQ"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.nodes.Part" label="Part" description="Create a Part" kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Property.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/DDS4CCM_compositestructure.elementtypesconfigurations#_n0qeoGVTEeqPtKtL0oDezQ"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.nodes.DataSpace" label="Data Space" description="Create a DataSpace" kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Property.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/DDS4CCM_compositestructure.elementtypesconfigurations#_sLt-cGVTEeqPtKtL0oDezQ"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+  </drawerConfigurations>
+  <drawerConfigurations xmi:type="paletteconfiguration:DrawerConfiguration" label="Target Structure">
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.edges.TargetAssemblyConnector" label="Target Assembly Connection" description="Create a target assembly connection" kind="ConnectionTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Connector.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/DDS4CCM_compositestructure.elementtypesconfigurations#_qtPYoGegEeq4T7XqBxuM_w"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.nodes.NodeInstance" label="Node Instance" description="Create a Node instance" kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Property.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/DDS4CCM_compositestructure.elementtypesconfigurations#_56JAoGegEeq4T7XqBxuM_w"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.nodes.BridgeInstance" label="Bridge Instance" description="Create a Part" kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Property.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/DDS4CCM_compositestructure.elementtypesconfigurations#_Hd-ZEGehEeq4T7XqBxuM_w"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.nodes.InterconnectInstance" label="Interconnect Instance" description="Create a Part" kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Property.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/DDS4CCM_compositestructure.elementtypesconfigurations#_NDvHsGehEeq4T7XqBxuM_w"/>
       </elementDescriptors>
     </ownedConfigurations>
   </drawerConfigurations>
