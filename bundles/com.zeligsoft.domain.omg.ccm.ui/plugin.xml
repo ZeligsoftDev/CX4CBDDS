@@ -172,15 +172,7 @@
           </advice>
        </binding>
     </extension>
-   <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            category="cxModelingPreference"
-            class="com.zeligsoft.domain.omg.ccm.ui.preferences.CCMModelingPreferencePage"
-            id="cxCCMModelingPreference"
-            name="%preference.modeling.name">
-      </page>
-   </extension>
+
    -->
    <extension
          point="com.zeligsoft.cx.ui.properties.customPropertySection">
@@ -230,5 +222,14 @@
                name="High">
          </Priority>
       </decoratorProvider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="cxModelingPreference"
+            class="com.zeligsoft.domain.omg.ccm.ui.preferences.CCMModelingPreferencePage"
+            id="cxCCMModelingPreference"
+            name="%preference.modeling.name">
+      </page>
    </extension>
 </plugin>

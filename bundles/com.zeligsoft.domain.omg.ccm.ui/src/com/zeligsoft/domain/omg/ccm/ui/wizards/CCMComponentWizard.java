@@ -21,14 +21,28 @@ import java.util.Collections;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
+import org.eclipse.gmf.runtime.diagram.ui.requests.DropObjectsRequest;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.papyrus.editor.PapyrusMultiDiagramEditor;
+import org.eclipse.papyrus.infra.core.resource.ModelSet;
+import org.eclipse.papyrus.infra.core.sashwindows.di.service.IPageManager;
+import org.eclipse.papyrus.infra.core.services.ServiceException;
+import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
+import org.eclipse.papyrus.infra.core.utils.ServiceUtils;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
+import org.eclipse.papyrus.uml.diagram.component.CreateComponentDiagramCommand;
+import org.eclipse.papyrus.uml.diagram.composite.CreateCompositeDiagramCommand;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Package;
 
@@ -67,6 +81,7 @@ public class CCMComponentWizard extends Wizard {
 				editingDomain, Messages.CCMComponentWizard_CommandLabel,
 				Collections.EMPTY_MAP, null) {
 
+			@SuppressWarnings("unchecked")
 			@Override
 			protected CommandResult doExecuteWithResult(IProgressMonitor arg0,
 					IAdaptable arg1) throws ExecutionException {
@@ -88,16 +103,10 @@ public class CCMComponentWizard extends Wizard {
 								.getElementTypeFromHint("generalization"), assembly, component);
 			
 						if (page.isCreateStructureDiagram()) {
-//							ICommand command = UMLElementFactory.getCreateElementCommand(assembly,
-//									ElementTypeRegistry.getInstance().getType(
-//											"org.eclipse.gmf.runtime.notation.structureDiagram")); //$NON-NLS-1$
-//							command.execute(null, null);
-//							CommandResult commandResult = command.getCommandResult();
-//							Diagram diagram = (Diagram) commandResult.getReturnValue();
-//							diagram.setName(page.getStructureDiagramName());
-//							OpenDiagramCommand openCommand = new OpenDiagramCommand(diagram);
-//							openCommand.execute(null, null);
-						}		
+							CreateCompositeDiagramCommand command = new CreateCompositeDiagramCommand();
+							command.createDiagram((ModelSet) assembly.eResource().getResourceSet(), assembly,
+									page.getStructureDiagramName());
+						}
 					}
 					else { 
 						//monolithic implementation type
@@ -113,32 +122,22 @@ public class CCMComponentWizard extends Wizard {
 				}
 				
 				if (page.isCreateComponentDiagram()) {
-//					Diagram diagram = createDiagram(component);
-//					diagram.setName(page.getComponentDiagramName());
-//					OpenDiagramCommand openCommand = new OpenDiagramCommand(
-//							diagram);
-//
-//					// Open diagram editor
-//					IStatus result = null;
-//					if (openCommand.canExecute()) {
-//						result = openCommand.execute(null, null);
-//					}
-//
-//					if (result != null && result.getSeverity() == IStatus.OK) {
-//
-//						DiagramEditPart editPart = BaseDiagramUtil
-//								.getDiagramEditPart();
-//
-//						// Drop elements to the diagram view
-//						BaseDiagramUtil.dropElement(editPart, new Point(100,
-//								150), component);
-//
-//						// Refresh the diagram
-//						Request refreshRequest = new Request("refresh"); //$NON-NLS-1$
-//						org.eclipse.gef.commands.Command refreshCommand = editPart
-//								.getCommand(refreshRequest);
-//						refreshCommand.execute();
-//					}
+					CreateComponentDiagramCommand command = new CreateComponentDiagramCommand();
+					Diagram diagram = command.createDiagram((ModelSet)component.eResource().getResourceSet(), component.eContainer(), page.getComponentDiagramName());
+					
+					IEditorPart editor = PlatformUI.getWorkbench()
+							.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+					if (editor instanceof PapyrusMultiDiagramEditor) {
+						PapyrusMultiDiagramEditor multiEditor = (PapyrusMultiDiagramEditor) editor;
+						ServicesRegistry serviceRegistry = multiEditor.getServicesRegistry();
+
+						DropObjectsRequest request = new DropObjectsRequest();
+						request.setLocation(new Point(100, 100));
+						request.setObjects(Collections.singletonList(component));
+						request.getExtendedData().put("EVENT_DETAIL", DND.DROP_COPY);
+						
+						// TODO: execute drop command
+					}
 				}
 				return CommandResult.newOKCommandResult();
 			}

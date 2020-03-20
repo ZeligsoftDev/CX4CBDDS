@@ -22,7 +22,6 @@ import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
@@ -47,7 +46,6 @@ public class ModelingPreferencePage
 		implements IWorkbenchPreferencePage {
 
 	private Text cdtProjectSuffixInputField;
-	private Button generateIDLComment;
 
 	private Preferences store;
 
@@ -72,23 +70,9 @@ public class ModelingPreferencePage
 		panel.setLayoutData(data);
 		
 		createCDTProjectNameSuffixArea(panel);
-		createGenerateIDLCommentArea(panel);
 		return panel;
 	}
 	
-	/**
-	 * Generate IDL commnet area
-	 * 
-	 * @param panel
-	 */
-	private void createGenerateIDLCommentArea(Composite panel) {
-		generateIDLComment = new Button(panel, SWT.CHECK);
-		generateIDLComment
-				.setText(Messages.ModelingPreferencePage_GenerateIDLComment);
-		generateIDLComment.setSelection(store
-				.getBoolean(CXPreferenceConstants.GENERATE_IDL_COMMENT));
-	}
-
 	/**
 	 * Creates CDT Project name suffix area
 	 * 
@@ -143,9 +127,6 @@ public class ModelingPreferencePage
 		store.setValue(CXPreferenceConstants.CDT_PROJECT_SUFFIX,
 			cdtProjectSuffixInputField.getText());
 
-		store.setValue(CXPreferenceConstants.GENERATE_IDL_COMMENT,
-				generateIDLComment.getSelection());
-		
 		CXActivator.getDefault().savePluginPreferences();
 		
 		return true;
@@ -163,9 +144,6 @@ public class ModelingPreferencePage
 		// CDT project
 		cdtProjectSuffixInputField
 			.setText(CXPreferenceConstants.DEFAULT_CDT_PROJECT_SUFFIX);
-		
-		generateIDLComment
-				.setSelection(CXPreferenceConstants.GENERATE_IDL_COMMENT_DEFAULT);
 	}
 
 	/*

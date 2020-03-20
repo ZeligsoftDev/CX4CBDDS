@@ -34,6 +34,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.osgi.service.prefs.BackingStoreException;
 
 import com.zeligsoft.cx.CXActivator;
+import com.zeligsoft.cx.preferences.CXPreferenceConstants;
 import com.zeligsoft.domain.dds4ccm.Activator;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMPreferenceConstants;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
@@ -50,9 +51,9 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 
 	private Text fixedFooter;
 
-	private Button enableCodeGen;
-
 	private Text locationPrefix;
+	
+	private Button generateIDLComment;
 
 	private IEclipsePreferences store;
 
@@ -60,8 +61,8 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 
 	@Override
 	public void init(IWorkbench workbench) {
-		store = new InstanceScope().getNode(Activator.PLUGIN_ID);
-		cxStore = new InstanceScope().getNode(CXActivator.PLUGIN_ID);
+		store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+		cxStore = InstanceScope.INSTANCE.getNode(CXActivator.PLUGIN_ID);
 	}
 
 	@Override
@@ -78,7 +79,7 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 		data.verticalAlignment = SWT.FILL;
 		panel.setLayoutData(data);
 
-		createCodeGenArea(panel);
+		createGenerateIDLCommentArea(panel);
 
 		createIDLGenerationArea(panel);
 
@@ -86,23 +87,23 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 
 		return panel;
 	}
-
+	
+	
 	/**
-	 * Codegen util area
+	 * Generate IDL commnet area
 	 * 
 	 * @param panel
 	 */
-	private void createCodeGenArea(Composite panel) {
+	private void createGenerateIDLCommentArea(Composite panel) {
 		GridData data = new GridData(GridData.FILL_HORIZONTAL);
 		data.grabExcessHorizontalSpace = true;
 		data.horizontalSpan = 2;
-		enableCodeGen = new Button(panel, SWT.CHECK);
-		enableCodeGen.setLayoutData(data);
-		enableCodeGen
-				.setText(Messages.DDS4CCMPreferencePage_CodegenUtilEnableButtonLabel);
-		enableCodeGen.setSelection(store.getBoolean(
-				DDS4CCMPreferenceConstants.ENABLE_CODEGEN,
-				DDS4CCMPreferenceConstants.DEFAULT_ENABLE_CODEGEN));
+		generateIDLComment = new Button(panel, SWT.CHECK);
+		generateIDLComment.setLayoutData(data);
+		generateIDLComment
+				.setText(com.zeligsoft.cx.ui.l10n.Messages.ModelingPreferencePage_GenerateIDLComment);
+		generateIDLComment.setSelection(cxStore.getBoolean(CXPreferenceConstants.GENERATE_IDL_COMMENT,
+				CXPreferenceConstants.GENERATE_IDL_COMMENT_DEFAULT));
 	}
 
 	/**
@@ -170,6 +171,8 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 				.setText(DDS4CCMPreferenceConstants.DEFAULT_IDL_FIXED_FOOTER);
 		locationPrefix
 				.setText(DDS4CCMPreferenceConstants.DEFAULT_GLOBAL_LOCATION_PREFIX);
+		generateIDLComment
+				.setSelection(CXPreferenceConstants.GENERATE_IDL_COMMENT_DEFAULT);
 
 	}
 
@@ -179,11 +182,10 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 				fixedHeader.getText());
 		store.put(DDS4CCMPreferenceConstants.IDL_FIXED_FOOTER,
 				fixedFooter.getText());
-		store.putBoolean(DDS4CCMPreferenceConstants.ENABLE_CODEGEN,
-				enableCodeGen.getSelection());
 		store.put(DDS4CCMPreferenceConstants.GLOBAL_LOCATION_PREFIX,
 				locationPrefix.getText());
-
+		cxStore.putBoolean(CXPreferenceConstants.GENERATE_IDL_COMMENT,
+				generateIDLComment.getSelection());
 		try {
 			store.flush();
 			cxStore.flush();
