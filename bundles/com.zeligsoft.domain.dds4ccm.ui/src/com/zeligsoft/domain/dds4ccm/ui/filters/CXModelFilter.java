@@ -68,7 +68,7 @@ public class CXModelFilter extends ViewerFilter {
 			}
 			if (eObject instanceof NamedElement) {
 				NamedElement ne = (NamedElement) eObject;
-				if (ne.getName().startsWith("_")) {
+				if (!UML2Util.isEmpty(ne.getName()) && ne.getName().startsWith("_")) {
 					return false;
 				}
 			}
