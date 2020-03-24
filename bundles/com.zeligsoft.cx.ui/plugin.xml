@@ -42,4 +42,16 @@
              name="%ZeligsoftCategory.name">
        </category>
     </extension>
+    <extension
+          point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=tools">
+         <menu
+               icon="icons/obj16/cx-perspective.gif"
+               id="com.zeligsoft.cx.ui.refactormenu"
+               label="CX Refactor">
+         </menu>
+      </menuContribution>
+    </extension>
 </plugin>

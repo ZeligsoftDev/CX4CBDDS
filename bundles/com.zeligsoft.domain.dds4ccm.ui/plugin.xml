@@ -233,8 +233,114 @@
             name="%DDS4CCMPreferencePage.name">
       </page>
     </extension>
+    
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:com.zeligsoft.cx.ui.refactormenu">
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.repairallworkerfunctions.model"
+              style="push"
+              label="Repair All Worker Functions">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.zdl.tester.isZDLConcept"
+                        value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                  </test>
+               </with>
+            </visibleWhen>
+        </command>
+      </menuContribution>
+   </extension>
+  
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.RepairWorkerFunctionsHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.repairallworkerfunctions.model"
+            name="Repair Model Worker Functions">
+      </command>
+   </extension>
     <!--
- 
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:com.zeligsoft.domain.dds4ccm.ui.refactormenu">
+         <menu
+               id="com.zeligsoft.domain.dds4ccm.ui.repairworkerfunctionsmenu"
+               label="Repair All Worker Functions">
+            <command
+                  commandId="com.zeligsoft.domain.dds4ccm.ui.repairallworkerfunctions.workspace"
+                  style="push"
+                  label="Workspace">
+                <visibleWhen
+                      checkEnabled="false">
+                   <with
+                         variable="selection">
+                      <test
+                            property="com.zeligsoft.zdl.tester.isZDLConcept"
+                            value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                      </test>
+                   </with>
+                </visibleWhen>
+            </command>
+            <command
+                  commandId="com.zeligsoft.domain.dds4ccm.ui.repairallworkerfunctions.project"
+                  style="push"
+                  label="Project">
+                <visibleWhen
+                      checkEnabled="false">
+                   <with
+                         variable="selection">
+                      <test
+                            property="com.zeligsoft.zdl.tester.isZDLConcept"
+                            value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                      </test>
+                   </with>
+                </visibleWhen>
+            </command>
+            <command
+                  commandId="com.zeligsoft.domain.dds4ccm.ui.repairallworkerfunctions.model"
+                  style="push"
+                  label="Model">
+                <visibleWhen
+                      checkEnabled="false">
+                   <with
+                         variable="selection">
+                      <test
+                            property="com.zeligsoft.zdl.tester.isZDLConcept"
+                            value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                      </test>
+                   </with>
+                </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+  
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.RepairWorkerFunctionsHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.repairallworkerfunctions.workspace"
+            name="Repair Workspace Worker Functions">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.RepairWorkerFunctionsHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.repairallworkerfunctions.project"
+            name="Repair Project Worker Functions">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.RepairWorkerFunctionsHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.repairallworkerfunctions.model"
+            name="Repair Model Worker Functions">
+      </command>
+   </extension> 
    <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
