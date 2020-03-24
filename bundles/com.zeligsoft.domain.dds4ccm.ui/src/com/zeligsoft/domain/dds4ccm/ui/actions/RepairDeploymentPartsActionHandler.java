@@ -23,16 +23,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
-import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IViewActionDelegate;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
@@ -43,12 +45,11 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.deployment.ui.commands.AddModelElementCommand;
 import com.zeligsoft.cx.deployment.ui.commands.DeleteDeploymentPartCommand;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
-import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
+import com.zeligsoft.domain.idl3plus.ui.commands.IDL3PlusAddModelElementCommand;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
-import com.zeligsoft.domain.zml.util.ZMLMMNames;
-import com.zeligsoft.domain.idl3plus.ui.commands.IDL3PlusAddModelElementCommand;;
+import com.zeligsoft.domain.zml.util.ZMLMMNames;;
 
 /**
  * Synchronize deployment parts with their definitions
@@ -56,15 +57,17 @@ import com.zeligsoft.domain.idl3plus.ui.commands.IDL3PlusAddModelElementCommand;
  * @author ysroh
  * 
  */
-public class RepairDeploymentParts implements IViewActionDelegate {
+public class RepairDeploymentPartsActionHandler extends AbstractHandler {
 
 	private EObject selectedEObject;
 
 	@Override
-	public void run(IAction action) {
+	public Object execute(ExecutionEvent event) throws ExecutionException {
+
+		selectedEObject = BaseUIUtil.getEObjectFromSelection(BaseUIUtil.getSelection());
 
 		if (selectedEObject == null) {
-			return;
+			return null;
 		}
 		final Set<EObject> deploymentsToRepair = new HashSet<EObject>();
 		if (ZDLUtil.isZDLConcept(selectedEObject, DDS4CCMNames.DDS4_CCMMODEL)) {
@@ -89,6 +92,8 @@ public class RepairDeploymentParts implements IViewActionDelegate {
 		MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
 				Messages.RepairDeploymentParts_DialogTitle,
 				Messages.RepairDeploymentParts_DialogMessage);
+		
+		return null;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -166,15 +171,16 @@ public class RepairDeploymentParts implements IViewActionDelegate {
 			}
 		}
 		partsToCreate.removeAll(foundPartsMap.keySet());
+		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(deployment);
 
 		if (!partsToDelete.isEmpty()) {
 			ICommand command = new DeleteDeploymentPartCommand(
 					(Component) deployment, partsToDelete,
 					"Delete Deployment Parts"); //$NON-NLS-1$
-			try {
-				command.execute(null, null);
-			} catch (ExecutionException e) {
-				Activator.getDefault().error(e.getMessage(), e);
+			
+			Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+			if(emfCommand.canExecute()) {
+				domain.getCommandStack().execute(emfCommand);
 			}
 		}
 
@@ -189,10 +195,9 @@ public class RepairDeploymentParts implements IViewActionDelegate {
 					(Component) deployment, (Property) partToCreate,
 					(Component) assembly, null, "Create Deployment Part"); //$NON-NLS-1$
 			}
-			try {
-				createCommand.execute(null, null);
-			} catch (ExecutionException e) {
-				Activator.getDefault().error(e.getMessage(), e);
+			Command emfCommand = GMFtoEMFCommandWrapper.wrap(createCommand);
+			if(emfCommand.canExecute()) {
+				domain.getCommandStack().execute(emfCommand);
 			}
 		}
 
@@ -201,17 +206,4 @@ public class RepairDeploymentParts implements IViewActionDelegate {
 		}
 
 	}
-
-	@Override
-	public void selectionChanged(IAction action, ISelection selection) {
-		selectedEObject = BaseUIUtil.getEObjectFromSelection(selection);
-
-	}
-
-	@Override
-	public void init(IViewPart view) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

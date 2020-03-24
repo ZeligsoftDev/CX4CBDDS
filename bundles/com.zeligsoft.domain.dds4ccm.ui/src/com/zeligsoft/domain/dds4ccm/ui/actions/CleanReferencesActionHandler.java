@@ -18,26 +18,21 @@ package com.zeligsoft.domain.dds4ccm.ui.actions;
 
 import java.util.List;
 
+import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
-import org.eclipse.gmf.runtime.common.core.command.ICommand;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
-import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IViewActionDelegate;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.InterfaceRealization;
@@ -52,7 +47,6 @@ import org.eclipse.uml2.uml.Usage;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.util.FilteringList;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.corba.CORBADomainNames;
@@ -66,26 +60,23 @@ import com.zeligsoft.domain.zml.util.ZMLMMNames;
  * 
  */
 
-public class CleanReferencesAction implements IViewActionDelegate {
+public class CleanReferencesActionHandler extends AbstractHandler {
 
 	private ISelection selection;
 	final EObject selObject = BaseUIUtil.getEObjectFromSelection(selection);
 	private boolean refactorCount = false;
-	private ICommand changeCommand;
+	private Command changeCommand;
 
 	@Override
-	public void run(IAction action) {
+	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		if (selection == null) {
-			return;
-		}
-
-		final EObject selObject = BaseUIUtil.getEObjectFromSelection(selection);
+		final EObject selObject = BaseUIUtil.getEObjectFromSelection(BaseUIUtil.getSelection());
 		if (selObject == null) {
-			return;
+			return null;
 		}
 
 		cleanModelLibraryReferences(selObject);
+		return null;
 
 	}
 
@@ -99,7 +90,7 @@ public class CleanReferencesAction implements IViewActionDelegate {
 	protected void cleanModelLibraryReferences(EObject model) {
 		TreeIterator<EObject> itor = model.eAllContents();
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(model);
-		CompositeCommand compositeCommand = new CompositeCommand(
+		CompoundCommand compositeCommand = new CompoundCommand(
 				Messages.RefactorCleanModelReferencesNoLongerValid_CommandLabel);
 		EObject next = null;
 
@@ -145,7 +136,7 @@ public class CleanReferencesAction implements IViewActionDelegate {
 							changeCommand = getChangedZDLTypeCommand(domain,
 									next, CORBADomainNames.CORBAATTRIBUTE,
 									CORBADomainNames.CORBAATTRIBUTE__SETRAISES);
-							compositeCommand.compose(changeCommand);
+							compositeCommand.append(changeCommand);
 						}
 					}
 				}
@@ -163,7 +154,7 @@ public class CleanReferencesAction implements IViewActionDelegate {
 				if (setNull || resource == null) {
 					changeCommand = getChangedGeneralizationTypeCommand(domain,
 							gen);
-					compositeCommand.compose(changeCommand);
+					compositeCommand.append(changeCommand);
 				}
 			} else if (next instanceof InterfaceRealization) {
 				InterfaceRealization interfaceRealization = (InterfaceRealization) next;
@@ -185,7 +176,7 @@ public class CleanReferencesAction implements IViewActionDelegate {
 
 						changeCommand = getChangedSupplierTypeCommand(domain,
 								interfaceRealization, index);
-						compositeCommand.compose(changeCommand);
+						compositeCommand.append(changeCommand);
 					}
 					index++;
 				}
@@ -203,7 +194,7 @@ public class CleanReferencesAction implements IViewActionDelegate {
 					if (setNull || resourceContract == null) {
 						changeCommand = getChangedContractTypeCommand(domain,
 								interfaceRealization);
-						compositeCommand.compose(changeCommand);
+						compositeCommand.append(changeCommand);
 					}
 				}
 			} else if (next instanceof Usage
@@ -223,7 +214,7 @@ public class CleanReferencesAction implements IViewActionDelegate {
 					if (setNull || resource == null) {
 						changeCommand = getChangedUsageTypeCommand(domain,
 								usage, index);
-						compositeCommand.compose(changeCommand);
+						compositeCommand.append(changeCommand);
 					}
 					index++;
 				}
@@ -246,7 +237,7 @@ public class CleanReferencesAction implements IViewActionDelegate {
 						changeCommand = getChangedZDLTypeCommand(domain, next,
 								CORBADomainNames.CORBAOPERATION,
 								CORBADomainNames.CORBAOPERATION__IDL_TYPE);
-						compositeCommand.compose(changeCommand);
+						compositeCommand.append(changeCommand);
 					}
 				}
 				Object ownedParameter = ZDLUtil.getValue(next,
@@ -272,7 +263,7 @@ public class CleanReferencesAction implements IViewActionDelegate {
 									next,
 									CORBADomainNames.CORBAOPERATION,
 									CORBADomainNames.CORBAOPERATION__OWNED_PARAMETER);
-							compositeCommand.compose(changeCommand);
+							compositeCommand.append(changeCommand);
 						}
 					}
 				}
@@ -299,7 +290,7 @@ public class CleanReferencesAction implements IViewActionDelegate {
 									next,
 									CORBADomainNames.CORBAOPERATION,
 									CORBADomainNames.CORBAOPERATION__EXCEPTION_DEF);
-							compositeCommand.compose(changeCommand);
+							compositeCommand.append(changeCommand);
 						}
 					}
 				}
@@ -319,18 +310,13 @@ public class CleanReferencesAction implements IViewActionDelegate {
 				if (setNull || resource == null) {
 					changeCommand = getChangedTypedElementTypeCommand(domain,
 							typedElement);
-					compositeCommand.compose(changeCommand);
+					compositeCommand.append(changeCommand);
 				}
 			}
 		}
-
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(
-					compositeCommand, null, null);
-		} catch (Exception e) {
-			Activator.getDefault().error(Messages.Migrate_Error, e);
-			MessageDialog.openError(Display.getCurrent().getActiveShell(),
-					Messages.Migrate_Error, e.getMessage());
+		
+		if(compositeCommand.canExecute()) {
+			domain.getCommandStack().execute(compositeCommand);
 		}
 
 		if (refactorCount) {
@@ -358,23 +344,18 @@ public class CleanReferencesAction implements IViewActionDelegate {
 	 * @param property
 	 * @return command
 	 */
-	protected ICommand getChangedZDLTypeCommand(
+	protected Command getChangedZDLTypeCommand(
 			final TransactionalEditingDomain domain, final EObject eObject,
 			final String concept, final String property) {
 
-		AbstractTransactionalCommand changeZDLTypeCommand = new AbstractTransactionalCommand(
+		Command changeZDLTypeCommand = new RecordingCommand(
 				domain,
-				Messages.RefactorCleanModelReferencesNoLongerValid_CommandLabel,
-				null) {
+				Messages.RefactorCleanModelReferencesNoLongerValid_CommandLabel) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
-
-			throws ExecutionException {
+			protected void doExecute(){
 				ZDLUtil.setValue(eObject, concept, property, null);
 				refactorCount = true;
-				return CommandResult.newOKCommandResult();
 			}
 		};
 		return changeZDLTypeCommand;
@@ -389,23 +370,18 @@ public class CleanReferencesAction implements IViewActionDelegate {
 	 * @param typedElement
 	 * @return command
 	 */
-	protected ICommand getChangedTypedElementTypeCommand(
+	protected Command getChangedTypedElementTypeCommand(
 			final TransactionalEditingDomain domain,
 			final TypedElement typedElement) {
 
-		AbstractTransactionalCommand changeTypedElementTypeCommand = new AbstractTransactionalCommand(
+		Command changeTypedElementTypeCommand = new RecordingCommand(
 				domain,
-				Messages.RefactorCleanModelReferencesNoLongerValid_CommandLabel,
-				null) {
+				Messages.RefactorCleanModelReferencesNoLongerValid_CommandLabel) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
-
-			throws ExecutionException {
+			protected void doExecute() {
 				typedElement.setType(null);
 				refactorCount = true;
-				return CommandResult.newOKCommandResult();
 			}
 		};
 		return changeTypedElementTypeCommand;
@@ -420,22 +396,18 @@ public class CleanReferencesAction implements IViewActionDelegate {
 	 * @param gen
 	 * @return command
 	 */
-	protected ICommand getChangedGeneralizationTypeCommand(
+	protected Command getChangedGeneralizationTypeCommand(
 			final TransactionalEditingDomain domain, final Generalization gen) {
 
-		AbstractTransactionalCommand changeGeneralizationTypeCommand = new AbstractTransactionalCommand(
+		Command changeGeneralizationTypeCommand = new RecordingCommand(
 				domain,
 				Messages.RefactorCleanModelReferencesNoLongerValid_CommandLabel,
 				null) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
-
-			throws ExecutionException {
+			protected void doExecute() {
 				gen.setGeneral(null);
 				refactorCount = true;
-				return CommandResult.newOKCommandResult();
 			}
 		};
 		return changeGeneralizationTypeCommand;
@@ -451,23 +423,19 @@ public class CleanReferencesAction implements IViewActionDelegate {
 	 * @param index
 	 * @return
 	 */
-	protected ICommand getChangedUsageTypeCommand(
+	protected Command getChangedUsageTypeCommand(
 			final TransactionalEditingDomain domain, final Usage usage,
 			final int index) {
 
-		AbstractTransactionalCommand changeSignatureTypeCommand = new AbstractTransactionalCommand(
+		Command changeSignatureTypeCommand = new RecordingCommand(
 				domain,
 				Messages.RefactorCleanModelReferencesNoLongerValid_CommandLabel,
 				null) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
-
-			throws ExecutionException {
+			protected void doExecute() {
 				usage.getSuppliers().remove(index);
 				refactorCount = true;
-				return CommandResult.newOKCommandResult();
 			}
 		};
 		return changeSignatureTypeCommand;
@@ -483,23 +451,19 @@ public class CleanReferencesAction implements IViewActionDelegate {
 	 * @param index
 	 * @return command
 	 */
-	protected ICommand getChangedSupplierTypeCommand(
+	protected Command getChangedSupplierTypeCommand(
 			final TransactionalEditingDomain domain,
 			final InterfaceRealization interfaceRealization, final int index) {
 
-		AbstractTransactionalCommand changeSignatureTypeCommand = new AbstractTransactionalCommand(
+		Command changeSignatureTypeCommand = new RecordingCommand(
 				domain,
 				Messages.RefactorCleanModelReferencesNoLongerValid_CommandLabel,
 				null) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
-
-			throws ExecutionException {
+			protected void doExecute() {
 				interfaceRealization.getSuppliers().remove(index);
 				refactorCount = true;
-				return CommandResult.newOKCommandResult();
 			}
 		};
 		return changeSignatureTypeCommand;
@@ -514,23 +478,19 @@ public class CleanReferencesAction implements IViewActionDelegate {
 	 * @param interfaceRealization
 	 * @return
 	 */
-	protected ICommand getChangedContractTypeCommand(
+	protected Command getChangedContractTypeCommand(
 			final TransactionalEditingDomain domain,
 			final InterfaceRealization interfaceRealization) {
 
-		AbstractTransactionalCommand changeContractTypeCommand = new AbstractTransactionalCommand(
+		Command changeContractTypeCommand = new RecordingCommand(
 				domain,
 				Messages.RefactorCleanModelReferencesNoLongerValid_CommandLabel,
 				null) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
-
-			throws ExecutionException {
+			protected void doExecute() {
 				interfaceRealization.setContract(null);
 				refactorCount = true;
-				return CommandResult.newOKCommandResult();
 			}
 		};
 		return changeContractTypeCommand;
@@ -563,15 +523,4 @@ public class CleanReferencesAction implements IViewActionDelegate {
 		return foundImportPackage;
 	}
 
-	@Override
-	public void selectionChanged(IAction action, ISelection selection) {
-		this.selection = selection;
-
-	}
-
-	@Override
-	public void init(IViewPart view) {
-		// TODO Auto-generated method stub
-
-	}
 }

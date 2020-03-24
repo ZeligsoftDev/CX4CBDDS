@@ -21,6 +21,58 @@
          </editingDomain>
       </listener>
    </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:com.zeligsoft.cx.ui.refactormenu">
+        <command
+              commandId="com.zeligsoft.domain.idl3plus.ui.repairallmoduleinstantiations"
+              style="push"
+              label="Repair All Module Instantiations">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.zdl.tester.isZDLConcept"
+                        value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                  </test>
+               </with>
+            </visibleWhen>
+        </command>
+        <command
+              commandId="com.zeligsoft.domain.idl3plus.ui.repairmoduleinstantiation"
+              style="push"
+              label="Repair Module Instantiation">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.zdl.tester.isZDLConcept"
+                        value="IDL3Plus::Generics::ModuleInstantiation">
+                  </test>
+               </with>
+            </visibleWhen>
+        </command>
+      </menuContribution>
+   </extension>
+  
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.zeligsoft.domain.idl3plus.ui.actions.RepairAllModuleInstantiationsActionHandler"
+            id="com.zeligsoft.domain.idl3plus.ui.repairallmoduleinstantiations"
+            name="Repair All Module Instantiations">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.idl3plus.ui.actions.RepairModuleInstantiationActionHandler"
+            id="com.zeligsoft.domain.idl3plus.ui.repairmoduleinstantiation"
+            name="Repair Module Instantiation">
+      </command>
+   </extension>
+
 <!--    
     <extension
           point="org.eclipse.ui.popupMenus">

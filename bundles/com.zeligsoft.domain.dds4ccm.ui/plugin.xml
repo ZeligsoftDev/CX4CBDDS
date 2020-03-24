@@ -254,6 +254,81 @@
                </with>
             </visibleWhen>
         </command>
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.repairdeploymentparts"
+              style="push"
+              label="Repair All Deployments">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.zdl.tester.isZDLConcept"
+                        value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                  </test>
+               </with>
+            </visibleWhen>
+        </command>
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.cleanreferencesaction"
+              style="push"
+              label="Clean Model Library References">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.zdl.tester.isZDLConcept"
+                        value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                  </test>
+               </with>
+            </visibleWhen>
+        </command>
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.cleanrcommentsaction"
+              style="push"
+              label="Clean Imported Comments">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.zdl.tester.isZDLConcept"
+                        value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                  </test>
+               </with>
+            </visibleWhen>
+        </command>
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.refactorregisternamingaction"
+              style="push"
+              label="Refactor RegisterNaming Properties">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.zdl.tester.isZDLConcept"
+                        value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                  </test>
+               </with>
+            </visibleWhen>
+        </command>
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.refactorcontainerprocesssaction"
+              style="push"
+              label="Add Required Container Process Properties">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.zdl.tester.isZDLConcept"
+                        value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                  </test>
+               </with>
+            </visibleWhen>
+        </command>
       </menuContribution>
    </extension>
   
@@ -263,6 +338,31 @@
             defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.RepairWorkerFunctionsHandler"
             id="com.zeligsoft.domain.dds4ccm.ui.repairallworkerfunctions.model"
             name="Repair Model Worker Functions">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.RepairDeploymentPartsActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.repairdeploymentparts"
+            name="Repair All Deployment Parts">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.CleanReferencesActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.cleanreferencesaction"
+            name="Clean Model Library References">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.CleanCommentsActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.cleanrcommentsaction"
+            name="Clean Imported Comments">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.AddRegisterNamingPropertyActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.refactorregisternamingaction"
+            name="Refactor ReisterNaming Properties">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.RefactorContainerProcessActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.refactorcontainerprocesssaction"
+            name="Add Required Container Process Properties">
       </command>
    </extension>
     <!--
