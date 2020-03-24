@@ -17,34 +17,28 @@
 package com.zeligsoft.domain.dds4ccm.ui.actions;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
-import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IViewActionDelegate;
-import org.eclipse.ui.IViewPart;
-import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Relationship;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
-import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
@@ -55,68 +49,11 @@ import com.zeligsoft.domain.omg.ccm.CCMNames;
  * @author smcfee
  *
  */
-public class AddRegisterNamingPropertyAction 
-	implements IViewActionDelegate {
+public class AddRegisterNamingPropertyActionHandler 
+	extends AbstractHandler {
 
-		private ISelection selection;
-		
 		private int repairedReferenceCount = 0;
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
-		 */
-		public void run(IAction action) {
-			
-			if(selection == null){
-				return;
-			}
-			repairedReferenceCount = 0;
-
-			EObject selObject = BaseUIUtil.getEObjectFromSelection(selection);
-			
-			if( selObject != null && 
-				ZDLUtil.isZDLConcept(selObject, DDS4CCMNames.DDS4_CCMMODEL) ||
-				ZDLUtil.isZDLConcept(selObject, CCMNames.CCMCOMPONENT) ||
-				ZDLUtil.isZDLConcept(selObject, CCMNames.HOME)) {
-			
-				AbstractTransactionalCommand migrationCommand = new AddRegisterNamingPropertyCommand(
-						selObject,
-						Messages.AddRegisterNaming_DialogTitle);
-				
-				try {	
-					OperationHistoryFactory.getOperationHistory().execute(migrationCommand, null, null);		
-				} catch( Exception e ) {
-					Activator.getDefault().error(Messages.Migrate_Error, e);
-					MessageDialog.openError(Display.getCurrent().getActiveShell(), Messages.Migrate_Error, e.getMessage());
-					return;
-				}
-			}
-			
-			if( repairedReferenceCount > 0 ) {
-				MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
-						Messages.AddRegisterNaming_DialogTitle,
-						Messages.Migrate_OK);
-			} else {
-				MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
-						Messages.AddRegisterNaming_DialogTitle,
-						Messages.Migrate_Noop);
-			}
-			
-		}
-
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
-		 *      org.eclipse.jface.viewers.ISelection)
-		 */
-		public void selectionChanged(IAction action, ISelection selection) {
-			this.selection = selection;
-
-		}
-		
 		/**
 		 * Internal command used to perform the migration.
 		 * 
@@ -124,7 +61,7 @@ public class AddRegisterNamingPropertyAction
 		 *
 		 */
 		private class AddRegisterNamingPropertyCommand extends
-				AbstractTransactionalCommand {
+				RecordingCommand {
 
 			private EObject refactorObject = null;
 			
@@ -136,16 +73,14 @@ public class AddRegisterNamingPropertyAction
 			 */
 			public AddRegisterNamingPropertyCommand(EObject modelToMigrate, String label) {
 
-				super(TransactionUtil.getEditingDomain(modelToMigrate), label,
-						Collections.EMPTY_MAP, getWorkspaceFiles(modelToMigrate));
+				super(TransactionUtil.getEditingDomain(modelToMigrate), label);
 				
 				this.refactorObject = modelToMigrate;
 
 			}
 
 			@Override
-			protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-					IAdaptable info) throws ExecutionException {
+			protected void doExecute() {
 				
 				List<Class> components = new ArrayList<Class>();
 				
@@ -190,8 +125,6 @@ public class AddRegisterNamingPropertyAction
 						repairedReferenceCount++;
 					}
 				}
-				
-				return CommandResult.newOKCommandResult();
 			}
 
 			@Override
@@ -201,8 +134,39 @@ public class AddRegisterNamingPropertyAction
 		}
 
 		@Override
-		public void init(IViewPart view) {
-			// TODO Auto-generated method stub
+		public Object execute(ExecutionEvent event) throws ExecutionException {
+			repairedReferenceCount = 0;
+
+			EObject selObject = BaseUIUtil.getEObjectFromSelection(BaseUIUtil.getSelection());
 			
+			if( selObject != null && 
+				ZDLUtil.isZDLConcept(selObject, DDS4CCMNames.DDS4_CCMMODEL) ||
+				ZDLUtil.isZDLConcept(selObject, CCMNames.CCMCOMPONENT) ||
+				ZDLUtil.isZDLConcept(selObject, CCMNames.HOME)) {
+			
+				TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(selObject);
+				Command migrationCommand = new AddRegisterNamingPropertyCommand(
+						selObject,
+						Messages.AddRegisterNaming_DialogTitle);
+				
+				if(migrationCommand.canExecute()) {
+					domain.getCommandStack().execute(migrationCommand);
+				}else {
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), Messages.Migrate_Error, "Migration Failed");
+					return null;
+				}
+			}
+			
+			if( repairedReferenceCount > 0 ) {
+				MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
+						Messages.AddRegisterNaming_DialogTitle,
+						Messages.Migrate_OK);
+			} else {
+				MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
+						Messages.AddRegisterNaming_DialogTitle,
+						Messages.Migrate_Noop);
+			}
+
+			return null;
 		}
 }

@@ -26,18 +26,17 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.ui.progress.UIJob;
 import org.eclipse.uml2.uml.NamedElement;
 
 import com.zeligsoft.base.util.WorkflowUtil;
@@ -98,10 +97,10 @@ public class WorkflowJobFactory {
 		});
 	}
 
-	public Job createJob() {
-		WorkspaceJob transformJob = new WorkspaceJob("") { //$NON-NLS-1$
+	public UIJob createJob() {
+		UIJob transformJob = new UIJob("") { //$NON-NLS-1$
 			@Override
-			public IStatus runInWorkspace(IProgressMonitor monitor) {
+			public IStatus runInUIThread(IProgressMonitor monitor) {
 
 				final EObject element = elementLocator.getElement();
 				final List<WorkflowEntry> workflows = workflowLocator.getWorkflows();

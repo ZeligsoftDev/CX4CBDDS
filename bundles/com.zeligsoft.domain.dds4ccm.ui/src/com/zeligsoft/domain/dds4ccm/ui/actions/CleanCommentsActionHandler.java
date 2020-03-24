@@ -17,32 +17,26 @@
 package com.zeligsoft.domain.dds4ccm.ui.actions;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
-import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IViewActionDelegate;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Property;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
-import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.omg.corba.CORBADomainNames;
 
@@ -52,35 +46,26 @@ import com.zeligsoft.domain.omg.corba.CORBADomainNames;
  * @author ysroh
  * 
  */
-public class RefactorCleanCommentsAction implements IViewActionDelegate {
-
-	private ISelection selection;
+public class CleanCommentsActionHandler extends AbstractHandler {
 
 	private int refactorCount = 0;
 
-	public void run(IAction action) {
+	@Override
+	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		if (selection == null) {
-			return;
-		}
 		refactorCount = 0;
 
-		EObject selObject = BaseUIUtil.getEObjectFromSelection(selection);
+		EObject selObject = BaseUIUtil.getEObjectFromSelection(BaseUIUtil.getSelection());
 
 		if (selObject != null
 				&& ZDLUtil.isZDLConcept(selObject, DDS4CCMNames.DDS4_CCMMODEL)) {
 
-			AbstractTransactionalCommand migrationCommand = new RefactorCleanCommentsCommand(
+			Command migrationCommand = new RefactorCleanCommentsCommand(
 					selObject, Messages.RefactorCleanCommentsAction_ActionTitle);
 
-			try {
-				OperationHistoryFactory.getOperationHistory().execute(
-						migrationCommand, null, null);
-			} catch (Exception e) {
-				Activator.getDefault().error(Messages.Migrate_Error, e);
-				MessageDialog.openError(Display.getCurrent().getActiveShell(),
-						Messages.Migrate_Error, e.getMessage());
-				return;
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(selObject);
+			if(migrationCommand.canExecute()) {
+				domain.getCommandStack().execute(migrationCommand);
 			}
 		}
 
@@ -96,11 +81,7 @@ public class RefactorCleanCommentsAction implements IViewActionDelegate {
 					Messages.Migrate_Noop);
 		}
 
-	}
-
-	public void selectionChanged(IAction action, ISelection selection) {
-		this.selection = selection;
-
+		return null;
 	}
 
 	/**
@@ -110,7 +91,7 @@ public class RefactorCleanCommentsAction implements IViewActionDelegate {
 	 * 
 	 */
 	private class RefactorCleanCommentsCommand extends
-			AbstractTransactionalCommand {
+			RecordingCommand {
 
 		private EObject refactorObject = null;
 
@@ -122,16 +103,14 @@ public class RefactorCleanCommentsAction implements IViewActionDelegate {
 		 */
 		public RefactorCleanCommentsCommand(EObject modelToMigrate, String label) {
 
-			super(TransactionUtil.getEditingDomain(modelToMigrate), label,
-					Collections.EMPTY_MAP, getWorkspaceFiles(modelToMigrate));
+			super(TransactionUtil.getEditingDomain(modelToMigrate), label);
 
 			this.refactorObject = modelToMigrate;
 
 		}
 
 		@Override
-		protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-				IAdaptable info) throws ExecutionException {
+		protected void doExecute() {
 
 			List<Comment> commentToRemove = new ArrayList<Comment>();
 
@@ -156,19 +135,11 @@ public class RefactorCleanCommentsAction implements IViewActionDelegate {
 				EcoreUtil.delete(c);
 				refactorCount++;
 			}
-
-			return CommandResult.newOKCommandResult();
 		}
 
 		@Override
 		public boolean canExecute() {
 			return (refactorObject != null);
 		}
-	}
-
-	@Override
-	public void init(IViewPart view) {
-		// TODO Auto-generated method stub
-
 	}
 }
