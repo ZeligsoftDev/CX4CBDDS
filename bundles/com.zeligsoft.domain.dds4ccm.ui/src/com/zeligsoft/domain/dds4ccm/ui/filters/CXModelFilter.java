@@ -23,9 +23,11 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.papyrus.infra.emf.utils.EMFHelper;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Property;
 
 import com.zeligsoft.base.zdl.ZDLNames;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
@@ -68,8 +70,13 @@ public class CXModelFilter extends ViewerFilter {
 			}
 			if (eObject instanceof NamedElement) {
 				NamedElement ne = (NamedElement) eObject;
-				if (!UML2Util.isEmpty(ne.getName()) && ne.getName().startsWith("_")) {
-					return false;
+				if (!UML2Util.isEmpty(ne.getName()) && ne.eContainer() instanceof Component) {
+					if (ne instanceof Property && ne.getName().equals("_defaultInstance")) {
+						return false;
+					}
+					if (ne instanceof Package && ne.getName().startsWith("_")) {
+						return false;
+					}
 				}
 			}
 		}
