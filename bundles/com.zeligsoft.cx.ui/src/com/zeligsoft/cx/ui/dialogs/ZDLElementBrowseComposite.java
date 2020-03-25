@@ -225,11 +225,11 @@ public abstract class ZDLElementBrowseComposite {
 			if (element instanceof IContainer) {
 				try {
 					for (IResource res : ((IContainer) element).members()) {
-						if (res instanceof IProject && !((IProject) res).isOpen()) {
-							continue;
-						}
-						// ignore project that does not contain UML resources
-						if (res instanceof IContainer) {
+						if (res instanceof IProject) {
+							if (((IProject) res).isOpen()) {
+								result.add(res);
+							}
+						} else if (res instanceof IContainer) {
 							if (hasUml((IContainer) res)) {
 								result.add(res);
 							}
