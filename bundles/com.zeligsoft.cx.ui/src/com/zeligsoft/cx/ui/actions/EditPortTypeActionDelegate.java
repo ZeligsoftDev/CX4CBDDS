@@ -16,13 +16,12 @@
  */
 package com.zeligsoft.cx.ui.actions;
 
+import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IObjectActionDelegate;
-import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.uml2.uml.Element;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
@@ -35,32 +34,19 @@ import com.zeligsoft.cx.ui.wizard.PortTypeCreationWizard;
  * @author ysroh
  * 
  */
-public class EditPortTypeActionDelegate implements IObjectActionDelegate {
-
-	private ISelection selection;
+public class EditPortTypeActionDelegate extends AbstractHandler {
 
 	@Override
-	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-		// TODO Auto-generated method stub
+	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-	}
-
-	@Override
-	public void run(IAction action) {
-		EObject eo = BaseUIUtil.getEObjectFromSelection(selection);
+		EObject eo = BaseUIUtil.getEObjectFromSelection(BaseUIUtil.getSelection());
 		if (eo == null || !(eo instanceof Element)) {
-			return;
+			return null;
 		}
 		PortTypeCreationWizard wizard = new PortTypeCreationWizard((Element) eo);
 		wizard.setWindowTitle(Messages.EditPortTypeActionDelegate_DialogTitle);
-		WizardDialog dialog = new WizardDialog(Display.getCurrent().getActiveShell(),
-				wizard);
+		WizardDialog dialog = new WizardDialog(Display.getCurrent().getActiveShell(), wizard);
 		dialog.open();
+		return null;
 	}
-
-	@Override
-	public void selectionChanged(IAction action, ISelection selection) {
-		this.selection = selection;
-	}
-
 }

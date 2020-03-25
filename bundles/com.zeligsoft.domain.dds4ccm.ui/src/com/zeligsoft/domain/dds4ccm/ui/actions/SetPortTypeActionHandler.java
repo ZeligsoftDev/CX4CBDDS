@@ -27,7 +27,7 @@ import com.zeligsoft.domain.zml.util.ZMLMMNames;
  * @author ysroh
  * 
  */
-public class DDS4CCMSetPortTypeActionDelegate extends SetPortTypeActionDelegate {
+public class SetPortTypeActionHandler extends SetPortTypeActionDelegate {
 
 	@Override
 	protected List<String> getPortTypeableConcepts() {

@@ -16,28 +16,19 @@
  */
 package com.zeligsoft.domain.dds4ccm.ui.actions;
 
-import java.util.Collections;
-
+import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
-import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IViewActionDelegate;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.uml2.uml.Element;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
-import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
 import com.zeligsoft.domain.omg.corba.CORBADomainNames;
@@ -48,34 +39,24 @@ import com.zeligsoft.domain.omg.corba.CORBADomainNames;
  * @author parmvirs
  * 
  */
-public class ReapplyFieldStereotypesAction implements IViewActionDelegate {
+public class ReapplyFieldStereotypesActionHandler extends AbstractHandler {
 
-	private ISelection selection;
 	Boolean stereotypeApplied = false;
 
 	@Override
-	public void run(IAction action) {
+	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		if (selection == null) {
-			return;
-		}
-		EObject selObject = BaseUIUtil.getEObjectFromSelection(selection);
+		EObject selObject = BaseUIUtil.getEObjectFromSelection(BaseUIUtil.getSelection());
 
 		if (selObject != null
 				&& (ZDLUtil.isZDLConcept(selObject, DDS4CCMNames.DDSMESSAGE) || ZDLUtil
 						.isZDLConcept(selObject, CORBADomainNames.CORBASTRUCT))) {
 
-			AbstractTransactionalCommand command = new ReapplyFieldStereotypesCommand(
+			RecordingCommand command = new ReapplyFieldStereotypesCommand(
 					selObject, Messages.ReapplyFieldStereotypes_DialogTitle);
 
-			try {
-				OperationHistoryFactory.getOperationHistory().execute(command,
-						null, null);
-			} catch (Exception e) {
-				Activator.getDefault().error(Messages.Migrate_Error, e);
-				MessageDialog.openError(Display.getCurrent().getActiveShell(),
-						Messages.Migrate_Error, e.getMessage());
-				return;
+			if (command.canExecute()) {
+				TransactionUtil.getEditingDomain(selObject).getCommandStack().execute(command);
 			}
 		}
 		if (stereotypeApplied) {
@@ -89,15 +70,11 @@ public class ReapplyFieldStereotypesAction implements IViewActionDelegate {
 					Messages.ReapplyFieldStereotypes_DialogTitle,
 					Messages.ReapplyFieldStereotypes_Noop);
 		}
-	}
-
-	@Override
-	public void selectionChanged(IAction action, ISelection selection) {
-		this.selection = selection;
+		return null;
 	}
 
 	private class ReapplyFieldStereotypesCommand extends
-			AbstractTransactionalCommand {
+			RecordingCommand {
 
 		private EObject refactorObject = null;
 
@@ -109,16 +86,14 @@ public class ReapplyFieldStereotypesAction implements IViewActionDelegate {
 		 */
 		public ReapplyFieldStereotypesCommand(EObject element, String label) {
 
-			super(TransactionUtil.getEditingDomain(element), label,
-					Collections.EMPTY_MAP, getWorkspaceFiles(element));
+			super(TransactionUtil.getEditingDomain(element), label);
 
 			this.refactorObject = element;
 
 		}
 
 		@Override
-		protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-				IAdaptable info) throws ExecutionException {
+		protected void doExecute() {
 
 			if (ZDLUtil.isZDLConcept(refactorObject, DDS4CCMNames.DDSMESSAGE)
 					|| ZDLUtil.isZDLConcept(refactorObject,
@@ -126,7 +101,6 @@ public class ReapplyFieldStereotypesAction implements IViewActionDelegate {
 				stereotypeApplied = DDS4CCMUtil
 						.reapplyFieldStereotypes((Element) refactorObject);
 			}
-			return CommandResult.newOKCommandResult();
 		}
 
 		@Override
@@ -134,11 +108,4 @@ public class ReapplyFieldStereotypesAction implements IViewActionDelegate {
 			return (refactorObject != null);
 		}
 	}
-
-	@Override
-	public void init(IViewPart view) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

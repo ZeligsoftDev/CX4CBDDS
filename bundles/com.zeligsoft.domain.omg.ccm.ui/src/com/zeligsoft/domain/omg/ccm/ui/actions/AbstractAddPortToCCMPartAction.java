@@ -16,19 +16,11 @@
  */
 package com.zeligsoft.domain.omg.ccm.ui.actions;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
-import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.ui.ElementTypeImageDescriptor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -37,12 +29,9 @@ import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Port;
 
 import com.zeligsoft.base.ui.menus.actions.ICXAction;
-import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.ccm.ui.Activator;
-import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**

@@ -18,27 +18,21 @@
 package com.zeligsoft.cx.ui.actions;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
-import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IObjectActionDelegate;
-import org.eclipse.ui.IWorkbenchPart;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
 import com.zeligsoft.cx.ui.dialogs.ZDLElementSelectionDialog;
 import com.zeligsoft.cx.ui.filters.ElementSelectionFilter;
 import com.zeligsoft.cx.ui.l10n.Messages;
@@ -50,17 +44,14 @@ import com.zeligsoft.domain.zml.util.ZMLMMNames;
  * @author Young-Soo Roh (ysroh)
  * 
  */
-public class SetPortTypeActionDelegate implements IObjectActionDelegate {
+public class SetPortTypeActionDelegate extends AbstractHandler{
 
 	private List<EObject> selectedEObjects;
 
 	@Override
-	@SuppressWarnings("unchecked")
-	public void run(IAction action) {
+	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		if (selectedEObjects.isEmpty()) {
-			return;
-		}
+		selectedEObjects = BaseUIUtil.getEObjectsFromSelection(BaseUIUtil.getSelection());
 
 		ElementSelectionFilter filter = new ElementSelectionFilter(ZMLMMNames.PORT,
 				ZMLMMNames.TYPED_ELEMENT__TYPE);
@@ -69,7 +60,7 @@ public class SetPortTypeActionDelegate implements IObjectActionDelegate {
 		final ZDLElementSelectionDialog dialog = new ZDLElementSelectionDialog(Display
 				.getCurrent().getActiveShell(),
 				Messages.SetPortTypeActionDelegate_DialogTitle, selectedEObjects.get(0),
-				Collections.EMPTY_LIST, true, true);
+				new ArrayList<String>(), true, true);
 		dialog.setElementFilter(filter);
 
 		int result = dialog.open();
@@ -80,6 +71,8 @@ public class SetPortTypeActionDelegate implements IObjectActionDelegate {
 				setPortType(eObject);
 			}
 		}
+		
+		return null;
 	}
 
 	/**
@@ -100,13 +93,13 @@ public class SetPortTypeActionDelegate implements IObjectActionDelegate {
 	 * @param portType
 	 */
 	private void setPortType(final EObject portType) {
-		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(portType),
+		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(portType);
+		Command command = new RecordingCommand(domain
+				,
 				Messages.SetPortTypeActionDelegate_SetPortTypeCommandLabel, null) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(IProgressMonitor monitor,
-					IAdaptable info) throws ExecutionException {
+			protected void doExecute() {
 
 				for (EObject eo : selectedEObjects) {
 					if (ZDLUtil.isZDLConcept(eo, ZMLMMNames.PORT)) {
@@ -114,62 +107,12 @@ public class SetPortTypeActionDelegate implements IObjectActionDelegate {
 								ZMLMMNames.TYPED_ELEMENT__TYPE, portType);
 					}
 				}
-
-				return CommandResult.newOKCommandResult();
 			}
 
 		};
 
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command, null, null);
-		} catch (ExecutionException e) {
-			ZeligsoftCXUIPlugin.getDefault().error(
-					Messages.SetPortTypeActionDelegate_SetPortTypeFailedLog, e);
-		}
-
-	}
-
-	@Override
-	public void selectionChanged(IAction action, final ISelection selection) {
-
-		if (selection == null || action == null) {
-			action.setEnabled(false);
-			return;
-		}
-
-		if (isValidPortSelection(selection)) {
-			action.setEnabled(true);
-		} else {
-			action.setEnabled(false);
+		if(command.canExecute()) {
+			domain.getCommandStack().execute(command);
 		}
 	}
-
-	/**
-	 * Check that the current selection is a valid port
-	 * 
-	 * @param ISelection
-	 *            selection
-	 * @return boolean isValidPortSelection
-	 */
-	private boolean isValidPortSelection(ISelection selection) {
-
-		selectedEObjects = BaseUIUtil.getEObjectsFromSelection(selection);
-		if (selectedEObjects.isEmpty()) {
-			return false;
-		}
-		for (EObject eo : selectedEObjects) {
-
-			if (ZDLUtil.isZDLConcept(eo, ZMLMMNames.PORT)) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	@Override
-	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-		// do nothing
-	}
-
 }
