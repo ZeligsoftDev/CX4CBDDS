@@ -270,6 +270,21 @@
             </visibleWhen>
         </command>
         <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.repairdeployment"
+              label="Repair Deployment"
+              style="push">
+           <visibleWhen
+                 checkEnabled="false">
+              <with
+                    variable="selection">
+                 <test
+                       property="com.zeligsoft.zdl.tester.isZDLConcept"
+                       value="CCM::CCM_Deployment::DeploymentPlan">
+                 </test>
+              </with>
+           </visibleWhen>
+        </command>
+        <command
               commandId="com.zeligsoft.domain.dds4ccm.ui.cleanreferencesaction"
               style="push"
               label="Clean Model Library References">
@@ -329,6 +344,92 @@
                </with>
             </visibleWhen>
         </command>
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.structtomessage"
+              label="%struct.action.label.1"
+              style="push">
+           <visibleWhen
+                 checkEnabled="false">
+              <with
+                    variable="selection">
+                 <test
+                       property="com.zeligsoft.zdl.tester.isZDLConcept"
+                       value="CORBADomain::IDL::CORBAStruct">
+                 </test>
+              </with>
+           </visibleWhen>
+        </command>
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.messagetostruct"
+              label="%field.action.label.1"
+              style="push">
+           <visibleWhen
+                 checkEnabled="false">
+              <with
+                    variable="selection">
+                 <test
+                       property="com.zeligsoft.zdl.tester.isZDLConcept"
+                       value="DDS4CCM::DDSExtensions::DDSMessage">
+                 </test>
+              </with>
+           </visibleWhen>
+        </command>
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.reapplyfieldstreotype"
+              label="%reapply.field.stereotype.label.1"
+              style="push">
+           <visibleWhen
+                 checkEnabled="false">
+              <with
+                    variable="selection">
+                 <or>
+                    <test
+                          property="com.zeligsoft.zdl.tester.isZDLConcept"
+                          value="DDS4CCM::DDSExtensions::DDSMessage">
+                    </test>
+                    <test
+                          property="com.zeligsoft.zdl.tester.isZDLConcept"
+                          value="CORBADomain::IDL::CORBAStruct">
+                    </test>
+                 </or>
+              </with>
+           </visibleWhen>
+        </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=tools">
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.setporttype"
+              label="%action.setPortType.label"
+              style="push">
+           <visibleWhen
+                 checkEnabled="false">
+              <with
+                    variable="selection">
+                 <test
+                       property="com.zeligsoft.zdl.tester.isZDLConcept"
+                       value="ZMLMM::ZML_Component::Port">
+                 </test>
+              </with>
+           </visibleWhen>
+        </command>
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.showporttype"
+              label="%action.showPortType.label"
+              style="push">
+           <visibleWhen
+                 checkEnabled="false">
+              <with
+                    variable="selection">
+                 <test
+                       property="com.zeligsoft.zdl.tester.isZDLConcept"
+                       value="ZMLMM::ZML_Component::Port">
+                 </test>
+              </with>
+           </visibleWhen>
+        </command>
+
       </menuContribution>
    </extension>
   
@@ -363,6 +464,36 @@
             defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.RefactorContainerProcessActionHandler"
             id="com.zeligsoft.domain.dds4ccm.ui.refactorcontainerprocesssaction"
             name="Add Required Container Process Properties">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.RepairDeploymentPartsActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.repairdeployment"
+            name="Repair Deployment">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.ConvertStructToFieldActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.structtomessage"
+            name="%struct.action.label.1">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.ConvertFieldToStructActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.messagetostruct"
+            name="%field.action.label.1">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.SetPortTypeActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.setporttype"
+            name="%action.setPortType.label">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.ShowPortTypeActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.showporttype"
+            name="%action.showPortType.label">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.ReapplyFieldStereotypesActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.reapplyfieldstreotype"
+            name="%reapply.field.stereotype.label.1">
       </command>
    </extension>
     <!--

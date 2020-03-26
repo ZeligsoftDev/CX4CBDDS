@@ -54,4 +54,54 @@
          </menu>
       </menuContribution>
     </extension>
+    <extension
+          point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=tools">
+        <command
+              commandId="com.zeligsoft.cx.ui.editporttype"
+              label="%action.editPortType.label"
+              style="push">
+           <visibleWhen
+                 checkEnabled="false">
+              <with
+                    variable="selection">
+                 <test
+                       property="com.zeligsoft.zdl.tester.isZDLConcept"
+                       value="ZMLMM::ZML_Component::PortType">
+                 </test>
+              </with>
+           </visibleWhen>
+        </command>
+        <command
+              commandId="com.zeligsoft.cx.ui.locateondiagram"
+              label="%action.label.LocateOnDiagram"
+              style="push">
+           <visibleWhen
+                 checkEnabled="false">
+              <with
+                    variable="selection">
+                 <test
+                       property="com.zeligsoft.zdl.tester.isZDLProfile"
+                       value="cxDDS4CCM">
+                 </test>
+              </with>
+           </visibleWhen>
+        </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.zeligsoft.cx.ui.actions.EditPortTypeActionDelegate"
+            id="com.zeligsoft.cx.ui.editporttype"
+            name="Repair Model Worker Functions">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.cx.ui.actions.LocateElementOnDiagram"
+            id="com.zeligsoft.cx.ui.locateondiagram"
+            name="%action.label.LocateOnDiagram">
+      </command>
+   </extension>
 </plugin>
