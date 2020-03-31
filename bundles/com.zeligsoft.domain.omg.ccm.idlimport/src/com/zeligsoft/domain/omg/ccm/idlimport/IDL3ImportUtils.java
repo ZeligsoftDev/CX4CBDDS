@@ -38,7 +38,6 @@ import com.zeligsoft.domain.omg.corba.dsl.idl.ScopedName;
 import com.zeligsoft.domain.omg.corba.idlimport.XtendUtils;
 import com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.unresolvedLookups;
 
-@SuppressWarnings("nls")
 public class IDL3ImportUtils {
 
 	public static void applyIDL3FileConcept(Package pkg) {

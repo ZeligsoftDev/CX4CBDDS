@@ -846,33 +846,33 @@ public class XtendUtils {
 		Package library = null;
 		
 		for( PackageImport pi : p.getPackageImports()) {
-			if( pi.getImportedPackage().getName().equals("IDLPrimitives")) {
+			if( pi.getImportedPackage().getName().equals("CXPrimitives")) {
 				library = pi.getImportedPackage();
 			}
 		}
 		
 		if( library == null ) {
-			throw new IllegalArgumentException("Can only import IDL into a model that contains the IDLPrimitives model library.");
+			throw new IllegalArgumentException("Can only import IDL into a model that contains the CXPrimitives model library.");
 		}
 				
-		typeMap.put(SignedShortIntImpl.class, (DataType)library.getOwnedMember("CORBAShort"));
-		typeMap.put(AnyTypeImpl.class, (DataType)library.getOwnedMember("CORBAAny"));
-		typeMap.put(BooleanTypeImpl.class, (DataType)library.getOwnedMember("CORBABoolean"));
-		typeMap.put(CharTypeImpl.class, (DataType)library.getOwnedMember("CORBAChar"));
-		typeMap.put(DoubleTypeImpl.class, (DataType)library.getOwnedMember("CORBADouble"));
-		typeMap.put(FloatTypeImpl.class, (DataType)library.getOwnedMember("CORBAFloat"));
-		typeMap.put(SignedLongIntImpl.class, (DataType)library.getOwnedMember("CORBALong"));
-		typeMap.put(SignedLongLongIntImpl.class, (DataType)library.getOwnedMember("CORBALongLong"));
-		typeMap.put(ObjectTypeImpl.class, (DataType)library.getOwnedMember("CORBAObjref"));
-		typeMap.put(OctetTypeImpl.class, (DataType)library.getOwnedMember("CORBAOctet"));
-		typeMap.put(StringTypeImpl.class, (DataType)library.getOwnedMember("CORBAString"));
-		//typeMap.put(TypecodeImpl.class, (DataType)library.getOwnedMember("CORBATypecode"));
-		typeMap.put(UnsignedLongIntImpl.class, (DataType)library.getOwnedMember("CORBAULong"));
-		typeMap.put(UnsignedLongLongIntImpl.class, (DataType)library.getOwnedMember("CORBAULongLong"));
-		typeMap.put(UnsignedShortIntImpl.class, (DataType)library.getOwnedMember("CORBAUShort"));
-		typeMap.put(WideCharTypeImpl.class, (DataType)library.getOwnedMember("CORBAWChar"));
-		typeMap.put(WideStringTypeImpl.class, (DataType)library.getOwnedMember("CORBAWString"));
-		typeMap.put(LongDoubleTypeImpl.class, (DataType)library.getOwnedMember("CORBALongDouble"));
+		typeMap.put(SignedShortIntImpl.class, (DataType)library.getOwnedMember("CXShort"));
+		typeMap.put(AnyTypeImpl.class, (DataType)library.getOwnedMember("CXAny"));
+		typeMap.put(BooleanTypeImpl.class, (DataType)library.getOwnedMember("CXBoolean"));
+		typeMap.put(CharTypeImpl.class, (DataType)library.getOwnedMember("CXChar"));
+		typeMap.put(DoubleTypeImpl.class, (DataType)library.getOwnedMember("CXDouble"));
+		typeMap.put(FloatTypeImpl.class, (DataType)library.getOwnedMember("CXFloat"));
+		typeMap.put(SignedLongIntImpl.class, (DataType)library.getOwnedMember("CXLong"));
+		typeMap.put(SignedLongLongIntImpl.class, (DataType)library.getOwnedMember("CXLongLong"));
+		typeMap.put(ObjectTypeImpl.class, (DataType)library.getOwnedMember("CXObjref"));
+		typeMap.put(OctetTypeImpl.class, (DataType)library.getOwnedMember("CXOctet"));
+		typeMap.put(StringTypeImpl.class, (DataType)library.getOwnedMember("CXString"));
+		//typeMap.put(TypecodeImpl.class, (DataType)library.getOwnedMember("CXTypecode"));
+		typeMap.put(UnsignedLongIntImpl.class, (DataType)library.getOwnedMember("CXULong"));
+		typeMap.put(UnsignedLongLongIntImpl.class, (DataType)library.getOwnedMember("CXULongLong"));
+		typeMap.put(UnsignedShortIntImpl.class, (DataType)library.getOwnedMember("CXUShort"));
+		typeMap.put(WideCharTypeImpl.class, (DataType)library.getOwnedMember("CXWChar"));
+		typeMap.put(WideStringTypeImpl.class, (DataType)library.getOwnedMember("CXWString"));
+		typeMap.put(LongDoubleTypeImpl.class, (DataType)library.getOwnedMember("CXLongDouble"));
 				
 	}
 		

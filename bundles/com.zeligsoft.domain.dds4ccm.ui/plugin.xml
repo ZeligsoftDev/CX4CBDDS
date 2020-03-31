@@ -180,28 +180,6 @@
             name="Create CX Model from UML">
       </command>
    </extension>
-   
-   <extension
-          point="org.eclipse.ui.importWizards">
-       <category
-             id="ccmImportID"
-             name="%category.name.0">
-       </category>
-    </extension>
-    <extension   
-       point="org.eclipse.ui.importWizards"> 
-    	<wizard
-            category="ccmImportID"
-            class="com.zeligsoft.domain.dds4ccm.ui.wizards.DDS4CCMIDLImportWizard"
-            icon="platform:/plugin/com.zeligsoft.domain.omg.corba.ui/icons/obj16/IDL-import-process.gif"
-            id="com.zeligsoft.domain.omg.ccm.IDLImportWizard"
-            name="%wizard.name.0"> 
-         <description> 
-            %IDLImportWizard.description 
-         </description> 
-         <selection class="org.eclipse.core.resources.IFile"/> 
-      </wizard>
-   </extension>
     <extension
           point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
        <editpolicyProvider
@@ -442,6 +420,30 @@
         </command>
 
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.papyrus.uml.import.menu">
+         <command
+               commandId="com.zeligsoft.domain.dds4ccm.ui.idlimport"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <and>
+                     <test
+                           property="org.eclipse.papyrus.infra.emf.readonly.tester.canMakeWritable"
+                           value="true">
+                     </test>
+                     <test
+                           property="com.zeligsoft.zdl.tester.isZDLConcept"
+                           value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                     </test>
+                  </and>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
   
    <extension
@@ -510,6 +512,11 @@
             defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.MigrateModelTypeActionHandler"
             id="com.zeligsoft.domain.dds4ccm.ui.migratetoaxcioma"
             name="Migrate To AXICOMA">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.IDLImportActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.idlimport"
+            name="IDL Import">
       </command>
    </extension>
     <!--
