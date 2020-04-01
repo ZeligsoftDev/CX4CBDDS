@@ -126,7 +126,8 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 					loadAllResources(rset, (IContainer) member);
 				} else if (member instanceof IFile) {
 					IFile file = (IFile) member;
-					if ("uml".equals(file.getFullPath().getFileExtension().toLowerCase())) {
+					String ext = file.getFullPath().getFileExtension();
+					if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())) {
 						URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
 						if (!testedResources.contains(uri)) {
 							testedResources.add(uri);
