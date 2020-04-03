@@ -17,13 +17,14 @@
 package com.zeligsoft.domain.cbdds.architecture;
 
 import org.eclipse.papyrus.infra.core.log.LogHelper;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+
+import com.zeligsoft.base.ZeligsoftAbstractPlugin;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
+public class Activator extends ZeligsoftAbstractPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "com.zeligsoft.domain.cbdds.architecture"; //$NON-NLS-1$
