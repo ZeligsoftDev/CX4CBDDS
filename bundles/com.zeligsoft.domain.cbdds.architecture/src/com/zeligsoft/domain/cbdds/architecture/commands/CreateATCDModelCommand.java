@@ -143,6 +143,6 @@ public class CreateATCDModelCommand implements IModelCreationCommand {
 	 * @return the model name
 	 */
 	protected String getModelName() {
-		return "CBDDSModel";
+		return "ATCDModel";
 	}
 }

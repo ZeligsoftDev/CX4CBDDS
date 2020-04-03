@@ -395,6 +395,21 @@
               </with>
            </visibleWhen>
         </command>
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.migratetoaxcioma"
+              label="Convert to AXCIOMA"
+              style="push">
+           <visibleWhen
+                 checkEnabled="false">
+              <with
+                    variable="selection">
+                 <test
+                       property="com.zeligsoft.zdl.tester.isZDLConcept"
+                       value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                 </test>
+              </with>
+           </visibleWhen>
+        </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -494,6 +509,11 @@
             defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.ReapplyFieldStereotypesActionHandler"
             id="com.zeligsoft.domain.dds4ccm.ui.reapplyfieldstreotype"
             name="%reapply.field.stereotype.label.1">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.MigrateModelTypeActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.migratetoaxcioma"
+            name="Migrate To AXICOMA">
       </command>
    </extension>
     <!--

@@ -17,12 +17,16 @@
 package com.zeligsoft.domain.dds4ccm.utils;
 
 import java.io.IOException;
-import java.util.List;
+
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
-import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.UMLPackage;
+
 import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.Activator;
@@ -140,29 +144,25 @@ public class ConnectorTypeUtility {
 	 * @throws IOException 
 	 *         
 	 */
-	public static Package getImportedPackage(Model model, URI packageUri) throws IOException{
-		
+	public static Package getImportedPackage(Model model, URI packageUri) throws IOException {
+
 		Package importedPackage = null;
 		boolean isAlreadyImported = false;
-	
-		List<PackageImport> listPackageImport = model.getPackageImports();
-		
-		for(PackageImport pi: listPackageImport){
-			
-			if(pi.getImportedPackage().eResource().getURI().equals(packageUri)){
+
+		ResourceSet rset = model.eResource().getResourceSet();
+		for (Resource r : rset.getResources()) {
+			if (rset.getURIConverter().normalize(packageUri).equals(rset.getURIConverter().normalize(r.getURI()))) {
 				isAlreadyImported = true;
-				importedPackage = pi.getImportedPackage();
+				importedPackage = (Package) r.getContents().get(0);
 				break;
 			}
 		}
-		
-		if(!isAlreadyImported){			
-//			Package library = (Package) UMLModeler.openModelResource(packageUri);
-//			final PackageImport pi = model.createPackageImport(library);
-//			importedPackage = pi.getImportedPackage();		
+
+		if (!isAlreadyImported) {
+			importedPackage = UML2Util.load(rset, packageUri, UMLPackage.Literals.PACKAGE);
 		}
-		
-		return importedPackage;		
+
+		return importedPackage;
 	}
 
 	/**
