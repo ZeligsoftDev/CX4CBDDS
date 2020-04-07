@@ -47,6 +47,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.model.BaseWorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.TypedElement;
 
@@ -233,13 +234,16 @@ public abstract class ZDLElementBrowseComposite {
 							if (hasUml((IContainer) res)) {
 								result.add(res);
 							}
-						} else if (res instanceof IFile
-								&& "uml".equals(((IFile) res).getFullPath().getFileExtension().toLowerCase())) {
-							URI uri = URI.createPlatformResourceURI(((IFile) res).getFullPath().toString(), true);
-							ResourceSet rset = context.eResource().getResourceSet();
-							Resource eres = rset.getResource(uri, false);
-							if (eres != null) {
-								result.add(eres.getContents().get(0));
+						} else if (res instanceof IFile) {
+
+							String ext = ((IFile) res).getFullPath().getFileExtension();
+							if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())) {
+								URI uri = URI.createPlatformResourceURI(((IFile) res).getFullPath().toString(), true);
+								ResourceSet rset = context.eResource().getResourceSet();
+								Resource eres = rset.getResource(uri, false);
+								if (eres != null) {
+									result.add(eres.getContents().get(0));
+								}
 							}
 						}
 					}
