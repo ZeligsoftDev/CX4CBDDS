@@ -16,26 +16,28 @@
  */
 package com.zeligsoft.domain.dds4ccm.ui.listeners;
 
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.uml2.common.util.UML2Util;
 
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
@@ -60,9 +62,9 @@ public class CCMPartMoveOperationListener extends ResourceSetListenerImpl {
 							&& ZDLUtil.isZDLConcept(assembly,
 									CCMNames.ASSEMBLY_IMPLEMENTATION)) {
 
+						TransactionalEditingDomain domain = TransactionUtil.getEditingDomain((EObject) oldValue);
 						ICommand command = new AbstractTransactionalCommand(
-								TransactionUtil
-										.getEditingDomain((EObject) oldValue),
+								domain,
 								"Remove Connectors", null) { //$NON-NLS-1$
 
 							@Override
@@ -75,19 +77,20 @@ public class CCMPartMoveOperationListener extends ResourceSetListenerImpl {
 									if (ZDLUtil.isZDLConcept(eobj, ZMLMMNames.CONNECTOR_END)) {
 										EObject connector = eobj.eContainer();
 										if (ZDLUtil.isZDLConcept(connector, CCMNames.CCMCONNECTOR)) {
-											EcoreUtil.remove(connector);
-											EcoreUtil.delete(connector);
+											Command cmd = BaseUtil.getDeleteCommand(Collections.singleton(connector));
+											if(cmd.canExecute()) {
+												domain.getCommandStack().execute(cmd);
+											}
 										}
 									}
 								}
 								return CommandResult.newOKCommandResult();
 							}
 						};
-						try {
-							OperationHistoryFactory.getOperationHistory()
-									.execute(command, null, null);
-						} catch (Exception e) {
-							Activator.getDefault().error(e.getMessage(), e);
+						
+						Command emfCmd = GMFtoEMFCommandWrapper.wrap(command);
+						if(emfCmd.canExecute()) {
+							domain.getCommandStack().execute(emfCmd);
 						}
 					}
 				}

@@ -17,6 +17,7 @@
 package com.zeligsoft.domain.omg.ccm.ui.providers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
@@ -53,6 +53,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.util.NamingUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.providers.IPropertyEntry;
@@ -903,8 +904,11 @@ public class CCMPropertyEntry implements IPropertyEntry {
 							(Property) modelObject, list);
 					InstanceSpecification instance = ((InstanceValue) parentSlot
 							.getValues().get(0)).getInstance();
-					EcoreUtil.delete(
-							instance.getSpecification());
+					
+					Command cmd = BaseUtil.getDeleteCommand(Collections.singleton(instance.getSpecification()));
+					if (cmd.canExecute()) {
+						TransactionUtil.getEditingDomain(modelObject).getCommandStack().execute(cmd);
+					}
 					slot = instance.createSlot();
 					slot.setDefiningFeature(member);
 				}
@@ -1039,9 +1043,14 @@ public class CCMPropertyEntry implements IPropertyEntry {
 		Package container = getRootInstanceContainer();
 		cleanInstanceValue(instanceValue, false);
 		if (container.getPackagedElements().isEmpty()) {
-			EcoreUtil.delete(container);
+			List<EObject> toDelete = new ArrayList<EObject>();
+			toDelete.add(container);
 			if (entry.getModelObject() instanceof Component) {
-				EcoreUtil.delete(property);
+				toDelete.add(property);
+			}
+			Command cmd = BaseUtil.getDeleteCommand(toDelete);
+			if (cmd.canExecute()) {
+				TransactionUtil.getEditingDomain(property).getCommandStack().execute(cmd);
 			}
 		}
 	}
@@ -1090,7 +1099,10 @@ public class CCMPropertyEntry implements IPropertyEntry {
 			if (memberInstanceValue && !cleanMemberInstanceValue) {
 				return;
 			}
-			EcoreUtil.delete(instanceValue);
+			Command cmd = BaseUtil.getDeleteCommand(Collections.singleton(instanceValue));
+			if(cmd.canExecute()) {
+				TransactionUtil.getEditingDomain(instanceValue).getCommandStack().execute(cmd);
+			}
 		}
 	}
 
@@ -1107,6 +1119,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 			boolean cleanMemberInstanceValue,
 			boolean isMemberInstanceValueInstance) {
 		Map<String, Slot> map = BaseUIUtil.getSlotMap(instance);
+		List<EObject> toDelete = new ArrayList<EObject>();
 		for (String p : map.keySet()) {
 			Slot slot = map.get(p);
 			Object[] values = slot.getValues().toArray();
@@ -1120,7 +1133,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 				}
 			}
 			if (slot.getValues().isEmpty()) {
-				EcoreUtil.delete(slot);
+				toDelete.add(slot);
 			}
 		}
 		if (instance.getSlots().isEmpty()
@@ -1128,7 +1141,11 @@ public class CCMPropertyEntry implements IPropertyEntry {
 			if (!cleanMemberInstanceValue && isMemberInstanceValueInstance) {
 				return;
 			}
-			EcoreUtil.delete(instance);
+			toDelete.add(instance);
+		}
+		Command cmd = BaseUtil.getDeleteCommand(toDelete);
+		if(cmd.canExecute()) {
+			TransactionUtil.getEditingDomain(modelObject).getCommandStack().execute(cmd);
 		}
 	}
 
@@ -1257,8 +1274,9 @@ public class CCMPropertyEntry implements IPropertyEntry {
 												.setInstance(attributeInstance);
 									}
 								}
-								EcoreUtil.delete(value.getInstance()
-												.getSpecification());
+								Command cmd = BaseUtil.getDeleteCommand(
+										Collections.singletonList(value.getInstance().getSpecification()));
+								TransactionUtil.getEditingDomain(modelObject).getCommandStack().execute(cmd);
 
 								return CommandResult.newOKCommandResult();
 							}

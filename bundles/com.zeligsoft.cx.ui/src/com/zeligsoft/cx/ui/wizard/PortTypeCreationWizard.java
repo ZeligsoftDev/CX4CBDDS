@@ -16,19 +16,16 @@
  */
 package com.zeligsoft.cx.ui.wizard;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.Assert;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Component;
@@ -37,6 +34,7 @@ import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Usage;
 
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.PortTypeRegistryReader.PortTypeRegistry;
 import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
@@ -90,30 +88,22 @@ public class PortTypeCreationWizard
 		final String invName = page.getInversePortTypeName();
 
 		registry = page.getRegistry();
-		
-		AbstractTransactionalCommand command = new AbstractTransactionalCommand(
-			TransactionUtil.getEditingDomain(context),
-			Messages.PortTypeCreationWizard_CreatePortTypeCommandLabel,
-			Collections.EMPTY_MAP, null) {
+		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(context);
+		Command command = new RecordingCommand(domain, Messages.PortTypeCreationWizard_CreatePortTypeCommandLabel) {
 
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
-					throws ExecutionException {
+			protected void doExecute() {
 
 				createPortType(name, invName, page.getProvidesMap(), page.getUsesMap());
 
-				return CommandResult.newOKCommandResult();
 			}
 
 		};
 
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-				null, null);
-		} catch (ExecutionException e) {
-			ZeligsoftCXUIPlugin.getDefault().error(
-				Messages.PortTypeCreationWizard_CreationFailedMessage, e);
+		if (command.canExecute()) {
+			domain.getCommandStack().execute(command);
+		} else {
+			ZeligsoftCXUIPlugin.getDefault().warning(Messages.PortTypeCreationWizard_CreationFailedMessage);
 		}
 		return true;
 	}
@@ -132,8 +122,9 @@ public class PortTypeCreationWizard
 		if (page.getSelectedPortType() != null) {
 			newPortType = page.getSelectedPortType();
 			newPortType.setName(name);
+			List<EObject> toDelete = new ArrayList<EObject>();
 			for(EObject eo: newPortType.getRelationships()){
-				EcoreUtil.delete(eo);
+				toDelete.add(eo);
 			}
 			Object value = ZDLUtil.getValue(newPortType, ZMLMMNames.PORT_TYPE,
 					ZMLMMNames.PORT_TYPE__INVERSE);
@@ -141,9 +132,11 @@ public class PortTypeCreationWizard
 				newPortTypeInv = (Class) value;
 				newPortTypeInv.setName(invName);
 				for(EObject eo: newPortTypeInv.getRelationships()){
-					EcoreUtil.delete(eo);
+					toDelete.add(eo);
 				}
 			}
+			Command cmd = BaseUtil.getDeleteCommand(toDelete);
+			TransactionUtil.getEditingDomain(newPortType).getCommandStack().execute(cmd);
 		}else{
 			if (context instanceof Package) {
 				// Create PortType

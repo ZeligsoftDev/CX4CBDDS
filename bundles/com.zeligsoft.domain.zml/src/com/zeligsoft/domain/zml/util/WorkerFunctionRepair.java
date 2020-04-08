@@ -29,8 +29,11 @@ import java.util.UUID;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Component;
@@ -44,6 +47,7 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.osgi.framework.Bundle;
 
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.Activator;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.zml.workerfunctioncontributor.WorkerFunctionContributor;
@@ -570,16 +574,20 @@ public class WorkerFunctionRepair {
 			
 			Iterator<Parameter> workerIterator = workerFunction.getOwnedParameters()
 					.iterator();		
+			List<EObject> toDelete = new ArrayList<EObject>();
 			while (workerIterator.hasNext()) {
 				Parameter workerParam = workerIterator.next();
 				if (interfaceOperationParameters.containsKey(workerParam.getName())) {
 					workerParam.setType(interfaceOperationParameters.get(workerParam.getName()));
 					paramsToAdd.remove(workerParam.getName());
 				} else {
-					workerIterator.remove();
-					EcoreUtil.delete(workerParam);
+					toDelete.add(workerParam);
 				}
 			}
+			Command cmd = BaseUtil.getDeleteCommand(toDelete);
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(workerFunction);
+			domain.getCommandStack().execute(cmd);
+			toDelete.clear();
 			if (!paramsToAdd.isEmpty()) {
 				for (String name : paramsToAdd.keySet()) {
 					workerFunction.createOwnedParameter(name, paramsToAdd.get(name));
@@ -606,9 +614,11 @@ public class WorkerFunctionRepair {
 						paramsToAdd.remove(workerImplParam.getName());
 					} else {
 						workerImplIterator.remove();
-						EcoreUtil.delete(workerImplParam);
+						toDelete.add(workerImplParam);
 					}
 				}
+				cmd = BaseUtil.getDeleteCommand(toDelete);
+				domain.getCommandStack().execute(cmd);
 				if (!paramsToAdd.isEmpty()) {
 					for (String name : paramsToAdd.keySet())
 						((OpaqueBehavior) workerImpl).createOwnedParameter(

@@ -35,6 +35,7 @@ import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Property;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
@@ -112,7 +113,7 @@ public class CleanCommentsActionHandler extends AbstractHandler {
 		@Override
 		protected void doExecute() {
 
-			List<Comment> commentToRemove = new ArrayList<Comment>();
+			List<EObject> commentToRemove = new ArrayList<EObject>();
 
 			for (TreeIterator<?> iter = EcoreUtil.getAllContents(refactorObject
 					.eResource().getContents()); iter.hasNext();) {
@@ -131,9 +132,10 @@ public class CleanCommentsActionHandler extends AbstractHandler {
 				}
 			}
 
-			for (Comment c : commentToRemove) {
-				EcoreUtil.delete(c);
-				refactorCount++;
+			refactorCount += commentToRemove.size();
+			Command cmd = BaseUtil.getDeleteCommand(commentToRemove);
+			if (cmd.canExecute()) {
+				TransactionUtil.getEditingDomain(refactorObject).getCommandStack().execute(cmd);
 			}
 		}
 

@@ -16,11 +16,15 @@
  */
 package com.zeligsoft.domain.dds4ccm.utils;
 
+import java.util.Collections;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
@@ -33,6 +37,7 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.VisibilityKind;
 
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.ConnectorType;
@@ -190,19 +195,8 @@ public class DDS4CCMUtil {
 						ZMLMMNames.TYPED_ELEMENT__TYPE, corbaStringType);
 			}
 			if (b_hasProcessName) {
-//				DestroyEObjectCommand command = new DestroyEObjectCommand(
-//						TransactionUtil.getEditingDomain(containerProcess),
-//						Messages.DDS4CCMUtil_DeleteProcessNameCommandLabel,
-//						containerProcess.getOwnedMember(processName));
-//				try {
-//					command.execute(null, null);
-//				} catch (ExecutionException e) {
-//					Activator
-//							.getDefault()
-//							.error(Messages.DDS4CCMUtil_DeleteProcessNameFailedMessage,
-//									e);
-//				}
-				EcoreUtil.delete(containerProcess.getOwnedMember(processName));
+				Command cmd = BaseUtil.getDeleteCommand(Collections.singletonList(containerProcess.getOwnedMember(processName)));
+				TransactionUtil.getEditingDomain(containerProcess).getCommandStack().execute(cmd);
 			}
 			if (!b_hasProcessPriority) {
 				b_containerProcessModified = true;
@@ -369,17 +363,10 @@ public class DDS4CCMUtil {
 		if (p == null) {
 			return;
 		}
-		EcoreUtil.delete(p);
-//		DestroyEObjectCommand cmd = new DestroyEObjectCommand(
-//				TransactionUtil.getEditingDomain(component),
-//				Messages.DDS4CCMUtil_RemoveRegisterNamingCommandLabel, p);
-//		try {
-//			OperationHistoryFactory.getOperationHistory().execute(cmd, null,
-//					null);
-//		} catch (ExecutionException e) {
-//			Activator.getDefault().error(
-//					Messages.DDS4CCMUtil_RemoveRegisterNamingFailedMessage, e);
-//		}
+		Command cmd = BaseUtil.getDeleteCommand(Collections.singleton(p));
+		if (cmd.canExecute()) {
+			TransactionUtil.getEditingDomain(component).getCommandStack().execute(cmd);
+		}
 	}
 
 	public static Status createStatus(String pluginId, int severity, String msg) {

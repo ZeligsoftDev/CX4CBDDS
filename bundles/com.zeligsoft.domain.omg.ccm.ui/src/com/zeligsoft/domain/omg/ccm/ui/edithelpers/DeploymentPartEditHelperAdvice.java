@@ -16,11 +16,13 @@
  */
 package com.zeligsoft.domain.omg.ccm.ui.edithelpers;
 
+import java.util.Collections;
+
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
@@ -31,6 +33,7 @@ import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.Package;
 
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
@@ -67,7 +70,10 @@ public class DeploymentPartEditHelperAdvice extends AbstractEditHelperAdvice {
 				InstanceSpecification partInstance = instanceValue.getInstance();
 				if (partInstance != null) {
 					Package instanceContainer = (Package) partInstance.eContainer();
-					EcoreUtil.delete(instanceContainer);
+					Command cmd = BaseUtil.getDeleteCommand(Collections.singleton(instanceContainer));
+					if(cmd.canExecute()) {
+						TransactionUtil.getEditingDomain(instanceContainer).getCommandStack().execute(cmd);
+					}
 				}
 				return CommandResult.newOKCommandResult();
 			}
