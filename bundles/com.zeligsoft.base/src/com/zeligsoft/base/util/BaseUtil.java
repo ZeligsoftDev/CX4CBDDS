@@ -23,8 +23,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
+import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
+import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
+import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
+import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
 
 /**
  * Utility class
@@ -60,4 +68,48 @@ public class BaseUtil {
 		}
 		return result;
 	}
+	
+	/**
+	 * Delete element command
+	 * @param selectedElements
+	 * @return
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static Command getDeleteCommand(Collection<EObject> selectedElements) {
+
+		ICommand gmfCommand = null;
+
+		Map parameters = new HashMap();
+
+		for (EObject selectedEObject : selectedElements) {
+
+			if (selectedEObject == null) {
+				continue;
+			}
+
+			IElementEditService provider = ElementEditServiceUtils.getCommandProvider(selectedEObject);
+			if (provider == null) {
+				continue;
+			}
+
+			DestroyElementRequest request = new DestroyElementRequest(selectedEObject, false);
+			request.getParameters().putAll(parameters);
+
+			ICommand deleteCommand = provider.getEditCommand(request);
+
+			// Add current EObject destroy command to the global command
+			gmfCommand = CompositeCommand.compose(gmfCommand, deleteCommand);
+
+			// Store the new parameters for next delete command.
+			parameters.clear();
+			parameters.putAll(request.getParameters());
+		}
+
+		if (gmfCommand == null) {
+			return UnexecutableCommand.INSTANCE;
+		}
+
+		return GMFtoEMFCommandWrapper.wrap(gmfCommand.reduce());
+	}
+	
 }
