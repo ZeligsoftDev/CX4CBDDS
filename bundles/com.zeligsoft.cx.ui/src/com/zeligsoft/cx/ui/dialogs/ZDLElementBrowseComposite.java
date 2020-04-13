@@ -199,14 +199,16 @@ public abstract class ZDLElementBrowseComposite {
 
 		private boolean hasUml(IContainer container) throws CoreException {
 			for (IResource res : container.members()) {
-				if (res instanceof IFile
-						&& "uml".equals(((IFile) res).getFullPath().getFileExtension().toLowerCase())) {
-					URI uri = URI.createPlatformResourceURI(((IFile) res).getFullPath().toString(), true);
-					ResourceSet rset = context.eResource().getResourceSet();
-					Resource eres = rset.getResource(uri, false);
-					if (eres != null) {
-						// Resource already loaded
-						return true;
+				if (res instanceof IFile) {
+					String fileExt = ((IFile) res).getFullPath().getFileExtension();
+					if (!UML2Util.isEmpty(fileExt) && "uml".equals(fileExt.toLowerCase())) {
+						URI uri = URI.createPlatformResourceURI(((IFile) res).getFullPath().toString(), true);
+						ResourceSet rset = context.eResource().getResourceSet();
+						Resource eres = rset.getResource(uri, false);
+						if (eres != null) {
+							// Resource already loaded
+							return true;
+						}
 					}
 				} else if (res instanceof IContainer) {
 					if(hasUml((IContainer) res)) {
