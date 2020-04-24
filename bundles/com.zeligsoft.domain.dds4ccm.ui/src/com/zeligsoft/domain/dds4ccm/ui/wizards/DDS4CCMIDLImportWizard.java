@@ -27,9 +27,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.ui.progress.UIJob;
 import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.osgi.framework.Bundle;
 
@@ -58,10 +58,10 @@ public class DDS4CCMIDLImportWizard extends AbstractIDLImportWizard {
 	public void doIDLImport(final List<String> sourceIDLs,
 			final List<String> includeList, final List<String> defineList,
 			final List<String> excludeList, final URI targetModel) {
-		Job importJob = new Job("Importing IDL") { //$NON-NLS-1$
+		UIJob importJob = new UIJob("Importing IDL") { //$NON-NLS-1$
 
 			@Override
-			protected IStatus run(IProgressMonitor monitor) {
+			public IStatus runInUIThread(IProgressMonitor monitor) {
 
 				try {
 					// There is race condition with the wizard dialog so we need
@@ -200,7 +200,7 @@ public class DDS4CCMIDLImportWizard extends AbstractIDLImportWizard {
 				throw new IllegalArgumentException(Messages.IDLImportWizard_ErrorNoBundle);
 			}
 
-			URL url = bundle.getEntry("src/workflow/idl3Import.oaw");//$NON-NLS-1$
+			URL url = bundle.getEntry("/workflow/idl3Import.oaw");//$NON-NLS-1$
 			if( url == null )
 			{
 				result = new Status( IStatus.ERROR, Activator.PLUGIN_ID, Messages.IDLImportWizard_ErrorNoURL );

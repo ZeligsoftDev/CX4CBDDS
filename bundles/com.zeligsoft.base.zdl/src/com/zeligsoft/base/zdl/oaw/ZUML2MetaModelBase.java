@@ -31,26 +31,29 @@ import org.eclipse.xtend.typesystem.uml2.UML2MetaModelBase;
  */
 public abstract class ZUML2MetaModelBase extends ZEmfRegistryMetaModel {
 
-    private static final String UML2_STRING = "uml::String";
+	private static enum PrimitiveType {
 
-    private static final String UML2_STRING1 = "UMLPrimitiveTypes::String";
+		BOOLEAN("uml::Boolean", "UMLPrimitiveTypes::Boolean", "types::Boolean", "EcorePrimitiveTypes::EBoolean", "EcorePrimitiveTypes::EBooleanObject"),
+		INTEGER("uml::Integer", "uml::UnlimitedNatural", "UMLPrimitiveTypes::Integer", "UMLPrimitiveTypes::UnlimitedNatural", "types::Integer", "types::UnlimitedNatural", "EcorePrimitiveTypes::EIntegerObject", "EcorePrimitiveTypes::EInt"),
+		STRING("uml::String", "UMLPrimitiveTypes::String", "types::String", "EcorePrimitiveTypes::EString"),
+		REAL("uml::Real", "UMLPrimitiveTypes::Real", "types::Real", "EcorePrimitiveTypes::EDouble", "EcorePrimitiveTypes::EDoubleObject", "EcorePrimitiveTypes::EFloat", "EcorePrimitiveTypes::EFloatObject");
 
-    private static final String UML2_INTEGER = "uml::Integer";
+		private String[] supportedTypeNames;
 
-    private static final String UML2_INTEGER1 = "UMLPrimitiveTypes::Integer";
+		private PrimitiveType(String... supportedTypeNames) {
+			this.supportedTypeNames = supportedTypeNames;
+		}
 
-    private static final String UML2_BOOLEAN = "uml::Boolean";
+		public boolean isSupported(String typeName) {
+			for (String supportedTypeName : supportedTypeNames) {
+				if(supportedTypeName.equalsIgnoreCase(typeName)) {
+					return true;
+				}
+			}
+			return false;
+		}
 
-    private static final String UML2_BOOLEAN1 = "UMLPrimitiveTypes::Boolean";
-
-    private static final String UML2_REAL = "uml::Real";
-
-    private static final String UML2_REAL1 = "UMLPrimitiveTypes::Real";
-
-    private static final String UML2_UNLIMITED_NATURAL = "uml::UnlimitedNatural";
-
-    private static final String UML2_UNLIMITED_NATURAL1 = "UMLPrimitiveTypes::UnlimitedNatural";
-
+	}
     // Needed to avoid 'Couldn't resolve type for EObject/EClass...' messages
     // see FeatureRequest#199318
     private ZEmfMetaModel ecoreMetaModel;
@@ -69,6 +72,11 @@ public abstract class ZUML2MetaModelBase extends ZEmfRegistryMetaModel {
 
     @Override
     public Type getTypeForName(String typeName) {
+		if (typeName == null || typeName.length() == 0)
+			return null;
+		if (typeName.startsWith("UML::")) {
+			typeName = "uml::" + typeName.substring(5);
+		}
         Type result = getPrimitive(typeName);
         if (result != null)
             return result;
@@ -92,14 +100,13 @@ public abstract class ZUML2MetaModelBase extends ZEmfRegistryMetaModel {
     }
 
 	private Type getPrimitive(String typeName) {
-		if (UML2_STRING.equalsIgnoreCase(typeName) || UML2_STRING1.equalsIgnoreCase(typeName)) {
+		if (PrimitiveType.STRING.isSupported(typeName)) {
 			return getTypeSystem().getStringType();
-		} else if (UML2_BOOLEAN.equalsIgnoreCase(typeName) || UML2_BOOLEAN1.equalsIgnoreCase(typeName)) {
+		} else if (PrimitiveType.BOOLEAN.isSupported(typeName)) {
 			return getTypeSystem().getBooleanType();
-		} else if (UML2_INTEGER.equalsIgnoreCase(typeName) || UML2_UNLIMITED_NATURAL.equalsIgnoreCase(typeName)
-				|| UML2_INTEGER1.equalsIgnoreCase(typeName) || UML2_UNLIMITED_NATURAL1.equalsIgnoreCase(typeName)) {
+		} else if (PrimitiveType.INTEGER.isSupported(typeName)) {
 			return getTypeSystem().getIntegerType();
-		} else if (UML2_REAL.equalsIgnoreCase(typeName) || UML2_REAL1.equalsIgnoreCase(typeName)) {
+		} else if (PrimitiveType.REAL.isSupported(typeName)) {
 			return getTypeSystem().getRealType();
 		} else {
 			return null;

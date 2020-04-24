@@ -62,7 +62,7 @@ import com.zeligsoft.cx.ui.wizard.internal.ResourceTreeAndListGroup;
 
 public class ResourceImportWizardPage extends WizardPage implements Listener {
 
-	private static final String EMX = "emx"; //$NON-NLS-1$
+	private static final String UML = "uml"; //$NON-NLS-1$
 
 	private static final int SIZING_TEXT_FIELD_WIDTH = 250;
 
@@ -287,6 +287,7 @@ public class ResourceImportWizardPage extends WizardPage implements Listener {
 		if (targetName != null) {
 			targetNameText.setText(targetName);
 		}
+		targetNameText.setEditable(false);
 		targetNameText.addListener(SWT.Modify, this);
 
 		// container browse button
@@ -604,7 +605,7 @@ public class ResourceImportWizardPage extends WizardPage implements Listener {
 					Object element) {
 				boolean result = false;
 				if (element instanceof IFile) {
-					result = EMX.equals(((IFile) element).getFileExtension());
+					result = UML.equals(((IFile) element).getFileExtension());
 				}
 
 				if (element instanceof IContainer) {

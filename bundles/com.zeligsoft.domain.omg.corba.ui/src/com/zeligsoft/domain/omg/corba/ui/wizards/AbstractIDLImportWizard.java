@@ -28,13 +28,11 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IImportWizard;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.ide.IDE;
 import org.osgi.framework.Bundle;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
@@ -108,11 +106,6 @@ public abstract class AbstractIDLImportWizard extends Wizard implements
 			// Ignore
 		}
 		
-		List<?> selectedResources = IDE
-				.computeSelectedResources(currentSelection);
-		if (!selectedResources.isEmpty()) {
-			this.selection = new StructuredSelection(selectedResources);
-		}
 		EObject eo = BaseUIUtil.getEObjectFromSelection(selection);
 		if(eo != null) {
 			editingDomain = TransactionUtil.getEditingDomain(eo);
@@ -131,10 +124,9 @@ public abstract class AbstractIDLImportWizard extends Wizard implements
 	public void addPages() {
 		super.addPages();
 		initPage();
-		IFile targetModel = BaseUIUtil.getFirstSelectedFile(selection, "emx"); //$NON-NLS-1$
-		if (targetModel != null) {
-			page.setTargetName(targetModel.getFullPath().toString());
-		}
+		EObject eo = BaseUIUtil.getEObjectFromSelection(selection);
+		URI uri = eo.eResource().getURI();
+		page.setTargetName(uri.toPlatformString(true));
 		IFile sourceFile = BaseUIUtil.getFirstSelectedFile(selection, "idl"); //$NON-NLS-1$
 		if (sourceFile != null) {
 			page.setSourceName(sourceFile.getParent().getLocationURI().getPath());
