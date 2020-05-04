@@ -95,6 +95,7 @@ elif [[ ${atcdInstalledFeature} != "" ]]; then 		# atcd is already installed
    -uninstallIU org.eclipse.cdt.native.feature.group \
    -uninstallIU org.eclipse.cdt.platform.feature.group \
    -uninstallIU org.eclipse.cdt.sdk.feature.group \
+   -uninstallIU org.eclipse.papyrus.compare.feature.feature.group \
    -vmargs \
    -Xms512m \
    -Xmx1024m \
@@ -123,7 +124,8 @@ timestamp=$(echo /opt/cx-axcioma/*.zip | sed -rn 's/.*\.v([0-9]*)\.zip/\1/p')
    -installIU com.zeligsoft.cx_feature.feature.group  \
    -installIU com.zeligsoft.domain.idl3plus_feature.feature.group  \
    -installIU com.zeligsoft.domain.ngc.ccm.axcioma_feature.feature.group  \
-   -installIU com.zeligsoft.domain.omg.ccm_feature.feature.group
+   -installIU com.zeligsoft.domain.omg.ccm_feature.feature.group \
+   -installIU org.eclipse.papyrus.compare.feature.feature.group
 
 %postun
 if [ $1 == 0 ] ; then					# this is an uninstallation, not an upgrade
@@ -143,6 +145,7 @@ if [ $1 == 0 ] ; then					# this is an uninstallation, not an upgrade
    -uninstallIU org.eclipse.cdt.native.feature.group \
    -uninstallIU org.eclipse.cdt.platform.feature.group \
    -uninstallIU org.eclipse.cdt.sdk.feature.group \
+   -uninstallIU org.eclipse.papyrus.compare.feature.feature.group \
    -vmargs \
    -Xms512m \
    -Xmx1024m \
