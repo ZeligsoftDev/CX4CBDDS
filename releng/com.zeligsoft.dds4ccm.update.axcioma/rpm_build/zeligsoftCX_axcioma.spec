@@ -72,6 +72,7 @@ if [[ ${axciomaInstalledFeature} != "" ]]; then 		# axcioma is already installed
    -uninstallIU org.eclipse.cdt.native.feature.group \
    -uninstallIU org.eclipse.cdt.platform.feature.group \
    -uninstallIU org.eclipse.cdt.sdk.feature.group \
+   -uninstallIU org.eclipse.papyrus.compare.feature.feature.group \
    -vmargs \
    -Xms512m \
    -Xmx1024m \
