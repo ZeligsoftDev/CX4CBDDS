@@ -47,18 +47,6 @@
       <menuContribution
             allPopups="false"
             locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=tools">
-         <menu
-               icon="icons/obj16/cx-perspective.gif"
-               id="com.zeligsoft.cx.ui.refactormenu"
-               label="CX Refactor">
-         </menu>
-      </menuContribution>
-    </extension>
-    <extension
-          point="org.eclipse.ui.menus">
-      <menuContribution
-            allPopups="false"
-            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=tools">
         <command
               commandId="com.zeligsoft.cx.ui.editporttype"
               label="%action.editPortType.label"
@@ -91,6 +79,18 @@
         </command>
       </menuContribution>
    </extension>
+    <extension
+          point="org.eclipse.ui.menus">
+       <menuContribution
+             allPopups="false"
+             locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=tools">
+          <menu
+                icon="icons/obj16/cx-perspective.gif"
+                id="com.zeligsoft.cx.ui.refactormenu"
+                label="CX Refactor">
+          </menu>
+       </menuContribution>
+    </extension>
    <extension
          point="org.eclipse.ui.commands">
       <command

@@ -522,6 +522,43 @@
             name="IDL Import">
       </command>
    </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=tools">
+         <command
+               commandId="com.zeligsoft.domain.dds4ccm.ui.validateCommand"
+               icon="icons/view16/cx-perspective.gif"
+               id="com.zeligsoft.domain.dds4ccm.ui.validate"
+               label="CX Validation">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.papyrus.editor.category"
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.CXValidationHandler"
+            description="Validate CX Model"
+            id="com.zeligsoft.domain.dds4ccm.ui.validateCommand"
+            name="CX Validation">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.traversal">
+      <traversalStrategy
+            class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMTraversalStrategy"
+            namespaceUri="http://www.eclipse.org/uml2/5.0.0/UML">
+         <eclass
+               name="Model">
+         </eclass>
+         <eclass
+               name="Package">
+         </eclass>
+      </traversalStrategy>
+   </extension>
+   
     <!--
    <extension
          point="org.eclipse.ui.menus">

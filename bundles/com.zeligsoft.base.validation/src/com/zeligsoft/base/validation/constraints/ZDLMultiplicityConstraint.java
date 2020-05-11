@@ -29,7 +29,6 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.emf.validation.model.ModelConstraint;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
-import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.Property;
 
 import com.zeligsoft.base.validation.l10n.Messages;
@@ -94,28 +93,26 @@ public class ZDLMultiplicityConstraint
 			int lower = attribute.getLower();
 			int upper = attribute.getUpper();
 
-			String message;
+			String message = null;
 			if ((cardinality == 0) && (lower > 0)) {
 				// the required case
 				message = Messages.ZDLMultiplicityConstraint_required;
-			} else if (lower == 0) {
+			} else if (upper != LiteralUnlimitedNatural.UNLIMITED && cardinality > upper) {
 				// the less-than case
 				message = Messages.ZDLMultiplicityConstraint_less;
-			} else if (upper == LiteralUnlimitedNatural.UNLIMITED) {
+			} else if (cardinality < lower) {
 				// the more-than case
 				message = Messages.ZDLMultiplicityConstraint_more;
-			} else if (upper == lower) {
+			} else if (upper == lower && cardinality != upper) {
 				// the exact case
 				message = Messages.ZDLMultiplicityConstraint_exact;
-			} else {
-				// the between case
-				message = Messages.ZDLMultiplicityConstraint_between;
-			}
+			} 
 
-			message = NLS.bind(message, new Object[]{getLabel(target),
-				attribute.getName(), cardinality, lower, upper});
-			return new ConstraintStatus(this, target, message, ctx
-				.getResultLocus());
+			if (message != null) {
+				message = NLS.bind(message,
+						new Object[] { getLabel(target), attribute.getName(), cardinality, lower, upper });
+				return new ConstraintStatus(this, target, message, ctx.getResultLocus());
+			}
 		}
 
 		return ctx.createSuccessStatus();

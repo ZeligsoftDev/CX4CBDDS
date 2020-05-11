@@ -25,8 +25,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
-import org.eclipse.emf.validation.service.ConstraintRegistry;
-import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.Component;
@@ -51,23 +49,8 @@ import com.zeligsoft.domain.omg.ccm.CCMNames;
  */
 public class NamespaceDistinctMembersConstraint extends AbstractModelConstraint {
 
-	/**
-	 * Disable UML namespace distinct members constraint
-	 */
-	private void disableUMLConstraint() {
-
-		IConstraintDescriptor desc = ConstraintRegistry
-				.getInstance()
-				.getDescriptor(
-						"com.ibm.xtools.uml.validation.namespace.distinctMembers"); //$NON-NLS-1$
-		if (desc != null && desc.isEnabled()) {
-			desc.setEnabled(false);
-		}
-	}
-
 	@Override
 	public IStatus validate(IValidationContext ctx) {
-		disableUMLConstraint();
 
 		EObject target = ctx.getTarget();
 

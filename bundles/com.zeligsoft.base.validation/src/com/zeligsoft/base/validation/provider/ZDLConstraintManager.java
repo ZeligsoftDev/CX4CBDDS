@@ -342,7 +342,7 @@ public class ZDLConstraintManager {
 
 		try {
 			language = specification.getLanguages().get(index);
-			body = specification.getBodies().get(index);
+			body = specification.getBodies().get(index).replaceAll("uml::", "UML::"); //$NON-NLS-1$ //$NON-NLS-2$
 		} catch (IndexOutOfBoundsException e) {
 			throw new InvalidConstraintException(
 				"umlConstraint specification is malformed", e); //$NON-NLS-1$
