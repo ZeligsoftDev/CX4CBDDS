@@ -293,30 +293,25 @@ public class MainTransform {
         } else {
           boolean _switchResult = false;
           String _name = worker.getName();
-          boolean _matched = false;
-          if (Objects.equal(_name, "_ccm_activate")) {
-            _matched=true;
-            _switchResult = true;
-          }
-          if (!_matched) {
-            if (Objects.equal(_name, "_ccm_passivate")) {
-              _matched=true;
-              _switchResult = true;
+          if (_name != null) {
+            switch (_name) {
+              case "_ccm_activate":
+                _switchResult = true;
+                break;
+              case "_ccm_passivate":
+                _switchResult = true;
+                break;
+              case "_ccm_remove":
+                _switchResult = true;
+                break;
+              case "_configuration_complete":
+                _switchResult = true;
+                break;
+              default:
+                _switchResult = false;
+                break;
             }
-          }
-          if (!_matched) {
-            if (Objects.equal(_name, "_ccm_remove")) {
-              _matched=true;
-              _switchResult = true;
-            }
-          }
-          if (!_matched) {
-            if (Objects.equal(_name, "_configuration_complete")) {
-              _matched=true;
-              _switchResult = true;
-            }
-          }
-          if (!_matched) {
+          } else {
             _switchResult = false;
           }
           _xifexpression_3 = _switchResult;
@@ -668,42 +663,31 @@ public class MainTransform {
   public boolean hasClassName(final WorkerFunction worker) {
     boolean _switchResult = false;
     String _name = worker.getName();
-    boolean _matched = false;
-    if (Objects.equal(_name, "_file_header_h")) {
-      _matched=true;
-      _switchResult = false;
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "_file_header_cpp")) {
-        _matched=true;
-        _switchResult = false;
+    if (_name != null) {
+      switch (_name) {
+        case "_file_header_h":
+          _switchResult = false;
+          break;
+        case "_file_header_cpp":
+          _switchResult = false;
+          break;
+        case "_file_footer_h":
+          _switchResult = false;
+          break;
+        case "_file_footer_cpp":
+          _switchResult = false;
+          break;
+        case "_file_includes_h":
+          _switchResult = false;
+          break;
+        case "_file_includes_cpp":
+          _switchResult = false;
+          break;
+        default:
+          _switchResult = true;
+          break;
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "_file_footer_h")) {
-        _matched=true;
-        _switchResult = false;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "_file_footer_cpp")) {
-        _matched=true;
-        _switchResult = false;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "_file_includes_h")) {
-        _matched=true;
-        _switchResult = false;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "_file_includes_cpp")) {
-        _matched=true;
-        _switchResult = false;
-      }
-    }
-    if (!_matched) {
+    } else {
       _switchResult = true;
     }
     return _switchResult;
