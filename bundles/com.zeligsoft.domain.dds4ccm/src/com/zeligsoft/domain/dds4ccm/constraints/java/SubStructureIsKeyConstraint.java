@@ -39,26 +39,21 @@ public class SubStructureIsKeyConstraint extends AbstractModelConstraint {
 		EObject objToVerify = ctx.getTarget();
 
 		if (ZDLUtil.isZDLConcept(objToVerify, DDS4CCMNames.MESSAGE_FIELD)) {
-			EObject type = (EObject) ZDLUtil.getValue(objToVerify,
-					DDS4CCMNames.MESSAGE_FIELD,
+			EObject type = (EObject) ZDLUtil.getValue(objToVerify, DDS4CCMNames.MESSAGE_FIELD,
 					DDS4CCMNames.MESSAGE_FIELD__IDL_TYPE);
-			if (ZDLUtil.isZDLConcept(type, DDS4CCMNames.DDSMESSAGE)) {
+			if (type != null && ZDLUtil.isZDLConcept(type, DDS4CCMNames.DDSMESSAGE)) {
 				@SuppressWarnings("unchecked")
-				List<EObject> fields = (List<EObject>) ZDLUtil.getValue(type,
-						DDS4CCMNames.DDSMESSAGE,
+				List<EObject> fields = (List<EObject>) ZDLUtil.getValue(type, DDS4CCMNames.DDSMESSAGE,
 						DDS4CCMNames.DDSMESSAGE__FIELDS);
 				for (EObject field : fields) {
 					if (ZDLUtil.isZDLConcept(field, DDS4CCMNames.MESSAGE_FIELD)) {
-						Boolean subStructureIsKey = (Boolean) ZDLUtil.getValue(
-								field, DDS4CCMNames.MESSAGE_FIELD,
+						Boolean subStructureIsKey = (Boolean) ZDLUtil.getValue(field, DDS4CCMNames.MESSAGE_FIELD,
 								DDS4CCMNames.MESSAGE_FIELD__IS_KEY);
 						if (subStructureIsKey) {
-							Boolean isKey = (Boolean) ZDLUtil.getValue(
-									objToVerify, DDS4CCMNames.MESSAGE_FIELD,
+							Boolean isKey = (Boolean) ZDLUtil.getValue(objToVerify, DDS4CCMNames.MESSAGE_FIELD,
 									DDS4CCMNames.MESSAGE_FIELD__IS_KEY);
 							if (!isKey) {
-								return ctx.createFailureStatus(
-										((NamedElement) objToVerify).getName(),
+								return ctx.createFailureStatus(((NamedElement) objToVerify).getName(),
 										((NamedElement) field).getName());
 							}
 						}

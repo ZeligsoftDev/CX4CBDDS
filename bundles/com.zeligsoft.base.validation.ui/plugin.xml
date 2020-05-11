@@ -25,16 +25,10 @@
             name="%prefs.page.constraints">
       </page>
    </extension>
-   <!--
    <extension
-         point="org.eclipse.emf.validation.constraintBindings">
-      
-      <binding
-            context="com.ibm.xtools.modeler.validation.client">
-         <category
-               ref="com.zeligsoft.base.validation.zdl">
-         </category>
-      </binding>
+         point="org.eclipse.emf.validation.ui.UIRegisteredClientContext">
+      <clientContext
+            id="com.zeligsoft.base.validation.zdl">
+      </clientContext>
    </extension>
-   -->
 </plugin>
