@@ -84,8 +84,10 @@ public final class CXDynamicURIMapHandler {
 			@Override
 			public void resourceChanged(IResourceChangeEvent event) {
 				IResourceDelta delta = event.getDelta();
-				ResourceSet rset = new ResourceSetImpl();
-				processDelta(rset, delta);
+				if (delta != null) {
+					ResourceSet rset = new ResourceSetImpl();
+					processDelta(rset, delta);
+				}
 			}
 		};
 		workspace.addResourceChangeListener(rcl);

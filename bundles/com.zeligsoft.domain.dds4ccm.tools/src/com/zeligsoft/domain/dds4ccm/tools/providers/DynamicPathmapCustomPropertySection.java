@@ -134,23 +134,6 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 
 		// Remove existing pathmap
 		String originalPathmap = getDynamicPathmap(model);
-		if (originalPathmap.equals(pathmap)) {
-			// nothing to do if same
-			return;
-		}
-		if (!UML2Util.isEmpty(originalPathmap)) {
-			URI origUri = URI.createURI(PATHMAP_KEY + "://" + originalPathmap + "/", true);
-			CXPathmapDescriptor desc = CXDynamicURIMapHandler.getPathmaps().get(origUri);
-			if (desc != null) {
-				desc.setEnabled(false);
-				desc.apply();
-				CXDynamicURIMapHandler.getPathmaps().remove(origUri);
-			}
-		}
-
-		if (UML2Util.isEmpty(pathmap)) {
-			return;
-		}
 		// save new dynamic pathmap
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(model);
 		Command command = new RecordingCommand(domain) {
@@ -161,7 +144,24 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 			}
 		};
 		domain.getCommandStack().execute(command);
-
+		
+		if (originalPathmap.equals(pathmap)) {
+			// nothing to do if same
+			return;
+		}
+		
+		if (!UML2Util.isEmpty(originalPathmap)) {
+			URI origUri = URI.createURI(PATHMAP_KEY + "://" + originalPathmap + "/", true);
+			CXPathmapDescriptor desc = CXDynamicURIMapHandler.getPathmaps().get(origUri);
+			if (desc != null) {
+				desc.setEnabled(false);
+				desc.apply();
+				CXDynamicURIMapHandler.getPathmaps().remove(origUri);
+			}
+		}
+		if (UML2Util.isEmpty(pathmap)) {
+			return;
+		}
 		// enable new URI mapping
 		URI targetURI = model.eResource().getURI().trimSegments(1).appendSegment("");
 		URI sourceURI = URI.createURI(PATHMAP_KEY + "://" + pathmap + "/", true);
@@ -169,6 +169,5 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 		desc.setEnabled(true);
 		desc.apply();
 		CXDynamicURIMapHandler.getPathmaps().put(sourceURI, desc);
-		desc.apply();
 	}
 }

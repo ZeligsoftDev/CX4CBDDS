@@ -27,6 +27,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
@@ -34,6 +35,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
 import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
 
 /**
@@ -144,13 +146,22 @@ public class BaseUtil {
 	 * @param detail
 	 * @param value
 	 */
+	@SuppressWarnings("unlikely-arg-type")
 	public static void putZCXAnnotationDetail(Element context, String detail,
 			String value) {
+		
 		EAnnotation anno = context.getEAnnotation(ZCX_ANNOTATION_SOURCE);
-		if (anno == null) {
+		if (anno == null && !UML2Util.isEmpty(value)) {
 			anno = context.createEAnnotation(ZCX_ANNOTATION_SOURCE);
 		}
-		anno.getDetails().put(detail, value);
+		if (UML2Util.isEmpty(value)) {
+			anno.getDetails().remove(detail);
+			if(anno.getDetails().isEmpty()) {
+				EcoreUtil.delete(anno);
+			}
+		} else {
+			anno.getDetails().put(detail, value);
+		}
 	}
 
 	

@@ -35,12 +35,14 @@ public class CXPathmapDescriptor {
 	private final String id;
 	private final IProject project;
 	private final URI pathmap;
+	private final URI originalMapping;
 	private final URI mapping;
 	private boolean isEnabled;
 
 	public CXPathmapDescriptor(URI sourceURI, URI targetURI) {
 		id = "pathmap." + targetURI.authority();
 
+		originalMapping = URIConverter.URI_MAP.get(sourceURI);
 		pathmap = sourceURI;
 		mapping = targetURI;
 
@@ -85,6 +87,10 @@ public class CXPathmapDescriptor {
 		return pathmap;
 	}
 
+	public URI getOriginalMapping() {
+		return originalMapping;
+	}
+
 	public URI getMapping() {
 		return mapping;
 	}
@@ -99,7 +105,11 @@ public class CXPathmapDescriptor {
 			}
 		} else {
 			Log.info(Activator.getDefault(), 0, "Removing workspace URI Mapping: " + pathmap);
-			URIConverter.URI_MAP.remove(pathmap);
+			if (originalMapping != null) {
+				URIConverter.URI_MAP.put(pathmap, originalMapping);
+			} else {
+				URIConverter.URI_MAP.remove(pathmap);
+			}
 		}
 	}
 

@@ -18,6 +18,7 @@ package com.zeligsoft.domain.dds4ccm.tools.ui.internal.preferences;
 
 import java.util.List;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
@@ -95,8 +96,11 @@ public class CXURIMappingsPreferencePage extends PreferencePage implements IWork
 		column.getColumn().setText("Pathmap");
 		column.getColumn().setWidth(300);
 		column = new TableViewerColumn(table, SWT.NONE);
-		column.getColumn().setText("Value");
-		column.getColumn().setWidth(500);
+		column.getColumn().setText("New Mapping");
+		column.getColumn().setWidth(400);
+		column = new TableViewerColumn(table, SWT.NONE);
+		column.getColumn().setText("Original Mapping");
+		column.getColumn().setWidth(200);
 
 		table.setLabelProvider(new URIMappingLabelProvider());
 		table.setContentProvider(contents);
@@ -165,6 +169,10 @@ public class CXURIMappingsPreferencePage extends PreferencePage implements IWork
 				return pathmap.getPathmap().toString();
 			case 1:
 				return pathmap.getMapping().toString();
+			case 2: {
+				URI uri = pathmap.getOriginalMapping();
+				return uri == null ? "" : uri.toString();
+			}
 			default:
 				break;
 			}
