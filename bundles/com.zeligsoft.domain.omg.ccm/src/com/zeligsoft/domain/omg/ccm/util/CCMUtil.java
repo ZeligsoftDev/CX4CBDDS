@@ -22,7 +22,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.uml2.common.util.UML2Util;
@@ -39,6 +38,7 @@ import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.ValueSpecification;
 
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.corba.CORBADomainNames;
@@ -47,8 +47,6 @@ import com.zeligsoft.domain.zml.util.ZMLMMNames;
 public class CCMUtil {
 
 	public static final String DEFAULT_PROPERTY_INSTANCE_NAME = "_defaultInstance"; //$NON-NLS-1$
-
-	public static final String ZCX_ANNOTATION_SOURCE = "zcx"; //$NON-NLS-1$
 
 	/**
 	 * Given an instance specification and a property, recursively find the slot
@@ -351,15 +349,7 @@ public class CCMUtil {
 	 */
 	public static String getZCXAnnotationDetail(Element context, String detail,
 			String defaultValue) {
-		EAnnotation anno = context.getEAnnotation(ZCX_ANNOTATION_SOURCE);
-		String value = null;
-		if (anno != null) {
-			value = anno.getDetails().get(detail);
-		}
-		if (value == null) {
-			return defaultValue;
-		}
-		return value;
+		return BaseUtil.getZCXAnnotationDetail(context, detail, defaultValue);
 	}
 
 	/**
@@ -371,11 +361,7 @@ public class CCMUtil {
 	 */
 	public static void putZCXAnnotationDetail(Element context, String detail,
 			String value) {
-		EAnnotation anno = context.getEAnnotation(ZCX_ANNOTATION_SOURCE);
-		if (anno == null) {
-			anno = context.createEAnnotation(ZCX_ANNOTATION_SOURCE);
-		}
-		anno.getDetails().put(detail, value);
+		BaseUtil.putZCXAnnotationDetail(context, detail, value);
 	}
 
 	/**

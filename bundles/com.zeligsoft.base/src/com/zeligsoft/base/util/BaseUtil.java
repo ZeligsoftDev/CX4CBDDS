@@ -25,6 +25,7 @@ import java.util.Map;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
@@ -33,6 +34,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
 import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
+import org.eclipse.uml2.uml.Element;
 
 /**
  * Utility class
@@ -41,6 +43,8 @@ import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
  * 
  */
 public class BaseUtil {
+
+	public static final String ZCX_ANNOTATION_SOURCE = "zcx"; //$NON-NLS-1$
 
 	/**
 	 * Return sorted list of give EObjects
@@ -111,5 +115,43 @@ public class BaseUtil {
 
 		return GMFtoEMFCommandWrapper.wrap(gmfCommand.reduce());
 	}
+	
+	/**
+	 * Queries the boolean value of ZCX annotation detail
+	 * 
+	 * @param context
+	 * @param detail
+	 * @param defaultValue
+	 * @return
+	 */
+	public static String getZCXAnnotationDetail(Element context, String detail,
+			String defaultValue) {
+		EAnnotation anno = context.getEAnnotation(ZCX_ANNOTATION_SOURCE);
+		String value = null;
+		if (anno != null) {
+			value = anno.getDetails().get(detail);
+		}
+		if (value == null) {
+			return defaultValue;
+		}
+		return value;
+	}
+
+	/**
+	 * puts the boolean value of ZCX annotation detail
+	 * 
+	 * @param context
+	 * @param detail
+	 * @param value
+	 */
+	public static void putZCXAnnotationDetail(Element context, String detail,
+			String value) {
+		EAnnotation anno = context.getEAnnotation(ZCX_ANNOTATION_SOURCE);
+		if (anno == null) {
+			anno = context.createEAnnotation(ZCX_ANNOTATION_SOURCE);
+		}
+		anno.getDetails().put(detail, value);
+	}
+
 	
 }

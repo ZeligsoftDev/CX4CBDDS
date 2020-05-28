@@ -17,10 +17,15 @@
 
 package com.zeligsoft.domain.dds4ccm.ui.filters;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.papyrus.emf.facet.custom.metamodel.v0_2_0.internal.treeproxy.EObjectTreeElement;
 import org.eclipse.papyrus.infra.emf.utils.EMFHelper;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
@@ -43,10 +48,21 @@ public class CXModelFilter extends ViewerFilter {
 		boolean result = true;
 
 		EObject eObject = EMFHelper.getEObject(element);
-		if(eObject == null) {
+		if (eObject == null) {
 			return result;
 		}
-		
+
+		// Hide non local models
+		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(eObject);
+		if (element instanceof EObjectTreeElement && ((EObjectTreeElement) element).getParent() == null
+				&& domain.isReadOnly(eObject.eResource())) {
+			URI uri = URIConverter.INSTANCE.normalize(eObject.eResource().getURI());
+			if ("platform".equals(uri.scheme()) && "resource".equals(uri.segment(0))) {
+				return true;
+			}
+			return false;
+		}
+
 		if (eObject instanceof Element
 				&& ZDLUtil.isZDLProfile((Element) eObject, DDS4CCMDomainFilter.DDS4CCM_PROFILE_NAME)) {
 			// filter out elements from CX model
@@ -65,17 +81,6 @@ public class CXModelFilter extends ViewerFilter {
 					&& ZDLUtil.isZDLConcept(eObject.eContainer(), ZMLMMNames.DEPLOYMENT)) {
 				return false;
 			}
-//			if (eObject instanceof NamedElement) {
-//				NamedElement ne = (NamedElement) eObject;
-//				if (!UML2Util.isEmpty(ne.getName()) && ne.eContainer() instanceof Component) {
-//					if (ne instanceof Property && ne.getName().equals("_defaultInstance")) {
-//						return false;
-//					}
-//					if (ne instanceof Package && ne.getName().startsWith("_")) {
-//						return false;
-//					}
-//				}
-//			}
 		}
 
 		// filter out CX annotations
@@ -86,9 +91,9 @@ public class CXModelFilter extends ViewerFilter {
 				return false;
 			}
 		}
-		
+
 		// filter out CX Domain models
-		if(ZDLUtil.isZDLConcept(eObject, ZDLNames.DOMAIN_MODEL)) {
+		if (ZDLUtil.isZDLConcept(eObject, ZDLNames.DOMAIN_MODEL)) {
 			return false;
 		}
 

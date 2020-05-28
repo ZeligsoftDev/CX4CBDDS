@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="com.zeligsoft.domain.dds4ccm.tools.internal.emf.Startup">
+      </startup>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="cxModelingPreference"
+            class="com.zeligsoft.domain.dds4ccm.tools.ui.internal.preferences.CXURIMappingsPreferencePage"
+            id="com.zeligsoft.domain.dds4ccm.tools.uriMappings"
+            name="%page.name.0">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="true"
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=tools">
+         <command
+               commandId="com.zeligsoft.domain.dds4ccm.tools.packageimportcommand"
+               icon="icons/view16/cx-perspective.gif"
+               id="com.zeligsoft.domain.dds4ccm.tools.packageimport"
+               label="Import ICM Model">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.papyrus.editor.category"
+            defaultHandler="com.zeligsoft.domain.dds4ccm.tools.actions.ImportICMModelHandler"
+            description="Import ICM Model"
+            id="com.zeligsoft.domain.dds4ccm.tools.packageimportcommand"
+            name="Import ICM Model">
+      </command>
+   </extension>
+       <!-- Custom properties sections -->
+    <extension
+          point="com.zeligsoft.cx.ui.properties.customPropertySection">
+       <PropertySection
+             append="true"
+             class="com.zeligsoft.domain.dds4ccm.tools.providers.DynamicPathmapCustomPropertySection"
+             concept="DDS4CCM::DDS4CCM::DDS4CCMModel"
+             property="modelType">
+       </PropertySection>
+    </extension>
+
+</plugin>

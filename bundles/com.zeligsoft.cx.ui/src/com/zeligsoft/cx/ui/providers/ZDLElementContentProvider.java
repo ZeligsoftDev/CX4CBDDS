@@ -50,6 +50,7 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.preferences.CXPreferenceConstants;
 import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
@@ -133,9 +134,14 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 							testedResources.add(uri);
 							Package root = UML2Util.load(getTmpResourceSet(), uri, UMLPackage.Literals.PACKAGE);
 							if (root != null && ZDLUtil.isZDLProfile(root, "cxDDS4CCM")) {
+								// Use dynamic pathmap if available
+								String pathmap = BaseUtil.getZCXAnnotationDetail(root, "pathmap", "");
+								if(!UML2Util.isEmpty(pathmap)) {
+									uri = URI.createURI("pathmap://" + pathmap).appendSegment(uri.lastSegment());
+								}
 								boolean found = false;
 								for(Resource r: rset.getResources()) {
-									if(uri.equals(rset.getURIConverter().normalize(r.getURI()))){
+									if(uri.equals(r.getURI())){
 										found = true;
 										break;
 									}
