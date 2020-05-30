@@ -35,7 +35,7 @@ public class Startup implements IStartup {
 
 	@Override
 	public void earlyStartup() {
-		CXDynamicURIMapHandler.remap();
+		DDS4CCMDynamicURIMapHandler.remap();
 	}
 
 }

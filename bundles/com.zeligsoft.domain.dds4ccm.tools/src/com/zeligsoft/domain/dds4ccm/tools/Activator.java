@@ -92,24 +92,5 @@ public class Activator extends AbstractUIPlugin {
 		getDefault().getLog().log(status);
 	}
 
-	/**
-	 * Retrieve a preference that is a boolean value.
-	 * 
-	 * @param key The identifier of the preference.
-	 * @return The boolean value of the preference.
-	 */
-	public static boolean getBooleanPreference(final String key) {
-		return getDefault().getPreferenceStore().getBoolean(key);
-	}
-	
-	/**
-	 * Set the value of a boolean preference.
-	 * 
-	 * @param key The identifier of the preference.
-	 * @param value The boolean value to set the preference to.
-	 */
-	public static void setPreference(final String key, final boolean value) {
-		getDefault().getPreferenceStore().setValue(key, value);
-	}
 
 }

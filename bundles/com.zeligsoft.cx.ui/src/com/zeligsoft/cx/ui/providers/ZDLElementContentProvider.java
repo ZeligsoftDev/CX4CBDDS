@@ -54,6 +54,7 @@ import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.preferences.CXPreferenceConstants;
 import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
+import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 
 /**
  * ZDL Element content provider
@@ -137,7 +138,7 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 								// Use dynamic pathmap if available
 								String pathmap = BaseUtil.getZCXAnnotationDetail(root, "pathmap", "");
 								if(!UML2Util.isEmpty(pathmap)) {
-									uri = URI.createURI("pathmap://" + pathmap).appendSegment(uri.lastSegment());
+									uri = CXDynamicURIConverter.getPathmapURI(uri);
 								}
 								boolean found = false;
 								for(Resource r: rset.getResources()) {

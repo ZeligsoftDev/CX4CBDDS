@@ -14,7 +14,10 @@
  * limitations under the License.
  *
  */
-package com.zeligsoft.domain.dds4ccm.tools.internal.emf;
+package com.zeligsoft.cx.ui.pathmap;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -22,7 +25,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.gmf.runtime.common.core.util.Log;
 
-import com.zeligsoft.domain.dds4ccm.tools.Activator;
+import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
 
 /**
  * Dynamic pathmap descriptor.
@@ -36,12 +39,13 @@ public class CXPathmapDescriptor {
 	private final IProject project;
 	private final URI pathmap;
 	private final URI originalMapping;
+	private List<String> registeredModels = new ArrayList<String>();
 	private final URI mapping;
 	private boolean isEnabled;
 
-	public CXPathmapDescriptor(URI sourceURI, URI targetURI) {
+	public CXPathmapDescriptor(URI sourceURI, URI targetURI, String modelName) {
 		id = "pathmap." + targetURI.authority();
-
+		registeredModels.add(modelName);
 		originalMapping = URIConverter.URI_MAP.get(sourceURI);
 		pathmap = sourceURI;
 		mapping = targetURI;
@@ -50,7 +54,19 @@ public class CXPathmapDescriptor {
 		String projName = targetURI.segment(1);
 		project = ResourcesPlugin.getWorkspace().getRoot().getProject(projName);
 
-		isEnabled = !Activator.getBooleanPreference(id + ".disabled");
+		isEnabled = !ZeligsoftCXUIPlugin.getBooleanPreference(id + ".disabled");
+	}
+
+	public void addRegisteredModel(String modelName) {
+		registeredModels.add(modelName);
+	}
+
+	public void removeRegisteredModel(String modelName) {
+		registeredModels.remove(modelName);
+	}
+
+	public List<String> getRegisteredModels() {
+		return registeredModels;
 	}
 
 	static boolean isPathmapScheme(URI uri) {
@@ -71,7 +87,7 @@ public class CXPathmapDescriptor {
 		this.isEnabled = isEnabled;
 
 		if (oldEnabled != isEnabled) {
-			Activator.setPreference(id + ".disabled", !isEnabled);
+			ZeligsoftCXUIPlugin.setPreference(id + ".disabled", !isEnabled);
 		}
 	}
 
@@ -100,11 +116,11 @@ public class CXPathmapDescriptor {
 
 		if (isEnabled()) {
 			if (!mapping.equals(current) && project.exists()) {
-				Log.info(Activator.getDefault(), 0, "Workspace URI Mapping: " + pathmap);
+				Log.info(ZeligsoftCXUIPlugin.getDefault(), 0, "Workspace URI Mapping: " + pathmap);
 				URIConverter.URI_MAP.put(pathmap, mapping);
 			}
 		} else {
-			Log.info(Activator.getDefault(), 0, "Removing workspace URI Mapping: " + pathmap);
+			Log.info(ZeligsoftCXUIPlugin.getDefault(), 0, "Removing workspace URI Mapping: " + pathmap);
 			if (originalMapping != null) {
 				URIConverter.URI_MAP.put(pathmap, originalMapping);
 			} else {

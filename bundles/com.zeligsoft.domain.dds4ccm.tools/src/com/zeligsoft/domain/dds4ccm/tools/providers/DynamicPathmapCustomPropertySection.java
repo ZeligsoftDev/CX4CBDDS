@@ -38,11 +38,10 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Property;
 
+import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
 import com.zeligsoft.cx.ui.properties.sections.ICXCustomPropertySection;
 import com.zeligsoft.cx.ui.utils.CXWidgetFactory;
-import com.zeligsoft.domain.dds4ccm.tools.internal.emf.CXDynamicURIMapHandler;
-import com.zeligsoft.domain.dds4ccm.tools.internal.emf.CXPathmapDescriptor;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 
 /**
@@ -144,30 +143,23 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 			}
 		};
 		domain.getCommandStack().execute(command);
-		
+
 		if (originalPathmap.equals(pathmap)) {
 			// nothing to do if same
 			return;
 		}
-		
+
+		URI modelUri = model.eResource().getURI();
 		if (!UML2Util.isEmpty(originalPathmap)) {
-			URI origUri = URI.createURI(PATHMAP_KEY + "://" + originalPathmap + "/", true);
-			CXPathmapDescriptor desc = CXDynamicURIMapHandler.getPathmaps().get(origUri);
-			if (desc != null) {
-				desc.setEnabled(false);
-				desc.apply();
-				CXDynamicURIMapHandler.getPathmaps().remove(origUri);
-			}
+			CXDynamicURIConverter.removeMapping(modelUri);
 		}
 		if (UML2Util.isEmpty(pathmap)) {
 			return;
 		}
 		// enable new URI mapping
-		URI targetURI = model.eResource().getURI().trimSegments(1).appendSegment("");
+		URI targetURI = modelUri.trimSegments(1).appendSegment("");
 		URI sourceURI = URI.createURI(PATHMAP_KEY + "://" + pathmap + "/", true);
-		CXPathmapDescriptor desc = new CXPathmapDescriptor(sourceURI, targetURI);
-		desc.setEnabled(true);
-		desc.apply();
-		CXDynamicURIMapHandler.getPathmaps().put(sourceURI, desc);
+		CXDynamicURIConverter.addMapping(sourceURI, targetURI, modelUri.lastSegment());
+
 	}
 }

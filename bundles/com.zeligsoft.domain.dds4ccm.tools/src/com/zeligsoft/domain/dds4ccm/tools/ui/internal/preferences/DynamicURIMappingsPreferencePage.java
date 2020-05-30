@@ -38,8 +38,8 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-import com.zeligsoft.domain.dds4ccm.tools.internal.emf.CXDynamicURIMapHandler;
-import com.zeligsoft.domain.dds4ccm.tools.internal.emf.CXPathmapDescriptor;
+import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
+import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
 
 /**
  * Dynamic URI mapping preference page.
@@ -47,14 +47,14 @@ import com.zeligsoft.domain.dds4ccm.tools.internal.emf.CXPathmapDescriptor;
  * @author Young-Soo Roh
  *
  */
-public class CXURIMappingsPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
+public class DynamicURIMappingsPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
 
 	private CheckboxTableViewer table;
 
 	/**
 	 * Initializes me.
 	 */
-	public CXURIMappingsPreferencePage() {
+	public DynamicURIMappingsPreferencePage() {
 		super();
 	}
 
@@ -128,7 +128,7 @@ public class CXURIMappingsPreferencePage extends PreferencePage implements IWork
 	private List<CXPathmapDescriptor> getPathmaps() {
 
 		List<CXPathmapDescriptor> result = new java.util.ArrayList<CXPathmapDescriptor>();
-		result.addAll(CXDynamicURIMapHandler.getPathmaps().values());
+		result.addAll(CXDynamicURIConverter.PATHMAPS.values());
 		return result;
 	}
 

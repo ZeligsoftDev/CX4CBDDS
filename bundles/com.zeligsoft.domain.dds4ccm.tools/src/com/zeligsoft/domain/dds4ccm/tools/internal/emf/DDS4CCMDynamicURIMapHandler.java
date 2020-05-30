@@ -16,8 +16,6 @@
  */
 package com.zeligsoft.domain.dds4ccm.tools.internal.emf;
 
-import java.util.Map;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -42,6 +40,7 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 
 /**
@@ -50,14 +49,12 @@ import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
  * @author Young-Soo Roh
  *
  */
-public final class CXDynamicURIMapHandler {
-
-	private static Map<URI, CXPathmapDescriptor> pathmaps = new java.util.HashMap<URI, CXPathmapDescriptor>();
+public final class DDS4CCMDynamicURIMapHandler {
 
 	/**
 	 * Initializes me.
 	 */
-	private CXDynamicURIMapHandler() {
+	private DDS4CCMDynamicURIMapHandler() {
 		super();
 	}
 
@@ -70,10 +67,6 @@ public final class CXDynamicURIMapHandler {
 				return Status.OK_STATUS;
 			}
 		}.schedule();
-	}
-
-	public static Map<URI, CXPathmapDescriptor> getPathmaps() {
-		return pathmaps;
 	}
 
 	private static void doRemap() {
@@ -101,9 +94,10 @@ public final class CXDynamicURIMapHandler {
 			// check if this is a uml file
 			IPath path = delta.getFullPath();
 			String ext = path.getFileExtension();
-			if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase()) && delta.getKind() == IResourceDelta.ADDED) {
+			if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())
+					&& (delta.getKind() == IResourceDelta.ADDED || delta.getKind() == IResourceDelta.REMOVED)) {
 				URI uri = URI.createPlatformResourceURI(path.toString(), false);
-				processUML(rset, uri);
+				processUML(rset, uri, delta.getKind());
 			}
 		} else {
 			for (int i = 0; i < children.length; i++) {
@@ -113,17 +107,23 @@ public final class CXDynamicURIMapHandler {
 	}
 
 	private static void processUML(ResourceSet rset, URI uri) {
+		processUML(rset, uri, IResourceDelta.ADDED);
+	}
+
+	private static void processUML(ResourceSet rset, URI uri, int deltaKind) {
+		if (deltaKind == IResourceDelta.REMOVED) {
+			CXDynamicURIConverter.removeMapping(uri);
+			return;
+		}
 		Package model = UML2Util.load(rset, uri, UMLPackage.Literals.PACKAGE);
 		if (model != null && ZDLUtil.isZDLProfile(model, "cxDDS4CCM")) {
 			// enable new URI mapping
 			String pathmap = CCMUtil.getZCXAnnotationDetail((Element) model, "pathmap", "");
 			if (!UML2Util.isEmpty(pathmap)) {
+				String modelName = model.eResource().getURI().lastSegment();
 				URI targetURI = model.eResource().getURI().trimSegments(1).appendSegment("");
 				URI sourceURI = URI.createURI("pathmap" + "://" + pathmap + "/", true);
-				CXPathmapDescriptor desc = new CXPathmapDescriptor(sourceURI, targetURI);
-				desc.setEnabled(true);
-				desc.apply();
-				CXDynamicURIMapHandler.getPathmaps().put(sourceURI, desc);
+				CXDynamicURIConverter.addMapping(sourceURI, targetURI, modelName);
 			}
 		}
 	}
@@ -160,4 +160,5 @@ public final class CXDynamicURIMapHandler {
 			e.printStackTrace();
 		}
 	}
+
 }
