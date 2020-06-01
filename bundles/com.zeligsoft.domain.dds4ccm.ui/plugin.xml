@@ -564,6 +564,13 @@
             strategy="com.zeligsoft.domain.dds4ccm.ui.paste.DDS4CCMPasteStrategy">
       </strategy>
    </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.services.labelprovider.labelProvider">
+      <labelProvider
+            priority="10"
+            provider="com.zeligsoft.domain.dds4ccm.ui.providers.ResolvingUMLFilteredLabelProvider">
+      </labelProvider>
+   </extension>
    
     <!--
    <extension

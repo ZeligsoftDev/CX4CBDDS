@@ -61,6 +61,14 @@
             name="cxDDS4CCM"
             path="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml">
       </profile>
+   </extension>
+   <extension
+         point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            class="org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory"
+            supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
+            uri="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1">
+      </factory>
    </extension>   
    
 </plugin>
