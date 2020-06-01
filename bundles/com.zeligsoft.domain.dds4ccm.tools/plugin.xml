@@ -49,5 +49,44 @@
              property="modelType">
        </PropertySection>
     </extension>
+    <extension
+          point="org.eclipse.ui.menus">
+       <menuContribution
+             allPopups="false"
+             locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
+          <command
+                commandId="com.zeligsoft.domain.dds4ccm.tools.fixReferencesCommand"
+                label="Fix CX Model references"
+                style="push">
+             <visibleWhen
+                   checkEnabled="false">
+                <with
+                      variable="selection">
+                   <iterate
+                         ifEmpty="false"
+                         operator="and">
+                      <adapt
+                            type="org.eclipse.core.resources.IFile">
+                         <or>
+                            <test
+                                  property="org.eclipse.core.resources.extension"
+                                  value="uml">
+                            </test>
+                         </or>
+                      </adapt>
+                   </iterate>
+                </with>
+             </visibleWhen>
+          </command>
+       </menuContribution>
+    </extension>
+    <extension
+          point="org.eclipse.ui.commands">
+       <command
+             defaultHandler="com.zeligsoft.domain.dds4ccm.tools.actions.FixModelReferencesHandler"
+             id="com.zeligsoft.domain.dds4ccm.tools.fixReferencesCommand"
+             name="Fix CX Model References">
+       </command>
+    </extension>
 
 </plugin>
