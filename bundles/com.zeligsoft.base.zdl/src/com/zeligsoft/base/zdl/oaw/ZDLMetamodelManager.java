@@ -179,25 +179,28 @@ public class ZDLMetamodelManager {
 	 */
 	public Model getZDLModel(URI uri) {
 		Model result = null;
-		Resource res = zdlResources.getResource(uri, true);
-		// TODO: Revisit with EMF content types
-
-		if ((res != null) && res.isLoaded()) {
-			Model model = (Model) EcoreUtil.getObjectByType(res.getContents(),
-				UMLPackage.Literals.MODEL);
-
-			if ((model != null)
-				&& ZDLMetamodel.isStereotypedAs(model,
-					ZDLMetamodel.DOMAIN_MODEL)) {
-
-				result = model;
-			} else {
-				// not a ZDL model; unload the resource
-				res.unload();
-				zdlResources.getResources().remove(res);
+		try {
+			Resource res = zdlResources.getResource(uri, true);
+			// TODO: Revisit with EMF content types
+	
+			if ((res != null) && res.isLoaded()) {
+				Model model = (Model) EcoreUtil.getObjectByType(res.getContents(),
+					UMLPackage.Literals.MODEL);
+	
+				if ((model != null)
+					&& ZDLMetamodel.isStereotypedAs(model,
+						ZDLMetamodel.DOMAIN_MODEL)) {
+	
+					result = model;
+				} else {
+					// not a ZDL model; unload the resource
+					res.unload();
+					zdlResources.getResources().remove(res);
+				}
 			}
+		}catch (Exception e) {
+			// do nothing
 		}
-
 		return result;
 	}
 
