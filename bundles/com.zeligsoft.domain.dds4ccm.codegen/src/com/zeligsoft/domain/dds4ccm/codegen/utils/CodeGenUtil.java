@@ -31,15 +31,30 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.papyrus.infra.core.resource.ModelMultiException;
+import org.eclipse.papyrus.infra.core.resource.ModelSet;
+import org.eclipse.papyrus.infra.core.services.ExtensionServicesRegistry;
+import org.eclipse.papyrus.infra.core.services.ServiceException;
+import org.eclipse.papyrus.infra.core.services.ServiceMultiException;
+import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.osgi.framework.Bundle;
 
 import com.zeligsoft.base.util.WorkflowUtil;
@@ -47,6 +62,7 @@ import com.zeligsoft.cx.build.factory.ProjectFactory;
 import com.zeligsoft.cx.codegen.CodeGenWorkflowConstants;
 import com.zeligsoft.domain.dds4ccm.codegen.Activator;
 import com.zeligsoft.domain.dds4ccm.codegen.l10n.Messages;
+import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMDiagnostician;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.DDS4CCMGenerationListener;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
@@ -71,7 +87,7 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 
 	public static CodeGenUtil INSTANCE = new CodeGenUtil();
 
-	private CodeGenUtil() { 
+	private CodeGenUtil() {
 		DDS4CCMGenerationUtils.addGenerationListener(this);
 	}
 
@@ -98,13 +114,11 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 	/**
 	 * Generated IDL
 	 * 
-	 * @param uri
-	 *            Model resource {@link URI} <i>e.g.,
-	 *            platform:/resource/DDS/DDS4CCMModel/BasicPubSub_asm.emx</i>
-	 * @param validate
-	 *            Validate the model before generation if set to <tt>true</tt>.
-	 *            Generation will be cancelled if status severity is
-	 *            {@link IStatus#ERROR}
+	 * @param uri      Model resource {@link URI} <i>e.g.,
+	 *                 platform:/resource/DDS/DDS4CCMModel/BasicPubSub_asm.emx</i>
+	 * @param validate Validate the model before generation if set to <tt>true</tt>.
+	 *                 Generation will be cancelled if status severity is
+	 *                 {@link IStatus#ERROR}
 	 * @return
 	 * 
 	 */
@@ -115,8 +129,7 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 				return status;
 			}
 		}
-		return doTransform(IDL_GENERATION_PLUGIN_ID,
-				IDL_GENERATION_WORKFLOW_PATH, uri);
+		return doTransform(IDL_GENERATION_PLUGIN_ID, IDL_GENERATION_WORKFLOW_PATH, uri);
 	}
 
 	public IStatus generateIDL(URI uri) {
@@ -126,13 +139,11 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 	/**
 	 * Generated descriptors
 	 * 
-	 * @param uri
-	 *            Model resource {@link URI} <i>e.g.,
-	 *            platform:/resource/DDS/DDS4CCMModel/BasicPubSub_asm.emx</i>
-	 * @param validate
-	 *            Validate the model before generation if set to <tt>true</tt>.
-	 *            Generation will be cancelled if status severity is
-	 *            {@link IStatus#ERROR}
+	 * @param uri      Model resource {@link URI} <i>e.g.,
+	 *                 platform:/resource/DDS/DDS4CCMModel/BasicPubSub_asm.emx</i>
+	 * @param validate Validate the model before generation if set to <tt>true</tt>.
+	 *                 Generation will be cancelled if status severity is
+	 *                 {@link IStatus#ERROR}
 	 */
 	public IStatus generateDescriptors(URI uri, boolean validate) {
 		if (validate) {
@@ -141,8 +152,7 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 				return status;
 			}
 		}
-		return doTransform(DESCRIPTOR_GENERATION_PLUGIN_ID,
-				DESCRIPTOR_GENERATION_WORKFLOW_PATH, uri);
+		return doTransform(DESCRIPTOR_GENERATION_PLUGIN_ID, DESCRIPTOR_GENERATION_WORKFLOW_PATH, uri);
 	}
 
 	public IStatus generateDescriptors(URI uri) {
@@ -152,61 +162,58 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 	/**
 	 * Validate the given model
 	 * 
-	 * @param uri
-	 *            Model resource {@link URI} <i>e.g.,
+	 * @param uri Model resource {@link URI} <i>e.g.,
 	 *            platform:/resource/DDS/DDS4CCMModel/BasicPubSub_asm.emx</i>
 	 * @return
 	 */
+	@SuppressWarnings("restriction")
 	public IStatus validateModel(URI uri) {
-		
-//		boolean isExistentURI = UMLModeler.getEditingDomain().getResourceSet().getURIConverter().exists(uri, null);
-//		
-//		if(!isExistentURI){
-//			return createStatus(IStatus.ERROR, "No resource exists with URI: "+uri);
-//		}
-//		
-//		DDS4CCMValidationFactory factory = new DDS4CCMValidationFactory();
-//		IBatchValidator validator = factory.createValidator();
-//		validator.setIncludeLiveConstraints(true);
-//		
-//		boolean isResourceLoadedAtEntry = true;
-//		// For a closed model: 
-//		//	 - for the first execution, resource is 'null' because resource with uri does not exist in UMLModeler editing domain resourceSet.
-//		//   - for subsequent executions, resource is 'not null' and 'not loaded'
-//		// For an opened model: resource is 'not null' and 'loaded'
-//		
-//		Resource resource = UMLModeler.getEditingDomain().getResourceSet().getResource(uri, false);
-//		
-//		if(resource == null){
-//		
-//			resource = UMLModeler.getEditingDomain().getResourceSet().getResource(uri, true);
-//			isResourceLoadedAtEntry = false;
-//			
-//			// if resource is still null, return a failure status
-//			if(resource == null){
-//				return createStatus(IStatus.ERROR, "Failed to create resource for URI: "+uri);
-//			}
-//		}else{
-//			isResourceLoadedAtEntry = resource.isLoaded();
-//			
-//			if(!isResourceLoadedAtEntry){
-//				try{
-//					resource.load(Collections.EMPTY_MAP);
-//				}catch(IOException e) {
-//					return createStatus(IStatus.ERROR, e.getMessage());
-//				}	
-//			}
-//			
-//		}
-//		
-//		IStatus result = validator.validate(resource.getContents().get(0));
-//	
-//		// An unchecked exception java.util.ConcurrentModificationException can occur for once during validation 
-//		// due to an issue with an IBM constraint: "com.ibm.xtools.uml.validation.components.assembly"; ignore
-//				
-//		if(!isResourceLoadedAtEntry && resource.isLoaded()){
-//			resource.unload();
-//		}
+		ServicesRegistry registry = null;
+		// Starting the registry
+		try {
+			registry = new ExtensionServicesRegistry(org.eclipse.papyrus.infra.core.Activator.PLUGIN_ID);
+
+			// have to create the model set and populate it with the DI model
+			// before initializing other services that actually need the DI
+			// model, such as the SashModel Manager service
+			registry.startServicesByClassKeys(ModelSet.class);
+		} catch (ServiceException ex) {
+			// Ignore this exception: some services may not have been loaded,
+			// which is probably normal at this point
+		}
+		try {
+			ModelSet modelSet = registry.getService(ModelSet.class);
+			modelSet.loadModels(uri);
+			org.eclipse.uml2.uml.Package root = UML2Util.load(modelSet, uri, UMLPackage.Literals.PACKAGE);
+
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(root);
+			IProgressMonitor progressMonitor = new NullProgressMonitor();
+			DDS4CCMDiagnostician diagnostician = new DDS4CCMDiagnostician();
+
+			AdapterFactory adapterFactory = domain instanceof AdapterFactoryEditingDomain
+					? ((AdapterFactoryEditingDomain) domain).getAdapterFactory()
+					: null;
+			diagnostician.initialize(adapterFactory, progressMonitor);
+
+			BasicDiagnostic diagnostic = diagnostician.createDefaultDiagnostic(root);
+			Map<Object, Object> context = diagnostician.createDefaultContext();
+
+			boolean valid = diagnostician.validate(root, diagnostic, context);
+			if (!valid) {
+				return createStatus(IStatus.ERROR, "Model validation reported errors with URI: " + uri);
+			}
+		} catch (ServiceException e1) {
+			return createStatus(IStatus.ERROR, e1.getMessage());
+		} catch (ModelMultiException e) {
+			return createStatus(IStatus.ERROR, e.getMessage());
+		} finally {
+			try {
+				registry.disposeRegistry();
+			} catch (ServiceMultiException e) {
+				// do nothing
+			}
+		}
+
 		return Status.OK_STATUS;
 	}
 
@@ -228,33 +235,27 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 		genProperties.put(CodeGenWorkflowConstants.PLATFORM_URI, location);
 
 		Resource res = element.eResource();
-		genProperties.put(CodeGenWorkflowConstants.MODEL_URI_STRING, res
-				.getURI().toString());
+		genProperties.put(CodeGenWorkflowConstants.MODEL_URI_STRING, res.getURI().toString());
 		// where we want to look for a build environment
 		if (element instanceof NamedElement) {
-			genProperties.put(CodeGenWorkflowConstants.BUILD_ELEMENT,
-					((NamedElement) element).getQualifiedName());
+			genProperties.put(CodeGenWorkflowConstants.BUILD_ELEMENT, ((NamedElement) element).getQualifiedName());
 		}
 
 		HashMap<String, Object> externalSlotContents = new HashMap<String, Object>();
-		externalSlotContents.put(CodeGenWorkflowConstants.ELEMENT_STRING,
-				element);
+		externalSlotContents.put(CodeGenWorkflowConstants.ELEMENT_STRING, element);
 
-		IProject project = ProjectFactory.getProject(element, null,
-				ProjectFactory.MODE_CREATE_BASIC);
+		IProject project = ProjectFactory.getProject(element, null, ProjectFactory.MODE_CREATE_BASIC);
 		if (project == null) {
 			return createStatus(IStatus.ERROR, Messages.CodeGenUtil_0);
 		}
-		genProperties.put(CodeGenWorkflowConstants.GENERATED_PROJECT,
-				project.getName());
+		genProperties.put(CodeGenWorkflowConstants.GENERATED_PROJECT, project.getName());
 
 		String srcGen = project.getLocation().makeAbsolute().toOSString();
 		genProperties.put(CodeGenWorkflowConstants.SRC_GEN, srcGen);
 
 		IStatus result;
 		try {
-			result = WorkflowUtil.executeWorkflow(workflow, null,
-					genProperties, externalSlotContents);
+			result = WorkflowUtil.executeWorkflow(workflow, null, genProperties, externalSlotContents);
 
 		} finally {
 			try {

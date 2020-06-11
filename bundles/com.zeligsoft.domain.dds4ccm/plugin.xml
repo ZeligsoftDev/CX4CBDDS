@@ -70,5 +70,17 @@
             uri="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1">
       </factory>
    </extension>   
-   
+   <extension
+         point="org.eclipse.emf.validation.traversal">
+      <traversalStrategy
+            class="com.zeligsoft.domain.dds4ccm.providers.DDS4CCMTraversalStrategy"
+            namespaceUri="http://www.eclipse.org/uml2/5.0.0/UML">
+         <eclass
+               name="Model">
+         </eclass>
+         <eclass
+               name="Package">
+         </eclass>
+      </traversalStrategy>
+   </extension>
 </plugin>
