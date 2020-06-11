@@ -1,19 +1,3 @@
-/*****************************************************************************
- * Copyright (c) 2013 CEA LIST.
- *
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
- * which accompanies this distribution, and is available at
- * https://www.eclipse.org/legal/epl-2.0/
- *
- * SPDX-License-Identifier: EPL-2.0
- *
- * Contributors:
- *  Patrick Tessier (CEA LIST) Patrick.tessier@cea.fr - Initial API and implementation
- *
- *****************************************************************************/
-
 /**
  * Copyright 2020 Northrop Grumman Systems Corporation.
  *
@@ -36,10 +20,10 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
-import org.eclipse.papyrus.infra.services.validation.commands.ValidateSubtreeCommand;
 import org.eclipse.papyrus.infra.services.validation.handler.AbstractCommandHandler;
 
-import com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMDiagnostician;
+import com.zeligsoft.domain.dds4ccm.ui.command.ValidateCXModelCommand;
+import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMDiagnostician;
 
 /**
  * Handler for validating a subtree
@@ -52,6 +36,6 @@ public class CXValidationHandler extends AbstractCommandHandler {
 		if (selectedElement == null) {
 			return UnexecutableCommand.INSTANCE;
 		}
-		return GMFtoEMFCommandWrapper.wrap(new ValidateSubtreeCommand(selectedElement, new DDS4CCMDiagnostician()));
+		return GMFtoEMFCommandWrapper.wrap(new ValidateCXModelCommand(selectedElement, new DDS4CCMDiagnostician()));
 	}
 }

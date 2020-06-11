@@ -71,7 +71,14 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.console.ConsolePlugin;
+import org.eclipse.ui.console.IConsole;
+import org.eclipse.ui.console.IConsoleConstants;
+import org.eclipse.ui.console.IConsoleManager;
+import org.eclipse.ui.console.MessageConsole;
+import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
@@ -105,6 +112,30 @@ public class BaseUIUtil {
 	
 	public static String BUILD_CONFIG_PROPERTY_NAME = "build_config"; //$NON-NLS-1$
 
+	public static MessageConsole cxConsole = null;
+	
+	public static void writeToConsole(String message) {
+		if (cxConsole == null) {
+			ConsolePlugin plugin = ConsolePlugin.getDefault();
+			IConsoleManager conMan = plugin.getConsoleManager();
+			cxConsole = new MessageConsole("CX Console", null); //$NON-NLS-1$
+			conMan.addConsoles(new IConsole[] { cxConsole });
+		}
+
+		IWorkbenchPage page = getActivepage();
+		String id = IConsoleConstants.ID_CONSOLE_VIEW;
+		org.eclipse.ui.console.IConsoleView view;
+		try {
+			view = (org.eclipse.ui.console.IConsoleView) page.showView(id);
+			view.display(cxConsole);
+		} catch (PartInitException e) {
+			// nothing we can do
+		}
+		
+		MessageConsoleStream out = cxConsole.newMessageStream();
+		out.println(message);
+	}
+	
 	public static Command buildCommand(TransactionalEditingDomain editingDomain, IClientContext context,
 			CreateElementRequest req, EObject target) {
 

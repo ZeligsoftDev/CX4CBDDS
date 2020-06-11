@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package com.zeligsoft.domain.dds4ccm.ui.providers;
+package com.zeligsoft.domain.dds4ccm.utils;
 
 import org.eclipse.papyrus.infra.services.validation.internal.EcoreDiagnostician;
 

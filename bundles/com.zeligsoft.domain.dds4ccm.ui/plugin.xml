@@ -546,19 +546,6 @@
       </command>
    </extension>
    <extension
-         point="org.eclipse.emf.validation.traversal">
-      <traversalStrategy
-            class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMTraversalStrategy"
-            namespaceUri="http://www.eclipse.org/uml2/5.0.0/UML">
-         <eclass
-               name="Model">
-         </eclass>
-         <eclass
-               name="Package">
-         </eclass>
-      </traversalStrategy>
-   </extension>
-   <extension
          point="org.eclipse.papyrus.infra.gmfdiag.common.pasteStrategy">
       <strategy
             strategy="com.zeligsoft.domain.dds4ccm.ui.paste.DDS4CCMPasteStrategy">
