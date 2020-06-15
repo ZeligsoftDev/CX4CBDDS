@@ -558,6 +558,15 @@
             provider="com.zeligsoft.domain.dds4ccm.ui.providers.ResolvingUMLFilteredLabelProvider">
       </labelProvider>
    </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.core.service">
+      <service
+            classname="com.zeligsoft.domain.dds4ccm.ui.services.CoreMultiDiagramEditorService"
+            id="org.eclipse.papyrus.infra.ui.editor.IMultiDiagramEditor"
+            priority="Integer.MAX_VALUE"
+            startKind="startup">
+      </service>
+   </extension>
    
     <!--
    <extension
