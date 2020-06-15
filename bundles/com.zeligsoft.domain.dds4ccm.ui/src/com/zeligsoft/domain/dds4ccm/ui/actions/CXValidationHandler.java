@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.papyrus.infra.services.validation.handler.AbstractCommandHandler;
 
-import com.zeligsoft.domain.dds4ccm.ui.command.ValidateCXModelCommand;
+import com.zeligsoft.base.validation.ui.commands.ValidateCXModelCommand;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMDiagnostician;
 
 /**

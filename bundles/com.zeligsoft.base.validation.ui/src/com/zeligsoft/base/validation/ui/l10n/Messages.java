@@ -29,6 +29,14 @@ public class Messages
 	private static final String BUNDLE_NAME = "com.zeligsoft.base.validation.ui.l10n.messages"; //$NON-NLS-1$
 
 	public static String ConstraintsPreferencePage_generalLink;
+
+	public static String ValidateCXModelCommand_0;
+
+	public static String ValidateCXModelCommand_1;
+
+	public static String ValidateCXModelCommand_2;
+
+	public static String ValidateCXModelCommand_3;
 	
 	static {
 		// initialize resource bundle
