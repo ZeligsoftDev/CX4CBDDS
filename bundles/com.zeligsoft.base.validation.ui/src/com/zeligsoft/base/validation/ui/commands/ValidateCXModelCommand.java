@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package com.zeligsoft.domain.dds4ccm.ui.command;
+package com.zeligsoft.base.validation.ui.commands;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
@@ -22,6 +22,7 @@ import org.eclipse.papyrus.infra.services.validation.IPapyrusDiagnostician;
 import org.eclipse.papyrus.infra.services.validation.commands.ValidateSubtreeCommand;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.base.validation.ui.l10n.Messages;
 
 public class ValidateCXModelCommand extends ValidateSubtreeCommand {
 
@@ -44,10 +45,10 @@ public class ValidateCXModelCommand extends ValidateSubtreeCommand {
 			}
 		}
 		StringBuffer buffer = new StringBuffer();
-		buffer.append("Validated Model : ").append(validateElement.eResource().getURI().toString());
+		buffer.append(Messages.ValidateCXModelCommand_0).append(validateElement.eResource().getURI().toString());
 		buffer.append(System.lineSeparator());
-		buffer.append("Validation - ").append(errors).append(" error(s), ");
-		buffer.append(warnings).append(" error(s)");
+		buffer.append(Messages.ValidateCXModelCommand_1).append(errors).append(Messages.ValidateCXModelCommand_2);
+		buffer.append(warnings).append(Messages.ValidateCXModelCommand_3);
 		buffer.append(System.lineSeparator());
 		BaseUIUtil.writeToConsole(buffer.toString());
 	}
