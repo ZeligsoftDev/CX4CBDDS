@@ -177,7 +177,8 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 		IWorkbenchPage page = BaseUIUtil.getActivepage();
 
 		IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-		IFile file = workspaceRoot.getFile(new Path(uri.trimFileExtension().appendFileExtension("di").toPlatformString(true)));
+		URI diUri = uri.trimFileExtension().appendFileExtension("di");
+		IFile file = workspaceRoot.getFile(new Path(diUri.toPlatformString(true)));
 
 		if (file.exists()) {
 			try {
@@ -186,24 +187,26 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 			} catch (WorkbenchException e) {
 				Activator.getDefault().error(e.getLocalizedMessage(), e);
 			}
-		}
-		
-		IMultiDiagramEditor editor = EditorUtils.getMultiDiagramEditor();
-		ServicesRegistry serviceRegistry = (ServicesRegistry)editor.getAdapter(ServicesRegistry.class);
-		try {
-			ModelSet modelSet = ServiceUtils.getInstance().getModelSet(serviceRegistry);
-			Package root = UML2Util.load(modelSet, uri, UMLPackage.Literals.PACKAGE);
-			ValidateCXModelCommand command = new ValidateCXModelCommand(root, new DDS4CCMDiagnostician());
-			Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
-			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(root);
-			domain.getCommandStack().execute(emfCommand);
-			if(command.getDiagnostic().getSeverity() == Diagnostic.ERROR) {
-				return createStatus(IStatus.ERROR, "Model validation reported error(s)");
-			}else if(command.getDiagnostic().getSeverity() == Diagnostic.WARNING) {
-				return createStatus(IStatus.WARNING, "Model validation reported warning(s)");
+
+			IMultiDiagramEditor editor = EditorUtils.getMultiDiagramEditor();
+			ServicesRegistry serviceRegistry = (ServicesRegistry) editor.getAdapter(ServicesRegistry.class);
+			try {
+				ModelSet modelSet = ServiceUtils.getInstance().getModelSet(serviceRegistry);
+				Package root = UML2Util.load(modelSet, uri, UMLPackage.Literals.PACKAGE);
+				ValidateCXModelCommand command = new ValidateCXModelCommand(root, new DDS4CCMDiagnostician());
+				Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+				TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(root);
+				domain.getCommandStack().execute(emfCommand);
+				if (command.getDiagnostic().getSeverity() == Diagnostic.ERROR) {
+					return createStatus(IStatus.ERROR, "Model validation reported error(s)");
+				} else if (command.getDiagnostic().getSeverity() == Diagnostic.WARNING) {
+					return createStatus(IStatus.WARNING, "Model validation reported warning(s)");
+				}
+			} catch (ServiceException e) {
+				// do nothing
 			}
-		} catch (ServiceException e) {
-			// do nothing
+		} else {
+			return createStatus(IStatus.ERROR, "Failed to create Papyrus resource for URI: " + diUri);
 		}
 
 		return Status.OK_STATUS;
