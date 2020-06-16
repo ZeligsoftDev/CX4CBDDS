@@ -52,6 +52,7 @@ import org.eclipse.papyrus.infra.core.utils.ServiceUtils;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.papyrus.infra.ui.editor.IMultiDiagramEditor;
 import org.eclipse.papyrus.infra.ui.util.EditorUtils;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.part.FileEditorInput;
@@ -92,6 +93,8 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 	private static Set<CodeGenListener> listeners = new HashSet<CodeGenListener>();
 
 	public static CodeGenUtil INSTANCE = new CodeGenUtil();
+	
+	private IStatus validationResult;
 
 	private CodeGenUtil() {
 		DDS4CCMGenerationUtils.addGenerationListener(this);
@@ -174,42 +177,49 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 	 */
 	public IStatus validateModel(URI uri) {
 
-		IWorkbenchPage page = BaseUIUtil.getActivepage();
+		validationResult = Status.OK_STATUS;
+		Display.getDefault().asyncExec(new Runnable() {
+			@Override
+			public void run() {
 
-		IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-		URI diUri = uri.trimFileExtension().appendFileExtension("di");
-		IFile file = workspaceRoot.getFile(new Path(diUri.toPlatformString(true)));
+				IWorkbenchPage page = BaseUIUtil.getActivepage();
 
-		if (file.exists()) {
-			try {
-				page.openEditor(new FileEditorInput(file), "org.eclipse.papyrus.infra.core.papyrusEditor", true,
-						IWorkbenchPage.MATCH_ID | IWorkbenchPage.MATCH_INPUT);
-			} catch (WorkbenchException e) {
-				Activator.getDefault().error(e.getLocalizedMessage(), e);
-			}
+				IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+				URI diUri = uri.trimFileExtension().appendFileExtension("di");
+				IFile file = workspaceRoot.getFile(new Path(diUri.toPlatformString(true)));
 
-			IMultiDiagramEditor editor = EditorUtils.getMultiDiagramEditor();
-			ServicesRegistry serviceRegistry = (ServicesRegistry) editor.getAdapter(ServicesRegistry.class);
-			try {
-				ModelSet modelSet = ServiceUtils.getInstance().getModelSet(serviceRegistry);
-				Package root = UML2Util.load(modelSet, uri, UMLPackage.Literals.PACKAGE);
-				ValidateCXModelCommand command = new ValidateCXModelCommand(root, new DDS4CCMDiagnostician());
-				Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
-				TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(root);
-				domain.getCommandStack().execute(emfCommand);
-				if (command.getDiagnostic().getSeverity() == Diagnostic.ERROR) {
-					return createStatus(IStatus.ERROR, "Model validation reported error(s)");
-				} else if (command.getDiagnostic().getSeverity() == Diagnostic.WARNING) {
-					return createStatus(IStatus.WARNING, "Model validation reported warning(s)");
+				if (file.exists()) {
+					try {
+						page.openEditor(new FileEditorInput(file), "org.eclipse.papyrus.infra.core.papyrusEditor", true,
+								IWorkbenchPage.MATCH_ID | IWorkbenchPage.MATCH_INPUT);
+					} catch (WorkbenchException e) {
+						Activator.getDefault().error(e.getLocalizedMessage(), e);
+					}
+
+					IMultiDiagramEditor editor = EditorUtils.getMultiDiagramEditor();
+					ServicesRegistry serviceRegistry = (ServicesRegistry) editor.getAdapter(ServicesRegistry.class);
+					try {
+						ModelSet modelSet = ServiceUtils.getInstance().getModelSet(serviceRegistry);
+						Package root = UML2Util.load(modelSet, uri, UMLPackage.Literals.PACKAGE);
+						ValidateCXModelCommand command = new ValidateCXModelCommand(root, new DDS4CCMDiagnostician());
+						Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+						TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(root);
+						domain.getCommandStack().execute(emfCommand);
+						if (command.getDiagnostic().getSeverity() == Diagnostic.ERROR) {
+							validationResult = createStatus(IStatus.ERROR, "Model validation reported error(s)");
+						} else if (command.getDiagnostic().getSeverity() == Diagnostic.WARNING) {
+							validationResult = createStatus(IStatus.WARNING, "Model validation reported warning(s)");
+						}
+					} catch (ServiceException e) {
+						// do nothing
+					}
+				} else {
+					validationResult = createStatus(IStatus.ERROR, "Failed to create Papyrus resource for URI: " + diUri);
 				}
-			} catch (ServiceException e) {
-				// do nothing
 			}
-		} else {
-			return createStatus(IStatus.ERROR, "Failed to create Papyrus resource for URI: " + diUri);
-		}
+		});
 
-		return Status.OK_STATUS;
+		return validationResult;
 	}
 
 	private IStatus doTransform(String pluginId, String workflowPath, URI uri) {
