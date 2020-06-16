@@ -26,38 +26,44 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.papyrus.infra.core.resource.ModelMultiException;
 import org.eclipse.papyrus.infra.core.resource.ModelSet;
-import org.eclipse.papyrus.infra.core.services.ExtensionServicesRegistry;
 import org.eclipse.papyrus.infra.core.services.ServiceException;
-import org.eclipse.papyrus.infra.core.services.ServiceMultiException;
 import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
+import org.eclipse.papyrus.infra.core.utils.ServiceUtils;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
+import org.eclipse.papyrus.infra.ui.editor.IMultiDiagramEditor;
+import org.eclipse.papyrus.infra.ui.util.EditorUtils;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.WorkbenchException;
+import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.osgi.framework.Bundle;
 
+import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.util.WorkflowUtil;
+import com.zeligsoft.base.validation.ui.commands.ValidateCXModelCommand;
 import com.zeligsoft.cx.build.factory.ProjectFactory;
 import com.zeligsoft.cx.codegen.CodeGenWorkflowConstants;
 import com.zeligsoft.domain.dds4ccm.codegen.Activator;
@@ -166,52 +172,38 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 	 *            platform:/resource/DDS/DDS4CCMModel/BasicPubSub_asm.emx</i>
 	 * @return
 	 */
-	@SuppressWarnings("restriction")
 	public IStatus validateModel(URI uri) {
-		ServicesRegistry registry = null;
-		// Starting the registry
-		try {
-			registry = new ExtensionServicesRegistry(org.eclipse.papyrus.infra.core.Activator.PLUGIN_ID);
 
-			// have to create the model set and populate it with the DI model
-			// before initializing other services that actually need the DI
-			// model, such as the SashModel Manager service
-			registry.startServicesByClassKeys(ModelSet.class);
-		} catch (ServiceException ex) {
-			// Ignore this exception: some services may not have been loaded,
-			// which is probably normal at this point
-		}
-		try {
-			ModelSet modelSet = registry.getService(ModelSet.class);
-			modelSet.loadModels(uri);
-			org.eclipse.uml2.uml.Package root = UML2Util.load(modelSet, uri, UMLPackage.Literals.PACKAGE);
+		IWorkbenchPage page = BaseUIUtil.getActivepage();
 
-			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(root);
-			IProgressMonitor progressMonitor = new NullProgressMonitor();
-			DDS4CCMDiagnostician diagnostician = new DDS4CCMDiagnostician();
+		IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+		IFile file = workspaceRoot.getFile(new Path(uri.trimFileExtension().appendFileExtension("di").toPlatformString(true)));
 
-			AdapterFactory adapterFactory = domain instanceof AdapterFactoryEditingDomain
-					? ((AdapterFactoryEditingDomain) domain).getAdapterFactory()
-					: null;
-			diagnostician.initialize(adapterFactory, progressMonitor);
-
-			BasicDiagnostic diagnostic = diagnostician.createDefaultDiagnostic(root);
-			Map<Object, Object> context = diagnostician.createDefaultContext();
-
-			boolean valid = diagnostician.validate(root, diagnostic, context);
-			if (!valid) {
-				return createStatus(IStatus.ERROR, "Model validation reported errors with URI: " + uri);
-			}
-		} catch (ServiceException e1) {
-			return createStatus(IStatus.ERROR, e1.getMessage());
-		} catch (ModelMultiException e) {
-			return createStatus(IStatus.ERROR, e.getMessage());
-		} finally {
+		if (file.exists()) {
 			try {
-				registry.disposeRegistry();
-			} catch (ServiceMultiException e) {
-				// do nothing
+				page.openEditor(new FileEditorInput(file), "org.eclipse.papyrus.infra.core.papyrusEditor", true,
+						IWorkbenchPage.MATCH_ID | IWorkbenchPage.MATCH_INPUT);
+			} catch (WorkbenchException e) {
+				Activator.getDefault().error(e.getLocalizedMessage(), e);
 			}
+		}
+		
+		IMultiDiagramEditor editor = EditorUtils.getMultiDiagramEditor();
+		ServicesRegistry serviceRegistry = (ServicesRegistry)editor.getAdapter(ServicesRegistry.class);
+		try {
+			ModelSet modelSet = ServiceUtils.getInstance().getModelSet(serviceRegistry);
+			Package root = UML2Util.load(modelSet, uri, UMLPackage.Literals.PACKAGE);
+			ValidateCXModelCommand command = new ValidateCXModelCommand(root, new DDS4CCMDiagnostician());
+			Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(root);
+			domain.getCommandStack().execute(emfCommand);
+			if(command.getDiagnostic().getSeverity() == Diagnostic.ERROR) {
+				return createStatus(IStatus.ERROR, "Model validation reported error(s)");
+			}else if(command.getDiagnostic().getSeverity() == Diagnostic.WARNING) {
+				return createStatus(IStatus.WARNING, "Model validation reported warning(s)");
+			}
+		} catch (ServiceException e) {
+			// do nothing
 		}
 
 		return Status.OK_STATUS;
