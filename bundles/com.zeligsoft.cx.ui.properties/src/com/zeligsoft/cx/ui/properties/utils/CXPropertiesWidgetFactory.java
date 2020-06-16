@@ -806,8 +806,7 @@ public class CXPropertiesWidgetFactory extends CXWidgetFactory{
 
 		final boolean isIntegerType;
 
-		if (descriptor.getProperty().getType().getLabel().equals(
-			UMLPackage.Literals.LITERAL_INTEGER.getName())) {
+		if (UMLPackage.Literals.LITERAL_INTEGER.getName().endsWith(descriptor.getProperty().getType().getLabel())) {
 			isIntegerType = true;
 		} else {
 			isIntegerType = false;

@@ -188,11 +188,11 @@ public class CXPropertyCollectionPage extends PreferencePage {
 				}
 
 				if (property.getType() instanceof PrimitiveType) {
-					String type = property.getType().getName();
+					String type = property.getType().getLabel();
 
-					if (type.equals(UMLPackage.Literals.LITERAL_INTEGER.getName())) {
+					if (UMLPackage.Literals.LITERAL_INTEGER.getName().endsWith(type)) {
 						descriptor.addValue(new Integer(0));
-					} else if (type.equals(UMLPackage.Literals.LITERAL_STRING.getName())) {
+					} else if (UMLPackage.Literals.LITERAL_STRING.getName().endsWith(type)) {
 						descriptor.addValue(""); //$NON-NLS-1$
 					}
 

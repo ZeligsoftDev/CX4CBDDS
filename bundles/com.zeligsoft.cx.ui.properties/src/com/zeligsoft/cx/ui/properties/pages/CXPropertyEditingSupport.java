@@ -117,8 +117,7 @@ public class CXPropertyEditingSupport
 			Type type = descriptor.getProperty().getType();
 			if (type instanceof PrimitiveType) {
 				Object newValue;
-				if (type.getName()
-					.equals(UMLPackage.Literals.LITERAL_INTEGER.getName())) {
+				if (UMLPackage.Literals.LITERAL_INTEGER.getName().endsWith(type.getLabel())) {
 					newValue = new Integer((String) value);
 				} else {
 					newValue = value;
