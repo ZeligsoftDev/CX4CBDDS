@@ -178,7 +178,8 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 	public IStatus validateModel(URI uri) {
 
 		validationResult = Status.OK_STATUS;
-		Display.getDefault().asyncExec(new Runnable() {
+		// Run validation on a UI thread
+		Display.getDefault().syncExec(new Runnable() {
 			@Override
 			public void run() {
 
