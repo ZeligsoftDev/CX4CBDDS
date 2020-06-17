@@ -307,7 +307,7 @@ public final class DDS4CCMMigrationUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	private static void addMigrationAnnotation(final Model model,
+	public static void addMigrationAnnotation(final Model model,
 			final String toVersion) throws Exception {
 		ICommand command = new AbstractTransactionalCommand(
 				TransactionUtil.getEditingDomain(model), "Add version", null) { //$NON-NLS-1$
