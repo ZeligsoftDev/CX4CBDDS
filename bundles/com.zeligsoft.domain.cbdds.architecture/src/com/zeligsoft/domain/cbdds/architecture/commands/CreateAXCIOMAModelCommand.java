@@ -29,6 +29,7 @@ import org.eclipse.papyrus.infra.core.resource.ModelSet;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.papyrus.uml.tools.model.UmlUtils;
 import org.eclipse.papyrus.uml.tools.utils.PackageUtil;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Profile;
@@ -40,6 +41,7 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.DDS4CCMModel;
 import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.ModelTypeEnum;
+import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMMigrationUtil;
 
 /**
  * The Class CreateSysMLModelCommand.
@@ -132,6 +134,11 @@ public class CreateAXCIOMAModelCommand implements IModelCreationCommand {
 			ZDLUtil.addZDLConcept(model, DDS4CCMNames.DDS4_CCMMODEL);
 			DDS4CCMModel contextModel = ZDLFactoryRegistry.INSTANCE.create(model, DDS4CCMModel.class);
 			contextModel.setModelType(ModelTypeEnum.AXCIOMA);
+			try {
+				DDS4CCMMigrationUtil.addMigrationAnnotation((Model)model, "2.0.0");
+			} catch (Exception e) {
+				// do nothing
+			}
 		} else {
 			com.zeligsoft.domain.cbdds.architecture.Activator.log.error("Impossible to find CBDDS profile", null);
 		}
