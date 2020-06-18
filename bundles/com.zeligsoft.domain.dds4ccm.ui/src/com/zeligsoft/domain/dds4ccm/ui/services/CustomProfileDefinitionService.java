@@ -39,7 +39,7 @@ import org.eclipse.uml2.uml.util.UMLUtil;
  * of logging an error we only log a warning.
  * 
  * <p> This solution is rather verbose because we need to duplicate the code in the {@link startService} and {@link initService}
- * methods because both of them access private fields and methods from the @{link ProfileDefinitionService} class.
+ * methods because both of them access private fields and methods from the {@link ProfileDefinitionService} class.
  * 
  * @see {@link https://github.com/ZeligsoftDev/CX4CBDDS/issues/131}
  * 
