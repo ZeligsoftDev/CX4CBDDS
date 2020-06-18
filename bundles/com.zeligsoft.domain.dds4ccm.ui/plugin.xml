@@ -566,6 +566,12 @@
             priority="Integer.MAX_VALUE"
             startKind="startup">
       </service>
+      <service
+            classname="com.zeligsoft.domain.dds4ccm.ui.services.CustomProfileDefinitionService"
+            id="org.eclipse.papyrus.uml.tools.service.IProfileDefinitionService"
+            priority="2"
+            startKind="startup">
+      </service>
    </extension>
    
     <!--
