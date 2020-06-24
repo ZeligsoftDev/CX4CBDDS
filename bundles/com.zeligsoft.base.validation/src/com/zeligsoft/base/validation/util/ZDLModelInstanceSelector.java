@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.validation.model.IClientSelector;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Profile;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
@@ -43,15 +44,21 @@ public class ZDLModelInstanceSelector
 	public boolean selects(Object object) {
 		boolean result = false;
 
-		if (object instanceof Element) {
-			// model element
-			result = !ZDLUtil.getZDLProfiles((Element) object).isEmpty();
-		} else if (object instanceof EObject) {
-			// stereotype application or profile class instance
-			EObject root = EcoreUtil.getRootContainer(((EObject) object)
-				.eClass());
-			if (root instanceof Profile) {
-				result = !ZDLUtil.getZDLProfiles((Profile) root).isEmpty();
+		if (object instanceof EObject) {
+			EObject root = EcoreUtil.getRootContainer((EObject) object);
+			
+			if (!(root instanceof Package)) {
+				return false;
+			}
+			
+			result = !ZDLUtil.getZDLProfiles((Element) root).isEmpty();
+			
+			if (!result) {
+				// stereotype application or profile class instance
+				EObject rootEClass = EcoreUtil.getRootContainer(((EObject) object).eClass());
+				if (rootEClass instanceof Profile) {
+					result = !ZDLUtil.getZDLProfiles((Profile) rootEClass).isEmpty();
+				}
 			}
 		}
 
