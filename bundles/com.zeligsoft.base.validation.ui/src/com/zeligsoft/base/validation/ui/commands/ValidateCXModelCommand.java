@@ -50,6 +50,10 @@ public class ValidateCXModelCommand extends ValidateSubtreeCommand {
 		buffer.append(Messages.ValidateCXModelCommand_1).append(errors).append(Messages.ValidateCXModelCommand_2);
 		buffer.append(warnings).append(Messages.ValidateCXModelCommand_3);
 		buffer.append(System.lineSeparator());
+		if (errors > 0 || warnings > 0) {
+			buffer.append(Messages.ValidateCXModelCommand_4);
+			buffer.append(System.lineSeparator());
+		}
 		BaseUIUtil.writeToConsole(buffer.toString());
 	}
 }

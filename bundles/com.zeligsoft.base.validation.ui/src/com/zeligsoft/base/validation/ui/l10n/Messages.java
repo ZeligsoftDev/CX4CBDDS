@@ -37,6 +37,8 @@ public class Messages
 	public static String ValidateCXModelCommand_2;
 
 	public static String ValidateCXModelCommand_3;
+
+	public static String ValidateCXModelCommand_4;
 	
 	static {
 		// initialize resource bundle
