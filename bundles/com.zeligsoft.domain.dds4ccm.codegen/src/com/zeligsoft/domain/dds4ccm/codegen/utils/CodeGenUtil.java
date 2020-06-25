@@ -93,7 +93,7 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 	private static Set<CodeGenListener> listeners = new HashSet<CodeGenListener>();
 
 	public static CodeGenUtil INSTANCE = new CodeGenUtil();
-	
+
 	private IStatus validationResult;
 
 	private CodeGenUtil() {
@@ -175,8 +175,24 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 	 *            platform:/resource/DDS/DDS4CCMModel/BasicPubSub_asm.emx</i>
 	 * @return
 	 */
-	public IStatus validateModel(URI uri) {
+	public IStatus validateModel(final URI uri) {
 
+		if (uri == null || uri.isEmpty()) {
+			return createStatus(IStatus.ERROR, "Invalid URI provided: " + uri);
+		}
+
+		final URI platformUri;
+
+		IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+		if ("file".equals(uri.scheme())) {
+			IFile[] files = workspaceRoot.findFilesForLocationURI(java.net.URI.create(uri.toString()));
+			if (files.length == 0) {
+				return createStatus(IStatus.ERROR, "Invalid URI provided: " + uri);
+			}
+			platformUri = URI.createPlatformResourceURI(files[0].getFullPath().toString(), true);
+		} else {
+			platformUri = uri;
+		}
 		validationResult = Status.OK_STATUS;
 		// Run validation on a UI thread
 		Display.getDefault().syncExec(new Runnable() {
@@ -185,11 +201,10 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 
 				IWorkbenchPage page = BaseUIUtil.getActivepage();
 
-				IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-				URI diUri = uri.trimFileExtension().appendFileExtension("di");
-				IFile file = workspaceRoot.getFile(new Path(diUri.toPlatformString(true)));
+				URI diUri = platformUri.trimFileExtension().appendFileExtension("di");
 
-				if (file.exists()) {
+				IFile file = workspaceRoot.getFile(new Path(diUri.toPlatformString(true)));
+				if (file != null && file.exists()) {
 					try {
 						page.openEditor(new FileEditorInput(file), "org.eclipse.papyrus.infra.core.papyrusEditor", true,
 								IWorkbenchPage.MATCH_ID | IWorkbenchPage.MATCH_INPUT);
@@ -201,7 +216,7 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 					ServicesRegistry serviceRegistry = (ServicesRegistry) editor.getAdapter(ServicesRegistry.class);
 					try {
 						ModelSet modelSet = ServiceUtils.getInstance().getModelSet(serviceRegistry);
-						Package root = UML2Util.load(modelSet, uri, UMLPackage.Literals.PACKAGE);
+						Package root = UML2Util.load(modelSet, platformUri, UMLPackage.Literals.PACKAGE);
 						ValidateCXModelCommand command = new ValidateCXModelCommand(root, new DDS4CCMDiagnostician());
 						Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
 						TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(root);
@@ -215,7 +230,8 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 						// do nothing
 					}
 				} else {
-					validationResult = createStatus(IStatus.ERROR, "Failed to create Papyrus resource for URI: " + diUri);
+					validationResult = createStatus(IStatus.ERROR,
+							"Failed to create Papyrus resource for URI: " + diUri);
 				}
 			}
 		});
