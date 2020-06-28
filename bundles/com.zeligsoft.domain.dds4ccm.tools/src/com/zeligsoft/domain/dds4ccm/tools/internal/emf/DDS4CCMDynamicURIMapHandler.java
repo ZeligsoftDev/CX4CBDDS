@@ -41,6 +41,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
+import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 
 /**
@@ -63,27 +64,32 @@ public final class DDS4CCMDynamicURIMapHandler {
 
 			@Override
 			public IStatus runInUIThread(IProgressMonitor monitor) {
-				doRemap();
+				IWorkspace workspace = ResourcesPlugin.getWorkspace();
+				IResourceChangeListener rcl = new IResourceChangeListener() {
+
+					@Override
+					public void resourceChanged(IResourceChangeEvent event) {
+						IResourceDelta delta = event.getDelta();
+						if (delta != null) {
+							ResourceSet rset = new ResourceSetImpl();
+							processDelta(rset, delta);
+						}
+					}
+				};
+				workspace.addResourceChangeListener(rcl);
+				remapDynamicURI();
 				return Status.OK_STATUS;
 			}
 		}.schedule();
 	}
 
-	private static void doRemap() {
+	public static void remapDynamicURI() {
 
-		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-		IResourceChangeListener rcl = new IResourceChangeListener() {
-
-			@Override
-			public void resourceChanged(IResourceChangeEvent event) {
-				IResourceDelta delta = event.getDelta();
-				if (delta != null) {
-					ResourceSet rset = new ResourceSetImpl();
-					processDelta(rset, delta);
-				}
-			}
-		};
-		workspace.addResourceChangeListener(rcl);
+		for(CXPathmapDescriptor desc: CXDynamicURIConverter.PATHMAPS.values()) {
+			desc.setEnabled(false);
+			desc.apply();
+		}
+		CXDynamicURIConverter.PATHMAPS.clear();
 		ResourceSet rset = new ResourceSetImpl();
 		visitAllModels(rset, ResourcesPlugin.getWorkspace().getRoot());
 	}
@@ -113,6 +119,7 @@ public final class DDS4CCMDynamicURIMapHandler {
 	private static void processUML(ResourceSet rset, URI uri, int deltaKind) {
 		if (deltaKind == IResourceDelta.REMOVED) {
 			CXDynamicURIConverter.removeMapping(uri);
+			remapDynamicURI();
 			return;
 		}
 		Package model = UML2Util.load(rset, uri, UMLPackage.Literals.PACKAGE);
@@ -120,10 +127,8 @@ public final class DDS4CCMDynamicURIMapHandler {
 			// enable new URI mapping
 			String pathmap = CCMUtil.getZCXAnnotationDetail((Element) model, "pathmap", "");
 			if (!UML2Util.isEmpty(pathmap)) {
-				String modelName = model.eResource().getURI().lastSegment();
-				URI targetURI = model.eResource().getURI().trimSegments(1).appendSegment("");
 				URI sourceURI = URI.createURI("pathmap" + "://" + pathmap + "/", true);
-				CXDynamicURIConverter.addMapping(sourceURI, targetURI, modelName);
+				CXDynamicURIConverter.addMapping(sourceURI, uri);
 			}
 		}
 	}

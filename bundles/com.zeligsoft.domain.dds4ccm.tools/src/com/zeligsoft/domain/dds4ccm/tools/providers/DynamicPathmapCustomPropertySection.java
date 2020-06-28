@@ -156,10 +156,8 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 		if (UML2Util.isEmpty(pathmap)) {
 			return;
 		}
-		// enable new URI mapping
-		URI targetURI = modelUri.trimSegments(1).appendSegment("");
 		URI sourceURI = URI.createURI(PATHMAP_KEY + "://" + pathmap + "/", true);
-		CXDynamicURIConverter.addMapping(sourceURI, targetURI, modelUri.lastSegment());
+		CXDynamicURIConverter.addMapping(sourceURI, modelUri);
 
 	}
 }

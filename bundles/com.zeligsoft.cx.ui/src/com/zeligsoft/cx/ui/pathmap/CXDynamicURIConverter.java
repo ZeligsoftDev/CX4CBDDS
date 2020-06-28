@@ -18,7 +18,10 @@ public class CXDynamicURIConverter {
 		return PATHMAPS.get(uri);
 	}
 
-	public static CXPathmapDescriptor addMapping(URI pathmapUri, URI targetURI, String modelName) {
+	public static CXPathmapDescriptor addMapping(URI pathmapUri, URI modelUri) {
+		String modelName = modelUri.lastSegment();
+		URI targetURI = modelUri.trimSegments(1).appendSegment("");
+
 		CXPathmapDescriptor desc = getPathmapDescriptor(pathmapUri);
 		if (desc != null && desc.getMapping().equals(targetURI)) {
 			// same mapping exist possibly from different model
