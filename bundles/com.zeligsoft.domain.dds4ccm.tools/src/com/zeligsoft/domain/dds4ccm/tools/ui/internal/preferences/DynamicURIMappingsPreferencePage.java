@@ -18,7 +18,6 @@ package com.zeligsoft.domain.dds4ccm.tools.ui.internal.preferences;
 
 import java.util.List;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
@@ -28,9 +27,12 @@ import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
@@ -40,6 +42,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 
 import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
+import com.zeligsoft.domain.dds4ccm.tools.internal.emf.DDS4CCMDynamicURIMapHandler;
 
 /**
  * Dynamic URI mapping preference page.
@@ -72,7 +75,7 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 		result.setLayoutData(data);
 
 		Label label = new Label(result, SWT.NONE);
-		label.setText("Select dynamic pathmap URIs to re-direct");
+		label.setText("Select dynamic pathmap URIs to enable:");
 		data = new GridData();
 		data.horizontalAlignment = SWT.FILL;
 		label.setLayoutData(data);
@@ -96,11 +99,8 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 		column.getColumn().setText("Pathmap");
 		column.getColumn().setWidth(300);
 		column = new TableViewerColumn(table, SWT.NONE);
-		column.getColumn().setText("New Mapping");
-		column.getColumn().setWidth(400);
-		column = new TableViewerColumn(table, SWT.NONE);
-		column.getColumn().setText("Original Mapping");
-		column.getColumn().setWidth(200);
+		column.getColumn().setText("Mapping");
+		column.getColumn().setWidth(600);
 
 		table.setLabelProvider(new URIMappingLabelProvider());
 		table.setContentProvider(contents);
@@ -121,8 +121,21 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 		table.setCheckedElements(selected.toArray());
 
 		noDefaultAndApplyButton();
-
+		contributeButtons(result);
 		return result;
+	}
+	
+	@Override
+	protected void contributeButtons(Composite parent) {
+		Button button = new Button(parent, SWT.PUSH);
+		button.setText("Remap");
+		button.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				DDS4CCMDynamicURIMapHandler.remapDynamicURI();
+				table.setInput(getPathmaps());
+			}
+		});
 	}
 
 	private List<CXPathmapDescriptor> getPathmaps() {
@@ -159,7 +172,7 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 		public Image getColumnImage(Object element, int columnIndex) {
 			return null;
 		}
-
+		
 		@Override
 		public String getColumnText(Object element, int columnIndex) {
 			CXPathmapDescriptor pathmap = (CXPathmapDescriptor) element;
@@ -169,10 +182,6 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 				return pathmap.getPathmap().toString();
 			case 1:
 				return pathmap.getMapping().toString();
-			case 2: {
-				URI uri = pathmap.getOriginalMapping();
-				return uri == null ? "" : uri.toString();
-			}
 			default:
 				break;
 			}
