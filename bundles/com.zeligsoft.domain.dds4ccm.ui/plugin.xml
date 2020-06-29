@@ -573,6 +573,30 @@
             startKind="startup">
       </service>
    </extension>
+   <extension
+      point="org.eclipse.papyrus.infra.gmfdiag.canonical.strategies">
+	   <semanticChildrenStrategy
+          class="com.zeligsoft.domain.dds4ccm.ui.strategies.CompositeDiagramSemanticChildrenStrategy"
+          priority="1">
+	      <enablement>
+	         <and>
+	            <with
+	                  variable="element">
+	               <instanceof
+	                     value="org.eclipse.uml2.uml.StructuredClassifier">
+	               </instanceof>
+	            </with>
+	            <with
+	                  variable="view">
+	               <test
+	                     property="org.eclipse.papyrus.infra.gmfdiag.common.diagramType"
+	                     value="CompositeStructure">
+	               </test>
+	            </with>
+	         </and>
+	      </enablement>
+	   </semanticChildrenStrategy>
+	</extension>
    
     <!--
    <extension
