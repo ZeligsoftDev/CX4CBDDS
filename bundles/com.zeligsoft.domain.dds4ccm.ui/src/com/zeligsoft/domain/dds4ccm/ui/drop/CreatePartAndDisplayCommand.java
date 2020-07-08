@@ -42,9 +42,11 @@ import org.eclipse.papyrus.infra.emf.utils.ServiceUtilsForEObject;
 import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
 import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.VisibilityKind;
 
 /**
  * Command to create a CCM Part, add it to a parent Assembly and display it to
@@ -159,6 +161,8 @@ public class CreatePartAndDisplayCommand extends AbstractCommand {
 				if(!UML2Util.isEmpty(partName)) {
 					createdProperty.setName(partName);
 				}
+				createdProperty.setAggregation(AggregationKind.COMPOSITE_LITERAL);
+				createdProperty.setVisibility(VisibilityKind.PRIVATE_LITERAL);
 				return createdProperty;
 			}
 

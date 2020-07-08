@@ -16,13 +16,9 @@
  */
 package com.zeligsoft.domain.idl3plus.ui.edithelpers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
@@ -30,19 +26,14 @@ import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.edithelper.AbstractEditHelperAdvice;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
-import org.eclipse.jface.window.Window;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.cx.ui.dialogs.ZDLElementSelectionDialog;
-import com.zeligsoft.cx.ui.filters.ElementSelectionFilter;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.idl3plus.ui.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.ccm.preferences.CCMPreferenceConstants;
 
 /**
  * Edit helper advice for components in the IDL3Plus domain.
@@ -86,29 +77,7 @@ public class IDL3PlusConnectorEditHelperAdvice extends AbstractEditHelperAdvice 
 						return null;
 					}
 					Type propertyType = newProperty.getType();
-					if (propertyType == null) {
-						if (ZDLUtil.isZDLConcept(newProperty, IDL3PlusNames.DATA_SPACE)) {
-							if (InstanceScope.INSTANCE.getNode(com.zeligsoft.domain.idl3plus.ui.Activator.PLUGIN_ID)
-									.getBoolean(CCMPreferenceConstants.AUTO_TYPE_SELECTION_DIALOG, true)) {
-								List<String> concepts = new ArrayList<String>();
-
-								ZDLElementSelectionDialog dialog = new ZDLElementSelectionDialog(
-										Display.getCurrent().getActiveShell(), container,
-										concepts, true, true);
-								dialog.setElementFilter(new ElementSelectionFilter(
-										IDL3PlusNames.DATA_SPACE,
-										IDL3PlusNames.DATA_SPACE__CONNECTOR_TYPE));
-								if (dialog.open() == Window.OK) {
-									if (!dialog.getSelectedElements().isEmpty()
-											&& dialog.getSelectedElements()
-													.getFirstElement() != null) {
-										newProperty.setType((Type) dialog
-												.getSelectedElements().getFirstElement());
-									}
-								}
-							}
-						}
-					} else if (ZDLUtil.isZDLConcept(propertyType,
+					if (propertyType != null && ZDLUtil.isZDLConcept(propertyType,
 							IDL3PlusNames.CONNECTOR_DEF)) {
 						if (!ZDLUtil.isZDLConcept(newProperty, IDL3PlusNames.DATA_SPACE)) {
 							ZDLUtil.addZDLConcept(newProperty, IDL3PlusNames.DATA_SPACE);
