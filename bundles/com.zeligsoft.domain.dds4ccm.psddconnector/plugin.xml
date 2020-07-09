@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping
+            source="pathmap://CCM_PSDD_LIBRARIES/"
+            target="platform:/plugin/com.zeligsoft.domain.dds4ccm.psddconnector/models/">
+      </mapping>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.uml.extensionpoints.UMLLibrary">
+      <library
+            name="CCM PSDD Connector"
+            path="pathmap://CCM_PSDD_LIBRARIES/CCM_PSDD.uml">
+      </library>
+   </extension>
+   <extension
+   		point="com.zeligsoft.domain.idl3plus.model_library_configuration">
+   	  <connector name="CCM_PSDD::CCM_PSDD::Typed">
+      <portIcon
+            name="CCM_PSDD::CCM_PSDD::Typed::PSDD_Publish"
+            portIcon="icons/obj16/publisher-port.gif"
+            conjugatedPortIcon="icons/obj16/subscriber-port.gif">
+      </portIcon>
+      <portIcon
+            name="CCM_PSDD::CCM_PSDD::Typed::PSDD_Subscribe"
+            portIcon="icons/obj16/subscriber-port.gif"
+            conjugatedPortIcon="icons/obj16/publisher-port.gif">
+      </portIcon>
+   	  </connector>
+   	</extension>
+</plugin>

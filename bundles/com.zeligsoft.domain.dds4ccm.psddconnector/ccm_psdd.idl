@@ -1,0 +1,130 @@
+/**
+* @file    ccm_psdd.idl
+* @author  Martin Corino
+*
+* @brief   idl file for psdd4ccm
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+*/
+
+#ifndef CCM_PSDD_BASE_IDL
+#define CCM_PSDD_BASE_IDL
+
+#include <Components.idl>
+#include "psdd4ccm_base.idl"
+#include "psdd4ccm_connector.idl"
+
+module CCM_PSDD
+{
+  module Typed <typename T, sequence<T> TSeq> {
+
+    /// Publisher: to publish data
+    local interface Publisher {
+      void write_one (in T datum)
+              raises (InternalError);
+      /// behavior
+      /// ---------
+      /// - attempt to write_many is stopped at the first error
+      void write_many (in TSeq data)
+              raises (InternalError);
+    };
+
+    /// Subscriber: to manage subscriptions
+    local interface Subscriber {
+      void subscribe_any ()
+                    raises (InternalError);
+      void subscribe (in T keyvalue)
+                    raises (InternalError);
+      void unsubscribe_any ()
+                    raises (InternalError);
+      void unsubscribe (in T keyvalue)
+                    raises (InternalError);
+      // behavior
+      // --------
+      // - by default no subscriptions are active which means
+      //   no data will become available for Getter or Listener
+      // - subscribe_any () will subscribe to all data irrespective of
+      //   key value(s)
+      // - subscribe () will subscribe to data matching the key value(s)
+      //   provided in the argument datum
+      // - subscribe () / unsubscribe () can be called multiple times
+      //   with different key value(s)
+    };
+
+      // -- Getter: to get new data (and wait for)
+    local interface Getter {
+      boolean get_one (out T datum)
+              raises (InternalError);
+      boolean get_many (out TSeq data)
+              raises (InternalError);
+      /// default UNLIMITED (0)
+      attribute DataCount_t           max_data;
+      // behavior
+      // --------
+      // - all operations returns TRUE if data are provided
+      //   or FALSE if time-out occurred
+      // - data returned:
+      //      - get_one returns each read sample one by one
+      //      - get_many returns all available samples within the
+      //        max_data limit
+    };
+
+    /// Listener: similar to a Getter but in push mode
+    local interface Listener {
+      void on_data (inout TSeq data);
+      /// default NOT_ENABLED
+      attribute ListenerMode          listen_mode;
+      /// default UNLIMITED (0)
+      attribute DataCount_t           max_data;
+      // behavior
+      // --------
+      // - if the listener is activated in ONE_BY_ONE mode on_data is always triggered
+      //   with a single data item in the sequence argument
+      // - if the listener is activated in ANY_AVAILABLE mode on_data will be triggered
+      //   with one or more data items in the sequence argument (depending on available items
+      //   and limited by configured 'max_data')
+      // on_data implementations should not block and return control to the caller as soon
+      // as possible to avoid starving the listener threads
+    };
+
+    // -- Extended Port types
+
+    porttype PSDD_Subscribe
+    {
+      uses Getter data;
+      provides Listener data_listener;
+      uses Subscriber data_subscriber;
+    };
+
+    porttype PSDD_Publish
+    {
+      uses Publisher data;
+    };
+
+    // -- PSDD Event Connector
+
+    connector PSDD_Event : PSDD_Base
+    {
+      mirrorport PSDD_Publish supplier;
+      mirrorport PSDD_Subscribe consumer;
+    };
+
+    // -- Customization
+
+    /// Serializer: packs/unpacks keys and data
+    local interface Serializer {
+      boolean setup_pack (in PSData data);
+      boolean pack_key (in PSData data, in T keyvalue);
+      boolean pack_data (in PSData data, in T datum);
+      void finalize_pack (in PSData data);
+
+      boolean setup_unpack (in PSData data);
+      boolean unpack_key (in PSData data, inout T keyvalue);
+      boolean unpack_data (in PSData data, inout T datum);
+      void finalize_unpack (in PSData data);
+    };
+  }; /* module Typed */
+
+}; /* module CCM_PSDD */
+
+#endif
