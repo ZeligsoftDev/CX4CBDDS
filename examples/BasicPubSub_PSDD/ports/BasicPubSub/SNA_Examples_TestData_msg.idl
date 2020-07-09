@@ -1,0 +1,67 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2008-2020 -- ALL RIGHTS RESERVED
+//==============================================================================
+//
+//==============================================================================
+// EXPORT REGULATIONS (EAR99)
+//==============================================================================
+// DISCLOSURE: 
+//
+// Warning - This data is subject to the Export Administration Act (Title 22 
+// U.S.C. App. 2401 et seq.), as amended. The implementing regulation for 
+// this statute is the Export Administration Regulations (EAR) (15 C.F.R.
+// 730-774). It may not be transferred, either in its original form, derivative 
+// documents, or after being incorporated into other data without first 
+// obtaining approval from the U.S. government or as otherwise authorized by 
+// U.S. law and regulations. 
+//==============================================================================
+/// @defgroup SNA_Examples_TestData_msg TestData_msg
+/// @{
+/// 
+/// @file SNA_Examples_TestData_msg.idl
+/// @brief TestData_msg message definition IDL file
+
+//=========================================================
+
+#ifndef CX_PORTS__BASICPUBSUB__SNA_EXAMPLES_TESTDATA_MSG_IDL
+#define CX_PORTS__BASICPUBSUB__SNA_EXAMPLES_TESTDATA_MSG_IDL
+
+#include "SNA_Examples_defn.idl"
+#pragma ndds typesupport "SNA_Examples_TestData_msgSupport.h"
+
+/// @brief SNA_Examples 
+module SNA_Examples {
+
+    /// @struct TestData_msg
+    ///
+    ///  Example DDS message structure for the BasicPubSub example.
+    struct TestData_msg {
+
+        /// 32-bit integer.
+        unsigned long myInt32;
+
+        /// 64-bit integer.
+        unsigned long long myInt64;
+
+        /// Double-precision floating point number.
+        double myDouble;
+
+        /// Bounded ASCII string
+        SNA_Examples::BoundedString myString;
+
+        /// Example enumeration
+        SNA_Examples::State myState;
+
+        /// Example enumeration
+        SNA_Examples::Color myColor;
+    }; //@top-level true
+};
+
+#endif // CX_PORTS__BASICPUBSUB__SNA_EXAMPLES_TESTDATA_MSG_IDL
+
+/// @}
+//==============================================================================
+//                            U N C L A S S I F I E D                            
+//==============================================================================

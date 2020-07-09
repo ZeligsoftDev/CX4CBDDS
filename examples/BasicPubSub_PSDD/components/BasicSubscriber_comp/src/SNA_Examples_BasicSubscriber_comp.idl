@@ -1,0 +1,57 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2008-2020 -- ALL RIGHTS RESERVED
+//==============================================================================
+//
+//==============================================================================
+// EXPORT REGULATIONS (EAR99)
+//==============================================================================
+// DISCLOSURE: 
+//
+// Warning - This data is subject to the Export Administration Act (Title 22 
+// U.S.C. App. 2401 et seq.), as amended. The implementing regulation for 
+// this statute is the Export Administration Regulations (EAR) (15 C.F.R.
+// 730-774). It may not be transferred, either in its original form, derivative 
+// documents, or after being incorporated into other data without first 
+// obtaining approval from the U.S. government or as otherwise authorized by 
+// U.S. law and regulations. 
+//==============================================================================
+/// @defgroup SNA_Examples_BasicSubscriber_comp BasicSubscriber_comp
+/// @{
+/// 
+/// @file SNA_Examples_BasicSubscriber_comp.idl
+/// @brief BasicSubscriber_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_COMPONENTS__BASICSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_BASICSUBSCRIBER_COMP_IDL
+#define CX_COMPONENTS__BASICSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_BASICSUBSCRIBER_COMP_IDL
+
+#pragma componentInterface "BasicSubscriber_comp" 
+#include <Components.idl>
+#pragma ciao lem "SNA_Examples_BasicSubscriber_compE.idl"
+#pragma conntype SNA_Examples::BasicSubscriber_comp::testDataSub Listener
+#include "SNA_Examples_TestData_conn.idl"
+
+/// @brief SNA_Examples 
+module SNA_Examples {
+
+    /// The BasicSubscriber_comp component is the subscriber in this example. It
+    /// subscribes to a DDS topic. When a sample is published to that topic,
+    /// this component is notified, and it reads the sample (message), and logs
+    /// it.
+    component BasicSubscriber_comp {
+       
+       port TestData_conn::PSDD_Subscribe testDataSub;
+//uses TestData_conn::Subscriber testDataSub;
+    };
+
+};
+
+#endif // CX_COMPONENTS__BASICSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_BASICSUBSCRIBER_COMP_IDL
+
+/// @}
+//==============================================================================
+//                            U N C L A S S I F I E D                            
+//==============================================================================

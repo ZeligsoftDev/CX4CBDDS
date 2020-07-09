@@ -1,0 +1,62 @@
+//==============================================================================
+//                         U N C L A S S I F I E D
+//==============================================================================
+// Copyright (c) Northrop Grumman Corporation 2008-2020 -- ALL RIGHTS RESERVED
+//==============================================================================
+//
+//==============================================================================
+// EXPORT REGULATIONS (EAR99)
+//==============================================================================
+// DISCLOSURE: 
+//
+// Warning - This data is subject to the Export Administration Act (Title 22 
+// U.S.C. App. 2401 et seq.), as amended. The implementing regulation for 
+// this statute is the Export Administration Regulations (EAR) (15 C.F.R.
+// 730-774). It may not be transferred, either in its original form, derivative 
+// documents, or after being incorporated into other data without first 
+// obtaining approval from the U.S. government or as otherwise authorized by 
+// U.S. law and regulations. 
+//==============================================================================
+/// @defgroup SNA_Examples_BasicPublisher_comp BasicPublisher_comp
+/// @{
+/// 
+/// @file SNA_Examples_BasicPublisher_comp.idl
+/// @brief BasicPublisher_comp component definition IDL file
+
+//=========================================================
+
+#ifndef CX_COMPONENTS__BASICPUBLISHER_COMP__SRC__SNA_EXAMPLES_BASICPUBLISHER_COMP_IDL
+#define CX_COMPONENTS__BASICPUBLISHER_COMP__SRC__SNA_EXAMPLES_BASICPUBLISHER_COMP_IDL
+
+#pragma componentInterface "BasicPublisher_comp" 
+#include <Components.idl>
+#pragma ciao lem "SNA_Examples_BasicPublisher_compE.idl"
+#pragma conntype SNA_Examples::BasicPublisher_comp::testDataPub Publisher
+#include "SNA_Examples_TestData_conn.idl"
+
+/// @brief SNA_Examples 
+module SNA_Examples {
+
+    /// The BasicPublisher_comp component is the publisher in this example. It
+    /// performs the following activities:
+    ///   - creates a message (sample) according to a predefined structure
+    /// (SNA_Examples::TestData_msg)
+    ///   - Each time it wakes up to publish, it gives a configurable number of
+    /// samples to the data writer who in turn publishes them to a DDS topic.
+    ///   - Uses a timer associated with it to wake up every five seconds, at
+    /// which point, the publication process is repeated.
+    component BasicPublisher_comp {
+        
+        port TestData_conn::PSDD_Publish testDataPub;
+        /// Added to access config file name.
+        attribute string BasicPublisher_config;
+    };
+
+};
+
+#endif // CX_COMPONENTS__BASICPUBLISHER_COMP__SRC__SNA_EXAMPLES_BASICPUBLISHER_COMP_IDL
+
+/// @}
+//==============================================================================
+//                            U N C L A S S I F I E D                            
+//==============================================================================
