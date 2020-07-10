@@ -75,10 +75,10 @@
             <ownedAttribute xmi:type="uml:Property" xmi:id="_bYHLUME9EeqtXptXFYfDbw" name="basicPublisher_comp" type="_mLDSAFPxEeqNpdmZFi99Lg"/>
             <ownedAttribute xmi:type="uml:Property" xmi:id="_bYK1sME9EeqtXptXFYfDbw" name="basicSubscriber_comp" type="_mLDSe1PxEeqNpdmZFi99Lg"/>
             <ownedAttribute xmi:type="uml:Property" xmi:id="_bYV00ME9EeqtXptXFYfDbw" name="testDataPub" type="_OKXzMMCDEeqWa6SYZIc3pg">
-              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_QhJ2kcFCEeqLc_GGycycag" instance="_QhJ2kMFCEeqLc_GGycycag"/>
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_yyH3MMLIEeqV5N9QEK2BrA" instance="_QhJ2kMFCEeqLc_GGycycag"/>
             </ownedAttribute>
             <ownedAttribute xmi:type="uml:Property" xmi:id="_bYZfMME9EeqtXptXFYfDbw" name="testDataSub" type="_OKd50MCDEeqWa6SYZIc3pg">
-              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_RPXAYMFCEeqLc_GGycycag" instance="_RPWZUMFCEeqLc_GGycycag"/>
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_4HQv4MLIEeqV5N9QEK2BrA" instance="_RPWZUMFCEeqLc_GGycycag"/>
             </ownedAttribute>
             <ownedAttribute xmi:type="uml:Property" xmi:id="_Oq4t8MFBEeqLc_GGycycag" name="TestData_conn" type="_OKl1oMCDEeqWa6SYZIc3pg">
               <defaultValue xmi:type="uml:InstanceValue" xmi:id="_P7jPIMFCEeqLc_GGycycag" instance="_P7iBAMFCEeqLc_GGycycag"/>
@@ -103,24 +103,54 @@
               <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_QhJ2kMFCEeqLc_GGycycag" name="PSDD_EventInstance" classifier="_OKl1oMCDEeqWa6SYZIc3pg">
                 <slot xmi:type="uml:Slot" xmi:id="_QhZuMMFCEeqLc_GGycycag">
                   <definingFeature xmi:type="uml:Property" href="pathmap://CCM_PSDD_LIBRARIES/CCM_PSDD.uml#_8iiQMME6EeqtXptXFYfDbw"/>
-                  <value xmi:type="uml:InstanceValue" xmi:id="_QhaVQcFCEeqLc_GGycycag" instance="_QhZuMcFCEeqLc_GGycycag"/>
+                  <value xmi:type="uml:InstanceValue" xmi:id="_yyg4wMLIEeqV5N9QEK2BrA" instance="_yyfqoMLIEeqV5N9QEK2BrA"/>
+                </slot>
+                <slot xmi:type="uml:Slot" xmi:id="_yPPzoMLIEeqV5N9QEK2BrA">
+                  <definingFeature xmi:type="uml:Property" href="pathmap://CCM_PSDD_LIBRARIES/CCM_PSDD.uml#_zMYfgMFCEeqLc_GGycycag"/>
+                  <value xmi:type="uml:InstanceValue" xmi:id="_yPRo0MLIEeqV5N9QEK2BrA" instance="_yPQasMLIEeqV5N9QEK2BrA"/>
                 </slot>
               </packagedElement>
-              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_QhZuMcFCEeqLc_GGycycag" name="CXBooleanInstance">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_yPQasMLIEeqV5N9QEK2BrA" name="StringSeqInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://CCM_PSDD_LIBRARIES/CCM_PSDD.uml#_TfHAAMFDEeqLc_GGycycag"/>
+                <slot xmi:type="uml:Slot" xmi:id="_yQP5MMLIEeqV5N9QEK2BrA">
+                  <definingFeature xmi:type="uml:Property" href="pathmap://CCM_PSDD_LIBRARIES/CCM_PSDD.uml#_TfmIMMFDEeqLc_GGycycag"/>
+                  <value xmi:type="uml:InstanceValue" xmi:id="_yQRHUMLIEeqV5N9QEK2BrA" instance="_yQQgQcLIEeqV5N9QEK2BrA"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_yQQgQcLIEeqV5N9QEK2BrA" name="CXStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_yyrQ0MLIEeqV5N9QEK2BrA" value="tcp://*:50005"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_yyfqoMLIEeqV5N9QEK2BrA" name="CXBooleanInstance">
                 <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
-                <specification xmi:type="uml:LiteralString" xmi:id="_QhaVQMFCEeqLc_GGycycag" value="true"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_yygRsMLIEeqV5N9QEK2BrA" value="true"/>
               </packagedElement>
             </packagedElement>
             <packagedElement xmi:type="uml:Package" xmi:id="_RPSH4MFCEeqLc_GGycycag" name="_testDataSub">
               <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_RPWZUMFCEeqLc_GGycycag" name="PSDD_EventInstance" classifier="_OKl1oMCDEeqWa6SYZIc3pg">
                 <slot xmi:type="uml:Slot" xmi:id="_RPp7UMFCEeqLc_GGycycag">
                   <definingFeature xmi:type="uml:Property" href="pathmap://CCM_PSDD_LIBRARIES/CCM_PSDD.uml#__-1X8ME6EeqtXptXFYfDbw"/>
-                  <value xmi:type="uml:InstanceValue" xmi:id="_RPrJcMFCEeqLc_GGycycag" instance="_RPqiYMFCEeqLc_GGycycag"/>
+                  <value xmi:type="uml:InstanceValue" xmi:id="_4HsNscLIEeqV5N9QEK2BrA" instance="_4HrmoMLIEeqV5N9QEK2BrA"/>
+                </slot>
+                <slot xmi:type="uml:Slot" xmi:id="_3maFkcLIEeqV5N9QEK2BrA">
+                  <definingFeature xmi:type="uml:Property" href="pathmap://CCM_PSDD_LIBRARIES/CCM_PSDD.uml#_HpOXIMFDEeqLc_GGycycag"/>
+                  <value xmi:type="uml:InstanceValue" xmi:id="_3masosLIEeqV5N9QEK2BrA" instance="_3masoMLIEeqV5N9QEK2BrA"/>
                 </slot>
               </packagedElement>
-              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_RPqiYMFCEeqLc_GGycycag" name="CXBooleanInstance">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_3masoMLIEeqV5N9QEK2BrA" name="StringSeqInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://CCM_PSDD_LIBRARIES/CCM_PSDD.uml#_TfHAAMFDEeqLc_GGycycag"/>
+                <slot xmi:type="uml:Slot" xmi:id="_3mdv8MLIEeqV5N9QEK2BrA">
+                  <definingFeature xmi:type="uml:Property" href="pathmap://CCM_PSDD_LIBRARIES/CCM_PSDD.uml#_TfmIMMFDEeqLc_GGycycag"/>
+                  <value xmi:type="uml:InstanceValue" xmi:id="_3me-EMLIEeqV5N9QEK2BrA" instance="_3meXAcLIEeqV5N9QEK2BrA"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_3meXAcLIEeqV5N9QEK2BrA" name="CXStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_4Hs0wMLIEeqV5N9QEK2BrA" value="tcp://localhost:50005"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_4HrmoMLIEeqV5N9QEK2BrA" name="CXBooleanInstance">
                 <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
-                <specification xmi:type="uml:LiteralString" xmi:id="_RPqiYcFCEeqLc_GGycycag" value="true"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_4HsNsMLIEeqV5N9QEK2BrA" value="true"/>
               </packagedElement>
             </packagedElement>
           </packagedElement>
