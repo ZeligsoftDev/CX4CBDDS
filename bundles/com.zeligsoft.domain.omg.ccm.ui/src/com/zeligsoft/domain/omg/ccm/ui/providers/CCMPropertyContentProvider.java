@@ -166,7 +166,6 @@ public class CCMPropertyContentProvider implements ITreeContentProvider {
 			} else if (ZDLUtil.isZDLConcept(type,
 					CORBADomainNames.CORBASEQUENCE)
 					|| ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAARRAY)) {
-				((CCMPropertyEntry) entry).migrateSequenceValue();
 				Slot slot = getSequenceMemberSlot(entry);
 				if (slot != null) {
 					for (ValueSpecification value : slot.getValues()) {
