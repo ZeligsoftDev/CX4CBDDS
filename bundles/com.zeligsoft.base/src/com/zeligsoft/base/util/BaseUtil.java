@@ -19,6 +19,7 @@ package com.zeligsoft.base.util;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,6 +74,11 @@ public class BaseUtil {
 			result.add(map.get(key));
 		}
 		return result;
+	}
+
+	
+	public static Command getDeleteCommand(EObject selectedElement) {
+		return getDeleteCommand(Collections.singletonList(selectedElement));
 	}
 	
 	/**

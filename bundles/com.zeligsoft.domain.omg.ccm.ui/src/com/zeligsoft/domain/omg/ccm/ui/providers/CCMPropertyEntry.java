@@ -28,6 +28,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
@@ -977,6 +978,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 		if (!isMultiValue()) {
 			return;
 		}
+		List<EObject> definingFeatures = CCMPropertyEntry.getDefiningFeaturesForAncestorSlots(this);
 		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(modelObject);
 		ICommand command = new AbstractTransactionalCommand(editingDomain, Messages.CCMPropertiesDialog_ActionLabel,
 				null) {
@@ -1006,9 +1008,19 @@ public class CCMPropertyEntry implements IPropertyEntry {
 								.remove(slot.getValues().size() - 1);
 						// force remove instance value for this sequence entry
 						cleanInstanceValue(value, true);
-						// clean up instances as result of removing sequence
-						// entry
-						cleanInstances();
+					}
+
+					if (slot.getValues().isEmpty()) {
+						editingDomain.getCommandStack().execute(BaseUtil.getDeleteCommand(slot));
+						InstanceSpecification partInstance = getRootInstanceSpecification();
+						Slot propertySlot = CCMUtil.getInstanceSlotForProperty(partInstance, (Property) modelObject, definingFeatures);
+						Iterator<ValueSpecification> itor = propertySlot.getValues().iterator();
+						while (itor.hasNext()) {
+							InstanceValue value = (InstanceValue) itor.next();
+							itor.remove();
+							cleanInstanceValue(value, true);
+						}
+						editingDomain.getCommandStack().execute(BaseUtil.getDeleteCommand(propertySlot));
 					}
 				}
 				return CommandResult.newOKCommandResult();
@@ -1099,9 +1111,14 @@ public class CCMPropertyEntry implements IPropertyEntry {
 			if (memberInstanceValue && !cleanMemberInstanceValue) {
 				return;
 			}
-			Command cmd = BaseUtil.getDeleteCommand(Collections.singleton(instanceValue));
-			if(cmd.canExecute()) {
-				TransactionUtil.getEditingDomain(instanceValue).getCommandStack().execute(cmd);
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(instanceValue);
+			if (domain == null) {
+				EcoreUtil.delete(instanceValue);
+			} else {
+				Command cmd = BaseUtil.getDeleteCommand(Collections.singleton(instanceValue));
+				if (cmd.canExecute()) {
+					domain.getCommandStack().execute(cmd);
+				}
 			}
 		}
 	}
