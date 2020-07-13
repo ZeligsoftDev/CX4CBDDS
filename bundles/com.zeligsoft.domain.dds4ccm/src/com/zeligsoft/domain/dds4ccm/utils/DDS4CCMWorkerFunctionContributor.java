@@ -816,6 +816,7 @@ public class DDS4CCMWorkerFunctionContributor implements
 						}
 					}
 					// port interface attributes
+					
 					for (Property attr : thisInterface.getAllAttributes()) {
 						if (ZDLUtil.isZDLConcept(attr,
 								CORBADomainNames.CORBAATTRIBUTE)) {
@@ -830,7 +831,7 @@ public class DDS4CCMWorkerFunctionContributor implements
 							UuidDescriptor attrUuidDesc = intfUuidDesc
 									.getNewUuidDescriptor(attrUuid);
 							Port attrPort = UMLFactory.eINSTANCE.createPort();
-							attrPort.setName("_pattr_" + thisPort.getName()
+							attrPort.setName("_pattr_" + getPortAttributeClassName(thisPort, thisInterface)
 									+ "___" + attr.getName());
 							target.put(attrPort,
 									new ArrayList<WorkerFunctionInfo>());
@@ -978,6 +979,27 @@ public class DDS4CCMWorkerFunctionContributor implements
 				}
 			}
 		}
+	}
+	
+	/**
+	 * Calculate attribute class name
+	 * @param thisPort
+	 * @param thisInterface
+	 * @return
+	 */
+	protected String getPortAttributeClassName(Port thisPort, Interface thisInterface){
+		String result = thisPort.getName();
+		Type type = thisPort.getType();
+		if(type != null && ZDLUtil.isZDLConcept(type, IDL3PlusNames.EXTENDED_PORT_TYPE)) {
+			Class ept = (Class) type;
+			for(InterfaceRealization ir : ept.getInterfaceRealizations()) {
+				if(ir.getContract() == thisInterface) {
+					result = result + "_" + ir.getName();
+					break;
+				}
+			}
+		}
+		return result;
 	}
 
 	/**
