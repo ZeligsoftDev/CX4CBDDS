@@ -1,7 +1,279 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<elementtypesconfigurations:ElementTypeSetConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmi:id="_9ZjZMDCqEeqtnaAwMhA4RQ" identifier="com.zeligsoft.base.zdl.elementTypes" name="ZDL Element Types" metamodelNsURI="http://www.eclipse.org/uml2/5.0.0/UML">
-  <adviceBindingsConfigurations xmi:type="elementtypesconfigurations:AdviceBindingConfiguration" xmi:id="_yea_YAxuEeqEja6HpEya9Q" description="ZDL DestroyReference Advice Binding" identifier="com.zeligsoft.base.zdl.destroyReferenceAdvice" inheritance="all" editHelperAdviceClassName="com.zeligsoft.base.zdl.type.ZDLDestroyReferenceAdvice">
-    <target xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Element"/>
+<elementtypesconfigurations:ElementTypeSetConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:applystereotypeadvice="http://www.eclipse.org/papyrus/uml/types/applystereotypeadvice/1.1" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:stereotypematcher="http://www.eclipse.org/papyrus/uml/types/stereotypematcher/1.1" xmi:id="_pdDAQOPDEem9W8uIC4-YxQ" description="ZDL Element Type Set Configuration" identifier="com.zeligsoft.domain.zdl.elementTypeSet" name="ZDL" metamodelNsURI="http://www.eclipse.org/uml2/5.0.0/UML">
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9SOcOUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainBlock" name="Domain Block" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sJjv4OUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Package.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sJkW8OUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainBlock</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Package"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9UqsuUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainConcept" name="Domain Concept" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sJpPcOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sJpPceUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainConcept</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Class"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9V40uUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainAttribute" name="Domain Attribute" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sJuvAOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Property.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sJuvAeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainAttribute</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Property"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9XG8uUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__AnalysisModel" name="Analysis Model" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sJzngOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Artifact.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sJ0OkOUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::AnalysisModel</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Artifact"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9YVEeUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainModel" name="Domain Model" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sJ5HEOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Model.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sJ5uIOUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainModel</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Model"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9ZjMOUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainBlockImport" name="Domain Block Import" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sJ-moOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/PackageImport.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sJ_NsOUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainBlockImport</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.PackageImportBase"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9axUOUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainBlockMerge" name="Domain Block Merge" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sKEtQOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/PackageMerge.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sKEtQeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainBlockMerge</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.PackageMergeBase"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9bYYuUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainGeneralization" name="Domain Generalization" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sKKz4OUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Generalization.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sKKz4eUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainGeneralization</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Generalization"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9cmgeUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainModelLibrary" name="Domain Model Library" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sKPsYOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Package.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sKPsYeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainModelLibrary</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Package"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9d0oOUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainSpecialization" name="Domain Specialization" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sKUk4OUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Class.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sKUk4eUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainSpecialization</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Class"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9fCwOUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__TransformationModel" name="Transformation Model" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sKargOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Artifact.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sKargeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::TransformationModel</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Artifact"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9fp0uUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainBlockReference" name="Domain Block Reference" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sKgLEOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Dependency.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sKgLEeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainBlockReference</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Dependency"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9g38OUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainDataType" name="Domain Data Type" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sKlqoOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/DataType.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sKlqoeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainDataType</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.DataType"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9hfA-UuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainEnum" name="Domain Enum" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sKqjIOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Enumeration.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sKqjIeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainEnum</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Enumeration"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9itIeUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainEnumLiteral" name="Domain Enum Literal" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sKvboOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/EnumerationLiteral.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sKvboeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainEnumLiteral</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.EnumerationLiteral"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9j7QeUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainPackage" name="Domain Package" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sK1iQOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Package.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sK1iQeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainPackage</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Package"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9lJYeUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainReference" name="Domain Reference" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sK_TQOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Association.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sK_TQeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainReference</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.AssociationBase"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9mXgOUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainInstantiation" name="Domain Instantiation" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sLFZ4OUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Abstraction.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sLFZ4eUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainInstantiation</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Abstraction"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9nloOUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Constructs__DomainModelLibraryReference" name="Domain Model Library Reference" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sLKSYOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Dependency.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sLK5cOUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainModelLibraryReference</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Dependency"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9oMtOUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Validation__DomainConstraint" name="Domain Constraint" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sLRAEOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Constraint.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sLRAEeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainConstraint</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Constraint"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9pa0OUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Validation__DomainLinkConstraint" name="Domain Link Constraint" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sLWfoOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Constraint.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sLWfoeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainLinkConstraint</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Constraint"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9qo8OUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Validation__ExternalDomainConstraint" name="External Domain Constraint" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sLb_MOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Constraint.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sLb_MeUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::ExternalDomainConstraint</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Constraint"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_r9r3EOUuEemhqZDhrNxCag" identifier="com.zeligsoft.zdl.ZDL.ZDL__Validation__DomainCreateLinkConstraint" name="DomainCreateLinkConstraint" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_sLg3sOUuEemhqZDhrNxCag" iconPath="/icons/full/obj16/Constraint.gif" bundleId="org.eclipse.uml2.uml.edit"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_sLhewOUuEemhqZDhrNxCag">
+      <stereotypesQualifiedNames>ZDL::DomainCreateLinkConstraint</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Constraint"/>
+  </elementTypeConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9UqsOUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainBlockStereotype" target="_r9SOcOUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sJkW8eUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainBlock" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9V40OUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainConceptStereotype" target="_r9UqsuUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sJpPcuUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainConcept" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9XG8OUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainAttributeStereotype" target="_r9V40uUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sJuvAuUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainAttribute" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9XuAuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.AnalysisModelStereotype" target="_r9XG8uUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sJ0OkeUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::AnalysisModel" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9Y8IuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainModelStereotype" target="_r9YVEeUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sJ5uIeUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainModel" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9aKQeUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainBlockImportStereotype" target="_r9ZjMOUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sJ_NseUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainBlockImport" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9bYYOUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainBlockMergeStereotype" target="_r9axUOUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sKFUUOUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainBlockMerge" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9b_cuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainGeneralizationStereotype" target="_r9bYYuUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sKKz4uUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainGeneralization" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9dNkuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainModelLibraryStereotype" target="_r9cmgeUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sKQTcOUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainModelLibrary" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9ebsuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainSpecializationStereotype" target="_r9d0oOUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sKVL8OUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainSpecialization" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9fp0OUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.TransformationModelStereotype" target="_r9fCwOUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sKarguUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::TransformationModel" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9gQ4uUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainBlockReferenceStereotype" target="_r9fp0uUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sKgLEuUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainBlockReference" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9hfAeUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainDataTypeStereotype" target="_r9g38OUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sKlqouUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainDataType" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9iGEuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainEnumStereotype" target="_r9hfA-UuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sKrKMOUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainEnum" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9jUMuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainEnumLiteralStereotype" target="_r9itIeUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sKvbouUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainEnumLiteral" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9kiUuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainPackageStereotype" target="_r9j7QeUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sK2JUOUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainPackage" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9lwcuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainReferenceStereotype" target="_r9lJYeUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sK_6UOUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainReference" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9m-kuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainInstantiationStereotype" target="_r9mXgOUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sLFZ4uUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainInstantiation" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9oMsuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainModelLibraryReferenceStereotype" target="_r9nloOUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sLK5ceUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainModelLibraryReference" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9ozwuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainConstraintStereotype" target="_r9oMtOUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sLRnIOUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainConstraint" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9qB4uUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainLinkConstraintStereotype" target="_r9pa0OUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sLXGsOUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainLinkConstraint" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9rQAuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.ExternalDomainConstraintStereotype" target="_r9qo8OUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sLb_MuUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::ExternalDomainConstraint" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r9seIuUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.ZDL.applyZDL.DomainCreateLinkConstraintStereotype" target="_r9r3EOUuEemhqZDhrNxCag">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_sLheweUuEemhqZDhrNxCag" stereotypeQualifiedName="ZDL::DomainCreateLinkConstraint" updateName="true">
+      <requiredProfiles>ZDL</requiredProfiles>
+    </stereotypesToApply>
   </adviceBindingsConfigurations>
 </elementtypesconfigurations:ElementTypeSetConfiguration>
-
