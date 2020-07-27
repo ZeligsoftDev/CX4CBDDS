@@ -138,7 +138,7 @@ This tree view is the main tool to navigate through the model changes and each n
 
 | Unfolded | Folded |
 | -- | -- |
-|![Model diff unfolded](model-diff-unfolded.png) | ![Model diff folded](images/model-diff-folded.png) |
+| ![Model diff unfolded](images/model-diff-unfolded.png) | ![Model diff folded](images/model-diff-folded.png) |
 
 This view shows the changed elements with a little decorator and a label indicating the kind of change:
 
