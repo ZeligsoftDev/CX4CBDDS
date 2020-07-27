@@ -3,7 +3,7 @@ Model comparison and local updates
 
 Updated: 2020-07-27
 
-This page describes the model comparison feature of Papyrus Compare in Papyrus CX for AXCIOMA. For a general guide of this feature, including configuration, limitations and other operations, see [Model diff/merge in Papyrus CX for AXCIOMA](Model diff/merge in Papyrus CX for AXCIOMA).
+This page describes the model comparison feature of Papyrus Compare in Papyrus CX for AXCIOMA. For a general guide of this feature, including configuration, limitations and other operations, see [Model diff/merge in Papyrus CX for AXCIOMA](papyrus-compare-guide.md).
 
 We describe here the "Compare Editor" as used in the following scenarios:
 
