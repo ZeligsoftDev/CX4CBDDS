@@ -16,13 +16,12 @@
             target="platform:/plugin/com.zeligsoft.domain.omg.dds/models/">
       </mapping>
    </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated ddsDomain.profile -->
-      <package
-            uri="http://www.zeligsoft.com/zdl/2009/DDS/1"
-            class="dds.DDSPackage"
-            genModel="profiles/ddsDomain.profile.genmodel"/>
+   <extension
+         point="com.zeligsoft.base.zdl.domain_models">
+      <domainModel
+            genModel="pathmap://DDS_DOMAIN/dds.zdlgen"
+            path="pathmap://DDS_DOMAIN/dds.uml"
+            uri="http://www.zeligsoft.com/domain/omg/dds/2009">
+      </domainModel>
    </extension>
-
 </plugin>
