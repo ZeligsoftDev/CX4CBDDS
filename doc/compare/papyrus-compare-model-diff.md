@@ -33,35 +33,35 @@ Papyrus Compare allows you to compare two models from the workspace, or a model 
 
 To compare two models from the workspace, select both models in the Project Explorer, and then right-click and select "Compare With &rarr; Each other (EMF Compare)" as shown below:
 
-![Comparing two workspace models](model-diff-ws-ws.png)
+![Comparing two workspace models](images/model-diff-ws-ws.png)
 
 To compare a model from the workspace with a version from its git repository, select the model in the Project Explorer, then right-click and select "Compare With" and then choose between "HEAD Revision", "Index", "Previous Revision", "Branch, Tag, or Reference..." or "Commit...", as shown below:
 
-![Comparing a model with some version in the git repository](model-diff-ws-repo.png)
+![Comparing a model with some version in the git repository](images/model-diff-ws-repo.png)
 
 Note that you can only compare a model in the workspace with a version in some git repository if the model in question has been checked out from that repository.
 
 If you select "Compare With &rarr; Branch, Tag, or Revision..." you will see the following dialog to choose a branch, tag or revision:
 
-![Branch selection dialog](model-diff-branch-selection.png)
+![Branch selection dialog](images/model-diff-branch-selection.png)
 
 If you select "Compare With &rarr; Commit..." you will see the following dialog to choose a commit from the git repository's history:
 
-![Commit selection dialog](model-diff-commit-selection.png)
+![Commit selection dialog](images/model-diff-commit-selection.png)
 
 When comparing with a model in a git repository, you might be prompted to confirm opening the "Synchronization" perspective:
 
-![Confirm Open Perspective](model-diff-confirm-open-perspective.png)
+![Confirm Open Perspective](images/model-diff-confirm-open-perspective.png)
 
 You can check the "Remember my decision" checkbox to avoid being prompted in the future.
 
 In the "Synchronization" perspective you should see the "Synchronize" view on the left-hand site, listing the projects and resources with changes as shown below (you may have to unfold the projects and folders to see the actual files listed):
 
-![Synchronize view](model-diff-synchronize-view.png)
+![Synchronize view](images/model-diff-synchronize-view.png)
 
 To see the comparison, either double-click on a .uml file or a .notation file, or select a file, right-click and then "Open in Compare Editor":
 
-![Open Compare Editor](model-diff-open-comparison.png)
+![Open Compare Editor](images/model-diff-open-comparison.png)
 
 
 User Interface Overview
@@ -69,17 +69,17 @@ User Interface Overview
 
 When a comparison is launched, the Comparison Viewer will appear. It will take some time while it computes the differences.
 
-![Model Comparison started](model-diff-start-model-res.png)
+![Model Comparison started](images/model-diff-start-model-res.png)
 
 Once it has finished computing the differences, the view will show them:
 
-![Model Differences](model-diff-full-view.png)
+![Model Differences](images/model-diff-full-view.png)
 
 ### The full Compare Editor view
 
 This view is made up of several parts as shown below:
 
-![Diff viewer breakdown](model-diff-full-view-breakdown.png)
+![Diff viewer breakdown](images/model-diff-full-view-breakdown.png)
 
 (1) Toolbar: shows the number of differences and provides buttons for accepting/rejecting changes, navigating through differences, choosing alternative views and filters.
 
@@ -95,13 +95,13 @@ This view is made up of several parts as shown below:
 
 The toolbar contains buttons for the main actions to perform:
 
-![Toolbar](model-diff-full-toolbar.png)
+![Toolbar](images/model-diff-full-toolbar.png)
 
 The left part of the toolbar shows the number of differences found, including differences that may be hidden (more on filters later).
 
 The right part of the toolbar contains several buttons with different actions that can be taken:
 
-![Toolbar buttons](model-diff-toolbar-buttons.png)
+![Toolbar buttons](images/model-diff-toolbar-buttons.png)
 
 (1) Show consequences of accepting (or rejecting) the currently selected change. This highlights in the top panel (and its right border) all other changes that are implied by the selected change.
 
@@ -138,11 +138,11 @@ This tree view is the main tool to navigate through the model changes and each n
 
 | Unfolded | Folded |
 | -- | -- |
-|![Model diff unfolded](model-diff-unfolded.png) | ![Model diff folded](model-diff-folded.png) |
+|![Model diff unfolded](model-diff-unfolded.png) | ![Model diff folded](images/model-diff-folded.png) |
 
 This view shows the changed elements with a little decorator and a label indicating the kind of change:
 
-![Change line](model-diff-change-line.png)
+![Change line](images/model-diff-change-line.png)
 
 The change line is broken down into the following parts:
 
@@ -159,26 +159,26 @@ The decorators are interpreted as follows:
 
 | Decorator                         | Description                                             |
 | ---------------------------- | ------------------------------------------------------- |
-| ![Incoming](r_inchg_ov.gif)  | Incoming differences are changes that were made in the right-side model since the last common ancestor. |
-| ![Outgoing](r_outchg_ov.gif) | Outgoing differences are changes that were made in the left-side model since the last common ancestor. |
-| ![Incoming addition](r_inadd_ov.gif) | Incoming addition represents an incoming addition difference, this is, an element that doesn't exist in the left-side has been added to the right-side model. |
-| ![Incoming deletion](r_indel_ov.gif) | Incoming deletion represents an incoming deletion difference, this is, an element that exists in the left-side has been deleted in the right-side model. |
-| ![Outgoing addition](r_outadd_ov.gif) | Outgoing addition represents an outgoing addition difference, this is, an element that doesn't exist in the right-side has been added to the left-side model. |
-| ![Outgoing deletion](r_outdel_ov.gif) | Outgoing deletion represents an outgoing deletion difference, this is, an element that exists in the right-side has been deleted in the left-side model. |
-| ![Incoming conflict](confr_chg_ov.gif) | Incoming conflict differences are changes that were made in the right-side  model, and are in conflict with the left-side model. |
-| ![Outgoing conflict](confchg_ov.gif) | Outgoing conflict differences are changes that were made in the left-side model, and are in conflict with the right-side model. |
-| ![Incoming conflict addition](confr_add_ov.gif) | Incoming addition conflict. |
-| ![Incoming conflict deletion](confr_del_ov.gif) | Incoming deletion conflict. |
-| ![Outgoing conflict addition](confadd_ov.gif) | Outgoing addition conflict. |
-| ![Outgoing conflict deletion](confdel_ov.gif) | Outgoing deletion conflict. |
+| ![Incoming](images/r_inchg_ov.gif)  | Incoming differences are changes that were made in the right-side model since the last common ancestor. |
+| ![Outgoing](images/r_outchg_ov.gif) | Outgoing differences are changes that were made in the left-side model since the last common ancestor. |
+| ![Incoming addition](images/r_inadd_ov.gif) | Incoming addition represents an incoming addition difference, this is, an element that doesn't exist in the left-side has been added to the right-side model. |
+| ![Incoming deletion](images/r_indel_ov.gif) | Incoming deletion represents an incoming deletion difference, this is, an element that exists in the left-side has been deleted in the right-side model. |
+| ![Outgoing addition](images/r_outadd_ov.gif) | Outgoing addition represents an outgoing addition difference, this is, an element that doesn't exist in the right-side has been added to the left-side model. |
+| ![Outgoing deletion](images/r_outdel_ov.gif) | Outgoing deletion represents an outgoing deletion difference, this is, an element that exists in the right-side has been deleted in the left-side model. |
+| ![Incoming conflict](images/confr_chg_ov.gif) | Incoming conflict differences are changes that were made in the right-side  model, and are in conflict with the left-side model. |
+| ![Outgoing conflict](images/confchg_ov.gif) | Outgoing conflict differences are changes that were made in the left-side model, and are in conflict with the right-side model. |
+| ![Incoming conflict addition](images/confr_add_ov.gif) | Incoming addition conflict. |
+| ![Incoming conflict deletion](images/confr_del_ov.gif) | Incoming deletion conflict. |
+| ![Outgoing conflict addition](images/confadd_ov.gif) | Outgoing addition conflict. |
+| ![Outgoing conflict deletion](images/confdel_ov.gif) | Outgoing deletion conflict. |
 
-**Tip:** Sometimes it is useful to enable the common ancestor view (button ![Common Ancestor button](model-diff-ancestor-button.png)) to understand the additions and deletions since the commit's common ancestor.
+**Tip:** Sometimes it is useful to enable the common ancestor view (button ![Common Ancestor button](images/model-diff-ancestor-button.png)) to understand the additions and deletions since the commit's common ancestor.
 
 #### Alternative grouping of changes
 
-This view can be customized by changing the way the changes are grouped, by clicking the "Groups" button: ![Groups button](model-diff-grouping-button.png).
+This view can be customized by changing the way the changes are grouped, by clicking the "Groups" button: ![Groups button](images/model-diff-grouping-button.png).
 
-![Grouping menu](model-diff-grouping.png)
+![Grouping menu](images/model-diff-grouping.png)
 
 The meaning of these grouping options is as follows:
 
@@ -190,14 +190,14 @@ The meaning of these grouping options is as follows:
 
 For example, setting this to "By Kind" yields the following in the sample model:
 
-![Group by kind](model-diff-group-by-kind.png)
+![Group by kind](images/model-diff-group-by-kind.png)
 
 
 #### Filters
 
-This view can also be customized by applying or removing filters, by clicking the "Filters button":  ![Filters button](model-diff-filters-button.png).
+This view can also be customized by applying or removing filters, by clicking the "Filters button":  ![Filters button](images/model-diff-filters-button.png).
 
-![Filters](model-diff-filters.png)
+![Filters](images/model-diff-filters.png)
 
 By default all filters are applied, yielding the smallest change-set for the current comparison. Disabling (unchecking) one or more filters, will display more details and structure.
 
@@ -208,13 +208,13 @@ By default all filters are applied, yielding the smallest change-set for the cur
 
 A particular change may imply or require other changes. By default, the structural viewer highlights the changes implied or required by the currently selected change if the change is accepted, in a lighter colour than the selected change. For example:
 
-![Consequences highlighted](model-diff-consequences-highlighted.png)
+![Consequences highlighted](images/model-diff-consequences-highlighted.png)
 
 Note that the scrollbar on the right shows also the position of the highlighted elements. By clicking on any of this you can jump directly to that change.
 
-The "Consequences" button (![Consequences button](model-diff-consequences-button.png)) can be used to show the consequences of either accepting or rejecting the change, or not to show consequences at all:
+The "Consequences" button (![Consequences button](images/model-diff-consequences-button.png)) can be used to show the consequences of either accepting or rejecting the change, or not to show consequences at all:
 
-![Consequences menu](model-diff-consequences-menu.png)
+![Consequences menu](images/model-diff-consequences-menu.png)
 
 Each of the consequences of the currently selected change, are highlighted in green and red.
 
@@ -227,7 +227,7 @@ Each of the consequences of the currently selected change, are highlighted in gr
 
 Papyrus models consist of a structural part (stored in a .uml file) and a set of diagrams associated with the structural elements (stored in a .notation file). When comparing models with changes in some diagram, these changes are shown in the Compare Editor, both in the top panel (under Model differences), and in the bottom left and right panels:
 
-![Diagram diff](model-diff-diagram-diff.png)
+![Diagram diff](images/model-diff-diagram-diff.png)
 
 The top (structural overview) panel shows the structural view of the diagram elements, e.g. a "Shape" inside a "Compartment" inside another "Shape", etc.
 
@@ -237,7 +237,7 @@ The bottom left and right panels will show the actual diagrams, with the element
 
 For structural changes, the left and right panels show a structural view of the changes:
 
-![Structural differences](model-diff-structural-diff-left-right-2.png)
+![Structural differences](images/model-diff-structural-diff-left-right-2.png)
 
 These panels show the tree structure of the models being compared, and the elements containing nested elements can be folded and unfolded as with the top panel.
 
