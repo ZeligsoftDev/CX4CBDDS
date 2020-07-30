@@ -1,7 +1,7 @@
 Model diff/merge in Papyrus CX for AXCIOMA
 ==========================================
 
-Updated: 2020-07-27
+Updated: 2020-07-29
 
 Table of Contents
 -----------------
@@ -9,7 +9,8 @@ Table of Contents
   * [Introduction](#introduction)
   * [Setup and configuration](#setup-and-configuration)
   * [User interface and basic usage](#user-interface-and-basic-usage)
-  * [Limitations](#limitations)
+  * [Limitations and known issues](#limitations-and-known-issues)
+  * [Bug reporting](#bug-reporting)
   * [Additional resources](#additional-resources)
 
 
@@ -22,7 +23,7 @@ The Papyrus Compare feature is integrated with EGit (included in Papyrus CX for 
 
 AXCIOMA models are Papyrus models, which are UML models (along with so-called "notation models"), which in turn are ECore (EMF) models. Therefore, Papyrus Compare is built on top of EMF Compare. Some links to the EMF Compare documentation and tutorial videos are provided below.
 
-This guide assumes that the user is familiar with git and EGit, as well as basic modelling with Papyrus CX for AXCIOMA.
+This guide assumes that the user is familiar with git and EGit, as well as basic modelling with Papyrus CX for AXCIOMA. See [Additional resources](#additional-resources) for links to relevant documentation and user guides.
 
 
 Setup and configuration
@@ -56,8 +57,8 @@ The main operations are described in separate pages:
 
 
 
-Limitations
------------
+Limitations and known issues
+----------------------------
 
 There are several known limitations to this feature at the time of this writing (2020-07-23):
 
@@ -69,6 +70,17 @@ There are several known limitations to this feature at the time of this writing 
 
 * Papyrus Compare reports some model differences which appear to be unexpected at the time of this writing. Some of these may be due to the lack of AXCIOMA customization described above, they may be due to bugs in the model editing tooling, in Papyrus Compare, EMF Compare or Papyrus itself. Some of these unexpected differences are being tracked in this issue on GitHub: [Papyrus Compare unexplained model differences #156](https://github.com/ZeligsoftDev/CX4CBDDS/issues/156).
 
+* There seems to be a memory leak in EMF Compare when launching a comparison of certain models where the comparison computation stalls using all CPU resources, Papyrus becomes unresponsive, and, after about a minute or two, it stops with an out-of-memory error, or crashes. This is being tracked on GutHub: [Papyrus stalls, becomes unresponsive and sometimes crashes with an out-of-memory error #170](https://github.com/ZeligsoftDev/CX4CBDDS/issues/170).
+
+* There are other known bugs, also tracked on GitHub, such as [Papyrus Compare NPE when showing differences of certain diagrams. #171](https://github.com/ZeligsoftDev/CX4CBDDS/issues/171).
+
+Bug reporting
+-------------
+
+Please submit bug reports to:
+
+[Papyrus CX for AXCIOMA (CX4CBDDS) Issues - GitHub](https://github.com/ZeligsoftDev/CX4CBDDS/issues)
+
 
 Additional resources
 --------------------
@@ -76,12 +88,15 @@ Additional resources
 * The official [Papyrus Compare](https://wiki.eclipse.org/Papyrus_Compare) website.
 
 * The official [EMF Compare](https://www.eclipse.org/emf/compare/) website.
+    - The [EMF Compare User Guide](https://www.eclipse.org/emf/compare/documentation/latest/user/user-guide.html).
+    - The [EMF Compare User Interface](https://www.eclipse.org/emf/compare/documentation/latest/user/user-guide.html#User_Interface_Breakdown).
+    - [Comparing models with EGit](https://www.eclipse.org/emf/compare/documentation/latest/user/user-guide.html#Compare_with_remote_models_.28EGit.29).
+
+* The official [EGit](https://www.eclipse.org/egit/) website, in particular:
+    * [EGit Documentation](https://www.eclipse.org/egit/documentation/).
+    * [EGit User Guide](https://wiki.eclipse.org/EGit/User_Guide).
+    * [EGit Learning Material](https://wiki.eclipse.org/EGit/Learning_Material).
 
 * A series of videos describing [Papyrus Compare in CX for AXCIOMA](https://www.youtube.com/playlist?list=PL1ZUU08cM_3JVK3-v3OVnKNheOjESjcS_). Note that these videos are a bit outdated and some of the problems reported in it have been fixed.
 
 * A video tutorial of [Papyrus Compare in plain Papyrus](https://www.youtube.com/watch?v=NSCfYAukYgk). Note: the title mentions EMF Compare. This is because previously, Papyrus Compare was included within EMF Compare, but it is now a separate feature.
-
-* The [EMF Compare User Guide](https://www.eclipse.org/emf/compare/documentation/latest/user/user-guide.html), in particular:
-
-  - The [EMF Compare user interface](https://www.eclipse.org/emf/compare/documentation/latest/user/user-guide.html#User_Interface_Breakdown)
-  - [Comparing models with EGit](https://www.eclipse.org/emf/compare/documentation/latest/user/user-guide.html#Compare_with_remote_models_.28EGit.29)
