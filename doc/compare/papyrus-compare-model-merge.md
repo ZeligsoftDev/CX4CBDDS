@@ -7,13 +7,13 @@ This page describes the model merging feature of Papyrus Compare in Papyrus CX f
 
 For a general guide of this feature, including configuration, limitations and other operations, see [Model diff/merge in Papyrus CX for AXCIOMA](papyrus-compare-guide.md).
 
-For a guide on using the Compare Editor and incorporating changes into a local (workspace) model without merging git branches, see [Model comparison and local updates](papyrus-compare-model-diff). It is strongly recommended that you read that guide before this one.
+For a guide on using the Compare Editor and incorporating changes into a local (workspace) model without merging git branches, see [Model comparison and local updates](papyrus-compare-model-diff.md). It is strongly recommended that you read that guide before this one.
 
 We describe here the "Compare Editor" as used in the following scenarios:
 
 1. Merging two models from different branches in a git repository.
 
-For comparing models from different branches the user must first checkout one of the branches, import it into the workspace and then follow the instructions found in [Model comparison and local updates](papyrus-compare-model-diff).
+For comparing models from different branches the user must first checkout one of the branches, import it into the workspace and then follow the instructions found in [Model comparison and local updates](papyrus-compare-model-diff.md).
 
 This guide assumes that the user is familiar with git and EGit, as well as basic modelling with Papyrus CX for AXCIOMA. [Model diff/merge in Papyrus CX for AXCIOMA](papyrus-compare-guide.md) for links to relevant documentation.
 
