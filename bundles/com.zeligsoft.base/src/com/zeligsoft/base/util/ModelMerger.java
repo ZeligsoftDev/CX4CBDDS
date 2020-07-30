@@ -24,6 +24,7 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.BasicEList.UnmodifiableEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.EnumerationLiteral;
 
 /**
  * A mini-framework for merging models.
@@ -314,7 +316,9 @@ public abstract class ModelMerger<T extends EObject, K> {
 			EStructuralFeature feature) {
 		boolean result = !feature.isDerived() && feature.isChangeable();
 
-		if (result && (feature instanceof EReference)) {
+		if(owner.eGet(feature) instanceof UnmodifiableEList) {
+			result = false;
+		}else if (result && (feature instanceof EReference)) {
 			EReference ref = (EReference) feature;
 			result = !ref.isContainment()
 				&& !ref.isContainer()
@@ -694,6 +698,9 @@ public abstract class ModelMerger<T extends EObject, K> {
 							EList<?> sourceValue = (EList<?>) source
 								.eGet(feature);
 
+							if(object instanceof EnumerationLiteral) {
+								object.eClass();
+							}
 							targetValue.retainAll(sourceValue);
 						} else if (source.eIsSet(feature)
 							&& (source.eGet(feature) == null)) {
