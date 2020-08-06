@@ -32,9 +32,11 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.VisibilityKind;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.dialogs.ZDLElementSelectionDialog;
@@ -98,6 +100,8 @@ public class AssemblyImplementationEditHelperAdvice extends AbstractEditHelperAd
 				Property newProperty = (Property) newEObject;
 
 				Type propertyType = newProperty.getType();
+				newProperty.setAggregation(AggregationKind.COMPOSITE_LITERAL);
+				newProperty.setVisibility(VisibilityKind.PRIVATE_LITERAL);
 				if (editRequest.getParameter("type") == null && propertyType == null) {
 					if (InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID)
 							.getBoolean(CCMPreferenceConstants.AUTO_TYPE_SELECTION_DIALOG, true)) {
