@@ -32,9 +32,11 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.VisibilityKind;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.dialogs.ZDLElementSelectionDialog;
@@ -87,7 +89,10 @@ public class DomainEditHelperAdvice extends AbstractEditHelperAdvice {
 					return CommandResult.newOKCommandResult(newEObject);
 				}
 
+				
 				Property newProperty = (Property) newEObject;
+				newProperty.setAggregation(AggregationKind.COMPOSITE_LITERAL);
+				newProperty.setVisibility(VisibilityKind.PRIVATE_LITERAL);
 
 				Type propertyType = newProperty.getType();
 				if (editRequest.getParameter("type") == null && propertyType == null) {
