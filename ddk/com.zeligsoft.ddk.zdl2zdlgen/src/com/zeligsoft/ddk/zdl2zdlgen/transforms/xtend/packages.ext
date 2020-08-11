@@ -1,0 +1,80 @@
+/*
+ * Copyright (c) 2008 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ * 
+ */
+
+import ZDL;
+import zdlgen;
+
+extension com::zeligsoft::ddk::zdl2zdlgen::transforms::xtend::classifiers;
+extension com::zeligsoft::ddk::zdl2zdlgen::transforms::xtend::util;
+
+create GenDomainModel toGenDomainModel(DomainModel dm) :
+    this.populate(dm);
+
+create GenDomainPackage toGenDomainPackage(DomainPackage dp) :
+    this.populate(dp);
+
+// This is private because it uses the raw UML package.  We leave it up to
+// the caller to assert that it is stereotyped as DomainPackage or DomainModel
+private GenDomainPackage populate(GenDomainPackage self, uml::Package dp) :
+    self.setDomainPackage(dp) ->
+    self.element.addAll(dp.packagedElement.typeSelect(DomainPackage).toGenDomainPackage()) ->
+    self.element.addAll(dp.packagedElement.typeSelect(DomainBlock).toGenDomainBlock()) ->
+    self.element.addAll(dp.packagedElement.typeSelect(DomainModelLibrary).toGenDomainModelLibrary()) ->
+    self.element.addAll(dp.packagedElement.typeSelect(DomainSpecialization).toGenDomainSpecialization()) ->
+    self;
+    
+GenDomainBlock toGenDomainBlock(DomainBlock db) :
+    db.isReferenced()? db.refBlock() : db.createGenDomainBlock();
+    
+private create GenDomainBlock createGenDomainBlock(DomainBlock db) :
+    this.setDomainBlock(db) ->
+    this.classifier.addAll(db.ownedType.typeSelect(DomainClassifier).toGenDomainClassifier()) ->
+    // TODO: oAW doesn't recognize that the PrimitiveType can be stereotyped as <<DomainDataType>>
+    this.classifier.addAll(db.ownedType.typeSelect(uml::PrimitiveType).toGenDomainClassifier()) ->
+    this.relation.addAll(db.packageImport.typeSelect(DomainBlockImport).toGenDomainBlockRelation()) ->
+    this.relation.addAll(db.packageMerge.typeSelect(DomainBlockMerge).toGenDomainBlockRelation()) ->
+    db.ownedType.typeSelect(DomainReference).toGenDomainReference();
+
+// default extension for unsupported specializations of the DomainBlockRelation stereotype
+private Void toGenDomainBlockRelation(DomainBlockRelation dbr) :
+    {};
+    
+create GenDomainBlockImport toGenDomainBlockRelation(DomainBlockImport dbi) :
+    this.setDomainBlockRelation(dbi) ->
+    this.populate(dbi);
+    
+create GenDomainBlockMerge toGenDomainBlockRelation(DomainBlockMerge dbm) :
+    this.setDomainBlockRelation(dbm) ->
+    this.populate(dbm);
+
+// fills in the details of a GenDomainBlockRelation
+private Void populate(GenDomainBlockRelation self, uml::DirectedRelationship relation) :
+    self.setTarget(((DomainBlock) relation.target.first()).toGenDomainBlock());
+    
+create GenDomainSpecialization toGenDomainSpecialization(DomainSpecialization ds) :
+    this.setDomainSpecialization(ds) ->
+    this.domainBlock.addAll(ds.clientDependency.typeSelect(DomainBlockReference).toGenDomainBlockReference()) ->
+    this.domainModelLibrary.addAll(ds.clientDependency.typeSelect(DomainModelLibraryReference).toGenDomainModelLibraryReference());
+
+create GenDomainBlockReference toGenDomainBlockReference(DomainBlockReference dbr) :
+    this.setDomainBlockReference(dbr) ->
+    this.setTarget(((DomainBlock) dbr.supplier.first()).toGenDomainBlock());
+
+GenDomainModelLibrary toGenDomainModelLibrary(DomainModelLibrary dml) :
+    dml.isReferenced()? dml.refModelLibrary() : dml.createGenDomainModelLibrary();
+
+private create GenDomainModelLibrary createGenDomainModelLibrary(DomainModelLibrary dml) :
+    this.setDomainModelLibrary(dml);
+
+create GenDomainModelLibraryReference toGenDomainModelLibraryReference(DomainModelLibraryReference dmlr) :
+    this.setDomainModelLibraryReference(dmlr) ->
+    this.setTarget(((DomainModelLibrary) dmlr.supplier.first()).toGenDomainModelLibrary());

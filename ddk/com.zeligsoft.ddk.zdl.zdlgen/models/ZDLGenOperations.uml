@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Model xmi:id="_4CodMm4jEd29ue3BOy1XGw" name="ZDLGen Operations">
+    <packageImport xmi:id="_4CodNm4jEd29ue3BOy1XGw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_RMOIMDSGEd2PV-ltH3GVOw" name="GenModel">
+      <ownedOperation xmi:id="_ThIKEDSGEd2PV-ltH3GVOw" name="findUsedDomainModels">
+        <ownedParameter xmi:id="_MorZoDSIEd2PV-ltH3GVOw" name="model">
+          <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_cpSocDSGEd2PV-ltH3GVOw" name="result" direction="return">
+          <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mUuzADSGEd2PV-ltH3GVOw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mUuL8DSGEd2PV-ltH3GVOw"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_vOrPMDSGEd2PV-ltH3GVOw" name="getDomainModels">
+        <ownedParameter xmi:id="_8Qk_QDSGEd2PV-ltH3GVOw" name="uris" isOrdered="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-ZnvYDSGEd2PV-ltH3GVOw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-ZnIUDSGEd2PV-ltH3GVOw"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="__s58MDSGEd2PV-ltH3GVOw" name="result" isOrdered="true" direction="return">
+          <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CtDTcDSHEd2PV-ltH3GVOw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CtCFUDSHEd2PV-ltH3GVOw"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_HXatwCHkEd2Uzc5s6OPBfA" name="GenDomainSpecialization">
+      <ownedOperation xmi:id="_J7el8CHkEd2Uzc5s6OPBfA" name="getDomainConcepts" visibility="protected">
+        <ownedParameter xmi:id="_OXCyUCHkEd2Uzc5s6OPBfA" name="OwnedParameter" type="_A3DbQCHoEd2Uzc5s6OPBfA" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QWJjUSHkEd2Uzc5s6OPBfA" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QWJjUCHkEd2Uzc5s6OPBfA"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_j9vG8DgqEd2EPNbcZgKYPA" name="GenDomainObject" isAbstract="true">
+      <ownedAttribute xmi:id="_qjfRUHMiEd2Bl5VZxkbSFg" name="genModel" visibility="public" type="_RMOIMDSGEd2PV-ltH3GVOw" isReadOnly="true" isDerived="true" association="_qjMWYHMiEd2Bl5VZxkbSFg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qjfRUnMiEd2Bl5VZxkbSFg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qjfRUXMiEd2Bl5VZxkbSFg"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_nWhnsDgqEd2EPNbcZgKYPA" name="getGenModel" visibility="protected">
+        <ownedParameter xmi:id="_pLj2sDgqEd2EPNbcZgKYPA" name="OwnedParameter" type="_RMOIMDSGEd2PV-ltH3GVOw" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rqk20DgqEd2EPNbcZgKYPA" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rqjosDgqEd2EPNbcZgKYPA"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_PuOqsCHDEd2NSoJpOTMp_Q" name="GenDomainNamedElement" isAbstract="true">
+      <ownedOperation xmi:id="_pvF-ECEfEd2r5a6X-Lfl5A" name="getName" visibility="protected">
+        <ownedParameter xmi:id="_reQOkCEfEd2r5a6X-Lfl5A" name="OwnedParameter" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_A3DbQCHoEd2Uzc5s6OPBfA" name="GenDomainConcept">
+      <ownedOperation xmi:id="_fcLYICKxEd2WTZDAI6nxLQ" name="getGenerals" visibility="protected">
+        <ownedParameter xmi:id="_h4fpkCKxEd2WTZDAI6nxLQ" name="OwnedParameter" type="_A3DbQCHoEd2Uzc5s6OPBfA" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_lPhPwSKxEd2WTZDAI6nxLQ" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lPhPwCKxEd2WTZDAI6nxLQ"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_qjMWYHMiEd2Bl5VZxkbSFg" memberEnd="_qjfRUHMiEd2Bl5VZxkbSFg _qjfRU3MiEd2Bl5VZxkbSFg">
+      <ownedEnd xmi:id="_qjfRU3MiEd2Bl5VZxkbSFg" name="" visibility="private" type="_j9vG8DgqEd2EPNbcZgKYPA" association="_qjMWYHMiEd2Bl5VZxkbSFg">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qjfRVXMiEd2Bl5VZxkbSFg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qjfRVHMiEd2Bl5VZxkbSFg"/>
+      </ownedEnd>
+    </packagedElement>
+    <profileApplication xmi:id="_4CodN24jEd29ue3BOy1XGw">
+      <eAnnotations xmi:id="_4CodOG4jEd29ue3BOy1XGw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_FajgkG4kEd29ue3BOy1XGw">
+      <eAnnotations xmi:id="_FajgkW4kEd29ue3BOy1XGw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <Ecore:EReference xmi:id="_x3r3sHMiEd2Bl5VZxkbSFg" isTransient="true" isVolatile="true" base_Property="_qjfRUHMiEd2Bl5VZxkbSFg"/>
+</xmi:XMI>

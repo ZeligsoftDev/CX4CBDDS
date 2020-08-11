@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+    Copyright (c) 2020 Northrop Grumman Systems Corporation.
+   
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+   
+    http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+ -->
+<plugin>
+   <extension
+         id="com.zeligsoft.ddk.zdlgent2umlprofile.rsa_9_0"
+         name="IBM Rational Software Architect 9.0"
+         point="com.zeligsoft.ddk.zdl.zdlgen.codegentargets">
+      <menuLabel
+            label="Papyrus">
+      </menuLabel>
+      <action
+            class="com.zeligsoft.ddk.zdlgen2umlprofile.ui.actions.GenerateProfilePopupAction"
+            id="generateProfile"
+            name="Generate Profile">
+         <enabledWhen>
+            <instanceof
+                  class="com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization">
+            </instanceof>
+         </enabledWhen>
+      </action>
+      <action
+            class="com.zeligsoft.ddk.zdlgen2umlprofile.ui.actions.GenerateModelLibraryNamesPopupAction"
+            id="generateModeLibraryNames"
+            name="Generate Model Library Names">
+         <enabledWhen>
+            <instanceof
+                  class="com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization">
+            </instanceof>
+         </enabledWhen>
+      </action>
+      <action
+            class="com.zeligsoft.ddk.zdlgen2umlprofile.ui.actions.GenerateAPIAction"
+            id="generateAPI"
+            name="Generate API">
+         <enabledWhen>
+            <instanceof
+                  class="com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel">
+            </instanceof>
+         </enabledWhen>
+      </action>
+      <action
+            class="com.zeligsoft.ddk.zdlgen2umlprofile.ui.actions.GenerateMenuModelPopupAction"
+            id="generateMenuModel"
+            name="Generate Menu Model">
+         <enabledWhen>
+            <instanceof
+                  class="com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization">
+            </instanceof>
+         </enabledWhen>
+      </action>
+      <action
+            class="com.zeligsoft.ddk.zdlgen2umlprofile.ui.actions.GeneratePropertiesUIActionDelegate"
+            id="generatePropertiesModel"
+            name="Generate Properties Model">
+         <enabledWhen>
+            <instanceof
+                  class="com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization">
+            </instanceof>
+         </enabledWhen>
+      </action>
+   </extension>
+   
+</plugin>

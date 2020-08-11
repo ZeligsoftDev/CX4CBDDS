@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2020 Northrop Grumman Systems Corporation.
+   
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+   
+    http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+ -->
+
+<cheatsheet title="Generating a Domain Specialization">
+   <intro>
+      <description>
+         This cheat-sheet provides a check-list of steps to follow in generating a domain.  It is particularly useful for domains that extend other domains or that are extended by others.
+      </description>
+   </intro>
+   <item title="Complete Domain Model Edits" dialog="true" skip="true">
+      <description>
+         The first step is to verify that the changes to your domain model are complete, at least as much as they need to be for your testing.  This may seem obvious, but it is good to take a moment to reflect, as generating is a fairly cumbersome process.
+      </description>
+   </item>
+   <item title="Export to Eclipse UML2 Format" dialog="true" skip="true">
+      <description>
+         If your source domain model is an *.emx model, it must first be exported to *.uml.  If you are authoring the *.uml directly, continue to the next step.
+<br/><br/>
+Press the action button to launch the export wizard.
+      </description>
+      <command serialization="org.eclipse.ui.file.export(exportWizardId=com.ibm.xtools.modeler.ui.wizards.uml2exportwizard)" confirm="false">
+      </command>
+   </item>
+   <item title="Update Imported Domain Models" dialog="true" skip="false">
+      <description>
+         If your domain model imports domain blocks, model library definitions, or other content from other domains, then it is critically important to ensure that you have the latest versions of these dependencies applicable to your branch (if you are working in a team environment).  Some of the definitions in these dependencies are generated in your domain, not referenced, so it is important not to generate based on out-of-date models.
+      </description>
+      <subitem label="For dependencies that are resolved in your workspace, update from your CM system." skip="true">
+         <command serialization="org.eclipse.team.ui.synchronizeAll" confirm="false">
+         </command>
+      </subitem>
+      <subitem label="Ensure that you have the latest build of the plug-in dependencies in your target platform." skip="true">
+         <command serialization="org.eclipse.ui.window.preferences(preferencePageId=org.eclipse.pde.ui.TargetPlatformPreferencePage)" confirm="false">
+         </command>
+      </subitem>
+   </item>
+   <item title="Reload the ZDLGen Model" dialog="true" skip="false">
+      <description>
+         In the *.zdlgen model editor four your domain specialization, select the <b>Reload...</b> action in the <b>ZDLGen Editor</b> menu on the main menu bar.  Follow the mport wizard steps to re-load the generator model.
+      </description>
+   </item>
+   <item title="Edit Generator Mappings" dialog="true" skip="false">
+      <description>
+         Now that your generator model is synchronized with the domain model, you can edit the mappings, including domain concept and attribute mappings and diagram tooling definitions.
+      </description>
+   </item>
+   <item title="Generate" dialog="true" skip="false">
+      <description>
+         Select the domain-specialization element in your generator model that you wish to generate, and invoke the <b>Generate Profile...</b> action on its context menu.
+      </description>
+   </item>
+   <item title="Update Dependents" dialog="true" skip="false">
+      <description>
+         As with the domains that your domain model depends on, you will have to update any other domains that depend on it, but for a different reason.  Some of the changes in your domain will have to be (re)generated in these dependent domains.
+<br/><br/>
+This does not have to be done on every change, but only when testing of your domain is complete and you are ready to commit your changes to CM.
+      </description>
+      <subitem label="For dependents that are resolved in your workspace, update from your CM system." skip="true">
+         <command serialization="org.eclipse.team.ui.synchronizeAll" confirm="false">
+         </command>
+      </subitem>
+      <subitem label="Regenerate the dependent domain specializations as you did your domain.  Remember to follow all of the steps, including checking for their dependencies to ensure that they do not incorporate out-of-date information from other dependencies unrelated to your domain." skip="true">
+         <command serialization="org.eclipse.ui.window.preferences(preferencePageId=org.eclipse.pde.ui.TargetPlatformPreferencePage)" confirm="false">
+         </command>
+      </subitem>
+   </item>
+   <item title="Final Review" dialog="true" skip="false">
+      <description>
+         The integrity of the data and dependencies in your generated artifacts is vital.  Double-check the artifacts that were changed (in a team environment, these are decorated as outgoing changes) for the following conditions:
+      </description>
+      <subitem label="Was a file changed that you did not expect to change? For example, changes to model library definitions do not impact profiles, and some changes to profiles do not impact model libraries.  Look closely at each resource to see what the changes are; they could be updates from dependencies that another user missed" skip="false">
+      </subitem>
+      <subitem label="Are all of the new domain concepts and/or model library elements present and correct?" skip="false">
+      </subitem>
+      <subitem label="Are all domain concepts and/or model library elements that were deleted now removed?  Are dependent model elements updated accordingly?" skip="false">
+      </subitem>
+      <subitem label="Are your generated artifacts consistent with their dependencies and their dependents?" skip="false">
+      </subitem>
+   </item>
+   <item title="Congratulations!" dialog="true" skip="false">
+      <description>
+         You have successfully generated your domain, and are ready to commit your changes into CM.
+      </description>
+   </item>
+</cheatsheet>

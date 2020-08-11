@@ -1,0 +1,77 @@
+<!--
+  Copyright (c) 2008 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ *
+ -->
+<workflow>
+	<bean class="org.eclipse.xtend.typesystem.emf.Setup" />
+
+	
+	<component class="com.zeligsoft.base.workflow.SetupResourceSet"
+	       resourceSetSlot="rset" />
+	
+    
+    <!-- Load the source ZDLGen model. -->
+    <component id="readSource" class="com.zeligsoft.base.workflow.RSMReader"
+           resourceSetSlot="rset">
+        <uri value="${sourceModelURI}" />
+        <modelSlot value="zdlGenModel" />
+    </component>
+    
+	<component id="profileGenerator" class="org.eclipse.xtend.XtendComponent">
+        <metaModel id="umlMM" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel" />
+        <metaModel id="zdlgenMM" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel" 
+            metaModelPackage="com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage">
+        </metaModel>
+        <metaModel id="paletteMM" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel" 
+            metaModelPackage="com.zeligsoft.base.toolingmodel.ToolingModelPackage">
+        </metaModel>
+        <metaModel id="zdlProfile" class="org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel">
+          <profile value="pathmap://ZDL_PROFILES/ZDL.profile.uml"/>
+        </metaModel>
+        <invoke value="com::zeligsoft::ddk::zdlgen2umlprofile::workflow::generateUMLProfile::transform(zdlGenModel, '${specialization}')" />
+		<outputSlot value="umlProfile" />
+	</component>
+	
+	<component id="define" class="com.zeligsoft.base.workflow.DefineProfile">
+	   <modelSlot value="umlProfile" />
+    </component>
+    
+    <component id="profileMerge" class="com.zeligsoft.base.workflow.ModelMerge"
+           resourceSetSlot="rset">
+        <merger value="com.zeligsoft.ddk.zdlgen2umlprofile.merge.UMLMerger" />
+        <sourceSlot value="umlProfile" />
+        <targetSlot value="targetProfileURI" />
+        <mergeResultSlot value="mergedProfile" />
+    </component>
+    
+    <!-- Resolve all proxies to ensure consistent generation of library dependencies. -->
+    <component id="resolveAll" class="com.zeligsoft.base.workflow.ResolveAll"
+           resourceSetSlot="rset">
+        <modelSlot value="targetModelLibraryURIs" />
+    </component>
+    
+    <component id="libraryGenerator" class="org.eclipse.xtend.XtendComponent">
+        <metaModel idRef="zdlgenMM" />
+        <metaModel idRef="umlMM" />
+        <metaModel idRef="zdlProfile" />
+        <metaModel class="org.eclipse.xtend.type.impl.java.JavaBeansMetaModel" />
+        <invoke value="com::zeligsoft::ddk::zdlgen2umlprofile::workflow::generateModelLibraries::transform(zdlGenModel, '${specialization}', mergedProfile)" />
+        <outputSlot value="modelLibraries" />
+    </component>
+    
+    <component id="librariesMerge" class="com.zeligsoft.base.workflow.ModelMerge"
+           resourceSetSlot="rset">
+        <merger value="com.zeligsoft.ddk.zdlgen2umlprofile.merge.UMLMerger" />
+        <sourceSlot value="modelLibraries" />
+        <targetSlot value="targetModelLibraryURIs" />
+        <mergeResultSlot value="mergedLibraries" />
+    </component>
+    
+</workflow>

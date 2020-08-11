@@ -1,0 +1,138 @@
+/**
+ * Copyright (c) 2009 Zeligsoft (2009) Limited
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ *
+ */
+
+import uml;
+import ZDL;
+import toolingmodel;
+
+PropertySheet transform(zdlgen::GenModel model, String specialization) :
+	transform(model.domainModel.element.typeSelect(zdlgen::GenDomainSpecialization).selectFirst(e|e.name == specialization));
+
+private create PropertySheet transform(zdlgen::GenDomainSpecialization self) :
+	this.setDomainModelURI(getResourceURIString(self.domainElement)) ->
+	this.addDefaultPropertyDefinitions() ->
+	this.propertySource.addAll(self.domainConcept.attribute.toPropertySource()) ->
+	this.propertySource.addAll(self.domainConcept.reference.toPropertySource()) ->
+	this.propertySource.addAll(self.domainConcept.getOverridePropertySource()) ->
+	this;
+
+/**
+ * Returns a new PropertySource for the given Property with the 
+ * default PropertyDefinition for the element type.
+ */	
+private create PropertySource toPropertySource(zdlgen::GenDomainStructuralFeature property) :
+	this.setConceptName(property.domainElement.getQualifiedName()) ->
+	(property.order != null) ? this.setOrder(property.order) : {} ->
+	this.definition.add(getPropertyDefinition(property));
+	
+private create PropertySource toPropertySource(zdlgen::GenDomainReference property) :
+	this.setConceptName(property.domainAttribute.getQualifiedName()) ->
+	(property.order != null) ? this.setOrder(property.order) : {} ->
+	this.definition.add(getPropertyDefinition(property));
+	
+private List[PropertySource] getOverridePropertySource(zdlgen::GenDomainConcept concept) :
+	concept.override.toPropertySource(concept);
+	
+private create PropertySource toPropertySource(zdlgen::GenAttributeOverride property, zdlgen::GenDomainConcept concept) :
+	this.setConceptName(concept.domainConcept.qualifiedName + "::" + property.name) ->
+	(property.order != null) ? this.setOrder(property.order) : {} ->
+	this.definition.add(getPropertyDefinition(property));
+
+private PropertyDefinition getPropertyDefinition(zdlgen::GenDomainAttributePresentation property) :
+	if(!property.visible) then
+		getHiddenObjectDefinition()
+	else if(property.readOnly) then 
+		getReadOnlyObjectDefinition() 
+	else
+		getVisiblePropertyDefinition(property);
+		
+private PropertyDefinition getVisiblePropertyDefinition(zdlgen::GenDomainAttributePresentation property):
+	switch(property.presentationKind) {
+		case zdlgen::GenDomainAttributePresentationKind::primitive: getVisiblePrimitiveDefinition()
+		case zdlgen::GenDomainAttributePresentationKind::text: getVisibleTextualDefinition()
+		case zdlgen::GenDomainAttributePresentationKind::multiLineText: getMultiTextualDefinition()
+		case zdlgen::GenDomainAttributePresentationKind::other: getVisibleObjectDefinition()
+		default: getVisibleObjectDefinition()
+	};
+
+/**
+ * Returns a new PropertySource for the given DomainConcept.  The 
+ * PropertySource includes the default PropertyDefinition.
+ */	
+private create PropertySource toPropertySource(DomainConcept concept) :
+    this.setConceptName(concept.getQualifiedName()) ->
+    this.definition.add(getVisibleObjectDefinition());
+ 
+/**
+ * Returns the default PropetyDefinition for the given TypedElement.
+ */
+private PropertyDefinition getDefaultPropertyDefinition(uml::TypedElement t) :
+   switch {
+   	case "UMLPrimitiveTypes::String" == t.type.getQualifiedName() : getVisibleTextualDefinition()
+   	case "UMLPrimitiveTypes::Boolean" == t.type.getQualifiedName() : getVisiblePrimitiveDefinition()
+   	case "UMLPrimitiveTypes::UnlimitedNatural" == t.type.getQualifiedName() : getVisiblePrimitiveDefinition()
+   	case "UMLPrimitiveTypes::Integer" == t.type.getQualifiedName() : getVisiblePrimitiveDefinition()
+   	default : getVisibleObjectDefinition()
+   }; 
+	
+/**
+ * Adds the default PropertyDefintions to the given PropertySheet.
+ */   
+private addDefaultPropertyDefinitions(PropertySheet propertySheet) :
+	propertySheet.propertyDefinition.add(getVisibleObjectDefinition()) ->
+	propertySheet.propertyDefinition.add(getHiddenObjectDefinition()) ->
+	propertySheet.propertyDefinition.add(getReadOnlyObjectDefinition()) ->
+	propertySheet.propertyDefinition.add(getVisiblePrimitiveDefinition()) ->
+	propertySheet.propertyDefinition.add(getVisibleTextualDefinition()) ->
+	propertySheet.propertyDefinition.add(getMultiTextualDefinition()) ->
+	propertySheet.propertyDefinition.add(getWorkerCodeDefinition());
+
+
+private cached TextualDefinition getWorkerCodeDefinition() :
+	let p = new TextualDefinition :
+	p.setName("Worker Code Visible") ->
+	p.setContentHint("workercode");
+
+private cached PropertyDefinition getVisibleObjectDefinition() :
+	let o = new PropertyDefinition :
+	o.setName("Property Visible");
+	
+private cached PropertyDefinition getHiddenObjectDefinition() :
+	let o = new PropertyDefinition :
+	o.setName("Property Hidden") ->
+	o.setVisible(false);
+	
+private cached PropertyDefinition getReadOnlyObjectDefinition() :
+	let o = new PropertyDefinition :
+	o.setName("Property Read Only") ->
+	o.setReadOnly(true);
+
+private cached PrimitiveDefinition getVisiblePrimitiveDefinition() :
+	let t = new PrimitiveDefinition :
+	t.setName("Primitive");
+	
+private cached TextualDefinition getVisibleTextualDefinition() :
+	let t = new TextualDefinition :
+	t.setName("Text");
+	
+private cached TextualDefinition getMultiTextualDefinition() :
+	let t = new TextualDefinition :
+	t.setName("Multi Text");
+	
+String getResourceURIString(ecore::EObject e) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.ZDLGen2UMLProfileUtil.getResourceURIString(org.eclipse.emf.ecore.EObject);
+
+String getResourceURIString(ZDL::DomainSpecialization e) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.ZDLGen2UMLProfileUtil.getResourceURIString(org.eclipse.emf.ecore.EObject);
+
+Set[DomainBlock] getDomainBlocks(DomainSpecialization ds) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.ZDLGen2UMLProfileUtil.getDomainBlocks(org.eclipse.uml2.uml.Class);

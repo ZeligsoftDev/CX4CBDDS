@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_F1FpoPloEd6sN9O1OthBKw" name="ZDLGenProperties">
+  <packageImport xmi:id="_F1Fp8floEd6sN9O1OthBKw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Qqee0PloEd6sN9O1OthBKw" name="GenDomainStructuralFeature" isAbstract="true">
+    <generalization xmi:id="_ZNUpoPloEd6sN9O1OthBKw" general="_VghAsPloEd6sN9O1OthBKw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VghAsPloEd6sN9O1OthBKw" name="GenDomainAttributePresentation" isAbstract="true">
+    <ownedAttribute xmi:id="_n82ZIPloEd6sN9O1OthBKw" name="visible" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_WfRSgPlpEd6sN9O1OthBKw" value="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_s3ypIPloEd6sN9O1OthBKw" name="readOnly" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_XZPncPlpEd6sN9O1OthBKw">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </defaultValue>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_6gkL8PloEd6sN9O1OthBKw" name="presentationHint" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Q87rUPlpEd6sN9O1OthBKw" name="presentationKind" visibility="public" type="__tEGAPloEd6sN9O1OthBKw">
+      <defaultValue xmi:type="uml:InstanceValue" xmi:id="_Uf2YcPlpEd6sN9O1OthBKw" name="other" type="__tEGAPloEd6sN9O1OthBKw" instance="_Oq5-UPlpEd6sN9O1OthBKw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_Lnx7UPq4Ed6Zwaid2TV3-A" name="order" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Hi_TYPq8Ed6Zwaid2TV3-A" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Hi-sUPq8Ed6Zwaid2TV3-A"/>
+      <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_gAQtkAxiEd-VDeAS3IBLRA" value="8000">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </defaultValue>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Enumeration" xmi:id="__tEGAPloEd6sN9O1OthBKw" name="GenDomainAttributePresentationKind">
+    <ownedLiteral xmi:id="_LdXrUPlpEd6sN9O1OthBKw" name="primitive" classifier="__tEGAPloEd6sN9O1OthBKw"/>
+    <ownedLiteral xmi:id="_MWu8QPlpEd6sN9O1OthBKw" name="text" classifier="__tEGAPloEd6sN9O1OthBKw"/>
+    <ownedLiteral xmi:id="_MpHFsPlpEd6sN9O1OthBKw" name="multiLineText" classifier="__tEGAPloEd6sN9O1OthBKw"/>
+    <ownedLiteral xmi:id="_Oq5-UPlpEd6sN9O1OthBKw" name="other" classifier="__tEGAPloEd6sN9O1OthBKw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_KutZEPlqEd6sN9O1OthBKw" name="GenAttributeOverride">
+    <generalization xmi:id="_U-tCMPlqEd6sN9O1OthBKw" general="_VghAsPloEd6sN9O1OthBKw"/>
+    <generalization xmi:id="_k9trgBHzEd-CKaQDaEqpmQ">
+      <general xmi:type="uml:Class" href="ZDLGenKernel.uml#_wGbWoSA6Ed2Pp_xmvKhmzw"/>
+    </generalization>
+    <ownedAttribute xmi:id="_RpXeEPlqEd6sN9O1OthBKw" name="name" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Wvu68PlqEd6sN9O1OthBKw" name="GenDomainConcept">
+    <ownedAttribute xmi:id="_Y6b38PlqEd6sN9O1OthBKw" name="override" visibility="public" type="_KutZEPlqEd6sN9O1OthBKw" aggregation="composite" association="_Y6ZbsPlqEd6sN9O1OthBKw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Y6e7QPlqEd6sN9O1OthBKw" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Y6dtIPlqEd6sN9O1OthBKw"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Y6ZbsPlqEd6sN9O1OthBKw" memberEnd="_Y6b38PlqEd6sN9O1OthBKw _Y6gJYPlqEd6sN9O1OthBKw">
+    <ownedEnd xmi:id="_Y6gJYPlqEd6sN9O1OthBKw" name="" visibility="private" type="_Wvu68PlqEd6sN9O1OthBKw" association="_Y6ZbsPlqEd6sN9O1OthBKw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Y6gwcflqEd6sN9O1OthBKw" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Y6gwcPlqEd6sN9O1OthBKw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <profileApplication xmi:id="_F1Fp8vloEd6sN9O1OthBKw">
+    <eAnnotations xmi:id="_F1Fp8_loEd6sN9O1OthBKw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </profileApplication>
+</uml:Package>

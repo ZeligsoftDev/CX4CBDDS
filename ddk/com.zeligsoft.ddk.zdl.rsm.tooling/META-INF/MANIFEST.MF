@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %PluginName
+Bundle-SymbolicName: com.zeligsoft.ddk.zdl.rsm.tooling; singleton:=true
+Bundle-Version: 1.4.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: com.zeligsoft.ddk.zdl.rsm.tooling.ZDLPlugin
+Bundle-Vendor: %ProviderName
+Bundle-Localization: plugin
+Export-Package: com.zeligsoft.ddk.zdl.rsm.tooling,
+ com.zeligsoft.ddk.zdl.rsm.tooling.actions,
+ com.zeligsoft.ddk.zdl.rsm.tooling.l10n
+Require-Bundle: org.eclipse.ocl.uml;bundle-version="3.0.0",
+ org.eclipse.gmf.runtime.emf.ui.properties;bundle-version="[1.4.0,2.0.0)",
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="[1.4.1,2.0.0)",
+ org.eclipse.uml2.uml.edit;bundle-version="3.1.0";visibility:=reexport,
+ com.zeligsoft.base.zdl;bundle-version="4.0.0",
+ com.zeligsoft.base.ui;bundle-version="3.4.0",
+ org.eclipse.ui.ide,
+ org.eclipse.papyrus.infra.emf;bundle-version="3.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

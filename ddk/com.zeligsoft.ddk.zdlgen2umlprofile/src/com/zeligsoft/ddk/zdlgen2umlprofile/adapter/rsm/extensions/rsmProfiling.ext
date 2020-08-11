@@ -1,0 +1,54 @@
+/**
+ * Copyright (c) 2008 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ */
+
+import uml;
+import zdlgen;
+
+/**
+ * Initialize a profile (generated from the given domain specialization) for
+ * use in RSM.
+ */
+Void initializeForRSM(Profile profile, GenDomainSpecialization specialization) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.adapter.rsm.extensions.RSMProfilingExtensions.initializeForRSM(org.eclipse.uml2.uml.Profile, com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization);
+
+/**
+ * Obtains the ZDL namespace URI string that is used as the source for the
+ * annotations that trace profile elements to the source ZDL model elements.
+ */
+String getZDLNamespace() :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.adapter.rsm.extensions.RSMProfilingExtensions.getZDLNamespace();
+
+
+/**
+ * Creates the enumeration literal specified by the given genEnumLiteral in the
+ * target UML enumeration.  This works around a bug in oAW owing to which
+ * it is impossible to create EnumerationLiteral instances in a workflow that
+ * declares a profile "meta-model."  (the profile meta-model implementation NPEs
+ * on the qualified name of the enumeration that doesn't yet own he new literal)
+ */
+EnumerationLiteral createEnumerationLiteral(GenDomainEnumLiteral genLiteral, Enumeration umlEnum) :
+    JAVA com.zeligsoft.ddk.zdlgen2umlprofile.adapter.rsm.extensions.RSMProfilingExtensions.createEnumerationLiteral(com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral, org.eclipse.uml2.uml.Enumeration);
+
+/**
+ * Gets the named literal of the enumeration that types the specified property.
+ * This works around a bug in oAW in which the getOwnedLiteral(String) and
+ * getOwnedMember(String) operations and the ownedLiteral and ownedMember
+ * attributes are not available on Enumerations in order to access their literals.
+ */
+EnumerationLiteral getEnumerationDefaultLiteral(Property property, String name) :
+    JAVA com.zeligsoft.ddk.zdlgen2umlprofile.adapter.rsm.extensions.RSMProfilingExtensions.getEnumerationDefaultLiteral(org.eclipse.uml2.uml.Property, java.lang.String);
+
+/**
+ * Initialize a model library (generated from the given domain specialization)
+ * for use in RSM.
+ */
+Void initializeForRSM(Package library, Profile profile) :
+    JAVA com.zeligsoft.ddk.zdlgen2umlprofile.adapter.rsm.extensions.RSMProfilingExtensions.initializeForRSM(org.eclipse.uml2.uml.Package, org.eclipse.uml2.uml.Profile);

@@ -1,0 +1,119 @@
+/*
+ * Copyright (c) 2008 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ * 
+ */
+
+import ZDL;
+import zdlgen;
+
+extension com::zeligsoft::ddk::zdl2zdlgen::transforms::xtend::util;
+
+// default extension for unsupported specializations of the DomainClassifier
+// stereotype (of which there are none).  Makes the Xtend compiler happy
+Void toGenDomainClassifier(DomainClassifier dc) :
+    {};
+
+// default extension for unstereotyped classifiers
+Void toGenDomainClassifier(uml::Type type) :
+    {};
+        
+GenDomainConcept toGenDomainClassifier(DomainConcept dc) :
+    dc.isReferenced()? dc.refConcept() : dc.createGenDomainClassifier();
+    
+private create GenDomainConcept createGenDomainClassifier(DomainConcept dc) :
+    this.setDomainConcept(dc) ->
+    this.setIconUri(getAbsoluteIconUri(dc)) ->
+    this.setCategory(GenDomainConceptCategory::firm) ->
+    this.feature.addAll(dc.feature.typeSelect(DomainAttribute).toGenDomainAttribute(this)) ->
+    this.generalization.addAll(dc.generalization.typeSelect(DomainGeneralization).toGenDomainGeneralization());
+
+// oAW doesn't understand that isAbstract is a Boolean when accessed via the stereotype
+private Boolean isAbstract(uml::Classifier classifier) :
+    classifier.isAbstract;
+
+private String getAbsoluteIconUri(DomainConcept dc):
+	JAVA com.zeligsoft.ddk.zdl2zdlgen.util.ZDL2ZDLGenUtil.getAbsoluteIconUri(org.eclipse.uml2.uml.Class);
+
+GenDomainDataType toGenDomainClassifier(DomainDataType ddt) :
+    ddt.isReferenced()? ddt.refDataType() : ddt.createGenDomainClassifier();
+
+private create GenDomainDataType createGenDomainClassifier(DomainDataType ddt) :
+    this.setDomainDataType(ddt);
+
+// TODO: oAW doesn't recognize that the PrimitiveType can be stereotyped as <<DomainDataType>
+GenDomainDataType toGenDomainClassifier(uml::PrimitiveType pt) :
+    pt.isReferenced()? pt.refPrimitiveType() : pt.createGenDomainClassifier();
+
+// TODO: oAW doesn't recognize that the PrimitiveType can be stereotyped as <<DomainDataType>
+private create GenDomainDataType createGenDomainClassifier(uml::PrimitiveType pt) :
+    this.setDomainDataType(pt);
+
+// oAW does not support stereotypes on enumeration literals.  We will trust
+// that the enumeration literals in the DomainEnum should all be converted.
+// If and when that assumption changes, we can use a Java call-out
+GenDomainEnum toGenDomainClassifier(DomainEnum de) :
+    de.isReferenced()? de.refEnum() : de.createGenDomainClassifier();
+    
+// oAW does not support stereotypes on enumeration literals.  We will trust
+// that the enumeration literals in the DomainEnum should all be converted.
+// If and when that assumption changes, we can use a Java call-out
+private create GenDomainEnum createGenDomainClassifier(DomainEnum de) :
+    this.setDomainDataType(de) ->
+    this.literal.addAll(de.ownedLiteral.toGenDomainEnumLiteral());
+
+create GenDomainEnumLiteral toGenDomainEnumLiteral(uml::EnumerationLiteral del) :
+    this.setDomainEnumLiteral(del);
+
+// default extension for unsupported specializations of the DomainStructuralFeature stereotype
+Void toGenDomainAttribute(DomainStructuralFeature dsf, GenDomainConcept owner) :
+    {};
+    
+// Attributes whose types are <<domainConcepts>> map to GenDomainReferences.
+// Otherwise, they map to GenDomainAttributes
+GenDomainStructuralFeature toGenDomainAttribute(DomainAttribute da, GenDomainConcept owner) :
+    DomainConcept.isInstance(da.type)?
+            createGenDomainReference(da, owner) :
+            createGenDomainAttribute(da, owner);
+
+private create GenDomainAttribute createGenDomainAttribute(DomainAttribute da, GenDomainConcept owner) :
+    this.setDomainAttribute(da) ->
+    this.setType(
+        DomainModel.isInstance(da.type.eRootContainer)?
+            ((GenDomainDataType) da.type.toGenDomainClassifier()) :
+            null);
+            
+private create GenDomainReference createGenDomainReference(DomainAttribute da, GenDomainConcept owner) :
+    this.setDomainAttribute(da) ->
+    this.setSource(owner) ->
+    this.setTarget((GenDomainConcept) da.type.toGenDomainClassifier());
+
+create GenDomainReference toGenDomainReference(DomainReference dr) :
+    this.setDomainReference(dr) ->
+    this.setSource(dr.getSourceConcept()) ->
+    this.setTarget(dr.getTargetConcept()) ->
+    this.setDomainAttribute(dr.getSourceEnd());
+    
+private GenDomainConcept getTargetConcept(DomainReference dr) :
+    let sourceEnd = dr.getSourceEnd() :
+        (GenDomainConcept) ((DomainConcept) sourceEnd.type).toGenDomainClassifier();
+    
+private uml::Property getSourceEnd(DomainReference dr) :
+    let composite = dr.memberEnd.selectFirst(e|e.isComposite) :
+        (composite != null)? composite : 
+            (let nonOwned = dr.memberEnd.selectFirst(e|e.owner != e.association) :
+                (nonOwned != null)? nonOwned : dr.memberEnd.first());
+    
+private GenDomainConcept getSourceConcept(DomainReference dr) :
+    let targetEnd = dr.getSourceEnd().getOtherEnd() :
+        (GenDomainConcept) ((DomainConcept) targetEnd.type).toGenDomainClassifier();
+
+create GenDomainGeneralization toGenDomainGeneralization(DomainGeneralization dg) :
+    this.setDomainGeneralization(dg) ->
+    this.setGeneral(dg.general.toGenDomainClassifier());

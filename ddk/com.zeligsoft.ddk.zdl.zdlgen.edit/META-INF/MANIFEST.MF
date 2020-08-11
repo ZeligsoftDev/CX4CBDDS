@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.zeligsoft.ddk.zdl.zdlgen.edit; singleton:=true
+Bundle-Version: 1.4.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: com.zeligsoft.ddk.zdl.zdlgen.provider.ZDLGenEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: com.zeligsoft.ddk.zdl.zdlgen.provider,
+ com.zeligsoft.ddk.zdl.zdlgen.provider.util
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)",
+ com.zeligsoft.ddk.zdl.zdlgen;bundle-version="[1.4.0,2.0.0)";visibility:=reexport,
+ org.eclipse.emf.edit;bundle-version="[2.6.0,3.0.0)";visibility:=reexport,
+ org.eclipse.emf.ecore;bundle-version="2.6.0";visibility:=reexport,
+ org.eclipse.emf.ecore.edit;bundle-version="2.6.0";visibility:=reexport,
+ org.eclipse.uml2.uml;bundle-version="3.1.0";visibility:=reexport,
+ org.eclipse.uml2.uml.edit;bundle-version="3.1.0";visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

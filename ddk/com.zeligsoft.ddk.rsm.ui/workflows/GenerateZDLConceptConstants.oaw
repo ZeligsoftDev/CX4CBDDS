@@ -1,0 +1,40 @@
+<!--
+ Copyright (c) 2008 Zeligsoft Inc.
+ 
+ All rights reserved. 
+  
+ THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ IS STRICTLY PROHIBITED.
+ 
+
+-->
+
+<workflow>
+
+	<component class="com.zeligsoft.base.workflow.SetupResourceSet" resourceSetSlot="rset" /> 
+
+    <component id="readSource" class="com.zeligsoft.base.workflow.RSMReader" resourceSetSlot="rset">
+        <uri value="${modelURI}" />
+        <modelSlot value="model" />
+    </component>
+   
+	<component id="com.zeligsoft.generator.id" class="org.eclipse.xpand2.Generator">
+	    <globalVarDef name="packageName" value="'${packageName}'"/> 	
+		<metaModel class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
+			<metaModelPackage
+				value="org.eclipse.emf.ecore.EcorePackage" />
+		</metaModel>
+        <metaModel id="profile1" class="org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel">
+          <profile value="pathmap://ZDL_PROFILES/ZDL.profile.uml"/>
+        </metaModel>
+		<metaModel class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel" />
+		<expand value="templates::GenerateConceptConstants::Root FOR model" />
+        <outlet path="${src-gen}" />
+        <beautifier class="org.eclipse.xpand2.output.JavaBeautifier" />
+	</component>
+	
+	<component class="com.zeligsoft.base.workflow.CleanupResourceSet" resourceSetSlot="rset" />
+
+</workflow>

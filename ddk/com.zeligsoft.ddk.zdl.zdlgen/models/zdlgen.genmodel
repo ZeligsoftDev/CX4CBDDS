@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/uml2/2.2.0/GenModel"
+    modelDirectory="/com.zeligsoft.ddk.zdl.zdlgen/src" creationSubmenus="true"
+    modelPluginID="com.zeligsoft.ddk.zdl.zdlgen" templateDirectory="/com.zeligsoft.ddk.zdl.zdlgen/templates"
+    dynamicTemplates="true" redirection="" modelName="ZDLGen" editPluginClass="com.zeligsoft.ddk.zdl.zdlgen.provider.ZDLGenEditPlugin"
+    editorPluginClass="com.zeligsoft.ddk.zdl.zdlgen.presentation.ZDLGenEditorPlugin"
+    updateClasspath="false" nonNLSMarkers="true" featureMapWrapperInterface="" featureMapWrapperInternalInterface=""
+    featureMapWrapperClass="" codeFormatting="true" testsDirectory="/com.zeligsoft.ddk.zdl.zdlgen.test/src"
+    testSuiteClass="com.zeligsoft.ddk.zdl.zdlgen.test.AllTests" booleanFlagsField="eFlags"
+    booleanFlagsReservedBits="8" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml platform:/plugin/org.eclipse.uml2.types/model/Types.genmodel#//types"
+    pluralizedGetters="true" cacheAdapterSupport="true" invariantPrefix="check">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
+    <details key="DUPLICATE_FEATURE_INHERITANCE" value="PROCESS"/>
+    <details key="DUPLICATE_OPERATIONS" value="PROCESS"/>
+    <details key="DERIVED_FEATURES" value="PROCESS"/>
+    <details key="SUBSETTING_PROPERTIES" value="PROCESS"/>
+    <details key="REDEFINING_OPERATIONS" value="PROCESS"/>
+    <details key="ANNOTATION_DETAILS" value="PROCESS"/>
+    <details key="UNION_PROPERTIES" value="PROCESS"/>
+    <details key="DUPLICATE_OPERATION_INHERITANCE" value="PROCESS"/>
+    <details key="DUPLICATE_FEATURES" value="PROCESS"/>
+    <details key="REDEFINING_PROPERTIES" value="PROCESS"/>
+    <details key="ECORE_TAGGED_VALUES" value="PROCESS"/>
+    <details key="COMMENTS" value="PROCESS"/>
+    <details key="OPERATION_BODIES" value="IGNORE"/>
+    <details key="SUPER_CLASS_ORDER" value="PROCESS"/>
+    <details key="INVARIANT_CONSTRAINTS" value="PROCESS"/>
+    <details key="CAMEL_CASE_NAMES" value="IGNORE"/>
+  </genAnnotations>
+  <foreignModel>zdlgen.ecore</foreignModel>
+  <genPackages xsi:type="genmodel:GenPackage" prefix="ZDLGen" basePackage="com.zeligsoft.ddk.zdl"
+      resource="XMI" disposableProviderFactory="true" classPackageSuffix="internal.impl"
+      testsPackageSuffix="test" ecorePackage="zdlgen.ecore#/" resourceInterfaces="true"
+      operationsPackage="com.zeligsoft.ddk.zdl.zdlgen.internal.operations">
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="zdlgen.ecore#//GenPaletteDiagramKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenPaletteDiagramKind/component"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenPaletteDiagramKind/configuration"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenPaletteDiagramKind/deployment"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenPaletteDiagramKind/class"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenPaletteDiagramKind/freeform"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenPaletteDiagramKind/structure"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenPaletteDiagramKind/statechart"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="zdlgen.ecore#//GenAllDomainCassifiersMode">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenAllDomainCassifiersMode/flat"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenAllDomainCassifiersMode/import"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenAllDomainCassifiersMode/merge"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenAllDomainCassifiersMode/mergeAndImport"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="zdlgen.ecore#//GenDomainConceptCategory">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenDomainConceptCategory/abstract"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenDomainConceptCategory/firm"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenDomainConceptCategory/uncertain"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="zdlgen.ecore#//GenDomainAttributePresentationKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenDomainAttributePresentationKind/primitive"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenDomainAttributePresentationKind/text"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenDomainAttributePresentationKind/multiLineText"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="zdlgen.ecore#//GenDomainAttributePresentationKind/other"/>
+    </genEnums>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//GenDomainClassifier">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainClassifier/block"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//GenDomainNamedElement">
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainNamedElement/name"
+          key="true"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="Domain" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainNamedElement/domainElement"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainNamedElement/getName"
+          cacheAdapterScope="Global"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//GenDomainObject">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainObject/genModel"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainObject/owner"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainObject/ownedObject"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainObject/getGenModel"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenModel">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenModel/ownedModel"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenModel/domainModel"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenModel/referencedModel"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenModel/findUsedDomainModels">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="zdlgen.ecore#//GenModel/findUsedDomainModels/model"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenModel/getDomainModels">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="zdlgen.ecore#//GenModel/getDomainModels/uris"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainModel">
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainModel/domainModel"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Profile Mapping"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainModel/nsURI"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Static API"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainModel/rootPackage"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Static API"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainModel/implementationSubPackage"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Static API"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainModel/implSuffix"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Static API"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainModel/apiProject"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" propertyCategory="Diagram Editor Palette" propertyDescription="Definition of diagram editor palette contributions for the domain model"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainModel/palette"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainModel/menuModel"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainModel/owningGenModel"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainModel/getDomainBlock">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="zdlgen.ecore#//GenDomainModel/getDomainBlock/qualifiedName"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainPackage">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainPackage/element"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainPackage/domainPackage"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//GenDomainPackageableElement">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainPackageableElement/package"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenPalette">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenPalette/ownedDrawer"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Diagram Editor Palette" propertyDescription="Drawers owned and/or referenced from a palette in another domain block"
+          propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenPalette/drawer"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//GenPaletteItem">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Diagram Editor Palette"
+          propertyDescription="Palette entry name; use %key notation to localize in the domain profile properties file"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenPaletteItem/name" key="true"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Diagram Editor Palette"
+          propertyDescription="Palette entry description; use %key notation to localize in the domain profile properties file"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenPaletteItem/description"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenPaletteDrawer">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenPaletteDrawer/specializes"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenPaletteDrawer/palette"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenPaletteDrawer/allTools"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenPaletteToolContainer">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenPaletteToolContainer/ownedTool"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Diagram Editor Palette" propertyDescription="Tools owned and/or referenced from a palette in another domain block"
+          propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenPaletteToolContainer/tool"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Diagram Editor Palette"
+          propertyDescription="The diagrams to which the drawer or stack is to be contributed"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenPaletteToolContainer/targetDiagram"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenPaletteTool">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenPaletteTool/overrides"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenPaletteTool/container"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenMenuModel">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenMenuModel/items"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenMenuModel/umlMenus"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//GenMenuItem">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Domain Menu"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenMenuItem/description"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Domain Menu"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenMenuItem/name"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Domain Menu Advanced" propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenMenuItem/overrides"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenMenuItem/overridenBy"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenUMLMenu">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenUMLMenu/umlMetaclass"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//GenMenuTarget">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenMenuTarget/menu"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenMenu">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Domain Menu Advanced" propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenMenu/extends"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Domain Menu" propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenMenu/item"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainBlock">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainBlock/classifier"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainBlock/relation"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainBlock/domainBlock"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainBlock/import"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainBlock/merge"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="RSM"
+          propertyDescription="Default stereotype suppression for IBM Rational Software Modeler"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainBlock/rsmStereotypesSuppressed"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="RSM"
+          propertyDescription="Default stereotype read-only state for IBM Rational Software Modeler"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainBlock/rsmStereotypesUIReadOnly"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="RSM"
+          propertyDescription="Default stereotype properties read-only state for IBM Rational Software Modeler"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainBlock/rsmStereotypesPropertiesUIReadOnly"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainBlock/allClassifiers">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="zdlgen.ecore#//GenDomainBlock/allClassifiers/mode"/>
+      </genOperations>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//GenDomainBlockRelation">
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="ZDL Generator" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainBlockRelation/target"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainBlockRelation/domainBlockRelation"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainBlockRelation/source"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainBlockImport"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainBlockMerge"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainGeneralization">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainGeneralization/specific"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="ZDL Generator" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainGeneralization/general"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainGeneralization/domainGeneralization"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainConcept">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Profile Mapping"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainConcept/category"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainConcept/feature"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainConcept/domainConcept"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Profile Mapping" propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainConcept/umlMetaclass"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainConcept/general"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainConcept/reference"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainConcept/attribute"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainConcept/iconUri"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="RSM"
+          propertyDescription="Whether to suppress the stereotype in IBM Rational Software Modeler.  Unset to inherit block default."
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainConcept/isRSMSuppressed"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="RSM"
+          propertyDescription="Whether to make the stereotype application read-only in IBM Rational Software Modeler.  Unset to inherit block default."
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainConcept/isRSMUIReadOnly"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="RSM"
+          propertyDescription="Whether to make the stereotype properties read-only in IBM Rational Software Modeler.  Unset to inherit block default."
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainConcept/isRSMPropertiesUIReadOnly"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Rhapsody 8.0"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainConcept/isRhapsodySuppressed"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Rhapsody 8.0"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainConcept/rhapsodyMetaclass"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Rhapsody 8.0"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainConcept/rhapsodyStereotypeName"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Rhapsody 8.0"
+          propertyDescription="The Rhapsody metaclasses that can be created under the concept"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainConcept/rhapsodyAddNew"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Rhapsody 8.0" propertyDescription="The domain concepts that can be created under the concept."
+          propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainConcept/rhapsodyAddNewConcept"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Rhapsody 8.0"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainConcept/rhapsodyDisplayName"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Rhapsody 8.0" propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainConcept/rhapsodyToAddNew"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainConcept/override"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainConcept/generalization"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainConcept/allGenerals"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainConcept/allSpecifics"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainConcept/getGenerals"
+          cacheAdapterScope="Global"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//GenPalettable"/>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//GenDomainStructuralFeature">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Profile Mapping" propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainStructuralFeature/umlMetaattribute"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainStructuralFeature/domainAttribute"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Rhapsody 8.0"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainStructuralFeature/isRhapsodySuppressed"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainStructuralFeature/concept"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//GenDomainAttributePresentation">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Presentation"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainAttributePresentation/visible"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Presentation"
+          propertyDescription="" ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainAttributePresentation/readOnly"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Presentation"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainAttributePresentation/presentationHint"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Presentation"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainAttributePresentation/presentationKind"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Presentation"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainAttributePresentation/order"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainReference">
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="ZDL Generator" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainReference/target"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainReference/source"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainReference/domainReference"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainAttribute">
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="ZDL Generator" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainAttribute/type"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainDataType">
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainDataType/domainDataType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenAttributeOverride">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="General"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenAttributeOverride/name"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainBlockReference">
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="ZDL Generator" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainBlockReference/target"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainBlockReference/domainBlockReference"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainBlockReference/domainSpecialization"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainSpecialization">
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainSpecialization/domainSpecialization"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainSpecialization/domainConcept"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Profile Mapping"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainSpecialization/pluginName"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Profile Mapping"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainSpecialization/resourceName"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainSpecialization/domainModelLibrary"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainSpecialization/modelLibraryNamesPackage"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainSpecialization/modelLibrarySourceFolder"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Menu model"
+          propertyDescription="The URI of the resource that contains the menu model for this domain specialization"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainSpecialization/menuModelResource"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainSpecialization/version"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Profile Mapping"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainSpecialization/codeGenTarget"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Rhapsody"
+          propertyDescription="" ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainSpecialization/rhapsodyJavaProject"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Rhapsody"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainSpecialization/rhapsodyJDTJavaLibrary"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Diagram Editor Palette" propertyDescription="Palette items to exclude from this domain specialization"
+          propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainSpecialization/excludedPaletteItem"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Menu model" propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainSpecialization/includedUMLMenus"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainSpecialization/domainBlock"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainSpecialization/elementtypeConfigurationContainerUri"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainSpecialization/getUniqueName">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="zdlgen.ecore#//GenDomainSpecialization/getUniqueName/classifier"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainSpecialization/allClassifiers"
+          cacheAdapterScope="Global"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainSpecialization/isExcluded">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="zdlgen.ecore#//GenDomainSpecialization/isExcluded/item"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="zdlgen.ecore#//GenDomainSpecialization/getDomainConcepts"
+          cacheAdapterScope="Global"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainModelLibraryReference">
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="ZDL Generator" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainModelLibraryReference/target"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainModelLibraryReference/domainModelLibraryReference"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Profile Mapping"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenDomainModelLibraryReference/resourceName"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainModelLibraryReference/domainSpecialization"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainModelLibrary">
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainModelLibrary/domainModelLibrary"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainEnum">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="false" propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainEnum/literal"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenDomainEnumLiteral">
+      <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
+          createChild="false" propertyCategory="Domain" propertySortChoices="true"
+          ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainEnumLiteral/domainEnumLiteral"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" notify="false" createChild="false"
+          propertyCategory="ZDL Generator" ecoreFeature="ecore:EReference zdlgen.ecore#//GenDomainEnumLiteral/enumeration"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenPaletteCreationTool">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Diagram Editor Palette" propertyDescription="References the domain concept or reference that the tool creates"
+          propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenPaletteCreationTool/type"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Diagram Editor Palette"
+          propertyDescription="A hint indicating which element type to base the tool on, if not the raw UML metaclass"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenPaletteCreationTool/elementTypeHint"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenPaletteCreationTool/expression"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//Expression">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute zdlgen.ecore#//Expression/name"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute zdlgen.ecore#//Expression/expression"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenPaletteStack">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Diagram Editor Palette" propertyDescription="References the tool that is initially the active tool in the stack"
+          propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenPaletteStack/activeTool"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//OawExpression">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute zdlgen.ecore#//OawExpression/variableName"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//OawXtend">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute zdlgen.ecore#//OawXtend/extensionFile"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="zdlgen.ecore#//GenMenuAction"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenMenuDelegateAction">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Domain Menu"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenMenuDelegateAction/hostBundle"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Domain Menu"
+          propertyDescription="" ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenMenuDelegateAction/className"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenMenuCreateAction">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertyCategory="Domain Menu"
+          ecoreFeature="ecore:EAttribute zdlgen.ecore#//GenMenuCreateAction/typeHint"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertyCategory="Domain Menu" propertySortChoices="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenMenuCreateAction/createConcept"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference zdlgen.ecore#//GenMenuCreateAction/expression"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="zdlgen.ecore#//GenMenuSeparator"/>
+  </genPackages>
+</genmodel:GenModel>

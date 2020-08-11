@@ -1,0 +1,261 @@
+/**
+ * Copyright (c) 2008-2009 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ *
+ */
+import uml;
+import zdlgen;
+import ZDL;
+
+extension com::zeligsoft::ddk::zdlgen2umlprofile::adapter::rsm::extensions::rsmProfiling;
+extension com::zeligsoft::ddk::zdlgen2umlprofile::workflow::zdlTrace;
+extension com::zeligsoft::ddk::zdlgen2umlprofile::workflow::modelLibraryUtil;
+
+/**
+ *
+ * Create model libraries from a named domain specialization in a ZDLGen model.
+ *
+ */
+List[Model] transform(GenModel model, String specialization, Profile profile) : 
+    transform(
+        model.domainModel.element.typeSelect(GenDomainSpecialization).selectFirst(e| e.name == specialization),
+        profile);
+
+/**
+ * Creates the model libraries for the specified domain specialization.
+ */
+create List[Model] transform(GenDomainSpecialization domain, Profile profile) :
+    this.addAll(domain.domainModelLibrary.target.toModelLibrary(profile));
+
+/**
+ * Creates a model library from the generator wrapper for the ZDL library package.
+ */
+create Model toModelLibrary(GenDomainModelLibrary genLibrary, Profile profile) :
+    let library = genLibrary.domainModelLibrary :
+    let metaElements = library.eAllContents.reject(e|e.isLibraryElement()).typeSelect(Element) :
+    let instantiations = metaElements.typeSelect(DomainInstantiation) : (
+        this.setName(library.name) ->
+        this.initializeModelLibrary(library, profile) ->
+        this.takeOwnedElements(library) ->
+        instantiations.toConceptInstance(profile) ->
+        instantiations.processDomainReferences(profile) ->
+        metaElements.destroy()
+    );
+
+private Void takeOwnedElements(Element self, Element source) :
+   let copy = source.eContents.typeSelect(Element) :
+   copy.collect(e|
+        (let f = e.eContainmentFeature() :
+        (f.upperBound != 1) ? ((List[ecore::EObject]) self.eGet(f)).add(e) : self.eSet(f, e)));
+        
+private ecore::EObject eContainmentFeature(uml::Element self) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.EcoreWrapper.eContainmentFeature(org.eclipse.uml2.uml.Element);
+	
+private ecore::EClass eClass(uml::Element self) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.EcoreWrapper.eClass(org.eclipse.uml2.uml.Element);
+	
+private ecore::EObject eContainer(uml::Element self) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.EcoreWrapper.eContainer(org.eclipse.uml2.uml.Element);
+
+private ecore::EStructuralFeature eContainingFeature(uml::Element self) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.EcoreWrapper.eContainingFeature(org.eclipse.uml2.uml.Element);
+	
+private List[ecore::EObject] eContents(uml::Element self) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.EcoreWrapper.eContents(org.eclipse.uml2.uml.Element);
+	
+private boolean eIsProxy(uml::Element self) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.EcoreWrapper.eIsProxy(org.eclipse.uml2.uml.Element);
+	
+private List[ecore::EObject] eCrossReferences(uml::Element self) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.EcoreWrapper.eCrossReferences(org.eclipse.uml2.uml.Element);
+	
+private Object eGet(uml::Element self, ecore::EStructuralFeature feature) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.EcoreWrapper.eGet(org.eclipse.uml2.uml.Element, org.eclipse.emf.ecore.EStructuralFeature);
+	
+private Object eGet(uml::Element self, ecore::EStructuralFeature feature, boolean resolve) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.EcoreWrapper.eGet(org.eclipse.uml2.uml.Element, org.eclipse.emf.ecore.EStructuralFeature, boolean);
+
+private Object eSet(uml::Element self, ecore::EStructuralFeature feature, Object newValue) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.EcoreWrapper.eSet(org.eclipse.uml2.uml.Element, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object);
+
+private Object eIsSet(uml::Element self, ecore::EStructuralFeature feature) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.EcoreWrapper.eIsSet(org.eclipse.uml2.uml.Element, org.eclipse.emf.ecore.EStructuralFeature);
+	
+private Object eUnset(uml::Element self, ecore::EStructuralFeature feature) :
+	JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.EcoreWrapper.eUnset(org.eclipse.uml2.uml.Element, org.eclipse.emf.ecore.EStructuralFeature);
+
+/**
+ * Initializes the specified 'self' model library.  It is stereotyped as a
+ * <<modelLibrary>> and has the given profile applied to it if necessary.
+ * If the model library does not instantiate any concepts from the domain
+ * specialization, then it is not necessary to apply the profile.
+ */
+private Void initializeModelLibrary(Package self, Package library, Profile profile) :
+    self.initializeForRSM(profile) ->
+    library.packagedElement.exists(e|e.clientDependency.exists(d|DomainInstantiation.isInstance(d)))?
+        self.applyProfile(profile) :
+        {};
+
+private List[DomainInstantiation] instantiations(NamedElement self) :
+    self.clientDependency.typeSelect(DomainInstantiation);
+
+/**
+ * Does the application of a stereotype for the specified domain concept
+ * instantiation if a stereotype is required by the mapping.
+ */
+private toConceptInstance(DomainInstantiation self, Profile profile) :
+    self.client.toConceptInstance(self.supplier.first(), profile);
+
+/**
+ * Head of the polymorphic helper extension for the toConceptInstance
+ * extension.  The specified element is an unsupported supplier of a
+ * <<domainInstantiation>> abstraction.
+ */
+private NamedElement toConceptInstance(NamedElement self,
+        NamedElement supplier, Profile profile) :
+    self;
+
+/**
+ * Helper for the toConceptInstance extension that handles domain concepts.
+ */
+private NamedElement toConceptInstance(NamedElement self,
+        DomainConcept concept, Profile profile) :
+    let stereo = profile.getStereotype(concept) :
+    ((stereo != null)? self.applyStereotype(stereo) : {}) ->
+    self;
+
+/**
+ * Helper for the toConceptInstance extension that handles instance
+ * specifications of domain concepts.
+ */
+private NamedElement toConceptInstance(NamedElement self,
+        InstanceSpecification instance, Profile profile) :
+    let concept = (DomainConcept) instance.classifier.first() :
+    toConceptInstance(self, concept, profile) ->
+    instance.nonConceptSlots().toDomainFeatureValue(self, concept) ->
+    self;
+
+/**
+ * A helper extension to get the slots of an instance that are not typed by
+ * a DomainConcept.  These are used to generate primitive- and enumeration-valued
+ * domain-attribute values.
+ */
+private List[Slot] nonConceptSlots(InstanceSpecification self) :
+    self.slot.select(s|s.definingFeature != null &&
+        ! DomainConcept.isInstance(s.definingFeature.type));
+
+/**
+ * A helper extension to get the slots of an instance that are typed by
+ * a DomainConcept.  These are used to generate domain-reference values.
+ */
+private List[Slot] conceptSlots(InstanceSpecification self) :
+    self.slot.select(s|s.definingFeature != null &&
+        DomainConcept.isInstance(s.definingFeature.type));
+
+/**
+ * Sets a domain-feature value specified by a slot in an instance
+ * specification.
+ */    
+private toDomainFeatureValue(Slot self, NamedElement base, DomainConcept concept) :
+    base.setZDLValue(concept, self.definingFeature.name,
+            self.definingFeature.coerceList(self.value.toObjectValue()));
+
+//
+// A group of polymorphic extensions for converting primitive- and
+// enumeration-valued stereotype attributes from an instance specification.
+//
+ 
+/**
+ * Head of a polymorphic extension converting values in slots to the objects
+ * expected by the stereotype-application API.
+ */
+private Object toObjectValue(ValueSpecification self) :
+    null;
+
+// only used with enumeration-typed features (links are handled separately)
+private Object toObjectValue(InstanceValue self) :
+    self.instance;
+
+private Object toObjectValue(LiteralString self) :
+    self.stringValue();
+
+private Object toObjectValue(LiteralInteger self) :
+    self.integerValue();
+    
+private Object toObjectValue(LiteralUnlimitedNatural self) :
+    self.unlimitedValue();
+    
+private Object toObjectValue(LiteralBoolean self) :
+    self.booleanValue();
+
+//
+// END OF POLYMORPHIC toObjectValue extension group
+//
+
+/**
+ * Coerces the list value of an InstanceSpecification's slot to a scalar if
+ * required by the multiplicity of the stereotype property.
+ */
+private Object coerceList(StructuralFeature self, List value) :
+    self.isMultivalued()? value : value.first();
+
+
+
+/**
+ * A step post the generation of the basic model library content, to connect
+ * elements via domain-references (which may be stereotype associations or UML
+ * meta-associations), as specified in links
+ * in the instance specifications.  This is done as a post-processing step to
+ * ensure that all stereotype applications already exist (as create extensions
+ * are not a practical mechanism for creating stereotype instances, which
+ * is done via the applyStereotype(...) API.
+ */
+Void processDomainReferences(DomainInstantiation self, Profile profile) :
+    self.supplier.first().processDomainReferences(self, profile);
+    
+/**
+ * Head of a polymorphic group of extensions for creating domain references
+ * on the NamedElement that is the supplier of a <<domainInstantiation>> abstraction.
+ * The <<domainConcept>> supplier is not implemented because it cannot express
+ * domain references.
+ */
+Void processDomainReferences(NamedElement self, DomainInstantiation instantiation,
+        Profile profile) :
+    null;
+
+/**
+ * Polymorphic extension for the case of the instance specification, which is
+ * the only supplier of a <<domainInstantiation>> abstraction that supports
+ * domain references.
+ */
+Void processDomainReferences(InstanceSpecification self,
+        DomainInstantiation instantiation, Profile profile) :
+    self.conceptSlots().processDomainReferences(instantiation, profile);
+
+/**
+ * Sets the domain link of the base element of the given instantiation, as
+ * specified by the value(s) of the given slot in a domain-concept instance.
+ */
+Void processDomainReferences(Slot self, DomainInstantiation instantiation, Profile profile) :
+    let feature = self.definingFeature :
+    instantiation.client.setZDLValue((DomainConcept) feature.owner, feature.name,
+            feature.coerceList(self.value.typeSelect(InstanceValue).instance.toBaseElement()));
+
+/**
+ * Obtains the base element of an instance-specification for a domain concept.
+ */
+private NamedElement toBaseElement(InstanceSpecification self) :
+    self.getRelationships().typeSelect(DomainInstantiation).client.first();
+
+/**
+ * Call-out to the ZDLUtil for ZDL-based setting of a domain-feature's value.
+ */
+private Void setZDLValue(NamedElement self, DomainConcept concept, String property, Object value) :
+    JAVA com.zeligsoft.base.zdl.util.ZDLUtil.setValue(org.eclipse.emf.ecore.EObject, org.eclipse.uml2.uml.Class, java.lang.String, java.lang.Object);
+    

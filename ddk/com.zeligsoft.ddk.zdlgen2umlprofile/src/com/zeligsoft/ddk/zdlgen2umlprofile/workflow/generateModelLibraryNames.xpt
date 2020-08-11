@@ -1,0 +1,120 @@
+«REM»
+
+ Copyright (c) 2008-2009 Zeligsoft Inc.
+
+ All rights reserved. 
+  
+ THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ IS STRICTLY PROHIBITED.
+
+«ENDREM»
+«IMPORT zdlgen»
+«IMPORT ZDL»
+
+«EXTENSION com::zeligsoft::ddk::zdlgen2umlprofile::workflow::modelLibraryUtil»
+«EXTENSION com::zeligsoft::ddk::zdlgen2umlprofile::workflow::zdlgen2umlprofileUtil»
+
+«DEFINE generate(String specialization) FOR GenModel»
+	«EXPAND modelLibraryNames FOR this.domainModel.element.typeSelect(GenDomainSpecialization).selectFirst(e|e.name == specialization)»
+«ENDDEFINE»
+
+«DEFINE modelLibraryNames FOR GenDomainSpecialization»
+	«EXPAND modelLibraryNames FOREACH this.domainModelLibrary.target»
+«ENDDEFINE»
+
+«DEFINE modelLibraryNames FOR GenDomainModelLibrary»
+	«LET this.name.getValidJavaIdentifier() + "Names" AS clazzName»
+		«LET this.domainModelLibrary.eAllContents.reject(e|e.isLibraryElement()).typeSelect(uml::Element) AS metaElements»
+			«LET metaElements.typeSelect(DomainInstantiation) AS instantiations»
+				«FILE javaClassFile(getModelLibraryPackageName(), clazzName)»
+«EXPAND copyright FOR this»
+
+package «getModelLibraryPackageName()»;
+
+/**
+ *
+ *	Constants for the «name» model library
+ *	
+ *	@generated
+ */
+public final class «clazzName» {
+
+	private «clazzName»() {
+		super();
+	}
+	
+	«EXPAND modelLibraryNames((uml::Namespace)this.domainModelLibrary.eContainer) FOREACH instantiations»
+}
+				«ENDFILE»
+			«ENDLET»
+		«ENDLET»
+	«ENDLET»
+«ENDDEFINE»
+
+«DEFINE modelLibraryNames(uml::Namespace root) FOR DomainInstantiation»
+«EXPAND writeConstantForElement(root, this.supplier.first()) FOR this.client.first()»
+«ENDDEFINE»
+
+«DEFINE writeConstantForElement(uml::Namespace root, uml::NamedElement supplier) FOR uml::NamedElement»
+«IF this != null»
+«LET relativeQualifiedName(root, this) AS qn»
+/*
+ *  
+ *  An instance of the concept:
+ *		<unknown>
+ *
+ *  @generated
+ */
+public final static String «qn.umlQualifiedNameToJavaIdentifier(true)» = "«qn»"; //$NON-NLS-1$
+«ENDLET»
+«ENDIF»
+«ENDDEFINE»
+
+«DEFINE writeConstantForElement(uml::Namespace root, DomainConcept concept) FOR uml::NamedElement»
+«IF this != null»
+«LET relativeQualifiedName(root, this) AS qn»
+/*
+ *  
+ *  An instance of the concept:
+ *		«concept.qualifiedName»
+ *
+ *  @generated
+ */
+public final static String «qn.umlQualifiedNameToJavaIdentifier(true)» = "«qn»"; //$NON-NLS-1$
+«ENDLET»
+«ENDIF»
+«ENDDEFINE»
+
+«DEFINE writeConstantForElement(uml::Namespace root, uml::InstanceSpecification instance) FOR uml::NamedElement»
+«LET this.qualifiedName AS qn»
+	«IF qn != null && qn.length != 0»
+/*
+ *  
+ *  An instance of the concept:
+ *		«instance.classifier.first().qualifiedName»
+ *
+ *  @generated
+ */
+public final static String «relativeQualifiedName(root, this).umlQualifiedNameToJavaIdentifier(true)» = "«relativeQualifiedName(root, this)»";	//$NON-NLS-1$
+	«ENDIF»
+«ENDLET»
+«ENDDEFINE»
+
+«DEFINE writeConstantForElement(uml::Namespace root, uml::Element supplier) FOR uml::NamedElement»
+«ENDDEFINE»
+
+«DEFINE copyright FOR GenDomainModelLibrary»
+/**
+ * Copyright (c) 2008-2009 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ *
+ */
+«ENDDEFINE»

@@ -1,0 +1,34 @@
+/**
+ * Copyright (c) 2008-2009 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ *
+ */
+String getValidJavaIdentifier(String str) :
+JAVA org.eclipse.uml2.common.util.UML2Util.getValidJavaIdentifier(java.lang.String)
+;
+
+String convertPackageToPath(String packageName) :
+JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.ZDLGen2UMLProfileUtil.convertPackageToPath(java.lang.String)
+;
+
+String javaClassFile(String packageName, String className) :
+JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.ZDLGen2UMLProfileUtil.javaClassFile(java.lang.String, java.lang.String)
+;
+
+String umlQualifiedNameToJavaIdentifier(String qualifiedName, boolean uppercase) :
+JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.ZDLGen2UMLProfileUtil.umlQualifiedNameToJavaIdentifier(java.lang.String, java.lang.Boolean)
+;
+
+String relativeQualifiedName(uml::Namespace root, uml::NamedElement element) :
+JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.ZDLGen2UMLProfileUtil.relativeQualifiedName(org.eclipse.uml2.uml.Namespace, org.eclipse.uml2.uml.NamedElement)
+;
+
+List[String] getMetamodelURIs(zdlgen::GenModel model) :
+JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.ZDLGen2UMLProfileUtil.getMetamodelURIs(com.zeligsoft.ddk.zdl.zdlgen.GenModel)
+;

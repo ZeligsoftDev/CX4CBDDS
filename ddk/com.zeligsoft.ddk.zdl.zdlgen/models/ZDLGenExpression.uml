@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_rp8OMOp7Ed6CoL7wF9UaGA" name="ZDLGen Expression">
+  <packageImport xmi:id="_rp81VOp7Ed6CoL7wF9UaGA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_8EBbAOp7Ed6CoL7wF9UaGA" name="Expression" isAbstract="true">
+    <generalization xmi:id="_4EZTwEfxEd-BR-RXfUJ0pQ">
+      <general xmi:type="uml:Class" href="ZDLGenKernel.uml#_wGbWoSA6Ed2Pp_xmvKhmzw"/>
+    </generalization>
+    <ownedAttribute xmi:id="__qwRIOp7Ed6CoL7wF9UaGA" name="name" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_CPA9oOp8Ed6CoL7wF9UaGA" name="expression" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_NhFu0Op8Ed6CoL7wF9UaGA" name="OawExpression">
+    <generalization xmi:id="_OvQyIOp8Ed6CoL7wF9UaGA" general="_8EBbAOp7Ed6CoL7wF9UaGA"/>
+    <ownedAttribute xmi:id="_oZQU4O5-Ed6gw5d1ya7RNg" name="variableName" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qN_o8e5-Ed6gw5d1ya7RNg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qN_o8O5-Ed6gw5d1ya7RNg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_0WlpkO5-Ed6gw5d1ya7RNg" value="self">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </defaultValue>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_7CQVMO_PEd6QDOvMM9ciTQ" name="OawXtend">
+    <generalization xmi:id="_AqYbUO_QEd6QDOvMM9ciTQ" general="_8EBbAOp7Ed6CoL7wF9UaGA"/>
+    <ownedAttribute xmi:id="_8jZX0O_PEd6QDOvMM9ciTQ" name="extensionFile" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-6ytAe_PEd6QDOvMM9ciTQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-6ytAO_PEd6QDOvMM9ciTQ" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <profileApplication xmi:id="_rp81Vep7Ed6CoL7wF9UaGA">
+    <eAnnotations xmi:id="_rp81Vup7Ed6CoL7wF9UaGA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </profileApplication>
+</uml:Package>

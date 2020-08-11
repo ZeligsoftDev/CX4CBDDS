@@ -1,0 +1,51 @@
+/*
+ * Copyright (c) 2008 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ * 
+ */
+
+import ZDL;
+import zdlgen;
+
+List[DomainModel] getNewModels() :
+    (List[DomainModel]) GLOBALVAR newModels;
+
+List[GenDomainModel] getRefModels() :
+    (List[GenDomainModel]) GLOBALVAR refModels;
+
+Boolean isReferenced(uml::Element element) :
+    getRefModels().domainModel.contains(element.getModel());
+
+cached List[Object] refGenmodelContents() :
+    getRefModels().eAllContents;
+
+cached GenDomainBlock refBlock(DomainBlock block) :
+    refGenmodelContents().selectFirst(e|GenDomainBlock.isInstance(e)
+            && ((GenDomainBlock) e).domainBlock == block);
+
+cached GenDomainModelLibrary refModelLibrary(DomainModelLibrary library) :
+    refGenmodelContents().selectFirst(e|GenDomainModelLibrary.isInstance(e)
+            && ((GenDomainModelLibrary) e).domainModelLibrary == library);
+
+cached GenDomainConcept refConcept(DomainConcept concept) :
+    refGenmodelContents().selectFirst(e|GenDomainConcept.isInstance(e)
+            && ((GenDomainConcept) e).domainConcept == concept);
+
+cached GenDomainDataType refDataType(DomainDataType dataType) :
+    refGenmodelContents().selectFirst(e|GenDomainDataType.isInstance(e)
+            && ((GenDomainDataType) e).domainDataType == dataType);
+
+// TODO: oAW doesn't recognize that the PrimitiveType can be stereotyped as <<DomainDataType>
+cached GenDomainDataType refPrimitiveType(uml::PrimitiveType primType) :
+    refGenmodelContents().selectFirst(e|GenDomainDataType.isInstance(e)
+            && ((GenDomainDataType) e).domainDataType == primType);
+
+cached GenDomainEnum refEnum(DomainEnum enum) :
+    refGenmodelContents().selectFirst(e|GenDomainEnum.isInstance(e)
+            && ((GenDomainEnum) e).domainDataType == enum);

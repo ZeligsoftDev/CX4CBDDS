@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+    Copyright (c) 2020 Northrop Grumman Systems Corporation.
+   
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+   
+    http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+ -->
+
+<plugin>
+  <extension-point id="codegentargets" name="%codegen.target.extension-point.name" schema="schema/com.zeligsoft.ddk.zdlgen.codegentargets.exsd"/>
+   
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.zeligsoft.com/zdl/2008/ZDLGen" 
+       class = "com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage"
+       genModel = "models/zdlgen.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.extension_parser">
+    <parser 
+       type="zdlgen" 
+       class="com.zeligsoft.ddk.zdl.zdlgen.util.ZDLGenResourceFactoryImpl" />
+  </extension>
+  <extension
+        point="org.eclipse.emf.validation.constraintProviders">
+     <category
+           id="com.zeligsoft.ddk.zdl.zdlgen.validation"
+           name="ZDLGen Contraints">
+     </category>
+     <constraintProvider
+           cache="true">
+        <package
+              namespaceUri="http://www.zeligsoft.com/zdl/2008/ZDLGen">
+        </package>
+        <constraints
+              categories="com.zeligsoft.ddk.zdl.zdlgen.validation">
+           <constraint
+                 class="com.zeligsoft.ddk.zdl.zdlgen.internal.validation.AbstractHierarchyConstraint"
+                 id="com.zeligsoft.ddk.zdl.zdlgen.AbstractHierarchyConstraint"
+                 isEnabledByDefault="true"
+                 lang="Java"
+                 mode="Batch"
+                 name="Abstract Hierarchy Constraint"
+                 severity="ERROR"
+                 statusCode="1">
+              <message>
+                 A {0} that is abstract is found to have an ancestor which is not abstract.
+              </message>
+              <description>
+                 An abstract Domain Concept should not have any ancestors that are not themselves abstract.
+              </description>
+              <target
+                    class="GenDomainConcept">
+              </target>
+           </constraint>
+           <constraint
+                 class="com.zeligsoft.ddk.zdl.zdlgen.internal.validation.AbstractMappingHierarchyConstraint"
+                 id="com.zeligsoft.ddk.zdl.zdlgen.AbstractMappingHierarchyConstraint"
+                 isEnabledByDefault="true"
+                 lang="Java"
+                 mode="Batch"
+                 name="Abstract Mapping Hierarchy Constraint"
+                 severity="ERROR"
+                 statusCode="1">
+              <message>
+                 A {0} that has its category set to 'abstract' is found to have an ancestor which is not abstract.
+              </message>
+              <description>
+                 A Gen Domain Concept that has its category set to abstract should only have ancestors with an abstract category.
+              </description>
+              <target
+                    class="GenDomainConcept">
+              </target>
+           </constraint>
+        </constraints>
+     </constraintProvider>
+  </extension>
+  <extension
+        point="org.eclipse.emf.validation.constraintBindings">
+     <clientContext
+           default="true"
+           id="com.zeligsoft.ddk.zdl.zdlgen.editorContext">
+        <selector
+              class="com.zeligsoft.ddk.zdl.zdlgen.internal.validation.ZDLValidationDelegateSelector">
+        </selector>
+     </clientContext>
+     <binding
+           category="com.zeligsoft.ddk.zdl.zdlgen.validation"
+           context="com.zeligsoft.ddk.zdl.zdlgen.editorContext">
+     </binding>
+  </extension>
+    
+</plugin>
