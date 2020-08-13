@@ -57,12 +57,19 @@ public final class DDS4CCMMigrationUtil {
 
 	private static final String SOURCE_NAME = "cx.migration"; //$NON-NLS-1$
 
-	private static final String CURRENT_VERSION = "1.4.1"; //$NON-NLS-1$
+	private static final String CURRENT_VERSION = "2.0.1"; //$NON-NLS-1$
 
 	private static boolean migrateAll(Model model, boolean probe) {
 		boolean result = false;
 		String modelVersion = getModelVersion(model);
 
+		if (compareVersion("2.0.1", modelVersion) > 0) {
+			if (!probe) {
+				CORBAMigrationUtil.migrateReturnParameter(model);
+			}
+			result = true;
+		}
+		
 		if (compareVersion("1.0.7", modelVersion) > 0) {
 			// things to migrate for model with version 1.0.6 or less
 			if (!probe) {

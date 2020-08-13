@@ -22,7 +22,6 @@ import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
-import org.eclipse.uml2.uml.ParameterDirectionKind;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.corba.CORBADomainNames;
@@ -41,10 +40,8 @@ public class OnlyCORBAParametersConstraint extends AbstractModelConstraint {
 			Operation op = (Operation)objToVerify;
 			
 			for( Parameter p : op.getOwnedParameters()) {
-				if( p.getDirection() != ParameterDirectionKind.RETURN_LITERAL) {
-					if( ! ZDLUtil.isZDLConcept(p, CORBADomainNames.CORBAPARAMETER)) {
-						return ctx.createFailureStatus(ctx);
-					}
+				if( ! ZDLUtil.isZDLConcept(p, CORBADomainNames.CORBAPARAMETER)) {
+					return ctx.createFailureStatus(ctx);
 				}
 			}
 		}

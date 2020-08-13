@@ -509,10 +509,6 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
         <generalization xmi:type="uml:Generalization" xmi:id="_cTb00IbkEeSjd8J8ZjsuPQ">
           <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_iYmHIIbiEeSjd8J8ZjsuPQ"/>
         </generalization>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-dWu0PpgEeCS04dZxNZhOg" name="idlType" visibility="public" type="_5ZEXsMJaEd6QAZgNaBtgeQ" redefinedProperty="_T-4_wMJbEd6QAZgNaBtgeQ" association="_-dTEcPpgEeCS04dZxNZhOg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-dbnUPpgEeCS04dZxNZhOg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-dbnUfpgEeCS04dZxNZhOg" value="1"/>
-        </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_PlUP4LWrEd2PTvVd89HYhA" name="isOneWay" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_R-8ZsLWrEd2PTvVd89HYhA">
@@ -528,6 +524,9 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zvqMMMMrEd6yzd-HWW9c9w" value="*"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_cQFu0At2Ed-ejZ6Ziw6HnQ" name="owner" visibility="public" type="_8UNR0MPIEd6u_6T1TQ_XYQ" isReadOnly="true"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_g-2c8N1uEeqydOYSdMj1Fg" name="idlType" visibility="public" type="_5ZEXsMJaEd6QAZgNaBtgeQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oizWkN1uEeqydOYSdMj1Fg"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_2ZPPIO1nEd2XOPM4ACfj4Q" name="CORBANamedElement">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_hCQ1EO1oEd2XOPM4ACfj4Q" name="legal_corba_name" constrainedElement="_2ZPPIO1nEd2XOPM4ACfj4Q">
@@ -600,15 +599,6 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
             <language>OCL</language>
             <body>not(self.idlType->isEmpty())
 </body>
-          </specification>
-        </ownedRule>
-        <ownedRule xmi:type="uml:Constraint" xmi:id="_AMv9IBCMEeGHBr5dTOxUEw" name="no_return_direction" constrainedElement="_kTyfsMJdEd6QAZgNaBtgeQ">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_AM8xcBCMEeGHBr5dTOxUEw">
-            <body>%_desc_CORBADomain__IDL__CORBAParameter__no_return_direction</body>
-          </ownedComment>
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="_AM2DwBCMEeGHBr5dTOxUEw">
-            <language>Java</language>
-            <body>com.zeligsoft.domain.omg.corba.validation.CORBAParameterNoReturnDirection</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="_mKj0EMJdEd6QAZgNaBtgeQ" general="_Q0OakMJbEd6QAZgNaBtgeQ"/>
@@ -695,13 +685,6 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
         <generalization xmi:type="uml:Generalization" xmi:id="_ZJOBIGgTEd-cdtLnmNWWNQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_ZcmQIGgTEd-cdtLnmNWWNQ" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_ZypYoGgTEd-cdtLnmNWWNQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_-dTEcPpgEeCS04dZxNZhOg" name="" memberEnd="_-dWu0PpgEeCS04dZxNZhOg _-dc1cPpgEeCS04dZxNZhOg">
-        <generalization xmi:type="uml:Generalization" xmi:id="_F4iuAPphEeCS04dZxNZhOg" general="_T-3xoMJbEd6QAZgNaBtgeQ"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_-dc1cPpgEeCS04dZxNZhOg" name="" visibility="public" type="_OcmUULWrEd2PTvVd89HYhA" redefinedProperty="_T-608MJbEd6QAZgNaBtgeQ" association="_-dTEcPpgEeCS04dZxNZhOg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-ddcgPpgEeCS04dZxNZhOg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-ddcgfpgEeCS04dZxNZhOg" value="*"/>
-        </ownedEnd>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_7eGzACG-EeGd-Nb5_CNoPw" name="" memberEnd="_7ektECG-EeGd-Nb5_CNoPw _7e3oACG-EeGd-Nb5_CNoPw">
         <ownedEnd xmi:type="uml:Property" xmi:id="_7e3oACG-EeGd-Nb5_CNoPw" name="" visibility="public" type="_dITrwEk3Ed2eBKZvQ89d6g" association="_7eGzACG-EeGd-Nb5_CNoPw">
@@ -1183,14 +1166,12 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
   <zdl:DomainConstraint xmi:id="_Kh6zYNF4Ed-64pKc_8KmWw" severity="error" message="%_mesg_CORBADomain__IDL__CORBAParameter__parameter_type_is_set" id="com.zeligsoft.domain.omg.corba.CORBATyped.parameter_type_is_set" base_Constraint="_KhxCYNF4Ed-64pKc_8KmWw"/>
   <zdl:DomainBlockImport xmi:id="_tU_YQDL1EeCZXvaTmQgdWA" base_PackageImport="_tUPxYDL1EeCZXvaTmQgdWA"/>
   <zdl:DomainConstraint xmi:id="_V-b5kO-XEeCQus6uqORjzw" severity="error" message="%_mesg_CORBADomain__IDL__CORBAEnum__enumeration_must_have_literals" id="com.zeligsoft.domain.omg.corba.CORBAEnum.enumeration_must_have_literals" base_Constraint="_V-XoIO-XEeCQus6uqORjzw"/>
-  <zdl:DomainReference xmi:id="_-deqoPpgEeCS04dZxNZhOg" base_Association="_-dTEcPpgEeCS04dZxNZhOg"/>
   <zdl:DomainConstraint xmi:id="_MZRlMPpjEeCVxf8v04aRDA" severity="error" message="%_mesg_CORBADomain__IDL__CORBAArray__must_have_type" id="com.zeligsoft.domain.omg.corba.CORBAArray.must_have_type" base_Constraint="_MZPI8PpjEeCVxf8v04aRDA"/>
   <zdl:DomainGeneralization xmi:id="_kcbQkPsxEeCUd9Edw_GMyg" base_Generalization="_kcPqYPsxEeCUd9Edw_GMyg"/>
   <zdl:DomainGeneralization xmi:id="_lYnzEPsxEeCUd9Edw_GMyg" base_Generalization="_lYkvwPsxEeCUd9Edw_GMyg"/>
   <zdl:DomainGeneralization xmi:id="_l1y3QPsxEeCUd9Edw_GMyg" base_Generalization="_l1vz8PsxEeCUd9Edw_GMyg"/>
   <zdl:DomainGeneralization xmi:id="_z5qxMCG-EeGd-Nb5_CNoPw" base_Generalization="_z5fLACG-EeGd-Nb5_CNoPw"/>
   <zdl:DomainReference xmi:id="_7e7SYCG-EeGd-Nb5_CNoPw" base_Association="_7eGzACG-EeGd-Nb5_CNoPw"/>
-  <zdl:DomainConstraint xmi:id="_AM7jUBCMEeGHBr5dTOxUEw" evaluationMode="live" severity="error" message="%_mesg_CORBADomain__IDL__CORBAParameter__no_return_direction" id="com.zeligsoft.domain.omg.corba.CORBAParameter.no_return_direction" base_Constraint="_AMv9IBCMEeGHBr5dTOxUEw"/>
   <zdl:DomainConcept xmi:id="_vW8hkIPiEeGRety5GrZr1Q" base_Class="_vWz-sIPiEeGRety5GrZr1Q"/>
   <zdl:DomainAttribute xmi:id="_PCUw0I-tEeGdHIFRtaMqRA" base_Property="_PCNcEI-tEeGdHIFRtaMqRA"/>
   <zdl:DomainReference xmi:id="_WdrIEI-tEeGdHIFRtaMqRA" base_Association="_WdcekI-tEeGdHIFRtaMqRA"/>
@@ -1211,4 +1192,5 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
   <zdl:DomainGeneralization xmi:id="_cCB7wIbkEeSjd8J8ZjsuPQ" base_Generalization="_cB_fgIbkEeSjd8J8ZjsuPQ"/>
   <zdl:DomainGeneralization xmi:id="_cTgtUIbkEeSjd8J8ZjsuPQ" base_Generalization="_cTb00IbkEeSjd8J8ZjsuPQ"/>
   <standard:ModelLibrary xmi:id="_DH4oEEk9Ed263OrXyW13Cg" base_Package="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  <zdl:DomainAttribute xmi:id="_g-7VcN1uEeqydOYSdMj1Fg" base_Property="_g-2c8N1uEeqydOYSdMj1Fg"/>
 </xmi:XMI>

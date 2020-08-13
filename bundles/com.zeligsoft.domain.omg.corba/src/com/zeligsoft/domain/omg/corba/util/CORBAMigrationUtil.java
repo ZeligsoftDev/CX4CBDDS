@@ -29,8 +29,10 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Type;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
@@ -43,6 +45,30 @@ import com.zeligsoft.domain.omg.corba.CORBADomainNames;
  * 
  */
 public class CORBAMigrationUtil {
+
+	public static int migrateReturnParameter(Model model) {
+
+		List<Parameter> elementsToMigrate = new ArrayList<Parameter>();
+		TreeIterator<EObject> itor = model.eAllContents();
+		while (itor.hasNext()) {
+			EObject next = itor.next();
+			if (ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBAOPERATION)) {
+				Parameter param = ((Operation)next).getReturnResult();
+				if(param != null) {
+					elementsToMigrate.add(param);
+				}
+				itor.prune();
+			} 
+			if (!(next instanceof Package) && !ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBAINTERFACE)) {
+				itor.prune();
+			}
+		}
+		for (Parameter next : elementsToMigrate) {
+			ZDLUtil.addZDLConcept(next, CORBADomainNames.CORBAPARAMETER);
+		}
+
+		return elementsToMigrate.size();
+	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static int migrateArrayBound(Model model) {
