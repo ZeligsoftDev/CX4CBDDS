@@ -235,11 +235,12 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 
 									@Override
 									protected void doExecute() {
-										final Parameter rp = op.getReturnResult();
+										Parameter rp = op.getReturnResult();
 										if (rp != null) {
 											rp.setType((Type) selectedElement);
 										} else {
-											op.createReturnResult("ReturnParameter", (Type) selectedElement); //$NON-NLS-1$
+											rp = op.createReturnResult("ReturnParameter", (Type) selectedElement); //$NON-NLS-1$
+											ZDLUtil.addZDLConcept(rp, CORBADomainNames.CORBAPARAMETER);
 										}
 									}
 								};

@@ -337,6 +337,16 @@ endif&#xD;
 </body>
         </specification>
       </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_l_rhUO_VEeKGXLYI7i62jA" name="corba_operation_return_type_not_null">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_l_vywO_VEeKGXLYI7i62jA">
+          <body>%_desc_DDS4CCM__Constraints__ExternalDomainConstraint</body>
+        </ownedComment>
+        <constrainedElement xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_OcmUULWrEd2PTvVd89HYhA"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_l_sIYO_VEeKGXLYI7i62jA">
+          <language>OCL</language>
+          <body>self.oclAsType(uml::Operation).type &lt;> null</body>
+        </specification>
+      </ownedRule>
       <ownedRule xmi:type="uml:Constraint" xmi:id="_JV7pcFAAEemk3qCdFFbT1g" name="connector_type_compatibility">
         <ownedComment xmi:type="uml:Comment" xmi:id="_JWRAoFAAEemk3qCdFFbT1g">
           <body>%_desc_DDS4CCM__Constraints__connector_type_compatibility</body>
@@ -462,6 +472,7 @@ endif&#xD;
   <zdl:ExternalDomainConstraint xmi:id="_gfKdcy9WEeKzj8ce8-xtwA" severity="error" message="%_mesg_DDS4CCM__Constraints__check_container_corba_field" id="com.zeligsoft.domain.dds4ccm.Constraints.check_container_corba_field" base_Constraint="_gfKdcC9WEeKzj8ce8-xtwA"/>
   <zdl:DomainAttribute xmi:id="_TnWaAUkfEeKqQL8utZve1Q" base_Property="_TnWaAEkfEeKqQL8utZve1Q"/>
   <zdl:DomainAttribute xmi:id="_a-3aIUkfEeKqQL8utZve1Q" base_Property="_a-3aIEkfEeKqQL8utZve1Q"/>
+  <zdl:ExternalDomainConstraint xmi:id="_l_vLsO_VEeKGXLYI7i62jA" severity="error" message="%_mesg_DDS4CCM__Constraints__corba_operation_return_type_not_null" id="com.zeligsoft.domain.dds4ccm.Constraints.corba_operation_return_type_not_null" base_Constraint="_l_rhUO_VEeKGXLYI7i62jA"/>
   <zdl:DomainConstraint xmi:id="_I7eIMLtdEeOBIbmUBrobaQ" severity="error" message="%_mesg_DDS4CCM__DDSExtensions__MessageField__sub_structure_is_key" id="com.zeligsoft.domain.dds4ccm.MessageField.sub_structure_is_key" base_Constraint="_I7Z2wLtdEeOBIbmUBrobaQ"/>
   <zdl:DomainEnum xmi:id="_HwITAAIREemxSNFUunBY-w" base_DataType="_Hv30UAIREemxSNFUunBY-w" base_Enumeration="_Hv30UAIREemxSNFUunBY-w"/>
   <zdl:DomainEnumLiteral xmi:id="_RbiBUAIREemxSNFUunBY-w" base_EnumerationLiteral="_RbaFgAIREemxSNFUunBY-w"/>
