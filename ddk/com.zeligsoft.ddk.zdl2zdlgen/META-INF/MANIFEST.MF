@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.zeligsoft.ddk.zdl2zdlgen; singleton:=true
-Bundle-Version: 1.4.0.qualifier
+Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: com.zeligsoft.ddk.zdl2zdlgen.Activator
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -17,14 +17,14 @@ Export-Package: com.zeligsoft.ddk.zdl2zdlgen,
 Require-Bundle: org.eclipse.ui;bundle-version="[3.6.0,4.0.0)";visibility:=reexport,
  com.zeligsoft.base;bundle-version="4.0.0";visibility:=reexport,
  com.zeligsoft.base.zdl;bundle-version="4.0.0",
- com.zeligsoft.ddk.zdl.zdlgen.editor;bundle-version="[1.4.0,2.0.0)",
- com.zeligsoft.ddk.zdl;bundle-version="[1.4.0,2.0.0)",
- com.zeligsoft.ddk.zdl.zdlgen;bundle-version="[1.4.0,2.0.0)",
+ com.zeligsoft.ddk.zdl.zdlgen.editor;bundle-version="4.0.0",
+ com.zeligsoft.ddk.zdl;bundle-version="4.0.0",
+ com.zeligsoft.ddk.zdl.zdlgen;bundle-version="4.0.0",
  org.eclipse.emf.codegen;bundle-version="[2.6.0,3.0.0)",
  org.eclipse.pde.core;bundle-version="[3.6.0,4.0.0)",
  org.eclipse.gmf.runtime.common.core,
  org.eclipse.emf.workspace,
  org.eclipse.gmf.runtime.emf.core
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-RegisterBuddy: com.zeligsoft.base

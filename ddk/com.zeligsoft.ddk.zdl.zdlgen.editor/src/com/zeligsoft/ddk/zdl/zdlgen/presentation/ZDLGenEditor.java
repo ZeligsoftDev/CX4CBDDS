@@ -1327,7 +1327,7 @@ public class ZDLGenEditor extends MultiPageEditorPart
 		try {
 			// This runs the options, and shows progress.
 			//
-			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
+			new ProgressMonitorDialog(getSite().getShell()).run(false, false, operation);
 
 			// Refresh the necessary state.
 			//

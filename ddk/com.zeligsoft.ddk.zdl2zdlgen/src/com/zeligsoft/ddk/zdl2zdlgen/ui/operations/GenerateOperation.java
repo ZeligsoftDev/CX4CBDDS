@@ -78,7 +78,7 @@ public class GenerateOperation
 
 	public void run() {
 		try {
-			new ProgressMonitorDialog(getShell()).run(true, true, this);
+			new ProgressMonitorDialog(getShell()).run(false, true, this);
 		} catch (InvocationTargetException ex) {
 			// TODO Auto-generated catch block
 			ex.printStackTrace();

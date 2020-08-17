@@ -93,7 +93,7 @@ public class GeneratePropertiesUIOperation
 	 */
 	public void run() {
 		try {
-			new ProgressMonitorDialog(getShell()).run(true, true, this);
+			new ProgressMonitorDialog(getShell()).run(false, true, this);
 		} catch (InvocationTargetException ex) {
 			ex.printStackTrace();
 		} catch (InterruptedException e) {
