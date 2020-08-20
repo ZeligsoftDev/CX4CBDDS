@@ -1,0 +1,46 @@
+/**
+ * Copyright (c) 2008 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ */
+ 
+import ZDL;
+import uml;
+
+
+String camel2UpperWithUnderscore(String str) :
+JAVA com.zeligsoft.ddk.rsm.ui.ZDLConstantUtil.camel2UpperWithUnderscore(java.lang.String)
+;
+
+String getValidJavaIdentifier(String str) :
+JAVA org.eclipse.uml2.common.util.UML2Util.getValidJavaIdentifier(java.lang.String)
+;
+                
+String getPackageName() :
+    (String) GLOBALVAR packageName
+;
+
+/**
+ * TODO: Remove me when Xpand supports introspection of EnumerationLiterals
+ */
+List getEnumerationLiterals(Enumeration e) :
+JAVA com.zeligsoft.ddk.rsm.ui.ZDLConstantUtil.getEnumerationLiterals(org.eclipse.uml2.uml.Enumeration)
+;
+/**
+ * TODO: Remove me when Xpand supports introspection of EnumerationLiterals
+ */
+String getEnumerationLiteralName(EnumerationLiteral e) :
+JAVA com.zeligsoft.ddk.rsm.ui.ZDLConstantUtil.getEnumerationLiteralName(org.eclipse.uml2.uml.EnumerationLiteral)
+;
+/**
+ * TODO: Remove me when Xpand supports introspection of EnumerationLiterals
+ */
+Enumeration getEnumeration(EnumerationLiteral e) :
+JAVA com.zeligsoft.ddk.rsm.ui.ZDLConstantUtil.getEnumeration(org.eclipse.uml2.uml.EnumerationLiteral)
+;
+

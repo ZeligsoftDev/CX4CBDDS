@@ -32,12 +32,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Operation;
-import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuralFeature;
-import org.eclipse.uml2.uml.Type;
-import org.eclipse.uml2.uml.TypedElement;
 
 import com.zeligsoft.base.util.FilteringList;
 
@@ -424,20 +420,6 @@ public class ZDLCopier {
 			for(Property feature : concept.getAllAttributes()) {
 				if(!feature.isReadOnly() && !feature.isDerived()) {
 					if (!feature.isComposite()) {
-						if (concept.getName().equals("CORBAOperation") && feature.getName().equals("idlType")) {
-							// ToDo: mapping to be updated in Papyrus
-							Object val = ZDLUtil.getValue(eObject, concept, feature.getName());
-							if(val != null) {
-								// return type is set so find the parameter
-								
-								Parameter returnP = ((Operation) eObject).getReturnResult();
-								Parameter returnPCopy = (Parameter) ecoreCopier.copy(returnP);
-								returnPCopy.setType((Type) val);
-								//Object copyReferencedEObject = get(returnP);
-								((Operation) copyEObject).getOwnedParameters()
-										.add(returnPCopy);
-							}
-						}
 						copyReference(concept, feature, eObject, copyEObject);
 					}
 				}

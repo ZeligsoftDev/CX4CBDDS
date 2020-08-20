@@ -509,10 +509,6 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
         <generalization xmi:type="uml:Generalization" xmi:id="_cTb00IbkEeSjd8J8ZjsuPQ">
           <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_iYmHIIbiEeSjd8J8ZjsuPQ"/>
         </generalization>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-dWu0PpgEeCS04dZxNZhOg" name="idlType" visibility="public" type="_5ZEXsMJaEd6QAZgNaBtgeQ" redefinedProperty="_T-4_wMJbEd6QAZgNaBtgeQ" association="_-dTEcPpgEeCS04dZxNZhOg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-dbnUPpgEeCS04dZxNZhOg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-dbnUfpgEeCS04dZxNZhOg" value="1"/>
-        </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_PlUP4LWrEd2PTvVd89HYhA" name="isOneWay" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
           <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_R-8ZsLWrEd2PTvVd89HYhA">
@@ -528,6 +524,9 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zvqMMMMrEd6yzd-HWW9c9w" value="*"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_cQFu0At2Ed-ejZ6Ziw6HnQ" name="owner" visibility="public" type="_8UNR0MPIEd6u_6T1TQ_XYQ" isReadOnly="true"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_g-2c8N1uEeqydOYSdMj1Fg" name="idlType" visibility="public" type="_5ZEXsMJaEd6QAZgNaBtgeQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oizWkN1uEeqydOYSdMj1Fg"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_2ZPPIO1nEd2XOPM4ACfj4Q" name="CORBANamedElement">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_hCQ1EO1oEd2XOPM4ACfj4Q" name="legal_corba_name" constrainedElement="_2ZPPIO1nEd2XOPM4ACfj4Q">
@@ -600,15 +599,6 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
             <language>OCL</language>
             <body>not(self.idlType->isEmpty())
 </body>
-          </specification>
-        </ownedRule>
-        <ownedRule xmi:type="uml:Constraint" xmi:id="_AMv9IBCMEeGHBr5dTOxUEw" name="no_return_direction" constrainedElement="_kTyfsMJdEd6QAZgNaBtgeQ">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_AM8xcBCMEeGHBr5dTOxUEw">
-            <body>%_desc_CORBADomain__IDL__CORBAParameter__no_return_direction</body>
-          </ownedComment>
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="_AM2DwBCMEeGHBr5dTOxUEw">
-            <language>Java</language>
-            <body>com.zeligsoft.domain.omg.corba.validation.CORBAParameterNoReturnDirection</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="_mKj0EMJdEd6QAZgNaBtgeQ" general="_Q0OakMJbEd6QAZgNaBtgeQ"/>
@@ -696,13 +686,6 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
         <generalization xmi:type="uml:Generalization" xmi:id="_ZcmQIGgTEd-cdtLnmNWWNQ" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_ZypYoGgTEd-cdtLnmNWWNQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_-dTEcPpgEeCS04dZxNZhOg" name="" memberEnd="_-dWu0PpgEeCS04dZxNZhOg _-dc1cPpgEeCS04dZxNZhOg">
-        <generalization xmi:type="uml:Generalization" xmi:id="_F4iuAPphEeCS04dZxNZhOg" general="_T-3xoMJbEd6QAZgNaBtgeQ"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_-dc1cPpgEeCS04dZxNZhOg" name="" visibility="public" type="_OcmUULWrEd2PTvVd89HYhA" redefinedProperty="_T-608MJbEd6QAZgNaBtgeQ" association="_-dTEcPpgEeCS04dZxNZhOg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-ddcgPpgEeCS04dZxNZhOg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-ddcgfpgEeCS04dZxNZhOg" value="*"/>
-        </ownedEnd>
-      </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_7eGzACG-EeGd-Nb5_CNoPw" name="" memberEnd="_7ektECG-EeGd-Nb5_CNoPw _7e3oACG-EeGd-Nb5_CNoPw">
         <ownedEnd xmi:type="uml:Property" xmi:id="_7e3oACG-EeGd-Nb5_CNoPw" name="" visibility="public" type="_dITrwEk3Ed2eBKZvQ89d6g" association="_7eGzACG-EeGd-Nb5_CNoPw">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7e42ICG-EeGd-Nb5_CNoPw"/>
@@ -757,93 +740,93 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
         </ownedEnd>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_PaBzEExGEd2q8K1oAnPrnA" name="IDLPrimitives">
-      <packagedElement xmi:type="uml:DataType" xmi:id="_83uJ8ExPEd2INdt7Ch5VKg" name="CORBAShort"/>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_GBo70ExQEd2INdt7Ch5VKg" name="CORBAShort" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+    <packagedElement xmi:type="uml:Package" xmi:id="_PaBzEExGEd2q8K1oAnPrnA" name="CXPrimitives">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_83uJ8ExPEd2INdt7Ch5VKg" name="CXShort"/>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_GBo70ExQEd2INdt7Ch5VKg" name="CXShort" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_NMTLsExQEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_OzkEcExQEd2INdt7Ch5VKg" instance="_Q2TSIEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
       <packagedElement xmi:type="uml:Abstraction" xmi:id="_McBlUExQEd2INdt7Ch5VKg" client="_83uJ8ExPEd2INdt7Ch5VKg" supplier="_GBo70ExQEd2INdt7Ch5VKg"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_up6K8ExQEd2INdt7Ch5VKg" name="CORBAAny"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_v027IExQEd2INdt7Ch5VKg" name="CORBABoolean"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_xJ8ewExQEd2INdt7Ch5VKg" name="CORBAChar"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_yUdKEExQEd2INdt7Ch5VKg" name="CORBADouble"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_zlEdYExQEd2INdt7Ch5VKg" name="CORBAFloat"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_1P6OkExQEd2INdt7Ch5VKg" name="CORBALong"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_4Sq08ExQEd2INdt7Ch5VKg" name="CORBALongLong"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_5iZXcExQEd2INdt7Ch5VKg" name="CORBAObjref"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_7MfhwExQEd2INdt7Ch5VKg" name="CORBAOctet"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_-n1nQExQEd2INdt7Ch5VKg" name="CORBAString"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_AhIrMExREd2INdt7Ch5VKg" name="CORBATypecode"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_FpjWgExREd2INdt7Ch5VKg" name="CORBAULong"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_Go4skExREd2INdt7Ch5VKg" name="CORBAULongLong"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_H3a8QExREd2INdt7Ch5VKg" name="CORBAUShort"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_Iz6ZsExREd2INdt7Ch5VKg" name="CORBAVoid"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_J4nX8ExREd2INdt7Ch5VKg" name="CORBAWChar"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_K8QmQExREd2INdt7Ch5VKg" name="CORBAWString"/>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_baFDkExREd2INdt7Ch5VKg" name="CORBALongDouble"/>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_zgzzAExREd2INdt7Ch5VKg" name="CORBAAny" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_up6K8ExQEd2INdt7Ch5VKg" name="CXAny"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_v027IExQEd2INdt7Ch5VKg" name="CXBoolean"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_xJ8ewExQEd2INdt7Ch5VKg" name="CXChar"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_yUdKEExQEd2INdt7Ch5VKg" name="CXDouble"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_zlEdYExQEd2INdt7Ch5VKg" name="CXFloat"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_1P6OkExQEd2INdt7Ch5VKg" name="CXLong"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_4Sq08ExQEd2INdt7Ch5VKg" name="CXLongLong"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_5iZXcExQEd2INdt7Ch5VKg" name="CXObjref"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_7MfhwExQEd2INdt7Ch5VKg" name="CXOctet"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_-n1nQExQEd2INdt7Ch5VKg" name="CXString"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_AhIrMExREd2INdt7Ch5VKg" name="CXTypecode"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_FpjWgExREd2INdt7Ch5VKg" name="CXULong"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_Go4skExREd2INdt7Ch5VKg" name="CXULongLong"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_H3a8QExREd2INdt7Ch5VKg" name="CXUShort"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_Iz6ZsExREd2INdt7Ch5VKg" name="CXVoid"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_J4nX8ExREd2INdt7Ch5VKg" name="CXWChar"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_K8QmQExREd2INdt7Ch5VKg" name="CXWString"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_baFDkExREd2INdt7Ch5VKg" name="CXLongDouble"/>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_zgzzAExREd2INdt7Ch5VKg" name="CXAny" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_XUw-kExSEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_X-MWEExSEd2INdt7Ch5VKg" instance="_QZidoEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_61wAQExREd2INdt7Ch5VKg" name="CORBABoolean" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_61wAQExREd2INdt7Ch5VKg" name="CXBoolean" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_V4YgIExSEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_WzPl4ExSEd2INdt7Ch5VKg" instance="_QmWxoEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_660GcExREd2INdt7Ch5VKg" name="CORBALong" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_660GcExREd2INdt7Ch5VKg" name="CXLong" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_4tXskExTEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_5esb0ExTEd2INdt7Ch5VKg" instance="_Qsw7oEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_69pYAExREd2INdt7Ch5VKg" name="CORBALongLong" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_69pYAExREd2INdt7Ch5VKg" name="CXLongLong" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_AjPcoExUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_BcdjoExUEd2INdt7Ch5VKg" instance="_QwC5IEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_6_4MoExREd2INdt7Ch5VKg" name="CORBALongDouble" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_6_4MoExREd2INdt7Ch5VKg" name="CXLongDouble" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="__AAIQExTEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_AKNRkExUEd2INdt7Ch5VKg" instance="_QuZ6YEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7CHoUExREd2INdt7Ch5VKg" name="CORBAOctet" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7CHoUExREd2INdt7Ch5VKg" name="CXOctet" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_VHeVsExUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_ZtoBcExUEd2INdt7Ch5VKg" instance="_QzeAkEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7ENTAExREd2INdt7Ch5VKg" name="CORBAString" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7ENTAExREd2INdt7Ch5VKg" name="CXString" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_qGhigExUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_qtjtUExUEd2INdt7Ch5VKg" instance="_nDnLIExUEd2INdt7Ch5VKg"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7GSWoExREd2INdt7Ch5VKg" name="CORBAObjref" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7GSWoExREd2INdt7Ch5VKg" name="CXObjref" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_f6cJAExUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_h1h8sExUEd2INdt7Ch5VKg" instance="_QxrQ0Ek4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7IYBUExREd2INdt7Ch5VKg" name="CORBAULong" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7IYBUExREd2INdt7Ch5VKg" name="CXULong" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_xN504ExUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_yHa20ExUEd2INdt7Ch5VKg" instance="_iNCUcEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7Kwm8ExREd2INdt7Ch5VKg" name="CORBAULongLong" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7Kwm8ExREd2INdt7Ch5VKg" name="CXULongLong" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_zI_BgExUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_z4-UAExUEd2INdt7Ch5VKg" instance="_jQ_EwEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7M_bkExREd2INdt7Ch5VKg" name="CORBAChar" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7M_bkExREd2INdt7Ch5VKg" name="CXChar" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_dZ2GcExSEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_eiHWEExSEd2INdt7Ch5VKg" instance="_QoSrUEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7PYBMExREd2INdt7Ch5VKg" name="CORBADouble" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7PYBMExREd2INdt7Ch5VKg" name="CXDouble" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_f09eAExSEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_hUL1EExSEd2INdt7Ch5VKg" instance="_Qp7qEEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7XuE4ExREd2INdt7Ch5VKg" name="CORBAFloat" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_7XuE4ExREd2INdt7Ch5VKg" name="CXFloat" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_kG_68ExSEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_lA9o0ExSEd2INdt7Ch5VKg" instance="_QrRt4Ek4Ed2eBKZvQ89d6g"/>
         </slot>
@@ -861,22 +844,22 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
       <packagedElement xmi:type="uml:Abstraction" xmi:id="_rtybQExUEd2INdt7Ch5VKg" client="_-n1nQExQEd2INdt7Ch5VKg" supplier="_7ENTAExREd2INdt7Ch5VKg"/>
       <packagedElement xmi:type="uml:Abstraction" xmi:id="_wc4AkExUEd2INdt7Ch5VKg" client="_FpjWgExREd2INdt7Ch5VKg" supplier="_7IYBUExREd2INdt7Ch5VKg"/>
       <packagedElement xmi:type="uml:Abstraction" xmi:id="_10NRoExUEd2INdt7Ch5VKg" client="_Go4skExREd2INdt7Ch5VKg" supplier="_7Kwm8ExREd2INdt7Ch5VKg"/>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_33oh8ExUEd2INdt7Ch5VKg" name="CORBAUShort" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_33oh8ExUEd2INdt7Ch5VKg" name="CXUShort" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_33oh8UxUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_N-XIgExVEd2INdt7Ch5VKg" instance="_ja0WMEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_4Jz3EExUEd2INdt7Ch5VKg" name="CORBAVoid" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_4Jz3EExUEd2INdt7Ch5VKg" name="CXVoid" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_4Jz3EUxUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_MJ1P0ExVEd2INdt7Ch5VKg" instance="_jiRCAEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_4N1bcExUEd2INdt7Ch5VKg" name="CORBAWChar" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_4N1bcExUEd2INdt7Ch5VKg" name="CXWChar" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_4N1bcUxUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_LJdX8ExVEd2INdt7Ch5VKg" instance="_jnx0IEk4Ed2eBKZvQ89d6g"/>
         </slot>
       </packagedElement>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_4Sc1sExUEd2INdt7Ch5VKg" name="CORBAWString" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_4Sc1sExUEd2INdt7Ch5VKg" name="CXWString" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_4Sc1sUxUEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_KM9TcExVEd2INdt7Ch5VKg" instance="_IDH5IExVEd2INdt7Ch5VKg"/>
         </slot>
@@ -885,7 +868,7 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
       <packagedElement xmi:type="uml:Abstraction" xmi:id="_EPVecExVEd2INdt7Ch5VKg" client="_Iz6ZsExREd2INdt7Ch5VKg" supplier="_4Jz3EExUEd2INdt7Ch5VKg"/>
       <packagedElement xmi:type="uml:Abstraction" xmi:id="_E5Wr0ExVEd2INdt7Ch5VKg" client="_J4nX8ExREd2INdt7Ch5VKg" supplier="_4N1bcExUEd2INdt7Ch5VKg"/>
       <packagedElement xmi:type="uml:Abstraction" xmi:id="_Fj0lIExVEd2INdt7Ch5VKg" client="_K8QmQExREd2INdt7Ch5VKg" supplier="_4Sc1sExUEd2INdt7Ch5VKg"/>
-      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_c3I6oExVEd2INdt7Ch5VKg" name="CORBATypecode" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_c3I6oExVEd2INdt7Ch5VKg" name="CXTypecode" classifier="_jiPCQEk3Ed2eBKZvQ89d6g">
         <slot xmi:type="uml:Slot" xmi:id="_c3I6oUxVEd2INdt7Ch5VKg" definingFeature="_u-9HwEk4Ed2eBKZvQ89d6g">
           <value xmi:type="uml:InstanceValue" xmi:id="_fFJqUExVEd2INdt7Ch5VKg" instance="_aYvlkExVEd2INdt7Ch5VKg"/>
         </slot>
@@ -1183,14 +1166,12 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
   <zdl:DomainConstraint xmi:id="_Kh6zYNF4Ed-64pKc_8KmWw" severity="error" message="%_mesg_CORBADomain__IDL__CORBAParameter__parameter_type_is_set" id="com.zeligsoft.domain.omg.corba.CORBATyped.parameter_type_is_set" base_Constraint="_KhxCYNF4Ed-64pKc_8KmWw"/>
   <zdl:DomainBlockImport xmi:id="_tU_YQDL1EeCZXvaTmQgdWA" base_PackageImport="_tUPxYDL1EeCZXvaTmQgdWA"/>
   <zdl:DomainConstraint xmi:id="_V-b5kO-XEeCQus6uqORjzw" severity="error" message="%_mesg_CORBADomain__IDL__CORBAEnum__enumeration_must_have_literals" id="com.zeligsoft.domain.omg.corba.CORBAEnum.enumeration_must_have_literals" base_Constraint="_V-XoIO-XEeCQus6uqORjzw"/>
-  <zdl:DomainReference xmi:id="_-deqoPpgEeCS04dZxNZhOg" base_Association="_-dTEcPpgEeCS04dZxNZhOg"/>
   <zdl:DomainConstraint xmi:id="_MZRlMPpjEeCVxf8v04aRDA" severity="error" message="%_mesg_CORBADomain__IDL__CORBAArray__must_have_type" id="com.zeligsoft.domain.omg.corba.CORBAArray.must_have_type" base_Constraint="_MZPI8PpjEeCVxf8v04aRDA"/>
   <zdl:DomainGeneralization xmi:id="_kcbQkPsxEeCUd9Edw_GMyg" base_Generalization="_kcPqYPsxEeCUd9Edw_GMyg"/>
   <zdl:DomainGeneralization xmi:id="_lYnzEPsxEeCUd9Edw_GMyg" base_Generalization="_lYkvwPsxEeCUd9Edw_GMyg"/>
   <zdl:DomainGeneralization xmi:id="_l1y3QPsxEeCUd9Edw_GMyg" base_Generalization="_l1vz8PsxEeCUd9Edw_GMyg"/>
   <zdl:DomainGeneralization xmi:id="_z5qxMCG-EeGd-Nb5_CNoPw" base_Generalization="_z5fLACG-EeGd-Nb5_CNoPw"/>
   <zdl:DomainReference xmi:id="_7e7SYCG-EeGd-Nb5_CNoPw" base_Association="_7eGzACG-EeGd-Nb5_CNoPw"/>
-  <zdl:DomainConstraint xmi:id="_AM7jUBCMEeGHBr5dTOxUEw" evaluationMode="live" severity="error" message="%_mesg_CORBADomain__IDL__CORBAParameter__no_return_direction" id="com.zeligsoft.domain.omg.corba.CORBAParameter.no_return_direction" base_Constraint="_AMv9IBCMEeGHBr5dTOxUEw"/>
   <zdl:DomainConcept xmi:id="_vW8hkIPiEeGRety5GrZr1Q" base_Class="_vWz-sIPiEeGRety5GrZr1Q"/>
   <zdl:DomainAttribute xmi:id="_PCUw0I-tEeGdHIFRtaMqRA" base_Property="_PCNcEI-tEeGdHIFRtaMqRA"/>
   <zdl:DomainReference xmi:id="_WdrIEI-tEeGdHIFRtaMqRA" base_Association="_WdcekI-tEeGdHIFRtaMqRA"/>
@@ -1211,4 +1192,5 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
   <zdl:DomainGeneralization xmi:id="_cCB7wIbkEeSjd8J8ZjsuPQ" base_Generalization="_cB_fgIbkEeSjd8J8ZjsuPQ"/>
   <zdl:DomainGeneralization xmi:id="_cTgtUIbkEeSjd8J8ZjsuPQ" base_Generalization="_cTb00IbkEeSjd8J8ZjsuPQ"/>
   <standard:ModelLibrary xmi:id="_DH4oEEk9Ed263OrXyW13Cg" base_Package="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  <zdl:DomainAttribute xmi:id="_g-7VcN1uEeqydOYSdMj1Fg" base_Property="_g-2c8N1uEeqydOYSdMj1Fg"/>
 </xmi:XMI>

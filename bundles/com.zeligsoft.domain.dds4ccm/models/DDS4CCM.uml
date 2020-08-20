@@ -344,7 +344,7 @@ endif&#xD;
         <constrainedElement xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_OcmUULWrEd2PTvVd89HYhA"/>
         <specification xmi:type="uml:OpaqueExpression" xmi:id="_l_sIYO_VEeKGXLYI7i62jA">
           <language>OCL</language>
-          <body>self.idlType &lt;> null</body>
+          <body>self.oclAsType(uml::Operation).type &lt;> null</body>
         </specification>
       </ownedRule>
       <ownedRule xmi:type="uml:Constraint" xmi:id="_JV7pcFAAEemk3qCdFFbT1g" name="connector_type_compatibility">

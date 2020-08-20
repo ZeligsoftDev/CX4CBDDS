@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Model xmi:id="_X8buEnMLEd2Bl5VZxkbSFg" name="ZDLGen Kernel">
+    <packageImport xmi:id="_X8buFnMLEd2Bl5VZxkbSFg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_wGbWoSA6Ed2Pp_xmvKhmzw" name="GenDomainObject" isAbstract="true">
+      <ownedAttribute xmi:id="_81wWgCKLEd24EO2EF4-Wbw" name="owner" visibility="public" type="_wGbWoSA6Ed2Pp_xmvKhmzw" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_81dbkCKLEd24EO2EF4-Wbw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_W9JHYHMjEd2Bl5VZxkbSFg" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_W8_WYHMjEd2Bl5VZxkbSFg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_816HgCKLEd24EO2EF4-Wbw" name="ownedObject" visibility="public" type="_wGbWoSA6Ed2Pp_xmvKhmzw" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="_81dbkCKLEd24EO2EF4-Wbw">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DM3CgSKMEd24EO2EF4-Wbw" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DM3CgCKMEd24EO2EF4-Wbw"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_81dbkCKLEd24EO2EF4-Wbw" memberEnd="_81wWgCKLEd24EO2EF4-Wbw _816HgCKLEd24EO2EF4-Wbw"/>
+    <profileApplication xmi:id="_X8buF3MLEd2Bl5VZxkbSFg">
+      <eAnnotations xmi:id="_X8buGHMLEd2Bl5VZxkbSFg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_vnSZ0HMLEd2Bl5VZxkbSFg">
+      <eAnnotations xmi:id="_vnSZ0XMLEd2Bl5VZxkbSFg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <Ecore:EReference xmi:id="_1sDYoXMLEd2Bl5VZxkbSFg" isTransient="true" isVolatile="true" base_Property="_81wWgCKLEd24EO2EF4-Wbw"/>
+  <Ecore:EReference xmi:id="_1sDYonMLEd2Bl5VZxkbSFg" isTransient="true" isVolatile="true" base_Property="_816HgCKLEd24EO2EF4-Wbw"/>
+</xmi:XMI>

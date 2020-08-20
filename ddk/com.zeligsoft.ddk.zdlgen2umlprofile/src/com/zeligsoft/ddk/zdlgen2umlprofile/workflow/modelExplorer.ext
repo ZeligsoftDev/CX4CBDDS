@@ -1,0 +1,48 @@
+/**
+ * Copyright (c) 2008 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ *
+ */
+ 
+ import toolingmodel;
+ import zdlgen;
+ import ZDL;
+ 
+ extension org::openarchitectureware::util::stdlib::io;
+ 
+ /**
+ *
+ *	Generates the model explorer menus (if any) specified for
+ *	the domain specialization
+ *
+ */
+Void generateMenuModel(GenDomainSpecialization self, uml::Profile profile) :
+	profile.setMenuModel(self.menuModelResourceURI());
+	
+/**
+ * Creates a profile's palette model.
+ * TODO: Why does oAW flag the second statement with an error?  It runs fine.
+ */ 
+private Void setMenuModel(uml::Profile self, String menuModelURI) :
+    self.menuModelAnnotation().details.add(createDetail("uri", menuModelURI));
+
+/**
+ * Creates the annotation that stores a palette model in a profile.
+ */
+private create ecore::EAnnotation menuModelAnnotation(uml::Profile self) :
+    this.setSource("CXMenuModel") ->
+    self.eAnnotations.add(this);
+    
+private create ecore::EStringToStringMapEntry createDetail(String key, String value) :
+	this.setKey(key) ->
+	this.setValue(value);
+	
+private String menuModelResourceURI(GenDomainSpecialization self) :
+	"platform:/plugin/" + self.pluginName + self.menuModelResource;
+	

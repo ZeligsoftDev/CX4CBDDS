@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+    Copyright (c) 2020 Northrop Grumman Systems Corporation.
+   
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+   
+    http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+ -->
+<plugin>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <file-association
+            content-type="com.ibm.xtools.comparemerge.emf.emfContentType"
+            file-extensions="zdlgen">
+      </file-association>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="com.zeligsoft.ddk.zdl2zdlgen.zdlGen.objectContribution"
+            objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
+         <action
+               class="com.zeligsoft.ddk.zdl2zdlgen.ui.actions.NewZDLGenActionDelegate"
+               enablesFor="1"
+               id="com.zeligsoft.ddk.zdl2zdlgen.newZDLGen.action"
+               label="%action.newZDLGen"
+               menubarPath="additions">
+            <enablement>
+                  <objectState
+                        name="umlStrictType"
+                        value="Model">
+                  </objectState>
+            </enablement>
+         </action>
+         <menu
+               id="com.zeligsoft.ddk.zdl2zdlgen.generatezdlgen.menu"
+               label="%menu.zdlGenerator"
+               path="additions">
+            <separator
+                  name="additions">
+            </separator>
+         </menu>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="com.zeligsoft/ddk"
+            class="com.zeligsoft.ddk.zdl2zdlgen.ui.wizards.ImportZDLModelWizard"
+            hasPages="true"
+            id="com.zeligsoft.ddk.zdl2zdlgen.importZDLWizard"
+            name="%wizard.newZDLGen">
+         <description>
+            %description.newZDLGen
+         </description>
+      </wizard>
+      <category
+            id="ddk"
+            name="%category.ddk"
+            parentCategory="com.zeligsoft">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editorActions">
+      <editorContribution
+            id="com.zeligsoft.ddk.zdl2zdlgen.zdlgenEditorContribution"
+            targetID="com.zeligsoft.ddk.zdl.zdlgen.presentation.ZDLGenEditorID">
+         <action
+               class="com.zeligsoft.ddk.zdl2zdlgen.ui.actions.ReloadZDLGenActionDelegate"
+               id="com.zeligsoft.ddk.zdl2zdlgen.reloadZDLGen"
+               label="%action.reloadZDLGen"
+               menubarPath="com.zeligsoft.ddk.zdl.zdlgenMenuID/additions-end"
+               style="push"
+               tooltip="%action.reloadZDLGen.tip">
+         </action>
+      </editorContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="com.ibm.xtools.modeler.internal.ui.perspectives.ModelingPerspective">
+         <newWizardShortcut
+               id="com.zeligsoft.ddk.zdl2zdlgen.importZDLWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>

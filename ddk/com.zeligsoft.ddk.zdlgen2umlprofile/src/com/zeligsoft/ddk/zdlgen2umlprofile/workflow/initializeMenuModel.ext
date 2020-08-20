@@ -1,0 +1,272 @@
+/**
+ * Copyright (c) 2009 Zeligsoft (2009) Limited
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ *
+ */
+ 
+ import toolingmodel;
+ import zdlgen;
+ import ZDL;
+ 
+extension com::zeligsoft::ddk::zdlgen2umlprofile::workflow::zdlgen2umlprofileUtil;
+
+/**
+ *
+ * The main entry point to generating the menu model for a specific domain
+ * specialization. Invoking this will generate the menu model with all of the
+ * elements required for creating the context menus for domain concepts at
+ * runtime. Note that it will include the necessary entries for domain concepts
+ * that come from other ZDLGen models. That means reuse is achieved across the
+ * many different scenarios of domain reuse.
+ *
+ *	model
+ *		the ZDLGen model that contains the domain specialization
+ *		to generate the menu for
+ *	specialization
+ *		the name of the domain specialization to generate for
+ *
+ */
+MenuModel initializeMenuModel(GenModel model, String specialization) :
+ 	initializeMenuModel(model.domainModel.element.typeSelect(GenDomainSpecialization).selectFirst(e | e.name == specialization));
+
+/**
+ *
+ * A transform that creates the actual menu model and populates it with
+ * the entries required by all of the domain concepts that are contained in the
+ * domain specialization passed into the transform.
+ *
+ * self
+ *		the domain specialization to create the menu model for
+ * return
+ *		a MenuModel with all of the MenuItems and MenuInstances
+ */ 
+private create MenuModel initializeMenuModel(GenDomainSpecialization self) :
+ 	self.domainConcept.initializeMenu(this) ->
+ 	self.includedUMLMenus.processUMLMenu(this) ->
+ 	this.setGenerated(true) ->
+ 	this;
+
+/**
+ *
+ * Process a domain concept and create the menu model elements for it.
+ *
+ * gdc
+ *		the domain concept to create the menu for
+ * container
+ *		the menu model to add the newly created elements to
+ */
+private Void initializeMenu(zdlgen::GenDomainConcept gdc, MenuModel container) :
+	if (gdc.menu != null) then gdc.toMenuInstance(container);
+
+/**
+ *
+ * Create a MenuInstance for a domain concept. Note that this will also create
+ * the MenuItems that are required by this MenuInstance.
+ *
+ * gdc
+ *		the domain concept to create the menu instance for
+ * container
+ *		the menu model to add the menu instance to
+ * return
+ *		the newly created menu instance
+ */
+private create toolingmodel::MenuInstance toMenuInstance(zdlgen::GenDomainConcept gdc, MenuModel container) :
+	container.menu.add(this) ->
+	this.setConcept(gdc.domainConcept.qualifiedName) ->
+	this.setGenerated(true) ->
+	toMenuInstanceHelper(gdc.menu, gdc.menu.overridenBy(), container, this);
+	
+private Void toMenuInstanceHelper(zdlgen::GenMenu menu, zdlgen::GenMenu override, MenuModel container, MenuInstance instance) :
+	toMenuInstanceHelper(override, override.overridenBy(), container, instance);
+	
+private Void toMenuInstanceHelper(zdlgen::GenMenu menu, Void override, MenuModel container, MenuInstance instance) :
+	menu.extends.processMenuExtension(container, instance) ->
+	instance.item.addAll(menu.item.processMenuItem(container));
+	
+
+
+/******************************************************************************
+ *
+ *	TRANSFORMS TO CREATE MENU ITEMS
+ *
+ ******************************************************************************/	
+private toolingmodel::MenuItem processMenuItem(zdlgen::GenMenuItem gmi, MenuModel container) :
+	processMenuItemHelper(gmi, gmi.overridenBy(), container);
+	
+private toolingmodel::MenuItem processMenuItemHelper(zdlgen::GenMenuItem gmi, zdlgen::GenMenuItem overridenBy, MenuModel container):
+	overridenBy.toMenuItem(container);
+	
+private toolingmodel::MenuItem processMenuItemHelper(zdlgen::GenMenuItem gmi, Void overridenBy, MenuModel container):
+	gmi.toMenuItem(container);
+	
+private toolingmodel::MenuItem processMenuItem(zdlgen::GenMenuItem gmi, Menu container) :
+	processMenuItemHelper(gmi, gmi.overridenBy(), container);
+	
+private toolingmodel::MenuItem processMenuItemHelper(zdlgen::GenMenuItem gmi, zdlgen::GenMenuItem overridenBy, Menu container):
+	overridenBy.toMenuItem(container);
+	
+private toolingmodel::MenuItem processMenuItemHelper(zdlgen::GenMenuItem gmi, Void overridenBy, Menu container):
+	gmi.toMenuItem(container);
+
+/******************************************************************************
+ *
+ *	TRANSFORMS TO HANDLE CREATE ACTIONS
+ *
+ ******************************************************************************/
+
+private create toolingmodel::CreateAction toMenuItem(zdlgen::GenMenuCreateAction gmca, MenuModel container) :
+	container.item.add(this) ->
+	this.setCreateConcept(gmca.createConcept.domainConcept.qualifiedName) ->
+	this.configureMenuItem(gmca) ->
+	this.expression.addAll(gmca.expression.toExpression(gmca, this)) ->
+	this.setTypeHint(gmca.typeHint) ->
+	this;
+	
+private create toolingmodel::CreateAction toMenuItem(zdlgen::GenMenuCreateAction gmca, Menu container) :
+	container.item.add(this) ->
+	this.setCreateConcept(gmca.createConcept.domainConcept.qualifiedName) ->
+	this.configureMenuItem(gmca) ->
+	this.expression.addAll(gmca.expression.toExpression(gmca, this)) ->
+	this.setTypeHint(gmca.typeHint) ->
+	this;
+
+/******************************************************************************
+ *
+ *	TRANSFORMS TO HANDLE DELEGATE ACTIONS
+ *
+ ******************************************************************************/
+	
+private create toolingmodel::DelegateAction toMenuItem(zdlgen::GenMenuDelegateAction gmda, MenuModel container) :
+	container.item.add(this) ->
+	this.configureMenuItem(gmda) ->
+	this.setHostBundle(gmda.hostBundle) ->
+	this.setClassName(gmda.className) ->
+	this;
+	
+private create toolingmodel::DelegateAction toMenuItem(zdlgen::GenMenuDelegateAction gmda, Menu container) :
+	container.item.add(this) ->
+	this.configureMenuItem(gmda) ->
+	this.setHostBundle(gmda.hostBundle) ->
+	this.setClassName(gmda.className) ->
+	this;
+
+/******************************************************************************
+ *
+ *	TRANSFORMS TO HANDLE MENUS
+ *
+ ******************************************************************************/
+	
+private create toolingmodel::Menu toMenuItem(zdlgen::GenMenu gm, MenuModel container) :
+	container.item.add(this) ->
+	gm.toMenuHelper(this) ->
+	this;
+	
+private create toolingmodel::Menu toMenuItem(zdlgen::GenMenu gm, Menu container) :
+	container.item.add(this) ->
+	gm.toMenuHelper(this) ->
+	this;
+	
+private Void toMenuHelper(zdlgen::GenMenu gm, toolingmodel::Menu newMenu) :
+	newMenu.configureMenuItem(gm) ->
+	gm.extends.processMenuExtension(newMenu) ->
+	gm.item.processMenuItem(newMenu);
+	
+private Void processMenuExtension(zdlgen::GenMenu extendedMenu, toolingmodel::Menu container) :
+	extendedMenu.extends.processMenuExtension(container) ->
+	extendedMenu.item.toMenuItem(container);
+
+private Void processMenuExtension(Void extendedMenu, toolingmodel::Menu container) :
+	{};
+	
+private Void processMenuExtension(zdlgen::GenMenu extendedMenu, toolingmodel::MenuModel container, MenuInstance instance) :
+	extendedMenu.extends.processMenuExtension(container, instance) ->
+	instance.item.addAll(extendedMenu.item.processMenuItem(container));
+
+private Void processMenuExtension(Void extendedMenu, toolingmodel::MenuModel container, MenuInstance instance) :
+	{};
+	
+private Void configureMenuItem(toolingmodel::MenuItem self, zdlgen::GenMenuItem gmi) :
+	self.setName(gmi.name) ->
+	self.setDescription(gmi.description) ->
+	self.setGenerated(true);
+	
+/******************************************************************************
+ *
+ *	TRANSFORMS TO HANDLE MENU SEPARATORS
+ *
+ ******************************************************************************/
+private create toolingmodel::MenuSeparator toMenuItem(zdlgen::GenMenuSeparator gmda, MenuModel container) :
+	this.setName(gmda.name) ->
+	container.item.add(this) ->
+	this;
+	
+private create toolingmodel::MenuSeparator toMenuItem(zdlgen::GenMenuSeparator gmda, Menu container) :
+	this.setName(gmda.name) ->
+	container.item.add(this) ->
+	this;
+
+
+/******************************************************************************
+ *
+ *	TRANSFORMS TO CATCH UNKNOWN MENU ITEM TYPES.
+ *	THIS IS REQUIRED BY OAW'S DISPATCHING.
+ *
+ ******************************************************************************/
+	
+private Void toMenuItem(zdlgen::GenMenuItem gmi, MenuModel container) :
+	{};
+	
+private Void toMenuItem(zdlgen::GenMenuItem gmi, Menu container) :
+	{};
+	
+private Void toMenuItem(Void v, MenuModel container) :
+	{};
+	
+/******************************************************************************
+ *
+ * Transforms for handling menus that are added to UML types. It's best to
+ * avoid UML types in a domain but this provides support when it is unavoidable.
+ *
+ ******************************************************************************/
+private Void processUMLMenu(zdlgen::GenUMLMenu umenu, MenuModel container) :
+	let instance = new MenuInstance :
+		container.menu.add(instance) ->
+		instance.setConcept("org.eclipse.uml2.uml." + umenu.umlMetaclass.name) ->
+		instance.setGenerated(true) ->
+		toMenuInstanceHelper(umenu.menu, umenu.menu.overridenBy(), container, instance)
+		;
+
+
+
+/******************************************************************************
+ *
+ *	TRANSFORMS TO CREATE EXPRESSIONS
+ *
+ ******************************************************************************/
+
+private Void toExpression(zdlgen::Expression self, GenMenuCreateAction tool, toolingmodel::CreateAction container):
+	{};
+	
+/**
+* Creates a new oawExpression for a creation tool
+**/
+private create toolingmodel::OawExpression toExpression(zdlgen::OawExpression self, GenMenuCreateAction tool, toolingmodel::CreateAction container):
+	this.configure(self, tool, container) ->
+	this.setVariableName(self.variableName)
+	;
+
+private create toolingmodel::OawXtend toExpression(zdlgen::OawXtend self, GenMenuCreateAction tool, toolingmodel::CreateAction container):
+	this.configure(self, tool, container) ->
+	this.setExtensionFile(self.extensionFile)
+	;
+	
+private Void configure(toolingmodel::OawBaseExpression self, zdlgen::Expression exp, GenMenuCreateAction gmca, toolingmodel::CreateAction container):
+	self.setName(exp.name) ->
+	self.setExpression(exp.expression) ->
+	self.metamodel.addAll(gmca.genModel.getMetamodelURIs());

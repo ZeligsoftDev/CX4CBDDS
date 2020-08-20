@@ -1,0 +1,184 @@
+/**
+ * Copyright (c) 2008 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ *
+ */
+import toolingmodel;
+import zdlgen;
+
+extension com::zeligsoft::ddk::zdlgen2umlprofile::workflow::zdlgen2umlprofileUtil;
+
+/**
+ * Generates the palette (if any) specified for the given domain specialization.
+ */
+Void generatePalette(GenDomainSpecialization self, uml::Profile profile) :
+    self.genModel.domainModel.palette.reject(p|(p==null) || self.isExcluded(p)).toPalette(profile, self);
+
+Void toPalette(GenPalette self, uml::Profile profile, GenDomainSpecialization domain) :
+    self.drawer.reject(d|d.isExcluded(domain, self)).toDrawer(profile, domain);
+
+/**
+ * Queries whether a palette item should be omitted in the context of a given
+ * domain generalization and parent item that we are currently generating.
+ */
+private Boolean isExcluded(GenPaletteItem self, GenDomainSpecialization domain, GenPaletteItem parent) :
+    (parent == self.owner) && domain.isExcluded(self);
+
+/**
+ * Creates a drawer in a profile's palette model.
+ */
+create Drawer toDrawer(GenPaletteDrawer self, uml::Profile profile, GenDomainSpecialization domain) :
+    this.setName(self.name) ->
+    this.setDescription(self.description) ->
+    profile.palette().drawer.add(this) ->
+    this.targetDiagram.addAll(self.targetDiagram.convertDiagramKind()) ->
+    self.allTools().reject(t|t.isExcluded(domain, self)).toTool(this, domain);
+
+/**
+ * Creates a tool in a drawer.  Abstract extension.
+ */
+Tool toTool(GenPaletteTool self, ToolContainer container, GenDomainSpecialization domain) :
+    {};
+
+/**
+ * Creates a stack in a drawer.
+ */
+create Stack toTool(GenPaletteStack self, ToolContainer container, GenDomainSpecialization domain) :
+    this.configure(self, container) ->
+    self.tool.reject(t|t.isExcluded(domain, self)).toTool(this, domain) ->
+    this.setActiveTool(self.activeTool.toTool(this, domain)) ->
+    this.targetDiagram.addAll(self.targetDiagram.convertDiagramKind());
+
+/**
+ * Creates a creation or link tool in a drawer or a stack.
+ */
+Tool toTool(GenPaletteCreationTool self, ToolContainer container, GenDomainSpecialization domain) :
+    self.toTool(container, self.type).configure(self, container);
+
+/**
+ * Null extension for the creation tool, used in particular for the stack's
+ * optional active tool.
+ */
+Tool toTool(Void self, ToolContainer container, GenDomainSpecialization domain) :
+    null; 
+
+/**
+ * Creates a creation tool in a drawer or a stack.  Abstract extension.
+ */
+Tool toTool(GenPaletteCreationTool self, ToolContainer container, 
+	GenPalettable type) :
+    {};
+    
+
+/**
+ * Creates a concept creation tool in a drawer or a stack.
+ */
+create CreationTool toTool(GenPaletteCreationTool self, ToolContainer container,
+	 GenDomainConcept type) :
+    (type.domainConcept != null) ? 
+    	this.setConcept(type.domainConcept): 
+    	{} ->
+    (self.elementTypeHint != null)?
+        this.setElementTypeHint(self.elementTypeHint.toString()) :
+        {} ->
+    (!self.expression.isEmpty)?
+    	this.expression.addAll(self.expression.toExpression(self, this)):
+    	{};
+        
+/**
+ * Creates a IElementType hint creation tool in a drawer or a stack.
+ */
+create CreationTool toTool(GenPaletteCreationTool self, ToolContainer container, 
+	Void type) :
+    (self.elementTypeHint != null)?
+        this.setElementTypeHint(self.elementTypeHint.toString()) :
+        {} ->
+    (!self.expression.isEmpty)?
+    	this.expression.addAll(self.expression.toExpression(self, this)):
+    	{};
+        
+
+/**
+ * Creates a link creation tool in a drawer or a stack.
+ */
+create LinkTool toTool(GenPaletteCreationTool self, ToolContainer container, 
+	GenDomainReference type) :
+    this.setReference(type.domainAttribute);
+
+/**
+* Creates a new oawExpression for a creation tool
+**/
+create toolingmodel::OawExpression toExpression(zdlgen::OawExpression self, GenPaletteCreationTool tool, CreationTool container):
+	this.configure(self, tool, container) ->
+	this.setVariableName(self.variableName)
+	;
+
+create toolingmodel::OawXtend toExpression(zdlgen::OawXtend self, GenPaletteCreationTool tool, CreationTool container):
+	this.configure(self, tool, container) ->
+	this.setExtensionFile(self.extensionFile)
+	;
+	
+private Void configure(toolingmodel::OawBaseExpression self, zdlgen::Expression exp, GenPaletteCreationTool tool, CreationTool container):
+	self.setName(exp.name) ->
+	self.setExpression(exp.expression) ->
+	self.metamodel.addAll(tool.genModel.getMetamodelURIs());
+	
+Void toExpression(zdlgen::Expression self, GenPaletteCreationTool tool, CreationTool container):
+	{};
+
+/**
+ * Sets common properties of palette tools.
+ */
+private Tool configure(Tool self, GenPaletteTool toolDef, ToolContainer container) :
+    self.setName(toolDef.name) ->
+    self.setDescription(toolDef.description) ->
+    container.tool.add(self) ->
+    self;
+
+/**
+ * Converts a diagram-kind enumeration literal to the string view type.
+ */
+private String convertDiagramKind(GenPaletteDiagramKind kind) :
+    switch (kind) {
+        case GenPaletteDiagramKind::configuration : "Configuration"
+        case GenPaletteDiagramKind::deployment : "Deployment"
+        case GenPaletteDiagramKind::class : "Class"
+        case GenPaletteDiagramKind::freeform : "Freeform"
+        case GenPaletteDiagramKind::structure : "Structure"
+        case GenPaletteDiagramKind::statechart : "Statechart"
+        default : "Component"
+    };
+
+/**
+ * Creates a profile's palette model.
+ * TODO: Why does oAW flag the second statement with an error?  It runs fine.
+ */ 
+create Palette palette(uml::Profile self) :
+    this.setName(self.name) ->
+    self.paletteAnnotation().contents.add(this);
+
+/**
+ * Creates the annotation that stores a palette model in a profile.
+ */
+private create ecore::EAnnotation paletteAnnotation(uml::Profile self) :
+    this.setSource("http://www.zeligsoft.com/zdl/2008/tooling") ->
+    self.eAnnotations.add(this);
+
+/**
+ * Utility query to determine whether a string is either null or empty.
+ */
+private Boolean isEmpty(String self) :
+    self == "";
+
+/**
+ * The null case of the utility query to determine whether a string is either
+ * null or empty.
+ */
+private Boolean isEmpty(Void self) :
+    true;

@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.zeligsoft.ddk.zdl.zdlgen.editor; singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: com.zeligsoft.ddk.zdl.zdlgen.presentation.ZDLGenEditorPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: com.zeligsoft.ddk.zdl.zdlgen.adapter,
+ com.zeligsoft.ddk.zdl.zdlgen.presentation,
+ com.zeligsoft.ddk.zdl.zdlgen.presentation.util
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)",
+ org.eclipse.core.resources;bundle-version="[3.6.0,4.0.0)";visibility:=reexport,
+ com.zeligsoft.ddk.zdl.zdlgen.edit;bundle-version="4.0.0";visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;bundle-version="[2.5.0,3.0.0)";visibility:=reexport,
+ org.eclipse.emf.edit.ui;bundle-version="[2.6.0,3.0.0)";visibility:=reexport,
+ org.eclipse.ui.ide;bundle-version="[3.6.0,4.0.0)";visibility:=reexport,
+ org.eclipse.emf.ecore.edit;bundle-version="2.6.0";visibility:=reexport,
+ org.eclipse.uml2.uml.edit;bundle-version="3.1.0";visibility:=reexport,
+ org.eclipse.emf.validation;bundle-version="[1.4.0,2.0.0)",
+ org.eclipse.gmf.runtime.emf.core;bundle-version="[1.4.0,2.0.0)",
+ com.zeligsoft.base;bundle-version="3.4.0",
+ org.eclipse.ui;bundle-version="[3.6.0,4.0.0)",
+ com.google.guava;bundle-version="10.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

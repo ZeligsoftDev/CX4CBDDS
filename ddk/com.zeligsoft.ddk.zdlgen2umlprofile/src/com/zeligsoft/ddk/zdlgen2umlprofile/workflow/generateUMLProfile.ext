@@ -1,0 +1,339 @@
+/**
+ * Copyright (c) 2008 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ *
+ */
+import uml;
+import zdlgen;
+
+extension com::zeligsoft::ddk::zdlgen2umlprofile::adapter::rsm::extensions::rsmProfiling;
+extension com::zeligsoft::ddk::zdlgen2umlprofile::workflow::zdlTrace;
+extension com::zeligsoft::ddk::zdlgen2umlprofile::workflow::modelExplorer;
+
+/**
+ *
+ * Create an UML profile from a named domain specialization in a ZDLGen model.
+ *
+ */
+Profile transform(GenModel model, String specialization) : 
+    transform(model.domainModel.element.typeSelect(GenDomainSpecialization).selectFirst(e| e.name == specialization));
+
+/**
+ *
+ * Create an UML profile from a zdlgen domain specialization.
+ *
+ */
+create Profile transform(GenDomainSpecialization specialization) : 
+	setName('cx' + specialization.name) ->
+	this.initializeForRSM(specialization) ->
+	specialization.domainConcept.mapped().toClassifier(this, specialization) ->
+	this.traceToZDL(specialization) ->
+	specialization.domainConcept.select(c|c.isMetaclass()).traceAbstractConceptToZDL(this) ->
+	specialization.generateMenuModel(this);
+
+/**
+ * Queries whether a concept is mapped to a class or a stereotype.
+ */
+Boolean isMapped(GenDomainConcept self) :
+    self.isStereotype() || self.isProfileClass();
+
+/**
+ * Filters out from a list of concepts those that are not mapped to classes
+ * or stereotypes in the profile.
+ */
+List[GenDomainConcept] mapped(List[GenDomainConcept] concepts) :
+    concepts.select(c|c.isMapped());
+
+/**
+ * A private extension computing whether we need to create a stereotype for the
+ * specified domain concept (because it or one of its general or specific
+ * concepts has UML metaclasses) or else just a class.
+ */
+private cached Boolean isStereotype(GenDomainConcept self) :
+    ((self.category == GenDomainConceptCategory::firm)
+            && (! self.umlMetaclass.isEmpty
+                    || self.allGenerals().exists(g| ! g.umlMetaclass.isEmpty)))
+    ||
+    ((self.category != GenDomainConceptCategory::abstract)
+            && self.allSpecifics().exists(s| s.isStereotype()));
+
+/**
+ * Queries whether a concept is mapped to a UML metaclass.  Such a concept
+ * does not generate a stereotype, but can be the target of domain-references
+ * which then generate metaclass associations.
+ */
+private cached Boolean isMetaclass(GenDomainConcept self) :
+    ((self.category == GenDomainConceptCategory::abstract)
+            && (! self.umlMetaclass.isEmpty
+                    || self.allGenerals().exists(g| ! g.umlMetaclass.isEmpty)))
+    ||
+    ((self.category != GenDomainConceptCategory::firm)
+            && self.allSpecifics().forAll(s| s.isMetaclass()));
+
+
+/**
+ * Queries whether a concept is mapped to a class in the profile.  This is an
+ * alternative to generating a stereotype or simply mapping to a UML metaclass.
+ */
+private cached Boolean isProfileClass(GenDomainConcept self) :
+    ! self.isStereotype() && ! self.isMetaclass();
+
+/**
+ * For other kinds of domain classifier than concept, there is never aggregation.
+ */
+private Boolean isProfileClass(GenDomainClassifier self) :
+    false;
+
+/**
+ * Filters out from a list of a concept's references those that are not mapped to
+ * associations in the profile.
+ */
+List[GenDomainReference] mappedReferences(GenDomainConcept self) :
+    self.reference.select(r|(r.target.isMapped() || r.target.isMetaclass())
+            && (r.umlMetaattribute == null));
+
+/**
+ * Filters out from a list of a concept's attributes those that are not mapped to
+ * properties in the profile.
+ */
+List[GenDomainAttribute] mappedAttributes(GenDomainConcept self) :
+    self.attribute.select(a|a.umlMetaattribute == null);
+
+/**
+ * Obtains the structural features in a concept that are mapped to properties of
+ * the extended UML metaclass(es).
+ */
+List[GenDomainStructuralFeature] elidedFeatures(GenDomainConcept self) :
+    self.feature.select(f|f.umlMetaattribute != null);
+
+/**
+ * Transforms a domain concept to a stereotype if it has any mappings to UML
+ * metaclasses, otherwise to a class (which may be a UML metaclass in the case
+ * of an "abstract" concept).
+ */
+Class toClassifier(GenDomainConcept concept, Profile profile, GenDomainSpecialization specialization) :
+    concept.isStereotype()? concept.toStereotype(profile, specialization)
+        : (concept.isMetaclass()? concept.umlMetaclass.first()
+            : concept.toClass(profile, specialization));
+
+/**
+ * Converts a domain concept to a stereotype, when that is the appropriate
+ * mapping.  We are careful to create generalizations before creating metaclass
+ * extensions, because we must not re-create extensions that are inherited from
+ * more general stereotypes.
+ * 
+ * TODO: Currently, features mapped to UML meta-attributes are just skipped.
+ *       We will have to transform OCL constraints, accordingly
+ */
+create Stereotype toStereotype(GenDomainConcept concept, Profile profile, GenDomainSpecialization domainspec) :
+    this.populateClass(concept, profile, domainspec) ->
+    this.createExtensions(concept.getExtendedMetaclasses()) ->
+    this.annotateForRSM(concept) ->
+    this.processIcon(concept) ->
+    this.traceToZDL(concept);
+
+/**
+ * Obtains the metaclasses that must be extended by the stereotype generated
+ * from a given domain concept.  These include any metaclasses referenced by
+ * general concepts that are "abstract" mappings (recursively, stopping at
+ * mapped concepts).  Furthermore, we want only to extend the most specific
+ * metaclasses; we don't want to inherit metaclass extensions that are more
+ * general than metaclasses that we specify for ourselves.
+ */
+private Set[Class] getExtendedMetaclasses(GenDomainConcept self) :
+    (self.category == GenDomainConceptCategory::uncertain)
+        ? {}.toSet()
+        : self.umlMetaclass.union(
+            self.general.reject(c | c.isMapped()).getExtendedMetaclasses()).mostSpecific();
+
+/**
+ * Computes the subset of the specified classes that are not specializations
+ * of any other class in the set.
+ */
+private Set[Class] mostSpecific(Set[Class] classes) :
+    classes.reject(c|classes.exists(sub|(sub != c) && sub.conformsTo(c)));
+
+/**
+ * Apply annotations to make the stereotype work nicely in RSM.
+ * TODO: Uncomment the read-only details when CX is ready for them.
+ */
+private Void annotateForRSM(Stereotype self, GenDomainConcept concept) :
+    concept.hasRSMAnnotation()?
+	    (let annot = self.createEAnnotation("uml2.extensions") : (
+	        concept.isRSMSuppressed? annot.putDetail("suppressed", "true") : {} ->
+	        concept.isRSMPropertiesUIReadOnly? annot.putDetail("propertiesUIReadOnly", "true") : {} ->
+	        concept.isRSMUIReadOnly? annot.putDetail("uiReadOnly", "true") : {}
+	        )) : {};
+	        
+private Void processIcon(Stereotype self, GenDomainConcept concept) :
+	concept.hasIconUri()?
+		(let icon = self.createIcon(concept.iconUri.replaceFirst("platform:/resource", "platform:/plugin")) : ( 
+			let annot = icon.createEAnnotation("image_papyrus") : (
+				annot.putDetail("image_kind_key", "icon")
+			))) : {};
+	
+/**
+ * Queries whether a domain concept needs to generate RSM's stereotype
+ * annotations.
+ */
+private Boolean hasRSMAnnotation(GenDomainConcept self) :
+    self.isRSMSuppressed || self.isRSMUIReadOnly || self.isRSMPropertiesUIReadOnly;
+
+private Boolean hasIconUri(GenDomainConcept self) :
+    self.iconUri != null && self.iconUri != "";
+
+/**
+ * Converts a domain concept to a class, when that is the appropriate mapping.
+ */
+create Class toClass(GenDomainConcept concept, Profile profile, GenDomainSpecialization domainspec) :
+    this.populateClass(concept, profile, domainspec) ->
+    this.traceToZDL(concept);
+
+private Void populateClass(Class self, GenDomainConcept concept, Profile profile, GenDomainSpecialization domainspec) :
+    self.setName(domainspec.getUniqueName(concept)) ->
+    profile.packagedElement.add(self) ->
+    self.setIsAbstract(concept.domainConcept.isAbstract) ->
+    self.general.addAll(concept.general.mapped().toClassifier(profile, domainspec)) ->
+    concept.mappedReferences().createAssociation(self, profile, domainspec) ->
+    self.ownedAttribute.addAll(concept.mappedAttributes().toAttribute(profile, domainspec)) ->
+    concept.elidedFeatures().traceToUML(self);
+
+/*
+ * Create all the extensions for a stereotype.  The stereotype must already
+ * be attached to its profile.
+ */
+Void createExtensions(Stereotype self, Collection[Class] metaclasses) :
+	metaclasses.without(self.getExtendedMetaclasses()).collect(m|self.createExtension(m, false));
+	
+/**
+ * Queries whether a domain-feature is mapped to an attribute of a stereotype
+ * or profile class.  If not, then the domain-feature maps to a UML meta-attribute
+ * and, therefore, the profile does not contain a corresponding attribute.
+ */
+Boolean isMapped(GenDomainStructuralFeature self) :
+    self.umlMetaattribute == null;
+
+/*
+ *
+ * Create associations between stereotypes.  Note that the input may be a
+ * GenDomainReference created from a DomainAttribute and, therefore, may not
+ * be backed by a UML association in the ZDL (hence having no end2).
+ *
+ */	
+create Association createAssociation(GenDomainReference self, Class source, Profile profile, GenDomainSpecialization domainspec) :
+    let zdlEnd1 = self.domainAttribute :
+    let zdlEnd2 = zdlEnd1.getOtherEnd() :
+    let agg = (self.target.isProfileClass()? zdlEnd1.aggregation : AggregationKind::none) :
+    let end1 = zdlEnd1.toAttribute() :
+    let end2 = zdlEnd2.toAttribute() :
+    end1.setAggregation(agg) ->
+    end1.setType(self.target.toClassifier(profile, domainspec)) ->
+    end2.setType(source) ->
+    source.ownedAttribute.add(end1) ->
+    this.memberEnd.add(end1) ->
+    this.ownedEnd.add(end2) ->
+    source.getNearestPackage().packagedElement.add(this) ->
+    (self.isMapped()? zdlEnd1.processRedefinitions() : {}) ->
+    end1.traceToZDL(self.domainAttribute) ->
+    this.traceToZDL(self);
+
+/*
+ * Construct the redefinition relationships, if any, of a ZDL property in its
+ * UML Profile counterpart.  This includes ensuring that the other ends of
+ * associations are redefined and that the associations are specialized.
+ */
+private Void processRedefinitions(Property self) :
+    self.redefinedProperty.collect(rp |
+        let attr = self.toAttribute() :
+        let redef = rp.toAttribute() :
+        attr.redefinedProperty.add(redef) ->
+        ((attr.association != null)? {
+            attr.getOtherEnd().redefinedProperty.add(redef.getOtherEnd()) ->
+            attr.association.general.add(redef.association)
+        } : {
+        }));
+
+private create Property toAttribute(Property self) :
+    this.setName(self.name) ->
+    this.setLower(self.lower) ->
+    this.setUpper(self.upper) ->
+    this.setIsUnique(self.isUnique) ->
+    this.setIsOrdered(self.isOrdered);
+    
+private Property toAttribute(Void self) :
+    let result = new Property :
+    result.setLower(0) ->
+    result.setUpper(-1) ->
+    result;
+
+Property toAttribute(GenDomainAttribute attribute, Profile profile, GenDomainSpecialization domainspec) :
+    let domainAttr = attribute.domainAttribute :
+    let result = domainAttr.toAttribute() :
+    let agg = (((attribute.type != null) && attribute.type.isProfileClass())
+            ? domainAttr.aggregation : AggregationKind::none) :
+    result.setType((attribute.type == null)? domainAttr.type : attribute.type.toClassifier(profile, domainspec)) ->
+    result.setDefaultValue(domainAttr.defaultValue.toDefault(result)) ->
+    (attribute.isMapped()? domainAttr.processRedefinitions() : {}) ->
+    result.traceToZDL(attribute) ->
+    result;
+
+DataType toClassifier(GenDomainDataType dataType, Profile profile, GenDomainSpecialization domainspec) :
+    PrimitiveType.isInstance(dataType.domainDataType)?
+        dataType.toPrimitiveType(profile, domainspec) :
+        dataType.toDataType(profile, domainspec);
+
+private create DataType toDataType(GenDomainDataType dataType, Profile profile, GenDomainSpecialization domainspec) :
+    this.populateDataType(dataType, profile, domainspec) ->
+    this.traceToZDL(dataType);
+
+private create PrimitiveType toPrimitiveType(GenDomainDataType dataType, Profile profile, GenDomainSpecialization domainspec) :
+    this.populateDataType(dataType, profile, domainspec) ->
+    this.traceToZDL(dataType);
+
+private Void populateDataType(DataType self, GenDomainDataType dataType, Profile profile, GenDomainSpecialization domainspec) :
+    self.setName(domainspec.getUniqueName(dataType)) ->
+    profile.packagedElement.add(self) ->
+    self.setIsAbstract(dataType.domainDataType.isAbstract);
+
+create Enumeration toClassifier(GenDomainEnum enumeration, Profile profile, GenDomainSpecialization domainspec) :
+    this.setName(domainspec.getUniqueName(enumeration)) ->
+    profile.packagedElement.add(this) ->
+    enumeration.literal.toEnumerationLiteral(this) ->
+    this.traceToZDL(enumeration);
+
+private EnumerationLiteral toEnumerationLiteral(GenDomainEnumLiteral literal, Enumeration owner) :
+    literal.createEnumerationLiteral(owner).traceToZDL(literal);
+
+//
+// A block of polymorphic extensions for creating default values in the context
+// of a domain attribute
+//
+private ValueSpecification toDefault(ValueSpecification self, Property attribute) :
+    null;
+private create LiteralString toDefault(LiteralString self, Property attribute) :
+    this.setValue(self.value);
+private create LiteralBoolean toDefault(LiteralBoolean self, Property attribute) :
+    this.setValue(self.value);
+private create LiteralInteger toDefault(LiteralInteger self, Property attribute) :
+    this.setValue(self.value);
+private create LiteralUnlimitedNatural toDefault(LiteralUnlimitedNatural self, Property attribute) :
+    this.setValue(self.value);
+private create LiteralNull toDefault(LiteralNull self, Property attribute) :
+    {};
+// OpaqueExpressions don't translate to Ecore.  Convert them to string values
+// because RSM seems to create OpaqueExpressions for String attributes
+private ValueSpecification toDefault(OpaqueExpression self, Property attribute) :
+    (attribute.type.name == "String")? self.toStringDefault(attribute) : null;
+private create LiteralString toStringDefault(OpaqueExpression self, Property attribute) :
+    this.setValue(self.body.isEmpty? null : self.body.first());
+private create InstanceValue toDefault(InstanceValue self, Property attribute) :
+    this.setInstance(attribute.getEnumerationDefaultLiteral(self.instance.name));
+private ValueSpecification toDefault(Void self, Property attribute) :
+    null;
+

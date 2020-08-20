@@ -1,0 +1,49 @@
+<!--
+  Copyright (c) 2009 Zeligsoft (2009) Limited
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ *
+ -->
+ <workflow>
+ 	<component class="com.zeligsoft.base.workflow.SetupResourceSet"
+	       resourceSetSlot="rset" />
+	       
+	<!-- Load the source ZDLGen model. -->
+    <component id="readSource" class="com.zeligsoft.base.workflow.RSMReader"
+           resourceSetSlot="rset">
+        <uri value="${sourceModelURI}" />
+        <modelSlot value="zdlGenModel" />
+    </component>
+	
+	<!-- Resolve all proxies to ensure consistent generation of library dependencies. -->
+    <component id="resolveAll" class="com.zeligsoft.base.workflow.ResolveAll"
+           resourceSetSlot="rset">
+        <modelSlot value="zdlGenModel" />
+    </component>
+    
+    <component id="propertiesModelGenerator" class="org.eclipse.xtend.XtendComponent">
+        <metaModel id="umlMM" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel" />
+        <metaModel id="zdlgenMM" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel" 
+            metaModelPackage="com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage">
+        </metaModel>
+        <metaModel id="propertiesMM" class="org.eclipse.xtend.typesystem.emf.EmfMetaModel" 
+            metaModelPackage="com.zeligsoft.base.toolingmodel.ToolingModelPackage">
+        </metaModel>
+        <metaModel id="zdlProfile" class="org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel">
+          <profile value="pathmap://ZDL_PROFILES/ZDL.profile.uml"/>
+        </metaModel>
+		<invoke value="com::zeligsoft::ddk::zdlgen2umlprofile::workflow::generateProperties::transform(zdlGenModel, '${specialization}')" />
+		<outputSlot value="menuModel" />
+	</component>
+	
+	<component class="com.zeligsoft.base.workflow.ModelWriter">
+    	<modelSlot value="menuModel" />
+		<targetURISlot value="targetToolingModelURI" />
+		<cloneSlotContents value="false" />
+    </component>
+ </workflow>

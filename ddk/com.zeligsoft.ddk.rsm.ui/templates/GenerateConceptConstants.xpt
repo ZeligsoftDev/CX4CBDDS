@@ -1,0 +1,96 @@
+«REM»
+
+ Copyright (c) 2008 Zeligsoft Inc.
+
+ All rights reserved. 
+  
+ THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ IS STRICTLY PROHIBITED.
+
+«ENDREM»
+
+«IMPORT uml»
+«IMPORT ZDL»
+
+«EXTENSION xtend::StringUtils»
+
+«DEFINE Root FOR Package»
+«FILE getValidJavaIdentifier(this.name) + "Names.java"»
+/**
+ * Copyright (c) 2008 Zeligsoft Inc.
+ * Copyright (c) 2011 Zeligsoft (2009) Ltd.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ *
+ */
+ 
+package «getPackageName()»;
+
+/**
+ * Constants for the ZDL model «name»
+ * @generated
+ *
+ */
+public final class «getValidJavaIdentifier(this.name)»Names {
+
+	private «getValidJavaIdentifier(this.name)»Names() {
+		super();
+	}
+«EXPAND domainConcept FOREACH this.eAllContents.typeSelect(DomainConcept).sortBy(dc | dc.name)»
+«EXPAND domainEnumeration FOREACH this.eAllContents.typeSelect(DomainEnum).sortBy(de | de.name)»
+}
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE domainConcept FOR DomainConcept»
+/**
+ * Fully qualified name for the ZDL DomainConcept: «name». 
+ * @generated
+ */
+ public static final String «camel2UpperWithUnderscore(getValidJavaIdentifier(this.name))» = "«this.qualifiedName»";//$NON-NLS-1$
+ «EXPAND domainRefEnd FOREACH this.ownedAttribute.select(p | DomainReference.isInstance(p.association) || DomainAttribute.isInstance(p)).sortBy(a|a.name)»
+«ENDDEFINE»
+
+«DEFINE domainRefEnd FOR Property»
+/**
+ * ZDL DomainReference: «this.owner.name»::«this.name». 
+ * «IF this.lowerBound() == this.upperBound()»Multiplicity: «this.lowerBound()» «ELSE»Lower: «this.lowerBound()» Upper: «this.upperBound()== -1 ? '*' : this.upperBound()»«ENDIF» 
+ * @generated
+ */
+	 public static final String «camel2UpperWithUnderscore(getValidJavaIdentifier(this.owner.name) + "__" + getValidJavaIdentifier(this.name))» = "«this.name»";//$NON-NLS-1$ 
+«ENDDEFINE»
+
+«DEFINE domainRefEnd FOR DomainAttribute»
+/**
+ * ZDL DomainAttribute: «this.owner.name»::«name». 
+ * «IF this.lowerBound() == this.upperBound()»Multiplicity: «this.lowerBound()» «ELSE»Lower: «this.lowerBound()» Upper: «this.upperBound()== -1 ? '*' : this.upperBound()»«ENDIF» 
+ * @generated
+ */
+ public static final String «camel2UpperWithUnderscore(getValidJavaIdentifier(this.owner.name) + "__" + getValidJavaIdentifier(this.name))» = "«this.name»";//$NON-NLS-1$  
+«ENDDEFINE»
+
+«DEFINE domainEnumeration FOR DomainEnum»
+/**
+ * ZDL DomainEnum: «name». 
+ * @generated
+ */
+ public static final String «camel2UpperWithUnderscore(getValidJavaIdentifier(this.name))» = "«this.qualifiedName»";//$NON-NLS-1$
+ «EXPAND domainEnumLiteral FOREACH getEnumerationLiterals(this)»
+«ENDDEFINE»
+
+«DEFINE domainEnumLiteral FOR EnumerationLiteral»
+/**
+ * ZDL DomainEnumLiteral: «getEnumeration(this).name»::«getEnumerationLiteralName(this)». 
+ * @generated
+ */
+ public static final String «camel2UpperWithUnderscore(getValidJavaIdentifier(getEnumeration(this).name) + "__" + getValidJavaIdentifier(getEnumerationLiteralName(this)))» = "«getEnumerationLiteralName(this)»";//$NON-NLS-1$
+«ENDDEFINE»
+ 
+ 

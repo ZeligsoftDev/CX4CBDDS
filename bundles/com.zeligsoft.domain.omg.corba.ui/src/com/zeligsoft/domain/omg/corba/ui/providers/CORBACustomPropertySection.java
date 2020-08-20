@@ -158,7 +158,7 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 
 		final org.eclipse.jface.dialogs.Dialog dialog;
 
-		final Object value = descriptor.getValue();
+		final Object value = ((Operation)descriptor.getContext()).getType();
 
 		ZDLElementSelectionDialog selectionDialog;
 		selectionDialog = new ZDLElementSelectionDialog(Display.getCurrent().getActiveShell(),
@@ -235,11 +235,12 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 
 									@Override
 									protected void doExecute() {
-										final Parameter rp = op.getReturnResult();
+										Parameter rp = op.getReturnResult();
 										if (rp != null) {
 											rp.setType((Type) selectedElement);
 										} else {
-											op.createReturnResult("ReturnParameter", (Type) selectedElement); //$NON-NLS-1$
+											rp = op.createReturnResult("ReturnParameter", (Type) selectedElement); //$NON-NLS-1$
+											ZDLUtil.addZDLConcept(rp, CORBADomainNames.CORBAPARAMETER);
 										}
 									}
 								};
@@ -483,16 +484,15 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 		if (object == null) {
 			viewToolBar.getItem(0).setEnabled(false);
 		}
-		// ToDoPapyrus:
-//		viewToolBar.getItem(0).addSelectionListener(new SelectionAdapter() {
-//
-//			@Override
-//			public void widgetSelected(SelectionEvent e) {
-//				if (object != null) {
-//					BaseUIUtil.showInProjectExplorer(object);
-//				}
-//			}
-//		});
+		viewToolBar.getItem(0).addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (object != null) {
+					BaseUIUtil.revealTarget(object);
+				}
+			}
+		});
 
 		return widgetMap;
 
@@ -531,11 +531,6 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 
 		final List<Button> buttons = new ArrayList<Button>();
 		for (ParameterDirectionKind kind : values) {
-			if(kind.equals(ParameterDirectionKind.RETURN_LITERAL)){
-				// ignore return direction since return direction is not allowed
-				// for CORBAParameter
-				continue;
-			}
 			final Button button = CXWidgetFactory.createRadioButton(composite,
 					kind.getName(), new GridData());
 			button.setBackground(parent.getBackground());

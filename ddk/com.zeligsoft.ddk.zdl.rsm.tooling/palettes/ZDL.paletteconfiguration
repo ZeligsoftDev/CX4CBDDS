@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<paletteconfiguration:PaletteConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:paletteconfiguration="http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.8" id="com.zeligsoft.ddk.zdl.palette" label="ZDL">
+  <drawerConfigurations xmi:type="paletteconfiguration:DrawerConfiguration" id="zdl.packages.drawer" label="ZDL Packages" description="ZDL Packages Drawer">
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="zdl.DomainBlock" label="Domain Block" kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Package.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_blPbgMeXEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_blPbgceXEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="zdl.DomainBlockImport" label="Domain Block Import" kind="ConnectionTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/PackageImport.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_4FE5MMeXEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="zdl.DomainBlockReference" label="Domain Block Reference" kind="ConnectionTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Dependency.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_UMZJMMeYEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+  </drawerConfigurations>
+  <drawerConfigurations xmi:type="paletteconfiguration:DrawerConfiguration" id="zdl.concepts.drawer" label="ZDL Concepts">
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="zdl.DomainConcept" label="Domain Concept" kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Class.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_4-s4kMeGEeqlwPkW5oxhsg"/>
+      </elementDescriptors>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_OnbfEMeIEeqlZZn7FHcr3w"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="zdl.DomainGeneralization" label="Domain Generalization" kind="ConnectionTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Generalization.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_uArY4MeTEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="zdl.DomainEnumeration" label="Domain Enumeration" kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Enumeration.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_hz3oUMeUEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_FT5LQMeVEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="zdl.DomainReference" label="Domain Reference" kind="ConnectionTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Association.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_4OMq4MeVEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="zdl.DomainConstraint" label="Domain Constraint" kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Constraint.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_t7w8UMeWEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_3TVIoMeWEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="zdl.DomainLinkConstraint" label="Domain Link Constraint" kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Constraint.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_COZIAMeXEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_COZIAceXEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="zdl.ExternalDomainLinkConstraint" label="External Domain Link Constraint" kind="CreationTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Constraint.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_2AHToMeeEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.ddk.zdl.rsm.tooling/elementtypes/ZDL_diagram.elementtypesconfigurations#_2AHToceeEeqndL47ikRM6Q"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+  </drawerConfigurations>
+  <requiredProfiles>cxDDS4CCM</requiredProfiles>
+</paletteconfiguration:PaletteConfiguration>

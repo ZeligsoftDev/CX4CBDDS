@@ -1,0 +1,111 @@
+/**
+ * Copyright (c) 2008 Zeligsoft Inc.
+ *
+ * All rights reserved. 
+ *  
+ * THIS PROGRAM IS THE UNPUBLISHED, PROPRIETARY PROPERTY OF ZELIGSOFT INC. AND
+ * IS TO BE MAINTAINED IN STRICT CONFIDENCE.  UNAUTHORIZED REPRODUCTION, 
+ * DISTRIBUTION OR DISCLOSURE OF THIS PROGRAM, OR ANY PROGRAM DERIVED FROM IT,
+ * IS STRICTLY PROHIBITED.
+ *
+ */
+import uml;
+import zdlgen;
+import ZDL;
+
+extension com::zeligsoft::ddk::zdlgen2umlprofile::adapter::rsm::extensions::rsmProfiling;
+
+/**
+ * Ensures the presence of the annotation that traces from the specified UML
+ * profile element to the ZDL domain element that generated it.
+ */
+Void traceToZDL(NamedElement self, GenDomainNamedElement gen) :
+   (gen != null)? self.traceToZDL(gen.domainElement) : {};
+    
+Void traceToZDL(NamedElement self, GenDomainStructuralFeature gen) :
+    (gen != null)? self.traceToZDL(gen.domainAttribute) : {};
+
+NamedElement getDomainElement(GenDomainNamedElement gen) :
+    JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.ZDLGen2UMLProfileUtil.getDomainElement(com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement);
+
+Void debug(GenDomainNamedElement gen) :
+    JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.ZDLGen2UMLProfileUtil.debug(java.lang.Object);
+    
+Void debug(Object gen) :
+    JAVA com.zeligsoft.ddk.zdlgen2umlprofile.util.ZDLGen2UMLProfileUtil.debug(java.lang.Object);
+
+/**
+ * Ensures the presence of the annotation that traces from the specified UML
+ * profile element to the ZDL domain element that generated it.
+ */
+Void traceToZDL(NamedElement self, uml::NamedElement zdl) :
+    (zdl != null)? self.doTraceToZDL(zdl) : {};
+
+/**
+ * Private helper for setting up traceability from profile element (self)
+ * to source ZDL element.
+ */
+private Void doTraceToZDL(NamedElement self, NamedElement zdl) :
+    self.ensureZDLAnnotation().references.add(zdl);
+
+/**
+ * Private helper for access to a demand-created (if necessary) annotation
+ * using the ZDL namespace as its source.
+ */
+private ecore::EAnnotation ensureZDLAnnotation(Element self) :
+    let existing = self.getEAnnotation(getZDLNamespace()) :
+        (existing == null)? self.createEAnnotation(getZDLNamespace()) : existing;
+
+
+/**
+ * Sets up traceability from an elided domain feature to the UML meta-attribute
+ * to which it is mapped.  This mapping is implemented on profile element
+ * generated from the concept that owns the domain feature.
+ */
+Void traceToUML(GenDomainStructuralFeature self, Class profileOwner) :
+   self.traceConceptPropertyMapping(profileOwner.ensureZDLAnnotation());
+
+/**
+ * Private helper for adding a details entry to an annotation.
+ */
+create ecore::EStringToStringMapEntry putDetail(ecore::EAnnotation annotation, String key, String value) :
+    this.setKey(key) ->
+    this.setValue(value) ->
+    annotation.details.add(this);
+
+/**
+ * Queries the stereotype in a profile that traces to the specified ZDL concept.
+ */
+cached Stereotype getStereotype(Profile self, DomainConcept zdlConcept) :
+    self.ownedStereotype.selectFirst(s|s.tracesTo(zdlConcept));
+    
+private Boolean tracesTo(Stereotype self, Class zdlConcept) :
+    let annot = self.getEAnnotation(getZDLNamespace()) :
+        (annot != null) && annot.references.contains(zdlConcept);
+
+/**
+ * Adds traceability for an abstract concept to the specified profile.
+ */
+Profile traceAbstractConceptToZDL(GenDomainConcept self, Profile profile) :
+    let annot = profile.ensureZDLAnnotation() :
+    let mappedFeatures = self.feature.reject(f|f.umlMetaattribute == null) :
+    annot.putDetail(self.domainConcept.qualifiedName, self.metaclassMapping().name) ->
+    ((! mappedFeatures.isEmpty)?
+        (let nested = annot.createEAnnotation(self.domainConcept.qualifiedName) :
+            mappedFeatures.traceConceptPropertyMapping(nested)) :
+        {});
+
+private cached Class metaclassMapping(GenDomainConcept self) :
+    (! self.umlMetaclass.isEmpty)
+        ? self.umlMetaclass.first()
+        : self.general.selectFirst(g| g.metaclassMapping() != null).metaclassMapping();
+
+private Class metaclassMapping(Void self) :
+    null;
+
+Void traceConceptPropertyMapping(GenDomainStructuralFeature self, ecore::EAnnotation annotation) :
+    annotation.putDetail(self.domainAttribute.name, self.umlMetaattribute.name);
+    
+create ecore::EAnnotation createEAnnotation(ecore::EModelElement self, String source) :
+    this.setSource(source) ->
+    self.eAnnotations.add(this);

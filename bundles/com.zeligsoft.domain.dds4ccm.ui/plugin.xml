@@ -216,6 +216,22 @@
       <menuContribution
             allPopups="true"
             locationURI="popup:com.zeligsoft.cx.ui.refactormenu">
+            
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.migrateModel"
+              style="push"
+              label="Migrate Model">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.zdl.tester.isZDLConcept"
+                        value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                  </test>
+               </with>
+            </visibleWhen>
+        </command>
         <command
               commandId="com.zeligsoft.domain.dds4ccm.ui.repairallworkerfunctions.model"
               style="push"
@@ -451,6 +467,11 @@
   
    <extension
          point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.MigrateModelActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.migrateModel"
+            name="Migrate Model">
+      </command>
       <command
             defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.RepairWorkerFunctionsHandler"
             id="com.zeligsoft.domain.dds4ccm.ui.repairallworkerfunctions.model"
