@@ -11,6 +11,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.EventDcl#isIsCustom <em>Is Custom</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.EventDcl#isIsTruncatable <em>Is Truncatable</em>}</li>
@@ -19,7 +20,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.EventDcl#getExport <em>Export</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.EventDcl#getMember <em>Member</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getEventDcl()
  * @model
@@ -30,10 +30,6 @@ public interface EventDcl extends Event
   /**
    * Returns the value of the '<em><b>Is Custom</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Is Custom</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Custom</em>' attribute.
    * @see #setIsCustom(boolean)
@@ -56,10 +52,6 @@ public interface EventDcl extends Event
   /**
    * Returns the value of the '<em><b>Is Truncatable</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Is Truncatable</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Truncatable</em>' attribute.
    * @see #setIsTruncatable(boolean)
@@ -83,10 +75,6 @@ public interface EventDcl extends Event
    * Returns the value of the '<em><b>Base</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.ScopedName}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Base</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Base</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getEventDcl_Base()
@@ -99,10 +87,6 @@ public interface EventDcl extends Event
    * Returns the value of the '<em><b>Supports</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.ScopedName}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Supports</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Supports</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getEventDcl_Supports()
@@ -115,10 +99,6 @@ public interface EventDcl extends Event
    * Returns the value of the '<em><b>Export</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.Export}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Export</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Export</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getEventDcl_Export()
@@ -131,10 +111,6 @@ public interface EventDcl extends Event
    * Returns the value of the '<em><b>Member</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.StateMember}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Member</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Member</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getEventDcl_Member()

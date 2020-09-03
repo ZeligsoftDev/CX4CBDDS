@@ -11,12 +11,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.ExceptDecl#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.ExceptDecl#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.ExceptDecl#getMembers <em>Members</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getExceptDecl()
  * @model
@@ -27,10 +27,6 @@ public interface ExceptDecl extends Definition, Export, TemplateDefinition, Fixe
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
@@ -54,10 +50,6 @@ public interface ExceptDecl extends Definition, Export, TemplateDefinition, Fixe
    * Returns the value of the '<em><b>Comments</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Comments</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Comments</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getExceptDecl_Comments()
@@ -70,10 +62,6 @@ public interface ExceptDecl extends Definition, Export, TemplateDefinition, Fixe
    * Returns the value of the '<em><b>Members</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.Member}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Members</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Members</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getExceptDecl_Members()

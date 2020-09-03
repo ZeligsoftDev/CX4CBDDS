@@ -22,12 +22,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.ParamDclImpl#getDirection <em>Direction</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.ParamDclImpl#getType <em>Type</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.ParamDclImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -310,7 +310,7 @@ public class ParamDclImpl extends EModelElementImpl implements ParamDcl
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (direction: ");
     result.append(direction);
     result.append(", name: ");

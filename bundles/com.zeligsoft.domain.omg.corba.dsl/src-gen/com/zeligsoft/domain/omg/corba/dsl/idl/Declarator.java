@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.EModelElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Declarator#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getDeclarator()
  * @model
@@ -26,10 +26,6 @@ public interface Declarator extends EModelElement
   /**
    * Returns the value of the '<em><b>Id</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Id</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Id</em>' attribute.
    * @see #setId(String)

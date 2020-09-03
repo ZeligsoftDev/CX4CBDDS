@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EModelElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.ElementSpec#getType <em>Type</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.ElementSpec#getDeclarator <em>Declarator</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getElementSpec()
  * @model
@@ -27,10 +27,6 @@ public interface ElementSpec extends EModelElement
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
    * @see #setType(TypeSpec)
@@ -53,10 +49,6 @@ public interface ElementSpec extends EModelElement
   /**
    * Returns the value of the '<em><b>Declarator</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Declarator</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Declarator</em>' containment reference.
    * @see #setDeclarator(Declarator)

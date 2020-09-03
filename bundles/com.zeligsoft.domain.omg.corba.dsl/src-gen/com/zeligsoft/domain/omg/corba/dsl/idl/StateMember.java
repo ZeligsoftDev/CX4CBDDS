@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.EModelElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.StateMember#isIsPublic <em>Is Public</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.StateMember#getType <em>Type</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.StateMember#getNames <em>Names</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getStateMember()
  * @model
@@ -30,10 +30,6 @@ public interface StateMember extends EModelElement
   /**
    * Returns the value of the '<em><b>Is Public</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Is Public</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Public</em>' attribute.
    * @see #setIsPublic(boolean)
@@ -56,10 +52,6 @@ public interface StateMember extends EModelElement
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
    * @see #setType(ParamTypeSpec)
@@ -83,10 +75,6 @@ public interface StateMember extends EModelElement
    * Returns the value of the '<em><b>Names</b></em>' attribute list.
    * The list contents are of type {@link java.lang.String}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Names</em>' attribute list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Names</em>' attribute list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getStateMember_Names()

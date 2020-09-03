@@ -10,11 +10,11 @@ package com.zeligsoft.domain.omg.corba.dsl.idl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.FixedPtType#getLower <em>Lower</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.FixedPtType#getUpper <em>Upper</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getFixedPtType()
  * @model
@@ -25,10 +25,6 @@ public interface FixedPtType extends TemplateTypeSpec
   /**
    * Returns the value of the '<em><b>Lower</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Lower</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Lower</em>' containment reference.
    * @see #setLower(PositiveIntConst)
@@ -51,10 +47,6 @@ public interface FixedPtType extends TemplateTypeSpec
   /**
    * Returns the value of the '<em><b>Upper</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Upper</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Upper</em>' containment reference.
    * @see #setUpper(PositiveIntConst)

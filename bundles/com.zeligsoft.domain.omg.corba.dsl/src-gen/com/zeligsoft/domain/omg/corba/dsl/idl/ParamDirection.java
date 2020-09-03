@@ -47,15 +47,21 @@ public enum ParamDirection implements Enumerator
    * @generated
    * @ordered
    */
-  IN_OUT(2, "InOut", "inout");
+  IN_OUT(2, "InOut", "inout"),
+
+  /**
+   * The '<em><b>Return</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #RETURN_VALUE
+   * @generated
+   * @ordered
+   */
+  RETURN(3, "Return", "return");
 
   /**
    * The '<em><b>In</b></em>' literal value.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of '<em><b>In</b></em>' literal object isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @see #IN
    * @model name="In" literal="in"
@@ -67,10 +73,6 @@ public enum ParamDirection implements Enumerator
   /**
    * The '<em><b>Out</b></em>' literal value.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of '<em><b>Out</b></em>' literal object isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @see #OUT
    * @model name="Out" literal="out"
@@ -82,10 +84,6 @@ public enum ParamDirection implements Enumerator
   /**
    * The '<em><b>In Out</b></em>' literal value.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of '<em><b>In Out</b></em>' literal object isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @see #IN_OUT
    * @model name="InOut" literal="inout"
@@ -93,6 +91,17 @@ public enum ParamDirection implements Enumerator
    * @ordered
    */
   public static final int IN_OUT_VALUE = 2;
+
+  /**
+   * The '<em><b>Return</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #RETURN
+   * @model name="Return" literal="return"
+   * @generated
+   * @ordered
+   */
+  public static final int RETURN_VALUE = 3;
 
   /**
    * An array of all the '<em><b>Param Direction</b></em>' enumerators.
@@ -106,6 +115,7 @@ public enum ParamDirection implements Enumerator
       IN,
       OUT,
       IN_OUT,
+      RETURN,
     };
 
   /**
@@ -120,6 +130,8 @@ public enum ParamDirection implements Enumerator
    * Returns the '<em><b>Param Direction</b></em>' literal with the specified literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @param literal the literal.
+   * @return the matching enumerator or <code>null</code>.
    * @generated
    */
   public static ParamDirection get(String literal)
@@ -139,6 +151,8 @@ public enum ParamDirection implements Enumerator
    * Returns the '<em><b>Param Direction</b></em>' literal with the specified name.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @param name the name.
+   * @return the matching enumerator or <code>null</code>.
    * @generated
    */
   public static ParamDirection getByName(String name)
@@ -158,6 +172,8 @@ public enum ParamDirection implements Enumerator
    * Returns the '<em><b>Param Direction</b></em>' literal with the specified integer value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @param value the integer value.
+   * @return the matching enumerator or <code>null</code>.
    * @generated
    */
   public static ParamDirection get(int value)
@@ -167,6 +183,7 @@ public enum ParamDirection implements Enumerator
       case IN_VALUE: return IN;
       case OUT_VALUE: return OUT;
       case IN_OUT_VALUE: return IN_OUT;
+      case RETURN_VALUE: return RETURN;
     }
     return null;
   }

@@ -669,6 +669,9 @@ public class IDLWriterComponent extends WorkflowComponentWithModelSlot {
 					IDLComment comment = object.getParams().getComments()
 							.get(i);
 					String direction = param.getDirection().getLiteral();
+					if(direction.equals("return")) {
+						continue;
+					}
 					if (direction.equals("inout")) {
 						direction = "in,out";
 					}
@@ -741,7 +744,7 @@ public class IDLWriterComponent extends WorkflowComponentWithModelSlot {
 		protected List<ParamDcl> nonReturnParameters(ParameterDecls parameters) {
 			List<ParamDcl> retVal = new ArrayList<ParamDcl>();
 			for (ParamDcl pd : parameters.getDecls()) {
-				if (pd.getDirection().getLiteral() != "NULL") {
+				if (pd.getDirection().getLiteral() != "NULL" && pd.getDirection().getLiteral() != "return") {
 					retVal.add(pd);
 				}
 			}
@@ -762,6 +765,9 @@ public class IDLWriterComponent extends WorkflowComponentWithModelSlot {
 				break;
 			case ParamDirection.OUT_VALUE:
 				paramBuf.append("out ");
+				break;
+			case ParamDirection.RETURN_VALUE:
+				paramBuf.append("return ");
 				break;
 			default:
 				paramBuf.append("in ");

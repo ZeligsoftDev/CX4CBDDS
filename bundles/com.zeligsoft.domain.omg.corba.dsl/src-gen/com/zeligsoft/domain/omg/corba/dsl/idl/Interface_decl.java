@@ -10,11 +10,11 @@ package com.zeligsoft.domain.omg.corba.dsl.idl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Interface_decl#getHeader <em>Header</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Interface_decl#getInterfaceBody <em>Interface Body</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getInterface_decl()
  * @model
@@ -25,10 +25,6 @@ public interface Interface_decl extends Interface_or_Forward_Decl, TemplateDefin
   /**
    * Returns the value of the '<em><b>Header</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Header</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Header</em>' containment reference.
    * @see #setHeader(Interface_header)
@@ -51,10 +47,6 @@ public interface Interface_decl extends Interface_or_Forward_Decl, TemplateDefin
   /**
    * Returns the value of the '<em><b>Interface Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Interface Body</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Interface Body</em>' containment reference.
    * @see #setInterfaceBody(InterfaceBody)

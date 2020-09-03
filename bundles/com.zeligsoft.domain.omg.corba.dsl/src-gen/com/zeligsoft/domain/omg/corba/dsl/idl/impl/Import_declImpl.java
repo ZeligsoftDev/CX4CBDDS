@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.Import_declImpl#getImported_scope <em>Imported scope</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -167,7 +167,7 @@ public class Import_declImpl extends EModelElementImpl implements Import_decl
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (imported_scope: ");
     result.append(imported_scope);
     result.append(')');

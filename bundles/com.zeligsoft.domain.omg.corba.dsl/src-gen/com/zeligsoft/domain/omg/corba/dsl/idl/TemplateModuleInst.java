@@ -11,13 +11,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.TemplateModuleInst#getType <em>Type</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.TemplateModuleInst#getParameter <em>Parameter</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.TemplateModuleInst#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.TemplateModuleInst#getComments <em>Comments</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getTemplateModuleInst()
  * @model
@@ -28,10 +28,6 @@ public interface TemplateModuleInst extends Definition
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
    * @see #setType(ScopedName)
@@ -55,10 +51,6 @@ public interface TemplateModuleInst extends Definition
    * Returns the value of the '<em><b>Parameter</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.ActualParameter}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Parameter</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Parameter</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getTemplateModuleInst_Parameter()
@@ -70,10 +62,6 @@ public interface TemplateModuleInst extends Definition
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
@@ -97,10 +85,6 @@ public interface TemplateModuleInst extends Definition
    * Returns the value of the '<em><b>Comments</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Comments</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Comments</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getTemplateModuleInst_Comments()

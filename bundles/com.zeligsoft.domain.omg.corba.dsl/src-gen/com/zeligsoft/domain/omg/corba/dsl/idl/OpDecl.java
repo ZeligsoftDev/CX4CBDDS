@@ -11,6 +11,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.OpDecl#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.OpDecl#isIsOneway <em>Is Oneway</em>}</li>
@@ -20,7 +21,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.OpDecl#getRaises <em>Raises</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.OpDecl#getContext <em>Context</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getOpDecl()
  * @model
@@ -32,10 +32,6 @@ public interface OpDecl extends Export
    * Returns the value of the '<em><b>Comments</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Comments</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Comments</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getOpDecl_Comments()
@@ -47,10 +43,6 @@ public interface OpDecl extends Export
   /**
    * Returns the value of the '<em><b>Is Oneway</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Is Oneway</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Oneway</em>' attribute.
    * @see #setIsOneway(boolean)
@@ -73,10 +65,6 @@ public interface OpDecl extends Export
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
    * @see #setType(OpTypeDecl)
@@ -99,10 +87,6 @@ public interface OpDecl extends Export
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
@@ -125,10 +109,6 @@ public interface OpDecl extends Export
   /**
    * Returns the value of the '<em><b>Params</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Params</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Params</em>' containment reference.
    * @see #setParams(ParameterDecls)
@@ -151,10 +131,6 @@ public interface OpDecl extends Export
   /**
    * Returns the value of the '<em><b>Raises</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Raises</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Raises</em>' containment reference.
    * @see #setRaises(ExceptionList)
@@ -177,10 +153,6 @@ public interface OpDecl extends Export
   /**
    * Returns the value of the '<em><b>Context</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Context</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Context</em>' containment reference.
    * @see #setContext(ContextExpr)

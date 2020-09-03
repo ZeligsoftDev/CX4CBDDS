@@ -170,6 +170,9 @@ public class XtendUtils {
 		else if(literal.name().equals(org.eclipse.uml2.uml.ParameterDirectionKind.INOUT_LITERAL.name())) {
 			decl.setDirection(ParamDirection.IN_OUT);
 		}
+		else if(literal.name().equals(org.eclipse.uml2.uml.ParameterDirectionKind.RETURN_LITERAL.name())) {
+			decl.setDirection(ParamDirection.RETURN);
+		}
 		else {
 			decl.setDirection(null);
 		}

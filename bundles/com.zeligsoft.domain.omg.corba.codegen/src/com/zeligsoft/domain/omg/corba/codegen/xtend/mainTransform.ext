@@ -505,6 +505,7 @@ create ParameterDecls toParamDecls(CORBAOperation op) :
 create ParamDcl toParamDecl(uml::Parameter param, CORBANamedElement op, ParameterDecls decls) :
 	this.setName(param.name) ->
 	this.setType(param.zdlAsParameter().type.toScopedName(op)) ->
+	
 	this.setDirection(param.zdlAsParameter().direction) ->
 	param.zdlAsParameter().ownedComment.isEmpty ?
 		decls.comments.add(new IDLComment) :

@@ -21,12 +21,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.CaseLabelImpl#isIsCase <em>Is Case</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.CaseLabelImpl#getConstExp <em>Const Exp</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.CaseLabelImpl#isIsDefault <em>Is Default</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -309,7 +309,7 @@ public class CaseLabelImpl extends EModelElementImpl implements CaseLabel
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (isCase: ");
     result.append(isCase);
     result.append(", isDefault: ");

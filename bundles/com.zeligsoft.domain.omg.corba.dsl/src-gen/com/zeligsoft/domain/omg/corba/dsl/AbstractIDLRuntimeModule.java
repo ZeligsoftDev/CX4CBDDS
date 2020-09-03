@@ -6,7 +6,6 @@ package com.zeligsoft.domain.omg.corba.dsl;
 import java.util.Properties;
 
 import org.eclipse.xtext.Constants;
-import org.eclipse.xtext.service.DefaultRuntimeModule;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
@@ -14,8 +13,8 @@ import com.google.inject.name.Names;
 /**
  * Manual modifications go to {com.zeligsoft.domain.omg.corba.dsl.IDLRuntimeModule}
  */
- @SuppressWarnings("all")
-public abstract class AbstractIDLRuntimeModule extends DefaultRuntimeModule {
+@SuppressWarnings("all")
+public abstract class AbstractIDLRuntimeModule extends org.eclipse.xtext.service.DefaultRuntimeModule {
 
 	protected Properties properties = null;
 

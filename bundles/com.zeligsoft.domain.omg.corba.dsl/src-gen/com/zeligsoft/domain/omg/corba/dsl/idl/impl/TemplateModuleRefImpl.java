@@ -26,12 +26,12 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.TemplateModuleRefImpl#getType <em>Type</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.TemplateModuleRefImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.TemplateModuleRefImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -297,7 +297,7 @@ public class TemplateModuleRefImpl extends TemplateDefinitionImpl implements Tem
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (id: ");
     result.append(id);
     result.append(", name: ");

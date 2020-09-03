@@ -28,13 +28,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.UsesDclImpl#isIsMultiple <em>Is Multiple</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.UsesDclImpl#getType <em>Type</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.UsesDclImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.UsesDclImpl#getComments <em>Comments</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -355,7 +355,7 @@ public class UsesDclImpl extends ComponentExportImpl implements UsesDcl
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (isMultiple: ");
     result.append(isMultiple);
     result.append(", name: ");

@@ -202,7 +202,7 @@ ParamDcl :
 	;
 	
 enum ParamDirection :
-	In="in" | Out="out" | InOut="inout";
+	In="in" | Out="out" | InOut="inout" | Return="return";
 	
 ContextExpr :
 	"context" "(" literal+=STRING ("," literal+=STRING)* ")"

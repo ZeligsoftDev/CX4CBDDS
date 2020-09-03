@@ -10,10 +10,10 @@ package com.zeligsoft.domain.omg.corba.dsl.idl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.File_Marker#getFile <em>File</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getFile_Marker()
  * @model
@@ -24,10 +24,6 @@ public interface File_Marker extends Preproc
   /**
    * Returns the value of the '<em><b>File</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>File</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>File</em>' attribute.
    * @see #setFile(String)

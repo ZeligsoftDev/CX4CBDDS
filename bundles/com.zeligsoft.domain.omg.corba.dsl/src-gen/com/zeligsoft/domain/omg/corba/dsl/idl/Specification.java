@@ -13,11 +13,11 @@ import org.eclipse.emf.ecore.EModelElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Specification#getImports <em>Imports</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Specification#getDefinitions <em>Definitions</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getSpecification()
  * @model
@@ -30,10 +30,6 @@ public interface Specification extends EModelElement
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.Import_decl}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Imports</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Imports</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getSpecification_Imports()
@@ -46,10 +42,6 @@ public interface Specification extends EModelElement
    * Returns the value of the '<em><b>Definitions</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.Definition}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Definitions</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Definitions</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getSpecification_Definitions()

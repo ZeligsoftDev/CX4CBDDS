@@ -17,10 +17,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.Excluded_File_MarkerImpl#getFile <em>File</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -166,7 +166,7 @@ public class Excluded_File_MarkerImpl extends PreprocImpl implements Excluded_Fi
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (file: ");
     result.append(file);
     result.append(')');

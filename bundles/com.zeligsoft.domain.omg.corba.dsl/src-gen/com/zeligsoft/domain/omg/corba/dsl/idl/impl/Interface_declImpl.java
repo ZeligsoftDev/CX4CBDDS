@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.Interface_declImpl#getHeader <em>Header</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.Interface_declImpl#getInterfaceBody <em>Interface Body</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

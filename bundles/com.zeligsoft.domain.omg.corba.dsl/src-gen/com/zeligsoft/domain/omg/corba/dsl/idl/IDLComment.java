@@ -10,10 +10,10 @@ package com.zeligsoft.domain.omg.corba.dsl.idl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment#getBody <em>Body</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getIDLComment()
  * @model
@@ -24,10 +24,6 @@ public interface IDLComment extends Definition, Export, ComponentExport, PortExp
   /**
    * Returns the value of the '<em><b>Body</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Body</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Body</em>' attribute.
    * @see #setBody(String)

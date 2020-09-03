@@ -20,11 +20,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.FixedPtTypeImpl#getLower <em>Lower</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.FixedPtTypeImpl#getUpper <em>Upper</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

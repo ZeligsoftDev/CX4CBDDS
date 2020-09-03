@@ -11,13 +11,13 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.FactoryDcl#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.FactoryDcl#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.FactoryDcl#getParams <em>Params</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.FactoryDcl#getRaises <em>Raises</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getFactoryDcl()
  * @model
@@ -29,10 +29,6 @@ public interface FactoryDcl extends HomeExport
    * Returns the value of the '<em><b>Comments</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Comments</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Comments</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getFactoryDcl_Comments()
@@ -44,10 +40,6 @@ public interface FactoryDcl extends HomeExport
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
@@ -70,10 +62,6 @@ public interface FactoryDcl extends HomeExport
   /**
    * Returns the value of the '<em><b>Params</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Params</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Params</em>' containment reference.
    * @see #setParams(ParameterDecls)
@@ -96,10 +84,6 @@ public interface FactoryDcl extends HomeExport
   /**
    * Returns the value of the '<em><b>Raises</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Raises</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Raises</em>' containment reference.
    * @see #setRaises(ExceptionList)

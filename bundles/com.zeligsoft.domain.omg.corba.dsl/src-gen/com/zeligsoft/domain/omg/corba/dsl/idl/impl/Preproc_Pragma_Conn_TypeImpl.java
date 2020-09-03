@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.Preproc_Pragma_Conn_TypeImpl#getValuePort <em>Value Port</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.Preproc_Pragma_Conn_TypeImpl#getValueConnType <em>Value Conn Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -220,7 +220,7 @@ public class Preproc_Pragma_Conn_TypeImpl extends Preproc_PragmaImpl implements 
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (valuePort: ");
     result.append(valuePort);
     result.append(", valueConnType: ");

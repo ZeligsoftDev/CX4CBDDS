@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EModelElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.XOrExpr#getLhs <em>Lhs</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.XOrExpr#getOp <em>Op</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.XOrExpr#getRhs <em>Rhs</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getXOrExpr()
  * @model
@@ -28,10 +28,6 @@ public interface XOrExpr extends EModelElement
   /**
    * Returns the value of the '<em><b>Lhs</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Lhs</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Lhs</em>' containment reference.
    * @see #setLhs(AndExpr)
@@ -54,10 +50,6 @@ public interface XOrExpr extends EModelElement
   /**
    * Returns the value of the '<em><b>Op</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Op</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Op</em>' attribute.
    * @see #setOp(String)
@@ -80,10 +72,6 @@ public interface XOrExpr extends EModelElement
   /**
    * Returns the value of the '<em><b>Rhs</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Rhs</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Rhs</em>' containment reference.
    * @see #setRhs(XOrExpr)

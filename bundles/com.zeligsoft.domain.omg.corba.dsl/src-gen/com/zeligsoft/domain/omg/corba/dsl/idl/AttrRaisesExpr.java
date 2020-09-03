@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.EModelElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.AttrRaisesExpr#getExceptions <em>Exceptions</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getAttrRaisesExpr()
  * @model
@@ -26,10 +26,6 @@ public interface AttrRaisesExpr extends EModelElement
   /**
    * Returns the value of the '<em><b>Exceptions</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Exceptions</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Exceptions</em>' containment reference.
    * @see #setExceptions(ExceptionList)

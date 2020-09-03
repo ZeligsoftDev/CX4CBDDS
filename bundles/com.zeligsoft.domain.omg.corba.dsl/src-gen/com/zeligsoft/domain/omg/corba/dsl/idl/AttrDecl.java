@@ -11,12 +11,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.AttrDecl#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.AttrDecl#getType <em>Type</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.AttrDecl#getNames <em>Names</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getAttrDecl()
  * @model
@@ -28,10 +28,6 @@ public interface AttrDecl extends Export, ComponentExport, PortExport, Connector
    * Returns the value of the '<em><b>Comments</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Comments</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Comments</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getAttrDecl_Comments()
@@ -43,10 +39,6 @@ public interface AttrDecl extends Export, ComponentExport, PortExport, Connector
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
    * @see #setType(ParamTypeSpec)
@@ -70,10 +62,6 @@ public interface AttrDecl extends Export, ComponentExport, PortExport, Connector
    * Returns the value of the '<em><b>Names</b></em>' attribute list.
    * The list contents are of type {@link java.lang.String}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Names</em>' attribute list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Names</em>' attribute list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getAttrDecl_Names()
