@@ -64,7 +64,9 @@ public class CORBAMigrationUtil {
 			}
 		}
 		for (Parameter next : elementsToMigrate) {
-			ZDLUtil.addZDLConcept(next, CORBADomainNames.CORBAPARAMETER);
+			if (!ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBAPARAMETER)) {
+				ZDLUtil.addZDLConcept(next, CORBADomainNames.CORBAPARAMETER);
+			}
 		}
 
 		return elementsToMigrate.size();
