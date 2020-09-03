@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EModelElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Interface_header#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Interface_header#isIsLocal <em>Is Local</em>}</li>
@@ -20,7 +21,6 @@ import org.eclipse.emf.ecore.EModelElement;
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Interface_header#getSpecializes <em>Specializes</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Interface_header#getComments <em>Comments</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getInterface_header()
  * @model
@@ -32,10 +32,6 @@ public interface Interface_header extends EModelElement
   /**
    * Returns the value of the '<em><b>Is Abstract</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Is Abstract</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Abstract</em>' attribute.
    * @see #setIsAbstract(boolean)
@@ -58,10 +54,6 @@ public interface Interface_header extends EModelElement
   /**
    * Returns the value of the '<em><b>Is Local</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Is Local</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Local</em>' attribute.
    * @see #setIsLocal(boolean)
@@ -84,10 +76,6 @@ public interface Interface_header extends EModelElement
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
@@ -111,10 +99,6 @@ public interface Interface_header extends EModelElement
    * Returns the value of the '<em><b>Specializes</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.ScopedName}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Specializes</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Specializes</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getInterface_header_Specializes()
@@ -127,10 +111,6 @@ public interface Interface_header extends EModelElement
    * Returns the value of the '<em><b>Comments</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Comments</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Comments</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getInterface_header_Comments()

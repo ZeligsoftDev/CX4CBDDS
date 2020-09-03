@@ -10,11 +10,11 @@ package com.zeligsoft.domain.omg.corba.dsl.idl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.AttrSpec#getGetRaises <em>Get Raises</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.AttrSpec#getSetRaises <em>Set Raises</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getAttrSpec()
  * @model
@@ -25,10 +25,6 @@ public interface AttrSpec extends AttrDecl
   /**
    * Returns the value of the '<em><b>Get Raises</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Get Raises</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Get Raises</em>' containment reference.
    * @see #setGetRaises(AttrRaisesExpr)
@@ -51,10 +47,6 @@ public interface AttrSpec extends AttrDecl
   /**
    * Returns the value of the '<em><b>Set Raises</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Set Raises</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Set Raises</em>' containment reference.
    * @see #setSetRaises(AttrRaisesExpr)

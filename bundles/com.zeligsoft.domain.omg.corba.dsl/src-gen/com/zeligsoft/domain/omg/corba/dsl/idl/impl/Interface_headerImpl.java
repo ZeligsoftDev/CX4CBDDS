@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.Interface_headerImpl#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.Interface_headerImpl#isIsLocal <em>Is Local</em>}</li>
@@ -36,7 +37,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.Interface_headerImpl#getSpecializes <em>Specializes</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.Interface_headerImpl#getComments <em>Comments</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -377,7 +377,7 @@ public class Interface_headerImpl extends EModelElementImpl implements Interface
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (isAbstract: ");
     result.append(isAbstract);
     result.append(", isLocal: ");

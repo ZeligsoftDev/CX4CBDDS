@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EModelElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.CaseLabel#isIsCase <em>Is Case</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.CaseLabel#getConstExp <em>Const Exp</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.CaseLabel#isIsDefault <em>Is Default</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getCaseLabel()
  * @model
@@ -28,10 +28,6 @@ public interface CaseLabel extends EModelElement
   /**
    * Returns the value of the '<em><b>Is Case</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Is Case</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Case</em>' attribute.
    * @see #setIsCase(boolean)
@@ -54,10 +50,6 @@ public interface CaseLabel extends EModelElement
   /**
    * Returns the value of the '<em><b>Const Exp</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Const Exp</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Const Exp</em>' containment reference.
    * @see #setConstExp(ConstExp)
@@ -80,10 +72,6 @@ public interface CaseLabel extends EModelElement
   /**
    * Returns the value of the '<em><b>Is Default</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Is Default</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Default</em>' attribute.
    * @see #setIsDefault(boolean)

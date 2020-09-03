@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.ComponentDeclImpl#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.ComponentDeclImpl#getName <em>Name</em>}</li>
@@ -36,7 +37,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.ComponentDeclImpl#getSupports <em>Supports</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.ComponentDeclImpl#getExport <em>Export</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -378,7 +378,7 @@ public class ComponentDeclImpl extends DefinitionImpl implements ComponentDecl
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
     result.append(')');

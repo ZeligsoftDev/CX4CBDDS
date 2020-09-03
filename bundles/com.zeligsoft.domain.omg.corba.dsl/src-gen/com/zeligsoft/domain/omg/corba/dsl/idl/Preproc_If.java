@@ -11,11 +11,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_If#isNegation <em>Negation</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_If#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getPreproc_If()
  * @model
@@ -26,10 +26,6 @@ public interface Preproc_If extends Preproc
   /**
    * Returns the value of the '<em><b>Negation</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Negation</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Negation</em>' attribute.
    * @see #setNegation(boolean)
@@ -53,10 +49,6 @@ public interface Preproc_If extends Preproc
    * Returns the value of the '<em><b>Value</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_If_Compare}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Value</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getPreproc_If_Value()

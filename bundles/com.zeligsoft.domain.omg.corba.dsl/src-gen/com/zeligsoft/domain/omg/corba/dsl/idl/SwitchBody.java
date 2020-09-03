@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EModelElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.SwitchBody#getCase <em>Case</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getSwitchBody()
  * @model
@@ -29,10 +29,6 @@ public interface SwitchBody extends EModelElement
    * Returns the value of the '<em><b>Case</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.Case}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Case</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Case</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getSwitchBody_Case()

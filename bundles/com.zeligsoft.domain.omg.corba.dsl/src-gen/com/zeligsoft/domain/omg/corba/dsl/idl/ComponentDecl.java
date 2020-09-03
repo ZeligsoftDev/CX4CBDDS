@@ -11,6 +11,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.ComponentDecl#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.ComponentDecl#getName <em>Name</em>}</li>
@@ -18,7 +19,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.ComponentDecl#getSupports <em>Supports</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.ComponentDecl#getExport <em>Export</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getComponentDecl()
  * @model
@@ -30,10 +30,6 @@ public interface ComponentDecl extends Definition, TemplateDefinition, FixedDefi
    * Returns the value of the '<em><b>Comments</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Comments</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Comments</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getComponentDecl_Comments()
@@ -45,10 +41,6 @@ public interface ComponentDecl extends Definition, TemplateDefinition, FixedDefi
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
@@ -71,10 +63,6 @@ public interface ComponentDecl extends Definition, TemplateDefinition, FixedDefi
   /**
    * Returns the value of the '<em><b>Base</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Base</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Base</em>' containment reference.
    * @see #setBase(ScopedName)
@@ -98,10 +86,6 @@ public interface ComponentDecl extends Definition, TemplateDefinition, FixedDefi
    * Returns the value of the '<em><b>Supports</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.ScopedName}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Supports</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Supports</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getComponentDecl_Supports()
@@ -114,10 +98,6 @@ public interface ComponentDecl extends Definition, TemplateDefinition, FixedDefi
    * Returns the value of the '<em><b>Export</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.ComponentExport}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Export</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Export</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getComponentDecl_Export()

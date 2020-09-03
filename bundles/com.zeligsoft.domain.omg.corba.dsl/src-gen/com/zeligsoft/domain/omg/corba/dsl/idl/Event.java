@@ -10,11 +10,11 @@ package com.zeligsoft.domain.omg.corba.dsl.idl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Event#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Event#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getEvent()
  * @model
@@ -25,10 +25,6 @@ public interface Event extends Definition, TemplateDefinition, FixedDefinition
   /**
    * Returns the value of the '<em><b>Is Abstract</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Is Abstract</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Is Abstract</em>' attribute.
    * @see #setIsAbstract(boolean)
@@ -51,10 +47,6 @@ public interface Event extends Definition, TemplateDefinition, FixedDefinition
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)

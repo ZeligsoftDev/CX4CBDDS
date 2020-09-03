@@ -13,8 +13,6 @@ import org.eclipse.emf.ecore.impl.EModelElementImpl;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Actual Parameter</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

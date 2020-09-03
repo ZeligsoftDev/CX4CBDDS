@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.HomeDeclImpl#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.HomeDeclImpl#getName <em>Name</em>}</li>
@@ -39,7 +40,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.HomeDeclImpl#getPrimary_key <em>Primary key</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.HomeDeclImpl#getExport <em>Export</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -521,7 +521,7 @@ public class HomeDeclImpl extends DefinitionImpl implements HomeDecl
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
     result.append(')');

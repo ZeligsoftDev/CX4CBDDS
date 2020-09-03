@@ -4,14 +4,13 @@
  */
 package com.zeligsoft.domain.omg.corba.dsl.ui;
 
-import org.eclipse.xtext.ui.DefaultUiModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
  * Manual modifications go to {com.zeligsoft.domain.omg.corba.dsl.ui.IDLUiModule}
  */
 @SuppressWarnings("all")
-public abstract class AbstractIDLUiModule extends DefaultUiModule {
+public abstract class AbstractIDLUiModule extends org.eclipse.xtext.ui.DefaultUiModule {
 	
 	public AbstractIDLUiModule(AbstractUIPlugin plugin) {
 		super(plugin);

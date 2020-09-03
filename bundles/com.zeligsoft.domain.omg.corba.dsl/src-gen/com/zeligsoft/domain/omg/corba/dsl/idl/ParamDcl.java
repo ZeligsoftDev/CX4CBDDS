@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EModelElement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.ParamDcl#getDirection <em>Direction</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.ParamDcl#getType <em>Type</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.ParamDcl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getParamDcl()
  * @model
@@ -29,10 +29,6 @@ public interface ParamDcl extends EModelElement
    * Returns the value of the '<em><b>Direction</b></em>' attribute.
    * The literals are from the enumeration {@link com.zeligsoft.domain.omg.corba.dsl.idl.ParamDirection}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Direction</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Direction</em>' attribute.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.ParamDirection
@@ -57,10 +53,6 @@ public interface ParamDcl extends EModelElement
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
    * @see #setType(ParamTypeSpec)
@@ -83,10 +75,6 @@ public interface ParamDcl extends EModelElement
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)

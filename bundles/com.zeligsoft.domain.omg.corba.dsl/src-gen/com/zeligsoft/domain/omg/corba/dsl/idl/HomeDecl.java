@@ -11,6 +11,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.HomeDecl#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.HomeDecl#getName <em>Name</em>}</li>
@@ -20,7 +21,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.HomeDecl#getPrimary_key <em>Primary key</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.HomeDecl#getExport <em>Export</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getHomeDecl()
  * @model
@@ -32,10 +32,6 @@ public interface HomeDecl extends Definition, TemplateDefinition, FixedDefinitio
    * Returns the value of the '<em><b>Comments</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.IDLComment}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Comments</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Comments</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getHomeDecl_Comments()
@@ -47,10 +43,6 @@ public interface HomeDecl extends Definition, TemplateDefinition, FixedDefinitio
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
@@ -73,10 +65,6 @@ public interface HomeDecl extends Definition, TemplateDefinition, FixedDefinitio
   /**
    * Returns the value of the '<em><b>Base</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Base</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Base</em>' containment reference.
    * @see #setBase(ScopedName)
@@ -100,10 +88,6 @@ public interface HomeDecl extends Definition, TemplateDefinition, FixedDefinitio
    * Returns the value of the '<em><b>Supports</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.ScopedName}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Supports</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Supports</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getHomeDecl_Supports()
@@ -115,10 +99,6 @@ public interface HomeDecl extends Definition, TemplateDefinition, FixedDefinitio
   /**
    * Returns the value of the '<em><b>Manages</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Manages</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Manages</em>' containment reference.
    * @see #setManages(ScopedName)
@@ -141,10 +121,6 @@ public interface HomeDecl extends Definition, TemplateDefinition, FixedDefinitio
   /**
    * Returns the value of the '<em><b>Primary key</b></em>' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Primary key</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Primary key</em>' containment reference.
    * @see #setPrimary_key(PrimaryKeySpec)
@@ -168,10 +144,6 @@ public interface HomeDecl extends Definition, TemplateDefinition, FixedDefinitio
    * Returns the value of the '<em><b>Export</b></em>' containment reference list.
    * The list contents are of type {@link com.zeligsoft.domain.omg.corba.dsl.idl.HomeExport}.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Export</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Export</em>' containment reference list.
    * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getHomeDecl_Export()

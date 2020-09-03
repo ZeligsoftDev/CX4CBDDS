@@ -10,11 +10,11 @@ package com.zeligsoft.domain.omg.corba.dsl.idl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Conn_Type#getValuePort <em>Value Port</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Conn_Type#getValueConnType <em>Value Conn Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getPreproc_Pragma_Conn_Type()
  * @model
@@ -25,10 +25,6 @@ public interface Preproc_Pragma_Conn_Type extends Preproc_Pragma
   /**
    * Returns the value of the '<em><b>Value Port</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Value Port</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value Port</em>' attribute.
    * @see #setValuePort(String)
@@ -51,10 +47,6 @@ public interface Preproc_Pragma_Conn_Type extends Preproc_Pragma
   /**
    * Returns the value of the '<em><b>Value Conn Type</b></em>' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Value Conn Type</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value Conn Type</em>' attribute.
    * @see #setValueConnType(String)

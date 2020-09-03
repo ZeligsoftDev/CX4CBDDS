@@ -194,7 +194,8 @@ protected class ThisRootNode extends RootToken {
 /************ begin Rule Specification ****************
  *
  * Specification:
- * 	{Specification} imports+=Import_decl* definitions+=Definition+;
+ * 	{Specification} imports+=Import_decl*
+ * 	definitions+=Definition+;
  *
  **/
 
@@ -2179,7 +2180,8 @@ protected class Preproc_If_Val_ValueAssignment extends AssignmentToken  {
 /************ begin Rule Preproc_Else ****************
  *
  * Preproc_Else:
- * 	{Preproc_Else} "#else";
+ * 	{Preproc_Else}
+ * 	"#else";
  *
  **/
 
@@ -2504,7 +2506,8 @@ protected class Preproc_Define_ExpAssignment_2 extends AssignmentToken  {
 /************ begin Rule Preproc_Endif ****************
  *
  * Preproc_Endif:
- * 	{Preproc_Endif} "#endif";
+ * 	{Preproc_Endif}
+ * 	"#endif";
  *
  **/
 
@@ -2592,9 +2595,17 @@ protected class Preproc_Endif_EndifKeyword_1 extends KeywordToken  {
 /************ begin Rule Preproc_Pragma ****************
  *
  * Preproc_Pragma:
- * 	Preproc_Pragma_Prefix | Preproc_Pragma_Conn_Type | Preproc_Pragma_Ciao_Lem | Preproc_Pragma_Ciao_Ami4ccm_Interface |
- * 	Preproc_Pragma_Ciao_Ami4ccm_Receptacle | Preproc_Pragma_Ciao_Ami4ccm_Idl | Preproc_Pragma_Ndds |
- * 	Preproc_Pragma_Component | Preproc_Pragma_Home | Preproc_Pragma_DDS4CCM_Impl | Preproc_Pragma_Misc;
+ * 	Preproc_Pragma_Prefix
+ * 	| Preproc_Pragma_Conn_Type
+ * 	| Preproc_Pragma_Ciao_Lem
+ * 	| Preproc_Pragma_Ciao_Ami4ccm_Interface
+ * 	| Preproc_Pragma_Ciao_Ami4ccm_Receptacle
+ * 	| Preproc_Pragma_Ciao_Ami4ccm_Idl
+ * 	| Preproc_Pragma_Ndds
+ * 	| Preproc_Pragma_Component
+ * 	| Preproc_Pragma_Home
+ * 	| Preproc_Pragma_DDS4CCM_Impl
+ * 	| Preproc_Pragma_Misc;
  *
  **/
 
@@ -4388,7 +4399,8 @@ protected class Preproc_Pragma_DDS4CCM_Impl_ValueAssignment_3 extends Assignment
 /************ begin Rule Preproc_Pragma_Misc ****************
  *
  * Preproc_Pragma_Misc:
- * 	{Preproc_Pragma_Misc} "#pragma" ("typesupport" | STRING | ID)*;
+ * 	{Preproc_Pragma_Misc}
+ * 	"#pragma" ("typesupport" | STRING | ID)*;
  *
  **/
 
@@ -4783,19 +4795,32 @@ protected class Import_decl_SemicolonKeyword_2 extends KeywordToken  {
 /************ begin Rule Definition ****************
  *
  * Definition:
- * 	Interface_or_Forward_Decl ";" // IDL3
+ * 	Interface_or_Forward_Decl ";"
+ * 	| ComponentForwardDecl ";"
+ * 	| ConstDecl ";"
+ * 	| Module ";"
+ * 	| ExceptDecl ";"
+ * 	| StructType ";"
+ * 	| TypeDecl ";"
+ * 	| NativeType ";"
+ * 	| Preproc
+ * 	// IDL3
+ * 	| Event ";"
+ * 	| ComponentDecl ";"
+ * 	| HomeDecl ";"
  * 	// DDS4CCM
- * 	| ComponentForwardDecl ";" | ConstDecl ";" | Module ";" | ExceptDecl ";" | StructType ";" | TypeDecl ";" | NativeType
- * 	";" | Preproc | Event ";" | ComponentDecl ";" | HomeDecl ";" | PortTypeDecl ";" | Connector ";" | TemplateModule ";" |
- * 	TemplateModuleInst ";" | IDLComment;
+ * 	| PortTypeDecl ";"
+ * 	| Connector ";"
+ * 	| TemplateModule ";"
+ * 	| TemplateModuleInst ";"
+ * 	| IDLComment;
  *
  **/
 
-// Interface_or_Forward_Decl ";" // IDL3
-// // DDS4CCM
-// | ComponentForwardDecl ";" | ConstDecl ";" | Module ";" | ExceptDecl ";" | StructType ";" | TypeDecl ";" | NativeType
-// ";" | Preproc | Event ";" | ComponentDecl ";" | HomeDecl ";" | PortTypeDecl ";" | Connector ";" | TemplateModule ";" |
-// TemplateModuleInst ";" | IDLComment
+// Interface_or_Forward_Decl ";" | ComponentForwardDecl ";" | ConstDecl ";" | Module ";" | ExceptDecl ";" | StructType ";"
+// | TypeDecl ";" | NativeType ";" | Preproc // IDL3
+// | Event ";" | ComponentDecl ";" | HomeDecl ";" // DDS4CCM
+// | PortTypeDecl ";" | Connector ";" | TemplateModule ";" | TemplateModuleInst ";" | IDLComment
 protected class Definition_Alternatives extends AlternativesToken {
 
 	public Definition_Alternatives(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6515,7 +6540,8 @@ protected class Module_RightCurlyBracketKeyword_5 extends KeywordToken  {
 /************ begin Rule Interface_or_Forward_Decl ****************
  *
  * Interface_or_Forward_Decl:
- * 	Interface_decl | Forward_decl;
+ * 	Interface_decl
+ * 	| Forward_decl;
  *
  **/
 
@@ -7483,7 +7509,13 @@ protected class InterfaceBody_ExportAssignment_1 extends AssignmentToken  {
 /************ begin Rule Export ****************
  *
  * Export:
- * 	AttrDecl ";" | OpDecl ";" | TypeDecl ";" | ConstDecl ";" | ExceptDecl ";" | Preproc | IDLComment;
+ * 	AttrDecl ";"
+ * 	| OpDecl ";"
+ * 	| TypeDecl ";"
+ * 	| ConstDecl ";"
+ * 	| ExceptDecl ";"
+ * 	| Preproc
+ * 	| IDLComment;
  *
  **/
 
@@ -8416,7 +8448,7 @@ protected class AttrSpec_Alternatives_4 extends AlternativesToken {
 
 }
 
-// "getraises" getRaises=AttrRaisesExpr | "setraises" setRaises=AttrRaisesExpr
+// ("getraises" getRaises=AttrRaisesExpr | "setraises" setRaises=AttrRaisesExpr)
 protected class AttrSpec_Alternatives_4_0 extends AlternativesToken {
 
 	public AttrSpec_Alternatives_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8726,7 +8758,7 @@ protected class AttrSpec_Alternatives_5 extends AlternativesToken {
 
 }
 
-// "getraises" getRaises=AttrRaisesExpr | "setraises" setRaises=AttrRaisesExpr
+// ("getraises" getRaises=AttrRaisesExpr | "setraises" setRaises=AttrRaisesExpr)
 protected class AttrSpec_Alternatives_5_0 extends AlternativesToken {
 
 	public AttrSpec_Alternatives_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -10007,8 +10039,12 @@ protected class ExceptionList_RightParenthesisKeyword_3 extends KeywordToken  {
 /************ begin Rule OpDecl ****************
  *
  * OpDecl:
- * 	comments+=IDLComment* isOneway?="oneway"? type=OpTypeDecl name=ID params=ParameterDecls ("raises"
- * 	raises=ExceptionList)? context=ContextExpr?;
+ * 	comments+=IDLComment*
+ * 	isOneway?="oneway"?
+ * 	type=OpTypeDecl
+ * 	name=ID
+ * 	params=ParameterDecls ("raises" raises=ExceptionList)?
+ * 	context=ContextExpr?;
  *
  **/
 
@@ -10510,7 +10546,8 @@ protected class OpTypeDecl_VoidKeyword_1 extends KeywordToken  {
 /************ begin Rule ParameterDecls ****************
  *
  * ParameterDecls:
- * 	{ParameterDecls} "(" comments+=IDLComment* (decls+=ParamDcl ("," comments+=IDLComment* decls+=ParamDcl)*)? ")";
+ * 	{ParameterDecls}
+ * 	"(" comments+=IDLComment* (decls+=ParamDcl ("," comments+=IDLComment* decls+=ParamDcl)*)? ")";
  *
  **/
 
@@ -11253,7 +11290,10 @@ protected class ContextExpr_RightParenthesisKeyword_4 extends KeywordToken  {
 /************ begin Rule ParamTypeSpec ****************
  *
  * ParamTypeSpec:
- * 	BaseTypeSpec | StringType | WideStringType | ScopedName;
+ * 	BaseTypeSpec
+ * 	| StringType
+ * 	| WideStringType
+ * 	| ScopedName;
  *
  **/
 
@@ -11627,8 +11667,15 @@ protected class ScopedName_NameAssignment_2_1 extends AssignmentToken  {
 /************ begin Rule BaseTypeSpec ****************
  *
  * BaseTypeSpec:
- * 	FloatingPtType | IntegerType | CharType | WideCharType | BooleanType | OctetType | AnyType | ObjectType |
- * 	ValueBaseType;
+ * 	FloatingPtType
+ * 	| IntegerType
+ * 	| CharType
+ * 	| WideCharType
+ * 	| BooleanType
+ * 	| OctetType
+ * 	| AnyType
+ * 	| ObjectType
+ * 	| ValueBaseType;
  *
  **/
 
@@ -12022,7 +12069,9 @@ protected class BaseTypeSpec_ValueBaseTypeParserRuleCall_8 extends RuleCallToken
 /************ begin Rule FloatingPtType ****************
  *
  * FloatingPtType:
- * 	FloatType | DoubleType | LongDoubleType;
+ * 	FloatType
+ * 	| DoubleType
+ * 	| LongDoubleType;
  *
  **/
 
@@ -12174,7 +12223,8 @@ protected class FloatingPtType_LongDoubleTypeParserRuleCall_2 extends RuleCallTo
 /************ begin Rule FloatType ****************
  *
  * FloatType:
- * 	{FloatType} "float";
+ * 	{FloatType}
+ * 	"float";
  *
  **/
 
@@ -12262,7 +12312,8 @@ protected class FloatType_FloatKeyword_1 extends KeywordToken  {
 /************ begin Rule DoubleType ****************
  *
  * DoubleType:
- * 	{DoubleType} "double";
+ * 	{DoubleType}
+ * 	"double";
  *
  **/
 
@@ -12350,7 +12401,8 @@ protected class DoubleType_DoubleKeyword_1 extends KeywordToken  {
 /************ begin Rule LongDoubleType ****************
  *
  * LongDoubleType:
- * 	{LongDoubleType} "long" "double";
+ * 	{LongDoubleType}
+ * 	"long" "double";
  *
  **/
 
@@ -12460,7 +12512,8 @@ protected class LongDoubleType_DoubleKeyword_2 extends KeywordToken  {
 /************ begin Rule IntegerType ****************
  *
  * IntegerType:
- * 	UnsignedInt | SignedInt;
+ * 	UnsignedInt
+ * 	| SignedInt;
  *
  **/
 
@@ -12582,7 +12635,9 @@ protected class IntegerType_SignedIntParserRuleCall_1 extends RuleCallToken {
 /************ begin Rule SignedInt ****************
  *
  * SignedInt:
- * 	SignedShortInt | SignedLongLongInt | SignedLongInt;
+ * 	SignedShortInt
+ * 	| SignedLongLongInt
+ * 	| SignedLongInt;
  *
  **/
 
@@ -12734,7 +12789,8 @@ protected class SignedInt_SignedLongIntParserRuleCall_2 extends RuleCallToken {
 /************ begin Rule SignedShortInt ****************
  *
  * SignedShortInt:
- * 	{SignedShortInt} "short";
+ * 	{SignedShortInt}
+ * 	"short";
  *
  **/
 
@@ -12822,7 +12878,8 @@ protected class SignedShortInt_ShortKeyword_1 extends KeywordToken  {
 /************ begin Rule SignedLongInt ****************
  *
  * SignedLongInt:
- * 	{SignedLongInt} "long";
+ * 	{SignedLongInt}
+ * 	"long";
  *
  **/
 
@@ -12910,7 +12967,8 @@ protected class SignedLongInt_LongKeyword_1 extends KeywordToken  {
 /************ begin Rule SignedLongLongInt ****************
  *
  * SignedLongLongInt:
- * 	{SignedLongLongInt} "long" "long";
+ * 	{SignedLongLongInt}
+ * 	"long" "long";
  *
  **/
 
@@ -13020,7 +13078,9 @@ protected class SignedLongLongInt_LongKeyword_2 extends KeywordToken  {
 /************ begin Rule UnsignedInt ****************
  *
  * UnsignedInt:
- * 	UnsignedShortInt | UnsignedLongInt | UnsignedLongLongInt;
+ * 	UnsignedShortInt
+ * 	| UnsignedLongInt
+ * 	| UnsignedLongLongInt;
  *
  **/
 
@@ -13172,7 +13232,8 @@ protected class UnsignedInt_UnsignedLongLongIntParserRuleCall_2 extends RuleCall
 /************ begin Rule UnsignedShortInt ****************
  *
  * UnsignedShortInt:
- * 	{UnsignedShortInt} "unsigned" "short";
+ * 	{UnsignedShortInt}
+ * 	"unsigned" "short";
  *
  **/
 
@@ -13282,7 +13343,8 @@ protected class UnsignedShortInt_ShortKeyword_2 extends KeywordToken  {
 /************ begin Rule UnsignedLongInt ****************
  *
  * UnsignedLongInt:
- * 	{UnsignedLongInt} "unsigned" "long";
+ * 	{UnsignedLongInt}
+ * 	"unsigned" "long";
  *
  **/
 
@@ -13392,7 +13454,8 @@ protected class UnsignedLongInt_LongKeyword_2 extends KeywordToken  {
 /************ begin Rule UnsignedLongLongInt ****************
  *
  * UnsignedLongLongInt:
- * 	{UnsignedLongLongInt} "unsigned" "long" "long";
+ * 	{UnsignedLongLongInt}
+ * 	"unsigned" "long" "long";
  *
  **/
 
@@ -13524,7 +13587,8 @@ protected class UnsignedLongLongInt_LongKeyword_3 extends KeywordToken  {
 /************ begin Rule CharType ****************
  *
  * CharType:
- * 	{CharType} "char";
+ * 	{CharType}
+ * 	"char";
  *
  **/
 
@@ -13612,7 +13676,8 @@ protected class CharType_CharKeyword_1 extends KeywordToken  {
 /************ begin Rule WideCharType ****************
  *
  * WideCharType:
- * 	{WideCharType} "wchar";
+ * 	{WideCharType}
+ * 	"wchar";
  *
  **/
 
@@ -13700,7 +13765,8 @@ protected class WideCharType_WcharKeyword_1 extends KeywordToken  {
 /************ begin Rule BooleanType ****************
  *
  * BooleanType:
- * 	{BooleanType} "boolean";
+ * 	{BooleanType}
+ * 	"boolean";
  *
  **/
 
@@ -13788,7 +13854,8 @@ protected class BooleanType_BooleanKeyword_1 extends KeywordToken  {
 /************ begin Rule OctetType ****************
  *
  * OctetType:
- * 	{OctetType} "octet";
+ * 	{OctetType}
+ * 	"octet";
  *
  **/
 
@@ -13876,7 +13943,8 @@ protected class OctetType_OctetKeyword_1 extends KeywordToken  {
 /************ begin Rule AnyType ****************
  *
  * AnyType:
- * 	{AnyType} "any";
+ * 	{AnyType}
+ * 	"any";
  *
  **/
 
@@ -13964,7 +14032,8 @@ protected class AnyType_AnyKeyword_1 extends KeywordToken  {
 /************ begin Rule ObjectType ****************
  *
  * ObjectType:
- * 	{ObjectType} "Object";
+ * 	{ObjectType}
+ * 	"Object";
  *
  **/
 
@@ -14052,7 +14121,8 @@ protected class ObjectType_ObjectKeyword_1 extends KeywordToken  {
 /************ begin Rule ValueBaseType ****************
  *
  * ValueBaseType:
- * 	{ValueBaseType} "ValueBase";
+ * 	{ValueBaseType}
+ * 	"ValueBase";
  *
  **/
 
@@ -14140,7 +14210,8 @@ protected class ValueBaseType_ValueBaseKeyword_1 extends KeywordToken  {
 /************ begin Rule StringType ****************
  *
  * StringType:
- * 	{StringType} "string" ("<" size=PositiveIntConst ">")?;
+ * 	{StringType}
+ * 	"string" ("<" size=PositiveIntConst ">")?;
  *
  **/
 
@@ -14342,7 +14413,8 @@ protected class StringType_GreaterThanSignKeyword_2_2 extends KeywordToken  {
 /************ begin Rule WideStringType ****************
  *
  * WideStringType:
- * 	{WideStringType} "wstring" ("<" size=PositiveIntConst ">")?;
+ * 	{WideStringType}
+ * 	"wstring" ("<" size=PositiveIntConst ">")?;
  *
  **/
 
@@ -15705,7 +15777,11 @@ protected class StructType_RightCurlyBracketKeyword_6 extends KeywordToken  {
 /************ begin Rule TypeDecl ****************
  *
  * TypeDecl:
- * 	"typedef" TypeDeclarator | StructType | UnionType | EnumType | ConstrForwardDecl;
+ * 	"typedef" TypeDeclarator
+ * 	| StructType
+ * 	| UnionType
+ * 	| EnumType
+ * 	| ConstrForwardDecl;
  *
  **/
 
@@ -20293,7 +20369,8 @@ protected class ConstType_OctetTypeParserRuleCall_9 extends RuleCallToken {
 /************ begin Rule FixedPtConstType ****************
  *
  * FixedPtConstType:
- * 	{FixedPtConstType} "fixed";
+ * 	{FixedPtConstType}
+ * 	"fixed";
  *
  **/
 
@@ -21990,7 +22067,9 @@ protected class UnaryExpr_ExprAssignment_1 extends AssignmentToken  {
 /************ begin Rule PrimaryExpr ****************
  *
  * PrimaryExpr:
- * 	ScopedName | Literal | "(" ConstExp ")";
+ * 	ScopedName
+ * 	| Literal
+ * 	| "(" ConstExp ")";
  *
  **/
 
@@ -22214,8 +22293,12 @@ protected class PrimaryExpr_RightParenthesisKeyword_2_2 extends KeywordToken  {
 /************ begin Rule Literal ****************
  *
  * Literal:
- * 	value=HEX_LITERAL | value=STRING | value=CHARACTER_LITERAL | value=FLOATING_PT_LITERAL | value=INTEGER_LITERAL |
- * 	value=BOOLEAN_LITERAL;
+ * 	value=HEX_LITERAL
+ * 	| value=STRING
+ * 	| value=CHARACTER_LITERAL
+ * 	| value=FLOATING_PT_LITERAL
+ * 	| value=INTEGER_LITERAL
+ * 	| value=BOOLEAN_LITERAL;
  *
  **/
 
@@ -22458,11 +22541,12 @@ protected class Literal_ValueAssignment_5 extends AssignmentToken  {
 
 /************ begin Rule ComponentDecl ****************
  *
- * / *
+ * /*
  *  * IDL3 Definitions
  *  * / ComponentDecl:
  * 	comments+=IDLComment* "component" name=ID (":" base=ScopedName)? ("supports" supports+=ScopedName (","
- * 	supports+=ScopedName)*)? "{" export+=ComponentExport* "}";
+ * 	supports+=ScopedName)*)?
+ * 	"{" export+=ComponentExport* "}";
  *
  **/
 
@@ -26441,7 +26525,8 @@ protected class FinderDcl_RaisesAssignment_4_1 extends AssignmentToken  {
 /************ begin Rule Event ****************
  *
  * Event:
- * 	EventDcl | EventForwardDcl;
+ * 	EventDcl
+ * 	| EventForwardDcl;
  *
  **/
 
@@ -26555,9 +26640,9 @@ protected class Event_EventForwardDclParserRuleCall_1 extends RuleCallToken {
 /************ begin Rule EventDcl ****************
  *
  * EventDcl:
- * 	(isCustom?="custom" | isAbstract?="abstract")? "eventtype" name=ID (":" isTruncatable?="truncatable"? base+=ScopedName
- * 	("," base+=ScopedName)*)? ("supports" supports+=ScopedName ("," supports+=ScopedName)*)? "{" (export+=Export |
- * 	member+=StateMember)* "}";
+ * 	(isCustom?="custom" | isAbstract?="abstract")? "eventtype" name=ID (":" isTruncatable?="truncatable"?
+ * 	base+=ScopedName ("," base+=ScopedName)*)? ("supports" supports+=ScopedName ("," supports+=ScopedName)*)? "{"
+ * 	(export+=Export | member+=StateMember)* "}";
  *
  **/
 
@@ -27665,7 +27750,7 @@ protected class EventForwardDcl_NameAssignment_2 extends AssignmentToken  {
 
 /************ begin Rule PortTypeDecl ****************
  *
- * / *
+ * /*
  *  * DDS4CCM Definitions
  *  * / PortTypeDecl:
  * 	"porttype" comments+=IDLComment* name=ID "{" exports+=PortExport+ "}";
@@ -29775,8 +29860,17 @@ protected class FormalParameter_NameAssignment_1 extends AssignmentToken  {
 /************ begin Rule FormalParameterType ****************
  *
  * FormalParameterType:
- * 	TypenameParamType | InterfaceParamType | ValuetypeParamType | EventParamType | StructParamType | UnionParamType |
- * 	ExceptionParamType | EnumParamType | SequenceParamType | ConstParamType | SequenceType;
+ * 	TypenameParamType
+ * 	| InterfaceParamType
+ * 	| ValuetypeParamType
+ * 	| EventParamType
+ * 	| StructParamType
+ * 	| UnionParamType
+ * 	| ExceptionParamType
+ * 	| EnumParamType
+ * 	| SequenceParamType
+ * 	| ConstParamType
+ * 	| SequenceType;
  *
  **/
 
@@ -30265,7 +30359,8 @@ protected class FormalParameterType_SequenceTypeParserRuleCall_10 extends RuleCa
 /************ begin Rule TypenameParamType ****************
  *
  * TypenameParamType:
- * 	{TypenameParamType} "typename";
+ * 	{TypenameParamType}
+ * 	"typename";
  *
  **/
 
@@ -30353,7 +30448,8 @@ protected class TypenameParamType_TypenameKeyword_1 extends KeywordToken  {
 /************ begin Rule InterfaceParamType ****************
  *
  * InterfaceParamType:
- * 	{InterfaceParamType} "interface";
+ * 	{InterfaceParamType}
+ * 	"interface";
  *
  **/
 
@@ -30441,7 +30537,8 @@ protected class InterfaceParamType_InterfaceKeyword_1 extends KeywordToken  {
 /************ begin Rule ValuetypeParamType ****************
  *
  * ValuetypeParamType:
- * 	{ValuetypeParamType} "valuetype";
+ * 	{ValuetypeParamType}
+ * 	"valuetype";
  *
  **/
 
@@ -30529,7 +30626,8 @@ protected class ValuetypeParamType_ValuetypeKeyword_1 extends KeywordToken  {
 /************ begin Rule EventParamType ****************
  *
  * EventParamType:
- * 	{EventParamType} "eventtype";
+ * 	{EventParamType}
+ * 	"eventtype";
  *
  **/
 
@@ -30617,7 +30715,8 @@ protected class EventParamType_EventtypeKeyword_1 extends KeywordToken  {
 /************ begin Rule StructParamType ****************
  *
  * StructParamType:
- * 	{StructParamType} "struct";
+ * 	{StructParamType}
+ * 	"struct";
  *
  **/
 
@@ -30705,7 +30804,8 @@ protected class StructParamType_StructKeyword_1 extends KeywordToken  {
 /************ begin Rule UnionParamType ****************
  *
  * UnionParamType:
- * 	{UnionParamType} "union";
+ * 	{UnionParamType}
+ * 	"union";
  *
  **/
 
@@ -30793,7 +30893,8 @@ protected class UnionParamType_UnionKeyword_1 extends KeywordToken  {
 /************ begin Rule ExceptionParamType ****************
  *
  * ExceptionParamType:
- * 	{ExceptionParamType} "exception";
+ * 	{ExceptionParamType}
+ * 	"exception";
  *
  **/
 
@@ -30881,7 +30982,8 @@ protected class ExceptionParamType_ExceptionKeyword_1 extends KeywordToken  {
 /************ begin Rule EnumParamType ****************
  *
  * EnumParamType:
- * 	{EnumParamType} "enum";
+ * 	{EnumParamType}
+ * 	"enum";
  *
  **/
 
@@ -30969,7 +31071,8 @@ protected class EnumParamType_EnumKeyword_1 extends KeywordToken  {
 /************ begin Rule SequenceParamType ****************
  *
  * SequenceParamType:
- * 	{SequenceParamType} "sequence";
+ * 	{SequenceParamType}
+ * 	"sequence";
  *
  **/
 
@@ -31169,9 +31272,20 @@ protected class ConstParamType_ConstTypeParserRuleCall_1 extends RuleCallToken {
 /************ begin Rule TemplateDefinition ****************
  *
  * TemplateDefinition:
- * 	TypeDecl ";" | ConstDecl ";" | ExceptDecl ";" | Interface_decl ";" | FixedModule ";" | StructType ";" | NativeType ";"
- * 	| Event ";" | ComponentDecl ";" | HomeDecl ";" | PortTypeDecl ";" | Connector ";" | TemplateModuleRef ";" |
- * 	IDLComment;
+ * 	TypeDecl ";"
+ * 	| ConstDecl ";"
+ * 	| ExceptDecl ";"
+ * 	| Interface_decl ";"
+ * 	| FixedModule ";"
+ * 	| StructType ";"
+ * 	| NativeType ";"
+ * 	| Event ";"
+ * 	| ComponentDecl ";"
+ * 	| HomeDecl ";"
+ * 	| PortTypeDecl ";"
+ * 	| Connector ";"
+ * 	| TemplateModuleRef ";"
+ * 	| IDLComment;
  *
  **/
 
@@ -32590,8 +32704,19 @@ protected class FixedModule_RightCurlyBracketKeyword_4 extends KeywordToken  {
 /************ begin Rule FixedDefinition ****************
  *
  * FixedDefinition:
- * 	TypeDecl ";" | ConstDecl ";" | ExceptDecl ";" | Interface_decl ";" | FixedModule ";" | StructType ";" | NativeType ";"
- * 	| Event ";" | ComponentDecl ";" | HomeDecl ";" | PortTypeDecl ";" | Connector ";" | IDLComment;
+ * 	TypeDecl ";"
+ * 	| ConstDecl ";"
+ * 	| ExceptDecl ";"
+ * 	| Interface_decl ";"
+ * 	| FixedModule ";"
+ * 	| StructType ";"
+ * 	| NativeType ";"
+ * 	| Event ";"
+ * 	| ComponentDecl ";"
+ * 	| HomeDecl ";"
+ * 	| PortTypeDecl ";"
+ * 	| Connector ";"
+ * 	| IDLComment;
  *
  **/
 
