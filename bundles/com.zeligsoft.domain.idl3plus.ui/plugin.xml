@@ -25,7 +25,7 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="true"
-            locationURI="popup:com.zeligsoft.cx.ui.refactormenu">
+            locationURI="popup:org.eclipse.papyrus.uml.modelrepair.refactor">
         <command
               commandId="com.zeligsoft.domain.idl3plus.ui.repairallmoduleinstantiations"
               style="push"
@@ -56,6 +56,10 @@
                </with>
             </visibleWhen>
         </command>
+        <separator
+              name="com.zeligsoft.domain.idl3plus.ui.separator"
+              visible="true">
+        </separator>
       </menuContribution>
    </extension>
   

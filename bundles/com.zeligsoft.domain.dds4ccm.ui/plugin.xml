@@ -215,7 +215,7 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="true"
-            locationURI="popup:com.zeligsoft.cx.ui.refactormenu">
+            locationURI="popup:org.eclipse.papyrus.uml.modelrepair.refactor">
             
         <command
               commandId="com.zeligsoft.domain.dds4ccm.ui.migrateModel"
@@ -406,7 +406,7 @@
       </menuContribution>
       <menuContribution
             allPopups="false"
-            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=tools">
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup">
         <command
               commandId="com.zeligsoft.domain.dds4ccm.ui.setporttype"
               label="%action.setPortType.label"
@@ -444,6 +444,7 @@
             locationURI="popup:org.eclipse.papyrus.uml.import.menu">
          <command
                commandId="com.zeligsoft.domain.dds4ccm.ui.idlimport"
+               icon="icons/view16/cx-perspective.gif"
                style="push">
             <visibleWhen
                   checkEnabled="false">
@@ -540,19 +541,18 @@
       <command
             defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.IDLImportActionHandler"
             id="com.zeligsoft.domain.dds4ccm.ui.idlimport"
-            name="IDL Import">
+            name="Import IDL">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="true"
-            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=tools">
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup">
          <command
                commandId="com.zeligsoft.domain.dds4ccm.ui.validateCommand"
-               icon="icons/view16/cx-perspective.gif"
                id="com.zeligsoft.domain.dds4ccm.ui.validate"
-               label="CX Validation">
+               label="Validate">
          </command>
       </menuContribution>
    </extension>
@@ -563,7 +563,7 @@
             defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.CXValidationHandler"
             description="Validate CX Model"
             id="com.zeligsoft.domain.dds4ccm.ui.validateCommand"
-            name="CX Validation">
+            name="Validate">
       </command>
    </extension>
    <extension
@@ -618,6 +618,29 @@
 	      </enablement>
 	   </semanticChildrenStrategy>
 	</extension>
+   <extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.zeligsoft.domain.dds4ccm.ui.activity"
+            name="Papyrus Capabilities">
+      </activity>
+      <activityPatternBinding
+            activityId="com.zeligsoft.domain.dds4ccm.ui.activity"
+            pattern="org\.eclipse\.papyrus\.infra\.services\.validation.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.zeligsoft.domain.dds4ccm.ui.activity"
+            pattern="org\.eclipse\.papyrus\.uml\.oclconstraintevaluation.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.zeligsoft.domain.dds4ccm.ui.activity"
+            pattern="org\.eclipse\.papyrus\.uml\.modelrepair.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.zeligsoft.domain.dds4ccm.ui.activity"
+            pattern="org\.eclipse\.papyrus\.uml\.import.*">
+      </activityPatternBinding>
+   </extension>
    
     <!--
    <extension

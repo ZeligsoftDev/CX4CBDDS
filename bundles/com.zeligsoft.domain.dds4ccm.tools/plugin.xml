@@ -20,7 +20,13 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="true"
-            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=tools">
+            locationURI="popup:org.eclipse.papyrus.uml.import.menu">
+            <command
+                  commandId="org.eclipse.papyrus.import.registered.package"
+                  icon="platform:/plugin/org.eclipse.uml2.uml.edit/icons/full/obj16/Package.gif"
+                  label="Import Registered &amp;Package"
+                  style="push">
+            </command>
          <command
                commandId="com.zeligsoft.domain.dds4ccm.tools.packageimportcommand"
                icon="icons/view16/cx-perspective.gif"
