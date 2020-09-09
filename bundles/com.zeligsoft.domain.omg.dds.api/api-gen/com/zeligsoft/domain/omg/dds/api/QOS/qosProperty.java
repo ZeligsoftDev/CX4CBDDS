@@ -14,7 +14,6 @@ public interface qosProperty extends NamedElement {
 	 * A predicate which returns true if the Object is an
 	 * instance of qosProperty
 	 */
-	static final TypeSelectPredicate<qosProperty> type = new TypeSelectPredicate<qosProperty>(
-			"DDS::QOS::qosProperty", //$NON-NLS-1$
+	static final TypeSelectPredicate<qosProperty> type = new TypeSelectPredicate<qosProperty>("DDS::QOS::qosProperty", //$NON-NLS-1$
 			qosProperty.class);
 }

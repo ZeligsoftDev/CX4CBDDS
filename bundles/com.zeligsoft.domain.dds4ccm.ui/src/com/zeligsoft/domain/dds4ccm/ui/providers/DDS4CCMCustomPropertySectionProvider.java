@@ -76,8 +76,8 @@ import com.zeligsoft.domain.idl3plus.api.Generics.TemplateSignature;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Component.InterfacePort;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAInterface;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXInterface;
 import com.zeligsoft.domain.omg.corba.ui.providers.CORBACustomPropertySection;
 import com.zeligsoft.domain.zml.api.ZML_Component.PortTypeable;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
@@ -104,10 +104,10 @@ public class DDS4CCMCustomPropertySectionProvider implements
 			return CXPropertiesWidgetFactory.createSectionForStringType(parent,
 					descriptor, true);
 		} else if (property.getName()
-				.equals(CORBADomainNames.CORBAFIELD__BOUND)) {
+				.equals(CXDomainNames.CXFIELD__BOUND)) {
 			// add key property instead of bound
 			if (ZDLUtil.isZDLConcept(descriptor.getContext().eContainer(),
-					CORBADomainNames.CORBASTRUCT)
+					CXDomainNames.CXSTRUCT)
 					&& !ZDLUtil.isZDLConcept(descriptor.getContext(),
 							DDS4CCMNames.MESSAGE_FIELD)) {
 				return createStructFieldKeySection(parent, descriptor);
@@ -267,10 +267,10 @@ public class DDS4CCMCustomPropertySectionProvider implements
 		}
 		PortTypeable pt = ip.getPorttype();
 		
-		if(!(pt instanceof CORBAInterface)){
+		if(!(pt instanceof CXInterface)){
 			return false;
 		}	
-		CORBAInterface portType = (CORBAInterface) pt;
+		CXInterface portType = (CXInterface) pt;
 				
 		if(portType.getIsLocal()){
 			return false;

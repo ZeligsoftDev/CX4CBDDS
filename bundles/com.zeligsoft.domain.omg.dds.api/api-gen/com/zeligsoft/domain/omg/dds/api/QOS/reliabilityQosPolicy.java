@@ -11,8 +11,7 @@ public interface reliabilityQosPolicy extends qosPolicy {
 
 	void setMax_blocking_time(Duration val);
 
-	<T extends Duration> T createMax_blocking_time(Class<T> typeToCreate,
-			String concept);
+	<T extends Duration> T createMax_blocking_time(Class<T> typeToCreate, String concept);
 
 	Duration createMax_blocking_time();
 

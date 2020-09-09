@@ -23,7 +23,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * Verify that a oneway operation only void return param
@@ -47,22 +47,22 @@ public class OneWayOperationReturnParameterValidation extends AbstractModelConst
 	public IStatus validate(IValidationContext ctx) {
 		EObject objToVerify = ctx.getTarget();
 		
-		if(ZDLUtil.isZDLConcept(objToVerify, CORBADomainNames.CORBAOPERATION)) {
+		if(ZDLUtil.isZDLConcept(objToVerify, CXDomainNames.CXOPERATION)) {
 			Boolean isOneWay = 
-				(Boolean) ZDLUtil.getValue(objToVerify, CORBADomainNames.CORBAOPERATION, CORBADomainNames.CORBAOPERATION__IS_ONE_WAY);
+				(Boolean) ZDLUtil.getValue(objToVerify, CXDomainNames.CXOPERATION, CXDomainNames.CXOPERATION__IS_ONE_WAY);
 			
 			if(isOneWay != null && isOneWay.booleanValue()) {
 				
-				EObject returnType = (EObject) ZDLUtil.getValue(objToVerify, CORBADomainNames.CORBATYPED, CORBADomainNames.CORBATYPED__IDL_TYPE);
+				EObject returnType = (EObject) ZDLUtil.getValue(objToVerify, CXDomainNames.CXTYPED, CXDomainNames.CXTYPED__IDL_TYPE);
 				
 				if(returnType == null) {
 					return ctx.createSuccessStatus();
 				}
 					
 				boolean foundNonVoidReturnType = false;
-				if(ZDLUtil.isZDLConcept(returnType, CORBADomainNames.CORBAPRIMITIVE)) {
-					EnumerationLiteral primitiveType = (EnumerationLiteral) ZDLUtil.getValue(returnType, CORBADomainNames.CORBAPRIMITIVE, CORBADomainNames.CORBAPRIMITIVE__TYPE);
-					if ( !primitiveType.getName().equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAVOID)) {
+				if(ZDLUtil.isZDLConcept(returnType, CXDomainNames.CXPRIMITIVE)) {
+					EnumerationLiteral primitiveType = (EnumerationLiteral) ZDLUtil.getValue(returnType, CXDomainNames.CXPRIMITIVE, CXDomainNames.CXPRIMITIVE__TYPE);
+					if ( !primitiveType.getName().equals(CXDomainNames.CXPRIMITIVE_KIND___CXVOID)) {
 						foundNonVoidReturnType = true;
 					}
 				}

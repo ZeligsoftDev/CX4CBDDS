@@ -1,8 +1,8 @@
 package com.zeligsoft.domain.omg.ccm.api.CCM_Deployment;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.zml.api.ZML_Core.NamedElement;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Target.Property;
+import com.zeligsoft.domain.zml.api.ZML_Core.NamedElement;
 
 public interface ContainerProcess extends NamedElement {
 	java.util.List<Property> getProperty();

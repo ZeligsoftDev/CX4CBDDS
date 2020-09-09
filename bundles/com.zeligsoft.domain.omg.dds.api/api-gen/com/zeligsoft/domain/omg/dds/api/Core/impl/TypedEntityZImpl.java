@@ -9,8 +9,7 @@ import com.zeligsoft.domain.omg.dds.api.Core.Specification;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public abstract class TypedEntityZImpl extends NamedEntityZImpl implements
-		TypedEntity {
+public abstract class TypedEntityZImpl extends NamedEntityZImpl implements TypedEntity {
 	protected Specification _type;
 
 	public TypedEntityZImpl(org.eclipse.emf.ecore.EObject element) {
@@ -20,11 +19,10 @@ public abstract class TypedEntityZImpl extends NamedEntityZImpl implements
 	@Override
 	public Specification getType() {
 		if (_type == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "DDS::Core::TypedEntity", "type");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "DDS::Core::TypedEntity",
+					"type");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_type = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_type = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						Specification.class);
 			}
 		}
@@ -33,8 +31,7 @@ public abstract class TypedEntityZImpl extends NamedEntityZImpl implements
 
 	@Override
 	public void setType(Specification val) {
-		ZDLUtil.setValue(element, "DDS::Core::TypedEntity", "type",
-				val.eObject());
+		ZDLUtil.setValue(element, "DDS::Core::TypedEntity", "type", val.eObject());
 	}
 
 	@Override

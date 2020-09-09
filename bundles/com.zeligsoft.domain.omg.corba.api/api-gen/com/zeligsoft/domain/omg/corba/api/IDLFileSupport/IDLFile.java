@@ -2,7 +2,7 @@ package com.zeligsoft.domain.omg.corba.api.IDLFileSupport;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
 import com.zeligsoft.domain.zml.api.ZML_Core.Namespace;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModuleContained;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXModuleContained;
 
 public interface IDLFile extends Namespace {
 	String getLocation();
@@ -13,9 +13,9 @@ public interface IDLFile extends Namespace {
 
 	void addImportee(IDLImport val);
 
-	java.util.List<CORBAModuleContained> getContents();
+	java.util.List<CXModuleContained> getContents();
 
-	void addContents(CORBAModuleContained val);
+	void addContents(CXModuleContained val);
 
 	String getPrefix();
 
@@ -28,6 +28,6 @@ public interface IDLFile extends Namespace {
 	 * instance of IDLFile
 	 */
 	static final TypeSelectPredicate<IDLFile> type = new TypeSelectPredicate<IDLFile>(
-			"CORBADomain::IDLFileSupport::IDLFile", //$NON-NLS-1$
+			"CXDomain::IDLFileSupport::IDLFile", //$NON-NLS-1$
 			IDLFile.class);
 }

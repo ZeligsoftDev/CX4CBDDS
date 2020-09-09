@@ -1,5 +1,5 @@
-import CORBADomain::IDLFileSupport; // needed for IDLFile and similar
-import CORBADomain::IDL; // needed for CORBAModule etc.
+import CXDomain::IDLFileSupport; // needed for IDLFile and similar
+import CXDomain::IDL; // needed for CXModule etc.
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
 import CCM::CCM_Component;
@@ -39,19 +39,19 @@ Void visitContained(Excluded_File_Marker file, uml::Package package ) :
 Void visitContained(Definition o, uml::Package container) :
 	{};
 	
-Void visitContained(Definition o, CORBAModule container) :
+Void visitContained(Definition o, CXModule container) :
 	{};
 
 // Ignore any forward declarations
-Void visitContained(ComponentForwardDecl decl, CORBAModule container ) : {};
+Void visitContained(ComponentForwardDecl decl, CXModule container ) : {};
 Void visitContained(ComponentForwardDecl decl,  uml::Package container ) : {};	
-Void visitContained(EventForwardDcl decl, CORBAModule container ) : {};
+Void visitContained(EventForwardDcl decl, CXModule container ) : {};
 Void visitContained(EventForwardDcl decl,  uml::Package container ) : {};	
 
 Void setTopLevelPackage(uml::Package package) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.setTopLevelPackage(org.eclipse.uml2.uml.Package);
 	    
-create CCMComponent visitContained(ComponentDecl comp, CORBAModule container) :
+create CCMComponent visitContained(ComponentDecl comp, CXModule container) :
 	container.contents.add(this) ->
 	this.configureComponent(comp);
 	
@@ -76,7 +76,7 @@ Void configureComponentGeneralizations(CCMComponent zComponent, ComponentDecl co
 		com.zeligsoft.domain.omg.corba.dsl.idl.ComponentDecl);
 
 /****************************** HOME ****************************************/	
-create Home visitContained(HomeDecl home, CORBAModule container ) :
+create Home visitContained(HomeDecl home, CXModule container ) :
 	container.contents.add(this) ->
 	this.configureHome(home);
 	
@@ -94,19 +94,19 @@ Void configureHomeRelationships(Home zHome, HomeDecl home ) :
 		org.eclipse.uml2.uml.Class,
 		com.zeligsoft.domain.omg.corba.dsl.idl.HomeDecl);
 		
-create CORBAAttribute visitContained(AttrSpec attr, Home home) :
+create CXAttribute visitContained(AttrSpec attr, Home home) :
 	home.property.add(this) ->
 	this.configureAttribute(attr);
 	
-create CORBAAttribute visitContained(ReadOnlyAttrSpec attr, Home home) :
+create CXAttribute visitContained(ReadOnlyAttrSpec attr, Home home) :
 	home.property.add(this) ->
 	this.configureAttribute(attr);
 
-create CORBAStruct visitContained(StructType struct, Home home ) :
+create CXStruct visitContained(StructType struct, Home home ) :
 	home.nestedClassifier.add(this) ->
 	this.configureStruct(struct);
 	
-create CORBAConstant visitContained(ConstDecl const, Home home) :
+create CXConstant visitContained(ConstDecl const, Home home) :
 	home.property.add(this) ->
 	this.setName(const.name) ->
 	this.setTypedElementType(const.type) ->
@@ -118,20 +118,20 @@ create uml::DataType visitContained(TypeDeclarator typedef, Home home) :
 	this.setName(typedef.declarators.get(0).id) ->	
 	this.applyTypedefConcept(typedef);	
 
-create CORBAException visitContained(ExceptDecl exception, Home home) :
+create CXException visitContained(ExceptDecl exception, Home home) :
 	home.nestedClassifier.add(this) ->
 	this.configureException(exception);
 	
-create CORBAEnum visitContained(EnumType enum, Home home) :
+create CXEnum visitContained(EnumType enum, Home home) :
 	home.nestedClassifier.add(this) ->
 	this.configureEnum(enum);
 	
-create CORBAUnion visitContained(UnionType union, Home home) :
+create CXUnion visitContained(UnionType union, Home home) :
 	home.nestedClassifier.add(this) ->
 	this.setName(union.name) ->
 	this.addCORBAUnionAttributes(union);
 
-create CORBAOperation visitContained(OpDecl op, Home home) :
+create CXOperation visitContained(OpDecl op, Home home) :
 	home.operation.add(this) ->
 	this.configureOperation(op);
 
@@ -153,7 +153,7 @@ Void configureOperation(FinderOperation zOperation, FinderDcl op ) :
 	op.params.decls.visitContained(zOperation) ->
 	op.raises != null ? zOperation.addRaisedExceptions(op.raises) : {};
 	
-create CORBAParameter visitContained(ParamDcl param, HomeOperation operation) :
+create CXParameter visitContained(ParamDcl param, HomeOperation operation) :
 	operation.ownedParameter.add(this) ->
 	this.setName(param.name) ->
 	setParameterDirection(param) ->
@@ -175,7 +175,7 @@ Void configureEventGeneralizations(Event zEvent, EventDcl event ) :
 		org.eclipse.uml2.uml.Interface,
 		com.zeligsoft.domain.omg.corba.dsl.idl.EventDcl);
 	
-create CCM::CCM_Component::Event visitContained(EventDcl event, CORBAModule container) :
+create CCM::CCM_Component::Event visitContained(EventDcl event, CXModule container) :
 	container.contents.add(this) ->
 	configureEvent(this, event);
 	
@@ -194,11 +194,11 @@ Void visitContained(Export object, Event zEvent ) :
 Void applyIDL3FileConcept(uml::Package package) :
 	JAVA com.zeligsoft.domain.omg.ccm.idlimport.IDL3ImportUtils.applyIDL3FileConcept(org.eclipse.uml2.uml.Package);
 	
-create CORBAAttribute visitContained(AttrSpec attr, CCMComponent comp) :
+create CXAttribute visitContained(AttrSpec attr, CCMComponent comp) :
 	comp.ownedAttribute.add(this) ->
 	this.configureAttribute(attr);
 	
-create CORBAAttribute visitContained(ReadOnlyAttrSpec attr, CCMComponent comp) :
+create CXAttribute visitContained(ReadOnlyAttrSpec attr, CCMComponent comp) :
 	comp.ownedAttribute.add(this) ->
 	this.configureAttribute(attr);
 	
@@ -248,26 +248,26 @@ create EventPort visitContained(ConsumesDcl consumes, CCMComponent comp) :
 	if getInterface(consumes.type, comp) != null then this.zdlAsPort().setType(getInterface(consumes.type, comp));
 
 /*
- * IDL2 CORBAModules
+ * IDL2 CXModules
  */
 private Void visitContained(Module module, uml::Package container ) :
-	container.packagedElement.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).size > 0 ?
+	container.packagedElement.typeSelect(CXModule).select(e|e.name.matches(module.name)).size > 0 ?
 		module.definitions.visitContained(
-			container.packagedElement.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).get(0)) :
+			container.packagedElement.typeSelect(CXModule).select(e|e.name.matches(module.name)).get(0)) :
 		createModule(module, container); 
 		
-private create CORBAModule createModule(Module module, uml::Package container) :
+private create CXModule createModule(Module module, uml::Package container) :
 	container.packagedElement.add(this) ->
 	this.setName(module.name) ->
 	module.definitions.visitContained(this);
 
-private Void visitContained(Module module, CORBAModule container ) :
-	container.contents.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).size > 0 ?
+private Void visitContained(Module module, CXModule container ) :
+	container.contents.typeSelect(CXModule).select(e|e.name.matches(module.name)).size > 0 ?
 		module.definitions.visitContained(
-			container.contents.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).get(0)) :
+			container.contents.typeSelect(CXModule).select(e|e.name.matches(module.name)).get(0)) :
 		createModule(module, container); 
 	
-private create CORBAModule createModule(Module module, CORBAModule container) :
+private create CXModule createModule(Module module, CXModule container) :
 	container.contents.add(this) ->
 	this.setName(module.name) ->
 	module.definitions.visitContained(this);
@@ -275,11 +275,11 @@ private create CORBAModule createModule(Module module, CORBAModule container) :
 /*
  * IDL2 Import stubs, because IDL3 does not have IDLFile
  */
-create CORBAInterface visitContained(Interface_decl intf, uml::Package container) :
+create CXInterface visitContained(Interface_decl intf, uml::Package container) :
 	container.packagedElement.add(this) ->
 	this.configureInterface(intf);
 	
-create CORBAConstant visitContained(ConstDecl const, uml::Package file) :
+create CXConstant visitContained(ConstDecl const, uml::Package file) :
 	file.addConstant(this) ->
 	this.setName(const.name) ->
 	this.setTypedElementType(const.type) ->
@@ -291,14 +291,14 @@ create uml::DataType visitContained(TypeDeclarator typedef, uml::Package file) :
 	this.setName(typedef.declarators.get(0).id) ->	
 	this.applyTypedefConcept(typedef);	
 	
-create CORBAStruct visitContained(StructType struct, uml::Package package ) :
+create CXStruct visitContained(StructType struct, uml::Package package ) :
 	package.packagedElement.add(this) ->
 	this.configureStruct(struct);
 	
-create CORBAException visitContained(ExceptDecl exception, uml::Package package ) :
+create CXException visitContained(ExceptDecl exception, uml::Package package ) :
 	package.packagedElement.add(this) ->
 	this.configureException(exception);
 	
-create CORBAEnum visitContained(EnumType enum, uml::Package container) :
+create CXEnum visitContained(EnumType enum, uml::Package container) :
 	container.packagedElement.add(this) ->
 	this.configureEnum(enum);

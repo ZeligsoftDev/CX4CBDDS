@@ -18,31 +18,27 @@ public enum OwnershipQosPolicyKind {
 	SHARED {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"DDS::QOS::OwnershipQosPolicyKind", "SHARED");
+			return ZDLUtil.getZDLEnumLiteral(context, "DDS::QOS::OwnershipQosPolicyKind", "SHARED");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
 
 	/**
-	 * 
-	 *
-	 */
+	* 
+	*
+	*/
 	EXCLUSIVE {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"DDS::QOS::OwnershipQosPolicyKind", "EXCLUSIVE");
+			return ZDLUtil.getZDLEnumLiteral(context, "DDS::QOS::OwnershipQosPolicyKind", "EXCLUSIVE");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
@@ -56,8 +52,7 @@ public enum OwnershipQosPolicyKind {
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return null;
 		}
 	};
@@ -70,11 +65,9 @@ public enum OwnershipQosPolicyKind {
 	 *    UNKNOWN if the literal is unrecognized
 	 */
 	public static OwnershipQosPolicyKind create(EObject literal) {
-		if (literal == ZDLUtil.getZDLEnumLiteral(literal,
-				"DDS::QOS::OwnershipQosPolicyKind", "SHARED")) { //$NON-NLS-1$//$NON-NLS-2$
+		if (literal == ZDLUtil.getZDLEnumLiteral(literal, "DDS::QOS::OwnershipQosPolicyKind", "SHARED")) { //$NON-NLS-1$//$NON-NLS-2$
 			return SHARED;
-		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal,
-				"DDS::QOS::OwnershipQosPolicyKind", "EXCLUSIVE")) { //$NON-NLS-1$//$NON-NLS-2$
+		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal, "DDS::QOS::OwnershipQosPolicyKind", "EXCLUSIVE")) { //$NON-NLS-1$//$NON-NLS-2$
 			return EXCLUSIVE;
 		} else {
 			return UNKNOWN;
@@ -83,6 +76,5 @@ public enum OwnershipQosPolicyKind {
 
 	public abstract EObject eObject(EObject context);
 
-	public abstract EObject eObject(
-			com.zeligsoft.base.zdl.staticapi.core.ZObject context);
+	public abstract EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context);
 }

@@ -15,27 +15,27 @@
  *
  */
 
-import CORBADomain::IDL;
+import CXDomain::IDL;
 import CCM::CCM_Component;
 import idl;
 import ZMLMM::ZML_Component;
 
 extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
 
-CORBADomain::IDL::CORBAType getType(CORBAArray self) :
+CXDomain::IDL::CXType getType(CXArray self) :
 	if self.zdlAsDataType().member.isEmpty then 
 		Void 
 	else
 		((uml::Property)self.zdlAsDataType().member.get(0)).zdlAsProperty().type;
 		
-CORBADomain::IDL::CORBAType getType(CORBASequence self) :
+CXDomain::IDL::CXType getType(CXSequence self) :
 	if self.zdlAsDataType().member.isEmpty then 
 		Void 
 	else
 		((uml::Property)self.zdlAsDataType().member.get(0)).zdlAsProperty().type;
 	
 	
-CORBADomain::IDL::CORBAType getType(CORBATypeDef self) :
+CXDomain::IDL::CXType getType(CXTypeDef self) :
 	self.zdlAsClassifier().general.size < 1 ? 
 		Void : 
 		self.zdlAsClassifier().general.get(0);

@@ -48,7 +48,7 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.WorkerFunctionRepair;
 import com.zeligsoft.domain.zml.util.WorkerFunctionRepairTrigger;
 import com.zeligsoft.domain.zml.util.WorkerFunctionUtil;
@@ -209,7 +209,7 @@ public class DDS4CCMPortOperationsTrigger extends WorkerFunctionRepairTrigger {
 											+ "_CSL_"));
 						}
 					} else if (ZDLUtil.isZDLConcept(renamedObj,
-							CORBADomainNames.CORBAOPERATION)) {
+							CXDomainNames.CXOPERATION)) {
 						// Operation is renamed
 						if (renamedObj == portOperation
 								&& currentName
@@ -224,7 +224,7 @@ public class DDS4CCMPortOperationsTrigger extends WorkerFunctionRepairTrigger {
 							Set<EObject> intfToCheck = new HashSet<EObject>();
 							getAllGeneralizationReferences(
 									renamedObj.eContainer(),
-									CORBADomainNames.CORBAINTERFACE,
+									CXDomainNames.CXINTERFACE,
 									intfToCheck);
 							intfToCheck.add(renamedObj.eContainer());
 							for (Property p : renameComponent
@@ -245,7 +245,7 @@ public class DDS4CCMPortOperationsTrigger extends WorkerFunctionRepairTrigger {
 							}
 						}
 					} else if (ZDLUtil.isZDLConcept(renamedObj,
-							CORBADomainNames.CORBAATTRIBUTE)) {
+							CXDomainNames.CXATTRIBUTE)) {
 						if (renamedObj.eContainer() != null
 								&& ZDLUtil.isZDLConcept(
 										renamedObj.eContainer(), CCMNames.HOME)) {
@@ -277,13 +277,13 @@ public class DDS4CCMPortOperationsTrigger extends WorkerFunctionRepairTrigger {
 						} else if (renamedObj.eContainer() != null
 								&& ZDLUtil.isZDLConcept(
 										renamedObj.eContainer(),
-										CORBADomainNames.CORBAINTERFACE)) {
+										CXDomainNames.CXINTERFACE)) {
 							Map<String, String> renameMap = new HashMap<String, String>();
 							Set<EObject> intfToCheck = new HashSet<EObject>();
 							intfToCheck.add(renamedObj.eContainer());
 							getAllGeneralizationReferences(
 									renamedObj.eContainer(),
-									CORBADomainNames.CORBAINTERFACE,
+									CXDomainNames.CXINTERFACE,
 									intfToCheck);
 							for (Property p : renameComponent
 									.getAllAttributes()) {
@@ -362,11 +362,11 @@ public class DDS4CCMPortOperationsTrigger extends WorkerFunctionRepairTrigger {
 					}
 				}
 			} else if (ZDLUtil.isZDLConcept(container,
-					CORBADomainNames.CORBAINTERFACE)) {
+					CXDomainNames.CXINTERFACE)) {
 				Set<EObject> intfToCheck = new HashSet<EObject>();
 				intfToCheck.add(container);
 				getAllGeneralizationReferences(container,
-						CORBADomainNames.CORBAINTERFACE, intfToCheck);
+						CXDomainNames.CXINTERFACE, intfToCheck);
 				for (EObject intf : intfToCheck) {
 					for (Setting s : UML2Util.getInverseReferences(intf)) {
 						if (s.getEObject() != null
@@ -541,11 +541,11 @@ public class DDS4CCMPortOperationsTrigger extends WorkerFunctionRepairTrigger {
 						}
 					}
 				} else if (ZDLUtil.isZDLConcept(value,
-						CORBADomainNames.CORBAINTERFACE)) {
+						CXDomainNames.CXINTERFACE)) {
 					Set<EObject> intfToCheck = new HashSet<EObject>();
 					intfToCheck.add(value);
 					getAllGeneralizationReferences(value,
-							CORBADomainNames.CORBAINTERFACE, intfToCheck);
+							CXDomainNames.CXINTERFACE, intfToCheck);
 					for (EObject intf : intfToCheck) {
 						for (Setting s : UML2Util.getInverseReferences(intf)) {
 							if (s.getEObject() != null
@@ -670,7 +670,7 @@ public class DDS4CCMPortOperationsTrigger extends WorkerFunctionRepairTrigger {
 		Object oldValue = notification.getOldValue();
 		EObject notifier = (EObject) notification.getNotifier();
 
-		if (ZDLUtil.isZDLConcept(notifier, CORBADomainNames.CORBAINTERFACE)) {
+		if (ZDLUtil.isZDLConcept(notifier, CXDomainNames.CXINTERFACE)) {
 			if ((eventType == Notification.REMOVE || eventType == Notification.ADD)
 					&& (oldValue instanceof Property
 							|| newValue instanceof Property
@@ -679,7 +679,7 @@ public class DDS4CCMPortOperationsTrigger extends WorkerFunctionRepairTrigger {
 				Set<EObject> intfToCheck = new HashSet<EObject>();
 				intfToCheck.add(notifier);
 				getAllGeneralizationReferences(notifier,
-						CORBADomainNames.CORBAINTERFACE, intfToCheck);
+						CXDomainNames.CXINTERFACE, intfToCheck);
 				for (EObject intf : intfToCheck) {
 					for (Setting s : UML2Util.getInverseReferences(intf)) {
 						if (s.getEObject() != null
@@ -743,10 +743,10 @@ public class DDS4CCMPortOperationsTrigger extends WorkerFunctionRepairTrigger {
 		Object feature = notification.getFeature();
 		EObject notifier = (EObject) notification.getNotifier();
 
-		if (ZDLUtil.isZDLConcept(notifier, CORBADomainNames.CORBAATTRIBUTE)) {
+		if (ZDLUtil.isZDLConcept(notifier, CXDomainNames.CXATTRIBUTE)) {
 			if (feature instanceof EAttribute
 					&& (((EAttribute) feature).getName()
-							.equals(CORBADomainNames.CORBAATTRIBUTE__IS_READ_ONLY))) {
+							.equals(CXDomainNames.CXATTRIBUTE__IS_READ_ONLY))) {
 				EObject container = notifier.eContainer();
 				if (container == null) {
 					return getComponentSRs(CIs);
@@ -770,11 +770,11 @@ public class DDS4CCMPortOperationsTrigger extends WorkerFunctionRepairTrigger {
 						}
 					}
 				} else if (ZDLUtil.isZDLConcept(container,
-						CORBADomainNames.CORBAINTERFACE)) {
+						CXDomainNames.CXINTERFACE)) {
 					Set<EObject> intfToCheck = new HashSet<EObject>();
 					intfToCheck.add(container);
 					getAllGeneralizationReferences(container,
-							CORBADomainNames.CORBAINTERFACE, intfToCheck);
+							CXDomainNames.CXINTERFACE, intfToCheck);
 					for (EObject intf : intfToCheck) {
 						for (Setting s : UML2Util.getInverseReferences(intf)) {
 							if (s.getEObject() != null
@@ -845,13 +845,13 @@ public class DDS4CCMPortOperationsTrigger extends WorkerFunctionRepairTrigger {
 
 			// check for interface attribute change
 			else if (ZDLUtil.isZDLConcept(notifier,
-					CORBADomainNames.CORBAINTERFACE)) {
+					CXDomainNames.CXINTERFACE)) {
 				result.addAll(getSRImpactedByInterfaceChange(thisNotification));
 			}
 
 			// check for interface attribute change
 			else if (ZDLUtil.isZDLConcept(notifier,
-					CORBADomainNames.CORBAATTRIBUTE)) {
+					CXDomainNames.CXATTRIBUTE)) {
 				result.addAll(getSRImpactedByAttributeChange(thisNotification));
 			}
 

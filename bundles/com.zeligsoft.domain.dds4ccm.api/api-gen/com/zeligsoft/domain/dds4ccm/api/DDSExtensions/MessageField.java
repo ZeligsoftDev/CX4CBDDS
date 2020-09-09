@@ -1,19 +1,19 @@
 package com.zeligsoft.domain.dds4ccm.api.DDSExtensions;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAField;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAType;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXField;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXType;
 
-public interface MessageField extends CORBAField {
+public interface MessageField extends CXField {
 	Boolean getIsKey();
 
 	void setIsKey(Boolean val);
 
 	@Override
-	CORBAType getIdlType();
+	CXType getIdlType();
 
 	@Override
-	void setIdlType(CORBAType val);
+	void setIdlType(CXType val);
 
 	/**
 	 * A predicate which returns true if the Object is an

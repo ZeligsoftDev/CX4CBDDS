@@ -41,7 +41,7 @@ import com.zeligsoft.domain.dds4ccm.codegen.utils.CodeGenUtil;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMCodeGenEvent;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -118,7 +118,7 @@ public class ShowSourceActionDelegate implements IObjectActionDelegate {
 		String result = context.getName();
 		EObject parent = context.eContainer();
 		while (parent != null) {
-			if (ZDLUtil.isZDLConcept(parent, CORBADomainNames.CORBAMODULE)) {
+			if (ZDLUtil.isZDLConcept(parent, CXDomainNames.CXMODULE)) {
 				result = ((NamedElement) parent).getName() + "_" + result; //$NON-NLS-1$
 			}
 			parent = parent.eContainer();

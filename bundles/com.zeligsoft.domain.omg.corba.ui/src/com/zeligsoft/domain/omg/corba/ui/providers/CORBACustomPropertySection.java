@@ -73,13 +73,13 @@ import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
 import com.zeligsoft.cx.ui.properties.sections.ICXCustomPropertySection;
 import com.zeligsoft.cx.ui.properties.utils.CXPropertiesWidgetFactory;
 import com.zeligsoft.cx.ui.utils.CXWidgetFactory;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.ui.Activator;
 import com.zeligsoft.domain.omg.corba.ui.l10n.Messages;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
- * Custom property section provider for CORBADomain
+ * Custom property section provider for CXDomain
  * 
  * @author ysroh
  * 
@@ -93,20 +93,20 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 			CXPropertyDescriptor descriptor, Property property) {
 
 		if (property.getName().equals(
-				CORBADomainNames.CORBAPARAMETER__DIRECTION)) {
+				CXDomainNames.CXPARAMETER__DIRECTION)) {
 			return createSectionForDirection(parent, descriptor, property);
 		}
 
-		if (property.getName().equals(CORBADomainNames.CORBATYPED__IDL_TYPE)) {
+		if (property.getName().equals(CXDomainNames.CXTYPED__IDL_TYPE)) {
 			// ToDo: Revert after Papyrus DDK port and operation change return type 
 			return createSectionForReturnType(
 					parent, descriptor, CORBA_OPERATION_TYPE_LABEL);
 		}
 
 		if (ZDLUtil.isZDLConcept(descriptor.getContext(),
-				CORBADomainNames.CORBACONSTANT)
+				CXDomainNames.CXCONSTANT)
 				&& property.getName().equals(
-						CORBADomainNames.CORBACONSTANT__DEFAULT)) {
+						CXDomainNames.CXCONSTANT__DEFAULT)) {
 			return createSectionForConstantDefault(parent, descriptor);
 		}
 
@@ -121,7 +121,7 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 	}
 	
 	/**
-	 * Temporary fix for CORBAOperation return type. This custom section should be
+	 * Temporary fix for CXOperation return type. This custom section should be
 	 * removed once DDK is ported to Papyrus
 	 * 
 	 * @param parent
@@ -240,7 +240,7 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 											rp.setType((Type) selectedElement);
 										} else {
 											rp = op.createReturnResult("ReturnParameter", (Type) selectedElement); //$NON-NLS-1$
-											ZDLUtil.addZDLConcept(rp, CORBADomainNames.CORBAPARAMETER);
+											ZDLUtil.addZDLConcept(rp, CXDomainNames.CXPARAMETER);
 										}
 									}
 								};
@@ -286,16 +286,16 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 	private Map<String, Control> createSectionForConstantDefault(
 			Composite parent, final CXPropertyDescriptor descriptor) {
 		EObject type = ZDLUtil.getEValue(descriptor.getContext(),
-				CORBADomainNames.CORBACONSTANT,
-				CORBADomainNames.CORBATYPED__IDL_TYPE);
+				CXDomainNames.CXCONSTANT,
+				CXDomainNames.CXTYPED__IDL_TYPE);
 
 		if (type != null
-				&& ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBATYPE_DEF)) {
-			type = ZDLUtil.getEValue(type, CORBADomainNames.CORBATYPE_DEF,
-					CORBADomainNames.CORBATYPE_DEF__TYPE);
+				&& ZDLUtil.isZDLConcept(type, CXDomainNames.CXTYPE_DEF)) {
+			type = ZDLUtil.getEValue(type, CXDomainNames.CXTYPE_DEF,
+					CXDomainNames.CXTYPE_DEF__TYPE);
 		}
 		if (type == null
-				|| !ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAENUM)) {
+				|| !ZDLUtil.isZDLConcept(type, CXDomainNames.CXENUM)) {
 			return CXPropertiesWidgetFactory.createSectionForStringType(parent,
 					descriptor);
 		}
@@ -364,7 +364,7 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 		if (ZMLMMNames.NAMED_ELEMENT.equals(concept.getQualifiedName())
 				&& descriptor.getContext() instanceof Property
 				&& (((NamedElement) descriptor.getContext()).getName()
-						.equals(CORBADomainNames.CORBASTRUCT__MEMBERS)
+						.equals(CXDomainNames.CXSTRUCT__MEMBERS)
 						|| ((NamedElement) descriptor.getContext())
 								.getName().equals("member") || ((NamedElement) descriptor //$NON-NLS-1$
 						.getContext()).getName().equals("switchType"))) { //$NON-NLS-1$
@@ -405,7 +405,7 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 		ZDLElementSelectionDialog selectionDialog;
 		selectionDialog = new ZDLElementSelectionDialog(Display.getCurrent()
 				.getActiveShell(), property,
-				Collections.singletonList(CORBADomainNames.CORBATYPE), true,
+				Collections.singletonList(CXDomainNames.CXTYPE), true,
 				true);
 
 		dialog = selectionDialog;

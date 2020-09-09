@@ -11,7 +11,6 @@ public interface efQosPolicy extends qosPolicy {
 	 * A predicate which returns true if the Object is an
 	 * instance of efQosPolicy
 	 */
-	static final TypeSelectPredicate<efQosPolicy> type = new TypeSelectPredicate<efQosPolicy>(
-			"DDS::QOS::efQosPolicy", //$NON-NLS-1$
+	static final TypeSelectPredicate<efQosPolicy> type = new TypeSelectPredicate<efQosPolicy>("DDS::QOS::efQosPolicy", //$NON-NLS-1$
 			efQosPolicy.class);
 }

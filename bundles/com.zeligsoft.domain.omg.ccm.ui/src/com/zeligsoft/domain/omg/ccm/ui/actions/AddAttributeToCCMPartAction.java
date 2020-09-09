@@ -25,7 +25,7 @@ import org.eclipse.uml2.uml.Component;
 
 import com.zeligsoft.base.ui.menus.actions.ICXAction;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * Action delegate to create an attribute to a CCMPart
@@ -47,7 +47,7 @@ public class AddAttributeToCCMPartAction extends Action implements ICXAction {
 			return null;
 		}
 		type = ZDLElementTypeUtil
-				.getElementType(context, CORBADomainNames.CORBAATTRIBUTE);
+				.getElementType(context, CXDomainNames.CXATTRIBUTE);
 		return new ElementTypeImageDescriptor(type);
 	}
 

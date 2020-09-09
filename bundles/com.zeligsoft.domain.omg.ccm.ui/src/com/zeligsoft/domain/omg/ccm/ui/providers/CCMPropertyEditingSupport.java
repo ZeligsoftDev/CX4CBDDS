@@ -61,7 +61,7 @@ import com.zeligsoft.cx.ui.providers.IPropertyEntry;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.util.CORBAUtil;
 
 /**
@@ -92,31 +92,31 @@ public class CCMPropertyEditingSupport extends EditingSupport {
 			}
 			String text = ((CCombo) editor.getControl()).getText();
 			if (propertyType
-					.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAUNSIGNED_LONG)
+					.equals(CXDomainNames.CXPRIMITIVE_KIND___CXUNSIGNED_LONG)
 					|| propertyType
-							.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAUNSIGNED_LONG_LONG)
+							.equals(CXDomainNames.CXPRIMITIVE_KIND___CXUNSIGNED_LONG_LONG)
 					|| propertyType
-							.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAUNSIGNED_SHORT)) {
+							.equals(CXDomainNames.CXPRIMITIVE_KIND___CXUNSIGNED_SHORT)) {
 
 				if (!text.matches("[0-9]*")) { //$NON-NLS-1$
 					return Messages.CCMPropertyEditingSupport_CellValidationError;
 				}
 			} else if (propertyType
-					.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBADOUBLE)
+					.equals(CXDomainNames.CXPRIMITIVE_KIND___CXDOUBLE)
 					|| propertyType
-							.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAFLOAT)
+							.equals(CXDomainNames.CXPRIMITIVE_KIND___CXFLOAT)
 					|| propertyType
-							.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBALONG_DOUBLE)) {
+							.equals(CXDomainNames.CXPRIMITIVE_KIND___CXLONG_DOUBLE)) {
 
 				if (!text.matches("-? *[0-9]*\\.?[0-9]*")) { //$NON-NLS-1$
 					return Messages.CCMPropertyEditingSupport_CellValidationError;
 				}
 			} else if (propertyType
-					.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBALONG)
+					.equals(CXDomainNames.CXPRIMITIVE_KIND___CXLONG)
 					|| propertyType
-							.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBALONG_LONG)
+							.equals(CXDomainNames.CXPRIMITIVE_KIND___CXLONG_LONG)
 					|| propertyType
-							.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBASHORT)) {
+							.equals(CXDomainNames.CXPRIMITIVE_KIND___CXSHORT)) {
 
 				if (!text.matches("-? *[0-9]*")) { //$NON-NLS-1$
 					return Messages.CCMPropertyEditingSupport_CellValidationError;
@@ -138,7 +138,7 @@ public class CCMPropertyEditingSupport extends EditingSupport {
 					.getDefiningFeature();
 			if (feature.getType() != null
 					&& !ZDLUtil.isZDLConcept(feature.getType(),
-							CORBADomainNames.CORBASTRUCT)) {
+							CXDomainNames.CXSTRUCT)) {
 				return true;
 			}
 			return false;
@@ -152,19 +152,19 @@ public class CCMPropertyEditingSupport extends EditingSupport {
 			return false;
 		}
 
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBATYPE_DEF)) {
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXTYPE_DEF)) {
 			type = CORBAUtil.getTypeDefType(type);
 		}
 
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAPRIMITIVE)
-				|| ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAENUM)) {
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXPRIMITIVE)
+				|| ZDLUtil.isZDLConcept(type, CXDomainNames.CXENUM)) {
 			return true;
 		}
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASTRUCT)) {
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXSTRUCT)) {
 			return false;
 		}
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASEQUENCE)
-				|| ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAARRAY)) {
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXSEQUENCE)
+				|| ZDLUtil.isZDLConcept(type, CXDomainNames.CXARRAY)) {
 			DataType sequence = (DataType) type;
 			Property attr = CCMUtil.getMembersAttribute(sequence);
 			if (attr == null) {
@@ -173,9 +173,9 @@ public class CCMPropertyEditingSupport extends EditingSupport {
 			return attr.getType() != null;
 		}
 		return ZDLUtil.isZDLConcept(modelObject,
-				CORBADomainNames.CORBAATTRIBUTE)
+				CXDomainNames.CXATTRIBUTE)
 				|| ZDLUtil.isZDLConcept(modelObject,
-						CORBADomainNames.CORBAFIELD)
+						CXDomainNames.CXFIELD)
 				|| ZDLUtil.isZDLConcept(modelObject,
 						CCMNames.SATISFIER_PROPERTY)
 				|| ZDLUtil.isZDLConcept(modelObject, CCMNames.PROPERTY);
@@ -183,7 +183,7 @@ public class CCMPropertyEditingSupport extends EditingSupport {
 
 	@Override
 	protected CellEditor getCellEditor(Object element) {
-		propertyType = CORBADomainNames.CORBASTRING;
+		propertyType = CXDomainNames.CXSTRING;
 
 		EObject modelObject = ((IPropertyEntry) element).getModelObject();
 		EObject type;
@@ -195,40 +195,40 @@ public class CCMPropertyEditingSupport extends EditingSupport {
 			type = ((Property) modelObject).getType();
 		}
 
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBATYPE_DEF)) {
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXTYPE_DEF)) {
 			type = CORBAUtil.getTypeDefType(type);
 		}
 
 		// return editor for sequence type
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASEQUENCE)) {
-			propertyType = CORBADomainNames.CORBASEQUENCE;
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXSEQUENCE)) {
+			propertyType = CXDomainNames.CXSEQUENCE;
 			return getCellEditorForSequence((IPropertyEntry) element,
 					(DataType) type);
 
 		}
 
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAARRAY)) {
-			propertyType = CORBADomainNames.CORBAARRAY;
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXARRAY)) {
+			propertyType = CXDomainNames.CXARRAY;
 			return getCellEditorForArray((IPropertyEntry) element,
 					(DataType) type);
 
 		}
 
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAENUM)) {
-			propertyType = CORBADomainNames.CORBAENUM;
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXENUM)) {
+			propertyType = CXDomainNames.CXENUM;
 			return getCellEditorForEnumeration((IPropertyEntry) element,
 					(Enumeration) type);
 
 		}
 
 		// Return editor for boolean type
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAPRIMITIVE)) {
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXPRIMITIVE)) {
 			EnumerationLiteral primitiveType = (EnumerationLiteral) ZDLUtil
-					.getValue(type, CORBADomainNames.CORBAPRIMITIVE,
-							CORBADomainNames.CORBAPRIMITIVE__TYPE);
+					.getValue(type, CXDomainNames.CXPRIMITIVE,
+							CXDomainNames.CXPRIMITIVE__TYPE);
 			propertyType = primitiveType.getName();
 			if (propertyType
-					.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBABOOLEAN)) {
+					.equals(CXDomainNames.CXPRIMITIVE_KIND___CXBOOLEAN)) {
 				return getCellEditorForBoolean((IPropertyEntry) element);
 			}
 		}
@@ -503,9 +503,9 @@ public class CCMPropertyEditingSupport extends EditingSupport {
 	@Override
 	protected void setValue(Object element, Object value) {
 		IPropertyEntry entry = (IPropertyEntry) element;
-		if (CORBADomainNames.CORBAPRIMITIVE_KIND___CORBABOOLEAN
+		if (CXDomainNames.CXPRIMITIVE_KIND___CXBOOLEAN
 				.equals(propertyType)
-				|| CORBADomainNames.CORBAENUM.equals(propertyType)) {
+				|| CXDomainNames.CXENUM.equals(propertyType)) {
 			String itemValue = ((ComboBoxCellEditor) editor).getItems()[(Integer) value];
 			if (((Integer) value).equals(defaultValueIndex)) {
 				itemValue = entry.getDefaultValue();

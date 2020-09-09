@@ -20,7 +20,7 @@ import CCM::CCM_Implementation;
 import CCM::CCM_Component;
 import ZMLMM::ZML_Core;
 import ZMLMM::ZML_Deployments;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
 Void debug(Object o) :
 	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.debug(java.lang.Object);
@@ -80,11 +80,11 @@ cached String getScopedName(DeploymentPart part, String delimiter) :
 cached String literalName(uml::EnumerationLiteral literal) :
 	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.literalName(org.eclipse.uml2.uml.EnumerationLiteral);
 
-cached String literalName(CORBAPrimitiveKind literal) :
+cached String literalName(CXPrimitiveKind literal) :
 	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.literalNameHelper(java.lang.Object);
 
 /*
- * Qualified name of a model element that skips CORBAModules and
+ * Qualified name of a model element that skips CXModules and
  * the top-level model element.
  */
 cached String QName(ZMLMM::ZML_Core::NamedElement element ) :
@@ -98,7 +98,7 @@ private String _QName(ZMLMM::ZML_Core::NamedElement element ) :
 		_QName(element.zdlAsElement().owner) + "/" + element.name :
 		"";
 	
-private String _QName(CORBAModule module ) :
+private String _QName(CXModule module ) :
 	_QName(module.zdlAsElement().owner);
 	
 cached List[AssemblyImplementation] getAssemblyImpl(uml::Package self) :

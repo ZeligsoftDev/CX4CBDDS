@@ -1,9 +1,9 @@
 package com.zeligsoft.domain.idl3plus.api.Generics;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAType;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXType;
 
-public interface TemplateParameterType extends CORBAType {
+public interface TemplateParameterType extends CXType {
 	org.eclipse.uml2.uml.Class asClass();
 
 	org.eclipse.uml2.uml.DataType asDataType();

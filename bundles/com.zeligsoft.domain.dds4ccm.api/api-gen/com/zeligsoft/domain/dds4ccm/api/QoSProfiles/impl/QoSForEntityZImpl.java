@@ -9,8 +9,7 @@ import com.zeligsoft.domain.omg.dds.api.QOS.qosProperty;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public abstract class QoSForEntityZImpl extends NamedElementImplementation
-		implements QoSForEntity {
+public abstract class QoSForEntityZImpl extends NamedElementImplementation implements QoSForEntity {
 	protected java.util.List<qosProperty> _qosProperty;
 
 	public QoSForEntityZImpl(org.eclipse.emf.ecore.EObject element) {
@@ -20,17 +19,15 @@ public abstract class QoSForEntityZImpl extends NamedElementImplementation
 	@Override
 	public java.util.List<qosProperty> getQosProperty() {
 		if (_qosProperty == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "DDS4CCM::QoSProfiles::QoSForEntity",
-							"qosProperty");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"DDS4CCM::QoSProfiles::QoSForEntity", "qosProperty");
 			_qosProperty = new java.util.ArrayList<qosProperty>();
 			@SuppressWarnings("unchecked")
 			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 			for (Object next : rawList) {
 				if (next instanceof org.eclipse.emf.ecore.EObject) {
-					qosProperty nextWrapper = ZDLFactoryRegistry.INSTANCE
-							.create((org.eclipse.emf.ecore.EObject) next,
-									qosProperty.class);
+					qosProperty nextWrapper = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) next,
+							qosProperty.class);
 					_qosProperty.add(nextWrapper);
 				}
 			}
@@ -43,8 +40,7 @@ public abstract class QoSForEntityZImpl extends NamedElementImplementation
 		// make sure the qosProperty list is created
 		getQosProperty();
 
-		final Object rawValue = ZDLUtil.getValue(element,
-				"DDS4CCM::QoSProfiles::QoSForEntity", "qosProperty");
+		final Object rawValue = ZDLUtil.getValue(element, "DDS4CCM::QoSProfiles::QoSForEntity", "qosProperty");
 		@SuppressWarnings("unchecked")
 		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 		rawList.add(val.eObject());
@@ -54,15 +50,12 @@ public abstract class QoSForEntityZImpl extends NamedElementImplementation
 	}
 
 	@Override
-	public <T extends qosProperty> T addQosProperty(Class<T> typeToCreate,
-			String concept) {
+	public <T extends qosProperty> T addQosProperty(Class<T> typeToCreate, String concept) {
 		// make sure the qosProperty list is created
 		getQosProperty();
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "DDS4CCM::QoSProfiles::QoSForEntity", "qosProperty",
-				concept);
-		T element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, typeToCreate);
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element,
+				"DDS4CCM::QoSProfiles::QoSForEntity", "qosProperty", concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(newConcept, typeToCreate);
 		if (_qosProperty != null) {
 			_qosProperty.add(element);
 		}
@@ -73,11 +66,10 @@ public abstract class QoSForEntityZImpl extends NamedElementImplementation
 	public qosProperty addQosProperty() {
 		// make sure the qosProperty list is created
 		getQosProperty();
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "DDS4CCM::QoSProfiles::QoSForEntity", "qosProperty",
-				"DDS::QOS::qosProperty");
-		qosProperty element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, qosProperty.class);
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element,
+				"DDS4CCM::QoSProfiles::QoSForEntity", "qosProperty", "DDS::QOS::qosProperty");
+		qosProperty element = ZDLFactoryRegistry.INSTANCE.create(newConcept,
+				qosProperty.class);
 		if (_qosProperty != null) {
 			_qosProperty.add(element);
 		}

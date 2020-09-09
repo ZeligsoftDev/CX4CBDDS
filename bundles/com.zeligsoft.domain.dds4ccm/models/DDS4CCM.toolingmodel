@@ -2,34 +2,34 @@
 <tool:MenuModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tool="http://www.zeligsoft.com/zdl/2008/tooling" xsi:schemaLocation="http://www.zeligsoft.com/zdl/2008/tooling java://com.zeligsoft.base.toolingmodel.ToolingModelPackage" generated="true">
   <item xsi:type="tool:DelegateAction" generated="true" name="Package" className="com.zeligsoft.cx.ui.actions.AddCXPackageAction" hostBundle="com.zeligsoft.cx.ui"/>
   <item xsi:type="tool:MenuSeparator" name="zeligsoft.menuSeparator.CORBA.packageSeparator"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="Array" createConcept="CORBADomain::IDL::CORBAArray">
+  <item xsi:type="tool:CreateAction" generated="true" name="Array" createConcept="CXDomain::IDL::CXArray">
     <expression xsi:type="tool:OawXtend" name="Configure" expression="configureArray" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
-  <item xsi:type="tool:CreateAction" generated="true" name="Enum" createConcept="CORBADomain::IDL::CORBAEnum"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="Exception" createConcept="CORBADomain::IDL::CORBAException"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="Sequence" createConcept="CORBADomain::IDL::CORBASequence">
+  <item xsi:type="tool:CreateAction" generated="true" name="Enum" createConcept="CXDomain::IDL::CXEnum"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Exception" createConcept="CXDomain::IDL::CXException"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Sequence" createConcept="CXDomain::IDL::CXSequence">
     <expression xsi:type="tool:OawXtend" name="Configure" expression="configureSequence" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
-  <item xsi:type="tool:CreateAction" generated="true" name="Struct" createConcept="CORBADomain::IDL::CORBAStruct"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="TypeDef" createConcept="CORBADomain::IDL::CORBATypeDef"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="Union" createConcept="CORBADomain::IDL::CORBAUnion">
+  <item xsi:type="tool:CreateAction" generated="true" name="Struct" createConcept="CXDomain::IDL::CXStruct"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="TypeDef" createConcept="CXDomain::IDL::CXTypeDef"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Union" createConcept="CXDomain::IDL::CXUnion">
     <expression xsi:type="tool:OawXtend" name="Configure" expression="configureUnion" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
-  <item xsi:type="tool:CreateAction" generated="true" name="WString" createConcept="CORBADomain::IDL::CORBAWString"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="String" createConcept="CORBADomain::IDL::CORBAString"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="Native" description="" createConcept="CORBADomain::IDL::Native"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="Module" createConcept="CORBADomain::IDL::CORBAModule"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="Interface" createConcept="CORBADomain::IDL::CORBAInterface"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="Constants" createConcept="CORBADomain::IDL::CORBAConstants"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="WString" createConcept="CXDomain::IDL::CXWString"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="String" createConcept="CXDomain::IDL::CXString"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Native" description="" createConcept="CXDomain::IDL::Native"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Module" createConcept="CXDomain::IDL::CXModule"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Interface" createConcept="CXDomain::IDL::CXInterface"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Constants" createConcept="CXDomain::IDL::CXConstants"/>
   <item xsi:type="tool:DelegateAction" generated="true" name="PortType" className="com.zeligsoft.cx.ui.actions.AddPortTypeAction" hostBundle="com.zeligsoft.cx.ui"/>
   <item xsi:type="tool:MenuSeparator" name="zeligsoft.menuSeparator.CCM.idl2 separator"/>
   <item xsi:type="tool:DelegateAction" generated="true" name="CCM Component" className="com.zeligsoft.domain.omg.ccm.ui.actions.CCMComponentWizardAction" hostBundle="com.zeligsoft.domain.omg.ccm.ui"/>
@@ -40,8 +40,8 @@
   <item xsi:type="tool:CreateAction" generated="true" name="Deployment Plan" createConcept="CCM::CCM_Deployment::DeploymentPlan">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureDeploymentPlan" extensionFile="com::zeligsoft::domain::omg::ccm::util::config">
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
-      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Container Process" description="" createConcept="CCM::CCM_Deployment::ContainerProcess"/>
@@ -96,28 +96,28 @@
       <item xsi:type="tool:CreateAction" generated="true" name="Writer Data Lifecycle Policy" createConcept="DDS::QOS::wdlQosPolicy"/>
     </item>
   </item>
-  <item xsi:type="tool:CreateAction" generated="true" name="Constant" createConcept="CORBADomain::IDL::CORBAConstant">
+  <item xsi:type="tool:CreateAction" generated="true" name="Constant" createConcept="CXDomain::IDL::CXConstant">
     <expression xsi:type="tool:OawXtend" name="Configure" expression="configureConstant" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Enumeration Literal" description="" typeHint="org.eclipse.papyrus.uml.EnumerationLiteral"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="Field" createConcept="CORBADomain::IDL::CORBAField">
+  <item xsi:type="tool:CreateAction" generated="true" name="Field" createConcept="CXDomain::IDL::CXField">
     <expression xsi:type="tool:OawXtend" name="Configure" expression="configureCORBAField" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
-  <item xsi:type="tool:CreateAction" generated="true" name="Attribute" createConcept="CORBADomain::IDL::CORBAAttribute">
+  <item xsi:type="tool:CreateAction" generated="true" name="Attribute" createConcept="CXDomain::IDL::CXAttribute">
     <expression xsi:type="tool:OawXtend" name="Configure" expression="configureCORBAAttribute" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
-  <item xsi:type="tool:CreateAction" generated="true" name="Operation" createConcept="CORBADomain::IDL::CORBAOperation"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="Case" createConcept="CORBADomain::IDL::CORBACase"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="Parameter" createConcept="CORBADomain::IDL::CORBAParameter"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Operation" createConcept="CXDomain::IDL::CXOperation"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Case" createConcept="CXDomain::IDL::CXCase"/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Parameter" createConcept="CXDomain::IDL::CXParameter"/>
   <item xsi:type="tool:CreateAction" generated="true" name="Message Port" createConcept="ZMLMM::ZML_Component::MessagePort"/>
   <item xsi:type="tool:CreateAction" generated="true" name="Operation" createConcept="ZMLMM::ZML_Component::Operation"/>
   <item xsi:type="tool:CreateAction" generated="true" name="QoS Property" createConcept="DDS::QOS::qosProperty" typeHint="">
@@ -130,70 +130,70 @@
   <item xsi:type="tool:CreateAction" generated="true" name="Field" createConcept="DDS4CCM::DDSExtensions::MessageField">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureMessageField" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
-      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Data Reader QoS" createConcept="DDS4CCM::QoSProfiles::DataReaderQoS">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureDataReaderQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
-      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Data Writer QoS" createConcept="DDS4CCM::QoSProfiles::DataWriterQoS">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureDataWriterQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
-      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Participant QoS" createConcept="DDS4CCM::QoSProfiles::ParticipantQoS">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureParticipantQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
-      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Publisher QoS" createConcept="DDS4CCM::QoSProfiles::PublisherQoS">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configurePublisherQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
-      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Subscriber QoS" createConcept="DDS4CCM::QoSProfiles::SubscriberQoS">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureSubscriberQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
-      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Topic QoS" createConcept="DDS4CCM::QoSProfiles::TopicQoS">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureTopicQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
+      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
-      <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
@@ -208,8 +208,8 @@
   <item xsi:type="tool:CreateAction" generated="true" name="Property" description="Creates a property." createConcept="CCM::CCM_Target::Property">
     <expression xsi:type="tool:OawXtend" name="config" expression="configureProperty" extensionFile="com::zeligsoft::domain::omg::ccm::util::config">
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
-      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:DelegateAction" generated="true" name="Monolithic Implementation" className="com.zeligsoft.domain.omg.ccm.ui.actions.AddMonolithicImplementation" hostBundle="com.zeligsoft.domain.omg.ccm.ui"/>
@@ -230,8 +230,8 @@
     <item xsi:type="tool:CreateAction" generated="true" name="Deployment Plan" createConcept="CCM::CCM_Deployment::DeploymentPlan">
       <expression xsi:type="tool:OawXtend" name="configure" expression="configureDeploymentPlan" extensionFile="com::zeligsoft::domain::omg::ccm::util::config">
         <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
-        <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
         <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+        <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
       </expression>
     </item>
     <item xsi:type="tool:MenuSeparator" name="zeligsoft.menuSeparator.CCM.deploymentMenuTargetSeparator"/>
@@ -256,14 +256,14 @@
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Template Module" createConcept="IDL3Plus::Generics::TemplateModule"/>
   <menu generated="true" concept="DDS4CCM::DDS4CCM::DDS4CCMModel" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.18 //@item.19 //@item.20 //@item.21 //@item.22 //@item.23 //@item.24 //@item.25 //@item.26 //@item.27 //@item.28 //@item.29 //@item.30 //@item.31"/>
-  <menu generated="true" concept="CORBADomain::IDL::CORBAConstants" item="//@item.32"/>
-  <menu generated="true" concept="CORBADomain::IDL::CORBAEnum" item="//@item.33"/>
-  <menu generated="true" concept="CORBADomain::IDL::CORBAException" item="//@item.34"/>
-  <menu generated="true" concept="CORBADomain::IDL::CORBAInterface" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.35 //@item.36 //@item.32"/>
-  <menu generated="true" concept="CORBADomain::IDL::CORBAStruct" item="//@item.34"/>
-  <menu generated="true" concept="CORBADomain::IDL::CORBAUnion" item="//@item.37"/>
-  <menu generated="true" concept="CORBADomain::IDL::CORBAModule" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.18 //@item.19 //@item.20 //@item.21 //@item.22 //@item.23 //@item.24 //@item.25 //@item.26 //@item.27 //@item.28 //@item.29 //@item.30 //@item.31"/>
-  <menu generated="true" concept="CORBADomain::IDL::CORBAOperation" item="//@item.38"/>
+  <menu generated="true" concept="CXDomain::IDL::CXConstants" item="//@item.32"/>
+  <menu generated="true" concept="CXDomain::IDL::CXEnum" item="//@item.33"/>
+  <menu generated="true" concept="CXDomain::IDL::CXException" item="//@item.34"/>
+  <menu generated="true" concept="CXDomain::IDL::CXInterface" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.35 //@item.36 //@item.32"/>
+  <menu generated="true" concept="CXDomain::IDL::CXStruct" item="//@item.34"/>
+  <menu generated="true" concept="CXDomain::IDL::CXUnion" item="//@item.37"/>
+  <menu generated="true" concept="CXDomain::IDL::CXModule" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.18 //@item.19 //@item.20 //@item.21 //@item.22 //@item.23 //@item.24 //@item.25 //@item.26 //@item.27 //@item.28 //@item.29 //@item.30 //@item.31"/>
+  <menu generated="true" concept="CXDomain::IDL::CXOperation" item="//@item.38"/>
   <menu generated="true" concept="ZMLMM::ZML_Component::ComponentInterface" item="//@item.39"/>
   <menu generated="true" concept="ZMLMM::ZML_Component::Interface" item="//@item.40"/>
   <menu generated="true" concept="DDS::Topics::Topic" item="//@item.41"/>

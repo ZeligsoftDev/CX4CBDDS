@@ -28,7 +28,7 @@ import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.ModelTypeEnum;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Component.InterfacePort;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAInterface;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXInterface;
 
 /**
  * Check if the connectorType associated with a port is non-empty given the interface which types the port is non-local 
@@ -55,11 +55,11 @@ public class ConnectorTypeNotEmptyConstraint extends AbstractModelConstraint {
 		
 		InterfacePort ip = ZDLFactoryRegistry.INSTANCE.create(objToVerify, InterfacePort.class);
 		
-		if(!(ip.getPorttype() instanceof CORBAInterface)){
+		if(!(ip.getPorttype() instanceof CXInterface)){
 			return ctx.createSuccessStatus();
 		}
 		
-		CORBAInterface portType = (CORBAInterface) ip.getPorttype();
+		CXInterface portType = (CXInterface) ip.getPorttype();
 		
 		boolean isLocalPortType = portType.getIsLocal();
 

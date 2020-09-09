@@ -15,7 +15,6 @@ public interface Classifier extends NamedEntity {
 	 * A predicate which returns true if the Object is an
 	 * instance of Classifier
 	 */
-	static final TypeSelectPredicate<Classifier> type = new TypeSelectPredicate<Classifier>(
-			"DDS::Core::Classifier", //$NON-NLS-1$
+	static final TypeSelectPredicate<Classifier> type = new TypeSelectPredicate<Classifier>("DDS::Core::Classifier", //$NON-NLS-1$
 			Classifier.class);
 }

@@ -8,8 +8,7 @@ public interface Interconnect extends NamedElement {
 
 	void addResource(ResourceProperty val);
 
-	<T extends ResourceProperty> T addResource(Class<T> typeToCreate,
-			String concept);
+	<T extends ResourceProperty> T addResource(Class<T> typeToCreate, String concept);
 
 	ResourceProperty addResource();
 

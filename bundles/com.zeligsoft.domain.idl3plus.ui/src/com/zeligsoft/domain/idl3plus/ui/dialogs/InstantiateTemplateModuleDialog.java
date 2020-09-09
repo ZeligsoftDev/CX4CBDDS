@@ -61,7 +61,7 @@ import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.idl3plus.ui.l10n.Messages;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * Template instantiation dialog
@@ -224,12 +224,12 @@ public class InstantiateTemplateModuleDialog extends ZDLElementSelectionDialog {
 								String constraint = (String) object.getLabel();
 								if (constraint.equals("array")) { //$NON-NLS-1$
 									if (ZDLUtil.isZDLConcept(eObject,
-											CORBADomainNames.CORBAARRAY)) {
+											CXDomainNames.CXARRAY)) {
 										return true;
 									}
 								} else if (constraint.equals("enum")) { //$NON-NLS-1$
 									if (ZDLUtil.isZDLConcept(eObject,
-											CORBADomainNames.CORBAENUM)) {
+											CXDomainNames.CXENUM)) {
 										return true;
 									}
 								} else if (constraint.equals("eventtype")) { //$NON-NLS-1$
@@ -238,7 +238,7 @@ public class InstantiateTemplateModuleDialog extends ZDLElementSelectionDialog {
 									}
 								} else if (constraint.equals("interface")) { //$NON-NLS-1$
 									if (ZDLUtil.isZDLConcept(eObject,
-											CORBADomainNames.CORBAINTERFACE)) {
+											CXDomainNames.CXINTERFACE)) {
 										return true;
 									}
 								} else if (constraint.equals("sequence")) { //$NON-NLS-1$
@@ -257,23 +257,23 @@ public class InstantiateTemplateModuleDialog extends ZDLElementSelectionDialog {
 										return false;
 									}
 									if (ZDLUtil.isZDLConcept(eObject,
-											CORBADomainNames.CORBASEQUENCE)) {
+											CXDomainNames.CXSEQUENCE)) {
 										return true;
 									}
 								} else if (constraint.equals("struct")) { //$NON-NLS-1$
 									if (ZDLUtil.isZDLConcept(eObject,
-											CORBADomainNames.CORBASTRUCT)) {
+											CXDomainNames.CXSTRUCT)) {
 										return true;
 									}
 
 								} else if (constraint.equals("union")) { //$NON-NLS-1$
 									if (ZDLUtil.isZDLConcept(eObject,
-											CORBADomainNames.CORBAUNION)) {
+											CXDomainNames.CXUNION)) {
 										return true;
 									}
 								} else if (constraint.equals("typename")) { //$NON-NLS-1$
 									if (ZDLUtil.isZDLConcept(eObject,
-											CORBADomainNames.CORBATYPE)) {
+											CXDomainNames.CXTYPE)) {
 										return true;
 									}
 								}

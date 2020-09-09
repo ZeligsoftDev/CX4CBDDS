@@ -49,7 +49,7 @@ import com.zeligsoft.base.util.FilteringList;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -112,12 +112,12 @@ public class CleanReferencesActionHandler extends AbstractHandler {
 				itor.prune();
 				continue;
 			} else if (ZDLUtil.isZDLConcept(next,
-					CORBADomainNames.CORBAATTRIBUTE)) {
+					CXDomainNames.CXATTRIBUTE)) {
 
 				@SuppressWarnings("rawtypes")
 				List attribute = (List) ZDLUtil.getValue(next,
-						CORBADomainNames.CORBAATTRIBUTE,
-						CORBADomainNames.CORBAATTRIBUTE__SETRAISES);
+						CXDomainNames.CXATTRIBUTE,
+						CXDomainNames.CXATTRIBUTE__SETRAISES);
 
 				for (Object attributeObj : attribute) {
 					boolean setNull = false;
@@ -134,8 +134,8 @@ public class CleanReferencesActionHandler extends AbstractHandler {
 
 						if (setNull || resource == null) {
 							changeCommand = getChangedZDLTypeCommand(domain,
-									next, CORBADomainNames.CORBAATTRIBUTE,
-									CORBADomainNames.CORBAATTRIBUTE__SETRAISES);
+									next, CXDomainNames.CXATTRIBUTE,
+									CXDomainNames.CXATTRIBUTE__SETRAISES);
 							compositeCommand.append(changeCommand);
 						}
 					}
@@ -219,10 +219,10 @@ public class CleanReferencesActionHandler extends AbstractHandler {
 					index++;
 				}
 			} else if (ZDLUtil.isZDLConcept(next,
-					CORBADomainNames.CORBAOPERATION)) {
+					CXDomainNames.CXOPERATION)) {
 				EObject idl = ZDLUtil.getEValue(next,
-						CORBADomainNames.CORBAOPERATION,
-						CORBADomainNames.CORBAOPERATION__IDL_TYPE);
+						CXDomainNames.CXOPERATION,
+						CXDomainNames.CXOPERATION__IDL_TYPE);
 				boolean setNull = false;
 
 				if (idl != null) {
@@ -235,14 +235,14 @@ public class CleanReferencesActionHandler extends AbstractHandler {
 
 					if (setNull || resourceIdl == null) {
 						changeCommand = getChangedZDLTypeCommand(domain, next,
-								CORBADomainNames.CORBAOPERATION,
-								CORBADomainNames.CORBAOPERATION__IDL_TYPE);
+								CXDomainNames.CXOPERATION,
+								CXDomainNames.CXOPERATION__IDL_TYPE);
 						compositeCommand.append(changeCommand);
 					}
 				}
 				Object ownedParameter = ZDLUtil.getValue(next,
-						CORBADomainNames.CORBAOPERATION,
-						CORBADomainNames.CORBAOPERATION__OWNED_PARAMETER);
+						CXDomainNames.CXOPERATION,
+						CXDomainNames.CXOPERATION__OWNED_PARAMETER);
 
 				for (Object ownedParameterObj : ((FilteringList<?>) ownedParameter)) {
 					setNull = false;
@@ -261,15 +261,15 @@ public class CleanReferencesActionHandler extends AbstractHandler {
 							changeCommand = getChangedZDLTypeCommand(
 									domain,
 									next,
-									CORBADomainNames.CORBAOPERATION,
-									CORBADomainNames.CORBAOPERATION__OWNED_PARAMETER);
+									CXDomainNames.CXOPERATION,
+									CXDomainNames.CXOPERATION__OWNED_PARAMETER);
 							compositeCommand.append(changeCommand);
 						}
 					}
 				}
 				Object raisedException = ZDLUtil.getValue(next,
-						CORBADomainNames.CORBAOPERATION,
-						CORBADomainNames.CORBAOPERATION__EXCEPTION_DEF);
+						CXDomainNames.CXOPERATION,
+						CXDomainNames.CXOPERATION__EXCEPTION_DEF);
 
 				for (Object raisedExceptionObj : ((FilteringList<?>) raisedException)) {
 					setNull = false;
@@ -288,8 +288,8 @@ public class CleanReferencesActionHandler extends AbstractHandler {
 							changeCommand = getChangedZDLTypeCommand(
 									domain,
 									next,
-									CORBADomainNames.CORBAOPERATION,
-									CORBADomainNames.CORBAOPERATION__EXCEPTION_DEF);
+									CXDomainNames.CXOPERATION,
+									CXDomainNames.CXOPERATION__EXCEPTION_DEF);
 							compositeCommand.append(changeCommand);
 						}
 					}

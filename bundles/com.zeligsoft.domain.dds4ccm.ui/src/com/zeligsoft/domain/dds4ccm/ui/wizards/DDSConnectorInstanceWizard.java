@@ -42,7 +42,7 @@ import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * DDS Connector Instance wizard
@@ -80,7 +80,7 @@ public class DDSConnectorInstanceWizard extends Wizard {
 				DataType message = (DataType) BaseUIUtil.createZDLModelElement(context,
 						DDS4CCMNames.DDSMESSAGE);
 				DataType sequence = (DataType) BaseUIUtil.createZDLModelElement(context,
-						CORBADomainNames.CORBASEQUENCE);
+						CXDomainNames.CXSEQUENCE);
 
 				if (message == null || sequence == null) {
 					CommandResult.newCancelledCommandResult();

@@ -45,7 +45,7 @@ import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.DDS4CCMModel;
 import com.zeligsoft.domain.dds4ccm.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.util.CORBAUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
@@ -116,32 +116,32 @@ public class DDS4CCMUtil {
 	 */
 	public static boolean isUsedAsynchronously(Interface intf) {
 
-		if (ZDLUtil.isZDLConcept(intf, CORBADomainNames.CORBAINTERFACE) == false) {
+		if (ZDLUtil.isZDLConcept(intf, CXDomainNames.CXINTERFACE) == false) {
 			return false;
 		}
 
 		return (Boolean) ZDLUtil.getValue(intf,
-				CORBADomainNames.CORBAINTERFACE,
-				CORBADomainNames.CORBAINTERFACE__IS_ASYNCHRONOUS);
+				CXDomainNames.CXINTERFACE,
+				CXDomainNames.CXINTERFACE__IS_ASYNCHRONOUS);
 	}
 	
 	/**
-	 * Returns true if the CORBAInterface is neither local nor asynchronous.
+	 * Returns true if the CXInterface is neither local nor asynchronous.
 	 * 
 	 * @param intf
 	 * @return
 	 */
 	public static boolean isUsedSynchronously(Interface intf) {
 
-		if (ZDLUtil.isZDLConcept(intf, CORBADomainNames.CORBAINTERFACE) == false) {
+		if (ZDLUtil.isZDLConcept(intf, CXDomainNames.CXINTERFACE) == false) {
 			return false;
 		}
 		boolean isAsynchronous = (Boolean) ZDLUtil.getValue(intf,
-				CORBADomainNames.CORBAINTERFACE,
-				CORBADomainNames.CORBAINTERFACE__IS_ASYNCHRONOUS);
+				CXDomainNames.CXINTERFACE,
+				CXDomainNames.CXINTERFACE__IS_ASYNCHRONOUS);
 		boolean isLocal = (Boolean) ZDLUtil.getValue(intf,
-				CORBADomainNames.CORBAINTERFACE,
-				CORBADomainNames.CORBAINTERFACE__IS_LOCAL);
+				CXDomainNames.CXINTERFACE,
+				CXDomainNames.CXINTERFACE__IS_LOCAL);
 		return !isAsynchronous && !isLocal;
 	}
 
@@ -260,11 +260,11 @@ public class DDS4CCMUtil {
 		// isn't already stored in UML, it's safe to unapply
 		// and reapply the stereotypes. This logic is specific to the DDS4CCM
 		// profile.
-		Stereotype s = struct.getAppliedStereotype("cxDDS4CCM::CORBAStruct");
+		Stereotype s = struct.getAppliedStereotype("cxDDS4CCM::CXStruct");
 		struct.unapplyStereotype(s);
 		ZDLUtil.addZDLConcept(struct, DDS4CCMNames.DDSMESSAGE);
 		for (Element sub : struct.getOwnedElements()) {
-			s = sub.getAppliedStereotype("cxDDS4CCM::CORBAField");
+			s = sub.getAppliedStereotype("cxDDS4CCM::CXField");
 			if (s != null) {
 				sub.unapplyStereotype(s);
 				ZDLUtil.addZDLConcept(sub, DDS4CCMNames.MESSAGE_FIELD);
@@ -281,7 +281,7 @@ public class DDS4CCMUtil {
 	}
 	
 	/**
-	 * Converts DDSMeesage to CORBAStruct
+	 * Converts DDSMeesage to CXStruct
 	 * @param ddsMessage
 	 */
 	@SuppressWarnings("nls")
@@ -289,7 +289,7 @@ public class DDS4CCMUtil {
 		Stereotype stereotype = ddsMessage
 				.getAppliedStereotype("cxDDS4CCM::DDSMessage"); 
 		ddsMessage.unapplyStereotype(stereotype);
-		ZDLUtil.addZDLConcept(ddsMessage, CORBADomainNames.CORBASTRUCT);
+		ZDLUtil.addZDLConcept(ddsMessage, CXDomainNames.CXSTRUCT);
 
 		for (Element element : ddsMessage.getOwnedElements()) {
 			stereotype = element
@@ -297,13 +297,13 @@ public class DDS4CCMUtil {
 
 			if (stereotype != null) {
 				element.unapplyStereotype(stereotype);
-				ZDLUtil.addZDLConcept(element, CORBADomainNames.CORBAFIELD);
+				ZDLUtil.addZDLConcept(element, CXDomainNames.CXFIELD);
 			}	
 		}
 	}
 	
 	/**
-	 * Reapplies stereotypes to fields of CORBAStruct and DDSMessage
+	 * Reapplies stereotypes to fields of CXStruct and DDSMessage
 	 * 
 	 * @param element
 	 * @return
@@ -312,11 +312,11 @@ public class DDS4CCMUtil {
 		Boolean stereotypeApplied = false;
 		if (ZDLUtil.isZDLConcept(element, DDS4CCMNames.DDSMESSAGE)) {
 			for (Element field : element.getOwnedElements()) {
-				if(!ZDLUtil.isZDLConcept(field, CORBADomainNames.CORBAFIELD)){
+				if(!ZDLUtil.isZDLConcept(field, CXDomainNames.CXFIELD)){
 					continue;
 				}
 				Stereotype stereotype = field
-						.getAppliedStereotype("cxDDS4CCM::CORBAField"); //$NON-NLS-1$
+						.getAppliedStereotype("cxDDS4CCM::CXField"); //$NON-NLS-1$
 				if (stereotype != null) {
 					field.unapplyStereotype(stereotype);
 					ZDLUtil.addZDLConcept(field, DDS4CCMNames.MESSAGE_FIELD);
@@ -328,21 +328,21 @@ public class DDS4CCMUtil {
 					}
 				}
 			}
-		} else if (ZDLUtil.isZDLConcept(element, CORBADomainNames.CORBASTRUCT)) {
+		} else if (ZDLUtil.isZDLConcept(element, CXDomainNames.CXSTRUCT)) {
 			for (Element field : element.getOwnedElements()) {
-				if(!ZDLUtil.isZDLConcept(field, CORBADomainNames.CORBAFIELD)){
+				if(!ZDLUtil.isZDLConcept(field, CXDomainNames.CXFIELD)){
 					continue;
 				}
 				Stereotype stereotype = field
 						.getAppliedStereotype("cxDDS4CCM::MessageField"); //$NON-NLS-1$
 				if (stereotype != null) {
 					field.unapplyStereotype(stereotype);
-					ZDLUtil.addZDLConcept(field, CORBADomainNames.CORBAFIELD);
+					ZDLUtil.addZDLConcept(field, CXDomainNames.CXFIELD);
 					stereotypeApplied = true;
 				} else {
-					if (!ZDLUtil.isZDLConcept(field, CORBADomainNames.CORBAFIELD)) {
+					if (!ZDLUtil.isZDLConcept(field, CXDomainNames.CXFIELD)) {
 						ZDLUtil.addZDLConcept(field,
-								CORBADomainNames.CORBAFIELD);
+								CXDomainNames.CXFIELD);
 						stereotypeApplied = true;
 					}
 				}

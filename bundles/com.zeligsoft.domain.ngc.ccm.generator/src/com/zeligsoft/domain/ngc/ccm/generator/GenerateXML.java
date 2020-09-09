@@ -37,7 +37,7 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.codegen.CodeTagGeneratorUtil;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.dsl.idl.ComponentDecl;
 import com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Module;
@@ -180,7 +180,7 @@ public class GenerateXML extends WorkflowComponentWithModelSlot {
 		NamedElement namedElement = intf;
 
 		while( namedElement != null ) {
-			if( ZDLUtil.isZDLConcept(namedElement, CORBADomainNames.CORBANAMED_ELEMENT)
+			if( ZDLUtil.isZDLConcept(namedElement, CXDomainNames.CXNAMED_ELEMENT)
 					|| ZDLUtil.isZDLConcept(namedElement, CCMNames.MONOLITHIC_IMPLEMENTATION)) {
 				if( repositoryId.matches("") == false) {
 					repositoryId = "/" + repositoryId;
@@ -188,7 +188,7 @@ public class GenerateXML extends WorkflowComponentWithModelSlot {
 				repositoryId = namedElement.getName() + repositoryId;
 				namedElement = (NamedElement)namedElement.getOwner();	
 			} else if( namedElement instanceof org.eclipse.uml2.uml.Package ) {
-				// A UML package should be skipped since its container could still be a CORBA Element.
+				// A UML package should be skipped since its container could still be a CX Element.
 				namedElement = (NamedElement)namedElement.getOwner();
 			} else {
 				// Any other object means we are done calculating the repository ID.

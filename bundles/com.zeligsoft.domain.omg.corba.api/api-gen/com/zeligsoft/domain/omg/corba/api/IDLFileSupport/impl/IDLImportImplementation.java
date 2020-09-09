@@ -19,13 +19,10 @@ public class IDLImportImplementation extends ZObjectImpl implements IDLImport {
 	@Override
 	public IDLFile getTarget() {
 		if (_target == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"CORBADomain::IDLFileSupport::IDLImport", "target");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"CXDomain::IDLFileSupport::IDLImport", "target");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_target = ZDLFactoryRegistry.INSTANCE
-						.create((org.eclipse.emf.ecore.EObject) rawValue,
-								IDLFile.class);
+				_target = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue, IDLFile.class);
 			}
 		}
 		return _target;
@@ -33,8 +30,7 @@ public class IDLImportImplementation extends ZObjectImpl implements IDLImport {
 
 	@Override
 	public void setTarget(IDLFile val) {
-		ZDLUtil.setValue(element, "CORBADomain::IDLFileSupport::IDLImport",
-				"target", val.eObject());
+		ZDLUtil.setValue(element, "CXDomain::IDLFileSupport::IDLImport", "target", val.eObject());
 	}
 
 	@Override

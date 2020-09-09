@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-import CORBADomain::IDL;
+import CXDomain::IDL;
 import CCM::CCM_Component;
 import IDL3Plus::Connectors;
 import IDL3Plus::Generics;
@@ -99,38 +99,38 @@ create idl::TemplateModule visitContained(TemplateModule self) :
 	this.parameters.addAll(self.signature.typeParameter.formalParameter()) ->
 	this.definitions.addAll(self.zdlAsPackage().packagedElement.visitTemplateContained());
 
-idl::TypeDeclarator visitTemplateContained(CORBATypeDef zTypeDef) :
+idl::TypeDeclarator visitTemplateContained(CXTypeDef zTypeDef) :
 	visitContained(zTypeDef);
 
-List visitTemplateContained(CORBAConstants zConstants):
+List visitTemplateContained(CXConstants zConstants):
 	visitContained(zConstants);
 	
-idl::EnumType visitTemplateContained(CORBAEnum zEnum) :
+idl::EnumType visitTemplateContained(CXEnum zEnum) :
 	visitContained(zEnum);
 	
-idl::TypeDeclarator visitTemplateContained(CORBASequence zSeq) :
+idl::TypeDeclarator visitTemplateContained(CXSequence zSeq) :
 	visitContained(zSeq);
 	
-idl::TypeDeclarator visitTemplateContained(CORBAString zString) :
+idl::TypeDeclarator visitTemplateContained(CXString zString) :
 	visitContained(zString);
 	
-idl::TypeDeclarator visitTemplateContained(CORBAWString zString) :
+idl::TypeDeclarator visitTemplateContained(CXWString zString) :
 	visitContained(zString);
 	
-idl::TypeDeclarator visitTemplateContained(CORBAArray zArray) :
+idl::TypeDeclarator visitTemplateContained(CXArray zArray) :
 	visitContained(zArray);
 	
-idl::UnionType visitTemplateContained(CORBAUnion zUnion) :
+idl::UnionType visitTemplateContained(CXUnion zUnion) :
 	visitContained(zUnion);
 	
-idl::ExceptDecl visitTemplateContained(CORBAException zEx) :
+idl::ExceptDecl visitTemplateContained(CXException zEx) :
 	visitContained(zEx);
 	
-idl::Interface_decl visitTemplateContained(CORBAInterface zIntf) :
+idl::Interface_decl visitTemplateContained(CXInterface zIntf) :
 	visitContained(zIntf);
 	
 
-idl::StructType visitTemplateContained(CORBAStruct zStruct ) :
+idl::StructType visitTemplateContained(CXStruct zStruct ) :
 	visitContained(zStruct);
 	
 idl::NativeType visitTemplateContained(Native zNative) :
@@ -160,7 +160,7 @@ create idl::TemplateModuleRef visitTemplateContained(ModuleInstantiation zSelf )
 Void visitTemplateContained(uml::Usage zSelf) :
 	{}; 
 	
-create idl::FixedModule visitTemplateContained(CORBAModule zModule) :
+create idl::FixedModule visitTemplateContained(CXModule zModule) :
 	setName(zModule.name) ->
 	this.definitions.addAll(zModule.zdlAsPackage().packagedElement.visitTemplateContained());
 	
@@ -196,28 +196,28 @@ create idl::ConnectorHeader connectorHeader(idl::Connector connector, ConnectorD
 private Void connectorBody(idl::Connector this, ConnectorDef connector) :
 	this.exports.addAll(connector.zdlAsComponent().ownedElement.visitContained());
 	
-idl::ScopedName toScopedName(ConnectorDef self, CORBANamedElement element) :
+idl::ScopedName toScopedName(ConnectorDef self, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(self), scopedNameFromNamedElementForIDL3(element))
 		-> newScopedName;
 
-idl::ScopedName toScopedName(ExtendedPortType self, CORBANamedElement element ) :
+idl::ScopedName toScopedName(ExtendedPortType self, CXNamedElement element ) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(self), scopedNameFromNamedElementForIDL3(element))
 		-> newScopedName;
 	
-idl::ScopedName toScopedName(CORBAType self, CORBANamedElement element ) :
+idl::ScopedName toScopedName(CXType self, CXNamedElement element ) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(self), scopedNameFromNamedElementForIDL3(element))
 		-> newScopedName;
 		
-idl::ScopedName toScopedName(CORBAType self) :
+idl::ScopedName toScopedName(CXType self) :
 	let newScopedName = new ScopedName :
 		newScopedName.name.add(scopedNameFromNamedElementForIDL3(self)) ->
 		newScopedName;
 
 
-idl::ScopedName toScopedName(TemplateModule self, CORBANamedElement element) :
+idl::ScopedName toScopedName(TemplateModule self, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(scopedNameFromNamedElementForIDL3(self), scopedNameFromNamedElementForIDL3(element))
 		-> newScopedName;

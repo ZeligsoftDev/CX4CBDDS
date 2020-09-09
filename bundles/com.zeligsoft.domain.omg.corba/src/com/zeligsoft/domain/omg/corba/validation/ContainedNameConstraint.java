@@ -22,7 +22,7 @@ import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -45,15 +45,15 @@ public class ContainedNameConstraint extends AbstractModelConstraint {
 	public IStatus validate(IValidationContext ctx) {	
 		EObject objToVerify = ctx.getTarget();
 		
-		if(ZDLUtil.isZDLConcept(objToVerify, CORBADomainNames.CORBANAMED_ELEMENT)) {
+		if(ZDLUtil.isZDLConcept(objToVerify, CXDomainNames.CXNAMED_ELEMENT)) {
 			EObject container = objToVerify.eContainer();
 			
-			if(ZDLUtil.isZDLConcept(container, CORBADomainNames.CORBANAMED_ELEMENT)) {
+			if(ZDLUtil.isZDLConcept(container, CXDomainNames.CXNAMED_ELEMENT)) {
 				String objName = (String) ZDLUtil.getValue(objToVerify, 
-						CORBADomainNames.CORBANAMED_ELEMENT, 
+						CXDomainNames.CXNAMED_ELEMENT, 
 						ZMLMMNames.NAMED_ELEMENT__NAME);
 				String containerName = (String) ZDLUtil.getValue(container, 
-						CORBADomainNames.CORBANAMED_ELEMENT, 
+						CXDomainNames.CXNAMED_ELEMENT, 
 						ZMLMMNames.NAMED_ELEMENT__NAME);
 				
 				if( objName == null || containerName == null ) {

@@ -6,14 +6,13 @@ import com.zeligsoft.domain.omg.ccm.api.CCM_Component.CCMComponent;
 import com.zeligsoft.domain.zml.api.ZML_Component.impl.ComponentInterfaceImplementation;
 
 import com.zeligsoft.domain.omg.ccm.api.CCM_Target.Property;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAAttribute;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXAttribute;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class CCMComponentImplementation extends
-		ComponentInterfaceImplementation implements CCMComponent {
-	protected java.util.List<CORBAAttribute> _ownedAttribute;
+public class CCMComponentImplementation extends ComponentInterfaceImplementation implements CCMComponent {
 	protected java.util.List<CCMComponent> _generals;
+	protected java.util.List<CXAttribute> _ownedAttribute;
 	protected java.util.List<Property> _ownedProperty;
 
 	public CCMComponentImplementation(org.eclipse.emf.ecore.EObject element) {
@@ -21,99 +20,17 @@ public class CCMComponentImplementation extends
 	}
 
 	@Override
-	public String getName() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "ZMLMM::ZML_Core::NamedElement", "name");
-		return (String) rawValue;
-	}
-
-	@Override
-	public void setName(String val) {
-		ZDLUtil.setValue(element, "ZMLMM::ZML_Core::NamedElement", "name", val);
-	}
-
-	@Override
-	public java.util.List<CORBAAttribute> getOwnedAttribute() {
-		if (_ownedAttribute == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "CCM::CCM_Component::CCMComponent",
-							"ownedAttribute");
-			_ownedAttribute = new java.util.ArrayList<CORBAAttribute>();
-			@SuppressWarnings("unchecked")
-			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
-			for (Object next : rawList) {
-				if (next instanceof org.eclipse.emf.ecore.EObject) {
-					CORBAAttribute nextWrapper = ZDLFactoryRegistry.INSTANCE
-							.create((org.eclipse.emf.ecore.EObject) next,
-									CORBAAttribute.class);
-					_ownedAttribute.add(nextWrapper);
-				}
-			}
-		}
-		return _ownedAttribute;
-	}
-
-	@Override
-	public void addOwnedAttribute(CORBAAttribute val) {
-		// make sure the ownedAttribute list is created
-		getOwnedAttribute();
-
-		final Object rawValue = ZDLUtil.getValue(element,
-				"CCM::CCM_Component::CCMComponent", "ownedAttribute");
-		@SuppressWarnings("unchecked")
-		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
-		rawList.add(val.eObject());
-		if (_ownedAttribute != null) {
-			_ownedAttribute.add(val);
-		}
-	}
-
-	@Override
-	public <T extends CORBAAttribute> T addOwnedAttribute(
-			Class<T> typeToCreate, String concept) {
-		// make sure the ownedAttribute list is created
-		getOwnedAttribute();
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "CCM::CCM_Component::CCMComponent", "ownedAttribute",
-				concept);
-		T element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, typeToCreate);
-		if (_ownedAttribute != null) {
-			_ownedAttribute.add(element);
-		}
-		return element;
-	}
-
-	@Override
-	public CORBAAttribute addOwnedAttribute() {
-		// make sure the ownedAttribute list is created
-		getOwnedAttribute();
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "CCM::CCM_Component::CCMComponent", "ownedAttribute",
-				"CORBADomain::IDL::CORBAAttribute");
-		CORBAAttribute element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept,
-				CORBAAttribute.class);
-		if (_ownedAttribute != null) {
-			_ownedAttribute.add(element);
-		}
-		return element;
-	}
-
-	@Override
 	public java.util.List<CCMComponent> getGenerals() {
 		if (_generals == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "CCM::CCM_Component::CCMComponent",
-							"generals");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"CCM::CCM_Component::CCMComponent", "generals");
 			_generals = new java.util.ArrayList<CCMComponent>();
 			@SuppressWarnings("unchecked")
 			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 			for (Object next : rawList) {
 				if (next instanceof org.eclipse.emf.ecore.EObject) {
-					CCMComponent nextWrapper = ZDLFactoryRegistry.INSTANCE
-							.create((org.eclipse.emf.ecore.EObject) next,
-									CCMComponent.class);
+					CCMComponent nextWrapper = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) next,
+							CCMComponent.class);
 					_generals.add(nextWrapper);
 				}
 			}
@@ -126,8 +43,7 @@ public class CCMComponentImplementation extends
 		// make sure the generals list is created
 		getGenerals();
 
-		final Object rawValue = ZDLUtil.getValue(element,
-				"CCM::CCM_Component::CCMComponent", "generals");
+		final Object rawValue = ZDLUtil.getValue(element, "CCM::CCM_Component::CCMComponent", "generals");
 		@SuppressWarnings("unchecked")
 		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 		rawList.add(val.eObject());
@@ -138,24 +54,94 @@ public class CCMComponentImplementation extends
 
 	@Override
 	public String getQualifiedName() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "ZMLMM::ZML_Core::NamedElement", "qualifiedName");
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "ZMLMM::ZML_Core::NamedElement",
+				"qualifiedName");
 		return (String) rawValue;
+	}
+
+	@Override
+	public String getName() {
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "ZMLMM::ZML_Core::NamedElement",
+				"name");
+		return (String) rawValue;
+	}
+
+	@Override
+	public void setName(String val) {
+		ZDLUtil.setValue(element, "ZMLMM::ZML_Core::NamedElement", "name", val);
+	}
+
+	@Override
+	public java.util.List<CXAttribute> getOwnedAttribute() {
+		if (_ownedAttribute == null) {
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"CCM::CCM_Component::CCMComponent", "ownedAttribute");
+			_ownedAttribute = new java.util.ArrayList<CXAttribute>();
+			@SuppressWarnings("unchecked")
+			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
+			for (Object next : rawList) {
+				if (next instanceof org.eclipse.emf.ecore.EObject) {
+					CXAttribute nextWrapper = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) next,
+							CXAttribute.class);
+					_ownedAttribute.add(nextWrapper);
+				}
+			}
+		}
+		return _ownedAttribute;
+	}
+
+	@Override
+	public void addOwnedAttribute(CXAttribute val) {
+		// make sure the ownedAttribute list is created
+		getOwnedAttribute();
+
+		final Object rawValue = ZDLUtil.getValue(element, "CCM::CCM_Component::CCMComponent", "ownedAttribute");
+		@SuppressWarnings("unchecked")
+		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
+		rawList.add(val.eObject());
+		if (_ownedAttribute != null) {
+			_ownedAttribute.add(val);
+		}
+	}
+
+	@Override
+	public <T extends CXAttribute> T addOwnedAttribute(Class<T> typeToCreate, String concept) {
+		// make sure the ownedAttribute list is created
+		getOwnedAttribute();
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element, "CCM::CCM_Component::CCMComponent",
+				"ownedAttribute", concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(newConcept, typeToCreate);
+		if (_ownedAttribute != null) {
+			_ownedAttribute.add(element);
+		}
+		return element;
+	}
+
+	@Override
+	public CXAttribute addOwnedAttribute() {
+		// make sure the ownedAttribute list is created
+		getOwnedAttribute();
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element, "CCM::CCM_Component::CCMComponent",
+				"ownedAttribute", "CXDomain::IDL::CXAttribute");
+		CXAttribute element = ZDLFactoryRegistry.INSTANCE.create(newConcept,
+				CXAttribute.class);
+		if (_ownedAttribute != null) {
+			_ownedAttribute.add(element);
+		}
+		return element;
 	}
 
 	@Override
 	public java.util.List<Property> getOwnedProperty() {
 		if (_ownedProperty == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "CCM::CCM_Component::CCMComponent",
-							"ownedProperty");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"CCM::CCM_Component::CCMComponent", "ownedProperty");
 			_ownedProperty = new java.util.ArrayList<Property>();
 			@SuppressWarnings("unchecked")
 			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 			for (Object next : rawList) {
 				if (next instanceof org.eclipse.emf.ecore.EObject) {
-					Property nextWrapper = ZDLFactoryRegistry.INSTANCE.create(
-							(org.eclipse.emf.ecore.EObject) next,
+					Property nextWrapper = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) next,
 							Property.class);
 					_ownedProperty.add(nextWrapper);
 				}
@@ -169,8 +155,7 @@ public class CCMComponentImplementation extends
 		// make sure the ownedProperty list is created
 		getOwnedProperty();
 
-		final Object rawValue = ZDLUtil.getValue(element,
-				"CCM::CCM_Component::CCMComponent", "ownedProperty");
+		final Object rawValue = ZDLUtil.getValue(element, "CCM::CCM_Component::CCMComponent", "ownedProperty");
 		@SuppressWarnings("unchecked")
 		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 		rawList.add(val.eObject());
@@ -180,15 +165,12 @@ public class CCMComponentImplementation extends
 	}
 
 	@Override
-	public <T extends Property> T addOwnedProperty(Class<T> typeToCreate,
-			String concept) {
+	public <T extends Property> T addOwnedProperty(Class<T> typeToCreate, String concept) {
 		// make sure the ownedProperty list is created
 		getOwnedProperty();
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "CCM::CCM_Component::CCMComponent", "ownedProperty",
-				concept);
-		T element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, typeToCreate);
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element, "CCM::CCM_Component::CCMComponent",
+				"ownedProperty", concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(newConcept, typeToCreate);
 		if (_ownedProperty != null) {
 			_ownedProperty.add(element);
 		}
@@ -199,11 +181,10 @@ public class CCMComponentImplementation extends
 	public Property addOwnedProperty() {
 		// make sure the ownedProperty list is created
 		getOwnedProperty();
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "CCM::CCM_Component::CCMComponent", "ownedProperty",
-				"CCM::CCM_Target::Property");
-		Property element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, Property.class);
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element, "CCM::CCM_Component::CCMComponent",
+				"ownedProperty", "CCM::CCM_Target::Property");
+		Property element = ZDLFactoryRegistry.INSTANCE.create(newConcept,
+				Property.class);
 		if (_ownedProperty != null) {
 			_ownedProperty.add(element);
 		}

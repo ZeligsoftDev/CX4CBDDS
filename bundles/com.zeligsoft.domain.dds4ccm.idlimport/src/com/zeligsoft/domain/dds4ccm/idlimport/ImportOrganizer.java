@@ -16,16 +16,20 @@
  */
 package com.zeligsoft.domain.dds4ccm.idlimport;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Component;
@@ -35,12 +39,12 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Property;
 
-//import com.ibm.xtools.uml.type.UMLElementFactory;
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.dsl.idl.File_Marker;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
@@ -123,7 +127,7 @@ public class ImportOrganizer {
 	}
 	
 	/**
-	 * Create packages below the element's owner (generally a CORBAModule) and itself based
+	 * Create packages below the element's owner (generally a CXModule) and itself based
 	 * on the file name where the element is imported from.
 	 * 
 	 * @param elementName
@@ -131,6 +135,7 @@ public class ImportOrganizer {
 	public static void addElementToPackage(String elementName) {
 		PackageableElement element = findElement(elementName);
 	
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(element);
 		String currentFullFile = fileMap.get(currentFile);
 		
 		//The file is not in the fileMap 
@@ -148,10 +153,10 @@ public class ImportOrganizer {
 			currentPackage = currentPackage.getNestedPackage(s);
 		}
 		// Contents of a module go into a common package with different naming rules.
-		if( ZDLUtil.isZDLConcept(element, CORBADomainNames.CORBACLASSIFIER_CONTAINED)
+		if( ZDLUtil.isZDLConcept(element, CXDomainNames.CXCLASSIFIER_CONTAINED)
 			&& !ZDLUtil.isZDLConcept(element, DDS4CCMNames.DDSMESSAGE)) {
 			
-			if( ZDLUtil.isZDLConcept(element, CORBADomainNames.CORBASEQUENCE) &&
+			if( ZDLUtil.isZDLConcept(element, CXDomainNames.CXSEQUENCE) &&
 				ZDLUtil.isZDLConcept(((Property)((DataType)element).getOwnedMember("members")).getType(), DDS4CCMNames.DDSMESSAGE)) {
 				// The sequence for a DDSMessage. Goes into the same package as the DDSMessage by 
 				// default, which is the correct behavior, so don't do anything special here.
@@ -159,7 +164,7 @@ public class ImportOrganizer {
 				String packageName = packages[packages.length - 1].replace(".idl", "");
 				Element e = element.getOwner();
 				while( e != null) {
-					if( ZDLUtil.isZDLConcept(e, CORBADomainNames.CORBAMODULE)) {
+					if( ZDLUtil.isZDLConcept(e, CXDomainNames.CXMODULE)) {
 						packageName = packageName.replace(ZDLUtil.getValue(e, ZMLMMNames.NAMED_ELEMENT, ZMLMMNames.NAMED_ELEMENT__NAME) + "_", "");
 					}
 					e = e.getOwner();
@@ -171,17 +176,19 @@ public class ImportOrganizer {
 			}
 			
 		}
-		if( ZDLUtil.isZDLConcept( element, CORBADomainNames.CORBACONSTANTS)) {
+		if( ZDLUtil.isZDLConcept( element, CXDomainNames.CXCONSTANTS)) {
 			if( currentPackage.getPackagedElement(element.getName()) == null ) {
-				EObject constants = ZDLUtil.createZDLConceptIn(currentPackage, CORBADomainNames.CORBACONSTANTS);
+				EObject constants = ZDLUtil.createZDLConceptIn(currentPackage, CXDomainNames.CXCONSTANTS);
 				ZDLUtil.setValue(constants, ZMLMMNames.NAMED_ELEMENT, ZMLMMNames.NAMED_ELEMENT__NAME, element.getName());
 			}
 			Class constants = (Class)currentPackage.getPackagedElement(element.getName());
 			Property constant = (Property)((Class)element).getOwnedMember(elementName);
 			constants.getOwnedAttributes().add(constant);
 			if( element.getOwnedElements().size() == 0) {
-				
-				// ToDo: UMLElementFactory.destroyElement(element, null);
+				Command cmd = BaseUtil.getDeleteCommand(element);
+				if(cmd.canExecute()) {
+					editingDomain.getCommandStack().execute(cmd);
+				}
 			}
 		} else {
 			currentPackage.getPackagedElements().add(element);
@@ -212,15 +219,23 @@ public class ImportOrganizer {
 							ZDLUtil.isZDLConcept(s.getEObject(), CCMNames.MANAGES)) {
 						Element home = (Element) ZDLUtil.getValue(s.getEObject(), CCMNames.MANAGES, CCMNames.MANAGES__HOME);
 						if( destroy ) {
-							// ToDo:UMLElementFactory.destroyElement(home, null);
-							// ToDo:UMLElementFactory.destroyElement(s.getEObject(), null);
+							List<EObject> toDelete = new ArrayList<EObject>();
+							toDelete.add(home);
+							toDelete.add(s.getEObject());
+							Command cmd = BaseUtil.getDeleteCommand(toDelete);
+							if(cmd.canExecute()) {
+								editingDomain.getCommandStack().execute(cmd);
+							}
 							break;
 						} else {
 							ZDLUtil.setValue(s.getEObject(), CCMNames.MANAGES, CCMNames.MANAGES__COMPONENT, currentPackageComponent);
 						}
 					}
 				}
-				// ToDo:UMLElementFactory.destroyElement(ci, null);
+				Command cmd = BaseUtil.getDeleteCommand(ci);
+				if(cmd.canExecute()) {
+					editingDomain.getCommandStack().execute(cmd);
+				}
 			} else {
 				currentPackage.getPackagedElements().add(ci);
 			}
@@ -256,12 +271,12 @@ public class ImportOrganizer {
 				PackageableElement elm = (PackageableElement)next;
 				if( ZDLUtil.isZDLConcept(elm, IDL3PlusNames.MODULE_INSTANTIATION)
 					|| ZDLUtil.isZDLConcept(elm, CCMNames.CCMCOMPONENT)
-					|| ZDLUtil.isZDLConcept(elm, CORBADomainNames.CORBAINTERFACE)
-					|| ZDLUtil.isZDLConcept(elm, CORBADomainNames.CORBAMODULE_CONTAINED)
+					|| ZDLUtil.isZDLConcept(elm, CXDomainNames.CXINTERFACE)
+					|| ZDLUtil.isZDLConcept(elm, CXDomainNames.CXMODULE_CONTAINED)
 					|| ZDLUtil.isZDLConcept(elm, CCMNames.MONOLITHIC_IMPLEMENTATION)) {
 					if( elm.getName().equals(elementName)) {
 						return elm;
-					} else if( ZDLUtil.isZDLConcept(elm, CORBADomainNames.CORBACONSTANTS)) {
+					} else if( ZDLUtil.isZDLConcept(elm, CXDomainNames.CXCONSTANTS)) {
 						for( Property p : ((Class)elm).getOwnedAttributes()) {
 							if( p.getName().equals(elementName)) {
 								return elm;

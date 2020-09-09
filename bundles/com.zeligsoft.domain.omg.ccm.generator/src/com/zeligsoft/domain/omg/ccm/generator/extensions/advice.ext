@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
 extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
 extension com::zeligsoft::domain::omg::ccm::generator::extensions::mainTransform;
@@ -25,10 +25,10 @@ around com::zeligsoft::domain::omg::ccm::generator::extensions::baseIDL::toScope
 		newScopedName.name.add(getScopedNameFromNamedElement((uml::NamedElement)ctx.paramValues.first())) ->
 		newScopedName;
 		
-around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::visitContained(CORBAModule module) :
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::visitContained(CXModule module) :
 	createModule(module);
 
-private create idl::Module createModule(CORBAModule module) :
+private create idl::Module createModule(CXModule module) :
 	setName(module.name) ->
 	this.definitions.addAll(module.zdlAsPackage().packagedElement.visitContained()) ->
 	this.comments.addAll(module.zdlAsPackage().ownedComment.visitContained()); 	

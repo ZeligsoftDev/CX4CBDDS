@@ -1,9 +1,9 @@
 package com.zeligsoft.domain.omg.ccm.api.CCM_Target;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.zml.api.ZML_Core.NamedElement;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXType;
 import com.zeligsoft.domain.zml.api.ZML_Core.TypedElement;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAType;
+import com.zeligsoft.domain.zml.api.ZML_Core.NamedElement;
 
 public interface SatisfierProperty extends NamedElement, TypedElement {
 	Boolean getDynamic();
@@ -18,9 +18,9 @@ public interface SatisfierProperty extends NamedElement, TypedElement {
 
 	void setValue(String val);
 
-	CORBAType getTypeOverride();
+	CXType getTypeOverride();
 
-	void setTypeOverride(CORBAType val);
+	void setTypeOverride(CXType val);
 
 	org.eclipse.uml2.uml.Property asProperty();
 

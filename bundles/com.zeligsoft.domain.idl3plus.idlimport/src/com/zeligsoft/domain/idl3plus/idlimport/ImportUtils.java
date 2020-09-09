@@ -37,7 +37,7 @@ import org.eclipse.uml2.uml.Usage;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.dsl.idl.ActualParameter;
 import com.zeligsoft.domain.omg.corba.dsl.idl.AddExpr;
 import com.zeligsoft.domain.omg.corba.dsl.idl.AndExpr;
@@ -102,7 +102,7 @@ public class ImportUtils {
 		
 		if( name != null ) {
 			Type type = XtendUtils.getType(zPortType, name);
-			if( type != null && ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAINTERFACE)) {
+			if( type != null && ZDLUtil.isZDLConcept(type, CXDomainNames.CXINTERFACE)) {
 				zPortType.createInterfaceRealization(providesDecl.getName(), (Interface)type);
 			} else {
 				unresolvedLookups.put(zPortType, name, unresolvedLookups.LookupContext.DEPENDENCY);
@@ -125,7 +125,7 @@ public class ImportUtils {
 		
 		if( name != null ) {
 			Type type = XtendUtils.getType(zPortType, name);
-			if( type != null && ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAINTERFACE)) {
+			if( type != null && ZDLUtil.isZDLConcept(type, CXDomainNames.CXINTERFACE)) {
 				Usage u = zPortType.createUsage((Interface)type);
 				u.setName(usesDecl.getName());
 			} else {

@@ -7,8 +7,7 @@ public interface rdlQosPolicy extends qosPolicy {
 
 	void setAutopurge_nowriter_samples_delay(Duration val);
 
-	<T extends Duration> T createAutopurge_nowriter_samples_delay(
-			Class<T> typeToCreate, String concept);
+	<T extends Duration> T createAutopurge_nowriter_samples_delay(Class<T> typeToCreate, String concept);
 
 	Duration createAutopurge_nowriter_samples_delay();
 
@@ -16,8 +15,7 @@ public interface rdlQosPolicy extends qosPolicy {
 
 	void setAutopurge_disposed_samples_delay(Duration val);
 
-	<T extends Duration> T createAutopurge_disposed_samples_delay(
-			Class<T> typeToCreate, String concept);
+	<T extends Duration> T createAutopurge_disposed_samples_delay(Class<T> typeToCreate, String concept);
 
 	Duration createAutopurge_disposed_samples_delay();
 

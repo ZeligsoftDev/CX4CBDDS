@@ -46,7 +46,7 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.Activator;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.util.CORBAMigrationUtil;
 import com.zeligsoft.domain.zml.util.WorkerFunctionRepair;
 import com.zeligsoft.domain.zml.util.ZDeploymentUtil;
@@ -147,11 +147,11 @@ public final class DDS4CCMMigrationUtil {
 							CCMNames.INTERFACE_PORT, ZMLMMNames.PORT__PORTTYPE);
 					if (type != null) {
 						if (ZDLUtil.isZDLConcept(type,
-								CORBADomainNames.CORBAINTERFACE)) {
+								CXDomainNames.CXINTERFACE)) {
 							ZDLUtil.setValue(
 									type,
-									CORBADomainNames.CORBAINTERFACE,
-									CORBADomainNames.CORBAINTERFACE__IS_ASYNCHRONOUS,
+									CXDomainNames.CXINTERFACE,
+									CXDomainNames.CXINTERFACE__IS_ASYNCHRONOUS,
 									true);
 						}
 					}
@@ -197,7 +197,7 @@ public final class DDS4CCMMigrationUtil {
 			}
 			if (!(next instanceof Package)
 					&& !ZDLUtil
-							.isZDLConcept(next, CORBADomainNames.CORBAMODULE)
+							.isZDLConcept(next, CXDomainNames.CXMODULE)
 					&& !ZDLUtil.isZDLConcept(next,
 							CCMNames.MONOLITHIC_IMPLEMENTATION)) {
 				itor.prune();

@@ -5,30 +5,29 @@ import com.zeligsoft.domain.zml.api.ZML_Component.impl.StructuralRealizationImpl
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class AssemblyImplementationImplementation extends
-		StructuralRealizationImplementation implements AssemblyImplementation {
-	public AssemblyImplementationImplementation(
-			org.eclipse.emf.ecore.EObject element) {
+public class AssemblyImplementationImplementation extends StructuralRealizationImplementation
+		implements AssemblyImplementation {
+	public AssemblyImplementationImplementation(org.eclipse.emf.ecore.EObject element) {
 		super(element);
 	}
 
 	@Override
+	public String getQualifiedName() {
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "ZMLMM::ZML_Core::NamedElement",
+				"qualifiedName");
+		return (String) rawValue;
+	}
+
+	@Override
 	public String getName() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "ZMLMM::ZML_Core::NamedElement", "name");
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "ZMLMM::ZML_Core::NamedElement",
+				"name");
 		return (String) rawValue;
 	}
 
 	@Override
 	public void setName(String val) {
 		ZDLUtil.setValue(element, "ZMLMM::ZML_Core::NamedElement", "name", val);
-	}
-
-	@Override
-	public String getQualifiedName() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "ZMLMM::ZML_Core::NamedElement", "qualifiedName");
-		return (String) rawValue;
 	}
 
 	@Override

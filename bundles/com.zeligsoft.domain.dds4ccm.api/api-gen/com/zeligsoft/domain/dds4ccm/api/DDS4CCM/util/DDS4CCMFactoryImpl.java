@@ -10,462 +10,285 @@ public class DDS4CCMFactoryImpl extends AbstractBaseZDLFactory {
 	protected java.util.Map<String, Class<?>> registry = Maps.newHashMap();
 
 	public DDS4CCMFactoryImpl() {
-		registry.put(
-				"DDS4CCM::DDS4CCM::DDS4CCMModel",
+		registry.put("DDS4CCM::DDS4CCM::DDS4CCMModel",
 				com.zeligsoft.domain.dds4ccm.api.DDS4CCM.impl.DDS4CCMModelZImpl.class);
-		registry.put(
-				"DDS4CCM::DDS4CCM::IDLFileSpecification",
+		registry.put("DDS4CCM::DDS4CCM::IDLFileSpecification",
 				com.zeligsoft.domain.dds4ccm.api.DDS4CCM.impl.IDLFileSpecificationZImpl.class);
-		registry.put(
-				"DDS4CCM::DDS4CCM::IDLFileDependency",
+		registry.put("DDS4CCM::DDS4CCM::IDLFileDependency",
 				com.zeligsoft.domain.dds4ccm.api.DDS4CCM.impl.IDLFileDependencyZImpl.class);
-		registry.put(
-				"DDS4CCM::DDS4CCM::IDLIncludeDependency",
+		registry.put("DDS4CCM::DDS4CCM::IDLIncludeDependency",
 				com.zeligsoft.domain.dds4ccm.api.DDS4CCM.impl.IDLIncludeDependencyZImpl.class);
-		registry.put(
-				"DDS4CCM::DDS4CCM::ConnectorStatusListenerConnection",
+		registry.put("DDS4CCM::DDS4CCM::ConnectorStatusListenerConnection",
 				com.zeligsoft.domain.dds4ccm.api.DDS4CCM.impl.ConnectorStatusListenerConnectionZImpl.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAWString",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAWStringImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAAnonymousArray",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAAnonymousArrayImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAAnonymousSequence",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAAnonymousSequenceImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAArray",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAArrayImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBABoxedValue",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBABoxedValueImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBACase",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBACaseImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAConstant",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAConstantImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAConstants",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAConstantsImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBADefault",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBADefaultImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAEnum",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAEnumImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAException",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAExceptionImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAInterface",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAInterfaceImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAPrimitive",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAPrimitiveImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBASequence",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBASequenceImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAString",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAStringImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAStruct",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAStructImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBASupports",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBASupportsImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBATypeDef",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBATypeDefImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAUnion",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAUnionImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAUnionField",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAUnionFieldImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAValue",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAValueImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAValueFactory",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAValueFactoryImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAModule",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAModuleImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAAttribute",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAAttributeImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAOperation",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAOperationImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBANamedElement",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBANamedElementImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAField",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAFieldImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBAParameter",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBAParameterImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::Native",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.NativeImplementation.class);
-		registry.put(
-				"CORBADomain::IDL::CORBABound",
-				com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBABoundImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::ComponentInterface",
+		registry.put("CXDomain::IDL::CXWString",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXWStringImplementation.class);
+		registry.put("CXDomain::IDL::CXAnonymousArray",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXAnonymousArrayImplementation.class);
+		registry.put("CXDomain::IDL::CXAnonymousSequence",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXAnonymousSequenceImplementation.class);
+		registry.put("CXDomain::IDL::CXArray", com.zeligsoft.domain.omg.corba.api.IDL.impl.CXArrayImplementation.class);
+		registry.put("CXDomain::IDL::CXBoxedValue",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXBoxedValueImplementation.class);
+		registry.put("CXDomain::IDL::CXCase", com.zeligsoft.domain.omg.corba.api.IDL.impl.CXCaseImplementation.class);
+		registry.put("CXDomain::IDL::CXConstant",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXConstantImplementation.class);
+		registry.put("CXDomain::IDL::CXConstants",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXConstantsImplementation.class);
+		registry.put("CXDomain::IDL::CXDefault",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXDefaultImplementation.class);
+		registry.put("CXDomain::IDL::CXEnum", com.zeligsoft.domain.omg.corba.api.IDL.impl.CXEnumImplementation.class);
+		registry.put("CXDomain::IDL::CXException",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXExceptionImplementation.class);
+		registry.put("CXDomain::IDL::CXInterface",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXInterfaceImplementation.class);
+		registry.put("CXDomain::IDL::CXPrimitive",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXPrimitiveImplementation.class);
+		registry.put("CXDomain::IDL::CXSequence",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXSequenceImplementation.class);
+		registry.put("CXDomain::IDL::CXString",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXStringImplementation.class);
+		registry.put("CXDomain::IDL::CXStruct",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXStructImplementation.class);
+		registry.put("CXDomain::IDL::CXSupports",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXSupportsImplementation.class);
+		registry.put("CXDomain::IDL::CXTypeDef",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXTypeDefImplementation.class);
+		registry.put("CXDomain::IDL::CXUnion", com.zeligsoft.domain.omg.corba.api.IDL.impl.CXUnionImplementation.class);
+		registry.put("CXDomain::IDL::CXUnionField",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXUnionFieldImplementation.class);
+		registry.put("CXDomain::IDL::CXValue", com.zeligsoft.domain.omg.corba.api.IDL.impl.CXValueImplementation.class);
+		registry.put("CXDomain::IDL::CXValueFactory",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXValueFactoryImplementation.class);
+		registry.put("CXDomain::IDL::CXModule",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXModuleImplementation.class);
+		registry.put("CXDomain::IDL::CXAttribute",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXAttributeImplementation.class);
+		registry.put("CXDomain::IDL::CXOperation",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXOperationImplementation.class);
+		registry.put("CXDomain::IDL::CXNamedElement",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXNamedElementImplementation.class);
+		registry.put("CXDomain::IDL::CXField", com.zeligsoft.domain.omg.corba.api.IDL.impl.CXFieldImplementation.class);
+		registry.put("CXDomain::IDL::CXParameter",
+				com.zeligsoft.domain.omg.corba.api.IDL.impl.CXParameterImplementation.class);
+		registry.put("CXDomain::IDL::Native", com.zeligsoft.domain.omg.corba.api.IDL.impl.NativeImplementation.class);
+		registry.put("CXDomain::IDL::CXBound", com.zeligsoft.domain.omg.corba.api.IDL.impl.CXBoundImplementation.class);
+		registry.put("ZMLMM::ZML_Component::ComponentInterface",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.ComponentInterfaceImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::StructuralRealization",
+		registry.put("ZMLMM::ZML_Component::StructuralRealization",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.StructuralRealizationImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::Implementation",
+		registry.put("ZMLMM::ZML_Component::Implementation",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.ImplementationImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::MessagePort",
+		registry.put("ZMLMM::ZML_Component::MessagePort",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.MessagePortImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::AssemblyConnector",
+		registry.put("ZMLMM::ZML_Component::AssemblyConnector",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.AssemblyConnectorImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::WorkerFunction",
+		registry.put("ZMLMM::ZML_Component::WorkerFunction",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.WorkerFunctionImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::PortType",
+		registry.put("ZMLMM::ZML_Component::PortType",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.PortTypeImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::Operation",
+		registry.put("ZMLMM::ZML_Component::Operation",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.OperationImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::ConnectorEnd",
+		registry.put("ZMLMM::ZML_Component::ConnectorEnd",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.ConnectorEndImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::ComponentImplementation",
+		registry.put("ZMLMM::ZML_Component::ComponentImplementation",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.ComponentImplementationImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::InterfaceRealization",
+		registry.put("ZMLMM::ZML_Component::InterfaceRealization",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.InterfaceRealizationImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::PortTypeable",
+		registry.put("ZMLMM::ZML_Component::PortTypeable",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.PortTypeableImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::WorkerFunctionImpl",
+		registry.put("ZMLMM::ZML_Component::WorkerFunctionImpl",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.WorkerFunctionImplImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::ConjugatedPort",
+		registry.put("ZMLMM::ZML_Component::ConjugatedPort",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.ConjugatedPortImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Component::WorkerFunctionIdentifiable",
+		registry.put("ZMLMM::ZML_Component::WorkerFunctionIdentifiable",
 				com.zeligsoft.domain.zml.api.ZML_Component.impl.WorkerFunctionIdentifiableImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Core::Parameter",
+		registry.put("ZMLMM::ZML_Core::Parameter",
 				com.zeligsoft.domain.zml.api.ZML_Core.impl.ParameterImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Core::Model",
-				com.zeligsoft.domain.zml.api.ZML_Core.impl.ModelImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Core::HideableElement",
+		registry.put("ZMLMM::ZML_Core::Model", com.zeligsoft.domain.zml.api.ZML_Core.impl.ModelImplementation.class);
+		registry.put("ZMLMM::ZML_Core::HideableElement",
 				com.zeligsoft.domain.zml.api.ZML_Core.impl.HideableElementImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Deployments::Allocation",
+		registry.put("ZMLMM::ZML_Deployments::Allocation",
 				com.zeligsoft.domain.zml.api.ZML_Deployments.impl.AllocationImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Deployments::Deployment",
+		registry.put("ZMLMM::ZML_Deployments::Deployment",
 				com.zeligsoft.domain.zml.api.ZML_Deployments.impl.DeploymentImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Deployments::DeploymentPart",
+		registry.put("ZMLMM::ZML_Deployments::DeploymentPart",
 				com.zeligsoft.domain.zml.api.ZML_Deployments.impl.DeploymentPartImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Deployments::ComponentDeploymentPart",
+		registry.put("ZMLMM::ZML_Deployments::ComponentDeploymentPart",
 				com.zeligsoft.domain.zml.api.ZML_Deployments.impl.ComponentDeploymentPartImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Deployments::DeploymentTarget",
+		registry.put("ZMLMM::ZML_Deployments::DeploymentTarget",
 				com.zeligsoft.domain.zml.api.ZML_Deployments.impl.DeploymentTargetImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Deployments::DeployableElement",
+		registry.put("ZMLMM::ZML_Deployments::DeployableElement",
 				com.zeligsoft.domain.zml.api.ZML_Deployments.impl.DeployableElementImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Configurations::BuildConfiguration",
+		registry.put("ZMLMM::ZML_Configurations::BuildConfiguration",
 				com.zeligsoft.domain.zml.api.ZML_Configurations.impl.BuildConfigurationImplementation.class);
-		registry.put(
-				"ZMLMM::ZML_Configurations::ConfigurationSlot",
+		registry.put("ZMLMM::ZML_Configurations::ConfigurationSlot",
 				com.zeligsoft.domain.zml.api.ZML_Configurations.impl.ConfigurationSlotImplementation.class);
-		registry.put("DDS::Topics::Topic",
-				com.zeligsoft.domain.omg.dds.api.Topics.impl.TopicZImpl.class);
-		registry.put(
-				"DDS::Topics::TopicField",
-				com.zeligsoft.domain.omg.dds.api.Topics.impl.TopicFieldZImpl.class);
-		registry.put(
-				"DDS::QOS::historyQosPolicy",
+		registry.put("DDS::Topics::Topic", com.zeligsoft.domain.omg.dds.api.Topics.impl.TopicZImpl.class);
+		registry.put("DDS::Topics::TopicField", com.zeligsoft.domain.omg.dds.api.Topics.impl.TopicFieldZImpl.class);
+		registry.put("DDS::QOS::historyQosPolicy",
 				com.zeligsoft.domain.omg.dds.api.QOS.impl.historyQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::lifespanQosPolicy",
+		registry.put("DDS::QOS::lifespanQosPolicy",
 				com.zeligsoft.domain.omg.dds.api.QOS.impl.lifespanQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::ownershipQosPolicy",
+		registry.put("DDS::QOS::ownershipQosPolicy",
 				com.zeligsoft.domain.omg.dds.api.QOS.impl.ownershipQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::osQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.osQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::wdlQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.wdlQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::rdlQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.rdlQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::udQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.udQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::tdQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.tdQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::tpQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.tpQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::deadlineQosPolicy",
+		registry.put("DDS::QOS::osQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.osQosPolicyZImpl.class);
+		registry.put("DDS::QOS::wdlQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.wdlQosPolicyZImpl.class);
+		registry.put("DDS::QOS::rdlQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.rdlQosPolicyZImpl.class);
+		registry.put("DDS::QOS::udQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.udQosPolicyZImpl.class);
+		registry.put("DDS::QOS::tdQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.tdQosPolicyZImpl.class);
+		registry.put("DDS::QOS::tpQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.tpQosPolicyZImpl.class);
+		registry.put("DDS::QOS::deadlineQosPolicy",
 				com.zeligsoft.domain.omg.dds.api.QOS.impl.deadlineQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::lbQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.lbQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::tbfQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.tbfQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::gdQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.gdQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::efQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.efQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::rlQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.rlQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::presentationQosPolicy",
+		registry.put("DDS::QOS::lbQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.lbQosPolicyZImpl.class);
+		registry.put("DDS::QOS::tbfQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.tbfQosPolicyZImpl.class);
+		registry.put("DDS::QOS::gdQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.gdQosPolicyZImpl.class);
+		registry.put("DDS::QOS::efQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.efQosPolicyZImpl.class);
+		registry.put("DDS::QOS::rlQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.rlQosPolicyZImpl.class);
+		registry.put("DDS::QOS::presentationQosPolicy",
 				com.zeligsoft.domain.omg.dds.api.QOS.impl.presentationQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::partitionQosPolicy",
+		registry.put("DDS::QOS::partitionQosPolicy",
 				com.zeligsoft.domain.omg.dds.api.QOS.impl.partitionQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::reliabilityQosPolicy",
+		registry.put("DDS::QOS::reliabilityQosPolicy",
 				com.zeligsoft.domain.omg.dds.api.QOS.impl.reliabilityQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::dsQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.dsQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::livelinessQosPolicy",
+		registry.put("DDS::QOS::dsQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.dsQosPolicyZImpl.class);
+		registry.put("DDS::QOS::livelinessQosPolicy",
 				com.zeligsoft.domain.omg.dds.api.QOS.impl.livelinessQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::durabilityQosPolicy",
+		registry.put("DDS::QOS::durabilityQosPolicy",
 				com.zeligsoft.domain.omg.dds.api.QOS.impl.durabilityQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::doQosPolicy",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.doQosPolicyZImpl.class);
-		registry.put(
-				"DDS::QOS::qosProperty",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.qosPropertyZImpl.class);
-		registry.put("DDS::QOS::Duration",
-				com.zeligsoft.domain.omg.dds.api.QOS.impl.DurationZImpl.class);
-		registry.put(
-				"DDS4CCM::DDSExtensions::DDSMessage",
+		registry.put("DDS::QOS::doQosPolicy", com.zeligsoft.domain.omg.dds.api.QOS.impl.doQosPolicyZImpl.class);
+		registry.put("DDS::QOS::qosProperty", com.zeligsoft.domain.omg.dds.api.QOS.impl.qosPropertyZImpl.class);
+		registry.put("DDS::QOS::Duration", com.zeligsoft.domain.omg.dds.api.QOS.impl.DurationZImpl.class);
+		registry.put("DDS4CCM::DDSExtensions::DDSMessage",
 				com.zeligsoft.domain.dds4ccm.api.DDSExtensions.impl.DDSMessageZImpl.class);
-		registry.put(
-				"DDS4CCM::DDSExtensions::MessageField",
+		registry.put("DDS4CCM::DDSExtensions::MessageField",
 				com.zeligsoft.domain.dds4ccm.api.DDSExtensions.impl.MessageFieldZImpl.class);
-		registry.put(
-				"DDS4CCM::QoSProfiles::QoSProfile",
+		registry.put("DDS4CCM::QoSProfiles::QoSProfile",
 				com.zeligsoft.domain.dds4ccm.api.QoSProfiles.impl.QoSProfileZImpl.class);
-		registry.put(
-				"DDS4CCM::QoSProfiles::QoSEntity",
+		registry.put("DDS4CCM::QoSProfiles::QoSEntity",
 				com.zeligsoft.domain.dds4ccm.api.QoSProfiles.impl.QoSEntityZImpl.class);
-		registry.put(
-				"DDS4CCM::QoSProfiles::DataReaderQoS",
+		registry.put("DDS4CCM::QoSProfiles::DataReaderQoS",
 				com.zeligsoft.domain.dds4ccm.api.QoSProfiles.impl.DataReaderQoSZImpl.class);
-		registry.put(
-				"DDS4CCM::QoSProfiles::ParticipantQoS",
+		registry.put("DDS4CCM::QoSProfiles::ParticipantQoS",
 				com.zeligsoft.domain.dds4ccm.api.QoSProfiles.impl.ParticipantQoSZImpl.class);
-		registry.put(
-				"DDS4CCM::QoSProfiles::PublisherQoS",
+		registry.put("DDS4CCM::QoSProfiles::PublisherQoS",
 				com.zeligsoft.domain.dds4ccm.api.QoSProfiles.impl.PublisherQoSZImpl.class);
-		registry.put(
-				"DDS4CCM::QoSProfiles::SubscriberQoS",
+		registry.put("DDS4CCM::QoSProfiles::SubscriberQoS",
 				com.zeligsoft.domain.dds4ccm.api.QoSProfiles.impl.SubscriberQoSZImpl.class);
-		registry.put(
-				"DDS4CCM::QoSProfiles::TopicQoS",
+		registry.put("DDS4CCM::QoSProfiles::TopicQoS",
 				com.zeligsoft.domain.dds4ccm.api.QoSProfiles.impl.TopicQoSZImpl.class);
-		registry.put(
-				"DDS4CCM::QoSProfiles::DataWriterQoS",
+		registry.put("DDS4CCM::QoSProfiles::DataWriterQoS",
 				com.zeligsoft.domain.dds4ccm.api.QoSProfiles.impl.DataWriterQoSZImpl.class);
-		registry.put(
-				"CCM::CCM_Target::Domain",
+		registry.put("CCM::CCM_Target::Domain",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.DomainImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::Node",
+		registry.put("CCM::CCM_Target::Node",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.NodeImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::NodeInstance",
+		registry.put("CCM::CCM_Target::NodeInstance",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.NodeInstanceImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::Interconnect",
+		registry.put("CCM::CCM_Target::Interconnect",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.InterconnectImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::InterconnectInstance",
+		registry.put("CCM::CCM_Target::InterconnectInstance",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.InterconnectInstanceImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::Bridge",
+		registry.put("CCM::CCM_Target::Bridge",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.BridgeImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::BridgeInstance",
+		registry.put("CCM::CCM_Target::BridgeInstance",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.BridgeInstanceImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::Resource",
+		registry.put("CCM::CCM_Target::Resource",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.ResourceImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::ResourceProperty",
+		registry.put("CCM::CCM_Target::ResourceProperty",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.ResourcePropertyImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::SharedResource",
+		registry.put("CCM::CCM_Target::SharedResource",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.SharedResourceImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::RequirementSatisfier",
+		registry.put("CCM::CCM_Target::RequirementSatisfier",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.RequirementSatisfierImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::SatisfierProperty",
+		registry.put("CCM::CCM_Target::SatisfierProperty",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.SatisfierPropertyImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::Requirement",
+		registry.put("CCM::CCM_Target::Requirement",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.RequirementImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::TargetAssemblyConnector",
+		registry.put("CCM::CCM_Target::TargetAssemblyConnector",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.TargetAssemblyConnectorImplementation.class);
-		registry.put(
-				"CCM::CCM_Target::Property",
+		registry.put("CCM::CCM_Target::Property",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Target.impl.PropertyImplementation.class);
-		registry.put(
-				"IDL3Plus::Generics::TypeParameter",
+		registry.put("IDL3Plus::Generics::TypeParameter",
 				com.zeligsoft.domain.idl3plus.api.Generics.impl.TypeParameterZImpl.class);
-		registry.put(
-				"IDL3Plus::Generics::TemplateModule",
+		registry.put("IDL3Plus::Generics::TemplateModule",
 				com.zeligsoft.domain.idl3plus.api.Generics.impl.TemplateModuleZImpl.class);
-		registry.put(
-				"IDL3Plus::Generics::ModuleInstantiation",
+		registry.put("IDL3Plus::Generics::ModuleInstantiation",
 				com.zeligsoft.domain.idl3plus.api.Generics.impl.ModuleInstantiationZImpl.class);
-		registry.put(
-				"IDL3Plus::Generics::ParameterBinding",
+		registry.put("IDL3Plus::Generics::ParameterBinding",
 				com.zeligsoft.domain.idl3plus.api.Generics.impl.ParameterBindingZImpl.class);
-		registry.put(
-				"IDL3Plus::Generics::TemplateModuleAlias",
+		registry.put("IDL3Plus::Generics::TemplateModuleAlias",
 				com.zeligsoft.domain.idl3plus.api.Generics.impl.TemplateModuleAliasZImpl.class);
-		registry.put(
-				"IDL3Plus::Generics::ModuleBinding",
+		registry.put("IDL3Plus::Generics::ModuleBinding",
 				com.zeligsoft.domain.idl3plus.api.Generics.impl.ModuleBindingZImpl.class);
-		registry.put(
-				"IDL3Plus::Generics::TemplateSignature",
+		registry.put("IDL3Plus::Generics::TemplateSignature",
 				com.zeligsoft.domain.idl3plus.api.Generics.impl.TemplateSignatureZImpl.class);
-		registry.put(
-				"IDL3Plus::Generics::TemplateParameterType",
+		registry.put("IDL3Plus::Generics::TemplateParameterType",
 				com.zeligsoft.domain.idl3plus.api.Generics.impl.TemplateParameterTypeZImpl.class);
-		registry.put(
-				"CCM::CCM_Component::EventPort",
+		registry.put("CCM::CCM_Component::EventPort",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Component.impl.EventPortImplementation.class);
-		registry.put(
-				"CCM::CCM_Component::CCMComponent",
+		registry.put("CCM::CCM_Component::CCMComponent",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Component.impl.CCMComponentImplementation.class);
-		registry.put(
-				"CCM::CCM_Component::Event",
+		registry.put("CCM::CCM_Component::Event",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Component.impl.EventImplementation.class);
-		registry.put(
-				"CCM::CCM_Component::Home",
+		registry.put("CCM::CCM_Component::Home",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Component.impl.HomeImplementation.class);
-		registry.put(
-				"CCM::CCM_Component::Manages",
+		registry.put("CCM::CCM_Component::Manages",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Component.impl.ManagesImplementation.class);
-		registry.put(
-				"CCM::CCM_Component::StateMember",
+		registry.put("CCM::CCM_Component::StateMember",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Component.impl.StateMemberImplementation.class);
-		registry.put(
-				"CCM::CCM_Component::InterfacePort",
+		registry.put("CCM::CCM_Component::InterfacePort",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Component.impl.InterfacePortImplementation.class);
-		registry.put(
-				"CCM::CCM_Component::FinderOperation",
+		registry.put("CCM::CCM_Component::FinderOperation",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Component.impl.FinderOperationImplementation.class);
-		registry.put(
-				"CCM::CCM_Component::FactoryOperation",
+		registry.put("CCM::CCM_Component::FactoryOperation",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Component.impl.FactoryOperationImplementation.class);
-		registry.put(
-				"CCM::CCM_Component::HomeOperation",
+		registry.put("CCM::CCM_Component::HomeOperation",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Component.impl.HomeOperationImplementation.class);
-		registry.put(
-				"IDL3Plus::Connectors::ConnectorDef",
+		registry.put("IDL3Plus::Connectors::ConnectorDef",
 				com.zeligsoft.domain.idl3plus.api.Connectors.impl.ConnectorDefZImpl.class);
-		registry.put(
-				"IDL3Plus::Connectors::ConnectorFragment",
+		registry.put("IDL3Plus::Connectors::ConnectorFragment",
 				com.zeligsoft.domain.idl3plus.api.Connectors.impl.ConnectorFragmentZImpl.class);
-		registry.put(
-				"IDL3Plus::Connectors::FragmentImplementation",
+		registry.put("IDL3Plus::Connectors::FragmentImplementation",
 				com.zeligsoft.domain.idl3plus.api.Connectors.impl.FragmentImplementationZImpl.class);
-		registry.put(
-				"IDL3Plus::Connectors::FragmentAssembly",
+		registry.put("IDL3Plus::Connectors::FragmentAssembly",
 				com.zeligsoft.domain.idl3plus.api.Connectors.impl.FragmentAssemblyZImpl.class);
-		registry.put(
-				"IDL3Plus::Connectors::ConnectorImplementation",
+		registry.put("IDL3Plus::Connectors::ConnectorImplementation",
 				com.zeligsoft.domain.idl3plus.api.Connectors.impl.ConnectorImplementationZImpl.class);
-		registry.put(
-				"IDL3Plus::Connectors::ConnectorAssembly",
+		registry.put("IDL3Plus::Connectors::ConnectorAssembly",
 				com.zeligsoft.domain.idl3plus.api.Connectors.impl.ConnectorAssemblyZImpl.class);
-		registry.put(
-				"IDL3Plus::Connectors::FragmentPart",
+		registry.put("IDL3Plus::Connectors::FragmentPart",
 				com.zeligsoft.domain.idl3plus.api.Connectors.impl.FragmentPartZImpl.class);
-		registry.put(
-				"IDL3Plus::Connectors::TypedConnector",
+		registry.put("IDL3Plus::Connectors::TypedConnector",
 				com.zeligsoft.domain.idl3plus.api.Connectors.impl.TypedConnectorZImpl.class);
-		registry.put(
-				"IDL3Plus::Connectors::DataSpace",
+		registry.put("IDL3Plus::Connectors::DataSpace",
 				com.zeligsoft.domain.idl3plus.api.Connectors.impl.DataSpaceZImpl.class);
-		registry.put(
-				"IDL3Plus::Connectors::ConnectorDefaultValueBinding",
+		registry.put("IDL3Plus::Connectors::ConnectorDefaultValueBinding",
 				com.zeligsoft.domain.idl3plus.api.Connectors.impl.ConnectorDefaultValueBindingZImpl.class);
-		registry.put(
-				"CCM::CCM_Core::CCMModel",
+		registry.put("CCM::CCM_Core::CCMModel",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Core.impl.CCMModelImplementation.class);
-		registry.put(
-				"IDL3Plus::Deployment::PerPortConnectorTypeDeploymentPart",
+		registry.put("IDL3Plus::Deployment::PerPortConnectorTypeDeploymentPart",
 				com.zeligsoft.domain.idl3plus.api.Deployment.impl.PerPortConnectorTypeDeploymentPartZImpl.class);
-		registry.put(
-				"CCM::CCM_Implementation::AssemblyImplementation",
+		registry.put("CCM::CCM_Implementation::AssemblyImplementation",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.impl.AssemblyImplementationImplementation.class);
-		registry.put(
-				"CCM::CCM_Implementation::HomeImplementation",
+		registry.put("CCM::CCM_Implementation::HomeImplementation",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.impl.HomeImplementationImplementation.class);
-		registry.put(
-				"CCM::CCM_Implementation::ManagesImpl",
+		registry.put("CCM::CCM_Implementation::ManagesImpl",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.impl.ManagesImplImplementation.class);
-		registry.put(
-				"CCM::CCM_Implementation::MonolithicImplementation",
+		registry.put("CCM::CCM_Implementation::MonolithicImplementation",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.impl.MonolithicImplementationImplementation.class);
-		registry.put(
-				"CCM::CCM_Implementation::CCMPart",
+		registry.put("CCM::CCM_Implementation::CCMPart",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.impl.CCMPartImplementation.class);
-		registry.put(
-				"CCM::CCM_Implementation::CCMConnector",
+		registry.put("CCM::CCM_Implementation::CCMConnector",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.impl.CCMConnectorImplementation.class);
-		registry.put(
-				"CCM::CCM_Implementation::HomeInstance",
+		registry.put("CCM::CCM_Implementation::HomeInstance",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.impl.HomeInstanceImplementation.class);
-		registry.put(
-				"CCM::CCM_Deployment::DeploymentPlan",
+		registry.put("CCM::CCM_Deployment::DeploymentPlan",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Deployment.impl.DeploymentPlanImplementation.class);
-		registry.put(
-				"CCM::CCM_Deployment::ContainerProcess",
+		registry.put("CCM::CCM_Deployment::ContainerProcess",
 				com.zeligsoft.domain.omg.ccm.api.CCM_Deployment.impl.ContainerProcessImplementation.class);
-		registry.put(
-				"IDL3Plus::IDL3Plus::IDL3PlusModel",
+		registry.put("IDL3Plus::IDL3Plus::IDL3PlusModel",
 				com.zeligsoft.domain.idl3plus.api.IDL3Plus.impl.IDL3PlusModelZImpl.class);
-		registry.put(
-				"IDL3Plus::IDL3Plus::ExtendedPortType",
+		registry.put("IDL3Plus::IDL3Plus::ExtendedPortType",
 				com.zeligsoft.domain.idl3plus.api.IDL3Plus.impl.ExtendedPortTypeZImpl.class);
 	}
 

@@ -31,7 +31,7 @@ import com.zeligsoft.cx.ui.providers.IPropertyEntry;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
 import com.zeligsoft.domain.omg.ccm.ui.providers.CCMPropertyContentProvider;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZDeploymentUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
@@ -103,7 +103,7 @@ public class IDL3PlusPropertyContentProvider extends CCMPropertyContentProvider 
 			while (itor.hasNext()) {
 				Property property = itor.next();
 				if (ZDLUtil.isZDLConcept(property,
-						CORBADomainNames.CORBAATTRIBUTE)) {
+						CXDomainNames.CXATTRIBUTE)) {
 					children.add(entry.addChild(property));
 				} else if (ZDLUtil.isZDLConcept(property, ZMLMMNames.PORT)) {
 					if (property.getType() != null
@@ -124,7 +124,7 @@ public class IDL3PlusPropertyContentProvider extends CCMPropertyContentProvider 
 				for (Property attr : ((Class) property.getType())
 						.getOwnedAttributes()) {
 					if (ZDLUtil.isZDLConcept(attr,
-							CORBADomainNames.CORBAATTRIBUTE)) {
+							CXDomainNames.CXATTRIBUTE)) {
 						children.add(entry.addChild(attr));
 					}
 				}

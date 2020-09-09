@@ -18,7 +18,7 @@ import IDL3Plus::Connectors;
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
 import IDL3Plus::Generics;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
 boolean hasBaseConnector(ConnectorDef self) :
 	!self.zdlAsComponent().general.typeSelect(ConnectorDef).isEmpty;

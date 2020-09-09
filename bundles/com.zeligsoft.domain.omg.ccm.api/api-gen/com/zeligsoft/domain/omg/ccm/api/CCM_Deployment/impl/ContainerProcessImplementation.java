@@ -9,8 +9,7 @@ import com.zeligsoft.domain.omg.ccm.api.CCM_Target.Property;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class ContainerProcessImplementation extends NamedElementImplementation
-		implements ContainerProcess {
+public class ContainerProcessImplementation extends NamedElementImplementation implements ContainerProcess {
 	protected java.util.List<Property> _property;
 
 	public ContainerProcessImplementation(org.eclipse.emf.ecore.EObject element) {
@@ -20,16 +19,14 @@ public class ContainerProcessImplementation extends NamedElementImplementation
 	@Override
 	public java.util.List<Property> getProperty() {
 		if (_property == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"CCM::CCM_Deployment::ContainerProcess", "property");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"CCM::CCM_Deployment::ContainerProcess", "property");
 			_property = new java.util.ArrayList<Property>();
 			@SuppressWarnings("unchecked")
 			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 			for (Object next : rawList) {
 				if (next instanceof org.eclipse.emf.ecore.EObject) {
-					Property nextWrapper = ZDLFactoryRegistry.INSTANCE.create(
-							(org.eclipse.emf.ecore.EObject) next,
+					Property nextWrapper = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) next,
 							Property.class);
 					_property.add(nextWrapper);
 				}
@@ -43,8 +40,7 @@ public class ContainerProcessImplementation extends NamedElementImplementation
 		// make sure the property list is created
 		getProperty();
 
-		final Object rawValue = ZDLUtil.getValue(element,
-				"CCM::CCM_Deployment::ContainerProcess", "property");
+		final Object rawValue = ZDLUtil.getValue(element, "CCM::CCM_Deployment::ContainerProcess", "property");
 		@SuppressWarnings("unchecked")
 		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 		rawList.add(val.eObject());

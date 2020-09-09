@@ -1,9 +1,9 @@
 package com.zeligsoft.domain.dds4ccm.api.DDSExtensions;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAStruct;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXStruct;
 
-public interface DDSMessage extends CORBAStruct {
+public interface DDSMessage extends CXStruct {
 	java.util.List<MessageField> getFields();
 
 	void addFields(MessageField val);

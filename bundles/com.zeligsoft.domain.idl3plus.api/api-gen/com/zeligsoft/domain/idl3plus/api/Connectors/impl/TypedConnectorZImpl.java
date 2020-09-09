@@ -9,8 +9,7 @@ import com.zeligsoft.domain.idl3plus.api.Connectors.ConnectorDef;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class TypedConnectorZImpl extends AssemblyConnectorImplementation
-		implements TypedConnector {
+public class TypedConnectorZImpl extends AssemblyConnectorImplementation implements TypedConnector {
 	protected ConnectorDef _connectorType;
 
 	public TypedConnectorZImpl(org.eclipse.emf.ecore.EObject element) {
@@ -20,13 +19,10 @@ public class TypedConnectorZImpl extends AssemblyConnectorImplementation
 	@Override
 	public ConnectorDef getConnectorType() {
 		if (_connectorType == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"IDL3Plus::Connectors::TypedConnector",
-							"connectorType");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"IDL3Plus::Connectors::TypedConnector", "connectorType");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_connectorType = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_connectorType = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						ConnectorDef.class);
 			}
 		}
@@ -35,8 +31,7 @@ public class TypedConnectorZImpl extends AssemblyConnectorImplementation
 
 	@Override
 	public void setConnectorType(ConnectorDef val) {
-		ZDLUtil.setValue(element, "IDL3Plus::Connectors::TypedConnector",
-				"connectorType", val.eObject());
+		ZDLUtil.setValue(element, "IDL3Plus::Connectors::TypedConnector", "connectorType", val.eObject());
 	}
 
 }

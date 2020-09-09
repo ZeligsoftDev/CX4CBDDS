@@ -39,7 +39,7 @@ import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * Action to clean imported comments from message fields
@@ -122,7 +122,7 @@ public class CleanCommentsActionHandler extends AbstractHandler {
 
 				if (next instanceof Property
 						&& ZDLUtil.isZDLConcept((Property) next,
-								CORBADomainNames.CORBAFIELD)) {
+								CXDomainNames.CXFIELD)) {
 
 					for (Comment c : ((Property) next).getOwnedComments()) {
 						if (c.getBody() != null && c.getBody().startsWith("//")) { //$NON-NLS-1$

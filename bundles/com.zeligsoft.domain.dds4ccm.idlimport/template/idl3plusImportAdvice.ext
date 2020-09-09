@@ -14,8 +14,8 @@
  * limitations under the License.
  *
  */
-import CORBADomain::IDLFileSupport; // needed for IDLFile and similar
-import CORBADomain::IDL; // needed for CORBAModule etc.
+import CXDomain::IDLFileSupport; // needed for IDLFile and similar
+import CXDomain::IDL; // needed for CXModule etc.
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
 import CCM::CCM_Component;
@@ -31,18 +31,18 @@ extension template::idlimport;
 
 extension com::zeligsoft::domain::zml::oaw::importutils::ZMLImportUtils;
 
-around template::idlimport::visitContained(Member member, CORBAStruct struct) :
-	createCORBAField(member, struct);
+around template::idlimport::visitContained(Member member, CXStruct struct) :
+	createCXField(member, struct);
 	
-private create CORBAField createCORBAField(Member member, CORBAStruct struct) :
+private create CXField createCXField(Member member, CXStruct struct) :
 	struct.members.add(this) ->
 	configureField(this, member) ->
 	configureFieldKey(this);
 
-private Void configureFieldKey(CORBAField field) :
+private Void configureFieldKey(CXField field) :
 	JAVA com.zeligsoft.domain.dds4ccm.idlimport.ImportUtils.configureFieldKey(org.eclipse.uml2.uml.Property);		
 	
-around template::idlimport::configureInterface(CORBAInterface zInterface, Interface_decl intf ) :
+around template::idlimport::configureInterface(CXInterface zInterface, Interface_decl intf ) :
 	zInterface.checkSynchronicity() ->
 	// ctx.proceed() ->
 	zInterface.setName(intf.header.name) ->
@@ -51,7 +51,7 @@ around template::idlimport::configureInterface(CORBAInterface zInterface, Interf
 	zInterface.setIsAbstract(intf.header.isAbstract) ->
 	intf.interfaceBody.export.size > 0 ? intf.interfaceBody.export.visitContained(zInterface) : {};
 	
-Void checkSynchronicity(CORBAInterface zInterface ) :
+Void checkSynchronicity(CXInterface zInterface ) :
 	JAVA com.zeligsoft.domain.dds4ccm.idlimport.ImportUtils.checkSynchronicity(
 		org.eclipse.uml2.uml.Interface);
 
@@ -86,7 +86,7 @@ create MonolithicImplementation createMonolithicImplementation(CCMComponent zCom
 	this.setName(zComponent.name) ->
 	this.setInterface(zComponent);
 		
-Void addToPackage(MonolithicImplementation impl, CORBAModule module ) :
+Void addToPackage(MonolithicImplementation impl, CXModule module ) :
 	module.zdlAsPackage().packagedElement.add(impl);
 	
 Void addToPackage(MonolithicImplementation impl, uml::Package package) :

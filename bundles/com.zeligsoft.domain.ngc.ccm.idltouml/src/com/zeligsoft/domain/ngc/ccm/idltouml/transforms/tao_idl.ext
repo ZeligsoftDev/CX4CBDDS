@@ -17,7 +17,7 @@
 
 import CCM::CCM_Component;
 import CCM::CCM_Core;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::uml_utils;
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::ccm_utils;
@@ -38,7 +38,7 @@ extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::visitor_inheri
 
 uml::Package tao_idl(CCMModel model, uml::Package newModel) :
 	let ccmComponents = model.eAllContents.typeSelect(CCMComponent) :
-	let corbaInterfaces = model.eAllContents.typeSelect(CORBAInterface) :
+	let corbaInterfaces = model.eAllContents.typeSelect(CXInterface) :
 		newModel.setName(model.zdlAsPackage().name + "_impl") ->
 		ccmComponents.visit_component(newModel) ->
 		ccmComponents.visit_equivalent_interface_client(newModel) ->

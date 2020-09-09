@@ -16,9 +16,6 @@
  */
 package com.zeligsoft.domain.omg.ccm;
 
-import org.eclipse.emf.validation.preferences.EMFModelValidationPreferences;
-import org.eclipse.emf.validation.service.ConstraintRegistry;
-import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.osgi.framework.BundleContext;
 
 import com.zeligsoft.base.ZeligsoftAbstractPlugin;
@@ -35,8 +32,6 @@ public class Activator extends ZeligsoftAbstractPlugin {
 	// The shared instance
 	private static Activator plugin;
 	
-	private static final String PROVIDE_SINGLE_INTERFACE_CONSTRAINT_ID = "com.ibm.xtools.uml.validation.port.providesingleinterface"; //$NON-NLS-1$
-
 	/**
 	 * The constructor
 	 */
@@ -51,15 +46,6 @@ public class Activator extends ZeligsoftAbstractPlugin {
 		super.start(context);
 		plugin = this;
 		initPreferences();
-
-		IConstraintDescriptor desc = ConstraintRegistry.getInstance()
-				.getDescriptor(PROVIDE_SINGLE_INTERFACE_CONSTRAINT_ID);
-		if (desc != null && desc.isEnabled()) {
-			// disable UML constraint bug#16454
-			EMFModelValidationPreferences.setConstraintDisabled(
-					PROVIDE_SINGLE_INTERFACE_CONSTRAINT_ID, true);
-			EMFModelValidationPreferences.save();
-		}
 	}
 
 	/*

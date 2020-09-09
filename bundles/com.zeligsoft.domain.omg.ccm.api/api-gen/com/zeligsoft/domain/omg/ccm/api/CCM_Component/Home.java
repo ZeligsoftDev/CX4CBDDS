@@ -1,13 +1,12 @@
 package com.zeligsoft.domain.omg.ccm.api.CCM_Component;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBANamedElement;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModuleContained;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAAttribute;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXNamedElement;
 import com.zeligsoft.domain.zml.api.ZML_Component.WorkerFunctionIdentifiable;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXAttribute;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXModuleContained;
 
-public interface Home extends ManagesEnd, CORBANamedElement,
-		CORBAModuleContained, WorkerFunctionIdentifiable {
+public interface Home extends ManagesEnd, CXNamedElement, CXModuleContained, WorkerFunctionIdentifiable {
 	Manages getManages();
 
 	void setManages(Manages val);
@@ -16,30 +15,29 @@ public interface Home extends ManagesEnd, CORBANamedElement,
 
 	Manages createManages();
 
-	java.util.List<CORBANamedElement> getExport();
+	java.util.List<CXNamedElement> getExport();
 
-	void addExport(CORBANamedElement val);
+	void addExport(CXNamedElement val);
 
-	java.util.List<CORBANamedElement> getNestedClassifier();
+	java.util.List<CXNamedElement> getNestedClassifier();
 
-	void addNestedClassifier(CORBANamedElement val);
+	void addNestedClassifier(CXNamedElement val);
 
-	java.util.List<CORBANamedElement> getProperty();
+	java.util.List<CXNamedElement> getProperty();
 
-	void addProperty(CORBANamedElement val);
+	void addProperty(CXNamedElement val);
 
-	java.util.List<CORBANamedElement> getOperation();
+	java.util.List<CXNamedElement> getOperation();
 
-	void addOperation(CORBANamedElement val);
+	void addOperation(CXNamedElement val);
 
-	java.util.List<CORBAAttribute> getOwnedAttribute();
+	java.util.List<CXAttribute> getOwnedAttribute();
 
-	void addOwnedAttribute(CORBAAttribute val);
+	void addOwnedAttribute(CXAttribute val);
 
-	<T extends CORBAAttribute> T addOwnedAttribute(Class<T> typeToCreate,
-			String concept);
+	<T extends CXAttribute> T addOwnedAttribute(Class<T> typeToCreate, String concept);
 
-	CORBAAttribute addOwnedAttribute();
+	CXAttribute addOwnedAttribute();
 
 	org.eclipse.uml2.uml.Class asClass();
 
@@ -47,7 +45,6 @@ public interface Home extends ManagesEnd, CORBANamedElement,
 	 * A predicate which returns true if the Object is an
 	 * instance of Home
 	 */
-	static final TypeSelectPredicate<Home> type = new TypeSelectPredicate<Home>(
-			"CCM::CCM_Component::Home", //$NON-NLS-1$
+	static final TypeSelectPredicate<Home> type = new TypeSelectPredicate<Home>("CCM::CCM_Component::Home", //$NON-NLS-1$
 			Home.class);
 }

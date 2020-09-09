@@ -11,7 +11,6 @@ public interface doQosPolicy extends qosPolicy {
 	 * A predicate which returns true if the Object is an
 	 * instance of doQosPolicy
 	 */
-	static final TypeSelectPredicate<doQosPolicy> type = new TypeSelectPredicate<doQosPolicy>(
-			"DDS::QOS::doQosPolicy", //$NON-NLS-1$
+	static final TypeSelectPredicate<doQosPolicy> type = new TypeSelectPredicate<doQosPolicy>("DDS::QOS::doQosPolicy", //$NON-NLS-1$
 			doQosPolicy.class);
 }

@@ -32,7 +32,7 @@ import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Property;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs;
 
 /**
@@ -64,8 +64,8 @@ public class CORBAUtil {
 	 */
 	public static boolean CORBAInterfaceSupportsInterface(Interface intf, String intfToSupportQName ) {
 
-		if( !ZDLUtil.isZDLConcept(intf, "CORBADomain::IDL::CORBAInterface")) { //$NON-NLS-1$
-			throw new IllegalArgumentException("This method should only be called on a CORBAInterface."); //$NON-NLS-1$
+		if( !ZDLUtil.isZDLConcept(intf, "CXDomain::IDL::CXInterface")) { //$NON-NLS-1$
+			throw new IllegalArgumentException("This method should only be called on a CXInterface."); //$NON-NLS-1$
 		}
 		
 		if( intf.getQualifiedName().equals(intfToSupportQName) ) {
@@ -90,8 +90,8 @@ public class CORBAUtil {
 	 */
 	public static boolean CORBAInterfaceEndsWithSupportsInterface(Interface intf, String intfToSupportName ) {
 
-		if( !ZDLUtil.isZDLConcept(intf, "CORBADomain::IDL::CORBAInterface")) { //$NON-NLS-1$
-			throw new IllegalArgumentException("This method should only be called on a CORBAInterface."); //$NON-NLS-1$
+		if( !ZDLUtil.isZDLConcept(intf, "CXDomain::IDL::CXInterface")) { //$NON-NLS-1$
+			throw new IllegalArgumentException("This method should only be called on a CXInterface."); //$NON-NLS-1$
 		}
 		
 		if( intf.getQualifiedName().endsWith(intfToSupportName) ) {
@@ -116,9 +116,9 @@ public class CORBAUtil {
 	public static boolean CORBAInterfaceIsQualifiedInterface(Interface intf, String intfToSupportQName ) {
 
 			if (intf != null) {
-				if (!ZDLUtil.isZDLConcept(intf, "CORBADomain::IDL::CORBAInterface")) { //$NON-NLS-1$
+				if (!ZDLUtil.isZDLConcept(intf, "CXDomain::IDL::CXInterface")) { //$NON-NLS-1$
 					throw new IllegalArgumentException(
-							"This method should only be called on a CORBAInterface."); //$NON-NLS-1$
+							"This method should only be called on a CXInterface."); //$NON-NLS-1$
 				}                 
 				if (CORBAUtilFuncs.getQualifiedInterfaceName(intf).equals(intfToSupportQName)) {
 					return true;
@@ -142,32 +142,32 @@ public class CORBAUtil {
 	@SuppressWarnings("nls") // IDL constants do not need to be localized.
 	public static String getRepositoryId( NamedElement intf ) {
 		
-		if( ZDLUtil.isZDLConcept(intf, CORBADomainNames.CORBANAMED_ELEMENT) == false ) {
-			throw new IllegalArgumentException("Method is only to be called on a CORBA Domain element.");
+		if( ZDLUtil.isZDLConcept(intf, CXDomainNames.CXNAMED_ELEMENT) == false ) {
+			throw new IllegalArgumentException("Method is only to be called on a CX Domain element.");
 		}
 		
 		String repositoryId = "";
 		NamedElement namedElement = intf;
 
 		while( namedElement != null ) {
-			if( ZDLUtil.isZDLConcept(namedElement, CORBADomainNames.CORBANAMED_ELEMENT) ) {
-				if( ZDLUtil.isZDLConcept(namedElement, CORBADomainNames.CORBACONSTANTS) == false ) {
-					// A CORBANamedElement adds to the repository ID.
+			if( ZDLUtil.isZDLConcept(namedElement, CXDomainNames.CXNAMED_ELEMENT) ) {
+				if( ZDLUtil.isZDLConcept(namedElement, CXDomainNames.CXCONSTANTS) == false ) {
+					// A CXNamedElement adds to the repository ID.
 					if( repositoryId.matches("") == false) {
 						repositoryId = "/" + repositoryId;
 					}
 					repositoryId = namedElement.getName() + repositoryId;
 				}
 				namedElement = (NamedElement)namedElement.getOwner();	
-			} else if( ZDLUtil.isZDLConcept(namedElement, CORBADomainNames.IDLFILE) ) {
+			} else if( ZDLUtil.isZDLConcept(namedElement, CXDomainNames.IDLFILE) ) {
 				// An IDLFile is the top of the stack, but may have a prefix to prepend.
-				Object prefix = ZDLUtil.getValue(namedElement, CORBADomainNames.IDLFILE, CORBADomainNames.IDLFILE__PREFIX);
+				Object prefix = ZDLUtil.getValue(namedElement, CXDomainNames.IDLFILE, CXDomainNames.IDLFILE__PREFIX);
 				if( prefix != null && !prefix.toString().isEmpty()) {
 					repositoryId = prefix.toString().replaceAll("\"", "") + "/" + repositoryId;
 				}
 				namedElement = null;
 			} else if( namedElement instanceof org.eclipse.uml2.uml.Package ) {
-				// A UML package should be skipped since its container could still be a CORBA Element.
+				// A UML package should be skipped since its container could still be a CX Element.
 				namedElement = (NamedElement)namedElement.getOwner();
 			} else {
 				// Any other object means we are done calculating the repository ID.
@@ -217,8 +217,8 @@ public class CORBAUtil {
 	 */
 	public static EObject getTypeDefType(EObject typedef) {
 		EObject val = ZDLUtil.getEValue(typedef,
-				CORBADomainNames.CORBATYPE_DEF,
-				CORBADomainNames.CORBATYPE_DEF__TYPE);
+				CXDomainNames.CXTYPE_DEF,
+				CXDomainNames.CXTYPE_DEF__TYPE);
 		if (val == null && !((DataType) typedef).getGeneralizations().isEmpty()) {
 			Generalization g = ((DataType) typedef).getGeneralizations().get(0);
 			val = g.getGeneral();
@@ -234,20 +234,20 @@ public class CORBAUtil {
 	@SuppressWarnings("rawtypes")
 	public static int getBound(EObject boundedElement) {
 		List bounds = (List) ZDLUtil.getValue(boundedElement,
-				CORBADomainNames.CORBAARRAY,
-				CORBADomainNames.CORBAARRAY__BOUNDS);
+				CXDomainNames.CXARRAY,
+				CXDomainNames.CXARRAY__BOUNDS);
 		if (!bounds.isEmpty()) {
 			EObject bound = (EObject) bounds.get(0);
-			Object value = ZDLUtil.getValue(bound, CORBADomainNames.CORBABOUND,
-					CORBADomainNames.CORBABOUND__VALUE);
+			Object value = ZDLUtil.getValue(bound, CXDomainNames.CXBOUND,
+					CXDomainNames.CXBOUND__VALUE);
 			if (value == null || UML2Util.isEmpty(value.toString())) {
 				EObject constant = ZDLUtil.getEValue(bound,
-						CORBADomainNames.CORBABOUND,
-						CORBADomainNames.CORBABOUND__CONSTANT);
+						CXDomainNames.CXBOUND,
+						CXDomainNames.CXBOUND__CONSTANT);
 				if (constant != null) {
 					value = ZDLUtil.getValue(constant,
-							CORBADomainNames.CORBACONSTANT,
-							CORBADomainNames.CORBACONSTANT__DEFAULT);
+							CXDomainNames.CXCONSTANT,
+							CXDomainNames.CXCONSTANT__DEFAULT);
 				}
 			}
 			if (value != null) {
@@ -265,7 +265,7 @@ public class CORBAUtil {
 	 */
 	public static Property getMembersAttribute(DataType type) {
 		Property member = type.getOwnedAttribute(
-				CORBADomainNames.CORBASTRUCT__MEMBERS, null);
+				CXDomainNames.CXSTRUCT__MEMBERS, null);
 		if (member == null) {
 			member = type.getOwnedAttribute("member", null); //$NON-NLS-1$
 		}

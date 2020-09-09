@@ -51,7 +51,7 @@ import com.zeligsoft.domain.omg.ccm.api.CCM_Target.Resource;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Target.SatisfierProperty;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Target.SatisfierPropertyKind;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAString;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXString;
 import com.zeligsoft.domain.omg.corba.util.CORBAUtil;
 
 /**
@@ -117,7 +117,7 @@ public class TargetNodeEditHelperAdvice extends AbstractEditHelperAdvice {
 					satisfierProp.setTypeOverride(ZDLFactoryRegistry.INSTANCE
 							.create(CORBAUtil.getCORBAPrimitiveType(
 									nodeAddress.asClass(), "CXString"),
-									CORBAString.class));
+									CXString.class));
 					
 					// set values used in code below
 					resource = nodeAddress.asClass();

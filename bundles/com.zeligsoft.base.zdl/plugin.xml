@@ -31,15 +31,6 @@
       </mapping>
    </extension>
     <extension
-         point="org.eclipse.emf.transaction.listeners">
-      <listener
-            class="com.zeligsoft.base.zdl.listeners.ZDLElementTypeResourceSetListener">
-         <editingDomain
-               id="org.eclipse.papyrus.SharedEditingDomainID">
-         </editingDomain>
-      </listener>
-    </extension>
-    <extension
          point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
       <elementTypeFactory
             factory="com.zeligsoft.base.zdl.type.ZDLElementTypeFactory"
@@ -55,4 +46,15 @@
             name="%zdl.contributor.name">
       </metamodelContributor>
    </extension>
+   <!--
+       <extension
+         point="org.eclipse.emf.transaction.listeners">
+      <listener
+            class="com.zeligsoft.base.zdl.listeners.ZDLElementTypeResourceSetListener">
+         <editingDomain
+               id="org.eclipse.papyrus.SharedEditingDomainID">
+         </editingDomain>
+      </listener>
+    </extension>
+    -->
 </plugin>

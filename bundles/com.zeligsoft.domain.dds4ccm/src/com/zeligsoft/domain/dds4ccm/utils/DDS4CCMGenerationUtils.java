@@ -26,7 +26,7 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -77,7 +77,7 @@ public class DDS4CCMGenerationUtils {
 			if (current instanceof org.eclipse.uml2.uml.Package
 					&& current.eContainer() != null
 					&& !ZDLUtil.isZDLConcept(current,
-							CORBADomainNames.CORBAMODULE)) {
+							CXDomainNames.CXMODULE)) {
 				org.eclipse.uml2.uml.Package pkg = (org.eclipse.uml2.uml.Package) current;
 				if ("true".equals(getAnnotationValueForGenerateDir(pkg))) {
 					path = pkg.getName() + File.separator + path;

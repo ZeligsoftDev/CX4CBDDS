@@ -16,7 +16,7 @@
  */
 
 import CCM::CCM_Component;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::tao_idl_utils;
 
@@ -29,13 +29,13 @@ extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::component_name
  **
  **
  ***************************************************************************/
- cached uml::Package namespace(CORBAInterface node, uml::Package root) :
+ cached uml::Package namespace(CXInterface node, uml::Package root) :
  	namespace(node.eContainer, root);
  	
  cached uml::Package namespace(CCMComponent node, uml::Package root) :
  	namespace(node.eContainer, root);
  	
- cached uml::Package namespace(CORBAModule node, uml::Package root) :
+ cached uml::Package namespace(CXModule node, uml::Package root) :
  	let modulePkg = new uml::Package :
  	let containerPkg = namespace(node.eContainer, root) :
  		modulePkg.setName(node.name) ->

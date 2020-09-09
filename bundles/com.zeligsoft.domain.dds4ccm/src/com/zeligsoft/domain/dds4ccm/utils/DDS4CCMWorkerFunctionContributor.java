@@ -47,7 +47,7 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 import com.zeligsoft.domain.zml.util.ZMLUtil;
 import com.zeligsoft.domain.zml.workerfunctioncontributor.WorkerFunctionContributor;
@@ -288,7 +288,7 @@ public class DDS4CCMWorkerFunctionContributor implements
 				// Attributes
 				for (Property p : componentInterface.getAllAttributes()) {
 					if (ZDLUtil
-							.isZDLConcept(p, CORBADomainNames.CORBAATTRIBUTE)) {
+							.isZDLConcept(p, CXDomainNames.CXATTRIBUTE)) {
 						String operationName = thisWorkerFunction.getName();
 						if (thisWorkerFunction.getName().equals(
 								"_attr_" + p.getName() + "_get")
@@ -296,8 +296,8 @@ public class DDS4CCMWorkerFunctionContributor implements
 										"_attr_" + p.getName() + "_set") && ZDLUtil
 										.getValue(
 												p,
-												CORBADomainNames.CORBAATTRIBUTE,
-												CORBADomainNames.CORBAATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE)) {
+												CXDomainNames.CXATTRIBUTE,
+												CXDomainNames.CXATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE)) {
 							List<Port> removeList = new ArrayList<Port>();
 							for (Port port : toAdd.keySet()) {
 								if (port.getName().equals(
@@ -348,7 +348,7 @@ public class DDS4CCMWorkerFunctionContributor implements
 				}
 				for (Property p : home.getAllAttributes()) {
 					if (ZDLUtil
-							.isZDLConcept(p, CORBADomainNames.CORBAATTRIBUTE)) {
+							.isZDLConcept(p, CXDomainNames.CXATTRIBUTE)) {
 						String operationName = thisWorkerFunction.getName();
 						if (thisWorkerFunction.getName().equals(
 								"_hattr_" + home.getName() + "___"
@@ -358,8 +358,8 @@ public class DDS4CCMWorkerFunctionContributor implements
 												+ p.getName() + "_set") && ZDLUtil
 										.getValue(
 												p,
-												CORBADomainNames.CORBAATTRIBUTE,
-												CORBADomainNames.CORBAATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE)) {
+												CXDomainNames.CXATTRIBUTE,
+												CXDomainNames.CXATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE)) {
 							List<Port> removeList = new ArrayList<Port>();
 							for (Port port : toAdd.keySet()) {
 								if (port.getName().equals(
@@ -436,15 +436,15 @@ public class DDS4CCMWorkerFunctionContributor implements
 				// this is worker function for attribute
 				for (Property p : componentInterface.getAllAttributes()) {
 					if (ZDLUtil
-							.isZDLConcept(p, CORBADomainNames.CORBAATTRIBUTE)) {
+							.isZDLConcept(p, CXDomainNames.CXATTRIBUTE)) {
 						if (thisWorkerFunction.getName().equals(
 								"_attr_" + p.getName() + "_get")
 								|| (thisWorkerFunction.getName().equals(
 										"_attr_" + p.getName() + "_set") && ZDLUtil
 										.getValue(
 												p,
-												CORBADomainNames.CORBAATTRIBUTE,
-												CORBADomainNames.CORBAATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE)) {
+												CXDomainNames.CXATTRIBUTE,
+												CXDomainNames.CXATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE)) {
 							toRemove.remove(thisWorkerFunction);
 						}
 					}
@@ -638,7 +638,7 @@ public class DDS4CCMWorkerFunctionContributor implements
 					// Attributes
 					for (Property p : home.getAllAttributes()) {
 						if (ZDLUtil.isZDLConcept(p,
-								CORBADomainNames.CORBAATTRIBUTE)) {
+								CXDomainNames.CXATTRIBUTE)) {
 							if (thisWorkerFunction.getName().equals(
 									"_hattr_" + home.getName() + "___"
 											+ p.getName() + "_get")
@@ -647,8 +647,8 @@ public class DDS4CCMWorkerFunctionContributor implements
 													+ p.getName() + "_set") && ZDLUtil
 											.getValue(
 													p,
-													CORBADomainNames.CORBAATTRIBUTE,
-													CORBADomainNames.CORBAATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE)) {
+													CXDomainNames.CXATTRIBUTE,
+													CXDomainNames.CXATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE)) {
 								toRemove.remove(thisWorkerFunction);
 								break;
 							}
@@ -819,7 +819,7 @@ public class DDS4CCMWorkerFunctionContributor implements
 					
 					for (Property attr : thisInterface.getAllAttributes()) {
 						if (ZDLUtil.isZDLConcept(attr,
-								CORBADomainNames.CORBAATTRIBUTE)) {
+								CXDomainNames.CXATTRIBUTE)) {
 							String attrUuid = UML2Util.EMPTY_STRING;
 							if (intfUuidDesc.isValid()) {
 								attrUuid = (String) ZDLUtil
@@ -844,8 +844,8 @@ public class DDS4CCMWorkerFunctionContributor implements
 							if (ZDLUtil
 									.getValue(
 											attr,
-											CORBADomainNames.CORBAATTRIBUTE,
-											CORBADomainNames.CORBAATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE) {
+											CXDomainNames.CXATTRIBUTE,
+											CXDomainNames.CXATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE) {
 								target.get(attrPort)
 										.add(createWorkerFunctionInfo(
 												SET,
@@ -907,7 +907,7 @@ public class DDS4CCMWorkerFunctionContributor implements
 								.toString()));
 			}
 			for (Operation op : home.getAllOperations()) {
-				if (ZDLUtil.isZDLConcept(op, CORBADomainNames.CORBAOPERATION)) {
+				if (ZDLUtil.isZDLConcept(op, CXDomainNames.CXOPERATION)) {
 					String opUuid = UML2Util.EMPTY_STRING;
 					if (homeUuidDesc.isValid()) {
 						opUuid = (String) ZDLUtil.getValue(op,
@@ -921,7 +921,7 @@ public class DDS4CCMWorkerFunctionContributor implements
 				}
 			}
 			for (Property attr : home.getAllAttributes()) {
-				if (ZDLUtil.isZDLConcept(attr, CORBADomainNames.CORBAATTRIBUTE)) {
+				if (ZDLUtil.isZDLConcept(attr, CXDomainNames.CXATTRIBUTE)) {
 					String attrUuid = UML2Util.EMPTY_STRING;
 					if (homeUuidDesc.isValid()) {
 						attrUuid = (String) ZDLUtil.getValue(attr,
@@ -939,8 +939,8 @@ public class DDS4CCMWorkerFunctionContributor implements
 							createWorkerFunctionInfo(GET, attrUuidDesc
 									.getNewUuidDescriptor(allUuidMap.get(GET))
 									.toString()));
-					if (ZDLUtil.getValue(attr, CORBADomainNames.CORBAATTRIBUTE,
-							CORBADomainNames.CORBAATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE) {
+					if (ZDLUtil.getValue(attr, CXDomainNames.CXATTRIBUTE,
+							CXDomainNames.CXATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE) {
 						target.get(attrPort)
 								.add(createWorkerFunctionInfo(
 										SET,
@@ -953,7 +953,7 @@ public class DDS4CCMWorkerFunctionContributor implements
 
 		// component attributes
 		for (Property p : componentInterface.getAllAttributes()) {
-			if (ZDLUtil.isZDLConcept(p, CORBADomainNames.CORBAATTRIBUTE)) {
+			if (ZDLUtil.isZDLConcept(p, CXDomainNames.CXATTRIBUTE)) {
 				String attrUuid = UML2Util.EMPTY_STRING;
 				if (implUuidDesc.isValid()) {
 					attrUuid = (String) ZDLUtil.getValue(p,
@@ -970,8 +970,8 @@ public class DDS4CCMWorkerFunctionContributor implements
 						createWorkerFunctionInfo(GET, attrUuidDesc
 								.getNewUuidDescriptor(allUuidMap.get(GET))
 								.toString()));
-				if (ZDLUtil.getValue(p, CORBADomainNames.CORBAATTRIBUTE,
-						CORBADomainNames.CORBAATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE) {
+				if (ZDLUtil.getValue(p, CXDomainNames.CXATTRIBUTE,
+						CXDomainNames.CXATTRIBUTE__IS_READ_ONLY) != Boolean.TRUE) {
 					target.get(attrPort).add(
 							createWorkerFunctionInfo(SET, attrUuidDesc
 									.getNewUuidDescriptor(allUuidMap.get(SET))

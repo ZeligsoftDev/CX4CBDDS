@@ -15,10 +15,10 @@
  *
  */
 import uml;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 import CCM::CCM_Implementation;
 
-Collection getProvidesPortsWithInterface(MonolithicImplementation comp, CORBAInterface inter) :
+Collection getProvidesPortsWithInterface(MonolithicImplementation comp, CXInterface inter) :
 JAVA com.zeligsoft.domain.omg.ccm.codegen.CCMCodeGenUtils.getProvidesPortsWithInterface(
 	org.eclipse.uml2.uml.Component, org.eclipse.uml2.uml.Interface);
 

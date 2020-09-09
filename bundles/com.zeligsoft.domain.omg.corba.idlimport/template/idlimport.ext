@@ -1,6 +1,6 @@
 import idl; // needed for IDL DSL
-import CORBADomain::IDLFileSupport; // needed for IDLFile and similar
-import CORBADomain::IDL; // needed for CORBAModule etc. 
+import CXDomain::IDLFileSupport; // needed for IDLFile and similar
+import CXDomain::IDL; // needed for CXModule etc. 
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
 
@@ -48,85 +48,85 @@ Void visitContained(Preproc preproc, uml::Package container ) :
 		com.zeligsoft.domain.omg.corba.dsl.idl.Preproc,
 		org.eclipse.uml2.uml.Package);
 		
-Void visitContained(Preproc preproc, CORBAModule module ) :
+Void visitContained(Preproc preproc, CXModule module ) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.handlePreproc(
 		com.zeligsoft.domain.omg.corba.dsl.idl.Preproc,
 		org.eclipse.uml2.uml.Package);
 	
-Void visitContained(Definition object, CORBAModule module ) :
+Void visitContained(Definition object, CXModule module ) :
 	{};
 	
 Void visitContained(Definition object, uml::Package package ) :
 	{};
 	
 // Ignore any forward declarations
-Void visitContained(Forward_decl decl, CORBAModule container ) : {};
+Void visitContained(Forward_decl decl, CXModule container ) : {};
 Void visitContained(Forward_decl decl,  uml::Package container ) : {};	
-Void visitContained(ConstrForwardDecl decl, CORBAModule container ) : {};
+Void visitContained(ConstrForwardDecl decl, CXModule container ) : {};
 Void visitContained(ConstrForwardDecl decl,  uml::Package container ) : {};	
 	
-private create CORBAModule visitContained(Module module, uml::Package container) :
+private create CXModule visitContained(Module module, uml::Package container) :
 	getCurrentFile().contents.add(this) ->
 	this.configureModule(module);
 
-private create CORBAModule visitContained(Module module, CORBAModule container) :
+private create CXModule visitContained(Module module, CXModule container) :
 	container.contents.add(this) ->
 	this.configureModule(module);
 	
-Void configureModule(CORBAModule zModule, Module module ) :
+Void configureModule(CXModule zModule, Module module ) :
 	zModule.setName(module.name) ->
 	module.definitions.visitContained(zModule);
 	
-create CORBAInterface visitContained(Interface_decl intf, CORBAModule container) :
+create CXInterface visitContained(Interface_decl intf, CXModule container) :
 	container.contents.add(this) ->
 	this.configureInterface(intf);
 	
-private create CORBAInterface visitContained(Interface_decl intf, uml::Package container) :
+private create CXInterface visitContained(Interface_decl intf, uml::Package container) :
 	getCurrentFile().contents.add(this) ->
 	this.configureInterface(intf);
 	
-Void configureInterface(CORBAInterface zInterface, Interface_decl intf) :
+Void configureInterface(CXInterface zInterface, Interface_decl intf) :
 	zInterface.setName(intf.header.name) ->
 	zInterface.setIsLocal(intf.header.isLocal) ->
 	zInterface.addInterfaceGeneralizations(intf) ->
 	zInterface.setIsAbstract(intf.header.isAbstract) ->
 	intf.interfaceBody.export.size > 0 ? intf.interfaceBody.export.visitContained(zInterface) : {};
 	
-Void addInterfaceGeneralizations(CORBAInterface interface, Interface_decl intf ) :
+Void addInterfaceGeneralizations(CXInterface interface, Interface_decl intf ) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.addInterfaceGeneralizations(
 		org.eclipse.uml2.uml.Interface,
 		com.zeligsoft.domain.omg.corba.dsl.idl.Interface_decl); 
 
-Void visitContained(Export object, CORBAInterface container ) :
+Void visitContained(Export object, CXInterface container ) :
 	{};
 	
-create CORBAAttribute visitContained(AttrSpec attr, CORBAInterface interface) :
+create CXAttribute visitContained(AttrSpec attr, CXInterface interface) :
 	interface.ownedAttribute.add(this) ->
 	this.configureAttribute(attr);
 
-create CORBAAttribute visitContained(ReadOnlyAttrSpec attr, CORBAInterface interface) :
+create CXAttribute visitContained(ReadOnlyAttrSpec attr, CXInterface interface) :
 	interface.ownedAttribute.add(this) ->
 	this.configureAttribute(attr);
 	
-Void configureAttribute(CORBAAttribute zAttribute, AttrSpec attr ) :
+Void configureAttribute(CXAttribute zAttribute, AttrSpec attr ) :
 	zAttribute.setName(attr.names.get(0)) ->
 	zAttribute.setIsReadOnly(false) ->
 	zAttribute.setTypedElementType(attr.type) ->
 	attr.getRaises != null ? zAttribute.addGetRaises(attr.getRaises) : {} ->
 	attr.setRaises != null ? zAttribute.addSetRaises(attr.setRaises) : {};
 
-Void configureAttribute(CORBAAttribute zAttribute, ReadOnlyAttrSpec attr ) :
+Void configureAttribute(CXAttribute zAttribute, ReadOnlyAttrSpec attr ) :
 	zAttribute.setName(attr.names.get(0)) ->
 	zAttribute.setIsReadOnly(true) ->
 	zAttribute.setTypedElementType(attr.type) ->
 	attr.raises != null ? zAttribute.addGetRaises(attr.raises) : {};
 	
-Void addGetRaises(CORBAAttribute attr, AttrRaisesExpr exc) :
+Void addGetRaises(CXAttribute attr, AttrRaisesExpr exc) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.addGetRaises(
 		org.eclipse.uml2.uml.Property,
 		com.zeligsoft.domain.omg.corba.dsl.idl.AttrRaisesExpr);
 		
-Void addSetRaises(CORBAAttribute attr, AttrRaisesExpr exc) :
+Void addSetRaises(CXAttribute attr, AttrRaisesExpr exc) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.addSetRaises(
 		org.eclipse.uml2.uml.Property,
 		com.zeligsoft.domain.omg.corba.dsl.idl.AttrRaisesExpr);
@@ -136,11 +136,11 @@ Void setTypedElementType(uml::TypedElement element, Object typeString) :
 		org.eclipse.uml2.uml.TypedElement,
 		java.lang.Object);
 
-create CORBAOperation visitContained(OpDecl op, CORBAInterface interface) :
+create CXOperation visitContained(OpDecl op, CXInterface interface) :
 	interface.ownedOperation.add(this) ->
 	this.configureOperation(op);
 	
-Void configureOperation(CORBAOperation zOperation, OpDecl op ) :
+Void configureOperation(CXOperation zOperation, OpDecl op ) :
 	zOperation.setName(op.name) ->
 	op.params.decls.visitContained(zOperation) ->
 	zOperation.setOperationType(op.type) ->
@@ -157,7 +157,7 @@ Void addRaisedExceptions(uml::Operation operation, ExceptionList exc) :
 		org.eclipse.uml2.uml.Operation,
 		com.zeligsoft.domain.omg.corba.dsl.idl.ExceptionList);
 
-create CORBAParameter visitContained(ParamDcl param, CORBAOperation operation) :
+create CXParameter visitContained(ParamDcl param, CXOperation operation) :
 	operation.ownedParameter.add(this) ->
 	this.setName(param.name) ->
 	setParameterDirection(param) ->
@@ -168,27 +168,27 @@ Void setParameterDirection(uml::Parameter param, ParamDcl paramdecl) :
 		org.eclipse.uml2.uml.Parameter,
 		com.zeligsoft.domain.omg.corba.dsl.idl.ParamDcl);
 
-create CORBAStruct visitContained(StructType struct, CORBAModule module ) :
+create CXStruct visitContained(StructType struct, CXModule module ) :
 	module.contents.add(this) ->
 	this.configureStruct(struct);
 	
-create CORBAStruct visitContained(StructType struct, CORBAInterface interface ) :
+create CXStruct visitContained(StructType struct, CXInterface interface ) :
 	interface.contents.add(this) ->
 	this.configureStruct(struct);
 	
-private create CORBAStruct visitContained(StructType struct, uml::Package package ) :
+private create CXStruct visitContained(StructType struct, uml::Package package ) :
 	getCurrentFile().contents.add(this) ->
 	this.configureStruct(struct);
 	
-Void configureStruct(CORBAStruct zStruct, StructType struct) :
+Void configureStruct(CXStruct zStruct, StructType struct) :
 	zStruct.setName(struct.name) ->
 	struct.members.visitContained(zStruct);
 	
-create CORBAField visitContained(Member member, CORBAStruct struct) :
+create CXField visitContained(Member member, CXStruct struct) :
 	struct.members.add(this) ->
 	configureField(this, member);
 	
-Void configureField(CORBAField field, Member member) :
+Void configureField(CXField field, Member member) :
 	field.visitMemberDeclarator(member.decl) ->
 	if member.comment.size > 0 then {
 		let comment = new uml::Comment :
@@ -197,35 +197,35 @@ Void configureField(CORBAField field, Member member) :
 	} ->
 	field.visitMemberType(member.type);
 	
-Void visitMemberDeclarator(CORBAField field, SimpleDeclarator decl) :
+Void visitMemberDeclarator(CXField field, SimpleDeclarator decl) :
 	field.setName(decl.id);
 	
-Void visitMemberDeclarator(CORBAField field, ArrayDeclarator decl) :
+Void visitMemberDeclarator(CXField field, ArrayDeclarator decl) :
 	field.setName(decl.id) ->
 	field.bounds.addAll(getArrayBounds(field, decl));
 	
-Void visitMemberType(CORBAField field, StringType type ) :
+Void visitMemberType(CXField field, StringType type ) :
 	field.setTypedElementType(type) ->
 	if type.size != null then 
 	{
-		let newBound = new CORBABound :
+		let newBound = new CXBound :
 		newBound.setValue(type.size.exp.getConstValue()) ->
 		field.bounds.add(newBound)
 	};
 	
-Void visitMemberType(CORBAField field, WideStringType type ) :
+Void visitMemberType(CXField field, WideStringType type ) :
 	field.setTypedElementType(type) ->
 	if type.size != null then
 		{
-			let newBound = new CORBABound :
+			let newBound = new CXBound :
 			newBound.setValue(type.size.exp.getConstValue()) ->
 			field.bounds.add(newBound)
 	};
 	
-Void visitMemberType(CORBAField field, TypeSpec type ) :
+Void visitMemberType(CXField field, TypeSpec type ) :
 	field.setTypedElementType(type);
 
-List getArrayBounds(CORBAField element, ArrayDeclarator decl) :
+List getArrayBounds(CXField element, ArrayDeclarator decl) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.getArrayBounds(
 		org.eclipse.uml2.uml.NamedElement, 
 		com.zeligsoft.domain.omg.corba.dsl.idl.ArrayDeclarator);
@@ -234,57 +234,57 @@ Void addCommentText(IDLComment c, uml::Comment comment) :
 	if comment.body == null then comment.setBody(c.body) else comment.setBody(comment.body + c.body); 
 	
 //If we encounter a Comment, do nothing with it for now
-Void visitContained(IDLComment c, CORBAModule module ) :
+Void visitContained(IDLComment c, CXModule module ) :
 	{};
 	
-Void visitContained(IDLComment c, CORBAInterface interface ) :
+Void visitContained(IDLComment c, CXInterface interface ) :
 	{};
 	
 private Void visitContained(IDLComment c, uml::Package package) :
 	{};
 	
-create CORBAException visitContained(ExceptDecl exception, CORBAModule module ) :
+create CXException visitContained(ExceptDecl exception, CXModule module ) :
 	module.contents.add(this) ->
 	this.configureException(exception);
 	
-create CORBAException visitContained(ExceptDecl exception, CORBAInterface interface ) :
+create CXException visitContained(ExceptDecl exception, CXInterface interface ) :
 	interface.contents.add(this) ->
 	this.configureException(exception);
 	
-private create CORBAException visitContained(ExceptDecl exception, uml::Package package ) :
+private create CXException visitContained(ExceptDecl exception, uml::Package package ) :
 	getCurrentFile().contents.add(this) ->
 	this.configureException(exception);
 	
-Void configureException(CORBAException zException, ExceptDecl exception) :
+Void configureException(CXException zException, ExceptDecl exception) :
 	zException.setName(exception.name) ->
 	exception.members.visitContained(zException);
 	
-create CORBAField visitContained(Member member, CORBAException exception) :
+create CXField visitContained(Member member, CXException exception) :
 	exception.members.add(this) ->
 	configureField(this, member);
 	
-create CORBAConstant visitContained(ConstDecl const, CORBAInterface interface) :
+create CXConstant visitContained(ConstDecl const, CXInterface interface) :
 	let values = const.value.getConstValue().split("::") :
 	interface.ownedConstants.add(this) ->
 	this.setName(const.name) ->
 	this.setTypedElementType(const.type) ->
 	this.setDefault(values.get(values.size - 1));
 
-create CORBAConstant visitContained(ConstDecl const, CORBAModule module) :
+create CXConstant visitContained(ConstDecl const, CXModule module) :
 	let values = const.value.getConstValue().split("::") :
 	module.addConstant(this) ->
 	this.setName(const.name) ->
 	this.setTypedElementType(const.type) ->
 	this.setDefault(values.get(values.size - 1));
 
-private create CORBAConstant visitContained(ConstDecl const, uml::Package file) :
+private create CXConstant visitContained(ConstDecl const, uml::Package file) :
 	let values = const.value.getConstValue().split("::") :
 	getCurrentFile().addConstant(this) ->
 	this.setName(const.name) ->
 	this.setTypedElementType(const.type) ->
 	this.setDefault(values.get(values.size - 1));
 	
-Void addConstant(uml::Package package, CORBAConstant const) :
+Void addConstant(uml::Package package, CXConstant const) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.addConstant(
 		org.eclipse.uml2.uml.Package,
 		org.eclipse.uml2.uml.Property);
@@ -304,34 +304,34 @@ String getConstValue(ScopedName exp) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.getConstValue(
 		com.zeligsoft.domain.omg.corba.dsl.idl.ScopedName);
 
-create CORBAEnum visitContained(EnumType enum, CORBAInterface interface ) :
+create CXEnum visitContained(EnumType enum, CXInterface interface ) :
 	interface.contents.add(this) ->
 	this.configureEnum(enum);
 
-create CORBAEnum visitContained(EnumType enum, CORBAModule module ) :
+create CXEnum visitContained(EnumType enum, CXModule module ) :
 	module.contents.add(this) ->
 	this.configureEnum(enum);
 	
-private create CORBAEnum visitContained(EnumType enum, uml::Package file) :
+private create CXEnum visitContained(EnumType enum, uml::Package file) :
 	getCurrentFile().contents.add(this) ->
 	this.configureEnum(enum);
 	
-Void configureEnum(CORBAEnum zEnum, EnumType enum ) :
+Void configureEnum(CXEnum zEnum, EnumType enum ) :
 	zEnum.setName(enum.name) ->
 	zEnum.addLiterals(enum);
 	
-Void addLiterals(CORBAEnum zdlEnum, EnumType idlEnum ) :
+Void addLiterals(CXEnum zdlEnum, EnumType idlEnum ) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.addLiterals(		
 		org.eclipse.uml2.uml.Enumeration,
 		com.zeligsoft.domain.omg.corba.dsl.idl.EnumType);
  
-create uml::DataType visitContained(TypeDeclarator typedef, CORBAInterface interface) :
+create uml::DataType visitContained(TypeDeclarator typedef, CXInterface interface) :
 	// could be a typedef, a sequence, or an array.
 	interface.zdlAsInterface().nestedClassifier.add(this) ->
 	this.setName(typedef.declarators.get(0).id) ->
 	this.applyTypedefConcept(typedef);
 	
-create uml::DataType visitContained(TypeDeclarator typedef, CORBAModule module) :
+create uml::DataType visitContained(TypeDeclarator typedef, CXModule module) :
 	// could be a typedef, a sequence, or an array.
 	module.zdlAsPackage().packagedElement.add(this) ->
 	this.setName(typedef.declarators.get(0).id) ->	
@@ -347,30 +347,30 @@ Void applyTypedefConcept(uml::DataType datatype, TypeDeclarator typedef) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.applyTypedefConcept(org.eclipse.uml2.uml.DataType, 
 		com.zeligsoft.domain.omg.corba.dsl.idl.TypeDeclarator);
 
-create CORBAUnion visitContained(UnionType union, CORBAInterface interface) :
+create CXUnion visitContained(UnionType union, CXInterface interface) :
 	interface.contents.add(this) ->
 	this.setName(union.name) ->
 	this.addCORBAUnionAttributes(union);
 
-create CORBAUnion visitContained(UnionType union, CORBAModule module) :
+create CXUnion visitContained(UnionType union, CXModule module) :
 	module.contents.add(this) ->
 	this.setName(union.name) ->
 	this.addCORBAUnionAttributes(union);
 
-create CORBAUnion visitContained(UnionType union, uml::Package package) :
+create CXUnion visitContained(UnionType union, uml::Package package) :
 	getCurrentFile().contents.add(this) ->
 	this.setName(union.name) ->
 	this.addCORBAUnionAttributes(union);
 	
-Void addCORBAUnionAttributes(CORBAUnion zdlUnion, UnionType idlUnion) :
+Void addCORBAUnionAttributes(CXUnion zdlUnion, UnionType idlUnion) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.addCORBAUnionAttributes(
 		org.eclipse.uml2.uml.DataType,
 		com.zeligsoft.domain.omg.corba.dsl.idl.UnionType);
 		
-create Native visitContained(NativeType native, CORBAModule module) :
+create Native visitContained(NativeType native, CXModule module) :
 	module.contents.add(this) ->
 	this.setName(native.name);
 	
-create Native visitContained(NativeType native, CORBAInterface interface) :
+create Native visitContained(NativeType native, CXInterface interface) :
 	interface.contents.add(this) ->
 	this.setName(native.name);

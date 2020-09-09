@@ -6,24 +6,21 @@ import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.IDLFileSpecification;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class IDLFileSpecificationZImpl extends ZObjectImpl implements
-		IDLFileSpecification {
+public class IDLFileSpecificationZImpl extends ZObjectImpl implements IDLFileSpecification {
 	public IDLFileSpecificationZImpl(org.eclipse.emf.ecore.EObject element) {
 		super(element);
 	}
 
 	@Override
 	public String getFilename() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-				.getValue(eObject(), "DDS4CCM::DDS4CCM::IDLFileSpecification",
-						"filename");
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+				"DDS4CCM::DDS4CCM::IDLFileSpecification", "filename");
 		return (String) rawValue;
 	}
 
 	@Override
 	public void setFilename(String val) {
-		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::IDLFileSpecification",
-				"filename", val);
+		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::IDLFileSpecification", "filename", val);
 	}
 
 	@Override

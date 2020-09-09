@@ -8,8 +8,7 @@ public interface Bridge extends NamedElement {
 
 	void addResource(ResourceProperty val);
 
-	<T extends ResourceProperty> T addResource(Class<T> typeToCreate,
-			String concept);
+	<T extends ResourceProperty> T addResource(Class<T> typeToCreate, String concept);
 
 	ResourceProperty addResource();
 
@@ -19,7 +18,6 @@ public interface Bridge extends NamedElement {
 	 * A predicate which returns true if the Object is an
 	 * instance of Bridge
 	 */
-	static final TypeSelectPredicate<Bridge> type = new TypeSelectPredicate<Bridge>(
-			"CCM::CCM_Target::Bridge", //$NON-NLS-1$
+	static final TypeSelectPredicate<Bridge> type = new TypeSelectPredicate<Bridge>("CCM::CCM_Target::Bridge", //$NON-NLS-1$
 			Bridge.class);
 }

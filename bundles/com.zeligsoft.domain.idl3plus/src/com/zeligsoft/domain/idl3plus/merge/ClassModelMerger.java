@@ -76,8 +76,6 @@ public class ClassModelMerger extends ModelMerger<EObject, IHierarchicalKey> {
 	/** The annotation source that identifies the profile diagrams. */
 	private static final String DIAGRAMS_ANNOTATION = "uml2.diagrams"; //$NON-NLS-1$
 
-	private static final String UI_CAPABILITIES_ANNOTATION = "com.ibm.xtools.common.ui.reduction.editingCapabilities"; //$NON-NLS-1$
-
 	// the only references outside of the Model are the imported elements and
 	// packages, and applied profiles
 	private static final Set<EReference> EXTERNAL_REFERENCES = new java.util.HashSet<EReference>(
@@ -433,7 +431,6 @@ public class ClassModelMerger extends ModelMerger<EObject, IHierarchicalKey> {
 			List<EObject> result = this.caseElement(object);
 			
 			result.remove(object.getEAnnotation(DIAGRAMS_ANNOTATION));
-			result.remove(object.getEAnnotation(UI_CAPABILITIES_ANNOTATION));
 
 			return result;
 		}

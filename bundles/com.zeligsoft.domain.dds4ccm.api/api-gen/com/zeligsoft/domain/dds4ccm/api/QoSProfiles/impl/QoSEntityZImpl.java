@@ -9,8 +9,7 @@ import com.zeligsoft.domain.dds4ccm.api.QoSProfiles.QoSForEntity;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class QoSEntityZImpl extends NamedElementImplementation implements
-		QoSEntity {
+public class QoSEntityZImpl extends NamedElementImplementation implements QoSEntity {
 	protected QoSForEntity _type;
 
 	public QoSEntityZImpl(org.eclipse.emf.ecore.EObject element) {
@@ -20,12 +19,10 @@ public class QoSEntityZImpl extends NamedElementImplementation implements
 	@Override
 	public QoSForEntity getType() {
 		if (_type == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "DDS4CCM::QoSProfiles::QoSEntity",
-							"type");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"DDS4CCM::QoSProfiles::QoSEntity", "type");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_type = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_type = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						QoSForEntity.class);
 			}
 		}
@@ -34,8 +31,7 @@ public class QoSEntityZImpl extends NamedElementImplementation implements
 
 	@Override
 	public void setType(QoSForEntity val) {
-		ZDLUtil.setValue(element, "DDS4CCM::QoSProfiles::QoSEntity", "type",
-				val.eObject());
+		ZDLUtil.setValue(element, "DDS4CCM::QoSProfiles::QoSEntity", "type", val.eObject());
 	}
 
 	@Override

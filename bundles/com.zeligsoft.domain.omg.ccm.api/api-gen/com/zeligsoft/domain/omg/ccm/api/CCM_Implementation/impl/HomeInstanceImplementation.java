@@ -10,8 +10,7 @@ import com.zeligsoft.domain.zml.api.ZML_Component.ComponentInterface;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class HomeInstanceImplementation extends PartImplementation implements
-		HomeInstance {
+public class HomeInstanceImplementation extends PartImplementation implements HomeInstance {
 	protected Home _definition;
 
 	public HomeInstanceImplementation(org.eclipse.emf.ecore.EObject element) {
@@ -19,9 +18,16 @@ public class HomeInstanceImplementation extends PartImplementation implements
 	}
 
 	@Override
+	public String getQualifiedName() {
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "ZMLMM::ZML_Core::NamedElement",
+				"qualifiedName");
+		return (String) rawValue;
+	}
+
+	@Override
 	public String getName() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "ZMLMM::ZML_Core::NamedElement", "name");
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "ZMLMM::ZML_Core::NamedElement",
+				"name");
 		return (String) rawValue;
 	}
 
@@ -33,13 +39,10 @@ public class HomeInstanceImplementation extends PartImplementation implements
 	@Override
 	public Home getDefinitionOverride() {
 		if (_definition == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"CCM::CCM_Implementation::HomeInstance",
-							"definition");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"CCM::CCM_Implementation::HomeInstance", "definition");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_definition = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue, Home.class);
+				_definition = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue, Home.class);
 			}
 		}
 		return _definition;
@@ -47,8 +50,7 @@ public class HomeInstanceImplementation extends PartImplementation implements
 
 	@Override
 	public void setDefinitionOverride(Home val) {
-		ZDLUtil.setValue(element, "CCM::CCM_Implementation::HomeInstance",
-				"definition", val.eObject());
+		ZDLUtil.setValue(element, "CCM::CCM_Implementation::HomeInstance", "definition", val.eObject());
 	}
 
 	@Override
@@ -59,13 +61,6 @@ public class HomeInstanceImplementation extends PartImplementation implements
 	@Override
 	public void setDefinition(ComponentInterface val) {
 		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public String getQualifiedName() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "ZMLMM::ZML_Core::NamedElement", "qualifiedName");
-		return (String) rawValue;
 	}
 
 	@Override

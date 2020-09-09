@@ -18,31 +18,27 @@ public enum ModelTypeEnum {
 	ATCD {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"DDS4CCM::DDS4CCM::ModelTypeEnum", "ATCD");
+			return ZDLUtil.getZDLEnumLiteral(context, "DDS4CCM::DDS4CCM::ModelTypeEnum", "ATCD");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
 
 	/**
-	 * 
-	 *
-	 */
+	* 
+	*
+	*/
 	AXCIOMA {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"DDS4CCM::DDS4CCM::ModelTypeEnum", "AXCIOMA");
+			return ZDLUtil.getZDLEnumLiteral(context, "DDS4CCM::DDS4CCM::ModelTypeEnum", "AXCIOMA");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
@@ -56,8 +52,7 @@ public enum ModelTypeEnum {
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return null;
 		}
 	};
@@ -70,11 +65,9 @@ public enum ModelTypeEnum {
 	 *    UNKNOWN if the literal is unrecognized
 	 */
 	public static ModelTypeEnum create(EObject literal) {
-		if (literal == ZDLUtil.getZDLEnumLiteral(literal,
-				"DDS4CCM::DDS4CCM::ModelTypeEnum", "ATCD")) { //$NON-NLS-1$//$NON-NLS-2$
+		if (literal == ZDLUtil.getZDLEnumLiteral(literal, "DDS4CCM::DDS4CCM::ModelTypeEnum", "ATCD")) { //$NON-NLS-1$//$NON-NLS-2$
 			return ATCD;
-		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal,
-				"DDS4CCM::DDS4CCM::ModelTypeEnum", "AXCIOMA")) { //$NON-NLS-1$//$NON-NLS-2$
+		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal, "DDS4CCM::DDS4CCM::ModelTypeEnum", "AXCIOMA")) { //$NON-NLS-1$//$NON-NLS-2$
 			return AXCIOMA;
 		} else {
 			return UNKNOWN;
@@ -83,6 +76,5 @@ public enum ModelTypeEnum {
 
 	public abstract EObject eObject(EObject context);
 
-	public abstract EObject eObject(
-			com.zeligsoft.base.zdl.staticapi.core.ZObject context);
+	public abstract EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context);
 }

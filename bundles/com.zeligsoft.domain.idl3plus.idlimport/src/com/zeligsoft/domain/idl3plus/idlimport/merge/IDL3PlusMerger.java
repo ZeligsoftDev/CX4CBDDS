@@ -33,7 +33,7 @@ import org.eclipse.uml2.uml.Type;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.idlimport.merge.IDLElementKey;
 import com.zeligsoft.domain.omg.corba.idlimport.merge.IDLMerger;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
@@ -58,7 +58,7 @@ public class IDL3PlusMerger extends IDLMerger {
 		@SuppressWarnings("unchecked")
 		public K getKey(T element) {
 			
-			if( ZDLUtil.isZDLConcept(element, CORBADomainNames.CORBANAMED_ELEMENT) == true ) {
+			if( ZDLUtil.isZDLConcept(element, CXDomainNames.CXNAMED_ELEMENT) == true ) {
 				return (K) new IDLElementKey(element);			
 			} else if( ZDLUtil.isZDLConcept(element, IDL3PlusNames.MODULE_BINDING)) {
 				return (K) new ModuleBindingKey(element);
@@ -129,7 +129,7 @@ public class IDL3PlusMerger extends IDLMerger {
 		List<EObject> result = super.getContentsToMerge(object, phase);
 
 		if (object instanceof Element && (
-				ZDLUtil.isZDLConcept(object, CORBADomainNames.CORBANAMED_ELEMENT) ||
+				ZDLUtil.isZDLConcept(object, CXDomainNames.CXNAMED_ELEMENT) ||
 				ZDLUtil.isZDLConcept(object, CCMNames.PROPERTY) ||
 				ZDLUtil.isZDLConcept(object, CCMNames.MONOLITHIC_IMPLEMENTATION)	
 			)) {

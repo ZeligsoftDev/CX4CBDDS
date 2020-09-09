@@ -14,8 +14,8 @@
  * limitations under the License.
  *
  */
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
-String getRepositoryId(CORBANamedElement element) :
+String getRepositoryId(CXNamedElement element) :
 	JAVA com.zeligsoft.domain.omg.corba.util.CORBAUtil.getRepositoryId(
 		org.eclipse.uml2.uml.NamedElement);

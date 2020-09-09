@@ -18,31 +18,27 @@ public enum HistoryQosPolicyKind {
 	KEEP_LAST {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"DDS::QOS::HistoryQosPolicyKind", "KEEP_LAST");
+			return ZDLUtil.getZDLEnumLiteral(context, "DDS::QOS::HistoryQosPolicyKind", "KEEP_LAST");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
 
 	/**
-	 * 
-	 *
-	 */
+	* 
+	*
+	*/
 	KEEP_ALL {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"DDS::QOS::HistoryQosPolicyKind", "KEEP_ALL");
+			return ZDLUtil.getZDLEnumLiteral(context, "DDS::QOS::HistoryQosPolicyKind", "KEEP_ALL");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
@@ -56,8 +52,7 @@ public enum HistoryQosPolicyKind {
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return null;
 		}
 	};
@@ -70,11 +65,9 @@ public enum HistoryQosPolicyKind {
 	 *    UNKNOWN if the literal is unrecognized
 	 */
 	public static HistoryQosPolicyKind create(EObject literal) {
-		if (literal == ZDLUtil.getZDLEnumLiteral(literal,
-				"DDS::QOS::HistoryQosPolicyKind", "KEEP_LAST")) { //$NON-NLS-1$//$NON-NLS-2$
+		if (literal == ZDLUtil.getZDLEnumLiteral(literal, "DDS::QOS::HistoryQosPolicyKind", "KEEP_LAST")) { //$NON-NLS-1$//$NON-NLS-2$
 			return KEEP_LAST;
-		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal,
-				"DDS::QOS::HistoryQosPolicyKind", "KEEP_ALL")) { //$NON-NLS-1$//$NON-NLS-2$
+		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal, "DDS::QOS::HistoryQosPolicyKind", "KEEP_ALL")) { //$NON-NLS-1$//$NON-NLS-2$
 			return KEEP_ALL;
 		} else {
 			return UNKNOWN;
@@ -83,6 +76,5 @@ public enum HistoryQosPolicyKind {
 
 	public abstract EObject eObject(EObject context);
 
-	public abstract EObject eObject(
-			com.zeligsoft.base.zdl.staticapi.core.ZObject context);
+	public abstract EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context);
 }

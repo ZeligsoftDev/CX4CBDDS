@@ -9,8 +9,7 @@ import com.zeligsoft.domain.omg.ccm.api.CCM_Target.ResourceProperty;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class BridgeImplementation extends NamedElementImplementation implements
-		Bridge {
+public class BridgeImplementation extends NamedElementImplementation implements Bridge {
 	protected java.util.List<ResourceProperty> _resource;
 
 	public BridgeImplementation(org.eclipse.emf.ecore.EObject element) {
@@ -20,16 +19,15 @@ public class BridgeImplementation extends NamedElementImplementation implements
 	@Override
 	public java.util.List<ResourceProperty> getResource() {
 		if (_resource == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "CCM::CCM_Target::Bridge", "resource");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "CCM::CCM_Target::Bridge",
+					"resource");
 			_resource = new java.util.ArrayList<ResourceProperty>();
 			@SuppressWarnings("unchecked")
 			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 			for (Object next : rawList) {
 				if (next instanceof org.eclipse.emf.ecore.EObject) {
 					ResourceProperty nextWrapper = ZDLFactoryRegistry.INSTANCE
-							.create((org.eclipse.emf.ecore.EObject) next,
-									ResourceProperty.class);
+							.create((org.eclipse.emf.ecore.EObject) next, ResourceProperty.class);
 					_resource.add(nextWrapper);
 				}
 			}
@@ -42,8 +40,7 @@ public class BridgeImplementation extends NamedElementImplementation implements
 		// make sure the resource list is created
 		getResource();
 
-		final Object rawValue = ZDLUtil.getValue(element,
-				"CCM::CCM_Target::Bridge", "resource");
+		final Object rawValue = ZDLUtil.getValue(element, "CCM::CCM_Target::Bridge", "resource");
 		@SuppressWarnings("unchecked")
 		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 		rawList.add(val.eObject());
@@ -53,14 +50,12 @@ public class BridgeImplementation extends NamedElementImplementation implements
 	}
 
 	@Override
-	public <T extends ResourceProperty> T addResource(Class<T> typeToCreate,
-			String concept) {
+	public <T extends ResourceProperty> T addResource(Class<T> typeToCreate, String concept) {
 		// make sure the resource list is created
 		getResource();
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "CCM::CCM_Target::Bridge", "resource", concept);
-		T element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, typeToCreate);
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element, "CCM::CCM_Target::Bridge",
+				"resource", concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(newConcept, typeToCreate);
 		if (_resource != null) {
 			_resource.add(element);
 		}
@@ -71,11 +66,9 @@ public class BridgeImplementation extends NamedElementImplementation implements
 	public ResourceProperty addResource() {
 		// make sure the resource list is created
 		getResource();
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "CCM::CCM_Target::Bridge", "resource",
-				"CCM::CCM_Target::ResourceProperty");
-		ResourceProperty element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept,
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element, "CCM::CCM_Target::Bridge",
+				"resource", "CCM::CCM_Target::ResourceProperty");
+		ResourceProperty element = ZDLFactoryRegistry.INSTANCE.create(newConcept,
 				ResourceProperty.class);
 		if (_resource != null) {
 			_resource.add(element);

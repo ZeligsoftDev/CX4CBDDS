@@ -12,8 +12,7 @@ public interface IDL3File extends NamedElement {
 
 	void addContents(IDL3FileImport val);
 
-	<T extends IDL3FileImport> T addContents(Class<T> typeToCreate,
-			String concept);
+	<T extends IDL3FileImport> T addContents(Class<T> typeToCreate, String concept);
 
 	IDL3FileImport addContents();
 
@@ -23,7 +22,6 @@ public interface IDL3File extends NamedElement {
 	 * A predicate which returns true if the Object is an
 	 * instance of IDL3File
 	 */
-	static final TypeSelectPredicate<IDL3File> type = new TypeSelectPredicate<IDL3File>(
-			"CCM::CCM_Artifacts::IDL3File", //$NON-NLS-1$
+	static final TypeSelectPredicate<IDL3File> type = new TypeSelectPredicate<IDL3File>("CCM::CCM_Artifacts::IDL3File", //$NON-NLS-1$
 			IDL3File.class);
 }

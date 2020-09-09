@@ -11,7 +11,6 @@ public interface osQosPolicy extends qosPolicy {
 	 * A predicate which returns true if the Object is an
 	 * instance of osQosPolicy
 	 */
-	static final TypeSelectPredicate<osQosPolicy> type = new TypeSelectPredicate<osQosPolicy>(
-			"DDS::QOS::osQosPolicy", //$NON-NLS-1$
+	static final TypeSelectPredicate<osQosPolicy> type = new TypeSelectPredicate<osQosPolicy>("DDS::QOS::osQosPolicy", //$NON-NLS-1$
 			osQosPolicy.class);
 }

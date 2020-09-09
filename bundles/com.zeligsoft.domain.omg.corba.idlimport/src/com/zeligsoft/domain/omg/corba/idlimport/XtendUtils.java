@@ -47,7 +47,7 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.xtend.util.stdlib.ExtIssueReporter;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.dsl.idl.AddExpr;
 import com.zeligsoft.domain.omg.corba.dsl.idl.AndExpr;
 import com.zeligsoft.domain.omg.corba.dsl.idl.ArrayDeclarator;
@@ -125,7 +125,7 @@ public class XtendUtils {
 	 */
 	public static void applyIDLFileConcept(Package p)
 	{
-		ZDLUtil.addZDLConcept(p, CORBADomainNames.IDLFILE);
+		ZDLUtil.addZDLConcept(p, CXDomainNames.IDLFILE);
 		topLevelPackage = p;
 	} 
 	
@@ -193,7 +193,7 @@ public class XtendUtils {
 			if( includeTarget == null ) {
 				// create a new IDLFile
 				Package newIDLFile = pkg.createNestedPackage(fileName);
-				ZDLUtil.addZDLConcept(newIDLFile, CORBADomainNames.IDLFILE);
+				ZDLUtil.addZDLConcept(newIDLFile, CXDomainNames.IDLFILE);
 				visitedFiles.add(newIDLFile);
 				idlFiles.add(newIDLFile);
 			} else {
@@ -204,7 +204,7 @@ public class XtendUtils {
 			if( idlFiles.size() > 2 ) {
 				// This is an #include. Add the appropriate relationship between the last two IDLFiles processed.
 				Dependency dep = idlFiles.get(idlFiles.size() - 2).createDependency(idlFiles.get(idlFiles.size() - 1));
-				ZDLUtil.addZDLConcept(dep, CORBADomainNames.IDLIMPORT);
+				ZDLUtil.addZDLConcept(dep, CXDomainNames.IDLIMPORT);
 			}			
 						
 						
@@ -222,17 +222,17 @@ public class XtendUtils {
 		name = name.substring(0, name.lastIndexOf(".idl"));	
 	
 		// Attempt to resolve the include with an IDLFile already in the model or one of its package imports.			
-		List<NamedElement> foundPackages = findIDLElement(zdlModel, name, CORBADomainNames.IDLFILE);
+		List<NamedElement> foundPackages = findIDLElement(zdlModel, name, CXDomainNames.IDLFILE);
 		if( foundPackages.size() == 0 ) {
 			// If the IDLFile was not in the model it may be in one of its package imports.
 			for( PackageImport pi : zdlModel.getPackageImports()) {
-				foundPackages = findIDLElement(pi.getImportedPackage(), name, CORBADomainNames.IDLFILE);
+				foundPackages = findIDLElement(pi.getImportedPackage(), name, CXDomainNames.IDLFILE);
 				if( foundPackages.size() > 0 ) break;
 			}
 		}
 		if( foundPackages.size() > 0 ) {
 			Dependency dep = idlFiles.get(idlFiles.size() - 1).createDependency(foundPackages.get(0));
-			ZDLUtil.addZDLConcept(dep, CORBADomainNames.IDLIMPORT);
+			ZDLUtil.addZDLConcept(dep, CXDomainNames.IDLIMPORT);
 		}
 	}
 	
@@ -276,18 +276,18 @@ public class XtendUtils {
 			}
 			
 			// Attempt to resolve the include with an IDLFile already in the model or one of its package imports.			
-			List<NamedElement> foundPackages = findIDLElement(zdlModel, name, CORBADomainNames.IDLFILE);
+			List<NamedElement> foundPackages = findIDLElement(zdlModel, name, CXDomainNames.IDLFILE);
 			if( foundPackages.size() == 0 ) {
 				// If the IDLFile was not in the model it may be in one of its package imports.
 				for( PackageImport pi : zdlModel.getPackageImports()) {
-					foundPackages = findIDLElement(pi.getImportedPackage(), name, CORBADomainNames.IDLFILE);
+					foundPackages = findIDLElement(pi.getImportedPackage(), name, CXDomainNames.IDLFILE);
 					if( foundPackages.size() > 0 ) break;
 				}
 			}						
 			if( foundPackages.size() > 0 ) {
 				// Should warn if the size is greater than 1.
 				Dependency dep = pkg.createDependency(foundPackages.get(0));
-				ZDLUtil.addZDLConcept(dep, CORBADomainNames.IDLIMPORT);
+				ZDLUtil.addZDLConcept(dep, CXDomainNames.IDLIMPORT);
 				dep.setName(name);
 			} else {
 				ExtIssueReporter.reportError("Failed to resolve #include of " + name);
@@ -375,7 +375,7 @@ public class XtendUtils {
 	
 	/**
 	 * Exceptions never use a fully scoped name. They are parsed in as simple identifiers, so this function converts each
-	 * one to a ScopedName so that the general getType() API can be used to look up the CORBAException.
+	 * one to a ScopedName so that the general getType() API can be used to look up the CXException.
 	 * 
 	 * @param element
 	 * @param exc
@@ -386,9 +386,9 @@ public class XtendUtils {
 		ExceptionList exc = attrRaisesExpr.getExceptions();
 		for( ScopedName scopedName : exc.getException()) {	
 			Type type = getType(element, scopedName);
-			if( type != null && ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAEXCEPTION) 
-					&& ZDLUtil.isZDLConcept(element, CORBADomainNames.CORBAATTRIBUTE)) {
-				((List<EObject>)ZDLUtil.getValue(element, CORBADomainNames.CORBAATTRIBUTE, CORBADomainNames.CORBAATTRIBUTE__GETRAISES)).add(type);	
+			if( type != null && ZDLUtil.isZDLConcept(type, CXDomainNames.CXEXCEPTION) 
+					&& ZDLUtil.isZDLConcept(element, CXDomainNames.CXATTRIBUTE)) {
+				((List<EObject>)ZDLUtil.getValue(element, CXDomainNames.CXATTRIBUTE, CXDomainNames.CXATTRIBUTE__GETRAISES)).add(type);	
 			} else {
 				unresolvedLookups.put(element, scopedName, unresolvedLookups.LookupContext.ATTRIBUTE_GET_RAISES_EXCEPTION);
 			}
@@ -397,7 +397,7 @@ public class XtendUtils {
 	
 	/**
 	 * Exceptions never use a fully scoped name. They are parsed in as simple identifiers, so this function converts each
-	 * one to a ScopedName so that the general getType() API can be used to look up the CORBAException.
+	 * one to a ScopedName so that the general getType() API can be used to look up the CXException.
 	 * 
 	 * @param element
 	 * @param exc
@@ -408,9 +408,9 @@ public class XtendUtils {
 		ExceptionList exc = attrRaisesExpr.getExceptions();
 		for( ScopedName scopedName : exc.getException()) {	
 			Type type = getType(element, scopedName);
-			if( type != null && ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAEXCEPTION) 
-					&& ZDLUtil.isZDLConcept(element, CORBADomainNames.CORBAATTRIBUTE)) {
-				((List<EObject>)ZDLUtil.getValue(element, CORBADomainNames.CORBAATTRIBUTE, CORBADomainNames.CORBAATTRIBUTE__SETRAISES)).add(type);	
+			if( type != null && ZDLUtil.isZDLConcept(type, CXDomainNames.CXEXCEPTION) 
+					&& ZDLUtil.isZDLConcept(element, CXDomainNames.CXATTRIBUTE)) {
+				((List<EObject>)ZDLUtil.getValue(element, CXDomainNames.CXATTRIBUTE, CXDomainNames.CXATTRIBUTE__SETRAISES)).add(type);	
 			} else {
 				unresolvedLookups.put(element, scopedName, unresolvedLookups.LookupContext.ATTRIBUTE_SET_RAISES_EXCEPTION);
 			}
@@ -419,7 +419,7 @@ public class XtendUtils {
 	
 	/**
 	 * Exceptions never use a fully scoped name. They are parsed in as simple identifiers, so this function converts each
-	 * one to a ScopedName so that the general getType() API can be used to look up the CORBAException.
+	 * one to a ScopedName so that the general getType() API can be used to look up the CXException.
 	 * 
 	 * @param element
 	 * @param exc
@@ -428,7 +428,7 @@ public class XtendUtils {
 		
 		for( ScopedName scopedName : exc.getException()) {	
 			Type type = getType(element, scopedName);
-			if( type != null && ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAEXCEPTION)) {
+			if( type != null && ZDLUtil.isZDLConcept(type, CXDomainNames.CXEXCEPTION)) {
 				element.getRaisedExceptions().add(type);			
 			} else {
 				unresolvedLookups.put(element, scopedName, unresolvedLookups.LookupContext.OPERATION_EXCEPTION);
@@ -463,16 +463,16 @@ public class XtendUtils {
 	}
 	
 	/**
-	 * Add a CORBAConstant to a CORBAModule or IDLFile
+	 * Add a CXConstant to a CXModule or IDLFile
 	 * 
 	 * @param pkg
 	 * @param constant
 	 */
 	public static void addConstant(Package pkg, Property constant) {
-		if( ZDLUtil.isZDLConcept(constant, CORBADomainNames.CORBACONSTANT)) {
+		if( ZDLUtil.isZDLConcept(constant, CXDomainNames.CXCONSTANT)) {
 			org.eclipse.uml2.uml.Class corbaConstants = null;
 			for( PackageableElement p : pkg.getPackagedElements()) {
-				if( ZDLUtil.isZDLConcept(p, CORBADomainNames.CORBACONSTANTS)) {
+				if( ZDLUtil.isZDLConcept(p, CXDomainNames.CXCONSTANTS)) {
 					corbaConstants = (org.eclipse.uml2.uml.Class)p;
 				}
 			}
@@ -480,11 +480,11 @@ public class XtendUtils {
 				corbaConstants = UMLFactory.eINSTANCE.createClass();
 				corbaConstants.setName(pkg.getName() + "_Constants");
 				pkg.getPackagedElements().add(corbaConstants);
-				ZDLUtil.addZDLConcept(corbaConstants, CORBADomainNames.CORBACONSTANTS);				
+				ZDLUtil.addZDLConcept(corbaConstants, CXDomainNames.CXCONSTANTS);				
 			}
 			corbaConstants.getOwnedAttributes().add(constant);
 		} else {
-			throw new IllegalArgumentException("This method is only to be used to add a CORBAConstant.");
+			throw new IllegalArgumentException("This method is only to be used to add a CXConstant.");
 		}
 	}
 	
@@ -694,20 +694,20 @@ public class XtendUtils {
 		List<Object> result = new ArrayList<Object>();
 		for (int i = 0; i < typedecl.getSize().size(); i++) {
 			EObject newBound = ZDLUtil.createZDLConcept(object,
-					CORBADomainNames.CORBABOUND);
+					CXDomainNames.CXBOUND);
 			ConstExp exp = typedecl.getSize().get(i);
 			ScopedName sname = getConstScopeName(exp);
 			if (sname != null) {
 				EObject constant = null;
-				if (ZDLUtil.isZDLConcept(object, CORBADomainNames.CORBAFIELD)) {
+				if (ZDLUtil.isZDLConcept(object, CXDomainNames.CXFIELD)) {
 					constant = getType((Element) object.eContainer(), sname,
 							false);
 				} else {
 					constant = getType(object, sname, false);
 				}
 				if (constant != null) {
-					ZDLUtil.setValue(newBound, CORBADomainNames.CORBABOUND,
-							CORBADomainNames.CORBABOUND__CONSTANT, constant);
+					ZDLUtil.setValue(newBound, CXDomainNames.CXBOUND,
+							CXDomainNames.CXBOUND__CONSTANT, constant);
 				} else {
 					String scopedNameString = getConstValue(sname);
 					ExtIssueReporter.reportError("Element "
@@ -717,8 +717,8 @@ public class XtendUtils {
 				}
 			} else {
 				String bound = getConstValue(exp);
-				ZDLUtil.setValue(newBound, CORBADomainNames.CORBABOUND,
-						CORBADomainNames.CORBABOUND__VALUE, bound);
+				ZDLUtil.setValue(newBound, CXDomainNames.CXBOUND,
+						CXDomainNames.CXBOUND__VALUE, bound);
 			}
 			result.add(newBound);
 		}
@@ -738,7 +738,7 @@ public class XtendUtils {
 		
 		if( typedecl.getType() instanceof SequenceType )
 		{ 
-			ZDLUtil.addZDLConcept(d, CORBADomainNames.CORBASEQUENCE);
+			ZDLUtil.addZDLConcept(d, CXDomainNames.CXSEQUENCE);
 			Property newProperty = d.createOwnedAttribute("members", null);
 			setType(newProperty, ((SequenceType)typedecl.getType()).getType());
 			if( ((SequenceType)typedecl.getType()).getSize() != null ) {
@@ -749,52 +749,52 @@ public class XtendUtils {
 					constant = getType(d, sname, false);
 				}
 				EObject newBound = ZDLUtil.createZDLConcept(d,
-						CORBADomainNames.CORBABOUND);
+						CXDomainNames.CXBOUND);
 				if(constant != null){
-					ZDLUtil.setValue(newBound, CORBADomainNames.CORBABOUND,
-							CORBADomainNames.CORBABOUND__CONSTANT, constant);
+					ZDLUtil.setValue(newBound, CXDomainNames.CXBOUND,
+							CXDomainNames.CXBOUND__CONSTANT, constant);
 				} else {
 					String bound = getConstValue(constExp);
-					ZDLUtil.setValue(newBound, CORBADomainNames.CORBABOUND,
-						CORBADomainNames.CORBABOUND__VALUE, bound);
+					ZDLUtil.setValue(newBound, CXDomainNames.CXBOUND,
+						CXDomainNames.CXBOUND__VALUE, bound);
 				}
-				ZDLUtil.setValue(d, CORBADomainNames.CORBASEQUENCE,
-						CORBADomainNames.CORBASEQUENCE__BOUNDS, newBound);
+				ZDLUtil.setValue(d, CXDomainNames.CXSEQUENCE,
+						CXDomainNames.CXSEQUENCE__BOUNDS, newBound);
 			}
 		} else if( typedecl.getDeclarators().get(0) instanceof ArrayDeclarator ) {
-			ZDLUtil.addZDLConcept(d, CORBADomainNames.CORBAARRAY);
+			ZDLUtil.addZDLConcept(d, CXDomainNames.CXARRAY);
 			Property newProperty = d.createOwnedAttribute("members", null);
 			setType(newProperty, typedecl.getType());
 			List<Object> list = (List<Object>) ZDLUtil.getValue(d,
-					CORBADomainNames.CORBAARRAY,
-					CORBADomainNames.CORBAARRAY__BOUNDS);
+					CXDomainNames.CXARRAY,
+					CXDomainNames.CXARRAY__BOUNDS);
 			list.addAll(getArrayBounds(d, (ArrayDeclarator) typedecl
 					.getDeclarators().get(0)));
 		} else if( typedecl.getType() instanceof StringType && ((StringType)typedecl.getType()).getSize() != null ) {
-			ZDLUtil.addZDLConcept(d, CORBADomainNames.CORBASTRING);
+			ZDLUtil.addZDLConcept(d, CXDomainNames.CXSTRING);
 			StringType s = (StringType)typedecl.getType();
 			EObject newBound = ZDLUtil.createZDLConcept(d,
-					CORBADomainNames.CORBABOUND);
-			ZDLUtil.setValue(newBound, CORBADomainNames.CORBABOUND,
-					CORBADomainNames.CORBABOUND__VALUE, getConstValue(s
+					CXDomainNames.CXBOUND);
+			ZDLUtil.setValue(newBound, CXDomainNames.CXBOUND,
+					CXDomainNames.CXBOUND__VALUE, getConstValue(s
 							.getSize().getExp()));
-			ZDLUtil.setValue(d, CORBADomainNames.CORBASTRING,
-					CORBADomainNames.CORBABOUNDED__BOUNDS, newBound);
+			ZDLUtil.setValue(d, CXDomainNames.CXSTRING,
+					CXDomainNames.CXBOUNDED__BOUNDS, newBound);
 		} else if( typedecl.getType() instanceof WideStringType && ((WideStringType)typedecl.getType()).getSize() != null ) {
-			ZDLUtil.addZDLConcept(d, CORBADomainNames.CORBAWSTRING);
+			ZDLUtil.addZDLConcept(d, CXDomainNames.CXWSTRING);
 			WideStringType s = (WideStringType) typedecl.getType();
 			EObject newBound = ZDLUtil.createZDLConcept(d,
-					CORBADomainNames.CORBABOUND);
-			ZDLUtil.setValue(newBound, CORBADomainNames.CORBABOUND,
-					CORBADomainNames.CORBABOUND__VALUE, getConstValue(s
+					CXDomainNames.CXBOUND);
+			ZDLUtil.setValue(newBound, CXDomainNames.CXBOUND,
+					CXDomainNames.CXBOUND__VALUE, getConstValue(s
 							.getSize().getExp()));
-			ZDLUtil.setValue(d, CORBADomainNames.CORBAWSTRING,
-					CORBADomainNames.CORBABOUNDED__BOUNDS, newBound);
+			ZDLUtil.setValue(d, CXDomainNames.CXWSTRING,
+					CXDomainNames.CXBOUNDED__BOUNDS, newBound);
 		} else {
-			ZDLUtil.addZDLConcept(d, CORBADomainNames.CORBATYPE_DEF);
+			ZDLUtil.addZDLConcept(d, CXDomainNames.CXTYPE_DEF);
 			Type type = getType(d, typedecl.getType());
 			if( type != null) {
-				ZDLUtil.setValue(d, CORBADomainNames.CORBATYPE_DEF, CORBADomainNames.CORBATYPE_DEF__TYPE, type);
+				ZDLUtil.setValue(d, CXDomainNames.CXTYPE_DEF, CXDomainNames.CXTYPE_DEF__TYPE, type);
 			} else if( typedecl.getType() instanceof ScopedName) {
 				unresolvedLookups.put(d, (ScopedName)typedecl.getType(), unresolvedLookups.LookupContext.TYPEDEF);
 			}
@@ -803,8 +803,8 @@ public class XtendUtils {
 	
 	@SuppressWarnings("unchecked")
 	public static void addCORBAUnionAttributes(DataType zdlUnion, UnionType idlUnion) {
-		if( ZDLUtil.isZDLConcept(zdlUnion, CORBADomainNames.CORBAUNION) == false) {
-			throw new IllegalArgumentException("This method is only to be called for a CORBAUnion.");
+		if( ZDLUtil.isZDLConcept(zdlUnion, CXDomainNames.CXUNION) == false) {
+			throw new IllegalArgumentException("This method is only to be called for a CXUnion.");
 		}
 		
 		Property switchType = zdlUnion.createOwnedAttribute("switchType", null);
@@ -813,13 +813,13 @@ public class XtendUtils {
 			ElementSpec spec = unionCase.getSpec();
 			Property unionCaseProperty = zdlUnion.createOwnedAttribute(spec.getDeclarator().getId(), null);
 			setType(unionCaseProperty, spec.getType());
-			ZDLUtil.addZDLConcept(unionCaseProperty, CORBADomainNames.CORBACASE);
+			ZDLUtil.addZDLConcept(unionCaseProperty, CXDomainNames.CXCASE);
 			for( CaseLabel unionCaseLabel : unionCase.getLabel()) {				
 				if( unionCaseLabel.isIsDefault()) {
-					((List<String>)ZDLUtil.getValue(unionCaseProperty, CORBADomainNames.CORBACASE, CORBADomainNames.CORBACASE__LABEL)).add("default");
+					((List<String>)ZDLUtil.getValue(unionCaseProperty, CXDomainNames.CXCASE, CXDomainNames.CXCASE__LABEL)).add("default");
 				} else {
 					String labelText = getConstValue(unionCaseLabel.getConstExp());
-					((List<String>)ZDLUtil.getValue(unionCaseProperty, CORBADomainNames.CORBACASE, CORBADomainNames.CORBACASE__LABEL)).add(labelText);	
+					((List<String>)ZDLUtil.getValue(unionCaseProperty, CXDomainNames.CXCASE, CXDomainNames.CXCASE__LABEL)).add(labelText);	
 				}				
 			}
 		}
@@ -1022,16 +1022,16 @@ public class XtendUtils {
 					boolean localfound = false;
 					for( Element subElement : e.getOwnedElements() ) {
 						if( subElement instanceof NamedElement
-								&& !(ZDLUtil.isZDLConcept(subElement, CORBADomainNames.IDLIMPORT))
+								&& !(ZDLUtil.isZDLConcept(subElement, CXDomainNames.IDLIMPORT))
 								&& ((NamedElement)subElement).getName() != null // e.g. operation return parameter
 							) {
 							
 							if (ZDLUtil.isZDLConcept(subElement,
-									CORBADomainNames.CORBACONSTANTS)) {
+									CXDomainNames.CXCONSTANTS)) {
 								for (Property attr : ((Classifier) subElement)
 										.getAllAttributes()) {
 									if (ZDLUtil.isZDLConcept(attr,
-											CORBADomainNames.CORBACONSTANT)
+											CXDomainNames.CXCONSTANT)
 											&& attr.getName().equals(s)) {
 										e = attr;
 										localfound = true;
@@ -1085,7 +1085,7 @@ public class XtendUtils {
 	 * see if it exists in one of the packages further down.
 	 * 
 	 * From bug#15757, "In DDS4CCM support is added for a UML package 
-	 * contained under a CORBA Module"
+	 * contained under a CX Module"
 	 *
 	 * @param element
 	 * 		The element we need to resolve a lookup for.
@@ -1096,7 +1096,7 @@ public class XtendUtils {
 	private static Element recurseResolveScope(Element e, String s) {
 		for( Element subElement : e.getOwnedElements() ) {
 			if( subElement instanceof NamedElement
-					&& !(ZDLUtil.isZDLConcept(subElement, CORBADomainNames.IDLIMPORT))
+					&& !(ZDLUtil.isZDLConcept(subElement, CXDomainNames.IDLIMPORT))
 					&& ((NamedElement)subElement).getName() != null ) {
 				if (((NamedElement)subElement).getName().equals(s) ) {
 					return subElement;
@@ -1163,20 +1163,20 @@ public class XtendUtils {
 						// Interface inheritance.
 						Interface intf = (Interface)namedElement;
 						intf.createGeneralization((Classifier)type);
-					} else if( ZDLUtil.isZDLConcept(namedElement, CORBADomainNames.CORBAOPERATION) 
+					} else if( ZDLUtil.isZDLConcept(namedElement, CXDomainNames.CXOPERATION) 
 							&& lookup.context == unresolvedLookups.LookupContext.TYPED_ELEMENT_TYPE) {
 							((Operation)namedElement).setType(type);
-					} else if( ZDLUtil.isZDLConcept(namedElement, CORBADomainNames.CORBAOPERATION)
+					} else if( ZDLUtil.isZDLConcept(namedElement, CXDomainNames.CXOPERATION)
 							&& lookup.context == unresolvedLookups.LookupContext.OPERATION_EXCEPTION ) {
 						((Operation)namedElement).getRaisedExceptions().add(type);
-					} else if( ZDLUtil.isZDLConcept(namedElement, CORBADomainNames.CORBAATTRIBUTE) 
+					} else if( ZDLUtil.isZDLConcept(namedElement, CXDomainNames.CXATTRIBUTE) 
 							&& lookup.context == unresolvedLookups.LookupContext.ATTRIBUTE_GET_RAISES_EXCEPTION ) {
-						((List<EObject>)ZDLUtil.getValue(namedElement, CORBADomainNames.CORBAATTRIBUTE, CORBADomainNames.CORBAATTRIBUTE__GETRAISES)).add(type);
-					} else if( ZDLUtil.isZDLConcept(namedElement, CORBADomainNames.CORBAATTRIBUTE) 
+						((List<EObject>)ZDLUtil.getValue(namedElement, CXDomainNames.CXATTRIBUTE, CXDomainNames.CXATTRIBUTE__GETRAISES)).add(type);
+					} else if( ZDLUtil.isZDLConcept(namedElement, CXDomainNames.CXATTRIBUTE) 
 							&& lookup.context == unresolvedLookups.LookupContext.ATTRIBUTE_SET_RAISES_EXCEPTION ) {
-						((List<EObject>)ZDLUtil.getValue(namedElement, CORBADomainNames.CORBAATTRIBUTE, CORBADomainNames.CORBAATTRIBUTE__SETRAISES)).add(type);
+						((List<EObject>)ZDLUtil.getValue(namedElement, CXDomainNames.CXATTRIBUTE, CXDomainNames.CXATTRIBUTE__SETRAISES)).add(type);
 					} else if( lookup.context == unresolvedLookups.LookupContext.TYPEDEF) {
-						ZDLUtil.setValue(namedElement, CORBADomainNames.CORBATYPE_DEF, CORBADomainNames.CORBATYPE_DEF__TYPE, type);
+						ZDLUtil.setValue(namedElement, CXDomainNames.CXTYPE_DEF, CXDomainNames.CXTYPE_DEF__TYPE, type);
 					}
 				} else {
 					String scopedNameString = getConstValue(scopedName);					

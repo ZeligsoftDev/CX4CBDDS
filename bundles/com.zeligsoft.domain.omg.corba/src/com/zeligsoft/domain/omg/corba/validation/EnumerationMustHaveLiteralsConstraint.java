@@ -23,7 +23,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.uml2.uml.Enumeration;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 public class EnumerationMustHaveLiteralsConstraint extends AbstractModelConstraint {
 
@@ -36,7 +36,7 @@ public class EnumerationMustHaveLiteralsConstraint extends AbstractModelConstrai
 		EObject objToVerify = ctx.getTarget();
 		
 		
-		if (ZDLUtil.isZDLConcept(objToVerify, CORBADomainNames.CORBAENUM)){
+		if (ZDLUtil.isZDLConcept(objToVerify, CXDomainNames.CXENUM)){
 			if ( ((Enumeration)objToVerify).getOwnedLiterals().size() == 0 ){
 				return ctx.createFailureStatus(ctx);
 			}

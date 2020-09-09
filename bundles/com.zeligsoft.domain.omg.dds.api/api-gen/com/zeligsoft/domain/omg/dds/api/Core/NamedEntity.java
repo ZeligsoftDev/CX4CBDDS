@@ -12,14 +12,12 @@ public interface NamedEntity extends ZObject {
 
 	void addOwnedEntity(NamedEntity val);
 
-	<T extends NamedEntity> T addOwnedEntity(Class<T> typeToCreate,
-			String concept);
+	<T extends NamedEntity> T addOwnedEntity(Class<T> typeToCreate, String concept);
 
 	/**
 	 * A predicate which returns true if the Object is an
 	 * instance of NamedEntity
 	 */
-	static final TypeSelectPredicate<NamedEntity> type = new TypeSelectPredicate<NamedEntity>(
-			"DDS::Core::NamedEntity", //$NON-NLS-1$
+	static final TypeSelectPredicate<NamedEntity> type = new TypeSelectPredicate<NamedEntity>("DDS::Core::NamedEntity", //$NON-NLS-1$
 			NamedEntity.class);
 }

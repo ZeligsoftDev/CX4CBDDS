@@ -15,6 +15,6 @@ public interface IDLImport extends ZObject {
 	 * instance of IDLImport
 	 */
 	static final TypeSelectPredicate<IDLImport> type = new TypeSelectPredicate<IDLImport>(
-			"CORBADomain::IDLFileSupport::IDLImport", //$NON-NLS-1$
+			"CXDomain::IDLFileSupport::IDLImport", //$NON-NLS-1$
 			IDLImport.class);
 }

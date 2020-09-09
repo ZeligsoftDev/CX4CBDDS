@@ -16,7 +16,6 @@ public interface Duration extends ZObject {
 	 * A predicate which returns true if the Object is an
 	 * instance of Duration
 	 */
-	static final TypeSelectPredicate<Duration> type = new TypeSelectPredicate<Duration>(
-			"DDS::QOS::Duration", //$NON-NLS-1$
+	static final TypeSelectPredicate<Duration> type = new TypeSelectPredicate<Duration>("DDS::QOS::Duration", //$NON-NLS-1$
 			Duration.class);
 }

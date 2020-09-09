@@ -33,10 +33,10 @@ import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Parameter;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
- * Add return type to newly created CORBA operation and apply correct stereotype
+ * Add return type to newly created CX operation and apply correct stereotype
  * to the return parameter
  * 
  * @author ysroh
@@ -59,7 +59,7 @@ public class CORBAOperationEditHelperAdvice extends AbstractEditHelperAdvice {
 
 				EObject newObject = request.getNewElement();
 				if (newObject == null || !ZDLUtil.isZDLConcept(newObject,
-						CORBADomainNames.CORBAOPERATION)) {
+						CXDomainNames.CXOPERATION)) {
 					return CommandResult.newOKCommandResult(newObject);
 				}
 
@@ -69,7 +69,7 @@ public class CORBAOperationEditHelperAdvice extends AbstractEditHelperAdvice {
 						.getPackageImports()) {
 					if ("IDLPrimitives".equals(pi.getImportedPackage().getName())) { //$NON-NLS-1$
 						corbaVoidType = pi.getImportedPackage().getOwnedMember(
-								"CORBAVoid"); //$NON-NLS-1$
+								"CXVoid"); //$NON-NLS-1$
 					}
 				}
 				if (corbaVoidType != null) {

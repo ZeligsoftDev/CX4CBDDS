@@ -18,33 +18,28 @@ public enum DestinationOrderQosPolicyKind {
 	BY_RECEPTION_TIMESTAMP {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"DDS::QOS::DestinationOrderQosPolicyKind",
+			return ZDLUtil.getZDLEnumLiteral(context, "DDS::QOS::DestinationOrderQosPolicyKind",
 					"BY_RECEPTION_TIMESTAMP");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
 
 	/**
-	 * 
-	 *
-	 */
+	* 
+	*
+	*/
 	BY_SOURCE_TIMESTAMP {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"DDS::QOS::DestinationOrderQosPolicyKind",
-					"BY_SOURCE_TIMESTAMP");
+			return ZDLUtil.getZDLEnumLiteral(context, "DDS::QOS::DestinationOrderQosPolicyKind", "BY_SOURCE_TIMESTAMP");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
@@ -58,8 +53,7 @@ public enum DestinationOrderQosPolicyKind {
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return null;
 		}
 	};
@@ -72,15 +66,11 @@ public enum DestinationOrderQosPolicyKind {
 	 *    UNKNOWN if the literal is unrecognized
 	 */
 	public static DestinationOrderQosPolicyKind create(EObject literal) {
-		if (literal == ZDLUtil
-				.getZDLEnumLiteral(
-						literal,
-						"DDS::QOS::DestinationOrderQosPolicyKind", "BY_RECEPTION_TIMESTAMP")) { //$NON-NLS-1$//$NON-NLS-2$
+		if (literal == ZDLUtil.getZDLEnumLiteral(literal, "DDS::QOS::DestinationOrderQosPolicyKind", //$NON-NLS-1$
+				"BY_RECEPTION_TIMESTAMP")) { //$NON-NLS-1$
 			return BY_RECEPTION_TIMESTAMP;
-		} else if (literal == ZDLUtil
-				.getZDLEnumLiteral(
-						literal,
-						"DDS::QOS::DestinationOrderQosPolicyKind", "BY_SOURCE_TIMESTAMP")) { //$NON-NLS-1$//$NON-NLS-2$
+		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal, "DDS::QOS::DestinationOrderQosPolicyKind", //$NON-NLS-1$
+				"BY_SOURCE_TIMESTAMP")) { //$NON-NLS-1$
 			return BY_SOURCE_TIMESTAMP;
 		} else {
 			return UNKNOWN;
@@ -89,6 +79,5 @@ public enum DestinationOrderQosPolicyKind {
 
 	public abstract EObject eObject(EObject context);
 
-	public abstract EObject eObject(
-			com.zeligsoft.base.zdl.staticapi.core.ZObject context);
+	public abstract EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context);
 }

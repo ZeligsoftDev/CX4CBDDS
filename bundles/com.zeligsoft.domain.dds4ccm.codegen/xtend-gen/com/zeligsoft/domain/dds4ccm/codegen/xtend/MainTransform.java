@@ -19,7 +19,7 @@ import com.zeligsoft.domain.omg.ccm.api.CCM_Component.Home;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Component.InterfacePort;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Component.impl.HomeImplementation;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.MonolithicImplementation;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModule;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXModule;
 import com.zeligsoft.domain.zml.api.ZML_Component.ComponentInterface;
 import com.zeligsoft.domain.zml.api.ZML_Component.Port;
 import com.zeligsoft.domain.zml.api.ZML_Component.WorkerFunction;
@@ -225,7 +225,7 @@ public class MainTransform {
     return name;
   }
   
-  private String _fileName(final CORBAModule self, final String name) {
+  private String _fileName(final CXModule self, final String name) {
     String _xblockexpression = null;
     {
       final List<IDLFileDependency> filedependency = this._zListExtensions.<IDLFileDependency>typeSelect(self.asNamedElement().getClientDependencies(), IDLFileDependency.type);
@@ -860,8 +860,8 @@ public class MainTransform {
   private String fileName(final Object self, final String name) {
     if (self instanceof org.eclipse.uml2.uml.Package) {
       return _fileName((org.eclipse.uml2.uml.Package)self, name);
-    } else if (self instanceof CORBAModule) {
-      return _fileName((CORBAModule)self, name);
+    } else if (self instanceof CXModule) {
+      return _fileName((CXModule)self, name);
     } else if (self instanceof NamedElement) {
       return _fileName((NamedElement)self, name);
     } else if (self == null) {

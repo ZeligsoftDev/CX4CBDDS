@@ -24,7 +24,7 @@ import CCM::CCM_Component;
 import CCM::CCM_Deployment;
 import CCM::CCM_Implementation;
 import CCM::CCM_Target;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 import ZMLMM::ZML_Deployments;
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
@@ -157,10 +157,10 @@ create MonolithicDeploymentDescription visit(ConnectorDef inst, DeploymentPlan d
 	deployment.implementation.add(this);
 	
 /*
- * This version of createImplementation gets called from visitPortType for a CORBAInterface that is both asynchronous
+ * This version of createImplementation gets called from visitPortType for a CXInterface that is both asynchronous
  * and conjugated.
  */
-create MonolithicDeploymentDescription createImplementation(CORBAInterface intf, DeploymentPlan deployment) :
+create MonolithicDeploymentDescription createImplementation(CXInterface intf, DeploymentPlan deployment) :
 	let artiExec = visitArtifactExec(intf) :
 	let artiSvnt = visitArtifactSvnt(intf) :
 	let artiExecRef = artiExec.visitImplArtifact() :
@@ -216,7 +216,7 @@ create InstanceDeploymentDescription visit(DeploymentPart part, DeploymentPlan d
 	this.source.add(null) ->
 	this.implementation.add(id.visitInstanceImpl(this)) ->
 	// trace0("RegisterNaming", "visit: BEFORE visitConfigProperty") ->
-	part.modelElement.definition.zdlAsComponent().member.typeSelect(CORBAAttribute).visitConfigProperty(this, part) ->
+	part.modelElement.definition.zdlAsComponent().member.typeSelect(CXAttribute).visitConfigProperty(this, part) ->
 	// trace0("RegisterNaming", "visit: AFTER  visitConfigProperty") ->
 	part.modelElement.definition.zdlAsComponent().member.typeSelect(CCM::CCM_Target::Property).select(p | "edu.vanderbilt.dre.DAnCE.RegisterNaming".matches(p.name) == false || part.shouldGenerateRegisterNamingTag(p)).visitConfigProperty(this, part) ->
 	if comp_type.getHome() != null then createHomeIdProperty(this, getHomePart(zDeployment, comp_type.getHome(), part)) -> 
@@ -239,7 +239,7 @@ DeploymentPart getHomePart(CCM::CCM_Deployment::DeploymentPlan zDeployment, Home
 	zDeployment.part.select( part | part.modelElement.isHomePart()).select(part | part.modelElement.definition == home).select( part | part.getParentPart() == componentPart.getParentPart()).selectFirst(part | part.getTargetPart() == componentPart.getTargetPart());
 	
 	
-Void visitConfigProperty(CORBAAttribute attribute, InstanceDeploymentDescription idd, DeploymentPart part ) :
+Void visitConfigProperty(CXAttribute attribute, InstanceDeploymentDescription idd, DeploymentPart part ) :
 	let defaultSlots = createList(new java::lang::Object) :
 	defaultSlots.addAll(findDefaultSlot(attribute, part)) ->
 	if part.zdlAsProperty().defaultValue != null then
@@ -408,7 +408,7 @@ create InstanceDeploymentDescription createDDS4CCMConnectorFragmentHelper(Deploy
 	idd.node.add(node.name) ->
 	idd.source.add(null) ->
 	idd.implementation.add(id.visitInstanceImpl(idd)) ->
-	dataSpace.connectorType.zdlAsComponent().member.typeSelect(CORBAAttribute).visitDataSpaceProperty(idd, getPerPortDP(source, dataSpace, deployment), dataSpaceDP) ->
+	dataSpace.connectorType.zdlAsComponent().member.typeSelect(CXAttribute).visitDataSpaceProperty(idd, getPerPortDP(source, dataSpace, deployment), dataSpaceDP) ->
 	dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).visitDataSpaceProperty(idd, getPerPortDP(source, dataSpace, deployment), dataSpaceDP) ->
 	plan.instance.add(idd) ->
 	addInstanceToLocalityConstraint(
@@ -431,7 +431,7 @@ DeploymentPart getPerPortDP(DeploymentPart part , DataSpace dataSpace, CCM::CCM_
  * the default value slot for the attribute on the ConnectorDefaultValueBinding.
  * If one is found, pass that slot on instead.
  */
-Void visitDataSpaceProperty(CORBAAttribute attribute, InstanceDeploymentDescription idd, DeploymentPart perPort, DeploymentPart dataSpace) :
+Void visitDataSpaceProperty(CXAttribute attribute, InstanceDeploymentDescription idd, DeploymentPart perPort, DeploymentPart dataSpace) :
 	let defaultSlots = createList(new java::lang::Object) :
 	defaultSlots.addAll(findDefaultSlot(attribute, dataSpace)) ->
 	if (perPort != null && perPort.zdlAsProperty().defaultValue != null && perPort.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == attribute) != null) then
@@ -464,7 +464,7 @@ Void visitDataSpaceProperty(CORBAAttribute attribute, InstanceDeploymentDescript
 Void visitDataSpaceProperty(InterfacePort port, InstanceDeploymentDescription idd, DeploymentPart perPort, DeploymentPart dataSpace) :
 	port.porttype.ownedAttribute.visitDataSpaceProperty(port, idd, perPort, dataSpace);
 	
-Void visitDataSpaceProperty(CORBAAttribute attribute, InterfacePort port, InstanceDeploymentDescription idd, DeploymentPart perPort, DeploymentPart dataSpace ) :
+Void visitDataSpaceProperty(CXAttribute attribute, InterfacePort port, InstanceDeploymentDescription idd, DeploymentPart perPort, DeploymentPart dataSpace ) :
 	if(perPort != null && perPort.zdlAsProperty().defaultValue != null && perPort.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == port) != null) then
 	{
 		let defaultSlots = createList(new java::lang::Object) :
@@ -513,12 +513,12 @@ cached List[uml::Slot] findDefaultSlot(CCM::CCM_Target::Property property, Deplo
 		org.eclipse.uml2.uml.Property,
 		org.eclipse.uml2.uml.Property);
 			
-cached List[uml::Slot] findDefaultSlot(CORBAAttribute attribute, DeploymentPart dataSpace) :
+cached List[uml::Slot] findDefaultSlot(CXAttribute attribute, DeploymentPart dataSpace) :
 	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.findDefaultSlot(
 		org.eclipse.uml2.uml.Property,
 		org.eclipse.uml2.uml.Property);
 		
-cached List[uml::Slot] findDefaultSlot(CORBAAttribute attribute, InterfacePort port, DeploymentPart dataSpace) :
+cached List[uml::Slot] findDefaultSlot(CXAttribute attribute, InterfacePort port, DeploymentPart dataSpace) :
 	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.findDefaultSlot(
 		org.eclipse.uml2.uml.Property,
 		org.eclipse.uml2.uml.Property,
@@ -535,7 +535,7 @@ Void createConnectionsForDDS4CCMConnectorFragment(DeploymentPlan plan, Interface
 		createStatusListenerConnection(plan, sourcePort, compInstance, fragmentInstance, dataSpace, origConn) :
 		{};
 
-create PlanConnectionDescription createConnectionsForDDS4CCMConnectorFragment(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, CORBAInterface porttype, CCMConnector origConn) :
+create PlanConnectionDescription createConnectionsForDDS4CCMConnectorFragment(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, CXInterface porttype, CCMConnector origConn) :
 	let prefix = dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).selectFirst( p | p.type == porttype).name :
 	this.name.add(compInstance.name.first() + "." + sourcePort.name + "::" + fragmentInstance.name.first() + "." + prefix + "_" + porttype.name) ->
 	this.deployRequirement.add(createLocalInterfaceRequirement()) ->
@@ -543,7 +543,7 @@ create PlanConnectionDescription createConnectionsForDDS4CCMConnectorFragment(De
 	this.createEndPoint((sourcePort.isConjugated), false, prefix, fragmentInstance) ->
 	plan.connection.add(this);	
 
-create PlanConnectionDescription createConnectionsForDDS4CCMConnectorFragment(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, CORBAInterface porttype, ConnectorStatusListenerConnection origConn) :
+create PlanConnectionDescription createConnectionsForDDS4CCMConnectorFragment(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, CXInterface porttype, ConnectorStatusListenerConnection origConn) :
 	let prefix = dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).selectFirst( p | p.type == porttype).name :
 	this.name.add(compInstance.name.first() + "." + sourcePort.name + "::" + fragmentInstance.name.first() + "." + prefix + "_" + porttype.name) ->
 	this.deployRequirement.add(createLocalInterfaceRequirement()) ->
@@ -809,16 +809,16 @@ cached List[DeploymentPart] getPartsForFacet(InterfacePort facet, CCMPart part, 
 	let facetParts = connectors.end.reject( end | end.port == receptacle).partWithPort :
 	zDeployment.part.select( p | facetParts.contains(p.modelElement));
 
-cached boolean portGeneratesFragment(CORBAInterface type) :
+cached boolean portGeneratesFragment(CXInterface type) :
 	type.isUsedAsynchronously();
 	
 cached boolean portGeneratesFragment(PortType type) :
 	false;
 
-Void visitPortType(CORBAInterface intf, DeploymentPlan plan) :
+Void visitPortType(CXInterface intf, DeploymentPlan plan) :
 	if intf.isUsedAsynchronously() then createImplementation(intf, plan); 
 	
-cached boolean isUsedAsynchronously(CORBAInterface self) :
+cached boolean isUsedAsynchronously(CXInterface self) :
 	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.isUsedAsynchronously(
 		org.eclipse.uml2.uml.Interface);
 	
@@ -1044,7 +1044,7 @@ create Property visitParam1(NamedElement inst) :
 	this.name.add("component factory") ->
 	this.value.add(visitAny("create_" + inst.getCorbaScopedName() + "_Impl"));
 	
-create Property visitParam1(CORBAInterface inst) :
+create Property visitParam1(CXInterface inst) :
 	this.name.add("component factory") ->
 	this.value.add(visitAny("create_" + inst.getCorbaScopedName().replaceAll(inst.name, "AMI4CCM_" + inst.name) + "_Connector_Impl"));
 	
@@ -1064,7 +1064,7 @@ create Property visitParam3(NamedElement inst) :
 	this.name.add("edu.vanderbilt.dre.CIAO.ServantEntrypoint") ->
 	this.value.add(visitAny("create_" + inst.getCorbaScopedName() + "_Servant"));
 
-create Property visitParam3(CORBAInterface inst) :
+create Property visitParam3(CXInterface inst) :
 	this.name.add("edu.vanderbilt.dre.CIAO.ServantEntrypoint") ->
 	this.value.add(visitAny("create_" + inst.getCorbaScopedName().replaceAll(inst.name, "AMI4CCM_" + inst.name) + "_Connector_AMI4CCM_Connector_Servant"));
 
@@ -1119,7 +1119,7 @@ create Property visitImplementationTypeParameter(ConnectorDef inst ) :
 	this.name.add("edu.vanderbilt.dre.DAnCE.ImplementationType") ->
 	this.value.add(visitAny("edu.vanderbilt.dre.CCM.Connector"));
 	
-create Property visitImplementationTypeParameter(CORBAInterface intf ) :
+create Property visitImplementationTypeParameter(CXInterface intf ) :
 	this.name.add("edu.vanderbilt.dre.DAnCE.ImplementationType") ->
 	this.value.add(visitAny("edu.vanderbilt.dre.CCM.Connector"));
 	

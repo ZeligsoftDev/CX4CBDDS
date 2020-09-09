@@ -15,15 +15,15 @@
  *
  */
 
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::uml_utils;
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::tao_idl_utils;
 
-Void visit_operation(CORBAOperation node, uml::Class container) :
+Void visit_operation(CXOperation node, uml::Class container) :
 	add_operation(node, container);
 	
-private create uml::Operation add_operation(CORBAOperation node, uml::Class container) :
+private create uml::Operation add_operation(CXOperation node, uml::Class container) :
 	this.setName(node.name) ->
 	// TODO : set the return type
 	// TODO : add the exceptions
@@ -33,7 +33,7 @@ private create uml::Operation add_operation(CORBAOperation node, uml::Class cont
 	this.addGeneratedTag() ->
 	this;
 	
-private create uml::Parameter add_operation__parameter(CORBAParameter node, uml::Operation container) :
+private create uml::Parameter add_operation__parameter(CXParameter node, uml::Operation container) :
 	this.setName(node.name) ->
 	// set the type
 	container.ownedParameter.add(this) ->

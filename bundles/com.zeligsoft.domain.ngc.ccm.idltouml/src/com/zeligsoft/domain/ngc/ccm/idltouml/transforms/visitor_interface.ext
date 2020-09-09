@@ -15,7 +15,7 @@
  *
  */
 
-import CORBADomain::IDL;
+import CXDomain::IDL;
 import CCM::CCM_Component;
 
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::uml_utils;
@@ -32,7 +32,7 @@ extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::visitor_compon
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::visitor_inheritance_graph;
 
 // the client interface
-Void visit_interface(CORBAInterface node, uml::Package container) :
+Void visit_interface(CXInterface node, uml::Package container) :
 	let namespace = namespace(node, container) :
 		node.interface(namespace, container) ->
 		node.interface_var(namespace, container) ->
@@ -48,23 +48,23 @@ Void visit_equivalent_interface_client(CCMComponent node, uml::Package container
 		node.equivalent_interface_client_ptr(namespace, container) ->
 		node.equivalent_interface_client_out(namespace, container);
 	
-uml::Class type(CORBAInterface node, uml::Package container):
+uml::Class type(CXInterface node, uml::Package container):
 	let namespace = namespace(node, container) :
 		interface(node, namespace, container);
 		
-uml::Class var_type(CORBAInterface node, uml::Package container):
+uml::Class var_type(CXInterface node, uml::Package container):
 	let namespace = namespace(node, container) :
 		interface_var(node, namespace, container);
 
-uml::Class ptr_type(CORBAInterface node, uml::Package container):
+uml::Class ptr_type(CXInterface node, uml::Package container):
 	let namespace = namespace(node, container) :
 		interface_ptr(node, namespace, container);
 		
-uml::Class out_type(CORBAInterface node, uml::Package container):
+uml::Class out_type(CXInterface node, uml::Package container):
 	let namespace = namespace(node, container) :
 		interface_out(node, namespace, container);
 
-private create uml::Class interface(CORBAInterface node, uml::Package namespace, uml::Package root) :
+private create uml::Class interface(CXInterface node, uml::Package namespace, uml::Package root) :
 	this.setName(node.name) ->
 	// TODO : inherit from skeleton 
 	// TODO : handle local interface
@@ -74,7 +74,7 @@ private create uml::Class interface(CORBAInterface node, uml::Package namespace,
 	add_interface__stub_objects(node.name, node.isLocal, node.isAbstract, this, node) ->
 	node.ownedAttribute.visit_attribute(this) ->
 	node.ownedOperation.visit_operation(this) ->
-	node.zdlAsInterface().general.typeSelect(CORBAInterface).forAll(c|visit_inheritance_graph(node, c, this)) ->
+	node.zdlAsInterface().general.typeSelect(CXInterface).forAll(c|visit_inheritance_graph(node, c, this)) ->
 	addStandardAttributes(node.name, node.isLocal, node.isAbstract, this) ->
 	addStandardOperations(node.name, node.isLocal, node.isAbstract, this, node) ->
 	this.general.addAll(node.general().type(root)) ->
@@ -95,7 +95,7 @@ private create uml::Class equivalent_interface_client(CCMComponent node, uml::Pa
 	add_interface__copy_constructor(name, isLocal, isAbstract, this, node) ->
 	add_interface__stub_objects(name, isLocal, isAbstract, this, node) ->
 	node.ownedAttribute.visit_attribute(this) ->
-	node.zdlAsInterface().general.typeSelect(CORBAInterface).forAll(c|visit_inheritance_graph(node, c, this)) ->
+	node.zdlAsInterface().general.typeSelect(CXInterface).forAll(c|visit_inheritance_graph(node, c, this)) ->
 	addStandardAttributes(name, isLocal, isAbstract, this) ->
 	addStandardOperations(name, isLocal, isAbstract, this, node) ->
 	this.general.addAll(node.realizedInterfaces().type(root)) ->
@@ -104,7 +104,7 @@ private create uml::Class equivalent_interface_client(CCMComponent node, uml::Pa
 	this.addGeneratedTag() ->
 	this;
 	
-private create uml::Class interface_var(CORBAInterface node, uml::Package namespace, uml::Package root) :
+private create uml::Class interface_var(CXInterface node, uml::Package namespace, uml::Package root) :
 	this.setName(node.name + "_var") ->
 	this.general.add(interface(node, namespace, root)) ->
 	namespace.packagedElement.add(this) ->
@@ -112,7 +112,7 @@ private create uml::Class interface_var(CORBAInterface node, uml::Package namesp
 	this.addGeneratedTag() ->
 	this;
 	
-private create uml::Class interface_ptr(CORBAInterface node, uml::Package namespace, uml::Package root) :
+private create uml::Class interface_ptr(CXInterface node, uml::Package namespace, uml::Package root) :
 	this.setName(node.name + "_ptr") ->
 	this.general.add(interface(node, namespace, root)) ->
 	namespace.packagedElement.add(this) ->
@@ -120,7 +120,7 @@ private create uml::Class interface_ptr(CORBAInterface node, uml::Package namesp
 	this.addGeneratedTag() ->
 	this;
 	
-private create uml::Class interface_out(CORBAInterface node, uml::Package namespace, uml::Package root) :
+private create uml::Class interface_out(CXInterface node, uml::Package namespace, uml::Package root) :
 	this.setName(node.name + "_out") ->
 	this.general.add(interface(node, namespace, root)) ->
 	namespace.packagedElement.add(this) ->

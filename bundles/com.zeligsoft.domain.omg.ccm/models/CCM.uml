@@ -72,7 +72,7 @@ self.publishesEvent->exists(p | not(p.oclIsTypeOf(CCM::CCM_Component::Event)))))
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_Dk-VYCPfEd-OjqI9OvrxBw">
             <language>OCL</language>
-            <body>self.oclAsType(uml::Component).ownedOperation->select(o | o.oclIsKindOf(CORBADomain::IDL::CORBAOperation))->isEmpty()</body>
+            <body>self.oclAsType(uml::Component).ownedOperation->select(o | o.oclIsKindOf(CXDomain::IDL::CXOperation))->isEmpty()</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_aPQU8CPfEd-OjqI9OvrxBw" name="derived_component" constrainedElement="_i3eu4JyvEd6nTLqaytm5hw">
@@ -82,7 +82,7 @@ self.publishesEvent->exists(p | not(p.oclIsTypeOf(CCM::CCM_Component::Event)))))
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_aPRjECPfEd-OjqI9OvrxBw">
             <language>OCL</language>
             <body>not self.oclAsType(uml::Component).general->select(oclIsKindOf(CCMComponent))->isEmpty()
-	implies self.oclAsType(uml::Component).interfaceRealization.contract->select(oclIsKindOf(CORBADomain::IDL::CORBAInterface))->isEmpty()</body>
+	implies self.oclAsType(uml::Component).interfaceRealization.contract->select(oclIsKindOf(CXDomain::IDL::CXInterface))->isEmpty()</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="_mVNaAJyvEd6nTLqaytm5hw">
@@ -287,8 +287,8 @@ self.publishesEvent->exists(p | not(p.oclIsTypeOf(CCM::CCM_Component::Event)))))
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_YS0rUmHWEd-bX5R7RppPgw">
             <language>OCL</language>
-            <body>not(self.requiredInterface->exists(r | not(r.oclIsTypeOf(CORBADomain::IDL::CORBAInterface))    ) or
-self.providedInterface->exists(p | not(p.oclIsTypeOf(CORBADomain::IDL::CORBAInterface)) ))</body>
+            <body>not(self.requiredInterface->exists(r | not(r.oclIsTypeOf(CXDomain::IDL::CXInterface))    ) or
+self.providedInterface->exists(p | not(p.oclIsTypeOf(CXDomain::IDL::CXInterface)) ))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_Bhv5sFQCEeGc0pzuRmBPaQ" name="not_asynchronous_local_interface" constrainedElement="_CaJgQF3jEd-xDs-FOeJ7CA">
@@ -297,8 +297,8 @@ self.providedInterface->exists(p | not(p.oclIsTypeOf(CORBADomain::IDL::CORBAInte
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_Bhxu4FQCEeGc0pzuRmBPaQ">
             <language>OCL</language>
-            <body>not(isAsynchronous) or not(type.oclIsTypeOf(CORBADomain::IDL::CORBAInterface))&#xD;
-or not(type.oclAsType(CORBADomain::IDL::CORBAInterface).isLocal)</body>
+            <body>not(isAsynchronous) or not(type.oclIsTypeOf(CXDomain::IDL::CXInterface))&#xD;
+or not(type.oclAsType(CXDomain::IDL::CXInterface).isLocal)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_MQG7EAEIEeOWHr0xAE9a0Q" name="no_asynchronous_on_non_asynchronous_interface" constrainedElement="_CaJgQF3jEd-xDs-FOeJ7CA">
@@ -307,7 +307,7 @@ or not(type.oclAsType(CORBADomain::IDL::CORBAInterface).isLocal)</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_MQJXUAEIEeOWHr0xAE9a0Q">
             <language>OCL</language>
-            <body>not(isAsynchronous) or not(type.oclIsTypeOf(CORBADomain::IDL::CORBAInterface)) or type.oclAsType(CORBADomain::IDL::CORBAInterface).isAsynchronous</body>
+            <body>not(isAsynchronous) or not(type.oclIsTypeOf(CXDomain::IDL::CXInterface)) or type.oclAsType(CXDomain::IDL::CXInterface).isAsynchronous</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_YIg58Ls4EeOBIbmUBrobaQ" name="port_name_no_white_space" constrainedElement="_CaJgQF3jEd-xDs-FOeJ7CA">

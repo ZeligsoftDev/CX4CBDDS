@@ -14,7 +14,7 @@ import com.zeligsoft.domain.omg.ccm.api.CCM_Component.Home
 import com.zeligsoft.domain.omg.ccm.api.CCM_Component.InterfacePort
 import com.zeligsoft.domain.omg.ccm.api.CCM_Component.impl.HomeImplementation
 import com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.MonolithicImplementation
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModule
+import com.zeligsoft.domain.omg.corba.api.IDL.CXModule
 import com.zeligsoft.domain.zml.api.ZML_Component.ComponentInterface
 import com.zeligsoft.domain.zml.api.ZML_Component.Port
 import com.zeligsoft.domain.zml.api.ZML_Component.WorkerFunction
@@ -109,7 +109,7 @@ class MainTransform {
 	    name;
 	}
 	
-	def private dispatch String fileName(CORBAModule self, String name) {
+	def private dispatch String fileName(CXModule self, String name) {
 	    val List<IDLFileDependency> filedependency = self.asNamedElement.clientDependencies.typeSelect(IDLFileDependency::type)//self.asPackage.clientDependencies.filter(IDLFileDependency::typeSelect).map(CreateZDLWrapper::create(IDLFileDependency.class))
 	    if(!filedependency.empty) {
 	        val firstFileDependency = filedependency.head

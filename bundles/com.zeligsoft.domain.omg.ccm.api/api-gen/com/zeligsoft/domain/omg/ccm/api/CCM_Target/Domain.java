@@ -1,9 +1,9 @@
 package com.zeligsoft.domain.omg.ccm.api.CCM_Target;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.zml.api.ZML_Core.NamedElement;
 import com.zeligsoft.domain.zml.api.ZML_Component.AssemblyConnector;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAAttribute;
+import com.zeligsoft.domain.zml.api.ZML_Core.NamedElement;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXAttribute;
 
 public interface Domain extends NamedElement {
 	String getLabel();
@@ -26,8 +26,7 @@ public interface Domain extends NamedElement {
 
 	void addInterconnect(InterconnectInstance val);
 
-	<T extends InterconnectInstance> T addInterconnect(Class<T> typeToCreate,
-			String concept);
+	<T extends InterconnectInstance> T addInterconnect(Class<T> typeToCreate, String concept);
 
 	InterconnectInstance addInterconnect();
 
@@ -43,26 +42,23 @@ public interface Domain extends NamedElement {
 
 	void addConnections(AssemblyConnector val);
 
-	<T extends AssemblyConnector> T addConnections(Class<T> typeToCreate,
-			String concept);
+	<T extends AssemblyConnector> T addConnections(Class<T> typeToCreate, String concept);
 
 	AssemblyConnector addConnections();
 
-	java.util.List<CORBAAttribute> getInfoProperty();
+	java.util.List<CXAttribute> getInfoProperty();
 
-	void addInfoProperty(CORBAAttribute val);
+	void addInfoProperty(CXAttribute val);
 
-	<T extends CORBAAttribute> T addInfoProperty(Class<T> typeToCreate,
-			String concept);
+	<T extends CXAttribute> T addInfoProperty(Class<T> typeToCreate, String concept);
 
-	CORBAAttribute addInfoProperty();
+	CXAttribute addInfoProperty();
 
 	java.util.List<SharedResource> getSharedResource();
 
 	void addSharedResource(SharedResource val);
 
-	<T extends SharedResource> T addSharedResource(Class<T> typeToCreate,
-			String concept);
+	<T extends SharedResource> T addSharedResource(Class<T> typeToCreate, String concept);
 
 	SharedResource addSharedResource();
 
@@ -72,7 +68,6 @@ public interface Domain extends NamedElement {
 	 * A predicate which returns true if the Object is an
 	 * instance of Domain
 	 */
-	static final TypeSelectPredicate<Domain> type = new TypeSelectPredicate<Domain>(
-			"CCM::CCM_Target::Domain", //$NON-NLS-1$
+	static final TypeSelectPredicate<Domain> type = new TypeSelectPredicate<Domain>("CCM::CCM_Target::Domain", //$NON-NLS-1$
 			Domain.class);
 }

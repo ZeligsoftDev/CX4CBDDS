@@ -15,7 +15,6 @@ public interface lbQosPolicy extends qosPolicy {
 	 * A predicate which returns true if the Object is an
 	 * instance of lbQosPolicy
 	 */
-	static final TypeSelectPredicate<lbQosPolicy> type = new TypeSelectPredicate<lbQosPolicy>(
-			"DDS::QOS::lbQosPolicy", //$NON-NLS-1$
+	static final TypeSelectPredicate<lbQosPolicy> type = new TypeSelectPredicate<lbQosPolicy>("DDS::QOS::lbQosPolicy", //$NON-NLS-1$
 			lbQosPolicy.class);
 }

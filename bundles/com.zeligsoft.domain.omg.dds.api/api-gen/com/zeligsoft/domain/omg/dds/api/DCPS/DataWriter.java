@@ -12,7 +12,6 @@ public interface DataWriter extends DataReaderWriter {
 	 * A predicate which returns true if the Object is an
 	 * instance of DataWriter
 	 */
-	static final TypeSelectPredicate<DataWriter> type = new TypeSelectPredicate<DataWriter>(
-			"DDS::DCPS::DataWriter", //$NON-NLS-1$
+	static final TypeSelectPredicate<DataWriter> type = new TypeSelectPredicate<DataWriter>("DDS::DCPS::DataWriter", //$NON-NLS-1$
 			DataWriter.class);
 }

@@ -7,8 +7,7 @@ import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.ModelTypeEnum;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class DDS4CCMModelZImpl extends IDL3PlusModelZImpl implements
-		DDS4CCMModel {
+public class DDS4CCMModelZImpl extends IDL3PlusModelZImpl implements DDS4CCMModel {
 	protected ModelTypeEnum _modelType;
 
 	public DDS4CCMModelZImpl(org.eclipse.emf.ecore.EObject element) {
@@ -16,53 +15,49 @@ public class DDS4CCMModelZImpl extends IDL3PlusModelZImpl implements
 	}
 
 	@Override
-	public String getLocationPrefix() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "DDS4CCM::DDS4CCM::DDS4CCMModel", "locationPrefix");
-		return (String) rawValue;
-	}
-
-	@Override
-	public void setLocationPrefix(String val) {
-		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::DDS4CCMModel",
-				"locationPrefix", val);
-	}
-
-	@Override
 	public String getFixedHeader() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "DDS4CCM::DDS4CCM::DDS4CCMModel", "fixedHeader");
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+				"DDS4CCM::DDS4CCM::DDS4CCMModel", "fixedHeader");
 		return (String) rawValue;
 	}
 
 	@Override
 	public void setFixedHeader(String val) {
-		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::DDS4CCMModel",
-				"fixedHeader", val);
+		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::DDS4CCMModel", "fixedHeader", val);
 	}
 
 	@Override
 	public String getFixedFooter() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "DDS4CCM::DDS4CCM::DDS4CCMModel", "fixedFooter");
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+				"DDS4CCM::DDS4CCM::DDS4CCMModel", "fixedFooter");
 		return (String) rawValue;
 	}
 
 	@Override
 	public void setFixedFooter(String val) {
-		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::DDS4CCMModel",
-				"fixedFooter", val);
+		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::DDS4CCMModel", "fixedFooter", val);
+	}
+
+	@Override
+	public String getLocationPrefix() {
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+				"DDS4CCM::DDS4CCM::DDS4CCMModel", "locationPrefix");
+		return (String) rawValue;
+	}
+
+	@Override
+	public void setLocationPrefix(String val) {
+		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::DDS4CCMModel", "locationPrefix", val);
 	}
 
 	@Override
 	public ModelTypeEnum getModelType() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "DDS4CCM::DDS4CCM::DDS4CCMModel", "modelType");
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+				"DDS4CCM::DDS4CCM::DDS4CCMModel", "modelType");
 
 		if (_modelType == null) {
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_modelType = ModelTypeEnum
-						.create((org.eclipse.emf.ecore.EObject) rawValue);
+				_modelType = ModelTypeEnum.create((org.eclipse.emf.ecore.EObject) rawValue);
 			}
 		}
 		return _modelType;
@@ -70,8 +65,7 @@ public class DDS4CCMModelZImpl extends IDL3PlusModelZImpl implements
 
 	@Override
 	public void setModelType(ModelTypeEnum val) {
-		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::DDS4CCMModel",
-				"modelType", val.eObject(element));
+		ZDLUtil.setValue(element, "DDS4CCM::DDS4CCM::DDS4CCMModel", "modelType", val.eObject(element));
 	}
 
 }

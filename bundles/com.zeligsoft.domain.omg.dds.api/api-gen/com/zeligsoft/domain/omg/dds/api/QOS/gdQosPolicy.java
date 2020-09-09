@@ -11,7 +11,6 @@ public interface gdQosPolicy extends qosPolicy {
 	 * A predicate which returns true if the Object is an
 	 * instance of gdQosPolicy
 	 */
-	static final TypeSelectPredicate<gdQosPolicy> type = new TypeSelectPredicate<gdQosPolicy>(
-			"DDS::QOS::gdQosPolicy", //$NON-NLS-1$
+	static final TypeSelectPredicate<gdQosPolicy> type = new TypeSelectPredicate<gdQosPolicy>("DDS::QOS::gdQosPolicy", //$NON-NLS-1$
 			gdQosPolicy.class);
 }

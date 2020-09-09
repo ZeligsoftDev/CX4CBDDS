@@ -12,8 +12,8 @@ public class gdQosPolicyZImpl extends qosPolicyZImpl implements gdQosPolicy {
 
 	@Override
 	public String getValue() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "DDS::QOS::gdQosPolicy", "value");
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "DDS::QOS::gdQosPolicy",
+				"value");
 		return (String) rawValue;
 	}
 

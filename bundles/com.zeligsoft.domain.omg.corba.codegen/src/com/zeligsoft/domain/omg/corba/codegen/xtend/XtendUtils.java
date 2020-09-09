@@ -47,7 +47,7 @@ import org.osgi.framework.Bundle;
 import com.zeligsoft.base.util.WorkflowUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.build.factory.ProjectFactory;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.dsl.idl.AttrDecl;
 import com.zeligsoft.domain.omg.corba.dsl.idl.AttrRaisesExpr;
 import com.zeligsoft.domain.omg.corba.dsl.idl.IdlFactory;
@@ -90,7 +90,7 @@ public class XtendUtils {
 
 		// Code copied from com.zeligsoft.domain.sca.descriptorgeneration.utils.xtend.
 		// Should refactor.
-		if (!ZDLUtil.isZDLConcept(idlFile, CORBADomainNames.IDLFILE))
+		if (!ZDLUtil.isZDLConcept(idlFile, CXDomainNames.IDLFILE))
 		{
 			throw new IllegalArgumentException();		
 		}
@@ -214,14 +214,14 @@ public class XtendUtils {
 		{
 			if (iterator instanceof Package
 					&& !ZDLUtil.isZDLConcept(iterator,
-							CORBADomainNames.CORBANAMED_ELEMENT)
+							CXDomainNames.CXNAMED_ELEMENT)
 					|| ZDLUtil.isZDLConcept(iterator,
-							CORBADomainNames.CORBACONSTANTS)) {
+							CXDomainNames.CXCONSTANTS)) {
 				iterator = (NamedElement) iterator.getOwner();
 				continue;
 			}
-			if( ZDLUtil.isZDLConcept(iterator, CORBADomainNames.IDLFILE) ||
-					!ZDLUtil.isZDLConcept(iterator, CORBADomainNames.CORBANAMED_ELEMENT))
+			if( ZDLUtil.isZDLConcept(iterator, CXDomainNames.IDLFILE) ||
+					!ZDLUtil.isZDLConcept(iterator, CXDomainNames.CXNAMED_ELEMENT))
 				break;
 			if( retVal != "")
 			{
@@ -235,7 +235,7 @@ public class XtendUtils {
 	}
 	
 	/**
-	 * Return the type of the passed CORBAUnion by getting its switchType attribute.
+	 * Return the type of the passed CXUnion by getting its switchType attribute.
 	 * 
 	 * @param datatype
 	 * @return
@@ -263,7 +263,7 @@ public class XtendUtils {
 		// We get passed the stereotype applications as opposed to the DataType, so we'll use UMLUtil to get the base type
 		// once we know that we're dealing with a CORBAException.
 		for( EObject eobj : exceptionList ) {
-			if( eobj != null && ZDLUtil.isZDLConcept(eobj, CORBADomainNames.CORBAEXCEPTION)) {				
+			if( eobj != null && ZDLUtil.isZDLConcept(eobj, CXDomainNames.CXEXCEPTION)) {				
 				ScopedName scopedName = IdlFactory.eINSTANCE.createScopedName();
 				scopedName.getName().add(scopedNameFromNamedElement((NamedElement) eobj));
 				retVal.getExceptions().getException().add(scopedName);
@@ -278,11 +278,11 @@ public class XtendUtils {
 	
 	public static String getConstantDefault(Property constant) {
 		String value = (String) ZDLUtil.getValue(constant,
-				CORBADomainNames.CORBACONSTANT,
-				CORBADomainNames.CORBACONSTANT__DEFAULT);
+				CXDomainNames.CXCONSTANT,
+				CXDomainNames.CXCONSTANT__DEFAULT);
 		if (constant.getType() != null
 				&& ZDLUtil.isZDLConcept(constant.getType(),
-						CORBADomainNames.CORBAENUM)) {
+						CXDomainNames.CXENUM)) {
 			int index = 0;
 			for (EnumerationLiteral l : (((Enumeration) constant.getType())
 					.getOwnedLiterals())) {

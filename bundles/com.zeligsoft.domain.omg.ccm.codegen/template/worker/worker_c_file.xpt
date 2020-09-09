@@ -187,7 +187,7 @@ void «getFunctionPrefix()»«this.name»Worker::debugMsg(const std::string& msg)
 			«IF getProvidesPortsWithInterface(op.owner).size > 1 || (op.owner == supportedInterface || (supportedInterface != null && isBaseTypeInterface(supportedInterface, op.owner))) && getProvidesPortsWithInterface(op.owner).size > 0-»
 				«REM»there are multiple ports using this interface«ENDREM»
 					
-				«IF !op.ownedParameter.select(e|e.direction.toString().matches("return")).isEmpty && !isVariableLength(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type)) && (isZDLConcept(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type), "CORBADomain::IDL::CORBAStruct") || isZDLConcept(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type), "CORBADomain::IDL::CORBAUnion"))»
+				«IF !op.ownedParameter.select(e|e.direction.toString().matches("return")).isEmpty && !isVariableLength(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type)) && (isZDLConcept(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type), "CXDomain::IDL::CXStruct") || isZDLConcept(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type), "CXDomain::IDL::CXUnion"))»
 	«getReturnType(op)» _retval;
 	memset((void*)&_retval,0,sizeof(«getReturnType(op)»));
 	SCX_ASSERT_EXCEPTION(_retval);
@@ -252,7 +252,7 @@ void «getFunctionPrefix()»«this.name»Worker::debugMsg(const std::string& msg)
 			«REM»there are multiple ports using this interface«ENDREM»						
 						
 				«IF isCorbaType(attribute.type)-»
-					«IF isZDLConcept(getAbsoluteType(attribute.type), "CORBADomain::IDL::CORBAStruct") || isZDLConcept(getAbsoluteType(attribute.type), "CORBADomain::IDL::CORBAUnion")»
+					«IF isZDLConcept(getAbsoluteType(attribute.type), "CXDomain::IDL::CXStruct") || isZDLConcept(getAbsoluteType(attribute.type), "CXDomain::IDL::CXUnion")»
 	«getVariableTypeFromCorbaType(attribute.type, "return")» _retval;
 	memset((void*)&_retval,0,sizeof(«getVariableTypeFromCorbaType(attribute.type, "return")»));
 					«ELSE»
@@ -341,7 +341,7 @@ void «getFunctionPrefix()»«this.name»Worker::«getFullInterfaceName(attribute.own
  */
 «getSignature(op, source, this)»
 {
-		«IF !op.ownedParameter.select(e|e.direction.toString().matches("return")).isEmpty && !isVariableLength(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type)) && (isZDLConcept(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type), "CORBADomain::IDL::CORBAStruct") || isZDLConcept(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type), "CORBADomain::IDL::CORBAUnion"))»
+		«IF !op.ownedParameter.select(e|e.direction.toString().matches("return")).isEmpty && !isVariableLength(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type)) && (isZDLConcept(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type), "CXDomain::IDL::CXStruct") || isZDLConcept(getAbsoluteType(op.ownedParameter.select(e|e.direction.toString().matches("return")).first().type), "CXDomain::IDL::CXUnion"))»
 	«getReturnType(op)» _retval;
 	memset((void*)&_retval,0,sizeof(«getReturnType(op)»));
 	SCX_ASSERT_EXCEPTION(_retval);
@@ -381,7 +381,7 @@ void «getFunctionPrefix()»«this.name»Worker::«getFullInterfaceName(attribute.own
 «IF isCorbaType(attribute.idlType)» «getVariableTypeFromCorbaType(attribute.idlType, "return")»«ENDIF» «getFunctionPrefix()»«this.name»Worker::«getWorkerFunctionName(attribute, source)»( SCX_EXC_ENV_SINGLE_ARG )
 {
 		«IF isCorbaType(attribute.idlType)-»
-			«IF isZDLConcept(getAbsoluteType(attribute.idlType), "CORBADomain::IDL::CORBAStruct") || isZDLConcept(getAbsoluteType(attribute.idlType), "CORBADomain::IDL::CORBAUnion")»
+			«IF isZDLConcept(getAbsoluteType(attribute.idlType), "CXDomain::IDL::CXStruct") || isZDLConcept(getAbsoluteType(attribute.idlType), "CXDomain::IDL::CXUnion")»
 	«getVariableTypeFromCorbaType(attribute.idlType, "return")» _retval;
 	memset((void*)&_retval,0,sizeof(«getVariableTypeFromCorbaType(attribute.idlType, "return")»));
 			«ELSE»

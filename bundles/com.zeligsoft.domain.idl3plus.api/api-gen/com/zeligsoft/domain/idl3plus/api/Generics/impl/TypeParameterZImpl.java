@@ -17,13 +17,12 @@ public class TypeParameterZImpl extends ZObjectImpl implements TypeParameter {
 
 	@Override
 	public TypeConstraint getConstraint() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "IDL3Plus::Generics::TypeParameter", "constraint");
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+				"IDL3Plus::Generics::TypeParameter", "constraint");
 
 		if (_constraint == null) {
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_constraint = TypeConstraint
-						.create((org.eclipse.emf.ecore.EObject) rawValue);
+				_constraint = TypeConstraint.create((org.eclipse.emf.ecore.EObject) rawValue);
 			}
 		}
 		return _constraint;
@@ -31,8 +30,7 @@ public class TypeParameterZImpl extends ZObjectImpl implements TypeParameter {
 
 	@Override
 	public void setConstraint(TypeConstraint val) {
-		ZDLUtil.setValue(element, "IDL3Plus::Generics::TypeParameter",
-				"constraint", val.eObject(element));
+		ZDLUtil.setValue(element, "IDL3Plus::Generics::TypeParameter", "constraint", val.eObject(element));
 	}
 
 	@Override

@@ -25,7 +25,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * Verify that a oneway operation only has in parameters.
@@ -49,20 +49,20 @@ public class OneWayOperationValidation extends AbstractModelConstraint {
 	public IStatus validate(IValidationContext ctx) {
 		EObject objToVerify = ctx.getTarget();
 		
-		if(ZDLUtil.isZDLConcept(objToVerify, CORBADomainNames.CORBAOPERATION)) {
+		if(ZDLUtil.isZDLConcept(objToVerify, CXDomainNames.CXOPERATION)) {
 			Boolean isOneWay = 
-				(Boolean) ZDLUtil.getValue(objToVerify, CORBADomainNames.CORBAOPERATION, CORBADomainNames.CORBAOPERATION__IS_ONE_WAY);
+				(Boolean) ZDLUtil.getValue(objToVerify, CXDomainNames.CXOPERATION, CXDomainNames.CXOPERATION__IS_ONE_WAY);
 			
 			if(isOneWay != null && isOneWay.booleanValue()) {
 				
 				@SuppressWarnings("unchecked")
 				List<EObject> parametersList =
-					(List<EObject>) ZDLUtil.getValue(objToVerify, CORBADomainNames.CORBAOPERATION, CORBADomainNames.CORBAOPERATION__OWNED_PARAMETER);
+					(List<EObject>) ZDLUtil.getValue(objToVerify, CXDomainNames.CXOPERATION, CXDomainNames.CXOPERATION__OWNED_PARAMETER);
 				boolean foundOutParam = false;
 				if(parametersList != null) {
 					for(EObject param : parametersList) {
 						Object direction = 
-							ZDLUtil.getValue(param, CORBADomainNames.CORBAPARAMETER, CORBADomainNames.CORBAPARAMETER__DIRECTION);
+							ZDLUtil.getValue(param, CXDomainNames.CXPARAMETER, CXDomainNames.CXPARAMETER__DIRECTION);
 						if(ParameterDirectionKind.INOUT_LITERAL.equals(direction) ||
 								ParameterDirectionKind.OUT_LITERAL.equals(direction)) {
 							foundOutParam = true;

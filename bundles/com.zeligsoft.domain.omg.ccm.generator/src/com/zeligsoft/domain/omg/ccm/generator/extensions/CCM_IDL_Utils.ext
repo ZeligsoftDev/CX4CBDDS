@@ -18,13 +18,13 @@ import ZMLMM::ZML_Component;
 import CCM::CCM_Component;
 
 boolean hasSupportsInterface(CCMComponent self) :
-	!self.zdlAsComponent().interfaceRealization.zdlAsInterfaceRealization().contract.typeSelect(CORBADomain::IDL::CORBAInterface).isEmpty;
+	!self.zdlAsComponent().interfaceRealization.zdlAsInterfaceRealization().contract.typeSelect(CXDomain::IDL::CXInterface).isEmpty;
 
-List[CORBADomain::IDL::CORBAInterface] supportsInterface(CCMComponent self) :
-	self.zdlAsComponent().interfaceRealization.zdlAsInterfaceRealization().contract.typeSelect(CORBADomain::IDL::CORBAInterface);
+List[CXDomain::IDL::CXInterface] supportsInterface(CCMComponent self) :
+	self.zdlAsComponent().interfaceRealization.zdlAsInterfaceRealization().contract.typeSelect(CXDomain::IDL::CXInterface);
 	
-List[CORBADomain::IDL::CORBAInterface] supportsInterface(Home self) :
-	self.zdlAsInterface().general.typeSelect(CORBADomain::IDL::CORBAInterface);
+List[CXDomain::IDL::CXInterface] supportsInterface(Home self) :
+	self.zdlAsInterface().general.typeSelect(CXDomain::IDL::CXInterface);
 
 boolean hasBaseComponent(CCMComponent self) :
 	!self.zdlAsComponent().general.typeSelect(CCMComponent).isEmpty;
@@ -41,7 +41,7 @@ CCM::CCM_Component::Event event(EventPort self) :
 //CCM::CCM_Component::Event event(Emits self) :
 //	self.zdlAsPort().required.typeSelect(CCM::CCM_Component::Event).first();
 
-boolean typeIsInterface(CORBADomain::IDL::CORBAInterface intf) :
+boolean typeIsInterface(CXDomain::IDL::CXInterface intf) :
 	true;
 	
 boolean typeIsInterface(CCM::CCM_Component::Event intf) :
@@ -65,14 +65,14 @@ boolean isPublisher(EventPort self) :
 boolean isConsumer(EventPort self) :
 	typeIsInterface(self.type) && !self.isConjugated;
 	
-CORBADomain::IDL::CORBAInterface usesInterface(InterfacePort self) :
+CXDomain::IDL::CXInterface usesInterface(InterfacePort self) :
 	self.type;
 	
-CORBADomain::IDL::CORBAInterface providesInterface(InterfacePort self) :
+CXDomain::IDL::CXInterface providesInterface(InterfacePort self) :
 	self.type;
 	
-CORBADomain::IDL::CORBAInterface usesInterface(MessagePort self) :
+CXDomain::IDL::CXInterface usesInterface(MessagePort self) :
 	self.type;
 	
-CORBADomain::IDL::CORBAInterface providesInterface(MessagePort self) :
+CXDomain::IDL::CXInterface providesInterface(MessagePort self) :
 	self.type;
