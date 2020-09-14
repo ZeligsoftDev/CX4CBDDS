@@ -19,7 +19,6 @@ package com.zeligsoft.domain.dds4ccm.ui.actions;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -37,7 +36,6 @@ import org.eclipse.ui.progress.UIJob;
 import org.eclipse.uml2.uml.Model;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
-import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMMigrationUtil;
 

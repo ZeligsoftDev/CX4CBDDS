@@ -135,7 +135,7 @@ public class CreateATCDModelCommand implements IModelCreationCommand {
 			DDS4CCMModel contextModel = ZDLFactoryRegistry.INSTANCE.create(model, DDS4CCMModel.class);
 			contextModel.setModelType(ModelTypeEnum.ATCD);
 			try {
-				DDS4CCMMigrationUtil.addMigrationAnnotation((Model)model, "2.0.0");
+				DDS4CCMMigrationUtil.addMigrationAnnotation((Model)model, DDS4CCMMigrationUtil.CURRENT_VERSION);
 			} catch (Exception e) {
 				// do nothing
 			}

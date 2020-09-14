@@ -55,9 +55,9 @@ import com.zeligsoft.domain.zml.util.ZMLMMNames;
 @SuppressWarnings("nls")
 public final class DDS4CCMMigrationUtil {
 
-	private static final String SOURCE_NAME = "cx.migration"; //$NON-NLS-1$
+	public static final String SOURCE_NAME = "cx.migration"; //$NON-NLS-1$
 
-	private static final String CURRENT_VERSION = "2.0.1"; //$NON-NLS-1$
+	public static final String CURRENT_VERSION = "2.0.1"; //$NON-NLS-1$
 
 	private static boolean migrateAll(Model model, boolean probe) {
 		boolean result = false;
@@ -298,7 +298,7 @@ public final class DDS4CCMMigrationUtil {
 		return 0;
 	}
 
-	private static String getModelVersion(final Model model) {
+	public static String getModelVersion(final Model model) {
 		EAnnotation anno = model.getEAnnotation(SOURCE_NAME);
 		if (anno == null) {
 			return "0.0.0";
