@@ -10,7 +10,6 @@ public interface DomainTopic extends NamedEntity {
 	 * A predicate which returns true if the Object is an
 	 * instance of DomainTopic
 	 */
-	static final TypeSelectPredicate<DomainTopic> type = new TypeSelectPredicate<DomainTopic>(
-			"DDS::DCPS::DomainTopic", //$NON-NLS-1$
+	static final TypeSelectPredicate<DomainTopic> type = new TypeSelectPredicate<DomainTopic>("DDS::DCPS::DomainTopic", //$NON-NLS-1$
 			DomainTopic.class);
 }

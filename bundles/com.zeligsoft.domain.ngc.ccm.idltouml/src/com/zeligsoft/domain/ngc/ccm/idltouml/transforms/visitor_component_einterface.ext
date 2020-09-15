@@ -15,7 +15,7 @@
  *
  */
 
-import CORBADomain::IDL;
+import CXDomain::IDL;
 import CCM::CCM_Component;
 
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::uml_utils;
@@ -150,13 +150,13 @@ create uml::Class component__ciao_executor_facet_ptr(CCMComponent node, uml::Pac
  **
  **
  ***************************************************************************/
- cached Void visit_interface__equivalent_idl(CORBAInterface node, uml::Package container) :
+ cached Void visit_interface__equivalent_idl(CXInterface node, uml::Package container) :
  	interface__equivalent_idl(node, container) ->
  	interface__equivalent_idl_out(node, container) ->
  	interface__equivalent_idl_var(node, container) ->
  	interface__equivalent_idl_ptr(node, container);
  
- create uml::Class interface__equivalent_idl(CORBAInterface node, uml::Package container) :
+ create uml::Class interface__equivalent_idl(CXInterface node, uml::Package container) :
  	let namespace = namespace(node, container) :
  	let name = node.interface__equivalent_idl_name() :
  		this.setName(name) ->
@@ -172,7 +172,7 @@ create uml::Class component__ciao_executor_facet_ptr(CCMComponent node, uml::Pac
  		this.addGeneratedTag() ->
  		this;
  	
- create uml::Class interface__equivalent_idl_var(CORBAInterface node, uml::Package container) :
+ create uml::Class interface__equivalent_idl_var(CXInterface node, uml::Package container) :
  	let namespace = namespace(node, container) :
  		this.setName(node.interface__equivalent_idl_var_name()) ->
  		this.general.add(interface__equivalent_idl(node, container)) ->
@@ -181,7 +181,7 @@ create uml::Class component__ciao_executor_facet_ptr(CCMComponent node, uml::Pac
  		this.addGeneratedTag() ->
  		this;
  	
- create uml::Class interface__equivalent_idl_ptr(CORBAInterface node, uml::Package container) :
+ create uml::Class interface__equivalent_idl_ptr(CXInterface node, uml::Package container) :
  	let namespace = namespace(node, container) :
  		this.setName(node.interface__equivalent_idl_ptr_name()) ->
  		this.general.add(interface__equivalent_idl(node, container)) ->
@@ -190,7 +190,7 @@ create uml::Class component__ciao_executor_facet_ptr(CCMComponent node, uml::Pac
  		this.addGeneratedTag() ->
  		this;
  	
- create uml::Class interface__equivalent_idl_out(CORBAInterface node, uml::Package container) :
+ create uml::Class interface__equivalent_idl_out(CXInterface node, uml::Package container) :
  	let namespace = namespace(node, container) :
  		this.setName(node.interface__equivalent_idl_out_name()) ->
  		this.general.add(interface__equivalent_idl(node, container)) ->

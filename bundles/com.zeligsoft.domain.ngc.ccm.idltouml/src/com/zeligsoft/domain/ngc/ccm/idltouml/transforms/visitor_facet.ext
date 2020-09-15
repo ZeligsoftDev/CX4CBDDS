@@ -17,7 +17,7 @@
 
 import CCM::CCM_Component;
 import ZMLMM::ZML_Component;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::uml_utils;
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::ccm_utils;
@@ -35,12 +35,12 @@ create uml::Class facet_new(MessagePort node, uml::Package namespace) :
 	let className = node.providedInterface.first().facet_executor_class_name() :
 		this.setName(className) ->
 		// TODO : generalization to interface CCM_<interface name>
-		// TODO : generalization to CORBA::LocalObject 
+		// TODO : generalization to CX::LocalObject 
 		facet__constructor(node, this) ->
 		facet__destructor(node, this) ->
-		node.providedInterface.typeSelect(CORBAInterface).ownedAttribute.visit_attribute(this) ->
-		node.providedInterface.typeSelect(CORBAInterface).ownedOperation.visit_operation(this) ->
-		node.providedInterface.typeSelect(CORBAInterface).zdlAsInterface().general.typeSelect(CORBAInterface).forAll(c|visit_inheritance_graph(node, c, this)) ->
+		node.providedInterface.typeSelect(CXInterface).ownedAttribute.visit_attribute(this) ->
+		node.providedInterface.typeSelect(CXInterface).ownedOperation.visit_operation(this) ->
+		node.providedInterface.typeSelect(CXInterface).zdlAsInterface().general.typeSelect(CXInterface).forAll(c|visit_inheritance_graph(node, c, this)) ->
 		facet__context_member(node, this) ->
 		namespace.packagedElement.add(this) ->
 		this.createTrace(node, "facet_new") ->

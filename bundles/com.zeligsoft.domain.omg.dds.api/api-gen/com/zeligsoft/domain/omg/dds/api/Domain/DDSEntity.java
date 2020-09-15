@@ -16,7 +16,6 @@ public interface DDSEntity extends Classifier {
 	 * A predicate which returns true if the Object is an
 	 * instance of DDSEntity
 	 */
-	static final TypeSelectPredicate<DDSEntity> type = new TypeSelectPredicate<DDSEntity>(
-			"DDS::Domain::DDSEntity", //$NON-NLS-1$
+	static final TypeSelectPredicate<DDSEntity> type = new TypeSelectPredicate<DDSEntity>("DDS::Domain::DDSEntity", //$NON-NLS-1$
 			DDSEntity.class);
 }

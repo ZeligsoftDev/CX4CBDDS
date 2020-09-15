@@ -17,7 +17,7 @@
 import uml;
 import CCM::CCM_Component;
 import CCM::CCM_Artifacts;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
 extension org::eclipse::xtend::util::stdlib::issues;
 extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
@@ -89,7 +89,7 @@ idl::ComponentExport visitContained(CCM::CCM_Component::InterfacePort self) :
 	if self.isUser() then { self.usesPort() } 
 	else if self.isProvider() then { self.providesPort() }
 	else if (!self.isProvider() && !self.isUser()) then {
-		reportError("Port " + self.name + " : An interface port must have its type set to a CORBAInterface.")
+		reportError("Port " + self.name + " : An interface port must have its type set to a CXInterface.")
 		//if it's not a provider or uses port then it is a port_dcl
 		//self.portDecl()
 	};
@@ -153,7 +153,7 @@ private Void setSpecializedInterfaces(idl::EventDcl this, CCM::CCM_Component::Ev
 
 private Void valueInheritanceSpec(idl::EventDcl this, CCM::CCM_Component::Event self) :
 	this.setIsTruncatable(false) ->
-	this.supports.addAll(self.zdlAsInterface().general.typeSelect(CORBAInterface).toScopedName(getCORBAContainer(self))) ->
+	this.supports.addAll(self.zdlAsInterface().general.typeSelect(CXInterface).toScopedName(getCORBAContainer(self))) ->
 	this.base.addAll(self.zdlAsInterface().general.typeSelect(CCM::CCM_Component::Event).select(e | !e.isAbstract).toScopedName(getCORBAContainer(self))) ->
 	this.base.addAll(self.zdlAsInterface().general.typeSelect(CCM::CCM_Component::Event).select(e | e.isAbstract).toScopedName(getCORBAContainer(self)));
 	

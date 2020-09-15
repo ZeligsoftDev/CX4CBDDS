@@ -9,8 +9,7 @@ import com.zeligsoft.domain.omg.dds.api.Domain.QoSProperty;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public abstract class DDSEntityZImpl extends ClassifierZImpl implements
-		DDSEntity {
+public abstract class DDSEntityZImpl extends ClassifierZImpl implements DDSEntity {
 	protected java.util.List<QoSProperty> _qosPolicy;
 
 	public DDSEntityZImpl(org.eclipse.emf.ecore.EObject element) {
@@ -20,16 +19,15 @@ public abstract class DDSEntityZImpl extends ClassifierZImpl implements
 	@Override
 	public java.util.List<QoSProperty> getQosPolicy() {
 		if (_qosPolicy == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "DDS::Domain::DDSEntity", "qosPolicy");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "DDS::Domain::DDSEntity",
+					"qosPolicy");
 			_qosPolicy = new java.util.ArrayList<QoSProperty>();
 			@SuppressWarnings("unchecked")
 			final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 			for (Object next : rawList) {
 				if (next instanceof org.eclipse.emf.ecore.EObject) {
-					QoSProperty nextWrapper = ZDLFactoryRegistry.INSTANCE
-							.create((org.eclipse.emf.ecore.EObject) next,
-									QoSProperty.class);
+					QoSProperty nextWrapper = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) next,
+							QoSProperty.class);
 					_qosPolicy.add(nextWrapper);
 				}
 			}
@@ -42,8 +40,7 @@ public abstract class DDSEntityZImpl extends ClassifierZImpl implements
 		// make sure the qosPolicy list is created
 		getQosPolicy();
 
-		final Object rawValue = ZDLUtil.getValue(element,
-				"DDS::Domain::DDSEntity", "qosPolicy");
+		final Object rawValue = ZDLUtil.getValue(element, "DDS::Domain::DDSEntity", "qosPolicy");
 		@SuppressWarnings("unchecked")
 		final java.util.List<Object> rawList = (java.util.List<Object>) rawValue;
 		rawList.add(val.eObject());
@@ -53,14 +50,12 @@ public abstract class DDSEntityZImpl extends ClassifierZImpl implements
 	}
 
 	@Override
-	public <T extends QoSProperty> T addQosPolicy(Class<T> typeToCreate,
-			String concept) {
+	public <T extends QoSProperty> T addQosPolicy(Class<T> typeToCreate, String concept) {
 		// make sure the qosPolicy list is created
 		getQosPolicy();
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "DDS::Domain::DDSEntity", "qosPolicy", concept);
-		T element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, typeToCreate);
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element, "DDS::Domain::DDSEntity",
+				"qosPolicy", concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(newConcept, typeToCreate);
 		if (_qosPolicy != null) {
 			_qosPolicy.add(element);
 		}
@@ -71,11 +66,10 @@ public abstract class DDSEntityZImpl extends ClassifierZImpl implements
 	public QoSProperty addQosPolicy() {
 		// make sure the qosPolicy list is created
 		getQosPolicy();
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "DDS::Domain::DDSEntity", "qosPolicy",
-				"DDS::Domain::QoSProperty");
-		QoSProperty element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, QoSProperty.class);
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element, "DDS::Domain::DDSEntity",
+				"qosPolicy", "DDS::Domain::QoSProperty");
+		QoSProperty element = ZDLFactoryRegistry.INSTANCE.create(newConcept,
+				QoSProperty.class);
 		if (_qosPolicy != null) {
 			_qosPolicy.add(element);
 		}

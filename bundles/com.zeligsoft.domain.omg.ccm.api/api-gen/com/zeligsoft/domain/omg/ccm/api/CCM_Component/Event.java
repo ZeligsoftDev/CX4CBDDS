@@ -1,13 +1,12 @@
 package com.zeligsoft.domain.omg.ccm.api.CCM_Component;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBANamedElement;
 import com.zeligsoft.domain.zml.api.ZML_Component.Interface;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModuleContained;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAAttribute;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXNamedElement;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXAttribute;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXModuleContained;
 
-public interface Event extends Interface, CORBAModuleContained,
-		CORBANamedElement {
+public interface Event extends Interface, CXModuleContained, CXNamedElement {
 	Boolean getIsAbstract();
 
 	void setIsAbstract(Boolean val);
@@ -24,15 +23,14 @@ public interface Event extends Interface, CORBAModuleContained,
 
 	void addMember(StateMember val);
 
-	java.util.List<CORBAAttribute> getOwnedAttribute();
+	java.util.List<CXAttribute> getOwnedAttribute();
 
-	void addOwnedAttribute(CORBAAttribute val);
+	void addOwnedAttribute(CXAttribute val);
 
 	/**
 	 * A predicate which returns true if the Object is an
 	 * instance of Event
 	 */
-	static final TypeSelectPredicate<Event> type = new TypeSelectPredicate<Event>(
-			"CCM::CCM_Component::Event", //$NON-NLS-1$
+	static final TypeSelectPredicate<Event> type = new TypeSelectPredicate<Event>("CCM::CCM_Component::Event", //$NON-NLS-1$
 			Event.class);
 }

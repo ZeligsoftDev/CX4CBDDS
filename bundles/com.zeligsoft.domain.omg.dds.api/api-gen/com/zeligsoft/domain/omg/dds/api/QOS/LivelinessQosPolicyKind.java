@@ -18,50 +18,43 @@ public enum LivelinessQosPolicyKind {
 	AUTOMATIC {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"DDS::QOS::LivelinessQosPolicyKind", "AUTOMATIC");
+			return ZDLUtil.getZDLEnumLiteral(context, "DDS::QOS::LivelinessQosPolicyKind", "AUTOMATIC");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
 
 	/**
-	 * 
-	 *
-	 */
+	* 
+	*
+	*/
 	MANUAL_BY_PARTICIPANT {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"DDS::QOS::LivelinessQosPolicyKind",
-					"MANUAL_BY_PARTICIPANT");
+			return ZDLUtil.getZDLEnumLiteral(context, "DDS::QOS::LivelinessQosPolicyKind", "MANUAL_BY_PARTICIPANT");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
 
 	/**
-	 * 
-	 *
-	 */
+	* 
+	*
+	*/
 	MANUAL_BY_TOPIC {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"DDS::QOS::LivelinessQosPolicyKind", "MANUAL_BY_TOPIC");
+			return ZDLUtil.getZDLEnumLiteral(context, "DDS::QOS::LivelinessQosPolicyKind", "MANUAL_BY_TOPIC");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
@@ -75,8 +68,7 @@ public enum LivelinessQosPolicyKind {
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return null;
 		}
 	};
@@ -89,14 +81,13 @@ public enum LivelinessQosPolicyKind {
 	 *    UNKNOWN if the literal is unrecognized
 	 */
 	public static LivelinessQosPolicyKind create(EObject literal) {
-		if (literal == ZDLUtil.getZDLEnumLiteral(literal,
-				"DDS::QOS::LivelinessQosPolicyKind", "AUTOMATIC")) { //$NON-NLS-1$//$NON-NLS-2$
+		if (literal == ZDLUtil.getZDLEnumLiteral(literal, "DDS::QOS::LivelinessQosPolicyKind", "AUTOMATIC")) { //$NON-NLS-1$//$NON-NLS-2$
 			return AUTOMATIC;
-		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal,
-				"DDS::QOS::LivelinessQosPolicyKind", "MANUAL_BY_PARTICIPANT")) { //$NON-NLS-1$//$NON-NLS-2$
+		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal, "DDS::QOS::LivelinessQosPolicyKind", //$NON-NLS-1$
+				"MANUAL_BY_PARTICIPANT")) { //$NON-NLS-1$
 			return MANUAL_BY_PARTICIPANT;
-		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal,
-				"DDS::QOS::LivelinessQosPolicyKind", "MANUAL_BY_TOPIC")) { //$NON-NLS-1$//$NON-NLS-2$
+		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal, "DDS::QOS::LivelinessQosPolicyKind", //$NON-NLS-1$
+				"MANUAL_BY_TOPIC")) { //$NON-NLS-1$
 			return MANUAL_BY_TOPIC;
 		} else {
 			return UNKNOWN;
@@ -105,6 +96,5 @@ public enum LivelinessQosPolicyKind {
 
 	public abstract EObject eObject(EObject context);
 
-	public abstract EObject eObject(
-			com.zeligsoft.base.zdl.staticapi.core.ZObject context);
+	public abstract EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context);
 }

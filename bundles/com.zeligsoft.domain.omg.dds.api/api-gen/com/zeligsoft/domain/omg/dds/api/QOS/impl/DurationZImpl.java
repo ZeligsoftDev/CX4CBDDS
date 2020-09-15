@@ -13,8 +13,8 @@ public class DurationZImpl extends ZObjectImpl implements Duration {
 
 	@Override
 	public Integer getNanosecond() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "DDS::QOS::Duration", "nanosecond");
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "DDS::QOS::Duration",
+				"nanosecond");
 		return (Integer) rawValue;
 	}
 
@@ -25,8 +25,7 @@ public class DurationZImpl extends ZObjectImpl implements Duration {
 
 	@Override
 	public Integer getSecond() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "DDS::QOS::Duration", "second");
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "DDS::QOS::Duration", "second");
 		return (Integer) rawValue;
 	}
 

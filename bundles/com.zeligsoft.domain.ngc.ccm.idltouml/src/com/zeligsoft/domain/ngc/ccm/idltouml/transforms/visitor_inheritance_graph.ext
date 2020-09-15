@@ -17,22 +17,22 @@
 
 import CCM::CCM_Component;
 import CCM::CCM_Core;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::visitor_attribute;
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::visitor_operation;
 
-cached Void visit_inheritance_graph(CCMComponent node, CORBAInterface intf, uml::Class container) :
+cached Void visit_inheritance_graph(CCMComponent node, CXInterface intf, uml::Class container) :
 	intf.ownedAttribute.visit_attribute(container) ->
 	intf.ownedOperation.visit_operation(container) ->
-	intf.zdlAsInterface().general.typeSelect(CORBAInterface).forAll(g|visit_inheritance_graph(node, g, container));
+	intf.zdlAsInterface().general.typeSelect(CXInterface).forAll(g|visit_inheritance_graph(node, g, container));
 	
-cached Void visit_inheritance_graph(CORBAInterface node, CORBAInterface intf, uml::Class container) :
+cached Void visit_inheritance_graph(CXInterface node, CXInterface intf, uml::Class container) :
 	intf.ownedAttribute.visit_attribute(container) ->
 	intf.ownedOperation.visit_operation(container) ->
-	intf.zdlAsInterface().general.typeSelect(CORBAInterface).forAll(g|visit_inheritance_graph(node, g, container));
+	intf.zdlAsInterface().general.typeSelect(CXInterface).forAll(g|visit_inheritance_graph(node, g, container));
 	
-cached Void visit_inheritance_graph(ZMLMM::ZML_Component::MessagePort node, CORBAInterface intf, uml::Class container) :
+cached Void visit_inheritance_graph(ZMLMM::ZML_Component::MessagePort node, CXInterface intf, uml::Class container) :
 	intf.ownedAttribute.visit_attribute(container) ->
 	intf.ownedOperation.visit_operation(container) ->
-	intf.zdlAsInterface().general.typeSelect(CORBAInterface).forAll(g|visit_inheritance_graph(node, g, container));
+	intf.zdlAsInterface().general.typeSelect(CXInterface).forAll(g|visit_inheritance_graph(node, g, container));

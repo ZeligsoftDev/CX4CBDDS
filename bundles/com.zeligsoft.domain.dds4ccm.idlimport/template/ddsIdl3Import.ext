@@ -15,8 +15,8 @@
  *
  */
 
-import CORBADomain::IDLFileSupport; // needed for IDLFile and similar
-import CORBADomain::IDL; // needed for CORBAModule etc.
+import CXDomain::IDLFileSupport; // needed for IDLFile and similar
+import CXDomain::IDL; // needed for CXModule etc.
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
 import CCM::CCM_Component;
@@ -74,26 +74,26 @@ String getPragmaHome() :
 	JAVA com.zeligsoft.domain.dds4ccm.idlimport.ImportUtils.getPragmaHome();
 	
 /*
- * IDL2 CORBAModules
+ * IDL2 CXModules
  */
 private Void visitContained(Module module, uml::Package container ) :
-	container.packagedElement.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).size > 0 ?
+	container.packagedElement.typeSelect(CXModule).select(e|e.name.matches(module.name)).size > 0 ?
 		module.definitions.visitContained(
-			container.packagedElement.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).get(0)) :
+			container.packagedElement.typeSelect(CXModule).select(e|e.name.matches(module.name)).get(0)) :
 		createModule(module, container); 
 		
-private create CORBAModule createModule(Module module, uml::Package container) :
+private create CXModule createModule(Module module, uml::Package container) :
 	container.packagedElement.add(this) ->
 	this.setName(module.name) ->
 	module.definitions.visitContained(this);
 
-private Void visitContained(Module module, CORBAModule container ) :
-	container.contents.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).size > 0 ?
+private Void visitContained(Module module, CXModule container ) :
+	container.contents.typeSelect(CXModule).select(e|e.name.matches(module.name)).size > 0 ?
 		module.definitions.visitContained(
-			container.contents.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).get(0)) :
+			container.contents.typeSelect(CXModule).select(e|e.name.matches(module.name)).get(0)) :
 		createModule(module, container); 
 	
-private create CORBAModule createModule(Module module, CORBAModule container) :
+private create CXModule createModule(Module module, CXModule container) :
 	container.contents.add(this) ->
 	this.setName(module.name) ->
 	module.definitions.visitContained(this);
@@ -113,7 +113,7 @@ Void convertStateMembers(Event event, uml::Package package) :
 	event.member.zdlAsElement().destroy();
 	
 Void convertStateMember(StateMember member, Event event) :
-	let struct = member.idlType : // Assumption: it's a CORBAStruct
+	let struct = member.idlType : // Assumption: it's a CXStruct
 	struct.members.createEventAttribute(event) ->
 	struct.zdlAsElement().destroy();
 
@@ -121,7 +121,7 @@ Void convertStructs(uml::Package package) :
 	JAVA com.zeligsoft.domain.dds4ccm.idlimport.ImportUtils.convertStructs(
 		org.eclipse.uml2.uml.Package);
 		
-create CORBAAttribute createEventAttribute(CORBAField field, Event event ) :
+create CXAttribute createEventAttribute(CXField field, Event event ) :
 	event.ownedAttribute.add(this) ->
 	this.setName(field.name) ->
 	this.zdlAsProperty().setType(field.idlType);

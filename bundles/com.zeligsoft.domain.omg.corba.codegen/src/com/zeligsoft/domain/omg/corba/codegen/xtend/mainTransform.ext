@@ -15,8 +15,8 @@
  *
  */
 import uml;
-import CORBADomain::IDL;
-import CORBADomain::IDLFileSupport;
+import CXDomain::IDL;
+import CXDomain::IDLFileSupport;
 import idl;
 
 //extension org::eclipse::xtend::util::stdlib::io;
@@ -44,7 +44,7 @@ Void popFile(IDLFile idlFile) :
 create Preproc_Pragma_Prefix visitPragmaPrefix(IDLFile idlFile ) :
 	setValue(idlFile.prefix);
 	
-create Interface_decl visitContained(CORBAInterface intf) :
+create Interface_decl visitContained(CXInterface intf) :
 	setHeader(intf.createInterface_header()) ->
 	setInterfaceBody(intf.createInterface_body());
 
@@ -58,40 +58,40 @@ Void visitContained(IDLImport imprt):
 	{};
 
 	
-create Interface_header createInterface_header(CORBAInterface intf) :
+create Interface_header createInterface_header(CXInterface intf) :
 	setName(intf.name) ->
 	setIsAbstract(intf.isAbstract) ->
 	setIsLocal(intf.isLocal) ->
 	this.comments.addAll(intf.zdlAsInterface().ownedComment.visitComment()) ->
 	setSpecializedInterfaces(intf);
 	
-Void setSpecializedInterfaces(Interface_header iheader, CORBAInterface cIntf) :
+Void setSpecializedInterfaces(Interface_header iheader, CXInterface cIntf) :
 	iheader.specializes.addAll(cIntf.zdlAsComponent().getGenerals().toScopedName(getCORBAContainer(cIntf)));
 	
-create Module visitContained(CORBAModule module) :
+create Module visitContained(CXModule module) :
 	setName(module.name) ->
 	this.definitions.addAll(module.zdlAsPackage().packagedElement.visitContained()) ->
 	this.comments.addAll(module.zdlAsPackage().ownedComment.visitComment());
 		
-create OpDecl visitContained(CORBAOperation op) :
+create OpDecl visitContained(CXOperation op) :
 	setName(op.name) ->
 	this.setIsOneway(op.isOneWay) ->
 	op.zdlAsPackage().ownedComment.isEmpty ? 
 		this.comments.add(new IDLComment) : 
 		this.comments.addAll(op.zdlAsPackage().ownedComment.visitComment()) ->
 	op.zdlAsOperation().type == null ? 
-		setType(CORBAPrimitiveKindtoScopedName(CORBAPrimitiveKind::CORBAVoid.literalName())) : 
+		setType(CORBAPrimitiveKindtoScopedName(CXPrimitiveKind::CXVoid.literalName())) : 
 		setType(op.zdlAsOperation().type.toScopedName(getCORBAContainer(op))) ->
 	setParams(op.toParamDecls()) ->
 	setRaises(op.zdlAsOperation().toExceptionList()) ->
 	this.comments.add(getReturnParameterComment(op).visitComment());
 
-Boolean isOfLocalEnumType(CORBAConstant corbaConst) :
+Boolean isOfLocalEnumType(CXConstant corbaConst) :
 	corbaConst.idlType != null 
 		&& corbaConst.idlType.eContainer == corbaConst.eContainer
-		&& corbaConst.idlType.metaType == CORBAEnum ;
+		&& corbaConst.idlType.metaType == CXEnum ;
 
-create InterfaceBody createInterface_body(CORBAInterface intf) :
+create InterfaceBody createInterface_body(CXInterface intf) :
 	export.addAll(intf.ownedConstants.select(c|!c.isOfLocalEnumType()).visitContained()) ->
 	export.addAll(intf.contents.visitContained()) ->
 	export.addAll(intf.ownedConstants.select(c|c.isOfLocalEnumType()).visitContained()) ->
@@ -103,17 +103,17 @@ IDLComment visitComment(Comment c) :
 	comment.setBody(c.body) ->
 	comment;
 
-Void visitContained(CORBAAttribute property ) :
+Void visitContained(CXAttribute property ) :
 	if property.isReadOnly then createReadOnlyAttribute(property) else createAttribute(property);
 	
-create AttrSpec createAttribute(CORBAAttribute property) :
+create AttrSpec createAttribute(CXAttribute property) :
 	setType(property.zdlAsProperty().type.toScopedName(getCORBAContainer(property))) ->
 	this.comments.addAll(property.zdlAsPackage().ownedComment.visitComment()) ->
 	names.add(property.name) ->
 	setGetRaises(property.getraises.toAttrRaisesException()) ->
 	setSetRaises(property.setraises.toAttrRaisesException());
 	
-create ReadOnlyAttrSpec createReadOnlyAttribute(CORBAAttribute property) :
+create ReadOnlyAttrSpec createReadOnlyAttribute(CXAttribute property) :
 	setType(property.zdlAsProperty().type.toScopedName(property)) ->
 	this.comments.addAll(property.zdlAsPackage().ownedComment.visitComment()) ->
 	names.add(property.name) ->
@@ -130,7 +130,7 @@ AttrRaisesExpr toAttrRaisesException(Collection list) :
 *	is assumed to be a uml::Property and the value is assumed
 *	to be a String.
 */
-create ConstDecl visitContained(CORBAConstant const) :
+create ConstDecl visitContained(CXConstant const) :
 	this.setName(const.name) ->
 	this.setType(const.zdlAsProperty().type.toConstType(const)) ->
 	this.setValue(const.zdlAsProperty().type.getScopedDefault(const.zdlAsProperty().getDefault()).toConstExp()) ->
@@ -139,13 +139,13 @@ create ConstDecl visitContained(CORBAConstant const) :
 String getScopedDefault(Object o, String defaultVal) :
 	defaultVal;
 
-String getScopedDefault(CORBAEnum enum, String defaultVal) :
+String getScopedDefault(CXEnum enum, String defaultVal) :
 	let scopedName = getScopedNameFromNamedElement(enum) :
 	let index = enum.name.length :
 	let scope = scopedName.subString(0, scopedName.length - index) :
 	scope == "" ? "::" + defaultVal : scope + defaultVal;
 
-String getScopedDefault(CORBATypeDef typedef, String defaultVal) :
+String getScopedDefault(CXTypeDef typedef, String defaultVal) :
 	typedef.type == null ? 
 		typedef.zdlAsClassifier().general.get(0).getScopedDefault(defaultVal) :
 		typedef.type.getScopedDefault(defaultVal);
@@ -154,7 +154,7 @@ String getScopedDefault(CORBATypeDef typedef, String defaultVal) :
 *	Map a CORBAException from the design model into a idl.ExceptDecl
 *	in the language model.
 */
-create ExceptDecl visitContained(CORBAException ex) :
+create ExceptDecl visitContained(CXException ex) :
 	setName(ex.name) ->
 	this.comments.addAll(ex.zdlAsDataType().ownedComment.visitComment()) ->
 	members.addAll(ex.members.visitExceptionAttribute());
@@ -164,7 +164,7 @@ create ExceptDecl visitContained(CORBAException ex) :
 *	the mapping creates a Member for the property that
 *	is added to the ExceptDecl.
 */
-create Member visitExceptionAttribute(CORBAField p) :
+create Member visitExceptionAttribute(CXField p) :
 	this.setDecl(p.createDeclarator(p.idlType)) ->
 	this.comment.addAll(p.zdlAsProperty().ownedComment.visitComment()) ->
 	p.idlType == null ? setType(new ScopedName) : this.setMemberType(p.idlType, p);
@@ -172,7 +172,7 @@ create Member visitExceptionAttribute(CORBAField p) :
 /**
 * Map a CORBAStruct from the design model into a idl.StructType in the language model.
 */
-create StructType visitContained(CORBAStruct struct) :
+create StructType visitContained(CXStruct struct) :
 	this.setName(struct.name) ->
 	this.comments.addAll(struct.zdlAsPackage().ownedComment.visitComment()) ->
 	members.addAll(struct.members.visitStructAttribute());	
@@ -181,50 +181,50 @@ create StructType visitContained(CORBAStruct struct) :
 * Visits a uml Attribute that was found on a CORBAStruct
 * The mapping creates a Member for the property that is added to the StructType
 */
-create Member visitStructAttribute(CORBAField p) :
+create Member visitStructAttribute(CXField p) :
 	this.setDecl(p.createDeclarator(p.idlType)) ->
 	this.comment.addAll(p.zdlAsProperty().ownedComment.visitComment()) ->	
 	p.idlType == null ? setType(new ScopedName) : this.setMemberType(p.idlType, p);
 
-Void setMemberType(Member member, CORBAPrimitive primitive, CORBAField field) :
-	primitive.type == CORBAPrimitiveKind::CORBAWString ?
+Void setMemberType(Member member, CXPrimitive primitive, CXField field) :
+	primitive.type == CXPrimitiveKind::CXWString ?
 		member.setType(createWideString(field)) : 
 		{
-		primitive.type == CORBAPrimitiveKind::CORBAString ?
+		primitive.type == CXPrimitiveKind::CXString ?
 			member.setType(createString(field)) :
 			member.setType(field.idlType.toScopedName(getCORBAContainer(field)))
 		};
 
-create StringType createString(CORBAField field) :
+create StringType createString(CXField field) :
 	(field.bounds.size > 0) ?
 		this.setSize(field.bounds.first().toPositiveIntConst(this)) :
 		{};
 	
-create WideStringType createWideString(CORBAField field) :
+create WideStringType createWideString(CXField field) :
 	(field.bounds.size > 0) ?
 		this.setSize(field.bounds.first().toPositiveIntConst(this)) :
 		{};
 	
-Void setMemberType(Member member, CORBAType type, CORBAField field ) :
+Void setMemberType(Member member, CXType type, CXField field ) :
 	member.setType(field.idlType.toScopedName(getCORBAContainer(field)));
 
-Declarator createDeclarator(CORBAField field, CORBAType type ) :
+Declarator createDeclarator(CXField field, CXType type ) :
 	basicCreateDeclarator(field, type);
 	
-Declarator createDeclarator(CORBAField field, CORBAPrimitive type ) :
-	( type.type == CORBAPrimitiveKind::CORBAString || type.type == CORBAPrimitiveKind::CORBAWString ) ?
+Declarator createDeclarator(CXField field, CXPrimitive type ) :
+	( type.type == CXPrimitiveKind::CXString || type.type == CXPrimitiveKind::CXWString ) ?
 		createSimpleDeclarator(field) :
 		basicCreateDeclarator(field, type);
 
-Declarator basicCreateDeclarator(CORBAField field, CORBAType type) :
+Declarator basicCreateDeclarator(CXField field, CXType type) :
 	(field.bounds == null || field.bounds == "") ?
 		createSimpleDeclarator(field) :
 		createArrayDeclarator(field);
 				
-create SimpleDeclarator createSimpleDeclarator(CORBAField field) :
+create SimpleDeclarator createSimpleDeclarator(CXField field) :
 	this.setId(field.name);
 	
-create ArrayDeclarator createArrayDeclarator(CORBAField field) :
+create ArrayDeclarator createArrayDeclarator(CXField field) :
 	this.setId(field.name) ->
 	field.bounds.size > 0 ? this.size.addAll(field.bounds.visitBound(getCORBAContainer(field))) :
 	{};
@@ -232,7 +232,7 @@ create ArrayDeclarator createArrayDeclarator(CORBAField field) :
 /**
 * Map a CORBAEnum from the design model into a idl.EnumType in the language model.
 */
-create EnumType visitContained(CORBAEnum enum) :
+create EnumType visitContained(CXEnum enum) :
 	setName(enum.name) ->
 	this.comments.addAll(enum.zdlAsEnumeration().ownedComment.visitComment()) ->
 	this.comments.size == 0 ? this.comments.add(new IDLComment) : {} ->
@@ -248,13 +248,13 @@ IDLComment getComment(uml::EnumerationLiteral literal) :
 create NativeType visitContained(Native native) :
 	setName(native.name);
 
-create TypeDeclarator visitContained(CORBATypeDef typedef) :
+create TypeDeclarator visitContained(CXTypeDef typedef) :
 	declarators.add(typedef.name.toDeclarator(this)) ->
 	this.comments.addAll(typedef.zdlAsDataType().ownedComment.visitComment()) ->
 	typedef.zdlAsClassifier().general.size != 1 ? setType(new ScopedName) : setType(typedef.zdlAsClassifier().general.get(0).toScopedName(getCORBAContainer(typedef))) ->
 	typedef.type != null ? setType(typedef.type.toScopedName(getCORBAContainer(typedef))) : {};
 	
-create TypeDeclarator visitContained(CORBASequence seq) :
+create TypeDeclarator visitContained(CXSequence seq) :
 	let seqtype = new idl::SequenceType :
 		declarators.add(seq.name.toDeclarator(this)) ->
 		this.comments.addAll(seq.zdlAsDataType().ownedComment.visitComment()) ->
@@ -265,15 +265,15 @@ create TypeDeclarator visitContained(CORBASequence seq) :
 create PositiveIntConst toPositiveIntConst(String s, Object o ) :
 	this.setExp(toConstExp(s));
 
-create PositiveIntConst toPositiveIntConst(CORBABound b, Object o ) :
+create PositiveIntConst toPositiveIntConst(CXBound b, Object o ) :
 	(b.value != null && b.value != "") ?
 		this.setExp(b.value.toConstExp()):
 		this.setExp(getConstantScopedName(b.constant, o));
 
-String getConstantDefault(CORBAConstant const) :
+String getConstantDefault(CXConstant const) :
 	JAVA com.zeligsoft.domain.omg.corba.codegen.xtend.XtendUtils.getConstantDefault(org.eclipse.uml2.uml.Property);
 
-create TypeDeclarator visitContained(CORBAString string) :
+create TypeDeclarator visitContained(CXString string) :
 	let stringtype = new idl::StringType :
 	declarators.add(string.name.toDeclarator(this)) ->
 	this.comments.addAll(string.zdlAsDataType().ownedComment.visitComment()) ->
@@ -281,7 +281,7 @@ create TypeDeclarator visitContained(CORBAString string) :
 	stringtype.setSize(string.bounds.toPositiveIntConst(string)) ->
 	this;
 	
-create TypeDeclarator visitContained(CORBAWString string) :
+create TypeDeclarator visitContained(CXWString string) :
 	let stringtype = new idl::WideStringType :
 	declarators.add(string.name.toDeclarator(this)) ->
 	this.comments.addAll(string.zdlAsDataType().ownedComment.visitComment()) ->
@@ -289,7 +289,7 @@ create TypeDeclarator visitContained(CORBAWString string) :
 	stringtype.setSize(string.bounds.toPositiveIntConst(string)) ->
 	this;
 
-create TypeDeclarator visitContained(CORBAArray array) :
+create TypeDeclarator visitContained(CXArray array) :
 	let arraytype = new ArrayDeclarator :
 		declarators.add(arraytype) ->
 		arraytype.size.addAll(array.bounds.visitBound(array)) ->
@@ -297,44 +297,44 @@ create TypeDeclarator visitContained(CORBAArray array) :
 		this.comments.addAll(array.zdlAsDataType().ownedComment.visitComment()) ->
 		setType(((Property)array.zdlAsDataType().member.get(0)).zdlAsProperty().type.toScopedName(getCORBAContainer(array)));
 
-ConstExp visitBound(CORBABound self, CORBANamedElement element) :
+ConstExp visitBound(CXBound self, CXNamedElement element) :
 	(self.value != null && self.value != "") ?
 		self.value.toConstExp() :
 		getConstantScopedName(self.constant, element);
 
-ConstExp getConstantScopedName(CORBAConstant self, CORBANamedElement element) :
+ConstExp getConstantScopedName(CXConstant self, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(self), getScopedNameFromNamedElement(getCORBAContainer(element))) ->
 		newScopedName.toConstExp();
 
-create UnionType visitContained(CORBAUnion union) :
+create UnionType visitContained(CXUnion union) :
 	setName(union.name) ->	
 	this.comments.addAll(union.zdlAsDataType().ownedComment.visitComment()) ->
 	setSwitch(union.getSwitchType()) ->
 	setBody(union.getSwitchBody());
 	
-SwitchTypeSpec getSwitchType(CORBAUnion union) :
+SwitchTypeSpec getSwitchType(CXUnion union) :
 	let uniontype = union.getType() :
 	uniontype == null ? new ScopedName : uniontype.toScopedName(getCORBAContainer(union));
 		
-Type getType(CORBAUnion union):
+Type getType(CXUnion union):
 	JAVA com.zeligsoft.domain.omg.corba.codegen.xtend.XtendUtils.getCORBAUnionType(org.eclipse.uml2.uml.DataType);
 	
-create SwitchBody getSwitchBody(CORBAUnion union) :
-	this.setCase(union.zdlAsDataType().attribute.typeSelect(CORBACase).visitContained());
+create SwitchBody getSwitchBody(CXUnion union) :
+	this.setCase(union.zdlAsDataType().attribute.typeSelect(CXCase).visitContained());
 	
-create Case visitContained(CORBACase unioncase ) :
+create Case visitContained(CXCase unioncase ) :
 	this.label.addAll(unioncase.label.asCaseLabel(unioncase)) ->
 	this.comments.addAll(unioncase.zdlAsProperty().ownedComment.visitComment()) ->
 	setSpec(unioncase.getElementSpec());
 
 /*
-* The CORBACase has to be passed to the extension or else oAW's dispatch mechanism will return
+* TCXRBACase has to be passed to the extension or else oAW's dispatch mechanism will return
 * the same CaseLabel for labels with the same value in different unions. This has the effect of removing
 * that CaseLabel from the other union. Passing the CORBACase guarantees that oAW will not be able to
 * cache the result.
 */
-create CaseLabel asCaseLabel(String label, CORBACase unioncase) :	
+create CaseLabel asCaseLabel(String label, CXCase unioncase) :	
 	label == "default" ? 
 		setIsDefault(true) 
 		: setConstExp(label.toConstExp());
@@ -384,7 +384,7 @@ ConstExp toConstExp(ScopedName scopedName ) :
 	orExpr.setLhs(xorExpr) ->
 	orExpr;
 
-create ElementSpec getElementSpec(CORBACase unioncase) :
+create ElementSpec getElementSpec(CXCase unioncase) :
 	setDeclarator(unioncase.toDeclarator(this)) ->
 	unioncase.idlType == null ? setType(new ScopedName) : setType(unioncase.zdlAsProperty().type.toScopedName(getCORBAContainer(unioncase))); 
 	
@@ -392,7 +392,7 @@ create ElementSpec getElementSpec(CORBACase unioncase) :
 *	Creates the SimpleDelcarator that is necessary for 
 *	creating a Member from a Property
 */
-create SimpleDeclarator toDeclarator(CORBACase p, Object o) :
+create SimpleDeclarator toDeclarator(CXCase p, Object o) :
 	setId(p.name);
 	
 create SimpleDeclarator toDeclarator(String s, Object o) :
@@ -401,8 +401,8 @@ create SimpleDeclarator toDeclarator(String s, Object o) :
 /**
 *	Creates a list of ConstDecl for a CORBAConstants element.
 */
-List visitContained(CORBAConstants constants) :
-	constants.zdlAsDataType().attribute.typeSelect(CORBAConstant).visitContained();
+List visitContained(CXConstants constants) :
+	constants.zdlAsDataType().attribute.typeSelect(CXConstant).visitContained();
 	
 	
 /**
@@ -411,65 +411,65 @@ List visitContained(CORBAConstants constants) :
 Void toConstType(uml::Type type) :
 	{};
 
-ConstType toConstType(CORBAEnum enum, CORBANamedElement element ) :
+ConstType toConstType(CXEnum enum, CXNamedElement element ) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(enum), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 		
-ConstType toConstType(CORBATypeDef typedef, CORBANamedElement element ) :
+ConstType toConstType(CXTypeDef typedef, CXNamedElement element ) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(typedef), getScopedNameFromNamedElement(element))
 		-> newScopedName;
  
-ConstType toConstType(CORBAPrimitive type, CORBANamedElement element) :
+ConstType toConstType(CXPrimitive type, CXNamedElement element) :
 	type.type.literalName().toConstType();
 
 ConstType toConstType(uml::Property prop) :
 	prop.type.toConstType();
 	
 /**
-*	Create a new ConstType object from a CORBAPrimitive
+*	Create a new ConstType object from a CXPrimitive
 *	Those Primitives that can not be a ConstType return null.
 */	
 ConstType toConstType(String type) :
 	switch(type) {
-		case CORBAPrimitiveKind::CORBAWChar.literalName():
+		case CXPrimitiveKind::CXWChar.literalName():
 					new WideCharType
-				case CORBAPrimitiveKind::CORBAVoid.literalName():
+				case CXPrimitiveKind::CXVoid.literalName():
 					{}
-				case CORBAPrimitiveKind::CORBAUnsignedShort.literalName():
+				case CXPrimitiveKind::CXUnsignedShort.literalName():
 					new UnsignedShortInt
-				case CORBAPrimitiveKind::CORBAUnsignedLongLong.literalName():
+				case CXPrimitiveKind::CXUnsignedLongLong.literalName():
 					new UnsignedLongLongInt
-				case CORBAPrimitiveKind::CORBAUnsignedLong.literalName():
+				case CXPrimitiveKind::CXUnsignedLong.literalName():
 					new UnsignedLongInt
-				case CORBAPrimitiveKind::CORBAShort.literalName():
+				case CXPrimitiveKind::CXShort.literalName():
 					new SignedShortInt
-				case CORBAPrimitiveKind::CORBAOctet.literalName():
+				case CXPrimitiveKind::CXOctet.literalName():
 					new OctetType
-				case CORBAPrimitiveKind::CORBAObjectRef.literalName():
+				case CXPrimitiveKind::CXObjectRef.literalName():
 					{}
-				case CORBAPrimitiveKind::CORBALongLong.literalName():
+				case CXPrimitiveKind::CXLongLong.literalName():
 					new SignedLongLongInt
-				case CORBAPrimitiveKind::CORBALongDouble.literalName():
+				case CXPrimitiveKind::CXLongDouble.literalName():
 					new LongDoubleType
-				case CORBAPrimitiveKind::CORBALong.literalName():
+				case CXPrimitiveKind::CXLong.literalName():
 					new SignedLongInt
-				case CORBAPrimitiveKind::CORBAFloat.literalName():
+				case CXPrimitiveKind::CXFloat.literalName():
 					new FloatType
-				case CORBAPrimitiveKind::CORBADouble.literalName():
+				case CXPrimitiveKind::CXDouble.literalName():
 					new DoubleType
-				case CORBAPrimitiveKind::CORBAChar.literalName():
+				case CXPrimitiveKind::CXChar.literalName():
 					new CharType
-				case CORBAPrimitiveKind::CORBABoolean.literalName():
+				case CXPrimitiveKind::CXBoolean.literalName():
 					new BooleanType
-				case CORBAPrimitiveKind::CORBAAny.literalName():
+				case CXPrimitiveKind::CXAny.literalName():
 					{}
-				case CORBAPrimitiveKind::CORBAString.literalName():
+				case CXPrimitiveKind::CXString.literalName():
 					new StringType
-				case CORBAPrimitiveKind::CORBAWString.literalName():
+				case CXPrimitiveKind::CXWString.literalName():
 					new WideStringType
-				case CORBAPrimitiveKind::CORBATypecode.literalName():
+				case CXPrimitiveKind::CXTypecode.literalName():
 					{}
 				default:
 					{}
@@ -484,7 +484,7 @@ ConstType toConstType(String type) :
 ScopedName toScopedName(uml::Type type) :
 	new ScopedName;
 		
-ScopedName toScopedName(CORBADomain::IDL::Native type) :
+ScopedName toScopedName(CXDomain::IDL::Native type) :
 	new ScopedName;
 
 
@@ -493,7 +493,7 @@ ScopedName toScopedName(CORBADomain::IDL::Native type) :
 *	Create a idl.ParameterDecls from the parameters of a uml.Operation
 *	by creating a idl.ParamDcl for each uml.Parameter
 */
-create ParameterDecls toParamDecls(CORBAOperation op) :
+create ParameterDecls toParamDecls(CXOperation op) :
 	this.decls.addAll(op.ownedParameter.toParamDecl(op, this));
 
 /**
@@ -502,7 +502,7 @@ create ParameterDecls toParamDecls(CORBAOperation op) :
 *		idl.ParamDcl.type = uml.Parameter.type --map to--> idl.ScopedName
 *		idl.ParamDcl.direction = uml.Parameter.direction --map to--> idl.ParamDirection
 */
-create ParamDcl toParamDecl(uml::Parameter param, CORBANamedElement op, ParameterDecls decls) :
+create ParamDcl toParamDecl(uml::Parameter param, CXNamedElement op, ParameterDecls decls) :
 	this.setName(param.name) ->
 	this.setType(param.zdlAsParameter().type.toScopedName(op)) ->
 	
@@ -528,16 +528,16 @@ cached String getScopedNameFromNamedElement(Object element) :
 /**
 * Helper function to get nearest CORBANamedElement and skip the package
 */
-CORBANamedElement getCORBAContainer(NamedElement element) :
+CXNamedElement getCORBAContainer(NamedElement element) :
 	element.eContainer.getCORBAContainerHelper();
 	
-CORBANamedElement getCORBAContainerHelper(uml::Package container) :
+CXNamedElement getCORBAContainerHelper(uml::Package container) :
 	getCORBAContainer(container);
 	
-CORBANamedElement getCORBAContainerHelper(CORBANamedElement container) :
+CXNamedElement getCORBAContainerHelper(CXNamedElement container) :
 	container;
 	
-CORBANamedElement getCORBAContainerHelper(Object container) :
+CXNamedElement getCORBAContainerHelper(Object container) :
 	{};	
 
 /**
@@ -567,99 +567,99 @@ ScopedName getScopedName(ScopedName self, String typeScopedName, String elementS
 /**
 * Produce a scoped name for a CORBA Interface
 */
-ScopedName toScopedName(CORBAInterface intf, CORBANamedElement element) :
+ScopedName toScopedName(CXInterface intf, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(intf), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 
 /**
-* Produce a scoped name for a CORBA Typedef
+* Produce a scoped name for a CX Typedef
 */
-ScopedName toScopedName(CORBATypeDef typedef, CORBANamedElement element) :
+ScopedName toScopedName(CXTypeDef typedef, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(typedef), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 
 /**
-* Produce a scoped name for a CORBA Sequence
+* Produce a scoped name for a CX Sequence
 */
-ScopedName toScopedName(CORBASequence seq, CORBANamedElement element) :
+ScopedName toScopedName(CXSequence seq, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(seq), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 		
 /**
-* Produce a scoped name for a CORBA Array
+* Produce a scoped name for a CX Array
 */
-ScopedName toScopedName(CORBAArray array, CORBANamedElement element) :
+ScopedName toScopedName(CXArray array, CXNamedElement element) :
     let newScopedName = new ScopedName :
     	newScopedName.getScopedName(getScopedNameFromNamedElement(array), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 
 /**
-* Produce a scoped name for a CORBA Struct
+* Produce a scoped name for a CX Struct
 */
-ScopedName toScopedName(CORBAStruct struct, CORBANamedElement element) :
+ScopedName toScopedName(CXStruct struct, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(struct), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 	
 /**
-* Produced a scoped name for a CORBA Exception
+* Produced a scoped name for a CX Exception
 */
-ScopedName toScopedName(CORBAException exception, CORBANamedElement element) :
+ScopedName toScopedName(CXException exception, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(exception), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 		
 /**
-* Produce a scoped name for a CORBA Enum
+* Produce a scoped name for a CX Enum
 */
-ScopedName toScopedName(CORBAEnum enum, CORBANamedElement element) :
+ScopedName toScopedName(CXEnum enum, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(enum), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 
 /**
-* Produce a scoped name for a CORBA Union
+* Produce a scoped name for a CX Union
 */
-ScopedName toScopedName(CORBAUnion union, CORBANamedElement element) :
+ScopedName toScopedName(CXUnion union, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(union), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 		
-ScopedName toScopedName(CORBAString cString, CORBANamedElement element) :
+ScopedName toScopedName(CXString cString, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(cString), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 		
-ScopedName toScopedName(CORBAWString cString, CORBANamedElement element) :
+ScopedName toScopedName(CXWString cString, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(cString), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 		
 /**
-* Produce a scoped name from a CORBA Primitive
+* Produce a scoped name from a CX Primitive
 */
-ScopedName toScopedName(CORBAPrimitive primitive, CORBANamedElement element) :
+ScopedName toScopedName(CXPrimitive primitive, CXNamedElement element) :
 		primitive.type == null ?
 			new ScopedName :
 			CORBAPrimitiveKindtoScopedName(primitive.type.literalName());
 
-ScopedName toScopedName(CORBAValue value, CORBANamedElement element) :
+ScopedName toScopedName(CXValue value, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(value), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 			
-ScopedName toScopedName(Native native, CORBANamedElement element) :
+ScopedName toScopedName(Native native, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(native), getScopedNameFromNamedElement(element))
 		-> newScopedName;					
 		
-ScopedName toScopedName(emf::EObject o, CORBANamedElement element ) :
+ScopedName toScopedName(emf::EObject o, CXNamedElement element ) :
 	unhandledScopedName(o, element);
 	
-ScopedName unhandledScopedName(emf::EObject o, CORBANamedElement element ) :
+ScopedName unhandledScopedName(emf::EObject o, CXNamedElement element ) :
 	let newScopedName = new ScopedName :
 		newScopedName; 
 			
@@ -671,43 +671,43 @@ ScopedName CORBAPrimitiveKindtoScopedName(String primitive) :
 	let newScopedName = new ScopedName :
 		switch(primitive)
 			{
-				case CORBAPrimitiveKind::CORBAWChar.literalName():
+				case CXPrimitiveKind::CXWChar.literalName():
 					newScopedName.name.add("wchar")
-				case CORBAPrimitiveKind::CORBAVoid.literalName():
+				case CXPrimitiveKind::CXVoid.literalName():
 					newScopedName.name.add("void")
-				case CORBAPrimitiveKind::CORBAUnsignedShort.literalName():
+				case CXPrimitiveKind::CXUnsignedShort.literalName():
 					newScopedName.name.add("unsigned short")
-				case CORBAPrimitiveKind::CORBAUnsignedLongLong.literalName():
+				case CXPrimitiveKind::CXUnsignedLongLong.literalName():
 					newScopedName.name.add("unsigned long long")
-				case CORBAPrimitiveKind::CORBAUnsignedLong.literalName():
+				case CXPrimitiveKind::CXUnsignedLong.literalName():
 					newScopedName.name.add("unsigned long")
-				case CORBAPrimitiveKind::CORBAShort.literalName():
+				case CXPrimitiveKind::CXShort.literalName():
 					newScopedName.name.add("short")
-				case CORBAPrimitiveKind::CORBAOctet.literalName():
+				case CXPrimitiveKind::CXOctet.literalName():
 					newScopedName.name.add("octet")
-				case CORBAPrimitiveKind::CORBAObjectRef.literalName():
+				case CXPrimitiveKind::CXObjectRef.literalName():
 					newScopedName.name.add("Object")
-				case CORBAPrimitiveKind::CORBALongLong.literalName():
+				case CXPrimitiveKind::CXLongLong.literalName():
 					newScopedName.name.add("long long")
-				case CORBAPrimitiveKind::CORBALongDouble.literalName():
+				case CXPrimitiveKind::CXLongDouble.literalName():
 					newScopedName.name.add("long double")
-				case CORBAPrimitiveKind::CORBALong.literalName():
+				case CXPrimitiveKind::CXLong.literalName():
 					newScopedName.name.add("long")
-				case CORBAPrimitiveKind::CORBAFloat.literalName():
+				case CXPrimitiveKind::CXFloat.literalName():
 					newScopedName.name.add("float")
-				case CORBAPrimitiveKind::CORBADouble.literalName():
+				case CXPrimitiveKind::CXDouble.literalName():
 					newScopedName.name.add("double")
-				case CORBAPrimitiveKind::CORBAChar.literalName():
+				case CXPrimitiveKind::CXChar.literalName():
 					newScopedName.name.add("char")
-				case CORBAPrimitiveKind::CORBABoolean.literalName():
+				case CXPrimitiveKind::CXBoolean.literalName():
 					newScopedName.name.add("boolean")
-				case CORBAPrimitiveKind::CORBAAny.literalName():
+				case CXPrimitiveKind::CXAny.literalName():
 					newScopedName.name.add("any")
-				case CORBAPrimitiveKind::CORBAString.literalName():
+				case CXPrimitiveKind::CXString.literalName():
 					newScopedName.name.add("string")
-				case CORBAPrimitiveKind::CORBAWString.literalName():
+				case CXPrimitiveKind::CXWString.literalName():
 					newScopedName.name.add("wstring")
-				case CORBAPrimitiveKind::CORBATypecode.literalName():
+				case CXPrimitiveKind::CXTypecode.literalName():
 					newScopedName.name.add("typecode")
 				default:
 					newScopedName.name.add("unknown type")
@@ -730,9 +730,9 @@ String literalName(uml::EnumerationLiteral literal) :
 
 /**
 *	A work around of oaW that does not handle enumeration literals elegantly.
-*	This will return the name of any CORBAPrimitiveKind passed in.
+*	This will return the name of any CXPrimitiveKind passed in.
 */	
-String literalName(CORBAPrimitiveKind literal) :
+String literalName(CXPrimitiveKind literal) :
 	JAVA com.zeligsoft.domain.omg.corba.codegen.xtend.XtendUtils.literalNameHelper(java.lang.Object);
 
 /**
@@ -744,7 +744,7 @@ Void setDirection(ParamDcl param, uml::ParameterDirectionKind direction) :
 		com.zeligsoft.domain.omg.corba.dsl.idl.ParamDcl,
 		org.eclipse.uml2.uml.ParameterDirectionKind);
 		
-uml::Comment getReturnParameterComment(CORBAOperation op) :
+uml::Comment getReturnParameterComment(CXOperation op) :
 	JAVA com.zeligsoft.domain.omg.corba.codegen.xtend.XtendUtils.getReturnParameterComment(
 		org.eclipse.uml2.uml.Operation);
 		

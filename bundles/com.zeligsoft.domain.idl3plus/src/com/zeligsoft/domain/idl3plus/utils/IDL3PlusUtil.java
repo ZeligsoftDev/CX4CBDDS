@@ -54,7 +54,7 @@ import com.zeligsoft.domain.idl3plus.l10n.Messages;
 import com.zeligsoft.domain.idl3plus.merge.ClassModelMerger;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZDeploymentUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
@@ -413,24 +413,24 @@ public class IDL3PlusUtil {
 
 		if (type.equals(IDL3PlusNames.TYPE_CONSTRAINT__INTERFACE)) {
 			typeClass = ZDLUtil.getZDLConcept(context,
-					CORBADomainNames.CORBAINTERFACE);
+					CXDomainNames.CXINTERFACE);
 		} else if (type.equals(IDL3PlusNames.TYPE_CONSTRAINT__ARRAY)) {
 			typeClass = ZDLUtil.getZDLConcept(context,
-					CORBADomainNames.CORBAARRAY);
+					CXDomainNames.CXARRAY);
 		} else if (type.equals(IDL3PlusNames.TYPE_CONSTRAINT__ENUM)) {
 			typeClass = ZDLUtil.getZDLConcept(context,
-					CORBADomainNames.CORBAENUM);
+					CXDomainNames.CXENUM);
 		} else if (type.equals(IDL3PlusNames.TYPE_CONSTRAINT__SEQUENCE)) {
 			typeClass = ZDLUtil.getZDLConcept(context,
-					CORBADomainNames.CORBASEQUENCE);
+					CXDomainNames.CXSEQUENCE);
 		} else if (type.equals(IDL3PlusNames.TYPE_CONSTRAINT__STRUCT)) {
 			typeClass = ZDLUtil.getZDLConcept(context,
-					CORBADomainNames.CORBASTRUCT);
+					CXDomainNames.CXSTRUCT);
 		} else if (type.equals(IDL3PlusNames.TYPE_CONSTRAINT__EVENTTYPE)) {
 			typeClass = ZDLUtil.getZDLConcept(context, CCMNames.EVENT);
 		} else if (type.equals(IDL3PlusNames.TYPE_CONSTRAINT__UNION)) {
 			typeClass = ZDLUtil.getZDLConcept(context,
-					CORBADomainNames.CORBAUNION);
+					CXDomainNames.CXUNION);
 		} else if (type.equals(IDL3PlusNames.TYPE_CONSTRAINT__VALUETYPE)) {
 			typeClass = null;
 		} else if (type.equals(IDL3PlusNames.TYPE_CONSTRAINT__TYPENAME)) {

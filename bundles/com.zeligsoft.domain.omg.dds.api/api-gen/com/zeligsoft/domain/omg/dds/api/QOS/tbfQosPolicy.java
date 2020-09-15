@@ -7,8 +7,7 @@ public interface tbfQosPolicy extends qosPolicy {
 
 	void setMinimum_separation(Duration val);
 
-	<T extends Duration> T createMinimum_separation(Class<T> typeToCreate,
-			String concept);
+	<T extends Duration> T createMinimum_separation(Class<T> typeToCreate, String concept);
 
 	Duration createMinimum_separation();
 

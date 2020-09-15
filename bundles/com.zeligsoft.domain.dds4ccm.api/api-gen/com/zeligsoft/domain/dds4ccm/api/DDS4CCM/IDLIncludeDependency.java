@@ -2,16 +2,16 @@ package com.zeligsoft.domain.dds4ccm.api.DDS4CCM;
 
 import com.zeligsoft.base.zdl.staticapi.core.ZObject;
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBANamedElement;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXNamedElement;
 
 public interface IDLIncludeDependency extends ZObject {
-	CORBANamedElement getIncluder();
+	CXNamedElement getIncluder();
 
-	void setIncluder(CORBANamedElement val);
+	void setIncluder(CXNamedElement val);
 
-	CORBANamedElement getIncludee();
+	CXNamedElement getIncludee();
 
-	void setIncludee(CORBANamedElement val);
+	void setIncludee(CXNamedElement val);
 
 	org.eclipse.uml2.uml.Dependency asDependency();
 

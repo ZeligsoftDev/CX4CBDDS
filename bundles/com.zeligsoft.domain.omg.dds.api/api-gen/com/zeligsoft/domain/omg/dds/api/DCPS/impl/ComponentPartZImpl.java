@@ -9,8 +9,7 @@ import com.zeligsoft.domain.omg.dds.api.DCPS.PublisherSubscriber;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class ComponentPartZImpl extends NamedEntityZImpl implements
-		ComponentPart {
+public class ComponentPartZImpl extends NamedEntityZImpl implements ComponentPart {
 	protected PublisherSubscriber _type;
 
 	public ComponentPartZImpl(org.eclipse.emf.ecore.EObject element) {
@@ -20,11 +19,10 @@ public class ComponentPartZImpl extends NamedEntityZImpl implements
 	@Override
 	public PublisherSubscriber getType() {
 		if (_type == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "DDS::DCPS::ComponentPart", "type");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "DDS::DCPS::ComponentPart",
+					"type");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_type = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_type = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						PublisherSubscriber.class);
 			}
 		}
@@ -33,8 +31,7 @@ public class ComponentPartZImpl extends NamedEntityZImpl implements
 
 	@Override
 	public void setType(PublisherSubscriber val) {
-		ZDLUtil.setValue(element, "DDS::DCPS::ComponentPart", "type",
-				val.eObject());
+		ZDLUtil.setValue(element, "DDS::DCPS::ComponentPart", "type", val.eObject());
 	}
 
 	@Override

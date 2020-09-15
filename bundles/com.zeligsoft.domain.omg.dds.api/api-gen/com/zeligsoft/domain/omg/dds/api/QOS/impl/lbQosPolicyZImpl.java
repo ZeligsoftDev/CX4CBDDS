@@ -19,11 +19,10 @@ public class lbQosPolicyZImpl extends qosPolicyZImpl implements lbQosPolicy {
 	@Override
 	public Duration getDuration() {
 		if (_duration == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "DDS::QOS::lbQosPolicy", "duration");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "DDS::QOS::lbQosPolicy",
+					"duration");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_duration = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_duration = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						Duration.class);
 			}
 		}
@@ -32,27 +31,23 @@ public class lbQosPolicyZImpl extends qosPolicyZImpl implements lbQosPolicy {
 
 	@Override
 	public void setDuration(Duration val) {
-		ZDLUtil.setValue(element, "DDS::QOS::lbQosPolicy", "duration",
-				val.eObject());
+		ZDLUtil.setValue(element, "DDS::QOS::lbQosPolicy", "duration", val.eObject());
 	}
 
 	@Override
-	public <T extends Duration> T createDuration(Class<T> typeToCreate,
-			String concept) {
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "DDS::QOS::lbQosPolicy", "duration", concept);
-		T element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, typeToCreate);
+	public <T extends Duration> T createDuration(Class<T> typeToCreate, String concept) {
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element, "DDS::QOS::lbQosPolicy",
+				"duration", concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(newConcept, typeToCreate);
 		return element;
 	}
 
 	@Override
 	public Duration createDuration() {
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "DDS::QOS::lbQosPolicy", "duration",
-				"DDS::QOS::Duration");
-		Duration element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, Duration.class);
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element, "DDS::QOS::lbQosPolicy",
+				"duration", "DDS::QOS::Duration");
+		Duration element = ZDLFactoryRegistry.INSTANCE.create(newConcept,
+				Duration.class);
 		return element;
 	}
 

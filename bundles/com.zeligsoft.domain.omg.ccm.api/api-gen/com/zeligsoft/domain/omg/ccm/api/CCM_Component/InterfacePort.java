@@ -1,13 +1,12 @@
 package com.zeligsoft.domain.omg.ccm.api.CCM_Component;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
+import com.zeligsoft.domain.zml.api.ZML_Component.WorkerFunctionIdentifiable;
 import com.zeligsoft.domain.zml.api.ZML_Component.MessagePort;
 import com.zeligsoft.domain.zml.api.ZML_Component.ComponentInterface;
-import com.zeligsoft.domain.zml.api.ZML_Component.WorkerFunctionIdentifiable;
 import com.zeligsoft.domain.zml.api.ZML_Component.ConjugatedPort;
 
-public interface InterfacePort extends MessagePort, ConjugatedPort,
-		WorkerFunctionIdentifiable {
+public interface InterfacePort extends MessagePort, ConjugatedPort, WorkerFunctionIdentifiable {
 	Boolean getIsAsynchronous();
 
 	void setIsAsynchronous(Boolean val);

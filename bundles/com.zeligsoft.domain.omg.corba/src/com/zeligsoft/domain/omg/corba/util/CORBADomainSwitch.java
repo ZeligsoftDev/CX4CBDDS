@@ -19,7 +19,7 @@ package com.zeligsoft.domain.omg.corba.util;
 import org.eclipse.emf.ecore.EObject;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * @author ysroh
@@ -35,243 +35,243 @@ public class CORBADomainSwitch<T> {
 
 	public T doSwitch(EObject theEObject) {
 		
-		if (ZDLUtil.isZDLConcept(theEObject, CORBADomainNames.IDLFILE)) {
+		if (ZDLUtil.isZDLConcept(theEObject, CXDomainNames.IDLFILE)) {
 			T result = caseIDLFile(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
-		} else if (ZDLUtil.isZDLConcept(theEObject, CORBADomainNames.CORBAARRAY)) {
-			T result = caseCORBAArray(theEObject);
+		} else if (ZDLUtil.isZDLConcept(theEObject, CXDomainNames.CXARRAY)) {
+			T result = caseCXArray(theEObject);
 			if (result == null)
-				result = caseCORBAType(theEObject);
+				result = caseCXType(theEObject);
 			if (result == null)
-				result = caseCORBATemplate(theEObject);
+				result = caseCXTemplate(theEObject);
 			if (result == null)
-				result = caseCORBAModuleContained(theEObject);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBAATTRIBUTE)) {
-			T result = caseCORBAAttribute(theEObject);
-			if (result == null)
-				result = caseCORBATyped(theEObject);
-			if (result == null)
-				result = caseCORBANamedElement(theEObject);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		} else if (ZDLUtil.isZDLConcept(theEObject, CORBADomainNames.CORBACASE)) {
-			T result = caseCORBACase(theEObject);
-			if (result == null)
-				result = caseCORBAUnionField(theEObject);
-			if (result == null)
-				result = caseCORBANamedElement(theEObject);
+				result = caseCXModuleContained(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBACONSTANT)) {
-			T result = caseCORBAConstant(theEObject);
+				CXDomainNames.CXATTRIBUTE)) {
+			T result = caseCXAttribute(theEObject);
 			if (result == null)
-				result = caseCORBANamedElement(theEObject);
+				result = caseCXTyped(theEObject);
+			if (result == null)
+				result = caseCXNamedElement(theEObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		} else if (ZDLUtil.isZDLConcept(theEObject, CXDomainNames.CXCASE)) {
+			T result = caseCXCase(theEObject);
+			if (result == null)
+				result = caseCXUnionField(theEObject);
+			if (result == null)
+				result = caseCXNamedElement(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBACONSTANTS)) {
-			T result = caseCORBAConstants(theEObject);
+				CXDomainNames.CXCONSTANT)) {
+			T result = caseCXConstant(theEObject);
 			if (result == null)
-				result = caseCORBANamedElement(theEObject);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBADEFAULT)) {
-			T result = caseCORBADefault(theEObject);
-			if (result == null)
-				result = caseCORBAUnionField(theEObject);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		} else if (ZDLUtil.isZDLConcept(theEObject, CORBADomainNames.CORBAENUM)) {
-			T result = caseCORBAEnum(theEObject);
-			if (result == null)
-				result = caseCORBAType(theEObject);
-			if (result == null)
-				result = caseCORBAModuleContained(theEObject);
-			if (result == null)
-				result = caseCORBAClassifierContained(theEObject);
-			if (result == null)
-				result = caseCORBANamedElement(theEObject);
+				result = caseCXNamedElement(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBAEXCEPTION)) {
-			T result = caseCORBAException(theEObject);
+				CXDomainNames.CXCONSTANTS)) {
+			T result = caseCXConstants(theEObject);
 			if (result == null)
-				result = caseCORBAConstructed(theEObject);
+				result = caseCXNamedElement(theEObject);
 			if (result == null)
-				result = caseCORBAModuleContained(theEObject);
+				result = defaultCase(theEObject);
+			return result;
+		} else if (ZDLUtil.isZDLConcept(theEObject,
+				CXDomainNames.CXDEFAULT)) {
+			T result = caseCXDefault(theEObject);
 			if (result == null)
-				result = caseCORBAClassifierContained(theEObject);
+				result = caseCXUnionField(theEObject);
 			if (result == null)
-				result = caseCORBANamedElement(theEObject);
+				result = defaultCase(theEObject);
+			return result;
+		} else if (ZDLUtil.isZDLConcept(theEObject, CXDomainNames.CXENUM)) {
+			T result = caseCXEnum(theEObject);
+			if (result == null)
+				result = caseCXType(theEObject);
+			if (result == null)
+				result = caseCXModuleContained(theEObject);
+			if (result == null)
+				result = caseCXClassifierContained(theEObject);
+			if (result == null)
+				result = caseCXNamedElement(theEObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		} else if (ZDLUtil.isZDLConcept(theEObject,
+				CXDomainNames.CXEXCEPTION)) {
+			T result = caseCXException(theEObject);
+			if (result == null)
+				result = caseCXConstructed(theEObject);
+			if (result == null)
+				result = caseCXModuleContained(theEObject);
+			if (result == null)
+				result = caseCXClassifierContained(theEObject);
+			if (result == null)
+				result = caseCXNamedElement(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		} else if (ZDLUtil
-				.isZDLConcept(theEObject, CORBADomainNames.CORBAFIELD)) {
-			T result = caseCORBAField(theEObject);
+				.isZDLConcept(theEObject, CXDomainNames.CXFIELD)) {
+			T result = caseCXField(theEObject);
 			if (result == null)
-				result = caseCORBATyped(theEObject);
+				result = caseCXTyped(theEObject);
 			if (result == null)
-				result = caseCORBANamedElement(theEObject);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBAINTERFACE)) {
-			T result = caseCORBAInterface(theEObject);
-			if (result == null)
-				result = caseCORBAClassifier(theEObject);
-			if (result == null)
-				result = caseCORBAType(theEObject);
-			if (result == null)
-				result = caseCORBAModuleContained(theEObject);
-			if (result == null)
-				result = caseCORBAClassifierContained(theEObject);
-			if (result == null)
-				result = caseCORBANamedElement(theEObject);
+				result = caseCXNamedElement(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBAMODULE)) {
-			T result = caseCORBAModule(theEObject);
+				CXDomainNames.CXINTERFACE)) {
+			T result = caseCXInterface(theEObject);
 			if (result == null)
-				result = caseCORBAModuleContained(theEObject);
+				result = caseCXClassifier(theEObject);
 			if (result == null)
-				result = caseCORBANamedElement(theEObject);
+				result = caseCXType(theEObject);
 			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBAOPERATION)) {
-			T result = caseCORBAOperation(theEObject);
+				result = caseCXModuleContained(theEObject);
 			if (result == null)
-				result = caseCORBATyped(theEObject);
+				result = caseCXClassifierContained(theEObject);
 			if (result == null)
-				result = caseCORBANamedElement(theEObject);
+				result = caseCXNamedElement(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBAPARAMETER)) {
-			T result = caseCORBAParameter(theEObject);
+				CXDomainNames.CXMODULE)) {
+			T result = caseCXModule(theEObject);
 			if (result == null)
-				result = caseCORBATyped(theEObject);
+				result = caseCXModuleContained(theEObject);
 			if (result == null)
-				result = caseCORBANamedElement(theEObject);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBAPRIMITIVE)) {
-			T result = caseCORBAPrimitive(theEObject);
-			if (result == null)
-				result = caseCORBAType(theEObject);
-			if (result == null)
-				result = caseCORBANamedElement(theEObject);
+				result = caseCXNamedElement(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBASEQUENCE)) {
-			T result = caseCORBASequence(theEObject);
+				CXDomainNames.CXOPERATION)) {
+			T result = caseCXOperation(theEObject);
 			if (result == null)
-				result = caseCORBAType(theEObject);
+				result = caseCXTyped(theEObject);
 			if (result == null)
-				result = caseCORBATemplate(theEObject);
-			if (result == null)
-				result = caseCORBAClassifierContained(theEObject);
-			if (result == null)
-				result = caseCORBAModuleContained(theEObject);
+				result = caseCXNamedElement(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBASTRING)) {
-			T result = caseCORBAString(theEObject);
+				CXDomainNames.CXPARAMETER)) {
+			T result = caseCXParameter(theEObject);
 			if (result == null)
-				result = caseCORBAType(theEObject);
+				result = caseCXTyped(theEObject);
 			if (result == null)
-				result = caseCORBABounded(theEObject);
-			if (result == null)
-				result = caseCORBANamedElement(theEObject);
+				result = caseCXNamedElement(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBASTRUCT)) {
-			T result = caseCORBAStruct(theEObject);
+				CXDomainNames.CXPRIMITIVE)) {
+			T result = caseCXPrimitive(theEObject);
 			if (result == null)
-				result = caseCORBAType(theEObject);
+				result = caseCXType(theEObject);
 			if (result == null)
-				result = caseCORBAClassifierContained(theEObject);
-			if (result == null)
-				result = caseCORBAModuleContained(theEObject);
+				result = caseCXNamedElement(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBATYPE_DEF)) {
-			T result = caseCORBATypeDef(theEObject);
+				CXDomainNames.CXSEQUENCE)) {
+			T result = caseCXSequence(theEObject);
 			if (result == null)
-				result = caseCORBAType(theEObject);
+				result = caseCXType(theEObject);
 			if (result == null)
-				result = caseCORBAWrapper(theEObject);
+				result = caseCXTemplate(theEObject);
 			if (result == null)
-				result = caseCORBAClassifierContained(theEObject);
+				result = caseCXClassifierContained(theEObject);
 			if (result == null)
-				result = caseCORBAModuleContained(theEObject);
+				result = caseCXModuleContained(theEObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		} else if (ZDLUtil.isZDLConcept(theEObject,
+				CXDomainNames.CXSTRING)) {
+			T result = caseCXString(theEObject);
+			if (result == null)
+				result = caseCXType(theEObject);
+			if (result == null)
+				result = caseCXBounded(theEObject);
+			if (result == null)
+				result = caseCXNamedElement(theEObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		} else if (ZDLUtil.isZDLConcept(theEObject,
+				CXDomainNames.CXSTRUCT)) {
+			T result = caseCXStruct(theEObject);
+			if (result == null)
+				result = caseCXType(theEObject);
+			if (result == null)
+				result = caseCXClassifierContained(theEObject);
+			if (result == null)
+				result = caseCXModuleContained(theEObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		} else if (ZDLUtil.isZDLConcept(theEObject,
+				CXDomainNames.CXTYPE_DEF)) {
+			T result = caseCXTypeDef(theEObject);
+			if (result == null)
+				result = caseCXType(theEObject);
+			if (result == null)
+				result = caseCXWrapper(theEObject);
+			if (result == null)
+				result = caseCXClassifierContained(theEObject);
+			if (result == null)
+				result = caseCXModuleContained(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		} else if (ZDLUtil
-				.isZDLConcept(theEObject, CORBADomainNames.CORBAUNION)) {
-			T result = caseCORBAUnion(theEObject);
+				.isZDLConcept(theEObject, CXDomainNames.CXUNION)) {
+			T result = caseCXUnion(theEObject);
 			if (result == null)
-				result = caseCORBAType(theEObject);
+				result = caseCXType(theEObject);
 			if (result == null)
-				result = caseCORBAConstructed(theEObject);
+				result = caseCXConstructed(theEObject);
 			if (result == null)
-				result = caseCORBAClassifierContained(theEObject);
+				result = caseCXClassifierContained(theEObject);
 			if (result == null)
-				result = caseCORBAModuleContained(theEObject);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBAUNION_FIELD)) {
-			T result = caseCORBAUnionField(theEObject);
-			if (result == null)
-				result = caseCORBATyped(theEObject);
-			if (result == null)
-				result = caseCORBANamedElement(theEObject);
+				result = caseCXModuleContained(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		} else if (ZDLUtil.isZDLConcept(theEObject,
-				CORBADomainNames.CORBAWSTRING)) {
-			T result = caseCORBAWString(theEObject);
+				CXDomainNames.CXUNION_FIELD)) {
+			T result = caseCXUnionField(theEObject);
 			if (result == null)
-				result = caseCORBAType(theEObject);
+				result = caseCXTyped(theEObject);
 			if (result == null)
-				result = caseCORBABounded(theEObject);
+				result = caseCXNamedElement(theEObject);
 			if (result == null)
-				result = caseCORBANamedElement(theEObject);
+				result = defaultCase(theEObject);
+			return result;
+		} else if (ZDLUtil.isZDLConcept(theEObject,
+				CXDomainNames.CXWSTRING)) {
+			T result = caseCXWString(theEObject);
+			if (result == null)
+				result = caseCXType(theEObject);
+			if (result == null)
+				result = caseCXBounded(theEObject);
+			if (result == null)
+				result = caseCXNamedElement(theEObject);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -285,143 +285,143 @@ public class CORBADomainSwitch<T> {
 		return null;
 	}
 
-	protected T caseCORBAModuleContained(EObject corbaModuleContained) {
+	protected T caseCXModuleContained(EObject corbaModuleContained) {
 		return null;
 	}
 
-	protected T caseCORBANamedElement(EObject namedElement) {
+	protected T caseCXNamedElement(EObject namedElement) {
 		return null;
 	}
 
-	protected T caseCORBAArray(EObject object) {
+	protected T caseCXArray(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAAttribute(EObject object) {
+	protected T caseCXAttribute(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBABounded(EObject object) {
+	protected T caseCXBounded(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBABoxedValue(EObject object) {
+	protected T caseCXBoxedValue(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBACase(EObject object) {
+	protected T caseCXCase(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAClassifier(EObject object) {
+	protected T caseCXClassifier(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAClassifierContained(EObject object) {
+	protected T caseCXClassifierContained(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAConstant(EObject object) {
+	protected T caseCXConstant(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAConstants(EObject object) {
+	protected T caseCXConstants(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAConstructed(EObject object) {
+	protected T caseCXConstructed(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBADefault(EObject object) {
+	protected T caseCXDefault(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAException(EObject object) {
+	protected T caseCXException(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAField(EObject object) {
+	protected T caseCXField(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAInterface(EObject object) {
+	protected T caseCXInterface(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAModule(EObject object) {
+	protected T caseCXModule(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAOperation(EObject object) {
+	protected T caseCXOperation(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAParameter(EObject object) {
+	protected T caseCXParameter(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAPrimitive(EObject object) {
+	protected T caseCXPrimitive(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBASequence(EObject object) {
+	protected T caseCXSequence(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAString(EObject object) {
+	protected T caseCXString(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAStruct(EObject object) {
+	protected T caseCXStruct(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBASupports(EObject object) {
+	protected T caseCXSupports(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBATemplate(EObject object) {
+	protected T caseCXTemplate(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAType(EObject object) {
+	protected T caseCXType(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBATyped(EObject object) {
+	protected T caseCXTyped(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBATypeDef(EObject object) {
+	protected T caseCXTypeDef(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAUnion(EObject object) {
+	protected T caseCXUnion(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAUnionField(EObject object) {
+	protected T caseCXUnionField(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAValue(EObject object) {
+	protected T caseCXValue(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAValueFactory(EObject object) {
+	protected T caseCXValueFactory(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAWrapper(EObject object) {
+	protected T caseCXWrapper(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAWString(EObject object) {
+	protected T caseCXWString(EObject object) {
 		return null;
 	}
 
-	protected T caseCORBAEnum(EObject object) {
+	protected T caseCXEnum(EObject object) {
 		return null;
 	}
 

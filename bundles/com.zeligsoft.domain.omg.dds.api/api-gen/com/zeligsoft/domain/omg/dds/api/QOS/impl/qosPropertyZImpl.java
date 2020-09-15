@@ -9,8 +9,7 @@ import com.zeligsoft.domain.omg.dds.api.QOS.qosPolicy;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class qosPropertyZImpl extends NamedElementImplementation implements
-		qosProperty {
+public class qosPropertyZImpl extends NamedElementImplementation implements qosProperty {
 	protected qosPolicy _policy;
 
 	public qosPropertyZImpl(org.eclipse.emf.ecore.EObject element) {
@@ -20,12 +19,10 @@ public class qosPropertyZImpl extends NamedElementImplementation implements
 	@Override
 	public qosPolicy getPolicy() {
 		if (_policy == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "DDS::QOS::qosProperty", "policy");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "DDS::QOS::qosProperty",
+					"policy");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_policy = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
-						qosPolicy.class);
+				_policy = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue, qosPolicy.class);
 			}
 		}
 		return _policy;
@@ -33,8 +30,7 @@ public class qosPropertyZImpl extends NamedElementImplementation implements
 
 	@Override
 	public void setPolicy(qosPolicy val) {
-		ZDLUtil.setValue(element, "DDS::QOS::qosProperty", "policy",
-				val.eObject());
+		ZDLUtil.setValue(element, "DDS::QOS::qosProperty", "policy", val.eObject());
 	}
 
 	@Override

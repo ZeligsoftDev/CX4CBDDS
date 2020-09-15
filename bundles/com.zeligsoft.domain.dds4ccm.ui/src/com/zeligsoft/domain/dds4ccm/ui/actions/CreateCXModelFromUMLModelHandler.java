@@ -15,6 +15,7 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -38,8 +39,8 @@ public class CreateCXModelFromUMLModelHandler extends AbstractHandler {
 				String modelType = "atcd";
 				while (reader.ready()) {
 					String line = reader.readLine();
-					if(line.contains("dds4ccm:DDS4CCMModel")) {
-						if(line.contains("modelType=\"AXCIOMA\"")) {
+					if (line.contains("dds4ccm:DDS4CCMModel")) {
+						if (line.contains("modelType=\"AXCIOMA\"")) {
 							modelType = "axcioma";
 						}
 						break;
@@ -48,26 +49,26 @@ public class CreateCXModelFromUMLModelHandler extends AbstractHandler {
 				String modelName = file.getFullPath().removeFileExtension().lastSegment();
 				IContainer container = file.getParent();
 				IFile diFile;
-				if(container instanceof IProject) {
-					diFile = ((IProject)container).getFile(modelName + ".di");
-				}else {
-					diFile = ((IFolder)container).getFile(modelName + ".di");
+				if (container instanceof IProject) {
+					diFile = ((IProject) container).getFile(modelName + ".di");
+				} else {
+					diFile = ((IFolder) container).getFile(modelName + ".di");
 				}
-				
+
 				if (!diFile.exists()) {
 					String diContents = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
-							+ "<architecture:ArchitectureDescription xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:architecture=\"http://www.eclipse.org/papyrus/infra/core/architecture\" contextId=\"com.zeligsoft.domain.cbdds." + modelType + ".architecture\"/>\r\n"
-							+ "";
+							+ "<architecture:ArchitectureDescription xmi:version=\"2.0\" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:architecture=\"http://www.eclipse.org/papyrus/infra/core/architecture\" contextId=\"com.zeligsoft.domain.cbdds."
+							+ modelType + ".architecture\"/>\r\n" + "";
 					byte[] bytes = diContents.getBytes();
 					InputStream source = new ByteArrayInputStream(bytes);
 					diFile.create(source, IResource.FORCE, null);
 				}
-				
+
 				IFile noFile;
-				if(container instanceof IProject) {
-					noFile = ((IProject)container).getFile(modelName + ".notation");
-				}else {
-					noFile = ((IFolder)container).getFile(modelName + ".notation");
+				if (container instanceof IProject) {
+					noFile = ((IProject) container).getFile(modelName + ".notation");
+				} else {
+					noFile = ((IFolder) container).getFile(modelName + ".notation");
 				}
 				if (!noFile.exists()) {
 					String noContents = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
@@ -76,15 +77,54 @@ public class CreateCXModelFromUMLModelHandler extends AbstractHandler {
 					InputStream source = new ByteArrayInputStream(bytes);
 					noFile.create(source, IResource.FORCE, null);
 				}
+
+				// Replace CORBA to CX prefix
+				migrateCORBAToCX(file);
+
 			} catch (CoreException e1) {
 				e1.printStackTrace();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 		}
-		
 
 		return null;
 	}
 
+	/**
+	 * Open file and replace CORBA prefix with CX
+	 * 
+	 * @param file
+	 */
+	private void migrateCORBAToCX(IFile file) {
+
+		try {
+			boolean found = false;
+			BufferedReader reader = new BufferedReader(new InputStreamReader(file.getContents()));
+			StringBuffer outBuffer = new StringBuffer();
+			while (reader.ready()) {
+				String line = reader.readLine();
+				String outLine = line;
+				int startIndex = line.indexOf("dds4ccm:CORBA");
+				if (startIndex > 0) {
+					found = true;
+					outLine = line.replaceFirst("dds4ccm:CORBA", "dds4ccm:CX");
+				}
+				outBuffer.append(outLine).append(System.lineSeparator());
+			}
+			reader.close();
+
+			if (found) {
+				// produce output if CORBA keyword is found
+				String outContents = outBuffer.toString();
+				byte[] bytes = outContents.getBytes();
+				InputStream source = new ByteArrayInputStream(bytes);
+				file.setContents(source, IResource.FORCE, new NullProgressMonitor());
+			}
+		} catch (CoreException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
 }

@@ -18,31 +18,27 @@ public enum ComponentCategory {
 	SESSION {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"CCM::CCM_Implementation::ComponentCategory", "SESSION");
+			return ZDLUtil.getZDLEnumLiteral(context, "CCM::CCM_Implementation::ComponentCategory", "SESSION");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
 
 	/**
-	 * 
-	 *
-	 */
+	* 
+	*
+	*/
 	SERVICE {
 		@Override
 		public EObject eObject(EObject context) {
-			return ZDLUtil.getZDLEnumLiteral(context,
-					"CCM::CCM_Implementation::ComponentCategory", "SERVICE");
+			return ZDLUtil.getZDLEnumLiteral(context, "CCM::CCM_Implementation::ComponentCategory", "SERVICE");
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return eObject(context.eObject());
 		}
 	},
@@ -56,8 +52,7 @@ public enum ComponentCategory {
 		}
 
 		@Override
-		public EObject eObject(
-				com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
+		public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {
 			return null;
 		}
 	};
@@ -70,11 +65,10 @@ public enum ComponentCategory {
 	 *    UNKNOWN if the literal is unrecognized
 	 */
 	public static ComponentCategory create(EObject literal) {
-		if (literal == ZDLUtil.getZDLEnumLiteral(literal,
-				"CCM::CCM_Implementation::ComponentCategory", "SESSION")) { //$NON-NLS-1$//$NON-NLS-2$
+		if (literal == ZDLUtil.getZDLEnumLiteral(literal, "CCM::CCM_Implementation::ComponentCategory", "SESSION")) { //$NON-NLS-1$//$NON-NLS-2$
 			return SESSION;
-		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal,
-				"CCM::CCM_Implementation::ComponentCategory", "SERVICE")) { //$NON-NLS-1$//$NON-NLS-2$
+		} else if (literal == ZDLUtil.getZDLEnumLiteral(literal, "CCM::CCM_Implementation::ComponentCategory", //$NON-NLS-1$
+				"SERVICE")) { //$NON-NLS-1$
 			return SERVICE;
 		} else {
 			return UNKNOWN;
@@ -83,6 +77,5 @@ public enum ComponentCategory {
 
 	public abstract EObject eObject(EObject context);
 
-	public abstract EObject eObject(
-			com.zeligsoft.base.zdl.staticapi.core.ZObject context);
+	public abstract EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context);
 }

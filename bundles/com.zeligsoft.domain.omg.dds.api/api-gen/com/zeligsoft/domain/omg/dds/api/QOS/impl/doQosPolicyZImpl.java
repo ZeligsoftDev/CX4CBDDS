@@ -16,13 +16,12 @@ public class doQosPolicyZImpl extends qosPolicyZImpl implements doQosPolicy {
 
 	@Override
 	public DestinationOrderQosPolicyKind getKind() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "DDS::QOS::doQosPolicy", "kind");
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "DDS::QOS::doQosPolicy",
+				"kind");
 
 		if (_kind == null) {
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_kind = DestinationOrderQosPolicyKind
-						.create((org.eclipse.emf.ecore.EObject) rawValue);
+				_kind = DestinationOrderQosPolicyKind.create((org.eclipse.emf.ecore.EObject) rawValue);
 			}
 		}
 		return _kind;
@@ -30,8 +29,7 @@ public class doQosPolicyZImpl extends qosPolicyZImpl implements doQosPolicy {
 
 	@Override
 	public void setKind(DestinationOrderQosPolicyKind val) {
-		ZDLUtil.setValue(element, "DDS::QOS::doQosPolicy", "kind",
-				val.eObject(element));
+		ZDLUtil.setValue(element, "DDS::QOS::doQosPolicy", "kind", val.eObject(element));
 	}
 
 }

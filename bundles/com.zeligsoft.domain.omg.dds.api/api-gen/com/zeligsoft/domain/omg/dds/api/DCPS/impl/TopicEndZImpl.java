@@ -19,11 +19,10 @@ public class TopicEndZImpl extends ConnectorEndZImpl implements TopicEnd {
 	@Override
 	public DomainTopic getTopic() {
 		if (_topic == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "DDS::DCPS::TopicEnd", "topic");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "DDS::DCPS::TopicEnd",
+					"topic");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_topic = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_topic = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						DomainTopic.class);
 			}
 		}

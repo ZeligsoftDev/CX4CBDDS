@@ -10,7 +10,6 @@ public interface qosPolicy extends NamedElement {
 	 * A predicate which returns true if the Object is an
 	 * instance of qosPolicy
 	 */
-	static final TypeSelectPredicate<qosPolicy> type = new TypeSelectPredicate<qosPolicy>(
-			"DDS::QOS::qosPolicy", //$NON-NLS-1$
+	static final TypeSelectPredicate<qosPolicy> type = new TypeSelectPredicate<qosPolicy>("DDS::QOS::qosPolicy", //$NON-NLS-1$
 			qosPolicy.class);
 }

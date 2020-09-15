@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * Constraint for IDLFile Container
@@ -41,7 +41,7 @@ public class ContainedIDLFileConstraint extends AbstractModelConstraint {
 	public IStatus validate(IValidationContext ctx) {
 		EObject objToVerify = ctx.getTarget();
 
-		if (ZDLUtil.isZDLConcept(objToVerify, CORBADomainNames.IDLFILE)) {
+		if (ZDLUtil.isZDLConcept(objToVerify, CXDomainNames.IDLFILE)) {
 
 			if (!checkContainer(objToVerify)) {
 				return ctx.createFailureStatus(objToVerify);
@@ -56,8 +56,8 @@ public class ContainedIDLFileConstraint extends AbstractModelConstraint {
 
 		EObject owner = eobj.eContainer();
 		boolean bool = true;
-		if ((ZDLUtil.isZDLConcept(owner, CORBADomainNames.IDLFILE))
-				|| (ZDLUtil.isZDLConcept(owner, CORBADomainNames.CORBAMODULE))) {
+		if ((ZDLUtil.isZDLConcept(owner, CXDomainNames.IDLFILE))
+				|| (ZDLUtil.isZDLConcept(owner, CXDomainNames.CXMODULE))) {
 			return false;
 		} else if (owner.eContainer() != null) {
 			bool = checkContainer(owner);

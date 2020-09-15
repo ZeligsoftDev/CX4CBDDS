@@ -35,7 +35,7 @@ import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Component;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Home;
 
@@ -79,7 +79,7 @@ public class ImportUtils {
 				if( t == null ) {
 					return;
 				}
-				if( ZDLUtil.isZDLConcept(t, CORBADomainNames.CORBAINTERFACE)) {
+				if( ZDLUtil.isZDLConcept(t, CXDomainNames.CXINTERFACE)) {
 					if( isMarkedAsynchronous((Interface)t)) {
 						ZDLUtil.setValue(p, CCMNames.INTERFACE_PORT, CCMNames.INTERFACE_PORT__IS_ASYNCHRONOUS, true);
 					}
@@ -113,13 +113,13 @@ public class ImportUtils {
 	
 	
 	/**
-	 * Convert any CORBAStructs that are used in module instantiations to DDSMessages
+	 * Convert any CXStructs that are used in module instantiations to DDSMessages
 	 * 
 	 * @param pkg
 	 */
 	@SuppressWarnings("unchecked")
 	public static void convertStructs(Package pkg) {
-		List<Element> structs = IDL3PlusUtil.getConceptElements(pkg, CORBADomainNames.CORBASTRUCT);
+		List<Element> structs = IDL3PlusUtil.getConceptElements(pkg, CXDomainNames.CXSTRUCT);
 		List<Element> instantiations = IDL3PlusUtil.getConceptElements(pkg, IDL3PlusNames.MODULE_INSTANTIATION);
 		
 		for( Element struct : structs) {

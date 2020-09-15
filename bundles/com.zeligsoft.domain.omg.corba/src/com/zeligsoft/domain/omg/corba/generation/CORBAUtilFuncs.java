@@ -33,28 +33,28 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
- * CORBA Utility Functions for generation templates.
+ *  Utility Functions for generation templates.
  */
 public class CORBAUtilFuncs {
 
-	public final static String QUALIFIED_CORBA_TYPE__ANY = "CORBA::Any"; 						//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__BOOLEAN = "CORBA::Boolean"; 				//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__CHAR = "CORBA::Char"; 					//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__WCHAR = "CORBA::WChar"; 					//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__DOUBLE = "CORBA::Double"; 				//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__LONG_DOUBLE = "CORBA::LongDouble"; 		//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__FLOAT = "CORBA::Float"; 					//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__SHORT = "CORBA::Short"; 					//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__LONG = "CORBA::Long"; 					//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__LONG_LONG = "CORBA::LongLong"; 			//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__OCTET = "CORBA::Octet"; 					//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__UNSIGNED_LONG = "CORBA::ULong"; 			//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__UNSIGNED_LONG_LONG = "CORBA::ULongLong"; 	//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__UNSIGNED_SHORT = "CORBA::UShort"; 		//$NON-NLS-1$
-	public final static String QUALIFIED_CORBA_TYPE__OBJECT_REF = "CORBA::Object"; 			//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__ANY = "CX::Any"; 						//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__BOOLEAN = "CX::Boolean"; 				//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__CHAR = "CX::Char"; 					//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__WCHAR = "CX::WChar"; 					//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__DOUBLE = "CX::Double"; 				//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__LONG_DOUBLE = "CX::LongDouble"; 		//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__FLOAT = "CX::Float"; 					//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__SHORT = "CX::Short"; 					//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__LONG = "CX::Long"; 					//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__LONG_LONG = "CX::LongLong"; 			//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__OCTET = "CX::Octet"; 					//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__UNSIGNED_LONG = "CX::ULong"; 			//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__UNSIGNED_LONG_LONG = "CX::ULongLong"; 	//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__UNSIGNED_SHORT = "CX::UShort"; 		//$NON-NLS-1$
+	public final static String QUALIFIED_CX_TYPE__OBJECT_REF = "CX::Object"; 			//$NON-NLS-1$
 	
 	private final static String MULTI_PARAM_TAG = "EXC_ENV_PARAM";	//$NON-NLS-1$
 	private final static String SINGLE_PARAM_TAG = "EXC_ENV_SINGLE_PARAM";	//$NON-NLS-1$
@@ -81,7 +81,7 @@ public class CORBAUtilFuncs {
 	}
 	
 	/**
-	 * Returns the C++ variable type of the specified CORBA type.
+	 * Returns the C++ variable type of the specified CX type.
 	 * 
 	 * @param corbaType
 	 * @param direction
@@ -92,7 +92,7 @@ public class CORBAUtilFuncs {
 		
 		String primitiveType = ""; //$NON-NLS-1$
 		
-		if (ZDLUtil.isZDLConcept(corbaType, CORBADomainNames.CORBAPRIMITIVE)) 
+		if (ZDLUtil.isZDLConcept(corbaType, CXDomainNames.CXPRIMITIVE)) 
 		{
 			
 			primitiveType = getTypeOfCorbaPrimitive(corbaType);
@@ -109,25 +109,25 @@ public class CORBAUtilFuncs {
 				return "";//$NON-NLS-1$
 			}
 		}
-		else if( ZDLUtil.isZDLConcept(corbaType, CORBADomainNames.CORBASEQUENCE) 
-				|| ZDLUtil.isZDLConcept(corbaType, CORBADomainNames.CORBASTRUCT)
-				|| ZDLUtil.isZDLConcept(corbaType, CORBADomainNames.CORBATYPE_DEF)
-				|| ZDLUtil.isZDLConcept(corbaType, CORBADomainNames.CORBAENUM)
-				|| ZDLUtil.isZDLConcept(corbaType, CORBADomainNames.CORBAARRAY)
-				|| ZDLUtil.isZDLConcept(corbaType, CORBADomainNames.CORBAINTERFACE)
-				|| ZDLUtil.isZDLConcept(corbaType, CORBADomainNames.CORBAUNION))
+		else if( ZDLUtil.isZDLConcept(corbaType, CXDomainNames.CXSEQUENCE) 
+				|| ZDLUtil.isZDLConcept(corbaType, CXDomainNames.CXSTRUCT)
+				|| ZDLUtil.isZDLConcept(corbaType, CXDomainNames.CXTYPE_DEF)
+				|| ZDLUtil.isZDLConcept(corbaType, CXDomainNames.CXENUM)
+				|| ZDLUtil.isZDLConcept(corbaType, CXDomainNames.CXARRAY)
+				|| ZDLUtil.isZDLConcept(corbaType, CXDomainNames.CXINTERFACE)
+				|| ZDLUtil.isZDLConcept(corbaType, CXDomainNames.CXUNION))
 		{
 			String baseTypeStr = "";//$NON-NLS-1$
 			EObject tmpObj = null;
 			
 			tmpObj = corbaType;
-			if (ZDLUtil.isZDLConcept(tmpObj.eContainer(), CORBADomainNames.CORBAINTERFACE))
+			if (ZDLUtil.isZDLConcept(tmpObj.eContainer(), CXDomainNames.CXINTERFACE))
 			{
 				baseTypeStr = ((Interface)tmpObj.eContainer()).getName() + "::" + baseTypeStr; //$NON-NLS-1$
 				tmpObj = tmpObj.eContainer();				
 			}
 			
-			while (ZDLUtil.isZDLConcept(tmpObj.eContainer(), CORBADomainNames.CORBAMODULE))
+			while (ZDLUtil.isZDLConcept(tmpObj.eContainer(), CXDomainNames.CXMODULE))
 			{
 				baseTypeStr = ((Package)tmpObj.eContainer()).getName() + "::" + baseTypeStr; //$NON-NLS-1$
 				tmpObj = tmpObj.eContainer();
@@ -136,11 +136,11 @@ public class CORBAUtilFuncs {
 			baseTypeStr += corbaType.getName();
 
 	
-			if (ZDLUtil.isZDLConcept(corbaType, CORBADomainNames.CORBATYPE_DEF))
+			if (ZDLUtil.isZDLConcept(corbaType, CXDomainNames.CXTYPE_DEF))
 			{
 				Type absoluteType = getTypeDefType(corbaType);
 				
-				if (ZDLUtil.isZDLConcept(absoluteType, CORBADomainNames.CORBAPRIMITIVE))
+				if (ZDLUtil.isZDLConcept(absoluteType, CXDomainNames.CXPRIMITIVE))
 				{
 					String absolutePrimitiveType = getTypeOfCorbaPrimitive(absoluteType);
 					
@@ -148,8 +148,8 @@ public class CORBAUtilFuncs {
 					{
 						
 						// bug 14108, char* generated instead of typedef name
-						if (absolutePrimitiveType.compareTo(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBASTRING) == 0 
-								|| absolutePrimitiveType.compareTo(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAWSTRING) == 0)
+						if (absolutePrimitiveType.compareTo(CXDomainNames.CXPRIMITIVE_KIND___CXSTRING) == 0 
+								|| absolutePrimitiveType.compareTo(CXDomainNames.CXPRIMITIVE_KIND___CXWSTRING) == 0)
 						{
 							return getTypePrefixForPrimitive(absolutePrimitiveType, direction)
 								+ getPrimitiveBaseType(absolutePrimitiveType, direction)  
@@ -185,7 +185,7 @@ public class CORBAUtilFuncs {
 	}
 	
 	/**
-	 * Get the prefix of a CORBA type (except CORBA primitives).   For CORBA primitives, use getTypePrefixForPrimitive.
+	 * Get the prefix of a CX type (except CX primitives).   For CX primitives, use getTypePrefixForPrimitive.
 	 * 
 	 * @param type
 	 * @param direction
@@ -195,7 +195,7 @@ public class CORBAUtilFuncs {
 	{
 		String prefix = ""; //$NON-NLS-1$
 		
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASEQUENCE))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXSEQUENCE))
 		{
 			if (direction == ParameterDirectionKind.IN)
 			{
@@ -203,7 +203,7 @@ public class CORBAUtilFuncs {
 			}			
 		}
 		
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASTRUCT))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXSTRUCT))
 		{
 			if (direction == ParameterDirectionKind.IN)
 			{
@@ -211,7 +211,7 @@ public class CORBAUtilFuncs {
 			}			
 		}
 		
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAARRAY))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXARRAY))
 		{
 			if (direction == ParameterDirectionKind.IN)
 			{
@@ -219,7 +219,7 @@ public class CORBAUtilFuncs {
 			}
 		}
 		
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAUNION))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXUNION))
 		{
 			if (direction == ParameterDirectionKind.IN)
 			{
@@ -231,7 +231,7 @@ public class CORBAUtilFuncs {
 	}
 	
 	/**
-	 * Get the suffix for a CORBA type (except CORBA primitives).  For CORBA primitives, use getTypeSuffixForPrimitive.
+	 * Get the suffix for a CX type (except CX primitives).  For CX primitives, use getTypeSuffixForPrimitive.
 	 * @param type
 	 * @param direction
 	 * @return
@@ -245,7 +245,7 @@ public class CORBAUtilFuncs {
 			return "_out"; //$NON-NLS-1$
 		}
 
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASEQUENCE))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXSEQUENCE))
 		{
 			if (direction == ParameterDirectionKind.RETURN)
 				suffix = "*"; //$NON-NLS-1$
@@ -253,7 +253,7 @@ public class CORBAUtilFuncs {
 				suffix = "&"; //$NON-NLS-1$	
 		}
 		
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASTRUCT))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXSTRUCT))
 		{
 			if (direction == ParameterDirectionKind.RETURN)
 			{
@@ -266,13 +266,13 @@ public class CORBAUtilFuncs {
 			}
 		}
 		
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAENUM))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXENUM))
 		{
 			if (direction == ParameterDirectionKind.INOUT)
 				suffix = "&"; //$NON-NLS-1$			
 		}
 		
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAUNION))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXUNION))
 		{
 			if (direction == ParameterDirectionKind.RETURN)
 			{
@@ -285,7 +285,7 @@ public class CORBAUtilFuncs {
 			}
 		}
 		
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAARRAY))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXARRAY))
 		{
 			if (direction == ParameterDirectionKind.RETURN)
 				suffix = "_slice*"; //$NON-NLS-1$
@@ -293,7 +293,7 @@ public class CORBAUtilFuncs {
 				suffix = ""; //$NON-NLS-1$	
 		}
 		
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAINTERFACE))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXINTERFACE))
 		{
 			if (direction == ParameterDirectionKind.INOUT)
 				suffix = "_ptr&"; //$NON-NLS-1$
@@ -313,11 +313,11 @@ public class CORBAUtilFuncs {
 	public static boolean isVariableLength(Type type)
 	{
 		Type absoluteType = type;
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBATYPE_DEF))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXTYPE_DEF))
 			absoluteType = getTypeDefType(type);
 		
 		
-		if (ZDLUtil.isZDLConcept(absoluteType, CORBADomainNames.CORBAARRAY)) 
+		if (ZDLUtil.isZDLConcept(absoluteType, CXDomainNames.CXARRAY)) 
 		{
 			if (absoluteType instanceof DataType)
 			{
@@ -331,31 +331,31 @@ public class CORBAUtilFuncs {
 				}				
 			}
 		}
-		else if (ZDLUtil.isZDLConcept(absoluteType, CORBADomainNames.CORBAENUM))
+		else if (ZDLUtil.isZDLConcept(absoluteType, CXDomainNames.CXENUM))
 		{
 			return false;			
 		}
-		else if (ZDLUtil.isZDLConcept(absoluteType, CORBADomainNames.CORBAINTERFACE))
+		else if (ZDLUtil.isZDLConcept(absoluteType, CXDomainNames.CXINTERFACE))
 		{
 			return true;
 		}
-		else if (ZDLUtil.isZDLConcept(absoluteType, CORBADomainNames.CORBAPRIMITIVE))
+		else if (ZDLUtil.isZDLConcept(absoluteType, CXDomainNames.CXPRIMITIVE))
 		{
 			String primitiveType = getTypeOfCorbaPrimitive(absoluteType);
-			if (primitiveType.compareTo(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBASTRING) == 0 
-					|| primitiveType.compareTo(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAWSTRING) == 0
-					|| primitiveType.compareTo(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAANY) == 0 
-					|| primitiveType.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAOBJECT_REF) )
+			if (primitiveType.compareTo(CXDomainNames.CXPRIMITIVE_KIND___CXSTRING) == 0 
+					|| primitiveType.compareTo(CXDomainNames.CXPRIMITIVE_KIND___CXWSTRING) == 0
+					|| primitiveType.compareTo(CXDomainNames.CXPRIMITIVE_KIND___CXANY) == 0 
+					|| primitiveType.equals(CXDomainNames.CXPRIMITIVE_KIND___CXOBJECT_REF) )
 			{
 				return true;
 			}
 			return false;
 		}		
-		else if (ZDLUtil.isZDLConcept(absoluteType, CORBADomainNames.CORBASEQUENCE))
+		else if (ZDLUtil.isZDLConcept(absoluteType, CXDomainNames.CXSEQUENCE))
 		{
 			return true;			
 		}
-		else if (ZDLUtil.isZDLConcept(absoluteType, CORBADomainNames.CORBASTRUCT))
+		else if (ZDLUtil.isZDLConcept(absoluteType, CXDomainNames.CXSTRUCT))
 		{
 			
 			if (absoluteType instanceof DataType)
@@ -371,7 +371,7 @@ public class CORBAUtilFuncs {
 			}
 		}
 		
-		else if (ZDLUtil.isZDLConcept(absoluteType, CORBADomainNames.CORBAUNION))
+		else if (ZDLUtil.isZDLConcept(absoluteType, CXDomainNames.CXUNION))
 		{
 			if (absoluteType instanceof DataType)
 			{
@@ -379,7 +379,7 @@ public class CORBAUtilFuncs {
 			
 				for (Property att : dataType.getAllAttributes())
 				{
-					if (ZDLUtil.isZDLConcept(att, CORBADomainNames.CORBACASE) && isVariableLength(att.getType()))
+					if (ZDLUtil.isZDLConcept(att, CXDomainNames.CXCASE) && isVariableLength(att.getType()))
 						return true;
 				}
 			}
@@ -405,7 +405,7 @@ public class CORBAUtilFuncs {
 	}
 	
 	/**
-	 * Gets a string representing the type of a CORBA primitive.
+	 * Gets a string representing the type of a CX primitive.
 	 * @param corbaType
 	 * @return
 	 */
@@ -413,7 +413,7 @@ public class CORBAUtilFuncs {
 	{
 		String primitiveType = ""; //$NON-NLS-1$
 		
-		Object result = ZDLUtil.getValue(corbaType, CORBADomainNames.CORBAPRIMITIVE, CORBADomainNames.CORBAPRIMITIVE__TYPE);
+		Object result = ZDLUtil.getValue(corbaType, CXDomainNames.CXPRIMITIVE, CXDomainNames.CXPRIMITIVE__TYPE);
 		if (result instanceof EnumerationLiteral) 
 			primitiveType = ((EnumerationLiteral)result).getName();
 		
@@ -431,9 +431,9 @@ public class CORBAUtilFuncs {
 	{
 		if (type instanceof DataType)
 		{
-			Object dataType = ZDLUtil.getValue(type, CORBADomainNames.CORBATYPE_DEF, CORBADomainNames.CORBATYPE_DEF__TYPE);
+			Object dataType = ZDLUtil.getValue(type, CXDomainNames.CXTYPE_DEF, CXDomainNames.CXTYPE_DEF__TYPE);
 			if(dataType instanceof EObject) {
-				if (ZDLUtil.isZDLConcept((EObject)dataType, CORBADomainNames.CORBATYPE_DEF))
+				if (ZDLUtil.isZDLConcept((EObject)dataType, CXDomainNames.CXTYPE_DEF))
 				{
 					return getTypeDefType( (Type) dataType);					
 				}
@@ -449,7 +449,7 @@ public class CORBAUtilFuncs {
 			DataType generalizationType = (DataType) type;
 			for (Classifier classifier : generalizationType.getGenerals())
 			{
-				if (ZDLUtil.isZDLConcept(classifier, CORBADomainNames.CORBATYPE_DEF))
+				if (ZDLUtil.isZDLConcept(classifier, CXDomainNames.CXTYPE_DEF))
 				{
 					return getTypeDefType(classifier);					
 				}
@@ -464,7 +464,7 @@ public class CORBAUtilFuncs {
 	}
 	
 	/**
-	 * Get the prefix of a CORBA primitive.
+	 * Get the prefix of a CX primitive.
 	 * @param corbaTypeStr
 	 * @param direction
 	 * @return
@@ -476,18 +476,18 @@ public class CORBAUtilFuncs {
 		
 		// by default, there is no prefix
 		// however, here are the exceptions:
-		if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBASTRING))
+		if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXSTRING))
 		{
 			if (direction == ParameterDirectionKind.IN)
 				prefix = "const "; //$NON-NLS-1$
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAWSTRING))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXWSTRING))
 		{
 			if (direction == ParameterDirectionKind.IN)
 				prefix = "const ";//$NON-NLS-1$
 		}
 			
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAANY))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXANY))
 		{
 			if (direction == ParameterDirectionKind.IN)
 				prefix = "const ";//$NON-NLS-1$
@@ -498,7 +498,7 @@ public class CORBAUtilFuncs {
 	}
 	
 	/**
-	 * Get the suffix for a CORBA primitive.
+	 * Get the suffix for a CX primitive.
 	 * @param corbaTypeStr
 	 * @param direction
 	 * @return
@@ -508,7 +508,7 @@ public class CORBAUtilFuncs {
 		// by default:
 		// suffix for INOUT is "&", suffix for OUT is "_out", suffix for IN is nothing
 		// here are the exceptions: 
-		if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAOBJECT_REF))
+		if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXOBJECT_REF))
 		{
 			if (direction == ParameterDirectionKind.IN)
 				return "_ptr";//$NON-NLS-1$
@@ -520,7 +520,7 @@ public class CORBAUtilFuncs {
 				return "_ptr"; //$NON-NLS-1$
 		}
 		
-		if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAANY))
+		if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXANY))
 		{
 			if (direction == ParameterDirectionKind.IN)
 				return "&";//$NON-NLS-1$
@@ -552,85 +552,85 @@ public class CORBAUtilFuncs {
 	private static String getPrimitiveBaseType(String corbaTypeStr, int direction)
 	{
 		String type = "";//$NON-NLS-1$
-		if (corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAWCHAR))
+		if (corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXWCHAR))
 		{
-			type = QUALIFIED_CORBA_TYPE__WCHAR;
+			type = QUALIFIED_CX_TYPE__WCHAR;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAVOID))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXVOID))
 		{
 			if (direction == ParameterDirectionKind.RETURN)
 				type = "void"; //$NON-NLS-1$
 			else
 				type = "#error Invalid direction for void type";//$NON-NLS-1$
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAUNSIGNED_SHORT))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXUNSIGNED_SHORT))
 		{
-			type = QUALIFIED_CORBA_TYPE__UNSIGNED_SHORT;
+			type = QUALIFIED_CX_TYPE__UNSIGNED_SHORT;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAUNSIGNED_LONG_LONG))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXUNSIGNED_LONG_LONG))
 		{
-			type = QUALIFIED_CORBA_TYPE__UNSIGNED_LONG_LONG;
+			type = QUALIFIED_CX_TYPE__UNSIGNED_LONG_LONG;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAUNSIGNED_LONG))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXUNSIGNED_LONG))
 		{
-			type = QUALIFIED_CORBA_TYPE__UNSIGNED_LONG;
+			type = QUALIFIED_CX_TYPE__UNSIGNED_LONG;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBASHORT))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXSHORT))
 		{
-			type = QUALIFIED_CORBA_TYPE__SHORT;
+			type = QUALIFIED_CX_TYPE__SHORT;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAOCTET))			
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXOCTET))			
 		{
-			type = QUALIFIED_CORBA_TYPE__OCTET;
+			type = QUALIFIED_CX_TYPE__OCTET;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAOBJECT_REF))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXOBJECT_REF))
 		{
-			type = QUALIFIED_CORBA_TYPE__OBJECT_REF;
+			type = QUALIFIED_CX_TYPE__OBJECT_REF;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBALONG_LONG))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXLONG_LONG))
 		{
-			type = QUALIFIED_CORBA_TYPE__LONG_LONG;
+			type = QUALIFIED_CX_TYPE__LONG_LONG;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBALONG_DOUBLE))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXLONG_DOUBLE))
 		{
-			type = QUALIFIED_CORBA_TYPE__LONG_DOUBLE;
+			type = QUALIFIED_CX_TYPE__LONG_DOUBLE;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBALONG))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXLONG))
 		{
-			type = QUALIFIED_CORBA_TYPE__LONG;
+			type = QUALIFIED_CX_TYPE__LONG;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAFLOAT))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXFLOAT))
 		{
-			type = QUALIFIED_CORBA_TYPE__FLOAT;
+			type = QUALIFIED_CX_TYPE__FLOAT;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBADOUBLE))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXDOUBLE))
 		{
-			type = QUALIFIED_CORBA_TYPE__DOUBLE;
+			type = QUALIFIED_CX_TYPE__DOUBLE;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBACHAR))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXCHAR))
 		{
-			type = QUALIFIED_CORBA_TYPE__CHAR;
+			type = QUALIFIED_CX_TYPE__CHAR;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBABOOLEAN))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXBOOLEAN))
 		{
-			type = QUALIFIED_CORBA_TYPE__BOOLEAN;
+			type = QUALIFIED_CX_TYPE__BOOLEAN;
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBASTRING))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXSTRING))
 		{
 			if (direction == ParameterDirectionKind.OUT)
-				type = "CORBA::String";//$NON-NLS-1$
+				type = "CX::String";//$NON-NLS-1$
 			else
 				type = "char*";//$NON-NLS-1$
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAWSTRING))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXWSTRING))
 		{	if (direction == ParameterDirectionKind.OUT)
-				type = "CORBA::String";//$NON-NLS-1$
+				type = "CX::String";//$NON-NLS-1$
 			else
 				type = "char*";//$NON-NLS-1$
 		}
-		else if(corbaTypeStr.equals(CORBADomainNames.CORBAPRIMITIVE_KIND___CORBAANY))
+		else if(corbaTypeStr.equals(CXDomainNames.CXPRIMITIVE_KIND___CXANY))
 		{
-			type = QUALIFIED_CORBA_TYPE__ANY;
+			type = QUALIFIED_CX_TYPE__ANY;
 		}
 		else
 		{
@@ -641,7 +641,7 @@ public class CORBAUtilFuncs {
 	}
 	
 	/**
-	 * Returns the C++ variable type of the specified CORBA type.
+	 * Returns the C++ variable type of the specified CX type.
 	 * 
 	 * @param corbaType
 	 * @param direction
@@ -700,9 +700,9 @@ public class CORBAUtilFuncs {
 		EObject tmpObj = inter;
 		String interName = ""; //$NON-NLS-1$
 		
-		if (ZDLUtil.isZDLConcept(tmpObj, CORBADomainNames.CORBAINTERFACE))
+		if (ZDLUtil.isZDLConcept(tmpObj, CXDomainNames.CXINTERFACE))
 		{		
-			while (ZDLUtil.isZDLConcept(tmpObj.eContainer(), CORBADomainNames.CORBAMODULE))
+			while (ZDLUtil.isZDLConcept(tmpObj.eContainer(), CXDomainNames.CXMODULE))
 			{
 				interName = ((Package)tmpObj.eContainer()).getName() + separator + interName;
 				tmpObj = tmpObj.eContainer();
@@ -725,7 +725,7 @@ public class CORBAUtilFuncs {
 			Element owner = ((Element) element).getOwner();
 
 			while (owner != null && owner instanceof NamedElement
-					&& !ZDLUtil.isZDLConcept(owner, CORBADomainNames.IDLFILE)) {
+					&& !ZDLUtil.isZDLConcept(owner, CXDomainNames.IDLFILE)) {
 				name = ((NamedElement) owner).getName() + "::" + name; //$NON-NLS-1$
 				owner = owner.getOwner();
 			}
@@ -779,16 +779,16 @@ public class CORBAUtilFuncs {
 	}
 	
 	/**
-	 * Check to see if the type is a CORBA type.
+	 * Check to see if the type is a CX type.
 	 * @param type
-	 * @return true if CORBA type
+	 * @return true if CX type
 	 */
 	public static boolean isCorbaType(Type type)
 	{
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASTRUCT) || ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAPRIMITIVE)
-				|| ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASEQUENCE) || ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAARRAY)
-				|| ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBATYPE_DEF) || ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAENUM)
-				|| ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAUNION) || ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAINTERFACE))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXSTRUCT) || ZDLUtil.isZDLConcept(type, CXDomainNames.CXPRIMITIVE)
+				|| ZDLUtil.isZDLConcept(type, CXDomainNames.CXSEQUENCE) || ZDLUtil.isZDLConcept(type, CXDomainNames.CXARRAY)
+				|| ZDLUtil.isZDLConcept(type, CXDomainNames.CXTYPE_DEF) || ZDLUtil.isZDLConcept(type, CXDomainNames.CXENUM)
+				|| ZDLUtil.isZDLConcept(type, CXDomainNames.CXUNION) || ZDLUtil.isZDLConcept(type, CXDomainNames.CXINTERFACE))
 		{
 			return true;			
 		}		
@@ -886,7 +886,7 @@ public class CORBAUtilFuncs {
 	}
 	
 	/**
-	 * Generates the signature for a CORBAOperation on a worker element (e.g. SCA Component).
+	 * Generates the signature for a CXOperation on a worker element (e.g. SCA Component).
 	 *  
 	 * @param op
 	 * @param source, where the operation comes from, either a port or a supported interface
@@ -942,7 +942,7 @@ public class CORBAUtilFuncs {
 	 */
 	public static Type getAbsoluteType(Type type)
 	{
-		if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBATYPE_DEF))
+		if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXTYPE_DEF))
 		{
 			return CORBAUtilFuncs.getTypeDefType(type);			
 		}

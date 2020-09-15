@@ -17,7 +17,7 @@
 
 import CCM::CCM_Component;
 import ZMLMM::ZML_Component;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
 List[EventPort] consumesPorts(CCMComponent comp) :
 	comp.ownedPort.typeSelect(EventPort).select(p|!(p.consumesEvent.isEmpty));
@@ -31,10 +31,10 @@ List[MessagePort] providesPorts(CCMComponent comp) :
 List[MessagePort] usesPorts(CCMComponent comp) :
 	comp.ownedPort.typeSelect(MessagePort).select(p| !(p.requiredInterface.isEmpty));
 	
-List[CORBAInterface] realizedInterfaces(CCMComponent comp) :
-	comp.zdlAsComponent().getProvideds().typeSelect(CORBAInterface);
+List[CXInterface] realizedInterfaces(CCMComponent comp) :
+	comp.zdlAsComponent().getProvideds().typeSelect(CXInterface);
 	
-List[CORBAInterface] general(CORBAInterface intf) :
-	intf.zdlAsInterface().general.typeSelect(CORBAInterface);
+List[CXInterface] general(CXInterface intf) :
+	intf.zdlAsInterface().general.typeSelect(CXInterface);
 
 	

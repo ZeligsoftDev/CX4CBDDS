@@ -38,7 +38,7 @@ import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.idl3plus.connectorregistry.ConnectorRegistry;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -121,8 +121,8 @@ public class IDL3PlusXtendUtils {
 	
 		while( iterator != null )
 		{
-			if( ZDLUtil.isZDLConcept(iterator, CORBADomainNames.IDLFILE) ||
-					(!ZDLUtil.isZDLConcept(iterator, CORBADomainNames.CORBANAMED_ELEMENT) &&
+			if( ZDLUtil.isZDLConcept(iterator, CXDomainNames.IDLFILE) ||
+					(!ZDLUtil.isZDLConcept(iterator, CXDomainNames.CXNAMED_ELEMENT) &&
 					!(ZDLUtil.isZDLConcept(iterator, CCMNames.INTERFACE_PORT)) &&
 					!(ZDLUtil.isZDLConcept(iterator, CCMNames.EVENT_PORT)) &&
 					(!ZDLUtil.isZDLConcept(iterator, ZMLMMNames.TYPE))))
@@ -187,7 +187,7 @@ public class IDL3PlusXtendUtils {
 	}
 
 	/**
-	 * Return the list of included file names to be generated for a CORBA element.
+	 * Return the list of included file names to be generated for a CX element.
 	 * 
 	 * @param corbaElementName
 	 * @return A list of file names to include.

@@ -8,8 +8,7 @@ public interface Domain extends NamedEntity {
 
 	void addDomainTopic(DomainTopic val);
 
-	<T extends DomainTopic> T addDomainTopic(Class<T> typeToCreate,
-			String concept);
+	<T extends DomainTopic> T addDomainTopic(Class<T> typeToCreate, String concept);
 
 	DomainTopic addDomainTopic();
 
@@ -17,8 +16,7 @@ public interface Domain extends NamedEntity {
 
 	void addParticipant(DomainParticipant val);
 
-	<T extends DomainParticipant> T addParticipant(Class<T> typeToCreate,
-			String concept);
+	<T extends DomainParticipant> T addParticipant(Class<T> typeToCreate, String concept);
 
 	DomainParticipant addParticipant();
 
@@ -26,8 +24,7 @@ public interface Domain extends NamedEntity {
 
 	void addConnector(TopicConnector val);
 
-	<T extends TopicConnector> T addConnector(Class<T> typeToCreate,
-			String concept);
+	<T extends TopicConnector> T addConnector(Class<T> typeToCreate, String concept);
 
 	TopicConnector addConnector();
 
@@ -37,7 +34,6 @@ public interface Domain extends NamedEntity {
 	 * A predicate which returns true if the Object is an
 	 * instance of Domain
 	 */
-	static final TypeSelectPredicate<Domain> type = new TypeSelectPredicate<Domain>(
-			"DDS::DCPS::Domain", //$NON-NLS-1$
+	static final TypeSelectPredicate<Domain> type = new TypeSelectPredicate<Domain>("DDS::DCPS::Domain", //$NON-NLS-1$
 			Domain.class);
 }

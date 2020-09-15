@@ -39,7 +39,7 @@ import org.osgi.framework.Bundle;
 import com.zeligsoft.base.util.ModelMerger;
 import com.zeligsoft.base.workflow.RSMWriter;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * @author Sean McFee
@@ -100,7 +100,7 @@ public class IDLReaderComponent extends RSMWriter {
 		EList<EObject> contents = importedPackage.eResource().getContents();
 		for( PackageableElement pe : importedPackage.getPackagedElements())
 		{
-			if( ! ZDLUtil.isZDLConcept( pe, CORBADomainNames.IDLFILE ) )
+			if( ! ZDLUtil.isZDLConcept( pe, CXDomainNames.IDLFILE ) )
 				continue;
 
 			String importedIdlFileName = pe.getName();
@@ -109,7 +109,7 @@ public class IDLReaderComponent extends RSMWriter {
 
 					Object next = iter.next();
 					if( next instanceof NamedElement ) {
-						if( ZDLUtil.isZDLConcept((NamedElement)next, CORBADomainNames.IDLFILE)) {
+						if( ZDLUtil.isZDLConcept((NamedElement)next, CXDomainNames.IDLFILE)) {
 							if( importedIdlFileName.matches(((NamedElement)next).getName())) {
 								if( ((PackageableElement)next).getOwner() != importedPackage ) {
 									mergeModels.put((Package)pe, (Package)next);

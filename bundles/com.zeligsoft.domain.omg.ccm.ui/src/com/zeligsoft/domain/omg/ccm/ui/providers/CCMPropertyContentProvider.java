@@ -36,7 +36,7 @@ import org.eclipse.uml2.uml.ValueSpecification;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.providers.IPropertyEntry;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -90,7 +90,7 @@ public class CCMPropertyContentProvider implements ITreeContentProvider {
 			while (itor.hasNext()) {
 				Property property = itor.next();
 				if (ZDLUtil.isZDLConcept(property,
-						CORBADomainNames.CORBAATTRIBUTE)
+						CXDomainNames.CXATTRIBUTE)
 						|| ZDLUtil.isZDLConcept(property, CCMNames.PROPERTY)) {
 					children.add(entry.addChild(property));
 				}
@@ -132,9 +132,9 @@ public class CCMPropertyContentProvider implements ITreeContentProvider {
 				}
 			}
 		} else if (ZDLUtil.isZDLConcept(modelObject,
-				CORBADomainNames.CORBAATTRIBUTE)
+				CXDomainNames.CXATTRIBUTE)
 				|| ZDLUtil.isZDLConcept(modelObject,
-						CORBADomainNames.CORBAFIELD)
+						CXDomainNames.CXFIELD)
 				|| modelObject instanceof ValueSpecification
 				|| ZDLUtil.isZDLConcept(modelObject, CCMNames.PROPERTY)) {
 			Type type;
@@ -149,23 +149,23 @@ public class CCMPropertyContentProvider implements ITreeContentProvider {
 			} else {
 				type = ((Property) modelObject).getType();
 			}
-			// add child if the type is CORBAStruct
+			// add child if the type is CXStruct
 			if (type == null) {
 				return children.toArray();
 			}
-			if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASTRUCT)) {
+			if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXSTRUCT)) {
 				DataType struct = (DataType) type;
 				Iterator<Property> itor = struct.getAllAttributes().iterator();
 				while (itor.hasNext()) {
 					Property property = itor.next();
 					if (ZDLUtil.isZDLConcept(property,
-							CORBADomainNames.CORBAFIELD)) {
+							CXDomainNames.CXFIELD)) {
 						children.add(entry.addChild(property));
 					}
 				}
 			} else if (ZDLUtil.isZDLConcept(type,
-					CORBADomainNames.CORBASEQUENCE)
-					|| ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAARRAY)) {
+					CXDomainNames.CXSEQUENCE)
+					|| ZDLUtil.isZDLConcept(type, CXDomainNames.CXARRAY)) {
 				Slot slot = getSequenceMemberSlot(entry);
 				if (slot != null) {
 					for (ValueSpecification value : slot.getValues()) {

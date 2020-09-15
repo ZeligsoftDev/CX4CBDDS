@@ -9,8 +9,7 @@ import com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.ManagesImplEnd;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class ManagesImplImplementation extends ZObjectImpl implements
-		ManagesImpl {
+public class ManagesImplImplementation extends ZObjectImpl implements ManagesImpl {
 	protected ManagesImplEnd _component;
 	protected ManagesImplEnd _home;
 
@@ -21,12 +20,10 @@ public class ManagesImplImplementation extends ZObjectImpl implements
 	@Override
 	public ManagesImplEnd getComponent() {
 		if (_component == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"CCM::CCM_Implementation::ManagesImpl", "component");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"CCM::CCM_Implementation::ManagesImpl", "component");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_component = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_component = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						ManagesImplEnd.class);
 			}
 		}
@@ -35,30 +32,24 @@ public class ManagesImplImplementation extends ZObjectImpl implements
 
 	@Override
 	public void setComponent(ManagesImplEnd val) {
-		ZDLUtil.setValue(element, "CCM::CCM_Implementation::ManagesImpl",
-				"component", val.eObject());
+		ZDLUtil.setValue(element, "CCM::CCM_Implementation::ManagesImpl", "component", val.eObject());
 	}
 
 	@Override
-	public <T extends ManagesImplEnd> T createComponent(Class<T> typeToCreate,
-			String concept) {
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "CCM::CCM_Implementation::ManagesImpl", "component",
-				concept);
-		T element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, typeToCreate);
+	public <T extends ManagesImplEnd> T createComponent(Class<T> typeToCreate, String concept) {
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element,
+				"CCM::CCM_Implementation::ManagesImpl", "component", concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(newConcept, typeToCreate);
 		return element;
 	}
 
 	@Override
 	public ManagesImplEnd getHome() {
 		if (_home == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"CCM::CCM_Implementation::ManagesImpl", "home");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"CCM::CCM_Implementation::ManagesImpl", "home");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_home = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_home = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						ManagesImplEnd.class);
 			}
 		}
@@ -67,18 +58,14 @@ public class ManagesImplImplementation extends ZObjectImpl implements
 
 	@Override
 	public void setHome(ManagesImplEnd val) {
-		ZDLUtil.setValue(element, "CCM::CCM_Implementation::ManagesImpl",
-				"home", val.eObject());
+		ZDLUtil.setValue(element, "CCM::CCM_Implementation::ManagesImpl", "home", val.eObject());
 	}
 
 	@Override
-	public <T extends ManagesImplEnd> T createHome(Class<T> typeToCreate,
-			String concept) {
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "CCM::CCM_Implementation::ManagesImpl", "home",
-				concept);
-		T element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, typeToCreate);
+	public <T extends ManagesImplEnd> T createHome(Class<T> typeToCreate, String concept) {
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element,
+				"CCM::CCM_Implementation::ManagesImpl", "home", concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(newConcept, typeToCreate);
 		return element;
 	}
 

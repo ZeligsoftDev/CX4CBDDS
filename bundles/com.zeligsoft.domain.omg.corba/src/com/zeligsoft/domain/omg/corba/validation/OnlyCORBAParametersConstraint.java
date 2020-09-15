@@ -24,7 +24,7 @@ import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 public class OnlyCORBAParametersConstraint extends AbstractModelConstraint {
 
@@ -36,11 +36,11 @@ public class OnlyCORBAParametersConstraint extends AbstractModelConstraint {
 	public IStatus validate(IValidationContext ctx) {
 		EObject objToVerify = ctx.getTarget();
 		
-		if( ZDLUtil.isZDLConcept(objToVerify, CORBADomainNames.CORBAOPERATION)) {
+		if( ZDLUtil.isZDLConcept(objToVerify, CXDomainNames.CXOPERATION)) {
 			Operation op = (Operation)objToVerify;
 			
 			for( Parameter p : op.getOwnedParameters()) {
-				if( ! ZDLUtil.isZDLConcept(p, CORBADomainNames.CORBAPARAMETER)) {
+				if( ! ZDLUtil.isZDLConcept(p, CXDomainNames.CXPARAMETER)) {
 					return ctx.createFailureStatus(ctx);
 				}
 			}

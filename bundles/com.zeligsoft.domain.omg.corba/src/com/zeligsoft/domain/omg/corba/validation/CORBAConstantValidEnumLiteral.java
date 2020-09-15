@@ -24,7 +24,7 @@ import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * Validate that CORBAConstant's default value contains one of the enumeration
@@ -43,17 +43,17 @@ public class CORBAConstantValidEnumLiteral extends AbstractModelConstraint {
 	public IStatus validate(IValidationContext ctx) {
 		EObject objToVerify = ctx.getTarget();
 
-		if (ZDLUtil.isZDLConcept(objToVerify, CORBADomainNames.CORBACONSTANT)) {
+		if (ZDLUtil.isZDLConcept(objToVerify, CXDomainNames.CXCONSTANT)) {
 			EObject type = ZDLUtil.getEValue(objToVerify,
-					CORBADomainNames.CORBACONSTANT,
-					CORBADomainNames.CORBATYPED__IDL_TYPE);
+					CXDomainNames.CXCONSTANT,
+					CXDomainNames.CXTYPED__IDL_TYPE);
 			if (type == null
-					|| !ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAENUM)) {
+					|| !ZDLUtil.isZDLConcept(type, CXDomainNames.CXENUM)) {
 				return ctx.createSuccessStatus();
 			}
 			String value = (String) ZDLUtil.getValue(objToVerify,
-					CORBADomainNames.CORBACONSTANT,
-					CORBADomainNames.CORBACONSTANT__DEFAULT);
+					CXDomainNames.CXCONSTANT,
+					CXDomainNames.CXCONSTANT__DEFAULT);
 			for (EnumerationLiteral l : ((Enumeration) type).getOwnedLiterals()) {
 				if (l.getName().equals(value)) {
 					return ctx.createSuccessStatus();

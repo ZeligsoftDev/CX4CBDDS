@@ -15,16 +15,16 @@
  *
  */
 
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::uml_utils;
 extension com::zeligsoft::domain::ngc::ccm::idltouml::transforms::utils::tao_idl_utils;
 
-Void visit_attribute(CORBAAttribute node, uml::Class container) :
+Void visit_attribute(CXAttribute node, uml::Class container) :
 	node.visit_attribute__get_op(container) ->
 	if !node.isReadOnly then node.visit_attribute__set_op(container);
 	
-private create uml::Operation visit_attribute__get_op(CORBAAttribute node, uml::Class container) :
+private create uml::Operation visit_attribute__get_op(CXAttribute node, uml::Class container) :
 	// return type
 	this.setName(node.name) ->
 	// exceptions
@@ -33,7 +33,7 @@ private create uml::Operation visit_attribute__get_op(CORBAAttribute node, uml::
 	this.addGeneratedTag() ->
 	this;
 	
-private create uml::Operation visit_attribute__set_op(CORBAAttribute node, uml::Class container) :
+private create uml::Operation visit_attribute__set_op(CXAttribute node, uml::Class container) :
 	// return type
 	this.setName(node.name) ->
 	visit_attribute__set_op_parameter(node, this) ->
@@ -43,7 +43,7 @@ private create uml::Operation visit_attribute__set_op(CORBAAttribute node, uml::
 	this.addGeneratedTag() ->
 	this;
 	
-private create uml::Parameter visit_attribute__set_op_parameter(CORBAAttribute node, uml::Operation container) :
+private create uml::Parameter visit_attribute__set_op_parameter(CXAttribute node, uml::Operation container) :
 	this.setName(node.name) ->
 	this.setDirection(parameter_direction_kind_in()) ->
 	// TODO : Set the parameter type

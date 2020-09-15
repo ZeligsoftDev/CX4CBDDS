@@ -46,7 +46,7 @@ import org.eclipse.xpand2.output.Outlet;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.CXActivator;
 import com.zeligsoft.cx.preferences.CXPreferenceConstants;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.codegen.util.IdlDeclarationExaminer;
 import com.zeligsoft.domain.omg.corba.codegen.util.IdlDeclarationInspector;
 import com.zeligsoft.domain.omg.corba.codegen.util.IdlForwardDeclarationGenerator;
@@ -224,7 +224,7 @@ public class IDLWriterComponent extends WorkflowComponentWithModelSlot {
 	@SuppressWarnings("deprecation")
 	protected boolean shouldGenerate( Package idlFile, Issues issues, Object model )
 	{
-		Object locationObj = ZDLUtil.getValue( idlFile, CORBADomainNames.IDLFILE, CORBADomainNames.IDLFILE__LOCATION );
+		Object locationObj = ZDLUtil.getValue( idlFile, CXDomainNames.IDLFILE, CXDomainNames.IDLFILE__LOCATION );
 		if( locationObj == null
 		 || ! ( locationObj instanceof String )
 		 || ( (String)locationObj ).length() <= 0 )

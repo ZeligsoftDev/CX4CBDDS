@@ -36,7 +36,7 @@ import org.eclipse.uml2.uml.PackageableElement;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.idlimport.IDLReaderComponent;
 import com.zeligsoft.domain.omg.corba.util.CORBAUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
@@ -68,7 +68,7 @@ public class IDL3ReaderComponent extends IDLReaderComponent {
 		EList<EObject> contents = importedPackage.eResource().getContents();
 		List<PackageableElement> mergeableElements = getImportedMergeableElements(importedPackage);
 		for( PackageableElement pe : mergeableElements) {
-			if( ZDLUtil.isZDLConcept(pe, CORBADomainNames.CORBANAMED_ELEMENT)) {
+			if( ZDLUtil.isZDLConcept(pe, CXDomainNames.CXNAMED_ELEMENT)) {
 
 				String importedRepositoryId = CORBAUtil.getRepositoryId(pe);
 				
@@ -77,8 +77,8 @@ public class IDL3ReaderComponent extends IDLReaderComponent {
 					Object next = iter.next();
 					
 					if( next instanceof NamedElement ) {
-						if( ZDLUtil.isZDLConcept((NamedElement)next, CORBADomainNames.CORBANAMED_ELEMENT)) {
-							if( !ZDLUtil.isZDLConcept((NamedElement)next, CORBADomainNames.CORBAMODULE)) {
+						if( ZDLUtil.isZDLConcept((NamedElement)next, CXDomainNames.CXNAMED_ELEMENT)) {
+							if( !ZDLUtil.isZDLConcept((NamedElement)next, CXDomainNames.CXMODULE)) {
 								if( importedRepositoryId.matches(CORBAUtil.getRepositoryId((NamedElement)next))) {
 									if( mergeableElements.contains(next) == false ) {
 										mergeModels.put(pe, (Element)next);
@@ -127,9 +127,9 @@ public class IDL3ReaderComponent extends IDLReaderComponent {
 			Object next = iter.next();
 			
 			if( next instanceof PackageableElement ) {
-				if( ZDLUtil.isZDLConcept((PackageableElement)next, CORBADomainNames.CORBANAMED_ELEMENT)
+				if( ZDLUtil.isZDLConcept((PackageableElement)next, CXDomainNames.CXNAMED_ELEMENT)
 					|| ZDLUtil.isZDLConcept((PackageableElement)next, CCMNames.MONOLITHIC_IMPLEMENTATION)) {
-					if( !ZDLUtil.isZDLConcept((PackageableElement)next, CORBADomainNames.CORBAMODULE)) {
+					if( !ZDLUtil.isZDLConcept((PackageableElement)next, CXDomainNames.CXMODULE)) {
 						retVal.add((PackageableElement)next);
 						iter.prune();						
 					}

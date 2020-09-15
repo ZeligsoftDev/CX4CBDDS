@@ -2,21 +2,17 @@ package com.zeligsoft.domain.omg.corba.api.extensions;
 
 import com.google.inject.Inject;
 import com.zeligsoft.base.zdl.staticapi.util.ZListExtensions;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAInterface;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXInterface;
 import java.util.List;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.uml2.uml.Interface;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
 public class CORBAInterfaceExtensions {
   @Inject
+  @Extension
   private ZListExtensions _zListExtensions;
   
-  public List<CORBAInterface> generals(final CORBAInterface self) {
-    Interface _asInterface = self.asInterface();
-    EList<Classifier> _generals = _asInterface.getGenerals();
-    List<CORBAInterface> _typeSelect = this._zListExtensions.<CORBAInterface>typeSelect(_generals, CORBAInterface.type);
-    return _typeSelect;
+  public List<CXInterface> generals(final CXInterface intf) {
+    return this._zListExtensions.<CXInterface>typeSelect(intf.asInterface().getGenerals(), CXInterface.type);
   }
 }

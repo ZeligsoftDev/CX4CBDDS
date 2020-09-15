@@ -23,7 +23,7 @@ import CCM::CCM_Component;
 import CCM::CCM_Deployment;
 import CCM::CCM_Implementation;
 import CCM::CCM_Target;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 import ZMLMM::ZML_Deployments;
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
@@ -52,7 +52,7 @@ around com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::cdpgenerato
 	let struct = valueSpec.instance.zdlAsInstanceSpecification().classifier :
 	struct.members.createStructValue(structValue, valueSpec);
 	
-Void createStructValue(CORBAField field, DataValue structValue, uml::InstanceValue valueSpec ) : 
+Void createStructValue(CXField field, DataValue structValue, uml::InstanceValue valueSpec ) : 
 	let slot = valueSpec.instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == field) :
 	if( slot != null ) then slot.createValueMember(structValue) else
 	{
@@ -61,10 +61,10 @@ Void createStructValue(CORBAField field, DataValue structValue, uml::InstanceVal
 		if( defaultSlot != null ) then defaultSlot.createValueMember(structValue) 
 	};
 
-uml::Slot findDefaultSlot(CORBAField field, ComponentInterface connector) :
+uml::Slot findDefaultSlot(CXField field, ComponentInterface connector) :
 	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.findDefaultSlot(
 		org.eclipse.uml2.uml.Property,
 		org.eclipse.uml2.uml.Component);
 
-uml::Slot findDefaultSlot(CORBAField attribute, ExtendedPortType ept) :
+uml::Slot findDefaultSlot(CXField attribute, ExtendedPortType ept) :
 	null;

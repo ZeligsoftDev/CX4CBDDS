@@ -40,7 +40,7 @@ import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.idl3plus.generator.utils.IDL3PlusXtendUtils;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * @author Toby McClean (tmcclean)
@@ -67,12 +67,12 @@ public class CCMXtendUtils {
 
 		while (curObj != null
 				&& (!(curObj instanceof org.eclipse.uml2.uml.Package) || ZDLUtil
-						.isZDLConcept(curObj, CORBADomainNames.CORBAMODULE))) {
+						.isZDLConcept(curObj, CXDomainNames.CXMODULE))) {
 			curObj = curObj.eContainer();
 		}
 
 		if (curObj instanceof org.eclipse.uml2.uml.Package
-				&& !(ZDLUtil.isZDLConcept(curObj, CORBADomainNames.CORBAMODULE))) {
+				&& !(ZDLUtil.isZDLConcept(curObj, CXDomainNames.CXMODULE))) {
 			defnPkg = (org.eclipse.uml2.uml.Package) curObj;
 		}
 
@@ -180,7 +180,7 @@ public class CCMXtendUtils {
 	public static NamedElement getCORBASequence(Package self,
 			NamedElement modelInstantiation) {
 		List<Element> sequences = IDL3PlusUtil.getConceptElements(
-				self.getModel(), CORBADomainNames.CORBASEQUENCE);
+				self.getModel(), CXDomainNames.CXSEQUENCE);
 
 		EObject moduleBinding = (EObject) ZDLUtil.getValue(modelInstantiation,
 				IDL3PlusNames.MODULE_INSTANTIATION,
@@ -213,7 +213,7 @@ public class CCMXtendUtils {
 	}
 
 	/**
-	 * Return the list of included file names to be generated for a CORBA
+	 * Return the list of included file names to be generated for a CX
 	 * element.
 	 * 
 	 * @param corbaElementName

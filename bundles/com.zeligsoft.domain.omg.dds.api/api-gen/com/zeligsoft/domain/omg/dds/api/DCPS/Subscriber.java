@@ -15,7 +15,6 @@ public interface Subscriber extends PublisherSubscriber {
 	 * A predicate which returns true if the Object is an
 	 * instance of Subscriber
 	 */
-	static final TypeSelectPredicate<Subscriber> type = new TypeSelectPredicate<Subscriber>(
-			"DDS::DCPS::Subscriber", //$NON-NLS-1$
+	static final TypeSelectPredicate<Subscriber> type = new TypeSelectPredicate<Subscriber>("DDS::DCPS::Subscriber", //$NON-NLS-1$
 			Subscriber.class);
 }

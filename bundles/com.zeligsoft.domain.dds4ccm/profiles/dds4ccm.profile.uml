@@ -180,10 +180,10 @@
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_g0KtmEDZEd-LnsQ685SqSQ" name="ManagesEnd" abstract="true">
           <eAnnotations xmi:id="_g0KtmUDZEd-LnsQ685SqSQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_g0Kun0DZEd-LnsQ685SqSQ"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_g0KtmkDZEd-LnsQ685SqSQ" name="CORBAModuleContained" abstract="true">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_g0KtmkDZEd-LnsQ685SqSQ" name="CXModuleContained" abstract="true">
           <eAnnotations xmi:id="_g0Ktm0DZEd-LnsQ685SqSQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_g0Kuo0DZEd-LnsQ685SqSQ"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_g0KtnEDZEd-LnsQ685SqSQ" name="CORBANamedElement">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_g0KtnEDZEd-LnsQ685SqSQ" name="CXNamedElement">
           <eAnnotations xmi:id="_g0KtnUDZEd-LnsQ685SqSQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_g0Kup0DZEd-LnsQ685SqSQ"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_g0KtnkDZEd-LnsQ685SqSQ" name="base_NamedElement" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
@@ -229,10 +229,10 @@
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4krUDsEd-pwPnT_VsB_g" name="CORBAWString" eSuperTypes="_DM4ksUDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _DM4k8kDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4krUDsEd-pwPnT_VsB_g" name="CXWString" eSuperTypes="_DM4ksUDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _DM4k8kDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4krkDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSuQEDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4ksUDsEd-pwPnT_VsB_g" name="CORBABounded" abstract="true" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _g0KtmkDZEd-LnsQ685SqSQ">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4ksUDsEd-pwPnT_VsB_g" name="CXBounded" abstract="true" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _g0KtmkDZEd-LnsQ685SqSQ">
           <eAnnotations xmi:id="_DM4kskDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSuRkDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DM4ks0DsEd-pwPnT_VsB_g" name="bound" ordered="false">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
@@ -242,22 +242,22 @@
           </eStructuralFeatures>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_se5zsCoOEeOdqchurdwy7A" name="bounds" ordered="false" lowerBound="1" eType="_VF0AYJB1EeG3w4bnc767Ng" containment="true"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4kuEDsEd-pwPnT_VsB_g" name="CORBAType" abstract="true">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4kuEDsEd-pwPnT_VsB_g" name="CXType" abstract="true">
           <eAnnotations xmi:id="_DM4kuUDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSuUkDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4kukDsEd-pwPnT_VsB_g" name="CORBAAnonymousArray">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4kukDsEd-pwPnT_VsB_g" name="CXAnonymousArray">
           <eAnnotations xmi:id="_DM4ku0DsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSuVkDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4kvEDsEd-pwPnT_VsB_g" name="base_DataType" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4kvkDsEd-pwPnT_VsB_g" name="CORBAAnonymousSequence">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4kvkDsEd-pwPnT_VsB_g" name="CXAnonymousSequence">
           <eAnnotations xmi:id="_DM4kv0DsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSuXUDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4kwEDsEd-pwPnT_VsB_g" name="base_DataType" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4kwkDsEd-pwPnT_VsB_g" name="CORBAArray" eSuperTypes="_DM4kykDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4kwkDsEd-pwPnT_VsB_g" name="CXArray" eSuperTypes="_DM4kykDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4kw0DsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSuZEDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DM4kxEDsEd-pwPnT_VsB_g" name="index" ordered="false">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
@@ -265,7 +265,7 @@
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_VF1OgJB1EeG3w4bnc767Ng" name="bound" ordered="false" lowerBound="1" upperBound="-1" eType="_VF0AYJB1EeG3w4bnc767Ng" containment="true"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_OHx7MAiuEeKRLb9QlVnXvQ" name="bounds" ordered="false" lowerBound="1" upperBound="-1" eType="_VF0AYJB1EeG3w4bnc767Ng" containment="true"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4kykDsEd-pwPnT_VsB_g" name="CORBATemplate" abstract="true" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4kykDsEd-pwPnT_VsB_g" name="CXTemplate" abstract="true" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ">
           <eAnnotations xmi:id="_DM4ky0DsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSucEDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4kzEDsEd-pwPnT_VsB_g" name="base_DataType" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
@@ -274,64 +274,64 @@
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4kz0DsEd-pwPnT_VsB_g" name="Contained" abstract="true">
           <eAnnotations xmi:id="_DM4k0EDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSueEDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k0UDsEd-pwPnT_VsB_g" name="CORBABoxedValue" eSuperTypes="_DM4k1EDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k0UDsEd-pwPnT_VsB_g" name="CXBoxedValue" eSuperTypes="_DM4k1EDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4k0kDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSufEDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k1EDsEd-pwPnT_VsB_g" name="CORBAWrapper" abstract="true" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k1EDsEd-pwPnT_VsB_g" name="CXWrapper" abstract="true" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ">
           <eAnnotations xmi:id="_DM4k1UDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSugUDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4k1kDsEd-pwPnT_VsB_g" name="base_DataType" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k2UDsEd-pwPnT_VsB_g" name="CORBACase" eSuperTypes="_DM4k3kDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k2UDsEd-pwPnT_VsB_g" name="CXCase" eSuperTypes="_DM4k3kDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4k2kDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSuiUDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DM4k20DsEd-pwPnT_VsB_g" name="label" ordered="false" lowerBound="1" upperBound="-1">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k3kDsEd-pwPnT_VsB_g" name="CORBAUnionField" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4k5EDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k3kDsEd-pwPnT_VsB_g" name="CXUnionField" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4k5EDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4k30DsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSukUDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4k4EDsEd-pwPnT_VsB_g" name="base_Property" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k5EDsEd-pwPnT_VsB_g" name="CORBATyped" abstract="true">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k5EDsEd-pwPnT_VsB_g" name="CXTyped" abstract="true">
           <eAnnotations xmi:id="_DM4k5UDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSumEDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k5kDsEd-pwPnT_VsB_g" name="CORBAConstant" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4k5EDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k5kDsEd-pwPnT_VsB_g" name="CXConstant" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4k5EDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4k50DsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSun0DsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4k6EDsEd-pwPnT_VsB_g" name="base_Property" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k60DsEd-pwPnT_VsB_g" name="CORBAConstants" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k60DsEd-pwPnT_VsB_g" name="CXConstants" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4k7EDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSup0DsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4k7UDsEd-pwPnT_VsB_g" name="base_Class" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k8kDsEd-pwPnT_VsB_g" name="CORBAClassifierContained" abstract="true">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k8kDsEd-pwPnT_VsB_g" name="CXClassifierContained" abstract="true">
           <eAnnotations xmi:id="_DM4k80DsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSur0DsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k9EDsEd-pwPnT_VsB_g" name="CORBAConstructed" abstract="true" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k9EDsEd-pwPnT_VsB_g" name="CXConstructed" abstract="true" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ">
           <eAnnotations xmi:id="_DM4k9UDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSutUDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4k9kDsEd-pwPnT_VsB_g" name="base_DataType" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k-UDsEd-pwPnT_VsB_g" name="CORBADefault" eSuperTypes="_DM4k3kDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k-UDsEd-pwPnT_VsB_g" name="CXDefault" eSuperTypes="_DM4k3kDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4k-kDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSuvUDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k_EDsEd-pwPnT_VsB_g" name="CORBAEnum" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4k_EDsEd-pwPnT_VsB_g" name="CXEnum" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4k_UDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSuwkDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4k_kDsEd-pwPnT_VsB_g" name="base_Enumeration" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Enumeration"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lBUDsEd-pwPnT_VsB_g" name="CORBAException" eSuperTypes="_DM4k9EDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lBUDsEd-pwPnT_VsB_g" name="CXException" eSuperTypes="_DM4k9EDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4lBkDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSuzkDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lC0DsEd-pwPnT_VsB_g" name="CORBAInterface" eSuperTypes="_g0KtbkDZEd-LnsQ685SqSQ _g0KtnEDZEd-LnsQ685SqSQ _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _DM4lGEDsEd-pwPnT_VsB_g _9HcLgIbmEeSjd8J8ZjsuPQ">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lC0DsEd-pwPnT_VsB_g" name="CXInterface" eSuperTypes="_g0KtbkDZEd-LnsQ685SqSQ _g0KtnEDZEd-LnsQ685SqSQ _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _DM4lGEDsEd-pwPnT_VsB_g _9HcLgIbmEeSjd8J8ZjsuPQ">
           <eAnnotations xmi:id="_DM4lDEDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSu10DsEd-pwPnT_VsB_g"/>
           <eAnnotations xmi:id="_DM4lDUDsEd-pwPnT_VsB_g" source="duplicates">
             <contents xmi:type="ecore:EReference" xmi:id="_DM4lDkDsEd-pwPnT_VsB_g" name="base_Interface" ordered="false" lowerBound="1">
@@ -346,65 +346,65 @@
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lGEDsEd-pwPnT_VsB_g" name="CORBAClassifier" abstract="true" eSuperTypes="_g0KtmkDZEd-LnsQ685SqSQ">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lGEDsEd-pwPnT_VsB_g" name="CXClassifier" abstract="true" eSuperTypes="_g0KtmkDZEd-LnsQ685SqSQ">
           <eAnnotations xmi:id="_DM4lGUDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSu5kDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lG0DsEd-pwPnT_VsB_g" name="CORBAPrimitive" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lG0DsEd-pwPnT_VsB_g" name="CXPrimitive" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4lHEDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSu8UDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DM4lHUDsEd-pwPnT_VsB_g" name="type" ordered="false" lowerBound="1" eType="_DM4lJEDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4lH0DsEd-pwPnT_VsB_g" name="base_DataType" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_DM4lJEDsEd-pwPnT_VsB_g" name="CORBAPrimitiveKind">
+        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_DM4lJEDsEd-pwPnT_VsB_g" name="CXPrimitiveKind">
           <eAnnotations xmi:id="_DM4lJUDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSu_UDsEd-pwPnT_VsB_g"/>
-          <eLiterals xmi:id="_DM4lJkDsEd-pwPnT_VsB_g" name="CORBAWChar"/>
-          <eLiterals xmi:id="_DM4lJ0DsEd-pwPnT_VsB_g" name="CORBAVoid" value="1"/>
-          <eLiterals xmi:id="_DM4lKEDsEd-pwPnT_VsB_g" name="CORBAUnsignedShort" value="2"/>
-          <eLiterals xmi:id="_DM4lKUDsEd-pwPnT_VsB_g" name="CORBAUnsignedLongLong" value="3"/>
-          <eLiterals xmi:id="_DM4lKkDsEd-pwPnT_VsB_g" name="CORBAUnsignedLong" value="4"/>
-          <eLiterals xmi:id="_DM4lK0DsEd-pwPnT_VsB_g" name="CORBAShort" value="5"/>
-          <eLiterals xmi:id="_DM4lLEDsEd-pwPnT_VsB_g" name="CORBAOctet" value="6"/>
-          <eLiterals xmi:id="_DM4lLUDsEd-pwPnT_VsB_g" name="CORBAObjectRef" value="7"/>
-          <eLiterals xmi:id="_DM4lLkDsEd-pwPnT_VsB_g" name="CORBALongLong" value="8"/>
-          <eLiterals xmi:id="_DM4lL0DsEd-pwPnT_VsB_g" name="CORBALongDouble" value="9"/>
-          <eLiterals xmi:id="_DM4lMEDsEd-pwPnT_VsB_g" name="CORBALong" value="10"/>
-          <eLiterals xmi:id="_DM4lMUDsEd-pwPnT_VsB_g" name="CORBAFloat" value="11"/>
-          <eLiterals xmi:id="_DM4lMkDsEd-pwPnT_VsB_g" name="CORBADouble" value="12"/>
-          <eLiterals xmi:id="_DM4lM0DsEd-pwPnT_VsB_g" name="CORBAChar" value="13"/>
-          <eLiterals xmi:id="_DM4lNEDsEd-pwPnT_VsB_g" name="CORBABoolean" value="14"/>
-          <eLiterals xmi:id="_DM4lNUDsEd-pwPnT_VsB_g" name="CORBAAny" value="15"/>
-          <eLiterals xmi:id="_DM4lNkDsEd-pwPnT_VsB_g" name="CORBAString" value="16"/>
-          <eLiterals xmi:id="_DM4lN0DsEd-pwPnT_VsB_g" name="CORBAWString" value="17"/>
-          <eLiterals xmi:id="_DM4lOEDsEd-pwPnT_VsB_g" name="CORBATypecode" value="18"/>
+          <eLiterals xmi:id="_DM4lJkDsEd-pwPnT_VsB_g" name="CXWChar"/>
+          <eLiterals xmi:id="_DM4lJ0DsEd-pwPnT_VsB_g" name="CXVoid" value="1"/>
+          <eLiterals xmi:id="_DM4lKEDsEd-pwPnT_VsB_g" name="CXUnsignedShort" value="2"/>
+          <eLiterals xmi:id="_DM4lKUDsEd-pwPnT_VsB_g" name="CXUnsignedLongLong" value="3"/>
+          <eLiterals xmi:id="_DM4lKkDsEd-pwPnT_VsB_g" name="CXUnsignedLong" value="4"/>
+          <eLiterals xmi:id="_DM4lK0DsEd-pwPnT_VsB_g" name="CXShort" value="5"/>
+          <eLiterals xmi:id="_DM4lLEDsEd-pwPnT_VsB_g" name="CXOctet" value="6"/>
+          <eLiterals xmi:id="_DM4lLUDsEd-pwPnT_VsB_g" name="CXObjectRef" value="7"/>
+          <eLiterals xmi:id="_DM4lLkDsEd-pwPnT_VsB_g" name="CXLongLong" value="8"/>
+          <eLiterals xmi:id="_DM4lL0DsEd-pwPnT_VsB_g" name="CXLongDouble" value="9"/>
+          <eLiterals xmi:id="_DM4lMEDsEd-pwPnT_VsB_g" name="CXLong" value="10"/>
+          <eLiterals xmi:id="_DM4lMUDsEd-pwPnT_VsB_g" name="CXFloat" value="11"/>
+          <eLiterals xmi:id="_DM4lMkDsEd-pwPnT_VsB_g" name="CXDouble" value="12"/>
+          <eLiterals xmi:id="_DM4lM0DsEd-pwPnT_VsB_g" name="CXChar" value="13"/>
+          <eLiterals xmi:id="_DM4lNEDsEd-pwPnT_VsB_g" name="CXBoolean" value="14"/>
+          <eLiterals xmi:id="_DM4lNUDsEd-pwPnT_VsB_g" name="CXAny" value="15"/>
+          <eLiterals xmi:id="_DM4lNkDsEd-pwPnT_VsB_g" name="CXString" value="16"/>
+          <eLiterals xmi:id="_DM4lN0DsEd-pwPnT_VsB_g" name="CXWString" value="17"/>
+          <eLiterals xmi:id="_DM4lOEDsEd-pwPnT_VsB_g" name="CXTypecode" value="18"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lOUDsEd-pwPnT_VsB_g" name="CORBASequence" eSuperTypes="_DM4kykDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lOUDsEd-pwPnT_VsB_g" name="CXSequence" eSuperTypes="_DM4kykDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4lOkDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DMSvJ0DsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_9NI90qY5Ed-snc0XvAY1Mg" name="bound" ordered="false">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
           </eStructuralFeatures>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_se7o4CoOEeOdqchurdwy7A" name="bounds" ordered="false" eType="_VF0AYJB1EeG3w4bnc767Ng" containment="true"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lQEDsEd-pwPnT_VsB_g" name="CORBAString" eSuperTypes="_DM4ksUDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _DM4k8kDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lQEDsEd-pwPnT_VsB_g" name="CXString" eSuperTypes="_DM4ksUDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _DM4k8kDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4lQUDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DM4kIEDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lREDsEd-pwPnT_VsB_g" name="CORBAStruct" eSuperTypes="_DM4k9EDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lREDsEd-pwPnT_VsB_g" name="CXStruct" eSuperTypes="_DM4k9EDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4lRUDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DM4kJkDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lS0DsEd-pwPnT_VsB_g" name="CORBASupports">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lS0DsEd-pwPnT_VsB_g" name="CXSupports">
           <eAnnotations xmi:id="_DM4lTEDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DM4kMEDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4lTUDsEd-pwPnT_VsB_g" name="base_Generalization" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Generalization"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lT0DsEd-pwPnT_VsB_g" name="CORBATypeDef" eSuperTypes="_DM4k1EDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lT0DsEd-pwPnT_VsB_g" name="CXTypeDef" eSuperTypes="_DM4k1EDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4lUEDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DM4kN0DsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_7I2F8CHEEeGd-Nb5_CNoPw" name="type" ordered="false" eType="_DM4kuEDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lVUDsEd-pwPnT_VsB_g" name="CORBAUnion" eSuperTypes="_DM4k9EDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lVUDsEd-pwPnT_VsB_g" name="CXUnion" eSuperTypes="_DM4k9EDsEd-pwPnT_VsB_g _DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ _DM4k8kDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4lVkDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DM4kQEDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lXEDsEd-pwPnT_VsB_g" name="CORBAValue" eSuperTypes="_DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _DM4lGEDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lXEDsEd-pwPnT_VsB_g" name="CXValue" eSuperTypes="_DM4kuEDsEd-pwPnT_VsB_g _DM4kz0DsEd-pwPnT_VsB_g _DM4lGEDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4lXUDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DM4kSUDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DM4lXkDsEd-pwPnT_VsB_g" name="isCustom" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
@@ -416,19 +416,19 @@
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lZ0DsEd-pwPnT_VsB_g" name="CORBAValueFactory">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lZ0DsEd-pwPnT_VsB_g" name="CXValueFactory">
           <eAnnotations xmi:id="_DM4laEDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DM4kXEDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4laUDsEd-pwPnT_VsB_g" name="base_Operation" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4la0DsEd-pwPnT_VsB_g" name="CORBAModule" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4la0DsEd-pwPnT_VsB_g" name="CXModule" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4kz0DsEd-pwPnT_VsB_g _g0KtmkDZEd-LnsQ685SqSQ">
           <eAnnotations xmi:id="_DM4lbEDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DM4kY0DsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4lbUDsEd-pwPnT_VsB_g" name="base_Package" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lckDsEd-pwPnT_VsB_g" name="CORBAAttribute" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4k5EDsEd-pwPnT_VsB_g _9HcLgIbmEeSjd8J8ZjsuPQ">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lckDsEd-pwPnT_VsB_g" name="CXAttribute" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4k5EDsEd-pwPnT_VsB_g _9HcLgIbmEeSjd8J8ZjsuPQ">
           <eAnnotations xmi:id="_DM4lc0DsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DM4kbkDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4ldEDsEd-pwPnT_VsB_g" name="setraises" ordered="false" upperBound="-1" eType="_DM4lBUDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4ldkDsEd-pwPnT_VsB_g" name="getraises" ordered="false" upperBound="-1" eType="_DM4lBUDsEd-pwPnT_VsB_g"/>
@@ -436,7 +436,7 @@
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lfEDsEd-pwPnT_VsB_g" name="CORBAOperation" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4k5EDsEd-pwPnT_VsB_g _9HcLgIbmEeSjd8J8ZjsuPQ">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lfEDsEd-pwPnT_VsB_g" name="CXOperation" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4k5EDsEd-pwPnT_VsB_g _9HcLgIbmEeSjd8J8ZjsuPQ">
           <eAnnotations xmi:id="_DM4lfUDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DM4kiUDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DM4lfkDsEd-pwPnT_VsB_g" name="isOneWay" ordered="false" lowerBound="1" defaultValueLiteral="false">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
@@ -446,7 +446,7 @@
           </eStructuralFeatures>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_j5rkcN1wEeq8rrSIt0niRA" name="idlType" ordered="false" eType="_DM4kuEDsEd-pwPnT_VsB_g"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lhEDsEd-pwPnT_VsB_g" name="CORBAField" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4k5EDsEd-pwPnT_VsB_g">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4lhEDsEd-pwPnT_VsB_g" name="CXField" eSuperTypes="_g0KtnEDZEd-LnsQ685SqSQ _DM4k5EDsEd-pwPnT_VsB_g">
           <eAnnotations xmi:id="_DM4lhUDsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DM4kmEDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4lhkDsEd-pwPnT_VsB_g" name="base_Property" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
@@ -460,7 +460,7 @@
           </eStructuralFeatures>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_OH0-gAiuEeKRLb9QlVnXvQ" name="bounds" ordered="false" upperBound="-1" eType="_VF0AYJB1EeG3w4bnc767Ng" containment="true"/>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4likDsEd-pwPnT_VsB_g" name="CORBAParameter" eSuperTypes="_DM4k5EDsEd-pwPnT_VsB_g _g0KtnEDZEd-LnsQ685SqSQ">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DM4likDsEd-pwPnT_VsB_g" name="CXParameter" eSuperTypes="_DM4k5EDsEd-pwPnT_VsB_g _g0KtnEDZEd-LnsQ685SqSQ">
           <eAnnotations xmi:id="_DM4li0DsEd-pwPnT_VsB_g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_DM4koUDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DM4ljEDsEd-pwPnT_VsB_g" name="base_Parameter" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Parameter"/>
@@ -1143,7 +1143,7 @@
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
           </eStructuralFeatures>
         </eClassifiers>
-        <eClassifiers xmi:type="ecore:EClass" xmi:id="_VF0AYJB1EeG3w4bnc767Ng" name="CORBABound">
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_VF0AYJB1EeG3w4bnc767Ng" name="CXBound">
           <eAnnotations xmi:id="_VF0AYZB1EeG3w4bnc767Ng" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_VFyLMJB1EeG3w4bnc767Ng"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_VF0AYpB1EeG3w4bnc767Ng" name="constant" ordered="false" eType="_DM4k5kDsEd-pwPnT_VsB_g"/>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_VF0AZJB1EeG3w4bnc767Ng" name="value" ordered="false">
@@ -1189,9 +1189,9 @@
       <ownedAttribute xmi:id="_FMpnsM_fEd-oyeIAAKy1vg" name="base_NamedElement" association="_FMWFss_fEd-oyeIAAKy1vg">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement"/>
       </ownedAttribute>
-      <icon xmi:id="_fNA60N2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_fNA60d2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fNA60t2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0NJg_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_y0NJhPRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0NJhfRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1211,9 +1211,9 @@
       <ownedAttribute xmi:id="_g0KtxEDZEd-LnsQ685SqSQ" name="base_Component" association="_g0KtxUDZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_fMk1892NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_fMk19N2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMk19d2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz-gA_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_yz-gBPRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz-gBfRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1229,9 +1229,9 @@
       </eAnnotations>
       <generalization xmi:id="_g0Kty0DZEd-LnsQ685SqSQ" general="_g0Ktu0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_g0KtzEDZEd-LnsQ685SqSQ" general="_g0KtzUDZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_fNBh4N2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_fNBh4d2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fNBh4t2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0NwkPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_y0NwkfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0NwkvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1281,9 +1281,9 @@
       <ownedAttribute xmi:id="_FMpnsc_fEd-oyeIAAKy1vg" name="base_NamedElement" association="_FMWFtM_fEd-oyeIAAKy1vg">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement"/>
       </ownedAttribute>
-      <icon xmi:id="_fNBh492NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_fNBh5N2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fNCI8N2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0Nwk_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_y0NwlPRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0NwlfRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1378,9 +1378,9 @@
       <ownedAttribute xmi:id="_g0KuEkDZEd-LnsQ685SqSQ" name="base_Port" association="_g0KuIkDZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
       </ownedAttribute>
-      <icon xmi:id="_fMXakN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
-        <eAnnotations xmi:id="_fMXakd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMXakt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz4ZYPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
+        <eAnnotations xmi:id="_yz4ZYfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz4ZYvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1441,9 +1441,9 @@
       <ownedAttribute xmi:id="_g0KuMEDZEd-LnsQ685SqSQ" name="base_Component" association="_g0KuMUDZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_fMk18N2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/component-interface.gif">
-        <eAnnotations xmi:id="_fMk18d2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMk18t2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz-gAPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/component-interface.gif">
+        <eAnnotations xmi:id="_yz-gAfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz-gAvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1458,9 +1458,9 @@
       <eAnnotations xmi:id="_g0KuNkDZEd-LnsQ685SqSQ" source="uml2.extensions">
         <details xmi:id="_g0KuN0DZEd-LnsQ685SqSQ" key="suppressed" value="true"/>
       </eAnnotations>
-      <icon xmi:id="_fMldAN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/implementation-artifact.gif">
-        <eAnnotations xmi:id="_fMldAd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMldAt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz_HEPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/implementation-artifact.gif">
+        <eAnnotations xmi:id="_yz_HEfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz_HEvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1472,9 +1472,9 @@
         <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_L-8AsCBeEd2fK6BRw108zQ"/>
       </eAnnotations>
       <generalization xmi:id="_g0KuP0DZEd-LnsQ685SqSQ" general="_g0KuB0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_fMldA92NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
-        <eAnnotations xmi:id="_fMldBN2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMldBd2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz_HE_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
+        <eAnnotations xmi:id="_yz_HFPRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz_HFfRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1489,9 +1489,9 @@
         <details xmi:id="_g0KuRUDZEd-LnsQ685SqSQ" key="suppressed" value="true"/>
       </eAnnotations>
       <generalization xmi:id="_g0KuRkDZEd-LnsQ685SqSQ" general="_g0KuB0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_fMldBt2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
-        <eAnnotations xmi:id="_fMldB92NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMldCN2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz_HFvRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
+        <eAnnotations xmi:id="_yz_HF_RaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz_HGPRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1507,9 +1507,9 @@
       <ownedAttribute xmi:id="_g0KuTEDZEd-LnsQ685SqSQ" name="base_Interface" association="_g0KuTUDZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
       </ownedAttribute>
-      <icon xmi:id="_fMevUN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/interface.gif">
-        <eAnnotations xmi:id="_fMevUd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMevUt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz61pvRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/interface.gif">
+        <eAnnotations xmi:id="_yz61p_RaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz61qPRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1567,9 +1567,9 @@
       <ownedAttribute xmi:id="_g0KuXkDZEd-LnsQ685SqSQ" name="base_Operation" association="_g0KuaUDZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
       </ownedAttribute>
-      <icon xmi:id="_fMmEEN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/worker.gif">
-        <eAnnotations xmi:id="_fMmEEd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMmEEt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz_HGfRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/worker.gif">
+        <eAnnotations xmi:id="_yz_HGvRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz_HG_RaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1613,9 +1613,9 @@
       <ownedAttribute xmi:id="_g0KucUDZEd-LnsQ685SqSQ" name="base_Class" association="_g0Kud0DZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
       </ownedAttribute>
-      <icon xmi:id="_fMmrIN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port-type.gif">
-        <eAnnotations xmi:id="_fMmrId2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMmrIt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz_uIPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port-type.gif">
+        <eAnnotations xmi:id="_yz_uIfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz_uIvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1688,9 +1688,9 @@
       </eAnnotations>
       <generalization xmi:id="_g0KulUDZEd-LnsQ685SqSQ" general="_g0KuB0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_Ge9DUnSpEd--Ifm7ono7eg" general="_GezSUHSpEd--Ifm7ono7eg"/>
-      <icon xmi:id="_fM60MN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/eventport.gif">
-        <eAnnotations xmi:id="_fM60Md2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM60Mt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0KtQPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/eventport.gif">
+        <eAnnotations xmi:id="_y0KtQfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0KtQvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1709,9 +1709,9 @@
       <generalization xmi:id="_g0KunUDZEd-LnsQ685SqSQ" general="_g0Kuo0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_g0KunkDZEd-LnsQ685SqSQ" general="_g0Kup0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_tT1BcCHFEeGd-Nb5_CNoPw" general="_DMSuUkDsEd-pwPnT_VsB_g"/>
-      <icon xmi:id="_fM60M92NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/component-interface.gif">
-        <eAnnotations xmi:id="_fM60NN2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM60Nd2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0KtQ_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/component-interface.gif">
+        <eAnnotations xmi:id="_y0KtRPRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0KtRfRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1723,7 +1723,7 @@
         <references xmi:type="uml:Class" href="pathmap://CCM_DOMAIN/CCM.uml#_M1WZYKIeEd6HXsAyqfpkfQ"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_g0Kuo0DZEd-LnsQ685SqSQ" name="CORBAModuleContained" isAbstract="true">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_g0Kuo0DZEd-LnsQ685SqSQ" name="CXModuleContained" isAbstract="true">
       <eAnnotations xmi:id="_g0KupEDZEd-LnsQ685SqSQ" source="uml2.extensions">
         <details xmi:id="_g0KupUDZEd-LnsQ685SqSQ" key="suppressed" value="true"/>
       </eAnnotations>
@@ -1731,19 +1731,16 @@
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_8UNR0MPIEd6u_6T1TQ_XYQ"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_g0Kup0DZEd-LnsQ685SqSQ" name="CORBANamedElement">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_g0Kup0DZEd-LnsQ685SqSQ" name="CXNamedElement">
       <eAnnotations xmi:id="_g0KuqEDZEd-LnsQ685SqSQ" source="uml2.extensions">
         <details xmi:id="_g0KuqUDZEd-LnsQ685SqSQ" key="suppressed" value="true"/>
       </eAnnotations>
       <eAnnotations xmi:id="_g0KuqkDZEd-LnsQ685SqSQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_2ZPPIO1nEd2XOPM4ACfj4Q"/>
       </eAnnotations>
-      <ownedAttribute xmi:id="_g0Kuq0DZEd-LnsQ685SqSQ" name="base_NamedElement" association="_g0KurEDZEd-LnsQ685SqSQ">
+      <ownedAttribute xmi:id="_g0Kuq0DZEd-LnsQ685SqSQ" name="base_NamedElement" association="_yzszMPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement"/>
       </ownedAttribute>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_g0KurEDZEd-LnsQ685SqSQ" name="NamedElement_CORBANamedElement" memberEnd="_g0KurUDZEd-LnsQ685SqSQ _g0Kuq0DZEd-LnsQ685SqSQ">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_g0KurUDZEd-LnsQ685SqSQ" name="extension_CORBANamedElement" type="_g0Kup0DZEd-LnsQ685SqSQ" aggregation="composite" association="_g0KurEDZEd-LnsQ685SqSQ"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_g0KurkDZEd-LnsQ685SqSQ" name="Event">
       <eAnnotations xmi:id="_g0Kur0DZEd-LnsQ685SqSQ" source="http://www.zeligsoft.com/zdl/2008/ZDL">
@@ -1774,9 +1771,9 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g0KuvkDZEd-LnsQ685SqSQ" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g0KuvUDZEd-LnsQ685SqSQ" value="1"/>
       </ownedAttribute>
-      <icon xmi:id="_fM60Nt2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/event.gif">
-        <eAnnotations xmi:id="_fM60N92NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM60ON2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0LUUPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/event.gif">
+        <eAnnotations xmi:id="_y0LUUfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0LUUvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1800,9 +1797,9 @@
       <ownedAttribute xmi:id="_g0Kux0DZEd-LnsQ685SqSQ" name="base_Class" association="_g0KuyEDZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
       </ownedAttribute>
-      <icon xmi:id="_fM7bQN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/home4.gif">
-        <eAnnotations xmi:id="_fM7bQd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM7bQt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0LUU_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/home4.gif">
+        <eAnnotations xmi:id="_y0LUVPRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0LUVfRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1879,7 +1876,7 @@
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuQEDsEd-pwPnT_VsB_g" name="CORBAWString">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuQEDsEd-pwPnT_VsB_g" name="CXWString">
       <eAnnotations xmi:id="_DMSuQUDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSuQkDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -1890,7 +1887,7 @@
       <generalization xmi:id="_DMSuRUDsEd-pwPnT_VsB_g" general="_DMSuUkDsEd-pwPnT_VsB_g"/>
       <generalization xmi:id="_7JC6QCHEEeGd-Nb5_CNoPw" general="_DMSur0DsEd-pwPnT_VsB_g"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuRkDsEd-pwPnT_VsB_g" name="CORBABounded" isAbstract="true">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuRkDsEd-pwPnT_VsB_g" name="CXBounded" isAbstract="true">
       <eAnnotations xmi:id="_DMSuR0DsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSuSEDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -1914,14 +1911,11 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DwegoCtrEeOdqchurdwy7A"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DMSuTUDsEd-pwPnT_VsB_g" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_DMSuT0DsEd-pwPnT_VsB_g" name="base_DataType" association="_DMSuUEDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DMSuT0DsEd-pwPnT_VsB_g" name="base_DataType" association="_yzszNPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DMSuUEDsEd-pwPnT_VsB_g" name="DataType_CORBABounded" memberEnd="_DMSuUUDsEd-pwPnT_VsB_g _DMSuT0DsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DMSuUUDsEd-pwPnT_VsB_g" name="extension_CORBABounded" type="_DMSuRkDsEd-pwPnT_VsB_g" aggregation="composite" association="_DMSuUEDsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuUkDsEd-pwPnT_VsB_g" name="CORBAType" isAbstract="true">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuUkDsEd-pwPnT_VsB_g" name="CXType" isAbstract="true">
       <eAnnotations xmi:id="_DMSuU0DsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSuVEDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -1929,35 +1923,29 @@
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_5ZEXsMJaEd6QAZgNaBtgeQ"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuVkDsEd-pwPnT_VsB_g" name="CORBAAnonymousArray">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuVkDsEd-pwPnT_VsB_g" name="CXAnonymousArray">
       <eAnnotations xmi:id="_DMSuV0DsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSuWEDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
       <eAnnotations xmi:id="_DMSuWUDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_Iwx8gEk4Ed2eBKZvQ89d6g"/>
       </eAnnotations>
-      <ownedAttribute xmi:id="_DMSuWkDsEd-pwPnT_VsB_g" name="base_DataType" association="_DMSuW0DsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DMSuWkDsEd-pwPnT_VsB_g" name="base_DataType" association="_yzszNvRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DMSuW0DsEd-pwPnT_VsB_g" name="DataType_CORBAAnonymousArray" memberEnd="_DMSuXEDsEd-pwPnT_VsB_g _DMSuWkDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DMSuXEDsEd-pwPnT_VsB_g" name="extension_CORBAAnonymousArray" type="_DMSuVkDsEd-pwPnT_VsB_g" aggregation="composite" association="_DMSuW0DsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuXUDsEd-pwPnT_VsB_g" name="CORBAAnonymousSequence">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuXUDsEd-pwPnT_VsB_g" name="CXAnonymousSequence">
       <eAnnotations xmi:id="_DMSuXkDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSuX0DsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
       <eAnnotations xmi:id="_DMSuYEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_G0DxIEk4Ed2eBKZvQ89d6g"/>
       </eAnnotations>
-      <ownedAttribute xmi:id="_DMSuYUDsEd-pwPnT_VsB_g" name="base_DataType" association="_DMSuYkDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DMSuYUDsEd-pwPnT_VsB_g" name="base_DataType" association="_yzszOPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DMSuYkDsEd-pwPnT_VsB_g" name="DataType_CORBAAnonymousSequence" memberEnd="_DMSuY0DsEd-pwPnT_VsB_g _DMSuYUDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DMSuY0DsEd-pwPnT_VsB_g" name="extension_CORBAAnonymousSequence" type="_DMSuXUDsEd-pwPnT_VsB_g" aggregation="composite" association="_DMSuYkDsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuZEDsEd-pwPnT_VsB_g" name="CORBAArray">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuZEDsEd-pwPnT_VsB_g" name="CXArray">
       <eAnnotations xmi:id="_DMSuZUDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSuZkDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -1984,13 +1972,13 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8uQhIG4OEeGbEdQxV9FPKw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DMSubkDsEd-pwPnT_VsB_g" value="1"/>
       </ownedAttribute>
-      <icon xmi:id="_fMbE8N2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-array.gif">
-        <eAnnotations xmi:id="_fMbE8d2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMbE8t2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz5ngPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-array.gif">
+        <eAnnotations xmi:id="_yz5ngfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz5ngvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSucEDsEd-pwPnT_VsB_g" name="CORBATemplate" isAbstract="true">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSucEDsEd-pwPnT_VsB_g" name="CXTemplate" isAbstract="true">
       <eAnnotations xmi:id="_DMSucUDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSuckDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -1998,12 +1986,9 @@
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_44-WUEk3Ed2eBKZvQ89d6g"/>
       </eAnnotations>
       <generalization xmi:id="_DMSudEDsEd-pwPnT_VsB_g" general="_g0Kup0DZEd-LnsQ685SqSQ"/>
-      <ownedAttribute xmi:id="_DMSudUDsEd-pwPnT_VsB_g" name="base_DataType" association="_DMSudkDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DMSudUDsEd-pwPnT_VsB_g" name="base_DataType" association="_yzszOvRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
       </ownedAttribute>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DMSudkDsEd-pwPnT_VsB_g" name="DataType_CORBATemplate" memberEnd="_DMSud0DsEd-pwPnT_VsB_g _DMSudUDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DMSud0DsEd-pwPnT_VsB_g" name="extension_CORBATemplate" type="_DMSucEDsEd-pwPnT_VsB_g" aggregation="composite" association="_DMSudkDsEd-pwPnT_VsB_g"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSueEDsEd-pwPnT_VsB_g" name="Contained" isAbstract="true">
       <eAnnotations xmi:id="_DMSueUDsEd-pwPnT_VsB_g" source="uml2.extensions">
@@ -2013,7 +1998,7 @@
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_MopncMJaEd6QAZgNaBtgeQ"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSufEDsEd-pwPnT_VsB_g" name="CORBABoxedValue">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSufEDsEd-pwPnT_VsB_g" name="CXBoxedValue">
       <eAnnotations xmi:id="_DMSufUDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSufkDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2022,7 +2007,7 @@
       </eAnnotations>
       <generalization xmi:id="_DMSugEDsEd-pwPnT_VsB_g" general="_DMSugUDsEd-pwPnT_VsB_g"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSugUDsEd-pwPnT_VsB_g" name="CORBAWrapper" isAbstract="true">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSugUDsEd-pwPnT_VsB_g" name="CXWrapper" isAbstract="true">
       <eAnnotations xmi:id="_DMSugkDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSug0DsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2030,14 +2015,11 @@
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_ftj2wEk3Ed2eBKZvQ89d6g"/>
       </eAnnotations>
       <generalization xmi:id="_DMSuhUDsEd-pwPnT_VsB_g" general="_g0Kup0DZEd-LnsQ685SqSQ"/>
-      <ownedAttribute xmi:id="_DMSuhkDsEd-pwPnT_VsB_g" name="base_DataType" association="_DMSuh0DsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DMSuhkDsEd-pwPnT_VsB_g" name="base_DataType" association="_yztaQPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DMSuh0DsEd-pwPnT_VsB_g" name="DataType_CORBAWrapper" memberEnd="_DMSuiEDsEd-pwPnT_VsB_g _DMSuhkDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DMSuiEDsEd-pwPnT_VsB_g" name="extension_CORBAWrapper" type="_DMSugUDsEd-pwPnT_VsB_g" aggregation="composite" association="_DMSuh0DsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuiUDsEd-pwPnT_VsB_g" name="CORBACase">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuiUDsEd-pwPnT_VsB_g" name="CXCase">
       <eAnnotations xmi:id="_DMSuikDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_PNNp4Ek3Ed2eBKZvQ89d6g"/>
       </eAnnotations>
@@ -2055,7 +2037,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DMSuj0DsEd-pwPnT_VsB_g" value="*"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSukUDsEd-pwPnT_VsB_g" name="CORBAUnionField">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSukUDsEd-pwPnT_VsB_g" name="CXUnionField">
       <eAnnotations xmi:id="_DMSukkDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSuk0DsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2064,11 +2046,11 @@
       </eAnnotations>
       <generalization xmi:id="_DMSulUDsEd-pwPnT_VsB_g" general="_g0Kup0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_DMSulkDsEd-pwPnT_VsB_g" general="_DMSumEDsEd-pwPnT_VsB_g"/>
-      <ownedAttribute xmi:id="_DMSul0DsEd-pwPnT_VsB_g" name="base_Property" association="_DMSunUDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DMSul0DsEd-pwPnT_VsB_g" name="base_Property" association="_yztaQvRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSumEDsEd-pwPnT_VsB_g" name="CORBATyped" isAbstract="true">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSumEDsEd-pwPnT_VsB_g" name="CXTyped" isAbstract="true">
       <eAnnotations xmi:id="_DMSumUDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_DMSumkDsEd-pwPnT_VsB_g" key="idlType" value="type"/>
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_Q0OakMJbEd6QAZgNaBtgeQ"/>
@@ -2077,10 +2059,7 @@
         <details xmi:id="_DMSunEDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DMSunUDsEd-pwPnT_VsB_g" name="Property_CORBAUnionField" memberEnd="_DMSunkDsEd-pwPnT_VsB_g _DMSul0DsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DMSunkDsEd-pwPnT_VsB_g" name="extension_CORBAUnionField" type="_DMSukUDsEd-pwPnT_VsB_g" aggregation="composite" association="_DMSunUDsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSun0DsEd-pwPnT_VsB_g" name="CORBAConstant">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSun0DsEd-pwPnT_VsB_g" name="CXConstant">
       <eAnnotations xmi:id="_DMSuoEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_DMSuoUDsEd-pwPnT_VsB_g" key="default" value="default"/>
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_Wa0VgEk2Ed2eBKZvQ89d6g"/>
@@ -2090,19 +2069,16 @@
       </eAnnotations>
       <generalization xmi:id="_DMSuo0DsEd-pwPnT_VsB_g" general="_g0Kup0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_-XTcQNCpEd-7NcdD8GVUXQ" general="_DMSumEDsEd-pwPnT_VsB_g"/>
-      <ownedAttribute xmi:id="_DMSupEDsEd-pwPnT_VsB_g" name="base_Property" association="_DMSupUDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DMSupEDsEd-pwPnT_VsB_g" name="base_Property" association="_yzszMvRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
       </ownedAttribute>
-      <icon xmi:id="_fMZ20N2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-constant.gif">
-        <eAnnotations xmi:id="_fMZ20d2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMZ20t2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz5AcPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-constant.gif">
+        <eAnnotations xmi:id="_yz5AcfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz5AcvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DMSupUDsEd-pwPnT_VsB_g" name="Property_CORBAConstant" memberEnd="_DMSupkDsEd-pwPnT_VsB_g _DMSupEDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DMSupkDsEd-pwPnT_VsB_g" name="extension_CORBAConstant" type="_DMSun0DsEd-pwPnT_VsB_g" aggregation="composite" association="_DMSupUDsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSup0DsEd-pwPnT_VsB_g" name="CORBAConstants">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSup0DsEd-pwPnT_VsB_g" name="CXConstants">
       <eAnnotations xmi:id="_DMSuqEDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSuqUDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2112,16 +2088,16 @@
       <generalization xmi:id="_DMSuq0DsEd-pwPnT_VsB_g" general="_g0Kup0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_DMSurEDsEd-pwPnT_VsB_g" general="_g0Kuo0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_DMSurUDsEd-pwPnT_VsB_g" general="_DMSur0DsEd-pwPnT_VsB_g"/>
-      <ownedAttribute xmi:id="_DMSurkDsEd-pwPnT_VsB_g" name="base_Class" association="_DMSus0DsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DMSurkDsEd-pwPnT_VsB_g" name="base_Class" association="_yztaRPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
       </ownedAttribute>
-      <icon xmi:id="_fMdhMN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-constant.gif">
-        <eAnnotations xmi:id="_fMdhMd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMdhMt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz6OkPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-constant.gif">
+        <eAnnotations xmi:id="_yz6OkfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz6OkvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSur0DsEd-pwPnT_VsB_g" name="CORBAClassifierContained" isAbstract="true">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSur0DsEd-pwPnT_VsB_g" name="CXClassifierContained" isAbstract="true">
       <eAnnotations xmi:id="_DMSusEDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSusUDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2129,10 +2105,7 @@
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_5qa9YMPOEd6u_6T1TQ_XYQ"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DMSus0DsEd-pwPnT_VsB_g" name="Class_CORBAConstants" memberEnd="_DMSutEDsEd-pwPnT_VsB_g _DMSurkDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DMSutEDsEd-pwPnT_VsB_g" name="extension_CORBAConstants" type="_DMSup0DsEd-pwPnT_VsB_g" aggregation="composite" association="_DMSus0DsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSutUDsEd-pwPnT_VsB_g" name="CORBAConstructed" isAbstract="true">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSutUDsEd-pwPnT_VsB_g" name="CXConstructed" isAbstract="true">
       <eAnnotations xmi:id="_DMSutkDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSut0DsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2140,14 +2113,11 @@
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_nPTw8Ek3Ed2eBKZvQ89d6g"/>
       </eAnnotations>
       <generalization xmi:id="_DMSuuUDsEd-pwPnT_VsB_g" general="_g0Kup0DZEd-LnsQ685SqSQ"/>
-      <ownedAttribute xmi:id="_DMSuukDsEd-pwPnT_VsB_g" name="base_DataType" association="_DMSuu0DsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DMSuukDsEd-pwPnT_VsB_g" name="base_DataType" association="_yztaRvRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DMSuu0DsEd-pwPnT_VsB_g" name="DataType_CORBAConstructed" memberEnd="_DMSuvEDsEd-pwPnT_VsB_g _DMSuukDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DMSuvEDsEd-pwPnT_VsB_g" name="extension_CORBAConstructed" type="_DMSutUDsEd-pwPnT_VsB_g" aggregation="composite" association="_DMSuu0DsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuvUDsEd-pwPnT_VsB_g" name="CORBADefault">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuvUDsEd-pwPnT_VsB_g" name="CXDefault">
       <eAnnotations xmi:id="_DMSuvkDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSuv0DsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2156,7 +2126,7 @@
       </eAnnotations>
       <generalization xmi:id="_DMSuwUDsEd-pwPnT_VsB_g" general="_DMSukUDsEd-pwPnT_VsB_g"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuwkDsEd-pwPnT_VsB_g" name="CORBAEnum">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuwkDsEd-pwPnT_VsB_g" name="CXEnum">
       <eAnnotations xmi:id="_DMSuw0DsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSuxEDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2168,19 +2138,16 @@
       <generalization xmi:id="_DMSuyEDsEd-pwPnT_VsB_g" general="_DMSueEDsEd-pwPnT_VsB_g"/>
       <generalization xmi:id="_DMSuyUDsEd-pwPnT_VsB_g" general="_g0Kuo0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_DMSuykDsEd-pwPnT_VsB_g" general="_DMSur0DsEd-pwPnT_VsB_g"/>
-      <ownedAttribute xmi:id="_DMSuy0DsEd-pwPnT_VsB_g" name="base_Enumeration" association="_DMSuzEDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DMSuy0DsEd-pwPnT_VsB_g" name="base_Enumeration" association="_yztaSPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Enumeration"/>
       </ownedAttribute>
-      <icon xmi:id="_fMdhM92NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-enum.gif">
-        <eAnnotations xmi:id="_fMdhNN2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMdhNd2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz6Ok_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-enum.gif">
+        <eAnnotations xmi:id="_yz6OlPRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz6OlfRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DMSuzEDsEd-pwPnT_VsB_g" name="Enumeration_CORBAEnum" memberEnd="_DMSuzUDsEd-pwPnT_VsB_g _DMSuy0DsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DMSuzUDsEd-pwPnT_VsB_g" name="extension_CORBAEnum" type="_DMSuwkDsEd-pwPnT_VsB_g" aggregation="composite" association="_DMSuzEDsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuzkDsEd-pwPnT_VsB_g" name="CORBAException">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSuzkDsEd-pwPnT_VsB_g" name="CXException">
       <eAnnotations xmi:id="_DMSuz0DsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_DMSu0EDsEd-pwPnT_VsB_g" key="members" value="ownedAttribute"/>
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_oz5JIEk3Ed2eBKZvQ89d6g"/>
@@ -2193,13 +2160,13 @@
       <generalization xmi:id="_DMSu1UDsEd-pwPnT_VsB_g" general="_g0Kuo0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_DMSu1kDsEd-pwPnT_VsB_g" general="_DMSur0DsEd-pwPnT_VsB_g"/>
       <generalization xmi:id="_7JF9kCHEEeGd-Nb5_CNoPw" general="_DMSuUkDsEd-pwPnT_VsB_g"/>
-      <icon xmi:id="_fMeIQN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-exception.gif">
-        <eAnnotations xmi:id="_fMeIQd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMeIQt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz61oPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-exception.gif">
+        <eAnnotations xmi:id="_yz61ofRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz61ovRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSu10DsEd-pwPnT_VsB_g" name="CORBAInterface">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSu10DsEd-pwPnT_VsB_g" name="CXInterface">
       <eAnnotations xmi:id="_DMSu2EDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_DMSu2UDsEd-pwPnT_VsB_g" key="isAbstract" value="isAbstract"/>
         <details xmi:id="_j8dacJoLEeGUmNT_0OYWnw" key="generals" value="general"/>
@@ -2230,16 +2197,16 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_odfTowEEEeOWHr0xAE9a0Q" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_odfTogEEEeOWHr0xAE9a0Q" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_DMSu5UDsEd-pwPnT_VsB_g" name="base_Interface" association="_DMSu70DsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DMSu5UDsEd-pwPnT_VsB_g" name="base_Interface" association="_yztaSvRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
       </ownedAttribute>
-      <icon xmi:id="_fMeIQ92NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/interface.gif">
-        <eAnnotations xmi:id="_fMeIRN2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMeIRd2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz61o_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/interface.gif">
+        <eAnnotations xmi:id="_yz61pPRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz61pfRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSu5kDsEd-pwPnT_VsB_g" name="CORBAClassifier" isAbstract="true">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSu5kDsEd-pwPnT_VsB_g" name="CXClassifier" isAbstract="true">
       <eAnnotations xmi:id="_DMSu50DsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_DMSu6EDsEd-pwPnT_VsB_g" key="ownedOperation" value="ownedOperation"/>
         <details xmi:id="_DMSu6UDsEd-pwPnT_VsB_g" key="ownedAttribute" value="ownedAttribute"/>
@@ -2252,10 +2219,7 @@
       </eAnnotations>
       <generalization xmi:id="_DMSu7kDsEd-pwPnT_VsB_g" general="_g0Kuo0DZEd-LnsQ685SqSQ"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DMSu70DsEd-pwPnT_VsB_g" name="Interface_CORBAInterface" memberEnd="_DMSu8EDsEd-pwPnT_VsB_g _DMSu5UDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DMSu8EDsEd-pwPnT_VsB_g" name="extension_CORBAInterface" type="_DMSu10DsEd-pwPnT_VsB_g" aggregation="composite" association="_DMSu70DsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSu8UDsEd-pwPnT_VsB_g" name="CORBAPrimitive">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSu8UDsEd-pwPnT_VsB_g" name="CXPrimitive">
       <eAnnotations xmi:id="_DMSu8kDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSu80DsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2272,114 +2236,111 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DMSu-0DsEd-pwPnT_VsB_g" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DMSu-kDsEd-pwPnT_VsB_g" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_DMSu_EDsEd-pwPnT_VsB_g" name="base_DataType" association="_DMSvJUDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DMSu_EDsEd-pwPnT_VsB_g" name="base_DataType" association="_yztaTPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_DMSu_UDsEd-pwPnT_VsB_g" name="CORBAPrimitiveKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_DMSu_UDsEd-pwPnT_VsB_g" name="CXPrimitiveKind">
       <eAnnotations xmi:id="_DMSu_kDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <references xmi:type="uml:Enumeration" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_L3t4QEk4Ed2eBKZvQ89d6g"/>
       </eAnnotations>
-      <ownedLiteral xmi:id="_DMSu_0DsEd-pwPnT_VsB_g" name="CORBAWChar">
+      <ownedLiteral xmi:id="_DMSu_0DsEd-pwPnT_VsB_g" name="CXWChar">
         <eAnnotations xmi:id="_DMSvAEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_jnx0IEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvAUDsEd-pwPnT_VsB_g" name="CORBAVoid">
+      <ownedLiteral xmi:id="_DMSvAUDsEd-pwPnT_VsB_g" name="CXVoid">
         <eAnnotations xmi:id="_DMSvAkDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_jiRCAEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvA0DsEd-pwPnT_VsB_g" name="CORBAUnsignedShort">
+      <ownedLiteral xmi:id="_DMSvA0DsEd-pwPnT_VsB_g" name="CXUnsignedShort">
         <eAnnotations xmi:id="_DMSvBEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_ja0WMEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvBUDsEd-pwPnT_VsB_g" name="CORBAUnsignedLongLong">
+      <ownedLiteral xmi:id="_DMSvBUDsEd-pwPnT_VsB_g" name="CXUnsignedLongLong">
         <eAnnotations xmi:id="_DMSvBkDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_jQ_EwEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvB0DsEd-pwPnT_VsB_g" name="CORBAUnsignedLong">
+      <ownedLiteral xmi:id="_DMSvB0DsEd-pwPnT_VsB_g" name="CXUnsignedLong">
         <eAnnotations xmi:id="_DMSvCEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_iNCUcEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvCUDsEd-pwPnT_VsB_g" name="CORBAShort">
+      <ownedLiteral xmi:id="_DMSvCUDsEd-pwPnT_VsB_g" name="CXShort">
         <eAnnotations xmi:id="_DMSvCkDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_Q2TSIEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvC0DsEd-pwPnT_VsB_g" name="CORBAOctet">
+      <ownedLiteral xmi:id="_DMSvC0DsEd-pwPnT_VsB_g" name="CXOctet">
         <eAnnotations xmi:id="_DMSvDEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_QzeAkEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvDUDsEd-pwPnT_VsB_g" name="CORBAObjectRef">
+      <ownedLiteral xmi:id="_DMSvDUDsEd-pwPnT_VsB_g" name="CXObjectRef">
         <eAnnotations xmi:id="_DMSvDkDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_QxrQ0Ek4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvD0DsEd-pwPnT_VsB_g" name="CORBALongLong">
+      <ownedLiteral xmi:id="_DMSvD0DsEd-pwPnT_VsB_g" name="CXLongLong">
         <eAnnotations xmi:id="_DMSvEEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_QwC5IEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvEUDsEd-pwPnT_VsB_g" name="CORBALongDouble">
+      <ownedLiteral xmi:id="_DMSvEUDsEd-pwPnT_VsB_g" name="CXLongDouble">
         <eAnnotations xmi:id="_DMSvEkDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_QuZ6YEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvE0DsEd-pwPnT_VsB_g" name="CORBALong">
+      <ownedLiteral xmi:id="_DMSvE0DsEd-pwPnT_VsB_g" name="CXLong">
         <eAnnotations xmi:id="_DMSvFEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_Qsw7oEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvFUDsEd-pwPnT_VsB_g" name="CORBAFloat">
+      <ownedLiteral xmi:id="_DMSvFUDsEd-pwPnT_VsB_g" name="CXFloat">
         <eAnnotations xmi:id="_DMSvFkDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_QrRt4Ek4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvF0DsEd-pwPnT_VsB_g" name="CORBADouble">
+      <ownedLiteral xmi:id="_DMSvF0DsEd-pwPnT_VsB_g" name="CXDouble">
         <eAnnotations xmi:id="_DMSvGEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_Qp7qEEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvGUDsEd-pwPnT_VsB_g" name="CORBAChar">
+      <ownedLiteral xmi:id="_DMSvGUDsEd-pwPnT_VsB_g" name="CXChar">
         <eAnnotations xmi:id="_DMSvGkDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_QoSrUEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvG0DsEd-pwPnT_VsB_g" name="CORBABoolean">
+      <ownedLiteral xmi:id="_DMSvG0DsEd-pwPnT_VsB_g" name="CXBoolean">
         <eAnnotations xmi:id="_DMSvHEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_QmWxoEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvHUDsEd-pwPnT_VsB_g" name="CORBAAny">
+      <ownedLiteral xmi:id="_DMSvHUDsEd-pwPnT_VsB_g" name="CXAny">
         <eAnnotations xmi:id="_DMSvHkDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_QZidoEk4Ed2eBKZvQ89d6g"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvH0DsEd-pwPnT_VsB_g" name="CORBAString">
+      <ownedLiteral xmi:id="_DMSvH0DsEd-pwPnT_VsB_g" name="CXString">
         <eAnnotations xmi:id="_DMSvIEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_nDnLIExUEd2INdt7Ch5VKg"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvIUDsEd-pwPnT_VsB_g" name="CORBAWString">
+      <ownedLiteral xmi:id="_DMSvIUDsEd-pwPnT_VsB_g" name="CXWString">
         <eAnnotations xmi:id="_DMSvIkDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_IDH5IExVEd2INdt7Ch5VKg"/>
         </eAnnotations>
       </ownedLiteral>
-      <ownedLiteral xmi:id="_DMSvI0DsEd-pwPnT_VsB_g" name="CORBATypecode">
+      <ownedLiteral xmi:id="_DMSvI0DsEd-pwPnT_VsB_g" name="CXTypecode">
         <eAnnotations xmi:id="_DMSvJEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
           <references xmi:type="uml:EnumerationLiteral" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_aYvlkExVEd2INdt7Ch5VKg"/>
         </eAnnotations>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DMSvJUDsEd-pwPnT_VsB_g" name="DataType_CORBAPrimitive" memberEnd="_DMSvJkDsEd-pwPnT_VsB_g _DMSu_EDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DMSvJkDsEd-pwPnT_VsB_g" name="extension_CORBAPrimitive" type="_DMSu8UDsEd-pwPnT_VsB_g" aggregation="composite" association="_DMSvJUDsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSvJ0DsEd-pwPnT_VsB_g" name="CORBASequence">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DMSvJ0DsEd-pwPnT_VsB_g" name="CXSequence">
       <eAnnotations xmi:id="_DMSvKEDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DMSvKUDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2406,13 +2367,13 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8C9B0LeAEd-llZTjfksMzQ"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9Ncf0qY5Ed-snc0XvAY1Mg" value="1"/>
       </ownedAttribute>
-      <icon xmi:id="_fMf9cN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-sequence.gif">
-        <eAnnotations xmi:id="_fMf9cd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMf9ct2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz8DwPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-sequence.gif">
+        <eAnnotations xmi:id="_yz8DwfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz8DwvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kIEDsEd-pwPnT_VsB_g" name="CORBAString">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kIEDsEd-pwPnT_VsB_g" name="CXString">
       <eAnnotations xmi:id="_DM4kIUDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DM4kIkDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2423,7 +2384,7 @@
       <generalization xmi:id="_DM4kJUDsEd-pwPnT_VsB_g" general="_DMSuUkDsEd-pwPnT_VsB_g"/>
       <generalization xmi:id="_7JHywCHEEeGd-Nb5_CNoPw" general="_DMSur0DsEd-pwPnT_VsB_g"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kJkDsEd-pwPnT_VsB_g" name="CORBAStruct">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kJkDsEd-pwPnT_VsB_g" name="CXStruct">
       <eAnnotations xmi:id="_DM4kJ0DsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_DM4kKEDsEd-pwPnT_VsB_g" key="members" value="ownedAttribute"/>
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_qwxFgEk3Ed2eBKZvQ89d6g"/>
@@ -2436,27 +2397,24 @@
       <generalization xmi:id="_DM4kLUDsEd-pwPnT_VsB_g" general="_DMSueEDsEd-pwPnT_VsB_g"/>
       <generalization xmi:id="_DM4kLkDsEd-pwPnT_VsB_g" general="_g0Kuo0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_DM4kL0DsEd-pwPnT_VsB_g" general="_DMSur0DsEd-pwPnT_VsB_g"/>
-      <icon xmi:id="_fMgkgN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-structure.gif">
-        <eAnnotations xmi:id="_fMgkgd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMgkgt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz8q0PRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-structure.gif">
+        <eAnnotations xmi:id="_yz8q0fRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz8q0vRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kMEDsEd-pwPnT_VsB_g" name="CORBASupports">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kMEDsEd-pwPnT_VsB_g" name="CXSupports">
       <eAnnotations xmi:id="_DM4kMUDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DM4kMkDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
       <eAnnotations xmi:id="_DM4kM0DsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_bStRgEk2Ed2eBKZvQ89d6g"/>
       </eAnnotations>
-      <ownedAttribute xmi:id="_DM4kNEDsEd-pwPnT_VsB_g" name="base_Generalization" association="_DM4kNUDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DM4kNEDsEd-pwPnT_VsB_g" name="base_Generalization" association="_yztaTvRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Generalization"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DM4kNUDsEd-pwPnT_VsB_g" name="Generalization_CORBASupports" memberEnd="_DM4kNkDsEd-pwPnT_VsB_g _DM4kNEDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DM4kNkDsEd-pwPnT_VsB_g" name="extension_CORBASupports" type="_DM4kMEDsEd-pwPnT_VsB_g" aggregation="composite" association="_DM4kNUDsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kN0DsEd-pwPnT_VsB_g" name="CORBATypeDef">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kN0DsEd-pwPnT_VsB_g" name="CXTypeDef">
       <eAnnotations xmi:id="_DM4kOEDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DM4kOUDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2475,13 +2433,13 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7JIZ0yHEEeGd-Nb5_CNoPw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7JIZ0iHEEeGd-Nb5_CNoPw" value="1"/>
       </ownedAttribute>
-      <icon xmi:id="_fMhLkN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-type-def.gif">
-        <eAnnotations xmi:id="_fMhLkd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMhLkt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz8q0_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-type-def.gif">
+        <eAnnotations xmi:id="_yz8q1PRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz8q1fRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kQEDsEd-pwPnT_VsB_g" name="CORBAUnion">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kQEDsEd-pwPnT_VsB_g" name="CXUnion">
       <eAnnotations xmi:id="_DM4kQUDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DM4kQkDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2493,13 +2451,13 @@
       <generalization xmi:id="_DM4kRkDsEd-pwPnT_VsB_g" general="_DMSueEDsEd-pwPnT_VsB_g"/>
       <generalization xmi:id="_DM4kR0DsEd-pwPnT_VsB_g" general="_g0Kuo0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_DM4kSEDsEd-pwPnT_VsB_g" general="_DMSur0DsEd-pwPnT_VsB_g"/>
-      <icon xmi:id="_fMhyoN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-union.gif">
-        <eAnnotations xmi:id="_fMhyod2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMhyot2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz9R4PRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-union.gif">
+        <eAnnotations xmi:id="_yz9R4fRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz9R4vRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kSUDsEd-pwPnT_VsB_g" name="CORBAValue">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kSUDsEd-pwPnT_VsB_g" name="CXValue">
       <eAnnotations xmi:id="_DM4kSkDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_DM4kS0DsEd-pwPnT_VsB_g" key="isAbstract" value="isAbstract"/>
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_j71qgEk2Ed2eBKZvQ89d6g"/>
@@ -2526,28 +2484,22 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DM4kWEDsEd-pwPnT_VsB_g" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DM4kV0DsEd-pwPnT_VsB_g" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_DM4kWUDsEd-pwPnT_VsB_g" name="base_Interface" association="_DM4kWkDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DM4kWUDsEd-pwPnT_VsB_g" name="base_Interface" association="_yztaUPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DM4kWkDsEd-pwPnT_VsB_g" name="Interface_CORBAValue" memberEnd="_DM4kW0DsEd-pwPnT_VsB_g _DM4kWUDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DM4kW0DsEd-pwPnT_VsB_g" name="extension_CORBAValue" type="_DM4kSUDsEd-pwPnT_VsB_g" aggregation="composite" association="_DM4kWkDsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kXEDsEd-pwPnT_VsB_g" name="CORBAValueFactory">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kXEDsEd-pwPnT_VsB_g" name="CXValueFactory">
       <eAnnotations xmi:id="_DM4kXUDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DM4kXkDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
       <eAnnotations xmi:id="_DM4kX0DsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_tBlHAEk2Ed2eBKZvQ89d6g"/>
       </eAnnotations>
-      <ownedAttribute xmi:id="_DM4kYEDsEd-pwPnT_VsB_g" name="base_Operation" association="_DM4kYUDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DM4kYEDsEd-pwPnT_VsB_g" name="base_Operation" association="_yztaUvRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DM4kYUDsEd-pwPnT_VsB_g" name="Operation_CORBAValueFactory" memberEnd="_DM4kYkDsEd-pwPnT_VsB_g _DM4kYEDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DM4kYkDsEd-pwPnT_VsB_g" name="extension_CORBAValueFactory" type="_DM4kXEDsEd-pwPnT_VsB_g" aggregation="composite" association="_DM4kYUDsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kY0DsEd-pwPnT_VsB_g" name="CORBAModule">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kY0DsEd-pwPnT_VsB_g" name="CXModule">
       <eAnnotations xmi:id="_DM4kZEDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_DM4kZUDsEd-pwPnT_VsB_g" key="contents" value="packagedElement"/>
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_OQD9wEk6Ed2eBKZvQ89d6g"/>
@@ -2558,19 +2510,16 @@
       <generalization xmi:id="_DM4kaEDsEd-pwPnT_VsB_g" general="_g0Kup0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_DM4kaUDsEd-pwPnT_VsB_g" general="_DMSueEDsEd-pwPnT_VsB_g"/>
       <generalization xmi:id="_DM4kakDsEd-pwPnT_VsB_g" general="_g0Kuo0DZEd-LnsQ685SqSQ"/>
-      <ownedAttribute xmi:id="_DM4ka0DsEd-pwPnT_VsB_g" name="base_Package" association="_DM4kbEDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DM4ka0DsEd-pwPnT_VsB_g" name="base_Package" association="_yztaVPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
       </ownedAttribute>
-      <icon xmi:id="_fMiZsN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-module.gif">
-        <eAnnotations xmi:id="_fMiZsd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMiZst2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_yz9R4_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-module.gif">
+        <eAnnotations xmi:id="_yz9R5PRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_yz9R5fRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DM4kbEDsEd-pwPnT_VsB_g" name="Package_CORBAModule" memberEnd="_DM4kbUDsEd-pwPnT_VsB_g _DM4ka0DsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DM4kbUDsEd-pwPnT_VsB_g" name="extension_CORBAModule" type="_DM4kY0DsEd-pwPnT_VsB_g" aggregation="composite" association="_DM4kbEDsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kbkDsEd-pwPnT_VsB_g" name="CORBAAttribute">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kbkDsEd-pwPnT_VsB_g" name="CXAttribute">
       <eAnnotations xmi:id="_DM4kb0DsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_DM4kcEDsEd-pwPnT_VsB_g" key="isReadOnly" value="isReadOnly"/>
         <details xmi:id="_DM4kcUDsEd-pwPnT_VsB_g" key="owner" value="owner"/>
@@ -2596,7 +2545,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DM4ke0DsEd-pwPnT_VsB_g"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DM4kekDsEd-pwPnT_VsB_g" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_DM4kfEDsEd-pwPnT_VsB_g" name="base_Property" association="_DM4kh0DsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DM4kfEDsEd-pwPnT_VsB_g" name="base_Property" association="_yztaVvRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
       </ownedAttribute>
     </packagedElement>
@@ -2618,10 +2567,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DM4khUDsEd-pwPnT_VsB_g" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DM4kh0DsEd-pwPnT_VsB_g" name="Property_CORBAAttribute" memberEnd="_DM4kiEDsEd-pwPnT_VsB_g _DM4kfEDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DM4kiEDsEd-pwPnT_VsB_g" name="extension_CORBAAttribute" type="_DM4kbkDsEd-pwPnT_VsB_g" aggregation="composite" association="_DM4kh0DsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kiUDsEd-pwPnT_VsB_g" name="CORBAOperation">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kiUDsEd-pwPnT_VsB_g" name="CXOperation">
       <eAnnotations xmi:id="_DM4kikDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_DM4ki0DsEd-pwPnT_VsB_g" key="exceptionDef" value="raisedException"/>
         <details xmi:id="_DM4kjEDsEd-pwPnT_VsB_g" key="ownedParameter" value="ownedParameter"/>
@@ -2650,14 +2596,11 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DM4kkkDsEd-pwPnT_VsB_g" value="1"/>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_DM4klEDsEd-pwPnT_VsB_g"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_DM4klUDsEd-pwPnT_VsB_g" name="base_Operation" association="_DM4klkDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DM4klUDsEd-pwPnT_VsB_g" name="base_Operation" association="_yztaWPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DM4klkDsEd-pwPnT_VsB_g" name="Operation_CORBAOperation" memberEnd="_DM4kl0DsEd-pwPnT_VsB_g _DM4klUDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DM4kl0DsEd-pwPnT_VsB_g" name="extension_CORBAOperation" type="_DM4kiUDsEd-pwPnT_VsB_g" aggregation="composite" association="_DM4klkDsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kmEDsEd-pwPnT_VsB_g" name="CORBAField">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4kmEDsEd-pwPnT_VsB_g" name="CXField">
       <eAnnotations xmi:id="_DM4kmUDsEd-pwPnT_VsB_g" source="uml2.extensions">
         <details xmi:id="_DM4kmkDsEd-pwPnT_VsB_g" key="suppressed" value="true"/>
       </eAnnotations>
@@ -2681,14 +2624,11 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8C9B1LeAEd-llZTjfksMzQ"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OIDoBAiuEeKRLb9QlVnXvQ" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_DM4knkDsEd-pwPnT_VsB_g" name="base_Property" association="_DM4kn0DsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DM4knkDsEd-pwPnT_VsB_g" name="base_Property" association="_yztaWvRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DM4kn0DsEd-pwPnT_VsB_g" name="Property_CORBAField" memberEnd="_DM4koEDsEd-pwPnT_VsB_g _DM4knkDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DM4koEDsEd-pwPnT_VsB_g" name="extension_CORBAField" type="_DM4kmEDsEd-pwPnT_VsB_g" aggregation="composite" association="_DM4kn0DsEd-pwPnT_VsB_g"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4koUDsEd-pwPnT_VsB_g" name="CORBAParameter">
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_DM4koUDsEd-pwPnT_VsB_g" name="CXParameter">
       <eAnnotations xmi:id="_DM4kokDsEd-pwPnT_VsB_g" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <details xmi:id="_DM4ko0DsEd-pwPnT_VsB_g" key="direction" value="direction"/>
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_kTyfsMJdEd6QAZgNaBtgeQ"/>
@@ -2698,12 +2638,9 @@
       </eAnnotations>
       <generalization xmi:id="_DM4kpkDsEd-pwPnT_VsB_g" general="_DMSumEDsEd-pwPnT_VsB_g"/>
       <generalization xmi:id="_DM4kp0DsEd-pwPnT_VsB_g" general="_g0Kup0DZEd-LnsQ685SqSQ"/>
-      <ownedAttribute xmi:id="_DM4kqEDsEd-pwPnT_VsB_g" name="base_Parameter" association="_DM4kqUDsEd-pwPnT_VsB_g">
+      <ownedAttribute xmi:id="_DM4kqEDsEd-pwPnT_VsB_g" name="base_Parameter" association="_yztaXPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
       </ownedAttribute>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Extension" xmi:id="_DM4kqUDsEd-pwPnT_VsB_g" name="Parameter_CORBAParameter" memberEnd="_DM4kqkDsEd-pwPnT_VsB_g _DM4kqEDsEd-pwPnT_VsB_g">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_DM4kqkDsEd-pwPnT_VsB_g" name="extension_CORBAParameter" type="_DM4koUDsEd-pwPnT_VsB_g" aggregation="composite" association="_DM4kqUDsEd-pwPnT_VsB_g"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="_nqN9QEP0Ed-BuJd8WZf3zg" name="StateMember">
       <eAnnotations xmi:id="_nqN9QUP0Ed-BuJd8WZf3zg" source="uml2.extensions">
@@ -2737,9 +2674,9 @@
       <ownedAttribute xmi:id="_D7sc0N2DEeCFd_3AYyO5-w" name="base_Component" association="_D69dCt2DEeCFd_3AYyO5-w">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_fM8pYN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.idl3plus/icons/obj16/connector-instance.gif">
-        <eAnnotations xmi:id="_fM8pYd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM8pYt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0L7Y_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.idl3plus/icons/obj16/connector-instance.gif">
+        <eAnnotations xmi:id="_y0L7ZPRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0L7ZfRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2751,9 +2688,9 @@
         <references xmi:type="uml:Class" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml#_98gSoFbDEd-qZqT4KPzhew"/>
       </eAnnotations>
       <generalization xmi:id="_ai8w1FbTEd-qZqT4KPzhew" general="_g0KuK0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_fM8pY92NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/component-interface.gif">
-        <eAnnotations xmi:id="_fM8pZN2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM8pZd2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0MicPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/component-interface.gif">
+        <eAnnotations xmi:id="_y0MicfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0MicvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2765,9 +2702,9 @@
         <references xmi:type="uml:Class" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml#_XLhN4FbGEd-qZqT4KPzhew"/>
       </eAnnotations>
       <generalization xmi:id="_ai8w2VbTEd-qZqT4KPzhew" general="_g0Ktu0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_fM9QcN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_fM9Qcd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM9Qct2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0Mic_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_y0MidPRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0MidfRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2779,9 +2716,9 @@
         <references xmi:type="uml:Class" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml#_bH2gkFbGEd-qZqT4KPzhew"/>
       </eAnnotations>
       <generalization xmi:id="_ai8w3lbTEd-qZqT4KPzhew" general="_g0Ktu0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_fM9Qc92NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_fM9QdN2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM9Qdd2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0MidvRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_y0Mid_RaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0MiePRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2793,9 +2730,9 @@
         <references xmi:type="uml:Class" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml#_enDyYFbGEd-qZqT4KPzhew"/>
       </eAnnotations>
       <generalization xmi:id="_ai8w41bTEd-qZqT4KPzhew" general="_g0Ktu0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_fM9Qdt2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_fM9Qd92NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM9QeN2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0MiefRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_y0MievRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0Mie_RaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2807,9 +2744,9 @@
         <references xmi:type="uml:Class" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml#_gJRzEFbGEd-qZqT4KPzhew"/>
       </eAnnotations>
       <generalization xmi:id="_ai8w6FbTEd-qZqT4KPzhew" general="_g0Ktu0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_fM9Qed2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_fM9Qet2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM9Qe92NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0MifPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_y0MiffRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0MifvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -3034,9 +2971,9 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_U4XNMys-EeGtwangT5G8rQ" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_U4XNMis-EeGtwangT5G8rQ" value="1"/>
       </ownedAttribute>
-      <icon xmi:id="_fM8CUN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
-        <eAnnotations xmi:id="_fM8CUd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM8CUt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0L7YPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
+        <eAnnotations xmi:id="_y0L7YfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0L7YvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -3808,9 +3745,9 @@
         <details xmi:id="_cZKTxne9Ed--prUugl772A" key="suppressed" value="true"/>
       </eAnnotations>
       <generalization xmi:id="_cZKTx3e9Ed--prUugl772A" general="_DM4kJkDsEd-pwPnT_VsB_g"/>
-      <icon xmi:id="_fMzfcN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-structure.gif">
-        <eAnnotations xmi:id="_fMzfcd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMzfct2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0Gb0PRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-structure.gif">
+        <eAnnotations xmi:id="_y0Gb0fRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0Gb0vRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4092,9 +4029,9 @@
       <ownedAttribute xmi:id="_QzrmwpNOEd-YreyWz-e3IQ" name="base_Component" association="_Qzrmw5NOEd-YreyWz-e3IQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_fM1UoN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/domain.gif">
-        <eAnnotations xmi:id="_fM1Uod2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM1Uot2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0Hp8PRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/domain.gif">
+        <eAnnotations xmi:id="_y0Hp8fRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0Hp8vRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4112,9 +4049,9 @@
       <ownedAttribute xmi:id="_QzrmypNOEd-YreyWz-e3IQ" name="base_Component" association="_Qzrmy5NOEd-YreyWz-e3IQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_fM1Uo92NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/node.gif">
-        <eAnnotations xmi:id="_fM1UpN2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM1Upd2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0Hp8_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/node.gif">
+        <eAnnotations xmi:id="_y0Hp9PRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0Hp9fRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4156,9 +4093,9 @@
       <ownedAttribute xmi:id="_Qzrm35NOEd-YreyWz-e3IQ" name="base_Component" association="_Qzrm4JNOEd-YreyWz-e3IQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_fM17sN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/interconnect.gif">
-        <eAnnotations xmi:id="_fM17sd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM17st2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0IRAPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/interconnect.gif">
+        <eAnnotations xmi:id="_y0IRAfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0IRAvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4200,9 +4137,9 @@
       <ownedAttribute xmi:id="_Qzrm9JNOEd-YreyWz-e3IQ" name="base_Component" association="_Qzrm9ZNOEd-YreyWz-e3IQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_fM2iwN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/bridge.gif">
-        <eAnnotations xmi:id="_fM2iwd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM2iwt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0IRA_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/bridge.gif">
+        <eAnnotations xmi:id="_y0IRBPRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0IRBfRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4430,9 +4367,9 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JdX-45jdEd-gWNehg3S3_A" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JdX-4pjdEd-gWNehg3S3_A" value="1"/>
       </ownedAttribute>
-      <icon xmi:id="_fNCwAN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/deployment.gif">
-        <eAnnotations xmi:id="_fNCwAd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fNCwAt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0OXoPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/deployment.gif">
+        <eAnnotations xmi:id="_y0OXofRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0OXovRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4448,9 +4385,9 @@
       <ownedAttribute xmi:id="_CiHeW5Q6Ed-McPbQMy4vSQ" name="base_Component" association="_CiHeXJQ6Ed-McPbQMy4vSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_fMpHYN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/deployment.gif">
-        <eAnnotations xmi:id="_fMpHYd2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fMpHYt2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0AVMPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/deployment.gif">
+        <eAnnotations xmi:id="_y0AVMfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0AVMvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4664,9 +4601,9 @@
       <ownedAttribute xmi:id="_QZADVJZjEd-guOCMdwguFQ" name="base_Component" association="_QZADVZZjEd-guOCMdwguFQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_fNCwA92NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/Pinion.png">
-        <eAnnotations xmi:id="_fNCwBN2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fNCwBd2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0OXo_RaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/Pinion.png">
+        <eAnnotations xmi:id="_y0OXpPRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0OXpfRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4715,9 +4652,9 @@
       <ownedAttribute xmi:id="_pZFlwOCAEeChj9kc_ODq2A" name="base_Class" association="_pYODEOCAEeChj9kc_ODq2A">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
       </ownedAttribute>
-      <icon xmi:id="_fNCwBt2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port-type.gif">
-        <eAnnotations xmi:id="_fNCwB92NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fNCwCN2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0O-sPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port-type.gif">
+        <eAnnotations xmi:id="_y0O-sfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0O-svRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4822,9 +4759,9 @@
       <ownedAttribute xmi:id="_3t7kvDuKEeCo7vyTL7mCZg" name="base_Package" association="_3t7kxzuKEeCo7vyTL7mCZg">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
       </ownedAttribute>
-      <icon xmi:id="_fM_FoN2NEeqPDIuCTv8SYg" location="platform:/plugin/com.zeligsoft.domain.idl3plus/icons/obj16/properties.gif">
-        <eAnnotations xmi:id="_fM_Fod2NEeqPDIuCTv8SYg" source="image_papyrus">
-          <details xmi:id="_fM_Fot2NEeqPDIuCTv8SYg" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_y0NJgPRaEeqtC6nolUobjA" location="platform:/plugin/com.zeligsoft.domain.idl3plus/icons/obj16/properties.gif">
+        <eAnnotations xmi:id="_y0NJgfRaEeqtC6nolUobjA" source="image_papyrus">
+          <details xmi:id="_y0NJgvRaEeqtC6nolUobjA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4971,7 +4908,7 @@
     <packagedElement xmi:type="uml:Extension" xmi:id="_tj6TYFJuEeGgypyl0ZsOMw" name="NamedElement_DataSpace" memberEnd="_tj6TYVJuEeGgypyl0ZsOMw _tkaCoVJuEeGgypyl0ZsOMw">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_tj6TYVJuEeGgypyl0ZsOMw" name="extension_DataSpace" type="_cZE0MHe9Ed--prUugl772A" aggregation="composite" association="_tj6TYFJuEeGgypyl0ZsOMw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_VFyLMJB1EeG3w4bnc767Ng" name="CORBABound">
+    <packagedElement xmi:type="uml:Class" xmi:id="_VFyLMJB1EeG3w4bnc767Ng" name="CXBound">
       <eAnnotations xmi:id="_VFyLMZB1EeG3w4bnc767Ng" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <references xmi:type="uml:Class" href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml#_vWz-sIPiEeGRety5GrZr1Q"/>
       </eAnnotations>
@@ -5107,6 +5044,69 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_j5f-Q91wEeq8rrSIt0niRA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_j5f-RN1wEeq8rrSIt0niRA" value="*"/>
       </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yzszMPRaEeqtC6nolUobjA" name="NamedElement_CXNamedElement" memberEnd="_yzszMfRaEeqtC6nolUobjA _g0Kuq0DZEd-LnsQ685SqSQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yzszMfRaEeqtC6nolUobjA" name="extension_CXNamedElement" type="_g0Kup0DZEd-LnsQ685SqSQ" aggregation="composite" association="_yzszMPRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yzszMvRaEeqtC6nolUobjA" name="Property_CXConstant" memberEnd="_yzszM_RaEeqtC6nolUobjA _DMSupEDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yzszM_RaEeqtC6nolUobjA" name="extension_CXConstant" type="_DMSun0DsEd-pwPnT_VsB_g" aggregation="composite" association="_yzszMvRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yzszNPRaEeqtC6nolUobjA" name="DataType_CXBounded" memberEnd="_yzszNfRaEeqtC6nolUobjA _DMSuT0DsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yzszNfRaEeqtC6nolUobjA" name="extension_CXBounded" type="_DMSuRkDsEd-pwPnT_VsB_g" aggregation="composite" association="_yzszNPRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yzszNvRaEeqtC6nolUobjA" name="DataType_CXAnonymousArray" memberEnd="_yzszN_RaEeqtC6nolUobjA _DMSuWkDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yzszN_RaEeqtC6nolUobjA" name="extension_CXAnonymousArray" type="_DMSuVkDsEd-pwPnT_VsB_g" aggregation="composite" association="_yzszNvRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yzszOPRaEeqtC6nolUobjA" name="DataType_CXAnonymousSequence" memberEnd="_yzszOfRaEeqtC6nolUobjA _DMSuYUDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yzszOfRaEeqtC6nolUobjA" name="extension_CXAnonymousSequence" type="_DMSuXUDsEd-pwPnT_VsB_g" aggregation="composite" association="_yzszOPRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yzszOvRaEeqtC6nolUobjA" name="DataType_CXTemplate" memberEnd="_yzszO_RaEeqtC6nolUobjA _DMSudUDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yzszO_RaEeqtC6nolUobjA" name="extension_CXTemplate" type="_DMSucEDsEd-pwPnT_VsB_g" aggregation="composite" association="_yzszOvRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaQPRaEeqtC6nolUobjA" name="DataType_CXWrapper" memberEnd="_yztaQfRaEeqtC6nolUobjA _DMSuhkDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaQfRaEeqtC6nolUobjA" name="extension_CXWrapper" type="_DMSugUDsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaQPRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaQvRaEeqtC6nolUobjA" name="Property_CXUnionField" memberEnd="_yztaQ_RaEeqtC6nolUobjA _DMSul0DsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaQ_RaEeqtC6nolUobjA" name="extension_CXUnionField" type="_DMSukUDsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaQvRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaRPRaEeqtC6nolUobjA" name="Class_CXConstants" memberEnd="_yztaRfRaEeqtC6nolUobjA _DMSurkDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaRfRaEeqtC6nolUobjA" name="extension_CXConstants" type="_DMSup0DsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaRPRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaRvRaEeqtC6nolUobjA" name="DataType_CXConstructed" memberEnd="_yztaR_RaEeqtC6nolUobjA _DMSuukDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaR_RaEeqtC6nolUobjA" name="extension_CXConstructed" type="_DMSutUDsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaRvRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaSPRaEeqtC6nolUobjA" name="Enumeration_CXEnum" memberEnd="_yztaSfRaEeqtC6nolUobjA _DMSuy0DsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaSfRaEeqtC6nolUobjA" name="extension_CXEnum" type="_DMSuwkDsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaSPRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaSvRaEeqtC6nolUobjA" name="Interface_CXInterface" memberEnd="_yztaS_RaEeqtC6nolUobjA _DMSu5UDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaS_RaEeqtC6nolUobjA" name="extension_CXInterface" type="_DMSu10DsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaSvRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaTPRaEeqtC6nolUobjA" name="DataType_CXPrimitive" memberEnd="_yztaTfRaEeqtC6nolUobjA _DMSu_EDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaTfRaEeqtC6nolUobjA" name="extension_CXPrimitive" type="_DMSu8UDsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaTPRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaTvRaEeqtC6nolUobjA" name="Generalization_CXSupports" memberEnd="_yztaT_RaEeqtC6nolUobjA _DM4kNEDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaT_RaEeqtC6nolUobjA" name="extension_CXSupports" type="_DM4kMEDsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaTvRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaUPRaEeqtC6nolUobjA" name="Interface_CXValue" memberEnd="_yztaUfRaEeqtC6nolUobjA _DM4kWUDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaUfRaEeqtC6nolUobjA" name="extension_CXValue" type="_DM4kSUDsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaUPRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaUvRaEeqtC6nolUobjA" name="Operation_CXValueFactory" memberEnd="_yztaU_RaEeqtC6nolUobjA _DM4kYEDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaU_RaEeqtC6nolUobjA" name="extension_CXValueFactory" type="_DM4kXEDsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaUvRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaVPRaEeqtC6nolUobjA" name="Package_CXModule" memberEnd="_yztaVfRaEeqtC6nolUobjA _DM4ka0DsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaVfRaEeqtC6nolUobjA" name="extension_CXModule" type="_DM4kY0DsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaVPRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaVvRaEeqtC6nolUobjA" name="Property_CXAttribute" memberEnd="_yztaV_RaEeqtC6nolUobjA _DM4kfEDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaV_RaEeqtC6nolUobjA" name="extension_CXAttribute" type="_DM4kbkDsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaVvRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaWPRaEeqtC6nolUobjA" name="Operation_CXOperation" memberEnd="_yztaWfRaEeqtC6nolUobjA _DM4klUDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaWfRaEeqtC6nolUobjA" name="extension_CXOperation" type="_DM4kiUDsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaWPRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaWvRaEeqtC6nolUobjA" name="Property_CXField" memberEnd="_yztaW_RaEeqtC6nolUobjA _DM4knkDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaW_RaEeqtC6nolUobjA" name="extension_CXField" type="_DM4kmEDsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaWvRaEeqtC6nolUobjA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_yztaXPRaEeqtC6nolUobjA" name="Parameter_CXParameter" memberEnd="_yztaXfRaEeqtC6nolUobjA _DM4kqEDsEd-pwPnT_VsB_g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_yztaXfRaEeqtC6nolUobjA" name="extension_CXParameter" type="_DM4koUDsEd-pwPnT_VsB_g" aggregation="composite" association="_yztaXPRaEeqtC6nolUobjA"/>
     </packagedElement>
     <profileApplication xmi:id="_g0Ku00DZEd-LnsQ685SqSQ">
       <eAnnotations xmi:id="_g0Ku1EDZEd-LnsQ685SqSQ" source="http://www.eclipse.org/uml2/2.0.0/UML">

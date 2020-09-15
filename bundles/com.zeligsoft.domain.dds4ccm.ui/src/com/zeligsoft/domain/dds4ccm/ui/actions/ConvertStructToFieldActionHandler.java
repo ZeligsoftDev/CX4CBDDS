@@ -31,10 +31,10 @@ import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
- * Action to convert a CORBAStruct to a DDSMessage
+ * Action to convert a CXStruct to a DDSMessage
  * 
  * @author smcfee
  *
@@ -54,7 +54,7 @@ public class ConvertStructToFieldActionHandler extends AbstractHandler {
 
 		EObject selObject = BaseUIUtil.getEObjectFromSelection(BaseUIUtil.getSelection());
 
-		if (selObject != null && ZDLUtil.isZDLConcept(selObject, CORBADomainNames.CORBASTRUCT)) {
+		if (selObject != null && ZDLUtil.isZDLConcept(selObject, CXDomainNames.CXSTRUCT)) {
 
 			Command command = new ConvertStructToFieldCommand(selObject, Messages.ConvertStructToField_DialogTitle);
 
@@ -101,7 +101,7 @@ public class ConvertStructToFieldActionHandler extends AbstractHandler {
 		@Override
 		protected void doExecute() {
 
-			if (ZDLUtil.isZDLConcept(refactorObject, CORBADomainNames.CORBASTRUCT)) {
+			if (ZDLUtil.isZDLConcept(refactorObject, CXDomainNames.CXSTRUCT)) {
 
 				refactorCount++;
 				DDS4CCMUtil.convertCORBAStructToDDSMessage((Element) refactorObject);

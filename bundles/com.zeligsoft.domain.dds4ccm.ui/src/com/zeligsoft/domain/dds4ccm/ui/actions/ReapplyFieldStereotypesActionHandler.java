@@ -31,10 +31,10 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
- * Reapplies stereotypes to fields of CORBAStruct and DDSMessage
+ * Reapplies stereotypes to fields of CXStruct and DDSMessage
  * 
  * @author parmvirs
  * 
@@ -50,7 +50,7 @@ public class ReapplyFieldStereotypesActionHandler extends AbstractHandler {
 
 		if (selObject != null
 				&& (ZDLUtil.isZDLConcept(selObject, DDS4CCMNames.DDSMESSAGE) || ZDLUtil
-						.isZDLConcept(selObject, CORBADomainNames.CORBASTRUCT))) {
+						.isZDLConcept(selObject, CXDomainNames.CXSTRUCT))) {
 
 			RecordingCommand command = new ReapplyFieldStereotypesCommand(
 					selObject, Messages.ReapplyFieldStereotypes_DialogTitle);
@@ -97,7 +97,7 @@ public class ReapplyFieldStereotypesActionHandler extends AbstractHandler {
 
 			if (ZDLUtil.isZDLConcept(refactorObject, DDS4CCMNames.DDSMESSAGE)
 					|| ZDLUtil.isZDLConcept(refactorObject,
-							CORBADomainNames.CORBASTRUCT)) {
+							CXDomainNames.CXSTRUCT)) {
 				stereotypeApplied = DDS4CCMUtil
 						.reapplyFieldStereotypes((Element) refactorObject);
 			}

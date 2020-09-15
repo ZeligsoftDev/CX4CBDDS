@@ -43,24 +43,8 @@ import org.eclipse.uml2.uml.Port;
  */
 public class PortDelegationCompleteConstraint extends AbstractModelConstraint {
 
-	/**
-	 * Disable UML constraint
-	 */
-	private void disableUMLConstraint() {
-
-		IConstraintDescriptor desc = ConstraintRegistry
-				.getInstance()
-				.getDescriptor(
-						"com.ibm.xtools.uml.validation.components.delegationComplete"); //$NON-NLS-1$
-		if (desc != null && desc.isEnabled()) {
-			desc.setEnabled(false);
-		}
-	}
-
 	@Override
 	public IStatus validate(IValidationContext ctx) {
-
-		disableUMLConstraint();
 
 		EObject objToVerify = ctx.getTarget();
 

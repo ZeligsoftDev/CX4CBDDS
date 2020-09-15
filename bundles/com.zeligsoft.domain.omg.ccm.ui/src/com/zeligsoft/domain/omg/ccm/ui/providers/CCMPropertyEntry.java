@@ -61,7 +61,7 @@ import com.zeligsoft.cx.ui.providers.IPropertyEntry;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.util.CORBAUtil;
 import com.zeligsoft.domain.zml.util.ZDeploymentUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
@@ -177,9 +177,9 @@ public class CCMPropertyEntry implements IPropertyEntry {
 	public String getPropertyColumnLabel(int column) {
 		if (column == 0) {
 			if (ZDLUtil.isZDLConcept(modelObject,
-					CORBADomainNames.CORBAATTRIBUTE)
+					CXDomainNames.CXATTRIBUTE)
 					|| ZDLUtil.isZDLConcept(modelObject,
-							CORBADomainNames.CORBAFIELD)
+							CXDomainNames.CXFIELD)
 					|| ZDLUtil.isZDLConcept(modelObject,
 							CCMNames.SATISFIER_PROPERTY)
 					|| ZDLUtil.isZDLConcept(modelObject,
@@ -190,7 +190,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 				if (type != null) {
 					typeName = ":" + type.getName(); //$NON-NLS-1$
 					if (ZDLUtil.isZDLConcept(type,
-							CORBADomainNames.CORBATYPE_DEF)) {
+							CXDomainNames.CXTYPE_DEF)) {
 						type = (Type) CORBAUtil.getTypeDefType(type);
 						String typedefType = Messages.CCMPropertyEntry_TypeUndefinedLabel;
 						if (type != null) {
@@ -208,7 +208,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 					}
 				}
 				if (ZDLUtil.isZDLConcept(modelObject,
-						CORBADomainNames.CORBAATTRIBUTE)) {
+						CXDomainNames.CXATTRIBUTE)) {
 					if (modelObject.eContainer() != null
 							&& ZDLUtil.isZDLConcept(modelObject.eContainer(),
 									ZMLMMNames.PORT_TYPE)) {
@@ -221,7 +221,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 
 			if (modelObject instanceof Property) {
 				Property p = (Property) modelObject;
-				if (p.getName().equals(CORBADomainNames.CORBASTRUCT__MEMBERS)
+				if (p.getName().equals(CXDomainNames.CXSTRUCT__MEMBERS)
 						|| p.getName().equals("member")) { //$NON-NLS-1$
 					return p.getType().getName();
 				}
@@ -269,11 +269,11 @@ public class CCMPropertyEntry implements IPropertyEntry {
 				StructuralFeature feature = ((Slot) modelObject.eContainer())
 						.getDefiningFeature();
 				if (!ZDLUtil.isZDLConcept(feature.getType(),
-						CORBADomainNames.CORBASEQUENCE)
+						CXDomainNames.CXSEQUENCE)
 						&& !ZDLUtil.isZDLConcept(feature.getType(),
-								CORBADomainNames.CORBAARRAY)
+								CXDomainNames.CXARRAY)
 						&& !ZDLUtil.isZDLConcept(feature.getType(),
-								CORBADomainNames.CORBASTRUCT)) {
+								CXDomainNames.CXSTRUCT)) {
 					value = CCMUtil
 							.getValueFromValueSpecification((ValueSpecification) modelObject);
 				}
@@ -356,11 +356,11 @@ public class CCMPropertyEntry implements IPropertyEntry {
 
 	private boolean isCompositeType(Type type) {
 		if (type != null
-				&& (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASTRUCT)
+				&& (ZDLUtil.isZDLConcept(type, CXDomainNames.CXSTRUCT)
 						|| ZDLUtil.isZDLConcept(type,
-								CORBADomainNames.CORBASEQUENCE)
+								CXDomainNames.CXSEQUENCE)
 						|| ZDLUtil.isZDLConcept(type,
-								CORBADomainNames.CORBAARRAY)
+								CXDomainNames.CXARRAY)
 						|| ZDLUtil.isZDLConcept(type, CCMNames.RESOURCE) || ZDLUtil
 							.isZDLConcept(type, ZMLMMNames.PORT_TYPE))) {
 			return true;
@@ -384,9 +384,9 @@ public class CCMPropertyEntry implements IPropertyEntry {
 			return null;
 		}
 
-		if (!ZDLUtil.isZDLConcept(modelObject, CORBADomainNames.CORBAATTRIBUTE)
+		if (!ZDLUtil.isZDLConcept(modelObject, CXDomainNames.CXATTRIBUTE)
 				&& !ZDLUtil.isZDLConcept(modelObject,
-						CORBADomainNames.CORBAFIELD)
+						CXDomainNames.CXFIELD)
 				&& !ZDLUtil.isZDLConcept(modelObject,
 						CCMNames.SATISFIER_PROPERTY)
 				&& !ZDLUtil.isZDLConcept(modelObject, CCMNames.PROPERTY)) {
@@ -423,11 +423,11 @@ public class CCMPropertyEntry implements IPropertyEntry {
 					.getDefiningFeature();
 			if (feature.getType() != null
 					&& !ZDLUtil.isZDLConcept(feature.getType(),
-							CORBADomainNames.CORBASTRUCT)
+							CXDomainNames.CXSTRUCT)
 					&& !ZDLUtil.isZDLConcept(feature.getType(),
-							CORBADomainNames.CORBASEQUENCE)
+							CXDomainNames.CXSEQUENCE)
 					&& !ZDLUtil.isZDLConcept(feature.getType(),
-							CORBADomainNames.CORBAARRAY)) {
+							CXDomainNames.CXARRAY)) {
 				return true;
 			}
 		}
@@ -437,10 +437,10 @@ public class CCMPropertyEntry implements IPropertyEntry {
 
 		Type type = ((Property) modelObject).getType();
 		if (type != null
-				&& (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASTRUCT)
+				&& (ZDLUtil.isZDLConcept(type, CXDomainNames.CXSTRUCT)
 						|| ZDLUtil.isZDLConcept(type,
-								CORBADomainNames.CORBASEQUENCE) || ZDLUtil
-							.isZDLConcept(type, CORBADomainNames.CORBAARRAY))) {
+								CXDomainNames.CXSEQUENCE) || ZDLUtil
+							.isZDLConcept(type, CXDomainNames.CXARRAY))) {
 			return false;
 		}
 
@@ -448,13 +448,13 @@ public class CCMPropertyEntry implements IPropertyEntry {
 				|| ZDLUtil.isZDLConcept(modelObject, CCMNames.PROPERTY)) {
 			return true;
 		}
-		if (ZDLUtil.isZDLConcept(modelObject, CORBADomainNames.CORBAFIELD)) {
+		if (ZDLUtil.isZDLConcept(modelObject, CXDomainNames.CXFIELD)) {
 			return true;
 		}
 		if (((Property) modelObject).getName().startsWith("member")) { //$NON-NLS-1$
 			return true;
 		}
-		if (!ZDLUtil.isZDLConcept(modelObject, CORBADomainNames.CORBAATTRIBUTE)) {
+		if (!ZDLUtil.isZDLConcept(modelObject, CXDomainNames.CXATTRIBUTE)) {
 			return false;
 		}
 
@@ -664,7 +664,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 						.eContainer()).getDefiningFeature();
 				if (feature.getType() != null
 						&& !ZDLUtil.isZDLConcept(feature.getType(),
-								CORBADomainNames.CORBASTRUCT)) {
+								CXDomainNames.CXSTRUCT)) {
 					InstanceSpecification spec = ((InstanceValue) subEntry
 							.getModelObject()).getInstance();
 					ValueSpecification propertyValue = spec.getSpecification();
@@ -724,9 +724,9 @@ public class CCMPropertyEntry implements IPropertyEntry {
 
 			if (isCompositeType(attribute.getType())) {
 				if (!((ZDLUtil.isZDLConcept(attribute.getType(),
-						CORBADomainNames.CORBASEQUENCE) && subEntry == this) || (ZDLUtil
+						CXDomainNames.CXSEQUENCE) && subEntry == this) || (ZDLUtil
 						.isZDLConcept(attribute.getType(),
-								CORBADomainNames.CORBAARRAY) && subEntry == this))) {
+								CXDomainNames.CXARRAY) && subEntry == this))) {
 					saveValue(destSlot, subEntry, container);
 					continue;
 				}
@@ -807,9 +807,9 @@ public class CCMPropertyEntry implements IPropertyEntry {
 		if (modelObject instanceof Property
 				&& ((Property) modelObject).getType() != null) {
 			return ZDLUtil.isZDLConcept(((Property) modelObject).getType(),
-					CORBADomainNames.CORBASEQUENCE)
+					CXDomainNames.CXSEQUENCE)
 					|| ZDLUtil.isZDLConcept(((Property) modelObject).getType(),
-							CORBADomainNames.CORBAARRAY);
+							CXDomainNames.CXARRAY);
 		}
 		return false;
 	}
@@ -853,19 +853,19 @@ public class CCMPropertyEntry implements IPropertyEntry {
 				CCMNames.RESOURCE_PROPERTY)) {
 			result.add(entry.getModelObject());
 		} else if (ZDLUtil.isZDLConcept(entry.getModelObject(),
-				CORBADomainNames.CORBAATTRIBUTE)
+				CXDomainNames.CXATTRIBUTE)
 				|| ZDLUtil.isZDLConcept(entry.getModelObject(),
-						CORBADomainNames.CORBAFIELD)
+						CXDomainNames.CXFIELD)
 				|| ZDLUtil.isZDLConcept(entry.getModelObject(),
 						CCMNames.PROPERTY)) {
 			Property property = (Property) entry.getModelObject();
 			if (property.getType() != null
 					&& (ZDLUtil.isZDLConcept(property.getType(),
-							CORBADomainNames.CORBASTRUCT)
+							CXDomainNames.CXSTRUCT)
 							|| ZDLUtil.isZDLConcept(property.getType(),
-									CORBADomainNames.CORBASEQUENCE) || ZDLUtil
+									CXDomainNames.CXSEQUENCE) || ZDLUtil
 								.isZDLConcept(property.getType(),
-										CORBADomainNames.CORBAARRAY))) {
+										CXDomainNames.CXARRAY))) {
 				result.add(entry.getModelObject());
 			}
 		} else if (entry.getModelObject() instanceof ValueSpecification) {
@@ -913,7 +913,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 					slot = instance.createSlot();
 					slot.setDefiningFeature(member);
 				}
-				if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAARRAY)) {
+				if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXARRAY)) {
 					int bound = CORBAUtil.getBound(type);
 					int slotSize = slot.getValues().size();
 					for (int i = slotSize; i < bound; i++) {
@@ -993,7 +993,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 					return CommandResult.newOKCommandResult();
 				}
 				EObject type = ((Property) modelObject).getType();
-				if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBAARRAY)) {
+				if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXARRAY)) {
 					Iterator<ValueSpecification> itor = slot.getValues()
 							.iterator();
 					while (itor.hasNext()) {
@@ -1077,7 +1077,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 		if (instanceValue.eContainer() instanceof Slot) {
 			String featureName = ((Slot) instanceValue.eContainer())
 					.getDefiningFeature().getName();
-			if (CORBADomainNames.CORBASTRUCT__MEMBERS.equals(featureName)
+			if (CXDomainNames.CXSTRUCT__MEMBERS.equals(featureName)
 					|| "member" //$NON-NLS-1$
 					.equals(featureName)) {
 				return true;
@@ -1176,8 +1176,8 @@ public class CCMPropertyEntry implements IPropertyEntry {
 			Type type = ((Property) modelObject).getType();
 			if (type != null
 					&& (ZDLUtil.isZDLConcept(type,
-							CORBADomainNames.CORBASEQUENCE) || ZDLUtil
-							.isZDLConcept(type, CORBADomainNames.CORBAARRAY))) {
+							CXDomainNames.CXSEQUENCE) || ZDLUtil
+							.isZDLConcept(type, CXDomainNames.CXARRAY))) {
 				DataType sequence = (DataType) type;
 				InstanceSpecification partInstance = getRootInstanceSpecification();
 				if (partInstance != null) {
@@ -1199,7 +1199,7 @@ public class CCMPropertyEntry implements IPropertyEntry {
 			Type type = ((Property) modelObject).getType();
 			if (type != null
 					&& ZDLUtil.isZDLConcept(type,
-							CORBADomainNames.CORBASEQUENCE)) {
+							CXDomainNames.CXSEQUENCE)) {
 				final DataType sequence = (DataType) type;
 				InstanceSpecification partInstance = getRootInstanceSpecification();
 				if (partInstance != null) {

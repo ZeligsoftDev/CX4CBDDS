@@ -15,7 +15,6 @@ public interface Publisher extends PublisherSubscriber {
 	 * A predicate which returns true if the Object is an
 	 * instance of Publisher
 	 */
-	static final TypeSelectPredicate<Publisher> type = new TypeSelectPredicate<Publisher>(
-			"DDS::DCPS::Publisher", //$NON-NLS-1$
+	static final TypeSelectPredicate<Publisher> type = new TypeSelectPredicate<Publisher>("DDS::DCPS::Publisher", //$NON-NLS-1$
 			Publisher.class);
 }

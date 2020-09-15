@@ -12,8 +12,7 @@ public interface DDSComponent extends NamedEntity {
 
 	void addTopicConnector(TopicConnector val);
 
-	<T extends TopicConnector> T addTopicConnector(Class<T> typeToCreate,
-			String concept);
+	<T extends TopicConnector> T addTopicConnector(Class<T> typeToCreate, String concept);
 
 	TopicConnector addTopicConnector();
 

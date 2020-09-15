@@ -21,8 +21,7 @@ public interface Topic extends NamedElement {
 
 	void addQosProperty(qosProperty val);
 
-	<T extends qosProperty> T addQosProperty(Class<T> typeToCreate,
-			String concept);
+	<T extends qosProperty> T addQosProperty(Class<T> typeToCreate, String concept);
 
 	qosProperty addQosProperty();
 
@@ -32,7 +31,6 @@ public interface Topic extends NamedElement {
 	 * A predicate which returns true if the Object is an
 	 * instance of Topic
 	 */
-	static final TypeSelectPredicate<Topic> type = new TypeSelectPredicate<Topic>(
-			"DDS::Topics::Topic", //$NON-NLS-1$
+	static final TypeSelectPredicate<Topic> type = new TypeSelectPredicate<Topic>("DDS::Topics::Topic", //$NON-NLS-1$
 			Topic.class);
 }

@@ -12,16 +12,14 @@ public class efQosPolicyZImpl extends qosPolicyZImpl implements efQosPolicy {
 
 	@Override
 	public Boolean getAutoenable_created_entities() {
-		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(
-				eObject(), "DDS::QOS::efQosPolicy",
+		final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "DDS::QOS::efQosPolicy",
 				"autoenable_created_entities");
 		return (Boolean) rawValue;
 	}
 
 	@Override
 	public void setAutoenable_created_entities(Boolean val) {
-		ZDLUtil.setValue(element, "DDS::QOS::efQosPolicy",
-				"autoenable_created_entities", val);
+		ZDLUtil.setValue(element, "DDS::QOS::efQosPolicy", "autoenable_created_entities", val);
 	}
 
 }

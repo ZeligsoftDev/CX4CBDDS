@@ -27,7 +27,7 @@ import com.zeligsoft.domain.dds4ccm.api.DDS4CCM.ModelTypeEnum;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Component.InterfacePort;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAInterface;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXInterface;
 import com.zeligsoft.domain.idl3plus.api.Connectors.ConnectorDef;
 
 /**
@@ -56,11 +56,11 @@ public class ConnectorTypeCompatibilityConstraint extends AbstractModelConstrain
 		InterfacePort ip = ZDLFactoryRegistry.INSTANCE.create(objToVerify, InterfacePort.class);
 		
 		// for axcioma generation, we only care about synchronous or asynchronous property of a client port 
-		if(!ip.getIsConjugated() || !(ip.getPorttype() instanceof CORBAInterface)){
+		if(!ip.getIsConjugated() || !(ip.getPorttype() instanceof CXInterface)){
 			return ctx.createSuccessStatus();
 		}
 		
-		CORBAInterface portType = (CORBAInterface) ip.getPorttype();
+		CXInterface portType = (CXInterface) ip.getPorttype();
 		
 		boolean isLocalPortType = portType.getIsLocal();
 

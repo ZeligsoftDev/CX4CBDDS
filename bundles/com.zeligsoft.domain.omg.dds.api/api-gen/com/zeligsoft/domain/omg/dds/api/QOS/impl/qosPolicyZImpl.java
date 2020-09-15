@@ -3,8 +3,7 @@ package com.zeligsoft.domain.omg.dds.api.QOS.impl;
 import com.zeligsoft.domain.omg.dds.api.QOS.qosPolicy;
 import com.zeligsoft.domain.zml.api.ZML_Core.impl.NamedElementImplementation;
 
-public abstract class qosPolicyZImpl extends NamedElementImplementation
-		implements qosPolicy {
+public abstract class qosPolicyZImpl extends NamedElementImplementation implements qosPolicy {
 	public qosPolicyZImpl(org.eclipse.emf.ecore.EObject element) {
 		super(element);
 	}

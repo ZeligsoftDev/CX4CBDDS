@@ -1,16 +1,15 @@
 package com.zeligsoft.domain.dds4ccm.api.QoSProfiles;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.omg.dds.api.QOS.qosProperty;
 import com.zeligsoft.domain.zml.api.ZML_Core.NamedElement;
+import com.zeligsoft.domain.omg.dds.api.QOS.qosProperty;
 
 public interface QoSForEntity extends NamedElement {
 	java.util.List<qosProperty> getQosProperty();
 
 	void addQosProperty(qosProperty val);
 
-	<T extends qosProperty> T addQosProperty(Class<T> typeToCreate,
-			String concept);
+	<T extends qosProperty> T addQosProperty(Class<T> typeToCreate, String concept);
 
 	qosProperty addQosProperty();
 

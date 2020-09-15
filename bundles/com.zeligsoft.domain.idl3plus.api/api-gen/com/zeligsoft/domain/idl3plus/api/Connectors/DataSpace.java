@@ -1,8 +1,8 @@
 package com.zeligsoft.domain.idl3plus.api.Connectors;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.zml.api.ZML_Core.NamedElement;
 import com.zeligsoft.domain.zml.api.ZML_Component.Part;
+import com.zeligsoft.domain.zml.api.ZML_Core.NamedElement;
 
 public interface DataSpace extends NamedElement, Part {
 	ConnectorDef getConnectorType();

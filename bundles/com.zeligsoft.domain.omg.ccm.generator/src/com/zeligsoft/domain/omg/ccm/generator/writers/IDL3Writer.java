@@ -27,7 +27,7 @@ import org.eclipse.xpand2.output.NoChangesVetoStrategy;
 import org.eclipse.xpand2.output.Outlet;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.codegen.l10n.Messages;
 import com.zeligsoft.domain.omg.corba.codegen.oaw.workflow.IDLWriterComponent;
 import com.zeligsoft.domain.omg.corba.dsl.idl.AttrSpec;
@@ -92,10 +92,10 @@ public class IDL3Writer extends IDLWriterComponent {
 	}
 	
 	protected String fileName(EObject element, Object model) {
-		if(ZDLUtil.isZDLConcept(element, CORBADomainNames.CORBANAMED_ELEMENT)) {
+		if(ZDLUtil.isZDLConcept(element, CXDomainNames.CXNAMED_ELEMENT)) {
 			String name = 
 				(String) ZDLUtil.getValue(element, 
-						CORBADomainNames.CORBANAMED_ELEMENT, 
+						CXDomainNames.CXNAMED_ELEMENT, 
 						ZMLMMNames.NAMED_ELEMENT__NAME);
 			
 			return name;

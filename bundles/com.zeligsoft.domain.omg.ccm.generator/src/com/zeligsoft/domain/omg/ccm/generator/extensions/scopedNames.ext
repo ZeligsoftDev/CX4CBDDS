@@ -15,24 +15,24 @@
  *
  */
 import CCM::CCM_Component;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 import idl;
 
 extension org::eclipse::xtend::util::stdlib::issues;
 extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
 extension com::zeligsoft::domain::omg::ccm::generator::extensions::CCM_IDL_Utils;
 
-idl::ScopedName toScopedName(CCM::CCM_Component::Event self, CORBANamedElement element) :
+idl::ScopedName toScopedName(CCM::CCM_Component::Event self, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(self), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 		
-idl::ScopedName toScopedName(CCMComponent self, CORBANamedElement element) :
+idl::ScopedName toScopedName(CCMComponent self, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(self), getScopedNameFromNamedElement(element))
 		-> newScopedName;
 		
-idl::ScopedName toScopedName(Home self, CORBANamedElement element) :
+idl::ScopedName toScopedName(Home self, CXNamedElement element) :
 	let newScopedName = new ScopedName :
 		newScopedName.getScopedName(getScopedNameFromNamedElement(self), getScopedNameFromNamedElement(element))
 		-> newScopedName;

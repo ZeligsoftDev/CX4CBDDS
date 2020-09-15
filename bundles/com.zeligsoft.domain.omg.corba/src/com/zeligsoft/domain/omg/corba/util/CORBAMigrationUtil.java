@@ -36,7 +36,7 @@ import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Type;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * CORBA migration util
@@ -52,20 +52,20 @@ public class CORBAMigrationUtil {
 		TreeIterator<EObject> itor = model.eAllContents();
 		while (itor.hasNext()) {
 			EObject next = itor.next();
-			if (ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBAOPERATION)) {
+			if (ZDLUtil.isZDLConcept(next, CXDomainNames.CXOPERATION)) {
 				Parameter param = ((Operation)next).getReturnResult();
 				if(param != null) {
 					elementsToMigrate.add(param);
 				}
 				itor.prune();
 			} 
-			if (!(next instanceof Package) && !ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBAINTERFACE)) {
+			if (!(next instanceof Package) && !ZDLUtil.isZDLConcept(next, CXDomainNames.CXINTERFACE)) {
 				itor.prune();
 			}
 		}
 		for (Parameter next : elementsToMigrate) {
-			if (!ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBAPARAMETER)) {
-				ZDLUtil.addZDLConcept(next, CORBADomainNames.CORBAPARAMETER);
+			if (!ZDLUtil.isZDLConcept(next, CXDomainNames.CXPARAMETER)) {
+				ZDLUtil.addZDLConcept(next, CXDomainNames.CXPARAMETER);
 			}
 		}
 
@@ -80,11 +80,11 @@ public class CORBAMigrationUtil {
 		TreeIterator<EObject> itor = model.eAllContents();
 		while (itor.hasNext()) {
 			EObject next = itor.next();
-			if (ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBAARRAY)
-					|| ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBAFIELD)) {
+			if (ZDLUtil.isZDLConcept(next, CXDomainNames.CXARRAY)
+					|| ZDLUtil.isZDLConcept(next, CXDomainNames.CXFIELD)) {
 				elementsToMigrate.add(next);
 			} else if (ZDLUtil.isZDLConcept(next,
-					CORBADomainNames.CORBACONSTANT)) {
+					CXDomainNames.CXCONSTANT)) {
 				String constantQName = ((NamedElement) next).getQualifiedName();
 				constantMap
 						.put(constantQName.replace(
@@ -93,35 +93,35 @@ public class CORBAMigrationUtil {
 			}
 			if (!(next instanceof Package)
 					&& !ZDLUtil.isZDLConcept(next,
-							CORBADomainNames.CORBACONSTANTS)
+							CXDomainNames.CXCONSTANTS)
 					&& !ZDLUtil
-							.isZDLConcept(next, CORBADomainNames.CORBASTRUCT)
+							.isZDLConcept(next, CXDomainNames.CXSTRUCT)
 					&& !ZDLUtil.isZDLConcept(next,
-							CORBADomainNames.CORBAEXCEPTION) 
+							CXDomainNames.CXEXCEPTION) 
 					&& !ZDLUtil.isZDLConcept(next,
-						CORBADomainNames.CORBAMODULE) 
+						CXDomainNames.CXMODULE) 
 					&& !ZDLUtil.isZDLConcept(next,
-							CORBADomainNames.CORBAINTERFACE)) {
+							CXDomainNames.CXINTERFACE)) {
 				itor.prune();
 			}
 		}
 		for (EObject next : elementsToMigrate) {
 			String value;
 			List list;
-			if (ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBAARRAY)) {
+			if (ZDLUtil.isZDLConcept(next, CXDomainNames.CXARRAY)) {
 				value = (String) ZDLUtil.getValue(next,
-						CORBADomainNames.CORBAARRAY,
-						CORBADomainNames.CORBAARRAY__INDEX);
+						CXDomainNames.CXARRAY,
+						CXDomainNames.CXARRAY__INDEX);
 				list = (List) ZDLUtil.getValue(next,
-						CORBADomainNames.CORBAARRAY,
-						CORBADomainNames.CORBAARRAY__BOUNDS);
+						CXDomainNames.CXARRAY,
+						CXDomainNames.CXARRAY__BOUNDS);
 			} else {
 				value = (String) ZDLUtil.getValue(next,
-						CORBADomainNames.CORBAFIELD,
-						CORBADomainNames.CORBAFIELD__BOUND);
+						CXDomainNames.CXFIELD,
+						CXDomainNames.CXFIELD__BOUND);
 				list = (List) ZDLUtil.getValue(next,
-						CORBADomainNames.CORBAFIELD,
-						CORBADomainNames.CORBAFIELD__BOUNDS);
+						CXDomainNames.CXFIELD,
+						CXDomainNames.CXFIELD__BOUNDS);
 			}
 			if (UML2Util.isEmpty(value)) {
 				continue;
@@ -141,23 +141,23 @@ public class CORBAMigrationUtil {
 							+ qName;
 				}
 				EObject newBound = ZDLUtil.createZDLConcept(next,
-						CORBADomainNames.CORBABOUND);
+						CXDomainNames.CXBOUND);
 				if (constantMap.containsKey(qName)) {
-					ZDLUtil.setValue(newBound, CORBADomainNames.CORBABOUND,
-							CORBADomainNames.CORBABOUND__CONSTANT,
+					ZDLUtil.setValue(newBound, CXDomainNames.CXBOUND,
+							CXDomainNames.CXBOUND__CONSTANT,
 							constantMap.get(qName));
 				} else {
-					ZDLUtil.setValue(newBound, CORBADomainNames.CORBABOUND,
-							CORBADomainNames.CORBABOUND__VALUE, bound);
+					ZDLUtil.setValue(newBound, CXDomainNames.CXBOUND,
+							CXDomainNames.CXBOUND__VALUE, bound);
 				}
 				list.add(newBound);
 			}
-			if (ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBAARRAY)) {
-				ZDLUtil.setValue(next, CORBADomainNames.CORBAARRAY,
-						CORBADomainNames.CORBAARRAY__INDEX, null);
+			if (ZDLUtil.isZDLConcept(next, CXDomainNames.CXARRAY)) {
+				ZDLUtil.setValue(next, CXDomainNames.CXARRAY,
+						CXDomainNames.CXARRAY__INDEX, null);
 			} else {
-				ZDLUtil.setValue(next, CORBADomainNames.CORBAFIELD,
-						CORBADomainNames.CORBAFIELD__BOUND, null);
+				ZDLUtil.setValue(next, CXDomainNames.CXFIELD,
+						CXDomainNames.CXFIELD__BOUND, null);
 			}
 		}
 
@@ -186,14 +186,14 @@ public class CORBAMigrationUtil {
 		TreeIterator<EObject> itor = model.eAllContents();
 		while (itor.hasNext()) {
 			EObject next = itor.next();
-			if (ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBATYPE_DEF)) {
+			if (ZDLUtil.isZDLConcept(next, CXDomainNames.CXTYPE_DEF)) {
 				elementsToMigrate.add(next);
 			}
 			if (!(next instanceof Package)
 					&& !ZDLUtil.isZDLConcept(next,
-						CORBADomainNames.CORBAMODULE) 
+						CXDomainNames.CXMODULE) 
 					&& !ZDLUtil.isZDLConcept(next,
-							CORBADomainNames.CORBAINTERFACE)) {
+							CXDomainNames.CXINTERFACE)) {
 				itor.prune();
 			}
 		}
@@ -201,8 +201,8 @@ public class CORBAMigrationUtil {
 			
 			Type type = getTypeDefType((Type) next);
 			
-			ZDLUtil.setValue(next, CORBADomainNames.CORBATYPE_DEF,
-					CORBADomainNames.CORBATYPE_DEF__TYPE, type);
+			ZDLUtil.setValue(next, CXDomainNames.CXTYPE_DEF,
+					CXDomainNames.CXTYPE_DEF__TYPE, type);
 			
 			DataType d = (DataType) next;
 			if(d.getGeneralizations() != null && d.getGeneralizations().size() > 0) {
@@ -239,10 +239,10 @@ public class CORBAMigrationUtil {
 		TreeIterator<EObject> itor = model.eAllContents();
 		while (itor.hasNext()) {
 			EObject next = itor.next();
-			if (ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBASEQUENCE)
-					|| ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBASTRING)
+			if (ZDLUtil.isZDLConcept(next, CXDomainNames.CXSEQUENCE)
+					|| ZDLUtil.isZDLConcept(next, CXDomainNames.CXSTRING)
 					|| ZDLUtil
-							.isZDLConcept(next, CORBADomainNames.CORBAWSTRING)) {
+							.isZDLConcept(next, CXDomainNames.CXWSTRING)) {
 				elementsToMigrate.add(next);
 			}
 			if (!(next instanceof Package) || next instanceof PackageImport) {
@@ -251,29 +251,29 @@ public class CORBAMigrationUtil {
 		}
 		for (EObject next : elementsToMigrate) {
 			String value = null;
-			if (ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBASEQUENCE)) {
+			if (ZDLUtil.isZDLConcept(next, CXDomainNames.CXSEQUENCE)) {
 				value = (String) ZDLUtil.getValue(next,
-						CORBADomainNames.CORBASEQUENCE,
-						CORBADomainNames.CORBASEQUENCE__BOUND);
+						CXDomainNames.CXSEQUENCE,
+						CXDomainNames.CXSEQUENCE__BOUND);
 			} else {
 				value = (String) ZDLUtil.getValue(next,
-						CORBADomainNames.CORBABOUNDED,
-						CORBADomainNames.CORBABOUNDED__BOUND);
+						CXDomainNames.CXBOUNDED,
+						CXDomainNames.CXBOUNDED__BOUND);
 			}
 			if (UML2Util.isEmpty(value)) {
 				continue;
 			}
 
 			EObject newBound = ZDLUtil.createZDLConcept(next,
-					CORBADomainNames.CORBABOUND);
-			ZDLUtil.setValue(newBound, CORBADomainNames.CORBABOUND,
-					CORBADomainNames.CORBABOUND__VALUE, value);
-			if (ZDLUtil.isZDLConcept(next, CORBADomainNames.CORBASEQUENCE)) {
-				ZDLUtil.setValue(next, CORBADomainNames.CORBASEQUENCE,
-						CORBADomainNames.CORBASEQUENCE__BOUNDS, newBound);
+					CXDomainNames.CXBOUND);
+			ZDLUtil.setValue(newBound, CXDomainNames.CXBOUND,
+					CXDomainNames.CXBOUND__VALUE, value);
+			if (ZDLUtil.isZDLConcept(next, CXDomainNames.CXSEQUENCE)) {
+				ZDLUtil.setValue(next, CXDomainNames.CXSEQUENCE,
+						CXDomainNames.CXSEQUENCE__BOUNDS, newBound);
 			} else {
-				ZDLUtil.setValue(next, CORBADomainNames.CORBABOUNDED,
-						CORBADomainNames.CORBABOUNDED__BOUNDS, newBound);
+				ZDLUtil.setValue(next, CXDomainNames.CXBOUNDED,
+						CXDomainNames.CXBOUNDED__BOUNDS, newBound);
 			}
 		}
 

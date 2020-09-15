@@ -3,14 +3,13 @@ package com.zeligsoft.domain.idl3plus.api.Generics.impl;
 import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 
 import com.zeligsoft.domain.idl3plus.api.Generics.ModuleInstantiation;
-import com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBANamedElementImplementation;
+import com.zeligsoft.domain.omg.corba.api.IDL.impl.CXNamedElementImplementation;
 
 import com.zeligsoft.domain.idl3plus.api.Generics.ModuleBinding;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class ModuleInstantiationZImpl extends CORBANamedElementImplementation
-		implements ModuleInstantiation {
+public class ModuleInstantiationZImpl extends CXNamedElementImplementation implements ModuleInstantiation {
 	protected ModuleBinding _moduleBinding;
 
 	public ModuleInstantiationZImpl(org.eclipse.emf.ecore.EObject element) {
@@ -20,13 +19,10 @@ public class ModuleInstantiationZImpl extends CORBANamedElementImplementation
 	@Override
 	public ModuleBinding getModuleBinding() {
 		if (_moduleBinding == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"IDL3Plus::Generics::ModuleInstantiation",
-							"moduleBinding");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"IDL3Plus::Generics::ModuleInstantiation", "moduleBinding");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_moduleBinding = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_moduleBinding = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						ModuleBinding.class);
 			}
 		}
@@ -35,29 +31,23 @@ public class ModuleInstantiationZImpl extends CORBANamedElementImplementation
 
 	@Override
 	public void setModuleBinding(ModuleBinding val) {
-		ZDLUtil.setValue(element, "IDL3Plus::Generics::ModuleInstantiation",
-				"moduleBinding", val.eObject());
+		ZDLUtil.setValue(element, "IDL3Plus::Generics::ModuleInstantiation", "moduleBinding", val.eObject());
 	}
 
 	@Override
-	public <T extends ModuleBinding> T createModuleBinding(
-			Class<T> typeToCreate, String concept) {
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "IDL3Plus::Generics::ModuleInstantiation",
-				"moduleBinding", concept);
-		T element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, typeToCreate);
+	public <T extends ModuleBinding> T createModuleBinding(Class<T> typeToCreate, String concept) {
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element,
+				"IDL3Plus::Generics::ModuleInstantiation", "moduleBinding", concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(newConcept, typeToCreate);
 		return element;
 	}
 
 	@Override
 	public ModuleBinding createModuleBinding() {
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "IDL3Plus::Generics::ModuleInstantiation",
-				"moduleBinding", "IDL3Plus::Generics::ModuleBinding");
-		ModuleBinding element = ZDLFactoryRegistry.INSTANCE
-				.create(newConcept,
-						ModuleBinding.class);
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element,
+				"IDL3Plus::Generics::ModuleInstantiation", "moduleBinding", "IDL3Plus::Generics::ModuleBinding");
+		ModuleBinding element = ZDLFactoryRegistry.INSTANCE.create(newConcept,
+				ModuleBinding.class);
 		return element;
 	}
 

@@ -56,7 +56,7 @@ import com.zeligsoft.domain.idl3plus.connectorregistry.ConnectorRegistry.PortIco
 import com.zeligsoft.domain.idl3plus.ui.utils.PortDecorationImages;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 public class PortDecoratorProvider extends AbstractProvider implements IDecoratorProvider {
@@ -424,7 +424,7 @@ public class PortDecoratorProvider extends AbstractProvider implements IDecorato
 				} else if (ZDLUtil.isZDLConcept(element,
 						CCMNames.INTERFACE_PORT)
 						&& ZDLUtil.isZDLConcept((EObject) portType,
-								CORBADomainNames.CORBAINTERFACE)) {
+								CXDomainNames.CXINTERFACE)) {
 					if (isConjugated) {
 						image = PortDecorationImages
 								.getReceptacleIcon(portSide);

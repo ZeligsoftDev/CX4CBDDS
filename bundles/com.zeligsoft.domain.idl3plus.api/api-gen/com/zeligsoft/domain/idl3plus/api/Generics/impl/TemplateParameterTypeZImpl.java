@@ -1,10 +1,9 @@
 package com.zeligsoft.domain.idl3plus.api.Generics.impl;
 
 import com.zeligsoft.domain.idl3plus.api.Generics.TemplateParameterType;
-import com.zeligsoft.domain.omg.corba.api.IDL.impl.CORBATypeImplementation;
+import com.zeligsoft.domain.omg.corba.api.IDL.impl.CXTypeImplementation;
 
-public class TemplateParameterTypeZImpl extends CORBATypeImplementation
-		implements TemplateParameterType {
+public class TemplateParameterTypeZImpl extends CXTypeImplementation implements TemplateParameterType {
 	public TemplateParameterTypeZImpl(org.eclipse.emf.ecore.EObject element) {
 		super(element);
 	}

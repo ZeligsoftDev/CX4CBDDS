@@ -14,16 +14,16 @@
  * limitations under the License.
  *
  */
-import CORBADomain::IDL;
+import CXDomain::IDL;
 import idl;
 
 extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
 extension com::zeligsoft::domain::idl3plus::generator::xtend::annotations;
 
-around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::visitStructAttribute(CORBAField p) :
+around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::visitStructAttribute(CXField p) :
     createMember(p);
 
-private create idl::Member createMember(CORBAField p) :
+private create idl::Member createMember(CXField p) :
 	let value = getCORBAFieldKeyAnnotationValue(p, "fieldkey", "false") :
 	this.setDecl(p.createDeclarator(p.idlType)) ->
 	this.comment.addAll(p.zdlAsProperty().ownedComment.visitComment()) ->	
@@ -32,10 +32,10 @@ private create idl::Member createMember(CORBAField p) :
 		this.getEAnnotations().add(p.createKeyAnnotation()) :
 		{};
 			
-String getCORBAFieldKeyAnnotationValue(CORBAField field, String detail, String defaultValue) :
+String getCORBAFieldKeyAnnotationValue(CXField field, String detail, String defaultValue) :
 	JAVA com.zeligsoft.domain.omg.ccm.util.CCMUtil.getZCXAnnotationDetail(org.eclipse.uml2.uml.Element, java.lang.String, java.lang.String);		
 
-private create ecore::EAnnotation createKeyAnnotation(CORBAField self) :
+private create ecore::EAnnotation createKeyAnnotation(CXField self) :
 	let detail = new ecore::EStringToStringMapEntry :
 	this.setSource("zcx") ->
 	this.details.add(createDetail("comment", " //@key"));

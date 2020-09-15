@@ -16,7 +16,7 @@
  */
 
 import CCM::CCM_Component;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 import ZMLMM::ZML_Component;
 
 String executor_impl_class_name(CCMComponent node) :
@@ -100,14 +100,14 @@ String component_ciao_executor_facet_ptr_name(CCMComponent node) :
 String component_ciao_executor_facet_out_name(CCMComponent node) :
 	node.component_ciao_executor_facet_name() + "_out";
 	
-String interface__equivalent_idl_name(CORBAInterface node) :
+String interface__equivalent_idl_name(CXInterface node) :
 	"CCM_" + node.name;
 	
-String interface__equivalent_idl_var_name(CORBAInterface node) :
+String interface__equivalent_idl_var_name(CXInterface node) :
 	node.interface__equivalent_idl_name() + "_var";
 	
-String interface__equivalent_idl_ptr_name(CORBAInterface node) :
+String interface__equivalent_idl_ptr_name(CXInterface node) :
 	node.interface__equivalent_idl_name() + "_ptr";
 
-String interface__equivalent_idl_out_name(CORBAInterface node) :
+String interface__equivalent_idl_out_name(CXInterface node) :
 	node.interface__equivalent_idl_name() + "_out";	

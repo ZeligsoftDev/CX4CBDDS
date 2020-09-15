@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-import CORBADomain::IDL;
+import CXDomain::IDL;
 import CCM::CCM_Component;
 import IDL3Plus::Connectors;
 import IDL3Plus::Generics;
@@ -41,8 +41,8 @@ extension com::zeligsoft::domain::idl3plus::generator::xtend::utils;
 extension com::zeligsoft::domain::idl3plus::generator::xtend::IDL3Plus_Utils;
 extension com::zeligsoft::domain::idl3plus::generator::xtend::idl3PlusTransform;
 
-create List[Specification] mainTransform(CORBAModule self) :
-	this.addAll(self.contents.typeSelect(CORBAInterface).mainTransform()) ->
+create List[Specification] mainTransform(CXModule self) :
+	this.addAll(self.contents.typeSelect(CXInterface).mainTransform()) ->
 	this.addAll(self.contents.typeSelect(Event).mainTransform()) ->
 	this.addAll(self.contents.typeSelect(CCMComponent).mainTransform()) ->
 	this.addAll(self.contents.typeSelect(ConnectorDef).mainTransform()) ->
@@ -55,7 +55,7 @@ create List[Specification] mainTransform(CORBAModule self) :
 	
 
 create List[Specification] mainTransform(CCM::CCM_Core::CCMModel self) :
-	this.addAll(self.packagedElement().typeSelect(CORBAInterface).mainTransform()) ->
+	this.addAll(self.packagedElement().typeSelect(CXInterface).mainTransform()) ->
 	this.addAll(self.packagedElement().typeSelect(Event).mainTransform()) ->
 	this.addAll(self.packagedElement().typeSelect(CCMComponent).mainTransform()) ->
 	this.addAll(self.packagedElement().typeSelect(ConnectorDef).mainTransform()) ->
@@ -70,7 +70,7 @@ create List[Specification] mainTransform(CCM::CCM_Implementation::CCMPart part) 
 	this.addAll(part.definition.mainTransform());
 
 create List[Specification] mainTransform(uml::Package self) :
-	this.addAll(self.packagedElement().typeSelect(CORBAInterface).mainTransform()) ->
+	this.addAll(self.packagedElement().typeSelect(CXInterface).mainTransform()) ->
 	this.addAll(self.packagedElement().typeSelect(Event).mainTransform()) ->
 	this.addAll(self.packagedElement().typeSelect(CCMComponent).mainTransform()) ->
 	this.addAll(self.packagedElement().typeSelect(ConnectorDef).mainTransform()) ->
@@ -84,7 +84,7 @@ create List[Specification] mainTransform(uml::Package self) :
 List[Specification] mainTransform(IDL3Plus::Connectors::ConnectorDefaultValueBinding self ) :
 	{};
 
-create Specification mainTransform(CORBAInterface self) :
+create Specification mainTransform(CXInterface self) :
 	this.getEAnnotations().add(self.createFileName()) ->
 	self.processIncludes(this) ->
 	this.definitions.add(createPragmaCiaoLem(self, "E")) ->
@@ -135,10 +135,10 @@ create Specification mainTransform(ModuleInstantiation self) :
 			this.definitions.add(createdSequence.createModuleStructure(zSequence)) : {} ->
 		this.definitions.addAll(visit(idlModuleInstantiation, self.eContainer));
 
-private idl::Module createModuleStructure(idl::Definition def, CORBASequence zSequence) :
+private idl::Module createModuleStructure(idl::Definition def, CXSequence zSequence) :
 	createModuleStructure(def, zSequence.zdlAsElement().owner);
 	
-private idl::Module createModuleStructure(idl::Definition def, CORBAModule zModule) :
+private idl::Module createModuleStructure(idl::Definition def, CXModule zModule) :
 	// use new instead of create so that the last module created ultimately gets returned to the original method.
 	let newModule = new idl::Module :
 	newModule.setName(zModule.name) ->
@@ -151,12 +151,12 @@ private idl::Module createModuleStructure(idl::Definition def, Object o) :
 private idl::Module createModuleStructure(idl::Definition def, Void o) :
 	def;
 
-private create List[Definition] getModuleInstDefn(ModuleInstantiation self, CORBASequence zSequence, idl::Definition createdSequence) :
+private create List[Definition] getModuleInstDefn(ModuleInstantiation self, CXSequence zSequence, idl::Definition createdSequence) :
 	zSequence != null && zSequence.zdlAsElement().owner == self.zdlAsElement().owner ? 
 		this.add(createdSequence) : {} ->
 	this.add(self.visitContained());
 
-boolean isUsedAsynchronously(CORBAInterface self) :
+boolean isUsedAsynchronously(CXInterface self) :
 	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.isUsedAsynchronously(
 		org.eclipse.uml2.uml.Interface);
 
@@ -242,7 +242,7 @@ List[idl::Definition] visitEvent(Event self) :
 String eventName(Event self) :
 	self.name + "_event";
 	
-create Member attributeToMember(CORBAAttribute property) :
+create Member attributeToMember(CXAttribute property) :
 	let declarator = new SimpleDeclarator :
 	setType(property.zdlAsProperty().type.toScopedName(getCORBAContainer(property))) ->
 	this.setDecl(declarator) ->
@@ -270,10 +270,10 @@ create Preproc_Pragma_Ciao_Ami4ccm_Receptacle createPragmaAmiReceptacle(Interfac
 	this.setValue(impl.scopedNameFromNamedElementForIDL3() + "::" + port.name) ->
 	spec.definitions.add(this);
 
-create Preproc_Pragma_Ciao_Ami4ccm_Interface createPragmaAmiInterface(CORBAInterface intf) :
+create Preproc_Pragma_Ciao_Ami4ccm_Interface createPragmaAmiInterface(CXInterface intf) :
 	this.setValue(intf.scopedNameFromNamedElementForIDL3());
 	
-create Preproc_Pragma_Ciao_Ami4ccm_Idl createPragmaAmiIdl(CORBAInterface intf) :
+create Preproc_Pragma_Ciao_Ami4ccm_Idl createPragmaAmiIdl(CXInterface intf) :
 	this.setValue(intf.fileName() + "A");
 
 create Preproc_Pragma_Component createPragmaComponent(MonolithicImplementation impl) :
@@ -288,11 +288,11 @@ create Preproc_Pragma_Home createPragmaHome(HomeDecl home) :
  *
  *****************************************************************************/
 
-create Specification mainTransform(CORBAModuleContained self) :
+create Specification mainTransform(CXModuleContained self) :
 	self.eContainer.processContainer(this) ->
 	this;
 	
-create Specification processModule(CORBAModule mod) :
+create Specification processModule(CXModule mod) :
 	processContainer(mod, this) ->
 	this;
 	
@@ -304,7 +304,7 @@ create Specification processModel(CCM::CCM_Core::CCMModel model) :
 	processContainer(model, this) ->
 	this;
 
-private Void processContainer(CORBAModule mod, Specification spec) :
+private Void processContainer(CXModule mod, Specification spec) :
 	mod.eContainer.processContainer(spec);
 	
 private Void processContainer(uml::Package pkg, Specification spec) :
@@ -323,7 +323,7 @@ private Void processContainer(CCM::CCM_Core::CCMModel pkg, Specification spec) :
 private Void processContainer(emf::EObject container, Specification spec):
 	{};
 	
-private List[idl::Definition] visitDefinition(CORBAModuleContained self) :
+private List[idl::Definition] visitDefinition(CXModuleContained self) :
 	self.visitContained();
 
 /**
@@ -331,11 +331,11 @@ private List[idl::Definition] visitDefinition(CORBAModuleContained self) :
   *	Filter out CORBQSequence since it gets generated to MOduleInstantiation file
   *
   */
-private List[idl::Definition] visitDefinition(CORBASequence self) :
+private List[idl::Definition] visitDefinition(CXSequence self) :
 	if !(self.isContainedInModuleInstParam()) then {self.visitContained()} else {};
 	
 	
-private List[idl::Definition] visitDefinition(CORBAConstants self) :
+private List[idl::Definition] visitDefinition(CXConstants self) :
 	self.visitContained();
 	
 /**
@@ -356,10 +356,10 @@ private List[idl::Definition] visitDefinition(Home self/*, idl::Module mod*/) :
 	
 /**
   *
-  *	Filter out CORBAInterface since it gets generated to its own file
+  *	Filter out CXInterface since it gets generated to its own file
   *
   */
-private List[idl::Definition] visitDefinition(CORBAInterface self/*, idl::Module mod*/) :
+private List[idl::Definition] visitDefinition(CXInterface self/*, idl::Module mod*/) :
 	{};
 
 /**
@@ -376,7 +376,7 @@ private List[idl::Definition] visitDefinition(Event self/*, idl::Module mod*/) :
   *
   */
 	
-private List[idl::Definition] visitDefinition(CORBAModule self/*, Specification spec*/) :
+private List[idl::Definition] visitDefinition(CXModule self/*, Specification spec*/) :
 	let mod = new idl::Module :
 		mod.setName(self.name) ->
 		mod.definitions.addAll(self.contents.visitDefinition()) ->
@@ -534,7 +534,7 @@ idl::Definition visit(List[Definition] self, Void container) :
 idl::Definition visit(List[Definition] self, emf::EObject container) : 
 	self;
 	
-idl::Definition visit(List[Definition] self, CORBAModule container) :
+idl::Definition visit(List[Definition] self, CXModule container) :
 	let idlModule = new idl::Module :
 		idlModule.setName(container.name) ->
 		idlModule.definitions.addAll(self) ->
@@ -550,7 +550,7 @@ idl::Definition visit(Definition self, Void container) :
 idl::Definition visit(Definition self, emf::EObject container) : 
 	{self};
 	
-idl::Definition visit(Definition self, CORBAModule container) :
+idl::Definition visit(Definition self, CXModule container) :
 	let idlModule = new idl::Module :
 		idlModule.setName(container.name) ->
 		idlModule.definitions.add(self) ->

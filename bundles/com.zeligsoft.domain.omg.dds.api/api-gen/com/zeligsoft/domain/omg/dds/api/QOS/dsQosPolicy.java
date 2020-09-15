@@ -23,8 +23,7 @@ public interface dsQosPolicy extends qosPolicy {
 
 	void setService_cleanup_delay(Duration val);
 
-	<T extends Duration> T createService_cleanup_delay(Class<T> typeToCreate,
-			String concept);
+	<T extends Duration> T createService_cleanup_delay(Class<T> typeToCreate, String concept);
 
 	Duration createService_cleanup_delay();
 
@@ -36,7 +35,6 @@ public interface dsQosPolicy extends qosPolicy {
 	 * A predicate which returns true if the Object is an
 	 * instance of dsQosPolicy
 	 */
-	static final TypeSelectPredicate<dsQosPolicy> type = new TypeSelectPredicate<dsQosPolicy>(
-			"DDS::QOS::dsQosPolicy", //$NON-NLS-1$
+	static final TypeSelectPredicate<dsQosPolicy> type = new TypeSelectPredicate<dsQosPolicy>("DDS::QOS::dsQosPolicy", //$NON-NLS-1$
 			dsQosPolicy.class);
 }

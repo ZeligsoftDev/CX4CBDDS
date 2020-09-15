@@ -48,7 +48,7 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 import com.zeligsoft.base.util.ModelMerger;
 import com.zeligsoft.base.util.ModelMerger.IHierarchicalKey;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -148,9 +148,9 @@ public class IDLMerger extends ModelMerger<EObject, IHierarchicalKey> {
 
 		@SuppressWarnings("unchecked")
 		public K getKey(T element) {
-			if( ZDLUtil.isZDLConcept(element, CORBADomainNames.CORBANAMED_ELEMENT) == true ) {
+			if( ZDLUtil.isZDLConcept(element, CXDomainNames.CXNAMED_ELEMENT) == true ) {
 				return (K) new IDLElementKey(element);			
-			} else if( ZDLUtil.isZDLConcept(element, CORBADomainNames.IDLFILE)) {
+			} else if( ZDLUtil.isZDLConcept(element, CXDomainNames.IDLFILE)) {
 				return (K) new IDLFileKey(element);
 			}
 			return null;
@@ -252,8 +252,8 @@ public class IDLMerger extends ModelMerger<EObject, IHierarchicalKey> {
 		List<EObject> result = super.getContentsToMerge(object, phase);
 
 		if (object instanceof Element && (
-				ZDLUtil.isZDLConcept(object, CORBADomainNames.CORBANAMED_ELEMENT) ||
-				ZDLUtil.isZDLConcept(object, CORBADomainNames.IDLFILE)	
+				ZDLUtil.isZDLConcept(object, CXDomainNames.CXNAMED_ELEMENT) ||
+				ZDLUtil.isZDLConcept(object, CXDomainNames.IDLFILE)	
 			)) {
 			// the stereotype applications also have to be merged.
 			Element element = (Element) object;
@@ -291,7 +291,7 @@ public class IDLMerger extends ModelMerger<EObject, IHierarchicalKey> {
 	
 	/**
 	 * An IDL reference fixer that extends the base reference fixer
-	 * to include support for directed relationships between CORBA
+	 * to include support for directed relationships between CX
      * elements.
 	 * 
 	 * @author Sean McFee
@@ -326,7 +326,7 @@ public class IDLMerger extends ModelMerger<EObject, IHierarchicalKey> {
 		protected boolean fixReferences(EObject object) {
 			basicFixReferences(object);
 			
-			if( ZDLUtil.isZDLConcept(object, CORBADomainNames.IDLIMPORT) && object instanceof Dependency) {
+			if( ZDLUtil.isZDLConcept(object, CXDomainNames.IDLIMPORT) && object instanceof Dependency) {
 				// Edges on diagrams representing IDLImport elements that merged need to be repaired.
 				Dependency idlImport = (Dependency)object;
 				for (TreeIterator<?> iter = object.eResource().getAllContents(); iter.hasNext(); ) {
@@ -334,8 +334,8 @@ public class IDLMerger extends ModelMerger<EObject, IHierarchicalKey> {
 					if( next instanceof Edge ) {
 						Edge e = (Edge)next;
 						if( e.getType().matches("") && //$NON-NLS-1$
-							ZDLUtil.isZDLConcept(e.getSource().getElement(), CORBADomainNames.IDLFILE) &&
-							ZDLUtil.isZDLConcept(e.getTarget().getElement(), CORBADomainNames.IDLFILE)) {
+							ZDLUtil.isZDLConcept(e.getSource().getElement(), CXDomainNames.IDLFILE) &&
+							ZDLUtil.isZDLConcept(e.getTarget().getElement(), CXDomainNames.IDLFILE)) {
 							if( idlImport.getClients().get(0).getName().matches(((NamedElement)e.getSource().getElement()).getName()) &&
 								idlImport.getSuppliers().get(0).getName().matches(((NamedElement)e.getTarget().getElement()).getName())) {
 								idlImport.setName(((Dependency)e.getElement()).getName());

@@ -46,7 +46,7 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.Activator;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.util.CORBAMigrationUtil;
 import com.zeligsoft.domain.zml.util.WorkerFunctionRepair;
 import com.zeligsoft.domain.zml.util.ZDeploymentUtil;
@@ -55,9 +55,9 @@ import com.zeligsoft.domain.zml.util.ZMLMMNames;
 @SuppressWarnings("nls")
 public final class DDS4CCMMigrationUtil {
 
-	private static final String SOURCE_NAME = "cx.migration"; //$NON-NLS-1$
+	public static final String SOURCE_NAME = "cx.migration"; //$NON-NLS-1$
 
-	private static final String CURRENT_VERSION = "2.0.1"; //$NON-NLS-1$
+	public static final String CURRENT_VERSION = "2.0.1"; //$NON-NLS-1$
 
 	private static boolean migrateAll(Model model, boolean probe) {
 		boolean result = false;
@@ -147,11 +147,11 @@ public final class DDS4CCMMigrationUtil {
 							CCMNames.INTERFACE_PORT, ZMLMMNames.PORT__PORTTYPE);
 					if (type != null) {
 						if (ZDLUtil.isZDLConcept(type,
-								CORBADomainNames.CORBAINTERFACE)) {
+								CXDomainNames.CXINTERFACE)) {
 							ZDLUtil.setValue(
 									type,
-									CORBADomainNames.CORBAINTERFACE,
-									CORBADomainNames.CORBAINTERFACE__IS_ASYNCHRONOUS,
+									CXDomainNames.CXINTERFACE,
+									CXDomainNames.CXINTERFACE__IS_ASYNCHRONOUS,
 									true);
 						}
 					}
@@ -197,7 +197,7 @@ public final class DDS4CCMMigrationUtil {
 			}
 			if (!(next instanceof Package)
 					&& !ZDLUtil
-							.isZDLConcept(next, CORBADomainNames.CORBAMODULE)
+							.isZDLConcept(next, CXDomainNames.CXMODULE)
 					&& !ZDLUtil.isZDLConcept(next,
 							CCMNames.MONOLITHIC_IMPLEMENTATION)) {
 				itor.prune();
@@ -298,7 +298,7 @@ public final class DDS4CCMMigrationUtil {
 		return 0;
 	}
 
-	private static String getModelVersion(final Model model) {
+	public static String getModelVersion(final Model model) {
 		EAnnotation anno = model.getEAnnotation(SOURCE_NAME);
 		if (anno == null) {
 			return "0.0.0";

@@ -68,15 +68,6 @@ public class ZDLElementTypeManager {
 
 	private ZDLElementTypeManager() {
 		super();
-
-		// bind the types that we will generate to the UML context
-		// TODO RSM-dependent
-//		ClientContextManager.getInstance().getClientContext(
-//			"com.zeligsoft.domain.cbdds.atcd.architecture").bindPattern( //$NON-NLS-1$
-//			Pattern.compile("com\\.zeligsoft\\.zdl\\..*")); //$NON-NLS-1$
-//		ClientContextManager.getInstance().getClientContext(
-//				"com.zeligsoft.domain.cbdds.axcioma.architecture").bindPattern( //$NON-NLS-1$
-//				Pattern.compile("com\\.zeligsoft\\.zdl\\..*")); //$NON-NLS-1$		
 	}
 
 	/**

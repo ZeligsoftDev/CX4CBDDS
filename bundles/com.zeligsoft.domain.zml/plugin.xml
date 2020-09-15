@@ -47,39 +47,4 @@
          </editingDomain>
       </listener>
    </extension>
-     
-   <!--   
-    <extension
-         id="Base ElementTypes"
-         name="Base ElementTypes"
-         point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">         	
-         <metamodel
-             nsURI="http://www.eclipse.org/uml2/3.0.0/UML">
-         	<adviceBinding
-            	id="com.zeligsoft.domain.zml.Connector"
-            	typeId="com.ibm.xtools.uml.component"            
-            	class="com.zeligsoft.domain.zml.edithelpers.ConnectorEditHelperAdvice"
-            	inheritance="all">
-         	</adviceBinding>          
-            <adviceBinding
-                id="com.zeligsoft.domain.zml.DirectedRelationshipAdvice"
-                typeId="com.ibm.xtools.uml.namedElement"            
-                class="com.zeligsoft.domain.zml.edithelpers.DirectedRelationshipEditHelperAdvice"
-                inheritance="all">
-            </adviceBinding>
-      	</metamodel>            
-    </extension>   
-
-    <extension
-         id="Base ElementTypeBindings"
-         name="Base ElementTypeBindings"
-         point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings">
-      <binding context="com.ibm.xtools.uml.type.context">
-         <advice
-               pattern="com.zeligsoft.domain.zml.*"/>                     
-      </binding>
-      </binding>
-    </extension>   
-    
-   -->
 </plugin>

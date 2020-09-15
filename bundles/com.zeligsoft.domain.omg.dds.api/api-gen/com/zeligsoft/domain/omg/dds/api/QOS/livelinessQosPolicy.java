@@ -11,8 +11,7 @@ public interface livelinessQosPolicy extends qosPolicy {
 
 	void setLease_duration(Duration val);
 
-	<T extends Duration> T createLease_duration(Class<T> typeToCreate,
-			String concept);
+	<T extends Duration> T createLease_duration(Class<T> typeToCreate, String concept);
 
 	Duration createLease_duration();
 

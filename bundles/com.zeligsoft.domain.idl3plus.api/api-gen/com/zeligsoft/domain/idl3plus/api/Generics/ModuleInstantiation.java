@@ -1,17 +1,15 @@
 package com.zeligsoft.domain.idl3plus.api.Generics;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBANamedElement;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModuleContained;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXNamedElement;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXModuleContained;
 
-public interface ModuleInstantiation extends CORBANamedElement,
-		CORBAModuleContained {
+public interface ModuleInstantiation extends CXNamedElement, CXModuleContained {
 	ModuleBinding getModuleBinding();
 
 	void setModuleBinding(ModuleBinding val);
 
-	<T extends ModuleBinding> T createModuleBinding(Class<T> typeToCreate,
-			String concept);
+	<T extends ModuleBinding> T createModuleBinding(Class<T> typeToCreate, String concept);
 
 	ModuleBinding createModuleBinding();
 

@@ -34,8 +34,8 @@ import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Component.InterfacePort;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Target.Resource;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Target.SatisfierProperty;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAInterface;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXInterface;
 
 @SuppressWarnings("nls")
 public final class DDS4CCMMigrationModelTypeUtil {
@@ -104,11 +104,11 @@ public final class DDS4CCMMigrationModelTypeUtil {
 			if(ZDLUtil.isZDLConcept(e, CCMNames.INTERFACE_PORT)){
 				InterfacePort ip = ZDLFactoryRegistry.INSTANCE.create(e, InterfacePort.class);
 				
-				if(!ZDLUtil.isZDLConcept(ip.getPorttype().eObject(), CORBADomainNames.CORBAINTERFACE)){
+				if(!ZDLUtil.isZDLConcept(ip.getPorttype().eObject(), CXDomainNames.CXINTERFACE)){
 					continue;
 				}
 				
-				CORBAInterface portType = ZDLFactoryRegistry.INSTANCE.create(ip.getPorttype().eObject(), CORBAInterface.class);
+				CXInterface portType = ZDLFactoryRegistry.INSTANCE.create(ip.getPorttype().eObject(), CXInterface.class);
 				
 				boolean isPortTypeLocal = portType.getIsLocal();
 				

@@ -1,5 +1,5 @@
-import CORBADomain::IDLFileSupport; // needed for IDLFile and similar
-import CORBADomain::IDL; // needed for CORBAModule etc.
+import CXDomain::IDLFileSupport; // needed for IDLFile and similar
+import CXDomain::IDL; // needed for CXModule etc.
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
 import CCM::CCM_Component;
@@ -41,7 +41,7 @@ create ExtendedPortType visitContained(PortTypeDecl porttype, TemplateModule con
 	container.zdlAsPackage().packagedElement.add(this) ->
 	this.configurePortType(porttype);
 	
-create ExtendedPortType visitContained(PortTypeDecl porttype, CORBAModule container) :
+create ExtendedPortType visitContained(PortTypeDecl porttype, CXModule container) :
 	container.zdlAsPackage().packagedElement.add(this) ->
 	this.configurePortType(porttype);
 	
@@ -64,7 +64,7 @@ Void visitContained(UsesDcl uses, ExtendedPortType zPortType ) :
 		org.eclipse.uml2.uml.Class
 		);
 		
-create CORBAAttribute visitContained(AttrDecl attr, ExtendedPortType zPortType ) :
+create CXAttribute visitContained(AttrDecl attr, ExtendedPortType zPortType ) :
 	zPortType.ownedAttribute.add(this) ->
 	this.configureAttribute(attr);
 		
@@ -76,7 +76,7 @@ create ConnectorDef visitContained(idl::Connector connector, TemplateModule cont
 	container.zdlAsPackage().packagedElement.add(this) ->
 	configureConnector(this, connector, container);	
 	
-create ConnectorDef visitContained(idl::Connector connector, CORBAModule module) :
+create ConnectorDef visitContained(idl::Connector connector, CXModule module) :
 	module.contents.add(this) ->
 	configureConnector(this, connector, module);
 	
@@ -104,11 +104,11 @@ create InterfacePort visitContained(UsesDcl uses, ConnectorDef zConnector) :
 	if getInterface(uses.type, zConnector) != null then this.zdlAsPort().setType(getInterface(uses.type, zConnector)) ->
 	this.setIsConjugated(true);
 	
-create CORBAAttribute visitContained(AttrSpec attr, ConnectorDef zConnector) :
+create CXAttribute visitContained(AttrSpec attr, ConnectorDef zConnector) :
 	zConnector.ownedAttribute.add(this) ->
 	this.configureAttribute(attr);
 
-create CORBAAttribute visitContained(ReadOnlyAttrSpec attr, ConnectorDef zConnector) :
+create CXAttribute visitContained(ReadOnlyAttrSpec attr, ConnectorDef zConnector) :
 	zConnector.ownedAttribute.add(this) ->
 	this.configureAttribute(attr);
 
@@ -134,7 +134,7 @@ create IDL3Plus::Generics::TemplateModule visitContained(idl::TemplateModule mod
 	container.packagedElement.add(this) ->
 	configureTemplateModule(this, module);
 
-create IDL3Plus::Generics::TemplateModule visitContained(idl::TemplateModule module, CORBAModule zModule) :
+create IDL3Plus::Generics::TemplateModule visitContained(idl::TemplateModule module, CXModule zModule) :
 	zModule.contents.add(this) ->
 	configureTemplateModule(this, module);
 	
@@ -154,23 +154,23 @@ Void visitContained(idl::TemplateDefinition defn, TemplateModule module) :
 Void visitContained(IDLComment defn, TemplateModule module) :
 	{};
 	
-create CORBAModule visitContained(FixedModule module, TemplateModule zModule ) :
+create CXModule visitContained(FixedModule module, TemplateModule zModule ) :
 	zModule.zdlAsPackage().packagedElement.add(this) -> // bug 15537
 	configureFixedModule(this, module);
 
-create CORBAEnum visitContained(idl::EnumType enum, IDL3Plus::Generics::TemplateModule package) :
+create CXEnum visitContained(idl::EnumType enum, IDL3Plus::Generics::TemplateModule package) :
 	package.zdlAsPackage().packagedElement.add(this) ->
 	this.configureEnum(enum);
 
-create CORBAModule visitContained(FixedModule module, CORBAModule zModule ) :
+create CXModule visitContained(FixedModule module, CXModule zModule ) :
 	zModule.contents.add(this) ->
 	configureFixedModule(this, module);
 
-Void configureFixedModule(CORBAModule zModule, FixedModule module) :
+Void configureFixedModule(CXModule zModule, FixedModule module) :
 	zModule.setName(module.name) ->
 	module.definitions.visitContained(zModule);	
 
-Void visitContained(FixedDefinition fixedDef, CORBAModule module ) :
+Void visitContained(FixedDefinition fixedDef, CXModule module ) :
 	debug(fixedDef);
 
 Void visitContained(TemplateModuleRef moduleRef, TemplateModule module ) :
@@ -188,11 +188,11 @@ create TemplateModuleAlias visitContained(TemplateModuleRef moduleRef, TemplateM
 /*
  * Adding IDL2/IDL3 concepts to TemplateModules
  */	
-create CORBAInterface visitContained(Interface_decl intf, IDL3Plus::Generics::TemplateModule container) :
+create CXInterface visitContained(Interface_decl intf, IDL3Plus::Generics::TemplateModule container) :
 	container.zdlAsPackage().packagedElement.add(this) ->
 	this.configureInterface(intf);
 	
-create CORBAConstant visitContained(ConstDecl const, IDL3Plus::Generics::TemplateModule file) :
+create CXConstant visitContained(ConstDecl const, IDL3Plus::Generics::TemplateModule file) :
 	file.addConstant(this) ->
 	this.setName(const.name) ->
 	this.setTypedElementType(const.type) ->
@@ -204,11 +204,11 @@ create uml::DataType visitContained(TypeDeclarator typedef, IDL3Plus::Generics::
 	this.setName(typedef.declarators.get(0).id) ->	
 	this.applyTypedefConcept(typedef);	
 	
-create CORBAStruct visitContained(StructType struct, IDL3Plus::Generics::TemplateModule package ) :
+create CXStruct visitContained(StructType struct, IDL3Plus::Generics::TemplateModule package ) :
 	package.zdlAsPackage().packagedElement.add(this) ->
 	this.configureStruct(struct);
 	
-create CORBAException visitContained(ExceptDecl exception, IDL3Plus::Generics::TemplateModule package ) :
+create CXException visitContained(ExceptDecl exception, IDL3Plus::Generics::TemplateModule package ) :
 	package.zdlAsPackage().packagedElement.add(this) ->
 	this.configureException(exception);
 
@@ -229,26 +229,26 @@ create Home visitContained(HomeDecl home, TemplateModule container ) :
 	this.configureHome(home);
 	
 /*
- * IDL2 CORBAModules
+ * IDL2 CXModules
  */
 private Void visitContained(Module module, uml::Package container ) :
-	container.packagedElement.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).size > 0 ?
+	container.packagedElement.typeSelect(CXModule).select(e|e.name.matches(module.name)).size > 0 ?
 		module.definitions.visitContained(
-			container.packagedElement.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).get(0)) :
+			container.packagedElement.typeSelect(CXModule).select(e|e.name.matches(module.name)).get(0)) :
 		createModule(module, container); 
 		
-private create CORBAModule createModule(Module module, uml::Package container) :
+private create CXModule createModule(Module module, uml::Package container) :
 	container.packagedElement.add(this) ->
 	this.setName(module.name) ->
 	module.definitions.visitContained(this);
 
-private Void visitContained(Module module, CORBAModule container ) :
-	container.contents.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).size > 0 ?
+private Void visitContained(Module module, CXModule container ) :
+	container.contents.typeSelect(CXModule).select(e|e.name.matches(module.name)).size > 0 ?
 		module.definitions.visitContained(
-			container.contents.typeSelect(CORBAModule).select(e|e.name.matches(module.name)).get(0)) :
+			container.contents.typeSelect(CXModule).select(e|e.name.matches(module.name)).get(0)) :
 		createModule(module, container); 
 	
-private create CORBAModule createModule(Module module, CORBAModule container) :
+private create CXModule createModule(Module module, CXModule container) :
 	container.contents.add(this) ->
 	this.setName(module.name) ->
 	module.definitions.visitContained(this);
@@ -261,7 +261,7 @@ Void visitContained(idl::TemplateModuleInst inst, uml::Package container) :
 		com.zeligsoft.domain.omg.corba.dsl.idl.TemplateModuleInst,
 		org.eclipse.uml2.uml.Package);
 
-Void visitContained(idl::TemplateModuleInst inst, CORBAModule container) :
+Void visitContained(idl::TemplateModuleInst inst, CXModule container) :
 	JAVA com.zeligsoft.domain.idl3plus.idlimport.ImportUtils.createModuleInstantiation(
 		com.zeligsoft.domain.omg.corba.dsl.idl.TemplateModuleInst,
 		org.eclipse.uml2.uml.Package);
@@ -274,11 +274,11 @@ Void convertStateMembers(Event event, uml::Package package) :
 	event.member.zdlAsElement().destroy();
 	
 Void convertStateMember(StateMember member, Event event) :
-	let struct = member.idlType : // Assumption: it's a CORBAStruct
+	let struct = member.idlType : // Assumption: it's a CXStruct
 	struct.members.createEventAttribute(event) ->
 	struct.zdlAsElement().destroy();
 		
-create CORBAAttribute createEventAttribute(CORBAField field, Event event ) :
+create CXAttribute createEventAttribute(CXField field, Event event ) :
 	event.ownedAttribute.add(this) ->
 	this.setName(field.name) ->
 	this.zdlAsProperty().setType(field.idlType);

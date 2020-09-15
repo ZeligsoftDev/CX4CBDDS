@@ -1,18 +1,16 @@
 package com.zeligsoft.domain.idl3plus.api.Generics;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBANamedElement;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAType;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModuleContained;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXNamedElement;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXModuleContained;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXType;
 
-public interface TemplateModule extends CORBANamedElement,
-		CORBAModuleContained, CORBAType {
+public interface TemplateModule extends CXNamedElement, CXModuleContained, CXType {
 	TemplateSignature getSignature();
 
 	void setSignature(TemplateSignature val);
 
-	<T extends TemplateSignature> T createSignature(Class<T> typeToCreate,
-			String concept);
+	<T extends TemplateSignature> T createSignature(Class<T> typeToCreate, String concept);
 
 	TemplateSignature createSignature();
 

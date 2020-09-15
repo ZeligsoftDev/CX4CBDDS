@@ -8,15 +8,13 @@ public interface ManagesImpl extends ZObject {
 
 	void setComponent(ManagesImplEnd val);
 
-	<T extends ManagesImplEnd> T createComponent(Class<T> typeToCreate,
-			String concept);
+	<T extends ManagesImplEnd> T createComponent(Class<T> typeToCreate, String concept);
 
 	ManagesImplEnd getHome();
 
 	void setHome(ManagesImplEnd val);
 
-	<T extends ManagesImplEnd> T createHome(Class<T> typeToCreate,
-			String concept);
+	<T extends ManagesImplEnd> T createHome(Class<T> typeToCreate, String concept);
 
 	org.eclipse.uml2.uml.Dependency asDependency();
 

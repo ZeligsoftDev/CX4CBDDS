@@ -10,8 +10,7 @@ import com.zeligsoft.domain.omg.ccm.api.CCM_Target.Resource;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class ResourcePropertyImplementation extends TypedElementImplementation
-		implements ResourceProperty {
+public class ResourcePropertyImplementation extends TypedElementImplementation implements ResourceProperty {
 	protected Resource _type;
 
 	public ResourcePropertyImplementation(org.eclipse.emf.ecore.EObject element) {
@@ -21,13 +20,10 @@ public class ResourcePropertyImplementation extends TypedElementImplementation
 	@Override
 	public Resource getTypeOverride() {
 		if (_type == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "CCM::CCM_Target::ResourceProperty",
-							"type");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"CCM::CCM_Target::ResourceProperty", "type");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_type = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
-						Resource.class);
+				_type = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue, Resource.class);
 			}
 		}
 		return _type;
@@ -35,8 +31,7 @@ public class ResourcePropertyImplementation extends TypedElementImplementation
 
 	@Override
 	public void setTypeOverride(Resource val) {
-		ZDLUtil.setValue(element, "CCM::CCM_Target::ResourceProperty", "type",
-				val.eObject());
+		ZDLUtil.setValue(element, "CCM::CCM_Target::ResourceProperty", "type", val.eObject());
 	}
 
 	@Override

@@ -10,8 +10,7 @@ import com.zeligsoft.domain.zml.api.ZML_Component.ComponentInterface;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class DataSpaceZImpl extends NamedElementImplementation implements
-		DataSpace {
+public class DataSpaceZImpl extends NamedElementImplementation implements DataSpace {
 	protected ConnectorDef _connectorType;
 	protected ComponentInterface _definition;
 
@@ -22,12 +21,10 @@ public class DataSpaceZImpl extends NamedElementImplementation implements
 	@Override
 	public ConnectorDef getConnectorType() {
 		if (_connectorType == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "IDL3Plus::Connectors::DataSpace",
-							"connectorType");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"IDL3Plus::Connectors::DataSpace", "connectorType");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_connectorType = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_connectorType = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						ConnectorDef.class);
 			}
 		}
@@ -36,19 +33,16 @@ public class DataSpaceZImpl extends NamedElementImplementation implements
 
 	@Override
 	public void setConnectorType(ConnectorDef val) {
-		ZDLUtil.setValue(element, "IDL3Plus::Connectors::DataSpace",
-				"connectorType", val.eObject());
+		ZDLUtil.setValue(element, "IDL3Plus::Connectors::DataSpace", "connectorType", val.eObject());
 	}
 
 	@Override
 	public ComponentInterface getDefinition() {
 		if (_definition == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "ZMLMM::ZML_Component::Part",
-							"definition");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"ZMLMM::ZML_Component::Part", "definition");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_definition = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_definition = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						ComponentInterface.class);
 			}
 		}
@@ -57,8 +51,7 @@ public class DataSpaceZImpl extends NamedElementImplementation implements
 
 	@Override
 	public void setDefinition(ComponentInterface val) {
-		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::Part", "definition",
-				val.eObject());
+		ZDLUtil.setValue(element, "ZMLMM::ZML_Component::Part", "definition", val.eObject());
 	}
 
 	@Override

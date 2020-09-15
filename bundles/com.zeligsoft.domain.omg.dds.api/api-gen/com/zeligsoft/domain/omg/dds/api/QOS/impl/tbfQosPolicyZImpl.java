@@ -19,12 +19,10 @@ public class tbfQosPolicyZImpl extends qosPolicyZImpl implements tbfQosPolicy {
 	@Override
 	public Duration getMinimum_separation() {
 		if (_minimum_separation == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "DDS::QOS::tbfQosPolicy",
-							"minimum_separation");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(), "DDS::QOS::tbfQosPolicy",
+					"minimum_separation");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_minimum_separation = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_minimum_separation = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						Duration.class);
 			}
 		}
@@ -33,28 +31,23 @@ public class tbfQosPolicyZImpl extends qosPolicyZImpl implements tbfQosPolicy {
 
 	@Override
 	public void setMinimum_separation(Duration val) {
-		ZDLUtil.setValue(element, "DDS::QOS::tbfQosPolicy",
-				"minimum_separation", val.eObject());
+		ZDLUtil.setValue(element, "DDS::QOS::tbfQosPolicy", "minimum_separation", val.eObject());
 	}
 
 	@Override
-	public <T extends Duration> T createMinimum_separation(
-			Class<T> typeToCreate, String concept) {
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "DDS::QOS::tbfQosPolicy", "minimum_separation",
-				concept);
-		T element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, typeToCreate);
+	public <T extends Duration> T createMinimum_separation(Class<T> typeToCreate, String concept) {
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element, "DDS::QOS::tbfQosPolicy",
+				"minimum_separation", concept);
+		T element = ZDLFactoryRegistry.INSTANCE.create(newConcept, typeToCreate);
 		return element;
 	}
 
 	@Override
 	public Duration createMinimum_separation() {
-		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(
-				element, "DDS::QOS::tbfQosPolicy", "minimum_separation",
-				"DDS::QOS::Duration");
-		Duration element = ZDLFactoryRegistry.INSTANCE.create(
-				newConcept, Duration.class);
+		org.eclipse.emf.ecore.EObject newConcept = ZDLUtil.createZDLConcept(element, "DDS::QOS::tbfQosPolicy",
+				"minimum_separation", "DDS::QOS::Duration");
+		Duration element = ZDLFactoryRegistry.INSTANCE.create(newConcept,
+				Duration.class);
 		return element;
 	}
 

@@ -12,8 +12,7 @@ public interface ModuleBinding extends ZObject {
 
 	void addParameterBinding(ParameterBinding val);
 
-	<T extends ParameterBinding> T addParameterBinding(Class<T> typeToCreate,
-			String concept);
+	<T extends ParameterBinding> T addParameterBinding(Class<T> typeToCreate, String concept);
 
 	ParameterBinding addParameterBinding();
 

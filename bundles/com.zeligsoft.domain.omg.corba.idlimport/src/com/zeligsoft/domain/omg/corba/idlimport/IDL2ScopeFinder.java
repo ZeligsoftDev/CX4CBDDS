@@ -30,7 +30,7 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.dsl.idl.ScopedName;
 import com.zeligsoft.domain.omg.corba.idlimport.l10n.Messages;
 
@@ -56,11 +56,11 @@ public class IDL2ScopeFinder extends AbstractScopeFinder {
 	public List<Element> findScopes(Element context, ScopedName lookupName) {
 		ArrayList<Element> scopes = new ArrayList<Element>();
 		
-		if( ZDLUtil.isZDLConcept(context, CORBADomainNames.CORBAINTERFACE) ) {
+		if( ZDLUtil.isZDLConcept(context, CXDomainNames.CXINTERFACE) ) {
 			scopes.addAll(getScopedList((Interface)context));
-		} else if( ZDLUtil.isZDLConcept(context, CORBADomainNames.CORBAMODULE)) {
+		} else if( ZDLUtil.isZDLConcept(context, CXDomainNames.CXMODULE)) {
 			scopes.addAll(getScopedList((Package)context));
-		} else if( ZDLUtil.isZDLConcept(context, CORBADomainNames.IDLFILE)) {
+		} else if( ZDLUtil.isZDLConcept(context, CXDomainNames.IDLFILE)) {
 			scopes.addAll(getScopedList((Package)context, lookupName, new ArrayList<Package>()));
 		}
 		
@@ -90,13 +90,13 @@ public class IDL2ScopeFinder extends AbstractScopeFinder {
 		
 		//check to see if this element should be added
 		for( NamedElement foundModule : findIDLElement(
-			context.getModel(), moduleName, CORBADomainNames.CORBAMODULE)) {						
+			context.getModel(), moduleName, CXDomainNames.CXMODULE)) {						
 			scopes.add(foundModule);
 			scopes.add((NamedElement)foundModule.getOwner());						
 		}
 		//check the if the imports should be added
 		for (PackageImport pi : context.getModel().getPackageImports()) {
-			for( NamedElement foundModule : findIDLElement(pi.getImportedPackage(), moduleName, CORBADomainNames.CORBAMODULE)) {
+			for( NamedElement foundModule : findIDLElement(pi.getImportedPackage(), moduleName, CXDomainNames.CXMODULE)) {
 				scopes.add(foundModule);
 				scopes.add((NamedElement)foundModule.getOwner());
 			}
@@ -146,9 +146,9 @@ public class IDL2ScopeFinder extends AbstractScopeFinder {
 			retVal = new ArrayList<NamedElement>();
 		}
 		
-		if( ZDLUtil.isZDLConcept(pkg, CORBADomainNames.CORBAMODULE)) {		
-			// For a module, search the model for instances of CORBAModule that have the same name.
-			for( NamedElement foundModule : findIDLElement(pkg.getModel(), pkg.getName(), CORBADomainNames.CORBAMODULE)) {
+		if( ZDLUtil.isZDLConcept(pkg, CXDomainNames.CXMODULE)) {		
+			// For a module, search the model for instances of CXModule that have the same name.
+			for( NamedElement foundModule : findIDLElement(pkg.getModel(), pkg.getName(), CXDomainNames.CXMODULE)) {
 				retVal.add(foundModule);
 				retVal.add((NamedElement)foundModule.getOwner()); // the IDL file is also needed 				
 			}
@@ -178,7 +178,7 @@ public class IDL2ScopeFinder extends AbstractScopeFinder {
 		
 		visitedList.add(pkg);
 		
-		if( ZDLUtil.isZDLConcept(pkg, CORBADomainNames.IDLFILE)) {
+		if( ZDLUtil.isZDLConcept(pkg, CXDomainNames.IDLFILE)) {
 			// For an IDLFile, search the IDLFile's include list for modules with the module name we are searching for.
 			String moduleName = typeString.getName().get(0);
 			if(typeString.getName().size() == 1){
@@ -186,12 +186,12 @@ public class IDL2ScopeFinder extends AbstractScopeFinder {
 				moduleName = UML2Util.EMPTY_STRING;
 			}
 			for( Dependency idlImportDependency : pkg.getClientDependencies()) {
-				if( ZDLUtil.isZDLConcept(idlImportDependency, CORBADomainNames.IDLIMPORT)) {
+				if( ZDLUtil.isZDLConcept(idlImportDependency, CXDomainNames.IDLIMPORT)) {
 					if(UML2Util.isEmpty(moduleName)){
 						retVal.add((Package)idlImportDependency.getTargets().get(0));
 					}else{
 						for( NamedElement foundModule : findIDLElement(
-								(Package)idlImportDependency.getTargets().get(0), moduleName, CORBADomainNames.CORBAMODULE)) {						
+								(Package)idlImportDependency.getTargets().get(0), moduleName, CXDomainNames.CXMODULE)) {						
 							retVal.add(foundModule);
 							retVal.add((NamedElement)foundModule.getOwner());						
 						}

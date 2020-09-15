@@ -39,8 +39,8 @@ import com.zeligsoft.domain.omg.ccm.api.CCM_Component.InterfacePort;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.AssemblyImplementation;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.CCMConnector;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Implementation.CCMPart;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAInterface;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXInterface;
 import com.zeligsoft.domain.zml.api.ZML_Component.AssemblyConnector;
 import com.zeligsoft.domain.zml.api.ZML_Component.ConnectorEnd;
 import com.zeligsoft.domain.zml.api.ZML_Component.Part;
@@ -497,10 +497,10 @@ public class DeploymentPartsWithLocalInterfaceCollocationConstraint extends Abst
 		boolean returnVal = false;		
 		PortTypeable portTypeable = ip.getPorttype();
 		
-		if(!ZDLUtil.isZDLConcept(portTypeable.eObject(), CORBADomainNames.CORBAINTERFACE)){
+		if(!ZDLUtil.isZDLConcept(portTypeable.eObject(), CXDomainNames.CXINTERFACE)){
 			return returnVal;
 		}
-		CORBAInterface intf = ZDLFactoryRegistry.INSTANCE.create(portTypeable.eObject(), CORBAInterface.class);			
+		CXInterface intf = ZDLFactoryRegistry.INSTANCE.create(portTypeable.eObject(), CXInterface.class);			
 			
 		if(intf.getIsLocal()){
 			returnVal = true;

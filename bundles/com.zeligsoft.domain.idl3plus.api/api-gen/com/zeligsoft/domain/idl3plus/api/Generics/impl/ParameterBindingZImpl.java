@@ -6,50 +6,25 @@ import com.zeligsoft.base.zdl.staticapi.internal.core.ZObjectImpl;
 import com.zeligsoft.domain.idl3plus.api.Generics.ParameterBinding;
 
 import com.zeligsoft.domain.idl3plus.api.Generics.TypeParameter;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAType;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXType;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class ParameterBindingZImpl extends ZObjectImpl implements
-		ParameterBinding {
-	protected CORBAType _type;
+public class ParameterBindingZImpl extends ZObjectImpl implements ParameterBinding {
 	protected TypeParameter _typeParameter;
+	protected CXType _type;
 
 	public ParameterBindingZImpl(org.eclipse.emf.ecore.EObject element) {
 		super(element);
 	}
 
 	@Override
-	public CORBAType getType() {
-		if (_type == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"IDL3Plus::Generics::ParameterBinding", "type");
-			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_type = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
-						CORBAType.class);
-			}
-		}
-		return _type;
-	}
-
-	@Override
-	public void setType(CORBAType val) {
-		ZDLUtil.setValue(element, "IDL3Plus::Generics::ParameterBinding",
-				"type", val.eObject());
-	}
-
-	@Override
 	public TypeParameter getTypeParameter() {
 		if (_typeParameter == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(),
-							"IDL3Plus::Generics::ParameterBinding",
-							"typeParameter");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"IDL3Plus::Generics::ParameterBinding", "typeParameter");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_typeParameter = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_typeParameter = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						TypeParameter.class);
 			}
 		}
@@ -58,8 +33,24 @@ public class ParameterBindingZImpl extends ZObjectImpl implements
 
 	@Override
 	public void setTypeParameter(TypeParameter val) {
-		ZDLUtil.setValue(element, "IDL3Plus::Generics::ParameterBinding",
-				"typeParameter", val.eObject());
+		ZDLUtil.setValue(element, "IDL3Plus::Generics::ParameterBinding", "typeParameter", val.eObject());
+	}
+
+	@Override
+	public CXType getType() {
+		if (_type == null) {
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"IDL3Plus::Generics::ParameterBinding", "type");
+			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
+				_type = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue, CXType.class);
+			}
+		}
+		return _type;
+	}
+
+	@Override
+	public void setType(CXType val) {
+		ZDLUtil.setValue(element, "IDL3Plus::Generics::ParameterBinding", "type", val.eObject());
 	}
 
 	@Override

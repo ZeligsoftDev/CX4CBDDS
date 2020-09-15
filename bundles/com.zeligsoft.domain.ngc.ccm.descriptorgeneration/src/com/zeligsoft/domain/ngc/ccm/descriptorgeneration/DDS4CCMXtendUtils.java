@@ -41,7 +41,7 @@ import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil;
 import com.zeligsoft.domain.dds4ccm.utils.ModelTypeDDS4CCM;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZDeploymentUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
@@ -152,7 +152,7 @@ public class DDS4CCMXtendUtils {
 
 			// Ignore extended port that connected to data space
 			if (!ZDLUtil.isZDLConcept(sourcePort.getType(),
-					CORBADomainNames.CORBAINTERFACE)) {
+					CXDomainNames.CXINTERFACE)) {
 				continue;
 			}
 

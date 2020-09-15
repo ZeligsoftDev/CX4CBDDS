@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmlns:zdl="http://www.zeligsoft.com/zdl/2008/ZDL/1" xsi:schemaLocation="http://www.zeligsoft.com/zdl/2008/ZDL/1 pathmap://ZDL_PROFILES/ZDL.profile.uml#_TY7fcC_oEd2oX-fEHLus7g">
-  <uml:Model xmi:id="_NRAMoAwOEdmFcaeZXPdWAQ" name="CORBADomain">
+  <uml:Model xmi:id="_NRAMoAwOEdmFcaeZXPdWAQ" name="CXDomain">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_UeIAJtCzEdqK7KjEh4hvHw">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
     </packageImport>
@@ -14,14 +14,14 @@
       <packageImport xmi:type="uml:PackageImport" xmi:id="_tUPxYDL1EeCZXvaTmQgdWA">
         <importedPackage xmi:type="uml:Package" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_9ihoQEuQEd2aAOSqOUjI9w"/>
       </packageImport>
-      <packagedElement xmi:type="uml:Class" xmi:id="_2LOWoEk3Ed2eBKZvQ89d6g" name="CORBAWString">
+      <packagedElement xmi:type="uml:Class" xmi:id="_2LOWoEk3Ed2eBKZvQ89d6g" name="CXWString">
         <generalization xmi:type="uml:Generalization" xmi:id="_3y77UEk3Ed2eBKZvQ89d6g" general="_w5Hj0Ek3Ed2eBKZvQ89d6g"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_wwUr0CfJEd-hjrUbfrMI8A" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_kcPqYPsxEeCUd9Edw_GMyg" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_Iwx8gEk4Ed2eBKZvQ89d6g" name="CORBAAnonymousArray"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_G0DxIEk4Ed2eBKZvQ89d6g" name="CORBAAnonymousSequence"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_9qchQEk3Ed2eBKZvQ89d6g" name="CORBAArray">
+      <packagedElement xmi:type="uml:Class" xmi:id="_Iwx8gEk4Ed2eBKZvQ89d6g" name="CXAnonymousArray"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_G0DxIEk4Ed2eBKZvQ89d6g" name="CXAnonymousSequence"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_9qchQEk3Ed2eBKZvQ89d6g" name="CXArray">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_MZPI8PpjEeCVxf8v04aRDA" name="must_have_type" constrainedElement="_9qchQEk3Ed2eBKZvQ89d6g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_MZSMQPpjEeCVxf8v04aRDA">
             <body>%_desc_CORBADomain__IDL__CORBAArray__must_have_type</body>
@@ -55,7 +55,7 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WdmPkI-tEeGdHIFRtaMqRA" value="*"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_w5Hj0Ek3Ed2eBKZvQ89d6g" name="CORBABounded" isAbstract="true">
+      <packagedElement xmi:type="uml:Class" xmi:id="_w5Hj0Ek3Ed2eBKZvQ89d6g" name="CXBounded" isAbstract="true">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_hDm38EFuEeODw463y6SlVg" name="bound_value_constraint" constrainedElement="_9qchQEk3Ed2eBKZvQ89d6g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_hDm38UFuEeODw463y6SlVg">
             <body>%_desc_CORBADomain__IDL__CORBAArray__bound_value_constraint</body>
@@ -77,10 +77,10 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5lSOYSn-EeOV59vr0QbsTQ" value="1"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_eM2R8Ek3Ed2eBKZvQ89d6g" name="CORBABoxedValue">
+      <packagedElement xmi:type="uml:Class" xmi:id="_eM2R8Ek3Ed2eBKZvQ89d6g" name="CXBoxedValue">
         <generalization xmi:type="uml:Generalization" xmi:id="_iczEMEk3Ed2eBKZvQ89d6g" general="_ftj2wEk3Ed2eBKZvQ89d6g"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_PNNp4Ek3Ed2eBKZvQ89d6g" name="CORBACase">
+      <packagedElement xmi:type="uml:Class" xmi:id="_PNNp4Ek3Ed2eBKZvQ89d6g" name="CXCase">
         <generalization xmi:type="uml:Generalization" xmi:id="_ZzqrMEk3Ed2eBKZvQ89d6g" general="_TgljkEk3Ed2eBKZvQ89d6g"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_WRdk8O1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_V56ycEk3Ed2eBKZvQ89d6g" name="label" visibility="private">
@@ -89,17 +89,17 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aDHXAKuQEd2kKOGQLc9n8Q" value="*"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_Wa0VgEk2Ed2eBKZvQ89d6g" name="CORBAConstant">
+      <packagedElement xmi:type="uml:Class" xmi:id="_Wa0VgEk2Ed2eBKZvQ89d6g" name="CXConstant">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_gG_YENCsEd-7NcdD8GVUXQ" name="type_is_primitive" constrainedElement="_Wa0VgEk2Ed2eBKZvQ89d6g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_gG_YE9CsEd-7NcdD8GVUXQ">
             <body>%_desc_CORBADomain__IDL__CORBAConstant__type_is_primitive</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_gG_YEdCsEd-7NcdD8GVUXQ">
             <language>OCL</language>
-            <body>self.idlType.oclIsKindOf(CORBAPrimitive) or &#xD;
-(self.idlType.oclIsKindOf(CORBATypeDef) and self.idlType.oclAsType(uml::DataType).general()->select&#xD;
-	(   not(oclIsKindOf(CORBAPrimitive)) and not(oclIsKindOf(CORBATypeDef)) )->isEmpty()) or&#xD;
-self.idlType.oclIsKindOf(CORBAEnum)</body>
+            <body>self.idlType.oclIsKindOf(CXPrimitive) or &#xD;
+(self.idlType.oclIsKindOf(CXTypeDef) and self.idlType.oclAsType(uml::DataType).general()->select&#xD;
+	(   not(oclIsKindOf(CXPrimitive)) and not(oclIsKindOf(CXTypeDef)) )->isEmpty()) or&#xD;
+self.idlType.oclIsKindOf(CXEnum)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_EO7NECYOEeOmaaY6Ob2QXw" name="has_enum_literal" constrainedElement="_Wa0VgEk2Ed2eBKZvQ89d6g">
@@ -117,18 +117,18 @@ self.idlType.oclIsKindOf(CORBAEnum)</body>
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_ZW328Ek2Ed2eBKZvQ89d6g" name="CORBAConstants">
+      <packagedElement xmi:type="uml:Class" xmi:id="_ZW328Ek2Ed2eBKZvQ89d6g" name="CXConstants">
         <generalization xmi:type="uml:Generalization" xmi:id="_VdvpAO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_RM1N4DQUEd-ChtLkdFBHeg" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_XHQk8DQUEd-ChtLkdFBHeg" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_nPTw8Ek3Ed2eBKZvQ89d6g" name="CORBAConstructed" isAbstract="true">
+      <packagedElement xmi:type="uml:Class" xmi:id="_nPTw8Ek3Ed2eBKZvQ89d6g" name="CXConstructed" isAbstract="true">
         <generalization xmi:type="uml:Generalization" xmi:id="_-cR4gO1nEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_RVtncEk3Ed2eBKZvQ89d6g" name="CORBADefault">
+      <packagedElement xmi:type="uml:Class" xmi:id="_RVtncEk3Ed2eBKZvQ89d6g" name="CXDefault">
         <generalization xmi:type="uml:Generalization" xmi:id="_aYeBYEk3Ed2eBKZvQ89d6g" general="_TgljkEk3Ed2eBKZvQ89d6g"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_lLSqwEk3Ed2eBKZvQ89d6g" name="CORBAEnum">
+      <packagedElement xmi:type="uml:Class" xmi:id="_lLSqwEk3Ed2eBKZvQ89d6g" name="CXEnum">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_V-XoIO-XEeCQus6uqORjzw" name="enumeration_must_have_literals" constrainedElement="_lLSqwEk3Ed2eBKZvQ89d6g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_V-cgoO-XEeCQus6uqORjzw">
             <body>%_desc_CORBADomain__IDL__CORBAEnum__enumeration_must_have_literals</body>
@@ -144,7 +144,7 @@ self.idlType.oclIsKindOf(CORBAEnum)</body>
         <generalization xmi:type="uml:Generalization" xmi:id="_hwWjMMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_OgAsMMPPEd6u_6T1TQ_XYQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_oz5JIEk3Ed2eBKZvQ89d6g" name="CORBAException">
+      <packagedElement xmi:type="uml:Class" xmi:id="_oz5JIEk3Ed2eBKZvQ89d6g" name="CXException">
         <generalization xmi:type="uml:Generalization" xmi:id="_u_E5AEk3Ed2eBKZvQ89d6g" general="_nPTw8Ek3Ed2eBKZvQ89d6g"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_SEB4wMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_iYoEIMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
@@ -155,7 +155,7 @@ self.idlType.oclIsKindOf(CORBAEnum)</body>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eGqZocJeEd6QAZgNaBtgeQ" value="*"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_clQegEk2Ed2eBKZvQ89d6g" name="CORBAInterface">
+      <packagedElement xmi:type="uml:Class" xmi:id="_clQegEk2Ed2eBKZvQ89d6g" name="CXInterface">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_uGqRkHhnEd6JF4o51lMrwQ" name="OnlyCORBAOperations" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_uGzbgXhnEd6JF4o51lMrwQ">
             <body>%_desc_CORBADomain__IDL__CORBAInterface__OnlyCORBAOperations</body>
@@ -165,7 +165,7 @@ self.idlType.oclIsKindOf(CORBAEnum)</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_uGqRkXhnEd6JF4o51lMrwQ">
             <language>OCL</language>
-            <body>self.operation->forAll(o | o.oclIsKindOf(CORBAOperation))</body>
+            <body>self.operation->forAll(o | o.oclIsKindOf(CXOperation))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_mPhm4HuAEd6qXce-J7VhZw" name="OnlyCORBAAttributes" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
@@ -174,7 +174,7 @@ self.idlType.oclIsKindOf(CORBAEnum)</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_mP-S0HuAEd6qXce-J7VhZw">
             <language>OCL</language>
-            <body>self.oclAsType(uml::Interface).ownedAttribute->forAll(a | a.oclIsKindOf(CORBAAttribute) or a.oclIsKindOf(CORBAConstant))</body>
+            <body>self.oclAsType(uml::Interface).ownedAttribute->forAll(a | a.oclIsKindOf(CXAttribute) or a.oclIsKindOf(CXConstant))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_1XJgkCF0Ed-VD6bNQmk_YQ" name="only_inherit_from_abstract" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
@@ -183,7 +183,7 @@ self.idlType.oclIsKindOf(CORBAEnum)</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_1XKHoCF0Ed-VD6bNQmk_YQ">
             <language>OCL</language>
-            <body>self.isAbstract implies self.oclAsType(uml::Interface).general->select(g | g.oclIsKindOf(CORBAInterface))->forAll(g | g.oclAsType(CORBAInterface).isAbstract)</body>
+            <body>self.isAbstract implies self.oclAsType(uml::Interface).general->select(g | g.oclIsKindOf(CXInterface))->forAll(g | g.oclAsType(CXInterface).isAbstract)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_Zi_HACF9Ed-VD6bNQmk_YQ" name="only_inherit_from_local" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
@@ -192,7 +192,7 @@ self.idlType.oclIsKindOf(CORBAEnum)</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_ZjAVICF9Ed-VD6bNQmk_YQ">
             <language>OCL</language>
-            <body>not self.isLocal implies self.oclAsType(uml::Interface).general->select(g | g.oclIsKindOf(CORBAInterface))->forAll(g | not g.oclAsType(CORBAInterface).isLocal)</body>
+            <body>not self.isLocal implies self.oclAsType(uml::Interface).general->select(g | g.oclIsKindOf(CXInterface))->forAll(g | not g.oclAsType(CXInterface).isLocal)</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_P4g3cCIaEd-VD6bNQmk_YQ" name="unique_inherited_operation_names" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
@@ -219,9 +219,9 @@ self.idlType.oclIsKindOf(CORBAEnum)</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_tUjZgCIsEd-VD6bNQmk_YQ">
             <language>OCL</language>
-            <body>self.ownedAttribute->forAll(a1 | self.oclAsType(uml::Interface).allParents()->select(p | p.oclIsKindOf(CORBAInterface)).attribute->select(oclIsKindOf(CORBAAttribute))->forAll(a2 | a1.oclAsType(uml::Property).name &lt;> a2.oclAsType(uml::Property).name)) 
+            <body>self.ownedAttribute->forAll(a1 | self.oclAsType(uml::Interface).allParents()->select(p | p.oclIsKindOf(CXInterface)).attribute->select(oclIsKindOf(CXAttribute))->forAll(a2 | a1.oclAsType(uml::Property).name &lt;> a2.oclAsType(uml::Property).name)) 
 and
-self.operation->forAll(a1 | self.oclAsType(uml::Interface).allParents()->select(p | p.oclIsKindOf(CORBAInterface)).getOperations()->select(oclIsKindOf(CORBAOperation))->forAll(a2 | a1.oclAsType(uml::Operation).name &lt;> a2.oclAsType(uml::Operation).name))</body>
+self.operation->forAll(a1 | self.oclAsType(uml::Interface).allParents()->select(p | p.oclIsKindOf(CXInterface)).getOperations()->select(oclIsKindOf(CXOperation))->forAll(a2 | a1.oclAsType(uml::Operation).name &lt;> a2.oclAsType(uml::Operation).name))</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_QXkyACb8Ed-bI7KrIv1ElA" name="unique_attribute_names" constrainedElement="_clQegEk2Ed2eBKZvQ89d6g">
@@ -278,13 +278,13 @@ self.operation->forAll(a1 | self.oclAsType(uml::Interface).allParents()->select(
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_jiPCQEk3Ed2eBKZvQ89d6g" name="CORBAPrimitive">
+      <packagedElement xmi:type="uml:Class" xmi:id="_jiPCQEk3Ed2eBKZvQ89d6g" name="CXPrimitive">
         <generalization xmi:type="uml:Generalization" xmi:id="_SjMjcO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_DKZH0MJbEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_NHzPUMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_u-9HwEk4Ed2eBKZvQ89d6g" name="type" visibility="public" type="_L3t4QEk4Ed2eBKZvQ89d6g"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_AO9FYEk4Ed2eBKZvQ89d6g" name="CORBASequence">
+      <packagedElement xmi:type="uml:Class" xmi:id="_AO9FYEk4Ed2eBKZvQ89d6g" name="CXSequence">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_1K0y4Mv5Ed-o2JgoXZ13oQ" name="must_have_type" constrainedElement="_AO9FYEk4Ed2eBKZvQ89d6g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_1K0y4cv5Ed-o2JgoXZ13oQ">
             <body>%_desc_CORBADomain__IDL__CORBASequence__must_have_type</body>
@@ -318,12 +318,12 @@ self.operation->forAll(a1 | self.oclAsType(uml::Interface).allParents()->select(
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_43FroSn-EeOV59vr0QbsTQ" value="1"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_0_hYgEk3Ed2eBKZvQ89d6g" name="CORBAString">
+      <packagedElement xmi:type="uml:Class" xmi:id="_0_hYgEk3Ed2eBKZvQ89d6g" name="CXString">
         <generalization xmi:type="uml:Generalization" xmi:id="_3QXZwEk3Ed2eBKZvQ89d6g" general="_w5Hj0Ek3Ed2eBKZvQ89d6g"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_0Uwb4CfJEd-hjrUbfrMI8A" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_lYkvwPsxEeCUd9Edw_GMyg" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_qwxFgEk3Ed2eBKZvQ89d6g" name="CORBAStruct">
+      <packagedElement xmi:type="uml:Class" xmi:id="_qwxFgEk3Ed2eBKZvQ89d6g" name="CXStruct">
         <generalization xmi:type="uml:Generalization" xmi:id="_urZvEEk3Ed2eBKZvQ89d6g" general="_nPTw8Ek3Ed2eBKZvQ89d6g"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_IY2e0MJdEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_VVRnEMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
@@ -334,11 +334,11 @@ self.operation->forAll(a1 | self.oclAsType(uml::Interface).allParents()->select(
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sPRTEcJeEd6QAZgNaBtgeQ" value="*"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_bStRgEk2Ed2eBKZvQ89d6g" name="CORBASupports"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_44-WUEk3Ed2eBKZvQ89d6g" name="CORBATemplate" isAbstract="true">
+      <packagedElement xmi:type="uml:Class" xmi:id="_bStRgEk2Ed2eBKZvQ89d6g" name="CXSupports"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_44-WUEk3Ed2eBKZvQ89d6g" name="CXTemplate" isAbstract="true">
         <generalization xmi:type="uml:Generalization" xmi:id="_-F1HYO1nEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_dITrwEk3Ed2eBKZvQ89d6g" name="CORBATypeDef">
+      <packagedElement xmi:type="uml:Class" xmi:id="_dITrwEk3Ed2eBKZvQ89d6g" name="CXTypeDef">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_BwPOEPR_EeKYqZAl_2QeUg" name="typedef_should_have_type" constrainedElement="_dITrwEk3Ed2eBKZvQ89d6g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_BwVUsPR_EeKYqZAl_2QeUg">
             <body>%_desc_CORBADomain__IDL__CORBATypeDef__typedef_should_have_type</body>
@@ -358,7 +358,7 @@ self.operation->forAll(a1 | self.oclAsType(uml::Interface).allParents()->select(
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7e2Z4CG-EeGd-Nb5_CNoPw" value="1"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_sX40UEk3Ed2eBKZvQ89d6g" name="CORBAUnion">
+      <packagedElement xmi:type="uml:Class" xmi:id="_sX40UEk3Ed2eBKZvQ89d6g" name="CXUnion">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_8JWRwMvZEd-o2JgoXZ13oQ" name="must_have_switchType" constrainedElement="_sX40UEk3Ed2eBKZvQ89d6g">
           <ownedComment xmi:type="uml:Comment" xmi:id="_8JWRwcvZEd-o2JgoXZ13oQ">
             <body>%_desc_CORBADomain__IDL__CORBAUnion__must_have_switchType</body>
@@ -375,11 +375,11 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
         <generalization xmi:type="uml:Generalization" xmi:id="_mLG3QMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_RWlQsMPPEd6u_6T1TQ_XYQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_TgljkEk3Ed2eBKZvQ89d6g" name="CORBAUnionField">
+      <packagedElement xmi:type="uml:Class" xmi:id="_TgljkEk3Ed2eBKZvQ89d6g" name="CXUnionField">
         <generalization xmi:type="uml:Generalization" xmi:id="_ZTUb4MJdEd6QAZgNaBtgeQ" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_a5tK4MJdEd6QAZgNaBtgeQ" general="_Q0OakMJbEd6QAZgNaBtgeQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_j71qgEk2Ed2eBKZvQ89d6g" name="CORBAValue">
+      <packagedElement xmi:type="uml:Class" xmi:id="_j71qgEk2Ed2eBKZvQ89d6g" name="CXValue">
         <generalization xmi:type="uml:Generalization" xmi:id="_H3nr8MJbEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_NuSAgMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_g3TKoMMhEd6tra_UkAvALA" general="_bu8JsMMhEd6tra_UkAvALA"/>
@@ -393,32 +393,32 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_tBlHAEk2Ed2eBKZvQ89d6g" name="CORBAValueFactory"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_ftj2wEk3Ed2eBKZvQ89d6g" name="CORBAWrapper" isAbstract="true">
+      <packagedElement xmi:type="uml:Class" xmi:id="_tBlHAEk2Ed2eBKZvQ89d6g" name="CXValueFactory"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ftj2wEk3Ed2eBKZvQ89d6g" name="CXWrapper" isAbstract="true">
         <generalization xmi:type="uml:Generalization" xmi:id="_YCI4YO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Enumeration" xmi:id="_L3t4QEk4Ed2eBKZvQ89d6g" name="CORBAPrimitiveKind">
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_jnx0IEk4Ed2eBKZvQ89d6g" name="CORBAWChar"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_jiRCAEk4Ed2eBKZvQ89d6g" name="CORBAVoid"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_ja0WMEk4Ed2eBKZvQ89d6g" name="CORBAUnsignedShort"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_jQ_EwEk4Ed2eBKZvQ89d6g" name="CORBAUnsignedLongLong"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_iNCUcEk4Ed2eBKZvQ89d6g" name="CORBAUnsignedLong"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Q2TSIEk4Ed2eBKZvQ89d6g" name="CORBAShort"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QzeAkEk4Ed2eBKZvQ89d6g" name="CORBAOctet"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QxrQ0Ek4Ed2eBKZvQ89d6g" name="CORBAObjectRef"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QwC5IEk4Ed2eBKZvQ89d6g" name="CORBALongLong"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QuZ6YEk4Ed2eBKZvQ89d6g" name="CORBALongDouble"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Qsw7oEk4Ed2eBKZvQ89d6g" name="CORBALong"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QrRt4Ek4Ed2eBKZvQ89d6g" name="CORBAFloat"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Qp7qEEk4Ed2eBKZvQ89d6g" name="CORBADouble"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QoSrUEk4Ed2eBKZvQ89d6g" name="CORBAChar"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QmWxoEk4Ed2eBKZvQ89d6g" name="CORBABoolean"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QZidoEk4Ed2eBKZvQ89d6g" name="CORBAAny"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_nDnLIExUEd2INdt7Ch5VKg" name="CORBAString"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_IDH5IExVEd2INdt7Ch5VKg" name="CORBAWString"/>
-        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_aYvlkExVEd2INdt7Ch5VKg" name="CORBATypecode"/>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_L3t4QEk4Ed2eBKZvQ89d6g" name="CXPrimitiveKind">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_jnx0IEk4Ed2eBKZvQ89d6g" name="CXWChar"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_jiRCAEk4Ed2eBKZvQ89d6g" name="CXVoid"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_ja0WMEk4Ed2eBKZvQ89d6g" name="CXUnsignedShort"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_jQ_EwEk4Ed2eBKZvQ89d6g" name="CXUnsignedLongLong"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_iNCUcEk4Ed2eBKZvQ89d6g" name="CXUnsignedLong"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Q2TSIEk4Ed2eBKZvQ89d6g" name="CXShort"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QzeAkEk4Ed2eBKZvQ89d6g" name="CXOctet"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QxrQ0Ek4Ed2eBKZvQ89d6g" name="CXObjectRef"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QwC5IEk4Ed2eBKZvQ89d6g" name="CXLongLong"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QuZ6YEk4Ed2eBKZvQ89d6g" name="CXLongDouble"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Qsw7oEk4Ed2eBKZvQ89d6g" name="CXLong"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QrRt4Ek4Ed2eBKZvQ89d6g" name="CXFloat"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Qp7qEEk4Ed2eBKZvQ89d6g" name="CXDouble"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QoSrUEk4Ed2eBKZvQ89d6g" name="CXChar"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QmWxoEk4Ed2eBKZvQ89d6g" name="CXBoolean"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QZidoEk4Ed2eBKZvQ89d6g" name="CXAny"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_nDnLIExUEd2INdt7Ch5VKg" name="CXString"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_IDH5IExVEd2INdt7Ch5VKg" name="CXWString"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_aYvlkExVEd2INdt7Ch5VKg" name="CXTypecode"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_OQD9wEk6Ed2eBKZvQ89d6g" name="CORBAModule">
+      <packagedElement xmi:type="uml:Class" xmi:id="_OQD9wEk6Ed2eBKZvQ89d6g" name="CXModule">
         <generalization xmi:type="uml:Generalization" xmi:id="_UGMAMO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_LKz-MMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_dS-Y8MPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
@@ -427,14 +427,14 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BFnLUMPJEd6u_6T1TQ_XYQ" value="*"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_CHbucLWrEd2PTvVd89HYhA" name="CORBAAttribute">
+      <packagedElement xmi:type="uml:Class" xmi:id="_CHbucLWrEd2PTvVd89HYhA" name="CXAttribute">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_3n8CkLHvEd-tbasCPUZnSQ" name="read_only_exceptions" constrainedElement="_CHbucLWrEd2PTvVd89HYhA">
           <ownedComment xmi:type="uml:Comment" xmi:id="_3oFzkrHvEd-tbasCPUZnSQ">
             <body>%_desc_CORBADomain__IDL__CORBAAttribute__read_only_exceptions</body>
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_3oFzkLHvEd-tbasCPUZnSQ">
             <language>OCL</language>
-            <body>self.isReadOnly implies self.setraises->isEmpty()</body>
+            <body>self.oclAsType(uml::Property).isReadOnly implies self.setraises->isEmpty()</body>
           </specification>
         </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="_Ww1BgO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
@@ -455,7 +455,7 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_riOLIAwxEd-V8dowZWqrvQ" name="owner" visibility="public" type="_8UNR0MPIEd6u_6T1TQ_XYQ" isReadOnly="true"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_OcmUULWrEd2PTvVd89HYhA" name="CORBAOperation">
+      <packagedElement xmi:type="uml:Class" xmi:id="_OcmUULWrEd2PTvVd89HYhA" name="CXOperation">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_MJz0cCJDEd-VD6bNQmk_YQ" name="oneway_parameters_constraint" constrainedElement="_OcmUULWrEd2PTvVd89HYhA">
           <ownedComment xmi:type="uml:Comment" xmi:id="_MJ7wQCJDEd-VD6bNQmk_YQ">
             <body>%_desc_CORBADomain__IDL__CORBAOperation__oneway_parameters_constraint</body>
@@ -528,7 +528,7 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oizWkN1uEeqydOYSdMj1Fg"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_2ZPPIO1nEd2XOPM4ACfj4Q" name="CORBANamedElement">
+      <packagedElement xmi:type="uml:Class" xmi:id="_2ZPPIO1nEd2XOPM4ACfj4Q" name="CXNamedElement">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_hCQ1EO1oEd2XOPM4ACfj4Q" name="legal_corba_name" constrainedElement="_2ZPPIO1nEd2XOPM4ACfj4Q">
           <ownedComment xmi:type="uml:Comment" xmi:id="_hCQ1E-1oEd2XOPM4ACfj4Q">
             <body>%_desc_CORBADomain__IDL__CORBANamedElement__legal_corba_name</body>
@@ -552,8 +552,8 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
         </generalization>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_MopncMJaEd6QAZgNaBtgeQ" name="Contained" isAbstract="true"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_5ZEXsMJaEd6QAZgNaBtgeQ" name="CORBAType" isAbstract="true"/>
-      <packagedElement xmi:type="uml:Class" xmi:id="_Q0OakMJbEd6QAZgNaBtgeQ" name="CORBATyped" isAbstract="true">
+      <packagedElement xmi:type="uml:Class" xmi:id="_5ZEXsMJaEd6QAZgNaBtgeQ" name="CXType" isAbstract="true"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_Q0OakMJbEd6QAZgNaBtgeQ" name="CXTyped" isAbstract="true">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_T-4_wMJbEd6QAZgNaBtgeQ" name="idlType" visibility="public" type="_5ZEXsMJaEd6QAZgNaBtgeQ" association="_T-3xoMJbEd6QAZgNaBtgeQ">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T-5m0MJbEd6QAZgNaBtgeQ" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T-5m0cJbEd6QAZgNaBtgeQ" value="1"/>
@@ -565,7 +565,7 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T-7cAcJbEd6QAZgNaBtgeQ" value="*"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_THaTQMJdEd6QAZgNaBtgeQ" name="CORBAField">
+      <packagedElement xmi:type="uml:Class" xmi:id="_THaTQMJdEd6QAZgNaBtgeQ" name="CXField">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_whgLYJBzEeG3w4bnc767Ng" name="bound_value_constraint" constrainedElement="_THaTQMJdEd6QAZgNaBtgeQ">
           <ownedComment xmi:type="uml:Comment" xmi:id="_whngIJBzEeG3w4bnc767Ng">
             <body>%_desc_CORBADomain__IDL__CORBAField__bound_value_constraint</body>
@@ -587,7 +587,7 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XTLMsI-tEeGdHIFRtaMqRA" value="*"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_kTyfsMJdEd6QAZgNaBtgeQ" name="CORBAParameter">
+      <packagedElement xmi:type="uml:Class" xmi:id="_kTyfsMJdEd6QAZgNaBtgeQ" name="CXParameter">
         <ownedRule xmi:type="uml:Constraint" xmi:id="_KhxCYNF4Ed-64pKc_8KmWw" name="parameter_type_is_set" constrainedElement="_OcmUULWrEd2PTvVd89HYhA">
           <ownedComment xmi:type="uml:Comment" xmi:id="_KhxCYdF4Ed-64pKc_8KmWw">
             <body>%_desc_CORBADomain__IDL__CORBAParameter__parameter_type_is_set</body>
@@ -629,7 +629,7 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ti1q8cMhEd6tra_UkAvALA" value="*"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_bu8JsMMhEd6tra_UkAvALA" name="CORBAClassifier" isAbstract="true">
+      <packagedElement xmi:type="uml:Class" xmi:id="_bu8JsMMhEd6tra_UkAvALA" name="CXClassifier" isAbstract="true">
         <generalization xmi:type="uml:Generalization" xmi:id="_hTlHoMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Tio2oMMhEd6tra_UkAvALA" name="ownedOperation" visibility="public" type="_OcmUULWrEd2PTvVd89HYhA" aggregation="composite" association="_TiXw4MMhEd6tra_UkAvALA">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TiynoMMhEd6tra_UkAvALA"/>
@@ -666,14 +666,14 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__i0AAcPBEd6u_6T1TQ_XYQ" value="*"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_8UNR0MPIEd6u_6T1TQ_XYQ" name="CORBAModuleContained" isAbstract="true"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_8UNR0MPIEd6u_6T1TQ_XYQ" name="CXModuleContained" isAbstract="true"/>
       <packagedElement xmi:type="uml:Association" xmi:id="_BFkvEMPJEd6u_6T1TQ_XYQ" name="moduleContents" memberEnd="_BFl9MMPJEd6u_6T1TQ_XYQ _BFnyYMPJEd6u_6T1TQ_XYQ">
         <ownedEnd xmi:type="uml:Property" xmi:id="_BFnyYMPJEd6u_6T1TQ_XYQ" name="" visibility="public" type="_OQD9wEk6Ed2eBKZvQ89d6g" association="_BFkvEMPJEd6u_6T1TQ_XYQ">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BFoZcMPJEd6u_6T1TQ_XYQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BFoZccPJEd6u_6T1TQ_XYQ" value="*"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_5qa9YMPOEd6u_6T1TQ_XYQ" name="CORBAClassifierContained" isAbstract="true"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_5qa9YMPOEd6u_6T1TQ_XYQ" name="CXClassifierContained" isAbstract="true"/>
       <packagedElement xmi:type="uml:Association" xmi:id="_9GMgsMPOEd6u_6T1TQ_XYQ" name="classifierContents" memberEnd="_9GNu0MPOEd6u_6T1TQ_XYQ _9GPkAMPOEd6u_6T1TQ_XYQ">
         <ownedEnd xmi:type="uml:Property" xmi:id="_9GPkAMPOEd6u_6T1TQ_XYQ" name="" visibility="public" type="_bu8JsMMhEd6tra_UkAvALA" association="_9GMgsMPOEd6u_6T1TQ_XYQ">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9GQLEMPOEd6u_6T1TQ_XYQ"/>
@@ -692,7 +692,7 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7e42ISG-EeGd-Nb5_CNoPw" value="*"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_vWz-sIPiEeGRety5GrZr1Q" name="CORBABound">
+      <packagedElement xmi:type="uml:Class" xmi:id="_vWz-sIPiEeGRety5GrZr1Q" name="CXBound">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_PCNcEI-tEeGdHIFRtaMqRA" name="value" visibility="public">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AoQegI-uEeGdHIFRtaMqRA"/>
@@ -721,7 +721,7 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4jk2YI-tEeGdHIFRtaMqRA" value="*"/>
         </ownedEnd>
       </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_AHZREJoKEeGUmNT_0OYWnw" name="CORBAInterfaceGenerals" memberEnd="_AHfXsJoKEeGUmNT_0OYWnw _AHleUpoKEeGUmNT_0OYWnw">
+      <packagedElement xmi:type="uml:Association" xmi:id="_AHZREJoKEeGUmNT_0OYWnw" name="CXInterfaceGenerals" memberEnd="_AHfXsJoKEeGUmNT_0OYWnw _AHleUpoKEeGUmNT_0OYWnw">
         <ownedEnd xmi:type="uml:Property" xmi:id="_AHleUpoKEeGUmNT_0OYWnw" name="" visibility="public" type="_clQegEk2Ed2eBKZvQ89d6g" association="_AHZREJoKEeGUmNT_0OYWnw">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AHleU5oKEeGUmNT_0OYWnw"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AHleVJoKEeGUmNT_0OYWnw" value="*"/>

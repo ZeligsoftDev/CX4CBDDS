@@ -12,8 +12,7 @@ public interface RequirementSatisfier extends NamedElement {
 
 	void addProperty(SatisfierProperty val);
 
-	<T extends SatisfierProperty> T addProperty(Class<T> typeToCreate,
-			String concept);
+	<T extends SatisfierProperty> T addProperty(Class<T> typeToCreate, String concept);
 
 	SatisfierProperty addProperty();
 

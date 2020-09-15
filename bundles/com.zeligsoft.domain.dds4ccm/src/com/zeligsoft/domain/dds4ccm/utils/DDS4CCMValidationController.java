@@ -46,7 +46,7 @@ public class DDS4CCMValidationController {
 			validator = ModelValidationService.getInstance()
 			.newValidator(EvaluationMode.BATCH);
 			// Set up clientData map so that RSM will display the problem markers.
-			validator.putClientData("markerType", "com.ibm.xtools.modeler.validation.validationProblem");  //$NON-NLS-1$//$NON-NLS-2$
+			// validator.putClientData("markerType", "com.ibm.xtools.modeler.validation.validationProblem");  //$NON-NLS-1$//$NON-NLS-2$
 		}
 		
 		return validator;

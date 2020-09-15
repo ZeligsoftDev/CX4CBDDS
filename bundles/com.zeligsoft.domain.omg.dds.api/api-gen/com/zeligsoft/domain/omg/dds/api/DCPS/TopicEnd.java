@@ -11,7 +11,6 @@ public interface TopicEnd extends ConnectorEnd {
 	 * A predicate which returns true if the Object is an
 	 * instance of TopicEnd
 	 */
-	static final TypeSelectPredicate<TopicEnd> type = new TypeSelectPredicate<TopicEnd>(
-			"DDS::DCPS::TopicEnd", //$NON-NLS-1$
+	static final TypeSelectPredicate<TopicEnd> type = new TypeSelectPredicate<TopicEnd>("DDS::DCPS::TopicEnd", //$NON-NLS-1$
 			TopicEnd.class);
 }

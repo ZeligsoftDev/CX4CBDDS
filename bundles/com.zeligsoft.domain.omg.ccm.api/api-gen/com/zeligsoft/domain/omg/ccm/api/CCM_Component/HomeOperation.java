@@ -1,29 +1,27 @@
 package com.zeligsoft.domain.omg.ccm.api.CCM_Component;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBANamedElement;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAException;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXNamedElement;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXException;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXParameter;
 import com.zeligsoft.domain.zml.api.ZML_Component.WorkerFunctionIdentifiable;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAParameter;
 
-public interface HomeOperation extends CORBANamedElement,
-		WorkerFunctionIdentifiable {
+public interface HomeOperation extends CXNamedElement, WorkerFunctionIdentifiable {
 	Home getOwner();
 
 	void setOwner(Home val);
 
-	java.util.List<CORBAException> getExceptionDef();
+	java.util.List<CXException> getExceptionDef();
 
-	void addExceptionDef(CORBAException val);
+	void addExceptionDef(CXException val);
 
-	java.util.List<CORBAParameter> getOwnedParameter();
+	java.util.List<CXParameter> getOwnedParameter();
 
-	void addOwnedParameter(CORBAParameter val);
+	void addOwnedParameter(CXParameter val);
 
-	<T extends CORBAParameter> T addOwnedParameter(Class<T> typeToCreate,
-			String concept);
+	<T extends CXParameter> T addOwnedParameter(Class<T> typeToCreate, String concept);
 
-	CORBAParameter addOwnedParameter();
+	CXParameter addOwnedParameter();
 
 	org.eclipse.uml2.uml.Operation asOperation();
 

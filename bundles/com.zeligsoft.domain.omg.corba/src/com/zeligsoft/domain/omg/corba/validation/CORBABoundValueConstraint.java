@@ -26,10 +26,10 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.uml2.common.util.UML2Util;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
- * Check to see if the CORBABound values are property set
+ * Check to see if the CXBound values are property set
  * 
  * @author ysroh
  * 
@@ -42,28 +42,28 @@ public class CORBABoundValueConstraint extends AbstractModelConstraint {
 		EObject objToVerify = ctx.getTarget();
 
 		List<EObject> bounds = new ArrayList<EObject>();
-		if (ZDLUtil.isZDLConcept(objToVerify, CORBADomainNames.CORBAARRAY)) {
+		if (ZDLUtil.isZDLConcept(objToVerify, CXDomainNames.CXARRAY)) {
 			bounds = (List<EObject>) ZDLUtil.getValue(objToVerify,
-					CORBADomainNames.CORBAARRAY,
-					CORBADomainNames.CORBAARRAY__BOUNDS);
+					CXDomainNames.CXARRAY,
+					CXDomainNames.CXARRAY__BOUNDS);
 		} else if (ZDLUtil.isZDLConcept(objToVerify,
-				CORBADomainNames.CORBAFIELD)) {
+				CXDomainNames.CXFIELD)) {
 			bounds = (List<EObject>) ZDLUtil.getValue(objToVerify,
-					CORBADomainNames.CORBAFIELD,
-					CORBADomainNames.CORBAFIELD__BOUNDS);
+					CXDomainNames.CXFIELD,
+					CXDomainNames.CXFIELD__BOUNDS);
 		} else if (ZDLUtil.isZDLConcept(objToVerify,
-				CORBADomainNames.CORBASEQUENCE)) {
+				CXDomainNames.CXSEQUENCE)) {
 			EObject bound = ZDLUtil.getEValue(objToVerify,
-					CORBADomainNames.CORBASEQUENCE,
-					CORBADomainNames.CORBASEQUENCE__BOUNDS);
+					CXDomainNames.CXSEQUENCE,
+					CXDomainNames.CXSEQUENCE__BOUNDS);
 			if (bound != null) {
 				bounds.add(bound);
 			}
 		} else if (ZDLUtil.isZDLConcept(objToVerify,
-				CORBADomainNames.CORBABOUNDED)) {
+				CXDomainNames.CXBOUNDED)) {
 			EObject bound = ZDLUtil.getEValue(objToVerify,
-					CORBADomainNames.CORBABOUNDED,
-					CORBADomainNames.CORBABOUNDED__BOUNDS);
+					CXDomainNames.CXBOUNDED,
+					CXDomainNames.CXBOUNDED__BOUNDS);
 			if (bound != null) {
 				bounds.add(bound);
 			}
@@ -72,11 +72,11 @@ public class CORBABoundValueConstraint extends AbstractModelConstraint {
 		}
 		for (EObject bound : bounds) {
 			String stringBound = (String) ZDLUtil.getValue(bound,
-					CORBADomainNames.CORBABOUND,
-					CORBADomainNames.CORBABOUND__VALUE);
+					CXDomainNames.CXBOUND,
+					CXDomainNames.CXBOUND__VALUE);
 			EObject constantBound = ZDLUtil.getEValue(bound,
-					CORBADomainNames.CORBABOUND,
-					CORBADomainNames.CORBABOUND__CONSTANT);
+					CXDomainNames.CXBOUND,
+					CXDomainNames.CXBOUND__CONSTANT);
 			if (UML2Util.isEmpty(stringBound) && constantBound == null) {
 				return ctx.createFailureStatus();
 			} else if (!UML2Util.isEmpty(stringBound) && constantBound != null) {

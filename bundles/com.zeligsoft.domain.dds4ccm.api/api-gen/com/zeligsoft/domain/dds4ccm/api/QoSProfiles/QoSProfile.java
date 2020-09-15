@@ -12,8 +12,7 @@ public interface QoSProfile extends NamedElement {
 
 	void addQosForEntity(QoSForEntity val);
 
-	<T extends QoSForEntity> T addQosForEntity(Class<T> typeToCreate,
-			String concept);
+	<T extends QoSForEntity> T addQosForEntity(Class<T> typeToCreate, String concept);
 
 	java.util.List<QoSEntity> getQosEntity();
 

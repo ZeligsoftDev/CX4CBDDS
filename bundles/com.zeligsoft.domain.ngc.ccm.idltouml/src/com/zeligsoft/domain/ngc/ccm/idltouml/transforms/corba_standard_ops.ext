@@ -26,7 +26,7 @@
  ****************************************************************************/
 create uml::Operation standard_op__is_a(uml::Class container) :
 	this.setName("_is_a_") ->
-	// TODO : set the return type -- CORBA::Boolean
+	// TODO : set the return type -- CX::Boolean
 	standard_op__is_a__parameter(this) ->
 	container.ownedOperation.add(this) ->
 	this.addGeneratedTag() ->

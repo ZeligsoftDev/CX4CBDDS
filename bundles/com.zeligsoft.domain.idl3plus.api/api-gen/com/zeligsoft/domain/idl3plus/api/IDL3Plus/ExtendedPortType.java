@@ -1,22 +1,20 @@
 package com.zeligsoft.domain.idl3plus.api.IDL3Plus;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBANamedElement;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAAttribute;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXNamedElement;
 import com.zeligsoft.domain.zml.api.ZML_Component.PortType;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAType;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModuleContained;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXAttribute;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXModuleContained;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXType;
 
-public interface ExtendedPortType extends CORBAModuleContained, PortType,
-		CORBANamedElement, CORBAType {
-	java.util.List<CORBAAttribute> getOwnedAttribute();
+public interface ExtendedPortType extends CXModuleContained, PortType, CXNamedElement, CXType {
+	java.util.List<CXAttribute> getOwnedAttribute();
 
-	void addOwnedAttribute(CORBAAttribute val);
+	void addOwnedAttribute(CXAttribute val);
 
-	<T extends CORBAAttribute> T addOwnedAttribute(Class<T> typeToCreate,
-			String concept);
+	<T extends CXAttribute> T addOwnedAttribute(Class<T> typeToCreate, String concept);
 
-	CORBAAttribute addOwnedAttribute();
+	CXAttribute addOwnedAttribute();
 
 	@Override
 	org.eclipse.uml2.uml.Class asClass();

@@ -23,7 +23,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import com.zeligsoft.base.util.ModelMerger.AbstractHierarchicalKey;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * Key generator for MonolithicImplementations. The containing ModuleInstantiation is sufficient.
@@ -73,7 +73,7 @@ public class MonolithicImplementationKey extends AbstractHierarchicalKey<Monolit
 		NamedElement namedElement = intf;
 
 		while( namedElement != null ) {
-			if( ZDLUtil.isZDLConcept(namedElement, CORBADomainNames.CORBANAMED_ELEMENT)
+			if( ZDLUtil.isZDLConcept(namedElement, CXDomainNames.CXNAMED_ELEMENT)
 					|| ZDLUtil.isZDLConcept(namedElement, CCMNames.MONOLITHIC_IMPLEMENTATION)) {
 				if( repositoryId.matches("") == false) {
 					repositoryId = "/" + repositoryId;
@@ -81,7 +81,7 @@ public class MonolithicImplementationKey extends AbstractHierarchicalKey<Monolit
 				repositoryId = namedElement.getName() + repositoryId;
 				namedElement = (NamedElement)namedElement.getOwner();	
 			} else if( namedElement instanceof org.eclipse.uml2.uml.Package ) {
-				// A UML package should be skipped since its container could still be a CORBA Element.
+				// A UML package should be skipped since its container could still be a CX Element.
 				namedElement = (NamedElement)namedElement.getOwner();
 			} else {
 				// Any other object means we are done calculating the repository ID.

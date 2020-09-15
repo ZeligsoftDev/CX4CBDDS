@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-import CORBADomain::IDL;
+import CXDomain::IDL;
 import CCM::CCM_Component;
 import CCM::CCM_Core;
 import CCM::CCM_Implementation;
@@ -28,7 +28,7 @@ import ZMLMM::ZML_Core;
 extension com::zeligsoft::domain::idl3plus::generator::xtend::annotations;
 extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
 	
-create ecore::EAnnotation createFileName(CORBAInterface self) :
+create ecore::EAnnotation createFileName(CXInterface self) :
 	this.setSource("zcx") ->
 	this.details.add(createDetail("filename", self.path() + self.fileName())) ->
 	this.details.add(createDetail("entityname", self.name)) ->
@@ -84,7 +84,7 @@ String path(CCMModel self) :
 String path(uml::Package self) :
 	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
 	
-String path(CORBAInterface self) :
+String path(CXInterface self) :
 	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
 	
 String path(Event self) :
@@ -105,7 +105,7 @@ String fileName(uml::NamedElement self ) :
 private String _fileName(CCMComponent self) :
 	_fileName(self.eContainer, self.name);
 		
-private String _fileName(CORBAInterface self) :
+private String _fileName(CXInterface self) :
 	_fileName(self.eContainer, self.name);
 	
 private String _fileName(Event self) :
@@ -117,43 +117,43 @@ private String _fileName(PortType self) :
 private String _fileName(uml::Package self) :
 	_fileName(self.eContainer, self.name);
 	
-private String _fileName(CORBAModule self) :
+private String _fileName(CXModule self) :
 	_fileName(self.eContainer);
 	
-private String _fileName(CORBAEnum self) :
+private String _fileName(CXEnum self) :
 	_fileName(self.eContainer);
 	
-private String _fileName(CORBAStruct self) :
+private String _fileName(CXStruct self) :
 	_fileName(self.eContainer);
 	
-private String _fileName(CORBAException self) :
+private String _fileName(CXException self) :
 	_fileName(self.eContainer);
 	
-private String _fileName(CORBASequence self) :
+private String _fileName(CXSequence self) :
 	_fileName(self.eContainer);
 	
-private String _fileName(CORBATypeDef self) :
+private String _fileName(CXTypeDef self) :
 	_fileName(self.eContainer);
 	
-private String _fileName(CORBAUnion self) :
+private String _fileName(CXUnion self) :
 	_fileName(self.eContainer);
 	
-private String _fileName(CORBAWString self) :
+private String _fileName(CXWString self) :
 	_fileName(self.eContainer);
 	
-private String _fileName(CORBAString self) :
+private String _fileName(CXString self) :
 	_fileName(self.eContainer);
 	
 private String _fileName(Native self) :
 	_fileName(self.eContainer);
 	
-private String _fileName(CORBAArray self) :
+private String _fileName(CXArray self) :
 	_fileName(self.eContainer);
 	
-private String _fileName(CORBAConstants self) :
+private String _fileName(CXConstants self) :
 	_fileName(self.eContainer);
 	
-private String _fileName(CORBAConstant self) :
+private String _fileName(CXConstant self) :
 	_fileName(self.eContainer);
 	
 private String _fileName(DDSMessage self) :
@@ -168,7 +168,7 @@ private String _fileName(uml::Package self, String name) :
 private String _fileName(ModuleInstantiation self, String name) :
 	_fileName(self.eContainer, self.name);
 		
-private String _fileName(CORBAModule self, String name) :
+private String _fileName(CXModule self, String name) :
 	let filedependency = self.zdlAsNamedElement().clientDependency.typeSelect(IDLFileDependency) :
 	filedependency.size > 0 ? 
 		_fileName(self.eContainer, filedependency.get(0).file.filename + "_" + name) :

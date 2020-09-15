@@ -40,7 +40,7 @@ import org.eclipse.xtend.util.stdlib.ExtIssueReporter;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZDeploymentUtil;
 
 /**
@@ -128,7 +128,7 @@ public class CDPXtendUtils {
 	}
 
 	public static String getCorbaScopedName(NamedElement element) {
-		if (ZDLUtil.isZDLConcept(element, CORBADomainNames.CORBANAMED_ELEMENT)
+		if (ZDLUtil.isZDLConcept(element, CXDomainNames.CXNAMED_ELEMENT)
 				|| ZDLUtil.isZDLConcept(element,
 						CCMNames.MONOLITHIC_IMPLEMENTATION)) {
 			return getScopedName(element, true).replaceAll("\\.", "_");
@@ -138,11 +138,11 @@ public class CDPXtendUtils {
 	}
 
 	public static String getModifiedCorbaScopedName(NamedElement element, String prefix) {
-		final boolean restrictToCORBA = ZDLUtil.isZDLConcept(element, CORBADomainNames.CORBANAMED_ELEMENT)
+		final boolean restrictToCX = ZDLUtil.isZDLConcept(element, CXDomainNames.CXNAMED_ELEMENT)
 				|| ZDLUtil.isZDLConcept(element, CCMNames.MONOLITHIC_IMPLEMENTATION);
 		
 		final String parentName = element.getOwner() instanceof NamedElement ?
-				getScopedName((NamedElement)(element.getOwner()), restrictToCORBA).replaceAll("\\.", "_")
+				getScopedName((NamedElement)(element.getOwner()), restrictToCX).replaceAll("\\.", "_")
 				: "";
 		final StringBuilder buffer = new StringBuilder();
 		if(!parentName.isEmpty()) {
@@ -153,7 +153,7 @@ public class CDPXtendUtils {
 	}
 
 	private static String getScopedName(NamedElement element,
-			boolean restrictToCORBA) {
+			boolean restrictToCX) {
 
 		StringBuilder retVal = new StringBuilder();
 
@@ -161,10 +161,10 @@ public class CDPXtendUtils {
 
 		while (iterator != null) {
 
-			if (restrictToCORBA == false
-					|| (restrictToCORBA == true
+			if (restrictToCX == false
+					|| (restrictToCX == true
 							&& (ZDLUtil.isZDLConcept(iterator,
-									CORBADomainNames.CORBANAMED_ELEMENT)) || ZDLUtil
+									CXDomainNames.CXNAMED_ELEMENT)) || ZDLUtil
 							.isZDLConcept(iterator,
 									CCMNames.MONOLITHIC_IMPLEMENTATION))) {
 				if (retVal.length() > 0) {

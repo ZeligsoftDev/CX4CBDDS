@@ -14,22 +14,22 @@
  * limitations under the License.
  *
  */
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
-Void configureUnion(CORBAUnion union ) :
+Void configureUnion(CXUnion union ) :
 	JAVA com.zeligsoft.domain.omg.corba.util.CORBAConfig.configureUnion(org.eclipse.uml2.uml.DataType);
 		
-Void configureSequence(CORBASequence seq) :
+Void configureSequence(CXSequence seq) :
 	JAVA com.zeligsoft.domain.omg.corba.util.CORBAConfig.configureSequence(org.eclipse.uml2.uml.DataType);
 		
-Void configureArray(CORBAArray arr) :
+Void configureArray(CXArray arr) :
 	JAVA com.zeligsoft.domain.omg.corba.util.CORBAConfig.configureArray(org.eclipse.uml2.uml.DataType);
 		
-Void configureConstant(CORBAConstant const) :
+Void configureConstant(CXConstant const) :
 	JAVA com.zeligsoft.domain.omg.corba.util.CORBAConfig.configureConstant(org.eclipse.uml2.uml.Property);
 	
-Void configureCORBAAttribute(CORBAAttribute attr) :
+Void configureCORBAAttribute(CXAttribute attr) :
 	JAVA com.zeligsoft.domain.omg.corba.util.CORBAConfig.configureCORBAAttribute(org.eclipse.uml2.uml.Property);
 	
-Void configureCORBAField(CORBAField attr) :
+Void configureCORBAField(CXField attr) :
 	JAVA com.zeligsoft.domain.omg.corba.util.CORBAConfig.configureCORBAAttribute(org.eclipse.uml2.uml.Property);

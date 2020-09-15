@@ -13,7 +13,6 @@ public interface TypedEntity extends NamedEntity {
 	 * A predicate which returns true if the Object is an
 	 * instance of TypedEntity
 	 */
-	static final TypeSelectPredicate<TypedEntity> type = new TypeSelectPredicate<TypedEntity>(
-			"DDS::Core::TypedEntity", //$NON-NLS-1$
+	static final TypeSelectPredicate<TypedEntity> type = new TypeSelectPredicate<TypedEntity>("DDS::Core::TypedEntity", //$NON-NLS-1$
 			TypedEntity.class);
 }

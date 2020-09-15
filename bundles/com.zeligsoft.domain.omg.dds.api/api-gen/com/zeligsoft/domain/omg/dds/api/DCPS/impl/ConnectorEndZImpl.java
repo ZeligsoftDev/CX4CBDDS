@@ -4,8 +4,7 @@ import com.zeligsoft.base.zdl.staticapi.internal.core.ZObjectImpl;
 
 import com.zeligsoft.domain.omg.dds.api.DCPS.ConnectorEnd;
 
-public abstract class ConnectorEndZImpl extends ZObjectImpl implements
-		ConnectorEnd {
+public abstract class ConnectorEndZImpl extends ZObjectImpl implements ConnectorEnd {
 	public ConnectorEndZImpl(org.eclipse.emf.ecore.EObject element) {
 		super(element);
 	}

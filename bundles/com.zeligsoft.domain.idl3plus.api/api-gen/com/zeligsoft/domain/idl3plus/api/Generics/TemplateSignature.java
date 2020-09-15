@@ -8,8 +8,7 @@ public interface TemplateSignature extends ZObject {
 
 	void addTypeParameter(TypeParameter val);
 
-	<T extends TypeParameter> T addTypeParameter(Class<T> typeToCreate,
-			String concept);
+	<T extends TypeParameter> T addTypeParameter(Class<T> typeToCreate, String concept);
 
 	TypeParameter addTypeParameter();
 

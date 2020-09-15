@@ -34,9 +34,9 @@ import com.zeligsoft.domain.dds4ccm.ConnectorType;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.idl3plus.api.Connectors.ConnectorDef;
 import com.zeligsoft.domain.idl3plus.api.Generics.TemplateModule;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModule;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBAModuleContained;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXModule;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXModuleContained;
 
 public class ConnectorTypeUtility {	
 	
@@ -80,11 +80,11 @@ public class ConnectorTypeUtility {
 		
 		ConnectorDef cd = null;
 		
-		CORBAModule cm = null;
+		CXModule cm = null;
 		
 		for(Package nestedPackage: connectorLibPackage.getNestedPackages()){
-			if(ZDLUtil.isZDLConcept(nestedPackage, CORBADomainNames.CORBAMODULE)){
-				cm = ZDLFactoryRegistry.INSTANCE.create(nestedPackage, CORBAModule.class);
+			if(ZDLUtil.isZDLConcept(nestedPackage, CXDomainNames.CXMODULE)){
+				cm = ZDLFactoryRegistry.INSTANCE.create(nestedPackage, CXModule.class);
 				break;
 			}
 		}
@@ -95,7 +95,7 @@ public class ConnectorTypeUtility {
 		
 		TemplateModule tm = null;
 		
-		for(CORBAModuleContained cmContained: cm.getContents()){
+		for(CXModuleContained cmContained: cm.getContents()){
 			if(ZDLUtil.isZDLConcept(cmContained.eObject(), IDL3PlusNames.TEMPLATE_MODULE)){
 				tm = ZDLFactoryRegistry.INSTANCE.create(cmContained.eObject(), TemplateModule.class);
 				break;

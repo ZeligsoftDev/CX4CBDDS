@@ -1,10 +1,10 @@
 package com.zeligsoft.domain.omg.ccm.api.CCM_Component;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBATyped;
-import com.zeligsoft.domain.omg.corba.api.IDL.CORBANamedElement;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXNamedElement;
+import com.zeligsoft.domain.omg.corba.api.IDL.CXTyped;
 
-public interface StateMember extends CORBATyped, CORBANamedElement {
+public interface StateMember extends CXTyped, CXNamedElement {
 	org.eclipse.uml2.uml.Property asProperty();
 
 	/**

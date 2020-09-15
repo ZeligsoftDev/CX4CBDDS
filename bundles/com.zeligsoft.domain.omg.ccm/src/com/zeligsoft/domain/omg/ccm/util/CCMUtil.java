@@ -41,7 +41,7 @@ import org.eclipse.uml2.uml.ValueSpecification;
 import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 public class CCMUtil {
@@ -67,13 +67,13 @@ public class CCMUtil {
 		Slot slot = slotMap.get(property);
 
 		if (slot != null
-				&& (CORBADomainNames.CORBASTRUCT__MEMBERS.equals(property
+				&& (CXDomainNames.CXSTRUCT__MEMBERS.equals(property
 						.getName())
 						|| "member".equals(property.getName()) //$NON-NLS-1$
 						|| ZDLUtil.isZDLConcept(slot.getDefiningFeature(),
-								CORBADomainNames.CORBAATTRIBUTE)
+								CXDomainNames.CXATTRIBUTE)
 						|| ZDLUtil.isZDLConcept(slot.getDefiningFeature(),
-								CORBADomainNames.CORBAFIELD)
+								CXDomainNames.CXFIELD)
 						|| ZDLUtil.isZDLConcept(slot.getDefiningFeature(),
 								CCMNames.SATISFIER_PROPERTY) || ZDLUtil
 						.isZDLConcept(slot.getDefiningFeature(),
@@ -88,28 +88,28 @@ public class CCMUtil {
 			}
 		} else {
 			if (!ZDLUtil.isZDLConcept(property.eContainer(),
-					CORBADomainNames.CORBASTRUCT)
+					CXDomainNames.CXSTRUCT)
 					&& !ZDLUtil.isZDLConcept(property.eContainer(),
-							CORBADomainNames.CORBASEQUENCE)
+							CXDomainNames.CXSEQUENCE)
 					&& !ZDLUtil.isZDLConcept(property.eContainer(),
 							CCMNames.RESOURCE)
 					&& !ZDLUtil.isZDLConcept(property.eContainer(),
 							ZMLMMNames.PORT_TYPE)
 					&& !ZDLUtil.isZDLConcept(property.eContainer(),
-							CORBADomainNames.CORBAARRAY)) {
+							CXDomainNames.CXARRAY)) {
 				return null;
 			}
 			Iterator<Slot> itor = slotMap.values().iterator();
 			while (itor.hasNext()) {
 				Slot aSlot = itor.next();
 				Type type = aSlot.getDefiningFeature().getType();
-				if (ZDLUtil.isZDLConcept(type, CORBADomainNames.CORBASTRUCT)
+				if (ZDLUtil.isZDLConcept(type, CXDomainNames.CXSTRUCT)
 						|| ZDLUtil.isZDLConcept(type,
-								CORBADomainNames.CORBASEQUENCE)
+								CXDomainNames.CXSEQUENCE)
 						|| ZDLUtil.isZDLConcept(type, CCMNames.RESOURCE)
 						|| ZDLUtil.isZDLConcept(type, ZMLMMNames.PORT_TYPE)
 						|| ZDLUtil.isZDLConcept(type,
-								CORBADomainNames.CORBAARRAY)) {
+								CXDomainNames.CXARRAY)) {
 					if (definingFeaturesForAncestorSlots == null
 							|| definingFeaturesForAncestorSlots.isEmpty()) {
 						continue;
@@ -287,7 +287,7 @@ public class CCMUtil {
 	 */
 	public static Property getMembersAttribute(DataType type) {
 		Property member = type.getOwnedAttribute(
-				CORBADomainNames.CORBASTRUCT__MEMBERS, null);
+				CXDomainNames.CXSTRUCT__MEMBERS, null);
 		if (member == null) {
 			member = type.getOwnedAttribute("member", null); //$NON-NLS-1$
 		}

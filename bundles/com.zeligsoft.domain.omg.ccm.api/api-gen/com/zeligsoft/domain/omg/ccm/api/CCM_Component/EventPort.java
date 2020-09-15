@@ -1,8 +1,8 @@
 package com.zeligsoft.domain.omg.ccm.api.CCM_Component;
 
 import com.zeligsoft.base.zdl.staticapi.functions.TypeSelectPredicate;
-import com.zeligsoft.domain.zml.api.ZML_Core.Type;
 import com.zeligsoft.domain.zml.api.ZML_Component.Port;
+import com.zeligsoft.domain.zml.api.ZML_Core.Type;
 import com.zeligsoft.domain.zml.api.ZML_Component.ConjugatedPort;
 
 public interface EventPort extends Port, ConjugatedPort {

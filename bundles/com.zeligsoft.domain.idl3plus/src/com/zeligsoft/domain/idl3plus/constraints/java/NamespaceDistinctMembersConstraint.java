@@ -41,8 +41,7 @@ import com.zeligsoft.domain.omg.ccm.CCMNames;
 
 /**
  * Constraint to verify that the members of a namespace are distinguishable
- * within it. This constraint overrides the existing constraint
- * (com.ibm.xtools.uml.validation.namespace.distinctMembers) to fix bug#16168
+ * within it.
  * 
  * @author ysroh
  * 

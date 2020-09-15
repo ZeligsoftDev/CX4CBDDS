@@ -9,8 +9,7 @@ import com.zeligsoft.domain.omg.dds.api.DCPS.DDSComponent;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
-public class DomainParticipantZImpl extends NamedEntityZImpl implements
-		DomainParticipant {
+public class DomainParticipantZImpl extends NamedEntityZImpl implements DomainParticipant {
 	protected DDSComponent _type;
 
 	public DomainParticipantZImpl(org.eclipse.emf.ecore.EObject element) {
@@ -20,11 +19,10 @@ public class DomainParticipantZImpl extends NamedEntityZImpl implements
 	@Override
 	public DDSComponent getType() {
 		if (_type == null) {
-			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil
-					.getValue(eObject(), "DDS::DCPS::DomainParticipant", "type");
+			final Object rawValue = com.zeligsoft.base.zdl.util.ZDLUtil.getValue(eObject(),
+					"DDS::DCPS::DomainParticipant", "type");
 			if (rawValue instanceof org.eclipse.emf.ecore.EObject) {
-				_type = ZDLFactoryRegistry.INSTANCE.create(
-						(org.eclipse.emf.ecore.EObject) rawValue,
+				_type = ZDLFactoryRegistry.INSTANCE.create((org.eclipse.emf.ecore.EObject) rawValue,
 						DDSComponent.class);
 			}
 		}
@@ -33,8 +31,7 @@ public class DomainParticipantZImpl extends NamedEntityZImpl implements
 
 	@Override
 	public void setType(DDSComponent val) {
-		ZDLUtil.setValue(element, "DDS::DCPS::DomainParticipant", "type",
-				val.eObject());
+		ZDLUtil.setValue(element, "DDS::DCPS::DomainParticipant", "type", val.eObject());
 	}
 
 	@Override

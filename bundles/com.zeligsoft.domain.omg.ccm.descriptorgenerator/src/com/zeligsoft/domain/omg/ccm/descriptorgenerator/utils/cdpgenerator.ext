@@ -23,7 +23,7 @@ import CCM::CCM_Implementation;
 import ZMLMM::ZML_Deployments;
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
-import CORBADomain::IDL;
+import CXDomain::IDL;
 
 extension org::eclipse::xtend::util::stdlib::issues;
 extension com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::util;
@@ -82,12 +82,12 @@ create DataType visitAttributeType(CCM::CCM_Target::Property property, Any obj) 
 	corbaType.visitEnumType(this) ->
 	corbaType.visitBoundedStringType(this);
 	
-create Property visitConfigProperty(CORBAAttribute attr, uml::InstanceValue value, InstanceDeploymentDescription inst, List[uml::Slot] defaultSlots ) :
+create Property visitConfigProperty(CXAttribute attr, uml::InstanceValue value, InstanceDeploymentDescription inst, List[uml::Slot] defaultSlots ) :
 	this.name.add(attr.name) ->
 	this.value.add(visitPropertyValue(attr, value, inst, defaultSlots)) ->
 	inst.configProperty.add(this);
 	
-create Any visitPropertyValue(CORBAAttribute attr, uml::InstanceValue value, InstanceDeploymentDescription inst, List[uml::Slot] defaultSlots) :
+create Any visitPropertyValue(CXAttribute attr, uml::InstanceValue value, InstanceDeploymentDescription inst, List[uml::Slot] defaultSlots) :
 	let ancesterSlotFeatures = attr.createList() :
 	ancesterSlotFeatures.add(attr) ->
 	this.type.add(visitAttributeType(attr, this)) ->
@@ -96,7 +96,7 @@ create Any visitPropertyValue(CORBAAttribute attr, uml::InstanceValue value, Ins
 create List[emf::EObject] createList(Object o) :
 	{};
 	
-create DataType visitAttributeType(CORBAAttribute attr, Any obj) :
+create DataType visitAttributeType(CXAttribute attr, Any obj) :
 	let corbaType = attr.idlType :
 	this.kind.add(corbaType.toCDPType()) ->
 	corbaType.visitSequenceType(this) ->
@@ -112,7 +112,7 @@ DataValue visitAttributeValue(Object o, uml::ValueSpecification value, TcKind ty
 create DataValue visitAttributeValue(Object o, uml::ValueSpecification value, TcKind type, List[emf::EObject] ancesterSlotFeatures, List[uml::Slot] defaultSlots ) :
 	switch(type) {
 		case TcKind::tkStruct :
-			value.instance.zdlAsInstanceSpecification().classifier.get(0).members.typeSelect(CORBAField).createStructValue(this, value, ancesterSlotFeatures, defaultSlots)
+			value.instance.zdlAsInstanceSpecification().classifier.get(0).members.typeSelect(CXField).createStructValue(this, value, ancesterSlotFeatures, defaultSlots)
 		case TcKind::tkSequence :
 			createSequenceValue(this, value, ancesterSlotFeatures, defaultSlots)
 		case TcKind::tkArray :
@@ -173,7 +173,7 @@ Void createSequenceValue(DataValue sequenceValue, uml::ValueSpecification valueS
 	memberSlot == null ? {
 		// this is old style sequence value
 		let values = getSequenceValues(valueSpec.stringValue(), sequenceValue) :
-		// to get the type we have to navigate to the CORBASequence and look at its members property.
+		// to get the type we have to navigate to the CXSequence and look at its members property.
 		let type = valueSpec.owner.definingFeature.idlType.zdlAsDataType().ownedAttribute.first().zdlAsProperty().type.toCDPType() :
 		values.select( string | sequenceValue.element.add(createSequenceElement(string, type)))
 	} :	{
@@ -238,7 +238,7 @@ List[String] getSequenceValues(String valueList, Object o ) :
 		java.lang.String,
 		java.lang.Object);
 		
-Void createStructValue(CORBAField field, DataValue structValue, uml::InstanceValue valueSpec, List[emf::EObject] ancesterSlotFeatures, List[uml::Slot] defaultSlots ) :
+Void createStructValue(CXField field, DataValue structValue, uml::InstanceValue valueSpec, List[emf::EObject] ancesterSlotFeatures, List[uml::Slot] defaultSlots ) :
 	// add missing value tag
 	let slot = valueSpec.instance.zdlAsInstanceSpecification().slot.selectFirst(e | e.definingFeature == field):
 	if(slot == null && !defaultSlots.isEmpty) then {
@@ -260,7 +260,7 @@ Void createStructValue(CORBAField field, DataValue structValue, uml::InstanceVal
 			}
 	};
 	
-uml::Slot getDefaultSlotForProperty(List[uml::Slot] defaultSlots, CORBAField property, List[emf::EObject] ancesterSlotFeatures) :
+uml::Slot getDefaultSlotForProperty(List[uml::Slot] defaultSlots, CXField property, List[emf::EObject] ancesterSlotFeatures) :
 	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.getDefaultSlotForProperty(
 	java.util.List,
 	org.eclipse.uml2.uml.Property,
@@ -290,39 +290,39 @@ Double getDoubleValue(String value) :
 Void toCDPType(uml::Type type) :
 	{};
 	
-Void visitSequenceType(CORBAPrimitive type, DataType dt) :
+Void visitSequenceType(CXPrimitive type, DataType dt) :
 	{};
 
-Void visitArrayType(CORBAPrimitive type, DataType dt) :
+Void visitArrayType(CXPrimitive type, DataType dt) :
 	{};
 
-TcKind toCDPType(CORBAPrimitive type) :
+TcKind toCDPType(CXPrimitive type) :
 	type.type.literalName().toCDPType();
 	
-TcKind toCDPType(CORBAString type) :
+TcKind toCDPType(CXString type) :
 	TcKind::tkString;
 
-TcKind toCDPType(CORBAWString type) :
+TcKind toCDPType(CXWString type) :
 	TcKind::tkWstring;
 		
-TcKind toCDPType(CORBAStruct type) :
+TcKind toCDPType(CXStruct type) :
 	TcKind::tkStruct;
 	
-TcKind toCDPType(CORBASequence type) :
+TcKind toCDPType(CXSequence type) :
 	TcKind::tkSequence;
 	
-TcKind toCDPType(CORBAArray type) :
+TcKind toCDPType(CXArray type) :
 	TcKind::tkArray;
 	
-TcKind toCDPType(CORBATypeDef typedef) :
+TcKind toCDPType(CXTypeDef typedef) :
 	typedef.type != null ?
 		toCDPType(typedef.type) :
 		toCDPType(typedef.zdlAsDataType().general.first());
 		
-TcKind toCDPType(CORBAEnum type) :
+TcKind toCDPType(CXEnum type) :
 	TcKind::tkEnum;
 	
-DataType visitStructType(CORBAStruct type, DataType dt) :
+DataType visitStructType(CXStruct type, DataType dt) :
 	let struct = new StructType :
 	struct.name.add(type.name) ->
 	struct.typeId.add(getRepositoryId(type)) ->
@@ -330,13 +330,13 @@ DataType visitStructType(CORBAStruct type, DataType dt) :
 	dt.struct.add(struct) ->
 	dt;
 	
-Void visitStructType(CORBANamedElement elm, DataType dt) :
+Void visitStructType(CXNamedElement elm, DataType dt) :
 	{};
 	
 Void visitStructType(uml::Type type, DataType dt) :
 	{};
 	
-create EnumType visitEnumType(CORBAEnum zEnum, DataType dt) :
+create EnumType visitEnumType(CXEnum zEnum, DataType dt) :
 	dt.enum.add(this) ->
 	this.name.add(zEnum.name) ->
 	this.typeId.add(getRepositoryId(zEnum)) ->
@@ -348,11 +348,11 @@ String getLiteralName(uml::EnumerationLiteral literal) :
 Void visitEnumType(Object obj, DataType dt) :
 	{};
 
-create BoundedStringType visitBoundedStringType(CORBAString str, DataType dt) :
+create BoundedStringType visitBoundedStringType(CXString str, DataType dt) :
 	dt.boundedString.add(this) ->
 	this.bound.add(getBoundValue(str.bounds));
 
-String getBoundValue(CORBABound bound) :
+String getBoundValue(CXBound bound) :
 	(bound.value != null && bound.value != "") ? 
 	bound.value : 
 	bound.constant.^default;
@@ -360,13 +360,13 @@ String getBoundValue(CORBABound bound) :
 Void visitBoundedStringType(Object obj, DataType dt) :
 	{};	
 	
-StructMemberType visitStructMember(CORBAField field) :
+StructMemberType visitStructMember(CXField field) :
 	let member = new StructMemberType :
 	member.name.add(field.name) ->
 	member.type.add(field.visitMemberType()) ->
 	member;
 	
-DataType visitMemberType(CORBAField field) :
+DataType visitMemberType(CXField field) :
 	let type = new DataType :
 	type.kind.add(field.idlType.toCDPType()) ->
 	field.idlType.visitSequenceType(type) ->
@@ -376,10 +376,10 @@ DataType visitMemberType(CORBAField field) :
 	field.idlType.visitBoundedStringType(type) ->
 	type;
 	
-Void visitSequenceType(CORBAType type, DataType dt) :
+Void visitSequenceType(CXType type, DataType dt) :
 	{};
 
-DataType visitSequenceType(CORBASequence type, DataType dt) :
+DataType visitSequenceType(CXSequence type, DataType dt) :
 	let sequence = new SequenceType :
 	let seqType = new DataType :
 	let corbaType = type.zdlAsDataType().ownedAttribute.selectFirst(e|e.name == "members" || e.name == "member").zdlAsProperty().type :
@@ -390,10 +390,10 @@ DataType visitSequenceType(CORBASequence type, DataType dt) :
 	dt.sequence.add(sequence) ->
 	dt;
 
-Void visitArrayType(CORBAType type, DataType dt) :
+Void visitArrayType(CXType type, DataType dt) :
 	{};
 
-DataType visitArrayType(CORBAArray type, DataType dt) :
+DataType visitArrayType(CXArray type, DataType dt) :
 	let array = new ArrayType :
 	let arrayType = new DataType :
 	let corbaType = type.zdlAsDataType().ownedAttribute.selectFirst(e|e.name == "members" || e.name == "member").zdlAsProperty().type :
@@ -408,43 +408,43 @@ DataType visitArrayType(CORBAArray type, DataType dt) :
 
 TcKind toCDPType(String type) :
 	switch(type) {
-				case CORBAPrimitiveKind::CORBAWChar.literalName():
+				case CXPrimitiveKind::CXWChar.literalName():
 					TcKind::tkWchar
-				case CORBAPrimitiveKind::CORBAVoid.literalName():
+				case CXPrimitiveKind::CXVoid.literalName():
 					TcKind::tkVoid
-				case CORBAPrimitiveKind::CORBAUnsignedShort.literalName():
+				case CXPrimitiveKind::CXUnsignedShort.literalName():
 					TcKind::tkUshort
-				case CORBAPrimitiveKind::CORBAUnsignedLongLong.literalName():
+				case CXPrimitiveKind::CXUnsignedLongLong.literalName():
 					TcKind::tkUlonglong
-				case CORBAPrimitiveKind::CORBAUnsignedLong.literalName():
+				case CXPrimitiveKind::CXUnsignedLong.literalName():
 					TcKind::tkUlong
-				case CORBAPrimitiveKind::CORBAShort.literalName():
+				case CXPrimitiveKind::CXShort.literalName():
 					TcKind::tkShort
-				case CORBAPrimitiveKind::CORBAOctet.literalName():
+				case CXPrimitiveKind::CXOctet.literalName():
 					TcKind::tkOctet
-				case CORBAPrimitiveKind::CORBAObjectRef.literalName():
+				case CXPrimitiveKind::CXObjectRef.literalName():
 					TcKind::tkObjref
-				case CORBAPrimitiveKind::CORBALongLong.literalName():
+				case CXPrimitiveKind::CXLongLong.literalName():
 					TcKind::tkLonglong
-				case CORBAPrimitiveKind::CORBALongDouble.literalName():
+				case CXPrimitiveKind::CXLongDouble.literalName():
 					TcKind::tkLongdouble
-				case CORBAPrimitiveKind::CORBALong.literalName():
+				case CXPrimitiveKind::CXLong.literalName():
 					TcKind::tkLong
-				case CORBAPrimitiveKind::CORBAFloat.literalName():
+				case CXPrimitiveKind::CXFloat.literalName():
 					TcKind::tkFloat
-				case CORBAPrimitiveKind::CORBADouble.literalName():
+				case CXPrimitiveKind::CXDouble.literalName():
 					TcKind::tkDouble
-				case CORBAPrimitiveKind::CORBAChar.literalName():
+				case CXPrimitiveKind::CXChar.literalName():
 					TcKind::tkChar
-				case CORBAPrimitiveKind::CORBABoolean.literalName():
+				case CXPrimitiveKind::CXBoolean.literalName():
 					TcKind::tkBoolean
-				case CORBAPrimitiveKind::CORBAAny.literalName():
+				case CXPrimitiveKind::CXAny.literalName():
 					TcKind::tkAny
-				case CORBAPrimitiveKind::CORBAString.literalName():
+				case CXPrimitiveKind::CXString.literalName():
 					TcKind::tkString
-				case CORBAPrimitiveKind::CORBAWString.literalName():
+				case CXPrimitiveKind::CXWString.literalName():
 					TcKind::tkWstring
-				case CORBAPrimitiveKind::CORBATypecode.literalName():
+				case CXPrimitiveKind::CXTypecode.literalName():
 					TcKind::tkTypeCode
 			default: TcKind::tkNull
 	};

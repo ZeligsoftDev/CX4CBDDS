@@ -38,7 +38,7 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.ui.Activator;
 import com.zeligsoft.domain.omg.ccm.ui.l10n.Messages;
-import com.zeligsoft.domain.omg.corba.CORBADomainNames;
+import com.zeligsoft.domain.omg.corba.CXDomainNames;
 
 /**
  * Drag drop policy for CCMComponent
@@ -51,7 +51,7 @@ public class CCMComponentDragDropPolicy extends DragDropEditPolicy {
 	@Override
 	protected Command getDropElementCommand(final EObject element,
 			DropObjectsRequest request) {
-		if (ZDLUtil.isZDLConcept(element, CORBADomainNames.CORBAINTERFACE)) {
+		if (ZDLUtil.isZDLConcept(element, CXDomainNames.CXINTERFACE)) {
 
 			return new ICommandProxy(new AbstractTransactionalCommand(TransactionUtil
 					.getEditingDomain(element),
