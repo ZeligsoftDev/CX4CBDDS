@@ -16,7 +16,15 @@
  */
 package com.zeligsoft.domain.dds4ccm.utils;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.infra.services.validation.internal.EcoreDiagnostician;
+import org.eclipse.uml2.uml.PackageImport;
 
 @SuppressWarnings("restriction")
 /**
@@ -29,5 +37,33 @@ public class DDS4CCMDiagnostician extends EcoreDiagnostician {
 
 	public DDS4CCMDiagnostician() {
 		super();
+	}
+
+	@Override
+	protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		List<EObject> eContents = eObject.eContents();
+		if (!eContents.isEmpty()) {
+			Iterator<EObject> i = eContents.iterator();
+			EObject child = null;
+
+			// find first child which is not package import
+			while (i.hasNext()) {
+				child = i.next();
+				if (!(child instanceof PackageImport) && !(child instanceof EAnnotation)) {
+					break;
+				}
+			}
+
+			boolean result = validate(child, diagnostics, context);
+			while (i.hasNext() && (result || diagnostics != null)) {
+				child = i.next();
+				if (!(child instanceof PackageImport) && !(child instanceof EAnnotation)) {
+					result &= validate(child, diagnostics, context);
+				}
+			}
+			return result;
+		} else {
+			return true;
+		}
 	}
 }
