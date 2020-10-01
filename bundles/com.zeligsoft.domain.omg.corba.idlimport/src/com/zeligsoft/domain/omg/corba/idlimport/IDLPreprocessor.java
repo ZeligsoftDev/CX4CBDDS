@@ -53,7 +53,7 @@ public class IDLPreprocessor extends AbstractWorkflowComponent {
 
 	private final String INCLUDE_MARKER_OPTION = " --includemarker \"#file \\\"%:%:%\\\"\" "; //$NON-NLS-1$
 
-	private final String USER_NAME = System.getProperty("user.name"); //$NON-NLS-1$
+	private final String USER_NAME = System.getProperty("user.name").replaceAll(" ", ""); //$NON-NLS-1$
 	
 	private final String TEMP_IDL_FILENAME = USER_NAME + "_tmp.idl"; //$NON-NLS-1$
 

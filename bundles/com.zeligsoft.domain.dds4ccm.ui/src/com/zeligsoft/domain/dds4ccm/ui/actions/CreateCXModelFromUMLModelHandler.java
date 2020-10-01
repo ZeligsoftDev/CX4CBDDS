@@ -105,11 +105,20 @@ public class CreateCXModelFromUMLModelHandler extends AbstractHandler {
 			while (reader.ready()) {
 				String line = reader.readLine();
 				String outLine = line;
-				int startIndex = line.indexOf("dds4ccm:CORBA");
+				
+				// Replace CORBA to CX string
+				int startIndex = outLine.indexOf("dds4ccm:CORBA");
 				if (startIndex > 0) {
 					found = true;
-					outLine = line.replaceFirst("dds4ccm:CORBA", "dds4ccm:CX");
+					outLine = outLine.replaceFirst("dds4ccm:CORBA", "dds4ccm:CX");
 				}
+				// Replace CCM_LIBRARY to DDS4CCM_LIBRARY
+				startIndex = outLine.indexOf("/CCM_LIBRARIES");
+				if (startIndex > 0) {
+					found = true;
+					outLine = outLine.replaceFirst("/CCM_LIBRARIES", "/DDS4CCM_LIBRARIES");
+				}				
+				
 				outBuffer.append(outLine).append(System.lineSeparator());
 			}
 			reader.close();
