@@ -16,18 +16,12 @@
  */
 package com.zeligsoft.cx.ui.pages;
 
-import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.common.core.command.ICommand;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -132,21 +126,19 @@ public class ListTableViewerPage extends PreferencePage {
 
 						final int index = list.indexOf(selection.getFirstElement());
 
-						ICommand command = new AbstractTransactionalCommand(editingDomain,
-								Messages.ListTableViewerPage_MoveUpCmdLabel, Collections.EMPTY_MAP, null) {
+						Command command = new RecordingCommand(editingDomain,
+								Messages.ListTableViewerPage_MoveUpCmdLabel) {
 
 							@Override
-							protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-									throws ExecutionException {
+							protected void doExecute() {
 								list.remove(selection.getFirstElement());
 								list.add(index - 1, selection.getFirstElement());
-								return CommandResult.newOKCommandResult();
 							}
 						};
-						try {
-							OperationHistoryFactory.getOperationHistory().execute(command, null, null);
-						} catch (ExecutionException e1) {
-							ZeligsoftCXUIPlugin.getDefault().error(Messages.ListTableViewerPage_FailedMsg, e1);
+						if (command.canExecute()) {
+							editingDomain.getCommandStack().execute(command);
+						} else {
+							ZeligsoftCXUIPlugin.getDefault().warning(Messages.ListTableViewerPage_FailedMsg);
 							return;
 						}
 
@@ -181,21 +173,18 @@ public class ListTableViewerPage extends PreferencePage {
 					if (!selection.isEmpty()) {
 
 						final int index = list.indexOf(selection.getFirstElement());
-						ICommand command = new AbstractTransactionalCommand(editingDomain,
-								Messages.ListTableViewerPage_MoveDownCmdMsg, Collections.EMPTY_MAP, null) {
+						Command command = new RecordingCommand(editingDomain,
+								Messages.ListTableViewerPage_MoveDownCmdMsg) {
 
 							@Override
-							protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-									throws ExecutionException {
+							protected void doExecute() {
 								list.remove(selection.getFirstElement());
-								list.add(index + 1, selection.getFirstElement());
-								return CommandResult.newOKCommandResult();
-							}
+								list.add(index + 1, selection.getFirstElement());							}
 						};
-						try {
-							OperationHistoryFactory.getOperationHistory().execute(command, null, null);
-						} catch (ExecutionException e1) {
-							ZeligsoftCXUIPlugin.getDefault().error(Messages.ListTableViewerPage_FailedMsg, e1);
+						if (command.canExecute()) {
+							editingDomain.getCommandStack().execute(command);
+						} else {
+							ZeligsoftCXUIPlugin.getDefault().warning(Messages.ListTableViewerPage_FailedMsg);
 							return;
 						}
 

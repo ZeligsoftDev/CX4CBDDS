@@ -24,8 +24,10 @@ import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
@@ -36,6 +38,7 @@ import org.eclipse.jface.preference.PreferenceManager;
 import org.eclipse.jface.preference.PreferenceNode;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -296,6 +299,8 @@ public class DDS4CCMCustomPropertySectionProvider implements
 		widgetMap.put(CXPropertiesWidgetFactory.PROPERTY_EDIT_BUTTON, checkbox);
 		checkbox.setBackground(parent.getBackground());
 		
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(descriptor
+				.getContext());
 		String isKey = CCMUtil.getZCXAnnotationDetail(
 				(Element) descriptor.getContext(), FIELD_IS_KEY_KEY,
 				Boolean.toString(false));
@@ -304,8 +309,7 @@ public class DDS4CCMCustomPropertySectionProvider implements
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				ICommand command = new AbstractTransactionalCommand(
-						TransactionUtil.getEditingDomain(descriptor
-								.getContext()),
+						editingDomain,
 						Messages.DDS4CCMCustomPropertySectionProvider_SetKeyValueCommandLabel,
 						null) {
 
@@ -356,14 +360,13 @@ public class DDS4CCMCustomPropertySectionProvider implements
 						return result;
 					}
 				};
-				try {
-					OperationHistoryFactory.getOperationHistory().execute(
-							command, null, null);
-				} catch (ExecutionException e1) {
-					Activator
-							.getDefault()
-							.error(Messages.DDS4CCMCustomPropertySectionProvider_SaveKeyFailedMsg,
-									e1);
+				Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+				
+				if (emfCommand.canExecute()) {
+					editingDomain.getCommandStack().execute(emfCommand);
+				} else {
+
+					Activator.getDefault().warning(Messages.DDS4CCMCustomPropertySectionProvider_SaveKeyFailedMsg);
 				}
 			}
 		});
@@ -448,14 +451,15 @@ public class DDS4CCMCustomPropertySectionProvider implements
 				CCMUtil.getZCXAnnotationDetail(
 						(Element) descriptor.getContext(),
 						GENERATE_PACKAGE_KEY, Boolean.toString(true))));
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(descriptor
+				.getContext());
 		button.addSelectionListener(new SelectionAdapter() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 
 				AbstractTransactionalCommand command = new AbstractTransactionalCommand(
-						TransactionUtil.getEditingDomain(descriptor
-								.getContext()),
+						editingDomain,
 						Messages.DDS4CCMCustomPropertySectionProvider_IDLDirectoryGenerationCommandLabel,
 						null) {
 
@@ -504,14 +508,14 @@ public class DDS4CCMCustomPropertySectionProvider implements
 						return result;
 					}
 				};
-				try {
-					OperationHistoryFactory.getOperationHistory().execute(
-							command, null, null);
-				} catch (ExecutionException e1) {
-					Activator
-							.getDefault()
-							.error(Messages.DDS4CCMCustomPropertySectionProvider_IDLDirectoryGenerationFailed,
-									e1);
+				
+				Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+				
+				if (emfCommand.canExecute()) {
+					editingDomain.getCommandStack().execute(emfCommand);
+				} else {
+
+					Activator.getDefault().warning(Messages.DDS4CCMCustomPropertySectionProvider_IDLDirectoryGenerationFailed);
 				}
 			}
 		});

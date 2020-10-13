@@ -19,15 +19,17 @@ package com.zeligsoft.domain.idl3plus.ui.actions;
 import java.util.Collections;
 
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.window.Window;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
@@ -79,9 +81,10 @@ public class CreateTemplateParameter extends Action implements ICXAction {
 
 		if (dialogResult == Window.OK) {
 			final String parameterName = dialog.getName();
+			TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(context);
 			final String parameterTypeConstraint = dialog.getTypeConstraint();
 			AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-					TransactionUtil.getEditingDomain(context),
+					editingDomain,
 					Messages.CreateTemplateParameter_CommandLabel,
 					Collections.EMPTY_MAP, null) {
 
@@ -95,15 +98,11 @@ public class CreateTemplateParameter extends Action implements ICXAction {
 				}
 			};
 
-			try {
-				OperationHistoryFactory.getOperationHistory().execute(
-						editCommand, null, null);
-			} catch (ExecutionException e) {
-				Activator
-						.getDefault()
-						.error(
-								Messages.CreateTemplateParameter__Error_CreatingTypeParameter,
-								e);
+			Command emfCommand = GMFtoEMFCommandWrapper.wrap(editCommand);
+			if (emfCommand.canExecute()) {
+				editingDomain.getCommandStack().execute(emfCommand);
+			} else {
+				Activator.getDefault().warning(Messages.CreateTemplateParameter__Error_CreatingTypeParameter);
 			}
 		}
 	}

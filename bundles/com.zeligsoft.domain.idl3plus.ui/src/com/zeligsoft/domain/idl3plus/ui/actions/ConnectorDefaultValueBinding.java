@@ -19,7 +19,6 @@ package com.zeligsoft.domain.idl3plus.ui.actions;
 import java.util.Collections;
 
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -35,6 +34,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.uml2.uml.Component;
@@ -154,16 +154,15 @@ public class ConnectorDefaultValueBinding extends Action implements ICXAction {
 					return CommandResult.newOKCommandResult();
 				}
 			};
-
-			try {
-				OperationHistoryFactory.getOperationHistory().execute(
-						editCommand, null, null);
-			} catch (ExecutionException e) {
-				Activator.getDefault().error(
-						Messages.ConnectorDefaultValueBinding_ErrorMessage, e);
-			}
+			
 			if (result != null) {
-				// ToDo:BaseUIUtil.startInLineEdit(result);
+
+				Command emfCommand = BaseUIUtil.getDirectEditCommand(GMFtoEMFCommandWrapper.wrap(editCommand));
+				if (emfCommand.canExecute()) {
+					editingDomain.getCommandStack().execute(emfCommand);
+				} else {
+					Activator.getDefault().warning(Messages.ConnectorDefaultValueBinding_ErrorMessage);
+				}
 			}
 		}
 	}

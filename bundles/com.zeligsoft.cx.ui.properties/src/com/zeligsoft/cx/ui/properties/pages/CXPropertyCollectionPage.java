@@ -21,18 +21,14 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.core.util.StringStatics;
 import org.eclipse.gmf.runtime.common.ui.dialogs.PropertiesDialog;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.jface.preference.PreferenceManager;
 import org.eclipse.jface.preference.PreferenceNode;
@@ -300,29 +296,24 @@ public class CXPropertyCollectionPage extends PreferencePage {
 					if (!selection.isEmpty()) {
 						final int index = list.indexOf(selection
 								.getFirstElement());
-						ICommand command = new AbstractTransactionalCommand(
-								TransactionUtil.getEditingDomain(descriptor.getProperty()),
-								Messages.CXPropertyCollectionPage_MoveUpCmdLabel,
-								Collections.EMPTY_MAP, null) {
+						
+						TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(descriptor.getProperty());
+						Command command = new RecordingCommand(editingDomain,
+								Messages.CXPropertyCollectionPage_MoveUpCmdLabel) {
 
 							@Override
-							protected CommandResult doExecuteWithResult(
-									IProgressMonitor monitor, IAdaptable info)
-									throws ExecutionException {
+							protected void doExecute() {
 								Object sel = selection.getFirstElement();
-									Object ano = list.get(index - 1);
-									list.remove(sel);
-									list.set(index -1, sel);
-									list.add(index, ano);
-								return CommandResult.newOKCommandResult();
+								Object ano = list.get(index - 1);
+								list.remove(sel);
+								list.set(index -1, sel);
+								list.add(index, ano);
 							}
 						};
-						try {
-							OperationHistoryFactory.getOperationHistory()
-									.execute(command, null, null);
-						} catch (ExecutionException e1) {
-							ZeligsoftCXUIPlugin.getDefault().error(
-									Messages.CXPropertyCollectionPage_FailedMsg, e1);
+						if (command.canExecute()) {
+							editingDomain.getCommandStack().execute(command);
+						} else {
+							ZeligsoftCXUIPlugin.getDefault().warning(Messages.CXPropertyCollectionPage_FailedMsg);
 							return;
 						}
 
@@ -360,29 +351,23 @@ public class CXPropertyCollectionPage extends PreferencePage {
 						final int index = list.indexOf(selection
 								.getFirstElement());
 
-						ICommand command = new AbstractTransactionalCommand(
-								TransactionUtil.getEditingDomain(descriptor.getProperty()),
-								Messages.CXPropertyCollectionPage_MoveDownCmdMsg,
-								Collections.EMPTY_MAP, null) {
+						TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(descriptor.getProperty());
+						Command command = new RecordingCommand(editingDomain,
+								Messages.CXPropertyCollectionPage_MoveDownCmdMsg) {
 
 							@Override
-							protected CommandResult doExecuteWithResult(
-									IProgressMonitor monitor, IAdaptable info)
-									throws ExecutionException {
+							protected void doExecute() {
 								Object sel = selection.getFirstElement();
 								Object ano = list.get(index + 1);		
 								list.remove(ano);
 								list.set(index, ano);
 								list.add(index + 1, sel);				
-								return CommandResult.newOKCommandResult();
 							}
 						};
-						try {
-							OperationHistoryFactory.getOperationHistory()
-									.execute(command, null, null);
-						} catch (ExecutionException e1) {
-							ZeligsoftCXUIPlugin.getDefault().error(
-									Messages.CXPropertyCollectionPage_FailedMsg, e1);
+						if (command.canExecute()) {
+							editingDomain.getCommandStack().execute(command);
+						} else {
+							ZeligsoftCXUIPlugin.getDefault().warning(Messages.CXPropertyCollectionPage_FailedMsg);
 							return;
 						}
 
