@@ -25,19 +25,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.common.core.command.ICommand;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
@@ -74,7 +67,6 @@ import com.zeligsoft.cx.ui.properties.sections.ICXCustomPropertySection;
 import com.zeligsoft.cx.ui.properties.utils.CXPropertiesWidgetFactory;
 import com.zeligsoft.cx.ui.utils.CXWidgetFactory;
 import com.zeligsoft.domain.omg.corba.CXDomainNames;
-import com.zeligsoft.domain.omg.corba.ui.Activator;
 import com.zeligsoft.domain.omg.corba.ui.l10n.Messages;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
@@ -529,6 +521,8 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 				sectionComposite, values.length, GridData.FILL_HORIZONTAL);
 		composite.setBackground(sectionComposite.getBackground());
 
+		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(descriptor.getContext());
+		
 		final List<Button> buttons = new ArrayList<Button>();
 		for (ParameterDirectionKind kind : values) {
 			final Button button = CXWidgetFactory.createRadioButton(composite,
@@ -550,34 +544,21 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 
 					if (button.getSelection()) {
 
-						AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-								TransactionUtil.getEditingDomain(descriptor
-										.getContext()),
-								"Set Parameter Direction", //$NON-NLS-1$
-								Collections.EMPTY_MAP, null) {
+						Command cmd = new RecordingCommand(domain, "Set Parameter Direction") { //$NON-NLS-1$
 
 							@Override
-							protected CommandResult doExecuteWithResult(
-									IProgressMonitor arg0, IAdaptable arg1)
-									throws ExecutionException {
-
+							protected void doExecute() {
 								((Parameter) descriptor.getContext())
-										.setDirection(ParameterDirectionKind
-												.get(button.getText()));
-								return CommandResult.newOKCommandResult();
+										.setDirection(ParameterDirectionKind.get(button.getText()));
 							}
-
 						};
-						try {
-							OperationHistoryFactory.getOperationHistory()
-									.execute(editCommand, null, null);
-						} catch (ExecutionException ex) {
-							com.zeligsoft.domain.omg.corba.ui.Activator
-									.getDefault()
-									.error("Set parameter direction failed", ex); //$NON-NLS-1$
+						if (cmd.canExecute()) {
+							domain.getCommandStack().execute(cmd);
+						} else {
+							com.zeligsoft.domain.omg.corba.ui.Activator.getDefault()
+									.warning("Set parameter direction failed"); //$NON-NLS-1$
 							return;
 						}
-
 					}
 				}
 			});
@@ -596,22 +577,16 @@ public class CORBACustomPropertySection implements ICXCustomPropertySection {
 
 	private static void setPropertyType(final Property property, final Type type) {
 
-		ICommand command = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(property), "Set Type", null) { //$NON-NLS-1$
-
+		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(property);
+		Command cmd = new RecordingCommand(domain, "Set Type") { //$NON-NLS-1$
+			
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
-					throws ExecutionException {
+			protected void doExecute() {
 				property.setType(type);
-				return null;
 			}
 		};
-		try {
-			OperationHistoryFactory.getOperationHistory().execute(command,
-					null, null);
-		} catch (ExecutionException e) {
-			Activator.getDefault().error("Failed to set type", e); //$NON-NLS-1$
+		if(cmd.canExecute()) {
+			domain.getCommandStack().execute(cmd);
 		}
 	}
 }

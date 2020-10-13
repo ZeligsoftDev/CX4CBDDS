@@ -20,16 +20,18 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
@@ -91,8 +93,9 @@ public class InstantiateTemplateModule extends Action implements ICXAction {
 			final EObject templateModule = (EObject) selectedElements
 					.getFirstElement();
 
+			TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(context);
 			AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-					TransactionUtil.getEditingDomain(context),
+					editingDomain,
 					Messages.InstantiateTemplateModule_CommandLabel,
 					Collections.EMPTY_MAP, null) {
 
@@ -109,12 +112,12 @@ public class InstantiateTemplateModule extends Action implements ICXAction {
 				}
 
 			};
-
-			try {
-				OperationHistoryFactory.getOperationHistory().execute(
-						editCommand, null, null);
-			} catch (ExecutionException e) {
-				Activator.getDefault().error("Error instantiating module", e); //$NON-NLS-1$
+			
+			Command emfCommand = GMFtoEMFCommandWrapper.wrap(editCommand);
+			if (emfCommand.canExecute()) {
+				editingDomain.getCommandStack().execute(emfCommand);
+			} else {
+				Activator.getDefault().warning("Error instantiating module");
 			}
 		}
 	}
