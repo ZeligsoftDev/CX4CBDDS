@@ -73,6 +73,48 @@ if [[ ${axciomaInstalledFeature} != "" ]]; then 		# axcioma is already installed
    -uninstallIU org.eclipse.cdt.platform.feature.group \
    -uninstallIU org.eclipse.cdt.sdk.feature.group \
    -uninstallIU org.eclipse.papyrus.compare.feature.feature.group \
+   -uninstallIU org.eclipse.launchbar.feature.group \
+   -uninstallIU org.eclipse.xtext.runtime.feature.group \
+   -uninstallIU org.eclipse.xtext.ui.feature.group \
+   -uninstallIU org.eclipse.xtext.xbase.lib.feature.group \
+   -uninstallIU org.eclipse.xtend.feature.group \
+   -uninstallIU org.eclipse.xtend.typesystem.uml2.feature.group \
+   -uninstallIU org.eclipse.xtend.typesystem.xsd.feature.group \
+   -uninstallIU org.eclipse.xtend.sdk.feature.group \
+   -uninstallIU org.eclipse.xtext.xbase.feature.group \
+   -uninstallIU org.eclipse.emf.compare.feature.group \
+   -uninstallIU org.eclipse.emf.compare.diagram.gmf.feature.group \
+   -uninstallIU org.eclipse.emf.compare.egit.feature.group \
+   -uninstallIU org.eclipse.emf.compare.ide.ui.feature.group \
+   -uninstallIU org.eclipse.emf.compare.rcp.ui.feature.group \
+   -uninstallIU org.eclipse.emf.compare.uml2.feature.group \
+   -uninstallIU org.eclipse.emf.mwe.ui/1.4.0 \
+   -uninstallIU com.google.inject/3.0.0.v201605172100 \
+   -uninstallIU org.eclipse.xpand/2.2.0.v201605260315 \
+   -uninstallIU org.eclipse.xtend.shared.ui/2.2.0.v201605260315 \
+   -uninstallIU org.eclipse.xtend.ide/2.18.0.v20190528-0610 \
+   -uninstallIU org.eclipse.xtend.typesystem.emf/2.2.0.v201605260315 \
+   -uninstallIU org.freemarker/2.3.22.v20160210-1233 \
+   -uninstallIU org.eclipse.tools.templates.freemarker/1.0.0.201812111206 \
+   -uninstallIU org.eclipse.tools.templates.core/1.1.0.201812111206 \
+   -uninstallIU org.eclipse.tools.templates.ui/1.1.1.201812111206 \
+   -uninstallIU org.eclipse.tm.terminal.control/4.5.100.201901312304 \
+   -uninstallIU javax.xml.stream/1.0.1.v201004272200 \
+   -uninstallIU com.sun.xml.bind/2.2.0.v201505121915 \
+   -uninstallIU com.google.guava \
+   -uninstallIU org.eclipse.xtend.lib.source \
+   -uninstallIU org.eclipse.xtend.lib.macro.source \
+   -uninstallIU org.eclipse.xtend.core.source \
+   -uninstallIU org.eclipse.xtend.ide.common.source \
+   -uninstallIU org.eclipse.xtend.ide.source \
+   -uninstallIU org.eclipse.xtend.m2e.source \
+   -uninstallIU org.eclipse.xtend.standalone.source \
+   -uninstallIU org.eclipse.xtext.junit4.source \
+   -uninstallIU org.eclipse.xtext.testing.source \
+   -uninstallIU org.eclipse.xtext.xbase.junit.source \
+   -uninstallIU org.eclipse.xtext.xbase.testing.source \
+   -uninstallIU org.eclipse.xtext.ui.testing.source \
+   -uninstallIU org.eclipse.xtext.xbase.ui.testing.source \
    -vmargs \
    -Xms512m \
    -Xmx1024m \
@@ -96,7 +138,49 @@ elif [[ ${atcdInstalledFeature} != "" ]]; then 		# atcd is already installed
    -uninstallIU org.eclipse.cdt.native.feature.group \
    -uninstallIU org.eclipse.cdt.platform.feature.group \
    -uninstallIU org.eclipse.cdt.sdk.feature.group \
+   -uninstallIU org.eclipse.launchbar.feature.group \
+   -uninstallIU org.eclipse.xtext.runtime.feature.group \
+   -uninstallIU org.eclipse.xtext.ui.feature.group \
+   -uninstallIU org.eclipse.xtext.xbase.lib.feature.group \
+   -uninstallIU org.eclipse.xtend.feature.group \
+   -uninstallIU org.eclipse.xtend.typesystem.uml2.feature.group \
+   -uninstallIU org.eclipse.xtend.typesystem.xsd.feature.group \
+   -uninstallIU org.eclipse.xtend.sdk.feature.group \
+   -uninstallIU org.eclipse.xtext.xbase.feature.group \
    -uninstallIU org.eclipse.papyrus.compare.feature.feature.group \
+   -uninstallIU org.eclipse.emf.compare.feature.group \
+   -uninstallIU org.eclipse.emf.compare.diagram.gmf.feature.group \
+   -uninstallIU org.eclipse.emf.compare.egit.feature.group \
+   -uninstallIU org.eclipse.emf.compare.ide.ui.feature.group \
+   -uninstallIU org.eclipse.emf.compare.rcp.ui.feature.group \
+   -uninstallIU org.eclipse.emf.compare.uml2.feature.group \
+   -uninstallIU org.eclipse.emf.mwe.ui/1.4.0 \
+   -uninstallIU com.google.inject/3.0.0.v201605172100 \
+   -uninstallIU org.eclipse.xpand/2.2.0.v201605260315 \
+   -uninstallIU org.eclipse.xtend.shared.ui/2.2.0.v201605260315 \
+   -uninstallIU org.eclipse.xtend.ide/2.18.0.v20190528-0610 \
+   -uninstallIU org.eclipse.xtend.typesystem.emf/2.2.0.v201605260315 \
+   -uninstallIU org.freemarker/2.3.22.v20160210-1233 \
+   -uninstallIU org.eclipse.tools.templates.freemarker/1.0.0.201812111206 \
+   -uninstallIU org.eclipse.tools.templates.core/1.1.0.201812111206 \
+   -uninstallIU org.eclipse.tools.templates.ui/1.1.1.201812111206 \
+   -uninstallIU org.eclipse.tm.terminal.control/4.5.100.201901312304 \
+   -uninstallIU javax.xml.stream/1.0.1.v201004272200 \
+   -uninstallIU com.sun.xml.bind/2.2.0.v201505121915 \
+   -uninstallIU com.google.guava \
+   -uninstallIU org.eclipse.xtend.lib.source \
+   -uninstallIU org.eclipse.xtend.lib.macro.source \
+   -uninstallIU org.eclipse.xtend.core.source \
+   -uninstallIU org.eclipse.xtend.ide.common.source \
+   -uninstallIU org.eclipse.xtend.ide.source \
+   -uninstallIU org.eclipse.xtend.m2e.source \
+   -uninstallIU org.eclipse.xtend.standalone.source \
+   -uninstallIU org.eclipse.xtext.junit4.source \
+   -uninstallIU org.eclipse.xtext.testing.source \
+   -uninstallIU org.eclipse.xtext.xbase.junit.source \
+   -uninstallIU org.eclipse.xtext.xbase.testing.source \
+   -uninstallIU org.eclipse.xtext.ui.testing.source \
+   -uninstallIU org.eclipse.xtext.xbase.ui.testing.source \
    -vmargs \
    -Xms512m \
    -Xmx1024m \
@@ -126,7 +210,50 @@ timestamp=$(echo /opt/cx-axcioma/*.zip | sed -rn 's/.*\.v([0-9]*)\.zip/\1/p')
    -installIU com.zeligsoft.domain.idl3plus_feature.feature.group  \
    -installIU com.zeligsoft.domain.ngc.ccm.axcioma_feature.feature.group  \
    -installIU com.zeligsoft.domain.omg.ccm_feature.feature.group \
-   -installIU org.eclipse.papyrus.compare.feature.feature.group
+   -installIU org.eclipse.launchbar.feature.group \
+   -installIU org.eclipse.xtext.runtime.feature.group \
+   -installIU org.eclipse.xtext.ui.feature.group \
+   -installIU org.eclipse.xtext.xbase.lib.feature.group \
+   -installIU org.eclipse.xtend.feature.group \
+   -installIU org.eclipse.xtend.typesystem.uml2.feature.group \
+   -installIU org.eclipse.xtend.typesystem.xsd.feature.group \
+   -installIU org.eclipse.xtend.sdk.feature.group \
+   -installIU org.eclipse.xtext.xbase.feature.group \
+   -installIU org.eclipse.papyrus.compare.feature.feature.group \
+   -installIU org.eclipse.emf.compare.feature.group \
+   -installIU org.eclipse.emf.compare.diagram.gmf.feature.group \
+   -installIU org.eclipse.emf.compare.egit.feature.group \
+   -installIU org.eclipse.emf.compare.ide.ui.feature.group \
+   -installIU org.eclipse.emf.compare.rcp.ui.feature.group \
+   -installIU org.eclipse.emf.compare.uml2.feature.group \
+   -installIU org.eclipse.emf.mwe.ui/1.4.0 \
+   -installIU com.google.inject/3.0.0.v201605172100 \
+   -installIU org.eclipse.xpand/2.2.0.v201605260315 \
+   -installIU org.eclipse.xtend.shared.ui/2.2.0.v201605260315 \
+   -installIU org.eclipse.xtend.ide/2.18.0.v20190528-0610 \
+   -installIU org.eclipse.xtend.typesystem.emf/2.2.0.v201605260315 \
+   -installIU org.freemarker/2.3.22.v20160210-1233 \
+   -installIU org.eclipse.tools.templates.freemarker/1.0.0.201812111206 \
+   -installIU org.eclipse.tools.templates.core/1.1.0.201812111206 \
+   -installIU org.eclipse.tools.templates.ui/1.1.1.201812111206 \
+   -installIU org.eclipse.tm.terminal.control/4.5.100.201901312304 \
+   -installIU javax.xml.stream/1.0.1.v201004272200 \
+   -installIU com.sun.xml.bind/2.2.0.v201505121915 \
+   -installIU com.google.guava \
+   -installIU org.eclipse.xtend.lib.source \
+   -installIU org.eclipse.xtend.lib.macro.source \
+   -installIU org.eclipse.xtend.core.source \
+   -installIU org.eclipse.xtend.ide.common.source \
+   -installIU org.eclipse.xtend.ide.source \
+   -installIU org.eclipse.xtend.m2e.source \
+   -installIU org.eclipse.xtend.standalone.source \
+   -installIU org.eclipse.xtext.junit4.source \
+   -installIU org.eclipse.xtext.testing.source \
+   -installIU org.eclipse.xtext.xbase.junit.source \
+   -installIU org.eclipse.xtext.xbase.testing.source \
+   -installIU org.eclipse.xtext.ui.testing.source \
+   -installIU org.eclipse.xtext.xbase.ui.testing.source 
+
 
 %postun
 if [ $1 == 0 ] ; then					# this is an uninstallation, not an upgrade
@@ -146,7 +273,49 @@ if [ $1 == 0 ] ; then					# this is an uninstallation, not an upgrade
    -uninstallIU org.eclipse.cdt.native.feature.group \
    -uninstallIU org.eclipse.cdt.platform.feature.group \
    -uninstallIU org.eclipse.cdt.sdk.feature.group \
+   -uninstallIU org.eclipse.launchbar.feature.group \
+   -uninstallIU org.eclipse.xtext.runtime.feature.group \
+   -uninstallIU org.eclipse.xtext.ui.feature.group \
+   -uninstallIU org.eclipse.xtext.xbase.lib.feature.group \
+   -uninstallIU org.eclipse.xtend.feature.group \
+   -uninstallIU org.eclipse.xtend.typesystem.uml2.feature.group \
+   -uninstallIU org.eclipse.xtend.typesystem.xsd.feature.group \
+   -uninstallIU org.eclipse.xtend.sdk.feature.group \
+   -uninstallIU org.eclipse.xtext.xbase.feature.group \
    -uninstallIU org.eclipse.papyrus.compare.feature.feature.group \
+   -uninstallIU org.eclipse.emf.compare.feature.group \
+   -uninstallIU org.eclipse.emf.compare.diagram.gmf.feature.group \
+   -uninstallIU org.eclipse.emf.compare.egit.feature.group \
+   -uninstallIU org.eclipse.emf.compare.ide.ui.feature.group \
+   -uninstallIU org.eclipse.emf.compare.rcp.ui.feature.group \
+   -uninstallIU org.eclipse.emf.compare.uml2.feature.group \
+   -uninstallIU org.eclipse.emf.mwe.ui/1.4.0 \
+   -uninstallIU com.google.inject/3.0.0.v201605172100 \
+   -uninstallIU org.eclipse.xpand/2.2.0.v201605260315 \
+   -uninstallIU org.eclipse.xtend.shared.ui/2.2.0.v201605260315 \
+   -uninstallIU org.eclipse.xtend.ide/2.18.0.v20190528-0610 \
+   -uninstallIU org.eclipse.xtend.typesystem.emf/2.2.0.v201605260315 \
+   -uninstallIU org.freemarker/2.3.22.v20160210-1233 \
+   -uninstallIU org.eclipse.tools.templates.freemarker/1.0.0.201812111206 \
+   -uninstallIU org.eclipse.tools.templates.core/1.1.0.201812111206 \
+   -uninstallIU org.eclipse.tools.templates.ui/1.1.1.201812111206 \
+   -uninstallIU org.eclipse.tm.terminal.control/4.5.100.201901312304 \
+   -uninstallIU javax.xml.stream/1.0.1.v201004272200 \
+   -uninstallIU com.sun.xml.bind/2.2.0.v201505121915 \
+   -uninstallIU com.google.guava \
+   -uninstallIU org.eclipse.xtend.lib.source \
+   -uninstallIU org.eclipse.xtend.lib.macro.source \
+   -uninstallIU org.eclipse.xtend.core.source \
+   -uninstallIU org.eclipse.xtend.ide.common.source \
+   -uninstallIU org.eclipse.xtend.ide.source \
+   -uninstallIU org.eclipse.xtend.m2e.source \
+   -uninstallIU org.eclipse.xtend.standalone.source \
+   -uninstallIU org.eclipse.xtext.junit4.source \
+   -uninstallIU org.eclipse.xtext.testing.source \
+   -uninstallIU org.eclipse.xtext.xbase.junit.source \
+   -uninstallIU org.eclipse.xtext.xbase.testing.source \
+   -uninstallIU org.eclipse.xtext.ui.testing.source \
+   -uninstallIU org.eclipse.xtext.xbase.ui.testing.source \
    -vmargs \
    -Xms512m \
    -Xmx1024m \
