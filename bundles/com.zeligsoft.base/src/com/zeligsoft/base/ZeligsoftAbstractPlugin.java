@@ -109,4 +109,27 @@ public abstract class ZeligsoftAbstractPlugin
 	public void warning(String message) {
 		warning(this, message, null);
 	}
+	
+	/**
+	 * Write info log
+	 * 
+	 * @param plugin
+	 *            source plug-in
+	 * @param message
+	 *            human readable message for this exception cause
+	 */
+	public static void info(Plugin plugin, String message) {
+		Status status = new Status(IStatus.INFO, plugin.getBundle().getSymbolicName(), message);
+		plugin.getLog().log(status);
+	}
+	
+	/**
+	 * Write info log to the workbench
+	 * 
+	 * @param message
+	 *            Warning message
+	 */
+	public void info(String message) {
+		info(this, message);
+	}
 }
