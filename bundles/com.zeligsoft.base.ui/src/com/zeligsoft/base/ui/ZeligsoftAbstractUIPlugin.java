@@ -63,4 +63,14 @@ public class ZeligsoftAbstractUIPlugin
 	public void warning(String message) {
 		warning(message, null);
 	}
+	
+	/**
+	 * Write info log
+	 * 
+	 * @param message
+	 *            Warning message
+	 */
+	public void info(String message) {
+		ZeligsoftAbstractPlugin.info(this, message);
+	}
 }

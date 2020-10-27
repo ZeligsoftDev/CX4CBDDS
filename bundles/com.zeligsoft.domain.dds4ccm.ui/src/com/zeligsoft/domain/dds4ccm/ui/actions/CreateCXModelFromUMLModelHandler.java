@@ -22,6 +22,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.PlatformUI;
 
+import com.zeligsoft.domain.dds4ccm.ui.Activator;
+
 public class CreateCXModelFromUMLModelHandler extends AbstractHandler {
 
 	@Override
@@ -99,7 +101,9 @@ public class CreateCXModelFromUMLModelHandler extends AbstractHandler {
 	private void migrateCORBAToCX(IFile file) {
 
 		try {
-			boolean found = false;
+			int numCorba = 0;
+			int numCcmLibrary = 0;
+
 			BufferedReader reader = new BufferedReader(new InputStreamReader(file.getContents()));
 			StringBuffer outBuffer = new StringBuffer();
 			while (reader.ready()) {
@@ -109,13 +113,13 @@ public class CreateCXModelFromUMLModelHandler extends AbstractHandler {
 				// Replace CORBA to CX string
 				int startIndex = outLine.indexOf("dds4ccm:CORBA");
 				if (startIndex > 0) {
-					found = true;
+					numCorba++;
 					outLine = outLine.replaceFirst("dds4ccm:CORBA", "dds4ccm:CX");
 				}
 				// Replace CCM_LIBRARY to DDS4CCM_LIBRARY
 				startIndex = outLine.indexOf("/CCM_LIBRARIES");
 				if (startIndex > 0) {
-					found = true;
+					numCcmLibrary++;
 					outLine = outLine.replaceFirst("/CCM_LIBRARIES", "/DDS4CCM_LIBRARIES");
 				}				
 				
@@ -123,7 +127,9 @@ public class CreateCXModelFromUMLModelHandler extends AbstractHandler {
 			}
 			reader.close();
 
-			if (found) {
+			if (numCorba > 0 || numCcmLibrary > 0) {
+				Activator.getDefault().info("CX UML migration: CORBA to CX " + numCorba
+						+ " times, CCM_LIBRARIES to DDS4CCM_LIBRARIES " + numCcmLibrary + " times.");
 				// produce output if CORBA keyword is found
 				String outContents = outBuffer.toString();
 				byte[] bytes = outContents.getBytes();
