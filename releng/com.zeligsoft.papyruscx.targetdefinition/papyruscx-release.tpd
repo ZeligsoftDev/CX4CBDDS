@@ -1,0 +1,59 @@
+target "Papyrus CX Target Platform - Release" with source requirements
+
+location "http://download.eclipse.org/releases/2019-06/" eclipse-2019-06 {
+	org.eclipse.platform.feature.group
+	org.eclipse.sdk.feature.group
+	org.eclipse.rcp.feature.group
+	org.eclipse.jdt.feature.group
+	org.eclipse.equinox.p2.discovery.feature.feature.group
+	org.eclipse.equinox.executable.feature.group
+	org.eclipse.draw2d
+	org.eclipse.gef
+	org.eclipse.m2m.qvt.oml.sdk.feature.group
+	org.eclipse.emf.sdk.feature.group
+	org.eclipse.xsd.sdk.feature.group
+	org.eclipse.emf.validation.sdk.feature.group
+	org.eclipse.emf.transaction.sdk.feature.group
+	org.eclipse.emf.workspace.feature.group
+	org.eclipse.gmf.runtime.notation.sdk.feature.group
+	org.eclipse.gmf.runtime.sdk.feature.group
+	org.eclipse.uml2.sdk.feature.group
+	com.google.guava [21.0.0,22.0.0)
+}
+
+location "http://download.eclipse.org/egit/updates-5.4" egit {
+	org.eclipse.egit.feature.group
+	org.eclipse.jgit.feature.group
+}
+
+location emfCompare "https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R201905300200/" {
+	org.eclipse.emf.compare.source.feature.group [3.3.5,4.0.0)
+	org.eclipse.emf.compare.diagram.gmf.source.feature.group [3.3.5,4.0.0)
+	org.eclipse.emf.compare.uml2.source.feature.group [3.3.5,4.0.0)
+	org.eclipse.emf.compare.egit.source.feature.group [3.3.5,4.0.0)
+	org.eclipse.emf.compare.ide.ui.source.feature.group [3.3.5,4.0.0)
+	org.eclipse.emf.compare.rcp.ui.source.feature.group [3.3.5,4.0.0)
+}
+
+location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20190602212107/repository" {
+	org.apache.commons.io
+	org.apache.commons.io.source
+	com.google.inject
+	javaewah
+	org.apache.commons.compress
+	org.apache.commons.lang
+	org.kohsuke.args4j
+	org.mockito [1.9.0,2.0.0)
+	org.hamcrest
+	org.hamcrest.library
+	org.hamcrest.integration
+	org.hamcrest.text
+	org.objenesis [1.0.0,2.0.0)
+}
+
+location papyrus "http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2019-06" {
+	org.eclipse.papyrus.sdk.feature.feature.group
+	org.eclipse.papyrus.infra.gmfdiag.feature.feature.group
+	org.eclipse.papyrus.infra.services.feature.feature.group
+	org.eclipse.papyrus.views.properties.toolsmiths
+}
