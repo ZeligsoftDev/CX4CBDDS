@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Papyrus CX Target Platform - Release" sequenceNumber="1604698846">
+<target name="Papyrus CX Target Platform - Release" sequenceNumber="1604701774">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.feature.group" version="4.12.0.v20190605-1801"/>
@@ -22,6 +22,11 @@
       <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.12.1.201905141505"/>
       <unit id="org.eclipse.uml2.sdk.feature.group" version="5.5.0.v20181203-1331"/>
       <unit id="com.google.guava" version="21.0.0.v20170206-1425"/>
+      <unit id="org.eclipse.xtend.sdk.feature.group" version="2.18.0.v20190528-0716"/>
+      <unit id="org.eclipse.xtend.typesystem.uml2.feature.group" version="2.2.0.v201605260315"/>
+      <unit id="org.eclipse.xtend.typesystem.xsd.feature.group" version="2.2.0.v201605260315"/>
+      <unit id="org.eclipse.xtend.ui.feature.group" version="2.2.0.v201605260315"/>
+      <unit id="org.eclipse.ocl.ui.feature.group" version="2.8.0.v20190603-1146"/>
       <repository id="eclipse-2019-06" location="http://download.eclipse.org/releases/2019-06/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
@@ -60,6 +65,10 @@
       <unit id="org.eclipse.papyrus.infra.services.feature.feature.group" version="3.0.0.201906121718"/>
       <unit id="org.eclipse.papyrus.views.properties.toolsmiths" version="2.0.2.201906121827"/>
       <repository id="papyrus" location="http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2019-06"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.cdt.platform.feature.group" version="9.8.1.201907021957"/>
+      <repository id="cdt" location="http://download.eclipse.org/tools/cdt/releases/9.8/cdt-9.8.1"/>
     </location>
   </locations>
 </target>

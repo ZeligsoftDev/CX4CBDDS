@@ -19,6 +19,13 @@ location "http://download.eclipse.org/releases/2019-06/" eclipse-2019-06 {
 	org.eclipse.gmf.runtime.sdk.feature.group
 	org.eclipse.uml2.sdk.feature.group
 	com.google.guava [21.0.0,22.0.0)
+	// The following are required by com.zeligsoft.base.zdl and others
+	// NOTE: We could add only specific plugins, but that may miss some required dependencies
+	org.eclipse.xtend.sdk.feature.group
+	org.eclipse.xtend.typesystem.uml2.feature.group
+	org.eclipse.xtend.typesystem.xsd.feature.group
+	org.eclipse.xtend.ui.feature.group
+	org.eclipse.ocl.ui.feature.group
 }
 
 location "http://download.eclipse.org/egit/updates-5.4" egit {
@@ -56,4 +63,9 @@ location papyrus "http://download.eclipse.org/modeling/mdt/papyrus/updates/relea
 	org.eclipse.papyrus.infra.gmfdiag.feature.feature.group
 	org.eclipse.papyrus.infra.services.feature.feature.group
 	org.eclipse.papyrus.views.properties.toolsmiths
+}
+
+// The following are required by com.zeligsoft.cx.* and others
+location cdt "http://download.eclipse.org/tools/cdt/releases/9.8/cdt-9.8.1" {
+	org.eclipse.cdt.platform.feature.group
 }
