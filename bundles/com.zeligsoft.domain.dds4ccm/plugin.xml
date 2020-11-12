@@ -69,5 +69,13 @@
             supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
             uri="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1">
       </factory>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.rcp.matchEngine">
+      <engineFactory
+            class="com.zeligsoft.domain.dds4ccm.utils.AXCIOMAMatchEngineFactory"
+            label="AXCIOMA Match Engine"
+            ranking="20">
+      </engineFactory>
    </extension>   
 </plugin>
