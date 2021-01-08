@@ -31,6 +31,21 @@
         <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/elementtypes/DDS4CCM_compositestructure.elementtypesconfigurations#_sLt-cGVTEeqPtKtL0oDezQ"/>
       </elementDescriptors>
     </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="composite.tool.comment" label="Comment" description="Create new Comment" kind="CreationTool" toolClassName="">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.uml2.uml.edit" iconPath="/icons/full/obj16/Comment.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#org.eclipse.papyrus.umldi.Comment_Shape_CN"/>
+      </elementDescriptors>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#org.eclipse.papyrus.umldi.Comment_Shape"/>
+      </elementDescriptors>
+    </ownedConfigurations>
+    <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="composite.tool.link" label="Comment Link" description="Create new Link (Comment)" kind="ConnectionTool">
+      <icon xmi:type="paletteconfiguration:IconDescriptor" pluginID="org.eclipse.papyrus.uml.diagram.composite" iconPath="/icons/obj16/Link.gif"/>
+      <elementDescriptors xmi:type="paletteconfiguration:ElementDescriptor">
+        <elementType xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#org.eclipse.papyrus.umldi.Comment_AnnotatedElementEdge"/>
+      </elementDescriptors>
+    </ownedConfigurations>
   </drawerConfigurations>
   <drawerConfigurations xmi:type="paletteconfiguration:DrawerConfiguration" label="Target Structure">
     <ownedConfigurations xmi:type="paletteconfiguration:ToolConfiguration" id="cbdds.composite.edges.TargetAssemblyConnector" label="Target Assembly Connection" description="Create a target assembly connection" kind="ConnectionTool">
