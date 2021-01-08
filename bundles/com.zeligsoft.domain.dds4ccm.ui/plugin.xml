@@ -642,6 +642,36 @@
       </activityPatternBinding>
    </extension>
    
+<extension
+      point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+   <paletteProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+      <Priority
+            name="Highest">
+      </Priority>
+      <contribution>
+         <predefinedEntry
+               id="geoshapeDrawer"
+               path="/">
+            <expand
+                  force="true">
+            </expand>
+         </predefinedEntry>
+      </contribution>
+      <editor
+            class="org.eclipse.papyrus.uml.diagram.common.part.UmlGmfDiagramEditor(org.eclipse.papyrus.uml.diagram.common)">
+      </editor>
+   </paletteProvider>
+</extension>
+<extension
+      point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
+   <editpolicyProvider
+         class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMCanonicalEditPolicyProvider">
+      <Priority
+            name="High">
+      </Priority>
+   </editpolicyProvider>
+</extension>
     <!--
    <extension
          point="org.eclipse.ui.menus">
