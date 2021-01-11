@@ -33,10 +33,15 @@ Require-Bundle: com.zeligsoft.cx.ui;bundle-version="4.0.0",
  org.eclipse.papyrus.views.modelexplorer;bundle-version="3.0.100",
  org.eclipse.papyrus.uml.service.validation;bundle-version="2.1.0",
  org.eclipse.papyrus.infra.services.validation;bundle-version="3.0.0",
- com.zeligsoft.base.validation.ui;bundle-version="4.0.0"
+ com.zeligsoft.base.validation.ui;bundle-version="4.0.0",
+ org.eclipse.gmf.runtime.diagram.ui.geoshapes;bundle-version="1.7.0",
+ org.eclipse.gmf.runtime.diagram.ui.providers;bundle-version="1.7.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Export-Package: com.zeligsoft.domain.dds4ccm.ui.actions,
- com.zeligsoft.domain.dds4ccm.ui.edithelpers
+Export-Package: com.zeligsoft.domain.dds4ccm.ui,
+ com.zeligsoft.domain.dds4ccm.ui.actions,
+ com.zeligsoft.domain.dds4ccm.ui.edithelpers,
+ com.zeligsoft.domain.dds4ccm.ui.editpolicies,
+ com.zeligsoft.domain.dds4ccm.ui.providers
 Import-Package: com.zeligsoft.domain.omg.ccm.api.CCM_Target
