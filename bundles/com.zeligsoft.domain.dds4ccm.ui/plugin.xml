@@ -715,4 +715,13 @@
             name="Delete Selected Line">
       </command>
    </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <decoratorProvider
+            class="com.zeligsoft.domain.dds4ccm.ui.internal.providers.decorators.GeoShapePartDecoratorProvider">
+         <Priority
+               name="Lowest">
+         </Priority>
+      </decoratorProvider>
+   </extension>
 </plugin>
