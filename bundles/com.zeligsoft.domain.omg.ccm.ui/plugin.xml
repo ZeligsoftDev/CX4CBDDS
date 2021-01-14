@@ -68,4 +68,13 @@
             name="%preference.modeling.name">
       </page>
    </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <editpartProvider
+            class="com.zeligsoft.domain.omg.ccm.ui.providers.CCMPartEditpartProvider">
+         <Priority
+               name="Highest">
+         </Priority>
+      </editpartProvider>
+   </extension>   
 </plugin>
