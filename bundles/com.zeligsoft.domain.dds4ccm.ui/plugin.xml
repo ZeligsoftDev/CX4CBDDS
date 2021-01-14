@@ -724,4 +724,13 @@
          </Priority>
       </decoratorProvider>
    </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.zeligsoft.dds4ccm.ui.edit.deleteline"
+            contextId="org.eclipse.gmf.runtime.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="DEL">
+      </key>     
+   </extension>
 </plugin>
