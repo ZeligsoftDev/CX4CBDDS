@@ -2,8 +2,8 @@
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1 pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ">
   <uml:Model xmi:id="_jkiX8J4JEd6xhoJKj1dweA" name="BasicPubSub">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GPyWQB0dEeK57YNFx_YCBQ" source="cx.migration">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GPyWQR0dEeK57YNFx_YCBQ" key="version" value="1.4.1"/>
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GPyWQh0dEeK57YNFx_YCBQ" key="date" value="1449662693965"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GPyWQR0dEeK57YNFx_YCBQ" key="version" value="2.0.1"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GPyWQh0dEeK57YNFx_YCBQ" key="date" value="1610564337630"/>
     </eAnnotations>
     <packageImport xmi:type="uml:PackageImport" xmi:id="_Fg29cLNIEd66L-pSY5VQBg">
       <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_DO-O0EDsEd-pwPnT_VsB_g"/>
@@ -1294,110 +1294,110 @@
     </profileApplication>
   </uml:Model>
   <dds4ccm:DDS4CCMModel xmi:id="_2IZiQLIjEeCxJ7b7h4plXw" base_Model="_jkiX8J4JEd6xhoJKj1dweA" base_NamedElement="_jkiX8J4JEd6xhoJKj1dweA" fixedHeader="//==============================================================================&#xA;//                         U N C L A S S I F I E D&#xA;//==============================================================================&#xA;// Copyright (c) Northrop Grumman Corporation 2008-2019 -- ALL RIGHTS RESERVED&#xA;//==============================================================================" fixedFooter="//==============================================================================&#xA;//                            U N C L A S S I F I E D                            &#xA;//==============================================================================" modelType="AXCIOMA"/>
-  <dds4ccm:CORBAString xmi:id="_8F8ewLIjEeCxJ7b7h4plXw" base_NamedElement="_8F40YLIjEeCxJ7b7h4plXw" bound="512" base_DataType="_8F40YLIjEeCxJ7b7h4plXw">
-    <bounds xmi:type="dds4ccm:CORBABound" xmi:id="_mcn8cFXlEeOVlOjCFmq0sw" value="512"/>
-  </dds4ccm:CORBAString>
-  <dds4ccm:CORBASequence xmi:id="_8H_tMLIjEeCxJ7b7h4plXw" base_NamedElement="_8H_GILIjEeCxJ7b7h4plXw" base_DataType="_8H_GILIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXString xmi:id="_8F8ewLIjEeCxJ7b7h4plXw" base_NamedElement="_8F40YLIjEeCxJ7b7h4plXw" bound="512" base_DataType="_8F40YLIjEeCxJ7b7h4plXw">
+    <bounds xmi:type="dds4ccm:CXBound" xmi:id="_mcn8cFXlEeOVlOjCFmq0sw" value="512"/>
+  </dds4ccm:CXString>
+  <dds4ccm:CXSequence xmi:id="_8H_tMLIjEeCxJ7b7h4plXw" base_NamedElement="_8H_GILIjEeCxJ7b7h4plXw" base_DataType="_8H_GILIjEeCxJ7b7h4plXw"/>
   <dds4ccm:ModuleInstantiation xmi:id="_8JmPsbIjEeCxJ7b7h4plXw" base_NamedElement="_8JmPsLIjEeCxJ7b7h4plXw" base_Package="_8JmPsLIjEeCxJ7b7h4plXw"/>
   <dds4ccm:ModuleBinding xmi:id="_8Jm2wbIjEeCxJ7b7h4plXw" base_TemplateBinding="_8Jm2wLIjEeCxJ7b7h4plXw"/>
   <dds4ccm:ParameterBinding xmi:id="_8JoE4bIjEeCxJ7b7h4plXw" base_TemplateParameterSubstitution="_8JoE4LIjEeCxJ7b7h4plXw"/>
   <dds4ccm:ParameterBinding xmi:id="_8JpTALIjEeCxJ7b7h4plXw" base_TemplateParameterSubstitution="_8Jor8LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAInterface xmi:id="_8JqhIbIjEeCxJ7b7h4plXw" base_Interface="_8JqhILIjEeCxJ7b7h4plXw" base_NamedElement="_8JqhILIjEeCxJ7b7h4plXw" isLocal="true"/>
-  <dds4ccm:CORBAOperation xmi:id="_8JtkcLIjEeCxJ7b7h4plXw" base_NamedElement="_8Js9YLIjEeCxJ7b7h4plXw" base_Operation="_8Js9YLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8JwAsbIjEeCxJ7b7h4plXw" base_NamedElement="_8JwAsLIjEeCxJ7b7h4plXw" base_Parameter="_8JwAsLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8J38gLIjEeCxJ7b7h4plXw" base_NamedElement="_8J3VcLIjEeCxJ7b7h4plXw" base_Operation="_8J3VcLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8J6YwLIjEeCxJ7b7h4plXw" base_NamedElement="_8J5xsLIjEeCxJ7b7h4plXw" base_Parameter="_8J5xsLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8J81ALIjEeCxJ7b7h4plXw" base_NamedElement="_8J8N8LIjEeCxJ7b7h4plXw" base_Parameter="_8J8N8LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAInterface xmi:id="_8KF-8LIjEeCxJ7b7h4plXw" base_Interface="_8KFX4LIjEeCxJ7b7h4plXw" base_NamedElement="_8KFX4LIjEeCxJ7b7h4plXw" isLocal="true"/>
-  <dds4ccm:CORBAOperation xmi:id="_8KJCQLIjEeCxJ7b7h4plXw" base_NamedElement="_8KIbMLIjEeCxJ7b7h4plXw" base_Operation="_8KIbMLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8KLegLIjEeCxJ7b7h4plXw" base_NamedElement="_8KK3cLIjEeCxJ7b7h4plXw" base_Parameter="_8KK3cLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8KN6wLIjEeCxJ7b7h4plXw" base_NamedElement="_8KNTsLIjEeCxJ7b7h4plXw" base_Parameter="_8KNTsLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8KUocbIjEeCxJ7b7h4plXw" base_NamedElement="_8KUocLIjEeCxJ7b7h4plXw" base_Operation="_8KUocLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8KXEsbIjEeCxJ7b7h4plXw" base_NamedElement="_8KXEsLIjEeCxJ7b7h4plXw" base_Parameter="_8KXEsLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAAttribute xmi:id="_8KgOoLIjEeCxJ7b7h4plXw" base_NamedElement="_8KfnkLIjEeCxJ7b7h4plXw" base_Property="_8KfnkLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAInterface xmi:id="_8Kj5ALIjEeCxJ7b7h4plXw" base_Interface="_8KjR8LIjEeCxJ7b7h4plXw" base_NamedElement="_8KjR8LIjEeCxJ7b7h4plXw" isLocal="true"/>
-  <dds4ccm:CORBAOperation xmi:id="_8Km8ULIjEeCxJ7b7h4plXw" base_NamedElement="_8KmVQLIjEeCxJ7b7h4plXw" base_Operation="_8KmVQLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8Kp_oLIjEeCxJ7b7h4plXw" base_NamedElement="_8KpYkLIjEeCxJ7b7h4plXw" base_Parameter="_8KpYkLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8Kx7cLIjEeCxJ7b7h4plXw" base_NamedElement="_8KxUYLIjEeCxJ7b7h4plXw" base_Operation="_8KxUYLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8K0XsLIjEeCxJ7b7h4plXw" base_NamedElement="_8KzwoLIjEeCxJ7b7h4plXw" base_Parameter="_8KzwoLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8K2z8LIjEeCxJ7b7h4plXw" base_NamedElement="_8K2M4LIjEeCxJ7b7h4plXw" base_Parameter="_8K2M4LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8K-IsLIjEeCxJ7b7h4plXw" base_NamedElement="_8K9hoLIjEeCxJ7b7h4plXw" base_Operation="_8K9hoLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8LAk8LIjEeCxJ7b7h4plXw" base_NamedElement="_8K_94LIjEeCxJ7b7h4plXw" base_Parameter="_8K_94LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8LDoQLIjEeCxJ7b7h4plXw" base_NamedElement="_8LDBMLIjEeCxJ7b7h4plXw" base_Parameter="_8LDBMLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8LKV8LIjEeCxJ7b7h4plXw" base_NamedElement="_8LJu4LIjEeCxJ7b7h4plXw" base_Operation="_8LJu4LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8LMyMLIjEeCxJ7b7h4plXw" base_NamedElement="_8LMLILIjEeCxJ7b7h4plXw" base_Parameter="_8LMLILIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8LTf4LIjEeCxJ7b7h4plXw" base_NamedElement="_8LS40LIjEeCxJ7b7h4plXw" base_Operation="_8LS40LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8LV8ILIjEeCxJ7b7h4plXw" base_NamedElement="_8LVVELIjEeCxJ7b7h4plXw" base_Parameter="_8LVVELIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8LdQ4LIjEeCxJ7b7h4plXw" base_NamedElement="_8Lcp0LIjEeCxJ7b7h4plXw" base_Operation="_8Lcp0LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8LftILIjEeCxJ7b7h4plXw" base_NamedElement="_8LfGELIjEeCxJ7b7h4plXw" base_Parameter="_8LfGELIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAAttribute xmi:id="_8LoQALIjEeCxJ7b7h4plXw" base_NamedElement="_8Lno8LIjEeCxJ7b7h4plXw" base_Property="_8Lno8LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAAttribute xmi:id="_8Lr6YLIjEeCxJ7b7h4plXw" base_NamedElement="_8LrTULIjEeCxJ7b7h4plXw" base_Property="_8LrTULIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAInterface xmi:id="_8Lu9sLIjEeCxJ7b7h4plXw" base_Interface="_8LuWoLIjEeCxJ7b7h4plXw" base_NamedElement="_8LuWoLIjEeCxJ7b7h4plXw" isLocal="true"/>
-  <dds4ccm:CORBAOperation xmi:id="_8LxZ8bIjEeCxJ7b7h4plXw" base_NamedElement="_8LxZ8LIjEeCxJ7b7h4plXw" base_Operation="_8LxZ8LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8Lz2MLIjEeCxJ7b7h4plXw" base_NamedElement="_8LzPILIjEeCxJ7b7h4plXw" base_Parameter="_8LzPILIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8L2ScbIjEeCxJ7b7h4plXw" base_NamedElement="_8L2ScLIjEeCxJ7b7h4plXw" base_Parameter="_8L2ScLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8L9nMLIjEeCxJ7b7h4plXw" base_NamedElement="_8L9AILIjEeCxJ7b7h4plXw" base_Operation="_8L9AILIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8MADcLIjEeCxJ7b7h4plXw" base_NamedElement="_8L_cYLIjEeCxJ7b7h4plXw" base_Parameter="_8L_cYLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8MDGwLIjEeCxJ7b7h4plXw" base_NamedElement="_8MCfsLIjEeCxJ7b7h4plXw" base_Parameter="_8MCfsLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8MJNYbIjEeCxJ7b7h4plXw" base_NamedElement="_8MJNYLIjEeCxJ7b7h4plXw" base_Operation="_8MJNYLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8MMQsLIjEeCxJ7b7h4plXw" base_NamedElement="_8MLpoLIjEeCxJ7b7h4plXw" base_Parameter="_8MLpoLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8MOs8LIjEeCxJ7b7h4plXw" base_NamedElement="_8MOF4LIjEeCxJ7b7h4plXw" base_Parameter="_8MOF4LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8MRwQLIjEeCxJ7b7h4plXw" base_NamedElement="_8MRJMLIjEeCxJ7b7h4plXw" base_Parameter="_8MRJMLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8MUMgbIjEeCxJ7b7h4plXw" base_NamedElement="_8MUMgLIjEeCxJ7b7h4plXw" base_Parameter="_8MUMgLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8MbhQLIjEeCxJ7b7h4plXw" base_NamedElement="_8Ma6MLIjEeCxJ7b7h4plXw" base_Operation="_8Ma6MLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8Md9gLIjEeCxJ7b7h4plXw" base_NamedElement="_8MdWcLIjEeCxJ7b7h4plXw" base_Parameter="_8MdWcLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8MhA0LIjEeCxJ7b7h4plXw" base_NamedElement="_8MgZwLIjEeCxJ7b7h4plXw" base_Parameter="_8MgZwLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8MjdELIjEeCxJ7b7h4plXw" base_NamedElement="_8Mi2ALIjEeCxJ7b7h4plXw" base_Parameter="_8Mi2ALIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAAttribute xmi:id="_8Mr_8LIjEeCxJ7b7h4plXw" base_NamedElement="_8MrY4LIjEeCxJ7b7h4plXw" base_Property="_8MrY4LIjEeCxJ7b7h4plXw">
-    <setraises xmi:type="dds4ccm:CORBAException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_XRXKIGROEd-Wc9hRqhM12g"/>
-  </dds4ccm:CORBAAttribute>
-  <dds4ccm:CORBAInterface xmi:id="_8MvqULIjEeCxJ7b7h4plXw" base_Interface="_8MvDQLIjEeCxJ7b7h4plXw" base_NamedElement="_8MvDQLIjEeCxJ7b7h4plXw" isLocal="true"/>
-  <dds4ccm:CORBAOperation xmi:id="_8MyGkLIjEeCxJ7b7h4plXw" base_NamedElement="_8MxfgLIjEeCxJ7b7h4plXw" base_Operation="_8MxfgLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8NGPoLIjEeCxJ7b7h4plXw" base_NamedElement="_8NFokLIjEeCxJ7b7h4plXw" base_Parameter="_8NFokLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8NJS8LIjEeCxJ7b7h4plXw" base_NamedElement="_8NIr4LIjEeCxJ7b7h4plXw" base_Parameter="_8NIr4LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8NQAoLIjEeCxJ7b7h4plXw" base_NamedElement="_8NPZkLIjEeCxJ7b7h4plXw" base_Operation="_8NPZkLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8NSc4LIjEeCxJ7b7h4plXw" base_NamedElement="_8NR10LIjEeCxJ7b7h4plXw" base_Parameter="_8NR10LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8NVgMLIjEeCxJ7b7h4plXw" base_NamedElement="_8NU5ILIjEeCxJ7b7h4plXw" base_Parameter="_8NU5ILIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAAttribute xmi:id="_8NdcALIjEeCxJ7b7h4plXw" base_NamedElement="_8Nc08LIjEeCxJ7b7h4plXw" base_Property="_8Nc08LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAAttribute xmi:id="_8NgfUbIjEeCxJ7b7h4plXw" base_NamedElement="_8NgfULIjEeCxJ7b7h4plXw" base_Property="_8NgfULIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAInterface xmi:id="_8NjiobIjEeCxJ7b7h4plXw" base_Interface="_8NjioLIjEeCxJ7b7h4plXw" base_NamedElement="_8NjioLIjEeCxJ7b7h4plXw" isLocal="true"/>
-  <dds4ccm:CORBAOperation xmi:id="_8Nl-4LIjEeCxJ7b7h4plXw" base_NamedElement="_8NlX0LIjEeCxJ7b7h4plXw" base_Operation="_8NlX0LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8Nq3YLIjEeCxJ7b7h4plXw" base_NamedElement="_8NqQULIjEeCxJ7b7h4plXw" base_Parameter="_8NqQULIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8Nt6sLIjEeCxJ7b7h4plXw" base_NamedElement="_8NtToLIjEeCxJ7b7h4plXw" base_Parameter="_8NtToLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8NyMILIjEeCxJ7b7h4plXw" base_NamedElement="_8NxlELIjEeCxJ7b7h4plXw" base_Operation="_8NxlELIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8N0oYLIjEeCxJ7b7h4plXw" base_NamedElement="_8N0BULIjEeCxJ7b7h4plXw" base_Parameter="_8N0BULIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8N3rsLIjEeCxJ7b7h4plXw" base_NamedElement="_8N3EoLIjEeCxJ7b7h4plXw" base_Parameter="_8N3EoLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAInterface xmi:id="_8N_AcbIjEeCxJ7b7h4plXw" base_Interface="_8N_AcLIjEeCxJ7b7h4plXw" base_NamedElement="_8N_AcLIjEeCxJ7b7h4plXw" isLocal="true"/>
-  <dds4ccm:CORBAOperation xmi:id="_8OBcsbIjEeCxJ7b7h4plXw" base_NamedElement="_8OBcsLIjEeCxJ7b7h4plXw" base_Operation="_8OBcsLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8ODR4bIjEeCxJ7b7h4plXw" base_NamedElement="_8ODR4LIjEeCxJ7b7h4plXw" base_Parameter="_8ODR4LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8OGVMLIjEeCxJ7b7h4plXw" base_NamedElement="_8OFuILIjEeCxJ7b7h4plXw" base_Parameter="_8OFuILIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8OMb0LIjEeCxJ7b7h4plXw" base_NamedElement="_8OL0wLIjEeCxJ7b7h4plXw" base_Operation="_8OL0wLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8OORALIjEeCxJ7b7h4plXw" base_NamedElement="_8ONp8LIjEeCxJ7b7h4plXw" base_Parameter="_8ONp8LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8OQtQbIjEeCxJ7b7h4plXw" base_NamedElement="_8OQtQLIjEeCxJ7b7h4plXw" base_Parameter="_8OQtQLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8OXa8LIjEeCxJ7b7h4plXw" base_NamedElement="_8OWz4LIjEeCxJ7b7h4plXw" base_Operation="_8OWz4LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8OZQILIjEeCxJ7b7h4plXw" base_NamedElement="_8OYpELIjEeCxJ7b7h4plXw" base_Parameter="_8OYpELIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8ObsYLIjEeCxJ7b7h4plXw" base_NamedElement="_8ObFULIjEeCxJ7b7h4plXw" base_Parameter="_8ObFULIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAOperation xmi:id="_8OiaELIjEeCxJ7b7h4plXw" base_NamedElement="_8OhzALIjEeCxJ7b7h4plXw" base_Operation="_8OhzALIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8OkPQLIjEeCxJ7b7h4plXw" base_NamedElement="_8OjoMLIjEeCxJ7b7h4plXw" base_Parameter="_8OjoMLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAParameter xmi:id="_8OmrgLIjEeCxJ7b7h4plXw" base_NamedElement="_8OmEcLIjEeCxJ7b7h4plXw" base_Parameter="_8OmEcLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXInterface xmi:id="_8JqhIbIjEeCxJ7b7h4plXw" base_Interface="_8JqhILIjEeCxJ7b7h4plXw" base_NamedElement="_8JqhILIjEeCxJ7b7h4plXw" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_8JtkcLIjEeCxJ7b7h4plXw" base_NamedElement="_8Js9YLIjEeCxJ7b7h4plXw" base_Operation="_8Js9YLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8JwAsbIjEeCxJ7b7h4plXw" base_NamedElement="_8JwAsLIjEeCxJ7b7h4plXw" base_Parameter="_8JwAsLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8J38gLIjEeCxJ7b7h4plXw" base_NamedElement="_8J3VcLIjEeCxJ7b7h4plXw" base_Operation="_8J3VcLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8J6YwLIjEeCxJ7b7h4plXw" base_NamedElement="_8J5xsLIjEeCxJ7b7h4plXw" base_Parameter="_8J5xsLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8J81ALIjEeCxJ7b7h4plXw" base_NamedElement="_8J8N8LIjEeCxJ7b7h4plXw" base_Parameter="_8J8N8LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXInterface xmi:id="_8KF-8LIjEeCxJ7b7h4plXw" base_Interface="_8KFX4LIjEeCxJ7b7h4plXw" base_NamedElement="_8KFX4LIjEeCxJ7b7h4plXw" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_8KJCQLIjEeCxJ7b7h4plXw" base_NamedElement="_8KIbMLIjEeCxJ7b7h4plXw" base_Operation="_8KIbMLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8KLegLIjEeCxJ7b7h4plXw" base_NamedElement="_8KK3cLIjEeCxJ7b7h4plXw" base_Parameter="_8KK3cLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8KN6wLIjEeCxJ7b7h4plXw" base_NamedElement="_8KNTsLIjEeCxJ7b7h4plXw" base_Parameter="_8KNTsLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8KUocbIjEeCxJ7b7h4plXw" base_NamedElement="_8KUocLIjEeCxJ7b7h4plXw" base_Operation="_8KUocLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8KXEsbIjEeCxJ7b7h4plXw" base_NamedElement="_8KXEsLIjEeCxJ7b7h4plXw" base_Parameter="_8KXEsLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXAttribute xmi:id="_8KgOoLIjEeCxJ7b7h4plXw" base_NamedElement="_8KfnkLIjEeCxJ7b7h4plXw" base_Property="_8KfnkLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXInterface xmi:id="_8Kj5ALIjEeCxJ7b7h4plXw" base_Interface="_8KjR8LIjEeCxJ7b7h4plXw" base_NamedElement="_8KjR8LIjEeCxJ7b7h4plXw" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_8Km8ULIjEeCxJ7b7h4plXw" base_NamedElement="_8KmVQLIjEeCxJ7b7h4plXw" base_Operation="_8KmVQLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8Kp_oLIjEeCxJ7b7h4plXw" base_NamedElement="_8KpYkLIjEeCxJ7b7h4plXw" base_Parameter="_8KpYkLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8Kx7cLIjEeCxJ7b7h4plXw" base_NamedElement="_8KxUYLIjEeCxJ7b7h4plXw" base_Operation="_8KxUYLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8K0XsLIjEeCxJ7b7h4plXw" base_NamedElement="_8KzwoLIjEeCxJ7b7h4plXw" base_Parameter="_8KzwoLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8K2z8LIjEeCxJ7b7h4plXw" base_NamedElement="_8K2M4LIjEeCxJ7b7h4plXw" base_Parameter="_8K2M4LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8K-IsLIjEeCxJ7b7h4plXw" base_NamedElement="_8K9hoLIjEeCxJ7b7h4plXw" base_Operation="_8K9hoLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8LAk8LIjEeCxJ7b7h4plXw" base_NamedElement="_8K_94LIjEeCxJ7b7h4plXw" base_Parameter="_8K_94LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8LDoQLIjEeCxJ7b7h4plXw" base_NamedElement="_8LDBMLIjEeCxJ7b7h4plXw" base_Parameter="_8LDBMLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8LKV8LIjEeCxJ7b7h4plXw" base_NamedElement="_8LJu4LIjEeCxJ7b7h4plXw" base_Operation="_8LJu4LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8LMyMLIjEeCxJ7b7h4plXw" base_NamedElement="_8LMLILIjEeCxJ7b7h4plXw" base_Parameter="_8LMLILIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8LTf4LIjEeCxJ7b7h4plXw" base_NamedElement="_8LS40LIjEeCxJ7b7h4plXw" base_Operation="_8LS40LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8LV8ILIjEeCxJ7b7h4plXw" base_NamedElement="_8LVVELIjEeCxJ7b7h4plXw" base_Parameter="_8LVVELIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8LdQ4LIjEeCxJ7b7h4plXw" base_NamedElement="_8Lcp0LIjEeCxJ7b7h4plXw" base_Operation="_8Lcp0LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8LftILIjEeCxJ7b7h4plXw" base_NamedElement="_8LfGELIjEeCxJ7b7h4plXw" base_Parameter="_8LfGELIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXAttribute xmi:id="_8LoQALIjEeCxJ7b7h4plXw" base_NamedElement="_8Lno8LIjEeCxJ7b7h4plXw" base_Property="_8Lno8LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXAttribute xmi:id="_8Lr6YLIjEeCxJ7b7h4plXw" base_NamedElement="_8LrTULIjEeCxJ7b7h4plXw" base_Property="_8LrTULIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXInterface xmi:id="_8Lu9sLIjEeCxJ7b7h4plXw" base_Interface="_8LuWoLIjEeCxJ7b7h4plXw" base_NamedElement="_8LuWoLIjEeCxJ7b7h4plXw" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_8LxZ8bIjEeCxJ7b7h4plXw" base_NamedElement="_8LxZ8LIjEeCxJ7b7h4plXw" base_Operation="_8LxZ8LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8Lz2MLIjEeCxJ7b7h4plXw" base_NamedElement="_8LzPILIjEeCxJ7b7h4plXw" base_Parameter="_8LzPILIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8L2ScbIjEeCxJ7b7h4plXw" base_NamedElement="_8L2ScLIjEeCxJ7b7h4plXw" base_Parameter="_8L2ScLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8L9nMLIjEeCxJ7b7h4plXw" base_NamedElement="_8L9AILIjEeCxJ7b7h4plXw" base_Operation="_8L9AILIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8MADcLIjEeCxJ7b7h4plXw" base_NamedElement="_8L_cYLIjEeCxJ7b7h4plXw" base_Parameter="_8L_cYLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8MDGwLIjEeCxJ7b7h4plXw" base_NamedElement="_8MCfsLIjEeCxJ7b7h4plXw" base_Parameter="_8MCfsLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8MJNYbIjEeCxJ7b7h4plXw" base_NamedElement="_8MJNYLIjEeCxJ7b7h4plXw" base_Operation="_8MJNYLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8MMQsLIjEeCxJ7b7h4plXw" base_NamedElement="_8MLpoLIjEeCxJ7b7h4plXw" base_Parameter="_8MLpoLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8MOs8LIjEeCxJ7b7h4plXw" base_NamedElement="_8MOF4LIjEeCxJ7b7h4plXw" base_Parameter="_8MOF4LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8MRwQLIjEeCxJ7b7h4plXw" base_NamedElement="_8MRJMLIjEeCxJ7b7h4plXw" base_Parameter="_8MRJMLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8MUMgbIjEeCxJ7b7h4plXw" base_NamedElement="_8MUMgLIjEeCxJ7b7h4plXw" base_Parameter="_8MUMgLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8MbhQLIjEeCxJ7b7h4plXw" base_NamedElement="_8Ma6MLIjEeCxJ7b7h4plXw" base_Operation="_8Ma6MLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8Md9gLIjEeCxJ7b7h4plXw" base_NamedElement="_8MdWcLIjEeCxJ7b7h4plXw" base_Parameter="_8MdWcLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8MhA0LIjEeCxJ7b7h4plXw" base_NamedElement="_8MgZwLIjEeCxJ7b7h4plXw" base_Parameter="_8MgZwLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8MjdELIjEeCxJ7b7h4plXw" base_NamedElement="_8Mi2ALIjEeCxJ7b7h4plXw" base_Parameter="_8Mi2ALIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXAttribute xmi:id="_8Mr_8LIjEeCxJ7b7h4plXw" base_NamedElement="_8MrY4LIjEeCxJ7b7h4plXw" base_Property="_8MrY4LIjEeCxJ7b7h4plXw">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_XRXKIGROEd-Wc9hRqhM12g"/>
+  </dds4ccm:CXAttribute>
+  <dds4ccm:CXInterface xmi:id="_8MvqULIjEeCxJ7b7h4plXw" base_Interface="_8MvDQLIjEeCxJ7b7h4plXw" base_NamedElement="_8MvDQLIjEeCxJ7b7h4plXw" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_8MyGkLIjEeCxJ7b7h4plXw" base_NamedElement="_8MxfgLIjEeCxJ7b7h4plXw" base_Operation="_8MxfgLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8NGPoLIjEeCxJ7b7h4plXw" base_NamedElement="_8NFokLIjEeCxJ7b7h4plXw" base_Parameter="_8NFokLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8NJS8LIjEeCxJ7b7h4plXw" base_NamedElement="_8NIr4LIjEeCxJ7b7h4plXw" base_Parameter="_8NIr4LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8NQAoLIjEeCxJ7b7h4plXw" base_NamedElement="_8NPZkLIjEeCxJ7b7h4plXw" base_Operation="_8NPZkLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8NSc4LIjEeCxJ7b7h4plXw" base_NamedElement="_8NR10LIjEeCxJ7b7h4plXw" base_Parameter="_8NR10LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8NVgMLIjEeCxJ7b7h4plXw" base_NamedElement="_8NU5ILIjEeCxJ7b7h4plXw" base_Parameter="_8NU5ILIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXAttribute xmi:id="_8NdcALIjEeCxJ7b7h4plXw" base_NamedElement="_8Nc08LIjEeCxJ7b7h4plXw" base_Property="_8Nc08LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXAttribute xmi:id="_8NgfUbIjEeCxJ7b7h4plXw" base_NamedElement="_8NgfULIjEeCxJ7b7h4plXw" base_Property="_8NgfULIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXInterface xmi:id="_8NjiobIjEeCxJ7b7h4plXw" base_Interface="_8NjioLIjEeCxJ7b7h4plXw" base_NamedElement="_8NjioLIjEeCxJ7b7h4plXw" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_8Nl-4LIjEeCxJ7b7h4plXw" base_NamedElement="_8NlX0LIjEeCxJ7b7h4plXw" base_Operation="_8NlX0LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8Nq3YLIjEeCxJ7b7h4plXw" base_NamedElement="_8NqQULIjEeCxJ7b7h4plXw" base_Parameter="_8NqQULIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8Nt6sLIjEeCxJ7b7h4plXw" base_NamedElement="_8NtToLIjEeCxJ7b7h4plXw" base_Parameter="_8NtToLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8NyMILIjEeCxJ7b7h4plXw" base_NamedElement="_8NxlELIjEeCxJ7b7h4plXw" base_Operation="_8NxlELIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8N0oYLIjEeCxJ7b7h4plXw" base_NamedElement="_8N0BULIjEeCxJ7b7h4plXw" base_Parameter="_8N0BULIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8N3rsLIjEeCxJ7b7h4plXw" base_NamedElement="_8N3EoLIjEeCxJ7b7h4plXw" base_Parameter="_8N3EoLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXInterface xmi:id="_8N_AcbIjEeCxJ7b7h4plXw" base_Interface="_8N_AcLIjEeCxJ7b7h4plXw" base_NamedElement="_8N_AcLIjEeCxJ7b7h4plXw" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_8OBcsbIjEeCxJ7b7h4plXw" base_NamedElement="_8OBcsLIjEeCxJ7b7h4plXw" base_Operation="_8OBcsLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8ODR4bIjEeCxJ7b7h4plXw" base_NamedElement="_8ODR4LIjEeCxJ7b7h4plXw" base_Parameter="_8ODR4LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8OGVMLIjEeCxJ7b7h4plXw" base_NamedElement="_8OFuILIjEeCxJ7b7h4plXw" base_Parameter="_8OFuILIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8OMb0LIjEeCxJ7b7h4plXw" base_NamedElement="_8OL0wLIjEeCxJ7b7h4plXw" base_Operation="_8OL0wLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8OORALIjEeCxJ7b7h4plXw" base_NamedElement="_8ONp8LIjEeCxJ7b7h4plXw" base_Parameter="_8ONp8LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8OQtQbIjEeCxJ7b7h4plXw" base_NamedElement="_8OQtQLIjEeCxJ7b7h4plXw" base_Parameter="_8OQtQLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8OXa8LIjEeCxJ7b7h4plXw" base_NamedElement="_8OWz4LIjEeCxJ7b7h4plXw" base_Operation="_8OWz4LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8OZQILIjEeCxJ7b7h4plXw" base_NamedElement="_8OYpELIjEeCxJ7b7h4plXw" base_Parameter="_8OYpELIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8ObsYLIjEeCxJ7b7h4plXw" base_NamedElement="_8ObFULIjEeCxJ7b7h4plXw" base_Parameter="_8ObFULIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXOperation xmi:id="_8OiaELIjEeCxJ7b7h4plXw" base_NamedElement="_8OhzALIjEeCxJ7b7h4plXw" base_Operation="_8OhzALIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8OkPQLIjEeCxJ7b7h4plXw" base_NamedElement="_8OjoMLIjEeCxJ7b7h4plXw" base_Parameter="_8OjoMLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_8OmrgLIjEeCxJ7b7h4plXw" base_NamedElement="_8OmEcLIjEeCxJ7b7h4plXw" base_Parameter="_8OmEcLIjEeCxJ7b7h4plXw"/>
   <dds4ccm:ExtendedPortType xmi:id="_8OvOYbIjEeCxJ7b7h4plXw" base_Class="_8OvOYLIjEeCxJ7b7h4plXw"/>
   <dds4ccm:ExtendedPortType xmi:id="_8O7boLIjEeCxJ7b7h4plXw" base_Class="_8O60kLIjEeCxJ7b7h4plXw"/>
   <dds4ccm:ExtendedPortType xmi:id="_8PJeELIjEeCxJ7b7h4plXw" base_Class="_8PI3ALIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAAttribute xmi:id="_8PLTQbIjEeCxJ7b7h4plXw" base_NamedElement="_8PLTQLIjEeCxJ7b7h4plXw" base_Property="_8PLTQLIjEeCxJ7b7h4plXw">
-    <setraises xmi:type="dds4ccm:CORBAException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
-  </dds4ccm:CORBAAttribute>
+  <dds4ccm:CXAttribute xmi:id="_8PLTQbIjEeCxJ7b7h4plXw" base_NamedElement="_8PLTQLIjEeCxJ7b7h4plXw" base_Property="_8PLTQLIjEeCxJ7b7h4plXw">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
+  </dds4ccm:CXAttribute>
   <dds4ccm:ExtendedPortType xmi:id="_8PdnILIjEeCxJ7b7h4plXw" base_Class="_8PdAELIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAAttribute xmi:id="_8PfcULIjEeCxJ7b7h4plXw" base_NamedElement="_8Pe1QLIjEeCxJ7b7h4plXw" base_Property="_8Pe1QLIjEeCxJ7b7h4plXw">
-    <setraises xmi:type="dds4ccm:CORBAException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
-  </dds4ccm:CORBAAttribute>
+  <dds4ccm:CXAttribute xmi:id="_8PfcULIjEeCxJ7b7h4plXw" base_NamedElement="_8Pe1QLIjEeCxJ7b7h4plXw" base_Property="_8Pe1QLIjEeCxJ7b7h4plXw">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
+  </dds4ccm:CXAttribute>
   <dds4ccm:ExtendedPortType xmi:id="_8P0zgbIjEeCxJ7b7h4plXw" base_Class="_8P0zgLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAAttribute xmi:id="_8P2osbIjEeCxJ7b7h4plXw" base_NamedElement="_8P2osLIjEeCxJ7b7h4plXw" base_Property="_8P2osLIjEeCxJ7b7h4plXw">
-    <setraises xmi:type="dds4ccm:CORBAException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
-  </dds4ccm:CORBAAttribute>
+  <dds4ccm:CXAttribute xmi:id="_8P2osbIjEeCxJ7b7h4plXw" base_NamedElement="_8P2osLIjEeCxJ7b7h4plXw" base_Property="_8P2osLIjEeCxJ7b7h4plXw">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
+  </dds4ccm:CXAttribute>
   <dds4ccm:ExtendedPortType xmi:id="_8QPqQbIjEeCxJ7b7h4plXw" base_Class="_8QPqQLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAAttribute xmi:id="_8QRfcbIjEeCxJ7b7h4plXw" base_NamedElement="_8QRfcLIjEeCxJ7b7h4plXw" base_Property="_8QRfcLIjEeCxJ7b7h4plXw">
-    <setraises xmi:type="dds4ccm:CORBAException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
-  </dds4ccm:CORBAAttribute>
+  <dds4ccm:CXAttribute xmi:id="_8QRfcbIjEeCxJ7b7h4plXw" base_NamedElement="_8QRfcLIjEeCxJ7b7h4plXw" base_Property="_8QRfcLIjEeCxJ7b7h4plXw">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
+  </dds4ccm:CXAttribute>
   <dds4ccm:ConnectorDef xmi:id="_8QrvILIjEeCxJ7b7h4plXw" base_Component="_8QrIELIjEeCxJ7b7h4plXw" base_NamedElement="_8QrIELIjEeCxJ7b7h4plXw"/>
   <dds4ccm:InterfacePort xmi:id="_8QuLYbIjEeCxJ7b7h4plXw" base_Port="_8QuLYLIjEeCxJ7b7h4plXw" isConjugated="true"/>
   <dds4ccm:InterfacePort xmi:id="_8Q1gIbIjEeCxJ7b7h4plXw" base_Port="_8Q1gILIjEeCxJ7b7h4plXw" isConjugated="true"/>
@@ -1415,8 +1415,8 @@
   <dds4ccm:MessageField xmi:id="_8YoxQLIjEeCxJ7b7h4plXw" base_NamedElement="_8GR18LIjEeCxJ7b7h4plXw" base_Property="_8GR18LIjEeCxJ7b7h4plXw"/>
   <dds4ccm:MessageField xmi:id="_8YpYULIjEeCxJ7b7h4plXw" base_NamedElement="_8HmroLIjEeCxJ7b7h4plXw" base_Property="_8HmroLIjEeCxJ7b7h4plXw"/>
   <dds4ccm:MessageField xmi:id="_8Yp_YLIjEeCxJ7b7h4plXw" base_NamedElement="_8HyR0LIjEeCxJ7b7h4plXw" base_Property="_8HyR0LIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAEnum xmi:id="_8YtCsbIjEeCxJ7b7h4plXw" base_NamedElement="_8FwRgLIjEeCxJ7b7h4plXw" base_Enumeration="_8FwRgLIjEeCxJ7b7h4plXw"/>
-  <dds4ccm:CORBAEnum xmi:id="_8YtCsrIjEeCxJ7b7h4plXw" base_NamedElement="_8F1xELIjEeCxJ7b7h4plXw" base_Enumeration="_8F1xELIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXEnum xmi:id="_8YtCsbIjEeCxJ7b7h4plXw" base_NamedElement="_8FwRgLIjEeCxJ7b7h4plXw" base_Enumeration="_8FwRgLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXEnum xmi:id="_8YtCsrIjEeCxJ7b7h4plXw" base_NamedElement="_8F1xELIjEeCxJ7b7h4plXw" base_Enumeration="_8F1xELIjEeCxJ7b7h4plXw"/>
   <dds4ccm:CCMComponent xmi:id="_8YuQ0LIjEeCxJ7b7h4plXw" base_Component="_8VXa0LIjEeCxJ7b7h4plXw" base_NamedElement="_8VXa0LIjEeCxJ7b7h4plXw"/>
   <dds4ccm:InterfacePort xmi:id="_8YuQ0bIjEeCxJ7b7h4plXw" base_Port="_8VcTULIjEeCxJ7b7h4plXw" hasCSL="true"/>
   <dds4ccm:CCMComponent xmi:id="_8Yu34LIjEeCxJ7b7h4plXw" base_Component="_8XcecLIjEeCxJ7b7h4plXw" base_NamedElement="_8XcecLIjEeCxJ7b7h4plXw"/>
@@ -1457,8 +1457,8 @@
   <dds4ccm:Allocation xmi:id="_F2RO8PESEeCmrON_CUz9_w" base_Dependency="_F2QA0PESEeCmrON_CUz9_w"/>
   <dds4ccm:ConnectorStatusListenerConnection xmi:id="_Msk3MHhQEeGXHYSyzkCv1Q" base_Connector="_MsZRAHhQEeGXHYSyzkCv1Q"/>
   <dds4ccm:ConnectorStatusListenerConnection xmi:id="_NRBBAHhQEeGXHYSyzkCv1Q" base_Connector="_NQ2B4HhQEeGXHYSyzkCv1Q"/>
-  <dds4ccm:CORBAModule xmi:id="_ZmUrII_yEeK6O8imdtadgA" base_NamedElement="_ZltAEI_yEeK6O8imdtadgA" base_Package="_ZltAEI_yEeK6O8imdtadgA"/>
-  <dds4ccm:CORBAModule xmi:id="_bNW6YI_yEeK6O8imdtadgA" base_NamedElement="_bNL7QI_yEeK6O8imdtadgA" base_Package="_bNL7QI_yEeK6O8imdtadgA"/>
+  <dds4ccm:CXModule xmi:id="_ZmUrII_yEeK6O8imdtadgA" base_NamedElement="_ZltAEI_yEeK6O8imdtadgA" base_Package="_ZltAEI_yEeK6O8imdtadgA"/>
+  <dds4ccm:CXModule xmi:id="_bNW6YI_yEeK6O8imdtadgA" base_NamedElement="_bNL7QI_yEeK6O8imdtadgA" base_Package="_bNL7QI_yEeK6O8imdtadgA"/>
   <dds4ccm:CCMComponent xmi:id="_mrcuUI_yEeK6O8imdtadgA" base_Component="_mrRvMI_yEeK6O8imdtadgA" base_NamedElement="_mrRvMI_yEeK6O8imdtadgA"/>
   <dds4ccm:AssemblyImplementation xmi:id="_mr-SwI_yEeK6O8imdtadgA" base_Component="_mr4MII_yEeK6O8imdtadgA" base_NamedElement="_mr4MII_yEeK6O8imdtadgA"/>
   <dds4ccm:CCMPart xmi:id="_uiQSgI_yEeK6O8imdtadgA" base_Property="_uhpOgI_yEeK6O8imdtadgA" base_NamedElement="_uhpOgI_yEeK6O8imdtadgA"/>
@@ -1660,7 +1660,7 @@
   <dds4ccm:WorkerFunctionImpl xmi:id="_RoATEJJKEeKfXYiY8kBFww" base_OpaqueBehavior="_Rn_sAJJKEeKfXYiY8kBFww"/>
   <dds4ccm:WorkerFunction xmi:id="_RoA6IJJKEeKfXYiY8kBFww" base_Operation="_RoATEZJKEeKfXYiY8kBFww" uuid="5728a2f8-4f5f-4591-ae8b-58d0d0d259de"/>
   <dds4ccm:WorkerFunctionImpl xmi:id="_RoCIQJJKEeKfXYiY8kBFww" base_OpaqueBehavior="_RoBhMJJKEeKfXYiY8kBFww"/>
-  <dds4ccm:CORBAAttribute xmi:id="_l0jqEBSuEeOVUqH-_ILRGg" base_NamedElement="_l0L2oBSuEeOVUqH-_ILRGg" base_Property="_l0L2oBSuEeOVUqH-_ILRGg"/>
+  <dds4ccm:CXAttribute xmi:id="_l0jqEBSuEeOVUqH-_ILRGg" base_NamedElement="_l0L2oBSuEeOVUqH-_ILRGg" base_Property="_l0L2oBSuEeOVUqH-_ILRGg"/>
   <dds4ccm:WorkerFunction xmi:id="_mMVQ4BSuEeOVUqH-_ILRGg" base_Operation="_mMUCwBSuEeOVUqH-_ILRGg" uuid="d30b6d9e-6313-49e1-a3a9-c0a37b4d1295"/>
   <dds4ccm:WorkerFunctionImpl xmi:id="_mMYUMBSuEeOVUqH-_ILRGg" base_OpaqueBehavior="_mMXGEBSuEeOVUqH-_ILRGg"/>
   <dds4ccm:WorkerFunction xmi:id="_mMZiUBSuEeOVUqH-_ILRGg" base_Operation="_mMYUMRSuEeOVUqH-_ILRGg" uuid="daddae66-9ae8-4659-85b9-0eaaf8f3b2e4"/>
@@ -1671,4 +1671,26 @@
   <dds4ccm:NodeInstance xmi:id="_Vv64cJQIEeOQGJeA59E6AQ" base_Property="_VvLRkJQIEeOQGJeA59E6AQ"/>
   <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_DqtPQJ5tEeWVPqnhgxQD6w" modelElement="_8VcTULIjEeCxJ7b7h4plXw" base_Property="_DqsBIJ5tEeWVPqnhgxQD6w"/>
   <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_DqyHwJ5tEeWVPqnhgxQD6w" modelElement="_8XdskLIjEeCxJ7b7h4plXw" base_Property="_DqxgsJ5tEeWVPqnhgxQD6w"/>
+  <dds4ccm:CXParameter xmi:id="_Y9CNcFXREeuDDcaV5oToUw" base_NamedElement="_8Jyc8LIjEeCxJ7b7h4plXw" base_Parameter="_8Jyc8LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9ECoFXREeuDDcaV5oToUw" base_NamedElement="_8J_RQLIjEeCxJ7b7h4plXw" base_Parameter="_8J_RQLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9EpsFXREeuDDcaV5oToUw" base_NamedElement="_8KQXALIjEeCxJ7b7h4plXw" base_Parameter="_8KQXALIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9FQwFXREeuDDcaV5oToUw" base_NamedElement="_8KZg8LIjEeCxJ7b7h4plXw" base_Parameter="_8KZg8LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9F30FXREeuDDcaV5oToUw" base_NamedElement="_8Ksb4LIjEeCxJ7b7h4plXw" base_Parameter="_8Ksb4LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9F30VXREeuDDcaV5oToUw" base_NamedElement="_8K4pILIjEeCxJ7b7h4plXw" base_Parameter="_8K4pILIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9Ge4FXREeuDDcaV5oToUw" base_NamedElement="_8LGEgLIjEeCxJ7b7h4plXw" base_Parameter="_8LGEgLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9HF8FXREeuDDcaV5oToUw" base_NamedElement="_8LOnYLIjEeCxJ7b7h4plXw" base_Parameter="_8LOnYLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9HtAFXREeuDDcaV5oToUw" base_NamedElement="_8LYYYLIjEeCxJ7b7h4plXw" base_Parameter="_8LYYYLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9HtAVXREeuDDcaV5oToUw" base_NamedElement="_8LhiULIjEeCxJ7b7h4plXw" base_Parameter="_8LhiULIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9IUEFXREeuDDcaV5oToUw" base_NamedElement="_8L4usLIjEeCxJ7b7h4plXw" base_Parameter="_8L4usLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9I7IFXREeuDDcaV5oToUw" base_NamedElement="_8ME78LIjEeCxJ7b7h4plXw" base_Parameter="_8ME78LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9JiMFXREeuDDcaV5oToUw" base_NamedElement="_8MWowLIjEeCxJ7b7h4plXw" base_Parameter="_8MWowLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9KJQFXREeuDDcaV5oToUw" base_NamedElement="_8Ml5ULIjEeCxJ7b7h4plXw" base_Parameter="_8Ml5ULIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9KJQVXREeuDDcaV5oToUw" base_NamedElement="_8NLvMLIjEeCxJ7b7h4plXw" base_Parameter="_8NLvMLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9KwUFXREeuDDcaV5oToUw" base_NamedElement="_8NXVYLIjEeCxJ7b7h4plXw" base_Parameter="_8NXVYLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9KwUVXREeuDDcaV5oToUw" base_NamedElement="_8Nn0ELIjEeCxJ7b7h4plXw" base_Parameter="_8Nn0ELIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9LXYFXREeuDDcaV5oToUw" base_NamedElement="_8N5g4LIjEeCxJ7b7h4plXw" base_Parameter="_8N5g4LIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9LXYVXREeuDDcaV5oToUw" base_NamedElement="_8OIKYLIjEeCxJ7b7h4plXw" base_Parameter="_8OIKYLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9L-cFXREeuDDcaV5oToUw" base_NamedElement="_8OTJgLIjEeCxJ7b7h4plXw" base_Parameter="_8OTJgLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9MlgFXREeuDDcaV5oToUw" base_NamedElement="_8OeIoLIjEeCxJ7b7h4plXw" base_Parameter="_8OeIoLIjEeCxJ7b7h4plXw"/>
+  <dds4ccm:CXParameter xmi:id="_Y9NzoFXREeuDDcaV5oToUw" base_NamedElement="_8OpHwLIjEeCxJ7b7h4plXw" base_Parameter="_8OpHwLIjEeCxJ7b7h4plXw"/>
 </xmi:XMI>
