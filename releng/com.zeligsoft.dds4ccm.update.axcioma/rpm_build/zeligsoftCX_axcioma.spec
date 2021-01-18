@@ -1,5 +1,5 @@
 %define ifdef()      %if %{expand:%%{?%{1}:1}%%{!?%{1}:0}}
-%define ver          2.0.0
+%define ver          2.0.1
 %define _defaultRel  0.%(date "+%y%m%d%H%M")
 %define _rpmdir      %{_projectdir}/rpm_build/
 %define _targetdir   %{_projectdir}/target
