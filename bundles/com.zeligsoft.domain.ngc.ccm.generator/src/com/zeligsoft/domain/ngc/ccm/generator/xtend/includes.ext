@@ -243,7 +243,7 @@ Void processIncludes(DDSMessage self, idl::Specification spec) :
 	self.fields.idlType.addIncludesFor(spec);
 	
 Void processDefnIncludes(ModuleInstantiation self, idl::Specification spec) :
-	self.moduleBinding.parameterBinding.type.typeSelect(DDSMessage).addIncludesFor(spec);	
+	self.moduleBinding.parameterBinding.type.typeSelect(CXStruct).addIncludesFor(spec);	
 	
 private cached Void addIncludesFor(CXModuleContained element, idl::Specification spec) :
 	addIncludesFor(element.eContainer, spec);
