@@ -528,8 +528,11 @@ cached List[uml::Slot] findDefaultSlot(CXAttribute attribute, InterfacePort port
 
 Void createConnectionsForDDS4CCMConnectorFragment(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, ExtendedPortType porttype, CCMConnector origConn) :
 	let prefix = dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).selectFirst( p | p.type == sourcePort.type).name : 
-	plan.connection.addAll(porttype.zdlAsClass().clientDependency.createDDS4CCMConnection(sourcePort, compInstance, fragmentInstance, dataSpace, prefix));
-	
+	plan.connection.addAll(porttype.zdlAsClass().clientDependency.createDDS4CCMConnection(sourcePort, compInstance, fragmentInstance, dataSpace, prefix)) ->
+	sourcePort.hasCSL ?
+		createStatusListenerConnection(plan, sourcePort, compInstance, fragmentInstance, dataSpace, origConn) :
+		{};
+			
 Void createConnectionsForDDS4CCMConnectorFragment(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, ExtendedPortType porttype, ConnectorStatusListenerConnection origConn) :
 	let prefix = dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).selectFirst( p | p.type == sourcePort.type).name : 
 	plan.connection.addAll(porttype.zdlAsClass().clientDependency.createDDS4CCMConnection(sourcePort, compInstance, fragmentInstance, dataSpace, prefix)) ->
@@ -542,8 +545,11 @@ create PlanConnectionDescription createConnectionsForDDS4CCMConnectorFragment(De
 	this.name.add(compInstance.name.first() + "." + sourcePort.name + "::" + fragmentInstance.name.first() + "." + prefix + "_" + porttype.name) ->
 	this.createEndPoint(!(sourcePort.isConjugated), false, sourcePort.name, compInstance) ->
 	this.createEndPoint((sourcePort.isConjugated), false, prefix, fragmentInstance) ->
-	plan.connection.add(this);	
-
+	plan.connection.add(this) ->	
+	sourcePort.hasCSL ?
+		createStatusListenerConnection(plan, sourcePort, compInstance, fragmentInstance, dataSpace, origConn ) :
+		{};
+		
 create PlanConnectionDescription createConnectionsForDDS4CCMConnectorFragment(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, CXInterface porttype, ConnectorStatusListenerConnection origConn) :
 	let prefix = dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).selectFirst( p | p.type == porttype).name :
 	this.name.add(compInstance.name.first() + "." + sourcePort.name + "::" + fragmentInstance.name.first() + "." + prefix + "_" + porttype.name) ->
@@ -554,6 +560,13 @@ create PlanConnectionDescription createConnectionsForDDS4CCMConnectorFragment(De
 		createStatusListenerConnection(plan, sourcePort, compInstance, fragmentInstance, dataSpace, origConn ) :
 		{};
 
+create PlanConnectionDescription createStatusListenerConnection(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, CCMConnector origConn)  :
+	let prefix = dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).selectFirst( p | p.type == porttype).name :
+	this.name.add(compInstance.name.first() + "." + sourcePort.name + "_CSL::" + fragmentInstance.name.first() + "_" + "ConnectorStatusListener") ->
+	this.createEndPoint(!(sourcePort.isConjugated), false, sourcePort.name + "_CSL", compInstance) ->
+	this.createEndPoint((sourcePort.isConjugated), false, "error_listener", fragmentInstance) ->
+	plan.connection.add(this);
+	
 create PlanConnectionDescription createStatusListenerConnection(DeploymentPlan plan, InterfacePort sourcePort, InstanceDeploymentDescription compInstance, InstanceDeploymentDescription fragmentInstance, DataSpace dataSpace, ConnectorStatusListenerConnection origConn)  :
 	let prefix = dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).selectFirst( p | p.type == porttype).name :
 	this.name.add(compInstance.name.first() + "." + sourcePort.name + "_CSL::" + fragmentInstance.name.first() + "_" + "ConnectorStatusListener") ->
