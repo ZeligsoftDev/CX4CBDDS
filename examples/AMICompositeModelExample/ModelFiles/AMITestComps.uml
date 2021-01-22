@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1 pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ">
+  <uml:Model xmi:id="_mr5_flqeEeuqofkVHzREZw" name="AMITestComps">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mr5_f1qeEeuqofkVHzREZw" source="cx.migration">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mr5_gFqeEeuqofkVHzREZw" key="version" value="2.0.1"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mr5_gVqeEeuqofkVHzREZw" key="date" value="1611092663709"/>
+    </eAnnotations>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_mr5_glqeEeuqofkVHzREZw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_DO-O0EDsEd-pwPnT_VsB_g"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_mr5_g1qeEeuqofkVHzREZw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_AMI_LIBRARIES/CCM_AMI.uml#_jkiX8J4JEd6xhoJKj1dweA"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_mr5_hFqeEeuqofkVHzREZw" name="modelConfiguration">
+      <classifier xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZML_C_Build.library.uml#_oDc5oKULEd2lg4YL0MvrHw"/>
+      <slot xmi:type="uml:Slot" xmi:id="_mr5_hVqeEeuqofkVHzREZw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZML_C_Build.library.uml#_qzbt8KULEd2lg4YL0MvrHw"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_mr5_hlqeEeuqofkVHzREZw" value="">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_mr5_h1qeEeuqofkVHzREZw" name="components">
+      <packagedElement xmi:type="uml:Package" xmi:id="_mr5_iFqeEeuqofkVHzREZw" name="AMIT">
+        <packagedElement xmi:type="uml:Package" xmi:id="_mr5_iVqeEeuqofkVHzREZw" name="Remote_comp">
+          <packagedElement xmi:type="uml:Component" xmi:id="_mr5_ilqeEeuqofkVHzREZw" name="Remote_comp">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_mr5_i1qeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.RegisterNaming">
+              <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_mr5_jFqeEeuqofkVHzREZw" name="Control1Client" visibility="public" aggregation="composite">
+              <type xmi:type="uml:Interface" href="AMITestInterfaces.uml#_mr6B5FqeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_mr5_jVqeEeuqofkVHzREZw" name="Control2Client" visibility="public" aggregation="composite">
+              <type xmi:type="uml:Interface" href="AMITestInterfaces.uml#_mr6B51qeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_mr5_jlqeEeuqofkVHzREZw" name="src">
+            <packagedElement xmi:type="uml:Component" xmi:id="_mr5_j1qeEeuqofkVHzREZw" name="RemoteImpl_comp">
+              <generalization xmi:type="uml:Generalization" xmi:id="_mr5_kFqeEeuqofkVHzREZw" general="_mr5_ilqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_kVqeEeuqofkVHzREZw" name="_configuration_completeImpl" visibility="private" specification="_mr5_uVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_klqeEeuqofkVHzREZw" name="_ccm_activateImpl" visibility="private" specification="_mr5_ulqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_k1qeEeuqofkVHzREZw" name="_ccm_passivateImpl" visibility="private" specification="_mr5_u1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_lFqeEeuqofkVHzREZw" name="_ccm_removeImpl" visibility="private" specification="_mr5_vFqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_lVqeEeuqofkVHzREZw" name="_file_header_hImpl" visibility="private" specification="_mr5_vVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_llqeEeuqofkVHzREZw" name="_file_header_cppImpl" visibility="private" specification="_mr5_vlqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_l1qeEeuqofkVHzREZw" name="_file_footer_hImpl" visibility="private" specification="_mr5_v1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_mFqeEeuqofkVHzREZw" name="_file_footer_cppImpl" visibility="private" specification="_mr5_wFqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_mVqeEeuqofkVHzREZw" name="_file_includes_hImpl" visibility="private" specification="_mr5_wVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_mlqeEeuqofkVHzREZw" name="_file_includes_cppImpl" visibility="private" specification="_mr5_wlqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_m1qeEeuqofkVHzREZw" name="_constructor_operation_implImpl" visibility="private" specification="_mr5_w1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_nFqeEeuqofkVHzREZw" name="_destructor_operation_implImpl" visibility="private" specification="_mr5_xFqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_nVqeEeuqofkVHzREZw" name="_constructor_init_listImpl" visibility="private" specification="_mr5_xVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_nlqeEeuqofkVHzREZw" name="_class_public_methods_section_declareImpl" visibility="private" specification="_mr5_xlqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_n1qeEeuqofkVHzREZw" name="_class_public_methods_section_implImpl" visibility="private" specification="_mr5_x1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_oFqeEeuqofkVHzREZw" name="_class_private_methods_section_declareImpl" visibility="private" specification="_mr5_yFqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_oVqeEeuqofkVHzREZw" name="_class_private_methods_section_implImpl" visibility="private" specification="_mr5_yVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_olqeEeuqofkVHzREZw" name="_class_private_members_section_declareImpl" visibility="private" specification="_mr5_ylqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_o1qeEeuqofkVHzREZw" name="Control1Client_fooImpl" visibility="private" specification="_mr5_y1qeEeuqofkVHzREZw">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_mr5_pFqeEeuqofkVHzREZw" name="ReturnParameter" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_pVqeEeuqofkVHzREZw" name="Control1Client_constructor_operation_implImpl" visibility="private" specification="_mr5_zVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_plqeEeuqofkVHzREZw" name="Control1Client_destructor_operation_implImpl" visibility="private" specification="_mr5_zlqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_p1qeEeuqofkVHzREZw" name="Control1Client_constructor_init_listImpl" visibility="private" specification="_mr5_z1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_qFqeEeuqofkVHzREZw" name="Control1Client_class_public_methods_section_declareImpl" visibility="private" specification="_mr5_0FqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_qVqeEeuqofkVHzREZw" name="Control1Client_class_public_methods_section_implImpl" visibility="private" specification="_mr5_0VqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_qlqeEeuqofkVHzREZw" name="Control1Client_class_private_methods_section_declareImpl" visibility="private" specification="_mr5_0lqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_q1qeEeuqofkVHzREZw" name="Control1Client_class_private_methods_section_implImpl" visibility="private" specification="_mr5_01qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_rFqeEeuqofkVHzREZw" name="Control1Client_class_private_members_section_declareImpl" visibility="private" specification="_mr5_1FqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_rVqeEeuqofkVHzREZw" name="Control2Client_barImpl" visibility="private" specification="_mr5_1VqeEeuqofkVHzREZw">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_mr5_rlqeEeuqofkVHzREZw" name="ReturnParameter" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_r1qeEeuqofkVHzREZw" name="Control2Client_constructor_operation_implImpl" visibility="private" specification="_mr5_11qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_sFqeEeuqofkVHzREZw" name="Control2Client_destructor_operation_implImpl" visibility="private" specification="_mr5_2FqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_sVqeEeuqofkVHzREZw" name="Control2Client_constructor_init_listImpl" visibility="private" specification="_mr5_2VqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_slqeEeuqofkVHzREZw" name="Control2Client_class_public_methods_section_declareImpl" visibility="private" specification="_mr5_2lqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_s1qeEeuqofkVHzREZw" name="Control2Client_class_public_methods_section_implImpl" visibility="private" specification="_mr5_21qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_tFqeEeuqofkVHzREZw" name="Control2Client_class_private_methods_section_declareImpl" visibility="private" specification="_mr5_3FqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_tVqeEeuqofkVHzREZw" name="Control2Client_class_private_methods_section_implImpl" visibility="private" specification="_mr5_3VqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_tlqeEeuqofkVHzREZw" name="Control2Client_class_private_members_section_declareImpl" visibility="private" specification="_mr5_3lqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_t1qeEeuqofkVHzREZw" name="Control1Client_foo_excepImpl" visibility="private" specification="_mr5_31qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_uFqeEeuqofkVHzREZw" name="Control2Client_bar_excepImpl" visibility="private" specification="_mr5_4FqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_uVqeEeuqofkVHzREZw" name="_configuration_complete" visibility="private" method="_mr5_kVqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_ulqeEeuqofkVHzREZw" name="_ccm_activate" visibility="private" method="_mr5_klqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_u1qeEeuqofkVHzREZw" name="_ccm_passivate" visibility="private" method="_mr5_k1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_vFqeEeuqofkVHzREZw" name="_ccm_remove" visibility="private" method="_mr5_lFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_vVqeEeuqofkVHzREZw" name="_file_header_h" visibility="private" method="_mr5_lVqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_vlqeEeuqofkVHzREZw" name="_file_header_cpp" visibility="private" method="_mr5_llqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_v1qeEeuqofkVHzREZw" name="_file_footer_h" visibility="private" method="_mr5_l1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_wFqeEeuqofkVHzREZw" name="_file_footer_cpp" visibility="private" method="_mr5_mFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_wVqeEeuqofkVHzREZw" name="_file_includes_h" visibility="private" method="_mr5_mVqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_wlqeEeuqofkVHzREZw" name="_file_includes_cpp" visibility="private" method="_mr5_mlqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_w1qeEeuqofkVHzREZw" name="_constructor_operation_impl" visibility="private" method="_mr5_m1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_xFqeEeuqofkVHzREZw" name="_destructor_operation_impl" visibility="private" method="_mr5_nFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_xVqeEeuqofkVHzREZw" name="_constructor_init_list" visibility="private" method="_mr5_nVqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_xlqeEeuqofkVHzREZw" name="_class_public_methods_section_declare" visibility="private" method="_mr5_nlqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_x1qeEeuqofkVHzREZw" name="_class_public_methods_section_impl" visibility="private" method="_mr5_n1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_yFqeEeuqofkVHzREZw" name="_class_private_methods_section_declare" visibility="private" method="_mr5_oFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_yVqeEeuqofkVHzREZw" name="_class_private_methods_section_impl" visibility="private" method="_mr5_oVqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_ylqeEeuqofkVHzREZw" name="_class_private_members_section_declare" visibility="private" method="_mr5_olqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_y1qeEeuqofkVHzREZw" name="Control1Client_foo" visibility="private" method="_mr5_o1qeEeuqofkVHzREZw">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_mr5_zFqeEeuqofkVHzREZw" name="ReturnParameter" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_zVqeEeuqofkVHzREZw" name="Control1Client_constructor_operation_impl" visibility="private" method="_mr5_pVqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_zlqeEeuqofkVHzREZw" name="Control1Client_destructor_operation_impl" visibility="private" method="_mr5_plqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_z1qeEeuqofkVHzREZw" name="Control1Client_constructor_init_list" visibility="private" method="_mr5_p1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_0FqeEeuqofkVHzREZw" name="Control1Client_class_public_methods_section_declare" visibility="private" method="_mr5_qFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_0VqeEeuqofkVHzREZw" name="Control1Client_class_public_methods_section_impl" visibility="private" method="_mr5_qVqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_0lqeEeuqofkVHzREZw" name="Control1Client_class_private_methods_section_declare" visibility="private" method="_mr5_qlqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_01qeEeuqofkVHzREZw" name="Control1Client_class_private_methods_section_impl" visibility="private" method="_mr5_q1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_1FqeEeuqofkVHzREZw" name="Control1Client_class_private_members_section_declare" visibility="private" method="_mr5_rFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_1VqeEeuqofkVHzREZw" name="Control2Client_bar" visibility="private" method="_mr5_rVqeEeuqofkVHzREZw">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_mr5_1lqeEeuqofkVHzREZw" name="ReturnParameter" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_11qeEeuqofkVHzREZw" name="Control2Client_constructor_operation_impl" visibility="private" method="_mr5_r1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_2FqeEeuqofkVHzREZw" name="Control2Client_destructor_operation_impl" visibility="private" method="_mr5_sFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_2VqeEeuqofkVHzREZw" name="Control2Client_constructor_init_list" visibility="private" method="_mr5_sVqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_2lqeEeuqofkVHzREZw" name="Control2Client_class_public_methods_section_declare" visibility="private" method="_mr5_slqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_21qeEeuqofkVHzREZw" name="Control2Client_class_public_methods_section_impl" visibility="private" method="_mr5_s1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_3FqeEeuqofkVHzREZw" name="Control2Client_class_private_methods_section_declare" visibility="private" method="_mr5_tFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_3VqeEeuqofkVHzREZw" name="Control2Client_class_private_methods_section_impl" visibility="private" method="_mr5_tVqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_3lqeEeuqofkVHzREZw" name="Control2Client_class_private_members_section_declare" visibility="private" method="_mr5_tlqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_31qeEeuqofkVHzREZw" name="Control1Client_foo_excep" visibility="private" method="_mr5_t1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr5_4FqeEeuqofkVHzREZw" name="Control2Client_bar_excep" visibility="private" method="_mr5_uFqeEeuqofkVHzREZw"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_mr5_4VqeEeuqofkVHzREZw" name="Server_comp">
+          <packagedElement xmi:type="uml:Component" xmi:id="_mr5_4lqeEeuqofkVHzREZw" name="Server_comp">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_mr5_41qeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.RegisterNaming">
+              <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_mr5_5FqeEeuqofkVHzREZw" name="Control1Server" visibility="public" aggregation="composite">
+              <type xmi:type="uml:Interface" href="AMITestInterfaces.uml#_mr6B5FqeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_mr5_5VqeEeuqofkVHzREZw" name="Control2Server" visibility="public" aggregation="composite">
+              <type xmi:type="uml:Interface" href="AMITestInterfaces.uml#_mr6B51qeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_mr5_5lqeEeuqofkVHzREZw" name="src">
+            <packagedElement xmi:type="uml:Component" xmi:id="_mr5_51qeEeuqofkVHzREZw" name="ServerImpl_comp">
+              <generalization xmi:type="uml:Generalization" xmi:id="_mr5_6FqeEeuqofkVHzREZw" general="_mr5_4lqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_6VqeEeuqofkVHzREZw" name="_configuration_completeImpl" visibility="private" specification="_mr6AD1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_6lqeEeuqofkVHzREZw" name="_ccm_activateImpl" visibility="private" specification="_mr6AEFqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_61qeEeuqofkVHzREZw" name="_ccm_passivateImpl" visibility="private" specification="_mr6AEVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_7FqeEeuqofkVHzREZw" name="_ccm_removeImpl" visibility="private" specification="_mr6AElqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_7VqeEeuqofkVHzREZw" name="_file_header_hImpl" visibility="private" specification="_mr6AE1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_7lqeEeuqofkVHzREZw" name="_file_header_cppImpl" visibility="private" specification="_mr6AFFqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_71qeEeuqofkVHzREZw" name="_file_footer_hImpl" visibility="private" specification="_mr6AFVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_8FqeEeuqofkVHzREZw" name="_file_footer_cppImpl" visibility="private" specification="_mr6AFlqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_8VqeEeuqofkVHzREZw" name="_file_includes_hImpl" visibility="private" specification="_mr6AF1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_8lqeEeuqofkVHzREZw" name="_file_includes_cppImpl" visibility="private" specification="_mr6AGFqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_81qeEeuqofkVHzREZw" name="_constructor_operation_implImpl" visibility="private" specification="_mr6AGVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_9FqeEeuqofkVHzREZw" name="_destructor_operation_implImpl" visibility="private" specification="_mr6AGlqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_9VqeEeuqofkVHzREZw" name="_constructor_init_listImpl" visibility="private" specification="_mr6AG1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_9lqeEeuqofkVHzREZw" name="_class_public_methods_section_declareImpl" visibility="private" specification="_mr6AHFqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_91qeEeuqofkVHzREZw" name="_class_public_methods_section_implImpl" visibility="private" specification="_mr6AHVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_-FqeEeuqofkVHzREZw" name="_class_private_methods_section_declareImpl" visibility="private" specification="_mr6AHlqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_-VqeEeuqofkVHzREZw" name="_class_private_methods_section_implImpl" visibility="private" specification="_mr6AH1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_-lqeEeuqofkVHzREZw" name="_class_private_members_section_declareImpl" visibility="private" specification="_mr6AIFqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5_-1qeEeuqofkVHzREZw" name="Control1Server_fooImpl" visibility="private" specification="_mr6AIVqeEeuqofkVHzREZw">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_mr5__FqeEeuqofkVHzREZw" name="ReturnParameter" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5__VqeEeuqofkVHzREZw" name="Control1Server_constructor_operation_implImpl" visibility="private" specification="_mr6AI1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5__lqeEeuqofkVHzREZw" name="Control1Server_destructor_operation_implImpl" visibility="private" specification="_mr6AJFqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr5__1qeEeuqofkVHzREZw" name="Control1Server_constructor_init_listImpl" visibility="private" specification="_mr6AJVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6AAFqeEeuqofkVHzREZw" name="Control1Server_class_public_methods_section_declareImpl" visibility="private" specification="_mr6AJlqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6AAVqeEeuqofkVHzREZw" name="Control1Server_class_public_methods_section_implImpl" visibility="private" specification="_mr6AJ1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6AAlqeEeuqofkVHzREZw" name="Control1Server_class_private_methods_section_declareImpl" visibility="private" specification="_mr6AKFqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6AA1qeEeuqofkVHzREZw" name="Control1Server_class_private_methods_section_implImpl" visibility="private" specification="_mr6AKVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6ABFqeEeuqofkVHzREZw" name="Control1Server_class_private_members_section_declareImpl" visibility="private" specification="_mr6AKlqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6ABVqeEeuqofkVHzREZw" name="Control2Server_barImpl" visibility="private" specification="_mr6AK1qeEeuqofkVHzREZw">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_mr6ABlqeEeuqofkVHzREZw" name="ReturnParameter" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6AB1qeEeuqofkVHzREZw" name="Control2Server_constructor_operation_implImpl" visibility="private" specification="_mr6ALVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6ACFqeEeuqofkVHzREZw" name="Control2Server_destructor_operation_implImpl" visibility="private" specification="_mr6ALlqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6ACVqeEeuqofkVHzREZw" name="Control2Server_constructor_init_listImpl" visibility="private" specification="_mr6AL1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6AClqeEeuqofkVHzREZw" name="Control2Server_class_public_methods_section_declareImpl" visibility="private" specification="_mr6AMFqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6AC1qeEeuqofkVHzREZw" name="Control2Server_class_public_methods_section_implImpl" visibility="private" specification="_mr6AMVqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6ADFqeEeuqofkVHzREZw" name="Control2Server_class_private_methods_section_declareImpl" visibility="private" specification="_mr6AMlqeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6ADVqeEeuqofkVHzREZw" name="Control2Server_class_private_methods_section_implImpl" visibility="private" specification="_mr6AM1qeEeuqofkVHzREZw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_mr6ADlqeEeuqofkVHzREZw" name="Control2Server_class_private_members_section_declareImpl" visibility="private" specification="_mr6ANFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AD1qeEeuqofkVHzREZw" name="_configuration_complete" visibility="private" method="_mr5_6VqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AEFqeEeuqofkVHzREZw" name="_ccm_activate" visibility="private" method="_mr5_6lqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AEVqeEeuqofkVHzREZw" name="_ccm_passivate" visibility="private" method="_mr5_61qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AElqeEeuqofkVHzREZw" name="_ccm_remove" visibility="private" method="_mr5_7FqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AE1qeEeuqofkVHzREZw" name="_file_header_h" visibility="private" method="_mr5_7VqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AFFqeEeuqofkVHzREZw" name="_file_header_cpp" visibility="private" method="_mr5_7lqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AFVqeEeuqofkVHzREZw" name="_file_footer_h" visibility="private" method="_mr5_71qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AFlqeEeuqofkVHzREZw" name="_file_footer_cpp" visibility="private" method="_mr5_8FqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AF1qeEeuqofkVHzREZw" name="_file_includes_h" visibility="private" method="_mr5_8VqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AGFqeEeuqofkVHzREZw" name="_file_includes_cpp" visibility="private" method="_mr5_8lqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AGVqeEeuqofkVHzREZw" name="_constructor_operation_impl" visibility="private" method="_mr5_81qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AGlqeEeuqofkVHzREZw" name="_destructor_operation_impl" visibility="private" method="_mr5_9FqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AG1qeEeuqofkVHzREZw" name="_constructor_init_list" visibility="private" method="_mr5_9VqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AHFqeEeuqofkVHzREZw" name="_class_public_methods_section_declare" visibility="private" method="_mr5_9lqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AHVqeEeuqofkVHzREZw" name="_class_public_methods_section_impl" visibility="private" method="_mr5_91qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AHlqeEeuqofkVHzREZw" name="_class_private_methods_section_declare" visibility="private" method="_mr5_-FqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AH1qeEeuqofkVHzREZw" name="_class_private_methods_section_impl" visibility="private" method="_mr5_-VqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AIFqeEeuqofkVHzREZw" name="_class_private_members_section_declare" visibility="private" method="_mr5_-lqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AIVqeEeuqofkVHzREZw" name="Control1Server_foo" visibility="private" method="_mr5_-1qeEeuqofkVHzREZw">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_mr6AIlqeEeuqofkVHzREZw" name="ReturnParameter" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AI1qeEeuqofkVHzREZw" name="Control1Server_constructor_operation_impl" visibility="private" method="_mr5__VqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AJFqeEeuqofkVHzREZw" name="Control1Server_destructor_operation_impl" visibility="private" method="_mr5__lqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AJVqeEeuqofkVHzREZw" name="Control1Server_constructor_init_list" visibility="private" method="_mr5__1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AJlqeEeuqofkVHzREZw" name="Control1Server_class_public_methods_section_declare" visibility="private" method="_mr6AAFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AJ1qeEeuqofkVHzREZw" name="Control1Server_class_public_methods_section_impl" visibility="private" method="_mr6AAVqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AKFqeEeuqofkVHzREZw" name="Control1Server_class_private_methods_section_declare" visibility="private" method="_mr6AAlqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AKVqeEeuqofkVHzREZw" name="Control1Server_class_private_methods_section_impl" visibility="private" method="_mr6AA1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AKlqeEeuqofkVHzREZw" name="Control1Server_class_private_members_section_declare" visibility="private" method="_mr6ABFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AK1qeEeuqofkVHzREZw" name="Control2Server_bar" visibility="private" method="_mr6ABVqeEeuqofkVHzREZw">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_mr6ALFqeEeuqofkVHzREZw" name="ReturnParameter" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6ALVqeEeuqofkVHzREZw" name="Control2Server_constructor_operation_impl" visibility="private" method="_mr6AB1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6ALlqeEeuqofkVHzREZw" name="Control2Server_destructor_operation_impl" visibility="private" method="_mr6ACFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AL1qeEeuqofkVHzREZw" name="Control2Server_constructor_init_list" visibility="private" method="_mr6ACVqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AMFqeEeuqofkVHzREZw" name="Control2Server_class_public_methods_section_declare" visibility="private" method="_mr6AClqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AMVqeEeuqofkVHzREZw" name="Control2Server_class_public_methods_section_impl" visibility="private" method="_mr6AC1qeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AMlqeEeuqofkVHzREZw" name="Control2Server_class_private_methods_section_declare" visibility="private" method="_mr6ADFqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6AM1qeEeuqofkVHzREZw" name="Control2Server_class_private_methods_section_impl" visibility="private" method="_mr6ADVqeEeuqofkVHzREZw"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_mr6ANFqeEeuqofkVHzREZw" name="Control2Server_class_private_members_section_declare" visibility="private" method="_mr6ADlqeEeuqofkVHzREZw"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_mr6ANVqeEeuqofkVHzREZw" name="assemblies">
+      <packagedElement xmi:type="uml:Package" xmi:id="_mr6ANlqeEeuqofkVHzREZw" name="AMIT_Test_asm">
+        <packagedElement xmi:type="uml:Component" xmi:id="_mr6AN1qeEeuqofkVHzREZw" name="AMIT_Test_asm"/>
+        <packagedElement xmi:type="uml:Component" xmi:id="_mr6AOFqeEeuqofkVHzREZw" name="AMIT_Test_asm">
+          <generalization xmi:type="uml:Generalization" xmi:id="_mr6AOVqeEeuqofkVHzREZw" general="_mr6AN1qeEeuqofkVHzREZw"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AOlqeEeuqofkVHzREZw" name="Remote_comp" visibility="private" type="_mr5_ilqeEeuqofkVHzREZw" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AO1qeEeuqofkVHzREZw" name="Server_comp" visibility="private" type="_mr5_4lqeEeuqofkVHzREZw" aggregation="composite"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6APFqeEeuqofkVHzREZw" name="Local_comp" visibility="private" aggregation="composite">
+            <type xmi:type="uml:Component" href="AMITestInterfaces.uml#_mr6B7VqeEeuqofkVHzREZw"/>
+          </ownedAttribute>
+          <ownedConnector xmi:type="uml:Connector" xmi:id="_mr6APVqeEeuqofkVHzREZw" name="">
+            <end xmi:type="uml:ConnectorEnd" xmi:id="_mr6APlqeEeuqofkVHzREZw" partWithPort="_mr6AOlqeEeuqofkVHzREZw" role="_mr5_jFqeEeuqofkVHzREZw"/>
+            <end xmi:type="uml:ConnectorEnd" xmi:id="_mr6AP1qeEeuqofkVHzREZw" partWithPort="_mr6AO1qeEeuqofkVHzREZw" role="_mr5_5FqeEeuqofkVHzREZw"/>
+          </ownedConnector>
+          <ownedConnector xmi:type="uml:Connector" xmi:id="_mr6AQFqeEeuqofkVHzREZw" name="">
+            <end xmi:type="uml:ConnectorEnd" xmi:id="_mr6AQVqeEeuqofkVHzREZw" partWithPort="_mr6APFqeEeuqofkVHzREZw">
+              <role xmi:type="uml:Port" href="AMITestInterfaces.uml#_mr6B71qeEeuqofkVHzREZw"/>
+            </end>
+            <end xmi:type="uml:ConnectorEnd" xmi:id="_mr6AQlqeEeuqofkVHzREZw" partWithPort="_mr6AO1qeEeuqofkVHzREZw" role="_mr5_5FqeEeuqofkVHzREZw"/>
+          </ownedConnector>
+          <ownedConnector xmi:type="uml:Connector" xmi:id="_mr6AQ1qeEeuqofkVHzREZw" name="">
+            <end xmi:type="uml:ConnectorEnd" xmi:id="_mr6ARFqeEeuqofkVHzREZw" partWithPort="_mr6AOlqeEeuqofkVHzREZw" role="_mr5_jVqeEeuqofkVHzREZw"/>
+            <end xmi:type="uml:ConnectorEnd" xmi:id="_mr6ARVqeEeuqofkVHzREZw" partWithPort="_mr6AO1qeEeuqofkVHzREZw" role="_mr5_5VqeEeuqofkVHzREZw"/>
+          </ownedConnector>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_mr6ARlqeEeuqofkVHzREZw" name="Deployment">
+          <packagedElement xmi:type="uml:Package" xmi:id="_mr6AR1qeEeuqofkVHzREZw" name="descriptors">
+            <packagedElement xmi:type="uml:Package" xmi:id="_mr6ASFqeEeuqofkVHzREZw" name="Types">
+              <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mr6ASVqeEeuqofkVHzREZw" source="zcx">
+                <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mr6ASlqeEeuqofkVHzREZw" key="generatedir" value="false"/>
+              </eAnnotations>
+              <packagedElement xmi:type="uml:Component" xmi:id="_mr6AS1qeEeuqofkVHzREZw" name="ContainerProcess">
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6ATFqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6ATVqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6ATlqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityArguments">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                </ownedAttribute>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Component" xmi:id="_mr6AT1qeEeuqofkVHzREZw" name="Node">
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AUFqeEeuqofkVHzREZw" name="resourceProperty" type="_mr6AXFqeEeuqofkVHzREZw"/>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AUVqeEeuqofkVHzREZw" name="_defaultInstance">
+                  <defaultValue xmi:type="uml:InstanceValue" xmi:id="_mr6AUlqeEeuqofkVHzREZw" instance="_mr6AVFqeEeuqofkVHzREZw"/>
+                </ownedAttribute>
+                <packagedElement xmi:type="uml:Package" xmi:id="_mr6AU1qeEeuqofkVHzREZw" name="_Node">
+                  <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_mr6AVFqeEeuqofkVHzREZw" name="NodeInstance" classifier="_mr6AT1qeEeuqofkVHzREZw">
+                    <slot xmi:type="uml:Slot" xmi:id="_mr6AVVqeEeuqofkVHzREZw" definingFeature="_mr6AUFqeEeuqofkVHzREZw">
+                      <value xmi:type="uml:InstanceValue" xmi:id="_mr6AVlqeEeuqofkVHzREZw" instance="_mr6AV1qeEeuqofkVHzREZw"/>
+                    </slot>
+                  </packagedElement>
+                  <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_mr6AV1qeEeuqofkVHzREZw" name="NodeAddressInstance" classifier="_mr6AXFqeEeuqofkVHzREZw">
+                    <slot xmi:type="uml:Slot" xmi:id="_mr6AWFqeEeuqofkVHzREZw" definingFeature="_mr6AXVqeEeuqofkVHzREZw">
+                      <value xmi:type="uml:InstanceValue" xmi:id="_mr6AWVqeEeuqofkVHzREZw" instance="_mr6AWlqeEeuqofkVHzREZw"/>
+                    </slot>
+                  </packagedElement>
+                  <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_mr6AWlqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.StringIORInstance">
+                    <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                    <specification xmi:type="uml:LiteralString" xmi:id="_mr6AW1qeEeuqofkVHzREZw" value="corbaloc:iiop:localhost:60070"/>
+                  </packagedElement>
+                </packagedElement>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_mr6AXFqeEeuqofkVHzREZw" name="NodeAddress">
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AXVqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.StringIOR">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                </ownedAttribute>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Component" xmi:id="_mr6AXlqeEeuqofkVHzREZw" name="AMITDomain">
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AX1qeEeuqofkVHzREZw" name="TestNode" visibility="private" type="_mr6AT1qeEeuqofkVHzREZw" aggregation="composite"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Component" xmi:id="_mr6AYFqeEeuqofkVHzREZw" name="AMIT">
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AYVqeEeuqofkVHzREZw" name="AMITDomain" type="_mr6AXlqeEeuqofkVHzREZw"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AYlqeEeuqofkVHzREZw" name="TestNode" type="_mr6AT1qeEeuqofkVHzREZw"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AY1qeEeuqofkVHzREZw" name="Client_proc" type="_mr6AS1qeEeuqofkVHzREZw"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AZFqeEeuqofkVHzREZw" name="Server_proc" type="_mr6AS1qeEeuqofkVHzREZw"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AZVqeEeuqofkVHzREZw" name="AMIT_Test_asm" type="_mr6AN1qeEeuqofkVHzREZw"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AZlqeEeuqofkVHzREZw" name="Remote_comp" type="_mr5_ilqeEeuqofkVHzREZw"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AZ1qeEeuqofkVHzREZw" name="Server_comp" type="_mr5_4lqeEeuqofkVHzREZw"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AaFqeEeuqofkVHzREZw" name="Local_comp">
+                <type xmi:type="uml:Component" href="AMITestInterfaces.uml#_mr6B7VqeEeuqofkVHzREZw"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AaVqeEeuqofkVHzREZw" name="Control1Client">
+                <type xmi:type="uml:Interface" href="AMITestInterfaces.uml#_mr6B5FqeEeuqofkVHzREZw"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AalqeEeuqofkVHzREZw" name="Control2Client">
+                <type xmi:type="uml:Interface" href="AMITestInterfaces.uml#_mr6B51qeEeuqofkVHzREZw"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6Aa1qeEeuqofkVHzREZw" name="Control1Server">
+                <type xmi:type="uml:Interface" href="AMITestInterfaces.uml#_mr6B5FqeEeuqofkVHzREZw"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AbFqeEeuqofkVHzREZw" name="Control2Server">
+                <type xmi:type="uml:Interface" href="AMITestInterfaces.uml#_mr6B51qeEeuqofkVHzREZw"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mr6AbVqeEeuqofkVHzREZw" name="Control1Client1">
+                <type xmi:type="uml:Interface" href="AMITestInterfaces.uml#_mr6B5FqeEeuqofkVHzREZw"/>
+              </ownedAttribute>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_mr6AblqeEeuqofkVHzREZw" client="_mr6AY1qeEeuqofkVHzREZw" supplier="_mr6AYlqeEeuqofkVHzREZw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_mr6Ab1qeEeuqofkVHzREZw" client="_mr6AZFqeEeuqofkVHzREZw" supplier="_mr6AYlqeEeuqofkVHzREZw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_mr6AcFqeEeuqofkVHzREZw" client="_mr6AaFqeEeuqofkVHzREZw" supplier="_mr6AY1qeEeuqofkVHzREZw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_mr6AcVqeEeuqofkVHzREZw" client="_mr6AZlqeEeuqofkVHzREZw" supplier="_mr6AY1qeEeuqofkVHzREZw"/>
+              <packagedElement xmi:type="uml:Dependency" xmi:id="_mr6AclqeEeuqofkVHzREZw" client="_mr6AZ1qeEeuqofkVHzREZw" supplier="_mr6AZFqeEeuqofkVHzREZw"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_mr6Ac1qeEeuqofkVHzREZw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mr6AdFqeEeuqofkVHzREZw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_mr6AdVqeEeuqofkVHzREZw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mr6AdlqeEeuqofkVHzREZw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KssEDZEd-LnsQ685SqSQ"/>
+    </profileApplication>
+  </uml:Model>
+  <dds4ccm:DDS4CCMModel xmi:id="_mr6Ad1qeEeuqofkVHzREZw" base_Model="_mr5_flqeEeuqofkVHzREZw" base_NamedElement="_mr5_flqeEeuqofkVHzREZw"/>
+  <dds4ccm:CXModule xmi:id="_mr6AeFqeEeuqofkVHzREZw" base_NamedElement="_mr5_iFqeEeuqofkVHzREZw" base_Package="_mr5_iFqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMComponent xmi:id="_mr6AeVqeEeuqofkVHzREZw" base_Component="_mr5_ilqeEeuqofkVHzREZw" base_NamedElement="_mr5_ilqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_mr6AelqeEeuqofkVHzREZw" base_NamedElement="_mr5_i1qeEeuqofkVHzREZw" base_Property="_mr5_i1qeEeuqofkVHzREZw"/>
+  <dds4ccm:MonolithicImplementation xmi:id="_mr6Ae1qeEeuqofkVHzREZw" base_Component="_mr5_j1qeEeuqofkVHzREZw" base_NamedElement="_mr5_j1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AfFqeEeuqofkVHzREZw" base_Operation="_mr5_uVqeEeuqofkVHzREZw" uuid="1eb76e15-b7dc-42b8-bf2b-4c3a024fb4a9"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AfVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_kVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AflqeEeuqofkVHzREZw" base_Operation="_mr5_ulqeEeuqofkVHzREZw" uuid="f50b2156-5f6a-4163-a3e6-9ee2577c3ab2"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Af1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_klqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AgFqeEeuqofkVHzREZw" base_Operation="_mr5_u1qeEeuqofkVHzREZw" uuid="b677f972-deb8-42fa-957a-496b294f0cae"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AgVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_k1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AglqeEeuqofkVHzREZw" base_Operation="_mr5_vFqeEeuqofkVHzREZw" uuid="304b2a46-87ae-431d-bcbe-f0f11040a95d"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Ag1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_lFqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AhFqeEeuqofkVHzREZw" base_Operation="_mr5_vVqeEeuqofkVHzREZw" uuid="c2a7dfd3-e991-406b-8fc1-fb8b23a72356"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AhVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_lVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AhlqeEeuqofkVHzREZw" base_Operation="_mr5_vlqeEeuqofkVHzREZw" uuid="4dd8de04-f912-4329-b3a2-055807d4d7c8"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Ah1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_llqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AiFqeEeuqofkVHzREZw" base_Operation="_mr5_v1qeEeuqofkVHzREZw" uuid="2b956bdc-fbd6-4c7d-9b76-3b34ded34b4b"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AiVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_l1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AilqeEeuqofkVHzREZw" base_Operation="_mr5_wFqeEeuqofkVHzREZw" uuid="3077e434-650b-4d49-9559-b33f952d1d0c"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Ai1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_mFqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AjFqeEeuqofkVHzREZw" base_Operation="_mr5_wVqeEeuqofkVHzREZw" uuid="ba5a4541-2201-432a-8826-63003a41f13a"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AjVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_mVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AjlqeEeuqofkVHzREZw" base_Operation="_mr5_wlqeEeuqofkVHzREZw" uuid="bc786e2f-0c81-4ec8-9893-1c9b2984f9a0"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Aj1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_mlqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AkFqeEeuqofkVHzREZw" base_Operation="_mr5_w1qeEeuqofkVHzREZw" uuid="d98268a3-a955-44ff-bc60-cd7f33010bec"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AkVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_m1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AklqeEeuqofkVHzREZw" base_Operation="_mr5_xFqeEeuqofkVHzREZw" uuid="7bc7fe70-d7c4-4e18-8a91-f7502943618c"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Ak1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_nFqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AlFqeEeuqofkVHzREZw" base_Operation="_mr5_xVqeEeuqofkVHzREZw" uuid="77b68cb9-6f5c-403d-920e-a444f915e86f"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AlVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_nVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AllqeEeuqofkVHzREZw" base_Operation="_mr5_xlqeEeuqofkVHzREZw" uuid="28bae16b-e515-4484-a6fa-cd5acc414fd7"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Al1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_nlqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AmFqeEeuqofkVHzREZw" base_Operation="_mr5_x1qeEeuqofkVHzREZw" uuid="3d324089-b70d-43d6-8ee2-875fdca2f85b"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AmVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_n1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AmlqeEeuqofkVHzREZw" base_Operation="_mr5_yFqeEeuqofkVHzREZw" uuid="1558d15a-901b-4176-9b5e-ebcda5916fd4"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Am1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_oFqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AnFqeEeuqofkVHzREZw" base_Operation="_mr5_yVqeEeuqofkVHzREZw" uuid="59ee7350-7348-46a7-8958-f87fccfc6f87"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AnVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_oVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AnlqeEeuqofkVHzREZw" base_Operation="_mr5_ylqeEeuqofkVHzREZw" uuid="ad8baab7-2c29-4f30-adfe-1d86f09929c5"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6An1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_olqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMComponent xmi:id="_mr6AoFqeEeuqofkVHzREZw" base_Component="_mr6AN1qeEeuqofkVHzREZw" base_NamedElement="_mr6AN1qeEeuqofkVHzREZw"/>
+  <dds4ccm:AssemblyImplementation xmi:id="_mr6AoVqeEeuqofkVHzREZw" base_Component="_mr6AOFqeEeuqofkVHzREZw" base_NamedElement="_mr6AOFqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMPart xmi:id="_mr6AolqeEeuqofkVHzREZw" base_Property="_mr6AOlqeEeuqofkVHzREZw" base_NamedElement="_mr6AOlqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMComponent xmi:id="_mr6Ao1qeEeuqofkVHzREZw" base_Component="_mr5_4lqeEeuqofkVHzREZw" base_NamedElement="_mr5_4lqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_mr6ApFqeEeuqofkVHzREZw" base_NamedElement="_mr5_41qeEeuqofkVHzREZw" base_Property="_mr5_41qeEeuqofkVHzREZw"/>
+  <dds4ccm:MonolithicImplementation xmi:id="_mr6ApVqeEeuqofkVHzREZw" base_Component="_mr5_51qeEeuqofkVHzREZw" base_NamedElement="_mr5_51qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AplqeEeuqofkVHzREZw" base_Operation="_mr6AD1qeEeuqofkVHzREZw" uuid="c4f8ff93-13da-4cb0-9ebe-93cbbc71b7b6"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Ap1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_6VqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AqFqeEeuqofkVHzREZw" base_Operation="_mr6AEFqeEeuqofkVHzREZw" uuid="50f64b71-b906-4ff2-860c-35d606f8cd63"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AqVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_6lqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AqlqeEeuqofkVHzREZw" base_Operation="_mr6AEVqeEeuqofkVHzREZw" uuid="3ec09a5f-dde3-4753-916f-679f87df25b2"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Aq1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_61qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6ArFqeEeuqofkVHzREZw" base_Operation="_mr6AElqeEeuqofkVHzREZw" uuid="bcb11fae-c01f-496c-aafc-72deaf91a6d8"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6ArVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_7FqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6ArlqeEeuqofkVHzREZw" base_Operation="_mr6AE1qeEeuqofkVHzREZw" uuid="3c91c11e-3f2f-47a0-a64f-734a2f9edb08"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Ar1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_7VqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AsFqeEeuqofkVHzREZw" base_Operation="_mr6AFFqeEeuqofkVHzREZw" uuid="0456f9e7-b787-4dd0-a2f5-52b459760168"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AsVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_7lqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AslqeEeuqofkVHzREZw" base_Operation="_mr6AFVqeEeuqofkVHzREZw" uuid="cde0c5a2-8253-4d1f-8bef-76f277039ab4"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6As1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_71qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AtFqeEeuqofkVHzREZw" base_Operation="_mr6AFlqeEeuqofkVHzREZw" uuid="5317313a-7227-4d9c-a1f9-f65bae09de90"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AtVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_8FqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AtlqeEeuqofkVHzREZw" base_Operation="_mr6AF1qeEeuqofkVHzREZw" uuid="7667c9e6-d3cd-4bee-a682-d0f1c777179c"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6At1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_8VqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AuFqeEeuqofkVHzREZw" base_Operation="_mr6AGFqeEeuqofkVHzREZw" uuid="df938eb5-560c-44ae-a9b2-40c9b2809577"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AuVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_8lqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AulqeEeuqofkVHzREZw" base_Operation="_mr6AGVqeEeuqofkVHzREZw" uuid="e7ea79ee-d22b-4a40-acaf-15eb4d8e52bf"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Au1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_81qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AvFqeEeuqofkVHzREZw" base_Operation="_mr6AGlqeEeuqofkVHzREZw" uuid="a195e666-4452-49f5-bc5b-eefd999537fc"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AvVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_9FqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AvlqeEeuqofkVHzREZw" base_Operation="_mr6AG1qeEeuqofkVHzREZw" uuid="2d439afe-6732-4568-870b-65a074fdf159"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Av1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_9VqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AwFqeEeuqofkVHzREZw" base_Operation="_mr6AHFqeEeuqofkVHzREZw" uuid="d2a0f853-3729-4546-815f-ca7ad93b5537"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AwVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_9lqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AwlqeEeuqofkVHzREZw" base_Operation="_mr6AHVqeEeuqofkVHzREZw" uuid="d4787e3b-4ea8-4599-80a1-617d14ee4e6c"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Aw1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_91qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AxFqeEeuqofkVHzREZw" base_Operation="_mr6AHlqeEeuqofkVHzREZw" uuid="e05536a1-bec6-4838-8ea7-db2b1d9bac63"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AxVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_-FqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AxlqeEeuqofkVHzREZw" base_Operation="_mr6AH1qeEeuqofkVHzREZw" uuid="c1289a9c-7fdf-4518-b698-d6be941358ed"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6Ax1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_-VqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6AyFqeEeuqofkVHzREZw" base_Operation="_mr6AIFqeEeuqofkVHzREZw" uuid="b5cb813d-7c9e-4dc7-9541-66fa036f453b"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6AyVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_-lqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMPart xmi:id="_mr6AylqeEeuqofkVHzREZw" base_Property="_mr6AO1qeEeuqofkVHzREZw" base_NamedElement="_mr6AO1qeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMPart xmi:id="_mr6Ay1qeEeuqofkVHzREZw" base_Property="_mr6APFqeEeuqofkVHzREZw" base_NamedElement="_mr6APFqeEeuqofkVHzREZw"/>
+  <dds4ccm:InterfacePort xmi:id="_mr6AzFqeEeuqofkVHzREZw" base_Port="_mr5_jFqeEeuqofkVHzREZw" isConjugated="true" isAsynchronous="true"/>
+  <dds4ccm:InterfacePort xmi:id="_mr6AzVqeEeuqofkVHzREZw" base_Port="_mr5_jVqeEeuqofkVHzREZw" isConjugated="true" isAsynchronous="true"/>
+  <dds4ccm:InterfacePort xmi:id="_mr6AzlqeEeuqofkVHzREZw" base_Port="_mr5_5FqeEeuqofkVHzREZw"/>
+  <dds4ccm:InterfacePort xmi:id="_mr6Az1qeEeuqofkVHzREZw" base_Port="_mr5_5VqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A0FqeEeuqofkVHzREZw" receivingPort="_mr6AzFqeEeuqofkVHzREZw" base_Operation="_mr5_y1qeEeuqofkVHzREZw" uuid="353bfa45-14b7-427e-bb10-8270a47b6a7a">
+    <portOperation xmi:type="uml:Operation" href="AMITestInterfaces.uml#_mr6B5VqeEeuqofkVHzREZw"/>
+  </dds4ccm:WorkerFunction>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A0VqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_o1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A0lqeEeuqofkVHzREZw" receivingPort="_mr6AzFqeEeuqofkVHzREZw" base_Operation="_mr5_zVqeEeuqofkVHzREZw" uuid="0ccc43bb-9bf3-4ff2-b19a-485d1372cc9a"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A01qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_pVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A1FqeEeuqofkVHzREZw" receivingPort="_mr6AzFqeEeuqofkVHzREZw" base_Operation="_mr5_zlqeEeuqofkVHzREZw" uuid="ce5221e1-30be-4c67-8ccf-63e319ffa1c0"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A1VqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_plqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A1lqeEeuqofkVHzREZw" receivingPort="_mr6AzFqeEeuqofkVHzREZw" base_Operation="_mr5_z1qeEeuqofkVHzREZw" uuid="51fdcc0d-ce33-4071-8ef7-824236d51f17"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A11qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_p1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A2FqeEeuqofkVHzREZw" receivingPort="_mr6AzFqeEeuqofkVHzREZw" base_Operation="_mr5_0FqeEeuqofkVHzREZw" uuid="4e93169a-9565-4002-9e8d-aff240f34ea5"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A2VqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_qFqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A2lqeEeuqofkVHzREZw" receivingPort="_mr6AzFqeEeuqofkVHzREZw" base_Operation="_mr5_0VqeEeuqofkVHzREZw" uuid="45501c48-4fe7-47aa-88be-9b3a92985d28"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A21qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_qVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A3FqeEeuqofkVHzREZw" receivingPort="_mr6AzFqeEeuqofkVHzREZw" base_Operation="_mr5_0lqeEeuqofkVHzREZw" uuid="d684630f-7199-45e1-ab4c-ff55c25aafdd"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A3VqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_qlqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A3lqeEeuqofkVHzREZw" receivingPort="_mr6AzFqeEeuqofkVHzREZw" base_Operation="_mr5_01qeEeuqofkVHzREZw" uuid="02644166-bc45-482d-aeee-6185cd56cab9"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A31qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_q1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A4FqeEeuqofkVHzREZw" receivingPort="_mr6AzFqeEeuqofkVHzREZw" base_Operation="_mr5_1FqeEeuqofkVHzREZw" uuid="824e6d52-fe8b-4b92-aaf9-a0800c55c284"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A4VqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_rFqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A4lqeEeuqofkVHzREZw" receivingPort="_mr6AzlqeEeuqofkVHzREZw" base_Operation="_mr6AIVqeEeuqofkVHzREZw" uuid="3a5f845a-7f31-4b5e-9e38-751183a24d6c">
+    <portOperation xmi:type="uml:Operation" href="AMITestInterfaces.uml#_mr6B5VqeEeuqofkVHzREZw"/>
+  </dds4ccm:WorkerFunction>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A41qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_-1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A5FqeEeuqofkVHzREZw" receivingPort="_mr6AzlqeEeuqofkVHzREZw" base_Operation="_mr6AI1qeEeuqofkVHzREZw" uuid="fddc369b-c283-4eb2-81ec-6814c8bcad7e"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A5VqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5__VqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A5lqeEeuqofkVHzREZw" receivingPort="_mr6AzlqeEeuqofkVHzREZw" base_Operation="_mr6AJFqeEeuqofkVHzREZw" uuid="a29398d0-08d5-4866-85e6-fce8b4015535"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A51qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5__lqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A6FqeEeuqofkVHzREZw" receivingPort="_mr6AzlqeEeuqofkVHzREZw" base_Operation="_mr6AJVqeEeuqofkVHzREZw" uuid="7e8324f9-a6c6-4cb8-a687-dbebc6da7eab"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A6VqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5__1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A6lqeEeuqofkVHzREZw" receivingPort="_mr6AzlqeEeuqofkVHzREZw" base_Operation="_mr6AJlqeEeuqofkVHzREZw" uuid="100f1ab2-b4ab-46b3-b371-a7079ab82742"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A61qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6AAFqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A7FqeEeuqofkVHzREZw" receivingPort="_mr6AzlqeEeuqofkVHzREZw" base_Operation="_mr6AJ1qeEeuqofkVHzREZw" uuid="186ba6b8-6de2-4ef4-b02a-1df39a57b55f"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A7VqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6AAVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A7lqeEeuqofkVHzREZw" receivingPort="_mr6AzlqeEeuqofkVHzREZw" base_Operation="_mr6AKFqeEeuqofkVHzREZw" uuid="fd3fff78-1d86-4f1e-bfcb-fdbd5e37eda2"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A71qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6AAlqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A8FqeEeuqofkVHzREZw" receivingPort="_mr6AzlqeEeuqofkVHzREZw" base_Operation="_mr6AKVqeEeuqofkVHzREZw" uuid="b5728b6b-acd6-4c5e-8509-88e505b5520e"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A8VqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6AA1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A8lqeEeuqofkVHzREZw" receivingPort="_mr6AzlqeEeuqofkVHzREZw" base_Operation="_mr6AKlqeEeuqofkVHzREZw" uuid="2341b9a9-2901-453c-8fcb-67f16328db7c"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A81qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6ABFqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A9FqeEeuqofkVHzREZw" receivingPort="_mr6AzVqeEeuqofkVHzREZw" base_Operation="_mr5_1VqeEeuqofkVHzREZw" uuid="6967e878-7ef0-428a-a050-9a5d6dce485b">
+    <portOperation xmi:type="uml:Operation" href="AMITestInterfaces.uml#_mr6B6FqeEeuqofkVHzREZw"/>
+  </dds4ccm:WorkerFunction>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A9VqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_rVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A9lqeEeuqofkVHzREZw" receivingPort="_mr6AzVqeEeuqofkVHzREZw" base_Operation="_mr5_11qeEeuqofkVHzREZw" uuid="140fde5d-417e-44a4-a3ea-0f39faab987b"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A91qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_r1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A-FqeEeuqofkVHzREZw" receivingPort="_mr6AzVqeEeuqofkVHzREZw" base_Operation="_mr5_2FqeEeuqofkVHzREZw" uuid="eb44f5bf-64fb-4b8f-bdac-637706c89e83"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A-VqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_sFqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A-lqeEeuqofkVHzREZw" receivingPort="_mr6AzVqeEeuqofkVHzREZw" base_Operation="_mr5_2VqeEeuqofkVHzREZw" uuid="b1b3ed90-c21e-453c-b271-00e9347f1423"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A-1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_sVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A_FqeEeuqofkVHzREZw" receivingPort="_mr6AzVqeEeuqofkVHzREZw" base_Operation="_mr5_2lqeEeuqofkVHzREZw" uuid="9d302f32-19bd-4741-881e-533670fd6cd2"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A_VqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_slqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6A_lqeEeuqofkVHzREZw" receivingPort="_mr6AzVqeEeuqofkVHzREZw" base_Operation="_mr5_21qeEeuqofkVHzREZw" uuid="a8a58d4b-955c-4fa6-9411-fc34f72f41a3"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6A_1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_s1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BAFqeEeuqofkVHzREZw" receivingPort="_mr6AzVqeEeuqofkVHzREZw" base_Operation="_mr5_3FqeEeuqofkVHzREZw" uuid="cba7cbfe-ccad-46d1-b0ce-da94c57f1dd0"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BAVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_tFqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BAlqeEeuqofkVHzREZw" receivingPort="_mr6AzVqeEeuqofkVHzREZw" base_Operation="_mr5_3VqeEeuqofkVHzREZw" uuid="c3a998a7-b57e-443a-9ee1-350f4dfd9311"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BA1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_tVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BBFqeEeuqofkVHzREZw" receivingPort="_mr6AzVqeEeuqofkVHzREZw" base_Operation="_mr5_3lqeEeuqofkVHzREZw" uuid="f2920d28-aeb9-4ec7-b456-0474e9fd44a9"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BBVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_tlqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BBlqeEeuqofkVHzREZw" receivingPort="_mr6Az1qeEeuqofkVHzREZw" base_Operation="_mr6AK1qeEeuqofkVHzREZw" uuid="98dce7b2-e1e6-4e39-ace9-6a7743c97ede">
+    <portOperation xmi:type="uml:Operation" href="AMITestInterfaces.uml#_mr6B6FqeEeuqofkVHzREZw"/>
+  </dds4ccm:WorkerFunction>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BB1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6ABVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BCFqeEeuqofkVHzREZw" receivingPort="_mr6Az1qeEeuqofkVHzREZw" base_Operation="_mr6ALVqeEeuqofkVHzREZw" uuid="823654ea-af98-4277-be80-7fca0dbf7da6"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BCVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6AB1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BClqeEeuqofkVHzREZw" receivingPort="_mr6Az1qeEeuqofkVHzREZw" base_Operation="_mr6ALlqeEeuqofkVHzREZw" uuid="fabe47d5-1639-42c8-aa12-db4c7515969a"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BC1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6ACFqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BDFqeEeuqofkVHzREZw" receivingPort="_mr6Az1qeEeuqofkVHzREZw" base_Operation="_mr6AL1qeEeuqofkVHzREZw" uuid="5f9fedec-0316-43b7-a962-1c5a66648303"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BDVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6ACVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BDlqeEeuqofkVHzREZw" receivingPort="_mr6Az1qeEeuqofkVHzREZw" base_Operation="_mr6AMFqeEeuqofkVHzREZw" uuid="b9f057e8-cdec-4bdf-a166-1596763c347e"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BD1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6AClqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BEFqeEeuqofkVHzREZw" receivingPort="_mr6Az1qeEeuqofkVHzREZw" base_Operation="_mr6AMVqeEeuqofkVHzREZw" uuid="e99b7bc6-8259-426a-8576-8ced5a3e9634"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BEVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6AC1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BElqeEeuqofkVHzREZw" receivingPort="_mr6Az1qeEeuqofkVHzREZw" base_Operation="_mr6AMlqeEeuqofkVHzREZw" uuid="f21cf33d-f8c9-47bb-901c-6d8208d28f26"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BE1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6ADFqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BFFqeEeuqofkVHzREZw" receivingPort="_mr6Az1qeEeuqofkVHzREZw" base_Operation="_mr6AM1qeEeuqofkVHzREZw" uuid="12f909ca-0709-429c-bac3-ef80fe42c063"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BFVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6ADVqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BFlqeEeuqofkVHzREZw" receivingPort="_mr6Az1qeEeuqofkVHzREZw" base_Operation="_mr6ANFqeEeuqofkVHzREZw" uuid="ae3e32b7-a904-452b-99e7-a3d43ae00ff3"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BF1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr6ADlqeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BGFqeEeuqofkVHzREZw" receivingPort="_mr6AzFqeEeuqofkVHzREZw" base_Operation="_mr5_31qeEeuqofkVHzREZw" uuid="e510cbf7-0f38-46ec-874d-0b218df8eff9"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BGVqeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_t1qeEeuqofkVHzREZw"/>
+  <dds4ccm:WorkerFunction xmi:id="_mr6BGlqeEeuqofkVHzREZw" receivingPort="_mr6AzVqeEeuqofkVHzREZw" base_Operation="_mr5_4FqeEeuqofkVHzREZw" uuid="bcaeb026-8cdc-406e-97e6-e4cb0e04b7e8"/>
+  <dds4ccm:WorkerFunctionImpl xmi:id="_mr6BG1qeEeuqofkVHzREZw" base_OpaqueBehavior="_mr5_uFqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMConnector xmi:id="_mr6BHFqeEeuqofkVHzREZw" base_Connector="_mr6APVqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMConnector xmi:id="_mr6BHVqeEeuqofkVHzREZw" base_Connector="_mr6AQFqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMConnector xmi:id="_mr6BHlqeEeuqofkVHzREZw" base_Connector="_mr6AQ1qeEeuqofkVHzREZw"/>
+  <dds4ccm:ContainerProcess xmi:id="_mr6BH1qeEeuqofkVHzREZw" base_Component="_mr6AS1qeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_mr6BIFqeEeuqofkVHzREZw" base_NamedElement="_mr6ATFqeEeuqofkVHzREZw" base_Property="_mr6ATFqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_mr6BIVqeEeuqofkVHzREZw" base_NamedElement="_mr6ATVqeEeuqofkVHzREZw" base_Property="_mr6ATVqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_mr6BIlqeEeuqofkVHzREZw" base_NamedElement="_mr6ATlqeEeuqofkVHzREZw" base_Property="_mr6ATlqeEeuqofkVHzREZw"/>
+  <dds4ccm:Node xmi:id="_mr6BI1qeEeuqofkVHzREZw" base_Component="_mr6AT1qeEeuqofkVHzREZw"/>
+  <dds4ccm:Resource xmi:id="_mr6BJFqeEeuqofkVHzREZw" base_Class="_mr6AXFqeEeuqofkVHzREZw">
+    <resourceType>edu.vanderbilt.dre.DAnCE.NodeAddress</resourceType>
+  </dds4ccm:Resource>
+  <dds4ccm:SatisfierProperty xmi:id="_mr6BJVqeEeuqofkVHzREZw" kind="Attribute" base_Property="_mr6AXVqeEeuqofkVHzREZw"/>
+  <dds4ccm:ResourceProperty xmi:id="_mr6BJlqeEeuqofkVHzREZw" base_Property="_mr6AUFqeEeuqofkVHzREZw"/>
+  <dds4ccm:Domain xmi:id="_mr6BJ1qeEeuqofkVHzREZw" UUID="_9ca1c780-d0cb-44fb-a7ca-66e7df87f0eb" base_Component="_mr6AXlqeEeuqofkVHzREZw"/>
+  <dds4ccm:NodeInstance xmi:id="_mr6BKFqeEeuqofkVHzREZw" base_Property="_mr6AX1qeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPlan xmi:id="_mr6BKVqeEeuqofkVHzREZw" base_Component="_mr6AYFqeEeuqofkVHzREZw" id="_e9713dba-e8d8-44be-93b1-1a235184d321"/>
+  <dds4ccm:DeploymentPart xmi:id="_mr6BKlqeEeuqofkVHzREZw" nestedPart="_mr6BK1qeEeuqofkVHzREZw" modelElement="_mr6AXlqeEeuqofkVHzREZw" base_Property="_mr6AYVqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_mr6BK1qeEeuqofkVHzREZw" modelElement="_mr6AX1qeEeuqofkVHzREZw" base_Property="_mr6AYlqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_mr6BLFqeEeuqofkVHzREZw" modelElement="_mr6AS1qeEeuqofkVHzREZw" base_Property="_mr6AY1qeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_mr6BLVqeEeuqofkVHzREZw" modelElement="_mr6AS1qeEeuqofkVHzREZw" base_Property="_mr6AZFqeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_mr6BLlqeEeuqofkVHzREZw" nestedPart="_mr6BL1qeEeuqofkVHzREZw _mr6BMFqeEeuqofkVHzREZw _mr6BMVqeEeuqofkVHzREZw" modelElement="_mr6AN1qeEeuqofkVHzREZw" base_Property="_mr6AZVqeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_mr6BL1qeEeuqofkVHzREZw" nestedPart="_mr6BN1qeEeuqofkVHzREZw _mr6BOFqeEeuqofkVHzREZw" modelElement="_mr6AOlqeEeuqofkVHzREZw" base_Property="_mr6AZlqeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_mr6BMFqeEeuqofkVHzREZw" nestedPart="_mr6BOVqeEeuqofkVHzREZw _mr6BOlqeEeuqofkVHzREZw" modelElement="_mr6AO1qeEeuqofkVHzREZw" base_Property="_mr6AZ1qeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_mr6BMVqeEeuqofkVHzREZw" nestedPart="_mr6BO1qeEeuqofkVHzREZw" modelElement="_mr6APFqeEeuqofkVHzREZw" base_Property="_mr6AaFqeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_mr6BMlqeEeuqofkVHzREZw" base_Dependency="_mr6AblqeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_mr6BM1qeEeuqofkVHzREZw" base_Dependency="_mr6Ab1qeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_mr6BNFqeEeuqofkVHzREZw" base_Dependency="_mr6AcFqeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_mr6BNVqeEeuqofkVHzREZw" base_Dependency="_mr6AcVqeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_mr6BNlqeEeuqofkVHzREZw" base_Dependency="_mr6AclqeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_mr6BN1qeEeuqofkVHzREZw" modelElement="_mr5_jFqeEeuqofkVHzREZw" base_Property="_mr6AaVqeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_mr6BOFqeEeuqofkVHzREZw" modelElement="_mr5_jVqeEeuqofkVHzREZw" base_Property="_mr6AalqeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_mr6BOVqeEeuqofkVHzREZw" modelElement="_mr5_5FqeEeuqofkVHzREZw" base_Property="_mr6Aa1qeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_mr6BOlqeEeuqofkVHzREZw" modelElement="_mr5_5VqeEeuqofkVHzREZw" base_Property="_mr6AbFqeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_mr6BO1qeEeuqofkVHzREZw" base_Property="_mr6AbVqeEeuqofkVHzREZw">
+    <modelElement xmi:type="uml:Port" href="AMITestInterfaces.uml#_mr6B71qeEeuqofkVHzREZw"/>
+  </dds4ccm:PerPortConnectorTypeDeploymentPart>
+</xmi:XMI>

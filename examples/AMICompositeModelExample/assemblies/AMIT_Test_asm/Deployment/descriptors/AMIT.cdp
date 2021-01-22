@@ -2,7 +2,7 @@
 <Deployment:DeploymentPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
     xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
   <label>AMIT</label>
-  <UUID>_dd8f509c-5e39-4d48-8ae6-e49047cebe93</UUID>
+  <UUID>_cc48a645-5cb1-4310-b33d-2ddf1f414366</UUID>
   <implementation xmi:id="CompSvrImpl">
     <name>CompSvr</name>
     <source/>
@@ -20,11 +20,11 @@
     </execParameter>
   </implementation>
 
-  <implementation xmi:id="_d9fe3b99-0aa8-4266-9abf-65bc580f9fe5">
+  <implementation xmi:id="_92385851-9b7e-40fd-8a15-34ca022baf05">
     <name>Control1_obj</name>
     <source/>
-    <artifact xmi:idref="_757c3a05-ab68-457d-a45c-20e7ff2dc1b4"/>
-    <artifact xmi:idref="_68b6ae2f-dfd1-4b44-ab88-a60e16a1670e"/>
+    <artifact xmi:idref="_bc006b6e-09b7-4339-9c4c-3ca42f36363e"/>
+    <artifact xmi:idref="_aa50e501-94de-486b-9383-685392bc3f63"/>
     <execParameter>
       <name>component factory</name>
       <value>
@@ -82,11 +82,11 @@
     </execParameter>
   </implementation>
 
-  <implementation xmi:id="_072e2ddf-ef78-4413-9a31-b5fcf43cbf36">
+  <implementation xmi:id="_5a937630-2b31-4b39-8fc9-ab0ba6113204">
     <name>LocalImpl_compImpl</name>
     <source/>
-    <artifact xmi:idref="_19865534-f798-4130-ad50-046b61b38814"/>
-    <artifact xmi:idref="_9d3b1144-19de-4390-ab9c-790f072ede20"/>
+    <artifact xmi:idref="_6f796c3e-1e73-4e25-a4cc-15f87a1ce5de"/>
+    <artifact xmi:idref="_dc260987-0417-44ff-8958-07949911ebac"/>
     <execParameter>
       <name>component factory</name>
       <value>
@@ -144,11 +144,11 @@
     </execParameter>
   </implementation>
 
-  <implementation xmi:id="_cb33b647-0520-4da7-b97e-fddf852d672a">
+  <implementation xmi:id="_dac79eaa-11d6-4a12-a921-30590141b411">
     <name>Control2_obj</name>
     <source/>
-    <artifact xmi:idref="_89aa0560-b841-4f31-8c8d-e8b2c010a1e7"/>
-    <artifact xmi:idref="_5283a70f-f2e4-4b83-97d5-7c085e33c58a"/>
+    <artifact xmi:idref="_7931a2d4-f5df-4831-8d2e-02e47cddcf58"/>
+    <artifact xmi:idref="_064b41b1-f720-4889-af60-b0e4199142cf"/>
     <execParameter>
       <name>component factory</name>
       <value>
@@ -206,11 +206,11 @@
     </execParameter>
   </implementation>
 
-  <implementation xmi:id="_f5b09215-be29-45ac-96e5-7a986b84ff92">
+  <implementation xmi:id="_0fc7f8fe-fe38-4238-bd52-d8177822b013">
     <name>RemoteImpl_compImpl</name>
     <source/>
-    <artifact xmi:idref="_375f94f6-9b1a-4848-89a0-f2f448541a98"/>
-    <artifact xmi:idref="_80e751b9-d623-4a06-a5fe-440944d26e95"/>
+    <artifact xmi:idref="_c6400728-a561-4a37-82a9-c287cd6a0b9d"/>
+    <artifact xmi:idref="_86d2729f-3f8d-4997-93d8-cb3daad0ed12"/>
     <execParameter>
       <name>component factory</name>
       <value>
@@ -268,11 +268,11 @@
     </execParameter>
   </implementation>
 
-  <implementation xmi:id="_648b3c3a-9b2a-486f-a8f8-e4b53489ce11">
+  <implementation xmi:id="_d223343d-2f20-480b-8d74-9a85db2ab6be">
     <name>ServerImpl_compImpl</name>
     <source/>
-    <artifact xmi:idref="_817e130c-740c-4a4d-b77d-c76c08cb0f81"/>
-    <artifact xmi:idref="_cadfbe65-ff6b-4a23-bfcf-d9dc10f3c32a"/>
+    <artifact xmi:idref="_73e8580d-03fc-4956-b9c1-e8c6ed2157cb"/>
+    <artifact xmi:idref="_903e31b1-4b44-4821-90ab-bf77ec61d28b"/>
     <execParameter>
       <name>component factory</name>
       <value>
@@ -330,28 +330,28 @@
     </execParameter>
   </implementation>
 
-  <instance xmi:id="_b591cf24-f744-435a-b761-01155e43d4bd">
+  <instance xmi:id="_454bd791-e659-4f6d-9a9b-e3d299f43a4a">
     <name>AMIT_Test_asm.Local_comp</name>
     <node>TestNode</node>
     <source/>
-    <implementation xmi:idref="_072e2ddf-ef78-4413-9a31-b5fcf43cbf36"/>
+    <implementation xmi:idref="_5a937630-2b31-4b39-8fc9-ab0ba6113204"/>
   </instance>
 
-  <instance xmi:id="_53e112ba-a829-460c-905f-415173a32950">
+  <instance xmi:id="_804d0617-2012-4735-91cf-48ec21d91275">
     <name>AMIT_Test_asm.Remote_comp</name>
     <node>TestNode</node>
     <source/>
-    <implementation xmi:idref="_f5b09215-be29-45ac-96e5-7a986b84ff92"/>
+    <implementation xmi:idref="_0fc7f8fe-fe38-4238-bd52-d8177822b013"/>
   </instance>
 
-  <instance xmi:id="_0b699b03-585d-46ed-81e4-2b78630cce8d">
+  <instance xmi:id="_906e2cf3-d730-4f4b-b1ae-5f66c252d7e2">
     <name>AMIT_Test_asm.Server_comp</name>
     <node>TestNode</node>
     <source/>
-    <implementation xmi:idref="_648b3c3a-9b2a-486f-a8f8-e4b53489ce11"/>
+    <implementation xmi:idref="_d223343d-2f20-480b-8d74-9a85db2ab6be"/>
   </instance>
 
-  <instance xmi:id="_d0653047-276f-4fa4-92dd-89e8c4e53177">
+  <instance xmi:id="_3e3f41ae-8a84-4bb0-8dc1-904a19edcd5e">
     <name>Client_proc_ComponentServerInstance</name>
     <node>TestNode</node>
     <source/>
@@ -369,7 +369,7 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="_a5a60b52-ec01-49d8-b16e-ca80a332b980">
+  <instance xmi:id="_5b8d937f-0d7f-4647-9e5e-3ca470217b86">
     <name>Server_proc_ComponentServerInstance</name>
     <node>TestNode</node>
     <source/>
@@ -387,25 +387,25 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="_4291b146-9556-49f1-a78d-720204e3290e">
+  <instance xmi:id="_10949b5a-49eb-42ad-84b9-261563f804c2">
     <name>AMITestInterfaces.ports.AMIT.Control1_obj_AMI4CCM_Connector_for_Server_comp_Remote_comp@TestNode.Client_proc</name>
     <node>TestNode</node>
     <source/>
-    <implementation xmi:idref="_d9fe3b99-0aa8-4266-9abf-65bc580f9fe5"/>
+    <implementation xmi:idref="_92385851-9b7e-40fd-8a15-34ca022baf05"/>
   </instance>
 
-  <instance xmi:id="_a5fab648-cc47-4017-866d-479b0b914029">
+  <instance xmi:id="_31b72483-a063-496e-8501-620630146b1c">
     <name>AMITestInterfaces.ports.AMIT.Control2_obj_AMI4CCM_Connector_for_Server_comp_Remote_comp@TestNode.Client_proc</name>
     <node>TestNode</node>
     <source/>
-    <implementation xmi:idref="_cb33b647-0520-4da7-b97e-fddf852d672a"/>
+    <implementation xmi:idref="_dac79eaa-11d6-4a12-a921-30590141b411"/>
   </instance>
 
-  <instance xmi:id="_01793e93-d250-4b16-bbb6-6220f89ea6fe">
+  <instance xmi:id="_36dc0e91-4b6c-4b13-8448-fa3291aa65ba">
     <name>AMITestInterfaces.ports.AMIT.Control1_obj_AMI4CCM_Connector_for_Server_comp_Local_comp@TestNode.Client_proc</name>
     <node>TestNode</node>
     <source/>
-    <implementation xmi:idref="_d9fe3b99-0aa8-4266-9abf-65bc580f9fe5"/>
+    <implementation xmi:idref="_92385851-9b7e-40fd-8a15-34ca022baf05"/>
   </instance>
 
   <connection>
@@ -418,13 +418,13 @@
       <portName>ami4ccm_port_ami4ccm_provides</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_4291b146-9556-49f1-a78d-720204e3290e"/>
+      <instance xmi:idref="_10949b5a-49eb-42ad-84b9-261563f804c2"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>sendc_Control1Client</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_53e112ba-a829-460c-905f-415173a32950"/>
+      <instance xmi:idref="_804d0617-2012-4735-91cf-48ec21d91275"/>
     </internalEndpoint>
   </connection>
 
@@ -434,13 +434,13 @@
       <portName>Control1Server</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_0b699b03-585d-46ed-81e4-2b78630cce8d"/>
+      <instance xmi:idref="_906e2cf3-d730-4f4b-b1ae-5f66c252d7e2"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>ami4ccm_port_ami4ccm_uses</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_4291b146-9556-49f1-a78d-720204e3290e"/>
+      <instance xmi:idref="_10949b5a-49eb-42ad-84b9-261563f804c2"/>
     </internalEndpoint>
   </connection>
 
@@ -454,13 +454,13 @@
       <portName>Control1Client</portName>
       <provider>false</provider>
       <kind>MultiplexReceptacle</kind>
-      <instance xmi:idref="_53e112ba-a829-460c-905f-415173a32950"/>
+      <instance xmi:idref="_804d0617-2012-4735-91cf-48ec21d91275"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_4291b146-9556-49f1-a78d-720204e3290e"/>
+      <instance xmi:idref="_10949b5a-49eb-42ad-84b9-261563f804c2"/>
     </internalEndpoint>
   </connection>
 
@@ -474,13 +474,13 @@
       <portName>ami4ccm_port_ami4ccm_provides</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_a5fab648-cc47-4017-866d-479b0b914029"/>
+      <instance xmi:idref="_31b72483-a063-496e-8501-620630146b1c"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>sendc_Control2Client</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_53e112ba-a829-460c-905f-415173a32950"/>
+      <instance xmi:idref="_804d0617-2012-4735-91cf-48ec21d91275"/>
     </internalEndpoint>
   </connection>
 
@@ -490,13 +490,13 @@
       <portName>Control2Server</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_0b699b03-585d-46ed-81e4-2b78630cce8d"/>
+      <instance xmi:idref="_906e2cf3-d730-4f4b-b1ae-5f66c252d7e2"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>ami4ccm_port_ami4ccm_uses</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_a5fab648-cc47-4017-866d-479b0b914029"/>
+      <instance xmi:idref="_31b72483-a063-496e-8501-620630146b1c"/>
     </internalEndpoint>
   </connection>
 
@@ -510,13 +510,13 @@
       <portName>Control2Client</portName>
       <provider>false</provider>
       <kind>MultiplexReceptacle</kind>
-      <instance xmi:idref="_53e112ba-a829-460c-905f-415173a32950"/>
+      <instance xmi:idref="_804d0617-2012-4735-91cf-48ec21d91275"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_a5fab648-cc47-4017-866d-479b0b914029"/>
+      <instance xmi:idref="_31b72483-a063-496e-8501-620630146b1c"/>
     </internalEndpoint>
   </connection>
 
@@ -530,13 +530,13 @@
       <portName>ami4ccm_port_ami4ccm_provides</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_01793e93-d250-4b16-bbb6-6220f89ea6fe"/>
+      <instance xmi:idref="_36dc0e91-4b6c-4b13-8448-fa3291aa65ba"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>sendc_Control1Client</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_b591cf24-f744-435a-b761-01155e43d4bd"/>
+      <instance xmi:idref="_454bd791-e659-4f6d-9a9b-e3d299f43a4a"/>
     </internalEndpoint>
   </connection>
 
@@ -546,13 +546,13 @@
       <portName>Control1Server</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_0b699b03-585d-46ed-81e4-2b78630cce8d"/>
+      <instance xmi:idref="_906e2cf3-d730-4f4b-b1ae-5f66c252d7e2"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>ami4ccm_port_ami4ccm_uses</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_01793e93-d250-4b16-bbb6-6220f89ea6fe"/>
+      <instance xmi:idref="_36dc0e91-4b6c-4b13-8448-fa3291aa65ba"/>
     </internalEndpoint>
   </connection>
 
@@ -566,13 +566,13 @@
       <portName>Control1Client</portName>
       <provider>false</provider>
       <kind>MultiplexReceptacle</kind>
-      <instance xmi:idref="_b591cf24-f744-435a-b761-01155e43d4bd"/>
+      <instance xmi:idref="_454bd791-e659-4f6d-9a9b-e3d299f43a4a"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_01793e93-d250-4b16-bbb6-6220f89ea6fe"/>
+      <instance xmi:idref="_36dc0e91-4b6c-4b13-8448-fa3291aa65ba"/>
     </internalEndpoint>
   </connection>
 
@@ -583,70 +583,70 @@
     <location>dance_locality_manager</location>
   </artifact>
 
-  <artifact xmi:id="_19865534-f798-4130-ad50-046b61b38814">
+  <artifact xmi:id="_6f796c3e-1e73-4e25-a4cc-15f87a1ce5de">
     <name>AMIT_LocalImpl_comp_exec</name>
     <source/>
     <node/>
     <location>AMIT_LocalImpl_comp_exec</location>
   </artifact>
 
-  <artifact xmi:id="_9d3b1144-19de-4390-ab9c-790f072ede20">
+  <artifact xmi:id="_dc260987-0417-44ff-8958-07949911ebac">
     <name>AMIT_LocalImpl_comp_svnt</name>
     <source/>
     <node/>
     <location>AMIT_LocalImpl_comp_svnt</location>
   </artifact>
 
-  <artifact xmi:id="_757c3a05-ab68-457d-a45c-20e7ff2dc1b4">
+  <artifact xmi:id="_bc006b6e-09b7-4339-9c4c-3ca42f36363e">
     <name>AMIT_Control1_obj_exec</name>
     <source/>
     <node/>
     <location>AMIT_Control1_obj_exec</location>
   </artifact>
 
-  <artifact xmi:id="_68b6ae2f-dfd1-4b44-ab88-a60e16a1670e">
+  <artifact xmi:id="_aa50e501-94de-486b-9383-685392bc3f63">
     <name>AMIT_Control1_obj_svnt</name>
     <source/>
     <node/>
     <location>AMIT_Control1_obj_svnt</location>
   </artifact>
 
-  <artifact xmi:id="_375f94f6-9b1a-4848-89a0-f2f448541a98">
+  <artifact xmi:id="_c6400728-a561-4a37-82a9-c287cd6a0b9d">
     <name>AMIT_RemoteImpl_comp_exec</name>
     <source/>
     <node/>
     <location>AMIT_RemoteImpl_comp_exec</location>
   </artifact>
 
-  <artifact xmi:id="_80e751b9-d623-4a06-a5fe-440944d26e95">
+  <artifact xmi:id="_86d2729f-3f8d-4997-93d8-cb3daad0ed12">
     <name>AMIT_RemoteImpl_comp_svnt</name>
     <source/>
     <node/>
     <location>AMIT_RemoteImpl_comp_svnt</location>
   </artifact>
 
-  <artifact xmi:id="_89aa0560-b841-4f31-8c8d-e8b2c010a1e7">
+  <artifact xmi:id="_7931a2d4-f5df-4831-8d2e-02e47cddcf58">
     <name>AMIT_Control2_obj_exec</name>
     <source/>
     <node/>
     <location>AMIT_Control2_obj_exec</location>
   </artifact>
 
-  <artifact xmi:id="_5283a70f-f2e4-4b83-97d5-7c085e33c58a">
+  <artifact xmi:id="_064b41b1-f720-4889-af60-b0e4199142cf">
     <name>AMIT_Control2_obj_svnt</name>
     <source/>
     <node/>
     <location>AMIT_Control2_obj_svnt</location>
   </artifact>
 
-  <artifact xmi:id="_817e130c-740c-4a4d-b77d-c76c08cb0f81">
+  <artifact xmi:id="_73e8580d-03fc-4956-b9c1-e8c6ed2157cb">
     <name>AMIT_ServerImpl_comp_exec</name>
     <source/>
     <node/>
     <location>AMIT_ServerImpl_comp_exec</location>
   </artifact>
 
-  <artifact xmi:id="_cadfbe65-ff6b-4a23-bfcf-d9dc10f3c32a">
+  <artifact xmi:id="_903e31b1-4b44-4821-90ab-bf77ec61d28b">
     <name>AMIT_ServerImpl_comp_svnt</name>
     <source/>
     <node/>
@@ -656,25 +656,25 @@
   <localityConstraint>
     <constraint>SameProcess</constraint>
     <!-- This is referencing [Client_proc_ComponentServerInstance] -->
-    <constrainedInstance xmi:idref="_d0653047-276f-4fa4-92dd-89e8c4e53177"/>
+    <constrainedInstance xmi:idref="_3e3f41ae-8a84-4bb0-8dc1-904a19edcd5e"/>
     <!-- This is referencing [AMIT_Test_asm.Local_comp] -->
-    <constrainedInstance xmi:idref="_b591cf24-f744-435a-b761-01155e43d4bd"/>
+    <constrainedInstance xmi:idref="_454bd791-e659-4f6d-9a9b-e3d299f43a4a"/>
     <!-- This is referencing [AMIT_Test_asm.Remote_comp] -->
-    <constrainedInstance xmi:idref="_53e112ba-a829-460c-905f-415173a32950"/>
+    <constrainedInstance xmi:idref="_804d0617-2012-4735-91cf-48ec21d91275"/>
     <!-- This is referencing [AMITestInterfaces.ports.AMIT.Control1_obj_AMI4CCM_Connector_for_Server_comp_Remote_comp@TestNode.Client_proc] -->
-    <constrainedInstance xmi:idref="_4291b146-9556-49f1-a78d-720204e3290e"/>
+    <constrainedInstance xmi:idref="_10949b5a-49eb-42ad-84b9-261563f804c2"/>
     <!-- This is referencing [AMITestInterfaces.ports.AMIT.Control2_obj_AMI4CCM_Connector_for_Server_comp_Remote_comp@TestNode.Client_proc] -->
-    <constrainedInstance xmi:idref="_a5fab648-cc47-4017-866d-479b0b914029"/>
+    <constrainedInstance xmi:idref="_31b72483-a063-496e-8501-620630146b1c"/>
     <!-- This is referencing [AMITestInterfaces.ports.AMIT.Control1_obj_AMI4CCM_Connector_for_Server_comp_Local_comp@TestNode.Client_proc] -->
-    <constrainedInstance xmi:idref="_01793e93-d250-4b16-bbb6-6220f89ea6fe"/>
+    <constrainedInstance xmi:idref="_36dc0e91-4b6c-4b13-8448-fa3291aa65ba"/>
   </localityConstraint>
 
   <localityConstraint>
     <constraint>SameProcess</constraint>
     <!-- This is referencing [Server_proc_ComponentServerInstance] -->
-    <constrainedInstance xmi:idref="_a5a60b52-ec01-49d8-b16e-ca80a332b980"/>
+    <constrainedInstance xmi:idref="_5b8d937f-0d7f-4647-9e5e-3ca470217b86"/>
     <!-- This is referencing [AMIT_Test_asm.Server_comp] -->
-    <constrainedInstance xmi:idref="_0b699b03-585d-46ed-81e4-2b78630cce8d"/>
+    <constrainedInstance xmi:idref="_906e2cf3-d730-4f4b-b1ae-5f66c252d7e2"/>
   </localityConstraint>
 
 </Deployment:DeploymentPlan>

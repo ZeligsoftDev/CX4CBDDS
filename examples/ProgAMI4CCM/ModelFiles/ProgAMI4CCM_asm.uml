@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1 pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ">
+  <uml:Model xmi:id="_64BTJFqeEeuqofkVHzREZw" name="ProgAMI4CCM_asm">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_64BTJVqeEeuqofkVHzREZw" source="cx.migration">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_64BTJlqeEeuqofkVHzREZw" key="version" value="2.0.1"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_64BTJ1qeEeuqofkVHzREZw" key="date" value="1611093009738"/>
+    </eAnnotations>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_64BTKFqeEeuqofkVHzREZw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_DO-O0EDsEd-pwPnT_VsB_g"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_64BTKVqeEeuqofkVHzREZw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_AMI_LIBRARIES/CCM_AMI.uml#_jkiX8J4JEd6xhoJKj1dweA"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_64BTKlqeEeuqofkVHzREZw" name="SNA_Examples">
+      <packagedElement xmi:type="uml:Package" xmi:id="_64BTK1qeEeuqofkVHzREZw" name="Deployment">
+        <packagedElement xmi:type="uml:Package" xmi:id="_64BTLFqeEeuqofkVHzREZw" name="descriptors">
+          <packagedElement xmi:type="uml:Package" xmi:id="_64B40FqeEeuqofkVHzREZw" name="Node">
+            <packagedElement xmi:type="uml:Component" xmi:id="_64B40VqeEeuqofkVHzREZw" name="Node">
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B40lqeEeuqofkVHzREZw" name="resourceProperty" type="_64B43lqeEeuqofkVHzREZw"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B401qeEeuqofkVHzREZw" name="_defaultInstance">
+                <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B41FqeEeuqofkVHzREZw" instance="_64B41lqeEeuqofkVHzREZw"/>
+              </ownedAttribute>
+              <packagedElement xmi:type="uml:Package" xmi:id="_64B41VqeEeuqofkVHzREZw" name="_Node">
+                <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B41lqeEeuqofkVHzREZw" name="NodeInstance" classifier="_64B40VqeEeuqofkVHzREZw">
+                  <slot xmi:type="uml:Slot" xmi:id="_64B411qeEeuqofkVHzREZw" definingFeature="_64B40lqeEeuqofkVHzREZw">
+                    <value xmi:type="uml:InstanceValue" xmi:id="_64B42FqeEeuqofkVHzREZw" instance="_64B42VqeEeuqofkVHzREZw"/>
+                  </slot>
+                </packagedElement>
+                <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B42VqeEeuqofkVHzREZw" name="NodeAddressInstance" classifier="_64B43lqeEeuqofkVHzREZw">
+                  <slot xmi:type="uml:Slot" xmi:id="_64B42lqeEeuqofkVHzREZw" definingFeature="_64B431qeEeuqofkVHzREZw">
+                    <value xmi:type="uml:InstanceValue" xmi:id="_64B421qeEeuqofkVHzREZw" instance="_64B43FqeEeuqofkVHzREZw"/>
+                  </slot>
+                </packagedElement>
+                <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B43FqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.StringIORInstance">
+                  <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                  <specification xmi:type="uml:LiteralString" xmi:id="_64B43VqeEeuqofkVHzREZw" value="corbaloc:iiop:localhost:60070"/>
+                </packagedElement>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_64B43lqeEeuqofkVHzREZw" name="Node Address">
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B431qeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.StringIOR">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_64B44FqeEeuqofkVHzREZw" name="Processes">
+            <packagedElement xmi:type="uml:Component" xmi:id="_64B44VqeEeuqofkVHzREZw" name="StateManager_proc">
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B44lqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B441qeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B45FqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B45VqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityArguments">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Component" xmi:id="_64B45lqeEeuqofkVHzREZw" name="Slave1_proc">
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B451qeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B46FqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B46VqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B46lqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityArguments">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Component" xmi:id="_64B461qeEeuqofkVHzREZw" name="Slave2_proc">
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B47FqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B47VqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B47lqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B471qeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityArguments">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Component" xmi:id="_64B48FqeEeuqofkVHzREZw" name="Slave3_proc">
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B48VqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B48lqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B481qeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_64B49FqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.LocalityArguments">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_64B49VqeEeuqofkVHzREZw" name="Defaults"/>
+          <packagedElement xmi:type="uml:Component" xmi:id="_64B49lqeEeuqofkVHzREZw" name="AMI4CCM_asm_VM">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B491qeEeuqofkVHzREZw" name="StateManagerNode" visibility="private" type="_64B40VqeEeuqofkVHzREZw" aggregation="composite"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B4-FqeEeuqofkVHzREZw" name="Slave1Node" visibility="private" type="_64B40VqeEeuqofkVHzREZw" aggregation="composite"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B4-VqeEeuqofkVHzREZw" name="Slave2Node" visibility="private" type="_64B40VqeEeuqofkVHzREZw" aggregation="composite"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B4-lqeEeuqofkVHzREZw" name="Slave3Node" visibility="private" type="_64B40VqeEeuqofkVHzREZw" aggregation="composite"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Component" xmi:id="_64B4-1qeEeuqofkVHzREZw" name="ProgAMI_prog1a">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B4_FqeEeuqofkVHzREZw" name="AMI4CCM_asm_VM" type="_64B49lqeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B4_VqeEeuqofkVHzREZw" name="StateManagerNode" type="_64B40VqeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B4_lqeEeuqofkVHzREZw" name="Slave1_proc" type="_64B45lqeEeuqofkVHzREZw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B4_1qeEeuqofkVHzREZw" instance="_64B5O1qeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5AFqeEeuqofkVHzREZw" name="StateManager_proc" type="_64B44VqeEeuqofkVHzREZw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5AVqeEeuqofkVHzREZw" instance="_64B5NVqeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5AlqeEeuqofkVHzREZw" name="AMI4CCM_asm" type="_64B5tVqeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5A1qeEeuqofkVHzREZw" name="stateManager_comp" type="_64B5qVqeEeuqofkVHzREZw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5BFqeEeuqofkVHzREZw" instance="_64B5U1qeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5BVqeEeuqofkVHzREZw" name="slave_comp" type="_64B5hVqeEeuqofkVHzREZw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5BlqeEeuqofkVHzREZw" instance="_64B5TVqeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5B1qeEeuqofkVHzREZw" name="slave_comp2" type="_64B5hVqeEeuqofkVHzREZw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5CFqeEeuqofkVHzREZw" instance="_64B5R1qeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5CVqeEeuqofkVHzREZw" name="slave_comp3" type="_64B5hVqeEeuqofkVHzREZw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5ClqeEeuqofkVHzREZw" instance="_64B5QVqeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5C1qeEeuqofkVHzREZw" name="Slave1Node" type="_64B40VqeEeuqofkVHzREZw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5DFqeEeuqofkVHzREZw" instance="_64B5GlqeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5DVqeEeuqofkVHzREZw" name="Slave2Node" type="_64B40VqeEeuqofkVHzREZw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5DlqeEeuqofkVHzREZw" instance="_64B5I1qeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5D1qeEeuqofkVHzREZw" name="Slave3Node" type="_64B40VqeEeuqofkVHzREZw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5EFqeEeuqofkVHzREZw" instance="_64B5LFqeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5EVqeEeuqofkVHzREZw" name="stateControlRecept" type="_64B5l1qeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5ElqeEeuqofkVHzREZw" name="stateControlFacet" type="_64B5l1qeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5E1qeEeuqofkVHzREZw" name="stateControlFacet1" type="_64B5l1qeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5FFqeEeuqofkVHzREZw" name="stateControlFacet2" type="_64B5l1qeEeuqofkVHzREZw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_64B5FVqeEeuqofkVHzREZw" client="_64B4_lqeEeuqofkVHzREZw" supplier="_64B5C1qeEeuqofkVHzREZw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_64B5FlqeEeuqofkVHzREZw" client="_64B5AFqeEeuqofkVHzREZw" supplier="_64B4_VqeEeuqofkVHzREZw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_64B5F1qeEeuqofkVHzREZw" client="_64B5BVqeEeuqofkVHzREZw" supplier="_64B4_lqeEeuqofkVHzREZw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_64B5GFqeEeuqofkVHzREZw" client="_64B5A1qeEeuqofkVHzREZw" supplier="_64B5AFqeEeuqofkVHzREZw"/>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5GVqeEeuqofkVHzREZw" name="_Slave1Node">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5GlqeEeuqofkVHzREZw" name="NodeInstance" classifier="_64B40VqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5G1qeEeuqofkVHzREZw" definingFeature="_64B40lqeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5HFqeEeuqofkVHzREZw" instance="_64B5HVqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5HVqeEeuqofkVHzREZw" name="Node AddressInstance" classifier="_64B43lqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5HlqeEeuqofkVHzREZw" definingFeature="_64B431qeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5H1qeEeuqofkVHzREZw" instance="_64B5IFqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5IFqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5IVqeEeuqofkVHzREZw" value="corbaloc:iiop:localhost:60071"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5IlqeEeuqofkVHzREZw" name="_Slave2Node">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5I1qeEeuqofkVHzREZw" name="NodeInstance" classifier="_64B40VqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5JFqeEeuqofkVHzREZw" definingFeature="_64B40lqeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5JVqeEeuqofkVHzREZw" instance="_64B5JlqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5JlqeEeuqofkVHzREZw" name="Node AddressInstance" classifier="_64B43lqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5J1qeEeuqofkVHzREZw" definingFeature="_64B431qeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5KFqeEeuqofkVHzREZw" instance="_64B5KVqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5KVqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5KlqeEeuqofkVHzREZw" value="corbaloc:iiop:localhost:60072"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5K1qeEeuqofkVHzREZw" name="_Slave3Node">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5LFqeEeuqofkVHzREZw" name="NodeInstance" classifier="_64B40VqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5LVqeEeuqofkVHzREZw" definingFeature="_64B40lqeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5LlqeEeuqofkVHzREZw" instance="_64B5L1qeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5L1qeEeuqofkVHzREZw" name="Node AddressInstance" classifier="_64B43lqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5MFqeEeuqofkVHzREZw" definingFeature="_64B431qeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5MVqeEeuqofkVHzREZw" instance="_64B5MlqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5MlqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5M1qeEeuqofkVHzREZw" value="corbaloc:iiop:localhost:60073"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5NFqeEeuqofkVHzREZw" name="_StateManagerProcess">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5NVqeEeuqofkVHzREZw" name="StateManagerProcessInstance" classifier="_64B44VqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5NlqeEeuqofkVHzREZw" definingFeature="_64B441qeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5N1qeEeuqofkVHzREZw" instance="_64B5OFqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5OFqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5OVqeEeuqofkVHzREZw" value="StateManagerProcess"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5OlqeEeuqofkVHzREZw" name="_Slave1Process">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5O1qeEeuqofkVHzREZw" name="Slave1ProcessInstance" classifier="_64B45lqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5PFqeEeuqofkVHzREZw" definingFeature="_64B46FqeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5PVqeEeuqofkVHzREZw" instance="_64B5PlqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5PlqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5P1qeEeuqofkVHzREZw" value="Slave1Process"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5QFqeEeuqofkVHzREZw" name="_slave_comp3">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5QVqeEeuqofkVHzREZw" name="Slave_compInstance" classifier="_64B5hVqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5QlqeEeuqofkVHzREZw" definingFeature="_64B5h1qeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5Q1qeEeuqofkVHzREZw" instance="_64B5RFqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5RFqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5RVqeEeuqofkVHzREZw" value="333333"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5RlqeEeuqofkVHzREZw" name="_slave_comp2">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5R1qeEeuqofkVHzREZw" name="Slave_compInstance" classifier="_64B5hVqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5SFqeEeuqofkVHzREZw" definingFeature="_64B5h1qeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5SVqeEeuqofkVHzREZw" instance="_64B5SlqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5SlqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5S1qeEeuqofkVHzREZw" value="222222"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5TFqeEeuqofkVHzREZw" name="_slave_comp">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5TVqeEeuqofkVHzREZw" name="Slave_compInstance" classifier="_64B5hVqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5TlqeEeuqofkVHzREZw" definingFeature="_64B5h1qeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5T1qeEeuqofkVHzREZw" instance="_64B5UFqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5UFqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5UVqeEeuqofkVHzREZw" value="111111"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5UlqeEeuqofkVHzREZw" name="_stateManager_comp">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5U1qeEeuqofkVHzREZw" name="StateManager_compInstance" classifier="_64B5qVqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5VFqeEeuqofkVHzREZw" definingFeature="_64B5rFqeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5VVqeEeuqofkVHzREZw" instance="_64B5VlqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5VlqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5V1qeEeuqofkVHzREZw" value="ssssss"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Component" xmi:id="_64B5WFqeEeuqofkVHzREZw" name="ProgAMI_prog1b">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5WVqeEeuqofkVHzREZw" name="AMI4CCM_asm_VM" type="_64B49lqeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5WlqeEeuqofkVHzREZw" name="StateManagerNode" type="_64B40VqeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5W1qeEeuqofkVHzREZw" name="Slave1Node" type="_64B40VqeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5XFqeEeuqofkVHzREZw" name="Slave2Node" type="_64B40VqeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5XVqeEeuqofkVHzREZw" name="Slave3Node" type="_64B40VqeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5XlqeEeuqofkVHzREZw" name="Slave2_proc" type="_64B461qeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5X1qeEeuqofkVHzREZw" name="Slave3_proc" type="_64B48FqeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5YFqeEeuqofkVHzREZw" name="AMI4CCM_asm" type="_64B5tVqeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5YVqeEeuqofkVHzREZw" name="stateManager_comp" type="_64B5qVqeEeuqofkVHzREZw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5YlqeEeuqofkVHzREZw" instance="_64B5fVqeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5Y1qeEeuqofkVHzREZw" name="slave_comp" type="_64B5hVqeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5ZFqeEeuqofkVHzREZw" name="slave_comp2" type="_64B5hVqeEeuqofkVHzREZw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5ZVqeEeuqofkVHzREZw" instance="_64B5cVqeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5ZlqeEeuqofkVHzREZw" name="slave_comp3" type="_64B5hVqeEeuqofkVHzREZw">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5Z1qeEeuqofkVHzREZw" instance="_64B5d1qeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5aFqeEeuqofkVHzREZw" name="stateControlRecept" type="_64B5l1qeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5aVqeEeuqofkVHzREZw" name="stateControlFacet" type="_64B5l1qeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5alqeEeuqofkVHzREZw" name="stateControlFacet_2" type="_64B5l1qeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5a1qeEeuqofkVHzREZw" name="stateControlFacet_3" type="_64B5l1qeEeuqofkVHzREZw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_64B5bFqeEeuqofkVHzREZw" client="_64B5XlqeEeuqofkVHzREZw" supplier="_64B5XFqeEeuqofkVHzREZw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_64B5bVqeEeuqofkVHzREZw" client="_64B5X1qeEeuqofkVHzREZw" supplier="_64B5XVqeEeuqofkVHzREZw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_64B5blqeEeuqofkVHzREZw" client="_64B5ZFqeEeuqofkVHzREZw" supplier="_64B5XlqeEeuqofkVHzREZw"/>
+            <packagedElement xmi:type="uml:Dependency" xmi:id="_64B5b1qeEeuqofkVHzREZw" client="_64B5ZlqeEeuqofkVHzREZw" supplier="_64B5X1qeEeuqofkVHzREZw"/>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5cFqeEeuqofkVHzREZw" name="_slave_comp2">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5cVqeEeuqofkVHzREZw" name="Slave_compInstance" classifier="_64B5hVqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5clqeEeuqofkVHzREZw" definingFeature="_64B5h1qeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5c1qeEeuqofkVHzREZw" instance="_64B5dFqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5dFqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5dVqeEeuqofkVHzREZw" value="222222"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5dlqeEeuqofkVHzREZw" name="_slave_comp3">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5d1qeEeuqofkVHzREZw" name="Slave_compInstance" classifier="_64B5hVqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5eFqeEeuqofkVHzREZw" definingFeature="_64B5h1qeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5eVqeEeuqofkVHzREZw" instance="_64B5elqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5elqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5e1qeEeuqofkVHzREZw" value="33333"/>
+              </packagedElement>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5fFqeEeuqofkVHzREZw" name="_stateManager_comp">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5fVqeEeuqofkVHzREZw" name="StateManager_compInstance" classifier="_64B5qVqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5flqeEeuqofkVHzREZw" definingFeature="_64B5rFqeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5f1qeEeuqofkVHzREZw" instance="_64B5gFqeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5gFqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5gVqeEeuqofkVHzREZw" value="ssssss"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_64B5glqeEeuqofkVHzREZw" name="Slave_comp">
+        <packagedElement xmi:type="uml:Package" xmi:id="_64B5g1qeEeuqofkVHzREZw" name="ports"/>
+        <packagedElement xmi:type="uml:Package" xmi:id="_64B5hFqeEeuqofkVHzREZw" name="src">
+          <packagedElement xmi:type="uml:Component" xmi:id="_64B5hVqeEeuqofkVHzREZw" name="Slave_comp">
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_64B5hlqeEeuqofkVHzREZw" name="stateControlFacet" type="_64B5l1qeEeuqofkVHzREZw"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5h1qeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.RegisterNaming">
+              <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5iFqeEeuqofkVHzREZw" name="_defaultInstance">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5iVqeEeuqofkVHzREZw" instance="_64B5jFqeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5ilqeEeuqofkVHzREZw" name="Propertyaaa" visibility="public">
+              <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5i1qeEeuqofkVHzREZw" name="_Slave_comp">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5jFqeEeuqofkVHzREZw" name="Slave_compInstance" classifier="_64B5hVqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5jVqeEeuqofkVHzREZw" definingFeature="_64B5h1qeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5jlqeEeuqofkVHzREZw" instance="_64B5kVqeEeuqofkVHzREZw"/>
+                </slot>
+                <slot xmi:type="uml:Slot" xmi:id="_64B5j1qeEeuqofkVHzREZw" definingFeature="_64B5ilqeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5kFqeEeuqofkVHzREZw" instance="_64B5k1qeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5kVqeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5klqeEeuqofkVHzREZw" value="1111111"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5k1qeEeuqofkVHzREZw" name="CORBAStringInstance1">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5lFqeEeuqofkVHzREZw" value="xxxxx"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_64B5lVqeEeuqofkVHzREZw" name="StateManager_comp">
+        <packagedElement xmi:type="uml:Package" xmi:id="_64B5llqeEeuqofkVHzREZw" name="ports">
+          <packagedElement xmi:type="uml:Interface" xmi:id="_64B5l1qeEeuqofkVHzREZw" name="StateControl_obj">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_64B5mFqeEeuqofkVHzREZw" name="changeState">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_64B5mVqeEeuqofkVHzREZw" name="newState" type="_64B5oVqeEeuqofkVHzREZw"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_64B5mlqeEeuqofkVHzREZw" name="Parameter1" type="_64B5nlqeEeuqofkVHzREZw" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_64B5m1qeEeuqofkVHzREZw" name="getState">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_64B5nFqeEeuqofkVHzREZw" name="Parameter1" type="_64B5oVqeEeuqofkVHzREZw" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_64B5nVqeEeuqofkVHzREZw" name="Common_defn">
+            <packagedElement xmi:type="uml:Enumeration" xmi:id="_64B5nlqeEeuqofkVHzREZw" name="ReturnStatus">
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_64B5n1qeEeuqofkVHzREZw" name="SUCCESS"/>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_64B5oFqeEeuqofkVHzREZw" name="FAILURE"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Enumeration" xmi:id="_64B5oVqeEeuqofkVHzREZw" name="SystemState">
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_64B5olqeEeuqofkVHzREZw" name="STARTUP_STATE"/>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_64B5o1qeEeuqofkVHzREZw" name="STANDBY_STATE"/>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_64B5pFqeEeuqofkVHzREZw" name="DAYTIME_OPERATIONAL_STATE"/>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_64B5pVqeEeuqofkVHzREZw" name="NIGHTTIME_OPERATIONAL_STATE"/>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_64B5plqeEeuqofkVHzREZw" name="TEST_STATE"/>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_64B5p1qeEeuqofkVHzREZw" name="SHUTDOWN_STATE"/>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_64B5qFqeEeuqofkVHzREZw" name="src">
+          <packagedElement xmi:type="uml:Component" xmi:id="_64B5qVqeEeuqofkVHzREZw" name="StateManager_comp">
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_64B5qlqeEeuqofkVHzREZw" name="stateControlRecept" type="_64B5l1qeEeuqofkVHzREZw">
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_64B5q1qeEeuqofkVHzREZw" value="*"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5rFqeEeuqofkVHzREZw" name="edu.vanderbilt.dre.DAnCE.RegisterNaming">
+              <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5rVqeEeuqofkVHzREZw" name="_defaultInstance">
+              <defaultValue xmi:type="uml:InstanceValue" xmi:id="_64B5rlqeEeuqofkVHzREZw" instance="_64B5sFqeEeuqofkVHzREZw"/>
+            </ownedAttribute>
+            <packagedElement xmi:type="uml:Package" xmi:id="_64B5r1qeEeuqofkVHzREZw" name="_StateManager_comp">
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5sFqeEeuqofkVHzREZw" name="StateManager_compInstance" classifier="_64B5qVqeEeuqofkVHzREZw">
+                <slot xmi:type="uml:Slot" xmi:id="_64B5sVqeEeuqofkVHzREZw" definingFeature="_64B5rFqeEeuqofkVHzREZw">
+                  <value xmi:type="uml:InstanceValue" xmi:id="_64B5slqeEeuqofkVHzREZw" instance="_64B5s1qeEeuqofkVHzREZw"/>
+                </slot>
+              </packagedElement>
+              <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5s1qeEeuqofkVHzREZw" name="CORBAStringInstance">
+                <classifier xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <specification xmi:type="uml:LiteralString" xmi:id="_64B5tFqeEeuqofkVHzREZw" value="sssssss"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_64B5tVqeEeuqofkVHzREZw" name="AMI4CCM_asm"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_64B5tlqeEeuqofkVHzREZw" name="AMI4CCM_asm">
+        <generalization xmi:type="uml:Generalization" xmi:id="_64B5t1qeEeuqofkVHzREZw" general="_64B5tVqeEeuqofkVHzREZw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5uFqeEeuqofkVHzREZw" name="stateManager_comp" visibility="private" type="_64B5qVqeEeuqofkVHzREZw" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5uVqeEeuqofkVHzREZw" name="slave_comp" visibility="private" type="_64B5hVqeEeuqofkVHzREZw" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5ulqeEeuqofkVHzREZw" name="slave_comp2" visibility="private" type="_64B5hVqeEeuqofkVHzREZw" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_64B5u1qeEeuqofkVHzREZw" name="slave_comp3" visibility="private" type="_64B5hVqeEeuqofkVHzREZw" aggregation="composite"/>
+        <ownedConnector xmi:type="uml:Connector" xmi:id="_64B5vFqeEeuqofkVHzREZw" name="">
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_64B5vVqeEeuqofkVHzREZw" partWithPort="_64B5uFqeEeuqofkVHzREZw" role="_64B5qlqeEeuqofkVHzREZw"/>
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_64B5vlqeEeuqofkVHzREZw" partWithPort="_64B5ulqeEeuqofkVHzREZw" role="_64B5hlqeEeuqofkVHzREZw"/>
+        </ownedConnector>
+        <ownedConnector xmi:type="uml:Connector" xmi:id="_64B5v1qeEeuqofkVHzREZw" name="">
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_64B5wFqeEeuqofkVHzREZw" partWithPort="_64B5uFqeEeuqofkVHzREZw" role="_64B5qlqeEeuqofkVHzREZw"/>
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_64B5wVqeEeuqofkVHzREZw" partWithPort="_64B5uVqeEeuqofkVHzREZw" role="_64B5hlqeEeuqofkVHzREZw"/>
+        </ownedConnector>
+        <ownedConnector xmi:type="uml:Connector" xmi:id="_64B5wlqeEeuqofkVHzREZw" name="">
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_64B5w1qeEeuqofkVHzREZw" partWithPort="_64B5uFqeEeuqofkVHzREZw" role="_64B5qlqeEeuqofkVHzREZw"/>
+          <end xmi:type="uml:ConnectorEnd" xmi:id="_64B5xFqeEeuqofkVHzREZw" partWithPort="_64B5u1qeEeuqofkVHzREZw" role="_64B5hlqeEeuqofkVHzREZw"/>
+        </ownedConnector>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_64B5xVqeEeuqofkVHzREZw" name="modelConfiguration">
+      <classifier xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZML_C_Build.library.uml#_oDc5oKULEd2lg4YL0MvrHw"/>
+      <slot xmi:type="uml:Slot" xmi:id="_64B5xlqeEeuqofkVHzREZw">
+        <definingFeature xmi:type="uml:Property" href="pathmap://ZML_LIBRARIES/ZML_C_Build.library.uml#_qzbt8KULEd2lg4YL0MvrHw"/>
+        <value xmi:type="uml:LiteralString" xmi:id="_64B5x1qeEeuqofkVHzREZw" value="">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </value>
+      </slot>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_64B5yFqeEeuqofkVHzREZw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_64B5yVqeEeuqofkVHzREZw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_64B5ylqeEeuqofkVHzREZw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_64B5y1qeEeuqofkVHzREZw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KssEDZEd-LnsQ685SqSQ"/>
+    </profileApplication>
+  </uml:Model>
+  <dds4ccm:DDS4CCMModel xmi:id="_64B5zFqeEeuqofkVHzREZw" base_Model="_64BTJFqeEeuqofkVHzREZw" base_NamedElement="_64BTJFqeEeuqofkVHzREZw"/>
+  <dds4ccm:CXModule xmi:id="_64B5zVqeEeuqofkVHzREZw" base_NamedElement="_64BTKlqeEeuqofkVHzREZw" base_Package="_64BTKlqeEeuqofkVHzREZw"/>
+  <dds4ccm:CXEnum xmi:id="_64B5zlqeEeuqofkVHzREZw" base_NamedElement="_64B5nlqeEeuqofkVHzREZw" base_Enumeration="_64B5nlqeEeuqofkVHzREZw"/>
+  <dds4ccm:CXEnum xmi:id="_64B5z1qeEeuqofkVHzREZw" base_NamedElement="_64B5oVqeEeuqofkVHzREZw" base_Enumeration="_64B5oVqeEeuqofkVHzREZw"/>
+  <dds4ccm:CXInterface xmi:id="_64B50FqeEeuqofkVHzREZw" base_Interface="_64B5l1qeEeuqofkVHzREZw" base_NamedElement="_64B5l1qeEeuqofkVHzREZw" isAsynchronous="true"/>
+  <dds4ccm:CXOperation xmi:id="_64B50VqeEeuqofkVHzREZw" base_NamedElement="_64B5mFqeEeuqofkVHzREZw" base_Operation="_64B5mFqeEeuqofkVHzREZw"/>
+  <dds4ccm:CXParameter xmi:id="_64B50lqeEeuqofkVHzREZw" base_NamedElement="_64B5mVqeEeuqofkVHzREZw" base_Parameter="_64B5mVqeEeuqofkVHzREZw"/>
+  <dds4ccm:CXOperation xmi:id="_64B501qeEeuqofkVHzREZw" base_NamedElement="_64B5m1qeEeuqofkVHzREZw" base_Operation="_64B5m1qeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMComponent xmi:id="_64B51FqeEeuqofkVHzREZw" base_Component="_64B5hVqeEeuqofkVHzREZw" base_NamedElement="_64B5hVqeEeuqofkVHzREZw"/>
+  <dds4ccm:InterfacePort xmi:id="_64B51VqeEeuqofkVHzREZw" base_Port="_64B5hlqeEeuqofkVHzREZw" isAsynchronous="true"/>
+  <dds4ccm:CCMComponent xmi:id="_64B51lqeEeuqofkVHzREZw" base_Component="_64B5qVqeEeuqofkVHzREZw" base_NamedElement="_64B5qVqeEeuqofkVHzREZw"/>
+  <dds4ccm:InterfacePort xmi:id="_64B511qeEeuqofkVHzREZw" base_Port="_64B5qlqeEeuqofkVHzREZw" isConjugated="true" isAsynchronous="true"/>
+  <dds4ccm:Node xmi:id="_64B52FqeEeuqofkVHzREZw" base_Component="_64B40VqeEeuqofkVHzREZw"/>
+  <dds4ccm:ResourceProperty xmi:id="_64B52VqeEeuqofkVHzREZw" base_Property="_64B40lqeEeuqofkVHzREZw"/>
+  <dds4ccm:Resource xmi:id="_64B52lqeEeuqofkVHzREZw" base_Class="_64B43lqeEeuqofkVHzREZw">
+    <resourceType>edu.vanderbilt.dre.DAnCE.NodeAddress</resourceType>
+  </dds4ccm:Resource>
+  <dds4ccm:SatisfierProperty xmi:id="_64B521qeEeuqofkVHzREZw" kind="Attribute" base_Property="_64B431qeEeuqofkVHzREZw"/>
+  <dds4ccm:Domain xmi:id="_64B53FqeEeuqofkVHzREZw" UUID="_6706bb44-24d6-47ca-bc87-102a4bcc8045" base_Component="_64B49lqeEeuqofkVHzREZw"/>
+  <dds4ccm:NodeInstance xmi:id="_64B53VqeEeuqofkVHzREZw" base_Property="_64B491qeEeuqofkVHzREZw"/>
+  <dds4ccm:ContainerProcess xmi:id="_64B53lqeEeuqofkVHzREZw" base_Component="_64B44VqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B531qeEeuqofkVHzREZw" base_NamedElement="_64B44lqeEeuqofkVHzREZw" base_Property="_64B44lqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B54FqeEeuqofkVHzREZw" value="ContainerProcess" base_NamedElement="_64B441qeEeuqofkVHzREZw" base_Property="_64B441qeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B54VqeEeuqofkVHzREZw" base_NamedElement="_64B45FqeEeuqofkVHzREZw" base_Property="_64B45FqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B54lqeEeuqofkVHzREZw" base_NamedElement="_64B45VqeEeuqofkVHzREZw" base_Property="_64B45VqeEeuqofkVHzREZw"/>
+  <dds4ccm:ContainerProcess xmi:id="_64B541qeEeuqofkVHzREZw" base_Component="_64B45lqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B55FqeEeuqofkVHzREZw" base_NamedElement="_64B451qeEeuqofkVHzREZw" base_Property="_64B451qeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B55VqeEeuqofkVHzREZw" value="ContainerProcess" base_NamedElement="_64B46FqeEeuqofkVHzREZw" base_Property="_64B46FqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B55lqeEeuqofkVHzREZw" base_NamedElement="_64B46VqeEeuqofkVHzREZw" base_Property="_64B46VqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B551qeEeuqofkVHzREZw" base_NamedElement="_64B46lqeEeuqofkVHzREZw" base_Property="_64B46lqeEeuqofkVHzREZw"/>
+  <dds4ccm:ContainerProcess xmi:id="_64B56FqeEeuqofkVHzREZw" base_Component="_64B461qeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B56VqeEeuqofkVHzREZw" base_NamedElement="_64B47FqeEeuqofkVHzREZw" base_Property="_64B47FqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B56lqeEeuqofkVHzREZw" value="ContainerProcess" base_NamedElement="_64B47VqeEeuqofkVHzREZw" base_Property="_64B47VqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B561qeEeuqofkVHzREZw" base_NamedElement="_64B47lqeEeuqofkVHzREZw" base_Property="_64B47lqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B57FqeEeuqofkVHzREZw" base_NamedElement="_64B471qeEeuqofkVHzREZw" base_Property="_64B471qeEeuqofkVHzREZw"/>
+  <dds4ccm:ContainerProcess xmi:id="_64B57VqeEeuqofkVHzREZw" base_Component="_64B48FqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B57lqeEeuqofkVHzREZw" base_NamedElement="_64B48VqeEeuqofkVHzREZw" base_Property="_64B48VqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B571qeEeuqofkVHzREZw" value="ContainerProcess" base_NamedElement="_64B48lqeEeuqofkVHzREZw" base_Property="_64B48lqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B58FqeEeuqofkVHzREZw" base_NamedElement="_64B481qeEeuqofkVHzREZw" base_Property="_64B481qeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B58VqeEeuqofkVHzREZw" base_NamedElement="_64B49FqeEeuqofkVHzREZw" base_Property="_64B49FqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPlan xmi:id="_64B58lqeEeuqofkVHzREZw" base_Component="_64B4-1qeEeuqofkVHzREZw" id="_2616c404-5ce3-4712-82c5-726bba2b37c3"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B581qeEeuqofkVHzREZw" nestedPart="_64B59FqeEeuqofkVHzREZw _64B6ClqeEeuqofkVHzREZw _64B6DFqeEeuqofkVHzREZw _64B6DlqeEeuqofkVHzREZw" modelElement="_64B49lqeEeuqofkVHzREZw" base_Property="_64B4_FqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B59FqeEeuqofkVHzREZw" modelElement="_64B491qeEeuqofkVHzREZw" base_Property="_64B4_VqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B59VqeEeuqofkVHzREZw" modelElement="_64B45lqeEeuqofkVHzREZw" base_Property="_64B4_lqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B59lqeEeuqofkVHzREZw" modelElement="_64B44VqeEeuqofkVHzREZw" base_Property="_64B5AFqeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_64B591qeEeuqofkVHzREZw" base_Dependency="_64B5FVqeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_64B5-FqeEeuqofkVHzREZw" base_Dependency="_64B5FlqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMComponent xmi:id="_64B5-VqeEeuqofkVHzREZw" base_Component="_64B5tVqeEeuqofkVHzREZw" base_NamedElement="_64B5tVqeEeuqofkVHzREZw"/>
+  <dds4ccm:AssemblyImplementation xmi:id="_64B5-lqeEeuqofkVHzREZw" base_Component="_64B5tlqeEeuqofkVHzREZw" base_NamedElement="_64B5tlqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMPart xmi:id="_64B5-1qeEeuqofkVHzREZw" base_Property="_64B5uFqeEeuqofkVHzREZw" base_NamedElement="_64B5uFqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMPart xmi:id="_64B5_FqeEeuqofkVHzREZw" base_Property="_64B5uVqeEeuqofkVHzREZw" base_NamedElement="_64B5uVqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMPart xmi:id="_64B5_VqeEeuqofkVHzREZw" base_Property="_64B5ulqeEeuqofkVHzREZw" base_NamedElement="_64B5ulqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMPart xmi:id="_64B5_lqeEeuqofkVHzREZw" base_Property="_64B5u1qeEeuqofkVHzREZw" base_NamedElement="_64B5u1qeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMConnector xmi:id="_64B5_1qeEeuqofkVHzREZw" base_Connector="_64B5vFqeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMConnector xmi:id="_64B6AFqeEeuqofkVHzREZw" base_Connector="_64B5v1qeEeuqofkVHzREZw"/>
+  <dds4ccm:CCMConnector xmi:id="_64B6AVqeEeuqofkVHzREZw" base_Connector="_64B5wlqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B6AlqeEeuqofkVHzREZw" nestedPart="_64B6A1qeEeuqofkVHzREZw _64B6BFqeEeuqofkVHzREZw _64B6BVqeEeuqofkVHzREZw _64B6BlqeEeuqofkVHzREZw" modelElement="_64B5tVqeEeuqofkVHzREZw" base_Property="_64B5AlqeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_64B6A1qeEeuqofkVHzREZw" nestedPart="_64B6D1qeEeuqofkVHzREZw" modelElement="_64B5uFqeEeuqofkVHzREZw" base_Property="_64B5A1qeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_64B6BFqeEeuqofkVHzREZw" nestedPart="_64B6EFqeEeuqofkVHzREZw" modelElement="_64B5uVqeEeuqofkVHzREZw" base_Property="_64B5BVqeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_64B6BVqeEeuqofkVHzREZw" nestedPart="_64B6EVqeEeuqofkVHzREZw" modelElement="_64B5ulqeEeuqofkVHzREZw" base_Property="_64B5B1qeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_64B6BlqeEeuqofkVHzREZw" nestedPart="_64B6ElqeEeuqofkVHzREZw" modelElement="_64B5u1qeEeuqofkVHzREZw" base_Property="_64B5CVqeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_64B6B1qeEeuqofkVHzREZw" base_Dependency="_64B5F1qeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_64B6CFqeEeuqofkVHzREZw" base_Dependency="_64B5GFqeEeuqofkVHzREZw"/>
+  <dds4ccm:NodeInstance xmi:id="_64B6CVqeEeuqofkVHzREZw" base_Property="_64B4-FqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B6ClqeEeuqofkVHzREZw" modelElement="_64B4-FqeEeuqofkVHzREZw" base_Property="_64B5C1qeEeuqofkVHzREZw"/>
+  <dds4ccm:NodeInstance xmi:id="_64B6C1qeEeuqofkVHzREZw" base_Property="_64B4-VqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B6DFqeEeuqofkVHzREZw" modelElement="_64B4-VqeEeuqofkVHzREZw" base_Property="_64B5DVqeEeuqofkVHzREZw"/>
+  <dds4ccm:NodeInstance xmi:id="_64B6DVqeEeuqofkVHzREZw" base_Property="_64B4-lqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B6DlqeEeuqofkVHzREZw" modelElement="_64B4-lqeEeuqofkVHzREZw" base_Property="_64B5D1qeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_64B6D1qeEeuqofkVHzREZw" modelElement="_64B5qlqeEeuqofkVHzREZw" base_Property="_64B5EVqeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_64B6EFqeEeuqofkVHzREZw" modelElement="_64B5hlqeEeuqofkVHzREZw" base_Property="_64B5ElqeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_64B6EVqeEeuqofkVHzREZw" modelElement="_64B5hlqeEeuqofkVHzREZw" base_Property="_64B5E1qeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_64B6ElqeEeuqofkVHzREZw" modelElement="_64B5hlqeEeuqofkVHzREZw" base_Property="_64B5FFqeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B6E1qeEeuqofkVHzREZw" base_NamedElement="_64B5h1qeEeuqofkVHzREZw" base_Property="_64B5h1qeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B6FFqeEeuqofkVHzREZw" base_NamedElement="_64B5rFqeEeuqofkVHzREZw" base_Property="_64B5rFqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPlan xmi:id="_64B6FVqeEeuqofkVHzREZw" base_Component="_64B5WFqeEeuqofkVHzREZw" id="_d4c00637-eb80-411b-998c-a735ce023b33"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B6FlqeEeuqofkVHzREZw" nestedPart="_64B6F1qeEeuqofkVHzREZw _64B6GFqeEeuqofkVHzREZw _64B6GVqeEeuqofkVHzREZw _64B6GlqeEeuqofkVHzREZw" modelElement="_64B49lqeEeuqofkVHzREZw" base_Property="_64B5WVqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B6F1qeEeuqofkVHzREZw" modelElement="_64B491qeEeuqofkVHzREZw" base_Property="_64B5WlqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B6GFqeEeuqofkVHzREZw" modelElement="_64B4-FqeEeuqofkVHzREZw" base_Property="_64B5W1qeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B6GVqeEeuqofkVHzREZw" modelElement="_64B4-VqeEeuqofkVHzREZw" base_Property="_64B5XFqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B6GlqeEeuqofkVHzREZw" modelElement="_64B4-lqeEeuqofkVHzREZw" base_Property="_64B5XVqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B6G1qeEeuqofkVHzREZw" modelElement="_64B461qeEeuqofkVHzREZw" base_Property="_64B5XlqeEeuqofkVHzREZw"/>
+  <dds4ccm:DeploymentPart xmi:id="_64B6HFqeEeuqofkVHzREZw" modelElement="_64B48FqeEeuqofkVHzREZw" base_Property="_64B5X1qeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_64B6HVqeEeuqofkVHzREZw" nestedPart="_64B6HlqeEeuqofkVHzREZw _64B6H1qeEeuqofkVHzREZw _64B6IFqeEeuqofkVHzREZw _64B6IVqeEeuqofkVHzREZw" modelElement="_64B5tVqeEeuqofkVHzREZw" base_Property="_64B5YFqeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_64B6HlqeEeuqofkVHzREZw" nestedPart="_64B6IlqeEeuqofkVHzREZw" modelElement="_64B5uFqeEeuqofkVHzREZw" base_Property="_64B5YVqeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_64B6H1qeEeuqofkVHzREZw" nestedPart="_64B6I1qeEeuqofkVHzREZw" modelElement="_64B5uVqeEeuqofkVHzREZw" base_Property="_64B5Y1qeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_64B6IFqeEeuqofkVHzREZw" nestedPart="_64B6JFqeEeuqofkVHzREZw" modelElement="_64B5ulqeEeuqofkVHzREZw" base_Property="_64B5ZFqeEeuqofkVHzREZw"/>
+  <dds4ccm:ComponentDeploymentPart xmi:id="_64B6IVqeEeuqofkVHzREZw" nestedPart="_64B6JVqeEeuqofkVHzREZw" modelElement="_64B5u1qeEeuqofkVHzREZw" base_Property="_64B5ZlqeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_64B6IlqeEeuqofkVHzREZw" modelElement="_64B5qlqeEeuqofkVHzREZw" base_Property="_64B5aFqeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_64B6I1qeEeuqofkVHzREZw" modelElement="_64B5hlqeEeuqofkVHzREZw" base_Property="_64B5aVqeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_64B6JFqeEeuqofkVHzREZw" modelElement="_64B5hlqeEeuqofkVHzREZw" base_Property="_64B5alqeEeuqofkVHzREZw"/>
+  <dds4ccm:PerPortConnectorTypeDeploymentPart xmi:id="_64B6JVqeEeuqofkVHzREZw" modelElement="_64B5hlqeEeuqofkVHzREZw" base_Property="_64B5a1qeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_64B6JlqeEeuqofkVHzREZw" base_Dependency="_64B5bFqeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_64B6J1qeEeuqofkVHzREZw" base_Dependency="_64B5bVqeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_64B6KFqeEeuqofkVHzREZw" base_Dependency="_64B5blqeEeuqofkVHzREZw"/>
+  <dds4ccm:Allocation xmi:id="_64B6KVqeEeuqofkVHzREZw" base_Dependency="_64B5b1qeEeuqofkVHzREZw"/>
+  <dds4ccm:Property xmi:id="_64B6KlqeEeuqofkVHzREZw" base_NamedElement="_64B5ilqeEeuqofkVHzREZw" base_Property="_64B5ilqeEeuqofkVHzREZw"/>
+  <dds4ccm:CXParameter xmi:id="_TPWMgFqgEeu3RoqIwcox-A" base_NamedElement="_64B5mlqeEeuqofkVHzREZw" base_Parameter="_64B5mlqeEeuqofkVHzREZw"/>
+  <dds4ccm:CXParameter xmi:id="_TPXaoFqgEeu3RoqIwcox-A" base_NamedElement="_64B5nFqeEeuqofkVHzREZw" base_Parameter="_64B5nFqeEeuqofkVHzREZw"/>
+</xmi:XMI>

@@ -65,6 +65,9 @@ public class CORBAMigrationUtil {
 		}
 		for (Parameter next : elementsToMigrate) {
 			if (!ZDLUtil.isZDLConcept(next, CXDomainNames.CXPARAMETER)) {
+				if(UML2Util.isEmpty(next.getName())) {
+					next.setName("ReturnParameter");
+				}
 				ZDLUtil.addZDLConcept(next, CXDomainNames.CXPARAMETER);
 			}
 		}

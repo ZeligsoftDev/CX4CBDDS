@@ -2,7 +2,7 @@
 <Deployment:DeploymentPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
     xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
   <label>ProgAMI_prog1a</label>
-  <UUID>_31a55dd4-0049-4d86-ab80-a2cb5dbedd87</UUID>
+  <UUID>_d94b8edf-f8b5-456a-9af9-4a4e2edc6147</UUID>
   <implementation xmi:id="CompSvrImpl">
     <name>CompSvr</name>
     <source/>
@@ -20,11 +20,11 @@
     </execParameter>
   </implementation>
 
-  <implementation xmi:id="_b85b5e82-8160-4c25-89a0-ed1f6a112c3e">
+  <implementation xmi:id="_de652f0d-44b0-48a0-a86c-358792165f5b">
     <name>Slave_compImpl</name>
     <source/>
-    <artifact xmi:idref="_ebcda23e-53f3-4ac4-90c0-2226483df6d1"/>
-    <artifact xmi:idref="_cf9398ce-e4f5-4cec-94be-5bcf0a4d04a1"/>
+    <artifact xmi:idref="_aee162e2-ab55-418f-96f3-a9a71b8223dc"/>
+    <artifact xmi:idref="_4252a1a6-ecb0-47da-818f-f558254e51a5"/>
     <execParameter>
       <name>component factory</name>
       <value>
@@ -82,11 +82,11 @@
     </execParameter>
   </implementation>
 
-  <implementation xmi:id="_9e77a396-fb11-4da7-9d15-7ba0e829405f">
+  <implementation xmi:id="_a081d1c3-334f-46ea-8be8-3638348c4d27">
     <name>StateControl_obj</name>
     <source/>
-    <artifact xmi:idref="_9e5f8ac8-3467-44f1-8f51-8d1123cd0b17"/>
-    <artifact xmi:idref="_fe63e8bc-c5ef-4465-9e10-e0e89e02c679"/>
+    <artifact xmi:idref="_58225270-f67f-4ce1-8e9f-c743ac9bec41"/>
+    <artifact xmi:idref="_f830e9f0-f725-423d-b934-ddcbbf31b229"/>
     <execParameter>
       <name>component factory</name>
       <value>
@@ -144,11 +144,11 @@
     </execParameter>
   </implementation>
 
-  <implementation xmi:id="_796172ee-383f-476a-b5be-61e5927e7c8c">
+  <implementation xmi:id="_8645407a-eb2d-44f6-a146-281f2af3ee8b">
     <name>StateManager_compImpl</name>
     <source/>
-    <artifact xmi:idref="_2b5d963d-edc6-4062-a53a-545c9ceada94"/>
-    <artifact xmi:idref="_0acfa8b1-e1d8-4343-b51c-218cf8150bee"/>
+    <artifact xmi:idref="_22ce82e3-53d5-4b77-a95f-78b0234e8d25"/>
+    <artifact xmi:idref="_0cef0123-f01b-452b-b8d7-1cc49d4fb218"/>
     <execParameter>
       <name>component factory</name>
       <value>
@@ -206,11 +206,22 @@
     </execParameter>
   </implementation>
 
-  <instance xmi:id="_58665851-2457-4b8a-b8ad-cdd89ed872fd">
+  <instance xmi:id="_975eabff-c787-48cb-9a43-1f2dcf08244b">
     <name>AMI4CCM_asm.slave_comp</name>
     <node>Slave1Node</node>
     <source/>
-    <implementation xmi:idref="_b85b5e82-8160-4c25-89a0-ed1f6a112c3e"/>
+    <implementation xmi:idref="_de652f0d-44b0-48a0-a86c-358792165f5b"/>
+    <configProperty>
+      <name>edu.vanderbilt.dre.DAnCE.RegisterNaming</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>111111</string>
+        </value>
+      </value>
+    </configProperty>
     <configProperty>
       <name>Propertyaaa</name>
       <value>
@@ -224,29 +235,29 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="_0f437449-0883-4416-809f-b756298bbecd">
+  <instance xmi:id="_e80f90fe-a0c7-4145-b51a-3198d8e0b129">
     <name>AMI4CCM_asm.stateManager_comp</name>
     <node>StateManagerNode</node>
     <source/>
-    <implementation xmi:idref="_796172ee-383f-476a-b5be-61e5927e7c8c"/>
-  </instance>
-
-  <instance xmi:id="_adc9c24d-a228-471f-8b52-3a2a4ecc7885">
-    <name>Slave1_proc_ComponentServerInstance</name>
-    <node>Slave1Node</node>
-    <source/>
-    <implementation xmi:idref="CompSvrImpl"/>
+    <implementation xmi:idref="_8645407a-eb2d-44f6-a146-281f2af3ee8b"/>
     <configProperty>
-      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
+      <name>edu.vanderbilt.dre.DAnCE.RegisterNaming</name>
       <value>
         <type>
           <kind>tk_string</kind>
         </type>
         <value>
-          <string>Slave1_proc</string>
+          <string>ssssss</string>
         </value>
       </value>
     </configProperty>
+  </instance>
+
+  <instance xmi:id="_fb643d9a-575c-4fc8-ac82-a0a2e5bb3476">
+    <name>Slave1_proc_ComponentServerInstance</name>
+    <node>Slave1Node</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
     <configProperty>
       <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
       <value>
@@ -260,22 +271,11 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="_20992116-722a-43ea-849c-e4f814b6d4c1">
+  <instance xmi:id="_e0b84fb2-7bb8-4174-bf4a-b6450471669c">
     <name>StateManager_proc_ComponentServerInstance</name>
     <node>StateManagerNode</node>
     <source/>
     <implementation xmi:idref="CompSvrImpl"/>
-    <configProperty>
-      <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>StateManager_proc</string>
-        </value>
-      </value>
-    </configProperty>
     <configProperty>
       <name>edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName</name>
       <value>
@@ -289,18 +289,18 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="_57506f56-3f97-47bc-835c-54201d41f9b4">
+  <instance xmi:id="_974e9eb4-6d20-436c-aeab-cbf4e324eb28">
     <name>ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp_stateManager_comp@StateManagerNode.StateManager_proc</name>
     <node>StateManagerNode</node>
     <source/>
-    <implementation xmi:idref="_9e77a396-fb11-4da7-9d15-7ba0e829405f"/>
+    <implementation xmi:idref="_a081d1c3-334f-46ea-8be8-3638348c4d27"/>
   </instance>
 
-  <instance xmi:id="_b536ba11-c663-448c-bd45-a8e25f815fa6">
+  <instance xmi:id="_88116f43-9b3e-4cc8-b5c1-aadf20a6f41e">
     <name>ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp2_stateManager_comp@StateManagerNode.StateManager_proc</name>
     <node>StateManagerNode</node>
     <source/>
-    <implementation xmi:idref="_9e77a396-fb11-4da7-9d15-7ba0e829405f"/>
+    <implementation xmi:idref="_a081d1c3-334f-46ea-8be8-3638348c4d27"/>
     <configProperty>
       <name>edu.vanderbilt.dre.DAnCE.RegisterNaming</name>
       <value>
@@ -308,17 +308,17 @@
           <kind>tk_string</kind>
         </type>
         <value>
-          <string>AMI4CCM_asm::stateManager_comp_stateControlRecept__AMI4CCM_asm::slave_comp2_stateControlFacet</string>
+          <string>stateManager_comp_stateControlRecept__slave_comp2_stateControlFacet</string>
         </value>
       </value>
     </configProperty>
   </instance>
 
-  <instance xmi:id="_1ed6973f-7545-44aa-9237-75ff8c3a4713">
+  <instance xmi:id="_1038c4fd-6afa-4ed2-9cef-2ed3283a6548">
     <name>ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp3_stateManager_comp@StateManagerNode.StateManager_proc</name>
     <node>StateManagerNode</node>
     <source/>
-    <implementation xmi:idref="_9e77a396-fb11-4da7-9d15-7ba0e829405f"/>
+    <implementation xmi:idref="_a081d1c3-334f-46ea-8be8-3638348c4d27"/>
     <configProperty>
       <name>edu.vanderbilt.dre.DAnCE.RegisterNaming</name>
       <value>
@@ -326,7 +326,7 @@
           <kind>tk_string</kind>
         </type>
         <value>
-          <string>AMI4CCM_asm::stateManager_comp_stateControlRecept__AMI4CCM_asm::slave_comp3_stateControlFacet</string>
+          <string>stateManager_comp_stateControlRecept__slave_comp3_stateControlFacet</string>
         </value>
       </value>
     </configProperty>
@@ -342,13 +342,13 @@
       <portName>ami4ccm_port_ami4ccm_provides</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_57506f56-3f97-47bc-835c-54201d41f9b4"/>
+      <instance xmi:idref="_974e9eb4-6d20-436c-aeab-cbf4e324eb28"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>sendc_stateControlRecept</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+      <instance xmi:idref="_e80f90fe-a0c7-4145-b51a-3198d8e0b129"/>
     </internalEndpoint>
   </connection>
 
@@ -358,13 +358,13 @@
       <portName>stateControlFacet</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_58665851-2457-4b8a-b8ad-cdd89ed872fd"/>
+      <instance xmi:idref="_975eabff-c787-48cb-9a43-1f2dcf08244b"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>ami4ccm_port_ami4ccm_uses</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_57506f56-3f97-47bc-835c-54201d41f9b4"/>
+      <instance xmi:idref="_974e9eb4-6d20-436c-aeab-cbf4e324eb28"/>
     </internalEndpoint>
   </connection>
 
@@ -378,13 +378,13 @@
       <portName>stateControlRecept</portName>
       <provider>false</provider>
       <kind>MultiplexReceptacle</kind>
-      <instance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+      <instance xmi:idref="_e80f90fe-a0c7-4145-b51a-3198d8e0b129"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_57506f56-3f97-47bc-835c-54201d41f9b4"/>
+      <instance xmi:idref="_974e9eb4-6d20-436c-aeab-cbf4e324eb28"/>
     </internalEndpoint>
   </connection>
 
@@ -398,13 +398,13 @@
       <portName>ami4ccm_port_ami4ccm_provides</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_b536ba11-c663-448c-bd45-a8e25f815fa6"/>
+      <instance xmi:idref="_88116f43-9b3e-4cc8-b5c1-aadf20a6f41e"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>sendc_stateControlRecept</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+      <instance xmi:idref="_e80f90fe-a0c7-4145-b51a-3198d8e0b129"/>
     </internalEndpoint>
   </connection>
 
@@ -414,7 +414,7 @@
       <portName>ami4ccm_port_ami4ccm_uses</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_b536ba11-c663-448c-bd45-a8e25f815fa6"/>
+      <instance xmi:idref="_88116f43-9b3e-4cc8-b5c1-aadf20a6f41e"/>
     </internalEndpoint>
     <externalReference>
       <location>corbaname:rir:/NameService#222222</location>
@@ -434,13 +434,13 @@
       <portName>stateControlRecept</portName>
       <provider>false</provider>
       <kind>MultiplexReceptacle</kind>
-      <instance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+      <instance xmi:idref="_e80f90fe-a0c7-4145-b51a-3198d8e0b129"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_b536ba11-c663-448c-bd45-a8e25f815fa6"/>
+      <instance xmi:idref="_88116f43-9b3e-4cc8-b5c1-aadf20a6f41e"/>
     </internalEndpoint>
   </connection>
 
@@ -454,13 +454,13 @@
       <portName>ami4ccm_port_ami4ccm_provides</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_1ed6973f-7545-44aa-9237-75ff8c3a4713"/>
+      <instance xmi:idref="_1038c4fd-6afa-4ed2-9cef-2ed3283a6548"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>sendc_stateControlRecept</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+      <instance xmi:idref="_e80f90fe-a0c7-4145-b51a-3198d8e0b129"/>
     </internalEndpoint>
   </connection>
 
@@ -470,7 +470,7 @@
       <portName>ami4ccm_port_ami4ccm_uses</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="_1ed6973f-7545-44aa-9237-75ff8c3a4713"/>
+      <instance xmi:idref="_1038c4fd-6afa-4ed2-9cef-2ed3283a6548"/>
     </internalEndpoint>
     <externalReference>
       <location>corbaname:rir:/NameService#333333</location>
@@ -490,13 +490,13 @@
       <portName>stateControlRecept</portName>
       <provider>false</provider>
       <kind>MultiplexReceptacle</kind>
-      <instance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+      <instance xmi:idref="_e80f90fe-a0c7-4145-b51a-3198d8e0b129"/>
     </internalEndpoint>
     <internalEndpoint>
       <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="_1ed6973f-7545-44aa-9237-75ff8c3a4713"/>
+      <instance xmi:idref="_1038c4fd-6afa-4ed2-9cef-2ed3283a6548"/>
     </internalEndpoint>
   </connection>
 
@@ -507,42 +507,42 @@
     <location>dance_locality_manager</location>
   </artifact>
 
-  <artifact xmi:id="_ebcda23e-53f3-4ac4-90c0-2226483df6d1">
+  <artifact xmi:id="_aee162e2-ab55-418f-96f3-a9a71b8223dc">
     <name>SNA_Examples_Slave_comp_exec</name>
     <source/>
     <node/>
     <location>SNA_Examples_Slave_comp_exec</location>
   </artifact>
 
-  <artifact xmi:id="_cf9398ce-e4f5-4cec-94be-5bcf0a4d04a1">
+  <artifact xmi:id="_4252a1a6-ecb0-47da-818f-f558254e51a5">
     <name>SNA_Examples_Slave_comp_svnt</name>
     <source/>
     <node/>
     <location>SNA_Examples_Slave_comp_svnt</location>
   </artifact>
 
-  <artifact xmi:id="_2b5d963d-edc6-4062-a53a-545c9ceada94">
+  <artifact xmi:id="_22ce82e3-53d5-4b77-a95f-78b0234e8d25">
     <name>SNA_Examples_StateManager_comp_exec</name>
     <source/>
     <node/>
     <location>SNA_Examples_StateManager_comp_exec</location>
   </artifact>
 
-  <artifact xmi:id="_0acfa8b1-e1d8-4343-b51c-218cf8150bee">
+  <artifact xmi:id="_0cef0123-f01b-452b-b8d7-1cc49d4fb218">
     <name>SNA_Examples_StateManager_comp_svnt</name>
     <source/>
     <node/>
     <location>SNA_Examples_StateManager_comp_svnt</location>
   </artifact>
 
-  <artifact xmi:id="_9e5f8ac8-3467-44f1-8f51-8d1123cd0b17">
+  <artifact xmi:id="_58225270-f67f-4ce1-8e9f-c743ac9bec41">
     <name>SNA_Examples_StateControl_obj_exec</name>
     <source/>
     <node/>
     <location>SNA_Examples_StateControl_obj_exec</location>
   </artifact>
 
-  <artifact xmi:id="_fe63e8bc-c5ef-4465-9e10-e0e89e02c679">
+  <artifact xmi:id="_f830e9f0-f725-423d-b934-ddcbbf31b229">
     <name>SNA_Examples_StateControl_obj_svnt</name>
     <source/>
     <node/>
@@ -552,23 +552,23 @@
   <localityConstraint>
     <constraint>SameProcess</constraint>
     <!-- This is referencing [Slave1_proc_ComponentServerInstance] -->
-    <constrainedInstance xmi:idref="_adc9c24d-a228-471f-8b52-3a2a4ecc7885"/>
+    <constrainedInstance xmi:idref="_fb643d9a-575c-4fc8-ac82-a0a2e5bb3476"/>
     <!-- This is referencing [AMI4CCM_asm.slave_comp] -->
-    <constrainedInstance xmi:idref="_58665851-2457-4b8a-b8ad-cdd89ed872fd"/>
+    <constrainedInstance xmi:idref="_975eabff-c787-48cb-9a43-1f2dcf08244b"/>
   </localityConstraint>
 
   <localityConstraint>
     <constraint>SameProcess</constraint>
     <!-- This is referencing [StateManager_proc_ComponentServerInstance] -->
-    <constrainedInstance xmi:idref="_20992116-722a-43ea-849c-e4f814b6d4c1"/>
+    <constrainedInstance xmi:idref="_e0b84fb2-7bb8-4174-bf4a-b6450471669c"/>
     <!-- This is referencing [AMI4CCM_asm.stateManager_comp] -->
-    <constrainedInstance xmi:idref="_0f437449-0883-4416-809f-b756298bbecd"/>
+    <constrainedInstance xmi:idref="_e80f90fe-a0c7-4145-b51a-3198d8e0b129"/>
     <!-- This is referencing [ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp_stateManager_comp@StateManagerNode.StateManager_proc] -->
-    <constrainedInstance xmi:idref="_57506f56-3f97-47bc-835c-54201d41f9b4"/>
+    <constrainedInstance xmi:idref="_974e9eb4-6d20-436c-aeab-cbf4e324eb28"/>
     <!-- This is referencing [ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp2_stateManager_comp@StateManagerNode.StateManager_proc] -->
-    <constrainedInstance xmi:idref="_b536ba11-c663-448c-bd45-a8e25f815fa6"/>
+    <constrainedInstance xmi:idref="_88116f43-9b3e-4cc8-b5c1-aadf20a6f41e"/>
     <!-- This is referencing [ProgAMI4CCM_asm.SNA_Examples.StateManager_comp.ports.StateControl_obj_AMI4CCM_Connector_for_slave_comp3_stateManager_comp@StateManagerNode.StateManager_proc] -->
-    <constrainedInstance xmi:idref="_1ed6973f-7545-44aa-9237-75ff8c3a4713"/>
+    <constrainedInstance xmi:idref="_1038c4fd-6afa-4ed2-9cef-2ed3283a6548"/>
   </localityConstraint>
 
 </Deployment:DeploymentPlan>

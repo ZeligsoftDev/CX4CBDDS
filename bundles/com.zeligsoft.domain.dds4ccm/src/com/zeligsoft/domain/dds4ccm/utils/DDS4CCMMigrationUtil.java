@@ -52,17 +52,23 @@ import com.zeligsoft.domain.zml.util.WorkerFunctionRepair;
 import com.zeligsoft.domain.zml.util.ZDeploymentUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
-@SuppressWarnings("nls")
 public final class DDS4CCMMigrationUtil {
 
 	public static final String SOURCE_NAME = "cx.migration"; //$NON-NLS-1$
 
-	public static final String CURRENT_VERSION = "2.0.1"; //$NON-NLS-1$
+	public static final String CURRENT_VERSION = "2.1.0"; //$NON-NLS-1$
 
 	private static boolean migrateAll(Model model, boolean probe) {
 		boolean result = false;
 		String modelVersion = getModelVersion(model);
 
+		if (compareVersion("2.1.0", modelVersion) > 0) {
+			if (!probe) {
+				DDS4CCMModelMigration.migrateCSLConnector(model);
+			}
+			result = true;
+		}
+		
 		if (compareVersion("2.0.1", modelVersion) > 0) {
 			if (!probe) {
 				CORBAMigrationUtil.migrateReturnParameter(model);

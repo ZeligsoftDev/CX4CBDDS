@@ -2,8 +2,8 @@
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1 pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ">
   <uml:Model xmi:id="_mLCrZVPxEeqNpdmZFi99Lg" name="BasicPubSub_PSDD">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mLCrZlPxEeqNpdmZFi99Lg" source="cx.migration">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mLCrZ1PxEeqNpdmZFi99Lg" key="version" value="1.4.1"/>
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mLCraFPxEeqNpdmZFi99Lg" key="date" value="1449662693965"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mLCrZ1PxEeqNpdmZFi99Lg" key="version" value="2.0.1"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mLCraFPxEeqNpdmZFi99Lg" key="date" value="1611094770588"/>
     </eAnnotations>
     <packageImport xmi:type="uml:PackageImport" xmi:id="_mLCraVPxEeqNpdmZFi99Lg">
       <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_DO-O0EDsEd-pwPnT_VsB_g"/>
@@ -798,10 +798,10 @@
     </profileApplication>
   </uml:Model>
   <dds4ccm:DDS4CCMModel xmi:id="_mLD5FlPxEeqNpdmZFi99Lg" base_Model="_mLCrZVPxEeqNpdmZFi99Lg" base_NamedElement="_mLCrZVPxEeqNpdmZFi99Lg" fixedHeader="//==============================================================================&#xA;//                         U N C L A S S I F I E D&#xA;//==============================================================================&#xA;// Copyright (c) Northrop Grumman Corporation 2008-2020 -- ALL RIGHTS RESERVED&#xA;//==============================================================================&#xA;//&#xA;//==============================================================================&#xA;// EXPORT REGULATIONS (EAR99)&#xA;//==============================================================================&#xA;// DISCLOSURE: &#xA;//&#xA;// Warning - This data is subject to the Export Administration Act (Title 22 &#xA;// U.S.C. App. 2401 et seq.), as amended. The implementing regulation for &#xA;// this statute is the Export Administration Regulations (EAR) (15 C.F.R.&#xA;// 730-774). It may not be transferred, either in its original form, derivative &#xA;// documents, or after being incorporated into other data without first &#xA;// obtaining approval from the U.S. government or as otherwise authorized by &#xA;// U.S. law and regulations. &#xA;//==============================================================================" fixedFooter="//==============================================================================&#xA;//                            U N C L A S S I F I E D                            &#xA;//==============================================================================" modelType="AXCIOMA"/>
-  <dds4ccm:CORBAString xmi:id="_mLD5F1PxEeqNpdmZFi99Lg" base_NamedElement="_mLDTOFPxEeqNpdmZFi99Lg" bound="512" base_DataType="_mLDTOFPxEeqNpdmZFi99Lg">
-    <bounds xmi:type="dds4ccm:CORBABound" xmi:id="_mLD5GFPxEeqNpdmZFi99Lg" value="512"/>
-  </dds4ccm:CORBAString>
-  <dds4ccm:CORBASequence xmi:id="_mLD5GVPxEeqNpdmZFi99Lg" base_NamedElement="_mLD5DVPxEeqNpdmZFi99Lg" base_DataType="_mLD5DVPxEeqNpdmZFi99Lg"/>
+  <dds4ccm:CXString xmi:id="_mLD5F1PxEeqNpdmZFi99Lg" base_NamedElement="_mLDTOFPxEeqNpdmZFi99Lg" bound="512" base_DataType="_mLDTOFPxEeqNpdmZFi99Lg">
+    <bounds xmi:type="dds4ccm:CXBound" xmi:id="_mLD5GFPxEeqNpdmZFi99Lg" value="512"/>
+  </dds4ccm:CXString>
+  <dds4ccm:CXSequence xmi:id="_mLD5GVPxEeqNpdmZFi99Lg" base_NamedElement="_mLD5DVPxEeqNpdmZFi99Lg" base_DataType="_mLD5DVPxEeqNpdmZFi99Lg"/>
   <dds4ccm:DDSMessage xmi:id="_mLD5flPxEeqNpdmZFi99Lg" base_NamedElement="_mLD4_1PxEeqNpdmZFi99Lg" base_DataType="_mLD4_1PxEeqNpdmZFi99Lg"/>
   <dds4ccm:MessageField xmi:id="_mLD5f1PxEeqNpdmZFi99Lg" base_NamedElement="_mLD5AVPxEeqNpdmZFi99Lg" base_Property="_mLD5AVPxEeqNpdmZFi99Lg"/>
   <dds4ccm:MessageField xmi:id="_mLD5gFPxEeqNpdmZFi99Lg" base_NamedElement="_mLD5A1PxEeqNpdmZFi99Lg" base_Property="_mLD5A1PxEeqNpdmZFi99Lg"/>
@@ -809,8 +809,8 @@
   <dds4ccm:MessageField xmi:id="_mLD5glPxEeqNpdmZFi99Lg" base_NamedElement="_mLD5B1PxEeqNpdmZFi99Lg" base_Property="_mLD5B1PxEeqNpdmZFi99Lg"/>
   <dds4ccm:MessageField xmi:id="_mLD5g1PxEeqNpdmZFi99Lg" base_NamedElement="_mLD5CVPxEeqNpdmZFi99Lg" base_Property="_mLD5CVPxEeqNpdmZFi99Lg"/>
   <dds4ccm:MessageField xmi:id="_mLD5hFPxEeqNpdmZFi99Lg" base_NamedElement="_mLD5C1PxEeqNpdmZFi99Lg" base_Property="_mLD5C1PxEeqNpdmZFi99Lg"/>
-  <dds4ccm:CORBAEnum xmi:id="_mLD5hVPxEeqNpdmZFi99Lg" base_NamedElement="_mLDTL1PxEeqNpdmZFi99Lg" base_Enumeration="_mLDTL1PxEeqNpdmZFi99Lg"/>
-  <dds4ccm:CORBAEnum xmi:id="_mLD5hlPxEeqNpdmZFi99Lg" base_NamedElement="_mLDTM1PxEeqNpdmZFi99Lg" base_Enumeration="_mLDTM1PxEeqNpdmZFi99Lg"/>
+  <dds4ccm:CXEnum xmi:id="_mLD5hVPxEeqNpdmZFi99Lg" base_NamedElement="_mLDTL1PxEeqNpdmZFi99Lg" base_Enumeration="_mLDTL1PxEeqNpdmZFi99Lg"/>
+  <dds4ccm:CXEnum xmi:id="_mLD5hlPxEeqNpdmZFi99Lg" base_NamedElement="_mLDTM1PxEeqNpdmZFi99Lg" base_Enumeration="_mLDTM1PxEeqNpdmZFi99Lg"/>
   <dds4ccm:CCMComponent xmi:id="_mLD5h1PxEeqNpdmZFi99Lg" base_Component="_mLDSAFPxEeqNpdmZFi99Lg" base_NamedElement="_mLDSAFPxEeqNpdmZFi99Lg"/>
   <dds4ccm:InterfacePort xmi:id="_mLD5iFPxEeqNpdmZFi99Lg" base_Port="_mLDSAlPxEeqNpdmZFi99Lg" hasCSL="true"/>
   <dds4ccm:CCMComponent xmi:id="_mLD5iVPxEeqNpdmZFi99Lg" base_Component="_mLDSe1PxEeqNpdmZFi99Lg" base_NamedElement="_mLDSe1PxEeqNpdmZFi99Lg"/>
@@ -834,8 +834,8 @@
   <dds4ccm:Property xmi:id="_mLD5pFPxEeqNpdmZFi99Lg" base_NamedElement="_mLDRmlPxEeqNpdmZFi99Lg" base_Property="_mLDRmlPxEeqNpdmZFi99Lg"/>
   <dds4ccm:Property xmi:id="_mLD5pVPxEeqNpdmZFi99Lg" base_NamedElement="_mLDRm1PxEeqNpdmZFi99Lg" base_Property="_mLDRm1PxEeqNpdmZFi99Lg"/>
   <dds4ccm:Property xmi:id="_mLD5plPxEeqNpdmZFi99Lg" base_NamedElement="_mLDRnFPxEeqNpdmZFi99Lg" base_Property="_mLDRnFPxEeqNpdmZFi99Lg"/>
-  <dds4ccm:CORBAModule xmi:id="_mLD5rVPxEeqNpdmZFi99Lg" base_NamedElement="_mLDR_lPxEeqNpdmZFi99Lg" base_Package="_mLDR_lPxEeqNpdmZFi99Lg"/>
-  <dds4ccm:CORBAModule xmi:id="_mLD5rlPxEeqNpdmZFi99Lg" base_NamedElement="_mLDTKVPxEeqNpdmZFi99Lg" base_Package="_mLDTKVPxEeqNpdmZFi99Lg"/>
+  <dds4ccm:CXModule xmi:id="_mLD5rVPxEeqNpdmZFi99Lg" base_NamedElement="_mLDR_lPxEeqNpdmZFi99Lg" base_Package="_mLDR_lPxEeqNpdmZFi99Lg"/>
+  <dds4ccm:CXModule xmi:id="_mLD5rlPxEeqNpdmZFi99Lg" base_NamedElement="_mLDTKVPxEeqNpdmZFi99Lg" base_Package="_mLDTKVPxEeqNpdmZFi99Lg"/>
   <dds4ccm:CCMComponent xmi:id="_mLD5r1PxEeqNpdmZFi99Lg" base_Component="_mLDR-VPxEeqNpdmZFi99Lg" base_NamedElement="_mLDR-VPxEeqNpdmZFi99Lg"/>
   <dds4ccm:AssemblyImplementation xmi:id="_mLD5sFPxEeqNpdmZFi99Lg" base_Component="_mLDR-lPxEeqNpdmZFi99Lg" base_NamedElement="_mLDR-lPxEeqNpdmZFi99Lg"/>
   <dds4ccm:CCMPart xmi:id="_mLD5sVPxEeqNpdmZFi99Lg" base_Property="_mLDR_FPxEeqNpdmZFi99Lg" base_NamedElement="_mLDR_FPxEeqNpdmZFi99Lg"/>
@@ -913,7 +913,7 @@
   <dds4ccm:WorkerFunctionImpl xmi:id="_mLD6RVPxEeqNpdmZFi99Lg" base_OpaqueBehavior="_mLDSw1PxEeqNpdmZFi99Lg"/>
   <dds4ccm:WorkerFunction xmi:id="_mLD6RlPxEeqNpdmZFi99Lg" base_Operation="_mLDTFlPxEeqNpdmZFi99Lg" uuid="0d16bb96-76b4-43b2-be1d-f440d1b28a4a"/>
   <dds4ccm:WorkerFunctionImpl xmi:id="_mLD6R1PxEeqNpdmZFi99Lg" base_OpaqueBehavior="_mLDSxFPxEeqNpdmZFi99Lg"/>
-  <dds4ccm:CORBAAttribute xmi:id="_mLD6XFPxEeqNpdmZFi99Lg" base_NamedElement="_mLDSBVPxEeqNpdmZFi99Lg" base_Property="_mLDSBVPxEeqNpdmZFi99Lg"/>
+  <dds4ccm:CXAttribute xmi:id="_mLD6XFPxEeqNpdmZFi99Lg" base_NamedElement="_mLDSBVPxEeqNpdmZFi99Lg" base_Property="_mLDSBVPxEeqNpdmZFi99Lg"/>
   <dds4ccm:WorkerFunction xmi:id="_mLD6XVPxEeqNpdmZFi99Lg" base_Operation="_mLDSeFPxEeqNpdmZFi99Lg" uuid="d30b6d9e-6313-49e1-a3a9-c0a37b4d1295"/>
   <dds4ccm:WorkerFunctionImpl xmi:id="_mLD6XlPxEeqNpdmZFi99Lg" base_OpaqueBehavior="_mLDSRFPxEeqNpdmZFi99Lg"/>
   <dds4ccm:WorkerFunction xmi:id="_mLD6X1PxEeqNpdmZFi99Lg" base_Operation="_mLDSeVPxEeqNpdmZFi99Lg" uuid="daddae66-9ae8-4659-85b9-0eaaf8f3b2e4"/>
@@ -924,54 +924,54 @@
   <dds4ccm:ModuleBinding xmi:id="_OI2wQcCDEeqWa6SYZIc3pg" base_TemplateBinding="_OI2wQMCDEeqWa6SYZIc3pg"/>
   <dds4ccm:ParameterBinding xmi:id="_OI4lcMCDEeqWa6SYZIc3pg" base_TemplateParameterSubstitution="_OI3-YMCDEeqWa6SYZIc3pg"/>
   <dds4ccm:ParameterBinding xmi:id="_OI5zkcCDEeqWa6SYZIc3pg" base_TemplateParameterSubstitution="_OI5zkMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAInterface xmi:id="_OI7owMCDEeqWa6SYZIc3pg" base_Interface="_OI7BsMCDEeqWa6SYZIc3pg" base_NamedElement="_OI7BsMCDEeqWa6SYZIc3pg" isLocal="true"/>
-  <dds4ccm:CORBAOperation xmi:id="_OI_TIcCDEeqWa6SYZIc3pg" base_NamedElement="_OI_TIMCDEeqWa6SYZIc3pg" base_Operation="_OI_TIMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OJBIUMCDEeqWa6SYZIc3pg" base_NamedElement="_OJAhQMCDEeqWa6SYZIc3pg" base_Parameter="_OJAhQMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OJEyscCDEeqWa6SYZIc3pg" base_NamedElement="_OJEysMCDEeqWa6SYZIc3pg" base_Operation="_OJEysMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OJH2AMCDEeqWa6SYZIc3pg" base_NamedElement="_OJGn4MCDEeqWa6SYZIc3pg" base_Parameter="_OJGn4MCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAInterface xmi:id="_OJdNMMCDEeqWa6SYZIc3pg" base_Interface="_OJcmIMCDEeqWa6SYZIc3pg" base_NamedElement="_OJcmIMCDEeqWa6SYZIc3pg" isLocal="true"/>
-  <dds4ccm:CORBAOperation xmi:id="_OJfCYcCDEeqWa6SYZIc3pg" base_NamedElement="_OJfCYMCDEeqWa6SYZIc3pg" base_Operation="_OJfCYMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OJiFsMCDEeqWa6SYZIc3pg" base_NamedElement="_OJheoMCDEeqWa6SYZIc3pg" base_Operation="_OJheoMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OJiswcCDEeqWa6SYZIc3pg" base_NamedElement="_OJiswMCDEeqWa6SYZIc3pg" base_Parameter="_OJiswMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OJm-McCDEeqWa6SYZIc3pg" base_NamedElement="_OJm-MMCDEeqWa6SYZIc3pg" base_Operation="_OJm-MMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OJqBgcCDEeqWa6SYZIc3pg" base_NamedElement="_OJqBgMCDEeqWa6SYZIc3pg" base_Operation="_OJqBgMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OJrPoMCDEeqWa6SYZIc3pg" base_NamedElement="_OJqokMCDEeqWa6SYZIc3pg" base_Parameter="_OJqokMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAInterface xmi:id="_OJ5SEMCDEeqWa6SYZIc3pg" base_Interface="_OJ4rAMCDEeqWa6SYZIc3pg" base_NamedElement="_OJ4rAMCDEeqWa6SYZIc3pg" isLocal="true"/>
-  <dds4ccm:CORBAOperation xmi:id="_OJ8VYcCDEeqWa6SYZIc3pg" base_NamedElement="_OJ8VYMCDEeqWa6SYZIc3pg" base_Operation="_OJ8VYMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OJ9jgcCDEeqWa6SYZIc3pg" base_NamedElement="_OJ9jgMCDEeqWa6SYZIc3pg" base_Parameter="_OJ9jgMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OKAm0cCDEeqWa6SYZIc3pg" base_NamedElement="_OKAm0MCDEeqWa6SYZIc3pg" base_Operation="_OKAm0MCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OKB08cCDEeqWa6SYZIc3pg" base_NamedElement="_OKB08MCDEeqWa6SYZIc3pg" base_Parameter="_OKB08MCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAAttribute xmi:id="_OKHUgcCDEeqWa6SYZIc3pg" base_NamedElement="_OKHUgMCDEeqWa6SYZIc3pg" base_Property="_OKHUgMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAInterface xmi:id="_OKKX0cCDEeqWa6SYZIc3pg" base_Interface="_OKKX0MCDEeqWa6SYZIc3pg" base_NamedElement="_OKKX0MCDEeqWa6SYZIc3pg" isLocal="true"/>
-  <dds4ccm:CORBAOperation xmi:id="_OKMNAcCDEeqWa6SYZIc3pg" base_NamedElement="_OKMNAMCDEeqWa6SYZIc3pg" base_Operation="_OKMNAMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OKNbIcCDEeqWa6SYZIc3pg" base_NamedElement="_OKNbIMCDEeqWa6SYZIc3pg" base_Parameter="_OKNbIMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAAttribute xmi:id="_OKS6sMCDEeqWa6SYZIc3pg" base_NamedElement="_OKSToMCDEeqWa6SYZIc3pg" base_Property="_OKSToMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAAttribute xmi:id="_OKVW8MCDEeqWa6SYZIc3pg" base_NamedElement="_OKUv4MCDEeqWa6SYZIc3pg" base_Property="_OKUv4MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXInterface xmi:id="_OI7owMCDEeqWa6SYZIc3pg" base_Interface="_OI7BsMCDEeqWa6SYZIc3pg" base_NamedElement="_OI7BsMCDEeqWa6SYZIc3pg" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_OI_TIcCDEeqWa6SYZIc3pg" base_NamedElement="_OI_TIMCDEeqWa6SYZIc3pg" base_Operation="_OI_TIMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OJBIUMCDEeqWa6SYZIc3pg" base_NamedElement="_OJAhQMCDEeqWa6SYZIc3pg" base_Parameter="_OJAhQMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OJEyscCDEeqWa6SYZIc3pg" base_NamedElement="_OJEysMCDEeqWa6SYZIc3pg" base_Operation="_OJEysMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OJH2AMCDEeqWa6SYZIc3pg" base_NamedElement="_OJGn4MCDEeqWa6SYZIc3pg" base_Parameter="_OJGn4MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXInterface xmi:id="_OJdNMMCDEeqWa6SYZIc3pg" base_Interface="_OJcmIMCDEeqWa6SYZIc3pg" base_NamedElement="_OJcmIMCDEeqWa6SYZIc3pg" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_OJfCYcCDEeqWa6SYZIc3pg" base_NamedElement="_OJfCYMCDEeqWa6SYZIc3pg" base_Operation="_OJfCYMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OJiFsMCDEeqWa6SYZIc3pg" base_NamedElement="_OJheoMCDEeqWa6SYZIc3pg" base_Operation="_OJheoMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OJiswcCDEeqWa6SYZIc3pg" base_NamedElement="_OJiswMCDEeqWa6SYZIc3pg" base_Parameter="_OJiswMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OJm-McCDEeqWa6SYZIc3pg" base_NamedElement="_OJm-MMCDEeqWa6SYZIc3pg" base_Operation="_OJm-MMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OJqBgcCDEeqWa6SYZIc3pg" base_NamedElement="_OJqBgMCDEeqWa6SYZIc3pg" base_Operation="_OJqBgMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OJrPoMCDEeqWa6SYZIc3pg" base_NamedElement="_OJqokMCDEeqWa6SYZIc3pg" base_Parameter="_OJqokMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXInterface xmi:id="_OJ5SEMCDEeqWa6SYZIc3pg" base_Interface="_OJ4rAMCDEeqWa6SYZIc3pg" base_NamedElement="_OJ4rAMCDEeqWa6SYZIc3pg" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_OJ8VYcCDEeqWa6SYZIc3pg" base_NamedElement="_OJ8VYMCDEeqWa6SYZIc3pg" base_Operation="_OJ8VYMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OJ9jgcCDEeqWa6SYZIc3pg" base_NamedElement="_OJ9jgMCDEeqWa6SYZIc3pg" base_Parameter="_OJ9jgMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OKAm0cCDEeqWa6SYZIc3pg" base_NamedElement="_OKAm0MCDEeqWa6SYZIc3pg" base_Operation="_OKAm0MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OKB08cCDEeqWa6SYZIc3pg" base_NamedElement="_OKB08MCDEeqWa6SYZIc3pg" base_Parameter="_OKB08MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXAttribute xmi:id="_OKHUgcCDEeqWa6SYZIc3pg" base_NamedElement="_OKHUgMCDEeqWa6SYZIc3pg" base_Property="_OKHUgMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXInterface xmi:id="_OKKX0cCDEeqWa6SYZIc3pg" base_Interface="_OKKX0MCDEeqWa6SYZIc3pg" base_NamedElement="_OKKX0MCDEeqWa6SYZIc3pg" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_OKMNAcCDEeqWa6SYZIc3pg" base_NamedElement="_OKMNAMCDEeqWa6SYZIc3pg" base_Operation="_OKMNAMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OKNbIcCDEeqWa6SYZIc3pg" base_NamedElement="_OKNbIMCDEeqWa6SYZIc3pg" base_Parameter="_OKNbIMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXAttribute xmi:id="_OKS6sMCDEeqWa6SYZIc3pg" base_NamedElement="_OKSToMCDEeqWa6SYZIc3pg" base_Property="_OKSToMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXAttribute xmi:id="_OKVW8MCDEeqWa6SYZIc3pg" base_NamedElement="_OKUv4MCDEeqWa6SYZIc3pg" base_Property="_OKUv4MCDEeqWa6SYZIc3pg"/>
   <dds4ccm:ExtendedPortType xmi:id="_OKYaQMCDEeqWa6SYZIc3pg" base_Class="_OKXzMMCDEeqWa6SYZIc3pg" base_NamedElement="_OKXzMMCDEeqWa6SYZIc3pg"/>
   <dds4ccm:ExtendedPortType xmi:id="_OKd50cCDEeqWa6SYZIc3pg" base_Class="_OKd50MCDEeqWa6SYZIc3pg" base_NamedElement="_OKd50MCDEeqWa6SYZIc3pg"/>
   <dds4ccm:InterfacePort xmi:id="_OKnDwcCDEeqWa6SYZIc3pg" base_Port="_OKnDwMCDEeqWa6SYZIc3pg" isConjugated="true"/>
   <dds4ccm:InterfacePort xmi:id="_OKtKYcCDEeqWa6SYZIc3pg" base_Port="_OKtKYMCDEeqWa6SYZIc3pg" isConjugated="true"/>
-  <dds4ccm:CORBAInterface xmi:id="_OK1GMcCDEeqWa6SYZIc3pg" base_Interface="_OK1GMMCDEeqWa6SYZIc3pg" base_NamedElement="_OK1GMMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OK3icMCDEeqWa6SYZIc3pg" base_NamedElement="_OK27YMCDEeqWa6SYZIc3pg" base_Operation="_OK27YMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OK4wkcCDEeqWa6SYZIc3pg" base_NamedElement="_OK4wkMCDEeqWa6SYZIc3pg" base_Parameter="_OK4wkMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OK7z4cCDEeqWa6SYZIc3pg" base_NamedElement="_OK7z4MCDEeqWa6SYZIc3pg" base_Operation="_OK7z4MCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OK9CAcCDEeqWa6SYZIc3pg" base_NamedElement="_OK9CAMCDEeqWa6SYZIc3pg" base_Parameter="_OK9CAMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OK-3McCDEeqWa6SYZIc3pg" base_NamedElement="_OK-3MMCDEeqWa6SYZIc3pg" base_Parameter="_OK-3MMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OLChkMCDEeqWa6SYZIc3pg" base_NamedElement="_OLB6gMCDEeqWa6SYZIc3pg" base_Operation="_OLB6gMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OLDvscCDEeqWa6SYZIc3pg" base_NamedElement="_OLDvsMCDEeqWa6SYZIc3pg" base_Parameter="_OLDvsMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OLFk4cCDEeqWa6SYZIc3pg" base_NamedElement="_OLFk4MCDEeqWa6SYZIc3pg" base_Parameter="_OLFk4MCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OLJPQMCDEeqWa6SYZIc3pg" base_NamedElement="_OLIoMMCDEeqWa6SYZIc3pg" base_Operation="_OLIoMMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OLKdYcCDEeqWa6SYZIc3pg" base_NamedElement="_OLKdYMCDEeqWa6SYZIc3pg" base_Parameter="_OLKdYMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OLNgscCDEeqWa6SYZIc3pg" base_NamedElement="_OLNgsMCDEeqWa6SYZIc3pg" base_Operation="_OLNgsMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OLPV4MCDEeqWa6SYZIc3pg" base_NamedElement="_OLOu0MCDEeqWa6SYZIc3pg" base_Parameter="_OLOu0MCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OLSZMcCDEeqWa6SYZIc3pg" base_NamedElement="_OLSZMMCDEeqWa6SYZIc3pg" base_Operation="_OLSZMMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OLTnUcCDEeqWa6SYZIc3pg" base_NamedElement="_OLTnUMCDEeqWa6SYZIc3pg" base_Parameter="_OLTnUMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OLWDkMCDEeqWa6SYZIc3pg" base_NamedElement="_OLVcgMCDEeqWa6SYZIc3pg" base_Parameter="_OLVcgMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OLZG4cCDEeqWa6SYZIc3pg" base_NamedElement="_OLZG4MCDEeqWa6SYZIc3pg" base_Operation="_OLZG4MCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OLaVAcCDEeqWa6SYZIc3pg" base_NamedElement="_OLaVAMCDEeqWa6SYZIc3pg" base_Parameter="_OLaVAMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OLcKMcCDEeqWa6SYZIc3pg" base_NamedElement="_OLcKMMCDEeqWa6SYZIc3pg" base_Parameter="_OLcKMMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAOperation xmi:id="_OLgboMCDEeqWa6SYZIc3pg" base_NamedElement="_OLf0kMCDEeqWa6SYZIc3pg" base_Operation="_OLf0kMCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAParameter xmi:id="_OLiQ0MCDEeqWa6SYZIc3pg" base_NamedElement="_OLhpwMCDEeqWa6SYZIc3pg" base_Parameter="_OLhpwMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXInterface xmi:id="_OK1GMcCDEeqWa6SYZIc3pg" base_Interface="_OK1GMMCDEeqWa6SYZIc3pg" base_NamedElement="_OK1GMMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OK3icMCDEeqWa6SYZIc3pg" base_NamedElement="_OK27YMCDEeqWa6SYZIc3pg" base_Operation="_OK27YMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OK4wkcCDEeqWa6SYZIc3pg" base_NamedElement="_OK4wkMCDEeqWa6SYZIc3pg" base_Parameter="_OK4wkMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OK7z4cCDEeqWa6SYZIc3pg" base_NamedElement="_OK7z4MCDEeqWa6SYZIc3pg" base_Operation="_OK7z4MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OK9CAcCDEeqWa6SYZIc3pg" base_NamedElement="_OK9CAMCDEeqWa6SYZIc3pg" base_Parameter="_OK9CAMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OK-3McCDEeqWa6SYZIc3pg" base_NamedElement="_OK-3MMCDEeqWa6SYZIc3pg" base_Parameter="_OK-3MMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OLChkMCDEeqWa6SYZIc3pg" base_NamedElement="_OLB6gMCDEeqWa6SYZIc3pg" base_Operation="_OLB6gMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OLDvscCDEeqWa6SYZIc3pg" base_NamedElement="_OLDvsMCDEeqWa6SYZIc3pg" base_Parameter="_OLDvsMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OLFk4cCDEeqWa6SYZIc3pg" base_NamedElement="_OLFk4MCDEeqWa6SYZIc3pg" base_Parameter="_OLFk4MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OLJPQMCDEeqWa6SYZIc3pg" base_NamedElement="_OLIoMMCDEeqWa6SYZIc3pg" base_Operation="_OLIoMMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OLKdYcCDEeqWa6SYZIc3pg" base_NamedElement="_OLKdYMCDEeqWa6SYZIc3pg" base_Parameter="_OLKdYMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OLNgscCDEeqWa6SYZIc3pg" base_NamedElement="_OLNgsMCDEeqWa6SYZIc3pg" base_Operation="_OLNgsMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OLPV4MCDEeqWa6SYZIc3pg" base_NamedElement="_OLOu0MCDEeqWa6SYZIc3pg" base_Parameter="_OLOu0MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OLSZMcCDEeqWa6SYZIc3pg" base_NamedElement="_OLSZMMCDEeqWa6SYZIc3pg" base_Operation="_OLSZMMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OLTnUcCDEeqWa6SYZIc3pg" base_NamedElement="_OLTnUMCDEeqWa6SYZIc3pg" base_Parameter="_OLTnUMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OLWDkMCDEeqWa6SYZIc3pg" base_NamedElement="_OLVcgMCDEeqWa6SYZIc3pg" base_Parameter="_OLVcgMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OLZG4cCDEeqWa6SYZIc3pg" base_NamedElement="_OLZG4MCDEeqWa6SYZIc3pg" base_Operation="_OLZG4MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OLaVAcCDEeqWa6SYZIc3pg" base_NamedElement="_OLaVAMCDEeqWa6SYZIc3pg" base_Parameter="_OLaVAMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OLcKMcCDEeqWa6SYZIc3pg" base_NamedElement="_OLcKMMCDEeqWa6SYZIc3pg" base_Parameter="_OLcKMMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXOperation xmi:id="_OLgboMCDEeqWa6SYZIc3pg" base_NamedElement="_OLf0kMCDEeqWa6SYZIc3pg" base_Operation="_OLf0kMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_OLiQ0MCDEeqWa6SYZIc3pg" base_NamedElement="_OLhpwMCDEeqWa6SYZIc3pg" base_Parameter="_OLhpwMCDEeqWa6SYZIc3pg"/>
   <dds4ccm:WorkerFunction xmi:id="_dkq-AMCDEeqWa6SYZIc3pg" base_Operation="_dkqW8MCDEeqWa6SYZIc3pg" uuid="b0c2ecfd-de72-43c4-918a-1bc31b548ecf"/>
   <dds4ccm:WorkerFunctionImpl xmi:id="_dkszMMCDEeqWa6SYZIc3pg" base_OpaqueBehavior="_dksMIMCDEeqWa6SYZIc3pg"/>
   <dds4ccm:WorkerFunction xmi:id="_dktaQMCDEeqWa6SYZIc3pg" base_Operation="_dkszMcCDEeqWa6SYZIc3pg" uuid="34c26cb7-fa31-43cd-897d-27dfd72bedfc"/>
@@ -1038,9 +1038,9 @@
   <dds4ccm:WorkerFunctionImpl xmi:id="_dlLUUcCDEeqWa6SYZIc3pg" base_OpaqueBehavior="_dlLUUMCDEeqWa6SYZIc3pg"/>
   <dds4ccm:WorkerFunction xmi:id="_dlL7YMCDEeqWa6SYZIc3pg" base_Operation="_dlLUUsCDEeqWa6SYZIc3pg" uuid="91c8cc43-72c9-4615-acbe-e60b68a98d5e"/>
   <dds4ccm:WorkerFunctionImpl xmi:id="_dlMicMCDEeqWa6SYZIc3pg" base_OpaqueBehavior="_dlL7YcCDEeqWa6SYZIc3pg"/>
-  <dds4ccm:CORBAAttribute xmi:id="_DY8R4ME8EeqtXptXFYfDbw" base_NamedElement="_DY7q0ME8EeqtXptXFYfDbw" base_Property="_DY7q0ME8EeqtXptXFYfDbw">
-    <setraises xmi:type="dds4ccm:CORBAException" href="pathmap://CCM_PSDD_LIBRARIES/CCM_PSDD.uml#_XRXKIGROEd-Wc9hRqhM12g"/>
-  </dds4ccm:CORBAAttribute>
+  <dds4ccm:CXAttribute xmi:id="_DY8R4ME8EeqtXptXFYfDbw" base_NamedElement="_DY7q0ME8EeqtXptXFYfDbw" base_Property="_DY7q0ME8EeqtXptXFYfDbw">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://CCM_PSDD_LIBRARIES/CCM_PSDD.uml#_XRXKIGROEd-Wc9hRqhM12g"/>
+  </dds4ccm:CXAttribute>
   <dds4ccm:DeploymentPlan xmi:id="_NkcckME8EeqtXptXFYfDbw" base_Component="_NkNzEME8EeqtXptXFYfDbw" id="_c28c9053-240d-4fcc-a5de-1151fd7697e0"/>
   <dds4ccm:DeploymentPart xmi:id="_Tw70AME8EeqtXptXFYfDbw" nestedPart="_TxE98ME8EeqtXptXFYfDbw _TxMSsME8EeqtXptXFYfDbw _TxSZUME8EeqtXptXFYfDbw _TxZuEME8EeqtXptXFYfDbw" modelElement="_mLDRnVPxEeqNpdmZFi99Lg" base_Property="_Tw7M8ME8EeqtXptXFYfDbw"/>
   <dds4ccm:DeploymentPart xmi:id="_TxE98ME8EeqtXptXFYfDbw" modelElement="_mLDRnlPxEeqNpdmZFi99Lg" base_Property="_TxDv0ME8EeqtXptXFYfDbw"/>
@@ -1063,4 +1063,21 @@
   <dds4ccm:Allocation xmi:id="_IDTggMFCEeqLc_GGycycag" base_Dependency="_IDS5cMFCEeqLc_GGycycag"/>
   <dds4ccm:Allocation xmi:id="_JYaSQMFCEeqLc_GGycycag" base_Dependency="_JYZEIMFCEeqLc_GGycycag"/>
   <dds4ccm:Allocation xmi:id="_KBGC4MFCEeqLc_GGycycag" base_Dependency="_KBE0wMFCEeqLc_GGycycag"/>
+  <dds4ccm:CXParameter xmi:id="_Zn9-oFqkEeumbp2YBJZH4w" base_NamedElement="_ONKBcMCDEeqWa6SYZIc3pg" base_Parameter="_ONKBcMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_Zn_z0FqkEeumbp2YBJZH4w" base_NamedElement="_ON62cMCDEeqWa6SYZIc3pg" base_Parameter="_ON62cMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoBB8FqkEeumbp2YBJZH4w" base_NamedElement="_ON3zIMCDEeqWa6SYZIc3pg" base_Parameter="_ON3zIMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoBpAFqkEeumbp2YBJZH4w" base_NamedElement="_OLso4MCDEeqWa6SYZIc3pg" base_Parameter="_OLso4MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoCQEFqkEeumbp2YBJZH4w" base_NamedElement="_ON198MCDEeqWa6SYZIc3pg" base_Parameter="_ON198MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoCQEVqkEeumbp2YBJZH4w" base_NamedElement="_ONsM8MCDEeqWa6SYZIc3pg" base_Parameter="_ONsM8MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoCQElqkEeumbp2YBJZH4w" base_NamedElement="_OLxhYMCDEeqWa6SYZIc3pg" base_Parameter="_OLxhYMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoDeMFqkEeumbp2YBJZH4w" base_NamedElement="_ONyTkMCDEeqWa6SYZIc3pg" base_Parameter="_ONyTkMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoDeMVqkEeumbp2YBJZH4w" base_NamedElement="_OOHDsMCDEeqWa6SYZIc3pg" base_Parameter="_OOHDsMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoEFQFqkEeumbp2YBJZH4w" base_NamedElement="_ONmtYMCDEeqWa6SYZIc3pg" base_Parameter="_ONmtYMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoEFQVqkEeumbp2YBJZH4w" base_NamedElement="_ONib8MCDEeqWa6SYZIc3pg" base_Parameter="_ONib8MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoFTYFqkEeumbp2YBJZH4w" base_NamedElement="_OLzWkMCDEeqWa6SYZIc3pg" base_Parameter="_OLzWkMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoFTYVqkEeumbp2YBJZH4w" base_NamedElement="_OLvsMMCDEeqWa6SYZIc3pg" base_Parameter="_OLvsMMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoF6cFqkEeumbp2YBJZH4w" base_NamedElement="_ONkRIMCDEeqWa6SYZIc3pg" base_Parameter="_ONkRIMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoF6cVqkEeumbp2YBJZH4w" base_NamedElement="_ONqXwMCDEeqWa6SYZIc3pg" base_Parameter="_ONqXwMCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoGhgFqkEeumbp2YBJZH4w" base_NamedElement="_OOJf8MCDEeqWa6SYZIc3pg" base_Parameter="_OOJf8MCDEeqWa6SYZIc3pg"/>
+  <dds4ccm:CXParameter xmi:id="_ZoHIkFqkEeumbp2YBJZH4w" base_NamedElement="_OOFOgMCDEeqWa6SYZIc3pg" base_Parameter="_OOFOgMCDEeqWa6SYZIc3pg"/>
 </xmi:XMI>
