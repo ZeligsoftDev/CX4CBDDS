@@ -53,7 +53,7 @@ public class MigrateModelTypeActionHandler extends AbstractHandler {
 
 			ModelSet modelSet = (ModelSet) selObject.eResource().getResourceSet();
 			final ArchitectureDescriptionUtils helper = new ArchitectureDescriptionUtils(modelSet);
-			Command cmd = helper.switchArchitectureContextId("com.zeligsoft.domain.cbdds.axcioma.architecture");
+			Command cmd = helper.switchArchitectureContextId(com.zeligsoft.domain.cbdds.architecture.Activator.AXIOMA_ARCHITECTURE_ID);
 			TransactionUtil.getEditingDomain(selObject).getCommandStack().execute(cmd);
 			BaseUIUtil.revealTarget(selObject);
 			MessageDialog.openInformation(Display.getCurrent().getActiveShell(),

@@ -109,14 +109,6 @@ public class CreateAXCIOMAModelCommand implements IModelCreationCommand {
 			PackageUtil.applyProfile(packageOwner, standardUMLProfile, true);
 		}
 
-		org.eclipse.uml2.uml.Package umlPrimitiveTypes = PackageUtil.loadPackage(
-				URI.createURI(UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI), owner.eResource().getResourceSet());
-		if (umlPrimitiveTypes != null) {
-			PackageImport pi = UMLFactory.eINSTANCE.createPackageImport();
-			pi.setImportedPackage(umlPrimitiveTypes);
-			packageOwner.getPackageImports().add(pi);
-		}
-
 		org.eclipse.uml2.uml.Package idlPrimitiveTypes = PackageUtil.loadPackage(
 				URI.createURI("pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml"), owner.eResource().getResourceSet());
 		if (idlPrimitiveTypes != null) {
