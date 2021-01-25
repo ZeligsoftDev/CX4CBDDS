@@ -29,6 +29,8 @@ public class Activator extends ZeligsoftAbstractPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "com.zeligsoft.domain.cbdds.architecture"; //$NON-NLS-1$
 
+	public static final String AXIOMA_ARCHITECTURE_ID = "com.zeligsoft.domain.cbdds.axcioma.architecture";
+	
 	public static LogHelper log;
 
 	// The shared instance

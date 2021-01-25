@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.papyrus.emf.facet.custom.core.ICustomizationCatalogManagerFactory;
 import org.eclipse.papyrus.emf.facet.custom.core.ICustomizationManager;
 import org.eclipse.papyrus.emf.facet.custom.metamodel.v0_2_0.custom.Customization;
+import org.eclipse.papyrus.infra.architecture.ArchitectureDomainPreferences;
 import org.osgi.framework.BundleContext;
+import org.osgi.service.prefs.BackingStoreException;
 
 import com.zeligsoft.base.ui.ZeligsoftAbstractUIPlugin;
 
@@ -56,6 +60,20 @@ public class Activator extends ZeligsoftAbstractUIPlugin {
 				customizationManager.getManagedCustomizations().add(customToAdd.get());
 			}
 			customizationManager.getManagedCustomizations().removeAll(customsToRemove);
+		}
+		
+		
+		IEclipsePreferences pref = InstanceScope.INSTANCE
+				.getNode(org.eclipse.papyrus.infra.architecture.Activator.PLUGIN_ID);
+		String defaultArch = pref.get(ArchitectureDomainPreferences.DEFAULT_CONTEXT, "");
+		if (defaultArch != com.zeligsoft.domain.cbdds.architecture.Activator.AXIOMA_ARCHITECTURE_ID) {
+			pref.put(ArchitectureDomainPreferences.DEFAULT_CONTEXT,
+					com.zeligsoft.domain.cbdds.architecture.Activator.AXIOMA_ARCHITECTURE_ID);
+			try {
+				pref.flush();
+			} catch (BackingStoreException e) {
+				// do nothing
+			}
 		}
 	}
 
