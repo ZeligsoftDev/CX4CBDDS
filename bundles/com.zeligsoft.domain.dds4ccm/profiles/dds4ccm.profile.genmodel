@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/uml2/2.2.0/GenModel"
+    modelDirectory="/com.zeligsoft.domain.dds4ccm/src-gen" editDirectory="/com.zeligsoft.domain.dds4ccm.edit/src-gen"
+    editorDirectory="/com.zeligsoft.domain.dds4ccm.editor/src-gen" modelPluginID="com.zeligsoft.domain.dds4ccm"
+    modelName="dds4ccm" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.uml2.uml.ecore.importer" complianceLevel="8.0" copyrightFields="false"
+    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.uml2.types/model/Types.genmodel#//types ../../org.eclipse.uml2.uml/model/UML.genmodel#//uml"
+    operationReflection="true" importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
+    <details key="OPPOSITE_ROLE_NAMES" value="IGNORE"/>
+    <details key="DUPLICATE_FEATURES" value="DISCARD"/>
+    <details key="ANNOTATION_DETAILS" value="PROCESS"/>
+    <details key="PROPERTY_DEFAULT_EXPRESSIONS" value="IGNORE"/>
+    <details key="DUPLICATE_FEATURE_INHERITANCE" value="DISCARD"/>
+    <details key="COMMENTS" value="PROCESS"/>
+    <details key="DERIVED_FEATURES" value="PROCESS"/>
+    <details key="SUPER_CLASS_ORDER" value="PROCESS"/>
+    <details key="DUPLICATE_OPERATION_INHERITANCE" value="DISCARD"/>
+    <details key="REDEFINING_OPERATIONS" value="REPORT"/>
+    <details key="INVARIANT_CONSTRAINTS" value="PROCESS"/>
+    <details key="UNION_PROPERTIES" value="REPORT"/>
+    <details key="DUPLICATE_OPERATIONS" value="DISCARD"/>
+    <details key="NON_API_INVARIANTS" value="IGNORE"/>
+    <details key="CAMEL_CASE_NAMES" value="IGNORE"/>
+    <details key="SUBSETTING_PROPERTIES" value="REPORT"/>
+    <details key="OPERATION_BODIES" value="IGNORE"/>
+    <details key="ECORE_TAGGED_VALUES" value="PROCESS"/>
+    <details key="UNTYPED_PROPERTIES" value="REPORT"/>
+    <details key="REDEFINING_PROPERTIES" value="REPORT"/>
+    <details key="INVOCATION_DELEGATES" value="IGNORE"/>
+    <details key="VALIDATION_DELEGATES" value="IGNORE"/>
+  </genAnnotations>
+  <foreignModel>dds4ccm.profile.uml</foreignModel>
+  <genPackages xsi:type="genmodel:GenPackage" prefix="DDS4CCM" disposableProviderFactory="true"
+      loadInitialization="true" literalsInterface="false" ecorePackage="dds4ccm.ecore#/">
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//ComponentCategory">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//ComponentCategory/SESSION"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//ComponentCategory/SERVICE"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//WiringKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//WiringKind/connector"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//WiringKind/sap"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//WiringKind/spp"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//ModelTypeEnum">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//ModelTypeEnum/ATCD"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//ModelTypeEnum/AXCIOMA"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//CXPrimitiveKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXWChar"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXVoid"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXUnsignedShort"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXUnsignedLongLong"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXUnsignedLong"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXShort"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXOctet"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXObjectRef"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXLongLong"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXLongDouble"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXLong"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXFloat"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXDouble"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXChar"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXBoolean"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXAny"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXString"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXWString"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXTypecode"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//TypeConstraint">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TypeConstraint/typename"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TypeConstraint/interface"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TypeConstraint/valuetype"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TypeConstraint/eventtype"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TypeConstraint/struct"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TypeConstraint/union"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TypeConstraint/sequence"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TypeConstraint/array"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TypeConstraint/enum"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//TopicKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TopicKind/STANDARD"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TopicKind/MULTI_TOPIC"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TopicKind/CONTENT_FILTERED"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//HistoryQosPolicyKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//HistoryQosPolicyKind/KEEP_LAST"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//HistoryQosPolicyKind/KEEP_ALL"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//OwnershipQosPolicyKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//OwnershipQosPolicyKind/SHARED"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//OwnershipQosPolicyKind/EXCLUSIVE"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//PresentationQosPolicyAccessScopeKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//PresentationQosPolicyAccessScopeKind/INSTANCE"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//PresentationQosPolicyAccessScopeKind/TOPIC"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//PresentationQosPolicyAccessScopeKind/GROUP"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//RealiabilityQosPolicyKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//RealiabilityQosPolicyKind/BEST_EFFORT"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//RealiabilityQosPolicyKind/RELIABLE"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//LivelinessQosPolicyKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//LivelinessQosPolicyKind/AUTOMATIC"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//LivelinessQosPolicyKind/MANUAL_BY_PARTICIPANT"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//LivelinessQosPolicyKind/MANUAL_BY_TOPIC"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//DurabilityQosPolicyKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//DurabilityQosPolicyKind/TRANSIENT"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//DurabilityQosPolicyKind/TRANSIENT_LOCAL"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//DurabilityQosPolicyKind/VOLATILE"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//DurabilityQosPolicyKind/PERSISTENT"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//DestinationOrderQosPolicyKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//DestinationOrderQosPolicyKind/BY_RECEPTION_TIMESTAMP"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//DestinationOrderQosPolicyKind/BY_SOURCE_TIMESTAMP"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//SatisfierPropertyKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//SatisfierPropertyKind/Quantity"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//SatisfierPropertyKind/Capacity"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//SatisfierPropertyKind/Minimum"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//SatisfierPropertyKind/Maximum"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//SatisfierPropertyKind/Attribute"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//SatisfierPropertyKind/Selection"/>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//ConfigurationSlotKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//ConfigurationSlotKind/additive"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//ConfigurationSlotKind/override"/>
+    </genEnums>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//AssemblyImplementation">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//AssemblyImplementation/base_NamedElement"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//StructuralRealization">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//StructuralRealization/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//HomeImplementation"/>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//ManagesImplEnd"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ManagesImpl">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ManagesImpl/base_Dependency"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//MonolithicImplementation">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//MonolithicImplementation/category"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//MonolithicImplementation/base_NamedElement"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Implementation"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//WorkerFunctionIdentifiable">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//WorkerFunctionIdentifiable/uuid"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CCMPart">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CCMPart/base_NamedElement"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//Part">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Part/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CCMConnector"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//AssemblyConnector">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//AssemblyConnector/portEnd"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//AssemblyConnector/base_Connector"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//Port">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//Port/wiring"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Port/base_Port"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//TypedElement"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ComponentInterface">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ComponentInterface/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//FlowPort"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//MessagePort"/>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//Interface">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Interface/base_Interface"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//PortTypeable"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//WorkerFunction">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//WorkerFunction/receivingPort"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//WorkerFunction/portOperation"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//WorkerFunction/body"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//WorkerFunction/uuid"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//WorkerFunction/delegate"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//WorkerFunction/base_Operation"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//PortType">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//PortType/inverse"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//PortType/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ComponentImplementation">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ComponentImplementation/base_Manifestation"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Parameter">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Parameter/base_Parameter"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Model">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Model/base_Model"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//EventPort"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ConjugatedPort">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//ConjugatedPort/isConjugated"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CCMComponent"/>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//ManagesEnd"/>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//CXModuleContained"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXNamedElement">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXNamedElement/base_NamedElement"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//CXType"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Event">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//Event/isCustom"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//Event/isTruncatable"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Home">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Home/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Manages">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Manages/base_Dependency"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//DDS4CCMModel">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//DDS4CCMModel/locationPrefix"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//DDS4CCMModel/fixedHeader"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//DDS4CCMModel/fixedFooter"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//DDS4CCMModel/modelType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//IDL3PlusModel"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CCMModel">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CCMModel/base_NamedElement"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXWString"/>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//CXBounded">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXBounded/bounds"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//CXBounded/bound"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXBounded/base_DataType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXBound">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXBound/constant"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//CXBound/value"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXConstant">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXConstant/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//CXTyped"/>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//CXClassifierContained"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXAnonymousArray">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXAnonymousArray/base_DataType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXAnonymousSequence">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXAnonymousSequence/base_DataType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXArray">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXArray/bounds"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//CXArray/index"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//CXTemplate">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXTemplate/base_DataType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//Contained"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXBoxedValue"/>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//CXWrapper">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXWrapper/base_DataType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXCase">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//CXCase/label"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXUnionField">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXUnionField/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXConstants">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXConstants/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//CXConstructed">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXConstructed/base_DataType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXDefault"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXEnum">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXEnum/base_Enumeration"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXException"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXInterface">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//CXInterface/isLocal"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//CXInterface/isAsynchronous"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//CXClassifier"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXPrimitive">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//CXPrimitive/type"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXPrimitive/base_DataType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXSequence">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXSequence/bounds"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//CXSequence/bound"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXString"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXStruct"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXSupports">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXSupports/base_Generalization"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXTypeDef">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXTypeDef/type"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXUnion"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXValue">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//CXValue/isCustom"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//CXValue/isTruncatable"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXValue/base_Interface"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXValueFactory">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXValueFactory/base_Operation"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXModule">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXModule/base_Package"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXAttribute">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXAttribute/setraises"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXAttribute/getraises"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXAttribute/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXOperation">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXOperation/idlType"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//CXOperation/isOneWay"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXOperation/base_Operation"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXField">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXField/bounds"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//CXField/bound"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXField/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXParameter">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXParameter/base_Parameter"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//StateMember">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//StateMember/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ConnectorDef"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ConnectorFragment"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//FragmentImplementation"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//FragmentAssembly"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ConnectorImplementation"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ConnectorAssembly"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//FragmentPart"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//TypedConnector">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//TypedConnector/connectorType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//TypeParameter">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//TypeParameter/constraint"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//TypeParameter/base_ClassifierTemplateParameter"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//TemplateModule">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//TemplateModule/base_Package"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ModuleInstantiation">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ModuleInstantiation/base_Package"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ParameterBinding">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ParameterBinding/base_TemplateParameterSubstitution"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//TemplateModuleAlias"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ModuleBinding">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ModuleBinding/base_TemplateBinding"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//TemplateSignature">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//TemplateSignature/base_TemplateSignature"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//InterfacePort">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//InterfacePort/connectorType"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//InterfacePort/isAsynchronous"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//InterfacePort/hasCSL"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Native">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Native/base_DataType"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//DataSpace">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//DataSpace/base_NamedElement"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Topic">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//Topic/expression"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//Topic/kind"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Topic/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//TopicField">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//TopicField/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//qosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//qosPolicy/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//historyQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//historyQosPolicy/depth"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//historyQosPolicy/kind"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//lifespanQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//lifespanQosPolicy/duration"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Duration">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//Duration/second"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//Duration/nanosecond"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ownershipQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//ownershipQosPolicy/kind"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//osQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//osQosPolicy/value"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//wdlQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//wdlQosPolicy/autodispose_unregistered_instances"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//rdlQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//rdlQosPolicy/autopurge_nowriter_samples_delay"/>
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//rdlQosPolicy/autopurge_disposed_samples_delay"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//udQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//udQosPolicy/value"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//tdQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//tdQosPolicy/value"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//tpQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//tpQosPolicy/value"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//deadlineQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//deadlineQosPolicy/period"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//lbQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//lbQosPolicy/duration"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//tbfQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//tbfQosPolicy/minimum_separation"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//gdQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//gdQosPolicy/value"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//efQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//efQosPolicy/autoenable_created_entities"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//rlQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//rlQosPolicy/max_instances"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//rlQosPolicy/max_samples"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//rlQosPolicy/max_samples_per_instance"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//presentationQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//presentationQosPolicy/access_scope"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//presentationQosPolicy/coherent_access"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//presentationQosPolicy/ordered_access"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//partitionQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//partitionQosPolicy/name"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//reliabilityQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//reliabilityQosPolicy/max_blocking_time"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//reliabilityQosPolicy/kind"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//dsQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//dsQosPolicy/service_cleanup_delay"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//dsQosPolicy/history_kind"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//dsQosPolicy/max_instances"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//dsQosPolicy/max_samples"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//dsQosPolicy/max_samples_per_instance"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//dsQosPolicy/history_depth"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//livelinessQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" property="None" children="true"
+          createChild="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//livelinessQosPolicy/lease_duration"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//livelinessQosPolicy/kind"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//durabilityQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//durabilityQosPolicy/kind"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//doQosPolicy">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//doQosPolicy/kind"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//qosProperty">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//qosProperty/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//DDSMessage"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//MessageField">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//MessageField/isKey"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//QoSProfile">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//QoSProfile/filename"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//QoSProfile/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//QoSForEntity">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//QoSForEntity/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//QoSEntity">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//QoSEntity/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//DataReaderQoS"/>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//DataReaderWriterQoS"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ParticipantQoS"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//PublisherQoS"/>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//PublisherSubscriberQoS"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//SubscriberQoS"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//TopicQoS"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//DataWriterQoS"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Domain">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//Domain/label"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//Domain/UUID"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Domain/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Node">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Node/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//NodeInstance">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//NodeInstance/label"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//NodeInstance/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Interconnect">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Interconnect/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//InterconnectInstance">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//InterconnectInstance/label"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//InterconnectInstance/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Bridge">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Bridge/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//BridgeInstance">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//BridgeInstance/label"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//BridgeInstance/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Resource"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//RequirementSatisfier">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//RequirementSatisfier/resourceType"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//RequirementSatisfier/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ResourceProperty">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ResourceProperty/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//SharedResource"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//SatisfierProperty">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//SatisfierProperty/dynamic"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//SatisfierProperty/kind"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//SatisfierProperty/value"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//SatisfierProperty/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Requirement">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Requirement/property"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//Requirement/resourceType"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Requirement/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//DeploymentPlan">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//DeploymentPlan/id"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Deployment">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Deployment/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Allocation">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Allocation/base_Dependency"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//DeploymentPart">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//DeploymentPart/nestedPart"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//DeploymentPart/configuration"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//DeploymentPart/modelElement"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//DeploymentPart/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="dds4ccm.ecore#//Configuration">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Configuration/base_Class"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Configuration/base_InstanceSpecification"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ComponentDeploymentPart">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ComponentDeploymentPart/selectedImplementation"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ComponentDeploymentPart/implementationConfiguration"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//BuildConfiguration"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ConfigurationSlot">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//ConfigurationSlot/slotKind"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ConfigurationSlot/base_Slot"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//TargetAssemblyConnector"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ContainerProcess">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ContainerProcess/base_Component"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//TemplateParameterType">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//TemplateParameterType/base_Class"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//TemplateParameterType/base_DataType"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//TemplateParameterType/base_Interface"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ExtendedPortType"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//IDLFileSpecification">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//IDLFileSpecification/base_Class"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//IDLFileDependency">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//IDLFileDependency/base_Dependency"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Property">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//Property/value"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//Property/base_Property"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ConnectorDefaultValueBinding">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ConnectorDefaultValueBinding/definition"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ConnectorDefaultValueBinding/connectorInstance"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//ConnectorDefaultValueBinding/base_Package"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//IDLIncludeDependency">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//IDLIncludeDependency/base_Dependency"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//WorkerFunctionImpl">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//WorkerFunctionImpl/base_OpaqueBehavior"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//ConnectorStatusListenerConnection"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//FinderOperation"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//HomeOperation">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//HomeOperation/base_Operation"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//FactoryOperation"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//HomeInstance">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//HomeInstance/base_NamedElement"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//HideableElement">
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//HideableElement/base_NamedElement"/>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//PerPortConnectorTypeDeploymentPart"/>
+  </genPackages>
+</genmodel:GenModel>

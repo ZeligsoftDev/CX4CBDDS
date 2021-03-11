@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1 pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <uml:Model xmi:id="_jkiX8J4JEd6xhoJKj1dweA" name="CCM_AMI">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_V4OY4N2REeqk7qqpN0ZyIw" source="cx.migration">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_V4O_8N2REeqk7qqpN0ZyIw" key="version" value="2.0.1"/>
@@ -42,21 +42,21 @@
     </profileApplication>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_1KTJYJ44Ed6CdqU5qRn9Dw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1Kc6YJ44Ed6CdqU5qRn9Dw" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ"/>
+        <references xmi:type="ecore:EPackage" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#/"/>
       </eAnnotations>
       <appliedProfile xmi:type="uml:Profile" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KssEDZEd-LnsQ685SqSQ"/>
     </profileApplication>
   </uml:Model>
-  <dds4ccm:DDS4CCMModel xmi:id="_kpTcUGgXEd-Cd7UvmqIY3g" base_Model="_jkiX8J4JEd6xhoJKj1dweA"/>
+  <dds4ccm:DDS4CCMModel xmi:id="_kpTcUGgXEd-Cd7UvmqIY3g" base_Model="_jkiX8J4JEd6xhoJKj1dweA" base_NamedElement="_jkiX8J4JEd6xhoJKj1dweA"/>
   <dds4ccm:CXModule xmi:id="_tpecUGgXEd-Cd7UvmqIY3g" base_NamedElement="_tpDlkGgXEd-Cd7UvmqIY3g" base_Package="_tpDlkGgXEd-Cd7UvmqIY3g"/>
-  <dds4ccm:CXInterface xmi:id="_v23g8GgXEd-Cd7UvmqIY3g" base_Interface="_v2vlIGgXEd-Cd7UvmqIY3g" base_NamedElement="_v2vlIGgXEd-Cd7UvmqIY3g" isLocal="true"/>
+  <dds4ccm:CXInterface xmi:id="_v23g8GgXEd-Cd7UvmqIY3g" base_NamedElement="_v2vlIGgXEd-Cd7UvmqIY3g" base_Interface="_v2vlIGgXEd-Cd7UvmqIY3g" isLocal="true"/>
   <dds4ccm:CXOperation xmi:id="_ydI_oGgXEd-Cd7UvmqIY3g" base_NamedElement="_yc69MGgXEd-Cd7UvmqIY3g" base_Operation="_yc69MGgXEd-Cd7UvmqIY3g"/>
-  <dds4ccm:CXInterface xmi:id="_1qWigGgXEd-Cd7UvmqIY3g" base_Interface="_1qOmsGgXEd-Cd7UvmqIY3g" base_NamedElement="_1qOmsGgXEd-Cd7UvmqIY3g" isLocal="true"/>
+  <dds4ccm:CXInterface xmi:id="_1qWigGgXEd-Cd7UvmqIY3g" base_NamedElement="_1qOmsGgXEd-Cd7UvmqIY3g" base_Interface="_1qOmsGgXEd-Cd7UvmqIY3g" isLocal="true"/>
   <dds4ccm:ConnectorDef xmi:id="_4cer4GgXEd-Cd7UvmqIY3g" base_Component="_4cJ7wGgXEd-Cd7UvmqIY3g" base_NamedElement="_4cJ7wGgXEd-Cd7UvmqIY3g"/>
   <dds4ccm:TemplateModule xmi:id="_6P9bsGgXEd-Cd7UvmqIY3g" base_NamedElement="_6PvZQGgXEd-Cd7UvmqIY3g" base_Package="_6PvZQGgXEd-Cd7UvmqIY3g"/>
   <dds4ccm:TemplateSignature xmi:id="_eHLZ0GgcEd-PPPx81e4jRQ" base_TemplateSignature="_eHC28GgcEd-PPPx81e4jRQ"/>
-  <dds4ccm:TypeParameter xmi:id="_eHSHgGgcEd-PPPx81e4jRQ" base_ClassifierTemplateParameter="_eHQ5YGgcEd-PPPx81e4jRQ" constraint="interface"/>
-  <dds4ccm:TypeParameter xmi:id="_j-cvMWgcEd-PPPx81e4jRQ" base_ClassifierTemplateParameter="_j-cvMGgcEd-PPPx81e4jRQ" constraint="interface"/>
+  <dds4ccm:TypeParameter xmi:id="_eHSHgGgcEd-PPPx81e4jRQ" constraint="interface" base_ClassifierTemplateParameter="_eHQ5YGgcEd-PPPx81e4jRQ"/>
+  <dds4ccm:TypeParameter xmi:id="_j-cvMWgcEd-PPPx81e4jRQ" constraint="interface" base_ClassifierTemplateParameter="_j-cvMGgcEd-PPPx81e4jRQ"/>
   <dds4ccm:PortType xmi:id="_9tToIGgeEd-PPPx81e4jRQ" base_Class="_9tRL4GgeEd-PPPx81e4jRQ"/>
   <dds4ccm:ConnectorDef xmi:id="_Mq4asGgfEd-PPPx81e4jRQ" base_Component="_MqsNcGgfEd-PPPx81e4jRQ" base_NamedElement="_MqsNcGgfEd-PPPx81e4jRQ"/>
   <dds4ccm:InterfacePort xmi:id="_nmGD8GgfEd-PPPx81e4jRQ" base_Port="_nkwAIGgfEd-PPPx81e4jRQ"/>

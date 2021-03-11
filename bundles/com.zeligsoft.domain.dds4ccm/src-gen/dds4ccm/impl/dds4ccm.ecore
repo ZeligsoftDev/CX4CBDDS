@@ -1,0 +1,1603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dds4ccm" nsURI="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1"
+    nsPrefix="dds4ccm">
+  <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <details key="originalName" value="cxDDS4CCM"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+    <details key="ZMLMM::ZML_Core::Type" value="Classifier"/>
+    <details key="ZMLMM::ZML_Deployments::DeploymentSpecification" value="Classifier"/>
+    <details key="ZMLMM::ZML_Component::ConnectorEnd" value="ConnectorEnd"/>
+    <details key="ZMLMM::ZML_Deployments::DeploymentTarget" value="Classifier"/>
+    <details key="ZMLMM::ZML_Deployments::DeployableElement" value="Classifier"/>
+    <details key="ZMLMM::ZML_Component::Operation" value="Operation"/>
+    <details key="ZMLMM::ZML_Core::NamedElement" value="NamedElement"/>
+    <details key="ZMLMM::ZML_Component::InterfaceRealization" value="InterfaceRealization"/>
+    <details key="ZMLMM::ZML_Core::Namespace" value="Namespace"/>
+  </eAnnotations>
+  <eAnnotations source="CXMenuModel">
+    <details key="uri" value="platform:/plugin/com.zeligsoft.domain.dds4ccm/models/DDS4CCM.toolingmodel"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="AssemblyImplementation" eSuperTypes="#//StructuralRealization">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_NamedElement" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StructuralRealization">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="worker" value="ownedOperation"/>
+      <details key="part" value="part"/>
+      <details key="workerImpl" value="ownedBehavior"/>
+      <details key="ownedPort" value="ownedAttribute"/>
+      <details key="interface" value="superClass"/>
+      <details key="connector" value="ownedConnector"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Component" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HomeImplementation" eSuperTypes="#//StructuralRealization #//ManagesImplEnd">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ManagesImplEnd" abstract="true">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ManagesImpl">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="home" value="client"/>
+      <details key="component" value="supplier"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Dependency" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Dependency"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MonolithicImplementation" eSuperTypes="#//StructuralRealization #//WorkerFunctionIdentifiable #//Implementation #//ManagesImplEnd">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="name" value="name"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" ordered="false"
+        lowerBound="1" eType="#//ComponentCategory"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_NamedElement" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Implementation">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="worker" value="ownedOperation"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkerFunctionIdentifiable">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uuid" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ComponentCategory">
+    <eLiterals name="SESSION"/>
+    <eLiterals name="SERVICE" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CCMPart" eSuperTypes="#//Part">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_NamedElement" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Part" abstract="true">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="definition" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CCMConnector" eSuperTypes="#//AssemblyConnector">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AssemblyConnector">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="end" value="end"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portEnd" ordered="false"
+        upperBound="-1" eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Connector" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true" eSuperTypes="#//TypedElement">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="isExternal" value="isService"/>
+      <details key="porttype" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wiring" ordered="false"
+        lowerBound="1" eType="#//WiringKind" defaultValueLiteral="connector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Port" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypedElement" abstract="true">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="upperBound" value="upper"/>
+      <details key="lowerBound" value="lower"/>
+      <details key="type" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WiringKind">
+    <eLiterals name="connector"/>
+    <eLiterals name="sap" value="1"/>
+    <eLiterals name="spp" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentInterface">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="ownedPort" value="ownedPort"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Component" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FlowPort" abstract="true" eSuperTypes="#//Port">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessagePort" eSuperTypes="#//Port">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="providedInterface" value="provided"/>
+      <details key="type" value="type"/>
+      <details key="requiredInterface" value="required"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Interface" abstract="true" eSuperTypes="#//PortTypeable">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="operation" value="ownedOperation"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Interface" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortTypeable">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkerFunction">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="parameter" value="ownedParameter"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receivingPort" ordered="false"
+        eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portOperation" ordered="false"
+        eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uuid" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="delegate" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Operation" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PortType" eSuperTypes="#//PortTypeable">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="providedInterfaces" value="interfaceRealization"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inverse" ordered="false"
+        eType="#//PortType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentImplementation">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="structuralRealization" value="utilizedElement"/>
+      <details key="implementation" value="client"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Manifestation" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Manifestation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//TypedElement">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Parameter" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Parameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Model" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventPort" eSuperTypes="#//Port #//ConjugatedPort">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="publishesEvent" value="required"/>
+      <details key="consumesEvent" value="provided"/>
+      <details key="type" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConjugatedPort">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isConjugated" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CCMComponent" eSuperTypes="#//ComponentInterface #//CXNamedElement #//CXModuleContained #//CXType #//ManagesEnd">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="ownedProperty" value="ownedAttribute"/>
+      <details key="ownedAttribute" value="ownedAttribute"/>
+      <details key="generals" value="general"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ManagesEnd" abstract="true">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXModuleContained" abstract="true">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXNamedElement">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_NamedElement" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXType" abstract="true">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//CXNamedElement #//Interface #//CXModuleContained">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="isAbstract" value="isAbstract"/>
+      <details key="member" value="ownedAttribute"/>
+      <details key="ownedAttribute" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isCustom" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTruncatable" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Home" eSuperTypes="#//CXNamedElement #//WorkerFunctionIdentifiable #//CXModuleContained #//ManagesEnd">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="operation" value="ownedOperation"/>
+      <details key="ownedAttribute" value="ownedAttribute"/>
+      <details key="export" value="ownedMember"/>
+      <details key="nestedClassifier" value="nestedClassifier"/>
+      <details key="manages" value="clientDependency"/>
+      <details key="property" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Manages" eSuperTypes="#//CXNamedElement">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="home" value="client"/>
+      <details key="component" value="supplier"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Dependency" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Dependency"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DDS4CCMModel" eSuperTypes="#//IDL3PlusModel">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="locationPrefix" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fixedHeader" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fixedFooter" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelType" ordered="false"
+        lowerBound="1" eType="#//ModelTypeEnum" defaultValueLiteral="ATCD"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IDL3PlusModel" eSuperTypes="#//CCMModel">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CCMModel" eSuperTypes="#//Model">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_NamedElement" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ModelTypeEnum">
+    <eLiterals name="ATCD"/>
+    <eLiterals name="AXCIOMA" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXWString" eSuperTypes="#//CXBounded #//CXClassifierContained #//CXType">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXBounded" abstract="true" eSuperTypes="#//CXNamedElement #//CXModuleContained">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bounds" ordered="false"
+        lowerBound="1" eType="#//CXBound" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bound" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_DataType" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXBound">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constant" ordered="false"
+        eType="#//CXConstant"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXConstant" eSuperTypes="#//CXNamedElement #//CXTyped">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="default" value="default"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXTyped" abstract="true">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="idlType" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXClassifierContained" abstract="true">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXAnonymousArray">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_DataType" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXAnonymousSequence">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_DataType" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXArray" eSuperTypes="#//CXTemplate #//Contained #//CXClassifierContained #//CXModuleContained #//CXType">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bounds" ordered="false"
+        lowerBound="1" upperBound="-1" eType="#//CXBound" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXTemplate" abstract="true" eSuperTypes="#//CXNamedElement">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_DataType" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Contained" abstract="true">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXBoxedValue" eSuperTypes="#//CXWrapper">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXWrapper" abstract="true" eSuperTypes="#//CXNamedElement">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_DataType" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXCase" eSuperTypes="#//CXUnionField">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" ordered="false"
+        lowerBound="1" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXUnionField" eSuperTypes="#//CXNamedElement #//CXTyped">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXConstants" eSuperTypes="#//CXNamedElement #//CXClassifierContained #//CXModuleContained">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXConstructed" abstract="true" eSuperTypes="#//CXNamedElement">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_DataType" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXDefault" eSuperTypes="#//CXUnionField">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXEnum" eSuperTypes="#//CXNamedElement #//Contained #//CXClassifierContained #//CXModuleContained #//CXType">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Enumeration" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Enumeration"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXException" eSuperTypes="#//CXConstructed #//Contained #//CXClassifierContained #//CXModuleContained #//CXType">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="members" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXInterface" eSuperTypes="#//CXNamedElement #//Interface #//WorkerFunctionIdentifiable #//Contained #//CXClassifier #//CXType">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="isAbstract" value="isAbstract"/>
+      <details key="generals" value="general"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isLocal" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAsynchronous" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXClassifier" abstract="true" eSuperTypes="#//CXModuleContained">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="ownedOperation" value="ownedOperation"/>
+      <details key="ownedConstants" value="ownedAttribute"/>
+      <details key="contents" value="nestedClassifier"/>
+      <details key="ownedAttribute" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXPrimitive" eSuperTypes="#//CXNamedElement #//Contained #//CXType">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" ordered="false" lowerBound="1"
+        eType="#//CXPrimitiveKind"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_DataType" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CXPrimitiveKind">
+    <eLiterals name="CXWChar"/>
+    <eLiterals name="CXVoid" value="1"/>
+    <eLiterals name="CXUnsignedShort" value="2"/>
+    <eLiterals name="CXUnsignedLongLong" value="3"/>
+    <eLiterals name="CXUnsignedLong" value="4"/>
+    <eLiterals name="CXShort" value="5"/>
+    <eLiterals name="CXOctet" value="6"/>
+    <eLiterals name="CXObjectRef" value="7"/>
+    <eLiterals name="CXLongLong" value="8"/>
+    <eLiterals name="CXLongDouble" value="9"/>
+    <eLiterals name="CXLong" value="10"/>
+    <eLiterals name="CXFloat" value="11"/>
+    <eLiterals name="CXDouble" value="12"/>
+    <eLiterals name="CXChar" value="13"/>
+    <eLiterals name="CXBoolean" value="14"/>
+    <eLiterals name="CXAny" value="15"/>
+    <eLiterals name="CXString" value="16"/>
+    <eLiterals name="CXWString" value="17"/>
+    <eLiterals name="CXTypecode" value="18"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXSequence" eSuperTypes="#//CXTemplate #//Contained #//CXClassifierContained #//CXModuleContained #//CXType">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bounds" ordered="false"
+        eType="#//CXBound" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bound" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXString" eSuperTypes="#//CXBounded #//CXClassifierContained #//CXType">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXStruct" eSuperTypes="#//CXConstructed #//Contained #//CXClassifierContained #//CXModuleContained #//CXType">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="members" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXSupports">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Generalization" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Generalization"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXTypeDef" eSuperTypes="#//CXWrapper #//CXClassifierContained #//CXModuleContained #//CXType">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" ordered="false" eType="#//CXType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXUnion" eSuperTypes="#//CXConstructed #//Contained #//CXClassifierContained #//CXModuleContained #//CXType">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXValue" eSuperTypes="#//Contained #//CXClassifier #//CXType">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="isAbstract" value="isAbstract"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isCustom" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTruncatable" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Interface" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXValueFactory">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Operation" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXModule" eSuperTypes="#//CXNamedElement #//Contained #//CXModuleContained">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="contents" value="packagedElement"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Package" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXAttribute" eSuperTypes="#//CXNamedElement #//WorkerFunctionIdentifiable #//CXTyped">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="owner" value="owner"/>
+      <details key="isReadOnly" value="isReadOnly"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="setraises" ordered="false"
+        upperBound="-1" eType="#//CXException"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="getraises" ordered="false"
+        upperBound="-1" eType="#//CXException"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXOperation" eSuperTypes="#//CXNamedElement #//WorkerFunctionIdentifiable #//CXTyped">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="ownedParameter" value="ownedParameter"/>
+      <details key="owner" value="owner"/>
+      <details key="exceptionDef" value="raisedException"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="idlType" ordered="false"
+        eType="#//CXType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOneWay" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Operation" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXField" eSuperTypes="#//CXNamedElement #//CXTyped">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bounds" ordered="false"
+        upperBound="-1" eType="#//CXBound" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bound" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CXParameter" eSuperTypes="#//CXNamedElement #//CXTyped">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="direction" value="direction"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Parameter" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Parameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateMember" eSuperTypes="#//CXNamedElement #//CXTyped">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectorDef" eSuperTypes="#//ComponentInterface #//CXNamedElement #//CXModuleContained #//CXType">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="general" value="superClass"/>
+      <details key="ownedAttribute" value="ownedAttribute"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectorFragment" eSuperTypes="#//ComponentInterface">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FragmentImplementation" eSuperTypes="#//StructuralRealization">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FragmentAssembly" eSuperTypes="#//StructuralRealization">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectorImplementation" eSuperTypes="#//StructuralRealization">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectorAssembly" eSuperTypes="#//StructuralRealization">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FragmentPart" eSuperTypes="#//Part">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypedConnector" eSuperTypes="#//AssemblyConnector">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectorType" ordered="false"
+        eType="#//ConnectorDef"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeParameter">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraint" ordered="false"
+        lowerBound="1" eType="#//TypeConstraint"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_ClassifierTemplateParameter"
+        ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ClassifierTemplateParameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TypeConstraint">
+    <eLiterals name="typename"/>
+    <eLiterals name="interface" value="1"/>
+    <eLiterals name="valuetype" value="2"/>
+    <eLiterals name="eventtype" value="3"/>
+    <eLiterals name="struct" value="4"/>
+    <eLiterals name="union" value="5"/>
+    <eLiterals name="sequence" value="6"/>
+    <eLiterals name="array" value="7"/>
+    <eLiterals name="enum" value="8"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TemplateModule" eSuperTypes="#//CXNamedElement #//CXModuleContained #//CXType">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="signature" value="ownedTemplateSignature"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Package" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModuleInstantiation" eSuperTypes="#//CXNamedElement #//CXModuleContained">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="moduleBinding" value="templateBinding"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Package" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterBinding">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="type" value="actual"/>
+      <details key="typeParameter" value="formal"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_TemplateParameterSubstitution"
+        ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//TemplateParameterSubstitution"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TemplateModuleAlias" eSuperTypes="#//CXNamedElement">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModuleBinding">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="parameterBinding" value="parameterSubstitution"/>
+      <details key="boundElement" value="boundElement"/>
+      <details key="template" value="signature"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_TemplateBinding" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//TemplateBinding"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TemplateSignature">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="typeParameter" value="ownedParameter"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_TemplateSignature"
+        ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//TemplateSignature"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InterfacePort" eSuperTypes="#//MessagePort #//ConjugatedPort #//WorkerFunctionIdentifiable">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectorType" ordered="false"
+        eType="#//ComponentInterface"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAsynchronous" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasCSL" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Native" eSuperTypes="#//CXNamedElement #//CXClassifierContained #//CXModuleContained #//CXType">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_DataType" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSpace" eSuperTypes="#//Part">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="connectorType" value="type"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_NamedElement" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Topic">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="type" value="ownedAttribute"/>
+      <details key="qosProperty" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" lowerBound="1"
+        eType="#//TopicKind" defaultValueLiteral="STANDARD"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TopicKind">
+    <eLiterals name="STANDARD"/>
+    <eLiterals name="MULTI_TOPIC" value="1"/>
+    <eLiterals name="CONTENT_FILTERED" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TopicField">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="type" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="qosPolicy" abstract="true">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="historyQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="depth" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" lowerBound="1"
+        eType="#//HistoryQosPolicyKind" defaultValueLiteral="KEEP_LAST"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HistoryQosPolicyKind">
+    <eLiterals name="KEEP_LAST"/>
+    <eLiterals name="KEEP_ALL" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="lifespanQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="duration" ordered="false"
+        lowerBound="1" eType="#//Duration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Duration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="second" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nanosecond" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ownershipQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" lowerBound="1"
+        eType="#//OwnershipQosPolicyKind" defaultValueLiteral="SHARED"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OwnershipQosPolicyKind">
+    <eLiterals name="SHARED"/>
+    <eLiterals name="EXCLUSIVE" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="osQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"
+        defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="wdlQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autodispose_unregistered_instances"
+        ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="rdlQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="autopurge_nowriter_samples_delay"
+        ordered="false" lowerBound="1" eType="#//Duration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="autopurge_disposed_samples_delay"
+        ordered="false" lowerBound="1" eType="#//Duration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="udQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="tdQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="tpQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"
+        defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="deadlineQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="period" ordered="false"
+        lowerBound="1" eType="#//Duration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="lbQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="duration" ordered="false"
+        lowerBound="1" eType="#//Duration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="tbfQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="minimum_separation" ordered="false"
+        lowerBound="1" eType="#//Duration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="gdQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="efQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoenable_created_entities"
+        ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="rlQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_instances" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_samples" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_samples_per_instance"
+        ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"
+        defaultValueLiteral="-1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="presentationQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="access_scope" ordered="false"
+        lowerBound="1" eType="#//PresentationQosPolicyAccessScopeKind" defaultValueLiteral="INSTANCE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="coherent_access" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ordered_access" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PresentationQosPolicyAccessScopeKind">
+    <eLiterals name="INSTANCE"/>
+    <eLiterals name="TOPIC" value="1"/>
+    <eLiterals name="GROUP" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="partitionQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="reliabilityQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_blocking_time" ordered="false"
+        lowerBound="1" eType="#//Duration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" lowerBound="1"
+        eType="#//RealiabilityQosPolicyKind" defaultValueLiteral="BEST_EFFORT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RealiabilityQosPolicyKind">
+    <eLiterals name="BEST_EFFORT"/>
+    <eLiterals name="RELIABLE" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="dsQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="service_cleanup_delay"
+        ordered="false" lowerBound="1" eType="#//Duration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="history_kind" ordered="false"
+        lowerBound="1" eType="#//HistoryQosPolicyKind" defaultValueLiteral="KEEP_LAST"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_instances" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_samples" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_samples_per_instance"
+        ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="history_depth" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="livelinessQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lease_duration" ordered="false"
+        lowerBound="1" eType="#//Duration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" lowerBound="1"
+        eType="#//LivelinessQosPolicyKind" defaultValueLiteral="AUTOMATIC"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LivelinessQosPolicyKind">
+    <eLiterals name="AUTOMATIC"/>
+    <eLiterals name="MANUAL_BY_PARTICIPANT" value="1"/>
+    <eLiterals name="MANUAL_BY_TOPIC" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="durabilityQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" lowerBound="1"
+        eType="#//DurabilityQosPolicyKind" defaultValueLiteral="VOLATILE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DurabilityQosPolicyKind">
+    <eLiterals name="TRANSIENT"/>
+    <eLiterals name="TRANSIENT_LOCAL" value="1"/>
+    <eLiterals name="VOLATILE" value="2"/>
+    <eLiterals name="PERSISTENT" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="doQosPolicy" eSuperTypes="#//qosPolicy">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" lowerBound="1"
+        eType="#//DestinationOrderQosPolicyKind" defaultValueLiteral="BY_RECEPTION_TIMESTAMP"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DestinationOrderQosPolicyKind">
+    <eLiterals name="BY_RECEPTION_TIMESTAMP"/>
+    <eLiterals name="BY_SOURCE_TIMESTAMP" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="qosProperty">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="policy" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DDSMessage" eSuperTypes="#//CXStruct">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="fields" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessageField" eSuperTypes="#//CXField">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="idlType" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isKey" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QoSProfile">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="qosForEntity" value="nestedClassifier"/>
+      <details key="qosEntity" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filename" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QoSForEntity" abstract="true">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="qosProperty" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QoSEntity">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="type" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataReaderQoS" eSuperTypes="#//DataReaderWriterQoS">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataReaderWriterQoS" abstract="true"
+      eSuperTypes="#//QoSForEntity">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParticipantQoS" eSuperTypes="#//QoSForEntity">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PublisherQoS" eSuperTypes="#//PublisherSubscriberQoS">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PublisherSubscriberQoS" abstract="true"
+      eSuperTypes="#//QoSForEntity">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubscriberQoS" eSuperTypes="#//PublisherSubscriberQoS">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TopicQoS" eSuperTypes="#//QoSForEntity">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataWriterQoS" eSuperTypes="#//DataReaderWriterQoS">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Domain">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="node" value="ownedAttribute"/>
+      <details key="infoProperty" value="ownedAttribute"/>
+      <details key="interconnect" value="ownedAttribute"/>
+      <details key="connections" value="ownedConnector"/>
+      <details key="sharedResource" value="ownedAttribute"/>
+      <details key="bridge" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="UUID" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Component" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Node">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="resource" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Component" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeInstance" eSuperTypes="#//TypedElement">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="type" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Interconnect">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="resource" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Component" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InterconnectInstance" eSuperTypes="#//TypedElement">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="type" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bridge">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="resource" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Component" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BridgeInstance" eSuperTypes="#//TypedElement">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="type" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Resource" eSuperTypes="#//RequirementSatisfier">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RequirementSatisfier">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="property" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resourceType" ordered="false"
+        lowerBound="1" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceProperty" eSuperTypes="#//TypedElement">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="type" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SharedResource" eSuperTypes="#//ResourceProperty">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SatisfierProperty" eSuperTypes="#//TypedElement">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="type" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dynamic" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" ordered="false" lowerBound="1"
+        eType="#//SatisfierPropertyKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SatisfierPropertyKind">
+    <eLiterals name="Quantity"/>
+    <eLiterals name="Capacity" value="1"/>
+    <eLiterals name="Minimum" value="2"/>
+    <eLiterals name="Maximum" value="3"/>
+    <eLiterals name="Attribute" value="4"/>
+    <eLiterals name="Selection" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Requirement">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" ordered="false"
+        upperBound="-1" eType="#//CXAttribute"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resourceType" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeploymentPlan" eSuperTypes="#//Deployment">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Deployment">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="allocation" value="packagedElement"/>
+      <details key="part" value="ownedAttribute"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Component" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Allocation">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="deployedOn" value="supplier"/>
+      <details key="deployed" value="client"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Dependency" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Dependency"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeploymentPart">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="specification" value="type"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nestedPart" ordered="false"
+        upperBound="-1" eType="#//DeploymentPart"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" ordered="false"
+        eType="#//Configuration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelElement" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Configuration" abstract="true">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_InstanceSpecification"
+        ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentDeploymentPart" eSuperTypes="#//DeploymentPart">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selectedImplementation"
+        ordered="false" eType="#//Implementation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="implementationConfiguration"
+        ordered="false" eType="#//Configuration"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BuildConfiguration" eSuperTypes="#//Configuration">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConfigurationSlot">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="slotKind" ordered="false"
+        lowerBound="1" eType="#//ConfigurationSlotKind" defaultValueLiteral="additive"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Slot" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Slot"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConfigurationSlotKind">
+    <eLiterals name="additive"/>
+    <eLiterals name="override" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TargetAssemblyConnector" eSuperTypes="#//AssemblyConnector">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContainerProcess">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="property" value="ownedAttribute"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Component" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TemplateParameterType" eSuperTypes="#//CXType">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_DataType" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Interface" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExtendedPortType" eSuperTypes="#//PortType #//CXNamedElement #//CXModuleContained #//CXType">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="ownedAttribute" value="ownedAttribute"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IDLFileSpecification">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="filename" value="name"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IDLFileDependency">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="file" value="supplier"/>
+      <details key="element" value="client"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Dependency" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Dependency"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="#//TypedElement">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="type" value="type"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectorDefaultValueBinding">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="definition" ordered="false"
+        lowerBound="1" eType="#//ConnectorDef"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectorInstance" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Package" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IDLIncludeDependency">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="includee" value="supplier"/>
+      <details key="includer" value="client"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Dependency" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Dependency"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkerFunctionImpl">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="language" value="language"/>
+      <details key="workerFunction" value="specification"/>
+      <details key="body" value="body"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_OpaqueBehavior" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//OpaqueBehavior"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectorStatusListenerConnection" eSuperTypes="#//CCMConnector">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FinderOperation" eSuperTypes="#//HomeOperation">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HomeOperation" eSuperTypes="#//CXNamedElement #//WorkerFunctionIdentifiable">
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="ownedParameter" value="ownedParameter"/>
+      <details key="owner" value="owner"/>
+      <details key="exceptionDef" value="raisedException"/>
+    </eAnnotations>
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Operation" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FactoryOperation" eSuperTypes="#//HomeOperation">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HomeInstance" eSuperTypes="#//Part">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="definition" value="type"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_NamedElement" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HideableElement">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_NamedElement" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PerPortConnectorTypeDeploymentPart"
+      eSuperTypes="#//DeploymentPart">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>
