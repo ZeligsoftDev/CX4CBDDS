@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1 pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <uml:Model xmi:id="_jkiX8J4JEd6xhoJKj1dweA" name="CCM_PSDD">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wi3E8N2QEeqk7qqpN0ZyIw" source="cx.migration">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wi4TEN2QEeqk7qqpN0ZyIw" key="version" value="2.0.1"/>
@@ -196,12 +196,12 @@
     </profileApplication>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_1KTJYJ44Ed6CdqU5qRn9Dw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1Kc6YJ44Ed6CdqU5qRn9Dw" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ"/>
+        <references xmi:type="ecore:EPackage" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#/"/>
       </eAnnotations>
       <appliedProfile xmi:type="uml:Profile" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KssEDZEd-LnsQ685SqSQ"/>
     </profileApplication>
   </uml:Model>
-  <dds4ccm:DDS4CCMModel xmi:id="_YFs6gE48Ed-135OmziSBCg" base_Model="_jkiX8J4JEd6xhoJKj1dweA" modelType="AXCIOMA"/>
+  <dds4ccm:DDS4CCMModel xmi:id="_YFs6gE48Ed-135OmziSBCg" base_Model="_jkiX8J4JEd6xhoJKj1dweA" base_NamedElement="_jkiX8J4JEd6xhoJKj1dweA" modelType="AXCIOMA"/>
   <dds4ccm:CXTypeDef xmi:id="_CLRMEGRMEd-Wc9hRqhM12g" base_NamedElement="_CJbZAGRMEd-Wc9hRqhM12g" base_DataType="_CJbZAGRMEd-Wc9hRqhM12g"/>
   <dds4ccm:CXModule xmi:id="_GbuUoGRMEd-Wc9hRqhM12g" base_NamedElement="_GbbZsGRMEd-Wc9hRqhM12g" base_Package="_GbbZsGRMEd-Wc9hRqhM12g"/>
   <dds4ccm:CXEnum xmi:id="_G-UZcGROEd-Wc9hRqhM12g" base_NamedElement="_G-OS0GROEd-Wc9hRqhM12g" base_Enumeration="_G-OS0GROEd-Wc9hRqhM12g"/>
@@ -212,21 +212,21 @@
   <dds4ccm:TemplateModule xmi:id="_hX6lIGTXEd-fwvmMvf-phA" base_NamedElement="_hXqtgGTXEd-fwvmMvf-phA" base_Package="_hXqtgGTXEd-fwvmMvf-phA"/>
   <dds4ccm:TemplateSignature xmi:id="_j6TpYGTXEd-fwvmMvf-phA" base_TemplateSignature="_j6TCUGTXEd-fwvmMvf-phA"/>
   <dds4ccm:TypeParameter xmi:id="_j6WssGTXEd-fwvmMvf-phA" base_ClassifierTemplateParameter="_j6WFoGTXEd-fwvmMvf-phA"/>
-  <dds4ccm:TypeParameter xmi:id="_l3JJgGTXEd-fwvmMvf-phA" base_ClassifierTemplateParameter="_l3GtQGTXEd-fwvmMvf-phA" constraint="sequence"/>
-  <dds4ccm:CXInterface xmi:id="_SYkbgGTYEd-fwvmMvf-phA" base_Interface="_SYaqgGTYEd-fwvmMvf-phA" base_NamedElement="_SYaqgGTYEd-fwvmMvf-phA" isLocal="true"/>
+  <dds4ccm:TypeParameter xmi:id="_l3JJgGTXEd-fwvmMvf-phA" constraint="sequence" base_ClassifierTemplateParameter="_l3GtQGTXEd-fwvmMvf-phA"/>
+  <dds4ccm:CXInterface xmi:id="_SYkbgGTYEd-fwvmMvf-phA" base_NamedElement="_SYaqgGTYEd-fwvmMvf-phA" base_Interface="_SYaqgGTYEd-fwvmMvf-phA" isLocal="true"/>
   <dds4ccm:CXOperation xmi:id="_YkubwGTYEd-fwvmMvf-phA" base_NamedElement="_YkpjQGTYEd-fwvmMvf-phA" base_Operation="_YkpjQGTYEd-fwvmMvf-phA"/>
   <dds4ccm:CXOperation xmi:id="_o4GjoGTYEd-fwvmMvf-phA" base_NamedElement="_o4BrIGTYEd-fwvmMvf-phA" base_Operation="_o4BrIGTYEd-fwvmMvf-phA"/>
-  <dds4ccm:CXInterface xmi:id="_AaV0AGTbEd-fwvmMvf-phA" base_Interface="_AaRikGTbEd-fwvmMvf-phA" base_NamedElement="_AaRikGTbEd-fwvmMvf-phA" isLocal="true"/>
+  <dds4ccm:CXInterface xmi:id="_AaV0AGTbEd-fwvmMvf-phA" base_NamedElement="_AaRikGTbEd-fwvmMvf-phA" base_Interface="_AaRikGTbEd-fwvmMvf-phA" isLocal="true"/>
   <dds4ccm:CXOperation xmi:id="_FeecQGTbEd-fwvmMvf-phA" base_NamedElement="_Feax4GTbEd-fwvmMvf-phA" base_Operation="_Feax4GTbEd-fwvmMvf-phA"/>
   <dds4ccm:CXOperation xmi:id="_hMZU0GTbEd-fwvmMvf-phA" base_NamedElement="_hMVDYGTbEd-fwvmMvf-phA" base_Operation="_hMVDYGTbEd-fwvmMvf-phA"/>
   <dds4ccm:CXAttribute xmi:id="__-_igGTfEd-fwvmMvf-phA" base_NamedElement="__-74IGTfEd-fwvmMvf-phA" setraises="_XRXKIGROEd-Wc9hRqhM12g" base_Property="__-74IGTfEd-fwvmMvf-phA"/>
-  <dds4ccm:CXInterface xmi:id="_jww1YGTjEd-fwvmMvf-phA" base_Interface="_jwsj8GTjEd-fwvmMvf-phA" base_NamedElement="_jwsj8GTjEd-fwvmMvf-phA" isLocal="true"/>
+  <dds4ccm:CXInterface xmi:id="_jww1YGTjEd-fwvmMvf-phA" base_NamedElement="_jwsj8GTjEd-fwvmMvf-phA" base_Interface="_jwsj8GTjEd-fwvmMvf-phA" isLocal="true"/>
   <dds4ccm:CXOperation xmi:id="_m2f3QGTjEd-fwvmMvf-phA" base_NamedElement="_m2cM4GTjEd-fwvmMvf-phA" base_Operation="_m2cM4GTjEd-fwvmMvf-phA"/>
   <dds4ccm:CXOperation xmi:id="_tbKeIGTjEd-fwvmMvf-phA" base_NamedElement="_tbGzwGTjEd-fwvmMvf-phA" base_Operation="_tbGzwGTjEd-fwvmMvf-phA"/>
-  <dds4ccm:CXInterface xmi:id="_0653EGTsEd-SPZr11VF_Lg" base_Interface="_06dLIGTsEd-SPZr11VF_Lg" base_NamedElement="_06dLIGTsEd-SPZr11VF_Lg" isLocal="true"/>
+  <dds4ccm:CXInterface xmi:id="_0653EGTsEd-SPZr11VF_Lg" base_NamedElement="_06dLIGTsEd-SPZr11VF_Lg" base_Interface="_06dLIGTsEd-SPZr11VF_Lg" isLocal="true"/>
   <dds4ccm:CXOperation xmi:id="_i6VgsGUEEd-RBa5Uit3yBQ" base_NamedElement="_i6DM0GUEEd-RBa5Uit3yBQ" base_Operation="_i6DM0GUEEd-RBa5Uit3yBQ"/>
-  <dds4ccm:ExtendedPortType xmi:id="_NIWJIWUGEd-RBa5Uit3yBQ" base_Class="_NIU7AGUGEd-RBa5Uit3yBQ"/>
-  <dds4ccm:ExtendedPortType xmi:id="_j99kEGUIEd-RBa5Uit3yBQ" base_Class="_j98V8GUIEd-RBa5Uit3yBQ"/>
+  <dds4ccm:ExtendedPortType xmi:id="_NIWJIWUGEd-RBa5Uit3yBQ" base_Class="_NIU7AGUGEd-RBa5Uit3yBQ" base_NamedElement="_NIU7AGUGEd-RBa5Uit3yBQ"/>
+  <dds4ccm:ExtendedPortType xmi:id="_j99kEGUIEd-RBa5Uit3yBQ" base_Class="_j98V8GUIEd-RBa5Uit3yBQ" base_NamedElement="_j98V8GUIEd-RBa5Uit3yBQ"/>
   <dds4ccm:InterfacePort xmi:id="_oiq6oGnEEd-qrsLCnIpYUg" base_Port="_ohmjoGnEEd-qrsLCnIpYUg" isConjugated="true"/>
   <dds4ccm:InterfacePort xmi:id="_wfyiMGnEEd-qrsLCnIpYUg" base_Port="_wfm8AGnEEd-qrsLCnIpYUg" isConjugated="true"/>
   <dds4ccm:TemplateParameterType xmi:id="_FSNtcJqHEd-SA6GLYgdl1A" base_Class="_j6blMGTXEd-fwvmMvf-phA"/>
@@ -244,7 +244,7 @@
   <dds4ccm:CXAttribute xmi:id="_q_m9YKdOEeqtZIky9hZ3mg" base_NamedElement="_q_awIKdOEeqtZIky9hZ3mg" base_Property="_q_awIKdOEeqtZIky9hZ3mg"/>
   <dds4ccm:CXAttribute xmi:id="_v6sXUKdOEeqtZIky9hZ3mg" base_NamedElement="_v6T80KdOEeqtZIky9hZ3mg" base_Property="_v6T80KdOEeqtZIky9hZ3mg"/>
   <dds4ccm:CXTypeDef xmi:id="_JSPjgKdREeqtZIky9hZ3mg" base_NamedElement="_JSGZkKdREeqtZIky9hZ3mg" base_DataType="_JSGZkKdREeqtZIky9hZ3mg"/>
-  <dds4ccm:CXInterface xmi:id="_WTXQcadREeqtZIky9hZ3mg" base_Interface="_WTXQcKdREeqtZIky9hZ3mg" base_NamedElement="_WTXQcKdREeqtZIky9hZ3mg"/>
+  <dds4ccm:CXInterface xmi:id="_WTXQcadREeqtZIky9hZ3mg" base_NamedElement="_WTXQcKdREeqtZIky9hZ3mg" base_Interface="_WTXQcKdREeqtZIky9hZ3mg"/>
   <dds4ccm:CXOperation xmi:id="_af_o8KdREeqtZIky9hZ3mg" base_NamedElement="_af2fAKdREeqtZIky9hZ3mg" base_Operation="_af2fAKdREeqtZIky9hZ3mg"/>
   <dds4ccm:CXParameter xmi:id="_enBvwKdREeqtZIky9hZ3mg" base_NamedElement="_emu00KdREeqtZIky9hZ3mg" base_Parameter="_emu00KdREeqtZIky9hZ3mg"/>
   <dds4ccm:CXOperation xmi:id="_m1DhI6dREeqtZIky9hZ3mg" base_NamedElement="_m1DhIKdREeqtZIky9hZ3mg" base_Operation="_m1DhIKdREeqtZIky9hZ3mg"/>
