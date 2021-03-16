@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1 pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ">
+  <uml:Model xmi:id="_jkiX8J4JEd6xhoJKj1dweA" name="CCM_PSAT">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_t1iPkECXEeKpbI7yn6AS1w" source="cx.migration">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_t1iPkUCXEeKpbI7yn6AS1w" key="version" value="2.0.1"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_t1iPkkCXEeKpbI7yn6AS1w" key="date" value="1599568092430"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VIpjcPgnEeqGr-hDsQEScQ" source="zcx">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_VIqxkPgnEeqGr-hDsQEScQ" key="pathmap" value="PSAT_CONNECTORS_LIBRARY"/>
+    </eAnnotations>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_Fg29cLNIEd66L-pSY5VQBg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_DO-O0EDsEd-pwPnT_VsB_g"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_yeSZwNeiEd-US7ahB6BdmA">
+      <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_jkiX8J4JEd6xhoJKj1dweA"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_TFVuEALdEeCpUcUvNR7mgQ" name="ccm_psat"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_2FQhgFbSEeOvGvp52SlPdw" name="ports">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mrUB8I97EeOV1sBam6ylKw" source="zcx">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mrUB8Y97EeOV1sBam6ylKw" key="generatedir" value="true"/>
+      </eAnnotations>
+      <packagedElement xmi:type="uml:Package" xmi:id="_3wAMEFbSEeOvGvp52SlPdw" name="PSAT">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ePDnsJmJEeO0MdfF8gpkkw" source="zcx">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ePEOwJmJEeO0MdfF8gpkkw" key="generatedir" value="true"/>
+        </eAnnotations>
+        <packagedElement xmi:type="uml:Package" xmi:id="_PWbX0NelEd-US7ahB6BdmA" name="CCM_PSAT">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_bJDQwKo3EeOpScUomARFQg" annotatedElement="_PWbX0NelEd-US7ahB6BdmA">
+            <body>&lt;p>Module containing all of the @ref PSAT related entities. Non-typed constructs are  defined in a package called Base, while typed constructs are in a templated sub-module.&lt;/p></body>
+          </ownedComment>
+          <packagedElement xmi:type="uml:Package" xmi:id="_cpcwQNepEd-US7ahB6BdmA" name="header_defn">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_23N4gGhsEeGuv7rRDvQHuQ" source="zcx">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_23OfkGhsEeGuv7rRDvQHuQ" key="generatedir" value="false"/>
+            </eAnnotations>
+            <ownedComment xmi:type="uml:Comment" xmi:id="_DjS6QJmKEeO0MdfF8gpkkw" annotatedElement="_cpcwQNepEd-US7ahB6BdmA">
+              <body>&lt;p>Defines the structure for the PSAT_Header meta-data message and all its supporting sub-structures, typedefs, enums, etc.  This structure is required to be used in any @ref UDM created by a user  including the basic one (CCM_PSAT::Basic_UDM_msg) supplied with the  @ref PSAT DDS4CCM connector implementation.&lt;/p></body>
+            </ownedComment>
+            <packagedElement xmi:type="uml:Enumeration" xmi:id="_fjZ_8NepEd-US7ahB6BdmA" name="Endian_Type">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_Z2vm4FbeEeOvGvp52SlPdw" annotatedElement="_fjZ_8NepEd-US7ahB6BdmA">
+                <body>&lt;p>Byte endianness of data in the @ref AD buffer.&lt;/p>&lt;p>@see PSAT_Header&lt;/p></body>
+              </ownedComment>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_jIkv0NepEd-US7ahB6BdmA" name="PSAT_AD_LITTLE_ENDIAN">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_ep7pEFbeEeOvGvp52SlPdw" annotatedElement="_jIkv0NepEd-US7ahB6BdmA">
+                  <body>&lt;p>Big endian byte order (for example, PowerPC/Cell).&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_j0-i0NepEd-US7ahB6BdmA" name="PSAT_AD_BIG_ENDIAN">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_cxikEFbeEeOvGvp52SlPdw" annotatedElement="_j0-i0NepEd-US7ahB6BdmA">
+                  <body>&lt;p>Little endian byte order (for example, x86_64).&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_oo9PMNepEd-US7ahB6BdmA" name="Data_Shape">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_0hsxIFbfEeOvGvp52SlPdw" annotatedElement="_oo9PMNepEd-US7ahB6BdmA">
+                <body>&lt;p>Structure defining a bounding box describing the @ref PSAT sample or subsample that is to be transferred.&lt;/p>&lt;p>Important:&lt;/p>&lt;p>When the underlying attachment transport is zero-copy shared memory, the following restrictions apply to what the&lt;/p>&lt;p>Typed::PSAT_Listener::on_metadata_intercept may alter in the&lt;/p>&lt;p>@ref UDM &quot;UDM&quot;:&lt;/p>&lt;blockquote>&lt;p>-# The Data_Shape::stride field cannot change as that would force a copy.&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;p>-# Changes to any field within this structure will alter the shape of the bounding box. This new shape must not fall outside the bounding box defined by the original values in this structure.&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;p>-# Bounds checking will be performed by the @ref PSAT connector using the following equation and inequalities:&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>- @f$end\_offset = source\_offset + [(num\_blocks - 1) * stride] + block\_length@f$&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;p>-# After performing the above calculation on both the old and new values of these fields, the following must be true:&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>- @f$new\_end\_offset \le old\_end\_offset@f$&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>- @f$new\_source\_offset \ge old\_source\_offset@f$&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;p>-# In the above calculations:&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>- @f$source\_offset@f$ (PSAT_Header::source_offset) is the upper-left corner of the bounding box.&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>- @f$end\_offset@f$ (calculated above) is the lower-right corner of the same box.&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;p>&lt;/p>&lt;p>Example:&lt;/p>&lt;p>&amp;lt;pre&amp;gt;&lt;/p>&lt;p>X | 0 1 2 3 4 5 6&lt;/p>&lt;p>--+--------------&lt;/p>&lt;p>0 | # # # # # # #&lt;/p>&lt;p>1 | # # * * * # #&lt;/p>&lt;p>2 | # # * * * # #&lt;/p>&lt;p>3 | # # * * * # #&lt;/p>&lt;p>4 | # # * * * # #&lt;/p>&lt;p>5 | # # # # # # #&lt;/p>&lt;p>&amp;lt;/pre&amp;gt;&lt;/p>&lt;p>In the above picture, the '#' elements are not to be sent while the '*' elements will be sent. In this case, the publisher wishes to send the 4x3 subset of data shown using asterisks. To do this, the user would fill out the Data_Shape structure (as well as the PSAT_Header::source_offset field as shown:&lt;/p>&lt;p>@code&lt;/p>&lt;p>My_Module::My_UDM udm; // a custom UDM created by the user&lt;/p>&lt;p>&lt;/p>&lt;p>// fill out the UDM by using one of the create_data* calls and write&lt;/p>&lt;p>// into buffer&lt;/p>&lt;p>&lt;/p>&lt;p>// A variable to hold the size of each element in this matrix.&lt;/p>&lt;p>// ELEMENT_TYPE could be, for example: long long, std::complex&amp;lt;float&amp;gt;, &lt;/p>&lt;p>// double, etc.&lt;/p>&lt;p>unsigned long long elementSizeInBytes = sizeof(ELEMENT_TYPE);&lt;/p>&lt;p>&lt;/p>&lt;p>// 4 rows/blocks of data&lt;/p>&lt;p>udm.psat_hdr.psat_view.num_blocks = 4;&lt;/p>&lt;p>&lt;/p>&lt;p>// 3 elements per row/block&lt;/p>&lt;p>udm.psat_hdr.psat_view.block_length = 3 * elementSizeInBytes;&lt;/p>&lt;p>&lt;/p>&lt;p>// 7 elements between beginnings of consecutive rows/blocks&lt;/p>&lt;p>udm.psat_hdr.psat_view.stride = 7 * elementSizeInBytes;&lt;/p>&lt;p>&lt;/p>&lt;p>// Beginning of first row/block to send is 9 elements from the beginning&lt;/p>&lt;p>// of the PSAT sample&lt;/p>&lt;p>udm.psat_hdr.source_offset = 9 * elementSizeInBytes;&lt;/p>&lt;p>@endcode&lt;/p>&lt;p>@see PSAT_Header&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_pbeRQNepEd-US7ahB6BdmA" name="num_blocks" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_TqJIAFddEeOvGvp52SlPdw" annotatedElement="_pbeRQNepEd-US7ahB6BdmA">
+                  <body>&lt;p>Number of blocks of @ref AD data to send (each of contiguous Data_Shape::block_length bytes). The following groups of settings are possible:&lt;/p>&lt;p>  - &amp;lt;b&amp;gt;num_blocks = 0&amp;lt;/b&amp;gt;&lt;/p>&lt;p>    - @b Publisher - This is an error condition that will result in an Invalid_UDM_PSAT_Header_Excp exception being thrown.&lt;/p>&lt;p>    - @b Subscriber - This will result in canceling the attachment data transfer for the current subsample.&lt;/p>&lt;p>      - This subsample will not be transferred or delivered to the application component.&lt;/p>&lt;p>      - If the sample only contains one subsample, this has the effect of canceling the entire sample transfer.&lt;/p>&lt;p>  - &amp;lt;b&amp;gt;num_blocks = 1&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&lt;/p>&lt;p>    - Indicates one contiguous block of the @ref AD buffer to transfer.&lt;/p>&lt;p>  - &amp;lt;b&amp;gt;num_blocks &amp;gt; 1&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&lt;/p>&lt;p>    - Indicates a scatter/gather operation of a set of individual blocks each of which are contiguous Data_Shape::block_length bytes in size.&lt;/p>&lt;p>    - Data copying is implied when performing a scatter/gather operation, and is only possible on underlying attachment transports that support at least one copy.&lt;/p>&lt;p>    - Making a call wherein &amp;lt;b&amp;gt;num_blocks &amp;gt; 1&amp;lt;/b&amp;gt; and the underlying attachment transport is zero-copy shared memory, is an error condition and will be reported as so:&lt;/p>&lt;p>      - @b Publisher - an Invalid_UDM_PSAT_Header_Excp exception will be thrown.&lt;/p>&lt;p>      - @b Subscriber - the @ref PSAT connector will invoke the Typed::PSAT_Reader_Status_Listener::on_copy_unsupported error callback.&amp;lt;br&amp;gt;&lt;/p>&lt;p>Default Value (on publisher side):&lt;/p>&lt;p>1&lt;/p>&lt;p>@see Data_Shape::block_length,&lt;/p>&lt;p>@see Data_Shape::stride&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_rtWNQNepEd-US7ahB6BdmA" name="block_length" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_V_NFcFdeEeOvGvp52SlPdw" annotatedElement="_rtWNQNepEd-US7ahB6BdmA">
+                  <body>&lt;p>Number of bytes per contiguous block of @ref AD data to transfer. This may or may not be the total number of bytes to transfer depending on the value of Data_Shape::num_blocks.&lt;/p>&lt;p>Default Value (on publisher side):&lt;/p>&lt;p>This field is initialized with the @ref AD buffer maximum size specified in the @ref PSAT connector attributes. If the user wishes to send less than that max size, they should set it to the correct number of bytes before publishing.&lt;/p>&lt;p>@see Data_Shape::num_blocks,&lt;/p>&lt;p>@see Data_Shape::stride&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_td_rgNepEd-US7ahB6BdmA" name="stride" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_X-zlsFdeEeOvGvp52SlPdw" annotatedElement="_td_rgNepEd-US7ahB6BdmA">
+                  <body>&lt;p>The offset (in bytes) from the beginning of a row in the &quot;rectangular shaped data&quot; to the beginning of the next row. This supports a single @ref AD buffer transfer of a non-contiguous, sub-sample of &quot;rectangular shaped data&quot; (e.g., a rectangular sub-block within a larger rectangular sample buffer).&lt;/p>&lt;p>Note 1:&lt;/p>&lt;p>The value of this field is a &quot;don't care&quot; if &amp;lt;b&amp;gt;Data_Shape::num_blocks &amp;lt;= 1&amp;lt;/b&amp;gt;.&lt;/p>&lt;p>Note 2:&lt;/p>&lt;p>he value of this field cannot be 0 if &amp;lt;b&amp;gt;Data_Shape::num_blocks &amp;gt; 1&amp;lt;/b&amp;gt; or the following behavior will result:&lt;/p>&lt;p>&amp;lt;dl&amp;gt;&lt;/p>&lt;p>   &amp;lt;dt&amp;gt;&amp;lt;strong&amp;gt;Publisher Side:&amp;lt;/strong&amp;gt;&amp;lt;/dt&amp;gt;&lt;/p>&lt;p>      &amp;lt;dd&amp;gt;An Invalid_UDM_PSAT_Header_Excp exception will be thrown&amp;lt;/dd&amp;gt;&lt;/p>&lt;p>   &amp;lt;dt&amp;gt;&amp;lt;strong&amp;gt;Subscriber Side:&amp;lt;/strong&amp;gt;&amp;lt;/dt&amp;gt;&lt;/p>&lt;p>      &amp;lt;dd&amp;gt;The Typed::PSAT_Reader_Status_Listener::on_invalid_udm_psat_header error callback will be invoked.&amp;lt;/dd&amp;gt;&lt;/p>&lt;p>&amp;lt;/dl&amp;gt;&lt;/p>&lt;p>Default Value (on publisher side):&lt;/p>&lt;p>0&lt;/p>&lt;p>@see Data_Shape::num_blocks,&lt;/p>&lt;p>@see Data_Shape::block_length&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Enumeration" xmi:id="_wGD58NepEd-US7ahB6BdmA" name="Interface_Class_E">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_xcyrIFbeEeOvGvp52SlPdw" annotatedElement="_wGD58NepEd-US7ahB6BdmA">
+                <body>&lt;p>What type (or class) of @ref AD interfaces are being described.  This is used to categorize available interfaces to move attachments over as far as speed and throughput.&lt;/p>&lt;p>The Interface_Class_E is tied to the transport type (see Attachment_Transports_Config::transport_preference), but they are not the same.&lt;/p>&lt;p>&amp;lt;table&amp;gt;&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&lt;/p>&lt;p>      &amp;lt;th&amp;gt;&amp;lt;span style=&quot;color:red&quot;&amp;gt;Interface Class&amp;lt;/span&amp;gt;&amp;lt;/th&amp;gt;&lt;/p>&lt;p>      &amp;lt;th&amp;gt;PSAT_TRANSPORT_OFED&amp;lt;/th&amp;gt;&lt;/p>&lt;p>      &amp;lt;th&amp;gt;PSAT_TRANSPORT_TCP_IP&amp;lt;/th&amp;gt;&lt;/p>&lt;p>      &amp;lt;th&amp;gt;PSAT_TRANSPORT_ZERO_COPY_SHARED_MEM&amp;lt;/th&amp;gt;&lt;/p>&lt;p>   &amp;lt;/tr&amp;gt;&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;&amp;lt;span style=&quot;color:red&quot;&amp;gt;PSAT_INTF_CLASS_OFED&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;&lt;/p>&lt;p>          &amp;lt;td align=&quot;center&quot;&amp;gt;&amp;lt;span style=&quot;font-size: 200%&quot;&amp;gt;X&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;&lt;/p>&lt;p>          &amp;lt;td align=&quot;center&quot;&amp;gt;&amp;lt;span style=&quot;font-size: 200%&quot;&amp;gt;X&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;&amp;lt;span style=&quot;color:red&quot;&amp;gt;PSAT_INTF_CLASS_MULTI_COPY&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;&lt;/p>&lt;p>      &amp;lt;td align=&quot;center&quot;&amp;gt;&amp;lt;span style=&quot;font-size: 200%&quot;&amp;gt;X&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;&amp;lt;span style=&quot;color:red&quot;&amp;gt;PSAT_INTF_CLASS_SHARED_MEM&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;&amp;lt;td align=&quot;center&quot;&amp;gt;&amp;lt;span style=&quot;font-size: 200%&quot;&amp;gt;X&amp;lt;/span&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&lt;/p>&lt;p>&amp;lt;/table&amp;gt;&lt;/p></body>
+              </ownedComment>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_wTeq4NepEd-US7ahB6BdmA" name="PSAT_INTF_CLASS_SHARED_MEM">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_C_By0FbfEeOvGvp52SlPdw" annotatedElement="_wTeq4NepEd-US7ahB6BdmA">
+                  <body>&lt;p>TCP/IP multi copy fabric&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_y4Hx4NepEd-US7ahB6BdmA" name="PSAT_INTF_CLASS_OFED">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_BKJU0FbfEeOvGvp52SlPdw" annotatedElement="_y4Hx4NepEd-US7ahB6BdmA">
+                  <body>&lt;p>Open fabric enterprise distribution compatible transport.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_zv2EENepEd-US7ahB6BdmA" name="PSAT_INTF_CLASS_MULTI_COPY">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_5VklQFbeEeOvGvp52SlPdw" annotatedElement="_zv2EENepEd-US7ahB6BdmA">
+                  <body>&lt;p>Shared memory transport class. This is only used if the publisher and subscriber are on the same node.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_cKovAJ1REeOBMccpiC-WuA" name="PSAT_INTF_CLASS_FILESYSTEM"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_2nauINepEd-US7ahB6BdmA" name="Interface_Handle">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_07CEcFdeEeOvGvp52SlPdw" annotatedElement="_2nauINepEd-US7ahB6BdmA">
+                <body>&lt;p>Structure to identify a physical interface available for this  connector fragment to move attachment data. &lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_4rb0UNepEd-US7ahB6BdmA" name="interface_class" visibility="public" type="_wGD58NepEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_3E6iEFdeEeOvGvp52SlPdw" annotatedElement="_4rb0UNepEd-US7ahB6BdmA">
+                  <body>&lt;p>Class of a physical interface over which attachments can be moved&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_6nsssNepEd-US7ahB6BdmA" name="interface_number" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_42Gy4FdeEeOvGvp52SlPdw" annotatedElement="_6nsssNepEd-US7ahB6BdmA">
+                  <body>&lt;p>Within each interface class, the interfaces available on a connector fragment are numbered starting from zero. For an interface type with  N interfaces, the valid values are zero through N-1.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_9tk4gNepEd-US7ahB6BdmA" name="Interface_List">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_7C_hMFdeEeOvGvp52SlPdw" annotatedElement="_9tk4gNepEd-US7ahB6BdmA">
+                <body>&lt;p>Sequence type used to hold a prioritized list of interfaces to be used on either the publisher or subscriber side&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_9t3zcNepEd-US7ahB6BdmA" name="members" type="_2nauINepEd-US7ahB6BdmA">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9t3zctepEd-US7ahB6BdmA"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9t3zcdepEd-US7ahB6BdmA" value="*"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_JowRENeqEd-US7ahB6BdmA" name="Subscriber_Side_Info">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_HX26MFdhEeOvGvp52SlPdw" annotatedElement="_JowRENeqEd-US7ahB6BdmA">
+                <body>&lt;p>Collection of fields in the PSAT_Header that are only needed on the subscriber side, and have no meaning to the publisher.&lt;/p>&lt;p>@warning&lt;/p>&lt;p>Publisher use of these fields will result in exceptions or possibly undefined behavior.&lt;/p>&lt;p>@see PSAT_Header&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_MHb6ANeqEd-US7ahB6BdmA" name="transferred_length" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_PCXu0FdhEeOvGvp52SlPdw" annotatedElement="_MHb6ANeqEd-US7ahB6BdmA">
+                  <body>&lt;p>Total number of bytes of @ref AD data actually sent over the attachment transport.&lt;/p>&lt;p>Note 1:&lt;/p>&lt;p>If @b transferred_length and (Data_Shape::num_blocks * Data_Shape::block_length) do not match after the transfer is complete, the @ref PSAT connector will invoke the Typed::PSAT_Reader_Status_Listener::on_incomplete_transfer callback.&lt;/p>&lt;p>Note 2:&lt;/p>&lt;p>This field has no meaning in the Typed::PSAT_Listener::on_metadata_intercept callback, since it is set after that callback returns.&lt;/p>&lt;p>@see Data_Shape::num_blocks&lt;/p>&lt;p>@see Data_Shape::block_length&lt;/p>&lt;p>@see Typed::PSAT_Reader_Status_Listener::on_incomplete_transfer&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_O2EDcNeqEd-US7ahB6BdmA" name="sample_incomplete_deadline_usec" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_TTBEoFdhEeOvGvp52SlPdw" annotatedElement="_O2EDcNeqEd-US7ahB6BdmA">
+                  <body>&lt;p>@ref AD deadline (in microseconds) for partial buffer transfers. This is a subscriber-side deadline time-out. A timer is set to this value each time a subsample is received. The next subsample must be received before this timer expires.&lt;/p>&lt;p>If this timer expires, the @ref PSAT connector will deliver an &quot;incomplete&quot; sample to the Typed::PSAT_Reader_Status_Listener::on_incomplete_transfer callback. The fact that the sample is &quot;incomplete&quot; is indicated by having the PSAT_Header::sample_complete field in the @ref UDM be @b false.&lt;/p>&lt;p>@note&lt;/p>&lt;p>The timer is only set if this field is not set to PSAT_TIMEOUT_INFINITE and PSAT_Header::sample_complete is @b false upon return from the Typed::PSAT_Listener::on_metadata_intercept callback.&lt;/p>&lt;p>@see PSAT_Header::sample_complete&lt;/p>&lt;p>@see Typed::PSAT_Listener::on_metadata_intercept&lt;/p>&lt;p>@see Typed::PSAT_Reader_Status_Listener::on_incomplete_transfer&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_RZXGoNeqEd-US7ahB6BdmA" name="deliver_sample" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_pdKLkFdhEeOvGvp52SlPdw" annotatedElement="_RZXGoNeqEd-US7ahB6BdmA">
+                  <body>&lt;p>@ref PSAT sample flag to control sample delivery to the user's subscriber application component. It is targeted for use by the Typed::PSAT_Listener::on_metadata_intercept callback to support the ability to send multiple partial samples. When this flag is set to true, the attachment transfer will commence and the @ref PSAT sample will be delivered to the application component's @b Typed::PSAT_Listener::on_one_data callback.&lt;/p>&lt;p>@note&lt;/p>&lt;p>This field has the following effects when combined with the PSAT_Header::sample_complete field:&lt;/p>&lt;p>&amp;lt;table&amp;gt;&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&lt;/p>&lt;p>      &amp;lt;th&amp;gt;deliver_sample&amp;lt;/th&amp;gt;&lt;/p>&lt;p>      &amp;lt;th&amp;gt;sample_complete&amp;lt;/th&amp;gt;&lt;/p>&lt;p>      &amp;lt;th&amp;gt;Effect&amp;lt;/th&amp;gt;&lt;/p>&lt;p>   &amp;lt;/tr&amp;gt;&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt;false&amp;lt;/td&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt;false&amp;lt;/td&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt;@ref PSAT Sample is still incomplete. Don't deliver yet&amp;lt;/td&amp;gt;&lt;/p>&lt;p>   &amp;lt;/tr&amp;gt;&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt;false&amp;lt;/td&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt;true&amp;lt;/td&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt;Cancel transfer and cleanup any previously received subsamples&amp;lt;/td&amp;gt;&lt;/p>&lt;p>   &amp;lt;/tr&amp;gt;&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt;true&amp;lt;/td&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt;false&amp;lt;/td&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt;Deliver any @ref PSAT subsamples received so far&amp;lt;/td&amp;gt;&lt;/p>&lt;p>   &amp;lt;/tr&amp;gt;&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt;true&amp;lt;/td&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt;true&amp;lt;/td&amp;gt;&lt;/p>&lt;p>      &amp;lt;td&amp;gt;Deliver complete @ref PSAT sample&amp;lt;/td&amp;gt;&lt;/p>&lt;p>   &amp;lt;/tr&amp;gt;&lt;/p>&lt;p>&amp;lt;/table&amp;gt;&lt;/p>&lt;p>@see Typed::PSAT_Listener::on_metadata_intercept&lt;/p>&lt;p>@see PSAT_Header::sample_complete&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_TjL54NeqEd-US7ahB6BdmA" name="destination_offset" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_3zKn0FdhEeOvGvp52SlPdw" annotatedElement="_TjL54NeqEd-US7ahB6BdmA">
+                  <body>&lt;p>Offset (in bytes) from the start of the destination @ref AD sample buffer to the location where the received data will be placed.&lt;/p>&lt;p>Default Value (on publisher side):&lt;/p>&lt;p>This field will be initialized to a default value when the @ref UDM is filled out by the publisher component in any of the Typed::PSAT_Writer::create_data* calls. When the value equals this default, the field is treated as if it were equal to the PSAT_Header::source_offset field.&lt;/p>&lt;p>@note&lt;/p>&lt;p>This field should only be changed in the Typed::PSAT_Listener::on_metadata_intercept callback on the subscriber side. The publisher does not have the required insight into the management of the subscriber's memory in order to intelligently change this field.&lt;/p>&lt;p>Important:&lt;/p>&lt;p>If the underlying attachment transport is zero-copy shared memory, this field can only have one of the following values upon return from the Typed::PSAT_Listener::on_metadata_intercept callback:&lt;/p>&lt;p> - The value it had when the callback was entered&lt;/p>&lt;p> - The same value as the PSAT_Header::source_offset field&lt;/p>&lt;p> .&lt;/p>&lt;p>Any other value will cause the Typed::PSAT_Reader_Status_Listener::on_copy_unsupported error callback to be invoked and the attachment transfer will be cancelled. The reason for this is that having different offsets forces a copy which a zero-copy attachment transport by definition does not support.&lt;/p>&lt;p>@see PSAT_Header::source_offset&lt;/p>&lt;p>@see Typed::PSAT_Writer::create_data&lt;/p>&lt;p>@see Typed::PSAT_Listener::on_metadata_intercept&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_62Z90OkSEd-OIJ14gXO1DA" name="destination_stride" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_ColSMFdiEeOvGvp52SlPdw" annotatedElement="_62Z90OkSEd-OIJ14gXO1DA">
+                  <body>&lt;p>Stride to apply to the destination @ref AD sample buffer. The stride is the number of bytes from one row of data to the next row of data.&lt;/p>&lt;p>Default Value (on publisher side):&lt;/p>&lt;p>This field is not initialized on the publisher side and @b must not be accessed there.&lt;/p>&lt;p>@note&lt;/p>&lt;p>This field should only be changed in the Typed::PSAT_Listener::on_metadata_intercept callback on the subscriber side. The publisher does not have the required insight into the management of the subscriber's memory in order to intelligently change this field.&lt;/p>&lt;p>Important:&lt;/p>&lt;p>If the underlying attachment transport is zero-copy shared memory, this field can only have one of the following values upon return from the Typed::PSAT_Listener::on_metadata_intercept callback:&lt;/p>&lt;p> - The value it had when the callback was entered&lt;/p>&lt;p> - The same value as the PSAT_Header::source_offset field&lt;/p>&lt;p> .&lt;/p>&lt;p>Any other value will cause the Typed::PSAT_Reader_Status_Listener::on_copy_unsupported error callback to be invoked and the attachment transfer will be cancelled. The reason for this is that having different offsets forces a copy which a zero-copy attachment transport by definition does not support.&lt;/p>&lt;p>@see Typed::PSAT_Writer::create_data&lt;/p>&lt;p>@see Typed::PSAT_Listener::on_metadata_intercept&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_V0UPANeqEd-US7ahB6BdmA" name="destination_endian" visibility="public" type="_fjZ_8NepEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_IxjbkFdiEeOvGvp52SlPdw" annotatedElement="_V0UPANeqEd-US7ahB6BdmA">
+                  <body>&lt;p>Endianness (&quot;big endian&quot; or &quot;little endian&quot;) of the local/destination computer.&lt;/p>&lt;p>Default Value (on publisher side):&lt;/p>&lt;p>This field is not initialized on the publisher side and @b must not be accessed there.&lt;/p>&lt;p>Default Value (on subscriber side):&lt;/p>&lt;p>Set by the PSAT connector to the endianness of the local machine. This allows the user to compare the source_endian to the local endianness in order to see if endian-swapping is necessary. This can be done by comparing this field to PSAT_Header::source_endian&lt;/p>&lt;p>Note 1:&lt;/p>&lt;p>&quot;Endianness&quot; refers to how the machine architecture is setup to store the individual bytes of a multi-byte value (i.e., is the most significant byte first or last).&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_X2sWcNeqEd-US7ahB6BdmA" name="subscriber_interface_priority" visibility="public" type="_9tk4gNepEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_MXluIFdiEeOvGvp52SlPdw" annotatedElement="_X2sWcNeqEd-US7ahB6BdmA">
+                  <body>&lt;p>Prioritized list of interfaces on which the attachment is to be received by the subscribing connector.&lt;/p>&lt;p>If this list containes an invalid interface handle, the whole UDM will be considered invalid, causing an Invalid_UDM_PSAT_Header_Excp to be thrown.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_bp3GENeqEd-US7ahB6BdmA" name="Connector_Private_Info">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_KuLP0FbfEeOvGvp52SlPdw" annotatedElement="_bp3GENeqEd-US7ahB6BdmA">
+                <body>&lt;p>Information used only by @ref PSAT connectors to correctly setup attachment transfers.&lt;/p>&lt;p>@see PSAT_Header&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_eouD4NeqEd-US7ahB6BdmA" name="publisher_connector_id" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_Sgy3kFbfEeOvGvp52SlPdw" annotatedElement="_eouD4NeqEd-US7ahB6BdmA">
+                  <body>&lt;p>A string (unique to each @ref PSAT connector instance) which is used to correlate a @ref UDM sample with its publisher in order to properly setup the corresponding @ref AD attachment transfer.&lt;/p>&lt;p>After receiving the @ref UDM, the subscriber side of the connecto &quot;pulls&quot; the associated @ref AD from the publisher. Unlike the publishing of the @ref UDM, this is done as a one to one transfer. This field lets the connector know which publisher it needs to pull from.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_hFxVINeqEd-US7ahB6BdmA" name="buffer_owner_conn_id" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_NATqgFbfEeOvGvp52SlPdw" annotatedElement="_hFxVINeqEd-US7ahB6BdmA">
+                  <body>&lt;p>A string (unique to each @ref PSAT connector instance) which states which connector instance owns the buffer used by this PSAT sample&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_kVVBYNeqEd-US7ahB6BdmA" name="publisher_internal_buffer_id" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_kpcfAFbfEeOvGvp52SlPdw" annotatedElement="_kVVBYNeqEd-US7ahB6BdmA">
+                  <body>&lt;p>An ID number which, along with the #buffer_owner_conn_id, creates a topic-unique ID which is used internally by the connector for buffer lifecycle management on the publisher-side and when using zero-copy transports.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_mYl5oNeqEd-US7ahB6BdmA" name="subscriber_internal_buffer_id" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_s4vbsFbfEeOvGvp52SlPdw" annotatedElement="_mYl5oNeqEd-US7ahB6BdmA">
+                  <body>&lt;p>An ID number which, along with the local connector ID, creates a topic-unique ID which is used internally by the connector for buffer lifecycle management on the subscriber-side when using one/many-copy transports.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_pAg-INeqEd-US7ahB6BdmA" name="source_buffer_start_offset" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_nbkBUFbfEeOvGvp52SlPdw" annotatedElement="_pAg-INeqEd-US7ahB6BdmA">
+                  <body>&lt;p>Offset from beginning of buffer pool to start of buffer containing the sample to send. This field only makes sense in association with the source buffer pool.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_FcMowALmEeC5rchXP1KuUQ" name="sub_sample_count" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_pQ7ngFbfEeOvGvp52SlPdw" annotatedElement="_FcMowALmEeC5rchXP1KuUQ">
+                  <body>&lt;p>Number of sub samples received on delivery. This value is used by the connector to determine how many times to decrement the reference count.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_FgJjEGFiEeGS5czQDaps1Q" name="data_copied" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_fH1QkFbfEeOvGvp52SlPdw" annotatedElement="_FgJjEGFiEeGS5czQDaps1Q">
+                  <body>&lt;p>True if the data was copied locally for this UDM, false otherwise.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_udK0ENeqEd-US7ahB6BdmA" name="PSAT_Header">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_XxjXYFdfEeOvGvp52SlPdw" annotatedElement="_udK0ENeqEd-US7ahB6BdmA">
+                <body>&lt;p>Defines a set of @ref PSAT &quot;PSAT&quot; core parameters shared by the user's application component and the connector. This structure describes the @ref PSAT @ref AD attachment as well as containing information used to set up the attachment transfer. This struct must be in all @ref UDM messages with the field name @b psat_hdr.&lt;/p>&lt;p>@see Basic_UDM_msg&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_vk_XwNeqEd-US7ahB6BdmA" name="sample_start_address" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_jjR5AFdfEeOvGvp52SlPdw" annotatedElement="_vk_XwNeqEd-US7ahB6BdmA">
+                  <body>&lt;p>Pointer to the beginning of the complete @ref AD sample buffer. The shared memory associated with this buffer is mapped (by the @ref PSAT connector) to the local address space of the publisher and subscriber processes (typically this is @b NOT the same address on both sides).&lt;/p>&lt;p>&amp;lt;b&amp;gt;Default Value:&amp;lt;/b&amp;gt;&lt;/p>&lt;p> - &amp;lt;b&amp;gt;Publisher side&amp;lt;/b&amp;gt;: Set to point to the address of a separately allocated @ref AD buffer during a call to Typed::PSAT_Writer::create_data. &amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;/p>&lt;p> - &amp;lt;b&amp;gt;Subscriber side&amp;lt;/b&amp;gt;: Set to point to the address of an AD buffer containing the received AD portion of the PSAT sample. This is done before the user application component's @b Typed::PSAT_Listener::on_one_data callback is invoked&lt;/p>&lt;p>@note&lt;/p>&lt;p>Since the value of this field is set locally on each end of a connection, its value during publication is a &quot;don't care.&quot;&lt;/p>&lt;p>@warning&lt;/p>&lt;p>This field should @b NOT be used in the Typed::PSAT_Listener::on_metadata_intercept callback as the attachment transfer has yet to start and the buffer this field will point to (into which the data will be put/shared from) is unknown at that time.&lt;/p>&lt;p>@see Typed::PSAT_Writer for an example of how this field would be used in code.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_0nav0NeqEd-US7ahB6BdmA" name="ad_buffer_id" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_roiv8FdfEeOvGvp52SlPdw" annotatedElement="_0nav0NeqEd-US7ahB6BdmA">
+                  <body>&lt;p>Topic-unique @ref AD buffer identifier assigned by the user's application component when a new @ref PSAT AD buffer is allocated on the publisher side with a Typed::PSAT_Writer::create_data() call. Used to specify which sample buffer to update in the case where sub-samples are sent via multiple, sequential sub-sample Typed::PSAT_Writer::write_one calls (either from a single publisher or as parallel writes from multiple publishers).&lt;/p>&lt;p>The @ref PSAT connector will maintain one outstanding @ref AD sample buffer for each unique buffer ID value until a Typed::PSAT_Buffer_Control::release_buffer call is made by the subscriber to free it.&lt;/p>&lt;p>Important:&lt;/p>&lt;p>For any individual sample that consists of multiple subsamples, each subsample must utilize the same buffer ID.&lt;/p>&lt;p>In the multi-publisher case, it is incumbent upon the application developer to ensure that a consistent buffer ID value is utilized and set by each separate publisher intending to update only a sub-sample portion of a target subscriber sample buffer.&lt;/p>&lt;p>The value of this field @b MUST be unique between samples over the lifetime of the topic.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_23DQINeqEd-US7ahB6BdmA" name="source_offset" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_67ri0FdfEeOvGvp52SlPdw" annotatedElement="_23DQINeqEd-US7ahB6BdmA">
+                  <body>&lt;p>Offset (in bytes) from the start of the source @ref AD sample buffer to the first block of data to transfer.&lt;/p>&lt;p>Default Value (on publisher side):&lt;/p>&lt;p>@b 0&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_46nqYNeqEd-US7ahB6BdmA" name="psat_view" visibility="public" type="_oo9PMNepEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_9iS_wFdfEeOvGvp52SlPdw" annotatedElement="_46nqYNeqEd-US7ahB6BdmA">
+                  <body>&lt;p>@copybrief Data_Shape&lt;/p>&lt;p>@see Data_Shape for further information and an example of this field's use.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_7Y_xUNeqEd-US7ahB6BdmA" name="source_endian" visibility="public" type="_fjZ_8NepEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_IIoFQFdgEeOvGvp52SlPdw" annotatedElement="_7Y_xUNeqEd-US7ahB6BdmA">
+                  <body>&lt;p>Endianness (&quot;big endian&quot; or &quot;little endian&quot;) of the @ref AD data.&lt;/p>&lt;p>Default Value (on publisher side):&lt;/p>&lt;p>Set by any of the Typed::PSAT_Writer::create_data* calls to the endianness of the machine architecture on which the publisher is executing.&lt;/p>&lt;p>Note 1:&lt;/p>&lt;p>&quot;Endianness&quot; refers to how the machine architecture is setup to store the individual bytes of a multi-byte value (i.e., is the most significant byte first or last).&lt;/p>&lt;p>Note 2:&lt;/p>&lt;p>This does not preclude the user's publisher component from changing this field if the endianess of the @ref AD does not match the publisher's native machine architecture. This could be used in a use case where the AD buffer memory is mapped directly to a hardware device physically attached to the publisher's machine which has a different &quot;endianness.&quot;&lt;/p>&lt;p>Note 3:&lt;/p>&lt;p>On the subscriber side, in order to see if endian-swapping is necessary it is recommended to compare this field against the destination_endian field in PSAT_Header::sub_side_info&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_LS3FoNeuEd-US7ahB6BdmA" name="sample_complete" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_nLjKwFdgEeOvGvp52SlPdw" annotatedElement="_LS3FoNeuEd-US7ahB6BdmA">
+                  <body>&lt;p>Flag indicating whether the subscriber should expect receipt of anymore @ref UDM messages for sub-samples for the @ref AD buffer referenced in this UDM.&lt;/p>&lt;p> - @b true: The last (or only) UDM message for the current AD buffer has been received and the last attachment transfer is about to take place.&lt;/p>&lt;p> - @b false: Indicates the subscriber should expect the reception of subsequent UDMs for more sub-samples.&lt;/p>&lt;p>Default Value (on publisher side):&lt;/p>&lt;p>This field is initialized to be @b true (no subsamples) by any of the Typed::PSAT_Writer::create_data* calls.&lt;/p>&lt;p>Publisher:&lt;/p>&lt;p>The publisher application component may change the value to @b false if sending subsamples is desired. The value of this field must then again be set to @b true when sending the final subsample.&lt;/p>&lt;p>Subscriber:&lt;/p>&lt;p>  - The subscriber application component should keep some type of &quot;scoreboard&quot; so that it knows when it has received all the sub-samples it expects.&lt;/p>&lt;p>  - See the definition of Subscriber_Side_Info::deliver_sample for details because the values of these two fields are always used together on the subscriber side.&lt;/p>&lt;p>  - It is an error if the following conditions are all satisfied. In that case an Invalid_UDM_PSAT_Header_Excp exception will be thrown from whichever method is used with the @ref UDM.&lt;/p>&lt;p>    - This flag is @b false&lt;/p>&lt;p>    - The PSAT_Header::ad_buffer_id field is still set to its default value&lt;/p>&lt;p>    .&lt;/p>&lt;p>    This is because subsamples require a buffer ID so they can be correlated and collected on the subscriber side.&lt;/p>&lt;p>  .&lt;/p>&lt;p>@see Subscriber_Side_Info::deliver_sample for how this field is used with it on the subscriber side to control the delivery of samples or subsamples.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_OFsZoNeuEd-US7ahB6BdmA" name="publisher_interface_priority" visibility="public" type="_9tk4gNepEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_1EIrMFdgEeOvGvp52SlPdw" annotatedElement="_OFsZoNeuEd-US7ahB6BdmA">
+                  <body>&lt;p>Prioritized list of interfaces on which the attachment is to be received by the publishing connector.&lt;/p>&lt;p>If this list containes an invalid interface handle, the whole UDM will be considered invalid, causing an Invalid_UDM_PSAT_Header_Excp to be thrown.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_Qa4IUNeuEd-US7ahB6BdmA" name="sub_side_info" visibility="public" type="_JowRENeqEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_2aD8UFdgEeOvGvp52SlPdw" annotatedElement="_Qa4IUNeuEd-US7ahB6BdmA">
+                  <body>&lt;p>Data fields that are only used by @ref PSAT subscribers.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_StqqUNeuEd-US7ahB6BdmA" name="connector_only_info" visibility="public" type="_bp3GENeqEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_3zX4oFdgEeOvGvp52SlPdw" annotatedElement="_StqqUNeuEd-US7ahB6BdmA">
+                  <body>&lt;p>Data fields that should only be accessed by the @ref PSAT connector.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_L8qSgJfVEeOxmqvDwC_TYw" name="filename" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_ijumAJfVEeOxmqvDwC_TYw" annotatedElement="_L8qSgJfVEeOxmqvDwC_TYw">
+                  <body>&lt;p>Name of the file created at the configured file_system_base_directory path by the PSAT file system transport.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_yChNUNeuEd-US7ahB6BdmA" name="Typed">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_HDBNkLUiEeOGGdzzRhBYAQ" annotatedElement="_yChNUNeuEd-US7ahB6BdmA">
+              <body>&lt;p>Template module instantiation&lt;/p></body>
+            </ownedComment>
+            <ownedTemplateSignature xmi:type="uml:TemplateSignature" xmi:id="_8jwXcNeuEd-US7ahB6BdmA" parameter="_8j5hYNeuEd-US7ahB6BdmA __Z_kwNeuEd-US7ahB6BdmA">
+              <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_8j5hYNeuEd-US7ahB6BdmA" parameteredElement="_8j5hYteuEd-US7ahB6BdmA">
+                <ownedParameteredElement xmi:type="uml:Class" xmi:id="_8j5hYteuEd-US7ahB6BdmA" name="T" templateParameter="_8j5hYNeuEd-US7ahB6BdmA"/>
+              </ownedParameter>
+              <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="__Z_kwNeuEd-US7ahB6BdmA" parameteredElement="__Z_kwteuEd-US7ahB6BdmA">
+                <ownedParameteredElement xmi:type="uml:DataType" xmi:id="__Z_kwteuEd-US7ahB6BdmA" name="TSeq" templateParameter="__Z_kwNeuEd-US7ahB6BdmA">
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_i9pMANfGEd-US7ahB6BdmA" name="members" visibility="public" type="_8j5hYteuEd-US7ahB6BdmA"/>
+                </ownedParameteredElement>
+              </ownedParameter>
+            </ownedTemplateSignature>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_8cxRwNfGEd-US7ahB6BdmA" name="PSAT_Attachment_Control">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_r6_Q4Bj1EemDZvMdb5RUKA" annotatedElement="_8cxRwNfGEd-US7ahB6BdmA">
+                <body>&lt;p>Provides management of @ref AD buffer pool and transports for a @ref PSAT connector.&lt;/p></body>
+              </ownedComment>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="__RD-UNfGEd-US7ahB6BdmA" name="release_buffer" raisedException="_-HrQANeoEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="__6YXgBj1EemDZvMdb5RUKA" annotatedElement="__RD-UNfGEd-US7ahB6BdmA">
+                  <body>&lt;p>Tells the @ref PSAT connector that the application component is finished writing to or reading from an @ref AD buffer. Any use of that buffer after this call is considered to be data corruption.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] datum @ref UDM corresponding to the @ref AD buffer&lt;/p>&lt;p>&lt;/p>&lt;p>@throws Invalid_UDM_PSAT_Header_Excp if the PSAT_Header portion of the @ref UDM cannot be validated&lt;/p>&lt;p>&lt;/p>&lt;p>@note&lt;/p>&lt;p>For every @b PSAT_Listener::on_one_data callback invocation, the application component should make a corresponding Typed::PSAT_Attachment_Control::release_buffer call.&lt;/p>&lt;p>&lt;/p>&lt;p>@warning &lt;/p>&lt;p>This method should @b NOT be called in the Typed::PSAT_Listener::on_metadata_intercept callback, or any of the callbacks in the Typed::PSAT_Reader_Status_Listener interface.&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_BQdqQNfHEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_ECg7INfHEd-US7ahB6BdmA" name="datum">
+                  <type xmi:type="uml:Class" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_j6blMGTXEd-fwvmMvf-phA"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_V9Gb8NfIEd-US7ahB6BdmA" name="flush" raisedException="_MrXYYNeoEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_VPAywBj2EemDZvMdb5RUKA" annotatedElement="_V9Gb8NfIEd-US7ahB6BdmA">
+                  <body>&lt;p>Requests that the @ref PSAT connector give up use of its buffer pool as soon as possible and then set the buffer reference counts to zero.&lt;/p>&lt;p>&lt;/p>&lt;p>The behavior of this call varies depending on whether the user's component is functioning as a publisher or subscriber of this PSAT topic. See below for more information:&lt;/p>&lt;p>&lt;/p>&lt;p>Publisher Side&lt;/p>&lt;p>&lt;/p>&lt;p>All of its @ref AD buffers in use will be released and invalidated. Any further use after that point is considered to be data corruption.&lt;/p>&lt;p>&lt;/p>&lt;p>Certain attachment transports (e.g., zero-copy shared memory) share buffers for a PSAT topic between a publisher and its subscriber(s). In those cases, the subscribers will be notified of the buffer invalidation by having their&lt;/p>&lt;p>Typed::PSAT_Reader_Status_Listener::on_buffer_invalidation callback called for each buffer they are sharing with that publisher.&lt;/p>&lt;p>&lt;/p>&lt;p>Subscriber Side&lt;/p>&lt;p>All of its @ref AD buffers in use will be released and invalidated. Any further use after that point is considered to be data corruption.&lt;/p>&lt;p>&lt;/p>&lt;p>&amp;lt;b&amp;gt;Use case scenarios&amp;lt;/b&amp;gt;&lt;/p>&lt;p>- There are multiple use case scenarios involving the PSAT connector and shared memory.  Some (but not all) require that the connector attach to a piece of shared memory.  See Shared_Memory_Config for more details.&lt;/p>&lt;p>&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;/p>&lt;p>- When two or more user components are using the same shared memory segment at different points in time for different PSAT topics, this call would be used by the component(s) that are active writer(s) to signal to the middleware that the buffers can be safely used by others.&lt;/p>&lt;p>&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;.&lt;/p>&lt;p>&lt;/p>&lt;p>@throws Shared_Mem_Access_Excp if a fatal error happened during the flush operation.&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_XPyy4NfIEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_j2oXkNfIEd-US7ahB6BdmA" name="is_udm_psat_header_valid">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_ZlJFgBj2EemDZvMdb5RUKA" annotatedElement="_j2oXkNfIEd-US7ahB6BdmA">
+                  <body>&lt;p>Queries the @ref PSAT connector to validate that all the settings in @b psat_hdr field of the passed in @ref UDM message are valid and consistent with each other.  This includes validating that the @ref AD buffer referenced by the UDM is still valid (i.e., has not already been released or invalidated) and the reference is still safe to use.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] datum - @ref UDM being validated.&lt;/p>&lt;p>&lt;/p>&lt;p>@return true if valid (can be safely used), false otherwise&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_lPbWgNfIEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_mgfVwNfIEd-US7ahB6BdmA" name="datum" type="_8j5hYteuEd-US7ahB6BdmA"/>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_ssFVUNfIEd-US7ahB6BdmA" name="get_interface_count">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_oHacIBj2EemDZvMdb5RUKA" annotatedElement="_ssFVUNfIEd-US7ahB6BdmA">
+                  <body>&lt;p>Returns the number of interfaces of a certain class that are usable for transporting the @ref AD portion of a @ref PSAT sample.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] interface_class - What type (or class) of @ref AD interfaces are being queried.  Valid are (in order from fastest to slowest):&lt;/p>&lt;p>- @b PSAT_INTF_CLASS_SHARED_MEM - Interfaces utilizing some form of shared memory for source and destination user components residing on the same node.&lt;/p>&lt;p>- @b PSAT_INTF_CLASS_OFED - @ref OFED compliant Interfaces supporting @ref RDMA with associated hardware-supported copying of data directly to/from user space.&lt;/p>&lt;p>- @b PSAT_INTF_CLASS_MULTI_COPY - Slower (but almost universally available) interfaces (like TCP/IP) that require copying of data multiple times to get from source to destination in user space.&lt;/p>&lt;p>&lt;/p>&lt;p>@return interface count&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_to3tsNfIEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_uhWN0NfIEd-US7ahB6BdmA" name="interface_class">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_0V_tANfIEd-US7ahB6BdmA" name="PSAT_Writer">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_exVoIBj3EemDZvMdb5RUKA" annotatedElement="_0V_tANfIEd-US7ahB6BdmA">
+                <body>&lt;p>Interface to be used by a user's component for message setup and management of a @ref PSAT sample to be published.  These calls setup both the @ref UDM and @ref AD parts of the PSAT sample as well as providing the actual method to publish the PSAT sample (message).&lt;/p>&lt;p>&lt;/p>&lt;p>&amp;lt;b&amp;gt;Example of Publishing a PSAT sample:&amp;lt;/b&amp;gt;&lt;/p>&lt;p>&lt;/p>&lt;p>&amp;lt;i&amp;gt;Note: The code example below assumes the developer wishes to perform different logging and recovery actions for each possible error. This is not always necessary. All CORBA user exceptions inherit from &lt;/p>&lt;p>&amp;lt;b&amp;gt;CORBA::UserException&amp;lt;/b&amp;gt; in the IDL to C++ mapping. Therefore, the user may only catch this one exception type and do common logging, etc. if desired.&amp;lt;/i&amp;gt;&lt;/p>&lt;p>&lt;/p>&lt;p>@code&lt;/p>&lt;p>void MyClass::someMethod()&lt;/p>&lt;p>{&lt;/p>&lt;blockquote>&lt;p>// call create data and get new UDM&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;p>My_UDM_Module::My_UDM_udm::PSAT_Writer_var writerObj;&lt;/p>&lt;/blockquote>&lt;p>&lt;/p>&lt;blockquote>&lt;p>// ... get PSAT_Writer object reference from context ...&lt;/p>&lt;/blockquote>&lt;p>&lt;/p>&lt;blockquote>&lt;p>My_UDM_Module::My_UDM udm;&lt;/p>&lt;/blockquote>&lt;p>&lt;/p>&lt;blockquote>&lt;p>try&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;p>{&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;p>       writerObj-&amp;gt;create_data(udm);&lt;/p>&lt;/blockquote>&lt;p>&lt;/p>&lt;blockquote>&lt;blockquote>&lt;p>// get AD buffer pointer. Note: bufferPtr is defined as &quot;void *&quot;&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>// for the purposes of this example.  In reality, it could be&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>// any type of pointer. Additionally this pointer could be placed&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>// into a member variable, used in a method call, etc. instead of&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>// being used directly in this try block.&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>void * bufferPtr = reinterpret_cast&amp;lt;void *&amp;gt;(udm.psat_hdr.sample_start_address);&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;p>&lt;/p>&lt;blockquote>&lt;blockquote>&lt;p>// put data into buffer using pointer&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>// change any UDM core parameters you would like&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;p>&lt;/p>&lt;blockquote>&lt;blockquote>&lt;p>// write data to PSAT&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>writerObj-&amp;gt;write_one(udm);&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;p>&lt;/p>&lt;blockquote>&lt;blockquote>&lt;p>// finished with buffer so release it&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>writerObj-&amp;gt;release_buffer(udm);&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;p>}&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;p>catch(CCM_DDS::InternalError &amp;amp; excep) // DDS error&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;p>{&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>// do logging, recovery, etc.&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;p>}&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;p>catch(CCM_PSAT::AD_Buffer_None_Available_Excp &amp;amp; excep)&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;p>{ // no buffers&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>// do logging, recovery, etc. For example call to get a&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>// notification of when a buffer is now free.&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;p>&lt;/p>&lt;blockquote>&lt;blockquote>&lt;p>// use an infinite timeout for the notification. Note that this&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>// asks the connector to call the on_buffer_available callback.&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>// This call does not block.&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>writerObj-&amp;gt;notify_when_buffer_is_free(&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>   CCM_PSAT::PSAT_TIMEOUT_INFINITE);&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;p>}&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;p>catch(CCM_PSAT::Invalid_UDM_PSAT_Header_Excp &amp;amp; excep) // UDM invalid&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;p>{&lt;/p>&lt;/blockquote>&lt;blockquote>&lt;blockquote>&lt;p>// do logging, recovery, etc.&lt;/p>&lt;/blockquote>&lt;/blockquote>&lt;blockquote>&lt;p>}&lt;/p>&lt;/blockquote>&lt;p>}&lt;/p>&lt;p>@endcode&lt;/p></body>
+              </ownedComment>
+              <generalization xmi:type="uml:Generalization" xmi:id="_6AWnwNfIEd-US7ahB6BdmA" general="_8cxRwNfGEd-US7ahB6BdmA" isSubstitutable="false"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_9iFpINfIEd-US7ahB6BdmA" name="create_data">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_nMsY8Bj5EemDZvMdb5RUKA" annotatedElement="_9iFpINfIEd-US7ahB6BdmA">
+                  <body>&lt;p>Get a new @ref UDM with a new @ref AD buffer to use (if a buffer is available) to create a new @ref PSAT sample to write.&lt;/p>&lt;p>@param[in,out] datum @ref UDM corresponding to the new PSAT sample. This call will only modify the @b psat_hdr field&lt;/p>&lt;p>&lt;/p>&lt;p>@throws CCM_DDS::InternalError on DDS error&lt;/p>&lt;p>@throws AD_Buffer_None_Available_Excp if all @ref AD buffers are in use&lt;/p>&lt;p>&lt;/p>&lt;p>Note1:&lt;/p>&lt;p>&lt;/p>&lt;p>The @b datum output parameter has the information needed to get to the actual @ref AD buffer in memory. The pointer is located in the PSAT_Header (the @b psat_hdr field of the @ref UDM) in the field PSAT_Header::sample_start_address&lt;/p>&lt;p>&lt;/p>&lt;p>Note2:&lt;/p>&lt;p>&lt;/p>&lt;p>If this method is able to successfully return a @ref UDM (pointing to a valid @ref AD buffer) any &quot;free buffer&quot; notification requested by the user component (via notify_when_buffer_is_free) will be  canceled.&lt;/p>&lt;p>&lt;/p>&lt;p>@see create_data_override - it differs only in how &quot;out of buffer&quot; conditions are handled.&lt;/p>&lt;p>@see create_data_w_existing&lt;/p>&lt;p>@see notify_when_buffer_is_free&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="__qk_oNfIEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ovo6QNfJEd-US7ahB6BdmA" name="datum" type="_8j5hYteuEd-US7ahB6BdmA" direction="inout"/>
+                <raisedException xmi:type="uml:DataType" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_XRS4sGROEd-Wc9hRqhM12g"/>
+                <raisedException xmi:type="uml:DataType" href="#_sAdL8NeoEd-US7ahB6BdmA"/>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_PvszoNfKEd-US7ahB6BdmA" name="create_data_override">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_w06QYBj5EemDZvMdb5RUKA" annotatedElement="_PvszoNfKEd-US7ahB6BdmA">
+                  <body>&lt;p>Get a new @ref UDM with a new @ref AD buffer to use (without regard to buffer availability) to create a new @ref PSAT sample to write.&lt;/p>&lt;p>&lt;/p>&lt;p>If no free buffers are available (all are in use), then the oldest &quot;in use&quot; buffer will be reclaimed. The @ref PSAT connector will notify any existing readers of that buffer that it has been invalidated. The reclaimed @ref AD buffer will be made available to the caller to use for a new PSAT sample.&lt;/p>&lt;p>&lt;/p>&lt;p>In addition to being used directly in the application component's main path, this method can also be used in an exception handler that was invoked as a result of a create_data call failing and throwing an AD_Buffer_None_Available_Excp exception.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in,out] datum @ref UDM corresponding to the new PSAT sample. This call will only modify the @b psat_hdr field&lt;/p>&lt;p>&lt;/p>&lt;p>@throws CCM_DDS::InternalError on DDS error&lt;/p>&lt;p>&lt;/p>&lt;p>Note1:&lt;/p>&lt;p>&lt;/p>&lt;p>The @b datum output parameter has the information needed to get to the actual @ref AD buffer in memory. The pointer is located in the PSAT_Header (the @b psat_hdr field of the @ref UDM) in the field PSAT_Header::sample_start_address&lt;/p>&lt;p>&lt;/p>&lt;p>Note2:&lt;/p>&lt;p>&lt;/p>&lt;p>If this method is able to successfully return a @ref UDM (pointing to a valid @ref AD buffer) any &quot;free buffer&quot; notification requested&lt;/p>&lt;p>by the user component (via notify_when_buffer_is_free) will be canceled.&lt;/p>&lt;p>&lt;/p>&lt;p>@see create_data - it differs only in how &quot;out of buffer&quot; conditions are handled.&lt;/p>&lt;p>@see create_data_w_existing&lt;/p>&lt;p>@see notify_when_buffer_is_free&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_RgyWwNfKEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_TAl8oNfKEd-US7ahB6BdmA" name="datum" type="_8j5hYteuEd-US7ahB6BdmA" direction="inout"/>
+                <raisedException xmi:type="uml:DataType" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_XRS4sGROEd-Wc9hRqhM12g"/>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_Z1wdoNfKEd-US7ahB6BdmA" name="create_data_w_existing">
+                <ownedComment xmi:type="uml:Comment" xmi:id="__STHABj5EemDZvMdb5RUKA" annotatedElement="_Z1wdoNfKEd-US7ahB6BdmA">
+                  <body>&lt;p>Get a new @ref UDM that references an existing @ref AD buffer to use to create a new @ref PSAT sample to write.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] existing_datum @ref UDM from a previous create_data call to be used in providing the existing @ref AD buffer to use when creating the new @ref UDM in this method.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in,out] datum @ref UDM corresponding to the new PSAT sample created using the existing @ref AD buffer referenced in @b existing_datum.  This call will only modify the @b psat_hdr field&lt;/p>&lt;p>&lt;/p>&lt;p>@throws CCM_DDS::InternalError on DDS error&lt;/p>&lt;p>@throws Invalid_UDM_PSAT_Header_Excp if no such buffer exists&lt;/p>&lt;p>&lt;/p>&lt;p>@note&lt;/p>&lt;p>If this method is able to successfully return a @ref UDM (pointing to a valid @ref AD buffer) any &quot;free buffer&quot; notification requested by the user component (via notify_when_buffer_is_free) will be canceled.&lt;/p>&lt;p>&lt;/p>&lt;p>@see create_data&lt;/p>&lt;p>@see create_data_override&lt;/p>&lt;p>@see notify_when_buffer_is_free&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_a49nENfKEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_ea1yYNfKEd-US7ahB6BdmA" name="existing_datum" type="_8j5hYteuEd-US7ahB6BdmA"/>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_hE_rgNfKEd-US7ahB6BdmA" name="datum" type="_8j5hYteuEd-US7ahB6BdmA" direction="inout"/>
+                <raisedException xmi:type="uml:DataType" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_XRS4sGROEd-Wc9hRqhM12g"/>
+                <raisedException xmi:type="uml:DataType" href="#_-HrQANeoEd-US7ahB6BdmA"/>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_kbj-sNfKEd-US7ahB6BdmA" name="notify_when_buffer_is_free">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_owkKABj6EemDZvMdb5RUKA" annotatedElement="_kbj-sNfKEd-US7ahB6BdmA">
+                  <body>&lt;p>This method is used to request notification (via the PSAT_Writer_Status_Listener::on_buffer_available callback) when an @ref AD buffer becomes available.&lt;/p>&lt;p>&lt;/p>&lt;p>If a timeout occurs while waiting for a free buffer, then the PSAT_Writer_Status_Listener::on_buffer_wait_timeout callback will be called.&lt;/p>&lt;p>&lt;/p>&lt;p>This method is intended to be used after first attempting to get a @ref PSAT Sample with an entirely new @ref AD buffer using the create_data call and failing with an AD_Buffer_None_Available_Excp exception.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] timeoutUsec - timeout (in microseconds) to wait for a new buffer. Use PSAT_TIMEOUT_INFINITE for an infinite timeout.&lt;/p>&lt;p>&lt;/p>&lt;p>@return boolean value indicating whether the user component will be able to be notified when a buffer becomes available.  Some possible reasons why it might not would be if for some reason the Typed::PSAT_Reader_Status_Listener port (that is supposed to be implemented by the user component) is not connected, or if the @b timeoutUsec parameter is invalid. &lt;/p>&lt;p>true:  The user component will be notified when a buffer becomes available&lt;/p>&lt;p>false: The user component will not be notified if a buffer becomes available.&lt;/p>&lt;p>&lt;/p>&lt;p>Note1:&lt;/p>&lt;p>&lt;/p>&lt;p>If a timer is already running because of a previous call to this method, it will be cancelled.&lt;/p>&lt;p>&lt;/p>&lt;p>Note2:&lt;/p>&lt;p>&lt;/p>&lt;p>If the user component is able to successfully get a buffer in any subsequent @b create_data* calls, this notification will be cancelled&lt;/p>&lt;p>&lt;/p>&lt;p>Note3:&lt;/p>&lt;p>&lt;/p>&lt;p>If a buffer is available when this method is invoked, the user's PSAT_Writer_Status_Listener::on_buffer_available callback will be called before this method returns control to the caller.&lt;/p>&lt;p>&lt;/p>&lt;p>@see PSAT_Writer_Status_Listener::on_buffer_wait_timeout&lt;/p>&lt;p>@see PSAT_Writer_Status_Listener::on_buffer_available&lt;/p>&lt;p>@see PSAT_TIMEOUT_INFINITE&lt;/p>&lt;p>@see PSAT_Writer for code example&lt;/p>&lt;p>@see create_data&lt;/p>&lt;p>@see cancel_buffer_is_free_notify&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_lemwENfKEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_mkokANfKEd-US7ahB6BdmA" name="timeoutUsec">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_yS_okNfKEd-US7ahB6BdmA" name="cancel_buffer_is_free_notify">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_tHV9ABj6EemDZvMdb5RUKA" annotatedElement="_yS_okNfKEd-US7ahB6BdmA">
+                  <body>&lt;p>This method can optionally be used to cancel being notified via one of the user defined callbacks in CCM_PSAT::PSAT_Writer_Status_Listener when an @ref AD buffer becomes available.  This would only happen if the user component previously made a call to notify_when_buffer_is_free.&lt;/p>&lt;p>&lt;/p>&lt;p>@note It is safe to call this method even if the user did not previously call #notify_when_buffer_is_free.  In that case, the call will have no effect.&lt;/p>&lt;p>&lt;/p>&lt;p>@see PSAT_Writer_Status_Listener::on_buffer_wait_timeout&lt;/p>&lt;p>@see PSAT_Writer_Status_Listener::on_buffer_available&lt;/p>&lt;p>@see notify_when_buffer_is_free&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_zELN4NfKEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_0lM7wNfKEd-US7ahB6BdmA" name="write_one">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_-y8cEBj6EemDZvMdb5RUKA" annotatedElement="_0lM7wNfKEd-US7ahB6BdmA">
+                  <body>&lt;p>Publishes the @ref UDM part of the @ref PSAT sample.&lt;/p>&lt;p>&lt;/p>&lt;p>@note&lt;/p>&lt;p>Each subscriber upon receipt of the UDM part of the PSAT sample will attempt to setup an attachment transfer of the @ref AD part of it. If the attachment transport supports @b zero-copy, then the &quot;transfer&quot; will only consist of validating portions of the PSAT_Header in the UDM and (in most cases) notifying the subscriber via its @b PSAT_Listener::on_one_data callback.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] datum @ref UDM to publish&lt;/p>&lt;p>&lt;/p>&lt;p>@throws CCM_DDS::InternalError on DDS error&lt;/p>&lt;p>@throws Invalid_UDM_PSAT_Header_Excp if the PSAT_Header portion of the @ref UDM cannot be validated&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_1d1z8NfKEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_2rfS0NfKEd-US7ahB6BdmA" name="datum" type="_8j5hYteuEd-US7ahB6BdmA"/>
+                <raisedException xmi:type="uml:DataType" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_XRS4sGROEd-Wc9hRqhM12g"/>
+                <raisedException xmi:type="uml:DataType" href="#_-HrQANeoEd-US7ahB6BdmA"/>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_-ab7gNfKEd-US7ahB6BdmA" name="PSAT_Listener">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_BvXJ4Bj7EemDZvMdb5RUKA" annotatedElement="_-ab7gNfKEd-US7ahB6BdmA">
+                <body>&lt;p> This interface is for user subscriber application callbacks having to do with receiving a @ref PSAT sample.&lt;/p></body>
+              </ownedComment>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_JgAhwNfLEd-US7ahB6BdmA" name="on_one_data">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_HQHcsBj7EemDZvMdb5RUKA" annotatedElement="_JgAhwNfLEd-US7ahB6BdmA">
+                  <body>&lt;p>User-defined callback used to receive a @ref PSAT sample.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] datum - Received @ref UDM containing a pointer to the local @ref AD buffer where the attachment data portion of the sample resides.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] read_info - Information about the received @ref UDM See DDS4CCM specification for details&lt;/p>&lt;p>&lt;/p>&lt;p>@note: In order for this callback to be triggered, PSAT_Listener_Control::on_one_data_enable must be set to CCM_PSAT::CALLBACK_ENABLED&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_KlAa8NfLEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_L8fyUNfLEd-US7ahB6BdmA" name="datum" type="_8j5hYteuEd-US7ahB6BdmA"/>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_Oynq4NfLEd-US7ahB6BdmA" name="read_info">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_7vsaUGRMEd-Wc9hRqhM12g"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_ekaIoNfLEd-US7ahB6BdmA" name="on_metadata_intercept">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_OTsNIBj7EemDZvMdb5RUKA" annotatedElement="_ekaIoNfLEd-US7ahB6BdmA">
+                  <body>&lt;p>Optional user-defined callback invoked by the @ref PSAT connector upon reception of the @ref UDM portion of a PSAT sample (prior to the attachment transfer of the @ref AD portion). This callback (which is part of the subscriber application component) can change the UDM to affect how and whether the attachment transfer occurs.&lt;/p>&lt;p>&lt;/p>&lt;p>For example, the subscriber application component may change the offset into local memory where the data is placed or may even elect not to perform the attachment transfer at all.&lt;/p>&lt;p>&lt;/p>&lt;p>Notes:&lt;/p>&lt;p>&lt;/p>&lt;p>-  If the changes made here would force a copy and no copies are supported by the underlying attachment transport (i.e. the zero-copy shared memory transport), the Typed::PSAT_Reader_Status_Listener::on_copy_unsupported callback will be invoked and the transfer will be cancelled.&lt;/p>&lt;p>-  This callback will be executed in the user's application thread just like the Typed::PSAT_Listener::on_one_data callback.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in,out] datum - received @ref UDM&lt;/p>&lt;p>&lt;/p>&lt;p>@note: In order for this callback to be triggered, PSAT_Listener_Control::on_metadata_intercept_enable must be set to CCM_PSAT::CALLBACK_ENABLED&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_f0lXENfLEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_gs6GMNfLEd-US7ahB6BdmA" name="datum" type="_8j5hYteuEd-US7ahB6BdmA" direction="inout"/>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_v6Q8UKAQEeS0ffnlpzaSqQ" name="on_create_data_intercept">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_U1a0wBj7EemDZvMdb5RUKA" annotatedElement="_v6Q8UKAQEeS0ffnlpzaSqQ">
+                  <body>&lt;p>Optional user-defined callback invoked by the @ref PSAT connector upon the invocation of the writer interface's create_data method. This callback allows the reader to know if buffer allocation was successful and gives the user opportunity to execute any custom code on the reader side before the buffer or error returns to the writer.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] is_reader_create_data_successful - Boolean describing whether or not the  allocation of a  shared memory buffer  by the reader was  successful.&lt;/p>&lt;p>&lt;/p>&lt;p>@note: In order for this callback to be triggered, PSAT_Listener_Control::on_create_data_intercept_enable must be set to CCM_PSAT::CALLBACK_ENABLED&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_v6_VEKAQEeS0ffnlpzaSqQ" name="ReturnParameter" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_16FwwKAQEeS0ffnlpzaSqQ" name="is_reader_create_data_successful">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_uKEO4NfLEd-US7ahB6BdmA" name="PSAT_Reader_Status_Listener">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_WlZkoBj7EemDZvMdb5RUKA" annotatedElement="_uKEO4NfLEd-US7ahB6BdmA">
+                <body>&lt;p>Set of optional user-defined callbacks on the user's subscriber component which the @ref PSAT connector will call in the event of an asynchronous error or major status change (e.g., buffer invalidation).&lt;/p></body>
+              </ownedComment>
+              <generalization xmi:type="uml:Generalization" xmi:id="_1QjwcNfLEd-US7ahB6BdmA">
+                <general xmi:type="uml:Interface" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_h0qncGRnEd-Wc9hRqhM12g"/>
+              </generalization>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_4xuKENfLEd-US7ahB6BdmA" name="on_copy_unsupported">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_b4nxwBj7EemDZvMdb5RUKA" annotatedElement="_4xuKENfLEd-US7ahB6BdmA">
+                  <body>&lt;p>Optional user-defined callback invoked by the @ref PSAT connector when an operation requiring a copy is attempted, but the attachment transport (i.e., zero-copy shared memory) does not support copies.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] datum @ref UDM which caused the error&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] info  additional info which may be helpful for debug&lt;/p>&lt;p>&lt;/p>&lt;p>@warning: In this case, the @ref PSAT connector will not have allocated a buffer to receive the attachment, so the user's component @b must @b not call Typed::PSAT_Attachment_Control::release_buffer as this would result in undefined behavior.&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_6WAAQNfLEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_7DAQMNfLEd-US7ahB6BdmA" name="datum" type="_8j5hYteuEd-US7ahB6BdmA"/>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_9cMVINfLEd-US7ahB6BdmA" name="info" type="_d2uGkNenEd-US7ahB6BdmA"/>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_A3bZMOkgEd-OIJ14gXO1DA" name="on_buffer_invalidation">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_xqvaQBj7EemDZvMdb5RUKA" annotatedElement="_A3bZMOkgEd-OIJ14gXO1DA">
+                  <body>&lt;p>Optional user-defined callback invoked by the @ref PSAT connector when an @ref AD buffer has been forcibly released. The user component should stop using this buffer @b immediately as it could be overwritten at any time.&lt;/p>&lt;p>&lt;/p>&lt;p>This callback could be invoked if a publisher calls PSAT_Writer::create_data_override or PSAT_Writer::flush in order to force a new @ref AD buffer to be available. If so, that buffer, which is shared with local subscribers, can be overwritten at any time and so must be considered corrupted by any local subscribers.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] datum @ref UDM which corresponds to the invalidated @ref AD buffer&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] info  additional info which may be helpful for debug&lt;/p>&lt;p>&lt;/p>&lt;p>@warning: In this case, since the @ref PSAT connector has already forcibly released the attachment buffer the user's component @b must @b not call Typed::PSAT_Attachment_Control::release_buffer as this would result in undefined behavior.&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_DbeqUOkgEd-OIJ14gXO1DA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_EXOg4OkgEd-OIJ14gXO1DA" name="datum" type="_8j5hYteuEd-US7ahB6BdmA"/>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_Kszi4OkgEd-OIJ14gXO1DA" name="info" type="_d2uGkNenEd-US7ahB6BdmA"/>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_QkJdcNfMEd-US7ahB6BdmA" name="on_incomplete_transfer">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_1h7uQBj7EemDZvMdb5RUKA" annotatedElement="_QkJdcNfMEd-US7ahB6BdmA">
+                  <body>&lt;p>Optional user-defined callback invoked by the @ref PSAT connector when an attachment transfer could not be completed. This could be caused by, for example, a publisher component crashing in the middle of the transfer.&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] datum @ref UDM which corresponds to the incompletely transferred buffer&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] info  additional info which may be helpful for debug&lt;/p>&lt;p>&lt;/p>&lt;p>@warning: In this case, the @ref PSAT connector will automatically release the buffer associated with the attachment transfer The user's component @b must @b not call Typed::PSAT_Attachment_Control::release_buffer as this would result in undefined behavior.&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_RgV_8NfMEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_SH-nsNfMEd-US7ahB6BdmA" name="datum" type="_8j5hYteuEd-US7ahB6BdmA"/>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_UPRrYNfMEd-US7ahB6BdmA" name="info" type="_d2uGkNenEd-US7ahB6BdmA"/>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_Xwkn4NfMEd-US7ahB6BdmA" name="on_invalid_udm_psat_header">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_5q5uwBj7EemDZvMdb5RUKA" annotatedElement="_Xwkn4NfMEd-US7ahB6BdmA">
+                  <body>&lt;p>Optional user-defined callback invoked by the @ref PSAT connector after calling the user's PSAT_Listener::on_metadata_intercept (if enabled) when the @ref PSAT_Header portion of a @ref UDM cannot be validated (i.e., it contains negative offsets or inconsistent fields).&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] datum @ref UDM which caused the error&lt;/p>&lt;p>&lt;/p>&lt;p>@param[in] info  additional info which may be helpful for debug&lt;/p>&lt;p>&lt;/p>&lt;p>@warning: In this case, the @ref PSAT connector will not have allocated a buffer to receive the attachment, so the user's component @b must @b not call Typed::PSAT_Attachment_Control::release_buffer as this would result in undefined behavior.&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_YvdSANfMEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_Zuo3ENfMEd-US7ahB6BdmA" name="datum" type="_8j5hYteuEd-US7ahB6BdmA"/>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_b4dqUNfMEd-US7ahB6BdmA" name="info" type="_d2uGkNenEd-US7ahB6BdmA"/>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_rdwkMNfMEd-US7ahB6BdmA" name="PSAT_Write">
+              <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="__ipuQLBREeOrCdpV11UqnA" name="status" client="_rdwkMNfMEd-US7ahB6BdmA" supplier="_mgbDINeuEd-US7ahB6BdmA" contract="_mgbDINeuEd-US7ahB6BdmA"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_Zy9AQNfVEd-US7ahB6BdmA" name="PSAT_Listen">
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_deOYINfVEd-US7ahB6BdmA" name="filter" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_w_ULgGRNEd-Wc9hRqhM12g"/>
+              </ownedAttribute>
+              <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_D2nJQCltEeC9OrtHdUzqqQ" name="status" client="_Zy9AQNfVEd-US7ahB6BdmA" supplier="_uKEO4NfLEd-US7ahB6BdmA" contract="_uKEO4NfLEd-US7ahB6BdmA"/>
+              <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_D2nJQSltEeC9OrtHdUzqqQ" name="data_listener" client="_Zy9AQNfVEd-US7ahB6BdmA" supplier="_-ab7gNfKEd-US7ahB6BdmA" contract="_-ab7gNfKEd-US7ahB6BdmA"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Component" xmi:id="_a5xB4NfWEd-US7ahB6BdmA" name="PSAT_Event">
+              <generalization xmi:type="uml:Generalization" xmi:id="_pdxd4NfWEd-US7ahB6BdmA">
+                <general xmi:type="uml:Component" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_ATJJ0GRtEd-fwvmMvf-phA"/>
+              </generalization>
+              <ownedAttribute xmi:type="uml:Port" xmi:id="_tkA6gNfWEd-US7ahB6BdmA" name="supplier" type="_rdwkMNfMEd-US7ahB6BdmA" aggregation="composite"/>
+              <ownedAttribute xmi:type="uml:Port" xmi:id="_0sG-kNfWEd-US7ahB6BdmA" name="push_consumer" type="_Zy9AQNfVEd-US7ahB6BdmA" aggregation="composite"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_4kflYNfWEd-US7ahB6BdmA" name="max_sample_size" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="__x7KsOkUEd-OIJ14gXO1DA" name="psat_config" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Usage" xmi:id="_D2nJQyltEeC9OrtHdUzqqQ" name="attachment_control" client="_Zy9AQNfVEd-US7ahB6BdmA" supplier="_8cxRwNfGEd-US7ahB6BdmA"/>
+            <packagedElement xmi:type="uml:Usage" xmi:id="_b9CWsiltEeC9OrtHdUzqqQ" name="data" client="_rdwkMNfMEd-US7ahB6BdmA" supplier="_0V_tANfIEd-US7ahB6BdmA"/>
+            <packagedElement xmi:type="uml:Usage" xmi:id="_b9CWsSltEeC9OrtHdUzqqQ" name="dds_entity" client="_rdwkMNfMEd-US7ahB6BdmA">
+              <supplier xmi:type="uml:Interface" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_l00YQGRpEd-Wc9hRqhM12g"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Usage" xmi:id="_D2nJRCltEeC9OrtHdUzqqQ" name="filter_config" client="_Zy9AQNfVEd-US7ahB6BdmA">
+              <supplier xmi:type="uml:Interface" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_a646YMWaEd-HtdN8eeeRTA"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Usage" xmi:id="_D2nJQiltEeC9OrtHdUzqqQ" name="dds_entity" client="_Zy9AQNfVEd-US7ahB6BdmA">
+              <supplier xmi:type="uml:Interface" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_5XLPgGRnEd-Wc9hRqhM12g"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Usage" xmi:id="_E9LdQLBSEeOrCdpV11UqnA" name="listener_control" client="_Zy9AQNfVEd-US7ahB6BdmA" supplier="_c5-GQNeuEd-US7ahB6BdmA"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Dependency" xmi:id="_UxDB8ALdEeCpUcUvNR7mgQ" name="IDLFileDependency" client="_PWbX0NelEd-US7ahB6BdmA" supplier="_TFVuEALdEeCpUcUvNR7mgQ"/>
+          <packagedElement xmi:type="uml:Package" xmi:id="_WrYkgKnoEeODn-Isgwiqsg" name="Base">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nWhFEKnoEeODn-Isgwiqsg" source="zcx">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nWiTMKnoEeODn-Isgwiqsg" key="generatedir" value="false"/>
+            </eAnnotations>
+            <packagedElement xmi:type="uml:Class" xmi:id="_TMhfoNelEd-US7ahB6BdmA" name="Constants">
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_UYWZkNelEd-US7ahB6BdmA" name="PSAT_TIMEOUT_INFINITE" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_jPGK0Ko3EeOpScUomARFQg" annotatedElement="_UYWZkNelEd-US7ahB6BdmA">
+                  <body>&lt;p>A value that can be used in any method in any PSAT interface that requires a timeout value which means &quot;wait forever&quot;&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_VgJvINelEd-US7ahB6BdmA" value="0"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Enumeration" xmi:id="_mPNtcNelEd-US7ahB6BdmA" name="Callback_Control">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_oIuzQKo3EeOpScUomARFQg" annotatedElement="_mPNtcNelEd-US7ahB6BdmA">
+                <body>&lt;p>Enumeration used to control whether a user callback is enabled or disabled&lt;/p></body>
+              </ownedComment>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_oN19UNelEd-US7ahB6BdmA" name="CALLBACK_DISABLED"/>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_pKBRsNelEd-US7ahB6BdmA" name="CALLBACK_ENABLED"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_xhQpcNelEd-US7ahB6BdmA" name="Str_Seq">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_qiPBQKo3EeOpScUomARFQg" annotatedElement="_xhQpcNelEd-US7ahB6BdmA">
+                <body>&lt;p>Unbounded sequence of strings.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_xh3GYNelEd-US7ahB6BdmA" name="members">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xh3GYtelEd-US7ahB6BdmA"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xh3GYdelEd-US7ahB6BdmA" value="*"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_d2uGkNenEd-US7ahB6BdmA" name="Error_Callback_Info">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_zbcdoKo3EeOpScUomARFQg" annotatedElement="_d2uGkNenEd-US7ahB6BdmA">
+                <body>&lt;p>Information about the cause of an asynchronous error (i.e, outside of a method invocation). This structure is an input to the various @ref PSAT error callbacks &lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_fwDmwNenEd-US7ahB6BdmA" name="explanation" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_2cfMwKo3EeOpScUomARFQg" annotatedElement="_fwDmwNenEd-US7ahB6BdmA">
+                  <body>&lt;p>Text message explaining cause of error.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_MrXYYNeoEd-US7ahB6BdmA" name="Shared_Mem_Access_Excp">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_IVWrwKo4EeOpScUomARFQg" annotatedElement="_MrXYYNeoEd-US7ahB6BdmA">
+                <body>&lt;p>Indicates a shared memory related error has occurred. This includes: &lt;/p>&lt;p>-Error creating or attaching to the shared memory segment.&lt;/p>&lt;p>-The PSAT connector could not detach from the @ref AD buffer at shutdown.&lt;/p>&lt;p>@note&lt;/p>&lt;p>This exception can be thrown in the connector's @b configuration_complete&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_PW9b8NeoEd-US7ahB6BdmA" name="connector_id" visibility="public">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_9D23YOkTEd-OIJ14gXO1DA" name="name" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_KqCrMKo4EeOpScUomARFQg" annotatedElement="_9D23YOkTEd-OIJ14gXO1DA">
+                  <body>&lt;p>Configured name of the shared memory segment.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_JI3hYOkUEd-OIJ14gXO1DA" name="id" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_Ok-PsKo4EeOpScUomARFQg" annotatedElement="_JI3hYOkUEd-OIJ14gXO1DA">
+                  <body>&lt;p>ID used along with the name to create a unique key to create the shared memory.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_MFNWsOkUEd-OIJ14gXO1DA" name="size" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_RIU9QKo4EeOpScUomARFQg" annotatedElement="_MFNWsOkUEd-OIJ14gXO1DA">
+                  <body>&lt;p>Size (in bytes) of the shared memory segment.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_WFDEkNeoEd-US7ahB6BdmA" name="explanation" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_VOEqoKo4EeOpScUomARFQg" annotatedElement="_WFDEkNeoEd-US7ahB6BdmA">
+                  <body>&lt;p>Text message explaining the cause of the error.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_gJsZUNeoEd-US7ahB6BdmA" name="Invalid_Connector_Attributes_Excp">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_i2KQ8Ko4EeOpScUomARFQg" annotatedElement="_gJsZUNeoEd-US7ahB6BdmA">
+                <body>&lt;p>Indicates that the @ref PSAT connector could not be initialized properly due to one or more invalid connector attributes.&lt;/p>&lt;p>@note&lt;/p>&lt;p>This exception can be thrown in the connector's @b configuration_complete method or in any of the attribute setter methods.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_ie-OoNeoEd-US7ahB6BdmA" name="connector_id" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_vkLbsKo4EeOpScUomARFQg" annotatedElement="_ie-OoNeoEd-US7ahB6BdmA">
+                  <body>&lt;p>Globally unique identifier for the PSAT connector that is throwing this exception.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_lUbY0NeoEd-US7ahB6BdmA" name="attribute_names" visibility="public" type="_xhQpcNelEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_pGJBQKo4EeOpScUomARFQg" annotatedElement="_lUbY0NeoEd-US7ahB6BdmA">
+                  <body>&lt;p>Name(s) of connector attribute(s) containing the invalid value(s) that caused this exception to be thrown.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_ncmmQNeoEd-US7ahB6BdmA" name="explanation" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_0X2mEKo4EeOpScUomARFQg" annotatedElement="_ncmmQNeoEd-US7ahB6BdmA">
+                  <body>&lt;p>Text message explaining the cause of the error.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_sAdL8NeoEd-US7ahB6BdmA" name="AD_Buffer_None_Available_Excp">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_6O55AKo4EeOpScUomARFQg" annotatedElement="_sAdL8NeoEd-US7ahB6BdmA">
+                <body>&lt;p>Indicates that no @ref AD buffers are available (all are in use) from the pool of AD buffers managed by this @ref PSAT connector.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_uBeBcNeoEd-US7ahB6BdmA" name="topic_name" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_-P7ecKo4EeOpScUomARFQg" annotatedElement="_uBeBcNeoEd-US7ahB6BdmA">
+                  <body>&lt;p>Name of the PSAT Topic this exception occurred on.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_1X9G0NeoEd-US7ahB6BdmA" name="connector_id" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_CH4ncKo5EeOpScUomARFQg" annotatedElement="_1X9G0NeoEd-US7ahB6BdmA">
+                  <body>&lt;p>Globally unique identifier for the PSAT connector that threw the exception.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_4PWKsNeoEd-US7ahB6BdmA" name="explanation" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_ExUu4Ko5EeOpScUomARFQg" annotatedElement="_4PWKsNeoEd-US7ahB6BdmA">
+                  <body>&lt;p>Text message explaining the cause of the error.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_-HrQANeoEd-US7ahB6BdmA" name="Invalid_UDM_PSAT_Header_Excp">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_PUpjsKo5EeOpScUomARFQg" annotatedElement="_-HrQANeoEd-US7ahB6BdmA">
+                <body>&lt;p>Indicates that a @ref UDM has a @ref PSAT heaader with inconsistent values (such as negative offsets or inconsistent fields). This may also be thrown when a buffer is release more than once.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_Ac9sYdepEd-US7ahB6BdmA" name="topic_name" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_d1vOkKo5EeOpScUomARFQg" annotatedElement="_Ac9sYdepEd-US7ahB6BdmA">
+                  <body>&lt;p>Name of the PSAT topic that the exception occurred on.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_B3jbENepEd-US7ahB6BdmA" name="connector_id" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_TB2OMKo5EeOpScUomARFQg" annotatedElement="_B3jbENepEd-US7ahB6BdmA">
+                  <body>&lt;p>Globally unique identifier for the PSAT connector that is throwing this exception.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_Ac9sYNepEd-US7ahB6BdmA" name="explanation" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_Ur9moKo5EeOpScUomARFQg" annotatedElement="_Ac9sYNepEd-US7ahB6BdmA">
+                  <body>&lt;p>Text message explaining the cause of the error.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_UMRvoNepEd-US7ahB6BdmA" name="Basic_UDM_msg">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_s86b8FbdEeOvGvp52SlPdw" annotatedElement="_UMRvoNepEd-US7ahB6BdmA">
+                <body>&lt;p>Basic @ref UDM IDL structure to use if the user does not want to add any additional information to the UDM.&lt;/p>&lt;p>@note&lt;/p>&lt;p>If a user wishes to create a custom @ref UDM with additional fields, they should create a new IDL structure containing a field named @b psat_hdr that is of type PSAT_Header. All UDM structures @b must be defined in a non-templated module and cannot have any dependencies on templated modules (e.g., have a member which is of a type defined in a templated module).&lt;/p>&lt;p>@par&lt;/p>&lt;p>For example, to create a custom @ref UDM that has a long and a double as additional information, the IDL would be:s&lt;/p>&lt;p>@code&lt;/p>&lt;p>struct My_UDM // name it whatever you want&lt;/p>&lt;p>{&lt;/p>&lt;p>::CCM_PSAT::PSAT_Header psat_hdr; // The only required field&lt;/p>&lt;p>&lt;/p>&lt;p>long my_long_field; // names of add'l fields&lt;/p>&lt;p>// don't matter&lt;/p>&lt;p>&lt;/p>&lt;p>double my_double_field;&lt;/p>&lt;p>};&lt;/p>&lt;p>@endcode&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_YbT74NepEd-US7ahB6BdmA" name="psat_hdr" visibility="public" type="_udK0ENeqEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_5Ns4IFbdEeOvGvp52SlPdw" annotatedElement="_YbT74NepEd-US7ahB6BdmA">
+                  <body>&lt;p>@ref UDM required header. All @ref UDM types must have a field of this name and type.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_c5-GQNeuEd-US7ahB6BdmA" name="PSAT_Listener_Control">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_s_Uc0Ko5EeOpScUomARFQg" annotatedElement="_c5-GQNeuEd-US7ahB6BdmA">
+                <body>&lt;p>This interface is used to control which callbacks in the Typed::PSAT_Listener callbacks interface provided by the user component will actually be called.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_fTLZUNeuEd-US7ahB6BdmA" name="on_one_data_enable" visibility="public" type="_mPNtcNelEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_DNoSEKo6EeOpScUomARFQg" annotatedElement="_fTLZUNeuEd-US7ahB6BdmA">
+                  <body>&lt;p >Control of whether PSAT_Listener::on_one_data is enabled&lt;/p>&lt;p >- CCM_PAST::CALLBACK_ENABLED - the PSAT_Event connector will invoke the user supplied callback when appropriate&lt;/p>&lt;p >- CCM_PSAT::CALLBACK_DISABLED - the user supplied callback will @b not be called.&lt;/p>&lt;p >Default value:&lt;/p>&lt;blockquote >&lt;p >CCM_PSAT::CALLBACK_DISABLED&lt;/p>&lt;/blockquote>&lt;p>&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_iQ5HoNeuEd-US7ahB6BdmA" name="on_metadata_intercept_enable" visibility="public" type="_mPNtcNelEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_BMikEKo6EeOpScUomARFQg" annotatedElement="_iQ5HoNeuEd-US7ahB6BdmA">
+                  <body>&lt;p>Control of whether PSAT_Listener::on_metadata_intercept is enabled&lt;/p>&lt;p>- CCM_PAST::CALLBACK_ENABLED - the PSAT_Event connector will invoke the user supplied callback when appropriate&lt;/p>&lt;p>- CCM_PSAT::CALLBACK_DISABLED - the user supplied callback will @b not be called.&lt;/p>&lt;p>Default value:&lt;/p>&lt;blockquote>&lt;p>CCM_PSAT::CALLBACK_DISABLED&lt;/p>&lt;/blockquote>&lt;p>&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_b6x3EKIpEeSPraLR_YyGzw" name="on_create_data_intercept_enable" visibility="public" type="_mPNtcNelEd-US7ahB6BdmA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="__gx1QNL0EeSQQZY06nP7Hw" annotatedElement="_b6x3EKIpEeSPraLR_YyGzw">
+                  <body>&lt;p>Control of whether PSAT_Listener::on_create_data_intercept is enabled&lt;/p>&lt;p>- CCM_PAST::CALLBACK_ENABLED - the PSAT_Event connector will invoke the user supplied callback when appropriate&lt;/p>&lt;p>- CCM_PSAT::CALLBACK_DISABLED - the user supplied callback will @b not be called.&lt;/p>&lt;p>Default value:&lt;/p>&lt;blockquote>&lt;p>CCM_PSAT::CALLBACK_DISABLED&lt;/p>&lt;/blockquote>&lt;p>&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Interface" xmi:id="_mgbDINeuEd-US7ahB6BdmA" name="PSAT_Writer_Status_Listener">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_LgECUKo6EeOpScUomARFQg" annotatedElement="_mgbDINeuEd-US7ahB6BdmA">
+                <body>&lt;p>Set of optional user-defined callbacks on the user's writer (publisher) component which the @ref PSAT connector will call in the event of an asynchronous error or major status change (e.g., buffer now available).&lt;/p></body>
+              </ownedComment>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_o8AUwNeuEd-US7ahB6BdmA" name="on_buffer_available">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_STwjsKo6EeOpScUomARFQg" annotatedElement="_o8AUwNeuEd-US7ahB6BdmA">
+                  <body>&lt;p>Optional user-defined callback invoked when a buffer becomes available if the user previously requested notification via the PSAT_Writer::notify_when_buffer_is_free() call.&lt;/p>&lt;p>@note&lt;/p>&lt;p>This callback will only be called a maximum of one time after a PSAT_Writer::notify_when_buffer_is_free() call. Another notify call must be made to be notified again.&lt;/p>&lt;p>@see PSAT_Writer::notify_when_buffer_is_free&lt;/p>&lt;p>@see PSAT_Writer::cancel_buffer_is_free_notify&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_p7fb0NeuEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_sBoB4NeuEd-US7ahB6BdmA" name="on_buffer_wait_timeout">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_co1hIKo6EeOpScUomARFQg" annotatedElement="_sBoB4NeuEd-US7ahB6BdmA">
+                  <body>&lt;p>Optional user-defined callback invoked when the available buffer wait timeout has expired and no buffer is available. This will only happen if the user previously requested notification of an available buffer via the PSAT_Writer::notify_when_buffer_is_free() call.&lt;/p>&lt;p>&lt;/p>&lt;p>@note&lt;/p>&lt;p>This callback will only be called a maximum of one time after a PSAT_Writer::notify_when_buffer_is_free() call. Another notify call must be made to be notified again.&lt;/p>&lt;p>@see PSAT_Writer::notify_when_buffer_is_free&lt;/p>&lt;p>@see PSAT_Writer::cancel_buffer_is_free_notify&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_szPsENeuEd-US7ahB6BdmA" name="Parameter1" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_gHUr8KMZEeSPraLR_YyGzw" name="on_reader_owned_create_data_failure">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_-8lI4KMZEeSPraLR_YyGzw" annotatedElement="_gHUr8KMZEeSPraLR_YyGzw">
+                  <body>&lt;p>Optional user-defined callback invoked when the writer's request to create_data() in a reader-owned shared memory configuration fails to produce a usable buffer. This callback will only be executed if the buffer returned is invalid, not if an exception is thrown on the intial call to create_data(), as that initial exception is expected.&lt;/p>&lt;p>@see PSAT_Writer::create_data()&lt;/p></body>
+                </ownedComment>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_gHlxsKMZEeSPraLR_YyGzw" name="ReturnParameter" direction="return">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_m2CGEBjxEemDZvMdb5RUKA" name="ccm_psat"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_jkiX854JEd6xhoJKj1dweA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jkiX9J4JEd6xhoJKj1dweA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_1KTJYJ44Ed6CdqU5qRn9Dw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1Kc6YJ44Ed6CdqU5qRn9Dw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KssEDZEd-LnsQ685SqSQ"/>
+    </profileApplication>
+  </uml:Model>
+  <dds4ccm:DDS4CCMModel xmi:id="_pnTK8NeiEd-US7ahB6BdmA" base_Model="_jkiX8J4JEd6xhoJKj1dweA" locationPrefix="" fixedHeader="//==============================================================================&#xA;//                         U N C L A S S I F I E D&#xA;//==============================================================================&#xA;// Copyright (c) Northrop Grumman Corporation 2013-2020 -- ALL RIGHTS RESERVED&#xA;//==============================================================================&#xA;//&#xA;//==============================================================================&#xA;// EXPORT REGULATIONS (EAR99)&#xA;//==============================================================================&#xA;// DISCLOSURE: &#xA;//&#xA;// Warning - This data is subject to the Export Administration Act (Title 22 &#xA;// U.S.C. App. 2401 et seq.), as amended. The implementing regulation for &#xA;// this statute is the Export Administration Regulations (EAR) (15 C.F.R.&#xA;// 730-774). It may not be transferred, either in its original form, derivative &#xA;// documents, or after being incorporated into other data without first &#xA;// obtaining approval from the U.S. government or as otherwise authorized by &#xA;// U.S. law and regulations. &#xA;//==============================================================================" fixedFooter="//==============================================================================&#xA;//                         U N C L A S S I F I E D&#xA;//==============================================================================" modelType="AXCIOMA"/>
+  <dds4ccm:CXModule xmi:id="_PWlI0NelEd-US7ahB6BdmA" base_NamedElement="_PWbX0NelEd-US7ahB6BdmA" base_Package="_PWbX0NelEd-US7ahB6BdmA"/>
+  <dds4ccm:CXEnum xmi:id="_fjjJ4NepEd-US7ahB6BdmA" base_NamedElement="_fjZ_8NepEd-US7ahB6BdmA" base_Enumeration="_fjZ_8NepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXStruct xmi:id="_opHAMNepEd-US7ahB6BdmA" base_NamedElement="_oo9PMNepEd-US7ahB6BdmA" base_DataType="_oo9PMNepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_pbnbMNepEd-US7ahB6BdmA" base_NamedElement="_pbeRQNepEd-US7ahB6BdmA" base_Property="_pbeRQNepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_rtfXMNepEd-US7ahB6BdmA" base_NamedElement="_rtWNQNepEd-US7ahB6BdmA" base_Property="_rtWNQNepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_td_rgdepEd-US7ahB6BdmA" base_NamedElement="_td_rgNepEd-US7ahB6BdmA" base_Property="_td_rgNepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXEnum xmi:id="_wGD58depEd-US7ahB6BdmA" base_NamedElement="_wGD58NepEd-US7ahB6BdmA" base_Enumeration="_wGD58NepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXStruct xmi:id="_2nauIdepEd-US7ahB6BdmA" base_NamedElement="_2nauINepEd-US7ahB6BdmA" base_DataType="_2nauINepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_4rllUNepEd-US7ahB6BdmA" base_NamedElement="_4rb0UNepEd-US7ahB6BdmA" base_Property="_4rb0UNepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_6n2dsNepEd-US7ahB6BdmA" base_NamedElement="_6nsssNepEd-US7ahB6BdmA" base_Property="_6nsssNepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXSequence xmi:id="_9tk4gdepEd-US7ahB6BdmA" base_NamedElement="_9tk4gNepEd-US7ahB6BdmA" base_DataType="_9tk4gNepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXStruct xmi:id="_JowREdeqEd-US7ahB6BdmA" base_NamedElement="_JowRENeqEd-US7ahB6BdmA" base_DataType="_JowRENeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_MHb6AdeqEd-US7ahB6BdmA" base_NamedElement="_MHb6ANeqEd-US7ahB6BdmA" base_Property="_MHb6ANeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_O2N0cNeqEd-US7ahB6BdmA" base_NamedElement="_O2EDcNeqEd-US7ahB6BdmA" base_Property="_O2EDcNeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_RZg3oNeqEd-US7ahB6BdmA" base_NamedElement="_RZXGoNeqEd-US7ahB6BdmA" base_Property="_RZXGoNeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_TjL54deqEd-US7ahB6BdmA" base_NamedElement="_TjL54NeqEd-US7ahB6BdmA" base_Property="_TjL54NeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_V0eAANeqEd-US7ahB6BdmA" base_NamedElement="_V0UPANeqEd-US7ahB6BdmA" base_Property="_V0UPANeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_X21gYNeqEd-US7ahB6BdmA" base_NamedElement="_X2sWcNeqEd-US7ahB6BdmA" base_Property="_X2sWcNeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXStruct xmi:id="_bp3GEdeqEd-US7ahB6BdmA" base_NamedElement="_bp3GENeqEd-US7ahB6BdmA" base_DataType="_bp3GENeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_eo304NeqEd-US7ahB6BdmA" base_NamedElement="_eouD4NeqEd-US7ahB6BdmA" base_Property="_eouD4NeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_hF6fENeqEd-US7ahB6BdmA" base_NamedElement="_hFxVINeqEd-US7ahB6BdmA" base_Property="_hFxVINeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_kVeLUNeqEd-US7ahB6BdmA" base_NamedElement="_kVVBYNeqEd-US7ahB6BdmA" base_Property="_kVVBYNeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_mYl5odeqEd-US7ahB6BdmA" base_NamedElement="_mYl5oNeqEd-US7ahB6BdmA" base_Property="_mYl5oNeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_pAqvINeqEd-US7ahB6BdmA" base_NamedElement="_pAg-INeqEd-US7ahB6BdmA" base_Property="_pAg-INeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXStruct xmi:id="_udK0EdeqEd-US7ahB6BdmA" base_NamedElement="_udK0ENeqEd-US7ahB6BdmA" base_DataType="_udK0ENeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_vlSSsNeqEd-US7ahB6BdmA" base_NamedElement="_vk_XwNeqEd-US7ahB6BdmA" base_Property="_vk_XwNeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_0nav0deqEd-US7ahB6BdmA" base_NamedElement="_0nav0NeqEd-US7ahB6BdmA" base_Property="_0nav0NeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_23DQIdeqEd-US7ahB6BdmA" base_NamedElement="_23DQINeqEd-US7ahB6BdmA" base_Property="_23DQINeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_46w0UNeqEd-US7ahB6BdmA" base_NamedElement="_46nqYNeqEd-US7ahB6BdmA" base_Property="_46nqYNeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_7Y_xUdeqEd-US7ahB6BdmA" base_NamedElement="_7Y_xUNeqEd-US7ahB6BdmA" base_Property="_7Y_xUNeqEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_LS3FodeuEd-US7ahB6BdmA" base_NamedElement="_LS3FoNeuEd-US7ahB6BdmA" base_Property="_LS3FoNeuEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_OF2KoNeuEd-US7ahB6BdmA" base_NamedElement="_OFsZoNeuEd-US7ahB6BdmA" base_Property="_OFsZoNeuEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_Qa4IUdeuEd-US7ahB6BdmA" base_NamedElement="_Qa4IUNeuEd-US7ahB6BdmA" base_Property="_Qa4IUNeuEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_StqqUdeuEd-US7ahB6BdmA" base_NamedElement="_StqqUNeuEd-US7ahB6BdmA" base_Property="_StqqUNeuEd-US7ahB6BdmA"/>
+  <dds4ccm:TemplateModule xmi:id="_yChNUdeuEd-US7ahB6BdmA" base_NamedElement="_yChNUNeuEd-US7ahB6BdmA" base_Package="_yChNUNeuEd-US7ahB6BdmA"/>
+  <standard:ModelLibrary xmi:id="_ntWTANffEd-vgdn6L_H7nQ" base_Package="_jkiX8J4JEd6xhoJKj1dweA"/>
+  <dds4ccm:CXField xmi:id="_62tf0OkSEd-OIJ14gXO1DA" base_NamedElement="_62Z90OkSEd-OIJ14gXO1DA" base_Property="_62Z90OkSEd-OIJ14gXO1DA"/>
+  <dds4ccm:IDLFileSpecification xmi:id="_TF7j8ALdEeCpUcUvNR7mgQ" base_Class="_TFVuEALdEeCpUcUvNR7mgQ"/>
+  <dds4ccm:IDLFileDependency xmi:id="_UxMy8ALdEeCpUcUvNR7mgQ" base_Dependency="_UxDB8ALdEeCpUcUvNR7mgQ"/>
+  <dds4ccm:CXField xmi:id="_FczFsALmEeC5rchXP1KuUQ" base_NamedElement="_FcMowALmEeC5rchXP1KuUQ" base_Property="_FcMowALmEeC5rchXP1KuUQ"/>
+  <dds4ccm:TemplateSignature xmi:id="_8jwXcdeuEd-US7ahB6BdmA" base_TemplateSignature="_8jwXcNeuEd-US7ahB6BdmA"/>
+  <dds4ccm:TypeParameter xmi:id="_8j5hYdeuEd-US7ahB6BdmA" base_ClassifierTemplateParameter="_8j5hYNeuEd-US7ahB6BdmA"/>
+  <dds4ccm:TemplateParameterType xmi:id="_8j5hY9euEd-US7ahB6BdmA" base_Class="_8j5hYteuEd-US7ahB6BdmA"/>
+  <dds4ccm:TypeParameter xmi:id="__Z_kwdeuEd-US7ahB6BdmA" base_ClassifierTemplateParameter="__Z_kwNeuEd-US7ahB6BdmA" constraint="sequence"/>
+  <dds4ccm:TemplateParameterType xmi:id="__Z_kw9euEd-US7ahB6BdmA" base_DataType="__Z_kwteuEd-US7ahB6BdmA"/>
+  <dds4ccm:CXInterface xmi:id="_8dEMsNfGEd-US7ahB6BdmA" base_Interface="_8cxRwNfGEd-US7ahB6BdmA" base_NamedElement="_8cxRwNfGEd-US7ahB6BdmA" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="__RNvUNfGEd-US7ahB6BdmA" base_NamedElement="__RD-UNfGEd-US7ahB6BdmA" base_Operation="__RD-UNfGEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_ECg7IdfHEd-US7ahB6BdmA" base_NamedElement="_ECg7INfHEd-US7ahB6BdmA" base_Parameter="_ECg7INfHEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_V9Pl4NfIEd-US7ahB6BdmA" base_NamedElement="_V9Gb8NfIEd-US7ahB6BdmA" base_Operation="_V9Gb8NfIEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_j2xhgNfIEd-US7ahB6BdmA" base_NamedElement="_j2oXkNfIEd-US7ahB6BdmA" base_Operation="_j2oXkNfIEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_mgfVwdfIEd-US7ahB6BdmA" base_NamedElement="_mgfVwNfIEd-US7ahB6BdmA" base_Parameter="_mgfVwNfIEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_ssOfQNfIEd-US7ahB6BdmA" base_NamedElement="_ssFVUNfIEd-US7ahB6BdmA" base_Operation="_ssFVUNfIEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_uhfXwNfIEd-US7ahB6BdmA" base_NamedElement="_uhWN0NfIEd-US7ahB6BdmA" base_Parameter="_uhWN0NfIEd-US7ahB6BdmA"/>
+  <dds4ccm:CXInterface xmi:id="_0WI28NfIEd-US7ahB6BdmA" base_Interface="_0V_tANfIEd-US7ahB6BdmA" base_NamedElement="_0V_tANfIEd-US7ahB6BdmA" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_9iPaINfIEd-US7ahB6BdmA" base_NamedElement="_9iFpINfIEd-US7ahB6BdmA" base_Operation="_9iFpINfIEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_Ovo6QdfJEd-US7ahB6BdmA" base_NamedElement="_Ovo6QNfJEd-US7ahB6BdmA" base_Parameter="_Ovo6QNfJEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_Pv2koNfKEd-US7ahB6BdmA" base_NamedElement="_PvszoNfKEd-US7ahB6BdmA" base_Operation="_PvszoNfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_TAvtoNfKEd-US7ahB6BdmA" base_NamedElement="_TAl8oNfKEd-US7ahB6BdmA" base_Parameter="_TAl8oNfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_Z1wdodfKEd-US7ahB6BdmA" base_NamedElement="_Z1wdoNfKEd-US7ahB6BdmA" base_Operation="_Z1wdoNfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_ea1yYdfKEd-US7ahB6BdmA" base_NamedElement="_ea1yYNfKEd-US7ahB6BdmA" base_Parameter="_ea1yYNfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_hE_rgdfKEd-US7ahB6BdmA" base_NamedElement="_hE_rgNfKEd-US7ahB6BdmA" base_Parameter="_hE_rgNfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_kbtIoNfKEd-US7ahB6BdmA" base_NamedElement="_kbj-sNfKEd-US7ahB6BdmA" base_Operation="_kbj-sNfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_mkyVANfKEd-US7ahB6BdmA" base_NamedElement="_mkokANfKEd-US7ahB6BdmA" base_Parameter="_mkokANfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_yTJZkNfKEd-US7ahB6BdmA" base_NamedElement="_yS_okNfKEd-US7ahB6BdmA" base_Operation="_yS_okNfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_0lWswNfKEd-US7ahB6BdmA" base_NamedElement="_0lM7wNfKEd-US7ahB6BdmA" base_Operation="_0lM7wNfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_2rocwNfKEd-US7ahB6BdmA" base_NamedElement="_2rfS0NfKEd-US7ahB6BdmA" base_Parameter="_2rfS0NfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXInterface xmi:id="_-alsgNfKEd-US7ahB6BdmA" base_Interface="_-ab7gNfKEd-US7ahB6BdmA" base_NamedElement="_-ab7gNfKEd-US7ahB6BdmA" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_JgAhwdfLEd-US7ahB6BdmA" base_NamedElement="_JgAhwNfLEd-US7ahB6BdmA" base_Operation="_JgAhwNfLEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_L8fyUdfLEd-US7ahB6BdmA" base_NamedElement="_L8fyUNfLEd-US7ahB6BdmA" base_Parameter="_L8fyUNfLEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_Oyw00NfLEd-US7ahB6BdmA" base_NamedElement="_Oynq4NfLEd-US7ahB6BdmA" base_Parameter="_Oynq4NfLEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_ekj5oNfLEd-US7ahB6BdmA" base_NamedElement="_ekaIoNfLEd-US7ahB6BdmA" base_Operation="_ekaIoNfLEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_gs6GMdfLEd-US7ahB6BdmA" base_NamedElement="_gs6GMNfLEd-US7ahB6BdmA" base_Parameter="_gs6GMNfLEd-US7ahB6BdmA"/>
+  <dds4ccm:CXInterface xmi:id="_uKNY0NfLEd-US7ahB6BdmA" base_Interface="_uKEO4NfLEd-US7ahB6BdmA" base_NamedElement="_uKEO4NfLEd-US7ahB6BdmA" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_4x3UANfLEd-US7ahB6BdmA" base_NamedElement="_4xuKENfLEd-US7ahB6BdmA" base_Operation="_4xuKENfLEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_7DAQMdfLEd-US7ahB6BdmA" base_NamedElement="_7DAQMNfLEd-US7ahB6BdmA" base_Parameter="_7DAQMNfLEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_9cWGINfLEd-US7ahB6BdmA" base_NamedElement="_9cMVINfLEd-US7ahB6BdmA" base_Parameter="_9cMVINfLEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_QkTOcNfMEd-US7ahB6BdmA" base_NamedElement="_QkJdcNfMEd-US7ahB6BdmA" base_Operation="_QkJdcNfMEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_SIIYsNfMEd-US7ahB6BdmA" base_NamedElement="_SH-nsNfMEd-US7ahB6BdmA" base_Parameter="_SH-nsNfMEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_UPbcYNfMEd-US7ahB6BdmA" base_NamedElement="_UPRrYNfMEd-US7ahB6BdmA" base_Parameter="_UPRrYNfMEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_XwuY4NfMEd-US7ahB6BdmA" base_NamedElement="_Xwkn4NfMEd-US7ahB6BdmA" base_Operation="_Xwkn4NfMEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_ZuyBANfMEd-US7ahB6BdmA" base_NamedElement="_Zuo3ENfMEd-US7ahB6BdmA" base_Parameter="_Zuo3ENfMEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_b4nbUNfMEd-US7ahB6BdmA" base_NamedElement="_b4dqUNfMEd-US7ahB6BdmA" base_Parameter="_b4dqUNfMEd-US7ahB6BdmA"/>
+  <dds4ccm:ExtendedPortType xmi:id="_rdwkMdfMEd-US7ahB6BdmA" base_Class="_rdwkMNfMEd-US7ahB6BdmA"/>
+  <dds4ccm:ExtendedPortType xmi:id="_Zy9AQdfVEd-US7ahB6BdmA" base_Class="_Zy9AQNfVEd-US7ahB6BdmA"/>
+  <dds4ccm:CXAttribute xmi:id="_fMLuwNfVEd-US7ahB6BdmA" base_NamedElement="_deOYINfVEd-US7ahB6BdmA" base_Property="_deOYINfVEd-US7ahB6BdmA">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
+  </dds4ccm:CXAttribute>
+  <dds4ccm:ConnectorDef xmi:id="_a5xB4dfWEd-US7ahB6BdmA" base_Component="_a5xB4NfWEd-US7ahB6BdmA" base_NamedElement="_a5xB4NfWEd-US7ahB6BdmA"/>
+  <dds4ccm:InterfacePort xmi:id="_tkA6gdfWEd-US7ahB6BdmA" base_Port="_tkA6gNfWEd-US7ahB6BdmA" isConjugated="true"/>
+  <dds4ccm:InterfacePort xmi:id="_0sQIgNfWEd-US7ahB6BdmA" base_Port="_0sG-kNfWEd-US7ahB6BdmA" isConjugated="true"/>
+  <dds4ccm:CXAttribute xmi:id="_4kovUNfWEd-US7ahB6BdmA" base_NamedElement="_4kflYNfWEd-US7ahB6BdmA" base_Property="_4kflYNfWEd-US7ahB6BdmA">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
+  </dds4ccm:CXAttribute>
+  <dds4ccm:CXAttribute xmi:id="__yE7sOkUEd-OIJ14gXO1DA" base_NamedElement="__x7KsOkUEd-OIJ14gXO1DA" base_Property="__x7KsOkUEd-OIJ14gXO1DA">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
+  </dds4ccm:CXAttribute>
+  <dds4ccm:CXOperation xmi:id="_A3bZMekgEd-OIJ14gXO1DA" base_NamedElement="_A3bZMOkgEd-OIJ14gXO1DA" base_Operation="_A3bZMOkgEd-OIJ14gXO1DA"/>
+  <dds4ccm:CXParameter xmi:id="_EXYR4OkgEd-OIJ14gXO1DA" base_NamedElement="_EXOg4OkgEd-OIJ14gXO1DA" base_Parameter="_EXOg4OkgEd-OIJ14gXO1DA"/>
+  <dds4ccm:CXParameter xmi:id="_Ks8s0OkgEd-OIJ14gXO1DA" base_NamedElement="_Kszi4OkgEd-OIJ14gXO1DA" base_Parameter="_Kszi4OkgEd-OIJ14gXO1DA"/>
+  <dds4ccm:CXField xmi:id="_FgeTMGFiEeGS5czQDaps1Q" base_NamedElement="_FgJjEGFiEeGS5czQDaps1Q" base_Property="_FgJjEGFiEeGS5czQDaps1Q"/>
+  <dds4ccm:CXField xmi:id="_L8y1YJfVEeOxmqvDwC_TYw" base_NamedElement="_L8qSgJfVEeOxmqvDwC_TYw" base_Property="_L8qSgJfVEeOxmqvDwC_TYw"/>
+  <dds4ccm:CXConstants xmi:id="_aRa3EKnoEeODn-Isgwiqsg" base_NamedElement="_TMhfoNelEd-US7ahB6BdmA" base_Class="_TMhfoNelEd-US7ahB6BdmA"/>
+  <dds4ccm:CXConstant xmi:id="_aRbeIKnoEeODn-Isgwiqsg" base_NamedElement="_UYWZkNelEd-US7ahB6BdmA" base_Property="_UYWZkNelEd-US7ahB6BdmA"/>
+  <dds4ccm:CXEnum xmi:id="_aRbeIanoEeODn-Isgwiqsg" base_NamedElement="_mPNtcNelEd-US7ahB6BdmA" base_Enumeration="_mPNtcNelEd-US7ahB6BdmA"/>
+  <dds4ccm:CXSequence xmi:id="_aRbeIqnoEeODn-Isgwiqsg" base_NamedElement="_xhQpcNelEd-US7ahB6BdmA" base_DataType="_xhQpcNelEd-US7ahB6BdmA"/>
+  <dds4ccm:CXStruct xmi:id="_aRcFMKnoEeODn-Isgwiqsg" base_NamedElement="_d2uGkNenEd-US7ahB6BdmA" base_DataType="_d2uGkNenEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_aRcFManoEeODn-Isgwiqsg" base_NamedElement="_fwDmwNenEd-US7ahB6BdmA" base_Property="_fwDmwNenEd-US7ahB6BdmA"/>
+  <dds4ccm:CXException xmi:id="_aRcFMqnoEeODn-Isgwiqsg" base_NamedElement="_MrXYYNeoEd-US7ahB6BdmA" base_DataType="_MrXYYNeoEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_aRcFM6noEeODn-Isgwiqsg" base_NamedElement="_PW9b8NeoEd-US7ahB6BdmA" base_Property="_PW9b8NeoEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_aRcsQKnoEeODn-Isgwiqsg" base_NamedElement="_9D23YOkTEd-OIJ14gXO1DA" base_Property="_9D23YOkTEd-OIJ14gXO1DA"/>
+  <dds4ccm:CXField xmi:id="_aRcsQanoEeODn-Isgwiqsg" base_NamedElement="_JI3hYOkUEd-OIJ14gXO1DA" base_Property="_JI3hYOkUEd-OIJ14gXO1DA"/>
+  <dds4ccm:CXField xmi:id="_aRcsQqnoEeODn-Isgwiqsg" base_NamedElement="_MFNWsOkUEd-OIJ14gXO1DA" base_Property="_MFNWsOkUEd-OIJ14gXO1DA"/>
+  <dds4ccm:CXField xmi:id="_aRcsQ6noEeODn-Isgwiqsg" base_NamedElement="_WFDEkNeoEd-US7ahB6BdmA" base_Property="_WFDEkNeoEd-US7ahB6BdmA"/>
+  <dds4ccm:CXException xmi:id="_aRdTUKnoEeODn-Isgwiqsg" base_NamedElement="_gJsZUNeoEd-US7ahB6BdmA" base_DataType="_gJsZUNeoEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_aRdTUanoEeODn-Isgwiqsg" base_NamedElement="_ie-OoNeoEd-US7ahB6BdmA" base_Property="_ie-OoNeoEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_aRdTUqnoEeODn-Isgwiqsg" base_NamedElement="_lUbY0NeoEd-US7ahB6BdmA" base_Property="_lUbY0NeoEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_aRd6YKnoEeODn-Isgwiqsg" base_NamedElement="_ncmmQNeoEd-US7ahB6BdmA" base_Property="_ncmmQNeoEd-US7ahB6BdmA"/>
+  <dds4ccm:CXException xmi:id="_aRd6YanoEeODn-Isgwiqsg" base_NamedElement="_sAdL8NeoEd-US7ahB6BdmA" base_DataType="_sAdL8NeoEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_aRd6YqnoEeODn-Isgwiqsg" base_NamedElement="_uBeBcNeoEd-US7ahB6BdmA" base_Property="_uBeBcNeoEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_aRehcKnoEeODn-Isgwiqsg" base_NamedElement="_1X9G0NeoEd-US7ahB6BdmA" base_Property="_1X9G0NeoEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_aRehcanoEeODn-Isgwiqsg" base_NamedElement="_4PWKsNeoEd-US7ahB6BdmA" base_Property="_4PWKsNeoEd-US7ahB6BdmA"/>
+  <dds4ccm:CXException xmi:id="_aRehcqnoEeODn-Isgwiqsg" base_NamedElement="_-HrQANeoEd-US7ahB6BdmA" base_DataType="_-HrQANeoEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_aRehc6noEeODn-Isgwiqsg" base_NamedElement="_Ac9sYdepEd-US7ahB6BdmA" base_Property="_Ac9sYdepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_aRfIgKnoEeODn-Isgwiqsg" base_NamedElement="_B3jbENepEd-US7ahB6BdmA" base_Property="_B3jbENepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXField xmi:id="_aRfIganoEeODn-Isgwiqsg" base_NamedElement="_Ac9sYNepEd-US7ahB6BdmA" base_Property="_Ac9sYNepEd-US7ahB6BdmA"/>
+  <dds4ccm:DDSMessage xmi:id="_aRfIgqnoEeODn-Isgwiqsg" base_NamedElement="_UMRvoNepEd-US7ahB6BdmA" base_DataType="_UMRvoNepEd-US7ahB6BdmA"/>
+  <dds4ccm:MessageField xmi:id="_aRfvkKnoEeODn-Isgwiqsg" base_NamedElement="_YbT74NepEd-US7ahB6BdmA" base_Property="_YbT74NepEd-US7ahB6BdmA"/>
+  <dds4ccm:CXInterface xmi:id="_aRfvkqnoEeODn-Isgwiqsg" base_Interface="_c5-GQNeuEd-US7ahB6BdmA" base_NamedElement="_c5-GQNeuEd-US7ahB6BdmA" isLocal="true"/>
+  <dds4ccm:CXAttribute xmi:id="_aRfvk6noEeODn-Isgwiqsg" base_NamedElement="_fTLZUNeuEd-US7ahB6BdmA" base_Property="_fTLZUNeuEd-US7ahB6BdmA"/>
+  <dds4ccm:CXAttribute xmi:id="_aRgWoKnoEeODn-Isgwiqsg" base_NamedElement="_iQ5HoNeuEd-US7ahB6BdmA" base_Property="_iQ5HoNeuEd-US7ahB6BdmA"/>
+  <dds4ccm:CXInterface xmi:id="_aRgWoanoEeODn-Isgwiqsg" base_Interface="_mgbDINeuEd-US7ahB6BdmA" base_NamedElement="_mgbDINeuEd-US7ahB6BdmA" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_aRg9sKnoEeODn-Isgwiqsg" base_NamedElement="_o8AUwNeuEd-US7ahB6BdmA" base_Operation="_o8AUwNeuEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_aRg9sanoEeODn-Isgwiqsg" base_NamedElement="_sBoB4NeuEd-US7ahB6BdmA" base_Operation="_sBoB4NeuEd-US7ahB6BdmA"/>
+  <dds4ccm:CXOperation xmi:id="_v6p94KAQEeS0ffnlpzaSqQ" base_NamedElement="_v6Q8UKAQEeS0ffnlpzaSqQ" base_Operation="_v6Q8UKAQEeS0ffnlpzaSqQ"/>
+  <dds4ccm:CXParameter xmi:id="_16SlEKAQEeS0ffnlpzaSqQ" base_NamedElement="_16FwwKAQEeS0ffnlpzaSqQ" base_Parameter="_16FwwKAQEeS0ffnlpzaSqQ"/>
+  <dds4ccm:CXAttribute xmi:id="_b6-EUKIpEeSPraLR_YyGzw" base_NamedElement="_b6x3EKIpEeSPraLR_YyGzw" base_Property="_b6x3EKIpEeSPraLR_YyGzw"/>
+  <dds4ccm:CXOperation xmi:id="_gHj8gKMZEeSPraLR_YyGzw" base_NamedElement="_gHUr8KMZEeSPraLR_YyGzw" base_Operation="_gHUr8KMZEeSPraLR_YyGzw"/>
+  <dds4ccm:IDLFileSpecification xmi:id="_m2FJYBjxEemDZvMdb5RUKA" base_Class="_m2CGEBjxEemDZvMdb5RUKA"/>
+  <dds4ccm:CXParameter xmi:id="_wu8hcPHOEeqH57inONzpcw" base_NamedElement="_BQdqQNfHEd-US7ahB6BdmA" base_Parameter="_BQdqQNfHEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu9IgPHOEeqH57inONzpcw" base_NamedElement="_XPyy4NfIEd-US7ahB6BdmA" base_Parameter="_XPyy4NfIEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu9IgfHOEeqH57inONzpcw" base_NamedElement="_lPbWgNfIEd-US7ahB6BdmA" base_Parameter="_lPbWgNfIEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu9vkPHOEeqH57inONzpcw" base_NamedElement="_to3tsNfIEd-US7ahB6BdmA" base_Parameter="_to3tsNfIEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu9vkfHOEeqH57inONzpcw" base_NamedElement="__qk_oNfIEd-US7ahB6BdmA" base_Parameter="__qk_oNfIEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu9vkvHOEeqH57inONzpcw" base_NamedElement="_RgyWwNfKEd-US7ahB6BdmA" base_Parameter="_RgyWwNfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu9vk_HOEeqH57inONzpcw" base_NamedElement="_a49nENfKEd-US7ahB6BdmA" base_Parameter="_a49nENfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu-WoPHOEeqH57inONzpcw" base_NamedElement="_lemwENfKEd-US7ahB6BdmA" base_Parameter="_lemwENfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu-WofHOEeqH57inONzpcw" base_NamedElement="_zELN4NfKEd-US7ahB6BdmA" base_Parameter="_zELN4NfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu-WovHOEeqH57inONzpcw" base_NamedElement="_1d1z8NfKEd-US7ahB6BdmA" base_Parameter="_1d1z8NfKEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu-9sPHOEeqH57inONzpcw" base_NamedElement="_KlAa8NfLEd-US7ahB6BdmA" base_Parameter="_KlAa8NfLEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu-9sfHOEeqH57inONzpcw" base_NamedElement="_f0lXENfLEd-US7ahB6BdmA" base_Parameter="_f0lXENfLEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu-9svHOEeqH57inONzpcw" base_NamedElement="_v6_VEKAQEeS0ffnlpzaSqQ" base_Parameter="_v6_VEKAQEeS0ffnlpzaSqQ"/>
+  <dds4ccm:CXParameter xmi:id="_wu-9s_HOEeqH57inONzpcw" base_NamedElement="_6WAAQNfLEd-US7ahB6BdmA" base_Parameter="_6WAAQNfLEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu_kwPHOEeqH57inONzpcw" base_NamedElement="_DbeqUOkgEd-OIJ14gXO1DA" base_Parameter="_DbeqUOkgEd-OIJ14gXO1DA"/>
+  <dds4ccm:CXParameter xmi:id="_wu_kwfHOEeqH57inONzpcw" base_NamedElement="_RgV_8NfMEd-US7ahB6BdmA" base_Parameter="_RgV_8NfMEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wu_kwvHOEeqH57inONzpcw" base_NamedElement="_YvdSANfMEd-US7ahB6BdmA" base_Parameter="_YvdSANfMEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wvAL0PHOEeqH57inONzpcw" base_NamedElement="_p7fb0NeuEd-US7ahB6BdmA" base_Parameter="_p7fb0NeuEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wvAL0fHOEeqH57inONzpcw" base_NamedElement="_szPsENeuEd-US7ahB6BdmA" base_Parameter="_szPsENeuEd-US7ahB6BdmA"/>
+  <dds4ccm:CXParameter xmi:id="_wvAL0vHOEeqH57inONzpcw" base_NamedElement="_gHlxsKMZEeSPraLR_YyGzw" base_Parameter="_gHlxsKMZEeSPraLR_YyGzw"/>
+</xmi:XMI>

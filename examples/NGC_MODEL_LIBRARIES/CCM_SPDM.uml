@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1 pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ">
+  <uml:Model xmi:id="_jkiX8J4JEd6xhoJKj1dweA" name="CCM_SPDM">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tHVFwECXEeKpbI7yn6AS1w" source="cx.migration">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tHVFwUCXEeKpbI7yn6AS1w" key="version" value="2.0.1"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tHVFwkCXEeKpbI7yn6AS1w" key="date" value="1599567960334"/>
+    </eAnnotations>
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_arC1APgnEeqGr-hDsQEScQ" source="zcx">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_arEqMPgnEeqGr-hDsQEScQ" key="pathmap" value="SPDM_CONNECTORS_LIBRARY"/>
+    </eAnnotations>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_Fg29cLNIEd66L-pSY5VQBg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_DO-O0EDsEd-pwPnT_VsB_g"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_O3GnwO7AEd-aHKa41UzFoQ">
+      <importedPackage xmi:type="uml:Model" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_jkiX8J4JEd6xhoJKj1dweA"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_BCeu8FbREeOvGvp52SlPdw" name="ports">
+      <packagedElement xmi:type="uml:Package" xmi:id="_CIxBkFbREeOvGvp52SlPdw" name="SPDM">
+        <packagedElement xmi:type="uml:Package" xmi:id="_i7OLAFbREeOvGvp52SlPdw" name="CCM_SPDM">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_bFQKgFdkEeOvGvp52SlPdw" annotatedElement="_i7OLAFbREeOvGvp52SlPdw">
+            <body>&lt;p>This module defines the SPDM_Header and support types used by the CCM_SPDM DDS4CCM connector type.&lt;/p></body>
+          </ownedComment>
+          <packagedElement xmi:type="uml:Package" xmi:id="_EWgE4O7CEd-aHKa41UzFoQ" name="Typed">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_C8DYMLUiEeOGGdzzRhBYAQ" annotatedElement="_EWgE4O7CEd-aHKa41UzFoQ">
+              <body>&lt;p>Template module instantiation&lt;/p></body>
+            </ownedComment>
+            <ownedTemplateSignature xmi:type="uml:TemplateSignature" xmi:id="_IMffAO7CEd-aHKa41UzFoQ" parameter="_IMffAu7CEd-aHKa41UzFoQ _KOkEcO7CEd-aHKa41UzFoQ">
+              <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_IMffAu7CEd-aHKa41UzFoQ" parameteredElement="_IMffBO7CEd-aHKa41UzFoQ">
+                <ownedParameteredElement xmi:type="uml:Class" xmi:id="_IMffBO7CEd-aHKa41UzFoQ" name="T" templateParameter="_IMffAu7CEd-aHKa41UzFoQ"/>
+              </ownedParameter>
+              <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_KOkEcO7CEd-aHKa41UzFoQ" parameteredElement="_KOkEcu7CEd-aHKa41UzFoQ">
+                <ownedParameteredElement xmi:type="uml:DataType" xmi:id="_KOkEcu7CEd-aHKa41UzFoQ" name="TSeq" templateParameter="_KOkEcO7CEd-aHKa41UzFoQ">
+                  <ownedAttribute xmi:type="uml:Property" xmi:id="_KOkEdO7CEd-aHKa41UzFoQ" name="members" type="_IMffBO7CEd-aHKa41UzFoQ"/>
+                </ownedParameteredElement>
+              </ownedParameter>
+            </ownedTemplateSignature>
+            <packagedElement xmi:type="uml:Component" xmi:id="_bAphkO7CEd-aHKa41UzFoQ" name="SPDM_Event">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_S32yQNgjEeKsNaFGS5fTPQ" annotatedElement="_bAphkO7CEd-aHKa41UzFoQ">
+                <body>&lt;p>@cond DOXYGEN_UNDERSTANDS_IDL3_PLUS&lt;/p></body>
+              </ownedComment>
+              <generalization xmi:type="uml:Generalization" xmi:id="_IrSJAEm1EeCCyb1DaQvR3Q" general="_r-75UUm0EeCCyb1DaQvR3Q"/>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_85dPEO7CEd-aHKa41UzFoQ" name="descriptor_default" visibility="public" type="_e3Tq4M1vEeKXmKr5CsvrhQ">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_Fdn-cM1yEeKXmKr5CsvrhQ" annotatedElement="_85dPEO7CEd-aHKa41UzFoQ">
+                  <body>&lt;p>Attribute used to define a default BlockView_Descriptor struct type used to initialize each newly created SPDM sample buffer and attachment for the connector.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Package" xmi:id="_r8HO0Em0EeCCyb1DaQvR3Q" name="PSAT_Base">
+              <templateBinding xmi:type="uml:TemplateBinding" xmi:id="_r8HO0km0EeCCyb1DaQvR3Q">
+                <parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="_r8HO1Em0EeCCyb1DaQvR3Q" actual="_IMffBO7CEd-aHKa41UzFoQ">
+                  <formal xmi:type="uml:ClassifierTemplateParameter" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYNeuEd-US7ahB6BdmA"/>
+                </parameterSubstitution>
+                <parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="_r8HO1km0EeCCyb1DaQvR3Q" actual="_KOkEcu7CEd-aHKa41UzFoQ">
+                  <formal xmi:type="uml:ClassifierTemplateParameter" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#__Z_kwNeuEd-US7ahB6BdmA"/>
+                </parameterSubstitution>
+                <signature xmi:type="uml:TemplateSignature" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8jwXcNeuEd-US7ahB6BdmA"/>
+              </templateBinding>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_r8HO2Em0EeCCyb1DaQvR3Q" name="PSAT_Attachment_Control">
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r8QYwEm0EeCCyb1DaQvR3Q" name="release_buffer">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r8QYwkm0EeCCyb1DaQvR3Q" name="datum">
+                    <type xmi:type="uml:Class" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_j6blMGTXEd-fwvmMvf-phA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r8QYxEm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                  <raisedException xmi:type="uml:DataType" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_-HrQANeoEd-US7ahB6BdmA"/>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r8QYxUm0EeCCyb1DaQvR3Q" name="flush">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r8aJwEm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                  <raisedException xmi:type="uml:DataType" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_MrXYYNeoEd-US7ahB6BdmA"/>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r8aJwUm0EeCCyb1DaQvR3Q" name="is_udm_psat_header_valid">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r8aJw0m0EeCCyb1DaQvR3Q" name="datum">
+                    <type xmi:type="uml:Class" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYteuEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r8j6wEm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r8j6wUm0EeCCyb1DaQvR3Q" name="get_interface_count">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r8j6w0m0EeCCyb1DaQvR3Q" name="interface_class">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r8j6xUm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_r8tEsEm0EeCCyb1DaQvR3Q" name="PSAT_Writer">
+                <generalization xmi:type="uml:Generalization" xmi:id="_MrlYQJGNEeKRmLlSmDiKwA" general="_r8HO2Em0EeCCyb1DaQvR3Q"/>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r8tEskm0EeCCyb1DaQvR3Q" name="create_data">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r8tEtEm0EeCCyb1DaQvR3Q" name="datum" direction="inout">
+                    <type xmi:type="uml:Class" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYteuEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r821sEm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                  <raisedException xmi:type="uml:DataType" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_XRS4sGROEd-Wc9hRqhM12g"/>
+                  <raisedException xmi:type="uml:DataType" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_sAdL8NeoEd-US7ahB6BdmA"/>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r821sUm0EeCCyb1DaQvR3Q" name="create_data_override">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r821s0m0EeCCyb1DaQvR3Q" name="datum" direction="inout">
+                    <type xmi:type="uml:Class" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYteuEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r821tUm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                  <raisedException xmi:type="uml:DataType" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_XRS4sGROEd-Wc9hRqhM12g"/>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r8__oEm0EeCCyb1DaQvR3Q" name="create_data_w_existing">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r8__okm0EeCCyb1DaQvR3Q" name="existing_datum">
+                    <type xmi:type="uml:Class" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYteuEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r8__pEm0EeCCyb1DaQvR3Q" name="datum" direction="inout">
+                    <type xmi:type="uml:Class" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYteuEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r9JwoEm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                  <raisedException xmi:type="uml:DataType" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_XRS4sGROEd-Wc9hRqhM12g"/>
+                  <raisedException xmi:type="uml:DataType" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_-HrQANeoEd-US7ahB6BdmA"/>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r9JwoUm0EeCCyb1DaQvR3Q" name="notify_when_buffer_is_free">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r9Jwo0m0EeCCyb1DaQvR3Q" name="timeoutUsec">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r9JwpUm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r9ThoEm0EeCCyb1DaQvR3Q" name="cancel_buffer_is_free_notify">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r9Thokm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r9Tho0m0EeCCyb1DaQvR3Q" name="write_one">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r9ThpUm0EeCCyb1DaQvR3Q" name="datum">
+                    <type xmi:type="uml:Class" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYteuEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r9crkEm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                  <raisedException xmi:type="uml:DataType" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_XRS4sGROEd-Wc9hRqhM12g"/>
+                  <raisedException xmi:type="uml:DataType" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_-HrQANeoEd-US7ahB6BdmA"/>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_r9crkUm0EeCCyb1DaQvR3Q" name="PSAT_Listener">
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r9crk0m0EeCCyb1DaQvR3Q" name="on_one_data">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r9mckEm0EeCCyb1DaQvR3Q" name="datum">
+                    <type xmi:type="uml:Class" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYteuEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r9mckkm0EeCCyb1DaQvR3Q" name="read_info">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_7vsaUGRMEd-Wc9hRqhM12g"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r9mclEm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r9mclUm0EeCCyb1DaQvR3Q" name="on_metadata_intercept">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r9wNkEm0EeCCyb1DaQvR3Q" name="datum" direction="inout">
+                    <type xmi:type="uml:Class" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYteuEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r9wNkkm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_iONCQKfiEeSm39gXI0jJ9A" name="on_create_data_intercept">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_iOOQYKfiEeSm39gXI0jJ9A" name="is_reader_create_data_successful">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_iQkZwKfiEeSm39gXI0jJ9A" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Interface" xmi:id="_r9wNk0m0EeCCyb1DaQvR3Q" name="PSAT_Reader_Status_Listener">
+                <generalization xmi:type="uml:Generalization" xmi:id="_MrzasJGNEeKRmLlSmDiKwA">
+                  <general xmi:type="uml:Interface" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_h0qncGRnEd-Wc9hRqhM12g"/>
+                </generalization>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r95XgEm0EeCCyb1DaQvR3Q" name="on_copy_unsupported">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r95Xgkm0EeCCyb1DaQvR3Q" name="datum">
+                    <type xmi:type="uml:Class" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYteuEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r95XhEm0EeCCyb1DaQvR3Q" name="info">
+                    <type xmi:type="uml:DataType" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_d2uGkNenEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r95Xhkm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r-DIgEm0EeCCyb1DaQvR3Q" name="on_buffer_invalidation">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r-DIgkm0EeCCyb1DaQvR3Q" name="datum">
+                    <type xmi:type="uml:Class" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYteuEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r-DIhEm0EeCCyb1DaQvR3Q" name="info">
+                    <type xmi:type="uml:DataType" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_d2uGkNenEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r-MScEm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r-MScUm0EeCCyb1DaQvR3Q" name="on_incomplete_transfer">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r-MSc0m0EeCCyb1DaQvR3Q" name="datum">
+                    <type xmi:type="uml:Class" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYteuEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r-MSdUm0EeCCyb1DaQvR3Q" name="info">
+                    <type xmi:type="uml:DataType" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_d2uGkNenEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r-WDcEm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                </ownedOperation>
+                <ownedOperation xmi:type="uml:Operation" xmi:id="_r-WDcUm0EeCCyb1DaQvR3Q" name="on_invalid_udm_psat_header">
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r-WDc0m0EeCCyb1DaQvR3Q" name="datum">
+                    <type xmi:type="uml:Class" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_8j5hYteuEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r-WDdUm0EeCCyb1DaQvR3Q" name="info">
+                    <type xmi:type="uml:DataType" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_d2uGkNenEd-US7ahB6BdmA"/>
+                  </ownedParameter>
+                  <ownedParameter xmi:type="uml:Parameter" xmi:id="_r-f0cEm0EeCCyb1DaQvR3Q" name="Parameter1" direction="return">
+                    <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+                  </ownedParameter>
+                </ownedOperation>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_r-f0cUm0EeCCyb1DaQvR3Q" name="PSAT_Write">
+                <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_u6uV4LBVEeO_PrBvUQLzWQ" name="status" client="_r-f0cUm0EeCCyb1DaQvR3Q">
+                  <supplier xmi:type="uml:Interface" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_mgbDINeuEd-US7ahB6BdmA"/>
+                  <contract xmi:type="uml:Interface" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_mgbDINeuEd-US7ahB6BdmA"/>
+                </interfaceRealization>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Class" xmi:id="_r-o-YEm0EeCCyb1DaQvR3Q" name="PSAT_Listen">
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_r-o-Ykm0EeCCyb1DaQvR3Q" name="filter">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_w_ULgGRNEd-Wc9hRqhM12g"/>
+                </ownedAttribute>
+                <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_r-yvYEm0EeCCyb1DaQvR3Q" name="status" client="_r-o-YEm0EeCCyb1DaQvR3Q" supplier="_r9wNk0m0EeCCyb1DaQvR3Q" contract="_r9wNk0m0EeCCyb1DaQvR3Q"/>
+                <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_a2HCwPQvEemDhNSmX_9RrQ" name="data_listener" client="_r-o-YEm0EeCCyb1DaQvR3Q" supplier="_r9crkUm0EeCCyb1DaQvR3Q" contract="_r9crkUm0EeCCyb1DaQvR3Q"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Component" xmi:id="_r-75UUm0EeCCyb1DaQvR3Q" name="PSAT_Event">
+                <generalization xmi:type="uml:Generalization" xmi:id="_sAR9IEm0EeCCyb1DaQvR3Q">
+                  <general xmi:type="uml:Component" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_ATJJ0GRtEd-fwvmMvf-phA"/>
+                </generalization>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_r-75U0m0EeCCyb1DaQvR3Q" name="max_sample_size">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_r_FqUEm0EeCCyb1DaQvR3Q" name="psat_config">
+                  <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Port" xmi:id="_r_FqU0m0EeCCyb1DaQvR3Q" name="supplier" type="_r-f0cUm0EeCCyb1DaQvR3Q">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r_PbUUm0EeCCyb1DaQvR3Q" value="1"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r_PbUEm0EeCCyb1DaQvR3Q" value="1"/>
+                </ownedAttribute>
+                <ownedAttribute xmi:type="uml:Port" xmi:id="_a2TQAPQvEemDhNSmX_9RrQ" name="push_consumer" type="_r-o-YEm0EeCCyb1DaQvR3Q">
+                  <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_a2VsQPQvEemDhNSmX_9RrQ" value="1"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_a2VFMPQvEemDhNSmX_9RrQ" value="1"/>
+                </ownedAttribute>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Usage" xmi:id="_r_YlQkm0EeCCyb1DaQvR3Q" name="dds_entity" client="_r-o-YEm0EeCCyb1DaQvR3Q">
+                <supplier xmi:type="uml:Interface" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_5XLPgGRnEd-Wc9hRqhM12g"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Usage" xmi:id="_r_iWQEm0EeCCyb1DaQvR3Q" name="attachment_control" client="_r-o-YEm0EeCCyb1DaQvR3Q" supplier="_r8HO2Em0EeCCyb1DaQvR3Q"/>
+              <packagedElement xmi:type="uml:Usage" xmi:id="_r_iWQUm0EeCCyb1DaQvR3Q" name="filter_config" client="_r-o-YEm0EeCCyb1DaQvR3Q">
+                <supplier xmi:type="uml:Interface" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_a646YMWaEd-HtdN8eeeRTA"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Usage" xmi:id="_r_sHQUm0EeCCyb1DaQvR3Q" name="dds_entity" client="_r-f0cUm0EeCCyb1DaQvR3Q">
+                <supplier xmi:type="uml:Interface" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_l00YQGRpEd-Wc9hRqhM12g"/>
+              </packagedElement>
+              <packagedElement xmi:type="uml:Usage" xmi:id="_r_sHQkm0EeCCyb1DaQvR3Q" name="data" client="_r-f0cUm0EeCCyb1DaQvR3Q" supplier="_r8tEsEm0EeCCyb1DaQvR3Q"/>
+              <packagedElement xmi:type="uml:Usage" xmi:id="_u88jcLBVEeO_PrBvUQLzWQ" name="listener_control" client="_r-o-YEm0EeCCyb1DaQvR3Q">
+                <supplier xmi:type="uml:Interface" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_c5-GQNeuEd-US7ahB6BdmA"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:DataType" xmi:id="_0QXHwO7BEd-aHKa41UzFoQ" name="Basic_UDM_msg">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_r0Eg0NUFEeKsNaFGS5fTPQ" annotatedElement="_0QXHwO7BEd-aHKa41UzFoQ">
+              <body>&lt;p>Basic @ref UDM IDL structure to use if the user does not want to add any additional information to the UDM.&lt;/p>&lt;p>@note&lt;/p>&lt;p>If a user wishes to create a custom @ref UDM with additional fields, they should create a new IDL structure containing a field named @b spdm_hdr that is of type SPDM_Header and @b psat_hdr that is of type PSAT_Header. All UDM structures @b must be defined in a non-templated module and cannot have any dependencies on templated modules (e.g., have a member which is of a type defined in a templated module).&lt;/p>&lt;p>@par&lt;/p>&lt;p>For example, to create a custom @ref UDM that has a long and a double as additional information, the IDL would be:&lt;/p>&lt;p>@code&lt;/p>&lt;p>struct My_UDM // name it whatever you want&lt;/p>&lt;p>{&lt;/p>&lt;p>   ::CCM_SPDM::SPDM_Header spdm_hdr; // required field&lt;/p>&lt;p>   ::CCM_PSAT::PSAT_Header psat_hdr; // required field&lt;/p>&lt;p>   long my_long_field; // whatever you want&lt;/p>&lt;p>   double my_double_field;&lt;/p>&lt;p>};&lt;/p>&lt;p>@endcode&lt;/p></body>
+            </ownedComment>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_2w05YO7BEd-aHKa41UzFoQ" name="psat_hdr" visibility="public">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_vNIHUNUFEeKsNaFGS5fTPQ" annotatedElement="_2w05YO7BEd-aHKa41UzFoQ">
+                <body>&lt;p>@ref UDM required header. All @ref UDM types must have a field of this name and type.&lt;/p></body>
+              </ownedComment>
+              <type xmi:type="uml:DataType" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_udK0ENeqEd-US7ahB6BdmA"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_7hhoQO7BEd-aHKa41UzFoQ" name="spdm_hdr" visibility="public" type="_g1wwQO7BEd-aHKa41UzFoQ">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_wjk84NUFEeKsNaFGS5fTPQ" annotatedElement="_7hhoQO7BEd-aHKa41UzFoQ">
+                <body>&lt;p>@ref UDM required header. All @ref UDM types must have a field of this name and type.&lt;/p></body>
+              </ownedComment>
+            </ownedAttribute>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_WZsPcO7AEd-aHKa41UzFoQ" name="header_defn">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qZ74cGhsEeGuv7rRDvQHuQ" source="zcx">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qZ8fgGhsEeGuv7rRDvQHuQ" key="generatedir" value="false"/>
+            </eAnnotations>
+            <packagedElement xmi:type="uml:Enumeration" xmi:id="_XUhqkO7BEd-aHKa41UzFoQ" name="Connector_Operation">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_KS0dsM1wEeKXmKr5CsvrhQ" annotatedElement="_XUhqkO7BEd-aHKa41UzFoQ">
+                <body>&lt;p>This enumeration defines the possible connector operations.&lt;/p></body>
+              </ownedComment>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__OPWMPWfEeC72vbrR386Ug" name="PASSTHRU_VIEW_DATA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_OMh6MM1wEeKXmKr5CsvrhQ" annotatedElement="__OPWMPWfEeC72vbrR386Ug">
+                  <body>&lt;p>Indicates a normal &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; + full &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt; publication of signal or image processing data defined by the SPDM data model. &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; parameters are don't care for a full view specified by PASSTHRU_VIEW_DATA.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__OP9QPWfEeC72vbrR386Ug" name="SCATTER_SUBVIEW_DATA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_V9eG8M1wEeKXmKr5CsvrhQ" annotatedElement="__OP9QPWfEeC72vbrR386Ug">
+                  <body>&lt;p>Indicates *initial* publication of a &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; from a parent &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt;. All &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt;, &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt; and &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; descriptor fields must be specified when publishing SCATTER_SUBVIEW_DATA.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_KpJrAM7ZEeKzG-1guXYv1w" name="PASSTHRU_SUBVIEW_DATA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_v6L4kM7ZEeKzG-1guXYv1w" annotatedElement="_KpJrAM7ZEeKzG-1guXYv1w">
+                  <body>&lt;p>Indicates pass through publication of a processed and transformed &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; to a downstream subscriber that will operate on the same &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; again, without affecting the definition of the original parent &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt; information to be &quot;passed through&quot; and used farther downstream when the Sub-Views are potentially recombined. All &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt;, &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt; and &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; descriptor fields must be specified when publishing PASSTHRU_SUBVIEW_DATA.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__OP9QfWfEeC72vbrR386Ug" name="GATHER_SUBVIEW_DATA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_yVwLIM1wEeKXmKr5CsvrhQ" annotatedElement="__OP9QfWfEeC72vbrR386Ug">
+                  <body>&lt;p>Indicates publication of a processed and transformed &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; that should be reinserted by a receiving subscriber back into the memory layout defined by its parent &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt;. Used to combine processed sub-blocks of data back into an original larger source &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt;, for parallel processing and scatter-gather type operations. All &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt;, &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt; and &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; descriptor fields must be specified when publishing GATHER_SUBVIEW_DATA.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_g1wwQO7BEd-aHKa41UzFoQ" name="SPDM_Header">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_Tyhc4M1xEeKXmKr5CsvrhQ" annotatedElement="_g1wwQO7BEd-aHKa41UzFoQ">
+                <body>&lt;p>This structure defines the &amp;lt;i&amp;gt;meta data&amp;lt;/i&amp;gt; that must be provided within each SPDM UDM message. The field name of this header structure in the SPDM UDM message must be &amp;lt;tt&amp;gt;spdm_hdr&amp;lt;/tt&amp;gt;.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_ooxTAM1xEeKXmKr5CsvrhQ" name="descriptor" visibility="public" type="_e3Tq4M1vEeKXmKr5CsvrhQ">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_vMMjwM1xEeKXmKr5CsvrhQ" annotatedElement="_ooxTAM1xEeKXmKr5CsvrhQ">
+                  <body>&lt;p>This field contains a &amp;lt;i&amp;gt;descriptor&amp;lt;/i&amp;gt;, the &amp;lt;i&amp;gt;meta data&amp;lt;/i&amp;gt; that describes the &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt;, and &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt; or &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; to be transported by the SPDM connector.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_n_6p0O7BEd-aHKa41UzFoQ" name="operation" visibility="public" type="_XUhqkO7BEd-aHKa41UzFoQ">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_tbNOMM3oEeKS8-YwlgRiXg" annotatedElement="_n_6p0O7BEd-aHKa41UzFoQ">
+                  <body>&lt;p>Type/role of the SPDM data &amp;lt;i&amp;gt;descriptor&amp;lt;/i&amp;gt; being published - set to either &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt;, &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt;, pass through &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt;, or inverse &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt;.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_UGELUM1uEeKXmKr5CsvrhQ" name="number_of_sub_samples" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_lk9rIM1uEeKXmKr5CsvrhQ" annotatedElement="_UGELUM1uEeKXmKr5CsvrhQ">
+                  <body>&lt;p>This value is only used for scatter/gather operations. It specifies how many &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; samples are aggregated into a parent &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt;, i.e., how many pieces a &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt; will be broken up into to support a parallel scatter-gather approach to &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; processing. It should be set by the original &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; publisher doing the &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt; scatter operation, passed through to a later value-added gather &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; publisher, and then used by an gather &amp;lt;i&amp;gt;Sub-View&amp;lt;/i&amp;gt; subscriber to know how many &amp;lt;i&amp;gt;Sub-Views&amp;lt;/i&amp;gt; to aggregate back into a View for the gather operation before calling on_one_data() for the subscribing component.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_0NncoM7ZEeKzG-1guXYv1w" name="sample_buffer_ID" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="__aGjMM7ZEeKzG-1guXYv1w" annotatedElement="_0NncoM7ZEeKzG-1guXYv1w">
+                  <body>&lt;p>This field contains the ID of the sample buffer used to correlate SPDM &amp;lt;i&amp;gt;descriptor&amp;lt;/i&amp;gt; information with a parent PSAT buffer.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_Ryl0IM4vEeKS8-YwlgRiXg" name="publisher_Role" visibility="private" type="_XUhqkO7BEd-aHKa41UzFoQ" association="_Ryj-8M4vEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RyoQYM4vEeKS8-YwlgRiXg"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ryo3cM4vEeKS8-YwlgRiXg" value="1"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_TLkZQM4vEeKS8-YwlgRiXg" name="blockSubView_Descriptor" visibility="private" type="_e3Tq4M1vEeKXmKr5CsvrhQ" association="_TLh9AM4vEeKS8-YwlgRiXg">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_ljXIIFdkEeOvGvp52SlPdw" annotatedElement="_TLkZQM4vEeKS8-YwlgRiXg">
+                  <body>&lt;p>&lt;/p></body>
+                </ownedComment>
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TLm1gM4vEeKS8-YwlgRiXg"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TLnckM4vEeKS8-YwlgRiXg" value="1"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_Ryj-8M4vEeKS8-YwlgRiXg" memberEnd="_Ryl0IM4vEeKS8-YwlgRiXg _RyqsoM4vEeKS8-YwlgRiXg">
+              <ownedEnd xmi:type="uml:Property" xmi:id="_RyqsoM4vEeKS8-YwlgRiXg" name="" visibility="private" type="_g1wwQO7BEd-aHKa41UzFoQ" association="_Ryj-8M4vEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Rysh0M4vEeKS8-YwlgRiXg"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RytI4M4vEeKS8-YwlgRiXg" value="*"/>
+              </ownedEnd>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_TLh9AM4vEeKS8-YwlgRiXg" memberEnd="_TLkZQM4vEeKS8-YwlgRiXg _TLpRwM4vEeKS8-YwlgRiXg">
+              <ownedEnd xmi:type="uml:Property" xmi:id="_TLpRwM4vEeKS8-YwlgRiXg" name="" visibility="private" type="_g1wwQO7BEd-aHKa41UzFoQ" association="_TLh9AM4vEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TLruAM4vEeKS8-YwlgRiXg"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TLs8IM4vEeKS8-YwlgRiXg" value="*"/>
+              </ownedEnd>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Dependency" xmi:id="_LzTv0Fd3EeOvGvp52SlPdw" name="IDLFileDependency" client="_i7OLAFbREeOvGvp52SlPdw" supplier="_yFYI4CiTEeCoVKLMj82MLQ"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_MM3vgBmIEemDZvMdb5RUKA" name="ccm_spdm"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Package" xmi:id="_S6jtcMydEeKBL4fu_ShUvw" name="SPDM">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_qOQkwM1eEeKXmKr5CsvrhQ" annotatedElement="_S6jtcMydEeKBL4fu_ShUvw">
+            <body>&lt;p>This module defines general purpose IDL data types for specifying and handling Blocks, Views, Sub-Views and miscellaneous elements for a generic signal processing data model (SPDM). SPDM is independent of any particular open standard for math, or any particular vendor's math libraries. However, it has been roughly and collectively based upon the OMG VSIPL and VSIPL++ open standards in terms of concepts and terminology, which should in turn make it fairly straightforward to translate it to/from vendor implementations of either standard, similar alternative or vendor/platform specific standards, or even full custom math library implementations.&lt;/p>&lt;p>&lt;/p>&lt;p>This data model targets four use cases:&lt;/p>&lt;p>&amp;lt;ol&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;li&amp;gt;Wideband data transport via the CCM_SPDM DDS4CCM connector;&amp;lt;/li&amp;gt;&lt;/p>&lt;p>   &amp;lt;li&amp;gt;Parameter definition on the interface between SPOC and MKC components according to the SNA SPOC/ MKC design pattern;&amp;lt;/li&amp;gt;&lt;/p>&lt;p>   &amp;lt;li&amp;gt;Utility library implementation, as with the SNA Math Libraries API; and&amp;lt;/li&amp;gt;&lt;/p>&lt;p>   &amp;lt;li&amp;gt;Math object construction via open-standard or vendor-specific math library APIs.&amp;lt;/li&amp;gt;&lt;/p>&lt;p>&lt;br>&amp;lt;/ol&amp;gt;&lt;br>&lt;/p>&lt;p>The following terminology is used throughout the SPDM definition in this module and is not otherwise defined below. Where used, these terms will be identified by an &amp;lt;i&amp;gt;italic&amp;lt;/i&amp;gt; font.&lt;br>&lt;/p>&lt;p>&amp;lt;dl&amp;gt;&lt;/p>&lt;p>&lt;br>   &amp;lt;dt&amp;gt;Element&amp;lt;/dt&amp;gt;&lt;/p>&lt;p>&lt;br>      &amp;lt;dd&amp;gt;The smallest complete unit of data contained in a &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt;&amp;lt;/dd&amp;gt;&lt;/p>&lt;p>&lt;br>   &amp;lt;dt&amp;gt;Meta data&amp;lt;/dt&amp;gt;&lt;/p>&lt;p>      &amp;lt;dd&amp;gt;A structure of fields whose values describe a an abstract construct&amp;lt;/dd&amp;gt;&lt;/p>&lt;p>&lt;br>   &amp;lt;dt&amp;gt;Sub-View&amp;lt;/dt&amp;gt;&lt;/p>&lt;p>&lt;br>      &amp;lt;dd&amp;gt;&amp;lt;/dd&amp;gt;&lt;/p>&lt;p>   &amp;lt;dt&amp;gt;Value&amp;lt;/dt&amp;gt;&lt;/p>&lt;p>&lt;br>      &amp;lt;dd&amp;gt;The quantity, be it numeric or otherwise, stored at a location in memory and described by a &amp;lt;i&amp;gt;value type&amp;lt;/i&amp;gt;.&amp;lt;/dd&amp;gt;&lt;/p>&lt;p>&lt;br>   &amp;lt;dt&amp;gt;Value type&amp;lt;/dt&amp;gt;&lt;/p>&lt;p>&lt;br>      &amp;lt;dd&amp;gt;A data type that wholly, or in combination with other &amp;lt;i&amp;gt;value types&amp;lt;/i&amp;gt;, defines an &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt;.&amp;lt;/dd&amp;gt;&lt;/p>&lt;p>&lt;br>&amp;lt;/dl&amp;gt;&lt;/p></body>
+          </ownedComment>
+          <packagedElement xmi:type="uml:Package" xmi:id="_caPcoO7AEd-aHKa41UzFoQ" name="Data_Model_defn">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_rA2ugGhsEeGuv7rRDvQHuQ" source="zcx">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_rA2ugWhsEeGuv7rRDvQHuQ" key="generatedir" value="false"/>
+            </eAnnotations>
+            <packagedElement xmi:type="uml:Enumeration" xmi:id="_fl8L4C09EeOnz8rx646cHw" name="DescriptorType">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_EBb4kC0-EeOnz8rx646cHw" annotatedElement="_fl8L4C09EeOnz8rx646cHw">
+                <body>&lt;p>Enumeration type which is used to indicate which fields should be used for operations from the BlockSubView_Descriptor.&lt;/p></body>
+              </ownedComment>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_uIw8IC09EeOnz8rx646cHw" name="SPDM_VIEW">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_4P9ZIC0-EeOnz8rx646cHw" annotatedElement="_uIw8IC09EeOnz8rx646cHw">
+                  <body>&lt;p>See DescriptorType definition.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_u-fqQC09EeOnz8rx646cHw" name="SPDM_SUBVIEW">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_38cAMC0-EeOnz8rx646cHw" annotatedElement="_u-fqQC09EeOnz8rx646cHw">
+                  <body>&lt;p>See DescriptorType definition.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_jzLAAPQREemoh4MsjC7SUA" name="DataPointer">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_Pru7MPQSEemoh4MsjC7SUA" annotatedElement="_jzLAAPQREemoh4MsjC7SUA">
+                <body>&lt;p>This typedef defines a contiguous block of binary data (also referred to as a BLOB) that can be passed via an IDL defined interface. It should be used as a correctly sized placeholder for passing data buffer pointers/references to a specific memory location, for instance to define the beginning of a &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt;, or the beginning of a Block sub-element defined by a &amp;lt;i&amp;gt;View&amp;lt;/i&amp;gt;. This is the IDL equivalent of a generic pointer type like a void*, which IDL does not natively support for language-agnostic reasons. In actual use at the code level, this pointer should be cast to the appropriate Block defined type it references.&lt;/p></body>
+              </ownedComment>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_8odmYMoVEeKD8dTv59mbxA" name="Constants">
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_-XhJMMoVEeKD8dTv59mbxA" name="MAX_DIMENSIONS" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_c9B58MoWEeKD8dTv59mbxA" annotatedElement="_-XhJMMoVEeKD8dTv59mbxA">
+                  <body>&lt;p>This constant defines the maximum number of dimensions supported for SP data model &amp;lt;i&amp;gt;Views&amp;lt;/i&amp;gt; and &amp;lt;i&amp;gt;Sub-Views&amp;lt;/i&amp;gt;.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_FpjWgExREd2INdt7Ch5VKg"/>
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_CT9woMoWEeKD8dTv59mbxA" value="3"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_tns0kMyUEeKBL4fu_ShUvw" name="SPDM_Exception">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_NhU2EM3pEeKS8-YwlgRiXg" annotatedElement="_tns0kMyUEeKBL4fu_ShUvw">
+                <body>&lt;p>Basic exception type for optional use with SPDM types and operations. This exception is *not* thrown by the connector but can be thrown by the operations defined in the MKC interface.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_vW0o0MyUEeKBL4fu_ShUvw" name="what" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_3EOZYMyUEeKBL4fu_ShUvw" annotatedElement="_vW0o0MyUEeKBL4fu_ShUvw">
+                  <body>&lt;p>Text field containing a human readable description of an exception/error.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Enumeration" xmi:id="__ORLYPWfEeC72vbrR386Ug" name="Storage_Format">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_1NTekMyVEeKBL4fu_ShUvw" annotatedElement="__ORLYPWfEeC72vbrR386Ug">
+                <body>&lt;p>This enumeration defines the possible ways that the continugous fixed-size &amp;lt;i&amp;gt;elements&amp;lt;/i&amp;gt; in a &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; can be organized.&lt;/p></body>
+              </ownedComment>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__OSZgPWfEeC72vbrR386Ug" name="REAL">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_y9ulcMyREeKBL4fu_ShUvw" annotatedElement="__OSZgPWfEeC72vbrR386Ug">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; contains a contiguous array of &amp;lt;i&amp;gt;values&amp;lt;/i&amp;gt; of the same &amp;lt;i&amp;gt;value type&amp;lt;/i&amp;gt;, where each &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; represents a single &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt;.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__OTAkPWfEeC72vbrR386Ug" name="COMPLEX_SPLIT">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_AjMVkMySEeKBL4fu_ShUvw" annotatedElement="__OTAkPWfEeC72vbrR386Ug">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; contains two distinct contiguous arrays of &amp;lt;i&amp;gt;values&amp;lt;/i&amp;gt; of the same &amp;lt;i&amp;gt;value type&amp;lt;/i&amp;gt;, where the &amp;lt;i&amp;gt;values&amp;lt;/i&amp;gt; in the first array represent the real part of a complex number, and corresponding &amp;lt;i&amp;gt;values&amp;lt;/i&amp;gt; in the second array represent the imaginary part. The corresponding &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; &amp;lt;i&amp;gt;meta data&amp;lt;/i&amp;gt; has separate &amp;lt;i&amp;gt;BLOBS&amp;lt;/i&amp;gt; for the separate arrays. Each &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt; in the &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; is represented by the composition of the corresponding &amp;lt;i&amp;gt;values&amp;lt;/i&amp;gt; in each array. As such, each &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt; is twice the size of the &amp;lt;i&amp;gt;value type&amp;lt;/i&amp;gt; used to describe its respective parts.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="__OTAkfWfEeC72vbrR386Ug" name="COMPLEX_INTERLEAVED">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_ElvlAMySEeKBL4fu_ShUvw" annotatedElement="__OTAkfWfEeC72vbrR386Ug">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; contains a  contiguous array of pairs of &amp;lt;i&amp;gt;values&amp;lt;/i&amp;gt; of the same &amp;lt;i&amp;gt;value type&amp;lt;/i&amp;gt;, where the first &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; in each pair represents the real part of a complex number, and the second &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; represents the imaginary part. Each &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt; in the &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; is represented by the composition of the two &amp;lt;i&amp;gt;values&amp;lt;/i&amp;gt; in the corresponding pair. As such, each &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt; is twice the size of the &amp;lt;i&amp;gt;value type&amp;lt;/i&amp;gt; used to describe its respective parts.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_wWY6UMySEeKBL4fu_ShUvw" name="USER_DEFINED_1">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_C0oXQMyTEeKBL4fu_ShUvw" annotatedElement="_wWY6UMySEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; contains a contiguous array of &amp;lt;i&amp;gt;elements&amp;lt;/i&amp;gt;, where each &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt; is a user-defined &amp;lt;i&amp;gt;value type&amp;lt;/i&amp;gt;. The size of each &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt; is determined by the size of the corresponding &amp;lt;i&amp;gt;value type&amp;lt;/i&amp;gt;. There may be multiple &quot;user-defined&quot; storage formats, and hence the numeric suffix on this literal uniquely identifies this particular format.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Enumeration" xmi:id="_i9xd8MyTEeKBL4fu_ShUvw" name="Basic_Scalar_Type">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_YNYWIMyWEeKBL4fu_ShUvw" annotatedElement="_i9xd8MyTEeKBL4fu_ShUvw">
+                <body>&lt;p>Primitive type used to define basic elements in the Storage_Format specified for a Block. For REAL format, the Basic_Scalar_Type fully defines the type and size of each Block element. For both COMPLEX_n formats, the Basic_Scalar_Type defines the scalar type of both the real and imaginary parts of the complex number. The size of a COMPLEX_n Block element is actual 2 x Basic_Scalar_Type size. For a POINT_CLOUD_n format the SPDM_STRUCT type should be used, to specify use of a multi-field struct element defined by the application. The element size of an SPDM_STRUCT type is defined by the element_size field within a Block.&lt;/p></body>
+              </ownedComment>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_-rh-cMyTEeKBL4fu_ShUvw" name="SPDM_BOOL">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_o1YQQNHSEeKJFrf7MylP4A" annotatedElement="_-rh-cMyTEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is a boolean.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_F6ITIMyUEeKBL4fu_ShUvw" name="SPDM_CHAR">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_pwEW4NHSEeKJFrf7MylP4A" annotatedElement="_F6ITIMyUEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is a char.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_QdZdkMyUEeKBL4fu_ShUvw" name="SPDM_INT8">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_xyzeQNHSEeKJFrf7MylP4A" annotatedElement="_QdZdkMyUEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is a signed eight-bit integer.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_Sj4B4MyUEeKBL4fu_ShUvw" name="SPDM_INT16">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_uSmG4NHSEeKJFrf7MylP4A" annotatedElement="_Sj4B4MyUEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is a signed 16-bit integer.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_UPZvkMyUEeKBL4fu_ShUvw" name="SPDM_INT32">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_v8NJANHSEeKJFrf7MylP4A" annotatedElement="_UPZvkMyUEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is a signed 32-bit integer.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_WRJk4MyUEeKBL4fu_ShUvw" name="SPDM_INT64">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_ww-N0NHSEeKJFrf7MylP4A" annotatedElement="_WRJk4MyUEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is a signed 64-bit integer.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_aKspUMyUEeKBL4fu_ShUvw" name="SPDM_UINT8">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_F37ZcNHTEeKJFrf7MylP4A" annotatedElement="_aKspUMyUEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is an unsigned eight-bit integer.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_blz8cMyUEeKBL4fu_ShUvw" name="SPDM_UINT16">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_BimX8NHTEeKJFrf7MylP4A" annotatedElement="_blz8cMyUEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is an unsigned 16-bit integer.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_cx6jMMyUEeKBL4fu_ShUvw" name="SPDM_UINT32">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_Cp9ooNHTEeKJFrf7MylP4A" annotatedElement="_cx6jMMyUEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is an unsigned 32-bit integer.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_eCQJsMyUEeKBL4fu_ShUvw" name="SPDM_UINT64">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_EBv68NHTEeKJFrf7MylP4A" annotatedElement="_eCQJsMyUEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is an unsigned 64-bit integer.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_LyOu8MyUEeKBL4fu_ShUvw" name="SPDM_FLOAT">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_rRfGUNHSEeKJFrf7MylP4A" annotatedElement="_LyOu8MyUEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is a float.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_H-QuEMyUEeKBL4fu_ShUvw" name="SPDM_DOUBLE">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_qfMGsNHSEeKJFrf7MylP4A" annotatedElement="_H-QuEMyUEeKBL4fu_ShUvw">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is a double.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_yEsHgM34EeKS8-YwlgRiXg" name="SPDM_LDOUBLE">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_2Y9KANHSEeKJFrf7MylP4A" annotatedElement="_yEsHgM34EeKS8-YwlgRiXg">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is an extended-precision floating-point number.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+              <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_ZnVBAM1ZEeK1K-Qf7emtfQ" name="SPDM_STRUCT">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_-vJ_8NHSEeKJFrf7MylP4A" annotatedElement="_ZnVBAM1ZEeK1K-Qf7emtfQ">
+                  <body>&lt;p>This enumeration literal indicates that the &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; is a user-defined composition of &amp;lt;i&amp;gt;value types&amp;lt;/i&amp;gt;.&lt;/p></body>
+                </ownedComment>
+              </ownedLiteral>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_UAUpUM1mEeKXmKr5CsvrhQ" name="Block">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_HGrn8M1nEeKXmKr5CsvrhQ" annotatedElement="_UAUpUM1mEeKXmKr5CsvrhQ">
+                <body>&lt;p>This structure defines the &amp;lt;i&amp;gt;meta data&amp;lt;/i&amp;gt; associated with a &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt;. A &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; is a logically contiguous area of memory that is used for &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt; storage and wholly described by one or more &amp;lt;i&amp;gt;BLOBS&amp;lt;/i&amp;gt;, which are the areas of memory used for storage, and this &amp;lt;i&amp;gt;meta data&amp;lt;/i&amp;gt; structure.&lt;br>&lt;/p>&lt;p>Five of the fields in the &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; &amp;lt;i&amp;gt;meta data&amp;lt;/i&amp;gt; are used to describe the size of the &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; in memory. The purpose of each field is described alongside the field definition below, but this list provides some additional insight into their use.&lt;/p>&lt;p>&amp;lt;ul&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;li&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;b&amp;gt;&amp;lt;tt&amp;gt;blockSize&amp;lt;/tt&amp;gt;&amp;lt;/b&amp;gt; takes into account any padding in the &amp;lt;i&amp;gt;Block's&amp;lt;/i&amp;gt; primary and secondary data arrays that cannot be computed from the other fields.&lt;br>&lt;/p>&lt;p>   &amp;lt;/li&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;li&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;b&amp;gt;&amp;lt;tt&amp;gt;storageFormat&amp;lt;/tt&amp;gt;&amp;lt;/b&amp;gt; indicates whether &amp;lt;i&amp;gt;elements&amp;lt;/i&amp;gt; within a &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; are contained within a single &amp;lt;i&amp;gt;BLOB&amp;lt;/i&amp;gt; or spread across more than one &amp;lt;i&amp;gt;BLOB&amp;lt;/i&amp;gt;. Additionally, the &amp;lt;tt&amp;gt;USER_DEFINED*&amp;lt;/tt&amp;gt; storage formats indicate that the &amp;lt;i&amp;gt;elements&amp;lt;/i&amp;gt; cannot be swapped by the connector.&lt;br>&lt;/p>&lt;p>   &amp;lt;/li&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;li&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;b&amp;gt;&amp;lt;tt&amp;gt;valueType&amp;lt;/tt&amp;gt;&amp;lt;/b&amp;gt;, in the case of the &amp;lt;tt&amp;gt;REAL&amp;lt;/tt&amp;gt; and &amp;lt;tt&amp;gt;USER_DEFINED*&amp;lt;/tt&amp;gt; storage formats, indicates the data type of each &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt; in the &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt;. In the case of the &amp;lt;tt&amp;gt;COMPLEX*&amp;lt;/tt&amp;gt; storage formats, it indicates the size of the real and imaginary parts separately, such that the &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt; size is twice that of the &amp;lt;i&amp;gt;value type&amp;lt;/i&amp;gt;.&lt;/p>&lt;p>   &amp;lt;/li&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;li&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;b&amp;gt;&amp;lt;tt&amp;gt;elementSize&amp;lt;/tt&amp;gt;&amp;lt;/b&amp;gt; contains the size of each fix-sized &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt;. In the case of the &amp;lt;tt&amp;gt;REAL&amp;lt;/tt&amp;gt; and &amp;lt;tt&amp;gt;USER_DEFINED*&amp;lt;/tt&amp;gt; storage formats, this is the same as the size of the &amp;lt;i&amp;gt;value type&amp;lt;/i&amp;gt;. In the case of the &amp;lt;tt&amp;gt;COMPLEX*&amp;lt;/tt&amp;gt; storage formats, this is twice the size of the &amp;lt;i&amp;gt;value type&amp;lt;/i&amp;gt;. This field is incredibly important for the &amp;lt;tt&amp;gt;USER_DEFINED&amp;lt;/tt&amp;gt; &amp;lt;i&amp;gt;value typ&amp;lt;/i&amp;gt;, as the &amp;lt;i&amp;gt;value type&amp;lt;/i&amp;gt; and storage format alone are not enough to determine the size of each &amp;lt;i&amp;gt;element&amp;lt;/i&amp;gt;.&lt;br>&lt;/p>&lt;p>   &amp;lt;/li&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;li&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;b&amp;gt;&amp;lt;tt&amp;gt;elementAlignment&amp;lt;/tt&amp;gt;&amp;lt;/b&amp;gt; is used to ensure that &amp;lt;i&amp;gt;elements&amp;lt;/i&amp;gt; begin on a certain byte-boundary. This can be used, for example, to pad each 4-byte single-precision floating-point &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; in the data arrays of a complex-split &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; to 6-bytes so that each &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; begins on the 6-byte boundary.&lt;br>&lt;/p>&lt;p>   &amp;lt;/li&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;li&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;b&amp;gt;&amp;lt;tt&amp;gt;secondaryDataAlignment&amp;lt;/tt&amp;gt;&amp;lt;/b&amp;gt; is used to ensure that secondary data array begins on a certain byte-boundary. For example, it may be important that the secondary data array begin on a 128-byte boundary. This field is used by the subscribing connector to align the received data appropriately -- and the publishing side, it is used when creating the data.&lt;br>&lt;/p>&lt;p>   &amp;lt;/li&amp;gt;&lt;br>&lt;/p>&lt;p>&amp;lt;/ul&amp;gt;&lt;br>&lt;/p>&lt;p>As an example, a &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; containing 100 split complex single-precision floating-point &amp;lt;i&amp;gt;elements&amp;lt;/i&amp;gt;, whose &amp;lt;i&amp;gt;elements&amp;lt;/i&amp;gt; must begin on a 6-byte boundary, and whose secondary data array must be begin on a 128-byte boundary, might have the following size-related &amp;lt;i&amp;gt;meta data&amp;lt;/i&amp;gt;.&lt;br>&lt;/p>&lt;p>&amp;lt;table style=&quot;border-spacing: 0px&quot; border=&quot;1&quot;&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;td&amp;gt;&amp;lt;b&amp;gt;&amp;lt;tt&amp;gt;blockSize&amp;lt;/tt&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;td&amp;gt;&amp;lt;tt&amp;gt;1208&amp;lt;/tt&amp;gt;&amp;lt;/td&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;/tr&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;td&amp;gt;&amp;lt;b&amp;gt;&amp;lt;tt&amp;gt;storageFormat&amp;lt;/tt&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;td&amp;gt;&amp;lt;tt&amp;gt;STORAGE_FORMAT_COMPLEX_SPLIT&amp;lt;/tt&amp;gt;&amp;lt;/td&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;/tr&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;td&amp;gt;&amp;lt;b&amp;gt;&amp;lt;tt&amp;gt;valueType&amp;lt;/tt&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;td&amp;gt;&amp;lt;tt&amp;gt;VALUE_TYPE_FLOAT&amp;lt;/tt&amp;gt;&amp;lt;/td&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;/tr&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;td&amp;gt;&amp;lt;b&amp;gt;&amp;lt;tt&amp;gt;elementSize&amp;lt;/tt&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;td&amp;gt;&amp;lt;tt&amp;gt;8&amp;lt;/tt&amp;gt;&amp;lt;/td&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;/tr&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;td&amp;gt;&amp;lt;b&amp;gt;&amp;lt;tt&amp;gt;elementAlignment&amp;lt;/tt&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;td&amp;gt;&amp;lt;tt&amp;gt;6&amp;lt;/tt&amp;gt;&amp;lt;/td&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;/tr&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;tr&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;td&amp;gt;&amp;lt;b&amp;gt;&amp;lt;tt&amp;gt;secondaryDataAlignment&amp;lt;/tt&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/td&amp;gt;&lt;br>&lt;/p>&lt;p>      &amp;lt;td&amp;gt;&amp;lt;tt&amp;gt;128&amp;lt;/tt&amp;gt;&amp;lt;/td&amp;gt;&lt;br>&lt;/p>&lt;p>   &amp;lt;/tr&amp;gt;&lt;br>&lt;/p>&lt;p>&amp;lt;/table&amp;gt;&lt;br>&lt;/p>&lt;p>In this case, supposing the primary data array started at address &amp;lt;tt&amp;gt;0x2000&amp;lt;/tt&amp;gt; in memory, the first &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; would be located at &amp;lt;tt&amp;gt;0x2004&amp;lt;/tt&amp;gt; and the last &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; would be located at &amp;lt;tt&amp;gt;0x2256&amp;lt;/tt&amp;gt; such that the size of the array would be 604 bytes. By similar logic, if the secondary data array started at address &amp;lt;tt&amp;gt;0x4000&amp;lt;/tt&amp;gt; in memory, which, is conveniently on a 128-byte boundary, the first &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; would be located at &amp;lt;tt&amp;gt;0x4004&amp;lt;/tt&amp;gt; and the last &amp;lt;i&amp;gt;value&amp;lt;/i&amp;gt; would be located at &amp;lt;tt&amp;gt;0x4256&amp;lt;/tt&amp;gt; such that the size of the array would be 604 bytes.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_YRe8gM1mEeKXmKr5CsvrhQ" name="primary_start_address" visibility="public" type="_jzLAAPQREemoh4MsjC7SUA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_H_r3EM1oEeKXmKr5CsvrhQ" annotatedElement="_YRe8gM1mEeKXmKr5CsvrhQ">
+                  <body>&lt;p>Local address defining the start of the Block in memory.  This parameter is valid for all Storage_Format types.  For the COMPLEX_SPLIT type, it points to the beginning of the real array of contiguous Block elements.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_9Gt8cM32EeKS8-YwlgRiXg" name="secondary_start_address" visibility="public" type="_jzLAAPQREemoh4MsjC7SUA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_mbd4QM4REeKS8-YwlgRiXg" annotatedElement="_9Gt8cM32EeKS8-YwlgRiXg">
+                  <body>&lt;p>Local address defining the start of the imaginary array of contiguous &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; &amp;lt;i&amp;gt;elements&amp;lt;/i&amp;gt; in memory. This parameter is only valid for the COMPLEX_SPLIT format, and is a &quot;don't care&quot; for all the other storage formats that only require a single pointer/address.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_1zT7UM1pEeKXmKr5CsvrhQ" name="total_block_size" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_5zaTsM1pEeKXmKr5CsvrhQ" annotatedElement="_1zT7UM1pEeKXmKr5CsvrhQ">
+                  <body>&lt;p>Total size of the memory block in bytes.  For the COMPLEX_SPLIT storage format, this size encompasses both the real and imaginary sub-arrays stored separately within the Block.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_g0ffYM1mEeKXmKr5CsvrhQ" name="element_storage_format" visibility="public" type="__ORLYPWfEeC72vbrR386Ug">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_PssmEM1oEeKXmKr5CsvrhQ" annotatedElement="_g0ffYM1mEeKXmKr5CsvrhQ">
+                  <body>&lt;p>Organizational format used to define the storage of each Block element.  See the Storage_Format type definition for more information.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_bowaUM1mEeKXmKr5CsvrhQ" name="scalar_value_type" visibility="public" type="_i9xd8MyTEeKBL4fu_ShUvw">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_MPyaUM1oEeKXmKr5CsvrhQ" annotatedElement="_bowaUM1mEeKXmKr5CsvrhQ">
+                  <body>&lt;p>Primitive scalar type used within each &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; element. See the Basic_Scalar_Type type definition for more information.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_lrr30M1mEeKXmKr5CsvrhQ" name="element_size" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_DS-s0M1nEeKXmKr5CsvrhQ" annotatedElement="_lrr30M1mEeKXmKr5CsvrhQ">
+                  <body>&lt;p>Size of each fixed-size, indexable Block element in bytes. For the REAL storage type, this size is determined by the scalar_value_type. For the COMPLEX_n storage formats, this is the size of the scalar_value_type * 2. For a POINT_CLOUD_n storage format, this field specifies the size in bytes of each struct element.  Although this field can be derived from others for the REAL and COMPLEX_n storage formats, it is the *only* way to determine element size for the POINT_CLOUD_n formats.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_s3bI8M1qEeKXmKr5CsvrhQ" name="element_alignment" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_5jaTYM1qEeKXmKr5CsvrhQ" annotatedElement="_s3bI8M1qEeKXmKr5CsvrhQ">
+                  <body>&lt;p>Memory alignment modulo boundary, in bytes, of each &amp;lt;i&amp;gt;Block&amp;lt;/i&amp;gt; element. A default setting of &quot;0&quot; defines a contiguous packed array of elements.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_GEIB8M1rEeKXmKr5CsvrhQ" name="complex_split_alignment" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_amLJsM1rEeKXmKr5CsvrhQ" annotatedElement="_GEIB8M1rEeKXmKr5CsvrhQ">
+                  <body>&lt;p>Memory alignment modulo boundary, in bytes, for the separate real and imaginary sub-arrays for a Block with a COMPLEX_SPLIT storage format. A default value of &quot;0&quot; indicates a contiguous, packed alignment, with the imaginary array immediately following (or preceding if created by a user) the real array in memory. This field can be used to force alignment of the beginning of the imaginary sub-array on a cache line or other efficient memory boundary, in effect adding unused padding bytes between the two separate sub-arrays. This field is meaningless for all storage formats except COMPLEX_SPLIT.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_uj21gM4uEeKS8-YwlgRiXg" name="storage_Format" visibility="private" type="__ORLYPWfEeC72vbrR386Ug" association="_uj1AUM4uEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uj5RwM4uEeKS8-YwlgRiXg"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uj540M4uEeKS8-YwlgRiXg" value="1"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_-_SGIM4uEeKS8-YwlgRiXg" name="basic_Scalar_Type" visibility="private" type="_i9xd8MyTEeKBL4fu_ShUvw" association="_-_QQ8M4uEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-_UiYM4uEeKS8-YwlgRiXg"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-_VJcM4uEeKS8-YwlgRiXg" value="1"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_h1VoECw_EeOnz8rx646cHw" name="row_alignment" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_Z9rKcCxOEeOnz8rx646cHw" annotatedElement="_h1VoECw_EeOnz8rx646cHw">
+                  <body>&lt;p>Memory alignment modulo boundary, in bytes, of each row of data. This value needs to be greater than or equal to the row size set by the view object. This value is ignored for a 1 dimensional object vector. A default setting of &quot;0&quot; defines a contiguous packed row.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_l_UVMCw_EeOnz8rx646cHw" name="plane_alignment" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_pdu_ACxOEeOnz8rx646cHw" annotatedElement="_l_UVMCw_EeOnz8rx646cHw">
+                  <body>&lt;p>Memory alignment modulo boundary, in bytes, of each plane of data. This value needs to be greater than or equal to the number of rows * number of columns set by the view object. This value is ignored unless the object has 3 dimensions. A default setting of &quot;0&quot; defines a contiguous packed plane.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_iclZkO7AEd-aHKa41UzFoQ" name="Data_Shape">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_v_rDYM1WEeK1K-Qf7emtfQ" annotatedElement="_iclZkO7AEd-aHKa41UzFoQ">
+                <body>&lt;p>Basic struct type used to capture offset, size and stride parameters for a single View dimension. An array of these structs in effect defines the data shape of a multi-dimensional View. Units for all three parameters are element indices within a Block or View - not bytes. Actual byte offsets to indexable data elements are determined by multiple Block and View parameters.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_kIm2gO7AEd-aHKa41UzFoQ" name="offset" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_NOqGEM1XEeK1K-Qf7emtfQ" annotatedElement="_kIm2gO7AEd-aHKa41UzFoQ">
+                  <body>&lt;p>Offset in units of Block-defined elements/indices (not bytes) from start of the parent data (Block or View) to the first element. Valid for all dimensions of a Sub-View, defining the element offset from the root of the parent View. Only valid for the first dimension of a full View, which defines the element offset from the start of a Block.&lt;/p>&lt;p>&lt;/p>&lt;p>@par For example, for a Sub-View:&lt;/p>&lt;p>@b Vector:&lt;/p>&lt;p>- Offset to beginning individual element (column)&lt;/p>&lt;p>@b Matrix:&lt;/p>&lt;p>- If describing dimension #1: Offset to the beginning row&lt;/p>&lt;p>- If describing dimension #2: Offset to the beginning column&lt;/p>&lt;p>@b Tensor: &lt;/p>&lt;p>- If describing dimension #1: Offset to the beginning plane&lt;/p>&lt;p>- If describing dimension #2: Offset to the beginning row&lt;/p>&lt;p>- If describing dimension #3: Offset to the beginning column&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_kckUUO7AEd-aHKa41UzFoQ" name="stride" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_oNOlUM1XEeK1K-Qf7emtfQ" annotatedElement="_kckUUO7AEd-aHKa41UzFoQ">
+                  <body>&lt;p>Stride in units of Block-defined elements/indices (not bytes) between successive element spans of interest (each of length &quot;size&quot;).  Stride defines the spacing between consecutive elements in reference to the parent.&lt;/p>&lt;p>&lt;/p>&lt;p>@par For example:&lt;/p>&lt;p>@b Vector:&lt;/p>&lt;p>- Spacing between individual elements (columns)&lt;/p>&lt;p>@b Matrix:&lt;/p>&lt;p>- If describing dimension #1: Spacing between rows&lt;/p>&lt;p>- If describing dimension #2: Spacing between columns&lt;/p>&lt;p>@b Tensor:&lt;/p>&lt;p>- If describing dimension #1: Spacing between planes&lt;/p>&lt;p>- If describing dimension #2: Spacing between rows&lt;/p>&lt;p>- If describing dimension #3: Spacing between columns&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_kvpBUO7AEd-aHKa41UzFoQ" name="size" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_XvJpUM1XEeK1K-Qf7emtfQ" annotatedElement="_kvpBUO7AEd-aHKa41UzFoQ">
+                  <body>&lt;p>Size in units of consecutive Block-defined elements/indices (not bytes) of data of interest. Basically, the number of elements in each dimension of a View or Sub-View.&lt;/p>&lt;p>&lt;/p>&lt;p>@par For example:&lt;/p>&lt;p>@b Vector:&lt;/p>&lt;p>- Number of individual elements (columns)&lt;/p>&lt;p>@b Matrix: &lt;/p>&lt;p>- If describing dimension #1: Number of rows&lt;/p>&lt;p>- If describing dimension #2: Number of columns&lt;/p>&lt;p>@b Tensor: &lt;/p>&lt;p>- If describing dimension #1: Number of planes&lt;/p>&lt;p>- If describing dimension #2: Number of rows&lt;/p>&lt;p>- If describing dimension #3: Number of columns&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_4Sq08ExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_jBpu0MoWEeKD8dTv59mbxA" name="Data_Shape_Array">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_jfigYM4WEeKS8-YwlgRiXg" annotatedElement="_jBpu0MoWEeKD8dTv59mbxA">
+                <body>&lt;p>Type defining an N dimensional array of Data_Shape structs for use in View and Sub-View definition.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_jB-e8MoWEeKD8dTv59mbxA" name="members" type="_iclZkO7AEd-aHKa41UzFoQ">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jCAUIMoWEeKD8dTv59mbxA"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jB_GAMoWEeKD8dTv59mbxA" value="*"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_xXnMAM4tEeKS8-YwlgRiXg" name="data_Shape" visibility="private" type="_iclZkO7AEd-aHKa41UzFoQ" association="_xXlW0M4tEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xXpoQM4tEeKS8-YwlgRiXg"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xXqPUM4tEeKS8-YwlgRiXg" value="*"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_rB_b4M1rEeKXmKr5CsvrhQ" name="View">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_bXrCoM1sEeKXmKr5CsvrhQ" annotatedElement="_rB_b4M1rEeKXmKr5CsvrhQ">
+                <body>&lt;p>A &quot;View&quot; defines a way of describing, interpreting and easily accessing a parent Block of memory to support data-parallel processing or data movement operations. Each View may define single or multi-dimensional Block access such as a vector, matrix or tensor, with offset, stride and size parameters for each dimension.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_AhqNAM1tEeKXmKr5CsvrhQ" name="dimensions" visibility="public">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_YyabIM1tEeKXmKr5CsvrhQ" annotatedElement="_AhqNAM1tEeKXmKr5CsvrhQ">
+                  <body>&lt;p>Number of dimensions defined for this View or Sub-View. Defines the number of valid entries in the following view_parameters array. Valid entries are 1 through MAX_DIMENSIONS. A value of &quot;0&quot; is invalid, and will result in defining a null view that will be ignored or throw an exception depending upon what you're trying to accomplish. A value of &quot;1&quot; defines a vector, a &quot;2&quot; defines a matrix and a &quot;3&quot; defines a tensor.&lt;/p></body>
+                </ownedComment>
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_1P6OkExQEd2INdt7Ch5VKg"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_0ntHAM1tEeKXmKr5CsvrhQ" name="view_parameters" visibility="public" type="_jBpu0MoWEeKD8dTv59mbxA">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_IXnnMM1uEeKXmKr5CsvrhQ" annotatedElement="_0ntHAM1tEeKXmKr5CsvrhQ">
+                  <body>&lt;p>Offset, stride and size parameters for each defined dimension of the View. For a normal View, only the offset in the first dimension is valid, defining the offset in Block/View elements from the start of the parent Block to the start of the first element in the View. For a Sub-View, all offsets are valid.  For more explanation, see the definition for the Data_Shape struct type.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_Nx1UcM4vEeKS8-YwlgRiXg" name="data_Shape_Array" visibility="private" type="_jBpu0MoWEeKD8dTv59mbxA" association="_NxzfQM4vEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Nx3wsM4vEeKS8-YwlgRiXg"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Nx4XwM4vEeKS8-YwlgRiXg" value="1"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_HhbwoM1vEeKXmKr5CsvrhQ" name="BlockView_Descriptor">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_RfUWEM1vEeKXmKr5CsvrhQ" annotatedElement="_HhbwoM1vEeKXmKr5CsvrhQ">
+                <body>&lt;p>Combined descriptor struct that fully defines a combined Block and associated View.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_R_dOsM1vEeKXmKr5CsvrhQ" name="block" visibility="public" type="_UAUpUM1mEeKXmKr5CsvrhQ">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_wQCYANUUEeKsNaFGS5fTPQ" annotatedElement="_R_dOsM1vEeKXmKr5CsvrhQ">
+                  <body>&lt;p>See Block definition.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_bZQPoM1vEeKXmKr5CsvrhQ" name="view" visibility="public" type="_rB_b4M1rEeKXmKr5CsvrhQ">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_xCkBINUUEeKsNaFGS5fTPQ" annotatedElement="_bZQPoM1vEeKXmKr5CsvrhQ">
+                  <body>&lt;p>See View definition.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_Fz9UYM4uEeKS8-YwlgRiXg" name="block2" visibility="private" type="_UAUpUM1mEeKXmKr5CsvrhQ" association="_Fz7fMM4uEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Fz_woM4uEeKS8-YwlgRiXg" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F0A-wM4uEeKS8-YwlgRiXg" value="1"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_GutscM4uEeKS8-YwlgRiXg" name="view2" visibility="private" type="_rB_b4M1rEeKXmKr5CsvrhQ" association="_Gur3QM4uEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GuwIsM4uEeKS8-YwlgRiXg" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GuwvwM4uEeKS8-YwlgRiXg" value="1"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:DataType" xmi:id="_e3Tq4M1vEeKXmKr5CsvrhQ" name="BlockSubView_Descriptor">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_shqiEM1vEeKXmKr5CsvrhQ" annotatedElement="_e3Tq4M1vEeKXmKr5CsvrhQ">
+                <body>&lt;p>Combined descriptor struct that fully defines a combined Block and associated View, plus a Sub-View of the parent View.&lt;/p></body>
+              </ownedComment>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_o2wh4C07EeOnz8rx646cHw" name="type" visibility="public" type="_fl8L4C09EeOnz8rx646cHw">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_GSf8QC0-EeOnz8rx646cHw" annotatedElement="_o2wh4C07EeOnz8rx646cHw">
+                  <body>&lt;p>See DescriptorType definition.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_tgC14M1vEeKXmKr5CsvrhQ" name="block" visibility="public" type="_UAUpUM1mEeKXmKr5CsvrhQ">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_qiOgoNUUEeKsNaFGS5fTPQ" annotatedElement="_tgC14M1vEeKXmKr5CsvrhQ">
+                  <body>&lt;p>See Block definition.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_unj3kM1vEeKXmKr5CsvrhQ" name="view" visibility="public" type="_rB_b4M1rEeKXmKr5CsvrhQ">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_rJgjENUUEeKsNaFGS5fTPQ" annotatedElement="_unj3kM1vEeKXmKr5CsvrhQ">
+                  <body>&lt;p>See View definition.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_vUOJQM1vEeKXmKr5CsvrhQ" name="subview" visibility="public" type="_rB_b4M1rEeKXmKr5CsvrhQ">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_rz3HoNUUEeKsNaFGS5fTPQ" annotatedElement="_vUOJQM1vEeKXmKr5CsvrhQ">
+                  <body>&lt;p>See View definition.&lt;/p></body>
+                </ownedComment>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_IEZF8M4uEeKS8-YwlgRiXg" name="view3" visibility="private" type="_rB_b4M1rEeKXmKr5CsvrhQ" association="_IEXQwM4uEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IEbiMM4uEeKS8-YwlgRiXg" value="2"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IEcJQM4uEeKS8-YwlgRiXg" value="2"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:type="uml:Property" xmi:id="_TBnogM4uEeKS8-YwlgRiXg" name="block2" visibility="private" type="_UAUpUM1mEeKXmKr5CsvrhQ" association="_TBlzUM4uEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TBqEwM4uEeKS8-YwlgRiXg" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TBqr0M4uEeKS8-YwlgRiXg" value="1"/>
+              </ownedAttribute>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_xXlW0M4tEeKS8-YwlgRiXg" memberEnd="_xXnMAM4tEeKS8-YwlgRiXg _xXsEgM4tEeKS8-YwlgRiXg">
+              <ownedEnd xmi:type="uml:Property" xmi:id="_xXsEgM4tEeKS8-YwlgRiXg" name="" visibility="private" type="_jBpu0MoWEeKD8dTv59mbxA" association="_xXlW0M4tEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xXugwM4tEeKS8-YwlgRiXg" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xXvH0M4tEeKS8-YwlgRiXg" value="1"/>
+              </ownedEnd>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_Fz7fMM4uEeKS8-YwlgRiXg" memberEnd="_Fz9UYM4uEeKS8-YwlgRiXg _F0CM4M4uEeKS8-YwlgRiXg">
+              <ownedEnd xmi:type="uml:Property" xmi:id="_F0CM4M4uEeKS8-YwlgRiXg" name="" visibility="private" type="_HhbwoM1vEeKXmKr5CsvrhQ" association="_Fz7fMM4uEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F0EpIM4uEeKS8-YwlgRiXg" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F0FQMM4uEeKS8-YwlgRiXg" value="1"/>
+              </ownedEnd>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_Gur3QM4uEeKS8-YwlgRiXg" memberEnd="_GutscM4uEeKS8-YwlgRiXg _Gu0aIM4uEeKS8-YwlgRiXg">
+              <ownedEnd xmi:type="uml:Property" xmi:id="_Gu0aIM4uEeKS8-YwlgRiXg" name="" visibility="private" type="_HhbwoM1vEeKXmKr5CsvrhQ" association="_Gur3QM4uEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Gu22YM4uEeKS8-YwlgRiXg" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Gu3dcM4uEeKS8-YwlgRiXg" value="1"/>
+              </ownedEnd>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_IEXQwM4uEeKS8-YwlgRiXg" memberEnd="_IEZF8M4uEeKS8-YwlgRiXg _IEd-cM4uEeKS8-YwlgRiXg">
+              <ownedEnd xmi:type="uml:Property" xmi:id="_IEd-cM4uEeKS8-YwlgRiXg" name="" visibility="private" type="_e3Tq4M1vEeKXmKr5CsvrhQ" association="_IEXQwM4uEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IEfzoM4uEeKS8-YwlgRiXg" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_IEgasM4uEeKS8-YwlgRiXg" value="1"/>
+              </ownedEnd>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_TBlzUM4uEeKS8-YwlgRiXg" memberEnd="_TBnogM4uEeKS8-YwlgRiXg _TBr58M4uEeKS8-YwlgRiXg">
+              <ownedEnd xmi:type="uml:Property" xmi:id="_TBr58M4uEeKS8-YwlgRiXg" name="" visibility="private" type="_e3Tq4M1vEeKXmKr5CsvrhQ" association="_TBlzUM4uEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TBuWMM4uEeKS8-YwlgRiXg" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TBu9QM4uEeKS8-YwlgRiXg" value="1"/>
+              </ownedEnd>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_uj1AUM4uEeKS8-YwlgRiXg" memberEnd="_uj21gM4uEeKS8-YwlgRiXg _uj7uAM4uEeKS8-YwlgRiXg">
+              <ownedEnd xmi:type="uml:Property" xmi:id="_uj7uAM4uEeKS8-YwlgRiXg" name="" visibility="private" type="_UAUpUM1mEeKXmKr5CsvrhQ" association="_uj1AUM4uEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uj-KQM4uEeKS8-YwlgRiXg"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_uj-xUM4uEeKS8-YwlgRiXg" value="*"/>
+              </ownedEnd>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_-_QQ8M4uEeKS8-YwlgRiXg" memberEnd="_-_SGIM4uEeKS8-YwlgRiXg _-_WXkM4uEeKS8-YwlgRiXg">
+              <ownedEnd xmi:type="uml:Property" xmi:id="_-_WXkM4uEeKS8-YwlgRiXg" name="" visibility="private" type="_UAUpUM1mEeKXmKr5CsvrhQ" association="_-_QQ8M4uEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-_Yz0M4uEeKS8-YwlgRiXg"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-_Za4M4uEeKS8-YwlgRiXg" value="*"/>
+              </ownedEnd>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_NxzfQM4vEeKS8-YwlgRiXg" memberEnd="_Nx1UcM4vEeKS8-YwlgRiXg _Nx5l4M4vEeKS8-YwlgRiXg">
+              <ownedEnd xmi:type="uml:Property" xmi:id="_Nx5l4M4vEeKS8-YwlgRiXg" name="" visibility="private" type="_rB_b4M1rEeKXmKr5CsvrhQ" association="_NxzfQM4vEeKS8-YwlgRiXg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Nx7bEM4vEeKS8-YwlgRiXg"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Nx8pMM4vEeKS8-YwlgRiXg" value="*"/>
+              </ownedEnd>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_Sw5MQM4rEeKS8-YwlgRiXg" name="doc">
+            <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VHWtUM4rEeKS8-YwlgRiXg" source="zcx">
+              <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_VHXUYM4rEeKS8-YwlgRiXg" key="generatedir" value="false"/>
+            </eAnnotations>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Interface" xmi:id="_J5dokM7bEeKzG-1guXYv1w" name="SPOC_MKC_Interface_obj">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_IwlqEM7dEeKzG-1guXYv1w" annotatedElement="_J5dokM7bEeKzG-1guXYv1w">
+              <body>&lt;p>Suggested default interface between a SPOC (Signal Processing Orchestration Component) and an MKC (Math Kernel Component), defined by the standard SNA signal processing &quot;SPOC-MKC&quot; design pattern. While a SPOC&amp;lt;-&amp;gt;MKC local client-server interface does not have to use this definition, it will suffice for the majority of them. Moreover, standardization on this particular interface allows it to be updated globally more easily at a later date, and it offers the potential for more widespread reuse of MKC components.&lt;/p>&lt;p>Definition of the init(), compute() and cleanup() operations across this interface are very common in many MKC use cases, offering functions to initialize an MKC from a SPOC at startup (init), to cleanup an MKC from a SPOC on shutdown or idling of an MKC (cleanup), or to execute a computation called from a SPOC during operation whenever the MKC functionality needs to be invoked.&lt;/p></body>
+            </ownedComment>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_RkokgM7bEeKzG-1guXYv1w" name="init" raisedException="_tns0kMyUEeKBL4fu_ShUvw">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_TkbnIM7dEeKzG-1guXYv1w" annotatedElement="_RkokgM7bEeKzG-1guXYv1w">
+                <body>&lt;p>This method is an initialization method that can be used by a SPOC to set up weight tables, initialize FFT objects, or any number of other things that can be done outside of the &quot;real-time&quot; compute() call.&lt;/p></body>
+              </ownedComment>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_RkurIM7bEeKzG-1guXYv1w" name="ReturnParameter" direction="return">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+              </ownedParameter>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_PwOAkM7bEeKzG-1guXYv1w" name="compute" raisedException="_tns0kMyUEeKBL4fu_ShUvw">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_gs9joM7dEeKzG-1guXYv1w" annotatedElement="_PwOAkM7bEeKzG-1guXYv1w">
+                <body>&lt;p>This is the method that is called by the SPOC during system operation to perform whatever signal or image processing algorithm is contained within the associated MKC that implements this interface.&lt;/p></body>
+              </ownedComment>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Pwa04M7bEeKzG-1guXYv1w" name="ReturnParameter" direction="return">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+              </ownedParameter>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_cB0VEM7bEeKzG-1guXYv1w" name="dataInDescriptor" type="_e3Tq4M1vEeKXmKr5CsvrhQ">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_rKPI4M7fEeKzG-1guXYv1w" annotatedElement="_cB0VEM7bEeKzG-1guXYv1w">
+                  <body>&lt;p>Input descriptor object containing a definition of a Block and View to be processed, as well as an optional Sub-View. The Block sub-struct of the descriptor includes memory buffer location and other information required to access the data, and the View and Sub-View sub-struct define dimensional info and interpretation of the Block for data-parallel operation support.&lt;/p></body>
+                </ownedComment>
+              </ownedParameter>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_dYhCQM7bEeKzG-1guXYv1w" name="dataOutDescriptor" type="_e3Tq4M1vEeKXmKr5CsvrhQ" direction="inout">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_AXAMIM7hEeKzG-1guXYv1w" annotatedElement="_dYhCQM7bEeKzG-1guXYv1w">
+                  <body>&lt;p>Output descriptor object containing a definition, at a minimum, of a pre-allocated Block sub-struct of the descriptor that includes a memory buffer location and other information needed to return processed data from the MKC.&lt;/p></body>
+                </ownedComment>
+              </ownedParameter>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_OsnOgM7bEeKzG-1guXYv1w" name="cleanup" raisedException="_tns0kMyUEeKBL4fu_ShUvw">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_Yy5lMM7fEeKzG-1guXYv1w" annotatedElement="_OsnOgM7bEeKzG-1guXYv1w">
+                <body>&lt;p>In an MKC implementation, this method handles any post algorithmic cleanup that might be need to be performed at a point in the MKC life cycle like system shutdown or idling of a mode.&lt;/p></body>
+              </ownedComment>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_OsujQM7bEeKzG-1guXYv1w" name="ReturnParameter" direction="return">
+                <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
+              </ownedParameter>
+            </ownedOperation>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_yFYI4CiTEeCoVKLMj82MLQ" name="ccm_spdm"/>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_jkiX854JEd6xhoJKj1dweA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jkiX9J4JEd6xhoJKj1dweA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_1KTJYJ44Ed6CdqU5qRn9Dw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1Kc6YJ44Ed6CdqU5qRn9Dw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KtJkDZEd-LnsQ685SqSQ"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml#_g0KssEDZEd-LnsQ685SqSQ"/>
+    </profileApplication>
+  </uml:Model>
+  <dds4ccm:DDS4CCMModel xmi:id="_xYspAO6_Ed-aHKa41UzFoQ" base_Model="_jkiX8J4JEd6xhoJKj1dweA" base_NamedElement="_jkiX8J4JEd6xhoJKj1dweA" fixedHeader="//==============================================================================&#xA;//                         U N C L A S S I F I E D&#xA;//==============================================================================&#xA;// Copyright (c) Northrop Grumman Corporation 2013-2020 -- ALL RIGHTS RESERVED&#xA;//==============================================================================&#xA;//&#xA;//==============================================================================&#xA;// EXPORT REGULATIONS (EAR99)&#xA;//==============================================================================&#xA;// DISCLOSURE: &#xA;//&#xA;// Warning - This data is subject to the Export Administration Act (Title 22 &#xA;// U.S.C. App. 2401 et seq.), as amended. The implementing regulation for &#xA;// this statute is the Export Administration Regulations (EAR) (15 C.F.R.&#xA;// 730-774). It may not be transferred, either in its original form, derivative &#xA;// documents, or after being incorporated into other data without first &#xA;// obtaining approval from the U.S. government or as otherwise authorized by &#xA;// U.S. law and regulations. &#xA;//==============================================================================" fixedFooter="//==============================================================================&#xA;//                         U N C L A S S I F I E D&#xA;//=============================================================================="/>
+  <dds4ccm:CXStruct xmi:id="_icvKkO7AEd-aHKa41UzFoQ" base_NamedElement="_iclZkO7AEd-aHKa41UzFoQ" base_DataType="_iclZkO7AEd-aHKa41UzFoQ"/>
+  <dds4ccm:CXField xmi:id="_kI5xcO7AEd-aHKa41UzFoQ" base_NamedElement="_kIm2gO7AEd-aHKa41UzFoQ" base_Property="_kIm2gO7AEd-aHKa41UzFoQ"/>
+  <dds4ccm:CXField xmi:id="_kcuFUO7AEd-aHKa41UzFoQ" base_NamedElement="_kckUUO7AEd-aHKa41UzFoQ" base_Property="_kckUUO7AEd-aHKa41UzFoQ"/>
+  <dds4ccm:CXField xmi:id="_kvyyUO7AEd-aHKa41UzFoQ" base_NamedElement="_kvpBUO7AEd-aHKa41UzFoQ" base_Property="_kvpBUO7AEd-aHKa41UzFoQ"/>
+  <dds4ccm:CXEnum xmi:id="_XUq0gO7BEd-aHKa41UzFoQ" base_NamedElement="_XUhqkO7BEd-aHKa41UzFoQ" base_Enumeration="_XUhqkO7BEd-aHKa41UzFoQ"/>
+  <dds4ccm:CXStruct xmi:id="_g156MO7BEd-aHKa41UzFoQ" base_NamedElement="_g1wwQO7BEd-aHKa41UzFoQ" base_DataType="_g1wwQO7BEd-aHKa41UzFoQ"/>
+  <dds4ccm:CXField xmi:id="_oADzwO7BEd-aHKa41UzFoQ" base_NamedElement="_n_6p0O7BEd-aHKa41UzFoQ" base_Property="_n_6p0O7BEd-aHKa41UzFoQ"/>
+  <dds4ccm:DDSMessage xmi:id="_0Qg4wO7BEd-aHKa41UzFoQ" base_NamedElement="_0QXHwO7BEd-aHKa41UzFoQ" base_DataType="_0QXHwO7BEd-aHKa41UzFoQ"/>
+  <dds4ccm:MessageField xmi:id="_2w05Ye7BEd-aHKa41UzFoQ" base_NamedElement="_2w05YO7BEd-aHKa41UzFoQ" base_Property="_2w05YO7BEd-aHKa41UzFoQ"/>
+  <dds4ccm:MessageField xmi:id="_7hqyMO7BEd-aHKa41UzFoQ" base_NamedElement="_7hhoQO7BEd-aHKa41UzFoQ" base_Property="_7hhoQO7BEd-aHKa41UzFoQ"/>
+  <dds4ccm:TemplateModule xmi:id="_EWgE4e7CEd-aHKa41UzFoQ" base_NamedElement="_EWgE4O7CEd-aHKa41UzFoQ" base_Package="_EWgE4O7CEd-aHKa41UzFoQ"/>
+  <dds4ccm:TemplateSignature xmi:id="_IMffAe7CEd-aHKa41UzFoQ" base_TemplateSignature="_IMffAO7CEd-aHKa41UzFoQ"/>
+  <dds4ccm:TypeParameter xmi:id="_IMffA-7CEd-aHKa41UzFoQ" base_ClassifierTemplateParameter="_IMffAu7CEd-aHKa41UzFoQ"/>
+  <dds4ccm:TemplateParameterType xmi:id="_IMffBe7CEd-aHKa41UzFoQ" base_Class="_IMffBO7CEd-aHKa41UzFoQ"/>
+  <dds4ccm:TypeParameter xmi:id="_KOkEce7CEd-aHKa41UzFoQ" base_ClassifierTemplateParameter="_KOkEcO7CEd-aHKa41UzFoQ" constraint="sequence"/>
+  <dds4ccm:TemplateParameterType xmi:id="_KOkEc-7CEd-aHKa41UzFoQ" base_DataType="_KOkEcu7CEd-aHKa41UzFoQ"/>
+  <dds4ccm:ConnectorDef xmi:id="_bAphke7CEd-aHKa41UzFoQ" base_Component="_bAphkO7CEd-aHKa41UzFoQ" base_NamedElement="_bAphkO7CEd-aHKa41UzFoQ"/>
+  <dds4ccm:CXAttribute xmi:id="_85nAEO7CEd-aHKa41UzFoQ" base_NamedElement="_85dPEO7CEd-aHKa41UzFoQ" base_Property="_85dPEO7CEd-aHKa41UzFoQ">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://PSAT_CONNECTORS_LIBRARY/CCM_PSAT.uml#_aRdTUKnoEeODn-Isgwiqsg"/>
+  </dds4ccm:CXAttribute>
+  <standard:ModelLibrary xmi:id="_PabOMCgOEeCAHcI9TSrt4w" base_Package="_jkiX8J4JEd6xhoJKj1dweA"/>
+  <dds4ccm:IDLFileSpecification xmi:id="_yGQ5sCiTEeCoVKLMj82MLQ" base_Class="_yFYI4CiTEeCoVKLMj82MLQ"/>
+  <dds4ccm:ModuleInstantiation xmi:id="_r8HO0Um0EeCCyb1DaQvR3Q" base_NamedElement="_r8HO0Em0EeCCyb1DaQvR3Q" base_Package="_r8HO0Em0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:ModuleBinding xmi:id="_r8HO00m0EeCCyb1DaQvR3Q" base_TemplateBinding="_r8HO0km0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:ParameterBinding xmi:id="_r8HO1Um0EeCCyb1DaQvR3Q" base_TemplateParameterSubstitution="_r8HO1Em0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:ParameterBinding xmi:id="_r8HO10m0EeCCyb1DaQvR3Q" base_TemplateParameterSubstitution="_r8HO1km0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXInterface xmi:id="_r8HO2Um0EeCCyb1DaQvR3Q" base_Interface="_r8HO2Em0EeCCyb1DaQvR3Q" base_NamedElement="_r8HO2Em0EeCCyb1DaQvR3Q" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_r8QYwUm0EeCCyb1DaQvR3Q" base_NamedElement="_r8QYwEm0EeCCyb1DaQvR3Q" base_Operation="_r8QYwEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r8QYw0m0EeCCyb1DaQvR3Q" base_NamedElement="_r8QYwkm0EeCCyb1DaQvR3Q" base_Parameter="_r8QYwkm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXOperation xmi:id="_r8QYxkm0EeCCyb1DaQvR3Q" base_NamedElement="_r8QYxUm0EeCCyb1DaQvR3Q" base_Operation="_r8QYxUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXOperation xmi:id="_r8aJwkm0EeCCyb1DaQvR3Q" base_NamedElement="_r8aJwUm0EeCCyb1DaQvR3Q" base_Operation="_r8aJwUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r8aJxEm0EeCCyb1DaQvR3Q" base_NamedElement="_r8aJw0m0EeCCyb1DaQvR3Q" base_Parameter="_r8aJw0m0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXOperation xmi:id="_r8j6wkm0EeCCyb1DaQvR3Q" base_NamedElement="_r8j6wUm0EeCCyb1DaQvR3Q" base_Operation="_r8j6wUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r8j6xEm0EeCCyb1DaQvR3Q" base_NamedElement="_r8j6w0m0EeCCyb1DaQvR3Q" base_Parameter="_r8j6w0m0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXInterface xmi:id="_r8tEsUm0EeCCyb1DaQvR3Q" base_Interface="_r8tEsEm0EeCCyb1DaQvR3Q" base_NamedElement="_r8tEsEm0EeCCyb1DaQvR3Q" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_r8tEs0m0EeCCyb1DaQvR3Q" base_NamedElement="_r8tEskm0EeCCyb1DaQvR3Q" base_Operation="_r8tEskm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r8tEtUm0EeCCyb1DaQvR3Q" base_NamedElement="_r8tEtEm0EeCCyb1DaQvR3Q" base_Parameter="_r8tEtEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXOperation xmi:id="_r821skm0EeCCyb1DaQvR3Q" base_NamedElement="_r821sUm0EeCCyb1DaQvR3Q" base_Operation="_r821sUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r821tEm0EeCCyb1DaQvR3Q" base_NamedElement="_r821s0m0EeCCyb1DaQvR3Q" base_Parameter="_r821s0m0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXOperation xmi:id="_r8__oUm0EeCCyb1DaQvR3Q" base_NamedElement="_r8__oEm0EeCCyb1DaQvR3Q" base_Operation="_r8__oEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r8__o0m0EeCCyb1DaQvR3Q" base_NamedElement="_r8__okm0EeCCyb1DaQvR3Q" base_Parameter="_r8__okm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r8__pUm0EeCCyb1DaQvR3Q" base_NamedElement="_r8__pEm0EeCCyb1DaQvR3Q" base_Parameter="_r8__pEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXOperation xmi:id="_r9Jwokm0EeCCyb1DaQvR3Q" base_NamedElement="_r9JwoUm0EeCCyb1DaQvR3Q" base_Operation="_r9JwoUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r9JwpEm0EeCCyb1DaQvR3Q" base_NamedElement="_r9Jwo0m0EeCCyb1DaQvR3Q" base_Parameter="_r9Jwo0m0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXOperation xmi:id="_r9ThoUm0EeCCyb1DaQvR3Q" base_NamedElement="_r9ThoEm0EeCCyb1DaQvR3Q" base_Operation="_r9ThoEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXOperation xmi:id="_r9ThpEm0EeCCyb1DaQvR3Q" base_NamedElement="_r9Tho0m0EeCCyb1DaQvR3Q" base_Operation="_r9Tho0m0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r9Thpkm0EeCCyb1DaQvR3Q" base_NamedElement="_r9ThpUm0EeCCyb1DaQvR3Q" base_Parameter="_r9ThpUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXInterface xmi:id="_r9crkkm0EeCCyb1DaQvR3Q" base_Interface="_r9crkUm0EeCCyb1DaQvR3Q" base_NamedElement="_r9crkUm0EeCCyb1DaQvR3Q" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_r9crlEm0EeCCyb1DaQvR3Q" base_NamedElement="_r9crk0m0EeCCyb1DaQvR3Q" base_Operation="_r9crk0m0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r9mckUm0EeCCyb1DaQvR3Q" base_NamedElement="_r9mckEm0EeCCyb1DaQvR3Q" base_Parameter="_r9mckEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r9mck0m0EeCCyb1DaQvR3Q" base_NamedElement="_r9mckkm0EeCCyb1DaQvR3Q" base_Parameter="_r9mckkm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXOperation xmi:id="_r9mclkm0EeCCyb1DaQvR3Q" base_NamedElement="_r9mclUm0EeCCyb1DaQvR3Q" base_Operation="_r9mclUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r9wNkUm0EeCCyb1DaQvR3Q" base_NamedElement="_r9wNkEm0EeCCyb1DaQvR3Q" base_Parameter="_r9wNkEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXInterface xmi:id="_r9wNlEm0EeCCyb1DaQvR3Q" base_Interface="_r9wNk0m0EeCCyb1DaQvR3Q" base_NamedElement="_r9wNk0m0EeCCyb1DaQvR3Q" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_r95XgUm0EeCCyb1DaQvR3Q" base_NamedElement="_r95XgEm0EeCCyb1DaQvR3Q" base_Operation="_r95XgEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r95Xg0m0EeCCyb1DaQvR3Q" base_NamedElement="_r95Xgkm0EeCCyb1DaQvR3Q" base_Parameter="_r95Xgkm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r95XhUm0EeCCyb1DaQvR3Q" base_NamedElement="_r95XhEm0EeCCyb1DaQvR3Q" base_Parameter="_r95XhEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXOperation xmi:id="_r-DIgUm0EeCCyb1DaQvR3Q" base_NamedElement="_r-DIgEm0EeCCyb1DaQvR3Q" base_Operation="_r-DIgEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r-DIg0m0EeCCyb1DaQvR3Q" base_NamedElement="_r-DIgkm0EeCCyb1DaQvR3Q" base_Parameter="_r-DIgkm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r-DIhUm0EeCCyb1DaQvR3Q" base_NamedElement="_r-DIhEm0EeCCyb1DaQvR3Q" base_Parameter="_r-DIhEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXOperation xmi:id="_r-MSckm0EeCCyb1DaQvR3Q" base_NamedElement="_r-MScUm0EeCCyb1DaQvR3Q" base_Operation="_r-MScUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r-MSdEm0EeCCyb1DaQvR3Q" base_NamedElement="_r-MSc0m0EeCCyb1DaQvR3Q" base_Parameter="_r-MSc0m0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r-MSdkm0EeCCyb1DaQvR3Q" base_NamedElement="_r-MSdUm0EeCCyb1DaQvR3Q" base_Parameter="_r-MSdUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXOperation xmi:id="_r-WDckm0EeCCyb1DaQvR3Q" base_NamedElement="_r-WDcUm0EeCCyb1DaQvR3Q" base_Operation="_r-WDcUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r-WDdEm0EeCCyb1DaQvR3Q" base_NamedElement="_r-WDc0m0EeCCyb1DaQvR3Q" base_Parameter="_r-WDc0m0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_r-WDdkm0EeCCyb1DaQvR3Q" base_NamedElement="_r-WDdUm0EeCCyb1DaQvR3Q" base_Parameter="_r-WDdUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:ExtendedPortType xmi:id="_r-f0ckm0EeCCyb1DaQvR3Q" base_Class="_r-f0cUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:ExtendedPortType xmi:id="_r-o-YUm0EeCCyb1DaQvR3Q" base_Class="_r-o-YEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXAttribute xmi:id="_r-o-Y0m0EeCCyb1DaQvR3Q" base_NamedElement="_r-o-Ykm0EeCCyb1DaQvR3Q" base_Property="_r-o-Ykm0EeCCyb1DaQvR3Q">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
+  </dds4ccm:CXAttribute>
+  <dds4ccm:ConnectorDef xmi:id="_r-75Ukm0EeCCyb1DaQvR3Q" base_Component="_r-75UUm0EeCCyb1DaQvR3Q" base_NamedElement="_r-75UUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXAttribute xmi:id="_r-75VEm0EeCCyb1DaQvR3Q" base_NamedElement="_r-75U0m0EeCCyb1DaQvR3Q" base_Property="_r-75U0m0EeCCyb1DaQvR3Q">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
+  </dds4ccm:CXAttribute>
+  <dds4ccm:CXAttribute xmi:id="_r_FqUUm0EeCCyb1DaQvR3Q" base_NamedElement="_r_FqUEm0EeCCyb1DaQvR3Q" base_Property="_r_FqUEm0EeCCyb1DaQvR3Q">
+    <setraises xmi:type="dds4ccm:CXException" href="pathmap://DDS4CCM_DCPS_CONNECTOR_LIBRARIES/DDS_DCPS.uml#_kIfNkGROEd-Wc9hRqhM12g"/>
+  </dds4ccm:CXAttribute>
+  <dds4ccm:InterfacePort xmi:id="_r_FqVEm0EeCCyb1DaQvR3Q" base_Port="_r_FqU0m0EeCCyb1DaQvR3Q" isConjugated="true"/>
+  <dds4ccm:CXEnum xmi:id="__P6KJ_WfEeC72vbrR386Ug" base_NamedElement="__ORLYPWfEeC72vbrR386Ug" base_Enumeration="__ORLYPWfEeC72vbrR386Ug"/>
+  <dds4ccm:CXConstants xmi:id="_8pqgQMoVEeKD8dTv59mbxA" base_NamedElement="_8odmYMoVEeKD8dTv59mbxA" base_Class="_8odmYMoVEeKD8dTv59mbxA"/>
+  <dds4ccm:CXConstant xmi:id="_-XvysMoVEeKD8dTv59mbxA" base_NamedElement="_-XhJMMoVEeKD8dTv59mbxA" base_Property="_-XhJMMoVEeKD8dTv59mbxA"/>
+  <dds4ccm:CXArray xmi:id="_jB2jIMoWEeKD8dTv59mbxA" base_NamedElement="_jBpu0MoWEeKD8dTv59mbxA" base_DataType="_jBpu0MoWEeKD8dTv59mbxA">
+    <bounds xmi:type="dds4ccm:CXBound" xmi:id="_mv6JQMoWEeKD8dTv59mbxA" constant="_-XvysMoVEeKD8dTv59mbxA" value=""/>
+  </dds4ccm:CXArray>
+  <dds4ccm:CXEnum xmi:id="_i-AHcMyTEeKBL4fu_ShUvw" base_NamedElement="_i9xd8MyTEeKBL4fu_ShUvw" base_Enumeration="_i9xd8MyTEeKBL4fu_ShUvw"/>
+  <dds4ccm:CXException xmi:id="_tn4awMyUEeKBL4fu_ShUvw" base_NamedElement="_tns0kMyUEeKBL4fu_ShUvw" base_DataType="_tns0kMyUEeKBL4fu_ShUvw"/>
+  <dds4ccm:CXField xmi:id="_vW7WgMyUEeKBL4fu_ShUvw" base_NamedElement="_vW0o0MyUEeKBL4fu_ShUvw" base_Property="_vW0o0MyUEeKBL4fu_ShUvw"/>
+  <dds4ccm:CXModule xmi:id="_S60zMMydEeKBL4fu_ShUvw" base_NamedElement="_S6jtcMydEeKBL4fu_ShUvw" base_Package="_S6jtcMydEeKBL4fu_ShUvw"/>
+  <dds4ccm:CXStruct xmi:id="_UAbXAM1mEeKXmKr5CsvrhQ" base_NamedElement="_UAUpUM1mEeKXmKr5CsvrhQ" base_DataType="_UAUpUM1mEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_YRs-8M1mEeKXmKr5CsvrhQ" base_NamedElement="_YRe8gM1mEeKXmKr5CsvrhQ" base_Property="_YRe8gM1mEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_bo8nkM1mEeKXmKr5CsvrhQ" base_NamedElement="_bowaUM1mEeKXmKr5CsvrhQ" base_Property="_bowaUM1mEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_g0rFkM1mEeKXmKr5CsvrhQ" base_NamedElement="_g0ffYM1mEeKXmKr5CsvrhQ" base_Property="_g0ffYM1mEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_lr2P4M1mEeKXmKr5CsvrhQ" base_NamedElement="_lrr30M1mEeKXmKr5CsvrhQ" base_Property="_lrr30M1mEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_1zdFQM1pEeKXmKr5CsvrhQ" base_NamedElement="_1zT7UM1pEeKXmKr5CsvrhQ" base_Property="_1zT7UM1pEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_s3hPkM1qEeKXmKr5CsvrhQ" base_NamedElement="_s3bI8M1qEeKXmKr5CsvrhQ" base_Property="_s3bI8M1qEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_GERL4M1rEeKXmKr5CsvrhQ" base_NamedElement="_GEIB8M1rEeKXmKr5CsvrhQ" base_Property="_GEIB8M1rEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXStruct xmi:id="_rCIl0M1rEeKXmKr5CsvrhQ" base_NamedElement="_rB_b4M1rEeKXmKr5CsvrhQ" base_DataType="_rB_b4M1rEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_AhyI0M1tEeKXmKr5CsvrhQ" base_NamedElement="_AhqNAM1tEeKXmKr5CsvrhQ" base_Property="_AhqNAM1tEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_0n1p4M1tEeKXmKr5CsvrhQ" base_NamedElement="_0ntHAM1tEeKXmKr5CsvrhQ" base_Property="_0ntHAM1tEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_UGNVQM1uEeKXmKr5CsvrhQ" base_NamedElement="_UGELUM1uEeKXmKr5CsvrhQ" base_Property="_UGELUM1uEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXStruct xmi:id="_Hhk6kM1vEeKXmKr5CsvrhQ" base_NamedElement="_HhbwoM1vEeKXmKr5CsvrhQ" base_DataType="_HhbwoM1vEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_R_mYoM1vEeKXmKr5CsvrhQ" base_NamedElement="_R_dOsM1vEeKXmKr5CsvrhQ" base_Property="_R_dOsM1vEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_bZT6AM1vEeKXmKr5CsvrhQ" base_NamedElement="_bZQPoM1vEeKXmKr5CsvrhQ" base_Property="_bZQPoM1vEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXStruct xmi:id="_e3c00M1vEeKXmKr5CsvrhQ" base_NamedElement="_e3Tq4M1vEeKXmKr5CsvrhQ" base_DataType="_e3Tq4M1vEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_tgT7oM1vEeKXmKr5CsvrhQ" base_NamedElement="_tgC14M1vEeKXmKr5CsvrhQ" base_Property="_tgC14M1vEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_untBgM1vEeKXmKr5CsvrhQ" base_NamedElement="_unj3kM1vEeKXmKr5CsvrhQ" base_Property="_unj3kM1vEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_vUWsIM1vEeKXmKr5CsvrhQ" base_NamedElement="_vUOJQM1vEeKXmKr5CsvrhQ" base_Property="_vUOJQM1vEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_oo514M1xEeKXmKr5CsvrhQ" base_NamedElement="_ooxTAM1xEeKXmKr5CsvrhQ" base_Property="_ooxTAM1xEeKXmKr5CsvrhQ"/>
+  <dds4ccm:CXField xmi:id="_9G14QM32EeKS8-YwlgRiXg" base_NamedElement="_9Gt8cM32EeKS8-YwlgRiXg" base_Property="_9Gt8cM32EeKS8-YwlgRiXg"/>
+  <dds4ccm:CXField xmi:id="_0N3UQM7ZEeKzG-1guXYv1w" base_NamedElement="_0NncoM7ZEeKzG-1guXYv1w" base_Property="_0NncoM7ZEeKzG-1guXYv1w"/>
+  <dds4ccm:CXInterface xmi:id="_J5mLcM7bEeKzG-1guXYv1w" base_Interface="_J5dokM7bEeKzG-1guXYv1w" base_NamedElement="_J5dokM7bEeKzG-1guXYv1w" isLocal="true"/>
+  <dds4ccm:CXOperation xmi:id="_OstVIM7bEeKzG-1guXYv1w" base_NamedElement="_OsnOgM7bEeKzG-1guXYv1w" base_Operation="_OsnOgM7bEeKzG-1guXYv1w"/>
+  <dds4ccm:CXOperation xmi:id="_PwYYoM7bEeKzG-1guXYv1w" base_NamedElement="_PwOAkM7bEeKzG-1guXYv1w" base_Operation="_PwOAkM7bEeKzG-1guXYv1w"/>
+  <dds4ccm:CXOperation xmi:id="_RktdAM7bEeKzG-1guXYv1w" base_NamedElement="_RkokgM7bEeKzG-1guXYv1w" base_Operation="_RkokgM7bEeKzG-1guXYv1w"/>
+  <dds4ccm:CXParameter xmi:id="_cCAiUM7bEeKzG-1guXYv1w" base_NamedElement="_cB0VEM7bEeKzG-1guXYv1w" base_Parameter="_cB0VEM7bEeKzG-1guXYv1w"/>
+  <dds4ccm:CXParameter xmi:id="_dYsBYM7bEeKzG-1guXYv1w" base_NamedElement="_dYhCQM7bEeKzG-1guXYv1w" base_Parameter="_dYhCQM7bEeKzG-1guXYv1w"/>
+  <dds4ccm:CXField xmi:id="_h1xs8Cw_EeOnz8rx646cHw" base_NamedElement="_h1VoECw_EeOnz8rx646cHw" base_Property="_h1VoECw_EeOnz8rx646cHw"/>
+  <dds4ccm:CXField xmi:id="_l_jlwCw_EeOnz8rx646cHw" base_NamedElement="_l_UVMCw_EeOnz8rx646cHw" base_Property="_l_UVMCw_EeOnz8rx646cHw"/>
+  <dds4ccm:CXField xmi:id="_o3COsC07EeOnz8rx646cHw" base_NamedElement="_o2wh4C07EeOnz8rx646cHw" base_Property="_o2wh4C07EeOnz8rx646cHw"/>
+  <dds4ccm:CXEnum xmi:id="_fmPt4C09EeOnz8rx646cHw" base_NamedElement="_fl8L4C09EeOnz8rx646cHw" base_Enumeration="_fl8L4C09EeOnz8rx646cHw"/>
+  <dds4ccm:CXModule xmi:id="_i7Wt4FbREeOvGvp52SlPdw" base_NamedElement="_i7OLAFbREeOvGvp52SlPdw" base_Package="_i7OLAFbREeOvGvp52SlPdw"/>
+  <dds4ccm:IDLFileDependency xmi:id="_LzfWAFd3EeOvGvp52SlPdw" base_Dependency="_LzTv0Fd3EeOvGvp52SlPdw"/>
+  <dds4ccm:CXOperation xmi:id="_iONpUKfiEeSm39gXI0jJ9A" base_NamedElement="_iONCQKfiEeSm39gXI0jJ9A" base_Operation="_iONCQKfiEeSm39gXI0jJ9A"/>
+  <dds4ccm:CXParameter xmi:id="_iOO3cKfiEeSm39gXI0jJ9A" base_NamedElement="_iOOQYKfiEeSm39gXI0jJ9A" base_Parameter="_iOOQYKfiEeSm39gXI0jJ9A"/>
+  <dds4ccm:IDLFileSpecification xmi:id="_MM6LwBmIEemDZvMdb5RUKA" base_Class="_MM3vgBmIEemDZvMdb5RUKA"/>
+  <dds4ccm:CXTypeDef xmi:id="_jzUJ8PQREemoh4MsjC7SUA" base_NamedElement="_jzLAAPQREemoh4MsjC7SUA" base_DataType="_jzLAAPQREemoh4MsjC7SUA">
+    <type xmi:type="dds4ccm:CXPrimitive" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_DO-O40DsEd-pwPnT_VsB_g"/>
+  </dds4ccm:CXTypeDef>
+  <dds4ccm:InterfacePort xmi:id="_a2T3EPQvEemDhNSmX_9RrQ" base_Port="_a2TQAPQvEemDhNSmX_9RrQ" isConjugated="true"/>
+  <dds4ccm:CXParameter xmi:id="_dDMIgPHOEeqH57inONzpcw" base_NamedElement="_r8QYxEm0EeCCyb1DaQvR3Q" base_Parameter="_r8QYxEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDMvkPHOEeqH57inONzpcw" base_NamedElement="_r8aJwEm0EeCCyb1DaQvR3Q" base_Parameter="_r8aJwEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDMvkfHOEeqH57inONzpcw" base_NamedElement="_r8j6wEm0EeCCyb1DaQvR3Q" base_Parameter="_r8j6wEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDNWoPHOEeqH57inONzpcw" base_NamedElement="_r8j6xUm0EeCCyb1DaQvR3Q" base_Parameter="_r8j6xUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDNWofHOEeqH57inONzpcw" base_NamedElement="_r821sEm0EeCCyb1DaQvR3Q" base_Parameter="_r821sEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDNWovHOEeqH57inONzpcw" base_NamedElement="_r821tUm0EeCCyb1DaQvR3Q" base_Parameter="_r821tUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDN9sPHOEeqH57inONzpcw" base_NamedElement="_r9JwoEm0EeCCyb1DaQvR3Q" base_Parameter="_r9JwoEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDN9sfHOEeqH57inONzpcw" base_NamedElement="_r9JwpUm0EeCCyb1DaQvR3Q" base_Parameter="_r9JwpUm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDN9svHOEeqH57inONzpcw" base_NamedElement="_r9Thokm0EeCCyb1DaQvR3Q" base_Parameter="_r9Thokm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDN9s_HOEeqH57inONzpcw" base_NamedElement="_r9crkEm0EeCCyb1DaQvR3Q" base_Parameter="_r9crkEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDOkwPHOEeqH57inONzpcw" base_NamedElement="_r9mclEm0EeCCyb1DaQvR3Q" base_Parameter="_r9mclEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDOkwfHOEeqH57inONzpcw" base_NamedElement="_r9wNkkm0EeCCyb1DaQvR3Q" base_Parameter="_r9wNkkm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDOkwvHOEeqH57inONzpcw" base_NamedElement="_iQkZwKfiEeSm39gXI0jJ9A" base_Parameter="_iQkZwKfiEeSm39gXI0jJ9A"/>
+  <dds4ccm:CXParameter xmi:id="_dDOkw_HOEeqH57inONzpcw" base_NamedElement="_r95Xhkm0EeCCyb1DaQvR3Q" base_Parameter="_r95Xhkm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDPL0PHOEeqH57inONzpcw" base_NamedElement="_r-MScEm0EeCCyb1DaQvR3Q" base_Parameter="_r-MScEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDPL0fHOEeqH57inONzpcw" base_NamedElement="_r-WDcEm0EeCCyb1DaQvR3Q" base_Parameter="_r-WDcEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDPL0vHOEeqH57inONzpcw" base_NamedElement="_r-f0cEm0EeCCyb1DaQvR3Q" base_Parameter="_r-f0cEm0EeCCyb1DaQvR3Q"/>
+  <dds4ccm:CXParameter xmi:id="_dDPL0_HOEeqH57inONzpcw" base_NamedElement="_RkurIM7bEeKzG-1guXYv1w" base_Parameter="_RkurIM7bEeKzG-1guXYv1w"/>
+  <dds4ccm:CXParameter xmi:id="_dDPy4PHOEeqH57inONzpcw" base_NamedElement="_Pwa04M7bEeKzG-1guXYv1w" base_Parameter="_Pwa04M7bEeKzG-1guXYv1w"/>
+  <dds4ccm:CXParameter xmi:id="_dDPy4fHOEeqH57inONzpcw" base_NamedElement="_OsujQM7bEeKzG-1guXYv1w" base_Parameter="_OsujQM7bEeKzG-1guXYv1w"/>
+</xmi:XMI>

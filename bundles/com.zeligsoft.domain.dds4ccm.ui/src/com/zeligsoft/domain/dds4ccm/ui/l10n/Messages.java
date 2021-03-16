@@ -107,6 +107,8 @@ public class Messages
 	public static String RefactorCleanReferenceAction_DialogTitle;
 	public static String CleanReferences_OK;
 	public static String CleanReferences_Noop;
+	public static String CleanRSADiagramLayout_CommandLabel;
+	public static String CleanRSADiagramLayout_DialogTitle;
 	public static String RefactorContainerProcess_DialogTitle;	
 	public static String ConvertStructToField_DialogTitle;
 	public static String ConvertFieldToStruct_DialogTitle;
