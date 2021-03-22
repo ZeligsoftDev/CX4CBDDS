@@ -900,5 +900,29 @@
                 class="com.zeligsoft.domain.dds4ccm.ui.listeners.DDS4CCMListener">
           </listener>
        </extension>
+       <extension
+             point="org.eclipse.ui.popupMenus">
+          <objectContribution
+                adaptable="true"
+                id="com.zeligsoft.domain.dds4ccm.ui.exporttool"
+                objectClass="org.eclipse.core.resources.IFile">
+             <menu
+                   id="com.zeligsoft.domain.dds4ccm.ui.Tools"
+                   label="Export Tools"
+                   path="additions">
+                <separator
+                      name="additions">
+                </separator>
+             </menu>
+             <action
+                   class="com.zeligsoft.domain.dds4ccm.ui.actions.ExportToUMLActionDelegate"
+                   enablesFor="1"
+                   id="com.zeligsoft.domain.dds4ccm.ui.quickExport"
+                   label="Export to UML"
+                   menubarPath="com.zeligsoft.domain.dds4ccm.ui.Tools/additions"
+                   style="push">
+             </action>
+          </objectContribution>
+       </extension>
     
 </plugin>
