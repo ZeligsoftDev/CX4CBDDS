@@ -23,7 +23,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Comment;

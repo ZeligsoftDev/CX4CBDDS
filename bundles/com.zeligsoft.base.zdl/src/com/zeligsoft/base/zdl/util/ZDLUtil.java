@@ -51,7 +51,6 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.gmf.runtime.emf.core.util.PackageUtil;
 import org.eclipse.osgi.util.NLS;
@@ -65,6 +64,8 @@ import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
+import org.eclipse.uml2.uml.Extension;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
@@ -261,8 +262,20 @@ public class ZDLUtil
 				}
 			}
 		} else {
-			// it's an instance of a profile class?
+			// try to get the profile
+			Profile profile = null;
+
+			if (modelElement.eResource() != null) {
+				EObject root = modelElement.eResource().getContents().get(0);
+				Set<Profile> profiles = ZDLUtil.getAppliedZDLProfiles(root);
+				if (!profiles.isEmpty()) {
+					profile = profiles.iterator().next();
+				}
+			}
 			NamedElement element = getNamedElement(modelElement.eClass());
+			if(element == null && profile != null) {
+				element = getNamedElement(modelElement.eClass(), profile);
+			}
 			if (element instanceof Class) {
 				// it is a profile class
 				List<NamedElement> zdls = traceToZDL(element);
@@ -540,7 +553,6 @@ public class ZDLUtil
 		Profile profile = mapping.getProfile();
 
 		EObject result;
-		Stereotype stereotype = null;
 
 		String metaclassName = getAbstractConceptMapping(profile, concept);
 		if (metaclassName != null) {
@@ -550,18 +562,8 @@ public class ZDLUtil
 			Class umlClass = getProfileClass(profile, concept);
 
 			if (umlClass instanceof Stereotype) {
-				stereotype = (Stereotype) umlClass;
-				metaclassName = getExtendedMetaclass(stereotype).getName();
-				result = UMLFactory.eINSTANCE
-					.create((EClass) UMLPackage.eINSTANCE
-						.getEClassifier(metaclassName));
-
-				// create and attach the stereotype
-				EClass stereotypeEClass = (EClass) profile
-					.getDefinition(stereotype);
-
-				// apply the stereotype
-				applyStereotype((Element) result, stereotypeEClass);
+				// create stereotype application and return it
+				return createZDLConceptIn(owner, concept);
 			} else {
 				EClass eclass = (EClass) profile.getDefinition(umlClass);
 				result = EcoreUtil.create(eclass);
@@ -622,18 +624,17 @@ public class ZDLUtil
 	 * <b>Note</b> that care must be taken with this method when it creates an
 	 * instance of a stereotype-mapped concept, as the new instance will not be
 	 * attached to any resource, so its stereotype application will be
-	 * free-floating. The {@link RSMWriter} oAW component takes care of this
-	 * situation by finding all floating stereotype instances and persisting
-	 * them in the resource.
+	 * free-floating. User is responsible to add this free floating stereotype
+	 * application to the appropriate resource.
 	 * </p>
 	 * 
-	 * @param context
-	 *            an element in the context of the profile mapping, or the
-	 *            profile, itself
-	 * @param concept
-	 *            the concept to instantiate
+	 * @param context an element in the context of the profile mapping, or the
+	 *                profile, itself
+	 * @param concept the concept to instantiate
 	 * 
-	 * @return the new instance of the concept
+	 * @return the new instance of the concept as a stereotype application not as an
+	 *         UML element
+	 *
 	 */
 	public static EObject createZDLConcept(EObject context, Class concept) {
 		Profile profile;
@@ -646,6 +647,7 @@ public class ZDLUtil
 
 		EObject result;
 		Stereotype stereotype = null;
+		EObject stereotypeApplication = null;
 
 		String metaclassName = getAbstractConceptMapping(profile, concept);
 		if (metaclassName != null) {
@@ -667,7 +669,7 @@ public class ZDLUtil
 					.getDefinition(stereotype);
 
 				// apply the stereotype
-				applyStereotype((Element) result, stereotypeEClass);
+				stereotypeApplication = applyStereotype((Element) result, stereotypeEClass, stereotype);
 			} else {
 				EClass eclass = (EClass) profile.getDefinition(umlClass);
 				result = EcoreUtil.create(eclass);
@@ -678,7 +680,7 @@ public class ZDLUtil
 		// concept despite net yet being attached to the model
 		ZDLConceptInfo.initialize(result, profile, concept);
 
-		return result;
+		return stereotypeApplication == null ? result : stereotypeApplication;
 	}
 
 	/**
@@ -825,7 +827,7 @@ public class ZDLUtil
 
 		return createZDLConceptIn(container, conceptClass);
 	}
-
+	
 	/**
 	 * Creates a new instance of the specified concept in the specified
 	 * <tt>container</tt> element.
@@ -863,7 +865,9 @@ public class ZDLUtil
 					.getDefinition(stereotype);
 
 				// apply the stereotype
-				applyStereotype((Element) result, stereotypeEClass);
+				EObject stApp = applyStereotype((Element) result, stereotypeEClass, stereotype);
+				container.eResource().getContents().add(stApp);
+				
 			} else {
 				EClass eclass = (EClass) profile.getDefinition(umlClass);
 				result = EcoreUtil.create(eclass);
@@ -957,10 +961,26 @@ public class ZDLUtil
 	 */
 	private static Set<Profile> getAppliedZDLProfiles(EObject modelElement) {
 		if (!(modelElement instanceof Element)) {
+			
+			Profile profile = null;
+
+			if (modelElement.eResource() != null) {
+				EObject root = modelElement.eResource().getContents().get(0);
+				if (root instanceof Model) {
+					Set<Profile> profiles = ZDLUtil.getAppliedZDLProfiles(root);
+					if (!profiles.isEmpty()) {
+						profile = profiles.iterator().next();
+					}
+				}
+			}
 			// it's an instance of a profile class. Easy case
 			EClass eclass = modelElement.eClass();
 			Class profileClass = (Class) getNamedElement(eclass);
 
+			if(profile != null && profileClass == null) {
+				profileClass = (Class) getNamedElement(eclass, profile);
+			}
+			
 			if (profileClass == null) {
 				// for example, something from the Notation metamodel in the
 				// UML model has no correspondence to and ZDL metamodel
@@ -1675,18 +1695,15 @@ public class ZDLUtil
 			}
 
 			EClassifier eType = feature.getEType();
-			if ((eType instanceof EEnum)
-				&& EcoreUtil.isAncestor(profile, eType)) {
-
+			if ((eType instanceof EEnum)) {
 				EEnum eEnum = (EEnum) eType;
-				Enumeration profileEnum = (Enumeration) getNamedElement(eEnum);
-				Enumeration zdlEnum = (Enumeration) traceToZDL(profileEnum)
-					.get(0);
-
-				valueMapping = new EnumerationPropertyValueMapping(eEnum,
-					zdlEnum);
+				Enumeration profileEnum = (Enumeration) UMLUtil.getNamedElement(eEnum, profile);
+				if (profileEnum != null) {
+					Enumeration zdlEnum = (Enumeration) traceToZDL(profileEnum).get(0);
+					valueMapping = new EnumerationPropertyValueMapping(eEnum, zdlEnum);
+				}
 			}
-
+			
 			result = new ZDLPropertyMapping(profile, getAttribute(concept,
 				property, null), feature, ownerMapping, valueMapping);
 
@@ -2030,7 +2047,11 @@ public class ZDLUtil
 			// no stereotype application on a null element
 			result = null;
 		} else {
-			result = (T) getApplication((Element) value, stereotype);
+			if (value instanceof Element) {
+				result = (T) getApplication((Element) value, stereotype);
+			} else {
+				result = value;
+			}
 		}
 
 		return result;
@@ -2992,8 +3013,8 @@ public class ZDLUtil
 	 *            The stereotype to apply.
 	 * @return The stereotype application.
 	 */
-	protected static EObject applyStereotype(Element element, EClass definition) {
-		return STEREOTYPE_APPLICATION_HELPER.applyStereotype(element, definition);
+	protected static EObject applyStereotype(Element element, EClass definition, Stereotype stereotype) {
+		return STEREOTYPE_APPLICATION_HELPER.applyStereotype(element, definition, stereotype);
 	}
 
 	//
@@ -3919,5 +3940,30 @@ public class ZDLUtil
 		public boolean accept(EObject sourceElement) {
 			return isZDLConcept(sourceElement, concept);
 		}
+	}
+	
+	/**
+	 * Queries the base element of stereotype application
+	 * 
+	 * @param stereotypeApplication
+	 * @return
+	 */
+	public static Element getBaseElement(EObject stereotypeApplication) {
+		EClass definition = stereotypeApplication.eClass();
+		for (EStructuralFeature eStructuralFeature : definition
+			.getEAllStructuralFeatures()) {
+
+			if (eStructuralFeature.getName().startsWith(
+				Extension.METACLASS_ROLE_PREFIX)) {
+
+				Object value = stereotypeApplication.eGet(eStructuralFeature);
+
+				if (value instanceof Element) {
+					return (Element) value;
+				}
+			}
+		}
+
+		return null;
 	}
 }

@@ -32,12 +32,6 @@
     org.eclipse.emf.compare.ide.ui.feature.group, \
     org.eclipse.emf.compare.rcp.ui.feature.group, \
     org.eclipse.emf.compare.uml2.feature.group, \
-    org.eclipse.emf.compare.source.feature.group, \
-    org.eclipse.emf.compare.diagram.gmf.source.feature.group, \
-    org.eclipse.emf.compare.egit.source.feature.group, \
-    org.eclipse.emf.compare.ide.ui.source.feature.group, \
-    org.eclipse.emf.compare.rcp.ui.source.feature.group, \
-    org.eclipse.emf.compare.uml2.source.feature.group, \
     org.eclipse.emf.mwe.ui/1.4.0, \
     com.google.inject/3.0.0.v201605172100, \
     org.eclipse.xpand/2.2.0.v201605260315, \
