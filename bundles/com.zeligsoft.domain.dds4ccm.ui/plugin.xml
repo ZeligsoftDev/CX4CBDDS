@@ -403,6 +403,21 @@
               </with>
            </visibleWhen>
         </command>
+        <command
+              commandId="com.zeligsoft.domain.dds4ccm.ui.cleanrsadiagrams"
+              label="Clean RSA Diagrams"
+              style="push">
+           <visibleWhen
+                 checkEnabled="false">
+              <with
+                    variable="selection">
+                 <test
+                       property="com.zeligsoft.zdl.tester.isZDLConcept"
+                       value="DDS4CCM::DDS4CCM::DDS4CCMModel">
+                 </test>
+              </with>
+           </visibleWhen>
+        </command>
       </menuContribution>
       <menuContribution
             allPopups="false"
@@ -543,6 +558,11 @@
             id="com.zeligsoft.domain.dds4ccm.ui.idlimport"
             name="Import IDL">
       </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.CleanRSADiagramLayout"
+            id="com.zeligsoft.domain.dds4ccm.ui.cleanrsadiagrams"
+            name="Clean RSA Diagrams">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -677,9 +697,26 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
-            locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?endof=editMenu">
+            locationURI="popup:org.eclipse.papyrus.uml.diagram.ui.popupmenu.format">
          <command
-               commandId="com.zeligsoft.dds4ccm.ui.edit.deleteline"
+               commandId="com.zeligsoft.domain.dds4ccm.ui.importlayout"
+               label="Import Diagram Layout"
+               style="push">
+            <visibleWhen>
+               <with
+                     variable="activeEditorId">
+                  <equals
+                        value="org.eclipse.papyrus.infra.core.papyrusEditor">
+                  </equals>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command
+               commandId="com.zeligsoft.dds4ccm.ui."
                disabledIcon="IMG_TOOL_DELETE_DISABLED"
                icon="IMG_TOOL_DELETE"
                label="Delete Selected Line"
@@ -713,6 +750,11 @@
             defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.DeleteSelectedLineCommandHandler"
             id="com.zeligsoft.dds4ccm.ui.edit.deleteline"
             name="Delete Selected Line">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.ImportDiagramLayout"
+            id="com.zeligsoft.domain.dds4ccm.ui.importlayout"
+            name="Import Diagram Layout">
       </command>
    </extension>
    <extension
