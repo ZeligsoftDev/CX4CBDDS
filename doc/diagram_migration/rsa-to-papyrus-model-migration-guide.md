@@ -45,7 +45,7 @@ The UML model generated from RSA contains diagram layout information for all com
 
 Here are steps to migrate diagrams.
 
-0. Set grid pixel size in the preference for the best result
+0. Set grid pixel size in the preference page for the best result. The default value in RSA is 12 pixels but it is 20 pixels in Papyrus. Migration produces better results when this value is set to 12 or smaller.
 
 ![Grid pixel size](images/grid_pixel.png)
 
@@ -65,6 +65,6 @@ Here are steps to migrate diagrams.
 
 ![After migrate](images/after_migrate.png)
 
-5. Once all diagrams are imported run "Model refactor->Clean RSA diagrams" to clean RSA diagram information stored in the UML file. You do not want to check in the Papyrus model without removing this extra information on your UML file.
+5. Once all diagrams are imported, run "Model refactor->Clean RSA diagrams" to clean RSA diagram information stored in the UML file. You do not want to check in the Papyrus model without removing this extra information on your UML file.
 
 ![Clean RSA diagram](images/clean_diagram.png)
