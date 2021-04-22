@@ -124,6 +124,8 @@ public class ZDLMetamodel
 	private Map<Classifier, Type> typeMap;
 
 	private Set<Type> allTypes;
+	
+	private Resource targetResource;
 
 	// for the purpose of instantiating ZDL concepts, we require a workflow to
 	// specify the domain profile
@@ -433,7 +435,16 @@ public class ZDLMetamodel
 			throw new IllegalStateException(
 				"No context available in which to instantiate the concept"); //$NON-NLS-1$
 		}
-		return ZDLUtil.createZDLConcept(contextProfile, zdlConcept);
+		EObject stereotypeApplication = ZDLUtil.createZDLConcept(contextProfile, zdlConcept);
+		Element baseElement = ZDLUtil.getBaseElement(stereotypeApplication);
+		
+		// save stereotype application to the target resource 
+		// otherwise stereotypes are not found on the base element
+		if (baseElement != null && stereotypeApplication.eResource() == null) {
+			targetResource.getContents().add(stereotypeApplication);
+		}
+
+		return baseElement != null ? baseElement : stereotypeApplication;
 	}
 
 	Type getBasicEObjectType() {
@@ -479,6 +490,7 @@ public class ZDLMetamodel
 				@Override
 				protected Object evaluateInternal(Object target, Object[] params) {
 					Package pkg = (Package) target;
+					targetResource = pkg.eResource();
 					String profileURI = (String) params[0];
 					Profile profile = findContextProfile(pkg, profileURI);
 
