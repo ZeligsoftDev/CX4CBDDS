@@ -37,6 +37,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -54,12 +55,14 @@ import org.eclipse.papyrus.infra.ui.editor.IMultiDiagramEditor;
 import org.eclipse.papyrus.infra.ui.util.EditorUtils;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.resource.UMLResource;
 import org.osgi.framework.Bundle;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
@@ -194,7 +197,38 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 			platformUri = uri;
 		}
 		validationResult = Status.OK_STATUS;
-		// Run validation on a UI thread
+		
+		if (!PlatformUI.isWorkbenchRunning()) {
+
+			// perform non UI validation
+
+			ResourceSet set = new ResourceSetImpl();
+			set.getPackageRegistry().put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
+			set.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION,
+					UMLResource.Factory.INSTANCE);
+			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION,
+					UMLResource.Factory.INSTANCE);
+
+			Resource res = set.getResource(platformUri, true);
+			Package root = (Package) res.getContents().get(0);
+
+			DDS4CCMDiagnostician diagnostician = new DDS4CCMDiagnostician();
+
+			BasicDiagnostic diagnostic = diagnostician.createDefaultDiagnostic(root);
+			Map<Object, Object> context = diagnostician.createDefaultContext();
+
+			diagnostician.validate(root, diagnostic, context);
+			if (diagnostic.getSeverity() == Diagnostic.ERROR) {
+				validationResult = createStatus(IStatus.ERROR, "Model validation reported error(s)");
+			} else if (diagnostic.getSeverity() == Diagnostic.WARNING) {
+				validationResult = createStatus(IStatus.WARNING, "Model validation reported warning(s)");
+			}
+
+			return validationResult;
+		}
+		
+		
+		// Run validation on a UI thread for markers and console messages
 		Display.getDefault().syncExec(new Runnable() {
 			@Override
 			public void run() {

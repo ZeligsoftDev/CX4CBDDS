@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
@@ -37,6 +38,7 @@ public class DDS4CCMDiagnostician extends EcoreDiagnostician {
 
 	public DDS4CCMDiagnostician() {
 		super();
+		this.progressMonitor = new NullProgressMonitor();
 	}
 
 	@Override
