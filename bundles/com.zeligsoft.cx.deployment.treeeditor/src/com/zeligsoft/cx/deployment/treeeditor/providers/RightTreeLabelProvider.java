@@ -115,7 +115,21 @@ public class RightTreeLabelProvider
 			Property part = (Property) element;
 
 			if( ZDLUtil.isZDLConcept(part, ZMLMMNames.DEPLOYMENT_PART)) {
-				return ZDeploymentUtil.getQualifiedName(part);
+				if( ZDeploymentUtil.getParentPart(part) == null) {
+					return part.getName();
+				}
+				Property dp = part;
+				String qn = ""; //$NON-NLS-1$
+				while( dp != null ) {
+					Property pdp = ZDeploymentUtil.getParentPart(dp);
+					if( pdp == null) {
+						qn = dp.getName() + qn;
+					} else {
+						qn = " :: " + dp.getName() + qn; //$NON-NLS-1$
+					}
+					dp = pdp;					
+				}
+				return qn;
 			}
 			return part.getName();
 

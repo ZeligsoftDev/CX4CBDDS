@@ -3,16 +3,11 @@
  */
 package com.zeligsoft.domain.dds4ccm.ui.providers;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.papyrus.uml.tools.providers.UMLFilteredLabelProvider;
 import org.eclipse.swt.graphics.Image;
-
-import com.zeligsoft.base.Activator;
 
 /**
  * @author eposse

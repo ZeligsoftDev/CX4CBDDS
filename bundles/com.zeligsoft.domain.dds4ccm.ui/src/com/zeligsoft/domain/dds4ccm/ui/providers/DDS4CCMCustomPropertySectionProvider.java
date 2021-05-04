@@ -19,8 +19,8 @@ package com.zeligsoft.domain.dds4ccm.ui.providers;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -56,8 +56,10 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
+
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.staticapi.util.ZDLFactoryRegistry;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
@@ -74,8 +76,8 @@ import com.zeligsoft.domain.dds4ccm.utils.ModelTypeDDS4CCM;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
 import com.zeligsoft.domain.idl3plus.api.Connectors.ConnectorDef;
 import com.zeligsoft.domain.idl3plus.api.Generics.TemplateModule;
-import com.zeligsoft.domain.idl3plus.api.Generics.TypeParameter;
 import com.zeligsoft.domain.idl3plus.api.Generics.TemplateSignature;
+import com.zeligsoft.domain.idl3plus.api.Generics.TypeParameter;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.api.CCM_Component.InterfacePort;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
@@ -83,6 +85,7 @@ import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.api.IDL.CXInterface;
 import com.zeligsoft.domain.omg.corba.ui.providers.CORBACustomPropertySection;
 import com.zeligsoft.domain.zml.api.ZML_Component.PortTypeable;
+import com.zeligsoft.domain.zml.util.ZDeploymentUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -100,8 +103,17 @@ public class DDS4CCMCustomPropertySectionProvider implements
 	@Override
 	public Map<String, Control> createSection(Composite parent,
 			CXPropertyDescriptor descriptor, Property property) {
-	
-		if (property.getName().equals(DDS4CCMNames.DDS4_CCMMODEL__FIXED_HEADER)
+		if ("name".equals(property.getName())
+				&& ZDLUtil.isZDLConcept(descriptor.getContext(), ZMLMMNames.DEPLOYMENT_PART)) {
+			Map<String, Control> widgetMap = CXPropertiesWidgetFactory.createSectionForStringType(parent, descriptor);
+			NamedElement modelElement = ZDeploymentUtil.getModelElement((Property) descriptor.getContext());
+			if (!ZDLUtil.isZDLConcept(modelElement, CCMNames.NODE_INSTANCE)
+					&& ZDeploymentUtil.getParentPart((Property) descriptor.getContext()) != null) {
+				Control text = widgetMap.get(CXPropertiesWidgetFactory.PROPERTY_VALUE);
+				text.setEnabled(false);
+			}
+			return widgetMap;
+		} else if (property.getName().equals(DDS4CCMNames.DDS4_CCMMODEL__FIXED_HEADER)
 				|| property.getName().equals(
 						DDS4CCMNames.DDS4_CCMMODEL__FIXED_FOOTER)) {
 			return CXPropertiesWidgetFactory.createSectionForStringType(parent,

@@ -204,12 +204,8 @@ public class LeftTreeLabelProvider
 		if (element instanceof Property) {
 			Property part = (Property) element;
 
-			if( ZDLUtil.isZDLConcept(part, ZMLMMNames.DEPLOYMENT_PART)) {
-				if( ZDeploymentUtil.getParentPart(part) == null) {
-					return part.getName();
-				}
-				return ((NamedElement)ZDLUtil.getValue
-					(part, ZMLMMNames.DEPLOYMENT_PART, ZMLMMNames.DEPLOYMENT_PART__MODEL_ELEMENT)).getName();
+			if (ZDLUtil.isZDLConcept(part, ZMLMMNames.DEPLOYMENT_PART)) {
+				return part.getName();
 			}
 			return part.getName();
 		}
