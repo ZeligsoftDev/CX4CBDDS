@@ -53,8 +53,8 @@ Void visitNodeInstance(DeploymentPart part, Object obj, CCM::CCM_Deployment::Dep
 	
 create Node visitNodeInstance(DeploymentPart deploymentPart, CCM::CCM_Target::NodeInstance nodeInstance, CCM::CCM_Deployment::DeploymentPlan deployment, Domain domain ) :
 	domain.node.add(this) ->
-	this.label.add(nodeInstance.label) ->
-	this.name.add(nodeInstance.name) ->
+	this.label.add(deploymentPart.name) ->
+	this.name.add(deploymentPart.name) ->
 	nodeInstance.type.resource.visitResourceProperty(this, deploymentPart);
 	
 create Resource visitResourceProperty(CCM::CCM_Target::ResourceProperty property, Node node, DeploymentPart part ) :
