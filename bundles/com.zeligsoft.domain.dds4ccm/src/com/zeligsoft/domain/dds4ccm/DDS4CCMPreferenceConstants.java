@@ -49,6 +49,16 @@ public final class DDS4CCMPreferenceConstants {
 	public static final String DEFAULT_IDL_FIXED_FOOTER = ""; //$NON-NLS-1$
 
 	/**
+	 * Default sequence bound
+	 */
+	public static final String IDL_SEQUENCE_BOUND = "IDL_SEQUENCE_BOUND"; //$NON-NLS-1$
+
+	/**
+	 * Default value for sequence bound
+	 */
+	public static final String DEFAULT_IDL_SEQUENCE_BOUND = "100"; //$NON-NLS-1$
+	
+	/**
 	 * Enable codegen util feature
 	 */
 	public static final String ENABLE_CODEGEN = "ENABLE_DDS4CCM_CODEGEN"; //$NON-NLS-1$
@@ -70,7 +80,7 @@ public final class DDS4CCMPreferenceConstants {
 	/**
 	 * Default value for asynchronous connector type for axcioma migration
 	 */
-	public static final String DEFAULT_ASYNC_CONNECTOR_TYPE_AXCIOMA_MIGRATION = ConnectorType.AMI4CCM_Connector.name(); //$NON-NLS-1$
+	public static final String DEFAULT_ASYNC_CONNECTOR_TYPE_AXCIOMA_MIGRATION = ConnectorType.AMI4CCM_Connector.name();
 	
 	/**
 	 * Synchronous connector type for axcioma migration
@@ -80,7 +90,7 @@ public final class DDS4CCMPreferenceConstants {
 	/**
 	 * Default value for synchronous connector type for axcioma migration
 	 */
-	public static final String DEFAULT_SYNC_CONNECTOR_TYPE_AXCIOMA_MIGRATION = ConnectorType.CORBA4CCM_Connector.name(); //$NON-NLS-1$
+	public static final String DEFAULT_SYNC_CONNECTOR_TYPE_AXCIOMA_MIGRATION = ConnectorType.CORBA4CCM_Connector.name();
 
 
 	

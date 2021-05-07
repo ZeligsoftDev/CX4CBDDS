@@ -63,6 +63,7 @@ import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Conn_Type;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_DDS4CCM_Impl;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Home;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Preproc_Pragma_Ndds;
+import com.zeligsoft.domain.omg.corba.dsl.idl.SequenceType;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Specification;
 import com.zeligsoft.domain.omg.corba.dsl.idl.StructType;
 import com.zeligsoft.domain.omg.corba.dsl.idl.TemplateDefinition;
@@ -299,6 +300,31 @@ public class NGCWriter extends IDL3PlusWriter {
 		public NGCWriterSwitch(String fileName, boolean isModelLibrary) {
 			super(fileName);
 			this.isModelLibrary = isModelLibrary;
+		}
+		
+		@Override
+		public Object caseSequenceType(SequenceType object) {
+			String returnType = "sequence <";
+
+			if (object.getType() != null) {
+				returnType += doSwitch(object.getType());
+			}
+
+			if(object.getSize() == null) {
+				IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+				// use default value in preference page
+				String value = store.get(
+						DDS4CCMPreferenceConstants.IDL_SEQUENCE_BOUND,
+						DDS4CCMPreferenceConstants.DEFAULT_IDL_SEQUENCE_BOUND);
+				if(!"-1".equals(value)) {
+					returnType += ", " + value;
+				}
+			} else {
+				returnType += ", " + doSwitch(object.getSize());
+			}
+
+			returnType += ">";
+			return returnType;
 		}
 		
 		@Override

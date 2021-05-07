@@ -21,6 +21,8 @@ import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -50,6 +52,8 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 	private Text fixedHeader;
 
 	private Text fixedFooter;
+	
+	private Text defaultSequenceBound;
 
 	private Text locationPrefix;
 	
@@ -135,7 +139,7 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 		data.horizontalSpan = 2;
 
 		Group group = new Group(parent, SWT.NULL);
-		group.setLayout(new GridLayout(1, false));
+		group.setLayout(new GridLayout(2, false));
 		group.setLayoutData(data);
 		group.setText(Messages.DDS4CCMPreferencePage_IDLGenerationGroupTitle);
 
@@ -146,6 +150,7 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 		fixedHeader = new Text(headerGroup, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL);
 		GridData data1 = new GridData(GridData.FILL_BOTH);
+		data1.heightHint = 70;
 		fixedHeader.setLayoutData(data1);
 		fixedHeader.setText(store.get(
 				DDS4CCMPreferenceConstants.IDL_FIXED_HEADER,
@@ -161,6 +166,33 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 		fixedFooter.setText(store.get(
 				DDS4CCMPreferenceConstants.IDL_FIXED_FOOTER,
 				DDS4CCMPreferenceConstants.DEFAULT_IDL_FIXED_FOOTER));
+		
+		Label label = new Label(group, SWT.NULL);
+		label.setText(Messages.DDS4CCMPreferencePage_SequenceBound);
+		defaultSequenceBound = new Text(group, SWT.BORDER);
+		defaultSequenceBound.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		defaultSequenceBound.setText(store.get(
+				DDS4CCMPreferenceConstants.IDL_SEQUENCE_BOUND,
+				DDS4CCMPreferenceConstants.DEFAULT_IDL_SEQUENCE_BOUND));
+		defaultSequenceBound.addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent e) {
+				try {
+					Integer.parseInt(defaultSequenceBound.getText());
+				} catch (NumberFormatException ex) {
+					// illegal number so restore value
+					defaultSequenceBound.setText(store.get(DDS4CCMPreferenceConstants.IDL_SEQUENCE_BOUND,
+							DDS4CCMPreferenceConstants.DEFAULT_IDL_SEQUENCE_BOUND));
+				}				
+			}
+			
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 	@Override
@@ -175,13 +207,15 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 				.setSelection(CXPreferenceConstants.GENERATE_IDL_COMMENT_DEFAULT);
 
 	}
-
+	
 	@Override
 	public boolean performOk() {
 		store.put(DDS4CCMPreferenceConstants.IDL_FIXED_HEADER,
 				fixedHeader.getText());
 		store.put(DDS4CCMPreferenceConstants.IDL_FIXED_FOOTER,
 				fixedFooter.getText());
+		store.put(DDS4CCMPreferenceConstants.IDL_SEQUENCE_BOUND,
+				defaultSequenceBound.getText());
 		store.put(DDS4CCMPreferenceConstants.GLOBAL_LOCATION_PREFIX,
 				locationPrefix.getText());
 		cxStore.putBoolean(CXPreferenceConstants.GENERATE_IDL_COMMENT,
