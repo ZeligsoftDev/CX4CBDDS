@@ -51,6 +51,7 @@ public class Messages
 	public static String DDS4CCMPreferencePage_DescriptorSettingsLabel;
 	public static String DDS4CCMPreferencePage_FixedFooter;
 	public static String DDS4CCMPreferencePage_FixedHeader;
+	public static String DDS4CCMPreferencePage_SequenceBound;
 	public static String DDS4CCMPreferencePage_GlobalPrefixLabel;
 	public static String DDS4CCMPreferencePage_IDLGenerationGroupTitle;
 	public static String DDS4CCMPreferencePage_LocationPrefixLabel;
