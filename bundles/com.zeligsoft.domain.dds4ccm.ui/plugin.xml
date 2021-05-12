@@ -781,17 +781,4 @@
             sequence="DEL">
       </key>     
    </extension>
-       <extension
-          point="org.eclipse.ui.views.properties.tabbed.propertySections">
-       <propertySections
-             contributorId="TreeOutlinePage">
-          <propertySection
-                afterSection="modeler.property.section.AggregationPropertySection"
-                class="com.zeligsoft.cx.ui.properties.sections.CXPropertyTabControllerSection"
-                filter="com.zeligsoft.domain.dds4ccm.ui.internal.filters.GeneralSectionControllerFilter"
-                id="com.zeligsoft.domain.dds4ccm.ui.generalSectionController"
-                tab="modeler.property.tab.GeneralPropertySection">
-          </propertySection>
-       </propertySections>
-	</extension>
 </plugin>

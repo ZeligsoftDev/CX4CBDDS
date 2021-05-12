@@ -54,9 +54,19 @@ public class CCMXtendUtils {
 
 	public static boolean requiresInclude(org.eclipse.uml2.uml.Element element,
 			org.eclipse.uml2.uml.Element referencedElement) {
+
 		org.eclipse.uml2.uml.Package elementPkg = getDefnFilePkg(element);
 		org.eclipse.uml2.uml.Package referencedElementPkg = getDefnFilePkg(referencedElement);
 
+		// Do not include DDS_DCPS.idl for CCM_DDS::UNLIMITED sequence bound
+		if(ZDLUtil.isZDLConcept(element, CXDomainNames.CXSEQUENCE) && ZDLUtil.isZDLConcept(referencedElement, CXDomainNames.CXCONSTANT)) {
+			NamedElement constant = (NamedElement)referencedElement;
+			Package containerPkg = constant.getNearestPackage();
+			if("UNLIMITED".equals(constant.getName()) && "CCM_DDS".equals(containerPkg.getName())){
+				return false;
+			}
+		}
+		
 		return !elementPkg.equals(referencedElementPkg);
 	}
 
