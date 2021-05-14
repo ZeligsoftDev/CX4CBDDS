@@ -46,6 +46,7 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 
 /**
@@ -69,7 +70,7 @@ public class ICMBrowseDialog extends TrayDialog {
 	public void create() {
 		super.create();
 		Shell shell = getShell();
-		shell.setText("ICM Import Dialog");
+		shell.setText(Messages.ICMBrowseDialog_DialogTitle);
 	}
 
 	public URI getSelectedResourceUri() {
@@ -80,8 +81,8 @@ public class ICMBrowseDialog extends TrayDialog {
 		if (selectedObject instanceof IFile) {
 			URI uri = URI.createPlatformResourceURI(((IFile) selectedObject).getFullPath().toString(), false);
 			Package root = UML2Util.load(rset, uri, UMLPackage.Literals.PACKAGE);
-			String pathmap = CCMUtil.getZCXAnnotationDetail(root, "pathmap", UML2Util.EMPTY_STRING);
-			return URI.createURI("pathmap://" + pathmap).appendSegment(uri.lastSegment());
+			String pathmap = CCMUtil.getZCXAnnotationDetail(root, "pathmap", UML2Util.EMPTY_STRING); //$NON-NLS-1$
+			return URI.createURI("pathmap://" + pathmap).appendSegment(uri.lastSegment()); //$NON-NLS-1$
 		}
 		return null;
 	}
@@ -175,11 +176,11 @@ public class ICMBrowseDialog extends TrayDialog {
 				if (member instanceof IFile) {
 					IFile file = (IFile) member;
 					String ext = file.getFullPath().getFileExtension();
-					if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())) {
+					if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())) { //$NON-NLS-1$
 						URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), false);
 						Package root = UML2Util.load(rset, uri, UMLPackage.Literals.PACKAGE);
-						if (root != null && ZDLUtil.isZDLProfile(root, "cxDDS4CCM")) {
-							String pathmap = CCMUtil.getZCXAnnotationDetail(root, "pathmap", UML2Util.EMPTY_STRING);
+						if (root != null && ZDLUtil.isZDLProfile(root, "cxDDS4CCM")) { //$NON-NLS-1$
+							String pathmap = CCMUtil.getZCXAnnotationDetail(root, "pathmap", UML2Util.EMPTY_STRING); //$NON-NLS-1$
 							if (!UML2Util.isEmpty(pathmap)) {
 								result.add(member);
 							}

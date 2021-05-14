@@ -1,10 +1,19 @@
 package com.zeligsoft.cx.ui.pathmap;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
+
+import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
+import com.zeligsoft.cx.ui.l10n.Messages;
 
 public class CXDynamicURIConverter {
 
@@ -20,7 +29,7 @@ public class CXDynamicURIConverter {
 
 	public static CXPathmapDescriptor addMapping(URI pathmapUri, URI modelUri) {
 		String modelName = modelUri.lastSegment();
-		URI targetURI = modelUri.trimSegments(1).appendSegment("");
+		URI targetURI = modelUri.trimSegments(1).appendSegment(""); //$NON-NLS-1$
 
 		CXPathmapDescriptor desc = getPathmapDescriptor(pathmapUri);
 		if (desc != null && desc.getMapping().equals(targetURI)) {
@@ -35,9 +44,25 @@ public class CXDynamicURIConverter {
 			}
 		} else {
 			if (desc != null) {
-				// The model is either moved or
-				// pathmap is not unique in the workspace
-				// so delete the existing one.
+				// There is already registered pathmap to a different location
+				// It means the model library is either moved or a new model library
+				// is trying to register to the same pathmap URI
+				List<String> bindings = new ArrayList<String>();
+				bindings.add(desc.getPathmap().toString());
+				bindings.add(desc.getMapping().toString());
+				bindings.add(targetURI.toString());
+				String msg = NLS.bind(Messages.CXDynamicURIConverter_ConflictErrorMessage, bindings.toArray());
+				ZeligsoftCXUIPlugin.getDefault().warning(msg);
+				Display display = PlatformUI.getWorkbench().getDisplay();
+				if (display != null) {
+					PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+
+						@Override
+						public void run() {
+							MessageDialog.openWarning(Display.getCurrent().getActiveShell(), Messages.CXDynamicURIConverter_ConflictDialogTitle, msg);
+						}
+					});
+				}
 				desc.setEnabled(false);
 				desc.apply();
 				PATHMAPS.remove(pathmapUri);
@@ -51,7 +76,7 @@ public class CXDynamicURIConverter {
 	}
 
 	public static void removeMapping(URI modelUri) {
-		URI pathmapUri = getPathmapURI(modelUri).trimSegments(1).appendSegment("");
+		URI pathmapUri = getPathmapURI(modelUri).trimSegments(1).appendSegment(""); //$NON-NLS-1$
 		String modelName = modelUri.lastSegment();
 		CXPathmapDescriptor desc = getPathmapDescriptor(pathmapUri);
 		if (desc != null) {
@@ -67,7 +92,7 @@ public class CXDynamicURIConverter {
 	}
 
 	public static URI getPathmapURI(URI modelUri) {
-		URI targetUri = modelUri.trimSegments(1).appendSegment("");
+		URI targetUri = modelUri.trimSegments(1).appendSegment(""); //$NON-NLS-1$
 		String modelName = modelUri.lastSegment();
 		for (Entry<URI, CXPathmapDescriptor> entry : PATHMAPS.entrySet()) {
 			URI pathmapUri = entry.getKey();

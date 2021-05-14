@@ -42,6 +42,7 @@ import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
 import com.zeligsoft.cx.ui.properties.sections.ICXCustomPropertySection;
 import com.zeligsoft.cx.ui.utils.CXWidgetFactory;
+import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 
 /**
@@ -64,7 +65,7 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 
 	public void createSectionForDynamicPathmap(final Composite parent, final CXPropertyDescriptor descriptor) {
 
-		CXWidgetFactory.createLabel(parent, "Dynamic Pathmap : ", parent.getBackground());
+		CXWidgetFactory.createLabel(parent, Messages.DynamicPathmapCustomPropertySection_FieldLabel, parent.getBackground());
 
 		Composite composite = CXWidgetFactory.createFlatGridComposite(parent, 2, GridData.FILL_HORIZONTAL);
 		composite.setBackground(parent.getBackground());
@@ -156,7 +157,7 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 		if (UML2Util.isEmpty(pathmap)) {
 			return;
 		}
-		URI sourceURI = URI.createURI(PATHMAP_KEY + "://" + pathmap + "/", true);
+		URI sourceURI = URI.createURI(PATHMAP_KEY + "://" + pathmap + "/", true); //$NON-NLS-1$ //$NON-NLS-2$
 		CXDynamicURIConverter.addMapping(sourceURI, modelUri);
 
 	}
