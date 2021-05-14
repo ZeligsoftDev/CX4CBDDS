@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.gmf.runtime.common.core.util.Log;
 
 import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
+import com.zeligsoft.cx.ui.l10n.Messages;
 
 /**
  * Dynamic pathmap descriptor.
@@ -44,7 +45,7 @@ public class CXPathmapDescriptor {
 	private boolean isEnabled;
 
 	public CXPathmapDescriptor(URI sourceURI, URI targetURI, String modelName) {
-		id = "pathmap." + targetURI.authority();
+		id = "pathmap." + targetURI.authority(); //$NON-NLS-1$
 		registeredModels.add(modelName);
 		originalMapping = URIConverter.URI_MAP.get(sourceURI);
 		pathmap = sourceURI;
@@ -54,7 +55,7 @@ public class CXPathmapDescriptor {
 		String projName = targetURI.segment(1);
 		project = ResourcesPlugin.getWorkspace().getRoot().getProject(projName);
 
-		isEnabled = !ZeligsoftCXUIPlugin.getBooleanPreference(id + ".disabled");
+		isEnabled = !ZeligsoftCXUIPlugin.getBooleanPreference(id + ".disabled"); //$NON-NLS-1$
 	}
 
 	public void addRegisteredModel(String modelName) {
@@ -70,7 +71,7 @@ public class CXPathmapDescriptor {
 	}
 
 	static boolean isPathmapScheme(URI uri) {
-		return "pathmap".equals(uri.scheme());
+		return "pathmap".equals(uri.scheme()); //$NON-NLS-1$
 	}
 
 	static boolean isEligible(URI source, URI target) {
@@ -87,7 +88,7 @@ public class CXPathmapDescriptor {
 		this.isEnabled = isEnabled;
 
 		if (oldEnabled != isEnabled) {
-			ZeligsoftCXUIPlugin.setPreference(id + ".disabled", !isEnabled);
+			ZeligsoftCXUIPlugin.setPreference(id + ".disabled", !isEnabled); //$NON-NLS-1$
 		}
 	}
 
@@ -116,11 +117,11 @@ public class CXPathmapDescriptor {
 
 		if (isEnabled()) {
 			if (!mapping.equals(current) && project.exists()) {
-				Log.info(ZeligsoftCXUIPlugin.getDefault(), 0, "Workspace URI Mapping: " + pathmap);
+				Log.info(ZeligsoftCXUIPlugin.getDefault(), 0, Messages.CXPathmapDescriptor_AddingPathmapUri + pathmap);
 				URIConverter.URI_MAP.put(pathmap, mapping);
 			}
 		} else {
-			Log.info(ZeligsoftCXUIPlugin.getDefault(), 0, "Removing workspace URI Mapping: " + pathmap);
+			Log.info(ZeligsoftCXUIPlugin.getDefault(), 0, Messages.CXPathmapDescriptor_RemovingPathmapUri + pathmap);
 			if (originalMapping != null) {
 				URIConverter.URI_MAP.put(pathmap, originalMapping);
 			} else {

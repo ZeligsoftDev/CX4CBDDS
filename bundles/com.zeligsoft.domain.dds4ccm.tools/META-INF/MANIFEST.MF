@@ -19,6 +19,12 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)",
  com.zeligsoft.base.ui;bundle-version="4.0.0",
  com.zeligsoft.cx.ui;bundle-version="4.0.0",
  com.zeligsoft.cx.ui.properties;bundle-version="4.0.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: com.zeligsoft.domain.dds4ccm.tools.internal.emf
+Export-Package: com.zeligsoft.domain.dds4ccm.tools,
+ com.zeligsoft.domain.dds4ccm.tools.actions,
+ com.zeligsoft.domain.dds4ccm.tools.dialogs,
+ com.zeligsoft.domain.dds4ccm.tools.internal.emf,
+ com.zeligsoft.domain.dds4ccm.tools.l10n,
+ com.zeligsoft.domain.dds4ccm.tools.providers,
+ com.zeligsoft.domain.dds4ccm.tools.ui.internal.preferences

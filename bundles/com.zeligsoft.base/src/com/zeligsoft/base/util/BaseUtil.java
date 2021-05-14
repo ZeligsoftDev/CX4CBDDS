@@ -48,6 +48,9 @@ import org.eclipse.uml2.uml.Element;
 public class BaseUtil {
 
 	public static final String ZCX_ANNOTATION_SOURCE = "zcx"; //$NON-NLS-1$
+	
+	public static String UML_MODEL_EXTENSION = "uml"; //$NON-NLS-1$
+
 
 	/**
 	 * Return sorted list of give EObjects

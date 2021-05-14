@@ -45,6 +45,7 @@ import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
  * @author Young-Soo Roh
  *
  */
+@SuppressWarnings("nls")
 public class FixModelReferencesHandler extends AbstractHandler {
 
 	@Override

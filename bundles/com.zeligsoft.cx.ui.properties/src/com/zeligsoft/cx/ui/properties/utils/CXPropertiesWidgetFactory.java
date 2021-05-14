@@ -56,6 +56,8 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
+import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.osgi.framework.Bundle;
 
@@ -416,6 +418,7 @@ public class CXPropertiesWidgetFactory extends CXWidgetFactory{
 					return widgetMap;
 				}
 			} else {
+				// check if this is a broken proxy object
 				textLabel.setText(Messages.CXWidgetFactory_NullValueString);
 			}
 		}

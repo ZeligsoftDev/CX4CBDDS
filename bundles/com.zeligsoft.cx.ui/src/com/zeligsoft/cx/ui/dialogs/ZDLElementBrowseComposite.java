@@ -51,6 +51,7 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.TypedElement;
 
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.l10n.Messages;
 import com.zeligsoft.cx.ui.providers.ZDLElementContentProvider;
@@ -77,6 +78,7 @@ public abstract class ZDLElementBrowseComposite {
 	boolean includeImportedPackages;
 
 	protected TreeViewer treeViewer;
+
 
 	public ZDLElementBrowseComposite(EObject context, List<String> concepts, boolean includeImportedPackages) {
 		this.context = context;
@@ -201,7 +203,7 @@ public abstract class ZDLElementBrowseComposite {
 			for (IResource res : container.members()) {
 				if (res instanceof IFile) {
 					String fileExt = ((IFile) res).getFullPath().getFileExtension();
-					if (!UML2Util.isEmpty(fileExt) && "uml".equals(fileExt.toLowerCase())) {
+					if (!UML2Util.isEmpty(fileExt) && BaseUtil.UML_MODEL_EXTENSION.equals(fileExt.toLowerCase())) {
 						URI uri = URI.createPlatformResourceURI(((IFile) res).getFullPath().toString(), true);
 						ResourceSet rset = context.eResource().getResourceSet();
 						Resource eres = rset.getResource(uri, false);
@@ -239,7 +241,7 @@ public abstract class ZDLElementBrowseComposite {
 						} else if (res instanceof IFile) {
 
 							String ext = ((IFile) res).getFullPath().getFileExtension();
-							if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())) {
+							if (!UML2Util.isEmpty(ext) && BaseUtil.UML_MODEL_EXTENSION.equals(ext.toLowerCase())) {
 								URI uri = URI.createPlatformResourceURI(((IFile) res).getFullPath().toString(), true);
 								ResourceSet rset = context.eResource().getResourceSet();
 								Resource eres = rset.getResource(uri, false);
