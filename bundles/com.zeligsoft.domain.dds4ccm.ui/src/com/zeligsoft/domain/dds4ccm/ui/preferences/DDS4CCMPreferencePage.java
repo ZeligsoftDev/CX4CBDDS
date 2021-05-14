@@ -33,6 +33,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
+import org.eclipse.uml2.uml.util.UMLUtil;
 import org.osgi.service.prefs.BackingStoreException;
 
 import com.zeligsoft.cx.CXActivator;
@@ -178,13 +179,15 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 			
 			@Override
 			public void focusLost(FocusEvent e) {
-				try {
-					Integer.parseInt(defaultSequenceBound.getText());
-				} catch (NumberFormatException ex) {
-					// illegal number so restore value
-					defaultSequenceBound.setText(store.get(DDS4CCMPreferenceConstants.IDL_SEQUENCE_BOUND,
-							DDS4CCMPreferenceConstants.DEFAULT_IDL_SEQUENCE_BOUND));
-				}				
+				if (!UMLUtil.isEmpty(defaultSequenceBound.getText())) {
+					try {
+						Integer.parseInt(defaultSequenceBound.getText());
+					} catch (NumberFormatException ex) {
+						// illegal number so restore value
+						defaultSequenceBound.setText(store.get(DDS4CCMPreferenceConstants.IDL_SEQUENCE_BOUND,
+								DDS4CCMPreferenceConstants.DEFAULT_IDL_SEQUENCE_BOUND));
+					}
+				}
 			}
 			
 			@Override
@@ -197,17 +200,13 @@ public class DDS4CCMPreferencePage extends PreferencePage implements
 
 	@Override
 	protected void performDefaults() {
-		fixedHeader
-				.setText(DDS4CCMPreferenceConstants.DEFAULT_IDL_FIXED_HEADER);
-		fixedFooter
-				.setText(DDS4CCMPreferenceConstants.DEFAULT_IDL_FIXED_FOOTER);
-		locationPrefix
-				.setText(DDS4CCMPreferenceConstants.DEFAULT_GLOBAL_LOCATION_PREFIX);
-		generateIDLComment
-				.setSelection(CXPreferenceConstants.GENERATE_IDL_COMMENT_DEFAULT);
-
+		fixedHeader.setText(DDS4CCMPreferenceConstants.DEFAULT_IDL_FIXED_HEADER);
+		fixedFooter.setText(DDS4CCMPreferenceConstants.DEFAULT_IDL_FIXED_FOOTER);
+		locationPrefix.setText(DDS4CCMPreferenceConstants.DEFAULT_GLOBAL_LOCATION_PREFIX);
+		generateIDLComment.setSelection(CXPreferenceConstants.GENERATE_IDL_COMMENT_DEFAULT);
+		defaultSequenceBound.setText(DDS4CCMPreferenceConstants.DEFAULT_IDL_SEQUENCE_BOUND);
 	}
-	
+
 	@Override
 	public boolean performOk() {
 		store.put(DDS4CCMPreferenceConstants.IDL_FIXED_HEADER,

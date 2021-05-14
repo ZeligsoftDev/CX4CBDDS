@@ -310,19 +310,19 @@ public class NGCWriter extends IDL3PlusWriter {
 				returnType += doSwitch(object.getType());
 			}
 
-			if(object.getSize() == null) {
-				IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
-				// use default value in preference page
-				String value = store.get(
-						DDS4CCMPreferenceConstants.IDL_SEQUENCE_BOUND,
-						DDS4CCMPreferenceConstants.DEFAULT_IDL_SEQUENCE_BOUND);
-				if(!"-1".equals(value)) {
-					returnType += ", " + value;
+			if (object.getSize() != null) {
+				if ("CCM_DDS::UNLIMITED".equals(String.valueOf(doSwitch(object.getSize())))) {
+					IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+					// use default value in preference page
+					String value = store.get(DDS4CCMPreferenceConstants.IDL_SEQUENCE_BOUND,
+							DDS4CCMPreferenceConstants.DEFAULT_IDL_SEQUENCE_BOUND);
+					if (!UML2Util.isEmpty(value) && !"-1".equals(value)) {
+						returnType += ", " + value;
+					}
+				} else {
+					returnType += ", " + doSwitch(object.getSize());
 				}
-			} else {
-				returnType += ", " + doSwitch(object.getSize());
 			}
-
 			returnType += ">";
 			return returnType;
 		}
