@@ -1807,6 +1807,8 @@ public class ZDLUtil
 			});
 	}
 
+
+	
 	/**
 	 * Converts a value, which may be a list of stereotype instances or a single
 	 * one, to a list of the base elements (or a single one).
@@ -1851,7 +1853,7 @@ public class ZDLUtil
 
 		return result;
 	}
-
+	
 	/**
 	 * Obtains the application of the specified stereotype on an element,
 	 * accounting for possibility of a sub-stereotype being applied.
@@ -3493,6 +3495,46 @@ public class ZDLUtil
 
 			return result;
 		}
+		
+		/**
+		 * Obtains the value of my ZDL property for the specified model element.
+		 * 
+		 * @param modelElement
+		 *            the model element
+		 * @return its value for my property
+		 */
+		Object getRawValue(EObject modelElement) {
+			Object result = basicGetRawValue(ownerMapping
+				.getFeatureOwner(modelElement));
+
+			// convert the UML multiplicity to the ZDL multiplicity expected
+			// by the client
+			result = coerce(isZDLMany, result);
+
+			return result;
+		}
+		
+		/**
+		 * It is possible that the values are proxy element.
+		 * @param owner
+		 * @return
+		 */
+		private Object basicGetRawValue(EObject owner) {
+			// get the value from the UML storage
+			Object result = owner.eGet(feature);
+
+			ZDLPropertyValueMapping actualValueMapping = valueMapping;
+
+			// convert it from stereotype applications or whatever, if needed
+			if(valueMapping instanceof StereotypePropertyValueMapping) {
+				actualValueMapping = new StereotypePropertyRawValueMapping((StereotypePropertyValueMapping)valueMapping);
+			}
+			
+			// convert it from stereotype applications or whatever, if needed
+			result = actualValueMapping.transformForGet(result);
+			
+			return result;
+		}
 
 		@SuppressWarnings("unchecked")
 		private Object basicGetValue(EObject owner) {
@@ -3965,5 +4007,83 @@ public class ZDLUtil
 		}
 
 		return null;
+	}
+	
+	/**
+	 * Internal use only.
+	 * This should only be used for display purpose.
+	 * The value may contain proxy element(s)
+	 */
+	public static Object getRawValue(EObject modelElement, Class concept,
+			String property) {
+
+		return getPropertyMapping(modelElement, concept, property).getRawValue(
+			modelElement);
+	}
+	
+	@SuppressWarnings({"unchecked", "serial"})
+	private static <T> T asRawBaseElements(T value, final Stereotype stereotype) {
+		T result;
+
+		if (value instanceof Collection<?>) {
+			EList<EObject> listValue;
+			if (value instanceof EList<?>) {
+				listValue = (EList<EObject>) value;
+			} else {
+				// oAW transformations use ArrayLists instead of ELists
+				listValue = new BasicEList<EObject>((Collection<EObject>) value);
+			}
+
+			result = (T) new TransformingList<EObject, EObject>(listValue) {
+
+				@Override
+				protected EObject transform(EObject sourceElement) {
+					if(sourceElement.eIsProxy()) {
+						return sourceElement;
+					}
+					return getBaseElement(sourceElement);
+				}
+
+				@Override
+				protected EObject inverse(EObject targetElement) {
+					if(targetElement.eIsProxy()) {
+						return targetElement;
+					}
+					return getApplication((Element)targetElement, stereotype);
+				}
+			};
+		} else if (value == null) {
+			// no base element of a null stereotype application
+			result = null;
+		} else {
+			result = (T) getBaseElement((EObject) value);
+		}
+
+		return result;
+	}
+	
+	private static class StereotypePropertyRawValueMapping extends ZDLPropertyValueMapping {
+
+		private StereotypePropertyValueMapping valueMapping;
+
+		StereotypePropertyRawValueMapping(StereotypePropertyValueMapping valueMapping) {
+			super(null); // no filtering; the EReference is homogeneous
+			this.valueMapping = valueMapping;
+		}
+
+		@Override
+		protected <T> T transformForGet(T value) {
+			return asRawBaseElements(value, valueMapping.stereotype);
+		}
+
+		@Override
+		protected <T> T transformForSet(T value) {
+			return valueMapping.transformForSet(value);
+		}
+
+		@Override
+		protected EObject getReferent(EObject modelElement) {
+			return valueMapping.getReferent(modelElement);
+		}
 	}
 }

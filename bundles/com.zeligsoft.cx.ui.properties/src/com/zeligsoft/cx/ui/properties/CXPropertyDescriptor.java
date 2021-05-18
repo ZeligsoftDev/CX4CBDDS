@@ -152,7 +152,7 @@ public class CXPropertyDescriptor {
 	 */
 	public Object getValue() {
 		if (context != null && concept != null && property != null) {
-			return ZDLUtil.getValue(context, concept, property.getName());
+			return ZDLUtil.getRawValue(context, concept, property.getName());
 		}
 		return null;
 	}

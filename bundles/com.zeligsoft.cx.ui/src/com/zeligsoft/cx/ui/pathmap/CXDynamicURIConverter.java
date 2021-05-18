@@ -15,6 +15,12 @@ import org.eclipse.ui.PlatformUI;
 import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
 import com.zeligsoft.cx.ui.l10n.Messages;
 
+/**
+ * CX Dynamic Pathmap URI converter
+ * 
+ * @author Young-Soo Roh
+ *
+ */
 public class CXDynamicURIConverter {
 
 	public static Map<URI, CXPathmapDescriptor> PATHMAPS = new HashMap<URI, CXPathmapDescriptor>();
@@ -99,7 +105,8 @@ public class CXDynamicURIConverter {
 			CXPathmapDescriptor desc = entry.getValue();
 			if (targetUri.equals(desc.getMapping()) && desc.getRegisteredModels().contains(modelName)) {
 				if (desc.isEnabled()) {
-					return pathmapUri.appendSegment(modelName);
+					URI result = URI.createURI(pathmapUri.toString() + modelName);
+					return result;
 				}
 				break;
 			}

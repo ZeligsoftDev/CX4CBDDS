@@ -131,7 +131,9 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 					String ext = file.getFullPath().getFileExtension();
 					if (!UML2Util.isEmpty(ext) && BaseUtil.UML_MODEL_EXTENSION.equals(ext.toLowerCase())) {
 						URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-						if (!testedResources.contains(uri)) {
+						if(!file.exists()) {
+							loadedResources.remove(uri);
+						}else if (!testedResources.contains(uri)) {
 							testedResources.add(uri);
 							Package root = UML2Util.load(getTmpResourceSet(), uri, UMLPackage.Literals.PACKAGE);
 							if (root != null && ZDLUtil.isZDLProfile(root, "cxDDS4CCM")) { //$NON-NLS-1$
