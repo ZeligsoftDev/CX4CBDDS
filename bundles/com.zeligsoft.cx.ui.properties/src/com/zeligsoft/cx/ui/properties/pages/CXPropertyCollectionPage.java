@@ -24,6 +24,7 @@ import java.util.List;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -543,16 +544,20 @@ public class CXPropertyCollectionPage extends PreferencePage {
 					}
 					return name;
 				} else if (element instanceof EObject) {
-					if (element instanceof Element) {
-						return EMFCoreUtil.getName((EObject) element);
+					EObject eo = (EObject) element;
+					if(eo.eIsProxy()) {
+						return ((BasicEObjectImpl)eo).eProxyURI().toString();
 					}
-					Class concept = ZDLUtil.getZDLConcept((EObject) element);
+					if (element instanceof Element) {
+						return EMFCoreUtil.getName(eo);
+					}
+					Class concept = ZDLUtil.getZDLConcept(eo);
 					if (concept == null) {
 						return UML2Util.EMPTY_STRING;
 					}
 					if (!concept.getAttributes().isEmpty()) {
 						for (Property attribute : concept.getAttributes()) {
-							Object value = ZDLUtil.getValue((EObject) element,
+							Object value = ZDLUtil.getValue(eo,
 									concept, attribute.getName());
 							if (value instanceof List) {
 								List valueList = (List) value;

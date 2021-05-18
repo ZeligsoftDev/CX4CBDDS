@@ -17,6 +17,7 @@
 package com.zeligsoft.domain.dds4ccm.tools.internal.emf;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -48,8 +49,9 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.UIJob;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -59,7 +61,6 @@ import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
 import com.zeligsoft.domain.dds4ccm.tools.Activator;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
-import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
  * Dynamic URI mapping handler.
@@ -155,8 +156,6 @@ public final class DDS4CCMDynamicURIMapHandler {
 				checkDependentModels(uri);
 				// remove pathmap URI
 				CXDynamicURIConverter.removeMapping(uri);
-				// re-calculate dynamic pathamps
-				remapDynamicURI();
 			}
 
 			// unload deleted resource
@@ -208,6 +207,7 @@ public final class DDS4CCMDynamicURIMapHandler {
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	static void containsReferenceToPathmap(URI pathmapUri, URI modelUri, Set<URI> dependentModels) {
 		Package model = UML2Util.load(rset, modelUri, UMLPackage.Literals.PACKAGE);
 		if (model == null || !ZDLUtil.isZDLProfile(model, "cxDDS4CCM")) { //$NON-NLS-1$
@@ -216,30 +216,63 @@ public final class DDS4CCMDynamicURIMapHandler {
 		TreeIterator<EObject> itor = model.eAllContents();
 		while (itor.hasNext()) {
 			EObject next = itor.next();
-			if (!(next instanceof NamedElement)) {
+			if (next instanceof PackageImport) {
+				itor.prune();
+			} else if (!(next instanceof Element)) {
 				itor.prune();
 			} else {
-				EObject type = null;
-				if (ZDLUtil.isZDLConcept(next, ZMLMMNames.TYPED_ELEMENT)) {
-					type = ZDLUtil.getEValue(next, ZMLMMNames.TYPED_ELEMENT, ZMLMMNames.TYPED_ELEMENT__TYPE);
-				} else if (next instanceof Property) {
-					Property p = (Property) next;
-					type = p.getType();
-				}
-				if (type != null) {
-					if (type.eResource() != null && type.eResource() != next.eResource()) {
-						URI targetUri = URIConverter.INSTANCE.normalize(type.eResource().getURI());
-						if (targetUri.equals(pathmapUri)) {
-							dependentModels.add(modelUri);
-							return;
+				Element element = (Element)next;
+				List<org.eclipse.uml2.uml.Class> concepts = ZDLUtil.getZDLConcepts(element);
+				for(org.eclipse.uml2.uml.Class clazz: concepts) {
+					for(Property p: clazz.getOwnedAttributes()) {
+						if(p.getType() instanceof PrimitiveType) {
+							// no need to check primitive types
+							continue;
+						}
+						Object value = ZDLUtil.getRawValue(element, clazz, p.getName());
+						if(value != null) {
+							if(value instanceof List) {
+								for(Object o: (List<Object>)value) {
+									if(o instanceof EObject && isReferenceToPathmap(next, (EObject) o, pathmapUri)) {
+										dependentModels.add(modelUri);
+										return;
+									}
+								}
+							}else {
+								if(value instanceof EObject && isReferenceToPathmap(next, (EObject) value, pathmapUri)) {
+									dependentModels.add(modelUri);
+									return;
+								}
+							}
 						}
 					}
-					if(type.eIsProxy()) {
-						type.toString();
-					}
 				}
+//				EObject type = null;
+//				if (ZDLUtil.isZDLConcept(next, ZMLMMNames.TYPED_ELEMENT)) {
+//					type = ZDLUtil.getEValue(next, ZMLMMNames.TYPED_ELEMENT, ZMLMMNames.TYPED_ELEMENT__TYPE);
+//				} else if (next instanceof Property) {
+//					Property p = (Property) next;
+//					type = p.getType();
+//				}
+//				if(isReferenceToPathmap(next, type, pathmapUri)) {
+//					dependentModels.add(modelUri);
+//					return;
+//				}
 			}
 		}
+	}
+	
+	private static boolean isReferenceToPathmap(EObject owner, EObject type, URI pathmapUri) {
+		if(type == null) {
+			return false;
+		}
+		if (type.eResource() != null && type.eResource() != owner.eResource()) {
+			URI targetUri = URIConverter.INSTANCE.normalize(type.eResource().getURI());
+			if (targetUri.equals(pathmapUri)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**

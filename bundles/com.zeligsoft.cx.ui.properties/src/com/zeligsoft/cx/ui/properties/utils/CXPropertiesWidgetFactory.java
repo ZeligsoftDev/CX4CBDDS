@@ -27,6 +27,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.BasicEObjectImpl;
 import org.eclipse.gmf.runtime.common.core.util.StringStatics;
 import org.eclipse.gmf.runtime.common.ui.dialogs.PropertiesDialog;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
@@ -56,8 +57,6 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
-import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.osgi.framework.Bundle;
 
@@ -408,17 +407,23 @@ public class CXPropertiesWidgetFactory extends CXWidgetFactory{
 			if (value != null) {
 				if (value instanceof EObject) {
 
-					Image icon = BaseUIUtil.getIcon((EObject) value);
+					EObject eo = (EObject) value;
+					Image icon = BaseUIUtil.getIcon(eo);
 					if (icon != null) {
 						imageLabel.setImage(icon);
 					}
-					textLabel.setText(EMFCoreUtil.getQualifiedName(
-							(EObject) value, true));
+					
+					// if it is a just proxy then display URI instead
+					if (eo.eIsProxy()) {
+						String uri = ((BasicEObjectImpl)eo).eProxyURI().toString();
+						textLabel.setText(uri);
+					} else {
+						textLabel.setText(EMFCoreUtil.getQualifiedName((EObject) value, true));
+					}
 				} else {
 					return widgetMap;
 				}
 			} else {
-				// check if this is a broken proxy object
 				textLabel.setText(Messages.CXWidgetFactory_NullValueString);
 			}
 		}
