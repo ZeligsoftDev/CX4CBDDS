@@ -16,6 +16,7 @@
  */
 package com.zeligsoft.domain.dds4ccm.tools.internal.emf;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -45,7 +46,11 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.progress.UIJob;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
@@ -103,7 +108,7 @@ public final class DDS4CCMDynamicURIMapHandler {
 	}
 
 	public static void remapDynamicURI() {
-		for(Resource r: rset.getResources()) {
+		for (Resource r : rset.getResources()) {
 			// unload all models
 			r.unload();
 		}
@@ -138,6 +143,13 @@ public final class DDS4CCMDynamicURIMapHandler {
 	}
 
 	private static void processUML(URI uri, int deltaKind) {
+		if (deltaKind == IResourceDelta.ADDED) {
+			// make sure to reload the resource
+			Resource r = rset.getResource(uri, false);
+			if (r != null) {
+				r.unload();
+			}
+		}
 		Package model = UML2Util.load(rset, uri, UMLPackage.Literals.PACKAGE);
 		if (model == null || !ZDLUtil.isZDLProfile(model, "cxDDS4CCM")) { //$NON-NLS-1$
 			return;
@@ -171,13 +183,13 @@ public final class DDS4CCMDynamicURIMapHandler {
 	}
 
 	/**
-	 * Check workspace models for dependent model
+	 * Search dependent models referencing the given pathmap
 	 * 
 	 * @param uri
 	 * @return
 	 */
 	static boolean checkDependentModels(URI pathmapUri) {
-		Set<URI> dependentModels = new HashSet<URI>();
+		final Set<URI> dependentModels = new HashSet<URI>();
 		visitAllModels(ResourcesPlugin.getWorkspace().getRoot(),
 				modelUri -> containsReferenceToPathmap(pathmapUri, modelUri, dependentModels));
 		if (!dependentModels.isEmpty()) {
@@ -198,8 +210,33 @@ public final class DDS4CCMDynamicURIMapHandler {
 
 					@Override
 					public void run() {
-						MessageDialog.openWarning(Display.getCurrent().getActiveShell(),
+						
+						boolean shouldClose = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
 								Messages.DDS4CCMDynamicURIMapHandler_WarningDialogTitle, warning);
+						
+						if (shouldClose) {
+							for (IEditorReference ref : PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+									.getActivePage().getEditorReferences()) {
+								try {
+
+									List<IEditorReference> editorsToClose = new ArrayList<IEditorReference>();
+									IEditorInput input = ref.getEditorInput();
+									if (input instanceof FileEditorInput) {
+										for (URI uri : dependentModels) {
+											if (uri.trimFileExtension().appendFileExtension("di").toString().endsWith( //$NON-NLS-1$
+													((FileEditorInput) input).getFile().getFullPath().toString())) {
+												editorsToClose.add(ref);
+											}
+										}
+									}
+									PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+											.closeEditors(editorsToClose.toArray(new IEditorReference[0]), true);
+
+								} catch (PartInitException e) {
+									// nothing we can do so silence
+								}
+							}
+						}
 					}
 				});
 			}
@@ -207,6 +244,13 @@ public final class DDS4CCMDynamicURIMapHandler {
 		return true;
 	}
 
+	/**
+	 * Check if the given model have references to the pathmap
+	 * 
+	 * @param pathmapUri
+	 * @param modelUri
+	 * @param dependentModels
+	 */
 	@SuppressWarnings("unchecked")
 	static void containsReferenceToPathmap(URI pathmapUri, URI modelUri, Set<URI> dependentModels) {
 		Package model = UML2Util.load(rset, modelUri, UMLPackage.Literals.PACKAGE);
@@ -221,25 +265,26 @@ public final class DDS4CCMDynamicURIMapHandler {
 			} else if (!(next instanceof Element)) {
 				itor.prune();
 			} else {
-				Element element = (Element)next;
+				Element element = (Element) next;
 				List<org.eclipse.uml2.uml.Class> concepts = ZDLUtil.getZDLConcepts(element);
-				for(org.eclipse.uml2.uml.Class clazz: concepts) {
-					for(Property p: clazz.getOwnedAttributes()) {
-						if(p.getType() instanceof PrimitiveType) {
+				for (org.eclipse.uml2.uml.Class clazz : concepts) {
+					for (Property p : clazz.getOwnedAttributes()) {
+						if (p.getType() instanceof PrimitiveType) {
 							// no need to check primitive types
 							continue;
 						}
 						Object value = ZDLUtil.getRawValue(element, clazz, p.getName());
-						if(value != null) {
-							if(value instanceof List) {
-								for(Object o: (List<Object>)value) {
-									if(o instanceof EObject && isReferenceToPathmap(next, (EObject) o, pathmapUri)) {
+						if (value != null) {
+							if (value instanceof List) {
+								for (Object o : (List<Object>) value) {
+									if (o instanceof EObject && isReferenceToPathmap(next, (EObject) o, pathmapUri)) {
 										dependentModels.add(modelUri);
 										return;
 									}
 								}
-							}else {
-								if(value instanceof EObject && isReferenceToPathmap(next, (EObject) value, pathmapUri)) {
+							} else {
+								if (value instanceof EObject
+										&& isReferenceToPathmap(next, (EObject) value, pathmapUri)) {
 									dependentModels.add(modelUri);
 									return;
 								}
@@ -247,23 +292,12 @@ public final class DDS4CCMDynamicURIMapHandler {
 						}
 					}
 				}
-//				EObject type = null;
-//				if (ZDLUtil.isZDLConcept(next, ZMLMMNames.TYPED_ELEMENT)) {
-//					type = ZDLUtil.getEValue(next, ZMLMMNames.TYPED_ELEMENT, ZMLMMNames.TYPED_ELEMENT__TYPE);
-//				} else if (next instanceof Property) {
-//					Property p = (Property) next;
-//					type = p.getType();
-//				}
-//				if(isReferenceToPathmap(next, type, pathmapUri)) {
-//					dependentModels.add(modelUri);
-//					return;
-//				}
 			}
 		}
 	}
-	
+
 	private static boolean isReferenceToPathmap(EObject owner, EObject type, URI pathmapUri) {
-		if(type == null) {
+		if (type == null) {
 			return false;
 		}
 		if (type.eResource() != null && type.eResource() != owner.eResource()) {

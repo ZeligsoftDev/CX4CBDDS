@@ -94,7 +94,6 @@ public class CXDynamicURIConverter {
 				PATHMAPS.remove(pathmapUri);
 			}
 		}
-		return;
 	}
 
 	public static URI getPathmapURI(URI modelUri) {
