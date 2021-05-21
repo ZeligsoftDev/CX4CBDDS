@@ -35,6 +35,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -126,11 +127,20 @@ public final class DDS4CCMDynamicURIMapHandler {
 			// check if this is a uml file
 			IPath path = delta.getFullPath();
 			String ext = path.getFileExtension();
-			if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase()) //$NON-NLS-1$
-					&& (delta.getKind() == IResourceDelta.ADDED || delta.getKind() == IResourceDelta.REMOVED)) {
+			if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())) { //$NON-NLS-1$
 				URI uri = URI.createPlatformResourceURI(path.toString(), false);
-				processUML(uri, delta.getKind());
+				if (delta.getKind() == IResourceDelta.CHANGED || delta.getKind() == IResourceDelta.ADDED) {
+					Resource r = rset.getResource(uri, false);
+					if (r != null) {
+						r.unload();
+					}
+					rset.getResource(uri, true);
+				}
+				if (delta.getKind() == IResourceDelta.ADDED || delta.getKind() == IResourceDelta.REMOVED) {
+					processUML(uri, delta.getKind());
+				}
 			}
+
 		} else {
 			for (int i = 0; i < children.length; i++) {
 				processDelta(rset, children[i]);
@@ -138,31 +148,19 @@ public final class DDS4CCMDynamicURIMapHandler {
 		}
 	}
 
-	private static void processUML(URI uri) {
+	public static void processUML(URI uri) {
 		processUML(uri, IResourceDelta.ADDED);
 	}
 
 	private static void processUML(URI uri, int deltaKind) {
-		if (deltaKind == IResourceDelta.ADDED) {
-			// make sure to reload the resource
-			Resource r = rset.getResource(uri, false);
-			if (r != null) {
-				r.unload();
-			}
-		}
 		Package model = UML2Util.load(rset, uri, UMLPackage.Literals.PACKAGE);
 		if (model == null || !ZDLUtil.isZDLProfile(model, "cxDDS4CCM")) { //$NON-NLS-1$
 			return;
 		}
 
-		// search dynamic pathmap
-		String pathmap = CCMUtil.getZCXAnnotationDetail((Element) model, "pathmap", ""); //$NON-NLS-1$//$NON-NLS-2$
-		URI pathmapUri = null;
-		if (!UML2Util.isEmpty(pathmap)) {
-			pathmapUri = URI.createURI("pathmap" + "://" + pathmap + "/", true); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
-		}
 		if (deltaKind == IResourceDelta.REMOVED) {
-			if (pathmapUri != null) {
+			URI pathmapUri = CXDynamicURIConverter.getPathmapURI(uri);
+			if("pathmap".equals(pathmapUri.scheme())){ //$NON-NLS-1$
 				// This is dynamic pathmap library
 				// check dependent models
 				checkDependentModels(uri);
@@ -176,7 +174,10 @@ public final class DDS4CCMDynamicURIMapHandler {
 				r.unload();
 			}
 		} else {
-			if (pathmapUri != null) {
+			// search dynamic pathmap
+			String pathmap = CCMUtil.getZCXAnnotationDetail((Element) model, "pathmap", ""); //$NON-NLS-1$//$NON-NLS-2$
+			if (!UML2Util.isEmpty(pathmap)) {
+				URI pathmapUri = URI.createURI("pathmap" + "://" + pathmap + "/", true); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
 				CXDynamicURIConverter.addMapping(pathmapUri, uri);
 			}
 		}
@@ -188,10 +189,10 @@ public final class DDS4CCMDynamicURIMapHandler {
 	 * @param uri
 	 * @return
 	 */
-	static boolean checkDependentModels(URI pathmapUri) {
+	static boolean checkDependentModels(URI targetUri) {
 		final Set<URI> dependentModels = new HashSet<URI>();
 		visitAllModels(ResourcesPlugin.getWorkspace().getRoot(),
-				modelUri -> containsReferenceToPathmap(pathmapUri, modelUri, dependentModels));
+				modelUri -> containsReferenceToPathmap(targetUri, modelUri, dependentModels));
 		if (!dependentModels.isEmpty()) {
 			// found dependent models so do something.
 			StringBuffer sb = new StringBuffer();
@@ -201,7 +202,7 @@ public final class DDS4CCMDynamicURIMapHandler {
 			}
 
 			String warning = NLS.bind(Messages.DDS4CCMDynamicURIMapHandler_RemovingDynamicModelWarning,
-					pathmapUri.toString(), sb.toString());
+					targetUri.toString(), sb.toString());
 
 			Activator.getDefault().warning(sb.toString());
 			Display display = PlatformUI.getWorkbench().getDisplay();
@@ -247,12 +248,12 @@ public final class DDS4CCMDynamicURIMapHandler {
 	/**
 	 * Check if the given model have references to the pathmap
 	 * 
-	 * @param pathmapUri
+	 * @param targetUri
 	 * @param modelUri
 	 * @param dependentModels
 	 */
 	@SuppressWarnings("unchecked")
-	static void containsReferenceToPathmap(URI pathmapUri, URI modelUri, Set<URI> dependentModels) {
+	static void containsReferenceToPathmap(URI targetUri, URI modelUri, Set<URI> dependentModels) {
 		Package model = UML2Util.load(rset, modelUri, UMLPackage.Literals.PACKAGE);
 		if (model == null || !ZDLUtil.isZDLProfile(model, "cxDDS4CCM")) { //$NON-NLS-1$
 			return;
@@ -261,6 +262,11 @@ public final class DDS4CCMDynamicURIMapHandler {
 		while (itor.hasNext()) {
 			EObject next = itor.next();
 			if (next instanceof PackageImport) {
+				Package pkg = ((PackageImport) next).getImportedPackage();
+				if(isReferenceToPathmap(next, pkg, targetUri)) {
+					dependentModels.add(modelUri);
+					return;
+				}
 				itor.prune();
 			} else if (!(next instanceof Element)) {
 				itor.prune();
@@ -277,14 +283,14 @@ public final class DDS4CCMDynamicURIMapHandler {
 						if (value != null) {
 							if (value instanceof List) {
 								for (Object o : (List<Object>) value) {
-									if (o instanceof EObject && isReferenceToPathmap(next, (EObject) o, pathmapUri)) {
+									if (o instanceof EObject && isReferenceToPathmap(next, (EObject) o, targetUri)) {
 										dependentModels.add(modelUri);
 										return;
 									}
 								}
 							} else {
 								if (value instanceof EObject
-										&& isReferenceToPathmap(next, (EObject) value, pathmapUri)) {
+										&& isReferenceToPathmap(next, (EObject) value, targetUri)) {
 									dependentModels.add(modelUri);
 									return;
 								}
@@ -332,14 +338,25 @@ public final class DDS4CCMDynamicURIMapHandler {
 					IFile file = (IFile) member;
 					String ext = file.getFullPath().getFileExtension();
 					if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())) { //$NON-NLS-1$
-						URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-						lambda.accept(uri);
+						String diName = file.getName().substring(0, file.getName().lastIndexOf('.'));
+						IPath diPath = new Path(diName);
+						diPath = diPath.addFileExtension("di"); //$NON-NLS-1$
+						IFile diFile = file.getParent().getFile(diPath);
+						if(diFile.exists()) {
+							URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+							lambda.accept(uri);
+						}
 					}
 				}
 			}
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void addMapping(URI pathmapUri, URI modelUri) {
+		rset.getResource(modelUri, true);
+		CXDynamicURIConverter.addMapping(pathmapUri, modelUri);
 	}
 
 }
