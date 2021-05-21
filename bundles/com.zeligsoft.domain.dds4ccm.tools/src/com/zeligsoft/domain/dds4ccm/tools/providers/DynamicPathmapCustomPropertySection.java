@@ -42,6 +42,7 @@ import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
 import com.zeligsoft.cx.ui.properties.sections.ICXCustomPropertySection;
 import com.zeligsoft.cx.ui.utils.CXWidgetFactory;
+import com.zeligsoft.domain.dds4ccm.tools.internal.emf.DDS4CCMDynamicURIMapHandler;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 
@@ -157,8 +158,9 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 		if (UML2Util.isEmpty(pathmap)) {
 			return;
 		}
+
 		URI sourceURI = URI.createURI(PATHMAP_KEY + "://" + pathmap + "/", true); //$NON-NLS-1$ //$NON-NLS-2$
-		CXDynamicURIConverter.addMapping(sourceURI, modelUri);
+		DDS4CCMDynamicURIMapHandler.addMapping(sourceURI, modelUri);
 
 	}
 }
