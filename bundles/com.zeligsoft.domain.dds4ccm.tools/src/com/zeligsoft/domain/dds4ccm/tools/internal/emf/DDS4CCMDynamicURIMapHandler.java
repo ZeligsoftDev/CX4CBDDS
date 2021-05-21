@@ -35,37 +35,54 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.papyrus.editor.PapyrusMultiDiagramEditor;
+import org.eclipse.papyrus.infra.core.resource.ModelSet;
+import org.eclipse.papyrus.infra.core.resource.NotFoundException;
+import org.eclipse.papyrus.infra.core.services.ServiceException;
+import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
+import org.eclipse.papyrus.infra.core.utils.ServiceUtils;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
+import org.eclipse.papyrus.uml.tools.model.UmlModel;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.IPartListener2;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.progress.UIJob;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import com.zeligsoft.base.validation.ui.commands.ValidateCXModelCommand;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
 import com.zeligsoft.domain.dds4ccm.tools.Activator;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
+import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMDiagnostician;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 
 /**
@@ -90,6 +107,44 @@ public final class DDS4CCMDynamicURIMapHandler {
 
 			@Override
 			public IStatus runInUIThread(IProgressMonitor monitor) {
+				
+				IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+				page.addPartListener(new IPartListener2() {
+					
+					@Override
+					public void partVisible(IWorkbenchPartReference partRef) {
+					}
+					@Override
+					public void partOpened(IWorkbenchPartReference partRef) {
+						checkEditorPart(partRef);
+					}
+					
+					@Override
+					public void partInputChanged(IWorkbenchPartReference partRef) {
+					}
+					
+					@Override
+					public void partHidden(IWorkbenchPartReference partRef) {
+					}
+					
+					@Override
+					public void partDeactivated(IWorkbenchPartReference partRef) {
+					}
+					
+					@Override
+					public void partClosed(IWorkbenchPartReference partRef) {
+						
+					}
+					
+					@Override
+					public void partBroughtToTop(IWorkbenchPartReference partRef) {
+					}
+					
+					@Override
+					public void partActivated(IWorkbenchPartReference partRef) {
+					}
+				});
+				
 				IWorkspace workspace = ResourcesPlugin.getWorkspace();
 				IResourceChangeListener rcl = new IResourceChangeListener() {
 
@@ -212,9 +267,9 @@ public final class DDS4CCMDynamicURIMapHandler {
 					@Override
 					public void run() {
 						
-						boolean shouldClose = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
+						MessageDialog.openWarning(Display.getCurrent().getActiveShell(),
 								Messages.DDS4CCMDynamicURIMapHandler_WarningDialogTitle, warning);
-						
+						boolean shouldClose = false;
 						if (shouldClose) {
 							for (IEditorReference ref : PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 									.getActivePage().getEditorReferences()) {
@@ -338,14 +393,8 @@ public final class DDS4CCMDynamicURIMapHandler {
 					IFile file = (IFile) member;
 					String ext = file.getFullPath().getFileExtension();
 					if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())) { //$NON-NLS-1$
-						String diName = file.getName().substring(0, file.getName().lastIndexOf('.'));
-						IPath diPath = new Path(diName);
-						diPath = diPath.addFileExtension("di"); //$NON-NLS-1$
-						IFile diFile = file.getParent().getFile(diPath);
-						if(diFile.exists()) {
-							URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-							lambda.accept(uri);
-						}
+						URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
+						lambda.accept(uri);
 					}
 				}
 			}
@@ -357,6 +406,139 @@ public final class DDS4CCMDynamicURIMapHandler {
 	public static void addMapping(URI pathmapUri, URI modelUri) {
 		rset.getResource(modelUri, true);
 		CXDynamicURIConverter.addMapping(pathmapUri, modelUri);
+	}
+	
+	private static boolean isPathmapProxy(Object object) {
+		if (object instanceof EObject) {
+			EObject eObject = (EObject) object;
+			if (eObject.eIsProxy()) {
+				URI uri = ((MinimalEObjectImpl) eObject).eProxyURI();
+				if ("pathmap".equals(uri.scheme())) { //$NON-NLS-1$
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Check to see if the given model contains broken pathmap links
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static boolean checkForBrokenLinks(EObject model) {
+		TreeIterator<EObject> itor = model.eAllContents();
+		while (itor.hasNext()) {
+			EObject next = itor.next();
+			if (next instanceof PackageImport) {
+				Package pkg = ((PackageImport) next).getImportedPackage();
+				if (isPathmapProxy(pkg)) {
+					return true;
+				}
+				itor.prune();
+			} else if (!(next instanceof Element)) {
+				itor.prune();
+			} else {
+				Element element = (Element) next;
+				List<org.eclipse.uml2.uml.Class> concepts = ZDLUtil.getZDLConcepts(element);
+				for (org.eclipse.uml2.uml.Class clazz : concepts) {
+					for (Property p : clazz.getOwnedAttributes()) {
+						if (p.getType() instanceof PrimitiveType) {
+							// no need to check primitive types
+							continue;
+						}
+						Object value = ZDLUtil.getRawValue(element, clazz, p.getName());
+						if (value != null) {
+							if (value instanceof List) {
+								for (Object o : (List<Object>) value) {
+									if (isPathmapProxy(o)) {
+										return true;
+									}
+								}
+							} else {
+								if (isPathmapProxy(value)) {
+									return true;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
+
+	}
+
+	/**
+	 * Check editor part to see if it is papyrus editor and check for the broken
+	 * links
+	 * 
+	 * @param partRef
+	 */
+	private static void checkEditorPart(IWorkbenchPartReference partRef) {
+		if (!(partRef instanceof IEditorReference)
+				|| !(partRef.getPage().getActiveEditor() instanceof PapyrusMultiDiagramEditor)) {
+			return;
+		}
+		PapyrusMultiDiagramEditor multiEditor = (PapyrusMultiDiagramEditor) partRef.getPage().getActiveEditor();
+		ServicesRegistry serviceRegistry = multiEditor.getServicesRegistry();
+		try {
+			ModelSet modelSet = ServiceUtils.getInstance().getModelSet(serviceRegistry);
+			UmlModel openedModel = (UmlModel) modelSet.getModel(UmlModel.MODEL_ID);
+			EObject root = null;
+			if (openedModel != null) {
+				try {
+					root = openedModel.lookupRoot();
+				} catch (NotFoundException e) {
+					return;
+				}
+			}
+			if (!(root instanceof Model)) {
+				return;
+			}
+			
+			List<URI> proxyUris = new ArrayList<URI>();
+			for(PackageImport pi: ((Model)root).getPackageImports()) {
+				if(isPathmapProxy(pi.getImportedPackage())) {
+					URI uri = ((MinimalEObjectImpl)pi.getImportedPackage()).eProxyURI();
+					proxyUris.add(uri);
+				}
+			}
+			
+			if (!proxyUris.isEmpty()) {
+				StringBuffer buffer = new StringBuffer();
+				for (URI uri : proxyUris) {
+					buffer.append(uri).append(System.lineSeparator());
+				}
+				String errorMsg = NLS.bind(Messages.DDS4CCMDynamicURIMapHandler_PackageImportError, buffer.toString());
+				MessageDialog.openError(Display.getCurrent().getActiveShell(),
+						Messages.DDS4CCMDynamicURIMapHandler_BrokenLinkWarningTitle, errorMsg);
+				return;
+			}
+			
+			if (checkForBrokenLinks(root)) {
+				boolean answer = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
+						Messages.DDS4CCMDynamicURIMapHandler_BrokenLinkWarningTitle,
+						Messages.DDS4CCMDynamicURIMapHandler_BrokenLinkValidateMsg);
+				if (answer) {
+					final ValidateCXModelCommand command = new ValidateCXModelCommand(root, new DDS4CCMDiagnostician());
+					final Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+					final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(root);
+
+					Display.getCurrent().asyncExec(new Runnable() {
+						
+						@Override
+						public void run() {
+							domain.getCommandStack().execute(emfCommand);
+						}
+					});
+				}
+			}
+		} catch (ServiceException e) {
+			// do nothing
+		}
 	}
 
 }

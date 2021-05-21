@@ -4,6 +4,8 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "com.zeligsoft.domain.dds4ccm.tools.l10n.Messages"; //$NON-NLS-1$
+	public static String DDS4CCMDynamicURIMapHandler_BrokenLinkValidateMsg;
+	public static String DDS4CCMDynamicURIMapHandler_BrokenLinkWarningTitle;
 	public static String DDS4CCMDynamicURIMapHandler_UpdateingWorkspaceUri;
 	public static String DDS4CCMDynamicURIMapHandler_RemovingDynamicModelWarning;
 	public static String DDS4CCMDynamicURIMapHandler_WarningDialogTitle;
@@ -11,6 +13,7 @@ public class Messages extends NLS {
 	public static String DynamicURIMappingsPreferencePage_PreferencePageTitle;
 	public static String DynamicURIMappingsPreferencePage_RemapLabel;
 	public static String ICMBrowseDialog_DialogTitle;
+	public static String DDS4CCMDynamicURIMapHandler_PackageImportError;
 
 	static {
 		// initialize resource bundle
