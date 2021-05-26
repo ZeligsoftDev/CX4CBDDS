@@ -77,4 +77,13 @@
          </Priority>
       </editpartProvider>
    </extension>   
+   <extension
+         point="org.eclipse.papyrus.infra.hyperlink.hyperlinkContributor">
+      <contributor
+            contributor="com.zeligsoft.domain.omg.ccm.ui.internal.hyperlinks.AssemblyHyperlinkContributor"
+            description="Hyperlink contribution for Assembly"
+            id="com.zeligsoft.domain.dds4ccm.ui.hyperlink.assemblydiagram"
+            label="Assembly structure diagram hyperlink">
+      </contributor>
+   </extension>
 </plugin>
