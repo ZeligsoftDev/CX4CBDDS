@@ -604,6 +604,10 @@ public class ZDeploymentUtil {
 
 		Component deployment = (Component) parentPart.getOwner();
 
+		if(parentPart.getType() == component) {
+			// assembly cannot contain itself.
+			return;
+		}
 		// The list of parts from which to create substructure will
 		// vary depending on whether we are working with a
 		// <<ComponentInterface>>
