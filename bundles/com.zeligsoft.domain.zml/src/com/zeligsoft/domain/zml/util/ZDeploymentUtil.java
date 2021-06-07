@@ -560,6 +560,7 @@ public class ZDeploymentUtil {
 				}
 			}
 		}
+		
 		Property newPart = createDeploymentPart(deployment, partToCreate, parentPart, null );
 				//ValidationUtil.getLinkContext(LinkConstraintContext.DEPLOYMENT_PART, partToCreate, parentPart));
 
@@ -601,13 +602,9 @@ public class ZDeploymentUtil {
 	protected static void buildDeploymentSubstructureBasedOnComponent(
 			Component component, Property parentPart,
 			Component structuralRealization) {
-
+		
 		Component deployment = (Component) parentPart.getOwner();
 
-		if(parentPart.getType() == component) {
-			// assembly cannot contain itself.
-			return;
-		}
 		// The list of parts from which to create substructure will
 		// vary depending on whether we are working with a
 		// <<ComponentInterface>>
@@ -632,6 +629,18 @@ public class ZDeploymentUtil {
 			componentParts = component.getOwnedAttributes();
 			connectorParts = component.getOwnedConnectors();
 		}
+		
+		// check to see if this is cycle
+		Property tempPart = parentPart;
+		while (tempPart != null) {
+			for (Property part : componentParts) {
+				if (part.getType() == tempPart.getType()) {
+					return;
+				}
+			}
+			tempPart = getParentPart(tempPart);
+		}
+		
 		for (Property substructureElement : componentParts) {
 			if (!(isDeploymentPart(substructureElement))
 				&& substructureElement.getType() instanceof Class) {
