@@ -10,6 +10,7 @@ import org.eclipse.papyrus.emf.facet.custom.core.ICustomizationCatalogManagerFac
 import org.eclipse.papyrus.emf.facet.custom.core.ICustomizationManager;
 import org.eclipse.papyrus.emf.facet.custom.metamodel.v0_2_0.custom.Customization;
 import org.eclipse.papyrus.infra.architecture.ArchitectureDomainPreferences;
+import org.eclipse.papyrus.infra.ui.preferences.RichtextPreferencePage;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.prefs.BackingStoreException;
 
@@ -45,8 +46,8 @@ public class Activator extends ZeligsoftAbstractUIPlugin {
 		ICustomizationManager customizationManager = org.eclipse.papyrus.views.modelexplorer.Activator.getDefault()
 				.getCustomizationManager();
 		List<String> customNamesToRemove = new ArrayList<String>();
-		customNamesToRemove.add("SimpleUML");
-		customNamesToRemove.add("StereotypeDisplay");
+		customNamesToRemove.add("SimpleUML"); //$NON-NLS-1$
+		customNamesToRemove.add("StereotypeDisplay"); //$NON-NLS-1$
 		List<Customization> customsToRemove = new ArrayList<Customization>();
 		for (Customization c : customizationManager.getManagedCustomizations()) {
 			if (customNamesToRemove.contains(c.getName())) {
@@ -54,7 +55,7 @@ public class Activator extends ZeligsoftAbstractUIPlugin {
 			}
 		}
 		final List<Customization> registeredCustomizations = ICustomizationCatalogManagerFactory.DEFAULT.getOrCreateCustomizationCatalogManager(customizationManager.getResourceSet()).getRegisteredCustomizations();
-		Optional<Customization> customToAdd = registeredCustomizations.stream().filter(c -> "SimpleDependencyUML".equals(c.getName())).findFirst();
+		Optional<Customization> customToAdd = registeredCustomizations.stream().filter(c -> "SimpleDependencyUML".equals(c.getName())).findFirst(); //$NON-NLS-1$
 		if(customToAdd.isPresent()) {
 			if (!customizationManager.getManagedCustomizations().contains(customToAdd.get())) {
 				customizationManager.getManagedCustomizations().add(customToAdd.get());
@@ -63,14 +64,28 @@ public class Activator extends ZeligsoftAbstractUIPlugin {
 		}
 		
 		
+		// Set default architecture
 		IEclipsePreferences pref = InstanceScope.INSTANCE
 				.getNode(org.eclipse.papyrus.infra.architecture.Activator.PLUGIN_ID);
-		String defaultArch = pref.get(ArchitectureDomainPreferences.DEFAULT_CONTEXT, "");
+		String defaultArch = pref.get(ArchitectureDomainPreferences.DEFAULT_CONTEXT, ""); //$NON-NLS-1$
 		if (defaultArch != com.zeligsoft.domain.cbdds.architecture.Activator.AXIOMA_ARCHITECTURE_ID) {
 			pref.put(ArchitectureDomainPreferences.DEFAULT_CONTEXT,
 					com.zeligsoft.domain.cbdds.architecture.Activator.AXIOMA_ARCHITECTURE_ID);
 			try {
 				pref.flush();
+			} catch (BackingStoreException e) {
+				// do nothing
+			}
+		}
+		
+		// Set default properties text editor
+		IEclipsePreferences editorPref = InstanceScope.INSTANCE
+				.getNode(org.eclipse.papyrus.infra.ui.Activator.PLUGIN_ID);
+		Boolean useRichText = editorPref.getBoolean(RichtextPreferencePage.USE_CK_EDITOR, false);
+		if(!useRichText) {
+			editorPref.putBoolean(RichtextPreferencePage.USE_CK_EDITOR, true);
+			try {
+				editorPref.flush();
 			} catch (BackingStoreException e) {
 				// do nothing
 			}
