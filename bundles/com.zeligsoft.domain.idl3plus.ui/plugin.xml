@@ -10,6 +10,12 @@
                name="Highest">
          </Priority>
       </editpartProvider>
+      <editpartProvider
+            class="com.zeligsoft.domain.idl3plus.ui.providers.InterfacePortEditPartProvider">
+         <Priority
+               name="Highest">
+         </Priority>
+      </editpartProvider>
    </extension>
    
    <extension
@@ -76,91 +82,6 @@
             name="Repair Module Instantiation">
       </command>
    </extension>
-
-<!--    
-    <extension
-          point="org.eclipse.ui.popupMenus">
-       <objectContribution
-             adaptable="false"
-             id="com.zeligsoft.domain.idl3plus.ui.repairModuleInstantiation"
-             objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
-          <action
-                class="com.zeligsoft.domain.idl3plus.ui.actions.RepairModuleInstantiationAction"
-                enablesFor="1"
-                id="com.zeligsoft.domain.idl3plus.ui.actions.repairModuleInstantiation"
-                label="%action.label.RepairModuleInstantiation"
-                menubarPath="additions">
-          </action>
-          <visibility>
-             <and>
-                <objectState
-                      name="isZDLConcept"
-                      value="IDL3Plus::Generics::ModuleInstantiation">
-                </objectState>
-                <objectState
-                      name="isZDLDomain"
-                      value="IDL3Plus">
-                </objectState>
-             </and>
-          </visibility>
-       </objectContribution>
-       <objectContribution
-             adaptable="false"
-             id="com.zeligsoft.domain.idl3plus.ui.repairAllModuleInstantiations"
-             objectClass="org.eclipse.gmf.runtime.common.core.util.IAdaptableSelection">
-          <action
-                class="com.zeligsoft.domain.idl3plus.ui.actions.RepairAllModuleInstantiationsAction"
-                enablesFor="1"
-                id="com.zeligsoft.domain.idl3plus.ui.actions.repairAllModuleInstantiations"
-                label="%action.label.RepairAllModuleInstantiations"
-                menubarPath="additions">
-          </action>
-          <visibility>
-             <and>
-                <objectState
-                      name="umlType"
-                      value="Model">
-                </objectState>
-                <objectState
-                      name="isZDLDomain"
-                      value="IDL3Plus">
-                </objectState>
-             </and>
-          </visibility>
-       </objectContribution>
-    </extension>
-
-    <extension
-         id="com.zeligsoft.domain.idl3plus.ui.navigator.navigatorContent.ID"
-         name="name"
-         point="org.eclipse.ui.navigator.navigatorContent">
-        <commonFilter
-          activeByDefault="false"
-          class="com.zeligsoft.domain.idl3plus.ui.internal.providers.filter.TemplateModuleContentsFilter"
-          description="%moduleInstanceContentsFilter.description"
-          id="com.zeligsoft.domain.idl3plus.ui.navigator.filters.templateModuleContents"
-          name="%moduleInstanceContentsFilter.name">       
-        </commonFilter>
-    </extension>
-    <extension
-          id="com.zeligsoft.domain.idl3plus.structureDiagramOpenEditPolicy"
-          name="IDL3PlusStructureOpenEditPolicy"
-          point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
-       <editpolicyProvider
-             class="com.zeligsoft.domain.idl3plus.ui.providers.IDL3PlusStructureEditPolicyProvider">
-          <Priority
-                name="Highest">
-          </Priority>
-          <object
-         		class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)"
-               id="PrimaryPart">
-         </object>
-          <context
-                editparts="PrimaryPart">
-          </context>
-       </editpolicyProvider>
-    </extension>  
-    -->
     <extension
          point="com.zeligsoft.cx.ui.properties.customPropertySection">
        <PropertySection
@@ -198,36 +119,15 @@
       </PropertySection>
     </extension>
     <extension
-         point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+          id="validationDecoratorProvider"
+          point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
       <decoratorProvider
             class="com.zeligsoft.domain.idl3plus.ui.providers.PortDecoratorProvider">
          <Priority
                name="Highest">
          </Priority>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
       </decoratorProvider>
     </extension>
-    <!--
-
-    <extension
-          point="org.eclipse.ui.importWizards">
-       <category
-             id="idl3PlusImportID"
-             name="%category.name.0">
-       </category>
-    </extension>
-    <extension   
-       point="org.eclipse.ui.importWizards"> 
-    	<wizard
-            category="idl3PlusImportID"
-            class="com.zeligsoft.domain.idl3plus.ui.wizards.IDL3PlusIDLImportWizard"
-            icon="platform:/plugin/com.zeligsoft.domain.omg.corba.ui/icons/obj16/IDL-import-process.gif"
-            id="com.zeligsoft.domain.idl3plus.IDL3PlusImportWizard"
-            name="%wizard.name.0"> 
-         <description> 
-            %IDLImportWizard.description 
-         </description> 
-         <selection class="org.eclipse.core.resources.IFile"/> 
-      </wizard>
-   </extension>
-      -->     
 </plugin>
