@@ -623,15 +623,20 @@
    <extension
       point="org.eclipse.papyrus.infra.gmfdiag.canonical.strategies">
 	   <semanticChildrenStrategy
+          class="com.zeligsoft.domain.dds4ccm.ui.strategies.ComponentPartCompartmentChildrenStrategy"
+          editPart="org.eclipse.papyrus.uml.diagram.composite.edit.parts.PropertyPartCompartmentEditPartCN"
+          priority="2">
+	   </semanticChildrenStrategy>
+	   <semanticChildrenStrategy
           class="com.zeligsoft.domain.dds4ccm.ui.strategies.CompositeDiagramSemanticChildrenStrategy"
           priority="1">
 	      <enablement>
 	         <and>
 	            <with
 	                  variable="element">
-	               <instanceof
-	                     value="org.eclipse.uml2.uml.StructuredClassifier">
-	               </instanceof>
+                <instanceof
+                      value="org.eclipse.uml2.uml.StructuredClassifier">
+                </instanceof>
 	            </with>
 	            <with
 	                  variable="view">
@@ -749,6 +754,25 @@
             </visibleWhen>
          </command>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.papyrus.uml.diagram.ui.popupmenu.filters">
+         <command
+               commandId="com.zeligsoft.domain.dds4ccm.ui.actions.ResetCompartmentFilterCommand"
+               label="Reset Compartment Filter"
+               style="push">
+            <visibleWhen>
+               <and>
+                  <with
+                        variable="activeEditorId">
+                     <equals
+                           value="org.eclipse.papyrus.infra.core.papyrusEditor">
+                     </equals>
+                  </with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -761,6 +785,11 @@
             defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.ImportDiagramLayout"
             id="com.zeligsoft.domain.dds4ccm.ui.importlayout"
             name="Import Diagram Layout">
+      </command>
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.ResetCompartmentFilterActionHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.actions.ResetCompartmentFilterCommand"
+            name="Reset Compartment Filter">
       </command>
    </extension>
    <extension

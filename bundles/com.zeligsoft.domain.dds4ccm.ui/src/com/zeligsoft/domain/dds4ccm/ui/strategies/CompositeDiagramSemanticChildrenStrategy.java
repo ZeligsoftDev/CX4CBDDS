@@ -30,6 +30,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.papyrus.uml.diagram.common.canonical.DefaultUMLSemanticChildrenStrategy;
 import org.eclipse.papyrus.uml.diagram.composite.custom.canonical.StructuredClassifierSemanticChildrenStrategy;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
@@ -37,6 +38,8 @@ import org.eclipse.uml2.uml.StructuredClassifier;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.domain.omg.ccm.CCMNames;
 
 /**
  * This class overrides the default canonical strategy <@code
@@ -73,19 +76,24 @@ public class CompositeDiagramSemanticChildrenStrategy extends DefaultUMLSemantic
 
 			result = Lists.newArrayList(owned);
 		}
-		
+
 		// Customize result for CX composite structure diagram
 		StructuredClassifier composite = (semanticFromEditPart instanceof StructuredClassifier)
 				? (StructuredClassifier) semanticFromEditPart
 				: null;
 		if (composite != null && !(viewFromEditPart instanceof Diagram)) {
 			// We should visualize inherited parts
-			for(Property p : composite.getAllAttributes()) {
-				if(!result.contains(p)) {
+			for (Property p : composite.getAllAttributes()) {
+				if (p instanceof Port && !result.contains(p)) {
 					result.add(p);
 				}
 			}
 			
+			// Don't show attributes for CCMComponent Issue #257
+			if (ZDLUtil.isZDLConcept(composite, CCMNames.CCMCOMPONENT)) {
+				result.removeIf(e -> e instanceof Comment || (e instanceof Property && !(e instanceof Port)));
+			}
+
 			// Remove port decoration
 			if (viewFromEditPart instanceof DecorationNode) {
 				result.removeIf(Port.class::isInstance);
