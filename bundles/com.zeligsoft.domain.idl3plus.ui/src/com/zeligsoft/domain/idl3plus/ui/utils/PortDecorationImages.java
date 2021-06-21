@@ -22,6 +22,7 @@ import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.ImageDataProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.zeligsoft.cx.ui.utils.CXWidgetFactory;
@@ -115,7 +116,7 @@ public class PortDecorationImages {
 	}
 
 	public static Image getPortIcon(String pluginId, String location,
-			int portSide) {
+			final int portSide) {
 		String key = pluginId + "_" + location + "_" + portSide;//$NON-NLS-1$ //$NON-NLS-2$
 		Image image = getImageRegistry().get(key);
 		if (image != null) {
@@ -131,20 +132,36 @@ public class PortDecorationImages {
 							+ location, new IllegalArgumentException());
 			return null;
 		}
-		ImageData data = descriptor.getImageData();
-		switch (portSide) {
-		case PositionConstants.WEST:
-			data = CXWidgetFactory.rotate(descriptor.getImageData(), SWT.DOWN);
-			break;
-		case PositionConstants.NORTH:
-			data = CXWidgetFactory.rotate(descriptor.getImageData(), SWT.LEFT);
-			break;
-		case PositionConstants.SOUTH:
-			data = CXWidgetFactory.rotate(descriptor.getImageData(), SWT.RIGHT);
-			break;
-		}
+		ImageDataProvider idp = new ImageDataProvider() {
+			
+			@Override
+			public ImageData getImageData(int zoom) {
+				int realPortSide = portSide;
+				ImageData data = descriptor.getImageData(100);
+
+				if ((portSide & PositionConstants.SOUTH) == PositionConstants.SOUTH) {
+					realPortSide = PositionConstants.SOUTH;
+				} else if ((portSide & PositionConstants.WEST) == PositionConstants.WEST) {
+					realPortSide = PositionConstants.WEST;
+				}
+
+				switch (realPortSide) {
+				case PositionConstants.WEST:
+					data = CXWidgetFactory.rotate(descriptor.getImageData(100), SWT.DOWN);
+					break;
+				case PositionConstants.NORTH:
+					data = CXWidgetFactory.rotate(descriptor.getImageData(100), SWT.LEFT);
+					break;
+				case PositionConstants.SOUTH:
+					data = CXWidgetFactory.rotate(descriptor.getImageData(100), SWT.RIGHT);
+					break;
+				}
+
+				return data;
+			}
+		};
 		ImageDescriptor newDescriptor = ImageDescriptor
-				.createFromImageData(data);
+				.createFromImageDataProvider(idp);
 		getImageRegistry().put(key, newDescriptor.createImage());
 		return getImageRegistry().get(key);
 	}
