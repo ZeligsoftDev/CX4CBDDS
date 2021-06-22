@@ -25,7 +25,6 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IFilter;
@@ -33,7 +32,6 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.osgi.framework.Bundle;
 
-import com.zeligsoft.cx.codegen.editor.ICheckCodeShouldGenerate;
 import com.zeligsoft.cx.codegen.editor.IValidationFactory;
 import com.zeligsoft.cx.codegen.ui.CodeGenUIPlugin;
 import com.zeligsoft.cx.codegen.ui.l10n.Messages;
@@ -237,8 +235,8 @@ public class TransformRegistry {
 	 */
 	public List<WorkflowEntry> getTransformationWorkflows(String concept, EObject eObject) {
 		
-		return TransformRegistry
-				.getTransformMap().get(concept);
+		List<WorkflowEntry> result = TransformRegistry.getTransformMap().get(concept);
+		return result == null ? new ArrayList<WorkflowEntry>() : result;
 
 	}
 }
