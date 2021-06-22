@@ -55,7 +55,6 @@ public class UserEditableElementFactory
 
 	private static final String CODELOCATOR_ATTR = "codeLocator"; //$NON-NLS-1$
 	private static final String VALIDATIONFACTORY_ATTR = "validationFactory"; //$NON-NLS-1$
-	private static final String LICENSER_ATTR = "licenser"; //$NON-NLS-1$
 
 	private static class UserEditableElementDescriptor implements IUserEditableElementDescriptor
 	{

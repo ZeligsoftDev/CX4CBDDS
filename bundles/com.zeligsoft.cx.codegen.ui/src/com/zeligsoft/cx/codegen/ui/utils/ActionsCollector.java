@@ -42,9 +42,6 @@ public class ActionsCollector {
 		{
 			List<WorkflowEntry> workflowEntries = TransformRegistry.INSTANCE
 					.getTransformationWorkflows(concept, eObj);
-			if(workflowEntries == null) {
-				return;
-			}
 			List<URL> paths = new ArrayList<URL>();
 			for (WorkflowEntry entry : workflowEntries) {
 				paths.add(entry.getWorkflowURL());
@@ -53,7 +50,7 @@ public class ActionsCollector {
 			IElementType type = ElementTypeRegistry.getInstance()
 					.getElementType(eObj);
 			for (WorkflowEntry entry : TransformRegistry.INSTANCE
-					.getTransformationWorkflows(concept, eObj)) {
+					.getTransformationWorkflows(type.getId(), eObj)) {
 				if (!paths.contains(entry.getWorkflowURL())) {
 					// do not add if entry exists with same URL
 					workflowEntries.add(entry);

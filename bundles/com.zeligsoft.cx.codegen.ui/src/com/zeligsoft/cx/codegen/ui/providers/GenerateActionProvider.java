@@ -149,8 +149,7 @@ public class GenerateActionProvider
 			if (obj instanceof EObject) {
 				eObject = (EObject) obj;
 			} else if (obj instanceof IAdaptable) {
-				eObject = (EObject) ((IAdaptable) obj)
-					.getAdapter(EObject.class);
+				eObject = ((IAdaptable) obj).getAdapter(EObject.class);
 			}
 		}
 		return eObject;

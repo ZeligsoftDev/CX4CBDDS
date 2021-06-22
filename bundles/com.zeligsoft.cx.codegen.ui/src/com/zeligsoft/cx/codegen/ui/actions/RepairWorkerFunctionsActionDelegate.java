@@ -81,8 +81,7 @@ public class RepairWorkerFunctionsActionDelegate
 			if (object instanceof EObject) {
 				eObject = (EObject) object;
 			} else if (object instanceof IAdaptable) {
-				eObject = (EObject) ((IAdaptable) object)
-					.getAdapter(EObject.class);
+				eObject = ((IAdaptable) object).getAdapter(EObject.class);
 			}
 
 			if (eObject != null) {

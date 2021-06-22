@@ -17,12 +17,7 @@
 package com.zeligsoft.cx.codegen.ui.transformregistry;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
-import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.jface.viewers.IFilter;
 import org.osgi.framework.Bundle;
 
