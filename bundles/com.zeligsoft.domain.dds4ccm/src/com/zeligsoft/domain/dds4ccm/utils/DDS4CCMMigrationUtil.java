@@ -52,6 +52,7 @@ import com.zeligsoft.domain.zml.util.WorkerFunctionRepair;
 import com.zeligsoft.domain.zml.util.ZDeploymentUtil;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
+@SuppressWarnings("nls")
 public final class DDS4CCMMigrationUtil {
 
 	public static final String SOURCE_NAME = "cx.migration"; //$NON-NLS-1$

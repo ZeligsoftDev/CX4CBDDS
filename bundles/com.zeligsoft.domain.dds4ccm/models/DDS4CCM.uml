@@ -377,6 +377,16 @@ endif&#xD;
           <body>com.zeligsoft.domain.dds4ccm.constraints.java.DeploymentPartsWithLocalInterfaceCollocationConstraint</body>
         </specification>
       </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_44x6ENUBEeulVb_b9efLAA" name="valid_external_references">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_44x6EdUBEeulVb_b9efLAA">
+          <body>%_desc_DDS4CCM__Constraints__valid_external_references</body>
+        </ownedComment>
+        <constrainedElement xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_i9Aj8GSDEd2454WIHspjPA"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_44x6EtUBEeulVb_b9efLAA">
+          <language>Java</language>
+          <body>com.zeligsoft.domain.dds4ccm.constraints.java.ValidExternalReferenceConstraint</body>
+        </specification>
+      </ownedRule>
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_9-4P0OR3EeCaze562T5Rgw" client="_fP0CMEDSEd-VnJuJyqILLA" supplier="_4JyrwOR3EeCaze562T5Rgw"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_TQsi0B9sEeGEWf0BDHdksQ" client="_fP0CMEDSEd-VnJuJyqILLA">
@@ -481,4 +491,5 @@ endif&#xD;
   <zdl:ExternalDomainConstraint xmi:id="_JWN9UFAAEemk3qCdFFbT1g" severity="error" message="%_mesg_DDS4CCM__Constraints__connector_type_compatibility" id="com.zeligsoft.domain.dds4ccm.Constraints.connector_type_compatibility" base_Constraint="_JV7pcFAAEemk3qCdFFbT1g"/>
   <zdl:ExternalDomainConstraint xmi:id="_AAn6AFStEemfNon6R1wyIA" severity="error" message="%_mesg_DDS4CCM__Constraints__connector_type_not_empty" id="com.zeligsoft.domain.dds4ccm.Constraints.connector_type_not_empty" base_Constraint="_AAldwFStEemfNon6R1wyIA"/>
   <zdl:ExternalDomainConstraint xmi:id="_Zle0sI0eEemXDpqpOiiboQ" severity="error" message="%_mesg_DDS4CCM__Constraints__deployment_parts_with_local_interface_collocation" id="com.zeligsoft.domain.dds4ccm.Constraints.deployment_parts_with_local_interface_collocation" base_Constraint="_ZlYHAI0eEemXDpqpOiiboQ"/>
+  <zdl:ExternalDomainConstraint xmi:id="_45JGcNUBEeulVb_b9efLAA" severity="error" message="%_mesg_DDS4CCM__Constraints__valid_external_references" id="com.zeligsoft.domain.dds4ccm.Constraints.valid_external_references" base_Constraint="_44x6ENUBEeulVb_b9efLAA"/>
 </xmi:XMI>

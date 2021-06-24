@@ -18,6 +18,7 @@ package com.zeligsoft.domain.dds4ccm.utils;
 
 import java.io.IOException;
 
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -37,7 +38,7 @@ import com.zeligsoft.domain.idl3plus.api.Generics.TemplateModule;
 import com.zeligsoft.domain.omg.corba.CXDomainNames;
 import com.zeligsoft.domain.omg.corba.api.IDL.CXModule;
 import com.zeligsoft.domain.omg.corba.api.IDL.CXModuleContained;
-
+@SuppressWarnings("nls")
 public class ConnectorTypeUtility {	
 	
 	/**

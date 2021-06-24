@@ -183,16 +183,21 @@ public final class DDS4CCMDynamicURIMapHandler {
 			IPath path = delta.getFullPath();
 			String ext = path.getFileExtension();
 			if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())) { //$NON-NLS-1$
-				URI uri = URI.createPlatformResourceURI(path.toString(), false);
-				if (delta.getKind() == IResourceDelta.CHANGED || delta.getKind() == IResourceDelta.ADDED) {
-					Resource r = rset.getResource(uri, false);
-					if (r != null) {
-						r.unload();
+				try {
+					URI uri = URI.createPlatformResourceURI(path.toString(), false);
+					if (delta.getKind() == IResourceDelta.CHANGED || delta.getKind() == IResourceDelta.ADDED) {
+						Resource r = rset.getResource(uri, false);
+						if (r != null) {
+							r.unload();
+						}
+						rset.getResource(uri, true);
 					}
-					rset.getResource(uri, true);
-				}
-				if (delta.getKind() == IResourceDelta.ADDED || delta.getKind() == IResourceDelta.REMOVED) {
-					processUML(uri, delta.getKind());
+					if (delta.getKind() == IResourceDelta.ADDED || delta.getKind() == IResourceDelta.REMOVED) {
+	
+							processUML(uri, delta.getKind());
+					}
+				}catch (Exception e) {
+					// catch any exceptions
 				}
 			}
 

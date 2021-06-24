@@ -17,11 +17,13 @@
 package com.zeligsoft.base.ui.menus.util;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Iterator;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.papyrus.infra.emf.utils.EMFHelper;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Profile;
 
@@ -36,38 +38,40 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
  */
 public class CXMenuPropertyTester extends PropertyTester {
 
-	@SuppressWarnings("unchecked")
-	public boolean test(Object receiver, String property, Object[] args,
-			Object expectedValue) {
-		EObject testObject = null;
-		if (receiver instanceof List && ((List<Object>) receiver).size() > 0) {
-			Object obj = ((List<Object>) receiver).get(0);
-			// to do: papyrus model explorer element
-//			if (obj instanceof ModelServerElement) {
-//				Object element = ((ModelServerElement) obj).getElement();
-//				if (element instanceof EObject) {
-//					testObject = (EObject) element;
-//				}
-//			}
+	// todo: need to make this work
+	public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
+		if (!(receiver instanceof IStructuredSelection)) {
+			return false;
 		}
-		if (testObject != null) {
-			if (testObject instanceof Element) {
-				if (ZDLUtil.getZDLProfiles((Element) testObject).size() > 0) {
-					Profile profile = ZDLUtil
-							.getZDLProfiles((Element) testObject).iterator()
-							.next();
-					if (profile.getName().equals("ZDL")) { //$NON-NLS-1$
-						// we need to show Add CX menu for DDK
-						return true;
-					}
-				} else {
-					return false;
+
+		IStructuredSelection selection = (IStructuredSelection) receiver;
+		if (!selection.isEmpty()) {
+			EObject testObject = null;
+			Iterator<?> iter = selection.iterator();
+			while (iter.hasNext()) {
+				testObject = EMFHelper.getEObject(iter.next());
+				if (testObject instanceof Element) {
+					break;
 				}
 			}
-			Collection<IContributionItem> menuItems = DomainSpecificMenuProvider
-					.calculateContributionItems(testObject);
-			if (menuItems.size() > 0) {
-				return true;
+
+			if (testObject != null) {
+				boolean profileFound = false;
+				if (testObject instanceof Element) {
+					for (Profile p : ZDLUtil.getZDLProfiles((Element) testObject)) {
+						if (!p.getName().equals("ZDL")) { //$NON-NLS-1$
+							profileFound = true;
+							break;
+						}
+					}
+				}
+				if (profileFound) {
+					Collection<IContributionItem> menuItems = DomainSpecificMenuProvider
+							.calculateContributionItems(testObject);
+					if (menuItems.size() > 0) {
+						return true;
+					}
+				}
 			}
 		}
 		return false;

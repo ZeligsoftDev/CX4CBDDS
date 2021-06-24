@@ -144,8 +144,8 @@ public class DeploymentPartsWithLocalInterfaceCollocationConstraint extends Abst
 			if(!validationResult.validationStatus){
 				ctx.addResult(validationResult.providesPartDP.eObject());
 				
-				String vArg1 = partToCheckDP.getName() + " :: " + usesPort.getName();
-				String vArg2 = ZDeploymentUtil.getQualifiedName(validationResult.providesPartDP.asProperty()) + " :: " + validationResult.providesPort.getName();
+				String vArg1 = partToCheckDP.getName() + " :: " + usesPort.getName(); //$NON-NLS-1$
+				String vArg2 = ZDeploymentUtil.getQualifiedName(validationResult.providesPartDP.asProperty()) + " :: " + validationResult.providesPort.getName(); //$NON-NLS-1$
 				String vArg3 = ZDeploymentUtil.getQualifiedName(validationResult.providesPartTargetProcessDP.asProperty());
 				return ctx.createFailureStatus(vArg1.trim(), vArg2.trim(), vArg3);				
 			}

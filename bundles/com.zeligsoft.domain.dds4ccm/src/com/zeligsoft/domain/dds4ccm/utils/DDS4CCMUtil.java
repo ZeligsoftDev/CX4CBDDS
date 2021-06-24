@@ -155,7 +155,7 @@ public class DDS4CCMUtil {
 
 		String modelType = DDS4CCMUtil.getModelType(containerProcess);
 
-		final String cpuAffinity = PropertyVariable.LM_CPUAFFINITY.getName(modelType);//$NON-NLS-1$
+		final String cpuAffinity = PropertyVariable.LM_CPUAFFINITY.getName(modelType);
 
 		final String processName = PropertyVariable.LM_PROCESSNAME.getName(modelType);
 
@@ -374,7 +374,7 @@ public class DDS4CCMUtil {
 	}
 
 	public static String getPropertyName(String modelType, String propertyKey){
-		String propertyName = "";
+		String propertyName = ""; //$NON-NLS-1$
 		PropertyVariable pv = PropertyVariable.valueOf(propertyKey);
 		if(pv == null){
 			return propertyName;

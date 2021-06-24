@@ -24,8 +24,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
-import org.eclipse.emf.validation.service.ConstraintRegistry;
-import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.ConnectorKind;

@@ -1,5 +1,6 @@
 package com.zeligsoft.domain.dds4ccm.utils;
 // PropertyVariable.NODE_IOR.matches(sp.getName(), modelType)
+@SuppressWarnings("nls")
 public enum PropertyVariable {
 	COMPONENT_FACTORY("component factory", "nl.remedy.it.DnCX11.Executor.Factory"),
 	NODE_IOR("edu.vanderbilt.dre.DAnCE.StringIOR", "nl.remedy.it.DnCX11.StringIOR"),

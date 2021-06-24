@@ -119,8 +119,8 @@ public class CreateConceptAction extends Action {
 			return;
 		}
 
-		if (req.getElementType().getDisplayName().startsWith("CORBA")) {
-			command = ReplaceResultNameCommand.wrap(command, "CORBA", "");
+		if (req.getElementType().getDisplayName().startsWith("CORBA")) { //$NON-NLS-1$
+			command = ReplaceResultNameCommand.wrap(command, "CORBA", ""); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 
 		// Wrap command to select created element

@@ -33,6 +33,16 @@
                   class="com.zeligsoft.cx.codegen.ui.providers.DynamicGenerateMenuProvider"
                   id="com.zeligsoft.cbdds.ui.generateDynamic">
             </dynamic>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.zdl.tester.isCXModel"
+                        value="true">
+                  </test>
+               </with>
+            </visibleWhen>
          </menu>
       </menuContribution>
    </extension>
