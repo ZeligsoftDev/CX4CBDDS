@@ -16,6 +16,8 @@ public class ZDLPropertyTest extends PropertyTester {
 
 	public static final String IS_ZDLPROFILE = "isZDLProfile";//$NON-NLS-1$
 
+	public static final String IS_CXMODEL = "isCXModel";//$NON-NLS-1$
+
 	/**
 	 *
 	 * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object,
@@ -35,35 +37,40 @@ public class ZDLPropertyTest extends PropertyTester {
 		} else if (IS_ZDLPROFILE.equals(property) && (receiver instanceof IStructuredSelection)
 				&& (expectedValue instanceof String)) {
 			return hasZDLProfile((IStructuredSelection) receiver, (String) expectedValue);
+		} else if (IS_CXMODEL.equals(property) && (receiver instanceof IStructuredSelection)) {
+			EObject eo = getSelectedEObject((IStructuredSelection) receiver);
+			if(eo instanceof Element) {
+				return !ZDLUtil.getZDLProfiles((Element)eo).isEmpty();
+			}
 		}
 		return false;
 	}
 
 	protected boolean hasZDLProfile(IStructuredSelection selection, String profile) {
-		if (!selection.isEmpty()) {
-			EObject eo = null;
-			Iterator<?> iter = selection.iterator();
-			while (iter.hasNext()) {
-				eo = EMFHelper.getEObject(iter.next());
-				if (eo instanceof Element) {
-					break;
-				}
-			}
+		EObject eo = getSelectedEObject(selection);
+		if (eo != null) {
 			return ZDLUtil.isZDLProfile((Element) eo, profile);
 		}
 		return false;
 	}
 
-	protected boolean hasZDLConcept(IStructuredSelection selection, String concept) {
+	private EObject getSelectedEObject(IStructuredSelection selection) {
 		if (!selection.isEmpty()) {
 			EObject eo = null;
 			Iterator<?> iter = selection.iterator();
 			while (iter.hasNext()) {
 				eo = EMFHelper.getEObject(iter.next());
 				if (eo != null) {
-					break;
+					return eo;
 				}
 			}
+		}
+		return null;
+	}
+	
+	protected boolean hasZDLConcept(IStructuredSelection selection, String concept) {
+		EObject eo = getSelectedEObject(selection);
+		if (eo != null) {
 			return ZDLUtil.isZDLConcept(eo, concept);
 		}
 		return false;

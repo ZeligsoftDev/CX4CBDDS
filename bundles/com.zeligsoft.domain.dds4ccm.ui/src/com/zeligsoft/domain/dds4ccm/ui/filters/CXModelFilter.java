@@ -57,7 +57,7 @@ public class CXModelFilter extends ViewerFilter {
 		if (element instanceof EObjectTreeElement && ((EObjectTreeElement) element).getParent() == null
 				&& domain.isReadOnly(eObject.eResource())) {
 			URI uri = URIConverter.INSTANCE.normalize(eObject.eResource().getURI());
-			if ("platform".equals(uri.scheme()) && "resource".equals(uri.segment(0))) {
+			if ("platform".equals(uri.scheme()) && "resource".equals(uri.segment(0))) {  //$NON-NLS-1$//$NON-NLS-2$
 				return true;
 			}
 			return false;
@@ -87,13 +87,13 @@ public class CXModelFilter extends ViewerFilter {
 		if (eObject instanceof EAnnotation) {
 			EAnnotation ea = (EAnnotation) eObject;
 			String source = ea.getSource();
-			if (!UML2Util.isEmpty(source) && (source.startsWith("cx") || source.startsWith("zcx"))) {
+			if (!UML2Util.isEmpty(source) && (source.startsWith("cx") || source.startsWith("zcx"))) { //$NON-NLS-1$ //$NON-NLS-2$
 				return false;
 			}
 		}
 
 		// filter out CX Domain models
-		if (domain.isReadOnly(eObject.eResource()) && ZDLUtil.isZDLConcept(eObject, ZDLNames.DOMAIN_MODEL)) {
+		if (eObject.eResource() != null && domain.isReadOnly(eObject.eResource()) && ZDLUtil.isZDLConcept(eObject, ZDLNames.DOMAIN_MODEL)) {
 			return false;
 		}
 

@@ -282,7 +282,7 @@ public class ZDLProjectExplorerMenuFactory {
 				delegate = clazz.newInstance();
 				delegate.setSelection(context);
 				delegate.setText(delegateAction.getName());
-				String id = String.format("%s.delegate.%s", getIdPrefix(),
+				String id = String.format("%s.delegate.%s", getIdPrefix(), //$NON-NLS-1$
 						clazz.getName());
 				delegate.setId(id);
 				

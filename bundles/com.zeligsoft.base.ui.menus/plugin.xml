@@ -8,7 +8,7 @@
           id="com.zeligsoft.base.ui.menus.CXMenuPropertyTester"
           namespace="com.zeligsoft.base.ui.menus"
           properties="isCXMenuVisible"
-          type="java.lang.Object">
+          type="org.eclipse.jface.viewers.IStructuredSelection">
     </propertyTester>
  </extension>
     <extension
@@ -23,6 +23,15 @@
                   class="com.zeligsoft.base.ui.menus.providers.DomainSpecificMenuProvider"
                   id="com.zeligsoft.menu.generateDynamic">
             </dynamic>
+            <visibleWhen>
+               <with
+                     variable="selection">
+                  <test
+                        property="com.zeligsoft.base.ui.menus.isCXMenuVisible"
+                        value="true">
+                  </test>
+               </with>
+            </visibleWhen>
          </menu>
       </menuContribution>
    </extension>

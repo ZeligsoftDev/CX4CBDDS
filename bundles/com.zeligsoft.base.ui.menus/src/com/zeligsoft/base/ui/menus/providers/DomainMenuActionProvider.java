@@ -39,7 +39,7 @@ import com.zeligsoft.base.ui.utils.BaseUIUtil;
 
 public class DomainMenuActionProvider extends CommonActionProvider {
 
-	private static final String GROUP_NEW = "group.new";
+	private static final String GROUP_NEW = "group.new"; //$NON-NLS-1$
 
 	@Override
 	public void fillContextMenu(IMenuManager menu) {

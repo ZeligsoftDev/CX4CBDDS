@@ -79,9 +79,9 @@ public class ConnectorTypeCompatibilityConstraint extends AbstractModelConstrain
 		boolean isAsync = ip.getIsAsynchronous();
 
 		if(isAsync && !isAsyncCapableConnector(connectorType)) {
-			return ctx.createFailureStatus(ip.getName(), "asynchronous");
+			return ctx.createFailureStatus(ip.getName(), "asynchronous"); //$NON-NLS-1$
 		} else if (!isAsync && !isSyncCapableConnector(connectorType)){
-			return ctx.createFailureStatus(ip.getName(), "synchronous");
+			return ctx.createFailureStatus(ip.getName(), "synchronous"); //$NON-NLS-1$
 		} else {
 			return ctx.createSuccessStatus();
 		}		
