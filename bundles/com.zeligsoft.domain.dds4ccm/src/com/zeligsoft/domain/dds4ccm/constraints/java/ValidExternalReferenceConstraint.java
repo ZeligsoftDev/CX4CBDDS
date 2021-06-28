@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
-import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
 
@@ -41,54 +40,40 @@ import com.zeligsoft.base.zdl.util.ZDLUtil;
  */
 public class ValidExternalReferenceConstraint extends AbstractModelConstraint {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public IStatus validate(IValidationContext ctx) {
 
 		EObject objToVerify = ctx.getTarget();
 
-		String brokenReference = containsBrokenReference(objToVerify);
-		if (!UML2Util.isEmpty(brokenReference)) {
-			ctx.addResult(objToVerify);
-			return ctx.createFailureStatus(objToVerify, brokenReference);
-		}
-
-		return ctx.createSuccessStatus();
-	}
-
-	/**
-	 * Helper method to find out if the given port has delegation
-	 * 
-	 * @param port
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	private static String containsBrokenReference(EObject element) {
-		List<org.eclipse.uml2.uml.Class> concepts = ZDLUtil.getZDLConcepts(element);
+		List<org.eclipse.uml2.uml.Class> concepts = ZDLUtil.getZDLConcepts(objToVerify);
 		for (org.eclipse.uml2.uml.Class clazz : concepts) {
 			for (Property p : clazz.getOwnedAttributes()) {
 				if (p.getType() instanceof PrimitiveType) {
 					// no need to check primitive types
 					continue;
 				}
-				Object value = ZDLUtil.getRawValue(element, clazz, p.getName());
+				Object value = ZDLUtil.getRawValue(objToVerify, clazz, p.getName());
 				if (value != null) {
 					if (value instanceof List) {
 						for (Object o : (List<Object>) value) {
 							if (isPathmapProxy(o)) {
-								return p.getName();
+								return ctx.createFailureStatus(objToVerify, p.getName(), o.toString());
 							}
 						}
 					} else {
 						if (isPathmapProxy(value)) {
-							return p.getName();
+							return ctx.createFailureStatus(objToVerify, p.getName(), value.toString());
 						}
 					}
 				}
 			}
 		}
-		return null;
+
+		return ctx.createSuccessStatus();
 	}
-	
+
+
 	private static boolean isPathmapProxy(Object object) {
 		if (object instanceof EObject) {
 			EObject eObject = (EObject) object;

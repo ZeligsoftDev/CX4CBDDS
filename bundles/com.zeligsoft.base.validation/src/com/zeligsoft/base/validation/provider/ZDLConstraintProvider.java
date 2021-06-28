@@ -68,7 +68,12 @@ public class ZDLConstraintProvider
 			// add all of the constraints which are defined in the domain
 			// but which are not directly owned by the concept
 			for(Profile p : ZDLUtil.getZDLProfiles((Element) object)) {
-				result.addAll(mgr.getExternalConstraints(p, concept));
+				for(IModelConstraint c: mgr.getExternalConstraints(p, concept)) {
+					// do not add duplicates
+					if(!result.contains(c)) {
+						result.addAll(mgr.getExternalConstraints(p, concept));
+					}
+				}
 			}
 		}
 
