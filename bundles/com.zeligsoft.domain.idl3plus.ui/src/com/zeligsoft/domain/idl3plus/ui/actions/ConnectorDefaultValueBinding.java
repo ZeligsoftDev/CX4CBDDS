@@ -155,14 +155,11 @@ public class ConnectorDefaultValueBinding extends Action implements ICXAction {
 				}
 			};
 			
-			if (result != null) {
-
-				Command emfCommand = BaseUIUtil.getDirectEditCommand(GMFtoEMFCommandWrapper.wrap(editCommand));
-				if (emfCommand.canExecute()) {
-					editingDomain.getCommandStack().execute(emfCommand);
-				} else {
-					Activator.getDefault().warning(Messages.ConnectorDefaultValueBinding_ErrorMessage);
-				}
+			Command emfCommand = BaseUIUtil.getDirectEditCommand(GMFtoEMFCommandWrapper.wrap(editCommand));
+			if (emfCommand.canExecute()) {
+				editingDomain.getCommandStack().execute(emfCommand);
+			} else {
+				Activator.getDefault().warning(Messages.ConnectorDefaultValueBinding_ErrorMessage);
 			}
 		}
 	}

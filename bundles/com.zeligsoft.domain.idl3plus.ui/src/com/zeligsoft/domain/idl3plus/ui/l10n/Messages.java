@@ -44,6 +44,7 @@ public class Messages
 	public static String IDL3PlusWizardPageCreator_ProjectPageName;
 	public static String InstantiateTemplateModule_CommandLabel;
 	public static String InstantiateTemplateModule_DialogTitle;
+	public static String InstantiateTemplateModule_InstantiationError;
 	public static String InstantiateTemplateModuleDialog_DialogTitle;
 	public static String InstantiateTemplateModuleDialog_NameColumnLabel;
 	public static String InstantiateTemplateModuleDialog_ParameterColumnLabel;

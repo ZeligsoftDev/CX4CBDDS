@@ -117,7 +117,7 @@ public class InstantiateTemplateModule extends Action implements ICXAction {
 			if (emfCommand.canExecute()) {
 				editingDomain.getCommandStack().execute(emfCommand);
 			} else {
-				Activator.getDefault().warning("Error instantiating module");
+				Activator.getDefault().warning(Messages.InstantiateTemplateModule_InstantiationError);
 			}
 		}
 	}
