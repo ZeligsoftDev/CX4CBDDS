@@ -29,6 +29,7 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.emf.validation.model.ModelConstraint;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
+import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.Property;
 
 import com.zeligsoft.base.validation.l10n.Messages;
@@ -89,7 +90,7 @@ public class ZDLMultiplicityConstraint
 				: 1;
 		}
 
-		if (attribute.isMultivalued()) {
+		if (!includesCardinality(attribute, cardinality)) {
 			int lower = attribute.getLower();
 			int upper = attribute.getUpper();
 
@@ -118,6 +119,28 @@ public class ZDLMultiplicityConstraint
 		return ctx.createSuccessStatus();
 	}
 
+	/**
+	 * Check cardinality of multiplicity element
+	 * 
+	 * @param multiplicityElement
+	 * @param cardinality
+	 * @return
+	 */
+	public static boolean includesCardinality(MultiplicityElement multiplicityElement, int cardinality) {
+
+		if (cardinality == LiteralUnlimitedNatural.UNLIMITED) {
+			return multiplicityElement.upperBound() == LiteralUnlimitedNatural.UNLIMITED;
+		} else {
+
+			if (multiplicityElement.lowerBound() <= cardinality) {
+				int upperBound = multiplicityElement.upperBound();
+				return upperBound == LiteralUnlimitedNatural.UNLIMITED ? true : upperBound >= cardinality;
+			} else {
+				return false;
+			}
+		}
+	}
+	
 	private String getLabel(EObject eObject) {
 		IItemLabelProvider provider = (IItemLabelProvider) EcoreUtil
 			.getExistingAdapter(eObject, IItemLabelProvider.class);
