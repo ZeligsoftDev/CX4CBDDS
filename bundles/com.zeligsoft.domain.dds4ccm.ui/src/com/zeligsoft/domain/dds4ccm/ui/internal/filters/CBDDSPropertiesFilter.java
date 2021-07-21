@@ -26,6 +26,7 @@ import org.eclipse.papyrus.infra.emf.utils.EMFHelper;
 import org.eclipse.uml2.uml.Element;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.domain.dds4ccm.ui.filters.DDS4CCMDomainFilter;
 
 public class CBDDSPropertiesFilter implements IFilter {
 
@@ -51,7 +52,7 @@ public class CBDDSPropertiesFilter implements IFilter {
 			return false;
 		}
 
-		return ZDLUtil.isZDLProfile((Element) eo, "cxDDS4CCM");
+		return ZDLUtil.isZDLProfile((Element) eo, DDS4CCMDomainFilter.DDS4CCM_PROFILE_NAME);
 	}
 
 	private EObject resolveSemanticObject(Object object) {
