@@ -17,10 +17,8 @@
 
 package com.zeligsoft.domain.dds4ccm.ui.filters;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.viewers.Viewer;
@@ -52,17 +50,18 @@ public class CXModelFilter extends ViewerFilter {
 			return result;
 		}
 
-		// Hide non local models
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(eObject);
 		if (element instanceof EObjectTreeElement && ((EObjectTreeElement) element).getParent() == null
 				&& domain.isReadOnly(eObject.eResource())) {
-			URI uri = URIConverter.INSTANCE.normalize(eObject.eResource().getURI());
-			if ("platform".equals(uri.scheme()) && "resource".equals(uri.segment(0))) {  //$NON-NLS-1$//$NON-NLS-2$
-				return true;
+			if(eObject instanceof Element) {
+				// Models with DDS4CCM profile are visible
+				if(ZDLUtil.isZDLProfile((Element)eObject, DDS4CCMDomainFilter.DDS4CCM_PROFILE_NAME)) {
+					return true;
+				}
 			}
 			return false;
 		}
-
+		
 		if (eObject instanceof Element
 				&& ZDLUtil.isZDLProfile((Element) eObject, DDS4CCMDomainFilter.DDS4CCM_PROFILE_NAME)) {
 			// filter out elements from CX model
