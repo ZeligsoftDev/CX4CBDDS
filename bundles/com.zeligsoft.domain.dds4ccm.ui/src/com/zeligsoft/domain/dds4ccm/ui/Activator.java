@@ -11,10 +11,13 @@ import org.eclipse.papyrus.emf.facet.custom.core.ICustomizationManager;
 import org.eclipse.papyrus.emf.facet.custom.metamodel.v0_2_0.custom.Customization;
 import org.eclipse.papyrus.infra.architecture.ArchitectureDomainPreferences;
 import org.eclipse.papyrus.infra.ui.preferences.RichtextPreferencePage;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.prefs.BackingStoreException;
 
 import com.zeligsoft.base.ui.ZeligsoftAbstractUIPlugin;
+import com.zeligsoft.domain.dds4ccm.ui.listeners.EditorPartListener;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -90,6 +93,10 @@ public class Activator extends ZeligsoftAbstractUIPlugin {
 				// do nothing
 			}
 		}
+		
+		// Add part listener in order to add double click listener to model explorer
+		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		page.addPartListener(new EditorPartListener());
 	}
 
 	/*
