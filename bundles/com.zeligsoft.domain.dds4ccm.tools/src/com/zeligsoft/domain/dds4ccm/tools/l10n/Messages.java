@@ -14,6 +14,12 @@ public class Messages extends NLS {
 	public static String DynamicURIMappingsPreferencePage_RemapLabel;
 	public static String ICMBrowseDialog_DialogTitle;
 	public static String DDS4CCMDynamicURIMapHandler_PackageImportError;
+	public static String ReferencesCustomPropertySection_FindingReferencedModelsTaskName;
+	public static String ReferencesCustomPropertySection_FindReferencingModelTaskName;
+	public static String ReferencesCustomPropertySection_ReferencedModelTabLabel;
+	public static String ReferencesCustomPropertySection_ReferencingModelTabLabl;
+	public static String ReferencesCustomPropertySection_SectionLabel;
+	public static String ReferencesCustomPropertySection_ShowReferencedModelButtonLabel;
 
 	static {
 		// initialize resource bundle

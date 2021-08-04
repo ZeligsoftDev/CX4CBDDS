@@ -17,7 +17,9 @@
 package com.zeligsoft.cx.ui.dialogs;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -191,7 +193,8 @@ public abstract class ZDLElementBrowseComposite {
 				includeImportedPackages);
 
 		public DelegatingContentProvider() {
-			zcp.loadAllResources(context.eResource().getResourceSet(), ResourcesPlugin.getWorkspace().getRoot());
+			Set<URI> uris = new HashSet<URI>();
+			zcp.loadAllResources(uris, ResourcesPlugin.getWorkspace().getRoot());
 		}
 
 		@Override

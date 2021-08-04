@@ -212,31 +212,10 @@ public abstract class ZDLElementSelectionComposite {
 
 		final IEclipsePreferences store = InstanceScope.INSTANCE
 				.getNode(ZeligsoftCXUIPlugin.PLUGIN_ID);
-		boolean searchWorkspace = store.getBoolean(
-				CXPreferenceConstants.SEARCH_WORKSPACE,
-				CXPreferenceConstants.DEFAULT_SEARCH_WORKSPACE);
 		boolean searchProject = store.getBoolean(
 				CXPreferenceConstants.SEARCH_PROJECT,
 				CXPreferenceConstants.DEFAULT_SEARCH_PROJECT);	
 		if (showSearchScopeCheckBoxes) {
-			final Button workspaceCheckbox = new Button(listAreaComposite,
-					SWT.CHECK);
-			workspaceCheckbox.setSelection(searchWorkspace);
-			workspaceCheckbox
-					.setText(Messages.ZDLElementSelectionComposite_SearchScopeLabel);
-			workspaceCheckbox.addSelectionListener(new SelectionAdapter() {
-				@Override
-				public void widgetSelected(SelectionEvent e) {
-					store.putBoolean(CXPreferenceConstants.SEARCH_WORKSPACE,
-							workspaceCheckbox.getSelection());
-					try {
-						store.flush();
-					} catch (BackingStoreException e1) {
-						// nothing do to
-					}
-					tableViewer.refresh();
-				}
-			});
 			final Button projectCheckbox = new Button(listAreaComposite,
 					SWT.CHECK);
 			projectCheckbox.setSelection(searchProject);

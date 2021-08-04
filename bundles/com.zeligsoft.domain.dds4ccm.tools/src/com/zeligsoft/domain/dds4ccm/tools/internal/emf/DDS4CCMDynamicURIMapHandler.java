@@ -74,6 +74,8 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.validation.ui.commands.ValidateCXModelCommand;
@@ -313,11 +315,17 @@ public final class DDS4CCMDynamicURIMapHandler {
 	 * @param dependentModels
 	 */
 	@SuppressWarnings("unchecked")
-	static void containsReferenceToPathmap(URI targetUri, URI modelUri, Set<URI> dependentModels) {
+	public static void containsReferenceToPathmap(URI targetUri, URI modelUri, Set<URI> dependentModels) {
+		
+		if(targetUri.equals(modelUri)) {
+			return;
+		}
+		
 		Package model = UML2Util.load(rset, modelUri, UMLPackage.Literals.PACKAGE);
 		if (model == null || !ZDLUtil.isZDLProfile(model, "cxDDS4CCM")) { //$NON-NLS-1$
 			return;
 		}
+		
 		TreeIterator<EObject> itor = model.eAllContents();
 		while (itor.hasNext()) {
 			EObject next = itor.next();
@@ -332,14 +340,21 @@ public final class DDS4CCMDynamicURIMapHandler {
 				itor.prune();
 			} else {
 				Element element = (Element) next;
+				if(element instanceof TypedElement) {
+					Type type = ((TypedElement)element).getType();
+					if(type != null && isReferenceToPathmap(next, type, targetUri)) {
+						dependentModels.add(modelUri);
+						return;
+					}
+				}
 				List<org.eclipse.uml2.uml.Class> concepts = ZDLUtil.getZDLConcepts(element);
 				for (org.eclipse.uml2.uml.Class clazz : concepts) {
-					for (Property p : clazz.getOwnedAttributes()) {
+					for (Property p : clazz.getAllAttributes()) {
 						if (p.getType() instanceof PrimitiveType) {
 							// no need to check primitive types
 							continue;
 						}
-						Object value = ZDLUtil.getRawValue(element, clazz, p.getName());
+						Object value = ZDLUtil.getValue(element, clazz, p.getName());
 						if (value != null) {
 							if (value instanceof List) {
 								for (Object o : (List<Object>) value) {
@@ -362,13 +377,13 @@ public final class DDS4CCMDynamicURIMapHandler {
 		}
 	}
 
-	private static boolean isReferenceToPathmap(EObject owner, EObject type, URI pathmapUri) {
+	private static boolean isReferenceToPathmap(EObject owner, EObject type, URI targetUri) {
 		if (type == null) {
 			return false;
 		}
 		if (type.eResource() != null && type.eResource() != owner.eResource()) {
-			URI targetUri = URIConverter.INSTANCE.normalize(type.eResource().getURI());
-			if (targetUri.equals(pathmapUri)) {
+			URI typeUri = URIConverter.INSTANCE.normalize(type.eResource().getURI());
+			if (targetUri.equals(typeUri)) {
 				return true;
 			}
 		}
@@ -447,9 +462,15 @@ public final class DDS4CCMDynamicURIMapHandler {
 				itor.prune();
 			} else {
 				Element element = (Element) next;
+				if(element instanceof TypedElement) {
+					Type type = ((TypedElement)element).getType();
+					if (isPathmapProxy(type)) {
+						return true;
+					}
+				}
 				List<org.eclipse.uml2.uml.Class> concepts = ZDLUtil.getZDLConcepts(element);
 				for (org.eclipse.uml2.uml.Class clazz : concepts) {
-					for (Property p : clazz.getOwnedAttributes()) {
+					for (Property p : clazz.getAllAttributes()) {
 						if (p.getType() instanceof PrimitiveType) {
 							// no need to check primitive types
 							continue;
