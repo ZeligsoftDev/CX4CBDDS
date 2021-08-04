@@ -52,6 +52,9 @@ public class CXWidgetFactory {
 
 	public static final Color redColor = new Color(null, 255, 0, 0);
 
+	public static final Image ERROR_IMAGE = 
+			PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJS_ERROR_TSK);
+
 	public static final Image ADD_OBJECT_IMAGE = 
 			PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_ADD);
 
