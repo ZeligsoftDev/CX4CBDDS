@@ -27,7 +27,6 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -71,18 +70,12 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 	private IFilter filter;
 
 	private boolean includeImportedPackages;
-
+	
 	private Set<EObject> contentList = new HashSet<EObject>();
-
-	private Set<EObject> workspaceContentList = new HashSet<EObject>();
-
+	
 	private Set<EObject> projectContentList = new HashSet<EObject>();
 
-	private static List<URI> testedResources = new ArrayList<URI>();
-	
-	private static List<URI> loadedResources = new ArrayList<URI>();
-	
-	private ResourceSet tmpRset = null;
+	private ResourceSet rset = new ResourceSetImpl();
 
 	/**
 	 * Constructor
@@ -98,14 +91,6 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 		this.concepts = concepts;
 		this.filter = filter;
 		this.includeImportedPackages = includeImportedPackages;
-		testedResources.add(context.eResource().getURI());
-		loadedResources.add(context.eResource().getURI());
-	}
-	private ResourceSet getTmpResourceSet() {
-		if(tmpRset == null) {
-			tmpRset = new ResourceSetImpl();
-		}
-		return tmpRset;
 	}
 	/**
 	 * Load all UML resources in a folder
@@ -113,7 +98,7 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 	 * @param rset
 	 * @param container
 	 */
-	public void loadAllResources(ResourceSet rset, IContainer container) {
+	public void loadAllResources(Set<URI> resources, IContainer container) {
 		try {
 			IResource[] members = container.members();
 
@@ -125,36 +110,25 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 					}
 				}
 				if (member instanceof IContainer) {
-					loadAllResources(rset, (IContainer) member);
+					loadAllResources(resources, (IContainer) member);
 				} else if (member instanceof IFile) {
 					IFile file = (IFile) member;
 					String ext = file.getFullPath().getFileExtension();
 					if (!UML2Util.isEmpty(ext) && BaseUtil.UML_MODEL_EXTENSION.equals(ext.toLowerCase())) {
 						URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-						if(!file.exists()) {
-							loadedResources.remove(uri);
-						}else if (!testedResources.contains(uri)) {
-							testedResources.add(uri);
-							Package root = UML2Util.load(getTmpResourceSet(), uri, UMLPackage.Literals.PACKAGE);
-							if (root != null && ZDLUtil.isZDLProfile(root, "cxDDS4CCM")) { //$NON-NLS-1$
-								// Use dynamic pathmap if available
-								String pathmap = BaseUtil.getZCXAnnotationDetail(root, "pathmap", ""); //$NON-NLS-1$ //$NON-NLS-2$
-								if(!UML2Util.isEmpty(pathmap)) {
-									uri = CXDynamicURIConverter.getPathmapURI(uri);
-								}
-								boolean found = false;
-								for(Resource r: rset.getResources()) {
-									if(uri.equals(r.getURI())){
-										found = true;
-										break;
+						// Use pathmap URI if registered
+						uri = CXDynamicURIConverter.getPathmapURI(uri);
+							try {
+								Resource resource = rset.getResource(uri, true);
+								if (resource != null) {
+									Package root = UML2Util.load(rset, uri, UMLPackage.Literals.PACKAGE);
+									if (root != null && ZDLUtil.isZDLProfile(root, "cxDDS4CCM")) { //$NON-NLS-1$
+										resources.add(uri);
 									}
 								}
-								if(!found) {
-									rset.getResource(uri, true);
-								}
-								loadedResources.add(uri);
+							} catch (Exception e) {
+								// ignore
 							}
-						}
 					}
 				}
 			}
@@ -172,50 +146,31 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 
 		final IEclipsePreferences store = InstanceScope.INSTANCE
 				.getNode(ZeligsoftCXUIPlugin.PLUGIN_ID);
-		boolean searchWorkspace = store.getBoolean(
-				CXPreferenceConstants.SEARCH_WORKSPACE,
-				CXPreferenceConstants.DEFAULT_SEARCH_WORKSPACE);
 
 		boolean searchProject = store.getBoolean(
 				CXPreferenceConstants.SEARCH_PROJECT,
 				CXPreferenceConstants.DEFAULT_SEARCH_PROJECT);
 
-		
-		ResourceSet rset = context.eResource().getResourceSet();
-		if (searchWorkspace) {
-			if (workspaceContentList.isEmpty()) {
-				loadAllResources(rset, ResourcesPlugin.getWorkspace().getRoot());
-				for (URI o : loadedResources) {
-					Resource res = rset.getResource(o, true);
-					workspaceContentList.addAll(getZDLElements(res, includeImportedPackages));
-				}
-			}
-			return workspaceContentList.toArray();
-		} else if (searchProject) {
-			IProject project = WorkspaceSynchronizer.getFile(
-					context.eResource()).getProject();
+
+		ResourceSet modelSet = context.eResource().getResourceSet();
+		if (searchProject) {
 			if (projectContentList.isEmpty()) {
-				loadAllResources(rset, project);
-				projectContentList.addAll(getZDLElements(context.eResource(),
-						includeImportedPackages));
-				for (URI o : loadedResources) {
-					Resource res = rset.getResource(o, true);
-					IFile f = WorkspaceSynchronizer.getFile((Resource) res);
-					if (f != null && !res.equals(context.eResource())) {
-						IProject thisProject = WorkspaceSynchronizer.getFile(
-								(Resource) res).getProject();
-						if (project.equals(thisProject)) {
-							projectContentList.addAll(getZDLElements(
-									(Resource) res, includeImportedPackages));
-						}
+				IProject project = WorkspaceSynchronizer.getFile(context.eResource()).getProject();
+				Set<URI> resourcesToLoad = new HashSet<URI>();
+				loadAllResources(resourcesToLoad, project);
+				for (URI uri : resourcesToLoad) {
+					Resource resource = modelSet.getResource(uri, true);
+					if (uri.equals(context.eResource().getURI())) {
+						projectContentList.addAll(getZDLElements(resource, includeImportedPackages));
+					} else {
+						projectContentList.addAll(getZDLElements(resource, false));
 					}
 				}
 			}
 			return projectContentList.toArray();
-		}
+		} 
 		if (contentList.isEmpty()) {
-			contentList.addAll(getZDLElements(context.eResource(),
-					includeImportedPackages));
+			contentList.addAll(getZDLElements(context.eResource(), includeImportedPackages));
 		}
 		return contentList.toArray();
 	}
