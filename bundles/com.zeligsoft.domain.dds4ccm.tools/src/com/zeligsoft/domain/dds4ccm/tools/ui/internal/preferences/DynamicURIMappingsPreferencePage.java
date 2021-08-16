@@ -167,7 +167,7 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 	// Nested classes
 	//
 
-	private static class URIMappingLabelProvider implements ITableLabelProvider {
+	public static class URIMappingLabelProvider implements ITableLabelProvider {
 
 		@Override
 		public Image getColumnImage(Object element, int columnIndex) {
