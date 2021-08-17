@@ -36,12 +36,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -56,6 +59,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.uml2.common.util.UML2Util;
@@ -76,6 +80,8 @@ import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
 import com.zeligsoft.cx.ui.properties.sections.ICXCustomPropertySection;
 import com.zeligsoft.cx.ui.utils.CXWidgetFactory;
+import com.zeligsoft.domain.dds4ccm.tools.actions.GoToAction;
+import com.zeligsoft.domain.dds4ccm.tools.actions.RefactorURIAction;
 import com.zeligsoft.domain.dds4ccm.tools.internal.emf.DDS4CCMDynamicURIMapHandler;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
@@ -163,6 +169,32 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 			}
 		});
 		referencedModelTreeViewer.getTree().setLinesVisible(true);
+		final MenuManager contextMenu = new MenuManager();
+		contextMenu.setRemoveAllWhenShown(true);
+		contextMenu.addMenuListener(new IMenuListener() {
+
+			@Override
+			public void menuAboutToShow(IMenuManager manager) {
+				IStructuredSelection selection = (IStructuredSelection) referencedModelTreeViewer.getSelection();
+				if (selection == null) {
+					return;
+				}
+				Object selectedObject = selection.getFirstElement();
+				if (selectedObject instanceof ReferenceDescriptor) {
+					// add Go To action
+					GoToAction goToAction = new GoToAction(((ReferenceDescriptor) selectedObject).getContext());
+					manager.add(goToAction);
+				} else if (selectedObject instanceof URI) {
+					// add Refactor URI action
+					RefactorURIAction refactorAction = new RefactorURIAction(
+							descriptor.getContext().eResource().getURI(), (URI) selectedObject);
+					manager.add(refactorAction);
+				}
+			}
+		});
+
+		final Menu menu = contextMenu.createContextMenu(referencedModelTreeViewer.getControl());
+		referencedModelTreeViewer.getControl().setMenu(menu);
 		referencedModelTreeViewer.setInput(null);
 
 		TabItem referencingTab = new TabItem(root, SWT.NULL);
@@ -204,11 +236,17 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 		private EObject context;
 		private String concept;
 		private String property;
+		private boolean isProxy;
 
-		public ReferenceDescriptor(EObject context, String concept, String property) {
+		public ReferenceDescriptor(EObject context, String concept, String property, boolean isProxy) {
 			this.context = context;
 			this.concept = concept;
 			this.property = property;
+			this.isProxy = isProxy;
+		}
+
+		public boolean isProxyValue() {
+			return isProxy;
 		}
 
 		public EObject getContext() {
@@ -253,7 +291,7 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 				Package pkg = ((PackageImport) next).getImportedPackage();
 				URI uri = getURI(pkg);
 				if (uri != null) {
-					referencesMap.put(uri, new ReferenceDescriptor(next, null, null));
+					referencesMap.put(uri, new ReferenceDescriptor(next, null, null, pkg.eIsProxy()));
 				}
 				itor.prune();
 			} else if (!(next instanceof Element)) {
@@ -266,7 +304,8 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 							|| "members".equals(((TypedElement) element).getName())) { //$NON-NLS-1$
 						Type type = ((TypedElement) element).getType();
 						if (type != null && type.eResource() != element.eResource()) {
-							referencesMap.put(getURI(type), new ReferenceDescriptor(element, null, "type")); //$NON-NLS-1$
+							referencesMap.put(getURI(type),
+									new ReferenceDescriptor(element, null, "type", type.eIsProxy())); //$NON-NLS-1$
 						}
 					}
 				}
@@ -290,7 +329,7 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 										URI uri = getURI(eo);
 										if (uri != null && eo.eResource() != element.eResource()) {
 											referencesMap.put(uri, new ReferenceDescriptor(element,
-													clazz.getQualifiedName(), p.getName()));
+													clazz.getQualifiedName(), p.getName(), eo.eIsProxy()));
 										}
 									}
 								}
@@ -300,7 +339,7 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 									URI uri = getURI(eo);
 									if (uri != null && eo.eResource() != element.eResource()) {
 										referencesMap.put(uri, new ReferenceDescriptor(element,
-												clazz.getQualifiedName(), p.getName()));
+												clazz.getQualifiedName(), p.getName(), eo.eIsProxy()));
 									}
 								}
 							}
@@ -343,7 +382,8 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 
 					List<URI> models = new ArrayList<URI>();
-					URI targetUri = URIConverter.INSTANCE.normalize((URI) inputElement);
+
+					URI targetUri = (URI) inputElement;
 					DDS4CCMDynamicURIMapHandler.visitAllModels(ResourcesPlugin.getWorkspace().getRoot(),
 							modelUri -> models.add(modelUri));
 					monitor.beginTask(Messages.ReferencesCustomPropertySection_FindReferencingModelTaskName,
@@ -522,7 +562,8 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 		@Override
 		public Image getColumnImage(Object object, int columnIndex) {
 			if (object instanceof ReferenceDescriptor) {
-				return BaseUIUtil.getIcon(((ReferenceDescriptor) object).getContext());
+				EObject eo = ((ReferenceDescriptor) object).getContext();
+				return BaseUIUtil.getIcon(eo);
 			}
 			if (object instanceof URI) {
 				Resource r = rset.getResource((URI) object, false);
