@@ -13,6 +13,8 @@ public class Messages extends NLS {
 	public static String DynamicPathmapCustomPropertySection_FieldLabel;
 	public static String DynamicPathmapCustomPropertySection_PathmapErrorMsg;
 	public static String DynamicPathmapCustomPropertySection_PathmapWarning;
+	public static String DynamicPathmapCustomPropertySection_RefactoringConfirmationDialogTitle;
+	public static String DynamicPathmapCustomPropertySection_RefactoringConfirmationMsg;
 	public static String DynamicPathmapCustomPropertySection_RefactoringDialogTitle;
 	public static String DynamicPathmapCustomPropertySection_RegisteringPathmapSubtask;
 	public static String DynamicURIMappingsPreferencePage_PreferencePageTitle;
@@ -21,6 +23,7 @@ public class Messages extends NLS {
 	public static String DDS4CCMDynamicURIMapHandler_PackageImportError;
 	public static String GoToAction_ActionTitle;
 	public static String RefactorPathmapDialog_DialogTitle;
+	public static String RefactorPathmapDialog_Label;
 	public static String RefactorURIAction_ActionTitle;
 	public static String RefactorURIAction_DialogTitle;
 	public static String RefactorURIAction_RefactoringConfirmation;
