@@ -45,6 +45,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.window.Window;
@@ -188,6 +189,10 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 	 */
 	private void setDynamicPathmap(EObject model, String pathmap) {
 
+		boolean shouldRefactor = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
+				Messages.DynamicPathmapCustomPropertySection_RefactoringConfirmationDialogTitle,
+				Messages.DynamicPathmapCustomPropertySection_RefactoringConfirmationMsg);
+
 		IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
 			@Override
@@ -234,44 +239,49 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 					DDS4CCMDynamicURIMapHandler.addMapping(pathmapURI, modelUri);
 				}
 
-				monitor.subTask(Messages.DynamicPathmapCustomPropertySection_ClosingEditorSubtask);
+				if (shouldRefactor) {
+					monitor.subTask(Messages.DynamicPathmapCustomPropertySection_ClosingEditorSubtask);
 
-				// close all editors before refactoring starts
-				IWorkbenchPage page = BaseUIUtil.getActivepage();
-				if (page != null) {
-					List<IEditorReference> editorsToClose = new ArrayList<IEditorReference>();
-					IEditorPart activeEditor = page.getActiveEditor();
-					for (IEditorReference ref : page.getEditorReferences()) {
-						IEditorPart editor = ref.getEditor(false);
-						if (!activeEditor.equals(ref.getEditor(false)) && editor instanceof PapyrusMultiDiagramEditor) {
-							editorsToClose.add(ref);
+					// close all editors before refactoring starts
+					IWorkbenchPage page = BaseUIUtil.getActivepage();
+					if (page != null) {
+						List<IEditorReference> editorsToClose = new ArrayList<IEditorReference>();
+						IEditorPart activeEditor = page.getActiveEditor();
+						for (IEditorReference ref : page.getEditorReferences()) {
+							IEditorPart editor = ref.getEditor(false);
+							if (!activeEditor.equals(ref.getEditor(false))
+									&& editor instanceof PapyrusMultiDiagramEditor) {
+								editorsToClose.add(ref);
+							}
+						}
+						try {
+							page.closeEditors(editorsToClose.toArray(new IEditorReference[0]), true);
+						} catch (Exception e) {
+							// do nothing
 						}
 					}
-					try {
-						page.closeEditors(editorsToClose.toArray(new IEditorReference[0]), true);
-					} catch (Exception e) {
-						// do nothing
-					}
-				}
 
-				// from URI
-				URI sourceURI = originalPathmapUri;
+					// from URI
+					URI sourceURI = originalPathmapUri;
 
-				// to current URI
-				URI targetURI = CXDynamicURIConverter.getPathmapURI(modelUri);
+					// to current URI
+					URI targetURI = CXDynamicURIConverter.getPathmapURI(modelUri);
 
-				// refactor all references
-				List<URI> models = new ArrayList<URI>();
-				DDS4CCMDynamicURIMapHandler.visitAllModels(ResourcesPlugin.getWorkspace().getRoot(),
-						uri -> models.add(uri));
-				for (URI uri : models) {
-					if (!modelUri.equals(uri)) {
-						monitor.subTask("Refactoring " + uri.toString()); //$NON-NLS-1$
-						if (refactorURI(sourceURI, targetURI, uri)) {
+					// refactor all references
+					List<URI> models = new ArrayList<URI>();
+					DDS4CCMDynamicURIMapHandler.visitAllModels(ResourcesPlugin.getWorkspace().getRoot(),
+							uri -> models.add(uri));
+					for (URI uri : models) {
+						if (!modelUri.equals(uri)) {
+							monitor.subTask("Refactoring " + uri.toString()); //$NON-NLS-1$
+							if (refactorURI(sourceURI, targetURI, uri)) {
+							}
 						}
 					}
 				}
+				monitor.done();
 			}
+
 		};
 
 		try {

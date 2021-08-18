@@ -34,6 +34,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
 
 import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
@@ -107,6 +108,10 @@ public class RefactorPathmapDialog extends TrayDialog {
 				content.add(uri.appendSegment(model));
 			}
 		}
+
+		Text label = new Text(browseComposite, SWT.NONE);
+		label.setText(Messages.RefactorPathmapDialog_Label);
+		label.setBackground(browseComposite.getBackground());
 
 		// create table
 		tableViewer = new TableViewer(browseComposite, listStyle);
