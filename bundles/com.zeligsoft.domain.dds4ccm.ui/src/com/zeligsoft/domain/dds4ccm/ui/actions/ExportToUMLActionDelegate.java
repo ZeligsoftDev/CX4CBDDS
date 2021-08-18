@@ -22,9 +22,12 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.content.IContentType;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -34,6 +37,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
@@ -75,22 +79,39 @@ public class ExportToUMLActionDelegate extends ActionDelegate implements
 		if (selectedFile == null) {
 			return;
 		}
+		
+		boolean shouldExport = true;
+		IPath umlPath = selectedFile.getFullPath().removeFileExtension().addFileExtension("uml");
+		IFile file =ResourcesPlugin.getWorkspace().getRoot().getFile(umlPath);
+		if(file.exists()){
+			// uml file exist
+			shouldExport = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), "Export UML", "The UML file already exists. Do you want to overwrite the existing one?");
+			if(shouldExport){
+				try {
+					file.delete(true, new NullProgressMonitor());
+				} catch (CoreException e) {
+					// delete failed.
+				}
+			}
+		}
+		
+		if (shouldExport) {
+			try {
+				part.getSite().getPage().getWorkbenchWindow().getWorkbench()
+						.getProgressService()
+						.busyCursorWhile(new IRunnableWithProgress() {
 
-		try {
-			part.getSite().getPage().getWorkbenchWindow().getWorkbench()
-					.getProgressService()
-					.busyCursorWhile(new IRunnableWithProgress() {
-
-						@Override
-						public void run(IProgressMonitor monitor)
-								throws InvocationTargetException,
-								InterruptedException {
-							doRun(monitor);
-						}
-					});
-		} catch (Exception e) {
-			MessageDialog.openError(shell, "Export to UML", "Export failed: "
-					+ e.getLocalizedMessage());
+							@Override
+							public void run(IProgressMonitor monitor)
+									throws InvocationTargetException,
+									InterruptedException {
+								doRun(monitor);
+							}
+						});
+			} catch (Exception e) {
+				MessageDialog.openError(shell, "Export to UML",
+						"Export failed: " + e.getLocalizedMessage());
+			}
 		}
 	}
 
