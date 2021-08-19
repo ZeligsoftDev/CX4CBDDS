@@ -22,18 +22,16 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.content.IContentType;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.gmf.runtime.common.core.util.Log;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -62,11 +60,11 @@ public class ExportToUMLActionDelegate extends ActionDelegate implements
 			.getContentTypeManager().getContentType(
 					"com.ibm.xtools.uml.msl.umlModelContentType");
 
-	private IFile selectedFile;
-
 	private Shell shell;
-
-	private IWorkbenchPart part;
+	
+	private IFile selectedFile;
+	
+	private boolean shouldOverwrite = false;
 
 	/**
 	 * Initializes me.
@@ -80,41 +78,24 @@ public class ExportToUMLActionDelegate extends ActionDelegate implements
 			return;
 		}
 		
-		boolean shouldExport = true;
-		IPath umlPath = selectedFile.getFullPath().removeFileExtension().addFileExtension("uml");
-		IFile file =ResourcesPlugin.getWorkspace().getRoot().getFile(umlPath);
-		if(file.exists()){
-			// uml file exist
-			shouldExport = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), "Export UML", "The UML file already exists. Do you want to overwrite the existing one?");
-			if(shouldExport){
-				try {
-					file.delete(true, new NullProgressMonitor());
-				} catch (CoreException e) {
-					// delete failed.
-				}
-			}
-		}
+		shouldOverwrite = false;
 		
-		if (shouldExport) {
-			try {
-				part.getSite().getPage().getWorkbenchWindow().getWorkbench()
-						.getProgressService()
-						.busyCursorWhile(new IRunnableWithProgress() {
-
-							@Override
-							public void run(IProgressMonitor monitor)
-									throws InvocationTargetException,
-									InterruptedException {
-								doRun(monitor);
-							}
-						});
-			} catch (Exception e) {
-				MessageDialog.openError(shell, "Export to UML",
-						"Export failed: " + e.getLocalizedMessage());
-			}
+		ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
+		try {
+			dialog.run(false, false, new IRunnableWithProgress() {
+				
+				@Override
+				public void run(IProgressMonitor monitor) throws InvocationTargetException,
+						InterruptedException {
+					doRun(monitor);
+				}
+			});
+		} catch (Exception e) {
+			Activator.getDefault().error(e.getMessage(), e);
 		}
 	}
 
+	
 	private void doRun(IProgressMonitor monitor) {
 		monitor.beginTask("Exporting ... ", 7);
 
@@ -186,37 +167,35 @@ public class ExportToUMLActionDelegate extends ActionDelegate implements
 	
 	@Override
 	public void setActivePart(IAction arg0, IWorkbenchPart targetPart) {
-		part = targetPart;
 		shell = (targetPart == null) ? null : targetPart.getSite().getShell();
 	}
 
 	@Override
 	public boolean handleLoadResult(Resource arg0) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void postConvert(Collection<Resource> arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void preConvert(Collection<Resource> arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public boolean queryOverwrite(String arg0) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean queryOverwrite(String uri) {
+		if (shouldOverwrite == false) {
+			shouldOverwrite = MessageDialog.openConfirm(Display.getCurrent()
+					.getActiveShell(), "Export UML", "Do you want to overwrite existing UML file(s)?");
+		}
+		return shouldOverwrite;
 	}
 
 	@Override
-	public void raiseErrorDialog(String arg0, String arg1) {
-		// TODO Auto-generated method stub
-		
+	public void raiseErrorDialog(String title, String message) {
+		MessageDialog.openError(shell, title, message);
 	}
 }
