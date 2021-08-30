@@ -820,4 +820,110 @@
             sequence="DEL">
       </key>     
    </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <commonFilter
+            activeByDefault="false"
+            class="com.zeligsoft.domain.dds4ccm.ui.filters.NavigatorModelOnlyFilter"
+            id="com.zeligsoft.domain.dds4ccm.ui.cxdionlyfilter"
+            name="CX Model View">
+      </commonFilter>
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="com.zeligsoft.domain.dds4ccm.ui.providers.NavigatorModelOnlyContentProvider"
+            id="com.zeligsoft.domain.dds4ccm.ui.CXContent"
+            labelProvider="org.eclipse.papyrus.infra.onefile.ui.providers.PapyrusLabelProvider"
+            name="CX Content"
+            priority="higher">
+         <enablement>
+            <or>
+               <instanceof
+                     value="org.eclipse.papyrus.infra.onefile.model.IPapyrusFile">
+               </instanceof>
+               <instanceof
+                     value="org.eclipse.papyrus.infra.onefile.providers.OneFileModelProvider">
+               </instanceof>
+               <instanceof
+                     value="org.eclipse.core.resources.IResource">
+               </instanceof>
+               <instanceof
+                     value="org.eclipse.core.internal.resources.mapping.ResourceModelProvider">
+               </instanceof>
+               <instanceof
+                     value="org.eclipse.core.resources.IFile">
+               </instanceof>
+               <adapt
+                     type="org.eclipse.core.resources.IResource">
+               </adapt>
+            </or>
+         </enablement>
+         <triggerPoints>
+            <or>
+               <instanceof
+                     value="org.eclipse.core.resources.IContainer">
+               </instanceof>
+               <instanceof
+                     value="org.eclipse.papyrus.infra.onefile.model.IPapyrusFile">
+               </instanceof>
+            </or>
+         </triggerPoints>
+      </navigatorContent>
+   </extension>
+   <extension point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding viewerId="org.eclipse.team.ui.navigatorViewer">
+         <includes>
+            <contentExtension
+                  pattern="com.zeligsoft.domain.dds4ccm.ui.cxdionlyfilter"/>
+         </includes>
+      </viewerContentBinding>
+      <viewerContentBinding
+            viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension 
+                  pattern="com.zeligsoft.domain.dds4ccm.ui.cxdionlyfilter">
+            </contentExtension>
+            <contentExtension 
+                  pattern="com.zeligsoft.domain.dds4ccm.ui.CXContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+      <viewerContentBinding 
+            viewerId="org.eclipse.team.ui.navigatorViewer">
+         <includes>
+            <contentExtension 
+                  pattern="com.zeligsoft.domain.dds4ccm.ui.cxdionlyfilter">
+            </contentExtension>
+            <contentExtension 
+                  pattern="com.zeligsoft.domain.dds4ccm.ui.CXContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.zeligsoft.domain.dds4ccm.ui.actions.NavigatorModelOnlyFilterAction"
+            id="com.zeligsoft.domain.dds4ccm.ui.modelonlyfiltercommand"
+            name="CX Models Only">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.navigator.ProjectExplorer">
+         <separator
+               name="my.separator"
+               visible="true">
+         </separator>
+         <command
+               commandId="com.zeligsoft.domain.dds4ccm.ui.modelonlyfiltercommand"
+               icon="icons/papyrus.png"
+               label="CX Di Filter"
+               style="push"
+               tooltip="Models Only">
+         </command>
+      </menuContribution>
+   </extension>
 </plugin>

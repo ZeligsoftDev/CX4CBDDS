@@ -22,6 +22,7 @@ public class Messages extends NLS {
 	public static String ICMBrowseDialog_DialogTitle;
 	public static String DDS4CCMDynamicURIMapHandler_PackageImportError;
 	public static String GoToAction_ActionTitle;
+	public static String OpenModelAction_ActionTitle;
 	public static String RefactorPathmapDialog_DialogTitle;
 	public static String RefactorPathmapDialog_Label;
 	public static String RefactorURIAction_ActionTitle;
