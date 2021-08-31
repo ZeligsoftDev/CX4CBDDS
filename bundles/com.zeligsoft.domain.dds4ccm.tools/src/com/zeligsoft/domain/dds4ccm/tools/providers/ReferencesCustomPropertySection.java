@@ -81,6 +81,7 @@ import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
 import com.zeligsoft.cx.ui.properties.sections.ICXCustomPropertySection;
 import com.zeligsoft.cx.ui.utils.CXWidgetFactory;
 import com.zeligsoft.domain.dds4ccm.tools.actions.GoToAction;
+import com.zeligsoft.domain.dds4ccm.tools.actions.OpenModelAction;
 import com.zeligsoft.domain.dds4ccm.tools.actions.RefactorURIAction;
 import com.zeligsoft.domain.dds4ccm.tools.internal.emf.DDS4CCMDynamicURIMapHandler;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
@@ -169,9 +170,9 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 			}
 		});
 		referencedModelTreeViewer.getTree().setLinesVisible(true);
-		final MenuManager contextMenu = new MenuManager();
-		contextMenu.setRemoveAllWhenShown(true);
-		contextMenu.addMenuListener(new IMenuListener() {
+		final MenuManager referencedModelContextMenu = new MenuManager();
+		referencedModelContextMenu.setRemoveAllWhenShown(true);
+		referencedModelContextMenu.addMenuListener(new IMenuListener() {
 
 			@Override
 			public void menuAboutToShow(IMenuManager manager) {
@@ -185,6 +186,11 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 					GoToAction goToAction = new GoToAction(((ReferenceDescriptor) selectedObject).getContext());
 					manager.add(goToAction);
 				} else if (selectedObject instanceof URI) {
+					// open model action
+					URI selectedUri = (URI) selectedObject;
+					OpenModelAction openAction = new OpenModelAction(selectedUri);
+					manager.add(openAction);
+					
 					// add Refactor URI action
 					RefactorURIAction refactorAction = new RefactorURIAction(
 							descriptor.getContext().eResource().getURI(), (URI) selectedObject);
@@ -193,8 +199,9 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 			}
 		});
 
-		final Menu menu = contextMenu.createContextMenu(referencedModelTreeViewer.getControl());
-		referencedModelTreeViewer.getControl().setMenu(menu);
+		final Menu referencedModelMenu = referencedModelContextMenu
+				.createContextMenu(referencedModelTreeViewer.getControl());
+		referencedModelTreeViewer.getControl().setMenu(referencedModelMenu);
 		referencedModelTreeViewer.setInput(null);
 
 		TabItem referencingTab = new TabItem(root, SWT.NULL);
@@ -223,6 +230,29 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 		referencingModelTreeViewer.setContentProvider(new ReferencingModelContentProvider());
 		referencingModelTreeViewer.setLabelProvider(new URILabelProvider());
 		referencingModelTreeViewer.getTree().setLinesVisible(true);
+
+		final MenuManager referencingModelContextMenu = new MenuManager();
+		referencingModelContextMenu.setRemoveAllWhenShown(true);
+		referencingModelContextMenu.addMenuListener(new IMenuListener() {
+
+			@Override
+			public void menuAboutToShow(IMenuManager manager) {
+				IStructuredSelection selection = (IStructuredSelection) referencingModelTreeViewer.getSelection();
+				if (selection == null) {
+					return;
+				}
+				Object selectedObject = selection.getFirstElement();
+				if (selectedObject instanceof URI) {
+					URI selectedUri = (URI) selectedObject;
+					OpenModelAction openAction = new OpenModelAction(selectedUri);
+					manager.add(openAction);
+				}
+			}
+		});
+
+		final Menu referencingModelMenu = referencingModelContextMenu
+				.createContextMenu(referencingModelTreeViewer.getControl());
+		referencingModelTreeViewer.getControl().setMenu(referencingModelMenu);
 		referencingModelTreeViewer.setInput(null);
 	}
 
