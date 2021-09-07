@@ -39,8 +39,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.validation.preferences.EMFModelValidationPreferences;
+import org.eclipse.emf.validation.service.ConstraintRegistry;
 import org.eclipse.emf.validation.service.IBatchValidator;
+import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.osgi.framework.Bundle;
 
 import com.ibm.xtools.modeler.ui.UMLModeler;
@@ -67,12 +71,15 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 	private static final String IDL_GENERATION_WORKFLOW_PATH = "/workflow/ngc_idl.oaw"; //$NON-NLS-1$
 	private static final String DESCRIPTOR_GENERATION_PLUGIN_ID = "com.zeligsoft.domain.ngc.ccm.descriptorgeneration"; //$NON-NLS-1$
 	private static final String DESCRIPTOR_GENERATION_WORKFLOW_PATH = "/workflow/bulkDescriptorsGenerator.oaw"; //$NON-NLS-1$
+	private static final String DISTINCT_MEMBER_CONSTRAINT_ID = "com.ibm.xtools.uml.validation.namespace.distinctMembers";
 
 	private static ResourceSet rset = new ResourceSetImpl();
 
 	private static Set<CodeGenListener> listeners = new HashSet<CodeGenListener>();
 
 	public static CodeGenUtil INSTANCE = new CodeGenUtil();
+	
+	private static boolean initialized = false;
 
 	private CodeGenUtil() { 
 		DDS4CCMGenerationUtils.addGenerationListener(this);
@@ -165,7 +172,7 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 		boolean isExistentURI = UMLModeler.getEditingDomain().getResourceSet().getURIConverter().exists(uri, null);
 		
 		if(!isExistentURI){
-			return createStatus(IStatus.ERROR, "No resource exists with URI: "+uri);
+			return createStatus(IStatus.INFO, "No resource exists with URI: "+uri);
 		}
 		
 		DDS4CCMValidationFactory factory = new DDS4CCMValidationFactory();
@@ -202,7 +209,24 @@ public class CodeGenUtil implements DDS4CCMGenerationListener {
 			
 		}
 		
-		IStatus result = validator.validate(resource.getContents().get(0));
+		org.eclipse.uml2.uml.Package pkg = (org.eclipse.uml2.uml.Package) resource.getContents().get(0);
+		org.eclipse.uml2.uml.Package nearestPackage = (org.eclipse.uml2.uml.Package)pkg.getOwnedMember(null, true,
+				UMLPackage.eINSTANCE.getPackage());
+		if (!initialized && nearestPackage != null) {
+			// run validation to disable RSA's distinct member validation
+			validator.validate(nearestPackage);
+			IConstraintDescriptor desc = ConstraintRegistry.getInstance()
+					.getDescriptor(DISTINCT_MEMBER_CONSTRAINT_ID);
+			if (desc != null && desc.isEnabled()) {
+				// disable UML constraint
+				EMFModelValidationPreferences.setConstraintDisabled(
+						DISTINCT_MEMBER_CONSTRAINT_ID, true);
+				EMFModelValidationPreferences.save();
+			}
+			initialized = true;
+		}
+		
+		IStatus result = validator.validate(resource.getContents().get(0));		
 	
 		// An unchecked exception java.util.ConcurrentModificationException can occur for once during validation 
 		// due to an issue with an IBM constraint: "com.ibm.xtools.uml.validation.components.assembly"; ignore
