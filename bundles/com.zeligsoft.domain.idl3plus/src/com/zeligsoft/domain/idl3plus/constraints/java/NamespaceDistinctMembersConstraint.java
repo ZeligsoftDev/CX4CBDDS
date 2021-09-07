@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.emf.validation.preferences.EMFModelValidationPreferences;
 import org.eclipse.emf.validation.service.ConstraintRegistry;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.uml2.common.util.UML2Util;
@@ -51,17 +52,19 @@ import com.zeligsoft.domain.omg.ccm.CCMNames;
  */
 public class NamespaceDistinctMembersConstraint extends AbstractModelConstraint {
 
+	private static final String DISTINCT_MEMBER_CONSTRAINT_ID = "com.ibm.xtools.uml.validation.namespace.distinctMembers";
 	/**
-	 * Disable UML namespace distinct members constraint
+	 * Disable RSA namespace distinct members constraint
 	 */
 	private void disableUMLConstraint() {
 
-		IConstraintDescriptor desc = ConstraintRegistry
-				.getInstance()
-				.getDescriptor(
-						"com.ibm.xtools.uml.validation.namespace.distinctMembers"); //$NON-NLS-1$
+		IConstraintDescriptor desc = ConstraintRegistry.getInstance()
+				.getDescriptor(DISTINCT_MEMBER_CONSTRAINT_ID);
 		if (desc != null && desc.isEnabled()) {
-			desc.setEnabled(false);
+			// disable UML constraint
+			EMFModelValidationPreferences.setConstraintDisabled(
+					DISTINCT_MEMBER_CONSTRAINT_ID, true);
+			EMFModelValidationPreferences.save();
 		}
 	}
 
