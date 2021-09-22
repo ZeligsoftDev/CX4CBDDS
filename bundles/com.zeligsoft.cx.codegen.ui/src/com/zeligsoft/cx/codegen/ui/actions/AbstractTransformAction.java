@@ -28,18 +28,22 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.jface.action.Action;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.uml.NamedElement;
 
+import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.util.WorkflowUtil;
 import com.zeligsoft.cx.build.factory.ProjectFactory;
 import com.zeligsoft.cx.codegen.CodeGenWorkflowConstants;
@@ -120,28 +124,19 @@ public abstract class AbstractTransformAction extends Action{
 										throw new OperationCanceledException();
 									} else if( result.getSeverity() == IStatus.ERROR ) {
 										if( entry.doesValidationErrorCancel() ) {
-											resultStatus.add(createStatus(result.getSeverity(), "Plug-in Vendor: " + entry.getDiagnosticInfo().getBundleVendor())); //$NON-NLS-1$
-										    resultStatus.add(createStatus(result.getSeverity(), "Plug-in Name: " + entry.getDiagnosticInfo().getBundleName())); //$NON-NLS-1$
-										    resultStatus.add(createStatus(result.getSeverity(), "Plug-in ID: " + entry.getDiagnosticInfo().getSymbolicName())); //$NON-NLS-1$
-										    resultStatus.add(createStatus(result.getSeverity(), "Version: " + entry.getDiagnosticInfo().getBundleVersion())); //$NON-NLS-1$
-										    resultStatus.add(result);
-										    b_abort = true;
+											createResultStatus(resultStatus, entry, result);
+											b_abort = true;
 										}
 									}
 								//}
 							}
 							
 							if( !b_abort ) {
-								IStatus status = WorkflowUtil.executeWorkflow(
+								IStatus result = WorkflowUtil.executeWorkflow(
 									entry.getWorkflowURL(), monitor, genProperties,
 									externalSlotContents);
-								if( status.isOK() == false) {
-								    resultStatus.add(createStatus(status.getSeverity(), "Plug-in Vendor: " + entry.getDiagnosticInfo().getBundleVendor())); //$NON-NLS-1$
-								    resultStatus.add(createStatus(status.getSeverity(), "Plug-in Name: " + entry.getDiagnosticInfo().getBundleName())); //$NON-NLS-1$
-								    resultStatus.add(createStatus(status.getSeverity(), "Plug-in ID: " + entry.getDiagnosticInfo().getSymbolicName())); //$NON-NLS-1$
-								    resultStatus.add(createStatus(status.getSeverity(), "Version: " + entry.getDiagnosticInfo().getBundleVersion())); //$NON-NLS-1$
-								}
-								resultStatus.add(status);
+								createResultStatus(resultStatus, entry, result);
+								writeResultToConsole(entry, result);
 							}
 						}
 					} finally {
@@ -226,5 +221,37 @@ public abstract class AbstractTransformAction extends Action{
 	}
 	
 	public abstract void joinThread(WorkspaceJob transformJob) throws InterruptedException;
+
+	private void createResultStatus(MultiStatus resultStatus, WorkflowEntry entry, IStatus result) {
+		resultStatus.add(createStatus(result.getSeverity(), "Plug-in Vendor: " + entry.getDiagnosticInfo().getBundleVendor())); //$NON-NLS-1$
+		resultStatus.add(createStatus(result.getSeverity(), "Plug-in Name: " + entry.getDiagnosticInfo().getBundleName())); //$NON-NLS-1$
+		resultStatus.add(createStatus(result.getSeverity(), "Plug-in ID: " + entry.getDiagnosticInfo().getSymbolicName())); //$NON-NLS-1$
+		resultStatus.add(createStatus(result.getSeverity(), "Version: " + entry.getDiagnosticInfo().getBundleVersion())); //$NON-NLS-1$
+		resultStatus.add(result);
+		ILog logger = Platform.getLog(entry.getDiagnosticInfo().getBundle());
+		logger.log(resultStatus);
+	}
+
+	private void writeResultToConsole(WorkflowEntry entry, IStatus result) {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append(Messages.GenerateMessage_0).append(entry.getDisplayLabel());
+		buffer.append(System.lineSeparator());
+		buffer.append(Messages.GenerateMessage_1).append(element.eResource().getURI().toString());
+		buffer.append(System.lineSeparator());
+		buffer.append(System.lineSeparator());
+		if (result.isOK()) {
+			buffer.append(Messages.GenerateMessage_2);
+		} else {
+			buffer.append(Messages.GenerateMessage_3);
+		}
+		buffer.append(System.lineSeparator());
+		Display currentDisplay = Display.getDefault();
+		assert currentDisplay != null;
+		currentDisplay.asyncExec(new Runnable() {
+			public void run() {
+				BaseUIUtil.writeToConsole(buffer.toString());
+			}
+		});
+	}
 
 }
