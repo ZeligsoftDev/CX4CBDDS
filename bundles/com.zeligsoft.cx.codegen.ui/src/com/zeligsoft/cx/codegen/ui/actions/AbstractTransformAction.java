@@ -246,8 +246,13 @@ public abstract class AbstractTransformAction extends Action{
 		}
 		buffer.append(System.lineSeparator());
 		Display currentDisplay = Display.getDefault();
-		assert currentDisplay != null;
+		if (currentDisplay == null) {
+			IStatus error = createStatus(IStatus.ERROR, "Default display is null."); //$NON-NLS-1$
+			ILog logger = Platform.getLog(entry.getDiagnosticInfo().getBundle());
+			logger.log(error);
+		}
 		currentDisplay.asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				BaseUIUtil.writeToConsole(buffer.toString());
 			}
