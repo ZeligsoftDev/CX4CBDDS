@@ -234,9 +234,9 @@ public abstract class AbstractTransformAction extends Action{
 
 	private void writeResultToConsole(WorkflowEntry entry, IStatus result) {
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(Messages.GenerateMessage_0).append(entry.getDisplayLabel());
+		buffer.append(NLS.bind(Messages.GenerateMessage_0, entry.getDisplayLabel()));
 		buffer.append(System.lineSeparator());
-		buffer.append(Messages.GenerateMessage_1).append(element.eResource().getURI().toString());
+		buffer.append(NLS.bind(Messages.GenerateMessage_1, element.eResource().getURI().toString()));
 		buffer.append(System.lineSeparator());
 		buffer.append(System.lineSeparator());
 		if (result.isOK()) {
