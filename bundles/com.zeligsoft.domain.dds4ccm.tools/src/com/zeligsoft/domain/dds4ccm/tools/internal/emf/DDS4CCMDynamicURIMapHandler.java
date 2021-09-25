@@ -199,7 +199,7 @@ public final class DDS4CCMDynamicURIMapHandler {
 							processUML(uri, delta.getKind());
 					}
 				}catch (Exception e) {
-					// catch any exceptions
+					e.printStackTrace();
 				}
 			}
 
@@ -219,15 +219,19 @@ public final class DDS4CCMDynamicURIMapHandler {
 		if (model == null || !ZDLUtil.isZDLProfile(model, "cxDDS4CCM")) { //$NON-NLS-1$
 			return;
 		}
-
+		
 		if (deltaKind == IResourceDelta.REMOVED) {
 			URI pathmapUri = CXDynamicURIConverter.getPathmapURI(uri);
 			if("pathmap".equals(pathmapUri.scheme())){ //$NON-NLS-1$
-				// This is dynamic pathmap library
-				// check dependent models
-				checkDependentModels(uri);
 				// remove pathmap URI
 				CXDynamicURIConverter.removeMapping(uri);
+				// This is dynamic pathmap library
+				// check dependent models
+				try {
+					checkDependentModels(uri);
+				} catch (Exception e) {
+					// ignore to continue
+				}
 			}
 
 			// unload deleted resource
