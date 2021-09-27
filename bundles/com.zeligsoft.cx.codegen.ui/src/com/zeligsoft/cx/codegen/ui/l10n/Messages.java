@@ -80,6 +80,11 @@ public class Messages
 	public static String GenerateJob_RunOne;
 	public static String GenerateJob_RunNonOne;
 	public static String GenerateJob_ResultMessage;
+	
+	public static String GenerateMessage_0;
+	public static String GenerateMessage_1;
+	public static String GenerateMessage_2;
+	public static String GenerateMessage_3;
 
 	public static String TransformAction_ProjectRefreshFailedLog;
 	
@@ -93,7 +98,7 @@ public class Messages
 	
 	public static String TransformRegistry_InvalidWorkflowEntryLicenser;
 	
-	public static String  TransformRegistry_ClassNotFound;
+	public static String TransformRegistry_ClassNotFound;
 
 	public static String WorkerCodeStorage_SaveCommandLabel;
 

@@ -49,8 +49,10 @@ public class WorkflowEntry {
 		private String bundleName;
 		private String symbolicName;
 		private String bundleVersion;
+		private Bundle bundle;
 		
 		public DiagnosticInfo(Bundle bundle) {
+			this.bundle = bundle;
 			symbolicName = bundle.getSymbolicName();
 			Object bundleName = bundle.getHeaders().get("Bundle-Name"); //$NON-NLS-1$
 		    if( bundleName != null ) { 
@@ -80,6 +82,10 @@ public class WorkflowEntry {
 		
 		public String getSymbolicName() {
 			return symbolicName;
+		}
+		
+		public Bundle getBundle() {
+			return bundle;
 		}
 	}
 	
