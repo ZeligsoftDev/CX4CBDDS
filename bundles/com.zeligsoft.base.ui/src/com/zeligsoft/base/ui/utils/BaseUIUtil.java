@@ -31,9 +31,12 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IProduct;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.URI;
@@ -92,6 +95,7 @@ import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.util.UMLUtil;
 import org.osgi.framework.Bundle;
 
+import com.zeligsoft.base.ui.Activator;
 import com.zeligsoft.base.ui.commands.EditResultCommand;
 import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
@@ -122,6 +126,26 @@ public class BaseUIUtil {
 			conMan.addConsoles(new IConsole[] { cxConsole });
 		}
 
+		Display display = Display.getCurrent();
+		if (display != null) {
+			doWriteToConsole(message);
+		} else {
+			display = Display.getDefault();
+			if (display == null) {
+				IStatus error = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Default display is null."); //$NON-NLS-1$
+				ILog logger = Platform.getLog(Activator.getDefault().getBundle());
+				logger.log(error);
+			}
+			display.asyncExec(new Runnable() {
+				@Override
+				public void run() {
+					doWriteToConsole(message);
+				}
+			});
+		}
+	}
+
+	private static void doWriteToConsole(String message) {
 		IWorkbenchPage page = getActivepage();
 		String id = IConsoleConstants.ID_CONSOLE_VIEW;
 		org.eclipse.ui.console.IConsoleView view;

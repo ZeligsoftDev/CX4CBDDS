@@ -17,6 +17,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.service.prefs.BackingStoreException;
 
 import com.zeligsoft.base.ui.ZeligsoftAbstractUIPlugin;
+import com.zeligsoft.domain.dds4ccm.ui.internal.MigrationChecker;
 import com.zeligsoft.domain.dds4ccm.ui.listeners.EditorPartListener;
 
 /**
@@ -97,6 +98,7 @@ public class Activator extends ZeligsoftAbstractUIPlugin {
 		// Add part listener in order to add double click listener to model explorer
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		page.addPartListener(new EditorPartListener());
+		page.addPartListener(new MigrationChecker.PapyrusEditorListener());
 	}
 
 	/*
