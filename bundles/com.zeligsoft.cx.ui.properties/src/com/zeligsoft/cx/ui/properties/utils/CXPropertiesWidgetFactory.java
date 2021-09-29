@@ -53,6 +53,8 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Enumeration;
@@ -66,6 +68,7 @@ import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.dialogs.ZDLElementSelectionDialog;
 import com.zeligsoft.cx.ui.filters.ElementSelectionFilter;
+import com.zeligsoft.cx.ui.properties.Activator;
 import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
 import com.zeligsoft.cx.ui.properties.l10n.Messages;
 import com.zeligsoft.cx.ui.properties.pages.CXElementCreationPage;
@@ -506,6 +509,12 @@ public class CXPropertiesWidgetFactory extends CXWidgetFactory{
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					if (object != null) {
+						try {
+							PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.eclipse.papyrus.views.modelexplorer.modelexplorer"); //$NON-NLS-1$
+						} catch (PartInitException exn) {
+							Activator.getDefault().error(Messages.CXWidgetFactory_ModelExplorerUninitialized, exn);
+							exn.printStackTrace();
+						}
 						BaseUIUtil.revealTarget(Arrays.asList(object));
 					}
 				}
