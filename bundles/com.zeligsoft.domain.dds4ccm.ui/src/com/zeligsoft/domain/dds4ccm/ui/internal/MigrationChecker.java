@@ -5,6 +5,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.papyrus.editor.PapyrusMultiDiagramEditor;
 import org.eclipse.papyrus.infra.core.resource.ModelSet;
 import org.eclipse.papyrus.infra.core.resource.NotFoundException;
@@ -17,8 +18,9 @@ import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.uml2.uml.Model;
 
-import com.zeligsoft.base.ui.Activator;
+import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMMigrationUtil;
 
 /**
@@ -69,17 +71,17 @@ public class MigrationChecker {
 				|| !(partRef.getPage().getActiveEditor() instanceof PapyrusMultiDiagramEditor)) {
 			return;
 		}
-		BaseUIUtil.writeToConsole("Opened Papyrus multi-diagram editor");
+		BaseUIUtil.writeToConsole(NLS.bind(Messages.MigrationChecker_OpenedPapyrusEditor, null));
 		PapyrusMultiDiagramEditor multiEditor = (PapyrusMultiDiagramEditor) partRef.getPage().getActiveEditor();
 		Model model = getModel(multiEditor);
 		if (model != null) {
-			boolean result = DDS4CCMMigrationUtil.isMigrationRequired(model);
-			if (result == true) {
-				BaseUIUtil.writeToConsole("Model migration is required for model '" + model.getName() + "'");
-				logWarning("Model migration is required for model '" + model.getName() + "'");
+			if (DDS4CCMMigrationUtil.isMigrationRequired(model)) {
+				String message = NLS.bind(Messages.MigrationChecker_MigrationRequired, model.getName());
+				BaseUIUtil.writeToConsole(message);
+				Activator.getDefault().error(message);
 			}
 		} else {
-			logError("No open model found for the Papyrus editor");
+			Activator.getDefault().error(NLS.bind(Messages.MigrationChecker_NoOpenFileFound, null));
 		}
 	}
 
@@ -90,11 +92,7 @@ public class MigrationChecker {
 			UmlModel openedModel = (UmlModel) modelSet.getModel(UmlModel.MODEL_ID);
 			EObject root = null;
 			if (openedModel != null) {
-				try {
-					root = openedModel.lookupRoot();
-				} catch (NotFoundException e) {
-					return null;
-				}
+				root = openedModel.lookupRoot();
 			} else {
 				return null;
 			}
@@ -102,21 +100,13 @@ public class MigrationChecker {
 				return null;
 			}
 			return (Model)root;
+			
+		} catch (NotFoundException e) {
+			// do nothing
 		} catch (ServiceException e) {
 			// do nothing
 		}
 		return null;
 	}
 	
-	private static void logError(String message) {
-		IStatus error = new Status(IStatus.ERROR, Activator.PLUGIN_ID, message); //$NON-NLS-1$
-		ILog logger = Platform.getLog(Activator.getDefault().getBundle());
-		logger.log(error);
-	}
-	
-	private static void logWarning(String message) {
-		IStatus error = new Status(IStatus.WARNING, Activator.PLUGIN_ID, message); //$NON-NLS-1$
-		ILog logger = Platform.getLog(Activator.getDefault().getBundle());
-		logger.log(error);
-	}
 }
