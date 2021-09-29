@@ -128,7 +128,10 @@ public class Messages
 	public static String ShowSourceActionDelegate_0;
 	public static String ShowSourceActionDelegate_1;
 	public static String ShowSourceActionDelegate_3;
-
+	
+	public static String MigrationChecker_OpenedPapyrusEditor;
+	public static String MigrationChecker_MigrationRequired;
+	public static String MigrationChecker_NoOpenFileFound;
 	
 	static {
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

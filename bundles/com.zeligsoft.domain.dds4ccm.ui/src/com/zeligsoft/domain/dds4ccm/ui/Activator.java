@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.papyrus.emf.facet.custom.core.ICustomizationCatalogManagerFactory;
@@ -17,6 +21,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.service.prefs.BackingStoreException;
 
 import com.zeligsoft.base.ui.ZeligsoftAbstractUIPlugin;
+import com.zeligsoft.domain.dds4ccm.ui.internal.MigrationChecker;
 import com.zeligsoft.domain.dds4ccm.ui.listeners.EditorPartListener;
 
 /**
@@ -97,6 +102,7 @@ public class Activator extends ZeligsoftAbstractUIPlugin {
 		// Add part listener in order to add double click listener to model explorer
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		page.addPartListener(new EditorPartListener());
+		page.addPartListener(new MigrationChecker.PapyrusEditorListener());
 	}
 
 	/*
@@ -118,4 +124,23 @@ public class Activator extends ZeligsoftAbstractUIPlugin {
 		return plugin;
 	}
 
+	public void error(String message) {
+		error(message, null);
+	}
+	
+	public void error(String message, Throwable exception) {
+		IStatus error = new Status(IStatus.ERROR, Activator.PLUGIN_ID, message, exception); //$NON-NLS-1$
+		ILog logger = Platform.getLog(Activator.getDefault().getBundle());
+		logger.log(error);
+	}
+	
+	public void warning(String message) {
+		warning(message, null);
+	}
+	
+	public void warning(String message, Throwable exception) {
+		IStatus error = new Status(IStatus.WARNING, Activator.PLUGIN_ID, message, exception); //$NON-NLS-1$
+		ILog logger = Platform.getLog(Activator.getDefault().getBundle());
+		logger.log(error);
+	}
 }
