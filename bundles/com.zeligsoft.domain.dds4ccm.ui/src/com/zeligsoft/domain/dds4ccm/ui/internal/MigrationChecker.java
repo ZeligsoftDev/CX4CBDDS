@@ -1,9 +1,5 @@
 package com.zeligsoft.domain.dds4ccm.ui.internal;
 
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.papyrus.editor.PapyrusMultiDiagramEditor;
@@ -18,9 +14,9 @@ import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.uml2.uml.Model;
 
-import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.domain.dds4ccm.ui.Activator;
+import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMMigrationUtil;
 
 /**
@@ -78,10 +74,10 @@ public class MigrationChecker {
 			if (DDS4CCMMigrationUtil.isMigrationRequired(model)) {
 				String message = NLS.bind(Messages.MigrationChecker_MigrationRequired, model.getName());
 				BaseUIUtil.writeToConsole(message);
-				Activator.getDefault().error(message);
+				Activator.getDefault().error(message, null);
 			}
 		} else {
-			Activator.getDefault().error(NLS.bind(Messages.MigrationChecker_NoOpenFileFound, null));
+			Activator.getDefault().error(NLS.bind(Messages.MigrationChecker_NoOpenFileFound, null), null);
 		}
 	}
 
