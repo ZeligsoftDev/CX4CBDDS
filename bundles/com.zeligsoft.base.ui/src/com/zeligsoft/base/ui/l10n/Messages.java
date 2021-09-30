@@ -40,6 +40,8 @@ public class Messages
 
 	public static String PreferencePageValidStringListener_InvalidStringError;
 	
+	public static String ModelExplorerUninitialized;
+	
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
