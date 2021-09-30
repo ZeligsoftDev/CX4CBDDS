@@ -85,8 +85,6 @@ public class Messages
 
 	public static String CXWidgetFactory_ShowPropertiesToolTip;
 
-	public static String CXWidgetFactory_ModelExplorerUninitialized;
-	
 	public static String DeploymentPropertiesCustomSection_IndexColumnLabel;
 
 	public static String DeploymentPropertiesCustomSection_propertiesLabel;

@@ -509,12 +509,6 @@ public class CXPropertiesWidgetFactory extends CXWidgetFactory{
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					if (object != null) {
-						try {
-							PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.eclipse.papyrus.views.modelexplorer.modelexplorer"); //$NON-NLS-1$
-						} catch (PartInitException exn) {
-							Activator.getDefault().error(Messages.CXWidgetFactory_ModelExplorerUninitialized, exn);
-							exn.printStackTrace();
-						}
 						BaseUIUtil.revealTarget(Arrays.asList(object));
 					}
 				}

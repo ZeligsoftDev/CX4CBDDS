@@ -97,6 +97,7 @@ import org.osgi.framework.Bundle;
 
 import com.zeligsoft.base.ui.Activator;
 import com.zeligsoft.base.ui.commands.EditResultCommand;
+import com.zeligsoft.base.ui.l10n.Messages;
 import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeManager;
 import com.zeligsoft.base.zdl.type.ZDLElementTypeUtil;
@@ -197,6 +198,11 @@ public class BaseUIUtil {
 
 			@Override
 			public void run() {
+				try {
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.eclipse.papyrus.views.modelexplorer.modelexplorer"); //$NON-NLS-1$
+				} catch (PartInitException exn) {
+					Activator.getDefault().error(Messages.ModelExplorerUninitialized, exn);
+				}
 				IViewPart viewPart = getModelExplorerViewPart();
 				if (viewPart instanceof ModelExplorerView) {
 					((IRevealSemanticElement) viewPart).revealSemanticElement(target);
