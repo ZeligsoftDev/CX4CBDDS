@@ -131,7 +131,13 @@ public class Messages
 	
 	public static String MigrationChecker_OpenedPapyrusEditor;
 	public static String MigrationChecker_MigrationRequired;
+	public static String MigrationChecker_MigrationRequired_DialogTitle;
+	public static String MigrationChecker_MigrationConfirmed;
+	public static String MigrationChecker_MigrationDeclined;
 	public static String MigrationChecker_NoOpenFileFound;
+	public static String MigrationChecker_MigrationSuccess;
+	public static String MigrationChecker_MigrationFailure;
+	public static String MigrationChecker_MigrationResult_DialogTitle;
 	
 	static {
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
