@@ -41,5 +41,58 @@
             name="%page.name.0">
       </page>
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            description="%tools.category.description"
+            id="com.zeligsoft.ddk.tools"
+            name="%tools.category.name">
+      </category>
+      <command
+            categoryId="com.zeligsoft.ddk.tools"
+            defaultHandler="com.zeligsoft.ddk.tools.ui.internal.handlers.AbsorbMergedPackagesHandler"
+            description="%absorb.command.description"
+            id="com.zeligsoft.ddk.tools.absortMergedModels"
+            name="%absorb.command.name">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any">
+         <menu
+               label="%tools.menu.label">
+            <command
+                  commandId="com.zeligsoft.ddk.tools.absortMergedModels"
+                  label="%tools.menu.absorb.label"
+                  mnemonic="%tools.memu.absorb.mnemonic"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <and>
+                        <count
+                              value="1">
+                        </count>
+                        <iterate
+                              ifEmpty="false"
+                              operator="or">
+                           <adapt
+                                 type="org.eclipse.core.resources.IFile">
+                              <test
+                                    property="org.eclipse.core.resources.name"
+                                    value="*.uml">
+                              </test>
+                           </adapt>
+                        </iterate>
+                     </and>
+                  </with>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
 
 </plugin>
