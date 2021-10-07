@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -242,8 +243,8 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 	@Override
 	public EList<GenDomainModel> getOwnedModels() {
 		if (ownedModels == null) {
-			ownedModels = new EObjectContainmentWithInverseEList<GenDomainModel>(GenDomainModel.class, this,
-					ZDLGenPackage.GEN_MODEL__OWNED_MODEL, ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL);
+			ownedModels = new EObjectContainmentEList<GenDomainModel>(GenDomainModel.class, this,
+					ZDLGenPackage.GEN_MODEL__OWNED_MODEL);
 		}
 		return ownedModels;
 	}
@@ -292,21 +293,6 @@ public class GenModelImpl extends GenDomainObjectImpl implements GenModel {
 	@Override
 	public EList<Model> getDomainModels(EList<String> uris) {
 		return GenModelOperations.getDomainModels(this, uris);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_MODEL__OWNED_MODEL:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedModels()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

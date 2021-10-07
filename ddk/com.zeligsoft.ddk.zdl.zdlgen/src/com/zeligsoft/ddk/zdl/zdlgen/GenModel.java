@@ -88,7 +88,6 @@ public interface GenModel extends GenDomainObject {
 	/**
 	 * Returns the value of the '<em><b>Owned Model</b></em>' containment reference list.
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel}.
-	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getOwningGenModel <em>Owning Gen Model</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -104,8 +103,7 @@ public interface GenModel extends GenDomainObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Model</em>' containment reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenModel_OwnedModel()
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getOwningGenModel
-	 * @model opposite="owningGenModel" containment="true" ordered="false"
+	 * @model containment="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
@@ -186,7 +184,7 @@ public interface GenModel extends GenDomainObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model urisMany="true"
+	 * @model urisDataType="org.eclipse.uml2.types.String" urisMany="true"
 	 * @generated
 	 */
 	EList<Model> getDomainModels(EList<String> uris);

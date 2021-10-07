@@ -3065,57 +3065,75 @@ public class IDLGrammarAccess extends AbstractGrammarElementFinder {
 	public class StructTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.zeligsoft.domain.omg.corba.dsl.IDL.StructType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cStructKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cCommentsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cCommentsIDLCommentParserRuleCall_2_0 = (RuleCall)cCommentsAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cCommentsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cCommentsIDLCommentParserRuleCall_4_0 = (RuleCall)cCommentsAssignment_4.eContents().get(0);
-		private final Assignment cMembersAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cMembersMemberParserRuleCall_5_0 = (RuleCall)cMembersAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Assignment cExtensibilityAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final Keyword cExtensibilityFinalKeyword_0_0_0 = (Keyword)cExtensibilityAssignment_0_0.eContents().get(0);
+		private final Keyword cAppendableKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cStructKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cCommentsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCommentsIDLCommentParserRuleCall_3_0 = (RuleCall)cCommentsAssignment_3.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cCommentsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cCommentsIDLCommentParserRuleCall_5_0 = (RuleCall)cCommentsAssignment_5.eContents().get(0);
+		private final Assignment cMembersAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cMembersMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//StructType:
-		//	"struct" name=ID comments+=IDLComment* "{" comments+=IDLComment* members+=Member* "}";
+		//	(extensibility="@final" | "@appendable")? "struct" name=ID comments+=IDLComment* "{" comments+=IDLComment*
+		//	members+=Member* "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"struct" name=ID comments+=IDLComment* "{" comments+=IDLComment* members+=Member* "}"
+		//(extensibility="@final" | "@appendable")? "struct" name=ID comments+=IDLComment* "{" comments+=IDLComment*
+		//members+=Member* "}"
 		public Group getGroup() { return cGroup; }
 
+		//(extensibility="@final" | "@appendable")?
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+
+		//extensibility="@final"
+		public Assignment getExtensibilityAssignment_0_0() { return cExtensibilityAssignment_0_0; }
+
+		//"@final"
+		public Keyword getExtensibilityFinalKeyword_0_0_0() { return cExtensibilityFinalKeyword_0_0_0; }
+
+		//"@appendable"
+		public Keyword getAppendableKeyword_0_1() { return cAppendableKeyword_0_1; }
+
 		//"struct"
-		public Keyword getStructKeyword_0() { return cStructKeyword_0; }
+		public Keyword getStructKeyword_1() { return cStructKeyword_1; }
 
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
 		//comments+=IDLComment*
-		public Assignment getCommentsAssignment_2() { return cCommentsAssignment_2; }
+		public Assignment getCommentsAssignment_3() { return cCommentsAssignment_3; }
 
 		//IDLComment
-		public RuleCall getCommentsIDLCommentParserRuleCall_2_0() { return cCommentsIDLCommentParserRuleCall_2_0; }
+		public RuleCall getCommentsIDLCommentParserRuleCall_3_0() { return cCommentsIDLCommentParserRuleCall_3_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 
 		//comments+=IDLComment*
-		public Assignment getCommentsAssignment_4() { return cCommentsAssignment_4; }
+		public Assignment getCommentsAssignment_5() { return cCommentsAssignment_5; }
 
 		//IDLComment
-		public RuleCall getCommentsIDLCommentParserRuleCall_4_0() { return cCommentsIDLCommentParserRuleCall_4_0; }
+		public RuleCall getCommentsIDLCommentParserRuleCall_5_0() { return cCommentsIDLCommentParserRuleCall_5_0; }
 
 		//members+=Member*
-		public Assignment getMembersAssignment_5() { return cMembersAssignment_5; }
+		public Assignment getMembersAssignment_6() { return cMembersAssignment_6; }
 
 		//Member
-		public RuleCall getMembersMemberParserRuleCall_5_0() { return cMembersMemberParserRuleCall_5_0; }
+		public RuleCall getMembersMemberParserRuleCall_6_0() { return cMembersMemberParserRuleCall_6_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 
 	public class TypeDeclElements extends AbstractParserRuleElementFinder {
@@ -3297,69 +3315,87 @@ public class IDLGrammarAccess extends AbstractGrammarElementFinder {
 	public class UnionTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.zeligsoft.domain.omg.corba.dsl.IDL.UnionType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cUnionKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cCommentsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cCommentsIDLCommentParserRuleCall_2_0 = (RuleCall)cCommentsAssignment_2.eContents().get(0);
-		private final Keyword cSwitchKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cLeftParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cSwitchAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cSwitchSwitchTypeSpecParserRuleCall_5_0 = (RuleCall)cSwitchAssignment_5.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cLeftCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cBodyAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cBodySwitchBodyParserRuleCall_8_0 = (RuleCall)cBodyAssignment_8.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Assignment cExtensibilityAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final Keyword cExtensibilityFinalKeyword_0_0_0 = (Keyword)cExtensibilityAssignment_0_0.eContents().get(0);
+		private final Keyword cAppendableKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cUnionKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cCommentsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCommentsIDLCommentParserRuleCall_3_0 = (RuleCall)cCommentsAssignment_3.eContents().get(0);
+		private final Keyword cSwitchKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cLeftParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cSwitchAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cSwitchSwitchTypeSpecParserRuleCall_6_0 = (RuleCall)cSwitchAssignment_6.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cLeftCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cBodyAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cBodySwitchBodyParserRuleCall_9_0 = (RuleCall)cBodyAssignment_9.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		//UnionType:
-		//	"union" name=ID comments+=IDLComment* "switch" "(" switch=SwitchTypeSpec ")" "{" body=SwitchBody "}";
+		//	(extensibility="@final" | "@appendable")? "union" name=ID comments+=IDLComment* "switch" "(" switch=SwitchTypeSpec
+		//	")" "{" body=SwitchBody "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"union" name=ID comments+=IDLComment* "switch" "(" switch=SwitchTypeSpec ")" "{" body=SwitchBody "}"
+		//(extensibility="@final" | "@appendable")? "union" name=ID comments+=IDLComment* "switch" "(" switch=SwitchTypeSpec ")"
+		//"{" body=SwitchBody "}"
 		public Group getGroup() { return cGroup; }
 
+		//(extensibility="@final" | "@appendable")?
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+
+		//extensibility="@final"
+		public Assignment getExtensibilityAssignment_0_0() { return cExtensibilityAssignment_0_0; }
+
+		//"@final"
+		public Keyword getExtensibilityFinalKeyword_0_0_0() { return cExtensibilityFinalKeyword_0_0_0; }
+
+		//"@appendable"
+		public Keyword getAppendableKeyword_0_1() { return cAppendableKeyword_0_1; }
+
 		//"union"
-		public Keyword getUnionKeyword_0() { return cUnionKeyword_0; }
+		public Keyword getUnionKeyword_1() { return cUnionKeyword_1; }
 
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
 		//comments+=IDLComment*
-		public Assignment getCommentsAssignment_2() { return cCommentsAssignment_2; }
+		public Assignment getCommentsAssignment_3() { return cCommentsAssignment_3; }
 
 		//IDLComment
-		public RuleCall getCommentsIDLCommentParserRuleCall_2_0() { return cCommentsIDLCommentParserRuleCall_2_0; }
+		public RuleCall getCommentsIDLCommentParserRuleCall_3_0() { return cCommentsIDLCommentParserRuleCall_3_0; }
 
 		//"switch"
-		public Keyword getSwitchKeyword_3() { return cSwitchKeyword_3; }
+		public Keyword getSwitchKeyword_4() { return cSwitchKeyword_4; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_4() { return cLeftParenthesisKeyword_4; }
+		public Keyword getLeftParenthesisKeyword_5() { return cLeftParenthesisKeyword_5; }
 
 		//switch=SwitchTypeSpec
-		public Assignment getSwitchAssignment_5() { return cSwitchAssignment_5; }
+		public Assignment getSwitchAssignment_6() { return cSwitchAssignment_6; }
 
 		//SwitchTypeSpec
-		public RuleCall getSwitchSwitchTypeSpecParserRuleCall_5_0() { return cSwitchSwitchTypeSpecParserRuleCall_5_0; }
+		public RuleCall getSwitchSwitchTypeSpecParserRuleCall_6_0() { return cSwitchSwitchTypeSpecParserRuleCall_6_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
+		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_7() { return cLeftCurlyBracketKeyword_7; }
+		public Keyword getLeftCurlyBracketKeyword_8() { return cLeftCurlyBracketKeyword_8; }
 
 		//body=SwitchBody
-		public Assignment getBodyAssignment_8() { return cBodyAssignment_8; }
+		public Assignment getBodyAssignment_9() { return cBodyAssignment_9; }
 
 		//SwitchBody
-		public RuleCall getBodySwitchBodyParserRuleCall_8_0() { return cBodySwitchBodyParserRuleCall_8_0; }
+		public RuleCall getBodySwitchBodyParserRuleCall_9_0() { return cBodySwitchBodyParserRuleCall_9_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
+		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
 	}
 
 	public class SwitchTypeSpecElements extends AbstractParserRuleElementFinder {
@@ -7952,7 +7988,8 @@ public class IDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StructType:
-	//	"struct" name=ID comments+=IDLComment* "{" comments+=IDLComment* members+=Member* "}";
+	//	(extensibility="@final" | "@appendable")? "struct" name=ID comments+=IDLComment* "{" comments+=IDLComment*
+	//	members+=Member* "}";
 	public StructTypeElements getStructTypeAccess() {
 		return pStructType;
 	}
@@ -8026,7 +8063,8 @@ public class IDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UnionType:
-	//	"union" name=ID comments+=IDLComment* "switch" "(" switch=SwitchTypeSpec ")" "{" body=SwitchBody "}";
+	//	(extensibility="@final" | "@appendable")? "union" name=ID comments+=IDLComment* "switch" "(" switch=SwitchTypeSpec
+	//	")" "{" body=SwitchBody "}";
 	public UnionTypeElements getUnionTypeAccess() {
 		return pUnionType;
 	}

@@ -68,6 +68,16 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements 
 	protected Dependency domainBlockReference;
 
 	/**
+	 * The cached value of the '{@link #getDomainSpecialization() <em>Domain Specialization</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDomainSpecialization()
+	 * @generated
+	 * @ordered
+	 */
+	protected GenDomainSpecialization domainSpecialization;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -104,9 +114,8 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements 
 	 */
 	@Override
 	public GenDomainObject basicGetOwner() {
-		GenDomainSpecialization domainSpecialization = getDomainSpecialization();
-		if (domainSpecialization != null) {
-			return domainSpecialization;
+		if (eIsSet(ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION)) {
+			return basicGetDomainSpecialization();
 		}
 		return super.basicGetOwner();
 	}
@@ -204,9 +213,17 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements 
 	 */
 	@Override
 	public GenDomainSpecialization getDomainSpecialization() {
-		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION)
-			return null;
-		return (GenDomainSpecialization) eInternalContainer();
+		if (domainSpecialization != null && domainSpecialization.eIsProxy()) {
+			InternalEObject oldDomainSpecialization = (InternalEObject) domainSpecialization;
+			domainSpecialization = (GenDomainSpecialization) eResolveProxy(oldDomainSpecialization);
+			if (domainSpecialization != oldDomainSpecialization) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION, oldDomainSpecialization,
+							domainSpecialization));
+			}
+		}
+		return domainSpecialization;
 	}
 
 	/**
@@ -214,11 +231,8 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDomainSpecialization(GenDomainSpecialization newDomainSpecialization,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newDomainSpecialization,
-				ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION, msgs);
-		return msgs;
+	public GenDomainSpecialization basicGetDomainSpecialization() {
+		return domainSpecialization;
 	}
 
 	/**
@@ -228,69 +242,12 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements 
 	 */
 	@Override
 	public void setDomainSpecialization(GenDomainSpecialization newDomainSpecialization) {
-		if (newDomainSpecialization != eInternalContainer()
-				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION
-						&& newDomainSpecialization != null)) {
-			if (EcoreUtil.isAncestor(this, newDomainSpecialization))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newDomainSpecialization != null)
-				msgs = ((InternalEObject) newDomainSpecialization).eInverseAdd(this,
-						ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK, GenDomainSpecialization.class, msgs);
-			msgs = basicSetDomainSpecialization(newDomainSpecialization, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+		GenDomainSpecialization oldDomainSpecialization = domainSpecialization;
+		domainSpecialization = newDomainSpecialization;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION, newDomainSpecialization,
-					newDomainSpecialization));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION:
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetDomainSpecialization((GenDomainSpecialization) otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION:
-			return basicSetDomainSpecialization(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-		case ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION:
-			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK,
-					GenDomainSpecialization.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
+					ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION, oldDomainSpecialization,
+					domainSpecialization));
 	}
 
 	/**
@@ -310,7 +267,9 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements 
 				return getDomainBlockReference();
 			return basicGetDomainBlockReference();
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION:
-			return getDomainSpecialization();
+			if (resolve)
+				return getDomainSpecialization();
+			return basicGetDomainSpecialization();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -372,7 +331,7 @@ public class GenDomainBlockReferenceImpl extends GenDomainObjectImpl implements 
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_BLOCK_REFERENCE:
 			return domainBlockReference != null;
 		case ZDLGenPackage.GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION:
-			return getDomainSpecialization() != null;
+			return domainSpecialization != null;
 		}
 		return super.eIsSet(featureID);
 	}

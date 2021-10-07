@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
@@ -145,9 +146,8 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl imp
 	@Override
 	public EList<GenPaletteTool> getOwnedTools() {
 		if (ownedTools == null) {
-			ownedTools = new SubsetSupersetEObjectContainmentWithInverseEList<GenPaletteTool>(GenPaletteTool.class,
-					this, ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL, OWNED_TOOL_ESUPERSETS, null,
-					ZDLGenPackage.GEN_PALETTE_TOOL__CONTAINER);
+			ownedTools = new SubsetSupersetEObjectContainmentEList<GenPaletteTool>(GenPaletteTool.class, this,
+					ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL, OWNED_TOOL_ESUPERSETS, null);
 		}
 		return ownedTools;
 	}
@@ -253,21 +253,6 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl imp
 			return tool;
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedTools()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

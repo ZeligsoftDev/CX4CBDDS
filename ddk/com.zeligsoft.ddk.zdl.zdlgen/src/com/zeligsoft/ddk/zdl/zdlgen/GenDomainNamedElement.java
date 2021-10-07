@@ -48,7 +48,7 @@ public interface GenDomainNamedElement extends GenDomainObject {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainNamedElement_Name()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	String getName();

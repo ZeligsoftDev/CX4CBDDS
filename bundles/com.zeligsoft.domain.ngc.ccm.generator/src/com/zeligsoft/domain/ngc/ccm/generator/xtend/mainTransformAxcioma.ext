@@ -465,6 +465,9 @@ private List[idl::Definition] visitDefinition(DDSMessage self) :
 	
 create StructType visitContained(DDSMessage self) :
 	setName(self.name) ->
+	self.extensibility == ExtensibilityKind::Appendable?
+		this.setExtensibility("@appendable")
+		: this.setExtensibility("@final") ->
 	this.getEAnnotations().add(self.createDDSAnnotation()) ->
 	this.comments.addAll(self.zdlAsPackage().ownedComment.visitComment()) ->
 	members.addAll(self.fields.visitStructAttribute());	

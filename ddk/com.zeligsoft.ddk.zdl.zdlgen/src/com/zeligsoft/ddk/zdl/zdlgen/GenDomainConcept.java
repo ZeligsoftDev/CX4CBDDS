@@ -29,12 +29,12 @@ import org.eclipse.emf.ecore.EClass;
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getCategory <em>Category</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getFeatures <em>Feature</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getGeneralizations <em>Generalization</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getDomainConcept <em>Domain Concept</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getUmlMetaclasses <em>Uml Metaclass</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getGenerals <em>General</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getReferences <em>Reference</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getAttributes <em>Attribute</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getIconUri <em>Icon Uri</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#isRSMSuppressed <em>Is RSM Suppressed</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#isRSMUIReadOnly <em>Is RSMUI Read Only</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#isRSMPropertiesUIReadOnly <em>Is RSM Properties UI Read Only</em>}</li>
@@ -45,8 +45,8 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getRhapsodyAddNewConcepts <em>Rhapsody Add New Concept</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getRhapsodyDisplayName <em>Rhapsody Display Name</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getRhapsodyToAddNews <em>Rhapsody To Add New</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getIconUri <em>Icon Uri</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getOverrides <em>Override</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getGeneralizations <em>Generalization</em>}</li>
  * </ul>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept()
@@ -87,7 +87,6 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	/**
 	 * Returns the value of the '<em><b>Feature</b></em>' containment reference list.
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature}.
-	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept <em>Concept</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -102,8 +101,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Feature</em>' containment reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_Feature()
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept
-	 * @model opposite="concept" containment="true" ordered="false"
+	 * @model containment="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
@@ -136,7 +134,6 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	/**
 	 * Returns the value of the '<em><b>Generalization</b></em>' containment reference list.
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization}.
-	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization#getSpecific <em>Specific</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -151,8 +148,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Generalization</em>' containment reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_Generalization()
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization#getSpecific
-	 * @model opposite="specific" containment="true" ordered="false"
+	 * @model containment="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
@@ -369,7 +365,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	 * @return the value of the '<em>Icon Uri</em>' attribute.
 	 * @see #setIconUri(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_IconUri()
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String getIconUri();
@@ -397,7 +393,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	 * @see #unsetIsRSMSuppressed()
 	 * @see #setIsRSMSuppressed(boolean)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_IsRSMSuppressed()
-	 * @model unsettable="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.Boolean" ordered="false"
 	 * @generated
 	 */
 	boolean isRSMSuppressed();
@@ -450,7 +446,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	 * @see #unsetIsRSMUIReadOnly()
 	 * @see #setIsRSMUIReadOnly(boolean)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_IsRSMUIReadOnly()
-	 * @model unsettable="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.Boolean" ordered="false"
 	 * @generated
 	 */
 	boolean isRSMUIReadOnly();
@@ -503,7 +499,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	 * @see #unsetIsRSMPropertiesUIReadOnly()
 	 * @see #setIsRSMPropertiesUIReadOnly(boolean)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_IsRSMPropertiesUIReadOnly()
-	 * @model unsettable="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.Boolean" ordered="false"
 	 * @generated
 	 */
 	boolean isRSMPropertiesUIReadOnly();
@@ -555,7 +551,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	 * @return the value of the '<em>Is Rhapsody Suppressed</em>' attribute.
 	 * @see #setIsRhapsodySuppressed(boolean)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_IsRhapsodySuppressed()
-	 * @model default="false" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isRhapsodySuppressed();
@@ -581,7 +577,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	 * @return the value of the '<em>Rhapsody Metaclass</em>' attribute.
 	 * @see #setRhapsodyMetaclass(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_RhapsodyMetaclass()
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String getRhapsodyMetaclass();
@@ -607,7 +603,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	 * @return the value of the '<em>Rhapsody Stereotype Name</em>' attribute.
 	 * @see #setRhapsodyStereotypeName(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_RhapsodyStereotypeName()
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String getRhapsodyStereotypeName();
@@ -633,7 +629,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Rhapsody Add New</em>' attribute list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_RhapsodyAddNew()
-	 * @model ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	EList<String> getRhapsodyAddNews();
@@ -688,7 +684,7 @@ public interface GenDomainConcept extends GenDomainClassifier, GenMenuTarget, Ge
 	 * @return the value of the '<em>Rhapsody Display Name</em>' attribute.
 	 * @see #setRhapsodyDisplayName(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainConcept_RhapsodyDisplayName()
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String getRhapsodyDisplayName();

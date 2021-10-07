@@ -436,6 +436,15 @@ public interface DDS4CCMFactory extends EFactory {
 	CXStruct createCXStruct();
 
 	/**
+	 * Returns a new object of class '<em>Extensible</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Extensible</em>'.
+	 * @generated
+	 */
+	Extensible createExtensible();
+
+	/**
 	 * Returns a new object of class '<em>CX Supports</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

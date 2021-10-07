@@ -3054,7 +3054,7 @@ public class IdlPackageImpl extends EPackageImpl implements IdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStructType_Name()
+  public EAttribute getStructType_Extensibility()
   {
         return (EAttribute)getStructType().getEStructuralFeatures().get(0);
   }
@@ -3064,9 +3064,19 @@ public class IdlPackageImpl extends EPackageImpl implements IdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getStructType_Name()
+  {
+        return (EAttribute)getStructType().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getStructType_Comments()
   {
-        return (EReference)getStructType().getEStructuralFeatures().get(1);
+        return (EReference)getStructType().getEStructuralFeatures().get(2);
   }
 
   /**
@@ -3076,7 +3086,7 @@ public class IdlPackageImpl extends EPackageImpl implements IdlPackage
    */
   public EReference getStructType_Members()
   {
-        return (EReference)getStructType().getEStructuralFeatures().get(2);
+        return (EReference)getStructType().getEStructuralFeatures().get(3);
   }
 
   /**
@@ -3212,7 +3222,7 @@ public class IdlPackageImpl extends EPackageImpl implements IdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getUnionType_Name()
+  public EAttribute getUnionType_Extensibility()
   {
         return (EAttribute)getUnionType().getEStructuralFeatures().get(0);
   }
@@ -3222,9 +3232,9 @@ public class IdlPackageImpl extends EPackageImpl implements IdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getUnionType_Comments()
+  public EAttribute getUnionType_Name()
   {
-        return (EReference)getUnionType().getEStructuralFeatures().get(1);
+        return (EAttribute)getUnionType().getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3232,7 +3242,7 @@ public class IdlPackageImpl extends EPackageImpl implements IdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getUnionType_Switch()
+  public EReference getUnionType_Comments()
   {
         return (EReference)getUnionType().getEStructuralFeatures().get(2);
   }
@@ -3242,9 +3252,19 @@ public class IdlPackageImpl extends EPackageImpl implements IdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getUnionType_Body()
+  public EReference getUnionType_Switch()
   {
         return (EReference)getUnionType().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUnionType_Body()
+  {
+        return (EReference)getUnionType().getEStructuralFeatures().get(4);
   }
 
   /**

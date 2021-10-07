@@ -44,7 +44,7 @@ public interface GenMenuDelegateAction extends GenMenuAction {
 	 * @return the value of the '<em>Host Bundle</em>' attribute.
 	 * @see #setHostBundle(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenMenuDelegateAction_HostBundle()
-	 * @model ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	String getHostBundle();
@@ -70,7 +70,7 @@ public interface GenMenuDelegateAction extends GenMenuAction {
 	 * @return the value of the '<em>Class Name</em>' attribute.
 	 * @see #setClassName(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenMenuDelegateAction_ClassName()
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String getClassName();

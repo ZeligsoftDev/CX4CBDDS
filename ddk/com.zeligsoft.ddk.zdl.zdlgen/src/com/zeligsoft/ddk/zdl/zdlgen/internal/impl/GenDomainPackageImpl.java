@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -160,9 +161,8 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl implem
 	@Override
 	public EList<GenDomainPackageableElement> getElements() {
 		if (elements == null) {
-			elements = new EObjectContainmentWithInverseEList<GenDomainPackageableElement>(
-					GenDomainPackageableElement.class, this, ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT,
-					ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE);
+			elements = new EObjectContainmentEList<GenDomainPackageableElement>(GenDomainPackageableElement.class, this,
+					ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT);
 		}
 		return elements;
 	}
@@ -193,21 +193,6 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl implem
 			return element;
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getElements()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

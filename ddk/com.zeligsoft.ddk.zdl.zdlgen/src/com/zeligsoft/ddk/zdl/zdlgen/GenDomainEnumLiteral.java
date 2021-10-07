@@ -70,8 +70,7 @@ public interface GenDomainEnumLiteral extends GenDomainNamedElement {
 	void setDomainEnumLiteral(EnumerationLiteral value);
 
 	/**
-	 * Returns the value of the '<em><b>Enumeration</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum#getLiterals <em>Literal</em>}'.
+	 * Returns the value of the '<em><b>Enumeration</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -84,21 +83,20 @@ public interface GenDomainEnumLiteral extends GenDomainNamedElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Enumeration</em>' container reference.
+	 * @return the value of the '<em>Enumeration</em>' reference.
 	 * @see #setEnumeration(GenDomainEnum)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainEnumLiteral_Enumeration()
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum#getLiterals
-	 * @model opposite="literal" required="true" transient="false" ordered="false"
+	 * @model required="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainEnum getEnumeration();
 
 	/**
-	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral#getEnumeration <em>Enumeration</em>}' container reference.
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral#getEnumeration <em>Enumeration</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Enumeration</em>' container reference.
+	 * @param value the new value of the '<em>Enumeration</em>' reference.
 	 * @see #getEnumeration()
 	 * @generated
 	 */

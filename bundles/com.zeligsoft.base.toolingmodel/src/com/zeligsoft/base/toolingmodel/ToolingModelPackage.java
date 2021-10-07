@@ -623,13 +623,22 @@ public interface ToolingModelPackage extends EPackage {
 	int PROPERTY_DEFINITION__SECTION = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Visible Model Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_DEFINITION__VISIBLE_MODEL_TYPE = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Property Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_DEFINITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int PROPERTY_DEFINITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link com.zeligsoft.base.toolingmodel.impl.PropertySheetImpl <em>Property Sheet</em>}' class.
@@ -733,6 +742,15 @@ public interface ToolingModelPackage extends EPackage {
 	int PRIMITIVE_DEFINITION__SECTION = PROPERTY_DEFINITION__SECTION;
 
 	/**
+	 * The feature id for the '<em><b>Visible Model Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_DEFINITION__VISIBLE_MODEL_TYPE = PROPERTY_DEFINITION__VISIBLE_MODEL_TYPE;
+
+	/**
 	 * The number of structural features of the '<em>Primitive Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -795,6 +813,15 @@ public interface ToolingModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int TEXTUAL_DEFINITION__SECTION = PRIMITIVE_DEFINITION__SECTION;
+
+	/**
+	 * The feature id for the '<em><b>Visible Model Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXTUAL_DEFINITION__VISIBLE_MODEL_TYPE = PRIMITIVE_DEFINITION__VISIBLE_MODEL_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -1826,6 +1853,17 @@ public interface ToolingModelPackage extends EPackage {
 	EAttribute getPropertyDefinition_Section();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.zeligsoft.base.toolingmodel.PropertyDefinition#getVisibleModelType <em>Visible Model Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Visible Model Type</em>'.
+	 * @see com.zeligsoft.base.toolingmodel.PropertyDefinition#getVisibleModelType()
+	 * @see #getPropertyDefinition()
+	 * @generated
+	 */
+	EAttribute getPropertyDefinition_VisibleModelType();
+
+	/**
 	 * Returns the meta object for class '{@link com.zeligsoft.base.toolingmodel.PropertySheet <em>Property Sheet</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2560,6 +2598,14 @@ public interface ToolingModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROPERTY_DEFINITION__SECTION = eINSTANCE.getPropertyDefinition_Section();
+
+		/**
+		 * The meta object literal for the '<em><b>Visible Model Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY_DEFINITION__VISIBLE_MODEL_TYPE = eINSTANCE.getPropertyDefinition_VisibleModelType();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.base.toolingmodel.impl.PropertySheetImpl <em>Property Sheet</em>}' class.

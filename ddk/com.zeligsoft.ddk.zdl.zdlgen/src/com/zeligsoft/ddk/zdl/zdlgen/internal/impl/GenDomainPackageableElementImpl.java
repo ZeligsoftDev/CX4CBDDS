@@ -45,6 +45,16 @@ public abstract class GenDomainPackageableElementImpl extends GenDomainNamedElem
 		implements GenDomainPackageableElement {
 
 	/**
+	 * The cached value of the '{@link #getPackage() <em>Package</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected GenDomainPackage package_;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -81,9 +91,8 @@ public abstract class GenDomainPackageableElementImpl extends GenDomainNamedElem
 	 */
 	@Override
 	public GenDomainObject basicGetOwner() {
-		GenDomainPackage package_ = getPackage();
-		if (package_ != null) {
-			return package_;
+		if (eIsSet(ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE)) {
+			return basicGetPackage();
 		}
 		return super.basicGetOwner();
 	}
@@ -95,9 +104,16 @@ public abstract class GenDomainPackageableElementImpl extends GenDomainNamedElem
 	 */
 	@Override
 	public GenDomainPackage getPackage() {
-		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE)
-			return null;
-		return (GenDomainPackage) eInternalContainer();
+		if (package_ != null && package_.eIsProxy()) {
+			InternalEObject oldPackage = (InternalEObject) package_;
+			package_ = (GenDomainPackage) eResolveProxy(oldPackage);
+			if (package_ != oldPackage) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE, oldPackage, package_));
+			}
+		}
+		return package_;
 	}
 
 	/**
@@ -105,10 +121,8 @@ public abstract class GenDomainPackageableElementImpl extends GenDomainNamedElem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPackage(GenDomainPackage newPackage, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newPackage, ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE,
-				msgs);
-		return msgs;
+	public GenDomainPackage basicGetPackage() {
+		return package_;
 	}
 
 	/**
@@ -118,68 +132,11 @@ public abstract class GenDomainPackageableElementImpl extends GenDomainNamedElem
 	 */
 	@Override
 	public void setPackage(GenDomainPackage newPackage) {
-		if (newPackage != eInternalContainer()
-				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE
-						&& newPackage != null)) {
-			if (EcoreUtil.isAncestor(this, newPackage))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newPackage != null)
-				msgs = ((InternalEObject) newPackage).eInverseAdd(this, ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT,
-						GenDomainPackage.class, msgs);
-			msgs = basicSetPackage(newPackage, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+		GenDomainPackage oldPackage = package_;
+		package_ = newPackage;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE,
-					newPackage, newPackage));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE:
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetPackage((GenDomainPackage) otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE:
-			return basicSetPackage(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-		case ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE:
-			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT,
-					GenDomainPackage.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
+					oldPackage, package_));
 	}
 
 	/**
@@ -191,7 +148,9 @@ public abstract class GenDomainPackageableElementImpl extends GenDomainNamedElem
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE:
-			return getPackage();
+			if (resolve)
+				return getPackage();
+			return basicGetPackage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -237,7 +196,7 @@ public abstract class GenDomainPackageableElementImpl extends GenDomainNamedElem
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__OWNER:
 			return isSetOwner();
 		case ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE:
-			return getPackage() != null;
+			return package_ != null;
 		}
 		return super.eIsSet(featureID);
 	}

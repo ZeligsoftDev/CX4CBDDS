@@ -29,6 +29,7 @@ package com.zeligsoft.base.toolingmodel;
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertyDefinition#isVisible <em>Visible</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertyDefinition#getContentHint <em>Content Hint</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.PropertyDefinition#getSection <em>Section</em>}</li>
+ *   <li>{@link com.zeligsoft.base.toolingmodel.PropertyDefinition#getVisibleModelType <em>Visible Model Type</em>}</li>
  * </ul>
  *
  * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getPropertyDefinition()
@@ -142,5 +143,27 @@ public interface PropertyDefinition extends NamedElement, PropertiesObject {
 	 * @generated
 	 */
 	void setSection(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Visible Model Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Visible Model Type</em>' attribute.
+	 * @see #setVisibleModelType(String)
+	 * @see com.zeligsoft.base.toolingmodel.ToolingModelPackage#getPropertyDefinition_VisibleModelType()
+	 * @model
+	 * @generated
+	 */
+	String getVisibleModelType();
+
+	/**
+	 * Sets the value of the '{@link com.zeligsoft.base.toolingmodel.PropertyDefinition#getVisibleModelType <em>Visible Model Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Visible Model Type</em>' attribute.
+	 * @see #getVisibleModelType()
+	 * @generated
+	 */
+	void setVisibleModelType(String value);
 
 } // PropertyDefinition

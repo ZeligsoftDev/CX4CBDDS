@@ -14,5 +14,5 @@ package dds4ccm;
  *        annotation="uml2.extensions suppressed='true'"
  * @generated
  */
-public interface CXStruct extends CXConstructed, Contained, CXClassifierContained, CXModuleContained, CXType {
+public interface CXStruct extends CXConstructed, Extensible, Contained, CXClassifierContained, CXModuleContained, CXType {
 } // CXStruct

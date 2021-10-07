@@ -27,9 +27,9 @@ import org.eclipse.uml2.uml.Dependency;
  * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getTarget <em>Target</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainSpecialization <em>Domain Specialization</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainModelLibraryReference <em>Domain Model Library Reference</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getResourceName <em>Resource Name</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainSpecialization <em>Domain Specialization</em>}</li>
  * </ul>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModelLibraryReference()
@@ -101,7 +101,7 @@ public interface GenDomainModelLibraryReference extends GenDomainObject {
 	 * @return the value of the '<em>Resource Name</em>' attribute.
 	 * @see #setResourceName(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModelLibraryReference_ResourceName()
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String getResourceName();
@@ -117,8 +117,7 @@ public interface GenDomainModelLibraryReference extends GenDomainObject {
 	void setResourceName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Domain Specialization</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainModelLibraries <em>Domain Model Library</em>}'.
+	 * Returns the value of the '<em><b>Domain Specialization</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -131,21 +130,20 @@ public interface GenDomainModelLibraryReference extends GenDomainObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Domain Specialization</em>' container reference.
+	 * @return the value of the '<em>Domain Specialization</em>' reference.
 	 * @see #setDomainSpecialization(GenDomainSpecialization)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModelLibraryReference_DomainSpecialization()
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainModelLibraries
-	 * @model opposite="domainModelLibrary" required="true" transient="false" ordered="false"
+	 * @model required="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainSpecialization getDomainSpecialization();
 
 	/**
-	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainSpecialization <em>Domain Specialization</em>}' container reference.
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainSpecialization <em>Domain Specialization</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Domain Specialization</em>' container reference.
+	 * @param value the new value of the '<em>Domain Specialization</em>' reference.
 	 * @see #getDomainSpecialization()
 	 * @generated
 	 */
