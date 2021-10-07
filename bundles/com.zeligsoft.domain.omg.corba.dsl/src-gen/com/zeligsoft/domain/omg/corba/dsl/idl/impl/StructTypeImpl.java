@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.StructTypeImpl#getExtensibility <em>Extensibility</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.StructTypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.StructTypeImpl#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.StructTypeImpl#getMembers <em>Members</em>}</li>
@@ -39,6 +40,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class StructTypeImpl extends DefinitionImpl implements StructType
 {
+  /**
+   * The default value of the '{@link #getExtensibility() <em>Extensibility</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getExtensibility()
+   * @generated
+   * @ordered
+   */
+  protected static final String EXTENSIBILITY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getExtensibility() <em>Extensibility</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getExtensibility()
+   * @generated
+   * @ordered
+   */
+  protected String extensibility = EXTENSIBILITY_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -98,6 +119,29 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
   protected EClass eStaticClass()
   {
     return IdlPackage.Literals.STRUCT_TYPE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getExtensibility()
+  {
+    return extensibility;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setExtensibility(String newExtensibility)
+  {
+    String oldExtensibility = extensibility;
+    extensibility = newExtensibility;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IdlPackage.STRUCT_TYPE__EXTENSIBILITY, oldExtensibility, extensibility));
   }
 
   /**
@@ -179,6 +223,8 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
   {
     switch (featureID)
     {
+      case IdlPackage.STRUCT_TYPE__EXTENSIBILITY:
+        return getExtensibility();
       case IdlPackage.STRUCT_TYPE__NAME:
         return getName();
       case IdlPackage.STRUCT_TYPE__COMMENTS:
@@ -200,6 +246,9 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
   {
     switch (featureID)
     {
+      case IdlPackage.STRUCT_TYPE__EXTENSIBILITY:
+        setExtensibility((String)newValue);
+        return;
       case IdlPackage.STRUCT_TYPE__NAME:
         setName((String)newValue);
         return;
@@ -225,6 +274,9 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
   {
     switch (featureID)
     {
+      case IdlPackage.STRUCT_TYPE__EXTENSIBILITY:
+        setExtensibility(EXTENSIBILITY_EDEFAULT);
+        return;
       case IdlPackage.STRUCT_TYPE__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -248,6 +300,8 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
   {
     switch (featureID)
     {
+      case IdlPackage.STRUCT_TYPE__EXTENSIBILITY:
+        return EXTENSIBILITY_EDEFAULT == null ? extensibility != null : !EXTENSIBILITY_EDEFAULT.equals(extensibility);
       case IdlPackage.STRUCT_TYPE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IdlPackage.STRUCT_TYPE__COMMENTS:
@@ -269,7 +323,9 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
+    result.append(" (extensibility: ");
+    result.append(extensibility);
+    result.append(", name: ");
     result.append(name);
     result.append(')');
     return result.toString();

@@ -83,6 +83,7 @@ public class GenDomainStructuralFeatureItemProvider extends GenDomainNamedElemen
 			addPresentationHintPropertyDescriptor(object);
 			addPresentationKindPropertyDescriptor(object);
 			addOrderPropertyDescriptor(object);
+			addVisibleModelTypePropertyDescriptor(object);
 			addUmlMetaattributePropertyDescriptor(object);
 			addDomainAttributePropertyDescriptor(object);
 			addIsRhapsodySuppressedPropertyDescriptor(object);
@@ -175,6 +176,23 @@ public class GenDomainStructuralFeatureItemProvider extends GenDomainNamedElemen
 				ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER, true, false, false,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
 				null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Visible Model Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVisibleModelTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GenDomainAttributePresentation_visibleModelType_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", //$NON-NLS-1$
+								"_UI_GenDomainAttributePresentation_visibleModelType_feature", //$NON-NLS-1$
+								"_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$
+						ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE, true, false,
+						false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -426,6 +444,7 @@ public class GenDomainStructuralFeatureItemProvider extends GenDomainNamedElemen
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_HINT:
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_KIND:
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER:
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE_MODEL_TYPE:
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__IS_RHAPSODY_SUPPRESSED:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;

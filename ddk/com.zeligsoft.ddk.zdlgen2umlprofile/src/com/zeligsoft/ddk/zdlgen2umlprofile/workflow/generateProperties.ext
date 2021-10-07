@@ -54,13 +54,21 @@ private PropertyDefinition getPropertyDefinition(zdlgen::GenDomainAttributePrese
 		getReadOnlyObjectDefinition() 
 	else
 		getVisiblePropertyDefinition(property);
-		
+
 private PropertyDefinition getVisiblePropertyDefinition(zdlgen::GenDomainAttributePresentation property):
 	switch(property.presentationKind) {
 		case zdlgen::GenDomainAttributePresentationKind::primitive: getVisiblePrimitiveDefinition()
 		case zdlgen::GenDomainAttributePresentationKind::text: getVisibleTextualDefinition()
 		case zdlgen::GenDomainAttributePresentationKind::multiLineText: getMultiTextualDefinition()
-		case zdlgen::GenDomainAttributePresentationKind::other: getVisibleObjectDefinition()
+		case zdlgen::GenDomainAttributePresentationKind::other: toVisibleObjectDefinition(property)
+		default: toVisibleObjectDefinition(property)
+	};
+	
+private PropertyDefinition toVisibleObjectDefinition(zdlgen::GenDomainAttributePresentation property) :
+	switch(property.visibleModelType) {
+		case zdlgen::GenDomainPresentationModelKind::ALL: getVisibleObjectDefinition()
+		case zdlgen::GenDomainPresentationModelKind::AXCIOMA: getVisibleAXCIOMAObjectDefinition()
+		case zdlgen::GenDomainPresentationModelKind::ATCD: getVisibleATCDObjectDefinition()
 		default: getVisibleObjectDefinition()
 	};
 
@@ -89,6 +97,8 @@ private PropertyDefinition getDefaultPropertyDefinition(uml::TypedElement t) :
  */   
 private addDefaultPropertyDefinitions(PropertySheet propertySheet) :
 	propertySheet.propertyDefinition.add(getVisibleObjectDefinition()) ->
+	propertySheet.propertyDefinition.add(getVisibleAXCIOMAObjectDefinition()) ->
+	propertySheet.propertyDefinition.add(getVisibleATCDObjectDefinition()) ->
 	propertySheet.propertyDefinition.add(getHiddenObjectDefinition()) ->
 	propertySheet.propertyDefinition.add(getReadOnlyObjectDefinition()) ->
 	propertySheet.propertyDefinition.add(getVisiblePrimitiveDefinition()) ->
@@ -104,7 +114,18 @@ private cached TextualDefinition getWorkerCodeDefinition() :
 
 private cached PropertyDefinition getVisibleObjectDefinition() :
 	let o = new PropertyDefinition :
-	o.setName("Property Visible");
+	o.setName("Property Visible") ->
+	o.setVisibleModelType("ALL");
+
+private cached PropertyDefinition getVisibleAXCIOMAObjectDefinition() :
+	let o = new PropertyDefinition :
+	o.setName("Property Visible")->
+	o.setVisibleModelType("AXCIOMA");
+	
+private cached PropertyDefinition getVisibleATCDObjectDefinition() :
+	let o = new PropertyDefinition :
+	o.setName("Property Visible")->
+	o.setVisibleModelType("ATCD");
 	
 private cached PropertyDefinition getHiddenObjectDefinition() :
 	let o = new PropertyDefinition :

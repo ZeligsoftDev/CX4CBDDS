@@ -44,7 +44,7 @@ public interface Expression extends GenDomainObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getExpression_Name()
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String getName();
@@ -70,7 +70,7 @@ public interface Expression extends GenDomainObject {
 	 * @return the value of the '<em>Expression</em>' attribute.
 	 * @see #setExpression(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getExpression_Expression()
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String getExpression();

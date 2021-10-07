@@ -73,6 +73,8 @@ import dds4ccm.Duration;
 import dds4ccm.Event;
 import dds4ccm.EventPort;
 import dds4ccm.ExtendedPortType;
+import dds4ccm.ExtensibilityKind;
+import dds4ccm.Extensible;
 import dds4ccm.FactoryOperation;
 import dds4ccm.FinderOperation;
 import dds4ccm.FragmentAssembly;
@@ -266,6 +268,7 @@ public class DDS4CCMFactoryImpl extends EFactoryImpl implements DDS4CCMFactory {
 			case DDS4CCMPackage.CX_SEQUENCE: return createCXSequence();
 			case DDS4CCMPackage.CX_STRING: return createCXString();
 			case DDS4CCMPackage.CX_STRUCT: return createCXStruct();
+			case DDS4CCMPackage.EXTENSIBLE: return createExtensible();
 			case DDS4CCMPackage.CX_SUPPORTS: return createCXSupports();
 			case DDS4CCMPackage.CX_TYPE_DEF: return createCXTypeDef();
 			case DDS4CCMPackage.CX_UNION: return createCXUnion();
@@ -389,6 +392,8 @@ public class DDS4CCMFactoryImpl extends EFactoryImpl implements DDS4CCMFactory {
 				return createModelTypeEnumFromString(eDataType, initialValue);
 			case DDS4CCMPackage.CX_PRIMITIVE_KIND:
 				return createCXPrimitiveKindFromString(eDataType, initialValue);
+			case DDS4CCMPackage.EXTENSIBILITY_KIND:
+				return createExtensibilityKindFromString(eDataType, initialValue);
 			case DDS4CCMPackage.TYPE_CONSTRAINT:
 				return createTypeConstraintFromString(eDataType, initialValue);
 			case DDS4CCMPackage.TOPIC_KIND:
@@ -432,6 +437,8 @@ public class DDS4CCMFactoryImpl extends EFactoryImpl implements DDS4CCMFactory {
 				return convertModelTypeEnumToString(eDataType, instanceValue);
 			case DDS4CCMPackage.CX_PRIMITIVE_KIND:
 				return convertCXPrimitiveKindToString(eDataType, instanceValue);
+			case DDS4CCMPackage.EXTENSIBILITY_KIND:
+				return convertExtensibilityKindToString(eDataType, instanceValue);
 			case DDS4CCMPackage.TYPE_CONSTRAINT:
 				return convertTypeConstraintToString(eDataType, instanceValue);
 			case DDS4CCMPackage.TOPIC_KIND:
@@ -963,6 +970,17 @@ public class DDS4CCMFactoryImpl extends EFactoryImpl implements DDS4CCMFactory {
 	public CXStruct createCXStruct() {
 		CXStructImpl cxStruct = new CXStructImpl();
 		return cxStruct;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Extensible createExtensible() {
+		ExtensibleImpl extensible = new ExtensibleImpl();
+		return extensible;
 	}
 
 	/**
@@ -2164,6 +2182,26 @@ public class DDS4CCMFactoryImpl extends EFactoryImpl implements DDS4CCMFactory {
 	 * @generated
 	 */
 	public String convertCXPrimitiveKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExtensibilityKind createExtensibilityKindFromString(EDataType eDataType, String initialValue) {
+		ExtensibilityKind result = ExtensibilityKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertExtensibilityKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

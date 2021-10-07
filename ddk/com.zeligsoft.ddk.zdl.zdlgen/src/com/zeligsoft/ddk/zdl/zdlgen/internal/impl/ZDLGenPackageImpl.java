@@ -51,6 +51,7 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackage;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement;
+import com.zeligsoft.ddk.zdl.zdlgen.GenDomainPresentationModelKind;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainReference;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature;
@@ -428,6 +429,13 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum genDomainPresentationModelKindEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum genAllDomainCassifiersModeEEnum = null;
 
 	/**
@@ -576,16 +584,6 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenDomainConcept_Generalization() {
-		return (EReference) genDomainConceptEClass.getEStructuralFeatures().get(19);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getGenDomainConcept_DomainConcept() {
 		return (EReference) genDomainConceptEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -595,7 +593,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getGenDomainConcept_UmlMetaclass() {
+	public EReference getGenDomainConcept_DomainConcept() {
 		return (EReference) genDomainConceptEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -605,7 +603,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getGenDomainConcept_General() {
+	public EReference getGenDomainConcept_UmlMetaclass() {
 		return (EReference) genDomainConceptEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -615,7 +613,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getGenDomainConcept_Reference() {
+	public EReference getGenDomainConcept_General() {
 		return (EReference) genDomainConceptEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -625,7 +623,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getGenDomainConcept_Attribute() {
+	public EReference getGenDomainConcept_Reference() {
 		return (EReference) genDomainConceptEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -634,8 +632,18 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EReference getGenDomainConcept_Attribute() {
+		return (EReference) genDomainConceptEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getGenDomainConcept_IconUri() {
-		return (EAttribute) genDomainConceptEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) genDomainConceptEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -738,7 +746,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenDomainConcept_Override() {
-		return (EReference) genDomainConceptEClass.getEStructuralFeatures().get(18);
+		return (EReference) genDomainConceptEClass.getEStructuralFeatures().get(19);
 	}
 
 	/**
@@ -818,7 +826,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenDomainStructuralFeature_DomainAttribute() {
-		return (EReference) genDomainStructuralFeatureEClass.getEStructuralFeatures().get(1);
+		return (EReference) genDomainStructuralFeatureEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -827,7 +835,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	public EAttribute getGenDomainStructuralFeature_IsRhapsodySuppressed() {
-		return (EAttribute) genDomainStructuralFeatureEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) genDomainStructuralFeatureEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -837,7 +845,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenDomainStructuralFeature_Concept() {
-		return (EReference) genDomainStructuralFeatureEClass.getEStructuralFeatures().get(3);
+		return (EReference) genDomainStructuralFeatureEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1027,16 +1035,6 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenDomainBlockRelation_Source() {
-		return (EReference) genDomainBlockRelationEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getGenDomainBlockRelation_Target() {
 		return (EReference) genDomainBlockRelationEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1046,8 +1044,18 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getGenDomainBlockRelation_DomainBlockRelation() {
+	public EReference getGenDomainBlockRelation_Target() {
 		return (EReference) genDomainBlockRelationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGenDomainBlockRelation_DomainBlockRelation() {
+		return (EReference) genDomainBlockRelationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1287,7 +1295,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenPaletteDrawer_Specializes() {
-		return (EReference) genPaletteDrawerEClass.getEStructuralFeatures().get(0);
+		return (EReference) genPaletteDrawerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1297,7 +1305,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenPaletteDrawer_Palette() {
-		return (EReference) genPaletteDrawerEClass.getEStructuralFeatures().get(1);
+		return (EReference) genPaletteDrawerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1357,7 +1365,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenPaletteTool_Overrides() {
-		return (EReference) genPaletteToolEClass.getEStructuralFeatures().get(0);
+		return (EReference) genPaletteToolEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1367,7 +1375,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenPaletteTool_Container() {
-		return (EReference) genPaletteToolEClass.getEStructuralFeatures().get(1);
+		return (EReference) genPaletteToolEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1825,6 +1833,15 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGenDomainAttributePresentation_VisibleModelType() {
+		return (EAttribute) genDomainAttributePresentationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EClass getGenDomainSpecialization() {
 		return genDomainSpecializationEClass;
@@ -1837,7 +1854,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenDomainSpecialization_DomainBlock() {
-		return (EReference) genDomainSpecializationEClass.getEStructuralFeatures().get(14);
+		return (EReference) genDomainSpecializationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1846,7 +1863,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	public EAttribute getGenDomainSpecialization_ElementtypeConfigurationContainerUri() {
-		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(15);
+		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -1876,7 +1893,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenDomainModelLibraryReference_DomainModelLibraryReference() {
-		return (EReference) genDomainModelLibraryReferenceEClass.getEStructuralFeatures().get(1);
+		return (EReference) genDomainModelLibraryReferenceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1886,7 +1903,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EAttribute getGenDomainModelLibraryReference_ResourceName() {
-		return (EAttribute) genDomainModelLibraryReferenceEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) genDomainModelLibraryReferenceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1896,7 +1913,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenDomainModelLibraryReference_DomainSpecialization() {
-		return (EReference) genDomainModelLibraryReferenceEClass.getEStructuralFeatures().get(3);
+		return (EReference) genDomainModelLibraryReferenceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1926,16 +1943,6 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenDomainSpecialization_DomainSpecialization() {
-		return (EReference) genDomainSpecializationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getGenDomainSpecialization_DomainConcept() {
 		return (EReference) genDomainSpecializationEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1945,8 +1952,8 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGenDomainSpecialization_PluginName() {
-		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(2);
+	public EReference getGenDomainSpecialization_DomainConcept() {
+		return (EReference) genDomainSpecializationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1955,7 +1962,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGenDomainSpecialization_ResourceName() {
+	public EAttribute getGenDomainSpecialization_PluginName() {
 		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -1965,8 +1972,18 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	@Override
+	public EAttribute getGenDomainSpecialization_ResourceName() {
+		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getGenDomainSpecialization_DomainModelLibrary() {
-		return (EReference) genDomainSpecializationEClass.getEStructuralFeatures().get(4);
+		return (EReference) genDomainSpecializationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1976,16 +1993,6 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EAttribute getGenDomainSpecialization_ModelLibraryNamesPackage() {
-		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getGenDomainSpecialization_ModelLibrarySourceFolder() {
 		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -1995,7 +2002,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGenDomainSpecialization_MenuModelResource() {
+	public EAttribute getGenDomainSpecialization_ModelLibrarySourceFolder() {
 		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -2005,7 +2012,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGenDomainSpecialization_Version() {
+	public EAttribute getGenDomainSpecialization_MenuModelResource() {
 		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -2014,7 +2021,8 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGenDomainSpecialization_CodeGenTarget() {
+	@Override
+	public EAttribute getGenDomainSpecialization_Version() {
 		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -2023,7 +2031,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGenDomainSpecialization_RhapsodyJavaProject() {
+	public EAttribute getGenDomainSpecialization_CodeGenTarget() {
 		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -2032,8 +2040,17 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGenDomainSpecialization_RhapsodyJDTJavaLibrary() {
+	public EAttribute getGenDomainSpecialization_RhapsodyJavaProject() {
 		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGenDomainSpecialization_RhapsodyJDTJavaLibrary() {
+		return (EAttribute) genDomainSpecializationEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -2043,7 +2060,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenDomainSpecialization_ExcludedPaletteItem() {
-		return (EReference) genDomainSpecializationEClass.getEStructuralFeatures().get(12);
+		return (EReference) genDomainSpecializationEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -2053,7 +2070,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenDomainSpecialization_IncludedUMLMenus() {
-		return (EReference) genDomainSpecializationEClass.getEStructuralFeatures().get(13);
+		return (EReference) genDomainSpecializationEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -2092,15 +2109,6 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	public EAttribute getGenDomainModel_RootPackage() {
-		return (EAttribute) genDomainModelEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getGenDomainModel_ImplementationSubPackage() {
 		return (EAttribute) genDomainModelEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -2109,7 +2117,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGenDomainModel_ImplSuffix() {
+	public EAttribute getGenDomainModel_ImplementationSubPackage() {
 		return (EAttribute) genDomainModelEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -2118,8 +2126,17 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGenDomainModel_ApiProject() {
+	public EAttribute getGenDomainModel_ImplSuffix() {
 		return (EAttribute) genDomainModelEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGenDomainModel_ApiProject() {
+		return (EAttribute) genDomainModelEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2129,16 +2146,6 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 */
 	@Override
 	public EReference getGenDomainModel_Palette() {
-		return (EReference) genDomainModelEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getGenDomainModel_MenuModel() {
 		return (EReference) genDomainModelEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -2148,8 +2155,18 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getGenDomainModel_OwningGenModel() {
+	public EReference getGenDomainModel_MenuModel() {
 		return (EReference) genDomainModelEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGenDomainModel_OwningGenModel() {
+		return (EReference) genDomainModelEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2267,6 +2284,15 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getGenDomainPresentationModelKind() {
+		return genDomainPresentationModelKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EEnum getGenAllDomainCassifiersMode() {
 		return genAllDomainCassifiersModeEEnum;
@@ -2322,13 +2348,13 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		genDomainModelEClass = createEClass(GEN_DOMAIN_MODEL);
 		createEReference(genDomainModelEClass, GEN_DOMAIN_MODEL__DOMAIN_MODEL);
 		createEAttribute(genDomainModelEClass, GEN_DOMAIN_MODEL__NS_URI);
+		createEReference(genDomainModelEClass, GEN_DOMAIN_MODEL__OWNING_GEN_MODEL);
 		createEAttribute(genDomainModelEClass, GEN_DOMAIN_MODEL__ROOT_PACKAGE);
 		createEAttribute(genDomainModelEClass, GEN_DOMAIN_MODEL__IMPLEMENTATION_SUB_PACKAGE);
 		createEAttribute(genDomainModelEClass, GEN_DOMAIN_MODEL__IMPL_SUFFIX);
 		createEAttribute(genDomainModelEClass, GEN_DOMAIN_MODEL__API_PROJECT);
 		createEReference(genDomainModelEClass, GEN_DOMAIN_MODEL__PALETTE);
 		createEReference(genDomainModelEClass, GEN_DOMAIN_MODEL__MENU_MODEL);
-		createEReference(genDomainModelEClass, GEN_DOMAIN_MODEL__OWNING_GEN_MODEL);
 
 		genDomainPackageEClass = createEClass(GEN_DOMAIN_PACKAGE);
 		createEReference(genDomainPackageEClass, GEN_DOMAIN_PACKAGE__ELEMENT);
@@ -2346,8 +2372,8 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		createEAttribute(genPaletteItemEClass, GEN_PALETTE_ITEM__DESCRIPTION);
 
 		genPaletteDrawerEClass = createEClass(GEN_PALETTE_DRAWER);
-		createEReference(genPaletteDrawerEClass, GEN_PALETTE_DRAWER__SPECIALIZES);
 		createEReference(genPaletteDrawerEClass, GEN_PALETTE_DRAWER__PALETTE);
+		createEReference(genPaletteDrawerEClass, GEN_PALETTE_DRAWER__SPECIALIZES);
 
 		genPaletteToolContainerEClass = createEClass(GEN_PALETTE_TOOL_CONTAINER);
 		createEReference(genPaletteToolContainerEClass, GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL);
@@ -2355,8 +2381,8 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		createEAttribute(genPaletteToolContainerEClass, GEN_PALETTE_TOOL_CONTAINER__TARGET_DIAGRAM);
 
 		genPaletteToolEClass = createEClass(GEN_PALETTE_TOOL);
-		createEReference(genPaletteToolEClass, GEN_PALETTE_TOOL__OVERRIDES);
 		createEReference(genPaletteToolEClass, GEN_PALETTE_TOOL__CONTAINER);
+		createEReference(genPaletteToolEClass, GEN_PALETTE_TOOL__OVERRIDES);
 
 		genMenuModelEClass = createEClass(GEN_MENU_MODEL);
 		createEReference(genMenuModelEClass, GEN_MENU_MODEL__ITEMS);
@@ -2388,9 +2414,9 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		createEAttribute(genDomainBlockEClass, GEN_DOMAIN_BLOCK__RSM_STEREOTYPES_PROPERTIES_UI_READ_ONLY);
 
 		genDomainBlockRelationEClass = createEClass(GEN_DOMAIN_BLOCK_RELATION);
+		createEReference(genDomainBlockRelationEClass, GEN_DOMAIN_BLOCK_RELATION__SOURCE);
 		createEReference(genDomainBlockRelationEClass, GEN_DOMAIN_BLOCK_RELATION__TARGET);
 		createEReference(genDomainBlockRelationEClass, GEN_DOMAIN_BLOCK_RELATION__DOMAIN_BLOCK_RELATION);
-		createEReference(genDomainBlockRelationEClass, GEN_DOMAIN_BLOCK_RELATION__SOURCE);
 
 		genDomainBlockImportEClass = createEClass(GEN_DOMAIN_BLOCK_IMPORT);
 
@@ -2404,12 +2430,12 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		genDomainConceptEClass = createEClass(GEN_DOMAIN_CONCEPT);
 		createEAttribute(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__CATEGORY);
 		createEReference(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__FEATURE);
+		createEReference(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__GENERALIZATION);
 		createEReference(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__DOMAIN_CONCEPT);
 		createEReference(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__UML_METACLASS);
 		createEReference(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__GENERAL);
 		createEReference(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__REFERENCE);
 		createEReference(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__ATTRIBUTE);
-		createEAttribute(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__ICON_URI);
 		createEAttribute(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED);
 		createEAttribute(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__IS_RSMUI_READ_ONLY);
 		createEAttribute(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__IS_RSM_PROPERTIES_UI_READ_ONLY);
@@ -2420,16 +2446,16 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		createEReference(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW_CONCEPT);
 		createEAttribute(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__RHAPSODY_DISPLAY_NAME);
 		createEReference(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__RHAPSODY_TO_ADD_NEW);
+		createEAttribute(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__ICON_URI);
 		createEReference(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__OVERRIDE);
-		createEReference(genDomainConceptEClass, GEN_DOMAIN_CONCEPT__GENERALIZATION);
 
 		genPalettableEClass = createEClass(GEN_PALETTABLE);
 
 		genDomainStructuralFeatureEClass = createEClass(GEN_DOMAIN_STRUCTURAL_FEATURE);
 		createEReference(genDomainStructuralFeatureEClass, GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE);
+		createEReference(genDomainStructuralFeatureEClass, GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT);
 		createEReference(genDomainStructuralFeatureEClass, GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE);
 		createEAttribute(genDomainStructuralFeatureEClass, GEN_DOMAIN_STRUCTURAL_FEATURE__IS_RHAPSODY_SUPPRESSED);
-		createEReference(genDomainStructuralFeatureEClass, GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT);
 
 		genDomainAttributePresentationEClass = createEClass(GEN_DOMAIN_ATTRIBUTE_PRESENTATION);
 		createEAttribute(genDomainAttributePresentationEClass, GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE);
@@ -2437,6 +2463,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		createEAttribute(genDomainAttributePresentationEClass, GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_HINT);
 		createEAttribute(genDomainAttributePresentationEClass, GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND);
 		createEAttribute(genDomainAttributePresentationEClass, GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER);
+		createEAttribute(genDomainAttributePresentationEClass, GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE);
 
 		genDomainReferenceEClass = createEClass(GEN_DOMAIN_REFERENCE);
 		createEReference(genDomainReferenceEClass, GEN_DOMAIN_REFERENCE__TARGET);
@@ -2458,6 +2485,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		createEReference(genDomainBlockReferenceEClass, GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_SPECIALIZATION);
 
 		genDomainSpecializationEClass = createEClass(GEN_DOMAIN_SPECIALIZATION);
+		createEReference(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK);
 		createEReference(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION);
 		createEReference(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT);
 		createEAttribute(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__PLUGIN_NAME);
@@ -2470,19 +2498,18 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		createEAttribute(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET);
 		createEAttribute(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JAVA_PROJECT);
 		createEAttribute(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JDT_JAVA_LIBRARY);
-		createEReference(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__EXCLUDED_PALETTE_ITEM);
-		createEReference(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__INCLUDED_UML_MENUS);
-		createEReference(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK);
 		createEAttribute(genDomainSpecializationEClass,
 				GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI);
+		createEReference(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__EXCLUDED_PALETTE_ITEM);
+		createEReference(genDomainSpecializationEClass, GEN_DOMAIN_SPECIALIZATION__INCLUDED_UML_MENUS);
 
 		genDomainModelLibraryReferenceEClass = createEClass(GEN_DOMAIN_MODEL_LIBRARY_REFERENCE);
 		createEReference(genDomainModelLibraryReferenceEClass, GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET);
 		createEReference(genDomainModelLibraryReferenceEClass,
+				GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION);
+		createEReference(genDomainModelLibraryReferenceEClass,
 				GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_MODEL_LIBRARY_REFERENCE);
 		createEAttribute(genDomainModelLibraryReferenceEClass, GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__RESOURCE_NAME);
-		createEReference(genDomainModelLibraryReferenceEClass,
-				GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION);
 
 		genDomainModelLibraryEClass = createEClass(GEN_DOMAIN_MODEL_LIBRARY);
 		createEReference(genDomainModelLibraryEClass, GEN_DOMAIN_MODEL_LIBRARY__DOMAIN_MODEL_LIBRARY);
@@ -2530,6 +2557,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		genAllDomainCassifiersModeEEnum = createEEnum(GEN_ALL_DOMAIN_CASSIFIERS_MODE);
 		genDomainConceptCategoryEEnum = createEEnum(GEN_DOMAIN_CONCEPT_CATEGORY);
 		genDomainAttributePresentationKindEEnum = createEEnum(GEN_DOMAIN_ATTRIBUTE_PRESENTATION_KIND);
+		genDomainPresentationModelKindEEnum = createEEnum(GEN_DOMAIN_PRESENTATION_MODEL_KIND);
 	}
 
 	/**
@@ -2557,6 +2585,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		TypesPackage theTypesPackage = (TypesPackage) EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 		UMLPackage theUMLPackage = (UMLPackage) EPackage.Registry.INSTANCE.getEPackage(UMLPackage.eNS_URI);
 
 		// Create type parameters
@@ -2568,6 +2597,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		genDomainNamedElementEClass.getESuperTypes().add(this.getGenDomainObject());
 		genModelEClass.getESuperTypes().add(this.getGenDomainObject());
 		genDomainModelEClass.getESuperTypes().add(this.getGenDomainPackage());
+		genDomainModelEClass.getESuperTypes().add(this.getGenDomainObject());
 		genDomainPackageEClass.getESuperTypes().add(this.getGenDomainPackageableElement());
 		genDomainPackageableElementEClass.getESuperTypes().add(this.getGenDomainNamedElement());
 		genPaletteEClass.getESuperTypes().add(this.getGenPaletteItem());
@@ -2616,40 +2646,41 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		// Initialize classes and features; add operations and parameters
 		initEClass(genDomainClassifierEClass, GenDomainClassifier.class, "GenDomainClassifier", IS_ABSTRACT, //$NON-NLS-1$
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGenDomainClassifier_Block(), this.getGenDomainBlock(), this.getGenDomainBlock_Classifier(),
-				"block", null, 1, 1, GenDomainClassifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-				!IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenDomainClassifier_Block(), this.getGenDomainBlock(), null, "block", null, 1, 1, //$NON-NLS-1$
+				GenDomainClassifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genDomainNamedElementEClass, GenDomainNamedElement.class, "GenDomainNamedElement", IS_ABSTRACT, //$NON-NLS-1$
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGenDomainNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, //$NON-NLS-1$
+		initEAttribute(getGenDomainNamedElement_Name(), theTypesPackage.getString(), "name", null, 1, 1, //$NON-NLS-1$
 				GenDomainNamedElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainNamedElement_DomainElement(), theUMLPackage.getNamedElement(), null, "domainElement", //$NON-NLS-1$
 				null, 0, 1, GenDomainNamedElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
 
-		addEOperation(genDomainNamedElementEClass, ecorePackage.getEString(), "getName", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
+		addEOperation(genDomainNamedElementEClass, theTypesPackage.getString(), "getName", 1, 1, IS_UNIQUE, //$NON-NLS-1$
+				!IS_ORDERED);
 
 		initEClass(genDomainObjectEClass, GenDomainObject.class, "GenDomainObject", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGenDomainObject_GenModel(), this.getGenModel(), null, "genModel", null, 0, 1, //$NON-NLS-1$
 				GenDomainObject.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
-		initEReference(getGenDomainObject_Owner(), this.getGenDomainObject(), this.getGenDomainObject_OwnedObject(),
-				"owner", null, 0, 1, GenDomainObject.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, //$NON-NLS-1$
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
-		initEReference(getGenDomainObject_OwnedObject(), this.getGenDomainObject(), this.getGenDomainObject_Owner(),
-				"ownedObject", null, 0, -1, GenDomainObject.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, //$NON-NLS-1$
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenDomainObject_Owner(), this.getGenDomainObject(), null, "owner", null, 0, 1, //$NON-NLS-1$
+				GenDomainObject.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenDomainObject_OwnedObject(), this.getGenDomainObject(), null, "ownedObject", null, 0, -1, //$NON-NLS-1$
+				GenDomainObject.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
 
 		addEOperation(genDomainObjectEClass, this.getGenModel(), "getGenModel", 0, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(genModelEClass, GenModel.class, "GenModel", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGenModel_OwnedModel(), this.getGenDomainModel(), this.getGenDomainModel_OwningGenModel(),
-				"ownedModel", null, 0, -1, GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, //$NON-NLS-1$
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenModel_OwnedModel(), this.getGenDomainModel(), null, "ownedModel", null, 0, -1, //$NON-NLS-1$
+				GenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenModel_DomainModel(), this.getGenDomainModel(), null, "domainModel", null, 0, -1, //$NON-NLS-1$
 				GenModel.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
@@ -2662,26 +2693,29 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		addEParameter(op, theUMLPackage.getModel(), "model", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 
 		op = addEOperation(genModelEClass, theUMLPackage.getModel(), "getDomainModels", 0, -1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "uris", 0, -1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theTypesPackage.getString(), "uris", 0, -1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(genDomainModelEClass, GenDomainModel.class, "GenDomainModel", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGenDomainModel_DomainModel(), theUMLPackage.getModel(), null, "domainModel", null, 1, 1, //$NON-NLS-1$
 				GenDomainModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGenDomainModel_NsURI(), ecorePackage.getEString(), "nsURI", null, 1, 1, GenDomainModel.class, //$NON-NLS-1$
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				!IS_ORDERED);
-		initEAttribute(getGenDomainModel_RootPackage(), ecorePackage.getEString(), "rootPackage", null, 1, 1, //$NON-NLS-1$
+		initEAttribute(getGenDomainModel_NsURI(), theTypesPackage.getString(), "nsURI", null, 1, 1, //$NON-NLS-1$
 				GenDomainModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainModel_ImplementationSubPackage(), ecorePackage.getEString(),
+		initEReference(getGenDomainModel_OwningGenModel(), this.getGenModel(), null, "owningGenModel", null, 1, 1, //$NON-NLS-1$
+				GenDomainModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getGenDomainModel_RootPackage(), theTypesPackage.getString(), "rootPackage", null, 1, 1, //$NON-NLS-1$
+				GenDomainModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getGenDomainModel_ImplementationSubPackage(), theTypesPackage.getString(),
 				"implementationSubPackage", null, 1, 1, GenDomainModel.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainModel_ImplSuffix(), ecorePackage.getEString(), "implSuffix", null, 1, 1, //$NON-NLS-1$
+		initEAttribute(getGenDomainModel_ImplSuffix(), theTypesPackage.getString(), "implSuffix", null, 1, 1, //$NON-NLS-1$
 				GenDomainModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainModel_ApiProject(), ecorePackage.getEString(), "apiProject", null, 1, 1, //$NON-NLS-1$
+		initEAttribute(getGenDomainModel_ApiProject(), theTypesPackage.getString(), "apiProject", null, 1, 1, //$NON-NLS-1$
 				GenDomainModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainModel_Palette(), this.getGenPalette(), null, "palette", null, 0, 1, //$NON-NLS-1$
@@ -2690,66 +2724,60 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		initEReference(getGenDomainModel_MenuModel(), this.getGenMenuModel(), null, "menuModel", null, 1, 1, //$NON-NLS-1$
 				GenDomainModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getGenDomainModel_OwningGenModel(), this.getGenModel(), this.getGenModel_OwnedModel(),
-				"owningGenModel", null, 1, 1, GenDomainModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-				!IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		op = addEOperation(genDomainModelEClass, this.getGenDomainBlock(), "getDomainBlock", 1, 1, IS_UNIQUE, //$NON-NLS-1$
 				!IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "qualifiedName", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
+		addEParameter(op, theTypesPackage.getString(), "qualifiedName", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(genDomainPackageEClass, GenDomainPackage.class, "GenDomainPackage", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGenDomainPackage_Element(), this.getGenDomainPackageableElement(),
-				this.getGenDomainPackageableElement_Package(), "element", null, 0, -1, GenDomainPackage.class, //$NON-NLS-1$
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGenDomainPackage_Element(), this.getGenDomainPackageableElement(), null, "element", null, 0, //$NON-NLS-1$
+				-1, GenDomainPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGenDomainPackage_DomainPackage(), theUMLPackage.getPackage(), null, "domainPackage", null, 1, //$NON-NLS-1$
 				1, GenDomainPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genDomainPackageableElementEClass, GenDomainPackageableElement.class, "GenDomainPackageableElement", //$NON-NLS-1$
 				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGenDomainPackageableElement_Package(), this.getGenDomainPackage(),
-				this.getGenDomainPackage_Element(), "package", null, 0, 1, GenDomainPackageableElement.class, //$NON-NLS-1$
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenDomainPackageableElement_Package(), this.getGenDomainPackage(), null, "package", null, 0, //$NON-NLS-1$
+				1, GenDomainPackageableElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genPaletteEClass, GenPalette.class, "GenPalette", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGenPalette_OwnedDrawer(), this.getGenPaletteDrawer(), this.getGenPaletteDrawer_Palette(),
-				"ownedDrawer", null, 0, -1, GenPalette.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, //$NON-NLS-1$
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenPalette_OwnedDrawer(), this.getGenPaletteDrawer(), null, "ownedDrawer", null, 0, -1, //$NON-NLS-1$
+				GenPalette.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenPalette_Drawer(), this.getGenPaletteDrawer(), null, "drawer", null, 0, -1, //$NON-NLS-1$
 				GenPalette.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(genPaletteItemEClass, GenPaletteItem.class, "GenPaletteItem", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGenPaletteItem_Name(), ecorePackage.getEString(), "name", null, 1, 1, GenPaletteItem.class, //$NON-NLS-1$
+		initEAttribute(getGenPaletteItem_Name(), theTypesPackage.getString(), "name", null, 1, 1, GenPaletteItem.class, //$NON-NLS-1$
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				!IS_ORDERED);
-		initEAttribute(getGenPaletteItem_Description(), ecorePackage.getEString(), "description", null, 0, 1, //$NON-NLS-1$
+		initEAttribute(getGenPaletteItem_Description(), theTypesPackage.getString(), "description", null, 0, 1, //$NON-NLS-1$
 				GenPaletteItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genPaletteDrawerEClass, GenPaletteDrawer.class, "GenPaletteDrawer", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGenPaletteDrawer_Palette(), this.getGenPalette(), null, "palette", null, 1, 1, //$NON-NLS-1$
+				GenPaletteDrawer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenPaletteDrawer_Specializes(), this.getGenPaletteDrawer(), null, "specializes", null, 0, 1, //$NON-NLS-1$
 				GenPaletteDrawer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getGenPaletteDrawer_Palette(), this.getGenPalette(), this.getGenPalette_OwnedDrawer(), "palette", //$NON-NLS-1$
-				null, 1, 1, GenPaletteDrawer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		addEOperation(genPaletteDrawerEClass, this.getGenPaletteTool(), "allTools", 0, -1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(genPaletteToolContainerEClass, GenPaletteToolContainer.class, "GenPaletteToolContainer", IS_ABSTRACT, //$NON-NLS-1$
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGenPaletteToolContainer_OwnedTool(), this.getGenPaletteTool(),
-				this.getGenPaletteTool_Container(), "ownedTool", null, 0, -1, GenPaletteToolContainer.class, //$NON-NLS-1$
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenPaletteToolContainer_OwnedTool(), this.getGenPaletteTool(), null, "ownedTool", null, 0, -1, //$NON-NLS-1$
+				GenPaletteToolContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenPaletteToolContainer_Tool(), this.getGenPaletteTool(), null, "tool", null, 0, -1, //$NON-NLS-1$
 				GenPaletteToolContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2759,13 +2787,12 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 
 		initEClass(genPaletteToolEClass, GenPaletteTool.class, "GenPaletteTool", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGenPaletteTool_Container(), this.getGenPaletteToolContainer(), null, "container", null, 1, 1, //$NON-NLS-1$
+				GenPaletteTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenPaletteTool_Overrides(), this.getGenPaletteTool(), null, "overrides", null, 0, 1, //$NON-NLS-1$
 				GenPaletteTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getGenPaletteTool_Container(), this.getGenPaletteToolContainer(),
-				this.getGenPaletteToolContainer_OwnedTool(), "container", null, 1, 1, GenPaletteTool.class, //$NON-NLS-1$
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genMenuModelEClass, GenMenuModel.class, "GenMenuModel", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
@@ -2778,10 +2805,10 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 
 		initEClass(genMenuItemEClass, GenMenuItem.class, "GenMenuItem", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGenMenuItem_Description(), ecorePackage.getEString(), "description", null, 0, 1, //$NON-NLS-1$
+		initEAttribute(getGenMenuItem_Description(), theTypesPackage.getString(), "description", null, 0, 1, //$NON-NLS-1$
 				GenMenuItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenMenuItem_Name(), ecorePackage.getEString(), "name", null, 1, 1, GenMenuItem.class, //$NON-NLS-1$
+		initEAttribute(getGenMenuItem_Name(), theTypesPackage.getString(), "name", null, 1, 1, GenMenuItem.class, //$NON-NLS-1$
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				!IS_ORDERED);
 		initEReference(getGenMenuItem_Overrides(), this.getGenMenuItem(), null, "overrides", null, 0, 1, //$NON-NLS-1$
@@ -2812,14 +2839,12 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 
 		initEClass(genDomainBlockEClass, GenDomainBlock.class, "GenDomainBlock", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGenDomainBlock_Classifier(), this.getGenDomainClassifier(),
-				this.getGenDomainClassifier_Block(), "classifier", null, 0, -1, GenDomainBlock.class, !IS_TRANSIENT, //$NON-NLS-1$
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				!IS_ORDERED);
-		initEReference(getGenDomainBlock_Relation(), this.getGenDomainBlockRelation(),
-				this.getGenDomainBlockRelation_Source(), "relation", null, 0, -1, GenDomainBlock.class, !IS_TRANSIENT, //$NON-NLS-1$
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				!IS_ORDERED);
+		initEReference(getGenDomainBlock_Classifier(), this.getGenDomainClassifier(), null, "classifier", null, 0, -1, //$NON-NLS-1$
+				GenDomainBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenDomainBlock_Relation(), this.getGenDomainBlockRelation(), null, "relation", null, 0, -1, //$NON-NLS-1$
+				GenDomainBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainBlock_DomainBlock(), theUMLPackage.getPackage(), null, "domainBlock", null, 1, 1, //$NON-NLS-1$
 				GenDomainBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
@@ -2829,13 +2854,13 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		initEReference(getGenDomainBlock_Merge(), this.getGenDomainBlockMerge(), null, "merge", null, 0, -1, //$NON-NLS-1$
 				GenDomainBlock.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainBlock_RsmStereotypesSuppressed(), ecorePackage.getEBoolean(),
+		initEAttribute(getGenDomainBlock_RsmStereotypesSuppressed(), theTypesPackage.getBoolean(),
 				"rsmStereotypesSuppressed", "true", 1, 1, GenDomainBlock.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainBlock_RsmStereotypesUIReadOnly(), ecorePackage.getEBoolean(),
+		initEAttribute(getGenDomainBlock_RsmStereotypesUIReadOnly(), theTypesPackage.getBoolean(),
 				"rsmStereotypesUIReadOnly", "false", 1, 1, GenDomainBlock.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainBlock_RsmStereotypesPropertiesUIReadOnly(), ecorePackage.getEBoolean(),
+		initEAttribute(getGenDomainBlock_RsmStereotypesPropertiesUIReadOnly(), theTypesPackage.getBoolean(),
 				"rsmStereotypesPropertiesUIReadOnly", "false", 1, 1, GenDomainBlock.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
@@ -2845,15 +2870,15 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 
 		initEClass(genDomainBlockRelationEClass, GenDomainBlockRelation.class, "GenDomainBlockRelation", IS_ABSTRACT, //$NON-NLS-1$
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGenDomainBlockRelation_Source(), this.getGenDomainBlock(), null, "source", null, 1, 1, //$NON-NLS-1$
+				GenDomainBlockRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainBlockRelation_Target(), this.getGenDomainBlock(), null, "target", null, 1, 1, //$NON-NLS-1$
 				GenDomainBlockRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainBlockRelation_DomainBlockRelation(), theUMLPackage.getDirectedRelationship(), null,
 				"domainBlockRelation", null, 1, 1, GenDomainBlockRelation.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getGenDomainBlockRelation_Source(), this.getGenDomainBlock(), this.getGenDomainBlock_Relation(),
-				"source", null, 1, 1, GenDomainBlockRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-				!IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genDomainBlockImportEClass, GenDomainBlockImport.class, "GenDomainBlockImport", !IS_ABSTRACT, //$NON-NLS-1$
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2863,10 +2888,9 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 
 		initEClass(genDomainGeneralizationEClass, GenDomainGeneralization.class, "GenDomainGeneralization", //$NON-NLS-1$
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGenDomainGeneralization_Specific(), this.getGenDomainConcept(),
-				this.getGenDomainConcept_Generalization(), "specific", null, 1, 1, GenDomainGeneralization.class, //$NON-NLS-1$
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenDomainGeneralization_Specific(), this.getGenDomainConcept(), null, "specific", null, 1, 1, //$NON-NLS-1$
+				GenDomainGeneralization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainGeneralization_General(), this.getGenDomainConcept(), null, "general", null, 1, 1, //$NON-NLS-1$
 				GenDomainGeneralization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
@@ -2879,10 +2903,12 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		initEAttribute(getGenDomainConcept_Category(), this.getGenDomainConceptCategory(), "category", null, 1, 1, //$NON-NLS-1$
 				GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, !IS_ORDERED);
-		initEReference(getGenDomainConcept_Feature(), this.getGenDomainStructuralFeature(),
-				this.getGenDomainStructuralFeature_Concept(), "feature", null, 0, -1, GenDomainConcept.class, //$NON-NLS-1$
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenDomainConcept_Feature(), this.getGenDomainStructuralFeature(), null, "feature", null, 0, //$NON-NLS-1$
+				-1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenDomainConcept_Generalization(), this.getGenDomainGeneralization(), null, "generalization", //$NON-NLS-1$
+				null, 0, -1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainConcept_DomainConcept(), theUMLPackage.getClass_(), null, "domainConcept", null, 1, //$NON-NLS-1$
 				1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
@@ -2898,46 +2924,42 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		initEReference(getGenDomainConcept_Attribute(), this.getGenDomainAttribute(), null, "attribute", null, 0, -1, //$NON-NLS-1$
 				GenDomainConcept.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainConcept_IconUri(), ecorePackage.getEString(), "iconUri", null, 1, 1, //$NON-NLS-1$
-				GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEAttribute(getGenDomainConcept_IsRSMSuppressed(), theTypesPackage.getBoolean(), "isRSMSuppressed", null, 0, //$NON-NLS-1$
+				1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainConcept_IsRSMSuppressed(), ecorePackage.getEBoolean(), "isRSMSuppressed", null, 0, 1, //$NON-NLS-1$
-				GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEAttribute(getGenDomainConcept_IsRSMUIReadOnly(), theTypesPackage.getBoolean(), "isRSMUIReadOnly", null, 0, //$NON-NLS-1$
+				1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainConcept_IsRSMUIReadOnly(), ecorePackage.getEBoolean(), "isRSMUIReadOnly", null, 0, 1, //$NON-NLS-1$
-				GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainConcept_IsRSMPropertiesUIReadOnly(), ecorePackage.getEBoolean(),
+		initEAttribute(getGenDomainConcept_IsRSMPropertiesUIReadOnly(), theTypesPackage.getBoolean(),
 				"isRSMPropertiesUIReadOnly", null, 0, 1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 				IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainConcept_IsRhapsodySuppressed(), ecorePackage.getEBoolean(), "isRhapsodySuppressed", //$NON-NLS-1$
+		initEAttribute(getGenDomainConcept_IsRhapsodySuppressed(), theTypesPackage.getBoolean(), "isRhapsodySuppressed", //$NON-NLS-1$
 				"false", 1, 1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, //$NON-NLS-1$
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainConcept_RhapsodyMetaclass(), ecorePackage.getEString(), "rhapsodyMetaclass", null, 1, //$NON-NLS-1$
-				1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+		initEAttribute(getGenDomainConcept_RhapsodyMetaclass(), theTypesPackage.getString(), "rhapsodyMetaclass", null, //$NON-NLS-1$
+				1, 1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainConcept_RhapsodyStereotypeName(), ecorePackage.getEString(),
+		initEAttribute(getGenDomainConcept_RhapsodyStereotypeName(), theTypesPackage.getString(),
 				"rhapsodyStereotypeName", null, 1, 1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainConcept_RhapsodyAddNew(), ecorePackage.getEString(), "rhapsodyAddNew", null, 0, -1, //$NON-NLS-1$
+		initEAttribute(getGenDomainConcept_RhapsodyAddNew(), theTypesPackage.getString(), "rhapsodyAddNew", null, 0, -1, //$NON-NLS-1$
 				GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainConcept_RhapsodyAddNewConcept(), this.getGenDomainConcept(), null,
 				"rhapsodyAddNewConcept", null, 0, -1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainConcept_RhapsodyDisplayName(), ecorePackage.getEString(), "rhapsodyDisplayName", //$NON-NLS-1$
+		initEAttribute(getGenDomainConcept_RhapsodyDisplayName(), theTypesPackage.getString(), "rhapsodyDisplayName", //$NON-NLS-1$
 				null, 1, 1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainConcept_RhapsodyToAddNew(), this.getGenDomainConcept(), null, "rhapsodyToAddNew", //$NON-NLS-1$
 				null, 0, -1, GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getGenDomainConcept_IconUri(), theTypesPackage.getString(), "iconUri", null, 1, 1, //$NON-NLS-1$
+				GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainConcept_Override(), this.getGenAttributeOverride(), null, "override", null, 0, -1, //$NON-NLS-1$
 				GenDomainConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getGenDomainConcept_Generalization(), this.getGenDomainGeneralization(),
-				this.getGenDomainGeneralization_Specific(), "generalization", null, 0, -1, GenDomainConcept.class, //$NON-NLS-1$
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		addEOperation(genDomainConceptEClass, this.getGenDomainConcept(), "allGenerals", 0, -1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 
@@ -2954,35 +2976,37 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		initEReference(getGenDomainStructuralFeature_UmlMetaattribute(), theUMLPackage.getProperty(), null,
 				"umlMetaattribute", null, 0, 1, GenDomainStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGenDomainStructuralFeature_Concept(), this.getGenDomainConcept(), null, "concept", null, 1, 1, //$NON-NLS-1$
+				GenDomainStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainStructuralFeature_DomainAttribute(), theUMLPackage.getProperty(), null,
 				"domainAttribute", null, 1, 1, GenDomainStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainStructuralFeature_IsRhapsodySuppressed(), ecorePackage.getEBoolean(),
+		initEAttribute(getGenDomainStructuralFeature_IsRhapsodySuppressed(), theTypesPackage.getBoolean(),
 				"isRhapsodySuppressed", "false", 1, 1, GenDomainStructuralFeature.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getGenDomainStructuralFeature_Concept(), this.getGenDomainConcept(),
-				this.getGenDomainConcept_Feature(), "concept", null, 1, 1, GenDomainStructuralFeature.class, //$NON-NLS-1$
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genDomainAttributePresentationEClass, GenDomainAttributePresentation.class,
 				"GenDomainAttributePresentation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getGenDomainAttributePresentation_Visible(), ecorePackage.getEBoolean(), "visible", "true", 1, 1, //$NON-NLS-1$//$NON-NLS-2$
-				GenDomainAttributePresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-				!IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainAttributePresentation_ReadOnly(), ecorePackage.getEBoolean(), "readOnly", "false", 1, //$NON-NLS-1$//$NON-NLS-2$
+		initEAttribute(getGenDomainAttributePresentation_Visible(), theTypesPackage.getBoolean(), "visible", "true", 1, //$NON-NLS-1$//$NON-NLS-2$
 				1, GenDomainAttributePresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainAttributePresentation_PresentationHint(), ecorePackage.getEString(),
+		initEAttribute(getGenDomainAttributePresentation_ReadOnly(), theTypesPackage.getBoolean(), "readOnly", "false", //$NON-NLS-1$//$NON-NLS-2$
+				1, 1, GenDomainAttributePresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getGenDomainAttributePresentation_PresentationHint(), theTypesPackage.getString(),
 				"presentationHint", null, 1, 1, GenDomainAttributePresentation.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEAttribute(getGenDomainAttributePresentation_PresentationKind(),
 				this.getGenDomainAttributePresentationKind(), "presentationKind", "other", 1, 1, //$NON-NLS-1$//$NON-NLS-2$
 				GenDomainAttributePresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainAttributePresentation_Order(), ecorePackage.getEInt(), "order", "8000", 0, 1, //$NON-NLS-1$//$NON-NLS-2$
+		initEAttribute(getGenDomainAttributePresentation_Order(), theTypesPackage.getInteger(), "order", "8000", 0, 1, //$NON-NLS-1$//$NON-NLS-2$
 				GenDomainAttributePresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getGenDomainAttributePresentation_VisibleModelType(), this.getGenDomainPresentationModelKind(),
+				"visibleModelType", "ALL", 1, 1, GenDomainAttributePresentation.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genDomainReferenceEClass, GenDomainReference.class, "GenDomainReference", !IS_ABSTRACT, //$NON-NLS-1$
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3010,7 +3034,7 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 
 		initEClass(genAttributeOverrideEClass, GenAttributeOverride.class, "GenAttributeOverride", !IS_ABSTRACT, //$NON-NLS-1$
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGenAttributeOverride_Name(), ecorePackage.getEString(), "name", null, 1, 1, //$NON-NLS-1$
+		initEAttribute(getGenAttributeOverride_Name(), theTypesPackage.getString(), "name", null, 1, 1, //$NON-NLS-1$
 				GenAttributeOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
@@ -3022,49 +3046,53 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		initEReference(getGenDomainBlockReference_DomainBlockReference(), theUMLPackage.getDependency(), null,
 				"domainBlockReference", null, 1, 1, GenDomainBlockReference.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGenDomainBlockReference_DomainSpecialization(), this.getGenDomainSpecialization(),
-				this.getGenDomainSpecialization_DomainBlock(), "domainSpecialization", null, 1, 1, //$NON-NLS-1$
-				GenDomainBlockReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenDomainBlockReference_DomainSpecialization(), this.getGenDomainSpecialization(), null,
+				"domainSpecialization", null, 1, 1, GenDomainBlockReference.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genDomainSpecializationEClass, GenDomainSpecialization.class, "GenDomainSpecialization", //$NON-NLS-1$
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGenDomainSpecialization_DomainBlock(), this.getGenDomainBlockReference(), null, "domainBlock", //$NON-NLS-1$
+				null, 0, -1, GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainSpecialization_DomainSpecialization(), theUMLPackage.getClass_(), null,
 				"domainSpecialization", null, 1, 1, GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainSpecialization_DomainConcept(), this.getGenDomainConcept(), null, "domainConcept", //$NON-NLS-1$
 				null, 0, -1, GenDomainSpecialization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGenDomainSpecialization_PluginName(), ecorePackage.getEString(), "pluginName", null, 1, 1, //$NON-NLS-1$
+		initEAttribute(getGenDomainSpecialization_PluginName(), theTypesPackage.getString(), "pluginName", null, 1, 1, //$NON-NLS-1$
 				GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGenDomainSpecialization_ResourceName(), ecorePackage.getEString(), "resourceName", null, 1, 1, //$NON-NLS-1$
-				GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+		initEAttribute(getGenDomainSpecialization_ResourceName(), theTypesPackage.getString(), "resourceName", null, 1, //$NON-NLS-1$
+				1, GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGenDomainSpecialization_DomainModelLibrary(), this.getGenDomainModelLibraryReference(),
-				this.getGenDomainModelLibraryReference_DomainSpecialization(), "domainModelLibrary", null, 0, -1, //$NON-NLS-1$
-				GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainSpecialization_ModelLibraryNamesPackage(), ecorePackage.getEString(),
+		initEReference(getGenDomainSpecialization_DomainModelLibrary(), this.getGenDomainModelLibraryReference(), null,
+				"domainModelLibrary", null, 0, -1, GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getGenDomainSpecialization_ModelLibraryNamesPackage(), theTypesPackage.getString(),
 				"modelLibraryNamesPackage", null, 0, 1, GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainSpecialization_ModelLibrarySourceFolder(), ecorePackage.getEString(),
+		initEAttribute(getGenDomainSpecialization_ModelLibrarySourceFolder(), theTypesPackage.getString(),
 				"modelLibrarySourceFolder", "src", 0, 1, GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainSpecialization_MenuModelResource(), ecorePackage.getEString(), "menuModelResource", //$NON-NLS-1$
+		initEAttribute(getGenDomainSpecialization_MenuModelResource(), theTypesPackage.getString(), "menuModelResource", //$NON-NLS-1$
 				null, 0, 1, GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainSpecialization_Version(), ecorePackage.getEString(), "version", null, 1, 1, //$NON-NLS-1$
+		initEAttribute(getGenDomainSpecialization_Version(), theTypesPackage.getString(), "version", null, 1, 1, //$NON-NLS-1$
 				GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGenDomainSpecialization_CodeGenTarget(), ecorePackage.getEString(), "codeGenTarget", null, 1, //$NON-NLS-1$
-				1, GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+		initEAttribute(getGenDomainSpecialization_CodeGenTarget(), theTypesPackage.getString(), "codeGenTarget", null, //$NON-NLS-1$
+				1, 1, GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainSpecialization_RhapsodyJavaProject(), ecorePackage.getEString(),
+		initEAttribute(getGenDomainSpecialization_RhapsodyJavaProject(), theTypesPackage.getString(),
 				"rhapsodyJavaProject", null, 1, 1, GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainSpecialization_RhapsodyJDTJavaLibrary(), ecorePackage.getEString(),
+		initEAttribute(getGenDomainSpecialization_RhapsodyJDTJavaLibrary(), theTypesPackage.getString(),
 				"rhapsodyJDTJavaLibrary", "RHAPSODY_API", 1, 1, GenDomainSpecialization.class, !IS_TRANSIENT, //$NON-NLS-1$//$NON-NLS-2$
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getGenDomainSpecialization_ElementtypeConfigurationContainerUri(), theTypesPackage.getString(),
+				"elementtypeConfigurationContainerUri", null, 1, 1, GenDomainSpecialization.class, !IS_TRANSIENT, //$NON-NLS-1$
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenDomainSpecialization_ExcludedPaletteItem(), this.getGenPaletteItem(), null,
 				"excludedPaletteItem", null, 0, -1, GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, //$NON-NLS-1$
@@ -3072,22 +3100,15 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		initEReference(getGenDomainSpecialization_IncludedUMLMenus(), this.getGenUMLMenu(), null, "includedUMLMenus", //$NON-NLS-1$
 				null, 0, -1, GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getGenDomainSpecialization_DomainBlock(), this.getGenDomainBlockReference(),
-				this.getGenDomainBlockReference_DomainSpecialization(), "domainBlock", null, 0, -1, //$NON-NLS-1$
-				GenDomainSpecialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenDomainSpecialization_ElementtypeConfigurationContainerUri(), ecorePackage.getEString(),
-				"elementtypeConfigurationContainerUri", null, 1, 1, GenDomainSpecialization.class, !IS_TRANSIENT, //$NON-NLS-1$
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(genDomainSpecializationEClass, ecorePackage.getEString(), "getUniqueName", 1, 1, IS_UNIQUE, //$NON-NLS-1$
+		op = addEOperation(genDomainSpecializationEClass, theTypesPackage.getString(), "getUniqueName", 1, 1, IS_UNIQUE, //$NON-NLS-1$
 				!IS_ORDERED);
 		addEParameter(op, this.getGenDomainClassifier(), "classifier", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 
 		addEOperation(genDomainSpecializationEClass, this.getGenDomainClassifier(), "allClassifiers", 0, -1, IS_UNIQUE, //$NON-NLS-1$
 				!IS_ORDERED);
 
-		op = addEOperation(genDomainSpecializationEClass, ecorePackage.getEBoolean(), "isExcluded", 1, 1, IS_UNIQUE, //$NON-NLS-1$
+		op = addEOperation(genDomainSpecializationEClass, theTypesPackage.getBoolean(), "isExcluded", 1, 1, IS_UNIQUE, //$NON-NLS-1$
 				!IS_ORDERED);
 		addEParameter(op, this.getGenPaletteItem(), "item", 1, 1, IS_UNIQUE, !IS_ORDERED); //$NON-NLS-1$
 
@@ -3099,17 +3120,17 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		initEReference(getGenDomainModelLibraryReference_Target(), this.getGenDomainModelLibrary(), null, "target", //$NON-NLS-1$
 				null, 1, 1, GenDomainModelLibraryReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenDomainModelLibraryReference_DomainSpecialization(), this.getGenDomainSpecialization(),
+				null, "domainSpecialization", null, 1, 1, GenDomainModelLibraryReference.class, !IS_TRANSIENT, //$NON-NLS-1$
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				!IS_ORDERED);
 		initEReference(getGenDomainModelLibraryReference_DomainModelLibraryReference(), theUMLPackage.getDependency(),
 				null, "domainModelLibraryReference", null, 1, 1, GenDomainModelLibraryReference.class, !IS_TRANSIENT, //$NON-NLS-1$
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				!IS_ORDERED);
-		initEAttribute(getGenDomainModelLibraryReference_ResourceName(), ecorePackage.getEString(), "resourceName", //$NON-NLS-1$
+		initEAttribute(getGenDomainModelLibraryReference_ResourceName(), theTypesPackage.getString(), "resourceName", //$NON-NLS-1$
 				null, 1, 1, GenDomainModelLibraryReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getGenDomainModelLibraryReference_DomainSpecialization(), this.getGenDomainSpecialization(),
-				this.getGenDomainSpecialization_DomainModelLibrary(), "domainSpecialization", null, 1, 1, //$NON-NLS-1$
-				GenDomainModelLibraryReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genDomainModelLibraryEClass, GenDomainModelLibrary.class, "GenDomainModelLibrary", !IS_ABSTRACT, //$NON-NLS-1$
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3119,38 +3140,37 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 
 		initEClass(genDomainEnumEClass, GenDomainEnum.class, "GenDomainEnum", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGenDomainEnum_Literal(), this.getGenDomainEnumLiteral(),
-				this.getGenDomainEnumLiteral_Enumeration(), "literal", null, 0, -1, GenDomainEnum.class, !IS_TRANSIENT, //$NON-NLS-1$
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				!IS_ORDERED);
+		initEReference(getGenDomainEnum_Literal(), this.getGenDomainEnumLiteral(), null, "literal", null, 0, -1, //$NON-NLS-1$
+				GenDomainEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genDomainEnumLiteralEClass, GenDomainEnumLiteral.class, "GenDomainEnumLiteral", !IS_ABSTRACT, //$NON-NLS-1$
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGenDomainEnumLiteral_DomainEnumLiteral(), theUMLPackage.getEnumerationLiteral(), null,
 				"domainEnumLiteral", null, 1, 1, GenDomainEnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
 				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getGenDomainEnumLiteral_Enumeration(), this.getGenDomainEnum(), this.getGenDomainEnum_Literal(),
-				"enumeration", null, 1, 1, GenDomainEnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, //$NON-NLS-1$
-				!IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getGenDomainEnumLiteral_Enumeration(), this.getGenDomainEnum(), null, "enumeration", null, 1, 1, //$NON-NLS-1$
+				GenDomainEnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genPaletteCreationToolEClass, GenPaletteCreationTool.class, "GenPaletteCreationTool", !IS_ABSTRACT, //$NON-NLS-1$
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGenPaletteCreationTool_Type(), this.getGenPalettable(), null, "type", null, 0, 1, //$NON-NLS-1$
 				GenPaletteCreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenPaletteCreationTool_ElementTypeHint(), ecorePackage.getEString(), "elementTypeHint", null, //$NON-NLS-1$
-				0, 1, GenPaletteCreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEAttribute(getGenPaletteCreationTool_ElementTypeHint(), theTypesPackage.getString(), "elementTypeHint", //$NON-NLS-1$
+				null, 0, 1, GenPaletteCreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenPaletteCreationTool_Expression(), this.getExpression(), null, "expression", null, 0, -1, //$NON-NLS-1$
 				GenPaletteCreationTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getExpression_Name(), ecorePackage.getEString(), "name", null, 1, 1, Expression.class, //$NON-NLS-1$
+		initEAttribute(getExpression_Name(), theTypesPackage.getString(), "name", null, 1, 1, Expression.class, //$NON-NLS-1$
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				!IS_ORDERED);
-		initEAttribute(getExpression_Expression(), ecorePackage.getEString(), "expression", null, 1, 1, //$NON-NLS-1$
+		initEAttribute(getExpression_Expression(), theTypesPackage.getString(), "expression", null, 1, 1, //$NON-NLS-1$
 				Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, !IS_ORDERED);
 
@@ -3162,13 +3182,13 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 
 		initEClass(oawExpressionEClass, OawExpression.class, "OawExpression", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOawExpression_VariableName(), ecorePackage.getEString(), "variableName", "self", 1, 1, //$NON-NLS-1$//$NON-NLS-2$
+		initEAttribute(getOawExpression_VariableName(), theTypesPackage.getString(), "variableName", "self", 1, 1, //$NON-NLS-1$//$NON-NLS-2$
 				OawExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, !IS_ORDERED);
 
 		initEClass(oawXtendEClass, OawXtend.class, "OawXtend", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOawXtend_ExtensionFile(), ecorePackage.getEString(), "extensionFile", null, 1, 1, //$NON-NLS-1$
+		initEAttribute(getOawXtend_ExtensionFile(), theTypesPackage.getString(), "extensionFile", null, 1, 1, //$NON-NLS-1$
 				OawXtend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, !IS_ORDERED);
 
@@ -3177,16 +3197,16 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 
 		initEClass(genMenuDelegateActionEClass, GenMenuDelegateAction.class, "GenMenuDelegateAction", !IS_ABSTRACT, //$NON-NLS-1$
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGenMenuDelegateAction_HostBundle(), ecorePackage.getEString(), "hostBundle", null, 0, 1, //$NON-NLS-1$
+		initEAttribute(getGenMenuDelegateAction_HostBundle(), theTypesPackage.getString(), "hostBundle", null, 0, 1, //$NON-NLS-1$
 				GenMenuDelegateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEAttribute(getGenMenuDelegateAction_ClassName(), ecorePackage.getEString(), "className", null, 1, 1, //$NON-NLS-1$
+		initEAttribute(getGenMenuDelegateAction_ClassName(), theTypesPackage.getString(), "className", null, 1, 1, //$NON-NLS-1$
 				GenMenuDelegateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(genMenuCreateActionEClass, GenMenuCreateAction.class, "GenMenuCreateAction", !IS_ABSTRACT, //$NON-NLS-1$
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGenMenuCreateAction_TypeHint(), ecorePackage.getEString(), "typeHint", null, 0, 1, //$NON-NLS-1$
+		initEAttribute(getGenMenuCreateAction_TypeHint(), theTypesPackage.getString(), "typeHint", null, 0, 1, //$NON-NLS-1$
 				GenMenuCreateAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getGenMenuCreateAction_CreateConcept(), this.getGenDomainConcept(), null, "createConcept", null, //$NON-NLS-1$
@@ -3227,16 +3247,36 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		addEEnumLiteral(genDomainAttributePresentationKindEEnum, GenDomainAttributePresentationKind.MULTI_LINE_TEXT);
 		addEEnumLiteral(genDomainAttributePresentationKindEEnum, GenDomainAttributePresentationKind.OTHER);
 
+		initEEnum(genDomainPresentationModelKindEEnum, GenDomainPresentationModelKind.class,
+				"GenDomainPresentationModelKind"); //$NON-NLS-1$
+		addEEnumLiteral(genDomainPresentationModelKindEEnum, GenDomainPresentationModelKind.ALL);
+		addEEnumLiteral(genDomainPresentationModelKindEEnum, GenDomainPresentationModelKind.AXCIOMA);
+		addEEnumLiteral(genDomainPresentationModelKindEEnum, GenDomainPresentationModelKind.ATCD);
+
 		// Create resource
 		createResource(eNS_URI);
 
 		// Create annotations
+		// http://www.eclipse.org/uml2/2.0.0/UML
+		createUMLAnnotations();
 		// subsets
 		createSubsetsAnnotations();
 		// union
 		createUnionAnnotations();
 		// redefines
 		createRedefinesAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/uml2/2.0.0/UML</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createUMLAnnotations() {
+		String source = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
+		addAnnotation(this, source, new String[] { "originalName", "ZDLGen" //$NON-NLS-1$ //$NON-NLS-2$
+		});
 	}
 
 	/**
@@ -3260,11 +3300,11 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		addAnnotation(getGenDomainModel_DomainModel(), source, new String[] {},
 				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainNamedElement/domainElement") //$NON-NLS-1$
 				});
-		addAnnotation(getGenDomainModel_Palette(), source, new String[] {},
-				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/ownedObject") //$NON-NLS-1$
-				});
 		addAnnotation(getGenDomainModel_OwningGenModel(), source, new String[] {},
 				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/owner") //$NON-NLS-1$
+				});
+		addAnnotation(getGenDomainModel_Palette(), source, new String[] {},
+				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/ownedObject") //$NON-NLS-1$
 				});
 		addAnnotation(getGenDomainPackage_Element(), source, new String[] {},
 				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/ownedObject") //$NON-NLS-1$
@@ -3313,6 +3353,9 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		addAnnotation(getGenDomainConcept_Feature(), source, new String[] {},
 				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/ownedObject") //$NON-NLS-1$
 				});
+		addAnnotation(getGenDomainConcept_Generalization(), source, new String[] {},
+				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/ownedObject") //$NON-NLS-1$
+				});
 		addAnnotation(getGenDomainConcept_DomainConcept(), source, new String[] {},
 				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainNamedElement/domainElement") //$NON-NLS-1$
 				});
@@ -3322,14 +3365,11 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		addAnnotation(getGenDomainConcept_Attribute(), source, new String[] {},
 				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainConcept/feature") //$NON-NLS-1$
 				});
-		addAnnotation(getGenDomainConcept_Generalization(), source, new String[] {},
-				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/ownedObject") //$NON-NLS-1$
+		addAnnotation(getGenDomainStructuralFeature_Concept(), source, new String[] {},
+				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/owner") //$NON-NLS-1$
 				});
 		addAnnotation(getGenDomainStructuralFeature_DomainAttribute(), source, new String[] {},
 				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainNamedElement/domainElement") //$NON-NLS-1$
-				});
-		addAnnotation(getGenDomainStructuralFeature_Concept(), source, new String[] {},
-				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/owner") //$NON-NLS-1$
 				});
 		addAnnotation(getGenDomainReference_Source(), source, new String[] {},
 				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainStructuralFeature/concept") //$NON-NLS-1$
@@ -3343,13 +3383,13 @@ public class ZDLGenPackageImpl extends EPackageImpl implements ZDLGenPackage {
 		addAnnotation(getGenDomainBlockReference_DomainSpecialization(), source, new String[] {},
 				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/owner") //$NON-NLS-1$
 				});
+		addAnnotation(getGenDomainSpecialization_DomainBlock(), source, new String[] {},
+				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/ownedObject") //$NON-NLS-1$
+				});
 		addAnnotation(getGenDomainSpecialization_DomainSpecialization(), source, new String[] {},
 				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainNamedElement/domainElement") //$NON-NLS-1$
 				});
 		addAnnotation(getGenDomainSpecialization_DomainModelLibrary(), source, new String[] {},
-				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/ownedObject") //$NON-NLS-1$
-				});
-		addAnnotation(getGenDomainSpecialization_DomainBlock(), source, new String[] {},
 				new URI[] { URI.createURI(eNS_URI).appendFragment("//GenDomainObject/ownedObject") //$NON-NLS-1$
 				});
 		addAnnotation(getGenDomainModelLibraryReference_DomainSpecialization(), source, new String[] {},

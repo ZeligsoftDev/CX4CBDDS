@@ -44,6 +44,16 @@ import org.eclipse.emf.common.notify.NotificationChain;
 public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl implements GenDomainClassifier {
 
 	/**
+	 * The cached value of the '{@link #getBlock() <em>Block</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBlock()
+	 * @generated
+	 * @ordered
+	 */
+	protected GenDomainBlock block;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -80,9 +90,8 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl 
 	 */
 	@Override
 	public GenDomainObject basicGetOwner() {
-		GenDomainBlock block = getBlock();
-		if (block != null) {
-			return block;
+		if (eIsSet(ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK)) {
+			return basicGetBlock();
 		}
 		return super.basicGetOwner();
 	}
@@ -94,9 +103,16 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl 
 	 */
 	@Override
 	public GenDomainBlock getBlock() {
-		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK)
-			return null;
-		return (GenDomainBlock) eInternalContainer();
+		if (block != null && block.eIsProxy()) {
+			InternalEObject oldBlock = (InternalEObject) block;
+			block = (GenDomainBlock) eResolveProxy(oldBlock);
+			if (block != oldBlock) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK, oldBlock, block));
+			}
+		}
+		return block;
 	}
 
 	/**
@@ -104,9 +120,8 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetBlock(GenDomainBlock newBlock, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newBlock, ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK, msgs);
-		return msgs;
+	public GenDomainBlock basicGetBlock() {
+		return block;
 	}
 
 	/**
@@ -116,67 +131,11 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl 
 	 */
 	@Override
 	public void setBlock(GenDomainBlock newBlock) {
-		if (newBlock != eInternalContainer()
-				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK && newBlock != null)) {
-			if (EcoreUtil.isAncestor(this, newBlock))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newBlock != null)
-				msgs = ((InternalEObject) newBlock).eInverseAdd(this, ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER,
-						GenDomainBlock.class, msgs);
-			msgs = basicSetBlock(newBlock, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK, newBlock,
-					newBlock));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK:
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetBlock((GenDomainBlock) otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK:
-			return basicSetBlock(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-		case ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK:
-			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER,
-					GenDomainBlock.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
+		GenDomainBlock oldBlock = block;
+		block = newBlock;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK, oldBlock,
+					block));
 	}
 
 	/**
@@ -188,7 +147,9 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl 
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK:
-			return getBlock();
+			if (resolve)
+				return getBlock();
+			return basicGetBlock();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -234,7 +195,7 @@ public abstract class GenDomainClassifierImpl extends GenDomainNamedElementImpl 
 		case ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__OWNER:
 			return isSetOwner();
 		case ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK:
-			return getBlock() != null;
+			return block != null;
 		}
 		return super.eIsSet(featureID);
 	}

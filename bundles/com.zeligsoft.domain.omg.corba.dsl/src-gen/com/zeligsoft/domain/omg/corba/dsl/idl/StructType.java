@@ -13,6 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#getExtensibility <em>Extensibility</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#getMembers <em>Members</em>}</li>
@@ -24,6 +25,28 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface StructType extends Definition, TypeDecl, ConstrTypeSpec
 {
+  /**
+   * Returns the value of the '<em><b>Extensibility</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Extensibility</em>' attribute.
+   * @see #setExtensibility(String)
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getStructType_Extensibility()
+   * @model
+   * @generated
+   */
+  String getExtensibility();
+
+  /**
+   * Sets the value of the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#getExtensibility <em>Extensibility</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Extensibility</em>' attribute.
+   * @see #getExtensibility()
+   * @generated
+   */
+  void setExtensibility(String value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

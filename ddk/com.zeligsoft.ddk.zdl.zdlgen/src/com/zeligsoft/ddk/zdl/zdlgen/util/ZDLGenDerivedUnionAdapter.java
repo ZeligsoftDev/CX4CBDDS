@@ -254,11 +254,11 @@ public class ZDLGenDerivedUnionAdapter extends AdapterImpl {
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__DOMAIN_MODEL:
 			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__DOMAIN_ELEMENT);
 			break;
-		case ZDLGenPackage.GEN_DOMAIN_MODEL__PALETTE:
-			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
-			break;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL:
 			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNER);
+			break;
+		case ZDLGenPackage.GEN_DOMAIN_MODEL__PALETTE:
+			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			break;
 		}
 	}
@@ -454,6 +454,9 @@ public class ZDLGenDerivedUnionAdapter extends AdapterImpl {
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE:
 			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			break;
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
+			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
+			break;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__DOMAIN_CONCEPT:
 			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__DOMAIN_ELEMENT);
 			break;
@@ -461,9 +464,6 @@ public class ZDLGenDerivedUnionAdapter extends AdapterImpl {
 			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			break;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ATTRIBUTE:
-			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
-			break;
-		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
 			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			break;
 		}
@@ -479,11 +479,11 @@ public class ZDLGenDerivedUnionAdapter extends AdapterImpl {
 	 */
 	protected void notifyGenDomainReferenceChanged(Notification notification, EClass eClass) {
 		switch (notification.getFeatureID(GenDomainReference.class)) {
-		case ZDLGenPackage.GEN_DOMAIN_REFERENCE__DOMAIN_ATTRIBUTE:
-			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__DOMAIN_ELEMENT);
-			break;
 		case ZDLGenPackage.GEN_DOMAIN_REFERENCE__CONCEPT:
 			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNER);
+			break;
+		case ZDLGenPackage.GEN_DOMAIN_REFERENCE__DOMAIN_ATTRIBUTE:
+			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__DOMAIN_ELEMENT);
 			break;
 		case ZDLGenPackage.GEN_DOMAIN_REFERENCE__SOURCE:
 			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNER);
@@ -504,11 +504,11 @@ public class ZDLGenDerivedUnionAdapter extends AdapterImpl {
 	 */
 	protected void notifyGenDomainAttributeChanged(Notification notification, EClass eClass) {
 		switch (notification.getFeatureID(GenDomainAttribute.class)) {
-		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE__DOMAIN_ATTRIBUTE:
-			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__DOMAIN_ELEMENT);
-			break;
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE__CONCEPT:
 			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNER);
+			break;
+		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE__DOMAIN_ATTRIBUTE:
+			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__DOMAIN_ELEMENT);
 			break;
 		}
 	}
@@ -574,13 +574,13 @@ public class ZDLGenDerivedUnionAdapter extends AdapterImpl {
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__PACKAGE:
 			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNER);
 			break;
+		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK:
+			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
+			break;
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION:
 			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_NAMED_ELEMENT__DOMAIN_ELEMENT);
 			break;
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY:
-			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
-			break;
-		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK:
 			notifyChanged(notification, eClass, ZDLGenPackage.Literals.GEN_DOMAIN_OBJECT__OWNED_OBJECT);
 			break;
 		}

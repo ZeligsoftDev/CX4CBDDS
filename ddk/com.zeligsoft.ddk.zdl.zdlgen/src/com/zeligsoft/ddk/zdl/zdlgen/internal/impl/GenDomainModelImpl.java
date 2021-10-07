@@ -46,17 +46,17 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainModelOperations
  * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getDomainElement <em>Domain Element</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getOwnedObjects <em>Owned Object</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getOwnedObjects <em>Owned Object</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getDomainModel <em>Domain Model</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getNsURI <em>Ns URI</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getOwningGenModel <em>Owning Gen Model</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getRootPackage <em>Root Package</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getImplementationSubPackage <em>Implementation Sub Package</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getImplSuffix <em>Impl Suffix</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getApiProject <em>Api Project</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getPalette <em>Palette</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getMenuModel <em>Menu Model</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelImpl#getOwningGenModel <em>Owning Gen Model</em>}</li>
  * </ul>
  *
  * @generated
@@ -92,6 +92,16 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 	 * @ordered
 	 */
 	protected String nsURI = NS_URI_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getOwningGenModel() <em>Owning Gen Model</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwningGenModel()
+	 * @generated
+	 * @ordered
+	 */
+	protected GenModel owningGenModel;
 
 	/**
 	 * The default value of the '{@link #getRootPackage() <em>Root Package</em>}' attribute.
@@ -291,9 +301,8 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 	 */
 	@Override
 	public GenDomainObject basicGetOwner() {
-		GenModel owningGenModel = getOwningGenModel();
-		if (owningGenModel != null) {
-			return owningGenModel;
+		if (eIsSet(ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL)) {
+			return basicGetOwningGenModel();
 		}
 		return super.basicGetOwner();
 	}
@@ -573,9 +582,16 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 	 */
 	@Override
 	public GenModel getOwningGenModel() {
-		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL)
-			return null;
-		return (GenModel) eInternalContainer();
+		if (owningGenModel != null && owningGenModel.eIsProxy()) {
+			InternalEObject oldOwningGenModel = (InternalEObject) owningGenModel;
+			owningGenModel = (GenModel) eResolveProxy(oldOwningGenModel);
+			if (owningGenModel != oldOwningGenModel) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL, oldOwningGenModel, owningGenModel));
+			}
+		}
+		return owningGenModel;
 	}
 
 	/**
@@ -583,10 +599,8 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOwningGenModel(GenModel newOwningGenModel, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newOwningGenModel, ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL,
-				msgs);
-		return msgs;
+	public GenModel basicGetOwningGenModel() {
+		return owningGenModel;
 	}
 
 	/**
@@ -596,23 +610,11 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 	 */
 	@Override
 	public void setOwningGenModel(GenModel newOwningGenModel) {
-		if (newOwningGenModel != eInternalContainer()
-				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL
-						&& newOwningGenModel != null)) {
-			if (EcoreUtil.isAncestor(this, newOwningGenModel))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newOwningGenModel != null)
-				msgs = ((InternalEObject) newOwningGenModel).eInverseAdd(this, ZDLGenPackage.GEN_MODEL__OWNED_MODEL,
-						GenModel.class, msgs);
-			msgs = basicSetOwningGenModel(newOwningGenModel, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+		GenModel oldOwningGenModel = owningGenModel;
+		owningGenModel = newOwningGenModel;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL,
-					newOwningGenModel, newOwningGenModel));
+					oldOwningGenModel, owningGenModel));
 	}
 
 	/**
@@ -631,47 +633,14 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL:
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetOwningGenModel((GenModel) otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__PALETTE:
 			return basicSetPalette(null, msgs);
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__MENU_MODEL:
 			return basicSetMenuModel(null, msgs);
-		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL:
-			return basicSetOwningGenModel(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL:
-			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_MODEL__OWNED_MODEL, GenModel.class,
-					msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -688,6 +657,10 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 			return basicGetDomainModel();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__NS_URI:
 			return getNsURI();
+		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL:
+			if (resolve)
+				return getOwningGenModel();
+			return basicGetOwningGenModel();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__ROOT_PACKAGE:
 			return getRootPackage();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__IMPLEMENTATION_SUB_PACKAGE:
@@ -700,8 +673,6 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 			return getPalette();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__MENU_MODEL:
 			return getMenuModel();
-		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL:
-			return getOwningGenModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -719,6 +690,9 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__NS_URI:
 			setNsURI((String) newValue);
+			return;
+		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL:
+			setOwningGenModel((GenModel) newValue);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__ROOT_PACKAGE:
 			setRootPackage((String) newValue);
@@ -738,9 +712,6 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__MENU_MODEL:
 			setMenuModel((GenMenuModel) newValue);
 			return;
-		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL:
-			setOwningGenModel((GenModel) newValue);
-			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -758,6 +729,9 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__NS_URI:
 			setNsURI(NS_URI_EDEFAULT);
+			return;
+		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL:
+			setOwningGenModel((GenModel) null);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__ROOT_PACKAGE:
 			setRootPackage(ROOT_PACKAGE_EDEFAULT);
@@ -777,9 +751,6 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__MENU_MODEL:
 			setMenuModel((GenMenuModel) null);
 			return;
-		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL:
-			setOwningGenModel((GenModel) null);
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -794,16 +765,18 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__DOMAIN_ELEMENT:
 			return isSetDomainElement();
-		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNED_OBJECT:
-			return isSetOwnedObjects();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNER:
 			return isSetOwner();
+		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNED_OBJECT:
+			return isSetOwnedObjects();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__DOMAIN_PACKAGE:
 			return isSetDomainPackage();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__DOMAIN_MODEL:
 			return isSetDomainModel();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__NS_URI:
 			return NS_URI_EDEFAULT == null ? nsURI != null : !NS_URI_EDEFAULT.equals(nsURI);
+		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL:
+			return owningGenModel != null;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__ROOT_PACKAGE:
 			return ROOT_PACKAGE_EDEFAULT == null ? rootPackage != null : !ROOT_PACKAGE_EDEFAULT.equals(rootPackage);
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__IMPLEMENTATION_SUB_PACKAGE:
@@ -817,8 +790,6 @@ public class GenDomainModelImpl extends GenDomainPackageImpl implements GenDomai
 			return palette != null;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL__MENU_MODEL:
 			return menuModel != null;
-		case ZDLGenPackage.GEN_DOMAIN_MODEL__OWNING_GEN_MODEL:
-			return getOwningGenModel() != null;
 		}
 		return super.eIsSet(featureID);
 	}

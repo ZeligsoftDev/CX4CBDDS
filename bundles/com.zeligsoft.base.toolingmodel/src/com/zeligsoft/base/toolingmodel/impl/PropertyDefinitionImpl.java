@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertyDefinitionImpl#isVisible <em>Visible</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertyDefinitionImpl#getContentHint <em>Content Hint</em>}</li>
  *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertyDefinitionImpl#getSection <em>Section</em>}</li>
+ *   <li>{@link com.zeligsoft.base.toolingmodel.impl.PropertyDefinitionImpl#getVisibleModelType <em>Visible Model Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -122,6 +123,26 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements Property
 	 * @ordered
 	 */
 	protected String section = SECTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVisibleModelType() <em>Visible Model Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibleModelType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VISIBLE_MODEL_TYPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getVisibleModelType() <em>Visible Model Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibleModelType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String visibleModelType = VISIBLE_MODEL_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -235,6 +256,29 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements Property
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getVisibleModelType() {
+		return visibleModelType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVisibleModelType(String newVisibleModelType) {
+		String oldVisibleModelType = visibleModelType;
+		visibleModelType = newVisibleModelType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ToolingModelPackage.PROPERTY_DEFINITION__VISIBLE_MODEL_TYPE, oldVisibleModelType,
+					visibleModelType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -246,6 +290,8 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements Property
 			return getContentHint();
 		case ToolingModelPackage.PROPERTY_DEFINITION__SECTION:
 			return getSection();
+		case ToolingModelPackage.PROPERTY_DEFINITION__VISIBLE_MODEL_TYPE:
+			return getVisibleModelType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -269,6 +315,9 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements Property
 			return;
 		case ToolingModelPackage.PROPERTY_DEFINITION__SECTION:
 			setSection((String) newValue);
+			return;
+		case ToolingModelPackage.PROPERTY_DEFINITION__VISIBLE_MODEL_TYPE:
+			setVisibleModelType((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -294,6 +343,9 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements Property
 		case ToolingModelPackage.PROPERTY_DEFINITION__SECTION:
 			setSection(SECTION_EDEFAULT);
 			return;
+		case ToolingModelPackage.PROPERTY_DEFINITION__VISIBLE_MODEL_TYPE:
+			setVisibleModelType(VISIBLE_MODEL_TYPE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -314,6 +366,9 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements Property
 			return CONTENT_HINT_EDEFAULT == null ? contentHint != null : !CONTENT_HINT_EDEFAULT.equals(contentHint);
 		case ToolingModelPackage.PROPERTY_DEFINITION__SECTION:
 			return SECTION_EDEFAULT == null ? section != null : !SECTION_EDEFAULT.equals(section);
+		case ToolingModelPackage.PROPERTY_DEFINITION__VISIBLE_MODEL_TYPE:
+			return VISIBLE_MODEL_TYPE_EDEFAULT == null ? visibleModelType != null
+					: !VISIBLE_MODEL_TYPE_EDEFAULT.equals(visibleModelType);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -337,6 +392,8 @@ public class PropertyDefinitionImpl extends NamedElementImpl implements Property
 		result.append(contentHint);
 		result.append(", section: "); //$NON-NLS-1$
 		result.append(section);
+		result.append(", visibleModelType: "); //$NON-NLS-1$
+		result.append(visibleModelType);
 		result.append(')');
 		return result.toString();
 	}

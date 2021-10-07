@@ -38,7 +38,6 @@ public interface GenDomainEnum extends GenDomainDataType {
 	/**
 	 * Returns the value of the '<em><b>Literal</b></em>' containment reference list.
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral}.
-	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral#getEnumeration <em>Enumeration</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -53,8 +52,7 @@ public interface GenDomainEnum extends GenDomainDataType {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Literal</em>' containment reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainEnum_Literal()
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral#getEnumeration
-	 * @model opposite="enumeration" containment="true" ordered="false"
+	 * @model containment="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */

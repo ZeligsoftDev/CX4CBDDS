@@ -68,6 +68,10 @@
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXWString"/>
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//CXPrimitiveKind/CXTypecode"/>
     </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//ExtensibilityKind">
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//ExtensibilityKind/Final"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//ExtensibilityKind/Appendable"/>
+    </genEnums>
     <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false" ecoreEnum="dds4ccm.ecore#//TypeConstraint">
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TypeConstraint/typename"/>
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="dds4ccm.ecore#//TypeConstraint/interface"/>
@@ -327,6 +331,9 @@
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXString"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXStruct"/>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//Extensible">
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute dds4ccm.ecore#//Extensible/extensibility"/>
+    </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//CXSupports">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//CXSupports/base_Generalization"/>

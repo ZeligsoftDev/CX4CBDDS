@@ -490,6 +490,13 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass extensibleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass cxSupportsEClass = null;
 
 	/**
@@ -1261,6 +1268,13 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	 * @generated
 	 */
 	private EEnum cxPrimitiveKindEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum extensibilityKindEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2818,9 +2832,32 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getExtensible() {
+		if (extensibleEClass == null) {
+			extensibleEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(67);
+		}
+		return extensibleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getExtensible_Extensibility() {
+        return (EAttribute)getExtensible().getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCXSupports() {
 		if (cxSupportsEClass == null) {
-			cxSupportsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(67);
+			cxSupportsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(69);
 		}
 		return cxSupportsEClass;
 	}
@@ -2843,7 +2880,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getCXTypeDef() {
 		if (cxTypeDefEClass == null) {
-			cxTypeDefEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(68);
+			cxTypeDefEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(70);
 		}
 		return cxTypeDefEClass;
 	}
@@ -2866,7 +2903,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getCXUnion() {
 		if (cxUnionEClass == null) {
-			cxUnionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(69);
+			cxUnionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(71);
 		}
 		return cxUnionEClass;
 	}
@@ -2879,7 +2916,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getCXValue() {
 		if (cxValueEClass == null) {
-			cxValueEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(70);
+			cxValueEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(72);
 		}
 		return cxValueEClass;
 	}
@@ -2922,7 +2959,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getCXValueFactory() {
 		if (cxValueFactoryEClass == null) {
-			cxValueFactoryEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(71);
+			cxValueFactoryEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(73);
 		}
 		return cxValueFactoryEClass;
 	}
@@ -2945,7 +2982,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getCXModule() {
 		if (cxModuleEClass == null) {
-			cxModuleEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(72);
+			cxModuleEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(74);
 		}
 		return cxModuleEClass;
 	}
@@ -2968,7 +3005,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getCXAttribute() {
 		if (cxAttributeEClass == null) {
-			cxAttributeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(73);
+			cxAttributeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(75);
 		}
 		return cxAttributeEClass;
 	}
@@ -3011,7 +3048,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getCXOperation() {
 		if (cxOperationEClass == null) {
-			cxOperationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(74);
+			cxOperationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(76);
 		}
 		return cxOperationEClass;
 	}
@@ -3054,7 +3091,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getCXField() {
 		if (cxFieldEClass == null) {
-			cxFieldEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(75);
+			cxFieldEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(77);
 		}
 		return cxFieldEClass;
 	}
@@ -3097,7 +3134,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getCXParameter() {
 		if (cxParameterEClass == null) {
-			cxParameterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(76);
+			cxParameterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(78);
 		}
 		return cxParameterEClass;
 	}
@@ -3120,7 +3157,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getStateMember() {
 		if (stateMemberEClass == null) {
-			stateMemberEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(77);
+			stateMemberEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(79);
 		}
 		return stateMemberEClass;
 	}
@@ -3143,7 +3180,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getConnectorDef() {
 		if (connectorDefEClass == null) {
-			connectorDefEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(78);
+			connectorDefEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(80);
 		}
 		return connectorDefEClass;
 	}
@@ -3156,7 +3193,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getConnectorFragment() {
 		if (connectorFragmentEClass == null) {
-			connectorFragmentEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(79);
+			connectorFragmentEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(81);
 		}
 		return connectorFragmentEClass;
 	}
@@ -3169,7 +3206,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getFragmentImplementation() {
 		if (fragmentImplementationEClass == null) {
-			fragmentImplementationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(80);
+			fragmentImplementationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(82);
 		}
 		return fragmentImplementationEClass;
 	}
@@ -3182,7 +3219,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getFragmentAssembly() {
 		if (fragmentAssemblyEClass == null) {
-			fragmentAssemblyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(81);
+			fragmentAssemblyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(83);
 		}
 		return fragmentAssemblyEClass;
 	}
@@ -3195,7 +3232,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getConnectorImplementation() {
 		if (connectorImplementationEClass == null) {
-			connectorImplementationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(82);
+			connectorImplementationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(84);
 		}
 		return connectorImplementationEClass;
 	}
@@ -3208,7 +3245,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getConnectorAssembly() {
 		if (connectorAssemblyEClass == null) {
-			connectorAssemblyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(83);
+			connectorAssemblyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(85);
 		}
 		return connectorAssemblyEClass;
 	}
@@ -3221,7 +3258,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getFragmentPart() {
 		if (fragmentPartEClass == null) {
-			fragmentPartEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(84);
+			fragmentPartEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(86);
 		}
 		return fragmentPartEClass;
 	}
@@ -3234,7 +3271,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getTypedConnector() {
 		if (typedConnectorEClass == null) {
-			typedConnectorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(85);
+			typedConnectorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(87);
 		}
 		return typedConnectorEClass;
 	}
@@ -3257,7 +3294,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getTypeParameter() {
 		if (typeParameterEClass == null) {
-			typeParameterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(86);
+			typeParameterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(88);
 		}
 		return typeParameterEClass;
 	}
@@ -3290,7 +3327,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getTemplateModule() {
 		if (templateModuleEClass == null) {
-			templateModuleEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(88);
+			templateModuleEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(90);
 		}
 		return templateModuleEClass;
 	}
@@ -3313,7 +3350,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getModuleInstantiation() {
 		if (moduleInstantiationEClass == null) {
-			moduleInstantiationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(89);
+			moduleInstantiationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(91);
 		}
 		return moduleInstantiationEClass;
 	}
@@ -3336,7 +3373,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getParameterBinding() {
 		if (parameterBindingEClass == null) {
-			parameterBindingEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(90);
+			parameterBindingEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(92);
 		}
 		return parameterBindingEClass;
 	}
@@ -3359,7 +3396,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getTemplateModuleAlias() {
 		if (templateModuleAliasEClass == null) {
-			templateModuleAliasEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(91);
+			templateModuleAliasEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(93);
 		}
 		return templateModuleAliasEClass;
 	}
@@ -3372,7 +3409,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getModuleBinding() {
 		if (moduleBindingEClass == null) {
-			moduleBindingEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(92);
+			moduleBindingEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(94);
 		}
 		return moduleBindingEClass;
 	}
@@ -3395,7 +3432,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getTemplateSignature() {
 		if (templateSignatureEClass == null) {
-			templateSignatureEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(93);
+			templateSignatureEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(95);
 		}
 		return templateSignatureEClass;
 	}
@@ -3418,7 +3455,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getInterfacePort() {
 		if (interfacePortEClass == null) {
-			interfacePortEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(94);
+			interfacePortEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(96);
 		}
 		return interfacePortEClass;
 	}
@@ -3461,7 +3498,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getNative() {
 		if (nativeEClass == null) {
-			nativeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(95);
+			nativeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(97);
 		}
 		return nativeEClass;
 	}
@@ -3484,7 +3521,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getDataSpace() {
 		if (dataSpaceEClass == null) {
-			dataSpaceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(96);
+			dataSpaceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(98);
 		}
 		return dataSpaceEClass;
 	}
@@ -3507,7 +3544,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getTopic() {
 		if (topicEClass == null) {
-			topicEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(97);
+			topicEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(99);
 		}
 		return topicEClass;
 	}
@@ -3550,7 +3587,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getTopicField() {
 		if (topicFieldEClass == null) {
-			topicFieldEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(99);
+			topicFieldEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(101);
 		}
 		return topicFieldEClass;
 	}
@@ -3573,7 +3610,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getqosPolicy() {
 		if (qosPolicyEClass == null) {
-			qosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(100);
+			qosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(102);
 		}
 		return qosPolicyEClass;
 	}
@@ -3596,7 +3633,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass gethistoryQosPolicy() {
 		if (historyQosPolicyEClass == null) {
-			historyQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(101);
+			historyQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(103);
 		}
 		return historyQosPolicyEClass;
 	}
@@ -3629,7 +3666,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getlifespanQosPolicy() {
 		if (lifespanQosPolicyEClass == null) {
-			lifespanQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(103);
+			lifespanQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(105);
 		}
 		return lifespanQosPolicyEClass;
 	}
@@ -3652,7 +3689,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getDuration() {
 		if (durationEClass == null) {
-			durationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(104);
+			durationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(106);
 		}
 		return durationEClass;
 	}
@@ -3685,7 +3722,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getownershipQosPolicy() {
 		if (ownershipQosPolicyEClass == null) {
-			ownershipQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(105);
+			ownershipQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(107);
 		}
 		return ownershipQosPolicyEClass;
 	}
@@ -3708,7 +3745,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getosQosPolicy() {
 		if (osQosPolicyEClass == null) {
-			osQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(107);
+			osQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(109);
 		}
 		return osQosPolicyEClass;
 	}
@@ -3731,7 +3768,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getwdlQosPolicy() {
 		if (wdlQosPolicyEClass == null) {
-			wdlQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(108);
+			wdlQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(110);
 		}
 		return wdlQosPolicyEClass;
 	}
@@ -3754,7 +3791,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getrdlQosPolicy() {
 		if (rdlQosPolicyEClass == null) {
-			rdlQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(109);
+			rdlQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(111);
 		}
 		return rdlQosPolicyEClass;
 	}
@@ -3787,7 +3824,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getudQosPolicy() {
 		if (udQosPolicyEClass == null) {
-			udQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(110);
+			udQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(112);
 		}
 		return udQosPolicyEClass;
 	}
@@ -3810,7 +3847,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass gettdQosPolicy() {
 		if (tdQosPolicyEClass == null) {
-			tdQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(111);
+			tdQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(113);
 		}
 		return tdQosPolicyEClass;
 	}
@@ -3833,7 +3870,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass gettpQosPolicy() {
 		if (tpQosPolicyEClass == null) {
-			tpQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(112);
+			tpQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(114);
 		}
 		return tpQosPolicyEClass;
 	}
@@ -3856,7 +3893,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getdeadlineQosPolicy() {
 		if (deadlineQosPolicyEClass == null) {
-			deadlineQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(113);
+			deadlineQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(115);
 		}
 		return deadlineQosPolicyEClass;
 	}
@@ -3879,7 +3916,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getlbQosPolicy() {
 		if (lbQosPolicyEClass == null) {
-			lbQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(114);
+			lbQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(116);
 		}
 		return lbQosPolicyEClass;
 	}
@@ -3902,7 +3939,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass gettbfQosPolicy() {
 		if (tbfQosPolicyEClass == null) {
-			tbfQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(115);
+			tbfQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(117);
 		}
 		return tbfQosPolicyEClass;
 	}
@@ -3925,7 +3962,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getgdQosPolicy() {
 		if (gdQosPolicyEClass == null) {
-			gdQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(116);
+			gdQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(118);
 		}
 		return gdQosPolicyEClass;
 	}
@@ -3948,7 +3985,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getefQosPolicy() {
 		if (efQosPolicyEClass == null) {
-			efQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(117);
+			efQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(119);
 		}
 		return efQosPolicyEClass;
 	}
@@ -3971,7 +4008,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getrlQosPolicy() {
 		if (rlQosPolicyEClass == null) {
-			rlQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(118);
+			rlQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(120);
 		}
 		return rlQosPolicyEClass;
 	}
@@ -4014,7 +4051,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getpresentationQosPolicy() {
 		if (presentationQosPolicyEClass == null) {
-			presentationQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(119);
+			presentationQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(121);
 		}
 		return presentationQosPolicyEClass;
 	}
@@ -4057,7 +4094,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getpartitionQosPolicy() {
 		if (partitionQosPolicyEClass == null) {
-			partitionQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(121);
+			partitionQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(123);
 		}
 		return partitionQosPolicyEClass;
 	}
@@ -4080,7 +4117,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getreliabilityQosPolicy() {
 		if (reliabilityQosPolicyEClass == null) {
-			reliabilityQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(122);
+			reliabilityQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(124);
 		}
 		return reliabilityQosPolicyEClass;
 	}
@@ -4113,7 +4150,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getdsQosPolicy() {
 		if (dsQosPolicyEClass == null) {
-			dsQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(124);
+			dsQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(126);
 		}
 		return dsQosPolicyEClass;
 	}
@@ -4186,7 +4223,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getlivelinessQosPolicy() {
 		if (livelinessQosPolicyEClass == null) {
-			livelinessQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(125);
+			livelinessQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(127);
 		}
 		return livelinessQosPolicyEClass;
 	}
@@ -4219,7 +4256,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getdurabilityQosPolicy() {
 		if (durabilityQosPolicyEClass == null) {
-			durabilityQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(127);
+			durabilityQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(129);
 		}
 		return durabilityQosPolicyEClass;
 	}
@@ -4242,7 +4279,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getdoQosPolicy() {
 		if (doQosPolicyEClass == null) {
-			doQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(129);
+			doQosPolicyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(131);
 		}
 		return doQosPolicyEClass;
 	}
@@ -4265,7 +4302,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getqosProperty() {
 		if (qosPropertyEClass == null) {
-			qosPropertyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(131);
+			qosPropertyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(133);
 		}
 		return qosPropertyEClass;
 	}
@@ -4288,7 +4325,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getDDSMessage() {
 		if (ddsMessageEClass == null) {
-			ddsMessageEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(132);
+			ddsMessageEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(134);
 		}
 		return ddsMessageEClass;
 	}
@@ -4301,7 +4338,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getMessageField() {
 		if (messageFieldEClass == null) {
-			messageFieldEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(133);
+			messageFieldEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(135);
 		}
 		return messageFieldEClass;
 	}
@@ -4324,7 +4361,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getQoSProfile() {
 		if (qoSProfileEClass == null) {
-			qoSProfileEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(134);
+			qoSProfileEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(136);
 		}
 		return qoSProfileEClass;
 	}
@@ -4357,7 +4394,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getQoSForEntity() {
 		if (qoSForEntityEClass == null) {
-			qoSForEntityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(135);
+			qoSForEntityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(137);
 		}
 		return qoSForEntityEClass;
 	}
@@ -4380,7 +4417,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getQoSEntity() {
 		if (qoSEntityEClass == null) {
-			qoSEntityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(136);
+			qoSEntityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(138);
 		}
 		return qoSEntityEClass;
 	}
@@ -4403,7 +4440,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getDataReaderQoS() {
 		if (dataReaderQoSEClass == null) {
-			dataReaderQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(137);
+			dataReaderQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(139);
 		}
 		return dataReaderQoSEClass;
 	}
@@ -4416,7 +4453,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getDataReaderWriterQoS() {
 		if (dataReaderWriterQoSEClass == null) {
-			dataReaderWriterQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(138);
+			dataReaderWriterQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(140);
 		}
 		return dataReaderWriterQoSEClass;
 	}
@@ -4429,7 +4466,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getParticipantQoS() {
 		if (participantQoSEClass == null) {
-			participantQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(139);
+			participantQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(141);
 		}
 		return participantQoSEClass;
 	}
@@ -4442,7 +4479,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getPublisherQoS() {
 		if (publisherQoSEClass == null) {
-			publisherQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(140);
+			publisherQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(142);
 		}
 		return publisherQoSEClass;
 	}
@@ -4455,7 +4492,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getPublisherSubscriberQoS() {
 		if (publisherSubscriberQoSEClass == null) {
-			publisherSubscriberQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(141);
+			publisherSubscriberQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(143);
 		}
 		return publisherSubscriberQoSEClass;
 	}
@@ -4468,7 +4505,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getSubscriberQoS() {
 		if (subscriberQoSEClass == null) {
-			subscriberQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(142);
+			subscriberQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(144);
 		}
 		return subscriberQoSEClass;
 	}
@@ -4481,7 +4518,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getTopicQoS() {
 		if (topicQoSEClass == null) {
-			topicQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(143);
+			topicQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(145);
 		}
 		return topicQoSEClass;
 	}
@@ -4494,7 +4531,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getDataWriterQoS() {
 		if (dataWriterQoSEClass == null) {
-			dataWriterQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(144);
+			dataWriterQoSEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(146);
 		}
 		return dataWriterQoSEClass;
 	}
@@ -4507,7 +4544,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getDomain() {
 		if (domainEClass == null) {
-			domainEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(145);
+			domainEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(147);
 		}
 		return domainEClass;
 	}
@@ -4550,7 +4587,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getNode() {
 		if (nodeEClass == null) {
-			nodeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(146);
+			nodeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(148);
 		}
 		return nodeEClass;
 	}
@@ -4573,7 +4610,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getNodeInstance() {
 		if (nodeInstanceEClass == null) {
-			nodeInstanceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(147);
+			nodeInstanceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(149);
 		}
 		return nodeInstanceEClass;
 	}
@@ -4606,7 +4643,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getInterconnect() {
 		if (interconnectEClass == null) {
-			interconnectEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(148);
+			interconnectEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(150);
 		}
 		return interconnectEClass;
 	}
@@ -4629,7 +4666,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getInterconnectInstance() {
 		if (interconnectInstanceEClass == null) {
-			interconnectInstanceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(149);
+			interconnectInstanceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(151);
 		}
 		return interconnectInstanceEClass;
 	}
@@ -4662,7 +4699,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getBridge() {
 		if (bridgeEClass == null) {
-			bridgeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(150);
+			bridgeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(152);
 		}
 		return bridgeEClass;
 	}
@@ -4685,7 +4722,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getBridgeInstance() {
 		if (bridgeInstanceEClass == null) {
-			bridgeInstanceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(151);
+			bridgeInstanceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(153);
 		}
 		return bridgeInstanceEClass;
 	}
@@ -4718,7 +4755,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getResource() {
 		if (resourceEClass == null) {
-			resourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(152);
+			resourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(154);
 		}
 		return resourceEClass;
 	}
@@ -4731,7 +4768,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getRequirementSatisfier() {
 		if (requirementSatisfierEClass == null) {
-			requirementSatisfierEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(153);
+			requirementSatisfierEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(155);
 		}
 		return requirementSatisfierEClass;
 	}
@@ -4764,7 +4801,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getResourceProperty() {
 		if (resourcePropertyEClass == null) {
-			resourcePropertyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(154);
+			resourcePropertyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(156);
 		}
 		return resourcePropertyEClass;
 	}
@@ -4787,7 +4824,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getSharedResource() {
 		if (sharedResourceEClass == null) {
-			sharedResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(155);
+			sharedResourceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(157);
 		}
 		return sharedResourceEClass;
 	}
@@ -4800,7 +4837,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getSatisfierProperty() {
 		if (satisfierPropertyEClass == null) {
-			satisfierPropertyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(156);
+			satisfierPropertyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(158);
 		}
 		return satisfierPropertyEClass;
 	}
@@ -4853,7 +4890,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getRequirement() {
 		if (requirementEClass == null) {
-			requirementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(158);
+			requirementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(160);
 		}
 		return requirementEClass;
 	}
@@ -4896,7 +4933,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getDeploymentPlan() {
 		if (deploymentPlanEClass == null) {
-			deploymentPlanEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(159);
+			deploymentPlanEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(161);
 		}
 		return deploymentPlanEClass;
 	}
@@ -4919,7 +4956,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getDeployment() {
 		if (deploymentEClass == null) {
-			deploymentEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(160);
+			deploymentEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(162);
 		}
 		return deploymentEClass;
 	}
@@ -4942,7 +4979,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getAllocation() {
 		if (allocationEClass == null) {
-			allocationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(161);
+			allocationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(163);
 		}
 		return allocationEClass;
 	}
@@ -4965,7 +5002,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getDeploymentPart() {
 		if (deploymentPartEClass == null) {
-			deploymentPartEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(162);
+			deploymentPartEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(164);
 		}
 		return deploymentPartEClass;
 	}
@@ -5018,7 +5055,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getConfiguration() {
 		if (configurationEClass == null) {
-			configurationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(163);
+			configurationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(165);
 		}
 		return configurationEClass;
 	}
@@ -5051,7 +5088,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getComponentDeploymentPart() {
 		if (componentDeploymentPartEClass == null) {
-			componentDeploymentPartEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(164);
+			componentDeploymentPartEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(166);
 		}
 		return componentDeploymentPartEClass;
 	}
@@ -5084,7 +5121,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getBuildConfiguration() {
 		if (buildConfigurationEClass == null) {
-			buildConfigurationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(165);
+			buildConfigurationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(167);
 		}
 		return buildConfigurationEClass;
 	}
@@ -5097,7 +5134,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getConfigurationSlot() {
 		if (configurationSlotEClass == null) {
-			configurationSlotEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(166);
+			configurationSlotEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(168);
 		}
 		return configurationSlotEClass;
 	}
@@ -5130,7 +5167,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getTargetAssemblyConnector() {
 		if (targetAssemblyConnectorEClass == null) {
-			targetAssemblyConnectorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(168);
+			targetAssemblyConnectorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(170);
 		}
 		return targetAssemblyConnectorEClass;
 	}
@@ -5143,7 +5180,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getContainerProcess() {
 		if (containerProcessEClass == null) {
-			containerProcessEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(169);
+			containerProcessEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(171);
 		}
 		return containerProcessEClass;
 	}
@@ -5166,7 +5203,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getTemplateParameterType() {
 		if (templateParameterTypeEClass == null) {
-			templateParameterTypeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(170);
+			templateParameterTypeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(172);
 		}
 		return templateParameterTypeEClass;
 	}
@@ -5209,7 +5246,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getExtendedPortType() {
 		if (extendedPortTypeEClass == null) {
-			extendedPortTypeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(171);
+			extendedPortTypeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(173);
 		}
 		return extendedPortTypeEClass;
 	}
@@ -5222,7 +5259,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getIDLFileSpecification() {
 		if (idlFileSpecificationEClass == null) {
-			idlFileSpecificationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(172);
+			idlFileSpecificationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(174);
 		}
 		return idlFileSpecificationEClass;
 	}
@@ -5245,7 +5282,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getIDLFileDependency() {
 		if (idlFileDependencyEClass == null) {
-			idlFileDependencyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(173);
+			idlFileDependencyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(175);
 		}
 		return idlFileDependencyEClass;
 	}
@@ -5268,7 +5305,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getProperty() {
 		if (propertyEClass == null) {
-			propertyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(174);
+			propertyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(176);
 		}
 		return propertyEClass;
 	}
@@ -5301,7 +5338,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getConnectorDefaultValueBinding() {
 		if (connectorDefaultValueBindingEClass == null) {
-			connectorDefaultValueBindingEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(175);
+			connectorDefaultValueBindingEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(177);
 		}
 		return connectorDefaultValueBindingEClass;
 	}
@@ -5344,7 +5381,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getIDLIncludeDependency() {
 		if (idlIncludeDependencyEClass == null) {
-			idlIncludeDependencyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(176);
+			idlIncludeDependencyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(178);
 		}
 		return idlIncludeDependencyEClass;
 	}
@@ -5367,7 +5404,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getWorkerFunctionImpl() {
 		if (workerFunctionImplEClass == null) {
-			workerFunctionImplEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(177);
+			workerFunctionImplEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(179);
 		}
 		return workerFunctionImplEClass;
 	}
@@ -5390,7 +5427,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getConnectorStatusListenerConnection() {
 		if (connectorStatusListenerConnectionEClass == null) {
-			connectorStatusListenerConnectionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(178);
+			connectorStatusListenerConnectionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(180);
 		}
 		return connectorStatusListenerConnectionEClass;
 	}
@@ -5403,7 +5440,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getFinderOperation() {
 		if (finderOperationEClass == null) {
-			finderOperationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(179);
+			finderOperationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(181);
 		}
 		return finderOperationEClass;
 	}
@@ -5416,7 +5453,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getHomeOperation() {
 		if (homeOperationEClass == null) {
-			homeOperationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(180);
+			homeOperationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(182);
 		}
 		return homeOperationEClass;
 	}
@@ -5439,7 +5476,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getFactoryOperation() {
 		if (factoryOperationEClass == null) {
-			factoryOperationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(181);
+			factoryOperationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(183);
 		}
 		return factoryOperationEClass;
 	}
@@ -5452,7 +5489,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getHomeInstance() {
 		if (homeInstanceEClass == null) {
-			homeInstanceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(182);
+			homeInstanceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(184);
 		}
 		return homeInstanceEClass;
 	}
@@ -5475,7 +5512,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getHideableElement() {
 		if (hideableElementEClass == null) {
-			hideableElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(183);
+			hideableElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(185);
 		}
 		return hideableElementEClass;
 	}
@@ -5498,7 +5535,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EClass getPerPortConnectorTypeDeploymentPart() {
 		if (perPortConnectorTypeDeploymentPartEClass == null) {
-			perPortConnectorTypeDeploymentPartEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(184);
+			perPortConnectorTypeDeploymentPartEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(186);
 		}
 		return perPortConnectorTypeDeploymentPartEClass;
 	}
@@ -5561,9 +5598,22 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	 * @generated
 	 */
 	@Override
+	public EEnum getExtensibilityKind() {
+		if (extensibilityKindEEnum == null) {
+			extensibilityKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(68);
+		}
+		return extensibilityKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getTypeConstraint() {
 		if (typeConstraintEEnum == null) {
-			typeConstraintEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(87);
+			typeConstraintEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(89);
 		}
 		return typeConstraintEEnum;
 	}
@@ -5576,7 +5626,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EEnum getTopicKind() {
 		if (topicKindEEnum == null) {
-			topicKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(98);
+			topicKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(100);
 		}
 		return topicKindEEnum;
 	}
@@ -5589,7 +5639,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EEnum getHistoryQosPolicyKind() {
 		if (historyQosPolicyKindEEnum == null) {
-			historyQosPolicyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(102);
+			historyQosPolicyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(104);
 		}
 		return historyQosPolicyKindEEnum;
 	}
@@ -5602,7 +5652,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EEnum getOwnershipQosPolicyKind() {
 		if (ownershipQosPolicyKindEEnum == null) {
-			ownershipQosPolicyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(106);
+			ownershipQosPolicyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(108);
 		}
 		return ownershipQosPolicyKindEEnum;
 	}
@@ -5615,7 +5665,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EEnum getPresentationQosPolicyAccessScopeKind() {
 		if (presentationQosPolicyAccessScopeKindEEnum == null) {
-			presentationQosPolicyAccessScopeKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(120);
+			presentationQosPolicyAccessScopeKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(122);
 		}
 		return presentationQosPolicyAccessScopeKindEEnum;
 	}
@@ -5628,7 +5678,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EEnum getRealiabilityQosPolicyKind() {
 		if (realiabilityQosPolicyKindEEnum == null) {
-			realiabilityQosPolicyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(123);
+			realiabilityQosPolicyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(125);
 		}
 		return realiabilityQosPolicyKindEEnum;
 	}
@@ -5641,7 +5691,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EEnum getLivelinessQosPolicyKind() {
 		if (livelinessQosPolicyKindEEnum == null) {
-			livelinessQosPolicyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(126);
+			livelinessQosPolicyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(128);
 		}
 		return livelinessQosPolicyKindEEnum;
 	}
@@ -5654,7 +5704,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EEnum getDurabilityQosPolicyKind() {
 		if (durabilityQosPolicyKindEEnum == null) {
-			durabilityQosPolicyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(128);
+			durabilityQosPolicyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(130);
 		}
 		return durabilityQosPolicyKindEEnum;
 	}
@@ -5667,7 +5717,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EEnum getDestinationOrderQosPolicyKind() {
 		if (destinationOrderQosPolicyKindEEnum == null) {
-			destinationOrderQosPolicyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(130);
+			destinationOrderQosPolicyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(132);
 		}
 		return destinationOrderQosPolicyKindEEnum;
 	}
@@ -5680,7 +5730,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EEnum getSatisfierPropertyKind() {
 		if (satisfierPropertyKindEEnum == null) {
-			satisfierPropertyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(157);
+			satisfierPropertyKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(159);
 		}
 		return satisfierPropertyKindEEnum;
 	}
@@ -5693,7 +5743,7 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	@Override
 	public EEnum getConfigurationSlotKind() {
 		if (configurationSlotKindEEnum == null) {
-			configurationSlotKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(167);
+			configurationSlotKindEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(169);
 		}
 		return configurationSlotKindEEnum;
 	}

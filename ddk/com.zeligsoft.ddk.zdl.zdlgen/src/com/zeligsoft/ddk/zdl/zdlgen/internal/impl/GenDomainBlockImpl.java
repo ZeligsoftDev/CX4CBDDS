@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -244,8 +245,8 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl implemen
 	@Override
 	public EList<GenDomainClassifier> getClassifiers() {
 		if (classifiers == null) {
-			classifiers = new EObjectContainmentWithInverseEList<GenDomainClassifier>(GenDomainClassifier.class, this,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER, ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK);
+			classifiers = new EObjectContainmentEList<GenDomainClassifier>(GenDomainClassifier.class, this,
+					ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER);
 		}
 		return classifiers;
 	}
@@ -286,8 +287,8 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl implemen
 	@Override
 	public EList<GenDomainBlockRelation> getRelations() {
 		if (relations == null) {
-			relations = new EObjectContainmentWithInverseEList<GenDomainBlockRelation>(GenDomainBlockRelation.class,
-					this, ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION, ZDLGenPackage.GEN_DOMAIN_BLOCK_RELATION__SOURCE);
+			relations = new EObjectContainmentEList<GenDomainBlockRelation>(GenDomainBlockRelation.class, this,
+					ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION);
 		}
 		return relations;
 	}
@@ -494,23 +495,6 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl implemen
 	@Override
 	public EList<GenDomainClassifier> allClassifiers(GenAllDomainCassifiersMode mode) {
 		return GenDomainBlockOperations.allClassifiers(this, mode);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getRelations()).basicAdd(otherEnd, msgs);
-		case ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getClassifiers()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

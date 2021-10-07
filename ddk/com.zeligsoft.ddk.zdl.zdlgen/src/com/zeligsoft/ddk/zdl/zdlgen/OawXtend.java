@@ -43,7 +43,7 @@ public interface OawXtend extends Expression {
 	 * @return the value of the '<em>Extension File</em>' attribute.
 	 * @see #setExtensionFile(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getOawXtend_ExtensionFile()
-	 * @model required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String getExtensionFile();

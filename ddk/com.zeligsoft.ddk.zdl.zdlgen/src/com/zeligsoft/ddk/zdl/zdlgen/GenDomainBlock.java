@@ -46,7 +46,6 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	/**
 	 * Returns the value of the '<em><b>Classifier</b></em>' containment reference list.
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier}.
-	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier#getBlock <em>Block</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -61,8 +60,7 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Classifier</em>' containment reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlock_Classifier()
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier#getBlock
-	 * @model opposite="block" containment="true" ordered="false"
+	 * @model containment="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
@@ -95,7 +93,6 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	/**
 	 * Returns the value of the '<em><b>Relation</b></em>' containment reference list.
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation}.
-	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getSource <em>Source</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -110,8 +107,7 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relation</em>' containment reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlock_Relation()
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getSource
-	 * @model opposite="source" containment="true" ordered="false"
+	 * @model containment="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
@@ -208,7 +204,7 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Rsm Stereotypes Suppressed</em>' attribute.
 	 * @see #setRsmStereotypesSuppressed(boolean)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlock_RsmStereotypesSuppressed()
-	 * @model default="true" required="true" ordered="false"
+	 * @model default="true" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isRsmStereotypesSuppressed();
@@ -235,7 +231,7 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Rsm Stereotypes UI Read Only</em>' attribute.
 	 * @see #setRsmStereotypesUIReadOnly(boolean)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlock_RsmStereotypesUIReadOnly()
-	 * @model default="false" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isRsmStereotypesUIReadOnly();
@@ -262,7 +258,7 @@ public interface GenDomainBlock extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Rsm Stereotypes Properties UI Read Only</em>' attribute.
 	 * @see #setRsmStereotypesPropertiesUIReadOnly(boolean)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlock_RsmStereotypesPropertiesUIReadOnly()
-	 * @model default="false" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isRsmStereotypesPropertiesUIReadOnly();

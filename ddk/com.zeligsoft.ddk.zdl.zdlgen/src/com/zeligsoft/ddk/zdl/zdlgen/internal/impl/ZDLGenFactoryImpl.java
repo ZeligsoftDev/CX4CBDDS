@@ -168,6 +168,8 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 			return createGenDomainConceptCategoryFromString(eDataType, initialValue);
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION_KIND:
 			return createGenDomainAttributePresentationKindFromString(eDataType, initialValue);
+		case ZDLGenPackage.GEN_DOMAIN_PRESENTATION_MODEL_KIND:
+			return createGenDomainPresentationModelKindFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -189,6 +191,8 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 			return convertGenDomainConceptCategoryToString(eDataType, instanceValue);
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION_KIND:
 			return convertGenDomainAttributePresentationKindToString(eDataType, instanceValue);
+		case ZDLGenPackage.GEN_DOMAIN_PRESENTATION_MODEL_KIND:
+			return convertGenDomainPresentationModelKindToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -588,6 +592,29 @@ public class ZDLGenFactoryImpl extends EFactoryImpl implements ZDLGenFactory {
 	 * @generated
 	 */
 	public String convertGenDomainAttributePresentationKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GenDomainPresentationModelKind createGenDomainPresentationModelKindFromString(EDataType eDataType,
+			String initialValue) {
+		GenDomainPresentationModelKind result = GenDomainPresentationModelKind.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertGenDomainPresentationModelKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

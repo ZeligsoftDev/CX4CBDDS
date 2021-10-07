@@ -577,13 +577,24 @@
       <details key="suppressed" value="true"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CXStruct" eSuperTypes="#//CXConstructed #//Contained #//CXClassifierContained #//CXModuleContained #//CXType">
+  <eClassifiers xsi:type="ecore:EClass" name="CXStruct" eSuperTypes="#//CXConstructed #//Extensible #//Contained #//CXClassifierContained #//CXModuleContained #//CXType">
     <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
       <details key="members" value="ownedAttribute"/>
     </eAnnotations>
     <eAnnotations source="uml2.extensions">
       <details key="suppressed" value="true"/>
     </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Extensible">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extensibility" ordered="false"
+        lowerBound="1" eType="#//ExtensibilityKind" defaultValueLiteral="Final"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ExtensibilityKind">
+    <eLiterals name="Final"/>
+    <eLiterals name="Appendable" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CXSupports">
     <eAnnotations source="uml2.extensions">
@@ -598,7 +609,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" ordered="false" eType="#//CXType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CXUnion" eSuperTypes="#//CXConstructed #//Contained #//CXClassifierContained #//CXModuleContained #//CXType">
+  <eClassifiers xsi:type="ecore:EClass" name="CXUnion" eSuperTypes="#//CXConstructed #//Extensible #//Contained #//CXClassifierContained #//CXModuleContained #//CXType">
     <eAnnotations source="uml2.extensions">
       <details key="suppressed" value="true"/>
     </eAnnotations>

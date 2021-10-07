@@ -34,8 +34,7 @@ package com.zeligsoft.ddk.zdl.zdlgen;
 public interface GenDomainClassifier extends GenDomainNamedElement {
 
 	/**
-	 * Returns the value of the '<em><b>Block</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#getClassifiers <em>Classifier</em>}'.
+	 * Returns the value of the '<em><b>Block</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -48,21 +47,20 @@ public interface GenDomainClassifier extends GenDomainNamedElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Block</em>' container reference.
+	 * @return the value of the '<em>Block</em>' reference.
 	 * @see #setBlock(GenDomainBlock)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainClassifier_Block()
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#getClassifiers
-	 * @model opposite="classifier" required="true" transient="false" ordered="false"
+	 * @model required="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainBlock getBlock();
 
 	/**
-	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier#getBlock <em>Block</em>}' container reference.
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier#getBlock <em>Block</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Block</em>' container reference.
+	 * @param value the new value of the '<em>Block</em>' reference.
 	 * @see #getBlock()
 	 * @generated
 	 */
