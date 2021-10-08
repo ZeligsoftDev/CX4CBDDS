@@ -2819,8 +2819,8 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_UNUSED_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31421:21: ( '(\\'?\\')' )
-            // InternalIDL.g:31421:23: '(\\'?\\')'
+            // InternalIDL.g:31442:21: ( '(\\'?\\')' )
+            // InternalIDL.g:31442:23: '(\\'?\\')'
             {
             match("('?')"); 
 
@@ -2840,10 +2840,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_INTEGER_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31423:22: ( ( '0' .. '9' )+ ( 'l' | 'L' )? )
-            // InternalIDL.g:31423:24: ( '0' .. '9' )+ ( 'l' | 'L' )?
+            // InternalIDL.g:31444:22: ( ( '0' .. '9' )+ ( 'l' | 'L' )? )
+            // InternalIDL.g:31444:24: ( '0' .. '9' )+ ( 'l' | 'L' )?
             {
-            // InternalIDL.g:31423:24: ( '0' .. '9' )+
+            // InternalIDL.g:31444:24: ( '0' .. '9' )+
             int cnt1=0;
             loop1:
             do {
@@ -2857,7 +2857,7 @@ public class InternalIDLLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // InternalIDL.g:31423:25: '0' .. '9'
+            	    // InternalIDL.g:31444:25: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -2873,7 +2873,7 @@ public class InternalIDLLexer extends Lexer {
                 cnt1++;
             } while (true);
 
-            // InternalIDL.g:31423:36: ( 'l' | 'L' )?
+            // InternalIDL.g:31444:36: ( 'l' | 'L' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -2915,8 +2915,8 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_HEX_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31425:18: ( '0' ( 'x' | 'X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ ( 'l' | 'L' )? )
-            // InternalIDL.g:31425:20: '0' ( 'x' | 'X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ ( 'l' | 'L' )?
+            // InternalIDL.g:31446:18: ( '0' ( 'x' | 'X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ ( 'l' | 'L' )? )
+            // InternalIDL.g:31446:20: '0' ( 'x' | 'X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ ( 'l' | 'L' )?
             {
             match('0'); 
             if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
@@ -2928,7 +2928,7 @@ public class InternalIDLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalIDL.g:31425:34: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
+            // InternalIDL.g:31446:34: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
             int cnt3=0;
             loop3:
             do {
@@ -2966,7 +2966,7 @@ public class InternalIDLLexer extends Lexer {
                 cnt3++;
             } while (true);
 
-            // InternalIDL.g:31425:64: ( 'l' | 'L' )?
+            // InternalIDL.g:31446:64: ( 'l' | 'L' )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -3008,17 +3008,17 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_FLOATING_PT_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31427:26: ( ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) ) )
-            // InternalIDL.g:31427:28: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) )
+            // InternalIDL.g:31448:26: ( ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) ) )
+            // InternalIDL.g:31448:28: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) )
             {
-            // InternalIDL.g:31427:28: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) )
+            // InternalIDL.g:31448:28: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) )
             int alt24=4;
             alt24 = dfa24.predict(input);
             switch (alt24) {
                 case 1 :
-                    // InternalIDL.g:31427:29: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )?
+                    // InternalIDL.g:31448:29: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )?
                     {
-                    // InternalIDL.g:31427:29: ( '0' .. '9' )+
+                    // InternalIDL.g:31448:29: ( '0' .. '9' )+
                     int cnt5=0;
                     loop5:
                     do {
@@ -3032,7 +3032,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalIDL.g:31427:30: '0' .. '9'
+                    	    // InternalIDL.g:31448:30: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -3049,7 +3049,7 @@ public class InternalIDLLexer extends Lexer {
                     } while (true);
 
                     match('.'); 
-                    // InternalIDL.g:31427:45: ( '0' .. '9' )*
+                    // InternalIDL.g:31448:45: ( '0' .. '9' )*
                     loop6:
                     do {
                         int alt6=2;
@@ -3062,7 +3062,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // InternalIDL.g:31427:46: '0' .. '9'
+                    	    // InternalIDL.g:31448:46: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -3074,7 +3074,7 @@ public class InternalIDLLexer extends Lexer {
                         }
                     } while (true);
 
-                    // InternalIDL.g:31427:57: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )?
+                    // InternalIDL.g:31448:57: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -3083,7 +3083,7 @@ public class InternalIDLLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalIDL.g:31427:58: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+                            // InternalIDL.g:31448:58: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
                             {
                             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                                 input.consume();
@@ -3094,7 +3094,7 @@ public class InternalIDLLexer extends Lexer {
                                 recover(mse);
                                 throw mse;}
 
-                            // InternalIDL.g:31427:68: ( '+' | '-' )?
+                            // InternalIDL.g:31448:68: ( '+' | '-' )?
                             int alt7=2;
                             int LA7_0 = input.LA(1);
 
@@ -3120,7 +3120,7 @@ public class InternalIDLLexer extends Lexer {
 
                             }
 
-                            // InternalIDL.g:31427:79: ( '0' .. '9' )+
+                            // InternalIDL.g:31448:79: ( '0' .. '9' )+
                             int cnt8=0;
                             loop8:
                             do {
@@ -3134,7 +3134,7 @@ public class InternalIDLLexer extends Lexer {
 
                                 switch (alt8) {
                             	case 1 :
-                            	    // InternalIDL.g:31427:80: '0' .. '9'
+                            	    // InternalIDL.g:31448:80: '0' .. '9'
                             	    {
                             	    matchRange('0','9'); 
 
@@ -3156,7 +3156,7 @@ public class InternalIDLLexer extends Lexer {
 
                     }
 
-                    // InternalIDL.g:31427:93: ( 'f' | 'F' | 'd' | 'D' )?
+                    // InternalIDL.g:31448:93: ( 'f' | 'F' | 'd' | 'D' )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -3186,10 +3186,10 @@ public class InternalIDLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalIDL.g:31427:112: '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )?
+                    // InternalIDL.g:31448:112: '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )?
                     {
                     match('.'); 
-                    // InternalIDL.g:31427:116: ( '0' .. '9' )+
+                    // InternalIDL.g:31448:116: ( '0' .. '9' )+
                     int cnt11=0;
                     loop11:
                     do {
@@ -3203,7 +3203,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // InternalIDL.g:31427:117: '0' .. '9'
+                    	    // InternalIDL.g:31448:117: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -3219,7 +3219,7 @@ public class InternalIDLLexer extends Lexer {
                         cnt11++;
                     } while (true);
 
-                    // InternalIDL.g:31427:128: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )?
+                    // InternalIDL.g:31448:128: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )?
                     int alt14=2;
                     int LA14_0 = input.LA(1);
 
@@ -3228,7 +3228,7 @@ public class InternalIDLLexer extends Lexer {
                     }
                     switch (alt14) {
                         case 1 :
-                            // InternalIDL.g:31427:129: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+                            // InternalIDL.g:31448:129: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
                             {
                             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                                 input.consume();
@@ -3239,7 +3239,7 @@ public class InternalIDLLexer extends Lexer {
                                 recover(mse);
                                 throw mse;}
 
-                            // InternalIDL.g:31427:139: ( '+' | '-' )?
+                            // InternalIDL.g:31448:139: ( '+' | '-' )?
                             int alt12=2;
                             int LA12_0 = input.LA(1);
 
@@ -3265,7 +3265,7 @@ public class InternalIDLLexer extends Lexer {
 
                             }
 
-                            // InternalIDL.g:31427:150: ( '0' .. '9' )+
+                            // InternalIDL.g:31448:150: ( '0' .. '9' )+
                             int cnt13=0;
                             loop13:
                             do {
@@ -3279,7 +3279,7 @@ public class InternalIDLLexer extends Lexer {
 
                                 switch (alt13) {
                             	case 1 :
-                            	    // InternalIDL.g:31427:151: '0' .. '9'
+                            	    // InternalIDL.g:31448:151: '0' .. '9'
                             	    {
                             	    matchRange('0','9'); 
 
@@ -3301,7 +3301,7 @@ public class InternalIDLLexer extends Lexer {
 
                     }
 
-                    // InternalIDL.g:31427:164: ( 'f' | 'F' | 'd' | 'D' )?
+                    // InternalIDL.g:31448:164: ( 'f' | 'F' | 'd' | 'D' )?
                     int alt15=2;
                     int LA15_0 = input.LA(1);
 
@@ -3331,9 +3331,9 @@ public class InternalIDLLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // InternalIDL.g:31427:183: ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )?
+                    // InternalIDL.g:31448:183: ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )?
                     {
-                    // InternalIDL.g:31427:183: ( '0' .. '9' )+
+                    // InternalIDL.g:31448:183: ( '0' .. '9' )+
                     int cnt16=0;
                     loop16:
                     do {
@@ -3347,7 +3347,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt16) {
                     	case 1 :
-                    	    // InternalIDL.g:31427:184: '0' .. '9'
+                    	    // InternalIDL.g:31448:184: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -3372,7 +3372,7 @@ public class InternalIDLLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // InternalIDL.g:31427:205: ( '+' | '-' )?
+                    // InternalIDL.g:31448:205: ( '+' | '-' )?
                     int alt17=2;
                     int LA17_0 = input.LA(1);
 
@@ -3398,7 +3398,7 @@ public class InternalIDLLexer extends Lexer {
 
                     }
 
-                    // InternalIDL.g:31427:216: ( '0' .. '9' )+
+                    // InternalIDL.g:31448:216: ( '0' .. '9' )+
                     int cnt18=0;
                     loop18:
                     do {
@@ -3412,7 +3412,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt18) {
                     	case 1 :
-                    	    // InternalIDL.g:31427:217: '0' .. '9'
+                    	    // InternalIDL.g:31448:217: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -3428,7 +3428,7 @@ public class InternalIDLLexer extends Lexer {
                         cnt18++;
                     } while (true);
 
-                    // InternalIDL.g:31427:228: ( 'f' | 'F' | 'd' | 'D' )?
+                    // InternalIDL.g:31448:228: ( 'f' | 'F' | 'd' | 'D' )?
                     int alt19=2;
                     int LA19_0 = input.LA(1);
 
@@ -3458,9 +3458,9 @@ public class InternalIDLLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // InternalIDL.g:31427:247: ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )
+                    // InternalIDL.g:31448:247: ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )
                     {
-                    // InternalIDL.g:31427:247: ( '0' .. '9' )+
+                    // InternalIDL.g:31448:247: ( '0' .. '9' )+
                     int cnt20=0;
                     loop20:
                     do {
@@ -3474,7 +3474,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt20) {
                     	case 1 :
-                    	    // InternalIDL.g:31427:248: '0' .. '9'
+                    	    // InternalIDL.g:31448:248: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -3490,7 +3490,7 @@ public class InternalIDLLexer extends Lexer {
                         cnt20++;
                     } while (true);
 
-                    // InternalIDL.g:31427:259: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )?
+                    // InternalIDL.g:31448:259: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )?
                     int alt23=2;
                     int LA23_0 = input.LA(1);
 
@@ -3499,7 +3499,7 @@ public class InternalIDLLexer extends Lexer {
                     }
                     switch (alt23) {
                         case 1 :
-                            // InternalIDL.g:31427:260: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+                            // InternalIDL.g:31448:260: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
                             {
                             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                                 input.consume();
@@ -3510,7 +3510,7 @@ public class InternalIDLLexer extends Lexer {
                                 recover(mse);
                                 throw mse;}
 
-                            // InternalIDL.g:31427:270: ( '+' | '-' )?
+                            // InternalIDL.g:31448:270: ( '+' | '-' )?
                             int alt21=2;
                             int LA21_0 = input.LA(1);
 
@@ -3536,7 +3536,7 @@ public class InternalIDLLexer extends Lexer {
 
                             }
 
-                            // InternalIDL.g:31427:281: ( '0' .. '9' )+
+                            // InternalIDL.g:31448:281: ( '0' .. '9' )+
                             int cnt22=0;
                             loop22:
                             do {
@@ -3550,7 +3550,7 @@ public class InternalIDLLexer extends Lexer {
 
                                 switch (alt22) {
                             	case 1 :
-                            	    // InternalIDL.g:31427:282: '0' .. '9'
+                            	    // InternalIDL.g:31448:282: '0' .. '9'
                             	    {
                             	    matchRange('0','9'); 
 
@@ -3603,11 +3603,11 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_CHARACTER_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31429:24: ( '\\'' ( RULE_ESCAPE_SEQUENCE | ~ ( ( '\\'' | '\\\\' ) ) ) '\\'' )
-            // InternalIDL.g:31429:26: '\\'' ( RULE_ESCAPE_SEQUENCE | ~ ( ( '\\'' | '\\\\' ) ) ) '\\''
+            // InternalIDL.g:31450:24: ( '\\'' ( RULE_ESCAPE_SEQUENCE | ~ ( ( '\\'' | '\\\\' ) ) ) '\\'' )
+            // InternalIDL.g:31450:26: '\\'' ( RULE_ESCAPE_SEQUENCE | ~ ( ( '\\'' | '\\\\' ) ) ) '\\''
             {
             match('\''); 
-            // InternalIDL.g:31429:31: ( RULE_ESCAPE_SEQUENCE | ~ ( ( '\\'' | '\\\\' ) ) )
+            // InternalIDL.g:31450:31: ( RULE_ESCAPE_SEQUENCE | ~ ( ( '\\'' | '\\\\' ) ) )
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -3625,14 +3625,14 @@ public class InternalIDLLexer extends Lexer {
             }
             switch (alt25) {
                 case 1 :
-                    // InternalIDL.g:31429:32: RULE_ESCAPE_SEQUENCE
+                    // InternalIDL.g:31450:32: RULE_ESCAPE_SEQUENCE
                     {
                     mRULE_ESCAPE_SEQUENCE(); 
 
                     }
                     break;
                 case 2 :
-                    // InternalIDL.g:31429:53: ~ ( ( '\\'' | '\\\\' ) )
+                    // InternalIDL.g:31450:53: ~ ( ( '\\'' | '\\\\' ) )
                     {
                     if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                         input.consume();
@@ -3666,10 +3666,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_BOOLEAN_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31431:22: ( ( 'TRUE' | 'FALSE' ) )
-            // InternalIDL.g:31431:24: ( 'TRUE' | 'FALSE' )
+            // InternalIDL.g:31452:22: ( ( 'TRUE' | 'FALSE' ) )
+            // InternalIDL.g:31452:24: ( 'TRUE' | 'FALSE' )
             {
-            // InternalIDL.g:31431:24: ( 'TRUE' | 'FALSE' )
+            // InternalIDL.g:31452:24: ( 'TRUE' | 'FALSE' )
             int alt26=2;
             int LA26_0 = input.LA(1);
 
@@ -3687,7 +3687,7 @@ public class InternalIDLLexer extends Lexer {
             }
             switch (alt26) {
                 case 1 :
-                    // InternalIDL.g:31431:25: 'TRUE'
+                    // InternalIDL.g:31452:25: 'TRUE'
                     {
                     match("TRUE"); 
 
@@ -3695,7 +3695,7 @@ public class InternalIDLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalIDL.g:31431:32: 'FALSE'
+                    // InternalIDL.g:31452:32: 'FALSE'
                     {
                     match("FALSE"); 
 
@@ -3719,8 +3719,8 @@ public class InternalIDLLexer extends Lexer {
     // $ANTLR start "RULE_ESCAPE_SEQUENCE"
     public final void mRULE_ESCAPE_SEQUENCE() throws RecognitionException {
         try {
-            // InternalIDL.g:31433:31: ( '\\'\\\\\\' (\\'b\\'|\\'t\\'|\\'n\\'|\\'f\\'|\\'r\\'|\\'v\\'|\\'a\\'|\\'?\\'|\\'\"\\'|\\'\\'\\'|\\'\\\\\\') | RULE_UNICODE_ESCAPE | RULE_OCTAL_ESCAPE | RULE_HEX_ESCAPE' )
-            // InternalIDL.g:31433:33: '\\'\\\\\\' (\\'b\\'|\\'t\\'|\\'n\\'|\\'f\\'|\\'r\\'|\\'v\\'|\\'a\\'|\\'?\\'|\\'\"\\'|\\'\\'\\'|\\'\\\\\\') | RULE_UNICODE_ESCAPE | RULE_OCTAL_ESCAPE | RULE_HEX_ESCAPE'
+            // InternalIDL.g:31454:31: ( '\\'\\\\\\' (\\'b\\'|\\'t\\'|\\'n\\'|\\'f\\'|\\'r\\'|\\'v\\'|\\'a\\'|\\'?\\'|\\'\"\\'|\\'\\'\\'|\\'\\\\\\') | RULE_UNICODE_ESCAPE | RULE_OCTAL_ESCAPE | RULE_HEX_ESCAPE' )
+            // InternalIDL.g:31454:33: '\\'\\\\\\' (\\'b\\'|\\'t\\'|\\'n\\'|\\'f\\'|\\'r\\'|\\'v\\'|\\'a\\'|\\'?\\'|\\'\"\\'|\\'\\'\\'|\\'\\\\\\') | RULE_UNICODE_ESCAPE | RULE_OCTAL_ESCAPE | RULE_HEX_ESCAPE'
             {
             match("'\\' ('b'|'t'|'n'|'f'|'r'|'v'|'a'|'?'|'\"'|'''|'\\') | RULE_UNICODE_ESCAPE | RULE_OCTAL_ESCAPE | RULE_HEX_ESCAPE"); 
 
@@ -3738,8 +3738,8 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_HEX_ESCAPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31435:17: ( '\\'\\\\\\' (\\'x\\'|\\'X\\') ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )+ (\\'l\\'|\\'L\\')?' )
-            // InternalIDL.g:31435:19: '\\'\\\\\\' (\\'x\\'|\\'X\\') ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )+ (\\'l\\'|\\'L\\')?'
+            // InternalIDL.g:31456:17: ( '\\'\\\\\\' (\\'x\\'|\\'X\\') ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )+ (\\'l\\'|\\'L\\')?' )
+            // InternalIDL.g:31456:19: '\\'\\\\\\' (\\'x\\'|\\'X\\') ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )+ (\\'l\\'|\\'L\\')?'
             {
             match("'\\' ('x'|'X') ( '0'..'9' | 'a'..'f' | 'A'..'F' )+ ('l'|'L')?"); 
 
@@ -3759,8 +3759,8 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_OCTAL_ESCAPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31437:19: ( '\\'\\\\\\' (\\'0\\'..\\'3\\') (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\')' )
-            // InternalIDL.g:31437:21: '\\'\\\\\\' (\\'0\\'..\\'3\\') (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\')'
+            // InternalIDL.g:31458:19: ( '\\'\\\\\\' (\\'0\\'..\\'3\\') (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\')' )
+            // InternalIDL.g:31458:21: '\\'\\\\\\' (\\'0\\'..\\'3\\') (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\') (\\'0\\'..\\'7\\')\\r\\n\\t|\\t\\'\\\\\\' (\\'0\\'..\\'7\\')'
             {
             match("'\\' ('0'..'3') ('0'..'7') ('0'..'7')\r\n\t|\t'\\' ('0'..'7') ('0'..'7')\r\n\t|\t'\\' ('0'..'7')"); 
 
@@ -3780,8 +3780,8 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_UNICODE_ESCAPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31439:21: ( '\\'\\\\\\' \\'u\\' ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )' )
-            // InternalIDL.g:31439:23: '\\'\\\\\\' \\'u\\' ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )'
+            // InternalIDL.g:31460:21: ( '\\'\\\\\\' \\'u\\' ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )' )
+            // InternalIDL.g:31460:23: '\\'\\\\\\' \\'u\\' ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' ) ( \\'0\\'..\\'9\\' | \\'a\\'..\\'f\\' | \\'A\\'..\\'F\\' )'
             {
             match("'\\' 'u' ( '0'..'9' | 'a'..'f' | 'A'..'F' ) ( '0'..'9' | 'a'..'f' | 'A'..'F' ) ( '0'..'9' | 'a'..'f' | 'A'..'F' ) ( '0'..'9' | 'a'..'f' | 'A'..'F' )"); 
 
@@ -3801,10 +3801,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31441:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalIDL.g:31441:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalIDL.g:31462:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalIDL.g:31462:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalIDL.g:31441:11: ( '^' )?
+            // InternalIDL.g:31462:11: ( '^' )?
             int alt27=2;
             int LA27_0 = input.LA(1);
 
@@ -3813,7 +3813,7 @@ public class InternalIDLLexer extends Lexer {
             }
             switch (alt27) {
                 case 1 :
-                    // InternalIDL.g:31441:11: '^'
+                    // InternalIDL.g:31462:11: '^'
                     {
                     match('^'); 
 
@@ -3831,7 +3831,7 @@ public class InternalIDLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalIDL.g:31441:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalIDL.g:31462:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop28:
             do {
                 int alt28=2;
@@ -3880,10 +3880,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31443:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalIDL.g:31443:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalIDL.g:31464:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalIDL.g:31464:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalIDL.g:31443:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalIDL.g:31464:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt31=2;
             int LA31_0 = input.LA(1);
 
@@ -3901,10 +3901,10 @@ public class InternalIDLLexer extends Lexer {
             }
             switch (alt31) {
                 case 1 :
-                    // InternalIDL.g:31443:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalIDL.g:31464:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalIDL.g:31443:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalIDL.g:31464:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop29:
                     do {
                         int alt29=3;
@@ -3920,7 +3920,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt29) {
                     	case 1 :
-                    	    // InternalIDL.g:31443:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
+                    	    // InternalIDL.g:31464:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -3936,7 +3936,7 @@ public class InternalIDLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalIDL.g:31443:62: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalIDL.g:31464:62: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -3961,10 +3961,10 @@ public class InternalIDLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalIDL.g:31443:82: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalIDL.g:31464:82: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalIDL.g:31443:87: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalIDL.g:31464:87: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop30:
                     do {
                         int alt30=3;
@@ -3980,7 +3980,7 @@ public class InternalIDLLexer extends Lexer {
 
                         switch (alt30) {
                     	case 1 :
-                    	    // InternalIDL.g:31443:88: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
+                    	    // InternalIDL.g:31464:88: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -3996,7 +3996,7 @@ public class InternalIDLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalIDL.g:31443:129: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalIDL.g:31464:129: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -4039,12 +4039,12 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31445:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalIDL.g:31445:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalIDL.g:31466:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalIDL.g:31466:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalIDL.g:31445:24: ( options {greedy=false; } : . )*
+            // InternalIDL.g:31466:24: ( options {greedy=false; } : . )*
             loop32:
             do {
                 int alt32=2;
@@ -4069,7 +4069,7 @@ public class InternalIDLLexer extends Lexer {
 
                 switch (alt32) {
             	case 1 :
-            	    // InternalIDL.g:31445:52: .
+            	    // InternalIDL.g:31466:52: .
             	    {
             	    matchAny(); 
 
@@ -4099,12 +4099,12 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31447:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalIDL.g:31447:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalIDL.g:31468:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalIDL.g:31468:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalIDL.g:31447:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalIDL.g:31468:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop33:
             do {
                 int alt33=2;
@@ -4117,7 +4117,7 @@ public class InternalIDLLexer extends Lexer {
 
                 switch (alt33) {
             	case 1 :
-            	    // InternalIDL.g:31447:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalIDL.g:31468:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -4137,7 +4137,7 @@ public class InternalIDLLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalIDL.g:31447:40: ( ( '\\r' )? '\\n' )?
+            // InternalIDL.g:31468:40: ( ( '\\r' )? '\\n' )?
             int alt35=2;
             int LA35_0 = input.LA(1);
 
@@ -4146,9 +4146,9 @@ public class InternalIDLLexer extends Lexer {
             }
             switch (alt35) {
                 case 1 :
-                    // InternalIDL.g:31447:41: ( '\\r' )? '\\n'
+                    // InternalIDL.g:31468:41: ( '\\r' )? '\\n'
                     {
-                    // InternalIDL.g:31447:41: ( '\\r' )?
+                    // InternalIDL.g:31468:41: ( '\\r' )?
                     int alt34=2;
                     int LA34_0 = input.LA(1);
 
@@ -4157,7 +4157,7 @@ public class InternalIDLLexer extends Lexer {
                     }
                     switch (alt34) {
                         case 1 :
-                            // InternalIDL.g:31447:41: '\\r'
+                            // InternalIDL.g:31468:41: '\\r'
                             {
                             match('\r'); 
 
@@ -4189,10 +4189,10 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31449:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalIDL.g:31449:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalIDL.g:31470:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalIDL.g:31470:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalIDL.g:31449:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalIDL.g:31470:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt36=0;
             loop36:
             do {
@@ -4246,8 +4246,8 @@ public class InternalIDLLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIDL.g:31451:16: ( . )
-            // InternalIDL.g:31451:18: .
+            // InternalIDL.g:31472:16: ( . )
+            // InternalIDL.g:31472:18: .
             {
             matchAny(); 
 
@@ -5322,7 +5322,7 @@ public class InternalIDLLexer extends Lexer {
             this.transition = DFA24_transition;
         }
         public String getDescription() {
-            return "31427:28: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) )";
+            return "31448:28: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | '.' ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ ( 'f' | 'F' | 'd' | 'D' )? | ( '0' .. '9' )+ ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )? ( 'f' | 'F' | 'd' | 'D' ) )";
         }
     }
     static final String DFA37_eotS =

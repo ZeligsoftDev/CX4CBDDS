@@ -424,7 +424,8 @@ public class IDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSimpleDeclaratorAccess().getIdAssignment(), "rule__SimpleDeclarator__IdAssignment");
 					put(grammarAccess.getArrayDeclaratorAccess().getIdAssignment_0(), "rule__ArrayDeclarator__IdAssignment_0");
 					put(grammarAccess.getArrayDeclaratorAccess().getSizeAssignment_1_1(), "rule__ArrayDeclarator__SizeAssignment_1_1");
-					put(grammarAccess.getStructTypeAccess().getExtensibilityAssignment_0_0(), "rule__StructType__ExtensibilityAssignment_0_0");
+					put(grammarAccess.getStructTypeAccess().getIsAppendableAssignment_0_0(), "rule__StructType__IsAppendableAssignment_0_0");
+					put(grammarAccess.getStructTypeAccess().getIsFinalAssignment_0_1(), "rule__StructType__IsFinalAssignment_0_1");
 					put(grammarAccess.getStructTypeAccess().getNameAssignment_2(), "rule__StructType__NameAssignment_2");
 					put(grammarAccess.getStructTypeAccess().getCommentsAssignment_3(), "rule__StructType__CommentsAssignment_3");
 					put(grammarAccess.getStructTypeAccess().getCommentsAssignment_5(), "rule__StructType__CommentsAssignment_5");

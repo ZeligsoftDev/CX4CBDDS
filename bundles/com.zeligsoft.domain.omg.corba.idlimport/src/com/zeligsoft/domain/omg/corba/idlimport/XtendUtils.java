@@ -1112,6 +1112,10 @@ public class XtendUtils {
 		return null;
 	}
 	
+	public static void debug(Object o) {
+		o.getClass();
+		
+	}
 	/**
 	 * This method is used to look up a TypeSpec by scoped name relative to the element passed in.
 	 * 

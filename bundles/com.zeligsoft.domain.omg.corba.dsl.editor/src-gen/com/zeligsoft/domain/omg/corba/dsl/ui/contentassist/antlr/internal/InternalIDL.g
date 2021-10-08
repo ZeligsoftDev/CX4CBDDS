@@ -5324,17 +5324,15 @@ rule__StructType__Alternatives_0
     }
 :
 (
-{ before(grammarAccess.getStructTypeAccess().getExtensibilityAssignment_0_0()); }
-(rule__StructType__ExtensibilityAssignment_0_0)
-{ after(grammarAccess.getStructTypeAccess().getExtensibilityAssignment_0_0()); }
+{ before(grammarAccess.getStructTypeAccess().getIsAppendableAssignment_0_0()); }
+(rule__StructType__IsAppendableAssignment_0_0)
+{ after(grammarAccess.getStructTypeAccess().getIsAppendableAssignment_0_0()); }
 )
 
     |(
-{ before(grammarAccess.getStructTypeAccess().getAppendableKeyword_0_1()); }
-
-	'@appendable' 
-
-{ after(grammarAccess.getStructTypeAccess().getAppendableKeyword_0_1()); }
+{ before(grammarAccess.getStructTypeAccess().getIsFinalAssignment_0_1()); }
+(rule__StructType__IsFinalAssignment_0_1)
+{ after(grammarAccess.getStructTypeAccess().getIsFinalAssignment_0_1()); }
 )
 
 ;
@@ -28825,22 +28823,45 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__StructType__ExtensibilityAssignment_0_0
+rule__StructType__IsAppendableAssignment_0_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getStructTypeAccess().getExtensibilityFinalKeyword_0_0_0()); }
+{ before(grammarAccess.getStructTypeAccess().getIsAppendableAppendableKeyword_0_0_0()); }
 (
-{ before(grammarAccess.getStructTypeAccess().getExtensibilityFinalKeyword_0_0_0()); }
+{ before(grammarAccess.getStructTypeAccess().getIsAppendableAppendableKeyword_0_0_0()); }
+
+	'@appendable' 
+
+{ after(grammarAccess.getStructTypeAccess().getIsAppendableAppendableKeyword_0_0_0()); }
+)
+
+{ after(grammarAccess.getStructTypeAccess().getIsAppendableAppendableKeyword_0_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__StructType__IsFinalAssignment_0_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getStructTypeAccess().getIsFinalFinalKeyword_0_1_0()); }
+(
+{ before(grammarAccess.getStructTypeAccess().getIsFinalFinalKeyword_0_1_0()); }
 
 	'@final' 
 
-{ after(grammarAccess.getStructTypeAccess().getExtensibilityFinalKeyword_0_0_0()); }
+{ after(grammarAccess.getStructTypeAccess().getIsFinalFinalKeyword_0_1_0()); }
 )
 
-{ after(grammarAccess.getStructTypeAccess().getExtensibilityFinalKeyword_0_0_0()); }
+{ after(grammarAccess.getStructTypeAccess().getIsFinalFinalKeyword_0_1_0()); }
 )
 
 ;
