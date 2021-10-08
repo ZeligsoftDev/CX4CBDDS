@@ -1,0 +1,26 @@
+name: linux_build
+
+on:
+  push:
+    branches:
+      - master
+      - papyrus
+    tags:
+      - v*
+  pull_request:
+    branches:
+      - master
+      - papyrus
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin' # rebranded adopt OpenJDK.
+          java-version: '11'
+      - name: Build DDS4CBDDS
+        run: |
+          ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
