@@ -40,11 +40,11 @@ jobs:
         with:
           files: "releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec"
       - name: Build Axcioma RPM
-        if: steps.check_axioma_rpmbuild.outputs.files_exist == 'true'
+        if: steps.check_axioma_rpmbuild.outputs.files_exists == 'true'
         run: |
           rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axcioma" --define "_git_commit_id $GITHUB_SHA" --define "_git_tag $GITHUB_REF" releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec
             - name: Build Axcioma RPM
       - name: Build ATCD RPM
-        if: steps.check_atcd_rpmbuild.outputs.files_exist == 'true'
+        if: steps.check_atcd_rpmbuild.outputs.files_exists == 'true'
         run: |
           rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd" --define "_git_commit_id $GITHUB_SHA" --define "_git_tag $TRAVIS_TAG" releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec
