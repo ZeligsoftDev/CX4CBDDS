@@ -358,7 +358,11 @@ public class AxciomaWriterSwitch extends IDL3PlusWriterSwitch {
 			}
 			
 			// if AXCIOMA
-			buf.append(String.format("%s%s%n", indentString, object.getExtensibility()));
+			String extensibility = "@final";
+			if(object.isIsAppendable()) {
+				extensibility = "@appendable";
+			}
+			buf.append(String.format("%s%s%n", indentString, extensibility));
 			
 			buf.append(String.format("%sstruct %s {%n", 
 					indentString,

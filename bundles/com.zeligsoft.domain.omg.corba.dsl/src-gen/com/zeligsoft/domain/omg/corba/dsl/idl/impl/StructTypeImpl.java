@@ -30,7 +30,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.StructTypeImpl#getExtensibility <em>Extensibility</em>}</li>
+ *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.StructTypeImpl#isIsAppendable <em>Is Appendable</em>}</li>
+ *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.StructTypeImpl#isIsFinal <em>Is Final</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.StructTypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.StructTypeImpl#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.StructTypeImpl#getMembers <em>Members</em>}</li>
@@ -41,24 +42,44 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class StructTypeImpl extends DefinitionImpl implements StructType
 {
   /**
-   * The default value of the '{@link #getExtensibility() <em>Extensibility</em>}' attribute.
+   * The default value of the '{@link #isIsAppendable() <em>Is Appendable</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExtensibility()
+   * @see #isIsAppendable()
    * @generated
    * @ordered
    */
-  protected static final String EXTENSIBILITY_EDEFAULT = null;
+  protected static final boolean IS_APPENDABLE_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getExtensibility() <em>Extensibility</em>}' attribute.
+   * The cached value of the '{@link #isIsAppendable() <em>Is Appendable</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getExtensibility()
+   * @see #isIsAppendable()
    * @generated
    * @ordered
    */
-  protected String extensibility = EXTENSIBILITY_EDEFAULT;
+  protected boolean isAppendable = IS_APPENDABLE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isIsFinal() <em>Is Final</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsFinal()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_FINAL_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsFinal() <em>Is Final</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsFinal()
+   * @generated
+   * @ordered
+   */
+  protected boolean isFinal = IS_FINAL_EDEFAULT;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -126,9 +147,9 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getExtensibility()
+  public boolean isIsAppendable()
   {
-    return extensibility;
+    return isAppendable;
   }
 
   /**
@@ -136,12 +157,35 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExtensibility(String newExtensibility)
+  public void setIsAppendable(boolean newIsAppendable)
   {
-    String oldExtensibility = extensibility;
-    extensibility = newExtensibility;
+    boolean oldIsAppendable = isAppendable;
+    isAppendable = newIsAppendable;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IdlPackage.STRUCT_TYPE__EXTENSIBILITY, oldExtensibility, extensibility));
+      eNotify(new ENotificationImpl(this, Notification.SET, IdlPackage.STRUCT_TYPE__IS_APPENDABLE, oldIsAppendable, isAppendable));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isIsFinal()
+  {
+    return isFinal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setIsFinal(boolean newIsFinal)
+  {
+    boolean oldIsFinal = isFinal;
+    isFinal = newIsFinal;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IdlPackage.STRUCT_TYPE__IS_FINAL, oldIsFinal, isFinal));
   }
 
   /**
@@ -223,8 +267,10 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
   {
     switch (featureID)
     {
-      case IdlPackage.STRUCT_TYPE__EXTENSIBILITY:
-        return getExtensibility();
+      case IdlPackage.STRUCT_TYPE__IS_APPENDABLE:
+        return isIsAppendable();
+      case IdlPackage.STRUCT_TYPE__IS_FINAL:
+        return isIsFinal();
       case IdlPackage.STRUCT_TYPE__NAME:
         return getName();
       case IdlPackage.STRUCT_TYPE__COMMENTS:
@@ -246,8 +292,11 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
   {
     switch (featureID)
     {
-      case IdlPackage.STRUCT_TYPE__EXTENSIBILITY:
-        setExtensibility((String)newValue);
+      case IdlPackage.STRUCT_TYPE__IS_APPENDABLE:
+        setIsAppendable((Boolean)newValue);
+        return;
+      case IdlPackage.STRUCT_TYPE__IS_FINAL:
+        setIsFinal((Boolean)newValue);
         return;
       case IdlPackage.STRUCT_TYPE__NAME:
         setName((String)newValue);
@@ -274,8 +323,11 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
   {
     switch (featureID)
     {
-      case IdlPackage.STRUCT_TYPE__EXTENSIBILITY:
-        setExtensibility(EXTENSIBILITY_EDEFAULT);
+      case IdlPackage.STRUCT_TYPE__IS_APPENDABLE:
+        setIsAppendable(IS_APPENDABLE_EDEFAULT);
+        return;
+      case IdlPackage.STRUCT_TYPE__IS_FINAL:
+        setIsFinal(IS_FINAL_EDEFAULT);
         return;
       case IdlPackage.STRUCT_TYPE__NAME:
         setName(NAME_EDEFAULT);
@@ -300,8 +352,10 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
   {
     switch (featureID)
     {
-      case IdlPackage.STRUCT_TYPE__EXTENSIBILITY:
-        return EXTENSIBILITY_EDEFAULT == null ? extensibility != null : !EXTENSIBILITY_EDEFAULT.equals(extensibility);
+      case IdlPackage.STRUCT_TYPE__IS_APPENDABLE:
+        return isAppendable != IS_APPENDABLE_EDEFAULT;
+      case IdlPackage.STRUCT_TYPE__IS_FINAL:
+        return isFinal != IS_FINAL_EDEFAULT;
       case IdlPackage.STRUCT_TYPE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IdlPackage.STRUCT_TYPE__COMMENTS:
@@ -323,8 +377,10 @@ public class StructTypeImpl extends DefinitionImpl implements StructType
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (extensibility: ");
-    result.append(extensibility);
+    result.append(" (isAppendable: ");
+    result.append(isAppendable);
+    result.append(", isFinal: ");
+    result.append(isFinal);
     result.append(", name: ");
     result.append(name);
     result.append(')');

@@ -174,9 +174,11 @@ create Member visitExceptionAttribute(CXField p) :
 */
 create StructType visitContained(CXStruct struct) :
 	this.setName(struct.name) ->
+	this.setIsAppendable(false) ->
+	this.setIsFinal(false) ->
 	struct.extensibility == ExtensibilityKind::Appendable?
-		this.setExtensibility("@appendable")
-		: this.setExtensibility("@final") ->
+		this.setIsAppendable(true)
+		: this.setIsFinal(true) ->
 	this.comments.addAll(struct.zdlAsPackage().ownedComment.visitComment()) ->
 	members.addAll(struct.members.visitStructAttribute());	
 	
@@ -312,9 +314,11 @@ ConstExp getConstantScopedName(CXConstant self, CXNamedElement element) :
 
 create UnionType visitContained(CXUnion union) :
 	setName(union.name) ->
+	this.setIsAppendable(false) ->
+	this.setIsFinal(false) ->
 	union.extensibility == ExtensibilityKind::Appendable?
-		this.setExtensibility("@appendable")
-		: this.setExtensibility("@final") ->
+		this.setIsAppendable(true)
+		: this.setIsFinal(true) ->
 	this.comments.addAll(union.zdlAsDataType().ownedComment.visitComment()) ->
 	setSwitch(union.getSwitchType()) ->
 	setBody(union.getSwitchBody());

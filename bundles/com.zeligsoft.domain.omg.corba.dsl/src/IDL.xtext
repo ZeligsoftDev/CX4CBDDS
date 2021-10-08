@@ -333,7 +333,7 @@ ArrayDeclarator :
 	id=ID("["size+=ConstExp"]")+;
 	
 StructType :
-	(extensibility="@final" | "@appendable")? "struct" name=ID (comments+=IDLComment)* "{" (comments+=IDLComment)* (members+=Member)* "}";
+	(isAppendable?="@appendable" | isFinal?="@final")? "struct" name=ID (comments+=IDLComment)* "{" (comments+=IDLComment)* (members+=Member)* "}";
 
 TypeDecl :
 	"typedef" 	TypeDeclarator 
