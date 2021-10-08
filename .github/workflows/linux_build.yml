@@ -16,11 +16,35 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v2
-        with:
-          distribution: 'temurin' # rebranded adopt OpenJDK.
-          java-version: '11'
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Install Java
+        uses: actions/setup-java@v2
+          with:
+            distribution: 'temurin' # rebranded adopt OpenJDK.
+            java-version: '11'
+      - name: Install RPM
+        run: |
+          sudo apt-get update && sudo apt-get -y install rpm
       - name: Build DDS4CBDDS
         run: |
           ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
+      - name: "Check AXIOMA RPMBUILD existence"
+        id: check_axioma_rpmbuild
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec"
+      - name: "Check ATCD RPMBUILD existence"
+        id: check_atcd_rpmbuild
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec"
+      - name: Build Axcioma RPM
+        if: steps.check_axioma_rpmbuild.outputs.files_exist == 'true'
+        run: |
+          rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axcioma" --define "_git_commit_id $GITHUB_SHA" --define "_git_tag $GITHUB_REF" releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec
+            - name: Build Axcioma RPM
+      - name: Build ATCD RPM
+        if: steps.check_atcd_rpmbuild.outputs.files_exist == 'true'
+        run: |
+          rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd" --define "_git_commit_id $GITHUB_SHA" --define "_git_tag $TRAVIS_TAG" releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec
