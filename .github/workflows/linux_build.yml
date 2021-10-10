@@ -33,12 +33,14 @@ jobs:
           script: |
             const sha_short = context.sha.substring(0, 7)
             const ref_parts = context.ref.split('/')
+            let tag='%nil'
             if( ref_parts[1] === 'tags' ) {
-               core.exportVariable('GITHUB_TAG', ref_parts[-1])
-               core.info('GITHUB_TAG=${ref_parts[-1]}')
+               tag = ref_parts[-1]
             }
+            core.exportVariable('GITHUB_TAG', tag)
+            core.info('GITHUB_TAG=${tag}')
             core.exportVariable('GITHUB_SHA_SHORT', sha_short)
-            core.info('GITHUB_SHA_SHORT=${sha_short]')
+            core.info('GITHUB_SHA_SHORT=${sha_short}')
       - name: Build DDS4CBDDS
         run: |
           ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
