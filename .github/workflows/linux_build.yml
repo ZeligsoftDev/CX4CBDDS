@@ -38,9 +38,9 @@ jobs:
                tag = ref_parts[-1]
             }
             core.exportVariable('GITHUB_TAG', tag)
-            core.info('GITHUB_TAG=${tag}')
+            core.info('GITHUB_TAG='+tag)
             core.exportVariable('GITHUB_SHA_SHORT', sha_short)
-            core.info('GITHUB_SHA_SHORT=${sha_short}')
+            core.info('GITHUB_SHA_SHORT='+sha_short)
       - name: Build DDS4CBDDS
         run: |
           ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
@@ -58,7 +58,6 @@ jobs:
         if: steps.check_axioma_rpmbuild.outputs.files_exists == 'true'
         run: |
           rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axcioma" --define "_git_commit_id $GITHUB_SHA_SHORT" --define "_git_tag $GITHUB_TAG" releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec
-            - name: Build Axcioma RPM
       - name: Build ATCD RPM
         if: steps.check_atcd_rpmbuild.outputs.files_exists == 'true'
         run: |
