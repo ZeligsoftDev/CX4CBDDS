@@ -46,12 +46,10 @@ jobs:
           ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
       - name: "Detect ATCD Zip"
         id: atcd_zip
-        run:
-          - echo '::set-output name=zip::$(ls releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip 2>/dev/null)'
+        run: echo '::set-output name=zip::$(ls releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip 2>/dev/null)'
       - name: "Detect AXIOMA Zip"
         id: axioma_zip
-        run:
-          - echo '::set-output name=zip::$(ls releng/com.zeligsoft.dds4ccm.update.axioma/target/dds4ccm_axioma_*.zip 2>/dev/null)'
+        run: echo '::set-output name=zip::$(ls releng/com.zeligsoft.dds4ccm.update.axioma/target/dds4ccm_axioma_*.zip 2>/dev/null)'
       - name: Build ATCD RPM
         if: steps.atcd_zip.outputs.zip != ''
         run: |
