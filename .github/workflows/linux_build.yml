@@ -1,0 +1,60 @@
+name: linux_build
+
+on:
+  push:
+    branches:
+      - master
+      - papyrus
+    tags:
+      - v*
+  pull_request:
+    branches:
+      - master
+      - papyrus
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin' # rebranded adopt OpenJDK.
+          java-version: '11'
+      - name: Install RPM
+        run: |
+          sudo apt-get update && sudo apt-get -y install rpm
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: RPM Variables
+        id: variables
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const sha_short = context.sha.substring(0, 7)
+            const ref_parts = context.ref.split('/')
+            let tag='%nil'
+            if( ref_parts[1] === 'tags' ) {
+               tag = ref_parts[-1]
+            }
+            core.exportVariable('RPM_TAG', tag)
+            core.info('RPM_TAG='+tag)
+            core.exportVariable('GITHUB_SHA_SHORT', sha_short)
+            core.info('GITHUB_SHA_SHORT='+sha_short)
+      - name: Build DDS4CBDDS
+        run: |
+          ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
+      - name: "Detect ATCD Zip"
+        id: atcd_zip
+        run: echo '::set-output name=zip::$(ls releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip 2>/dev/null)'
+      - name: "Detect AXIOMA Zip"
+        id: axioma_zip
+        run: echo '::set-output name=zip::$(ls releng/com.zeligsoft.dds4ccm.update.axioma/target/dds4ccm_axioma_*.zip 2>/dev/null)'
+      - name: Build ATCD RPM
+        if: steps.atcd_zip.outputs.zip != ''
+        run: |
+          rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axcioma" --define "_git_commit_id $GITHUB_SHA_SHORT" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec
+      - name: Build AXIOMA RPM
+        if: steps.axioma_zip.outputs.zip != ''
+        run: |
+          rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd" --define "_git_commit_id $GITHUB_SHA_SHORT" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec
