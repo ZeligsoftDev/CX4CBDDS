@@ -11,6 +11,9 @@ on:
     branches:
       - master
       - papyrus
+  release:
+    types:
+      - created
 
 jobs:
   build:
@@ -58,3 +61,11 @@ jobs:
         if: steps.axioma_zip.outputs.zip != ''
         run: |
           rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd" --define "_git_commit_id $GITHUB_SHA_SHORT" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec
+      - name: Preserve artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: eclpse-updatesite-archives
+          path: |
+            releng/com.zeligsoft.dds4ccm.update.axioma/target/dds4ccm_*.zip
+            releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_*.zip
+
