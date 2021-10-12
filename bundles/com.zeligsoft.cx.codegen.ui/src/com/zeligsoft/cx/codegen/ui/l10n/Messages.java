@@ -89,7 +89,7 @@ public class Messages
 	public static String TransformAction_ProjectRefreshFailedLog;
 	
 	public static String TransformAction_ThreadJoinFailedLog;
-
+	
 	public static String TransformRegistry_InvalidWorkflowPathLog;
 	
 	public static String TransformRegistry_InvalidWorkflowValidationFactory;
@@ -103,6 +103,33 @@ public class Messages
 	public static String WorkerCodeStorage_SaveCommandLabel;
 
 	public static String WorkerCodeStorage_SaveFailedLog;
+
+	public static String CXCodegenPreferencePage_Description;
+	
+	public static String CXCodegenReportPreferencePage_FileCollectorGroup;
+	public static String CXCodegenReportPreferencePage_FileCollectorQuestion;
+	public static String CXCodegenReportPreferencePage_FilesAddedCheckbox;
+	public static String CXCodegenReportPreferencePage_FilesChangedCheckbox;
+	public static String CXCodegenReportPreferencePage_FilesRemovedCheckbox;
+	public static String CXCodegenReportPreferencePage_FilesUnchangedCheckbox;
+	public static String CXCodegenReportPreferencePage_FilesBeforeCheckbox;
+	public static String CXCodegenReportPreferencePage_FilesAfterCheckbox;
+	public static String CXCodegenReportPreferencePage_Saving;
+	public static String CXCodegenReportPreferencePage_Cancelling;
+	public static String CXCodegenReportPreferencePage_ErrorSaving;
+
+	public static String FileCollector_NullProject;
+	public static String FileCollector_CoreException;
+	public static String FileCollector_ResourceListener_CoreException;
+	public static String FileCollector_FilesUpdatedTitleMessage;
+	public static String FileCollector_SeparatorLine;
+	public static String FileCollector_Warning_StillCollecting;
+	public static String FileCollector_FilesBeforeTitleMessage;
+	public static String FileCollector_FilesAfterTitleMessage;
+	public static String FileCollector_FilesAddedTitleMessage;
+	public static String FileCollector_FilesChangedTitleMessage;
+	public static String FileCollector_FilesRemovedTitleMessage;
+	public static String FileCollector_FilesUnchangedTitleMessage;
 
 	static {
 		// initialize resource bundle
