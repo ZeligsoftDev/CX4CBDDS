@@ -53,9 +53,9 @@ jobs:
         with:
           script: |
             const patterns = {
-                'ATCD': ['**/target/dds4ccm_atcd_*.zip'],
-                'AXIOMA': ['**/target/dds4ccm_axioma_*.zip'],
-                'DDK': ['**/target/ddk_*.zip']
+                'ATCD': '**/target/dds4ccm_atcd_*.zip',
+                'AXIOMA': '**/target/dds4ccm_axioma_*.zip',
+                'DDK': '**/target/ddk_*.zip'
             }
             const variable_defs = {}
             for (const [var_base, pat] of Object.entries(patterns)) {
