@@ -75,23 +75,23 @@ jobs:
                 core.info(var_name + '=' + value)
             }
       - name: Build ATCD RPM
-        if: ${{ $ATCD_PRESENT == 'true' }}
+        if: ${{ env.ATCD_PRESENT == 'true' }}
         run: |
           rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axcioma" --define "_git_commit_id $GITHUB_SHA_SHORT" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec
       - name: Build AXIOMA RPM
-        if: ${{ $AXIOMA_PRESENT == 'true' }}
+        if: ${{ env.AXIOMA_PRESENT == 'true' }}
         run: |
           rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd" --define "_git_commit_id $GITHUB_SHA_SHORT" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec
       - name: Preserve ATCD Archive
-        if: ${{ $ATCD_PRESENT == 'true' }}
+        if: ${{ env.ATCD_PRESENT == 'true' }}
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ $ATCD_FILE_NAME }}
-          path: ${{ $ATCD_PATH }}
+          name: ${{ env.ATCD_FILE_NAME }}
+          path: ${{ env.ATCD_PATH }}
       - name: Preserve AXIOMA archive
-        if: ${{ $AXIOMA_PRESENT == 'true' }}
+        if: ${{ env.AXIOMA_PRESENT == 'true' }}
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ $AXIOMA_FILE_NAME }}
-          path: ${{ $AXIOMA_PATH }}
+          name: ${{ env.AXIOMA_FILE_NAME }}
+          path: ${{ env.AXIOMA_PATH }}
 
