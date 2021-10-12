@@ -24,17 +24,25 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IResourceDeltaVisitor;
+import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.validation.service.IBatchValidator;
@@ -51,7 +59,7 @@ import com.zeligsoft.cx.codegen.ui.CodeGenUIPlugin;
 import com.zeligsoft.cx.codegen.ui.l10n.Messages;
 import com.zeligsoft.cx.codegen.ui.transformregistry.WorkflowEntry;
 
-public abstract class AbstractTransformAction extends Action{
+public abstract class AbstractTransformAction extends Action {
 	
 	protected List<WorkflowEntry> workflows = null;
 
@@ -80,6 +88,8 @@ public abstract class AbstractTransformAction extends Action{
 				IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 				String location = root.getLocation().toOSString();
 				genProperties.put(CodeGenWorkflowConstants.PLATFORM_URI, location);
+
+				setupResourceListener();
 
 				Resource res = element.eResource();
 				genProperties.put(CodeGenWorkflowConstants.MODEL_URI_STRING, res
@@ -257,6 +267,56 @@ public abstract class AbstractTransformAction extends Action{
 				BaseUIUtil.writeToConsole(buffer.toString());
 			}
 		});
+	}
+
+	private void setupResourceListener() {
+		// We need to enable the auto-refresh preference so that the resource listener can
+		// detect changes made outside of Eclipse or by non-Eclipse resource changing APIs.
+		IEclipsePreferences prefs = InstanceScope.INSTANCE.getNode("org.eclipse.core.resources"); //$NON-NLS-1$
+		prefs.putBoolean(ResourcesPlugin.PREF_AUTO_REFRESH, true);
+		
+		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		IResourceChangeListener listener = new IResourceChangeListener() {
+			@Override
+			public void resourceChanged(IResourceChangeEvent event) {
+				IResourceDelta delta = event.getDelta();
+				IResourceDeltaVisitor visitor = new IResourceDeltaVisitor() {
+					
+					@Override
+					public boolean visit(IResourceDelta delta) throws CoreException {
+						IResource resource = delta.getResource();
+						if (resource != null && (resource.getType() == IResource.FILE)) {
+							IPath fullPath = delta.getFullPath();
+							String kindStr = getKindStr(delta.getKind());
+							String message = kindStr + " "+ fullPath.toOSString(); //$NON-NLS-1$
+							BaseUIUtil.writeToConsole(message);
+							CodeGenUIPlugin.getDefault().info(message);
+							return false;
+						}
+						return true;
+					}
+
+					private String getKindStr(int kind) {
+						switch (kind) {
+						case IResourceDelta.ADDED:
+							return "ADDED"; //$NON-NLS-1$
+						case IResourceDelta.CHANGED:
+							return "CHANGED"; //$NON-NLS-1$
+						case IResourceDelta.REMOVED:
+							return "REMOVED"; //$NON-NLS-1$
+						default:
+							return "OTHER(" + kind + ")"; //$NON-NLS-1$ //$NON-NLS-2$
+						}
+					}
+				};
+				try {
+					delta.accept(visitor);
+				} catch (CoreException e) {
+					CodeGenUIPlugin.getDefault().error(Messages.TransformAction_ResourceListener_CoreException, e);
+				}
+			}
+		};
+		workspace.addResourceChangeListener(listener);
 	}
 
 }
