@@ -320,6 +320,10 @@ public class DDS4CCMAdapterFactory extends AdapterFactoryImpl {
 				return createCXStructAdapter();
 			}
 			@Override
+			public Adapter caseExtensible(Extensible object) {
+				return createExtensibleAdapter();
+			}
+			@Override
 			public Adapter caseCXSupports(CXSupports object) {
 				return createCXSupportsAdapter();
 			}
@@ -1646,6 +1650,20 @@ public class DDS4CCMAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCXStructAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dds4ccm.Extensible <em>Extensible</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dds4ccm.Extensible
+	 * @generated
+	 */
+	public Adapter createExtensibleAdapter() {
 		return null;
 	}
 

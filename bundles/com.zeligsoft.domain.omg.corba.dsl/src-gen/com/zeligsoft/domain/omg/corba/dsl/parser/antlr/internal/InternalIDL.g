@@ -5316,15 +5316,46 @@ ruleStructType returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='struct' 
+(((
+(
+		lv_isAppendable_0_0=	'@appendable' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getStructTypeAccess().getStructKeyword_0());
+        newLeafNode(lv_isAppendable_0_0, grammarAccess.getStructTypeAccess().getIsAppendableAppendableKeyword_0_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStructTypeRule());
+	        }
+       		setWithLastConsumed($current, "isAppendable", true, "@appendable");
+	    }
+
+)
+)
+    |(
+(
+		lv_isFinal_1_0=	'@final' 
+    {
+        newLeafNode(lv_isFinal_1_0, grammarAccess.getStructTypeAccess().getIsFinalFinalKeyword_0_1_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStructTypeRule());
+	        }
+       		setWithLastConsumed($current, "isFinal", true, "@final");
+	    }
+
+)
+))?	otherlv_2='struct' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getStructTypeAccess().getStructKeyword_1());
     }
 (
 (
-		lv_name_1_0=RULE_ID
+		lv_name_3_0=RULE_ID
 		{
-			newLeafNode(lv_name_1_0, grammarAccess.getStructTypeAccess().getNameIDTerminalRuleCall_1_0()); 
+			newLeafNode(lv_name_3_0, grammarAccess.getStructTypeAccess().getNameIDTerminalRuleCall_2_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -5333,7 +5364,7 @@ ruleStructType returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_1_0, 
+        		lv_name_3_0, 
         		"com.zeligsoft.domain.omg.corba.dsl.IDL.ID");
 	    }
 
@@ -5341,29 +5372,7 @@ ruleStructType returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStructTypeAccess().getCommentsIDLCommentParserRuleCall_2_0()); 
-	    }
-		lv_comments_2_0=ruleIDLComment		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getStructTypeRule());
-	        }
-       		add(
-       			$current, 
-       			"comments",
-        		lv_comments_2_0, 
-        		"com.zeligsoft.domain.omg.corba.dsl.IDL.IDLComment");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*	otherlv_3='{' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getStructTypeAccess().getLeftCurlyBracketKeyword_3());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getStructTypeAccess().getCommentsIDLCommentParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getStructTypeAccess().getCommentsIDLCommentParserRuleCall_3_0()); 
 	    }
 		lv_comments_4_0=ruleIDLComment		{
 	        if ($current==null) {
@@ -5378,27 +5387,49 @@ ruleStructType returns [EObject current=null]
 	    }
 
 )
+)*	otherlv_5='{' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getStructTypeAccess().getLeftCurlyBracketKeyword_4());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStructTypeAccess().getCommentsIDLCommentParserRuleCall_5_0()); 
+	    }
+		lv_comments_6_0=ruleIDLComment		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStructTypeRule());
+	        }
+       		add(
+       			$current, 
+       			"comments",
+        		lv_comments_6_0, 
+        		"com.zeligsoft.domain.omg.corba.dsl.IDL.IDLComment");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStructTypeAccess().getMembersMemberParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getStructTypeAccess().getMembersMemberParserRuleCall_6_0()); 
 	    }
-		lv_members_5_0=ruleMember		{
+		lv_members_7_0=ruleMember		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getStructTypeRule());
 	        }
        		add(
        			$current, 
        			"members",
-        		lv_members_5_0, 
+        		lv_members_7_0, 
         		"com.zeligsoft.domain.omg.corba.dsl.IDL.Member");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_6='}' 
+)*	otherlv_8='}' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getStructTypeAccess().getRightCurlyBracketKeyword_6());
+    	newLeafNode(otherlv_8, grammarAccess.getStructTypeAccess().getRightCurlyBracketKeyword_7());
     }
 )
 ;
@@ -5821,15 +5852,35 @@ ruleUnionType returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='union' 
+(((
+(
+		lv_extensibility_0_0=	'@final' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getUnionTypeAccess().getUnionKeyword_0());
+        newLeafNode(lv_extensibility_0_0, grammarAccess.getUnionTypeAccess().getExtensibilityFinalKeyword_0_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getUnionTypeRule());
+	        }
+       		setWithLastConsumed($current, "extensibility", lv_extensibility_0_0, "@final");
+	    }
+
+)
+)
+    |	otherlv_1='@appendable' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getUnionTypeAccess().getAppendableKeyword_0_1());
+    }
+)?	otherlv_2='union' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getUnionTypeAccess().getUnionKeyword_1());
     }
 (
 (
-		lv_name_1_0=RULE_ID
+		lv_name_3_0=RULE_ID
 		{
-			newLeafNode(lv_name_1_0, grammarAccess.getUnionTypeAccess().getNameIDTerminalRuleCall_1_0()); 
+			newLeafNode(lv_name_3_0, grammarAccess.getUnionTypeAccess().getNameIDTerminalRuleCall_2_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -5838,7 +5889,7 @@ ruleUnionType returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_1_0, 
+        		lv_name_3_0, 
         		"com.zeligsoft.domain.omg.corba.dsl.IDL.ID");
 	    }
 
@@ -5846,76 +5897,76 @@ ruleUnionType returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getUnionTypeAccess().getCommentsIDLCommentParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getUnionTypeAccess().getCommentsIDLCommentParserRuleCall_3_0()); 
 	    }
-		lv_comments_2_0=ruleIDLComment		{
+		lv_comments_4_0=ruleIDLComment		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getUnionTypeRule());
 	        }
        		add(
        			$current, 
        			"comments",
-        		lv_comments_2_0, 
+        		lv_comments_4_0, 
         		"com.zeligsoft.domain.omg.corba.dsl.IDL.IDLComment");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_3='switch' 
+)*	otherlv_5='switch' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getUnionTypeAccess().getSwitchKeyword_3());
+    	newLeafNode(otherlv_5, grammarAccess.getUnionTypeAccess().getSwitchKeyword_4());
     }
-	otherlv_4='(' 
+	otherlv_6='(' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getUnionTypeAccess().getLeftParenthesisKeyword_4());
+    	newLeafNode(otherlv_6, grammarAccess.getUnionTypeAccess().getLeftParenthesisKeyword_5());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getUnionTypeAccess().getSwitchSwitchTypeSpecParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getUnionTypeAccess().getSwitchSwitchTypeSpecParserRuleCall_6_0()); 
 	    }
-		lv_switch_5_0=ruleSwitchTypeSpec		{
+		lv_switch_7_0=ruleSwitchTypeSpec		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getUnionTypeRule());
 	        }
        		set(
        			$current, 
        			"switch",
-        		lv_switch_5_0, 
+        		lv_switch_7_0, 
         		"com.zeligsoft.domain.omg.corba.dsl.IDL.SwitchTypeSpec");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_6=')' 
+)	otherlv_8=')' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getUnionTypeAccess().getRightParenthesisKeyword_6());
+    	newLeafNode(otherlv_8, grammarAccess.getUnionTypeAccess().getRightParenthesisKeyword_7());
     }
-	otherlv_7='{' 
+	otherlv_9='{' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getUnionTypeAccess().getLeftCurlyBracketKeyword_7());
+    	newLeafNode(otherlv_9, grammarAccess.getUnionTypeAccess().getLeftCurlyBracketKeyword_8());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getUnionTypeAccess().getBodySwitchBodyParserRuleCall_8_0()); 
+	        newCompositeNode(grammarAccess.getUnionTypeAccess().getBodySwitchBodyParserRuleCall_9_0()); 
 	    }
-		lv_body_8_0=ruleSwitchBody		{
+		lv_body_10_0=ruleSwitchBody		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getUnionTypeRule());
 	        }
        		set(
        			$current, 
        			"body",
-        		lv_body_8_0, 
+        		lv_body_10_0, 
         		"com.zeligsoft.domain.omg.corba.dsl.IDL.SwitchBody");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_9='}' 
+)	otherlv_11='}' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getUnionTypeAccess().getRightCurlyBracketKeyword_9());
+    	newLeafNode(otherlv_11, grammarAccess.getUnionTypeAccess().getRightCurlyBracketKeyword_10());
     }
 )
 ;

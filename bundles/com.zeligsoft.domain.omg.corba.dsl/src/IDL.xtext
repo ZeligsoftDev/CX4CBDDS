@@ -333,7 +333,7 @@ ArrayDeclarator :
 	id=ID("["size+=ConstExp"]")+;
 	
 StructType :
-	"struct" name=ID (comments+=IDLComment)* "{" (comments+=IDLComment)* (members+=Member)* "}";
+	(isAppendable?="@appendable" | isFinal?="@final")? "struct" name=ID (comments+=IDLComment)* "{" (comments+=IDLComment)* (members+=Member)* "}";
 
 TypeDecl :
 	"typedef" 	TypeDeclarator 
@@ -358,7 +358,7 @@ ConstrTypeSpec :
 	StructType | UnionType | EnumType;
 			
 UnionType :
-	"union" name=ID (comments+=IDLComment)* "switch" "(" switch=SwitchTypeSpec ")" "{" body=SwitchBody "}";
+	(extensibility="@final" | "@appendable")? "union" name=ID (comments+=IDLComment)* "switch" "(" switch=SwitchTypeSpec ")" "{" body=SwitchBody "}";
 
 SwitchTypeSpec :
 	IntegerType | CharType | BooleanType | EnumType | ScopedName;
@@ -624,7 +624,7 @@ TemplateModuleRef :
 	
 IDLComment :
 	body=SL_COMMENT;
- 
+    
 //Need to define some literals that are not used, otherwise parser will
 //freeze the application
 terminal UNUSED_LITERAL : "('?')";

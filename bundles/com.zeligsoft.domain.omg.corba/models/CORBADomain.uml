@@ -329,6 +329,7 @@ self.operation->forAll(a1 | self.oclAsType(uml::Interface).allParents()->select(
         <generalization xmi:type="uml:Generalization" xmi:id="_VVRnEMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_kbkzUMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_QpBnIMPPEd6u_6T1TQ_XYQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_HdQgsCLhEeyPuNj-h-jRIw" general="_7hFCkCLgEeyPuNj-h-jRIw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_sPQsAMJeEd6QAZgNaBtgeQ" name="members" visibility="public" type="_THaTQMJdEd6QAZgNaBtgeQ" aggregation="composite" association="_sPPd4MJeEd6QAZgNaBtgeQ">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sPRTEMJeEd6QAZgNaBtgeQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sPRTEcJeEd6QAZgNaBtgeQ" value="*"/>
@@ -374,6 +375,7 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
         <generalization xmi:type="uml:Generalization" xmi:id="_UOoIEMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_mLG3QMPJEd6u_6T1TQ_XYQ" general="_8UNR0MPIEd6u_6T1TQ_XYQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_RWlQsMPPEd6u_6T1TQ_XYQ" general="_5qa9YMPOEd6u_6T1TQ_XYQ"/>
+        <generalization xmi:type="uml:Generalization" xmi:id="_MG_E4CLhEeyPuNj-h-jRIw" general="_7hFCkCLgEeyPuNj-h-jRIw"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_TgljkEk3Ed2eBKZvQ89d6g" name="CXUnionField">
         <generalization xmi:type="uml:Generalization" xmi:id="_ZTUb4MJdEd6QAZgNaBtgeQ" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
@@ -738,6 +740,15 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5lUDkCn-EeOV59vr0QbsTQ" value="1"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5lUDkSn-EeOV59vr0QbsTQ" value="1"/>
         </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_7hFCkCLgEeyPuNj-h-jRIw" name="Extensible">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_T3RKUCLhEeyPuNj-h-jRIw" name="extensibility" type="_R_0ggCLhEeyPuNj-h-jRIw">
+          <defaultValue xmi:type="uml:InstanceValue" xmi:id="_ciVdACLhEeyPuNj-h-jRIw" instance="_WHJiQCLhEeyPuNj-h-jRIw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_R_0ggCLhEeyPuNj-h-jRIw" name="ExtensibilityKind">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_WHJiQCLhEeyPuNj-h-jRIw" name="Final"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_W6S2cCLhEeyPuNj-h-jRIw" name="Appendable"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_PaBzEExGEd2q8K1oAnPrnA" name="CXPrimitives">
@@ -1193,4 +1204,11 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
   <zdl:DomainGeneralization xmi:id="_cTgtUIbkEeSjd8J8ZjsuPQ" base_Generalization="_cTb00IbkEeSjd8J8ZjsuPQ"/>
   <standard:ModelLibrary xmi:id="_DH4oEEk9Ed263OrXyW13Cg" base_Package="_NRAMoAwOEdmFcaeZXPdWAQ"/>
   <zdl:DomainAttribute xmi:id="_g-7VcN1uEeqydOYSdMj1Fg" base_Property="_g-2c8N1uEeqydOYSdMj1Fg"/>
+  <zdl:DomainConcept xmi:id="_7hFCkSLgEeyPuNj-h-jRIw" base_Class="_7hFCkCLgEeyPuNj-h-jRIw"/>
+  <zdl:DomainGeneralization xmi:id="_IrmjICLhEeyPuNj-h-jRIw" base_Generalization="_HdQgsCLhEeyPuNj-h-jRIw"/>
+  <zdl:DomainGeneralization xmi:id="_M2OJcCLhEeyPuNj-h-jRIw" base_Generalization="_MG_E4CLhEeyPuNj-h-jRIw"/>
+  <zdl:DomainEnum xmi:id="_R_0ggSLhEeyPuNj-h-jRIw" base_DataType="_R_0ggCLhEeyPuNj-h-jRIw" base_Enumeration="_R_0ggCLhEeyPuNj-h-jRIw"/>
+  <zdl:DomainAttribute xmi:id="_T3RKUSLhEeyPuNj-h-jRIw" base_Property="_T3RKUCLhEeyPuNj-h-jRIw"/>
+  <zdl:DomainEnumLiteral xmi:id="_WHTTQCLhEeyPuNj-h-jRIw" base_EnumerationLiteral="_WHJiQCLhEeyPuNj-h-jRIw"/>
+  <zdl:DomainEnumLiteral xmi:id="_W6XH4CLhEeyPuNj-h-jRIw" base_EnumerationLiteral="_W6S2cCLhEeyPuNj-h-jRIw"/>
 </xmi:XMI>

@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -119,8 +120,8 @@ public class GenDomainEnumImpl extends GenDomainDataTypeImpl implements GenDomai
 	@Override
 	public EList<GenDomainEnumLiteral> getLiterals() {
 		if (literals == null) {
-			literals = new EObjectContainmentWithInverseEList<GenDomainEnumLiteral>(GenDomainEnumLiteral.class, this,
-					ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL, ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION);
+			literals = new EObjectContainmentEList<GenDomainEnumLiteral>(GenDomainEnumLiteral.class, this,
+					ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL);
 		}
 		return literals;
 	}
@@ -149,21 +150,6 @@ public class GenDomainEnumImpl extends GenDomainDataTypeImpl implements GenDomai
 			return literal;
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getLiterals()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

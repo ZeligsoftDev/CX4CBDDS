@@ -27,9 +27,9 @@ import org.eclipse.uml2.uml.Property;
  * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getUmlMetaattribute <em>Uml Metaattribute</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept <em>Concept</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getDomainAttribute <em>Domain Attribute</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#isRhapsodySuppressed <em>Is Rhapsody Suppressed</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept <em>Concept</em>}</li>
  * </ul>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainStructuralFeature()
@@ -109,7 +109,7 @@ public interface GenDomainStructuralFeature extends GenDomainNamedElement, GenDo
 	 * @return the value of the '<em>Is Rhapsody Suppressed</em>' attribute.
 	 * @see #setIsRhapsodySuppressed(boolean)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainStructuralFeature_IsRhapsodySuppressed()
-	 * @model default="false" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isRhapsodySuppressed();
@@ -125,8 +125,7 @@ public interface GenDomainStructuralFeature extends GenDomainNamedElement, GenDo
 	void setIsRhapsodySuppressed(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Concept</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getFeatures <em>Feature</em>}'.
+	 * Returns the value of the '<em><b>Concept</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -139,21 +138,20 @@ public interface GenDomainStructuralFeature extends GenDomainNamedElement, GenDo
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Concept</em>' container reference.
+	 * @return the value of the '<em>Concept</em>' reference.
 	 * @see #setConcept(GenDomainConcept)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainStructuralFeature_Concept()
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getFeatures
-	 * @model opposite="feature" required="true" transient="false" ordered="false"
+	 * @model required="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainConcept getConcept();
 
 	/**
-	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept <em>Concept</em>}' container reference.
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept <em>Concept</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Concept</em>' container reference.
+	 * @param value the new value of the '<em>Concept</em>' reference.
 	 * @see #getConcept()
 	 * @generated
 	 */

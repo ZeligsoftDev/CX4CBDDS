@@ -547,11 +547,18 @@ public class DDS4CCMSwitch<T> extends Switch<T> {
 				CXStruct cxStruct = (CXStruct)theEObject;
 				T result = caseCXStruct(cxStruct);
 				if (result == null) result = caseCXConstructed(cxStruct);
+				if (result == null) result = caseExtensible(cxStruct);
 				if (result == null) result = caseContained(cxStruct);
 				if (result == null) result = caseCXClassifierContained(cxStruct);
 				if (result == null) result = caseCXModuleContained(cxStruct);
 				if (result == null) result = caseCXType(cxStruct);
 				if (result == null) result = caseCXNamedElement(cxStruct);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DDS4CCMPackage.EXTENSIBLE: {
+				Extensible extensible = (Extensible)theEObject;
+				T result = caseExtensible(extensible);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -576,6 +583,7 @@ public class DDS4CCMSwitch<T> extends Switch<T> {
 				CXUnion cxUnion = (CXUnion)theEObject;
 				T result = caseCXUnion(cxUnion);
 				if (result == null) result = caseCXConstructed(cxUnion);
+				if (result == null) result = caseExtensible(cxUnion);
 				if (result == null) result = caseContained(cxUnion);
 				if (result == null) result = caseCXClassifierContained(cxUnion);
 				if (result == null) result = caseCXModuleContained(cxUnion);
@@ -975,6 +983,7 @@ public class DDS4CCMSwitch<T> extends Switch<T> {
 				T result = caseDDSMessage(ddsMessage);
 				if (result == null) result = caseCXStruct(ddsMessage);
 				if (result == null) result = caseCXConstructed(ddsMessage);
+				if (result == null) result = caseExtensible(ddsMessage);
 				if (result == null) result = caseContained(ddsMessage);
 				if (result == null) result = caseCXClassifierContained(ddsMessage);
 				if (result == null) result = caseCXModuleContained(ddsMessage);
@@ -2275,6 +2284,21 @@ public class DDS4CCMSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCXStruct(CXStruct object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Extensible</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Extensible</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExtensible(Extensible object) {
 		return null;
 	}
 

@@ -70,7 +70,6 @@ public class MigrationChecker {
 				|| !(partRef.getPage().getActiveEditor() instanceof PapyrusMultiDiagramEditor)) {
 			return;
 		}
-		BaseUIUtil.writeToConsole(NLS.bind(Messages.MigrationChecker_OpenedPapyrusEditor, null));
 		PapyrusMultiDiagramEditor multiEditor = (PapyrusMultiDiagramEditor) partRef.getPage().getActiveEditor();
 		Model model = getModel(multiEditor);
 		if (model != null) {

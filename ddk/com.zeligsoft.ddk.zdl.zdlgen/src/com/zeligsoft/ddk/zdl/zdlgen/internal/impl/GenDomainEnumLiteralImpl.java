@@ -58,6 +58,16 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl implemen
 	protected EnumerationLiteral domainEnumLiteral;
 
 	/**
+	 * The cached value of the '{@link #getEnumeration() <em>Enumeration</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnumeration()
+	 * @generated
+	 * @ordered
+	 */
+	protected GenDomainEnum enumeration;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -120,9 +130,8 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl implemen
 	 */
 	@Override
 	public GenDomainObject basicGetOwner() {
-		GenDomainEnum enumeration = getEnumeration();
-		if (enumeration != null) {
-			return enumeration;
+		if (eIsSet(ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION)) {
+			return basicGetEnumeration();
 		}
 		return super.basicGetOwner();
 	}
@@ -178,9 +187,16 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl implemen
 	 */
 	@Override
 	public GenDomainEnum getEnumeration() {
-		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION)
-			return null;
-		return (GenDomainEnum) eInternalContainer();
+		if (enumeration != null && enumeration.eIsProxy()) {
+			InternalEObject oldEnumeration = (InternalEObject) enumeration;
+			enumeration = (GenDomainEnum) eResolveProxy(oldEnumeration);
+			if (enumeration != oldEnumeration) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION, oldEnumeration, enumeration));
+			}
+		}
+		return enumeration;
 	}
 
 	/**
@@ -188,10 +204,8 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetEnumeration(GenDomainEnum newEnumeration, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newEnumeration, ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION,
-				msgs);
-		return msgs;
+	public GenDomainEnum basicGetEnumeration() {
+		return enumeration;
 	}
 
 	/**
@@ -201,68 +215,11 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl implemen
 	 */
 	@Override
 	public void setEnumeration(GenDomainEnum newEnumeration) {
-		if (newEnumeration != eInternalContainer()
-				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION
-						&& newEnumeration != null)) {
-			if (EcoreUtil.isAncestor(this, newEnumeration))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newEnumeration != null)
-				msgs = ((InternalEObject) newEnumeration).eInverseAdd(this, ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL,
-						GenDomainEnum.class, msgs);
-			msgs = basicSetEnumeration(newEnumeration, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+		GenDomainEnum oldEnumeration = enumeration;
+		enumeration = newEnumeration;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION,
-					newEnumeration, newEnumeration));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION:
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetEnumeration((GenDomainEnum) otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION:
-			return basicSetEnumeration(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION:
-			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_DOMAIN_ENUM__LITERAL,
-					GenDomainEnum.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
+					oldEnumeration, enumeration));
 	}
 
 	/**
@@ -278,7 +235,9 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl implemen
 				return getDomainEnumLiteral();
 			return basicGetDomainEnumLiteral();
 		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION:
-			return getEnumeration();
+			if (resolve)
+				return getEnumeration();
+			return basicGetEnumeration();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -334,7 +293,7 @@ public class GenDomainEnumLiteralImpl extends GenDomainNamedElementImpl implemen
 		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL:
 			return domainEnumLiteral != null;
 		case ZDLGenPackage.GEN_DOMAIN_ENUM_LITERAL__ENUMERATION:
-			return getEnumeration() != null;
+			return enumeration != null;
 		}
 		return super.eIsSet(featureID);
 	}

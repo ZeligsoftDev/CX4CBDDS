@@ -2316,13 +2316,31 @@ public interface IdlPackage extends EPackage
   int STRUCT_TYPE = 78;
 
   /**
+   * The feature id for the '<em><b>Is Appendable</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRUCT_TYPE__IS_APPENDABLE = DEFINITION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Is Final</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRUCT_TYPE__IS_FINAL = DEFINITION_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRUCT_TYPE__NAME = DEFINITION_FEATURE_COUNT + 0;
+  int STRUCT_TYPE__NAME = DEFINITION_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Comments</b></em>' containment reference list.
@@ -2331,7 +2349,7 @@ public interface IdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRUCT_TYPE__COMMENTS = DEFINITION_FEATURE_COUNT + 1;
+  int STRUCT_TYPE__COMMENTS = DEFINITION_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -2340,7 +2358,7 @@ public interface IdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRUCT_TYPE__MEMBERS = DEFINITION_FEATURE_COUNT + 2;
+  int STRUCT_TYPE__MEMBERS = DEFINITION_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Struct Type</em>' class.
@@ -2349,7 +2367,7 @@ public interface IdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRUCT_TYPE_FEATURE_COUNT = DEFINITION_FEATURE_COUNT + 3;
+  int STRUCT_TYPE_FEATURE_COUNT = DEFINITION_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.TypeDeclImpl <em>Type Decl</em>}' class.
@@ -2522,13 +2540,22 @@ public interface IdlPackage extends EPackage
   int UNION_TYPE = 85;
 
   /**
+   * The feature id for the '<em><b>Extensibility</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNION_TYPE__EXTENSIBILITY = TYPE_DECL_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int UNION_TYPE__NAME = TYPE_DECL_FEATURE_COUNT + 0;
+  int UNION_TYPE__NAME = TYPE_DECL_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Comments</b></em>' containment reference list.
@@ -2537,7 +2564,7 @@ public interface IdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int UNION_TYPE__COMMENTS = TYPE_DECL_FEATURE_COUNT + 1;
+  int UNION_TYPE__COMMENTS = TYPE_DECL_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Switch</b></em>' containment reference.
@@ -2546,7 +2573,7 @@ public interface IdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int UNION_TYPE__SWITCH = TYPE_DECL_FEATURE_COUNT + 2;
+  int UNION_TYPE__SWITCH = TYPE_DECL_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -2555,7 +2582,7 @@ public interface IdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int UNION_TYPE__BODY = TYPE_DECL_FEATURE_COUNT + 3;
+  int UNION_TYPE__BODY = TYPE_DECL_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Union Type</em>' class.
@@ -2564,7 +2591,7 @@ public interface IdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int UNION_TYPE_FEATURE_COUNT = TYPE_DECL_FEATURE_COUNT + 4;
+  int UNION_TYPE_FEATURE_COUNT = TYPE_DECL_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.impl.SwitchTypeSpecImpl <em>Switch Type Spec</em>}' class.
@@ -6591,6 +6618,28 @@ public interface IdlPackage extends EPackage
   EClass getStructType();
 
   /**
+   * Returns the meta object for the attribute '{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#isIsAppendable <em>Is Appendable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Appendable</em>'.
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.StructType#isIsAppendable()
+   * @see #getStructType()
+   * @generated
+   */
+  EAttribute getStructType_IsAppendable();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#isIsFinal <em>Is Final</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Final</em>'.
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.StructType#isIsFinal()
+   * @see #getStructType()
+   * @generated
+   */
+  EAttribute getStructType_IsFinal();
+
+  /**
    * Returns the meta object for the attribute '{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6725,6 +6774,17 @@ public interface IdlPackage extends EPackage
    * @generated
    */
   EClass getUnionType();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.zeligsoft.domain.omg.corba.dsl.idl.UnionType#getExtensibility <em>Extensibility</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Extensibility</em>'.
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.UnionType#getExtensibility()
+   * @see #getUnionType()
+   * @generated
+   */
+  EAttribute getUnionType_Extensibility();
 
   /**
    * Returns the meta object for the attribute '{@link com.zeligsoft.domain.omg.corba.dsl.idl.UnionType#getName <em>Name</em>}'.
@@ -10193,6 +10253,22 @@ public interface IdlPackage extends EPackage
     EClass STRUCT_TYPE = eINSTANCE.getStructType();
 
     /**
+     * The meta object literal for the '<em><b>Is Appendable</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRUCT_TYPE__IS_APPENDABLE = eINSTANCE.getStructType_IsAppendable();
+
+    /**
+     * The meta object literal for the '<em><b>Is Final</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRUCT_TYPE__IS_FINAL = eINSTANCE.getStructType_IsFinal();
+
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -10309,6 +10385,14 @@ public interface IdlPackage extends EPackage
      * @generated
      */
     EClass UNION_TYPE = eINSTANCE.getUnionType();
+
+    /**
+     * The meta object literal for the '<em><b>Extensibility</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute UNION_TYPE__EXTENSIBILITY = eINSTANCE.getUnionType_Extensibility();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

@@ -2878,13 +2878,22 @@ public interface DDS4CCMPackage extends EPackage {
 	int CX_STRUCT__BASE_DATA_TYPE = CX_CONSTRUCTED__BASE_DATA_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Extensibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CX_STRUCT__EXTENSIBILITY = CX_CONSTRUCTED_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>CX Struct</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CX_STRUCT_FEATURE_COUNT = CX_CONSTRUCTED_FEATURE_COUNT + 0;
+	int CX_STRUCT_FEATURE_COUNT = CX_CONSTRUCTED_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>CX Struct</em>' class.
@@ -2896,6 +2905,43 @@ public interface DDS4CCMPackage extends EPackage {
 	int CX_STRUCT_OPERATION_COUNT = CX_CONSTRUCTED_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link dds4ccm.impl.ExtensibleImpl <em>Extensible</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dds4ccm.impl.ExtensibleImpl
+	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getExtensible()
+	 * @generated
+	 */
+	int EXTENSIBLE = 63;
+
+	/**
+	 * The feature id for the '<em><b>Extensibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSIBLE__EXTENSIBILITY = 0;
+
+	/**
+	 * The number of structural features of the '<em>Extensible</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSIBLE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Extensible</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTENSIBLE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link dds4ccm.impl.CXSupportsImpl <em>CX Supports</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2903,7 +2949,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getCXSupports()
 	 * @generated
 	 */
-	int CX_SUPPORTS = 63;
+	int CX_SUPPORTS = 64;
 
 	/**
 	 * The feature id for the '<em><b>Base Generalization</b></em>' reference.
@@ -2940,7 +2986,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getCXTypeDef()
 	 * @generated
 	 */
-	int CX_TYPE_DEF = 64;
+	int CX_TYPE_DEF = 65;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -2995,7 +3041,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getCXUnion()
 	 * @generated
 	 */
-	int CX_UNION = 65;
+	int CX_UNION = 66;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -3016,13 +3062,22 @@ public interface DDS4CCMPackage extends EPackage {
 	int CX_UNION__BASE_DATA_TYPE = CX_CONSTRUCTED__BASE_DATA_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Extensibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CX_UNION__EXTENSIBILITY = CX_CONSTRUCTED_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>CX Union</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CX_UNION_FEATURE_COUNT = CX_CONSTRUCTED_FEATURE_COUNT + 0;
+	int CX_UNION_FEATURE_COUNT = CX_CONSTRUCTED_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>CX Union</em>' class.
@@ -3041,7 +3096,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getCXValue()
 	 * @generated
 	 */
-	int CX_VALUE = 66;
+	int CX_VALUE = 67;
 
 	/**
 	 * The feature id for the '<em><b>Is Custom</b></em>' attribute.
@@ -3096,7 +3151,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getCXValueFactory()
 	 * @generated
 	 */
-	int CX_VALUE_FACTORY = 67;
+	int CX_VALUE_FACTORY = 68;
 
 	/**
 	 * The feature id for the '<em><b>Base Operation</b></em>' reference.
@@ -3133,7 +3188,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getCXModule()
 	 * @generated
 	 */
-	int CX_MODULE = 68;
+	int CX_MODULE = 69;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -3179,7 +3234,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getCXAttribute()
 	 * @generated
 	 */
-	int CX_ATTRIBUTE = 69;
+	int CX_ATTRIBUTE = 70;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -3252,7 +3307,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getCXOperation()
 	 * @generated
 	 */
-	int CX_OPERATION = 70;
+	int CX_OPERATION = 71;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -3325,7 +3380,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getCXField()
 	 * @generated
 	 */
-	int CX_FIELD = 71;
+	int CX_FIELD = 72;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -3389,7 +3444,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getCXParameter()
 	 * @generated
 	 */
-	int CX_PARAMETER = 72;
+	int CX_PARAMETER = 73;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -3435,7 +3490,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getStateMember()
 	 * @generated
 	 */
-	int STATE_MEMBER = 73;
+	int STATE_MEMBER = 74;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -3481,7 +3536,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getConnectorDef()
 	 * @generated
 	 */
-	int CONNECTOR_DEF = 74;
+	int CONNECTOR_DEF = 75;
 
 	/**
 	 * The feature id for the '<em><b>Base Component</b></em>' reference.
@@ -3527,7 +3582,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getConnectorFragment()
 	 * @generated
 	 */
-	int CONNECTOR_FRAGMENT = 75;
+	int CONNECTOR_FRAGMENT = 76;
 
 	/**
 	 * The feature id for the '<em><b>Base Component</b></em>' reference.
@@ -3564,7 +3619,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getFragmentImplementation()
 	 * @generated
 	 */
-	int FRAGMENT_IMPLEMENTATION = 76;
+	int FRAGMENT_IMPLEMENTATION = 77;
 
 	/**
 	 * The feature id for the '<em><b>Base Component</b></em>' reference.
@@ -3601,7 +3656,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getFragmentAssembly()
 	 * @generated
 	 */
-	int FRAGMENT_ASSEMBLY = 77;
+	int FRAGMENT_ASSEMBLY = 78;
 
 	/**
 	 * The feature id for the '<em><b>Base Component</b></em>' reference.
@@ -3638,7 +3693,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getConnectorImplementation()
 	 * @generated
 	 */
-	int CONNECTOR_IMPLEMENTATION = 78;
+	int CONNECTOR_IMPLEMENTATION = 79;
 
 	/**
 	 * The feature id for the '<em><b>Base Component</b></em>' reference.
@@ -3675,7 +3730,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getConnectorAssembly()
 	 * @generated
 	 */
-	int CONNECTOR_ASSEMBLY = 79;
+	int CONNECTOR_ASSEMBLY = 80;
 
 	/**
 	 * The feature id for the '<em><b>Base Component</b></em>' reference.
@@ -3712,7 +3767,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getFragmentPart()
 	 * @generated
 	 */
-	int FRAGMENT_PART = 80;
+	int FRAGMENT_PART = 81;
 
 	/**
 	 * The feature id for the '<em><b>Base Property</b></em>' reference.
@@ -3749,7 +3804,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTypedConnector()
 	 * @generated
 	 */
-	int TYPED_CONNECTOR = 81;
+	int TYPED_CONNECTOR = 82;
 
 	/**
 	 * The feature id for the '<em><b>Port End</b></em>' reference list.
@@ -3804,7 +3859,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTypeParameter()
 	 * @generated
 	 */
-	int TYPE_PARAMETER = 82;
+	int TYPE_PARAMETER = 83;
 
 	/**
 	 * The feature id for the '<em><b>Constraint</b></em>' attribute.
@@ -3850,7 +3905,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTemplateModule()
 	 * @generated
 	 */
-	int TEMPLATE_MODULE = 83;
+	int TEMPLATE_MODULE = 84;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -3896,7 +3951,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getModuleInstantiation()
 	 * @generated
 	 */
-	int MODULE_INSTANTIATION = 84;
+	int MODULE_INSTANTIATION = 85;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -3942,7 +3997,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getParameterBinding()
 	 * @generated
 	 */
-	int PARAMETER_BINDING = 85;
+	int PARAMETER_BINDING = 86;
 
 	/**
 	 * The feature id for the '<em><b>Base Template Parameter Substitution</b></em>' reference.
@@ -3979,7 +4034,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTemplateModuleAlias()
 	 * @generated
 	 */
-	int TEMPLATE_MODULE_ALIAS = 86;
+	int TEMPLATE_MODULE_ALIAS = 87;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -4016,7 +4071,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getModuleBinding()
 	 * @generated
 	 */
-	int MODULE_BINDING = 87;
+	int MODULE_BINDING = 88;
 
 	/**
 	 * The feature id for the '<em><b>Base Template Binding</b></em>' reference.
@@ -4053,7 +4108,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTemplateSignature()
 	 * @generated
 	 */
-	int TEMPLATE_SIGNATURE = 88;
+	int TEMPLATE_SIGNATURE = 89;
 
 	/**
 	 * The feature id for the '<em><b>Base Template Signature</b></em>' reference.
@@ -4090,7 +4145,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getInterfacePort()
 	 * @generated
 	 */
-	int INTERFACE_PORT = 89;
+	int INTERFACE_PORT = 90;
 
 	/**
 	 * The feature id for the '<em><b>Wiring</b></em>' attribute.
@@ -4181,7 +4236,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getNative()
 	 * @generated
 	 */
-	int NATIVE = 90;
+	int NATIVE = 91;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -4227,7 +4282,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDataSpace()
 	 * @generated
 	 */
-	int DATA_SPACE = 91;
+	int DATA_SPACE = 92;
 
 	/**
 	 * The feature id for the '<em><b>Base Property</b></em>' reference.
@@ -4273,7 +4328,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTopic()
 	 * @generated
 	 */
-	int TOPIC = 92;
+	int TOPIC = 93;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' attribute.
@@ -4328,7 +4383,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTopicField()
 	 * @generated
 	 */
-	int TOPIC_FIELD = 93;
+	int TOPIC_FIELD = 94;
 
 	/**
 	 * The feature id for the '<em><b>Base Property</b></em>' reference.
@@ -4365,7 +4420,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getqosPolicy()
 	 * @generated
 	 */
-	int QOS_POLICY = 94;
+	int QOS_POLICY = 95;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -4402,7 +4457,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#gethistoryQosPolicy()
 	 * @generated
 	 */
-	int HISTORY_QOS_POLICY = 95;
+	int HISTORY_QOS_POLICY = 96;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -4457,7 +4512,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getlifespanQosPolicy()
 	 * @generated
 	 */
-	int LIFESPAN_QOS_POLICY = 96;
+	int LIFESPAN_QOS_POLICY = 97;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -4503,7 +4558,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDuration()
 	 * @generated
 	 */
-	int DURATION = 97;
+	int DURATION = 98;
 
 	/**
 	 * The feature id for the '<em><b>Second</b></em>' attribute.
@@ -4549,7 +4604,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getownershipQosPolicy()
 	 * @generated
 	 */
-	int OWNERSHIP_QOS_POLICY = 98;
+	int OWNERSHIP_QOS_POLICY = 99;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -4595,7 +4650,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getosQosPolicy()
 	 * @generated
 	 */
-	int OS_QOS_POLICY = 99;
+	int OS_QOS_POLICY = 100;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -4641,7 +4696,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getwdlQosPolicy()
 	 * @generated
 	 */
-	int WDL_QOS_POLICY = 100;
+	int WDL_QOS_POLICY = 101;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -4687,7 +4742,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getrdlQosPolicy()
 	 * @generated
 	 */
-	int RDL_QOS_POLICY = 101;
+	int RDL_QOS_POLICY = 102;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -4742,7 +4797,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getudQosPolicy()
 	 * @generated
 	 */
-	int UD_QOS_POLICY = 102;
+	int UD_QOS_POLICY = 103;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -4788,7 +4843,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#gettdQosPolicy()
 	 * @generated
 	 */
-	int TD_QOS_POLICY = 103;
+	int TD_QOS_POLICY = 104;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -4834,7 +4889,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#gettpQosPolicy()
 	 * @generated
 	 */
-	int TP_QOS_POLICY = 104;
+	int TP_QOS_POLICY = 105;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -4880,7 +4935,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getdeadlineQosPolicy()
 	 * @generated
 	 */
-	int DEADLINE_QOS_POLICY = 105;
+	int DEADLINE_QOS_POLICY = 106;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -4926,7 +4981,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getlbQosPolicy()
 	 * @generated
 	 */
-	int LB_QOS_POLICY = 106;
+	int LB_QOS_POLICY = 107;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -4972,7 +5027,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#gettbfQosPolicy()
 	 * @generated
 	 */
-	int TBF_QOS_POLICY = 107;
+	int TBF_QOS_POLICY = 108;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5018,7 +5073,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getgdQosPolicy()
 	 * @generated
 	 */
-	int GD_QOS_POLICY = 108;
+	int GD_QOS_POLICY = 109;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5064,7 +5119,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getefQosPolicy()
 	 * @generated
 	 */
-	int EF_QOS_POLICY = 109;
+	int EF_QOS_POLICY = 110;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5110,7 +5165,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getrlQosPolicy()
 	 * @generated
 	 */
-	int RL_QOS_POLICY = 110;
+	int RL_QOS_POLICY = 111;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5174,7 +5229,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getpresentationQosPolicy()
 	 * @generated
 	 */
-	int PRESENTATION_QOS_POLICY = 111;
+	int PRESENTATION_QOS_POLICY = 112;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5238,7 +5293,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getpartitionQosPolicy()
 	 * @generated
 	 */
-	int PARTITION_QOS_POLICY = 112;
+	int PARTITION_QOS_POLICY = 113;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5284,7 +5339,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getreliabilityQosPolicy()
 	 * @generated
 	 */
-	int RELIABILITY_QOS_POLICY = 113;
+	int RELIABILITY_QOS_POLICY = 114;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5339,7 +5394,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getdsQosPolicy()
 	 * @generated
 	 */
-	int DS_QOS_POLICY = 114;
+	int DS_QOS_POLICY = 115;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5430,7 +5485,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getlivelinessQosPolicy()
 	 * @generated
 	 */
-	int LIVELINESS_QOS_POLICY = 115;
+	int LIVELINESS_QOS_POLICY = 116;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5485,7 +5540,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getdurabilityQosPolicy()
 	 * @generated
 	 */
-	int DURABILITY_QOS_POLICY = 116;
+	int DURABILITY_QOS_POLICY = 117;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5531,7 +5586,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getdoQosPolicy()
 	 * @generated
 	 */
-	int DO_QOS_POLICY = 117;
+	int DO_QOS_POLICY = 118;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5577,7 +5632,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getqosProperty()
 	 * @generated
 	 */
-	int QOS_PROPERTY = 118;
+	int QOS_PROPERTY = 119;
 
 	/**
 	 * The feature id for the '<em><b>Base Property</b></em>' reference.
@@ -5614,7 +5669,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDDSMessage()
 	 * @generated
 	 */
-	int DDS_MESSAGE = 119;
+	int DDS_MESSAGE = 120;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -5633,6 +5688,15 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @ordered
 	 */
 	int DDS_MESSAGE__BASE_DATA_TYPE = CX_STRUCT__BASE_DATA_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Extensibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DDS_MESSAGE__EXTENSIBILITY = CX_STRUCT__EXTENSIBILITY;
 
 	/**
 	 * The number of structural features of the '<em>DDS Message</em>' class.
@@ -5660,7 +5724,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getMessageField()
 	 * @generated
 	 */
-	int MESSAGE_FIELD = 120;
+	int MESSAGE_FIELD = 121;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -5733,7 +5797,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getQoSProfile()
 	 * @generated
 	 */
-	int QO_SPROFILE = 121;
+	int QO_SPROFILE = 122;
 
 	/**
 	 * The feature id for the '<em><b>Filename</b></em>' attribute.
@@ -5779,7 +5843,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getQoSForEntity()
 	 * @generated
 	 */
-	int QO_SFOR_ENTITY = 122;
+	int QO_SFOR_ENTITY = 123;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5816,7 +5880,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getQoSEntity()
 	 * @generated
 	 */
-	int QO_SENTITY = 123;
+	int QO_SENTITY = 124;
 
 	/**
 	 * The feature id for the '<em><b>Base Property</b></em>' reference.
@@ -5853,7 +5917,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDataReaderWriterQoS()
 	 * @generated
 	 */
-	int DATA_READER_WRITER_QO_S = 125;
+	int DATA_READER_WRITER_QO_S = 126;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5890,7 +5954,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDataReaderQoS()
 	 * @generated
 	 */
-	int DATA_READER_QO_S = 124;
+	int DATA_READER_QO_S = 125;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5927,7 +5991,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getParticipantQoS()
 	 * @generated
 	 */
-	int PARTICIPANT_QO_S = 126;
+	int PARTICIPANT_QO_S = 127;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -5964,7 +6028,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getPublisherSubscriberQoS()
 	 * @generated
 	 */
-	int PUBLISHER_SUBSCRIBER_QO_S = 128;
+	int PUBLISHER_SUBSCRIBER_QO_S = 129;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -6001,7 +6065,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getPublisherQoS()
 	 * @generated
 	 */
-	int PUBLISHER_QO_S = 127;
+	int PUBLISHER_QO_S = 128;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -6038,7 +6102,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getSubscriberQoS()
 	 * @generated
 	 */
-	int SUBSCRIBER_QO_S = 129;
+	int SUBSCRIBER_QO_S = 130;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -6075,7 +6139,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTopicQoS()
 	 * @generated
 	 */
-	int TOPIC_QO_S = 130;
+	int TOPIC_QO_S = 131;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -6112,7 +6176,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDataWriterQoS()
 	 * @generated
 	 */
-	int DATA_WRITER_QO_S = 131;
+	int DATA_WRITER_QO_S = 132;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -6149,7 +6213,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDomain()
 	 * @generated
 	 */
-	int DOMAIN = 132;
+	int DOMAIN = 133;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -6204,7 +6268,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getNode()
 	 * @generated
 	 */
-	int NODE = 133;
+	int NODE = 134;
 
 	/**
 	 * The feature id for the '<em><b>Base Component</b></em>' reference.
@@ -6241,7 +6305,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getNodeInstance()
 	 * @generated
 	 */
-	int NODE_INSTANCE = 134;
+	int NODE_INSTANCE = 135;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -6287,7 +6351,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getInterconnect()
 	 * @generated
 	 */
-	int INTERCONNECT = 135;
+	int INTERCONNECT = 136;
 
 	/**
 	 * The feature id for the '<em><b>Base Component</b></em>' reference.
@@ -6324,7 +6388,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getInterconnectInstance()
 	 * @generated
 	 */
-	int INTERCONNECT_INSTANCE = 136;
+	int INTERCONNECT_INSTANCE = 137;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -6370,7 +6434,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getBridge()
 	 * @generated
 	 */
-	int BRIDGE = 137;
+	int BRIDGE = 138;
 
 	/**
 	 * The feature id for the '<em><b>Base Component</b></em>' reference.
@@ -6407,7 +6471,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getBridgeInstance()
 	 * @generated
 	 */
-	int BRIDGE_INSTANCE = 138;
+	int BRIDGE_INSTANCE = 139;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -6453,7 +6517,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getRequirementSatisfier()
 	 * @generated
 	 */
-	int REQUIREMENT_SATISFIER = 140;
+	int REQUIREMENT_SATISFIER = 141;
 
 	/**
 	 * The feature id for the '<em><b>Resource Type</b></em>' attribute list.
@@ -6499,7 +6563,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getResource()
 	 * @generated
 	 */
-	int RESOURCE = 139;
+	int RESOURCE = 140;
 
 	/**
 	 * The feature id for the '<em><b>Resource Type</b></em>' attribute list.
@@ -6545,7 +6609,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getResourceProperty()
 	 * @generated
 	 */
-	int RESOURCE_PROPERTY = 141;
+	int RESOURCE_PROPERTY = 142;
 
 	/**
 	 * The feature id for the '<em><b>Base Property</b></em>' reference.
@@ -6582,7 +6646,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getSharedResource()
 	 * @generated
 	 */
-	int SHARED_RESOURCE = 142;
+	int SHARED_RESOURCE = 143;
 
 	/**
 	 * The feature id for the '<em><b>Base Property</b></em>' reference.
@@ -6619,7 +6683,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getSatisfierProperty()
 	 * @generated
 	 */
-	int SATISFIER_PROPERTY = 143;
+	int SATISFIER_PROPERTY = 144;
 
 	/**
 	 * The feature id for the '<em><b>Dynamic</b></em>' attribute.
@@ -6683,7 +6747,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getRequirement()
 	 * @generated
 	 */
-	int REQUIREMENT = 144;
+	int REQUIREMENT = 145;
 
 	/**
 	 * The feature id for the '<em><b>Property</b></em>' reference list.
@@ -6738,7 +6802,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDeployment()
 	 * @generated
 	 */
-	int DEPLOYMENT = 146;
+	int DEPLOYMENT = 147;
 
 	/**
 	 * The feature id for the '<em><b>Base Component</b></em>' reference.
@@ -6775,7 +6839,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDeploymentPlan()
 	 * @generated
 	 */
-	int DEPLOYMENT_PLAN = 145;
+	int DEPLOYMENT_PLAN = 146;
 
 	/**
 	 * The feature id for the '<em><b>Base Component</b></em>' reference.
@@ -6821,7 +6885,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getAllocation()
 	 * @generated
 	 */
-	int ALLOCATION = 147;
+	int ALLOCATION = 148;
 
 	/**
 	 * The feature id for the '<em><b>Base Dependency</b></em>' reference.
@@ -6858,7 +6922,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDeploymentPart()
 	 * @generated
 	 */
-	int DEPLOYMENT_PART = 148;
+	int DEPLOYMENT_PART = 149;
 
 	/**
 	 * The feature id for the '<em><b>Nested Part</b></em>' reference list.
@@ -6922,7 +6986,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getConfiguration()
 	 * @generated
 	 */
-	int CONFIGURATION = 149;
+	int CONFIGURATION = 150;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -6968,7 +7032,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getComponentDeploymentPart()
 	 * @generated
 	 */
-	int COMPONENT_DEPLOYMENT_PART = 150;
+	int COMPONENT_DEPLOYMENT_PART = 151;
 
 	/**
 	 * The feature id for the '<em><b>Nested Part</b></em>' reference list.
@@ -7050,7 +7114,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getBuildConfiguration()
 	 * @generated
 	 */
-	int BUILD_CONFIGURATION = 151;
+	int BUILD_CONFIGURATION = 152;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -7096,7 +7160,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getConfigurationSlot()
 	 * @generated
 	 */
-	int CONFIGURATION_SLOT = 152;
+	int CONFIGURATION_SLOT = 153;
 
 	/**
 	 * The feature id for the '<em><b>Slot Kind</b></em>' attribute.
@@ -7142,7 +7206,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTargetAssemblyConnector()
 	 * @generated
 	 */
-	int TARGET_ASSEMBLY_CONNECTOR = 153;
+	int TARGET_ASSEMBLY_CONNECTOR = 154;
 
 	/**
 	 * The feature id for the '<em><b>Port End</b></em>' reference list.
@@ -7188,7 +7252,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getContainerProcess()
 	 * @generated
 	 */
-	int CONTAINER_PROCESS = 154;
+	int CONTAINER_PROCESS = 155;
 
 	/**
 	 * The feature id for the '<em><b>Base Component</b></em>' reference.
@@ -7225,7 +7289,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTemplateParameterType()
 	 * @generated
 	 */
-	int TEMPLATE_PARAMETER_TYPE = 155;
+	int TEMPLATE_PARAMETER_TYPE = 156;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -7280,7 +7344,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getExtendedPortType()
 	 * @generated
 	 */
-	int EXTENDED_PORT_TYPE = 156;
+	int EXTENDED_PORT_TYPE = 157;
 
 	/**
 	 * The feature id for the '<em><b>Inverse</b></em>' reference.
@@ -7335,7 +7399,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getIDLFileSpecification()
 	 * @generated
 	 */
-	int IDL_FILE_SPECIFICATION = 157;
+	int IDL_FILE_SPECIFICATION = 158;
 
 	/**
 	 * The feature id for the '<em><b>Base Class</b></em>' reference.
@@ -7372,7 +7436,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getIDLFileDependency()
 	 * @generated
 	 */
-	int IDL_FILE_DEPENDENCY = 158;
+	int IDL_FILE_DEPENDENCY = 159;
 
 	/**
 	 * The feature id for the '<em><b>Base Dependency</b></em>' reference.
@@ -7409,7 +7473,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getProperty()
 	 * @generated
 	 */
-	int PROPERTY = 159;
+	int PROPERTY = 160;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -7455,7 +7519,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getConnectorDefaultValueBinding()
 	 * @generated
 	 */
-	int CONNECTOR_DEFAULT_VALUE_BINDING = 160;
+	int CONNECTOR_DEFAULT_VALUE_BINDING = 161;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' reference.
@@ -7510,7 +7574,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getIDLIncludeDependency()
 	 * @generated
 	 */
-	int IDL_INCLUDE_DEPENDENCY = 161;
+	int IDL_INCLUDE_DEPENDENCY = 162;
 
 	/**
 	 * The feature id for the '<em><b>Base Dependency</b></em>' reference.
@@ -7547,7 +7611,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getWorkerFunctionImpl()
 	 * @generated
 	 */
-	int WORKER_FUNCTION_IMPL = 162;
+	int WORKER_FUNCTION_IMPL = 163;
 
 	/**
 	 * The feature id for the '<em><b>Base Opaque Behavior</b></em>' reference.
@@ -7584,7 +7648,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getConnectorStatusListenerConnection()
 	 * @generated
 	 */
-	int CONNECTOR_STATUS_LISTENER_CONNECTION = 163;
+	int CONNECTOR_STATUS_LISTENER_CONNECTION = 164;
 
 	/**
 	 * The feature id for the '<em><b>Port End</b></em>' reference list.
@@ -7630,7 +7694,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getHomeOperation()
 	 * @generated
 	 */
-	int HOME_OPERATION = 165;
+	int HOME_OPERATION = 166;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -7685,7 +7749,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getFinderOperation()
 	 * @generated
 	 */
-	int FINDER_OPERATION = 164;
+	int FINDER_OPERATION = 165;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -7740,7 +7804,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getFactoryOperation()
 	 * @generated
 	 */
-	int FACTORY_OPERATION = 166;
+	int FACTORY_OPERATION = 167;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -7795,7 +7859,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getHomeInstance()
 	 * @generated
 	 */
-	int HOME_INSTANCE = 167;
+	int HOME_INSTANCE = 168;
 
 	/**
 	 * The feature id for the '<em><b>Base Property</b></em>' reference.
@@ -7841,7 +7905,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getHideableElement()
 	 * @generated
 	 */
-	int HIDEABLE_ELEMENT = 168;
+	int HIDEABLE_ELEMENT = 169;
 
 	/**
 	 * The feature id for the '<em><b>Base Named Element</b></em>' reference.
@@ -7878,7 +7942,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getPerPortConnectorTypeDeploymentPart()
 	 * @generated
 	 */
-	int PER_PORT_CONNECTOR_TYPE_DEPLOYMENT_PART = 169;
+	int PER_PORT_CONNECTOR_TYPE_DEPLOYMENT_PART = 170;
 
 	/**
 	 * The feature id for the '<em><b>Nested Part</b></em>' reference list.
@@ -7942,7 +8006,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getComponentCategory()
 	 * @generated
 	 */
-	int COMPONENT_CATEGORY = 170;
+	int COMPONENT_CATEGORY = 171;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.WiringKind <em>Wiring Kind</em>}' enum.
@@ -7952,7 +8016,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getWiringKind()
 	 * @generated
 	 */
-	int WIRING_KIND = 171;
+	int WIRING_KIND = 172;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.ModelTypeEnum <em>Model Type Enum</em>}' enum.
@@ -7962,7 +8026,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getModelTypeEnum()
 	 * @generated
 	 */
-	int MODEL_TYPE_ENUM = 172;
+	int MODEL_TYPE_ENUM = 173;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.CXPrimitiveKind <em>CX Primitive Kind</em>}' enum.
@@ -7972,7 +8036,17 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getCXPrimitiveKind()
 	 * @generated
 	 */
-	int CX_PRIMITIVE_KIND = 173;
+	int CX_PRIMITIVE_KIND = 174;
+
+	/**
+	 * The meta object id for the '{@link dds4ccm.ExtensibilityKind <em>Extensibility Kind</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dds4ccm.ExtensibilityKind
+	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getExtensibilityKind()
+	 * @generated
+	 */
+	int EXTENSIBILITY_KIND = 175;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.TypeConstraint <em>Type Constraint</em>}' enum.
@@ -7982,7 +8056,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTypeConstraint()
 	 * @generated
 	 */
-	int TYPE_CONSTRAINT = 174;
+	int TYPE_CONSTRAINT = 176;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.TopicKind <em>Topic Kind</em>}' enum.
@@ -7992,7 +8066,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTopicKind()
 	 * @generated
 	 */
-	int TOPIC_KIND = 175;
+	int TOPIC_KIND = 177;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.HistoryQosPolicyKind <em>History Qos Policy Kind</em>}' enum.
@@ -8002,7 +8076,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getHistoryQosPolicyKind()
 	 * @generated
 	 */
-	int HISTORY_QOS_POLICY_KIND = 176;
+	int HISTORY_QOS_POLICY_KIND = 178;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.OwnershipQosPolicyKind <em>Ownership Qos Policy Kind</em>}' enum.
@@ -8012,7 +8086,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getOwnershipQosPolicyKind()
 	 * @generated
 	 */
-	int OWNERSHIP_QOS_POLICY_KIND = 177;
+	int OWNERSHIP_QOS_POLICY_KIND = 179;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.PresentationQosPolicyAccessScopeKind <em>Presentation Qos Policy Access Scope Kind</em>}' enum.
@@ -8022,7 +8096,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getPresentationQosPolicyAccessScopeKind()
 	 * @generated
 	 */
-	int PRESENTATION_QOS_POLICY_ACCESS_SCOPE_KIND = 178;
+	int PRESENTATION_QOS_POLICY_ACCESS_SCOPE_KIND = 180;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.RealiabilityQosPolicyKind <em>Realiability Qos Policy Kind</em>}' enum.
@@ -8032,7 +8106,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getRealiabilityQosPolicyKind()
 	 * @generated
 	 */
-	int REALIABILITY_QOS_POLICY_KIND = 179;
+	int REALIABILITY_QOS_POLICY_KIND = 181;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.LivelinessQosPolicyKind <em>Liveliness Qos Policy Kind</em>}' enum.
@@ -8042,7 +8116,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getLivelinessQosPolicyKind()
 	 * @generated
 	 */
-	int LIVELINESS_QOS_POLICY_KIND = 180;
+	int LIVELINESS_QOS_POLICY_KIND = 182;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.DurabilityQosPolicyKind <em>Durability Qos Policy Kind</em>}' enum.
@@ -8052,7 +8126,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDurabilityQosPolicyKind()
 	 * @generated
 	 */
-	int DURABILITY_QOS_POLICY_KIND = 181;
+	int DURABILITY_QOS_POLICY_KIND = 183;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.DestinationOrderQosPolicyKind <em>Destination Order Qos Policy Kind</em>}' enum.
@@ -8062,7 +8136,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDestinationOrderQosPolicyKind()
 	 * @generated
 	 */
-	int DESTINATION_ORDER_QOS_POLICY_KIND = 182;
+	int DESTINATION_ORDER_QOS_POLICY_KIND = 184;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.SatisfierPropertyKind <em>Satisfier Property Kind</em>}' enum.
@@ -8072,7 +8146,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getSatisfierPropertyKind()
 	 * @generated
 	 */
-	int SATISFIER_PROPERTY_KIND = 183;
+	int SATISFIER_PROPERTY_KIND = 185;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.ConfigurationSlotKind <em>Configuration Slot Kind</em>}' enum.
@@ -8082,7 +8156,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getConfigurationSlotKind()
 	 * @generated
 	 */
-	int CONFIGURATION_SLOT_KIND = 184;
+	int CONFIGURATION_SLOT_KIND = 186;
 
 
 	/**
@@ -9363,6 +9437,27 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCXStruct();
+
+	/**
+	 * Returns the meta object for class '{@link dds4ccm.Extensible <em>Extensible</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Extensible</em>'.
+	 * @see dds4ccm.Extensible
+	 * @generated
+	 */
+	EClass getExtensible();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dds4ccm.Extensible#getExtensibility <em>Extensibility</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Extensibility</em>'.
+	 * @see dds4ccm.Extensible#getExtensibility()
+	 * @see #getExtensible()
+	 * @generated
+	 */
+	EAttribute getExtensible_Extensibility();
 
 	/**
 	 * Returns the meta object for class '{@link dds4ccm.CXSupports <em>CX Supports</em>}'.
@@ -11903,6 +11998,16 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getCXPrimitiveKind();
+
+	/**
+	 * Returns the meta object for enum '{@link dds4ccm.ExtensibilityKind <em>Extensibility Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Extensibility Kind</em>'.
+	 * @see dds4ccm.ExtensibilityKind
+	 * @generated
+	 */
+	EEnum getExtensibilityKind();
 
 	/**
 	 * Returns the meta object for enum '{@link dds4ccm.TypeConstraint <em>Type Constraint</em>}'.

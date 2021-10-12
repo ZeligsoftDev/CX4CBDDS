@@ -52,6 +52,9 @@ Void visitContained(Preproc preproc, CXModule module ) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.handlePreproc(
 		com.zeligsoft.domain.omg.corba.dsl.idl.Preproc,
 		org.eclipse.uml2.uml.Package);
+		
+Void debug(Object o) :
+    JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.debug(java.lang.Object);
 	
 Void visitContained(Definition object, CXModule module ) :
 	{};
@@ -182,7 +185,10 @@ private create CXStruct visitContained(StructType struct, uml::Package package )
 	
 Void configureStruct(CXStruct zStruct, StructType struct) :
 	zStruct.setName(struct.name) ->
-	struct.members.visitContained(zStruct);
+	struct.members.visitContained(zStruct) ->
+	struct.isAppendable?
+	  zStruct.setExtensibility(ExtensibilityKind::Appendable) :
+	  zStruct.setExtensibility(ExtensibilityKind::Final);
 	
 create CXField visitContained(Member member, CXStruct struct) :
 	struct.members.add(this) ->

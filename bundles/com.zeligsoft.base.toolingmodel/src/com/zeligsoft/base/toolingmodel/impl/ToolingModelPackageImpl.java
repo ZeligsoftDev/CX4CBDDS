@@ -578,6 +578,15 @@ public class ToolingModelPackageImpl extends EPackageImpl implements ToolingMode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPropertyDefinition_VisibleModelType() {
+		return (EAttribute) propertyDefinitionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPropertySheet() {
 		return propertySheetEClass;
 	}
@@ -1043,6 +1052,7 @@ public class ToolingModelPackageImpl extends EPackageImpl implements ToolingMode
 		createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__VISIBLE);
 		createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__CONTENT_HINT);
 		createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__SECTION);
+		createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__VISIBLE_MODEL_TYPE);
 
 		propertySheetEClass = createEClass(PROPERTY_SHEET);
 		createEAttribute(propertySheetEClass, PROPERTY_SHEET__DOMAIN_MODEL_URI);
@@ -1241,6 +1251,9 @@ public class ToolingModelPackageImpl extends EPackageImpl implements ToolingMode
 		initEAttribute(getPropertyDefinition_Section(), ecorePackage.getEString(), "section", null, 0, 1, //$NON-NLS-1$
 				PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyDefinition_VisibleModelType(), ecorePackage.getEString(), "visibleModelType", null, 0, //$NON-NLS-1$
+				1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertySheetEClass, PropertySheet.class, "PropertySheet", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 				IS_GENERATED_INSTANCE_CLASS);

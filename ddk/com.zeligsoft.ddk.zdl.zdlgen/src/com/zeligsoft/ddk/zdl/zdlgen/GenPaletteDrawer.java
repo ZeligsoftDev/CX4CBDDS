@@ -26,8 +26,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getSpecializes <em>Specializes</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getPalette <em>Palette</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getSpecializes <em>Specializes</em>}</li>
  * </ul>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteDrawer()
@@ -63,8 +63,7 @@ public interface GenPaletteDrawer extends GenPaletteToolContainer {
 	void setSpecializes(GenPaletteDrawer value);
 
 	/**
-	 * Returns the value of the '<em><b>Palette</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPalette#getOwnedDrawers <em>Owned Drawer</em>}'.
+	 * Returns the value of the '<em><b>Palette</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -77,21 +76,20 @@ public interface GenPaletteDrawer extends GenPaletteToolContainer {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Palette</em>' container reference.
+	 * @return the value of the '<em>Palette</em>' reference.
 	 * @see #setPalette(GenPalette)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteDrawer_Palette()
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenPalette#getOwnedDrawers
-	 * @model opposite="ownedDrawer" required="true" transient="false" ordered="false"
+	 * @model required="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenPalette getPalette();
 
 	/**
-	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getPalette <em>Palette</em>}' container reference.
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getPalette <em>Palette</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Palette</em>' container reference.
+	 * @param value the new value of the '<em>Palette</em>' reference.
 	 * @see #getPalette()
 	 * @generated
 	 */

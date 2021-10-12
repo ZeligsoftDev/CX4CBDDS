@@ -17,6 +17,7 @@ package com.zeligsoft.ddk.zdl.zdlgen.internal.impl;
 
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentationKind;
+import com.zeligsoft.ddk.zdl.zdlgen.GenDomainPresentationModelKind;
 import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -41,6 +42,7 @@ import org.eclipse.uml2.common.util.CacheAdapter;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#getPresentationHint <em>Presentation Hint</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#getPresentationKind <em>Presentation Kind</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#getOrder <em>Order</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#getVisibleModelType <em>Visible Model Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -145,6 +147,26 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 	 * @ordered
 	 */
 	protected int order = ORDER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVisibleModelType() <em>Visible Model Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibleModelType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final GenDomainPresentationModelKind VISIBLE_MODEL_TYPE_EDEFAULT = GenDomainPresentationModelKind.ALL;
+
+	/**
+	 * The cached value of the '{@link #getVisibleModelType() <em>Visible Model Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisibleModelType()
+	 * @generated
+	 * @ordered
+	 */
+	protected GenDomainPresentationModelKind visibleModelType = VISIBLE_MODEL_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -299,6 +321,29 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GenDomainPresentationModelKind getVisibleModelType() {
+		return visibleModelType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVisibleModelType(GenDomainPresentationModelKind newVisibleModelType) {
+		GenDomainPresentationModelKind oldVisibleModelType = visibleModelType;
+		visibleModelType = newVisibleModelType == null ? VISIBLE_MODEL_TYPE_EDEFAULT : newVisibleModelType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE, oldVisibleModelType,
+					visibleModelType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -312,6 +357,8 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 			return getPresentationKind();
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
 			return getOrder();
+		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE:
+			return getVisibleModelType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -338,6 +385,9 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
 			setOrder((Integer) newValue);
+			return;
+		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE:
+			setVisibleModelType((GenDomainPresentationModelKind) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -366,6 +416,9 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
 			setOrder(ORDER_EDEFAULT);
 			return;
+		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE:
+			setVisibleModelType(VISIBLE_MODEL_TYPE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -389,6 +442,8 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 			return presentationKind != PRESENTATION_KIND_EDEFAULT;
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
 			return order != ORDER_EDEFAULT;
+		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE:
+			return visibleModelType != VISIBLE_MODEL_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -414,6 +469,8 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 		result.append(presentationKind);
 		result.append(", order: "); //$NON-NLS-1$
 		result.append(order);
+		result.append(", visibleModelType: "); //$NON-NLS-1$
+		result.append(visibleModelType);
 		result.append(')');
 		return result.toString();
 	}

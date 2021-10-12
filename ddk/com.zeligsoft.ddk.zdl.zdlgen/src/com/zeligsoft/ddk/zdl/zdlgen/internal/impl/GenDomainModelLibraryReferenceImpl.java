@@ -43,9 +43,9 @@ import org.eclipse.uml2.uml.Dependency;
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl#getDomainSpecialization <em>Domain Specialization</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl#getDomainModelLibraryReference <em>Domain Model Library Reference</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl#getResourceName <em>Resource Name</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainModelLibraryReferenceImpl#getDomainSpecialization <em>Domain Specialization</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,6 +61,16 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl impl
 	 * @ordered
 	 */
 	protected GenDomainModelLibrary target;
+
+	/**
+	 * The cached value of the '{@link #getDomainSpecialization() <em>Domain Specialization</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDomainSpecialization()
+	 * @generated
+	 * @ordered
+	 */
+	protected GenDomainSpecialization domainSpecialization;
 
 	/**
 	 * The cached value of the '{@link #getDomainModelLibraryReference() <em>Domain Model Library Reference</em>}' reference.
@@ -129,9 +139,8 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl impl
 	 */
 	@Override
 	public GenDomainObject basicGetOwner() {
-		GenDomainSpecialization domainSpecialization = getDomainSpecialization();
-		if (domainSpecialization != null) {
-			return domainSpecialization;
+		if (eIsSet(ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION)) {
+			return basicGetDomainSpecialization();
 		}
 		return super.basicGetOwner();
 	}
@@ -253,9 +262,17 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl impl
 	 */
 	@Override
 	public GenDomainSpecialization getDomainSpecialization() {
-		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION)
-			return null;
-		return (GenDomainSpecialization) eInternalContainer();
+		if (domainSpecialization != null && domainSpecialization.eIsProxy()) {
+			InternalEObject oldDomainSpecialization = (InternalEObject) domainSpecialization;
+			domainSpecialization = (GenDomainSpecialization) eResolveProxy(oldDomainSpecialization);
+			if (domainSpecialization != oldDomainSpecialization) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION,
+							oldDomainSpecialization, domainSpecialization));
+			}
+		}
+		return domainSpecialization;
 	}
 
 	/**
@@ -263,11 +280,8 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDomainSpecialization(GenDomainSpecialization newDomainSpecialization,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newDomainSpecialization,
-				ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION, msgs);
-		return msgs;
+	public GenDomainSpecialization basicGetDomainSpecialization() {
+		return domainSpecialization;
 	}
 
 	/**
@@ -277,70 +291,12 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl impl
 	 */
 	@Override
 	public void setDomainSpecialization(GenDomainSpecialization newDomainSpecialization) {
-		if (newDomainSpecialization != eInternalContainer()
-				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION
-						&& newDomainSpecialization != null)) {
-			if (EcoreUtil.isAncestor(this, newDomainSpecialization))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newDomainSpecialization != null)
-				msgs = ((InternalEObject) newDomainSpecialization).eInverseAdd(this,
-						ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY, GenDomainSpecialization.class,
-						msgs);
-			msgs = basicSetDomainSpecialization(newDomainSpecialization, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+		GenDomainSpecialization oldDomainSpecialization = domainSpecialization;
+		domainSpecialization = newDomainSpecialization;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION, newDomainSpecialization,
-					newDomainSpecialization));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetDomainSpecialization((GenDomainSpecialization) otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
-			return basicSetDomainSpecialization(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
-			return eInternalContainer().eInverseRemove(this,
-					ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY, GenDomainSpecialization.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
+					ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION, oldDomainSpecialization,
+					domainSpecialization));
 	}
 
 	/**
@@ -355,14 +311,16 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl impl
 			if (resolve)
 				return getTarget();
 			return basicGetTarget();
+		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
+			if (resolve)
+				return getDomainSpecialization();
+			return basicGetDomainSpecialization();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_MODEL_LIBRARY_REFERENCE:
 			if (resolve)
 				return getDomainModelLibraryReference();
 			return basicGetDomainModelLibraryReference();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__RESOURCE_NAME:
 			return getResourceName();
-		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
-			return getDomainSpecialization();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -378,14 +336,14 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl impl
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET:
 			setTarget((GenDomainModelLibrary) newValue);
 			return;
+		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
+			setDomainSpecialization((GenDomainSpecialization) newValue);
+			return;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_MODEL_LIBRARY_REFERENCE:
 			setDomainModelLibraryReference((Dependency) newValue);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__RESOURCE_NAME:
 			setResourceName((String) newValue);
-			return;
-		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
-			setDomainSpecialization((GenDomainSpecialization) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -402,14 +360,14 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl impl
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET:
 			setTarget((GenDomainModelLibrary) null);
 			return;
+		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
+			setDomainSpecialization((GenDomainSpecialization) null);
+			return;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_MODEL_LIBRARY_REFERENCE:
 			setDomainModelLibraryReference((Dependency) null);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__RESOURCE_NAME:
 			setResourceName(RESOURCE_NAME_EDEFAULT);
-			return;
-		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
-			setDomainSpecialization((GenDomainSpecialization) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -427,12 +385,12 @@ public class GenDomainModelLibraryReferenceImpl extends GenDomainObjectImpl impl
 			return isSetOwner();
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET:
 			return target != null;
+		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
+			return domainSpecialization != null;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_MODEL_LIBRARY_REFERENCE:
 			return domainModelLibraryReference != null;
 		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__RESOURCE_NAME:
 			return RESOURCE_NAME_EDEFAULT == null ? resourceName != null : !RESOURCE_NAME_EDEFAULT.equals(resourceName);
-		case ZDLGenPackage.GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION:
-			return getDomainSpecialization() != null;
 		}
 		return super.eIsSet(featureID);
 	}

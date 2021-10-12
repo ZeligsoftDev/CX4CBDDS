@@ -13,6 +13,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#isIsAppendable <em>Is Appendable</em>}</li>
+ *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#isIsFinal <em>Is Final</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#getMembers <em>Members</em>}</li>
@@ -24,6 +26,50 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface StructType extends Definition, TypeDecl, ConstrTypeSpec
 {
+  /**
+   * Returns the value of the '<em><b>Is Appendable</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Appendable</em>' attribute.
+   * @see #setIsAppendable(boolean)
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getStructType_IsAppendable()
+   * @model
+   * @generated
+   */
+  boolean isIsAppendable();
+
+  /**
+   * Sets the value of the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#isIsAppendable <em>Is Appendable</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Appendable</em>' attribute.
+   * @see #isIsAppendable()
+   * @generated
+   */
+  void setIsAppendable(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Is Final</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Final</em>' attribute.
+   * @see #setIsFinal(boolean)
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getStructType_IsFinal()
+   * @model
+   * @generated
+   */
+  boolean isIsFinal();
+
+  /**
+   * Sets the value of the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.StructType#isIsFinal <em>Is Final</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Final</em>' attribute.
+   * @see #isIsFinal()
+   * @generated
+   */
+  void setIsFinal(boolean value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

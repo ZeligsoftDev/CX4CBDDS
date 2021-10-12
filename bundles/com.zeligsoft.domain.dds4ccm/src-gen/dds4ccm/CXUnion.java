@@ -13,5 +13,5 @@ package dds4ccm;
  * @model annotation="uml2.extensions suppressed='true'"
  * @generated
  */
-public interface CXUnion extends CXConstructed, Contained, CXClassifierContained, CXModuleContained, CXType {
+public interface CXUnion extends CXConstructed, Extensible, Contained, CXClassifierContained, CXModuleContained, CXType {
 } // CXUnion

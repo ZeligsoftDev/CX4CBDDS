@@ -1,518 +1,1440 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="zdlgen" nsURI="http://www.zeligsoft.com/zdl/2008/ZDLGen" nsPrefix="zdlgen">
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainClassifier" abstract="true"
+<ecore:EPackage
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    name="zdlgen"
+    nsURI="http://www.zeligsoft.com/zdl/2008/ZDLGen"
+    nsPrefix="zdlgen">
+  <eAnnotations
+      source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <details
+        key="originalName"
+        value="ZDLGen"/>
+  </eAnnotations>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainClassifier"
+      abstract="true"
       eSuperTypes="#//GenDomainNamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="block" ordered="false"
-        lowerBound="1" eType="#//GenDomainBlock" eOpposite="#//GenDomainBlock/classifier">
-      <eAnnotations source="subsets" references="#//GenDomainObject/owner"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="block"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainBlock">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/owner"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainNamedElement" abstract="true"
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainNamedElement"
+      abstract="true"
       eSuperTypes="#//GenDomainObject">
-    <eOperations name="getName" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
-        volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="&lt;HTML>&lt;HEAD>&#xD;&#xA;&lt;META content=&quot;MSHTML 6.00.6000.16640&quot; name=GENERATOR>&lt;/HEAD>&#xD;&#xA;&lt;BODY>&#xD;&#xA;&lt;P>Common specification of names for domain elements, derived from the corresponding UML elements.&lt;/P>&lt;/BODY>&lt;/HTML>"/>
+    <eOperations
+        name="getName"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="name"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true">
+      <eAnnotations
+          source="http://www.eclipse.org/emf/2002/GenModel">
+        <details
+            key="documentation"
+            value="&lt;HTML>&lt;HEAD>&#xD;&#xA;&lt;META content=&quot;MSHTML 6.00.6000.16640&quot; name=GENERATOR>&lt;/HEAD>&#xD;&#xA;&lt;BODY>&#xD;&#xA;&lt;P>Common specification of names for domain elements, derived from the corresponding UML elements.&lt;/P>&lt;/BODY>&lt;/HTML>"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainElement" ordered="false"
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainElement"
+        ordered="false"
         eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement"
-        changeable="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="union"/>
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true">
+      <eAnnotations
+          source="union"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainObject" abstract="true">
-    <eOperations name="getGenModel" ordered="false" eType="#//GenModel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="genModel" ordered="false"
-        eType="#//GenModel" changeable="false" volatile="true" transient="true" derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" ordered="false"
-        eType="#//GenDomainObject" changeable="false" volatile="true" transient="true"
-        derived="true" eOpposite="#//GenDomainObject/ownedObject">
-      <eAnnotations source="union"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainObject"
+      abstract="true">
+    <eOperations
+        name="getGenModel"
+        ordered="false"
+        eType="#//GenModel"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="genModel"
+        ordered="false"
+        eType="#//GenModel"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="owner"
+        ordered="false"
+        eType="#//GenDomainObject"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true">
+      <eAnnotations
+          source="union"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedObject" ordered="false"
-        upperBound="-1" eType="#//GenDomainObject" changeable="false" volatile="true"
-        transient="true" derived="true" eOpposite="#//GenDomainObject/owner">
-      <eAnnotations source="union"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenModel" eSuperTypes="#//GenDomainObject">
-    <eOperations name="findUsedDomainModels" ordered="false" upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Model">
-      <eParameters name="model" ordered="false" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Model"/>
-    </eOperations>
-    <eOperations name="getDomainModels" upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Model">
-      <eParameters name="uris" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedModel" ordered="false"
-        upperBound="-1" eType="#//GenDomainModel" containment="true" eOpposite="#//GenDomainModel/owningGenModel">
-      <eAnnotations source="subsets" references="#//GenModel/domainModel #//GenDomainObject/ownedObject"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainModel" ordered="false"
-        upperBound="-1" eType="#//GenDomainModel" changeable="false" volatile="true"
-        transient="true" derived="true">
-      <eAnnotations source="union"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="referencedModel" ordered="false"
-        upperBound="-1" eType="#//GenDomainModel">
-      <eAnnotations source="subsets" references="#//GenModel/domainModel"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainModel" eSuperTypes="#//GenDomainPackage">
-    <eOperations name="getDomainBlock" ordered="false" lowerBound="1" eType="#//GenDomainBlock">
-      <eParameters name="qualifiedName" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainModel" lowerBound="1"
-        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Model">
-      <eAnnotations source="redefines" references="#//GenDomainPackage/domainPackage"/>
-      <eAnnotations source="subsets" references="#//GenDomainNamedElement/domainElement"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nsURI" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rootPackage" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="implementationSubPackage"
-        ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="implSuffix" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="apiProject" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="palette" ordered="false"
-        eType="#//GenPalette" containment="true">
-      <eAnnotations source="subsets" references="#//GenDomainObject/ownedObject"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="menuModel" ordered="false"
-        lowerBound="1" eType="#//GenMenuModel" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="owningGenModel" ordered="false"
-        lowerBound="1" eType="#//GenModel" eOpposite="#//GenModel/ownedModel">
-      <eAnnotations source="subsets" references="#//GenDomainObject/owner"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedObject"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainObject"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true">
+      <eAnnotations
+          source="union"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainPackage" eSuperTypes="#//GenDomainPackageableElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1"
-        eType="#//GenDomainPackageableElement" containment="true" eOpposite="#//GenDomainPackageableElement/package">
-      <eAnnotations source="subsets" references="#//GenDomainObject/ownedObject"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainPackage" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package">
-      <eAnnotations source="subsets" references="#//GenDomainNamedElement/domainElement"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainPackageableElement" abstract="true"
-      eSuperTypes="#//GenDomainNamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="package" ordered="false"
-        eType="#//GenDomainPackage" eOpposite="#//GenDomainPackage/element">
-      <eAnnotations source="subsets" references="#//GenDomainObject/owner"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenPalette" eSuperTypes="#//GenPaletteItem">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedDrawer" ordered="false"
-        upperBound="-1" eType="#//GenPaletteDrawer" containment="true" eOpposite="#//GenPaletteDrawer/palette">
-      <eAnnotations source="subsets" references="#//GenPalette/drawer #//GenDomainObject/ownedObject"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="drawer" upperBound="-1"
-        eType="#//GenPaletteDrawer"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenPaletteItem" abstract="true" eSuperTypes="#//GenDomainObject">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenPaletteDrawer" eSuperTypes="#//GenPaletteToolContainer">
-    <eOperations name="allTools" ordered="false" upperBound="-1" eType="#//GenPaletteTool"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="specializes" ordered="false"
-        eType="#//GenPaletteDrawer"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="palette" ordered="false"
-        lowerBound="1" eType="#//GenPalette" eOpposite="#//GenPalette/ownedDrawer">
-      <eAnnotations source="subsets" references="#//GenDomainObject/owner"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenPaletteToolContainer" abstract="true"
-      eSuperTypes="#//GenPaletteItem">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTool" ordered="false"
-        upperBound="-1" eType="#//GenPaletteTool" containment="true" eOpposite="#//GenPaletteTool/container">
-      <eAnnotations source="subsets" references="#//GenPaletteToolContainer/tool #//GenDomainObject/ownedObject"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tool" upperBound="-1" eType="#//GenPaletteTool"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetDiagram" ordered="false"
-        upperBound="-1" eType="#//GenPaletteDiagramKind"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenPaletteTool" abstract="true" eSuperTypes="#//GenPaletteItem">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" ordered="false"
-        eType="#//GenPaletteTool"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="container" ordered="false"
-        lowerBound="1" eType="#//GenPaletteToolContainer" eOpposite="#//GenPaletteToolContainer/ownedTool">
-      <eAnnotations source="subsets" references="#//GenDomainObject/owner"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="GenPaletteDiagramKind">
-    <eLiterals name="component"/>
-    <eLiterals name="configuration" value="1"/>
-    <eLiterals name="deployment" value="2"/>
-    <eLiterals name="class" value="3"/>
-    <eLiterals name="freeform" value="4"/>
-    <eLiterals name="structure" value="5"/>
-    <eLiterals name="statechart" value="6"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenMenuModel" eSuperTypes="#//GenDomainObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="items" ordered="false"
-        upperBound="-1" eType="#//GenMenuItem" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="umlMenus" ordered="false"
-        upperBound="-1" eType="#//GenUMLMenu" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenMenuItem" abstract="true" eSuperTypes="#//GenDomainObject">
-    <eOperations name="overridenBy" ordered="false" lowerBound="1" eType="#//GenMenuItem"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" ordered="false"
-        eType="#//GenMenuItem"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenUMLMenu" eSuperTypes="#//GenDomainObject #//GenMenuTarget">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="umlMetaclass" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenMenuTarget" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="menu" ordered="false" eType="#//GenMenu"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenMenu" eSuperTypes="#//GenMenuItem">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="extends" ordered="false"
-        eType="#//GenMenu"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="item" ordered="false" upperBound="-1"
-        eType="#//GenMenuItem"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainBlock" eSuperTypes="#//GenDomainPackageableElement">
-    <eOperations name="allClassifiers" upperBound="-1" eType="#//GenDomainClassifier">
-      <eParameters name="mode" eType="#//GenAllDomainCassifiersMode"/>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="classifier" ordered="false"
-        upperBound="-1" eType="#//GenDomainClassifier" containment="true" eOpposite="#//GenDomainClassifier/block">
-      <eAnnotations source="subsets" references="#//GenDomainObject/ownedObject"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="relation" ordered="false"
-        upperBound="-1" eType="#//GenDomainBlockRelation" containment="true" eOpposite="#//GenDomainBlockRelation/source">
-      <eAnnotations source="subsets" references="#//GenDomainObject/ownedObject"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainBlock" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package">
-      <eAnnotations source="subsets" references="#//GenDomainNamedElement/domainElement"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="import" ordered="false"
-        upperBound="-1" eType="#//GenDomainBlockImport" changeable="false" volatile="true"
-        transient="true" derived="true">
-      <eAnnotations source="subsets" references="#//GenDomainBlock/relation"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="merge" ordered="false"
-        upperBound="-1" eType="#//GenDomainBlockMerge" changeable="false" volatile="true"
-        transient="true" derived="true">
-      <eAnnotations source="subsets" references="#//GenDomainBlock/relation"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rsmStereotypesSuppressed"
-        ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rsmStereotypesUIReadOnly"
-        ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rsmStereotypesPropertiesUIReadOnly"
-        ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainBlockRelation" abstract="true"
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenModel"
       eSuperTypes="#//GenDomainObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" ordered="false"
-        lowerBound="1" eType="#//GenDomainBlock"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainBlockRelation" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DirectedRelationship"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" ordered="false"
-        lowerBound="1" eType="#//GenDomainBlock" eOpposite="#//GenDomainBlock/relation">
-      <eAnnotations source="subsets" references="#//GenDomainObject/owner"/>
+    <eOperations
+        name="findUsedDomainModels"
+        ordered="false"
+        upperBound="-1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Model">
+      <eParameters
+          name="model"
+          ordered="false"
+          lowerBound="1"
+          eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Model"/>
+    </eOperations>
+    <eOperations
+        name="getDomainModels"
+        upperBound="-1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Model">
+      <eParameters
+          name="uris"
+          upperBound="-1"
+          eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    </eOperations>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedModel"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainModel"
+        containment="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenModel/domainModel #//GenDomainObject/ownedObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainModel"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainModel"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true">
+      <eAnnotations
+          source="union"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="referencedModel"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainModel">
+      <eAnnotations
+          source="subsets"
+          references="#//GenModel/domainModel"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainBlockImport" eSuperTypes="#//GenDomainBlockRelation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainBlockMerge" eSuperTypes="#//GenDomainBlockRelation"/>
-  <eClassifiers xsi:type="ecore:EEnum" name="GenAllDomainCassifiersMode">
-    <eLiterals name="flat"/>
-    <eLiterals name="import" value="1"/>
-    <eLiterals name="merge" value="2"/>
-    <eLiterals name="mergeAndImport" value="3"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="GenDomainConceptCategory">
-    <eLiterals name="abstract"/>
-    <eLiterals name="firm" value="1"/>
-    <eLiterals name="uncertain" value="2"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainGeneralization" eSuperTypes="#//GenDomainObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="specific" ordered="false"
-        lowerBound="1" eType="#//GenDomainConcept" eOpposite="#//GenDomainConcept/generalization">
-      <eAnnotations source="subsets" references="#//GenDomainObject/owner"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainModel"
+      eSuperTypes="#//GenDomainPackage #//GenDomainObject">
+    <eOperations
+        name="getDomainBlock"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainBlock">
+      <eParameters
+          name="qualifiedName"
+          ordered="false"
+          lowerBound="1"
+          eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    </eOperations>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainModel"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Model">
+      <eAnnotations
+          source="redefines"
+          references="#//GenDomainPackage/domainPackage"/>
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainNamedElement/domainElement"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="general" ordered="false"
-        lowerBound="1" eType="#//GenDomainConcept"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainGeneralization" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Generalization"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="nsURI"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="owningGenModel"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenModel">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/owner"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="rootPackage"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="implementationSubPackage"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="implSuffix"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="apiProject"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="palette"
+        ordered="false"
+        eType="#//GenPalette"
+        containment="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/ownedObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="menuModel"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenMenuModel"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainConcept" eSuperTypes="#//GenDomainClassifier #//GenMenuTarget #//GenPalettable">
-    <eOperations name="allGenerals" ordered="false" upperBound="-1" eType="#//GenDomainConcept"/>
-    <eOperations name="allSpecifics" ordered="false" upperBound="-1" eType="#//GenDomainConcept"/>
-    <eOperations name="getGenerals" ordered="false" upperBound="-1" eType="#//GenDomainConcept"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" ordered="false"
-        lowerBound="1" eType="#//GenDomainConceptCategory"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" ordered="false"
-        upperBound="-1" eType="#//GenDomainStructuralFeature" containment="true" eOpposite="#//GenDomainStructuralFeature/concept">
-      <eAnnotations source="subsets" references="#//GenDomainObject/ownedObject"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainPackage"
+      eSuperTypes="#//GenDomainPackageableElement">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="element"
+        upperBound="-1"
+        eType="#//GenDomainPackageableElement"
+        containment="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/ownedObject"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainConcept" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class">
-      <eAnnotations source="subsets" references="#//GenDomainNamedElement/domainElement"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainPackage"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainNamedElement/domainElement"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="umlMetaclass" upperBound="-1"
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainPackageableElement"
+      abstract="true"
+      eSuperTypes="#//GenDomainNamedElement">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="package"
+        ordered="false"
+        eType="#//GenDomainPackage">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/owner"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenPalette"
+      eSuperTypes="#//GenPaletteItem">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedDrawer"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenPaletteDrawer"
+        containment="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenPalette/drawer #//GenDomainObject/ownedObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="drawer"
+        upperBound="-1"
+        eType="#//GenPaletteDrawer"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenPaletteItem"
+      abstract="true"
+      eSuperTypes="#//GenDomainObject">
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="name"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="description"
+        ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenPaletteDrawer"
+      eSuperTypes="#//GenPaletteToolContainer">
+    <eOperations
+        name="allTools"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenPaletteTool"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="palette"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenPalette">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/owner"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="specializes"
+        ordered="false"
+        eType="#//GenPaletteDrawer"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenPaletteToolContainer"
+      abstract="true"
+      eSuperTypes="#//GenPaletteItem">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedTool"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenPaletteTool"
+        containment="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenPaletteToolContainer/tool #//GenDomainObject/ownedObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="tool"
+        upperBound="-1"
+        eType="#//GenPaletteTool"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="targetDiagram"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenPaletteDiagramKind"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenPaletteTool"
+      abstract="true"
+      eSuperTypes="#//GenPaletteItem">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="container"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenPaletteToolContainer">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/owner"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="overrides"
+        ordered="false"
+        eType="#//GenPaletteTool"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EEnum"
+      name="GenPaletteDiagramKind">
+    <eLiterals
+        name="component"/>
+    <eLiterals
+        name="configuration"
+        value="1"/>
+    <eLiterals
+        name="deployment"
+        value="2"/>
+    <eLiterals
+        name="class"
+        value="3"/>
+    <eLiterals
+        name="freeform"
+        value="4"/>
+    <eLiterals
+        name="structure"
+        value="5"/>
+    <eLiterals
+        name="statechart"
+        value="6"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenMenuModel"
+      eSuperTypes="#//GenDomainObject">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="items"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenMenuItem"
+        containment="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="umlMenus"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenUMLMenu"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenMenuItem"
+      abstract="true"
+      eSuperTypes="#//GenDomainObject">
+    <eOperations
+        name="overridenBy"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenMenuItem"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="description"
+        ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="name"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="overrides"
+        ordered="false"
+        eType="#//GenMenuItem"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenUMLMenu"
+      eSuperTypes="#//GenDomainObject #//GenMenuTarget">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="umlMetaclass"
+        ordered="false"
+        lowerBound="1"
         eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="general" ordered="false"
-        upperBound="-1" eType="#//GenDomainConcept" changeable="false" volatile="true"
-        transient="true" derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" ordered="false"
-        upperBound="-1" eType="#//GenDomainReference" changeable="false" volatile="true"
-        transient="true" derived="true">
-      <eAnnotations source="subsets" references="#//GenDomainConcept/feature"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" ordered="false"
-        upperBound="-1" eType="#//GenDomainAttribute" changeable="false" volatile="true"
-        transient="true" derived="true">
-      <eAnnotations source="subsets" references="#//GenDomainConcept/feature"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="iconUri" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRSMSuppressed" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" unsettable="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRSMUIReadOnly" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" unsettable="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRSMPropertiesUIReadOnly"
-        ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        unsettable="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRhapsodySuppressed" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rhapsodyMetaclass" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rhapsodyStereotypeName"
-        ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rhapsodyAddNew" ordered="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rhapsodyAddNewConcept"
-        ordered="false" upperBound="-1" eType="#//GenDomainConcept"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rhapsodyDisplayName" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rhapsodyToAddNew" ordered="false"
-        upperBound="-1" eType="#//GenDomainConcept"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="override" ordered="false"
-        upperBound="-1" eType="#//GenAttributeOverride" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="generalization" ordered="false"
-        upperBound="-1" eType="#//GenDomainGeneralization" containment="true" eOpposite="#//GenDomainGeneralization/specific">
-      <eAnnotations source="subsets" references="#//GenDomainObject/ownedObject"/>
-    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenPalettable" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainStructuralFeature" abstract="true"
-      eSuperTypes="#//GenDomainNamedElement #//GenDomainAttributePresentation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="umlMetaattribute" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainAttribute" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property">
-      <eAnnotations source="subsets" references="#//GenDomainNamedElement/domainElement"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRhapsodySuppressed" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="concept" ordered="false"
-        lowerBound="1" eType="#//GenDomainConcept" eOpposite="#//GenDomainConcept/feature">
-      <eAnnotations source="subsets" references="#//GenDomainObject/owner"/>
-    </eStructuralFeatures>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenMenuTarget"
+      abstract="true">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="menu"
+        ordered="false"
+        eType="#//GenMenu"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainAttributePresentation" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenMenu"
+      eSuperTypes="#//GenMenuItem">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="extends"
+        ordered="false"
+        eType="#//GenMenu"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="item"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenMenuItem"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainBlock"
+      eSuperTypes="#//GenDomainPackageableElement">
+    <eOperations
+        name="allClassifiers"
+        upperBound="-1"
+        eType="#//GenDomainClassifier">
+      <eParameters
+          name="mode"
+          eType="#//GenAllDomainCassifiersMode"/>
+    </eOperations>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="classifier"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainClassifier"
+        containment="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/ownedObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="relation"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainBlockRelation"
+        containment="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/ownedObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainBlock"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainNamedElement/domainElement"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="import"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainBlockImport"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainBlock/relation"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="merge"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainBlockMerge"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainBlock/relation"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="rsmStereotypesSuppressed"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
         defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="readOnly" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="rsmStereotypesUIReadOnly"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
         defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="presentationHint" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="presentationKind" ordered="false"
-        lowerBound="1" eType="#//GenDomainAttributePresentationKind" defaultValueLiteral="other"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="8000"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="rsmStereotypesPropertiesUIReadOnly"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        defaultValueLiteral="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="GenDomainAttributePresentationKind">
-    <eLiterals name="primitive"/>
-    <eLiterals name="text" value="1"/>
-    <eLiterals name="multiLineText" value="2"/>
-    <eLiterals name="other" value="3"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainReference" eSuperTypes="#//GenDomainStructuralFeature #//GenPalettable">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" ordered="false"
-        lowerBound="1" eType="#//GenDomainConcept"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" ordered="false"
-        lowerBound="1" eType="#//GenDomainConcept">
-      <eAnnotations source="subsets" references="#//GenDomainStructuralFeature/concept"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainBlockRelation"
+      abstract="true"
+      eSuperTypes="#//GenDomainObject">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="source"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainBlock">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/owner"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainReference" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Association">
-      <eAnnotations source="subsets" references="#//GenDomainNamedElement/domainElement"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="target"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainBlock"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainBlockRelation"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DirectedRelationship"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainBlockImport"
+      eSuperTypes="#//GenDomainBlockRelation"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainBlockMerge"
+      eSuperTypes="#//GenDomainBlockRelation"/>
+  <eClassifiers
+      xsi:type="ecore:EEnum"
+      name="GenAllDomainCassifiersMode">
+    <eLiterals
+        name="flat"/>
+    <eLiterals
+        name="import"
+        value="1"/>
+    <eLiterals
+        name="merge"
+        value="2"/>
+    <eLiterals
+        name="mergeAndImport"
+        value="3"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EEnum"
+      name="GenDomainConceptCategory">
+    <eLiterals
+        name="abstract"/>
+    <eLiterals
+        name="firm"
+        value="1"/>
+    <eLiterals
+        name="uncertain"
+        value="2"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainGeneralization"
+      eSuperTypes="#//GenDomainObject">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="specific"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainConcept">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/owner"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="general"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainConcept"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainGeneralization"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Generalization"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainConcept"
+      eSuperTypes="#//GenDomainClassifier #//GenMenuTarget #//GenPalettable">
+    <eOperations
+        name="allGenerals"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainConcept"/>
+    <eOperations
+        name="allSpecifics"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainConcept"/>
+    <eOperations
+        name="getGenerals"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainConcept"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="category"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainConceptCategory"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="feature"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainStructuralFeature"
+        containment="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/ownedObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="generalization"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainGeneralization"
+        containment="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/ownedObject"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainConcept"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainNamedElement/domainElement"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="umlMetaclass"
+        upperBound="-1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="general"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainConcept"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="reference"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainReference"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainConcept/feature"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="attribute"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainAttribute"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainConcept/feature"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="isRSMSuppressed"
+        ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        unsettable="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="isRSMUIReadOnly"
+        ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        unsettable="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="isRSMPropertiesUIReadOnly"
+        ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        unsettable="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="isRhapsodySuppressed"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="rhapsodyMetaclass"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="rhapsodyStereotypeName"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="rhapsodyAddNew"
+        ordered="false"
+        upperBound="-1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="rhapsodyAddNewConcept"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainConcept"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="rhapsodyDisplayName"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="rhapsodyToAddNew"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainConcept"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="iconUri"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="override"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenAttributeOverride"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenPalettable"
+      abstract="true"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainStructuralFeature"
+      abstract="true"
+      eSuperTypes="#//GenDomainNamedElement #//GenDomainAttributePresentation">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="umlMetaattribute"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="concept"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainConcept">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/owner"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainAttribute"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainNamedElement/domainElement"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="isRhapsodySuppressed"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainAttributePresentation"
+      abstract="true">
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="visible"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="readOnly"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="presentationHint"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="presentationKind"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainAttributePresentationKind"
+        defaultValueLiteral="other"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="order"
+        ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer"
+        defaultValueLiteral="8000"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="visibleModelType"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainPresentationModelKind"
+        defaultValueLiteral="ALL"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EEnum"
+      name="GenDomainAttributePresentationKind">
+    <eLiterals
+        name="primitive"/>
+    <eLiterals
+        name="text"
+        value="1"/>
+    <eLiterals
+        name="multiLineText"
+        value="2"/>
+    <eLiterals
+        name="other"
+        value="3"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EEnum"
+      name="GenDomainPresentationModelKind">
+    <eLiterals
+        name="ALL"/>
+    <eLiterals
+        name="AXCIOMA"
+        value="1"/>
+    <eLiterals
+        name="ATCD"
+        value="2"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainReference"
+      eSuperTypes="#//GenDomainStructuralFeature #//GenPalettable">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="target"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainConcept"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="source"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainConcept">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainStructuralFeature/concept"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainReference"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Association">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainNamedElement/domainElement"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainAttribute" eSuperTypes="#//GenDomainStructuralFeature">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" ordered="false" lowerBound="1"
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainAttribute"
+      eSuperTypes="#//GenDomainStructuralFeature">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="type"
+        ordered="false"
+        lowerBound="1"
         eType="#//GenDomainDataType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainDataType" eSuperTypes="#//GenDomainClassifier">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainDataType" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType">
-      <eAnnotations source="subsets" references="#//GenDomainNamedElement/domainElement"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainDataType"
+      eSuperTypes="#//GenDomainClassifier">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainDataType"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainNamedElement/domainElement"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenAttributeOverride" eSuperTypes="#//GenDomainAttributePresentation #//GenDomainObject">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenAttributeOverride"
+      eSuperTypes="#//GenDomainAttributePresentation #//GenDomainObject">
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="name"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainBlockReference" eSuperTypes="#//GenDomainObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" ordered="false"
-        lowerBound="1" eType="#//GenDomainBlock"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainBlockReference" lowerBound="1"
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainBlockReference"
+      eSuperTypes="#//GenDomainObject">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="target"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainBlock"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainBlockReference"
+        lowerBound="1"
         eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Dependency"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainSpecialization" ordered="false"
-        lowerBound="1" eType="#//GenDomainSpecialization" eOpposite="#//GenDomainSpecialization/domainBlock">
-      <eAnnotations source="subsets" references="#//GenDomainObject/owner"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainSpecialization"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainSpecialization">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/owner"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainSpecialization" eSuperTypes="#//GenDomainPackageableElement">
-    <eOperations name="getUniqueName" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eParameters name="classifier" ordered="false" lowerBound="1" eType="#//GenDomainClassifier"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainSpecialization"
+      eSuperTypes="#//GenDomainPackageableElement">
+    <eOperations
+        name="getUniqueName"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String">
+      <eParameters
+          name="classifier"
+          ordered="false"
+          lowerBound="1"
+          eType="#//GenDomainClassifier"/>
     </eOperations>
-    <eOperations name="allClassifiers" ordered="false" upperBound="-1" eType="#//GenDomainClassifier"/>
-    <eOperations name="isExcluded" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="item" ordered="false" lowerBound="1" eType="#//GenPaletteItem"/>
+    <eOperations
+        name="allClassifiers"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainClassifier"/>
+    <eOperations
+        name="isExcluded"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean">
+      <eParameters
+          name="item"
+          ordered="false"
+          lowerBound="1"
+          eType="#//GenPaletteItem"/>
     </eOperations>
-    <eOperations name="getDomainConcepts" ordered="false" upperBound="-1" eType="#//GenDomainConcept"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainSpecialization" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class">
-      <eAnnotations source="subsets" references="#//GenDomainNamedElement/domainElement"/>
+    <eOperations
+        name="getDomainConcepts"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainConcept"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainBlock"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainBlockReference"
+        containment="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/ownedObject"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainConcept" upperBound="-1"
-        eType="#//GenDomainConcept" changeable="false" volatile="true" transient="true"
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainSpecialization"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainNamedElement/domainElement"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainConcept"
+        upperBound="-1"
+        eType="#//GenDomainConcept"
+        changeable="false"
+        volatile="true"
+        transient="true"
         derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pluginName" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resourceName" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainModelLibrary" ordered="false"
-        upperBound="-1" eType="#//GenDomainModelLibraryReference" containment="true"
-        eOpposite="#//GenDomainModelLibraryReference/domainSpecialization">
-      <eAnnotations source="subsets" references="#//GenDomainObject/ownedObject"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="pluginName"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="resourceName"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainModelLibrary"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainModelLibraryReference"
+        containment="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/ownedObject"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelLibraryNamesPackage"
-        ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelLibrarySourceFolder"
-        ordered="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="modelLibraryNamesPackage"
+        ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="modelLibrarySourceFolder"
+        ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"
         defaultValueLiteral="src"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="menuModelResource" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="codeGenTarget" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rhapsodyJavaProject" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rhapsodyJDTJavaLibrary"
-        ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="menuModelResource"
+        ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="version"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="codeGenTarget"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="rhapsodyJavaProject"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="rhapsodyJDTJavaLibrary"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"
         defaultValueLiteral="RHAPSODY_API"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludedPaletteItem" ordered="false"
-        upperBound="-1" eType="#//GenPaletteItem"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="includedUMLMenus" ordered="false"
-        upperBound="-1" eType="#//GenUMLMenu"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainBlock" ordered="false"
-        upperBound="-1" eType="#//GenDomainBlockReference" containment="true" eOpposite="#//GenDomainBlockReference/domainSpecialization">
-      <eAnnotations source="subsets" references="#//GenDomainObject/ownedObject"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="elementtypeConfigurationContainerUri"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="excludedPaletteItem"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenPaletteItem"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="includedUMLMenus"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenUMLMenu"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainModelLibraryReference"
+      eSuperTypes="#//GenDomainObject">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="target"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainModelLibrary"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainSpecialization"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainSpecialization">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/owner"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="elementtypeConfigurationContainerUri"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainModelLibraryReference"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Dependency"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="resourceName"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainModelLibraryReference" eSuperTypes="#//GenDomainObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" ordered="false"
-        lowerBound="1" eType="#//GenDomainModelLibrary"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainModelLibraryReference"
-        ordered="false" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Dependency"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resourceName" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainSpecialization" ordered="false"
-        lowerBound="1" eType="#//GenDomainSpecialization" eOpposite="#//GenDomainSpecialization/domainModelLibrary">
-      <eAnnotations source="subsets" references="#//GenDomainObject/owner"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainModelLibrary"
+      eSuperTypes="#//GenDomainPackageableElement">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainModelLibrary"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainNamedElement/domainElement"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainModelLibrary" eSuperTypes="#//GenDomainPackageableElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainModelLibrary" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package">
-      <eAnnotations source="subsets" references="#//GenDomainNamedElement/domainElement"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainEnum"
+      eSuperTypes="#//GenDomainDataType">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="literal"
+        ordered="false"
+        upperBound="-1"
+        eType="#//GenDomainEnumLiteral"
+        containment="true">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/ownedObject"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainEnum" eSuperTypes="#//GenDomainDataType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="literal" ordered="false"
-        upperBound="-1" eType="#//GenDomainEnumLiteral" containment="true" eOpposite="#//GenDomainEnumLiteral/enumeration">
-      <eAnnotations source="subsets" references="#//GenDomainObject/ownedObject"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenDomainEnumLiteral"
+      eSuperTypes="#//GenDomainNamedElement">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="domainEnumLiteral"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//EnumerationLiteral">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainNamedElement/domainElement"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="enumeration"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainEnum">
+      <eAnnotations
+          source="subsets"
+          references="#//GenDomainObject/owner"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenDomainEnumLiteral" eSuperTypes="#//GenDomainNamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="domainEnumLiteral" ordered="false"
-        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//EnumerationLiteral">
-      <eAnnotations source="subsets" references="#//GenDomainNamedElement/domainElement"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="enumeration" ordered="false"
-        lowerBound="1" eType="#//GenDomainEnum" eOpposite="#//GenDomainEnum/literal">
-      <eAnnotations source="subsets" references="#//GenDomainObject/owner"/>
-    </eStructuralFeatures>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenPaletteCreationTool"
+      eSuperTypes="#//GenPaletteTool">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="type"
+        ordered="false"
+        eType="#//GenPalettable"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="elementTypeHint"
+        ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="expression"
+        ordered="false"
+        upperBound="-1"
+        eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenPaletteCreationTool" eSuperTypes="#//GenPaletteTool">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" ordered="false" eType="#//GenPalettable"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="elementTypeHint" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" ordered="false"
-        upperBound="-1" eType="#//Expression" containment="true"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="Expression"
+      abstract="true"
+      eSuperTypes="#//GenDomainObject">
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="name"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="expression"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true" eSuperTypes="#//GenDomainObject">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenPaletteStack" eSuperTypes="#//GenPaletteToolContainer #//GenPaletteTool">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activeTool" ordered="false"
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenPaletteStack"
+      eSuperTypes="#//GenPaletteToolContainer #//GenPaletteTool">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="activeTool"
+        ordered="false"
         eType="#//GenPaletteTool"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OawExpression" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="OawExpression"
+      eSuperTypes="#//Expression">
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="variableName"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"
         defaultValueLiteral="self"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OawXtend" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extensionFile" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="OawXtend"
+      eSuperTypes="#//Expression">
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="extensionFile"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenMenuAction" abstract="true" eSuperTypes="#//GenMenuItem"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GenMenuDelegateAction" eSuperTypes="#//GenMenuAction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostBundle" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="className" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenMenuAction"
+      abstract="true"
+      eSuperTypes="#//GenMenuItem"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenMenuDelegateAction"
+      eSuperTypes="#//GenMenuAction">
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="hostBundle"
+        ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="className"
+        ordered="false"
+        lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenMenuCreateAction" eSuperTypes="#//GenMenuAction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeHint" ordered="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="createConcept" ordered="false"
-        lowerBound="1" eType="#//GenDomainConcept"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" ordered="false"
-        upperBound="-1" eType="#//Expression" containment="true"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenMenuCreateAction"
+      eSuperTypes="#//GenMenuAction">
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="typeHint"
+        ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//String"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="createConcept"
+        ordered="false"
+        lowerBound="1"
+        eType="#//GenDomainConcept"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="expression"
+        ordered="false"
+        upperBound="-1"
+        eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenMenuSeparator" eSuperTypes="#//GenMenuItem"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="GenMenuSeparator"
+      eSuperTypes="#//GenMenuItem"/>
 </ecore:EPackage>

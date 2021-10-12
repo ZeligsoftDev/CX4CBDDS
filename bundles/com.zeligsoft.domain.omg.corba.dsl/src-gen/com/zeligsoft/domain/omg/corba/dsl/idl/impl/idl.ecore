@@ -250,6 +250,8 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StructType" eSuperTypes="#//Definition #//TypeDecl #//ConstrTypeSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAppendable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isFinal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="comments" upperBound="-1"
         eType="#//IDLComment" containment="true"/>
@@ -270,6 +272,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="TemplateTypeSpec" eSuperTypes="#//SimpleTypeSpec"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConstrTypeSpec" eSuperTypes="#//TypeSpec"/>
   <eClassifiers xsi:type="ecore:EClass" name="UnionType" eSuperTypes="#//TypeDecl #//ConstrTypeSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extensibility" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="comments" upperBound="-1"
         eType="#//IDLComment" containment="true"/>
