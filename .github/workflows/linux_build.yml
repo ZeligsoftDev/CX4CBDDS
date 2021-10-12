@@ -61,7 +61,7 @@ jobs:
             for (const [var_base, pat] of Object.entries(patterns)) {
                 const globber = await glob.create(pat, {followSymbolicLinks: false})
                 const files = await globber.glob()
-                if (files.length === 1) {
+                if (files?.length === 1) {
                     variable_defs[var_base + '_PRESENT'] = 'true'
                     variable_defs[var_base + '_PATH'] = files[0]
                     const path_parts = files[0].segments[files[0].segments.length - 1]
