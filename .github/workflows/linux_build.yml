@@ -64,7 +64,7 @@ jobs:
                 if (files.length === 1) {
                     variable_defs[var_base + '_PRESENT'] = 'true'
                     variable_defs[var_base + '_PATH'] = files[0]
-                    const path_parts = files[0].split('/')
+                    const path_parts = files[0].segments[files[0].segments.length - 1]
                     variable_defs[var_base + '_FILE_NAME'] = path_parts[path_parts.length - 1]
                 } else {
                     variable_defs[var_base + '_PRESENT'] = 'false'
