@@ -1,6 +1,7 @@
 package com.zeligsoft.domain.dds4ccm.ui.internal;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.papyrus.editor.PapyrusMultiDiagramEditor;
 import org.eclipse.papyrus.infra.core.resource.ModelSet;
@@ -9,9 +10,11 @@ import org.eclipse.papyrus.infra.core.services.ServiceException;
 import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
 import org.eclipse.papyrus.infra.core.utils.ServiceUtils;
 import org.eclipse.papyrus.uml.tools.model.UmlModel;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPartReference;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Model;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
@@ -74,10 +77,31 @@ public class MigrationChecker {
 				String message = NLS.bind(Messages.MigrationChecker_MigrationRequired, model.getName());
 				BaseUIUtil.writeToConsole(message);
 				Activator.getDefault().error(message, null);
+				openPopupDialog(message, model);
 			}
 		} else {
 			Activator.getDefault().error(NLS.bind(Messages.MigrationChecker_NoOpenFileFound, null), null);
 		}
+	}
+
+	private static void openPopupDialog(String message, Model model) {
+		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+			public void run() {
+				Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+				boolean migrate = MessageDialog.openQuestion(activeShell, Messages.MigrationChecker_MigrationRequired_DialogTitle, message);
+				BaseUIUtil.writeToConsole(migrate ? Messages.MigrationChecker_MigrationConfirmed : Messages.MigrationChecker_MigrationDeclined);
+				if (migrate) {
+					boolean success = DDS4CCMMigrationUtil.migrateAll(model);
+					String successMessage = success ? Messages.MigrationChecker_MigrationSuccess : Messages.MigrationChecker_MigrationFailure;
+					BaseUIUtil.writeToConsole(successMessage);
+					if (success) {
+						MessageDialog.openInformation(activeShell, Messages.MigrationChecker_MigrationResult_DialogTitle, successMessage);
+					} else {
+						MessageDialog.openError(activeShell, Messages.MigrationChecker_MigrationResult_DialogTitle, successMessage);
+					}
+				}
+			}
+		});
 	}
 
 	private static Model getModel(PapyrusMultiDiagramEditor multiEditor) {

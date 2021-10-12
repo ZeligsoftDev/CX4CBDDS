@@ -24,16 +24,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.common.core.command.ICommand;
-import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Model;
@@ -321,16 +318,11 @@ public final class DDS4CCMMigrationUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	public static void addMigrationAnnotation(final Model model,
-			final String toVersion) throws Exception {
-		ICommand command = new AbstractTransactionalCommand(
-				TransactionUtil.getEditingDomain(model), "Add version", null) { //$NON-NLS-1$
-
+	public static void addMigrationAnnotation(final Model model, final String toVersion) throws Exception {
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(model);
+		Command command = new RecordingCommand(editingDomain, "Add version", null) { //$NON-NLS-1$
 			@Override
-			protected CommandResult doExecuteWithResult(
-					IProgressMonitor monitor, IAdaptable info)
-					throws ExecutionException {
-				// add migration info to model
+			protected void doExecute() {
 				EAnnotation anno = model.getEAnnotation(SOURCE_NAME);
 				if (anno == null) {
 					anno = model.createEAnnotation(SOURCE_NAME);
@@ -339,10 +331,9 @@ public final class DDS4CCMMigrationUtil {
 				Date date = new Date();
 				anno.getDetails().put("date", //$NON-NLS-1$
 						UML2Util.EMPTY_STRING + date.getTime());
-				return CommandResult.newOKCommandResult();
 			}
 		};
-		command.execute(null, null);
+		editingDomain.getCommandStack().execute(command);
 	}
 
 }
