@@ -13,7 +13,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.UnionType#getExtensibility <em>Extensibility</em>}</li>
+ *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.UnionType#isIsAppendable <em>Is Appendable</em>}</li>
+ *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.UnionType#isIsFinal <em>Is Final</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.UnionType#getName <em>Name</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.UnionType#getComments <em>Comments</em>}</li>
  *   <li>{@link com.zeligsoft.domain.omg.corba.dsl.idl.UnionType#getSwitch <em>Switch</em>}</li>
@@ -27,26 +28,48 @@ import org.eclipse.emf.common.util.EList;
 public interface UnionType extends TypeDecl, ConstrTypeSpec
 {
   /**
-   * Returns the value of the '<em><b>Extensibility</b></em>' attribute.
+   * Returns the value of the '<em><b>Is Appendable</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Extensibility</em>' attribute.
-   * @see #setExtensibility(String)
-   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getUnionType_Extensibility()
+   * @return the value of the '<em>Is Appendable</em>' attribute.
+   * @see #setIsAppendable(boolean)
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getUnionType_IsAppendable()
    * @model
    * @generated
    */
-  String getExtensibility();
+  boolean isIsAppendable();
 
   /**
-   * Sets the value of the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.UnionType#getExtensibility <em>Extensibility</em>}' attribute.
+   * Sets the value of the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.UnionType#isIsAppendable <em>Is Appendable</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Extensibility</em>' attribute.
-   * @see #getExtensibility()
+   * @param value the new value of the '<em>Is Appendable</em>' attribute.
+   * @see #isIsAppendable()
    * @generated
    */
-  void setExtensibility(String value);
+  void setIsAppendable(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Is Final</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Final</em>' attribute.
+   * @see #setIsFinal(boolean)
+   * @see com.zeligsoft.domain.omg.corba.dsl.idl.IdlPackage#getUnionType_IsFinal()
+   * @model
+   * @generated
+   */
+  boolean isIsFinal();
+
+  /**
+   * Sets the value of the '{@link com.zeligsoft.domain.omg.corba.dsl.idl.UnionType#isIsFinal <em>Is Final</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Final</em>' attribute.
+   * @see #isIsFinal()
+   * @generated
+   */
+  void setIsFinal(boolean value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

@@ -358,7 +358,7 @@ ConstrTypeSpec :
 	StructType | UnionType | EnumType;
 			
 UnionType :
-	(extensibility="@final" | "@appendable")? "union" name=ID (comments+=IDLComment)* "switch" "(" switch=SwitchTypeSpec ")" "{" body=SwitchBody "}";
+	(isAppendable?="@appendable" | isFinal?="@final")? "union" name=ID (comments+=IDLComment)* "switch" "(" switch=SwitchTypeSpec ")" "{" body=SwitchBody "}";
 
 SwitchTypeSpec :
 	IntegerType | CharType | BooleanType | EnumType | ScopedName;

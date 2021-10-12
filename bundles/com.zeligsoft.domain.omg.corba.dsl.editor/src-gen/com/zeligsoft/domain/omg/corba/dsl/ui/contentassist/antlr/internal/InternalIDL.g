@@ -5498,17 +5498,15 @@ rule__UnionType__Alternatives_0
     }
 :
 (
-{ before(grammarAccess.getUnionTypeAccess().getExtensibilityAssignment_0_0()); }
-(rule__UnionType__ExtensibilityAssignment_0_0)
-{ after(grammarAccess.getUnionTypeAccess().getExtensibilityAssignment_0_0()); }
+{ before(grammarAccess.getUnionTypeAccess().getIsAppendableAssignment_0_0()); }
+(rule__UnionType__IsAppendableAssignment_0_0)
+{ after(grammarAccess.getUnionTypeAccess().getIsAppendableAssignment_0_0()); }
 )
 
     |(
-{ before(grammarAccess.getUnionTypeAccess().getAppendableKeyword_0_1()); }
-
-	'@appendable' 
-
-{ after(grammarAccess.getUnionTypeAccess().getAppendableKeyword_0_1()); }
+{ before(grammarAccess.getUnionTypeAccess().getIsFinalAssignment_0_1()); }
+(rule__UnionType__IsFinalAssignment_0_1)
+{ after(grammarAccess.getUnionTypeAccess().getIsFinalAssignment_0_1()); }
 )
 
 ;
@@ -28974,22 +28972,45 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__UnionType__ExtensibilityAssignment_0_0
+rule__UnionType__IsAppendableAssignment_0_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getUnionTypeAccess().getExtensibilityFinalKeyword_0_0_0()); }
+{ before(grammarAccess.getUnionTypeAccess().getIsAppendableAppendableKeyword_0_0_0()); }
 (
-{ before(grammarAccess.getUnionTypeAccess().getExtensibilityFinalKeyword_0_0_0()); }
+{ before(grammarAccess.getUnionTypeAccess().getIsAppendableAppendableKeyword_0_0_0()); }
+
+	'@appendable' 
+
+{ after(grammarAccess.getUnionTypeAccess().getIsAppendableAppendableKeyword_0_0_0()); }
+)
+
+{ after(grammarAccess.getUnionTypeAccess().getIsAppendableAppendableKeyword_0_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__UnionType__IsFinalAssignment_0_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getUnionTypeAccess().getIsFinalFinalKeyword_0_1_0()); }
+(
+{ before(grammarAccess.getUnionTypeAccess().getIsFinalFinalKeyword_0_1_0()); }
 
 	'@final' 
 
-{ after(grammarAccess.getUnionTypeAccess().getExtensibilityFinalKeyword_0_0_0()); }
+{ after(grammarAccess.getUnionTypeAccess().getIsFinalFinalKeyword_0_1_0()); }
 )
 
-{ after(grammarAccess.getUnionTypeAccess().getExtensibilityFinalKeyword_0_0_0()); }
+{ after(grammarAccess.getUnionTypeAccess().getIsFinalFinalKeyword_0_1_0()); }
 )
 
 ;

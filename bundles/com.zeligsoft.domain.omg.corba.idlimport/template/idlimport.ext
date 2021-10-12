@@ -355,16 +355,25 @@ Void applyTypedefConcept(uml::DataType datatype, TypeDeclarator typedef) :
 
 create CXUnion visitContained(UnionType union, CXInterface interface) :
 	interface.contents.add(this) ->
+	union.isAppendable?
+	  this.setExtensibility(ExtensibilityKind::Appendable) :
+	  this.setExtensibility(ExtensibilityKind::Final) ->
 	this.setName(union.name) ->
 	this.addCORBAUnionAttributes(union);
 
 create CXUnion visitContained(UnionType union, CXModule module) :
 	module.contents.add(this) ->
+	union.isAppendable?
+	  this.setExtensibility(ExtensibilityKind::Appendable) :
+	  this.setExtensibility(ExtensibilityKind::Final) ->	
 	this.setName(union.name) ->
 	this.addCORBAUnionAttributes(union);
 
 create CXUnion visitContained(UnionType union, uml::Package package) :
 	getCurrentFile().contents.add(this) ->
+	union.isAppendable?
+	  this.setExtensibility(ExtensibilityKind::Appendable) :
+	  this.setExtensibility(ExtensibilityKind::Final) ->
 	this.setName(union.name) ->
 	this.addCORBAUnionAttributes(union);
 	
