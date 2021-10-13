@@ -11,6 +11,9 @@ on:
     branches:
       - master
       - papyrus
+  release:
+    types:
+      - created
 
 jobs:
   build:
@@ -28,33 +31,113 @@ jobs:
         uses: actions/checkout@v2
       - name: RPM Variables
         id: variables
-        uses: actions/github-script@v3
+        uses: actions/github-script@v5
         with:
           script: |
-            const sha_short = context.sha.substring(0, 7)
+            const variable_defs = {}
+
+            short_sha = context.sha.substring(0, 7)
+
             const ref_parts = context.ref.split('/')
-            let tag='%nil'
+            let tag = short_sha
             if( ref_parts[1] === 'tags' ) {
                tag = ref_parts[-1]
             }
-            core.exportVariable('RPM_TAG', tag)
-            core.info('RPM_TAG='+tag)
-            core.exportVariable('GITHUB_SHA_SHORT', sha_short)
-            core.info('GITHUB_SHA_SHORT='+sha_short)
+            variable_defs['RPM_TAG'] = tag
+
+            for (const [var_name, value] of Object.entries(variable_defs)) {
+                core.exportVariable(var_name, value)
+                core.info(var_name + '=' + value)
+            }
       - name: Build DDS4CBDDS
         run: |
-          ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
-      - name: "Detect ATCD Zip"
-        id: atcd_zip
-        run: echo '::set-output name=zip::$(ls releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip 2>/dev/null)'
-      - name: "Detect AXIOMA Zip"
-        id: axioma_zip
-        run: echo '::set-output name=zip::$(ls releng/com.zeligsoft.dds4ccm.update.axioma/target/dds4ccm_axioma_*.zip 2>/dev/null)'
+           ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
+      - name: Located Built archives
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const patterns = {
+                'ATCD': 'releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip',
+                'AXIOMA': 'releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axioma_*.zip',
+                'DDK': 'releng/com.zeligsoft.dds4ccm.ddk/target/ddk_*.zip'
+            }
+            const variable_defs = {}
+            for (const [var_base, pat] of Object.entries(patterns)) {
+                const globber = await glob.create(pat, {followSymbolicLinks: false})
+                const files = await globber.glob()
+                if (files.length === 1) {
+                    variable_defs[var_base + '_PRESENT'] = 'true'
+                    variable_defs[var_base + '_PATH'] = files[0]
+                    const path_parts = files[0].split('/')
+                    variable_defs[var_base + '_FILE_NAME'] = path_parts[path_parts.length - 1]
+                } else {
+                    variable_defs[var_base + '_PRESENT'] = 'false'
+                }
+            }
+            for (const [var_name, value] of Object.entries(variable_defs)) {
+                core.exportVariable(var_name, value)
+                core.info(var_name + '=' + value)
+            }
       - name: Build ATCD RPM
-        if: steps.atcd_zip.outputs.zip != ''
+        if: ${{ env.ATCD_PRESENT == 'true' }}
         run: |
-          rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axcioma" --define "_git_commit_id $GITHUB_SHA_SHORT" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec
+          rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec
       - name: Build AXIOMA RPM
-        if: steps.axioma_zip.outputs.zip != ''
+        if: ${{ env.AXIOMA_PRESENT == 'true' }}
         run: |
-          rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd" --define "_git_commit_id $GITHUB_SHA_SHORT" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec
+          rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axioma" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.axioma/rpm_build/zeligsoftCX_axioma.spec
+      - name: Located Built RPMS
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const patterns = {
+                'ATCD_RPM': 'releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/noarch/*.rpm',
+                'AXIOMA_RPM': 'releng/com.zeligsoft.dds4ccm.update.aximoma/rpm_build/noarch/*.rpm'
+            }
+            const variable_defs = {}
+            for (const [var_base, pat] of Object.entries(patterns)) {
+                const globber = await glob.create(pat, {followSymbolicLinks: false})
+                const files = await globber.glob()
+                if (files.length === 1) {
+                    variable_defs[var_base + '_PRESENT'] = 'true'
+                    variable_defs[var_base + '_PATH'] = files[0]
+                    const path_parts = files[0].split('/')
+                    variable_defs[var_base + '_FILE_NAME'] = path_parts[path_parts.length - 1]
+                } else {
+                    variable_defs[var_base + '_PRESENT'] = 'false'
+                }
+            }
+            for (const [var_name, value] of Object.entries(variable_defs)) {
+                core.exportVariable(var_name, value)
+                core.info(var_name + '=' + value)
+            }
+      - name: Preserve ATCD Archive
+        if: ${{ env.ATCD_PRESENT == 'true' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.ATCD_FILE_NAME }}
+          path: ${{ env.ATCD_PATH }}
+      - name: Preserve AXIOMA archive
+        if: ${{ env.AXIOMA_PRESENT == 'true' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.AXIOMA_FILE_NAME }}
+          path: ${{ env.AXIOMA_PATH }}
+      - name: Preserve DDK archive
+        if: ${{ env.DDK_PRESENT == 'true' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.DDK_FILE_NAME }}
+          path: ${{ env.DDK_PATH }}
+      - name: Preserve ATCD RPM
+        if: ${{ env.ATCD_RPM_PRESENT == 'true' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.ATCD_RPM_FILE_NAME }}
+          path: ${{ env.ATCD_RPM_PATH }}
+      - name: Preserve AXIOMA_RPM
+        if: ${{ env.AXIOMA_RPM_PRESENT == 'true' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.AXIOMA_RPM_FILE_NAME }}
+          path: ${{ env.AXIOMA_RPM_PATH }}
