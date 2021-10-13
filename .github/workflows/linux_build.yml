@@ -49,18 +49,19 @@ jobs:
           ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
       - name: Located Built archives
         id: built_archives
-        uses: actions/github-script@v3
+        uses: actions/github-script@v5
         with:
           script: |
             const patterns = {
-                'ATCD': '**/target/dds4ccm_atcd_*.zip',
-                'AXIOMA': '**/target/dds4ccm_axioma_*.zip',
-                'DDK': '**/target/ddk_*.zip'
+                'ATCD': 'releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip',
+                'AXIOMA': 'releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axioma_*.zip',
+                'DDK': 'releng/com.zeligsoft.dds4ccm.ddk/target/ddk_*.zip'
             }
             const variable_defs = {}
             for (const [var_base, pat] of Object.entries(patterns)) {
                 const globber = await glob.create(pat, {followSymbolicLinks: false})
                 const files = await globber.glob()
+                core.info(var_base + " globber matches " + files)
                 if (files && files.length === 1) {
                     variable_defs[var_base + '_PRESENT'] = 'true'
                     variable_defs[var_base + '_PATH'] = files[0]
