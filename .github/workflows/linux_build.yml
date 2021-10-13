@@ -58,7 +58,7 @@ jobs:
           script: |
             const patterns = {
                 'ATCD': 'releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip',
-                'AXIOMA': 'releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axioma_*.zip',
+                'AXCIOMA': 'releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axcioma_*.zip',
                 'DDK': 'releng/com.zeligsoft.ddk.update/target/ddk_*.zip'
             }
             const variable_defs = {}
@@ -82,8 +82,8 @@ jobs:
         if: ${{ env.ATCD_PRESENT == 'true' }}
         run: |
           rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec
-      - name: Build AXIOMA RPM
-        if: ${{ env.AXIOMA_PRESENT == 'true' }}
+      - name: Build AXCIOMA RPM
+        if: ${{ env.AXCIOMA_PRESENT == 'true' }}
         run: |
           rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axioma" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.axioma/rpm_build/zeligsoftCX_axioma.spec
       - name: Located Built RPMS
@@ -92,7 +92,7 @@ jobs:
           script: |
             const patterns = {
                 'ATCD_RPM': 'releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/noarch/*.rpm',
-                'AXIOMA_RPM': 'releng/com.zeligsoft.dds4ccm.update.aximoma/rpm_build/noarch/*.rpm'
+                'AXCIOMA_RPM': 'releng/com.zeligsoft.dds4ccm.update.aximoma/rpm_build/noarch/*.rpm'
             }
             const variable_defs = {}
             for (const [var_base, pat] of Object.entries(patterns)) {
@@ -117,12 +117,12 @@ jobs:
         with:
           name: ${{ env.ATCD_FILE_NAME }}
           path: ${{ env.ATCD_PATH }}
-      - name: Preserve AXIOMA archive
-        if: ${{ env.AXIOMA_PRESENT == 'true' }}
+      - name: Preserve AXCIOMA archive
+        if: ${{ env.AXCIOMA_PRESENT == 'true' }}
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ env.AXIOMA_FILE_NAME }}
-          path: ${{ env.AXIOMA_PATH }}
+          name: ${{ env.AXCIOMA_FILE_NAME }}
+          path: ${{ env.AXCIOMA_PATH }}
       - name: Preserve DDK archive
         if: ${{ env.DDK_PRESENT == 'true' }}
         uses: actions/upload-artifact@v2
@@ -135,9 +135,9 @@ jobs:
         with:
           name: ${{ env.ATCD_RPM_FILE_NAME }}
           path: ${{ env.ATCD_RPM_PATH }}
-      - name: Preserve AXIOMA_RPM
-        if: ${{ env.AXIOMA_RPM_PRESENT == 'true' }}
+      - name: Preserve AXCIOMA_RPM
+        if: ${{ env.AXCIOMA_RPM_PRESENT == 'true' }}
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ env.AXIOMA_RPM_FILE_NAME }}
-          path: ${{ env.AXIOMA_RPM_PATH }}
+          name: ${{ env.AXCIOMA_RPM_FILE_NAME }}
+          path: ${{ env.AXCIOMA_RPM_PATH }}
