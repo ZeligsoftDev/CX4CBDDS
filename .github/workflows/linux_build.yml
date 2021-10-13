@@ -46,11 +46,7 @@ jobs:
             core.info('GITHUB_SHA_SHORT='+sha_short)
       - name: Build DDS4CBDDS
         run: |
-           mkdir -p $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd/target
-           touch $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_ABCD.zip
-           mkdir -p $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axcioma/target
-           touch $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axioma_WXYZ.zip
-#          ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
+           ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
       - name: Located Built archives
         id: built_archives
         uses: actions/github-script@v5
@@ -65,7 +61,6 @@ jobs:
             for (const [var_base, pat] of Object.entries(patterns)) {
                 const globber = await glob.create(pat, {followSymbolicLinks: false})
                 const files = await globber.glob()
-                core.info(var_base + " globber matches " + files + " (" + typeof(files) + ", " + files.constructor.name + ")")
                 if (files.length === 1) {
                     variable_defs[var_base + '_PRESENT'] = 'true'
                     variable_defs[var_base + '_PATH'] = files[0]
