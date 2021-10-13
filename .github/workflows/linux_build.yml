@@ -43,7 +43,7 @@ jobs:
             if( ref_parts[1] === 'tags' ) {
                tag = ref_parts[-1]
             }
-            variable_defs[RPM_TAG] = tag
+            variable_defs['RPM_TAG'] = tag
 
             for (const [var_name, value] of Object.entries(variable_defs)) {
                 core.exportVariable(var_name, value)
