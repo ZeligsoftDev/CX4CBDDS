@@ -69,14 +69,13 @@ jobs:
                 if (files.length === 1) {
                     variable_defs[var_base + '_PRESENT'] = 'true'
                     variable_defs[var_base + '_PATH'] = files[0]
-                    core.info('files[0]: (' + typeof(files[0]) + ',' + files[0].constructor.name + ')')
                     const path_parts = files[0].split('/')
                     variable_defs[var_base + '_FILE_NAME'] = path_parts[path_parts.length - 1]
                 } else {
                     variable_defs[var_base + '_PRESENT'] = 'false'
                 }
             }
-            for (const [var_name, value] of Object.entries(patterns)) {
+            for (const [var_name, value] of Object.entries(variable_defs)) {
                 core.exportVariable(var_name, value)
                 core.info(var_name + '=' + value)
             }
