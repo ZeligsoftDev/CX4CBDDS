@@ -46,7 +46,9 @@ jobs:
             core.info('GITHUB_SHA_SHORT='+sha_short)
       - name: Build DDS4CBDDS
         run: |
-          ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
+           touch releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_ABCD.zip
+           touch releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axioma_WXYZ.zip
+#          ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
       - name: Located Built archives
         id: built_archives
         uses: actions/github-script@v5
@@ -61,15 +63,15 @@ jobs:
             for (const [var_base, pat] of Object.entries(patterns)) {
                 const globber = await glob.create(pat, {followSymbolicLinks: false})
                 const files = await globber.glob()
-                core.info(var_base + " globber matches " + files)
-                if (files && files.length === 1) {
-                    variable_defs[var_base + '_PRESENT'] = 'true'
-                    variable_defs[var_base + '_PATH'] = files[0]
-                    const path_parts = files[0].segments[files[0].segments.length - 1]
-                    variable_defs[var_base + '_FILE_NAME'] = path_parts[path_parts.length - 1]
-                } else {
-                    variable_defs[var_base + '_PRESENT'] = 'false'
-                }
+                core.info(var_base + " globber matches " + files + " (" + typeof(files) + ")")
+                //if (files && files.length === 1) {
+                //    variable_defs[var_base + '_PRESENT'] = 'true'
+                //    variable_defs[var_base + '_PATH'] = files[0]
+                //    const path_parts = files[0].segments[files[0].segments.length - 1]
+                //    variable_defs[var_base + '_FILE_NAME'] = path_parts[path_parts.length - 1]
+                //} else {
+                //    variable_defs[var_base + '_PRESENT'] = 'false'
+                //}
             }
             for (const [var_name, value] of Object.entries(patterns)) {
                 core.exportVariable(var_name, value)
