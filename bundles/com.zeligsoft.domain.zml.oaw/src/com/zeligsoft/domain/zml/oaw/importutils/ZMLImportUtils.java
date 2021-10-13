@@ -12,7 +12,6 @@ import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.NamedElement;
-import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -27,7 +26,6 @@ public class ZMLImportUtils {
 	@SuppressWarnings("nls")
 	public static void debug(Object o) {
 		System.out.println("******* DEBUG *********");
-		((Package)o).setName("lll");
 		System.out.println(o.toString());
 		System.out.println("***********************");
 	}
