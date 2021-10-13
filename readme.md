@@ -15,6 +15,10 @@ The build requires:
 
 ## Building
 
+A github action automatically builds master and papyrus branches as well as all pull requests. 
+
+To build manually;
+
 1. Clone the DDS4CCM git repository.
 2. Start a shell, and change directory to the repository root.
 3. Checkout the `papyrus` branch.

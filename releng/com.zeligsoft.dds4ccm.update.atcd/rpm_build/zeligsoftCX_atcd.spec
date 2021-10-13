@@ -7,7 +7,7 @@
 # Set the release of the RPM according to the value of the 'parameterized' input
 # variables, or use a string constant
 %if 0%{?_git_tag:1}
-	%define rel %{_defaultRel}_{_git_tag}
+	%define rel %{_defaultRel}_%{_git_tag}
 %else
 	%if 0%{?_git_commit_id:1}
 		%define rel %{_defaultRel}_%{_git_commit_id}
