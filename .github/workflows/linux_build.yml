@@ -46,8 +46,8 @@ jobs:
             core.info('GITHUB_SHA_SHORT='+sha_short)
       - name: Build DDS4CBDDS
         run: |
-           touch releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_ABCD.zip
-           touch releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axioma_WXYZ.zip
+           touch $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_ABCD.zip
+           touch $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axioma_WXYZ.zip
 #          ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
       - name: Located Built archives
         id: built_archives
