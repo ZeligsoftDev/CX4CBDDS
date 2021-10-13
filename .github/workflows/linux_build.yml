@@ -66,14 +66,15 @@ jobs:
                 const globber = await glob.create(pat, {followSymbolicLinks: false})
                 const files = await globber.glob()
                 core.info(var_base + " globber matches " + files + " (" + typeof(files) + ", " + files.constructor.name + ")")
-                //if (files && files.length === 1) {
-                //    variable_defs[var_base + '_PRESENT'] = 'true'
-                //    variable_defs[var_base + '_PATH'] = files[0]
-                //    const path_parts = files[0].segments[files[0].segments.length - 1]
-                //    variable_defs[var_base + '_FILE_NAME'] = path_parts[path_parts.length - 1]
-                //} else {
-                //    variable_defs[var_base + '_PRESENT'] = 'false'
-                //}
+                if (files.length === 1) {
+                    variable_defs[var_base + '_PRESENT'] = 'true'
+                    variable_defs[var_base + '_PATH'] = files[0]
+                    core.info('files[0]: (' + typeof(files[0]) + ',' + files[0].constructor.name + ')')
+                    const path_parts = files[0].split('/')
+                    variable_defs[var_base + '_FILE_NAME'] = path_parts[path_parts.length - 1]
+                } else {
+                    variable_defs[var_base + '_PRESENT'] = 'false'
+                }
             }
             for (const [var_name, value] of Object.entries(patterns)) {
                 core.exportVariable(var_name, value)
