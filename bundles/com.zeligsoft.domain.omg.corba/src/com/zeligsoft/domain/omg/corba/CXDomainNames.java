@@ -572,6 +572,20 @@ public final class CXDomainNames {
  
 
 /**
+ * Fully qualified name for the ZDL DomainConcept: Extensible. 
+ * @generated
+ */
+ public static final String EXTENSIBLE = "CXDomain::IDL::Extensible";//$NON-NLS-1$
+ 
+/**
+ * ZDL DomainAttribute: Extensible::extensibility. 
+ * Multiplicity: 1  
+ * @generated
+ */
+ public static final String EXTENSIBLE__EXTENSIBILITY = "extensibility";//$NON-NLS-1$  
+
+
+/**
  * Fully qualified name for the ZDL DomainConcept: IDLFile. 
  * @generated
  */
@@ -747,6 +761,25 @@ public final class CXDomainNames {
  * @generated
  */
  public static final String CXPRIMITIVE_KIND___CXWSTRING = "CXWString";//$NON-NLS-1$
+
+
+/**
+ * ZDL DomainEnum: ExtensibilityKind. 
+ * @generated
+ */
+ public static final String EXTENSIBILITY_KIND = "CXDomain::IDL::ExtensibilityKind";//$NON-NLS-1$
+ 
+/**
+ * ZDL DomainEnumLiteral: ExtensibilityKind::Appendable. 
+ * @generated
+ */
+ public static final String EXTENSIBILITY_KIND___APPENDABLE = "Appendable";//$NON-NLS-1$
+
+/**
+ * ZDL DomainEnumLiteral: ExtensibilityKind::Final. 
+ * @generated
+ */
+ public static final String EXTENSIBILITY_KIND___FINAL = "Final";//$NON-NLS-1$
 
 
 }

@@ -5854,25 +5854,36 @@ ruleUnionType returns [EObject current=null]
     @after { leaveRule(); }:
 (((
 (
-		lv_extensibility_0_0=	'@final' 
+		lv_isAppendable_0_0=	'@appendable' 
     {
-        newLeafNode(lv_extensibility_0_0, grammarAccess.getUnionTypeAccess().getExtensibilityFinalKeyword_0_0_0());
+        newLeafNode(lv_isAppendable_0_0, grammarAccess.getUnionTypeAccess().getIsAppendableAppendableKeyword_0_0_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getUnionTypeRule());
 	        }
-       		setWithLastConsumed($current, "extensibility", lv_extensibility_0_0, "@final");
+       		setWithLastConsumed($current, "isAppendable", true, "@appendable");
 	    }
 
 )
 )
-    |	otherlv_1='@appendable' 
+    |(
+(
+		lv_isFinal_1_0=	'@final' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getUnionTypeAccess().getAppendableKeyword_0_1());
+        newLeafNode(lv_isFinal_1_0, grammarAccess.getUnionTypeAccess().getIsFinalFinalKeyword_0_1_0());
     }
-)?	otherlv_2='union' 
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getUnionTypeRule());
+	        }
+       		setWithLastConsumed($current, "isFinal", true, "@final");
+	    }
+
+)
+))?	otherlv_2='union' 
     {
     	newLeafNode(otherlv_2, grammarAccess.getUnionTypeAccess().getUnionKeyword_1());
     }

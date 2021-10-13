@@ -17021,13 +17021,13 @@ protected class ConstrTypeSpec_EnumTypeParserRuleCall_2 extends RuleCallToken {
 /************ begin Rule UnionType ****************
  *
  * UnionType:
- * 	(extensibility="@final" | "@appendable")? "union" name=ID comments+=IDLComment* "switch" "(" switch=SwitchTypeSpec
- * 	")" "{" body=SwitchBody "}";
+ * 	(isAppendable?="@appendable" | isFinal?="@final")? "union" name=ID comments+=IDLComment* "switch" "("
+ * 	switch=SwitchTypeSpec ")" "{" body=SwitchBody "}";
  *
  **/
 
-// (extensibility="@final" | "@appendable")? "union" name=ID comments+=IDLComment* "switch" "(" switch=SwitchTypeSpec ")"
-// "{" body=SwitchBody "}"
+// (isAppendable?="@appendable" | isFinal?="@final")? "union" name=ID comments+=IDLComment* "switch" "("
+// switch=SwitchTypeSpec ")" "{" body=SwitchBody "}"
 protected class UnionType_Group extends GroupToken {
 	
 	public UnionType_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17056,7 +17056,7 @@ protected class UnionType_Group extends GroupToken {
 
 }
 
-// (extensibility="@final" | "@appendable")?
+// (isAppendable?="@appendable" | isFinal?="@final")?
 protected class UnionType_Alternatives_0 extends AlternativesToken {
 
 	public UnionType_Alternatives_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17071,23 +17071,24 @@ protected class UnionType_Alternatives_0 extends AlternativesToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new UnionType_ExtensibilityAssignment_0_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new UnionType_IsAppendableAssignment_0_0(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new UnionType_IsFinalAssignment_0_1(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// extensibility="@final"
-protected class UnionType_ExtensibilityAssignment_0_0 extends AssignmentToken  {
+// isAppendable?="@appendable"
+protected class UnionType_IsAppendableAssignment_0_0 extends AssignmentToken  {
 	
-	public UnionType_ExtensibilityAssignment_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public UnionType_IsAppendableAssignment_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getUnionTypeAccess().getExtensibilityAssignment_0_0();
+		return grammarAccess.getUnionTypeAccess().getIsAppendableAssignment_0_0();
 	}
 
     @Override
@@ -17099,11 +17100,44 @@ protected class UnionType_ExtensibilityAssignment_0_0 extends AssignmentToken  {
 
     @Override	
 	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("extensibility",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("extensibility");
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getUnionTypeAccess().getExtensibilityFinalKeyword_0_0_0(), value, null)) {
+		if((value = eObjectConsumer.getConsumable("isAppendable",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("isAppendable");
+		if(Boolean.TRUE.equals(value)) { // org::eclipse::xtext::impl::KeywordImpl
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getUnionTypeAccess().getExtensibilityFinalKeyword_0_0_0();
+			element = grammarAccess.getUnionTypeAccess().getIsAppendableAppendableKeyword_0_0_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// isFinal?="@final"
+protected class UnionType_IsFinalAssignment_0_1 extends AssignmentToken  {
+	
+	public UnionType_IsFinalAssignment_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getUnionTypeAccess().getIsFinalAssignment_0_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("isFinal",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("isFinal");
+		if(Boolean.TRUE.equals(value)) { // org::eclipse::xtext::impl::KeywordImpl
+			type = AssignmentType.KEYWORD;
+			element = grammarAccess.getUnionTypeAccess().getIsFinalFinalKeyword_0_1_0();
 			return obj;
 		}
 		return null;
