@@ -29,7 +29,7 @@ jobs:
           sudo apt-get update && sudo apt-get -y install rpm
       - name: Checkout source
         uses: actions/checkout@v2
-      - name: RPM Variables
+      - name: Set Variables
         id: variables
         uses: actions/github-script@v5
         with:
@@ -44,6 +44,8 @@ jobs:
                tag = ref_parts[-1]
             }
             variable_defs['RPM_TAG'] = tag
+
+            variable_defs['ARTIFACT_RETENTION_DAYS'] = 3
 
             for (const [var_name, value] of Object.entries(variable_defs)) {
                 core.exportVariable(var_name, value)
@@ -117,27 +119,32 @@ jobs:
         with:
           name: ${{ env.ATCD_FILE_NAME }}
           path: ${{ env.ATCD_PATH }}
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve AXCIOMA archive
         if: ${{ env.AXCIOMA_PRESENT == 'true' }}
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.AXCIOMA_FILE_NAME }}
           path: ${{ env.AXCIOMA_PATH }}
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve DDK archive
         if: ${{ env.DDK_PRESENT == 'true' }}
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.DDK_FILE_NAME }}
           path: ${{ env.DDK_PATH }}
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve ATCD RPM
         if: ${{ env.ATCD_RPM_PRESENT == 'true' }}
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.ATCD_RPM_FILE_NAME }}
           path: ${{ env.ATCD_RPM_PATH }}
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve AXCIOMA_RPM
         if: ${{ env.AXCIOMA_RPM_PRESENT == 'true' }}
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.AXCIOMA_RPM_FILE_NAME }}
           path: ${{ env.AXCIOMA_RPM_PATH }}
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
