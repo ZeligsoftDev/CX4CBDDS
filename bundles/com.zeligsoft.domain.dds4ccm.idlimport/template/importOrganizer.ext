@@ -95,12 +95,7 @@ Void organize(StructType def ) :
 	addElementToPackage(def.name);
 	
 Void organize(UnionType def ) :
-	{};
-	
-/* Need to fix union-importing into a top level model or else this throws an exception.
-Void organize(UnionType def ) :
 	addElementToPackage(def.name);
-*/
 	
 Void organize(TypeDeclarator def ) :
 	addElementToPackage(def.declarators.first().id);
