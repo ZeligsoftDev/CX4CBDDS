@@ -90,8 +90,6 @@ public class Messages
 	
 	public static String TransformAction_ThreadJoinFailedLog;
 	
-	public static String TransformAction_ResourceListener_CoreException;
-
 	public static String TransformRegistry_InvalidWorkflowPathLog;
 	
 	public static String TransformRegistry_InvalidWorkflowValidationFactory;

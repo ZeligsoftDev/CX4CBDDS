@@ -49,6 +49,19 @@ public class Messages extends NLS
 	public static String Formatter_CantFormat;
 	public static String Formatter_IllegalTree;
 	public static String Formatter_BadLocation;
+	
+	public static String FileCollector_NullProject;
+	public static String FileCollector_CoreException;
+	public static String FileCollector_ResourceListener_CoreException;
+	public static String FileCollector_FilesUpdatedTitleMessage;
+	public static String FileCollector_SeparatorLine;
+	public static String FileCollector_Warning_StillCollecting;
+	public static String FileCollector_FilesBeforeTitleMessage;
+	public static String FileCollector_FilesAfterTitleMessage;
+	public static String FileCollector_FilesAddedTitleMessage;
+	public static String FileCollector_FilesChangedTitleMessage;
+	public static String FileCollector_FilesRemovedTitleMessage;
+	public static String FileCollector_FilesUnchangedTitleMessage;
 
 	static
 	{

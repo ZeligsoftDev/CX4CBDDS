@@ -18,12 +18,15 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.4.1",
  org.eclipse.emf.mwe.core;bundle-version="1.4.0",
  org.eclipse.emf.mwe.utils;bundle-version="1.4.0",
  org.eclipse.xpand;bundle-version="2.2.0",
- com.zeligsoft.domain.zml;bundle-version="4.0.0"
+ com.zeligsoft.domain.zml;bundle-version="4.0.0",
+ com.google.guava;bundle-version="21.0.0",
+ com.zeligsoft.base.ui;bundle-version="4.0.0"
 Export-Package: com.zeligsoft.cx.codegen,
  com.zeligsoft.cx.codegen.editor,
+ com.zeligsoft.cx.codegen.filecollector,
  com.zeligsoft.cx.codegen.io,
- com.zeligsoft.cx.codegen.rsm,
- com.zeligsoft.cx.codegen.postprocessor
+ com.zeligsoft.cx.codegen.postprocessor,
+ com.zeligsoft.cx.codegen.rsm
 Bundle-Activator: com.zeligsoft.cx.codegen.CodeGenPlugin
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
