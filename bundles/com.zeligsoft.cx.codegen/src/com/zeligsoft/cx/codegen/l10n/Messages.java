@@ -49,7 +49,7 @@ public class Messages extends NLS
 	public static String Formatter_CantFormat;
 	public static String Formatter_IllegalTree;
 	public static String Formatter_BadLocation;
-
+	
 	static
 	{
 		NLS.initializeMessages( "com.zeligsoft.cx.codegen.l10n.messages", Messages.class );

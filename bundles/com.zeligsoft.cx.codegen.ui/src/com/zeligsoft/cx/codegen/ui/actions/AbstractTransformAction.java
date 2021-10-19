@@ -35,12 +35,13 @@ import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.jface.action.Action;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.uml.NamedElement;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
@@ -48,10 +49,11 @@ import com.zeligsoft.base.util.WorkflowUtil;
 import com.zeligsoft.cx.build.factory.ProjectFactory;
 import com.zeligsoft.cx.codegen.CodeGenWorkflowConstants;
 import com.zeligsoft.cx.codegen.ui.CodeGenUIPlugin;
+import com.zeligsoft.cx.codegen.ui.filecollector.FileCollector;
 import com.zeligsoft.cx.codegen.ui.l10n.Messages;
 import com.zeligsoft.cx.codegen.ui.transformregistry.WorkflowEntry;
 
-public abstract class AbstractTransformAction extends Action{
+public abstract class AbstractTransformAction extends Action {
 	
 	protected List<WorkflowEntry> workflows = null;
 
@@ -112,7 +114,7 @@ public abstract class AbstractTransformAction extends Action{
 						while (i.hasNext()) {
 							
 							WorkflowEntry entry = i.next();
-							
+
 							if( entry.getValidationFactory() != null )
 							{
 								IBatchValidator validator = entry.getValidationFactory().createValidator();
@@ -135,21 +137,13 @@ public abstract class AbstractTransformAction extends Action{
 								IStatus result = WorkflowUtil.executeWorkflow(
 									entry.getWorkflowURL(), monitor, genProperties,
 									externalSlotContents);
+								refreshWorkspace(project, monitor);
 								createResultStatus(resultStatus, entry, result);
 								writeResultToConsole(entry, result);
 							}
 						}
 					} finally {
-						try {
-							project.refreshLocal(IResource.DEPTH_INFINITE,
-								monitor);
-						} catch (CoreException e) {
-							CodeGenUIPlugin
-								.getDefault()
-								.error(
-									Messages.TransformAction_ProjectRefreshFailedLog,
-									e);
-						}
+						refreshWorkspace(project, monitor);
 					}
 				}
 
@@ -159,13 +153,37 @@ public abstract class AbstractTransformAction extends Action{
 				return resultStatus;
 			}
 
+			private void refreshWorkspace(IProject project, IProgressMonitor monitor) {
+				try {
+					project.refreshLocal(IResource.DEPTH_INFINITE,
+						monitor);
+				} catch (CoreException e) {
+					CodeGenUIPlugin
+						.getDefault()
+						.error(
+							Messages.TransformAction_ProjectRefreshFailedLog,
+							e);
+				}
+			}
+
 		};
+
+		IProject project = ProjectFactory.getProject(getEObject(), null,
+				ProjectFactory.MODE_NO_CREATE);
+		FileCollector fileCollector = new FileCollector(project);
+		fileCollector.begin();
 
 		transformJob.setUser(true);
 		transformJob.schedule();
+		transformJob.addJobChangeListener(new JobChangeAdapter() {
+			@Override
+			public void done(IJobChangeEvent event) {
+				fileCollector.end();
+				fileCollector.report();
+			}
+		});
 		try{
 			joinThread(transformJob);
-			
 		} catch (InterruptedException e) {
 			CodeGenUIPlugin
 			.getDefault()
@@ -174,7 +192,7 @@ public abstract class AbstractTransformAction extends Action{
 				e);
 		}
 	}
-
+	
 	protected Status createStatus(int severity, String msg) {
 	    Status status = new Status(severity, CodeGenUIPlugin.PLUGIN_ID, IStatus.OK, msg, null);
 	    return status;
@@ -245,18 +263,7 @@ public abstract class AbstractTransformAction extends Action{
 			buffer.append(Messages.GenerateMessage_3);
 		}
 		buffer.append(System.lineSeparator());
-		Display currentDisplay = Display.getDefault();
-		if (currentDisplay == null) {
-			IStatus error = createStatus(IStatus.ERROR, "Default display is null."); //$NON-NLS-1$
-			ILog logger = Platform.getLog(entry.getDiagnosticInfo().getBundle());
-			logger.log(error);
-		}
-		currentDisplay.asyncExec(new Runnable() {
-			@Override
-			public void run() {
-				BaseUIUtil.writeToConsole(buffer.toString());
-			}
-		});
+		BaseUIUtil.writeToConsole(buffer.toString());
 	}
 
 }
