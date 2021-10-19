@@ -32,9 +32,7 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.osgi.util.NLS;
 
@@ -42,7 +40,6 @@ import com.google.common.collect.Sets;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.cx.CXActivator;
 import com.zeligsoft.cx.codegen.CodeGenPlugin;
-import com.zeligsoft.cx.codegen.filecollector.FileCollector.GeneratedFile;
 import com.zeligsoft.cx.codegen.l10n.Messages;
 import com.zeligsoft.cx.preferences.CXPreferenceConstants;
 
@@ -53,8 +50,9 @@ import com.zeligsoft.cx.preferences.CXPreferenceConstants;
  * 
  * The intended use of this class is as follows:
  * 
- * IProject project = ...; FileCollector fileCollector = new
- * FileCollector(project); fileCollector.begin();
+ * IProject project = ...; 
+ * FileCollector fileCollector = new FileCollector(project); 
+ * fileCollector.begin();
  * 
  * //... some big operation changing resources here ...
  * 
