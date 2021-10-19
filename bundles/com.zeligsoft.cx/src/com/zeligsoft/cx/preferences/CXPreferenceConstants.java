@@ -141,4 +141,29 @@ public final class CXPreferenceConstants {
 	
 	// search workspace preference from the selection dialog
 	public static final String SOURCE_DPI = "source_dpi"; //$NON-NLS-1$
+
+	public static final String FILE_COLLECTOR_FILES_ADDED = "file_collector_files_added"; //$NON-NLS-1$
+
+	public static final boolean FILE_COLLECTOR_FILES_ADDED_DEFAULT = true;
+
+	public static final String FILE_COLLECTOR_FILES_CHANGED = "file_collector_files_changed"; //$NON-NLS-1$
+
+	public static final boolean FILE_COLLECTOR_FILES_CHANGED_DEFAULT = true;
+
+	public static final String FILE_COLLECTOR_FILES_REMOVED = "file_collector_files_removed"; //$NON-NLS-1$
+
+	public static final boolean FILE_COLLECTOR_FILES_REMOVED_DEFAULT = true;
+
+	public static final String FILE_COLLECTOR_FILES_UNCHANGED = "file_collector_files_unchanged"; //$NON-NLS-1$
+
+	public static final boolean FILE_COLLECTOR_FILES_UNCHANGED_DEFAULT = false;
+
+	public static final String FILE_COLLECTOR_FILES_BEFORE = "file_collector_files_before"; //$NON-NLS-1$
+
+	public static final boolean FILE_COLLECTOR_FILES_BEFORE_DEFAULT = false;
+
+	public static final String FILE_COLLECTOR_FILES_AFTER = "file_collector_files_after"; //$NON-NLS-1$
+
+	public static final boolean FILE_COLLECTOR_FILES_AFTER_DEFAULT = false;
+	
 }

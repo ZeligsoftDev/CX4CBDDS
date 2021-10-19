@@ -104,6 +104,23 @@ public class Messages
 
 	public static String WorkerCodeStorage_SaveFailedLog;
 
+	public static String CXCodegenPreferencePage_FileCollectorGroup;
+	
+	public static String CXCodegenPreferencePage_FileCollectorQuestion;
+	
+	public static String CXCodegenPreferencePage_FilesAddedCheckbox;
+	
+	public static String CXCodegenPreferencePage_FilesChangedCheckbox;
+	
+	public static String CXCodegenPreferencePage_FilesRemovedCheckbox;
+	
+	public static String CXCodegenPreferencePage_FilesUnchangedCheckbox;
+	
+	public static String CXCodegenPreferencePage_FilesBeforeCheckbox;
+	
+	public static String CXCodegenPreferencePage_FilesAfterCheckbox;
+
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

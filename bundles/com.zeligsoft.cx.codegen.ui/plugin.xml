@@ -46,4 +46,15 @@
          </menu>
       </menuContribution>
    </extension>
+   
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="cxPreferenceRoot"
+            class="com.zeligsoft.cx.codegen.ui.preferences.CodegenReportPreferencePage"
+            id="cxCodegenPreference"
+            name="%prefs.page.codegen.name">
+      </page>
+   </extension>
+   
 </plugin>

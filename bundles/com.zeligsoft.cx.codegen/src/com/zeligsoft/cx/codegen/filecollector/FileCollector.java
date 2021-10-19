@@ -32,45 +32,51 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.osgi.util.NLS;
 
 import com.google.common.collect.Sets;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.cx.CXActivator;
 import com.zeligsoft.cx.codegen.CodeGenPlugin;
 import com.zeligsoft.cx.codegen.filecollector.FileCollector.GeneratedFile;
 import com.zeligsoft.cx.codegen.l10n.Messages;
-
+import com.zeligsoft.cx.preferences.CXPreferenceConstants;
 
 /**
- * This class is intended to collect files added, changed, removed or unchanged by
- * transformations, code generators or other "big" operations that affect resources.
+ * This class is intended to collect files added, changed, removed or unchanged
+ * by transformations, code generators or other "big" operations that affect
+ * resources.
  * 
  * The intended use of this class is as follows:
  * 
- * IProject project = ...;
- * FileCollector fileCollector = new FileCollector(project);
- * fileCollector.begin();
+ * IProject project = ...; FileCollector fileCollector = new
+ * FileCollector(project); fileCollector.begin();
  * 
  * //... some big operation changing resources here ...
  * 
  * fileCollector.end();
  * 
- * // Then report the results to the console ...
- * fileCollector.report();
+ * // Then report the results to the console ... fileCollector.report();
  * 
  * //... or obtain results using any of the getters:
  * Set<FileCollector.GeneratedFile> filesAdded = fileCollector.getFilesAdded();
- * Set<FileCollector.GeneratedFile> filesAdded = fileCollector.getFilesRemoved();
- * // ...etc.
+ * Set<FileCollector.GeneratedFile> filesAdded =
+ * fileCollector.getFilesRemoved(); // ...etc.
  * 
  * @author Ernesto Posse
  */
 public class FileCollector {
-	
-	// Wrapper class to IFile implementing the Comparable interface 
-	// so that we can store them in Sets and sort them by path.
+
+	/**
+	 * Wrapper class to IFile implementing the Comparable interface so that we can
+	 * store them in Sets and sort them by path.
+	 * 
+	 * @author Ernesto Posse
+	 */
 	public class GeneratedFile implements Comparable<GeneratedFile> {
 		private IFile file;
 
@@ -121,16 +127,16 @@ public class FileCollector {
 			return getFullPath().toPortableString().compareTo(other.getFullPath().toPortableString());
 		}
 	}
-	
+
 	// The project that defines the scope of this file collector.
 	private IProject project;
-	
+
 	// Set of files before the transform is performed
 	private Set<GeneratedFile> filesBefore;
-	// Set of files after the transform is performed 
+	// Set of files after the transform is performed
 	private Set<GeneratedFile> filesAfter;
 	// Set of files unchanged by the transformation.
-	private Set<GeneratedFile> unchangedFiles;
+	private Set<GeneratedFile> filesUnchanged;
 	// Set of files added by the transformation.
 	private Set<GeneratedFile> filesAdded;
 	// Set of files changed by the transformation.
@@ -138,19 +144,24 @@ public class FileCollector {
 	// Set of files removed by the transformation.
 	private Set<GeneratedFile> filesRemoved;
 
-	private IEclipsePreferences prefs = InstanceScope.INSTANCE.getNode("org.eclipse.core.resources"); //$NON-NLS-1$
+	private static final IEclipsePreferences ECLIPSE_PREFERENCES = InstanceScope.INSTANCE
+			.getNode("org.eclipse.core.resources"); //$NON-NLS-1$
 
-	// Attribute to save the value of this preference to restore it after the transformation.
+	private static final IEclipsePreferences WORKSPACE_PREFERENCES = InstanceScope.INSTANCE
+			.getNode(CXActivator.PLUGIN_ID);
+
+	// Attribute to save the value of this preference to restore it after the
+	// transformation.
 	private boolean autoRefreshPreference = false;
 
 	private IResourceChangeListener listener;
-	
+
 	private boolean collecting = false;
 
 	/**
 	 * Create a new file collector for the given project.
 	 * 
-	 * @param project	The project that defines the scope of this file collector.
+	 * @param project The project that defines the scope of this file collector.
 	 */
 	public FileCollector(IProject project) {
 		if (project != null) {
@@ -169,7 +180,7 @@ public class FileCollector {
 	}
 
 	public Set<GeneratedFile> getUnchangedFiles() {
-		return unchangedFiles;
+		return filesUnchanged;
 	}
 
 	public Set<GeneratedFile> getFilesAdded() {
@@ -184,9 +195,14 @@ public class FileCollector {
 		return filesRemoved;
 	}
 
+	/**
+	 * Returns the set of files in the project.
+	 * 
+	 * @return Set<GeneratedFile>
+	 */
 	public Set<GeneratedFile> collectFiles() {
 		Set<GeneratedFile> files = new TreeSet<GeneratedFile>();
-		if (!collecting) 
+		if (!collecting)
 			return files;
 		IResourceVisitor visitor = new IResourceVisitor() {
 			@Override
@@ -198,7 +214,7 @@ public class FileCollector {
 				return true;
 			}
 		};
-		
+
 		try {
 			project.accept(visitor);
 		} catch (CoreException e) {
@@ -206,7 +222,14 @@ public class FileCollector {
 		}
 		return files;
 	}
-	
+
+	/**
+	 * Begin file collection. 
+	 * 
+	 * Initializes the variables for the sets of files to collect, collects the current set of 
+	 * files in the project, enables the auto-refresh preference to be able to detect file changes
+	 * resulting from non Eclipse resource-API operations, and sets up a resource listener.
+	 */
 	public void begin() {
 		saveAutoRefreshPreference();
 		enableAutoRefresh();
@@ -216,54 +239,78 @@ public class FileCollector {
 		filesChanged = new TreeSet<GeneratedFile>();
 		filesRemoved = new TreeSet<GeneratedFile>();
 		filesBefore = collectFiles();
-		// We initialize the unchangedFiles to the set of files before the transformation,
-		// and the listener will modify it by removing files whenever changes are detected.
-		unchangedFiles = Sets.newTreeSet(filesBefore);
+		// We initialize the filesUnchanged to the set of files before the
+		// transformation,
+		// and the listener will modify it by removing files whenever changes are
+		// detected.
+		filesUnchanged = Sets.newTreeSet(filesBefore);
 		setupResourceListener();
 	}
-	
+
+	/**
+	 * Ends file collection. 
+	 * 
+	 * Collects files again (if enabled), stops collecting files, disables the resource listener 
+	 * and restores the auto-refresh preference.
+	 */
 	public void end() {
+		if (WORKSPACE_PREFERENCES.getBoolean(CXPreferenceConstants.FILE_COLLECTOR_FILES_AFTER,
+				CXPreferenceConstants.FILE_COLLECTOR_FILES_AFTER_DEFAULT)) {
+			filesAfter = collectFiles();
+		}
 		collecting = false;
 		tearDownResourceListener();
 		restoreAutoRefreshPreference();
 	}
 
 	private void saveAutoRefreshPreference() {
-		autoRefreshPreference = prefs.getBoolean(ResourcesPlugin.PREF_AUTO_REFRESH, false);
+		autoRefreshPreference = ECLIPSE_PREFERENCES.getBoolean(ResourcesPlugin.PREF_AUTO_REFRESH, false);
 	}
-	
+
 	private void restoreAutoRefreshPreference() {
-		prefs.putBoolean(ResourcesPlugin.PREF_AUTO_REFRESH, autoRefreshPreference);
+		ECLIPSE_PREFERENCES.putBoolean(ResourcesPlugin.PREF_AUTO_REFRESH, autoRefreshPreference);
 	}
-	
+
 	private void enableAutoRefresh() {
-		// We need to enable the auto-refresh preference so that the resource listener can
-		// detect changes made outside of Eclipse or by non-Eclipse resource changing APIs.
-		// Normally generators invoked by a workflow should only use Eclipse resource-changing APIs,
+		// We need to enable the auto-refresh preference so that the resource listener
+		// can
+		// detect changes made outside of Eclipse or by non-Eclipse resource changing
+		// APIs.
+		// Normally generators invoked by a workflow should only use Eclipse
+		// resource-changing APIs,
 		// but we cannot guarrantee that.
-		prefs.putBoolean(ResourcesPlugin.PREF_AUTO_REFRESH, true);
+		ECLIPSE_PREFERENCES.putBoolean(ResourcesPlugin.PREF_AUTO_REFRESH, true);
 	}
 
 	private void setupResourceListener() {
 		if (!collecting)
 			return;
 		class FileChangeDeltaVisitor implements IResourceDeltaVisitor {
-			
+
 			private Set<GeneratedFile> files;
 			private Set<GeneratedFile> added = new TreeSet<GeneratedFile>();
 			private Set<GeneratedFile> changed = new TreeSet<GeneratedFile>();
 			private Set<GeneratedFile> removed = new TreeSet<GeneratedFile>();
-			
-			public Set<GeneratedFile> getAdded() { return added; }
-			public Set<GeneratedFile> getChanged() { return changed; }
-			public Set<GeneratedFile> getRemoved() { return removed; }
-			
+
+			public Set<GeneratedFile> getAdded() {
+				return added;
+			}
+
+			public Set<GeneratedFile> getChanged() {
+				return changed;
+			}
+
+			public Set<GeneratedFile> getRemoved() {
+				return removed;
+			}
+
 			public FileChangeDeltaVisitor(Set<GeneratedFile> files) {
 				this.files = files;
 			}
+
 			@Override
 			public boolean visit(IResourceDelta delta) throws CoreException {
-				if (!collecting) 
+				if (!collecting)
 					return false;
 				IResource resource = delta.getResource();
 				if (resource != null && (resource.getType() == IResource.FILE)) {
@@ -274,15 +321,12 @@ public class FileCollector {
 					// Depending on the kind of change, we add it to the relevant set.
 					switch (delta.getKind()) {
 					case IResourceDelta.ADDED:
-						System.out.println("ADDED:   " + resource.getFullPath().toOSString());
 						added.add(new GeneratedFile((IFile) resource));
 						break;
 					case IResourceDelta.CHANGED:
-						System.out.println("CHANGED: " + resource.getFullPath().toOSString());
 						changed.add(new GeneratedFile((IFile) resource));
 						break;
 					case IResourceDelta.REMOVED:
-						System.out.println("REMOVED: " + resource.getFullPath().toOSString());
 						removed.add(new GeneratedFile((IFile) resource));
 						break;
 					default:
@@ -293,11 +337,13 @@ public class FileCollector {
 				return true;
 			}
 		}
-		class GeneratorUpdatesDetector implements IResourceChangeListener {
+		class CollectingFileChangeListener implements IResourceChangeListener {
 			private Set<GeneratedFile> files;
-			public GeneratorUpdatesDetector(Set<GeneratedFile> files) {
+
+			public CollectingFileChangeListener(Set<GeneratedFile> files) {
 				this.files = files;
 			}
+
 			@Override
 			public void resourceChanged(IResourceChangeEvent event) {
 				if (!collecting)
@@ -314,7 +360,7 @@ public class FileCollector {
 				}
 			}
 		}
-		listener = new GeneratorUpdatesDetector(unchangedFiles);
+		listener = new CollectingFileChangeListener(filesUnchanged);
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		workspace.addResourceChangeListener(listener);
 	}
@@ -324,6 +370,10 @@ public class FileCollector {
 		workspace.removeResourceChangeListener(listener);
 	}
 
+	/**
+	 * Produces a report of files added, changed, removed, unchanged, before and after, in 
+	 * accordance with the workspace preferences.
+	 */
 	public void report() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(NLS.bind(Messages.FileCollector_FilesUpdatedTitleMessage, project.getName()));
@@ -332,12 +382,36 @@ public class FileCollector {
 			buffer.append(NLS.bind(Messages.FileCollector_Warning_StillCollecting, project.getName()));
 			buffer.append(System.lineSeparator());
 		}
-		writeFileList(buffer, NLS.bind(Messages.FileCollector_FilesBeforeTitleMessage, project.getName()), filesBefore);
-		writeFileList(buffer, NLS.bind(Messages.FileCollector_FilesAfterTitleMessage, project.getName()), filesAfter);
-		writeFileList(buffer, NLS.bind(Messages.FileCollector_FilesAddedTitleMessage, project.getName()), filesAdded);
-		writeFileList(buffer, NLS.bind(Messages.FileCollector_FilesChangedTitleMessage, project.getName()), filesChanged);
-		writeFileList(buffer, NLS.bind(Messages.FileCollector_FilesRemovedTitleMessage, project.getName()), filesRemoved);
-		writeFileList(buffer, NLS.bind(Messages.FileCollector_FilesUnchangedTitleMessage, project.getName()), unchangedFiles);
+		if (WORKSPACE_PREFERENCES.getBoolean(CXPreferenceConstants.FILE_COLLECTOR_FILES_ADDED,
+				CXPreferenceConstants.FILE_COLLECTOR_FILES_ADDED_DEFAULT)) {
+			writeFileList(buffer, NLS.bind(Messages.FileCollector_FilesAddedTitleMessage, project.getName()),
+					filesAdded);
+		}
+		if (WORKSPACE_PREFERENCES.getBoolean(CXPreferenceConstants.FILE_COLLECTOR_FILES_CHANGED,
+				CXPreferenceConstants.FILE_COLLECTOR_FILES_CHANGED_DEFAULT)) {
+			writeFileList(buffer, NLS.bind(Messages.FileCollector_FilesChangedTitleMessage, project.getName()),
+					filesChanged);
+		}
+		if (WORKSPACE_PREFERENCES.getBoolean(CXPreferenceConstants.FILE_COLLECTOR_FILES_REMOVED,
+				CXPreferenceConstants.FILE_COLLECTOR_FILES_REMOVED_DEFAULT)) {
+			writeFileList(buffer, NLS.bind(Messages.FileCollector_FilesRemovedTitleMessage, project.getName()),
+					filesRemoved);
+		}
+		if (WORKSPACE_PREFERENCES.getBoolean(CXPreferenceConstants.FILE_COLLECTOR_FILES_UNCHANGED,
+				CXPreferenceConstants.FILE_COLLECTOR_FILES_UNCHANGED_DEFAULT)) {
+			writeFileList(buffer, NLS.bind(Messages.FileCollector_FilesUnchangedTitleMessage, project.getName()),
+					filesUnchanged);
+		}
+		if (WORKSPACE_PREFERENCES.getBoolean(CXPreferenceConstants.FILE_COLLECTOR_FILES_BEFORE,
+				CXPreferenceConstants.FILE_COLLECTOR_FILES_BEFORE_DEFAULT)) {
+			writeFileList(buffer, NLS.bind(Messages.FileCollector_FilesBeforeTitleMessage, project.getName()),
+					filesBefore);
+		}
+		if (WORKSPACE_PREFERENCES.getBoolean(CXPreferenceConstants.FILE_COLLECTOR_FILES_AFTER,
+				CXPreferenceConstants.FILE_COLLECTOR_FILES_AFTER_DEFAULT)) {
+			writeFileList(buffer, NLS.bind(Messages.FileCollector_FilesAfterTitleMessage, project.getName()),
+					filesAfter);
+		}
 		BaseUIUtil.writeToConsole(buffer.toString());
 	}
 
