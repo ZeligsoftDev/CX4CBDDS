@@ -925,5 +925,44 @@
                tooltip="Models Only">
          </command>
       </menuContribution>
-   </extension>
+	   </extension>
+	      <extension
+	         point="org.eclipse.papyrus.infra.gmfdiag.extensionpoints.editors.DirectEditor">
+	      <DirectEditor
+	            contributor="Zeligsoft"
+	            language="CX Direct Editor"
+	            objectToEdit="org.eclipse.uml2.uml.Property"
+	            superType="true">
+	         <popupeditor
+	               editorConfiguration="com.zeligsoft.domain.dds4ccm.ui.providers.CXDirectEditorConfiguration">
+	         </popupeditor>
+	         <Priority
+	               name="High">
+	         </Priority>
+	      </DirectEditor>
+	      <DirectEditor
+	            contributor="Zeligsoft"
+	            language="CX Direct Editor"
+	            objectToEdit="org.eclipse.uml2.uml.Parameter"
+	            superType="true">
+	         <popupeditor
+	               editorConfiguration="com.zeligsoft.domain.dds4ccm.ui.providers.CXDirectEditorConfiguration">
+	         </popupeditor>
+	         <Priority
+	               name="High">
+	         </Priority>
+	      </DirectEditor>
+	      <DirectEditor
+	            contributor="Zeligsoft"
+	            language="CX Direct Editor"
+	            objectToEdit="org.eclipse.uml2.uml.Port"
+	            superType="true">
+	         <popupeditor
+	               editorConfiguration="com.zeligsoft.domain.dds4ccm.ui.providers.CXDirectEditorConfiguration">
+	         </popupeditor>
+	         <Priority
+	               name="High">
+	         </Priority>
+	      </DirectEditor>
+	   </extension>
 </plugin>
