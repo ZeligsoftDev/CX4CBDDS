@@ -58,12 +58,13 @@ import com.zeligsoft.cx.preferences.CXPreferenceConstants;
  * 
  * fileCollector.end();
  * 
- * // Then report the results to the console ... fileCollector.report();
+ * // Then report the results to the console ... 
+ * fileCollector.report();
  * 
  * //... or obtain results using any of the getters:
  * Set<FileCollector.GeneratedFile> filesAdded = fileCollector.getFilesAdded();
- * Set<FileCollector.GeneratedFile> filesAdded =
- * fileCollector.getFilesRemoved(); // ...etc.
+ * Set<FileCollector.GeneratedFile> filesRemoved = fileCollector.getFilesRemoved(); 
+ * // ...etc.
  * 
  * @author Ernesto Posse
  */
