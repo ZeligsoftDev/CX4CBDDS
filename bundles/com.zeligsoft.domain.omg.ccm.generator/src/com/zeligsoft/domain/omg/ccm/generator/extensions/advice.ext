@@ -19,6 +19,7 @@ import CXDomain::IDL;
 extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
 extension com::zeligsoft::domain::omg::ccm::generator::extensions::mainTransform;
 extension com::zeligsoft::domain::omg::ccm::generator::extensions::scopedNames;
+extension codegen::debug;
 
 around com::zeligsoft::domain::omg::ccm::generator::extensions::baseIDL::toScopedName(*) :
 	let newScopedName = new idl::ScopedName :
@@ -26,6 +27,7 @@ around com::zeligsoft::domain::omg::ccm::generator::extensions::baseIDL::toScope
 		newScopedName;
 		
 around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::visitContained(CXModule module) :
+	Println('Invoking(2) ' + ctx.name + '\n\tparam types = ' + ctx.paramTypes + '\n\tparam names = ' + ctx.paramNames + '\n\tparam values = ' + ctx.paramValues) -> 
 	createModule(module);
 
 private create idl::Module createModule(CXModule module) :

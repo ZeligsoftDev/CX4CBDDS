@@ -32,7 +32,7 @@ public final class CXCodegenUIPreferencesConstants {
 
 	public static final String FILE_COLLECTOR_FILES_REMOVED = "file_collector_files_removed"; //$NON-NLS-1$
 
-	public static final boolean FILE_COLLECTOR_FILES_REMOVED_DEFAULT = true;
+	public static final boolean FILE_COLLECTOR_FILES_REMOVED_DEFAULT = false;
 
 	public static final String FILE_COLLECTOR_FILES_UNCHANGED = "file_collector_files_unchanged"; //$NON-NLS-1$
 

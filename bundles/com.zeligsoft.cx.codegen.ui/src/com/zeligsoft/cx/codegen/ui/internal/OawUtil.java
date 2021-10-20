@@ -56,6 +56,7 @@ import com.zeligsoft.cx.build.factory.ProjectFactory;
 import com.zeligsoft.cx.codegen.editor.IEditSourceExtraParamFactory;
 import com.zeligsoft.cx.codegen.editor.IUserEditableElementDescriptor;
 import com.zeligsoft.cx.codegen.ui.CodeGenUIPlugin;
+import com.zeligsoft.cx.codegen.ui.filecollector.FileCollector;
 import com.zeligsoft.cx.codegen.ui.l10n.Messages;
 
 public class OawUtil
@@ -285,15 +286,7 @@ public class OawUtil
 		}
 		finally
 		{
-			try
-			{
-				project.refreshLocal( IResource.DEPTH_INFINITE, monitor );
-			}
-			catch( CoreException e )
-			{
-				CodeGenUIPlugin.getDefault()
-					.error( Messages.TransformAction_ProjectRefreshFailedLog, e );
-			}
+			FileCollector.refreshWorkspace(project, monitor);
 		}
 	}
 

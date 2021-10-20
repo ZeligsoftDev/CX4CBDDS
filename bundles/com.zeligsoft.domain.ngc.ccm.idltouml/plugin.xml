@@ -27,5 +27,12 @@
          	</workflow>
          </concept>
    </extension>
+   <extension
+         point="com.zeligsoft.cx.codegen.ui.transformationFileExtensions">
+      <WorkflowFileExtension
+            fileExtensions=".emx, .uml"
+            workflowPath="platform:/plugin/com.zeligsoft.domain.ngc.ccm.idltouml/workflow/generator.oaw">
+      </WorkflowFileExtension>
+   </extension>
 
 </plugin>
