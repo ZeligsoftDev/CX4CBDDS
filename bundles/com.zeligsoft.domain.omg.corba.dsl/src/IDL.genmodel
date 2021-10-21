@@ -64,7 +64,6 @@
     <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Conn_Type">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Conn_Type/valuePort"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Conn_Type/valueConnType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Conn_Type/value"/>
     </genClasses>
     <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Ciao_Lem">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//Preproc_Pragma_Ciao_Lem/value"/>
@@ -215,7 +214,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ArrayDeclarator/size"/>
     </genClasses>
     <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructType/extensibility"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructType/isAppendable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructType/isFinal"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructType/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructType/comments"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//StructType/members"/>
@@ -231,7 +231,8 @@
     <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//TemplateTypeSpec"/>
     <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//ConstrTypeSpec"/>
     <genClasses ecoreClass="../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionType/extensibility"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionType/isAppendable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionType/isFinal"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionType/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionType/comments"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../src-gen/com/zeligsoft/domain/omg/corba/dsl/IDL.ecore#//UnionType/switch"/>

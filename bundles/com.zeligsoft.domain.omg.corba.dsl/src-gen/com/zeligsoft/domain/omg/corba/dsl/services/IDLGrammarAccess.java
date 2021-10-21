@@ -3066,9 +3066,10 @@ public class IDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.zeligsoft.domain.omg.corba.dsl.IDL.StructType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Assignment cExtensibilityAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
-		private final Keyword cExtensibilityFinalKeyword_0_0_0 = (Keyword)cExtensibilityAssignment_0_0.eContents().get(0);
-		private final Keyword cAppendableKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Assignment cIsAppendableAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final Keyword cIsAppendableAppendableKeyword_0_0_0 = (Keyword)cIsAppendableAssignment_0_0.eContents().get(0);
+		private final Assignment cIsFinalAssignment_0_1 = (Assignment)cAlternatives_0.eContents().get(1);
+		private final Keyword cIsFinalFinalKeyword_0_1_0 = (Keyword)cIsFinalAssignment_0_1.eContents().get(0);
 		private final Keyword cStructKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
@@ -3082,25 +3083,28 @@ public class IDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//StructType:
-		//	(extensibility="@final" | "@appendable")? "struct" name=ID comments+=IDLComment* "{" comments+=IDLComment*
+		//	(isAppendable?="@appendable" | isFinal?="@final")? "struct" name=ID comments+=IDLComment* "{" comments+=IDLComment*
 		//	members+=Member* "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//(extensibility="@final" | "@appendable")? "struct" name=ID comments+=IDLComment* "{" comments+=IDLComment*
+		//(isAppendable?="@appendable" | isFinal?="@final")? "struct" name=ID comments+=IDLComment* "{" comments+=IDLComment*
 		//members+=Member* "}"
 		public Group getGroup() { return cGroup; }
 
-		//(extensibility="@final" | "@appendable")?
+		//(isAppendable?="@appendable" | isFinal?="@final")?
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
-		//extensibility="@final"
-		public Assignment getExtensibilityAssignment_0_0() { return cExtensibilityAssignment_0_0; }
-
-		//"@final"
-		public Keyword getExtensibilityFinalKeyword_0_0_0() { return cExtensibilityFinalKeyword_0_0_0; }
+		//isAppendable?="@appendable"
+		public Assignment getIsAppendableAssignment_0_0() { return cIsAppendableAssignment_0_0; }
 
 		//"@appendable"
-		public Keyword getAppendableKeyword_0_1() { return cAppendableKeyword_0_1; }
+		public Keyword getIsAppendableAppendableKeyword_0_0_0() { return cIsAppendableAppendableKeyword_0_0_0; }
+
+		//isFinal?="@final"
+		public Assignment getIsFinalAssignment_0_1() { return cIsFinalAssignment_0_1; }
+
+		//"@final"
+		public Keyword getIsFinalFinalKeyword_0_1_0() { return cIsFinalFinalKeyword_0_1_0; }
 
 		//"struct"
 		public Keyword getStructKeyword_1() { return cStructKeyword_1; }
@@ -3316,9 +3320,10 @@ public class IDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.zeligsoft.domain.omg.corba.dsl.IDL.UnionType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Assignment cExtensibilityAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
-		private final Keyword cExtensibilityFinalKeyword_0_0_0 = (Keyword)cExtensibilityAssignment_0_0.eContents().get(0);
-		private final Keyword cAppendableKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Assignment cIsAppendableAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final Keyword cIsAppendableAppendableKeyword_0_0_0 = (Keyword)cIsAppendableAssignment_0_0.eContents().get(0);
+		private final Assignment cIsFinalAssignment_0_1 = (Assignment)cAlternatives_0.eContents().get(1);
+		private final Keyword cIsFinalFinalKeyword_0_1_0 = (Keyword)cIsFinalAssignment_0_1.eContents().get(0);
 		private final Keyword cUnionKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
@@ -3335,25 +3340,28 @@ public class IDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		//UnionType:
-		//	(extensibility="@final" | "@appendable")? "union" name=ID comments+=IDLComment* "switch" "(" switch=SwitchTypeSpec
-		//	")" "{" body=SwitchBody "}";
+		//	(isAppendable?="@appendable" | isFinal?="@final")? "union" name=ID comments+=IDLComment* "switch" "("
+		//	switch=SwitchTypeSpec ")" "{" body=SwitchBody "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//(extensibility="@final" | "@appendable")? "union" name=ID comments+=IDLComment* "switch" "(" switch=SwitchTypeSpec ")"
-		//"{" body=SwitchBody "}"
+		//(isAppendable?="@appendable" | isFinal?="@final")? "union" name=ID comments+=IDLComment* "switch" "("
+		//switch=SwitchTypeSpec ")" "{" body=SwitchBody "}"
 		public Group getGroup() { return cGroup; }
 
-		//(extensibility="@final" | "@appendable")?
+		//(isAppendable?="@appendable" | isFinal?="@final")?
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
-		//extensibility="@final"
-		public Assignment getExtensibilityAssignment_0_0() { return cExtensibilityAssignment_0_0; }
-
-		//"@final"
-		public Keyword getExtensibilityFinalKeyword_0_0_0() { return cExtensibilityFinalKeyword_0_0_0; }
+		//isAppendable?="@appendable"
+		public Assignment getIsAppendableAssignment_0_0() { return cIsAppendableAssignment_0_0; }
 
 		//"@appendable"
-		public Keyword getAppendableKeyword_0_1() { return cAppendableKeyword_0_1; }
+		public Keyword getIsAppendableAppendableKeyword_0_0_0() { return cIsAppendableAppendableKeyword_0_0_0; }
+
+		//isFinal?="@final"
+		public Assignment getIsFinalAssignment_0_1() { return cIsFinalAssignment_0_1; }
+
+		//"@final"
+		public Keyword getIsFinalFinalKeyword_0_1_0() { return cIsFinalFinalKeyword_0_1_0; }
 
 		//"union"
 		public Keyword getUnionKeyword_1() { return cUnionKeyword_1; }
@@ -7988,7 +7996,7 @@ public class IDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//StructType:
-	//	(extensibility="@final" | "@appendable")? "struct" name=ID comments+=IDLComment* "{" comments+=IDLComment*
+	//	(isAppendable?="@appendable" | isFinal?="@final")? "struct" name=ID comments+=IDLComment* "{" comments+=IDLComment*
 	//	members+=Member* "}";
 	public StructTypeElements getStructTypeAccess() {
 		return pStructType;
@@ -8063,8 +8071,8 @@ public class IDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UnionType:
-	//	(extensibility="@final" | "@appendable")? "union" name=ID comments+=IDLComment* "switch" "(" switch=SwitchTypeSpec
-	//	")" "{" body=SwitchBody "}";
+	//	(isAppendable?="@appendable" | isFinal?="@final")? "union" name=ID comments+=IDLComment* "switch" "("
+	//	switch=SwitchTypeSpec ")" "{" body=SwitchBody "}";
 	public UnionTypeElements getUnionTypeAccess() {
 		return pUnionType;
 	}

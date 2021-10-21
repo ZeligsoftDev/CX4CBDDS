@@ -1,5 +1,5 @@
-/**
- * Copyright 2018 ADLINK Technology Limited.
+/*******************************************************************************
+ * Copyright (c) 2021 Northrop Grumman Systems Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,8 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- */
+ *******************************************************************************/
+
 package com.zeligsoft.domain.omg.corba.idlimport;
 
 
@@ -58,8 +58,6 @@ import com.zeligsoft.domain.omg.corba.dsl.idl.ConstExp;
 import com.zeligsoft.domain.omg.corba.dsl.idl.ElementSpec;
 import com.zeligsoft.domain.omg.corba.dsl.idl.EnumType;
 import com.zeligsoft.domain.omg.corba.dsl.idl.ExceptionList;
-import com.zeligsoft.domain.omg.corba.dsl.idl.Excluded_File_Marker;
-import com.zeligsoft.domain.omg.corba.dsl.idl.File_Marker;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Interface_decl;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Literal;
 import com.zeligsoft.domain.omg.corba.dsl.idl.MultExpr;
@@ -108,35 +106,14 @@ public class XtendUtils {
 
 	private static Package zdlModel = null;
 	
-	private static Package topLevelPackage = null;
-	
-	// This list tracks the current stack of files we are processing.
-	private static ArrayList<Package> idlFiles = new ArrayList<Package>();
-	
 	// This list tracks the history of all files we have processed.
 	private static ArrayList<Package> visitedFiles = new ArrayList<Package>();
 	
 	private static ArrayList<ScopeFinder> scopeFinders = new ArrayList<ScopeFinder>();
 	
-	/**
-	 * Apply the IDLFile concept to the top-level package being created.
-	 * 
-	 * @param p
-	 */
-	public static void applyIDLFileConcept(Package p)
-	{
-		ZDLUtil.addZDLConcept(p, CXDomainNames.IDLFILE);
-		topLevelPackage = p;
-	} 
-	
-	public static void setTopLevelPackage(Package p) {
-		topLevelPackage = p;
-	}
-	
 	public static void setupZDLModel(Package m) {
 		zdlModel = m;
 		initializeTypeMap(m);
-		idlFiles.clear();
 		visitedFiles.clear();
 		unresolvedLookups.clear(); 
 		scopeFinders.clear();
@@ -161,87 +138,6 @@ public class XtendUtils {
 		String[] chunks = idlFileURI.split("/"); 
 		String filename = chunks[chunks.length - 1];
 		p.setName(filename.replace(".idl", ""));
-	}
-	
-	/**
-	 * Handle #file directives in a preprocessed IDL file.
-	 * 
-	 * @param file
-	 * @param pkg
-	 */
-	public static void handleFileMarker(File_Marker file, Package pkg) {
-		
-		String fileString = file.getFile();
-		String fileName = fileString
-				.substring(fileString.indexOf(":") + 1,
-						fileString.lastIndexOf(":")).replace(".idl", "")
-				.replace("\\", "");
-		
-		if( idlFiles.size() > 1 && fileName.matches(idlFiles.get(idlFiles.size() - 2).getName())) {
-			// This is an end-of-file marker. Pop the stack
-			idlFiles.remove(idlFiles.size() - 1);
-		} else {
-			
-			Package includeTarget = null;
-			
-			for( Package visitedFile : visitedFiles ) {
-				if( fileName.matches(visitedFile.getName())) {
-					includeTarget = visitedFile;
-				}
-			}
-			
-			if( includeTarget == null ) {
-				// create a new IDLFile
-				Package newIDLFile = pkg.createNestedPackage(fileName);
-				ZDLUtil.addZDLConcept(newIDLFile, CXDomainNames.IDLFILE);
-				visitedFiles.add(newIDLFile);
-				idlFiles.add(newIDLFile);
-			} else {
-				// set the currently processed file to the previously visited IDLFile
-				idlFiles.add(includeTarget);
-			}
-			
-			if( idlFiles.size() > 2 ) {
-				// This is an #include. Add the appropriate relationship between the last two IDLFiles processed.
-				Dependency dep = idlFiles.get(idlFiles.size() - 2).createDependency(idlFiles.get(idlFiles.size() - 1));
-				ZDLUtil.addZDLConcept(dep, CXDomainNames.IDLIMPORT);
-			}			
-						
-						
-		}
-	}
-	
-	/**
-	 * Handle #excluded_file directives in a preprocessed IDL file.
-	 * 
-	 * @param file
-	 * @param pkg
-	 */
-	public static void handleFileMarker(Excluded_File_Marker file, Package pkg) {
-		String name = file.getFile().replaceAll("\"", "");
-		name = name.substring(0, name.lastIndexOf(".idl"));	
-	
-		// Attempt to resolve the include with an IDLFile already in the model or one of its package imports.			
-		List<NamedElement> foundPackages = findIDLElement(zdlModel, name, CXDomainNames.IDLFILE);
-		if( foundPackages.size() == 0 ) {
-			// If the IDLFile was not in the model it may be in one of its package imports.
-			for( PackageImport pi : zdlModel.getPackageImports()) {
-				foundPackages = findIDLElement(pi.getImportedPackage(), name, CXDomainNames.IDLFILE);
-				if( foundPackages.size() > 0 ) break;
-			}
-		}
-		if( foundPackages.size() > 0 ) {
-			Dependency dep = idlFiles.get(idlFiles.size() - 1).createDependency(foundPackages.get(0));
-			ZDLUtil.addZDLConcept(dep, CXDomainNames.IDLIMPORT);
-		}
-	}
-	
-	public static Package getCurrentFile() {
-		if( idlFiles.size() == 0 ) {
-			return topLevelPackage;
-		}
-		
-		return idlFiles.get(idlFiles.size() - 1);
 	}
 	
 	/**
@@ -469,22 +365,21 @@ public class XtendUtils {
 	 * @param constant
 	 */
 	public static void addConstant(Package pkg, Property constant) {
-		if( ZDLUtil.isZDLConcept(constant, CXDomainNames.CXCONSTANT)) {
-			org.eclipse.uml2.uml.Class corbaConstants = null;
-			for( PackageableElement p : pkg.getPackagedElements()) {
-				if( ZDLUtil.isZDLConcept(p, CXDomainNames.CXCONSTANTS)) {
-					corbaConstants = (org.eclipse.uml2.uml.Class)p;
-				}
+		org.eclipse.uml2.uml.Class corbaConstants = null;
+		for (PackageableElement p : pkg.getPackagedElements()) {
+			if (ZDLUtil.isZDLConcept(p, CXDomainNames.CXCONSTANTS)) {
+				corbaConstants = (org.eclipse.uml2.uml.Class) p;
 			}
-			if( corbaConstants == null ) {
-				corbaConstants = UMLFactory.eINSTANCE.createClass();
-				corbaConstants.setName(pkg.getName() + "_Constants");
-				pkg.getPackagedElements().add(corbaConstants);
-				ZDLUtil.addZDLConcept(corbaConstants, CXDomainNames.CXCONSTANTS);				
-			}
-			corbaConstants.getOwnedAttributes().add(constant);
-		} else {
-			throw new IllegalArgumentException("This method is only to be used to add a CXConstant.");
+		}
+		if (corbaConstants == null) {
+			corbaConstants = UMLFactory.eINSTANCE.createClass();
+			corbaConstants.setName(pkg.getName() + "_Constants");
+			pkg.getPackagedElements().add(corbaConstants);
+			ZDLUtil.addZDLConcept(corbaConstants, CXDomainNames.CXCONSTANTS);
+		}
+		corbaConstants.getOwnedAttributes().add(constant);
+		if( !ZDLUtil.isZDLConcept(constant, CXDomainNames.CXCONSTANT)) {
+			ZDLUtil.addZDLConcept(constant, CXDomainNames.CXCONSTANT);
 		}
 	}
 	

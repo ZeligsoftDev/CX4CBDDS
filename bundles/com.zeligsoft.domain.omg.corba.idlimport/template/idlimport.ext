@@ -1,5 +1,4 @@
 import idl; // needed for IDL DSL
-import CXDomain::IDLFileSupport; // needed for IDLFile and similar
 import CXDomain::IDL; // needed for CXModule etc. 
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
@@ -15,30 +14,8 @@ create uml::Package mainTransform(Specification model, ZMLMM::ZML_Core::NamedEle
     resolveUnresolvedLookups() ->
     this.packagedElement.get(0).zdlAsPackage().destroy();
     
-private Void visitContained(File_Marker file, uml::Package package ) :
-	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.handleFileMarker(
-		com.zeligsoft.domain.omg.corba.dsl.idl.File_Marker,
-		org.eclipse.uml2.uml.Package);
-		
-private Void visitContained(Excluded_File_Marker file, uml::Package package ) :
-	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.handleFileMarker(
-		com.zeligsoft.domain.omg.corba.dsl.idl.Excluded_File_Marker,
-		org.eclipse.uml2.uml.Package);
-
-private void visitContained(Preproc_Pragma pragma, uml::Package package ) :
-	getCurrentFile().setPrefix(pragma.value);
-			
-IDLFile getCurrentFile() :
-	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.getCurrentFile();
-        
-Void applyIDLFileConcept(uml::Package pkg) :	
-	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.applyIDLFileConcept(org.eclipse.uml2.uml.Package);
-	
 Void setupZDLModel(uml::Package model) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.setupZDLModel(org.eclipse.uml2.uml.Package);
-
-Void setPackageName(uml::Package pkg, String idlFileName) :
-	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.setPackageName(org.eclipse.uml2.uml.Package, java.lang.String);
 
 Void resolveUnresolvedLookups() :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.resolveUnresolvedLookups();
@@ -52,6 +29,9 @@ Void visitContained(Preproc preproc, CXModule module ) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.handlePreproc(
 		com.zeligsoft.domain.omg.corba.dsl.idl.Preproc,
 		org.eclipse.uml2.uml.Package);
+		
+Void debug(Object o) :
+    JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.debug(java.lang.Object);
 	
 Void visitContained(Definition object, CXModule module ) :
 	{};
@@ -66,7 +46,7 @@ Void visitContained(ConstrForwardDecl decl, CXModule container ) : {};
 Void visitContained(ConstrForwardDecl decl,  uml::Package container ) : {};	
 	
 private create CXModule visitContained(Module module, uml::Package container) :
-	getCurrentFile().contents.add(this) ->
+	container.packagedElement.add(this) ->
 	this.configureModule(module);
 
 private create CXModule visitContained(Module module, CXModule container) :
@@ -82,7 +62,7 @@ create CXInterface visitContained(Interface_decl intf, CXModule container) :
 	this.configureInterface(intf);
 	
 private create CXInterface visitContained(Interface_decl intf, uml::Package container) :
-	getCurrentFile().contents.add(this) ->
+	container.packagedElement.add(this) ->
 	this.configureInterface(intf);
 	
 Void configureInterface(CXInterface zInterface, Interface_decl intf) :
@@ -177,12 +157,15 @@ create CXStruct visitContained(StructType struct, CXInterface interface ) :
 	this.configureStruct(struct);
 	
 private create CXStruct visitContained(StructType struct, uml::Package package ) :
-	getCurrentFile().contents.add(this) ->
+	package.packagedElement.add(this) ->
 	this.configureStruct(struct);
 	
 Void configureStruct(CXStruct zStruct, StructType struct) :
 	zStruct.setName(struct.name) ->
-	struct.members.visitContained(zStruct);
+	struct.members.visitContained(zStruct) ->
+	struct.isAppendable?
+	  zStruct.setExtensibility(ExtensibilityKind::Appendable) :
+	  zStruct.setExtensibility(ExtensibilityKind::Final);
 	
 create CXField visitContained(Member member, CXStruct struct) :
 	struct.members.add(this) ->
@@ -252,7 +235,7 @@ create CXException visitContained(ExceptDecl exception, CXInterface interface ) 
 	this.configureException(exception);
 	
 private create CXException visitContained(ExceptDecl exception, uml::Package package ) :
-	getCurrentFile().contents.add(this) ->
+	package.packagedElement.add(this) ->
 	this.configureException(exception);
 	
 Void configureException(CXException zException, ExceptDecl exception) :
@@ -277,13 +260,6 @@ create CXConstant visitContained(ConstDecl const, CXModule module) :
 	this.setTypedElementType(const.type) ->
 	this.setDefault(values.get(values.size - 1));
 
-private create CXConstant visitContained(ConstDecl const, uml::Package file) :
-	let values = const.value.getConstValue().split("::") :
-	getCurrentFile().addConstant(this) ->
-	this.setName(const.name) ->
-	this.setTypedElementType(const.type) ->
-	this.setDefault(values.get(values.size - 1));
-	
 Void addConstant(uml::Package package, CXConstant const) :
 	JAVA com.zeligsoft.domain.omg.corba.idlimport.XtendUtils.addConstant(
 		org.eclipse.uml2.uml.Package,
@@ -312,8 +288,8 @@ create CXEnum visitContained(EnumType enum, CXModule module ) :
 	module.contents.add(this) ->
 	this.configureEnum(enum);
 	
-private create CXEnum visitContained(EnumType enum, uml::Package file) :
-	getCurrentFile().contents.add(this) ->
+private create CXEnum visitContained(EnumType enum, uml::Package package) :
+	package.packagedElement.add(this) ->
 	this.configureEnum(enum);
 	
 Void configureEnum(CXEnum zEnum, EnumType enum ) :
@@ -337,9 +313,9 @@ create uml::DataType visitContained(TypeDeclarator typedef, CXModule module) :
 	this.setName(typedef.declarators.get(0).id) ->	
 	this.applyTypedefConcept(typedef);	
 
-private create uml::DataType visitContained(TypeDeclarator typedef, uml::Package file) :
+private create uml::DataType visitContained(TypeDeclarator typedef, uml::Package package) :
 	// could be a typedef, a sequence, or an array.
-	getCurrentFile().zdlAsPackage().packagedElement.add(this) ->
+	package.packagedElement.add(this) ->
 	this.setName(typedef.declarators.get(0).id) ->	
 	this.applyTypedefConcept(typedef);	
 	
@@ -349,16 +325,25 @@ Void applyTypedefConcept(uml::DataType datatype, TypeDeclarator typedef) :
 
 create CXUnion visitContained(UnionType union, CXInterface interface) :
 	interface.contents.add(this) ->
+	union.isAppendable?
+	  this.setExtensibility(ExtensibilityKind::Appendable) :
+	  this.setExtensibility(ExtensibilityKind::Final) ->
 	this.setName(union.name) ->
 	this.addCORBAUnionAttributes(union);
 
 create CXUnion visitContained(UnionType union, CXModule module) :
 	module.contents.add(this) ->
+	union.isAppendable?
+	  this.setExtensibility(ExtensibilityKind::Appendable) :
+	  this.setExtensibility(ExtensibilityKind::Final) ->	
 	this.setName(union.name) ->
 	this.addCORBAUnionAttributes(union);
 
 create CXUnion visitContained(UnionType union, uml::Package package) :
-	getCurrentFile().contents.add(this) ->
+	package.packagedElement.add(this) ->
+	union.isAppendable?
+	  this.setExtensibility(ExtensibilityKind::Appendable) :
+	  this.setExtensibility(ExtensibilityKind::Final) ->
 	this.setName(union.name) ->
 	this.addCORBAUnionAttributes(union);
 	

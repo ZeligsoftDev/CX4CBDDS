@@ -1,4 +1,3 @@
-import CXDomain::IDLFileSupport; // needed for IDLFile and similar
 import CXDomain::IDL; // needed for CXModule etc.
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
@@ -30,12 +29,6 @@ Void resolveUnresolvedIdl3Lookups() :
 Void addIdl3Scope() :
 	JAVA com.zeligsoft.domain.omg.ccm.idlimport.IDL3ImportUtils.addIdl3Scope();
 
-Void visitContained(File_Marker file, uml::Package package ) :
-	{};
-	
-Void visitContained(Excluded_File_Marker file, uml::Package package ) :
-	{};
-	
 Void visitContained(Definition o, uml::Package container) :
 	{};
 	
@@ -279,15 +272,9 @@ create CXInterface visitContained(Interface_decl intf, uml::Package container) :
 	container.packagedElement.add(this) ->
 	this.configureInterface(intf);
 	
-create CXConstant visitContained(ConstDecl const, uml::Package file) :
-	file.addConstant(this) ->
-	this.setName(const.name) ->
-	this.setTypedElementType(const.type) ->
-	this.setDefault(const.value.getConstValue());
-	
-create uml::DataType visitContained(TypeDeclarator typedef, uml::Package file) :
+create uml::DataType visitContained(TypeDeclarator typedef, uml::Package package) :
 	// could be a typedef, a sequence, or an array.
-	file.packagedElement.add(this) ->
+	package.packagedElement.add(this) ->
 	this.setName(typedef.declarators.get(0).id) ->	
 	this.applyTypedefConcept(typedef);	
 	
