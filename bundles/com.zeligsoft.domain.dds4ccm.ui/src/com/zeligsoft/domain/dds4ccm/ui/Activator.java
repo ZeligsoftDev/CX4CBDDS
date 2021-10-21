@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.emf.compare.ide.ui.internal.logical.resolver.CrossReferenceResolutionScope;
+import org.eclipse.emf.compare.ide.ui.internal.preferences.EMFCompareUIPreferences;
 import org.eclipse.papyrus.emf.facet.custom.core.ICustomizationCatalogManagerFactory;
 import org.eclipse.papyrus.emf.facet.custom.core.ICustomizationManager;
 import org.eclipse.papyrus.emf.facet.custom.metamodel.v0_2_0.custom.Customization;
@@ -23,6 +25,7 @@ import com.zeligsoft.domain.dds4ccm.ui.listeners.EditorPartListener;
 /**
  * The activator class controls the plug-in life cycle
  */
+@SuppressWarnings("restriction")
 public class Activator extends ZeligsoftAbstractUIPlugin {
 
 	// The plug-in ID
@@ -94,6 +97,24 @@ public class Activator extends ZeligsoftAbstractUIPlugin {
 				// do nothing
 			}
 		}
+		
+		// Set EMF default resolution scope to project Issue #311
+		IEclipsePreferences emfPref = InstanceScope.INSTANCE.getNode("org.eclipse.emf.compare.ide.ui"); //$NON-NLS-1$
+		String scope = emfPref.get(EMFCompareUIPreferences.RESOLUTION_SCOPE_PREFERENCE,
+				CrossReferenceResolutionScope.WORKSPACE.name());
+		
+		// Don't allow users to set resolution scope to workspace.
+		// If the scope is Workspace then change it to Project.
+		if (CrossReferenceResolutionScope.WORKSPACE.name().equals(scope)) {
+			emfPref.put(EMFCompareUIPreferences.RESOLUTION_SCOPE_PREFERENCE,
+					CrossReferenceResolutionScope.PROJECT.name());
+			try {
+				emfPref.flush();
+			} catch (BackingStoreException e) {
+				// do nothing
+			}
+		}
+		
 		
 		// Add part listener in order to add double click listener to model explorer
 		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
