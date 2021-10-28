@@ -41,7 +41,7 @@ jobs:
             const ref_parts = context.ref.split('/')
             let tag = short_sha
             if( ref_parts[1] === 'tags' ) {
-               tag = ref_parts[-1]
+               tag = ref_parts[2]
             }
             variable_defs['RPM_TAG'] = tag
 
@@ -148,3 +148,11 @@ jobs:
           name: ${{ env.AXCIOMA_RPM_FILE_NAME }}
           path: ${{ env.AXCIOMA_RPM_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axcioma_*.zip
+            releng/com.zeligsoft.ddk.update/target/ddk_*.zip
+            releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/noarch/*.rpm
