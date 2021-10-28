@@ -602,6 +602,19 @@
             name="Validate">
       </command>
    </extension>
+
+   <extension
+         point="org.eclipse.papyrus.infra.gmfdiag.common.pasteStrategy">
+      <strategy
+            strategy="com.zeligsoft.domain.dds4ccm.ui.paste.PostStereotypePasteStrategy">
+      </strategy>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.gmfdiag.common.pasteStrategy">
+      <strategy
+            strategy="com.zeligsoft.domain.dds4ccm.ui.paste.PostUMLPasteStrategy">
+      </strategy>
+   </extension>
    <extension
          point="org.eclipse.papyrus.infra.services.labelprovider.labelProvider">
       <labelProvider
