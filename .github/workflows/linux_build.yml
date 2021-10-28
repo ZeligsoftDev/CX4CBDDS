@@ -41,7 +41,7 @@ jobs:
             const ref_parts = context.ref.split('/')
             let tag = short_sha
             if( ref_parts[1] === 'tags' ) {
-               tag = ref_parts[2]
+               tag = ref_parts[2].replaceAll('-','_') // sanitize for RPM
             }
             variable_defs['RPM_TAG'] = tag
 
