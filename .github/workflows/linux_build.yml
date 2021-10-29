@@ -39,8 +39,8 @@ jobs:
             const short_sha = context.sha.substring(0, 7)
 
             let tag = short_sha
-            if( context.ref.startsWith('/refs/tags/') ) {
-               tag = context.ref.replace('/refs/tags', '')
+            if( context.ref.startsWith('refs/tags/') ) {
+               tag = context.ref.replace('refs/tags', '')
                // sanitize tag for RPM
                // replaceAll is not available...
                // tag = tag.replaceAll('-','_')
