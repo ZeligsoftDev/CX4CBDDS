@@ -36,7 +36,7 @@ jobs:
           script: |
             core.info('context.sha =' + context.sha)
             core.info('context.ref =' + context.ref)
-            core.info('context.event_name =' + context.event_name)
+            core.info('context.eventName =' + context.eventName)
             const variable_defs = {}
             const TAG_PREFIX = 'refs/tags/'
             const short_sha = context.sha.substring(0, 7)
