@@ -34,6 +34,9 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
+            core.info('context.sha =' + context.sha)
+            core.info('context.ref =' + context.ref)
+            core.info('context.event_name =' + context.event_name)
             const variable_defs = {}
             const TAG_PREFIX = 'refs/tags/'
             const short_sha = context.sha.substring(0, 7)
@@ -85,7 +88,6 @@ jobs:
                 core.exportVariable(var_name, value)
                 core.info(var_name + '=' + value)
             }
-            core.info('github.event_name=' + github.event_name)
       - name: Build ATCD RPM
         if: ${{ env.ATCD_PRESENT == 'true' }}
         run: |
