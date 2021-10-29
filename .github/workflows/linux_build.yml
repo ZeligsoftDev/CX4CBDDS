@@ -35,12 +35,12 @@ jobs:
         with:
           script: |
             const variable_defs = {}
-
+            const TAG_PREFIX = 'refs/tags/'
             const short_sha = context.sha.substring(0, 7)
 
             let tag = short_sha
-            if( context.ref.startsWith('refs/tags/') ) {
-               tag = context.ref.replace('refs/tags', '')
+            if( context.ref.startsWith(TAG_PREFIX) ) {
+               tag = context.ref.replace(TAG_PREFIX, '')
                // sanitize tag for RPM
                // replaceAll is not available...
                // tag = tag.replaceAll('-','_')
@@ -85,6 +85,7 @@ jobs:
                 core.exportVariable(var_name, value)
                 core.info(var_name + '=' + value)
             }
+            core.info('github.event_name=' + github.event_name)
       - name: Build ATCD RPM
         if: ${{ env.ATCD_PRESENT == 'true' }}
         run: |
@@ -155,7 +156,7 @@ jobs:
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        if: github.event_name == 'release'
         with:
           files: |
             releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axcioma_*.zip
