@@ -34,14 +34,22 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
+            core.info('context.sha =' + context.sha)
+            core.info('context.ref =' + context.ref)
+            core.info('context.eventName =' + context.eventName)
             const variable_defs = {}
+            const TAG_PREFIX = 'refs/tags/'
+            const short_sha = context.sha.substring(0, 7)
 
-            short_sha = context.sha.substring(0, 7)
-
-            const ref_parts = context.ref.split('/')
             let tag = short_sha
-            if( ref_parts[1] === 'tags' ) {
-               tag = ref_parts[-1]
+            if( context.ref.startsWith(TAG_PREFIX) ) {
+               tag = context.ref.replace(TAG_PREFIX, '')
+               // sanitize tag for RPM
+               // replaceAll is not available...
+               // tag = tag.replaceAll('-','_')
+               while(tag.includes('-')) {
+                 tag = tag.replace('-','_')
+               }
             }
             variable_defs['RPM_TAG'] = tag
 
@@ -148,3 +156,10 @@ jobs:
           name: ${{ env.AXCIOMA_RPM_FILE_NAME }}
           path: ${{ env.AXCIOMA_RPM_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: github.event_name == 'release'
+        with:
+          files: |
+            releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip
+            releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/noarch/*.rpm
