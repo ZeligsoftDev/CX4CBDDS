@@ -36,12 +36,17 @@ jobs:
           script: |
             const variable_defs = {}
 
-            short_sha = context.sha.substring(0, 7)
+            const short_sha = context.sha.substring(0, 7)
 
-            const ref_parts = context.ref.split('/')
             let tag = short_sha
-            if( ref_parts[1] === 'tags' ) {
-               tag = ref_parts[2].replaceAll('-','_') // sanitize for RPM
+            if( context.ref.startsWith('/refs/tags/') ) {
+               tag = context.ref.replace('/refs/tags', '')
+               // sanitize tag for RPM
+               // replaceAll is not available...
+               // tag = tag.replaceAll('-','_')
+               while(tag.includes('-')) {
+                 tag = tag.replace('-','_')
+               }
             }
             variable_defs['RPM_TAG'] = tag
 
