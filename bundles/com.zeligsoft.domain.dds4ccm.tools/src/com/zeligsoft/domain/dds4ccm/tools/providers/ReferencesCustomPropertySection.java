@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -414,6 +415,7 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 					List<URI> models = new ArrayList<URI>();
 
 					URI targetUri = (URI) inputElement;
+					URI normalizedUri = URIConverter.INSTANCE.normalize(targetUri);
 					DDS4CCMDynamicURIMapHandler.visitAllModels(ResourcesPlugin.getWorkspace().getRoot(),
 							modelUri -> models.add(modelUri));
 					monitor.beginTask(Messages.ReferencesCustomPropertySection_FindReferencingModelTaskName,
@@ -423,7 +425,7 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 					for (int i = 0; i < models.size(); i++) {
 						URI modelUri = models.get(i);
 						monitor.subTask("Checking " + modelUri.toString()); //$NON-NLS-1$
-						DDS4CCMDynamicURIMapHandler.containsReferenceToPathmap(targetUri, modelUri, dependentModels);
+						DDS4CCMDynamicURIMapHandler.containsReferenceToPathmap(normalizedUri, modelUri, dependentModels);
 					}
 					monitor.done();
 					for (URI uri : dependentModels) {
