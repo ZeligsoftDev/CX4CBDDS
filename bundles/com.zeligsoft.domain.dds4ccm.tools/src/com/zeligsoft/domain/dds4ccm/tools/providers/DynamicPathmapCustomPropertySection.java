@@ -353,8 +353,8 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 				file.setContents(source, IResource.FORCE, new NullProgressMonitor());
 
 				// Import ICM model to refactored models
-				if ("platform".equals(sourceURI.scheme()) //$NON-NLS-1$
-						&& "pathmap".equals(targetURI.scheme())) {
+				if ("platform".equals(sourceURI.scheme()) && "pathmap".equals(targetURI.scheme())
+						&& "uml".equals(modelToRefactorURI.fileExtension())) {
 					ResourceSet rset = new ResourceSetImpl();
 					Package refactoredModel = UML2Util.load(rset, modelToRefactorURI, UMLPackage.Literals.PACKAGE);
 					boolean importFound = false;

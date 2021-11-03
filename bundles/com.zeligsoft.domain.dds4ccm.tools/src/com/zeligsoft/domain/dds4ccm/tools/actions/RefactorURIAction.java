@@ -44,6 +44,8 @@ public class RefactorURIAction extends BaseSelectionListenerAction {
 						page.closeEditor(activeEditor, true);
 					}
 					DynamicPathmapCustomPropertySection.refactorURI(sourceURI, targetURI, modelUri);
+					URI notaionUri = modelUri.trimFileExtension().appendFileExtension("notation"); //$NON-NLS-1$
+					DynamicPathmapCustomPropertySection.refactorURI(sourceURI, targetURI, notaionUri);
 				}
 			}
 		}
