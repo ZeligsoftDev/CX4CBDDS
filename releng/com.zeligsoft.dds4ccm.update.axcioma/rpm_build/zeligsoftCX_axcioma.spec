@@ -3,7 +3,7 @@
 %define _defaultRel  0.%(date "+%y%m%d%H%M")
 %define _rpmdir      %{_projectdir}/rpm_build/
 %define _targetdir   %{_projectdir}/target
-%define _patchtargetdir %{_projectdir}/../../papyrus-batch/v4.4.0/site-papyrus-patch/target
+%define _patchtargetdir %{_projectdir}/../../papyrus-patch/v4.4.0/site-papyrus-patch/target
 %define patch_groups "com.zeligsoft.papyruspatch.feature.group"
 %define feature_groups "com.zeligsoft.base_feature.feature.group, \
     com.zeligsoft.cx_feature.feature.group, \
