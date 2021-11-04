@@ -42,7 +42,7 @@ import org.eclipse.uml2.uml.util.UMLUtil;
  *
  */
 public class AbsorbMergedPackagesWorker {
-	
+
 	/**
 	 * Exception thrown if selection is not conform to expectations
 	 *
@@ -50,49 +50,49 @@ public class AbsorbMergedPackagesWorker {
 	private static class IllegalSelectionException extends Exception {
 
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
-		
+
 		public IllegalSelectionException(String message) {
 			super(message + " " + Messages.AbsorbMergedPackagesWorker_SelectionRequirements); //$NON-NLS-1$
 		}
-		
+
 	}
-	
+
 	/**
 	 * Exception thrown if there is nothing to merge.
 	 */
 	private static class NoPackageMergeElementsException extends Exception {
 
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
-		
+
 		public NoPackageMergeElementsException(String message) {
 			super(message);
 		}
-		
+
 	}
-	
+
 	private final ISelection selection;
 
 	public AbsorbMergedPackagesWorker(final ISelection selection) {
 		this.selection = selection;
-		
+
 	}
 
 	private void raiseCoreExceptionError(Throwable ex) throws CoreException {
 		throw new CoreException(new Status(IStatus.ERROR, com.zeligsoft.ddk.tools.Activator.PLUGIN_ID,
 				ex.getMessage(), ex));
 	}
-	
+
 	private void raiseCoreExceptionWarning(Throwable ex) throws CoreException {
 		throw new CoreException(new Status(IStatus.WARNING, com.zeligsoft.ddk.tools.Activator.PLUGIN_ID,
 				ex.getMessage(), ex));
 	}
-	
+
 	public IPath doWork() throws CoreException {
 		try {
 			// sanity check the exception. The menu configuration should prevent most of these, but...
@@ -103,7 +103,7 @@ public class AbsorbMergedPackagesWorker {
 			if(ss.size() != 1) {
 				throw new IllegalSelectionException(Messages.AbsorbMergedPackagesWorker_NotSize1Selection);
 			}
-			
+
 			final Object sel = ss.getFirstElement();
 			if(!(sel instanceof IFile)) {
 				throw new IllegalSelectionException(Messages.AbsorbMergedPackagesWorker_SelectionNotAFile);
@@ -112,10 +112,10 @@ public class AbsorbMergedPackagesWorker {
 			if(!(file.getFileExtension().equals("uml"))) { //$NON-NLS-1$
 				throw new IllegalSelectionException(Messages.AbsorbMergedPackagesWorker_SelectionNotUmlFile);
 			}
-			
+
 			// derive the new file from the existing files name.
 			final IFile newFile = file.getParent().getFile(new Path(file.getName().replace(".uml", ".merged.uml"))); //$NON-NLS-1$ //$NON-NLS-2$
-			
+
 			// load the existing model
 			final ResourceSet rset = new ResourceSetImpl();
 			final URI fileURI = URI.createURI("platform:/resource/" + file.getFullPath().toString()); //$NON-NLS-1$
@@ -124,22 +124,22 @@ public class AbsorbMergedPackagesWorker {
 			if(!(rootObj instanceof org.eclipse.uml2.uml.Package)) {
 				throw new IllegalSelectionException(Messages.AbsorbMergedPackagesWorker_RootElementNotPackage);
 			}
-			
+
 			// merge any/all PackageMerge Elements
 			final org.eclipse.uml2.uml.Package rootPkg = (org.eclipse.uml2.uml.Package)rootObj;
-			Map<String, String> options = new HashMap<>();
+			Map<String, String> options = new HashMap<String, String>();
 			final Map<EObject, List<EObject>> merges = UMLUtil.merge(rootPkg, options);
-			
+
 			if(merges.size() == 0) {
 				throw new NoPackageMergeElementsException(Messages.AbsorbMergedPackagesWorker_NoPackageMergesFound);
 			}
-		
+
 			// save the modified model to the new path
 			res.setURI(URI.createURI("platform:/resource/" + newFile.getFullPath().toString())); //$NON-NLS-1$
-			
+
 			res.save(null);
 			return newFile.getFullPath();
-			
+
 		} catch (IOException e) {
 			raiseCoreExceptionError(e);
 		} catch (NoPackageMergeElementsException e) {

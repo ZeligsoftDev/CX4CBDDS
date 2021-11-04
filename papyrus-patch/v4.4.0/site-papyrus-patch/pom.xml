@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.zeligsoft.dds4ccm</groupId>
+	<artifactId>com.zeligsoft.dds4ccm.papyrus-patch-site-v440</artifactId>
+	<version>2.1.0-SNAPSHOT</version>
+	<packaging>eclipse-update-site</packaging>
+
+	<parent>
+		<groupId>com.zeligsoft.dds4ccm</groupId>
+		<artifactId>com.zeligsoft.dds4ccm.papyrus-patch-v440</artifactId>
+		<version>2.1.0-SNAPSHOT</version>
+	</parent>
+
+	<build>
+	    <plugins>
+            <plugin>
+                    <groupId>com.coderplus.maven.plugins</groupId>
+                    <artifactId>copy-rename-maven-plugin</artifactId>
+                    <version>1.0</version>
+                    <executions>
+                        <execution>
+                            <id>copy-site-zip</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>copy</goal>
+                            </goals>
+                            <configuration>
+                                <sourceFile>target/site.zip</sourceFile>
+                                <destinationFile>target/papyrus_v440_patch_${unqualifiedVersion}.v${buildQualifier}.zip</destinationFile>
+                            </configuration>
+                        </execution>
+                    </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

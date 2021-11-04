@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.zeligsoft.papyruspatch"
+      label="CX4CBDDS Patch for Papyrus 4.4.0"
+      version="2.1.0.qualifier"
+      provider-name="Zeligsoft">
+
+   <description>
+      CX4CBDDS patches for Papyrus 4.4.0
+   </description>
+
+   <copyright>
+      Copyright (c) 2021 Zeligsoft and others
+   </copyright>
+
+   <license url="http://www.apache.org/licenses/LICENSE-2.0">
+      Apache 2.0
+
+http://www.apache.org/licenses/LICENSE-2.0
+   </license>
+
+   <requires>
+      <!-- The version number here is critical.
+        It is the version Papyrus feature (org.eclipse.papyrus.uml.tools.feature) we are patching
+        -->
+      <import feature="org.eclipse.papyrus.uml.tools.feature" version="3.0.0.201906121718" patch="true"/>
+   </requires>
+
+   <!-- Here, we include all the plug-ins we are replacing -->
+   <plugin
+         id="org.eclipse.papyrus.uml.tools"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
