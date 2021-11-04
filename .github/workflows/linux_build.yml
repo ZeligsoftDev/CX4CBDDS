@@ -34,14 +34,22 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
+            core.info('context.sha =' + context.sha)
+            core.info('context.ref =' + context.ref)
+            core.info('context.eventName =' + context.eventName)
             const variable_defs = {}
+            const TAG_PREFIX = 'refs/tags/'
+            const short_sha = context.sha.substring(0, 7)
 
-            short_sha = context.sha.substring(0, 7)
-
-            const ref_parts = context.ref.split('/')
             let tag = short_sha
-            if( ref_parts[1] === 'tags' ) {
-               tag = ref_parts[-1]
+            if( context.ref.startsWith(TAG_PREFIX) ) {
+               tag = context.ref.replace(TAG_PREFIX, '')
+               // sanitize tag for RPM
+               // replaceAll is not available...
+               // tag = tag.replaceAll('-','_')
+               while(tag.includes('-')) {
+                 tag = tag.replace('-','_')
+               }
             }
             variable_defs['RPM_TAG'] = tag
 
@@ -61,7 +69,8 @@ jobs:
             const patterns = {
                 'ATCD': 'releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip',
                 'AXCIOMA': 'releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axcioma_*.zip',
-                'DDK': 'releng/com.zeligsoft.ddk.update/target/ddk_*.zip'
+                'DDK': 'releng/com.zeligsoft.ddk.update/target/ddk_*.zip',
+                'PAPYRUS_440_PATCH': 'papyrus-patch/v4.4.0/site-papyrus-patch/target/papyrus_v440_patch_*.zip'
             }
             const variable_defs = {}
             for (const [var_base, pat] of Object.entries(patterns)) {
@@ -83,11 +92,17 @@ jobs:
       - name: Build ATCD RPM
         if: ${{ env.ATCD_PRESENT == 'true' }}
         run: |
-          rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec
+          rpmbuild -ba --clean -vv \
+            --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.atcd" \
+            --define "_git_tag $RPM_TAG" \
+            releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/zeligsoftCX_atcd.spec
       - name: Build AXCIOMA RPM
         if: ${{ env.AXCIOMA_PRESENT == 'true' }}
         run: |
-          rpmbuild -ba --clean -vv --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axcioma" --define "_git_tag $RPM_TAG" releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec
+          rpmbuild -ba --clean -vv \
+            --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axcioma" \
+            --define "_git_tag $RPM_TAG" \
+            releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec
       - name: Located Built RPMS
         uses: actions/github-script@v5
         with:
@@ -134,6 +149,13 @@ jobs:
           name: ${{ env.DDK_FILE_NAME }}
           path: ${{ env.DDK_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - name: Preserve PAPYRUS_440_PATCH archive
+        if: ${{ env.PAPYRUS_440_PATCH_PRESENT == 'true' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.PAPYRUS_440_PATCH_FILE_NAME }}
+          path: ${{ env.PAPYRUS_440_PATCH_PATH }}
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve ATCD RPM
         if: ${{ env.ATCD_RPM_PRESENT == 'true' }}
         uses: actions/upload-artifact@v2
@@ -148,3 +170,12 @@ jobs:
           name: ${{ env.AXCIOMA_RPM_FILE_NAME }}
           path: ${{ env.AXCIOMA_RPM_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: github.event_name == 'release'
+        with:
+          files: |
+            releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axcioma_*.zip
+            releng/com.zeligsoft.ddk.update/target/ddk_*.zip
+            releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/noarch/*.rpm
+            papyrus-patch/v4.4.0/site-papyrus-patch/target/papyrus_v440_patch_*.zip

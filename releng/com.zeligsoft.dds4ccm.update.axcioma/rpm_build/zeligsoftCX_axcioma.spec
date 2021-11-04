@@ -3,6 +3,8 @@
 %define _defaultRel  0.%(date "+%y%m%d%H%M")
 %define _rpmdir      %{_projectdir}/rpm_build/
 %define _targetdir   %{_projectdir}/target
+%define _patchtargetdir %{_projectdir}/../../papyrus-patch/v4.4.0/site-papyrus-patch/target
+%define patch_groups "com.zeligsoft.papyruspatch.feature.group"
 %define feature_groups "com.zeligsoft.base_feature.feature.group, \
     com.zeligsoft.cx_feature.feature.group, \
     com.zeligsoft.domain.idl3plus_feature.feature.group, \
@@ -79,7 +81,7 @@
 Name:          cx-axcioma
 Version:       %{ver}
 Release:       %{rel}
-Summary:       A Rational Software Architect (RSA) add-in for modeling on AXCIOMA
+Summary:       A Eclipse Papyrus add-in for modeling on AXCIOMA
 License:       Apache License, Version 2.0
 BuildArch:     noarch
 URL:           https://github.com/ZeligsoftDev/CX4CBDDS
@@ -90,12 +92,13 @@ AutoReqProv:   no
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 %description -n cx-axcioma
-DDS4CCM is a Rational Software Architect (RSA) add-in for modeling component
+DDS4CCM is a Eclipse Papyrus add-in for modeling component
 based systems built on AXCIOMA according to the OMG CCM standard.
 
 %install
 %{__mkdir_p} %{buildroot}/opt/cx-axcioma
 cp %{_targetdir}/dds4ccm_*.v*.zip %{buildroot}/opt/cx-axcioma/
+cp %{_patchtargetdir}/papyrus_v440_patch_*.v*.zip %{buildroot}/opt/cx-axcioma/
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Allocate files
@@ -144,6 +147,13 @@ timestamp=$(echo /opt/cx-axcioma/*.zip | sed -rn 's/.*\.v([0-9]*)\.zip/\1/p')
    -repository \
    jar:file:/opt/cx-axcioma/dds4ccm_axcioma_%{ver}.v${timestamp}.zip\!/ \
    -installIU %{feature_groups}
+# Install Papyrus patch
+/opt/Papyrus/papyrus \
+   -application org.eclipse.equinox.p2.director \
+   -nosplash \
+   -repository \
+   jar:file:/opt/cx-axcioma/papyrus_v440_patch_%{ver}.v${timestamp}.zip\!/ \
+   -installIU %{patch_groups}
 
 
 %postun

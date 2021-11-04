@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="importSources" name="Package Import Sources" schema="/schema/importSources.exsd"/>
+   <extension-point id="profileApplicationDelegates" name="Profile Application Delegates" schema="schema/profileApplicationDelegates.exsd"/>
+   
+<!-- Register the UML delegating constraint provider -->
+<!-- Bind the UML metamodel constraint provider's constraints to the Papyrus application. -->
+
+   <extension
+         point="org.eclipse.papyrus.infra.core.model">
+      <model
+            classname="org.eclipse.papyrus.uml.tools.model.ExtendedUmlModel"
+            description="Model for UML"
+            fileExtension="uml">
+         <modelSnippet
+               classname="org.eclipse.papyrus.uml.tools.model.UmlSnippet"
+               description="Complete the UML model.">
+         </modelSnippet>
+      </model>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.core.language">
+      <modelBinding
+            language="org.eclipse.papyrus.uml.language"
+            model="org.eclipse.papyrus.infra.core.resource.uml.UmlModel">
+      </modelBinding>
+   </extension>
+   
+<extension
+      point="org.eclipse.papyrus.infra.services.labelprovider.labelProvider">
+   <labelProvider
+         priority="50"
+         provider="org.eclipse.papyrus.uml.tools.providers.UMLFilteredLabelProvider">
+   </labelProvider>
+   <labelProvider
+         priority="10"
+         provider="org.eclipse.papyrus.uml.tools.providers.UMLEClassLabelProvider">
+   </labelProvider>
+   <labelProvider
+         priority="10"
+         provider="org.eclipse.papyrus.uml.tools.providers.UMLMetaclassLabelProvider">
+   </labelProvider>
+   <labelProvider
+         priority="75"
+         provider="org.eclipse.papyrus.uml.tools.providers.GenericDataTypeLabelProvider">
+   </labelProvider>
+</extension>
+
+   <extension
+         point="org.eclipse.papyrus.uml.tools.importSources">
+      <importSource
+            class="org.eclipse.papyrus.uml.tools.importsources.WorkspacePackageImportSource"
+            name="Workspace">
+      </importSource>
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.eclipse.papyrus.uml.tools.commands.internal.expressions.UMLPropertyTester"
+            id="org.eclipse.papyrus.uml.tools.umlProperties"
+            namespace="org.eclipse.papyrus.uml.tools"
+            properties="isRoot,profile,stereotype"
+            type="org.eclipse.core.runtime.IAdaptable">
+      </propertyTester>
+      <propertyTester
+            class="org.eclipse.papyrus.uml.tools.commands.internal.expressions.UMLPropertyTester"
+            id="org.eclipse.papyrus.uml.tools.umlNativeProperties"
+            namespace="org.eclipse.papyrus.uml"
+            properties="profile,stereotype"
+            type="org.eclipse.uml2.uml.Element">
+      </propertyTester>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.core.service">
+      <service
+            classname="org.eclipse.papyrus.uml.tools.service.StereotypeElementService"
+            description="Service to register Stereotype listener on Editing domain"
+            id="org.eclipse.papyrus.uml.service.StereotypeElementService"
+            priority="1"
+            startKind="startup">
+         <dependsOn
+               description="Editing domain which will receive the stereotype listener"
+               serviceKeyRef="org.eclipse.emf.transaction.TransactionalEditingDomain">
+         </dependsOn>
+      </service>
+      <service
+            classname="org.eclipse.papyrus.uml.tools.service.ProfileDefinitionService"
+            id="org.eclipse.papyrus.uml.tools.service.IProfileDefinitionService"
+            priority="1"
+            startKind="startup">
+         <dependsOn
+               serviceKeyRef="org.eclipse.papyrus.infra.core.resource.ModelSet">
+         </dependsOn>
+      </service>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.services.decoration.decorationSpecificFunctions">
+      <client
+            class="org.eclipse.papyrus.uml.tools.decoration.UndefinedProfileDecoration"
+            decorationType="org.eclipse.papyrus.uml.tools.decoration.undefinedprofile">
+      </client>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.core.language">
+      <provider>
+         <content-type
+               id="org.eclipse.uml2.uml">
+         </content-type>
+         <language
+               id="org.eclipse.papyrus.uml.language"
+               version="2.5"
+               name="UML">
+         </language>
+      </provider>
+   </extension>
+   
+   <extension
+         point="org.eclipse.papyrus.infra.core.copier">
+         
+      <factoryConfiguration>
+         <!-- In InterfaceRealizations, the client is a derived subset of the owner.
+              cf. http://eclip.se/502461  -->
+         <referenceFilter
+               referenceURI="http://www.eclipse.org/uml2/5.0.0/UML#//Dependency/client"
+               ownerTypeURI="http://www.eclipse.org/uml2/5.0.0/UML#//InterfaceRealization">
+         </referenceFilter>
+      </factoryConfiguration>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.widgets.selectorDialogTab">
+      <tabDeclaration
+            contentProvider="org.eclipse.papyrus.infra.widgets.providers.FlatFilteredContentProvider"
+            id="org.eclipse.papyrus.uml.tools.tabflat"
+            labelProvider="org.eclipse.papyrus.uml.tools.providers.FlatTabUMLLabelProvider"
+            tabConstraint="org.eclipse.papyrus.uml.tools.providers.FlatTabConstaint"
+            tabIcon="icons/flatView.gif"
+            tabLabel="Flat">
+      </tabDeclaration>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.papyrus.infra.core.sasheditor.preferences.generalcategory"
+            class="org.eclipse.papyrus.uml.tools.helper.ProfileApplicationDelegatePreferencePage"
+            id="org.eclipse.papyrus.uml.tools.profileApplicationDelegate"
+            name="Profile Application">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.papyrus.uml.tools.helper.ProfileApplicationDelegatePreferenceInitializer">
+      </initializer>
+   </extension>
+</plugin>

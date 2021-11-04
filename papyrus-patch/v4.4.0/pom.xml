@@ -3,21 +3,27 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.zeligsoft.dds4ccm</groupId>
-	<artifactId>com.zeligsoft.dds4ccm.root</artifactId>
+	<artifactId>com.zeligsoft.dds4ccm.papyrus-patch-v440</artifactId>
 	<version>2.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
 	<parent>
 		<groupId>com.zeligsoft.dds4ccm</groupId>
-		<artifactId>com.zeligsoft.dds4ccm.configuration</artifactId>
+		<artifactId>com.zeligsoft.dds4ccm.root</artifactId>
 		<version>2.1.0-SNAPSHOT</version>
-		<relativePath>./releng/com.zeligsoft.dds4ccm.configuration</relativePath>
+		<relativePath>../..</relativePath>
 	</parent>
 
 	<modules>
-		<module>bundles</module>
-		<module>ddk</module>
-		<module>features</module>
-		<module>papyrus-patch/v4.4.0</module>
-		<module>releng</module>
-	</modules>
+	    <!--
+	    The actual plug-in(s) we are patching.
+	    -->
+	    <module>org.eclipse.papyrus.uml.tools</module>
+	    <!--
+	    The feature patch that bundles the patched plugins
+	    -->
+		<module>feature-com.zeligsoft.papyruspatch</module>
+
+		<module>site-papyrus-patch</module>
+    </modules>
 </project>
