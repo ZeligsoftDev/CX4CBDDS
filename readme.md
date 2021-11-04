@@ -54,23 +54,23 @@ The p2 repositories produced by the build will be found in `releng/com.zeligsoft
 and `releng/com.zeligsoft.dds4ccm.update.axcioma/target`:
 
 * The sub directory `repository` is the created p2 repository. 
-* The files `com.zeligsoft.dds4cmm.update.atcd-<version>-SNAPSHOT.zip` and `com.zeligsoft.dds4cmm.update.axcioma-<version>-SNAPSHOT.zip` 
+* The files `dds4ccm_axcioma_<version>.zip` and `papyrus_v440_patch_<version>.zip` 
 are zip archives of these repositories.
-* The build also creates a ZIP file with a date, in place of SNAPSHOT. The files are identical.
-The later file is useful for distributing regular builds to a file server, allowing you
+* The build also creates a ZIP ending with `SNAPSHOT.zip`. The files are identical.
+The dated ZIP files are useful for distributing regular builds to a file server, allowing you
 to distinguish build between results of successive builds.
 
 ## Installing
 
 DDS4CCM can be installed in Eclipse Papyrus 2019-06 release (4.4.0). 
-The release can be downloaded from `https://www.eclipse.org/papyrus/download.html`.
+The release can be downloaded from `https://archive.eclipse.org/modeling/mdt/papyrus/rcp/2019-06/4.4.0/`.
 A default installation should be sufficient. To install:
 
 1. Start Papyrus as a super user. **This is important.**
 2. From the **Help** menu, choose **Install New Software** to start the **Install** wizard.
 3. On the **Available Software** page, click the **Add** button, to add a new software site.
 4. In the **Add Repository** dialog, click the **Archive** button, and in the dialog, browse for
-the `com.zeligsoft.dds4ccm.update.atcd-*.zip` or `com.zeligsoft.dd44ccm.update.axcioma-*.zip` file. Click **OK**.
+the `dds4ccm_axcioma_<version>.zip` file. Click **OK**.
 5. Click **OK** to close the **Add Repository** dialog.
 6. On returning to the **Install** dialog, check the checkbox beside **CX CBDDS**.
 Optionally, you may check **CDT** to install the C/C++ development tools.
@@ -84,7 +84,9 @@ If error messages are reported, please contact us. Click **Next** to continue.
 10. During the execution of the wizard, your may be prompted to approve the installation
 of unsigned features. This will all have `com.zeligsoft` as a prefix to their names. Approve them.
 11. Once the install has completed, you will be prompted to restart Papyrus. Do this.
-12. Once restarted, you may exit Papyrus (which you started as a super user in step 1).
+12. Repeat steps 3 through 11, but browsing for `papyrus_v440_patch_<version>.zip`. This installs
+a patch to Papyrus 4.4.0 necessary to fix some copy-paste bugs.
+13. Once restarted, you may exit Papyrus (which you started as a super user in step 1).
 
 ## Using CX CBDDS (aka DDS4CCM)
 
