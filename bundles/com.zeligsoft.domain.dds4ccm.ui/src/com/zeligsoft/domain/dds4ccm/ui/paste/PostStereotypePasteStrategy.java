@@ -64,7 +64,7 @@ public class PostStereotypePasteStrategy extends AbstractPasteStrategy implement
 	 * getLabel()
 	 */
 	public String getLabel() {
-		return "CXStereotypeStrategy"; //$NON-NLS-1$
+		return "PostStereotypeStrategy"; //$NON-NLS-1$
 	}
 
 	/*
@@ -75,7 +75,7 @@ public class PostStereotypePasteStrategy extends AbstractPasteStrategy implement
 	 * )
 	 */
 	public String getID() {
-		return Activator.PLUGIN_ID + ".StereotypeStrategy"; // ".ClassifierToStructureCompDrop"; //$NON-NLS-1$
+		return Activator.PLUGIN_ID + ".PostStereotypeStrategy"; // ".ClassifierToStructureCompDrop"; //$NON-NLS-1$
 	}
 
 	/*
@@ -85,7 +85,7 @@ public class PostStereotypePasteStrategy extends AbstractPasteStrategy implement
 	 * getDescription()
 	 */
 	public String getDescription() {
-		return "Paste CX stereotype elements"; //$NON-NLS-1$
+		return "Post stereotype paste strategy"; //$NON-NLS-1$
 	}
 
 	@Override
@@ -126,6 +126,7 @@ public class PostStereotypePasteStrategy extends AbstractPasteStrategy implement
 				// get target Element
 				EObject target = papyrusClipboard.getTragetCopyFromInternalClipboardCopy(object);
 				if (target != null && target instanceof Element) {
+
 					// Get StereotypeReferenceClipboard
 					Map<Object, ?> additionalDataMap = papyrusClipboard.getAdditionalDataForStrategy(getID());
 					Object additionnalData = additionalDataMap.get(object);
@@ -143,63 +144,14 @@ public class PostStereotypePasteStrategy extends AbstractPasteStrategy implement
 								String featureName = entry.getKey();
 								Object value = entry.getValue();
 								if (value instanceof EObject) {
-									List<EStructuralFeature> baseFeatures = ((EObject) value).eClass()
-											.getEAllStructuralFeatures().stream()
-											.filter(f -> f.getName().startsWith(Extension.METACLASS_ROLE_PREFIX))
-											.collect(Collectors.toList());
-
-									if (!baseFeatures.isEmpty()) {
-										// stereotype application
-										for (EStructuralFeature baseFeature : baseFeatures) {
-
-											Object baseElement = ((EObject) value).eGet(baseFeature);
-											Object baseElementCopy = papyrusClipboard
-													.getTragetCopyFromInternalClipboardCopy(baseElement);
-											if (baseElementCopy != null) {
-												((EObject) value).eSet(baseFeature, baseElementCopy);
-											}
-										}
-										stereotypeReferenceMap.put(featureName, value);
-									} else {
-										EObject realRef = papyrusClipboard
-												.getTragetCopyFromInternalClipboardCopy(value);
-										if (realRef == null) {
-											// We didn't find the copy of this reference target
-											// so keep the original value
-											realRef = (EObject) value;
-										}
-										stereotypeReferenceMap.put(featureName, realRef);
-									}
+									EObject ref = getReferenceCopy((EObject) value, papyrusClipboard, true);
+									stereotypeReferenceMap.put(featureName, ref);
 								} else {
 									EList<EObject> copyList = new BasicEList<EObject>();
-									for (EObject referencedObject : ((EList<EObject>) value)) {
-										List<EStructuralFeature> baseFeatures = referencedObject.eClass()
-												.getEAllStructuralFeatures().stream()
-												.filter(f -> f.getName().startsWith(Extension.METACLASS_ROLE_PREFIX))
-												.collect(Collectors.toList());
-
-										if (!baseFeatures.isEmpty()) {
-											// stereotype application
-											for (EStructuralFeature baseFeature : baseFeatures) {
-												// stereotype application
-												Object baseElement = referencedObject.eGet(baseFeature);
-												Object baseElementCopy = papyrusClipboard
-														.getTragetCopyFromInternalClipboardCopy(baseElement);
-												if (baseElementCopy != null) {
-													referencedObject.eSet(baseFeature, baseElementCopy);
-												}
-											}
-											copyList.add(referencedObject);
-										} else {
-											EObject realRef = papyrusClipboard
-													.getTragetCopyFromInternalClipboardCopy(referencedObject);
-											if (realRef == null) {
-												// We didn't find the copy of this reference target
-												// so keep the original value
-												realRef = referencedObject;
-											}
-											copyList.add(referencedObject);
-										}
+									for (EObject val : ((EList<EObject>) value)) {
+										EObject ref = getReferenceCopy(val, papyrusClipboard, true);
+										stereotypeReferenceMap.put(featureName, ref);
+										copyList.add(ref);
 									}
 									stereotypeReferenceMap.put(featureName, copyList);
 								}
@@ -223,6 +175,52 @@ public class PostStereotypePasteStrategy extends AbstractPasteStrategy implement
 
 	}
 
+	/**
+	 * Helper function to get a copy of reference from appropriate source from the
+	 * clipboard
+	 * 
+	 * @param value
+	 * @param papyrusClipboard
+	 * @param useInternalClipboard
+	 * @return
+	 */
+	private EObject getReferenceCopy(EObject value, PapyrusClipboard<Object> papyrusClipboard,
+			boolean useInternalClipboard) {
+
+		List<EStructuralFeature> baseFeatures = ((EObject) value).eClass().getEAllStructuralFeatures().stream()
+				.filter(f -> f.getName().startsWith(Extension.METACLASS_ROLE_PREFIX)).collect(Collectors.toList());
+
+		if (!baseFeatures.isEmpty()) {
+			if (!useInternalClipboard) {
+				value = EcoreUtil.copy((EObject) value);
+			}
+			// stereotype application
+			for (EStructuralFeature baseFeature : baseFeatures) {
+
+				Object baseElement = ((EObject) value).eGet(baseFeature);
+				Object baseElementCopy;
+				if (useInternalClipboard) {
+					baseElementCopy = papyrusClipboard.getTragetCopyFromInternalClipboardCopy(baseElement);
+				} else {
+					baseElementCopy = papyrusClipboard.getCopyFromSource((EObject) baseElement);
+				}
+				if (baseElementCopy != null) {
+					((EObject) value).eSet(baseFeature, baseElementCopy);
+				}
+			}
+			return value;
+		}
+
+		// This is a UML element
+		EObject realRef;
+		if (useInternalClipboard) {
+			realRef = papyrusClipboard.getTragetCopyFromInternalClipboardCopy(value);
+		} else {
+			realRef = (EObject) papyrusClipboard.getCopyFromSource(value);
+		}
+		return (realRef == null) ? value : realRef;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -237,6 +235,7 @@ public class PostStereotypePasteStrategy extends AbstractPasteStrategy implement
 			EObject eObjectSource = (EObject) iterator.next();
 			if (eObjectSource instanceof Element) {
 				Element element = (Element) eObjectSource;
+
 				EList<EObject> stereotypeApplications = element.getStereotypeApplications();
 				if (stereotypeApplications != null && !stereotypeApplications.isEmpty()) {
 					StereotypeReferenceClipboard stereotypeClipboard = new StereotypeReferenceClipboard(
@@ -260,62 +259,15 @@ public class PostStereotypePasteStrategy extends AbstractPasteStrategy implement
 									// create a feature to reference map
 									Object value = stereotypeApplication.eGet(eStructuralFeature);
 									if (value instanceof EObject) {
-										List<EStructuralFeature> baseFeatures = ((EObject) value).eClass()
-												.getEAllStructuralFeatures().stream()
-												.filter(f -> f.getName().startsWith(Extension.METACLASS_ROLE_PREFIX))
-												.collect(Collectors.toList());
-										if (!baseFeatures.isEmpty()) {
-											EObject valCopy = EcoreUtil.copy((EObject) value);
-											for (EStructuralFeature baseFeature : baseFeatures) {
-												// this is stereotype application
-												// copy it and set the base element to the copy of reference
-												Object baseElement = ((EObject) valCopy).eGet(baseFeature);
-												Object baseElementCopy = papyrusClipboard
-														.getCopyFromSource((EObject) baseElement);
-												if (baseElementCopy != null) {
-													valCopy.eSet(baseFeature, baseElementCopy);
-												}
-											}
-											featureReferencesMap.put(name, valCopy);
-
-										} else {
-											Object reference = papyrusClipboard.getCopyFromSource((EObject) value);
-											if (reference == null) {
-												reference = (EObject) value;
-											}
-											featureReferencesMap.put(name, reference);
-										}
+										EObject ref = getReferenceCopy((EObject) value, papyrusClipboard, false);
+										featureReferencesMap.put(name, ref);
 									} else if (value instanceof Collection<?>) {
 										Collection<?> listValue = (Collection<?>) value;
 										if (listValue.stream().allMatch(v -> v instanceof EObject)) {
 											EList<EObject> list = new BasicEList<EObject>();
 											for (EObject val : (List<EObject>) listValue) {
-												List<EStructuralFeature> baseFeatures = val.eClass()
-														.getEAllStructuralFeatures().stream()
-														.filter(f -> f.getName()
-																.startsWith(Extension.METACLASS_ROLE_PREFIX))
-														.collect(Collectors.toList());
-												if (!baseFeatures.isEmpty()) {
-													// this is stereotype application
-													// copy it and set the base element to the copy of reference
-													EObject valCopy = EcoreUtil.copy(val);
-													for (EStructuralFeature baseFeature : baseFeatures) {
-														Object baseElement = valCopy.eGet(baseFeature);
-														Object baseElementCopy = papyrusClipboard
-																.getCopyFromSource((EObject) baseElement);
-														if (baseElementCopy != null) {
-															valCopy.eSet(baseFeature, baseElementCopy);
-														}
-													}
-													list.add(valCopy);
-												} else {
-													Object reference = papyrusClipboard
-															.getCopyFromSource((EObject) val);
-													if (reference == null) {
-														reference = (EObject) val;
-													}
-													list.add((EObject) reference);
-												}
+												EObject ref = getReferenceCopy(val, papyrusClipboard, false);
+												list.add(ref);
 											}
 											featureReferencesMap.put(name, list);
 										}

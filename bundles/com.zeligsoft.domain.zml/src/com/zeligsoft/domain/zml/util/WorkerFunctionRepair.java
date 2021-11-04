@@ -36,6 +36,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.OpaqueBehavior;
@@ -469,6 +470,20 @@ public class WorkerFunctionRepair {
 			((Element) op).destroy();
 			existingWorkerFunctions.remove(op);
 		}
+		
+		List<Behavior> allImpls = (List<Behavior>) ((Component) structuralRealization).getOwnedBehaviors();
+		if (!allImpls.isEmpty()) {
+			// Clean up orphan workerfunction impls
+			Iterator<Behavior> itor = allImpls.iterator();
+			while (itor.hasNext()) {
+				Behavior b = itor.next();
+				if (!ZDLUtil.isZDLConcept(b, ZMLMMNames.WORKER_FUNCTION_IMPL)) {
+					itor.remove();
+					b.destroy();
+				}
+			}
+		}
+		
 		
 		// Remove WorkerFunctionImpls where corresponding worker function no
 		// longer exist. This may happen if user deletes worker function
