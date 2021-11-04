@@ -85,58 +85,49 @@ public class PostDuplicateStereotypeCommand extends RecordingCommand {
 					Object value = featureReferenceMap.get(name);
 
 					if (value instanceof EObject) {
-						Optional<EStructuralFeature> baseFeature = ((EObject) value).eClass()
-								.getEAllStructuralFeatures().stream()
-								.filter(f -> f.getName().startsWith(Extension.METACLASS_ROLE_PREFIX)).findAny();
-
-						if (baseFeature.isPresent()) {
-							// stereotype application
-							EObject baseElement = (EObject) ((EObject) value).eGet(baseFeature.get());
-							if (baseElement.eResource() != null) {
-								URI sourceURI = EcoreUtil.getURI(baseElement);
-								baseElement = rset.getEObject(sourceURI, true);
-							}
-							EObject stApp = ((Element) baseElement).getStereotypeApplications().get(0);
-							applyStereotype.eSet(eStructuralFeature, stApp);
-
-						} else {
-							EObject ref = (EObject) value;
-							if (ref.eResource() != null) {
-								// load element in the target resource set
-								URI sourceURI = EcoreUtil.getURI(ref);
-								value = rset.getEObject(sourceURI, true);
-							}
-						}
+						EObject reloaded = reloadInTargetContext(rset, (EObject) value);
+						applyStereotype.eSet(eStructuralFeature, reloaded);
 					} else if (value instanceof List) {
 						EList<EObject> listInTargetContext = new BasicEList<EObject>();
 						for (EObject val : (List<EObject>) value) {
-							Optional<EStructuralFeature> baseFeature = val.eClass().getEAllStructuralFeatures().stream()
-									.filter(f -> f.getName().startsWith(Extension.METACLASS_ROLE_PREFIX)).findAny();
-
-							if (baseFeature.isPresent()) {
-								// stereotype application
-								EObject baseElement = (EObject) val.eGet(baseFeature.get());
-								if (baseElement.eResource() != null) {
-									URI sourceURI = EcoreUtil.getURI(baseElement);
-									baseElement = rset.getEObject(sourceURI, true);
-								}
-								val = ((Element) baseElement).getStereotypeApplications().get(0);
-								listInTargetContext.add(val);
-
-							} else {
-								if (val.eResource() != null) {
-									// load element in the target resource set
-									URI sourceURI = EcoreUtil.getURI(val);
-									listInTargetContext.add(rset.getEObject(sourceURI, true));
-								} else {
-									listInTargetContext.add(val);
-								}
-							}
+							EObject reloaded = reloadInTargetContext(rset, val);
+							listInTargetContext.add(reloaded);
 						}
 						applyStereotype.eSet(eStructuralFeature, listInTargetContext);
 					}
 				}
 			}
 		}
+	}
+
+	/**
+	 * Helper function to reload element into target resource set
+	 * 
+	 * @param rset
+	 * @param value
+	 * @return
+	 */
+	private EObject reloadInTargetContext(ResourceSet rset, EObject value) {
+		Optional<EStructuralFeature> baseFeature = ((EObject) value).eClass().getEAllStructuralFeatures().stream()
+				.filter(f -> f.getName().startsWith(Extension.METACLASS_ROLE_PREFIX)).findAny();
+
+		if (baseFeature.isPresent()) {
+			// stereotype application
+			EObject baseElement = (EObject) ((EObject) value).eGet(baseFeature.get());
+			if (baseElement.eResource() != null) {
+				URI sourceURI = EcoreUtil.getURI(baseElement);
+				baseElement = rset.getEObject(sourceURI, true);
+			}
+			EObject stApp = ((Element) baseElement).getStereotypeApplications().get(0);
+			return stApp;
+		}
+		EObject ref = (EObject) value;
+		if (ref.eResource() != null && ref.eResource().getResourceSet() != rset) {
+			// load element in the target resource set
+			URI sourceURI = EcoreUtil.getURI(ref);
+			return rset.getEObject(sourceURI, true);
+		}
+
+		return value;
 	}
 }
