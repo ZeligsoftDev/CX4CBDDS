@@ -3,6 +3,7 @@
 %define _defaultRel  0.%(date "+%y%m%d%H%M")
 %define _rpmdir      %{_projectdir}/rpm_build/
 %define _targetdir   %{_projectdir}/target
+%define _patchtargetdir %{_projectdir}/../../papyrus-batch/v4.4.0/site-papyrus-patch/target
 %define patch_groups "com.zeligsoft.papyruspatch.feature.group"
 %define feature_groups "com.zeligsoft.base_feature.feature.group, \
     com.zeligsoft.cx_feature.feature.group, \
@@ -97,7 +98,7 @@ based systems built on AXCIOMA according to the OMG CCM standard.
 %install
 %{__mkdir_p} %{buildroot}/opt/cx-axcioma
 cp %{_targetdir}/dds4ccm_*.v*.zip %{buildroot}/opt/cx-axcioma/
-cp %{_targetdir}/papyrus_v440_patch_*.v*.zip %{buildroot}/opt/cx-axcioma/
+cp %{_patchtargetdir}/papyrus_v440_patch_*.v*.zip %{buildroot}/opt/cx-axcioma/
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Allocate files
