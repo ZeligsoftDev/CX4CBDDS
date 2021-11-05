@@ -1,3 +1,19 @@
+/**
+ * Copyright 2021 Northrop Grumman Systems Corporation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 package com.zeligsoft.domain.dds4ccm.ui.internal;
 
 import org.eclipse.emf.ecore.EObject;
@@ -17,7 +33,8 @@ import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Model;
 
-import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.dds4ccm.ui.Activator;
 import com.zeligsoft.domain.dds4ccm.ui.l10n.Messages;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMMigrationUtil;
@@ -72,36 +89,18 @@ public class MigrationChecker {
 		}
 		PapyrusMultiDiagramEditor multiEditor = (PapyrusMultiDiagramEditor) partRef.getPage().getActiveEditor();
 		Model model = getModel(multiEditor);
-		if (model != null) {
+		if (model != null && ZDLUtil.isZDLConcept(model, DDS4CCMNames.DDS4_CCMMODEL)) {
 			if (DDS4CCMMigrationUtil.isMigrationRequired(model)) {
 				String message = NLS.bind(Messages.MigrationChecker_MigrationRequired, model.getName());
-				BaseUIUtil.writeToConsole(message);
 				Activator.getDefault().error(message, null);
-				openPopupDialog(message, model);
-			}
-		} else {
-			Activator.getDefault().error(NLS.bind(Messages.MigrationChecker_NoOpenFileFound, null), null);
-		}
-	}
-
-	private static void openPopupDialog(String message, Model model) {
-		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-			public void run() {
-				Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				boolean migrate = MessageDialog.openQuestion(activeShell, Messages.MigrationChecker_MigrationRequired_DialogTitle, message);
-				BaseUIUtil.writeToConsole(migrate ? Messages.MigrationChecker_MigrationConfirmed : Messages.MigrationChecker_MigrationDeclined);
-				if (migrate) {
-					boolean success = DDS4CCMMigrationUtil.migrateAll(model);
-					String successMessage = success ? Messages.MigrationChecker_MigrationSuccess : Messages.MigrationChecker_MigrationFailure;
-					BaseUIUtil.writeToConsole(successMessage);
-					if (success) {
-						MessageDialog.openInformation(activeShell, Messages.MigrationChecker_MigrationResult_DialogTitle, successMessage);
-					} else {
-						MessageDialog.openError(activeShell, Messages.MigrationChecker_MigrationResult_DialogTitle, successMessage);
+				PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+					public void run() {
+						Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+						MessageDialog.openWarning(activeShell, Messages.MigrationChecker_MigrationRequired_DialogTitle, message);
 					}
-				}
+				});
 			}
-		});
+		}
 	}
 
 	private static Model getModel(PapyrusMultiDiagramEditor multiEditor) {
