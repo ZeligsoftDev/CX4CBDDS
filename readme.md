@@ -15,7 +15,7 @@ The build requires:
 
 ## Building
 
-A github action automatically builds master and papyrus branches as well as all pull requests. 
+A github action automatically builds master and papyrus branches as well as all pull requests.
 
 To build manually;
 
@@ -50,11 +50,11 @@ The following was found to be acceptable:
 	ulimit -Sn 1024
 </pre>
 
-The p2 repositories produced by the build will be found in `releng/com.zeligsoft.dds4ccm.update.atcd/target` 
+The p2 repositories produced by the build will be found in `releng/com.zeligsoft.dds4ccm.update.atcd/target`
 and `releng/com.zeligsoft.dds4ccm.update.axcioma/target`:
 
-* The sub directory `repository` is the created p2 repository. 
-* The files `dds4ccm_axcioma_<version>.zip` and `papyrus_v440_patch_<version>.zip` 
+* The sub directory `repository` is the created p2 repository.
+* The files `dds4ccm_axcioma_<version>.zip` and `papyrus_v440_patch_<version>.zip`
 are zip archives of these repositories.
 * The build also creates a ZIP ending with `SNAPSHOT.zip`. The files are identical.
 The dated ZIP files are useful for distributing regular builds to a file server, allowing you
@@ -62,11 +62,34 @@ to distinguish build between results of successive builds.
 
 ## Installing
 
-DDS4CCM can be installed in Eclipse Papyrus 2019-06 release (4.4.0). 
+DDS4CCM can be installed in Eclipse Papyrus 2019-06 release (4.4.0).
 The release can be downloaded from `https://archive.eclipse.org/modeling/mdt/papyrus/rcp/2019-06/4.4.0/`.
 A default installation should be sufficient. To install:
 
+### Install the Papyrus Patch
+
+Note that this only needs to be done once, even if installing an updated CX.
+
 1. Start Papyrus as a super user. **This is important.**
+2. From the **Help** menu, choose **Install New Software** to start the **Install** wizard.
+3. On the **Available Software** page, click the **Add** button, to add a new software site.
+4. In the **Add Repository** dialog, click the **Archive** button, and in the dialog, browse for
+the `papyrus_v440_patch_<version>.zip` file. Click **OK**.
+5. Click **OK** to close the **Add Repository** dialog.
+6. On returning to the **Install** dialog, check the checkbox beside **Papyrus Patch (required)**.
+7. With the installation features selected, press **Next**.
+8. On the **Install Details** page, you should see additional information on features to
+be installed.
+If error messages are reported, please contact us. Click **Next** to continue.
+9. On the **Review Licenses** page, click the **I accept...** radio button, then click **Finish**.
+10. During the execution of the wizard, your may be prompted to approve the installation
+of unsigned features. This will all have `com.zeligsoft` as a prefix to their names. Approve them.
+11. Once the install has completed, you will be prompted to restart Papyrus. Do this.
+
+### Install CX
+
+1. Start Papyrus as a super user. **This is important.**
+If Papyrus just restarted because you installed the Papyrus patch, then you may continue.
 2. From the **Help** menu, choose **Install New Software** to start the **Install** wizard.
 3. On the **Available Software** page, click the **Add** button, to add a new software site.
 4. In the **Add Repository** dialog, click the **Archive** button, and in the dialog, browse for
@@ -84,9 +107,7 @@ If error messages are reported, please contact us. Click **Next** to continue.
 10. During the execution of the wizard, your may be prompted to approve the installation
 of unsigned features. This will all have `com.zeligsoft` as a prefix to their names. Approve them.
 11. Once the install has completed, you will be prompted to restart Papyrus. Do this.
-12. Repeat steps 3 through 11, but browsing for `papyrus_v440_patch_<version>.zip`. This installs
-a patch to Papyrus 4.4.0 necessary to fix some copy-paste bugs.
-13. Once restarted, you may exit Papyrus (which you started as a super user in step 1).
+12. Once restarted, you may exit Papyrus (which you started as a super user in step 1).
 
 ## Using CX CBDDS (aka DDS4CCM)
 
@@ -94,16 +115,16 @@ To use CX CBDDS:
 1. start Papyrus as a regular user.
 2. Choose a 'workspace' location, if prompted. This will be the disk location where your
 DDS4CCM projects will be stored.
-3. From the **File** menu, click on **New > Papyrus Project**. 
+3. From the **File** menu, click on **New > Papyrus Project**.
 This will open up the **New Papyrus Project** wizard.
-4. In the **Architecture Contexts** section of the **New Papyrus Project** page, 
+4. In the **Architecture Contexts** section of the **New Papyrus Project** page,
 there should be options for selecting **ATCD** or **AXCIOMA** under **Software Engineering** context.
 Selecting one of these options will show up respective viewpoints in the **Architecture Viewpoints** section.
 5. Select an architecture context and click **Next**.
 6. Enter a project name and click **Next** to continue.
 7. In the **Initialization Information** page, enter a root model element name and click **Finish**.
-8. This should create a Papyrus model with appropriate profile and stereotype application. 
-Clicking on the model in the **Model Explorer** view shows the relevant information in the **Properties** tab.     
+8. This should create a Papyrus model with appropriate profile and stereotype application.
+Clicking on the model in the **Model Explorer** view shows the relevant information in the **Properties** tab.
 
 Further tutorial information is not currently stored in this project.
 
