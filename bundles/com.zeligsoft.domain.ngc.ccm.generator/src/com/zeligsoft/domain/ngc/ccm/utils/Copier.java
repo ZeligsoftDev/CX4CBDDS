@@ -6,15 +6,29 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class Copier {
 
 	public static EObject copy(EObject eObject) {
+		if (com.zeligsoft.cx.codegen.internal.OawDebug.isDebugEnabled()) {
+			System.out.println("making copy of " + eObject.toString());
+			for (EObject sub: eObject.eContents()) {
+				System.out.println("\t" + sub.toString());
+			};
+		}
 		EcoreUtil.Copier copier = new EcoreUtil.Copier();
 		EObject result = copier.copy(eObject);
 		copier.copyReferences();
+		// TODO: Copy EAnnotations
+//		if (eObject instanceof EModelElement) {
+//			EModelElement elem = (EModelElement) eObject;
+//			EList<EAnnotation> annotations = elem.getEAnnotations();
+//			// Copy EAnnotations
+//		}
 		return result;
 	}
 	

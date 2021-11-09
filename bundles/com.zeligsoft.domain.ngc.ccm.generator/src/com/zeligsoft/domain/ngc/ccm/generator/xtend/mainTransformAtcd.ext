@@ -550,7 +550,7 @@ idl::Definition visit(List[Definition] self, emf::EObject container) :
 idl::Definition visit(List[Definition] self, CXModule container) :
 	let idlModule = new idl::Module :
 		idlModule.setName(container.name) ->
-		idlModule.definitions.addAll(self.copyAll()) ->
+		idlModule.definitions.addAll(self) -> //.copyAll()) ->
 		idlModule.comments.addAll(container.zdlAsPackage().ownedComment.visitComment()) ->
 		if self.isEmpty then {} else visit(idlModule, container.eContainer);
 		
@@ -566,7 +566,7 @@ idl::Definition visit(Definition self, emf::EObject container) :
 idl::Definition visit(Definition self, CXModule container) :
 	let idlModule = new idl::Module :
 		idlModule.setName(container.name) ->
-		idlModule.definitions.add(self.copy()) ->
+		idlModule.definitions.add(self) -> //.copy()) ->
 		idlModule.comments.addAll(container.zdlAsPackage().ownedComment.visitComment()) ->
 		visit(idlModule, container.eContainer);
 

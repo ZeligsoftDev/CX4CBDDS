@@ -3,11 +3,15 @@ package com.zeligsoft.domain.ngc.ccm.utils;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EObject;
 
 import com.zeligsoft.domain.omg.corba.dsl.idl.Definition;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Module;
 import com.zeligsoft.domain.omg.corba.dsl.idl.Specification;
 import com.zeligsoft.domain.omg.corba.dsl.idl.TypeDecl;
+import com.zeligsoft.domain.omg.corba.dsl.idl.StructType;
 
 public class DebugUtils {
 
@@ -30,6 +34,8 @@ public class DebugUtils {
 		if (!com.zeligsoft.cx.codegen.internal.OawDebug.isDebugEnabled())
 			return spec;
 		System.out.println("(" + label + ") Specification " + spec.toString());
+		printEAnnotations(0, spec);
+		System.out.println("Definitions:");
 		printDefinitions(0, spec.getDefinitions());
 		return spec;
 	}
@@ -69,8 +75,35 @@ public class DebugUtils {
 			return;
 		indent(i + 2);
 		System.out.println("TypeDecl " + tdecl.toString());
+		printEAnnotations(i + 4, tdecl);
 	}
 
+	private static void printEAnnotations(int i, EObject eobj) {
+		indent(i);
+		System.out.println("EAnnotations for " + eobj.toString());
+		if (eobj instanceof StructType) {
+			indent(i);
+			System.out.println("StructType EAnnotations:");
+			StructType st = (StructType) eobj;
+			EList<EAnnotation> annotations = st.getEAnnotations();
+			if (annotations != null) {
+				for (EAnnotation a : annotations) {
+					indent(i);
+					System.out.println("EAnnotation " + a.toString());
+					printDetails(i + 2, a.getDetails());
+				}
+			}
+		}
+	}
+
+	private static void printDetails(int i, EMap<String, String> emap) {
+		if (emap == null || emap.keySet() == null) return;
+		for (String key : emap.keySet()) {
+			indent(i);
+			System.out.println("key = " + key + " val = " + emap.get(key));
+		}
+	}
+	
 	public static Object printModuleAndReturn(Integer i, String label, Module mod, Object obj) {
 		if (!com.zeligsoft.cx.codegen.internal.OawDebug.isDebugEnabled())
 			return obj;
@@ -95,6 +128,16 @@ public class DebugUtils {
 		}
 		return mod;
 	}
+	
+	public static Object printStructType(Integer i, String label, StructType st) {
+		if (!com.zeligsoft.cx.codegen.internal.OawDebug.isDebugEnabled())
+			return st;
+		indent(i + 2);
+		System.out.println("(" + label + ") StructType " + st.getName() + " (" + st.toString() + ")");
+		printEAnnotations(i + 4, st);
+		return st;
+	}
+
 
 	private static void indent(int i) {
 		for (int j = 0; j < 2 * i; j++) 
