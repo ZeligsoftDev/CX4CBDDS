@@ -8,6 +8,10 @@ Object printIDLSpec(String label, Specification spec) :
 	JAVA com.zeligsoft.domain.ngc.ccm.utils.DebugUtils.printIDLSpec( java.lang.String, com.zeligsoft.domain.omg.corba.dsl.idl.Specification )
 ;
 
+Object printStructType(Integer i, String label, StructType st) :
+	JAVA com.zeligsoft.domain.ngc.ccm.utils.DebugUtils.printStructType( java.lang.Integer, java.lang.String, com.zeligsoft.domain.omg.corba.dsl.idl.StructType )
+;
+
 Object printModule(Integer i, String label, Module mod) :
 	JAVA com.zeligsoft.domain.ngc.ccm.utils.DebugUtils.printModule( java.lang.Integer, java.lang.String, com.zeligsoft.domain.omg.corba.dsl.idl.Module )
 ;

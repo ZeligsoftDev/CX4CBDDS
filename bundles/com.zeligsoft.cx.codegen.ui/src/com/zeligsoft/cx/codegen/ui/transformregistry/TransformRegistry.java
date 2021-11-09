@@ -276,7 +276,7 @@ public class TransformRegistry {
 							String[] fileExts = fileExtensions.trim().split(" *, *"); //$NON-NLS-1$
 							for (String fileExt : fileExts) {
 								if (fileExt.startsWith(".")) { //$NON-NLS-1$
-									fileExt = fileExt.substring(1); //$NON-NLS-1$
+									fileExt = fileExt.substring(1);
 								}
 								fileExtList.add(fileExt);
 							}

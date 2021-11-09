@@ -461,11 +461,16 @@ private Void visitDefinition(emf::EObject self/*, idl::Module mod*/) :
 
 create Specification mainTransformAxcioma(DDSMessage self) :
 	let idlDDSMessage = self.visitContained() :
+		printIDLSpec("[mt DDSMessage 1] self.name = " + self.name, this) ->
 		this.getEAnnotations().add(self.createFileName()) ->
+		printIDLSpec("[mt DDSMessage 2] self.name = " + self.name, this) ->
 		self.processIncludes(this) ->
+		printIDLSpec("[mt DDSMessage 3] self.name = " + self.name, this) ->
 		this.definitions.add(self.createPragmaNdds()) ->
-		this.definitions.addAll(visit(idlDDSMessage, self.eContainer));
-				
+		printIDLSpec("[mt DDSMessage 4] self.name = " + self.name, this) ->
+		this.definitions.addAll(visit(idlDDSMessage, self.eContainer)) ->
+		printIDLSpec("[mt DDSMessage 5] self.name = " + self.name, this) ->
+		this;
 
 
 /**
@@ -508,17 +513,21 @@ private List[idl::Definition] visitDefinition(DDSMessage self) :
 	{};
 	
 create StructType visitContained(DDSMessage self) :
+	Debug(this, "Entering StructType visitContained(DDSMessage self) \n\t this = " + this + "\n\t self = " + self) ->
 	setName(self.name) ->
 	this.setIsAppendable(false) ->
 	this.setIsFinal(false) ->
 	self.extensibility == ExtensibilityKind::Appendable?
 		this.setIsAppendable(true)
 		: this.setIsFinal(true) ->
-	this.getEAnnotations().add(self.createDDSAnnotation()) ->
-	this.comments.addAll(self.zdlAsPackage().ownedComment.visitComment()) ->
-	members.addAll(self.fields.visitStructAttribute());	
+	this.getEAnnotations().add(self.createDDSAnnotation()) -> //.copy()) ->
+	this.comments.addAll(self.zdlAsPackage().ownedComment.visitComment()) -> //.copyAll()) ->
+	members.addAll(self.fields.visitStructAttribute()) ->
+	printStructType(0, "[vc DDSMessage] self.name = " + self.name, this) ->
+	this;	
 
 create ecore::EAnnotation createDDSAnnotation(DDSMessage self) :
+	let debug = Debug(this, "Entering ecore::EAnnotation createDDSAnnotation(DDSMessage self) \n\tthis = " + this + "\n\tself = " + self) :
 	let detail = new ecore::EStringToStringMapEntry :
 	this.setSource("zcx") ->
 	this.details.add(createDetail("toplevel", "true"));
@@ -613,9 +622,9 @@ idl::Definition visit(List[Definition] self, emf::EObject container) :
 idl::Definition visit(List[Definition] self, CXModule container) :
 	let idlModule = new idl::Module :
 		idlModule.setName(container.name) ->
-		idlModule.definitions.addAll(self.copyAll()) ->
+		idlModule.definitions.addAll(self) -> //.copyAll()) ->
 		printModule(4, "visit(1) after addAll(self)", idlModule) ->
-		idlModule.comments.addAll(container.zdlAsPackage().ownedComment.visitComment()) ->
+		idlModule.comments.addAll(container.zdlAsPackage().ownedComment.visitComment()) -> //.copyAll()) ->
 		if self.isEmpty then {} else printModuleAndReturn(4, "visit(1) end", idlModule, visit(idlModule, container.eContainer))
 		;
 		
@@ -631,9 +640,9 @@ idl::Definition visit(Definition self, emf::EObject container) :
 idl::Definition visit(Definition self, CXModule container) :
 	let idlModule = new idl::Module :
 		idlModule.setName(container.name) ->
-		idlModule.definitions.add(self.copy()) ->
+		idlModule.definitions.add(self) -> //.copy()) ->
 		printModule(4, "visit(2) after addAll(self)", idlModule) ->
-		idlModule.comments.addAll(container.zdlAsPackage().ownedComment.visitComment()) ->
+		idlModule.comments.addAll(container.zdlAsPackage().ownedComment.visitComment()) -> //.copyAll()) ->
 		printModuleAndReturn(4, "visit(2) end", idlModule, visit(idlModule, container.eContainer))
 		;
 
