@@ -231,7 +231,7 @@ create Specification mainTransformImplementation(MonolithicImplementation self) 
 		self.interface.getComponentsHomes().processIncludes(this) ->
 		this.definitions.addAll(visit(definitions.flatten(), self.interface.eContainer));
 		
-emf::EObject copyEOb(emf::EObject original, emf::EObject copyTo ) :
+emf::EObject copyEObj(emf::EObject original, emf::EObject copyTo ) :
 	JAVA com.zeligsoft.domain.ngc.ccm.utils.CCMXtendUtils.copy(
 		org.eclipse.emf.ecore.EObject,
 		org.eclipse.emf.ecore.EObject);

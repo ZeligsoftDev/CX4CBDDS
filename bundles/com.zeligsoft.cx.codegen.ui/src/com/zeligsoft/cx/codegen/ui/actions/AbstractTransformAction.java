@@ -19,7 +19,6 @@ package com.zeligsoft.cx.codegen.ui.actions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -37,8 +36,6 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
-import org.eclipse.core.runtime.jobs.IJobManager;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -51,7 +48,6 @@ import com.zeligsoft.base.util.WorkflowUtil;
 import com.zeligsoft.cx.build.factory.ProjectFactory;
 import com.zeligsoft.cx.codegen.CodeGenWorkflowConstants;
 import com.zeligsoft.cx.codegen.ui.CodeGenUIPlugin;
-import com.zeligsoft.cx.codegen.ui.actions.AbstractTransformAction.TransformJob;
 import com.zeligsoft.cx.codegen.ui.filecollector.FileCollector;
 import com.zeligsoft.cx.codegen.ui.filecollector.FileCollector.FileCollectionException;
 import com.zeligsoft.cx.codegen.ui.l10n.Messages;
@@ -193,7 +189,6 @@ public abstract class AbstractTransformAction extends Action {
 		public void done(IJobChangeEvent event) {
 			// When the job is done, we stop collecting files
 			fileCollector.end();
-			System.out.println("Files changed by " + currentJob.getWorkflowEntry().getDisplayLabel() + ": " + fileCollector.getFileCollection().getFilesChanged().toString());
 			// Add and report the results
 			workflowResultReporter.addResult(new WorkflowResult(currentJob.getWorkflowEntry(), element, project, event.getResult(), fileCollector.getFileCollection()));
 			workflowResultReporter.reportAll();
