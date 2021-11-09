@@ -2,8 +2,8 @@
 <xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:dds4ccm="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <uml:Model xmi:id="_jkiX8J4JEd6xhoJKj1dweA" name="CCM_PSDD">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wi3E8N2QEeqk7qqpN0ZyIw" source="cx.migration">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wi4TEN2QEeqk7qqpN0ZyIw" key="version" value="2.0.1"/>
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wi4TEd2QEeqk7qqpN0ZyIw" key="date" value="1597342439105"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wi4TEN2QEeqk7qqpN0ZyIw" key="version" value="2.1.0"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wi4TEd2QEeqk7qqpN0ZyIw" key="date" value="1636395676349"/>
     </eAnnotations>
     <packageImport xmi:type="uml:PackageImport" xmi:id="_Fg29cLNIEd66L-pSY5VQBg">
       <importedPackage xmi:type="uml:Model" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_DO-O0EDsEd-pwPnT_VsB_g"/>
@@ -19,9 +19,15 @@
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_JHV7cGROEd-Wc9hRqhM12g" name="ONE_BY_ONE"/>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_KKYFwGROEd-Wc9hRqhM12g" name="MANY_BY_MANY"/>
       </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_gP7pgEDEEeyUycfHkuUNnQ" name="NonExistent"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_RkiMEEDEEeyUycfHkuUNnQ" name="NonChangeable"/>
       <packagedElement xmi:type="uml:DataType" xmi:id="_XRS4sGROEd-Wc9hRqhM12g" name="InternalError">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_fMLEkGROEd-Wc9hRqhM12g" name="error_code" visibility="public"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_h0pisGROEd-Wc9hRqhM12g" name="index" visibility="public" type="_CJbZAGRMEd-Wc9hRqhM12g"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_fMLEkGROEd-Wc9hRqhM12g" name="origin" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_h0pisGROEd-Wc9hRqhM12g" name="error" visibility="public">
+          <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:DataType" xmi:id="_TfHAAMFDEeqLc_GGycycag" name="StringSeq">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TfmIMMFDEeqLc_GGycycag" name="members">
@@ -30,9 +36,12 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TfmvQMFDEeqLc_GGycycag" value="*"/>
         </ownedAttribute>
       </packagedElement>
-      <packagedElement xmi:type="uml:DataType" xmi:id="_JSGZkKdREeqtZIky9hZ3mg" name="PSData"/>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_v7aD4EDEEeyUycfHkuUNnQ" name="PSData"/>
       <packagedElement xmi:type="uml:Component" xmi:id="_nXLbgGRsEd-fwvmMvf-phA" name="PSDD_Base">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Re4WAME1EeqQn4ct5lI5nw" name="topic_name">
+          <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_LV_JsEDFEeyUycfHkuUNnQ" name="type_name" isReadOnly="true">
           <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_-n1nQExQEd2INdt7Ch5VKg"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_8iiQMME6EeqtXptXFYfDbw" name="publish">
@@ -70,7 +79,6 @@
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Interface" xmi:id="_AaRikGTbEd-fwvmMvf-phA" name="Subscriber">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="__-74IGTfEd-fwvmMvf-phA" name="query" visibility="public"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_Feax4GTbEd-fwvmMvf-phA" name="subscribe_any" raisedException="_XRS4sGROEd-Wc9hRqhM12g">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_KYSq4WTbEd-fwvmMvf-phA" name="Parameter1" direction="return">
               <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
@@ -120,12 +128,16 @@
             </ownedParameter>
           </ownedOperation>
         </packagedElement>
-        <packagedElement xmi:type="uml:Class" xmi:id="_NIU7AGUGEd-RBa5Uit3yBQ" name="PSDD_Publish"/>
         <packagedElement xmi:type="uml:Usage" xmi:id="_NIZMcGUGEd-RBa5Uit3yBQ" name="data" client="_NIU7AGUGEd-RBa5Uit3yBQ" supplier="_SYaqgGTYEd-fwvmMvf-phA"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_j98V8GUIEd-RBa5Uit3yBQ" name="PSDD_Subscribe">
           <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_j-DDoGUIEd-RBa5Uit3yBQ" name="data_listener" client="_j98V8GUIEd-RBa5Uit3yBQ" supplier="_06dLIGTsEd-SPZr11VF_Lg" contract="_06dLIGTsEd-SPZr11VF_Lg"/>
         </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_5t7RYEDFEeyUycfHkuUNnQ" name="PSDD_Get"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_DYtUoEDGEeyUycfHkuUNnQ" name="PSDD_Listen">
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_DYvJ0EDGEeyUycfHkuUNnQ" name="data_listener" client="_DYtUoEDGEeyUycfHkuUNnQ" supplier="_06dLIGTsEd-SPZr11VF_Lg" contract="_06dLIGTsEd-SPZr11VF_Lg"/>
+        </packagedElement>
         <packagedElement xmi:type="uml:Usage" xmi:id="_j-Ff4GUIEd-RBa5Uit3yBQ" name="data_subscriber" client="_j98V8GUIEd-RBa5Uit3yBQ" supplier="_AaRikGTbEd-fwvmMvf-phA"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_NIU7AGUGEd-RBa5Uit3yBQ" name="PSDD_Publish"/>
         <packagedElement xmi:type="uml:Component" xmi:id="_KEZvoGUJEd-RBa5Uit3yBQ" name="PSDD_Event">
           <generalization xmi:type="uml:Generalization" xmi:id="_phKM8KdPEeqtZIky9hZ3mg" general="_nXLbgGRsEd-fwvmMvf-phA"/>
           <ownedAttribute xmi:type="uml:Port" xmi:id="_ohmjoGnEEd-qrsLCnIpYUg" name="supplier" visibility="public" type="_NIU7AGUGEd-RBa5Uit3yBQ" aggregation="composite"/>
@@ -137,55 +149,58 @@
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_c5ZwUKdREeqtZIky9hZ3mg" name="ReturnParameter" direction="return">
               <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
             </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_emu00KdREeqtZIky9hZ3mg" name="data" visibility="public" type="_JSGZkKdREeqtZIky9hZ3mg" effect="create"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_emu00KdREeqtZIky9hZ3mg" name="data" visibility="public" type="_v7aD4EDEEeyUycfHkuUNnQ" effect="create"/>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_m1DhIKdREeqtZIky9hZ3mg" name="pack_key">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_m1DhIadREeqtZIky9hZ3mg" name="ReturnParameter" direction="return">
               <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
             </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_m1DhIqdREeqtZIky9hZ3mg" name="data" visibility="public" type="_JSGZkKdREeqtZIky9hZ3mg" effect="create"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_m1DhIqdREeqtZIky9hZ3mg" name="data" visibility="public" type="_v7aD4EDEEeyUycfHkuUNnQ" effect="create"/>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_28rE8KdREeqtZIky9hZ3mg" name="keyvalue" type="_j6blMGTXEd-fwvmMvf-phA"/>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_nLXvYKdREeqtZIky9hZ3mg" name="pack_data">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_nLXvYadREeqtZIky9hZ3mg" name="ReturnParameter" direction="return">
               <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
             </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_nLXvYqdREeqtZIky9hZ3mg" name="data" visibility="public" type="_JSGZkKdREeqtZIky9hZ3mg" effect="create"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_nLXvYqdREeqtZIky9hZ3mg" name="data" visibility="public" type="_v7aD4EDEEeyUycfHkuUNnQ" effect="create"/>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_93dFwKdREeqtZIky9hZ3mg" name="datum" type="_j6blMGTXEd-fwvmMvf-phA"/>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_nQJhsKdREeqtZIky9hZ3mg" name="finalize_pack">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_nQJhsadREeqtZIky9hZ3mg" name="ReturnParameter" direction="return">
               <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
             </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_nQJhsqdREeqtZIky9hZ3mg" name="data" visibility="public" type="_JSGZkKdREeqtZIky9hZ3mg" effect="create"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_nQJhsqdREeqtZIky9hZ3mg" name="data" visibility="public" type="_v7aD4EDEEeyUycfHkuUNnQ" effect="create"/>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_nSmYwKdREeqtZIky9hZ3mg" name="setup_unpack">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_nSmYwadREeqtZIky9hZ3mg" name="ReturnParameter" direction="return">
               <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
             </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_nSmYwqdREeqtZIky9hZ3mg" name="data" visibility="public" type="_JSGZkKdREeqtZIky9hZ3mg" effect="create"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_nSmYwqdREeqtZIky9hZ3mg" name="data" visibility="public" type="_v7aD4EDEEeyUycfHkuUNnQ" effect="create"/>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_nUhrYKdREeqtZIky9hZ3mg" name="unpack_key">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_nUhrYadREeqtZIky9hZ3mg" name="ReturnParameter" direction="return">
               <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
             </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_nUhrYqdREeqtZIky9hZ3mg" name="data" visibility="public" type="_JSGZkKdREeqtZIky9hZ3mg" effect="create"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_nUhrYqdREeqtZIky9hZ3mg" name="data" visibility="public" type="_v7aD4EDEEeyUycfHkuUNnQ" effect="create"/>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_HDn6YKdSEeqtZIky9hZ3mg" name="keyvalue" type="_j6blMGTXEd-fwvmMvf-phA" direction="inout"/>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_wmxS0KdREeqtZIky9hZ3mg" name="unpack_data">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_wmxS0adREeqtZIky9hZ3mg" name="ReturnParameter" direction="return">
               <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_v027IExQEd2INdt7Ch5VKg"/>
             </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_wmxS0qdREeqtZIky9hZ3mg" name="data" visibility="public" type="_JSGZkKdREeqtZIky9hZ3mg" effect="create"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_wmxS0qdREeqtZIky9hZ3mg" name="data" visibility="public" type="_v7aD4EDEEeyUycfHkuUNnQ" effect="create"/>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_JSQVIKdSEeqtZIky9hZ3mg" name="datum" type="_j6blMGTXEd-fwvmMvf-phA" direction="inout"/>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_xetncKdREeqtZIky9hZ3mg" name="finalize_unpack">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_xetncadREeqtZIky9hZ3mg" name="ReturnParameter" direction="return">
               <type xmi:type="uml:DataType" href="pathmap://DDS4CCM_LIBRARIES/IDLPrimitives.uml#_Iz6ZsExREd2INdt7Ch5VKg"/>
             </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_xetncqdREeqtZIky9hZ3mg" name="data" visibility="public" type="_JSGZkKdREeqtZIky9hZ3mg" effect="create"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_xetncqdREeqtZIky9hZ3mg" name="data" visibility="public" type="_v7aD4EDEEeyUycfHkuUNnQ" effect="create"/>
           </ownedOperation>
         </packagedElement>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_5t9GkEDFEeyUycfHkuUNnQ" name="data" client="_5t7RYEDFEeyUycfHkuUNnQ" supplier="_jwsj8GTjEd-fwvmMvf-phA"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_5t9toEDFEeyUycfHkuUNnQ" name="data_subscriber" client="_5t7RYEDFEeyUycfHkuUNnQ" supplier="_AaRikGTbEd-fwvmMvf-phA"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_DYvJ0UDGEeyUycfHkuUNnQ" name="data_subscriber" client="_DYtUoEDGEeyUycfHkuUNnQ" supplier="_AaRikGTbEd-fwvmMvf-phA"/>
       </packagedElement>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_jkiX854JEd6xhoJKj1dweA">
@@ -206,6 +221,7 @@
   <dds4ccm:CXModule xmi:id="_GbuUoGRMEd-Wc9hRqhM12g" base_NamedElement="_GbbZsGRMEd-Wc9hRqhM12g" base_Package="_GbbZsGRMEd-Wc9hRqhM12g"/>
   <dds4ccm:CXEnum xmi:id="_G-UZcGROEd-Wc9hRqhM12g" base_NamedElement="_G-OS0GROEd-Wc9hRqhM12g" base_Enumeration="_G-OS0GROEd-Wc9hRqhM12g"/>
   <dds4ccm:CXException xmi:id="_XRXKIGROEd-Wc9hRqhM12g" base_NamedElement="_XRS4sGROEd-Wc9hRqhM12g" base_DataType="_XRS4sGROEd-Wc9hRqhM12g"/>
+  <dds4ccm:CXSequence xmi:id="_TfL4gMFDEeqLc_GGycycag" base_NamedElement="_TfHAAMFDEeqLc_GGycycag" base_DataType="_TfHAAMFDEeqLc_GGycycag"/>
   <dds4ccm:CXField xmi:id="_fMRLMGROEd-Wc9hRqhM12g" base_NamedElement="_fMLEkGROEd-Wc9hRqhM12g" base_Property="_fMLEkGROEd-Wc9hRqhM12g"/>
   <dds4ccm:CXField xmi:id="_h0ubMGROEd-Wc9hRqhM12g" base_NamedElement="_h0pisGROEd-Wc9hRqhM12g" base_Property="_h0pisGROEd-Wc9hRqhM12g"/>
   <dds4ccm:ConnectorDef xmi:id="_nXp8oGRsEd-fwvmMvf-phA" base_Component="_nXLbgGRsEd-fwvmMvf-phA" base_NamedElement="_nXLbgGRsEd-fwvmMvf-phA"/>
@@ -219,7 +235,6 @@
   <dds4ccm:CXInterface xmi:id="_AaV0AGTbEd-fwvmMvf-phA" base_NamedElement="_AaRikGTbEd-fwvmMvf-phA" base_Interface="_AaRikGTbEd-fwvmMvf-phA" isLocal="true"/>
   <dds4ccm:CXOperation xmi:id="_FeecQGTbEd-fwvmMvf-phA" base_NamedElement="_Feax4GTbEd-fwvmMvf-phA" base_Operation="_Feax4GTbEd-fwvmMvf-phA"/>
   <dds4ccm:CXOperation xmi:id="_hMZU0GTbEd-fwvmMvf-phA" base_NamedElement="_hMVDYGTbEd-fwvmMvf-phA" base_Operation="_hMVDYGTbEd-fwvmMvf-phA"/>
-  <dds4ccm:CXAttribute xmi:id="__-_igGTfEd-fwvmMvf-phA" base_NamedElement="__-74IGTfEd-fwvmMvf-phA" setraises="_XRXKIGROEd-Wc9hRqhM12g" base_Property="__-74IGTfEd-fwvmMvf-phA"/>
   <dds4ccm:CXInterface xmi:id="_jww1YGTjEd-fwvmMvf-phA" base_NamedElement="_jwsj8GTjEd-fwvmMvf-phA" base_Interface="_jwsj8GTjEd-fwvmMvf-phA" isLocal="true"/>
   <dds4ccm:CXOperation xmi:id="_m2f3QGTjEd-fwvmMvf-phA" base_NamedElement="_m2cM4GTjEd-fwvmMvf-phA" base_Operation="_m2cM4GTjEd-fwvmMvf-phA"/>
   <dds4ccm:CXOperation xmi:id="_tbKeIGTjEd-fwvmMvf-phA" base_NamedElement="_tbGzwGTjEd-fwvmMvf-phA" base_Operation="_tbGzwGTjEd-fwvmMvf-phA"/>
@@ -243,7 +258,6 @@
   <dds4ccm:CXAttribute xmi:id="_zOPoMKdNEeqtZIky9hZ3mg" base_NamedElement="_zOF3MKdNEeqtZIky9hZ3mg" base_Property="_zOF3MKdNEeqtZIky9hZ3mg"/>
   <dds4ccm:CXAttribute xmi:id="_q_m9YKdOEeqtZIky9hZ3mg" base_NamedElement="_q_awIKdOEeqtZIky9hZ3mg" base_Property="_q_awIKdOEeqtZIky9hZ3mg"/>
   <dds4ccm:CXAttribute xmi:id="_v6sXUKdOEeqtZIky9hZ3mg" base_NamedElement="_v6T80KdOEeqtZIky9hZ3mg" base_Property="_v6T80KdOEeqtZIky9hZ3mg"/>
-  <dds4ccm:CXTypeDef xmi:id="_JSPjgKdREeqtZIky9hZ3mg" base_NamedElement="_JSGZkKdREeqtZIky9hZ3mg" base_DataType="_JSGZkKdREeqtZIky9hZ3mg"/>
   <dds4ccm:CXInterface xmi:id="_WTXQcadREeqtZIky9hZ3mg" base_NamedElement="_WTXQcKdREeqtZIky9hZ3mg" base_Interface="_WTXQcKdREeqtZIky9hZ3mg"/>
   <dds4ccm:CXOperation xmi:id="_af_o8KdREeqtZIky9hZ3mg" base_NamedElement="_af2fAKdREeqtZIky9hZ3mg" base_Operation="_af2fAKdREeqtZIky9hZ3mg"/>
   <dds4ccm:CXParameter xmi:id="_enBvwKdREeqtZIky9hZ3mg" base_NamedElement="_emu00KdREeqtZIky9hZ3mg" base_Parameter="_emu00KdREeqtZIky9hZ3mg"/>
@@ -266,12 +280,11 @@
   <dds4ccm:CXParameter xmi:id="_HDn6YadSEeqtZIky9hZ3mg" base_NamedElement="_HDn6YKdSEeqtZIky9hZ3mg" base_Parameter="_HDn6YKdSEeqtZIky9hZ3mg"/>
   <dds4ccm:CXParameter xmi:id="_JSQVIadSEeqtZIky9hZ3mg" base_NamedElement="_JSQVIKdSEeqtZIky9hZ3mg" base_Parameter="_JSQVIKdSEeqtZIky9hZ3mg"/>
   <dds4ccm:CXAttribute xmi:id="_UtHzoME1EeqQn4ct5lI5nw" base_NamedElement="_Re4WAME1EeqQn4ct5lI5nw" base_Property="_Re4WAME1EeqQn4ct5lI5nw"/>
-  <dds4ccm:CXAttribute xmi:id="_8inIsME6EeqtXptXFYfDbw" base_NamedElement="_8iiQMME6EeqtXptXFYfDbw" base_Property="_8iiQMME6EeqtXptXFYfDbw"/>
-  <dds4ccm:CXAttribute xmi:id="__-2mEME6EeqtXptXFYfDbw" base_NamedElement="__-1X8ME6EeqtXptXFYfDbw" base_Property="__-1X8ME6EeqtXptXFYfDbw"/>
+  <dds4ccm:CXAttribute xmi:id="_8inIsME6EeqtXptXFYfDbw" base_NamedElement="_8iiQMME6EeqtXptXFYfDbw" setraises="_Rk70sEDEEeyUycfHkuUNnQ" base_Property="_8iiQMME6EeqtXptXFYfDbw"/>
+  <dds4ccm:CXAttribute xmi:id="__-2mEME6EeqtXptXFYfDbw" base_NamedElement="__-1X8ME6EeqtXptXFYfDbw" setraises="_Rk70sEDEEeyUycfHkuUNnQ" base_Property="__-1X8ME6EeqtXptXFYfDbw"/>
   <dds4ccm:ConnectorDef xmi:id="_xTNwsME9EeqtXptXFYfDbw" base_Component="_KEZvoGUJEd-RBa5Uit3yBQ" base_NamedElement="_KEZvoGUJEd-RBa5Uit3yBQ"/>
   <dds4ccm:CXAttribute xmi:id="_6FqEcMFCEeqLc_GGycycag" base_NamedElement="_zMYfgMFCEeqLc_GGycycag" base_Property="_zMYfgMFCEeqLc_GGycycag"/>
   <dds4ccm:CXAttribute xmi:id="_HpPlQMFDEeqLc_GGycycag" base_NamedElement="_HpOXIMFDEeqLc_GGycycag" base_Property="_HpOXIMFDEeqLc_GGycycag"/>
-  <dds4ccm:CXSequence xmi:id="_TfL4gMFDEeqLc_GGycycag" base_NamedElement="_TfHAAMFDEeqLc_GGycycag" base_DataType="_TfHAAMFDEeqLc_GGycycag"/>
   <dds4ccm:CXParameter xmi:id="_wiKhYN2QEeqk7qqpN0ZyIw" base_NamedElement="_dZDGYGTYEd-fwvmMvf-phA" base_Parameter="_dZDGYGTYEd-fwvmMvf-phA"/>
   <dds4ccm:CXParameter xmi:id="_wiQoAN2QEeqk7qqpN0ZyIw" base_NamedElement="_sYrucGTYEd-fwvmMvf-phA" base_Parameter="_sYrucGTYEd-fwvmMvf-phA"/>
   <dds4ccm:CXParameter xmi:id="_wiRPEN2QEeqk7qqpN0ZyIw" base_NamedElement="_KYSq4WTbEd-fwvmMvf-phA" base_Parameter="_KYSq4WTbEd-fwvmMvf-phA"/>
@@ -289,4 +302,10 @@
   <dds4ccm:CXParameter xmi:id="_wiWuoN2QEeqk7qqpN0ZyIw" base_NamedElement="_nUhrYadREeqtZIky9hZ3mg" base_Parameter="_nUhrYadREeqtZIky9hZ3mg"/>
   <dds4ccm:CXParameter xmi:id="_wiXVsN2QEeqk7qqpN0ZyIw" base_NamedElement="_wmxS0adREeqtZIky9hZ3mg" base_Parameter="_wmxS0adREeqtZIky9hZ3mg"/>
   <dds4ccm:CXParameter xmi:id="_wiX8wN2QEeqk7qqpN0ZyIw" base_NamedElement="_xetncadREeqtZIky9hZ3mg" base_Parameter="_xetncadREeqtZIky9hZ3mg"/>
+  <dds4ccm:CXException xmi:id="_Rk70sEDEEeyUycfHkuUNnQ" base_NamedElement="_RkiMEEDEEeyUycfHkuUNnQ" base_DataType="_RkiMEEDEEeyUycfHkuUNnQ"/>
+  <dds4ccm:CXException xmi:id="_gQEzcEDEEeyUycfHkuUNnQ" base_NamedElement="_gP7pgEDEEeyUycfHkuUNnQ" base_DataType="_gP7pgEDEEeyUycfHkuUNnQ"/>
+  <dds4ccm:CXInterface xmi:id="_v7imwEDEEeyUycfHkuUNnQ" base_NamedElement="_v7aD4EDEEeyUycfHkuUNnQ" base_Interface="_v7aD4EDEEeyUycfHkuUNnQ" isLocal="true"/>
+  <dds4ccm:CXAttribute xmi:id="_LWA-4EDFEeyUycfHkuUNnQ" base_NamedElement="_LV_JsEDFEeyUycfHkuUNnQ" base_Property="_LV_JsEDFEeyUycfHkuUNnQ"/>
+  <dds4ccm:ExtendedPortType xmi:id="_5t8fgEDFEeyUycfHkuUNnQ" base_Class="_5t7RYEDFEeyUycfHkuUNnQ" base_NamedElement="_5t7RYEDFEeyUycfHkuUNnQ"/>
+  <dds4ccm:ExtendedPortType xmi:id="_DYuiwEDGEeyUycfHkuUNnQ" base_Class="_DYtUoEDGEeyUycfHkuUNnQ" base_NamedElement="_DYtUoEDGEeyUycfHkuUNnQ"/>
 </xmi:XMI>
