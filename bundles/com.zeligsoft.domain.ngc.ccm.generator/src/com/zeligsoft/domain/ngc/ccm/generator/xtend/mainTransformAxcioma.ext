@@ -55,9 +55,9 @@ create List[Specification] mainTransformAxcioma(CXModule self) :
 	this.addAll(self.contents.typeSelect(ModuleInstantiation).mainTransformAxcioma()) ->
 	this.addAll(self.contents.typeSelect(DDSMessage).mainTransformAxcioma()) ->
 	this.add(self.processModule()) ->
-	printIDLSpecs(self.name + " after processModule", this) ->
+//	printIDLSpecs(self.name + " after processModule", this) ->
 	this.addAll(self.nestedPackage().mainTransformAxcioma()) ->
-	printIDLSpecs(self.name + " after nested", this) ->
+//	printIDLSpecs(self.name + " after nested", this) ->
 	this;
 	
 
@@ -71,9 +71,9 @@ create List[Specification] mainTransformAxcioma(CCM::CCM_Core::CCMModel self) :
 	this.addAll(self.packagedElement().typeSelect(ModuleInstantiation).mainTransformAxcioma()) ->
 	this.addAll(self.packagedElement().typeSelect(DDSMessage).mainTransformAxcioma()) ->
 	this.add(self.processModel()) ->
-	printIDLSpecs(self.name + " after processModel", this) ->
+//	printIDLSpecs(self.name + " after processModel", this) ->
 	this.addAll(self.nestedPackage().mainTransformAxcioma()) ->
-	printIDLSpecs(self.name + " after nested", this) ->
+//	printIDLSpecs(self.name + " after nested", this) ->
 	this;
 
 create List[Specification] mainTransformAxcioma(CCM::CCM_Implementation::CCMPart part) :
@@ -89,9 +89,9 @@ create List[Specification] mainTransformAxcioma(uml::Package self) :
 	this.addAll(self.packagedElement().typeSelect(ModuleInstantiation).mainTransformAxcioma()) ->
 	this.addAll(self.packagedElement().typeSelect(DDSMessage).mainTransformAxcioma()) ->
 	this.add(self.processPackage()) ->
-	printIDLSpecs(self.name + " after processPackage", this) ->
+//	printIDLSpecs(self.name + " after processPackage", this) ->
 	this.addAll(self.nestedPackage().mainTransformAxcioma()) ->
-	printIDLSpecs(self.name + " after nested", this) ->
+//	printIDLSpecs(self.name + " after nested", this) ->
 	this;
 	
 List[Specification] mainTransformAxcioma(IDL3Plus::Connectors::ConnectorDefaultValueBinding self ) :
@@ -347,7 +347,7 @@ create Specification processModel(CCM::CCM_Core::CCMModel model) :
 	this;
 
 private Void processContainer(CXModule mod, Specification spec) :
-	let debug = Debug(mod, "Entering processContainer(CXModule mod, Specification spec) \n\tmod.name = " + mod.name + "\n\tspec = " + spec) : 
+//	let debug = Debug(mod, "Entering processContainer(CXModule mod, Specification spec) \n\tmod.name = " + mod.name + "\n\tspec = " + spec) : 
 	mod.eContainer.processContainer(spec) ->
 /*
 	let definitions = mod.packagedElement().visitDefinition() :
@@ -356,44 +356,48 @@ private Void processContainer(CXModule mod, Specification spec) :
 	if definitions != Void && !definitions.isEmpty then mod.processDefnIncludes(spec) ->
 	if definitions != Void && !definitions.isEmpty then spec.definitions.addAll(visit(definitions, mod.eContainer)) ->
 */
-	printIDLSpec(mod.name, spec) ->
-	Debug(null, "Leaving processContainer(CXModule mod, Specification spec) \n\tmod.name = " + mod.name + "\n\tspec = " + spec)
+//	printIDLSpec(mod.name, spec) ->
+//	Debug(null, "Leaving processContainer(CXModule mod, Specification spec) \n\tmod.name = " + mod.name + "\n\tspec = " + spec)
+	{}
 ;
 	
 private Void processContainer(uml::Package pkg, Specification spec) :
-	let debug = Debug(pkg, "Entering processContainer(uml::Package pkg, Specification spec) \n\tpkg.name = " + pkg.name + "\n\tspec = " + spec) : 
+//	let debug = Debug(pkg, "Entering processContainer(uml::Package pkg, Specification spec) \n\tpkg.name = " + pkg.name + "\n\tspec = " + spec) : 
 	let definitions = pkg.packagedElement().visitDefinition() :
-	Debug(definitions, "Definitions in processContainer(uml::Package pkg, Specification spec) \n\tpkg.name = " + pkg.name + "\n\tspec = " + spec + "\n\tdefinitions = " + definitions) ->
-	printIDLSpec(pkg.name + " after visitDefinition", spec) ->
+//	Debug(definitions, "Definitions in processContainer(uml::Package pkg, Specification spec) \n\tpkg.name = " + pkg.name + "\n\tspec = " + spec + "\n\tdefinitions = " + definitions) ->
+//	printIDLSpec(pkg.name + " after visitDefinition", spec) ->
 	spec.getEAnnotations().add(pkg.createFileName()) ->
 	spec.definitions.addAll(pkg.zdlAsPackage().ownedComment.visitComment()) ->
-	printIDLSpec(pkg.name + " after visitComment", spec) ->
+//	printIDLSpec(pkg.name + " after visitComment", spec) ->
 	if definitions != Void && !definitions.isEmpty then pkg.processDefnIncludes(spec) ->
 	if definitions != Void && !definitions.isEmpty then spec.definitions.addAll(visit(definitions, pkg.eContainer)) ->
-	printIDLSpec(pkg.name + " after visit", spec) ->
-	Debug(null, "Leaving processContainer(uml::Package pkg, Specification spec) \n\tpkg.name = " + pkg.name + "\n\tspec = " + spec + "\n\tdefinitions = " + definitions)
+//	printIDLSpec(pkg.name + " after visit", spec) ->
+//	Debug(null, "Leaving processContainer(uml::Package pkg, Specification spec) \n\tpkg.name = " + pkg.name + "\n\tspec = " + spec + "\n\tdefinitions = " + definitions)
+	{}
 ;
 
 private Void processContainer(CCM::CCM_Core::CCMModel pkg, Specification spec) :
-	let debug = Debug(pkg, "Entering processContainer(CCM::CCM_Core::CCMModel pkg, Specification spec) \n\tpkg.name = " + pkg.name + "\n\tspec = " + spec) : 
+//	let debug = Debug(pkg, "Entering processContainer(CCM::CCM_Core::CCMModel pkg, Specification spec) \n\tpkg.name = " + pkg.name + "\n\tspec = " + spec) : 
 	let definitions = pkg.packagedElement().visitDefinition() :
-	Debug(definitions, "Definitions in processContainer(CCM::CCM_Core::CCMModel pkg, Specification spec) \n\tpkg.name = " + pkg.name + "\n\tspec = " + spec + "\n\tdefinitions = " + definitions) ->
-	printIDLSpec(pkg.name + " after visit", spec) ->
+//	Debug(definitions, "Definitions in processContainer(CCM::CCM_Core::CCMModel pkg, Specification spec) \n\tpkg.name = " + pkg.name + "\n\tspec = " + spec + "\n\tdefinitions = " + definitions) ->
+//	printIDLSpec(pkg.name + " after visit", spec) ->
 	spec.getEAnnotations().add(pkg.createFileName()) ->
 	if definitions != Void && !definitions.isEmpty then pkg.processDefnIncludes(spec) ->
 	if definitions != Void && !definitions.isEmpty then spec.definitions.addAll(visit(definitions, pkg.eContainer)) ->
-	printIDLSpec(pkg.name + " after visit", spec) ->
-	Debug(null, "Leaving processContainer(CCM::CCM_Core::CCMModel pkg, Specification spec) \n\tpkg.name = " + pkg.name + "\n\tspec = " + spec + "\n\tdefinitions = " + definitions)
+//	printIDLSpec(pkg.name + " after visit", spec) ->
+//	Debug(null, "Leaving processContainer(CCM::CCM_Core::CCMModel pkg, Specification spec) \n\tpkg.name = " + pkg.name + "\n\tspec = " + spec + "\n\tdefinitions = " + definitions)
+	{}
 ;
 	
 private Void processContainer(emf::EObject container, Specification spec):
-	let debug = Debug(pkg, "processContainer(emf::EObject container, Specification spec) \n\tcontainer.name = " + container.name + "\n\tspec = " + spec) : 
+//	let debug = Debug(pkg, "processContainer(emf::EObject container, Specification spec) \n\tcontainer.name = " + container.name + "\n\tspec = " + spec) : 
 	{};
 	
 private List[idl::Definition] visitDefinition(CXModuleContained self) :
-	let debug = Debug(self, "Entering visitDefinition(CXModuleContained self, ...) self.name = " + self.name) : 
+//	let debug = Debug(self, "Entering visitDefinition(CXModuleContained self, ...) self.name = " + self.name) : 
 	let result = self.visitContained() :
-	Debug(result, "Leaving visitDefinition(CXModuleContained self, ...) self.name = " + self.name + " result = " + result);
+//	Debug(result, "Leaving visitDefinition(CXModuleContained self, ...) self.name = " + self.name + " result = " + result) ->
+	result;
 
 /**
   *
@@ -446,7 +450,7 @@ private List[idl::Definition] visitDefinition(Event self/*, idl::Module mod*/) :
   */
 	
 private List[idl::Definition] visitDefinition(CXModule self/*, Specification spec*/) :
-	let debug = Debug(self, "visitDefinition(CXModule self) self.name = " + self.name + "\t\tself.contents = " + self.contents) :
+//	let debug = Debug(self, "visitDefinition(CXModule self) self.name = " + self.name + "\t\tself.contents = " + self.contents) :
 	let mod = new idl::Module :
 		mod.setName(self.name) ->
 		mod.definitions.addAll(self.contents.visitDefinition()) ->
@@ -461,15 +465,15 @@ private Void visitDefinition(emf::EObject self/*, idl::Module mod*/) :
 
 create Specification mainTransformAxcioma(DDSMessage self) :
 	let idlDDSMessage = self.visitContained() :
-		printIDLSpec("[mt DDSMessage 1] self.name = " + self.name, this) ->
+//		printIDLSpec("[mt DDSMessage 1] self.name = " + self.name, this) ->
 		this.getEAnnotations().add(self.createFileName()) ->
-		printIDLSpec("[mt DDSMessage 2] self.name = " + self.name, this) ->
+//		printIDLSpec("[mt DDSMessage 2] self.name = " + self.name, this) ->
 		self.processIncludes(this) ->
-		printIDLSpec("[mt DDSMessage 3] self.name = " + self.name, this) ->
+//		printIDLSpec("[mt DDSMessage 3] self.name = " + self.name, this) ->
 		this.definitions.add(self.createPragmaNdds()) ->
-		printIDLSpec("[mt DDSMessage 4] self.name = " + self.name, this) ->
+//		printIDLSpec("[mt DDSMessage 4] self.name = " + self.name, this) ->
 		this.definitions.addAll(visit(idlDDSMessage, self.eContainer)) ->
-		printIDLSpec("[mt DDSMessage 5] self.name = " + self.name, this) ->
+//		printIDLSpec("[mt DDSMessage 5] self.name = " + self.name, this) ->
 		this;
 
 
@@ -513,7 +517,7 @@ private List[idl::Definition] visitDefinition(DDSMessage self) :
 	{};
 	
 create StructType visitContained(DDSMessage self) :
-	Debug(this, "Entering StructType visitContained(DDSMessage self) \n\t this = " + this + "\n\t self = " + self) ->
+//	Debug(this, "Entering StructType visitContained(DDSMessage self) \n\t this = " + this + "\n\t self = " + self) ->
 	setName(self.name) ->
 	this.setIsAppendable(false) ->
 	this.setIsFinal(false) ->
@@ -523,11 +527,11 @@ create StructType visitContained(DDSMessage self) :
 	this.getEAnnotations().add(self.createDDSAnnotation()) -> //.copy()) ->
 	this.comments.addAll(self.zdlAsPackage().ownedComment.visitComment()) -> //.copyAll()) ->
 	members.addAll(self.fields.visitStructAttribute()) ->
-	printStructType(0, "[vc DDSMessage] self.name = " + self.name, this) ->
+//	printStructType(0, "[vc DDSMessage] self.name = " + self.name, this) ->
 	this;	
 
 create ecore::EAnnotation createDDSAnnotation(DDSMessage self) :
-	let debug = Debug(this, "Entering ecore::EAnnotation createDDSAnnotation(DDSMessage self) \n\tthis = " + this + "\n\tself = " + self) :
+//	let debug = Debug(this, "Entering ecore::EAnnotation createDDSAnnotation(DDSMessage self) \n\tthis = " + this + "\n\tself = " + self) :
 	let detail = new ecore::EStringToStringMapEntry :
 	this.setSource("zcx") ->
 	this.details.add(createDetail("toplevel", "true"));
@@ -623,9 +627,9 @@ idl::Definition visit(List[Definition] self, CXModule container) :
 	let idlModule = new idl::Module :
 		idlModule.setName(container.name) ->
 		idlModule.definitions.addAll(self) -> //.copyAll()) ->
-		printModule(4, "visit(1) after addAll(self)", idlModule) ->
+//		printModule(4, "visit(1) after addAll(self)", idlModule) ->
 		idlModule.comments.addAll(container.zdlAsPackage().ownedComment.visitComment()) -> //.copyAll()) ->
-		if self.isEmpty then {} else printModuleAndReturn(4, "visit(1) end", idlModule, visit(idlModule, container.eContainer))
+		if self.isEmpty then {} else visit(idlModule, container.eContainer) //printModuleAndReturn(4, "visit(1) end", idlModule, visit(idlModule, container.eContainer))
 		;
 		
 idl::Definition visit(List[Definition] self, uml::Package container) :
@@ -641,9 +645,10 @@ idl::Definition visit(Definition self, CXModule container) :
 	let idlModule = new idl::Module :
 		idlModule.setName(container.name) ->
 		idlModule.definitions.add(self) -> //.copy()) ->
-		printModule(4, "visit(2) after addAll(self)", idlModule) ->
+//		printModule(4, "visit(2) after addAll(self)", idlModule) ->
 		idlModule.comments.addAll(container.zdlAsPackage().ownedComment.visitComment()) -> //.copyAll()) ->
-		printModuleAndReturn(4, "visit(2) end", idlModule, visit(idlModule, container.eContainer))
+//		printModuleAndReturn(4, "visit(2) end", idlModule, visit(idlModule, container.eContainer))
+		visit(idlModule, container.eContainer)
 		;
 
 idl::Definition visit(Definition self, uml::Package container) :
