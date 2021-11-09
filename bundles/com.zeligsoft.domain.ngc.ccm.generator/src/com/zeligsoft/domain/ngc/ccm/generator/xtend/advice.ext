@@ -19,6 +19,19 @@ import idl;
 
 extension com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform;
 extension com::zeligsoft::domain::idl3plus::generator::xtend::annotations;
+extension codegen::debug;
+
+around com::zeligsoft::domain::ngc::ccm::generator::xtend::mainTransformAx*::*(*) :
+	let dummy = Debug(null, 'Invoking(0) ' + ctx.name + '\n\tparam types = ' + ctx.paramTypes + '\n\tparam names = ' + ctx.paramNames + '\n\tparam values = ' + ctx.paramValues) : 
+	let result = ctx.proceed():
+		Debug(result, 'Returning(0) from '  + ctx.name + '\n\tparam types = ' + ctx.paramTypes + '\n\tparam names = ' + ctx.paramNames + '\n\tparam values = ' + ctx.paramValues + '\n\tresult = ' + result)
+;
+
+around com::zeligsoft::domain::idl3plus::generator::xtend::idl3PlusTransform::*(*) :
+	let dummy = Debug(null, 'Invoking(1) ' + ctx.name + '\n\tparam types = ' + ctx.paramTypes + '\n\tparam names = ' + ctx.paramNames + '\n\tparam values = ' + ctx.paramValues) : 
+	let result = ctx.proceed():
+		Debug(result, 'Returning(1) from '  + ctx.name + '\n\tparam types = ' + ctx.paramTypes + '\n\tparam names = ' + ctx.paramNames + '\n\tparam values = ' + ctx.paramValues + '\n\tresult = ' + result)
+;
 
 around com::zeligsoft::domain::omg::corba::codegen::xtend::mainTransform::visitStructAttribute(CXField p) :
     createMember(p);

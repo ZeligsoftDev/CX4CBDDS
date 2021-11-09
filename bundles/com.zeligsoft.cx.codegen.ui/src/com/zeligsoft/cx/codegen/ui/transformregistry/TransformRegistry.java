@@ -22,6 +22,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
@@ -48,6 +49,8 @@ public class TransformRegistry {
 	 * Map of fully qualified ZDLConcept name to a List of WorkflowEntry
 	 */
 	private static HashMap<String, List<WorkflowEntry>> transformsmap = null;
+	
+	private static Map<URL, List<WorkflowEntry>> workflowURLToEntryMap = null;
 	
 	/**
 	 * List of vetoed (overridden) IDs.
@@ -78,6 +81,12 @@ public class TransformRegistry {
 	
 	private static final String EXT_ENTRY_VISIBILITY_TEST = "visibilityTest"; //$NON-NLS-1$ 	
 	
+	private static final String EXT_FILEEXT_ROOT_NODE_NAME = "transformationFileExtensions"; //$NON-NLS-1$
+
+	private static final String EXT_FILEEXT_WORKFLOW_PATH = "workflowPath"; //$NON-NLS-1$
+
+	private static final String EXT_FILEEXT_FILE_EXTENSIONS = "fileExtensions"; //$NON-NLS-1$
+
 	/**
 	 * The singleton instance of the TransformRegistry
 	 */
@@ -90,13 +99,15 @@ public class TransformRegistry {
 	private static HashMap<String, List<WorkflowEntry>> getTransformMap() {
 		if (transformsmap == null) {
 			transformsmap = new HashMap<String, List<WorkflowEntry>>();
-			TransformRegistry.INSTANCE.loadRegistry();
+			workflowURLToEntryMap = new HashMap<URL, List<WorkflowEntry>>();
+			TransformRegistry.INSTANCE.readTransformationExtensions();
+			TransformRegistry.INSTANCE.readFileExtExtensions();
 		}
 		return transformsmap;
 	}
 
 	@SuppressWarnings("unused")
-	private void loadRegistry() {
+	private void readTransformationExtensions() {
 		IExtension[] extensions = Platform.getExtensionRegistry()
 			.getExtensionPoint(PLUG_IN_CODEGEN_NAME, EXT_ROOT_NODE_NAME)
 			.getExtensions();
@@ -200,12 +211,18 @@ public class TransformRegistry {
 										(Messages.TransformRegistry_InvalidWorkflowValidationFactory, e);
 								}
 							}
-							
-	
 		
 							WorkflowEntry.DiagnosticInfo dInfo = new WorkflowEntry.DiagnosticInfo(bundle);
 							WorkflowEntry info = new WorkflowEntry(url, displayLabel, factory, cancelOnError, dInfo, id, visibilityFilter);
-		
+							
+							if (workflowURLToEntryMap.containsKey(url)) {
+								workflowURLToEntryMap.get(url).add(info);
+							} else {
+								List<WorkflowEntry> workflowsForURL = new ArrayList<>();
+								workflowsForURL.add(info);
+								workflowURLToEntryMap.put(url, workflowsForURL);
+							}
+							
 							if (TransformRegistry.getTransformMap()
 								.containsKey(concept) == false) {
 								// this is a new entry in the hash map
@@ -227,6 +244,50 @@ public class TransformRegistry {
 		}
 	}
 	
+	private void readFileExtExtensions() {
+		IExtension[] extensions = Platform.getExtensionRegistry()
+				.getExtensionPoint(PLUG_IN_CODEGEN_NAME, EXT_FILEEXT_ROOT_NODE_NAME).getExtensions();
+
+		for (IExtension extension : extensions) {
+			IConfigurationElement[] configElements = extension.getConfigurationElements();
+			for (IConfigurationElement configElement : configElements) {
+				String workflowPath = configElement.getAttribute(EXT_FILEEXT_WORKFLOW_PATH);
+				String fileExtensions = configElement.getAttribute(EXT_FILEEXT_FILE_EXTENSIONS);
+				String pluginId = configElement.getDeclaringExtension().getNamespaceIdentifier();
+				Bundle bundle = Platform.getBundle(pluginId);
+				URL url = bundle.getEntry(workflowPath);
+				if (url == null) {
+					try {
+						url = new URL(workflowPath);
+					} catch (MalformedURLException e) {
+						CodeGenUIPlugin.getDefault().error(Messages.TransformRegistry_InvalidWorkflowPathLog, e);
+					}
+				}
+				if (url == null) {
+					// do not add entries without a URL
+					continue;
+				}
+
+				List<WorkflowEntry> entries = workflowURLToEntryMap.get(url);
+				if (entries != null) {
+					for (WorkflowEntry entry : entries) {
+						if (entry != null) {
+							List<String> fileExtList = new ArrayList<>();
+							String[] fileExts = fileExtensions.trim().split(" *, *"); //$NON-NLS-1$
+							for (String fileExt : fileExts) {
+								if (fileExt.startsWith(".")) { //$NON-NLS-1$
+									fileExt = fileExt.substring(1); //$NON-NLS-1$
+								}
+								fileExtList.add(fileExt);
+							}
+							entry.setFileExtensions(fileExtList);
+						}
+					}
+				}
+			}
+		}
+	}
+
 	/**
 	 * Returns the relates workflow urls applicable to the given concept.
 	 * 
@@ -239,4 +300,5 @@ public class TransformRegistry {
 		return result == null ? new ArrayList<WorkflowEntry>() : result;
 
 	}
+	
 }

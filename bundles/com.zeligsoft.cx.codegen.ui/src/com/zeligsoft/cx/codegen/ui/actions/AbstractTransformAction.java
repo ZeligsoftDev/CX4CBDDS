@@ -17,17 +17,18 @@
 package com.zeligsoft.cx.codegen.ui.actions;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -36,6 +37,8 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
+import org.eclipse.core.runtime.jobs.IJobManager;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -44,155 +47,241 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.uml2.uml.NamedElement;
 
-import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.util.WorkflowUtil;
 import com.zeligsoft.cx.build.factory.ProjectFactory;
 import com.zeligsoft.cx.codegen.CodeGenWorkflowConstants;
 import com.zeligsoft.cx.codegen.ui.CodeGenUIPlugin;
+import com.zeligsoft.cx.codegen.ui.actions.AbstractTransformAction.TransformJob;
 import com.zeligsoft.cx.codegen.ui.filecollector.FileCollector;
+import com.zeligsoft.cx.codegen.ui.filecollector.FileCollector.FileCollectionException;
 import com.zeligsoft.cx.codegen.ui.l10n.Messages;
 import com.zeligsoft.cx.codegen.ui.transformregistry.WorkflowEntry;
 
 public abstract class AbstractTransformAction extends Action {
 	
+	class TransformJob extends WorkspaceJob {
+		
+		private final WorkflowEntry workflowEntry;
+		private IProject project;
+
+		TransformJob(String name, WorkflowEntry workflowEntry) {
+			super(name);
+			this.workflowEntry = workflowEntry;
+		}
+		
+		public WorkflowEntry getWorkflowEntry() {
+			return workflowEntry;
+		}
+		
+		@Override
+		public IStatus runInWorkspace(IProgressMonitor monitor) {
+
+			MultiStatus resultStatus = new MultiStatus(
+				CodeGenUIPlugin.PLUGIN_ID, 0, NLS.bind(
+					Messages.GenerateJob_ResultMessage, null), null);
+			boolean abortTransformJob = false;
+
+			project = ProjectFactory.getProject(element, monitor,
+					ProjectFactory.MODE_CREATE_BASIC);
+
+			Map<String, String> genProperties = createGenProperties();
+
+			Map<String, Object> externalSlotContents = createExternalSlotContents(monitor);
+
+			if (project != null) {
+				try {
+					if (workflowEntry.getValidationFactory() != null) {
+						abortTransformJob = validateElement(workflowEntry, abortTransformJob, monitor, resultStatus);
+					}
+					
+					if (!abortTransformJob) {
+						IStatus status = WorkflowUtil.executeWorkflow(
+							workflowEntry.getWorkflowURL(), monitor, genProperties,
+							externalSlotContents);
+						createResultStatus(resultStatus, workflowEntry, status);
+					}
+				} finally {
+					FileCollector.refreshWorkspace(project, monitor);
+				}
+			}
+
+			return resultStatus;
+		}
+
+		/**
+		 * @return A Map<String, String> - The genProperties map to pass to the workflow.
+		 */
+		private Map<String, String> createGenProperties() {
+			Map<String, String> genProperties = new HashMap<String, String>();
+
+			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+			String location = root.getLocation().toOSString();
+			genProperties.put(CodeGenWorkflowConstants.PLATFORM_URI, location);
+
+			Resource res = element.eResource();
+			genProperties.put(CodeGenWorkflowConstants.MODEL_URI_STRING, res
+				.getURI().toString());
+
+			// where we want to look for a build environment
+			if (element instanceof NamedElement) {
+				genProperties.put(CodeGenWorkflowConstants.BUILD_ELEMENT,
+					((NamedElement) element).getQualifiedName());
+			}
+			
+			if (project != null) {
+				// save the project name
+				genProperties.put(CodeGenWorkflowConstants.GENERATED_PROJECT,
+					project.getName());
+	
+				String srcGen = project.getLocation().makeAbsolute()
+					.toOSString();
+				genProperties.put(CodeGenWorkflowConstants.SRC_GEN, srcGen);
+			}
+
+			return genProperties;
+		}
+
+		/**
+		 * @param monitor - and {@link IProgressMonitor}
+		 * @return A Map<String, Object> - the externalSlotContents map to pass to the workflow.
+		 */
+		private Map<String, Object> createExternalSlotContents(IProgressMonitor monitor) {
+			HashMap<String, Object> externalSlotContents = new HashMap<String, Object>();
+			externalSlotContents.put( CodeGenWorkflowConstants.ELEMENT_STRING, element );
+			externalSlotContents.put( CodeGenWorkflowConstants.PROGRESS_MONITOR, monitor );
+			return externalSlotContents;
+		}
+
+		/**
+		 * @param entry
+		 * @param abortTransform
+		 * @param monitor
+		 * @param resultStatus
+		 * @return
+		 * @throws OperationCanceledException
+		 */
+		private boolean validateElement(WorkflowEntry entry, boolean abortTransform, IProgressMonitor monitor,
+				MultiStatus resultStatus) throws OperationCanceledException {
+			IBatchValidator validator = entry.getValidationFactory().createValidator();
+			IStatus result = validator.validate(element, monitor);
+			if (result.getSeverity() == IStatus.CANCEL){
+				//we've cancelled the operation, skip the codegen workflow, pass along the OperationCanceledException
+				throw new OperationCanceledException();
+			} else if( result.getSeverity() == IStatus.ERROR ) {
+				if( entry.doesValidationErrorCancel() ) {
+					createResultStatus(resultStatus, entry, result);
+					abortTransform = true;
+				}
+			}
+			return abortTransform;
+		}
+	}
+
+	class TransformJobFinishListener extends JobChangeAdapter {
+		
+		private final TransformJob currentJob;
+		private final TransformJob nextJob;
+		private final IProject project;
+
+		private TransformJobFinishListener(TransformJob currentJob, TransformJob nextJob, IProject project) {
+			this.currentJob = currentJob;
+			this.nextJob = nextJob;
+			this.project = project;
+		}
+
+		@Override
+		public void done(IJobChangeEvent event) {
+			// When the job is done, we stop collecting files
+			fileCollector.end();
+			System.out.println("Files changed by " + currentJob.getWorkflowEntry().getDisplayLabel() + ": " + fileCollector.getFileCollection().getFilesChanged().toString());
+			// Add and report the results
+			workflowResultReporter.addResult(new WorkflowResult(currentJob.getWorkflowEntry(), element, project, event.getResult(), fileCollector.getFileCollection()));
+			workflowResultReporter.reportAll();
+			// If there is a next job, start it.
+			if (nextJob != null) {
+				beginTransformJob(nextJob);
+			}
+		}
+	}
+
+
 	protected List<WorkflowEntry> workflows = null;
 
 	protected EObject element = null;
 	
+	protected FileCollector fileCollector = new FileCollector();
+	
+	protected WorkflowResultReporter workflowResultReporter = new WorkflowResultConsoleReporter();
+
 	/**
 	 * Create an Eclipse Job to run the specified workflows.
 	 */
 	protected void doTransform() {
-		WorkspaceJob transformJob
-			= new WorkspaceJob(
-					workflows.size() == 1
-						? Messages.GenerateJob_RunOne
-						: Messages.GenerateJob_RunNonOne )
-		{
-			@Override
-			public IStatus runInWorkspace(IProgressMonitor monitor) {
-
-				MultiStatus resultStatus = new MultiStatus(
-					CodeGenUIPlugin.PLUGIN_ID, 0, NLS.bind(
-						Messages.GenerateJob_ResultMessage, null), null);
-				boolean b_abort = false;
-
-				Map<String, String> genProperties = new HashMap<String, String>();
-
-				IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-				String location = root.getLocation().toOSString();
-				genProperties.put(CodeGenWorkflowConstants.PLATFORM_URI, location);
-
-				Resource res = element.eResource();
-				genProperties.put(CodeGenWorkflowConstants.MODEL_URI_STRING, res
-					.getURI().toString());
-
-				// where we want to look for a build environment
-				if (element instanceof NamedElement) {
-					genProperties.put(CodeGenWorkflowConstants.BUILD_ELEMENT,
-						((NamedElement) element).getQualifiedName());
-				}
-
-				HashMap<String, Object> externalSlotContents = new HashMap<String, Object>();
-				externalSlotContents.put( CodeGenWorkflowConstants.ELEMENT_STRING, element );
-				externalSlotContents.put( CodeGenWorkflowConstants.PROGRESS_MONITOR, monitor );
-
-				IProject project = ProjectFactory.getProject(element, monitor,
-					ProjectFactory.MODE_CREATE_BASIC);
-				if (project != null) {
-
-					// save the project name
-					genProperties.put(CodeGenWorkflowConstants.GENERATED_PROJECT,
-						project.getName());
-
-					String srcGen = project.getLocation().makeAbsolute()
-						.toOSString();
-					genProperties.put(CodeGenWorkflowConstants.SRC_GEN, srcGen);
-
-					try {
-						Iterator<WorkflowEntry> i = workflows.iterator();
-						while (i.hasNext()) {
-							
-							WorkflowEntry entry = i.next();
-
-							if( entry.getValidationFactory() != null )
-							{
-								IBatchValidator validator = entry.getValidationFactory().createValidator();
-								//rc.add( validator.validate( this.selectedElement, monitor ) );
-								//if(PlatformUI.isWorkbenchRunning()){
-									IStatus result = validator.validate(element, monitor);
-									if (result.getSeverity() == IStatus.CANCEL){
-										//we've cancelled the operation, skip the codegen workflow, pass along the OperationCanceledException
-										throw new OperationCanceledException();
-									} else if( result.getSeverity() == IStatus.ERROR ) {
-										if( entry.doesValidationErrorCancel() ) {
-											createResultStatus(resultStatus, entry, result);
-											b_abort = true;
-										}
-									}
-								//}
-							}
-							
-							if( !b_abort ) {
-								IStatus result = WorkflowUtil.executeWorkflow(
-									entry.getWorkflowURL(), monitor, genProperties,
-									externalSlotContents);
-								refreshWorkspace(project, monitor);
-								createResultStatus(resultStatus, entry, result);
-								writeResultToConsole(entry, result);
-							}
-						}
-					} finally {
-						refreshWorkspace(project, monitor);
-					}
-				}
-
-				// codegen has just completed, mark everything clean
-//				CodeGenerationDirtyElementTable.getInstance().clearTableForResource(res);
-
-				return resultStatus;
-			}
-
-			private void refreshWorkspace(IProject project, IProgressMonitor monitor) {
-				try {
-					project.refreshLocal(IResource.DEPTH_INFINITE,
-						monitor);
-				} catch (CoreException e) {
-					CodeGenUIPlugin
-						.getDefault()
-						.error(
-							Messages.TransformAction_ProjectRefreshFailedLog,
-							e);
-				}
-			}
-
-		};
-
 		IProject project = ProjectFactory.getProject(getEObject(), null,
 				ProjectFactory.MODE_NO_CREATE);
-		FileCollector fileCollector = new FileCollector(project);
-		fileCollector.begin();
-
-		transformJob.setUser(true);
-		transformJob.schedule();
-		transformJob.addJobChangeListener(new JobChangeAdapter() {
-			@Override
-			public void done(IJobChangeEvent event) {
-				fileCollector.end();
-				fileCollector.report();
-			}
-		});
-		try{
-			joinThread(transformJob);
-		} catch (InterruptedException e) {
-			CodeGenUIPlugin
-			.getDefault()
-			.error(
-				Messages.TransformAction_ThreadJoinFailedLog,
-				e);
+		fileCollector.setProject(project);
+		TransformJob[] jobs = new TransformJob[workflows.size() + 1];
+		int i = 0;
+		for (WorkflowEntry workflowEntry : workflows) {
+			TransformJob transformJob
+				= new TransformJob(NLS.bind(Messages.TransformAction_TransformJobName, workflowEntry.getDisplayLabel()), workflowEntry);
+			transformJob.setUser(true);
+			// We set the scheduling rule of the job to be the project to ensure that the project is locked.
+			// This is essential, since the workflows will all produce resourceChange events on the same
+			// project, so the notifications would go to all ResourceChangeListeners rather than the one
+			// for the specific workflow.
+			//   Note that this loops schedules all jobs, and therefore they may run concurrently, which
+			// means that each of them may trigger resourceChange notifications, and therefore these notifications
+			// might be delivered to all ResourceChangeListeners, but by setting this rule, any requests by
+			// other threads (including other jobs) to modify the project will be blocked until the job
+			// finishes, so the first job generating a resourceChange will block others until it finishes.
+			transformJob.setRule(project); 
+			jobs[i] = transformJob;
+			i++;
 		}
+		jobs[workflows.size()] = null;
+		// Rather than schedule all jobs simultaneously, we chain them, ensuring that a job is scheduled only
+		// when the previous job has finished (see {@link TransformJobFinishListener}), that way we can be sure
+		// that the file collector will be notified by the changes of only the currently running job.
+		for (int j = 0; j < jobs.length - 1; j++) {
+			TransformJob job = jobs[j];
+			TransformJob nextJob = jobs[j + 1];
+			job.addJobChangeListener(new TransformJobFinishListener(job, nextJob, project));
+		}
+		beginTransformJob(jobs[0]);
 	}
 	
+	/**
+	 * Starts file collection and then schedules the given transformation job.
+	 */
+	private void beginTransformJob(TransformJob nextJob) {
+		workflowResultReporter.reset();
+		try {
+			fileCollector.setFilter(new Predicate<IFile>() {
+				@Override
+				public boolean test(IFile file) {
+					Collection<String> extensions = nextJob.getWorkflowEntry().getFileExtensions();
+					if (extensions != null) {
+						return extensions.contains(file.getFileExtension());
+
+					}
+					return false;
+				}
+			});
+			fileCollector.begin();
+			nextJob.schedule();
+			joinThread(nextJob);
+		} catch (FileCollectionException e) {
+			// It is impossible to get here because the fileCollector's project is set
+			// before we begin collecting.
+			// But if more exceptions are added to the FileCollector, we should catch them
+			// here.
+			CodeGenUIPlugin.getDefault().error(Messages.AbstractTransformAction_NullProject, e);
+		} catch (InterruptedException e) {
+			CodeGenUIPlugin.getDefault().error(Messages.TransformAction_ThreadJoinFailedLog, e);
+		}
+	}
+
 	protected Status createStatus(int severity, String msg) {
 	    Status status = new Status(severity, CodeGenUIPlugin.PLUGIN_ID, IStatus.OK, msg, null);
 	    return status;
@@ -248,22 +337,6 @@ public abstract class AbstractTransformAction extends Action {
 		resultStatus.add(result);
 		ILog logger = Platform.getLog(entry.getDiagnosticInfo().getBundle());
 		logger.log(resultStatus);
-	}
-
-	private void writeResultToConsole(WorkflowEntry entry, IStatus result) {
-		StringBuffer buffer = new StringBuffer();
-		buffer.append(NLS.bind(Messages.GenerateMessage_0, entry.getDisplayLabel()));
-		buffer.append(System.lineSeparator());
-		buffer.append(NLS.bind(Messages.GenerateMessage_1, element.eResource().getURI().toString()));
-		buffer.append(System.lineSeparator());
-		buffer.append(System.lineSeparator());
-		if (result.isOK()) {
-			buffer.append(Messages.GenerateMessage_2);
-		} else {
-			buffer.append(Messages.GenerateMessage_3);
-		}
-		buffer.append(System.lineSeparator());
-		BaseUIUtil.writeToConsole(buffer.toString());
 	}
 
 }

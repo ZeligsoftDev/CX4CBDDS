@@ -81,13 +81,15 @@ public class Messages
 	public static String GenerateJob_RunNonOne;
 	public static String GenerateJob_ResultMessage;
 	
-	public static String GenerateMessage_0;
-	public static String GenerateMessage_1;
-	public static String GenerateMessage_2;
-	public static String GenerateMessage_3;
-
-	public static String TransformAction_ProjectRefreshFailedLog;
+	public static String WorkflowResult_Name;
+	public static String WorkflowResult_ModelURI;
+	public static String WorkflowResult_Success;
+	public static String WorkflowResult_Failure;
 	
+	public static String AbstractTransformAction_NullProject;
+
+	public static String TransformAction_TransformJobName;
+
 	public static String TransformAction_ThreadJoinFailedLog;
 	
 	public static String TransformRegistry_InvalidWorkflowPathLog;
@@ -118,6 +120,9 @@ public class Messages
 	public static String CXCodegenReportPreferencePage_Cancelling;
 	public static String CXCodegenReportPreferencePage_ErrorSaving;
 
+	public static String FileCollector_ProjectRefresh;
+	public static String FileCollector_ProjectRefreshFailed;
+	public static String FileCollector_ProjectRefreshFailed_NullProject;
 	public static String FileCollector_NullProject;
 	public static String FileCollector_CoreException;
 	public static String FileCollector_ResourceListener_CoreException;
@@ -130,6 +135,10 @@ public class Messages
 	public static String FileCollector_FilesChangedTitleMessage;
 	public static String FileCollector_FilesRemovedTitleMessage;
 	public static String FileCollector_FilesUnchangedTitleMessage;
+	public static String FileCollector_EnablingAutoRefresh;
+	public static String FileCollector_DisablingAutoRefresh;
+	public static String FileCollector_SavingAutoRefreshPreference;
+	public static String FileCollector_RestoringAutoRefreshPreference;
 
 	static {
 		// initialize resource bundle

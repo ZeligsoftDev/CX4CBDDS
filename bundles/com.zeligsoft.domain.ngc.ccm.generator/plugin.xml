@@ -146,4 +146,11 @@
          </workflow>
       </concept>
     </extension>
+   <extension
+         point="com.zeligsoft.cx.codegen.ui.transformationFileExtensions">
+      <WorkflowFileExtension
+            fileExtensions=".idl, .xml"
+            workflowPath="/workflow/ngc_idl.oaw">
+      </WorkflowFileExtension>
+   </extension>
 </plugin>

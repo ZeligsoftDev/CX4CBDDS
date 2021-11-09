@@ -22,5 +22,20 @@
          </workflow>
       </concept>
    </extension>
+   <extension
+         point="com.zeligsoft.cx.codegen.ui.transformationFileExtensions">
+      <WorkflowFileExtension
+            fileExtensions=".cdp, .cdd"
+            workflowPath="/workflow/ngcgenerator.mwe">
+      </WorkflowFileExtension>
+      <WorkflowFileExtension
+            fileExtensions=".cdp, .cdd"
+            workflowPath="/workflow/bulkDescriptorsGenerator.oaw">
+      </WorkflowFileExtension>
+      <WorkflowFileExtension
+            fileExtensions=".cdp, .cdd"
+            workflowPath="/workflow/ngcgeneratorNoPostGeneration.mwe">
+      </WorkflowFileExtension>
+   </extension>
 </plugin>
 

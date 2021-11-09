@@ -17,6 +17,7 @@
 package com.zeligsoft.cx.codegen.ui.transformregistry;
 
 import java.net.URL;
+import java.util.Collection;
 
 import org.eclipse.jface.viewers.IFilter;
 import org.osgi.framework.Bundle;
@@ -43,6 +44,8 @@ public class WorkflowEntry {
 	private boolean b_validationErrorCancels;
 	
 	private IFilter visibilityTest;
+	
+	private Collection<String> fileExtensions;
 	
 	public static class DiagnosticInfo {
 		private String bundleVendor;
@@ -93,12 +96,14 @@ public class WorkflowEntry {
 
 	/**
 	 * Creates an instance of me.
-	 * 
-	 * @param workflowURL
-	 * @param displayLabel
 	 */
 	WorkflowEntry(URL workflowURL, String displayLabel, IValidationFactory factory, boolean b_validationErrorCancels, 
 			DiagnosticInfo info, String id, IFilter visibilityTest) {
+		this(workflowURL, displayLabel, factory, b_validationErrorCancels, info, id, visibilityTest, null);
+	}
+
+	WorkflowEntry(URL workflowURL, String displayLabel, IValidationFactory factory, boolean b_validationErrorCancels, 
+			DiagnosticInfo info, String id, IFilter visibilityTest, Collection<String> fileExtensions) {
 		this.workflowURL = workflowURL;
 		this.displayLabel = displayLabel;
 		this.factory = factory;
@@ -106,6 +111,7 @@ public class WorkflowEntry {
 		this.info = info;
 		this.id = id;
 		this.visibilityTest = visibilityTest;
+		this.fileExtensions = fileExtensions;
 	}
 
 	/**
@@ -155,6 +161,14 @@ public class WorkflowEntry {
 	 */
 	public IFilter getVisibilityTest() {
 		return visibilityTest;
+	}
+	
+	public void setFileExtensions(Collection<String> fileExtensions) {
+		this.fileExtensions = fileExtensions;
+	}
+	
+	public Collection<String> getFileExtensions() {
+		return fileExtensions;
 	}
 	
 }

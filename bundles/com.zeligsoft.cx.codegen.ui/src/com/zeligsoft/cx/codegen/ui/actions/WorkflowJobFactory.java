@@ -23,10 +23,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
@@ -43,6 +41,7 @@ import com.zeligsoft.base.util.WorkflowUtil;
 import com.zeligsoft.cx.build.factory.ProjectFactory;
 import com.zeligsoft.cx.codegen.CodeGenWorkflowConstants;
 import com.zeligsoft.cx.codegen.ui.CodeGenUIPlugin;
+import com.zeligsoft.cx.codegen.ui.filecollector.FileCollector;
 import com.zeligsoft.cx.codegen.ui.l10n.Messages;
 import com.zeligsoft.cx.codegen.ui.transformregistry.WorkflowEntry;
 
@@ -222,15 +221,7 @@ public class WorkflowJobFactory {
 							}
 						}
 					} finally {
-						try {
-							project.refreshLocal(IResource.DEPTH_INFINITE,
-									monitor);
-						} catch (CoreException e) {
-							CodeGenUIPlugin
-									.getDefault()
-									.error(Messages.TransformAction_ProjectRefreshFailedLog,
-											e);
-						}
+						FileCollector.refreshWorkspace(project, monitor);
 					}
 				}
 
