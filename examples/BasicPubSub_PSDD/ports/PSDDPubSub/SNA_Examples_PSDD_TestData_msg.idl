@@ -1,7 +1,7 @@
 //==============================================================================
 //                         U N C L A S S I F I E D
 //==============================================================================
-// Copyright (c) Northrop Grumman Corporation 2008-2020 -- ALL RIGHTS RESERVED
+// Copyright (c) Northrop Grumman Corporation 2020 -- ALL RIGHTS RESERVED
 //==============================================================================
 //
 //==============================================================================
@@ -17,47 +17,50 @@
 // obtaining approval from the U.S. government or as otherwise authorized by 
 // U.S. law and regulations. 
 //==============================================================================
-/// @defgroup SNA_Examples_defn defn
+/// @defgroup SNA_Examples_PSDD_TestData_msg TestData_msg
 /// @{
 /// 
-/// @file SNA_Examples_defn.idl
-/// @brief defn definitions definition IDL file
+/// @file SNA_Examples_PSDD_TestData_msg.idl
+/// @brief TestData_msg message definition IDL file
 
 //=========================================================
 
-#ifndef CX_PORTS__BASICPUBSUB__SNA_EXAMPLES_DEFN_IDL
-#define CX_PORTS__BASICPUBSUB__SNA_EXAMPLES_DEFN_IDL
+#ifndef CX_PORTS__PSDDPUBSUB__SNA_EXAMPLES_PSDD_TESTDATA_MSG_IDL
+#define CX_PORTS__PSDDPUBSUB__SNA_EXAMPLES_PSDD_TESTDATA_MSG_IDL
 
+#include "SNA_Examples_PSDD_defn.idl"
+#pragma ndds typesupport "SNA_Examples_PSDD_TestData_msgSupport.h"
 
-/// @brief SNA_Examples 
-module SNA_Examples {
+/// @brief SNA_Examples_PSDD 
+module SNA_Examples_PSDD {
 
-    /// @enum State
+    /// @struct TestData_msg
     ///
-    /// Example enumeration of states.
-    enum State {
-        STATE_PASS,
-        STATE_FAIL
-    };
+    ///  Example DDS message structure for the PSDDPubSub example.
+    @final
+    struct TestData_msg {
 
-    /// @enum Color
-    ///
-    /// Example enumeration of colors.
-    enum Color {
-        COLOR_RED,
-        COLOR_GREEN,
-        COLOR_BLUE
-    };
+        /// 32-bit integer.
+        unsigned long myInt32;
 
-    /// @typedef BoundedString
-    ///
-    /// Bounded string of size 511 ASCII characters plus a NULL terminator.
-    /// Bounded strings must have typedef before use in a struct. The default
-    /// length of a string is 255 characters plus a terminator.
-    typedef string<512> BoundedString;
+        /// 64-bit integer.
+        unsigned long long myInt64;
+
+        /// Double-precision floating point number.
+        double myDouble;
+
+        /// Bounded ASCII string
+        SNA_Examples_PSDD::BoundedString myString;
+
+        /// Example enumeration
+        SNA_Examples_PSDD::PSDD_State myState;
+
+        /// Example enumeration
+        SNA_Examples_PSDD::PSDD_Color myColor;
+    }; //@top-level true
 };
 
-#endif // CX_PORTS__BASICPUBSUB__SNA_EXAMPLES_DEFN_IDL
+#endif // CX_PORTS__PSDDPUBSUB__SNA_EXAMPLES_PSDD_TESTDATA_MSG_IDL
 
 /// @}
 //==============================================================================
