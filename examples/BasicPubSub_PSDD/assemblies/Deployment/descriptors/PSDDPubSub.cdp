@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:DeploymentPlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
+    xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>PSDDPubSub</label>
+  <UUID>_7fa5a029-ac0f-4ccc-ba97-4a8d62be41a2</UUID>
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source/>
+    <artifact xmi:idref="CompSvrArt"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.DnCX11.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_c08f98fb-fa6b-496f-97c5-52e4d5f69be5">
+    <name>PSDDPublisher_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_18a3dd3d-6d03-4737-8949-5b94d9646e02"/>
+    <artifact xmi:idref="_8abf5774-bd43-472e-b2e0-eb692e754d9a"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PSDDPublisher_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSDDPublisher_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PSDDPublisher_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSDDPublisher_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_72ff0a9b-fac3-4275-aac0-a3ab7c755aab">
+    <name>PSDDSubscriber_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_b8edd435-57cc-4471-99f7-e46fe243446b"/>
+    <artifact xmi:idref="_46477182-7be9-42b2-bcb6-e3bdd9fb7ba0"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PSDDSubscriber_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSDDSubscriber_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PSDDSubscriber_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSDDSubscriber_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_01db351a-1d25-4e58-bc0b-203eeea98ffa">
+    <name>SNA_Examples_PSDD_TestData_conn_PSDD_Event</name>
+    <source/>
+    <artifact xmi:idref="_60bb1d27-7a4a-496c-9d6c-ab383ab68fa7"/>
+    <artifact xmi:idref="_e723c726-659d-46ab-ae0c-adbdf80501b8"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PSDD_TestData_conn_PSDD_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSDD_TestData_conn_PSDD_Event_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_SNA_Examples_PSDD_TestData_conn_PSDD_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSDD_TestData_conn_PSDD_Event_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.CCM.Connector</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_ae95b236-93ce-443c-81ae-a84a282173fd">
+    <name>PSDDPublisher_proc_ComponentServerInstance</name>
+    <node>node1</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>nl.remedy.it.DnCX11.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PSDDPublisher_proc</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_0204a929-2659-419d-8e44-f6f5933fa8ea">
+    <name>PSDDSubscriber_proc_ComponentServerInstance</name>
+    <node>node2</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>nl.remedy.it.DnCX11.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PSDDSubscriber_proc</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_c1634588-75ec-423f-bfef-abfa8c37c33c">
+    <name>PSDDPubSub_asm.psddPublisher_comp</name>
+    <node>node1</node>
+    <source/>
+    <implementation xmi:idref="_c08f98fb-fa6b-496f-97c5-52e4d5f69be5"/>
+    <configProperty>
+      <name>PSDDPublisher_config</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SNA_Examples_PSDDPublisher.cfg</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_6c75d0ae-0259-4307-9725-553995eda8f9">
+    <name>PSDDPubSub_asm.psddSubscriber_comp</name>
+    <node>node2</node>
+    <source/>
+    <implementation xmi:idref="_72ff0a9b-fac3-4275-aac0-a3ab7c755aab"/>
+  </instance>
+
+  <instance xmi:id="_8cf16c91-ec40-4bf6-bb21-f622e95cafac">
+    <name>PSDDPubSub.assemblies.PSDDPubSub_asm.PSDDPubSub_asm.TestData_conn_to_psddSubscriber_comp@node2.PSDDSubscriber_proc</name>
+    <node>node2</node>
+    <source/>
+    <implementation xmi:idref="_01db351a-1d25-4e58-bc0b-203eeea98ffa"/>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>TestData</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>publish</name>
+      <value>
+        <type>
+          <kind>tk_boolean</kind>
+        </type>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>subscribe</name>
+      <value>
+        <type>
+          <kind>tk_boolean</kind>
+        </type>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>nl.remedy.it.PSDD.ZMQ.Publisher.Endpoints</name>
+      <value>
+        <type>
+          <kind>tk_sequence</kind>
+          <sequence>
+            <elementType>
+              <kind>tk_string</kind>
+            </elementType>
+          </sequence>
+        </type>
+        <value>
+          <element>
+            <string/>
+          </element>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>nl.remedy.it.PSDD.ZMQ.Subscriber.Endpoints</name>
+      <value>
+        <type>
+          <kind>tk_sequence</kind>
+          <sequence>
+            <elementType>
+              <kind>tk_string</kind>
+            </elementType>
+          </sequence>
+        </type>
+        <value>
+          <element>
+            <string>tcp://localhost:50001</string>
+          </element>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_453c6ed0-446f-4b37-8f53-639b780882da">
+    <name>PSDDPubSub.assemblies.PSDDPubSub_asm.PSDDPubSub_asm.TestData_conn_to_psddPublisher_comp@node1.PSDDPublisher_proc</name>
+    <node>node1</node>
+    <source/>
+    <implementation xmi:idref="_01db351a-1d25-4e58-bc0b-203eeea98ffa"/>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>TestData</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>publish</name>
+      <value>
+        <type>
+          <kind>tk_boolean</kind>
+        </type>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>subscribe</name>
+      <value>
+        <type>
+          <kind>tk_boolean</kind>
+        </type>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>nl.remedy.it.PSDD.ZMQ.Publisher.Endpoints</name>
+      <value>
+        <type>
+          <kind>tk_sequence</kind>
+          <sequence>
+            <elementType>
+              <kind>tk_string</kind>
+            </elementType>
+          </sequence>
+        </type>
+        <value>
+          <element>
+            <string>tcp://*:50001</string>
+          </element>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>nl.remedy.it.PSDD.ZMQ.Subscriber.Endpoints</name>
+      <value>
+        <type>
+          <kind>tk_sequence</kind>
+          <sequence>
+            <elementType>
+              <kind>tk_string</kind>
+            </elementType>
+          </sequence>
+        </type>
+        <value>
+          <element>
+            <string/>
+          </element>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>PSDDPubSub_asm.psddSubscriber_comp.testDataSub::PSDDPubSub.assemblies.PSDDPubSub_asm.PSDDPubSub_asm.TestData_conn_to_psddSubscriber_comp@node2.PSDDSubscriber_proc.consumer_data_listener</name>
+    <internalEndpoint>
+      <portName>testDataSub_data_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_6c75d0ae-0259-4307-9725-553995eda8f9"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_data_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_8cf16c91-ec40-4bf6-bb21-f622e95cafac"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PSDDPubSub_asm.psddSubscriber_comp.testDataSub::PSDDPubSub.assemblies.PSDDPubSub_asm.PSDDPubSub_asm.TestData_conn_to_psddSubscriber_comp@node2.PSDDSubscriber_proc.consumer_data_subscriber</name>
+    <internalEndpoint>
+      <portName>testDataSub_data_subscriber</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_6c75d0ae-0259-4307-9725-553995eda8f9"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_data_subscriber</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_8cf16c91-ec40-4bf6-bb21-f622e95cafac"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PSDDPubSub_asm.psddSubscriber_comp.testDataSub::PSDDPubSub.assemblies.PSDDPubSub_asm.PSDDPubSub_asm.TestData_conn_to_psddSubscriber_comp@node2.PSDDSubscriber_proc.consumer_data</name>
+    <internalEndpoint>
+      <portName>testDataSub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_6c75d0ae-0259-4307-9725-553995eda8f9"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_8cf16c91-ec40-4bf6-bb21-f622e95cafac"/>
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>PSDDPubSub_asm.psddPublisher_comp.testDataPub::PSDDPubSub.assemblies.PSDDPubSub_asm.PSDDPubSub_asm.TestData_conn_to_psddPublisher_comp@node1.PSDDPublisher_proc.supplier_data</name>
+    <internalEndpoint>
+      <portName>testDataPub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="_c1634588-75ec-423f-bfef-abfa8c37c33c"/>
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="_453c6ed0-446f-4b37-8f53-639b780882da"/>
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="CompSvrArt">
+    <name>CompoSvrArtifactName</name>
+    <source/>
+    <node/>
+    <location>locality_manager</location>
+  </artifact>
+
+  <artifact xmi:id="_18a3dd3d-6d03-4737-8949-5b94d9646e02">
+    <name>SNA_Examples_PSDDPublisher_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PSDDPublisher_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_8abf5774-bd43-472e-b2e0-eb692e754d9a">
+    <name>SNA_Examples_PSDDPublisher_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PSDDPublisher_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_b8edd435-57cc-4471-99f7-e46fe243446b">
+    <name>SNA_Examples_PSDDSubscriber_comp_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PSDDSubscriber_comp_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_46477182-7be9-42b2-bcb6-e3bdd9fb7ba0">
+    <name>SNA_Examples_PSDDSubscriber_comp_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PSDDSubscriber_comp_svnt</location>
+  </artifact>
+
+  <artifact xmi:id="_60bb1d27-7a4a-496c-9d6c-ab383ab68fa7">
+    <name>SNA_Examples_PSDD_TestData_conn_PSDD_Event_exec</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PSDD_TestData_conn_exec</location>
+  </artifact>
+
+  <artifact xmi:id="_e723c726-659d-46ab-ae0c-adbdf80501b8">
+    <name>SNA_Examples_PSDD_TestData_conn_PSDD_Event_svnt</name>
+    <source/>
+    <node/>
+    <location>SNA_Examples_PSDD_TestData_conn_svnt</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <!-- This is referencing [PSDDPublisher_proc_ComponentServerInstance] -->
+    <constrainedInstance xmi:idref="_ae95b236-93ce-443c-81ae-a84a282173fd"/>
+    <!-- This is referencing [PSDDPubSub_asm.psddPublisher_comp] -->
+    <constrainedInstance xmi:idref="_c1634588-75ec-423f-bfef-abfa8c37c33c"/>
+    <!-- This is referencing [PSDDPubSub.assemblies.PSDDPubSub_asm.PSDDPubSub_asm.TestData_conn_to_psddPublisher_comp@node1.PSDDPublisher_proc] -->
+    <constrainedInstance xmi:idref="_453c6ed0-446f-4b37-8f53-639b780882da"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <!-- This is referencing [PSDDSubscriber_proc_ComponentServerInstance] -->
+    <constrainedInstance xmi:idref="_0204a929-2659-419d-8e44-f6f5933fa8ea"/>
+    <!-- This is referencing [PSDDPubSub_asm.psddSubscriber_comp] -->
+    <constrainedInstance xmi:idref="_6c75d0ae-0259-4307-9725-553995eda8f9"/>
+    <!-- This is referencing [PSDDPubSub.assemblies.PSDDPubSub_asm.PSDDPubSub_asm.TestData_conn_to_psddSubscriber_comp@node2.PSDDSubscriber_proc] -->
+    <constrainedInstance xmi:idref="_8cf16c91-ec40-4bf6-bb21-f622e95cafac"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>
