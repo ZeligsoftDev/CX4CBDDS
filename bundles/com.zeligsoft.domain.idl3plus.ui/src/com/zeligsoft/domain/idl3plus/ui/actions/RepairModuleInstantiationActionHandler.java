@@ -16,16 +16,22 @@
  */
 package com.zeligsoft.domain.idl3plus.ui.actions;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.uml2.uml.Element;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.domain.idl3plus.ui.l10n.Messages;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
 
 /**
@@ -69,8 +75,23 @@ public class RepairModuleInstantiationActionHandler extends AbstractHandler {
 			}
 		};
 
-		if (editCommand.canExecute()) {
-			domain.getCommandStack().execute(editCommand);
+		IRunnableWithProgress runnable = new IRunnableWithProgress() {
+
+			@Override
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+
+				monitor.beginTask(Messages.RepairAllModuleInstantiationsAction_TaskName, IProgressMonitor.UNKNOWN);
+				if (editCommand.canExecute()) {
+					domain.getCommandStack().execute(editCommand);
+				}
+				monitor.done();
+			}
+		};
+
+		try {
+			new ProgressMonitorDialog(null).run(false, false, runnable);
+		} catch (InvocationTargetException e) {
+		} catch (InterruptedException e) {
 		}
 
 		return null;

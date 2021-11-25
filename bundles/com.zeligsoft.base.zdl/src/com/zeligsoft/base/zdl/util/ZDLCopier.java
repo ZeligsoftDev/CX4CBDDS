@@ -61,14 +61,14 @@ import com.zeligsoft.base.util.FilteringList;
 public class ZDLCopier {
 
 	private HashMap<EObject, EObject> map;
-	protected EcoreUtil.Copier ecoreCopier;
+	protected ZDLEcoreCopier ecoreCopier;
 
 	/**
 	 * Create me.
 	 */
 	public ZDLCopier() {
 		map = new HashMap<EObject, EObject>();
-		ecoreCopier = new EcoreUtil.Copier();
+		ecoreCopier = new ZDLEcoreCopier();
 	}
 
 	/**
@@ -192,7 +192,9 @@ public class ZDLCopier {
 				// Let copyReference() take care of references
 				continue;
 			}
+
 			copyProperty(concept, prop, element, copyOfElement);
+
 		}
 	}
 
@@ -415,6 +417,7 @@ public class ZDLCopier {
 			Map.Entry<EObject, EObject> entry= i.next();
 			EObject eObject = entry.getKey();
 			EObject copyEObject = entry.getValue();
+			
 			Class concept = ZDLUtil.getZDLConcept(eObject);
 			
 			for(Property feature : concept.getAllAttributes()) {
@@ -655,4 +658,111 @@ public class ZDLCopier {
 	public Set<Entry<EObject, EObject>> entrySet() {
 		return map.entrySet();
 	}
+	
+	static class ZDLEcoreCopier extends EcoreUtil.Copier{
+	    private static final long serialVersionUID = 1L;
+
+	    /**
+	     * Do not add if the item is already in the list
+	     * 
+	     * @param list
+	     * @param index
+	     * @param eObject
+	     * @return
+	     */
+		private void addUnique(InternalEList<EObject> list, int index, EObject eObject) {
+			if (!list.contains(eObject)) {
+				list.addUnique(index, eObject);
+			} else {
+				list.move(index, eObject);
+			}
+		}
+
+		/**
+		 * Workaround for Issue #347. This is the same copy from ECoreUtil.Copier except
+		 * {@link #addUnique addUnique} is called when a new element is added to prevent a
+		 * duplicate copy
+		 */
+		@Override
+	    protected void copyReference(EReference eReference, EObject eObject, EObject copyEObject)
+	    {
+	      if (eObject.eIsSet(eReference))
+	      {
+	        EStructuralFeature.Setting setting = getTarget(eReference, eObject, copyEObject);
+	        if (setting != null)
+	        {
+	          Object value = eObject.eGet(eReference, resolveProxies);
+	          if (eReference.isMany())
+	          {
+	            @SuppressWarnings("unchecked") InternalEList<EObject> source = (InternalEList<EObject>)value;
+	            @SuppressWarnings("unchecked") InternalEList<EObject> target = (InternalEList<EObject>)setting;
+	            if (source.isEmpty())
+	            {
+	              target.clear();
+	            }
+	            else
+	            {
+	              boolean isBidirectional = eReference.getEOpposite() != null;
+	              int index = 0;
+	              for (Iterator<EObject> k = resolveProxies ? source.iterator() : source.basicIterator(); k.hasNext();)
+	              {
+	                EObject referencedEObject = k.next();
+	                EObject copyReferencedEObject = get(referencedEObject);
+	                if (copyReferencedEObject == null)
+	                {
+	                  if (useOriginalReferences && !isBidirectional)
+	                  {
+	                    addUnique(target, index, referencedEObject);
+	                    ++index;
+	                  }
+	                }
+	                else
+	                {
+	                  if (isBidirectional)
+	                  {
+	                    int position = target.indexOf(copyReferencedEObject);
+	                    if (position == -1)
+	                    {
+	                      addUnique(target, index, copyReferencedEObject);
+	                    }
+	                    else if (index != position)
+	                    {
+	                      target.move(index, copyReferencedEObject);
+	                    }
+	                  }
+	                  else
+	                  {
+	                    addUnique(target, index, copyReferencedEObject);
+	                  }
+	                  ++index;
+	                }
+	              }
+	            }
+	          }
+	          else
+	          {
+	            if (value == null)
+	            {
+	              setting.set(null);
+	            }
+	            else
+	            {
+	              Object copyReferencedEObject = get(value);
+	              if (copyReferencedEObject == null)
+	              {
+	                if (useOriginalReferences && eReference.getEOpposite() == null)
+	                {
+	                  setting.set(value);
+	                }
+	              }
+	              else
+	              {
+	                setting.set(copyReferencedEObject);
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
 }
