@@ -537,7 +537,7 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
           </ownedComment>
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_hCQ1Ee1oEd2XOPM4ACfj4Q">
             <language>OCL</language>
-            <body>self.oclAsType(uml::NamedElement).name.matches('([a-zA-Z_])([a-zA-Z_0-9])*')</body>
+            <body>self.oclAsType(uml::NamedElement).name.matches('([a-zA-Z_])([a-zA-Z_0-9.])*')</body>
           </specification>
         </ownedRule>
         <ownedRule xmi:type="uml:Constraint" xmi:id="_ykZB4CPhEd-OjqI9OvrxBw" name="contained_name_constraint" constrainedElement="_2ZPPIO1nEd2XOPM4ACfj4Q">

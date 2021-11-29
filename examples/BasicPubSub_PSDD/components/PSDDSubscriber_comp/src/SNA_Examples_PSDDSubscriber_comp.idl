@@ -1,7 +1,7 @@
 //==============================================================================
 //                         U N C L A S S I F I E D
 //==============================================================================
-// Copyright (c) Northrop Grumman Corporation 2008-2020 -- ALL RIGHTS RESERVED
+// Copyright (c) Northrop Grumman Corporation 2020 -- ALL RIGHTS RESERVED
 //==============================================================================
 //
 //==============================================================================
@@ -17,39 +17,41 @@
 // obtaining approval from the U.S. government or as otherwise authorized by 
 // U.S. law and regulations. 
 //==============================================================================
-/// @defgroup SNA_Examples_BasicSubscriber_comp BasicSubscriber_comp
+/// @defgroup SNA_Examples_PSDDSubscriber_comp PSDDSubscriber_comp
 /// @{
 /// 
-/// @file SNA_Examples_BasicSubscriber_comp.idl
-/// @brief BasicSubscriber_comp component definition IDL file
+/// @file SNA_Examples_PSDDSubscriber_comp.idl
+/// @brief PSDDSubscriber_comp component definition IDL file
 
 //=========================================================
 
-#ifndef CX_COMPONENTS__BASICSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_BASICSUBSCRIBER_COMP_IDL
-#define CX_COMPONENTS__BASICSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_BASICSUBSCRIBER_COMP_IDL
+#ifndef CX_COMPONENTS__PSDDSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_PSDDSUBSCRIBER_COMP_IDL
+#define CX_COMPONENTS__PSDDSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_PSDDSUBSCRIBER_COMP_IDL
 
-#pragma componentInterface "BasicSubscriber_comp" 
+#pragma componentInterface "PSDDSubscriber_comp" 
 #include <Components.idl>
-#pragma ciao lem "SNA_Examples_BasicSubscriber_compE.idl"
-#pragma conntype SNA_Examples::BasicSubscriber_comp::testDataSub Listener
-#include "SNA_Examples_TestData_conn.idl"
+#pragma ciao lem "SNA_Examples_PSDDSubscriber_compE.idl"
+#pragma conntype SNA_Examples::PSDDSubscriber_comp::testDataSub PSDD_Subscribe
+#include "SNA_Examples_PSDD_TestData_conn.idl"
 
 /// @brief SNA_Examples 
 module SNA_Examples {
 
-    /// The BasicSubscriber_comp component is the subscriber in this example. It
+    /// The PSDDSubscriber_comp component is the subscriber in this example. It
     /// subscribes to a DDS topic. When a sample is published to that topic,
     /// this component is notified, and it reads the sample (message), and logs
     /// it.
-    component BasicSubscriber_comp {
-       
-       port TestData_conn::PSDD_Subscribe testDataSub;
-//uses TestData_conn::Subscriber testDataSub;
+    component PSDDSubscriber_comp {
+
+        /// A DDS4CCM listen port which listens for samples/messages of type
+        /// SNA_Examples::TestData_msg on a DDS topic. The name and QoS of that
+        /// topic are defined in the deployment plan.
+        port SNA_Examples_PSDD::TestData_conn::PSDD_Subscribe testDataSub;
     };
 
 };
 
-#endif // CX_COMPONENTS__BASICSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_BASICSUBSCRIBER_COMP_IDL
+#endif // CX_COMPONENTS__PSDDSUBSCRIBER_COMP__SRC__SNA_EXAMPLES_PSDDSUBSCRIBER_COMP_IDL
 
 /// @}
 //==============================================================================

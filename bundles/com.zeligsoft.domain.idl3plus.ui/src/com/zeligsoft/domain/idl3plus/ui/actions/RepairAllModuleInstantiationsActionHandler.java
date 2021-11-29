@@ -16,18 +16,19 @@
  */
 package com.zeligsoft.domain.idl3plus.ui.actions;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.ui.progress.UIJob;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.uml2.uml.Package;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
@@ -64,8 +65,9 @@ public class RepairAllModuleInstantiationsActionHandler extends AbstractHandler 
 		if (element == null) {
 			return null;
 		}
-
+		
 		final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(element);
+
 		final Command editCommand = new RecordingCommand(domain,
 				Messages.RepairAllModuleInstantiationsAction_RepairAllCommandLabel) {
 
@@ -76,19 +78,24 @@ public class RepairAllModuleInstantiationsActionHandler extends AbstractHandler 
 				}
 			}
 		};
+		
+		IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
-		UIJob job = new UIJob(Messages.RepairAllModuleInstantiationsAction_JobTitle) {
-			
 			@Override
-			public IStatus runInUIThread(IProgressMonitor monitor) {
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+
 				monitor.beginTask(Messages.RepairAllModuleInstantiationsAction_TaskName, IProgressMonitor.UNKNOWN);
 				domain.getCommandStack().execute(editCommand);
 				monitor.done();
-				return Status.OK_STATUS;
 			}
 		};
-		job.setUser(true);
-		job.schedule();
+
+		try {
+			new ProgressMonitorDialog(null).run(false, false, runnable);
+		} catch (InvocationTargetException e) {
+		} catch (InterruptedException e) {
+		}
+		
 		return null;
 	}
 }
