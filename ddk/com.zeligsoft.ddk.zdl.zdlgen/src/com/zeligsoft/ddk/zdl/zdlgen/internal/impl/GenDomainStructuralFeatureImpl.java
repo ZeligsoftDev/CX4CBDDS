@@ -52,14 +52,14 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainObjectOperation
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#isReadOnly <em>Read Only</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getPresentationHint <em>Presentation Hint</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getPresentationKind <em>Presentation Kind</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getOrder <em>Order</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getVisibleModelType <em>Visible Model Type</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getOrder <em>Order</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getDomainElement <em>Domain Element</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getUmlMetaattribute <em>Uml Metaattribute</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getConcept <em>Concept</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getDomainAttribute <em>Domain Attribute</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#isRhapsodySuppressed <em>Is Rhapsody Suppressed</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainStructuralFeatureImpl#getConcept <em>Concept</em>}</li>
  * </ul>
  *
  * @generated
@@ -148,26 +148,6 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 	protected GenDomainAttributePresentationKind presentationKind = PRESENTATION_KIND_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getOrder() <em>Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrder()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int ORDER_EDEFAULT = 8000;
-
-	/**
-	 * The cached value of the '{@link #getOrder() <em>Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrder()
-	 * @generated
-	 * @ordered
-	 */
-	protected int order = ORDER_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getVisibleModelType() <em>Visible Model Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -188,6 +168,26 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 	protected GenDomainPresentationModelKind visibleModelType = VISIBLE_MODEL_TYPE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getOrder() <em>Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrder()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int ORDER_EDEFAULT = 8000;
+
+	/**
+	 * The cached value of the '{@link #getOrder() <em>Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrder()
+	 * @generated
+	 * @ordered
+	 */
+	protected int order = ORDER_EDEFAULT;
+
+	/**
 	 * The cached value of the '{@link #getUmlMetaattribute() <em>Uml Metaattribute</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -196,16 +196,6 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 	 * @ordered
 	 */
 	protected Property umlMetaattribute;
-
-	/**
-	 * The cached value of the '{@link #getConcept() <em>Concept</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConcept()
-	 * @generated
-	 * @ordered
-	 */
-	protected GenDomainConcept concept;
 
 	/**
 	 * The cached value of the '{@link #getDomainAttribute() <em>Domain Attribute</em>}' reference.
@@ -358,28 +348,6 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getOrder() {
-		return order;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOrder(int newOrder) {
-		int oldOrder = order;
-		order = newOrder;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER,
-					oldOrder, order));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public GenDomainPresentationModelKind getVisibleModelType() {
 		return visibleModelType;
 	}
@@ -396,6 +364,28 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 			eNotify(new ENotificationImpl(this, Notification.SET,
 					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE_MODEL_TYPE, oldVisibleModelType,
 					visibleModelType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getOrder() {
+		return order;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOrder(int newOrder) {
+		int oldOrder = order;
+		order = newOrder;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER,
+					oldOrder, order));
 	}
 
 	/**
@@ -442,8 +432,9 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 	 */
 	@Override
 	public GenDomainObject basicGetOwner() {
-		if (eIsSet(ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT)) {
-			return basicGetConcept();
+		GenDomainConcept concept = getConcept();
+		if (concept != null) {
+			return concept;
 		}
 		return super.basicGetOwner();
 	}
@@ -569,16 +560,9 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 	 */
 	@Override
 	public GenDomainConcept getConcept() {
-		if (concept != null && concept.eIsProxy()) {
-			InternalEObject oldConcept = (InternalEObject) concept;
-			concept = (GenDomainConcept) eResolveProxy(oldConcept);
-			if (concept != oldConcept) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT, oldConcept, concept));
-			}
-		}
-		return concept;
+		if (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT)
+			return null;
+		return (GenDomainConcept) eInternalContainer();
 	}
 
 	/**
@@ -586,8 +570,10 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GenDomainConcept basicGetConcept() {
-		return concept;
+	public NotificationChain basicSetConcept(GenDomainConcept newConcept, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newConcept, ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT,
+				msgs);
+		return msgs;
 	}
 
 	/**
@@ -597,11 +583,68 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 	 */
 	@Override
 	public void setConcept(GenDomainConcept newConcept) {
-		GenDomainConcept oldConcept = concept;
-		concept = newConcept;
-		if (eNotificationRequired())
+		if (newConcept != eInternalContainer()
+				|| (eContainerFeatureID() != ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT
+						&& newConcept != null)) {
+			if (EcoreUtil.isAncestor(this, newConcept))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newConcept != null)
+				msgs = ((InternalEObject) newConcept).eInverseAdd(this, ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE,
+						GenDomainConcept.class, msgs);
+			msgs = basicSetConcept(newConcept, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT,
-					oldConcept, concept));
+					newConcept, newConcept));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetConcept((GenDomainConcept) otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
+			return basicSetConcept(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
+			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE,
+					GenDomainConcept.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -620,24 +663,22 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 			return getPresentationHint();
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_KIND:
 			return getPresentationKind();
-		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER:
-			return getOrder();
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE_MODEL_TYPE:
 			return getVisibleModelType();
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER:
+			return getOrder();
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE:
 			if (resolve)
 				return getUmlMetaattribute();
 			return basicGetUmlMetaattribute();
-		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
-			if (resolve)
-				return getConcept();
-			return basicGetConcept();
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE:
 			if (resolve)
 				return getDomainAttribute();
 			return basicGetDomainAttribute();
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__IS_RHAPSODY_SUPPRESSED:
 			return isRhapsodySuppressed();
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
+			return getConcept();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -662,23 +703,23 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_KIND:
 			setPresentationKind((GenDomainAttributePresentationKind) newValue);
 			return;
-		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER:
-			setOrder((Integer) newValue);
-			return;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE_MODEL_TYPE:
 			setVisibleModelType((GenDomainPresentationModelKind) newValue);
 			return;
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER:
+			setOrder((Integer) newValue);
+			return;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE:
 			setUmlMetaattribute((Property) newValue);
-			return;
-		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
-			setConcept((GenDomainConcept) newValue);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE:
 			setDomainAttribute((Property) newValue);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__IS_RHAPSODY_SUPPRESSED:
 			setIsRhapsodySuppressed((Boolean) newValue);
+			return;
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
+			setConcept((GenDomainConcept) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -704,23 +745,23 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_KIND:
 			setPresentationKind(PRESENTATION_KIND_EDEFAULT);
 			return;
-		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER:
-			setOrder(ORDER_EDEFAULT);
-			return;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE_MODEL_TYPE:
 			setVisibleModelType(VISIBLE_MODEL_TYPE_EDEFAULT);
 			return;
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER:
+			setOrder(ORDER_EDEFAULT);
+			return;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE:
 			setUmlMetaattribute((Property) null);
-			return;
-		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
-			setConcept((GenDomainConcept) null);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE:
 			setDomainAttribute((Property) null);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__IS_RHAPSODY_SUPPRESSED:
 			setIsRhapsodySuppressed(IS_RHAPSODY_SUPPRESSED_EDEFAULT);
+			return;
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
+			setConcept((GenDomainConcept) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -743,22 +784,22 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 					: !PRESENTATION_HINT_EDEFAULT.equals(presentationHint);
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_KIND:
 			return presentationKind != PRESENTATION_KIND_EDEFAULT;
-		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER:
-			return order != ORDER_EDEFAULT;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE_MODEL_TYPE:
 			return visibleModelType != VISIBLE_MODEL_TYPE_EDEFAULT;
-		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__OWNER:
-			return isSetOwner();
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER:
+			return order != ORDER_EDEFAULT;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ELEMENT:
 			return isSetDomainElement();
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__OWNER:
+			return isSetOwner();
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE:
 			return umlMetaattribute != null;
-		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
-			return concept != null;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE:
 			return domainAttribute != null;
 		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__IS_RHAPSODY_SUPPRESSED:
 			return ((eFlags & IS_RHAPSODY_SUPPRESSED_EFLAG) != 0) != IS_RHAPSODY_SUPPRESSED_EDEFAULT;
+		case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT:
+			return getConcept() != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -780,10 +821,10 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 				return ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_HINT;
 			case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_KIND:
 				return ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND;
-			case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER:
-				return ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER;
 			case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE_MODEL_TYPE:
 				return ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE;
+			case ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER:
+				return ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER;
 			default:
 				return -1;
 			}
@@ -808,10 +849,10 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 				return ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_HINT;
 			case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND:
 				return ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_KIND;
-			case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
-				return ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER;
 			case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE:
 				return ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE_MODEL_TYPE;
+			case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
+				return ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER;
 			default:
 				return -1;
 			}
@@ -838,10 +879,10 @@ public abstract class GenDomainStructuralFeatureImpl extends GenDomainNamedEleme
 		result.append(presentationHint);
 		result.append(", presentationKind: "); //$NON-NLS-1$
 		result.append(presentationKind);
-		result.append(", order: "); //$NON-NLS-1$
-		result.append(order);
 		result.append(", visibleModelType: "); //$NON-NLS-1$
 		result.append(visibleModelType);
+		result.append(", order: "); //$NON-NLS-1$
+		result.append(order);
 		result.append(", isRhapsodySuppressed: "); //$NON-NLS-1$
 		result.append((eFlags & IS_RHAPSODY_SUPPRESSED_EFLAG) != 0);
 		result.append(')');

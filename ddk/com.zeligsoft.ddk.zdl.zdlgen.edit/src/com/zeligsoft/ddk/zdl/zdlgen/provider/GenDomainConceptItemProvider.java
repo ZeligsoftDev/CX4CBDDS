@@ -81,6 +81,7 @@ public class GenDomainConceptItemProvider extends GenDomainClassifierItemProvide
 			addGeneralPropertyDescriptor(object);
 			addReferencePropertyDescriptor(object);
 			addAttributePropertyDescriptor(object);
+			addIconUriPropertyDescriptor(object);
 			addIsRSMSuppressedPropertyDescriptor(object);
 			addIsRSMUIReadOnlyPropertyDescriptor(object);
 			addIsRSMPropertiesUIReadOnlyPropertyDescriptor(object);
@@ -91,7 +92,6 @@ public class GenDomainConceptItemProvider extends GenDomainClassifierItemProvide
 			addRhapsodyAddNewConceptPropertyDescriptor(object);
 			addRhapsodyDisplayNamePropertyDescriptor(object);
 			addRhapsodyToAddNewPropertyDescriptor(object);
-			addIconUriPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -483,8 +483,8 @@ public class GenDomainConceptItemProvider extends GenDomainClassifierItemProvide
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__FEATURE);
-			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__GENERALIZATION);
 			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__OVERRIDE);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_CONCEPT__GENERALIZATION);
 		}
 		return childrenFeatures;
 	}
@@ -552,6 +552,7 @@ public class GenDomainConceptItemProvider extends GenDomainClassifierItemProvide
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__CATEGORY:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__REFERENCE:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ATTRIBUTE:
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ICON_URI:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__IS_RSMUI_READ_ONLY:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__IS_RSM_PROPERTIES_UI_READ_ONLY:
@@ -560,12 +561,11 @@ public class GenDomainConceptItemProvider extends GenDomainClassifierItemProvide
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__RHAPSODY_STEREOTYPE_NAME:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__RHAPSODY_ADD_NEW:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__RHAPSODY_DISPLAY_NAME:
-		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ICON_URI:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE:
-		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__OVERRIDE:
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}

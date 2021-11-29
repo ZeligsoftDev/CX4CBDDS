@@ -71,8 +71,8 @@ public class GenDomainAttributePresentationItemProvider extends ItemProviderAdap
 			addReadOnlyPropertyDescriptor(object);
 			addPresentationHintPropertyDescriptor(object);
 			addPresentationKindPropertyDescriptor(object);
-			addOrderPropertyDescriptor(object);
 			addVisibleModelTypePropertyDescriptor(object);
+			addOrderPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -148,23 +148,6 @@ public class GenDomainAttributePresentationItemProvider extends ItemProviderAdap
 	}
 
 	/**
-	 * This adds a property descriptor for the Order feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOrderPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_GenDomainAttributePresentation_order_feature"), //$NON-NLS-1$
-				getString("_UI_PropertyDescriptor_description", "_UI_GenDomainAttributePresentation_order_feature", //$NON-NLS-1$//$NON-NLS-2$
-						"_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$
-				ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER, true, false, false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
-				null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Visible Model Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -179,6 +162,23 @@ public class GenDomainAttributePresentationItemProvider extends ItemProviderAdap
 								"_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$
 						ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE, true, false,
 						false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Order feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOrderPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_GenDomainAttributePresentation_order_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_GenDomainAttributePresentation_order_feature", //$NON-NLS-1$//$NON-NLS-2$
+						"_UI_GenDomainAttributePresentation_type"), //$NON-NLS-1$
+				ZDLGenPackage.Literals.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, getString("_UI_PresentationPropertyCategory"), //$NON-NLS-1$
+				null));
 	}
 
 	/**
@@ -209,8 +209,8 @@ public class GenDomainAttributePresentationItemProvider extends ItemProviderAdap
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__READ_ONLY:
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_HINT:
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND:
-		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE:
+		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

@@ -60,12 +60,12 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainConceptOperatio
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getDomainElement <em>Domain Element</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getFeatures <em>Feature</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getCategory <em>Category</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getGeneralizations <em>Generalization</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getDomainConcept <em>Domain Concept</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getUmlMetaclasses <em>Uml Metaclass</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getGenerals <em>General</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getReferences <em>Reference</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getAttributes <em>Attribute</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getIconUri <em>Icon Uri</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#isRSMSuppressed <em>Is RSM Suppressed</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#isRSMUIReadOnly <em>Is RSMUI Read Only</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#isRSMPropertiesUIReadOnly <em>Is RSM Properties UI Read Only</em>}</li>
@@ -76,8 +76,8 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenDomainConceptOperatio
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getRhapsodyAddNewConcepts <em>Rhapsody Add New Concept</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getRhapsodyDisplayName <em>Rhapsody Display Name</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getRhapsodyToAddNews <em>Rhapsody To Add New</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getIconUri <em>Icon Uri</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getOverrides <em>Override</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainConceptImpl#getGeneralizations <em>Generalization</em>}</li>
  * </ul>
  *
  * @generated
@@ -122,15 +122,6 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 	protected GenDomainConceptCategory category = CATEGORY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getGeneralizations() <em>Generalization</em>}' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getGeneralizations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<GenDomainGeneralization> generalizations;
-
-	/**
 	 * The cached value of the '{@link #getDomainConcept() <em>Domain Concept</em>}' reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDomainConcept()
@@ -148,6 +139,26 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 	 * @ordered
 	 */
 	protected EList<org.eclipse.uml2.uml.Class> umlMetaclasses;
+
+	/**
+	 * The default value of the '{@link #getIconUri() <em>Icon Uri</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIconUri()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ICON_URI_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIconUri() <em>Icon Uri</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIconUri()
+	 * @generated
+	 * @ordered
+	 */
+	protected String iconUri = ICON_URI_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isRSMSuppressed() <em>Is RSM Suppressed</em>}' attribute.
@@ -347,26 +358,6 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 	protected EList<GenDomainConcept> rhapsodyToAddNews;
 
 	/**
-	 * The default value of the '{@link #getIconUri() <em>Icon Uri</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIconUri()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ICON_URI_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getIconUri() <em>Icon Uri</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIconUri()
-	 * @generated
-	 * @ordered
-	 */
-	protected String iconUri = ICON_URI_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getOverrides() <em>Override</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -375,6 +366,15 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 	 * @ordered
 	 */
 	protected EList<GenAttributeOverride> overrides;
+
+	/**
+	 * The cached value of the '{@link #getGeneralizations() <em>Generalization</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getGeneralizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<GenDomainGeneralization> generalizations;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -479,8 +479,9 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 	@Override
 	public EList<GenDomainStructuralFeature> getFeatures() {
 		if (features == null) {
-			features = new EObjectContainmentEList<GenDomainStructuralFeature>(GenDomainStructuralFeature.class, this,
-					ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE);
+			features = new EObjectContainmentWithInverseEList<GenDomainStructuralFeature>(
+					GenDomainStructuralFeature.class, this, ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE,
+					ZDLGenPackage.GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT);
 		}
 		return features;
 	}
@@ -518,8 +519,9 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 	@Override
 	public EList<GenDomainGeneralization> getGeneralizations() {
 		if (generalizations == null) {
-			generalizations = new EObjectContainmentEList<GenDomainGeneralization>(GenDomainGeneralization.class, this,
-					ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION);
+			generalizations = new EObjectContainmentWithInverseEList<GenDomainGeneralization>(
+					GenDomainGeneralization.class, this, ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION,
+					ZDLGenPackage.GEN_DOMAIN_GENERALIZATION__SPECIFIC);
 		}
 		return generalizations;
 	}
@@ -1274,6 +1276,23 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getFeatures()).basicAdd(otherEnd, msgs);
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1282,10 +1301,10 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__FEATURE:
 			return ((InternalEList<?>) getFeatures()).basicRemove(otherEnd, msgs);
-		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
-			return ((InternalEList<?>) getGeneralizations()).basicRemove(otherEnd, msgs);
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__OVERRIDE:
 			return ((InternalEList<?>) getOverrides()).basicRemove(otherEnd, msgs);
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
+			return ((InternalEList<?>) getGeneralizations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1305,8 +1324,6 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 			return getFeatures();
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__CATEGORY:
 			return getCategory();
-		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
-			return getGeneralizations();
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__DOMAIN_CONCEPT:
 			if (resolve)
 				return getDomainConcept();
@@ -1319,6 +1336,8 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 			return getReferences();
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ATTRIBUTE:
 			return getAttributes();
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ICON_URI:
+			return getIconUri();
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED:
 			return isRSMSuppressed();
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__IS_RSMUI_READ_ONLY:
@@ -1339,10 +1358,10 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 			return getRhapsodyDisplayName();
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__RHAPSODY_TO_ADD_NEW:
 			return getRhapsodyToAddNews();
-		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ICON_URI:
-			return getIconUri();
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__OVERRIDE:
 			return getOverrides();
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
+			return getGeneralizations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1365,16 +1384,15 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__CATEGORY:
 			setCategory((GenDomainConceptCategory) newValue);
 			return;
-		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
-			getGeneralizations().clear();
-			getGeneralizations().addAll((Collection<? extends GenDomainGeneralization>) newValue);
-			return;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__DOMAIN_CONCEPT:
 			setDomainConcept((org.eclipse.uml2.uml.Class) newValue);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__UML_METACLASS:
 			getUmlMetaclasses().clear();
 			getUmlMetaclasses().addAll((Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
+			return;
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ICON_URI:
+			setIconUri((String) newValue);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED:
 			setIsRSMSuppressed((Boolean) newValue);
@@ -1409,12 +1427,13 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 			getRhapsodyToAddNews().clear();
 			getRhapsodyToAddNews().addAll((Collection<? extends GenDomainConcept>) newValue);
 			return;
-		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ICON_URI:
-			setIconUri((String) newValue);
-			return;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__OVERRIDE:
 			getOverrides().clear();
 			getOverrides().addAll((Collection<? extends GenAttributeOverride>) newValue);
+			return;
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
+			getGeneralizations().clear();
+			getGeneralizations().addAll((Collection<? extends GenDomainGeneralization>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -1436,14 +1455,14 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__CATEGORY:
 			setCategory(CATEGORY_EDEFAULT);
 			return;
-		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
-			getGeneralizations().clear();
-			return;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__DOMAIN_CONCEPT:
 			setDomainConcept((org.eclipse.uml2.uml.Class) null);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__UML_METACLASS:
 			getUmlMetaclasses().clear();
+			return;
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ICON_URI:
+			setIconUri(ICON_URI_EDEFAULT);
 			return;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED:
 			unsetIsRSMSuppressed();
@@ -1475,11 +1494,11 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__RHAPSODY_TO_ADD_NEW:
 			getRhapsodyToAddNews().clear();
 			return;
-		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ICON_URI:
-			setIconUri(ICON_URI_EDEFAULT);
-			return;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__OVERRIDE:
 			getOverrides().clear();
+			return;
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
+			getGeneralizations().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -1502,8 +1521,6 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 			return features != null && !features.isEmpty();
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__CATEGORY:
 			return category != CATEGORY_EDEFAULT;
-		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
-			return generalizations != null && !generalizations.isEmpty();
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__DOMAIN_CONCEPT:
 			return domainConcept != null;
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__UML_METACLASS:
@@ -1514,6 +1531,8 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 			return !getReferences().isEmpty();
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ATTRIBUTE:
 			return !getAttributes().isEmpty();
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ICON_URI:
+			return ICON_URI_EDEFAULT == null ? iconUri != null : !ICON_URI_EDEFAULT.equals(iconUri);
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__IS_RSM_SUPPRESSED:
 			return isSetIsRSMSuppressed();
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__IS_RSMUI_READ_ONLY:
@@ -1537,10 +1556,10 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 					: !RHAPSODY_DISPLAY_NAME_EDEFAULT.equals(rhapsodyDisplayName);
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__RHAPSODY_TO_ADD_NEW:
 			return rhapsodyToAddNews != null && !rhapsodyToAddNews.isEmpty();
-		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__ICON_URI:
-			return ICON_URI_EDEFAULT == null ? iconUri != null : !ICON_URI_EDEFAULT.equals(iconUri);
 		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__OVERRIDE:
 			return overrides != null && !overrides.isEmpty();
+		case ZDLGenPackage.GEN_DOMAIN_CONCEPT__GENERALIZATION:
+			return generalizations != null && !generalizations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1605,6 +1624,8 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (category: "); //$NON-NLS-1$
 		result.append(category);
+		result.append(", iconUri: "); //$NON-NLS-1$
+		result.append(iconUri);
 		result.append(", isRSMSuppressed: "); //$NON-NLS-1$
 		if ((eFlags & IS_RSM_SUPPRESSED_ESETFLAG) != 0)
 			result.append((eFlags & IS_RSM_SUPPRESSED_EFLAG) != 0);
@@ -1630,8 +1651,6 @@ public class GenDomainConceptImpl extends GenDomainClassifierImpl implements Gen
 		result.append(rhapsodyAddNews);
 		result.append(", rhapsodyDisplayName: "); //$NON-NLS-1$
 		result.append(rhapsodyDisplayName);
-		result.append(", iconUri: "); //$NON-NLS-1$
-		result.append(iconUri);
 		result.append(')');
 		return result.toString();
 	}

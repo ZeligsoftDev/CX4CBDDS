@@ -37,8 +37,8 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteStackImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteStackImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteStackImpl#getOverrides <em>Overrides</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteStackImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteStackImpl#getActiveTool <em>Active Tool</em>}</li>
  * </ul>
  *
@@ -46,15 +46,6 @@ import com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage;
  */
 public class GenPaletteStackImpl extends GenPaletteToolContainerImpl implements GenPaletteStack {
 
-	/**
-	 * The cached value of the '{@link #getContainer() <em>Container</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContainer()
-	 * @generated
-	 * @ordered
-	 */
-	protected GenPaletteToolContainer container;
 	/**
 	 * The cached value of the '{@link #getOverrides() <em>Overrides</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -111,8 +102,9 @@ public class GenPaletteStackImpl extends GenPaletteToolContainerImpl implements 
 	 */
 	@Override
 	public GenDomainObject basicGetOwner() {
-		if (eIsSet(ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER)) {
-			return basicGetContainer();
+		GenPaletteToolContainer container = getContainer();
+		if (container != null) {
+			return container;
 		}
 		return super.basicGetOwner();
 	}
@@ -166,16 +158,9 @@ public class GenPaletteStackImpl extends GenPaletteToolContainerImpl implements 
 	 */
 	@Override
 	public GenPaletteToolContainer getContainer() {
-		if (container != null && container.eIsProxy()) {
-			InternalEObject oldContainer = (InternalEObject) container;
-			container = (GenPaletteToolContainer) eResolveProxy(oldContainer);
-			if (container != oldContainer) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER, oldContainer, container));
-			}
-		}
-		return container;
+		if (eContainerFeatureID() != ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER)
+			return null;
+		return (GenPaletteToolContainer) eInternalContainer();
 	}
 
 	/**
@@ -183,8 +168,9 @@ public class GenPaletteStackImpl extends GenPaletteToolContainerImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GenPaletteToolContainer basicGetContainer() {
-		return container;
+	public NotificationChain basicSetContainer(GenPaletteToolContainer newContainer, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newContainer, ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER, msgs);
+		return msgs;
 	}
 
 	/**
@@ -194,11 +180,22 @@ public class GenPaletteStackImpl extends GenPaletteToolContainerImpl implements 
 	 */
 	@Override
 	public void setContainer(GenPaletteToolContainer newContainer) {
-		GenPaletteToolContainer oldContainer = container;
-		container = newContainer;
-		if (eNotificationRequired())
+		if (newContainer != eInternalContainer()
+				|| (eContainerFeatureID() != ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER && newContainer != null)) {
+			if (EcoreUtil.isAncestor(this, newContainer))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newContainer != null)
+				msgs = ((InternalEObject) newContainer).eInverseAdd(this,
+						ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL, GenPaletteToolContainer.class, msgs);
+			msgs = basicSetContainer(newContainer, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER,
-					oldContainer, container));
+					newContainer, newContainer));
 	}
 
 	/**
@@ -249,16 +246,59 @@ public class GenPaletteStackImpl extends GenPaletteToolContainerImpl implements 
 	 * @generated
 	 */
 	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER:
-			if (resolve)
-				return getContainer();
-			return basicGetContainer();
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetContainer((GenPaletteToolContainer) otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER:
+			return basicSetContainer(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+		case ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER:
+			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL,
+					GenPaletteToolContainer.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE_STACK__OVERRIDES:
 			if (resolve)
 				return getOverrides();
 			return basicGetOverrides();
+		case ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER:
+			return getContainer();
 		case ZDLGenPackage.GEN_PALETTE_STACK__ACTIVE_TOOL:
 			if (resolve)
 				return getActiveTool();
@@ -275,11 +315,11 @@ public class GenPaletteStackImpl extends GenPaletteToolContainerImpl implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER:
-			setContainer((GenPaletteToolContainer) newValue);
-			return;
 		case ZDLGenPackage.GEN_PALETTE_STACK__OVERRIDES:
 			setOverrides((GenPaletteTool) newValue);
+			return;
+		case ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER:
+			setContainer((GenPaletteToolContainer) newValue);
 			return;
 		case ZDLGenPackage.GEN_PALETTE_STACK__ACTIVE_TOOL:
 			setActiveTool((GenPaletteTool) newValue);
@@ -296,11 +336,11 @@ public class GenPaletteStackImpl extends GenPaletteToolContainerImpl implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER:
-			setContainer((GenPaletteToolContainer) null);
-			return;
 		case ZDLGenPackage.GEN_PALETTE_STACK__OVERRIDES:
 			setOverrides((GenPaletteTool) null);
+			return;
+		case ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER:
+			setContainer((GenPaletteToolContainer) null);
 			return;
 		case ZDLGenPackage.GEN_PALETTE_STACK__ACTIVE_TOOL:
 			setActiveTool((GenPaletteTool) null);
@@ -319,10 +359,10 @@ public class GenPaletteStackImpl extends GenPaletteToolContainerImpl implements 
 		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE_STACK__OWNER:
 			return isSetOwner();
-		case ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER:
-			return container != null;
 		case ZDLGenPackage.GEN_PALETTE_STACK__OVERRIDES:
 			return overrides != null;
+		case ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER:
+			return getContainer() != null;
 		case ZDLGenPackage.GEN_PALETTE_STACK__ACTIVE_TOOL:
 			return activeTool != null;
 		}
@@ -338,10 +378,10 @@ public class GenPaletteStackImpl extends GenPaletteToolContainerImpl implements 
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == GenPaletteTool.class) {
 			switch (derivedFeatureID) {
-			case ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER:
-				return ZDLGenPackage.GEN_PALETTE_TOOL__CONTAINER;
 			case ZDLGenPackage.GEN_PALETTE_STACK__OVERRIDES:
 				return ZDLGenPackage.GEN_PALETTE_TOOL__OVERRIDES;
+			case ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER:
+				return ZDLGenPackage.GEN_PALETTE_TOOL__CONTAINER;
 			default:
 				return -1;
 			}
@@ -358,10 +398,10 @@ public class GenPaletteStackImpl extends GenPaletteToolContainerImpl implements 
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == GenPaletteTool.class) {
 			switch (baseFeatureID) {
-			case ZDLGenPackage.GEN_PALETTE_TOOL__CONTAINER:
-				return ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER;
 			case ZDLGenPackage.GEN_PALETTE_TOOL__OVERRIDES:
 				return ZDLGenPackage.GEN_PALETTE_STACK__OVERRIDES;
+			case ZDLGenPackage.GEN_PALETTE_TOOL__CONTAINER:
+				return ZDLGenPackage.GEN_PALETTE_STACK__CONTAINER;
 			default:
 				return -1;
 			}

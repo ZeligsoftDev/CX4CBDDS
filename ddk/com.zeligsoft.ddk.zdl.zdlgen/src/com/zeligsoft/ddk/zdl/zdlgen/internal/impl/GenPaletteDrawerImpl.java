@@ -39,23 +39,14 @@ import com.zeligsoft.ddk.zdl.zdlgen.internal.operations.GenPaletteDrawerOperatio
  * </p>
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteDrawerImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteDrawerImpl#getPalette <em>Palette</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteDrawerImpl#getSpecializes <em>Specializes</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenPaletteDrawerImpl#getPalette <em>Palette</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class GenPaletteDrawerImpl extends GenPaletteToolContainerImpl implements GenPaletteDrawer {
 
-	/**
-	 * The cached value of the '{@link #getPalette() <em>Palette</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPalette()
-	 * @generated
-	 * @ordered
-	 */
-	protected GenPalette palette;
 	/**
 	 * The cached value of the '{@link #getSpecializes() <em>Specializes</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -103,8 +94,9 @@ public class GenPaletteDrawerImpl extends GenPaletteToolContainerImpl implements
 	 */
 	@Override
 	public GenDomainObject basicGetOwner() {
-		if (eIsSet(ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE)) {
-			return basicGetPalette();
+		GenPalette palette = getPalette();
+		if (palette != null) {
+			return palette;
 		}
 		return super.basicGetOwner();
 	}
@@ -158,16 +150,9 @@ public class GenPaletteDrawerImpl extends GenPaletteToolContainerImpl implements
 	 */
 	@Override
 	public GenPalette getPalette() {
-		if (palette != null && palette.eIsProxy()) {
-			InternalEObject oldPalette = (InternalEObject) palette;
-			palette = (GenPalette) eResolveProxy(oldPalette);
-			if (palette != oldPalette) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE,
-							oldPalette, palette));
-			}
-		}
-		return palette;
+		if (eContainerFeatureID() != ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE)
+			return null;
+		return (GenPalette) eInternalContainer();
 	}
 
 	/**
@@ -175,8 +160,9 @@ public class GenPaletteDrawerImpl extends GenPaletteToolContainerImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GenPalette basicGetPalette() {
-		return palette;
+	public NotificationChain basicSetPalette(GenPalette newPalette, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newPalette, ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE, msgs);
+		return msgs;
 	}
 
 	/**
@@ -186,11 +172,22 @@ public class GenPaletteDrawerImpl extends GenPaletteToolContainerImpl implements
 	 */
 	@Override
 	public void setPalette(GenPalette newPalette) {
-		GenPalette oldPalette = palette;
-		palette = newPalette;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE, oldPalette,
-					palette));
+		if (newPalette != eInternalContainer()
+				|| (eContainerFeatureID() != ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE && newPalette != null)) {
+			if (EcoreUtil.isAncestor(this, newPalette))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newPalette != null)
+				msgs = ((InternalEObject) newPalette).eInverseAdd(this, ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER,
+						GenPalette.class, msgs);
+			msgs = basicSetPalette(newPalette, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE, newPalette,
+					newPalette));
 	}
 
 	/**
@@ -209,16 +206,59 @@ public class GenPaletteDrawerImpl extends GenPaletteToolContainerImpl implements
 	 * @generated
 	 */
 	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE:
-			if (resolve)
-				return getPalette();
-			return basicGetPalette();
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetPalette((GenPalette) otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE:
+			return basicSetPalette(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+		case ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE:
+			return eInternalContainer().eInverseRemove(this, ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER, GenPalette.class,
+					msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE_DRAWER__SPECIALIZES:
 			if (resolve)
 				return getSpecializes();
 			return basicGetSpecializes();
+		case ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE:
+			return getPalette();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -231,11 +271,11 @@ public class GenPaletteDrawerImpl extends GenPaletteToolContainerImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE:
-			setPalette((GenPalette) newValue);
-			return;
 		case ZDLGenPackage.GEN_PALETTE_DRAWER__SPECIALIZES:
 			setSpecializes((GenPaletteDrawer) newValue);
+			return;
+		case ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE:
+			setPalette((GenPalette) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -249,11 +289,11 @@ public class GenPaletteDrawerImpl extends GenPaletteToolContainerImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE:
-			setPalette((GenPalette) null);
-			return;
 		case ZDLGenPackage.GEN_PALETTE_DRAWER__SPECIALIZES:
 			setSpecializes((GenPaletteDrawer) null);
+			return;
+		case ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE:
+			setPalette((GenPalette) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -269,10 +309,10 @@ public class GenPaletteDrawerImpl extends GenPaletteToolContainerImpl implements
 		switch (featureID) {
 		case ZDLGenPackage.GEN_PALETTE_DRAWER__OWNER:
 			return isSetOwner();
-		case ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE:
-			return palette != null;
 		case ZDLGenPackage.GEN_PALETTE_DRAWER__SPECIALIZES:
 			return specializes != null;
+		case ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE:
+			return getPalette() != null;
 		}
 		return super.eIsSet(featureID);
 	}

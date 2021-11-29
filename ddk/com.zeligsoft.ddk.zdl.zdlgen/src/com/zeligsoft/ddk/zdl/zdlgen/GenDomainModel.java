@@ -28,20 +28,20 @@ import org.eclipse.uml2.uml.Model;
  * <ul>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getDomainModel <em>Domain Model</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getNsURI <em>Ns URI</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getOwningGenModel <em>Owning Gen Model</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getRootPackage <em>Root Package</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getImplementationSubPackage <em>Implementation Sub Package</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getImplSuffix <em>Impl Suffix</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getApiProject <em>Api Project</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getPalette <em>Palette</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getMenuModel <em>Menu Model</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getOwningGenModel <em>Owning Gen Model</em>}</li>
  * </ul>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModel()
  * @model
  * @generated
  */
-public interface GenDomainModel extends GenDomainPackage, GenDomainObject {
+public interface GenDomainModel extends GenDomainPackage {
 
 	/**
 	 * Returns the value of the '<em><b>Domain Model</b></em>' reference.
@@ -94,7 +94,7 @@ public interface GenDomainModel extends GenDomainPackage, GenDomainObject {
 	 * @return the value of the '<em>Ns URI</em>' attribute.
 	 * @see #setNsURI(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModel_NsURI()
-	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	String getNsURI();
@@ -120,7 +120,7 @@ public interface GenDomainModel extends GenDomainPackage, GenDomainObject {
 	 * @return the value of the '<em>Root Package</em>' attribute.
 	 * @see #setRootPackage(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModel_RootPackage()
-	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	String getRootPackage();
@@ -146,7 +146,7 @@ public interface GenDomainModel extends GenDomainPackage, GenDomainObject {
 	 * @return the value of the '<em>Implementation Sub Package</em>' attribute.
 	 * @see #setImplementationSubPackage(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModel_ImplementationSubPackage()
-	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	String getImplementationSubPackage();
@@ -172,7 +172,7 @@ public interface GenDomainModel extends GenDomainPackage, GenDomainObject {
 	 * @return the value of the '<em>Impl Suffix</em>' attribute.
 	 * @see #setImplSuffix(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModel_ImplSuffix()
-	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	String getImplSuffix();
@@ -198,7 +198,7 @@ public interface GenDomainModel extends GenDomainPackage, GenDomainObject {
 	 * @return the value of the '<em>Api Project</em>' attribute.
 	 * @see #setApiProject(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModel_ApiProject()
-	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	String getApiProject();
@@ -273,7 +273,8 @@ public interface GenDomainModel extends GenDomainPackage, GenDomainObject {
 	void setMenuModel(GenMenuModel value);
 
 	/**
-	 * Returns the value of the '<em><b>Owning Gen Model</b></em>' reference.
+	 * Returns the value of the '<em><b>Owning Gen Model</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenModel#getOwnedModels <em>Owned Model</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -286,20 +287,21 @@ public interface GenDomainModel extends GenDomainPackage, GenDomainObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owning Gen Model</em>' reference.
+	 * @return the value of the '<em>Owning Gen Model</em>' container reference.
 	 * @see #setOwningGenModel(GenModel)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainModel_OwningGenModel()
-	 * @model required="true" ordered="false"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenModel#getOwnedModels
+	 * @model opposite="ownedModel" required="true" transient="false" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenModel getOwningGenModel();
 
 	/**
-	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getOwningGenModel <em>Owning Gen Model</em>}' reference.
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getOwningGenModel <em>Owning Gen Model</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owning Gen Model</em>' reference.
+	 * @param value the new value of the '<em>Owning Gen Model</em>' container reference.
 	 * @see #getOwningGenModel()
 	 * @generated
 	 */
@@ -308,7 +310,7 @@ public interface GenDomainModel extends GenDomainPackage, GenDomainObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" ordered="false" qualifiedNameDataType="org.eclipse.uml2.types.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
+	 * @model required="true" ordered="false" qualifiedNameRequired="true" qualifiedNameOrdered="false"
 	 * @generated
 	 */
 	GenDomainBlock getDomainBlock(String qualifiedName);

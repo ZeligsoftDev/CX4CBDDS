@@ -90,7 +90,8 @@ public interface GenDomainBlockReference extends GenDomainObject {
 	void setDomainBlockReference(Dependency value);
 
 	/**
-	 * Returns the value of the '<em><b>Domain Specialization</b></em>' reference.
+	 * Returns the value of the '<em><b>Domain Specialization</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainBlocks <em>Domain Block</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -103,20 +104,21 @@ public interface GenDomainBlockReference extends GenDomainObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Domain Specialization</em>' reference.
+	 * @return the value of the '<em>Domain Specialization</em>' container reference.
 	 * @see #setDomainSpecialization(GenDomainSpecialization)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlockReference_DomainSpecialization()
-	 * @model required="true" ordered="false"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainBlocks
+	 * @model opposite="domainBlock" required="true" transient="false" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainSpecialization getDomainSpecialization();
 
 	/**
-	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference#getDomainSpecialization <em>Domain Specialization</em>}' reference.
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference#getDomainSpecialization <em>Domain Specialization</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Domain Specialization</em>' reference.
+	 * @param value the new value of the '<em>Domain Specialization</em>' container reference.
 	 * @see #getDomainSpecialization()
 	 * @generated
 	 */

@@ -90,7 +90,8 @@ public interface GenDomainGeneralization extends GenDomainObject {
 	void setDomainGeneralization(Generalization value);
 
 	/**
-	 * Returns the value of the '<em><b>Specific</b></em>' reference.
+	 * Returns the value of the '<em><b>Specific</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getGeneralizations <em>Generalization</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -103,20 +104,21 @@ public interface GenDomainGeneralization extends GenDomainObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Specific</em>' reference.
+	 * @return the value of the '<em>Specific</em>' container reference.
 	 * @see #setSpecific(GenDomainConcept)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainGeneralization_Specific()
-	 * @model required="true" ordered="false"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept#getGeneralizations
+	 * @model opposite="generalization" required="true" transient="false" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainConcept getSpecific();
 
 	/**
-	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization#getSpecific <em>Specific</em>}' reference.
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization#getSpecific <em>Specific</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Specific</em>' reference.
+	 * @param value the new value of the '<em>Specific</em>' container reference.
 	 * @see #getSpecific()
 	 * @generated
 	 */

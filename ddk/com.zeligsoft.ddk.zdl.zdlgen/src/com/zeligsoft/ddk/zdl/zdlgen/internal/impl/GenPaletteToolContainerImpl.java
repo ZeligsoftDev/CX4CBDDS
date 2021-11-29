@@ -146,8 +146,9 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl imp
 	@Override
 	public EList<GenPaletteTool> getOwnedTools() {
 		if (ownedTools == null) {
-			ownedTools = new SubsetSupersetEObjectContainmentEList<GenPaletteTool>(GenPaletteTool.class, this,
-					ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL, OWNED_TOOL_ESUPERSETS, null);
+			ownedTools = new SubsetSupersetEObjectContainmentWithInverseEList<GenPaletteTool>(GenPaletteTool.class,
+					this, ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL, OWNED_TOOL_ESUPERSETS, null,
+					ZDLGenPackage.GEN_PALETTE_TOOL__CONTAINER);
 		}
 		return ownedTools;
 	}
@@ -192,6 +193,21 @@ public abstract class GenPaletteToolContainerImpl extends GenPaletteItemImpl imp
 					ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__TARGET_DIAGRAM);
 		}
 		return targetDiagrams;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case ZDLGenPackage.GEN_PALETTE_TOOL_CONTAINER__OWNED_TOOL:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedTools()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
