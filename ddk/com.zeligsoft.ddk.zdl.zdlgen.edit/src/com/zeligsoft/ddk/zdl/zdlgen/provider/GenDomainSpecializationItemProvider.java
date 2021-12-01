@@ -78,9 +78,9 @@ public class GenDomainSpecializationItemProvider extends GenDomainPackageableEle
 			addCodeGenTargetPropertyDescriptor(object);
 			addRhapsodyJavaProjectPropertyDescriptor(object);
 			addRhapsodyJDTJavaLibraryPropertyDescriptor(object);
-			addElementtypeConfigurationContainerUriPropertyDescriptor(object);
 			addExcludedPaletteItemPropertyDescriptor(object);
 			addIncludedUMLMenusPropertyDescriptor(object);
+			addElementtypeConfigurationContainerUriPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -400,8 +400,8 @@ public class GenDomainSpecializationItemProvider extends GenDomainPackageableEle
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK);
 			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY);
+			childrenFeatures.add(ZDLGenPackage.Literals.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK);
 		}
 		return childrenFeatures;
 	}
@@ -467,8 +467,8 @@ public class GenDomainSpecializationItemProvider extends GenDomainPackageableEle
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK:
 		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY:
+		case ZDLGenPackage.GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}

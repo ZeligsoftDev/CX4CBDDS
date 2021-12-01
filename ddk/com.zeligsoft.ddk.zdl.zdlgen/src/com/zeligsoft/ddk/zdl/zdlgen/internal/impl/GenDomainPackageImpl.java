@@ -161,8 +161,9 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl implem
 	@Override
 	public EList<GenDomainPackageableElement> getElements() {
 		if (elements == null) {
-			elements = new EObjectContainmentEList<GenDomainPackageableElement>(GenDomainPackageableElement.class, this,
-					ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT);
+			elements = new EObjectContainmentWithInverseEList<GenDomainPackageableElement>(
+					GenDomainPackageableElement.class, this, ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT,
+					ZDLGenPackage.GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE);
 		}
 		return elements;
 	}
@@ -235,6 +236,21 @@ public class GenDomainPackageImpl extends GenDomainPackageableElementImpl implem
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ZDLGenPackage.GEN_DOMAIN_PACKAGE__DOMAIN_PACKAGE,
 					oldDomainPackage, domainPackage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_PACKAGE__ELEMENT:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getElements()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

@@ -34,7 +34,8 @@ package com.zeligsoft.ddk.zdl.zdlgen;
 public interface GenDomainPackageableElement extends GenDomainNamedElement {
 
 	/**
-	 * Returns the value of the '<em><b>Package</b></em>' reference.
+	 * Returns the value of the '<em><b>Package</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackage#getElements <em>Element</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -47,20 +48,21 @@ public interface GenDomainPackageableElement extends GenDomainNamedElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Package</em>' reference.
+	 * @return the value of the '<em>Package</em>' container reference.
 	 * @see #setPackage(GenDomainPackage)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainPackageableElement_Package()
-	 * @model ordered="false"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackage#getElements
+	 * @model opposite="element" transient="false" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainPackage getPackage();
 
 	/**
-	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement#getPackage <em>Package</em>}' reference.
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement#getPackage <em>Package</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Package</em>' reference.
+	 * @param value the new value of the '<em>Package</em>' container reference.
 	 * @see #getPackage()
 	 * @generated
 	 */

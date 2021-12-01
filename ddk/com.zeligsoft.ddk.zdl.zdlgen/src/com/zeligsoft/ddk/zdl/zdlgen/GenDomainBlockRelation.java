@@ -26,9 +26,9 @@ import org.eclipse.uml2.uml.DirectedRelationship;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getSource <em>Source</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getTarget <em>Target</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getDomainBlockRelation <em>Domain Block Relation</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getSource <em>Source</em>}</li>
  * </ul>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlockRelation()
@@ -38,7 +38,8 @@ import org.eclipse.uml2.uml.DirectedRelationship;
 public interface GenDomainBlockRelation extends GenDomainObject {
 
 	/**
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
+	 * Returns the value of the '<em><b>Source</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#getRelations <em>Relation</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -51,20 +52,21 @@ public interface GenDomainBlockRelation extends GenDomainObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source</em>' reference.
+	 * @return the value of the '<em>Source</em>' container reference.
 	 * @see #setSource(GenDomainBlock)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainBlockRelation_Source()
-	 * @model required="true" ordered="false"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock#getRelations
+	 * @model opposite="relation" required="true" transient="false" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenDomainBlock getSource();
 
 	/**
-	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getSource <em>Source</em>}' reference.
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getSource <em>Source</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source</em>' reference.
+	 * @param value the new value of the '<em>Source</em>' container reference.
 	 * @see #getSource()
 	 * @generated
 	 */

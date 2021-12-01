@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.EClass;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainBlocks <em>Domain Block</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainSpecialization <em>Domain Specialization</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainConcepts <em>Domain Concept</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getPluginName <em>Plugin Name</em>}</li>
@@ -40,9 +39,10 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getCodeGenTarget <em>Code Gen Target</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getRhapsodyJavaProject <em>Rhapsody Java Project</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getRhapsodyJDTJavaLibrary <em>Rhapsody JDT Java Library</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getElementtypeConfigurationContainerUri <em>Elementtype Configuration Container Uri</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getExcludedPaletteItems <em>Excluded Palette Item</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getIncludedUMLMeni <em>Included UML Menus</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getDomainBlocks <em>Domain Block</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization#getElementtypeConfigurationContainerUri <em>Elementtype Configuration Container Uri</em>}</li>
  * </ul>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization()
@@ -54,6 +54,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	/**
 	 * Returns the value of the '<em><b>Domain Block</b></em>' containment reference list.
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference}.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference#getDomainSpecialization <em>Domain Specialization</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -68,7 +69,8 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Domain Block</em>' containment reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_DomainBlock()
-	 * @model containment="true" ordered="false"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference#getDomainSpecialization
+	 * @model opposite="domainSpecialization" containment="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
@@ -81,7 +83,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Elementtype Configuration Container Uri</em>' attribute.
 	 * @see #setElementtypeConfigurationContainerUri(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_ElementtypeConfigurationContainerUri()
-	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getElementtypeConfigurationContainerUri();
@@ -99,7 +101,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false" classifierRequired="true" classifierOrdered="false"
+	 * @model required="true" ordered="false" classifierRequired="true" classifierOrdered="false"
 	 * @generated
 	 */
 	String getUniqueName(GenDomainClassifier classifier);
@@ -115,7 +117,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" itemRequired="true" itemOrdered="false"
+	 * @model required="true" ordered="false" itemRequired="true" itemOrdered="false"
 	 * @generated
 	 */
 	boolean isExcluded(GenPaletteItem item);
@@ -199,7 +201,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Plugin Name</em>' attribute.
 	 * @see #setPluginName(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_PluginName()
-	 * @model dataType="org.eclipse.uml2.types.String" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getPluginName();
@@ -221,7 +223,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Resource Name</em>' attribute.
 	 * @see #setResourceName(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_ResourceName()
-	 * @model dataType="org.eclipse.uml2.types.String" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getResourceName();
@@ -239,6 +241,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	/**
 	 * Returns the value of the '<em><b>Domain Model Library</b></em>' containment reference list.
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference}.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainSpecialization <em>Domain Specialization</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -253,7 +256,8 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Domain Model Library</em>' containment reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_DomainModelLibrary()
-	 * @model containment="true" ordered="false"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainSpecialization
+	 * @model opposite="domainSpecialization" containment="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
@@ -270,7 +274,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Model Library Names Package</em>' attribute.
 	 * @see #setModelLibraryNamesPackage(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_ModelLibraryNamesPackage()
-	 * @model dataType="org.eclipse.uml2.types.String" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	String getModelLibraryNamesPackage();
@@ -297,7 +301,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Model Library Source Folder</em>' attribute.
 	 * @see #setModelLibrarySourceFolder(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_ModelLibrarySourceFolder()
-	 * @model default="src" dataType="org.eclipse.uml2.types.String" ordered="false"
+	 * @model default="src" ordered="false"
 	 * @generated
 	 */
 	String getModelLibrarySourceFolder();
@@ -323,7 +327,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Menu Model Resource</em>' attribute.
 	 * @see #setMenuModelResource(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_MenuModelResource()
-	 * @model dataType="org.eclipse.uml2.types.String" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	String getMenuModelResource();
@@ -349,7 +353,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_Version()
-	 * @model dataType="org.eclipse.uml2.types.String" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getVersion();
@@ -375,7 +379,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Code Gen Target</em>' attribute.
 	 * @see #setCodeGenTarget(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_CodeGenTarget()
-	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	String getCodeGenTarget();
@@ -401,7 +405,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Rhapsody Java Project</em>' attribute.
 	 * @see #setRhapsodyJavaProject(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_RhapsodyJavaProject()
-	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	String getRhapsodyJavaProject();
@@ -428,7 +432,7 @@ public interface GenDomainSpecialization extends GenDomainPackageableElement {
 	 * @return the value of the '<em>Rhapsody JDT Java Library</em>' attribute.
 	 * @see #setRhapsodyJDTJavaLibrary(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainSpecialization_RhapsodyJDTJavaLibrary()
-	 * @model default="RHAPSODY_API" dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
+	 * @model default="RHAPSODY_API" required="true" ordered="false"
 	 * @generated
 	 */
 	String getRhapsodyJDTJavaLibrary();

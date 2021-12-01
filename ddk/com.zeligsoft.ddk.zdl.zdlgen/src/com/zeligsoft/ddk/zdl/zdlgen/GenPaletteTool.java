@@ -24,8 +24,8 @@ package com.zeligsoft.ddk.zdl.zdlgen;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool#getContainer <em>Container</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool#getOverrides <em>Overrides</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool#getContainer <em>Container</em>}</li>
  * </ul>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteTool()
@@ -61,7 +61,8 @@ public interface GenPaletteTool extends GenPaletteItem {
 	void setOverrides(GenPaletteTool value);
 
 	/**
-	 * Returns the value of the '<em><b>Container</b></em>' reference.
+	 * Returns the value of the '<em><b>Container</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteToolContainer#getOwnedTools <em>Owned Tool</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -74,20 +75,21 @@ public interface GenPaletteTool extends GenPaletteItem {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Container</em>' reference.
+	 * @return the value of the '<em>Container</em>' container reference.
 	 * @see #setContainer(GenPaletteToolContainer)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteTool_Container()
-	 * @model required="true" ordered="false"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenPaletteToolContainer#getOwnedTools
+	 * @model opposite="ownedTool" required="true" transient="false" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
 	GenPaletteToolContainer getContainer();
 
 	/**
-	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool#getContainer <em>Container</em>}' reference.
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool#getContainer <em>Container</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Container</em>' reference.
+	 * @param value the new value of the '<em>Container</em>' container reference.
 	 * @see #getContainer()
 	 * @generated
 	 */

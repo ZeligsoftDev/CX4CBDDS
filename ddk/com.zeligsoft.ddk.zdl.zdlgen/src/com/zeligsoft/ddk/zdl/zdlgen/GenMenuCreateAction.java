@@ -47,7 +47,7 @@ public interface GenMenuCreateAction extends GenMenuAction {
 	 * @return the value of the '<em>Type Hint</em>' attribute.
 	 * @see #setTypeHint(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenMenuCreateAction_TypeHint()
-	 * @model dataType="org.eclipse.uml2.types.String" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	String getTypeHint();

@@ -44,7 +44,7 @@ public interface OawExpression extends Expression {
 	 * @return the value of the '<em>Variable Name</em>' attribute.
 	 * @see #setVariableName(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getOawExpression_VariableName()
-	 * @model default="self" dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
+	 * @model default="self" required="true" ordered="false"
 	 * @generated
 	 */
 	String getVariableName();

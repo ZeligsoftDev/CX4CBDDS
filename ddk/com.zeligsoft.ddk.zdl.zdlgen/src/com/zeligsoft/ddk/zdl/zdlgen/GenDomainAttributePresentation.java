@@ -30,8 +30,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#isReadOnly <em>Read Only</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getPresentationHint <em>Presentation Hint</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getPresentationKind <em>Presentation Kind</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getOrder <em>Order</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getVisibleModelType <em>Visible Model Type</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getOrder <em>Order</em>}</li>
  * </ul>
  *
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainAttributePresentation()
@@ -51,7 +51,7 @@ public interface GenDomainAttributePresentation extends EObject {
 	 * @return the value of the '<em>Visible</em>' attribute.
 	 * @see #setVisible(boolean)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainAttributePresentation_Visible()
-	 * @model default="true" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
+	 * @model default="true" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isVisible();
@@ -78,7 +78,7 @@ public interface GenDomainAttributePresentation extends EObject {
 	 * @return the value of the '<em>Read Only</em>' attribute.
 	 * @see #setReadOnly(boolean)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainAttributePresentation_ReadOnly()
-	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
+	 * @model default="false" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isReadOnly();
@@ -104,7 +104,7 @@ public interface GenDomainAttributePresentation extends EObject {
 	 * @return the value of the '<em>Presentation Hint</em>' attribute.
 	 * @see #setPresentationHint(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainAttributePresentation_PresentationHint()
-	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	String getPresentationHint();
@@ -150,33 +150,6 @@ public interface GenDomainAttributePresentation extends EObject {
 	void setPresentationKind(GenDomainAttributePresentationKind value);
 
 	/**
-	 * Returns the value of the '<em><b>Order</b></em>' attribute.
-	 * The default value is <code>"8000"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Order</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Order</em>' attribute.
-	 * @see #setOrder(int)
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainAttributePresentation_Order()
-	 * @model default="8000" dataType="org.eclipse.uml2.types.Integer" ordered="false"
-	 * @generated
-	 */
-	int getOrder();
-
-	/**
-	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getOrder <em>Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Order</em>' attribute.
-	 * @see #getOrder()
-	 * @generated
-	 */
-	void setOrder(int value);
-
-	/**
 	 * Returns the value of the '<em><b>Visible Model Type</b></em>' attribute.
 	 * The default value is <code>"ALL"</code>.
 	 * The literals are from the enumeration {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPresentationModelKind}.
@@ -201,5 +174,32 @@ public interface GenDomainAttributePresentation extends EObject {
 	 * @generated
 	 */
 	void setVisibleModelType(GenDomainPresentationModelKind value);
+
+	/**
+	 * Returns the value of the '<em><b>Order</b></em>' attribute.
+	 * The default value is <code>"8000"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Order</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Order</em>' attribute.
+	 * @see #setOrder(int)
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainAttributePresentation_Order()
+	 * @model default="8000" ordered="false"
+	 * @generated
+	 */
+	int getOrder();
+
+	/**
+	 * Sets the value of the '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getOrder <em>Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Order</em>' attribute.
+	 * @see #getOrder()
+	 * @generated
+	 */
+	void setOrder(int value);
 
 } // GenDomainAttributePresentation

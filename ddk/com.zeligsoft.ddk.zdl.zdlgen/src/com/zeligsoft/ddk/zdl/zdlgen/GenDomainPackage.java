@@ -40,6 +40,7 @@ public interface GenDomainPackage extends GenDomainPackageableElement {
 	/**
 	 * Returns the value of the '<em><b>Element</b></em>' containment reference list.
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement}.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement#getPackage <em>Package</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -54,7 +55,8 @@ public interface GenDomainPackage extends GenDomainPackageableElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Element</em>' containment reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainPackage_Element()
-	 * @model containment="true"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement#getPackage
+	 * @model opposite="package" containment="true"
 	 *        annotation="subsets"
 	 * @generated
 	 */

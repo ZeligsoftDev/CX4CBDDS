@@ -39,6 +39,7 @@ public interface GenPalette extends GenPaletteItem {
 	/**
 	 * Returns the value of the '<em><b>Owned Drawer</b></em>' containment reference list.
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer}.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getPalette <em>Palette</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -54,7 +55,8 @@ public interface GenPalette extends GenPaletteItem {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Drawer</em>' containment reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPalette_OwnedDrawer()
-	 * @model containment="true" ordered="false"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getPalette
+	 * @model opposite="palette" containment="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */

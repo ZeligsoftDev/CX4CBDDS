@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/uml2/2.0.0/UML originalName='ZDLGen'"
  * @generated
  */
 public interface ZDLGenPackage extends EPackage {
@@ -417,7 +416,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_CLASSIFIER__DOMAIN_ELEMENT = GEN_DOMAIN_NAMED_ELEMENT__DOMAIN_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Block</b></em>' reference.
+	 * The feature id for the '<em><b>Block</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -543,7 +542,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_PACKAGEABLE_ELEMENT__DOMAIN_ELEMENT = GEN_DOMAIN_NAMED_ELEMENT__DOMAIN_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -606,7 +605,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_PACKAGE__DOMAIN_ELEMENT = GEN_DOMAIN_PACKAGEABLE_ELEMENT__DOMAIN_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -687,7 +686,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_MODEL__DOMAIN_ELEMENT = GEN_DOMAIN_PACKAGE__DOMAIN_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -732,22 +731,13 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_MODEL__NS_URI = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Owning Gen Model</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_MODEL__OWNING_GEN_MODEL = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Root Package</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_MODEL__ROOT_PACKAGE = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 3;
+	int GEN_DOMAIN_MODEL__ROOT_PACKAGE = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Implementation Sub Package</b></em>' attribute.
@@ -756,7 +746,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_MODEL__IMPLEMENTATION_SUB_PACKAGE = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 4;
+	int GEN_DOMAIN_MODEL__IMPLEMENTATION_SUB_PACKAGE = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Impl Suffix</b></em>' attribute.
@@ -765,7 +755,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_MODEL__IMPL_SUFFIX = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 5;
+	int GEN_DOMAIN_MODEL__IMPL_SUFFIX = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Api Project</b></em>' attribute.
@@ -774,7 +764,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_MODEL__API_PROJECT = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 6;
+	int GEN_DOMAIN_MODEL__API_PROJECT = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Palette</b></em>' containment reference.
@@ -783,7 +773,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_MODEL__PALETTE = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 7;
+	int GEN_DOMAIN_MODEL__PALETTE = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Menu Model</b></em>' containment reference.
@@ -792,7 +782,16 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_MODEL__MENU_MODEL = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 8;
+	int GEN_DOMAIN_MODEL__MENU_MODEL = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Owning Gen Model</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_MODEL__OWNING_GEN_MODEL = GEN_DOMAIN_PACKAGE_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Gen Domain Model</em>' class.
@@ -1143,22 +1142,22 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_PALETTE_DRAWER__TARGET_DIAGRAM = GEN_PALETTE_TOOL_CONTAINER__TARGET_DIAGRAM;
 
 	/**
-	 * The feature id for the '<em><b>Palette</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_PALETTE_DRAWER__PALETTE = GEN_PALETTE_TOOL_CONTAINER_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Specializes</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_PALETTE_DRAWER__SPECIALIZES = GEN_PALETTE_TOOL_CONTAINER_FEATURE_COUNT + 1;
+	int GEN_PALETTE_DRAWER__SPECIALIZES = GEN_PALETTE_TOOL_CONTAINER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Palette</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PALETTE_DRAWER__PALETTE = GEN_PALETTE_TOOL_CONTAINER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Gen Palette Drawer</em>' class.
@@ -1215,22 +1214,22 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_PALETTE_TOOL__DESCRIPTION = GEN_PALETTE_ITEM__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Container</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_PALETTE_TOOL__CONTAINER = GEN_PALETTE_ITEM_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_PALETTE_TOOL__OVERRIDES = GEN_PALETTE_ITEM_FEATURE_COUNT + 1;
+	int GEN_PALETTE_TOOL__OVERRIDES = GEN_PALETTE_ITEM_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Container</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PALETTE_TOOL__CONTAINER = GEN_PALETTE_ITEM_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Gen Palette Tool</em>' class.
@@ -1627,7 +1626,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_BLOCK__DOMAIN_ELEMENT = GEN_DOMAIN_PACKAGEABLE_ELEMENT__DOMAIN_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1744,22 +1743,13 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_BLOCK_RELATION__OWNED_OBJECT = GEN_DOMAIN_OBJECT__OWNED_OBJECT;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_BLOCK_RELATION__SOURCE = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_BLOCK_RELATION__TARGET = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 1;
+	int GEN_DOMAIN_BLOCK_RELATION__TARGET = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Domain Block Relation</b></em>' reference.
@@ -1768,7 +1758,16 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_BLOCK_RELATION__DOMAIN_BLOCK_RELATION = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 2;
+	int GEN_DOMAIN_BLOCK_RELATION__DOMAIN_BLOCK_RELATION = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_BLOCK_RELATION__SOURCE = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Gen Domain Block Relation</em>' class.
@@ -1807,15 +1806,6 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_BLOCK_IMPORT__OWNED_OBJECT = GEN_DOMAIN_BLOCK_RELATION__OWNED_OBJECT;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_BLOCK_IMPORT__SOURCE = GEN_DOMAIN_BLOCK_RELATION__SOURCE;
-
-	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1832,6 +1822,15 @@ public interface ZDLGenPackage extends EPackage {
 	 * @ordered
 	 */
 	int GEN_DOMAIN_BLOCK_IMPORT__DOMAIN_BLOCK_RELATION = GEN_DOMAIN_BLOCK_RELATION__DOMAIN_BLOCK_RELATION;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_BLOCK_IMPORT__SOURCE = GEN_DOMAIN_BLOCK_RELATION__SOURCE;
 
 	/**
 	 * The number of structural features of the '<em>Gen Domain Block Import</em>' class.
@@ -1870,15 +1869,6 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_BLOCK_MERGE__OWNED_OBJECT = GEN_DOMAIN_BLOCK_RELATION__OWNED_OBJECT;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_BLOCK_MERGE__SOURCE = GEN_DOMAIN_BLOCK_RELATION__SOURCE;
-
-	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1895,6 +1885,15 @@ public interface ZDLGenPackage extends EPackage {
 	 * @ordered
 	 */
 	int GEN_DOMAIN_BLOCK_MERGE__DOMAIN_BLOCK_RELATION = GEN_DOMAIN_BLOCK_RELATION__DOMAIN_BLOCK_RELATION;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_BLOCK_MERGE__SOURCE = GEN_DOMAIN_BLOCK_RELATION__SOURCE;
 
 	/**
 	 * The number of structural features of the '<em>Gen Domain Block Merge</em>' class.
@@ -1933,7 +1932,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_GENERALIZATION__OWNED_OBJECT = GEN_DOMAIN_OBJECT__OWNED_OBJECT;
 
 	/**
-	 * The feature id for the '<em><b>Specific</b></em>' reference.
+	 * The feature id for the '<em><b>Specific</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2014,7 +2013,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_CONCEPT__DOMAIN_ELEMENT = GEN_DOMAIN_CLASSIFIER__DOMAIN_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Block</b></em>' reference.
+	 * The feature id for the '<em><b>Block</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2050,22 +2049,13 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_CONCEPT__FEATURE = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_CONCEPT__GENERALIZATION = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 3;
-
-	/**
 	 * The feature id for the '<em><b>Domain Concept</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__DOMAIN_CONCEPT = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 4;
+	int GEN_DOMAIN_CONCEPT__DOMAIN_CONCEPT = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Uml Metaclass</b></em>' reference list.
@@ -2074,7 +2064,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__UML_METACLASS = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 5;
+	int GEN_DOMAIN_CONCEPT__UML_METACLASS = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>General</b></em>' reference list.
@@ -2083,7 +2073,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__GENERAL = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 6;
+	int GEN_DOMAIN_CONCEPT__GENERAL = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference list.
@@ -2092,7 +2082,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__REFERENCE = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 7;
+	int GEN_DOMAIN_CONCEPT__REFERENCE = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
@@ -2101,7 +2091,16 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__ATTRIBUTE = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 8;
+	int GEN_DOMAIN_CONCEPT__ATTRIBUTE = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Icon Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_CONCEPT__ICON_URI = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Is RSM Suppressed</b></em>' attribute.
@@ -2194,22 +2193,22 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_CONCEPT__RHAPSODY_TO_ADD_NEW = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 18;
 
 	/**
-	 * The feature id for the '<em><b>Icon Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_CONCEPT__ICON_URI = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 19;
-
-	/**
 	 * The feature id for the '<em><b>Override</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_CONCEPT__OVERRIDE = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 20;
+	int GEN_DOMAIN_CONCEPT__OVERRIDE = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 19;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_CONCEPT__GENERALIZATION = GEN_DOMAIN_CLASSIFIER_FEATURE_COUNT + 20;
 
 	/**
 	 * The number of structural features of the '<em>Gen Domain Concept</em>' class.
@@ -2311,22 +2310,22 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_KIND = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Order</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
 	 * The feature id for the '<em><b>Visible Model Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE_MODEL_TYPE = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE_MODEL_TYPE = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Uml Metaattribute</b></em>' reference.
@@ -2338,22 +2337,13 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Concept</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
 	 * The feature id for the '<em><b>Domain Attribute</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 8;
+	int GEN_DOMAIN_STRUCTURAL_FEATURE__DOMAIN_ATTRIBUTE = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Is Rhapsody Suppressed</b></em>' attribute.
@@ -2362,7 +2352,16 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_STRUCTURAL_FEATURE__IS_RHAPSODY_SUPPRESSED = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 9;
+	int GEN_DOMAIN_STRUCTURAL_FEATURE__IS_RHAPSODY_SUPPRESSED = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Concept</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Gen Domain Structural Feature</em>' class.
@@ -2410,22 +2409,22 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND = 3;
 
 	/**
-	 * The feature id for the '<em><b>Order</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER = 4;
-
-	/**
 	 * The feature id for the '<em><b>Visible Model Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE = 5;
+	int GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER = 5;
 
 	/**
 	 * The number of structural features of the '<em>Gen Domain Attribute Presentation</em>' class.
@@ -2518,15 +2517,6 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_REFERENCE__PRESENTATION_KIND = GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_KIND;
 
 	/**
-	 * The feature id for the '<em><b>Order</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_REFERENCE__ORDER = GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER;
-
-	/**
 	 * The feature id for the '<em><b>Visible Model Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2536,6 +2526,15 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_REFERENCE__VISIBLE_MODEL_TYPE = GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE_MODEL_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_REFERENCE__ORDER = GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER;
+
+	/**
 	 * The feature id for the '<em><b>Uml Metaattribute</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2543,15 +2542,6 @@ public interface ZDLGenPackage extends EPackage {
 	 * @ordered
 	 */
 	int GEN_DOMAIN_REFERENCE__UML_METAATTRIBUTE = GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Concept</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_REFERENCE__CONCEPT = GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT;
 
 	/**
 	 * The feature id for the '<em><b>Domain Attribute</b></em>' reference.
@@ -2570,6 +2560,15 @@ public interface ZDLGenPackage extends EPackage {
 	 * @ordered
 	 */
 	int GEN_DOMAIN_REFERENCE__IS_RHAPSODY_SUPPRESSED = GEN_DOMAIN_STRUCTURAL_FEATURE__IS_RHAPSODY_SUPPRESSED;
+
+	/**
+	 * The feature id for the '<em><b>Concept</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_REFERENCE__CONCEPT = GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -2689,15 +2688,6 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_ATTRIBUTE__PRESENTATION_KIND = GEN_DOMAIN_STRUCTURAL_FEATURE__PRESENTATION_KIND;
 
 	/**
-	 * The feature id for the '<em><b>Order</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_ATTRIBUTE__ORDER = GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER;
-
-	/**
 	 * The feature id for the '<em><b>Visible Model Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2707,6 +2697,15 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_ATTRIBUTE__VISIBLE_MODEL_TYPE = GEN_DOMAIN_STRUCTURAL_FEATURE__VISIBLE_MODEL_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_ATTRIBUTE__ORDER = GEN_DOMAIN_STRUCTURAL_FEATURE__ORDER;
+
+	/**
 	 * The feature id for the '<em><b>Uml Metaattribute</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2714,15 +2713,6 @@ public interface ZDLGenPackage extends EPackage {
 	 * @ordered
 	 */
 	int GEN_DOMAIN_ATTRIBUTE__UML_METAATTRIBUTE = GEN_DOMAIN_STRUCTURAL_FEATURE__UML_METAATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Concept</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_ATTRIBUTE__CONCEPT = GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT;
 
 	/**
 	 * The feature id for the '<em><b>Domain Attribute</b></em>' reference.
@@ -2741,6 +2731,15 @@ public interface ZDLGenPackage extends EPackage {
 	 * @ordered
 	 */
 	int GEN_DOMAIN_ATTRIBUTE__IS_RHAPSODY_SUPPRESSED = GEN_DOMAIN_STRUCTURAL_FEATURE__IS_RHAPSODY_SUPPRESSED;
+
+	/**
+	 * The feature id for the '<em><b>Concept</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_ATTRIBUTE__CONCEPT = GEN_DOMAIN_STRUCTURAL_FEATURE__CONCEPT;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -2806,7 +2805,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_DATA_TYPE__DOMAIN_ELEMENT = GEN_DOMAIN_CLASSIFIER__DOMAIN_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Block</b></em>' reference.
+	 * The feature id for the '<em><b>Block</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2869,15 +2868,6 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_ATTRIBUTE_OVERRIDE__PRESENTATION_KIND = GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND;
 
 	/**
-	 * The feature id for the '<em><b>Order</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_ATTRIBUTE_OVERRIDE__ORDER = GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER;
-
-	/**
 	 * The feature id for the '<em><b>Visible Model Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2885,6 +2875,15 @@ public interface ZDLGenPackage extends EPackage {
 	 * @ordered
 	 */
 	int GEN_ATTRIBUTE_OVERRIDE__VISIBLE_MODEL_TYPE = GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_ATTRIBUTE_OVERRIDE__ORDER = GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER;
 
 	/**
 	 * The feature id for the '<em><b>Gen Model</b></em>' reference.
@@ -2977,7 +2976,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_BLOCK_REFERENCE__DOMAIN_BLOCK_REFERENCE = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Domain Specialization</b></em>' reference.
+	 * The feature id for the '<em><b>Domain Specialization</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3040,7 +3039,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_SPECIALIZATION__DOMAIN_ELEMENT = GEN_DOMAIN_PACKAGEABLE_ELEMENT__DOMAIN_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3049,22 +3048,13 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_SPECIALIZATION__PACKAGE = GEN_DOMAIN_PACKAGEABLE_ELEMENT__PACKAGE;
 
 	/**
-	 * The feature id for the '<em><b>Domain Block</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Domain Specialization</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 1;
+	int GEN_DOMAIN_SPECIALIZATION__DOMAIN_SPECIALIZATION = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Domain Concept</b></em>' reference list.
@@ -3073,7 +3063,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 2;
+	int GEN_DOMAIN_SPECIALIZATION__DOMAIN_CONCEPT = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Plugin Name</b></em>' attribute.
@@ -3082,7 +3072,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION__PLUGIN_NAME = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 3;
+	int GEN_DOMAIN_SPECIALIZATION__PLUGIN_NAME = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Resource Name</b></em>' attribute.
@@ -3091,7 +3081,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION__RESOURCE_NAME = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 4;
+	int GEN_DOMAIN_SPECIALIZATION__RESOURCE_NAME = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Domain Model Library</b></em>' containment reference list.
@@ -3100,7 +3090,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 5;
+	int GEN_DOMAIN_SPECIALIZATION__DOMAIN_MODEL_LIBRARY = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Model Library Names Package</b></em>' attribute.
@@ -3109,7 +3099,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_NAMES_PACKAGE = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 6;
+	int GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_NAMES_PACKAGE = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Model Library Source Folder</b></em>' attribute.
@@ -3118,7 +3108,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_SOURCE_FOLDER = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 7;
+	int GEN_DOMAIN_SPECIALIZATION__MODEL_LIBRARY_SOURCE_FOLDER = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Menu Model Resource</b></em>' attribute.
@@ -3127,7 +3117,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION__MENU_MODEL_RESOURCE = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 8;
+	int GEN_DOMAIN_SPECIALIZATION__MENU_MODEL_RESOURCE = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -3136,7 +3126,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION__VERSION = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 9;
+	int GEN_DOMAIN_SPECIALIZATION__VERSION = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Code Gen Target</b></em>' attribute.
@@ -3145,7 +3135,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 10;
+	int GEN_DOMAIN_SPECIALIZATION__CODE_GEN_TARGET = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Rhapsody Java Project</b></em>' attribute.
@@ -3154,7 +3144,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JAVA_PROJECT = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 11;
+	int GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JAVA_PROJECT = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Rhapsody JDT Java Library</b></em>' attribute.
@@ -3163,7 +3153,34 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JDT_JAVA_LIBRARY = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 12;
+	int GEN_DOMAIN_SPECIALIZATION__RHAPSODY_JDT_JAVA_LIBRARY = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Excluded Palette Item</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_SPECIALIZATION__EXCLUDED_PALETTE_ITEM = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Included UML Menus</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_SPECIALIZATION__INCLUDED_UML_MENUS = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Domain Block</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_SPECIALIZATION__DOMAIN_BLOCK = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Elementtype Configuration Container Uri</b></em>' attribute.
@@ -3173,25 +3190,7 @@ public interface ZDLGenPackage extends EPackage {
 	 * @ordered
 	 */
 	int GEN_DOMAIN_SPECIALIZATION__ELEMENTTYPE_CONFIGURATION_CONTAINER_URI = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT
-			+ 13;
-
-	/**
-	 * The feature id for the '<em><b>Excluded Palette Item</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_SPECIALIZATION__EXCLUDED_PALETTE_ITEM = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 14;
-
-	/**
-	 * The feature id for the '<em><b>Included UML Menus</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_SPECIALIZATION__INCLUDED_UML_MENUS = GEN_DOMAIN_PACKAGEABLE_ELEMENT_FEATURE_COUNT + 15;
+			+ 15;
 
 	/**
 	 * The number of structural features of the '<em>Gen Domain Specialization</em>' class.
@@ -3249,22 +3248,13 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__TARGET = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Domain Specialization</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Domain Model Library Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_MODEL_LIBRARY_REFERENCE = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 2;
+	int GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_MODEL_LIBRARY_REFERENCE = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Resource Name</b></em>' attribute.
@@ -3273,7 +3263,16 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__RESOURCE_NAME = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 3;
+	int GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__RESOURCE_NAME = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Domain Specialization</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DOMAIN_MODEL_LIBRARY_REFERENCE__DOMAIN_SPECIALIZATION = GEN_DOMAIN_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Gen Domain Model Library Reference</em>' class.
@@ -3340,7 +3339,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_MODEL_LIBRARY__DOMAIN_ELEMENT = GEN_DOMAIN_PACKAGEABLE_ELEMENT__DOMAIN_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * The feature id for the '<em><b>Package</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3412,7 +3411,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_ENUM__DOMAIN_ELEMENT = GEN_DOMAIN_DATA_TYPE__DOMAIN_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Block</b></em>' reference.
+	 * The feature id for the '<em><b>Block</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3502,7 +3501,7 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL = GEN_DOMAIN_NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Enumeration</b></em>' reference.
+	 * The feature id for the '<em><b>Enumeration</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3575,15 +3574,6 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_PALETTE_CREATION_TOOL__DESCRIPTION = GEN_PALETTE_TOOL__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Container</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_PALETTE_CREATION_TOOL__CONTAINER = GEN_PALETTE_TOOL__CONTAINER;
-
-	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3591,6 +3581,15 @@ public interface ZDLGenPackage extends EPackage {
 	 * @ordered
 	 */
 	int GEN_PALETTE_CREATION_TOOL__OVERRIDES = GEN_PALETTE_TOOL__OVERRIDES;
+
+	/**
+	 * The feature id for the '<em><b>Container</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PALETTE_CREATION_TOOL__CONTAINER = GEN_PALETTE_TOOL__CONTAINER;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -3775,22 +3774,22 @@ public interface ZDLGenPackage extends EPackage {
 	int GEN_PALETTE_STACK__TARGET_DIAGRAM = GEN_PALETTE_TOOL_CONTAINER__TARGET_DIAGRAM;
 
 	/**
-	 * The feature id for the '<em><b>Container</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GEN_PALETTE_STACK__CONTAINER = GEN_PALETTE_TOOL_CONTAINER_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Overrides</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_PALETTE_STACK__OVERRIDES = GEN_PALETTE_TOOL_CONTAINER_FEATURE_COUNT + 1;
+	int GEN_PALETTE_STACK__OVERRIDES = GEN_PALETTE_TOOL_CONTAINER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Container</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PALETTE_STACK__CONTAINER = GEN_PALETTE_TOOL_CONTAINER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Active Tool</b></em>' reference.
@@ -4626,10 +4625,10 @@ public interface ZDLGenPackage extends EPackage {
 	EClass getGenDomainClassifier();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier#getBlock <em>Block</em>}'.
+	 * Returns the meta object for the container reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier#getBlock <em>Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Block</em>'.
+	 * @return the meta object for the container reference '<em>Block</em>'.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier#getBlock()
 	 * @see #getGenDomainClassifier()
 	 * @generated
@@ -4712,10 +4711,10 @@ public interface ZDLGenPackage extends EPackage {
 	EAttribute getGenDomainStructuralFeature_IsRhapsodySuppressed();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept <em>Concept</em>}'.
+	 * Returns the meta object for the container reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept <em>Concept</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Concept</em>'.
+	 * @return the meta object for the container reference '<em>Concept</em>'.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature#getConcept()
 	 * @see #getGenDomainStructuralFeature()
 	 * @generated
@@ -4755,10 +4754,10 @@ public interface ZDLGenPackage extends EPackage {
 	EReference getGenDomainGeneralization_DomainGeneralization();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization#getSpecific <em>Specific</em>}'.
+	 * Returns the meta object for the container reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization#getSpecific <em>Specific</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Specific</em>'.
+	 * @return the meta object for the container reference '<em>Specific</em>'.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainGeneralization#getSpecific()
 	 * @see #getGenDomainGeneralization()
 	 * @generated
@@ -4917,10 +4916,10 @@ public interface ZDLGenPackage extends EPackage {
 	EClass getGenDomainBlockRelation();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getSource <em>Source</em>}'.
+	 * Returns the meta object for the container reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @return the meta object for the container reference '<em>Source</em>'.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockRelation#getSource()
 	 * @see #getGenDomainBlockRelation()
 	 * @generated
@@ -5203,10 +5202,10 @@ public interface ZDLGenPackage extends EPackage {
 	EReference getGenPaletteDrawer_Specializes();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getPalette <em>Palette</em>}'.
+	 * Returns the meta object for the container reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getPalette <em>Palette</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Palette</em>'.
+	 * @return the meta object for the container reference '<em>Palette</em>'.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenPaletteDrawer#getPalette()
 	 * @see #getGenPaletteDrawer()
 	 * @generated
@@ -5278,10 +5277,10 @@ public interface ZDLGenPackage extends EPackage {
 	EReference getGenPaletteTool_Overrides();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool#getContainer <em>Container</em>}'.
+	 * Returns the meta object for the container reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool#getContainer <em>Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Container</em>'.
+	 * @return the meta object for the container reference '<em>Container</em>'.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool#getContainer()
 	 * @see #getGenPaletteTool()
 	 * @generated
@@ -5353,10 +5352,10 @@ public interface ZDLGenPackage extends EPackage {
 	EReference getGenDomainBlockReference_DomainBlockReference();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference#getDomainSpecialization <em>Domain Specialization</em>}'.
+	 * Returns the meta object for the container reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference#getDomainSpecialization <em>Domain Specialization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Domain Specialization</em>'.
+	 * @return the meta object for the container reference '<em>Domain Specialization</em>'.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlockReference#getDomainSpecialization()
 	 * @see #getGenDomainBlockReference()
 	 * @generated
@@ -5406,10 +5405,10 @@ public interface ZDLGenPackage extends EPackage {
 	EReference getGenDomainEnumLiteral_DomainEnumLiteral();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral#getEnumeration <em>Enumeration</em>}'.
+	 * Returns the meta object for the container reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral#getEnumeration <em>Enumeration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Enumeration</em>'.
+	 * @return the meta object for the container reference '<em>Enumeration</em>'.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral#getEnumeration()
 	 * @see #getGenDomainEnumLiteral()
 	 * @generated
@@ -5757,17 +5756,6 @@ public interface ZDLGenPackage extends EPackage {
 	EAttribute getGenDomainAttributePresentation_PresentationKind();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getOrder <em>Order</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Order</em>'.
-	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getOrder()
-	 * @see #getGenDomainAttributePresentation()
-	 * @generated
-	 */
-	EAttribute getGenDomainAttributePresentation_Order();
-
-	/**
 	 * Returns the meta object for the attribute '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getVisibleModelType <em>Visible Model Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5777,6 +5765,17 @@ public interface ZDLGenPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGenDomainAttributePresentation_VisibleModelType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getOrder <em>Order</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Order</em>'.
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttributePresentation#getOrder()
+	 * @see #getGenDomainAttributePresentation()
+	 * @generated
+	 */
+	EAttribute getGenDomainAttributePresentation_Order();
 
 	/**
 	 * Returns the meta object for class '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainSpecialization <em>Gen Domain Specialization</em>}'.
@@ -5854,10 +5853,10 @@ public interface ZDLGenPackage extends EPackage {
 	EAttribute getGenDomainModelLibraryReference_ResourceName();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainSpecialization <em>Domain Specialization</em>}'.
+	 * Returns the meta object for the container reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainSpecialization <em>Domain Specialization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Domain Specialization</em>'.
+	 * @return the meta object for the container reference '<em>Domain Specialization</em>'.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainModelLibraryReference#getDomainSpecialization()
 	 * @see #getGenDomainModelLibraryReference()
 	 * @generated
@@ -6138,10 +6137,10 @@ public interface ZDLGenPackage extends EPackage {
 	EReference getGenDomainModel_MenuModel();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getOwningGenModel <em>Owning Gen Model</em>}'.
+	 * Returns the meta object for the container reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getOwningGenModel <em>Owning Gen Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Owning Gen Model</em>'.
+	 * @return the meta object for the container reference '<em>Owning Gen Model</em>'.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel#getOwningGenModel()
 	 * @see #getGenDomainModel()
 	 * @generated
@@ -6202,10 +6201,10 @@ public interface ZDLGenPackage extends EPackage {
 	EClass getGenDomainPackageableElement();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement#getPackage <em>Package</em>}'.
+	 * Returns the meta object for the container reference '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement#getPackage <em>Package</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Package</em>'.
+	 * @return the meta object for the container reference '<em>Package</em>'.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainPackageableElement#getPackage()
 	 * @see #getGenDomainPackageableElement()
 	 * @generated
@@ -6526,7 +6525,7 @@ public interface ZDLGenPackage extends EPackage {
 		EClass GEN_DOMAIN_CLASSIFIER = eINSTANCE.getGenDomainClassifier();
 
 		/**
-		 * The meta object literal for the '<em><b>Block</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Block</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -6597,7 +6596,7 @@ public interface ZDLGenPackage extends EPackage {
 				.getGenDomainStructuralFeature_IsRhapsodySuppressed();
 
 		/**
-		 * The meta object literal for the '<em><b>Concept</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Concept</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -6632,7 +6631,7 @@ public interface ZDLGenPackage extends EPackage {
 				.getGenDomainGeneralization_DomainGeneralization();
 
 		/**
-		 * The meta object literal for the '<em><b>Specific</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Specific</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -6761,7 +6760,7 @@ public interface ZDLGenPackage extends EPackage {
 		EClass GEN_DOMAIN_BLOCK_RELATION = eINSTANCE.getGenDomainBlockRelation();
 
 		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Source</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -7000,7 +6999,7 @@ public interface ZDLGenPackage extends EPackage {
 		EReference GEN_PALETTE_DRAWER__SPECIALIZES = eINSTANCE.getGenPaletteDrawer_Specializes();
 
 		/**
-		 * The meta object literal for the '<em><b>Palette</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Palette</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -7060,7 +7059,7 @@ public interface ZDLGenPackage extends EPackage {
 		EReference GEN_PALETTE_TOOL__OVERRIDES = eINSTANCE.getGenPaletteTool_Overrides();
 
 		/**
-		 * The meta object literal for the '<em><b>Container</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Container</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -7121,7 +7120,7 @@ public interface ZDLGenPackage extends EPackage {
 				.getGenDomainBlockReference_DomainBlockReference();
 
 		/**
-		 * The meta object literal for the '<em><b>Domain Specialization</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Domain Specialization</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -7166,7 +7165,7 @@ public interface ZDLGenPackage extends EPackage {
 		EReference GEN_DOMAIN_ENUM_LITERAL__DOMAIN_ENUM_LITERAL = eINSTANCE.getGenDomainEnumLiteral_DomainEnumLiteral();
 
 		/**
-		 * The meta object literal for the '<em><b>Enumeration</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Enumeration</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -7457,14 +7456,6 @@ public interface ZDLGenPackage extends EPackage {
 				.getGenDomainAttributePresentation_PresentationKind();
 
 		/**
-		 * The meta object literal for the '<em><b>Order</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER = eINSTANCE.getGenDomainAttributePresentation_Order();
-
-		/**
 		 * The meta object literal for the '<em><b>Visible Model Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7472,6 +7463,14 @@ public interface ZDLGenPackage extends EPackage {
 		 */
 		EAttribute GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE = eINSTANCE
 				.getGenDomainAttributePresentation_VisibleModelType();
+
+		/**
+		 * The meta object literal for the '<em><b>Order</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER = eINSTANCE.getGenDomainAttributePresentation_Order();
 
 		/**
 		 * The meta object literal for the '{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainSpecializationImpl <em>Gen Domain Specialization</em>}' class.
@@ -7537,7 +7536,7 @@ public interface ZDLGenPackage extends EPackage {
 				.getGenDomainModelLibraryReference_ResourceName();
 
 		/**
-		 * The meta object literal for the '<em><b>Domain Specialization</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Domain Specialization</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -7761,7 +7760,7 @@ public interface ZDLGenPackage extends EPackage {
 		EReference GEN_DOMAIN_MODEL__MENU_MODEL = eINSTANCE.getGenDomainModel_MenuModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Owning Gen Model</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Owning Gen Model</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -7813,7 +7812,7 @@ public interface ZDLGenPackage extends EPackage {
 		EClass GEN_DOMAIN_PACKAGEABLE_ELEMENT = eINSTANCE.getGenDomainPackageableElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Package</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Package</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

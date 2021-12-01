@@ -41,8 +41,8 @@ import org.eclipse.uml2.common.util.CacheAdapter;
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#isReadOnly <em>Read Only</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#getPresentationHint <em>Presentation Hint</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#getPresentationKind <em>Presentation Kind</em>}</li>
- *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#getOrder <em>Order</em>}</li>
  *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#getVisibleModelType <em>Visible Model Type</em>}</li>
+ *   <li>{@link com.zeligsoft.ddk.zdl.zdlgen.internal.impl.GenDomainAttributePresentationImpl#getOrder <em>Order</em>}</li>
  * </ul>
  *
  * @generated
@@ -129,26 +129,6 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 	protected GenDomainAttributePresentationKind presentationKind = PRESENTATION_KIND_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getOrder() <em>Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrder()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int ORDER_EDEFAULT = 8000;
-
-	/**
-	 * The cached value of the '{@link #getOrder() <em>Order</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrder()
-	 * @generated
-	 * @ordered
-	 */
-	protected int order = ORDER_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getVisibleModelType() <em>Visible Model Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -167,6 +147,26 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 	 * @ordered
 	 */
 	protected GenDomainPresentationModelKind visibleModelType = VISIBLE_MODEL_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOrder() <em>Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrder()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int ORDER_EDEFAULT = 8000;
+
+	/**
+	 * The cached value of the '{@link #getOrder() <em>Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrder()
+	 * @generated
+	 * @ordered
+	 */
+	protected int order = ORDER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -297,30 +297,6 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public int getOrder() {
-		return order;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setOrder(int newOrder) {
-		int oldOrder = order;
-		order = newOrder;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER, oldOrder, order));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public GenDomainPresentationModelKind getVisibleModelType() {
 		return visibleModelType;
 	}
@@ -345,6 +321,30 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 	 * @generated
 	 */
 	@Override
+	public int getOrder() {
+		return order;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setOrder(int newOrder) {
+		int oldOrder = order;
+		order = newOrder;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER, oldOrder, order));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE:
@@ -355,10 +355,10 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 			return getPresentationHint();
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND:
 			return getPresentationKind();
-		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
-			return getOrder();
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE:
 			return getVisibleModelType();
+		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
+			return getOrder();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -383,11 +383,11 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND:
 			setPresentationKind((GenDomainAttributePresentationKind) newValue);
 			return;
-		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
-			setOrder((Integer) newValue);
-			return;
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE:
 			setVisibleModelType((GenDomainPresentationModelKind) newValue);
+			return;
+		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
+			setOrder((Integer) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -413,11 +413,11 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND:
 			setPresentationKind(PRESENTATION_KIND_EDEFAULT);
 			return;
-		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
-			setOrder(ORDER_EDEFAULT);
-			return;
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE:
 			setVisibleModelType(VISIBLE_MODEL_TYPE_EDEFAULT);
+			return;
+		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
+			setOrder(ORDER_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -440,10 +440,10 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 					: !PRESENTATION_HINT_EDEFAULT.equals(presentationHint);
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__PRESENTATION_KIND:
 			return presentationKind != PRESENTATION_KIND_EDEFAULT;
-		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
-			return order != ORDER_EDEFAULT;
 		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__VISIBLE_MODEL_TYPE:
 			return visibleModelType != VISIBLE_MODEL_TYPE_EDEFAULT;
+		case ZDLGenPackage.GEN_DOMAIN_ATTRIBUTE_PRESENTATION__ORDER:
+			return order != ORDER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -467,10 +467,10 @@ public abstract class GenDomainAttributePresentationImpl extends EObjectImpl imp
 		result.append(presentationHint);
 		result.append(", presentationKind: "); //$NON-NLS-1$
 		result.append(presentationKind);
-		result.append(", order: "); //$NON-NLS-1$
-		result.append(order);
 		result.append(", visibleModelType: "); //$NON-NLS-1$
 		result.append(visibleModelType);
+		result.append(", order: "); //$NON-NLS-1$
+		result.append(order);
 		result.append(')');
 		return result.toString();
 	}

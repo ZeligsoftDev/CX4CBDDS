@@ -245,8 +245,8 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl implemen
 	@Override
 	public EList<GenDomainClassifier> getClassifiers() {
 		if (classifiers == null) {
-			classifiers = new EObjectContainmentEList<GenDomainClassifier>(GenDomainClassifier.class, this,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER);
+			classifiers = new EObjectContainmentWithInverseEList<GenDomainClassifier>(GenDomainClassifier.class, this,
+					ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER, ZDLGenPackage.GEN_DOMAIN_CLASSIFIER__BLOCK);
 		}
 		return classifiers;
 	}
@@ -287,8 +287,8 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl implemen
 	@Override
 	public EList<GenDomainBlockRelation> getRelations() {
 		if (relations == null) {
-			relations = new EObjectContainmentEList<GenDomainBlockRelation>(GenDomainBlockRelation.class, this,
-					ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION);
+			relations = new EObjectContainmentWithInverseEList<GenDomainBlockRelation>(GenDomainBlockRelation.class,
+					this, ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION, ZDLGenPackage.GEN_DOMAIN_BLOCK_RELATION__SOURCE);
 		}
 		return relations;
 	}
@@ -495,6 +495,23 @@ public class GenDomainBlockImpl extends GenDomainPackageableElementImpl implemen
 	@Override
 	public EList<GenDomainClassifier> allClassifiers(GenAllDomainCassifiersMode mode) {
 		return GenDomainBlockOperations.allClassifiers(this, mode);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case ZDLGenPackage.GEN_DOMAIN_BLOCK__RELATION:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getRelations()).basicAdd(otherEnd, msgs);
+		case ZDLGenPackage.GEN_DOMAIN_BLOCK__CLASSIFIER:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getClassifiers()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

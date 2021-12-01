@@ -184,8 +184,9 @@ public class GenPaletteImpl extends GenPaletteItemImpl implements GenPalette {
 	@Override
 	public EList<GenPaletteDrawer> getOwnedDrawers() {
 		if (ownedDrawers == null) {
-			ownedDrawers = new SubsetSupersetEObjectContainmentEList<GenPaletteDrawer>(GenPaletteDrawer.class, this,
-					ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER, OWNED_DRAWER_ESUPERSETS, null);
+			ownedDrawers = new SubsetSupersetEObjectContainmentWithInverseEList<GenPaletteDrawer>(
+					GenPaletteDrawer.class, this, ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER, OWNED_DRAWER_ESUPERSETS,
+					null, ZDLGenPackage.GEN_PALETTE_DRAWER__PALETTE);
 		}
 		return ownedDrawers;
 	}
@@ -224,6 +225,21 @@ public class GenPaletteImpl extends GenPaletteItemImpl implements GenPalette {
 			return ownedDrawer;
 		}
 		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case ZDLGenPackage.GEN_PALETTE__OWNED_DRAWER:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedDrawers()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

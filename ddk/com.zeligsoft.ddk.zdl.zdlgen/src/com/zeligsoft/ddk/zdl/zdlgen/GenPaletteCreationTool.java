@@ -74,7 +74,7 @@ public interface GenPaletteCreationTool extends GenPaletteTool {
 	 * @return the value of the '<em>Element Type Hint</em>' attribute.
 	 * @see #setElementTypeHint(String)
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteCreationTool_ElementTypeHint()
-	 * @model dataType="org.eclipse.uml2.types.String" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	String getElementTypeHint();

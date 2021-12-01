@@ -40,6 +40,7 @@ public interface GenDomainObject extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Owner</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects <em>Owned Object</em>}'.
 	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -49,7 +50,8 @@ public interface GenDomainObject extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owner</em>' reference.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainObject_Owner()
-	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwnedObjects
+	 * @model opposite="ownedObject" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 *        annotation="union"
 	 * @generated
 	 */
@@ -58,6 +60,7 @@ public interface GenDomainObject extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Owned Object</b></em>' reference list.
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject}.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner <em>Owner</em>}'.
 	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -67,7 +70,8 @@ public interface GenDomainObject extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Object</em>' reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenDomainObject_OwnedObject()
-	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenDomainObject#getOwner
+	 * @model opposite="owner" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 *        annotation="union"
 	 * @generated
 	 */

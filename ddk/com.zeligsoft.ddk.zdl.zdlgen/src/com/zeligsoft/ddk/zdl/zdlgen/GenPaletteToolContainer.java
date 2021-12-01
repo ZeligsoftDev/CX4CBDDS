@@ -42,6 +42,7 @@ public interface GenPaletteToolContainer extends GenPaletteItem {
 	/**
 	 * Returns the value of the '<em><b>Owned Tool</b></em>' containment reference list.
 	 * The list contents are of type {@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool}.
+	 * It is bidirectional and its opposite is '{@link com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool#getContainer <em>Container</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
 	 * </p>
@@ -57,7 +58,8 @@ public interface GenPaletteToolContainer extends GenPaletteItem {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Owned Tool</em>' containment reference list.
 	 * @see com.zeligsoft.ddk.zdl.zdlgen.ZDLGenPackage#getGenPaletteToolContainer_OwnedTool()
-	 * @model containment="true" ordered="false"
+	 * @see com.zeligsoft.ddk.zdl.zdlgen.GenPaletteTool#getContainer
+	 * @model opposite="container" containment="true" ordered="false"
 	 *        annotation="subsets"
 	 * @generated
 	 */
