@@ -87,6 +87,19 @@ public class NGCWriter extends IDL3PlusWriter {
 		super();
 	}
 	
+	static class IdlFileContent{
+		public String filename;
+		public String targetDir;
+		public String contents;
+		
+		public IdlFileContent(String targetDir, String filename, String contents) {
+			this.targetDir = targetDir;
+			this.filename = filename;
+			this.contents = contents;
+		}
+	}
+	
+	
 	/* (non-Javadoc)
 	 */
 	@SuppressWarnings("unchecked")
@@ -114,6 +127,9 @@ public class NGCWriter extends IDL3PlusWriter {
 		Set<String> allPathnames = new HashSet<String>();
 		pathMap.put("modified", modifiedPathnames);
 		pathMap.put("all", allPathnames);
+		
+		// file to file contents map
+		Map<String, IdlFileContent> fileContentsMap = new HashMap<String, IdlFileContent>();
 		
 		isAxciomaModel = false;
 		if (ZDLUtil.isZDLConcept(dds4ccmModel, DDS4CCMNames.DDS4_CCMMODEL)) {
@@ -180,18 +196,22 @@ public class NGCWriter extends IDL3PlusWriter {
 					idlSwitch.setIssues(issues);
 					Object result = idlSwitch.doSwitch(model);
 					if (result instanceof String) {
-						createFile(getTargetFile(), (String) result,
-								allPathnames, modifiedPathnames);
+						String key = getTargetDir() + "/" + getTargetFile();
+						fileContentsMap.put(key, new IdlFileContent(getTargetDir(),  getTargetFile(), (String)result));
 					}
 				}
 			}
 		}
+		
+		for(IdlFileContent fc: fileContentsMap.values()) {
+			createFile(fc.targetDir, fc.filename, fc.contents, allPathnames, modifiedPathnames);
+		}
 		ctx.set(getPathnameSlot(), pathMap);
 	}
 	
-	private void createFile(String fileName, String fileContent,
-			Set<String> allPathnames, Set<String> modifiedPathnames) {
-		Outlet outlet = new Outlet(getTargetDir());
+	private void createFile(String targetDir, String fileName, String fileContent, Set<String> allPathnames,
+			Set<String> modifiedPathnames) {
+		Outlet outlet = new Outlet(targetDir);
 		NoChangesVetoStrategy st = new NoChangesVetoStrategy();
 		outlet.addVetoStrategy(st);
 		FileHandle fh = outlet.createFileHandle(fileName);
@@ -206,7 +226,12 @@ public class NGCWriter extends IDL3PlusWriter {
 			modifiedPathnames.add(f.getAbsolutePath());
 		}
 	}
-	
+
+	private void createFile(String fileName, String fileContent, Set<String> allPathnames,
+			Set<String> modifiedPathnames) {
+		createFile(getTargetDir(), fileName, fileContent, allPathnames, modifiedPathnames);
+	}
+
 	private boolean hasModelLibraryEelements(EObject eobject) {
 		for (EObject eobj : eobject.eContents()) {
 			if (eobj instanceof Module) {

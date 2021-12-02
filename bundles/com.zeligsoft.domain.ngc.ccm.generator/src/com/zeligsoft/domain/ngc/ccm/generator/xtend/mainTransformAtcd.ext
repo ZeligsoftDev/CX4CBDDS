@@ -40,10 +40,6 @@ extension com::zeligsoft::domain::ngc::ccm::generator::xtend::metamodel;
 extension com::zeligsoft::domain::idl3plus::generator::xtend::utils;
 extension com::zeligsoft::domain::idl3plus::generator::xtend::IDL3Plus_Utils;
 extension com::zeligsoft::domain::idl3plus::generator::xtend::idl3PlusTransform;
-//extension com::zeligsoft::domain::ngc::ccm::generator::xtend::debugUtils;
-extension com::zeligsoft::domain::ngc::ccm::generator::xtend::copyUtils;
-//extension codegen::debug;
-
 
 create List[Specification] mainTransform(CXModule self) :
 	this.addAll(self.contents.typeSelect(CXInterface).mainTransform()) ->
@@ -55,10 +51,7 @@ create List[Specification] mainTransform(CXModule self) :
 	this.addAll(self.contents.typeSelect(ModuleInstantiation).mainTransform()) ->
 	this.addAll(self.contents.typeSelect(DDSMessage).mainTransform()) ->
 	this.add(self.processModule()) ->
-//	printIDLSpecs(self.name + " after processModule", this) ->
-	this.addAll(self.nestedPackage().mainTransform()) ->
-//	printIDLSpecs(self.name + " after nested", this) ->
-	this;
+	this.addAll(self.nestedPackage().mainTransform());
 	
 
 create List[Specification] mainTransform(CCM::CCM_Core::CCMModel self) :
@@ -71,10 +64,7 @@ create List[Specification] mainTransform(CCM::CCM_Core::CCMModel self) :
 	this.addAll(self.packagedElement().typeSelect(ModuleInstantiation).mainTransform()) ->
 	this.addAll(self.packagedElement().typeSelect(DDSMessage).mainTransform()) ->
 	this.add(self.processModel()) ->
-//	printIDLSpecs(self.name + " after processModel", this) ->
-	this.addAll(self.nestedPackage().mainTransform()) ->
-//	printIDLSpecs(self.name + " after nested", this) ->
-	this;
+	this.addAll(self.nestedPackage().mainTransform());
 
 create List[Specification] mainTransform(CCM::CCM_Implementation::CCMPart part) :
 	this.addAll(part.definition.mainTransform());
@@ -89,10 +79,7 @@ create List[Specification] mainTransform(uml::Package self) :
 	this.addAll(self.packagedElement().typeSelect(ModuleInstantiation).mainTransform()) ->
 	this.addAll(self.packagedElement().typeSelect(DDSMessage).mainTransform()) ->
 	this.add(self.processPackage()) ->
-//	printIDLSpecs(self.name + " after processPackage", this) ->
-	this.addAll(self.nestedPackage().mainTransform()) ->
-//	printIDLSpecs(self.name + " after nested", this) ->
-	this;
+	this.addAll(self.nestedPackage().mainTransform());
 	
 List[Specification] mainTransform(IDL3Plus::Connectors::ConnectorDefaultValueBinding self ) :
 	{};
@@ -211,9 +198,9 @@ create Specification mainTransformComponent(CCMComponent self) :
 	
 create Specification mainTransformImplementation(MonolithicImplementation self) :
 	let idlComp = self.interface.visitContained() : 
-	let idlCompCopy = idlComp.copyEObj(this) :
+	let idlCompCopy = idlComp.copy(this) :
 	let homes = getComponentsHomes(self.interface).visitContained() :
-	let homeCopy = homes.copyEObj(this) :
+	let homeCopy = homes.copy(this) :
 	let definitions = {idlCompCopy, homeCopy} :
 	let managesScopedName = new ScopedName :
 		this.definitions.add(createPragmaComponent(self)) ->
@@ -231,7 +218,7 @@ create Specification mainTransformImplementation(MonolithicImplementation self) 
 		self.interface.getComponentsHomes().processIncludes(this) ->
 		this.definitions.addAll(visit(definitions.flatten(), self.interface.eContainer));
 		
-emf::EObject copyEObj(emf::EObject original, emf::EObject copyTo ) :
+emf::EObject copy(emf::EObject original, emf::EObject copyTo ) :
 	JAVA com.zeligsoft.domain.ngc.ccm.utils.CCMXtendUtils.copy(
 		org.eclipse.emf.ecore.EObject,
 		org.eclipse.emf.ecore.EObject);
@@ -550,7 +537,7 @@ idl::Definition visit(List[Definition] self, emf::EObject container) :
 idl::Definition visit(List[Definition] self, CXModule container) :
 	let idlModule = new idl::Module :
 		idlModule.setName(container.name) ->
-		idlModule.definitions.addAll(self) -> //.copyAll()) ->
+		idlModule.definitions.addAll(self) ->
 		idlModule.comments.addAll(container.zdlAsPackage().ownedComment.visitComment()) ->
 		if self.isEmpty then {} else visit(idlModule, container.eContainer);
 		
@@ -566,7 +553,7 @@ idl::Definition visit(Definition self, emf::EObject container) :
 idl::Definition visit(Definition self, CXModule container) :
 	let idlModule = new idl::Module :
 		idlModule.setName(container.name) ->
-		idlModule.definitions.add(self) -> //.copy()) ->
+		idlModule.definitions.add(self) ->
 		idlModule.comments.addAll(container.zdlAsPackage().ownedComment.visitComment()) ->
 		visit(idlModule, container.eContainer);
 
