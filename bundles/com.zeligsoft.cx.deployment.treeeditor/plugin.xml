@@ -104,6 +104,13 @@
        <listener
              class="com.zeligsoft.cx.deployment.treeeditor.providers.DeploymentPartValidationObserver">
        </listener>
+    </extension>
+    <extension
+          point="org.eclipse.papyrus.infra.viewpoints.policy.viewType">
+       <helper
+             class="com.zeligsoft.cx.deployment.treeeditor.providers.DeploymentEditorViewTypeHelper"
+             priority="1">
+       </helper>
     </extension>     
    
 </plugin>

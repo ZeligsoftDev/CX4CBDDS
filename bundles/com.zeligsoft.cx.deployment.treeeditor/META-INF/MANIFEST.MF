@@ -7,15 +7,18 @@ Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: com.zeligsoft.cx.deployment.treeeditor.ui.Activator
 Bundle-Vendor: %Bundle-Vendor.0
 Require-Bundle: org.eclipse.gmf.runtime.common.ui.action.ide;bundle-version="1.7.0",
- org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
- org.eclipse.papyrus.infra.ui;bundle-version="2.0.100",
- org.eclipse.papyrus.infra.emf;bundle-version="3.0.0",
  com.zeligsoft.base.validation;bundle-version="4.0.0",
  com.zeligsoft.base.ui;bundle-version="4.0.0";visibility:=reexport,
  com.zeligsoft.domain.zml;bundle-version="4.0.0",
  com.zeligsoft.cx.deployment.ui;bundle-version="4.0.0",
  com.zeligsoft.cx.codegen.ui;bundle-version="4.0.0",
- com.zeligsoft.cx.ui.properties;bundle-version="4.0.0"
+ com.zeligsoft.cx.ui.properties;bundle-version="4.0.0",
+ org.eclipse.papyrus.infra.emf;bundle-version="3.0.0",
+ org.eclipse.papyrus.infra.viewpoints.policy,
+ org.eclipse.papyrus.infra.architecture.representation;bundle-version="2.0.0",
+ org.eclipse.papyrus.infra.architecture;bundle-version="2.0.0",
+ org.eclipse.papyrus.infra.gmfdiag.common;bundle-version="3.101.200",
+ org.eclipse.papyrus.infra.gmfdiag.representation;bundle-version="2.0.0"
 Export-Package: com.zeligsoft.cx.deployment.treeeditor,
  com.zeligsoft.cx.deployment.treeeditor.actions,
  com.zeligsoft.cx.deployment.treeeditor.l10n,
