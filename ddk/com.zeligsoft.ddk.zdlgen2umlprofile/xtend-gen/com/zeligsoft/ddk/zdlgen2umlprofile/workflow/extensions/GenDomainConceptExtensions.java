@@ -4,7 +4,6 @@ import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.GenDomainStructuralFeatureExtensions;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

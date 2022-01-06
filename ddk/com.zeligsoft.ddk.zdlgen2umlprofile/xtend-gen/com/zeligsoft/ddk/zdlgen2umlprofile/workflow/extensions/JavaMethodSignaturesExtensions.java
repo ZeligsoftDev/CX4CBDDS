@@ -4,11 +4,9 @@ import com.google.inject.Inject;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttribute;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainReference;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.GenDomainStructuralFeatureExtensions;
 import java.util.Arrays;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class JavaMethodSignaturesExtensions {
@@ -23,271 +21,93 @@ public class JavaMethodSignaturesExtensions {
   
   protected String _compositeMultivaluedAddExistingSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void add");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainElement().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" val)");
+    _builder.append("void add�feature.domainElement.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(�feature.featureModifierType� val)");
     return _builder.toString();
   }
   
   protected String _compositeMultivaluedAddExistingSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void add");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainAttribute().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" val)");
+    _builder.append("void add�feature.domainAttribute.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(�feature.featureModifierType� val)");
     return _builder.toString();
   }
   
   protected String _compositeMultivaluedAddParemeterizedSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<T extends ");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append("> T add");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainElement().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(Class<T> typeToCreate, String concept)");
+    _builder.append("<T extends �feature.featureModifierType�> T add�feature.domainElement.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(Class<T> typeToCreate, String concept)");
     return _builder.toString();
   }
   
   protected String _compositeMultivaluedAddParemeterizedSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<T extends ");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append("> T add");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainAttribute().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(Class<T> typeToCreate, String concept)");
+    _builder.append("<T extends �feature.featureModifierType�> T add�feature.domainAttribute.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(Class<T> typeToCreate, String concept)");
     return _builder.toString();
   }
   
   protected String _compositeMultivalueAddSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" add");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainElement().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("()");
+    _builder.append("�feature.featureModifierType� add�feature.domainElement.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�()");
     return _builder.toString();
   }
   
   protected String _compositeMultivalueAddSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" add");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainAttribute().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("()");
+    _builder.append("�feature.featureModifierType� add�feature.domainAttribute.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�()");
     return _builder.toString();
   }
   
   protected String _compositeAddExistingSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void set");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainElement().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" val)");
-    _builder.newLineIfNotEmpty();
+    _builder.append("void set�feature.domainElement.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(�feature.featureModifierType� val)");
+    _builder.newLine();
     return _builder.toString();
   }
   
   protected String _compositeAddExistingSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void set");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainAttribute().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" val)");
-    _builder.newLineIfNotEmpty();
+    _builder.append("void set�feature.domainAttribute.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(�feature.featureModifierType� val)");
+    _builder.newLine();
     return _builder.toString();
   }
   
   protected String _compositeAddParemeterizedSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<T extends ");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append("> T create");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainElement().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(Class<T> typeToCreate, String concept)");
-    _builder.newLineIfNotEmpty();
+    _builder.append("<T extends �feature.featureModifierType�> T create�feature.domainElement.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(Class<T> typeToCreate, String concept)");
+    _builder.newLine();
     return _builder.toString();
   }
   
   protected String _compositeAddParemeterizedSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("<T extends ");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append("> T create");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainAttribute().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(Class<T> typeToCreate, String concept)");
-    _builder.newLineIfNotEmpty();
+    _builder.append("<T extends �feature.featureModifierType�> T create�feature.domainAttribute.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(Class<T> typeToCreate, String concept)");
+    _builder.newLine();
     return _builder.toString();
   }
   
   protected String _compositeAddSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" create");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainElement().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("()");
-    _builder.newLineIfNotEmpty();
+    _builder.append("�feature.featureModifierType� create�feature.domainElement.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�()");
+    _builder.newLine();
     return _builder.toString();
   }
   
   protected String _compositeAddSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" create");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainAttribute().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("()");
-    _builder.newLineIfNotEmpty();
+    _builder.append("�feature.featureModifierType� create�feature.domainAttribute.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�()");
+    _builder.newLine();
     return _builder.toString();
   }
   
   protected String _sharedMultivaluedAddSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void add");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainElement().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" val)");
-    _builder.newLineIfNotEmpty();
+    _builder.append("void add�feature.domainElement.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(�feature.featureModifierType� val)");
+    _builder.newLine();
     return _builder.toString();
   }
   
   protected String _sharedMultivaluedAddSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void add");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainAttribute().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" val)");
-    _builder.newLineIfNotEmpty();
+    _builder.append("void add�feature.domainAttribute.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(�feature.featureModifierType� val)");
+    _builder.newLine();
     return _builder.toString();
   }
   
@@ -298,41 +118,15 @@ public class JavaMethodSignaturesExtensions {
   
   protected String _sharedAddSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void set");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainElement().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" val)");
-    _builder.newLineIfNotEmpty();
+    _builder.append("void set�feature.domainElement.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(�feature.featureModifierType� val)");
+    _builder.newLine();
     return _builder.toString();
   }
   
   protected String _sharedAddSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void set");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainAttribute().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" val)");
-    _builder.newLineIfNotEmpty();
+    _builder.append("void set�feature.domainAttribute.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(�feature.featureModifierType� val)");
+    _builder.newLine();
     return _builder.toString();
   }
   
@@ -343,41 +137,15 @@ public class JavaMethodSignaturesExtensions {
   
   protected String _noneMultivaluedAddSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void add");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainElement().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" val)");
-    _builder.newLineIfNotEmpty();
+    _builder.append("void add�feature.domainElement.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(�feature.featureModifierType� val)");
+    _builder.newLine();
     return _builder.toString();
   }
   
   protected String _noneMultivaluedAddSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void add");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainAttribute().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" val)");
-    _builder.newLineIfNotEmpty();
+    _builder.append("void add�feature.domainAttribute.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(�feature.featureModifierType� val)");
+    _builder.newLine();
     return _builder.toString();
   }
   
@@ -388,41 +156,15 @@ public class JavaMethodSignaturesExtensions {
   
   protected String _noneAddSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void set");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainElement().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" val)");
-    _builder.newLineIfNotEmpty();
+    _builder.append("void set�feature.domainElement.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(�feature.featureModifierType� val)");
+    _builder.newLine();
     return _builder.toString();
   }
   
   protected String _noneAddSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void set");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainAttribute().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
-    _builder.append("(");
-    String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
-    _builder.append(_featureModifierType);
-    _builder.append(" val)");
-    _builder.newLineIfNotEmpty();
+    _builder.append("void set�feature.domainAttribute.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�(�feature.featureModifierType� val)");
+    _builder.newLine();
     return _builder.toString();
   }
   
@@ -433,23 +175,13 @@ public class JavaMethodSignaturesExtensions {
   
   protected String _accessorSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
-    CharSequence _featureAccessorReturnType = this._genDomainStructuralFeatureExtensions.featureAccessorReturnType(feature);
-    _builder.append(_featureAccessorReturnType);
-    _builder.append(" ");
-    String _accessorName = this.accessorName(feature);
-    _builder.append(_accessorName);
-    _builder.append("()");
+    _builder.append("�feature.featureAccessorReturnType� �feature.accessorName�()");
     return _builder.toString();
   }
   
   protected String _accessorSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
-    CharSequence _featureAccessorReturnType = this._genDomainStructuralFeatureExtensions.featureAccessorReturnType(feature);
-    _builder.append(_featureAccessorReturnType);
-    _builder.append(" ");
-    String _accessorName = this.accessorName(feature);
-    _builder.append(_accessorName);
-    _builder.append("()");
+    _builder.append("�feature.featureAccessorReturnType� �feature.accessorName�()");
     return _builder.toString();
   }
   
@@ -460,31 +192,13 @@ public class JavaMethodSignaturesExtensions {
   
   protected String _accessorName(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("get");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainElement().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
+    _builder.append("get�feature.domainElement.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�");
     return _builder.toString();
   }
   
   protected String _accessorName(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("get");
-    String _firstUpper = StringExtensions.toFirstUpper(feature.getDomainAttribute().getName());
-    _builder.append(_firstUpper);
-    {
-      boolean _isInconsistentOverride = this._genDomainStructuralFeatureExtensions.isInconsistentOverride(feature);
-      if (_isInconsistentOverride) {
-        String _inconsistentOverrideString = this._genDomainStructuralFeatureExtensions.getInconsistentOverrideString(feature);
-        _builder.append(_inconsistentOverrideString);
-      }
-    }
+    _builder.append("get�feature.domainAttribute.name.toFirstUpper��IF feature.isInconsistentOverride��feature.inconsistentOverrideString��ENDIF�");
     return _builder.toString();
   }
   

@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name.0
 Bundle-SymbolicName: com.zeligsoft.cx;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-Vendor: %Bundle-Vendor.0
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: com.zeligsoft.cx.CXActivator
-Require-Bundle: com.zeligsoft.base;bundle-version="4.0.0";visibility:=reexport
+Require-Bundle: com.zeligsoft.base;bundle-version="[5.0.0,6.0.0)";visibility:=reexport
 Export-Package: com.zeligsoft.cx,
  com.zeligsoft.cx.preferences

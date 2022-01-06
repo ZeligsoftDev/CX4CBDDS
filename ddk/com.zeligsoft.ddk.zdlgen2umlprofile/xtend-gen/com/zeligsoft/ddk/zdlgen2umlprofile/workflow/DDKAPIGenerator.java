@@ -19,11 +19,8 @@ import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaNamingExtensi
 import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaUMLPackageTypeSelectUtilGenerator;
 import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.ZDLGenExtensions;
 import java.util.function.Consumer;
-import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class DDKAPIGenerator {
@@ -95,20 +92,12 @@ public class DDKAPIGenerator {
     for (final GenDomainConcept concept : _filter) {
       {
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append(rootDirectory);
-        _builder.append("/");
-        String _javaInterfaceName = this._javaNamingExtensions.javaInterfaceName(concept);
-        _builder.append(_javaInterfaceName);
-        _builder.append(".java");
+        _builder.append("�rootDirectory�/�concept.javaInterfaceName�.java");
         this.fileSystemAccess.generateFile(
           _builder.toString(), 
           this._javaInterfaceGenerator.compileInterface(concept));
         StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append(implDirectory);
-        _builder_1.append("/");
-        String _javaImplementationName = this._javaNamingExtensions.javaImplementationName(concept);
-        _builder_1.append(_javaImplementationName);
-        _builder_1.append(".java");
+        _builder_1.append("�implDirectory�/�concept.javaImplementationName�.java");
         this.fileSystemAccess.generateFile(
           _builder_1.toString(), 
           this._javaImplementationGenerator.compileImplementation(concept, blockName));
@@ -117,11 +106,7 @@ public class DDKAPIGenerator {
     Iterable<GenDomainEnum> _filter_1 = Iterables.<GenDomainEnum>filter(block.getClassifiers(), GenDomainEnum.class);
     for (final GenDomainEnum element : _filter_1) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append(rootDirectory);
-      _builder.append("/");
-      String _validJavaIdentifier = UML2Util.getValidJavaIdentifier(this._javaNamingExtensions.javaInterfaceName(element));
-      _builder.append(_validJavaIdentifier);
-      _builder.append(".java");
+      _builder.append("�rootDirectory�/�UML2Util::getValidJavaIdentifier(element.javaInterfaceName)�.java");
       this.fileSystemAccess.generateFile(
         _builder.toString(), 
         this._javaEnumerationGenerator.compileEnumeration(element, blockName));
@@ -130,15 +115,7 @@ public class DDKAPIGenerator {
   
   public void compileTypeSelectClass(final GenDomainModel model) {
     StringConcatenation _builder = new StringConcatenation();
-    String _replace = model.getRootPackage().replace(".", "/");
-    _builder.append(_replace);
-    _builder.append("/");
-    String _name = model.getName();
-    _builder.append(_name);
-    _builder.append("/util/");
-    String _name_1 = model.getName();
-    _builder.append(_name_1);
-    _builder.append("TypeSelectUtil.java");
+    _builder.append("�model.rootPackage.replace(\".\", \"/\")�/�model.name�/util/�model.name�TypeSelectUtil.java");
     this.fileSystemAccess.generateFile(_builder.toString(), this._javaUMLPackageTypeSelectUtilGenerator.generateJavaUMLPackageTypeSelectUtil(model));
   }
   
@@ -153,15 +130,7 @@ public class DDKAPIGenerator {
   public void compileFactoryClass(final GenDomainSpecialization model) {
     final GenDomainModel domainModel = this._zDLGenExtensions.domainModel(model.eContainer());
     StringConcatenation _builder = new StringConcatenation();
-    String _replace = domainModel.getRootPackage().replace(".", "/");
-    _builder.append(_replace);
-    _builder.append("/");
-    String _name = domainModel.getName();
-    _builder.append(_name);
-    _builder.append("/util/");
-    String _name_1 = model.getName();
-    _builder.append(_name_1);
-    _builder.append("FactoryImpl.java");
+    _builder.append("�domainModel.rootPackage.replace(\".\", \"/\")�/�domainModel.name�/util/�model.name�FactoryImpl.java");
     this.fileSystemAccess.generateFile(_builder.toString(), this.compileFactoryClassHelper(model));
   }
   
@@ -170,14 +139,8 @@ public class DDKAPIGenerator {
     {
       final GenDomainModel domainModel = this._zDLGenExtensions.domainModel(model.eContainer());
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("package ");
-      String _rootPackage = domainModel.getRootPackage();
-      _builder.append(_rootPackage);
-      _builder.append(".");
-      String _name = domainModel.getName();
-      _builder.append(_name);
-      _builder.append(".util;");
-      _builder.newLineIfNotEmpty();
+      _builder.append("package �domainModel.rootPackage�.�domainModel.name�.util;");
+      _builder.newLine();
       _builder.newLine();
       _builder.append("import java.util.Map;");
       _builder.newLine();
@@ -188,11 +151,8 @@ public class DDKAPIGenerator {
       _builder.append("import com.zeligsoft.base.zdl.staticapi.util.AbstractBaseZDLFactory;");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("public class ");
-      String _name_1 = model.getName();
-      _builder.append(_name_1);
-      _builder.append("FactoryImpl extends AbstractBaseZDLFactory {");
-      _builder.newLineIfNotEmpty();
+      _builder.append("public class �model.name�FactoryImpl extends AbstractBaseZDLFactory {");
+      _builder.newLine();
       _builder.append("\t");
       _builder.append("protected java.util.Map<String, Class<?>> registry ");
       _builder.newLine();
@@ -202,32 +162,20 @@ public class DDKAPIGenerator {
       _builder.append("\t");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("public ");
-      String _name_2 = model.getName();
-      _builder.append(_name_2, "\t");
-      _builder.append("FactoryImpl() {");
-      _builder.newLineIfNotEmpty();
-      {
-        final Function1<GenDomainConcept, Boolean> _function = (GenDomainConcept concept) -> {
-          boolean _isAbstract = concept.getDomainConcept().isAbstract();
-          return Boolean.valueOf((!_isAbstract));
-        };
-        Iterable<GenDomainConcept> _filter = IterableExtensions.<GenDomainConcept>filter(model.getDomainConcepts(), _function);
-        for(final GenDomainConcept concept : _filter) {
-          _builder.append("\t");
-          _builder.append("registry.put(\"");
-          String _qualifiedName = concept.getDomainElement().getQualifiedName();
-          _builder.append(_qualifiedName, "\t");
-          _builder.append("\", ");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("\t");
-          CharSequence _implementationQualifiedName = this._javaNamingExtensions.implementationQualifiedName(concept);
-          _builder.append(_implementationQualifiedName, "\t\t");
-          _builder.append(".class);");
-          _builder.newLineIfNotEmpty();
-        }
-      }
+      _builder.append("public �model.name�FactoryImpl() {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("�FOR concept : model.domainConcepts.filter(GenDomainConcept concept | !concept.domainConcept.isAbstract)�");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("registry.put(\"�concept.domainElement.qualifiedName�\", ");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append("�concept.implementationQualifiedName�.class);");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("�ENDFOR�");
+      _builder.newLine();
       _builder.append("\t");
       _builder.append("}");
       _builder.newLine();

@@ -3,12 +3,7 @@ package com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions;
 import com.google.inject.Inject;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum;
-import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaNamingExtensions;
 import java.util.Arrays;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.uml2.common.util.UML2Util;
-import org.eclipse.uml2.uml.Comment;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
 
@@ -20,23 +15,17 @@ public class JavaEnumerationGenerator {
   
   protected CharSequence _compileEnumeration(final GenDomainEnum element, final String pkg) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("package ");
-    String _interfaceJavaPackage = this._javaNamingExtensions.interfaceJavaPackage(element.getBlock());
-    _builder.append(_interfaceJavaPackage);
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
+    _builder.append("package �element.block.interfaceJavaPackage�;");
     _builder.newLine();
-    CharSequence _generateEnumerationImports = this.generateEnumerationImports(element);
-    _builder.append(_generateEnumerationImports);
-    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("�element.generateEnumerationImports�");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("/**");
     _builder.newLine();
     _builder.append(" ");
-    _builder.append("* An enumeration for ");
-    String _qualifiedName = element.getDomainElement().getQualifiedName();
-    _builder.append(_qualifiedName, " ");
-    _builder.newLineIfNotEmpty();
+    _builder.append("* An enumeration for �element.domainElement.qualifiedName�");
+    _builder.newLine();
     _builder.append(" ");
     _builder.append("*");
     _builder.newLine();
@@ -49,101 +38,64 @@ public class JavaEnumerationGenerator {
     _builder.append(" ");
     _builder.append("*/");
     _builder.newLine();
-    _builder.append("public enum ");
-    String _validJavaIdentifier = UML2Util.getValidJavaIdentifier(element.getName());
-    _builder.append(_validJavaIdentifier);
-    _builder.append(" {");
-    _builder.newLineIfNotEmpty();
-    {
-      EList<GenDomainEnumLiteral> _literals = element.getLiterals();
-      boolean _hasElements = false;
-      for(final GenDomainEnumLiteral literal : _literals) {
-        if (!_hasElements) {
-          _hasElements = true;
-        } else {
-          _builder.appendImmediate(",\n", "    ");
-        }
-        _builder.append("    ");
-        _builder.append("/**");
-        _builder.newLine();
-        _builder.append("    ");
-        _builder.append(" ");
-        _builder.append("* ");
-        _builder.newLine();
-        {
-          EList<Comment> _ownedComments = literal.getDomainElement().getOwnedComments();
-          for(final Comment comment : _ownedComments) {
-            _builder.append("    ");
-            _builder.append(" ");
-            _builder.append("* ");
-            String _body = comment.getBody();
-            _builder.append(_body, "     ");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-        _builder.append("    ");
-        _builder.append(" ");
-        _builder.append("*");
-        _builder.newLine();
-        _builder.append("    ");
-        _builder.append(" ");
-        _builder.append("*/");
-        _builder.newLine();
-        _builder.append("    ");
-        String _upperCase = literal.getName().toUpperCase();
-        _builder.append(_upperCase, "    ");
-        _builder.append(" {");
-        _builder.newLineIfNotEmpty();
-        _builder.append("    ");
-        _builder.append("\t");
-        _builder.append("public EObject eObject(EObject context) {");
-        _builder.newLine();
-        _builder.append("    ");
-        _builder.append("\t\t");
-        _builder.append("return ZDLUtil.getZDLEnumLiteral(context,");
-        _builder.newLine();
-        _builder.append("\t\t\t\t\t");
-        _builder.append("\"");
-        String _qualifiedName_1 = element.getDomainElement().getQualifiedName();
-        _builder.append(_qualifiedName_1, "\t\t\t\t\t");
-        _builder.append("\", \"");
-        String _name = literal.getName();
-        _builder.append(_name, "\t\t\t\t\t");
-        _builder.append("\");");
-        _builder.newLineIfNotEmpty();
-        _builder.append("    ");
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("    ");
-        _builder.append("\t");
-        _builder.newLine();
-        _builder.append("    ");
-        _builder.append("\t");
-        _builder.append("public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {");
-        _builder.newLine();
-        _builder.append("    ");
-        _builder.append("\t\t");
-        _builder.append("return eObject(context.eObject());");
-        _builder.newLine();
-        _builder.append("    ");
-        _builder.append("\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("    ");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("    ");
-      }
-    }
-    {
-      boolean _isEmpty = element.getLiterals().isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        _builder.append(",");
-      }
-    }
-    _builder.newLineIfNotEmpty();
+    _builder.append("public enum �UML2Util::getValidJavaIdentifier(element.name)� {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("�FOR literal : element.literals SEPARATOR \",\\n\"�");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("/**");
+    _builder.newLine();
+    _builder.append("     ");
+    _builder.append("* ");
+    _builder.newLine();
+    _builder.append("     ");
+    _builder.append("�FOR comment : literal.domainElement.ownedComments�");
+    _builder.newLine();
+    _builder.append("     ");
+    _builder.append("* �comment.body�");
+    _builder.newLine();
+    _builder.append("     ");
+    _builder.append("�ENDFOR�");
+    _builder.newLine();
+    _builder.append("     ");
+    _builder.append("*");
+    _builder.newLine();
+    _builder.append("     ");
+    _builder.append("*/");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("�literal.name.toUpperCase� {");
+    _builder.newLine();
+    _builder.append("    \t");
+    _builder.append("public EObject eObject(EObject context) {");
+    _builder.newLine();
+    _builder.append("    \t\t");
+    _builder.append("return ZDLUtil.getZDLEnumLiteral(context,");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.append("\"�element.domainElement.qualifiedName�\", \"�literal.name�\");");
+    _builder.newLine();
+    _builder.append("    \t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    \t");
+    _builder.newLine();
+    _builder.append("    \t");
+    _builder.append("public EObject eObject(com.zeligsoft.base.zdl.staticapi.core.ZObject context) {");
+    _builder.newLine();
+    _builder.append("    \t\t");
+    _builder.append("return eObject(context.eObject());");
+    _builder.newLine();
+    _builder.append("    \t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("�ENDFOR��IF !element.literals.empty�,�ENDIF�");
+    _builder.newLine();
     _builder.append("    ");
     _builder.append("/**");
     _builder.newLine();
@@ -182,9 +134,8 @@ public class JavaEnumerationGenerator {
     _builder.append("    ");
     _builder.newLine();
     _builder.append("    ");
-    CharSequence _generateCreateMethod = this.generateCreateMethod(element);
-    _builder.append(_generateCreateMethod, "    ");
-    _builder.newLineIfNotEmpty();
+    _builder.append("�element.generateCreateMethod�");
+    _builder.newLine();
     _builder.append("    ");
     _builder.newLine();
     _builder.append("    ");
@@ -235,59 +186,26 @@ public class JavaEnumerationGenerator {
     _builder.append(" ");
     _builder.append("*/");
     _builder.newLine();
-    _builder.append("public static ");
-    String _validJavaIdentifier = UML2Util.getValidJavaIdentifier(element.getName());
-    _builder.append(_validJavaIdentifier);
-    _builder.append(" create(EObject literal) {");
-    _builder.newLineIfNotEmpty();
+    _builder.append("public static �UML2Util::getValidJavaIdentifier(element.name)� create(EObject literal) {");
+    _builder.newLine();
     _builder.append("    ");
-    {
-      EList<GenDomainEnumLiteral> _literals = element.getLiterals();
-      boolean _hasElements = false;
-      for(final GenDomainEnumLiteral literal : _literals) {
-        if (!_hasElements) {
-          _hasElements = true;
-          _builder.append("if ", "    ");
-        } else {
-          _builder.appendImmediate(" else if ", "    ");
-        }
-        _builder.append("(literal == ZDLUtil.getZDLEnumLiteral(literal, \"");
-        String _qualifiedName = element.getDomainElement().getQualifiedName();
-        _builder.append(_qualifiedName, "    ");
-        _builder.append("\", \"");
-        String _name = literal.getName();
-        _builder.append(_name, "    ");
-        _builder.append("\")) { //$NON-NLS-1$//$NON-NLS-2$");
-        _builder.newLineIfNotEmpty();
-        _builder.append("    ");
-        _builder.append("    ");
-        _builder.append("return ");
-        String _upperCase = literal.getName().toUpperCase();
-        _builder.append(_upperCase, "        ");
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
-        _builder.append("    ");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("    ");
-      }
-    }
-    {
-      boolean _isEmpty = element.getLiterals().isEmpty();
-      if (_isEmpty) {
-        _builder.append("return UNKNOWN;");
-      } else {
-        _builder.append(" else {");
-        _builder.newLineIfNotEmpty();
-        _builder.append("    ");
-        _builder.append("    ");
-        _builder.append("return UNKNOWN;");
-        _builder.newLine();
-        _builder.append("    ");
-        _builder.append("}");
-      }
-    }
-    _builder.newLineIfNotEmpty();
+    _builder.append("�FOR literal : element.literals BEFORE \"if \" SEPARATOR \" else if \"�(literal == ZDLUtil.getZDLEnumLiteral(literal, \"�element.domainElement.qualifiedName�\", \"�literal.name�\")) { //$NON-NLS-1$//$NON-NLS-2$");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("return �literal.name.toUpperCase�;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("�ENDFOR��IF element.literals.empty�return UNKNOWN;�ELSE� else {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("return UNKNOWN;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}�ENDIF�");
+    _builder.newLine();
     _builder.append("}");
     _builder.newLine();
     return _builder;

@@ -8,7 +8,6 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.ZDLGenExtensions;
 import java.util.Arrays;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -43,9 +42,7 @@ public class JavaNamingExtensions {
   
   private String interfaceJavaPackage(final String theRootPackage, final String theBlockName) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append(theRootPackage);
-    _builder.append(".");
-    _builder.append(theBlockName);
+    _builder.append("�theRootPackage�.�theBlockName�");
     return _builder.toString();
   }
   
@@ -85,10 +82,7 @@ public class JavaNamingExtensions {
   
   private String qualifiedName(final String theRootPackage, final String blockName, final String conceptName) {
     StringConcatenation _builder = new StringConcatenation();
-    String _interfaceJavaPackage = this.interfaceJavaPackage(theRootPackage, blockName);
-    _builder.append(_interfaceJavaPackage);
-    _builder.append(".");
-    _builder.append(conceptName);
+    _builder.append("�interfaceJavaPackage(theRootPackage, blockName)�.�conceptName�");
     return _builder.toString();
   }
   
@@ -112,11 +106,7 @@ public class JavaNamingExtensions {
   
   private CharSequence qualifiedName(final String theRootPackage, final String blockName, final String conceptName, final String theImplSubPackage, final String theImplSuffix) {
     StringConcatenation _builder = new StringConcatenation();
-    String _implementationJavaPackage = this.implementationJavaPackage(theRootPackage, blockName, theImplSubPackage);
-    _builder.append(_implementationJavaPackage);
-    _builder.append(".");
-    _builder.append(conceptName);
-    _builder.append(theImplSuffix);
+    _builder.append("�implementationJavaPackage(theRootPackage, blockName, theImplSubPackage)�.�conceptName��theImplSuffix�");
     return _builder;
   }
   
@@ -131,11 +121,7 @@ public class JavaNamingExtensions {
   
   private String implementationJavaPackage(final String theRootPackage, final String theBlockName, final String theImplSubPackage) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append(theRootPackage);
-    _builder.append(".");
-    _builder.append(theBlockName);
-    _builder.append(".");
-    _builder.append(theImplSubPackage);
+    _builder.append("�theRootPackage�.�theBlockName�.�theImplSubPackage�");
     return _builder.toString();
   }
   
@@ -161,9 +147,7 @@ public class JavaNamingExtensions {
         {
           final String implSuffix = domain.getImplSuffix();
           StringConcatenation _builder = new StringConcatenation();
-          String _validJavaIdentifier = UML2Util.getValidJavaIdentifier(genum.getName());
-          _builder.append(_validJavaIdentifier);
-          _builder.append(implSuffix);
+          _builder.append("�getValidJavaIdentifier(genum.name)��implSuffix�");
           _xblockexpression_1 = _builder.toString();
         }
         _xifexpression = _xblockexpression_1;
@@ -187,9 +171,7 @@ public class JavaNamingExtensions {
         {
           final String implSuffix = domain.getImplSuffix();
           StringConcatenation _builder = new StringConcatenation();
-          String _validJavaIdentifier = UML2Util.getValidJavaIdentifier(concept.getName());
-          _builder.append(_validJavaIdentifier);
-          _builder.append(implSuffix);
+          _builder.append("�getValidJavaIdentifier(concept.name)��implSuffix�");
           _xblockexpression_1 = _builder.toString();
         }
         _xifexpression = _xblockexpression_1;

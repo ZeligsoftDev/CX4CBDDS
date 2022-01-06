@@ -1,40 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<architecture:ArchitectureDomain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:architecture="http://www.eclipse.org/papyrus/infra/core/architecture" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:gmfdiagrepresentation="http://www.eclipse.org/papyrus/infra/gmfdiag/representation" xmlns:paletteconfiguration="http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.8" xmi:id="_pvwuANV3EemRs_x18rjDMA" name="Software Engineering" description="">
-  <stakeholders xmi:type="architecture:Stakeholder" xmi:id="__XDmkNV3EemRs_x18rjDMA" name="ATCD Modeler" description="Stakeholder involved in ATCD modeling"/>
-  <stakeholders xmi:type="architecture:Stakeholder" xmi:id="_GGdd0NV4EemRs_x18rjDMA" name="AXCIOMA Modeler" description="Stakeholder involved in AXCIOMA modeling"/>
-  <concerns xmi:type="architecture:Concern" xmi:id="_Ww-6YNV4EemRs_x18rjDMA" name="ATCD Modeling"/>
-  <concerns xmi:type="architecture:Concern" xmi:id="_aNWTkNV4EemRs_x18rjDMA" name="AXCIOMA Modeling"/>
-  <contexts xmi:type="architecture:ArchitectureDescriptionLanguage" xmi:id="_fXUeENV4EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.atcd.architecture" name="ATCD" description="ATCD Modeling Language" defaultViewpoints="_-gpGgNV4EemRs_x18rjDMA" creationCommandClass="com.zeligsoft.domain.cbdds.architecture.commands.CreateATCDModelCommand">
-    <viewpoints xmi:type="architecture:ArchitectureViewpoint" xmi:id="_-gpGgNV4EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.viewpoint.atcd" name="ATCD" concerns="_Ww-6YNV4EemRs_x18rjDMA">
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_fa4kAHDuEeWh-MssWmCB_A"/>
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_zzf4gHDtEeWh-MssWmCB_A"/>
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_UzcgsHDtEeWh-MssWmCB_A"/>
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_yeY0sHDvEeWh-MssWmCB_A"/>
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_TR15IHDvEeWh-MssWmCB_A"/>
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_bKiwNHDuEeWh-MssWmCB_A"/>
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/com.zeligsoft.domain.cbdds.architecture/models/cbdds.architecture#_g9k1kAr_EeqGTZ-swNZvQg"/>
-    </viewpoints>
-    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.composite/model/compositediagram.elementtypesconfigurations#_tL86sLazEeSbnofizoRSMQ"/>
+<architecture:ArchitectureDomain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:architecture="http://www.eclipse.org/papyrus/infra/core/architecture" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:gmfdiagrepresentation="http://www.eclipse.org/papyrus/infra/gmfdiag/representation" xmlns:paletteconfiguration="http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.8" xmlns:representation="http://www.eclipse.org/papyrus/infra/core/architecture/representation" xmi:id="_pvwuANV3EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.softwareEngineering" name="Software Engineering" description="The domain of CX developmenet software system">
+  <stakeholders xmi:type="architecture:Stakeholder" xmi:id="__XDmkNV3EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.stakeholder.atcd" name="ATCD Modeler" description="Stakeholder involved in ATCD modeling"/>
+  <stakeholders xmi:type="architecture:Stakeholder" xmi:id="_GGdd0NV4EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.stakeholder.axcioma" name="AXCIOMA Modeler" description="Stakeholder involved in AXCIOMA modeling"/>
+  <concerns xmi:type="architecture:Concern" xmi:id="_Ww-6YNV4EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.concern.atcd" name="ATCD Modeling" description="The concerm of the developing ATCD model"/>
+  <concerns xmi:type="architecture:Concern" xmi:id="_aNWTkNV4EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.concern.axcioma" name="AXCIOMA Modeling" description="The concerm of the developing AXCIOMA model"/>
+  <contexts xmi:type="architecture:ArchitectureDescriptionLanguage" xmi:id="_PwQTgNWBEemDwbmIrr3eOw" id="com.zeligsoft.domain.cbdds.atcd.architecture" name="ATCD" description="ATCD Modeling Language" defaultViewpoints="_AXsuwNV5EemRs_x18rjDMA" creationCommandClass="com.zeligsoft.domain.cbdds.architecture.commands.CreateATCDModelCommand">
+    <viewpoints xmi:type="architecture:ArchitectureViewpoint" xmi:id="_AXsuwNV5EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.viewpoint.atcd" name="ATCD" concerns="_Ww-6YNV4EemRs_x18rjDMA" representationKinds="_CF3pMExIEeqoLNTLZUle2w"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.composite/model/compositediagram.elementtypesconfigurations#_tL86sLazEeSbnofizoRSMQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.domain.cbdds.architecture/elementtypes/cxDDS4CCM.elementtypesconfigurations#_pUObcOPDEem9W8uIC4-YxQ"/>
-    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.emf/model/infra-emf.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
-    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.gmfdiag.common/model/notation.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
-    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.gmfdiag.common/model/gmfdiag-common.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
-    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.nattable/model/nattable-tablecontents.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
-    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.nattable/model/nattable-tablecontext.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
-    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.nattable.common/model/nattable-common.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.services.controlmode/model/controlmode.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.interactionoverview/model/interactionOverviewDiagram.elementtypesconfigurations#_x8G0YGaNEeSyJIsxLao1Pw"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.gmfdiag.common/model/gmfdiag-common.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.emf/model/infra-emf.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.services.edit/model/marker.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
-    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.types.rulebased/model/rulebased.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.nattable.common/model/nattable-common.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.gmfdiag.common/model/notation.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.activity/model/activityDiagram.elementtypesconfigurations#_x8G0YGaNEeSyJIsxLao1Pw"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.clazz/model/classdiagram.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.communication/model/communicationdiagram.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.statemachine/model/stateMachineDiagram.elementtypesconfigurations#_wYwtMMeDEeSwP_9Vn5UnWg"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.timing/model/timingdiagram-uml.elementtypesconfigurations#_BJMa0PyeEeWbo9Y7g2MLdw"/>
-    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.interactionoverview/model/interactionOverviewDiagram.elementtypesconfigurations#_x8G0YGaNEeSyJIsxLao1Pw"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.types.rulebased/model/rulebased.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.sequence/model/SequenceDiagram.elementtypesconfigurations#_uuwoQENKEeimO7ZhVBpjkg"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/StandardProfile.elementtypesconfigurations#_jfoLkGT_EeSEqNuV3JpFCA"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.stereotype.edition/model/stereotype-edit.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.nattable/model/nattable-tablecontents.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.infra.nattable/model/nattable-tablecontext.elementtypesconfigurations#_rWI4YHPzEeSnGJwaJWHCSg"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types.ui/model/uml-advice.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml-containments.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/umldi.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
@@ -43,25 +35,38 @@
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.domain.omg.ccm.ui/elementtypes/CCM_ui.elementtypesconfigurations#_3b_0oDC1EeqtnaAwMhA4RQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.domain.omg.corba.ui/elementtypes/CORBA_ui.elementtypesconfigurations#_rSLGoDC2EeqtnaAwMhA4RQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.domain.idl3plus.ui/elementtypes/IDL3PLUS_ui.elementtypesconfigurations#_Yx7MoDC4EeqtnaAwMhA4RQ"/>
-    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.base.zdl/elementtypes/ZDL.elementtypesconfigurations#_9ZjZMDCqEeqtnaAwMhA4RQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.domain.zml/elementtypes/ZML.elementtypesconfigurations#_8rKg0DC4EeqtnaAwMhA4RQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.cx.ui/elementtypes/CX_ui.elementtypesconfigurations#_z0RrkDCrEeqtnaAwMhA4RQ"/>
-    <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" xmi:id="_g9k1kAr_EeqGTZ-swNZvQg" name="Composite Structure Diagram" icon="platform:/plugin/org.eclipse.papyrus.uml.diagram.composite/icons/obj16/Diagram_CompositeStructure.gif" implementationID="CompositeStructure">
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.base.zdl/elementtypes/ZDL.elementtypesconfigurations#_pdDAQOPDEem9W8uIC4-YxQ"/>
+    <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" xmi:id="_CF3pMExIEeqoLNTLZUle2w" id="com.zeligosft.domain.cbdds.atcd.diagram.composite" name="CX Composite Structure Diagram" description="CX Composite Structure Diagram" icon="platform:/plugin/org.eclipse.papyrus.uml.diagram.composite/icons/obj16/Diagram_CompositeStructure.gif" implementationID="CompositeStructure" creationCommandClass="org.eclipse.papyrus.uml.diagram.composite.CreateCompositeDiagramCommand">
       <concerns xmi:type="architecture:Concern" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_HQhf48SYEeaKZJ_pGfaSiA"/>
+      <modelRules xmi:type="representation:ModelRule" xmi:id="_oMxfQG9eEeyZLv_s9JjpbA" permit="true" elementMultiplicity="1" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+        <stereotypes xmi:type="ecore:EClass" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#//AssemblyImplementation"/>
+      </modelRules>
+      <modelRules xmi:type="representation:ModelRule" xmi:id="_p8UtIG9lEeyY-_rltDbOaQ" permit="true" elementMultiplicity="1" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+        <stereotypes xmi:type="ecore:EClass" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#//Domain"/>
+      </modelRules>
+      <owningRules xmi:type="representation:OwningRule" xmi:id="_B4IDIG9fEey4-52vQ7EgLw" permit="true" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+        <stereotypes xmi:type="ecore:EClass" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#//AssemblyImplementation"/>
+      </owningRules>
+      <owningRules xmi:type="representation:OwningRule" xmi:id="_p8UtIW9lEeyY-_rltDbOaQ" permit="true" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+        <stereotypes xmi:type="ecore:EClass" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#//Domain"/>
+      </owningRules>
+      <owningRules xmi:type="representation:OwningRule" xmi:id="_p8UtIm9lEeyY-_rltDbOaQ" permit="true" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+      </owningRules>
+      <paletteRules xmi:type="gmfdiagrepresentation:PaletteRule" xmi:id="_zG64oG9eEeyZLv_s9JjpbA" permit="false" element="composite.group.*"/>
       <palettes xmi:type="paletteconfiguration:PaletteConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/palettes/DDS4CCM_compositestructure.paletteconfiguration#/"/>
     </representationKinds>
     <metamodel xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+    <profiles xmi:type="ecore:EPackage" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#/"/>
   </contexts>
-  <contexts xmi:type="architecture:ArchitectureDescriptionLanguage" xmi:id="_PwQTgNWBEemDwbmIrr3eOw" id="com.zeligsoft.domain.cbdds.axcioma.architecture" name="AXCIOMA" description="AXCIOMA Modeling Language" defaultViewpoints="_AXsuwNV5EemRs_x18rjDMA" creationCommandClass="com.zeligsoft.domain.cbdds.architecture.commands.CreateAXCIOMAModelCommand" conversionCommandClass="com.zeligsoft.domain.cbdds.architecture.commands.ConvertToAXCIOMACommand">
-    <viewpoints xmi:type="architecture:ArchitectureViewpoint" xmi:id="_AXsuwNV5EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.viewpoint.axcioma" name="AXCIOMA" concerns="_aNWTkNV4EemRs_x18rjDMA">
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_zzf4gHDtEeWh-MssWmCB_A"/>
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_fa4kAHDuEeWh-MssWmCB_A"/>
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_yeY0sHDvEeWh-MssWmCB_A"/>
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_TR15IHDvEeWh-MssWmCB_A"/>
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_zzf4cXDtEeWh-MssWmCB_A"/>
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_bKiwNHDuEeWh-MssWmCB_A"/>
-      <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/com.zeligsoft.domain.cbdds.architecture/models/cbdds.architecture#_CF3pMExIEeqoLNTLZUle2w"/>
-    </viewpoints>
+  <contexts xmi:type="architecture:ArchitectureDescriptionLanguage" xmi:id="_uqlawG9fEey42LJEPT7LhQ" id="com.zeligsoft.domain.cbdds.axcioma.architecture" name="AXCIOMA" description="AXCIOMA Modeling Language" defaultViewpoints="_uqlawW9fEey42LJEPT7LhQ" creationCommandClass="com.zeligsoft.domain.cbdds.architecture.commands.CreateAXCIOMAModelCommand" conversionCommandClass="com.zeligsoft.domain.cbdds.architecture.commands.ConvertToAXCIOMACommand">
+    <viewpoints xmi:type="architecture:ArchitectureViewpoint" xmi:id="_uqlawW9fEey42LJEPT7LhQ" id="com.zeligsoft.domain.cbdds.viewpoint.axcioma" name="AXCIOMA" concerns="_aNWTkNV4EemRs_x18rjDMA" representationKinds="_uqlawm9fEey42LJEPT7LhQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#_ScP1oFYCEeS0WsAAtVmToA"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.diagram.composite/model/compositediagram.elementtypesconfigurations#_tL86sLazEeSbnofizoRSMQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.domain.cbdds.architecture/elementtypes/cxDDS4CCM.elementtypesconfigurations#_pUObcOPDEem9W8uIC4-YxQ"/>
@@ -91,13 +96,34 @@
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.domain.omg.ccm.ui/elementtypes/CCM_ui.elementtypesconfigurations#_3b_0oDC1EeqtnaAwMhA4RQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.domain.omg.corba.ui/elementtypes/CORBA_ui.elementtypesconfigurations#_rSLGoDC2EeqtnaAwMhA4RQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.domain.idl3plus.ui/elementtypes/IDL3PLUS_ui.elementtypesconfigurations#_Yx7MoDC4EeqtnaAwMhA4RQ"/>
-    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.base.zdl/elementtypes/ZDL.elementtypesconfigurations#_9ZjZMDCqEeqtnaAwMhA4RQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.domain.zml/elementtypes/ZML.elementtypesconfigurations#_8rKg0DC4EeqtnaAwMhA4RQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.cx.ui/elementtypes/CX_ui.elementtypesconfigurations#_z0RrkDCrEeqtnaAwMhA4RQ"/>
-    <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" xmi:id="_CF3pMExIEeqoLNTLZUle2w" name="Composite Structure Diagram" icon="platform:/plugin/org.eclipse.papyrus.uml.diagram.composite/icons/obj16/Diagram_CompositeStructure.gif" implementationID="CompositeStructure">
+    <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.base.zdl/elementtypes/ZDL.elementtypesconfigurations#_pdDAQOPDEem9W8uIC4-YxQ"/>
+    <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" xmi:id="_uqlawm9fEey42LJEPT7LhQ" id="com.zeligosft.domain.cbdds.axcioma.diagram.composite" name="CX Composite Structure Diagram" description="CX Composite Structure Diagram" icon="platform:/plugin/org.eclipse.papyrus.uml.diagram.composite/icons/obj16/Diagram_CompositeStructure.gif" implementationID="CompositeStructure" creationCommandClass="org.eclipse.papyrus.uml.diagram.composite.CreateCompositeDiagramCommand">
       <concerns xmi:type="architecture:Concern" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_HQhf48SYEeaKZJ_pGfaSiA"/>
+      <modelRules xmi:type="representation:ModelRule" xmi:id="_uqlaw29fEey42LJEPT7LhQ" permit="true" elementMultiplicity="1" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+        <stereotypes xmi:type="ecore:EClass" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#//AssemblyImplementation"/>
+      </modelRules>
+      <modelRules xmi:type="representation:ModelRule" xmi:id="_UGkh0G9lEeyY-_rltDbOaQ" permit="true" elementMultiplicity="1" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+        <stereotypes xmi:type="ecore:EClass" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#//Domain"/>
+      </modelRules>
+      <owningRules xmi:type="representation:OwningRule" xmi:id="_uqlaxG9fEey42LJEPT7LhQ" permit="true" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+        <stereotypes xmi:type="ecore:EClass" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#//AssemblyImplementation"/>
+      </owningRules>
+      <owningRules xmi:type="representation:OwningRule" xmi:id="_YxRWYG9lEeyY-_rltDbOaQ" permit="true" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
+        <stereotypes xmi:type="ecore:EClass" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#//Domain"/>
+      </owningRules>
+      <owningRules xmi:type="representation:OwningRule" xmi:id="_Qn8e0G9lEeyY-_rltDbOaQ" permit="true" multiplicity="-1">
+        <element xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+      </owningRules>
+      <paletteRules xmi:type="gmfdiagrepresentation:PaletteRule" xmi:id="_uqlaxW9fEey42LJEPT7LhQ" permit="false" element="composite.group.*"/>
       <palettes xmi:type="paletteconfiguration:PaletteConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/palettes/DDS4CCM_compositestructure.paletteconfiguration#/"/>
     </representationKinds>
     <metamodel xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+    <profiles xmi:type="ecore:EPackage" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#/"/>
   </contexts>
 </architecture:ArchitectureDomain>

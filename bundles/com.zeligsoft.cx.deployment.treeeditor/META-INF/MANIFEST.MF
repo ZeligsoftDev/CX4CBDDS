@@ -3,22 +3,21 @@ Bundle-ManifestVersion: 2
 Bundle-Localization: plugin
 Bundle-Name: %Bundle-Name.0
 Bundle-SymbolicName: com.zeligsoft.cx.deployment.treeeditor;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-Activator: com.zeligsoft.cx.deployment.treeeditor.ui.Activator
 Bundle-Vendor: %Bundle-Vendor.0
-Require-Bundle: org.eclipse.gmf.runtime.common.ui.action.ide;bundle-version="1.7.0",
- com.zeligsoft.base.validation;bundle-version="4.0.0",
- com.zeligsoft.base.ui;bundle-version="4.0.0";visibility:=reexport,
- com.zeligsoft.domain.zml;bundle-version="4.0.0",
- com.zeligsoft.cx.deployment.ui;bundle-version="4.0.0",
- com.zeligsoft.cx.codegen.ui;bundle-version="4.0.0",
- com.zeligsoft.cx.ui.properties;bundle-version="4.0.0",
- org.eclipse.papyrus.infra.emf;bundle-version="3.0.0",
- org.eclipse.papyrus.infra.viewpoints.policy,
- org.eclipse.papyrus.infra.architecture.representation;bundle-version="2.0.0",
- org.eclipse.papyrus.infra.architecture;bundle-version="2.0.0",
- org.eclipse.papyrus.infra.gmfdiag.common;bundle-version="3.101.200",
- org.eclipse.papyrus.infra.gmfdiag.representation;bundle-version="2.0.0"
+Require-Bundle: org.eclipse.gmf.runtime.common.ui.action.ide;bundle-version="[1.7.0,2.0.0)",
+ org.eclipse.papyrus.infra.viewpoints.policy;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.papyrus.infra.architecture.representation;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.papyrus.infra.architecture;bundle-version="[3.1.0,4.0.0)",
+ com.zeligsoft.base.validation;bundle-version="[5.0.0,6.0.0)",
+ com.zeligsoft.base.ui;bundle-version="[5.0.0,6.0.0)";visibility:=reexport,
+ com.zeligsoft.cx.deployment.ui;bundle-version="[5.0.0,6.0.0)",
+ com.zeligsoft.cx.codegen.ui;bundle-version="[5.0.0,6.0.0)",
+ com.zeligsoft.domain.zml;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.papyrus.infra.core.sashwindows.di;bundle-version="[2.0.0,3.0.0)",
+ org.eclipse.papyrus.infra.ui;bundle-version="[3.3.0,4.0.0)",
+ org.eclipse.papyrus.infra.core.architecture;bundle-version="[3.1.0,4.0.0)"
 Export-Package: com.zeligsoft.cx.deployment.treeeditor,
  com.zeligsoft.cx.deployment.treeeditor.actions,
  com.zeligsoft.cx.deployment.treeeditor.l10n,
@@ -27,4 +26,4 @@ Export-Package: com.zeligsoft.cx.deployment.treeeditor,
  com.zeligsoft.cx.deployment.treeeditor.providers,
  com.zeligsoft.cx.deployment.treeeditor.ui
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11

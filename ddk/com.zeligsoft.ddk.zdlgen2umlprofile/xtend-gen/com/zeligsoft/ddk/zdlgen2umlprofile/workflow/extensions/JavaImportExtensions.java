@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaNamingExtensions;
 import java.util.Arrays;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -22,19 +21,13 @@ public class JavaImportExtensions {
   
   protected CharSequence _generateImport(final GenDomainConcept concept) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("import ");
-    String _qualifiedName = this._javaNamingExtensions.qualifiedName(concept);
-    _builder.append(_qualifiedName);
-    _builder.append(";");
+    _builder.append("import �concept.qualifiedName�;");
     return _builder;
   }
   
   protected CharSequence _generateImport(final GenDomainEnum denum) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("import ");
-    String _qualifiedName = this._javaNamingExtensions.qualifiedName(denum);
-    _builder.append(_qualifiedName);
-    _builder.append(";");
+    _builder.append("import �denum.qualifiedName�;");
     return _builder;
   }
   
@@ -45,10 +38,7 @@ public class JavaImportExtensions {
   
   protected CharSequence _generateImplementationImport(final GenDomainConcept concept) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("import ");
-    CharSequence _implementationQualifiedName = this._javaNamingExtensions.implementationQualifiedName(concept);
-    _builder.append(_implementationQualifiedName);
-    _builder.append(";");
+    _builder.append("import �concept.implementationQualifiedName�;");
     return _builder;
   }
   

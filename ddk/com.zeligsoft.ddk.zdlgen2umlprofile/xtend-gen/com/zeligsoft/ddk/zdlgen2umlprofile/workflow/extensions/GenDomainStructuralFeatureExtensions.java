@@ -11,7 +11,6 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenDomainDataType;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainReference;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaNamingExtensions;
 import java.util.Arrays;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
@@ -331,10 +330,7 @@ public class GenDomainStructuralFeatureExtensions {
     boolean _isMultivalued = feature.getDomainAttribute().isMultivalued();
     if (_isMultivalued) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("java.util.List<");
-      String _typeAsString = this.typeAsString(feature);
-      _builder.append(_typeAsString);
-      _builder.append(">");
+      _builder.append("java.util.List<�feature.typeAsString�>");
       _xifexpression = _builder;
     } else {
       _xifexpression = this.typeAsString(feature);

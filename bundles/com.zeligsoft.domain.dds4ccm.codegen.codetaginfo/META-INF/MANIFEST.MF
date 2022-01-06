@@ -2,15 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.zeligsoft.domain.dds4ccm.codegen.codetaginfo;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: com.zeligsoft.domain.dds4ccm.codegen.codetaginfo.codetaginfo,
  com.zeligsoft.domain.dds4ccm.codegen.codetaginfo.codetaginfo.impl,
  com.zeligsoft.domain.dds4ccm.codegen.codetaginfo.codetaginfo.util
-Require-Bundle: org.eclipse.core.runtime;bundle-version="3.15.300",
- org.eclipse.emf.ecore;bundle-version="2.18.0";visibility:=reexport,
- org.eclipse.emf.ecore.xmi;bundle-version="2.16.0";visibility:=reexport
+Require-Bundle: org.eclipse.emf.ecore.xmi;bundle-version="[2.16.0,3.0.0)";visibility:=reexport
 Bundle-ActivationPolicy: lazy

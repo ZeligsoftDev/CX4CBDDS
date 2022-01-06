@@ -3,12 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.zeligsoft.domain.omg.dds;singleton:=true
 Automatic-Module-Name: com.zeligsoft.domain.omg.dds
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %pluginProvider
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;bundle-version="[2.6.0,3.0.0)";visibility:=reexport,
- org.eclipse.uml2.types;visibility:=reexport,
- org.eclipse.uml2.uml;visibility:=reexport
+Require-Bundle: org.eclipse.uml2.uml;bundle-version="[5.5.0,6.0.0)";visibility:=reexport
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11

@@ -36,7 +36,6 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.papyrus.commands.wrappers.GEFtoEMFCommandWrapper;
 import org.eclipse.papyrus.infra.gmfdiag.common.utils.DiagramEditPartsUtil;
 import org.eclipse.papyrus.infra.gmfdiag.common.utils.ViewServiceUtil;
-import org.eclipse.papyrus.uml.diagram.common.Activator;
 import org.eclipse.papyrus.uml.diagram.common.commands.ShowHideCompartmentRequest;
 import org.eclipse.papyrus.uml.diagram.menu.actions.ShowHideCompartmentAction;
 import org.eclipse.ui.PlatformUI;
@@ -106,7 +105,7 @@ public class ResetCompartmentFilterAction extends ShowHideCompartmentAction {
 					}
 				});
 			} catch (InterruptedException e) {
-				Activator.log.error(e);
+				com.zeligsoft.domain.dds4ccm.ui.Activator.getDefault().error(e.getMessage(), e);
 			}
 		}
 	}
@@ -124,7 +123,7 @@ public class ResetCompartmentFilterAction extends ShowHideCompartmentAction {
 				View currentView = currentRepresentation.getCompartmentView();
 				EditPart currentEditPart = currentRepresentation.getRepresentedEditPart(); // should not be null,
 				if (currentEditPart == null) {
-					Activator.log.debug(
+					com.zeligsoft.domain.dds4ccm.ui.Activator.getDefault().warning(
 							"Warning! An edit part representation wished to destroy a view, but no edit part exists currently!" //$NON-NLS-1$
 									+ current);
 					currentEditPart = DiagramEditPartsUtil.getEditPartFromView(currentView, selectedElements.get(0))
@@ -139,7 +138,7 @@ public class ResetCompartmentFilterAction extends ShowHideCompartmentAction {
 						completeCmd.add(tmp);
 					}
 				} else {
-					Activator.log.debug("Impossible to find an edit part for the given representation: " + current); //$NON-NLS-1$
+					com.zeligsoft.domain.dds4ccm.ui.Activator.getDefault().warning("Impossible to find an edit part for the given representation: " + current); //$NON-NLS-1$
 				}
 			}
 		}

@@ -15,7 +15,6 @@ import org.eclipse.papyrus.infra.core.services.ServiceException;
 import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
 import org.eclipse.papyrus.infra.emf.utils.ServiceUtilsForEObject;
 import org.eclipse.papyrus.infra.services.decoration.DecorationService;
-import org.eclipse.papyrus.uml.tools.Activator;
 import org.eclipse.papyrus.uml.tools.model.ExtendedUmlModel;
 import org.eclipse.papyrus.uml.tools.model.UmlModel;
 import org.eclipse.papyrus.uml.tools.profile.definition.IPapyrusVersionConstants;
@@ -82,7 +81,7 @@ public class CustomProfileDefinitionService extends ProfileDefinitionService {
 								try {
 									addRootProfileDecorationIfRequired(umlModel);
 								} catch (NotFoundException | ServiceException e) {
-									Activator.log.error(e);
+									com.zeligsoft.domain.dds4ccm.ui.Activator.getDefault().error(e.getMessage(), e);
 								} finally {
 									res.eAdapters().remove(this);
 								}
@@ -99,9 +98,9 @@ public class CustomProfileDefinitionService extends ProfileDefinitionService {
 			}
 
 		} catch (NotFoundException e) {
-			Activator.log.warn(e.getLocalizedMessage());
+			com.zeligsoft.domain.dds4ccm.ui.Activator.getDefault().warning(e.getLocalizedMessage());
 		} catch (ServiceException e) {
-			Activator.log.error(e);
+			com.zeligsoft.domain.dds4ccm.ui.Activator.getDefault().error(e.getMessage(), e);
 		}
 
 	}

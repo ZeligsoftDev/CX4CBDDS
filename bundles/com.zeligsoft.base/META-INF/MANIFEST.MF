@@ -2,17 +2,17 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.zeligsoft.base;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-Activator: com.zeligsoft.base.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)";visibility:=reexport,
- org.eclipse.gmf.runtime.emf.core;bundle-version="[1.4.0,2.0.0)",
- org.eclipse.uml2.uml;bundle-version="5.5.0";visibility:=reexport,
- org.eclipse.emf.mwe.core;bundle-version="[1.0.0,2.0.0)",
- org.eclipse.emf.mwe.utils;bundle-version="[1.0.0,2.0.0)",
- org.eclipse.gmf.runtime.emf.type.core;bundle-version="1.9.0",
- org.eclipse.papyrus.infra.emf.gmf;bundle-version="1.2.100",
- org.eclipse.papyrus.infra.services.edit;bundle-version="3.1.0"
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.23.0,4.0.0)";visibility:=reexport,
+ org.eclipse.gmf.runtime.emf.core;bundle-version="[1.7.0,2.0.0)",
+ org.eclipse.uml2.uml;bundle-version="[5.5.0,6.0.0)";visibility:=reexport,
+ org.eclipse.emf.mwe.core;bundle-version="[1.6.1,2.0.0)",
+ org.eclipse.emf.mwe.utils;bundle-version="[1.6.1,2.0.0)",
+ org.eclipse.gmf.runtime.emf.type.core;bundle-version="[1.9.0,2.0.0)",
+ org.eclipse.papyrus.infra.emf.gmf;bundle-version="[2.1.0,3.0.0)",
+ org.eclipse.papyrus.infra.services.edit;bundle-version="[4.1.0,5.0.0)"
 Export-Package: com.zeligsoft.base,
  com.zeligsoft.base.l10n,
  com.zeligsoft.base.util,
@@ -20,4 +20,4 @@ Export-Package: com.zeligsoft.base,
 Eclipse-BuddyPolicy: registered
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy;exclude:="com.zeligsoft.base.util"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11

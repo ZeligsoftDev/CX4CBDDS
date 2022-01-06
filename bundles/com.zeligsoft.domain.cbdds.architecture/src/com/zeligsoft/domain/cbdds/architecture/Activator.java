@@ -16,7 +16,6 @@
  */
 package com.zeligsoft.domain.cbdds.architecture;
 
-import org.eclipse.papyrus.infra.core.log.LogHelper;
 import org.osgi.framework.BundleContext;
 
 import com.zeligsoft.base.ZeligsoftAbstractPlugin;
@@ -31,8 +30,6 @@ public class Activator extends ZeligsoftAbstractPlugin {
 
 	public static final String AXIOMA_ARCHITECTURE_ID = "com.zeligsoft.domain.cbdds.axcioma.architecture";
 	
-	public static LogHelper log;
-
 	// The shared instance
 	private static Activator plugin;
 
@@ -44,7 +41,6 @@ public class Activator extends ZeligsoftAbstractPlugin {
 
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
-		log = new LogHelper(this);
 		plugin = this;
 	}
 

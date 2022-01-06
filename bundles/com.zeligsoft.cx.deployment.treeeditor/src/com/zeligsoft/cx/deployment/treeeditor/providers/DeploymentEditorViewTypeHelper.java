@@ -60,8 +60,14 @@ public class DeploymentEditorViewTypeHelper implements IViewTypeHelper {
 		// pass the validation from IPageManager
 		// Issue #118
 		ArchitectureDomainManager manager = ArchitectureDomainManager.getInstance();
-		PapyrusRepresentationKind kind = (PapyrusRepresentationKind) manager.getRepresentationKindById(
-				"org.eclipse.papyrus.uml.diagram.compositeStructure.root.structuredClassifier"); //$NON-NLS-1$
+		PapyrusRepresentationKind kind = null;
+		if ("AXCIOMA".equals(manager.getDefaultArchitectureContext().getName())) { //$NON-NLS-1$
+			kind = (PapyrusRepresentationKind) manager
+					.getRepresentationKindById("com.zeligosft.domain.cbdds.axcioma.diagram.composite"); //$NON-NLS-1$
+		} else {
+			kind = (PapyrusRepresentationKind) manager
+					.getRepresentationKindById("com.zeligosft.domain.cbdds.atcd.diagram.composite"); //$NON-NLS-1$
+		}
 		return new DeploymentViewPrototype(kind);
 	}
 

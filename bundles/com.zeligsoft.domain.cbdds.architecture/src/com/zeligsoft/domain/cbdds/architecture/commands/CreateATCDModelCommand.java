@@ -132,7 +132,7 @@ public class CreateATCDModelCommand implements IModelCreationCommand {
 				// do nothing
 			}
 		} else {
-			com.zeligsoft.domain.cbdds.architecture.Activator.log.error("Impossible to find CBDDS profile", null);
+			com.zeligsoft.domain.cbdds.architecture.Activator.getDefault().error("Impossible to find CBDDS profile", null);
 		}
 	}
 

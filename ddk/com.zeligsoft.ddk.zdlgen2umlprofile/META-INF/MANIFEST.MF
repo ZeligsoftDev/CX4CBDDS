@@ -6,7 +6,7 @@ Bundle-Vendor: %providerName
 Bundle-Version: 4.0.0.qualifier
 Require-Bundle: com.zeligsoft.ddk.zdl.zdlgen;bundle-version="4.0.0",
  com.zeligsoft.ddk.zdl.rsm.tooling;bundle-version="4.0.0",
- com.zeligsoft.base;bundle-version="3.4.0";visibility:=reexport,
+ com.zeligsoft.base;bundle-version="4.0.0";visibility:=reexport,
  com.zeligsoft.base.toolingmodel;bundle-version="4.0.0",
  com.zeligsoft.base.zdl;bundle-version="4.0.0",
  com.zeligsoft.base.ui;bundle-version="4.0.0",
@@ -28,7 +28,8 @@ Require-Bundle: com.zeligsoft.ddk.zdl.zdlgen;bundle-version="4.0.0",
  org.eclipse.gmf.runtime.common.core,
  org.eclipse.emf.workspace,
  org.eclipse.papyrus.uml.types.core;bundle-version="4.0.0",
- org.eclipse.papyrus.infra.types;bundle-version="4.0.0"
+ org.eclipse.papyrus.infra.types;bundle-version="4.0.0",
+ org.eclipse.papyrus.infra.ui;bundle-version="2.0.0"
 Bundle-Activator: com.zeligsoft.ddk.zdlgen2umlprofile.Activator
 Export-Package: com.zeligsoft.ddk.zdlgen2umlprofile,
  com.zeligsoft.ddk.zdlgen2umlprofile.adapter.rsm.extensions,
