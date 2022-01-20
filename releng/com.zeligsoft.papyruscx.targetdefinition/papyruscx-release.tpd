@@ -1,6 +1,6 @@
 target "Papyrus CX Target Platform - Release" with source requirements
 
-location "http://download.eclipse.org/releases/2019-06/" eclipse-2019-06 {
+location "http://download.eclipse.org/releases/2020-03/" eclipse-2020-03 {
 	org.eclipse.platform.feature.group	// This is needed even if everything compiles without it.
 //	org.eclipse.sdk.feature.group
 //	org.eclipse.rcp.feature.group
@@ -28,12 +28,12 @@ location "http://download.eclipse.org/releases/2019-06/" eclipse-2019-06 {
 	org.eclipse.ocl.ui.feature.group
 }
 
-location "http://download.eclipse.org/egit/updates-5.4" egit {
+location "http://download.eclipse.org/egit/updates-5.7" egit {
 	org.eclipse.egit.feature.group
 	org.eclipse.jgit.feature.group
 }
 
-location emfCompare "https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R201905300200/" {
+location emfCompare "https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202003070301/" {
 	org.eclipse.emf.compare.source.feature.group [3.3.5,4.0.0)
 	org.eclipse.emf.compare.diagram.gmf.source.feature.group [3.3.5,4.0.0)
 	org.eclipse.emf.compare.uml2.source.feature.group [3.3.5,4.0.0)
@@ -42,7 +42,7 @@ location emfCompare "https://download.eclipse.org/modeling/emf/compare/updates/r
 	org.eclipse.emf.compare.rcp.ui.source.feature.group [3.3.5,4.0.0)
 }
 
-location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20190602212107/repository" {
+location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20200224183213/repository/" {
 	com.google.inject
 //	javaewah
 //	org.apache.commons.io
@@ -58,12 +58,13 @@ location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R201906
 //	org.objenesis [1.0.0,2.0.0)
 }
 
-location papyrus "http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2019-06" {
+location papyrus "https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2020-03/" {
 	org.eclipse.papyrus.sdk.feature.feature.group
 //	org.eclipse.papyrus.infra.gmfdiag.feature.feature.group
 //	org.eclipse.papyrus.infra.services.feature.feature.group
 //	org.eclipse.papyrus.views.properties.toolsmiths
 }
+
 
 // The following are required by com.zeligsoft.cx.* and others
 location cdt "https://archive.eclipse.org/tools/cdt/releases/9.8/cdt-9.8.1" {
