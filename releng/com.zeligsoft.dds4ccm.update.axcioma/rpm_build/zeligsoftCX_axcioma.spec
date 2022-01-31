@@ -43,12 +43,13 @@
     org.eclipse.emf.mwe.ui.feature.feature.group, \
     com.google.inject/3.0.0.v201605172100, \
     org.freemarker/2.3.22.v20160210-1233, \
-    org.eclipse.tools.templates.freemarker/1.0.0.201812111206, \
-    org.eclipse.tools.templates.core/1.1.0.201812111206, \
-    org.eclipse.tools.templates.ui/1.1.1.201812111206, \
-    org.eclipse.tm.terminal.control/4.6.0.202002152037, \
+    org.eclipse.tools.templates.freemarker/1.1.100.202001140305, \
+    org.eclipse.tools.templates.core/1.1.100.202001140305, \
+    org.eclipse.tools.templates.ui/1.1.100.202001140305, \
+    org.eclipse.tm.terminal.control/4.6.1.202005200056, \
     javax.xml.stream/1.0.1.v201004272200, \
     com.sun.xml.bind/2.2.0.v201505121915, \
+    com.google.gson/2.8.2.v20180104-1110, \
     com.google.guava, \
     org.eclipse.xtend.lib.source, \
     org.eclipse.xtend.lib.macro.source, \
