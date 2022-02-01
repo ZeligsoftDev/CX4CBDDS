@@ -18,33 +18,38 @@
     org.eclipse.cdt.sdk.feature.group, \
     org.eclipse.papyrus.compare.feature.feature.group, \
     org.eclipse.launchbar.feature.group, \
+    org.eclipse.xpand.feature.group, \
+    org.eclipse.xpand.ui.feature.group, \
+    org.eclipse.xpand.sdk.feature.group, \
     org.eclipse.xtext.runtime.feature.group, \
     org.eclipse.xtext.ui.feature.group, \
+    org.eclipse.xtext.xbase.feature.group, \
     org.eclipse.xtext.xbase.lib.feature.group, \
     org.eclipse.xtend.feature.group, \
+    org.eclipse.xtend.typesystem.emf.feature.group, \
     org.eclipse.xtend.typesystem.uml2.feature.group, \
     org.eclipse.xtend.typesystem.xsd.feature.group, \
     org.eclipse.xtend.sdk.feature.group, \
-    org.eclipse.xtext.xbase.feature.group, \
     org.eclipse.emf.compare.feature.group, \
     org.eclipse.emf.compare.diagram.gmf.feature.group, \
     org.eclipse.emf.compare.egit.feature.group, \
     org.eclipse.emf.compare.ide.ui.feature.group, \
     org.eclipse.emf.compare.rcp.ui.feature.group, \
     org.eclipse.emf.compare.uml2.feature.group, \
-    org.eclipse.emf.mwe.ui/1.4.0, \
+    org.eclipse.emf.mwe2.language.sdk.feature.group, \
+    org.eclipse.emf.mwe2.launcher.feature.group, \
+    org.eclipse.emf.mwe2.runtime.sdk.feature.group, \
+    org.eclipse.emf.mwe.core.feature.feature.group, \
+    org.eclipse.emf.mwe.ui.feature.feature.group, \
     com.google.inject/3.0.0.v201605172100, \
-    org.eclipse.xpand/2.2.0.v201605260315, \
-    org.eclipse.xtend.shared.ui/2.2.0.v201605260315, \
-    org.eclipse.xtend.ide/2.18.0.v20190528-0610, \
-    org.eclipse.xtend.typesystem.emf/2.2.0.v201605260315, \
     org.freemarker/2.3.22.v20160210-1233, \
-    org.eclipse.tools.templates.freemarker/1.0.0.201812111206, \
-    org.eclipse.tools.templates.core/1.1.0.201812111206, \
-    org.eclipse.tools.templates.ui/1.1.1.201812111206, \
-    org.eclipse.tm.terminal.control/4.5.100.201901312304, \
+    org.eclipse.tools.templates.freemarker/1.1.100.202001140305, \
+    org.eclipse.tools.templates.core/1.1.100.202001140305, \
+    org.eclipse.tools.templates.ui/1.1.100.202001140305, \
+    org.eclipse.tm.terminal.control/4.6.1.202005200056, \
     javax.xml.stream/1.0.1.v201004272200, \
     com.sun.xml.bind/2.2.0.v201505121915, \
+    com.google.gson/2.8.2.v20180104-1110, \
     com.google.guava, \
     org.eclipse.xtend.lib.source, \
     org.eclipse.xtend.lib.macro.source, \
@@ -84,6 +89,7 @@ License:       Apache License, Version 2.0
 BuildArch:     noarch
 URL:           https://github.com/ZeligsoftDev/CX4CBDDS
 AutoReqProv:   no
+Requires:      java-11-openjdk
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Describe packages

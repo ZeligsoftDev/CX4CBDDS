@@ -1,44 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
-<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Papyrus CX Target Platform - Release" sequenceNumber="1604962218">
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl --><target name="Papyrus CX Target Platform - Release" sequenceNumber="1604962218">
   <locations>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.platform.feature.group" version="4.12.0.v20190605-1801"/>
-      <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.12.1.201905141505"/>
-      <unit id="com.google.guava" version="21.0.0.v20170206-1425"/>
-      <unit id="org.eclipse.xtend.sdk.feature.group" version="2.18.0.v20190528-0716"/>
-      <unit id="org.eclipse.xtend.typesystem.uml2.feature.group" version="2.2.0.v201605260315"/>
-      <unit id="org.eclipse.xtend.typesystem.xsd.feature.group" version="2.2.0.v201605260315"/>
-      <unit id="org.eclipse.xtend.ui.feature.group" version="2.2.0.v201605260315"/>
-      <unit id="org.eclipse.ocl.ui.feature.group" version="2.8.0.v20190603-1146"/>
-      <repository id="eclipse-2019-06" location="http://download.eclipse.org/releases/2019-06/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.egit.feature.group" version="5.4.0.201906121030-r"/>
-      <unit id="org.eclipse.jgit.feature.group" version="5.4.0.201906121030-r"/>
-      <repository id="egit" location="http://download.eclipse.org/egit/updates-5.4"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.emf.compare.source.feature.group" version="3.3.7.201905300200"/>
-      <unit id="org.eclipse.emf.compare.diagram.gmf.source.feature.group" version="3.3.7.201905300200"/>
-      <unit id="org.eclipse.emf.compare.uml2.source.feature.group" version="3.3.7.201905300200"/>
-      <unit id="org.eclipse.emf.compare.egit.source.feature.group" version="3.3.7.201905300200"/>
-      <unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="3.3.7.201905300200"/>
-      <unit id="org.eclipse.emf.compare.rcp.ui.source.feature.group" version="3.3.7.201905300200"/>
-      <repository id="emfCompare" location="https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R201905300200/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="com.google.inject" version="3.0.0.v201605172100"/>
-      <repository id="orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20190602212107/repository"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.papyrus.sdk.feature.feature.group" version="4.4.0.201906121718"/>
-      <repository id="papyrus" location="http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2019-06"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.cdt.platform.feature.group" version="9.8.1.201907021957"/>
-      <repository id="cdt" location="https://archive.eclipse.org/tools/cdt/releases/9.8/cdt-9.8.1"/>
-    </location>
+	  <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+		  <repository location="https://archive.eclipse.org/tools/cdt/releases/9.11/"/>
+		  <unit id="org.eclipse.cdt.sdk.feature.group" version="9.11.1.202006011430"/>
+	  </location>
+	  <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+		  <repository location="http://download.eclipse.org/releases/2020-06/"/>
+		  <unit id="org.eclipse.platform.feature.group" version="4.16.0.v20200604-0951"/>
+		  <unit id="org.eclipse.egit.feature.group" version="5.8.0.202006091008-r"/>
+		  <unit id="org.eclipse.jgit.feature.group" version="5.8.0.202006091008-r"/>
+		  <unit id="org.eclipse.emf.mwe.sdk.feature.group" version="1.5.3.v20200520-0756"/>
+		  <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.13.0.202004160913"/>
+		  <unit id="org.eclipse.xpand.sdk.feature.group" version="2.2.0.v201605260315"/>
+		  <unit id="org.eclipse.xtend.sdk.feature.group" version="2.22.0.v20200602-1533"/>
+	  </location>
+	  <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+		  <repository location="https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202005260905/"/>
+		  <unit id="org.eclipse.emf.compare.diagram.gmf.source.feature.group" version="3.3.11.202005260905"/>
+		  <unit id="org.eclipse.emf.compare.egit.source.feature.group" version="3.3.11.202005260905"/>
+		  <unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="3.3.11.202005260905"/>
+		  <unit id="org.eclipse.emf.compare.rcp.ui.source.feature.group" version="3.3.11.202005260905"/>
+		  <unit id="org.eclipse.emf.compare.source.feature.group" version="3.3.11.202005260905"/>
+		  <unit id="org.eclipse.emf.compare.uml2.source.feature.group" version="3.3.11.202005260905"/>
+	  </location>
+	  <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+		  <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20200529191137/repository/"/>
+		  <unit id="com.google.inject" version="3.0.0.v201605172100"/>
+	  </location>
   </locations>
 </target>

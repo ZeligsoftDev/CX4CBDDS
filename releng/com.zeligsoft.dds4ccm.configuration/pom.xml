@@ -10,16 +10,16 @@
 		<rootdir>${maven.multiModuleProjectDirectory}</rootdir>
 		<project.build.sourceEncoding>ISO-8859-1
 		</project.build.sourceEncoding>
-		<eclipse-release.url>https://download.eclipse.org/releases/2019-06/
+		<eclipse-release.url>https://download.eclipse.org/releases/2020-06/
 		</eclipse-release.url>
-		<orbit.url>https://download.eclipse.org/tools/orbit/downloads/drops/R20190602212107/repository
+		<orbit.url>https://download.eclipse.org/tools/orbit/downloads/drops/R20200529191137/repository/
 		</orbit.url>
-		<papyrus.url>https://archive.eclipse.org/modeling/mdt/papyrus/updates/releases/2019-06/
+		<papyrus.url>https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2020-06/
 		</papyrus.url>
-		<cdt-98-repo.url>https://archive.eclipse.org/tools/cdt/releases/9.8/cdt-9.8.1
-		</cdt-98-repo.url>
-		<emf-compare.url>https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R201905300200</emf-compare.url>
-		<papyrus-compare.url>jar:file://${rootdir}/releng/deps/org.eclipse.papyrus.compare.p2-0.7.0-SNAPSHOT.zip!/
+		<cdt-repo.url>https://archive.eclipse.org/tools/cdt/releases/9.11/
+		</cdt-repo.url>
+		<emf-compare.url>https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202005260905/</emf-compare.url>
+		<papyrus-compare.url>https://download.eclipse.org/modeling/mdt/papyrus/components/compare/updates/nightly/0.7.0-N20200430-193447/
 		</papyrus-compare.url>
 	</properties>
 
@@ -35,8 +35,8 @@
 			<layout>p2</layout>
 		</repository>
 		<repository>
-			<id>cdt-98-repo</id>
-			<url>${cdt-98-repo.url}</url>
+			<id>cdt-repo</id>
+			<url>${cdt-repo.url}</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
