@@ -24,6 +24,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.jface.dialogs.ErrorDialog;
@@ -268,17 +269,14 @@ public class RightTreeListener extends ViewerDropAdapter implements
 				// ((Property) target).getType());
 			}
 
-			if (target == null) {
-				continue;
-			}
-
-			if ((!(target instanceof Property))
-					|| (((Property) target).getType() == null)) {
-				return false;
+			EObject targetDeployment = view.getDeployment();
+			if (target instanceof Property
+					&& ((Property) target).getType() != null) {
+				targetDeployment = ((Property) target).getType();
 			}
 
 			if (!ValidationUtil.canLink(LinkConstraintContext.DEPLOYMENT, source
-					.getType(), ((Property) target).getType())) {
+					.getType(), targetDeployment)) {
 				return false;
 			}
 		}
