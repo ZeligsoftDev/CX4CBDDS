@@ -1078,6 +1078,12 @@ or not(type.oclAsType(CXDomain::IDL::CXInterface).isLocal)</body>
           <body>com.zeligsoft.domain.omg.ccm.constraints.java.DeploymentPartSynchronizationConstraint</body>
         </specification>
       </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_O7PVEIOgEeyyEJEvqvTmgw" name="deployDomain">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_O7PVEYOgEeyyEJEvqvTmgw">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
       <packageImport xmi:type="uml:PackageImport" xmi:id="_UjEb8JQyEd-TfMHkrqIL3w">
         <importedPackage xmi:type="uml:Package" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_9ihoQEuQEd2aAOSqOUjI9w"/>
       </packageImport>
@@ -1356,4 +1362,5 @@ or not(type.oclAsType(CXDomain::IDL::CXInterface).isLocal)</body>
   <zdl:DomainGeneralization xmi:id="_CNrXcIblEeSjd8J8ZjsuPQ" base_Generalization="_CNo7MIblEeSjd8J8ZjsuPQ"/>
   <zdl:DomainReference xmi:id="_9ccm0DqyEemag5F7DMuukA" base_Association="_9cAh8DqyEemag5F7DMuukA"/>
   <standard:ModelLibrary xmi:id="_rmfj4JyjEd6Wsux7POnJSg" base_Package="_NRAMoAwOEdmFcaeZXPdWAQ"/>
+  <zdl:DomainLinkConstraint xmi:id="_O7ZtIIOgEeyyEJEvqvTmgw" source="_L_GMsZA1Ed-7vMqgUHuhFQ" target="_I9uiwZQtEd-TfMHkrqIL3w" kind="deployment" base_Constraint="_O7PVEIOgEeyyEJEvqvTmgw"/>
 </xmi:XMI>
