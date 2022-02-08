@@ -51,6 +51,17 @@
           <body>com.zeligsoft.domain.idl3plus.constraints.java.ExtendedPortConnectionConstraint</body>
         </specification>
       </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_cEQ5QIhgEeydU-rpsDJ7ig" name="connector_valid_ends">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_cEQ5QYhgEeydU-rpsDJ7ig">
+          <body>&lt;p>%_desc_IDL3Plus__IDL3Plus__connector_valid_ends&lt;/p>
+</body>
+        </ownedComment>
+        <constrainedElement xmi:type="uml:Class" href="pathmap://CCM_DOMAIN/CCM.uml#_Sbi74BWYEd-iXJ2fHwNJGg"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_cEQ5QohgEeydU-rpsDJ7ig">
+          <language>Java</language>
+          <body>com.zeligsoft.domain.idl3plus.constraints.java.ConnectorValidEndsConstraint</body>
+        </specification>
+      </ownedRule>
       <packagedElement xmi:type="uml:Class" xmi:id="_-PR6cJBQEeCN25huR8QT_w" name="IDL3PlusModel">
         <generalization xmi:type="uml:Generalization" xmi:id="_t6cyUJBWEeCN25huR8QT_w">
           <general xmi:type="uml:Class" href="pathmap://CCM_DOMAIN/CCM.uml#_N5Ke8B_iEd-YxIOdEiZ7OA"/>
@@ -518,4 +529,5 @@
   <zdl:DomainGeneralization xmi:id="_i4D0IEg7EeGf28guB9vtdA" base_Generalization="_i39tgEg7EeGf28guB9vtdA"/>
   <zdl:DomainConcept xmi:id="_wJ0FAKYqEeOfvtqndLdVsg" base_Class="_wJmpoKYqEeOfvtqndLdVsg"/>
   <zdl:DomainGeneralization xmi:id="_-D4zMKYqEeOfvtqndLdVsg" base_Generalization="_-DyFgKYqEeOfvtqndLdVsg"/>
+  <zdl:ExternalDomainConstraint xmi:id="_cETVgIhgEeydU-rpsDJ7ig" evaluationMode="live" severity="error" message="%_mesg_IDL3Plus__IDL3Plus__connector_valid_ends" id="com.zeligsoft.domain.idl3plus.connector_valid_ends" base_Constraint="_cEQ5QIhgEeydU-rpsDJ7ig"/>
 </xmi:XMI>
