@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Set Variables
         id: variables
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           script: |
             core.info('context.sha =' + context.sha)
@@ -63,7 +63,7 @@ jobs:
         run: |
            ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
       - name: Located Built archives
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           script: |
             const patterns = {
@@ -104,7 +104,7 @@ jobs:
             --define "_git_tag $RPM_TAG" \
             releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec
       - name: Located Built RPMS
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           script: |
             const patterns = {
