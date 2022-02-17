@@ -633,6 +633,15 @@ or not(type.oclAsType(CXDomain::IDL::CXInterface).isLocal)</body>
             <body>com.zeligsoft.domain.omg.ccm.constraints.java.ConnectorEndExistsConstraint</body>
           </specification>
         </ownedRule>
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_Tk-EQI9cEeyjLubsxp6Fjg" name="delegate_connector_valid_ends" constrainedElement="_Sbi74BWYEd-iXJ2fHwNJGg">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_Tk-EQY9cEeyjLubsxp6Fjg">
+            <body>%_desc_CCM__CCM_Implementation__CCMConnector__connector_conjugation</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_Tk-EQo9cEeyjLubsxp6Fjg">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.ccm.constraints.java.ValidDelegateConnectorConstraint</body>
+          </specification>
+        </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="_0JH0UBWZEd-iXJ2fHwNJGg">
           <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_x7Nu8CDzEd2fK6BRw108zQ"/>
         </generalization>
@@ -1363,4 +1372,5 @@ or not(type.oclAsType(CXDomain::IDL::CXInterface).isLocal)</body>
   <zdl:DomainReference xmi:id="_9ccm0DqyEemag5F7DMuukA" base_Association="_9cAh8DqyEemag5F7DMuukA"/>
   <standard:ModelLibrary xmi:id="_rmfj4JyjEd6Wsux7POnJSg" base_Package="_NRAMoAwOEdmFcaeZXPdWAQ"/>
   <zdl:DomainLinkConstraint xmi:id="_O7ZtIIOgEeyyEJEvqvTmgw" source="_L_GMsZA1Ed-7vMqgUHuhFQ" target="_I9uiwZQtEd-TfMHkrqIL3w" kind="deployment" base_Constraint="_O7PVEIOgEeyyEJEvqvTmgw"/>
+  <zdl:DomainConstraint xmi:id="_TlAggI9cEeyjLubsxp6Fjg" severity="error" message="%_mesg_CCM__CCM_Implementation__CCMConnector__valid_delegate_connector" id="com.zeligsoft.domain.omg.ccm.CCMConnector.valid_delegate_connector" base_Constraint="_Tk-EQI9cEeyjLubsxp6Fjg"/>
 </xmi:XMI>
