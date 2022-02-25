@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
+import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
@@ -266,15 +267,18 @@ public class CXPropertyDescriptor {
 					Activator.getDefault().warning(e.getMessage(), e);
 				}
 
-				if (additionalCommand != null && additionalCommand.canExecute()) {
-					additionalCommand.execute(null, null);
-				}
-
 				return CommandResult.newOKCommandResult();
 			}
 		};
-
-		Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+		
+		CompositeCommand compositeCommand = new CompositeCommand(
+				NLS.bind(Messages.CXPropertyDescriptor_ChangePropertyValueTransactionLabel, property.getName()));
+		compositeCommand.add(command);
+		if(additionalCommand != null && additionalCommand.canExecute()) {
+			compositeCommand.add(additionalCommand);
+		}
+		
+		Command emfCommand = GMFtoEMFCommandWrapper.wrap(compositeCommand);
 		editingDomain.getCommandStack().execute(emfCommand);
 	}
 
@@ -480,7 +484,7 @@ public class CXPropertyDescriptor {
 				return o1.property.getName().compareTo(o2.property.getName());
 			}
 
-			return new Integer(o1.index).compareTo(new Integer(o2.index));
+			return Integer.valueOf(o1.index).compareTo(Integer.valueOf(o2.index));
 		}
 
 	}

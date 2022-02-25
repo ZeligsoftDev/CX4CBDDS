@@ -601,7 +601,9 @@ public class WorkerFunctionRepair {
 			}
 			Command cmd = BaseUtil.getDeleteCommand(toDelete);
 			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(workerFunction);
-			domain.getCommandStack().execute(cmd);
+			if(cmd.canExecute()) {
+				domain.getCommandStack().execute(cmd);
+			}
 			toDelete.clear();
 			if (!paramsToAdd.isEmpty()) {
 				for (String name : paramsToAdd.keySet()) {

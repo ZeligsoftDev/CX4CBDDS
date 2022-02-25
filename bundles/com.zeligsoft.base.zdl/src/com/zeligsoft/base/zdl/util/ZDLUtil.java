@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
@@ -52,8 +53,18 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
+import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.core.util.PackageUtil;
+import org.eclipse.gmf.runtime.emf.type.core.requests.IEditCommandRequest;
+import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
+import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
+import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
+import org.eclipse.papyrus.uml.types.core.requests.SetStereotypeValueRequest;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Association;
@@ -3631,12 +3642,13 @@ public class ZDLUtil
 				storage.clear();
 				storage.addAll(valueList);
 			} else {
-				// transform the value to sterotype applications or whatever
-				value = valueMapping.transformForSet(value);
-
-				// store the value
 				try {
-					owner.eSet(feature, value);
+					ICommand command = valueMapping.getSetCommand(ownerMapping, modelElement, feature, value);
+					if (command.canExecute()) {
+						TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(owner);
+						Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+						domain.getCommandStack().execute(emfCommand);
+					}
 				} catch (IllegalArgumentException e) {
 					// ToDo: ZDL mapping to be fixed when DDK is updated
 					Activator.getDefault()
@@ -3812,6 +3824,32 @@ public class ZDLUtil
 		public final boolean isConceptType() {
 			return concept != null;
 		}
+		
+		/**
+		 * Return set value command  
+		 * 
+		 * @param owner
+		 * @return
+		 */
+		protected ICommand getSetCommand(ZDLPropertyOwnerMapping ownerMapping, EObject modelElement,
+				EStructuralFeature feature, Object value) {
+			EObject owner = ownerMapping.getFeatureOwner(modelElement);
+			// transform the value to sterotype applications or whatever
+			value = transformForSet(value);
+			IElementEditService provider = ElementEditServiceUtils.getCommandProvider(owner);
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(owner);
+			if (provider != null) {
+				CompositeCommand cc = new CompositeCommand("Edit value"); //$NON-NLS-1$
+
+				IEditCommandRequest createSetRequest = new SetRequest(domain, owner, feature, value);
+
+				if (createSetRequest != null) {
+					cc.add(provider.getEditCommand(createSetRequest));
+				}
+				return cc;
+			}
+			return null;
+		}
 	}
 
 	/**
@@ -3826,6 +3864,10 @@ public class ZDLUtil
 
 		private Stereotype stereotype;
 
+		Stereotype getStereotype() {
+			return stereotype;
+		}
+		
 		StereotypePropertyOwnerMapping(Stereotype stereotype) {
 			this.stereotype = stereotype;
 		}
@@ -3870,6 +3912,30 @@ public class ZDLUtil
 		@Override
 		protected EObject getReferent(EObject modelElement) {
 			return asStereotypeInstances(modelElement, stereotype);
+		}
+		
+		@Override
+		protected ICommand getSetCommand(ZDLPropertyOwnerMapping ownerMapping, EObject modelElement,
+				EStructuralFeature feature, Object value) {
+			// transform the value to sterotype applications or whatever
+			value = transformForSet(value);
+			EObject owner = ownerMapping.getFeatureOwner(modelElement);
+			Element baseELement = getBaseElement(owner);
+			Stereotype st = ((StereotypePropertyOwnerMapping)ownerMapping).getStereotype();
+			IElementEditService provider = ElementEditServiceUtils.getCommandProvider(baseELement);
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(baseELement);
+			if (provider != null) {
+				CompositeCommand cc = new CompositeCommand("Edit value"); //$NON-NLS-1$
+
+				IEditCommandRequest createSetRequest = new SetStereotypeValueRequest(domain, st, baseELement,
+						feature.getName(), transformForSet(value));
+
+				if (createSetRequest != null) {
+					cc.add(provider.getEditCommand(createSetRequest));
+				}
+				return cc;
+			}
+			return null;
 		}
 	}
 
