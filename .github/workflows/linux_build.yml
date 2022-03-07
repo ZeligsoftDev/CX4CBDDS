@@ -28,7 +28,7 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get -y install rpm
       - name: Checkout source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set Variables
         id: variables
         uses: actions/github-script@v6
