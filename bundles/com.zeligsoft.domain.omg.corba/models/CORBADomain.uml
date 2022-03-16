@@ -138,6 +138,15 @@ self.idlType.oclIsKindOf(CXEnum)</body>
             <body>com.zeligsoft.domain.omg.corba.validation.EnumerationMustHaveLiteralsConstraint</body>
           </specification>
         </ownedRule>
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_ifyHoKVeEeyb7I7pZICoCw" name="enumeration_literals_must_be_valid" constrainedElement="_lLSqwEk3Ed2eBKZvQ89d6g">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_ifyHoaVeEeyb7I7pZICoCw">
+            <body>%_desc_CORBADomain__IDL__CORBAEnum__enumeration_literals_must_be_valid</body>
+          </ownedComment>
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_ifyHoqVeEeyb7I7pZICoCw">
+            <language>Java</language>
+            <body>com.zeligsoft.domain.omg.corba.validation.ValidEnumLiteralsConstraint</body>
+          </specification>
+        </ownedRule>
         <generalization xmi:type="uml:Generalization" xmi:id="_VEeNYO1oEd2XOPM4ACfj4Q" general="_2ZPPIO1nEd2XOPM4ACfj4Q"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_J4V7oMJdEd6QAZgNaBtgeQ" general="_5ZEXsMJaEd6QAZgNaBtgeQ"/>
         <generalization xmi:type="uml:Generalization" xmi:id="_WfFHwMJfEd6QAZgNaBtgeQ" general="_MopncMJaEd6QAZgNaBtgeQ"/>
@@ -1211,4 +1220,5 @@ self.oclAsType(uml::DataType).ownedAttribute->select(name = 'switchType')->first
   <zdl:DomainAttribute xmi:id="_T3RKUSLhEeyPuNj-h-jRIw" base_Property="_T3RKUCLhEeyPuNj-h-jRIw"/>
   <zdl:DomainEnumLiteral xmi:id="_WHTTQCLhEeyPuNj-h-jRIw" base_EnumerationLiteral="_WHJiQCLhEeyPuNj-h-jRIw"/>
   <zdl:DomainEnumLiteral xmi:id="_W6XH4CLhEeyPuNj-h-jRIw" base_EnumerationLiteral="_W6S2cCLhEeyPuNj-h-jRIw"/>
+  <zdl:DomainConstraint xmi:id="_if0j4KVeEeyb7I7pZICoCw" severity="error" message="%_mesg_CORBADomain__IDL__CORBAEnum__enumeration_literals_must_be_valid" id="com.zeligsoft.domain.omg.corba.CORBAEnum.enumeration_literals_must_be_valid" base_Constraint="_ifyHoKVeEeyb7I7pZICoCw"/>
 </xmi:XMI>
