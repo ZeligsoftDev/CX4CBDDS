@@ -10,7 +10,7 @@ DDS4CCM has support for the following CCM implementations:
 
 The build requires:
 
-- a Java 8 or later JRE
+- a Java 11 or later JRE
 - The build will automatically install an appropriate Maven version
 
 ## Building
@@ -62,34 +62,14 @@ to distinguish build between results of successive builds.
 
 ## Installing
 
-DDS4CCM can be installed in Eclipse Papyrus 2019-06 release (4.4.0).
-The release can be downloaded from `https://archive.eclipse.org/modeling/mdt/papyrus/rcp/2019-06/4.4.0/`.
+DDS4CCM can be installed in Eclipse Papyrus 2020-06 release (4.8.0).
+The release can be downloaded from `https://www.eclipse.org/downloads/download.php?file=/modeling/mdt/papyrus/rcp/2020-06/4.8.0/papyrus-2020-06-4.8.0-linux64.tar.gz`.
 A default installation should be sufficient. To install:
 
-### Install the Papyrus Patch
-
-Note that this only needs to be done once, even if installing an updated CX.
-
-1. Start Papyrus as a super user. **This is important.**
-2. From the **Help** menu, choose **Install New Software** to start the **Install** wizard.
-3. On the **Available Software** page, click the **Add** button, to add a new software site.
-4. In the **Add Repository** dialog, click the **Archive** button, and in the dialog, browse for
-the `papyrus_v440_patch_<version>.zip` file. Click **OK**.
-5. Click **OK** to close the **Add Repository** dialog.
-6. On returning to the **Install** dialog, check the checkbox beside **Papyrus Patch (required)**.
-7. With the installation features selected, press **Next**.
-8. On the **Install Details** page, you should see additional information on features to
-be installed.
-If error messages are reported, please contact us. Click **Next** to continue.
-9. On the **Review Licenses** page, click the **I accept...** radio button, then click **Finish**.
-10. During the execution of the wizard, your may be prompted to approve the installation
-of unsigned features. This will all have `com.zeligsoft` as a prefix to their names. Approve them.
-11. Once the install has completed, you will be prompted to restart Papyrus. Do this.
 
 ### Install CX
 
 1. Start Papyrus as a super user. **This is important.**
-If Papyrus just restarted because you installed the Papyrus patch, then you may continue.
 2. From the **Help** menu, choose **Install New Software** to start the **Install** wizard.
 3. On the **Available Software** page, click the **Add** button, to add a new software site.
 4. In the **Add Repository** dialog, click the **Archive** button, and in the dialog, browse for
