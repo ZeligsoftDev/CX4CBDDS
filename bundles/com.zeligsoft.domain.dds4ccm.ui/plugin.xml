@@ -972,4 +972,15 @@
 	         </Priority>
 	      </DirectEditor>
 	   </extension>
+       <extension
+             point="org.eclipse.papyrus.infra.emf.readonly.readOnlyHandler">
+          <readOnlyHandler
+                class="com.zeligsoft.domain.dds4ccm.ui.emf.readonly.PathmapReferencedModelReadOnlyHandler"
+                id="com.zeligsoft.domain.dds4ccm.ui.emf.readonly.PathmapReferencedModelReadOnlyHandler"
+                priority="1">
+             <affinity
+                   axis="discretion">
+             </affinity>
+          </readOnlyHandler>
+       </extension>
 </plugin>
