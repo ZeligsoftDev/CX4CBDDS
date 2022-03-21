@@ -485,6 +485,22 @@
             </visibleWhen>
          </command>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=tools">
+         <command
+               commandId="com.zeligsoft.domain.dds4ccm.ui.emf.readonly.EnableWriteCommand"
+               icon="icons/enable_write.png"
+               label="Enable write (pathmap refs)"
+               style="push"
+               tooltip="Enable write">
+            <visibleWhen>
+               <reference
+                     definitionId="org.eclipse.papyrus.ui.semanticModelActive">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
   
    <extension
@@ -687,6 +703,10 @@
       <activityPatternBinding
             activityId="com.zeligsoft.domain.dds4ccm.ui.activity"
             pattern="org\.eclipse\.papyrus\.uml\.import.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.zeligsoft.domain.dds4ccm.ui.activity"
+            pattern=".*/org.eclipse.papyrus.infra.emf.readonly.*">
       </activityPatternBinding>
    </extension>
    
@@ -983,4 +1003,37 @@
              </affinity>
           </readOnlyHandler>
        </extension>
+       <extension
+             point="org.eclipse.ui.commands">
+          <command
+                categoryId="org.eclipse.papyrus.editor.category"
+                description="Enable write"
+                id="com.zeligsoft.domain.dds4ccm.ui.emf.readonly.EnableWriteCommand"
+                name="Enable write">
+          </command>
+       </extension>
+	   <extension
+	         point="org.eclipse.ui.handlers">
+	      <handler
+	            class="com.zeligsoft.domain.dds4ccm.ui.emf.readonly.EnableWriteCommandHandler"
+	            commandId="com.zeligsoft.domain.dds4ccm.ui.emf.readonly.EnableWriteCommand">
+	         <enabledWhen>
+	            <and>
+	               <with variable="activeEditorId">
+	                  <equals value="org.eclipse.papyrus.infra.core.papyrusEditor"/>
+	               </with>
+	               <with variable="selection">
+	                  <instanceof value="org.eclipse.jface.viewers.IStructuredSelection"/>
+	                  <test
+	                        property="org.eclipse.papyrus.infra.emf.readonly.tester.isReadOnly"
+	                        value="true">
+	                  </test>
+	                  <count
+	                        value="1">
+	                  </count>
+	               </with>
+	            </and>
+	         </enabledWhen>
+	      </handler>
+	   </extension>
 </plugin>
