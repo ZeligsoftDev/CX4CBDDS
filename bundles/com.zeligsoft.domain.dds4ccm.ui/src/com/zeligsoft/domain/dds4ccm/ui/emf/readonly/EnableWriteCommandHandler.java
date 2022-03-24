@@ -30,15 +30,18 @@ public class EnableWriteCommandHandler
 			if (uri != null) {
 				URI normalizedURI = uriConverter.normalize(uri);
 				if (normalizedURI.isPlatformResource()) {
-					IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(normalizedURI.toPlatformString(true)));
-					IPapyrusFile papFile = PapyrusModelHelper.getPapyrusModelFactory().createIPapyrusFile(file);
-					IFile[] associatedFiles = OneFileUtils.getAssociatedFiles(papFile);
+//					IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(normalizedURI.toPlatformString(true)));
+//					IPapyrusFile papFile = PapyrusModelHelper.getPapyrusModelFactory().createIPapyrusFile(file);
+//					IFile[] associatedFiles = OneFileUtils.getAssociatedFiles(papFile);
 
-					URI[] associatedUris = new URI[associatedFiles.length];
-					for (int i = 0; i < associatedFiles.length; i++) {
-						associatedUris[i] = URI.createPlatformResourceURI(associatedFiles[i].getFullPath().toString(), true);
-					}
+//					URI[] associatedUris = new URI[associatedFiles.length];
+//					for (int i = 0; i < associatedFiles.length; i++) {
+//						associatedUris[i] = URI.createPlatformResourceURI(associatedFiles[i].getFullPath().toString(), true);
+//					}
 
+//					ReadOnlyManager.getReadOnlyHandler(WorkspaceEditingDomainFactory.INSTANCE.getEditingDomain(rs)).makeWritable(ReadOnlyAxis.anyAxis(), associatedUris);
+					URI[] associatedUris = new URI[1];
+					associatedUris[0] = uri;
 					ReadOnlyManager.getReadOnlyHandler(WorkspaceEditingDomainFactory.INSTANCE.getEditingDomain(rs)).makeWritable(ReadOnlyAxis.anyAxis(), associatedUris);
 				}
 			}
