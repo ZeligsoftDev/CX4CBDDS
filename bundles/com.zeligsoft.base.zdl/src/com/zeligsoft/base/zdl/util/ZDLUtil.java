@@ -3644,7 +3644,7 @@ public class ZDLUtil
 			} else {
 				try {
 					ICommand command = valueMapping.getSetCommand(ownerMapping, modelElement, feature, value);
-					if (command.canExecute()) {
+					if (command != null && command.canExecute()) {
 						TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(owner);
 						Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
 						domain.getCommandStack().execute(emfCommand);
@@ -3834,19 +3834,23 @@ public class ZDLUtil
 		protected ICommand getSetCommand(ZDLPropertyOwnerMapping ownerMapping, EObject modelElement,
 				EStructuralFeature feature, Object value) {
 			EObject owner = ownerMapping.getFeatureOwner(modelElement);
-			// transform the value to sterotype applications or whatever
-			value = transformForSet(value);
-			IElementEditService provider = ElementEditServiceUtils.getCommandProvider(owner);
-			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(owner);
-			if (provider != null) {
-				CompositeCommand cc = new CompositeCommand("Edit value"); //$NON-NLS-1$
-
-				IEditCommandRequest createSetRequest = new SetRequest(domain, owner, feature, value);
-
-				if (createSetRequest != null) {
-					cc.add(provider.getEditCommand(createSetRequest));
+			if(owner != null) {
+				// transform the value to sterotype applications or whatever
+				value = transformForSet(value);
+				IElementEditService provider = ElementEditServiceUtils.getCommandProvider(owner);
+				TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(owner);
+				if (provider != null) {
+					CompositeCommand cc = new CompositeCommand("Edit value"); //$NON-NLS-1$
+	
+					IEditCommandRequest createSetRequest = new SetRequest(domain, owner, feature, value);
+	
+					if (createSetRequest != null) {
+						cc.add(provider.getEditCommand(createSetRequest));
+					}
+					return cc;
 				}
-				return cc;
+			}else {
+				Activator.getDefault().warning("The owner mapping is null");
 			}
 			return null;
 		}
