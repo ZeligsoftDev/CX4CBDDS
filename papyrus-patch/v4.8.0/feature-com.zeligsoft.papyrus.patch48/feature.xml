@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.zeligsoft.papyrus.patch48"
+      label="CX4CBDDS Feature Patch for Papyrus 4.8"
+      version="2.2.0"
+      provider-name="Zeligsoft">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.papyrus.infra.emf.feature" version="3.0.0.202006100749" patch="true"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.papyrus.infra.emf.readonly"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
