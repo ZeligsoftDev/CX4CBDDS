@@ -39,6 +39,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -72,6 +73,7 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
@@ -93,6 +95,7 @@ import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySection {
 
 	private static final String PATHMAP_KEY = "pathmap"; //$NON-NLS-1$
+	private static final String MODEL_LIBRARY_STEREOTYPE_NAME = "StandardProfile::ModelLibrary"; //$NON-NLS-1$
 
 	@Override
 	public Map<String, Control> createSection(Composite parent, CXPropertyDescriptor descriptor, Property property) {
@@ -113,7 +116,7 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 		CXWidgetFactory.createLabel(parent, Messages.DynamicPathmapCustomPropertySection_FieldLabel,
 				parent.getBackground());
 
-		Composite composite = CXWidgetFactory.createFlatGridComposite(parent, 2, GridData.FILL_HORIZONTAL);
+		Composite composite = CXWidgetFactory.createFlatGridComposite(parent, 3, GridData.FILL_HORIZONTAL);
 		composite.setBackground(parent.getBackground());
 
 		String value = getDynamicPathmap(descriptor.getContext());
@@ -166,6 +169,35 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 				}
 			}
 		});
+		Element element = (Element) descriptor.getContext();
+		Stereotype st = element.getAppliedStereotype(MODEL_LIBRARY_STEREOTYPE_NAME);
+		Button readOnlyButton = new Button(composite, SWT.CHECK);
+		readOnlyButton.setSelection(st != null);
+		readOnlyButton.setBackground(composite.getBackground());
+		readOnlyButton.setEnabled(descriptor.getContext().equals(root));
+		readOnlyButton.setText(Messages.DynamicPathmapCustomPropertySection_ModelLibraryButtonLabel);
+		readOnlyButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(element);
+				Command cmd = new RecordingCommand(domain) {
+					@Override
+					protected void doExecute() {
+						if (readOnlyButton.getSelection()) {
+							Stereotype st = element.getApplicableStereotype(MODEL_LIBRARY_STEREOTYPE_NAME);
+							element.applyStereotype(st);
+						} else {
+							Element element = (Element) descriptor.getContext();
+							Stereotype st = element.getAppliedStereotype(MODEL_LIBRARY_STEREOTYPE_NAME);
+							if (st != null) {
+								element.unapplyStereotype(st);
+							}
+						}
+					}
+				};
+				domain.getCommandStack().execute(cmd);
+			}
+		});
 	}
 
 	/**
@@ -210,6 +242,7 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 				}
 
 				URI modelUri = model.eResource().getURI();
+				URI normalizedUri = URIConverter.INSTANCE.normalize(modelUri);
 				final URI originalPathmapUri = CXDynamicURIConverter.getPathmapURI(modelUri);
 
 				monitor.subTask(Messages.DynamicPathmapCustomPropertySection_RegisteringPathmapSubtask);
@@ -236,7 +269,7 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 				URI pathmapURI = null;
 				if (!UML2Util.isEmpty(pathmap)) {
 					pathmapURI = URI.createURI(PATHMAP_KEY + "://" + pathmap + "/", true); //$NON-NLS-1$ //$NON-NLS-2$
-					DDS4CCMDynamicURIMapHandler.addMapping(pathmapURI, modelUri);
+					DDS4CCMDynamicURIMapHandler.addMapping(pathmapURI, normalizedUri);
 				}
 
 				if (shouldRefactor) {

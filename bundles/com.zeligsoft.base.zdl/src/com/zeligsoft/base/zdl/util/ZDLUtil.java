@@ -3835,13 +3835,13 @@ public class ZDLUtil
 				EStructuralFeature feature, Object value) {
 			EObject owner = ownerMapping.getFeatureOwner(modelElement);
 			if(owner != null) {
-				// transform the value to sterotype applications or whatever
+				// transform the value to stereotype applications or whatever
 				value = transformForSet(value);
 				IElementEditService provider = ElementEditServiceUtils.getCommandProvider(owner);
 				TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(owner);
 				if (provider != null) {
 					CompositeCommand cc = new CompositeCommand("Edit value"); //$NON-NLS-1$
-	
+					
 					IEditCommandRequest createSetRequest = new SetRequest(domain, owner, feature, value);
 	
 					if (createSetRequest != null) {
@@ -3924,22 +3924,30 @@ public class ZDLUtil
 			// transform the value to sterotype applications or whatever
 			value = transformForSet(value);
 			EObject owner = ownerMapping.getFeatureOwner(modelElement);
-			Element baseELement = getBaseElement(owner);
-			Stereotype st = ((StereotypePropertyOwnerMapping)ownerMapping).getStereotype();
-			IElementEditService provider = ElementEditServiceUtils.getCommandProvider(baseELement);
-			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(baseELement);
-			if (provider != null) {
-				CompositeCommand cc = new CompositeCommand("Edit value"); //$NON-NLS-1$
+			TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(owner);
+			CompositeCommand cc = new CompositeCommand("Edit value"); //$NON-NLS-1$
+			if (ownerMapping instanceof StereotypePropertyOwnerMapping) {
+				Element baseELement = getBaseElement(owner);
+				Stereotype st = ((StereotypePropertyOwnerMapping) ownerMapping).getStereotype();
+				IElementEditService provider = ElementEditServiceUtils.getCommandProvider(baseELement);
+				if (provider != null) {
 
-				IEditCommandRequest createSetRequest = new SetStereotypeValueRequest(domain, st, baseELement,
-						feature.getName(), transformForSet(value));
+					IEditCommandRequest createSetRequest = new SetStereotypeValueRequest(domain, st, baseELement,
+							feature.getName(), transformForSet(value));
+
+					if (createSetRequest != null) {
+						cc.add(provider.getEditCommand(createSetRequest));
+					}
+				}
+			} else {
+				IEditCommandRequest createSetRequest = new SetRequest(domain, owner, feature, value);
+				IElementEditService provider = ElementEditServiceUtils.getCommandProvider(owner);
 
 				if (createSetRequest != null) {
 					cc.add(provider.getEditCommand(createSetRequest));
 				}
-				return cc;
 			}
-			return null;
+			return cc.isEmpty()?null:cc;
 		}
 	}
 

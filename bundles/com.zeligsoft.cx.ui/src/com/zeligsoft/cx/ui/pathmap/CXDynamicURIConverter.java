@@ -12,9 +12,13 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.papyrus.infra.onefile.model.IPapyrusFile;
+import org.eclipse.papyrus.infra.onefile.model.PapyrusModelHelper;
+import org.eclipse.papyrus.infra.onefile.utils.OneFileUtils;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 
@@ -135,10 +139,11 @@ public class CXDynamicURIConverter {
 	public static URI getPathmapURI(URI modelUri) {
 		URI targetUri = modelUri.trimSegments(1).appendSegment(""); //$NON-NLS-1$
 		String modelName = modelUri.lastSegment();
-		for (Entry<URI, CXPathmapDescriptor> entry : PATHMAPS.entrySet()) {
+		String umlModelName = modelUri.trimFileExtension().appendFileExtension("uml").lastSegment(); //$NON-NLS-1$
+		for (Entry<URI, CXPathmapDescriptor> entry : CXDynamicURIConverter.PATHMAPS.entrySet()) {
 			URI pathmapUri = entry.getKey();
 			CXPathmapDescriptor desc = entry.getValue();
-			if (targetUri.equals(desc.getMapping()) && desc.getRegisteredModels().contains(modelName)) {
+			if (targetUri.equals(desc.getMapping()) && desc.getRegisteredModels().contains(umlModelName)) {
 				if (desc.isEnabled()) {
 					URI result = URI.createURI(pathmapUri.toString() + modelName);
 					return result;
@@ -147,5 +152,28 @@ public class CXDynamicURIConverter {
 			}
 		}
 		return modelUri;
+	}
+	
+	public static List<URI> getAssociatedUris(Resource resource) {
+		List<URI> result = new ArrayList<URI>();
+		if (resource != null && resource.getResourceSet() != null) {
+			URIConverter uriConverter = resource.getResourceSet().getURIConverter();
+			URI uri = resource.getURI();
+			if (uri != null) {
+				URI normalizedURI = uriConverter.normalize(uri);
+				if (normalizedURI.isPlatformResource()) {
+					IFile file = ResourcesPlugin.getWorkspace().getRoot()
+							.getFile(new Path(normalizedURI.toPlatformString(true)));
+					IPapyrusFile papFile = PapyrusModelHelper.getPapyrusModelFactory().createIPapyrusFile(file);
+					IFile[] associatedFiles = OneFileUtils.getAssociatedFiles(papFile);
+
+					for (int i = 0; i < associatedFiles.length; i++) {
+						URI tempUri = URI.createPlatformResourceURI(associatedFiles[i].getFullPath().toString(), true);
+						result.add(getPathmapURI(tempUri));
+					}
+				}
+			}
+		}
+		return result;
 	}
 }

@@ -35,6 +35,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
@@ -160,7 +161,8 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 				loadAllResources(resourcesToLoad, project);
 				for (URI uri : resourcesToLoad) {
 					Resource resource = modelSet.getResource(uri, true);
-					if (uri.equals(context.eResource().getURI())) {
+					URI normalizedUri = URIConverter.INSTANCE.normalize(uri);
+					if (normalizedUri.equals(context.eResource().getURI())) {
 						projectContentList.addAll(getZDLElements(resource, includeImportedPackages));
 					} else {
 						projectContentList.addAll(getZDLElements(resource, false));
