@@ -49,7 +49,7 @@ import com.zeligsoft.domain.omg.ccm.CCMNames;
  */
 public class InterfacePortEditHelperAdvice extends AbstractEditHelperAdvice {
 
-	private static final String CORBA_CONNECTOR_LIBRARY = "pathmap://DDS4CCM_CORBA_LIBRARIES/CCM_CORBA.uml";
+	private static final String CORBA_CONNECTOR_LIBRARY = "pathmap://DDS4CCM_CORBA_LIBRARIES/CCM_CORBA.uml"; //$NON-NLS-1$
 
 	@Override
 	public ICommand getAfterEditCommand(IEditCommandRequest request) {
@@ -65,7 +65,7 @@ public class InterfacePortEditHelperAdvice extends AbstractEditHelperAdvice {
 					EObject elementToEdit = (EObject) request.getElementsToEdit().get(0);
 					EObject value = ZDLUtil.getEValue(elementToEdit, CCMNames.INTERFACE_PORT,
 							CCMNames.INTERFACE_PORT__CONNECTOR_TYPE);
-					if (value != null && "AMI4CCM_Connector".equals(((NamedElement) value).getName())) {
+					if (value != null && "AMI4CCM_Connector".equals(((NamedElement) value).getName())) { //$NON-NLS-1$
 						ZDLUtil.setValue(elementToEdit, CCMNames.INTERFACE_PORT,
 								CCMNames.INTERFACE_PORT__IS_ASYNCHRONOUS, true);
 					} else {
@@ -87,11 +87,13 @@ public class InterfacePortEditHelperAdvice extends AbstractEditHelperAdvice {
 
 					EObject elementToEdit = (EObject) request.getElementsToEdit().get(0);
 
-					EObject value = ZDLUtil.getEValue(elementToEdit, CCMNames.INTERFACE_PORT,
-							CCMNames.INTERFACE_PORT__CONNECTOR_TYPE);
-
-					if (value == null && setRequest.getValue() instanceof Interface
+					if (setRequest.getValue() == null) {
+						ZDLUtil.setValue(elementToEdit, CCMNames.INTERFACE_PORT,
+								CCMNames.INTERFACE_PORT__CONNECTOR_TYPE, null);
+					} else if (setRequest.getValue() instanceof Interface
 							&& UMLPackage.Literals.TYPED_ELEMENT__TYPE.equals(setRequest.getFeature())) {
+						EObject value = ZDLUtil.getEValue(elementToEdit, CCMNames.INTERFACE_PORT,
+								CCMNames.INTERFACE_PORT__CONNECTOR_TYPE);
 						org.eclipse.uml2.uml.Package model = (org.eclipse.uml2.uml.Package) EcoreUtil
 								.getRootContainer(elementToEdit);
 						Package connectorPackage = null;
@@ -113,7 +115,7 @@ public class InterfacePortEditHelperAdvice extends AbstractEditHelperAdvice {
 						}
 
 						Collection<NamedElement> result = UMLUtil.findNamedElements(connectorPackage.eResource(),
-								"CCM_CORBA::CCM_CORBA::Connector_T::CORBA4CCM_Connector");
+								"CCM_CORBA::CCM_CORBA::Connector_T::CORBA4CCM_Connector"); //$NON-NLS-1$
 
 						if (!result.isEmpty()) {
 							value = result.iterator().next();

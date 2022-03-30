@@ -16,23 +16,30 @@
  */
 package com.zeligsoft.domain.dds4ccm.tools.actions;
 
+import java.util.List;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
 import org.eclipse.jface.window.Window;
+import org.eclipse.papyrus.infra.core.resource.ReadOnlyAxis;
+import org.eclipse.papyrus.infra.emf.readonly.ReadOnlyManager;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.domain.dds4ccm.tools.dialogs.ICMBrowseDialog;
 
 /**
@@ -64,18 +71,27 @@ public class ImportICMModelHandler extends AbstractHandler {
 
 	private void createPackageImport(Model model, URI importResourceUri) {
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(model);
-
+		ResourceSet rset = model.eResource().getResourceSet();
+		org.eclipse.uml2.uml.Package targetModel = UML2Util.load(rset, importResourceUri,
+				UMLPackage.Literals.PACKAGE);
 		Command cmd = new RecordingCommand(domain) {
 
 			@Override
 			protected void doExecute() {
-
-				ResourceSet rset = model.eResource().getResourceSet();
-				org.eclipse.uml2.uml.Package targetModel = UML2Util.load(rset, importResourceUri,
-						UMLPackage.Literals.PACKAGE);
 				model.createPackageImport(targetModel);
 			}
 		};
 		domain.getCommandStack().execute(cmd);
+		
+		// Make the reference model editable
+		Resource r = targetModel.eResource();
+		if (targetModel.getAppliedStereotype("StandardProfile::ModelLibrary") == null) {
+			List<URI> uris = CXDynamicURIConverter.getAssociatedUris(r);
+			if (!uris.isEmpty()) {
+				ReadOnlyManager
+						.getReadOnlyHandler(WorkspaceEditingDomainFactory.INSTANCE.getEditingDomain(r.getResourceSet()))
+						.makeWritable(ReadOnlyAxis.anyAxis(), uris.toArray(new URI[0]));
+			}
+		}
 	}
 }

@@ -199,7 +199,7 @@ public final class DDS4CCMDynamicURIMapHandler {
 							processUML(uri, delta.getKind());
 					}
 				}catch (Exception e) {
-					e.printStackTrace();
+					Activator.getDefault().error(e.getMessage(), e);
 				}
 			}
 
@@ -230,6 +230,7 @@ public final class DDS4CCMDynamicURIMapHandler {
 				try {
 					checkDependentModels(uri);
 				} catch (Exception e) {
+					Activator.getDefault().error(e.getMessage(), e);
 					// ignore to continue
 				}
 			}
@@ -423,7 +424,7 @@ public final class DDS4CCMDynamicURIMapHandler {
 				}
 			}
 		} catch (CoreException e) {
-			e.printStackTrace();
+			Activator.getDefault().error(e.getMessage(), e);
 		}
 	}
 	

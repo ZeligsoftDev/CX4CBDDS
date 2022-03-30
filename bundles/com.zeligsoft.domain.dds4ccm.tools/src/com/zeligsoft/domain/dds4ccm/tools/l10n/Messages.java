@@ -11,6 +11,7 @@ public class Messages extends NLS {
 	public static String DDS4CCMDynamicURIMapHandler_WarningDialogTitle;
 	public static String DynamicPathmapCustomPropertySection_ClosingEditorSubtask;
 	public static String DynamicPathmapCustomPropertySection_FieldLabel;
+	public static String DynamicPathmapCustomPropertySection_ModelLibraryButtonLabel;
 	public static String DynamicPathmapCustomPropertySection_PathmapErrorMsg;
 	public static String DynamicPathmapCustomPropertySection_PathmapWarning;
 	public static String DynamicPathmapCustomPropertySection_RefactoringConfirmationDialogTitle;
