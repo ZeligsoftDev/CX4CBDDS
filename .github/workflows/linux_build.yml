@@ -70,7 +70,8 @@ jobs:
                 'ATCD': 'releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip',
                 'AXCIOMA': 'releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axcioma_*.zip',
                 'DDK': 'releng/com.zeligsoft.ddk.update/target/ddk_*.zip',
-                'PAPYRUS_440_PATCH': 'papyrus-patch/v4.4.0/site-papyrus-patch/target/papyrus_v440_patch_*.zip'
+                'PAPYRUS_440_PATCH': 'papyrus-patch/v4.4.0/site-papyrus-patch/target/papyrus_v440_patch_*.zip',
+                'PAPYRUS_480_PATCH': 'papyrus-patch/v4.8.0/site-papyrus-patch/target/papyrus_v480_patch_*.zip'
             }
             const variable_defs = {}
             for (const [var_base, pat] of Object.entries(patterns)) {
@@ -156,6 +157,13 @@ jobs:
           name: ${{ env.PAPYRUS_440_PATCH_FILE_NAME }}
           path: ${{ env.PAPYRUS_440_PATCH_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - name: Preserve PAPYRUS_480_PATCH archive
+        if: ${{ env.PAPYRUS_480_PATCH_PRESENT == 'true' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.PAPYRUS_480_PATCH_FILE_NAME }}
+          path: ${{ env.PAPYRUS_480_PATCH_PATH }}
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve ATCD RPM
         if: ${{ env.ATCD_RPM_PRESENT == 'true' }}
         uses: actions/upload-artifact@v2
@@ -179,3 +187,4 @@ jobs:
             releng/com.zeligsoft.ddk.update/target/ddk_*.zip
             releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/noarch/*.rpm
             papyrus-patch/v4.4.0/site-papyrus-patch/target/papyrus_v440_patch_*.zip
+            papyrus-patch/v4.8.0/site-papyrus-patch/target/papyrus_v480_patch_*.zip
