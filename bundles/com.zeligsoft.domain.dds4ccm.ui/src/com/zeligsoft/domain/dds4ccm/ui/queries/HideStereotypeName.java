@@ -1,5 +1,7 @@
 package com.zeligsoft.domain.dds4ccm.ui.queries;
 
+import org.eclipse.core.runtime.ISafeRunnableWithResult;
+import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.papyrus.emf.facet.efacet.core.IFacetManager;
 import org.eclipse.papyrus.emf.facet.efacet.core.exception.DerivedTypedElementException;
@@ -24,9 +26,15 @@ public class HideStereotypeName implements IJavaQuery2<NamedElement, String> {
 
 	public String evaluate(NamedElement source, IParameterValueList2 parameterValues, IFacetManager facetManager)
 			throws DerivedTypedElementException {
-		if (ZDLUtil.isZDLProfile(source, DDS4CCMDomainFilter.DDS4CCM_PROFILE_NAME)) {
-			return labelProvider.getText(source);
-		}
-		return defaultLabelProvider.getText(source);
+		final String result = SafeRunner.run(new ISafeRunnableWithResult<String>() {
+			@Override
+			public String runWithResult() throws Exception {
+				if (ZDLUtil.isZDLProfile(source, DDS4CCMDomainFilter.DDS4CCM_PROFILE_NAME)) {
+					return labelProvider.getText(source);
+				}
+				return null;
+			}
+		});
+		return result != null ? result : defaultLabelProvider.getText(source);
 	}
 }
