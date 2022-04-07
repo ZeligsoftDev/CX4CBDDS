@@ -20,11 +20,20 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.papyrus.infra.core.resource.ModelSet;
+import org.eclipse.papyrus.infra.core.resource.NotFoundException;
+import org.eclipse.papyrus.infra.core.resource.ReadOnlyAxis;
 import org.eclipse.papyrus.infra.ui.internal.emf.readonly.handlers.ReferencedModelReadOnlyHandler;
+import org.eclipse.papyrus.uml.tools.model.UmlModel;
+import org.eclipse.uml2.uml.Package;
+
+import com.google.common.base.Optional;
+import com.zeligsoft.base.util.BaseUtil;
 
 /**
  * Overriding the default reference read only handler
@@ -70,5 +79,54 @@ public class DynamicPathampModelReadOnlyHandler extends ReferencedModelReadOnlyH
 	@Override
 	public boolean isInteractive() {
 		return false;
+	}
+
+	/**
+	 * Queries if the given URI is the read-only pathmapped resource
+	 * 
+	 * @param uri
+	 * @return
+	 */
+	private boolean isReadOnly(URI uri) {
+		ResourceSet rset = getEditingDomain().getResourceSet();
+		if (BaseUtil.UML_MODEL_EXTENSION.equals(uri.fileExtension()) && rset instanceof ModelSet) {
+			ModelSet modelSet = (ModelSet) rset;
+			UmlModel openedModel = (UmlModel) modelSet.getModel(UmlModel.MODEL_ID);
+			EObject root = null;
+			if (openedModel != null) {
+				try {
+					root = openedModel.lookupRoot();
+				} catch (NotFoundException e) {
+					return false;
+				}
+			}
+			Resource resource = modelSet.getResource(uri, true);
+			if (resource != root.eResource() && !resource.getContents().isEmpty()
+					&& resource.getContents().get(0) instanceof Package) {
+				Package pkg = (Package) resource.getContents().get(0);
+				String readOnly = BaseUtil.getZCXAnnotationDetail(pkg, BaseUtil.ZCX_MODEL_LIBRARY_KEY,
+						Boolean.toString(false));
+				if (Boolean.valueOf(readOnly)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public Optional<Boolean> canMakeWritable(Set<ReadOnlyAxis> axes, URI[] uris) {
+
+		Optional<Boolean> result = super.canMakeWritable(axes, uris);
+		if (result.or(false)) {
+			for (int i = 0; i < uris.length; i++) {
+				URI next = uris[i].trimFragment();
+				if (isReadOnly(next)) {
+					result = Optional.of(false);
+					break;
+				}
+			}
+		}
+		return result;
 	}
 }

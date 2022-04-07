@@ -29,8 +29,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
 import org.eclipse.jface.window.Window;
+import org.eclipse.papyrus.infra.core.resource.IReadOnlyHandler2;
 import org.eclipse.papyrus.infra.core.resource.ReadOnlyAxis;
 import org.eclipse.papyrus.infra.emf.readonly.ReadOnlyManager;
 import org.eclipse.swt.widgets.Display;
@@ -71,7 +71,7 @@ public class ImportICMModelHandler extends AbstractHandler {
 
 	private void createPackageImport(Model model, URI importResourceUri) {
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(model);
-		ResourceSet rset = model.eResource().getResourceSet();
+		ResourceSet rset = domain.getResourceSet();
 		org.eclipse.uml2.uml.Package targetModel = UML2Util.load(rset, importResourceUri,
 				UMLPackage.Literals.PACKAGE);
 		Command cmd = new RecordingCommand(domain) {
@@ -85,12 +85,11 @@ public class ImportICMModelHandler extends AbstractHandler {
 		
 		// Make the reference model editable
 		Resource r = targetModel.eResource();
-		if (targetModel.getAppliedStereotype("StandardProfile::ModelLibrary") == null) {
-			List<URI> uris = CXDynamicURIConverter.getAssociatedUris(r);
+		IReadOnlyHandler2 readOnlyHandler = ReadOnlyManager.getReadOnlyHandler(domain);
+		List<URI> uris = CXDynamicURIConverter.getAssociatedUris(r);
+		if (readOnlyHandler.canMakeWritable(ReadOnlyAxis.anyAxis(), uris.toArray(new URI[0])).or(false)) {
 			if (!uris.isEmpty()) {
-				ReadOnlyManager
-						.getReadOnlyHandler(WorkspaceEditingDomainFactory.INSTANCE.getEditingDomain(r.getResourceSet()))
-						.makeWritable(ReadOnlyAxis.anyAxis(), uris.toArray(new URI[0]));
+				readOnlyHandler.makeWritable(ReadOnlyAxis.anyAxis(), uris.toArray(new URI[0]));
 			}
 		}
 	}

@@ -73,10 +73,10 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
 import com.zeligsoft.cx.ui.properties.sections.ICXCustomPropertySection;
@@ -95,7 +95,6 @@ import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySection {
 
 	private static final String PATHMAP_KEY = "pathmap"; //$NON-NLS-1$
-	private static final String MODEL_LIBRARY_STEREOTYPE_NAME = "StandardProfile::ModelLibrary"; //$NON-NLS-1$
 
 	@Override
 	public Map<String, Control> createSection(Composite parent, CXPropertyDescriptor descriptor, Property property) {
@@ -170,9 +169,10 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 			}
 		});
 		Element element = (Element) descriptor.getContext();
-		Stereotype st = element.getAppliedStereotype(MODEL_LIBRARY_STEREOTYPE_NAME);
 		Button readOnlyButton = new Button(composite, SWT.CHECK);
-		readOnlyButton.setSelection(st != null);
+		String readOnly = BaseUtil.getZCXAnnotationDetail(element, BaseUtil.ZCX_MODEL_LIBRARY_KEY,
+				Boolean.toString(false));
+		readOnlyButton.setSelection(Boolean.valueOf(readOnly));
 		readOnlyButton.setBackground(composite.getBackground());
 		readOnlyButton.setEnabled(descriptor.getContext().equals(root));
 		readOnlyButton.setText(Messages.DynamicPathmapCustomPropertySection_ModelLibraryButtonLabel);
@@ -184,14 +184,9 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 					@Override
 					protected void doExecute() {
 						if (readOnlyButton.getSelection()) {
-							Stereotype st = element.getApplicableStereotype(MODEL_LIBRARY_STEREOTYPE_NAME);
-							element.applyStereotype(st);
+							BaseUtil.putZCXAnnotationDetail(element, BaseUtil.ZCX_MODEL_LIBRARY_KEY, Boolean.toString(true));
 						} else {
-							Element element = (Element) descriptor.getContext();
-							Stereotype st = element.getAppliedStereotype(MODEL_LIBRARY_STEREOTYPE_NAME);
-							if (st != null) {
-								element.unapplyStereotype(st);
-							}
+							BaseUtil.putZCXAnnotationDetail(element, BaseUtil.ZCX_MODEL_LIBRARY_KEY, Boolean.toString(false));
 						}
 					}
 				};

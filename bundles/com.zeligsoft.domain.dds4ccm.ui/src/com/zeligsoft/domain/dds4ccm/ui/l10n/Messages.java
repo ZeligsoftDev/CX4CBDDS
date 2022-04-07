@@ -47,6 +47,8 @@ public class Messages
 	public static String DDS4CCMCustomPropertySectionProvider_PackagedElementsPropertyLabel;
 	public static String DDS4CCMCustomPropertySectionProvider_SaveKeyFailedMsg;
 	public static String DDS4CCMCustomPropertySectionProvider_SetKeyValueCommandLabel;
+	public static String DDS4CCMOperationHistoryListener_DialogMessage;
+	public static String DDS4CCMOperationHistoryListener_DialogTitle;
 	public static String DDS4CCMPreferencePage_CodegenUtilEnableButtonLabel;
 	public static String DDS4CCMPreferencePage_DescriptorSettingsLabel;
 	public static String DDS4CCMPreferencePage_FixedFooter;

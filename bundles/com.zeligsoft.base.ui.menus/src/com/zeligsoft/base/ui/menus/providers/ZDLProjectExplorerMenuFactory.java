@@ -45,7 +45,9 @@ import com.zeligsoft.base.ui.menus.actions.CreateConceptAction;
 import com.zeligsoft.base.ui.menus.actions.ICXAction;
 import com.zeligsoft.base.ui.menus.l10.Messages;
 import com.zeligsoft.base.ui.menus.util.CXMenuUtil;
+import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.ui.utils.ZDLActivityUtil;
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.util.UMLTypeUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 
@@ -282,6 +284,7 @@ public class ZDLProjectExplorerMenuFactory {
 				delegate = clazz.newInstance();
 				delegate.setSelection(context);
 				delegate.setText(delegateAction.getName());
+				delegate.setEnabled(!BaseUtil.isReadOnlyReferencedModel(context));
 				String id = String.format("%s.delegate.%s", getIdPrefix(), //$NON-NLS-1$
 						clazz.getName());
 				delegate.setId(id);

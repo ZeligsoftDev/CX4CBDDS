@@ -42,6 +42,7 @@ import org.eclipse.uml2.uml.Property;
 
 import com.zeligsoft.base.toolingmodel.PropertyDefinition;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.properties.l10n.Messages;
 
@@ -427,6 +428,9 @@ public class CXPropertyDescriptor {
 	 * @return
 	 */
 	public boolean isReadOnly() {
+		if(BaseUtil.isReadOnlyReferencedModel(context)){
+			return true;
+		}
 		return propertyDefinition == null ? false : propertyDefinition.isReadOnly();
 	}
 

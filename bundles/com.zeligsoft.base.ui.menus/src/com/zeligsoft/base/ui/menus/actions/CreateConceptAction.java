@@ -37,6 +37,7 @@ import com.zeligsoft.base.ui.menus.Activator;
 import com.zeligsoft.base.ui.menus.l10.Messages;
 import com.zeligsoft.base.ui.menus.util.CXMenuUtil;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.base.util.BaseUtil;
 
 /**
  * An action to create a ZDL concept.
@@ -150,5 +151,10 @@ public class CreateConceptAction extends Action {
 			imageDescriptors.put(elementType, desc);
 		}
 		return desc;
+	}
+	
+	@Override
+	public boolean isEnabled() {
+		return !BaseUtil.isReadOnlyReferencedModel(selectedEObject);
 	}
 }
