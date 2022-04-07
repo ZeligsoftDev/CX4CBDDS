@@ -27,6 +27,7 @@ import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.papyrus.infra.core.resource.IReadOnlyHandler2;
 import org.eclipse.papyrus.infra.core.resource.ModelSet;
 import org.eclipse.papyrus.infra.core.resource.NotFoundException;
 import org.eclipse.papyrus.infra.core.resource.ReadOnlyAxis;
@@ -200,14 +201,12 @@ public class EditorPartListener implements IPartListener2 {
 						|| !ZDLUtil.isZDLConcept(r.getContents().get(0), DDS4CCMNames.DDS4_CCMMODEL)) {
 					continue;
 				}
-				Package pkg = (Package) r.getContents().get(0);
-				if (pkg.getAppliedStereotype("StandardProfile::ModelLibrary") == null) { //$NON-NLS-1$
-
-					List<URI> uris = CXDynamicURIConverter.getAssociatedUris(r);
+				IReadOnlyHandler2 readOnlyHandler = ReadOnlyManager
+						.getReadOnlyHandler(WorkspaceEditingDomainFactory.INSTANCE.getEditingDomain(modelSet));
+				List<URI> uris = CXDynamicURIConverter.getAssociatedUris(r);
+				if (readOnlyHandler.canMakeWritable(ReadOnlyAxis.anyAxis(), uris.toArray(new URI[0])).or(false)) {
 					if (r != root.eResource() && !uris.isEmpty()) {
-						ReadOnlyManager
-								.getReadOnlyHandler(WorkspaceEditingDomainFactory.INSTANCE.getEditingDomain(modelSet))
-								.makeWritable(ReadOnlyAxis.anyAxis(), uris.toArray(new URI[0]));
+						readOnlyHandler.makeWritable(ReadOnlyAxis.anyAxis(), uris.toArray(new URI[0]));
 					}
 				}
 			}
