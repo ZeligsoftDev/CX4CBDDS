@@ -71,6 +71,7 @@ import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -215,7 +216,7 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 	 * @param pathmap
 	 */
 	private void setDynamicPathmap(EObject model, String pathmap) {
-
+		
 		boolean shouldRefactor = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
 				Messages.DynamicPathmapCustomPropertySection_RefactoringConfirmationDialogTitle,
 				Messages.DynamicPathmapCustomPropertySection_RefactoringConfirmationMsg);
@@ -235,7 +236,7 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 					// nothing to do if same
 					return;
 				}
-
+				
 				URI modelUri = model.eResource().getURI();
 				URI normalizedUri = URIConverter.INSTANCE.normalize(modelUri);
 				final URI originalPathmapUri = CXDynamicURIConverter.getPathmapURI(modelUri);
@@ -251,6 +252,10 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 					@Override
 					protected void doExecute() {
 						CCMUtil.putZCXAnnotationDetail((Element) model, PATHMAP_KEY, pathmap);
+						if(UML2Util.isEmpty(originalPathmap)) {
+							// Add default model library annotation
+							BaseUtil.putZCXAnnotationDetail((Model) model, BaseUtil.ZCX_MODEL_LIBRARY_KEY, Boolean.toString(false));
+						}
 					}
 				};
 				domain.getCommandStack().execute(command);
