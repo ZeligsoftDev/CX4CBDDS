@@ -230,7 +230,8 @@ public class BaseUIUtil {
 			com.zeligsoft.base.ui.Activator.getDefault().error(e.getMessage(), e);
 			return UnexecutableCommand.INSTANCE;
 		}
-		final CreateElementRequest req = new CreateElementRequest(editingDomain, selectedEObject, PACKAGE_ELEMENT_TYPE);
+		IElementType packageType = ElementTypeRegistry.getInstance().getType("org.eclipse.papyrus.uml.Package"); //$NON-NLS-1$
+		final CreateElementRequest req = new CreateElementRequest(editingDomain, selectedEObject, packageType);
 		final EObject target = ElementEditServiceUtils.getTargetFromContext(editingDomain, selectedEObject, req);
 		if (target == null) {
 			return UnexecutableCommand.INSTANCE;
