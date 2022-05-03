@@ -22,6 +22,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -106,6 +107,7 @@ public class RepairDeploymentPartsActionHandler extends AbstractHandler {
 		List<EObject> parts = (List<EObject>) ZDLUtil.getValue(deployment,
 				CCMNames.DEPLOYMENT_PLAN, ZMLMMNames.DEPLOYMENT__PART);
 		List<EObject> rootParts = new ArrayList<EObject>();
+		List<EObject> rootDomainParts = new ArrayList<EObject>();
 		for (EObject part : parts) {
 			if (ZDLUtil.isZDLConcept(part, ZMLMMNames.DEPLOYMENT_PART)) {
 				EObject model = ZDLUtil.getEValue(part,
@@ -113,6 +115,8 @@ public class RepairDeploymentPartsActionHandler extends AbstractHandler {
 						ZMLMMNames.DEPLOYMENT_PART__MODEL_ELEMENT);
 				if (ZDLUtil.isZDLConcept(model, CCMNames.CCMCOMPONENT)) {
 					rootParts.add(part);
+				}else if(ZDLUtil.isZDLConcept(model, CCMNames.DOMAIN)) {
+					rootDomainParts.add(part);
 				}
 			}
 		}
@@ -120,8 +124,65 @@ public class RepairDeploymentPartsActionHandler extends AbstractHandler {
 		for (EObject part : rootParts) {
 			repair(deployment, part);
 		}
+		for (EObject part : rootDomainParts) {
+			repairDomain(deployment, part);
+		}
 	}
 
+	@SuppressWarnings("unchecked")
+	private void repairDomain(EObject deployment, EObject deploymentPart) {
+		EObject definition = ZDLUtil.getEValue(deploymentPart,
+				ZMLMMNames.DEPLOYMENT_PART,
+				ZMLMMNames.DEPLOYMENT_PART__MODEL_ELEMENT);
+		List<EObject> nestedParts = (List<EObject>) ZDLUtil.getValue(
+				deploymentPart, ZMLMMNames.DEPLOYMENT_PART,
+				ZMLMMNames.DEPLOYMENT_PART__NESTED_PART);
+
+		if (definition == null) {
+			return;
+		}
+		
+		Component domain = (Component) definition;
+		List<Property> partsToCreate = domain.getOwnedAttributes().stream()
+				.filter(e -> ZDLUtil.isZDLConcept(e, CCMNames.NODE_INSTANCE)).collect(Collectors.toList());			
+		
+		List<Property> partsToDelete = new ArrayList<Property>();
+		Map<EObject, EObject> foundPartsMap = new HashMap<EObject, EObject>();
+		for (EObject nestedPart : nestedParts) {
+			EObject modelPart = ZDLUtil.getEValue(nestedPart,
+					ZMLMMNames.DEPLOYMENT_PART,
+					ZMLMMNames.DEPLOYMENT_PART__MODEL_ELEMENT);
+			if (!partsToCreate.contains(modelPart)) {
+				partsToDelete.add((Property) nestedPart);
+			} else {
+				foundPartsMap.put(modelPart, nestedPart);
+			}
+		}
+		partsToCreate.removeAll(foundPartsMap.keySet());
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(deployment);
+
+		if (!partsToDelete.isEmpty()) {
+			ICommand command = new DeleteDeploymentPartCommand(
+					(Component) deployment, partsToDelete,
+					"Delete Deployment Parts"); //$NON-NLS-1$
+			
+			Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
+			if(emfCommand.canExecute()) {
+				editingDomain.getCommandStack().execute(emfCommand);
+			}
+		}
+
+		for (EObject partToCreate : partsToCreate) {
+			ICommand createCommand = new AddModelElementCommand(
+					(Component) deployment, (Property) partToCreate,
+					(Component) domain, null, "Create Deployment Part"); //$NON-NLS-1$
+			Command emfCommand = GMFtoEMFCommandWrapper.wrap(createCommand);
+			if(emfCommand.canExecute()) {
+				editingDomain.getCommandStack().execute(emfCommand);
+			}
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	private void repair(EObject deployment, EObject deploymentPart) {
 		EObject part = ZDLUtil.getEValue(deploymentPart,
@@ -171,7 +232,7 @@ public class RepairDeploymentPartsActionHandler extends AbstractHandler {
 			}
 		}
 		partsToCreate.removeAll(foundPartsMap.keySet());
-		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(deployment);
+		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(deployment);
 
 		if (!partsToDelete.isEmpty()) {
 			ICommand command = new DeleteDeploymentPartCommand(
@@ -180,7 +241,7 @@ public class RepairDeploymentPartsActionHandler extends AbstractHandler {
 			
 			Command emfCommand = GMFtoEMFCommandWrapper.wrap(command);
 			if(emfCommand.canExecute()) {
-				domain.getCommandStack().execute(emfCommand);
+				editingDomain.getCommandStack().execute(emfCommand);
 			}
 		}
 
@@ -197,7 +258,7 @@ public class RepairDeploymentPartsActionHandler extends AbstractHandler {
 			}
 			Command emfCommand = GMFtoEMFCommandWrapper.wrap(createCommand);
 			if(emfCommand.canExecute()) {
-				domain.getCommandStack().execute(emfCommand);
+				editingDomain.getCommandStack().execute(emfCommand);
 			}
 		}
 
