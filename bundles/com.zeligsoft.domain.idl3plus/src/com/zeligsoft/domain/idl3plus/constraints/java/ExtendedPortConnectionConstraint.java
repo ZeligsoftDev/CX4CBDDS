@@ -108,7 +108,7 @@ public class ExtendedPortConnectionConstraint extends AbstractModelConstraint {
 			if (part != null
 					&& ZDLUtil.isZDLConcept(part, IDL3PlusNames.DATA_SPACE)) {
 				dataSpace = part;
-			} else if (ZDLUtil.isZDLConcept(endPort, CCMNames.INTERFACE_PORT)) {
+			} else if (endPort != null && ZDLUtil.isZDLConcept(endPort, CCMNames.INTERFACE_PORT)) {
 				EObject type = ZDLUtil.getEValue(endPort,
 						CCMNames.INTERFACE_PORT, ZMLMMNames.PORT__PORTTYPE);
 				if (type != null
