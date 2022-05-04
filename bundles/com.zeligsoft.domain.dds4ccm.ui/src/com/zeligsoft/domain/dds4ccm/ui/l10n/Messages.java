@@ -105,6 +105,8 @@ public class Messages
 	
 	public static String RepairDeploymentParts_DialogMessage;
 	public static String RepairDeploymentParts_DialogTitle;
+	public static String RepairDeploymentPartsActionHandler_RefactorAllLabel;
+	public static String RepairDeploymentPartsActionHandler_RefactorCommandLabel;
 	public static String RefactorCleanCommentsAction_ActionTitle;
 	public static String RefactorCleanModelReferencesNoLongerValid_CommandLabel;
 	public static String RefactorCleanReferenceAction_DialogTitle;
