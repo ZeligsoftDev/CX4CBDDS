@@ -38,6 +38,7 @@ import org.eclipse.uml2.uml.Usage;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
+import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
  * Constraint to verify that the members of a namespace are distinguishable
@@ -97,6 +98,10 @@ public class NamespaceDistinctMembersConstraint extends AbstractModelConstraint 
 		boolean result = true;
 		Namespace namespace = ((NamedElement) target).getNamespace();
 		if (namespace == null || UML2Util.isEmpty(target.getName())) {
+			return result;
+		}
+		if(ZDLUtil.isZDLConcept(namespace, ZMLMMNames.DEPLOYMENT)) {
+			// don't check deployment parts
 			return result;
 		}
 		for (NamedElement m : namespace.getOwnedMembers()) {
