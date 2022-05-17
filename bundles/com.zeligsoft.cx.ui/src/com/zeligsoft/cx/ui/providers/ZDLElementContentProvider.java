@@ -183,29 +183,31 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 	 * @param rootPkg
 	 * @return
 	 */
-	private List<EObject> getZDLElements(Resource resource,
-			boolean searchPackageImport) {
+	private List<EObject> getZDLElements(Resource resource, boolean searchPackageImport) {
+		return doGetZDLElements(resource, searchPackageImport, new HashSet<Resource>());
+
+	}
+	
+	private List<EObject> doGetZDLElements(Resource resource, boolean searchPackageImport,
+			Set<Resource> visitedResources) {
 		ArrayList<EObject> list = new ArrayList<EObject>();
-		if (resource == null) {
+		if (resource == null || visitedResources.contains(resource)) {
 			return list;
 		}
+		visitedResources.add(resource);
 		TreeIterator<EObject> itor = resource.getAllContents();
 
 		while (itor.hasNext()) {
 
 			EObject o = itor.next();
 
-			if (!(o instanceof Element)) {
-				continue;
-			}
-			if (o instanceof PackageImport && searchPackageImport) {
-				list.addAll(getZDLElements(((PackageImport) o)
-						.getImportedPackage().eResource(), false));
-				continue;
-			}
-
-			if(isValid(o) && !list.contains(o)) {
-				list.add(o);
+			if (o instanceof Element) {
+				if (o instanceof PackageImport && searchPackageImport) {
+					list.addAll(doGetZDLElements(((PackageImport) o).getImportedPackage().eResource(),
+							searchPackageImport, visitedResources));
+				} else if (isValid(o) && !list.contains(o)) {
+					list.add(o);
+				}
 			}
 		}
 
