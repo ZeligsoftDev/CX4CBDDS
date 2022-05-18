@@ -178,10 +178,11 @@ public class ZDeploymentUtil {
 		boolean isDeploymentComponentPart = false;
 		String partName = modelElement.getName();
 		int nameInteger = 2;
-		while( deployment.getMember(partName) != null) {
-			partName = modelElement.getName() + "_" + Integer.toString(nameInteger++); //$NON-NLS-1$
+		if (parentPart == null) {
+			while (deployment.getMember(partName) != null) {
+				partName = modelElement.getName() + "_" + Integer.toString(nameInteger++); //$NON-NLS-1$
+			}
 		}
-
 		if (modelElement instanceof Component) {
 			deploymentPart = deployment.createOwnedAttribute(partName,
 					(Component) modelElement);
