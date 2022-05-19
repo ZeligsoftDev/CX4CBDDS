@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Papyrus CX for AXCIOMA" uid="papyruscx-axcioma" id="com.zeligsoft.papyruscx.axcioma.rcp.product" application="org.eclipse.ui.ide.workbench" version="2.2.0" useFeatures="true" includeLaunchers="true">
+<product name="Papyrus CX for AXCIOMA" uid="com.zeligsoft.papyruscx.axcioma.rcp.product" id="com.zeligsoft.papyruscx.axcioma.rcp.product" application="org.eclipse.ui.ide.workbench" version="2.2.0" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -12,7 +12,10 @@
    </launcherArgs>
 
    <splash
-      location="com.zeligsoft.papyruscx.axcioma.rcp" />
+      location="com.zeligsoft.papyruscx.axcioma.rcp"
+      startupProgressRect="8,338,448,8"
+      startupMessageRect="8,324,448,16"
+      startupForegroundColor="487AFF" />
    <launcher name="papyruscx">
       <linux icon="../com.zeligsoft.papyruscx.axcioma.rcp/icons/papyruscx.xpm"/>
       <win useIco="false">
@@ -100,10 +103,10 @@
       <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="false" startLevel="4" />
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.update.configurator" autoStart="false" startLevel="3" />
-      <property name="osgi.instance.area.default" value="@user.home/workspace-papyruscx" />
       <property name="org.eclipse.update.reconcile" value="false" />
       <property name="osgi.bundles.defaultStartLevel" value="4" />
       <property name="osgi.requiredJavaVersion" value="1.8" />
+      <property name="osgi.instance.area.default" value="@user.home/workspace-papyruscx" />
    </configurations>
 
 </product>
