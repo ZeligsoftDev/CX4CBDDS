@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Papyrus CX for AXCIOMA" uid="com.zeligsoft.papyruscx.axcioma.rcp.product" id="com.zeligsoft.papyruscx.axcioma.rcp.product" application="org.eclipse.ui.ide.workbench" version="2.2.0" useFeatures="true" includeLaunchers="true">
-
+<product name="Papyrus CX for AXCIOMA" uid="com.zeligsoft.papyrus-cx.axcioma.rcp.product" id="com.zeligsoft.papyrus-cx.axcioma.rcp.product" application="org.eclipse.ui.ide.workbench" version="2.2.0" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -12,20 +11,19 @@
       </vmArgsMac>
    </launcherArgs>
 
-   <windowImages i16="../com.zeligsoft.papyruscx.axcioma.rcp/icons/papyruscx.iconset/icon_16x16.png" i32="../com.zeligsoft.papyruscx.axcioma.rcp/icons/papyruscx.iconset/icon_32x32.png" i48="../com.zeligsoft.papyruscx.axcioma.rcp/icons/papyruscx.iconset/icon_48x48.png" i64="../com.zeligsoft.papyruscx.axcioma.rcp/icons/papyruscx.iconset/icon_64x64.png" i128="../com.zeligsoft.papyruscx.axcioma.rcp/icons/papyruscx.iconset/icon_128x128.png" i256="../com.zeligsoft.papyruscx.axcioma.rcp/icons/papyruscx.iconset/icon_256x256.png"/>
+   <windowImages i16="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.iconset/icon_16x16.png" i32="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.iconset/icon_32x32.png" i48="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.iconset/icon_48x48.png" i64="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.iconset/icon_64x64.png" i128="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.iconset/icon_128x128.png" i256="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.iconset/icon_256x256.png"/>
 
    <splash
-      location="com.zeligsoft.papyruscx.axcioma.rcp"
-      startupProgressRect="8,340,448,8"
-      startupMessageRect="8,326,448,16"
+      location="com.zeligsoft.papyrus-cx.axcioma.rcp"
+      startupProgressRect="8,340,444,8"
+      startupMessageRect="8,326,444,16"
       startupForegroundColor="000000" />
-   <launcher name="papyruscx">
-      <linux icon="../com.zeligsoft.papyruscx.axcioma.rcp/icons/papyruscx.xpm"/>
+   <launcher name="papyrus-cx">
+      <linux icon="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.xpm"/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
@@ -102,7 +100,7 @@
       <feature id="com.zeligsoft.domain.idl3plus_feature" installMode="root"/>
       <feature id="com.zeligsoft.domain.ngc.ccm.axcioma_feature" installMode="root"/>
       <feature id="com.zeligsoft.domain.omg.ccm_feature" installMode="root"/>
-      <feature id="com.zeligsoft.papyruscx.axcioma.rcp.feature" installMode="root"/>
+      <feature id="com.zeligsoft.papyrus-cx.axcioma.rcp.feature" installMode="root"/>
    </features>
 
    <configurations>
@@ -114,9 +112,9 @@
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.update.configurator" autoStart="false" startLevel="3" />
       <property name="osgi.requiredJavaVersion" value="1.8" />
-      <property name="osgi.bundles.defaultStartLevel" value="4" />
+      <property name="osgi.instance.area.default" value="@user.home/workspace-papyrus-cx" />
       <property name="org.eclipse.update.reconcile" value="false" />
-      <property name="osgi.instance.area.default" value="@user.home/workspace-papyruscx" />
+      <property name="osgi.bundles.defaultStartLevel" value="4" />
    </configurations>
 
    <preferencesInfo>
