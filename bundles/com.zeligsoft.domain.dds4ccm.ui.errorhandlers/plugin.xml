@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="com.zeligsoft.domain.dds4ccm.ui.errorhandlers.undesirableExceptions" name="Undesirable Exceptions" schema="schema/com.zeligsoft.domain.dds4ccm.ui.errorhandlers.undesirableExceptions.exsd"/>
+   <extension
+         point="org.eclipse.ui.statusHandlers">
+      <statusHandler
+            class="com.zeligsoft.domain.dds4ccm.ui.errorhandlers.statushandlers.FilteringStatusHandler"
+            id="com.zeligsoft.domain.dds4ccm.ui.errorhandlers.filteringStatusHandler">
+      </statusHandler>
+      <statusHandlerProductBinding
+            handlerId="com.zeligsoft.domain.dds4ccm.ui.errorhandlers.filteringStatusHandler"
+            productId="com.zeligsoft.papyrus-cx.axcioma.rcp.product">
+      </statusHandlerProductBinding>
+   </extension>
+   <extension
+         point="com.zeligsoft.domain.dds4ccm.ui.errorhandlers.undesirableExceptions">
+      <undesirableException
+            exceptionClass="java.lang.NullPointerException"
+            maximumDepth="3"
+            originClassNamePattern="org.eclipse.papyrus.views.modelexplorer.ModelExplorerView"
+            originMethodNamePattern="deactivate">
+      </undesirableException>
+      <undesirableException
+            exceptionClass="java.lang.NullPointerException"
+            maximumDepth="2"
+            originClassNamePattern="org.eclipse.papyrus.infra.ui.lifecycleevents.SaveAndDirtyService"
+            originMethodNamePattern="removeInputChangedListener">
+      </undesirableException>
+   </extension>
+
+</plugin>
