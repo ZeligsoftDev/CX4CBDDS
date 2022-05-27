@@ -11,6 +11,7 @@ on:
     branches:
       - master
       - papyrus
+      - papyrus_product
   release:
     types:
       - created
@@ -69,6 +70,7 @@ jobs:
             const patterns = {
                 'ATCD': 'releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip',
                 'AXCIOMA': 'releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axcioma_*.zip',
+                'AXCIOMA_RCP': 'releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/target/products/com.zeligsoft.papyrus-cx.axcioma.rcp.product-linux.*.zip',
                 'DDK': 'releng/com.zeligsoft.ddk.update/target/ddk_*.zip',
                 'PAPYRUS_440_PATCH': 'papyrus-patch/v4.4.0/site-papyrus-patch/target/papyrus_v440_patch_*.zip'
             }
@@ -103,13 +105,21 @@ jobs:
             --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.dds4ccm.update.axcioma" \
             --define "_git_tag $RPM_TAG" \
             releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/zeligsoftCX_axcioma.spec
+      - name: Build AXCIOMA RCP RPM
+        if: ${{ env.AXCIOMA_RCP_PRESENT == 'true' }}
+        run: |
+          rpmbuild -ba --clean -vv \
+            --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product" \
+            --define "_git_tag $RPM_TAG" \
+            releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/rpm_build/papyrus-cx-axcioma.spec
       - name: Located Built RPMS
         uses: actions/github-script@v6
         with:
           script: |
             const patterns = {
                 'ATCD_RPM': 'releng/com.zeligsoft.dds4ccm.update.atcd/rpm_build/noarch/*.rpm',
-                'AXCIOMA_RPM': 'releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/noarch/*.rpm'
+                'AXCIOMA_RPM': 'releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/noarch/*.rpm',
+                'AXCIOMA_RCP_RPM': 'releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/rpm_build/x86_64/*.rpm'
             }
             const variable_defs = {}
             for (const [var_base, pat] of Object.entries(patterns)) {
@@ -142,6 +152,13 @@ jobs:
           name: ${{ env.AXCIOMA_FILE_NAME }}
           path: ${{ env.AXCIOMA_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - name: Preserve AXCIOMA RCP archive
+        if: ${{ env.AXCIOMA_RCP_PRESENT == 'true' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.AXCIOMA_RCP_FILE_NAME }}
+          path: ${{ env.AXCIOMA_RCP_PATH }}
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve DDK archive
         if: ${{ env.DDK_PRESENT == 'true' }}
         uses: actions/upload-artifact@v3
@@ -170,6 +187,13 @@ jobs:
           name: ${{ env.AXCIOMA_RPM_FILE_NAME }}
           path: ${{ env.AXCIOMA_RPM_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - name: Preserve AXCIOMA_RCP_RPM
+        if: ${{ env.AXCIOMA_RCP_RPM_PRESENT == 'true' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.AXCIOMA_RCP_RPM_FILE_NAME }}
+          path: ${{ env.AXCIOMA_RCP_RPM_PATH }}
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Release
         uses: softprops/action-gh-release@v1
         if: github.event_name == 'release'
@@ -178,4 +202,6 @@ jobs:
             releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axcioma_*.zip
             releng/com.zeligsoft.ddk.update/target/ddk_*.zip
             releng/com.zeligsoft.dds4ccm.update.axcioma/rpm_build/noarch/*.rpm
+            releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/target/products/com.zeligsoft.papyrus-cx.axcioma.rcp.product-*.zip
+            releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/rpm_build/x86_64/*.rpm
             papyrus-patch/v4.4.0/site-papyrus-patch/target/papyrus_v440_patch_*.zip
