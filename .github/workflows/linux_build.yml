@@ -82,7 +82,7 @@ jobs:
                     variable_defs[var_base + '_PATH'] = files[0]
                     const path_parts = files[0].split('/')
                     variable_defs[var_base + '_FILE_NAME'] = path_parts[path_parts.length - 1]
-                    const version_array = variable_defs[var_base + '_FILE_NAME'].match(/(\d+\.\d+\.\d+\).v?(\d+)/)
+                    const version_array = variable_defs[var_base + '_FILE_NAME'].match(/(\d+\.\d+\.\d+).v?(\d+)/)
                     if (version_array !== null && version_array.length === 3) {
                         variable_defs[var_base + '_FULL_VERSION'] = version_array[0]
                         variable_defs[var_base + '_UNQUALIFIED_VERSION'] = version_array[1]
