@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>com.zeligsoft.papyrus-cx.axcioma.rcp.rpm</artifactId>
+	<parent>
+		<groupId>com.zeligsoft.dds4ccm</groupId>
+		<artifactId>com.zeligsoft.dds4ccm.releng</artifactId>
+		<version>2.2.0-SNAPSHOT</version>
+	</parent>
+	<packaging>rpm</packaging>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>rpm-maven-plugin</artifactId>
+				<version>2.2.0</version>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>generate-rpm</id>
+						<goals>
+							<goal>rpm</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<name>papyrus-cx-axcioma</name>
+					<license>Apache 2.0 (c) 2022 Zeligsoft (2009) Limited and others</license>
+					<group>Development Tools</group>
+					<icon>../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.xpm</icon>
+					<needarch>true</needarch>
+					<repackJars>false</repackJars>
+					<autoProvides>false</autoProvides>
+					<autoRequires>false</autoRequires>
+					<packager>Zeligsoft (2009) Limited</packager>
+					<summary>An Eclipse Papyrus extension for modeling with AXCIOMA</summary>
+					<description>Papyrus CX for AXCIOMA is a modelling environment based on Eclipse Papyrus
+for modeling component-based systems built on AXCIOMA according to the OMG CCM standard.
+					</description>
+					<url>https://github.com/ZeligsoftDev/CX4CBDDS</url>
+					<packager>Zeligsoft (2009) Limited</packager>
+					<vendor>Zeligsoft (2009) Limited</vendor>
+					<verifyScriplet>true</verifyScriplet>
+					<version>${unqualifiedVersion}</version>
+					<release>${buildQualifier}</release>
+					<requires>
+						<require>java-11-openjdk</require>
+					</requires>
+					<defineStatements>
+						<defineStatement>_build_id_links none</defineStatement>
+						<!-- 
+						<defineStatement>_full_version ${project.version}</defineStatement>
+						<defineStatement>_targetdir %{_projectdir}/target/</defineStatement>
+						<defineStatement>_productdir %{_targetdir}/products/</defineStatement>
+						<defineStatement>_productzip papyrus-cx-axcioma-%{_full_version}-linux.gtk.x86_64.zip</defineStatement>
+						-->
+					</defineStatements>
+					<mappings>
+						<mapping>
+							<directory>/opt/papyrus-cx-axcioma/</directory>
+							<sources>
+								<source>
+									<location>../com.zeligsoft.papyrus-cx.axcioma.rcp.product/target/products/com.zeligsoft.papyrus-cx.axcioma.rcp.product/linux/gtk/x86_64/papyrus-cx-axcioma</location>
+								</source>
+							</sources>
+						</mapping>
+						<mapping>
+							<directory>/usr/share/applications/</directory>
+							<sources>
+								<source>
+									<location>resources/papyrus-cx-axcioma.desktop</location>
+								</source>
+							</sources>
+						</mapping>
+					</mappings>
+					<preinstallScriptlet>
+						<script>
+						echo "Installing ${project.name} now"
+						</script>
+					</preinstallScriptlet>
+					<prepareScriplet>
+						<script>echo "Preparing ${project.name} now"</script>
+					</prepareScriplet>
+					<preremoveScriplet>
+						<script>echo "Pre-remove ${project.name} now"</script>
+					</preremoveScriplet>
+					<pretransScriplet>
+						<script>echo "Pre-trans ${project.name} now"</script>
+					</pretransScriplet>
+					<postinstallScriptlet>
+						<script>echo "Installed ${project.name}"</script>
+					</postinstallScriptlet>
+					<postremoveScriplet>
+						<script>echo "Post-remove ${project.name}"</script>
+					</postremoveScriplet>
+					<posttransScriplet>
+						<script>echo "Post-trans ${project.name}"</script>
+					</posttransScriplet>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

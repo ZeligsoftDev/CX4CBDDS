@@ -39,6 +39,7 @@ Name:          papyrus-cx-axcioma
 Version:       %{version}
 Release:       %{release}
 Summary:       An Eclipse Papyrus extension for modeling with AXCIOMA
+Group:         Development Tools
 License:       Apache License, Version 2.0
 BuildArch:     x86_64
 URL:           https://github.com/ZeligsoftDev/CX4CBDDS
