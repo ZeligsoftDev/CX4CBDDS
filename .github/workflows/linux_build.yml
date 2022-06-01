@@ -69,7 +69,7 @@ jobs:
             const patterns = {
                 'ATCD': 'releng/com.zeligsoft.dds4ccm.update.atcd/target/dds4ccm_atcd_*.zip',
                 'AXCIOMA': 'releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axcioma_*.zip',
-                'AXCIOMA_RCP': 'releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/target/products/com.zeligsoft.papyrus-cx.axcioma.rcp.product-linux.*.zip',
+                'AXCIOMA_RCP': 'releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/target/products/papyrus-cx-axcioma-*.zip',
                 'DDK': 'releng/com.zeligsoft.ddk.update/target/ddk_*.zip',
                 'PAPYRUS_440_PATCH': 'papyrus-patch/v4.4.0/site-papyrus-patch/target/papyrus_v440_patch_*.zip'
             }
@@ -82,6 +82,16 @@ jobs:
                     variable_defs[var_base + '_PATH'] = files[0]
                     const path_parts = files[0].split('/')
                     variable_defs[var_base + '_FILE_NAME'] = path_parts[path_parts.length - 1]
+                    const version_array = variable_defs[var_base + '_FILE_NAME'].match(/(\d+\.\d+\.\d+\).v?(\d+)/)
+                    if (version_array !== null && version_array.length === 3) {
+                        variable_defs[var_base + '_FULL_VERSION'] = version_array[0]
+                        variable_defs[var_base + '_UNQUALIFIED_VERSION'] = version_array[1]
+                        variable_defs[var_base + '_BUILD_QUALIFIER'] = version_array[2]
+                    } else {
+                        variable_defs[var_base + '_FULL_VERSION'] = "unknown"
+                        variable_defs[var_base + '_UNQUALIFIED_VERSION'] = "unknown"
+                        variable_defs[var_base + '_BUILD_QUALIFIER'] = "unknown"
+                    }
                 } else {
                     variable_defs[var_base + '_PRESENT'] = 'false'
                 }
@@ -110,6 +120,9 @@ jobs:
           rpmbuild -ba --clean -vv \
             --define "_projectdir $GITHUB_WORKSPACE/releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product" \
             --define "_git_tag $RPM_TAG" \
+            --define "_full_version $AXCIOMA_RCP_FULL_VERSION" \
+            --define "_unqualified_version $AXCIOMA_RCP_UNQUALIFIED_VERSION" \
+            --define "_build_qualifier $AXCIOMA_RCP_BUILD_QUALIFIER" \
             releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/rpm_build/papyrus-cx-axcioma.spec
       - name: Located Built RPMS
         uses: actions/github-script@v6
