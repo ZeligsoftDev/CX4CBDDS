@@ -6,7 +6,19 @@
          <meta.schema plugin="com.zeligsoft.domain.dds4ccm.ui.errorhandlers" id="undesirableExceptions" name="Undesirable Exceptions"/>
       </appinfo>
       <documentation>
-         [Enter description of this extension point.]
+         This extension point used to register &quot;undesirable exceptions&quot; to be filtered out when they arise so that they are logged but not handled by the standard error handler, which may result in undesirable pop-ups.
+
+The extension point allows to register a sequence of exceptions. The extension must provide four fields:
+
+1) exceptionClassName: the fully-qualified name of a subclass of java.lang.Throwable, 
+2) originClassNamePattern: a regular expression describing the fully-qualified name(s) of class(es) where the exception might originate,
+3) originMethodNamePattern: a regular expression describing the name(s) of class(es) where the exception might originate,
+4) maximumDepth: an Integer, the maximum depth to look for the class name and method name in the stack trace of an exception
+ 
+If no originClassNamePattern is provided, the regular expression `.*` is assumed as default, i.e. matches any class name.
+If no originMethodNamePattern is provided, the regular expression `.*` is assumed as default, i.e. matches any method name.
+If no maximumDepth is provided, the stack trace length is assumed as default.
+
       </documentation>
    </annotation>
 
@@ -49,14 +61,11 @@
 
    <element name="undesirableException">
       <complexType>
-         <attribute name="exceptionClass" type="string">
+         <attribute name="exceptionClassName" type="string">
             <annotation>
                <documentation>
                   
                </documentation>
-               <appinfo>
-                  <meta.attribute kind="java" basedOn="java.lang.Throwable:"/>
-               </appinfo>
             </annotation>
          </attribute>
          <attribute name="originClassNamePattern" type="string">

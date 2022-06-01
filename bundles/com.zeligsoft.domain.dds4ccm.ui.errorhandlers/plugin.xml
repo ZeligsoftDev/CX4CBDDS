@@ -16,13 +16,13 @@
    <extension
          point="com.zeligsoft.domain.dds4ccm.ui.errorhandlers.undesirableExceptions">
       <undesirableException
-            exceptionClass="java.lang.NullPointerException"
+            exceptionClassName="java.lang.NullPointerException"
             maximumDepth="3"
             originClassNamePattern="org.eclipse.papyrus.views.modelexplorer.ModelExplorerView"
             originMethodNamePattern="deactivate">
       </undesirableException>
       <undesirableException
-            exceptionClass="java.lang.NullPointerException"
+            exceptionClassName="java.lang.NullPointerException"
             maximumDepth="2"
             originClassNamePattern="org.eclipse.papyrus.infra.ui.lifecycleevents.SaveAndDirtyService"
             originMethodNamePattern="removeInputChangedListener">

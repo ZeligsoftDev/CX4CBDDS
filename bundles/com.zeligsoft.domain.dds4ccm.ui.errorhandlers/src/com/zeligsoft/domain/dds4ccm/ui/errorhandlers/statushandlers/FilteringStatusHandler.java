@@ -1,104 +1,45 @@
 /**
- * 
+ * Copyright 2022 Zeligsoft (2009) Limited.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 package com.zeligsoft.domain.dds4ccm.ui.errorhandlers.statushandlers;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IExtensionPoint;
-import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.ui.application.IWorkbenchConfigurer;
 import org.eclipse.ui.internal.ide.IDEWorkbenchErrorHandler;
 import org.eclipse.ui.statushandlers.StatusAdapter;
 
+import com.zeligsoft.base.util.JavaReflectionUtil;
 import com.zeligsoft.domain.dds4ccm.ui.errorhandlers.Activator;
 
 /**
- * @author eposse
- *
+ * This status handler detects and filters "undesirable" exceptions that have been registered via the
+ * "undesirableExceptions" extension point.
+ * 
+ *  @see {@link UndesirableException}
+ * 
+ * @author Ernesto Posse
  */
 public class FilteringStatusHandler extends IDEWorkbenchErrorHandler {
 
-	public class UndesirableException {
-		private Class<Throwable> exceptionClass;
-		private Pattern originClassNamePattern;
-		private Pattern originMethodNamePattern;
-		private Integer maximumDepth;
-
-		public <T extends Throwable> UndesirableException(Class<T> exceptionClass, String originClassNamePattern,
-				String originMethodNamePattern, Integer maximumDepth) {
-			init(exceptionClass, originClassNamePattern, originMethodNamePattern, maximumDepth);
-		}
-
-		public <T extends Throwable> UndesirableException(Class<T> exceptionClass, String originClassNamePattern,
-				String originMethodNamePattern) {
-			init(exceptionClass, originClassNamePattern, originMethodNamePattern, null);
-		}
-
-		public <T extends Throwable> UndesirableException(Class<T> exceptionClass,
-				String originFullyQualifiedMethodNamePattern, Integer maximumDepth) {
-			String originClassNamePattern = "";
-			String originMethodNamePattern = "";
-			if (originFullyQualifiedMethodNamePattern != null) {
-				int lastDotIndex = originFullyQualifiedMethodNamePattern.lastIndexOf(Character.getNumericValue('.'));
-				originClassNamePattern = originFullyQualifiedMethodNamePattern.substring(0, lastDotIndex);
-				originMethodNamePattern = originFullyQualifiedMethodNamePattern.substring(lastDotIndex);
-			}
-			init(exceptionClass, originClassNamePattern, originMethodNamePattern, maximumDepth);
-		}
-
-		public <T extends Throwable> UndesirableException(Class<T> exceptionClass,
-				String originFullyQualifiedMethodNamePattern) {
-			this(exceptionClass, originFullyQualifiedMethodNamePattern, (Integer) null);
-		}
-
-		private <T extends Throwable> void init(Class<T> exceptionClass, String originClassNamePattern,
-				String originMethodNamePattern, Integer maximumDepth) {
-			this.exceptionClass = (Class<Throwable>) exceptionClass;
-			if (originClassNamePattern == null || originClassNamePattern.isBlank()) {
-				originClassNamePattern = ".*";
-			}
-			if (originMethodNamePattern == null || originMethodNamePattern.isBlank()) {
-				originMethodNamePattern = ".*";
-			}
-			this.originClassNamePattern = Pattern.compile(originClassNamePattern);
-			this.originMethodNamePattern = Pattern.compile(originMethodNamePattern);
-			this.maximumDepth = maximumDepth;
-		}
-
-		public Class<Throwable> getExceptionClass() {
-			return exceptionClass;
-		}
-
-		public Pattern getOriginClassNamePattern() {
-			return originClassNamePattern;
-		}
-
-		public Pattern getOriginMethodNamePattern() {
-			return originMethodNamePattern;
-		}
-
-		public Integer getMaximumDepth() {
-			return maximumDepth;
-		}
-	}
-
-	public final String UNDESIRABLE_EXCEPTIONS_EXTENSION_POINT_ID = "undesirableExceptions";
-	public final String ATTR_NAME_EXCEPTION_CLASS = "exceptionClass";
-	public final String ATTR_NAME_ORIGIN_CLASS_NAME_PATTERN = "originClassNamePattern";
-	public final String ATTR_NAME_ORIGIN_METHOD_NAME_PATTERN = "originMethodNamePattern";
-	public final String ATTR_NAME_MAXIMUM_DEPTH = "maximumDepth";
-
-	private List<UndesirableException> undesirableExceptions = null;
+	private UndesirableExceptionRegistry undesirableExceptionRegistry = new UndesirableExceptionRegistry();
+	
 	private Set<Throwable> filteredExceptions = new HashSet<Throwable>();
 
 	public FilteringStatusHandler() {
@@ -107,70 +48,6 @@ public class FilteringStatusHandler extends IDEWorkbenchErrorHandler {
 
 	public FilteringStatusHandler(IWorkbenchConfigurer configurer) {
 		super(configurer);
-	}
-
-	public List<UndesirableException> getUndesirableExceptions() {
-		if (undesirableExceptions == null) {
-			undesirableExceptions = new ArrayList<>();
-			loadExtensionPoint();
-		}
-		return undesirableExceptions;
-	}
-
-	private void loadExtensionPoint() {
-		IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-		final IExtensionPoint extensionPoint = extensionRegistry.getExtensionPoint(Activator.PLUGIN_ID,
-				UNDESIRABLE_EXCEPTIONS_EXTENSION_POINT_ID);
-		IConfigurationElement[] configurationElements = extensionPoint.getConfigurationElements();
-
-		for (IConfigurationElement configurationElement : configurationElements) {
-			addUndesirableException(configurationElement);
-		}
-	}
-
-	private void addUndesirableException(IConfigurationElement configurationElement) {
-		String exceptionClassName = configurationElement.getAttribute(ATTR_NAME_EXCEPTION_CLASS);
-		if (exceptionClassName == null || exceptionClassName.isBlank()) {
-			Activator.getDefault().warning("Ignoring invalid undesirable exception: no exceptionClass provided; id = "
-					+ configurationElement.getHandleId() + "; name = " + configurationElement.getName());
-			return;
-		}
-		Object instance;
-		try {
-			instance = configurationElement.createExecutableExtension(ATTR_NAME_EXCEPTION_CLASS);
-		} catch (CoreException e) {
-			Activator.getDefault().warning(
-					"Ignoring invalid undesirable exception: unable to create executable extension for exceptionClass; id = "
-							+ configurationElement.getHandleId() + "; name = " + configurationElement.getName()
-							+ "; exceptionClass = " + exceptionClassName);
-			return;
-		}
-		Class<?> klass = instance.getClass();
-		Class<? extends Throwable> exceptionClass;
-		try {
-			exceptionClass = klass.asSubclass(Throwable.class);
-		} catch (ClassCastException e) {
-			Activator.getDefault().warning(
-					"Ignoring invalid undesirable exception: class provided is not a subclass of java.lang.Throwable; id = "
-							+ configurationElement.getHandleId() + "; name = " + configurationElement.getName()
-							+ "; exceptionClass = " + exceptionClassName);
-			return;
-		}
-		String originClassNamePattern = configurationElement.getAttribute(ATTR_NAME_ORIGIN_CLASS_NAME_PATTERN);
-		String originMethodNamePattern = configurationElement.getAttribute(ATTR_NAME_ORIGIN_METHOD_NAME_PATTERN);
-		String maximumDepthStr = configurationElement.getAttribute(ATTR_NAME_MAXIMUM_DEPTH);
-		Integer maximumDepth = null;
-		try {
-			maximumDepth = Integer.parseInt(maximumDepthStr);
-		} catch (NumberFormatException e) {
-			Activator.getDefault().warning(
-					"Ignoring invalid maximum depth in undesirable exception: maximumDepth is not an integer; id = "
-							+ configurationElement.getHandleId() + "; name = " + configurationElement.getName()
-							+ "; maximumDepth = " + maximumDepthStr);
-		}
-		UndesirableException undesirableException = new UndesirableException(exceptionClass, originClassNamePattern,
-				originMethodNamePattern, maximumDepth);
-		undesirableExceptions.add(undesirableException);
 	}
 
 	@Override
@@ -203,11 +80,18 @@ public class FilteringStatusHandler extends IDEWorkbenchErrorHandler {
 		Activator.getDefault().getLog().log(status);
 	}
 
+	/**
+	 * Returns true if the given exception matches any of the undesirable exceptions in the {@link UndesirableExceptionRegistry}
+	 * and should be filtered.
+	 * 
+	 * @param exception - a {@link Throwable}
+	 * @return A boolean.
+	 */
 	private boolean filter(Throwable exception) {
 		// For each undesirable exception...
-		for (UndesirableException undesirableException : getUndesirableExceptions()) {
+		for (UndesirableException undesirableException : undesirableExceptionRegistry.getUndesirableExceptions()) {
 			// If the given exception is an instance of the undesirable exception
-			if (undesirableException.getExceptionClass().isInstance(exception)) {
+			if (isSubClassOrImplements(exception.getClass(), undesirableException.getExceptionClassName())) {
 				// Get the exception's stack trace
 				StackTraceElement[] stackTrace = exception.getStackTrace();
 				if (stackTrace != null) {
@@ -238,6 +122,11 @@ public class FilteringStatusHandler extends IDEWorkbenchErrorHandler {
 			}
 		}
 		return false;
+	}
+
+	private boolean isSubClassOrImplements(Class<? extends Throwable> throwableClass, String exceptionClassName) {
+		return JavaReflectionUtil.isEqualOrSubclassOf(throwableClass, exceptionClassName)
+				|| JavaReflectionUtil.isEqualOrImplementsInterface(throwableClass, exceptionClassName);
 	}
 
 }
