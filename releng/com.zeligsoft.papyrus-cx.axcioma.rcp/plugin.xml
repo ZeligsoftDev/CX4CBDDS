@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="4.6"?>
+
+<plugin>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            description="Papyrus CX for AXCIOMA&#x0A;&#x0A;Version: {1}&#x0A;Build id: {0}&#x0A;&#x0A;(c) Copyright Zeligsoft/Lumenix 2022.  All rights reserved.&#x0A;&#x0A;This product includes software developed by the&#x0A;Apache Software Foundation http://www.apache.org/"
+            name="Papyrus CX for AXCIOMA">
+         <property
+               name="appName"
+               value="Papyrus CX for AXCIOMA">
+         </property>
+         <property
+              name="introBrandingImage"
+              value="product:icons/papyrus-cx.svg"/>
+         <property
+               name="introTitle"
+               value="Welcome to Papyrus CX for AXCIOMA">
+         </property>
+         <property
+               name="introBrandingImageText"
+               value="Papyrus CX for AXCIOMA">
+         </property>
+         <property
+                name="cssTheme"
+                value="org.eclipse.e4.ui.css.theme.e4_default">
+          </property>
+          <property
+                name="applicationCSSResources"
+                value="platform:/plugin/org.eclipse.platform/images/">
+          </property>
+          <property
+                name="startupForegroundColor"
+                value="000000">
+          </property>
+          <property
+                name="startupMessageRect"
+                value="8,326,444,16">
+          </property>
+          <property
+                name="startupProgressRect"
+                value="8,340,444,8">
+          </property>
+          <property
+                name="aboutImage"
+                value="icons/papyrus-cx.iconset/icon_128x128.png">
+          </property>
+          <property
+                name="aboutText"
+                value="Papyrus CX for AXCIOMA&#x0A;&#x0A;Version: 2.2.0&#x0A;&#x0A;(c) Copyright Zeligsoft/Lumenix 2022. All rights reserved.&#x0A;&#x0A;This product includes software developed by the&#x0A;Apache Software Foundation http://www.apache.org/">
+          </property>
+          <property
+               name="windowImages"
+               value="icons/papyrus-cx.iconset/icon_16x16.png,icons/papyrus-cx.iconset/icon_32x32.png,icons/papyrus-cx.iconset/icon_48x48.png,icons/papyrus-cx.iconset/icon_64x64.png,icons/papyrus-cx.iconset/icon_128x128.png,icons/papyrus-cx.iconset/icon_256x256.png">
+          </property>
+          <property
+                name="preferenceCustomization"
+                value="plugin_customization.ini">
+          </property>
+      </product>
+   </extension>
+</plugin>

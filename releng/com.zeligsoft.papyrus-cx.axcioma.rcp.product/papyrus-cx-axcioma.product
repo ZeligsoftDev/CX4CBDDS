@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Papyrus CX for AXCIOMA" uid="com.zeligsoft.papyrus-cx.axcioma.rcp.product" id="com.zeligsoft.papyrus-cx.axcioma.rcp.product" application="org.eclipse.ui.ide.workbench" version="2.2.0" useFeatures="true" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.iconset/icon_16x16.png" i32="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.iconset/icon_32x32.png" i48="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.iconset/icon_48x48.png" i64="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.iconset/icon_64x64.png" i128="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.iconset/icon_128x128.png" i256="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.iconset/icon_256x256.png"/>
+
+   <splash
+      location="com.zeligsoft.papyrus-cx.axcioma.rcp"
+      startupProgressRect="8,340,444,8"
+      startupMessageRect="8,326,444,16"
+      startupForegroundColor="000000" />
+   <launcher name="papyrus-cx">
+      <linux icon="../com.zeligsoft.papyrus-cx.axcioma.rcp/icons/papyrus-cx.xpm"/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+      <plugin id="com.google.gson"/>
+      <plugin id="com.google.guava"/>
+      <plugin id="com.google.inject"/>
+      <plugin id="com.sun.xml.bind"/>
+      <plugin id="javax.xml.stream"/>
+      <plugin id="org.eclipse.tm.terminal.control"/>
+      <plugin id="org.eclipse.tools.templates.core"/>
+      <plugin id="org.eclipse.tools.templates.freemarker"/>
+      <plugin id="org.eclipse.tools.templates.ui"/>
+      <plugin id="org.freemarker"/>
+   </plugins>
+
+   <features>
+      <feature id="org.eclipse.emf.mwe.core.feature" installMode="root"/>
+      <feature id="org.eclipse.emf.mwe.ui.feature" installMode="root"/>
+      <feature id="org.eclipse.emf.mwe2.language.sdk" installMode="root"/>
+      <feature id="org.eclipse.emf.mwe2.launcher" installMode="root"/>
+      <feature id="org.eclipse.emf.mwe2.runtime.sdk" installMode="root"/>
+      <feature id="org.eclipse.gmf.runtime.sdk" installMode="root"/>
+      <feature id="org.eclipse.launchbar" installMode="root"/>
+      <feature id="org.eclipse.ocl" installMode="root"/>
+      <feature id="org.eclipse.ocl.ui" installMode="root"/>
+      <feature id="org.eclipse.platform" installMode="root"/>
+      <feature id="org.eclipse.rcp" installMode="root"/>
+      <feature id="org.eclipse.uml2" installMode="root"/>
+      <feature id="org.eclipse.uml2.codegen.ecore.ui" installMode="root"/>
+      <feature id="org.eclipse.uml2.common" installMode="root"/>
+      <feature id="org.eclipse.uml2.common.edit" installMode="root"/>
+      <feature id="org.eclipse.uml2.sdk" installMode="root"/>
+      <feature id="org.eclipse.uml2.uml" installMode="root"/>
+      <feature id="org.eclipse.uml2.uml.edit" installMode="root"/>
+      <feature id="org.eclipse.xpand" installMode="root"/>
+      <feature id="org.eclipse.xpand.sdk" installMode="root"/>
+      <feature id="org.eclipse.xpand.ui" installMode="root"/>
+      <feature id="org.eclipse.xtend" installMode="root"/>
+      <feature id="org.eclipse.xtend.sdk" installMode="root"/>
+      <feature id="org.eclipse.xtend.typesystem.emf" installMode="root"/>
+      <feature id="org.eclipse.xtend.typesystem.uml2" installMode="root"/>
+      <feature id="org.eclipse.xtend.typesystem.xsd" installMode="root"/>
+      <feature id="org.eclipse.xtend.ui" installMode="root"/>
+      <feature id="org.eclipse.xtext.runtime" installMode="root"/>
+      <feature id="org.eclipse.xtext.ui" installMode="root"/>
+      <feature id="org.eclipse.xtext.xbase" installMode="root"/>
+      <feature id="org.eclipse.xtext.xbase.lib" installMode="root"/>
+      <feature id="org.eclipse.egit" installMode="root"/>
+      <feature id="org.eclipse.jgit" installMode="root"/>
+      <feature id="org.eclipse.emf.compare" installMode="root"/>
+      <feature id="org.eclipse.emf.compare.diagram.gmf" installMode="root"/>
+      <feature id="org.eclipse.emf.compare.egit" installMode="root"/>
+      <feature id="org.eclipse.emf.compare.ide.ui" installMode="root"/>
+      <feature id="org.eclipse.emf.compare.rcp.ui" installMode="root"/>
+      <feature id="org.eclipse.emf.compare.uml2" installMode="root"/>
+      <feature id="org.eclipse.papyrus.compare.feature" installMode="root"/>
+      <feature id="org.eclipse.papyrus.sdk.feature" installMode="root"/>
+      <feature id="org.eclipse.cdt" installMode="root"/>
+      <feature id="org.eclipse.cdt.gdb" installMode="root"/>
+      <feature id="org.eclipse.cdt.gnu.build" installMode="root"/>
+      <feature id="org.eclipse.cdt.gnu.debug" installMode="root"/>
+      <feature id="org.eclipse.cdt.gnu.dsf" installMode="root"/>
+      <feature id="org.eclipse.cdt.native" installMode="root"/>
+      <feature id="org.eclipse.cdt.platform" installMode="root"/>
+      <feature id="org.eclipse.cdt.sdk" installMode="root"/>
+      <feature id="org.eclipse.equinox.p2.core.feature" installMode="root"/>
+      <feature id="org.eclipse.equinox.p2.extras.feature" installMode="root"/>
+      <feature id="org.eclipse.equinox.p2.rcp.feature" installMode="root"/>
+      <feature id="org.eclipse.equinox.p2.user.ui" installMode="root"/>
+      <feature id="com.zeligsoft.base_feature" installMode="root"/>
+      <feature id="com.zeligsoft.cx_feature" installMode="root"/>
+      <feature id="com.zeligsoft.domain.idl3plus_feature" installMode="root"/>
+      <feature id="com.zeligsoft.domain.ngc.ccm.axcioma_feature" installMode="root"/>
+      <feature id="com.zeligsoft.domain.omg.ccm_feature" installMode="root"/>
+      <feature id="com.zeligsoft.papyrus-cx.axcioma.rcp.feature" installMode="root"/>
+   </features>
+
+   <configurations>
+      <plugin id="org.apache.felix.scr" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="false" startLevel="4" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.update.configurator" autoStart="false" startLevel="3" />
+      <property name="osgi.requiredJavaVersion" value="1.8" />
+      <property name="osgi.instance.area.default" value="@user.home/workspace-papyrus-cx" />
+      <property name="org.eclipse.update.reconcile" value="false" />
+      <property name="osgi.bundles.defaultStartLevel" value="4" />
+   </configurations>
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
+
+</product>
