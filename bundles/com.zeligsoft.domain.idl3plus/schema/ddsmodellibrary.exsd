@@ -61,6 +61,7 @@
             <element ref="generationOptions"/>
             <element ref="importOptions"/>
             <element ref="portIcon" minOccurs="0" maxOccurs="unbounded"/>
+            <element ref="portFilteredProperties" minOccurs="0" maxOccurs="unbounded"/>
          </sequence>
          <attribute name="name" type="string">
             <annotation>
@@ -139,14 +140,37 @@
       </complexType>
    </element>
 
-   <annotation>
-      <appInfo>
-         <meta.section type="apiInfo"/>
-      </appInfo>
-      <documentation>
-         [Enter API information here.]
-      </documentation>
-   </annotation>
+   <element name="portFilteredProperties">
+      <annotation>
+         <documentation>
+            Properties to filter for a given port type.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="filteredProperty" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="portTypeName" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The fully qualified name of the port type for which properties will be filtered.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="filteredProperty">
+      <complexType>
+         <attribute name="propertyName" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A regular expression determining properties to filter for ports of this type.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
 
    <annotation>
       <appInfo>
@@ -157,6 +181,15 @@
       </documentation>
    </annotation>
 
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
 
    <annotation>
       <appInfo>

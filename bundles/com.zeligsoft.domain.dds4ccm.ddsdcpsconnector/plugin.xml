@@ -46,6 +46,16 @@
             portIcon="icons/obj16/consumer-port.gif"
             conjugatedPortIcon="icons/obj16/publisher-port.gif">
       </portIcon>
+      <portFilteredProperties
+            portTypeName="DDS_DCPS::CCM_DDS::Typed::DDS_Write">
+         <filteredProperty
+               propertyName="pull_consumer">
+         </filteredProperty>
+         <filteredProperty
+               propertyName="push_consumer">
+         </filteredProperty>
+      </portFilteredProperties>
+
    		</connector>
    		<module name="DDS_DCPS::CCM_DDS">
    			<generationOptions>

@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.Component;
@@ -50,6 +51,8 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 import com.zeligsoft.base.zdl.util.ZDLCopier;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
+import com.zeligsoft.domain.idl3plus.connectorregistry.ConnectorRegistry;
+import com.zeligsoft.domain.idl3plus.connectorregistry.ConnectorRegistry.FilteredPropertyConfiguration;
 import com.zeligsoft.domain.idl3plus.l10n.Messages;
 import com.zeligsoft.domain.idl3plus.merge.ClassModelMerger;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
@@ -548,6 +551,43 @@ public class IDL3PlusUtil {
 		}
 
 		return bindings;
+	}
+
+	/**
+	 * Determine whether the given attribute of the given port type matches the pattern specified for the 
+	 * port type in the filteredProperties extension.
+	 * 
+	 * @param grandParent - A {@link Property}.
+	 * @param port - A {@link Port} {@link Property}.
+	 * @return A boolean.
+	 */
+	public static boolean filter(Property grandParent, Property port) {
+		if (port != null & ZDLUtil.isZDLConcept(port, ZMLMMNames.PORT)) {
+			Type portType = grandParent.getType();
+			if (portType != null && ZDLUtil.isZDLConcept(portType, ZMLMMNames.PORT_TYPE)) {
+				String portTypeQualifiedName = getInstantiatedPortTypeQualifiedName(portType);
+				FilteredPropertyConfiguration filteredPropertyConfiguration = ConnectorRegistry.getInstance()
+						.getFilteredPropertyConfiguration(portTypeQualifiedName);
+				if (filteredPropertyConfiguration != null) {
+					return filteredPropertyConfiguration.matchesAny(port.getName());
+				}
+			}
+		}
+		return false;
+	}
+
+	public static String getInstantiatedPortTypeQualifiedName(Type portType) {
+		String portTypeQName = portType.getQualifiedName();
+		EObject moduleInstantiation = getTemplateInstantiation(portType);
+		if (moduleInstantiation != null) {
+			String relativeQName = portTypeQName.replace(EMFCoreUtil.getQualifiedName(moduleInstantiation, true),
+					UML2Util.EMPTY_STRING);
+			EObject templateModule = getTypedTemplateModuleForInstantiation(moduleInstantiation);
+			if (templateModule != null) {
+				portTypeQName = EMFCoreUtil.getQualifiedName(templateModule, true) + relativeQName;
+			}
+		}
+		return portTypeQName;
 	}
 
 	/**

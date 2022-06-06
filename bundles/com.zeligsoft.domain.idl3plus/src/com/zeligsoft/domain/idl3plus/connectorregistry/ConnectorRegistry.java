@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
@@ -64,10 +66,20 @@ public class ConnectorRegistry {
 
 	private static final String EXT_ENTRY_PORT_ICONS_CONJUGATED = "conjugatedPortIcon"; //$NON-NLS-1$
 
+	private static final String EXT_ENTRY_PORT_FILTERED_PROPERTIES = "portFilteredProperties"; //$NON-NLS-1$
+
+	private static final String EXT_ENTRY_PORT_FILTERED_PROPERTIES_PORTTYPE_NAME = "portTypeName"; //$NON-NLS-1$
+
+	private static final String EXT_ENTRY_PORT_FILTERED_PROPERTIES_FILTERED_PROPERTY = "filteredProperty"; //$NON-NLS-1$
+
+	private static final String EXT_ENTRY_PORT_FILTERED_PROPERTIES_FILTERED_PROPERTY_NAME = "propertyName"; //$NON-NLS-1$
+
 	private static HashMap<String, ConnectorConfiguration> connectorInfo = new HashMap<String, ConnectorConfiguration>();
 	
 	private static HashMap<String, PortIconConfiguration> portIconInfo = new HashMap<String, PortIconConfiguration>();
 
+	private static HashMap<String, FilteredPropertyConfiguration> filteredPropertyInfo = new HashMap<String, FilteredPropertyConfiguration>();
+	
 	public static ConnectorRegistry getInstance() {
 		if( INSTANCE == null ) {
 			INSTANCE = new ConnectorRegistry();
@@ -106,6 +118,7 @@ public class ConnectorRegistry {
 					
 					List<String> includeFileNames = getIncludeFiles(entries[i2]);
 					portIconInfo.putAll(getPortIcons(entries[i2]));
+					filteredPropertyInfo.putAll(getFilteredPropertyInfo(entries[i2]));
 					connectorInfo.put(connectorName,
 							new ConnectorConfiguration(connectorName,
 									includeFileNames));
@@ -122,6 +135,37 @@ public class ConnectorRegistry {
 		}
 	}
 	
+	/**
+	 * Collect info on connector port properties to filter from the configuration element in the extension.
+	 * 
+	 * @param element - A {@link IConfigurationElement}
+	 * @return A {@link Map} from port type names to {@link FilteredPropertyConfiguration}s.
+	 */
+	private Map<String, FilteredPropertyConfiguration> getFilteredPropertyInfo(IConfigurationElement element) {
+		Map<String, FilteredPropertyConfiguration> map = new HashMap<String, FilteredPropertyConfiguration>();
+
+		IConfigurationElement[] portFilteredProperties = element.getChildren(EXT_ENTRY_PORT_FILTERED_PROPERTIES);
+
+		for (int i3 = 0; i3 < portFilteredProperties.length; i3 += 1) {
+
+			String porttypeName = portFilteredProperties[i3]
+					.getAttribute(EXT_ENTRY_PORT_FILTERED_PROPERTIES_PORTTYPE_NAME);
+			IConfigurationElement[] filteredProperties = portFilteredProperties[i3]
+					.getChildren(EXT_ENTRY_PORT_FILTERED_PROPERTIES_FILTERED_PROPERTY);
+
+			FilteredPropertyConfiguration config = new FilteredPropertyConfiguration(porttypeName);
+			map.put(porttypeName, config);
+
+			for (int i4 = 0; i4 < filteredProperties.length; i4 += 1) {
+				String propertyName = filteredProperties[i4]
+						.getAttribute(EXT_ENTRY_PORT_FILTERED_PROPERTIES_FILTERED_PROPERTY_NAME);
+				config.add(propertyName);
+			}
+		}
+
+		return map;
+	}
+
 	/**
 	 * Collect port icons customization
 	 * 
@@ -195,6 +239,17 @@ public class ConnectorRegistry {
 		return portIconInfo.get(qualifiedName);
 	}
 	
+	/**
+	 * Queries the filtered properties configuration for the port type with the given qualified name
+	 * 
+	 * @param qualifiedName
+	 *            qualified name of the port type
+	 * @return Port icon configuration for the given port type qualified name
+	 */
+	public FilteredPropertyConfiguration getFilteredPropertyConfiguration(String qualifiedName) {
+		return filteredPropertyInfo.get(qualifiedName);
+	}
+	
 	public class ConnectorConfiguration {
 
 		private String name;
@@ -243,6 +298,38 @@ public class ConnectorRegistry {
 
 		public String getContributorName() {
 			return contributorName;
+		}
+	}
+	
+	/**
+	 * Class to store the configuration of connector port properties to filter from property views.
+	 * 
+	 * @author eposse
+	 */
+	public class FilteredPropertyConfiguration {
+		private String portTypeName;
+		private List<Pattern> propertyNamePatterns;
+		
+		public FilteredPropertyConfiguration(String portTypeName) {
+			this.portTypeName = portTypeName;
+			this.propertyNamePatterns = new ArrayList<Pattern>();
+		}
+		
+		public void add(String propertyName) {
+			this.propertyNamePatterns.add(Pattern.compile(propertyName));
+		}
+		
+		public String getPortTypeName() {
+			return portTypeName;
+		}
+		
+		public List<Pattern> getPropertyNamePatterns() {
+			return propertyNamePatterns;
+		}
+		
+		public boolean matchesAny(String name) {
+			return propertyNamePatterns.stream().map((Pattern p) -> p.matcher(name))
+					.anyMatch((Matcher m) -> m.matches());
 		}
 	}
 }
