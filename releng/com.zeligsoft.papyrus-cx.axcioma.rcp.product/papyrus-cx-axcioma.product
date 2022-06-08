@@ -38,10 +38,6 @@
       <plugin id="org.eclipse.tools.templates.core"/>
       <plugin id="org.eclipse.tools.templates.freemarker"/>
       <plugin id="org.eclipse.tools.templates.ui"/>
-      <plugin id="org.eclipse.wst.dtd.core"/>
-      <plugin id="org.eclipse.wst.dtd.ui"/>
-      <plugin id="org.eclipse.wst.dtd.ui.infopop"/>
-      <plugin id="org.eclipse.wst.dtdeditor.doc.user"/>
       <plugin id="org.freemarker"/>
    </plugins>
 
@@ -57,7 +53,7 @@
       <feature id="org.eclipse.ocl.ui" installMode="root"/>
       <feature id="org.eclipse.platform" installMode="root"/>
       <feature id="org.eclipse.rcp" installMode="root"/>
-      <feature id="org.eclipse.uml2"/>
+      <feature id="org.eclipse.uml2" installMode="root"/>
       <feature id="org.eclipse.uml2.codegen.ecore.ui" installMode="root"/>
       <feature id="org.eclipse.uml2.common" installMode="root"/>
       <feature id="org.eclipse.uml2.common.edit" installMode="root"/>
@@ -106,10 +102,6 @@
       <feature id="com.zeligsoft.domain.omg.ccm_feature" installMode="root"/>
       <feature id="com.zeligsoft.papyrus-cx.axcioma.rcp.feature" installMode="root"/>
       <feature id="org.eclipse.wst.xml_ui.feature" installMode="root"/>
-      <feature id="org.eclipse.wst.xml_core.feature" installMode="root"/>
-      <feature id="org.eclipse.wst.xml_userdoc.feature" installMode="root"/>
-      <feature id="org.eclipse.wst.common_core.feature" installMode="root"/>
-      <feature id="org.eclipse.wst.common_ui.feature" installMode="root"/>
       <feature id="org.eclipse.equinox.core.sdk" installMode="root"/>
    </features>
 
@@ -119,6 +111,7 @@
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="false" startLevel="4" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.update.configurator" autoStart="false" startLevel="3" />
       <property name="osgi.requiredJavaVersion" value="1.8" />
       <property name="org.eclipse.update.reconcile" value="false" />
