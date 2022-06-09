@@ -19,6 +19,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Print GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Install Java
         uses: actions/setup-java@v3
         with:
@@ -34,7 +38,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            core.info('github.event.pull_request.head.sha =' + github.event.pull_request.head.sha)
             core.info('context.sha = ' + context.sha)
             core.info('context.ref = ' + context.ref)
             core.info('context.eventName = ' + context.eventName)
