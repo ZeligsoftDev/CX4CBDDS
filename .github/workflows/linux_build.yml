@@ -34,9 +34,10 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            core.info('context.sha =' + context.sha)
-            core.info('context.ref =' + context.ref)
-            core.info('context.eventName =' + context.eventName)
+            core.info('github.event.pull_request.head.sha =' + github.event.pull_request.head.sha)
+            core.info('context.sha = ' + context.sha)
+            core.info('context.ref = ' + context.ref)
+            core.info('context.eventName = ' + context.eventName)
             const variable_defs = {}
             const TAG_PREFIX = 'refs/tags/'
             const short_sha = context.sha.substring(0, 7)
@@ -57,7 +58,7 @@ jobs:
 
             for (const [var_name, value] of Object.entries(variable_defs)) {
                 core.exportVariable(var_name, value)
-                core.info(var_name + '=' + value)
+                core.info(var_name + ' = ' + value)
             }
       - name: Build DDS4CBDDS
         run: |
