@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="com.zeligsoft.domain.dds4ccm.ui.errorhandlers.undesirableExceptions" name="Undesirable Exceptions" schema="schema/com.zeligsoft.domain.dds4ccm.ui.errorhandlers.undesirableExceptions.exsd"/>
+   <extension-point id="undesirableExceptions" name="com.zeligsoft.domain.dds4ccm.ui.errorhandlers" schema="schema/undesirableExceptions.exsd"/>
    <extension
          point="org.eclipse.ui.statusHandlers">
       <statusHandler
@@ -26,6 +26,11 @@
             maximumDepth="2"
             originClassNamePattern="org.eclipse.papyrus.infra.ui.lifecycleevents.SaveAndDirtyService"
             originMethodNamePattern="removeInputChangedListener">
+      </undesirableException>
+      <undesirableException
+            exceptionClassName="java.lang.NullPointerException"
+            originClassNamePattern="org.eclipse.papyrus.uml.decoratormodel.helper.DecoratorModelUtils"
+            originMethodNamePattern="isDecoratorModel">
       </undesirableException>
    </extension>
 

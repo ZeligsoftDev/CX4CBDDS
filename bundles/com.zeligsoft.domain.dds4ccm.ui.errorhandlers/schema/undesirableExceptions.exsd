@@ -3,10 +3,10 @@
 <schema targetNamespace="com.zeligsoft.domain.dds4ccm.ui.errorhandlers" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="com.zeligsoft.domain.dds4ccm.ui.errorhandlers" id="undesirableExceptions" name="Undesirable Exceptions"/>
+         <meta.schema plugin="com.zeligsoft.domain.dds4ccm.ui.errorhandlers" id="undesirableExceptions" name="com.zeligsoft.domain.dds4ccm.ui.errorhandlers"/>
       </appinfo>
       <documentation>
-         This extension point used to register &quot;undesirable exceptions&quot; to be filtered out when they arise so that they are logged but not handled by the standard error handler, which may result in undesirable pop-ups.
+         This extension point used to register &amp;quot;undesirable exceptions&amp;quot; to be filtered out when they arise so that they are logged but not handled by the standard error handler, which may result in undesirable pop-ups.
 
 The extension point allows to register a sequence of exceptions. The extension must provide four fields:
 
@@ -18,7 +18,6 @@ The extension point allows to register a sequence of exceptions. The extension m
 If no originClassNamePattern is provided, the regular expression `.*` is assumed as default, i.e. matches any class name.
 If no originMethodNamePattern is provided, the regular expression `.*` is assumed as default, i.e. matches any method name.
 If no maximumDepth is provided, the stack trace length is assumed as default.
-
       </documentation>
    </annotation>
 
@@ -61,7 +60,7 @@ If no maximumDepth is provided, the stack trace length is assumed as default.
 
    <element name="undesirableException">
       <complexType>
-         <attribute name="exceptionClassName" type="string">
+         <attribute name="exceptionClassName" type="string" use="required">
             <annotation>
                <documentation>
                   
