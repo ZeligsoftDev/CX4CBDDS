@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.zeligsoft.domain.dds4ccm.ui.errorhandlers" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="com.zeligsoft.domain.dds4ccm.ui.errorhandlers" id="undesirableExceptions" name="com.zeligsoft.domain.dds4ccm.ui.errorhandlers"/>
+      </appinfo>
+      <documentation>
+         This extension point used to register &amp;quot;undesirable exceptions&amp;quot; to be filtered out when they arise so that they are logged but not handled by the standard error handler, which may result in undesirable pop-ups.
+
+The extension point allows to register a sequence of exceptions. The extension must provide four fields:
+
+1) exceptionClassName: the fully-qualified name of a subclass of java.lang.Throwable, 
+2) originClassNamePattern: a regular expression describing the fully-qualified name(s) of class(es) where the exception might originate,
+3) originMethodNamePattern: a regular expression describing the name(s) of class(es) where the exception might originate,
+4) maximumDepth: an Integer, the maximum depth to look for the class name and method name in the stack trace of an exception
+ 
+If no originClassNamePattern is provided, the regular expression `.*` is assumed as default, i.e. matches any class name.
+If no originMethodNamePattern is provided, the regular expression `.*` is assumed as default, i.e. matches any method name.
+If no maximumDepth is provided, the stack trace length is assumed as default.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="undesirableException"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="undesirableException">
+      <complexType>
+         <attribute name="exceptionClassName" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="originClassNamePattern" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="originMethodNamePattern" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="maximumDepth" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         [Enter extension point usage example here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+
+</schema>
