@@ -29,6 +29,7 @@ import org.eclipse.uml2.uml.Slot;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.providers.IPropertyEntry;
 import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
+import com.zeligsoft.domain.idl3plus.connectorregistry.ConnectorRegistry;
 import com.zeligsoft.domain.idl3plus.utils.IDL3PlusUtil;
 import com.zeligsoft.domain.omg.ccm.ui.providers.CCMPropertyContentProvider;
 import com.zeligsoft.domain.omg.corba.CXDomainNames;
@@ -42,6 +43,8 @@ import com.zeligsoft.domain.zml.util.ZMLMMNames;
  * 
  */
 public class IDL3PlusPropertyContentProvider extends CCMPropertyContentProvider {
+
+	private static final ConnectorRegistry CONNECTOR_REGISTRY_INSTANCE = ConnectorRegistry.getInstance();
 
 	@Override
 	public Object[] getChildren(Object parentElement) {
@@ -99,19 +102,27 @@ public class IDL3PlusPropertyContentProvider extends CCMPropertyContentProvider 
 				.isZDLConcept(modelObject, IDL3PlusNames.CONNECTOR_DEF)) {
 			// get properties of the component
 			Component component = (Component) entry.getModelObject();
+			IPropertyEntry grandParent = entry.getParent();
+			EObject grandParentEObject = grandParent.getModelObject();
+			Property grandParentProperty = null;
+			if (grandParentEObject instanceof Property) {
+				grandParentProperty = (Property) grandParentEObject;
+			}
 			Iterator<Property> itor = component.getAllAttributes().iterator();
 			while (itor.hasNext()) {
 				Property property = itor.next();
-				if (ZDLUtil.isZDLConcept(property,
-						CXDomainNames.CXATTRIBUTE)) {
-					children.add(entry.addChild(property));
-				} else if (ZDLUtil.isZDLConcept(property, ZMLMMNames.PORT)) {
-					if (property.getType() != null
-							&& ZDLUtil.isZDLConcept(property.getType(),
-									ZMLMMNames.PORT_TYPE)) {
-						if (!((Class) property.getType()).getOwnedAttributes()
-								.isEmpty()) {
-							children.add(entry.addChild(property));
+				if (!IDL3PlusUtil.filter(grandParentProperty, property)) {
+					if (ZDLUtil.isZDLConcept(property,
+							CXDomainNames.CXATTRIBUTE)) {
+						children.add(entry.addChild(property));
+					} else if (ZDLUtil.isZDLConcept(property, ZMLMMNames.PORT)) {
+						if (property.getType() != null
+								&& ZDLUtil.isZDLConcept(property.getType(),
+										ZMLMMNames.PORT_TYPE)) {
+							if (!((Class) property.getType()).getOwnedAttributes()
+									.isEmpty()) {
+								children.add(entry.addChild(property));
+							}
 						}
 					}
 				}
@@ -124,7 +135,7 @@ public class IDL3PlusPropertyContentProvider extends CCMPropertyContentProvider 
 				for (Property attr : ((Class) property.getType())
 						.getOwnedAttributes()) {
 					if (ZDLUtil.isZDLConcept(attr,
-							CXDomainNames.CXATTRIBUTE)) {
+							CXDomainNames.CXATTRIBUTE) && !IDL3PlusUtil.filter(property, attr)) {
 						children.add(entry.addChild(attr));
 					}
 				}
