@@ -294,12 +294,7 @@ public class MainTransform {
         _get.setStereotypeQualifiedName(stToApply.getStereotypeQualifiedName());
         EcoreUtil.delete(stToApply);
       } else {
-        boolean _xblockexpression_1 = false;
-        {
-          EcoreUtil.delete(adviceConfig.getStereotypesToApply().remove(0));
-          _xblockexpression_1 = adviceConfig.getStereotypesToApply().add(stToApply);
-        }
-        _xifexpression = _xblockexpression_1;
+        _xifexpression = adviceConfig.getStereotypesToApply().add(stToApply);
       }
       _xblockexpression = _xifexpression;
     }

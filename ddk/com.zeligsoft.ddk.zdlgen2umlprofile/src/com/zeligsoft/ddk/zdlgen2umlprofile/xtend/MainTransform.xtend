@@ -209,7 +209,6 @@ class MainTransform {
 			adviceConfig.stereotypesToApply.get(0).stereotypeQualifiedName = stToApply.stereotypeQualifiedName
 			EcoreUtil.delete(stToApply)
 		}else{
-			EcoreUtil.delete(adviceConfig.stereotypesToApply.remove(0))
 			adviceConfig.stereotypesToApply.add(stToApply)
 		}
 	}
