@@ -79,10 +79,17 @@
           <domainEnumLiteral href="DDS4CCM.uml#_ShHwYAIREemxSNFUunBY-w"/>
         </literal>
       </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_zdgv8AFnEe2ZmOb6CqM5rw" category="firm" iconUri="platform:/resource/com.zeligsoft.domain.omg.ccm/icons/obj16/domain.gif">
+        <domainConcept href="DDS4CCM.uml#_Pbd6gAFmEe2ZmOb6CqM5rw"/>
+        <generalization xmi:id="_zdgv8QFnEe2ZmOb6CqM5rw">
+          <general href="pathmap://CCM_DOMAIN/CCM.zdlgen#_pxDf8ZA9Ed-41qlhZES-dg"/>
+          <domainGeneralization href="DDS4CCM.uml#_t0MMcAFmEe2ZmOb6CqM5rw"/>
+        </generalization>
+      </classifier>
       <domainBlock href="DDS4CCM.uml#_eP42QEDSEd-VnJuJyqILLA"/>
     </element>
     <element xmi:type="zdlgen:GenDomainBlock" xmi:id="_0iexcHV-Ed-AKdymOEnO6w">
-      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_0ifYgHV-Ed-AKdymOEnO6w" menu="_-QRFYHV-Ed-AKdymOEnO6w" category="firm" iconUri="platform:/resource/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-structure.gif">
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_0ifYgHV-Ed-AKdymOEnO6w" menu="_-QRFYHV-Ed-AKdymOEnO6w" category="firm" iconUri="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-structure.gif">
         <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_0ifYgXV-Ed-AKdymOEnO6w" target="_0ifYg3V-Ed-AKdymOEnO6w" source="_0ifYgHV-Ed-AKdymOEnO6w">
           <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType-ownedAttribute"/>
           <domainAttribute href="DDS4CCM.uml#_Lj6SQHVqEd-AKdymOEnO6w"/>
@@ -435,9 +442,9 @@
       </items>
     </menuModel>
   </ownedModel>
-  <referencedModel href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_auH80DdmEd2dD_ra-wEDmw"/>
-  <referencedModel href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_AJ-wcExGEd2q8K1oAnPrnA"/>
   <referencedModel href="pathmap://CCM_DOMAIN/CCM.zdlgen#_ghB8QZysEd6NpPmb0eU83g"/>
-  <referencedModel href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_rwgN0JBXEeCN25huR8QT_w"/>
+  <referencedModel href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_AJ-wcExGEd2q8K1oAnPrnA"/>
   <referencedModel href="pathmap://DDS_DOMAIN/dds.zdlgen#_0HUlsZQBEd6cD695LnAvug"/>
+  <referencedModel href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_auH80DdmEd2dD_ra-wEDmw"/>
+  <referencedModel href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_rwgN0JBXEeCN25huR8QT_w"/>
 </zdlgen:GenModel>
