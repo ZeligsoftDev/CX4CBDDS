@@ -7999,6 +7999,61 @@ public interface DDS4CCMPackage extends EPackage {
 	int PER_PORT_CONNECTOR_TYPE_DEPLOYMENT_PART_OPERATION_COUNT = DEPLOYMENT_PART_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link dds4ccm.impl.DomainDefinitionImpl <em>Domain Definition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dds4ccm.impl.DomainDefinitionImpl
+	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDomainDefinition()
+	 * @generated
+	 */
+	int DOMAIN_DEFINITION = 171;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_DEFINITION__LABEL = DOMAIN__LABEL;
+
+	/**
+	 * The feature id for the '<em><b>UUID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_DEFINITION__UUID = DOMAIN__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Base Component</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_DEFINITION__BASE_COMPONENT = DOMAIN__BASE_COMPONENT;
+
+	/**
+	 * The number of structural features of the '<em>Domain Definition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_DEFINITION_FEATURE_COUNT = DOMAIN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Domain Definition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_DEFINITION_OPERATION_COUNT = DOMAIN_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link dds4ccm.ComponentCategory <em>Component Category</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8006,7 +8061,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getComponentCategory()
 	 * @generated
 	 */
-	int COMPONENT_CATEGORY = 171;
+	int COMPONENT_CATEGORY = 172;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.WiringKind <em>Wiring Kind</em>}' enum.
@@ -8016,7 +8071,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getWiringKind()
 	 * @generated
 	 */
-	int WIRING_KIND = 172;
+	int WIRING_KIND = 173;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.ModelTypeEnum <em>Model Type Enum</em>}' enum.
@@ -8026,7 +8081,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getModelTypeEnum()
 	 * @generated
 	 */
-	int MODEL_TYPE_ENUM = 173;
+	int MODEL_TYPE_ENUM = 174;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.CXPrimitiveKind <em>CX Primitive Kind</em>}' enum.
@@ -8036,7 +8091,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getCXPrimitiveKind()
 	 * @generated
 	 */
-	int CX_PRIMITIVE_KIND = 174;
+	int CX_PRIMITIVE_KIND = 175;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.ExtensibilityKind <em>Extensibility Kind</em>}' enum.
@@ -8046,7 +8101,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getExtensibilityKind()
 	 * @generated
 	 */
-	int EXTENSIBILITY_KIND = 175;
+	int EXTENSIBILITY_KIND = 176;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.TypeConstraint <em>Type Constraint</em>}' enum.
@@ -8056,7 +8111,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTypeConstraint()
 	 * @generated
 	 */
-	int TYPE_CONSTRAINT = 176;
+	int TYPE_CONSTRAINT = 177;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.TopicKind <em>Topic Kind</em>}' enum.
@@ -8066,7 +8121,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getTopicKind()
 	 * @generated
 	 */
-	int TOPIC_KIND = 177;
+	int TOPIC_KIND = 178;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.HistoryQosPolicyKind <em>History Qos Policy Kind</em>}' enum.
@@ -8076,7 +8131,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getHistoryQosPolicyKind()
 	 * @generated
 	 */
-	int HISTORY_QOS_POLICY_KIND = 178;
+	int HISTORY_QOS_POLICY_KIND = 179;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.OwnershipQosPolicyKind <em>Ownership Qos Policy Kind</em>}' enum.
@@ -8086,7 +8141,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getOwnershipQosPolicyKind()
 	 * @generated
 	 */
-	int OWNERSHIP_QOS_POLICY_KIND = 179;
+	int OWNERSHIP_QOS_POLICY_KIND = 180;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.PresentationQosPolicyAccessScopeKind <em>Presentation Qos Policy Access Scope Kind</em>}' enum.
@@ -8096,7 +8151,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getPresentationQosPolicyAccessScopeKind()
 	 * @generated
 	 */
-	int PRESENTATION_QOS_POLICY_ACCESS_SCOPE_KIND = 180;
+	int PRESENTATION_QOS_POLICY_ACCESS_SCOPE_KIND = 181;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.RealiabilityQosPolicyKind <em>Realiability Qos Policy Kind</em>}' enum.
@@ -8106,7 +8161,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getRealiabilityQosPolicyKind()
 	 * @generated
 	 */
-	int REALIABILITY_QOS_POLICY_KIND = 181;
+	int REALIABILITY_QOS_POLICY_KIND = 182;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.LivelinessQosPolicyKind <em>Liveliness Qos Policy Kind</em>}' enum.
@@ -8116,7 +8171,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getLivelinessQosPolicyKind()
 	 * @generated
 	 */
-	int LIVELINESS_QOS_POLICY_KIND = 182;
+	int LIVELINESS_QOS_POLICY_KIND = 183;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.DurabilityQosPolicyKind <em>Durability Qos Policy Kind</em>}' enum.
@@ -8126,7 +8181,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDurabilityQosPolicyKind()
 	 * @generated
 	 */
-	int DURABILITY_QOS_POLICY_KIND = 183;
+	int DURABILITY_QOS_POLICY_KIND = 184;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.DestinationOrderQosPolicyKind <em>Destination Order Qos Policy Kind</em>}' enum.
@@ -8136,7 +8191,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getDestinationOrderQosPolicyKind()
 	 * @generated
 	 */
-	int DESTINATION_ORDER_QOS_POLICY_KIND = 184;
+	int DESTINATION_ORDER_QOS_POLICY_KIND = 185;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.SatisfierPropertyKind <em>Satisfier Property Kind</em>}' enum.
@@ -8146,7 +8201,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getSatisfierPropertyKind()
 	 * @generated
 	 */
-	int SATISFIER_PROPERTY_KIND = 185;
+	int SATISFIER_PROPERTY_KIND = 186;
 
 	/**
 	 * The meta object id for the '{@link dds4ccm.ConfigurationSlotKind <em>Configuration Slot Kind</em>}' enum.
@@ -8156,7 +8211,7 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @see dds4ccm.impl.DDS4CCMPackageImpl#getConfigurationSlotKind()
 	 * @generated
 	 */
-	int CONFIGURATION_SLOT_KIND = 186;
+	int CONFIGURATION_SLOT_KIND = 187;
 
 
 	/**
@@ -11958,6 +12013,16 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPerPortConnectorTypeDeploymentPart();
+
+	/**
+	 * Returns the meta object for class '{@link dds4ccm.DomainDefinition <em>Domain Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Domain Definition</em>'.
+	 * @see dds4ccm.DomainDefinition
+	 * @generated
+	 */
+	EClass getDomainDefinition();
 
 	/**
 	 * Returns the meta object for enum '{@link dds4ccm.ComponentCategory <em>Component Category</em>}'.

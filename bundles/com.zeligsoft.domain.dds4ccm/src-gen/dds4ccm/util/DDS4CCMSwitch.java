@@ -1338,6 +1338,13 @@ public class DDS4CCMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DDS4CCMPackage.DOMAIN_DEFINITION: {
+				DomainDefinition domainDefinition = (DomainDefinition)theEObject;
+				T result = caseDomainDefinition(domainDefinition);
+				if (result == null) result = caseDomain(domainDefinition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -3904,6 +3911,21 @@ public class DDS4CCMSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePerPortConnectorTypeDeploymentPart(PerPortConnectorTypeDeploymentPart object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Domain Definition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Domain Definition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDomainDefinition(DomainDefinition object) {
 		return null;
 	}
 
