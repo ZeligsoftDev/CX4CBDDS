@@ -17,7 +17,10 @@
  *****************************************************************************/
 package org.eclipse.papyrus.uml.properties.profile.ui.compositeforview;
 
+import java.util.EventObject;
+
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -49,6 +52,8 @@ public class AppliedStereotypeCompositeWithView extends org.eclipse.papyrus.uml.
 	private EModelElement diagramElement;
 
 	private ISelectionChangedListener propertySelectionChangeListener;
+
+	private CommandStackListener commandStackListener;
 
 	/**
 	 * The Constructor.
@@ -89,6 +94,7 @@ public class AppliedStereotypeCompositeWithView extends org.eclipse.papyrus.uml.
 	 * @param diagramElement
 	 *            the diagram element
 	 */
+	@Override
 	public void setDiagramElement(EModelElement diagramElement) {
 		this.diagramElement = diagramElement;
 		((ProfileElementWithDisplayContentProvider) treeViewer.getContentProvider()).setDiagramElement(diagramElement);
@@ -184,4 +190,53 @@ public class AppliedStereotypeCompositeWithView extends org.eclipse.papyrus.uml.
 
 		return compoundCommand;
 	}
+
+	/**
+	 * @see org.eclipse.papyrus.uml.properties.profile.ui.compositesformodel.DecoratedTreeComposite#setElement(org.eclipse.uml2.uml.Element)
+	 *
+	 * @param element
+	 */
+	@Override
+	public void setElement(Element element) {
+		// if the new element is null, we remove the command stack listener
+		if (null == element && null != getElement()) {
+			getEditingDomain(getElement()).getCommandStack().removeCommandStackListener(this.commandStackListener);
+		}
+		if (null != element && null == this.commandStackListener) {
+			// if the command stack listener has not yet been created, we create it
+			getEditingDomain(element).getCommandStack().addCommandStackListener(this.commandStackListener = new LocalCommandStackListener());
+		}
+		super.setElement(element);
+	}
+
+	/**
+	 * CommandStackListener used to refresh the TreeView when a stereotype property changed
+	 *
+	 */
+	private class LocalCommandStackListener implements CommandStackListener {
+
+		/**
+		 * @see org.eclipse.emf.common.command.CommandStackListener#commandStackChanged(java.util.EventObject)
+		 *
+		 * @param event
+		 */
+		@Override
+		public void commandStackChanged(EventObject event) {
+			Runnable runRefresh = new Runnable() {
+
+				@Override
+				public void run() {
+					// isDiposed must be called by UI thread
+					if (!treeViewer.getTree().isDisposed()) {
+						propertySelectionChangeListener.selectionChanged(new SelectionChangedEvent(treeViewer, treeViewer.getSelection()));
+						refreshTreeViewer();
+					}
+				};
+			};
+			if (!treeViewer.getControl().isDisposed()) {
+				treeViewer.getControl().getDisplay().asyncExec(runRefresh);
+			}
+		}
+	}
+
 }
