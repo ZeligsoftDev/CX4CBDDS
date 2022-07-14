@@ -122,7 +122,11 @@
           <general xmi:type="uml:Class" href="pathmap://CCM_DOMAIN/CCM.uml#_L_GMsJA1Ed-7vMqgUHuhFQ"/>
         </generalization>
       </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_LeqTQAPCEe2G86ayG7vqfA" name="DomainDeployment"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_LeqTQAPCEe2G86ayG7vqfA" name="DomainDeployment">
+        <generalization xmi:type="uml:Generalization" xmi:id="_f4FqgAPCEe2G86ayG7vqfA">
+          <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_i9Aj8GSDEd2454WIHspjPA"/>
+        </generalization>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_fP0CMEDSEd-VnJuJyqILLA" name="DDS4CCM"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_sjamQEDSEd-VnJuJyqILLA" name="" client="_fP0CMEDSEd-VnJuJyqILLA" supplier="_eP42QEDSEd-VnJuJyqILLA"/>
@@ -501,4 +505,5 @@ endif&#xD;
   <zdl:DomainConcept xmi:id="_R2BRYAFmEe2ZmOb6CqM5rw" base_Class="_Pbd6gAFmEe2ZmOb6CqM5rw" iconURI="../icons/obj16/domain_def.gif"/>
   <zdl:DomainGeneralization xmi:id="_u81PgAFmEe2ZmOb6CqM5rw" base_Generalization="_t0MMcAFmEe2ZmOb6CqM5rw"/>
   <zdl:DomainConcept xmi:id="_OR86QAPCEe2G86ayG7vqfA" base_Class="_LeqTQAPCEe2G86ayG7vqfA"/>
+  <zdl:DomainGeneralization xmi:id="_hCEKUAPCEe2G86ayG7vqfA" base_Generalization="_f4FqgAPCEe2G86ayG7vqfA"/>
 </xmi:XMI>
