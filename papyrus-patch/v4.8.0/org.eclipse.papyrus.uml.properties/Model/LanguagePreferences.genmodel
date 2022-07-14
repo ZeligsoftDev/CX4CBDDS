@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=" Copyright (c) 2011 CEA LIST and others.&#xA;&#xA; All rights reserved. This program and the accompanying materials&#xA; are made available under the terms of the Eclipse Public License 2.0&#xA; which accompanies this distribution, and is available at&#xA; https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA; SPDX-License-Identifier: EPL-2.0&#xA;&#xA; Contributors:&#xA; Camille Letavernier - Initial API and implementation"
+    modelDirectory="/org.eclipse.papyrus.uml.properties/src-gen" editDirectory="/org.eclipse.papyrus.uml.properties.edit/src-gen"
+    editorDirectory="/org.eclipse.papyrus.uml.properties.editor/src-gen" modelPluginID="org.eclipse.papyrus.uml.properties"
+    modelName="LanguagePreferences" nonNLSMarkers="true" testsDirectory="/org.eclipse.papyrus.uml.properties.tests/src-gen"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>LanguagePreferences.ecore</foreignModel>
+  <genPackages prefix="languagepreferences" basePackage="org.eclipse.papyrus.uml.properties"
+      disposableProviderFactory="true" ecorePackage="LanguagePreferences.ecore#/">
+    <genClasses ecoreClass="LanguagePreferences.ecore#//Language">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LanguagePreferences.ecore#//Language/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LanguagePreferences.ecore#//Language/preferedEditor"/>
+    </genClasses>
+    <genClasses ecoreClass="LanguagePreferences.ecore#//Editor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LanguagePreferences.ecore#//Editor/class"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LanguagePreferences.ecore#//Editor/bundleId"/>
+    </genClasses>
+    <genClasses ecoreClass="LanguagePreferences.ecore#//Preferences">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LanguagePreferences.ecore#//Preferences/languages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LanguagePreferences.ecore#//Preferences/editors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LanguagePreferences.ecore#//Preferences/defaultEditor"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

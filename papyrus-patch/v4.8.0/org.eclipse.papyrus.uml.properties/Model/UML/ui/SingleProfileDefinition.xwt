@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Composite xmlns:ppe="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets"
+	xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:ppel="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets.layout"
+	xmlns:x="http://www.eclipse.org/xwt">
+	<Composite.layout>
+		<ppel:PropertiesLayout></ppel:PropertiesLayout>
+	</Composite.layout>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout numColumns="2"></ppel:PropertiesLayout>
+		</Composite.layout>
+		<ppe:StringLabel input="{Binding}"
+			property="ProfileDefinitionAnnotation:PapyrusVersion:Version"
+			readOnly="true"></ppe:StringLabel>
+		<ppe:StringLabel input="{Binding}"
+			property="ProfileDefinitionAnnotation:PapyrusVersion:Date" readOnly="true"></ppe:StringLabel>
+		<ppe:StringLabel input="{Binding}"
+			property="ProfileDefinitionAnnotation:PapyrusVersion:Author"
+			readOnly="true"></ppe:StringLabel>
+	</Composite>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout numColumns="2"></ppel:PropertiesLayout>
+		</Composite.layout>
+		<ppe:StringMultiline input="{Binding}"
+			property="ProfileDefinitionAnnotation:PapyrusVersion:Copyright"
+			readOnly="true"></ppe:StringMultiline>
+		<ppe:StringMultiline input="{Binding}"
+			property="ProfileDefinitionAnnotation:PapyrusVersion:Comment"
+			readOnly="true"></ppe:StringMultiline>
+	</Composite>
+</Composite>
