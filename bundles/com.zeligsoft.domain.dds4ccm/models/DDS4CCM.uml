@@ -121,11 +121,21 @@
         <generalization xmi:type="uml:Generalization" xmi:id="_t0MMcAFmEe2ZmOb6CqM5rw">
           <general xmi:type="uml:Class" href="pathmap://CCM_DOMAIN/CCM.uml#_L_GMsJA1Ed-7vMqgUHuhFQ"/>
         </generalization>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_C33nIAPDEe2G86ayG7vqfA" name="deployments" visibility="public" type="_LeqTQAPCEe2G86ayG7vqfA" aggregation="composite" association="_C31K4APDEe2G86ayG7vqfA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_C36qcAPDEe2G86ayG7vqfA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_C39GsAPDEe2G86ayG7vqfA" value="*"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_LeqTQAPCEe2G86ayG7vqfA" name="DomainDeployment">
         <generalization xmi:type="uml:Generalization" xmi:id="_f4FqgAPCEe2G86ayG7vqfA">
           <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_i9Aj8GSDEd2454WIHspjPA"/>
         </generalization>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_C31K4APDEe2G86ayG7vqfA" memberEnd="_C33nIAPDEe2G86ayG7vqfA _C3-74APDEe2G86ayG7vqfA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_C33AEAPDEe2G86ayG7vqfA" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_C33AEQPDEe2G86ayG7vqfA" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_C3-74APDEe2G86ayG7vqfA" name="domaindefinition" type="_Pbd6gAFmEe2ZmOb6CqM5rw" association="_C31K4APDEe2G86ayG7vqfA"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_fP0CMEDSEd-VnJuJyqILLA" name="DDS4CCM"/>
@@ -506,4 +516,5 @@ endif&#xD;
   <zdl:DomainGeneralization xmi:id="_u81PgAFmEe2ZmOb6CqM5rw" base_Generalization="_t0MMcAFmEe2ZmOb6CqM5rw"/>
   <zdl:DomainConcept xmi:id="_OR86QAPCEe2G86ayG7vqfA" base_Class="_LeqTQAPCEe2G86ayG7vqfA" iconURI="../icons/obj16/domain_depl.gif"/>
   <zdl:DomainGeneralization xmi:id="_hCEKUAPCEe2G86ayG7vqfA" base_Generalization="_f4FqgAPCEe2G86ayG7vqfA"/>
+  <zdl:DomainReference xmi:id="_JUynQAPDEe2G86ayG7vqfA" base_Association="_C31K4APDEe2G86ayG7vqfA"/>
 </xmi:XMI>
