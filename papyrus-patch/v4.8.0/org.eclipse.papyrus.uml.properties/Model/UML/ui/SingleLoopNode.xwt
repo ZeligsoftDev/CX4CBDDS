@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:j="clr-namespace:java.lang" xmlns:ppe="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets"
+	xmlns:ppel="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets.layout"
+	xmlns:x="http://www.eclipse.org/xwt">
+	<Composite.layout>
+		<ppel:PropertiesLayout></ppel:PropertiesLayout>
+	</Composite.layout>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout></ppel:PropertiesLayout>
+		</Composite.layout>
+		<ppe:StringEditor input="{Binding}" property="UML:NamedElement:name"></ppe:StringEditor>
+		<ppe:StringEditor input="{Binding}" property="UML:NamedElement:label"></ppe:StringEditor>
+	</Composite>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout numColumns="2"></ppel:PropertiesLayout>
+		</Composite.layout>
+		<ppe:BooleanRadio input="{Binding}" property="UML:LoopNode:isTestedFirst"></ppe:BooleanRadio>
+		<ppe:BooleanRadio input="{Binding}"
+			property="UML:StructuredActivityNode:mustIsolate"></ppe:BooleanRadio>
+	</Composite>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout></ppel:PropertiesLayout>
+		</Composite.layout>
+		<ppe:EnumCombo input="{Binding}" property="UML:NamedElement:visibility"></ppe:EnumCombo>
+	</Composite>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout></ppel:PropertiesLayout>
+		</Composite.layout>
+		<ppe:ReferenceDialog input="{Binding}" property="UML:LoopNode:decider"></ppe:ReferenceDialog>
+	</Composite>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout numColumns="2"></ppel:PropertiesLayout>
+		</Composite.layout>
+		<ppe:MultiReference input="{Binding}" property="UML:LoopNode:bodyOutput"></ppe:MultiReference>
+		<ppe:MultiReference input="{Binding}" property="UML:LoopNode:bodyPart"></ppe:MultiReference>
+		<ppe:MultiReference input="{Binding}"
+			property="UML:Action:localPostcondition"></ppe:MultiReference>
+		<ppe:MultiReference input="{Binding}"
+			property="UML:Action:localPrecondition"></ppe:MultiReference>
+		<ppe:MultiReference input="{Binding}"
+			property="UML:LoopNode:loopVariable"></ppe:MultiReference>
+		<ppe:MultiReference input="{Binding}"
+			property="UML:LoopNode:loopVariableInput"></ppe:MultiReference>
+		<ppe:MultiReference input="{Binding}" property="UML:LoopNode:result"></ppe:MultiReference>
+		<ppe:MultiReference input="{Binding}" property="UML:LoopNode:setupPart"></ppe:MultiReference>
+		<ppe:MultiReference input="{Binding}" property="UML:LoopNode:test"></ppe:MultiReference>
+	</Composite>
+</Composite>
