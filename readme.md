@@ -27,19 +27,24 @@ To build manually;
 <pre>
 	# increase Maven memory
 	export MAVEN_OPTS="-Xmx1024m"
-	# build
-	./mvnw -D "dds4ccm.root=`pwd`" clean verify
+	# build the Papyrus 4.8 patch
+	cd papyrus-patch/v4.8.0
+	../../mvnw clean verify
+	cd ../..
+	# build papyrus-cx
+	./mvnw clean verify
 </pre>
 
-In Windows environments, you can use the fully qualified path name of the current
-directory rather than using the result of the embedded `pwd` command, or set the
-DDS4CCM_ROOT environment variable before running:
+In Windows environments:
 
 <pre>
         REM increase Maven memory
         set MAVEN_OPTS="-Xmx1024m"
+        REM build the papyrus patch
+        cd papyrus-patch\v4.8.0
+        ..\..\mvnw.cmd clean verify
+        cd ..\..
         REM set build directory variable
-        set DDS4CMM_ROOT=<fully qualified build path>
         mvnw.cmd clean verify
 </pre>
 
@@ -50,17 +55,26 @@ The following was found to be acceptable:
 	ulimit -Sn 1024
 </pre>
 
-The p2 repositories produced by the build will be found in `releng/com.zeligsoft.dds4ccm.update.atcd/target`
-and `releng/com.zeligsoft.dds4ccm.update.axcioma/target`:
+The build creates an Eclipse 'product' and more traditional P2 repositories.
+The 'product' builds are easier to install; they contain a complete eclipse environment.
+Built products are found under `releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/target/products/`.
+They are either `zip` or `tar.gz` files, depending on the target platform.
 
-* The sub directory `repository` is the created p2 repository.
-* The files `dds4ccm_axcioma_<version>.zip` and `papyrus_v440_patch_<version>.zip`
-are zip archives of these repositories.
-* The build also creates a ZIP ending with `SNAPSHOT.zip`. The files are identical.
+The folders `releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/target/products/com.zeligsoft.papyrus-cx.axcioma.rcp.product/<os>/<ui>/<arch>/papyrus-cx-axcioma/`
+contain the images used to create the above archives.
+You can execute the `papyrus-cx` executable located in these folders to start Papyrus.
+
+
+The following p2 repositories are created by the build:
+* Papyrus 4.8.0 patch: `papyrus-patch/v4.8.0/site-papyrus-patch/target/papyrus_v480_patch_<version>.zip`
+* Axcioma release: `releng/com.zeligsoft.dds4ccm.update.axcioma/target\dds4ccm_axcioma_<version>.zip`
+* ATCD release: `releng/com.zeligsoft.dds4ccm.update.atcd/target\dds4ccm_atcd_<version>.zip`
+
+The build also creates a ZIP ending with `SNAPSHOT.zip`. The files are identical to the above.
 The dated ZIP files are useful for distributing regular builds to a file server, allowing you
 to distinguish build between results of successive builds.
 
-## Installing
+## Installing from p2 repositories
 
 DDS4CCM can be installed in Eclipse Papyrus 2020-06 release (4.8.0).
 The release can be downloaded from `https://www.eclipse.org/downloads/download.php?file=/modeling/mdt/papyrus/rcp/2020-06/4.8.0/papyrus-2020-06-4.8.0-linux64.tar.gz`.
