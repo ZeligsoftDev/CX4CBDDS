@@ -45,7 +45,7 @@ public class CXPathmapDescriptor {
 	private boolean isEnabled;
 
 	public CXPathmapDescriptor(URI sourceURI, URI targetURI, String modelName) {
-		id = "pathmap." + targetURI.authority(); //$NON-NLS-1$
+		id = "pathmap." + targetURI.toString(); //$NON-NLS-1$
 		registeredModels.add(modelName);
 		originalMapping = URIConverter.URI_MAP.get(sourceURI);
 		pathmap = sourceURI;
@@ -153,11 +153,10 @@ public class CXPathmapDescriptor {
 			return false;
 		}
 		final CXPathmapDescriptor other = (CXPathmapDescriptor) obj;
-		if (pathmap == null) {
-			if (other.pathmap != null) {
-				return false;
-			}
-		} else if (!pathmap.equals(other.pathmap)) {
+		if(pathmap != other.pathmap) {
+			return false;
+		}
+		if(mapping != other.mapping) {
 			return false;
 		}
 		return true;

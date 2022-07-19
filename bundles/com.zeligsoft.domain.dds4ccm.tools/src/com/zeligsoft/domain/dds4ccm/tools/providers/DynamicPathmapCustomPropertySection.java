@@ -154,12 +154,12 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 
 							@Override
 							public String isValid(String newText) {
-								if (!UML2Util.isEmpty(newText)) {
-									URI uri = URI.createURI(PATHMAP_KEY + "://" + newText + "/", true); //$NON-NLS-1$ //$NON-NLS-2$
-									if (!newText.equals(oldValue) && CXDynamicURIConverter.PATHMAPS.get(uri) != null) {
-										return newText + Messages.DynamicPathmapCustomPropertySection_PathmapErrorMsg;
-									}
-								}
+//								if (!UML2Util.isEmpty(newText)) {
+//									URI uri = URI.createURI(PATHMAP_KEY + "://" + newText + "/", true); //$NON-NLS-1$ //$NON-NLS-2$
+//									if (!newText.equals(oldValue) && CXDynamicURIConverter.PATHMAPS.get(uri) != null) {
+//										return newText + Messages.DynamicPathmapCustomPropertySection_PathmapErrorMsg;
+//									}
+//								}
 								return null;
 							}
 						});
