@@ -97,6 +97,7 @@
       <item xsi:type="tool:CreateAction" generated="true" name="Writer Data Lifecycle Policy" createConcept="DDS::QOS::wdlQosPolicy"/>
     </item>
   </item>
+  <item xsi:type="tool:CreateAction" generated="true" name="Domain Deployment" createConcept="DDS4CCM::DDS4CCM::DomainDeployment"/>
   <item xsi:type="tool:CreateAction" generated="true" name="Constant" createConcept="CXDomain::IDL::CXConstant">
     <expression xsi:type="tool:OawXtend" name="Configure" expression="configureConstant" extensionFile="com::zeligsoft::domain::omg::corba::util::config">
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
@@ -133,8 +134,8 @@
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
-      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
@@ -143,8 +144,8 @@
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
-      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
@@ -153,8 +154,8 @@
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
-      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
@@ -163,8 +164,8 @@
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
-      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
@@ -173,8 +174,8 @@
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
-      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
@@ -183,8 +184,8 @@
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
-      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
@@ -193,8 +194,8 @@
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
       <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
-      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
     </expression>
   </item>
@@ -257,36 +258,37 @@
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Template Module" createConcept="IDL3Plus::Generics::TemplateModule"/>
   <menu generated="true" concept="DDS4CCM::DDS4CCM::DDS4CCMModel" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.18 //@item.19 //@item.20 //@item.21 //@item.22 //@item.23 //@item.24 //@item.25 //@item.26 //@item.27 //@item.28 //@item.29 //@item.30 //@item.31 //@item.32"/>
-  <menu generated="true" concept="CXDomain::IDL::CXConstants" item="//@item.33"/>
-  <menu generated="true" concept="CXDomain::IDL::CXEnum" item="//@item.34"/>
-  <menu generated="true" concept="CXDomain::IDL::CXException" item="//@item.35"/>
-  <menu generated="true" concept="CXDomain::IDL::CXInterface" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.36 //@item.37 //@item.33"/>
-  <menu generated="true" concept="CXDomain::IDL::CXStruct" item="//@item.35"/>
-  <menu generated="true" concept="CXDomain::IDL::CXUnion" item="//@item.38"/>
+  <menu generated="true" concept="DDS4CCM::DDS4CCM::DomainDefinition" item="//@item.33"/>
+  <menu generated="true" concept="CXDomain::IDL::CXConstants" item="//@item.34"/>
+  <menu generated="true" concept="CXDomain::IDL::CXEnum" item="//@item.35"/>
+  <menu generated="true" concept="CXDomain::IDL::CXException" item="//@item.36"/>
+  <menu generated="true" concept="CXDomain::IDL::CXInterface" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.37 //@item.38 //@item.34"/>
+  <menu generated="true" concept="CXDomain::IDL::CXStruct" item="//@item.36"/>
+  <menu generated="true" concept="CXDomain::IDL::CXUnion" item="//@item.39"/>
   <menu generated="true" concept="CXDomain::IDL::CXModule" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.18 //@item.19 //@item.20 //@item.21 //@item.22 //@item.23 //@item.24 //@item.25 //@item.26 //@item.27 //@item.28 //@item.29 //@item.30 //@item.31 //@item.32"/>
-  <menu generated="true" concept="CXDomain::IDL::CXOperation" item="//@item.39"/>
-  <menu generated="true" concept="ZMLMM::ZML_Component::ComponentInterface" item="//@item.40"/>
-  <menu generated="true" concept="ZMLMM::ZML_Component::Interface" item="//@item.41"/>
-  <menu generated="true" concept="DDS::Topics::Topic" item="//@item.42"/>
-  <menu generated="true" concept="DDS4CCM::DDSExtensions::DDSMessage" item="//@item.43"/>
-  <menu generated="true" concept="DDS4CCM::QoSProfiles::QoSProfile" item="//@item.44 //@item.45 //@item.46 //@item.47 //@item.48 //@item.49"/>
-  <menu generated="true" concept="CCM::CCM_Target::Domain" item="//@item.50 //@item.51"/>
-  <menu generated="true" concept="CCM::CCM_Target::Node" item="//@item.52"/>
-  <menu generated="true" concept="CCM::CCM_Target::Interconnect" item="//@item.52"/>
-  <menu generated="true" concept="CCM::CCM_Target::Bridge" item="//@item.52"/>
-  <menu generated="true" concept="CCM::CCM_Target::Resource" item="//@item.53"/>
-  <menu generated="true" concept="IDL3Plus::Generics::TemplateModule" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.54 //@item.55 //@item.56"/>
-  <menu generated="true" concept="CCM::CCM_Component::CCMComponent" item="//@item.0 //@item.1 //@item.57 //@item.36 //@item.58 //@item.59 //@item.60 //@item.61"/>
-  <menu generated="true" concept="CCM::CCM_Component::Event" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.36 //@item.37 //@item.33 //@item.62"/>
-  <menu generated="true" concept="CCM::CCM_Component::Home" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.36 //@item.37 //@item.33 //@item.63 //@item.64"/>
-  <menu generated="true" concept="CCM::CCM_Component::FinderOperation" item="//@item.39"/>
-  <menu generated="true" concept="CCM::CCM_Component::FactoryOperation" item="//@item.39"/>
-  <menu generated="true" concept="IDL3Plus::Connectors::ConnectorDef" item="//@item.57"/>
-  <menu generated="true" concept="IDL3Plus::Connectors::ConnectorFragment" item="//@item.57"/>
-  <menu generated="true" concept="CCM::CCM_Core::CCMModel" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.65 //@item.66 //@item.67"/>
-  <menu generated="true" concept="CCM::CCM_Implementation::CCMPart" item="//@item.68 //@item.69"/>
-  <menu generated="true" concept="CCM::CCM_Deployment::ContainerProcess" item="//@item.58"/>
-  <menu generated="true" concept="IDL3Plus::IDL3Plus::IDL3PlusModel" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.65 //@item.66 //@item.67 //@item.70 //@item.71 //@item.72 //@item.56"/>
-  <menu generated="true" concept="IDL3Plus::IDL3Plus::ExtendedPortType" item="//@item.36"/>
+  <menu generated="true" concept="CXDomain::IDL::CXOperation" item="//@item.40"/>
+  <menu generated="true" concept="ZMLMM::ZML_Component::ComponentInterface" item="//@item.41"/>
+  <menu generated="true" concept="ZMLMM::ZML_Component::Interface" item="//@item.42"/>
+  <menu generated="true" concept="DDS::Topics::Topic" item="//@item.43"/>
+  <menu generated="true" concept="DDS4CCM::DDSExtensions::DDSMessage" item="//@item.44"/>
+  <menu generated="true" concept="DDS4CCM::QoSProfiles::QoSProfile" item="//@item.45 //@item.46 //@item.47 //@item.48 //@item.49 //@item.50"/>
+  <menu generated="true" concept="CCM::CCM_Target::Domain" item="//@item.51 //@item.52"/>
+  <menu generated="true" concept="CCM::CCM_Target::Node" item="//@item.53"/>
+  <menu generated="true" concept="CCM::CCM_Target::Interconnect" item="//@item.53"/>
+  <menu generated="true" concept="CCM::CCM_Target::Bridge" item="//@item.53"/>
+  <menu generated="true" concept="CCM::CCM_Target::Resource" item="//@item.54"/>
+  <menu generated="true" concept="IDL3Plus::Generics::TemplateModule" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.55 //@item.56 //@item.57"/>
+  <menu generated="true" concept="CCM::CCM_Component::CCMComponent" item="//@item.0 //@item.1 //@item.58 //@item.37 //@item.59 //@item.60 //@item.61 //@item.62"/>
+  <menu generated="true" concept="CCM::CCM_Component::Event" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.37 //@item.38 //@item.34 //@item.63"/>
+  <menu generated="true" concept="CCM::CCM_Component::Home" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.37 //@item.38 //@item.34 //@item.64 //@item.65"/>
+  <menu generated="true" concept="CCM::CCM_Component::FinderOperation" item="//@item.40"/>
+  <menu generated="true" concept="CCM::CCM_Component::FactoryOperation" item="//@item.40"/>
+  <menu generated="true" concept="IDL3Plus::Connectors::ConnectorDef" item="//@item.58"/>
+  <menu generated="true" concept="IDL3Plus::Connectors::ConnectorFragment" item="//@item.58"/>
+  <menu generated="true" concept="CCM::CCM_Core::CCMModel" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.66 //@item.67 //@item.68"/>
+  <menu generated="true" concept="CCM::CCM_Implementation::CCMPart" item="//@item.69 //@item.70"/>
+  <menu generated="true" concept="CCM::CCM_Deployment::ContainerProcess" item="//@item.59"/>
+  <menu generated="true" concept="IDL3Plus::IDL3Plus::IDL3PlusModel" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.66 //@item.67 //@item.68 //@item.71 //@item.72 //@item.73 //@item.57"/>
+  <menu generated="true" concept="IDL3Plus::IDL3Plus::ExtendedPortType" item="//@item.37"/>
   <menu generated="true" concept="org.eclipse.uml2.uml.Package" item="//@item.0 //@item.1 //@item.2 //@item.3 //@item.4 //@item.5 //@item.6 //@item.7 //@item.8 //@item.9 //@item.10 //@item.11 //@item.12 //@item.13 //@item.14 //@item.15 //@item.16 //@item.17 //@item.18 //@item.19 //@item.20 //@item.21 //@item.22 //@item.23 //@item.24 //@item.25 //@item.26 //@item.27 //@item.28 //@item.29 //@item.30 //@item.31 //@item.32"/>
 </tool:MenuModel>
