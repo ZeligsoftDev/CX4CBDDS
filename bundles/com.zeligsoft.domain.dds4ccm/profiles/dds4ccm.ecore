@@ -1615,5 +1615,14 @@
     <eAnnotations source="uml2.extensions">
       <details key="suppressed" value="true"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deployments" ordered="false"
+        upperBound="-1" eType="#//DomainDeployment"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainDeployment">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Component" ordered="false"
+        lowerBound="1" eType="ecore:EClass ../../org.eclipse.uml2.uml/model/UML.ecore#//Component"/>
   </eClassifiers>
 </ecore:EPackage>
