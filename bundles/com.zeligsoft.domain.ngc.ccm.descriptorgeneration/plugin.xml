@@ -21,6 +21,15 @@
                cancelOnValidationError="true">
          </workflow>
       </concept>
+      <concept
+            type="DDS4CCM::DDS4CCM::DomainDeployment">
+         <workflow
+               cancelOnValidationError="true"
+               label="%generate.cdd.label"
+               path="/workflow/ngcCDDgenerator.mwe"
+               validationFactory="com.zeligsoft.domain.dds4ccm.utils.DDS4CCMValidationFactory">
+         </workflow>
+      </concept>
    </extension>
    <extension
          point="com.zeligsoft.cx.codegen.ui.transformationFileExtensions">

@@ -19,7 +19,7 @@ package com.zeligsoft.cx.codegen.internal;
 public class OawDebug {
 
 	public static boolean isDebugEnabled() {
-		return false;
+		return true;
 	}
 
 	public static void inspect( Long condition, Object obj ) {

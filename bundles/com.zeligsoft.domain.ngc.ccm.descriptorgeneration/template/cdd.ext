@@ -23,6 +23,7 @@ import CCM::CCM_Deployment;
 import CCM::CCM_Implementation;
 import CCM::CCM_Target;
 import CXDomain::IDL;
+import DDS4CCM::DDS4CCM::DomainDeployment;
 import ZMLMM::ZML_Deployments;
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
@@ -31,7 +32,23 @@ import ZMLMM::ZML_Core;
 extension org::eclipse::xtend::util::stdlib::issues;
 extension com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::cdpgenerator;
 extension com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::util;
-	
+extension codegen::debug;
+
+create Domain mainTransform(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) :
+	let qname = getPath(domainDeployment) + domainDeployment.name :
+	domainDeployment.Debug("[DEBUG] mainTransform(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment)") ->
+	domainDeployment.Debug("[DEBUG] qname = " + qname) ->
+	this.label.add(domainDeployment.name) ->
+	this.label.add(qname) ->
+	this.uuid.add(getUUID()) ->
+	domainDeployment.ownedAttribute.typeSelect(DeploymentPart).visitDomainDeploymentPart(domainDeployment)
+;
+
+Void visitDomainDeploymentPart(DeploymentPart domainDeploymentPart, DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) :
+	domainDeploymentPart.Debug("[DEBUG] visitDomainDeploymentPart(DeploymentPart domainDeploymentPart, DDS4CCM::DDS4CCM::DomainDeployment domainDeployment)") ->
+	domainDeploymentPart.Debug(domainDeploymentPart.name)
+;
+
 Void mainTransform(CCM::CCM_Deployment::DeploymentPlan deployment) :
 	deployment.part.modelElement.typeSelect(CCM::CCM_Target::Domain).mainTransform(deployment);
 
@@ -46,6 +63,9 @@ create Domain mainTransform(DeploymentPart domainPart, CCM::CCM_Deployment::Depl
 	domainPart.nestedPart.select( s | s.visitNodeInstance(s.modelElement, deployment, this));
 		
 String getPath(CCM::CCM_Target::Domain domain) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
+
+String getPath(DDS4CCM::DDS4CCM::DomainDeployment domain) :
 	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
 
 Void visitNodeInstance(DeploymentPart part, Object obj, CCM::CCM_Deployment::DeploymentPlan deployment, Domain domain ) :
