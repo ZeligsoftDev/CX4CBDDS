@@ -735,7 +735,10 @@
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//DomainDeployment">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//DomainDeployment/parts"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference dds4ccm.ecore#//DomainDeployment/base_Component"/>
     </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="dds4ccm.ecore#//DomainDeploymentPart"/>
   </genPackages>
 </genmodel:GenModel>
