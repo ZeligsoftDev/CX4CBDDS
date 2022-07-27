@@ -41,13 +41,8 @@ create Domain mainTransform(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment)
 	this.label.add(domainDeployment.name) ->
 	this.label.add(qname) ->
 	this.uuid.add(getUUID()) ->
-	domainDeployment.visitDomainDeploymentParts()
-;
-
-Void visitDomainDeploymentParts(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) :
-	domainDeployment.Inspect("[DEBUG] visitDomainDeploymentParts") ->
-	domainDeployment.getOwnedMembers().Debug("[DEBUG] visitDomainDeploymentParts")
-//	base_Component.ownedAttribute.typeSelect(DeploymentPart).visitDomainDeploymentPart(domainDeployment)
+	domainDeployment.parts.Debug("[DEBUG] visitDomainDeploymentParts") ->
+	domainDeployment.parts.select( s | s.visitNodeInstance(s.modelElement, this) )
 ;
 
 Void visitDomainDeploymentPart(DeploymentPart domainDeploymentPart, DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) :
@@ -76,6 +71,12 @@ String getPath(DDS4CCM::DDS4CCM::DomainDeployment domain) :
 
 Void visitNodeInstance(DeploymentPart part, Object obj, CCM::CCM_Deployment::DeploymentPlan deployment, Domain domain ) :
 	{};
+	
+create Node visitNodeInstance(DeploymentPart deploymentPart, CCM::CCM_Target::NodeInstance nodeInstance, Domain domain ) :
+	domain.node.add(this) ->
+	this.label.add(deploymentPart.name) ->
+	this.name.add(deploymentPart.name) ->
+	nodeInstance.type.resource.visitResourceProperty(this, deploymentPart);
 	
 create Node visitNodeInstance(DeploymentPart deploymentPart, CCM::CCM_Target::NodeInstance nodeInstance, CCM::CCM_Deployment::DeploymentPlan deployment, Domain domain ) :
 	domain.node.add(this) ->

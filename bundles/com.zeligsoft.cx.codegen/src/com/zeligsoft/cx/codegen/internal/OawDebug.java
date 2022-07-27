@@ -134,15 +134,27 @@ public class OawDebug {
 
 	public static Object debug(Object ret, String msg) {
 		System.out.println(msg);
+		if (ret instanceof List) {
+			return debugList(ret);
+		}
 		return ret;
 	}
 	
 	public static Object debugList(Object l) {
 		if (l instanceof List) {
 			StringBuilder b = new StringBuilder();
+			int len = ((List) l).size();
 			b.append('[');
-			for (Object o : (List)l) {
-				b.append(o);
+			b.append('\n');
+			int i = 0;
+			for (Object o : (List<?>)l) {
+				b.append("  ");
+				b.append(o.toString());
+				if (i < len - 1) {
+					b.append(',');
+				}
+				b.append('\n');
+				i++;
 			}
 			b.append(']');
 			System.out.println(b.toString());
