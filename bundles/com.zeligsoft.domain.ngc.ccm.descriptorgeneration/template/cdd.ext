@@ -23,7 +23,7 @@ import CCM::CCM_Deployment;
 import CCM::CCM_Implementation;
 import CCM::CCM_Target;
 import CXDomain::IDL;
-import DDS4CCM::DDS4CCM::DomainDeployment;
+import DDS4CCM::DDS4CCM;
 import ZMLMM::ZML_Deployments;
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
@@ -36,12 +36,18 @@ extension codegen::debug;
 
 create Domain mainTransform(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) :
 	let qname = getPath(domainDeployment) + domainDeployment.name :
-	domainDeployment.Debug("[DEBUG] mainTransform(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment)") ->
+	domainDeployment.Debug("[DEBUG] mainTransform(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) " + domainDeployment) ->
 	domainDeployment.Debug("[DEBUG] qname = " + qname) ->
 	this.label.add(domainDeployment.name) ->
 	this.label.add(qname) ->
 	this.uuid.add(getUUID()) ->
-	domainDeployment.ownedAttribute.typeSelect(DeploymentPart).visitDomainDeploymentPart(domainDeployment)
+	domainDeployment.visitDomainDeploymentParts()
+;
+
+Void visitDomainDeploymentParts(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) :
+	domainDeployment.Inspect("[DEBUG] visitDomainDeploymentParts") ->
+	domainDeployment.getOwnedMembers().Debug("[DEBUG] visitDomainDeploymentParts")
+//	base_Component.ownedAttribute.typeSelect(DeploymentPart).visitDomainDeploymentPart(domainDeployment)
 ;
 
 Void visitDomainDeploymentPart(DeploymentPart domainDeploymentPart, DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) :
