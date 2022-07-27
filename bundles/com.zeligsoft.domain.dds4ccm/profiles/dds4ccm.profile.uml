@@ -1499,13 +1499,28 @@
             </contents>
           </eAnnotations>
           <eSuperTypes href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#//Domain"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Hxn5JAoKEe2of8LxwxEWDA" name="deployments" ordered="false" upperBound="-1" eType="_HxmrAAoKEe2of8LxwxEWDA"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_Hxn5JAoKEe2of8LxwxEWDA" name="deployments" ordered="false" upperBound="-1">
+            <eType xmi:type="ecore:EClass" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#//DomainDeployment"/>
+          </eStructuralFeatures>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_HxmrAAoKEe2of8LxwxEWDA" name="DomainDeployment">
           <eAnnotations xmi:id="_HxmrAQoKEe2of8LxwxEWDA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Hxlc4AoKEe2of8LxwxEWDA"/>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HxmrAgoKEe2of8LxwxEWDA" name="base_Component" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
           </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_tPgcUA3uEe2uT-neldr7kA" name="parts" ordered="false" upperBound="-1" eType="_tPfOMA3uEe2uT-neldr7kA"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_tPfOMA3uEe2uT-neldr7kA" name="DomainDeploymentPart">
+          <eAnnotations xmi:id="_tPfOMQ3uEe2uT-neldr7kA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tPenIA3uEe2uT-neldr7kA"/>
+          <eAnnotations xmi:id="_tPfOMg3uEe2uT-neldr7kA" source="duplicates">
+            <contents xmi:type="ecore:EReference" xmi:id="_tPfOMw3uEe2uT-neldr7kA" name="base_Property" ordered="false" lowerBound="1">
+              <eAnnotations xmi:id="_tPfONA3uEe2uT-neldr7kA" source="redefines">
+                <references xmi:type="ecore:EReference" href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#//DeploymentPart/base_Property"/>
+              </eAnnotations>
+              <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+            </contents>
+          </eAnnotations>
+          <eSuperTypes href="http://www.zeligsoft.com/domain/dds4ccm/2010/DDS4CCM/1#//DeploymentPart"/>
         </eClassifiers>
       </contents>
     </eAnnotations>
@@ -1526,9 +1541,9 @@
       <ownedAttribute xmi:id="_FMpnsM_fEd-oyeIAAKy1vg" name="base_NamedElement" association="_FMWFss_fEd-oyeIAAKy1vg">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement"/>
       </ownedAttribute>
-      <icon xmi:id="_HyElEAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_HyElEQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyElEgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP3osA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_tP3osQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP3osg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1548,9 +1563,9 @@
       <ownedAttribute xmi:id="_g0KtxEDZEd-LnsQ685SqSQ" name="base_Component" association="_g0KtxUDZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx4-4AoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_Hx4-4QoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx4-4goKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPt3sw3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_tPt3tA3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPt3tQ3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1566,9 +1581,9 @@
       </eAnnotations>
       <generalization xmi:id="_g0Kty0DZEd-LnsQ685SqSQ" general="_g0Ktu0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_g0KtzEDZEd-LnsQ685SqSQ" general="_g0KtzUDZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_HyElEwoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_HyElFAoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyElFQoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP3osw3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_tP3otA3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP3otQ3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1618,9 +1633,9 @@
       <ownedAttribute xmi:id="_FMpnsc_fEd-oyeIAAKy1vg" name="base_NamedElement" association="_FMWFtM_fEd-oyeIAAKy1vg">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#NamedElement"/>
       </ownedAttribute>
-      <icon xmi:id="_HyElFgoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_HyElFwoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyElGAoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP3otg3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_tP3otw3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP3ouA3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1715,9 +1730,9 @@
       <ownedAttribute xmi:id="_g0KuEkDZEd-LnsQ685SqSQ" name="base_Port" association="_g0KuIkDZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
       </ownedAttribute>
-      <icon xmi:id="_HxyRMAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
-        <eAnnotations xmi:id="_HxyRMQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HxyRMgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPnxEA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
+        <eAnnotations xmi:id="_tPnxEQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPnxEg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1778,9 +1793,9 @@
       <ownedAttribute xmi:id="_g0KuMEDZEd-LnsQ685SqSQ" name="base_Component" association="_g0KuMUDZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx4X0AoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/component-interface.gif">
-        <eAnnotations xmi:id="_Hx4X0QoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx4X0goKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPt3sA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/component-interface.gif">
+        <eAnnotations xmi:id="_tPt3sQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPt3sg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1795,9 +1810,9 @@
       <eAnnotations xmi:id="_g0KuNkDZEd-LnsQ685SqSQ" source="uml2.extensions">
         <details xmi:id="_g0KuN0DZEd-LnsQ685SqSQ" key="suppressed" value="true"/>
       </eAnnotations>
-      <icon xmi:id="_Hx4-4woKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/implementation-artifact.gif">
-        <eAnnotations xmi:id="_Hx4-5AoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx4-5QoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPt3tg3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/implementation-artifact.gif">
+        <eAnnotations xmi:id="_tPt3tw3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPt3uA3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1809,9 +1824,9 @@
         <references xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_L-8AsCBeEd2fK6BRw108zQ"/>
       </eAnnotations>
       <generalization xmi:id="_g0KuP0DZEd-LnsQ685SqSQ" general="_g0KuB0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_Hx4-5goKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
-        <eAnnotations xmi:id="_Hx4-5woKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx4-6AoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPuewA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
+        <eAnnotations xmi:id="_tPuewQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPuewg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1826,9 +1841,9 @@
         <details xmi:id="_g0KuRUDZEd-LnsQ685SqSQ" key="suppressed" value="true"/>
       </eAnnotations>
       <generalization xmi:id="_g0KuRkDZEd-LnsQ685SqSQ" general="_g0KuB0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_Hx4-6QoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
-        <eAnnotations xmi:id="_Hx4-6goKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx4-6woKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPueww3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
+        <eAnnotations xmi:id="_tPuexA3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPuexQ3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1844,9 +1859,9 @@
       <ownedAttribute xmi:id="_g0KuTEDZEd-LnsQ685SqSQ" name="base_Interface" association="_g0KuTUDZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx17kAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/interface.gif">
-        <eAnnotations xmi:id="_Hx17kQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx17kgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPrbcA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/interface.gif">
+        <eAnnotations xmi:id="_tPrbcQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPrbcg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1904,9 +1919,9 @@
       <ownedAttribute xmi:id="_g0KuXkDZEd-LnsQ685SqSQ" name="base_Operation" association="_g0KuaUDZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx4-7AoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/worker.gif">
-        <eAnnotations xmi:id="_Hx4-7QoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx4-7goKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPuexg3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/worker.gif">
+        <eAnnotations xmi:id="_tPuexw3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPueyA3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -1950,9 +1965,9 @@
       <ownedAttribute xmi:id="_g0KucUDZEd-LnsQ685SqSQ" name="base_Class" association="_g0Kud0DZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx5l8AoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port-type.gif">
-        <eAnnotations xmi:id="_Hx5l8QoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx5l8goKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPueyQ3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port-type.gif">
+        <eAnnotations xmi:id="_tPueyg3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPueyw3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2025,9 +2040,9 @@
       </eAnnotations>
       <generalization xmi:id="_g0KulUDZEd-LnsQ685SqSQ" general="_g0KuB0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_Ge9DUnSpEd--Ifm7ono7eg" general="_GezSUHSpEd--Ifm7ono7eg"/>
-      <icon xmi:id="_HyCI0AoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/eventport.gif">
-        <eAnnotations xmi:id="_HyCI0QoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyCI0goKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP1zgA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/eventport.gif">
+        <eAnnotations xmi:id="_tP1zgQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP1zgg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2046,9 +2061,9 @@
       <generalization xmi:id="_g0KunUDZEd-LnsQ685SqSQ" general="_g0Kuo0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_g0KunkDZEd-LnsQ685SqSQ" general="_g0Kup0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_tT1BcCHFEeGd-Nb5_CNoPw" general="_DMSuUkDsEd-pwPnT_VsB_g"/>
-      <icon xmi:id="_HyCI0woKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/component-interface.gif">
-        <eAnnotations xmi:id="_HyCI1AoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyCI1QoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP1zgw3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/component-interface.gif">
+        <eAnnotations xmi:id="_tP1zhA3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP1zhQ3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2108,9 +2123,9 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g0KuvkDZEd-LnsQ685SqSQ" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g0KuvUDZEd-LnsQ685SqSQ" value="1"/>
       </ownedAttribute>
-      <icon xmi:id="_HyCI1goKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/event.gif">
-        <eAnnotations xmi:id="_HyCI1woKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyCI2AoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP1zhg3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/event.gif">
+        <eAnnotations xmi:id="_tP1zhw3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP1ziA3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2134,9 +2149,9 @@
       <ownedAttribute xmi:id="_g0Kux0DZEd-LnsQ685SqSQ" name="base_Class" association="_g0KuyEDZEd-LnsQ685SqSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
       </ownedAttribute>
-      <icon xmi:id="_HyCv4AoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/home4.gif">
-        <eAnnotations xmi:id="_HyCv4QoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyCv4goKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP1ziQ3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/home4.gif">
+        <eAnnotations xmi:id="_tP1zig3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP1ziw3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2309,9 +2324,9 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8uQhIG4OEeGbEdQxV9FPKw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DMSubkDsEd-pwPnT_VsB_g" value="1"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx0GYAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-array.gif">
-        <eAnnotations xmi:id="_Hx0GYQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx0GYgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPqNUA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-array.gif">
+        <eAnnotations xmi:id="_tPqNUQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPqNUg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2409,9 +2424,9 @@
       <ownedAttribute xmi:id="_DMSupEDsEd-pwPnT_VsB_g" name="base_Property" association="_yzszMvRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
       </ownedAttribute>
-      <icon xmi:id="_HxzfUAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-constant.gif">
-        <eAnnotations xmi:id="_HxzfUQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HxzfUgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPpmQA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-constant.gif">
+        <eAnnotations xmi:id="_tPpmQQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPpmQg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2428,9 +2443,9 @@
       <ownedAttribute xmi:id="_DMSurkDsEd-pwPnT_VsB_g" name="base_Class" association="_yztaRPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx0tcAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-constant.gif">
-        <eAnnotations xmi:id="_Hx0tcQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx0tcgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPq0YA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-constant.gif">
+        <eAnnotations xmi:id="_tPq0YQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPq0Yg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2478,9 +2493,9 @@
       <ownedAttribute xmi:id="_DMSuy0DsEd-pwPnT_VsB_g" name="base_Enumeration" association="_yztaSPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Enumeration"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx1UgAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-enum.gif">
-        <eAnnotations xmi:id="_Hx1UgQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx1UggoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPq0Yw3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-enum.gif">
+        <eAnnotations xmi:id="_tPq0ZA3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPq0ZQ3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2497,9 +2512,9 @@
       <generalization xmi:id="_DMSu1UDsEd-pwPnT_VsB_g" general="_g0Kuo0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_DMSu1kDsEd-pwPnT_VsB_g" general="_DMSur0DsEd-pwPnT_VsB_g"/>
       <generalization xmi:id="_7JF9kCHEEeGd-Nb5_CNoPw" general="_DMSuUkDsEd-pwPnT_VsB_g"/>
-      <icon xmi:id="_Hx1UgwoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-exception.gif">
-        <eAnnotations xmi:id="_Hx1UhAoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx1UhQoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPq0Zg3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-exception.gif">
+        <eAnnotations xmi:id="_tPq0Zw3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPq0aA3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2537,9 +2552,9 @@
       <ownedAttribute xmi:id="_DMSu5UDsEd-pwPnT_VsB_g" name="base_Interface" association="_yztaSvRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx1UhgoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/interface.gif">
-        <eAnnotations xmi:id="_Hx1UhwoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx1UiAoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPq0aQ3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/interface.gif">
+        <eAnnotations xmi:id="_tPq0ag3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPq0aw3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2704,9 +2719,9 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8C9B0LeAEd-llZTjfksMzQ"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9Ncf0qY5Ed-snc0XvAY1Mg" value="1"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx2ioAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-sequence.gif">
-        <eAnnotations xmi:id="_Hx2ioQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx2iogoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPsCgA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-sequence.gif">
+        <eAnnotations xmi:id="_tPsCgQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPsCgg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2735,9 +2750,9 @@
       <generalization xmi:id="_DM4kLkDsEd-pwPnT_VsB_g" general="_g0Kuo0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_DM4kL0DsEd-pwPnT_VsB_g" general="_DMSur0DsEd-pwPnT_VsB_g"/>
       <generalization xmi:id="_ym6HcCLhEeyPuNj-h-jRIw" general="_ymdbgCLhEeyPuNj-h-jRIw"/>
-      <icon xmi:id="_Hx2iowoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-structure.gif">
-        <eAnnotations xmi:id="_Hx2ipAoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx2ipQoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPsCgw3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-structure.gif">
+        <eAnnotations xmi:id="_tPsChA3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPsChQ3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2771,9 +2786,9 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7JIZ0yHEEeGd-Nb5_CNoPw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7JIZ0iHEEeGd-Nb5_CNoPw" value="1"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx3JsAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-type-def.gif">
-        <eAnnotations xmi:id="_Hx3JsQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx3JsgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPspkA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-type-def.gif">
+        <eAnnotations xmi:id="_tPspkQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPspkg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2790,9 +2805,9 @@
       <generalization xmi:id="_DM4kR0DsEd-pwPnT_VsB_g" general="_g0Kuo0DZEd-LnsQ685SqSQ"/>
       <generalization xmi:id="_DM4kSEDsEd-pwPnT_VsB_g" general="_DMSur0DsEd-pwPnT_VsB_g"/>
       <generalization xmi:id="_ym6HdyLhEeyPuNj-h-jRIw" general="_ymdbgCLhEeyPuNj-h-jRIw"/>
-      <icon xmi:id="_Hx3JswoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-union.gif">
-        <eAnnotations xmi:id="_Hx3JtAoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx3JtQoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPspkw3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-union.gif">
+        <eAnnotations xmi:id="_tPsplA3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPsplQ3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -2852,9 +2867,9 @@
       <ownedAttribute xmi:id="_DM4ka0DsEd-pwPnT_VsB_g" name="base_Package" association="_yztaVPRaEeqtC6nolUobjA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx3wwAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-module.gif">
-        <eAnnotations xmi:id="_Hx3wwQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx3wwgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPsplg3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-module.gif">
+        <eAnnotations xmi:id="_tPsplw3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPspmA3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -3013,9 +3028,9 @@
       <ownedAttribute xmi:id="_D7sc0N2DEeCFd_3AYyO5-w" name="base_Component" association="_D69dCt2DEeCFd_3AYyO5-w">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_HyDW8AoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.idl3plus/icons/obj16/connector-instance.gif">
-        <eAnnotations xmi:id="_HyDW8QoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyDW8goKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP2akw3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.idl3plus/icons/obj16/connector-instance.gif">
+        <eAnnotations xmi:id="_tP2alA3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP2alQ3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -3027,9 +3042,9 @@
         <references xmi:type="uml:Class" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml#_98gSoFbDEd-qZqT4KPzhew"/>
       </eAnnotations>
       <generalization xmi:id="_ai8w1FbTEd-qZqT4KPzhew" general="_g0KuK0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_HyDW8woKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/component-interface.gif">
-        <eAnnotations xmi:id="_HyDW9AoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyDW9QoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP2alg3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/component-interface.gif">
+        <eAnnotations xmi:id="_tP2alw3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP2amA3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -3041,9 +3056,9 @@
         <references xmi:type="uml:Class" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml#_XLhN4FbGEd-qZqT4KPzhew"/>
       </eAnnotations>
       <generalization xmi:id="_ai8w2VbTEd-qZqT4KPzhew" general="_g0Ktu0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_HyDW9goKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_HyDW9woKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyDW-AoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP2amQ3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_tP2amg3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP2amw3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -3055,9 +3070,9 @@
         <references xmi:type="uml:Class" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml#_bH2gkFbGEd-qZqT4KPzhew"/>
       </eAnnotations>
       <generalization xmi:id="_ai8w3lbTEd-qZqT4KPzhew" general="_g0Ktu0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_HyDW-QoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_HyDW-goKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyDW-woKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP2anA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_tP2anQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP2ang3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -3069,9 +3084,9 @@
         <references xmi:type="uml:Class" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml#_enDyYFbGEd-qZqT4KPzhew"/>
       </eAnnotations>
       <generalization xmi:id="_ai8w41bTEd-qZqT4KPzhew" general="_g0Ktu0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_HyDW_AoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_HyDW_QoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyDW_goKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP3BoA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_tP3BoQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP3Bog3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -3083,9 +3098,9 @@
         <references xmi:type="uml:Class" href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml#_gJRzEFbGEd-qZqT4KPzhew"/>
       </eAnnotations>
       <generalization xmi:id="_ai8w6FbTEd-qZqT4KPzhew" general="_g0Ktu0DZEd-LnsQ685SqSQ"/>
-      <icon xmi:id="_HyDW_woKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
-        <eAnnotations xmi:id="_HyDXAAoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyDXAQoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP3Bow3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/structural-realization.gif">
+        <eAnnotations xmi:id="_tP3BpA3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP3BpQ3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -3310,9 +3325,9 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_U4XNMys-EeGtwangT5G8rQ" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_U4XNMis-EeGtwangT5G8rQ" value="1"/>
       </ownedAttribute>
-      <icon xmi:id="_HyCv4woKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
-        <eAnnotations xmi:id="_HyCv5AoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyCv5QoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP2akA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port.gif">
+        <eAnnotations xmi:id="_tP2akQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP2akg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4084,9 +4099,9 @@
         <details xmi:id="_cZKTxne9Ed--prUugl772A" key="suppressed" value="true"/>
       </eAnnotations>
       <generalization xmi:id="_cZKTx3e9Ed--prUugl772A" general="_DM4kJkDsEd-pwPnT_VsB_g"/>
-      <icon xmi:id="_Hx-ecAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-structure.gif">
-        <eAnnotations xmi:id="_Hx-ecQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx-ecgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPywMA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.corba/icons/obj16/CORBA-structure.gif">
+        <eAnnotations xmi:id="_tPywMQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPywMg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4368,9 +4383,9 @@
       <ownedAttribute xmi:id="_QzrmwpNOEd-YreyWz-e3IQ" name="base_Component" association="_Qzrmw5NOEd-YreyWz-e3IQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_Hxy4SAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/domain.gif">
-        <eAnnotations xmi:id="_Hxy4SQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hxy4SgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPoYIw3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/domain.gif">
+        <eAnnotations xmi:id="_tPoYJA3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPoYJQ3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4388,9 +4403,9 @@
       <ownedAttribute xmi:id="_QzrmypNOEd-YreyWz-e3IQ" name="base_Component" association="_Qzrmy5NOEd-YreyWz-e3IQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx_skAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/node.gif">
-        <eAnnotations xmi:id="_Hx_skQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx_skgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPzXQA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/node.gif">
+        <eAnnotations xmi:id="_tPzXQQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPzXQg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4432,9 +4447,9 @@
       <ownedAttribute xmi:id="_Qzrm35NOEd-YreyWz-e3IQ" name="base_Component" association="_Qzrm4JNOEd-YreyWz-e3IQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx_skwoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/interconnect.gif">
-        <eAnnotations xmi:id="_Hx_slAoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx_slQoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPzXQw3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/interconnect.gif">
+        <eAnnotations xmi:id="_tPzXRA3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPzXRQ3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4476,9 +4491,9 @@
       <ownedAttribute xmi:id="_Qzrm9JNOEd-YreyWz-e3IQ" name="base_Component" association="_Qzrm9ZNOEd-YreyWz-e3IQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx_slgoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/bridge.gif">
-        <eAnnotations xmi:id="_Hx_slwoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx_smAoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPz-UA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/bridge.gif">
+        <eAnnotations xmi:id="_tPz-UQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPz-Ug3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4706,9 +4721,9 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JdX-45jdEd-gWNehg3S3_A" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JdX-4pjdEd-gWNehg3S3_A" value="1"/>
       </ownedAttribute>
-      <icon xmi:id="_HyFMIAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/deployment.gif">
-        <eAnnotations xmi:id="_HyFMIQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyFMIgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP4PwA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/deployment.gif">
+        <eAnnotations xmi:id="_tP4PwQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP4Pwg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4724,9 +4739,9 @@
       <ownedAttribute xmi:id="_CiHeW5Q6Ed-McPbQMy4vSQ" name="base_Component" association="_CiHeXJQ6Ed-McPbQMy4vSQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_Hx6NAAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/deployment.gif">
-        <eAnnotations xmi:id="_Hx6NAQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hx6NAgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPvF0A3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/deployment.gif">
+        <eAnnotations xmi:id="_tPvF0Q3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPvF0g3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4940,9 +4955,9 @@
       <ownedAttribute xmi:id="_QZADVJZjEd-guOCMdwguFQ" name="base_Component" association="_QZADVZZjEd-guOCMdwguFQ">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_HyFMIwoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/Pinion.png">
-        <eAnnotations xmi:id="_HyFMJAoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyFMJQoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP4Pww3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.omg.ccm/icons/obj16/Pinion.png">
+        <eAnnotations xmi:id="_tP4PxA3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP4PxQ3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -4991,9 +5006,9 @@
       <ownedAttribute xmi:id="_pZFlwOCAEeChj9kc_ODq2A" name="base_Class" association="_pYODEOCAEeChj9kc_ODq2A">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
       </ownedAttribute>
-      <icon xmi:id="_HyFMJgoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port-type.gif">
-        <eAnnotations xmi:id="_HyFMJwoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyFMKAoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP4Pxg3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.zml/icons/obj16/port-type.gif">
+        <eAnnotations xmi:id="_tP4Pxw3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP4PyA3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -5098,9 +5113,9 @@
       <ownedAttribute xmi:id="_3t7kvDuKEeCo7vyTL7mCZg" name="base_Package" association="_3t7kxzuKEeCo7vyTL7mCZg">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
       </ownedAttribute>
-      <icon xmi:id="_HyD-AAoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.idl3plus/icons/obj16/properties.gif">
-        <eAnnotations xmi:id="_HyD-AQoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HyD-AgoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tP3Bpg3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.idl3plus/icons/obj16/properties.gif">
+        <eAnnotations xmi:id="_tP3Bpw3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tP3BqA3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -5496,9 +5511,9 @@
       <ownedAttribute xmi:id="_Hxy4RAoKEe2of8LxwxEWDA" name="base_Component" association="_HxmD_AoKEe2of8LxwxEWDA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_Hxy4RQoKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.dds4ccm/icons/obj16/domain_def.gif">
-        <eAnnotations xmi:id="_Hxy4RgoKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_Hxy4RwoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPoYIA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.dds4ccm/icons/obj16/domain_def.gif">
+        <eAnnotations xmi:id="_tPoYIQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPoYIg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -5509,12 +5524,19 @@
       <eAnnotations xmi:id="_HxmD8AoKEe2of8LxwxEWDA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
         <references xmi:type="uml:Class" href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_LeqTQAPCEe2G86ayG7vqfA"/>
       </eAnnotations>
+      <ownedAttribute xmi:id="_tPoYJg3uEe2uT-neldr7kA" name="parts" type="_tPenIA3uEe2uT-neldr7kA" association="_tPenKA3uEe2uT-neldr7kA">
+        <eAnnotations xmi:id="_tPoYJw3uEe2uT-neldr7kA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+          <references xmi:type="uml:Property" href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_GPNtEA3tEe2uT-neldr7kA"/>
+        </eAnnotations>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tPoYKA3uEe2uT-neldr7kA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tPoYKQ3uEe2uT-neldr7kA" value="*"/>
+      </ownedAttribute>
       <ownedAttribute xmi:id="_HxmD8QoKEe2of8LxwxEWDA" name="base_Component" association="_HxmD9QoKEe2of8LxwxEWDA">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
       </ownedAttribute>
-      <icon xmi:id="_HxmD8goKEe2of8LxwxEWDA" location="platform:/plugin/com.zeligsoft.domain.dds4ccm/icons/obj16/domain_depl.gif">
-        <eAnnotations xmi:id="_HxmD8woKEe2of8LxwxEWDA" source="image_papyrus">
-          <details xmi:id="_HxmD9AoKEe2of8LxwxEWDA" key="image_kind_key" value="icon"/>
+      <icon xmi:id="_tPo_MA3uEe2uT-neldr7kA" location="platform:/plugin/com.zeligsoft.domain.dds4ccm/icons/obj16/domain_depl.gif">
+        <eAnnotations xmi:id="_tPo_MQ3uEe2uT-neldr7kA" source="image_papyrus">
+          <details xmi:id="_tPo_Mg3uEe2uT-neldr7kA" key="image_kind_key" value="icon"/>
         </eAnnotations>
       </icon>
     </packagedElement>
@@ -5532,6 +5554,30 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="_HxmD_AoKEe2of8LxwxEWDA" name="Component_DomainDefinition" memberEnd="_HxmD_QoKEe2of8LxwxEWDA _Hxy4RAoKEe2of8LxwxEWDA">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HxmD_QoKEe2of8LxwxEWDA" name="extension_DomainDefinition" type="_m2B1kAFoEe2ZmOb6CqM5rw" aggregation="composite" association="_HxmD_AoKEe2of8LxwxEWDA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_tPenIA3uEe2uT-neldr7kA" name="DomainDeploymentPart">
+      <eAnnotations xmi:id="_tPenIQ3uEe2uT-neldr7kA" source="uml2.extensions">
+        <details xmi:id="_tPenIg3uEe2uT-neldr7kA" key="suppressed" value="true"/>
+      </eAnnotations>
+      <eAnnotations xmi:id="_tPenIw3uEe2uT-neldr7kA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Class" href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_-xQtwA3sEe2uT-neldr7kA"/>
+      </eAnnotations>
+      <generalization xmi:id="_tPenJA3uEe2uT-neldr7kA" general="_CiHeZ5Q6Ed-McPbQMy4vSQ"/>
+      <ownedAttribute xmi:id="_tPenJQ3uEe2uT-neldr7kA" name="base_Property" association="_tPenJg3uEe2uT-neldr7kA">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_tPenJg3uEe2uT-neldr7kA" name="Property_DomainDeploymentPart" memberEnd="_tPenJw3uEe2uT-neldr7kA _tPenJQ3uEe2uT-neldr7kA">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_tPenJw3uEe2uT-neldr7kA" name="extension_DomainDeploymentPart" type="_tPenIA3uEe2uT-neldr7kA" aggregation="composite" association="_tPenJg3uEe2uT-neldr7kA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_tPenKA3uEe2uT-neldr7kA" memberEnd="_tPoYJg3uEe2uT-neldr7kA _tPenKg3uEe2uT-neldr7kA">
+      <eAnnotations xmi:id="_tPenKQ3uEe2uT-neldr7kA" source="http://www.zeligsoft.com/zdl/2008/ZDL">
+        <references xmi:type="uml:Property" href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_GPNtEA3tEe2uT-neldr7kA"/>
+      </eAnnotations>
+      <ownedEnd xmi:id="_tPenKg3uEe2uT-neldr7kA" name="deployment" type="_Hxlc4AoKEe2of8LxwxEWDA" association="_tPenKA3uEe2uT-neldr7kA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tPenKw3uEe2uT-neldr7kA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tPenLA3uEe2uT-neldr7kA" value="1"/>
+      </ownedEnd>
     </packagedElement>
     <profileApplication xmi:id="_g0Ku00DZEd-LnsQ685SqSQ">
       <eAnnotations xmi:id="_g0Ku1EDZEd-LnsQ685SqSQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
