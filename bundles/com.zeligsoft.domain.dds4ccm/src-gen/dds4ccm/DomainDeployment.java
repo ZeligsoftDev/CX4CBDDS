@@ -2,6 +2,7 @@
  */
 package dds4ccm;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.uml2.uml.Component;
@@ -15,6 +16,7 @@ import org.eclipse.uml2.uml.Component;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link dds4ccm.DomainDeployment#getParts <em>Parts</em>}</li>
  *   <li>{@link dds4ccm.DomainDeployment#getBase_Component <em>Base Component</em>}</li>
  * </ul>
  *
@@ -23,6 +25,22 @@ import org.eclipse.uml2.uml.Component;
  * @generated
  */
 public interface DomainDeployment extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Parts</b></em>' reference list.
+	 * The list contents are of type {@link dds4ccm.DomainDeploymentPart}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parts</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parts</em>' reference list.
+	 * @see dds4ccm.DDS4CCMPackage#getDomainDeployment_Parts()
+	 * @model ordered="false"
+	 * @generated
+	 */
+	EList<DomainDeploymentPart> getParts();
+
 	/**
 	 * Returns the value of the '<em><b>Base Component</b></em>' reference.
 	 * <!-- begin-user-doc -->

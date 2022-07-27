@@ -70,6 +70,7 @@ import dds4ccm.DestinationOrderQosPolicyKind;
 import dds4ccm.Domain;
 import dds4ccm.DomainDefinition;
 import dds4ccm.DomainDeployment;
+import dds4ccm.DomainDeploymentPart;
 import dds4ccm.DurabilityQosPolicyKind;
 import dds4ccm.Duration;
 import dds4ccm.Event;
@@ -375,6 +376,7 @@ public class DDS4CCMFactoryImpl extends EFactoryImpl implements DDS4CCMFactory {
 			case DDS4CCMPackage.PER_PORT_CONNECTOR_TYPE_DEPLOYMENT_PART: return createPerPortConnectorTypeDeploymentPart();
 			case DDS4CCMPackage.DOMAIN_DEFINITION: return createDomainDefinition();
 			case DDS4CCMPackage.DOMAIN_DEPLOYMENT: return createDomainDeployment();
+			case DDS4CCMPackage.DOMAIN_DEPLOYMENT_PART: return createDomainDeploymentPart();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -2129,6 +2131,17 @@ public class DDS4CCMFactoryImpl extends EFactoryImpl implements DDS4CCMFactory {
 	public DomainDeployment createDomainDeployment() {
 		DomainDeploymentImpl domainDeployment = new DomainDeploymentImpl();
 		return domainDeployment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DomainDeploymentPart createDomainDeploymentPart() {
+		DomainDeploymentPartImpl domainDeploymentPart = new DomainDeploymentPartImpl();
+		return domainDeploymentPart;
 	}
 
 	/**

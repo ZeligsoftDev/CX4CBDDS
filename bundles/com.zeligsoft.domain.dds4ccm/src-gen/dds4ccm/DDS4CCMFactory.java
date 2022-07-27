@@ -1381,6 +1381,15 @@ public interface DDS4CCMFactory extends EFactory {
 	DomainDeployment createDomainDeployment();
 
 	/**
+	 * Returns a new object of class '<em>Domain Deployment Part</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Domain Deployment Part</em>'.
+	 * @generated
+	 */
+	DomainDeploymentPart createDomainDeploymentPart();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
