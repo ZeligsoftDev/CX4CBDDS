@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
@@ -63,76 +64,6 @@ import dds4ccm.NodeInstance;
  * @author eposse
  */
 public class DomainDefinitionEditHelperAdvice extends AbstractEditHelperAdvice {
-
-	public class AddModelElementCommand extends AbstractTransactionalCommand {
-
-		/**
-		 * The deployment.
-		 */
-		private Component deployment = null;
-
-		/**
-		 * The model element that is being added.
-		 */
-		private NamedElement addedElement = null;
-
-		/**
-		 * The (non-deployment) model element corresponding to the logical parent of the
-		 * part to be created in the deployment. When a top-level part is being created
-		 * this will be null.
-		 */
-		private NamedElement modelElementParent = null;
-
-		/**
-		 * the structural realization of this element if it is a component interface.
-		 * unused if not component interface
-		 */
-		private NamedElement structuralRealization = null;
-
-		/**
-		 * Constructor.
-		 * 
-		 * @param deployment
-		 * @param addedElement
-		 * @param modelElementParent
-		 * @param structuralRealization
-		 * @param label
-		 * 
-		 */
-		public AddModelElementCommand(Component deployment, NamedElement addedElement, NamedElement modelElementParent,
-				NamedElement structuralRealization, String label) {
-			super(TransactionUtil.getEditingDomain(deployment), label, Collections.EMPTY_MAP,
-					getWorkspaceFiles(deployment));
-
-			this.deployment = deployment;
-			this.addedElement = addedElement;
-			this.modelElementParent = modelElementParent;
-			this.structuralRealization = structuralRealization;
-
-			assert (addedElement != null);
-			assert (deployment != null);
-		}
-
-		/**
-		 * Creates a deployment part including relevant substructure out of the passed
-		 * model component.
-		 */
-		@Override
-		protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
-				throws ExecutionException {
-
-			try {
-				Property newProperty = ZDeploymentUtil.buildDeploymentPartFromModelElement(addedElement, deployment,
-						modelElementParent, structuralRealization);
-				if (newProperty != null) {
-					return CommandResult.newOKCommandResult(newProperty);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return CommandResult.newOKCommandResult();
-		}
-	}
 
 	@Override
 	protected ICommand getAfterCreateCommand(CreateElementRequest request) {
@@ -345,9 +276,16 @@ public class DomainDefinitionEditHelperAdvice extends AbstractEditHelperAdvice {
 				boolean deploymentHasProperty = hasDomainDefinitionProperty(domainDeployment, domainDefinitionProperty);
 				if (!deploymentHasProperty) {
 					try {
-						Property newProperty = ZDeploymentUtil.buildDeploymentPartFromModelElement(domainDefinitionProperty, domainDeployment,
+						Property deploymentPart = ZDeploymentUtil.buildDeploymentPartFromModelElement(domainDefinitionProperty, domainDeployment,
 								null, null);
-						if (newProperty != null) {
+
+						if (deploymentPart != null) {
+							ZDLUtil.addZDLConcept(deploymentPart, DDS4CCMNames.DOMAIN_DEPLOYMENT_PART);
+							@SuppressWarnings("unchecked")
+							EList<EObject> parts = (EList<EObject>) ZDLUtil.getValue(domainDeployment,
+									DDS4CCMNames.DOMAIN_DEPLOYMENT,
+									DDS4CCMNames.DOMAIN_DEPLOYMENT__PARTS);
+							parts.add(deploymentPart);
 							return Status.OK_STATUS;
 						}
 					} catch (Exception e) {
