@@ -7,6 +7,11 @@ public class Messages extends NLS {
 	public static String GenerateAllDescriptors_ErrorElementIsNull;
 	public static String GenerateAllDescriptors_FailureExecutingWorkflow;
 	public static String GenerateAllDescriptors_FailurePreparingWorkflow;
+	public static String GenerateAllCDDs_ErrorElementIsNull;
+	public static String GenerateAllCDDs_ErrorElementIsNotDomainDefinitionOrPackage;
+	public static String GenerateAllCDDs_FailurePreparingWorkflow;
+	public static String GenerateAllCDDs_FailureExecutingWorkflow;
+	public static String GenerateAllCDDs_TaskTitle;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

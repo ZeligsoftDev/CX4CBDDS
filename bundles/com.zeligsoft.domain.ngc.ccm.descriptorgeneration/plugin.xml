@@ -30,6 +30,24 @@
                validationFactory="com.zeligsoft.domain.dds4ccm.utils.DDS4CCMValidationFactory">
          </workflow>
       </concept>
+      <concept
+            type="DDS4CCM::DDS4CCM::DomainDefinition">
+         <workflow
+               cancelOnValidationError="true"
+               label="%generate.allcdds.label"
+               path="/workflow/bulkCDDsGenerator.oaw"
+               validationFactory="com.zeligsoft.domain.dds4ccm.utils.DDS4CCMValidationFactory">
+         </workflow>
+      </concept>
+      <concept
+            type="DDS4CCM::DDS4CCM::DDS4CCMModel">
+         <workflow
+               cancelOnValidationError="true"
+               label="%generate.allcdds.label"
+               path="/workflow/bulkCDDsGenerator.oaw"
+               validationFactory="com.zeligsoft.domain.dds4ccm.utils.DDS4CCMValidationFactory">
+         </workflow>
+      </concept>
    </extension>
    <extension
          point="com.zeligsoft.cx.codegen.ui.transformationFileExtensions">
@@ -44,6 +62,18 @@
       <WorkflowFileExtension
             fileExtensions=".cdp, .cdd"
             workflowPath="/workflow/ngcgeneratorNoPostGeneration.mwe">
+      </WorkflowFileExtension>
+      <WorkflowFileExtension
+            fileExtensions=".cdd"
+            workflowPath="/workflow/ngcCDDgenerator.mwe">
+      </WorkflowFileExtension>
+      <WorkflowFileExtension
+            fileExtensions=".cdd"
+            workflowPath="/workflow/bulkCDDsGenerator.oaw">
+      </WorkflowFileExtension>
+      <WorkflowFileExtension
+            fileExtensions=".cdd"
+            workflowPath="/workflow/ngcCDDgeneratorNoPostGeneration.mwe">
       </WorkflowFileExtension>
    </extension>
 </plugin>
