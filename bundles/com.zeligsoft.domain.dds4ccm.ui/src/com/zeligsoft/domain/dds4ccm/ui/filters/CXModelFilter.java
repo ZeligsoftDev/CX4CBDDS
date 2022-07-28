@@ -28,9 +28,11 @@ import org.eclipse.papyrus.infra.emf.utils.EMFHelper;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Property;
 
 import com.zeligsoft.base.zdl.ZDLNames;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -65,19 +67,33 @@ public class CXModelFilter extends ViewerFilter {
 		if (eObject instanceof Element
 				&& ZDLUtil.isZDLProfile((Element) eObject, DDS4CCMDomainFilter.DDS4CCM_PROFILE_NAME)) {
 			// filter out elements from CX model
+			Element umlElement = (Element)eObject;
 			if (ZDLUtil.isZDLConcept(eObject, ZMLMMNames.WORKER_FUNCTION)) {
 				return false;
 			}
 			if (ZDLUtil.isZDLConcept(eObject, ZMLMMNames.WORKER_FUNCTION_IMPL)) {
 				return false;
 			}
-			if ((ZDLUtil.isZDLConcept(eObject, ZMLMMNames.DEPLOYMENT_PART))
-					|| (ZDLUtil.isZDLConcept(eObject, ZMLMMNames.ALLOCATION))) {
+			if (ZDLUtil.isZDLConcept(eObject, ZMLMMNames.ALLOCATION)) {
 				return false;
 			}
+			Element owner = umlElement.getOwner();
 			// hide packages containing instance specification for CCM properties
-			if (eObject instanceof Package && eObject.eContainer() != null
-					&& ZDLUtil.isZDLConcept(eObject.eContainer(), ZMLMMNames.DEPLOYMENT)) {
+			if (owner != null
+					&& ZDLUtil.isZDLConcept(owner, ZMLMMNames.DEPLOYMENT)
+					&& (umlElement instanceof Package
+							|| ZDLUtil.isZDLConcept(umlElement, ZMLMMNames.DEPLOYMENT_PART))) {
+				return false;
+			}
+			if (owner != null 
+					&& ZDLUtil.isZDLConcept(owner, DDS4CCMNames.DOMAIN_DEPLOYMENT)
+					&& umlElement instanceof Package) {
+				return false;
+			}
+			if (owner != null
+					&& (ZDLUtil.isZDLConcept(owner, DDS4CCMNames.DOMAIN_DEPLOYMENT_PART)
+						|| (owner instanceof Property 
+								&& ZDLUtil.isZDLConcept(owner.getOwner(), DDS4CCMNames.DOMAIN_DEPLOYMENT)))) {
 				return false;
 			}
 		}
