@@ -28,6 +28,8 @@ import org.eclipse.uml2.uml.Property;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
+import com.zeligsoft.domain.omg.ccm.CCMNames;
+import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
  * @author eposse
@@ -35,15 +37,15 @@ import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 public final class DDS4CCMDomainDefinitionsUtils {
 
 	public static boolean isDomainDefinition(EObject modelElement) {
-		return ZDLUtil.isZDLConcept(modelElement, DDS4CCMNames.DOMAIN_DEFINITION);
+		return modelElement != null && ZDLUtil.isZDLConcept(modelElement, DDS4CCMNames.DOMAIN_DEFINITION);
 	}
 	
 	public static boolean isDomainDeployment(EObject modelElement) {
-		return ZDLUtil.isZDLConcept(modelElement, DDS4CCMNames.DOMAIN_DEPLOYMENT);
+		return modelElement != null && ZDLUtil.isZDLConcept(modelElement, DDS4CCMNames.DOMAIN_DEPLOYMENT);
 	}
 	
 	public static boolean isDomainDeploymentPart(EObject modelElement) {
-		return ZDLUtil.isZDLConcept(modelElement, DDS4CCMNames.DOMAIN_DEPLOYMENT_PART);
+		return modelElement != null && ZDLUtil.isZDLConcept(modelElement, DDS4CCMNames.DOMAIN_DEPLOYMENT_PART);
 	}
 	
 	public static List<Component> getAllDomainDefinitions(Package umlPackage) {
@@ -84,6 +86,25 @@ public final class DDS4CCMDomainDefinitionsUtils {
 			}
 		}
 		return list;
+	}
+
+	public static Component getDeploymentPartDomainDefinition(Property deploymentPart) {
+		Object obj = ZDLUtil.getValue(deploymentPart, ZMLMMNames.DEPLOYMENT_PART,
+				ZMLMMNames.DEPLOYMENT_PART__MODEL_ELEMENT);
+		if (obj == null || !(obj instanceof EObject)) {
+			return null;
+		}
+		EObject eObject = (EObject) obj;
+		Component domainDefinition = null;
+		if (ZDLUtil.isZDLConcept(eObject, CCMNames.NODE_INSTANCE)
+				|| ZDLUtil.isZDLConcept(eObject, CCMNames.BRIDGE_INSTANCE)
+				|| ZDLUtil.isZDLConcept(eObject, CCMNames.INTERCONNECT_INSTANCE)) {
+			EObject owner = ((Property) obj).getOwner();
+			if (isDomainDefinition(owner)) {
+				domainDefinition = (Component) owner;
+			}
+		}
+		return domainDefinition;
 	}
 
 }
