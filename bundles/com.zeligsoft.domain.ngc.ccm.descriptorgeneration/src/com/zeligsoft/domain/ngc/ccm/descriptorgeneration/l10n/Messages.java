@@ -12,6 +12,11 @@ public class Messages extends NLS {
 	public static String GenerateAllCDDs_FailurePreparingWorkflow;
 	public static String GenerateAllCDDs_FailureExecutingWorkflow;
 	public static String GenerateAllCDDs_TaskTitle;
+	public static String GenerateAllCDPs_ErrorElementIsNull;
+	public static String GenerateAllCDPs_ErrorElementIsNotDeploymentPlanOrPackage;
+	public static String GenerateAllCDPs_FailurePreparingWorkflow;
+	public static String GenerateAllCDPs_FailureExecutingWorkflow;
+	public static String GenerateAllCDPs_TaskTitle;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
