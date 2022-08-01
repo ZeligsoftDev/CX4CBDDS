@@ -16,22 +16,18 @@
  */
 package com.zeligsoft.domain.dds4ccm.tools.dialogs;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ComboBoxCellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Table;
 
 import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
-import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
+import com.zeligsoft.cx.ui.pathmap.PathmapChangeListener;
 
 /**
  * Editing support for pathmap selection page
@@ -41,24 +37,13 @@ import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
  */
 public class PathmapMappingEditingSupport extends EditingSupport {
 
-	private static boolean warned = false;
-	
-	private boolean conflictOnly;
-
 	public PathmapMappingEditingSupport(CheckboxTableViewer viewer) {
-		this(viewer, false);
-	}
-
-	public PathmapMappingEditingSupport(CheckboxTableViewer viewer, boolean conflictOnly) {
 		super(viewer);
-		this.conflictOnly = conflictOnly;
 	}
 
-	
 	@Override
 	protected boolean canEdit(Object element) {
-		CXPathmapDescriptor desc = (CXPathmapDescriptor) element;
-		return CXDynamicURIConverter.getPathmapDescriptors(desc.getPathmap()).size() > 1;
+		return CXDynamicURIConverter.getPathmapDescriptors((URI) element).size() > 1;
 	}
 
 	@Override
@@ -66,62 +51,39 @@ public class PathmapMappingEditingSupport extends EditingSupport {
 
 		CellEditor editor = null;
 
-		if (element instanceof CXPathmapDescriptor) {
-			CXPathmapDescriptor desc = (CXPathmapDescriptor) element;
-			List<CXPathmapDescriptor> mappings = CXDynamicURIConverter.getPathmapDescriptors(desc.getPathmap());
-			String[] items = new String[mappings.size()];
-			int i = 0;
-			for (CXPathmapDescriptor d : mappings) {
-				items[i++] = d.getMapping().toString();
-			}
-
-			editor = new ComboBoxCellEditor((Table) getViewer().getControl(), items);
+		URI pathmap = (URI) element;
+		List<CXPathmapDescriptor> mappings = CXDynamicURIConverter.getPathmapDescriptors(pathmap);
+		String[] items = new String[mappings.size()];
+		int i = 0;
+		for (CXPathmapDescriptor d : mappings) {
+			items[i++] = d.getMapping().toString();
 		}
+
+		editor = new ComboBoxCellEditor((Table) getViewer().getControl(), items);
 
 		return editor;
 	}
 
 	@Override
 	protected Object getValue(Object element) {
-		CXPathmapDescriptor desc = (CXPathmapDescriptor) element;
-		List<CXPathmapDescriptor> mappings = CXDynamicURIConverter.getPathmapDescriptors(desc.getPathmap());
-		return mappings.indexOf(element);
+		CXPathmapDescriptor desc = CXDynamicURIConverter.getPathmapDescriptor((URI) element);
+		List<CXPathmapDescriptor> mappings = CXDynamicURIConverter.getPathmapDescriptors((URI) element);
+		return mappings.indexOf(desc);
 	}
 
 	@Override
 	protected void setValue(Object element, Object value) {
 
-		CXPathmapDescriptor desc = (CXPathmapDescriptor) element;
-		List<CXPathmapDescriptor> mappings = CXDynamicURIConverter.getPathmapDescriptors(desc.getPathmap());
-		
+		URI pathmap = (URI) element;
+		List<CXPathmapDescriptor> mappings = CXDynamicURIConverter.getPathmapDescriptors(pathmap);
+
 		// enable selected mapping
-		CXDynamicURIConverter.enablePathmapMapping(mappings.get((int) value));
+		CXDynamicURIConverter.enablePathmapMapping(mappings.get((int) value), PathmapChangeListener.CHANGE);
 
-		List<CXPathmapDescriptor> input;
-		if(conflictOnly) {
-			input = new ArrayList<CXPathmapDescriptor>();
-			Set<URI> conflicts = CXDynamicURIConverter.getNewConflictPathmaps();
-			for(URI uri: conflicts) {
-				input.add(CXDynamicURIConverter.getPathmapDescriptor(uri));
-			}
-		}else {
-			input = CXDynamicURIConverter.getEnabledPathmaps();
-		}
-		
-		getViewer().setInput(input);
-		((CheckboxTableViewer) getViewer()).setCheckedElements(CXDynamicURIConverter.getEnabledPathmaps().toArray());
-		if (!warned) {
-			warned = true;
-			Display.getDefault().asyncExec(new Runnable() {
-
-				@Override
-				public void run() {
-					MessageDialog.openWarning(Display.getCurrent().getActiveShell(),
-							Messages.PathmapMappingEditingSupport_WarningTitle,
-							Messages.PathmapMappingEditingSupport_WarningMsg);
-				}
-			});
-		}
+		// reset input to refresh the table
+		CheckboxTableViewer viewer = (CheckboxTableViewer) getViewer();
+		Object[] checked = viewer.getCheckedElements();
+		viewer.setInput(viewer.getInput());
+		viewer.setCheckedElements(checked);
 	}
-
 }

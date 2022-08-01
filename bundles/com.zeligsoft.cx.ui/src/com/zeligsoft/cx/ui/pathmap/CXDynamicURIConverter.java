@@ -1,13 +1,25 @@
+/**
+ * Copyright 2022 Northrop Grumman Systems Corporation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 package com.zeligsoft.cx.ui.pathmap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
@@ -32,54 +44,22 @@ import org.eclipse.uml2.common.util.UML2Util;
 public class CXDynamicURIConverter {
 
 	public static Map<URI, List<CXPathmapDescriptor>> PATHMAPS = new HashMap<URI, List<CXPathmapDescriptor>>();
-
-	private static Set<URI> conflictPathmaps = new HashSet<URI>();
 	
-	private static final Lock lock = new ReentrantLock();
+	private static List<PathmapChangeListener> listeners = new ArrayList<PathmapChangeListener>();
 	
 	private CXDynamicURIConverter() {
-
+		super();
 	};
-
-	/**
-	 * Return all queued new conflict pathmaps
-	 * 
-	 * @return
-	 */
-	public static Set<URI> getNewConflictPathmaps() {
-		Set<URI> results = new HashSet<URI>();
-		lock.lock();
-		try {
-			results.addAll(conflictPathmaps);
-		}finally {
-			lock.unlock();
+	
+	public static void addChangeListener(PathmapChangeListener listener) {
+		if (!listeners.contains(listener)) {
+			listeners.add(listener);
 		}
-		return results;
 	}
 
-	/**
-	 * Queue new conflict pathmap
-	 * 
-	 * @param pathmap
-	 */
-	public static void addNewConflictPathmap(URI pathmap) {
-		lock.lock();
-		try {
-			conflictPathmaps.add(pathmap);
-		}finally {
-			lock.unlock();
-		}
+	public static void removeChangeListener(PathmapChangeListener listener) {
+		listeners.remove(listener);
 	}
-	
-	public static void clearNewConflictPathmaps() {
-		lock.lock();
-		try {
-			conflictPathmaps.clear();
-		}finally {
-			lock.unlock();
-		}
-	}
-	
 	
 	/**
 	 * Return active pathmap descriptor
@@ -136,18 +116,23 @@ public class CXDynamicURIConverter {
 	 * 
 	 * @param desc
 	 */
-	public static void enablePathmapMapping(CXPathmapDescriptor desc) {
+	public static void enablePathmapMapping(CXPathmapDescriptor desc, int eventType) {
+		if(desc.isEnabled()) {
+			// already enabled
+			return;
+		}
+		CXPathmapDescriptor oldValue = getPathmapDescriptor(desc.getPathmap());
 		List<CXPathmapDescriptor> mappings = getPathmapDescriptors(desc.getPathmap());
-		for (CXPathmapDescriptor mapping : mappings) {
-			if (desc == mapping) {
-				mapping.setEnabled(true);
-				mapping.apply();
-			} else {
-				if (mapping.isEnabled()) {
-					mapping.setEnabled(false);
-					mapping.apply();
-				}
+		for (CXPathmapDescriptor d : mappings) {
+			if (d != desc && d.isEnabled()) {
+				d.setEnabled(false);
+				d.apply();
 			}
+		}
+		desc.setEnabled(true);
+		desc.apply();
+		for(PathmapChangeListener listener: listeners) {
+			listener.handlePathmapChange(desc, oldValue, eventType);
 		}
 	}
 	
@@ -177,7 +162,7 @@ public class CXDynamicURIConverter {
 		return false;
 	}
 
-	public static synchronized CXPathmapDescriptor addMapping(URI pathmapUri, URI modelUri) {
+	public static CXPathmapDescriptor addMapping(URI pathmapUri, URI modelUri) {
 		String modelName = modelUri.lastSegment();
 		URI targetURI = modelUri.trimSegments(1).appendSegment(""); //$NON-NLS-1$
 
@@ -220,16 +205,23 @@ public class CXDynamicURIConverter {
 				desc.apply();
 				PATHMAPS.put(pathmapUri, new ArrayList<CXPathmapDescriptor>());
 			} else {
-				// pathmap was enabled
-				if(desc.isEnabled()) {
-					for(CXPathmapDescriptor d: getPathmapDescriptors(desc.getPathmap())) {
+				// pathmap was previously enabled so disable current mapping and
+				// enable this new mapping
+				if (desc.isEnabled()) {
+					for (CXPathmapDescriptor d : getPathmapDescriptors(desc.getPathmap())) {
 						d.setEnabled(false);
 						d.apply();
 					}
+					// always enable after disable
+					desc.apply();
 				}
 			}
 			List<CXPathmapDescriptor> mappings = PATHMAPS.get(pathmapUri);
 			mappings.add(desc);
+			
+			for (PathmapChangeListener listener : listeners) {
+				listener.handlePathmapChange(desc, null, PathmapChangeListener.ADD);
+			}
 		}
 		return desc;
 	}
@@ -243,7 +235,7 @@ public class CXDynamicURIConverter {
 		CXPathmapDescriptor desc = null;
 		for (URI key : PATHMAPS.keySet()) {
 			for (CXPathmapDescriptor d : getPathmapDescriptors(key)) {
-				if (d.getMapping().equals(targetURI)) {
+				if (d.getMapping().equals(targetURI) && d.getRegisteredModels().contains(modelName)) {
 					desc = d;
 					pathmapURI = key;
 					break;
@@ -256,24 +248,35 @@ public class CXDynamicURIConverter {
 		if(desc == null) {
 			return null;
 		}
-		if (desc.getRegisteredModels().contains(modelName)) {
-			desc.getRegisteredModels().remove(modelName);
-		}
-		if (desc.getRegisteredModels().isEmpty()) {
+
+		if (desc.getRegisteredModels().size() == 1) {
+			// remove this mapping from the pathmap mapping list
 			PATHMAPS.get(pathmapURI).remove(desc);
+
+			// remove this pathmap
 			if (desc.isEnabled()) {
 				desc.setEnabled(false);
 				desc.apply();
 				
-				// enable secondary pathmap
+				// enable mapping from one of the mapping list
+				// this should fire FALLBACK event
 				if (!PATHMAPS.get(pathmapURI).isEmpty()) {
 					desc = PATHMAPS.get(pathmapURI).get(0);
-					desc.setEnabled(true);
-					desc.apply();
+					enablePathmapMapping(desc, PathmapChangeListener.FALLBACK);
 				}
 			}
 			if (PATHMAPS.get(pathmapURI).isEmpty()) {
 				PATHMAPS.remove(pathmapURI);
+				// mappings are empty so remove this pathmap
+				// and fire REMOVE event
+				for (PathmapChangeListener listener : listeners) {
+					listener.handlePathmapChange(null, desc, PathmapChangeListener.REMOVE);
+				}
+			}
+		}else {
+			// just remove the registered model
+			if (desc.getRegisteredModels().contains(modelName)) {
+				desc.getRegisteredModels().remove(modelName);
 			}
 		}
 		return pathmapURI;

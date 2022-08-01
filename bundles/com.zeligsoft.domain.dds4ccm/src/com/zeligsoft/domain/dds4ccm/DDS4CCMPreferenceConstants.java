@@ -92,10 +92,6 @@ public final class DDS4CCMPreferenceConstants {
 	 */
 	public static final String DEFAULT_SYNC_CONNECTOR_TYPE_AXCIOMA_MIGRATION = ConnectorType.CORBA4CCM_Connector.name();
 
-	/**
-	 * Suppressed warnings for Pathamp
-	 */
-	public static final String WARNING_SUPPRESSED_PATHMAP = "WARNING_SUPPRESSED_PATHMAP"; //$NON-NLS-1$
+
 	
-	public static final String DEFAULT_WARNING_SUPPRESSED_PATHMAP = ""; //$NON-NLS-1$
 }

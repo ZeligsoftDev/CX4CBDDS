@@ -17,9 +17,13 @@
 package com.zeligsoft.domain.dds4ccm.tools.dialogs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
@@ -39,6 +43,8 @@ import org.eclipse.uml2.common.util.UML2Util;
 
 import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
+import com.zeligsoft.domain.dds4ccm.tools.Activator;
+import com.zeligsoft.domain.dds4ccm.tools.PreferenceConstants;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 
 /**
@@ -49,15 +55,19 @@ import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
  */
 public class PathmapSelectionComposite {
 
-	private CheckboxTableViewer table;
-	private boolean conflictOnly;
+	private CheckboxTableViewer tableViewer;
+	private Set<URI> pathmaps;
 
 	public PathmapSelectionComposite() {
-		this(false);
+		this(CXDynamicURIConverter.PATHMAPS.keySet());
 	}
 
-	public PathmapSelectionComposite(boolean conflictOnly) {
-		this.conflictOnly = conflictOnly;
+	public PathmapSelectionComposite(Set<URI> pathmaps) {
+		this.pathmaps = pathmaps;
+	}
+
+	public CheckboxTableViewer getViewer() {
+		return tableViewer;
 	}
 
 	public Composite createContents(Composite parent) {
@@ -88,49 +98,43 @@ public class PathmapSelectionComposite {
 
 		ArrayContentProvider contents = new ArrayContentProvider();
 
-		table = new CheckboxTableViewer(swtTable);
-		table.getTable().setLinesVisible(true);
-		table.getTable().setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true));
+		tableViewer = new CheckboxTableViewer(swtTable);
+		tableViewer.getTable().setLinesVisible(true);
+		tableViewer.getTable().setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true));
 
-		TableViewerColumn column = new TableViewerColumn(table, SWT.NONE);
+		TableViewerColumn column = new TableViewerColumn(tableViewer, SWT.NONE);
 		column.getColumn().setText("Pathmap"); //$NON-NLS-1$
 		column.getColumn().setWidth(300);
-		column = new TableViewerColumn(table, SWT.NONE);
+		column = new TableViewerColumn(tableViewer, SWT.NONE);
 		column.getColumn().setText("Mapping"); //$NON-NLS-1$
-		column.getColumn().setWidth(600);
-		column.setEditingSupport(new PathmapMappingEditingSupport(table, conflictOnly));
-		column = new TableViewerColumn(table, SWT.NONE);
+		column.getColumn().setWidth(500);
+		column.setEditingSupport(new PathmapMappingEditingSupport(tableViewer));
+		column = new TableViewerColumn(tableViewer, SWT.NONE);
 		column.getColumn().setText("Conflict"); //$NON-NLS-1$
-		column.getColumn().setWidth(100);
+		column.getColumn().setWidth(90);
+		column = new TableViewerColumn(tableViewer, SWT.CHECK);
+		column.getColumn().setText("Suppress Warning"); //$NON-NLS-1$
+		column.getColumn().setWidth(180);
+		column.setEditingSupport(new SuppressWarningEditingSupport(tableViewer));
 
-		table.setLabelProvider(new URIMappingLabelProvider());
-		table.setContentProvider(contents);
-		table.addCheckStateListener(new ICheckStateListener() {
+		tableViewer.setLabelProvider(new URIMappingLabelProvider());
+		tableViewer.setContentProvider(contents);
+		tableViewer.addCheckStateListener(new ICheckStateListener() {
 
 			@Override
 			public void checkStateChanged(CheckStateChangedEvent event) {
-				CXPathmapDescriptor pathmap = (CXPathmapDescriptor) event.getElement();
-
-				pathmap.setEnabled(event.getChecked());
-				pathmap.apply();
+				URI pathmap = (URI) event.getElement();
+				CXPathmapDescriptor desc = CXDynamicURIConverter.getPathmapDescriptor(pathmap);
+				desc.setEnabled(event.getChecked());
+				desc.apply();
 			}
 
 		});
 
-		List<CXPathmapDescriptor> input;
-		if(conflictOnly) {
-			input = new ArrayList<CXPathmapDescriptor>();
-			Set<URI> conflicts = CXDynamicURIConverter.getNewConflictPathmaps();
-			for(URI uri: conflicts) {
-				input.add(CXDynamicURIConverter.getPathmapDescriptor(uri));
-			}
-		}else {
-			input = CXDynamicURIConverter.getPathmaps();
-		}
-
-		table.setInput(input);
-		List<CXPathmapDescriptor> selected = CXDynamicURIConverter.getEnabledPathmaps();
-		table.setCheckedElements(selected.toArray());
+		tableViewer.setInput(pathmaps);
+		List<URI> selected = CXDynamicURIConverter.getEnabledPathmaps().stream().map(d -> d.getPathmap())
+				.collect(Collectors.toList());
+		tableViewer.setCheckedElements(selected.toArray());
 
 		return result;
 	}
@@ -144,18 +148,28 @@ public class PathmapSelectionComposite {
 
 		@Override
 		public String getColumnText(Object element, int columnIndex) {
-			CXPathmapDescriptor pathmap = (CXPathmapDescriptor) element;
+			URI pathmap = (URI) element;
 
 			switch (columnIndex) {
 			case 0:
-				return pathmap.getPathmap().toString();
+				return pathmap.toString();
 			case 1:
-				return pathmap.getMapping().toString();
+				return CXDynamicURIConverter.getPathmapDescriptor(pathmap).getMapping().toString();
 			case 2:
-				if (CXDynamicURIConverter.getPathmapDescriptors(pathmap.getPathmap()).size() > 1) {
+				if (CXDynamicURIConverter.getPathmapDescriptors(pathmap).size() > 1) {
 					return "yes"; //$NON-NLS-1$
 				}
-				return UML2Util.EMPTY_STRING;
+				return "no"; //$NON-NLS-1$
+			case 3:
+				IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+				String prefConstant = PreferenceConstants.WARNING_SUPPRESSED_PATHMAP + pathmap.toString();
+				String suppressed = store.get(prefConstant, PreferenceConstants.DEFAULT_WARNING_SUPPRESSED_PATHMAP);
+				List<String> items = new ArrayList<String>(Arrays.asList(suppressed.split("\\s*,\\s*"))); //$NON-NLS-1$
+				items = items.stream().filter(i -> !UML2Util.isEmpty(i)).collect(Collectors.toList());
+				if (!items.isEmpty()) {
+					return "yes"; //$NON-NLS-1$
+				}
+				return "no";//$NON-NLS-1$
 			default:
 				break;
 			}

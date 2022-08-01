@@ -17,8 +17,8 @@
 package com.zeligsoft.domain.dds4ccm.tools.ui.internal.preferences;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -38,8 +38,8 @@ import org.osgi.service.prefs.BackingStoreException;
 
 import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
-import com.zeligsoft.domain.dds4ccm.DDS4CCMPreferenceConstants;
 import com.zeligsoft.domain.dds4ccm.tools.Activator;
+import com.zeligsoft.domain.dds4ccm.tools.PreferenceConstants;
 import com.zeligsoft.domain.dds4ccm.tools.dialogs.PathmapSelectionComposite;
 import com.zeligsoft.domain.dds4ccm.tools.internal.emf.DDS4CCMDynamicURIMapHandler;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
@@ -52,7 +52,7 @@ import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
  */
 public class DynamicURIMappingsPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
 
-	private CheckboxTableViewer table;
+	private CheckboxTableViewer tableViewer;
 	
 	/**
 	 * Initializes me.
@@ -69,7 +69,7 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 		}
 		PathmapSelectionComposite selectionComposite = new PathmapSelectionComposite();
 		Composite result = selectionComposite.createContents(parent);
-
+		tableViewer = selectionComposite.getViewer();
 
 		noDefaultAndApplyButton();
 		contributeButtons(result);
@@ -81,25 +81,34 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 			public void widgetSelected(SelectionEvent e) {
 				if (MessageDialog.openQuestion(getShell(), Messages.DynamicURIMappingsPreferencePage_ResetWarningsTitle,
 						Messages.DynamicURIMappingsPreferencePage_ResetWarningsMsg)) {
+
 					IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
 
-					// reset all suppressed mapping details
-					String suppressed = store.get(DDS4CCMPreferenceConstants.WARNING_SUPPRESSED_PATHMAP,
-							DDS4CCMPreferenceConstants.DEFAULT_WARNING_SUPPRESSED_PATHMAP);
-					List<String> suppressedPathmaps = Arrays.asList(suppressed.split("\\s*,\\s*")); //$NON-NLS-1$
-					for (String pathmap : suppressedPathmaps) {
-						String key = DDS4CCMPreferenceConstants.WARNING_SUPPRESSED_PATHMAP + pathmap;
+					List<String> keysToRemove = new ArrayList<String>();
+
+					try {
+						for (String key : store.keys()) {
+							if (key.startsWith(PreferenceConstants.WARNING_SUPPRESSED_PATHMAP)) {
+								keysToRemove.add(key);
+							}
+						}
+					} catch (BackingStoreException e1) {
+						// do nothing
+					}
+
+					for (String key : keysToRemove) {
 						store.remove(key);
 					}
 
-					// reset all suppressed pathmaps
-					store.remove(DDS4CCMPreferenceConstants.WARNING_SUPPRESSED_PATHMAP);
-
+					store.remove(PreferenceConstants.SUPPRESS_PATHMAP_CHANGE_WARNING);
+					store.remove(PreferenceConstants.SUPPRESS_PATHMAP_FALLBACK_WARNING);
 					try {
+
 						store.flush();
 					} catch (BackingStoreException e1) {
 						// do nothing
 					}
+					tableViewer.setInput(tableViewer.getInput());
 				}
 			}
 		});
@@ -115,10 +124,10 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				DDS4CCMDynamicURIMapHandler.remapDynamicURI();
-				List<CXPathmapDescriptor> pathmaps = CXDynamicURIConverter.getPathmaps();
-				table.setInput(pathmaps);
-				List<CXPathmapDescriptor> selected = CXDynamicURIConverter.getEnabledPathmaps();
-				table.setCheckedElements(selected.toArray());
+				tableViewer.setInput(tableViewer.getInput());
+				List<URI> selected = CXDynamicURIConverter.getEnabledPathmaps().stream().map(d -> d.getPathmap())
+						.collect(Collectors.toList());
+				tableViewer.setCheckedElements(selected.toArray());
 			}
 		});
 	}

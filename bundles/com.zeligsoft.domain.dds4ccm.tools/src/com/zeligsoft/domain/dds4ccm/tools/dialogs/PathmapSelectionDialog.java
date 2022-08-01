@@ -19,6 +19,9 @@ package com.zeligsoft.domain.dds4ccm.tools.dialogs;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -26,6 +29,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TrayDialog;
+import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -35,17 +39,19 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.osgi.service.prefs.BackingStoreException;
 
 import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
-import com.zeligsoft.domain.dds4ccm.DDS4CCMPreferenceConstants;
 import com.zeligsoft.domain.dds4ccm.tools.Activator;
+import com.zeligsoft.domain.dds4ccm.tools.PreferenceConstants;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 
 /**
- * Pathmap conflict dialog.
+ * Pathmap selection dialog for conflict pathmaps.
  * 
  * @author Young-Soo Roh
  *
@@ -56,13 +62,20 @@ public class PathmapSelectionDialog extends TrayDialog {
 	protected String preferenceLink;
 	protected IEclipsePreferences store;
 	protected boolean warningSuppressed = false;
-	public static boolean dialogInUse = false;
+	protected Set<URI> pathmaps;
+	private PathmapSelectionComposite pathmapSelectionComposite;
+	private static boolean dialogInUse = false;
+	private static final Lock lock = new ReentrantLock();
+	
+	
+	
 
-	public PathmapSelectionDialog(Shell shell, String message, String preferenceLink) {
+	public PathmapSelectionDialog(Shell shell, Set<URI> pathmaps) {
 		super(shell);
-		this.preferenceLink = preferenceLink;
-		this.message = message;
+		this.preferenceLink = "com.zeligsoft.domain.dds4ccm.tools.uriMappings"; //$NON-NLS-1$
+		this.message = Messages.PathmapSelectionDialog_ConflictErrorMessage;
 		store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+		this.pathmaps = pathmaps;
 	}
 
 	@Override
@@ -90,17 +103,30 @@ public class PathmapSelectionDialog extends TrayDialog {
 	}
 
 	private void createMessageArea(Composite parent) {
-		Composite browseComposite = new Composite(parent, SWT.NULL);
+		Composite selectionComposite = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
-		browseComposite.setLayout(layout);
-		browseComposite
+		selectionComposite.setLayout(layout);
+		selectionComposite
 				.setLayoutData(new GridData(GridData.FILL_BOTH | GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL));
 
-		Label label = new Label(browseComposite, SWT.NONE);
+		Label label = new Label(selectionComposite, SWT.NONE);
 		label.setText(message);
-		label.setBackground(browseComposite.getBackground());
+		label.setBackground(selectionComposite.getBackground());
 
-		new PathmapSelectionComposite(true).createContents(browseComposite);
+		pathmapSelectionComposite = new PathmapSelectionComposite(pathmaps);
+		pathmapSelectionComposite.createContents(selectionComposite);
+
+		Link link = new Link(selectionComposite, SWT.NONE);
+		link.setText(Messages.PathmapSelectionDialog_PreferenceLink);
+		link.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				PreferenceDialog dialog = PreferencesUtil.createPreferenceDialogOn(getShell(), preferenceLink,
+						new String[] { preferenceLink }, null);
+				dialog.open();
+				close();
+			}
+		});
 
 	}
 
@@ -109,6 +135,7 @@ public class PathmapSelectionDialog extends TrayDialog {
 		GridLayout compositeLayout = new GridLayout();
 		compositeLayout = new GridLayout();
 		compositeLayout.numColumns = 2;
+		compositeLayout.horizontalSpacing = 20;
 		GridData compositeLData = new GridData(
 				GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_END);
 		barComposite.setLayoutData(compositeLData);
@@ -119,7 +146,40 @@ public class PathmapSelectionDialog extends TrayDialog {
 		suppressWarningButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				warningSuppressed = suppressWarningButton.getSelection();
+				boolean warningSuppressed = suppressWarningButton.getSelection();
+				if (warningSuppressed) {
+					for (URI pathmap : pathmaps) {
+						// suppress future warnings for the pathmap state
+						String prefConstant = PreferenceConstants.WARNING_SUPPRESSED_PATHMAP + pathmap.toString();
+						String suppressedMappings = store.get(prefConstant,
+								PreferenceConstants.DEFAULT_WARNING_SUPPRESSED_PATHMAP);
+						List<String> mappings = new ArrayList<String>();
+						mappings.addAll(Arrays.asList(suppressedMappings.split("\\s*,\\s*"))); //$NON-NLS-1$
+
+						List<CXPathmapDescriptor> descs = CXDynamicURIConverter.getPathmapDescriptors(pathmap);
+						for (CXPathmapDescriptor desc : descs) {
+							if (!mappings.contains(desc.getMapping().toString())) {
+								mappings.add(desc.getMapping().toString());
+							}
+						}
+						store.put(prefConstant, String.join(",", mappings)); //$NON-NLS-1$
+					}
+				} else {
+					for (URI pathmap : pathmaps) {
+						// suppress future warnings for the pathmap state
+						String prefConstant = PreferenceConstants.WARNING_SUPPRESSED_PATHMAP + pathmap.toString();
+						store.remove(prefConstant);
+					}
+				}
+				try {
+					store.flush();
+				} catch (BackingStoreException e1) {
+					// pass
+				}
+				
+				Object[] checked = pathmapSelectionComposite.getViewer().getCheckedElements();
+				pathmapSelectionComposite.getViewer().setInput(pathmaps);
+				pathmapSelectionComposite.getViewer().setCheckedElements(checked);
 			}
 		});
 
@@ -136,37 +196,7 @@ public class PathmapSelectionDialog extends TrayDialog {
 				if (warningSuppressed == false) {
 					return;
 				}
-				for (URI pathmap : CXDynamicURIConverter.getNewConflictPathmaps()) {
-					// suppress future warnings for this pathmap state
-					String prefConstant = DDS4CCMPreferenceConstants.WARNING_SUPPRESSED_PATHMAP + pathmap.toString();
-					String suppressedMappings = store.get(prefConstant,
-							DDS4CCMPreferenceConstants.DEFAULT_WARNING_SUPPRESSED_PATHMAP);
-					List<String> mappings = new ArrayList<String>();
-					mappings.addAll(Arrays.asList(suppressedMappings.split("\\s*,\\s*"))); //$NON-NLS-1$
 
-					List<CXPathmapDescriptor> descs = CXDynamicURIConverter.getPathmapDescriptors(pathmap);
-					for (CXPathmapDescriptor desc : descs) {
-						if (!mappings.contains(desc.getMapping().toString())) {
-							mappings.add(desc.getMapping().toString());
-						}
-					}
-					store.put(prefConstant, String.join(",", mappings)); //$NON-NLS-1$
-
-					String suppressedPathmaps = store.get(DDS4CCMPreferenceConstants.WARNING_SUPPRESSED_PATHMAP,
-							DDS4CCMPreferenceConstants.DEFAULT_WARNING_SUPPRESSED_PATHMAP);
-					List<String> pathmaps = new ArrayList<String>();
-					pathmaps.addAll(Arrays.asList(suppressedPathmaps.split("\\s*,\\s*"))); //$NON-NLS-1$
-					if (!pathmaps.contains(pathmap.toString())) {
-						pathmaps.add(pathmap.toString());
-						store.put(DDS4CCMPreferenceConstants.WARNING_SUPPRESSED_PATHMAP, String.join(",", pathmaps)); //$NON-NLS-1$
-					}
-				}
-
-				try {
-					store.flush();
-				} catch (BackingStoreException e1) {
-					// pass
-				}
 			}
 		});
 	}
@@ -174,12 +204,28 @@ public class PathmapSelectionDialog extends TrayDialog {
 	@Override
 	public int open() {
 		int result = Dialog.OK;
-		if (dialogInUse != true) {
-			dialogInUse = true;
-			result = super.open();
-			dialogInUse = false;
-			CXDynamicURIConverter.clearNewConflictPathmaps();
+		boolean openDialog = false;
+		lock.lock();
+		try {
+			if (!dialogInUse) {
+				openDialog = true;
+				dialogInUse = true;
+			}
+		} finally {
+			lock.unlock();
 		}
+
+		// Only open selection dialog once for all new conflict pathmaps
+		if (openDialog) {
+			result = super.open();
+			lock.lock();
+			try {
+				dialogInUse = false;
+			} finally {
+				lock.unlock();
+			}
+		}
+
 		return result;
 	}
 }

@@ -9,7 +9,9 @@ public class Messages extends NLS {
 	public static String DDS4CCMDynamicURIMapHandler_UpdateingWorkspaceUri;
 	public static String DDS4CCMDynamicURIMapHandler_RemovingDynamicModelWarning;
 	public static String DDS4CCMDynamicURIMapHandler_WarningDialogTitle;
-	public static String DDS4CCMDynamicURIMapHandler_ConflictErrorMessage;
+	public static String PathmapSelectionDialog_ConflictErrorMessage;
+	public static String DDS4CCMDynamicURIMapHandler_FallbackMsg;
+	public static String DDS4CCMDynamicURIMapHandler_FallbackTitle;
 	public static String DynamicPathmapCustomPropertySection_ClosingEditorSubtask;
 	public static String DynamicPathmapCustomPropertySection_FieldLabel;
 	public static String DynamicPathmapCustomPropertySection_ModelLibraryButtonLabel;
@@ -26,12 +28,14 @@ public class Messages extends NLS {
 	public static String DynamicURIMappingsPreferencePage_ResetWarningsTitle;
 	public static String ICMBrowseDialog_DialogTitle;
 	public static String DDS4CCMDynamicURIMapHandler_PackageImportError;
+	public static String DDS4CCMDynamicURIMapHandler_SuppressMessage;
 	public static String GoToAction_ActionTitle;
 	public static String OpenModelAction_ActionTitle;
 	public static String PathmapConflictDialog_SuppressWarnings;
-	public static String PathmapMappingEditingSupport_WarningMsg;
-	public static String PathmapMappingEditingSupport_WarningTitle;
+	public static String DDS4CCMDynamicURIMapHandler_WarningMsg;
+	public static String DDS4CCMDynamicURIMapHandler_WarningTitle;
 	public static String PathmapSelectionDialog_DialogTitle;
+	public static String PathmapSelectionDialog_PreferenceLink;
 	public static String RefactorPathmapDialog_DialogTitle;
 	public static String RefactorPathmapDialog_Label;
 	public static String RefactorURIAction_ActionTitle;

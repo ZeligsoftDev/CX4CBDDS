@@ -21,6 +21,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
 
 import org.eclipse.core.resources.IContainer;
@@ -37,6 +39,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -49,6 +52,7 @@ import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.papyrus.editor.PapyrusMultiDiagramEditor;
@@ -84,8 +88,10 @@ import com.zeligsoft.base.validation.ui.commands.ValidateCXModelCommand;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
-import com.zeligsoft.domain.dds4ccm.DDS4CCMPreferenceConstants;
+import com.zeligsoft.cx.ui.pathmap.PathmapChangeListener;
 import com.zeligsoft.domain.dds4ccm.tools.Activator;
+import com.zeligsoft.domain.dds4ccm.tools.PreferenceConstants;
+import com.zeligsoft.domain.dds4ccm.tools.dialogs.MessageDialogWithSuppressButton;
 import com.zeligsoft.domain.dds4ccm.tools.dialogs.PathmapSelectionDialog;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMDiagnostician;
@@ -97,9 +103,116 @@ import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
  * @author Young-Soo Roh
  *
  */
-public final class DDS4CCMDynamicURIMapHandler {
+public final class DDS4CCMDynamicURIMapHandler{
 
 	private static ResourceSet rset = new ResourceSetImpl();
+	
+	private static IPartListener2 partListener;
+	
+	private static IResourceChangeListener rcl;
+	
+	private static PathmapChangeListener changeListener;
+	
+	private static Set<URI> conflictPathmaps = new HashSet<URI>();
+	
+	private static final Lock lock = new ReentrantLock();
+
+	static {
+		partListener = new IPartListener2() {
+
+			@Override
+			public void partVisible(IWorkbenchPartReference partRef) {
+			}
+
+			@Override
+			public void partOpened(IWorkbenchPartReference partRef) {
+				checkEditorPart(partRef);
+			}
+
+			@Override
+			public void partInputChanged(IWorkbenchPartReference partRef) {
+			}
+
+			@Override
+			public void partHidden(IWorkbenchPartReference partRef) {
+			}
+
+			@Override
+			public void partDeactivated(IWorkbenchPartReference partRef) {
+			}
+
+			@Override
+			public void partClosed(IWorkbenchPartReference partRef) {
+
+			}
+
+			@Override
+			public void partBroughtToTop(IWorkbenchPartReference partRef) {
+			}
+
+			@Override
+			public void partActivated(IWorkbenchPartReference partRef) {
+			}
+		};
+
+		rcl = new IResourceChangeListener() {
+
+			@Override
+			public void resourceChanged(IResourceChangeEvent event) {
+				IResourceDelta delta = event.getDelta();
+				if (delta != null) {
+					processDelta(rset, delta);
+				}
+			}
+		};
+
+		changeListener = new PathmapChangeListener() {
+
+			@Override
+			public void handlePathmapChange(CXPathmapDescriptor newValue, CXPathmapDescriptor oldValue, int eventType) {
+				if (eventType == PathmapChangeListener.CHANGE) {
+					// warn users about the change
+					Display.getDefault().asyncExec(new Runnable() {
+
+						@Override
+						public void run() {
+							String msg = NLS.bind(Messages.DDS4CCMDynamicURIMapHandler_WarningMsg,
+									newValue.getPathmap().toString());
+
+							Dialog dialog = new MessageDialogWithSuppressButton(Display.getCurrent().getActiveShell(),
+									Messages.DDS4CCMDynamicURIMapHandler_WarningTitle, msg,
+									Messages.DDS4CCMDynamicURIMapHandler_SuppressMessage,
+									InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID),
+									PreferenceConstants.SUPPRESS_PATHMAP_CHANGE_WARNING);
+							dialog.open();
+						}
+					});
+				} else if (eventType == PathmapChangeListener.FALLBACK) {
+					// warn users about the change
+					Display.getDefault().asyncExec(new Runnable() {
+
+						@Override
+						public void run() {
+							// reset suppressed warning for this pathmap
+							IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+							String key = PreferenceConstants.WARNING_SUPPRESSED_PATHMAP + newValue.getPathmap().toString();
+							store.remove(key);
+							
+							String msg = NLS.bind(Messages.DDS4CCMDynamicURIMapHandler_FallbackMsg,
+									newValue.getPathmap().toString(), newValue.getMapping().toString());
+
+							Dialog dialog = new MessageDialogWithSuppressButton(Display.getCurrent().getActiveShell(),
+									Messages.DDS4CCMDynamicURIMapHandler_FallbackTitle, msg,
+									Messages.DDS4CCMDynamicURIMapHandler_SuppressMessage,
+									InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID),
+									PreferenceConstants.SUPPRESS_PATHMAP_FALLBACK_WARNING);
+							dialog.open();
+						}
+					});
+				}
+			}
+		};
+	}
 
 	/**
 	 * Initializes me.
@@ -107,67 +220,56 @@ public final class DDS4CCMDynamicURIMapHandler {
 	private DDS4CCMDynamicURIMapHandler() {
 		super();
 	}
+	
+	/**
+	 * Return all queued new conflict pathmaps and clear the list
+	 * 
+	 * @return
+	 */
+	public static Set<URI> getAndClearNewConflictPathmaps() {
+		Set<URI> results = new HashSet<URI>();
+		lock.lock();
+		try {
+			results.addAll(conflictPathmaps);
+			conflictPathmaps.clear();
+		}finally {
+			lock.unlock();
+		}
+		return results;
+	}
 
+	/**
+	 * Queue new conflict pathmap
+	 * 
+	 * @param pathmap
+	 */
+	public static void addNewConflictPathmap(URI pathmap) {
+		lock.lock();
+		try {
+			conflictPathmaps.add(pathmap);
+		}finally {
+			lock.unlock();
+		}
+	}
+	
 	public static void remap() {
 		new UIJob(Messages.DDS4CCMDynamicURIMapHandler_UpdateingWorkspaceUri) {
 
 			@Override
 			public IStatus runInUIThread(IProgressMonitor monitor) {
-				
-				IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-				page.addPartListener(new IPartListener2() {
-					
-					@Override
-					public void partVisible(IWorkbenchPartReference partRef) {
-					}
-					@Override
-					public void partOpened(IWorkbenchPartReference partRef) {
-						checkEditorPart(partRef);
-					}
-					
-					@Override
-					public void partInputChanged(IWorkbenchPartReference partRef) {
-					}
-					
-					@Override
-					public void partHidden(IWorkbenchPartReference partRef) {
-					}
-					
-					@Override
-					public void partDeactivated(IWorkbenchPartReference partRef) {
-					}
-					
-					@Override
-					public void partClosed(IWorkbenchPartReference partRef) {
-						
-					}
-					
-					@Override
-					public void partBroughtToTop(IWorkbenchPartReference partRef) {
-					}
-					
-					@Override
-					public void partActivated(IWorkbenchPartReference partRef) {
-					}
-				});
-				
-				IWorkspace workspace = ResourcesPlugin.getWorkspace();
-				IResourceChangeListener rcl = new IResourceChangeListener() {
 
-					@Override
-					public void resourceChanged(IResourceChangeEvent event) {
-						IResourceDelta delta = event.getDelta();
-						if (delta != null) {
-							processDelta(rset, delta);
-						}
-					}
-				};
+				IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+				page.addPartListener(partListener);
+
+				IWorkspace workspace = ResourcesPlugin.getWorkspace();
+
 				remapDynamicURI();
 				workspace.addResourceChangeListener(rcl);
+				CXDynamicURIConverter.addChangeListener(changeListener);
+
 				return Status.OK_STATUS;
 			}
 		}.schedule();
-
 	}
 
 	public static void remapDynamicURI() {
@@ -175,12 +277,8 @@ public final class DDS4CCMDynamicURIMapHandler {
 			// unload all models
 			r.unload();
 		}
-		for (List<CXPathmapDescriptor> descs : CXDynamicURIConverter.PATHMAPS.values()) {
-			for (CXPathmapDescriptor desc : descs) {
-				desc.setEnabled(false);
-				desc.apply();
-			}
-			descs.clear();
+		for (List<CXPathmapDescriptor> mappings : CXDynamicURIConverter.PATHMAPS.values()) {
+			mappings.clear();
 		}
 		CXDynamicURIConverter.PATHMAPS.clear();
 		visitAllModels(ResourcesPlugin.getWorkspace().getRoot(), uri -> processUML(uri));
@@ -292,9 +390,8 @@ public final class DDS4CCMDynamicURIMapHandler {
 					@Override
 					public void run() {
 						
-						MessageDialog.openWarning(Display.getCurrent().getActiveShell(),
+						boolean shouldClose = MessageDialog.openQuestion(Display.getCurrent().getActiveShell(),
 								Messages.DDS4CCMDynamicURIMapHandler_WarningDialogTitle, warning);
-						boolean shouldClose = false;
 						if (shouldClose) {
 							for (IEditorReference ref : PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 									.getActivePage().getEditorReferences()) {
@@ -445,31 +542,27 @@ public final class DDS4CCMDynamicURIMapHandler {
 		rset.getResource(modelUri, true);
 		CXPathmapDescriptor desc = CXDynamicURIConverter.addMapping(pathmapUri, modelUri);
 		
+		if(!PlatformUI.isWorkbenchRunning()) {
+			// headless
+			return;
+		}
+		
 		// handle conflict pathmaps.
-		String prefConstant = DDS4CCMPreferenceConstants.WARNING_SUPPRESSED_PATHMAP + desc.getPathmap().toString();
-		String suppressed = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).get(prefConstant, DDS4CCMPreferenceConstants.DEFAULT_WARNING_SUPPRESSED_PATHMAP);
+		String prefConstant = PreferenceConstants.WARNING_SUPPRESSED_PATHMAP + desc.getPathmap().toString();
+		String suppressed = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID).get(prefConstant, PreferenceConstants.DEFAULT_WARNING_SUPPRESSED_PATHMAP);
 		List<String> items = Arrays.asList(suppressed.split("\\s*,\\s*")); //$NON-NLS-1$
 		if(items.contains(desc.getMapping().toString())) {
 			return;
 		}
-		URI targetURI = modelUri.trimSegments(1).appendSegment(UML2Util.EMPTY_STRING);
 		List<CXPathmapDescriptor> mappings = CXDynamicURIConverter.getPathmapDescriptors(desc.getPathmap());
-		if(mappings.size() > 1) {
-			CXDynamicURIConverter.addNewConflictPathmap(desc.getPathmap());
-			URI prevURI = mappings.get(1).getMapping();
-			List<String> bindings = new ArrayList<String>();
-			bindings.add(desc.getPathmap().toString());
-			bindings.add(prevURI.toString());
-			bindings.add(targetURI.toString());
-			
-			String msg = NLS.bind(Messages.DDS4CCMDynamicURIMapHandler_ConflictErrorMessage, bindings.toArray());
-			Activator.getDefault().warning(msg);
+		if (mappings.size() > 1) {
+			addNewConflictPathmap(desc.getPathmap());
 			Display.getDefault().asyncExec(new Runnable() {
-				
+
 				@Override
 				public void run() {
 					PathmapSelectionDialog dialog = new PathmapSelectionDialog(Display.getCurrent().getActiveShell(),
-							msg, "com.zeligsoft.domain.dds4ccm.tools.uriMappings"); //$NON-NLS-1$
+							getAndClearNewConflictPathmaps());
 					dialog.open();
 				}
 			});
@@ -615,5 +708,4 @@ public final class DDS4CCMDynamicURIMapHandler {
 			// do nothing
 		}
 	}
-
 }

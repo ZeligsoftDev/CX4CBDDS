@@ -72,8 +72,10 @@ import org.eclipse.papyrus.views.modelexplorer.core.ui.pagebookview.MultiViewPag
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.ConsolePlugin;
@@ -661,7 +663,14 @@ public class BaseUIUtil {
 	 * @return
 	 */
 	public static IWorkbenchPage getActivepage() {
-		return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		if (workbench != null) {
+			IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+			if (window != null) {
+				return window.getActivePage();
+			}
+		}
+		return null;
 	}
 
 	/**
