@@ -36,13 +36,13 @@ extension codegen::debug;
 
 create Domain mainTransform(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) :
 	let qname = getPath(domainDeployment) + domainDeployment.name :
-	domainDeployment.Debug("[DEBUG] mainTransform(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) " + domainDeployment) ->
+	domainDeployment.Debug("[DEBUG] cdd::mainTransform(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) " + domainDeployment) ->
 	domainDeployment.Debug("[DEBUG] qname = " + qname) ->
 	this.label.add(domainDeployment.name) ->
 	this.label.add(qname) ->
 	this.uuid.add(getUUID()) ->
 	domainDeployment.parts.Debug("[DEBUG] visitDomainDeploymentParts") ->
-	domainDeployment.parts.select( s | s.visitNodeInstance(s.modelElement, this) )
+	domainDeployment.parts.select(p | p.isNodeInstance()).select(p | p.visitNodeInstance(s.modelElement, this))
 ;
 
 Void visitDomainDeploymentPart(DeploymentPart domainDeploymentPart, DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) :
@@ -51,9 +51,20 @@ Void visitDomainDeploymentPart(DeploymentPart domainDeploymentPart, DDS4CCM::DDS
 ;
 
 Void mainTransform(CCM::CCM_Deployment::DeploymentPlan deployment) :
-	deployment.part.modelElement.typeSelect(CCM::CCM_Target::Domain).mainTransform(deployment);
+	deployment.Debug("[DEBUG] cdd::mainTransform(CCM::CCM_Deployment::DeploymentPlan deployment) ") ->
+	deployment.part.modelElement.typeSelect(CCM::CCM_Target::Domain).select(e | !e.isDomainDefinition()).mainTransform(deployment);
+
+Boolean isDomainDefinition(CCM::CCM_Target::Domain domain) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMDomainDefinitionsUtils.isDomainDefinition(org.eclipse.emf.ecore.EObject);
+
+Boolean isNodeInstance(DDS4CCM::DDS4CCM::DomainDeploymentPart domainDeploymentPart) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMDomainDefinitionsUtils.isNodeInstance(org.eclipse.emf.ecore.EObject);
+
+Boolean isNodeInstance(DeploymentPart deploymentPart) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMDomainDefinitionsUtils.isNodeInstance(org.eclipse.emf.ecore.EObject);
 
 Void mainTransform(CCM::CCM_Target::Domain domain, CCM::CCM_Deployment::DeploymentPlan deployment ) :
+	domain.Debug("[DEBUG] cdd::mainTransform(CCM::CCM_Target::Domain domain, CCM::CCM_Deployment::DeploymentPlan deployment ) domain = " + domain.name) ->
 	deployment.part.select( part | part.modelElement == domain ).mainTransform(deployment);
 	
 create Domain mainTransform(DeploymentPart domainPart, CCM::CCM_Deployment::DeploymentPlan deployment ) :
