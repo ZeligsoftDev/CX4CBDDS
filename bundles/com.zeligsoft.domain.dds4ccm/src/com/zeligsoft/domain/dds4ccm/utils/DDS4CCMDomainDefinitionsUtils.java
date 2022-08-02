@@ -39,50 +39,67 @@ public final class DDS4CCMDomainDefinitionsUtils {
 	public static boolean isDomainDefinition(EObject modelElement) {
 		return modelElement != null && ZDLUtil.isZDLConcept(modelElement, DDS4CCMNames.DOMAIN_DEFINITION);
 	}
-	
+
 	public static boolean isDomainDeployment(EObject modelElement) {
-		return modelElement != null && ZDLUtil.isZDLConcept(modelElement, DDS4CCMNames.DOMAIN_DEPLOYMENT);
+		return modelElement != null && modelElement instanceof Component
+				&& ZDLUtil.isZDLConcept(modelElement, DDS4CCMNames.DOMAIN_DEPLOYMENT);
 	}
-	
+
 	public static boolean isDomainDeploymentPart(EObject modelElement) {
-		return modelElement != null && ZDLUtil.isZDLConcept(modelElement, DDS4CCMNames.DOMAIN_DEPLOYMENT_PART);
+		return modelElement != null && modelElement instanceof Property
+				&& ZDLUtil.isZDLConcept(modelElement, DDS4CCMNames.DOMAIN_DEPLOYMENT_PART);
 	}
-	
+
+	public static boolean isNodeInstance(EObject modelElement) {
+		return modelElement != null && modelElement instanceof Property
+				&& ZDLUtil.isZDLConcept(modelElement, CCMNames.NODE_INSTANCE);
+	}
+
+	public static boolean isBridgeInstance(EObject modelElement) {
+		return modelElement != null && modelElement instanceof Property
+				&& ZDLUtil.isZDLConcept(modelElement, CCMNames.BRIDGE_INSTANCE);
+	}
+
+	public static boolean isInterconnectInstance(EObject modelElement) {
+		return modelElement != null && modelElement instanceof Property
+				&& ZDLUtil.isZDLConcept(modelElement, CCMNames.INTERCONNECT_INSTANCE);
+	}
+
 	public static List<Component> getAllDomainDefinitions(Package umlPackage) {
 		List<Component> list = new ArrayList<>();
-		for (Element element: umlPackage.allOwnedElements()) {
+		for (Element element : umlPackage.allOwnedElements()) {
 			if (isDomainDefinition(element)) {
-				list.add((Component)element);
+				list.add((Component) element);
 			}
 		}
 		return list;
 	}
-	
+
 	public static List<Component> getDomainDefinitions(Package umlPackage) {
 		List<Component> list = new ArrayList<>();
-		for (PackageableElement element: umlPackage.getPackagedElements()) {
+		for (PackageableElement element : umlPackage.getPackagedElements()) {
 			if (isDomainDefinition(element)) {
-				list.add((Component)element);
+				list.add((Component) element);
 			}
 		}
 		return list;
 	}
-	
+
 	public static List<Component> getDomainDeployments(Component domainDefinition) {
 		List<Component> list = new ArrayList<>();
-		for (PackageableElement element: domainDefinition.getPackagedElements()) {
+		for (PackageableElement element : domainDefinition.getPackagedElements()) {
 			if (isDomainDeployment(element)) {
-				list.add((Component)element);
+				list.add((Component) element);
 			}
 		}
 		return list;
 	}
-	
+
 	public static List<Property> getDomainDeploymentParts(Component domainDeployment) {
 		List<Property> list = new ArrayList<>();
-		for (PackageableElement element: domainDeployment.getPackagedElements()) {
+		for (PackageableElement element : domainDeployment.getPackagedElements()) {
 			if (isDomainDeploymentPart(element)) {
-				list.add((Property)element);
+				list.add((Property) element);
 			}
 		}
 		return list;
