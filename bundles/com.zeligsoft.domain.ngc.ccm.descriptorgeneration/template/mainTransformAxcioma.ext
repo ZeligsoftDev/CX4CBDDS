@@ -54,7 +54,7 @@ DeploymentPlan mainTransformAxcioma(CCM::CCM_Deployment::DeploymentPlan deployme
 	let homeInstances = deployment.allocation.deployed.select( e | e.modelElement.metaType.toString() == "CCM::CCM_Implementation::HomeInstance") : 
 	let connectors = deployment.part.modelElement.typeSelect(DataSpace) :
 	let parts = deployment.part.modelElement.typeSelect(CCMPart):
-	deployment.Debug("[DEBUG] DeploymentPlan mainTransformAxcioma(CCM::CCM_Deployment::DeploymentPlan deployment)") ->
+	deployment.Debug("[DEBUG] DeploymentPlan cdp::mainTransformAxcioma(CCM::CCM_Deployment::DeploymentPlan deployment)") ->
 	enableTrace("RegisterNaming") ->
 	storeGlobalVar("modelType",modelType) ->
     plan.createLocalityManagerElements() ->
