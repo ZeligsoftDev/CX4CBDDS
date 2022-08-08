@@ -561,8 +561,7 @@ public final class DDS4CCMDynamicURIMapHandler{
 
 				@Override
 				public void run() {
-					PathmapSelectionDialog dialog = new PathmapSelectionDialog(Display.getCurrent().getActiveShell(),
-							getAndClearNewConflictPathmaps());
+					PathmapSelectionDialog dialog = new PathmapSelectionDialog(Display.getCurrent().getActiveShell());
 					dialog.open();
 				}
 			});

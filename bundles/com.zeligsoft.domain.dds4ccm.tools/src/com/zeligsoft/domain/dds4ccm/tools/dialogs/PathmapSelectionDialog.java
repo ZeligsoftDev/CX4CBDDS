@@ -18,10 +18,10 @@ package com.zeligsoft.domain.dds4ccm.tools.dialogs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -48,6 +48,7 @@ import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
 import com.zeligsoft.domain.dds4ccm.tools.Activator;
 import com.zeligsoft.domain.dds4ccm.tools.PreferenceConstants;
+import com.zeligsoft.domain.dds4ccm.tools.internal.emf.DDS4CCMDynamicURIMapHandler;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 
 /**
@@ -62,20 +63,15 @@ public class PathmapSelectionDialog extends TrayDialog {
 	protected String preferenceLink;
 	protected IEclipsePreferences store;
 	protected boolean warningSuppressed = false;
-	protected Set<URI> pathmaps;
+	protected Set<URI> pathmaps = new HashSet<URI>();
 	private PathmapSelectionComposite pathmapSelectionComposite;
-	private static boolean dialogInUse = false;
-	private static final Lock lock = new ReentrantLock();
-	
-	
 	
 
-	public PathmapSelectionDialog(Shell shell, Set<URI> pathmaps) {
+	public PathmapSelectionDialog(Shell shell) {
 		super(shell);
 		this.preferenceLink = "com.zeligsoft.domain.dds4ccm.tools.uriMappings"; //$NON-NLS-1$
 		this.message = Messages.PathmapSelectionDialog_ConflictErrorMessage;
 		store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
-		this.pathmaps = pathmaps;
 	}
 
 	@Override
@@ -204,28 +200,19 @@ public class PathmapSelectionDialog extends TrayDialog {
 	@Override
 	public int open() {
 		int result = Dialog.OK;
-		boolean openDialog = false;
-		lock.lock();
 		try {
-			if (!dialogInUse) {
-				openDialog = true;
-				dialogInUse = true;
-			}
-		} finally {
-			lock.unlock();
+			// delay one second to collect all possible pathmap changes from the single workspace event sequence
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// do nothing
 		}
-
-		// Only open selection dialog once for all new conflict pathmaps
-		if (openDialog) {
+		pathmaps = DDS4CCMDynamicURIMapHandler.getAndClearNewConflictPathmaps();
+		
+		if(!pathmaps.isEmpty()) {
+			// open pathmap selection dialog if new changes are found
 			result = super.open();
-			lock.lock();
-			try {
-				dialogInUse = false;
-			} finally {
-				lock.unlock();
-			}
 		}
-
+		
 		return result;
 	}
 }
