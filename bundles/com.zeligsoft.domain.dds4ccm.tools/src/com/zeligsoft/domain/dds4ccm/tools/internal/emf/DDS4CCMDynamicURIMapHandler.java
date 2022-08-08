@@ -83,6 +83,7 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.osgi.service.prefs.BackingStoreException;
 
 import com.zeligsoft.base.validation.ui.commands.ValidateCXModelCommand;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
@@ -189,23 +190,24 @@ public final class DDS4CCMDynamicURIMapHandler{
 					});
 				} else if (eventType == PathmapChangeListener.FALLBACK) {
 					// warn users about the change
+					CXPathmapDescriptor desc = newValue;
+					IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+					String prefConstant = PreferenceConstants.WARNING_SUPPRESSED_PATHMAP + desc.getPathmap().toString();
+					store.remove(prefConstant);
+
+					try {
+						store.flush();
+					} catch (BackingStoreException e) {
+						// do nothing
+					}
+
+					addNewConflictPathmap(desc.getPathmap());
 					Display.getDefault().asyncExec(new Runnable() {
 
 						@Override
 						public void run() {
-							// reset suppressed warning for this pathmap
-							IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
-							String key = PreferenceConstants.WARNING_SUPPRESSED_PATHMAP + newValue.getPathmap().toString();
-							store.remove(key);
-							
-							String msg = NLS.bind(Messages.DDS4CCMDynamicURIMapHandler_FallbackMsg,
-									newValue.getPathmap().toString(), newValue.getMapping().toString());
-
-							Dialog dialog = new MessageDialogWithSuppressButton(Display.getCurrent().getActiveShell(),
-									Messages.DDS4CCMDynamicURIMapHandler_FallbackTitle, msg,
-									Messages.DDS4CCMDynamicURIMapHandler_SuppressMessage,
-									InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID),
-									PreferenceConstants.SUPPRESS_PATHMAP_FALLBACK_WARNING);
+							PathmapSelectionDialog dialog = new PathmapSelectionDialog(
+									Display.getCurrent().getActiveShell());
 							dialog.open();
 						}
 					});
