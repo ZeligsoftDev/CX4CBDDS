@@ -102,8 +102,8 @@ public class RefactorPathmapDialog extends TrayDialog {
 		viewerData.widthHint = 700;
 
 		List<URI> content = new ArrayList<URI>();
-		for (CXPathmapDescriptor desc : CXDynamicURIConverter.PATHMAPS.values()) {
-			URI uri = desc.getPathmap();
+		for (URI uri : CXDynamicURIConverter.PATHMAPS.keySet()) {
+			CXPathmapDescriptor desc = CXDynamicURIConverter.getPathmapDescriptor(uri);
 			for (String model : desc.getRegisteredModels()) {
 				content.add(uri.appendSegment(model));
 			}

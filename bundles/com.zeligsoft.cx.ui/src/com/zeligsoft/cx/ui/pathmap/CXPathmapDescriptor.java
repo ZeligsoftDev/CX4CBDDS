@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Northrop Grumman Systems Corporation.
+ * Copyright 2020-2022 Northrop Grumman Systems Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ public class CXPathmapDescriptor {
 	private boolean isEnabled;
 
 	public CXPathmapDescriptor(URI sourceURI, URI targetURI, String modelName) {
-		id = "pathmap." + targetURI.authority(); //$NON-NLS-1$
+		id = "pathmap." + targetURI.toString(); //$NON-NLS-1$
 		registeredModels.add(modelName);
 		originalMapping = URIConverter.URI_MAP.get(sourceURI);
 		pathmap = sourceURI;
@@ -153,11 +153,10 @@ public class CXPathmapDescriptor {
 			return false;
 		}
 		final CXPathmapDescriptor other = (CXPathmapDescriptor) obj;
-		if (pathmap == null) {
-			if (other.pathmap != null) {
-				return false;
-			}
-		} else if (!pathmap.equals(other.pathmap)) {
+		if(pathmap != other.pathmap) {
+			return false;
+		}
+		if(mapping != other.mapping) {
 			return false;
 		}
 		return true;

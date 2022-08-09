@@ -305,10 +305,6 @@ public class Messages
 
 	public static String ZeligsoftModelWizardPage_UseDefaultLabel;
 	
-	public static String CXDynamicURIConverter_ConflictDialogTitle;
-
-	public static String CXDynamicURIConverter_ConflictErrorMessage;
-
 	public static String CXPathmapDescriptor_AddingPathmapUri;
 
 	public static String CXPathmapDescriptor_RemovingPathmapUri;
