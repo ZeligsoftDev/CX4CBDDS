@@ -102,6 +102,7 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 
 					store.remove(PreferenceConstants.SUPPRESS_PATHMAP_CHANGE_WARNING);
 					store.remove(PreferenceConstants.SUPPRESS_PATHMAP_FALLBACK_WARNING);
+					store.remove(PreferenceConstants.AUTO_CLOSE_PATHMAP_DEPENDENT_MODEL);
 					try {
 
 						store.flush();

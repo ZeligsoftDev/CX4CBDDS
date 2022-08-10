@@ -22,6 +22,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -65,7 +67,8 @@ public class PathmapSelectionDialog extends TrayDialog {
 	protected boolean warningSuppressed = false;
 	protected Set<URI> pathmaps = new HashSet<URI>();
 	private PathmapSelectionComposite pathmapSelectionComposite;
-	
+	private static final Lock lock = new ReentrantLock();
+	private static boolean dialogInUse = false;
 
 	public PathmapSelectionDialog(Shell shell) {
 		super(shell);
@@ -102,8 +105,10 @@ public class PathmapSelectionDialog extends TrayDialog {
 		Composite selectionComposite = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
 		selectionComposite.setLayout(layout);
-		selectionComposite
-				.setLayoutData(new GridData(GridData.FILL_BOTH | GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL));
+		GridData data = new GridData(GridData.FILL_BOTH | GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL);
+		data.heightHint = 300;
+				
+		selectionComposite.setLayoutData(data);
 
 		Label label = new Label(selectionComposite, SWT.NONE);
 		label.setText(message);
@@ -200,17 +205,57 @@ public class PathmapSelectionDialog extends TrayDialog {
 	@Override
 	public int open() {
 		int result = Dialog.OK;
+		boolean openDialog = false;
+		lock.lock();
 		try {
-			// delay one second to collect all possible pathmap changes from the single workspace event sequence
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			// do nothing
+			if (!dialogInUse) {
+				dialogInUse = true;
+				openDialog = true;
+			}
+		} finally {
+			lock.unlock();
 		}
-		pathmaps = DDS4CCMDynamicURIMapHandler.getAndClearNewConflictPathmaps();
 		
-		if(!pathmaps.isEmpty()) {
+		if (openDialog) {
+			try {
+				// delay one second to collect all possible pathmap changes from the single
+				// workspace event sequence
+				TimeUnit.SECONDS.sleep(1);
+			} catch (InterruptedException e) {
+				// do nothing
+			}
+			Set<URI> conflicts = DDS4CCMDynamicURIMapHandler.getAndClearNewConflictPathmaps();
+			while (true) {
+				try {
+					// delay one second to collect all possible pathmap changes from the single
+					// workspace event sequence
+					TimeUnit.SECONDS.sleep(1);
+				} catch (InterruptedException e) {
+					// do nothing
+				}
+				Set<URI> newConflicts = DDS4CCMDynamicURIMapHandler.getAndClearNewConflictPathmaps();
+				if (newConflicts.isEmpty()) {
+					break;
+				}
+				conflicts.addAll(newConflicts);
+			}
+			
+			pathmaps.clear();
+			for(URI pathmap: conflicts) {
+				if(CXDynamicURIConverter.getPathmapDescriptors(pathmap).size() > 0) {
+					pathmaps.add(pathmap);
+				}
+			}
+			
 			// open pathmap selection dialog if new changes are found
 			result = super.open();
+			
+			lock.lock();
+			try {
+				dialogInUse = false;
+			} finally {
+				lock.unlock();
+			}
 		}
 		
 		return result;

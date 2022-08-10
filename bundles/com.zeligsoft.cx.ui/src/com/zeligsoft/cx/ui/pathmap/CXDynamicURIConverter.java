@@ -35,6 +35,8 @@ import org.eclipse.papyrus.infra.onefile.model.PapyrusModelHelper;
 import org.eclipse.papyrus.infra.onefile.utils.OneFileUtils;
 import org.eclipse.uml2.common.util.UML2Util;
 
+import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
+
 /**
  * CX Dynamic Pathmap URI converter
  * 
@@ -80,8 +82,12 @@ public class CXDynamicURIConverter {
 	 * @param uri
 	 * @return
 	 */
-	public static List<CXPathmapDescriptor> getPathmapDescriptors(URI uri){
-		return PATHMAPS.get(uri);
+	public static List<CXPathmapDescriptor> getPathmapDescriptors(URI uri) {
+		List<CXPathmapDescriptor> results = new ArrayList<CXPathmapDescriptor>();
+		if (PATHMAPS.containsKey(uri)) {
+			results.addAll(PATHMAPS.get(uri));
+		}
+		return results;
 	}
 	
 	/**
@@ -116,6 +122,7 @@ public class CXDynamicURIConverter {
 	 * 
 	 * @param desc
 	 */
+	@SuppressWarnings("nls")
 	public static void enablePathmapMapping(CXPathmapDescriptor desc, int eventType) {
 		if(desc.isEnabled()) {
 			// already enabled
@@ -129,6 +136,8 @@ public class CXDynamicURIConverter {
 				d.apply();
 			}
 		}
+		ZeligsoftCXUIPlugin.getDefault().info("Dynamic library " + desc.getPathmap().toString() + "("
+				+ desc.getMapping().toString() + ")" + " activated");
 		desc.setEnabled(true);
 		desc.apply();
 		for(PathmapChangeListener listener: listeners) {
@@ -162,6 +171,7 @@ public class CXDynamicURIConverter {
 		return false;
 	}
 
+	@SuppressWarnings("nls")
 	public static CXPathmapDescriptor addMapping(URI pathmapUri, URI modelUri) {
 		String modelName = modelUri.lastSegment();
 		URI targetURI = modelUri.trimSegments(1).appendSegment(""); //$NON-NLS-1$
@@ -219,6 +229,11 @@ public class CXDynamicURIConverter {
 			List<CXPathmapDescriptor> mappings = PATHMAPS.get(pathmapUri);
 			mappings.add(desc);
 			
+			if (desc.isEnabled()) {
+				ZeligsoftCXUIPlugin.getDefault().info("New dynamic library " + desc.getPathmap().toString() + "("
+						+ desc.getMapping().toString() + ")" + " activated");
+			}
+			
 			for (PathmapChangeListener listener : listeners) {
 				listener.handlePathmapChange(desc, null, PathmapChangeListener.ADD);
 			}
@@ -226,6 +241,7 @@ public class CXDynamicURIConverter {
 		return desc;
 	}
 
+	@SuppressWarnings("nls")
 	public static URI removeMapping(URI modelUri) {
 		// Find possible entry from PATHMAP and remove it
 		URI uri = URIConverter.INSTANCE.normalize(modelUri);
@@ -248,29 +264,41 @@ public class CXDynamicURIConverter {
 		if(desc == null) {
 			return null;
 		}
+		
+		if (desc.isEnabled()) {
+			ZeligsoftCXUIPlugin.getDefault().info("Active dynamic library " + desc.getPathmap().toString() + "("
+					+ desc.getMapping().toString() + ")" + " removed");
+		}
 
 		if (desc.getRegisteredModels().size() == 1) {
 			// remove this mapping from the pathmap mapping list
 			PATHMAPS.get(pathmapURI).remove(desc);
 
-			// remove this pathmap
-			if (desc.isEnabled()) {
-				desc.setEnabled(false);
-				desc.apply();
-				
-				// enable mapping from one of the mapping list
-				// this should fire FALLBACK event
-				if (!PATHMAPS.get(pathmapURI).isEmpty()) {
-					desc = PATHMAPS.get(pathmapURI).get(0);
-					enablePathmapMapping(desc, PathmapChangeListener.FALLBACK);
-				}
-			}
 			if (PATHMAPS.get(pathmapURI).isEmpty()) {
 				PATHMAPS.remove(pathmapURI);
 				// mappings are empty so remove this pathmap
 				// and fire REMOVE event
+				if(desc.isEnabled()) {
+					desc.setEnabled(false);
+					desc.apply();
+					for (PathmapChangeListener listener : listeners) {
+						listener.handlePathmapChange(null, desc, PathmapChangeListener.REMOVE);
+					}
+				}
+
+			}else if(desc.isEnabled()){
+				// mappings are not empty and the pathmap is enabled
+				desc.setEnabled(false);
+				desc.apply();
+				
+				CXPathmapDescriptor newDesc = PATHMAPS.get(pathmapURI).get(0);
+				newDesc.setEnabled(true);
+				newDesc.apply();
+				
+				// enable mapping from one of the mapping list
+				// this should fire FALLBACK event
 				for (PathmapChangeListener listener : listeners) {
-					listener.handlePathmapChange(null, desc, PathmapChangeListener.REMOVE);
+					listener.handlePathmapChange(newDesc, desc, PathmapChangeListener.FALLBACK);
 				}
 			}
 		}else {

@@ -80,6 +80,7 @@ public class PathmapSelectionComposite {
 		GridData data = new GridData();
 		data.horizontalAlignment = SWT.FILL;
 		data.verticalAlignment = SWT.FILL;
+		data.grabExcessVerticalSpace = true;
 		result.setLayoutData(data);
 
 		Label label = new Label(result, SWT.NONE);
@@ -88,7 +89,7 @@ public class PathmapSelectionComposite {
 		data.horizontalAlignment = SWT.FILL;
 		label.setLayoutData(data);
 
-		Table swtTable = new Table(result, SWT.CHECK | SWT.BORDER | SWT.FULL_SELECTION);
+		Table swtTable = new Table(result, SWT.CHECK | SWT.BORDER | SWT.FULL_SELECTION | SWT.V_SCROLL);
 		data = new GridData();
 		data.horizontalAlignment = SWT.FILL;
 		data.verticalAlignment = SWT.FILL;
@@ -154,7 +155,11 @@ public class PathmapSelectionComposite {
 			case 0:
 				return pathmap.toString();
 			case 1:
-				return CXDynamicURIConverter.getPathmapDescriptor(pathmap).getMapping().toString();
+				CXPathmapDescriptor desc = CXDynamicURIConverter.getPathmapDescriptor(pathmap);
+				if(desc == null) {
+					return UML2Util.EMPTY_STRING;
+				}
+				return desc.getMapping().toString();
 			case 2:
 				if (CXDynamicURIConverter.getPathmapDescriptors(pathmap).size() > 1) {
 					return "yes"; //$NON-NLS-1$

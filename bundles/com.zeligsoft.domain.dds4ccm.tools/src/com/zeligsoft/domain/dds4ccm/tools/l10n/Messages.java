@@ -4,11 +4,16 @@ import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "com.zeligsoft.domain.dds4ccm.tools.l10n.Messages"; //$NON-NLS-1$
+	public static String CloseDependentModelDialog_AutoCloseMsg;
+	public static String CloseDependentModelDialog_RemovingDynamicModelWarning;
 	public static String DDS4CCMDynamicURIMapHandler_BrokenLinkValidateMsg;
 	public static String DDS4CCMDynamicURIMapHandler_BrokenLinkWarningTitle;
 	public static String DDS4CCMDynamicURIMapHandler_UpdateingWorkspaceUri;
-	public static String DDS4CCMDynamicURIMapHandler_RemovingDynamicModelWarning;
+	public static String DDS4CCMDynamicURIMapHandler_WarningMsg;
+	public static String DDS4CCMDynamicURIMapHandler_WarningTitle;
 	public static String DDS4CCMDynamicURIMapHandler_WarningDialogTitle;
+	public static String DDS4CCMDynamicURIMapHandler_PackageImportError;
+	public static String DDS4CCMDynamicURIMapHandler_SuppressMessage;
 	public static String DynamicPathmapCustomPropertySection_ClosingEditorSubtask;
 	public static String DynamicPathmapCustomPropertySection_FieldLabel;
 	public static String DynamicPathmapCustomPropertySection_ModelLibraryButtonLabel;
@@ -24,13 +29,9 @@ public class Messages extends NLS {
 	public static String DynamicURIMappingsPreferencePage_ResetWarningsMsg;
 	public static String DynamicURIMappingsPreferencePage_ResetWarningsTitle;
 	public static String ICMBrowseDialog_DialogTitle;
-	public static String DDS4CCMDynamicURIMapHandler_PackageImportError;
-	public static String DDS4CCMDynamicURIMapHandler_SuppressMessage;
 	public static String GoToAction_ActionTitle;
 	public static String OpenModelAction_ActionTitle;
 	public static String PathmapConflictDialog_SuppressWarnings;
-	public static String DDS4CCMDynamicURIMapHandler_WarningMsg;
-	public static String DDS4CCMDynamicURIMapHandler_WarningTitle;
 	public static String PathmapSelectionDialog_DialogTitle;
 	public static String PathmapSelectionDialog_PreferenceLink;
 	public static String PathmapSelectionDialog_ConflictErrorMessage;

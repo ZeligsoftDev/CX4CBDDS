@@ -23,6 +23,7 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -46,6 +47,8 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
+import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 
@@ -181,8 +184,18 @@ public class ICMBrowseDialog extends TrayDialog {
 						Package root = UML2Util.load(rset, uri, UMLPackage.Literals.PACKAGE);
 						if (root != null && ZDLUtil.isZDLProfile(root, "cxDDS4CCM")) { //$NON-NLS-1$
 							String pathmap = CCMUtil.getZCXAnnotationDetail(root, "pathmap", UML2Util.EMPTY_STRING); //$NON-NLS-1$
+							
 							if (!UML2Util.isEmpty(pathmap)) {
-								result.add(member);
+								URI pathmapUri = URI.createURI("pathmap" + "://" + pathmap + "/", true); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+								CXPathmapDescriptor desc = CXDynamicURIConverter.getPathmapDescriptor(pathmapUri);
+								if (desc != null) {
+									URI parentUri = URI.createPlatformResourceURI(
+											file.getParent().getFullPath().toString() + Path.SEPARATOR, false);
+									if (desc.getMapping().equals(parentUri)
+											&& desc.getRegisteredModels().contains(file.getName())) {
+										result.add(member);
+									}
+								}
 							}
 						}
 					}

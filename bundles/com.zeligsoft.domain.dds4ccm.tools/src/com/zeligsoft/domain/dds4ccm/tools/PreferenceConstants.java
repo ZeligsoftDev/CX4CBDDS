@@ -17,5 +17,9 @@ public final class PreferenceConstants {
 	public static final String SUPPRESS_PATHMAP_CHANGE_WARNING = "PATHMAP_CHANGE_WARNING"; //$NON-NLS-1$
 
 	public static final String SUPPRESS_PATHMAP_FALLBACK_WARNING = "PATHMAP_CHANGE_WARNING"; //$NON-NLS-1$
+	
+	public static final String AUTO_CLOSE_PATHMAP_DEPENDENT_MODEL = "AUTO_CLOSE_PATHMAP_DEPENDENT_MODEL"; //$NON-NLS-1$
+	
+	public static final boolean DEFAULT_AUTO_CLOSE_PATHMAP_DEPENDENT_MODEL = false;
 
 }
