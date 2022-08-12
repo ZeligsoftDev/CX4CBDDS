@@ -176,6 +176,7 @@ public final class DDS4CCMDynamicURIMapHandler{
 
 			@Override
 			public void handlePathmapChange(CXPathmapDescriptor newValue, CXPathmapDescriptor oldValue, int eventType) {
+				
 				if(eventType == PathmapChangeListener.ADD) {
 					// handle conflict pathmaps.
 					if (PlatformUI.isWorkbenchRunning()) {
@@ -190,16 +191,8 @@ public final class DDS4CCMDynamicURIMapHandler{
 							List<CXPathmapDescriptor> mappings = CXDynamicURIConverter
 									.getPathmapDescriptors(desc.getPathmap());
 							if (mappings.size() > 1) {
-								addNewConflictPathmap(desc.getPathmap());
-								Display.getDefault().asyncExec(new Runnable() {
-
-									@Override
-									public void run() {
-										PathmapSelectionDialog dialog = new PathmapSelectionDialog(
-												Display.getCurrent().getActiveShell());
-										dialog.open();
-									}
-								});
+								// handle multiple mappings
+								handleConflictPathmap(desc.getPathmap());
 							}
 						}
 					}
@@ -239,18 +232,8 @@ public final class DDS4CCMDynamicURIMapHandler{
 						// do nothing
 					}
 
-					if (PlatformUI.isWorkbenchRunning()) {
-						addNewConflictPathmap(desc.getPathmap());
-						Display.getDefault().asyncExec(new Runnable() {
-
-							@Override
-							public void run() {
-								PathmapSelectionDialog dialog = new PathmapSelectionDialog(
-										Display.getCurrent().getActiveShell());
-								dialog.open();
-							}
-						});
-					}
+					// open conflict selection dialog
+					handleConflictPathmap(desc.getPathmap());
 					
 					// check dependent model
 					checkDependentModels(oldValue);
@@ -265,6 +248,25 @@ public final class DDS4CCMDynamicURIMapHandler{
 	}
 
 	/**
+	 * Open mapping selection dialog for multiple mappings
+	 * 
+	 * @param conflictPathmap
+	 */
+	private static void handleConflictPathmap(URI conflictPathmap) {
+		if (PlatformUI.isWorkbenchRunning()) {
+			addNewConflictPathmap(conflictPathmap);
+			Display.getDefault().asyncExec(new Runnable() {
+
+				@Override
+				public void run() {
+					PathmapSelectionDialog dialog = new PathmapSelectionDialog(Display.getCurrent().getActiveShell());
+					dialog.open();
+				}
+			});
+		}
+	}
+	
+	/**
 	 * Open close dependent model dialog
 	 * 
 	 * @param desc
@@ -275,39 +277,42 @@ public final class DDS4CCMDynamicURIMapHandler{
 		URI pathmapUri = URI.createURI(desc.getPathmap().toString() + modelName);
 		// check dependent models
 
-		if (PlatformUI.isWorkbenchRunning()) {
-			final Set<URI> dependentModels = new HashSet<URI>();
-			visitAllModels(ResourcesPlugin.getWorkspace().getRoot(),
-					modelUri -> containsReferenceToPathmap(pathmapUri, resourceUri, modelUri, dependentModels));
+		if (!PlatformUI.isWorkbenchRunning()) {
+			return;
+		}
 
-			if (!dependentModels.isEmpty()) {
-				addDependentModelsToClose(resourceUri, dependentModels);
-				Display.getDefault().asyncExec(new Runnable() {
+		final Set<URI> dependentModels = new HashSet<URI>();
+		visitAllModels(ResourcesPlugin.getWorkspace().getRoot(),
+				modelUri -> containsReferenceToPathmap(pathmapUri, resourceUri, modelUri, dependentModels));
 
-					@Override
-					public void run() {
+		if (dependentModels.isEmpty()) {
+			return;
+		}
+		
+		addDependentModelsToClose(resourceUri, dependentModels);
+		Display.getDefault().asyncExec(new Runnable() {
 
-						if (PlatformUI.getWorkbench().getActiveWorkbenchWindow() == null) {
-							return;
-						}
+			@Override
+			public void run() {
 
-						CloseDependentModelDialog dialog = new CloseDependentModelDialog(
-								Display.getCurrent().getActiveShell());
-						if (dialog.open() == Dialog.OK) {
-							List<IEditorReference> editorsToClose = new ArrayList<IEditorReference>();
-							for (URI uri : dialog.getModelsToClose()) {
-								IEditorReference ref = BaseUIUtil.getEditorReference(uri);
-								if (ref != null) {
-									editorsToClose.add(ref);
-								}
-							}
-							PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-									.closeEditors(editorsToClose.toArray(new IEditorReference[0]), true);
+				if (PlatformUI.getWorkbench().getActiveWorkbenchWindow() == null) {
+					return;
+				}
+
+				CloseDependentModelDialog dialog = new CloseDependentModelDialog(Display.getCurrent().getActiveShell());
+				if (dialog.open() == Dialog.OK) {
+					List<IEditorReference> editorsToClose = new ArrayList<IEditorReference>();
+					for (URI uri : dialog.getModelsToClose()) {
+						IEditorReference ref = BaseUIUtil.getEditorReference(uri);
+						if (ref != null) {
+							editorsToClose.add(ref);
 						}
 					}
-				});
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+							.closeEditors(editorsToClose.toArray(new IEditorReference[0]), true);
+				}
 			}
-		}
+		});
 	}
 
 	/**

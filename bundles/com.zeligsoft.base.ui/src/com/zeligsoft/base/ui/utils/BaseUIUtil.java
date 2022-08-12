@@ -682,6 +682,9 @@ public class BaseUIUtil {
 	 * @return
 	 */
 	public static IEditorReference getEditorReference(URI modelUri) {
+		if(PlatformUI.getWorkbench().getActiveWorkbenchWindow() == null) {
+			return null;
+		}
 		String modelPath = modelUri.trimFileExtension().appendFileExtension("di").toString(); //$NON-NLS-1$
 		for (IEditorReference ref : PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.getEditorReferences()) {

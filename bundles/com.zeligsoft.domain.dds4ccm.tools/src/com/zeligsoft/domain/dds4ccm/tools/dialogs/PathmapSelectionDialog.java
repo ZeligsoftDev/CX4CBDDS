@@ -68,7 +68,6 @@ public class PathmapSelectionDialog extends TrayDialog {
 	protected Set<URI> pathmaps = new HashSet<URI>();
 	private PathmapSelectionComposite pathmapSelectionComposite;
 	private static final Lock lock = new ReentrantLock();
-	private static boolean dialogInUse = false;
 
 	public PathmapSelectionDialog(Shell shell) {
 		super(shell);
@@ -205,59 +204,40 @@ public class PathmapSelectionDialog extends TrayDialog {
 	@Override
 	public int open() {
 		int result = Dialog.OK;
-		boolean openDialog = false;
 		lock.lock();
 		try {
-			if (!dialogInUse) {
-				dialogInUse = true;
-				openDialog = true;
+			Set<URI> conflicts = DDS4CCMDynamicURIMapHandler.getAndClearNewConflictPathmaps();
+			if (!conflicts.isEmpty()) {
+				while (true) {
+					try {
+						// delay one second to collect all possible pathmap changes from the single
+						// workspace event sequence
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e) {
+						// do nothing
+					}
+					Set<URI> newConflicts = DDS4CCMDynamicURIMapHandler.getAndClearNewConflictPathmaps();
+					if (newConflicts.isEmpty()) {
+						break;
+					}
+					conflicts.addAll(newConflicts);
+				}
+
+				for (URI pathmap : conflicts) {
+					if (CXDynamicURIConverter.getPathmapDescriptors(pathmap).size() > 0) {
+						pathmaps.add(pathmap);
+					}
+				}
+
+				if (!pathmaps.isEmpty()) {
+					// open pathmap selection dialog if new changes are found
+					result = super.open();
+				}
 			}
 		} finally {
 			lock.unlock();
 		}
-		
-		if (openDialog) {
-			try {
-				// delay one second to collect all possible pathmap changes from the single
-				// workspace event sequence
-				TimeUnit.SECONDS.sleep(1);
-			} catch (InterruptedException e) {
-				// do nothing
-			}
-			Set<URI> conflicts = DDS4CCMDynamicURIMapHandler.getAndClearNewConflictPathmaps();
-			while (true) {
-				try {
-					// delay one second to collect all possible pathmap changes from the single
-					// workspace event sequence
-					TimeUnit.SECONDS.sleep(1);
-				} catch (InterruptedException e) {
-					// do nothing
-				}
-				Set<URI> newConflicts = DDS4CCMDynamicURIMapHandler.getAndClearNewConflictPathmaps();
-				if (newConflicts.isEmpty()) {
-					break;
-				}
-				conflicts.addAll(newConflicts);
-			}
-			
-			pathmaps.clear();
-			for(URI pathmap: conflicts) {
-				if(CXDynamicURIConverter.getPathmapDescriptors(pathmap).size() > 0) {
-					pathmaps.add(pathmap);
-				}
-			}
-			
-			// open pathmap selection dialog if new changes are found
-			result = super.open();
-			
-			lock.lock();
-			try {
-				dialogInUse = false;
-			} finally {
-				lock.unlock();
-			}
-		}
-		
+
 		return result;
 	}
 }

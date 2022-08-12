@@ -37,7 +37,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IEditorReference;
 
+import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.domain.dds4ccm.tools.internal.emf.DDS4CCMDynamicURIMapHandler;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 
@@ -52,7 +54,6 @@ public class CloseDependentModelDialog extends TrayDialog {
 	protected boolean shouldCloseDependentModels = false;
 	protected Map<URI, Set<URI>> dependentModels = new HashMap<URI, Set<URI>>();
 	private static final Lock lock = new ReentrantLock();
-	private static boolean dialogInUse = false;
 	
 	public CloseDependentModelDialog(Shell shell) {
 		super(shell);
@@ -141,47 +142,41 @@ public class CloseDependentModelDialog extends TrayDialog {
 	@Override
 	public int open() {
 		int result = Dialog.CANCEL;
-		boolean openDialog = false;
 		lock.lock();
 		try {
-			if (!dialogInUse) {
-				dialogInUse = true;
-				openDialog = true;
+			Map<URI, Set<URI>> modelsToCheck = DDS4CCMDynamicURIMapHandler.getAndClearDependentModelsToClose();
+			if (!modelsToCheck.isEmpty()) {
+				while (true) {
+					try {
+						// delay one second to collect all possible pathmap changes from the single
+						// workspace event sequence
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e) {
+						// do nothing
+					}
+					Map<URI, Set<URI>> newChanges = DDS4CCMDynamicURIMapHandler.getAndClearDependentModelsToClose();
+					if (newChanges.isEmpty()) {
+						break;
+					}
+					modelsToCheck.putAll(newChanges);
+				}
+				
+				for(URI pathmap: modelsToCheck.keySet()) {
+					Set<URI> models = modelsToCheck.get(pathmap);
+					for(URI model: models) {
+						IEditorReference ref = BaseUIUtil.getEditorReference(model);
+						if(ref != null) {
+							dependentModels.put(pathmap, models);
+						}
+					}
+				}
+				if (!dependentModels.isEmpty()) {
+					// open question dialog
+					result = super.open();
+				}
 			}
 		} finally {
 			lock.unlock();
-		}
-		if (openDialog) {
-			try {
-				// delay one second to collect all possible pathmap changes from the single
-				// workspace event sequence
-				TimeUnit.SECONDS.sleep(1);
-			} catch (InterruptedException e) {
-				// do nothing
-			}
-			dependentModels = DDS4CCMDynamicURIMapHandler.getAndClearDependentModelsToClose();
-			while (true) {
-				try {
-					// delay one second to collect all possible pathmap changes from the single
-					// workspace event sequence
-					TimeUnit.SECONDS.sleep(1);
-				} catch (InterruptedException e) {
-					// do nothing
-				}
-				Map<URI, Set<URI>> newChanges = DDS4CCMDynamicURIMapHandler.getAndClearDependentModelsToClose();
-				if(newChanges.isEmpty()) {
-					break;
-				}
-				dependentModels.putAll(newChanges);
-			}
-			// open question dialog
-			result = super.open();
-			lock.lock();
-			try {
-				dialogInUse = false;
-			} finally {
-				lock.unlock();
-			}
 		}
 
 		return result;
