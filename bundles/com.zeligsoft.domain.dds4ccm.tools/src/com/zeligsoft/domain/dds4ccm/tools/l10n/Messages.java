@@ -23,6 +23,7 @@ public class Messages extends NLS {
 	public static String DynamicPathmapCustomPropertySection_RefactoringConfirmationMsg;
 	public static String DynamicPathmapCustomPropertySection_RefactoringDialogTitle;
 	public static String DynamicPathmapCustomPropertySection_RegisteringPathmapSubtask;
+	public static String DynamicURIMappingsPreferencePage_DialogOpenDelay;
 	public static String DynamicURIMappingsPreferencePage_PreferencePageTitle;
 	public static String DynamicURIMappingsPreferencePage_RemapLabel;
 	public static String DynamicURIMappingsPreferencePage_ResetSuppressedWarningButton;

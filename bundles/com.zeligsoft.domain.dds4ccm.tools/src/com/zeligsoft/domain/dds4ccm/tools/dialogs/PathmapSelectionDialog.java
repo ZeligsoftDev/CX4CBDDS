@@ -208,11 +208,13 @@ public class PathmapSelectionDialog extends TrayDialog {
 		try {
 			Set<URI> conflicts = DDS4CCMDynamicURIMapHandler.getAndClearNewConflictPathmaps();
 			if (!conflicts.isEmpty()) {
+				int delay = store.getInt(PreferenceConstants.DEALY_TO_CONSOLIDATE_DIALOGS,
+						PreferenceConstants.DEFAULT_DEALY_TO_CONSOLIDATE_DIALOGS);
 				while (true) {
 					try {
 						// delay one second to collect all possible pathmap changes from the single
 						// workspace event sequence
-						TimeUnit.SECONDS.sleep(1);
+						TimeUnit.SECONDS.sleep(delay);
 					} catch (InterruptedException e) {
 						// do nothing
 					}

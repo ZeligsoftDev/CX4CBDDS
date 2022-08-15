@@ -24,6 +24,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -40,6 +42,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorReference;
 
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
+import com.zeligsoft.domain.dds4ccm.tools.Activator;
+import com.zeligsoft.domain.dds4ccm.tools.PreferenceConstants;
 import com.zeligsoft.domain.dds4ccm.tools.internal.emf.DDS4CCMDynamicURIMapHandler;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 
@@ -146,11 +150,13 @@ public class CloseDependentModelDialog extends TrayDialog {
 		try {
 			Map<URI, Set<URI>> modelsToCheck = DDS4CCMDynamicURIMapHandler.getAndClearDependentModelsToClose();
 			if (!modelsToCheck.isEmpty()) {
+				IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+				int delay = store.getInt(PreferenceConstants.DEALY_TO_CONSOLIDATE_DIALOGS, PreferenceConstants.DEFAULT_DEALY_TO_CONSOLIDATE_DIALOGS);
 				while (true) {
 					try {
 						// delay one second to collect all possible pathmap changes from the single
 						// workspace event sequence
-						TimeUnit.SECONDS.sleep(1);
+						TimeUnit.SECONDS.sleep(delay);
 					} catch (InterruptedException e) {
 						// do nothing
 					}
