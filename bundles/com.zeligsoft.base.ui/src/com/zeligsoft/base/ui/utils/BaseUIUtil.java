@@ -682,21 +682,23 @@ public class BaseUIUtil {
 	 * @return
 	 */
 	public static IEditorReference getEditorReference(URI modelUri) {
-		if(PlatformUI.getWorkbench().getActiveWorkbenchWindow() == null) {
-			return null;
-		}
 		String modelPath = modelUri.trimFileExtension().appendFileExtension("di").toString(); //$NON-NLS-1$
-		for (IEditorReference ref : PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-				.getEditorReferences()) {
-			try {
-				IEditorInput input = ref.getEditorInput();
-				if (input instanceof FileEditorInput) {
-					if (modelPath.endsWith(((FileEditorInput) input).getFile().getFullPath().toString())) {
-						return ref;
+		for (IWorkbenchWindow workbenchWindow : PlatformUI.getWorkbench().getWorkbenchWindows()) {
+			IWorkbenchPage page = workbenchWindow.getActivePage();
+			if (page == null) {
+				continue;
+			}
+			for (IEditorReference ref : page.getEditorReferences()) {
+				try {
+					IEditorInput input = ref.getEditorInput();
+					if (input instanceof FileEditorInput) {
+						if (modelPath.endsWith(((FileEditorInput) input).getFile().getFullPath().toString())) {
+							return ref;
+						}
 					}
+				} catch (PartInitException e) {
+					// nothing we can do so silence
 				}
-			} catch (PartInitException e) {
-				// nothing we can do so silence
 			}
 		}
 		return null;

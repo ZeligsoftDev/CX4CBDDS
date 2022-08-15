@@ -281,9 +281,19 @@ public final class DDS4CCMDynamicURIMapHandler{
 			return;
 		}
 
-		final Set<URI> dependentModels = new HashSet<URI>();
-		visitAllModels(ResourcesPlugin.getWorkspace().getRoot(),
-				modelUri -> containsReferenceToPathmap(pathmapUri, resourceUri, modelUri, dependentModels));
+		Set<URI> modelUris = new HashSet<URI>();
+		
+		visitAllModels(ResourcesPlugin.getWorkspace().getRoot(), modelUri -> {
+			if (BaseUIUtil.getEditorReference(modelUri) != null) {
+				modelUris.add(modelUri);
+				
+			}
+		});
+		
+		Set<URI> dependentModels = new HashSet<URI>();
+		for (URI modelUri : modelUris) {
+			containsReferenceToPathmap(pathmapUri, resourceUri, modelUri, dependentModels, true);
+		}
 
 		if (dependentModels.isEmpty()) {
 			return;
@@ -511,6 +521,12 @@ public final class DDS4CCMDynamicURIMapHandler{
 		}
 	}
 
+	public static void containsReferenceToPathmap(URI pathampUri, URI mappingUri, URI modelUri,
+			Set<URI> dependentModels) {
+		containsReferenceToPathmap(pathampUri, mappingUri, modelUri, dependentModels, false);
+		
+	}
+	
 	/**
 	 * Check if the given model have references to the pathmap
 	 * 
@@ -519,59 +535,67 @@ public final class DDS4CCMDynamicURIMapHandler{
 	 * @param dependentModels
 	 */
 	@SuppressWarnings("unchecked")
-	public static void containsReferenceToPathmap(URI pathampUri, URI mappingUri, URI modelUri, Set<URI> dependentModels) {
-		
-		if(URIConverter.INSTANCE.normalize(pathampUri).equals(modelUri)) {
+	public static void containsReferenceToPathmap(URI pathampUri, URI mappingUri, URI modelUri,
+			Set<URI> dependentModels, boolean checkImportOnly) {
+
+		if (URIConverter.INSTANCE.normalize(pathampUri).equals(modelUri)) {
 			return;
 		}
-		
+
 		Package model = UML2Util.load(rset, modelUri, UMLPackage.Literals.PACKAGE);
 		if (model == null || !ZDLUtil.isZDLProfile(model, "cxDDS4CCM")) { //$NON-NLS-1$
 			return;
 		}
-		
+
 		TreeIterator<EObject> itor = model.eAllContents();
 		while (itor.hasNext()) {
 			EObject next = itor.next();
 			if (next instanceof PackageImport) {
 				Package pkg = ((PackageImport) next).getImportedPackage();
-				if(isReferenceToPathmap(next, pkg, pathampUri, mappingUri)) {
+				if (isReferenceToPathmap(next, pkg, pathampUri, mappingUri)) {
 					dependentModels.add(modelUri);
 					return;
 				}
 				itor.prune();
-			} else if (!(next instanceof Element)) {
-				itor.prune();
 			} else {
-				Element element = (Element) next;
-				if(element instanceof TypedElement) {
-					Type type = ((TypedElement)element).getType();
-					if(type != null && isReferenceToPathmap(next, type, pathampUri, mappingUri)) {
-						dependentModels.add(modelUri);
-						return;
-					}
-				}
-				List<org.eclipse.uml2.uml.Class> concepts = ZDLUtil.getZDLConcepts(element);
-				for (org.eclipse.uml2.uml.Class clazz : concepts) {
-					for (Property p : clazz.getAllAttributes()) {
-						if (p.getType() instanceof PrimitiveType) {
-							// no need to check primitive types
-							continue;
+				if (checkImportOnly) {
+					itor.prune();
+				} else {
+					if (!(next instanceof Element)) {
+						itor.prune();
+					} else {
+						Element element = (Element) next;
+						if (element instanceof TypedElement) {
+							Type type = ((TypedElement) element).getType();
+							if (type != null && isReferenceToPathmap(next, type, pathampUri, mappingUri)) {
+								dependentModels.add(modelUri);
+								return;
+							}
 						}
-						Object value = ZDLUtil.getValue(element, clazz, p.getName());
-						if (value != null) {
-							if (value instanceof List) {
-								for (Object o : (List<Object>) value) {
-									if (o instanceof EObject && isReferenceToPathmap(next, (EObject) o, pathampUri, mappingUri)) {
-										dependentModels.add(modelUri);
-										return;
-									}
+						List<org.eclipse.uml2.uml.Class> concepts = ZDLUtil.getZDLConcepts(element);
+						for (org.eclipse.uml2.uml.Class clazz : concepts) {
+							for (Property p : clazz.getAllAttributes()) {
+								if (p.getType() instanceof PrimitiveType) {
+									// no need to check primitive types
+									continue;
 								}
-							} else {
-								if (value instanceof EObject
-										&& isReferenceToPathmap(next, (EObject) value, pathampUri, mappingUri)) {
-									dependentModels.add(modelUri);
-									return;
+								Object value = ZDLUtil.getValue(element, clazz, p.getName());
+								if (value != null) {
+									if (value instanceof List) {
+										for (Object o : (List<Object>) value) {
+											if (o instanceof EObject && isReferenceToPathmap(next, (EObject) o,
+													pathampUri, mappingUri)) {
+												dependentModels.add(modelUri);
+												return;
+											}
+										}
+									} else {
+										if (value instanceof EObject && isReferenceToPathmap(next, (EObject) value,
+												pathampUri, mappingUri)) {
+											dependentModels.add(modelUri);
+											return;
+										}
+									}
 								}
 							}
 						}

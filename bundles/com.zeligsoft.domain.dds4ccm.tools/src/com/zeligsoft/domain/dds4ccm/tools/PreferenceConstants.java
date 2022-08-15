@@ -20,6 +20,6 @@ public final class PreferenceConstants {
 	
 	public static final String DEALY_TO_CONSOLIDATE_DIALOGS = "DELAY_TO_CONSOLIDATE_DIALOGS"; //$NON-NLS-1$
 	
-	public static final int DEFAULT_DEALY_TO_CONSOLIDATE_DIALOGS = 2;
+	public static final int DEFAULT_DEALY_TO_CONSOLIDATE_DIALOGS = 1;
 
 }

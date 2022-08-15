@@ -86,7 +86,7 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 2;
 		composite.setLayout(layout);
-		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
+		composite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		
 		Label label = new Label(composite, SWT.NONE);
 		label.setText(Messages.DynamicURIMappingsPreferencePage_DialogOpenDelay);
