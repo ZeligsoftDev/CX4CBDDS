@@ -22,6 +22,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -65,7 +67,7 @@ public class PathmapSelectionDialog extends TrayDialog {
 	protected boolean warningSuppressed = false;
 	protected Set<URI> pathmaps = new HashSet<URI>();
 	private PathmapSelectionComposite pathmapSelectionComposite;
-	
+	private static final Lock lock = new ReentrantLock();
 
 	public PathmapSelectionDialog(Shell shell) {
 		super(shell);
@@ -102,8 +104,10 @@ public class PathmapSelectionDialog extends TrayDialog {
 		Composite selectionComposite = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
 		selectionComposite.setLayout(layout);
-		selectionComposite
-				.setLayoutData(new GridData(GridData.FILL_BOTH | GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL));
+		GridData data = new GridData(GridData.FILL_BOTH | GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL);
+		data.heightHint = 300;
+				
+		selectionComposite.setLayoutData(data);
 
 		Label label = new Label(selectionComposite, SWT.NONE);
 		label.setText(message);
@@ -200,19 +204,42 @@ public class PathmapSelectionDialog extends TrayDialog {
 	@Override
 	public int open() {
 		int result = Dialog.OK;
+		lock.lock();
 		try {
-			// delay one second to collect all possible pathmap changes from the single workspace event sequence
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			// do nothing
+			Set<URI> conflicts = DDS4CCMDynamicURIMapHandler.getAndClearNewConflictPathmaps();
+			if (!conflicts.isEmpty()) {
+				int delay = store.getInt(PreferenceConstants.DEALY_TO_CONSOLIDATE_DIALOGS,
+						PreferenceConstants.DEFAULT_DEALY_TO_CONSOLIDATE_DIALOGS);
+				while (true) {
+					try {
+						// delay one second to collect all possible pathmap changes from the single
+						// workspace event sequence
+						TimeUnit.SECONDS.sleep(delay);
+					} catch (InterruptedException e) {
+						// do nothing
+					}
+					Set<URI> newConflicts = DDS4CCMDynamicURIMapHandler.getAndClearNewConflictPathmaps();
+					if (newConflicts.isEmpty()) {
+						break;
+					}
+					conflicts.addAll(newConflicts);
+				}
+
+				for (URI pathmap : conflicts) {
+					if (CXDynamicURIConverter.getPathmapDescriptors(pathmap).size() > 0) {
+						pathmaps.add(pathmap);
+					}
+				}
+
+				if (!pathmaps.isEmpty()) {
+					// open pathmap selection dialog if new changes are found
+					result = super.open();
+				}
+			}
+		} finally {
+			lock.unlock();
 		}
-		pathmaps = DDS4CCMDynamicURIMapHandler.getAndClearNewConflictPathmaps();
-		
-		if(!pathmaps.isEmpty()) {
-			// open pathmap selection dialog if new changes are found
-			result = super.open();
-		}
-		
+
 		return result;
 	}
 }

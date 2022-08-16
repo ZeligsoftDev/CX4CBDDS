@@ -425,7 +425,7 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 					for (int i = 0; i < models.size(); i++) {
 						URI modelUri = models.get(i);
 						monitor.subTask("Checking " + modelUri.toString()); //$NON-NLS-1$
-						DDS4CCMDynamicURIMapHandler.containsReferenceToPathmap(normalizedUri, modelUri, dependentModels);
+						DDS4CCMDynamicURIMapHandler.containsReferenceToPathmap(targetUri, normalizedUri, modelUri, dependentModels);
 					}
 					monitor.done();
 					for (URI uri : dependentModels) {

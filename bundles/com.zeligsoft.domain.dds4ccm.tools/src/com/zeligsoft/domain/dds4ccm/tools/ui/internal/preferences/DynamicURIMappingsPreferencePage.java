@@ -27,11 +27,17 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.osgi.service.prefs.BackingStoreException;
@@ -54,6 +60,8 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 
 	private CheckboxTableViewer tableViewer;
 	
+	private IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+	
 	/**
 	 * Initializes me.
 	 */
@@ -74,15 +82,58 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 		noDefaultAndApplyButton();
 		contributeButtons(result);
 		
-		Button button = new Button(result, SWT.PUSH);
-		button.setText(Messages.DynamicURIMappingsPreferencePage_ResetSuppressedWarningButton);
+		Composite composite = new Composite(parent, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 2;
+		composite.setLayout(layout);
+		composite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		
+		Label label = new Label(composite, SWT.NONE);
+		label.setText(Messages.DynamicURIMappingsPreferencePage_DialogOpenDelay);
+		GridData data = new GridData();
+		data.widthHint = 50;
+		Text text = new Text(composite, SWT.BORDER);
+		text.setLayoutData(data);
+		int seconds = store.getInt(PreferenceConstants.DEALY_TO_CONSOLIDATE_DIALOGS, PreferenceConstants.DEFAULT_DEALY_TO_CONSOLIDATE_DIALOGS);
+		text.setText(String.valueOf(seconds));
+		text.addModifyListener(new ModifyListener() {
+			
+			@Override
+			public void modifyText(ModifyEvent e) {
+				try {
+					int newDelay = Integer.valueOf(text.getText());
+					store.putInt(PreferenceConstants.DEALY_TO_CONSOLIDATE_DIALOGS, newDelay);
+				} catch (NumberFormatException ex) {
+					text.setText(String.valueOf(seconds));
+				}
+			}
+		});
+		
+		return result;
+	}
+	
+	@Override
+	protected void contributeButtons(Composite parent) {
+		Button button = new Button(parent, SWT.PUSH);
+		button.setText(Messages.DynamicURIMappingsPreferencePage_RemapLabel);
 		button.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				DDS4CCMDynamicURIMapHandler.remapDynamicURI();
+				tableViewer.setInput(tableViewer.getInput());
+				List<URI> selected = CXDynamicURIConverter.getEnabledPathmaps().stream().map(d -> d.getPathmap())
+						.collect(Collectors.toList());
+				tableViewer.setCheckedElements(selected.toArray());
+			}
+		});
+		
+		Button resetWarningButton = new Button(parent, SWT.PUSH);
+		resetWarningButton.setText(Messages.DynamicURIMappingsPreferencePage_ResetSuppressedWarningButton);
+		resetWarningButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (MessageDialog.openQuestion(getShell(), Messages.DynamicURIMappingsPreferencePage_ResetWarningsTitle,
 						Messages.DynamicURIMappingsPreferencePage_ResetWarningsMsg)) {
-
-					IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
 
 					List<String> keysToRemove = new ArrayList<String>();
 
@@ -110,24 +161,6 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 					}
 					tableViewer.setInput(tableViewer.getInput());
 				}
-			}
-		});
-		
-		return result;
-	}
-	
-	@Override
-	protected void contributeButtons(Composite parent) {
-		Button button = new Button(parent, SWT.PUSH);
-		button.setText(Messages.DynamicURIMappingsPreferencePage_RemapLabel);
-		button.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				DDS4CCMDynamicURIMapHandler.remapDynamicURI();
-				tableViewer.setInput(tableViewer.getInput());
-				List<URI> selected = CXDynamicURIConverter.getEnabledPathmaps().stream().map(d -> d.getPathmap())
-						.collect(Collectors.toList());
-				tableViewer.setCheckedElements(selected.toArray());
 			}
 		});
 	}
