@@ -17,7 +17,9 @@
 package com.zeligsoft.domain.dds4ccm.tools.ui.internal.preferences;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -42,8 +44,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.osgi.service.prefs.BackingStoreException;
 
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
-import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
+import com.zeligsoft.base.pathmap.PathmapDescriptor;
 import com.zeligsoft.domain.dds4ccm.tools.Activator;
 import com.zeligsoft.domain.dds4ccm.tools.PreferenceConstants;
 import com.zeligsoft.domain.dds4ccm.tools.dialogs.PathmapSelectionComposite;
@@ -71,11 +73,11 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 
 	@Override
 	protected Control createContents(Composite parent) {
-		List<URI> pathmapURIs = new ArrayList<URI>();
-		for(CXPathmapDescriptor desc: CXDynamicURIConverter.getPathmaps()) {
+		Set<URI> pathmapURIs = new HashSet<URI>();
+		for(PathmapDescriptor desc: DynamicPathmapRegistry.INSTANCE.getPathmaps()) {
 			pathmapURIs.add(desc.getPathmap());
 		}
-		PathmapSelectionComposite selectionComposite = new PathmapSelectionComposite();
+		PathmapSelectionComposite selectionComposite = new PathmapSelectionComposite(pathmapURIs);
 		Composite result = selectionComposite.createContents(parent);
 		tableViewer = selectionComposite.getViewer();
 
@@ -121,8 +123,8 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 			public void widgetSelected(SelectionEvent e) {
 				DDS4CCMDynamicURIMapHandler.remapDynamicURI();
 				tableViewer.setInput(tableViewer.getInput());
-				List<URI> selected = CXDynamicURIConverter.getEnabledPathmaps().stream().map(d -> d.getPathmap())
-						.collect(Collectors.toList());
+				List<URI> selected = DynamicPathmapRegistry.INSTANCE.getEnabledPathmaps().stream()
+						.map(d -> d.getPathmap()).collect(Collectors.toList());
 				tableViewer.setCheckedElements(selected.toArray());
 			}
 		});

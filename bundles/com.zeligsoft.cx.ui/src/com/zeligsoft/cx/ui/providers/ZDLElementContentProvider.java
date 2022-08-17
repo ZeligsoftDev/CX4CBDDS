@@ -50,11 +50,11 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
 import com.zeligsoft.base.util.BaseUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.preferences.CXPreferenceConstants;
 import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 
 /**
  * ZDL Element content provider
@@ -118,18 +118,18 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 					if (!UML2Util.isEmpty(ext) && BaseUtil.UML_MODEL_EXTENSION.equals(ext.toLowerCase())) {
 						URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
 						// Use pathmap URI if registered
-						uri = CXDynamicURIConverter.getPathmapURI(uri);
-							try {
-								Resource resource = rset.getResource(uri, true);
-								if (resource != null) {
-									Package root = UML2Util.load(rset, uri, UMLPackage.Literals.PACKAGE);
-									if (root != null && ZDLUtil.isZDLProfile(root, "cxDDS4CCM")) { //$NON-NLS-1$
-										resources.add(uri);
-									}
+						uri = DynamicPathmapRegistry.INSTANCE.denormalizeURI(uri);
+						try {
+							Resource resource = rset.getResource(uri, true);
+							if (resource != null) {
+								Package root = UML2Util.load(rset, uri, UMLPackage.Literals.PACKAGE);
+								if (root != null && ZDLUtil.isZDLProfile(root, "cxDDS4CCM")) { //$NON-NLS-1$
+									resources.add(uri);
 								}
-							} catch (Exception e) {
-								// ignore
 							}
+						} catch (Exception e) {
+							// ignore
+						}
 					}
 				}
 			}

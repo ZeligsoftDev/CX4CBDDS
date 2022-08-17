@@ -41,8 +41,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.uml2.common.util.UML2Util;
 
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
-import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
+import com.zeligsoft.base.pathmap.PathmapDescriptor;
 import com.zeligsoft.domain.dds4ccm.tools.Activator;
 import com.zeligsoft.domain.dds4ccm.tools.PreferenceConstants;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
@@ -57,10 +57,6 @@ public class PathmapSelectionComposite {
 
 	private CheckboxTableViewer tableViewer;
 	private Set<URI> pathmaps;
-
-	public PathmapSelectionComposite() {
-		this(CXDynamicURIConverter.PATHMAPS.keySet());
-	}
 
 	public PathmapSelectionComposite(Set<URI> pathmaps) {
 		this.pathmaps = pathmaps;
@@ -125,7 +121,7 @@ public class PathmapSelectionComposite {
 			@Override
 			public void checkStateChanged(CheckStateChangedEvent event) {
 				URI pathmap = (URI) event.getElement();
-				CXPathmapDescriptor desc = CXDynamicURIConverter.getPathmapDescriptor(pathmap);
+				PathmapDescriptor desc = DynamicPathmapRegistry.INSTANCE.getPathmapDescriptor(pathmap);
 				desc.setEnabled(event.getChecked());
 				desc.apply();
 			}
@@ -133,7 +129,7 @@ public class PathmapSelectionComposite {
 		});
 
 		tableViewer.setInput(pathmaps);
-		List<URI> selected = CXDynamicURIConverter.getEnabledPathmaps().stream().map(d -> d.getPathmap())
+		List<URI> selected = DynamicPathmapRegistry.INSTANCE.getEnabledPathmaps().stream().map(d -> d.getPathmap())
 				.collect(Collectors.toList());
 		tableViewer.setCheckedElements(selected.toArray());
 
@@ -155,13 +151,13 @@ public class PathmapSelectionComposite {
 			case 0:
 				return pathmap.toString();
 			case 1:
-				CXPathmapDescriptor desc = CXDynamicURIConverter.getPathmapDescriptor(pathmap);
+				PathmapDescriptor desc = DynamicPathmapRegistry.INSTANCE.getPathmapDescriptor(pathmap);
 				if(desc == null) {
 					return UML2Util.EMPTY_STRING;
 				}
 				return desc.getMapping().toString();
 			case 2:
-				if (CXDynamicURIConverter.getPathmapDescriptors(pathmap).size() > 1) {
+				if (DynamicPathmapRegistry.INSTANCE.getPathmapDescriptors(pathmap).size() > 1) {
 					return "yes"; //$NON-NLS-1$
 				}
 				return "no"; //$NON-NLS-1$

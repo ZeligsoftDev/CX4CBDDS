@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package com.zeligsoft.cx.ui.pathmap;
+package com.zeligsoft.base.pathmap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,14 +28,10 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.papyrus.infra.onefile.model.IPapyrusFile;
-import org.eclipse.papyrus.infra.onefile.model.PapyrusModelHelper;
-import org.eclipse.papyrus.infra.onefile.utils.OneFileUtils;
 import org.eclipse.uml2.common.util.UML2Util;
 
-import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
+import com.zeligsoft.base.Activator;
 
 /**
  * CX Dynamic Pathmap URI converter
@@ -43,114 +39,134 @@ import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
  * @author Young-Soo Roh
  *
  */
-public class CXDynamicURIConverter {
+public class DynamicPathmapRegistry {
 
-	public static Map<URI, List<CXPathmapDescriptor>> PATHMAPS = new HashMap<URI, List<CXPathmapDescriptor>>();
-	
-	private static List<PathmapChangeListener> listeners = new ArrayList<PathmapChangeListener>();
-	
-	private CXDynamicURIConverter() {
+	private Map<URI, List<PathmapDescriptor>> PATHMAPS = new HashMap<URI, List<PathmapDescriptor>>();
+
+	private List<PathmapChangeListener> listeners = new ArrayList<PathmapChangeListener>();
+
+	public static final DynamicPathmapRegistry INSTANCE = new DynamicPathmapRegistry();
+
+	private DynamicPathmapRegistry() {
 		super();
-	};
-	
-	public static void addChangeListener(PathmapChangeListener listener) {
+	}
+
+	public void addChangeListener(PathmapChangeListener listener) {
 		if (!listeners.contains(listener)) {
 			listeners.add(listener);
 		}
 	}
 
-	public static void removeChangeListener(PathmapChangeListener listener) {
+	public void removeChangeListener(PathmapChangeListener listener) {
 		listeners.remove(listener);
+	}
+
+	/**
+	 * clear all registered pathmaps
+	 * 
+	 * @return
+	 */
+	public void reset() {
+		for (URI uri : PATHMAPS.keySet()) {
+			List<PathmapDescriptor> mappings = getPathmapDescriptors(uri);
+			mappings.clear();
+		}
+		PATHMAPS.clear();
 	}
 	
 	/**
 	 * Return active pathmap descriptor
+	 * 
 	 * @param uri
 	 * @return
 	 */
-	public static CXPathmapDescriptor getPathmapDescriptor(URI uri) {
-		List<CXPathmapDescriptor> mappings = PATHMAPS.get(uri);
-		if(mappings == null){
+	public PathmapDescriptor getPathmapDescriptor(URI uri) {
+		List<PathmapDescriptor> mappings = PATHMAPS.get(uri);
+		if (mappings == null) {
 			return null;
 		}
-		List<CXPathmapDescriptor> enabledPathmap = mappings.stream().filter(p -> p.isEnabled()).collect(Collectors.toList());
-		return enabledPathmap.isEmpty()? mappings.get(0): enabledPathmap.get(0);
+		List<PathmapDescriptor> enabledPathmap = mappings.stream().filter(p -> p.isEnabled())
+				.collect(Collectors.toList());
+		return enabledPathmap.isEmpty() ? mappings.get(0) : enabledPathmap.get(0);
 	}
-	
+
 	/**
 	 * Return all pathmap descriptors
+	 * 
 	 * @param uri
 	 * @return
 	 */
-	public static List<CXPathmapDescriptor> getPathmapDescriptors(URI uri) {
-		List<CXPathmapDescriptor> results = new ArrayList<CXPathmapDescriptor>();
+	public List<PathmapDescriptor> getPathmapDescriptors(URI uri) {
+		List<PathmapDescriptor> results = new ArrayList<PathmapDescriptor>();
 		if (PATHMAPS.containsKey(uri)) {
 			results.addAll(PATHMAPS.get(uri));
 		}
 		return results;
 	}
-	
+
 	/**
 	 * Return all pathmaps
+	 * 
 	 * @return
 	 */
-	public static List<CXPathmapDescriptor> getPathmaps() {
+	public List<PathmapDescriptor> getPathmaps() {
 
-		List<CXPathmapDescriptor> result = new java.util.ArrayList<CXPathmapDescriptor>();
-		for(URI uri: CXDynamicURIConverter.PATHMAPS.keySet()) {
-			result.add(CXDynamicURIConverter.getPathmapDescriptor(uri));
+		List<PathmapDescriptor> result = new java.util.ArrayList<PathmapDescriptor>();
+		for (URI uri : PATHMAPS.keySet()) {
+			result.add(getPathmapDescriptor(uri));
 		}
 		return result;
 	}
-	
+
 	/**
 	 * Return all Pathmaps with multiple mappings
+	 * 
 	 * @return
 	 */
-	public static Map<URI, List<CXPathmapDescriptor>> getConflictPathmaps() {
-		Map<URI, List<CXPathmapDescriptor>> results = new HashMap<URI, List<CXPathmapDescriptor>>();
-		for (java.util.Map.Entry<URI, List<CXPathmapDescriptor>> entry : PATHMAPS.entrySet()) {
+	public Map<URI, List<PathmapDescriptor>> getConflictPathmaps() {
+		Map<URI, List<PathmapDescriptor>> results = new HashMap<URI, List<PathmapDescriptor>>();
+		for (java.util.Map.Entry<URI, List<PathmapDescriptor>> entry : PATHMAPS.entrySet()) {
 			if (entry.getValue() != null && entry.getValue().size() > 1) {
 				results.put(entry.getKey(), entry.getValue());
 			}
 		}
 		return results;
 	}
-	
+
 	/**
 	 * Enable given pathmap mapping and disable other mappings
 	 * 
 	 * @param desc
 	 */
 	@SuppressWarnings("nls")
-	public static void enablePathmapMapping(CXPathmapDescriptor desc, int eventType) {
-		if(desc.isEnabled()) {
+	public void enablePathmapMapping(PathmapDescriptor desc, int eventType) {
+		if (desc.isEnabled()) {
 			// already enabled
 			return;
 		}
-		CXPathmapDescriptor oldValue = getPathmapDescriptor(desc.getPathmap());
-		List<CXPathmapDescriptor> mappings = getPathmapDescriptors(desc.getPathmap());
-		for (CXPathmapDescriptor d : mappings) {
+		PathmapDescriptor oldValue = getPathmapDescriptor(desc.getPathmap());
+		List<PathmapDescriptor> mappings = getPathmapDescriptors(desc.getPathmap());
+		for (PathmapDescriptor d : mappings) {
 			if (d != desc && d.isEnabled()) {
 				d.setEnabled(false);
 				d.apply();
 			}
 		}
-		ZeligsoftCXUIPlugin.getDefault().info("Dynamic library " + desc.getPathmap().toString() + "("
+		Activator.getDefault().info("Dynamic library " + desc.getPathmap().toString() + "("
 				+ desc.getMapping().toString() + ")" + " activated");
 		desc.setEnabled(true);
 		desc.apply();
-		for(PathmapChangeListener listener: listeners) {
+		for (PathmapChangeListener listener : listeners) {
 			listener.handlePathmapChange(desc, oldValue, eventType);
 		}
 	}
-	
-	public static List<CXPathmapDescriptor> getEnabledPathmaps() {
-		
-		List<CXPathmapDescriptor> pathmaps = getPathmaps();
-		List<CXPathmapDescriptor> result = new java.util.ArrayList<CXPathmapDescriptor>(pathmaps.size());
 
-		for (CXPathmapDescriptor next : pathmaps) {
+	public List<PathmapDescriptor> getEnabledPathmaps() {
+
+		List<PathmapDescriptor> pathmaps = getPathmaps();
+		List<PathmapDescriptor> result = new java.util.ArrayList<PathmapDescriptor>(pathmaps.size());
+
+		for (PathmapDescriptor next : pathmaps) {
 			if (next.isEnabled()) {
 				result.add(next);
 			}
@@ -158,12 +174,12 @@ public class CXDynamicURIConverter {
 
 		return result;
 	}
-	
-	private static boolean isLinked(IResource resource) {
+
+	private boolean isLinked(IResource resource) {
 		IResource r = resource;
-		
-		while(r != null && !(r instanceof IProject)) {
-			if(r.isLinked()) {
+
+		while (r != null && !(r instanceof IProject)) {
+			if (r.isLinked()) {
 				return true;
 			}
 			r = r.getParent();
@@ -172,12 +188,12 @@ public class CXDynamicURIConverter {
 	}
 
 	@SuppressWarnings("nls")
-	public static CXPathmapDescriptor addMapping(URI pathmapUri, URI modelUri) {
+	public PathmapDescriptor addMapping(URI pathmapUri, URI modelUri) {
 		String modelName = modelUri.lastSegment();
 		URI targetURI = modelUri.trimSegments(1).appendSegment(""); //$NON-NLS-1$
 
-		CXPathmapDescriptor desc = getPathmapDescriptor(pathmapUri);
-		
+		PathmapDescriptor desc = getPathmapDescriptor(pathmapUri);
+
 		if (desc != null && desc.getMapping().equals(targetURI)) {
 			// same mapping exist possibly from different model
 			// so add the model name to the existing descriptor
@@ -187,16 +203,16 @@ public class CXDynamicURIConverter {
 			return desc;
 		} else {
 			if (desc != null) {
-				
+
 				// See if this is a link
 				URI normalizedUri = URIConverter.INSTANCE.normalize(modelUri);
 				String path = normalizedUri.toPlatformString(true);
 				IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(path));
-				if(isLinked(file)) {
+				if (isLinked(file)) {
 					// If this is a link and there is alreay a mapping, then ignore it
 					return desc;
 				}
-				
+
 				String mappedPath = desc.getMapping().toString();
 				IResource folder = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(mappedPath));
 				// Silently override mapping over linked resource.
@@ -205,20 +221,20 @@ public class CXDynamicURIConverter {
 					// It means the model library is either moved or a new model library
 					// is trying to register to the same pathmap URI
 					// Remove existing mapping in this case.
-					List<CXPathmapDescriptor> mappings = PATHMAPS.get(pathmapUri);
+					List<PathmapDescriptor> mappings = PATHMAPS.get(pathmapUri);
 					mappings.remove(desc);
 				}
 			}
-			desc = new CXPathmapDescriptor(pathmapUri, targetURI, modelName);
-			if(!PATHMAPS.containsKey(pathmapUri)) {
+			desc = new PathmapDescriptor(pathmapUri, targetURI, modelName);
+			if (!PATHMAPS.containsKey(pathmapUri)) {
 				desc.setEnabled(true);
 				desc.apply();
-				PATHMAPS.put(pathmapUri, new ArrayList<CXPathmapDescriptor>());
+				PATHMAPS.put(pathmapUri, new ArrayList<PathmapDescriptor>());
 			} else {
 				// pathmap was previously enabled so disable current mapping and
 				// enable this new mapping
 				if (desc.isEnabled()) {
-					for (CXPathmapDescriptor d : getPathmapDescriptors(desc.getPathmap())) {
+					for (PathmapDescriptor d : getPathmapDescriptors(desc.getPathmap())) {
 						d.setEnabled(false);
 						d.apply();
 					}
@@ -226,14 +242,14 @@ public class CXDynamicURIConverter {
 					desc.apply();
 				}
 			}
-			List<CXPathmapDescriptor> mappings = PATHMAPS.get(pathmapUri);
+			List<PathmapDescriptor> mappings = PATHMAPS.get(pathmapUri);
 			mappings.add(desc);
-			
+
 			if (desc.isEnabled()) {
-				ZeligsoftCXUIPlugin.getDefault().info("New dynamic library " + desc.getPathmap().toString() + "("
+				Activator.getDefault().info("New dynamic library " + desc.getPathmap().toString() + "("
 						+ desc.getMapping().toString() + ")" + " activated");
 			}
-			
+
 			for (PathmapChangeListener listener : listeners) {
 				listener.handlePathmapChange(desc, null, PathmapChangeListener.ADD);
 			}
@@ -242,15 +258,15 @@ public class CXDynamicURIConverter {
 	}
 
 	@SuppressWarnings("nls")
-	public static URI removeMapping(URI modelUri) {
+	public URI removeMapping(URI modelUri) {
 		// Find possible entry from PATHMAP and remove it
 		URI uri = URIConverter.INSTANCE.normalize(modelUri);
 		String modelName = uri.lastSegment();
 		URI targetURI = uri.trimSegments(1).appendSegment(UML2Util.EMPTY_STRING);
 		URI pathmapURI = null;
-		CXPathmapDescriptor desc = null;
+		PathmapDescriptor desc = null;
 		for (URI key : PATHMAPS.keySet()) {
-			for (CXPathmapDescriptor d : getPathmapDescriptors(key)) {
+			for (PathmapDescriptor d : getPathmapDescriptors(key)) {
 				if (d.getMapping().equals(targetURI) && d.getRegisteredModels().contains(modelName)) {
 					desc = d;
 					pathmapURI = key;
@@ -261,12 +277,12 @@ public class CXDynamicURIConverter {
 				break;
 			}
 		}
-		if(desc == null) {
+		if (desc == null) {
 			return null;
 		}
-		
+
 		if (desc.isEnabled()) {
-			ZeligsoftCXUIPlugin.getDefault().info("Active dynamic library " + desc.getPathmap().toString() + "("
+			Activator.getDefault().info("Active dynamic library " + desc.getPathmap().toString() + "("
 					+ desc.getMapping().toString() + ")" + " removed");
 		}
 
@@ -278,7 +294,7 @@ public class CXDynamicURIConverter {
 				PATHMAPS.remove(pathmapURI);
 				// mappings are empty so remove this pathmap
 				// and fire REMOVE event
-				if(desc.isEnabled()) {
+				if (desc.isEnabled()) {
 					desc.setEnabled(false);
 					desc.apply();
 					for (PathmapChangeListener listener : listeners) {
@@ -286,22 +302,22 @@ public class CXDynamicURIConverter {
 					}
 				}
 
-			}else if(desc.isEnabled()){
+			} else if (desc.isEnabled()) {
 				// mappings are not empty and the pathmap is enabled
 				desc.setEnabled(false);
 				desc.apply();
-				
-				CXPathmapDescriptor newDesc = PATHMAPS.get(pathmapURI).get(0);
+
+				PathmapDescriptor newDesc = PATHMAPS.get(pathmapURI).get(0);
 				newDesc.setEnabled(true);
 				newDesc.apply();
-				
+
 				// enable mapping from one of the mapping list
 				// this should fire FALLBACK event
 				for (PathmapChangeListener listener : listeners) {
 					listener.handlePathmapChange(newDesc, desc, PathmapChangeListener.FALLBACK);
 				}
 			}
-		}else {
+		} else {
 			// just remove the registered model
 			if (desc.getRegisteredModels().contains(modelName)) {
 				desc.getRegisteredModels().remove(modelName);
@@ -310,12 +326,18 @@ public class CXDynamicURIConverter {
 		return pathmapURI;
 	}
 
-	public static URI getPathmapURI(URI modelUri) {
+	/**
+	 * Return pathmapped URI if exists
+	 * 
+	 * @param modelUri
+	 * @return
+	 */
+	public URI denormalizeURI(URI modelUri) {
 		URI targetUri = modelUri.trimSegments(1).appendSegment(""); //$NON-NLS-1$
 		String modelName = modelUri.lastSegment();
 		String umlModelName = modelUri.trimFileExtension().appendFileExtension("uml").lastSegment(); //$NON-NLS-1$
-		for (URI pathmapUri : CXDynamicURIConverter.PATHMAPS.keySet()) {
-			CXPathmapDescriptor desc = CXDynamicURIConverter.getPathmapDescriptor(pathmapUri);
+		for (URI pathmapUri : PATHMAPS.keySet()) {
+			PathmapDescriptor desc = getPathmapDescriptor(pathmapUri);
 			if (targetUri.equals(desc.getMapping()) && desc.getRegisteredModels().contains(umlModelName)) {
 				if (desc.isEnabled()) {
 					URI result = URI.createURI(pathmapUri.toString() + modelName);
@@ -326,27 +348,5 @@ public class CXDynamicURIConverter {
 		}
 		return modelUri;
 	}
-	
-	public static List<URI> getAssociatedUris(Resource resource) {
-		List<URI> result = new ArrayList<URI>();
-		if (resource != null && resource.getResourceSet() != null) {
-			URIConverter uriConverter = resource.getResourceSet().getURIConverter();
-			URI uri = resource.getURI();
-			if (uri != null) {
-				URI normalizedURI = uriConverter.normalize(uri);
-				if (normalizedURI.isPlatformResource()) {
-					IFile file = ResourcesPlugin.getWorkspace().getRoot()
-							.getFile(new Path(normalizedURI.toPlatformString(true)));
-					IPapyrusFile papFile = PapyrusModelHelper.getPapyrusModelFactory().createIPapyrusFile(file);
-					IFile[] associatedFiles = OneFileUtils.getAssociatedFiles(papFile);
 
-					for (int i = 0; i < associatedFiles.length; i++) {
-						URI tempUri = URI.createPlatformResourceURI(associatedFiles[i].getFullPath().toString(), true);
-						result.add(getPathmapURI(tempUri));
-					}
-				}
-			}
-		}
-		return result;
-	}
 }

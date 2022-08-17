@@ -25,9 +25,9 @@ import org.eclipse.jface.viewers.ComboBoxCellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.swt.widgets.Table;
 
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
-import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
-import com.zeligsoft.cx.ui.pathmap.PathmapChangeListener;
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
+import com.zeligsoft.base.pathmap.PathmapDescriptor;
+import com.zeligsoft.base.pathmap.PathmapChangeListener;
 
 /**
  * Editing support for pathmap selection page
@@ -43,7 +43,7 @@ public class PathmapMappingEditingSupport extends EditingSupport {
 
 	@Override
 	protected boolean canEdit(Object element) {
-		return CXDynamicURIConverter.getPathmapDescriptors((URI) element).size() > 1;
+		return DynamicPathmapRegistry.INSTANCE.getPathmapDescriptors((URI) element).size() > 1;
 	}
 
 	@Override
@@ -52,10 +52,10 @@ public class PathmapMappingEditingSupport extends EditingSupport {
 		CellEditor editor = null;
 
 		URI pathmap = (URI) element;
-		List<CXPathmapDescriptor> mappings = CXDynamicURIConverter.getPathmapDescriptors(pathmap);
+		List<PathmapDescriptor> mappings = DynamicPathmapRegistry.INSTANCE.getPathmapDescriptors(pathmap);
 		String[] items = new String[mappings.size()];
 		int i = 0;
-		for (CXPathmapDescriptor d : mappings) {
+		for (PathmapDescriptor d : mappings) {
 			items[i++] = d.getMapping().toString();
 		}
 
@@ -66,8 +66,8 @@ public class PathmapMappingEditingSupport extends EditingSupport {
 
 	@Override
 	protected Object getValue(Object element) {
-		CXPathmapDescriptor desc = CXDynamicURIConverter.getPathmapDescriptor((URI) element);
-		List<CXPathmapDescriptor> mappings = CXDynamicURIConverter.getPathmapDescriptors((URI) element);
+		PathmapDescriptor desc = DynamicPathmapRegistry.INSTANCE.getPathmapDescriptor((URI) element);
+		List<PathmapDescriptor> mappings = DynamicPathmapRegistry.INSTANCE.getPathmapDescriptors((URI) element);
 		return mappings.indexOf(desc);
 	}
 
@@ -75,10 +75,10 @@ public class PathmapMappingEditingSupport extends EditingSupport {
 	protected void setValue(Object element, Object value) {
 
 		URI pathmap = (URI) element;
-		List<CXPathmapDescriptor> mappings = CXDynamicURIConverter.getPathmapDescriptors(pathmap);
+		List<PathmapDescriptor> mappings = DynamicPathmapRegistry.INSTANCE.getPathmapDescriptors(pathmap);
 
 		// enable selected mapping
-		CXDynamicURIConverter.enablePathmapMapping(mappings.get((int) value), PathmapChangeListener.CHANGE);
+		DynamicPathmapRegistry.INSTANCE.enablePathmapMapping(mappings.get((int) value), PathmapChangeListener.CHANGE);
 
 		// reset input to refresh the table
 		CheckboxTableViewer viewer = (CheckboxTableViewer) getViewer();

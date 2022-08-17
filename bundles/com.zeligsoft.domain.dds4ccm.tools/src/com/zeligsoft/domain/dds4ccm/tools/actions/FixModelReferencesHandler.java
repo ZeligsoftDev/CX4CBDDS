@@ -37,7 +37,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.PlatformUI;
 
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
 
 /**
  * Fix model references to use the dynamic mappings for external references
@@ -82,7 +82,7 @@ public class FixModelReferencesHandler extends AbstractHandler {
 							modelUri = URI.createURI(href);
 						}
 						if (modelUri != null) {
-							URI pathmapUri = CXDynamicURIConverter.getPathmapURI(modelUri);
+							URI pathmapUri = DynamicPathmapRegistry.INSTANCE.denormalizeURI(modelUri);
 							outLine = beforeString + pathmapUri.toString() + afterString;
 						}
 					}

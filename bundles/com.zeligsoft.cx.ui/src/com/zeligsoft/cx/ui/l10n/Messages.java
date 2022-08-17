@@ -304,10 +304,6 @@ public class Messages
 	public static String ZeligsoftModelWizardPage_ModelNameLabel;
 
 	public static String ZeligsoftModelWizardPage_UseDefaultLabel;
-	
-	public static String CXPathmapDescriptor_AddingPathmapUri;
-
-	public static String CXPathmapDescriptor_RemovingPathmapUri;
 
 	static {
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

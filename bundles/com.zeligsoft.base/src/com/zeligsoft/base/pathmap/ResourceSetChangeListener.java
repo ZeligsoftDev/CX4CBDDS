@@ -14,20 +14,35 @@
  * limitations under the License.
  *
  */
-package com.zeligsoft.cx.ui.pathmap;
+package com.zeligsoft.base.pathmap;
+
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListenerImpl;
+
+import com.zeligsoft.base.util.ZeligsoftURIConverter;
 
 /**
- * Pathmap change listener
+ * Install URI converter for resource set
  * 
  * @author Young-Soo Roh
  *
  */
-public interface PathmapChangeListener {
-	public static int ADD = 1;
-	public static int CHANGE = 2;
-	public static int REMOVE = 3;
-	public static int FALLBACK = 4;
+public class ResourceSetChangeListener extends ResourceSetListenerImpl {
 
-	public void handlePathmapChange(CXPathmapDescriptor newValue, CXPathmapDescriptor oldValue, int eventType);
+	/**
+	 * Initializes me.
+	 */
+	public ResourceSetChangeListener() {
+		super();
+	}
 
+	@Override
+	public boolean isPostcommitOnly() {
+		return true;
+	}
+
+	@Override
+	public void resourceSetChanged(ResourceSetChangeEvent event) {
+		ZeligsoftURIConverter.install(event.getEditingDomain().getResourceSet());
+	}
 }
