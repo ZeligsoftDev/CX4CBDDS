@@ -75,9 +75,9 @@ import org.eclipse.uml2.uml.UMLPackage;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
 import com.zeligsoft.cx.ui.properties.sections.ICXCustomPropertySection;
 import com.zeligsoft.cx.ui.utils.CXWidgetFactory;
@@ -429,7 +429,7 @@ public class ReferencesCustomPropertySection implements ICXCustomPropertySection
 					}
 					monitor.done();
 					for (URI uri : dependentModels) {
-						result.add(CXDynamicURIConverter.getPathmapURI(uri));
+						result.add(DynamicPathmapRegistry.INSTANCE.denormalizeURI(uri));
 					}
 				}
 			};

@@ -33,8 +33,8 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.osgi.service.prefs.BackingStoreException;
 
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
-import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
+import com.zeligsoft.base.pathmap.PathmapDescriptor;
 import com.zeligsoft.domain.dds4ccm.tools.Activator;
 import com.zeligsoft.domain.dds4ccm.tools.PreferenceConstants;
 
@@ -75,7 +75,7 @@ public class SuppressWarningEditingSupport extends EditingSupport {
 
 	@Override
 	protected boolean canEdit(Object element) {
-		return CXDynamicURIConverter.getPathmapDescriptors((URI) element).size() > 1;
+		return DynamicPathmapRegistry.INSTANCE.getPathmapDescriptors((URI) element).size() > 1;
 	}
 
 	@Override
@@ -92,8 +92,8 @@ public class SuppressWarningEditingSupport extends EditingSupport {
 				List<String> mappings = new ArrayList<String>();
 				mappings.addAll(Arrays.asList(suppressedMappings.split("\\s*,\\s*"))); //$NON-NLS-1$
 
-				List<CXPathmapDescriptor> descs = CXDynamicURIConverter.getPathmapDescriptors(pathmap);
-				for (CXPathmapDescriptor d : descs) {
+				List<PathmapDescriptor> descs = DynamicPathmapRegistry.INSTANCE.getPathmapDescriptors(pathmap);
+				for (PathmapDescriptor d : descs) {
 					if (!mappings.contains(d.getMapping().toString())) {
 						mappings.add(d.getMapping().toString());
 					}

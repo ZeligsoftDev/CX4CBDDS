@@ -14,19 +14,21 @@
  * limitations under the License.
  *
  */
-package com.zeligsoft.cx.ui.pathmap;
+package com.zeligsoft.base.pathmap;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.gmf.runtime.common.core.util.Log;
+import org.osgi.service.prefs.BackingStoreException;
 
-import com.zeligsoft.cx.ui.ZeligsoftCXUIPlugin;
-import com.zeligsoft.cx.ui.l10n.Messages;
+import com.zeligsoft.base.Activator;
 
 /**
  * Dynamic pathmap descriptor.
@@ -34,7 +36,7 @@ import com.zeligsoft.cx.ui.l10n.Messages;
  * @author Young-Soo Roh
  *
  */
-public class CXPathmapDescriptor {
+public class PathmapDescriptor {
 
 	private final String id;
 	private final IProject project;
@@ -43,8 +45,9 @@ public class CXPathmapDescriptor {
 	private List<String> registeredModels = new ArrayList<String>();
 	private final URI mapping;
 	private boolean isEnabled;
+	private IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
 
-	public CXPathmapDescriptor(URI sourceURI, URI targetURI, String modelName) {
+	public PathmapDescriptor(URI sourceURI, URI targetURI, String modelName) {
 		id = "pathmap." + targetURI.toString(); //$NON-NLS-1$
 		registeredModels.add(modelName);
 		originalMapping = URIConverter.URI_MAP.get(sourceURI);
@@ -55,7 +58,7 @@ public class CXPathmapDescriptor {
 		String projName = targetURI.segment(1);
 		project = ResourcesPlugin.getWorkspace().getRoot().getProject(projName);
 
-		isEnabled = !ZeligsoftCXUIPlugin.getBooleanPreference(id + ".disabled"); //$NON-NLS-1$
+		isEnabled = !store.getBoolean(id + ".disabled", true); //$NON-NLS-1$
 	}
 
 	public void addRegisteredModel(String modelName) {
@@ -88,7 +91,12 @@ public class CXPathmapDescriptor {
 		this.isEnabled = isEnabled;
 
 		if (oldEnabled != isEnabled) {
-			ZeligsoftCXUIPlugin.setPreference(id + ".disabled", !isEnabled); //$NON-NLS-1$
+			store.putBoolean(id + ".disabled", !isEnabled); //$NON-NLS-1$
+			try {
+				store.flush();
+			} catch (BackingStoreException e) {
+				// do nothing
+			}
 		}
 	}
 
@@ -117,11 +125,11 @@ public class CXPathmapDescriptor {
 
 		if (isEnabled()) {
 			if (!mapping.equals(current) && project.exists()) {
-				Log.info(ZeligsoftCXUIPlugin.getDefault(), 0, Messages.CXPathmapDescriptor_AddingPathmapUri + pathmap);
+				Log.info(Activator.getDefault(), 0, "Workspace URI Mapping: " + pathmap); //$NON-NLS-1$
 				URIConverter.URI_MAP.put(pathmap, mapping);
 			}
 		} else {
-			Log.info(ZeligsoftCXUIPlugin.getDefault(), 0, Messages.CXPathmapDescriptor_RemovingPathmapUri + pathmap);
+			Log.info(Activator.getDefault(), 0, "Removing workspace URI Mapping: " + pathmap); //$NON-NLS-1$
 			if (originalMapping != null) {
 				URIConverter.URI_MAP.put(pathmap, originalMapping);
 			} else {
@@ -152,11 +160,11 @@ public class CXPathmapDescriptor {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		final CXPathmapDescriptor other = (CXPathmapDescriptor) obj;
-		if(pathmap != other.pathmap) {
+		final PathmapDescriptor other = (PathmapDescriptor) obj;
+		if (pathmap != other.pathmap) {
 			return false;
 		}
-		if(mapping != other.mapping) {
+		if (mapping != other.mapping) {
 			return false;
 		}
 		return true;

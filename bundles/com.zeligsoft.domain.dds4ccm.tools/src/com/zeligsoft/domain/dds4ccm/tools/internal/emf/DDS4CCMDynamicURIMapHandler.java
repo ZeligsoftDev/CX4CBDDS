@@ -84,12 +84,12 @@ import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.osgi.service.prefs.BackingStoreException;
 
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
+import com.zeligsoft.base.pathmap.PathmapChangeListener;
+import com.zeligsoft.base.pathmap.PathmapDescriptor;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.validation.ui.commands.ValidateCXModelCommand;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
-import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
-import com.zeligsoft.cx.ui.pathmap.PathmapChangeListener;
 import com.zeligsoft.domain.dds4ccm.tools.Activator;
 import com.zeligsoft.domain.dds4ccm.tools.PreferenceConstants;
 import com.zeligsoft.domain.dds4ccm.tools.dialogs.CloseDependentModelDialog;
@@ -175,12 +175,12 @@ public final class DDS4CCMDynamicURIMapHandler{
 		changeListener = new PathmapChangeListener() {
 
 			@Override
-			public void handlePathmapChange(CXPathmapDescriptor newValue, CXPathmapDescriptor oldValue, int eventType) {
+			public void handlePathmapChange(PathmapDescriptor newValue, PathmapDescriptor oldValue, int eventType) {
 				
 				if(eventType == PathmapChangeListener.ADD) {
 					// handle conflict pathmaps.
 					if (PlatformUI.isWorkbenchRunning()) {
-						CXPathmapDescriptor desc = newValue;
+						PathmapDescriptor desc = newValue;
 
 						String prefConstant = PreferenceConstants.WARNING_SUPPRESSED_PATHMAP
 								+ desc.getPathmap().toString();
@@ -188,7 +188,7 @@ public final class DDS4CCMDynamicURIMapHandler{
 								PreferenceConstants.DEFAULT_WARNING_SUPPRESSED_PATHMAP);
 						List<String> items = Arrays.asList(suppressed.split("\\s*,\\s*")); //$NON-NLS-1$
 						if (!items.contains(desc.getMapping().toString())) {
-							List<CXPathmapDescriptor> mappings = CXDynamicURIConverter
+							List<PathmapDescriptor> mappings = DynamicPathmapRegistry.INSTANCE
 									.getPathmapDescriptors(desc.getPathmap());
 							if (mappings.size() > 1) {
 								// handle multiple mappings
@@ -221,7 +221,7 @@ public final class DDS4CCMDynamicURIMapHandler{
 					}
 				} else if (eventType == PathmapChangeListener.FALLBACK) {
 					// warn users about the change
-					CXPathmapDescriptor desc = newValue;
+					PathmapDescriptor desc = newValue;
 					IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
 					String prefConstant = PreferenceConstants.WARNING_SUPPRESSED_PATHMAP + desc.getPathmap().toString();
 					store.remove(prefConstant);
@@ -271,7 +271,7 @@ public final class DDS4CCMDynamicURIMapHandler{
 	 * 
 	 * @param desc
 	 */
-	private static void checkDependentModels(CXPathmapDescriptor desc) {
+	private static void checkDependentModels(PathmapDescriptor desc) {
 		String modelName = desc.getRegisteredModels().get(0);
 		URI resourceUri = URI.createURI(desc.getMapping().toString() + modelName);
 		URI pathmapUri = URI.createURI(desc.getPathmap().toString() + modelName);
@@ -348,7 +348,7 @@ public final class DDS4CCMDynamicURIMapHandler{
 
 				remapDynamicURI();
 				workspace.addResourceChangeListener(rcl);
-				CXDynamicURIConverter.addChangeListener(changeListener);
+				DynamicPathmapRegistry.INSTANCE.addChangeListener(changeListener);
 
 				return Status.OK_STATUS;
 			}
@@ -363,10 +363,7 @@ public final class DDS4CCMDynamicURIMapHandler{
 			// unload all models
 			r.unload();
 		}
-		for (List<CXPathmapDescriptor> mappings : CXDynamicURIConverter.PATHMAPS.values()) {
-			mappings.clear();
-		}
-		CXDynamicURIConverter.PATHMAPS.clear();
+		DynamicPathmapRegistry.INSTANCE.reset();
 		visitAllModels(ResourcesPlugin.getWorkspace().getRoot(), uri -> processUML(uri, IResourceDelta.ADDED));
 	}
 	
@@ -404,7 +401,7 @@ public final class DDS4CCMDynamicURIMapHandler{
 	private static void updateConflictPathmap(URI pathmap) {
 		conflictPathmapLock.lock();
 		try {
-			if (conflictPathmaps.contains(pathmap) && CXDynamicURIConverter.getPathmapDescriptors(pathmap).size() < 1) {
+			if (conflictPathmaps.contains(pathmap) && DynamicPathmapRegistry.INSTANCE.getPathmapDescriptors(pathmap).size() < 1) {
 				conflictPathmaps.remove(pathmap);
 			}
 		} finally {
@@ -513,7 +510,7 @@ public final class DDS4CCMDynamicURIMapHandler{
 	 */
 	private static void removeMapping(URI uri) {
 		// remove pathmap URI
-		CXDynamicURIConverter.removeMapping(uri);
+		DynamicPathmapRegistry.INSTANCE.removeMapping(uri);
 		// unload deleted resource
 		Resource r = rset.getResource(uri, false);
 		if (r != null) {
@@ -619,7 +616,7 @@ public final class DDS4CCMDynamicURIMapHandler{
 			return false;
 		}
 		if (type.eResource() != null && type.eResource() != owner.eResource()) {
-			URI typeUri = CXDynamicURIConverter.getPathmapURI(type.eResource().getURI());
+			URI typeUri = DynamicPathmapRegistry.INSTANCE.denormalizeURI(type.eResource().getURI());
 			if (pathampUri.equals(typeUri) || mappingUri.equals(typeUri)) {
 				return true;
 			}
@@ -668,7 +665,7 @@ public final class DDS4CCMDynamicURIMapHandler{
 	 */
 	public static void addMapping(URI pathmapUri, URI modelUri) {
 		rset.getResource(modelUri, true);
-		CXDynamicURIConverter.addMapping(pathmapUri, modelUri);
+		DynamicPathmapRegistry.INSTANCE.addMapping(pathmapUri, modelUri);
 	}
 	
 	private static boolean isPathmapProxy(Object object) {

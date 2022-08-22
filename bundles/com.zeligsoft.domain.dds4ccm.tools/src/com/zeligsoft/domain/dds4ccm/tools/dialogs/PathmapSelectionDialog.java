@@ -46,8 +46,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.osgi.service.prefs.BackingStoreException;
 
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
-import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
+import com.zeligsoft.base.pathmap.PathmapDescriptor;
 import com.zeligsoft.domain.dds4ccm.tools.Activator;
 import com.zeligsoft.domain.dds4ccm.tools.PreferenceConstants;
 import com.zeligsoft.domain.dds4ccm.tools.internal.emf.DDS4CCMDynamicURIMapHandler;
@@ -156,8 +156,8 @@ public class PathmapSelectionDialog extends TrayDialog {
 						List<String> mappings = new ArrayList<String>();
 						mappings.addAll(Arrays.asList(suppressedMappings.split("\\s*,\\s*"))); //$NON-NLS-1$
 
-						List<CXPathmapDescriptor> descs = CXDynamicURIConverter.getPathmapDescriptors(pathmap);
-						for (CXPathmapDescriptor desc : descs) {
+						List<PathmapDescriptor> descs = DynamicPathmapRegistry.INSTANCE.getPathmapDescriptors(pathmap);
+						for (PathmapDescriptor desc : descs) {
 							if (!mappings.contains(desc.getMapping().toString())) {
 								mappings.add(desc.getMapping().toString());
 							}
@@ -226,7 +226,7 @@ public class PathmapSelectionDialog extends TrayDialog {
 				}
 
 				for (URI pathmap : conflicts) {
-					if (CXDynamicURIConverter.getPathmapDescriptors(pathmap).size() > 0) {
+					if (DynamicPathmapRegistry.INSTANCE.getPathmapDescriptors(pathmap).size() > 0) {
 						pathmaps.add(pathmap);
 					}
 				}
