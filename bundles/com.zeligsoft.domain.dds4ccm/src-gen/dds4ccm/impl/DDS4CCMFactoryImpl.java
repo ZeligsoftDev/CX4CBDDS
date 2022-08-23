@@ -2,176 +2,8 @@
  */
 package dds4ccm.impl;
 
-import dds4ccm.Allocation;
-import dds4ccm.AssemblyConnector;
-import dds4ccm.AssemblyImplementation;
-import dds4ccm.Bridge;
-import dds4ccm.BridgeInstance;
-import dds4ccm.BuildConfiguration;
-import dds4ccm.CCMComponent;
-import dds4ccm.CCMConnector;
-import dds4ccm.CCMModel;
-import dds4ccm.CCMPart;
-import dds4ccm.CXAnonymousArray;
-import dds4ccm.CXAnonymousSequence;
-import dds4ccm.CXArray;
-import dds4ccm.CXAttribute;
-import dds4ccm.CXBound;
-import dds4ccm.CXBoxedValue;
-import dds4ccm.CXCase;
-import dds4ccm.CXConstant;
-import dds4ccm.CXConstants;
-import dds4ccm.CXDefault;
-import dds4ccm.CXEnum;
-import dds4ccm.CXException;
-import dds4ccm.CXField;
-import dds4ccm.CXInterface;
-import dds4ccm.CXModule;
-import dds4ccm.CXNamedElement;
-import dds4ccm.CXOperation;
-import dds4ccm.CXParameter;
-import dds4ccm.CXPrimitive;
-import dds4ccm.CXPrimitiveKind;
-import dds4ccm.CXSequence;
-import dds4ccm.CXString;
-import dds4ccm.CXStruct;
-import dds4ccm.CXSupports;
-import dds4ccm.CXTypeDef;
-import dds4ccm.CXUnion;
-import dds4ccm.CXUnionField;
-import dds4ccm.CXValue;
-import dds4ccm.CXValueFactory;
-import dds4ccm.CXWString;
-import dds4ccm.ComponentCategory;
-import dds4ccm.ComponentDeploymentPart;
-import dds4ccm.ComponentImplementation;
-import dds4ccm.ComponentInterface;
-import dds4ccm.ConfigurationSlot;
-import dds4ccm.ConfigurationSlotKind;
-import dds4ccm.ConjugatedPort;
-import dds4ccm.ConnectorAssembly;
-import dds4ccm.ConnectorDef;
-import dds4ccm.ConnectorDefaultValueBinding;
-import dds4ccm.ConnectorFragment;
-import dds4ccm.ConnectorImplementation;
-import dds4ccm.ConnectorStatusListenerConnection;
-import dds4ccm.ContainerProcess;
-import dds4ccm.DDS4CCMFactory;
-import dds4ccm.DDS4CCMModel;
-import dds4ccm.DDS4CCMPackage;
-import dds4ccm.DDSMessage;
-import dds4ccm.DataReaderQoS;
-import dds4ccm.DataSpace;
-import dds4ccm.DataWriterQoS;
-import dds4ccm.Deployment;
-import dds4ccm.DeploymentPart;
-import dds4ccm.DeploymentPlan;
-import dds4ccm.DestinationOrderQosPolicyKind;
-import dds4ccm.Domain;
-import dds4ccm.DomainDefinition;
-import dds4ccm.DomainDeployment;
-import dds4ccm.DomainDeploymentPart;
-import dds4ccm.DurabilityQosPolicyKind;
-import dds4ccm.Duration;
-import dds4ccm.Event;
-import dds4ccm.EventPort;
-import dds4ccm.ExtendedPortType;
-import dds4ccm.ExtensibilityKind;
-import dds4ccm.Extensible;
-import dds4ccm.FactoryOperation;
-import dds4ccm.FinderOperation;
-import dds4ccm.FragmentAssembly;
-import dds4ccm.FragmentImplementation;
-import dds4ccm.FragmentPart;
-import dds4ccm.HideableElement;
-import dds4ccm.HistoryQosPolicyKind;
-import dds4ccm.Home;
-import dds4ccm.HomeImplementation;
-import dds4ccm.HomeInstance;
-import dds4ccm.HomeOperation;
-import dds4ccm.IDL3PlusModel;
-import dds4ccm.IDLFileDependency;
-import dds4ccm.IDLFileSpecification;
-import dds4ccm.IDLIncludeDependency;
-import dds4ccm.Implementation;
-import dds4ccm.Interconnect;
-import dds4ccm.InterconnectInstance;
-import dds4ccm.InterfacePort;
-import dds4ccm.LivelinessQosPolicyKind;
-import dds4ccm.Manages;
+import dds4ccm.*;
 import dds4ccm.ManagesImpl;
-import dds4ccm.MessageField;
-import dds4ccm.MessagePort;
-import dds4ccm.Model;
-import dds4ccm.ModelTypeEnum;
-import dds4ccm.ModuleBinding;
-import dds4ccm.ModuleInstantiation;
-import dds4ccm.MonolithicImplementation;
-import dds4ccm.Native;
-import dds4ccm.Node;
-import dds4ccm.NodeInstance;
-import dds4ccm.OwnershipQosPolicyKind;
-import dds4ccm.Parameter;
-import dds4ccm.ParameterBinding;
-import dds4ccm.ParticipantQoS;
-import dds4ccm.PerPortConnectorTypeDeploymentPart;
-import dds4ccm.PortType;
-import dds4ccm.PortTypeable;
-import dds4ccm.PresentationQosPolicyAccessScopeKind;
-import dds4ccm.Property;
-import dds4ccm.PublisherQoS;
-import dds4ccm.QoSEntity;
-import dds4ccm.QoSProfile;
-import dds4ccm.RealiabilityQosPolicyKind;
-import dds4ccm.Requirement;
-import dds4ccm.RequirementSatisfier;
-import dds4ccm.Resource;
-import dds4ccm.ResourceProperty;
-import dds4ccm.SatisfierProperty;
-import dds4ccm.SatisfierPropertyKind;
-import dds4ccm.SharedResource;
-import dds4ccm.StateMember;
-import dds4ccm.StructuralRealization;
-import dds4ccm.SubscriberQoS;
-import dds4ccm.TargetAssemblyConnector;
-import dds4ccm.TemplateModule;
-import dds4ccm.TemplateModuleAlias;
-import dds4ccm.TemplateParameterType;
-import dds4ccm.TemplateSignature;
-import dds4ccm.Topic;
-import dds4ccm.TopicField;
-import dds4ccm.TopicKind;
-import dds4ccm.TopicQoS;
-import dds4ccm.TypeConstraint;
-import dds4ccm.TypeParameter;
-import dds4ccm.TypedConnector;
-import dds4ccm.WiringKind;
-import dds4ccm.WorkerFunction;
-import dds4ccm.WorkerFunctionIdentifiable;
-import dds4ccm.deadlineQosPolicy;
-import dds4ccm.doQosPolicy;
-import dds4ccm.dsQosPolicy;
-import dds4ccm.durabilityQosPolicy;
-import dds4ccm.efQosPolicy;
-import dds4ccm.gdQosPolicy;
-import dds4ccm.historyQosPolicy;
-import dds4ccm.lbQosPolicy;
-import dds4ccm.lifespanQosPolicy;
-import dds4ccm.livelinessQosPolicy;
-import dds4ccm.osQosPolicy;
-import dds4ccm.ownershipQosPolicy;
-import dds4ccm.partitionQosPolicy;
-import dds4ccm.presentationQosPolicy;
-import dds4ccm.qosProperty;
-import dds4ccm.rdlQosPolicy;
-import dds4ccm.reliabilityQosPolicy;
-import dds4ccm.rlQosPolicy;
-import dds4ccm.tbfQosPolicy;
-import dds4ccm.tdQosPolicy;
-import dds4ccm.tpQosPolicy;
-import dds4ccm.udQosPolicy;
-import dds4ccm.wdlQosPolicy;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -376,7 +208,6 @@ public class DDS4CCMFactoryImpl extends EFactoryImpl implements DDS4CCMFactory {
 			case DDS4CCMPackage.PER_PORT_CONNECTOR_TYPE_DEPLOYMENT_PART: return createPerPortConnectorTypeDeploymentPart();
 			case DDS4CCMPackage.DOMAIN_DEFINITION: return createDomainDefinition();
 			case DDS4CCMPackage.DOMAIN_DEPLOYMENT: return createDomainDeployment();
-			case DDS4CCMPackage.DOMAIN_DEPLOYMENT_PART: return createDomainDeploymentPart();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -2131,17 +1962,6 @@ public class DDS4CCMFactoryImpl extends EFactoryImpl implements DDS4CCMFactory {
 	public DomainDeployment createDomainDeployment() {
 		DomainDeploymentImpl domainDeployment = new DomainDeploymentImpl();
 		return domainDeployment;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public DomainDeploymentPart createDomainDeploymentPart() {
-		DomainDeploymentPartImpl domainDeploymentPart = new DomainDeploymentPartImpl();
-		return domainDeploymentPart;
 	}
 
 	/**

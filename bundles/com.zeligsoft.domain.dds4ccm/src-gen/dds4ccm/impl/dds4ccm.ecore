@@ -1618,16 +1618,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="deployments" ordered="false"
         upperBound="-1" eType="#//DomainDeployment"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DomainDeployment">
-    <eAnnotations source="uml2.extensions">
-      <details key="suppressed" value="true"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parts" ordered="false"
-        upperBound="-1" eType="#//DomainDeploymentPart"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Component" ordered="false"
-        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Component"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DomainDeploymentPart" eSuperTypes="#//DeploymentPart">
+  <eClassifiers xsi:type="ecore:EClass" name="DomainDeployment" eSuperTypes="#//Deployment">
     <eAnnotations source="uml2.extensions">
       <details key="suppressed" value="true"/>
     </eAnnotations>

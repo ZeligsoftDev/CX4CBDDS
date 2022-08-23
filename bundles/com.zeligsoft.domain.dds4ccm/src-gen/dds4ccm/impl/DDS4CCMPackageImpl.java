@@ -1260,13 +1260,6 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass domainDeploymentPartEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EEnum componentCategoryEEnum = null;
 
 	/**
@@ -5595,39 +5588,6 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 			domainDeploymentEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(188);
 		}
 		return domainDeploymentEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getDomainDeployment_Parts() {
-        return (EReference)getDomainDeployment().getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getDomainDeployment_Base_Component() {
-        return (EReference)getDomainDeployment().getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getDomainDeploymentPart() {
-		if (domainDeploymentPartEClass == null) {
-			domainDeploymentPartEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(189);
-		}
-		return domainDeploymentPartEClass;
 	}
 
 	/**
