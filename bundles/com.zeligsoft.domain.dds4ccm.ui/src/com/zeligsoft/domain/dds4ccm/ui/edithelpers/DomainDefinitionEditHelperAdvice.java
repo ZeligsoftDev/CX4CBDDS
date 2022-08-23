@@ -289,11 +289,11 @@ public class DomainDefinitionEditHelperAdvice extends AbstractEditHelperAdvice {
 								domainDefinitionProperty, domainDeployment, null, null);
 
 						if (deploymentPart != null) {
-							ZDLUtil.addZDLConcept(deploymentPart, DDS4CCMNames.DOMAIN_DEPLOYMENT_PART);
-							@SuppressWarnings("unchecked")
-							EList<EObject> parts = (EList<EObject>) ZDLUtil.getValue(domainDeployment,
-									DDS4CCMNames.DOMAIN_DEPLOYMENT, DDS4CCMNames.DOMAIN_DEPLOYMENT__PARTS);
-							parts.add(deploymentPart);
+//							ZDLUtil.addZDLConcept(deploymentPart, DDS4CCMNames.DOMAIN_DEPLOYMENT_PART);
+//							@SuppressWarnings("unchecked")
+//							EList<EObject> parts = (EList<EObject>) ZDLUtil.getValue(domainDeployment,
+//									DDS4CCMNames.DOMAIN_DEPLOYMENT, DDS4CCMNames.DOMAIN_DEPLOYMENT__PARTS);
+//							parts.add(deploymentPart);
 							return Status.OK_STATUS;
 						}
 					} catch (Exception e) {

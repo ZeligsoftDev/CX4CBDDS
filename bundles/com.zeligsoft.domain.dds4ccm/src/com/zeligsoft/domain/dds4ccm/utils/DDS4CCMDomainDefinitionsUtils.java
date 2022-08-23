@@ -47,7 +47,7 @@ public final class DDS4CCMDomainDefinitionsUtils {
 
 	public static boolean isDomainDeploymentPart(EObject modelElement) {
 		return modelElement != null && modelElement instanceof Property
-				&& ZDLUtil.isZDLConcept(modelElement, DDS4CCMNames.DOMAIN_DEPLOYMENT_PART);
+				&& ZDLUtil.isZDLConcept(modelElement, ZMLMMNames.DEPLOYMENT_PART);
 	}
 
 	public static boolean isNodeInstance(EObject modelElement) {

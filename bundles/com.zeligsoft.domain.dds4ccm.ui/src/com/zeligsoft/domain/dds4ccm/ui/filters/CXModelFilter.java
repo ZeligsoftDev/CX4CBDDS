@@ -91,7 +91,7 @@ public class CXModelFilter extends ViewerFilter {
 				return false;
 			}
 			if (owner != null
-					&& (ZDLUtil.isZDLConcept(owner, DDS4CCMNames.DOMAIN_DEPLOYMENT_PART)
+					&& (ZDLUtil.isZDLConcept(owner, ZMLMMNames.DEPLOYMENT_PART)
 						|| (owner instanceof Property 
 								&& ZDLUtil.isZDLConcept(owner.getOwner(), DDS4CCMNames.DOMAIN_DEPLOYMENT)))) {
 				return false;
