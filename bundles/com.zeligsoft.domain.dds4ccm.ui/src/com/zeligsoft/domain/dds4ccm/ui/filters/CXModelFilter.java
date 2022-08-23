@@ -33,6 +33,7 @@ import org.eclipse.uml2.uml.Property;
 import com.zeligsoft.base.zdl.ZDLNames;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
+import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 /**
@@ -80,7 +81,7 @@ public class CXModelFilter extends ViewerFilter {
 			Element owner = umlElement.getOwner();
 			// hide packages containing instance specification for CCM properties
 			if (owner != null
-					&& ZDLUtil.isZDLConcept(owner, ZMLMMNames.DEPLOYMENT)
+					&& ZDLUtil.isZDLConcept(owner, CCMNames.DEPLOYMENT_PLAN)
 					&& (umlElement instanceof Package
 							|| ZDLUtil.isZDLConcept(umlElement, ZMLMMNames.DEPLOYMENT_PART))) {
 				return false;
