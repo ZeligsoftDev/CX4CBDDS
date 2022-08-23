@@ -130,27 +130,12 @@
         <generalization xmi:type="uml:Generalization" xmi:id="_f4FqgAPCEe2G86ayG7vqfA">
           <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_i9Aj8GSDEd2454WIHspjPA"/>
         </generalization>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_GPNtEA3tEe2uT-neldr7kA" name="parts" visibility="public" type="_-xQtwA3sEe2uT-neldr7kA" aggregation="composite" association="_GPKCsA3tEe2uT-neldr7kA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GPOUIA3tEe2uT-neldr7kA"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GPOUIQ3tEe2uT-neldr7kA" value="*"/>
-        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_C31K4APDEe2G86ayG7vqfA" memberEnd="_C33nIAPDEe2G86ayG7vqfA _C3-74APDEe2G86ayG7vqfA">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_C33AEAPDEe2G86ayG7vqfA" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_C33AEQPDEe2G86ayG7vqfA" key="nature" value="UML_Nature"/>
         </eAnnotations>
         <ownedEnd xmi:type="uml:Property" xmi:id="_C3-74APDEe2G86ayG7vqfA" name="domaindefinition" type="_Pbd6gAFmEe2ZmOb6CqM5rw" association="_C31K4APDEe2G86ayG7vqfA"/>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_-xQtwA3sEe2uT-neldr7kA" name="DomainDeploymentPart">
-        <generalization xmi:type="uml:Generalization" xmi:id="_un0IgA3tEe2uT-neldr7kA">
-          <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_R1xfAEuREd2aAOSqOUjI9w"/>
-        </generalization>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Association" xmi:id="_GPKCsA3tEe2uT-neldr7kA" memberEnd="_GPNtEA3tEe2uT-neldr7kA _GPO7MA3tEe2uT-neldr7kA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GPMe8A3tEe2uT-neldr7kA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GPMe8Q3tEe2uT-neldr7kA" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_GPO7MA3tEe2uT-neldr7kA" name="deployment" type="_LeqTQAPCEe2G86ayG7vqfA" association="_GPKCsA3tEe2uT-neldr7kA"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_fP0CMEDSEd-VnJuJyqILLA" name="DDS4CCM"/>
@@ -532,7 +517,4 @@ endif&#xD;
   <zdl:DomainConcept xmi:id="_OR86QAPCEe2G86ayG7vqfA" base_Class="_LeqTQAPCEe2G86ayG7vqfA" iconURI="../icons/obj16/domain_depl.gif"/>
   <zdl:DomainGeneralization xmi:id="_hCEKUAPCEe2G86ayG7vqfA" base_Generalization="_f4FqgAPCEe2G86ayG7vqfA"/>
   <zdl:DomainReference xmi:id="_JUynQAPDEe2G86ayG7vqfA" base_Association="_C31K4APDEe2G86ayG7vqfA"/>
-  <zdl:DomainConcept xmi:id="_DWDuoA3tEe2uT-neldr7kA" base_Class="_-xQtwA3sEe2uT-neldr7kA"/>
-  <zdl:DomainReference xmi:id="_S_orkA3tEe2uT-neldr7kA" base_Association="_GPKCsA3tEe2uT-neldr7kA"/>
-  <zdl:DomainGeneralization xmi:id="_vx7yQA3tEe2uT-neldr7kA" base_Generalization="_un0IgA3tEe2uT-neldr7kA"/>
 </xmi:XMI>
