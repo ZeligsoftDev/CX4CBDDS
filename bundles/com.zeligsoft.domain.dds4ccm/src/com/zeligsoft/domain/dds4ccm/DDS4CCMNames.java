@@ -122,20 +122,6 @@ public final class DDS4CCMNames {
  */
  public static final String DOMAIN_DEPLOYMENT = "DDS4CCM::DDS4CCM::DomainDeployment";//$NON-NLS-1$
  
-/**
- * ZDL DomainReference: DomainDeployment::parts. 
- * Lower: 0 Upper: * 
- * @generated
- */
-	 public static final String DOMAIN_DEPLOYMENT__PARTS = "parts";//$NON-NLS-1$ 
-
-
-/**
- * Fully qualified name for the ZDL DomainConcept: DomainDeploymentPart. 
- * @generated
- */
- public static final String DOMAIN_DEPLOYMENT_PART = "DDS4CCM::DDS4CCM::DomainDeploymentPart";//$NON-NLS-1$
- 
 
 /**
  * Fully qualified name for the ZDL DomainConcept: IDLFileDependency. 
