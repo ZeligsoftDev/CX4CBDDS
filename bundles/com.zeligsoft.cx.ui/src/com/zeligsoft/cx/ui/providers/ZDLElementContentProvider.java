@@ -76,7 +76,7 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 	
 	private Set<EObject> projectContentList = new HashSet<EObject>();
 
-	private ResourceSet rset = new ResourceSetImpl();
+	private static ResourceSet rset = new ResourceSetImpl();
 
 	/**
 	 * Constructor
@@ -126,6 +126,7 @@ public class ZDLElementContentProvider implements IStructuredContentProvider, IT
 								if (root != null && ZDLUtil.isZDLProfile(root, "cxDDS4CCM")) { //$NON-NLS-1$
 									resources.add(uri);
 								}
+								resource.unload();
 							}
 						} catch (Exception e) {
 							// ignore

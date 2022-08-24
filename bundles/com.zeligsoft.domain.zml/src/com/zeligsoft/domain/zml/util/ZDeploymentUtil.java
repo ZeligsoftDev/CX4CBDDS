@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
@@ -460,15 +461,16 @@ public class ZDeploymentUtil {
 	 */
 	public static Collection<Object> getDeploymentsForModel(Model model) {
 		ArrayList<Object> retVal = new ArrayList<Object>();
-
-		for (PackageableElement pe : model.getPackagedElements()) {
-			if (pe instanceof Component) {
-				if (ZDLUtil.isZDLConcept(pe, ZMLMMNames.DEPLOYMENT)) {
-					retVal.add(pe);
+		TreeIterator<EObject> itor = model.eAllContents();
+		while(itor.hasNext()) {
+			EObject next = itor.next();
+			if(next instanceof Component) {
+				if (ZDLUtil.isZDLConcept(next, ZMLMMNames.DEPLOYMENT)) {
+					retVal.add(next);
 				}
 			}
-			else if (pe instanceof Package){
-				retVal.addAll(getDeploymentsForPackage((Package)pe));
+			if(!(next instanceof Package)) {
+				itor.prune();
 			}
 		}
 
