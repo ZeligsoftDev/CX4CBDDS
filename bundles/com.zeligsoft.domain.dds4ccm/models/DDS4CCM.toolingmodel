@@ -46,7 +46,7 @@
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Container Process" description="" createConcept="CCM::CCM_Deployment::ContainerProcess"/>
   <item xsi:type="tool:CreateAction" generated="true" name="Domain Definition" createConcept="DDS4CCM::DDS4CCM::DomainDefinition"/>
-  <item xsi:type="tool:CreateAction" generated="true" name="Domain" createConcept="CCM::CCM_Target::Domain" typeHint=""/>
+  <item xsi:type="tool:CreateAction" generated="true" name="Domain (Deprecated)" createConcept="CCM::CCM_Target::Domain" typeHint=""/>
   <item xsi:type="tool:CreateAction" generated="true" name="Node" createConcept="CCM::CCM_Target::Node"/>
   <item xsi:type="tool:CreateAction" generated="true" name="Bridge" description="" createConcept="CCM::CCM_Target::Bridge"/>
   <item xsi:type="tool:CreateAction" generated="true" name="Interconnect" createConcept="CCM::CCM_Target::Interconnect"/>
@@ -135,71 +135,71 @@
   <item xsi:type="tool:CreateAction" generated="true" name="Field" createConcept="DDS4CCM::DDSExtensions::MessageField">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureMessageField" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
-      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
-      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Data Reader QoS" createConcept="DDS4CCM::QoSProfiles::DataReaderQoS">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureDataReaderQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
-      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
-      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Data Writer QoS" createConcept="DDS4CCM::QoSProfiles::DataWriterQoS">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureDataWriterQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
-      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
-      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Participant QoS" createConcept="DDS4CCM::QoSProfiles::ParticipantQoS">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureParticipantQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
-      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
-      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Publisher QoS" createConcept="DDS4CCM::QoSProfiles::PublisherQoS">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configurePublisherQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
-      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
-      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Subscriber QoS" createConcept="DDS4CCM::QoSProfiles::SubscriberQoS">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureSubscriberQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
-      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
-      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Topic QoS" createConcept="DDS4CCM::QoSProfiles::TopicQoS">
     <expression xsi:type="tool:OawXtend" name="configure" expression="configureTopicQoS" extensionFile="com::zeligsoft::domain::dds4ccm::utils::config">
       <metamodel>pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml</metamodel>
-      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
-      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
       <metamodel>pathmap://OMG_CORBA_LIBRARIES/CORBADomain.uml</metamodel>
+      <metamodel>pathmap://CCM_DOMAIN/CCM.uml</metamodel>
       <metamodel>pathmap://IDL3PLUS_DOMAIN/IDL3Plus.uml</metamodel>
       <metamodel>pathmap://ZML_LIBRARIES/ZMLMM.uml</metamodel>
+      <metamodel>pathmap://DDS_DOMAIN/dds.uml</metamodel>
     </expression>
   </item>
   <item xsi:type="tool:CreateAction" generated="true" name="Shared Resource" createConcept="CCM::CCM_Target::SharedResource"/>
@@ -241,7 +241,7 @@
     </item>
     <item xsi:type="tool:MenuSeparator" name="zeligsoft.menuSeparator.CCM.deploymentMenuTargetSeparator"/>
     <item xsi:type="tool:CreateAction" generated="true" name="Container Process" description="" createConcept="CCM::CCM_Deployment::ContainerProcess"/>
-    <item xsi:type="tool:CreateAction" generated="true" name="Domain" createConcept="CCM::CCM_Target::Domain" typeHint=""/>
+    <item xsi:type="tool:CreateAction" generated="true" name="Domain (Deprecated)" createConcept="CCM::CCM_Target::Domain" typeHint=""/>
     <item xsi:type="tool:CreateAction" generated="true" name="Node" createConcept="CCM::CCM_Target::Node"/>
     <item xsi:type="tool:CreateAction" generated="true" name="Interconnect" createConcept="CCM::CCM_Target::Interconnect"/>
     <item xsi:type="tool:CreateAction" generated="true" name="Bridge" description="" createConcept="CCM::CCM_Target::Bridge"/>
