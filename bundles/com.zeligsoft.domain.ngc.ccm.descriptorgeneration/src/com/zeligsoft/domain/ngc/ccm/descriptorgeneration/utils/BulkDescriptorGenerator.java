@@ -39,6 +39,7 @@ public class BulkDescriptorGenerator extends BaseDescriptorGenerator {
 	
 	private static final String CDD_WORKFLOW = "workflow/ngcCDDgeneratorNoPostGeneration.mwe";
 	private static final String CDP_WORKFLOW = "workflow/ngcCDPgeneratorNoPostGeneration.mwe";
+	private static final String COMBINED_WORKFLOW = "workflow/ngcgeneratorNoPostGeneration.mwe";
 
 	public BulkDescriptorGenerator() {
 	}
@@ -62,7 +63,7 @@ public class BulkDescriptorGenerator extends BaseDescriptorGenerator {
 		Set<String> pathnames = new HashSet<String>();
 
 		generateAllDescriptorsFor(DDS4CCMNames.DOMAIN_DEPLOYMENT, umlPackage, CDD_WORKFLOW, monitor, pathnames, issues);
-		generateAllDescriptorsFor(CCMNames.DEPLOYMENT_PLAN, umlPackage, CDP_WORKFLOW, monitor, pathnames, issues);
+		generateAllDescriptorsFor(CCMNames.DEPLOYMENT_PLAN, umlPackage, COMBINED_WORKFLOW, monitor, pathnames, issues);
 		
 		ctx.set(getPathnamesSlot(), pathnames);
 	}
