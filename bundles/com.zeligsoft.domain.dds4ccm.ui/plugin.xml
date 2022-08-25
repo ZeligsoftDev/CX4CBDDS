@@ -1019,4 +1019,10 @@
              </affinity>
           </readOnlyHandler>
        </extension>
+       <extension
+             point="org.eclipse.papyrus.infra.gmfdiag.common.pasteStrategy">
+          <strategy
+                strategy="com.zeligsoft.domain.dds4ccm.ui.paste.PostDomainDeploymentPasteStrategy">
+          </strategy>
+       </extension>
 </plugin>
