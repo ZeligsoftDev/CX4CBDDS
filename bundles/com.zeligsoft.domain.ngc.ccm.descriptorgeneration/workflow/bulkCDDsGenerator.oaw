@@ -12,12 +12,12 @@
 	<component
 		class='org.eclipse.xtend.util.stdlib.ExtIssueReporter' />
 	<component id="generator"
-		class="com.zeligsoft.domain.ngc.ccm.descriptorgeneration.utils.GenerateAllCDDs">
+		class="com.zeligsoft.domain.ngc.ccm.descriptorgeneration.utils.BulkCDDGenerator">
 		<srcGen value="${src-gen}/" />
-		<pathnameSlot value="pathnames" />
+		<pathnamesSlot value="pathnames" />
 	</component>
 	<component
 		class="com.zeligsoft.domain.ngc.ccm.generator.PostGeneration">
-		<pathnameSlot value="pathnames" />
+		<pathnamesSlot value="pathnames" />
 	</component>
 </workflow>

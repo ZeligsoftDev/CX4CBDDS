@@ -78,6 +78,7 @@ import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Profile;
@@ -2952,6 +2953,32 @@ public class ZDLUtil
 		}
 
 		return result;
+	}
+	
+	/**
+	 * Returns the list of all UML Elements in a package (directly or indirectly) that
+	 * are instances of the given ZDL concept.
+	 * 
+	 * @param umlNamespace  - A UML {@link Namespace} such as a {@link Package} or {@link Classifier}
+	 * @param concept     - A {@link String}; the name of a ZDL concept 
+	 * @return A {@link List} of UML {@link Element}s.
+	 */
+	public static List<Element> getAllElementsByConcept(Namespace umlNamespace, String concept) {
+		Collection<Element> list = getObjectsByConcept(umlNamespace.allOwnedElements(), concept);
+		return (List<Element>) list;
+	}
+
+	/**
+	 * Returns the list of all UML Elements in a package (directly or indirectly) that
+	 * are instances of the given ZDL concept.
+	 * 
+	 * @param umlNamespace  - A UML {@link Namespace} such as a {@link Package} or {@link Classifier}
+	 * @param concept     - A {@link Class}; the name of a ZDL concept 
+	 * @return A {@link List} of UML {@link Element}s.
+	 */
+	public static List<Element> getAllElementsByConcept(Namespace umlNamespace, Class concept) {
+		Collection<Element> list = getObjectsByConcept(umlNamespace.allOwnedElements(), concept);
+		return (List<Element>) list;
 	}
 
 	/**

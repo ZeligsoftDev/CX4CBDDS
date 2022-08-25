@@ -17,42 +17,37 @@
 package com.zeligsoft.domain.ngc.ccm.descriptorgeneration.utils;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.mwe.core.WorkflowContext;
 import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.lib.AbstractWorkflowComponent;
 import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
 import org.eclipse.uml2.uml.NamedElement;
 
-import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.build.factory.ProjectFactory;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils;
-import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 public class CollectCDDPathnames extends AbstractWorkflowComponent {
 
-	private String pathnameSlot;
+	private String pathnamesSlot;
 
 	/**
 	 * Pathnames of generated files will be written into.
 	 * 
 	 * @param value
 	 */
-	public void setPathnameSlot(String value) {
-		this.pathnameSlot = value;
+	public void setPathnamesSlot(String value) {
+		this.pathnamesSlot = value;
 	}
 
 	/**
 	 * @return Pathnames of generated files will be written into.
 	 */
-	public String getPathnameSlot() {
-		return pathnameSlot;
+	public String getPathnamesSlot() {
+		return pathnamesSlot;
 	}
 
 	protected void invokeInternal(WorkflowContext ctx, ProgressMonitor monitor,
@@ -66,7 +61,7 @@ public class CollectCDDPathnames extends AbstractWorkflowComponent {
 				ProjectFactory.MODE_CREATE_BASIC);
 		IFile cdd = project.getFile(path + element.getName() + ".cdd"); //$NON-NLS-1$
 		generatedPathnames.add(cdd.getLocation().toOSString());
-		ctx.set(getPathnameSlot(), generatedPathnames);
+		ctx.set(getPathnamesSlot(), generatedPathnames);
 	}
 
 	@Override

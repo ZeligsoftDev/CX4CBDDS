@@ -52,13 +52,19 @@ Void visitDomainDeploymentPart(DeploymentPart domainDeploymentPart, DDS4CCM::DDS
 
 Void mainTransform(CCM::CCM_Deployment::DeploymentPlan deployment) :
 	deployment.Debug("[DEBUG] cdd::mainTransform(CCM::CCM_Deployment::DeploymentPlan deployment) ") ->
-	deployment.part.modelElement.typeSelect(CCM::CCM_Target::Domain).select(e | !e.isDomainDefinition()).mainTransform(deployment);
+	deployment.part.modelElement.typeSelect(CCM::CCM_Target::Domain).mainTransform(deployment);
+//	deployment.part.modelElement.typeSelect(CCM::CCM_Target::Domain).select(e | !e.isDomainDefinition()).mainTransform(deployment);
 
 Boolean isDomainDefinition(CCM::CCM_Target::Domain domain) :
 	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMDomainDefinitionsUtils.isDomainDefinition(org.eclipse.emf.ecore.EObject);
 
 Boolean isNodeInstance(DeploymentPart deploymentPart) :
 	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMDomainDefinitionsUtils.isNodeInstance(org.eclipse.emf.ecore.EObject);
+
+Void mainTransform(DDS4CCM::DDS4CCM::DomainDefinition domainDefinition, CCM::CCM_Deployment::DeploymentPlan deployment ) :
+	domainDefinition.Debug("[DEBUG] cdd::mainTransform(DDS4CCM::DDS4CCM::DomainDefinition domainDefinition, CCM::CCM_Deployment::DeploymentPlan deployment ) domainDefinition = " + domainDefinition.name) ->
+	domainDefinition.deployments.mainTransform()
+;
 
 Void mainTransform(CCM::CCM_Target::Domain domain, CCM::CCM_Deployment::DeploymentPlan deployment ) :
 	domain.Debug("[DEBUG] cdd::mainTransform(CCM::CCM_Target::Domain domain, CCM::CCM_Deployment::DeploymentPlan deployment ) domain = " + domain.name) ->

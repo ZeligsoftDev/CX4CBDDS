@@ -1,51 +1,68 @@
 <workflow>
-	<bean class="org.eclipse.xtend.typesystem.uml2.Setup"/>
- 
- 	<!-- Needed to report issues -->
-  	<component class='org.eclipse.xtend.util.stdlib.ExtIssueReporter' />
-  	   
-    <component id="generator" class="com.zeligsoft.base.zdl.oaw.ZXtendGenerator">
-    	<metaModel id="cdp" class="com.zeligsoft.base.zdl.oaw.XMLSchemaMetamodel">
-			<schemaFile value="platform:/plugin/com.zeligsoft.domain.omg.ccm.descriptorgenerator/xsd/deploymentplan.xsd" />
+	<bean class="org.eclipse.xtend.typesystem.uml2.Setup" />
+
+	<!-- Needed to report issues -->
+	<component
+		class='org.eclipse.xtend.util.stdlib.ExtIssueReporter' />
+
+	<component id="generator"
+		class="com.zeligsoft.base.zdl.oaw.ZXtendGenerator">
+		<metaModel id="cdp"
+			class="com.zeligsoft.base.zdl.oaw.XMLSchemaMetamodel">
+			<schemaFile
+				value="platform:/plugin/com.zeligsoft.domain.omg.ccm.descriptorgenerator/xsd/deploymentplan.xsd" />
 		</metaModel>
-     	<metaModel id="DDS4CCM" class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
-        	<zdl value="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml"/>
-     	</metaModel>
-       <metaModel id="uml" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
-    	<invoke value="template::mainTransformDispatcher::mainTransformDispatcher(element)"/>
-    	<extensionAdvice value="template::advice"/> 
-   		<outputSlot value="xsdMetaModel" />
+		<metaModel id="DDS4CCM"
+			class="com.zeligsoft.base.zdl.oaw.ZDLMetamodel">
+			<zdl value="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml" />
+		</metaModel>
+		<metaModel id="uml"
+			class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel" />
+		<invoke
+			value="template::mainTransformDispatcher::mainTransformDispatcher(element)" />
+		<extensionAdvice value="template::advice" />
+		<outputSlot value="xsdMetaModel" />
 	</component>
-    
-    <component id="cdd_generator" class="com.zeligsoft.base.zdl.oaw.ZXtendGenerator">
+
+	<component id="cdd_generator"
+		class="com.zeligsoft.base.zdl.oaw.ZXtendGenerator">
 
 		<metaModel idRef="cdp" />
-     	<metaModel idRef="DDS4CCM" />
-       	<metaModel idRef="uml" />
- 
-		<invoke value="template::cdd::mainTransform(element)"/>
-		<extensionAdvice value="template::advice"/> 
+		<metaModel idRef="DDS4CCM" />
+		<metaModel idRef="uml" />
+
+		<invoke value="template::cdd::mainTransform(element)" />
+		<extensionAdvice value="template::advice" />
 		<outputSlot value="cdd_model" />
-	</component> 
-   
-	<component id="cdp_writer" class="org.eclipse.xpand2.Generator" skipOnErrors="true">
-  		<metaModel idRef="cdp"/>
-    	<expand value="template::XMLGenerationDescriptorTemplate::descriptors FOR xsdMetaModel"/>
-		<outlet path="${src-gen}" >
-			<postprocessor class="com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.DescriptorBeautifier"/>
-            <vetoStrategy class="org.eclipse.xpand2.output.NoChangesVetoStrategy"/>
-        </outlet>
 	</component>
-	
-	<component id="cdd_writer" class="org.eclipse.xpand2.Generator" skipOnErrors="true">
-  		<metaModel idRef="cdp"/>
-    	<expand value="template::XMLGenerationDescriptorTemplate::descriptors FOR cdd_model"/>
-		<outlet path="${src-gen}" >
-			<postprocessor class="com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.DescriptorBeautifier"/>
-         <vetoStrategy class="org.eclipse.xpand2.output.NoChangesVetoStrategy"/>
-        </outlet>
+
+	<component id="cdp_writer"
+		class="org.eclipse.xpand2.Generator" skipOnErrors="true">
+		<metaModel idRef="cdp" />
+		<expand
+			value="template::XMLGenerationDescriptorTemplate::descriptors FOR xsdMetaModel" />
+		<outlet path="${src-gen}">
+			<postprocessor
+				class="com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.DescriptorBeautifier" />
+			<vetoStrategy
+				class="org.eclipse.xpand2.output.NoChangesVetoStrategy" />
+		</outlet>
 	</component>
-	<component class="com.zeligsoft.domain.ngc.ccm.descriptorgeneration.utils.CollectPathnames">
-		<pathnameSlot value="pathnames" />
+
+	<component id="cdd_writer"
+		class="org.eclipse.xpand2.Generator" skipOnErrors="true">
+		<metaModel idRef="cdp" />
+		<expand
+			value="template::XMLGenerationDescriptorTemplate::descriptors FOR cdd_model" />
+		<outlet path="${src-gen}">
+			<postprocessor
+				class="com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.DescriptorBeautifier" />
+			<vetoStrategy
+				class="org.eclipse.xpand2.output.NoChangesVetoStrategy" />
+		</outlet>
+	</component>
+	<component
+		class="com.zeligsoft.domain.ngc.ccm.descriptorgeneration.utils.CollectPathnames">
+		<pathnamesSlot value="pathnames" />
 	</component>
 </workflow>

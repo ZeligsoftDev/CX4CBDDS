@@ -1,13 +1,16 @@
 <workflow>
-	<bean class="org.eclipse.xtend.typesystem.uml2.Setup"/>
- 
- 	<!-- Needed to report issues -->
-  	<component class='org.eclipse.xtend.util.stdlib.ExtIssueReporter' />
-  	   
-  	<component id="ngcgenerator" file='/workflow/ngcgeneratorNoPostGeneration.mwe'>
-  		<src-gen value="${src-gen}/"/>
-  	</component>
- 	<component class="com.zeligsoft.domain.ngc.ccm.generator.PostGeneration">
-		<pathnameSlot value="pathnames" />
+	<bean class="org.eclipse.xtend.typesystem.uml2.Setup" />
+
+	<!-- Needed to report issues -->
+	<component
+		class='org.eclipse.xtend.util.stdlib.ExtIssueReporter' />
+
+	<component id="ngcgenerator"
+		file='/workflow/ngcgeneratorNoPostGeneration.mwe'>
+		<src-gen value="${src-gen}/" />
+	</component>
+	<component
+		class="com.zeligsoft.domain.ngc.ccm.generator.PostGeneration">
+		<pathnamesSlot value="pathnames" />
 	</component>
 </workflow>

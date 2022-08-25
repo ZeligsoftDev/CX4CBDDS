@@ -37,22 +37,22 @@ import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
 public class CollectPathnames extends AbstractWorkflowComponent {
 
-	private String pathnameSlot;
+	private String pathnamesSlot;
 
 	/**
 	 * Pathnames of generated files will be written into.
 	 * 
 	 * @param value
 	 */
-	public void setPathnameSlot(String value) {
-		this.pathnameSlot = value;
+	public void setPathnamesSlot(String value) {
+		this.pathnamesSlot = value;
 	}
 
 	/**
 	 * @return Pathnames of generated files will be written into.
 	 */
-	public String getPathnameSlot() {
-		return pathnameSlot;
+	public String getPathnamesSlot() {
+		return pathnamesSlot;
 	}
 
 	protected void invokeInternal(WorkflowContext ctx, ProgressMonitor monitor,
@@ -79,7 +79,7 @@ public class CollectPathnames extends AbstractWorkflowComponent {
 				generatedPathnames.add(cdd.getLocation().toOSString());
 			}
 		}
-		ctx.set(getPathnameSlot(), generatedPathnames);
+		ctx.set(getPathnamesSlot(), generatedPathnames);
 	}
 
 	@Override
