@@ -107,6 +107,10 @@ public class DomainDefinitionEditHelperAdvice extends AbstractEditHelperAdvice {
 				IStatus status = createDeploymentParts(domainDeployment);
 
 				if (status.isOK()) {
+					@SuppressWarnings("unchecked")
+					EList<EObject> deployments = (EList<EObject>) ZDLUtil.getValue(domainDeployment.getOwner(),
+							DDS4CCMNames.DOMAIN_DEFINITION, DDS4CCMNames.DOMAIN_DEFINITION__DEPLOYMENTS);
+					deployments.add(domainDeployment);
 					return CommandResult.newOKCommandResult(domainDeployment);
 				}
 				return CommandResult.newErrorCommandResult("Error creating deployment parts. See Error Log.");
