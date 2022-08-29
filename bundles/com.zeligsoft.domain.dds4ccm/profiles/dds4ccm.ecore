@@ -1615,8 +1615,9 @@
     <eAnnotations source="uml2.extensions">
       <details key="suppressed" value="true"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="deployments" ordered="false"
-        upperBound="-1" eType="#//DomainDeployment"/>
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="deployments" value="packagedElement"/>
+    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainDeployment" eSuperTypes="#//Deployment">
     <eAnnotations source="uml2.extensions">
