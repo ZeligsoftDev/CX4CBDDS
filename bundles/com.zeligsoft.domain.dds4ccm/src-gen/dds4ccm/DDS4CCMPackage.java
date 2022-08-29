@@ -8036,22 +8036,13 @@ public interface DDS4CCMPackage extends EPackage {
 	int DOMAIN_DEFINITION__BASE_COMPONENT = DOMAIN__BASE_COMPONENT;
 
 	/**
-	 * The feature id for the '<em><b>Deployments</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOMAIN_DEFINITION__DEPLOYMENTS = DOMAIN_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Domain Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_DEFINITION_FEATURE_COUNT = DOMAIN_FEATURE_COUNT + 1;
+	int DOMAIN_DEFINITION_FEATURE_COUNT = DOMAIN_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Domain Definition</em>' class.
@@ -12069,17 +12060,6 @@ public interface DDS4CCMPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDomainDefinition();
-
-	/**
-	 * Returns the meta object for the reference list '{@link dds4ccm.DomainDefinition#getDeployments <em>Deployments</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Deployments</em>'.
-	 * @see dds4ccm.DomainDefinition#getDeployments()
-	 * @see #getDomainDefinition()
-	 * @generated
-	 */
-	EReference getDomainDefinition_Deployments();
 
 	/**
 	 * Returns the meta object for class '{@link dds4ccm.DomainDeployment <em>Domain Deployment</em>}'.

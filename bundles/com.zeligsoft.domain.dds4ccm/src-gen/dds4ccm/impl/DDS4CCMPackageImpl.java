@@ -5573,16 +5573,6 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getDomainDefinition_Deployments() {
-        return (EReference)getDomainDefinition().getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getDomainDeployment() {
 		if (domainDeploymentEClass == null) {
 			domainDeploymentEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(188);
