@@ -32,6 +32,12 @@
             originClassNamePattern="org.eclipse.papyrus.uml.decoratormodel.helper.DecoratorModelUtils"
             originMethodNamePattern="isDecoratorModel">
       </undesirableException>
+      <undesirableException
+            exceptionClassName="java.lang.NullPointerException"
+            maximumDepth="2"
+            originClassNamePattern="org.eclipse.papyrus.infra.ui.lifecycleevents.SaveAndDirtyService"
+            originMethodNamePattern="markSaveLocation">
+      </undesirableException>
    </extension>
 
 </plugin>
