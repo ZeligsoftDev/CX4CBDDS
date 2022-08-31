@@ -37,6 +37,7 @@ import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
@@ -60,68 +61,69 @@ public class DDS4CCMListener extends ResourceSetListenerImpl {
 			EStructuralFeature feature = (EStructuralFeature) notification
 					.getFeature();
 
-			if (notifier instanceof EObject && feature != null) {
+			if (notifier instanceof Property && feature != null) {
 				TransactionalEditingDomain domain = TransactionUtil
 						.getEditingDomain((EObject) notifier);
-				if (ZDLUtil.isZDLConcept((EObject) notifier,
-						DDS4CCMNames.MESSAGE_FIELD)) {
+				Object newValue = notification.getNewValue();
+				if (feature.equals(UMLPackage.Literals.TYPED_ELEMENT__TYPE)
+						&& newValue instanceof EObject
+						&& notification.getEventType() == Notification.SET
+						&& ZDLUtil.isZDLConcept((EObject) notifier, DDS4CCMNames.MESSAGE_FIELD)
+						&& ZDLUtil.isZDLConcept((EObject) newValue,
+								DDS4CCMNames.DDSMESSAGE)) {
 					EObject messageField = ((EObject) notifier);
-					Object newValue = notification.getNewValue();
-					if (feature.equals(UMLPackage.Literals.TYPED_ELEMENT__TYPE)
-							&& newValue instanceof EObject
-							&& notification.getEventType() == Notification.SET
-							&& ZDLUtil.isZDLConcept((EObject) newValue,
-									DDS4CCMNames.DDSMESSAGE)) {
-						@SuppressWarnings("unchecked")
-						List<EObject> typeFields = (List<EObject>) ZDLUtil
-								.getValue((EObject) newValue,
-										DDS4CCMNames.DDSMESSAGE,
-										DDS4CCMNames.DDSMESSAGE__FIELDS);
-						for (EObject field : typeFields) {
-							if (ZDLUtil.isZDLConcept(field,
-									DDS4CCMNames.MESSAGE_FIELD)) {
-								Boolean isKey = (Boolean) ZDLUtil.getValue(
-										field, DDS4CCMNames.MESSAGE_FIELD,
-										DDS4CCMNames.MESSAGE_FIELD__IS_KEY);
-								if (isKey) {
-									EMFOperationCommand command = new EMFOperationCommand(
-											domain, setIsKeyCommand(domain,
-													messageField, isKey));
-									returnCommand.append(command);
-									break;
-								}
+
+					@SuppressWarnings("unchecked")
+					List<EObject> typeFields = (List<EObject>) ZDLUtil
+							.getValue((EObject) newValue,
+									DDS4CCMNames.DDSMESSAGE,
+									DDS4CCMNames.DDSMESSAGE__FIELDS);
+					for (EObject field : typeFields) {
+						if (ZDLUtil.isZDLConcept(field,
+								DDS4CCMNames.MESSAGE_FIELD)) {
+							Boolean isKey = (Boolean) ZDLUtil.getValue(
+									field, DDS4CCMNames.MESSAGE_FIELD,
+									DDS4CCMNames.MESSAGE_FIELD__IS_KEY);
+							if (isKey) {
+								EMFOperationCommand command = new EMFOperationCommand(
+										domain, setIsKeyCommand(domain,
+												messageField, isKey));
+								returnCommand.append(command);
+								break;
 							}
 						}
-					} else if (DDS4CCMNames.MESSAGE_FIELD__IS_KEY
-							.equals(feature.getName())
-							&& newValue instanceof Boolean
-							&& notification.getEventType() == Notification.SET
-							&& (Boolean) newValue) {
-						EObject originalField = UMLUtil
-								.getBaseElement(messageField);
-						if (originalField != null) {
-							EObject container = originalField.eContainer();
-							if (container != null
-									&& ZDLUtil.isZDLConcept(container,
-											DDS4CCMNames.DDSMESSAGE)) {
-								for (Setting s : UML2Util
-										.getInverseReferences(container)) {
-									EObject eobj = s.getEObject();
-									if (eobj != null
-											&& ZDLUtil.isZDLConcept(eobj,
-													DDS4CCMNames.MESSAGE_FIELD)) {
-										EObject idlType = (EObject) ZDLUtil
-												.getValue(
-														eobj,
-														DDS4CCMNames.MESSAGE_FIELD,
-														DDS4CCMNames.MESSAGE_FIELD__IDL_TYPE);
-										if (idlType == container) {
-											EMFOperationCommand command = new EMFOperationCommand(
-													domain, setIsKeyCommand(
-															domain, eobj,
-															(Boolean) newValue));
-											returnCommand.append(command);
-										}
+					}
+				} else if (DDS4CCMNames.MESSAGE_FIELD__IS_KEY
+						.equals(feature.getName())
+						&& newValue instanceof Boolean
+						&& notification.getEventType() == Notification.SET
+						&& (Boolean) newValue
+						&& ZDLUtil.isZDLConcept((EObject) notifier, DDS4CCMNames.MESSAGE_FIELD)) {
+					EObject messageField = ((EObject) notifier);
+					EObject originalField = UMLUtil
+							.getBaseElement(messageField);
+					if (originalField != null) {
+						EObject container = originalField.eContainer();
+						if (container != null
+								&& ZDLUtil.isZDLConcept(container,
+										DDS4CCMNames.DDSMESSAGE)) {
+							for (Setting s : UML2Util
+									.getInverseReferences(container)) {
+								EObject eobj = s.getEObject();
+								if (eobj != null
+										&& ZDLUtil.isZDLConcept(eobj,
+												DDS4CCMNames.MESSAGE_FIELD)) {
+									EObject idlType = (EObject) ZDLUtil
+											.getValue(
+													eobj,
+													DDS4CCMNames.MESSAGE_FIELD,
+													DDS4CCMNames.MESSAGE_FIELD__IDL_TYPE);
+									if (idlType == container) {
+										EMFOperationCommand command = new EMFOperationCommand(
+												domain, setIsKeyCommand(
+														domain, eobj,
+														(Boolean) newValue));
+										returnCommand.append(command);
 									}
 								}
 							}
