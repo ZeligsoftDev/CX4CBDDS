@@ -562,7 +562,7 @@ public class IDL3PlusUtil {
 	 * @return A boolean.
 	 */
 	public static boolean filter(Property grandParent, Property port) {
-		if (port != null & ZDLUtil.isZDLConcept(port, ZMLMMNames.PORT)) {
+		if (grandParent != null && port != null && ZDLUtil.isZDLConcept(port, ZMLMMNames.PORT)) {
 			Type portType = grandParent.getType();
 			if (portType != null && ZDLUtil.isZDLConcept(portType, ZMLMMNames.PORT_TYPE)) {
 				String portTypeQualifiedName = getInstantiatedPortTypeQualifiedName(portType);
