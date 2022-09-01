@@ -61,6 +61,9 @@ public class CCMUUIDEditHelperAdvice extends AbstractEditHelperAdvice {
 				if (newObject != null && ZDLUtil.isZDLConcept(newObject, CCMNames.DOMAIN)) {
 					ZDLUtil.setValue(newObject, CCMNames.DOMAIN, CCMNames.DOMAIN___UUID,
 							"_" + UUID.randomUUID().toString()); //$NON-NLS-1$
+				} else if (newObject != null && ZDLUtil.isZDLConcept(newObject, CCMNames.DEPLOYMENT_PLAN)) {
+					ZDLUtil.setValue(newObject, CCMNames.DEPLOYMENT_PLAN, CCMNames.DEPLOYMENT_PLAN__ID,
+							"_" + UUID.randomUUID().toString()); //$NON-NLS-1$
 				}
 
 				return CommandResult.newOKCommandResult(newObject);

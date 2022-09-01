@@ -18,10 +18,6 @@ import DDS4CCM::QoSProfiles;
 import DDS::QOS;
 import DDS4CCM::DDSExtensions;
 
-Void configureMessageField(MessageField self) :
-	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMUtil.configureDDSMessageField(
-		org.eclipse.uml2.uml.Property);
-	
 Void configureTopicQoS(TopicQoS self) :
 	self.durabilityServiceQoSProperty() ->
 	self.transportPriorityQoSProperty() ->

@@ -56,12 +56,13 @@ public class WorkerFunctionImplListener extends ResourceSetListenerImpl {
 				if (modifyList.size() > 1) {
 					break;
 				}
+				if(!(notification.getNotifier() instanceof EObject)) {
+					continue;
+				}
+				EObject notifier = (EObject) notification.getNotifier();
 				if (notification.getEventType() == Notification.SET
-						&& notification.getNotifier() instanceof EObject
-						&& ZDLUtil.isZDLConcept(
-								(EObject) notification.getNotifier(),
-								ZMLMMNames.WORKER_FUNCTION_IMPL)) {
-
+						&& notifier instanceof OpaqueBehavior
+						&& ZDLUtil.isZDLConcept(notifier, ZMLMMNames.WORKER_FUNCTION_IMPL)) {
 					if (!(notification.getOldValue() instanceof OpaqueBehavior)
 							|| notification.getNewValue() != null) {
 						continue;
