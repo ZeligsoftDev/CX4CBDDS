@@ -18,6 +18,7 @@
 package com.zeligsoft.domain.idl3plus.utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.util.TreeIterator;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.Port;
@@ -260,25 +262,30 @@ public class IDL3PlusXtendUtils {
 		return null;
 	}
 	
-	public static Property getPerPortDP(Property part, Property dataSpace,
-			Component deployment) {
-		if (ZDLUtil.isZDLConcept(part, ZMLMMNames.DEPLOYMENT_PART)
+
+	/**
+	 * Return the "per port" deployment part, i.e. the port of the given deployment
+	 * part which is connected to the given data-space.
+	 * 
+	 * @param deploymentPart - A UML {@link Property} which is a deployment part.
+	 * @param dataSpace      - A UML {@link Property} which is a data space
+	 * @return A UML {@link Property} for the port of the deploymentPart which is
+	 *         connected to the dataSpace.
+	 */
+	public static Property getPerPortDP(Property deploymentPart, Property dataSpace) {
+		if (ZDLUtil.isZDLConcept(deploymentPart, ZMLMMNames.DEPLOYMENT_PART)
 				&& ZDLUtil.isZDLConcept(dataSpace, IDL3PlusNames.DATA_SPACE)) {
-			Property ccmPart = (Property) ZDLUtil.getValue(part,
-					ZMLMMNames.DEPLOYMENT_PART,
-					ZMLMMNames.DEPLOYMENT_PART__MODEL_ELEMENT);
+			Property ccmPart = (Property) ZDeploymentUtil.getModelElement(deploymentPart);
 			if (ZDLUtil.isZDLConcept(ccmPart, CCMNames.CCMPART)) {
-				@SuppressWarnings("unchecked")
-				List<EObject> nestedParts = (List<EObject>) ZDLUtil.getValue(
-						part, ZMLMMNames.DEPLOYMENT_PART,
-						ZMLMMNames.DEPLOYMENT_PART__NESTED_PART);
-				for (EObject nestedPart : nestedParts) {
-					Port port = (Port) ZDLUtil.getValue(nestedPart,
-							ZMLMMNames.DEPLOYMENT_PART,
-							ZMLMMNames.DEPLOYMENT_PART__MODEL_ELEMENT);
-					if (dataSpace == IDL3PlusUtil.getDataSpaceFromPerPort(port,
-							ccmPart)) {
-						return (Property) nestedPart;
+				Collection<Property> nestedParts = ZDeploymentUtil.getDeploymentChildren(deploymentPart);
+				for (Property nestedPart : nestedParts) {
+					if (ZDLUtil.isZDLConcept(nestedPart, IDL3PlusNames.PER_PORT_CONNECTOR_TYPE_DEPLOYMENT_PART)) {
+						Port port = (Port) ZDeploymentUtil.getModelElement(nestedPart);
+						Property otherEndRole = IDL3PlusUtil.getDataSpaceFromPerPort(port, deploymentPart);
+						if (otherEndRole != null && ZDLUtil.isZDLConcept(otherEndRole, IDL3PlusNames.DATA_SPACE)
+								&& dataSpace == otherEndRole) {
+							return nestedPart;
+						}
 					}
 				}
 			}
