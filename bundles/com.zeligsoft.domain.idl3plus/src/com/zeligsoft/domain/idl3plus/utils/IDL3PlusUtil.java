@@ -985,48 +985,6 @@ public class IDL3PlusUtil {
 	}
 
 	/**
-	 * Return the DataSpace to which the port instance is connected. 
-	 *   
-	 * @param port - A UML {@link Port} in the definition of some component.
-	 * @param part - A UML {@link Property} representing a part in some assembly, whose type is a component with the given port.
-	 * @return a UML {@link Property} representing the DataSpace.
-	 */
-	public static Property getDataSpaceFromPerPort_old(Port port, Property part) {
-		for (EObject end : port.getEnds()) {
-			if (ZDLUtil.isZDLConcept(end, ZMLMMNames.CONNECTOR_END)) {
-				EObject endPart = ZDLUtil.getEValue(end,
-						ZMLMMNames.CONNECTOR_END,
-						ZMLMMNames.CONNECTOR_END__PART_WITH_PORT);
-				if (endPart == part) {
-					EObject connector = end.eContainer();
-					if (ZDLUtil.isZDLConcept(connector, CCMNames.CCMCONNECTOR)) {
-						@SuppressWarnings("unchecked")
-						List<EObject> ends = (List<EObject>) ZDLUtil.getValue(
-								connector, ZMLMMNames.ASSEMBLY_CONNECTOR,
-								ZMLMMNames.ASSEMBLY_CONNECTOR__END);
-						// The loop below is fishy. Why do we search both ends instead of just the opposite end of the connector?
-						// Also, it assumes that one of the two ends is the DataSpace, but this is not so, if the connector is
-						// a delegation connector.
-						for (EObject connEnd : ends) {
-							EObject connEndPart = ZDLUtil.getEValue(connEnd,
-									ZMLMMNames.CONNECTOR_END,
-									ZMLMMNames.CONNECTOR_END__PART);
-							if (connEndPart != null
-									&& ZDLUtil.isZDLConcept(connEndPart,
-											IDL3PlusNames.DATA_SPACE)) {
-								return (Property) connEndPart;
-							}
-						}
-						// If we get to this point, neither end is a DataSpace, so this must be a delegation connector
-						// and we must search for the DataSpace, outside.
-					}
-				}
-			}
-		}
-		return null;
-	}
-	
-	/**
 	 * Return the DataSpace to which the port instance is connected.
 	 * 
 	 * @param port           - A UML {@link Port} in the definition of some
