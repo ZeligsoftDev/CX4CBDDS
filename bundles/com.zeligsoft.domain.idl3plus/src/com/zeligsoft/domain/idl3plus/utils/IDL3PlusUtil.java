@@ -32,6 +32,8 @@ import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.ConnectableElement;
+import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
@@ -562,7 +564,7 @@ public class IDL3PlusUtil {
 	 * @return A boolean.
 	 */
 	public static boolean filter(Property grandParent, Property port) {
-		if (port != null & ZDLUtil.isZDLConcept(port, ZMLMMNames.PORT)) {
+		if (grandParent != null && port != null && ZDLUtil.isZDLConcept(port, ZMLMMNames.PORT)) {
 			Type portType = grandParent.getType();
 			if (portType != null && ZDLUtil.isZDLConcept(portType, ZMLMMNames.PORT_TYPE)) {
 				String portTypeQualifiedName = getInstantiatedPortTypeQualifiedName(portType);
@@ -981,29 +983,100 @@ public class IDL3PlusUtil {
 		}
 		return getRootDomainDeploymentPart(targetPart);
 	}
-	
-	public static Property getDataSpaceFromPerPort(Port port, Property part) {
 
-		for (EObject end : port.getEnds()) {
+	/**
+	 * Return the DataSpace to which the port instance is connected.
+	 * 
+	 * @param port           - A UML {@link Port} in the definition of some
+	 *                       component.
+	 * @param deploymentPart - A UML {@link Property} which is a deployment part
+	 *                       whose model element is a part in some assembly, whose
+	 *                       type is a component with the given port.
+	 * @return a UML {@link Property} representing the DataSpace.
+	 */
+	public static Property getDataSpaceFromPerPort(Port port, Property deploymentPart) {
+		// Get the (CCM) model element (a part within an assembly) for the given deploymentPart 
+		Property ccmPart = (Property) ZDeploymentUtil.getModelElement(deploymentPart);
+		// Check that it is a CCM part
+		if (ZDLUtil.isZDLConcept(ccmPart, CCMNames.CCMPART)) {
+			// Get the other end of the connector from the port of the part in the assembly
+			ConnectorEnd otherEnd = IDL3PlusUtil.getOtherEnd(port, ccmPart);
+			// While the other end is a border port, and not a dataspace, go up until we find one
+			while (otherEnd == null || isBorderPort(otherEnd)) {
+				// Here port is a delegated port
+				// Get the parent deployment part of the current part
+				deploymentPart = ZDeploymentUtil.getParentPart(deploymentPart);
+				if (deploymentPart == null)
+					break;
+				// Get the (CCM) model element of the parent deployment part
+				ccmPart = (Property) ZDeploymentUtil.getModelElement(deploymentPart);
+				// Get the port on the other end of the connector
+				EObject connectorEndPort = otherEnd != null
+						? ZDLUtil.getEValue(otherEnd, ZMLMMNames.CONNECTOR_END, ZMLMMNames.CONNECTOR_END__PORT)
+						: null;
+				// Get the other end of the connector from the port *on the other end* of the connector,
+				// in the new assembly (the new value of ccmPart)
+				if (!(connectorEndPort instanceof Port))
+					break;
+				Port otherPort = (Port) connectorEndPort;
+				otherEnd = IDL3PlusUtil.getOtherEnd(otherPort, ccmPart);
+			}
+			// If we found a dataspace, return it as a Property
+			EObject otherEndPart = otherEnd != null
+					? ZDLUtil.getEValue(otherEnd, ZMLMMNames.CONNECTOR_END, ZMLMMNames.CONNECTOR_END__PART)
+					: null;
+			if (otherEndPart instanceof Property && ZDLUtil.isZDLConcept(otherEndPart, IDL3PlusNames.DATA_SPACE)) {
+				return (Property) otherEndPart;
+			}
+		}
+		// If we didn't find a dataspace, return null
+		return null;
+	}
+	
+	/**
+	 * Determines whether the given connector end is a "border port", i.e. a port in the
+	 * boundary of an assembly.
+	 * 
+	 * @param connectorEnd - A UML {@link ConnectorEnd}
+	 * @return true iff the connector end's "part with port" is null and either 
+	 *         the connector end's "part" is null or not a DataSpace.
+	 */
+	public static boolean isBorderPort(ConnectorEnd connectorEnd) {
+		EObject connectorEndPartWithPort = connectorEnd != null
+				? ZDLUtil.getEValue(connectorEnd, ZMLMMNames.CONNECTOR_END, ZMLMMNames.CONNECTOR_END__PART_WITH_PORT)
+				: null;
+		EObject connectorEndPart = connectorEnd != null
+				? ZDLUtil.getEValue(connectorEnd, ZMLMMNames.CONNECTOR_END, ZMLMMNames.CONNECTOR_END__PART)
+				: null;
+		return connectorEndPartWithPort == null
+				&& (connectorEndPart == null 
+					|| !ZDLUtil.isZDLConcept(connectorEndPart, IDL3PlusNames.DATA_SPACE));
+	}
+	
+	/**
+	 * Return the connector end at the opposite end of a connector from the given port in the given part.
+	 * 
+	 * @param port - A UML {@link Port} in the definition of some component.
+	 * @param part - A UML {@link Property} representing a part in some assembly, whose type is a component 
+	 *               with the given port.
+	 * @return a UML {@link ConnectorEnd} representing the opposite connector end to the given port in the part.
+	 */
+	public static ConnectorEnd getOtherEnd(Port port, Property part) {
+		for (ConnectorEnd end : port.getEnds()) {
 			if (ZDLUtil.isZDLConcept(end, ZMLMMNames.CONNECTOR_END)) {
 				EObject endPart = ZDLUtil.getEValue(end,
 						ZMLMMNames.CONNECTOR_END,
 						ZMLMMNames.CONNECTOR_END__PART_WITH_PORT);
 				if (endPart == part) {
-					EObject connector = end.eContainer();
+					Element connector = end.getOwner();
 					if (ZDLUtil.isZDLConcept(connector, CCMNames.CCMCONNECTOR)) {
 						@SuppressWarnings("unchecked")
 						List<EObject> ends = (List<EObject>) ZDLUtil.getValue(
 								connector, ZMLMMNames.ASSEMBLY_CONNECTOR,
 								ZMLMMNames.ASSEMBLY_CONNECTOR__END);
-						for (EObject connEnd : ends) {
-							EObject connEndPart = ZDLUtil.getEValue(connEnd,
-									ZMLMMNames.CONNECTOR_END,
-									ZMLMMNames.CONNECTOR_END__PART);
-							if (connEndPart != null
-									&& ZDLUtil.isZDLConcept(connEndPart,
-											IDL3PlusNames.DATA_SPACE)) {
-								return (Property) connEndPart;
+						for (EObject otherEnd : ends) {
+							if (otherEnd != end) {
+								return (ConnectorEnd)otherEnd;
 							}
 						}
 					}
@@ -1012,7 +1085,7 @@ public class IDL3PlusUtil {
 		}
 		return null;
 	}
-	
+
 	public static List<Property> buildDeploymentPartFromModelElement(
 			NamedElement partToCreate, Component deployment,
 			NamedElement modelParent, NamedElement selectedStructuralRealization) {
