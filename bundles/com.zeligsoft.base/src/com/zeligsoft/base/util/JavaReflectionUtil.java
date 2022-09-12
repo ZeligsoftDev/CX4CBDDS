@@ -111,8 +111,9 @@ public final class JavaReflectionUtil {
 	 * @return A {@code boolean}
 	 */
 	public static boolean isEqualOrSubclassOf(Class<?> classX, String classYCanonicalName) {
-		return classX.getCanonicalName().equals(classYCanonicalName) 
-				|| isSubclassOf(classX, classYCanonicalName);
+		return classX != null
+				&& (equalStrings(className(classX), classYCanonicalName)
+						|| isSubclassOf(classX, classYCanonicalName));
 	}
 	
 	/**
@@ -129,8 +130,9 @@ public final class JavaReflectionUtil {
 	 * @return A {@code boolean}
 	 */
 	public static boolean isEqualOrSubclassOf(Class<?> classX, Class<?> classY) {
-		return classX.getCanonicalName().equals(classY.getCanonicalName()) 
-				|| isSubclassOf(classX, classY);
+		return classX != null && classY != null
+				&& (equalStrings(className(classX), className(classY)))
+						|| isSubclassOf(classX, classY);
 	}
 	
 	/**
@@ -148,8 +150,8 @@ public final class JavaReflectionUtil {
 	public static boolean isSubclassOf(Class<?> classX, String classYCanonicalName) {
 		List<Class<?>> allSuperclassesOfX = getAllSuperclassesUp(classX);
 		for (Class<?> superClass : allSuperclassesOfX) {
-			String superClassCanonicalName = superClass.getCanonicalName();
-			if (superClassCanonicalName.equals(classYCanonicalName)) {
+			String superClassCanonicalName = className(superClass);
+			if (equalStrings(superClassCanonicalName, classYCanonicalName)) {
 				return true;
 			}
 		}
@@ -169,7 +171,7 @@ public final class JavaReflectionUtil {
 	 * @return A {@code boolean}
 	 */
 	public static boolean isSubclassOf(Class<?> classX, Class<?> classY) {
-		return isSubclassOf(classX, classY.getCanonicalName());
+		return isSubclassOf(classX, className(classY));
 	}
 
 	/**
@@ -186,8 +188,9 @@ public final class JavaReflectionUtil {
 	 * @return A {@code boolean}
 	 */
 	public static boolean isEqualOrImplementsInterface(Class<?> classOrInterfaceX, String interfaceYCanonicalName) {
-		return classOrInterfaceX.getCanonicalName().equals(interfaceYCanonicalName) 
-				|| implementsInterface(classOrInterfaceX, interfaceYCanonicalName);
+		return classOrInterfaceX != null && interfaceYCanonicalName != null
+				&& (equalStrings(className(classOrInterfaceX), interfaceYCanonicalName) 
+						|| implementsInterface(classOrInterfaceX, interfaceYCanonicalName));
 	}
 	
 	/**
@@ -204,8 +207,9 @@ public final class JavaReflectionUtil {
 	 * @return A {@code boolean}
 	 */
 	public static boolean isEqualOrImplementsInterface(Class<?> classOrInterfaceX, Class<?> interfaceY) {
-		return classOrInterfaceX.getCanonicalName().equals(interfaceY.getCanonicalName()) 
-				|| implementsInterface(classOrInterfaceX, interfaceY);
+		return classOrInterfaceX != null && interfaceY != null
+				&& (equalStrings(className(classOrInterfaceX), className(interfaceY)) 
+						|| implementsInterface(classOrInterfaceX, interfaceY));
 	}
 	
 	/**
@@ -223,8 +227,8 @@ public final class JavaReflectionUtil {
 	public static boolean implementsInterface(Class<?> classOrInterfaceX, String interfaceYCanonicalName) {
 		Set<Class<?>> allInterfacesOfX = getAllInterfaces(classOrInterfaceX);
 		for (Class<?> interfaceOfX : allInterfacesOfX) {
-			String interfaceOfXCanonicalName = interfaceOfX.getCanonicalName();
-			if (interfaceOfXCanonicalName.equals(interfaceYCanonicalName)) {
+			String interfaceOfXCanonicalName = className(interfaceOfX);
+			if (equalStrings(interfaceOfXCanonicalName, interfaceYCanonicalName)) {
 				return true;
 			}
 		}
@@ -244,10 +248,35 @@ public final class JavaReflectionUtil {
 	 * @return A {@code boolean}
 	 */
 	public static boolean implementsInterface(Class<?> classOrInterfaceX, Class<?> interfaceY) {
-		if (!interfaceY.isInterface()) {
+		if (interfaceY != null || !interfaceY.isInterface()) {
 			return false;
 		}
-		return implementsInterface(classOrInterfaceX, interfaceY.getCanonicalName());
+		return implementsInterface(classOrInterfaceX, className(interfaceY));
 	}
 
+	/**
+	 * Safe string equality comparison, which accepts null arguments.
+	 * @param a A String
+	 * @param b A String
+	 * @return A boolean. True iff both are null or both are non-null and equal Strings.
+	 */
+	public static boolean equalStrings(String a, String b) {
+		return a == b
+				|| a != null && a.equals(b)
+				|| b != null && b.equals(a);
+	}
+	
+	/**
+	 * Returns the first non-null name for a class between its canonical-name, its (normal) name, and its simple name.
+	 * @param klass A Class<?>
+	 * @return A String
+	 */
+	public static String className(Class<?> klass) {
+		String name = klass.getCanonicalName();
+		if (name != null) return name;
+		name = klass.getName();
+		if (name != null) return name;
+		name = klass.getSimpleName();
+		return name;
+	}
 }

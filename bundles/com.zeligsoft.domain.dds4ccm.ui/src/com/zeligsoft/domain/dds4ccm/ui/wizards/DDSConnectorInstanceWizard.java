@@ -26,6 +26,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
@@ -69,9 +70,9 @@ public class DDSConnectorInstanceWizard extends Wizard {
 	public boolean performFinish() {
 
 		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(context);
-		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(
-				editingDomain, Messages.DDSConnectorInstanceWizard_CommandLabel,
-				Collections.EMPTY_MAP, null) {
+		Map<Object, Object> options = Collections.singletonMap(Transaction.OPTION_NO_TRIGGERS, true);
+		AbstractTransactionalCommand editCommand = new AbstractTransactionalCommand(editingDomain,
+				Messages.DDSConnectorInstanceWizard_CommandLabel, options, null) {
 
 			@Override
 			protected CommandResult doExecuteWithResult(IProgressMonitor arg0,

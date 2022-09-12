@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 ADLINK Technology Limited.
+ * Copyright 2022 Northrop Grumman Systems Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.resource.URIConverter;
  * segments immediately following a URI mapping prefix.
  * 
  * @author Christian W. Damus (Zeligsoft)
+ * @author Young-Soo Roh - issue# 416
  */
 public class ZeligsoftURIConverter {
 

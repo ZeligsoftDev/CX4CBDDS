@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.4"?>
+
+<plugin>
+   <extension-point id="org.eclipse.papyrus.uml.properties.languageEditor" name="%extension-point.name" schema="schema/org.eclipse.papyrus.uml.properties.languageEditor.exsd"/>
+   <extension-point id="org.eclipse.papyrus.uml.properties.datatype" name="DataType" schema="schema/org.eclipse.papyrus.uml.properties.datatype.exsd"/>
+   <extension point="org.eclipse.papyrus.infra.properties.environments">
+      <environment environmentModel="Model/Environment.xmi">
+      </environment>
+   </extension>
+   <extension point="org.eclipse.papyrus.infra.properties.contexts">
+      <context contextModel="Model/UML/UML.ctx">
+      </context>
+   </extension>
+      <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="TreeOutlinePage"
+            labelProvider="org.eclipse.papyrus.infra.properties.ui.providers.PropertiesHeaderLabelProvider"
+            tabDescriptorProvider="org.eclipse.papyrus.infra.properties.ui.xwt.XWTTabDescriptorProvider">
+         <propertyCategory
+               category="org.eclipse.papyrus"></propertyCategory>
+      </propertyContributor>
+   </extension>
+  <extension point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping source="pathmap://UML_CONTEXT/" target="platform:/plugin/org.eclipse.papyrus.views.properties.uml/Model/UML/">
+      </mapping>
+   </extension>
+      <extension point="org.eclipse.papyrus.uml.properties.languageEditor">
+         <editor editor="org.eclipse.papyrus.uml.properties.widgets.NaturalLanguageEditor">
+         </editor>
+         <editor editor="org.eclipse.papyrus.uml.properties.widgets.NaturalLanguageEditor" language="C">
+         </editor>
+         <editor editor="org.eclipse.papyrus.uml.properties.widgets.NaturalLanguageEditor" language="C++">
+         </editor>
+         <editor editor="org.eclipse.papyrus.uml.properties.widgets.NaturalLanguageEditor" language="JAVA">
+         </editor>
+         <editor editor="org.eclipse.papyrus.uml.properties.widgets.NaturalLanguageEditor" language="Natural language">
+         </editor>
+      </extension>
+      <extension point="org.eclipse.papyrus.infra.properties.contexts">
+         <context contextModel="Model/UMLNotation/UMLNotation.ctx">
+         </context>
+      </extension>
+
+   <!-- TODO EMF-FACET
+   <extension
+         point="org.eclipse.papyrus.emf.facet.infra.query.registration">
+      <modelqueryset
+            file="Model/UML/uml.querySet">
+      </modelqueryset>
+   </extension-->
+   <extension
+         point="org.eclipse.papyrus.infra.properties.ui.labelprovider">
+      <labelProvider
+            labelProvider="org.eclipse.papyrus.uml.tools.providers.UMLFilteredLabelProvider"
+            priority="50">
+      </labelProvider>
+      <labelProvider
+            labelProvider="org.eclipse.papyrus.uml.profile.providers.AppliedStereotypePropertyFilteredLabelProvider"
+            priority="45">
+      </labelProvider>
+   </extension>
+   
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="TreeOutlinePage">
+   		<propertyTab id="Base" label="General" category="org.eclipse.papyrus" afterTab=""/>
+     	<propertyTab id="Comments" label="Comments" category="org.eclipse.papyrus" afterTab="Base"/>
+     	<propertyTab id="advanced" label="Advanced" category="org.eclipse.papyrus" afterTab="Comments"/>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.generated_package">
+      <package
+            class="org.eclipse.papyrus.uml.properties.languagepreferences.languagepreferencesPackage"
+            genModel="Model/LanguagePreferences.genmodel"
+            uri="http://www.eclipse.org/papyrus/properties/uml/languagePreferences">
+      </package>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.papyrus.infra.core.sasheditor.preferences.generalcategory"
+            class="org.eclipse.papyrus.uml.properties.preferences.MultiplicityEditorPreferencePage"
+            id="org.eclipse.papyrus.uml.properties.multiplicityEditorProperties"
+            name="Multiplicity Editor">
+      </page>
+      <page
+            category="org.eclipse.papyrus.views.properties.propertyview"
+            class="org.eclipse.papyrus.internal.uml.properties.profile.preferences.ProfileTabPreferencePage"
+            id="org.eclipse.papyrus.uml.properties.profile.tab"
+            name="Profile Tab Preferences">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.papyrus.uml.properties.preferences.MultiplicityEditorPreferenceInitializer">
+      </initializer>
+      <initializer
+            class="org.eclipse.papyrus.internal.uml.properties.profile.preferences.ProfileTabPreferencesInitializer">
+      </initializer>
+   </extension>
+</plugin>

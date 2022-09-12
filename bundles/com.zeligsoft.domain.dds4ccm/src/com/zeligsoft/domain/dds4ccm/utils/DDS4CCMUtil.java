@@ -95,12 +95,6 @@ public class DDS4CCMUtil {
 		}
 	}
 
-	public static void configureDDSMessageField(
-			org.eclipse.uml2.uml.Property prop) {
-		prop.setVisibility(VisibilityKind.PUBLIC_LITERAL);
-	}
-
-
 	public static void debug(Object o) {
 		o.getClass();
 	}

@@ -14,6 +14,7 @@ on:
   release:
     types:
       - created
+  workflow_dispatch:
 
 jobs:
   build:
@@ -63,6 +64,10 @@ jobs:
                 core.exportVariable(var_name, value)
                 core.info(var_name + ' = ' + value)
             }
+      - name: Build Papyrus 4.8 patches
+        run: |
+           cd papyrus-patch/v4.8.0
+           ../../mvnw clean verify
       - name: Build DDS4CBDDS
         run: |
            ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
@@ -75,7 +80,8 @@ jobs:
                 'AXCIOMA': 'releng/com.zeligsoft.dds4ccm.update.axcioma/target/dds4ccm_axcioma_*.zip',
                 'AXCIOMA_RCP': 'releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/target/products/papyrus-cx-axcioma-*.zip',
                 'DDK': 'releng/com.zeligsoft.ddk.update/target/ddk_*.zip',
-                'PAPYRUS_440_PATCH': 'papyrus-patch/v4.4.0/site-papyrus-patch/target/papyrus_v440_patch_*.zip'
+                'PAPYRUS_440_PATCH': 'papyrus-patch/v4.4.0/site-papyrus-patch/target/papyrus_v440_patch_*.zip',
+                'PAPYRUS_480_PATCH': 'papyrus-patch/v4.8.0/site-papyrus-patch/target/papyrus_v480_patch_*.zip'
             }
             const variable_defs = {}
             for (const [var_base, pat] of Object.entries(patterns)) {
@@ -189,6 +195,13 @@ jobs:
           name: ${{ env.PAPYRUS_440_PATCH_FILE_NAME }}
           path: ${{ env.PAPYRUS_440_PATCH_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+      - name: Preserve PAPYRUS_480_PATCH archive
+        if: ${{ env.PAPYRUS_480_PATCH_PRESENT == 'true' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.PAPYRUS_480_PATCH_FILE_NAME }}
+          path: ${{ env.PAPYRUS_480_PATCH_PATH }}
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve ATCD RPM
         if: ${{ env.ATCD_RPM_PRESENT == 'true' }}
         uses: actions/upload-artifact@v3
@@ -221,3 +234,4 @@ jobs:
             releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/target/products/com.zeligsoft.papyrus-cx.axcioma.rcp.product-*.zip
             releng/com.zeligsoft.papyrus-cx.axcioma.rcp.product/rpm_build/x86_64/*.rpm
             papyrus-patch/v4.4.0/site-papyrus-patch/target/papyrus_v440_patch_*.zip
+            papyrus-patch/v4.8.0/site-papyrus-patch/target/papyrus_v480_patch_*.zip

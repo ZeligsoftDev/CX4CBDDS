@@ -16,13 +16,18 @@
  */
 package com.zeligsoft.domain.dds4ccm.ui.listeners;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
@@ -36,6 +41,9 @@ import org.eclipse.papyrus.infra.core.services.ServiceException;
 import org.eclipse.papyrus.infra.core.services.ServicesRegistry;
 import org.eclipse.papyrus.infra.core.utils.ServiceUtils;
 import org.eclipse.papyrus.infra.emf.readonly.ReadOnlyManager;
+import org.eclipse.papyrus.infra.onefile.model.IPapyrusFile;
+import org.eclipse.papyrus.infra.onefile.model.PapyrusModelHelper;
+import org.eclipse.papyrus.infra.onefile.utils.OneFileUtils;
 import org.eclipse.papyrus.infra.ui.editor.IMultiDiagramEditor;
 import org.eclipse.papyrus.infra.ui.util.EditorUtils;
 import org.eclipse.papyrus.uml.tools.model.UmlModel;
@@ -46,9 +54,9 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.uml2.uml.Package;
 
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.domain.dds4ccm.DDS4CCMNames;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
@@ -203,7 +211,7 @@ public class EditorPartListener implements IPartListener2 {
 				}
 				IReadOnlyHandler2 readOnlyHandler = ReadOnlyManager
 						.getReadOnlyHandler(WorkspaceEditingDomainFactory.INSTANCE.getEditingDomain(modelSet));
-				List<URI> uris = CXDynamicURIConverter.getAssociatedUris(r);
+				List<URI> uris = getAssociatedUris(r);
 				if (readOnlyHandler.canMakeWritable(ReadOnlyAxis.anyAxis(), uris.toArray(new URI[0])).or(false)) {
 					if (r != root.eResource() && !uris.isEmpty()) {
 						readOnlyHandler.makeWritable(ReadOnlyAxis.anyAxis(), uris.toArray(new URI[0]));
@@ -213,5 +221,29 @@ public class EditorPartListener implements IPartListener2 {
 		} catch (ServiceException e) {
 			// do nothing
 		}
+	}
+	
+	
+	public static List<URI> getAssociatedUris(Resource resource) {
+		List<URI> result = new ArrayList<URI>();
+		if (resource != null && resource.getResourceSet() != null) {
+			URIConverter uriConverter = resource.getResourceSet().getURIConverter();
+			URI uri = resource.getURI();
+			if (uri != null) {
+				URI normalizedURI = uriConverter.normalize(uri);
+				if (normalizedURI.isPlatformResource()) {
+					IFile file = ResourcesPlugin.getWorkspace().getRoot()
+							.getFile(new Path(normalizedURI.toPlatformString(true)));
+					IPapyrusFile papFile = PapyrusModelHelper.getPapyrusModelFactory().createIPapyrusFile(file);
+					IFile[] associatedFiles = OneFileUtils.getAssociatedFiles(papFile);
+
+					for (int i = 0; i < associatedFiles.length; i++) {
+						URI tempUri = URI.createPlatformResourceURI(associatedFiles[i].getFullPath().toString(), true);
+						result.add(DynamicPathmapRegistry.INSTANCE.denormalizeURI(tempUri));
+					}
+				}
+			}
+		}
+		return result;
 	}
 }

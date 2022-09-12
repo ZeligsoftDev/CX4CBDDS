@@ -17,8 +17,10 @@
 
 package com.zeligsoft.cx.deployment.ui.listeners;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
@@ -279,6 +281,20 @@ public class DeploymentEMFNotificationBroker
 	private boolean isDeploymentComponent(Object object) {
 		return ((object instanceof Component) && (ZDLUtil.isZDLConcept(
 			(EObject) object, ZMLMMNames.DEPLOYMENT)));
+	}
+	
+	/**
+	 * Return all deployments for the given model
+	 * @param model
+	 * @return
+	 */
+	public List<Object> getDeploymentsForModel(Model model){
+		List<Object> result = new ArrayList<Object>();
+		Map<Component, DeploymentListener> listenerMap = modelMap.get(model);
+		if(listenerMap != null) {
+			result.addAll(listenerMap.keySet());
+		}
+		return result;
 	}
 	
 }

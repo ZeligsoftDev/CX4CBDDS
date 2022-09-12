@@ -76,9 +76,9 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
 import com.zeligsoft.base.ui.utils.BaseUIUtil;
 import com.zeligsoft.base.util.BaseUtil;
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
 import com.zeligsoft.cx.ui.properties.CXPropertyDescriptor;
 import com.zeligsoft.cx.ui.properties.sections.ICXCustomPropertySection;
 import com.zeligsoft.cx.ui.utils.CXWidgetFactory;
@@ -156,7 +156,7 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 							public String isValid(String newText) {
 								if (!UML2Util.isEmpty(newText)) {
 									URI uri = URI.createURI(PATHMAP_KEY + "://" + newText + "/", true); //$NON-NLS-1$ //$NON-NLS-2$
-									if (!newText.equals(oldValue) && CXDynamicURIConverter.PATHMAPS.get(uri) != null) {
+									if (!newText.equals(oldValue) && DynamicPathmapRegistry.INSTANCE.getPathmapDescriptor(uri) != null) {
 										return newText + Messages.DynamicPathmapCustomPropertySection_PathmapErrorMsg;
 									}
 								}
@@ -239,7 +239,7 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 				
 				URI modelUri = model.eResource().getURI();
 				URI normalizedUri = URIConverter.INSTANCE.normalize(modelUri);
-				final URI originalPathmapUri = CXDynamicURIConverter.getPathmapURI(modelUri);
+				final URI originalPathmapUri = DynamicPathmapRegistry.INSTANCE.denormalizeURI(modelUri);
 
 				monitor.subTask(Messages.DynamicPathmapCustomPropertySection_RegisteringPathmapSubtask);
 
@@ -262,7 +262,7 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 
 				// Unregister old pathmap
 				if (!UML2Util.isEmpty(originalPathmap)) {
-					CXDynamicURIConverter.removeMapping(modelUri);
+					DynamicPathmapRegistry.INSTANCE.removeMapping(modelUri);
 				}
 
 				// Register new pathmap
@@ -298,7 +298,7 @@ public class DynamicPathmapCustomPropertySection implements ICXCustomPropertySec
 					URI sourceURI = originalPathmapUri;
 
 					// to current URI
-					URI targetURI = CXDynamicURIConverter.getPathmapURI(modelUri);
+					URI targetURI = DynamicPathmapRegistry.INSTANCE.denormalizeURI(modelUri);
 
 					// refactor all references
 					List<URI> models = new ArrayList<URI>();

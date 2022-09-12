@@ -23,6 +23,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
@@ -30,15 +31,18 @@ import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.workspace.EMFOperationCommand;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPackage;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.deployment.ui.commands.DeleteDeploymentPartCommand;
+import com.zeligsoft.cx.deployment.ui.listeners.DeploymentEMFNotificationBroker;
 import com.zeligsoft.domain.idl3plus.ui.commands.IDL3PlusAddModelElementCommand;
 import com.zeligsoft.domain.idl3plus.ui.commands.IDL3PlusRemoveInstanceSpecification;
 import com.zeligsoft.domain.idl3plus.ui.commands.IDL3PlusSetPortTypeCommand;
@@ -69,121 +73,86 @@ public class IDL3PlusDeploymentListener extends ResourceSetListenerImpl {
 		CompoundCommand returnCommand = new CompoundCommand(
 				"IDL3PlusDeploymentPartCommand"); //$NON-NLS-1$
 		for (Notification notification : event.getNotifications()) {
-			if (notification.getNotifier() instanceof EObject) {
+			if (notification.getNotifier() instanceof EObject && notification.getFeature() instanceof EStructuralFeature) {
+				EStructuralFeature feature = (EStructuralFeature) notification.getFeature();
 				EObject notifier = (EObject) notification.getNotifier();
-				if ((ZDLUtil.isZDLConcept(notifier, CCMNames.INTERFACE_PORT) || ZDLUtil
-						.isZDLConcept(notifier, CCMNames.EVENT_PORT))
-						&& notifier instanceof Port) {
-					
+				if (feature.equals(UMLPackage.Literals.TYPED_ELEMENT__TYPE) && notifier instanceof Port
+						&& (ZDLUtil.isZDLConcept(notifier, CCMNames.INTERFACE_PORT)
+								|| ZDLUtil.isZDLConcept(notifier, CCMNames.EVENT_PORT))) {
 					final List<Object> deployments = getAvailableDeployments(notifier);
-					for (Object obj : deployments) {
-						if (obj instanceof EObject
-								&& ZDLUtil.isZDLConcept((EObject) obj,
-										CCMNames.DEPLOYMENT_PLAN)) {
-							Component deployment = (Component) obj;
-							if (notification.getOldValue() instanceof EObject
-									&& notification.getNewValue() instanceof EObject
-									&& ZDLUtil.isZDLConcept(
-											(EObject) notification
-													.getOldValue(),
-											ZMLMMNames.PORT_TYPEABLE)
-									&& ZDLUtil.isZDLConcept(
-											(EObject) notification
-													.getNewValue(),
-											ZMLMMNames.PORT_TYPEABLE)) {
-								EObject newPortType = (EObject) notification
-										.getNewValue();
-								List<Property> parts = ZDeploymentUtil
-										.getDeploymentPartForModelElement(
-												deployment, (Port) notifier);
-								if (!parts.isEmpty()) {
-									EMFOperationCommand command = new EMFOperationCommand(
-											event.getEditingDomain(),
-											new IDL3PlusSetPortTypeCommand(
-													parts, (Type) newPortType,
-													"Set Port Type")); //$NON-NLS-1$
-									returnCommand.append(command);
-								}
-							} else if (notification.getNewValue() instanceof EObject
-									&& ZDLUtil.isZDLConcept(
-											(EObject) notification
-													.getNewValue(),
-											ZMLMMNames.PORT_TYPEABLE)
-									&& notification.getOldValue() == null) {
-								EObject newPortType = (EObject) notification
-										.getNewValue();
-								List<Property> parts = ZDeploymentUtil
-										.getDeploymentPartForModelElement(
-												deployment, (Port) notifier);
-								if (!parts.isEmpty()) {
-									EMFOperationCommand command = new EMFOperationCommand(
-											event.getEditingDomain(),
-											new IDL3PlusSetPortTypeCommand(
-													parts, (Type) newPortType,
-													"Set Port Type")); //$NON-NLS-1$
-									returnCommand.append(command);
-								} else {
-									EMFOperationCommand command = new EMFOperationCommand(
-											event.getEditingDomain(),
-											new IDL3PlusAddModelElementCommand(
-													deployment,
-													(Port) notifier,
-													(Component) ((Property) notifier)
-															.eContainer(),
-													null, "Add Part")); //$NON-NLS-1$
-									returnCommand.append(command);
-								}
-							} else if (notification.getOldValue() instanceof EObject
-									&& ZDLUtil.isZDLConcept(
-											(EObject) notification
-													.getOldValue(),
-											ZMLMMNames.PORT_TYPEABLE)
-									&& notification.getNewValue() == null) {
-								List<Property> parts = ZDeploymentUtil
-										.getDeploymentPartForModelElement(
-												deployment, (Port) notifier);
-								if (!parts.isEmpty()) {
-									EMFOperationCommand command = new EMFOperationCommand(
-											event.getEditingDomain(),
-											new DeleteDeploymentPartCommand(
-													deployment, parts,
-													"Remove part")); //$NON-NLS-1$
-									returnCommand.append(command);
-								}
-							}
-						}
-					}
-				} else if (ZDLUtil.isZDLConcept(notifier,
-						CCMNames.DEPLOYMENT_PLAN)) {
-					if (notification.getNewValue() instanceof EObject
-							&& ZDLUtil.isZDLConcept(
-									(EObject) notification.getNewValue(),
-									ZMLMMNames.COMPONENT_DEPLOYMENT_PART)) {
-						Property parentPart = (Property) notification
+					if (notification.getNewValue() != null
+							&& ZDLUtil.isZDLConcept((EObject) notification.getNewValue(), ZMLMMNames.PORT_TYPEABLE)) {
+						EObject newPortType = (EObject) notification
 								.getNewValue();
-						EObject modelElement = ZDeploymentUtil
-								.getModelComponent(parentPart);
-						if (ZDLUtil.isZDLConcept(modelElement,
-								CCMNames.CCMCOMPONENT)) {
-							List<Port> ownedPorts = (List<Port>) ZDLUtil
-									.getValue(
-											modelElement,
-											ZMLMMNames.COMPONENT_INTERFACE,
-											ZMLMMNames.COMPONENT_INTERFACE__OWNED_PORT);
-							for (Port port : ownedPorts) {
+						for (Object obj : deployments) {
+							Component deployment = (Component) obj;
+							List<Property> parts = ZDeploymentUtil
+									.getDeploymentPartForModelElement(
+											deployment, (Port) notifier);
+							if (!parts.isEmpty()) {
+								EMFOperationCommand command = new EMFOperationCommand(
+										event.getEditingDomain(),
+										new IDL3PlusSetPortTypeCommand(
+												parts, (Type) newPortType,
+												"Set Port Type")); //$NON-NLS-1$
+								returnCommand.append(command);
+							} else {
 								EMFOperationCommand command = new EMFOperationCommand(
 										event.getEditingDomain(),
 										new IDL3PlusAddModelElementCommand(
-												(Component) notifier, port,
-												parentPart, null, "Add Part")); //$NON-NLS-1$
+												deployment,
+												(Port) notifier,
+												(Component) ((Property) notifier)
+														.eContainer(),
+												null, "Add Part")); //$NON-NLS-1$
 								returnCommand.append(command);
-
+							}
+						}
+					} else if (notification.getOldValue() instanceof EObject && notification.getNewValue() == null
+							&& ZDLUtil.isZDLConcept((EObject) notification.getOldValue(), ZMLMMNames.PORT_TYPEABLE)) {
+						for (Object obj : deployments) {
+							Component deployment = (Component) obj;
+							List<Property> parts = ZDeploymentUtil
+									.getDeploymentPartForModelElement(
+											deployment, (Port) notifier);
+							if (!parts.isEmpty()) {
+								EMFOperationCommand command = new EMFOperationCommand(
+										event.getEditingDomain(),
+										new DeleteDeploymentPartCommand(
+												deployment, parts,
+												"Remove part")); //$NON-NLS-1$
+								returnCommand.append(command);
 							}
 						}
 					}
-				} else if (ZDLUtil
-						.isZDLConcept(notifier, CCMNames.CCMCONNECTOR)
-						&& notification.getEventType() == Notification.ADD) {
+				} else if (feature.equals(UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE)
+						&& notifier instanceof Component && notification.getNewValue() instanceof Property
+						&& ZDLUtil.isZDLConcept((EObject) notification.getNewValue(),
+								ZMLMMNames.COMPONENT_DEPLOYMENT_PART)) {
+					Property parentPart = (Property) notification
+							.getNewValue();
+					EObject modelElement = ZDeploymentUtil
+							.getModelComponent(parentPart);
+					if (ZDLUtil.isZDLConcept(modelElement,
+							CCMNames.CCMCOMPONENT)) {
+						List<Port> ownedPorts = (List<Port>) ZDLUtil
+								.getValue(
+										modelElement,
+										ZMLMMNames.COMPONENT_INTERFACE,
+										ZMLMMNames.COMPONENT_INTERFACE__OWNED_PORT);
+						for (Port port : ownedPorts) {
+							EMFOperationCommand command = new EMFOperationCommand(
+									event.getEditingDomain(),
+									new IDL3PlusAddModelElementCommand(
+											(Component) notifier, port,
+											parentPart, null, "Add Part")); //$NON-NLS-1$
+							returnCommand.append(command);
+
+						}
+					}
+				} else if (feature.equals(UMLPackage.Literals.CONNECTOR__END) && notifier instanceof Connector
+						&& notification.getEventType() == Notification.ADD
+						&& ZDLUtil.isZDLConcept(notifier, CCMNames.CCMCONNECTOR)) {
 					List<EObject> ends = (List<EObject>) ZDLUtil.getValue(
 							notifier, ZMLMMNames.ASSEMBLY_CONNECTOR,
 							ZMLMMNames.ASSEMBLY_CONNECTOR__END);
@@ -204,28 +173,23 @@ public class IDL3PlusDeploymentListener extends ResourceSetListenerImpl {
 						}
 					}
 					if (port != null && dataSpace != null) {
-						List<Object> deployments = (List<Object>) ZDeploymentUtil
+						List<Object> deployments = DeploymentEMFNotificationBroker.getInstance()
 								.getDeploymentsForModel(port.getModel());
 						for (Object obj : deployments) {
-							if (obj instanceof EObject
-									&& ZDLUtil.isZDLConcept((EObject) obj,
-											CCMNames.DEPLOYMENT_PLAN)) {
-								List<Property> perPorts = ZDeploymentUtil
-										.getDeploymentPartForModelElement(
-												(Component) obj, port);
-								for (Property perPort : perPorts) {
-									if (perPort.getDefaultValue() != null) {
-									InstanceSpecification instance = ((InstanceValue) perPort
-											.getDefaultValue()).getInstance();
+
+							List<Property> perPorts = ZDeploymentUtil.getDeploymentPartForModelElement((Component) obj,
+									port);
+							for (Property perPort : perPorts) {
+								if (perPort.getDefaultValue() != null) {
+									InstanceSpecification instance = ((InstanceValue) perPort.getDefaultValue())
+											.getInstance();
 									if (!instance.getClassifiers().contains(dataSpace.getType())) {
-										EMFOperationCommand command = new EMFOperationCommand(
-												event.getEditingDomain(),
-												new IDL3PlusRemoveInstanceSpecification(
-														instance, perPort,
+										EMFOperationCommand command = new EMFOperationCommand(event.getEditingDomain(),
+												new IDL3PlusRemoveInstanceSpecification(instance, perPort,
 														"Remove Instance")); //$NON-NLS-1$
 										returnCommand.append(command);
 									}
-								}}
+								}
 							}
 						}
 					}
@@ -251,7 +215,7 @@ public class IDL3PlusDeploymentListener extends ResourceSetListenerImpl {
 		}
 		final List<Object> deployments = new ArrayList<Object>();
 		for (Model model : models) {
-			deployments.addAll(ZDeploymentUtil.getDeploymentsForModel(model));
+			deployments.addAll(DeploymentEMFNotificationBroker.getInstance().getDeploymentsForModel(model));
 		}
 		return deployments;
 	}

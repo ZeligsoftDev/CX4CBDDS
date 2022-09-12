@@ -42,6 +42,10 @@ import com.zeligsoft.domain.omg.corba.generation.CORBAUtilFuncs;
  *
  */
 public class CORBAUtil {
+	
+	public static final String MEMBERS_ATTRIBUE_NAME = "members"; //$NON-NLS-1$
+	public static final String SWITCH_ATTRIBUTE_NAME = "switchType"; //$NON-NLS-1$
+	
 	protected CORBAUtil() {
 		// can not create me
 	}

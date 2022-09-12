@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 ADLINK Technology Limited.
+ * Copyright 2022 Northrop Grumman Systems Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,16 +30,19 @@ import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.URIMap;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
+import com.zeligsoft.base.pathmap.PathmapDescriptor;
+
 /**
  * An adapter for {@link ResourceSet}s that proactively ensures that
  * {@link Resource}s use "pathmap" URIs whenever possible. This is similar to
  * GMF's <tt>PathmapManager</tt> class except that it is applied to all
  * resources, regardless of whether they are <tt>GMFResource</tt>s.
  * 
- * @author Christian W. Damus (cdamus)
+ * @author Christian W. Damus (cdamus) 
+ * @author Young-Soo Roh - issue# 416
  */
-public class PathmapURIHelper
-		extends AdapterImpl {
+public class PathmapURIHelper extends AdapterImpl {
 
 	private ResourceSet resourceSet;
 
@@ -52,13 +55,16 @@ public class PathmapURIHelper
 		this.resourceSet = rset;
 	}
 
+	@Override
+	public boolean isAdapterForType(Object type) {
+		return PathmapURIHelper.class.equals(type);
+	}
+
 	/**
 	 * Ensures that a <tt>PathmapURIHelper</tt> is installed on the specified
-	 * resource set. If one is already installed, then this method has no
-	 * effect.
+	 * resource set. If one is already installed, then this method has no effect.
 	 * 
-	 * @param rset
-	 *            a resource set on which to install the URI helper
+	 * @param rset a resource set on which to install the URI helper
 	 */
 	public static void install(ResourceSet rset) {
 		if (EcoreUtil.getExistingAdapter(rset, PathmapURIHelper.class) == null) {
@@ -104,32 +110,30 @@ public class PathmapURIHelper
 	private void handleResourceSetChange(Notification msg) {
 		if (msg.getFeatureID(ResourceSet.class) == ResourceSet.RESOURCE_SET__RESOURCES) {
 			switch (msg.getEventType()) {
-				case Notification.ADD :
-					handleResourceAdded((Resource) msg.getNewValue());
-					break;
-				case Notification.REMOVE :
-					handleResourceRemoved((Resource) msg.getOldValue());
-					break;
-				case Notification.SET :
-					handleResourceAdded((Resource) msg.getNewValue());
-					handleResourceRemoved((Resource) msg.getOldValue());
-					break;
-				case Notification.ADD_MANY :
-					@SuppressWarnings("unchecked")
-					Collection<Resource> newResources = (Collection<Resource>) msg
-						.getNewValue();
-					for (Resource next : newResources) {
-						handleResourceAdded(next);
-					}
-					break;
-				case Notification.REMOVE_MANY :
-					@SuppressWarnings("unchecked")
-					Collection<Resource> oldResources = (Collection<Resource>) msg
-						.getOldValue();
-					for (Resource next : oldResources) {
-						handleResourceRemoved(next);
-					}
-					break;
+			case Notification.ADD:
+				handleResourceAdded((Resource) msg.getNewValue());
+				break;
+			case Notification.REMOVE:
+				handleResourceRemoved((Resource) msg.getOldValue());
+				break;
+			case Notification.SET:
+				handleResourceAdded((Resource) msg.getNewValue());
+				handleResourceRemoved((Resource) msg.getOldValue());
+				break;
+			case Notification.ADD_MANY:
+				@SuppressWarnings("unchecked")
+				Collection<Resource> newResources = (Collection<Resource>) msg.getNewValue();
+				for (Resource next : newResources) {
+					handleResourceAdded(next);
+				}
+				break;
+			case Notification.REMOVE_MANY:
+				@SuppressWarnings("unchecked")
+				Collection<Resource> oldResources = (Collection<Resource>) msg.getOldValue();
+				for (Resource next : oldResources) {
+					handleResourceRemoved(next);
+				}
+				break;
 			}
 		}
 	}
@@ -152,11 +156,10 @@ public class PathmapURIHelper
 	}
 
 	/**
-	 * Updates the given resource's URI to the denormalized <tt>pathmap</tt>
-	 * scheme URI that covers it, if any.
+	 * Updates the given resource's URI to the denormalized <tt>pathmap</tt> scheme
+	 * URI that covers it, if any.
 	 * 
-	 * @param resource
-	 *            a resource to update
+	 * @param resource a resource to update
 	 */
 	private void updateURI(Resource resource) {
 		URI uri = resource.getURI();
@@ -173,19 +176,19 @@ public class PathmapURIHelper
 	 * denormalizes a <tt>platform</tt> scheme {@link URI} to <tt>pathmap</tt>
 	 * scheme.
 	 * 
-	 * @param self
-	 *            the target URI converter
-	 * @param uri
-	 *            the URI to denormalize
+	 * @param self the target URI converter
+	 * @param uri  the URI to denormalize
 	 * 
-	 * @return the denormalized <tt>pathmap</tt> URI, or the original URI as is
-	 *         if either it wasn't a <tt>platform</tt> URI or it wasn't covered
-	 *         by a <tt>pathmap</tt> URI mapping
+	 * @return the denormalized <tt>pathmap</tt> URI, or the original URI as is if
+	 *         either it wasn't a <tt>platform</tt> URI or it wasn't covered by a
+	 *         <tt>pathmap</tt> URI mapping
 	 */
 	public static URI denormalizeURI(URIConverter self, URI uri) {
 		URI result = uri;
 
-		if (uri.isPlatform()) {
+		String modelName = uri.lastSegment();
+
+		if (uri.isPlatform() && "uml".equals(uri.fileExtension())) { //$NON-NLS-1$
 			URIMap map = (URIMap) self.getURIMap();
 			Set<URI> pathmaps = getAllPathmaps(map);
 
@@ -219,8 +222,16 @@ public class PathmapURIHelper
 			}
 
 			if (resultPathmap != null) {
-				// swap prefixes
-				result = uri.replacePrefix(resultPrefix, resultPathmap);
+				PathmapDescriptor desc = DynamicPathmapRegistry.INSTANCE.getPathmapDescriptor(resultPathmap);
+				if (desc != null) {
+					// this is dynamic pathmap so make sure the target model is the source
+					if (desc.isEnabled() && desc.getRegisteredModels().contains(modelName)) {
+						result = uri.replacePrefix(resultPrefix, resultPathmap);
+					}
+				} else {
+					// swap prefixes
+					result = uri.replacePrefix(resultPrefix, resultPathmap);
+				}
 			}
 		}
 
@@ -229,19 +240,17 @@ public class PathmapURIHelper
 
 	/**
 	 * Obtains the number of segments that the specified prefix has in common,
-	 * contiguously from the first segment, with the given URI. At least two
-	 * common segments are required for a match, because the inputs are both
-	 * expected to be <tt>platform</tt> scheme URIs and we don't want to cross
-	 * between the <tt>resource</tt> and <tt>plugin</tt> domains.
+	 * contiguously from the first segment, with the given URI. At least two common
+	 * segments are required for a match, because the inputs are both expected to be
+	 * <tt>platform</tt> scheme URIs and we don't want to cross between the
+	 * <tt>resource</tt> and <tt>plugin</tt> domains.
 	 * 
-	 * @param prefix
-	 *            a <tt>platform</tt> scheme URI prefix
-	 * @param uri
-	 *            a <tt>platform</tt> scheme URI against which to match the
-	 *            prefix
+	 * @param prefix a <tt>platform</tt> scheme URI prefix
+	 * @param uri    a <tt>platform</tt> scheme URI against which to match the
+	 *               prefix
 	 * 
-	 * @return the number of common initial segments, or zero if the
-	 *         <tt>prefix</tt> is not a prefix of the given URI
+	 * @return the number of common initial segments, or zero if the <tt>prefix</tt>
+	 *         is not a prefix of the given URI
 	 */
 	private static int getPrefixLength(URI prefix, URI uri) {
 		String[] prefixSegs = prefix.segments();
@@ -260,9 +269,7 @@ public class PathmapURIHelper
 		}
 
 		// must match the entire prefix
-		return (result >= limit)
-			? result
-			: 0;
+		return (result >= limit) ? result : 0;
 	}
 
 	/**
@@ -272,20 +279,19 @@ public class PathmapURIHelper
 	 * </p>
 	 * <ul>
 	 * <li>the URI is a <tt>pathmap</tt> scheme</li>
-	 * <li>the URI is a "prefix", meaning that it has a trailing slash. All
-	 * pathmap URI registrations are expected to be prefixes because they are
-	 * used to identify folders in plug-ins, rather than individual resources.
-	 * This is also a requirement of certain {@link URI} APIs for substituting
-	 * prefixes in the URI normalization algorithm</li>
+	 * <li>the URI is a "prefix", meaning that it has a trailing slash. All pathmap
+	 * URI registrations are expected to be prefixes because they are used to
+	 * identify folders in plug-ins, rather than individual resources. This is also
+	 * a requirement of certain {@link URI} APIs for substituting prefixes in the
+	 * URI normalization algorithm</li>
 	 * </ul>
 	 * <p>
-	 * This method accounts for the fact that the URI map ordinary delegates to
-	 * the shared {@linkplain URIConverter#URI_MAP registry} for mappings that
-	 * it does not maintain, itself.
+	 * This method accounts for the fact that the URI map ordinary delegates to the
+	 * shared {@linkplain URIConverter#URI_MAP registry} for mappings that it does
+	 * not maintain, itself.
 	 * </p>
 	 * 
-	 * @param uriMap
-	 *            the URI map of a resource set's {@link URIConverter}
+	 * @param uriMap the URI map of a resource set's {@link URIConverter}
 	 * @return the set of all eligible <tt>pathmap</tt> URI prefixes
 	 */
 	private static Set<URI> getAllPathmaps(Map<URI, URI> uriMap) {

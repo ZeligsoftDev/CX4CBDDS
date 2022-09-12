@@ -71,9 +71,13 @@ import org.eclipse.papyrus.views.modelexplorer.ModelExplorerView;
 import org.eclipse.papyrus.views.modelexplorer.core.ui.pagebookview.MultiViewPageBookView;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.ConsolePlugin;
@@ -82,6 +86,7 @@ import org.eclipse.ui.console.IConsoleConstants;
 import org.eclipse.ui.console.IConsoleManager;
 import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
+import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
@@ -661,7 +666,42 @@ public class BaseUIUtil {
 	 * @return
 	 */
 	public static IWorkbenchPage getActivepage() {
-		return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		if (workbench != null) {
+			IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+			if (window != null) {
+				return window.getActivePage();
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Get editor reference if the model is open
+	 * @param modelUri
+	 * @return
+	 */
+	public static IEditorReference getEditorReference(URI modelUri) {
+		String modelPath = modelUri.trimFileExtension().appendFileExtension("di").toString(); //$NON-NLS-1$
+		for (IWorkbenchWindow workbenchWindow : PlatformUI.getWorkbench().getWorkbenchWindows()) {
+			IWorkbenchPage page = workbenchWindow.getActivePage();
+			if (page == null) {
+				continue;
+			}
+			for (IEditorReference ref : page.getEditorReferences()) {
+				try {
+					IEditorInput input = ref.getEditorInput();
+					if (input instanceof FileEditorInput) {
+						if (modelPath.endsWith(((FileEditorInput) input).getFile().getFullPath().toString())) {
+							return ref;
+						}
+					}
+				} catch (PartInitException e) {
+					// nothing we can do so silence
+				}
+			}
+		}
+		return null;
 	}
 
 	/**

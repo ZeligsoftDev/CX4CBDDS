@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Northrop Grumman Systems Corporation.
+ * Copyright 2020 - 2022 Northrop Grumman Systems Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TrayDialog;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -42,12 +40,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.model.BaseWorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.uml2.common.util.UML2Util;
-import org.eclipse.uml2.uml.Package;
-import org.eclipse.uml2.uml.UMLPackage;
 
-import com.zeligsoft.base.zdl.util.ZDLUtil;
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
-import com.zeligsoft.domain.omg.ccm.util.CCMUtil;
 
 /**
  * NGC ICM model import dialog.
@@ -59,7 +54,6 @@ public class ICMBrowseDialog extends TrayDialog {
 
 	private TreeViewer treeViewer;
 	private IStructuredSelection selection;
-	private ResourceSet rset = new ResourceSetImpl();
 
 	public ICMBrowseDialog(Shell shell) {
 		super(shell);
@@ -79,10 +73,7 @@ public class ICMBrowseDialog extends TrayDialog {
 		}
 		Object selectedObject = selection.getFirstElement();
 		if (selectedObject instanceof IFile) {
-			URI uri = URI.createPlatformResourceURI(((IFile) selectedObject).getFullPath().toString(), false);
-			Package root = UML2Util.load(rset, uri, UMLPackage.Literals.PACKAGE);
-			String pathmap = CCMUtil.getZCXAnnotationDetail(root, "pathmap", UML2Util.EMPTY_STRING); //$NON-NLS-1$
-			return URI.createURI("pathmap://" + pathmap).appendSegment(uri.lastSegment()); //$NON-NLS-1$
+			return URI.createPlatformResourceURI(((IFile) selectedObject).getFullPath().toString(), false);
 		}
 		return null;
 	}
@@ -177,13 +168,11 @@ public class ICMBrowseDialog extends TrayDialog {
 					IFile file = (IFile) member;
 					String ext = file.getFullPath().getFileExtension();
 					if (!UML2Util.isEmpty(ext) && "uml".equals(ext.toLowerCase())) { //$NON-NLS-1$
-						URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), false);
-						Package root = UML2Util.load(rset, uri, UMLPackage.Literals.PACKAGE);
-						if (root != null && ZDLUtil.isZDLProfile(root, "cxDDS4CCM")) { //$NON-NLS-1$
-							String pathmap = CCMUtil.getZCXAnnotationDetail(root, "pathmap", UML2Util.EMPTY_STRING); //$NON-NLS-1$
-							if (!UML2Util.isEmpty(pathmap)) {
-								result.add(member);
-							}
+						URI modelUri = URI.createPlatformResourceURI(file.getFullPath().toString(), false);
+						URI pathmapUri = DynamicPathmapRegistry.INSTANCE.denormalizeURI(modelUri);
+						if ("pathmap".equals(pathmapUri.scheme())) { //$NON-NLS-1$
+							// there is a mapping to pathmap
+							result.add(member);
 						}
 					}
 				} else if (member instanceof IProject) {

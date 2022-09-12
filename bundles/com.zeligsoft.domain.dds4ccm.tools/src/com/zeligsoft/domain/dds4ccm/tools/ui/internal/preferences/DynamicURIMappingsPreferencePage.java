@@ -16,32 +16,39 @@
  */
 package com.zeligsoft.domain.dds4ccm.tools.ui.internal.preferences;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.PreferencePage;
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
-import org.eclipse.jface.viewers.ICheckStateListener;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.ITableLabelProvider;
-import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
+import org.osgi.service.prefs.BackingStoreException;
 
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
-import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
+import com.zeligsoft.base.pathmap.PathmapDescriptor;
+import com.zeligsoft.domain.dds4ccm.tools.Activator;
+import com.zeligsoft.domain.dds4ccm.tools.PreferenceConstants;
+import com.zeligsoft.domain.dds4ccm.tools.dialogs.PathmapSelectionComposite;
 import com.zeligsoft.domain.dds4ccm.tools.internal.emf.DDS4CCMDynamicURIMapHandler;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 
@@ -53,8 +60,10 @@ import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
  */
 public class DynamicURIMappingsPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
 
-	private CheckboxTableViewer table;
-
+	private CheckboxTableViewer tableViewer;
+	
+	private IEclipsePreferences store = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+	
 	/**
 	 * Initializes me.
 	 */
@@ -64,65 +73,44 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 
 	@Override
 	protected Control createContents(Composite parent) {
-		Composite result = new Composite(parent, SWT.NONE);
-
-		GridLayout grid = new GridLayout(1, false);
-		grid.verticalSpacing = 15;
-		result.setLayout(grid);
-
-		GridData data = new GridData();
-		data.horizontalAlignment = SWT.FILL;
-		data.verticalAlignment = SWT.FILL;
-		result.setLayoutData(data);
-
-		Label label = new Label(result, SWT.NONE);
-		label.setText(Messages.DynamicURIMappingsPreferencePage_PreferencePageTitle);
-		data = new GridData();
-		data.horizontalAlignment = SWT.FILL;
-		label.setLayoutData(data);
-
-		Table swtTable = new Table(result, SWT.CHECK | SWT.BORDER);
-		data = new GridData();
-		data.horizontalAlignment = SWT.FILL;
-		data.verticalAlignment = SWT.FILL;
-		swtTable.setLayoutData(data);
-
-		swtTable.setHeaderVisible(true);
-
-		ArrayContentProvider contents = new ArrayContentProvider();
-		List<CXPathmapDescriptor> pathmaps = getPathmaps();
-
-		table = new CheckboxTableViewer(swtTable);
-		table.getTable().setLinesVisible(true);
-		table.getTable().setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true));
-
-		TableViewerColumn column = new TableViewerColumn(table, SWT.NONE);
-		column.getColumn().setText("Pathmap"); //$NON-NLS-1$
-		column.getColumn().setWidth(300);
-		column = new TableViewerColumn(table, SWT.NONE);
-		column.getColumn().setText("Mapping"); //$NON-NLS-1$
-		column.getColumn().setWidth(600);
-
-		table.setLabelProvider(new URIMappingLabelProvider());
-		table.setContentProvider(contents);
-		table.addCheckStateListener(new ICheckStateListener() {
-
-			@Override
-			public void checkStateChanged(CheckStateChangedEvent event) {
-				CXPathmapDescriptor pathmap = (CXPathmapDescriptor) event.getElement();
-
-				pathmap.setEnabled(event.getChecked());
-				pathmap.apply();
-			}
-
-		});
-
-		table.setInput(pathmaps);
-		List<CXPathmapDescriptor> selected = getEnabledPathmaps(pathmaps);
-		table.setCheckedElements(selected.toArray());
+		Set<URI> pathmapURIs = new HashSet<URI>();
+		for(PathmapDescriptor desc: DynamicPathmapRegistry.INSTANCE.getPathmaps()) {
+			pathmapURIs.add(desc.getPathmap());
+		}
+		PathmapSelectionComposite selectionComposite = new PathmapSelectionComposite(pathmapURIs);
+		Composite result = selectionComposite.createContents(parent);
+		tableViewer = selectionComposite.getViewer();
 
 		noDefaultAndApplyButton();
 		contributeButtons(result);
+		
+		Composite composite = new Composite(parent, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 2;
+		composite.setLayout(layout);
+		composite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		
+		Label label = new Label(composite, SWT.NONE);
+		label.setText(Messages.DynamicURIMappingsPreferencePage_DialogOpenDelay);
+		GridData data = new GridData();
+		data.widthHint = 50;
+		Text text = new Text(composite, SWT.BORDER);
+		text.setLayoutData(data);
+		int seconds = store.getInt(PreferenceConstants.DEALY_TO_CONSOLIDATE_DIALOGS, PreferenceConstants.DEFAULT_DEALY_TO_CONSOLIDATE_DIALOGS);
+		text.setText(String.valueOf(seconds));
+		text.addModifyListener(new ModifyListener() {
+			
+			@Override
+			public void modifyText(ModifyEvent e) {
+				try {
+					int newDelay = Integer.valueOf(text.getText());
+					store.putInt(PreferenceConstants.DEALY_TO_CONSOLIDATE_DIALOGS, newDelay);
+				} catch (NumberFormatException ex) {
+					text.setText(String.valueOf(seconds));
+				}
+			}
+		});
+		
 		return result;
 	}
 	
@@ -134,81 +122,54 @@ public class DynamicURIMappingsPreferencePage extends PreferencePage implements 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				DDS4CCMDynamicURIMapHandler.remapDynamicURI();
-				table.setInput(getPathmaps());
+				tableViewer.setInput(tableViewer.getInput());
+				List<URI> selected = DynamicPathmapRegistry.INSTANCE.getEnabledPathmaps().stream()
+						.map(d -> d.getPathmap()).collect(Collectors.toList());
+				tableViewer.setCheckedElements(selected.toArray());
+			}
+		});
+		
+		Button resetWarningButton = new Button(parent, SWT.PUSH);
+		resetWarningButton.setText(Messages.DynamicURIMappingsPreferencePage_ResetSuppressedWarningButton);
+		resetWarningButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (MessageDialog.openQuestion(getShell(), Messages.DynamicURIMappingsPreferencePage_ResetWarningsTitle,
+						Messages.DynamicURIMappingsPreferencePage_ResetWarningsMsg)) {
+
+					List<String> keysToRemove = new ArrayList<String>();
+
+					try {
+						for (String key : store.keys()) {
+							if (key.startsWith(PreferenceConstants.WARNING_SUPPRESSED_PATHMAP)) {
+								keysToRemove.add(key);
+							}
+						}
+					} catch (BackingStoreException e1) {
+						// do nothing
+					}
+
+					for (String key : keysToRemove) {
+						store.remove(key);
+					}
+
+					store.remove(PreferenceConstants.SUPPRESS_PATHMAP_CHANGE_WARNING);
+					store.remove(PreferenceConstants.SUPPRESS_PATHMAP_FALLBACK_WARNING);
+					try {
+
+						store.flush();
+					} catch (BackingStoreException e1) {
+						// do nothing
+					}
+					tableViewer.setInput(tableViewer.getInput());
+				}
 			}
 		});
 	}
 
-	private List<CXPathmapDescriptor> getPathmaps() {
-
-		List<CXPathmapDescriptor> result = new java.util.ArrayList<CXPathmapDescriptor>();
-		result.addAll(CXDynamicURIConverter.PATHMAPS.values());
-		return result;
-	}
-
-	private List<CXPathmapDescriptor> getEnabledPathmaps(List<CXPathmapDescriptor> pathmaps) {
-		List<CXPathmapDescriptor> result = new java.util.ArrayList<CXPathmapDescriptor>(pathmaps.size());
-
-		for (CXPathmapDescriptor next : pathmaps) {
-			if (next.isEnabled()) {
-				result.add(next);
-			}
-		}
-
-		return result;
-	}
 
 	@Override
 	public void init(IWorkbench workbench) {
-		// no-op
-	}
-
-	//
-	// Nested classes
-	//
-
-	public static class URIMappingLabelProvider implements ITableLabelProvider {
-
-		@Override
-		public Image getColumnImage(Object element, int columnIndex) {
-			return null;
-		}
-		
-		@Override
-		public String getColumnText(Object element, int columnIndex) {
-			CXPathmapDescriptor pathmap = (CXPathmapDescriptor) element;
-
-			switch (columnIndex) {
-			case 0:
-				return pathmap.getPathmap().toString();
-			case 1:
-				return pathmap.getMapping().toString();
-			default:
-				break;
-			}
-
-			return null;
-		}
-
-		@Override
-		public void addListener(ILabelProviderListener listener) {
-			// no-op
-		}
-
-		@Override
-		public void dispose() {
-			// no-op
-		}
-
-		@Override
-		public boolean isLabelProperty(Object element, String property) {
-			return false;
-		}
-
-		@Override
-		public void removeListener(ILabelProviderListener listener) {
-			// no-op
-		}
-
+		// do nothing
 	}
 }

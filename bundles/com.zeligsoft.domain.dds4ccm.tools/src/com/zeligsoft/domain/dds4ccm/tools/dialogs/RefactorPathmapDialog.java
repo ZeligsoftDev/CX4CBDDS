@@ -36,8 +36,8 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import com.zeligsoft.cx.ui.pathmap.CXDynamicURIConverter;
-import com.zeligsoft.cx.ui.pathmap.CXPathmapDescriptor;
+import com.zeligsoft.base.pathmap.DynamicPathmapRegistry;
+import com.zeligsoft.base.pathmap.PathmapDescriptor;
 import com.zeligsoft.domain.dds4ccm.tools.l10n.Messages;
 
 /**
@@ -102,10 +102,9 @@ public class RefactorPathmapDialog extends TrayDialog {
 		viewerData.widthHint = 700;
 
 		List<URI> content = new ArrayList<URI>();
-		for (CXPathmapDescriptor desc : CXDynamicURIConverter.PATHMAPS.values()) {
-			URI uri = desc.getPathmap();
+		for (PathmapDescriptor desc : DynamicPathmapRegistry.INSTANCE.getEnabledPathmaps()) {
 			for (String model : desc.getRegisteredModels()) {
-				content.add(uri.appendSegment(model));
+				content.add(desc.getPathmap().appendSegment(model));
 			}
 		}
 
