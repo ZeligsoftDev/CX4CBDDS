@@ -277,11 +277,8 @@ public class IDL3PlusPropertyEntry extends CCMPropertyEntry {
 					ZMLMMNames.DEPLOYMENT_PART__MODEL_ELEMENT);
 			Property parentPart = ZDeploymentUtil
 					.getParentPart((Property) entry.getModelObject());
-			Property part = (Property) ZDLUtil.getValue(parentPart,
-					ZMLMMNames.DEPLOYMENT_PART,
-					ZMLMMNames.DEPLOYMENT_PART__MODEL_ELEMENT);
 			Property dataSpace = IDL3PlusUtil.getDataSpaceFromPerPort(port,
-					part);
+					parentPart, null);
 			return dataSpace.getType();
 		}
 		return super.getModelDefinition(entry);

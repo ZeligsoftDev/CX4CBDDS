@@ -268,11 +268,12 @@ public class IDL3PlusXtendUtils {
 	 * part which is connected to the given data-space.
 	 * 
 	 * @param deploymentPart - A UML {@link Property} which is a deployment part.
-	 * @param dataSpace      - A UML {@link Property} which is a data space
+	 * @param dataSpace      - A UML {@link Property} which is a data space.
+	 * @param deployment     - A UML {@link Component} which is the (CCM) DeploymentPlan.
 	 * @return A UML {@link Property} for the port of the deploymentPart which is
 	 *         connected to the dataSpace.
 	 */
-	public static Property getPerPortDP(Property deploymentPart, Property dataSpace) {
+	public static Property getPerPortDP(Property deploymentPart, Property dataSpace, Component deployment) {
 		if (ZDLUtil.isZDLConcept(deploymentPart, ZMLMMNames.DEPLOYMENT_PART)
 				&& ZDLUtil.isZDLConcept(dataSpace, IDL3PlusNames.DATA_SPACE)) {
 			Property ccmPart = (Property) ZDeploymentUtil.getModelElement(deploymentPart);
@@ -281,7 +282,7 @@ public class IDL3PlusXtendUtils {
 				for (Property nestedPart : nestedParts) {
 					if (ZDLUtil.isZDLConcept(nestedPart, IDL3PlusNames.PER_PORT_CONNECTOR_TYPE_DEPLOYMENT_PART)) {
 						Port port = (Port) ZDeploymentUtil.getModelElement(nestedPart);
-						Property otherEndRole = IDL3PlusUtil.getDataSpaceFromPerPort(port, deploymentPart);
+						Property otherEndRole = IDL3PlusUtil.getDataSpaceFromPerPort(port, deploymentPart, deployment);
 						if (otherEndRole != null && ZDLUtil.isZDLConcept(otherEndRole, IDL3PlusNames.DATA_SPACE)
 								&& dataSpace == otherEndRole) {
 							return nestedPart;
