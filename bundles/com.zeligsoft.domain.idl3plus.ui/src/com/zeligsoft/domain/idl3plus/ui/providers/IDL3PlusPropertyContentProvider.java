@@ -88,7 +88,7 @@ public class IDL3PlusPropertyContentProvider extends CCMPropertyContentProvider 
 				Property parentPart = ZDeploymentUtil
 						.getParentPart((Property) modelObject);
 				Property dataSpace = IDL3PlusUtil.getDataSpaceFromPerPort(
-						(Port) modelElement, parentPart, null);
+						(Port) modelElement, parentPart);
 				if (dataSpace != null && dataSpace.getType() != null) {
 					children.add(entry.addChild(dataSpace.getType()));
 				}

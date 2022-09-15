@@ -414,8 +414,8 @@ create InstanceDeploymentDescription createDDS4CCMConnectorFragmentHelper(Deploy
 	idd.node.add(node.name) ->
 	idd.source.add(null) ->
 	idd.implementation.add(id.visitInstanceImpl(idd)) ->
-	dataSpace.connectorType.zdlAsComponent().member.typeSelect(CXAttribute).visitDataSpaceProperty(idd, getPerPortDP(source, dataSpace, deployment), dataSpaceDP) ->
-	dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).visitDataSpaceProperty(idd, getPerPortDP(source, dataSpace, deployment), dataSpaceDP) ->
+	dataSpace.connectorType.zdlAsComponent().member.typeSelect(CXAttribute).visitDataSpaceProperty(idd, getPerPortDP(source, dataSpace), dataSpaceDP) ->
+	dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).visitDataSpaceProperty(idd, getPerPortDP(source, dataSpace), dataSpaceDP) ->
 	plan.instance.add(idd) ->
 	addInstanceToLocalityConstraint(
 		idd, 
@@ -428,8 +428,8 @@ boolean sameLocalAssembly(DeploymentPart dataSpaceDP, DeploymentPart componentDP
 		org.eclipse.uml2.uml.Property,
 		org.eclipse.uml2.uml.Property);
 
-DeploymentPart getPerPortDP(DeploymentPart part, DataSpace dataSpace, CCM::CCM_Deployment::DeploymentPlan deployment) :
-	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.getPerPortDP(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Component);
+DeploymentPart getPerPortDP(DeploymentPart part, DataSpace dataSpace) :
+	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.getPerPortDP(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Property);
 
 /*
  * For an attribute on a dataspace, check if the deployment part has

@@ -801,7 +801,7 @@ public class IDL3PlusUtil {
 				ZMLMMNames.DEPLOYMENT_PART,
 				ZMLMMNames.DEPLOYMENT_PART__MODEL_ELEMENT);
 		Property parentPart = ZDeploymentUtil.getParentPart(perPortDeploymentPart);
-		Property dataSpace = IDL3PlusUtil.getDataSpaceFromPerPort(port, parentPart, null);
+		Property dataSpace = IDL3PlusUtil.getDataSpaceFromPerPort(port, parentPart);
 		EObject dataSpaceType = dataSpace.getType();
 		Property deploymentPartDataSpace = null;
 		List<Property> deploymentParts = ZDeploymentUtil
@@ -984,38 +984,27 @@ public class IDL3PlusUtil {
 	/**
 	 * Return the DataSpace to which the port instance is connected.
 	 * 
-	 * @param port - A UML {@link Port} in the definition of some component.
-	 * @param part - A UML {@link Property} which is either a deployment part
-	 *                       whose model element is a part in some assembly, whose
-	 *                       type is a component with the given port, or the model
-	 *                       element itself.
-	 * @param deployment - A UML {@link Component} which is the (CCM) DeploymentPlan. 
-	 *                     This is used only if part is not a deployment part but a
-	 *                     CCM part itself.
+	 * @param port           - A UML {@link Port} in the definition of some
+	 *                       component.
+	 * @param deploymentPart - A UML {@link Property} which is either a deployment
+	 *                       part whose model element is a part in some assembly,
+	 *                       whose type is a component with the given port.
 	 * @return a UML {@link Property} representing the DataSpace.
 	 */
-	public static Property getDataSpaceFromPerPort(Port port, Property part, Component deployment) {
-		Property deploymentPart = part;
-		if (ZDeploymentUtil.isDeploymentPart(part)) {
-			// Get the (CCM) model element (a part within an assembly) for the given deploymentPart 
+	public static Property getDataSpaceFromPerPort(Port port, Property deploymentPart) {
+		Property part = null;
+		if (ZDeploymentUtil.isDeploymentPart(deploymentPart)) {
+			// Get the (CCM) model element (a part within an assembly) for the given
+			// deploymentPart
 			part = (Property) ZDeploymentUtil.getModelElement(deploymentPart);
-		} else {
-			// part is a model element, so we need to obtain the corresponding deployment part in the
-			// given deployment.
-			//   There is a potential problem: the call below may return more than one deployment part
-			// if multiple deployment parts refer to the same model element. For now, we assume it is
-			// unique, and the first one returned.
-			List<Property> deploymentParts = ZDeploymentUtil.getDeploymentPartForModelElement(deployment, part);
-			if (deploymentPart != null && deploymentParts.size() > 0) {
-				deploymentPart = deploymentParts.get(0);
-			}
 		}
 		// Check that it is a CCM part
 		if (part != null && ZDLUtil.isZDLConcept(part, CCMNames.CCMPART)) {
 			Property ccmPart = part;
 			// Get the other end of the connector from the port of the part in the assembly
 			ConnectorEnd otherEnd = IDL3PlusUtil.getOtherEnd(port, ccmPart);
-			// While the other end is a border port, and not a dataspace, go up until we find one
+			// While the other end is a border port, and not a dataspace, go up until we
+			// find one
 			while (otherEnd == null || isBorderPort(otherEnd)) {
 				// Here port is a delegated port
 				// Get the parent deployment part of the current part
@@ -1028,7 +1017,8 @@ public class IDL3PlusUtil {
 				EObject connectorEndPort = otherEnd != null
 						? ZDLUtil.getEValue(otherEnd, ZMLMMNames.CONNECTOR_END, ZMLMMNames.CONNECTOR_END__PORT)
 						: null;
-				// Get the other end of the connector from the port *on the other end* of the connector,
+				// Get the other end of the connector from the port *on the other end* of the
+				// connector,
 				// in the new assembly (the new value of ccmPart)
 				if (!(connectorEndPort instanceof Port))
 					break;
