@@ -29,11 +29,15 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
+import org.eclipse.papyrus.infra.core.resource.ReadOnlyAxis;
 import org.eclipse.papyrus.infra.emf.gmf.command.GMFtoEMFCommandWrapper;
+import org.eclipse.papyrus.infra.emf.readonly.ReadOnlyManager;
 import org.eclipse.papyrus.infra.services.edit.service.ElementEditServiceUtils;
 import org.eclipse.papyrus.infra.services.edit.service.IElementEditService;
 import org.eclipse.uml2.common.util.UML2Util;
@@ -49,7 +53,9 @@ public class BaseUtil {
 
 	public static final String ZCX_ANNOTATION_SOURCE = "zcx"; //$NON-NLS-1$
 	
-	public static String UML_MODEL_EXTENSION = "uml"; //$NON-NLS-1$
+	public static final String UML_MODEL_EXTENSION = "uml"; //$NON-NLS-1$
+	
+	public static final String ZCX_MODEL_LIBRARY_KEY = "model_library"; //$NON-NLS-1$
 
 
 	/**
@@ -174,4 +180,22 @@ public class BaseUtil {
 	}
 
 	
+	/**
+	 * Queries if the given model is a read-only model
+	 * 
+	 * @param context
+	 * @return
+	 */
+	public static boolean isReadOnlyReferencedModel(EObject context) {
+		if(context == null || context.eResource() == null) {
+			return false;
+		}
+		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(context);
+		if (domain != null
+				&& ReadOnlyManager.getReadOnlyHandler(domain).isReadOnly(ReadOnlyAxis.anyAxis(), context).or(false)) {
+			// resource is read-only
+			return true;
+		}
+		return false;
+	}
 }

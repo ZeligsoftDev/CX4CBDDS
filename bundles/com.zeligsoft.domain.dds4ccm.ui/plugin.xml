@@ -972,4 +972,23 @@
 	         </Priority>
 	      </DirectEditor>
 	   </extension>
+       <extension
+             point="org.eclipse.papyrus.infra.emf.readonly.readOnlyHandler">
+          <readOnlyHandler
+                class="com.zeligsoft.domain.dds4ccm.ui.internal.emf.readonly.DynamicPathampModelReadOnlyHandler"
+                id="org.eclipse.papyrus.infra.ui.emf.readonly.ReferencedModelReadOnlyHandler"
+                priority="99">
+             <affinity
+                   axis="discretion">
+             </affinity>
+          </readOnlyHandler>
+          <readOnlyHandler
+                class="com.zeligsoft.domain.dds4ccm.ui.internal.emf.readonly.EMFReadOnlyHandler"
+                id="org.eclipse.papyrus.infra.emf.readonly.EMFReadOnlyHandler"
+                priority="99">
+             <affinity
+                   axis="permission">
+             </affinity>
+          </readOnlyHandler>
+       </extension>
 </plugin>
