@@ -81,6 +81,34 @@
              domain="cxDDS4CCM"
              property="connectorType">
        </PropertySection>
+       <PropertySection
+             append="true"
+             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMDeploymentPropertiesSectionProvider"
+             concept="CCM::CCM_Target::Node"
+             domain="cxDDS4CCM"
+             property="resource">
+       </PropertySection>
+       <PropertySection
+             append="true"
+             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMDeploymentPropertiesSectionProvider"
+             concept="CCM::CCM_Target::Bridge"
+             domain="cxDDS4CCM"
+             property="resource">
+       </PropertySection>
+       <PropertySection
+             append="true"
+             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMDeploymentPropertiesSectionProvider"
+             concept="CCM::CCM_Target::Interconnect"
+             domain="cxDDS4CCM"
+             property="resource">
+       </PropertySection>
+       <PropertySection
+             append="true"
+             class="com.zeligsoft.domain.dds4ccm.ui.providers.DDS4CCMDeploymentPropertiesSectionProvider"
+             concept="ZMLMM::ZML_Deployments::DeploymentPart"
+             domain="cxDDS4CCM"
+             property="modelElement">
+       </PropertySection>
     </extension>
     <extension
           point="org.eclipse.papyrus.infra.gmfdiag.dnd.dropStrategy">

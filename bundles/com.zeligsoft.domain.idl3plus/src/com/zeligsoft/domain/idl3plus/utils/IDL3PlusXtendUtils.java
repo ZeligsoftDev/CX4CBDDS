@@ -268,7 +268,8 @@ public class IDL3PlusXtendUtils {
 	 * part which is connected to the given data-space.
 	 * 
 	 * @param deploymentPart - A UML {@link Property} which is a deployment part.
-	 * @param dataSpace      - A UML {@link Property} which is a data space
+	 * @param dataSpace      - A UML {@link Property} which is a data space.
+	 * @param deployment     - A UML {@link Component} which is the (CCM) DeploymentPlan.
 	 * @return A UML {@link Property} for the port of the deploymentPart which is
 	 *         connected to the dataSpace.
 	 */

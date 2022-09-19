@@ -5,8 +5,9 @@
 	<component
 		class='org.eclipse.xtend.util.stdlib.ExtIssueReporter' />
 
-	<component id="generator"
+	<component id="cdd_generator"
 		class="com.zeligsoft.base.zdl.oaw.ZXtendGenerator">
+
 		<metaModel id="cdp"
 			class="com.zeligsoft.base.zdl.oaw.XMLSchemaMetamodel">
 			<schemaFile
@@ -18,35 +19,10 @@
 		</metaModel>
 		<metaModel id="uml"
 			class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel" />
-		<invoke
-			value="template::mainTransformDispatcher::mainTransformDispatcher(element)" />
-		<extensionAdvice value="template::advice" />
-		<outputSlot value="xsdMetaModel" />
-	</component>
-
-	<component id="cdd_generator"
-		class="com.zeligsoft.base.zdl.oaw.ZXtendGenerator">
-
-		<metaModel idRef="cdp" />
-		<metaModel idRef="DDS4CCM" />
-		<metaModel idRef="uml" />
 
 		<invoke value="template::cdd::mainTransform(element)" />
 		<extensionAdvice value="template::advice" />
 		<outputSlot value="cdd_model" />
-	</component>
-
-	<component id="cdp_writer"
-		class="org.eclipse.xpand2.Generator" skipOnErrors="true">
-		<metaModel idRef="cdp" />
-		<expand
-			value="template::XMLGenerationDescriptorTemplate::descriptors FOR xsdMetaModel" />
-		<outlet path="${src-gen}">
-			<postprocessor
-				class="com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.DescriptorBeautifier" />
-			<vetoStrategy
-				class="org.eclipse.xpand2.output.NoChangesVetoStrategy" />
-		</outlet>
 	</component>
 
 	<component id="cdd_writer"
@@ -61,8 +37,9 @@
 				class="org.eclipse.xpand2.output.NoChangesVetoStrategy" />
 		</outlet>
 	</component>
+	
 	<component
-		class="com.zeligsoft.domain.ngc.ccm.descriptorgeneration.utils.CollectPathnames">
+		class="com.zeligsoft.domain.ngc.ccm.descriptorgeneration.utils.CollectCDDPathnames">
 		<pathnamesSlot value="pathnames" />
 	</component>
 </workflow>

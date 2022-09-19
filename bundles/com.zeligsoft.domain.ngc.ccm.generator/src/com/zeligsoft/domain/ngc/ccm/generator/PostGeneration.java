@@ -30,22 +30,22 @@ import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils;
 
 public class PostGeneration extends AbstractWorkflowComponent {
 
-	private String pathnameSlot;
+	private String pathnamesSlot;
 
 	/**
 	 * Pathnames of generated files will be written into.
 	 * 
 	 * @param value
 	 */
-	public void setPathnameSlot(String value) {
-		this.pathnameSlot = value;
+	public void setPathnamesSlot(String value) {
+		this.pathnamesSlot = value;
 	}
 
 	/**
 	 * @return Pathnames of generated files will be written into.
 	 */
-	public String getPathnameSlot() {
-		return pathnameSlot;
+	public String getPathnamesSlot() {
+		return pathnamesSlot;
 	}
 
 	/*
@@ -55,7 +55,7 @@ public class PostGeneration extends AbstractWorkflowComponent {
 	protected void invokeInternal(WorkflowContext ctx, ProgressMonitor monitor,
 			Issues issues) {
 
-		Object result = ctx.get(getPathnameSlot());
+		Object result = ctx.get(getPathnamesSlot());
 		if (result instanceof Map) {
 			// Map of pathnames are passed
 			Map<String, Set<String>> pathnames = (Map<String, Set<String>>) result;

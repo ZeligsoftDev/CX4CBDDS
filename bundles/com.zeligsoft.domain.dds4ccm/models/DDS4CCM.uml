@@ -117,6 +117,26 @@
           <specification xmi:type="uml:LiteralInteger" xmi:id="_VPmI0AIREemxSNFUunBY-w" value="1"/>
         </ownedLiteral>
       </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_Pbd6gAFmEe2ZmOb6CqM5rw" name="DomainDefinition">
+        <generalization xmi:type="uml:Generalization" xmi:id="_t0MMcAFmEe2ZmOb6CqM5rw">
+          <general xmi:type="uml:Class" href="pathmap://CCM_DOMAIN/CCM.uml#_L_GMsJA1Ed-7vMqgUHuhFQ"/>
+        </generalization>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_C33nIAPDEe2G86ayG7vqfA" name="deployments" visibility="public" type="_LeqTQAPCEe2G86ayG7vqfA" aggregation="composite" association="_C31K4APDEe2G86ayG7vqfA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_C36qcAPDEe2G86ayG7vqfA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_C39GsAPDEe2G86ayG7vqfA" value="*"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_LeqTQAPCEe2G86ayG7vqfA" name="DomainDeployment">
+        <generalization xmi:type="uml:Generalization" xmi:id="_f4FqgAPCEe2G86ayG7vqfA">
+          <general xmi:type="uml:Class" href="pathmap://ZML_LIBRARIES/ZMLMM.uml#_KPOkYEuREd2aAOSqOUjI9w"/>
+        </generalization>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_C31K4APDEe2G86ayG7vqfA" memberEnd="_C33nIAPDEe2G86ayG7vqfA _C3-74APDEe2G86ayG7vqfA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_C33AEAPDEe2G86ayG7vqfA" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_C33AEQPDEe2G86ayG7vqfA" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_C3-74APDEe2G86ayG7vqfA" name="domaindefinition" type="_Pbd6gAFmEe2ZmOb6CqM5rw" association="_C31K4APDEe2G86ayG7vqfA"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_fP0CMEDSEd-VnJuJyqILLA" name="DDS4CCM"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_sjamQEDSEd-VnJuJyqILLA" name="" client="_fP0CMEDSEd-VnJuJyqILLA" supplier="_eP42QEDSEd-VnJuJyqILLA"/>
@@ -492,4 +512,9 @@ endif&#xD;
   <zdl:ExternalDomainConstraint xmi:id="_AAn6AFStEemfNon6R1wyIA" severity="error" message="%_mesg_DDS4CCM__Constraints__connector_type_not_empty" id="com.zeligsoft.domain.dds4ccm.Constraints.connector_type_not_empty" base_Constraint="_AAldwFStEemfNon6R1wyIA"/>
   <zdl:ExternalDomainConstraint xmi:id="_Zle0sI0eEemXDpqpOiiboQ" severity="error" message="%_mesg_DDS4CCM__Constraints__deployment_parts_with_local_interface_collocation" id="com.zeligsoft.domain.dds4ccm.Constraints.deployment_parts_with_local_interface_collocation" base_Constraint="_ZlYHAI0eEemXDpqpOiiboQ"/>
   <zdl:ExternalDomainConstraint xmi:id="_45JGcNUBEeulVb_b9efLAA" severity="error" message="%_mesg_DDS4CCM__Constraints__valid_external_references" id="com.zeligsoft.domain.dds4ccm.Constraints.valid_external_references" base_Constraint="_44x6ENUBEeulVb_b9efLAA"/>
+  <zdl:DomainConcept xmi:id="_R2BRYAFmEe2ZmOb6CqM5rw" base_Class="_Pbd6gAFmEe2ZmOb6CqM5rw" iconURI="../icons/obj16/domain_def.gif"/>
+  <zdl:DomainGeneralization xmi:id="_u81PgAFmEe2ZmOb6CqM5rw" base_Generalization="_t0MMcAFmEe2ZmOb6CqM5rw"/>
+  <zdl:DomainConcept xmi:id="_OR86QAPCEe2G86ayG7vqfA" base_Class="_LeqTQAPCEe2G86ayG7vqfA" iconURI="../icons/obj16/domain_depl.gif"/>
+  <zdl:DomainGeneralization xmi:id="_hCEKUAPCEe2G86ayG7vqfA" base_Generalization="_f4FqgAPCEe2G86ayG7vqfA"/>
+  <zdl:DomainReference xmi:id="_JUynQAPDEe2G86ayG7vqfA" base_Association="_C31K4APDEe2G86ayG7vqfA"/>
 </xmi:XMI>

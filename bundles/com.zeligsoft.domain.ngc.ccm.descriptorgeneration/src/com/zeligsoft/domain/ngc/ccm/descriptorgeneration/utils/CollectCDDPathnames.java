@@ -17,25 +17,20 @@
 package com.zeligsoft.domain.ngc.ccm.descriptorgeneration.utils;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.mwe.core.WorkflowContext;
 import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.lib.AbstractWorkflowComponent;
 import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
 import org.eclipse.uml2.uml.NamedElement;
 
-import com.zeligsoft.base.zdl.util.ZDLUtil;
 import com.zeligsoft.cx.build.factory.ProjectFactory;
 import com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils;
-import com.zeligsoft.domain.omg.ccm.CCMNames;
-import com.zeligsoft.domain.zml.util.ZMLMMNames;
 
-public class CollectPathnames extends AbstractWorkflowComponent {
+public class CollectCDDPathnames extends AbstractWorkflowComponent {
 
 	private String pathnamesSlot;
 
@@ -64,21 +59,8 @@ public class CollectPathnames extends AbstractWorkflowComponent {
 		String path = DDS4CCMGenerationUtils.path(element);
 		IProject project = ProjectFactory.getProject(element, null,
 				ProjectFactory.MODE_CREATE_BASIC);
-		IFile cdp = project.getFile(path + element.getName() + ".cdp"); //$NON-NLS-1$
-		generatedPathnames.add(cdp.getLocation().toOSString());
-		@SuppressWarnings("rawtypes")
-		List parts = (List) ZDLUtil.getValue(element, CCMNames.DEPLOYMENT_PLAN,
-				ZMLMMNames.DEPLOYMENT__PART);
-		for (Object p : parts) {
-			EObject def = ZDLUtil.getEValue((EObject) p,
-					ZMLMMNames.DEPLOYMENT_PART,
-					ZMLMMNames.DEPLOYMENT_PART__MODEL_ELEMENT);
-			if (ZDLUtil.isZDLConcept(def, CCMNames.DOMAIN)) {
-				IFile cdd = project.getFile(path
-						+ ((NamedElement) def).getName() + ".cdd"); //$NON-NLS-1$
-				generatedPathnames.add(cdd.getLocation().toOSString());
-			}
-		}
+		IFile cdd = project.getFile(path + element.getName() + ".cdd"); //$NON-NLS-1$
+		generatedPathnames.add(cdd.getLocation().toOSString());
 		ctx.set(getPathnamesSlot(), generatedPathnames);
 	}
 

@@ -23,6 +23,7 @@ import CCM::CCM_Deployment;
 import CCM::CCM_Implementation;
 import CCM::CCM_Target;
 import CXDomain::IDL;
+import DDS4CCM::DDS4CCM;
 import ZMLMM::ZML_Deployments;
 import ZMLMM::ZML_Component;
 import ZMLMM::ZML_Core;
@@ -31,11 +32,42 @@ import ZMLMM::ZML_Core;
 extension org::eclipse::xtend::util::stdlib::issues;
 extension com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::cdpgenerator;
 extension com::zeligsoft::domain::omg::ccm::descriptorgenerator::utils::util;
-	
+extension codegen::debug;
+
+create Domain mainTransform(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) :
+	let qname = getPath(domainDeployment) + domainDeployment.name :
+	domainDeployment.Debug("[DEBUG] cdd::mainTransform(DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) " + domainDeployment) ->
+	domainDeployment.Debug("[DEBUG] qname = " + qname) ->
+	this.label.add(domainDeployment.name) ->
+	this.label.add(qname) ->
+	this.uuid.add(getUUID()) ->
+	domainDeployment.part.Debug("[DEBUG] visitDomainDeploymentParts") ->
+	domainDeployment.part.select(p | p.visitNodeInstance(p.modelElement, this))
+;
+
+Void visitDomainDeploymentPart(DeploymentPart domainDeploymentPart, DDS4CCM::DDS4CCM::DomainDeployment domainDeployment) :
+	domainDeploymentPart.Debug("[DEBUG] visitDomainDeploymentPart(DeploymentPart domainDeploymentPart, DDS4CCM::DDS4CCM::DomainDeployment domainDeployment)") ->
+	domainDeploymentPart.Debug(domainDeploymentPart.name)
+;
+
 Void mainTransform(CCM::CCM_Deployment::DeploymentPlan deployment) :
+	deployment.Debug("[DEBUG] cdd::mainTransform(CCM::CCM_Deployment::DeploymentPlan deployment) ") ->
 	deployment.part.modelElement.typeSelect(CCM::CCM_Target::Domain).mainTransform(deployment);
+//	deployment.part.modelElement.typeSelect(CCM::CCM_Target::Domain).select(e | !e.isDomainDefinition()).mainTransform(deployment);
+
+Boolean isDomainDefinition(CCM::CCM_Target::Domain domain) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMDomainDefinitionsUtils.isDomainDefinition(org.eclipse.emf.ecore.EObject);
+
+Boolean isNodeInstance(DeploymentPart deploymentPart) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMDomainDefinitionsUtils.isNodeInstance(org.eclipse.emf.ecore.EObject);
+
+Void mainTransform(DDS4CCM::DDS4CCM::DomainDefinition domainDefinition, CCM::CCM_Deployment::DeploymentPlan deployment ) :
+	domainDefinition.Debug("[DEBUG] cdd::mainTransform(DDS4CCM::DDS4CCM::DomainDefinition domainDefinition, CCM::CCM_Deployment::DeploymentPlan deployment ) domainDefinition = " + domainDefinition.name) ->
+	domainDefinition.deployments.mainTransform()
+;
 
 Void mainTransform(CCM::CCM_Target::Domain domain, CCM::CCM_Deployment::DeploymentPlan deployment ) :
+	domain.Debug("[DEBUG] cdd::mainTransform(CCM::CCM_Target::Domain domain, CCM::CCM_Deployment::DeploymentPlan deployment ) domain = " + domain.name) ->
 	deployment.part.select( part | part.modelElement == domain ).mainTransform(deployment);
 	
 create Domain mainTransform(DeploymentPart domainPart, CCM::CCM_Deployment::DeploymentPlan deployment ) :
@@ -48,8 +80,17 @@ create Domain mainTransform(DeploymentPart domainPart, CCM::CCM_Deployment::Depl
 String getPath(CCM::CCM_Target::Domain domain) :
 	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
 
+String getPath(DDS4CCM::DDS4CCM::DomainDeployment domain) :
+	JAVA com.zeligsoft.domain.dds4ccm.utils.DDS4CCMGenerationUtils.path(org.eclipse.uml2.uml.NamedElement);
+
 Void visitNodeInstance(DeploymentPart part, Object obj, CCM::CCM_Deployment::DeploymentPlan deployment, Domain domain ) :
 	{};
+	
+create Node visitNodeInstance(DeploymentPart deploymentPart, CCM::CCM_Target::NodeInstance nodeInstance, Domain domain ) :
+	domain.node.add(this) ->
+	this.label.add(deploymentPart.name) ->
+	this.name.add(deploymentPart.name) ->
+	nodeInstance.type.resource.visitResourceProperty(this, deploymentPart);
 	
 create Node visitNodeInstance(DeploymentPart deploymentPart, CCM::CCM_Target::NodeInstance nodeInstance, CCM::CCM_Deployment::DeploymentPlan deployment, Domain domain ) :
 	domain.node.add(this) ->

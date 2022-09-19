@@ -85,17 +85,12 @@ public class IDL3PlusPropertyContentProvider extends CCMPropertyContentProvider 
 				children.add(entry.addChild((Component) modelElement));
 			} else if (ZDLUtil.isZDLConcept((EObject) modelElement,
 					ZMLMMNames.PORT)) {
-				EObject parentPart = ZDeploymentUtil
+				Property parentPart = ZDeploymentUtil
 						.getParentPart((Property) modelObject);
-				EObject part = (EObject) ZDLUtil.getValue(parentPart,
-						ZMLMMNames.DEPLOYMENT_PART,
-						ZMLMMNames.DEPLOYMENT_PART__MODEL_ELEMENT);
-				if (part instanceof Property) {
-					Property dataSpace = IDL3PlusUtil.getDataSpaceFromPerPort(
-							(Port) modelElement, (Property) part);
-					if (dataSpace != null && dataSpace.getType() != null) {
-						children.add(entry.addChild(dataSpace.getType()));
-					}
+				Property dataSpace = IDL3PlusUtil.getDataSpaceFromPerPort(
+						(Port) modelElement, parentPart);
+				if (dataSpace != null && dataSpace.getType() != null) {
+					children.add(entry.addChild(dataSpace.getType()));
 				}
 			}
 		} else if (ZDLUtil

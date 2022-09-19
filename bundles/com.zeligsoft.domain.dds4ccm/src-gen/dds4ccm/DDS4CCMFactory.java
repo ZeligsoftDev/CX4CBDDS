@@ -1363,6 +1363,24 @@ public interface DDS4CCMFactory extends EFactory {
 	PerPortConnectorTypeDeploymentPart createPerPortConnectorTypeDeploymentPart();
 
 	/**
+	 * Returns a new object of class '<em>Domain Definition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Domain Definition</em>'.
+	 * @generated
+	 */
+	DomainDefinition createDomainDefinition();
+
+	/**
+	 * Returns a new object of class '<em>Domain Deployment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Domain Deployment</em>'.
+	 * @generated
+	 */
+	DomainDeployment createDomainDeployment();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -24,18 +24,6 @@
 		<outputSlot value="xsdMetaModel" />
 	</component>
 
-	<component id="cdd_generator"
-		class="com.zeligsoft.base.zdl.oaw.ZXtendGenerator">
-
-		<metaModel idRef="cdp" />
-		<metaModel idRef="DDS4CCM" />
-		<metaModel idRef="uml" />
-
-		<invoke value="template::cdd::mainTransform(element)" />
-		<extensionAdvice value="template::advice" />
-		<outputSlot value="cdd_model" />
-	</component>
-
 	<component id="cdp_writer"
 		class="org.eclipse.xpand2.Generator" skipOnErrors="true">
 		<metaModel idRef="cdp" />
@@ -49,18 +37,6 @@
 		</outlet>
 	</component>
 
-	<component id="cdd_writer"
-		class="org.eclipse.xpand2.Generator" skipOnErrors="true">
-		<metaModel idRef="cdp" />
-		<expand
-			value="template::XMLGenerationDescriptorTemplate::descriptors FOR cdd_model" />
-		<outlet path="${src-gen}">
-			<postprocessor
-				class="com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.DescriptorBeautifier" />
-			<vetoStrategy
-				class="org.eclipse.xpand2.output.NoChangesVetoStrategy" />
-		</outlet>
-	</component>
 	<component
 		class="com.zeligsoft.domain.ngc.ccm.descriptorgeneration.utils.CollectPathnames">
 		<pathnamesSlot value="pathnames" />

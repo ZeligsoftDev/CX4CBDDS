@@ -1246,6 +1246,20 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass domainDefinitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass domainDeploymentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum componentCategoryEEnum = null;
 
 	/**
@@ -5538,6 +5552,32 @@ public class DDS4CCMPackageImpl extends EPackageImpl implements DDS4CCMPackage {
 			perPortConnectorTypeDeploymentPartEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(186);
 		}
 		return perPortConnectorTypeDeploymentPartEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDomainDefinition() {
+		if (domainDefinitionEClass == null) {
+			domainDefinitionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(187);
+		}
+		return domainDefinitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDomainDeployment() {
+		if (domainDeploymentEClass == null) {
+			domainDeploymentEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DDS4CCMPackage.eNS_URI).getEClassifiers().get(188);
+		}
+		return domainDeploymentEClass;
 	}
 
 	/**

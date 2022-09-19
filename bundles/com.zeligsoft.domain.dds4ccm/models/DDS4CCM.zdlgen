@@ -79,6 +79,27 @@
           <domainEnumLiteral href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_ShHwYAIREemxSNFUunBY-w"/>
         </literal>
       </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_zdgv8AFnEe2ZmOb6CqM5rw" menu="_mDpioAoJEe2of8LxwxEWDA" category="firm" iconUri="platform:/resource/com.zeligsoft.domain.dds4ccm/icons/obj16/domain_def.gif">
+        <feature xmi:type="zdlgen:GenDomainReference" xmi:id="_jAskwAPDEe2G86ayG7vqfA" target="_jArWoAPDEe2G86ayG7vqfA">
+          <umlMetaattribute href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component-packagedElement"/>
+          <domainAttribute href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_C33nIAPDEe2G86ayG7vqfA"/>
+          <domainReference href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_C31K4APDEe2G86ayG7vqfA"/>
+        </feature>
+        <domainConcept href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_Pbd6gAFmEe2ZmOb6CqM5rw"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+        <generalization xmi:id="_zdgv8QFnEe2ZmOb6CqM5rw">
+          <general href="pathmap://CCM_DOMAIN/CCM.zdlgen#_pxDf8ZA9Ed-41qlhZES-dg"/>
+          <domainGeneralization href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_t0MMcAFmEe2ZmOb6CqM5rw"/>
+        </generalization>
+      </classifier>
+      <classifier xmi:type="zdlgen:GenDomainConcept" xmi:id="_jArWoAPDEe2G86ayG7vqfA" category="firm" iconUri="platform:/resource/com.zeligsoft.domain.dds4ccm/icons/obj16/domain_depl.gif">
+        <domainConcept href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_LeqTQAPCEe2G86ayG7vqfA"/>
+        <umlMetaclass href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+        <generalization xmi:id="_83w5wCMaEe2t6oKBjx6MaA">
+          <general href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_6snBFZoeEd2hFaSxSorjOg"/>
+          <domainGeneralization href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_f4FqgAPCEe2G86ayG7vqfA"/>
+        </generalization>
+      </classifier>
       <domainBlock href="pathmap://DDS4CCM_DOMAIN/DDS4CCM.uml#_eP42QEDSEd-VnJuJyqILLA"/>
     </element>
     <element xmi:type="zdlgen:GenDomainBlock" xmi:id="_0iexcHV-Ed-AKdymOEnO6w">
@@ -360,6 +381,7 @@
         <item xmi:type="zdlgen:GenMenuSeparator" href="#_fXVjELIUEeCMl7fhq2uxZg"/>
         <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_IxdhAJQwEd-TfMHkrqIL3w"/>
         <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_nubNsJXLEd-guOCMdwguFQ"/>
+        <item xmi:type="zdlgen:GenMenuCreateAction" href="#_BX1zMAIgEe2w-5LltqTukg"/>
         <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_z9KSIJA-Ed-41qlhZES-dg"/>
         <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_A8yxUJA_Ed-41qlhZES-dg"/>
         <item xmi:type="zdlgen:GenMenuCreateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_1ZT1IJBAEd-41qlhZES-dg"/>
@@ -431,11 +453,23 @@
         <item xmi:type="zdlgen:GenMenuDelegateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_hwBvUJ8QEd-ki9Cbb-JWRg"/>
         <item xmi:type="zdlgen:GenMenuDelegateAction" href="pathmap://CCM_DOMAIN/CCM.zdlgen#_IxmfEMZxEd-s6oU7a2K7iA"/>
       </items>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_BX1zMAIgEe2w-5LltqTukg" name="Domain Definition" createConcept="_zdgv8AFnEe2ZmOb6CqM5rw"/>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_flkr8AoJEe2of8LxwxEWDA" name="Domain Deployment" createConcept="_jArWoAPDEe2G86ayG7vqfA"/>
+      <items xmi:type="zdlgen:GenMenu" xmi:id="_mDpioAoJEe2of8LxwxEWDA" name="DomainDefinitionMenu" item="_flkr8AoJEe2of8LxwxEWDA _pgwQwAoLEe2-hMKIzPHgCg _vQurUAoLEe2-hMKIzPHgCg _ySbhwAoLEe2-hMKIzPHgCg"/>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_pgwQwAoLEe2-hMKIzPHgCg" name="Node instance">
+        <createConcept href="pathmap://CCM_DOMAIN/CCM.zdlgen#_pxDf_ZA9Ed-41qlhZES-dg"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_vQurUAoLEe2-hMKIzPHgCg" name="Bridge instance">
+        <createConcept href="pathmap://CCM_DOMAIN/CCM.zdlgen#_pxDgDZA9Ed-41qlhZES-dg"/>
+      </items>
+      <items xmi:type="zdlgen:GenMenuCreateAction" xmi:id="_ySbhwAoLEe2-hMKIzPHgCg" name="Interconnect instance">
+        <createConcept href="pathmap://CCM_DOMAIN/CCM.zdlgen#_pxDgBZA9Ed-41qlhZES-dg"/>
+      </items>
     </menuModel>
   </ownedModel>
-  <referencedModel href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_auH80DdmEd2dD_ra-wEDmw"/>
   <referencedModel href="pathmap://OMG_CORBA_LIBRARIES/CORBADomain.zdlgen#_AJ-wcExGEd2q8K1oAnPrnA"/>
   <referencedModel href="pathmap://CCM_DOMAIN/CCM.zdlgen#_ghB8QZysEd6NpPmb0eU83g"/>
   <referencedModel href="pathmap://IDL3PLUS_DOMAIN/IDL3Plus.zdlgen#_rwgN0JBXEeCN25huR8QT_w"/>
+  <referencedModel href="pathmap://ZML_LIBRARIES/ZMLMM.zdlgen#_auH80DdmEd2dD_ra-wEDmw"/>
   <referencedModel href="pathmap://DDS_DOMAIN/dds.zdlgen#_0HUlsZQBEd6cD695LnAvug"/>
 </zdlgen:GenModel>

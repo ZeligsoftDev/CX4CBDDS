@@ -1611,4 +1611,17 @@
       <details key="suppressed" value="true"/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainDefinition" eSuperTypes="#//Domain">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.zeligsoft.com/zdl/2008/ZDL">
+      <details key="deployments" value="packagedElement"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainDeployment" eSuperTypes="#//Deployment">
+    <eAnnotations source="uml2.extensions">
+      <details key="suppressed" value="true"/>
+    </eAnnotations>
+  </eClassifiers>
 </ecore:EPackage>

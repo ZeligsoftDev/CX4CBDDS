@@ -4,6 +4,24 @@
    <extension
          point="com.zeligsoft.cx.codegen.ui.transformation">
       <concept
+            type="DDS4CCM::DDS4CCM::DomainDeployment">
+         <workflow
+               cancelOnValidationError="true"
+               label="%generate.cdd.label"
+               path="/workflow/ngcCDDgenerator.mwe"
+               validationFactory="com.zeligsoft.domain.dds4ccm.utils.DDS4CCMValidationFactory">
+         </workflow>
+      </concept>
+      <concept
+            type="DDS4CCM::DDS4CCM::DomainDefinition">
+         <workflow
+               cancelOnValidationError="true"
+               label="%generate.allcdds.label"
+               path="/workflow/bulkCDDsGenerator.oaw"
+               validationFactory="com.zeligsoft.domain.dds4ccm.utils.DDS4CCMValidationFactory">
+         </workflow>
+      </concept>
+      <concept
             type="CCM::CCM_Deployment::DeploymentPlan">
          <workflow
                label="%generate.label"
@@ -13,9 +31,18 @@
          </workflow>
       </concept>
       <concept
+            type="org.eclipse.papyrus.uml.Package">
+         <workflow
+               cancelOnValidationError="true"
+               label="%generate.all.label"
+               path="/workflow/bulkDescriptorsGenerator.oaw"
+               validationFactory="com.zeligsoft.domain.dds4ccm.utils.DDS4CCMValidationFactory">
+         </workflow>
+      </concept>
+      <concept
             type="DDS4CCM::DDS4CCM::DDS4CCMModel">
          <workflow
-               label="%generate.label"
+               label="%generate.all.label"
                path="/workflow/bulkDescriptorsGenerator.oaw"
                validationFactory="com.zeligsoft.domain.dds4ccm.utils.DDS4CCMValidationFactory"
                cancelOnValidationError="true">
@@ -35,6 +62,30 @@
       <WorkflowFileExtension
             fileExtensions=".cdp, .cdd"
             workflowPath="/workflow/ngcgeneratorNoPostGeneration.mwe">
+      </WorkflowFileExtension>
+      <WorkflowFileExtension
+            fileExtensions=".cdd"
+            workflowPath="/workflow/ngcCDDgenerator.mwe">
+      </WorkflowFileExtension>
+      <WorkflowFileExtension
+            fileExtensions=".cdd"
+            workflowPath="/workflow/bulkCDDsGenerator.oaw">
+      </WorkflowFileExtension>
+      <WorkflowFileExtension
+            fileExtensions=".cdd"
+            workflowPath="/workflow/ngcCDDgeneratorNoPostGeneration.mwe">
+      </WorkflowFileExtension>
+      <WorkflowFileExtension
+            fileExtensions=".cdp"
+            workflowPath="/workflow/ngcCDPgenerator.mwe">
+      </WorkflowFileExtension>
+      <WorkflowFileExtension
+            fileExtensions=".cdp"
+            workflowPath="/workflow/bulkCDPsGenerator.oaw">
+      </WorkflowFileExtension>
+      <WorkflowFileExtension
+            fileExtensions=".cdp"
+            workflowPath="/workflow/ngcCDPgeneratorNoPostGeneration.mwe">
       </WorkflowFileExtension>
    </extension>
 </plugin>

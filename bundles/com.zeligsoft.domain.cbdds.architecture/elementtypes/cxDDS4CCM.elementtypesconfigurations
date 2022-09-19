@@ -994,6 +994,20 @@
     </matcherConfiguration>
     <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Property"/>
   </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_nd9_UAFoEe2ZmOb6CqM5rw" identifier="com.zeligsoft.zdl.cxDDS4CCM.DDS4CCM__DDS4CCM__DomainDefinition" name="DomainDefinition" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_nd9_UQFoEe2ZmOb6CqM5rw" iconPath="/icons/obj16/domain_def.gif" bundleId="com.zeligsoft.domain.dds4ccm"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_nd9_UgFoEe2ZmOb6CqM5rw">
+      <stereotypesQualifiedNames>cxDDS4CCM::DomainDefinition</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Component"/>
+  </elementTypeConfigurations>
+  <elementTypeConfigurations xmi:type="elementtypesconfigurations:SpecializationTypeConfiguration" xmi:id="_IXF9sAoKEe2of8LxwxEWDA" identifier="com.zeligsoft.zdl.cxDDS4CCM.DDS4CCM__DDS4CCM__DomainDeployment" name="DomainDeployment" hint="" kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+    <iconEntry xmi:type="elementtypesconfigurations:IconEntry" xmi:id="_IXF9sQoKEe2of8LxwxEWDA" iconPath="/icons/obj16/domain_depl.gif" bundleId="com.zeligsoft.domain.dds4ccm"/>
+    <matcherConfiguration xmi:type="stereotypematcher:StereotypeApplicationMatcherConfiguration" xmi:id="_IXF9sgoKEe2of8LxwxEWDA">
+      <stereotypesQualifiedNames>cxDDS4CCM::DomainDeployment</stereotypesQualifiedNames>
+    </matcherConfiguration>
+    <specializedTypes xmi:type="elementtypesconfigurations:MetamodelTypeConfiguration" href="platform:/plugin/org.eclipse.papyrus.uml.service.types/model/uml.elementtypesconfigurations#org.eclipse.papyrus.uml.Component"/>
+  </elementTypeConfigurations>
   <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r6BfEeUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.cxDDS4CCM.applycxDDS4CCM.AssemblyImplementationStereotype" target="_r5kzIOUuEemhqZDhrNxCag">
     <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_r6CGIOUuEemhqZDhrNxCag" stereotypeQualifiedName="cxDDS4CCM::AssemblyImplementation" updateName="true">
       <requiredProfiles>cxDDS4CCM</requiredProfiles>
@@ -1701,6 +1715,16 @@
   </adviceBindingsConfigurations>
   <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_r87pIeUuEemhqZDhrNxCag" identifier="com.zeligsoft.domain.cxDDS4CCM.applycxDDS4CCM.PerPortConnectorTypeDeploymentPartStereotype" target="_r86bAOUuEemhqZDhrNxCag">
     <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_r87pIuUuEemhqZDhrNxCag" stereotypeQualifiedName="cxDDS4CCM::PerPortConnectorTypeDeploymentPart" updateName="true">
+      <requiredProfiles>cxDDS4CCM</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_nd9_UwFoEe2ZmOb6CqM5rw" identifier="com.zeligsoft.domain.cxDDS4CCM.applycxDDS4CCM.DomainDefinitionStereotype" target="_nd9_UAFoEe2ZmOb6CqM5rw">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_nd9_VAFoEe2ZmOb6CqM5rw" stereotypeQualifiedName="cxDDS4CCM::DomainDefinition" updateName="true">
+      <requiredProfiles>cxDDS4CCM</requiredProfiles>
+    </stereotypesToApply>
+  </adviceBindingsConfigurations>
+  <adviceBindingsConfigurations xmi:type="applystereotypeadvice:ApplyStereotypeAdviceConfiguration" xmi:id="_IXF9swoKEe2of8LxwxEWDA" identifier="com.zeligsoft.domain.cxDDS4CCM.applycxDDS4CCM.DomainDeploymentStereotype" target="_IXF9sAoKEe2of8LxwxEWDA">
+    <stereotypesToApply xmi:type="applystereotypeadvice:StereotypeToApply" xmi:id="_IXF9tAoKEe2of8LxwxEWDA" stereotypeQualifiedName="cxDDS4CCM::DomainDeployment" updateName="true">
       <requiredProfiles>cxDDS4CCM</requiredProfiles>
     </stereotypesToApply>
   </adviceBindingsConfigurations>

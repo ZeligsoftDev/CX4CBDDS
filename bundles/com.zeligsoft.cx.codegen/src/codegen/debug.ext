@@ -2,6 +2,14 @@
 Void Println( String msg ) :            BaseDebug( null, msg );
 Void Println( Void void, String msg ) : BaseDebug( null, msg );
 
+Object Inspect( Object obj ) : 
+	BaseInspect( obj ) ->
+	obj;
+	
+Object Inspect( Object obj, String msg ) : 
+	BaseInspect( obj, msg ) ->
+	obj;
+	
 Void Inspect( int condition, Object obj ) : condition.BaseInspect( obj );
 
 Object Debug( Object obj ) :             obj.BaseDebug( null );
@@ -9,6 +17,14 @@ Object Debug( Object obj, String msg ) : obj.BaseDebug( msg );
 
 // These are used by other plugins to implement type-specific debug rules.  They
 // cannot be private.
+Object BaseInspect( Object obj ) :
+    isDebugEnabled() ? JavaInspect( obj ) : obj
+;
+
+Object BaseInspect( Object obj, String msg ) :
+    isDebugEnabled() ? JavaInspect( obj, msg ) : obj
+;
+
 Object BaseInspect( int condition, Object obj ) :
     isDebugEnabled() ? condition.JavaInspect( obj ) : null
 ;
@@ -25,6 +41,14 @@ Object BaseDebug( Object obj, String msg ) :
 // by any dependent plugins.
 private cached Boolean isDebugEnabled() :
     JAVA com.zeligsoft.cx.codegen.internal.OawDebug.isDebugEnabled()
+;
+
+private Object JavaInspect( Object obj ) :
+    JAVA com.zeligsoft.cx.codegen.internal.OawDebug.inspect( java.lang.Object )
+;
+
+private Object JavaInspect( Object obj, String msg ) :
+    JAVA com.zeligsoft.cx.codegen.internal.OawDebug.inspect( java.lang.Object, java.lang.String )
 ;
 
 private Void JavaInspect( int condition, Object obj ) :
