@@ -60,7 +60,7 @@ import com.zeligsoft.domain.omg.corba.dsl.idl.TypeDeclarator;
  */
 public class NGCWriter extends IDL3PlusWriter {
 
-	private String pathnameSlot;
+	private String pathnamesSlot;
 	private static Model dds4ccmModel;
 	private boolean isAxciomaModel;
 	
@@ -69,15 +69,15 @@ public class NGCWriter extends IDL3PlusWriter {
 	 * 
 	 * @param value
 	 */
-	public void setPathnameSlot(String value) {
-		this.pathnameSlot = value;
+	public void setPathnamesSlot(String value) {
+		this.pathnamesSlot = value;
 	}
 
 	/**
 	 * @return Pathnames of generated files will be written into.
 	 */
-	public String getPathnameSlot() {
-		return pathnameSlot;
+	public String getPathnamesSlot() {
+		return pathnamesSlot;
 	}
 	
 	/**
@@ -206,7 +206,7 @@ public class NGCWriter extends IDL3PlusWriter {
 		for(IdlFileContent fc: fileContentsMap.values()) {
 			createFile(fc.targetDir, fc.filename, fc.contents, allPathnames, modifiedPathnames);
 		}
-		ctx.set(getPathnameSlot(), pathMap);
+		ctx.set(getPathnamesSlot(), pathMap);
 	}
 	
 	private void createFile(String targetDir, String fileName, String fileContent, Set<String> allPathnames,
