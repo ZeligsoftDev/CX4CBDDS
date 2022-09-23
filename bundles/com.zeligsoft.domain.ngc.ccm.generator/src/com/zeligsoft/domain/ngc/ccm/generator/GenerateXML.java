@@ -52,7 +52,7 @@ import com.zeligsoft.domain.omg.corba.dsl.idl.Specification;
 public class GenerateXML extends WorkflowComponentWithModelSlot {
 	
 	private String targetDir;
-	private String pathnameSlot;
+	private String pathnamesSlot;
 	
 	/**
 	 * The directory as a URI that the file will be written into.
@@ -75,15 +75,15 @@ public class GenerateXML extends WorkflowComponentWithModelSlot {
 	 * 
 	 * @param value
 	 */
-	public void setPathnameSlot(String value) {
-		this.pathnameSlot = value;
+	public void setPathnamesSlot(String value) {
+		this.pathnamesSlot = value;
 	}
 
 	/**
 	 * @return Pathnames of generated files will be written into.
 	 */
-	public String getPathnameSlot() {
-		return pathnameSlot;
+	public String getPathnamesSlot() {
+		return pathnamesSlot;
 	}
 	
 	/* (non-Javadoc)
@@ -95,7 +95,7 @@ public class GenerateXML extends WorkflowComponentWithModelSlot {
 		Object generated = ctx.get(getModelSlot());
 		
 		// Store generated filenames to the pathnames list
-		Map<String, Set<String>> pathnames = (Map<String, Set<String>>)ctx.get(getPathnameSlot());
+		Map<String, Set<String>> pathnames = (Map<String, Set<String>>)ctx.get(getPathnamesSlot());
 		
 		List<Object> generatedList;
 		

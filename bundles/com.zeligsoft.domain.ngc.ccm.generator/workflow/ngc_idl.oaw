@@ -46,15 +46,15 @@
     <component class="com.zeligsoft.domain.ngc.ccm.generator.writers.NGCWriter">
 		<modelSlot value="idlLangModel" />
 		<targetDir value="${src-gen}/" />
-		<pathnameSlot value="pathnames" />
+		<pathnamesSlot value="pathnames" />
 	</component>
 		<component class="com.zeligsoft.domain.ngc.ccm.generator.GenerateXML">
 		<modelSlot value="idlLangModel" />
 		<targetDir value="${src-gen}" />
-		<pathnameSlot value="pathnames" />
+		<pathnamesSlot value="pathnames" />
 	</component> 
 	<component class="com.zeligsoft.domain.ngc.ccm.generator.PostGeneration">
-		<pathnameSlot value="pathnames" />
+		<pathnamesSlot value="pathnames" />
 	</component> 
     	
 </workflow>
