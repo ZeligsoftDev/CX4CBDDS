@@ -90,8 +90,8 @@ public class Activator extends ZeligsoftAbstractUIPlugin {
 		IEclipsePreferences editorPref = InstanceScope.INSTANCE
 				.getNode(org.eclipse.papyrus.infra.ui.Activator.PLUGIN_ID);
 		Boolean useRichText = editorPref.getBoolean(RichtextPreferencePage.USE_CK_EDITOR, false);
-		if(!useRichText) {
-			editorPref.putBoolean(RichtextPreferencePage.USE_CK_EDITOR, true);
+		if(useRichText) {
+			editorPref.putBoolean(RichtextPreferencePage.USE_CK_EDITOR, false);
 			try {
 				editorPref.flush();
 			} catch (BackingStoreException e) {
