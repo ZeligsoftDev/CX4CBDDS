@@ -5,12 +5,14 @@ on:
     branches:
       - master
       - papyrus
+      - streams/v*
     tags:
       - v*
   pull_request:
     branches:
       - master
       - papyrus
+      - streams/v*
   release:
     types:
       - created
