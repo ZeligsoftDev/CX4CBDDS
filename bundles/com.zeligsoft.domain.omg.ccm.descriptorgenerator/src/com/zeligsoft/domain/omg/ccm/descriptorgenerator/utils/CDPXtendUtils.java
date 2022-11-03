@@ -26,6 +26,7 @@ import java.util.UUID;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.EnumerationLiteral;
@@ -122,9 +123,31 @@ public class CDPXtendUtils {
 	public static String getUUID() {
 		return "_" + UUID.randomUUID().toString();
 	}
+	
+	public static String getId(NamedElement element) {
+		return getCorbaScopedId(element);
+	}
+
+	public static String getConnId(NamedElement dataSpace, NamedElement source, NamedElement target, NamedElement node) {
+		return getScopedName(dataSpace) + "-to-" + source.getName() + "@" + node.getName() + "." + target.getName();
+	}
+
+	public static String getFullyQualifiedName(NamedElement element) {
+		return element.getQualifiedName();
+	}
 
 	public static String getScopedName(NamedElement element) {
 		return getScopedName(element, false);
+	}
+
+	public static String getCorbaScopedId(NamedElement element) {
+		if (ZDLUtil.isZDLConcept(element, CXDomainNames.CXNAMED_ELEMENT)
+				|| ZDLUtil.isZDLConcept(element,
+						CCMNames.MONOLITHIC_IMPLEMENTATION)) {
+			return getScopedName(element, true);
+		} else {
+			return getScopedName(element, false);
+		}
 	}
 
 	public static String getCorbaScopedName(NamedElement element) {
