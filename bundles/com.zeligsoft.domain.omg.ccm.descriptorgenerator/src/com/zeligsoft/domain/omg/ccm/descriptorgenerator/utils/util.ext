@@ -63,8 +63,8 @@ String getUUID() :
 cached String getId(Object element) :
 	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.getId(org.eclipse.uml2.uml.NamedElement);
 
-cached String getConnId(Object dataSpace, Object source, Object target, Object node) :
-	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.getConnId(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement);
+cached String getConnId(Object dataSpace, Object source, Object port, Object target, Object node) :
+	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.getConnId(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement);
 
 cached String getFullyQualifiedName(Object element) :
 	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.getFullyQualifiedName(org.eclipse.uml2.uml.NamedElement);

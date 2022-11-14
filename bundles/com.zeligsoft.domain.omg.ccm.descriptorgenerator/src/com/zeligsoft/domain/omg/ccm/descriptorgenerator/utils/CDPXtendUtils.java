@@ -128,8 +128,8 @@ public class CDPXtendUtils {
 		return getCorbaScopedId(element);
 	}
 
-	public static String getConnId(NamedElement dataSpace, NamedElement source, NamedElement target, NamedElement node) {
-		return getScopedName(dataSpace) + "-to-" + source.getName() + "@" + node.getName() + "." + target.getName();
+	public static String getConnId(NamedElement dataSpace, NamedElement source, NamedElement port, NamedElement target, NamedElement node) {
+		return getScopedName(dataSpace) + "-to-" + source.getName() + "::" + port.getName() + "@" + node.getName() + "." + target.getName();
 	}
 
 	public static String getFullyQualifiedName(NamedElement element) {

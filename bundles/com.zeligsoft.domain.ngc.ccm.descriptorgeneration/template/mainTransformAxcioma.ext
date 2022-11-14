@@ -409,7 +409,7 @@ create InstanceDeploymentDescription createDDS4CCMConnectorFragmentHelper(Deploy
 	let dataSpaceSN = dataSpace.connectorType.getCorbaScopedName() :
 	let id = visit(dataSpace.connectorType, plan).id :
 	let dataSpaceDP = deployment.part.select( part | part.modelElement == dataSpace).selectFirst( part | part.sameLocalAssembly(source)) :
-	idd.JavaSetAttribute("id", dataSpace.getConnId(source,target,node)) ->
+	idd.JavaSetAttribute("id", dataSpace.getConnId(source,getPerPortDP(source, dataSpace),target,node)) ->
 	idd.name.add(dataSpace.getScopedName() + "_to_" + source.name + "@" + node.name + "." + target.name) ->
 	idd.node.add(node.name) ->
 	idd.source.add(null) ->
