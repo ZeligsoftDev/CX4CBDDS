@@ -129,7 +129,7 @@ public class CDPXtendUtils {
 	}
 
 	public static String getConnId(NamedElement dataSpace, NamedElement source, NamedElement port, NamedElement target, NamedElement node) {
-		return getScopedName(dataSpace) + "-to-" + source.getName() + "::" + port.getName() + "@" + node.getName() + "." + target.getName();
+		return getScopedName(dataSpace) + "-to-" + source.getName() + "_" + port.getName() + "-at-" + node.getName() + "." + target.getName();
 	}
 
 	public static String getFullyQualifiedName(NamedElement element) {
