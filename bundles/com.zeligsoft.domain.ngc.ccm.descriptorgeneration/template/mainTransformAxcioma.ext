@@ -70,8 +70,13 @@ DeploymentPlan mainTransformAxcioma(CCM::CCM_Deployment::DeploymentPlan deployme
 create DeploymentPlan findOrCreateDeploymentPlan(CCM::CCM_Deployment::DeploymentPlan deployment) :
     this.label.add(deployment.zdlAsNamedElement().name) ->
     this.label.add(getPath(deployment) + deployment.zdlAsNamedElement().name) ->
-    this.uuid.add(getUUID())
+    this.uuid.add(getUUID()) ->
+    resetIdCache()
     ;
+
+Void resetIdCache() :
+	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.resetIdCache()
+;
 
 cached Boolean topLevelAssembly( DeploymentPart part ) :
 	part.getParentPart() == null && part.nestedPart.size > 0 && part.modelElement.isComponent();

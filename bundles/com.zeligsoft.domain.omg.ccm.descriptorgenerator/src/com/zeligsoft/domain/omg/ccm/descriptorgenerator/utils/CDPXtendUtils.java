@@ -19,8 +19,10 @@ package com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -124,12 +126,39 @@ public class CDPXtendUtils {
 		return "_" + UUID.randomUUID().toString();
 	}
 	
+	// generatedIdsCache contains a map from generated ids to the number of times each has been generated
+	private static Map<String, Integer> generatedIdsCache;
+	
+	public static void resetIdCache() {
+		generatedIdsCache = new HashMap<>();
+	}
+	
+	/**
+	 * Make a unique id out og a given base_id.
+	 * 
+	 * @param base_id - A String
+	 * @return The base_id if it has not been previously generated, or the base_id with a numeric suffix
+	 * representing the number of times the base_id has been generated before.
+	 */
+	public static String makeUniqueId(String base_id) {
+		String id = base_id;
+		Integer count = generatedIdsCache.get(base_id);
+		if (count == null) {
+			generatedIdsCache.put(base_id, 1);
+		} else {
+			Integer newCount = Integer.valueOf(count.intValue() + 1);
+			generatedIdsCache.put(base_id, newCount);
+			id += "__" + newCount.toString();
+		}
+		return id;
+	}
+	
 	public static String getId(NamedElement element) {
-		return getCorbaScopedId(element);
+		return makeUniqueId(getCorbaScopedId(element));
 	}
 
 	public static String getConnId(NamedElement dataSpace, NamedElement source, NamedElement port, NamedElement target, NamedElement node) {
-		return getScopedName(dataSpace) + "-to-" + source.getName() + "_" + port.getName() + "-at-" + node.getName() + "." + target.getName();
+		return makeUniqueId(getScopedName(dataSpace) + "-to-" + source.getName() + "_" + port.getName() + "-at-" + node.getName() + "." + target.getName());
 	}
 
 	public static String getFullyQualifiedName(NamedElement element) {
