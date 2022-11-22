@@ -70,8 +70,8 @@ DeploymentPlan mainTransformAxcioma(CCM::CCM_Deployment::DeploymentPlan deployme
 create DeploymentPlan findOrCreateDeploymentPlan(CCM::CCM_Deployment::DeploymentPlan deployment) :
     this.label.add(deployment.zdlAsNamedElement().name) ->
     this.label.add(getPath(deployment) + deployment.zdlAsNamedElement().name) ->
-    this.uuid.add(getUUID()) ->
-    resetIdCache()
+    resetIdCache() ->
+    this.uuid.add(deployment.getTopLevelId())
     ;
 
 Void resetIdCache() :

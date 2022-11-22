@@ -126,6 +126,10 @@ public class CDPXtendUtils {
 		return "_" + UUID.randomUUID().toString();
 	}
 	
+	public static String getTopLevelId(NamedElement element) {
+		return getId(element);
+	}
+	
 	// generatedIdsCache contains a map from generated ids to the number of times each has been generated
 	private static Map<String, Integer> generatedIdsCache;
 	
