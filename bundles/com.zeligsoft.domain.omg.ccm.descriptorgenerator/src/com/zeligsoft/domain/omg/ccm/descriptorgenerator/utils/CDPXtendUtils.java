@@ -157,6 +157,10 @@ public class CDPXtendUtils {
 		return makeUniqueId(getCorbaScopedId(element));
 	}
 
+	public static String getIdWithSuffix(NamedElement partDP, String suffix) {
+		return makeUniqueId(getCorbaScopedId(partDP) + "." + suffix);
+	}
+
 	public static String getConnId(NamedElement dataSpace, NamedElement source, NamedElement port, NamedElement target, NamedElement node) {
 		return makeUniqueId(getScopedName(dataSpace) + "-to-" + source.getName() + "_" + port.getName() + "-at-" + node.getName() + "." + target.getName());
 	}

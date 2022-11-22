@@ -60,8 +60,11 @@ Void JavaSetAttribute(Object element, String attributeName, String attributeValu
 String getUUID() :
 	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.getUUID();
 
-cached String getId(Object element) :
+String getId(Object element) :
 	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.getId(org.eclipse.uml2.uml.NamedElement);
+
+String getIdWithSuffix(Object partDP, String suffix) :
+	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.getIdWithSuffix(org.eclipse.uml2.uml.NamedElement, java.lang.String);
 
 cached String getConnId(Object dataSpace, Object source, Object port, Object target, Object node) :
 	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.getConnId(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement);

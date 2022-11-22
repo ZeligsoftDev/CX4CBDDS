@@ -974,7 +974,7 @@ create InstanceDeploymentDescription findOrCreateServerSideConnectorFragment(Dep
 	let name = partDP.getConnectorFragmentScopedName(port) :	//partDP.getScopedName() + "." + port.porttype.name:
     let id = findOrCreateInterfacePortConnector(port.porttype, port.connectorType, deployment).id:
 	
-	this.JavaSetAttribute("id", partDP.getId()) ->
+	this.JavaSetAttribute("id", partDP.getIdWithSuffix(port.name)) ->
 	this.name.add(name) ->
 	this.node.add(node.name) ->
 	this.source.add(null) ->
@@ -1001,16 +1001,17 @@ create InstanceDeploymentDescription findOrCreateClientSideConnectorFragment(
     let clientProcessDP = getTargetPart(clientCompDP):
     let portConnectorType = facet.connectorType.name:
     let node = getTargetPart(clientProcessDP) :
-    let name = clientCompDP.getScopedName() + "." + receptacle.name
+    let suffix = receptacle.name
           + "_" + receptacle.connectorType.name + "_for_"
           + serverCompDP.getScopedName() + "." + facet.name :
+    let name = clientCompDP.getScopedName() + "." + suffix :
     let id = findOrCreateInterfacePortConnector(receptacle.porttype, receptacle.connectorType, deployment).id:
     
     trace0("Connectors", "Entering findOrCreateClientSideConnectorFragment") ->
     trace2("Connectors", "client/recept for %s/%s", clientCompDP.name, receptacle.name)->
     trace2("Connectors", "server/facet for %s/%s", serverCompDP.name, facet.name)->
     trace2("Connectors", "process/node %s/%s", clientProcessDP.name, node.name)->
-    this.JavaSetAttribute("id", clientCompDP.getId()) ->
+    this.JavaSetAttribute("id", clientCompDP.getIdWithSuffix(suffix)) ->
     this.name.add(name) ->
     this.node.add(node.name) ->
     this.source.add(null) ->
@@ -1313,7 +1314,7 @@ create ArtifactDeploymentDescription createArtifact(NamedElement inst, String su
 	this.source.add(null) ->
 	this.node.add(null) ->
 	this.location.add(inst.getCorbaScopedName() + "_" + suffix) ->
-	this.JavaSetAttribute("id", inst.getId() + "." + suffix);
+	this.JavaSetAttribute("id", inst.getIdWithSuffix(suffix));
 
 ArtifactDeploymentDescription visitArtifactExec(NamedElement inst) :
 	inst.createArtifact("exec");
@@ -1326,7 +1327,7 @@ create ArtifactDeploymentDescription createArtifact(ConnectorDef inst, String su
 	this.source.add(null) ->
 	this.node.add(null) ->
 	this.location.add(getCorbaScopedName(inst).replaceAll("_" + inst.name, "") + "_" + suffix) ->
-	this.JavaSetAttribute("id", inst.getId() + "." + suffix);
+	this.JavaSetAttribute("id", inst.getIdWithSuffix(suffix));
 
 ArtifactDeploymentDescription visitArtifactExec(ConnectorDef inst) :
 	inst.createArtifact("exec");
