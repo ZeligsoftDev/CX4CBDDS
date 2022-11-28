@@ -1070,7 +1070,7 @@ create MonolithicDeploymentDescription findOrCreateInterfacePortConnector(CXInte
 		componentFactoryParameter.add(intf.createProperty("COMPONENT_FACTORY", "create_", modifiedInterfaceName.first(), "_Connector_AMI4CCM_Connector_Impl")) ->
 		servantEntryPointParameter.add(intf.createProperty("SVNT_ENTRYPT", "create_", modifiedInterfaceName.first(), "_Connector_AMI4CCM_Connector_Servant"))	
 	} else if (portConnectorType == "CORBA4CCM_Connector") then {
-	    artifact.add(createArtifact(intf, "_cc")) ->
+	    artifact.add(createArtifact(intf, "cc")) ->
 	    componentFactoryParameter.add(intf.createProperty("COMPONENT_FACTORY", "create_", name, "_Impl")) ->
 	    servantEntryPointParameter.add(intf.createProperty("SVNT_ENTRYPT", "create_", name, "_Servant"))	   
 	}} ->
