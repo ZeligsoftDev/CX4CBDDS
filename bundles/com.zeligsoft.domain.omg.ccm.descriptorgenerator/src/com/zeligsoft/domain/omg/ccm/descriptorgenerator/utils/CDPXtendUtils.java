@@ -19,13 +19,16 @@ package com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.EnumerationLiteral;
@@ -122,9 +125,66 @@ public class CDPXtendUtils {
 	public static String getUUID() {
 		return "_" + UUID.randomUUID().toString();
 	}
+	
+	public static String getTopLevelId(NamedElement element) {
+		return getId(element);
+	}
+	
+	// generatedIdsCache contains a map from generated ids to the number of times each has been generated
+	private static Map<String, Integer> generatedIdsCache;
+	
+	public static void resetIdCache() {
+		generatedIdsCache = new HashMap<>();
+	}
+	
+	/**
+	 * Make a unique id out og a given base_id.
+	 * 
+	 * @param base_id - A String
+	 * @return The base_id if it has not been previously generated, or the base_id with a numeric suffix
+	 * representing the number of times the base_id has been generated before.
+	 */
+	public static String makeUniqueId(String base_id) {
+		String id = base_id;
+		Integer count = generatedIdsCache.get(base_id);
+		if (count == null) {
+			generatedIdsCache.put(base_id, 1);
+		} else {
+			Integer newCount = Integer.valueOf(count.intValue() + 1);
+			generatedIdsCache.put(base_id, newCount);
+			id += "__" + newCount.toString();
+		}
+		return id;
+	}
+	
+	public static String getId(NamedElement element) {
+		return makeUniqueId(getCorbaScopedId(element));
+	}
+
+	public static String getIdWithSuffix(NamedElement partDP, String suffix) {
+		return makeUniqueId(getCorbaScopedId(partDP) + "." + suffix);
+	}
+
+	public static String getConnId(NamedElement dataSpace, NamedElement source, NamedElement port, NamedElement target, NamedElement node) {
+		return makeUniqueId(getScopedName(dataSpace) + "-to-" + source.getName() + "_" + port.getName() + "-at-" + node.getName() + "." + target.getName());
+	}
+
+	public static String getFullyQualifiedName(NamedElement element) {
+		return element.getQualifiedName();
+	}
 
 	public static String getScopedName(NamedElement element) {
 		return getScopedName(element, false);
+	}
+
+	public static String getCorbaScopedId(NamedElement element) {
+		if (ZDLUtil.isZDLConcept(element, CXDomainNames.CXNAMED_ELEMENT)
+				|| ZDLUtil.isZDLConcept(element,
+						CCMNames.MONOLITHIC_IMPLEMENTATION)) {
+			return getScopedName(element, true);
+		} else {
+			return getScopedName(element, false);
+		}
 	}
 
 	public static String getCorbaScopedName(NamedElement element) {
