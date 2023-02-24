@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.compare.rcp.ui.accessorFactory">
+      <factory
+            class="com.zeligsoft.domain.dds4ccm.ui.compare.internal.contentmergeviewer.accessor.factory.impl.DDS4CCMContainementReferenceChangeAccessorFactory"
+            ranking="20">
+      </factory>
+      <factory
+            class="com.zeligsoft.domain.dds4ccm.ui.compare.internal.contentmergeviewer.accessor.factory.impl.DDS4CCMMatchAccessorFactory"
+            ranking="20">
+      </factory>
+   </extension>
+
+</plugin>
