@@ -58,3 +58,8 @@ private Void JavaInspect( int condition, Object obj ) :
 private Object JavaDebugObj( Object obj, String msg ) :
     JAVA com.zeligsoft.cx.codegen.internal.OawDebug.debug( java.lang.Object, java.lang.String )
 ;
+
+String getNameOrId( Object obj ) :
+    JAVA com.zeligsoft.cx.codegen.internal.OawDebug.getNameOrId( java.lang.Object )
+;
+

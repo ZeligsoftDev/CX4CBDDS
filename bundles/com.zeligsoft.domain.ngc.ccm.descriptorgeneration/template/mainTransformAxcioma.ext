@@ -421,6 +421,7 @@ Void makeDDS4CCMConnectorFragment(DeploymentPart source, DeploymentPart target, 
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
 
 	Debug(null, "            Void makeDDS4CCMConnectorFragment(DeploymentPart source = " + source.name + ", DeploymentPart target = " + target.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ", DataSpace dataSpace = " + dataSpace.name + ", InterfacePort sourcePort = " + sourcePort.name + ", CCMConnector origConn = " + getNameOrId(origConn) + " ); idd = " + fragmentInstance.id) ->
+
 	// For the DDS Connector that connects them, for each provides and requires, create a connection where one endpoint is
 	// the facet/recept on the component, and the other is the connector fragment we just created.
 	// source is the component we are connecting to. 
