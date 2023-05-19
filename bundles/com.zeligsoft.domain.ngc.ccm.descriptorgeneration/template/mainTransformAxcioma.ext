@@ -54,7 +54,7 @@ DeploymentPlan mainTransformAxcioma(CCM::CCM_Deployment::DeploymentPlan deployme
 	let homeInstances = deployment.allocation.deployed.select( e | e.modelElement.metaType.toString() == "CCM::CCM_Implementation::HomeInstance") : 
 	let connectors = deployment.part.modelElement.typeSelect(DataSpace) :
 	let parts = deployment.part.modelElement.typeSelect(CCMPart):
-	deployment.Debug("[DEBUG] DeploymentPlan cdp::mainTransformAxcioma(CCM::CCM_Deployment::DeploymentPlan deployment)") ->
+	deployment.Debug("[DEBUG] DeploymentPlan cdp::mainTransformAxcioma(CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ")") ->
 	enableTrace("RegisterNaming") ->
 	storeGlobalVar("modelType",modelType) ->
     plan.createLocalityManagerElements() ->
@@ -358,17 +358,21 @@ MonolithicImplementation getComponentPartImplementationForHomeInstance(Deploymen
 	componentPart.getSelectedImplementation(); 
 	
 Void createInstances(DataSpace dataSpace, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment) :
+	dataSpace.Debug("Void createInstances(DataSpace dataSpace = " + dataSpace.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + "); ") ->
 	visit(dataSpace, plan, deployment, dataSpace.zdlAsProperty().eContainer);
 	
 Void visit(DataSpace dataSpace, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, AssemblyImplementation assembly ) :
+	dataSpace.Debug("Void visit(DataSpace dataSpace = " + dataSpace.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ", AssemblyImplementation assembly = " + assembly.name + "); ") ->
 	assembly.connector.select( c | c.end.zdlAsConnectorEnd().role.contains(dataSpace)).visit(dataSpace, plan, deployment, dataSpace);
 	
 Void visit(CCMConnector connector, DataSpace dataSpace, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, Object expansionObject) :
+	connector.Debug("Void visit(CCMConnector connector = " + getNameOrId(connector) + ", DataSpace dataSpace = " + dataSpace.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment" + deployment.name + ", Object expansionObject" + expansionObject.toString() + "); ") ->
 	visit(connector, dataSpace, plan, deployment, expansionObject, connector);
 	
 Void visit(CCMConnector connector, DataSpace dataSpace, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, Object expansionObject, CCMConnector origConn) :
 	let compPart = connector.end.reject(e | e.partWithPort == null).partWithPort.first() :
 	let deploymentTarget = deployment.allocation.select(e | e.deployed.modelElement.contains(compPart)) :
+	deploymentTarget.Debug("Void visit(CCMConnector connector = " + getNameOrId(connector) + ", DataSpace dataSpace = " + dataSpace.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ", Object expansionObject = " + expansionObject.toString() + ", CCMConnector origConn = " + getNameOrId(origConn) + "); ") ->
 	if( deploymentTarget.size == 0) then {
 		// Assembly. Iterate into the assembly and generate the instances for every connected leaf component.
 		let assembly_impl = getAssembly(compPart.definition) :
@@ -379,6 +383,7 @@ Void visit(CCMConnector connector, DataSpace dataSpace, DeploymentPlan plan, CCM
 		// Leaf. Generate DDS4CCM fragments for every deployed instance of this part.
 		let compPort = connector.end.reject(e | e.partWithPort == null).port.first() :
 		let origConnPart = origConn.end.reject(e | e.partWithPort == null).partWithPort.first() : // original CCMPart in the top-level connection
+		deploymentTarget.Debug("compPort = " + compPort.name + " origConnPart = " + origConnPart.name) ->
 		deploymentTarget.select( dt | dt.deployed.select(dep | dep.modelElement == compPart).select( part | part.hasAncestor(origConnPart)).createDDS4CCMConnectorFragmentHelper(dt.deployedOn, plan, deployment, dataSpace, compPort, origConn))
 	};
 
@@ -401,6 +406,8 @@ Void createDDS4CCMConnectorFragmentHelper(DeploymentPart source, DeploymentPart 
 	let fragmentInstance = createDDS4CCMConnectorFragmentHelper(source, target, plan, deployment, dataSpace ) :
 	let sourceSN = source.getScopedName() : 
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
+
+	source.Debug("Void createDDS4CCMConnectorFragmentHelper(DeploymentPart source = " + source.name + ", DeploymentPart target = " + target.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ", DataSpace dataSpace = " + dataSpace.name + ", InterfacePort sourcePort = " + sourcePort.name + ", CCMConnector origConn = " + getNameOrId(origConn) + " )") ->
 		
 	// For the DDS Connector that connects them, for each provides and requires, create a connection where one endpoint is
 	// the facet/recept on the component, and the other is the connector fragment we just created.
@@ -414,6 +421,7 @@ create InstanceDeploymentDescription createDDS4CCMConnectorFragmentHelper(Deploy
 	let dataSpaceSN = dataSpace.connectorType.getCorbaScopedName() :
 	let id = visit(dataSpace.connectorType, plan).id :
 	let dataSpaceDP = deployment.part.select( part | part.modelElement == dataSpace).selectFirst( part | part.sameLocalAssembly(source)) :
+	idd.Debug("create InstanceDeploymentDescription createDDS4CCMConnectorFragmentHelper(DeploymentPart source = " + source.name + ", DeploymentPart target = " + target.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ", DataSpace dataSpace = " + dataSpace.name + " )") ->
 	idd.JavaSetAttribute("id", dataSpace.getConnId(source,getPerPortDP(source, dataSpace),target,node)) ->
 	idd.name.add(dataSpace.getScopedName() + "_to_" + source.name + "@" + node.name + "." + target.name) ->
 	idd.node.add(node.name) ->

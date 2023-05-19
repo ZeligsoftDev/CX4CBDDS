@@ -17,8 +17,14 @@
 package com.zeligsoft.cx.codegen.internal;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.uml2.uml.NamedElement;
 
 public class OawDebug {
 
@@ -160,5 +166,76 @@ public class OawDebug {
 			System.out.println(b.toString());
 		}
 		return l;
+	}
+	
+	public static String getNameOrId(Object obj) {
+		String nameOrId = "_unknown_";
+//		System.out.println("getNameOrId 1: " + obj.toString());
+		assert obj != null;
+		boolean found = false;
+		if (obj instanceof EObject) {
+//			System.out.println("getNameOrId 2: " + obj.toString());
+			EObject eObj = (EObject) obj;
+			for (EAttribute attribute : eObj.eClass().getEAllAttributes()) {
+				if ("name".equals(attribute.getName())) {
+					nameOrId = (String) eObj.eGet(attribute);
+					found = true;
+					break;
+				}
+			}
+			if (!found && eObj instanceof NamedElement) {
+//				System.out.println("getNameOrId 3: " + obj.toString());
+				NamedElement namedElement = (NamedElement) eObj;
+				nameOrId = namedElement.getName();
+				found = true;
+			}
+			if (!found && eObj instanceof ENamedElement) {
+//				System.out.println("getNameOrId 4: " + obj.toString());
+				ENamedElement eNamedElement = (ENamedElement) eObj;
+				nameOrId = eNamedElement.getName();
+				found = true;
+			}
+		}
+		if (!found) {
+//			System.out.println("getNameOrId 5: " + obj.toString());
+
+			for (Class<?> klass = obj.getClass(); !found && klass != null; klass = klass.getSuperclass()) {
+//				System.out.println("getNameOrId 6: " + klass.getName());
+				Method methods[] = klass.getDeclaredMethods();
+				for (Method method : methods) {
+//					System.out.println("getNameOrId 7: " + method.getName());
+					if ("getName".equals(method.getName())) {
+						try {
+							nameOrId = (String) method.invoke(obj);
+							found = true;
+						} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						break;
+					}
+				}
+			}
+			if (!found) {
+//				System.out.println("getNameOrId 8: " + obj.toString());
+				Class<?> klass = obj.getClass(); 
+				Field fields[] = klass.getFields();
+				for (Field field : fields) {
+//					System.out.println("getNameOrId 9: " + field.getName());
+					if ("name".equals(field.getName())) {
+						try {
+							nameOrId = (String) field.get(obj);
+							found = true;
+						} catch (IllegalArgumentException | IllegalAccessException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						break;
+					}
+				}
+			}
+		}
+//		System.out.println("getNameOrId 10: " + nameOrId);
+		return nameOrId;
 	}
 }

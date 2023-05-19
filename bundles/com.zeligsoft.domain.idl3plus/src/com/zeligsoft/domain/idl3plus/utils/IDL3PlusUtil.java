@@ -1005,7 +1005,7 @@ public class IDL3PlusUtil {
 			ConnectorEnd otherEnd = IDL3PlusUtil.getOtherEnd(port, ccmPart);
 			// While the other end is a border port, and not a dataspace, go up until we
 			// find one
-			while (otherEnd == null || isBorderPort(otherEnd)) {
+			while (otherEnd != null && isBorderPort(otherEnd)) {
 				// Here port is a delegated port
 				// Get the parent deployment part of the current part
 				deploymentPart = ZDeploymentUtil.getParentPart(deploymentPart);

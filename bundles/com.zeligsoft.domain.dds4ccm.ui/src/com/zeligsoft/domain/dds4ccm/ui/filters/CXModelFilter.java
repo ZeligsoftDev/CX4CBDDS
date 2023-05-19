@@ -109,7 +109,7 @@ public class CXModelFilter extends ViewerFilter {
 		}
 
 		// filter out CX Domain models
-		if (eObject.eResource() != null && domain.isReadOnly(eObject.eResource()) && ZDLUtil.isZDLConcept(eObject, ZDLNames.DOMAIN_MODEL)) {
+		if (eObject != null && eObject.eResource() != null && domain != null && domain.isReadOnly(eObject.eResource()) && ZDLUtil.isZDLConcept(eObject, ZDLNames.DOMAIN_MODEL)) {
 			return false;
 		}
 
