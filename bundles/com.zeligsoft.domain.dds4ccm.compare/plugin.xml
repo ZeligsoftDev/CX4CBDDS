@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.compare.rcp.merger">
+      <merger
+            class="com.zeligsoft.domain.dds4ccm.compare.DDS4CCMReferenceChangeMerger"
+            ranking="30">
+      </merger>
+   </extension>
+
+</plugin>

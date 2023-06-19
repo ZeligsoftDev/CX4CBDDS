@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.zeligsoft.domain.dds4ccm.compare;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.zeligsoft.domain.dds4ccm.compare.Activator
+Bundle-Vendor: %providerName
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.compare.rcp;bundle-version="2.5.2",
+ org.eclipse.emf.compare.uml2;bundle-version="2.6.1",
+ com.google.guava;bundle-version="27.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Automatic-Module-Name: com.zeligsoft.domain.dds4ccm.compare
+Bundle-ActivationPolicy: lazy
