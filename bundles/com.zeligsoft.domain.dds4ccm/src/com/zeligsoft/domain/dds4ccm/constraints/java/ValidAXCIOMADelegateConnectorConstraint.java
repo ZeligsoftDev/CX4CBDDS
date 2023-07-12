@@ -33,7 +33,7 @@ public class ValidAXCIOMADelegateConnectorConstraint extends ValidDelegateConnec
 
 	@Override
 	public IStatus validate(IValidationContext ctx) {
-		// TODO Auto-generated method stub
+		System.out.println("[DEBUG][EPP] new ValidAXCIOMADelegateConnectorConstraint");
 		return super.validate(ctx);
 	}
 }
