@@ -407,6 +407,13 @@ endif&#xD;
           <body>com.zeligsoft.domain.dds4ccm.constraints.java.ValidExternalReferenceConstraint</body>
         </specification>
       </ownedRule>
+      <ownedRule xmi:type="uml:Constraint" xmi:id="_VDo0cCDuEe6LLKuCwq_CEA" name="valid_axcioma_delegate_connector">
+        <constrainedElement xmi:type="uml:Class" href="pathmap://CCM_DOMAIN/CCM.uml#_Sbi74BWYEd-iXJ2fHwNJGg"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_VDuUACDuEe6LLKuCwq_CEA">
+          <language>JAVA</language>
+          <body>com.zeligsoft.domain.dds4ccm.constraints.java.ValidAXCIOMADelegateConnectorConstraint</body>
+        </specification>
+      </ownedRule>
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_9-4P0OR3EeCaze562T5Rgw" client="_fP0CMEDSEd-VnJuJyqILLA" supplier="_4JyrwOR3EeCaze562T5Rgw"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_TQsi0B9sEeGEWf0BDHdksQ" client="_fP0CMEDSEd-VnJuJyqILLA">
@@ -517,4 +524,7 @@ endif&#xD;
   <zdl:DomainConcept xmi:id="_OR86QAPCEe2G86ayG7vqfA" base_Class="_LeqTQAPCEe2G86ayG7vqfA" iconURI="../icons/obj16/domain_depl.gif"/>
   <zdl:DomainGeneralization xmi:id="_hCEKUAPCEe2G86ayG7vqfA" base_Generalization="_f4FqgAPCEe2G86ayG7vqfA"/>
   <zdl:DomainReference xmi:id="_JUynQAPDEe2G86ayG7vqfA" base_Association="_C31K4APDEe2G86ayG7vqfA"/>
+  <zdl:ExternalDomainConstraint xmi:id="_XNBi0CDuEe6LLKuCwq_CEA" severity="error" message="%_mesg_DDS4CCM__Constraints__valid_axcioma_delegate_connector" id="com.zeligsoft.domain.dds4ccm.Constraints.valid_axcioma_delegate_connector" base_Constraint="_VDo0cCDuEe6LLKuCwq_CEA">
+    <redefinedConstraint xmi:type="zdl:DomainConstraint" href="pathmap://CCM_DOMAIN/CCM.uml#_TlAggI9cEeyjLubsxp6Fjg"/>
+  </zdl:ExternalDomainConstraint>
 </xmi:XMI>
