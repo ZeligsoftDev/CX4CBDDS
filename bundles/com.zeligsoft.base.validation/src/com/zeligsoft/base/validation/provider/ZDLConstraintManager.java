@@ -188,6 +188,46 @@ public class ZDLConstraintManager {
 	}
 	
 	/**
+	 * Removes all constraints redefined by external domain constraints
+	 * 
+	 * @param constraintConcept
+	 * @param block
+	 * @param domainResult
+	 */
+	public void removeAllRedefinedConstraints(Profile context, Class concept,
+			Collection<IModelConstraint> domainResult) {
+		for (Package block : ZDLUtil.getSourceDomainBlocks(context)) {
+			removeRedefinedConstraints(concept, block, domainResult);
+		}
+	}
+
+	/**
+	 * Removes constraints redefined by external domain constraints
+	 * 
+	 * @param constraintConcept
+	 * @param block
+	 * @param domainResult
+	 */
+	protected void removeRedefinedConstraints(Class constraintConcept, Package block,
+			Collection<IModelConstraint> domainResult) {
+		List<IModelConstraint> thisConceptConstraints = conceptConstraints.get(constraintConcept.getQualifiedName());
+		Collection<Constraint> domainBlockConstraints = 
+				ZDLUtil.getObjectsByConcept(
+					block.getOwnedRules(), ZDLNames.EXTERNAL_DOMAIN_CONSTRAINT);
+		for (Constraint next : domainBlockConstraints) {
+			for (Constraint redefined : getRedefinedConstraints(next)) {
+				String redefinedId = getID(redefined);
+				if (redefinedId != null) {
+					removeConstraint(domainResult, redefinedId);
+					if (thisConceptConstraints != null) {
+						removeConstraint(thisConceptConstraints, redefinedId);
+					}
+				}
+			}
+		}
+	}
+	
+	/**
 	 * Cache all of the constraints in the given domain block.
 	 * 
 	 * @param block
