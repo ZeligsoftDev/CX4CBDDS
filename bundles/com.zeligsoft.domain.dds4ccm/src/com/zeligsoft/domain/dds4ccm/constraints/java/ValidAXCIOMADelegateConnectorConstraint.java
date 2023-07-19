@@ -19,28 +19,16 @@ package com.zeligsoft.domain.dds4ccm.constraints.java;
 import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
-import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ConnectorEnd;
-import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.Model;
 
 import com.zeligsoft.base.zdl.util.ZDLUtil;
-import com.zeligsoft.domain.dds4ccm.Activator;
 import com.zeligsoft.domain.dds4ccm.ConnectorType;
-import com.zeligsoft.domain.dds4ccm.DDS4CCMPreferenceConstants;
-import com.zeligsoft.domain.dds4ccm.utils.ConnectorTypeUtility;
-import com.zeligsoft.domain.idl3plus.IDL3PlusNames;
-import com.zeligsoft.domain.idl3plus.api.Connectors.ConnectorDef;
 import com.zeligsoft.domain.omg.ccm.CCMNames;
 import com.zeligsoft.domain.omg.ccm.constraints.java.ValidDelegateConnectorConstraint;
 import com.zeligsoft.domain.zml.util.ZMLMMNames;
-
-import dds4ccm.ComponentInterface;
 
 /**
  * @author eposse
@@ -69,6 +57,10 @@ public class ValidAXCIOMADelegateConnectorConstraint extends ValidDelegateConnec
 				EObject port2 = end2.getRole();
 				if (port1 != null && ZDLUtil.isZDLConcept(port1, CCMNames.INTERFACE_PORT) && port2 != null
 						&& ZDLUtil.isZDLConcept(port2, CCMNames.INTERFACE_PORT)) {
+					if (!hasAMI4CCMConnectorType(port1) && !hasCORBA4CCMConnectorType(port1)
+							&& !hasAMI4CCMConnectorType(port2) && !hasCORBA4CCMConnectorType(port2)) {
+						return super.validate(ctx);
+					}
 					if (!validConnectorTypeEnds(end1, end2) && !validConnectorTypeEnds(end2, end1)) {
 						return ctx.createFailureStatus("Invalid AXCIOMA connector ends");
 					}
@@ -82,9 +74,9 @@ public class ValidAXCIOMADelegateConnectorConstraint extends ValidDelegateConnec
 	protected static boolean validConnectorTypeEnds(ConnectorEnd connectorEnd1, ConnectorEnd connectorEnd2) {
 		EObject port1 = connectorEnd1.getRole();
 		EObject port2 = connectorEnd2.getRole();
-		if (!isBorderConnectorEnd(connectorEnd1)) {
-			if (!isBorderConnectorEnd(connectorEnd2)) {
-				if (isReceptacle(port1) && isFacet(port2)
+		if (!isDelegateConnectorEnd(connectorEnd1)) {
+			if (!isDelegateConnectorEnd(connectorEnd2)) {
+				if (isReceptacle(port1) && isFacet(port2) 
 						&& (hasAMI4CCMConnectorType(port1) || hasCORBA4CCMConnectorType(port1))
 						&& hasCORBA4CCMConnectorType(port2))
 					return true;
@@ -95,7 +87,7 @@ public class ValidAXCIOMADelegateConnectorConstraint extends ValidDelegateConnec
 					if (hasCORBA4CCMConnectorType(port1) && hasCORBA4CCMConnectorType(port2))
 						return true;
 				} else if (isFacet(port1) && isFacet(port2)) {
-					if (hasCORBA4CCMConnectorType(port1) && hasCORBA4CCMConnectorType(port2))
+					if (hasCORBA4CCMConnectorType(port1) && !hasCORBA4CCMConnectorType(port2))
 						return true;
 				}
 			}
@@ -103,29 +95,7 @@ public class ValidAXCIOMADelegateConnectorConstraint extends ValidDelegateConnec
 		return false;
 	}
 
-//	protected static boolean validConnectorTypeEnds(EObject port1, EObject port2) {
-//		if (!isBorderPort(port1)) {
-//			if (!isBorderPort(port2)) {
-//				if (isReceptacle(port1) && isFacet(port2)
-//						&& (hasAMI4CCMConnectorType(port1) || hasCORBA4CCMConnectorType(port1))
-//						&& hasCORBA4CCMConnectorType(port2))
-//					return true;
-//			} else {
-//				if (isReceptacle(port1) && isReceptacle(port2)) {
-//					if (hasAMI4CCMConnectorType(port1) && hasAMI4CCMConnectorType(port2))
-//						return true;
-//					if (hasCORBA4CCMConnectorType(port1) && hasCORBA4CCMConnectorType(port2))
-//						return true;
-//				} else if (isFacet(port1) && isFacet(port2)) {
-//					if (hasCORBA4CCMConnectorType(port1) && hasCORBA4CCMConnectorType(port2))
-//						return true;
-//				}
-//			}
-//		}
-//		return false;
-//	}
-//
-	protected static boolean isBorderConnectorEnd(ConnectorEnd connectorEnd) {
+	protected static boolean isDelegateConnectorEnd(ConnectorEnd connectorEnd) {
 		return connectorEnd.getPartWithPort() == null;
 	}
 
