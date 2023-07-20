@@ -87,7 +87,7 @@ public class ValidAXCIOMADelegateConnectorConstraint extends ValidDelegateConnec
 					if (hasCORBA4CCMConnectorType(port1) && hasCORBA4CCMConnectorType(port2))
 						return true;
 				} else if (isFacet(port1) && isFacet(port2)) {
-					if (hasCORBA4CCMConnectorType(port1) && !hasCORBA4CCMConnectorType(port2))
+					if (hasCORBA4CCMConnectorType(port1) && hasCORBA4CCMConnectorType(port2))
 						return true;
 				}
 			}
