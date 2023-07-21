@@ -74,7 +74,10 @@ public class ZDLConstraintProvider
 						result.addAll(mgr.getExternalConstraints(p, concept));
 					}
 				}
+				// Remove redefined constraints
+				mgr.removeAllRedefinedConstraints(p, concept, result);
 			}
+			
 		}
 
 		return result;
