@@ -20,13 +20,9 @@ http://www.apache.org/licenses/LICENSE-2.0
    </license>
 
    <requires>
-      <!-- The version number here is critical.
-        It is the version Papyrus feature (org.eclipse.papyrus.uml.tools.feature) we are patching
-        -->
       <import feature="org.eclipse.papyrus.uml.properties.feature" version="3.0.0.202006100749" patch="true"/>
    </requires>
 
-   <!-- Here, we include all the plug-ins we are replacing -->
    <plugin
          id="org.eclipse.papyrus.uml.properties"
          download-size="0"
