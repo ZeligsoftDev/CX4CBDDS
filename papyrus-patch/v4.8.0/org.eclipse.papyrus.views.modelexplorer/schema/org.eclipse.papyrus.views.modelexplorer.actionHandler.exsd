@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.papyrus.views.modelexplorer" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.eclipse.papyrus.views.modelexplorer" id="org.eclipse.papyrus.views.modelexplorer.actionHandler" name="ActionHandler"/>
+      </appinfo>
+      <documentation>
+         This extension point allows adding action in the contextual menu of the model explorer
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element deprecated="true" />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="customAction"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="customAction">
+      <annotation>
+         <appinfo>
+            <meta.element deprecated="true"/>
+         </appinfo>
+      </annotation>
+      <complexType>
+         <attribute name="actionId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  registered action identifier
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="actionHandler" type="string" use="required">
+            <annotation>
+               <documentation>
+                  implement the action handler factory to add your custom actions
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.papyrus.views.modelexplorer.factory.IActionHandlerFactory"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="afterAction" type="string">
+            <annotation>
+               <documentation>
+                  fill the action id after you want to insert yours
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="needSeparator" type="boolean" use="default" value="false">
+            <annotation>
+               <documentation>
+                  Add a separator before your action(s) if needed
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         org.eclipse.papyrus.navigator.factory.DefaultEMFActionsFactory adds default EMF actions in model explorer.
+See registered extension org.eclipse.papyrus.navigator.actionHandler
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         The class must implement interface org.eclipse.papyrus.navigator.factory.IActionHandlerFactory
+Deprecrated extension point. Use org.eclipse.ui.commands, org.eclipse.ui.menus, org.eclipse.ui.binding instead
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         none
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         /*****************************************************************************
+         * Copyright (c) 2011 CEA LIST.
+         *
+         *    
+         * All rights reserved. This program and the accompanying materials
+         * are made available under the terms of the Eclipse Public License 2.0
+         * which accompanies this distribution, and is available at
+         * https://www.eclipse.org/legal/epl-2.0/
+         *
+         * SPDX-License-Identifier: EPL-2.0
+         *
+         * Contributors:
+         * CEA LIST - Initial API and implementation
+         *
+         *****************************************************************************/
+      </documentation>
+   </annotation>
+
+</schema>
