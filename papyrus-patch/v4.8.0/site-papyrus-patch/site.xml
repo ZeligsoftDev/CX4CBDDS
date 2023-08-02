@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
+   <feature url="features/com.zeligsoft.papyruspatch_2.5.0.qualifier.jar" id="com.zeligsoft.papyruspatch" version="2.5.0.qualifier">
+      <category name="com.zeligsoft.cx.papyruspatch"/>
+   </feature>
+   <feature url="features/com.zeligsoft.papyrus.views.modelexplorer.patch.feature_2.5.0.qualifier.jar" id="com.zeligsoft.papyrus.views.modelexplorer.patch.feature" version="2.5.0.qualifier" patch="true">
+      <category name="com.zeligsoft.cx.papyruspatch"/>
+   </feature>
    <category-def name="com.zeligsoft.cx.papyruspatch" label="Papyrus Patch (required)">
       <description>
          Provides Papyrus patches for CX4CBDDS.
       </description>
    </category-def>
-
-   <feature id="com.zeligsoft.papyruspatch" url="features/com.zeligsoft.papyruspatch_2.5.0.qualifier.jar" version="2.5.0.qualifier">
-      <category name="com.zeligsoft.cx.papyruspatch"/>
-   </feature>
-
 </site>
