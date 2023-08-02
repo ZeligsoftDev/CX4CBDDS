@@ -55,7 +55,6 @@ public class Activator extends AbstractUIPlugin {
 	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
-		System.out.println("[DEBUG][EPP] Model Explorer patch for Issue #466");
 		plugin = this;
 		log = new LogHelper(plugin);
 		EMFEditPlugin.getComposedAdapterFactoryDescriptorRegistry();
