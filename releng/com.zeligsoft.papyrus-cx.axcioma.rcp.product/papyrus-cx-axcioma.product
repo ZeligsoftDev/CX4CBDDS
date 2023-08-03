@@ -103,7 +103,8 @@
       <feature id="com.zeligsoft.papyrus-cx.axcioma.rcp.feature" installMode="root"/>
       <feature id="org.eclipse.wst.xml_ui.feature" installMode="root"/>
       <feature id="org.eclipse.equinox.core.sdk" installMode="root"/>
-      <feature id="com.zeligsoft.papyruspatch" installMode="root"/>
+      <feature id="com.zeligsoft.papyrus.uml.properties.patch.feature" installMode="root"/>
+      <feature id="com.zeligsoft.papyrus.views.modelexplorer.patch.feature" installMode="root"/>
    </features>
 
    <configurations>
@@ -115,9 +116,9 @@
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.update.configurator" autoStart="false" startLevel="3" />
       <property name="org.eclipse.update.reconcile" value="false" />
-      <property name="osgi.requiredJavaVersion" value="1.8" />
-      <property name="osgi.instance.area.default" value="@user.home/workspace-papyrus-cx" />
       <property name="osgi.bundles.defaultStartLevel" value="4" />
+      <property name="osgi.instance.area.default" value="@user.home/workspace-papyrus-cx" />
+      <property name="osgi.requiredJavaVersion" value="1.8" />
    </configurations>
 
    <preferencesInfo>
