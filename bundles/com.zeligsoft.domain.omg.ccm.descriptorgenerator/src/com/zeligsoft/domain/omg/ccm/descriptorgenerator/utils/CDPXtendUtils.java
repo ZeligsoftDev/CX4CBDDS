@@ -395,4 +395,24 @@ public class CDPXtendUtils {
 		}
 		return UML2Util.EMPTY_STRING;
 	}
+	
+	public static String listToString(List list, Boolean breakLines) {
+		final boolean breaklines = breakLines.booleanValue();
+		final String INDENT = "    ";
+		StringBuilder builder = new StringBuilder();
+		builder.append('[');
+		if (breaklines) builder.append('\n');
+		int N = list.size();
+		int i = 0;
+		for (Object item: list) {
+			if (breaklines) builder.append(INDENT);
+			builder.append(item.toString());
+			if (i < N - 1) builder.append(", ");
+			if (breaklines) builder.append('\n');
+			i++;
+		}
+		builder.append(']');
+		if (breaklines) builder.append('\n');
+		return builder.toString();
+	}
 }

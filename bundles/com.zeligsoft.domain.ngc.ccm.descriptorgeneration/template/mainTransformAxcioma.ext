@@ -54,16 +54,24 @@ DeploymentPlan mainTransformAxcioma(CCM::CCM_Deployment::DeploymentPlan deployme
 	let homeInstances = deployment.allocation.deployed.select( e | e.modelElement.metaType.toString() == "CCM::CCM_Implementation::HomeInstance") : 
 	let connectors = deployment.part.modelElement.typeSelect(DataSpace) :
 	let parts = deployment.part.modelElement.typeSelect(CCMPart):
-	deployment.Debug("[DEBUG] DeploymentPlan cdp::mainTransformAxcioma(CCM::CCM_Deployment::DeploymentPlan deployment)") ->
+	deployment.Debug("[DEBUG] DeploymentPlan cdp::mainTransformAxcioma(CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ")") ->
 	enableTrace("RegisterNaming") ->
 	storeGlobalVar("modelType",modelType) ->
     plan.createLocalityManagerElements() ->
 	// generates localityConstraints for deployed components and deployed containerProcesses 
+	Debug(plan, "==== Creating instances for container processes ====") ->
 	deployment.part.select( e | e.modelElement.metaType.toString() == "CCM::CCM_Deployment::ContainerProcess").select( e | e.isDeployed()).visitContainerProcess(deployment) -> // create locality constraints
-	instances.visit(deployment) -> // create component part instances, connector instances for non-local component ports and internal connections  
+	Debug(plan, "==== Creating component part instances, connector instances for non-local ports and internal connections ====") ->
+	instances.visit(deployment) -> // create component part instances, connector instances for non-local component ports and internal connections
+	Debug(plan, "==== Create external connections between already created connector instances ====") ->
 	instances.visitPartForExternalConnectons(deployment) -> // create external connections between already created connector instances
+	Debug(plan, "==== Create home instances ====") ->
 	homeInstances.visitHome(plan, deployment) ->
+	Debug(plan, "==== Create instances for DataSpace connector fragments ====") ->
+	Debug(plan, "Before connectors.createInstances; connectors = " + listToString(connectors, true)) ->
 	connectors.createInstances(plan, deployment) -> // create instances for DataSpace connector fragments
+	Debug(plan, "After connectors.createInstances") ->
+	Debug(plan, "==== Create connections ====") ->
 	deployment.part.select( part | part.topLevelAssembly()).select( part | part.createConnections(deployment, plan, part.modelElement)) ->
 	plan;
 
@@ -96,6 +104,7 @@ Void visit(ZMLMM::ZML_Deployments::Allocation self, DeploymentPlan deployment, L
 	self.deployed.modelElement.typeSelect(CCMPart).visit(deployment, node);
 
 Void visitContainerProcess(DeploymentPart process, CCM::CCM_Deployment::DeploymentPlan deployment ) :
+	Debug(process, "    Void visitContainerProcess(DeploymentPart process = " + getNameOrId(process) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + getNameOrId(deployment) + ")") ->
 	createPlanLocalityConstraint(process, deployment);
 
 create PlanLocality createPlanLocalityConstraint(DeploymentPart deploymentPart, CCM::CCM_Deployment::DeploymentPlan zDeployment ) :
@@ -109,9 +118,11 @@ create PlanLocality createPlanLocalityConstraint(DeploymentPart deploymentPart, 
 create InstanceDeploymentDescription createInstanceDeploymentDescription(DeploymentPart part, DeploymentPlan deployment) :
 	let partSN = part.getScopedName() :
 	let id = deployment.instance.selectFirst( i | i.name.first().matches(partSN)).id :
+	Debug(this, "        create InstanceDeploymentDescription createInstanceDeploymentDescription(DeploymentPart part = " + getNameOrId(part) + ", DeploymentPlan deployment = " + getNameOrId(deployment) + "); id = " + id) -> 
 	this.JavaSetAttribute("idref", id);
 	
 create InstanceDeploymentDescription createInstanceDeploymentDescription(InstanceDeploymentDescription instance) :
+	Debug(this, "        create InstanceDeploymentDescription createInstanceDeploymentDescription(InstanceDeploymentDescription instance = " + getNameOrId(instance) + "); id = " + instance.id) ->
 	this.JavaSetAttribute("idref", instance.id);
 
 create MonolithicDeploymentDescription visit(CCMComponent inst, DeploymentPlan deployment, CCM::CCM_Deployment::DeploymentPlan zDeployment) :
@@ -161,6 +172,7 @@ create MonolithicDeploymentDescription visit(ConnectorDef inst, DeploymentPlan d
 	let artiSvnt = visitArtifactSvnt(inst) :
 	let artiExecRef = artiExec.visitImplArtifact() :
 	let artiSvntRef = artiSvnt.visitImplArtifact() :
+	Debug(this, "    create MonolithicDeploymentDescription visit(ConnectorDef inst = " + getNameOrId(inst) + ", DeploymentPlan deployment = " + getNameOrId(deployment) + ")") ->
 	deployment.artifact.add(artiExec) ->
 	deployment.artifact.add(artiSvnt) ->
 	this.artifact.add(artiExecRef) ->
@@ -212,6 +224,7 @@ InstanceDeploymentDescription visit(DeploymentPart partDP, CCM::CCM_Deployment::
 		(
 			partDP.getSelectedImplementation().visit(deployment, zDeployment).id
 		) :	
+	Debug(id, "    InstanceDeploymentDescription visit(DeploymentPart partDP = " + getNameOrId(partDP) + ", CCM::CCM_Deployment::DeploymentPlan zDeployment = " + getNameOrId(zDeployment) + "); id = " + id) ->
 	interfacePortsGeneratingFragments.forAll(ifp | visitPortType(ifp, zDeployment)) ->
 	componentInstance.implementation.add(id.visitInstanceImpl(componentInstance)) ->
 	// trace0("RegisterNaming", "visit: BEFORE visitConfigProperty") ->
@@ -256,7 +269,7 @@ DeploymentPart getHomePart(CCM::CCM_Deployment::DeploymentPlan zDeployment, Home
 	
 Void visitConfigProperty(CXAttribute attribute, InstanceDeploymentDescription idd, DeploymentPart part ) :
 	let defaultSlots = createList(new java::lang::Object) :
-	attribute.Debug("      visitConfigProperty_1(CXAttribute attribute = " + attribute.name + ", ..., DeploymentPart part = " + part.name + ")") ->
+	attribute.Debug("            Void visitConfigProperty_1(CXAttribute attribute = " + attribute.name + ", ..., DeploymentPart part = " + part.name + ")") ->
 	defaultSlots.addAll(findDefaultSlot(attribute, part)) ->
 	if part.zdlAsProperty().defaultValue != null then
 	{
@@ -282,7 +295,7 @@ Void visitConfigProperty(CXAttribute attribute, InstanceDeploymentDescription id
 	
 Void visitConfigProperty(CCM::CCM_Target::Property property, InstanceDeploymentDescription idd, DeploymentPart part ) :
 	let defaultSlots = createList(new java::lang::Object) :
-	property.Debug("      visitConfigProperty_2(CCM::CCM_Target::Property property = " + property.name + ", ..., DeploymentPart part = " + part.name + ")") ->
+	property.Debug("            Void visitConfigProperty_2(CCM::CCM_Target::Property property = " + property.name + ", ..., DeploymentPart part = " + part.name + ")") ->
 	// check for and prevent double add of a property.
 	if(!idd.configProperty.name.exists(n | n == property.name)) then {
 		defaultSlots.addAll(findDefaultSlot(property, part)) ->
@@ -358,17 +371,21 @@ MonolithicImplementation getComponentPartImplementationForHomeInstance(Deploymen
 	componentPart.getSelectedImplementation(); 
 	
 Void createInstances(DataSpace dataSpace, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment) :
+	dataSpace.Debug("    Void createInstances(DataSpace dataSpace = " + dataSpace.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + "); ") ->
 	visit(dataSpace, plan, deployment, dataSpace.zdlAsProperty().eContainer);
 	
 Void visit(DataSpace dataSpace, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, AssemblyImplementation assembly ) :
+	dataSpace.Debug("        Void visit(DataSpace dataSpace = " + dataSpace.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ", AssemblyImplementation assembly = " + assembly.name + "); ") ->
 	assembly.connector.select( c | c.end.zdlAsConnectorEnd().role.contains(dataSpace)).visit(dataSpace, plan, deployment, dataSpace);
 	
 Void visit(CCMConnector connector, DataSpace dataSpace, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, Object expansionObject) :
+	connector.Debug("        Void visit_1(CCMConnector connector = " + getNameOrId(connector) + ", DataSpace dataSpace = " + dataSpace.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment" + deployment.name + ", Object expansionObject" + expansionObject.toString() + "); ") ->
 	visit(connector, dataSpace, plan, deployment, expansionObject, connector);
 	
 Void visit(CCMConnector connector, DataSpace dataSpace, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, Object expansionObject, CCMConnector origConn) :
 	let compPart = connector.end.reject(e | e.partWithPort == null).partWithPort.first() :
 	let deploymentTarget = deployment.allocation.select(e | e.deployed.modelElement.contains(compPart)) :
+	Debug(null, "        Void visit_2(CCMConnector connector = " + getNameOrId(connector) + ", DataSpace dataSpace = " + dataSpace.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ", Object expansionObject = " + expansionObject.toString() + ", CCMConnector origConn = " + getNameOrId(origConn) + "); ") ->
 	if( deploymentTarget.size == 0) then {
 		// Assembly. Iterate into the assembly and generate the instances for every connected leaf component.
 		let assembly_impl = getAssembly(compPart.definition) :
@@ -379,7 +396,8 @@ Void visit(CCMConnector connector, DataSpace dataSpace, DeploymentPlan plan, CCM
 		// Leaf. Generate DDS4CCM fragments for every deployed instance of this part.
 		let compPort = connector.end.reject(e | e.partWithPort == null).port.first() :
 		let origConnPart = origConn.end.reject(e | e.partWithPort == null).partWithPort.first() : // original CCMPart in the top-level connection
-		deploymentTarget.select( dt | dt.deployed.select(dep | dep.modelElement == compPart).select( part | part.hasAncestor(origConnPart)).createDDS4CCMConnectorFragmentHelper(dt.deployedOn, plan, deployment, dataSpace, compPort, origConn))
+//		Debug(null, "          compPort = " + compPort.name + " origConnPart = " + origConnPart.name) ->
+		deploymentTarget.select( dt | dt.deployed.select(dep | dep.modelElement == compPart).select( part | part.hasAncestor(origConnPart)).makeDDS4CCMConnectorFragment(dt.deployedOn, plan, deployment, dataSpace, compPort, origConn))
 	};
 
 /*
@@ -397,30 +415,33 @@ boolean hasAncestor(Void possibleChild, CCMPart ancestor ) :
  * connections correctly.
  * It is therefore up to the previous callstack to make sure it's iterating through assemblies properly.
  */
-Void createDDS4CCMConnectorFragmentHelper(DeploymentPart source, DeploymentPart target, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, DataSpace dataSpace, InterfacePort sourcePort, CCMConnector origConn ) :
-	let fragmentInstance = createDDS4CCMConnectorFragmentHelper(source, target, plan, deployment, dataSpace ) :
+Void makeDDS4CCMConnectorFragment(DeploymentPart source, DeploymentPart target, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, DataSpace dataSpace, InterfacePort sourcePort, CCMConnector origConn ) :
+	let fragmentInstance = createDDS4CCMConnectorFragment(source, target, plan, deployment, dataSpace, sourcePort, origConn ) :
 	let sourceSN = source.getScopedName() : 
 	let compInstance = plan.instance.selectFirst( i | i.name.first().matches(sourceSN)) :
-		
+
+	Debug(null, "            Void makeDDS4CCMConnectorFragment(DeploymentPart source = " + source.name + ", DeploymentPart target = " + target.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ", DataSpace dataSpace = " + dataSpace.name + ", InterfacePort sourcePort = " + sourcePort.name + ", CCMConnector origConn = " + getNameOrId(origConn) + " ); idd = " + fragmentInstance.id) ->
 	// For the DDS Connector that connects them, for each provides and requires, create a connection where one endpoint is
 	// the facet/recept on the component, and the other is the connector fragment we just created.
 	// source is the component we are connecting to. 
 	createConnectionsForDDS4CCMConnectorFragment(plan, sourcePort, compInstance, fragmentInstance, dataSpace, sourcePort.porttype, origConn);
-	
 
-create InstanceDeploymentDescription createDDS4CCMConnectorFragmentHelper(DeploymentPart source, DeploymentPart target, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, DataSpace dataSpace ) :
+create InstanceDeploymentDescription createDDS4CCMConnectorFragment(DeploymentPart source, DeploymentPart target, DeploymentPlan plan, CCM::CCM_Deployment::DeploymentPlan deployment, DataSpace dataSpace, InterfacePort sourcePort, CCMConnector origConn ) :
 	let node = deployment.allocation.selectFirst(e | e.deployed.contains(target)).deployedOn :
 	let idd = this : 
 	let dataSpaceSN = dataSpace.connectorType.getCorbaScopedName() :
 	let id = visit(dataSpace.connectorType, plan).id :
 	let dataSpaceDP = deployment.part.select( part | part.modelElement == dataSpace).selectFirst( part | part.sameLocalAssembly(source)) :
-	idd.JavaSetAttribute("id", dataSpace.getConnId(source,getPerPortDP(source, dataSpace),target,node)) ->
+	let perPortDP = getPerPortDP(source, sourcePort, dataSpace) :
+	Debug(null, "            create InstanceDeploymentDescription createDDS4CCMConnectorFragment(DeploymentPart source = " + source.name + ", DeploymentPart target = " + target.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ", DataSpace dataSpace = " + dataSpace.name + " )") ->
+	idd.JavaSetAttribute("id", dataSpace.getConnId(source,perPortDP,target,node)) ->
+	Debug(null, "              id = " + idd.id) ->
 	idd.name.add(dataSpace.getScopedName() + "_to_" + source.name + "@" + node.name + "." + target.name) ->
 	idd.node.add(node.name) ->
 	idd.source.add(null) ->
 	idd.implementation.add(id.visitInstanceImpl(idd)) ->
-	dataSpace.connectorType.zdlAsComponent().member.typeSelect(CXAttribute).visitDataSpaceProperty(idd, getPerPortDP(source, dataSpace), dataSpaceDP) ->
-	dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).visitDataSpaceProperty(idd, getPerPortDP(source, dataSpace), dataSpaceDP) ->
+	dataSpace.connectorType.zdlAsComponent().member.typeSelect(CXAttribute).visitDataSpaceProperty(idd, perPortDP, dataSpaceDP) ->
+	dataSpace.connectorType.zdlAsComponent().member.typeSelect(InterfacePort).visitDataSpaceProperty(idd, perPortDP, dataSpaceDP) ->
 	plan.instance.add(idd) ->
 	addInstanceToLocalityConstraint(
 		idd, 
@@ -433,8 +454,8 @@ boolean sameLocalAssembly(DeploymentPart dataSpaceDP, DeploymentPart componentDP
 		org.eclipse.uml2.uml.Property,
 		org.eclipse.uml2.uml.Property);
 
-DeploymentPart getPerPortDP(DeploymentPart part, DataSpace dataSpace) :
-	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.getPerPortDP(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Property);
+DeploymentPart getPerPortDP(DeploymentPart part, InterfacePort sourcePort, DataSpace dataSpace) :
+	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.getPerPortDP(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Property);
 
 /*
  * For an attribute on a dataspace, check if the deployment part has
@@ -444,7 +465,7 @@ DeploymentPart getPerPortDP(DeploymentPart part, DataSpace dataSpace) :
  */
 Void visitDataSpaceProperty(CXAttribute attribute, InstanceDeploymentDescription idd, DeploymentPart perPort, DeploymentPart dataSpace) :
 	let defaultSlots = createList(new java::lang::Object) :
-	attribute.Debug("visitDataSpaceProperty_1(CXAttribute attribute = " + attribute.name + ", ..., DeploymentPart perPort = " + perPort.name + ", DeploymentPart dataSpace = " + dataSpace.name + ")") ->
+	Debug(null, "                Void visitDataSpaceProperty_1(CXAttribute attribute = " + attribute.name + ", ..., DeploymentPart perPort = " + perPort.name + ", DeploymentPart dataSpace = " + dataSpace.name + ")") ->
 	defaultSlots.addAll(findDefaultSlot(attribute, dataSpace)) ->
 	if (perPort != null && perPort.zdlAsProperty().defaultValue != null && perPort.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == attribute) != null) then
 	{
@@ -474,19 +495,19 @@ Void visitDataSpaceProperty(CXAttribute attribute, InstanceDeploymentDescription
 	};
 	
 Void visitDataSpaceProperty(InterfacePort port, InstanceDeploymentDescription idd, DeploymentPart perPort, DeploymentPart dataSpace) :
-	port.Debug("visitDataSpaceProperty_2(InterfacePort port = " + port.name + ", ..., DeploymentPart perPort = " + perPort.name + ", DeploymentPart dataSpace = " + dataSpace.name + ")") ->
+	Debug(null, "                visitDataSpaceProperty_2(InterfacePort port = " + port.name + ", ..., DeploymentPart perPort = " + perPort.name + ", DeploymentPart dataSpace = " + dataSpace.name + ")") ->
 	if (!filterPort(perPort, port)) then 
 	{
 		port.porttype.ownedAttribute.visitDataSpaceProperty(port, idd, perPort, dataSpace)
 	};
 	
 Void visitDataSpaceProperty(CXAttribute attribute, InterfacePort port, InstanceDeploymentDescription idd, DeploymentPart perPort, DeploymentPart dataSpace ) :
-	port.Debug("visitDataSpaceProperty_3(CXAttribute attribute = " + attribute.name + ", InterfacePort port = " + port.name + ", ..., DeploymentPart perPort = " + perPort.name + ", DeploymentPart dataSpace = " + dataSpace.name + ")") ->
+	Debug(null, "                visitDataSpaceProperty_3(CXAttribute attribute = " + attribute.name + ", InterfacePort port = " + port.name + ", ..., DeploymentPart perPort = " + perPort.name + ", DeploymentPart dataSpace = " + dataSpace.name + ")") ->
 	if(perPort != null && perPort.zdlAsProperty().defaultValue != null && perPort.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == port) != null) then
 	{
 		let defaultSlots = createList(new java::lang::Object) :
 		let slot2 = perPort.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == port).value.first().zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == attribute) :
-		port.Debug("  case 1") ->
+//		port.Debug("  case 1") ->
 		defaultSlots.addAll(findDefaultSlot(attribute, port, dataSpace)) ->
 		slot2.visitConfigProperty(idd, defaultSlots).addPortPrefix(port)
 	}
@@ -495,14 +516,14 @@ Void visitDataSpaceProperty(CXAttribute attribute, InterfacePort port, InstanceD
 		let slot = dataSpace.zdlAsProperty().defaultValue.zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst
 			( slot | slot.definingFeature == port) :
 		let defaultSlots = createList(new java::lang::Object) :
-		port.Debug("  case 2") ->
+//		port.Debug("  case 2") ->
 		defaultSlots.addAll(findDefaultSlot(attribute, port, dataSpace)) ->
 		if( slot == null ) then 
 		{
-			port.Debug("    case 2.1 slot == null") ->
+//			port.Debug("    case 2.1 slot == null") ->
 			if( !defaultSlots.isEmpty ) then {
 				let defaultSlot = defaultSlots.get(0) :
-				port.Debug("      case 2.1.1 !defaultSlots.isEmpty") ->
+//				port.Debug("      case 2.1.1 !defaultSlots.isEmpty") ->
 				defaultSlots.remove(defaultSlot) ->
 				defaultSlot.visitConfigProperty(idd, defaultSlots).addPortPrefix(port)
 			}	
@@ -510,19 +531,19 @@ Void visitDataSpaceProperty(CXAttribute attribute, InterfacePort port, InstanceD
 		else 
 		{
 			let slot2 = slot.value.first().zdlAsInstanceValue().instance.zdlAsInstanceSpecification().slot.selectFirst( slot | slot.definingFeature == attribute) :
-			port.Debug("    case 2.2 slot != null") ->
+//			port.Debug("    case 2.2 slot != null") ->
 			slot2.visitConfigProperty(idd, defaultSlots).addPortPrefix(port)
 		} 
 	} 
 	else
 	{
 		let defaultSlots = createList(new java::lang::Object) :
-		port.Debug("  case 3") ->
+//		port.Debug("  case 3") ->
 		defaultSlots.addAll(findDefaultSlot(attribute, dataSpace)) ->
 		if( !defaultSlots.isEmpty ) then {
 				let defaultSlot = defaultSlots.get(0) :
-				port.Debug("    case 3.1 !defaultSlots.isEmpty") ->
-				port.Debug("      defaultSlots = " + defaultSlots) ->
+//				port.Debug("    case 3.1 !defaultSlots.isEmpty") ->
+//				port.Debug("      defaultSlots = " + defaultSlots) ->
 				defaultSlots.remove(defaultSlot) ->
 				defaultSlot.visitConfigProperty(idd, defaultSlots).addPortPrefix(port)
 		}
@@ -1462,6 +1483,7 @@ create ArtifactDeploymentDescription createLocalityManagerArtifact() :
 create InstanceDeploymentDescription createContainerProcessInstance(DeploymentPart process, CCM::CCM_Deployment::DeploymentPlan zDeployment) :
 	let node = zDeployment.allocation.selectFirst(a | a.deployed.contains(process)).deployedOn :
 	let properties = process.modelElement.zdlAsComponent().member.typeSelect(CCM::CCM_Target::Property) :
+	Debug(this, "        create InstanceDeploymentDescription createContainerProcessInstance(DeploymentPart process = " + getNameOrId(process) + ", CCM::CCM_Deployment::DeploymentPlan zDeployment = " + getNameOrId(zDeployment) + "); id = " + process.getId()) -> 
 	this.JavaSetAttribute("id", process.getId()) ->
 	this.name.add(process.name + "_ComponentServerInstance") ->
 	this.node.add(node.zdlAsNamedElement().name) ->
