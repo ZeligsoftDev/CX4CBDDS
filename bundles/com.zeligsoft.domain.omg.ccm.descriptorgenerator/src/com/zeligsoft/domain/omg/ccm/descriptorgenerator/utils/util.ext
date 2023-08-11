@@ -125,3 +125,6 @@ cached List[AssemblyImplementation] getAssemblyImpl(NamedElement self) :
 // Retrieve the assembly implementation for this component.
 cached AssemblyImplementation getAssembly(CCMComponent component) :
 	component.zdlAsComponent().getRelationships().typeSelect(uml::Generalization).specific.typeSelect(AssemblyImplementation);
+
+cached String listToString(List[Object] list, Boolean breaklines) :
+	JAVA com.zeligsoft.domain.omg.ccm.descriptorgenerator.utils.CDPXtendUtils.listToString(java.util.List, java.lang.Boolean);
