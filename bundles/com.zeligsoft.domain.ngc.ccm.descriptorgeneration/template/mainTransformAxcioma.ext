@@ -433,10 +433,12 @@ create InstanceDeploymentDescription createDDS4CCMConnectorFragment(DeploymentPa
 	let id = visit(dataSpace.connectorType, plan).id :
 	let dataSpaceDP = deployment.part.select( part | part.modelElement == dataSpace).selectFirst( part | part.sameLocalAssembly(source)) :
 	let perPortDP = getPerPortDP(source, sourcePort, dataSpace) :
+	let connId = dataSpace.getConnId(source,perPortDP,target,node) :
 	Debug(null, "            create InstanceDeploymentDescription createDDS4CCMConnectorFragment(DeploymentPart source = " + source.name + ", DeploymentPart target = " + target.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ", DataSpace dataSpace = " + dataSpace.name + " )") ->
-	idd.JavaSetAttribute("id", dataSpace.getConnId(source,perPortDP,target,node)) ->
+	idd.JavaSetAttribute("id", connId) ->
 	Debug(null, "              id = " + idd.id) ->
-	idd.name.add(dataSpace.getScopedName() + "_to_" + source.name + "@" + node.name + "." + target.name) ->
+	// idd.name.add(dataSpace.getScopedName() + "_to_" + source.name + "@" + node.name + "." + target.name) ->
+	idd.name.add(connId) ->
 	idd.node.add(node.name) ->
 	idd.source.add(null) ->
 	idd.implementation.add(id.visitInstanceImpl(idd)) ->
