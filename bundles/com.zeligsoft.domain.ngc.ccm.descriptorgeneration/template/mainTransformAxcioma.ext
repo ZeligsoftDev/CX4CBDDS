@@ -432,7 +432,7 @@ create InstanceDeploymentDescription createDDS4CCMConnectorFragment(DeploymentPa
 	let dataSpaceSN = dataSpace.connectorType.getCorbaScopedName() :
 	let id = visit(dataSpace.connectorType, plan).id :
 	let dataSpaceDP = deployment.part.select( part | part.modelElement == dataSpace).selectFirst( part | part.sameLocalAssembly(source)) :
-	let perPortDP = getPerPortDP(source, sourcePort, dataSpace) :
+	let perPortDP = getPerPortDeploymentPart(source, sourcePort, dataSpace) :
 	let connId = dataSpace.getConnId(source,perPortDP,target,node) :
 	Debug(null, "            create InstanceDeploymentDescription createDDS4CCMConnectorFragment(DeploymentPart source = " + source.name + ", DeploymentPart target = " + target.name + ", DeploymentPlan plan = " + getNameOrId(plan) + ", CCM::CCM_Deployment::DeploymentPlan deployment = " + deployment.name + ", DataSpace dataSpace = " + dataSpace.name + " )") ->
 	idd.JavaSetAttribute("id", connId) ->
@@ -456,8 +456,8 @@ boolean sameLocalAssembly(DeploymentPart dataSpaceDP, DeploymentPart componentDP
 		org.eclipse.uml2.uml.Property,
 		org.eclipse.uml2.uml.Property);
 
-DeploymentPart getPerPortDP(DeploymentPart part, InterfacePort sourcePort, DataSpace dataSpace) :
-	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.getPerPortDP(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Property);
+DeploymentPart getPerPortDeploymentPart(DeploymentPart part, InterfacePort sourcePort, DataSpace dataSpace) :
+	JAVA com.zeligsoft.domain.idl3plus.utils.IDL3PlusXtendUtils.getPerPortDeploymentPart(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Property);
 
 /*
  * For an attribute on a dataspace, check if the deployment part has
