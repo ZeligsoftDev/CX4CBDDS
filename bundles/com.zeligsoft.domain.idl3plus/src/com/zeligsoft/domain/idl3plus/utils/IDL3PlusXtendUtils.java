@@ -267,13 +267,18 @@ public class IDL3PlusXtendUtils {
 	 * Return the "per port" deployment part, i.e. the port of the given deployment
 	 * part which is connected to the given data-space.
 	 * 
+	 * <p> The result should be the deployment part corresponding to the given sourcePort,
+	 * so this method is essentially checking that the deployment part has a part in the
+	 * model whose type is a component with the given source port and that port instance in
+	 * the assembly containing the part is connected to the given data space.
+	 * 
 	 * @param deploymentPart - A UML {@link Property} which is a deployment part.
+	 * @param sourcePort     - A UML {@link Port} of the part's component definition.
 	 * @param dataSpace      - A UML {@link Property} which is a data space.
-	 * @param deployment     - A UML {@link Component} which is the (CCM) DeploymentPlan.
 	 * @return A UML {@link Property} for the port of the deploymentPart which is
 	 *         connected to the dataSpace.
 	 */
-	public static Property getPerPortDP(Property deploymentPart, Property sourcePort, Property dataSpace) {
+	public static Property getPerPortDeploymentPart(Property deploymentPart, Property sourcePort, Property dataSpace) {
 		if (ZDLUtil.isZDLConcept(deploymentPart, ZMLMMNames.DEPLOYMENT_PART)
 				&& ZDLUtil.isZDLConcept(dataSpace, IDL3PlusNames.DATA_SPACE)) {
 			Property ccmPart = (Property) ZDeploymentUtil.getModelElement(deploymentPart);
@@ -282,11 +287,12 @@ public class IDL3PlusXtendUtils {
 				for (Property nestedPart : nestedParts) {
 					if (ZDLUtil.isZDLConcept(nestedPart, IDL3PlusNames.PER_PORT_CONNECTOR_TYPE_DEPLOYMENT_PART)) {
 						Port port = (Port) ZDeploymentUtil.getModelElement(nestedPart);
-						Property otherEndRole = IDL3PlusUtil.getDataSpaceFromPerPort(port, deploymentPart);
-						if (otherEndRole != null && ZDLUtil.isZDLConcept(otherEndRole, IDL3PlusNames.DATA_SPACE)
-								&& dataSpace == otherEndRole
-								&& port == sourcePort) {
-							return nestedPart;
+						if (port == sourcePort) {
+							Property otherEndRole = IDL3PlusUtil.getDataSpaceFromPerPort(port, deploymentPart);
+							if (otherEndRole != null && ZDLUtil.isZDLConcept(otherEndRole, IDL3PlusNames.DATA_SPACE)
+									&& dataSpace == otherEndRole) {
+								return nestedPart;
+							}
 						}
 					}
 				}
