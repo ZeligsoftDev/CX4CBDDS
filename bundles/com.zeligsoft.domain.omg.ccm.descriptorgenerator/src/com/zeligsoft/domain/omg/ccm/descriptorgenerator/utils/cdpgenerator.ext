@@ -56,17 +56,17 @@ cached String getOverridePropertyValue(DeploymentPart part, String propertyName 
 		getPropertySlotValue(part.zdlAsProperty().defaultValue.zdlAsInstanceValue(), propertyName);
 
 Void visitConfigProperty(uml::InstanceValue value, InstanceDeploymentDescription inst) :
-	value.Debug("      visitConfigProperty_3(uml::InstanceValue value = " + value + ", ...)") ->
+	value.Debug("                    Void visitConfigProperty_3(uml::InstanceValue value = " + value + ", ...)") ->
 	value.instance.zdlAsInstanceSpecification().slot.visitConfigProperty(inst);
 	
 Property visitConfigProperty(uml::Slot slot, InstanceDeploymentDescription inst, List[uml::Slot] defaultSlots) :
 	let attribute = slot.definingFeature :
 	let value = slot.value.first() :
-	value.Debug("      visitConfigProperty_4(uml::Slot slot = " + slot + ", ...)") ->
+	value.Debug("                    Void visitConfigProperty_4(uml::Slot slot = " + slot + ", ...)") ->
 	visitConfigProperty(attribute, value.zdlAsInstanceValue(), inst, defaultSlots);
 	
 create Property visitConfigProperty(CCM::CCM_Target::Property property, uml::InstanceValue value, InstanceDeploymentDescription inst, List[uml::Slot] defaultSlots ) :
-	value.Debug("      visitConfigProperty_5(CCM::CCM_Target::Property property = " + property.name + ", ...)") ->
+	value.Debug("                    Void visitConfigProperty_5(CCM::CCM_Target::Property property = " + property.name + ", ...)") ->
 	this.name.add(property.name) ->
 	this.value.add(visitPropertyValue(property, value, inst, defaultSlots)) ->
 	inst.configProperty.add(this);
@@ -87,7 +87,7 @@ create DataType visitAttributeType(CCM::CCM_Target::Property property, Any obj) 
 	corbaType.visitBoundedStringType(this);
 	
 create Property visitConfigProperty(CXAttribute attr, uml::InstanceValue value, InstanceDeploymentDescription inst, List[uml::Slot] defaultSlots ) :
-	value.Debug("      visitConfigProperty_6(CXAttribute attr = " + attr.name + ", ...)") ->
+	value.Debug("                    Void visitConfigProperty_6(CXAttribute attr = " + attr.name + ", ...)") ->
 	this.name.add(attr.name) ->
 	this.value.add(visitPropertyValue(attr, value, inst, defaultSlots)) ->
 	inst.configProperty.add(this);
