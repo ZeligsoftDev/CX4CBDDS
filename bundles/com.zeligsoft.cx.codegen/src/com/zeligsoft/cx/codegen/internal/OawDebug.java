@@ -24,6 +24,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.FeatureMapUtil.FeatureEList;
 import org.eclipse.uml2.uml.NamedElement;
 
 public class OawDebug {
@@ -178,7 +179,12 @@ public class OawDebug {
 			EObject eObj = (EObject) obj;
 			for (EAttribute attribute : eObj.eClass().getEAllAttributes()) {
 				if ("name".equals(attribute.getName())) {
-					nameOrId = (String) eObj.eGet(attribute);
+					Object nameVal = eObj.eGet(attribute);
+					if (nameVal instanceof List) {
+						nameOrId = stringFromList((List)nameVal);
+					} else {
+						nameOrId = (String) nameVal.toString();
+					}
 					found = true;
 					break;
 				}
@@ -237,5 +243,19 @@ public class OawDebug {
 		}
 //		System.out.println("getNameOrId 10: " + nameOrId);
 		return nameOrId;
+	}
+
+	private static String stringFromList(List list) {
+		int n = list.size();
+		int i = 0;
+		StringBuilder b = new StringBuilder();
+		b.append('[');
+		for (Object item: list) {
+			b.append(item.toString());
+			if (i < n - 1) b.append(", ");
+			i++;
+		}
+		b.append(']');
+		return b.toString();
 	}
 }
