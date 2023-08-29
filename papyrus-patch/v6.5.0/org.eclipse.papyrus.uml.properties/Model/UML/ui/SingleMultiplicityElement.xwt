@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Composite xmlns:x="http://www.eclipse.org/xwt" xmlns:j="clr-namespace:java.lang"
+	xmlns:ppel="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets.layout"
+	xmlns:uml="clr-namespace:org.eclipse.papyrus.uml.properties.widgets"
+	xmlns:ppe="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets" xmlns="http://www.eclipse.org/xwt/presentation">
+	<Composite.layout>
+		<ppel:PropertiesLayout></ppel:PropertiesLayout>
+	</Composite.layout>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout numColumns="2"></ppel:PropertiesLayout>
+		</Composite.layout>
+		<ppe:BooleanRadio input="{Binding}"
+			property="UML:MultiplicityElement:isOrdered"></ppe:BooleanRadio>
+		<ppe:BooleanRadio input="{Binding}"
+			property="UML:MultiplicityElement:isUnique"></ppe:BooleanRadio>
+	</Composite>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout></ppel:PropertiesLayout>
+		</Composite.layout>
+		<uml:MultiplicityDialog input="{Binding}" property="Multiplicity:multiplicity"></uml:MultiplicityDialog>
+	</Composite>
+</Composite>
