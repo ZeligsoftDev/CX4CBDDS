@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Papyrus CX for AXCIOMA Target Platform - Release" sequenceNumber="1693263116">
+<target name="Papyrus Main" sequenceNumber="1686128103">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.nebula.widgets.richtext.feature.feature.group" version="1.2.0.201703081533"/>
@@ -16,6 +16,20 @@
       <unit id="org.eclipse.nebula.widgets.nattable.extension.nebula.feature.feature.group" version="1.1.0.201703192131"/>
       <unit id="org.eclipse.nebula.widgets.nattable.extension.nebula.source.feature.feature.group" version="1.1.0.201703192131"/>
       <repository id="nattable" location="http://download.eclipse.org/nattable/releases/1.5.0/repository"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="com.google.guava" version="30.1.0.v20221112-0806"/>
+      <unit id="com.google.guava.source" version="30.1.0.v20221112-0806"/>
+      <unit id="org.apache.commons.io" version="2.8.0.v20210415-0900"/>
+      <unit id="com.google.gson" version="2.10.1.v20230109-0753"/>
+      <unit id="com.google.gson.source" version="2.10.1.v20230109-0753"/>
+      <unit id="org.apache.batik.anim" version="1.16.0.v20221027-0840"/>
+      <unit id="org.apache.batik.dom" version="1.16.0.v20230210-1249"/>
+      <unit id="org.apache.batik.dom.svg" version="1.16.0.v20221027-0840"/>
+      <unit id="org.apache.batik.xml" version="1.16.0.v20221027-0840"/>
+      <unit id="org.apache.logging.log4j" version="2.17.1.v20220106-2156"/>
+      <unit id="com.google.inject" version="5.0.1.v20221112-0806"/>
+      <repository id="orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.xwt.feature.feature.group" version="0.0.0"/>
@@ -36,7 +50,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sdk.feature.group" version="4.28.0.v20230605-0440"/>
-      <repository id="platform" location="https://download.eclipse.org/eclipse/updates/4.28/R-4.28-202306050440/"/>
+      <repository id="platform" location="https://download.eclipse.org/eclipse/updates/4.28-I-builds/I20230605-0440"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.ocl.examples.classic.feature.group" version="5.18.0.v20221201-0557"/>
@@ -87,45 +101,6 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gef.feature.group" version="3.16.0.202305312117"/>
       <repository id="gef" location="https://download.eclipse.org/tools/gef/classic/releases/3.16.0RC1"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.cdt.feature.group" version="11.2.0.202306051917"/>
-      <unit id="org.eclipse.cdt.gdb.feature.group" version="11.2.0.202303140100"/>
-      <unit id="org.eclipse.cdt.gnu.build.feature.group" version="11.2.0.202304211730"/>
-      <unit id="org.eclipse.cdt.gnu.debug.feature.group" version="11.2.0.202303140100"/>
-      <unit id="org.eclipse.cdt.gnu.dsf.feature.group" version="11.2.0.202304102232"/>
-      <unit id="org.eclipse.cdt.native.feature.group" version="11.2.0.202306051917"/>
-      <unit id="org.eclipse.cdt.platform.feature.group" version="11.2.0.202306051917"/>
-      <unit id="org.eclipse.cdt.sdk.feature.group" version="11.2.0.202306051917"/>
-      <repository id="eclipse-2023-06" location="https://download.eclipse.org/releases/2023-06/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.emf.compare.feature.group" version="3.3.21.202212280858"/>
-      <unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="3.3.21.202212280858"/>
-      <unit id="org.eclipse.emf.compare.egit.feature.group" version="3.3.21.202212280858"/>
-      <unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="3.3.21.202212280858"/>
-      <unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="3.3.21.202212280858"/>
-      <unit id="org.eclipse.emf.compare.uml2.feature.group" version="3.3.21.202212280858"/>
-      <repository id="emfCompare" location="https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202212280858/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.apache.commons.lang" version="2.6.0.v20220406-2305"/>
-      <unit id="com.google.guava" version="30.1.0.v20221112-0806"/>
-      <unit id="com.google.guava.source" version="30.1.0.v20221112-0806"/>
-      <unit id="org.apache.commons.io" version="2.8.0.v20210415-0900"/>
-      <unit id="com.google.gson" version="2.10.1.v20230109-0753"/>
-      <unit id="com.google.gson.source" version="2.10.1.v20230109-0753"/>
-      <unit id="org.apache.batik.anim" version="1.16.0.v20221027-0840"/>
-      <unit id="org.apache.batik.dom" version="1.16.0.v20230210-1249"/>
-      <unit id="org.apache.batik.dom.svg" version="1.16.0.v20221027-0840"/>
-      <unit id="org.apache.batik.xml" version="1.16.0.v20221027-0840"/>
-      <unit id="org.apache.logging.log4j" version="2.17.1.v20220106-2156"/>
-      <unit id="com.google.inject" version="5.0.1.v20221112-0806"/>
-      <repository id="orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.papyrus.sdk.feature.feature.group" version="6.5.0.202306070926"/>
-      <repository id="papyrus" location="https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2023-06/"/>
     </location>
   </locations>
 </target>

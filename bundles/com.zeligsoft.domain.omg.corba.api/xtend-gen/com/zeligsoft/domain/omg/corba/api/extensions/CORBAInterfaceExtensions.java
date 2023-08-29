@@ -11,7 +11,7 @@ public class CORBAInterfaceExtensions {
   @Inject
   @Extension
   private ZListExtensions _zListExtensions;
-  
+
   public List<CXInterface> generals(final CXInterface intf) {
     return this._zListExtensions.<CXInterface>typeSelect(intf.asInterface().getGenerals(), CXInterface.type);
   }

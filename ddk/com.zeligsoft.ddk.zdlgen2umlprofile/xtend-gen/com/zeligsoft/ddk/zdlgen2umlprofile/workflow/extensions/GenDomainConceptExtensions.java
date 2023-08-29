@@ -4,7 +4,6 @@ import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.GenDomainStructuralFeatureExtensions;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -20,13 +19,13 @@ public class GenDomainConceptExtensions {
   @Inject
   @Extension
   private GenDomainStructuralFeatureExtensions _genDomainStructuralFeatureExtensions;
-  
+
   public EList<Classifier> baseDomainConcepts(final GenDomainConcept concept) {
     final EList<Classifier> result = concept.getDomainConcept().getGenerals();
     result.remove(concept.getDomainConcept());
     return result;
   }
-  
+
   public ArrayList<GenDomainConcept> baseDomainConceptsToImplement(final GenDomainConcept concept) {
     ArrayList<GenDomainConcept> _xblockexpression = null;
     {
@@ -42,7 +41,7 @@ public class GenDomainConceptExtensions {
     }
     return _xblockexpression;
   }
-  
+
   public List<GenDomainStructuralFeature> allFeaturesToImplement(final GenDomainConcept concept) {
     List<GenDomainStructuralFeature> _xblockexpression = null;
     {
@@ -66,7 +65,7 @@ public class GenDomainConceptExtensions {
     }
     return _xblockexpression;
   }
-  
+
   public Set<org.eclipse.uml2.uml.Class> allMetaclassesToImplementAccessorsFor(final GenDomainConcept concept) {
     Set<org.eclipse.uml2.uml.Class> _xblockexpression = null;
     {

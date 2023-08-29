@@ -43,14 +43,14 @@ public class ZDLStandardLibrary {
     }
     return zContainer;
   }
-  
+
   /**
    * Return passed element wrapped as a ZObject.
    */
   public ZObject zObject(final Element self) {
     return ZDLFactoryRegistry.INSTANCE.<ZObject>create(self, ZObject.class);
   }
-  
+
   /**
    * Returns a filtered list from the passed UML element list, containing only those elements which
    * have ZDL concepts, wrapped as ZObjects.
@@ -73,7 +73,7 @@ public class ZDLStandardLibrary {
     }
     return _xblockexpression;
   }
-  
+
   /**
    * Given a list of UML elements passed in, returns a new list in which any element having a ZDL
    * concept is wrapped as a ZObject.
@@ -97,7 +97,7 @@ public class ZDLStandardLibrary {
     }
     return _xblockexpression;
   }
-  
+
   /**
    * Given a list that may contain elements which are themselves lists, returns a single flattened list
    * of all contents.

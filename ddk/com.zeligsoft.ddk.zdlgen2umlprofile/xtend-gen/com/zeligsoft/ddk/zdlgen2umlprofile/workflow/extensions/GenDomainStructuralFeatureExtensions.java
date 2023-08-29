@@ -11,7 +11,6 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenDomainDataType;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainReference;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaNamingExtensions;
 import java.util.Arrays;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
@@ -29,7 +28,7 @@ public class GenDomainStructuralFeatureExtensions {
   @Inject
   @Extension
   private JavaNamingExtensions _javaNamingExtensions;
-  
+
   protected String _typeAsString(final GenDomainAttribute feature) {
     String _xifexpression = null;
     GenDomainDataType _type = feature.getType();
@@ -70,7 +69,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xifexpression;
   }
-  
+
   protected boolean _hasZDLType(final GenDomainReference feature) {
     boolean _xblockexpression = false;
     {
@@ -113,7 +112,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   protected boolean _hasZDLType(final GenDomainAttribute feature) {
     boolean _xblockexpression = false;
     {
@@ -156,7 +155,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   protected boolean _hasUMLType(final GenDomainReference feature) {
     boolean _xblockexpression = false;
     {
@@ -184,7 +183,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   protected boolean _hasUMLType(final GenDomainAttribute feature) {
     boolean _xblockexpression = false;
     {
@@ -212,7 +211,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   protected boolean _hasPrimitiveType(final GenDomainReference feature) {
     boolean result = false;
     GenDomainConcept _target = feature.getTarget();
@@ -249,7 +248,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return result;
   }
-  
+
   protected boolean _hasPrimitiveType(final GenDomainAttribute feature) {
     boolean _xblockexpression = false;
     {
@@ -290,7 +289,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   protected String _typeAsString(final GenDomainReference feature) {
     String _xifexpression = null;
     GenDomainConcept _target = feature.getTarget();
@@ -311,21 +310,21 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xifexpression;
   }
-  
+
   protected boolean _hasEnumerationType(final GenDomainAttribute feature) {
     GenDomainDataType _type = feature.getType();
     return (_type instanceof GenDomainEnum);
   }
-  
+
   protected boolean _hasEnumerationType(final GenDomainReference feature) {
     GenDomainConcept _target = feature.getTarget();
     return (_target instanceof GenDomainEnum);
   }
-  
+
   public String conceptQualifiedName(final GenDomainStructuralFeature feature) {
     return feature.getConcept().getDomainElement().getQualifiedName();
   }
-  
+
   public CharSequence featureAccessorReturnType(final GenDomainStructuralFeature feature) {
     CharSequence _xifexpression = null;
     boolean _isMultivalued = feature.getDomainAttribute().isMultivalued();
@@ -341,11 +340,11 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xifexpression;
   }
-  
+
   public String featureModifierType(final GenDomainStructuralFeature feature) {
     return this.typeAsString(feature);
   }
-  
+
   public boolean isConsistentOverride(final GenDomainStructuralFeature feature, final GenDomainStructuralFeature overriden) {
     boolean _xblockexpression = false;
     {
@@ -363,7 +362,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   public boolean isInconsistentOverride(final GenDomainStructuralFeature feature, final GenDomainStructuralFeature overriden) {
     boolean _xblockexpression = false;
     {
@@ -382,7 +381,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   public boolean isOverride(final GenDomainStructuralFeature feature) {
     boolean _xblockexpression = false;
     {
@@ -397,7 +396,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   public boolean isInconsistentOverride(final GenDomainStructuralFeature feature) {
     boolean _xblockexpression = false;
     {
@@ -425,7 +424,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   public String getInconsistentOverrideString(final GenDomainStructuralFeature feature) {
     String _xblockexpression = null;
     {
@@ -465,7 +464,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   public Set<Property> overridenFeatures(final GenDomainStructuralFeature feature) {
     Set<Property> _xblockexpression = null;
     {
@@ -482,7 +481,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   public Set<GenDomainStructuralFeature> overridenGenFeatures(final GenDomainStructuralFeature feature) {
     Set<GenDomainStructuralFeature> _xblockexpression = null;
     {
@@ -499,23 +498,23 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   protected String _featureName(final GenDomainAttribute attr) {
     return attr.getName();
   }
-  
+
   protected String _featureName(final GenDomainReference ref) {
     return ref.getDomainAttribute().getName();
   }
-  
+
   protected GenDomainClassifier _featureType(final GenDomainAttribute attr) {
     return attr.getType();
   }
-  
+
   protected GenDomainClassifier _featureType(final GenDomainReference ref) {
     return ref.getTarget();
   }
-  
+
   public String featureTypeQualifiedName(final GenDomainStructuralFeature feat) {
     String _xblockexpression = null;
     {
@@ -531,7 +530,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   protected boolean _typeIsAbstract(final GenDomainAttribute attr) {
     boolean _xblockexpression = false;
     {
@@ -549,7 +548,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   protected boolean _typeIsAbstract(final GenDomainReference attr) {
     boolean _xblockexpression = false;
     {
@@ -567,7 +566,7 @@ public class GenDomainStructuralFeatureExtensions {
     }
     return _xblockexpression;
   }
-  
+
   public String typeAsString(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _typeAsString((GenDomainAttribute)feature);
@@ -578,7 +577,7 @@ public class GenDomainStructuralFeatureExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public boolean hasZDLType(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _hasZDLType((GenDomainAttribute)feature);
@@ -589,7 +588,7 @@ public class GenDomainStructuralFeatureExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public boolean hasUMLType(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _hasUMLType((GenDomainAttribute)feature);
@@ -600,7 +599,7 @@ public class GenDomainStructuralFeatureExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public boolean hasPrimitiveType(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _hasPrimitiveType((GenDomainAttribute)feature);
@@ -611,7 +610,7 @@ public class GenDomainStructuralFeatureExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public boolean hasEnumerationType(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _hasEnumerationType((GenDomainAttribute)feature);
@@ -622,7 +621,7 @@ public class GenDomainStructuralFeatureExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public String featureName(final GenDomainStructuralFeature attr) {
     if (attr instanceof GenDomainAttribute) {
       return _featureName((GenDomainAttribute)attr);
@@ -633,7 +632,7 @@ public class GenDomainStructuralFeatureExtensions {
         Arrays.<Object>asList(attr).toString());
     }
   }
-  
+
   public GenDomainClassifier featureType(final GenDomainStructuralFeature attr) {
     if (attr instanceof GenDomainAttribute) {
       return _featureType((GenDomainAttribute)attr);
@@ -644,7 +643,7 @@ public class GenDomainStructuralFeatureExtensions {
         Arrays.<Object>asList(attr).toString());
     }
   }
-  
+
   public boolean typeIsAbstract(final GenDomainStructuralFeature attr) {
     if (attr instanceof GenDomainAttribute) {
       return _typeIsAbstract((GenDomainAttribute)attr);

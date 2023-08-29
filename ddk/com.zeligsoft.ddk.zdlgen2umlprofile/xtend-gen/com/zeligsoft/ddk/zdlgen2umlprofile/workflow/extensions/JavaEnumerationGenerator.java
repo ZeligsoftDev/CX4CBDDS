@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnumLiteral;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaNamingExtensions;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.common.util.UML2Util;
@@ -17,7 +16,7 @@ public class JavaEnumerationGenerator {
   @Inject
   @Extension
   private JavaNamingExtensions _javaNamingExtensions;
-  
+
   protected CharSequence _compileEnumeration(final GenDomainEnum element, final String pkg) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
@@ -197,12 +196,12 @@ public class JavaEnumerationGenerator {
     _builder.newLine();
     return _builder;
   }
-  
+
   protected CharSequence _compileEnumeration(final GenDomainClassifier element, final String pkg) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder;
   }
-  
+
   private CharSequence generateEnumerationImports(final GenDomainEnum element) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import org.eclipse.emf.ecore.EObject;");
@@ -212,7 +211,7 @@ public class JavaEnumerationGenerator {
     _builder.newLine();
     return _builder;
   }
-  
+
   private CharSequence generateCreateMethod(final GenDomainEnum element) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/**");
@@ -292,7 +291,7 @@ public class JavaEnumerationGenerator {
     _builder.newLine();
     return _builder;
   }
-  
+
   public CharSequence compileEnumeration(final GenDomainClassifier element, final String pkg) {
     if (element instanceof GenDomainEnum) {
       return _compileEnumeration((GenDomainEnum)element, pkg);

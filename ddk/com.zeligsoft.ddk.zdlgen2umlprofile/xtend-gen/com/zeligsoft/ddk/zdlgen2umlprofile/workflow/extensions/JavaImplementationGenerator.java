@@ -11,11 +11,6 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenDomainDataType;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainEnum;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainReference;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.GenDomainConceptExtensions;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.GenDomainStructuralFeatureExtensions;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaImportExtensions;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaMethodSignaturesExtensions;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaNamingExtensions;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -36,40 +31,40 @@ public class JavaImplementationGenerator {
   @Inject
   @Extension
   private GenDomainConceptExtensions _genDomainConceptExtensions;
-  
+
   @Inject
   @Extension
   private GenDomainStructuralFeatureExtensions _genDomainStructuralFeatureExtensions;
-  
+
   @Inject
   @Extension
   private JavaMethodSignaturesExtensions _javaMethodSignaturesExtensions;
-  
+
   @Inject
   @Extension
   private JavaNamingExtensions _javaNamingExtensions;
-  
+
   @Inject
   @Extension
   private JavaImportExtensions _javaImportExtensions;
-  
+
   @Inject
   @Named("Root Package")
   private String rootPackage;
-  
+
   @Inject
   @Named("Implementation SubPackage")
   private String implSubPackage;
-  
+
   @Inject
   @Named("Implementation Suffix")
   private String implSuffix;
-  
+
   protected CharSequence _compileImplementation(final GenDomainClassifier concept, final String pkg) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder;
   }
-  
+
   protected CharSequence _compileImplementation(final GenDomainConcept concept, final String pkg) {
     CharSequence _xblockexpression = null;
     {
@@ -169,7 +164,7 @@ public class JavaImplementationGenerator {
     }
     return _xblockexpression;
   }
-  
+
   public CharSequence compileImplementation(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _accessorImplementation = this.accessorImplementation(feature);
@@ -180,12 +175,12 @@ public class JavaImplementationGenerator {
     _builder.newLineIfNotEmpty();
     return _builder;
   }
-  
+
   private CharSequence _accessorImplementation(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder;
   }
-  
+
   private CharSequence _accessorImplementation(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public ");
@@ -444,7 +439,7 @@ public class JavaImplementationGenerator {
     _builder.append("}");
     return _builder;
   }
-  
+
   private CharSequence _accessorImplementation(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public ");
@@ -560,7 +555,7 @@ public class JavaImplementationGenerator {
     _builder.append("}");
     return _builder;
   }
-  
+
   public CharSequence compileOverridenImplementation(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public ");
@@ -584,17 +579,17 @@ public class JavaImplementationGenerator {
     _builder.newLineIfNotEmpty();
     return _builder;
   }
-  
+
   private CharSequence _modifierImplementation(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder;
   }
-  
+
   private CharSequence _modifierImplementationOverriden(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder;
   }
-  
+
   private CharSequence _modifierImplementation(final GenDomainAttribute feature) {
     String _xifexpression = null;
     boolean _isReadOnly = feature.getDomainAttribute().isReadOnly();
@@ -621,7 +616,7 @@ public class JavaImplementationGenerator {
     }
     return _xifexpression;
   }
-  
+
   private CharSequence _modifierImplementationOverriden(final GenDomainAttribute feature) {
     String _xifexpression = null;
     boolean _isReadOnly = feature.getDomainAttribute().isReadOnly();
@@ -648,7 +643,7 @@ public class JavaImplementationGenerator {
     }
     return _xifexpression;
   }
-  
+
   private CharSequence _modifierImplementation(final GenDomainReference feature) {
     String _xifexpression = null;
     boolean _isReadOnly = feature.getDomainAttribute().isReadOnly();
@@ -675,7 +670,7 @@ public class JavaImplementationGenerator {
     }
     return _xifexpression;
   }
-  
+
   private CharSequence _modifierImplementationOverriden(final GenDomainReference feature) {
     String _xifexpression = null;
     boolean _isReadOnly = feature.getDomainAttribute().isReadOnly();
@@ -702,7 +697,7 @@ public class JavaImplementationGenerator {
     }
     return _xifexpression;
   }
-  
+
   private String compositeModifierImplementation(final GenDomainStructuralFeature feature) {
     String _xifexpression = null;
     boolean _isMultivalued = feature.getDomainAttribute().isMultivalued();
@@ -997,7 +992,7 @@ public class JavaImplementationGenerator {
     }
     return _xifexpression;
   }
-  
+
   private String compositeModifierImplementationOverriden(final GenDomainStructuralFeature feature) {
     String _xifexpression = null;
     boolean _isMultivalued = feature.getDomainAttribute().isMultivalued();
@@ -1082,7 +1077,7 @@ public class JavaImplementationGenerator {
     }
     return _xifexpression;
   }
-  
+
   private String sharedModifierImplementation(final GenDomainStructuralFeature feature) {
     String _xifexpression = null;
     boolean _isMultivalued = feature.getDomainAttribute().isMultivalued();
@@ -1189,7 +1184,7 @@ public class JavaImplementationGenerator {
     }
     return _xifexpression;
   }
-  
+
   private String sharedModifierImplementationOverriden(final GenDomainStructuralFeature feature) {
     String _xifexpression = null;
     boolean _isMultivalued = feature.getDomainAttribute().isMultivalued();
@@ -1222,7 +1217,7 @@ public class JavaImplementationGenerator {
     }
     return _xifexpression;
   }
-  
+
   private String noneModifierImplementation(final GenDomainStructuralFeature feature) {
     String _xifexpression = null;
     boolean _isMultivalued = feature.getDomainAttribute().isMultivalued();
@@ -1345,7 +1340,7 @@ public class JavaImplementationGenerator {
     }
     return _xifexpression;
   }
-  
+
   private String noneModifierImplementationOverriden(final GenDomainStructuralFeature feature) {
     String _xifexpression = null;
     boolean _isMultivalued = feature.getDomainAttribute().isMultivalued();
@@ -1378,7 +1373,7 @@ public class JavaImplementationGenerator {
     }
     return _xifexpression;
   }
-  
+
   public CharSequence implementationImports(final GenDomainConcept concept) {
     CharSequence _xblockexpression = null;
     {
@@ -1452,7 +1447,7 @@ public class JavaImplementationGenerator {
     }
     return _xblockexpression;
   }
-  
+
   public CharSequence inclusionHelper(final GenDomainClassifier type) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _generateImport = this._javaImportExtensions.generateImport(type);
@@ -1460,7 +1455,7 @@ public class JavaImplementationGenerator {
     _builder.newLineIfNotEmpty();
     return _builder;
   }
-  
+
   public CharSequence umlMappingImplementationMethods(final GenDomainConcept concept) {
     StringConcatenation _builder = new StringConcatenation();
     {
@@ -1489,17 +1484,17 @@ public class JavaImplementationGenerator {
     }
     return _builder;
   }
-  
+
   public CharSequence implementationStandardFields(final GenDomainConcept concept) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder;
   }
-  
+
   public CharSequence implementationStandardAccessors(final GenDomainConcept concept) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder;
   }
-  
+
   public CharSequence implementationConstructor(final GenDomainConcept concept) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public ");
@@ -1514,7 +1509,7 @@ public class JavaImplementationGenerator {
     _builder.newLine();
     return _builder;
   }
-  
+
   public CharSequence implementationFields(final GenDomainConcept concept) {
     StringConcatenation _builder = new StringConcatenation();
     {
@@ -1527,7 +1522,7 @@ public class JavaImplementationGenerator {
     }
     return _builder;
   }
-  
+
   private CharSequence implementationField(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     {
@@ -1558,7 +1553,7 @@ public class JavaImplementationGenerator {
     }
     return _builder;
   }
-  
+
   private String featureFieldName(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("_");
@@ -1566,7 +1561,7 @@ public class JavaImplementationGenerator {
     _builder.append(_validJavaIdentifier);
     return _builder.toString();
   }
-  
+
   public CharSequence compileImplementation(final GenDomainClassifier concept, final String pkg) {
     if (concept instanceof GenDomainConcept) {
       return _compileImplementation((GenDomainConcept)concept, pkg);
@@ -1577,7 +1572,7 @@ public class JavaImplementationGenerator {
         Arrays.<Object>asList(concept, pkg).toString());
     }
   }
-  
+
   private CharSequence accessorImplementation(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _accessorImplementation((GenDomainAttribute)feature);
@@ -1590,7 +1585,7 @@ public class JavaImplementationGenerator {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   private CharSequence modifierImplementation(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _modifierImplementation((GenDomainAttribute)feature);
@@ -1603,7 +1598,7 @@ public class JavaImplementationGenerator {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   private CharSequence modifierImplementationOverriden(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _modifierImplementationOverriden((GenDomainAttribute)feature);

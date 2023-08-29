@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainAttribute;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainReference;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.GenDomainStructuralFeatureExtensions;
 import java.util.Arrays;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -15,12 +14,12 @@ public class JavaMethodSignaturesExtensions {
   @Inject
   @Extension
   private GenDomainStructuralFeatureExtensions _genDomainStructuralFeatureExtensions;
-  
+
   protected String _compositeMultivaluedAddExistingSignature(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder.toString();
   }
-  
+
   protected String _compositeMultivaluedAddExistingSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("void add");
@@ -39,7 +38,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.append(" val)");
     return _builder.toString();
   }
-  
+
   protected String _compositeMultivaluedAddExistingSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("void add");
@@ -58,7 +57,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.append(" val)");
     return _builder.toString();
   }
-  
+
   protected String _compositeMultivaluedAddParemeterizedSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<T extends ");
@@ -77,7 +76,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.append("(Class<T> typeToCreate, String concept)");
     return _builder.toString();
   }
-  
+
   protected String _compositeMultivaluedAddParemeterizedSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<T extends ");
@@ -96,7 +95,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.append("(Class<T> typeToCreate, String concept)");
     return _builder.toString();
   }
-  
+
   protected String _compositeMultivalueAddSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
@@ -114,7 +113,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.append("()");
     return _builder.toString();
   }
-  
+
   protected String _compositeMultivalueAddSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
@@ -132,7 +131,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.append("()");
     return _builder.toString();
   }
-  
+
   protected String _compositeAddExistingSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("void set");
@@ -152,7 +151,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _compositeAddExistingSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("void set");
@@ -172,7 +171,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _compositeAddParemeterizedSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<T extends ");
@@ -192,7 +191,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _compositeAddParemeterizedSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<T extends ");
@@ -212,7 +211,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _compositeAddSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
@@ -231,7 +230,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _compositeAddSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     String _featureModifierType = this._genDomainStructuralFeatureExtensions.featureModifierType(feature);
@@ -250,7 +249,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _sharedMultivaluedAddSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("void add");
@@ -270,7 +269,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _sharedMultivaluedAddSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("void add");
@@ -290,12 +289,12 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _sharedAddSignature(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder.toString();
   }
-  
+
   protected String _sharedAddSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("void set");
@@ -315,7 +314,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _sharedAddSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("void set");
@@ -335,12 +334,12 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _noneMultivaluedAddSignature(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder.toString();
   }
-  
+
   protected String _noneMultivaluedAddSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("void add");
@@ -360,7 +359,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _noneMultivaluedAddSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("void add");
@@ -380,12 +379,12 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _noneAddSignature(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder.toString();
   }
-  
+
   protected String _noneAddSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("void set");
@@ -405,7 +404,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _noneAddSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("void set");
@@ -425,12 +424,12 @@ public class JavaMethodSignaturesExtensions {
     _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
-  
+
   protected String _accessorSignature(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder.toString();
   }
-  
+
   protected String _accessorSignature(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _featureAccessorReturnType = this._genDomainStructuralFeatureExtensions.featureAccessorReturnType(feature);
@@ -441,7 +440,7 @@ public class JavaMethodSignaturesExtensions {
     _builder.append("()");
     return _builder.toString();
   }
-  
+
   protected String _accessorSignature(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _featureAccessorReturnType = this._genDomainStructuralFeatureExtensions.featureAccessorReturnType(feature);
@@ -452,12 +451,12 @@ public class JavaMethodSignaturesExtensions {
     _builder.append("()");
     return _builder.toString();
   }
-  
+
   protected String _accessorName(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder.toString();
   }
-  
+
   protected String _accessorName(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("get");
@@ -472,7 +471,7 @@ public class JavaMethodSignaturesExtensions {
     }
     return _builder.toString();
   }
-  
+
   protected String _accessorName(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("get");
@@ -487,7 +486,7 @@ public class JavaMethodSignaturesExtensions {
     }
     return _builder.toString();
   }
-  
+
   public String compositeMultivaluedAddExistingSignature(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _compositeMultivaluedAddExistingSignature((GenDomainAttribute)feature);
@@ -500,7 +499,7 @@ public class JavaMethodSignaturesExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public String compositeMultivaluedAddParemeterizedSignature(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _compositeMultivaluedAddParemeterizedSignature((GenDomainAttribute)feature);
@@ -511,7 +510,7 @@ public class JavaMethodSignaturesExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public String compositeMultivalueAddSignature(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _compositeMultivalueAddSignature((GenDomainAttribute)feature);
@@ -522,7 +521,7 @@ public class JavaMethodSignaturesExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public String compositeAddExistingSignature(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _compositeAddExistingSignature((GenDomainAttribute)feature);
@@ -533,7 +532,7 @@ public class JavaMethodSignaturesExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public String compositeAddParemeterizedSignature(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _compositeAddParemeterizedSignature((GenDomainAttribute)feature);
@@ -544,7 +543,7 @@ public class JavaMethodSignaturesExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public String compositeAddSignature(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _compositeAddSignature((GenDomainAttribute)feature);
@@ -555,7 +554,7 @@ public class JavaMethodSignaturesExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public String sharedMultivaluedAddSignature(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _sharedMultivaluedAddSignature((GenDomainAttribute)feature);
@@ -566,7 +565,7 @@ public class JavaMethodSignaturesExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public String sharedAddSignature(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _sharedAddSignature((GenDomainAttribute)feature);
@@ -579,7 +578,7 @@ public class JavaMethodSignaturesExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public String noneMultivaluedAddSignature(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _noneMultivaluedAddSignature((GenDomainAttribute)feature);
@@ -592,7 +591,7 @@ public class JavaMethodSignaturesExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public String noneAddSignature(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _noneAddSignature((GenDomainAttribute)feature);
@@ -605,7 +604,7 @@ public class JavaMethodSignaturesExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public String accessorSignature(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _accessorSignature((GenDomainAttribute)feature);
@@ -618,7 +617,7 @@ public class JavaMethodSignaturesExtensions {
         Arrays.<Object>asList(feature).toString());
     }
   }
-  
+
   public String accessorName(final GenDomainStructuralFeature feature) {
     if (feature instanceof GenDomainAttribute) {
       return _accessorName((GenDomainAttribute)feature);
