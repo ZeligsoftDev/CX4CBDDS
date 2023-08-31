@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Papyrus CX for AXCIOMA" uid="com.zeligsoft.papyrus-cx.axcioma.rcp.product" id="com.zeligsoft.papyrus-cx.axcioma.rcp.product" application="org.eclipse.ui.ide.workbench" version="2.2.0" useFeatures="true" includeLaunchers="true">
+<product name="Papyrus CX for AXCIOMA" uid="com.zeligsoft.papyrus-cx.axcioma.rcp.product" id="com.zeligsoft.papyrus-cx.axcioma.rcp.product" application="org.eclipse.ui.ide.workbench" version="2.2.0" useFeatures="true" includeLaunchers="true" autoIncludeRequirements="true">
 
    <configIni use="default">
    </configIni>
@@ -81,7 +81,7 @@
       <feature id="org.eclipse.emf.compare.ide.ui" installMode="root"/>
       <feature id="org.eclipse.emf.compare.rcp.ui" installMode="root"/>
       <feature id="org.eclipse.emf.compare.uml2" installMode="root"/>
-      <feature id="org.eclipse.papyrus.compare.feature" installMode="root"/>
+<!--      <feature id="org.eclipse.papyrus.compare.feature" installMode="root"/> -->
       <feature id="org.eclipse.papyrus.sdk.feature" installMode="root"/>
       <feature id="org.eclipse.cdt" installMode="root"/>
       <feature id="org.eclipse.cdt.gdb" installMode="root"/>
@@ -104,7 +104,6 @@
       <feature id="org.eclipse.wst.xml_ui.feature" installMode="root"/>
       <feature id="org.eclipse.equinox.core.sdk" installMode="root"/>
       <feature id="com.zeligsoft.papyrus.uml.properties.patch.feature" installMode="root"/>
-      <feature id="com.zeligsoft.papyrus.views.modelexplorer.patch.feature" installMode="root"/>
    </features>
 
    <configurations>

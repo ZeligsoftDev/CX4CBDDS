@@ -6,21 +6,25 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho.version>2.5.0</tycho.version>
+		<tycho.version>2.7.5</tycho.version>
 		<rootdir>${maven.multiModuleProjectDirectory}</rootdir>
 		<project.build.sourceEncoding>ISO-8859-1
 		</project.build.sourceEncoding>
-		<eclipse-release.url>https://download.eclipse.org/releases/2020-06/
+		<eclipse-release.url>https://download.eclipse.org/releases/2023-06/
 		</eclipse-release.url>
-		<orbit.url>https://download.eclipse.org/tools/orbit/downloads/drops/R20200529191137/repository/
+		<orbit.url>https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository/
 		</orbit.url>
-		<papyrus.url>https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2020-06/
+		<papyrus.url>https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2023-06/
 		</papyrus.url>
-		<cdt-repo.url>https://archive.eclipse.org/tools/cdt/releases/9.11/
+		<cdt-repo.url>https://download.eclipse.org/releases/2023-06/
 		</cdt-repo.url>
-		<emf-compare.url>https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202005260905/</emf-compare.url>
-		<papyrus-compare.url>https://download.eclipse.org/modeling/mdt/papyrus/components/compare/updates/nightly/0.7.0-N20200430-193447/
-		</papyrus-compare.url>
+		<xtext.url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.31.0/
+		</xtext.url>
+		<xpand.url>https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/
+		</xpand.url>
+		<emf-compare.url>https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/</emf-compare.url>
+<!-- 		<papyrus-compare.url>https://download.eclipse.org/modeling/mdt/papyrus/components/compare/updates/nightly/0.7.0-N20200430-193447/ -->
+<!-- 		</papyrus-compare.url> -->
 	</properties>
 
 	<repositories>
@@ -34,14 +38,24 @@
 			<url>${papyrus.url}</url>
 			<layout>p2</layout>
 		</repository>
-		<repository>
-			<id>cdt-repo</id>
-			<url>${cdt-repo.url}</url>
-			<layout>p2</layout>
-		</repository>
+<!-- 		<repository> -->
+<!-- 			<id>cdt-repo</id> -->
+<!-- 			<url>${cdt-repo.url}</url> -->
+<!-- 			<layout>p2</layout> -->
+<!-- 		</repository> -->
 		<repository>
 			<id>orbit</id>
 			<url>${orbit.url}</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>xtext</id>
+			<url>${xtext.url}</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>xpand</id>
+			<url>${xpand.url}</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
@@ -49,14 +63,14 @@
 			<url>${emf-compare.url}</url>
 			<layout>p2</layout>
 		</repository>
-		<repository>
-			<id>papyrus-compare</id>
-			<url>${papyrus-compare.url}</url>
-			<layout>p2</layout>
-		</repository>
+<!-- 		<repository> -->
+<!-- 			<id>papyrus-compare</id> -->
+<!-- 			<url>${papyrus-compare.url}</url> -->
+<!-- 			<layout>p2</layout> -->
+<!-- 		</repository> -->
 		<repository>
 		    <id>papyrus-patches</id>
-		    <url>file://${rootdir}/papyrus-patch/v4.8.0/site-papyrus-patch/target/site</url>
+		    <url>file://${rootdir}/papyrus-patch/v6.5.0/site-papyrus-patch/target/site</url>
 		    <layout>p2</layout>
 		</repository>
 	</repositories>
