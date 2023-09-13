@@ -23,8 +23,8 @@ import java.io.OutputStream;
 import java.io.StringBufferInputStream;
 import java.io.UnsupportedEncodingException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.osgi.util.NLS;
@@ -38,7 +38,7 @@ import com.zeligsoft.cx.codegen.l10n.Messages;
 @SuppressWarnings("deprecation")
 public class CXGenFileHandle implements FileHandle
 {
-	private final Log log = LogFactory.getLog( getClass() );
+	private final Logger log = LoggerFactory.getLogger( getClass() );
 
 	private final CXGenOutlet outlet;
 	private final String basePath;

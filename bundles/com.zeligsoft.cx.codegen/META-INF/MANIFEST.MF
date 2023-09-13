@@ -14,7 +14,6 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.4.1",
  org.eclipse.cdt.core;bundle-version="5.0.0",
  org.eclipse.core.filesystem;bundle-version="1.2.0";visibility:=reexport,
  org.eclipse.jface.text;bundle-version="3.4.0",
- org.apache.commons.logging;bundle-version="1.0.4",
  org.eclipse.emf.mwe.core;bundle-version="1.4.0",
  org.eclipse.emf.mwe.utils;bundle-version="1.4.0",
  org.eclipse.xpand;bundle-version="2.2.0",
@@ -26,6 +25,7 @@ Export-Package: com.zeligsoft.cx.codegen,
  com.zeligsoft.cx.codegen.io,
  com.zeligsoft.cx.codegen.postprocessor,
  com.zeligsoft.cx.codegen.rsm
+Import-Package: org.slf4j;version="2.0.7"
 Bundle-Activator: com.zeligsoft.cx.codegen.CodeGenPlugin
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
