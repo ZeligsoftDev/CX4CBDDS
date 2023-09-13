@@ -39,7 +39,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)",
 Bundle-Activator: com.zeligsoft.base.zdl.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
-Import-Package: org.apache.commons.logging,
- org.eclipse.internal.xpand2,
+Import-Package: org.eclipse.internal.xpand2,
  org.eclipse.internal.xpand2.ast,
- org.eclipse.internal.xpand2.parser
+ org.eclipse.internal.xpand2.parser,
+ org.slf4j;version="2.0.7"
