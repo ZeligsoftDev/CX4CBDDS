@@ -6,7 +6,8 @@ package com.zeligsoft.domain.omg.corba.dsl.ui.internal;
 import java.util.Collections;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.shared.SharedStateModule;
 import org.eclipse.xtext.util.Modules2;
@@ -25,7 +26,7 @@ public class IDLActivator extends AbstractUIPlugin {
 	
 	public static final String COM_ZELIGSOFT_DOMAIN_OMG_CORBA_DSL_IDL = "com.zeligsoft.domain.omg.corba.dsl.IDL";
 	
-	private static final Logger logger = Logger.getLogger(IDLActivator.class);
+	private static final Logger logger = LogManager.getLogger(IDLActivator.class);
 	
 	private static IDLActivator INSTANCE;
 	
