@@ -1,29 +1,31 @@
 /**
- * Copyright (c) 2015, 2022 itemis AG (http://www.itemis.eu) and others.
+ * Copyright (c) 2015, 2020 itemis AG (http://www.itemis.eu) and others.
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
  * http://www.eclipse.org/legal/epl-2.0.
  * 
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.eclipse.xtext.junit4.logging;
+package org.eclipse.xtext.testing.logging;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.Core;
 import org.apache.logging.log4j.core.Filter;
+import org.apache.logging.log4j.core.Filter.Result;
 import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.LoggerContext;
@@ -37,19 +39,21 @@ import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import org.apache.logging.log4j.core.filter.AbstractFilter;
 import org.apache.logging.log4j.message.Message;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.eclipse.xtext.xbase.lib.util.ToStringBuilder;
 import org.junit.Assert;
 
 import com.google.common.base.Objects;
+import com.google.common.annotations.Beta;
 import com.google.common.collect.Iterables;
 import com.google.common.primitives.Longs;
 
-/**
- * @deprecated Use org.eclipse.xtext.testing.logging.LoggingTester instead
- */
-@Deprecated(forRemoval = true)
+@Beta
 public class LoggingTester {
+	private static final Comparator<LogEntry> TEMPORAL_ORDER = ($0, $1) -> Longs.compare($0.timeStamp, $1.timeStamp);
+
 	public static class LogCapture {
 		private final List<LogEntry> logEntries;
 
@@ -74,16 +78,18 @@ public class LoggingTester {
 		}
 
 		public void assertNumberOfLogEntries(int number, Level level, String... messageParts) {
+			@SuppressWarnings("unchecked")
 			Iterable<LogEntry> passed = 
 					Iterables.filter(
-							logEntries, 
-							(LogEntry log) -> {
+							logEntries,
+							(LogEntry log) -> { 
 								return (level == null || Objects.equal(log.level, level)) 
 										&& IterableExtensions
-											.forall(messageParts == null ? null : Arrays.asList(messageParts), 
+											.forall(
+													((Iterable<String>) Conversions.doWrapArray(messageParts)),
 													(String it) -> log.message.contains(it));
-							});
-			if (Iterables.size(passed) != number) {
+											});
+			if (IterableExtensions.size(passed) != number) {
 				StringConcatenation builder = new StringConcatenation();
 				if (number == 0) {
 					builder.append("Expected no log entries");
@@ -106,31 +112,30 @@ public class LoggingTester {
 					builder.newLineIfNotEmpty();
 				}
 				builder.append("containing the phrases ");
-				builder.append(IterableExtensions.join(messageParts == null ? null : Arrays.asList(messageParts), ", ",
-						(String it) -> "\"" + it + "\""));
+				builder.append(Stream.of(messageParts).map(s -> "\"" + s + "\"").collect(Collectors.joining(", ")));
 				builder.newLineIfNotEmpty();
 				builder.append("but got");
 				builder.newLine();
-				builder.append(logEntries);
+				builder.append(this.logEntries);
 				builder.newLineIfNotEmpty();
 				Assert.fail(builder.toString());
 			}
 		}
 
 		public LogCapture(List<LogEntry> logEntries) {
+			super();
 			this.logEntries = logEntries;
 		}
 
 		@Override
+		@Pure
 		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((logEntries == null) ? 0 : logEntries.hashCode());
-			return result;
+			return 31 * 1 + ((logEntries == null) ? 0 : logEntries.hashCode());
 		}
 
 		@Override
-		public boolean equals(Object obj) {
+		@Pure
+		public boolean equals(final Object obj) {
 			if (this == obj)
 				return true;
 			if (obj == null)
@@ -147,12 +152,14 @@ public class LoggingTester {
 		}
 
 		@Override
+		@Pure
 		public String toString() {
 			ToStringBuilder b = new ToStringBuilder(this);
 			b.add("logEntries", logEntries);
 			return b.toString();
 		}
 
+		@Pure
 		public List<LogEntry> getLogEntries() {
 			return logEntries;
 		}
@@ -178,15 +185,14 @@ public class LoggingTester {
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
-			result = prime * result + ((level == null) ? 0 : level.hashCode());
-			result = prime * result + ((message == null) ? 0 : message.hashCode());
-			result = prime * result + ((source == null) ? 0 : source.hashCode());
+			result = prime * result + (message == null ? 0 : message.hashCode());
+			result = prime * result + (source == null ? 0 : source.hashCode());
 			result = prime * result + (int) (timeStamp ^ (timeStamp >>> 32));
-			return result;
+			return prime * result + (level == null ? 0 : level.hashCode());
 		}
 
 		@Override
-		public boolean equals(Object obj) {
+		public boolean equals(final Object obj) {
 			if (this == obj)
 				return true;
 			if (obj == null)
@@ -194,11 +200,6 @@ public class LoggingTester {
 			if (getClass() != obj.getClass())
 				return false;
 			LogEntry other = (LogEntry) obj;
-			if (level == null) {
-				if (other.level != null)
-					return false;
-			} else if (!level.equals(other.level))
-				return false;
 			if (message == null) {
 				if (other.message != null)
 					return false;
@@ -209,7 +210,12 @@ public class LoggingTester {
 					return false;
 			} else if (!source.equals(other.source))
 				return false;
-			if (timeStamp != other.timeStamp)
+			if (other.timeStamp != timeStamp)
+				return false;
+			if (level == null) {
+				if (other.level != null)
+					return false;
+			} else if (!level.equals(other.level))
 				return false;
 			return true;
 		}
@@ -245,27 +251,27 @@ public class LoggingTester {
 	private static class QueueAppender extends AbstractAppender {
 		
 		public static final String NAME = "QueueAppender";
-
+	
 		private final Queue<LogEntry> events = new ConcurrentLinkedQueue<LogEntry>();
-
+	
 		@PluginFactory
 		public static QueueAppender createAppender(@PluginAttribute("name") String name, 
 				@PluginElement("Layout") Layout<? extends Serializable> layout,
 				@PluginElement("Filter") Filter filter) {
 			return new QueueAppender(name, filter, layout);
 		}
-
+	
 		protected QueueAppender(String name, Filter filter, Layout<? extends Serializable> layout) {
 			super(name, filter, layout);
 		}
-
+	
 		@Override
 		public void append(LogEvent event) {
 			LogEntry entry = new LogEntry(event.getMessage().getFormattedMessage(), event.getLoggerName(),
 					event.getNanoTime(), event.getLevel());
 			events.add(entry);
 		}
-
+	
 		@SuppressWarnings("unused")
 		public Queue<LogEntry> getEvents() {
 			return events;
@@ -275,7 +281,7 @@ public class LoggingTester {
 	private static class SourceFilter extends AbstractFilter {
 		
 		private final Logger source;
-
+	
 		@Override
 		public Result filter(LogEvent event) {
 			if (Objects.equal(event.getLoggerName(), source.getName())) {
@@ -284,7 +290,7 @@ public class LoggingTester {
 				return Result.NEUTRAL;
 			}
 		}
-
+	
 	    /**
 	     * Appender Filter method. The default returns NEUTRAL.
 	     * @param logger the Logger.
@@ -303,7 +309,7 @@ public class LoggingTester {
 				return Result.NEUTRAL;
 			}
 	    }
-
+	
 	    /**
 	     * Appender Filter method. The default returns NEUTRAL.
 	     * @param logger the Logger.
@@ -322,7 +328,7 @@ public class LoggingTester {
 				return Result.NEUTRAL;
 			}
 	    }
-
+	
 	    /**
 	     * Appender Filter method. The default returns NEUTRAL.
 	     * @param logger the Logger.
@@ -341,11 +347,11 @@ public class LoggingTester {
 				return Result.NEUTRAL;
 			}
 	    }
-
+	
 		public SourceFilter(Logger source) {
 			this.source = source;
 		}
-
+	
 		@Override
 		public int hashCode() {
 			final int prime = 31;
@@ -353,7 +359,7 @@ public class LoggingTester {
 			result = prime * result + ((source == null) ? 0 : source.hashCode());
 			return result;
 		}
-
+	
 		@Override
 		public boolean equals(Object obj) {
 			if (this == obj)
@@ -370,12 +376,12 @@ public class LoggingTester {
 				return false;
 			return true;
 		}
-
+	
 		@Override
 		public String toString() {
 			return new ToStringBuilder(this).addAllFields().toString();
 		}
-
+	
 		@SuppressWarnings("unused")
 		public Logger getSource() {
 			return source;
@@ -417,7 +423,4 @@ public class LoggingTester {
 		return loggerConfigs;
 	}
 
-	private static final Comparator<LogEntry> TEMPORAL_ORDER = (LogEntry $0, LogEntry $1) -> {
-		return Longs.compare($0.timeStamp, $1.timeStamp);
-	};
 }
