@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.xtend"
+      id="org.eclipse.xpand"
       label="%featureName"
       version="2.2.1.qualifier"
       provider-name="%providerName">
@@ -22,37 +22,19 @@
    </url>
 
    <includes
-         id="org.eclipse.xtend.dependencies"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.xtend.typesystem.emf"
+         id="org.eclipse.xtend"
          version="0.0.0"/>
 
    <requires>
+      <import plugin="org.eclipse.xtend"/>
       <import plugin="org.eclipse.emf.mwe.core"/>
-      <import plugin="org.eclipse.emf.common" version="2.2.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.ecore.xmi" version="2.2.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.mwe.utils"/>
+      <import plugin="org.eclipse.jdt.core" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.text" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="org.antlr.runtime"/>
    </requires>
 
    <plugin
-         id="org.eclipse.xtend"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtend.profiler"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xtend.util.stdlib"
+         id="org.eclipse.xpand"
          download-size="0"
          install-size="0"
          version="0.0.0"
