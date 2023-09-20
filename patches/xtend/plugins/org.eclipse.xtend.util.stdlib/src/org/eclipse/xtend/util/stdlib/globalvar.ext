@@ -1,0 +1,57 @@
+// ****************************************************************************
+// *** openArchitectureWare stdlib extensions: globalvar
+// *** ------------------------------------------------------------------------
+// *** This library contains functions to store and retrieve objects.
+// ****************************************************************************
+
+/**
+ * Stores an object.
+ * @param s A key
+ * @param o The object to store. Pass null to remove the global var.
+ * @return Returns the stored object
+ */
+Object storeGlobalVar(String s, Object o) :
+   internalStoreGlobalVar(s,o) -> o 
+;
+
+/**
+ * Retrieves a stored object.
+ * @param s The key under which the object is stored.
+ * @return The stored object or null if no object was stored for the key.
+ */
+Object getGlobalVar(String s) :
+   internalGetGlobalVar(s)
+;
+
+/**
+ * Removes a stored object from the global var store.
+ * @param s The key under which the object is stored.
+ * @return The stored object or null if no object was stored for the key.
+ */
+Object removeGlobalVar(String s) :
+   internalRemoveGlobalVar(s)
+;
+
+/**
+ * Clears all global variables.
+ */
+Void clearGlobalVars() : internalClearGlobalVars();
+
+// -------------------------------- INTERNAL --------------------------------   
+
+
+private Void internalStoreGlobalVar(String s, Object o) :
+   JAVA org.eclipse.xtend.util.stdlib.GlobalVarExtensions.storeGlobalVar(java.lang.String, java.lang.Object)
+;
+
+private Object internalGetGlobalVar(String s) :
+   JAVA org.eclipse.xtend.util.stdlib.GlobalVarExtensions.getGlobalVar(java.lang.String)
+;
+
+private Object internalRemoveGlobalVar(String s) :
+   JAVA org.eclipse.xtend.util.stdlib.GlobalVarExtensions.removeGlobalVar(java.lang.String)
+;
+
+private Void internalClearGlobalVars() :
+   JAVA org.eclipse.xtend.util.stdlib.GlobalVarExtensions.clearGlobalVars()
+;

@@ -1,0 +1,53 @@
+// ****************************************************************************
+// *** openArchitectureWare stdlib extensions: naming
+// *** ------------------------------------------------------------------------
+// *** This library contains functions for supporting mixin models.
+// ****************************************************************************
+extension org::eclipse::xtend::util::stdlib::naming;
+extension org::eclipse::xtend::util::stdlib::issues;
+
+/**
+ * Returns the corresponding mixin element for the context object; the mixin
+ * must be of type t and its name attribute must correspond to the qualified 
+ * name of the context. If none is found, a workflow ERROR is raised and a 
+ * null object is returned (so you can call additional operations on it 
+ * without getting a null evaluation error).
+ * @param mixinModel The root element of the mixin model.
+ * @param ctx The context object.
+ * @param t The type of the mixin model element.
+ * @return The mixin model element corresponding to ctx.
+ */
+Object getMandatoryMixin( Object mixinModel, Object ctx, xpand2::Type t ):
+	let m = getMixin( mixinModel, ctx, t ): m != null ? m : ( reportError( ctx, "no mixin of type "+t.name+" found in mixin model "+mixinModel.metaType.getName()+". Available mixins of that type are "+mixinModel.all(t) ) -> createEmpty(t) );
+
+/**
+ * Returns the corresponding mixin element for the context object; the mixin
+ * must be of type t and its name attribute must correspond to the qualified 
+ * name of the context. If none is found, a null object is returned.
+ * @param mixinModel The root element of the mixin model.
+ * @param ctx The context object.
+ * @param t The type of the mixin model element.
+ * @return The mixin model element corresponding to ctx.
+ */
+Object getOptionalMixin( Object mixinModel, Object ctx, xpand2::Type t ):
+	getMixin( mixinModel, ctx, t );
+
+
+
+// -------------------------------- INTERNAL --------------------------------   
+			
+
+private Collection all( Object container, xpand2::Type t ):
+	container.getEAllContents().select(e | t.isInstance(e) ).collect( e| e.getName() );
+	
+private createEmpty( xpand2::Type t ): t.newInstance();
+
+private Object getMixin( Object mixinModel, Object ctx, xpand2::Type t ):
+	mixinModel.getEAllContents().selectFirst(e | t.isInstance(e) && e.getName() == ctx.qualifiedName() );
+	
+	
+private Collection getEAllContents( Object o ): o.metaType.getProperty("eAllContents").get(o);
+private String getName( Object o ): 
+	let p = o.metaType.getProperty("name"): p != null ? p.get(o) : reportError(o, " has no name attribute; mixing model elements need to have a name (type: "+o.metaType+")!");
+	
+	

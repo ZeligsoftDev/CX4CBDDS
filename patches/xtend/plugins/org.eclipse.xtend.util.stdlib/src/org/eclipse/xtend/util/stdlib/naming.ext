@@ -1,0 +1,94 @@
+// ****************************************************************************
+// *** openArchitectureWare stdlib extensions: naming
+// *** ------------------------------------------------------------------------
+// *** This library contains functions for evaluating names on model elements,
+// *** e.g. computing qualified names from a containment hierarchy.
+// *** These functions will only work for EMF based models. It is generally 
+// *** assumed that elements on which these functions are invoked on
+// *** have a feature 'name' of type EString. 
+// ****************************************************************************
+extension org::eclipse::xtend::util::stdlib::io;
+
+/**
+ * Returns the namespace, i.e. the qualified name minus the name of the element itself.
+ * @param this A model element.
+ * @return The qualified namespace name of the element.
+ */
+String namespace(Object this): (getEContainer() != null) ? concat( getEContainer().namespace(), getName(getEContainer()) ) : null;
+
+/**
+ * Returns the qualified name (dot separated) of an element by evaluating its containment hierarchy.
+ * @param this A model element.
+ * @return The qualified name of the element.
+ */
+String qualifiedName(Object this): concat( namespace(), getName() );
+
+// ****************************************************************************
+// *** openArchitectureWare stdlib extensions: naming
+// *** ------------------------------------------------------------------------
+// *** This library contains functions for evaluating names on model elements,
+// *** e.g. computing qualified names from a containment hierarchy.
+// *** These functions will only work for EMF based models. It is generally 
+// *** assumed that elements on which these functions are invoked on
+// *** have a feature 'name' of type EString. 
+// ****************************************************************************
+
+/**
+ * Tries to build a useful description of an element in the model; very useful for error reporting.
+ * @param this A model element.
+ * @return Location information about the element.
+ */
+String loc(Object this): 
+	namespace() == null ? 
+		"["+this.metaType+", "+getName()+"]" : 
+		"["+this.metaType+", "+namespace()+"."+getName()+"]"; 
+
+Object findChildByName( Object contextObject, String name, xpand2::Type t ):
+	contextObject.getEContents().selectFirst( e | t.isAssignableFrom(e.metaType) && e.getName() == name );
+			
+/**
+ * Searches the candidates for an element with a specific name.
+ * @param candidates A collection of model elements.
+ * @param name The searched element name.
+ * @return The searched element or null if no element with that name is contained in the candidates collection.
+ */
+Object findByName( Collection candidates, String name ):
+	candidates.selectFirst( e | e.getName() == name );
+			
+Object findSiblingByName( Object object, String name, xpand2::Type t ):
+	findChildByName( object.getEContainer(), name, t );
+	
+Object resolveNameFromHere( Object ctx, String name, xpand2::Type t ):
+	!name.isQualifiedName()	? findSiblingByName( ctx, name, t ) :
+		findObjectByQualifiedName( ctx.getERootContainer(), name, t );
+		
+Object resolveNameFromParent( Object ctx, String name, xpand2::Type t ):
+	resolveNameFromHere( ctx.getEContainer(), name, t );
+	
+Object resolveNameFromParent( Object ctx, String name ):
+	resolveNameFromHere( ctx.getEContainer(), name, Object );
+		
+Object findObjectByQualifiedName( Object root, String qName, xpand2::Type t ):
+	root.getEAllContents().selectFirst(e | t.isInstance(e) && e.qualifiedName() == qName );
+		
+/**
+ * Proves if a name is a qualified name.
+ * @param name A name string
+ * @return true if the name contains a dot.
+ */
+boolean isQualifiedName( String name ): name.contains(".");
+			
+private String getName( Object o ): o.metaType.getProperty("name").get(o);
+private Object getEContainer( Object o ): o.metaType.getProperty("eContainer").get(o);
+private Object getERootContainer( Object o ): o.metaType.getProperty("eRootContainer").get(o);
+private Collection getEContents( Object o ): o.metaType.getProperty("eContents").get(o);
+private Collection getEAllContents( Object o ): o.metaType.getProperty("eAllContents").get(o);
+
+private String concat( String s1, String s2 ): 
+	switch {
+		case ((s1 == null) && (s2 == null)): null
+		case ((s1 == null) && (s2 != null)): s2
+		case ((s1 != null) && (s2 == null)): s1
+		default: s1+"."+s2
+	};
+ 

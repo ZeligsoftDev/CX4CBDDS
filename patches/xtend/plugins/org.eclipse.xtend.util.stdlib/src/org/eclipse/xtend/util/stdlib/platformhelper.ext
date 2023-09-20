@@ -1,0 +1,3 @@
+String platformRootPath(Object ctx): JAVA org.eclipse.xtend.util.stdlib.PlatformHelper.getPlatformRootPath(java.lang.Object);
+String UrlifiedPlatformRootPath(Object ctx): platformRootPath(ctx).replaceAll(":", "|");
+ 
