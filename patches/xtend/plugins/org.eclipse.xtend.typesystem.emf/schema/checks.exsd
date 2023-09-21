@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.xtend.typesystem.emf" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.xtend.typesystem.emf" id="checks" name="Checks"/>
+      </appInfo>
+      <documentation>
+         This extension point is used to register EValidators that execute Check files to validate Ecore models (EPackages). Having registered a Check file on an Ecore model, instances of that meta-model can be validated using the common EMF-API:
+
+&lt;pre&gt;
+org.eclipse.emf.ecore.util.Diagnstician.INSTANCE.validate(rootModelObject)
+&lt;/pre&gt;
+
+Already registered EValidators are nested by default. If you disable nesting make sure all other defining plug-ins are initialized before the overriding plug-in is started.
+
+To enable this extension point, make sure the plug-in is loaded, e.g. by calling &lt;code&gt;org.eclipse.xtend.typesystem.emf.check.CheckRegistry.getInstance()&lt;/code&gt; explicitly. Otherwise the extensions will not be parsed and no EValidator will be registered.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="metaModel" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="metaModel">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="nsURI"/>
+         </appInfo>
+         <documentation>
+            The Ecore model (EPackage) to be checked.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="checkFile"/>
+         </sequence>
+         <attribute name="nsURI" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The namespace URI of the EPackage that should be checked. The EPackage must be registered to the global EPackage.Registry using the extension point  &lt;code&gt;org.eclipse.emf.ecore.generated_package&lt;/code&gt;.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="override" type="boolean">
+            <annotation>
+               <documentation>
+                  If &lt;code&gt;true&lt;/code&gt;, already registered EValidators are replaced. Otherwise, they are nested.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="checkFile">
+      <annotation>
+         <documentation>
+            The openArchitectureWare Check file.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="referencedMetaModel"/>
+         </sequence>
+         <attribute name="path" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The plug-in relative path of the check file. The extension &lt;code&gt;.chk&lt;/code&gt; can be omitted. The openArchitectureWare specific namespace delimiter &lt;code&gt;::&lt;/code&gt; can be used.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="referencedMetaModel">
+      <annotation>
+         <appInfo>
+            <meta.element labelAttribute="nsURI"/>
+         </appInfo>
+      </annotation>
+      <complexType>
+         <attribute name="nsURI" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;pre&gt;
+&lt;extension point=&quot;org.eclipse.xtend.typesystem.emf.checks&quot;&gt;
+ &lt;metaModel nsURI=&quot;http://www.myproject.org/my/metamodel/nsURI&quot;&gt;
+   &lt;checkFile path=&quot;some/java/package/location/check.chk&quot;/&gt;
+  &lt;/metaModel&gt;
+&lt;/extension&gt;
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2008 itemis AG and others.
+
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+Jan Koehnlein, Dennis Huebner - initial API and implementation
+      </documentation>
+   </annotation>
+
+</schema>
