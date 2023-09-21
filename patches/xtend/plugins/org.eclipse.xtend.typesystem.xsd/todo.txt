@@ -1,0 +1,20 @@
+- XMLTypeMapper: Provide Types for:
+	- XML-Lists (http://www.openarchitectureware.org/forum/viewtopic.php?showtopic=10240)
+	- Dates
+	- Duration
+	- Processing Instructions
+- Project analyzer: scan jars.
+- Provide a workflow component for xml validator
+- Provide meaningful errors in case a schema is not defined
+- allow XMLReader to read multiple files
+- print warnings if a DocumentRoot with multiple initialized features is about to be serialized to xml
+- add contructor for QName with parameters for only prefix and localName
+- support imports without schemalocation
+- make toXMLFile(), toXMLContent(), toXMLTag() return xml
+- make ALL custom types accessable via name and test it
+- fix progress bar of XSDBuilder
+- Find an elegant solution to deal with types that have member types, if necessary.
+- Implement something like autoboxing for BigInt.
+- primitive elements are defaulted to their first value, no matter whether they are set:
+  http://www.openarchitectureware.org/forum/viewtopic.php?showtopic=10239
+  http://www.openarchitectureware.org/forum/viewtopic.php?showtopic=9903

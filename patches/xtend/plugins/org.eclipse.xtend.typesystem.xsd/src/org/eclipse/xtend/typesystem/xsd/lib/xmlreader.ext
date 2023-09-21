@@ -1,0 +1,116 @@
+/*******************************************************************************
+ * Copyright (c) 2005 - 2009 itemis AG (http://www.itemis.eu) and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ *******************************************************************************/
+
+
+/**
+ * This file contains public API to read XML files from Xtend/Xpand.
+ *  
+ * @author Moritz Eysholdt - Initial contribution and API
+ */
+ 
+import emf;
+
+/**
+ * Reads the file xmlFileName and returns the root-node's EObject representation.
+ * The supplied EObject readerContext is used to reuse the XSDMetaModel associated with it. This
+ * avoids costly reloading of XSD files and regeneration of EPackages. Furthermore xmlFileName can be
+ * treated as relative to the URI where readerContext has been loaded from. This behavior is useful 
+ * especially if one XML file is read which contains filenames of referenced XML files that are relative
+ * to the first XML file's location. In this case, they are looked up automatically.
+ *
+ * Example:
+ * --- XSD ---
+ *  <complexType name="FileList">
+ * 		<sequence>
+ * 			<element name="file" type="string" maxOccurs="unbounded" minOccurs="0" />
+ * 		</sequence>
+ * 	</complexType>
+ * 	<element name="files" type="tns:FileList"></element>
+ * --- /XSD ---
+ *
+ * --- XML ---
+ * <files>
+ * 		<file>Loadcurve1.xml</file>
+ * 		<file>Loadcurve2.xml</file>
+ * </files>
+ * --- /XML ---
+ *
+ * --- Xtend ---
+ * import fileList;
+ * import loadCurve;
+ * extension org::eclipse::xtend::typesystem::xsd::lib::xmlreader;
+ *
+ * List[Loadcurve] readXMLWithContext(FileList files):
+ *		files.file.collect(e|(Loadcurve)files.readXML(e));
+ * --- /Xtend ---
+ *
+ * The example loads all Loadcurve-XML-Files which are specified in the above snippet using
+ * readXML(EObject readerContext, String xmlFileName). The supplied value for readerContext is
+ * the variable 'files', the object-oriented syntax is a feature of the Xtend language. As we know
+ * that our files will only contain loadcurves, we can safely typecast from EObject to 'Loadcurve' ;)
+ * 
+ * @param readerContext This is any EObject that has been loaded by the XMLReader previously, 
+ *						for example in the workflow. 
+ *
+ * @param xmlFileName The name of the XML-file which is to be loaded. The file is looked up relative 
+ *					  to the path, where readerContext has been load from, first, then in the classpath 
+ *					  and the Eclipse plugin path.
+ *
+ * @return The EObject of the XML files root element. This is not the DocumentRoot object but one of it's children. 
+ */  					
+EObject readXML(EObject readerContext, String xmlFileName):
+	JAVA org.eclipse.xtend.typesystem.xsd.lib.XMLReaderHelper.readXML(org.eclipse.emf.ecore.EObject,java.lang.String);
+
+
+/** 
+ * Loads an XML files and creates a new XSDMetaModel. Needed XSDs are reloaded and EPackages regenerated. This
+ * is a quite calculation-intensive process that you can avoid by using readXML(EObject readerContext, String xmlFileName)
+ * instead.
+ *
+ * @param xmlFileName The XML file's name. Lookup is done within the classpath and the Eclipse plugin path.
+ *
+ * @return The EObject of the XML files root element. This is not the DocumentRoot object but one of it's children. 
+ */
+EObject readXML(String xmlFileName):
+	JAVA org.eclipse.xtend.typesystem.xsd.lib.XMLReaderHelper.readXML(java.lang.String);
+
+
+/** 
+ * Loads an XML files and reuses an XSDMetaModel which has been defined within the workflow. If you can, avoid 
+ * using this method and use readXML(EObject readerContext, String xmlFileName) instead. It provides the same 
+ * advantages, a better lookup meachanism for files and it is more elegant not to use the XSDMetaModel's 
+ * ID outside the workflow.  
+ *
+ * @param xmlFileName The XML file's name. Lookup is done within the classpath and the Eclipse plugin path.
+ *
+ * @param xsdMetaModelID An XSDMetaModel's ID, which has been defined within the workflow.
+ *
+ * @return The EObject of the XML files root element. This is not the DocumentRoot object but one of it's children. 
+ */ 
+EObject readXML(String xmlFileName, String xsdMetaModelID):
+	JAVA org.eclipse.xtend.typesystem.xsd.lib.XMLReaderHelper.readXML(java.lang.String,java.lang.String);
+
+/** 
+ * Same as readXML(String xmlFileName), but returns the XML files DocumentRoot-EObject instead.
+ */
+EObject readDocumentRoot(String xmlFileName):
+	JAVA org.eclipse.xtend.typesystem.xsd.lib.XMLReaderHelper.readDocumentRoot(java.lang.String);
+
+/** 
+ * Same as readXML(EObject readerContext, String xmlFileName), but returns the XML files DocumentRoot-EObject instead.
+ */
+EObject readDocumentRoot(EObject readerContext, String xmlFileName):
+	JAVA org.eclipse.xtend.typesystem.xsd.lib.XMLReaderHelper.readDocumentRoot(org.eclipse.emf.ecore.EObject,java.lang.String);
+
+/** 
+ * Same as readXML(String xmlFileName, String xsdMetaModelID), but returns the XML files DocumentRoot-EObject instead.
+ */
+EObject readDocumentRoot(String xmlFileName, String xsdMetaModelID):
+	JAVA org.eclipse.xtend.typesystem.xsd.lib.XMLReaderHelper.readDocumentRoot(java.lang.String,java.lang.String);
+
