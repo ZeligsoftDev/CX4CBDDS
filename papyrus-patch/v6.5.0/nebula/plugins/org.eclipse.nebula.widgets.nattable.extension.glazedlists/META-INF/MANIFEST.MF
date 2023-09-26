@@ -1,0 +1,359 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.eclipse.nebula.widgets.nattable.extension.gla
+ zedlists
+Archiver-Version: Plexus Archiver
+Built-By: genie.nebula
+Require-Bundle: ca.odell.glazedlists;bundle-version="1.9.0"
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: Eclipse Nebula NatTable
+Import-Package: org.apache.commons.codec;version="[1.3.0,2.0.0)",
+ org.apache.commons.codec.binary;version="[1.3.0,2.0.0)",
+ org.apache.logging.log4j;version="2.17.1",
+ org.eclipse.nebula.widgets.nattable;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.blink;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.command;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.config;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.coordinate;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.data;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.data.convert;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.edit;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.edit.action;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.edit.command;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.edit.editor;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.filterrow;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.filterrow.combobox;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.filterrow.command;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.filterrow.config;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.grid;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.grid.command;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.grid.data;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.grid.layer;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.hideshow;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.hideshow.command;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.hideshow.event;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.layer;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.layer.cell;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.layer.event;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.layer.stack;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.painter.cell;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.painter.cell.decorator;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.persistence;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.reorder.action;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.search.event;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.sort;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.sort.command;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.sort.config;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.sort.event;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.sort.painter;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.style;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.style.theme;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.summaryrow;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.summaryrow.command;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.tree;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.ui;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.ui.action;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.ui.binding;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.ui.matcher;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.ui.menu;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.ui.util;version="[1.5.0,2.0.0)",
+ org.eclipse.nebula.widgets.nattable.util;version="[1.5.0,2.0.0)",
+ org.eclipse.swt,
+ org.eclipse.swt.custom,
+ org.eclipse.swt.events,
+ org.eclipse.swt.graphics,
+ org.eclipse.swt.widgets
+Export-Package: org.eclipse.nebula.widgets.nattable.extension.glazedli
+ sts;version="1.5.0",org.eclipse.nebula.widgets.nattable.extension.gla
+ zedlists.filterrow;version="1.5.0",org.eclipse.nebula.widgets.nattabl
+ e.extension.glazedlists.groupBy;version="1.5.0",org.eclipse.nebula.wi
+ dgets.nattable.extension.glazedlists.groupBy.action;version="1.5.0",o
+ rg.eclipse.nebula.widgets.nattable.extension.glazedlists.groupBy.comm
+ and;version="1.5.0",org.eclipse.nebula.widgets.nattable.extension.gla
+ zedlists.groupBy.summary;version="1.5.0",org.eclipse.nebula.widgets.n
+ attable.extension.glazedlists.hideshow;version="1.5.0",org.eclipse.ne
+ bula.widgets.nattable.extension.glazedlists.tree;version="1.5.0"
+Bundle-Name: NatTable extension for GlazedLists
+Bundle-Version: 1.5.1.qualifier
+Created-By: Apache Maven 3.3.9
+Build-Jdk: 1.8.0_121
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/Glazed
+ ListsDataProvider$1.class
+SHA-256-Digest: LakIKcH0M91N8xFPNM26fIeD5Jf9CsUpzhkt5XPANu0=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByDataLayer$1.class
+SHA-256-Digest: sBV/sPAqC3fVKQQOecyIJjQ7ml1LDQuHxSoahYcSmlk=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByDataLayer$GroupByValueCacheKey.class
+SHA-256-Digest: a047ijfS8IvRpcqxGvmhzmCqjTYAoG/5QRuAf4MgDK0=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/Glazed
+ ListsEventLayer$1.class
+SHA-256-Digest: uBcKb8JTMlU5rmFCd8R7uY8Mk9lQR4wycUb04SjX1Ls=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByHeaderMenuConfiguration$2.class
+SHA-256-Digest: nZ4w4y5Hh9WRm4rAvDPyz1AeNg4So2AoTrWq4Ahqjd4=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByComparator.class
+SHA-256-Digest: 4wPBHlniSNnX/2F87nkJ6edaYbwfe8s+txlsg17TqKQ=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/command/GroupByColumnCommandHandler.class
+SHA-256-Digest: gd//J1wSX2bCHi7g3etNdD6H2MNgcaEpa4UNt8wjl7M=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/NatCol
+ umnTableFormat.class
+SHA-256-Digest: Kezpy22MS0jQUbs9LMLhgWyXsQsa7WNexkjFxNYF4Ow=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByHeaderPainter.class
+SHA-256-Digest: GYH+Qq96iUQxeTVSqrBuQiqBT3VOeXMu++wj3lNoLoQ=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/Detail
+ GlazedListsEventLayer.class
+SHA-256-Digest: tZ0EUwt5BGQ0FzRKtX4AFWzEn6QInmNR+K/g6Qsiryk=
+
+Name: META-INF/maven/org.eclipse.nebula.widgets.nattable/org.eclipse.n
+ ebula.widgets.nattable.extension.glazedlists/pom.properties
+SHA-256-Digest: KD1yeF7AIWUhGyIH0ODQc00Nt/A6xg3eMfB7xJE5bw4=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByColumnReorderDragMode.class
+SHA-256-Digest: 0fhtl7oq3jAaBm2UcLIXtWdK41NCKjHwIuuPIOY1QZU=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByColumnAccessor.class
+SHA-256-Digest: fKH3a1ir5A28vB/isB+IYFnTKLr/ukTDNn1Cs0H8v6Y=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/Detail
+ GlazedListsEventLayer$3.class
+SHA-256-Digest: xQwhp5jovs+z0jJrJ3dBEWlRozTzpjDjJEL8HtDq5pU=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByDataLayer$2.class
+SHA-256-Digest: rhVODmLoXP5OXe6l3b0OzKX2Ee81Gl0JhozNn1Ig5MI=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/summary/SummationGroupBySummaryProvider.class
+SHA-256-Digest: 7GUpxvjt5CzVDILY09e8NZHiTLVjJH6dBhfUzMZUuik=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByDataLayer$GroupByExpansionModel.class
+SHA-256-Digest: L1guLXL9dwjRltw1bzUNP4oY3TaAfURryHsXT3yIQic=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/DefaultGroupByThemeExtension.class
+SHA-256-Digest: 6Gdb6RF103+JIilNpEI/2xSiO9btYAQKo0nj26RMnvE=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/Glazed
+ ListsEventLayer.class
+SHA-256-Digest: i5O3pCKlq1ae6u7yvlJclrVNeJ3uDA+Qr8G9LrHzBL4=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByHeaderLayer$1.class
+SHA-256-Digest: svMGdZu81aySM62eqihbMAs7Vsg/YSS7VDHPd//k/e4=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/Glazed
+ ListsDataProvider.class
+SHA-256-Digest: TvaZN8yfsK8U/5QTE9DBQJOjm8vAAWDD2zvKz0TF1nM=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByComparator$GroupByObjectValueCache.class
+SHA-256-Digest: Ggo1VD1+G9uTZNAO6ZQs0WrBzzDvbK1oLCZ2cdVC8bc=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByConfigAttributes.class
+SHA-256-Digest: SjLxfppabGKEDXtFZbKOB+RyKo1rA8/YmhpGdQzAQ30=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/filter
+ row/FilterRowUtils.class
+SHA-256-Digest: ofqHy/uh2t5GhZfv0LgfaSCAaLrQpmVQfYvH5Lo0KDs=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/tree/G
+ lazedListTreeRowModel.class
+SHA-256-Digest: zQHlxs7E9ARqZedr+nxyj/VnBpFvEKpY1VgePDizIyU=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByDataLayer$GroupDescriptorMatcher.class
+SHA-256-Digest: Gb/nJZQ5UE6+2hvYyE9/9quBxJeVH6TrkZ5pvuTLyJA=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByDisplayConverter.class
+SHA-256-Digest: aSq+FkOzoikqrp9B9IxGlJo8e5dhwg8iCN8WcRV2clk=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/filter
+ row/DefaultGlazedListsStaticFilterStrategy.class
+SHA-256-Digest: gbws3FmQAvd0WFrEwU7zCimrmOa57b2IALpHi/jVJL8=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByHeaderLayer.class
+SHA-256-Digest: jP3U4HLPXJoaOMXGDfRREpRfLAmbQc32BR7YrocQ0N8=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByHeaderMenuConfiguration$2$1.class
+SHA-256-Digest: AM6s9ZU2JoIQmdy6ZBQn8rOk2oj4HU9Al5+2JfTgzQU=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/hidesh
+ ow/GlazedListsRowHideShowLayer.class
+SHA-256-Digest: GbAjRwFijdD8LK7gDZLIXGH2p7uleMizD1LRTeyUeyw=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByConfigLabelModifier.class
+SHA-256-Digest: tM1LMdTrxmSnA4OR+OOTxoZx+dIz+eQFg8fgnhnvXA4=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByCellTextPainter.class
+SHA-256-Digest: 0wdSBjCrPxpTWseX6uan+/zFzWCCoZXkQkkHI/soj+Q=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByHeaderMenuConfiguration.class
+SHA-256-Digest: G762f8WVOTSUIsJoB4HePkYdXvIBl4D7Hw2YLSoI7sQ=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/filter
+ row/GlazedListsFilterRowComboBoxDataProvider$1.class
+SHA-256-Digest: rwwralTKlyfaDz1goNp+B4FR45RlcZ6WJEoF/4lIKto=
+
+Name: META-INF/maven/org.eclipse.nebula.widgets.nattable/org.eclipse.n
+ ebula.widgets.nattable.extension.glazedlists/pom.xml
+SHA-256-Digest: f7FTBJbwa/S2B3RsEw/XTsrcoIXfN4kBvk+w/uXz5ig=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/Detail
+ GlazedListsEventLayer$1.class
+SHA-256-Digest: HQG24rEi395On8vP7ubSTL2eL+CE0TEuuQ/ucq65zOI=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/filter
+ row/GlazedListsFilterRowComboBoxDataProvider.class
+SHA-256-Digest: BIwu/dQh+ITJDUmjizDDxtOTMLL3td8ea/+k9/ESr64=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/ModernGroupByThemeExtension.class
+SHA-256-Digest: ptCqLQu2LS1AaiT29NPZ0cWTFBGeq/wdBig9MaIAcgg=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByTreeFormat.class
+SHA-256-Digest: wKnowTYXFgG+QGId8gn6i/LaVLu38XlLXvAsCLEKJso=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/tree/G
+ lazedListTreeData.class
+SHA-256-Digest: ycgDgLZgYxdWJ5l9HRux9I2ley9fGLmTLTuatbtx1GQ=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/command/UngroupByColumnCommandHandler.class
+SHA-256-Digest: v1ZUzcCpZxt36sRkESiJHWMl6bVKIVSeuuBBj+NizWs=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/filter
+ row/ComboBoxGlazedListsFilterStrategy.class
+SHA-256-Digest: E2mx1gk1D13GKAwpCi3Ea1YMGOSS5/m8Hy0awv6QDDI=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/filter
+ row/DefaultGlazedListsFilterStrategy.class
+SHA-256-Digest: HgriAtKF7BRctyXP/D0WAXiMt+xBP71Nd8g1BWydKIk=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/filter
+ row/DefaultGlazedListsFilterStrategy$2.class
+SHA-256-Digest: KkzMNzGv79Q9EKphnndDi13uMViIMd3nsBWEyFwcAEQ=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByHeaderConfiguration.class
+SHA-256-Digest: 0QukQmnHmYtw1CNt4lexkOhWwdAsnK8R2rZ0CgR6b5M=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/filter
+ row/ComboBoxGlazedListsFilterStrategy$1.class
+SHA-256-Digest: pRV4DK4Q81Gvf/deUB80P8QV7encYmXZi7bsgLaINA4=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/Glazed
+ ListsEventLayer$2.class
+SHA-256-Digest: XWML7Lov+z5J4TSmMcmkLY0zgZLoAJ2QvEVYw6OgU9g=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/command/UngroupByColumnIndexCommand.class
+SHA-256-Digest: +KRKU0qmYdcJmv8aQ4IulCGudnzyivRx/G5OZRbySPQ=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/command/GroupByColumnIndexCommand.class
+SHA-256-Digest: 8QII4VIlbe7L7Kt+2i+IQrulTs6jtJPcR50SYqxUguI=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByDataLayer$3.class
+SHA-256-Digest: y1SenQyt9iWj1XxFh/L5hwezr47i71Nwj2SylDjrBM8=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/action/GroupByDragMode.class
+SHA-256-Digest: B7tKNVVN4IRhMC9ZWJcd2OBsbrTyJKfKWKcyTqNWLyI=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/summary/IGroupBySummaryProvider.class
+SHA-256-Digest: BFmOQC/12FAuZCISbDtRcRx8R2oENOHzT3gqV3Cm4Vg=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/IGroupByComparator.class
+SHA-256-Digest: fe0Y9Ti/Y5NsfxYK7sq571qKCaokT4ciZnsXRN0Cg7U=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByHeaderMenuConfiguration$1.class
+SHA-256-Digest: FekAxGQV/0H1ZP2U0KMXzPors6odhzHy8Zt7eBeSGZI=
+
+Name: about.html
+SHA-256-Digest: 1fuYr0bu6NsJZCAmSom5QtnvnV0Cg8DwLn77Dd1Ql24=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/DarkGroupByThemeExtension.class
+SHA-256-Digest: dmCy1LYOMP5FpR+WpZcg+3aQ5YbeiA2WXPaLJHdJSUA=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/filter
+ row/DefaultGlazedListsStaticFilterStrategy$1.class
+SHA-256-Digest: BT47EmZyjU0tENO9pzHBikQh84ztAeQzuk0m+BfCr7I=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/hidesh
+ ow/GlazedListsRowHideShowLayer$HideRowMatcherEditor.class
+SHA-256-Digest: D7DD4/6dbFCyHxtRalAhF+7UZVlnfULQQ34HmprNmw0=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/hidesh
+ ow/GlazedListsRowHideShowLayer$HideRowMatcherEditor$1.class
+SHA-256-Digest: 146ZXgdjPnXTENDYLP/FIEPBL9/UOusUbVvjxtEoSXU=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByModel.class
+SHA-256-Digest: t9tikeu6iYO4sRdj4IQ8oDhKkN7t75EyjZRcMozR0Rw=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/Glazed
+ ListsSortModel.class
+SHA-256-Digest: LFzwO2ToPb9KsLBcauzgEFrzQSXSUaZgyVbqEzXKsIo=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByDataLayerConfiguration.class
+SHA-256-Digest: nY5JzWkOu6Wka1wQcJ3Z33cAHoW7qHOpwPChX/oU5Nw=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/NatTab
+ leComparatorChooser$ComparatorInfo.class
+SHA-256-Digest: /3pAlnSou89UrrR0yEp53zJlI2YYkbkdBptD3aCSDe4=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByObject.class
+SHA-256-Digest: Wc9nUjjD3CgGQNs2o6P61R0jgQwYJ7KwRStAqtW0/pc=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/filter
+ row/DefaultGlazedListsFilterStrategy$1.class
+SHA-256-Digest: 5cH4TRL9WB2+vMulcbMWEPjAN4BtCl6ILMJMENzdnKs=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/filter
+ row/ComboBoxFilterRowHeaderComposite.class
+SHA-256-Digest: yIeLZHUgplri0ECavBjK4hUz9t7FN738sCW4Z+jBv30=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/Detail
+ GlazedListsEventLayer$2.class
+SHA-256-Digest: WxpBCjg/MK4yJ7PPpI4Dl6pdmrsS96jdFuB8YGySNb4=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/groupB
+ y/GroupByDataLayer.class
+SHA-256-Digest: hwacr+SY/L7esEqkHnugBnR6vCFKpKaxUKEiOxUfaoA=
+
+Name: org/eclipse/nebula/widgets/nattable/extension/glazedlists/NatTab
+ leComparatorChooser.class
+SHA-256-Digest: nKigW44CW9/rIm/LMFiu0gTWSI29U1Fc8wgfmT6BGXY=
+
