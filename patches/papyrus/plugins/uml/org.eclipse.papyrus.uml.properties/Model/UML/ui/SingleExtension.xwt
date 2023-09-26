@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:ppel="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets.layout"
+	xmlns:ppe="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets"
+	xmlns:x="http://www.eclipse.org/xwt" xmlns:j="clr-namespace:java.lang">
+	<Composite.layout>
+		<ppel:PropertiesLayout></ppel:PropertiesLayout>
+	</Composite.layout>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout></ppel:PropertiesLayout>
+		</Composite.layout>
+		<ppe:StringEditor input="{Binding}" property="UML:NamedElement:name"></ppe:StringEditor>
+		<ppe:StringEditor input="{Binding}" property="UML:NamedElement:label"></ppe:StringEditor>
+		<ppe:BooleanRadio input="{Binding}" property="UML:Extension:isRequired"></ppe:BooleanRadio>
+	</Composite>
+</Composite>

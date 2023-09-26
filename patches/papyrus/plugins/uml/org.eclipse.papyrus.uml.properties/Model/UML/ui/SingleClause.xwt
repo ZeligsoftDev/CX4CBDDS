@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Composite xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:j="clr-namespace:java.lang" xmlns:ppe="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets"
+	xmlns:ppel="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets.layout"
+	xmlns:x="http://www.eclipse.org/xwt">
+	<Composite.layout>
+		<ppel:PropertiesLayout></ppel:PropertiesLayout>
+	</Composite.layout>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout></ppel:PropertiesLayout>
+		</Composite.layout>
+		<ppe:ReferenceDialog input="{Binding}" property="UML:Clause:decider"></ppe:ReferenceDialog>
+	</Composite>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout numColumns="2"></ppel:PropertiesLayout>
+		</Composite.layout>
+		<ppe:MultiReference input="{Binding}" property="UML:Clause:body"></ppe:MultiReference>
+		<ppe:MultiReference input="{Binding}" property="UML:Clause:bodyOutput"></ppe:MultiReference>
+		<ppe:MultiReference input="{Binding}"
+			property="UML:Clause:predecessorClause"></ppe:MultiReference>
+		<ppe:MultiReference input="{Binding}"
+			property="UML:Clause:successorClause"></ppe:MultiReference>
+		<ppe:MultiReference input="{Binding}" property="UML:Clause:test"></ppe:MultiReference>
+	</Composite>
+</Composite>
