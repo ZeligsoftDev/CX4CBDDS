@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="com.zeligsoft.papyrus.infra.nattable.patch.feature"
+      id="com.zeligsoft.papyrus.uml.nattable.patch.feature"
       label="%featureName"
       version="2.5.0.qualifier"
       provider-name="%providerName">
@@ -18,22 +18,8 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.papyrus.infra.nattable.feature" version="4.0.0.202306070926" patch="true"/>
+      <import feature="org.eclipse.papyrus.uml.nattable.feature" version="4.0.0.202306070926" patch="true"/>
    </requires>
-
-   <plugin
-         id="org.eclipse.nebula.widgets.nattable.core"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.nebula.widgets.nattable.extension.glazedlists"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="org.eclipse.nebula.widgets.nattable.extension.nebula"
