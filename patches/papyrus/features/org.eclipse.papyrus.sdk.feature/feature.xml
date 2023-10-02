@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.papyrus.sdk.feature"
+      label="%featureName"
+      version="6.5.1.qualifier"
+      provider-name="%providerName"
+      plugin="org.eclipse.papyrus.sdk"
+      license-feature="org.eclipse.license"
+      license-feature-version="2.0.2">
+
+   <description url="https://eclipse.org/papyrus/">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <includes
+         id="org.eclipse.papyrus.infra.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.papyrus.editor.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.papyrus.emf.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.papyrus.emf.facet.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.papyrus.uml.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.papyrus.views.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.papyrus.doc.feature"
+         version="0.0.0"/>
+
+   <requires>
+      <import plugin="com.ibm.icu"/>
+      <import plugin="com.ibm.icu.source"/>
+   </requires>
+
+   <plugin
+         id="com.google.guava"
+         download-size="0"
+         install-size="0"
+         version="30.1.0.v20221112-0806"
+         unpack="false"/>
+
+   <plugin
+         id="com.google.gson"
+         download-size="0"
+         install-size="0"
+         version="2.10.1.v20230109-0753"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.logging.log4j"
+         download-size="0"
+         install-size="0"
+         version="2.17.1.v20220106-2156"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.papyrus.sdk"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
