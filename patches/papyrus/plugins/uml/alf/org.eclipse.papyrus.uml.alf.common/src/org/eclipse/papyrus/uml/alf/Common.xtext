@@ -1,0 +1,43 @@
+/*****************************************************************************
+ * Copyright (c) 2011 CEA LIST.
+ *
+ *    
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *  CEA LIST - Initial API and implementation
+ *
+ *****************************************************************************/
+grammar org.eclipse.papyrus.uml.alf.Common with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+terminal ID : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*  | ('\'' -> '\'')  ;
+
+terminal STRING	: '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"' ;
+
+terminal ML_COMMENT	: '/*' !('@') -> '*/';
+
+terminal SL_COMMENT : '//' !('\n'|'\r'|'@')* ('\r'? '\n')?;
+
+terminal INT returns ecore::EInt: ('0'..'9')+;
+
+terminal INTEGER_VALUE :
+	('0' | '1'..'9' (('_')? '0'..'9')*) | //DECIMAL 
+	(('0b' | '0B') '0'..'1' (('_')? '0'..'1')*) | // BINARY
+	(('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F')  (('_')? ('0'..'9'|'a'..'f'|'A'..'F'))*) | // HEX
+	('0' ('_')? '0'..'7' (('_')? '0'..'7')*) // OCT
+; 
+
+//terminal DOUBLE_COLON : '::' ;
+//terminal IDENTIFIER : ID  ;
+//terminal IDENTIFIER : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*  | ('\'' -> '\'')  ;
+//terminal DOCUMENTATION_COMMENT : '/*' -> '*/' ;
+//terminal ML_COMMENT	: '/°' -> '°/';
+//terminal SL_COMMENT 	: '°°' !('\n'|'\r')* ('\r'? '\n')?;
+//terminal WS			: (' '|'\t'|'\r'|'\n')+;
