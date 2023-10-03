@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated alf -->
+      <package
+            uri="http://www.omg.org/spec/ALF/20120827"
+            class="org.eclipse.papyrus.uml.alf.AlfPackage"
+            genModel="model/alf.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated alf -->
+      <parser
+            type="alf"
+            class="org.eclipse.papyrus.uml.alf.util.AlfResourceFactoryImpl"/>
+   </extension>
+</plugin>
