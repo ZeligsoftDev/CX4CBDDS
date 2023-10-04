@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.papyrus.uml.textedit.stereotypeproperty.xtext/src-gen"
+    editDirectory="/org.eclipse.papyrus.uml.textedit.stereotypeproperty.xtext.edit/src"
+    editorDirectory="/org.eclipse.papyrus.uml.textedit.stereotypeproperty.xtext.editor/src"
+    modelPluginID="org.eclipse.papyrus.uml.textedit.stereotypeproperty.xtext" forceOverwrite="true"
+    modelName="AppliedStereotypeProperty" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="6.0" copyrightFields="false" editPluginID="org.eclipse.papyrus.uml.textedit.stereotypeproperty.xtext.edit"
+    editorPluginID="org.eclipse.papyrus.uml.textedit.stereotypeproperty.xtext.editor"
+    runtimeVersion="2.10" usedGenPackages="platform:/resource/org.eclipse.papyrus.uml.alf/model/alf.genmodel#//alf">
+  <genPackages prefix="AppliedStereotypeProperty" basePackage="org.eclipse.papyrus.uml.textedit.stereotypeproperty.xtext"
+      disposableProviderFactory="true" ecorePackage="AppliedStereotypeProperty.ecore#/">
+    <genClasses ecoreClass="AppliedStereotypeProperty.ecore#//AppliedStereotypePropertyRule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AppliedStereotypeProperty.ecore#//AppliedStereotypePropertyRule/value"/>
+    </genClasses>
+    <genClasses ecoreClass="AppliedStereotypeProperty.ecore#//ExpressionValueRule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AppliedStereotypeProperty.ecore#//ExpressionValueRule/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AppliedStereotypeProperty.ecore#//ExpressionValueRule/exp"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
