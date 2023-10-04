@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="umlCollaborationUse" nsURI="http://www.eclipse.org/papyrus/uml/textedit/collaborationuse/xtext/UmlCollaborationUse"
+    nsPrefix="umlCollaborationUse">
+  <eClassifiers xsi:type="ecore:EClass" name="CollaborationUseRule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="ecore:EEnum platform:/resource/org.eclipse.papyrus.uml.textedit.common.xtext/src-gen/org/eclipse/papyrus/uml/textedit/common/xtext/UmlCommon.ecore#//VisibilityKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//TypeRule"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeRule" eSuperTypes="platform:/resource/org.eclipse.papyrus.uml.textedit.common.xtext/src-gen/org/eclipse/papyrus/uml/textedit/common/xtext/UmlCommon.ecore#//TypeRule"/>
+</ecore:EPackage>
