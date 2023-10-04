@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.papyrus.infra.gmfdiag.extensionpoints.editors.DirectEditor">
+      <DirectEditor
+            additionalConstraint="org.eclipse.papyrus.uml.textedit.constraintwithessentialocl.xtext.OCLDirectEditorConstraint"
+            contributor="Eclipse Modeling Project"
+            icon="icons/OCLModelFile.gif"
+            language="Essential OCL constraint editor"
+            objectToEdit="org.eclipse.uml2.uml.Constraint">
+         <popupeditor
+               editorConfiguration="org.eclipse.papyrus.uml.textedit.constraintwithessentialocl.xtext.EssentialOCLEditorConfiguration">
+         </popupeditor>
+         <Priority
+               name="High">
+         </Priority>
+      </DirectEditor>
+      <DirectEditor
+            additionalConstraint="org.eclipse.papyrus.uml.textedit.constraintwithessentialocl.xtext.OCLDirectEditorConstraint"
+            contributor="Eclipse Modeling Project"
+            icon="icons/OCLModelFile.gif"
+            language="Essential OCL constraint editor"
+            objectToEdit="org.eclipse.uml2.uml.OpaqueExpression">
+         <popupeditor
+               editorConfiguration="org.eclipse.papyrus.uml.textedit.constraintwithessentialocl.xtext.EssentialOCLEditorConfiguration">
+         </popupeditor>
+         <Priority
+               name="High">
+         </Priority>         
+      </DirectEditor>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.uml.properties.languageEditor">
+      <editor
+            editor="org.eclipse.papyrus.uml.properties.xtext.XtextLanguageEditor"
+            language="OCL">
+      </editor>
+   </extension>
+</plugin>
