@@ -1,0 +1,341 @@
+/*******************************************************************************
+ * Copyright (c) 2010 Willink Transformations and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v2.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v20.html
+ *
+ * Contributors:
+ *     E.D.Willink - initial API and implementation
+ *******************************************************************************/
+grammar org.eclipse.ocl.xtext.essentialocl.EssentialOCL with org.eclipse.ocl.xtext.base.Base
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "platform:/resource/org.eclipse.ocl.pivot/model/Pivot.ecore" as pivot
+import "platform:/resource/org.eclipse.ocl.xtext.base/model/BaseCS.ecore" as base
+import "platform:/resource/org.eclipse.ocl.xtext.essentialocl/model/EssentialOCLCS.ecore"
+//generate essentialOCLCST "http://www.eclipse.org/ocl/3.0.0/EssentialOCLCST"
+Model returns ContextCS:
+	ownedExpression=ExpCS;
+
+/** <<<This is a join point for derived grammars - replace with a more disciplined grammar extensibility>>> */
+EssentialOCLReservedKeyword:
+	'and'
+	| 'and2'
+	| 'else'
+	| 'endif'
+	| 'if'
+	| 'implies'
+	| 'implies2'
+	| 'in'
+	| 'let'
+	| 'not'
+	| 'not2'
+	| 'or'
+	| 'or2'
+	| 'then'
+	| 'with'
+	| 'xor'
+	| 'xor2';
+
+/** <<<This is a join point for derived grammars - replace with a more disciplined grammar extensibility>>> */
+EssentialOCLUnaryOperatorName:
+	'-' | 'not' | 'not2';
+
+/** <<<This is a join point for derived grammars - replace with a more disciplined grammar extensibility>>> */
+EssentialOCLInfixOperatorName:
+	'*' | '/' | '+' | '-' | '>' | '<' | '>=' | '<=' | '=' | '<>' | 'and' | 'and2' | 'implies' | 'implies2' | 'or' | 'or2' | 'xor' | 'xor2';
+
+/** <<<This is a join point for derived grammars - replace with a more disciplined grammar extensibility>>> */
+EssentialOCLNavigationOperatorName:
+	'.' | '->' | '?.' | '?->';
+
+BinaryOperatorName:
+	InfixOperatorName | NavigationOperatorName;
+
+InfixOperatorName: 			// Intended to be overrideable
+	EssentialOCLInfixOperatorName;
+
+NavigationOperatorName: 	// Intended to be overrideable
+	EssentialOCLNavigationOperatorName;
+
+UnaryOperatorName: 			// Intended to be overrideable
+	EssentialOCLUnaryOperatorName;
+
+//---------------------------------------------------------------------
+//  Names
+//---------------------------------------------------------------------
+/** <<<This is a join point for derived grammars - replace with a more disciplined grammar extensibility>>> */
+EssentialOCLUnrestrictedName returns ecore::EString:
+	Identifier;
+
+@Override
+UnrestrictedName returns ecore::EString: // Intended to be overridden
+	EssentialOCLUnrestrictedName;
+
+/** <<<This is a join point for derived grammars - replace with a more disciplined grammar extensibility>>> */
+EssentialOCLUnreservedName returns ecore::EString:
+	UnrestrictedName
+|	CollectionTypeIdentifier
+|	PrimitiveTypeIdentifier
+|	'Map'
+|	'Tuple'
+;
+
+@Override
+UnreservedName returns ecore::EString: // Intended to be overridden
+	EssentialOCLUnreservedName;
+
+URIPathNameCS returns base::PathNameCS:
+	ownedPathElements+=URIFirstPathElementCS ('::' ownedPathElements+=NextPathElementCS)*;
+
+URIFirstPathElementCS returns base::PathElementCS:
+	referredElement=[pivot::NamedElement|UnrestrictedName] | {base::PathElementWithURICS} referredElement=[pivot::Namespace|URI];
+
+SimplePathNameCS returns base::PathNameCS:
+	ownedPathElements+=FirstPathElementCS;
+//---------------------------------------------------------------------
+//  Types
+//---------------------------------------------------------------------
+PrimitiveTypeIdentifier:
+	'Boolean'
+	| 'Integer'
+	| 'Real'
+	| 'String'
+	| 'UnlimitedNatural'
+	| 'OclAny'
+	| 'OclInvalid'
+	| 'OclVoid';
+
+PrimitiveTypeCS returns base::PrimitiveTypeRefCS:
+	name=PrimitiveTypeIdentifier;
+
+CollectionTypeIdentifier returns ecore::EString:
+	'Set'
+	| 'Bag'
+	| 'Sequence'
+	| 'Collection'
+	| 'OrderedSet';
+
+CollectionTypeCS returns CollectionTypeCS:
+	name=CollectionTypeIdentifier ('(' ownedType=TypeExpWithoutMultiplicityCS ownedCollectionMultiplicity=MultiplicityCS? ')')?;
+
+MapTypeCS returns MapTypeCS:
+	name='Map' ('(' ownedKeyType=TypeExpCS ',' ownedValueType=TypeExpCS ')')?;
+
+TupleTypeCS returns base::TupleTypeCS:
+	name='Tuple' ('(' (ownedParts+=TuplePartCS (',' ownedParts+=TuplePartCS)*)? ')')?;
+
+TuplePartCS returns base::TuplePartCS:
+	name=UnrestrictedName ':' ownedType=TypeExpCS;
+
+//---------------------------------------------------------------------
+//  Literals
+//---------------------------------------------------------------------
+CollectionLiteralExpCS returns CollectionLiteralExpCS:
+	ownedType=CollectionTypeCS
+	'{' (ownedParts+=CollectionLiteralPartCS
+	(',' ownedParts+=CollectionLiteralPartCS)*)?
+	'}';
+
+CollectionLiteralPartCS returns CollectionLiteralPartCS:
+	(ownedExpression=ExpCS ('..' ownedLastExpression=ExpCS)?) | ownedExpression=PatternExpCS;
+
+CollectionPatternCS returns CollectionPatternCS:
+	ownedType=CollectionTypeCS
+	'{' (ownedParts+=PatternExpCS
+	(',' ownedParts+=PatternExpCS)*
+	('++' restVariableName=Identifier))?
+	'}';
+
+ShadowPartCS returns ShadowPartCS:		// PatternPartCS
+	(referredProperty=[pivot::Property|UnrestrictedName] '='ownedInitExpression=(ExpCS|PatternExpCS))
+	| ownedInitExpression=StringLiteralExpCS;
+
+PatternExpCS:
+	patternVariableName=UnrestrictedName? ':' ownedPatternType=TypeExpCS;
+
+LambdaLiteralExpCS returns LambdaLiteralExpCS:
+	'Lambda' '{' ownedExpressionCS=ExpCS '}';
+
+MapLiteralExpCS returns MapLiteralExpCS:
+	ownedType=MapTypeCS '{' (ownedParts+=MapLiteralPartCS (',' ownedParts+=MapLiteralPartCS)*)? '}';
+
+MapLiteralPartCS returns MapLiteralPartCS:
+	ownedKey=ExpCS ('with'|'<-') ownedValue=ExpCS;		// <- is deprecated see Bug 577614
+
+PrimitiveLiteralExpCS returns PrimitiveLiteralExpCS:
+	NumberLiteralExpCS
+	| StringLiteralExpCS
+	| BooleanLiteralExpCS
+	| UnlimitedNaturalLiteralExpCS
+	| InvalidLiteralExpCS
+	| NullLiteralExpCS;
+
+TupleLiteralExpCS returns TupleLiteralExpCS:
+	'Tuple' '{' ownedParts+=TupleLiteralPartCS (',' ownedParts+=TupleLiteralPartCS)* '}';
+
+TupleLiteralPartCS returns TupleLiteralPartCS:
+	name=UnrestrictedName (':' ownedType=TypeExpCS)? '=' ownedInitExpression=ExpCS;
+
+NumberLiteralExpCS returns NumberLiteralExpCS:
+	symbol=NUMBER_LITERAL;
+
+StringLiteralExpCS returns StringLiteralExpCS:
+	segments+=StringLiteral+;
+
+BooleanLiteralExpCS returns BooleanLiteralExpCS:
+	symbol='true'
+	| symbol='false';
+
+UnlimitedNaturalLiteralExpCS returns UnlimitedNaturalLiteralExpCS:
+	{UnlimitedNaturalLiteralExpCS} '*';
+
+InvalidLiteralExpCS returns InvalidLiteralExpCS:
+	{InvalidLiteralExpCS} 'invalid';
+
+NullLiteralExpCS returns NullLiteralExpCS:
+	{NullLiteralExpCS} 'null';
+
+TypeLiteralCS returns base::TypedRefCS:
+	PrimitiveTypeCS
+	| CollectionTypeCS
+	| MapTypeCS
+	| TupleTypeCS;
+
+TypeLiteralWithMultiplicityCS returns base::TypedRefCS:
+	TypeLiteralCS ownedMultiplicity=MultiplicityCS?;
+
+TypeLiteralExpCS returns TypeLiteralExpCS:
+	ownedType=TypeLiteralWithMultiplicityCS;
+
+TypeNameExpCS returns TypeNameExpCS:
+	ownedPathName=PathNameCS (ownedCurlyBracketedClause=CurlyBracketedClauseCS ('{' ownedPatternGuard=ExpCS '}')?)?;
+
+TypeExpWithoutMultiplicityCS returns base::TypedRefCS:
+	(TypeNameExpCS | TypeLiteralCS | CollectionPatternCS);
+
+TypeExpCS returns base::TypedRefCS:
+	TypeExpWithoutMultiplicityCS ownedMultiplicity=MultiplicityCS?;
+
+//---------------------------------------------------------------------
+//  Expressions
+//---------------------------------------------------------------------
+// An ExpCS permits a LetExpCS only in the final term to ensure
+//  that let is right associative, whereas infix operators are left associative.
+//   a = 64 / 16 / let b : Integer in 8 / let c : Integer in 4
+// is
+//   a = (64 / 16) / (let b : Integer in 8 / (let c : Integer in 4 ))
+/* An expression elaborates a prefixed expression with zero or more binary operator and expression suffixes.
+ * An optionally prefixed let expression is permitted except when suffixed with further expressions.*/
+ExpCS returns ExpCS:
+//	({InfixExpCS} ownedSource=PrefixedExpCS name=BinaryOperatorName ownedArgument=ExpCS)
+//| 	PrefixedExpCS
+// the above takes exponential or worse time for backtracking, below is fast
+	(PrefixedPrimaryExpCS ({InfixExpCS.ownedLeft=current} name=BinaryOperatorName ownedRight=ExpCS)?)
+| 	PrefixedLetExpCS;
+
+/* A prefixed let expression elaborates a let expression with zero or more unary prefix operators. */
+PrefixedLetExpCS returns ExpCS:
+	({PrefixExpCS} name=UnaryOperatorName ownedRight=PrefixedLetExpCS)
+| 	LetExpCS;
+
+/* A prefixed primary expression elaborates a primary expression with zero or more unary prefix operators. */
+PrefixedPrimaryExpCS returns ExpCS:
+	({PrefixExpCS} name=UnaryOperatorName ownedRight=PrefixedPrimaryExpCS)
+| 	PrimaryExpCS;
+
+/* A primary expression identifies the basic expressions from which more complex expressions may be constructed. */
+PrimaryExpCS returns ExpCS:
+	NestedExpCS
+|	IfExpCS
+| 	SelfExpCS
+| 	PrimitiveLiteralExpCS
+| 	TupleLiteralExpCS
+| 	MapLiteralExpCS
+| 	CollectionLiteralExpCS
+| 	LambdaLiteralExpCS
+| 	TypeLiteralExpCS
+| 	NameExpCS;
+
+/* A name expression is a generalised rule for expressions that start with a name and which may be followed by square, round or
+ * curly bracket clauses and optionally an @pre as well.*/
+NameExpCS returns NameExpCS:
+	ownedPathName=PathNameCS ownedSquareBracketedClauses+=SquareBracketedClauseCS*
+	ownedRoundBracketedClause=RoundBracketedClauseCS? ownedCurlyBracketedClause=CurlyBracketedClauseCS? (isPre?='@' 'pre')?;
+
+/* A curly bracket clause is a generalized rule for the literal arguments of collections, maps, tuples and shadows.*/
+CurlyBracketedClauseCS:
+	{CurlyBracketedClauseCS} '{' ((ownedParts+=ShadowPartCS (',' ownedParts+=ShadowPartCS)*))? '}'
+	;
+
+/* A curly bracket clause is a generalized rule for template specialisations and operations arguments.*/
+RoundBracketedClauseCS:
+	{RoundBracketedClauseCS} '(' (ownedArguments+=NavigatingArgCS (ownedArguments+=(NavigatingCommaArgCS|NavigatingSemiArgCS|NavigatingBarArgCS))*)? ')'
+	;
+
+/* A square bracket clause is a generalized rule for association class qualifiers and roles.*/
+SquareBracketedClauseCS:
+	'[' ownedTerms+=ExpCS (',' ownedTerms+=ExpCS)* ']';
+
+/* A navigating argument is a generalized rule for the first argument in a round bracket clause. This is typically the first operation
+ * parameter or an iterator. */
+NavigatingArgCS returns NavigatingArgCS:
+	(ownedNameExpression=NavigatingArgExpCS ((('with'|'<-') ownedCoIterator=CoIteratorVariableCS ('=' ownedInitExpression=ExpCS)?)
+											|(':' ownedType=TypeExpCS (('with'|'<-') ownedCoIterator=CoIteratorVariableCS)? ('=' ownedInitExpression=ExpCS)?)
+											| ((':' ownedType=TypeExpCS)? (('with'|'<-') ownedCoIterator=CoIteratorVariableCS)? 'in' ownedInitExpression=ExpCS)
+											)?
+	)
+	| (':' ownedType=TypeExpCS);	// Type-less init is an illegal infix expression
+
+/* A navigating bar argument is a generalized rule for a bar-prefixed argument in a round bracket clause. This is typically the body of an iteration. */
+NavigatingBarArgCS returns NavigatingArgCS:
+	prefix='|' ownedNameExpression=NavigatingArgExpCS (':' ownedType=TypeExpCS ('=' ownedInitExpression=ExpCS)?)?;	// Type-less init is an illegal infix expression
+
+/* A navigating comma argument is a generalized rule for non-first argument in a round bracket clause. These are typically non-first operation
+ * parameters or a second iterator. */
+NavigatingCommaArgCS returns NavigatingArgCS:
+	prefix=',' ownedNameExpression=NavigatingArgExpCS ((('with'|'<-') ownedCoIterator=CoIteratorVariableCS ('=' ownedInitExpression=ExpCS)?)
+													  |(':' ownedType=TypeExpCS (('with'|'<-') ownedCoIterator=CoIteratorVariableCS)? ('=' ownedInitExpression=ExpCS)?)
+													  | ((':' ownedType=TypeExpCS)? (('with'|'<-') ownedCoIterator=CoIteratorVariableCS)? 'in' ownedInitExpression=ExpCS)
+													  )?;	// Type-less init is an illegal infix expression
+
+/* A navigating semi argument is a generalized rule for a semicolon prefixed argument in a round bracket clause. This is typically an iterate accumulator. */
+NavigatingSemiArgCS returns NavigatingArgCS:
+	prefix=';' ownedNameExpression=NavigatingArgExpCS (':' ownedType=TypeExpCS ('=' ownedInitExpression=ExpCS)?)?;	// Type-less init is an illegal infix expression
+
+NavigatingArgExpCS returns ExpCS: // Intended to be overridden
+	ExpCS
+	//	'?'	-- defined by Complete OCL
+;
+
+CoIteratorVariableCS returns VariableCS:
+	name=UnrestrictedName (':' ownedType=TypeExpCS)?;
+
+IfExpCS returns IfExpCS:
+	'if' ownedCondition=(ExpCS|PatternExpCS)
+	'then' ownedThenExpression=ExpCS
+//	ifThenExpressions+=IfThenExpCS
+	(ownedIfThenExpressions+=ElseIfThenExpCS)*
+	'else' ownedElseExpression=ExpCS
+	'endif';
+//IfThenExpCS returns IfThenExpCS:
+//	'if' condition=ExpCS
+//	'then' thenExpression=ExpCS
+//;
+ElseIfThenExpCS returns IfThenExpCS:
+	'elseif' ownedCondition=ExpCS
+	'then' ownedThenExpression=ExpCS
+;
+
+LetExpCS returns LetExpCS:
+	'let' ownedVariables+=LetVariableCS (',' ownedVariables+=LetVariableCS)*
+	'in' ownedInExpression=ExpCS;
+
+LetVariableCS returns LetVariableCS:
+	name=UnrestrictedName ownedRoundBracketedClause=RoundBracketedClauseCS? (':' ownedType=TypeExpCS)? '=' ownedInitExpression=ExpCS;
+
+NestedExpCS returns NestedExpCS:
+	'(' ownedExpression=ExpCS ')';
+
+SelfExpCS returns SelfExpCS:
+	{SelfExpCS} 'self';
