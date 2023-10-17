@@ -1,0 +1,33 @@
+target "OCL Release 6.18" with source requirements
+
+location eclipse-2022-12 "https://download.eclipse.org/releases/2022-12/" {
+	org.eclipse.emf.feature.group
+	org.eclipse.uml2.sdk.feature.group
+	
+	org.eclipse.equinox.launcher
+	org.eclipse.jdt.annotation
+	org.eclipse.jdt.junit4.runtime
+	org.eclipse.osgi.compatibility.state
+	org.eclipse.pde.junit.runtime
+	org.eclipse.ui.ide.application
+}
+
+location licence "https://download.eclipse.org/cbi/updates/license" {
+	org.eclipse.license.feature.group
+}
+
+location xtext "https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.31.0/" {
+	org.eclipse.xtext.sdk.feature.group
+	org.eclipse.xtext.generator.feature.group
+}
+
+location emf "https://download.eclipse.org/modeling/emf/emf/builds/release/2.32" {
+	org.eclipse.emf.examples.library
+}
+
+location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository" {
+	com.google.guava
+	com.google.inject
+	lpg.runtime.java
+	lpg.runtime.java.source
+}

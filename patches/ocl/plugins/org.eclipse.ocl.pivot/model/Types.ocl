@@ -1,0 +1,49 @@
+import 'Pivot.ecore'
+
+package ocl
+/*
+context AssociationClassCallExp
+def: allOCLExpressions() : Set(OCLExpression) = Set{self, source}
+def: referredElements() : Set(Element) = Set{referredAssociationClass}
+
+context IfExp
+def: allOCLExpressions() : Set(OCLExpression) = Set{self, condition, thenExpression, elseExpression}
+
+context IterateExp
+def: allOCLExpressions() : Set(OCLExpression) = Set{self, _'body', result.initExpression}->union(iterator.initExpression)->excluding(null)
+
+context IteratorExp
+def: allOCLExpressions() : Set(OCLExpression) = Set{self, _'body'}->union(iterator.initExpression)->excluding(null)
+
+context LetExp
+def: allOCLExpressions() : Set(OCLExpression) = Set{self, variable.initExpression, _'in'}
+
+context LoopExp
+def: referredElements() : Set(Element) = Set{referredIteration}
+
+context OCLExpression
+def: allOCLExpressions() : Set(OCLExpression) = Set{self}
+--def: allTemplateBindings() : Set(TemplateBinding) = allOCLExpressions().referredElements().templateBindings
+def: referredElements() : Set(Element) = Set{}
+
+context OperationCallExp
+def: allOCLExpressions() : Set(OCLExpression) = Set{self, source}->union(argument)
+def: referredElements() : Set(Element) = Set{referredOperation}
+
+context PropertyCallExp
+def: allOCLExpressions() : Set(OCLExpression) = Set{self, source}
+def: referredElements() : Set(Element) = Set{referredProperty}
+
+context TypeExp
+def: referredElements() : Set(Element) = Set{referredType}
+
+context VariableExp
+def: referredElements() : Set(Element) = Set{referredVariable}
+*/
+context SelfType
+def: specializeIn(expr : CallExp, selfType : Type) : Type = selfType
+
+context Type
+def: specializeIn(expr : CallExp, selfType : Type) : Type = self
+
+endpackage

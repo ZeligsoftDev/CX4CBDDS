@@ -125,6 +125,49 @@
 					</environments>
 				</configuration>
 			</plugin>
+<!-- 
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+					<release>11</release>
+					<encoding>UTF-8</encoding>
+<!- 					<useJDK>BREE</useJDK>         force toolchain usage ->
+				</configuration>
+				<executions>
+					<execution>
+						<id>compile</id>
+						<phase>compile</phase>
+						<configuration>
+							<verbose>true</verbose>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+ -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-toolchains-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>toolchain</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<toolchains>
+						<jdk>                     <!-- ~ toolchains.xml!/toolchains/toolchain/type -->
+							<version>11</version> <!-- ~ toolchains.xml!/toolchains/toolchain/provides/version -->
+						</jdk>
+					</toolchains>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

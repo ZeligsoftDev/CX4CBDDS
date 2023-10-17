@@ -1,0 +1,2471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pivot:Model [
+<!ENTITY _0 "http://www.eclipse.org/ocl/2015/Library.oclas">
+]>
+<pivot:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pivot="http://www.eclipse.org/ocl/2015/Pivot"
+    xsi:schemaLocation="http://www.eclipse.org/ocl/2015/Pivot java://org.eclipse.ocl.pivot.PivotPackage" xmi:id="AAAAA" externalURI="platform:/resource/org.eclipse.ocl.pivot/model/Pivot.ecore" name="Pivot.ecore" xmiidVersion="1">
+  <ownedPackages xmi:id="82dOP" URI="http://www.eclipse.org/ocl/2015/Pivot" name="pivot" nsPrefix="pivot">
+    <ownedAnnotations xsi:type="pivot:Annotation" name="http://www.eclipse.org/OCL/Collection">
+      <ownedDetails name="nullFree">
+        <values>true</values>
+      </ownedDetails>
+    </ownedAnnotations>
+    <ownedClasses xmi:id="g7Mr0" name="Annotation" superClasses="#0kVqz">
+      <ownedProperties xmi:id="XjKgo" isComposite="true" name="ownedContents" opposite="#5Kk3e" type="#R+Drm"/>
+      <ownedProperties xmi:id="V,KBZ" isComposite="true" name="ownedDetails" opposite="#s7tlS" type="#ehjA2"/>
+      <ownedProperties xmi:id="AahpU" name="references" opposite="#YJE5T" type="#R+Drm"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="3akhL" name="AnyType" superClasses="#pDcbe"/>
+    <ownedClasses xmi:id="oE9s0" name="AssociationClass" superClasses="#pDcbe">
+      <ownedComments body="A link is a tuple of values that refer to typed objects.  An Association classifies a set of links, each of which is an instance of the Association.  Each value in the link refers to an instance of the type of the corresponding end of the Association.&#xA;&#xA;A model element that has both Association and Class properties. An AssociationClass can be seen as an Association that also has Class properties, or as a Class that also has Association properties. It not only connects a set of Classifiers but also defines a set of Features that belong to the Association itself and not to any of the associated Classifiers."/>
+      <ownedProperties xmi:id="D9XUa" name="unownedAttributes" opposite="#9lR1c" type="#vqSV7"/>
+      <ownedProperties xmi:id="AgtLW" isImplicit="true" name="AssociationClassCallExp" opposite="#12PvD" type="#rZeOP"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="ZD0WZ" name="AssociationClassCallExp" superClasses="#cmSzw">
+      <ownedProperties xmi:id="12PvD" isRequired="false" name="referredAssociationClass" opposite="#AgtLW" type="#oE9s0"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:Enumeration" xmi:id=",Swbo" name="AssociativityKind" superClasses="&_0;#+8+by">
+      <ownedLiterals xmi:id="XL8wB" name="left"/>
+      <ownedLiterals xmi:id="sTOCI" name="right" value="1"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="Tr9Pp" name="BagType" superClasses="#pawWx"/>
+    <ownedClasses xmi:id="D4Bd4" isAbstract="true" name="Behavior" superClasses="#pDcbe">
+      <ownedComments body="Behavior is a specification of how its context BehavioredClassifier changes state over time. This specification may be either a definition of possible behavior execution or emergent behavior, or a selective illustration of an interesting subset of possible executions. The latter form is typically used for capturing examples, such as a trace of a particular execution."/>
+      <ownedProperties xmi:id="gOjrO" isRequired="false" name="owningTransition" opposite="#cYcZC" type="#GEFmq"/>
+      <ownedProperties xmi:id="L6ktl" isImplicit="true" isRequired="false" name="Class" opposite="#ZkqKv" type="#pDcbe"/>
+      <ownedProperties xmi:id="5uByx" isImplicit="true" isRequired="false" name="State" opposite="#RnPpL" type="#CwtUf"/>
+      <ownedProperties xmi:id="bCQ,P" isImplicit="true" isRequired="false" name="State" opposite="#fFtPi" type="#CwtUf"/>
+      <ownedProperties xmi:id="1SMka" isImplicit="true" isRequired="false" name="State" opposite="#1HRna" type="#CwtUf"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BooleanType" xmi:id="ZuwnB" instanceClassName="boolean" name="Boolean" superClasses="&_0;#jbMkR">
+      <ownedComments body="Boolean is used for logical expressions, consisting of the predefined values true and false."/>
+    </ownedClasses>
+    <ownedClasses xmi:id="nyfXB" name="BooleanLiteralExp" superClasses="#mKorp">
+      <ownedInvariants xmi:id="H2asJ" isCallable="true" name="TypeIsBoolean">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="self.type = Boolean&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="D6wzN" isUnsettable="true" name="booleanSymbol" type="#ZuwnB"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="zrclQ" name="BooleanType" superClasses="#ywnRJ"/>
+    <ownedClasses xmi:id="QJrde" isAbstract="true" name="CallExp" superClasses="#BFtK4">
+      <ownedInvariants xmi:id="6ILdu" isCallable="true" name="SafeSourceCanBeNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="isSafe implies not ownedSource?.type.oclAsType(CollectionType).isNullFree&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="26xal" isCallable="true" name="SafeSourceCannotBeMap">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="isSafe implies let sourceType = ownedSource?.type in sourceType &lt;> null implies not sourceType.oclIsKindOf(MapType)&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="QQ,Tv" isCallable="true" name="TypeIsNotInvalid">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> OclInvalid&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="Xbbpj" defaultValueString="false" name="isImplicit" type="#ZuwnB"/>
+      <ownedProperties xmi:id=",1h8l" defaultValueString="false" name="isSafe" type="#ZuwnB"/>
+      <ownedProperties xmi:id="IjXu4" isComposite="true" isRequired="false" name="ownedSource" opposite="#0VFpK" type="#BFtK4"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="wuJTT" name="CallOperationAction" superClasses="#0kVqz">
+      <ownedProperties xmi:id="vrBiI" name="operation" opposite="#AwSDc" type="#Yz,F1"/>
+      <ownedProperties xmi:id="hlb5z" isImplicit="true" isRequired="false" name="MessageExp" opposite="#Ijz5s" type="#HRils"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="pDcbe" name="Class" superClasses="#rrwsa #MzHoc #5r5y9">
+      <ownedComments body="A Class classifies a set of objects and specifies the features that characterize the structure and behavior of those objects.  A Class may have an internal structure and Ports.&#xA;&#xA;A Classifier represents a classification of instances according to their Features.&#xA;&#xA;StructuredClassifiers may contain an internal structure of connected elements each of which plays a role in the overall Behavior modeled by the StructuredClassifier."/>
+      <ownedInvariants xmi:id="i93Le" isCallable="true" name="NameIsNotNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="name &lt;> null&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="XlkL1" isCallable="true" name="UniqueInvariantName">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedInvariants->isUnique(name)&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="pXPFk" name="extenders" opposite="#y8R,m" type="#TLTSL"/>
+      <ownedProperties xmi:id="rjLSb" isRequired="false" name="instanceClassName" type="#CPVxu"/>
+      <ownedProperties xmi:id="JFFoA" defaultValueString="false" name="isAbstract" type="#ZuwnB">
+        <ownedComments body="If true, the Class does not provide a complete declaration and cannot be instantiated. An abstract Class is typically used as a target of Associations or Generalizations.&#xA;&#xA;If true, the Classifier can only be instantiated by instantiating one of its specializations. An abstract Classifier is intended to be used by other Classifiers e.g., as the target of Associations or Generalizations."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="tqy+b" defaultValueString="false" name="isActive" type="#ZuwnB">
+        <ownedComments body="Determines whether an object specified by this Class is active or not. If true, then the owning Class is referred to as an active Class. If false, then such a Class is referred to as a passive Class."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="MkW0s" defaultValueString="false" name="isInterface" type="#ZuwnB"/>
+      <ownedProperties xmi:id="ZkqKv" isComposite="true" name="ownedBehaviors" opposite="#L6ktl" type="#kow3e">
+        <ownedComments body="Behaviors owned by a BehavioredClassifier."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="VcVc," isComposite="true" name="ownedInvariants" opposite="#On6Yu" type="#31l4V"/>
+      <ownedProperties xmi:id="OZRpi" isComposite="true" name="ownedOperations" opposite="#Mp0MK" type="#ELvCY">
+        <ownedComments body="The Operations owned by the Class."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="VusMr" isComposite="true" name="ownedProperties" opposite="#CxBFt" type="#CtJif">
+        <ownedComments body="The Properties owned by the StructuredClassifier.&#xA;&#xA;The attributes (i.e., the Properties) owned by the Class."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="nvShn" isRequired="false" name="owningPackage" opposite="#0MELU" type="#3ONqN"/>
+      <ownedProperties xmi:id="IoscB" name="superClasses" opposite="#iReTa" type="#awKqS"/>
+      <ownedProperties xmi:id="iReTa" isImplicit="true" name="Class" opposite="#IoscB" type="#7vGqS"/>
+      <ownedProperties xmi:id=",UeqX" isImplicit="true" name="CompleteClass" opposite="#tpc+a" type="#q6ECS"/>
+      <ownedProperties xmi:id="epBrF" isImplicit="true" name="DataType" opposite="#0zbos" type="#nrqci"/>
+      <ownedProperties xmi:id="1kkgY" isImplicit="true" name="InstanceSpecification" opposite="#hMuKl" type="#B2y2s"/>
+      <ownedProperties xmi:id="9Vw0e" isImplicit="true" name="MapType" opposite="#J5GM0" type="#JK5PO"/>
+      <ownedProperties xmi:id="Jh7cO" isImplicit="true" name="TemplateParameter" opposite="#zfRXZ" type="#6yjmF"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="CKfVx" name="CollectionItem" superClasses="#1s6I1">
+      <ownedInvariants xmi:id="D3ZRY" isCallable="true" name="TypeIsItemType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type = ownedItem.type&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="qB57w" isComposite="true" name="ownedItem" opposite="#ucQSI" type="#BFtK4"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:Enumeration" xmi:id="DMrVx" name="CollectionKind" superClasses="&_0;#+8+by">
+      <ownedLiterals xmi:id="CLrmU" name="Collection"/>
+      <ownedLiterals xmi:id="GxGlF" name="Set" value="1"/>
+      <ownedLiterals xmi:id="Zz9xp" name="OrderedSet" value="2"/>
+      <ownedLiterals xmi:id="svClF" name="Bag" value="3"/>
+      <ownedLiterals xmi:id="lPg3Z" name="Sequence" value="4"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="dfRul" name="CollectionLiteralExp" superClasses="#fKWWp">
+      <ownedInvariants xmi:id="D7hhq" isCallable="true" name="BagKindIsBag">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="kind = CollectionKind::Bag implies type.oclIsKindOf(BagType)&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="ildaQ" isCallable="true" name="CollectionKindIsConcrete">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="kind &lt;> CollectionKind::Collection&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="pSpww" isCallable="true" name="OrderedSetKindIsOrderedSet">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="kind = CollectionKind::OrderedSet implies type.oclIsKindOf(OrderedSetType)&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="BadNN" isCallable="true" name="SequenceKindIsSequence">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="kind = CollectionKind::Sequence implies type.oclIsKindOf(SequenceType)&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="DQ+no" isCallable="true" name="SetKindIsSet">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="kind = CollectionKind::Set implies type.oclIsKindOf(SetType)&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="VCsSg" name="kind" type="#DMrVx"/>
+      <ownedProperties xmi:id="8wJko" isComposite="true" name="ownedParts" opposite="#i3Nni" type="#ZEpGc"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="1s6I1" isAbstract="true" name="CollectionLiteralPart" superClasses="#j7EI0">
+      <ownedInvariants xmi:id="h1JLf" isCallable="true" name="TypeIsNotInvalid">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> OclInvalid&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="i3Nni" isImplicit="true" isRequired="false" name="CollectionLiteralExp" opposite="#8wJko" type="#dfRul"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="wy8kd" name="CollectionRange" superClasses="#1s6I1">
+      <ownedProperties xmi:id="TGoSr" isComposite="true" name="ownedFirst" opposite="#BdVOq" type="#BFtK4"/>
+      <ownedProperties xmi:id="jF9nj" isComposite="true" name="ownedLast" opposite="#xXoj0" type="#BFtK4"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="pawWx" name="CollectionType" superClasses="#9ppvF">
+      <ownedProperties xmi:id="zzSGt" isDerived="true" isResolveProxies="false" isTransient="true" isVolatile="true" name="elementType"
+          opposite="#JFc9Y" type="#rrwsa"/>
+      <ownedProperties xmi:id="6Rs,j" defaultValueString="false" name="isNullFree" type="#ZuwnB"/>
+      <ownedProperties xmi:id="eOBFL" defaultValueString="0" name="lower" type="#vCSey"/>
+      <ownedProperties xmi:id=",E0kL" defaultValueString="*" name="upper" type="#5Oxgg"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="Q3Ya2" name="Comment" superClasses="#t5rpa">
+      <ownedComments body="A Comment is a textual annotation that can be attached to a set of Elements."/>
+      <ownedProperties xmi:id="XTzu8" name="annotatedElements" opposite="#uVOeE" type="#+7MeC">
+        <ownedComments body="References the Element(s) being commented."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="KjSDw" isRequired="false" name="body" type="#CPVxu">
+        <ownedComments body="Specifies a string that is the comment."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="ov0wb" isRequired="false" name="owningElement" opposite="#KEZOc" type="#t5rpa"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="wspoT" name="CompleteClass" superClasses="#0kVqz">
+      <ownedProperties xmi:id="ZmPN3" isRequired="false" name="owningCompletePackage" opposite="#ms6IU" type="#+gDEJ"/>
+      <ownedProperties xmi:id="tpc+a" name="partialClasses" opposite="#,UeqX" type="#awKqS"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="LqaWx" name="CompleteEnvironment" superClasses="#t5rpa">
+      <ownedProperties xmi:id="Cv6PO" isComposite="true" name="ownedCompleteModel" opposite="#Tjqfq" type="#hzOMU"/>
+      <ownedProperties xmi:id="Qrg5Y" isComposite="true" name="ownedStandardLibrary" opposite="#pt2se" type="#v6b4D"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="hzOMU" name="CompleteModel" superClasses="#0kVqz">
+      <ownedOperations xmi:id="W9Wm," isRequired="false" name="getOwnedCompletePackage" type="#+gDEJ">
+        <ownedParameters xmi:id="0S+uw" isRequired="false" name="name" type="#CPVxu"/>
+      </ownedOperations>
+      <ownedProperties xmi:id="aU0xR" isDerived="true" isReadOnly="true" isRequired="false" isResolveProxies="false" isTransient="true"
+          name="orphanCompletePackage" opposite="#pwEaB" type="#WaoLl"/>
+      <ownedProperties xmi:id="AQg0n" isComposite="true" name="ownedCompletePackages" opposite="#SgDQD" type="#niCJl"/>
+      <ownedProperties xmi:id="Tjqfq" isRequired="false" name="owningCompleteEnvironment" opposite="#Cv6PO" type="#LqaWx"/>
+      <ownedProperties xmi:id="AF1+9" name="partialModels" opposite="#n0An," type="#jKxIE"/>
+      <ownedProperties xmi:id="b7Oj2" isDerived="true" isReadOnly="true" isRequired="false" isResolveProxies="false" isTransient="true"
+          name="primitiveCompletePackage" opposite="#tpHsl" type="#XSQ4c"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="+gDEJ" name="CompletePackage" superClasses="#0kVqz">
+      <ownedOperations xmi:id="xxnVz" isRequired="false" name="getOwnedCompleteClass" type="#wspoT">
+        <ownedParameters xmi:id="jlSuJ" isRequired="false" name="name" type="#CPVxu"/>
+      </ownedOperations>
+      <ownedProperties xmi:id="ms6IU" isComposite="true" name="ownedCompleteClasses" opposite="#ZmPN3" type="#J7ICS"/>
+      <ownedProperties xmi:id="pXZYG" isComposite="true" name="ownedCompletePackages" opposite="#vpFYN" type="#niCJl"/>
+      <ownedProperties xmi:id="SgDQD" isRequired="false" name="owningCompleteModel" opposite="#AQg0n" type="#hzOMU"/>
+      <ownedProperties xmi:id="vpFYN" isRequired="false" name="owningCompletePackage" opposite="#pXZYG" type="#+gDEJ"/>
+      <ownedProperties xmi:id="slBkJ" name="partialPackages" opposite="#CUgnW" type="#4WjM+"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="KXGhD" name="ConnectionPointReference" superClasses="#VVKEz">
+      <ownedComments body="A ConnectionPointReference represents a usage (as part of a submachine State) of an entry/exit point Pseudostate defined in the StateMachine referenced by the submachine State."/>
+      <ownedProperties xmi:id="KPNEV" name="entries" opposite="#1udyj" type="#91QED">
+        <ownedComments body="The entryPoint Pseudostates corresponding to this connection point."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="Ppbt5" name="exits" opposite="#YlCTk" type="#91QED">
+        <ownedComments body="The exitPoints kind Pseudostates corresponding to this connection point."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="PKvdR" isRequired="false" name="owningState" opposite="#CYTMg" type="#CwtUf">
+        <ownedComments body="The State in which the ConnectionPointReference is defined."/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xmi:id="Om,AG" name="Constraint" superClasses="#0kVqz">
+      <ownedComments body="A Constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an Element or set of Elements."/>
+      <ownedInvariants xmi:id="pSMdw" isCallable="true" name="BooleanValued">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedSpecification &lt;> null and ownedSpecification.type &lt;> null implies ownedSpecification.type = Boolean or ownedSpecification.type = OclVoid&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="KOGGk" isCallable="true" name="UniqueName">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true "/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="bdrbJ" name="constrainedElements" opposite="#Jt0M6" type="#R+Drm">
+        <ownedComments body="The ordered set of Elements referenced by this Constraint."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="dmddj" isDerived="true" isReadOnly="true" isRequired="false" isResolveProxies="false" isTransient="true"
+          isVolatile="true" name="context" opposite="#6vXcR" type="#MzHoc"/>
+      <ownedProperties xmi:id="wvfMx" defaultValueString="false" name="isCallable" type="#ZuwnB"/>
+      <ownedProperties xmi:id="MZFY9" isComposite="true" name="ownedSpecification" opposite="#ub8yA" type="#BfHsW">
+        <ownedComments body="A condition that must be true when evaluated in order for the Constraint to be satisfied."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="hC6PQ" isRequired="false" name="owningPostContext" opposite="#tNQkw" type="#Yz,F1"/>
+      <ownedProperties xmi:id="20skK" isRequired="false" name="owningPreContext" opposite="#G0Gd," type="#Yz,F1"/>
+      <ownedProperties xmi:id="Dd0RI" isRequired="false" name="owningState" opposite="#GT13x" type="#CwtUf"/>
+      <ownedProperties xmi:id=",zMbl" isRequired="false" name="owningTransition" opposite="#GiZYW" type="#GEFmq"/>
+      <ownedProperties xmi:id="OvqL4" name="redefinedConstraints" opposite="#L08R0" type="#31l4V"/>
+      <ownedProperties xmi:id="On6Yu" isImplicit="true" isRequired="false" name="Class" opposite="#VcVc," type="#pDcbe"/>
+      <ownedProperties xmi:id="L08R0" isImplicit="true" name="Constraint" opposite="#OvqL4" type="#Y1h4V"/>
+      <ownedProperties xmi:id="gl,un" isImplicit="true" isRequired="false" name="Namespace" opposite="#FS8OY" type="#MzHoc"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="1mHCJ" name="DataType" superClasses="#pDcbe">
+      <ownedComments body="A DataType is a type whose instances are identified only by their value."/>
+      <ownedInvariants xmi:id=",lcOG" isCallable="true" name="BehavioralClassHasDistinctName">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="behavioralClass &lt;> null implies superClasses->closure(superClasses)->forAll(b | b.name &lt;> name)&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="VX1z8" isCallable="true" name="BehavioralClassIsPrimitiveType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="behavioralClass &lt;> null implies behavioralClass.oclIsKindOf(PrimitiveType)&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="71A2y" isCallable="true" name="BehavioralClassIsSuperClass">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="behavioralClass &lt;> null implies superClasses->includes(behavioralClass)&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="0zbos" isRequired="false" name="behavioralClass" opposite="#epBrF" type="#pDcbe">
+        <ownedComments body="An equivalent type, such as a PrimitiveType, that defines the conformance and evaluation behavior."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="Crwo5" defaultValueString="true" name="isSerializable" type="#ZuwnB"/>
+      <ownedProperties xmi:id="qDlX6" defaultValueString="" isDerived="true" isReadOnly="true" isTransient="true" isVolatile="true" name="value"
+          type="#CPVxu">
+        <ownedComments body="The value pseudo-property accesses a String-valued representation of the DataType."/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xmi:id="CwgWU" name="Detail" superClasses="#0kVqz">
+      <ownedProperties xmi:id="0m96m" name="values" type="#InrGB"/>
+      <ownedProperties xmi:id="s7tlS" isImplicit="true" isRequired="false" name="Annotation" opposite="#V,KBZ" type="#g7Mr0"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="ic4It" name="DynamicBehavior" superClasses="#D4Bd4 #Kudiu"/>
+    <ownedClasses xmi:id="uVj5N" name="DynamicElement" superClasses="#t5rpa">
+      <ownedProperties xmi:id="t8fLB" name="metaType" opposite="#Nn,Xg" type="#rrwsa"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="lKr4X" name="DynamicProperty" superClasses="#t5rpa">
+      <ownedProperties xmi:id="qrqGM" isRequired="false" name="default" type="#CPVxu"/>
+      <ownedProperties xmi:id="vGP79" name="referredProperty" opposite="#EpwEv" type="#Gm0Mj"/>
+      <ownedProperties xmi:id="dtCip" isImplicit="true" isRequired="false" name="DynamicType" opposite="#nCwoy" type="#Kudiu"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="Kudiu" name="DynamicType" superClasses="#pDcbe #uVj5N">
+      <ownedProperties xmi:id="nCwoy" isComposite="true" name="ownedDynamicProperties" opposite="#dtCip" type="#2ZLUM"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="iExtD" name="DynamicValueSpecification" superClasses="#DLUxI"/>
+    <ownedClasses xsi:type="pivot:DataType" xmi:id="UFwwr" instanceClassName="org.eclipse.emf.ecore.EObject" name="EcoreObject" superClasses="&_0;#jbMkR"/>
+    <ownedClasses xmi:id="t5rpa" isAbstract="true" name="Element" superClasses="&_0;#zfDWR">
+      <ownedComments body="An Element is a constituent of a model. As such, it has the capability of owning other Elements."/>
+      <ownedOperations xmi:id="J2A5u" name="allOwnedElements" type="#+7MeC">
+        <bodyExpression xsi:type="pivot:ExpressionInOCL" body="&#xA;&#x9;self->closure(oclContents()->selectByKind(Element))&#xA;&#x9;&#xA;"/>
+        <ownedComments body="The query allOwnedElements() gives all of the direct and indirect ownedElements of an Element."/>
+      </ownedOperations>
+      <ownedOperations xmi:id="miFc+" isRequired="false" name="getValue" type="#t5rpa">
+        <bodyExpression xsi:type="pivot:ExpressionInOCL" body="null&#xA;&#xA;"/>
+        <ownedParameters xmi:id="rlls4" name="stereotype" type="#rrwsa"/>
+        <ownedParameters xmi:id="5gsHc" name="propertyName" type="#CPVxu"/>
+      </ownedOperations>
+      <ownedProperties xmi:id="uVOeE" name="annotatingComments" opposite="#XTzu8" type="#phuMp"/>
+      <ownedProperties xmi:id="QiVod" isComposite="true" name="ownedAnnotations" opposite="#mrjCA" type="#R+Drm"/>
+      <ownedProperties xmi:id="KEZOc" isComposite="true" name="ownedComments" opposite="#ov0wb" type="#phuMp">
+        <ownedComments body="The Comments owned by this Element."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="qHs1l" isComposite="true" name="ownedExtensions" opposite="#tJiSL" type="#Nxptw"/>
+      <ownedProperties xmi:id="5Kk3e" isImplicit="true" isRequired="false" name="Annotation" opposite="#XjKgo" type="#g7Mr0"/>
+      <ownedProperties xmi:id="YJE5T" isImplicit="true" name="Annotation" opposite="#AahpU" type="#abElO"/>
+      <ownedProperties xmi:id="Jt0M6" isImplicit="true" name="Constraint" opposite="#bdrbJ" type="#Y1h4V"/>
+      <ownedProperties xmi:id="mrjCA" isImplicit="true" isRequired="false" name="Element" opposite="#QiVod" type="#t5rpa"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="URISB" name="ElementExtension" superClasses="#pDcbe">
+      <ownedProperties xmi:id="tJiSL" name="base" opposite="#qHs1l" type="#t5rpa"/>
+      <ownedProperties xmi:id="POZR5" defaultValueString="false" name="isApplied" type="#ZuwnB"/>
+      <ownedProperties xmi:id="F6OZE" defaultValueString="false" name="isRequired" type="#ZuwnB"/>
+      <ownedProperties xmi:id="ObYJ0" name="stereotype" opposite="#QMG7c" type="#j7kZ6"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="7ZzUP" name="ElementLiteralExp" superClasses="#fKWWp">
+      <ownedProperties xmi:id="Sbl4m" name="referredElement" type="#UFwwr">
+        <ownedComments body="This is an Object to avoid injecting a confusing opposite into EObject "/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xmi:id="Aaj,v" name="EnumLiteralExp" superClasses="#fKWWp">
+      <ownedInvariants xmi:id="13IpA" isCallable="true" name="TypeIsEnumerationType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="self.type = referredLiteral?.owningEnumeration&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="2xm3e" isRequired="false" name="referredLiteral" opposite="#OLQg1" type="#ZQKYa"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="4m7zY" name="Enumeration" superClasses="#1mHCJ">
+      <ownedComments body="An Enumeration is a DataType whose values are enumerated in the model as EnumerationLiterals."/>
+      <ownedProperties xmi:id="ZL+t6" isComposite="true" name="ownedLiterals" opposite="#YZpEI" type="#dhRTO">
+        <ownedComments body="The ordered set of literals owned by this Enumeration."/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xmi:id="ZQKYa" name="EnumerationLiteral" superClasses="#f3gRG">
+      <ownedComments body="An EnumerationLiteral is a user-defined data value for an Enumeration."/>
+      <ownedProperties xmi:id="8DvMr" defaultValueString="0" isRequired="false" name="literal" type="#CPVxu"/>
+      <ownedProperties xmi:id="YZpEI" name="owningEnumeration" opposite="#ZL+t6" type="#4m7zY">
+        <ownedComments body="The Enumeration that this EnumerationLiteral is a member of."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="+G2,m" defaultValueString="0" isRequired="false" name="value" type="#vCSey"/>
+      <ownedProperties xmi:id="OLQg1" isImplicit="true" name="EnumLiteralExp" opposite="#2xm3e" type="#61U4t"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="sFfJa" name="ExpressionInOCL" superClasses="#BfHsW">
+      <ownedProperties xmi:id="7o,d2" isComposite="true" isRequired="false" name="ownedBody" opposite="#BwjAx" type="#BFtK4"/>
+      <ownedProperties xmi:id="eubAp" isComposite="true" isRequired="false" name="ownedContext" opposite="#y7+O9" type="#t4j6T"/>
+      <ownedProperties xmi:id="DrnVr" isComposite="true" name="ownedParameters" opposite="#1jSjN" type="#Rl6IP"/>
+      <ownedProperties xmi:id="2tYZA" isComposite="true" isRequired="false" name="ownedResult" opposite="#a3p9g" type="#t4j6T"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="nphZD" isAbstract="true" name="Feature" superClasses="#j7EI0">
+      <ownedComments body="A Feature declares a behavioral or structural characteristic of Classifiers."/>
+      <ownedInvariants xmi:id="orGrQ" isCallable="true" name="NameIsNotNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="name &lt;> null&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="LfhI+" isCallable="true" name="TypeIsNotInvalid">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> OclInvalid&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="ZsCFf" isCallable="true" name="TypeIsNotNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> null&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="VEVcf" isRequired="false" isTransient="true" name="implementation" type="#slAkU"/>
+      <ownedProperties xmi:id="JJjOE" isRequired="false" name="implementationClass" type="#CPVxu"/>
+      <ownedProperties xmi:id="bWmFu" defaultValueString="false" name="isStatic" type="#ZuwnB">
+        <ownedComments body="Specifies whether this Feature characterizes individual instances classified by the Classifier (false) or the Classifier itself (true)."/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xmi:id="6KunE" isAbstract="true" name="FeatureCallExp" superClasses="#QJrde">
+      <ownedProperties xmi:id="D27jg" defaultValueString="false" name="isPre" type="#ZuwnB"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="sBnwh" name="FinalState" superClasses="#CwtUf">
+      <ownedComments body="A special kind of State, which, when entered, signifies that the enclosing Region has completed. If the enclosing Region is directly contained in a StateMachine and all other Regions in that StateMachine also are completed, then it means that the entire StateMachine behavior is completed."/>
+    </ownedClasses>
+    <ownedClasses xmi:id="xsyve" name="IfExp" superClasses="#BFtK4">
+      <ownedInvariants xmi:id="OzOx0" isCallable="true" name="ConditionTypeIsBoolean">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="self.ownedCondition.type = Boolean&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="t1gWQ" isCallable="true" name="TypeIsNotInvalid">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> OclInvalid&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="FkbAo" defaultValueString="false" name="isElseIf" type="#ZuwnB">
+        <ownedComments body="True if this IfExp corresponds to an 'elseif' in the OCL source, false if it corresponds to an 'if'. This attribute has no semantic significance; it merely supports more faithful reconstruction of the OCL source by a pretty printer."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="77VwY" isComposite="true" name="ownedCondition" opposite="#vgW3D" type="#BFtK4"/>
+      <ownedProperties xmi:id="DSLlN" isComposite="true" name="ownedElse" opposite="#n7Lp1" type="#BFtK4"/>
+      <ownedProperties xmi:id="nV3mN" isComposite="true" name="ownedThen" opposite="#jUA11" type="#BFtK4"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="WdWUd" name="Import" superClasses="#0kVqz">
+      <ownedProperties xmi:id="NleVa" name="importedNamespace" opposite="#6j3Na" type="#MzHoc"/>
+      <ownedProperties xmi:id=",Q0hp" defaultValueString="0" name="xmiidVersion" type="#vCSey"/>
+      <ownedProperties xmi:id="ercGZ" isImplicit="true" isRequired="false" name="Model" opposite="#TvdGt" type="#aKB,e"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="f3gRG" name="InstanceSpecification" superClasses="#0kVqz">
+      <ownedComments body="An InstanceSpecification is a model element that represents an instance in a modeled system. An InstanceSpecification can act as a DeploymentTarget in a Deployment relationship, in the case that it represents an instance of a Node. It can also act as a DeployedArtifact, if it represents an instance of an Artifact."/>
+      <ownedProperties xmi:id="hMuKl" name="classes" opposite="#1kkgY" type="#awKqS">
+        <ownedComments body="The Classifier or Classifiers of the represented instance. If multiple Classifiers are specified, the instance is classified by all of them."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="L2P86" isComposite="true" name="ownedSlots" opposite="#cLPoY" type="#wTfhG">
+        <ownedComments body="A Slot giving the value or values of a StructuralFeature of the instance. An InstanceSpecification can have one Slot per StructuralFeature of its Classifiers, including inherited features. It is not necessary to model a Slot for every StructuralFeature, in which case the InstanceSpecification is a partial description."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="Z116E" isComposite="true" isRequired="false" name="ownedSpecification" opposite="#1wN2Y" type="#BfHsW">
+        <ownedComments body="A specification of how to compute, derive, or construct the instance."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="F0BMR" isRequired="false" name="owningPackage" opposite="#M7Qun" type="#3ONqN"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:PrimitiveType" xmi:id="vCSey" instanceClassName="java.lang.Number" name="Integer" superClasses="&_0;#jbMkR">
+      <ownedComments body="Integer is a primitive type representing integer values."/>
+    </ownedClasses>
+    <ownedClasses xmi:id="94SC4" name="IntegerLiteralExp" superClasses="#MFRWm">
+      <ownedInvariants xmi:id="bXIUD" isCallable="true" name="TypeIsInteger">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="self.type = Integer&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="X5zkq" name="integerSymbol" type="#vCSey"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="2uMHH" name="InvalidLiteralExp" superClasses="#fKWWp"/>
+    <ownedClasses xmi:id="CFNJF" name="InvalidType" superClasses="#pDcbe"/>
+    <ownedClasses xmi:id="9ppvF" isAbstract="true" name="IterableType" superClasses="#1mHCJ"/>
+    <ownedClasses xmi:id="0L28o" name="IterateExp" superClasses="#KhrnS #dXAFV">
+      <ownedInvariants xmi:id="X3QaQ" isCallable="true" name="BodyTypeConformsToResultType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="4nkmK" isCallable="true" name="OneInitializer">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="A3HCQ" isCallable="true" name="SafeIteratorIsRequired">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="isSafe implies ownedIterators->forAll(isRequired)&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="OBTwB" isCallable="true" name="SafeSourceCanBeNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="isSafe implies not&#xA;&#x9;let sourceType = ownedSource?.type in&#xA;&#x9;if sourceType.oclIsKindOf(MapType) then sourceType.oclAsType(MapType).keysAreNullFree else sourceType.oclAsType(CollectionType).isNullFree endif&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="3t0O1" isCallable="true" name="TypeIsResultType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="KSMAk" isCallable="true" name="UnsafeSourceCanNotBeNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="(not isSafe and ownedIterators->exists(isRequired)) implies&#xA;&#x9;let sourceType = ownedSource?.type in&#xA;&#x9;if sourceType.oclIsKindOf(MapType) then sourceType.oclAsType(MapType).keysAreNullFree else sourceType.oclAsType(CollectionType).isNullFree endif&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="eb1wJ" isComposite="true" isRequired="false" name="ownedResult" opposite="#i9Axv" type="#t4j6T"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="OZhAb" name="Iteration" superClasses="#Yz,F1">
+      <ownedProperties xmi:id="g2uzG" isComposite="true" name="ownedAccumulators" opposite="#l2Ze7" type="#2ezwj"/>
+      <ownedProperties xmi:id="OpKAs" isComposite="true" name="ownedIterators" opposite="#nZc1," type="#2ezwj"/>
+      <ownedProperties xmi:id="7bx+Q" isImplicit="true" name="LoopExp" opposite="#G2e3S" type="#0ymr3"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="AprzZ" name="IteratorExp" superClasses="#KhrnS #dXAFV">
+      <ownedInvariants xmi:id="uX2KR" isCallable="true" name="AnyBodyTypeIsBoolean">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="+IUau" isCallable="true" name="AnyHasOneIterator">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="D+LWU" isCallable="true" name="AnyTypeIsSourceElementType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="DSk3n" isCallable="true" name="ClosureBodyElementTypeIsIteratorType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="name = 'closure' implies&#xA;&#x9;let bodyElementType = if ownedBody.type.oclIsKindOf(CollectionType) then ownedBody.type.oclAsType(CollectionType).elementType elseif ownedBody.type.oclIsKindOf(MapType) then ownedBody.type.oclAsType(MapType).keyType else ownedBody.type endif in &#xA;&#x9;let iteratorType = ownedIterators->at(1).type in&#xA;&#x9;bodyElementType?.conformsTo(iteratorType)&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="9srpT" isCallable="true" name="ClosureBodyTypeIsConformanttoIteratorType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="&#xA;&#x9;true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="OlB4W" isCallable="true" name="ClosureElementTypeIsSourceElementType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body=" true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="NxSxQ" isCallable="true" name="ClosureHasOneIterator">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="oEhWV" isCallable="true" name="ClosureResultElementTypeIsIteratorType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="&#xA;&#x9;name = 'closure' implies&#xA;&#x9;&#x9;let resultElementType = type.oclAsType(CollectionType).elementType in &#xA;&#x9;&#x9;let iteratorType = ownedIterators->at(1).type in&#xA;&#x9;&#x9;iteratorType?.conformsTo(resultElementType)&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="i2WeK" isCallable="true" name="ClosureSourceElementTypeIsBodyElementType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="G7Q4a" isCallable="true" name="ClosureTypeIsUniqueCollection">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="name = 'closure' implies&#xA;if ownedSource?.type?.oclIsKindOf(SequenceType) or ownedSource?.type.oclIsKindOf(OrderedSetType) then&#xA;type.oclIsKindOf(OrderedSetType)&#xA;else&#xA;type.oclIsKindOf(SetType)&#xA;endif&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="BmhOw" isCallable="true" name="CollectElementTypeIsFlattenedBodyType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="name = 'collect' implies&#xA;type.oclAsType(CollectionType).elementType = ownedBody.type?.flattenedType()&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="+r5YE" isCallable="true" name="CollectTypeIsUnordered">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="name = 'collect' implies&#xA;if ownedSource?.type.oclIsKindOf(SequenceType) or ownedSource?.type.oclIsKindOf(OrderedSetType) then&#xA;type.oclIsKindOf(SequenceType)&#xA;else&#xA;type.oclIsKindOf(BagType)&#xA;endif&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="BqluY" isCallable="true" name="IteratorTypeIsSourceElementType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="let sourceType = ownedSource?.type in sourceType.oclIsKindOf(CollectionType) implies&#xA;    let sourceElementType = sourceType.oclAsType(CollectionType).elementType in&#xA;    self.ownedIterators->forAll(p | sourceElementType.conformsTo(p.type))&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="kHNTE" isCallable="true" name="IteratorTypeIsSourceKeyType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="let sourceType = ownedSource?.type in sourceType.oclIsKindOf(MapType) implies&#xA;    let sourceKeyType = sourceType.oclAsType(MapType).keyType in&#xA;    self.ownedIterators->forAll(p | sourceKeyType.conformsTo(p.type))&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="cf60q" isCallable="true" name="SafeIteratorIsRequired">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="isSafe implies ownedIterators->forAll(isRequired)&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="qpFjc" isCallable="true" name="SafeSourceCanBeNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="isSafe implies not&#xA;&#x9;let sourceType = ownedSource?.type in&#xA;&#x9;if sourceType.oclIsKindOf(MapType) then sourceType.oclAsType(MapType).keysAreNullFree else sourceType.oclAsType(CollectionType).isNullFree endif&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="HG8Sn" isCallable="true" name="SortedByElementTypeIsSourceElementType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="name = 'sortedBy' implies&#xA;type.oclAsType(CollectionType).elementType =&#xA;ownedSource?.type.oclAsType(CollectionType).elementType&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="UgAQH" isCallable="true" name="SortedByIsOrderedIfSourceIsOrdered">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="name = 'sortedBy' implies&#xA;if ownedSource?.type.oclIsKindOf(SequenceType) or ownedSource?.type.oclIsKindOf(BagType) then&#xA;type.oclIsKindOf(SequenceType)&#xA;else&#xA;type.oclIsKindOf(OrderedSetType)&#xA;endif&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="YIGpe" isCallable="true" name="SortedByIteratorTypeIsComparable">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="&#xA;&#x9;true&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="m6+y+" isCallable="true" name="UnsafeSourceCanNotBeNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="(not isSafe and ownedIterators->exists(isRequired)) implies&#xA;&#x9;let sourceType = ownedSource?.type in&#xA;&#x9;if sourceType.oclIsKindOf(MapType) then sourceType.oclAsType(MapType).keysAreNullFree else sourceType.oclAsType(CollectionType).isNullFree endif&#xA;&#xA;"/>
+      </ownedInvariants>
+    </ownedClasses>
+    <ownedClasses xmi:id="7yjCF" name="IteratorVariable" superClasses="#t4j6T">
+      <ownedInvariants xmi:id="uHopO" isCallable="true" name="HasNoInitializer">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedInit = null&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="sbNVd" isImplicit="true" isRequired="false" name="LoopExp" opposite="#Oa7sP" type="#KhrnS"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="S9Pb5" name="LambdaType" superClasses="#1mHCJ">
+      <ownedProperties xmi:id="rwWeu" name="contextType" opposite="#X5F8c" type="#rrwsa"/>
+      <ownedProperties xmi:id="l0V,d" name="parameterType" opposite="#tU,ip" type="#r5PCb"/>
+      <ownedProperties xmi:id="ZeRhS" name="resultType" opposite="#Z5gQZ" type="#rrwsa"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="BfHsW" isAbstract="true" name="LanguageExpression" superClasses="#DLUxI">
+      <ownedProperties xmi:id="37C4q" isRequired="false" name="body" type="#CPVxu"/>
+      <ownedProperties xmi:id="tiIhK" isDerived="true" isReadOnly="true" isTransient="true" isVolatile="true" name="language" type="#CPVxu"/>
+      <ownedProperties xmi:id="ub8yA" isRequired="false" name="owningConstraint" opposite="#MZFY9" type="#Om,AG"/>
+      <ownedProperties xmi:id="1wN2Y" isImplicit="true" isRequired="false" name="InstanceSpecification" opposite="#Z116E" type="#f3gRG"/>
+      <ownedProperties xmi:id="SOZSu" isImplicit="true" isRequired="false" name="Operation" opposite="#qfUk8" type="#Yz,F1"/>
+      <ownedProperties xmi:id="VkNq6" isImplicit="true" isRequired="false" name="Property" opposite="#jsqM," type="#Gm0Mj"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="zmGAi" name="LetExp" superClasses="#BFtK4">
+      <ownedInvariants xmi:id="ahGlw" isCallable="true" name="CompatibleNullityForIn">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="isRequired = ownedIn.isRequired&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="CZPsY" isCallable="true" name="TypeIsInType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type = ownedIn.type&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="nnFkL" isCallable="true" name="TypeIsNotInvalid">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> OclInvalid&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="p48qJ" isComposite="true" name="ownedIn" opposite="#dm5C," type="#BFtK4"/>
+      <ownedProperties xmi:id="AvpRG" isComposite="true" name="ownedVariable" opposite="#6HKvR" type="#t4j6T"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="o0zyX" name="LetVariable" superClasses="#t4j6T">
+      <ownedInvariants xmi:id="MQwO9" isCallable="true" name="CompatibleNullityForInitializer">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedInit?.isRequired = isRequired&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="nDmP5" isCallable="true" name="CompatibleTypeForInitializer">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedInit &lt;> null implies ownedInit.type?.conformsTo(type)&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="o6re," isCallable="true" name="HasInitializer">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedInit &lt;> null&#xA;"/>
+      </ownedInvariants>
+    </ownedClasses>
+    <ownedClasses xmi:id="sQ8qH" name="Library" superClasses="#3ONqN">
+      <ownedProperties xmi:id="Yf0DL" isComposite="true" name="ownedPrecedences" opposite="#eJex6" type="#vmqJ7"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:DataType" xmi:id="slAkU" instanceClassName="org.eclipse.ocl.pivot.library.LibraryFeature" name="LibraryFeature"
+        superClasses="&_0;#jbMkR"/>
+    <ownedClasses xmi:id="fKWWp" isAbstract="true" name="LiteralExp" superClasses="#BFtK4"/>
+    <ownedClasses xmi:id="KhrnS" isAbstract="true" name="LoopExp" superClasses="#QJrde">
+      <ownedInvariants xmi:id="0p5ql" isCallable="true" name="MatchingMapCoIterators">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedSource?.type.oclIsKindOf(MapType) implies (self.ownedCoIterators->size() = 0) or (self.ownedCoIterators->size() = self.ownedIterators->size())&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="FLoUm" isCallable="true" name="MatchingOrderedCollectionCoIterators">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="(ownedSource?.type.oclIsKindOf(OrderedSetType) or ownedSource?.type.oclIsKindOf(SequenceType)) implies (self.ownedCoIterators->size() = 0) or (self.ownedCoIterators->size() = self.ownedIterators->size())&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="Y3Nh," isCallable="true" name="NoCoInitializers">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="self.ownedCoIterators?->forAll(ownedInit->isEmpty())&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="Mu9dD" isCallable="true" name="NoInitializers">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="self.ownedIterators->forAll(ownedInit->isEmpty())&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="aJolQ" isCallable="true" name="NoNotOrderedCollectionCoIterators">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="(ownedSource?.type.oclIsKindOf(BagType) or ownedSource?.type.oclIsKindOf(SetType)) implies self.ownedCoIterators->isEmpty()&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="9R+V7" isCallable="true" name="SourceIsCollection">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="R+NOk" isCallable="true" name="SourceIsIterable">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedSource?.type.oclIsKindOf(IterableType)&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="h2RKw" isComposite="true" name="ownedBody" opposite="#fLwep" type="#BFtK4"/>
+      <ownedProperties xmi:id="Oa7sP" isComposite="true" name="ownedCoIterators" opposite="#sbNVd" type="#qjyQj"/>
+      <ownedProperties xmi:id="aRrs3" isComposite="true" name="ownedIterators" opposite="#qs4sI" type="#Rl6IP"/>
+      <ownedProperties xmi:id="G2e3S" isRequired="false" name="referredIteration" opposite="#7bx+Q" type="#OZhAb"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="bTDI1" name="MapLiteralExp" superClasses="#fKWWp">
+      <ownedProperties xmi:id="C1zzW" isComposite="true" name="ownedParts" opposite="#aqXmL" type="#LaAZc"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="33CoS" name="MapLiteralPart" superClasses="#t5rpa">
+      <ownedProperties xmi:id="tAq1Y" isComposite="true" name="ownedKey" opposite="#RWsed" type="#BFtK4"/>
+      <ownedProperties xmi:id=",hDi+" isComposite="true" name="ownedValue" opposite="#P,eVl" type="#BFtK4"/>
+      <ownedProperties xmi:id="aqXmL" isImplicit="true" isRequired="false" name="MapLiteralExp" opposite="#C1zzW" type="#bTDI1"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="nozov" name="MapType" superClasses="#9ppvF">
+      <ownedProperties xmi:id="J5GM0" isRequired="false" name="entryClass" opposite="#9Vw0e" type="#pDcbe">
+        <ownedComments body="A type for an entry that may allow an external syntax serialization as a set-of-entryClass."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="cBKS6" isDerived="true" isResolveProxies="false" isTransient="true" isVolatile="true" name="keyType" opposite="#83I1p"
+          type="#rrwsa"/>
+      <ownedProperties xmi:id="W6bzu" defaultValueString="true" name="keysAreNullFree" type="#ZuwnB"/>
+      <ownedProperties xmi:id="up7P9" isDerived="true" isResolveProxies="false" isTransient="true" isVolatile="true" name="valueType"
+          opposite="#6Rkl+" type="#rrwsa"/>
+      <ownedProperties xmi:id="oaq2q" defaultValueString="true" name="valuesAreNullFree" type="#ZuwnB"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="HRils" name="MessageExp" superClasses="#BFtK4">
+      <ownedInvariants xmi:id="K+QpH" isCallable="true" name="OneCallOrOneSend">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedCalledOperation->size() + ownedSentSignal->size() = 1&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="qn7CV" isCallable="true" name="TargetIsNotACollection">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="not ownedTarget.type.oclIsKindOf(CollectionType)&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="0f9IF" isComposite="true" name="ownedArguments" opposite="#ibbyn" type="#Ftslp"/>
+      <ownedProperties xmi:id="Ijz5s" isComposite="true" isRequired="false" name="ownedCalledOperation" opposite="#hlb5z" type="#wuJTT"/>
+      <ownedProperties xmi:id="oSaJE" isComposite="true" isRequired="false" name="ownedSentSignal" opposite="#MCEwd" type="#X55Qa"/>
+      <ownedProperties xmi:id="ZhQEN" isComposite="true" name="ownedTarget" opposite="#lmgRf" type="#BFtK4"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="Sdl6J" name="MessageType" superClasses="#pDcbe">
+      <ownedProperties xmi:id="4bRj1" isRequired="false" name="referredOperation" opposite="#rgHOI" type="#Yz,F1"/>
+      <ownedProperties xmi:id="7CGi+" isRequired="false" name="referredSignal" opposite="#9,UhR" type="#ZJWJu"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="aKB,e" name="Model" superClasses="#MzHoc">
+      <ownedComments body="A model captures a view of a physical system. It is an abstraction of the physical system, with a certain purpose. This purpose determines what is to be included in the model and what is irrelevant. Thus the model completely describes those aspects of the physical system that are relevant to the purpose of the model, at the appropriate level of detail."/>
+      <ownedProperties xmi:id="rZ9f7" isRequired="false" name="externalURI" type="#CPVxu"/>
+      <ownedProperties xmi:id="TvdGt" isComposite="true" name="ownedImports" opposite="#ercGZ" type="#SiPAU"/>
+      <ownedProperties xmi:id="897M1" isComposite="true" name="ownedPackages" opposite="#aNkee" type="#4WjM+"/>
+      <ownedProperties xmi:id="zJFNP" defaultValueString="0" name="xmiidVersion" type="#vCSey"/>
+      <ownedProperties xmi:id="n0An," isImplicit="true" name="CompleteModel" opposite="#AF1+9" type="#zUrgD"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="4w3oz" instanceClassName="org.eclipse.ocl.pivot.utilities.MorePivotable" isAbstract="true" isInterface="true"
+        name="MorePivotable" superClasses="&_0;#zfDWR"/>
+    <ownedClasses xmi:id="W4DIM" instanceClassName="org.eclipse.ocl.pivot.utilities.Nameable" isAbstract="true" isInterface="true" name="Nameable"
+        superClasses="&_0;#zfDWR"/>
+    <ownedClasses xmi:id="0kVqz" isAbstract="true" name="NamedElement" superClasses="#t5rpa">
+      <ownedComments body="A NamedElement is an Element in a model that may have a name. The name may be given directly and/or via the use of a StringExpression."/>
+      <ownedProperties xmi:id="HeJg3" isRequired="false" name="name" type="#CPVxu">
+        <ownedComments body="The name of the NamedElement."/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xmi:id="MzHoc" isAbstract="true" name="Namespace" superClasses="#0kVqz">
+      <ownedComments body="A Namespace is an Element in a model that owns and/or imports a set of NamedElements that can be identified by name."/>
+      <ownedProperties xmi:id="FS8OY" isComposite="true" name="ownedConstraints" opposite="#gl,un" type="#31l4V">
+        <ownedComments body="Specifies a set of Constraints owned by this Namespace."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="6vXcR" isImplicit="true" name="Constraint" opposite="#dmddj" type="#Y1h4V"/>
+      <ownedProperties xmi:id="6j3Na" isImplicit="true" name="Import" opposite="#NleVa" type="#gfUzv"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="cmSzw" isAbstract="true" name="NavigationCallExp" superClasses="#6KunE">
+      <ownedProperties xmi:id="Ts86V" isRequired="false" name="navigationSource" opposite="#6EjLW" type="#Gm0Mj"/>
+      <ownedProperties xmi:id="ND3QN" name="qualifiers" opposite="#f4Az4" type="#Ftslp"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="Ge,OM" name="NullLiteralExp" superClasses="#mKorp"/>
+    <ownedClasses xmi:id="MFRWm" isAbstract="true" name="NumericLiteralExp" superClasses="#mKorp"/>
+    <ownedClasses xmi:id="BFtK4" isAbstract="true" name="OCLExpression" superClasses="#j7EI0">
+      <ownedInvariants xmi:id="L6WoT" isCallable="true" name="TypeIsNotNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> null&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedOperations xmi:id="cvF4g" name="isNonNull" type="#ZuwnB"/>
+      <ownedOperations xmi:id="DBwi+" name="isNull" type="#ZuwnB"/>
+      <ownedProperties xmi:id="s8mFO" isRequired="false" isResolveProxies="false" isTransient="true" name="typeValue" opposite="#onVlb"
+          type="#rrwsa">
+        <ownedComments body="When oclType() returns a Class value with a known actual type, the typeValue propagates the known type."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="0VFpK" isImplicit="true" isRequired="false" name="CallExp" opposite="#IjXu4" type="#QJrde"/>
+      <ownedProperties xmi:id="ucQSI" isImplicit="true" isRequired="false" name="CollectionItem" opposite="#qB57w" type="#CKfVx"/>
+      <ownedProperties xmi:id="BdVOq" isImplicit="true" isRequired="false" name="CollectionRange" opposite="#TGoSr" type="#wy8kd"/>
+      <ownedProperties xmi:id="xXoj0" isImplicit="true" isRequired="false" name="CollectionRange" opposite="#jF9nj" type="#wy8kd"/>
+      <ownedProperties xmi:id="BwjAx" isImplicit="true" isRequired="false" name="ExpressionInOCL" opposite="#7o,d2" type="#sFfJa"/>
+      <ownedProperties xmi:id="vgW3D" isImplicit="true" isRequired="false" name="IfExp" opposite="#77VwY" type="#xsyve"/>
+      <ownedProperties xmi:id="n7Lp1" isImplicit="true" isRequired="false" name="IfExp" opposite="#DSLlN" type="#xsyve"/>
+      <ownedProperties xmi:id="jUA11" isImplicit="true" isRequired="false" name="IfExp" opposite="#nV3mN" type="#xsyve"/>
+      <ownedProperties xmi:id="dm5C," isImplicit="true" isRequired="false" name="LetExp" opposite="#p48qJ" type="#zmGAi"/>
+      <ownedProperties xmi:id="fLwep" isImplicit="true" isRequired="false" name="LoopExp" opposite="#h2RKw" type="#KhrnS"/>
+      <ownedProperties xmi:id="RWsed" isImplicit="true" isRequired="false" name="MapLiteralPart" opposite="#tAq1Y" type="#33CoS"/>
+      <ownedProperties xmi:id="P,eVl" isImplicit="true" isRequired="false" name="MapLiteralPart" opposite="#,hDi+" type="#33CoS"/>
+      <ownedProperties xmi:id="ibbyn" isImplicit="true" isRequired="false" name="MessageExp" opposite="#0f9IF" type="#HRils"/>
+      <ownedProperties xmi:id="lmgRf" isImplicit="true" isRequired="false" name="MessageExp" opposite="#ZhQEN" type="#HRils"/>
+      <ownedProperties xmi:id="f4Az4" isImplicit="true" name="NavigationCallExp" opposite="#ND3QN" type="#2I901"/>
+      <ownedProperties xmi:id="EHyAZ" isImplicit="true" isRequired="false" name="OperationCallExp" opposite="#O9xIX" type="#p84zd"/>
+      <ownedProperties xmi:id="79Ber" isImplicit="true" isRequired="false" name="ShadowPart" opposite="#BteKG" type="#kTahU"/>
+      <ownedProperties xmi:id="iKMCL" isImplicit="true" isRequired="false" name="TupleLiteralPart" opposite="#M3JBq" type="#LgkF0"/>
+      <ownedProperties xmi:id="EjL3q" isImplicit="true" isRequired="false" name="Variable" opposite="#mNUYa" type="#t4j6T"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:DataType" xmi:id="wbJ8m" instanceClassName="java.lang.Object" name="Object" superClasses="&_0;#jbMkR"/>
+    <ownedClasses xmi:id="Yz,F1" name="Operation" superClasses="#nphZD #MzHoc #5r5y9">
+      <ownedComments body="An Operation is a BehavioralFeature of a Classifier that specifies the name, type, parameters, and constraints for invoking an associated Behavior. An Operation may invoke both the execution of method behaviors as well as other behavioral responses. Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template."/>
+      <ownedInvariants xmi:id="UTFpw" isCallable="true" name="CompatibleReturn">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="bodyExpression &lt;> null and bodyExpression.oclAsType(ExpressionInOCL).ownedBody &lt;> null implies CompatibleBody(bodyExpression)&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="Cb2s1" isCallable="true" name="LoadableImplementation">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="&#xA;&#x9;true&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="FVMgD" isCallable="true" name="UniquePostconditionName">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedPostconditions->isUnique(name)&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="ko3xJ" isCallable="true" name="UniquePreconditionName">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedPreconditions->isUnique(name)&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="qfUk8" isComposite="true" isRequired="false" name="bodyExpression" opposite="#SOZSu" type="#BfHsW"/>
+      <ownedProperties xmi:id="S+5tf" defaultValueString="false" name="isInvalidating" type="#ZuwnB">
+        <ownedComments body="Whether this operation may return an invalid result for non-invalid (or invalid if also validating) inputs."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="QaKjy" defaultValueString="false" name="isTransient" type="#ZuwnB"/>
+      <ownedProperties xmi:id="rpGji" defaultValueString="false" name="isTypeof" type="#ZuwnB"/>
+      <ownedProperties xmi:id="tcgYs" defaultValueString="false" name="isValidating" type="#ZuwnB">
+        <ownedComments body="Whether this operation may return a non-invalid result for invalid inputs."/>
+      </ownedProperties>
+      <ownedProperties xmi:id=",hgri" isComposite="true" name="ownedParameters" opposite="#1FOo," type="#2ezwj">
+        <ownedComments body="The ordered set of formal Parameters of this BehavioralFeature.&#xA;&#xA;The parameters owned by this Operation."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="tNQkw" isComposite="true" name="ownedPostconditions" opposite="#hC6PQ" type="#31l4V">
+        <ownedComments body="An optional set of Constraints specifying the state of the system when the Operation is completed."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="G0Gd," isComposite="true" name="ownedPreconditions" opposite="#20skK" type="#31l4V">
+        <ownedComments body="An optional set of Constraints on the state of the system when the Operation is invoked."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="Mp0MK" isRequired="false" name="owningClass" opposite="#OZRpi" type="#pDcbe">
+        <ownedComments body="The Class that owns this operation, if any."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="aQIF3" isRequired="false" name="precedence" opposite="#0bJBA" type="#7Wa4a"/>
+      <ownedProperties xmi:id="sg5YQ" name="raisedExceptions" opposite="#iPrT3" type="#Mb2vG">
+        <ownedComments body="The Types representing exceptions that may be raised during an invocation of this BehavioralFeature.&#xA;&#xA;The Types representing exceptions that may be raised during an invocation of this operation."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="Ss1Ep" name="redefinedOperations" opposite="#lZeto" type="#xI41z">
+        <ownedComments body="The Operations that are redefined by this Operation."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="AwSDc" isImplicit="true" name="CallOperationAction" opposite="#vrBiI" type="#qsnI0"/>
+      <ownedProperties xmi:id="rgHOI" isImplicit="true" name="MessageType" opposite="#4bRj1" type="#8ZL+w"/>
+      <ownedProperties xmi:id="lZeto" isImplicit="true" name="Operation" opposite="#Ss1Ep" type="#SI01z"/>
+      <ownedProperties xmi:id="CAbHc" isImplicit="true" name="OperationCallExp" opposite="#ztMvO" type="#7ASqb"/>
+      <ownedProperties xmi:id="EuUDV" isImplicit="true" name="PrimitiveType" opposite="#XXWHz" type="#chYA4"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="p84zd" name="OperationCallExp" superClasses="#6KunE #dXAFV">
+      <ownedInvariants xmi:id="Pjeni" isCallable="true" name="ArgumentCount">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedArguments->size() = referredOperation?.ownedParameters?->size()&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="f2r2V" isCallable="true" name="ArgumentTypeIsConformant">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="&#xA;&#x9;let operation : Operation = self.referredOperation in&#xA;&#x9;let parameters : OrderedSet(Parameter) = operation?.ownedParameters in&#xA;&#x9;let selfType : Type = operation?.owningClass in&#xA;&#x9;Sequence{1..ownedArguments->size()}->forAll (i | &#xA;&#x9;&#x9;let argument : OCLExpression = ownedArguments->at(i) in&#xA;&#x9;&#x9;let parameter : Parameter = parameters?->at(i) in&#xA;&#x9;&#x9;let parameterType : Type = parameter.type in&#xA;&#x9;&#x9;let requiredType : Type = if parameter.isTypeof then Class else parameterType?.specializeIn(self, selfType) endif in&#xA;&#x9;&#x9;argument.type?.conformsTo(requiredType))&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="v+X3T" isCallable="true" name="SafeSourceCanBeNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="(ownedSource &lt;> null) and isSafe implies not ownedSource.isNonNull()&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="rPRH2" isCallable="true" name="UnsafeSourceCanNotBeNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="(not hasOclVoidOverload()) implies ((ownedSource &lt;> null) and not isSafe implies ownedSource.isNonNull())&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedOperations xmi:id="ml59+" name="hasOclVoidOverload" type="#ZuwnB">
+        <bodyExpression xsi:type="pivot:ExpressionInOCL" body="false "/>
+      </ownedOperations>
+      <ownedProperties xmi:id="eWL7K" defaultValueString="true" name="isVirtual" type="#ZuwnB"/>
+      <ownedProperties xmi:id="O9xIX" isComposite="true" name="ownedArguments" opposite="#EHyAZ" type="#Ftslp"/>
+      <ownedProperties xmi:id="ztMvO" isRequired="false" name="referredOperation" opposite="#CAbHc" type="#Yz,F1"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="Uj1fg" name="OppositePropertyCallExp" superClasses="#cmSzw">
+      <ownedInvariants xmi:id="u6M9K" isCallable="true" name="SafeSourceCanBeNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="(ownedSource &lt;> null) and isSafe implies not ownedSource.isNonNull()&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="qLGNt" isCallable="true" name="UnsafeSourceCanNotBeNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="(ownedSource &lt;> null) and not isSafe implies ownedSource.isNonNull()&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="is7rW" isRequired="false" name="referredProperty" opposite="#zB7r3" type="#Gm0Mj"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="A10J5" name="OrderedSetType" superClasses="#pawWx"/>
+    <ownedClasses xmi:id="WaoLl" name="OrphanCompletePackage" superClasses="#+gDEJ">
+      <ownedProperties xmi:id="pwEaB" isImplicit="true" name="CompleteModel" opposite="#aU0xR" type="#zUrgD"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="3ONqN" name="Package" superClasses="#MzHoc">
+      <ownedComments body="A package can have one or more profile applications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles.&#xA;Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.&#xA;A package is used to group elements, and provides a namespace for the grouped elements."/>
+      <ownedProperties xmi:id=",KgOn" isRequired="false" name="URI" type="#CPVxu">
+        <ownedComments body="Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="EmlXL" name="importedPackages" opposite="#QYeXX" type="#4WjM+"/>
+      <ownedProperties xmi:id="q4DYc" isRequired="false" name="nsPrefix" type="#CPVxu"/>
+      <ownedProperties xmi:id="0MELU" isComposite="true" name="ownedClasses" opposite="#nvShn" type="#awKqS">
+        <ownedComments body="References the packaged elements that are Types."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="M7Qun" isComposite="true" name="ownedInstances" opposite="#F0BMR" type="#g222s">
+        <ownedComments body="The instance specification that owns this slot."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="lAfMc" isComposite="true" name="ownedPackages" opposite="#9tyHG" type="#4WjM+">
+        <ownedComments body="References the packaged elements that are Packages."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="6fs3R" isComposite="true" name="ownedProfileApplications" opposite="#a,8GK" type="#xrMXr">
+        <ownedComments body="References the ProfileApplications that indicate which profiles have been applied to the Package."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="9tyHG" isRequired="false" name="owningPackage" opposite="#lAfMc" type="#3ONqN">
+        <ownedComments body="References the Package that owns this Package."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="CUgnW" isImplicit="true" name="CompletePackage" opposite="#slBkJ" type="#Ii+Il"/>
+      <ownedProperties xmi:id="aNkee" isImplicit="true" isRequired="false" name="Model" opposite="#897M1" type="#aKB,e"/>
+      <ownedProperties xmi:id="QYeXX" isImplicit="true" name="Package" opposite="#EmlXL" type="#ZWfM+"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="as9eG" name="Parameter" superClasses="#PT,bz">
+      <ownedComments body="A Parameter is a specification of an argument used to pass information into or out of an invocation of a BehavioralFeature.  Parameters can be treated as ConnectableElements within Collaborations."/>
+      <ownedProperties xmi:id="led29" defaultValueString="false" name="isTypeof" type="#ZuwnB"/>
+      <ownedProperties xmi:id="1FOo," isRequired="false" name="owningOperation" opposite="#,hgri" type="#Yz,F1">
+        <ownedComments body="The Operation owning this parameter."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="l2Ze7" isImplicit="true" isRequired="false" name="Iteration" opposite="#g2uzG" type="#OZhAb"/>
+      <ownedProperties xmi:id="nZc1," isImplicit="true" isRequired="false" name="Iteration" opposite="#OpKAs" type="#OZhAb"/>
+      <ownedProperties xmi:id="U1Kb0" isImplicit="true" name="Variable" opposite="#zeTJY" type="#fi,7q"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="2i39P" name="ParameterVariable" superClasses="#t4j6T">
+      <ownedInvariants xmi:id="9nrzi" isCallable="true" name="HasNoInitializer">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedInit = null&#xA;&#xA;"/>
+      </ownedInvariants>
+    </ownedClasses>
+    <ownedClasses xmi:id="NgpYx" instanceClassName="org.eclipse.ocl.pivot.utilities.Pivotable" isAbstract="true" isInterface="true" name="Pivotable"
+        superClasses="&_0;#zfDWR"/>
+    <ownedClasses xmi:id="7Wa4a" name="Precedence" superClasses="#0kVqz">
+      <ownedProperties xmi:id="B4T3O" defaultValueString="left" isRequired="false" name="associativity" type="#,Swbo"/>
+      <ownedProperties xmi:id="1q9Jp" defaultValueString="0" name="order" type="#vCSey"/>
+      <ownedProperties xmi:id="eJex6" isImplicit="true" isRequired="false" name="Library" opposite="#Yf0DL" type="#sQ8qH"/>
+      <ownedProperties xmi:id="0bJBA" isImplicit="true" name="Operation" opposite="#aQIF3" type="#SI01z"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="XSQ4c" name="PrimitiveCompletePackage" superClasses="#+gDEJ">
+      <ownedProperties xmi:id="tpHsl" isImplicit="true" name="CompleteModel" opposite="#b7Oj2" type="#zUrgD"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="mKorp" isAbstract="true" name="PrimitiveLiteralExp" superClasses="#fKWWp"/>
+    <ownedClasses xmi:id="ywnRJ" name="PrimitiveType" superClasses="#1mHCJ">
+      <ownedComments body="A PrimitiveType defines a predefined DataType, without any substructure. A PrimitiveType may have an algebra and operations defined outside of UML, for example, mathematically."/>
+      <ownedProperties xmi:id="XXWHz" name="coercions" opposite="#EuUDV" type="#ELvCY"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="akiUr" name="Profile" superClasses="#3ONqN">
+      <ownedComments body="A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain."/>
+      <ownedProperties xmi:id="2KpwQ" name="profileApplications" opposite="#8gTod" type="#xrMXr"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="YOH1b" name="ProfileApplication" superClasses="#t5rpa">
+      <ownedComments body="A profile application is used to show which profiles have been applied to a package."/>
+      <ownedProperties xmi:id="8gTod" name="appliedProfile" opposite="#2KpwQ" type="#akiUr">
+        <ownedComments body="References the Profiles that are applied to a Package through this ProfileApplication."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="j56Ne" defaultValueString="false" name="isStrict" type="#ZuwnB">
+        <ownedComments body="Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="a,8GK" name="owningPackage" opposite="#6fs3R" type="#3ONqN">
+        <ownedComments body="The package that owns the profile application."/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xmi:id="Gm0Mj" name="Property" superClasses="#nphZD">
+      <ownedComments body="A Property is a StructuralFeature. A Property related by ownedAttribute to a Classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the Classifier to a value or set of values of the type of the attribute. A Property related by memberEnd to an Association represents an end of the Association. The type of the Property is the type of the end of the Association. A Property has the capability of being a DeploymentTarget in a Deployment relationship. This enables modeling the deployment to hierarchical nodes that have Properties functioning as internal parts.  Property specializes ParameterableElement to specify that a Property can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template."/>
+      <ownedInvariants xmi:id="rSkQY" isCallable="true" name="CompatibleDefaultExpression">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedExpression &lt;> null and ownedExpression.oclAsType(ExpressionInOCL).ownedBody &lt;> null implies CompatibleBody(ownedExpression)&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedOperations xmi:id="nycUW" name="isAttribute" type="#ZuwnB">
+        <bodyExpression xsi:type="pivot:ExpressionInOCL" body="&#xA;--Type.allInstances()->exists(c| c.ownedAttribute->includes(p))&#xA;let container : ocl::OclElement = oclContainer() in container.oclIsKindOf(Class) and container.oclAsType(Class).ownedProperties->includes(self)&#xA;&#xA;"/>
+        <ownedParameters xmi:id="maJ1N" name="p" type="#Gm0Mj"/>
+      </ownedOperations>
+      <ownedProperties xmi:id="9lR1c" isRequired="false" name="associationClass" opposite="#D9XUa" type="#oE9s0"/>
+      <ownedProperties xmi:id="2+xJp" isDerived="true" isRequired="false" isTransient="true" name="defaultValue" type="#wbJ8m"/>
+      <ownedProperties xmi:id="nfeV9" isRequired="false" name="defaultValueString" type="#CPVxu"/>
+      <ownedProperties xmi:id="Di0PD" defaultValueString="false" name="isComposite" type="#ZuwnB"/>
+      <ownedProperties xmi:id="ZGnoK" defaultValueString="false" name="isDerived" type="#ZuwnB">
+        <ownedComments body="Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="LfgoQ" defaultValueString="false" name="isID" type="#ZuwnB">
+        <ownedComments body="True indicates this property can be used to uniquely identify an instance of the containing Class."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="1kMzH" defaultValueString="false" name="isImplicit" type="#ZuwnB"/>
+      <ownedProperties xmi:id="y2Gct" defaultValueString="false" name="isReadOnly" type="#ZuwnB">
+        <ownedComments body="If isReadOnly is true, the StructuralFeature may not be written to after initialization."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="QfStc" defaultValueString="true" name="isResolveProxies" type="#ZuwnB"/>
+      <ownedProperties xmi:id="GiXbV" defaultValueString="false" name="isTransient" type="#ZuwnB"/>
+      <ownedProperties xmi:id="VMuUC" defaultValueString="false" name="isUnsettable" type="#ZuwnB"/>
+      <ownedProperties xmi:id="sjznw" defaultValueString="false" name="isVolatile" type="#ZuwnB"/>
+      <ownedProperties xmi:id="6HsoQ" name="keys" opposite="#neBea" type="#vqSV7"/>
+      <ownedProperties xmi:id="trcPF" isRequired="false" name="opposite" opposite="#MZVtK" type="#Gm0Mj">
+        <ownedComments body="In the case where the Property is one end of a binary association this gives the other end."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="jsqM," isComposite="true" isRequired="false" name="ownedExpression" opposite="#VkNq6" type="#BfHsW"/>
+      <ownedProperties xmi:id="CxBFt" isRequired="false" name="owningClass" opposite="#VusMr" type="#pDcbe">
+        <ownedComments body="The Class that owns this Property, if any."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="PJegU" name="redefinedProperties" opposite="#6nfk1" type="#vqSV7">
+        <ownedComments body="The properties that are redefined by this property, if any."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="MErVe" isRequired="false" name="referredProperty" opposite="#lE6Y6" type="#Gm0Mj"/>
+      <ownedProperties xmi:id="sOLOj" name="subsettedProperty" opposite="#FObkc" type="#vqSV7">
+        <ownedComments body="The properties of which this Property is constrained to be a subset, if any."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="EpwEv" isImplicit="true" name="DynamicProperty" opposite="#vGP79" type="#XZHUM"/>
+      <ownedProperties xmi:id="6EjLW" isImplicit="true" name="NavigationCallExp" opposite="#Ts86V" type="#2I901"/>
+      <ownedProperties xmi:id="zB7r3" isImplicit="true" name="OppositePropertyCallExp" opposite="#is7rW" type="#uyjxK"/>
+      <ownedProperties xmi:id="neBea" isImplicit="true" name="Property" opposite="#6HsoQ" type="#QqOV7"/>
+      <ownedProperties xmi:id="MZVtK" isImplicit="true" name="Property" opposite="#trcPF" type="#QqOV7"/>
+      <ownedProperties xmi:id="6nfk1" isImplicit="true" name="Property" opposite="#PJegU" type="#QqOV7"/>
+      <ownedProperties xmi:id="lE6Y6" isImplicit="true" name="Property" opposite="#MErVe" type="#QqOV7"/>
+      <ownedProperties xmi:id="FObkc" isImplicit="true" name="Property" opposite="#sOLOj" type="#QqOV7"/>
+      <ownedProperties xmi:id="ap542" isImplicit="true" name="PropertyCallExp" opposite="#tl5uo" type="#93o0D"/>
+      <ownedProperties xmi:id="Dyftr" isImplicit="true" name="ShadowPart" opposite="#ybRzT" type="#+4q9g"/>
+      <ownedProperties xmi:id="fHmW6" isImplicit="true" name="Slot" opposite="#4EW7Q" type="#RTbhG"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="7K0sf" name="PropertyCallExp" superClasses="#cmSzw #dXAFV">
+      <ownedInvariants xmi:id="yzhc8" isCallable="true" name="CompatibleResultType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type = getSpecializedReferredPropertyType()&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="CmNpq" isCallable="true" name="NonStaticSourceTypeIsConformant">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="not referredProperty?.isStatic implies &#xA;&#x9;ownedSource?.type?.conformsTo(getSpecializedReferredPropertyOwningType())&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="5zKAd" isCallable="true" name="SafeSourceCanBeNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="(ownedSource &lt;> null) and isSafe implies not ownedSource.isNonNull()&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="1EEQ," isCallable="true" name="UnsafeSourceCanNotBeNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="(ownedSource &lt;> null) and not isSafe implies ownedSource.isNonNull()&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedOperations xmi:id="TKf1y" name="getSpecializedReferredPropertyOwningType" type="#rrwsa">
+        <bodyExpression xsi:type="pivot:ExpressionInOCL" body="referredProperty?.owningClass "/>
+      </ownedOperations>
+      <ownedOperations xmi:id="XCWxk" name="getSpecializedReferredPropertyType" type="#rrwsa">
+        <bodyExpression xsi:type="pivot:ExpressionInOCL" body="referredProperty?.type.oclAsType(Class) "/>
+      </ownedOperations>
+      <ownedProperties xmi:id="tl5uo" isRequired="false" name="referredProperty" opposite="#ap542" type="#Gm0Mj"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="EkdzF" name="Pseudostate" superClasses="#VVKEz">
+      <ownedComments body="A Pseudostate is an abstraction that encompasses different types of transient Vertices in the StateMachine graph. A StateMachine instance never comes to rest in a Pseudostate, instead, it will exit and enter the Pseudostate within a single run-to-completion step."/>
+      <ownedProperties xmi:id="gkRET" defaultValueString="initial" name="kind" type="#4cZdc">
+        <ownedComments body="Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="hD4Zw" isRequired="false" name="owningState" opposite="#4KsMo" type="#CwtUf">
+        <ownedComments body="The State that owns this Pseudostate and in which it appears."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="+ypFe" isRequired="false" name="owningStateMachine" opposite="#JBdoI" type="#n412f">
+        <ownedComments body="The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="1udyj" isImplicit="true" name="ConnectionPointReference" opposite="#KPNEV" type="#047h3"/>
+      <ownedProperties xmi:id="YlCTk" isImplicit="true" name="ConnectionPointReference" opposite="#Ppbt5" type="#047h3"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:Enumeration" xmi:id="4cZdc" name="PseudostateKind" superClasses="&_0;#+8+by">
+      <ownedComments body="PseudostateKind is an Enumeration type that is used to differentiate various kinds of Pseudostates."/>
+      <ownedLiterals xmi:id="paK6z" name="initial"/>
+      <ownedLiterals xmi:id="t1qEW" name="deepHistory" value="1"/>
+      <ownedLiterals xmi:id="FtsOT" name="shallowHistory" value="2"/>
+      <ownedLiterals xmi:id="PyS+," name="join" value="3"/>
+      <ownedLiterals xmi:id="nw19," name="fork" value="4"/>
+      <ownedLiterals xmi:id="5a3mx" name="junction" value="5"/>
+      <ownedLiterals xmi:id="G0Kpu" name="choice" value="6"/>
+      <ownedLiterals xmi:id="jOSzJ" name="entryPoint" value="7"/>
+      <ownedLiterals xmi:id="35,Tt" name="exitPoint" value="8"/>
+      <ownedLiterals xmi:id="G3gI5" name="terminate" value="9"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:PrimitiveType" xmi:id="PVdsa" instanceClassName="java.lang.Number" name="Real" superClasses="&_0;#jbMkR">
+      <ownedComments body="Real is a primitive type representing the mathematical concept of real."/>
+    </ownedClasses>
+    <ownedClasses xmi:id="drJ4W" name="RealLiteralExp" superClasses="#MFRWm">
+      <ownedProperties xmi:id="Xj4U0" name="realSymbol" type="#PVdsa"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="dXAFV" isAbstract="true" isInterface="true" name="ReferringElement" superClasses="&_0;#zfDWR">
+      <ownedOperations xmi:id="TgreS" name="getReferredElement" type="#t5rpa"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="lqBOs" name="Region" superClasses="#MzHoc">
+      <ownedComments body="A Region is a top-level part of a StateMachine or a composite State, that serves as a container for the Vertices and Transitions of the StateMachine. A StateMachine or composite State may contain multiple Regions representing behaviors that may occur in parallel."/>
+      <ownedProperties xmi:id="24ICH" isRequired="false" name="extendedRegion" opposite="#YqUAP" type="#lqBOs">
+        <ownedComments body="The region of which this region is an extension."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="Wxw67" isComposite="true" name="ownedSubvertexes" opposite="#J1dTn" type="#mWhS,">
+        <ownedComments body="The set of Vertices that are owned by this Region."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="Cau41" isComposite="true" name="ownedTransitions" opposite="#24ZZf" type="#vYMdN">
+        <ownedComments body="The set of Transitions owned by the Region."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="+,zLm" isRequired="false" name="owningState" opposite="#sYtKV" type="#CwtUf">
+        <ownedComments body="The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="bvl3T" isRequired="false" name="owningStateMachine" opposite="#9Oem1" type="#n412f">
+        <ownedComments body="The StateMachine that owns the Region. If a Region is owned by a StateMachine, then it cannot also be owned by a State."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="YqUAP" isImplicit="true" name="Region" opposite="#24ICH" type="#X5ZAe"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="qV29F" name="ResultVariable" superClasses="#t4j6T">
+      <ownedInvariants xmi:id="GN5Vj" isCallable="true" name="CompatibleNullityForInitializer">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="not ownedInit?.isRequired implies not isRequired&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="hAvWf" isCallable="true" name="CompatibleTypeForInitializer">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedInit &lt;> null implies ownedInit.type?.conformsTo(type)&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="i30ll" isCallable="true" name="HasInitializer">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedInit &lt;> null&#xA;"/>
+      </ownedInvariants>
+    </ownedClasses>
+    <ownedClasses xmi:id="Xhrcl" name="SelfType" superClasses="#pDcbe">
+      <ownedOperations xmi:id="C4cbC" name="specializeIn" type="#rrwsa">
+        <bodyExpression xsi:type="pivot:ExpressionInOCL" body="selfType&#xA;&#xA;"/>
+        <ownedParameters xmi:id="agbt5" name="expr" type="#QJrde"/>
+        <ownedParameters xmi:id="Lr0kA" name="selfType" type="#rrwsa"/>
+      </ownedOperations>
+    </ownedClasses>
+    <ownedClasses xmi:id="X55Qa" name="SendSignalAction" superClasses="#0kVqz">
+      <ownedProperties xmi:id="7gEy2" name="signal" opposite="#rLDL," type="#ZJWJu"/>
+      <ownedProperties xmi:id="MCEwd" isImplicit="true" isRequired="false" name="MessageExp" opposite="#oSaJE" type="#HRils"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="M5weU" name="SequenceType" superClasses="#pawWx"/>
+    <ownedClasses xmi:id="t4FF0" name="SetType" superClasses="#pawWx"/>
+    <ownedClasses xmi:id="Oxaac" name="ShadowExp" superClasses="#BFtK4">
+      <ownedInvariants xmi:id="zdmuT" isCallable="true" name="ClassHasNoStringValueInitializer">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="pbo5B" isCallable="true" name="DataTypeHasNoPartInitializers">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="NNv9Z" isCallable="true" name="DataTypeHasOnePartInitializer">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type.oclIsKindOf(DataType) implies ownedParts->size() = 1&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="GGpBn" isCallable="true" name="DataTypeHasStringValueInitializer">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true "/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="7o4YS" isCallable="true" name="InitializesAllClassProperties">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="if type.oclIsKindOf(DataType) then Tuple{status:Boolean[1]=true, message:String[1]=''}.status else &#xA;&#x9;let partProperties = ownedParts.referredProperty->asSet() in&#xA;&#x9;let allProperties = type.oclAsType(Class)->closure(superClasses).ownedProperties->asSet() in&#xA;&#x9;let classProperties = allProperties->reject(isDerived or isImplicit or isStatic or isTransient)->reject(name?.startsWith('ocl')) in&#xA;&#x9;let requiredClassProperties = classProperties->reject(defaultValueString &lt;> null)->reject(isVolatile or not isRequired)->reject(type.oclIsKindOf(CollectionType))->reject((opposite&lt;>null) and opposite.isComposite) in&#xA;&#x9;let extraProperties : Set(NamedElement[*|1]) = partProperties->excludingAll(classProperties) in&#xA;&#x9;let missingProperties : Set(NamedElement[*|1]) = requiredClassProperties->excludingAll(partProperties) in&#xA;&#x9;if extraProperties->notEmpty() then Tuple{status:Boolean[1]=false, message:String[1]=extraProperties->sortedBy(name)->iterate(p; acc:String='Unexpected initializers:'|acc +' ' + p.name)}.status&#xA;&#x9;else if missingProperties->notEmpty() then Tuple{status:Boolean[1]=false, message:String[1]=missingProperties->sortedBy(name)->iterate(p; acc:String='Missing initializers:'|acc +' ' + p.name)}.status&#xA;&#x9;else Tuple{status:Boolean[1]=true, message:String[1]=''}.status&#xA;&#x9;endif endif endif&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="W4vXB" isCallable="true" name="TypeIsNotInvalid">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> OclInvalid&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="pLK0G" isComposite="true" name="ownedParts" opposite="#GFkDD" type="#w7lKF"/>
+      <ownedProperties xmi:id="f0RBF" isRequired="false" name="value" type="#CPVxu"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="kTahU" name="ShadowPart" superClasses="#j7EI0">
+      <ownedInvariants xmi:id="NhjdT" isCallable="true" name="CompatibleInitialiserType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedInit.type?.conformsTo(type)&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="UxW7I" isCallable="true" name="TypeIsNotInvalid">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> OclInvalid&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="i+33p" isCallable="true" name="TypeIsNotNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> null&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="BteKG" isComposite="true" name="ownedInit" opposite="#79Ber" type="#BFtK4"/>
+      <ownedProperties xmi:id="ybRzT" name="referredProperty" opposite="#Dyftr" type="#Gm0Mj"/>
+      <ownedProperties xmi:id="GFkDD" isImplicit="true" isRequired="false" name="ShadowExp" opposite="#pLK0G" type="#Oxaac"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="ZJWJu" name="Signal" superClasses="#pDcbe">
+      <ownedComments body="A Signal is a specification of a kind of communication between objects in which a reaction is asynchronously triggered in the receiver without a reply."/>
+      <ownedProperties xmi:id="9,UhR" isImplicit="true" name="MessageType" opposite="#7CGi+" type="#8ZL+w"/>
+      <ownedProperties xmi:id="rLDL," isImplicit="true" name="SendSignalAction" opposite="#7gEy2" type="#5cmAg"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="vWmsa" name="Slot" superClasses="#t5rpa">
+      <ownedComments body="A Slot designates that an entity modeled by an InstanceSpecification has a value or values for a specific StructuralFeature."/>
+      <ownedProperties xmi:id="4EW7Q" name="definingProperty" opposite="#fHmW6" type="#Gm0Mj">
+        <ownedComments body="The StructuralFeature that specifies the values that may be held by the Slot."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="y+QK3" isComposite="true" name="ownedValues" opposite="#+9yKd" type="#3FESv">
+        <ownedComments body="The value or values held by the Slot."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="cLPoY" name="owningInstance" opposite="#L2P86" type="#f3gRG">
+        <ownedComments body="The InstanceSpecification that owns this Slot."/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xmi:id="v6b4D" name="StandardLibrary" superClasses="#t5rpa">
+      <ownedProperties xmi:id="pt2se" isRequired="false" name="owningCompleteEnvironment" opposite="#Qrg5Y" type="#LqaWx"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="CwtUf" name="State" superClasses="#MzHoc #VVKEz">
+      <ownedComments body="A State models a situation during which some (usually implicit) invariant condition holds."/>
+      <ownedProperties xmi:id="PEoKN" isDerived="true" isReadOnly="true" isTransient="true" isVolatile="true" name="isComposite" type="#ZuwnB">
+        <ownedComments body="A state with isComposite=true is said to be a composite State. A composite State is a State that contains at least one Region."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="Vvi8g" isDerived="true" isReadOnly="true" isTransient="true" isVolatile="true" name="isOrthogonal" type="#ZuwnB">
+        <ownedComments body="A State with isOrthogonal=true is said to be an orthogonal composite State An orthogonal composite State contains two or more Regions."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="OAPwM" isDerived="true" isReadOnly="true" isTransient="true" isVolatile="true" name="isSimple" type="#ZuwnB">
+        <ownedComments body="A State with isSimple=true is said to be a simple State A simple State does not have any Regions and it does not refer to any submachine StateMachine."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="SDMIc" isDerived="true" isReadOnly="true" isTransient="true" isVolatile="true" name="isSubmachineState"
+          type="#ZuwnB">
+        <ownedComments body="A State with isSubmachineState=true is said to be a submachine State Such a State refers to another StateMachine(submachine)."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="4KsMo" isComposite="true" name="ownedConnectionPoints" opposite="#hD4Zw" type="#91QED">
+        <ownedComments body="The entry and exit Pseudostates of a composite State. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite States."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="CYTMg" isComposite="true" name="ownedConnections" opposite="#PKvdR" type="#T5,h3">
+        <ownedComments body="The entry and exit connection points used in conjunction with this (submachine) State, i.e., as targets and sources, respectively, in the Region with the submachine State. A connection point reference references the corresponding definition of a connection point Pseudostate in the StateMachine referenced by the submachine State."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="MikAv" isComposite="true" name="ownedDeferrableTriggers" opposite="#yBMfq" type="#aZ9+A">
+        <ownedComments body="A list of Triggers that are candidates to be retained by the StateMachine if they trigger no Transitions out of the State (not consumed). A deferred Trigger is retained until the StateMachine reaches a State configuration where it is no longer deferred."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="RnPpL" isComposite="true" isRequired="false" name="ownedDoActivity" opposite="#5uByx" type="#D4Bd4">
+        <ownedComments body="An optional Behavior that is executed while being in the State. The execution starts when this State is entered, and ceases either by itself when done, or when the State is exited, whichever comes first."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="fFtPi" isComposite="true" isRequired="false" name="ownedEntry" opposite="#bCQ,P" type="#D4Bd4">
+        <ownedComments body="An optional Behavior that is executed whenever this State is entered regardless of the Transition taken to reach the State. If defined, entry Behaviors are always executed to completion prior to any internal Behavior or Transitions performed within the State."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="1HRna" isComposite="true" isRequired="false" name="ownedExit" opposite="#1SMka" type="#D4Bd4">
+        <ownedComments body="An optional Behavior that is executed whenever this State is exited regardless of which Transition was taken out of the State. If defined, exit Behaviors are always executed to completion only after all internal and transition Behaviors have completed execution."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="sYtKV" isComposite="true" name="ownedRegions" opposite="#+,zLm" type="#25dAe">
+        <ownedComments body="The Regions owned directly by the State."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="GT13x" isComposite="true" isRequired="false" name="ownedStateInvariant" opposite="#Dd0RI" type="#Om,AG">
+        <ownedComments body="Specifies conditions that are always true when this State is the current State. In ProtocolStateMachines state invariants are additional conditions to the preconditions of the outgoing Transitions, and to the postcondition of the incoming Transitions."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="Np,xe" isRequired="false" name="redefinedState" opposite="#gEOG+" type="#CwtUf">
+        <ownedComments body="The State of which this State is a redefinition."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="e,o0Z" isRequired="false" name="submachines" opposite="#ME7uH" type="#n412f">
+        <ownedComments body="The StateMachine that is to be inserted in place of the (submachine) State."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="gEOG+" isImplicit="true" name="State" opposite="#Np,xe" type="#setTi"/>
+      <ownedProperties xmi:id="+VIi2" isImplicit="true" name="StateExp" opposite="#h0hFN" type="#vF7ag"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="9Ny9s" name="StateExp" superClasses="#BFtK4">
+      <ownedInvariants xmi:id="JS1kF" isCallable="true" name="TypeIsNotInvalid">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> OclInvalid&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="h0hFN" isRequired="false" name="referredState" opposite="#+VIi2" type="#CwtUf"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="n412f" name="StateMachine" superClasses="#D4Bd4">
+      <ownedComments body="StateMachines can be used to express event-driven behaviors of parts of a system. Behavior is modeled as a traversal of a graph of Vertices interconnected by one or more joined Transition arcs that are triggered by the dispatching of successive Event occurrences. During this traversal, the StateMachine may execute a sequence of Behaviors associated with various elements of the StateMachine."/>
+      <ownedProperties xmi:id="n4Oqe" name="extendedStateMachines" opposite="#VzbL7" type="#oaFxR">
+        <ownedComments body="The StateMachines of which this is an extension."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="JBdoI" isComposite="true" name="ownedConnectionPoints" opposite="#+ypFe" type="#91QED">
+        <ownedComments body="The connection points defined for this StateMachine. They represent the interface of the StateMachine when used as part of submachine State"/>
+      </ownedProperties>
+      <ownedProperties xmi:id="9Oem1" isComposite="true" name="ownedRegions" opposite="#bvl3T" type="#z6dAe">
+        <ownedComments body="The Regions owned directly by the StateMachine."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="ME7uH" name="submachineStates" opposite="#e,o0Z" type="#LfxTi">
+        <ownedComments body="References the submachine(s) in case of a submachine State. Multiple machines are referenced in case of a concurrent State."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="VzbL7" isImplicit="true" name="StateMachine" opposite="#n4Oqe" type="#JaBxR"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="j7kZ6" name="Stereotype" superClasses="#pDcbe">
+      <ownedComments body="A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass."/>
+      <ownedProperties xmi:id="Wr4Jx" isComposite="true" name="ownedExtenders" opposite="#oy50r" type="#TLTSL"/>
+      <ownedProperties xmi:id="QMG7c" isImplicit="true" name="ElementExtension" opposite="#ObYJ0" type="#uwltw"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="K5Kb," name="StereotypeExtender" superClasses="#t5rpa">
+      <ownedProperties xmi:id="y8R,m" name="class" opposite="#pXPFk" type="#pDcbe"/>
+      <ownedProperties xmi:id="jiEoa" defaultValueString="false" name="isRequired" type="#ZuwnB"/>
+      <ownedProperties xmi:id="oy50r" name="owningStereotype" opposite="#Wr4Jx" type="#j7kZ6"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:PrimitiveType" xmi:id="CPVxu" instanceClassName="java.lang.String" name="String" superClasses="&_0;#jbMkR">
+      <ownedComments body="String is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters."/>
+    </ownedClasses>
+    <ownedClasses xmi:id="QWu6h" name="StringLiteralExp" superClasses="#mKorp">
+      <ownedProperties xmi:id="xj5z3" name="stringSymbol" type="#CPVxu"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="cwheG" name="TemplateBinding" superClasses="#t5rpa">
+      <ownedComments body="A TemplateBinding is a DirectedRelationship between a TemplateableElement and a template. A TemplateBinding specifies the TemplateParameterSubstitutions of actual parameters for the formal parameters of the template."/>
+      <ownedProperties xmi:id="1KEI9" isComposite="true" name="ownedSubstitutions" opposite="#KfPB+" type="#ruPAW">
+        <ownedComments body="The TemplateParameterSubstitutions owned by this TemplateBinding."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="EEtyt" name="owningElement" opposite="#AAnLi" type="#5r5y9">
+        <ownedComments body="The TemplateableElement that is bound by this TemplateBinding."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="imMg6" isDerived="true" isReadOnly="true" isResolveProxies="false" isTransient="true" isVolatile="true"
+          name="templateSignature" opposite="#IhiwR" type="#PzZ69">
+        <ownedComments body="The TemplateSignature for the template that is the target of this TemplateBinding."/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xmi:id="Afray" name="TemplateParameter" superClasses="#rrwsa">
+      <ownedComments body="A TemplateParameter exposes a ParameterableElement as a formal parameter of a template."/>
+      <ownedProperties xmi:id="zfRXZ" name="constrainingClasses" opposite="#Jh7cO" type="#awKqS"/>
+      <ownedProperties xmi:id="UbaKU" name="owningSignature" opposite="#aSQuO" type="#PzZ69">
+        <ownedComments body="The TemplateSignature that owns this TemplateParameter."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="tGjEK" isImplicit="true" name="TemplateParameterSubstitution" opposite="#wNw1p" type="#PtLAW"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="dBke1" name="TemplateParameterSubstitution" superClasses="#t5rpa">
+      <ownedComments body="A TemplateParameterSubstitution relates the actual parameter to a formal TemplateParameter as part of a template binding."/>
+      <ownedProperties xmi:id="PUrpg" name="actual" opposite="#F+7My" type="#rrwsa">
+        <ownedComments body="The ParameterableElement that is the actual parameter for this TemplateParameterSubstitution."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="wNw1p" name="formal" opposite="#tGjEK" type="#Afray">
+        <ownedComments body="The formal TemplateParameter that is associated with this TemplateParameterSubstitution."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="gMCx3" isComposite="true" isRequired="false" name="ownedWildcard" opposite="#OM4eT" type="#lfR8C"/>
+      <ownedProperties xmi:id="KfPB+" name="owningBinding" opposite="#1KEI9" type="#cwheG">
+        <ownedComments body="The TemplateBinding that owns this TemplateParameterSubstitution."/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xmi:id="PzZ69" name="TemplateSignature" superClasses="#t5rpa">
+      <ownedComments body="A Template Signature bundles the set of formal TemplateParameters for a template."/>
+      <ownedProperties xmi:id="aSQuO" isComposite="true" name="ownedParameters" opposite="#UbaKU" type="#p2ezp">
+        <ownedComments body="The formal parameters that are owned by this TemplateSignature."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="rrxfF" name="owningElement" opposite="#At1rg" type="#5r5y9">
+        <ownedComments body="The TemplateableElement that owns this TemplateSignature."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="IhiwR" isImplicit="true" name="TemplateBinding" opposite="#imMg6" type="#2CC9+"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="5r5y9" isAbstract="true" name="TemplateableElement" superClasses="#t5rpa">
+      <ownedComments body="A TemplateableElement is an Element that can optionally be defined as a template and bound to other templates."/>
+      <ownedProperties xmi:id="AAnLi" isComposite="true" name="ownedBindings" opposite="#EEtyt" type="#VDG9+">
+        <ownedComments body="The optional TemplateBindings from this TemplateableElement to one or more templates."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="At1rg" isComposite="true" isRequired="false" name="ownedSignature" opposite="#rrxfF" type="#PzZ69">
+        <ownedComments body="The optional TemplateSignature specifying the formal TemplateParameters for this TemplateableElement. If a TemplateableElement has a TemplateSignature, then it is a template."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="5r+xG" isRequired="false" isResolveProxies="false" isTransient="true" name="unspecializedElement" opposite="#po3JH"
+          type="#5r5y9"/>
+      <ownedProperties xmi:id="po3JH" isImplicit="true" name="TemplateableElement" opposite="#5r+xG" type="#LuTS6"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:DataType" xmi:id="xCIJH" instanceClassName="java.lang.Throwable" name="Throwable" superClasses="&_0;#jbMkR"/>
+    <ownedClasses xmi:id="GEFmq" name="Transition" superClasses="#MzHoc">
+      <ownedComments body="A Transition represents an arc between exactly one source Vertex and exactly one Target vertex (the source and targets may be the same Vertex). It may form part of a compound transition, which takes the StateMachine from one steady State configuration to another, representing the full response of the StateMachine to an occurrence of an Event that triggered it."/>
+      <ownedProperties xmi:id="akbkO" defaultValueString="external" name="kind" type="#64DYn">
+        <ownedComments body="Indicates the precise type of the Transition."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="cYcZC" isComposite="true" isRequired="false" name="ownedEffect" opposite="#gOjrO" type="#D4Bd4">
+        <ownedComments body="Specifies an optional behavior to be performed when the Transition fires."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="GiZYW" isComposite="true" isRequired="false" name="ownedGuard" opposite="#,zMbl" type="#Om,AG">
+        <ownedComments body="A guard is a Constraint that provides a fine-grained control over the firing of the Transition. The guard is evaluated when an Event occurrence is dispatched by the StateMachine. If the guard is true at that time, the Transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="GEsLw" isComposite="true" name="ownedTriggers" opposite="#uYkoH" type="#aZ9+A">
+        <ownedComments body="Specifies the Triggers that may fire the transition."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="24ZZf" name="owningRegion" opposite="#Cau41" type="#lqBOs">
+        <ownedComments body="Designates the Region that owns this Transition."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="hW+7Y" name="source" opposite="#LNl+I" type="#VVKEz">
+        <ownedComments body="Designates the originating Vertex (State or Pseudostate) of the Transition."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="X8e3Z" name="target" opposite="#RZzjU" type="#VVKEz">
+        <ownedComments body="Designates the target Vertex that is reached when the Transition is taken."/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:Enumeration" xmi:id="64DYn" name="TransitionKind" superClasses="&_0;#+8+by">
+      <ownedComments body="TransitionKind is an Enumeration type used to differentiate the various kinds of Transitions."/>
+      <ownedLiterals xmi:id="ckyor" name="internal">
+        <ownedComments body="Implies that the Transition, if triggered, occurs without exiting or entering the source State (i.e., it does not cause a state change). This means that the entry or exit condition of the source State will not be invoked. An internal Transition can be taken even if the SateMachine is in one or more Regions nested within the associated State."/>
+      </ownedLiterals>
+      <ownedLiterals xmi:id="KHUyP" name="local" value="1">
+        <ownedComments body="Implies that the Transition, if triggered, will not exit the composite (source) State, but it will exit and re-enter any state within the composite State that is in the current state configuration."/>
+      </ownedLiterals>
+      <ownedLiterals xmi:id="qYMHd" name="external" value="2">
+        <ownedComments body="Implies that the Transition, if triggered, will exit the composite (source) State."/>
+      </ownedLiterals>
+    </ownedClasses>
+    <ownedClasses xmi:id="pUvl+" name="Trigger" superClasses="#0kVqz">
+      <ownedComments body="A Trigger specifies a specific point  at which an Event occurrence may trigger an effect in a Behavior. A Trigger may be qualified by the Port on which the Event occurred."/>
+      <ownedProperties xmi:id="yBMfq" isRequired="false" name="owningState" opposite="#MikAv" type="#CwtUf"/>
+      <ownedProperties xmi:id="uYkoH" isRequired="false" name="owningTransition" opposite="#GEsLw" type="#GEFmq"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="HhIN2" name="TupleLiteralExp" superClasses="#fKWWp">
+      <ownedProperties xmi:id="+L,3k" isComposite="true" name="ownedParts" opposite="#K,8sA" type="#,dxc+"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="LgkF0" name="TupleLiteralPart" superClasses="#PT,bz">
+      <ownedInvariants xmi:id="YrOU3" isCallable="true" name="CompatibleInitialiserType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="ownedInit &lt;> null and ownedInit.type &lt;> null implies ownedInit.type.conformsTo(type)&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="f7Bys" isCallable="true" name="TypeIsNotInvalid">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> OclInvalid&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="M3JBq" isComposite="true" isRequired="false" name="ownedInit" opposite="#iKMCL" type="#BFtK4"/>
+      <ownedProperties xmi:id="K,8sA" isImplicit="true" isRequired="false" name="TupleLiteralExp" opposite="#+L,3k" type="#HhIN2"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T6Ypd" name="TupleType" superClasses="#1mHCJ"/>
+    <ownedClasses xmi:id="rrwsa" isAbstract="true" name="Type" superClasses="#0kVqz">
+      <ownedComments body="A Type constrains the values represented by a TypedElement."/>
+      <ownedOperations xmi:id="xDNE5" isRequired="false" name="flattenedType" type="#rrwsa">
+        <bodyExpression xsi:type="pivot:ExpressionInOCL" body="self&#xA;&#xA;"/>
+        <ownedComments body="Return the type to be used as the element type when this is flattened. For most types this is self.&#xA;For a CollectionType, it is the transitive element type."/>
+      </ownedOperations>
+      <ownedOperations xmi:id="i,Kw4" isRequired="false" name="isClass" type="#pDcbe"/>
+      <ownedOperations xmi:id="5WLf+" isRequired="false" name="isTemplateParameter" type="#Afray"/>
+      <ownedOperations xmi:id="GZy9j" name="specializeIn" type="#rrwsa">
+        <bodyExpression xsi:type="pivot:ExpressionInOCL" body="self&#xA;&#xA;"/>
+        <ownedParameters xmi:id="O9re6" name="expr" type="#QJrde"/>
+        <ownedParameters xmi:id=",HFWB" name="selfType" type="#rrwsa"/>
+      </ownedOperations>
+      <ownedProperties xmi:id="JFc9Y" isImplicit="true" name="CollectionType" opposite="#zzSGt" type="#7uaJn"/>
+      <ownedProperties xmi:id="Nn,Xg" isImplicit="true" name="DynamicElement" opposite="#t8fLB" type="#44OiT"/>
+      <ownedProperties xmi:id="X5F8c" isImplicit="true" name="LambdaType" opposite="#rwWeu" type="#85RZ1"/>
+      <ownedProperties xmi:id="tU,ip" isImplicit="true" name="LambdaType" opposite="#l0V,d" type="#85RZ1"/>
+      <ownedProperties xmi:id="Z5gQZ" isImplicit="true" name="LambdaType" opposite="#ZeRhS" type="#85RZ1"/>
+      <ownedProperties xmi:id="83I1p" isImplicit="true" name="MapType" opposite="#cBKS6" type="#JK5PO"/>
+      <ownedProperties xmi:id="6Rkl+" isImplicit="true" name="MapType" opposite="#up7P9" type="#JK5PO"/>
+      <ownedProperties xmi:id="onVlb" isImplicit="true" name="OCLExpression" opposite="#s8mFO" type="#TqxYF"/>
+      <ownedProperties xmi:id="iPrT3" isImplicit="true" name="Operation" opposite="#sg5YQ" type="#SI01z"/>
+      <ownedProperties xmi:id="F+7My" isImplicit="true" name="TemplateParameterSubstitution" opposite="#PUrpg" type="#PtLAW"/>
+      <ownedProperties xmi:id="nSmLq" isImplicit="true" name="TypeExp" opposite="#nedD3" type="#ObX5J"/>
+      <ownedProperties xmi:id=",WhCE" isImplicit="true" name="TypedElement" opposite="#pcY9R" type="#lf8ud"/>
+      <ownedProperties xmi:id="21n2W" isImplicit="true" name="VariableDeclaration" opposite="#CyT1w" type="#xbHbg"/>
+      <ownedProperties xmi:id="WU9EG" isImplicit="true" name="WildcardType" opposite="#mvH+v" type="#XmaUE"/>
+      <ownedProperties xmi:id="P4B7P" isImplicit="true" name="WildcardType" opposite="#lraqD" type="#XmaUE"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="0,h6K" name="TypeExp" superClasses="#BFtK4 #dXAFV">
+      <ownedProperties xmi:id="nedD3" isRequired="false" name="referredType" opposite="#nSmLq" type="#rrwsa"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="j7EI0" isAbstract="true" name="TypedElement" superClasses="#0kVqz">
+      <ownedComments body="A TypedElement is a NamedElement that may have a Type specified for it."/>
+      <ownedOperations xmi:id="71tyJ" name="CompatibleBody" type="#ZuwnB">
+        <bodyExpression xsi:type="pivot:ExpressionInOCL" body="&#xA;&#x9;bodySpecification.type?.conformsTo(self.type)&#xA;&#xA;"/>
+        <ownedParameters xmi:id="7IiBg" name="bodySpecification" type="#DLUxI"/>
+      </ownedOperations>
+      <ownedProperties xmi:id="YqNZL" isDerived="true" isReadOnly="true" isTransient="true" isVolatile="true" name="isMany" type="#ZuwnB"/>
+      <ownedProperties xmi:id="Yr8BL" defaultValueString="true" name="isRequired" type="#ZuwnB"/>
+      <ownedProperties xmi:id="pcY9R" isRequired="false" name="type" opposite="#,WhCE" type="#rrwsa">
+        <ownedComments body="The type of the TypedElement."/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:PrimitiveType" xmi:id="5Oxgg" instanceClassName="java.lang.Number" name="UnlimitedNatural" superClasses="&_0;#jbMkR">
+      <ownedComments body="UnlimitedNatural is a primitive type representing unlimited natural values."/>
+    </ownedClasses>
+    <ownedClasses xmi:id="HzlbV" name="UnlimitedNaturalLiteralExp" superClasses="#MFRWm">
+      <ownedProperties xmi:id="DIm+F" name="unlimitedNaturalSymbol" type="#5Oxgg"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="0atFF" name="UnspecifiedValueExp" superClasses="#BFtK4"/>
+    <ownedClasses xmi:id="DLUxI" isAbstract="true" name="ValueSpecification" superClasses="#j7EI0">
+      <ownedComments body="A ValueSpecification is the specification of a (possibly empty) set of values. A ValueSpecification is a ParameterableElement that may be exposed as a formal TemplateParameter and provided as the actual parameter in the binding of a template."/>
+      <ownedOperations xmi:id="VAqb+" name="booleanValue" type="#ZuwnB">
+        <ownedComments body="The query booleanValue() gives a single Boolean value when one can be computed."/>
+      </ownedOperations>
+      <ownedOperations xmi:id=",iEJB" isRequired="false" name="integerValue" type="#vCSey">
+        <ownedComments body="The query integerValue() gives a single Integer value when one can be computed."/>
+      </ownedOperations>
+      <ownedOperations xmi:id="+LjKu" name="isComputable" type="#ZuwnB">
+        <ownedComments body="The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all ValueSpecifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute at least the value of all LiteralSpecifications."/>
+      </ownedOperations>
+      <ownedOperations xmi:id="9Obg2" name="isNull" type="#ZuwnB">
+        <ownedComments body="The query isNull() returns true when it can be computed that the value is null."/>
+      </ownedOperations>
+      <ownedOperations xmi:id="MXbTi" isRequired="false" name="stringValue" type="#CPVxu">
+        <ownedComments body="The query stringValue() gives a single String value when one can be computed."/>
+      </ownedOperations>
+      <ownedOperations xmi:id="87rB4" isRequired="false" name="unlimitedValue" type="#5Oxgg">
+        <ownedComments body="The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed."/>
+      </ownedOperations>
+      <ownedProperties xmi:id="+9yKd" isImplicit="true" isRequired="false" name="Slot" opposite="#y+QK3" type="#vWmsa"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="t4j6T" name="Variable" superClasses="#PT,bz">
+      <ownedInvariants xmi:id="yBZrn" isCallable="true" name="CompatibleInitialiserType">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="true&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="AdoeR" defaultValueString="false" name="isImplicit" type="#ZuwnB"/>
+      <ownedProperties xmi:id="mNUYa" isComposite="true" isRequired="false" name="ownedInit" opposite="#EjL3q" type="#BFtK4"/>
+      <ownedProperties xmi:id="zeTJY" isRequired="false" name="representedParameter" opposite="#U1Kb0" type="#as9eG"/>
+      <ownedProperties xmi:id="y7+O9" isImplicit="true" isRequired="false" name="ExpressionInOCL" opposite="#eubAp" type="#sFfJa"/>
+      <ownedProperties xmi:id="1jSjN" isImplicit="true" isRequired="false" name="ExpressionInOCL" opposite="#DrnVr" type="#sFfJa"/>
+      <ownedProperties xmi:id="a3p9g" isImplicit="true" isRequired="false" name="ExpressionInOCL" opposite="#2tYZA" type="#sFfJa"/>
+      <ownedProperties xmi:id="i9Axv" isImplicit="true" isRequired="false" name="IterateExp" opposite="#eb1wJ" type="#0L28o"/>
+      <ownedProperties xmi:id="6HKvR" isImplicit="true" isRequired="false" name="LetExp" opposite="#AvpRG" type="#zmGAi"/>
+      <ownedProperties xmi:id="qs4sI" isImplicit="true" isRequired="false" name="LoopExp" opposite="#aRrs3" type="#KhrnS"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="PT,bz" isAbstract="true" name="VariableDeclaration" superClasses="#j7EI0">
+      <ownedInvariants xmi:id="wuH+n" isCallable="true" name="NameIsNotNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="name &lt;> null&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="TiibV" isCallable="true" name="TypeIsNotInvalid">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> OclInvalid&#xA;"/>
+      </ownedInvariants>
+      <ownedInvariants xmi:id="hvDY2" isCallable="true" name="TypeIsNotNull">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> null&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="CyT1w" isRequired="false" isResolveProxies="false" isTransient="true" name="typeValue" opposite="#21n2W"
+          type="#rrwsa"/>
+      <ownedProperties xmi:id="HfDy3" isImplicit="true" name="VariableExp" opposite="#vnw1O" type="#ceQJX"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="y1AoJ" name="VariableExp" superClasses="#BFtK4 #dXAFV">
+      <ownedInvariants xmi:id="qqGQT" isCallable="true" name="TypeIsNotInvalid">
+        <ownedSpecification xsi:type="pivot:ExpressionInOCL" body="type &lt;> OclInvalid&#xA;&#xA;"/>
+      </ownedInvariants>
+      <ownedProperties xmi:id="x1ilH" defaultValueString="false" name="isImplicit" type="#ZuwnB"/>
+      <ownedProperties xmi:id="vnw1O" isRequired="false" name="referredVariable" opposite="#HfDy3" type="#PT,bz"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="VVKEz" isAbstract="true" name="Vertex" superClasses="#0kVqz">
+      <ownedComments body="A Vertex is an abstraction of a node in a StateMachine graph. It can be the source or destination of any number of Transitions."/>
+      <ownedProperties xmi:id="RZzjU" isReadOnly="true" name="incomingTransitions" opposite="#X8e3Z" type="#vYMdN">
+        <ownedComments body="Specifies the Transitions entering this Vertex."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="LNl+I" isReadOnly="true" name="outgoingTransitions" opposite="#hW+7Y" type="#vYMdN">
+        <ownedComments body="Specifies the Transitions departing from this Vertex."/>
+      </ownedProperties>
+      <ownedProperties xmi:id="J1dTn" isRequired="false" name="owningRegion" opposite="#Wxw67" type="#lqBOs">
+        <ownedComments body="The Region that contains this Vertex."/>
+      </ownedProperties>
+    </ownedClasses>
+    <ownedClasses xmi:id="WyWDC" instanceClassName="org.eclipse.ocl.pivot.util.Visitable" isAbstract="true" isInterface="true" name="Visitable"
+        superClasses="&_0;#zfDWR"/>
+    <ownedClasses xmi:id="fad2o" name="VoidType" superClasses="#pDcbe"/>
+    <ownedClasses xmi:id="lfR8C" name="WildcardType" superClasses="#pDcbe">
+      <ownedProperties xmi:id="mvH+v" isRequired="false" name="lowerBound" opposite="#WU9EG" type="#rrwsa"/>
+      <ownedProperties xmi:id="lraqD" isRequired="false" name="upperBound" opposite="#P4B7P" type="#rrwsa"/>
+      <ownedProperties xmi:id="OM4eT" isImplicit="true" isRequired="false" name="TemplateParameterSubstitution" opposite="#gMCx3" type="#dBke1"/>
+    </ownedClasses>
+  </ownedPackages>
+  <ownedPackages URI="http://www.eclipse.org/ocl/2015/Orphanage" name="$$" nsPrefix="orphanage">
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="abElO" name="Bag" superClasses="#w2smd">
+      <ownedBindings>
+        <ownedSubstitutions actual="#g7Mr0" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="rZeOP" name="Bag" superClasses="#B1GQe">
+      <ownedBindings>
+        <ownedSubstitutions actual="#ZD0WZ" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="qsnI0" name="Bag" superClasses="#AIQKD">
+      <ownedBindings>
+        <ownedSubstitutions actual="#wuJTT" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="7vGqS" name="Bag" superClasses="#RLvrh">
+      <ownedBindings>
+        <ownedSubstitutions actual="#pDcbe" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="7uaJn" name="Bag" superClasses="#RKDL2">
+      <ownedBindings>
+        <ownedSubstitutions actual="#pawWx" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="q6ECS" name="Bag" superClasses="#AWtDh">
+      <ownedBindings>
+        <ownedSubstitutions actual="#wspoT" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="zUrgD" name="Bag" superClasses="#JwTiS">
+      <ownedBindings>
+        <ownedSubstitutions actual="#hzOMU" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="Ii+Il" name="Bag" superClasses="#e9mK0">
+      <ownedBindings>
+        <ownedSubstitutions actual="#+gDEJ" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="047h3" name="Bag" superClasses="#KUkjG">
+      <ownedBindings>
+        <ownedSubstitutions actual="#KXGhD" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="Y1h4V" name="Bag" superClasses="#uQK6k">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Om,AG" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="nrqci" name="Bag" superClasses="#9GTex">
+      <ownedBindings>
+        <ownedSubstitutions actual="#1mHCJ" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="44OiT" name="Bag" superClasses="#OU3ji">
+      <ownedBindings>
+        <ownedSubstitutions actual="#uVj5N" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="XZHUM" name="Bag" superClasses="#t0vVb">
+      <ownedBindings>
+        <ownedSubstitutions actual="#lKr4X" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="uwltw" name="Bag" superClasses="#EMOv,">
+      <ownedBindings>
+        <ownedSubstitutions actual="#URISB" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="61U4t" name="Bag" superClasses="#QR958">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Aaj,v" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="gfUzv" name="Bag" superClasses="#2680+">
+      <ownedBindings>
+        <ownedSubstitutions actual="#WdWUd" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="B2y2s" name="Bag" superClasses="#XRb47">
+      <ownedBindings>
+        <ownedSubstitutions actual="#f3gRG" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="85RZ1" name="Bag" superClasses="#SV6aE">
+      <ownedBindings>
+        <ownedSubstitutions actual="#S9Pb5" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="0ymr3" name="Bag" superClasses="#KOPtG">
+      <ownedBindings>
+        <ownedSubstitutions actual="#KhrnS" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="JK5PO" name="Bag" superClasses="#flhRd">
+      <ownedBindings>
+        <ownedSubstitutions actual="#nozov" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="8ZL+w" name="Bag" superClasses="#S1z,,">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Sdl6J" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="2I901" name="Bag" superClasses="#Mkl2E">
+      <ownedBindings>
+        <ownedSubstitutions actual="#cmSzw" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="TqxYF" name="Bag" superClasses="#pFaaU">
+      <ownedBindings>
+        <ownedSubstitutions actual="#BFtK4" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="7ASqb" name="Bag" superClasses="#Rc6rq">
+      <ownedBindings>
+        <ownedSubstitutions actual="#p84zd" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="SI01z" name="Bag" superClasses="#ojc3C">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Yz,F1" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="uyjxK" name="Bag" superClasses="#EOMzZ">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Uj1fg" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="ZWfM+" name="Bag" superClasses="#vxHON">
+      <ownedBindings>
+        <ownedSubstitutions actual="#3ONqN" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="chYA4" name="Bag" superClasses="#y8ACH">
+      <ownedBindings>
+        <ownedSubstitutions actual="#ywnRJ" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="93o0D" name="Bag" superClasses="#TTR2S">
+      <ownedBindings>
+        <ownedSubstitutions actual="#7K0sf" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="QqOV7" name="Bag" superClasses="#mF3WK">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Gm0Mj" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="X5ZAe" name="Bag" superClasses="#tUCCt">
+      <ownedBindings>
+        <ownedSubstitutions actual="#lqBOs" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="5cmAg" name="Bag" superClasses="#P4OCv">
+      <ownedBindings>
+        <ownedSubstitutions actual="#X55Qa" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="+4q9g" name="Bag" superClasses="#UUT,v">
+      <ownedBindings>
+        <ownedSubstitutions actual="#kTahU" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="RTbhG" name="Bag" superClasses="#nuDjV">
+      <ownedBindings>
+        <ownedSubstitutions actual="#vWmsa" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="vF7ag" name="Bag" superClasses="#Fhjcv">
+      <ownedBindings>
+        <ownedSubstitutions actual="#9Ny9s" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="JaBxR" name="Bag" superClasses="#f1pyg">
+      <ownedBindings>
+        <ownedSubstitutions actual="#n412f" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="setTi" name="Bag" superClasses="#C6VVx">
+      <ownedBindings>
+        <ownedSubstitutions actual="#CwtUf" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="2CC9+" name="Bag" superClasses="#Meq+N">
+      <ownedBindings>
+        <ownedSubstitutions actual="#cwheG" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="PtLAW" name="Bag" superClasses="#lI0Bl">
+      <ownedBindings>
+        <ownedSubstitutions actual="#dBke1" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="6yjmF" name="Bag" superClasses="#QOMoU">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Afray" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="LuTS6" name="Bag" superClasses="#hJ8TJ">
+      <ownedBindings>
+        <ownedSubstitutions actual="#5r5y9" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="ObX5J" name="Bag" superClasses="#k2,6Y">
+      <ownedBindings>
+        <ownedSubstitutions actual="#0,h6K" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="lf8ud" name="Bag" superClasses="#76kws">
+      <ownedBindings>
+        <ownedSubstitutions actual="#j7EI0" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="xbHbg" name="Bag" superClasses="#H3vcv">
+      <ownedBindings>
+        <ownedSubstitutions actual="#PT,bz" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="ceQJX" name="Bag" superClasses="#y54Km">
+      <ownedBindings>
+        <ownedSubstitutions actual="#y1AoJ" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="fi,7q" name="Bag" superClasses="#19n95">
+      <ownedBindings>
+        <ownedSubstitutions actual="#t4j6T" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" xmi:id="XmaUE" name="Bag" superClasses="#tBDWT">
+      <ownedBindings>
+        <ownedSubstitutions actual="#lfR8C" formal="&_0;#k2OA6"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="w2smd" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#g7Mr0" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="B1GQe" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#ZD0WZ" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="bDV5t" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#D4Bd4" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="AIQKD" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#wuJTT" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="RLvrh" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#pDcbe" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="9cW7G" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#1s6I1" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="RKDL2" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#pawWx" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="g8SO4" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Q3Ya2" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="AWtDh" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#wspoT" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="JwTiS" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#hzOMU" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="e9mK0" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#+gDEJ" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="KUkjG" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#KXGhD" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="uQK6k" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Om,AG" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="9GTex" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#1mHCJ" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="C6Q1g" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#CwgWU" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="OU3ji" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#uVj5N" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="t0vVb" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#lKr4X" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="EMOv," name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#URISB" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="1WxfR" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#t5rpa" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="QR958" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Aaj,v" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="B6+H5" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#ZQKYa" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="2680+" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#WdWUd" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="XRb47" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#f3gRG" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="T7fFO" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#7yjCF" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="SV6aE" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#S9Pb5" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="KOPtG" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#KhrnS" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="vytNH" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#33CoS" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="flhRd" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#nozov" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="S1z,," name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Sdl6J" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="alVKT" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#aKB,e" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="Mkl2E" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#cmSzw" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="pFaaU" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#BFtK4" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="Rc6rq" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#p84zd" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="ojc3C" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Yz,F1" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="EOMzZ" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Uj1fg" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="vxHON" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#3ONqN" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="a3glO" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#as9eG" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="T,X+l" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#7Wa4a" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="y8ACH" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#ywnRJ" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="oGxY6" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#YOH1b" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="TTR2S" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#7K0sf" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="mF3WK" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Gm0Mj" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="0Q1FS" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#EkdzF" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="tUCCt" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#lqBOs" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="P4OCv" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#X55Qa" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="UUT,v" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#kTahU" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="nuDjV" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#vWmsa" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="Fhjcv" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#9Ny9s" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="f1pyg" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#n412f" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="C6VVx" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#CwtUf" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="Km3Ta" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#K5Kb," formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="CBQIQ" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#CPVxu" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="Meq+N" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#cwheG" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="lI0Bl" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#dBke1" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="QOMoU" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Afray" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="hJ8TJ" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#5r5y9" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="mzwec" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#GEFmq" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="R0hAQ" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#pUvl+" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="j2eRp" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#LgkF0" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="k2,6Y" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#0,h6K" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="D2axV" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#rrwsa" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="76kws" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#j7EI0" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="bexGa" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#DLUxI" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="H3vcv" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#PT,bz" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="y54Km" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#y1AoJ" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="19n95" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#t4j6T" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="dxFUO" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#VVKEz" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="tBDWT" name="Collection" superClasses="&_0;#jbMkR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#lfR8C" formal="&_0;#qs59R"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="KtLS9" name="OrderedCollection" superClasses="#9cW7G">
+      <ownedBindings>
+        <ownedSubstitutions actual="#1s6I1" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="PKGMX" name="OrderedCollection" superClasses="#C6Q1g">
+      <ownedBindings>
+        <ownedSubstitutions actual="#CwgWU" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="Cnm2H" name="OrderedCollection" superClasses="#1WxfR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#t5rpa" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="OK0ev" name="OrderedCollection" superClasses="#B6+H5">
+      <ownedBindings>
+        <ownedSubstitutions actual="#ZQKYa" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="DLyL1" name="OrderedCollection" superClasses="#2680+">
+      <ownedBindings>
+        <ownedSubstitutions actual="#WdWUd" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="gLVcE" name="OrderedCollection" superClasses="#T7fFO">
+      <ownedBindings>
+        <ownedSubstitutions actual="#7yjCF" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="8Cjk9" name="OrderedCollection" superClasses="#vytNH">
+      <ownedBindings>
+        <ownedSubstitutions actual="#33CoS" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="2VPxK" name="OrderedCollection" superClasses="#pFaaU">
+      <ownedBindings>
+        <ownedSubstitutions actual="#BFtK4" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="1zRO5" name="OrderedCollection" superClasses="#ojc3C">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Yz,F1" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="nHW8E" name="OrderedCollection" superClasses="#a3glO">
+      <ownedBindings>
+        <ownedSubstitutions actual="#as9eG" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="gPNVc" name="OrderedCollection" superClasses="#T,X+l">
+      <ownedBindings>
+        <ownedSubstitutions actual="#7Wa4a" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="zVstA" name="OrderedCollection" superClasses="#mF3WK">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Gm0Mj" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="hkIWm" name="OrderedCollection" superClasses="#UUT,v">
+      <ownedBindings>
+        <ownedSubstitutions actual="#kTahU" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="deB,K" name="OrderedCollection" superClasses="#QOMoU">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Afray" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="wGUof" name="OrderedCollection" superClasses="#j2eRp">
+      <ownedBindings>
+        <ownedSubstitutions actual="#LgkF0" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="QGQIM" name="OrderedCollection" superClasses="#D2axV">
+      <ownedBindings>
+        <ownedSubstitutions actual="#rrwsa" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="oumdQ" name="OrderedCollection" superClasses="#bexGa">
+      <ownedBindings>
+        <ownedSubstitutions actual="#DLUxI" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="COdUw" name="OrderedCollection" superClasses="#19n95">
+      <ownedBindings>
+        <ownedSubstitutions actual="#t4j6T" formal="&_0;#feFHs"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="ZEpGc" isNullFree="true" name="OrderedSet" superClasses="#KtLS9 #uXG32">
+      <ownedBindings>
+        <ownedSubstitutions actual="#1s6I1" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="ehjA2" isNullFree="true" name="OrderedSet" superClasses="#PKGMX #z0AxQ">
+      <ownedBindings>
+        <ownedSubstitutions actual="#CwgWU" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="R+Drm" isNullFree="true" name="OrderedSet" superClasses="#Cnm2H #mRhbB">
+      <ownedBindings>
+        <ownedSubstitutions actual="#t5rpa" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="dhRTO" isNullFree="true" name="OrderedSet" superClasses="#OK0ev #y0uDp">
+      <ownedBindings>
+        <ownedSubstitutions actual="#ZQKYa" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="SiPAU" isNullFree="true" name="OrderedSet" superClasses="#DLyL1 #n1swu">
+      <ownedBindings>
+        <ownedSubstitutions actual="#WdWUd" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="qjyQj" name="OrderedSet" superClasses="#gLVcE #E2PB+">
+      <ownedBindings>
+        <ownedSubstitutions actual="#7yjCF" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="LaAZc" isNullFree="true" name="OrderedSet" superClasses="#8Cjk9 #gtdJ3">
+      <ownedBindings>
+        <ownedSubstitutions actual="#33CoS" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="Ftslp" isNullFree="true" name="OrderedSet" superClasses="#2VPxK #aAKWE">
+      <ownedBindings>
+        <ownedSubstitutions actual="#BFtK4" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="ELvCY" isNullFree="true" name="OrderedSet" superClasses="#1zRO5 #ZeMzy">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Yz,F1" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="2ezwj" isNullFree="true" name="OrderedSet" superClasses="#nHW8E #LyQh+">
+      <ownedBindings>
+        <ownedSubstitutions actual="#as9eG" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="vmqJ7" isNullFree="true" name="OrderedSet" superClasses="#gPNVc #E6H6V">
+      <ownedBindings>
+        <ownedSubstitutions actual="#7Wa4a" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="CtJif" isNullFree="true" name="OrderedSet" superClasses="#zVstA #XAnS6">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Gm0Mj" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="w7lKF" isNullFree="true" name="OrderedSet" superClasses="#hkIWm #FPD7f">
+      <ownedBindings>
+        <ownedSubstitutions actual="#kTahU" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="p2ezp" isNullFree="true" lower="1" name="OrderedSet" superClasses="#deB,K #BJ8jE">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Afray" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id=",dxc+" isNullFree="true" name="OrderedSet" superClasses="#wGUof #UxONZ">
+      <ownedBindings>
+        <ownedSubstitutions actual="#LgkF0" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="3FESv" isNullFree="true" name="OrderedSet" superClasses="#oumdQ #MZhCK">
+      <ownedBindings>
+        <ownedSubstitutions actual="#DLUxI" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" xmi:id="Rl6IP" isNullFree="true" name="OrderedSet" superClasses="#COdUw #m4X5p">
+      <ownedBindings>
+        <ownedSubstitutions actual="#t4j6T" formal="&_0;#53+C2"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SequenceType" xmi:id="r5PCb" isNullFree="true" name="Sequence" superClasses="#QGQIM">
+      <ownedBindings>
+        <ownedSubstitutions actual="#rrwsa" formal="&_0;#l1i6D"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="kow3e" isNullFree="true" name="Set" superClasses="#M+E1d">
+      <ownedBindings>
+        <ownedSubstitutions actual="#D4Bd4" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="awKqS" isNullFree="true" name="Set" superClasses="#CGfnR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#pDcbe" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="phuMp" isNullFree="true" name="Set" superClasses="#R3CKo">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Q3Ya2" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="J7ICS" isNullFree="true" name="Set" superClasses="#xQd,Q">
+      <ownedBindings>
+        <ownedSubstitutions actual="#wspoT" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="niCJl" isNullFree="true" name="Set" superClasses="#P4WGk">
+      <ownedBindings>
+        <ownedSubstitutions actual="#+gDEJ" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="T5,h3" isNullFree="true" name="Set" superClasses="#7OUf2">
+      <ownedBindings>
+        <ownedSubstitutions actual="#KXGhD" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="31l4V" isNullFree="true" name="Set" superClasses="#fL61U">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Om,AG" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="2ZLUM" isNullFree="true" name="Set" superClasses="#evfRL">
+      <ownedBindings>
+        <ownedSubstitutions actual="#lKr4X" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="+7MeC" isNullFree="true" name="Set" superClasses="#mRhbB">
+      <ownedBindings>
+        <ownedSubstitutions actual="#t5rpa" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="Nxptw" isNullFree="true" name="Set" superClasses="#1G+qv">
+      <ownedBindings>
+        <ownedSubstitutions actual="#URISB" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="g222s" isNullFree="true" name="Set" superClasses="#IML0r">
+      <ownedBindings>
+        <ownedSubstitutions actual="#f3gRG" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="jKxIE" isNullFree="true" name="Set" superClasses="#LgFGD">
+      <ownedBindings>
+        <ownedSubstitutions actual="#aKB,e" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="xI41z" isNullFree="true" name="Set" superClasses="#ZeMzy">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Yz,F1" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="4WjM+" isNullFree="true" name="Set" superClasses="#gs3J9">
+      <ownedBindings>
+        <ownedSubstitutions actual="#3ONqN" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="xrMXr" isNullFree="true" name="Set" superClasses="#ZBhUq">
+      <ownedBindings>
+        <ownedSubstitutions actual="#YOH1b" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="vqSV7" isNullFree="true" name="Set" superClasses="#XAnS6">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Gm0Mj" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="91QED" isNullFree="true" name="Set" superClasses="#lLlBC">
+      <ownedBindings>
+        <ownedSubstitutions actual="#EkdzF" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="25dAe" isNullFree="true" name="Set" superClasses="#ePy9c">
+      <ownedBindings>
+        <ownedSubstitutions actual="#lqBOs" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="z6dAe" isNullFree="true" lower="1" name="Set" superClasses="#ePy9c">
+      <ownedBindings>
+        <ownedSubstitutions actual="#lqBOs" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="wTfhG" isNullFree="true" name="Set" superClasses="#YpzeF">
+      <ownedBindings>
+        <ownedSubstitutions actual="#vWmsa" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="LfxTi" isNullFree="true" name="Set" superClasses="#z0FRh">
+      <ownedBindings>
+        <ownedSubstitutions actual="#CwtUf" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="oaFxR" isNullFree="true" name="Set" superClasses="#QwZuQ">
+      <ownedBindings>
+        <ownedSubstitutions actual="#n412f" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="TLTSL" isNullFree="true" name="Set" superClasses="#7gnPK">
+      <ownedBindings>
+        <ownedSubstitutions actual="#K5Kb," formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="InrGB" isNullFree="true" lower="1" name="Set" superClasses="#z7,DA">
+      <ownedBindings>
+        <ownedSubstitutions actual="#CPVxu" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="VDG9+" isNullFree="true" name="Set" superClasses="#9Ya69">
+      <ownedBindings>
+        <ownedSubstitutions actual="#cwheG" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="ruPAW" isNullFree="true" lower="1" name="Set" superClasses="#WDk9U">
+      <ownedBindings>
+        <ownedSubstitutions actual="#dBke1" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="vYMdN" isNullFree="true" name="Set" superClasses="#XugaM">
+      <ownedBindings>
+        <ownedSubstitutions actual="#GEFmq" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="aZ9+A" isNullFree="true" name="Set" superClasses="#CvR8,">
+      <ownedBindings>
+        <ownedSubstitutions actual="#pUvl+" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="Mb2vG" isNullFree="true" name="Set" superClasses="#0wKtF">
+      <ownedBindings>
+        <ownedSubstitutions actual="#rrwsa" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" xmi:id="mWhS," isNullFree="true" name="Set" superClasses="#Os1P+">
+      <ownedBindings>
+        <ownedSubstitutions actual="#VVKEz" formal="&_0;#ODsm5"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="M+E1d" name="UniqueCollection" superClasses="#bDV5t">
+      <ownedBindings>
+        <ownedSubstitutions actual="#D4Bd4" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="CGfnR" name="UniqueCollection" superClasses="#RLvrh">
+      <ownedBindings>
+        <ownedSubstitutions actual="#pDcbe" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="uXG32" name="UniqueCollection" superClasses="#9cW7G">
+      <ownedBindings>
+        <ownedSubstitutions actual="#1s6I1" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="R3CKo" name="UniqueCollection" superClasses="#g8SO4">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Q3Ya2" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="xQd,Q" name="UniqueCollection" superClasses="#AWtDh">
+      <ownedBindings>
+        <ownedSubstitutions actual="#wspoT" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="P4WGk" name="UniqueCollection" superClasses="#e9mK0">
+      <ownedBindings>
+        <ownedSubstitutions actual="#+gDEJ" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="7OUf2" name="UniqueCollection" superClasses="#KUkjG">
+      <ownedBindings>
+        <ownedSubstitutions actual="#KXGhD" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="fL61U" name="UniqueCollection" superClasses="#uQK6k">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Om,AG" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="z0AxQ" name="UniqueCollection" superClasses="#C6Q1g">
+      <ownedBindings>
+        <ownedSubstitutions actual="#CwgWU" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="evfRL" name="UniqueCollection" superClasses="#t0vVb">
+      <ownedBindings>
+        <ownedSubstitutions actual="#lKr4X" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="1G+qv" name="UniqueCollection" superClasses="#EMOv,">
+      <ownedBindings>
+        <ownedSubstitutions actual="#URISB" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="mRhbB" name="UniqueCollection" superClasses="#1WxfR">
+      <ownedBindings>
+        <ownedSubstitutions actual="#t5rpa" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="y0uDp" name="UniqueCollection" superClasses="#B6+H5">
+      <ownedBindings>
+        <ownedSubstitutions actual="#ZQKYa" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="n1swu" name="UniqueCollection" superClasses="#2680+">
+      <ownedBindings>
+        <ownedSubstitutions actual="#WdWUd" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="IML0r" name="UniqueCollection" superClasses="#XRb47">
+      <ownedBindings>
+        <ownedSubstitutions actual="#f3gRG" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="E2PB+" name="UniqueCollection" superClasses="#T7fFO">
+      <ownedBindings>
+        <ownedSubstitutions actual="#7yjCF" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="gtdJ3" name="UniqueCollection" superClasses="#vytNH">
+      <ownedBindings>
+        <ownedSubstitutions actual="#33CoS" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="LgFGD" name="UniqueCollection" superClasses="#alVKT">
+      <ownedBindings>
+        <ownedSubstitutions actual="#aKB,e" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="aAKWE" name="UniqueCollection" superClasses="#pFaaU">
+      <ownedBindings>
+        <ownedSubstitutions actual="#BFtK4" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="ZeMzy" name="UniqueCollection" superClasses="#ojc3C">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Yz,F1" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="gs3J9" name="UniqueCollection" superClasses="#vxHON">
+      <ownedBindings>
+        <ownedSubstitutions actual="#3ONqN" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="LyQh+" name="UniqueCollection" superClasses="#a3glO">
+      <ownedBindings>
+        <ownedSubstitutions actual="#as9eG" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="E6H6V" name="UniqueCollection" superClasses="#T,X+l">
+      <ownedBindings>
+        <ownedSubstitutions actual="#7Wa4a" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="ZBhUq" name="UniqueCollection" superClasses="#oGxY6">
+      <ownedBindings>
+        <ownedSubstitutions actual="#YOH1b" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="XAnS6" name="UniqueCollection" superClasses="#mF3WK">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Gm0Mj" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="lLlBC" name="UniqueCollection" superClasses="#0Q1FS">
+      <ownedBindings>
+        <ownedSubstitutions actual="#EkdzF" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="ePy9c" name="UniqueCollection" superClasses="#tUCCt">
+      <ownedBindings>
+        <ownedSubstitutions actual="#lqBOs" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="FPD7f" name="UniqueCollection" superClasses="#UUT,v">
+      <ownedBindings>
+        <ownedSubstitutions actual="#kTahU" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="YpzeF" name="UniqueCollection" superClasses="#nuDjV">
+      <ownedBindings>
+        <ownedSubstitutions actual="#vWmsa" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="QwZuQ" name="UniqueCollection" superClasses="#f1pyg">
+      <ownedBindings>
+        <ownedSubstitutions actual="#n412f" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="z0FRh" name="UniqueCollection" superClasses="#C6VVx">
+      <ownedBindings>
+        <ownedSubstitutions actual="#CwtUf" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="7gnPK" name="UniqueCollection" superClasses="#Km3Ta">
+      <ownedBindings>
+        <ownedSubstitutions actual="#K5Kb," formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="z7,DA" name="UniqueCollection" superClasses="#CBQIQ">
+      <ownedBindings>
+        <ownedSubstitutions actual="#CPVxu" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="9Ya69" name="UniqueCollection" superClasses="#Meq+N">
+      <ownedBindings>
+        <ownedSubstitutions actual="#cwheG" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="WDk9U" name="UniqueCollection" superClasses="#lI0Bl">
+      <ownedBindings>
+        <ownedSubstitutions actual="#dBke1" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="BJ8jE" name="UniqueCollection" superClasses="#QOMoU">
+      <ownedBindings>
+        <ownedSubstitutions actual="#Afray" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="XugaM" name="UniqueCollection" superClasses="#mzwec">
+      <ownedBindings>
+        <ownedSubstitutions actual="#GEFmq" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="CvR8," name="UniqueCollection" superClasses="#R0hAQ">
+      <ownedBindings>
+        <ownedSubstitutions actual="#pUvl+" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="UxONZ" name="UniqueCollection" superClasses="#j2eRp">
+      <ownedBindings>
+        <ownedSubstitutions actual="#LgkF0" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="0wKtF" name="UniqueCollection" superClasses="#D2axV">
+      <ownedBindings>
+        <ownedSubstitutions actual="#rrwsa" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="MZhCK" name="UniqueCollection" superClasses="#bexGa">
+      <ownedBindings>
+        <ownedSubstitutions actual="#DLUxI" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="m4X5p" name="UniqueCollection" superClasses="#19n95">
+      <ownedBindings>
+        <ownedSubstitutions actual="#t4j6T" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" xmi:id="Os1P+" name="UniqueCollection" superClasses="#dxFUO">
+      <ownedBindings>
+        <ownedSubstitutions actual="#VVKEz" formal="&_0;#jdfjE"/>
+      </ownedBindings>
+    </ownedClasses>
+  </ownedPackages>
+</pivot:Model>

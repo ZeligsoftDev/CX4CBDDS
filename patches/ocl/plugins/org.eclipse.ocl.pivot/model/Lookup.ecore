@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="lookup" nsURI="http://www.eclipse.org/ocl/2015/Lookup" nsPrefix="lookup">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details value="platform:/resource/org.eclipse.ocl.pivot/model/Pivot.ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="LookupEnvironment">
+    <eOperations name="addElements" lowerBound="1" eType="#//LookupEnvironment">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="body" value="LookupEnvironment{&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;namedElements = namedElements->includingAll(elements) --, TODO&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;-- parentEnv = parentEnv&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;}"/>
+      </eAnnotations>
+      <eTypeParameters name="NE">
+        <eBounds eClassifier="ecore:EClass Pivot.ecore#//NamedElement"/>
+      </eTypeParameters>
+      <eParameters name="elements" lowerBound="1">
+        <eGenericType eClassifier="ecore:EClass ../model-gen/oclstdlib.ecore#//Collection">
+          <eTypeArguments eTypeParameter="#//LookupEnvironment/addElements/NE"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="addElement" lowerBound="1" eType="#//LookupEnvironment">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+        <details key="body" value="LookupEnvironment {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;namedElements = namedElements->including(element) --, TODO&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;-- parentEnv = parentEnv&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}"/>
+      </eAnnotations>
+      <eParameters name="element" eType="ecore:EClass Pivot.ecore#//NamedElement"/>
+    </eOperations>
+    <eOperations name="hasFinalResult" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="throw new &lt;%java.lang.UnsupportedOperationException%>(&quot;Enviroment::hasFinalResult() has been created for CG purposes. Don't call this method&quot;);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getExecutor" eType="#//Executor">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="throw new &lt;%java.lang.UnsupportedOperationException%>(&quot;Enviroment::getEvaluator() has been created for CG purposes. Don't call this method&quot;);"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="namedElements" upperBound="-1"
+        eType="ecore:EClass Pivot.ecore#//NamedElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parentEnv" eType="#//LookupEnvironment"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Executor" instanceClassName="org.eclipse.ocl.pivot.evaluation.Executor"
+      abstract="true" interface="true"/>
+</ecore:EPackage>

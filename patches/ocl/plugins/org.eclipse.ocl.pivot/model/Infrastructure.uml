@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Package xmi:id="_0" name="InfrastructureLibrary">
+    <packagedElement xmi:type="uml:Package" xmi:id="Core" name="Core">
+      <packagedElement xmi:type="uml:Package" xmi:id="Core-PrimitiveTypes" name="PrimitiveTypes">
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="Core-PrimitiveTypes-Integer" name="Integer">
+          <ownedComment xmi:id="Core-PrimitiveTypes-Integer-_ownedComment.0" annotatedElement="Core-PrimitiveTypes-Integer">
+            <body>An integer is a primitive type representing integer values.</body>
+          </ownedComment>
+        </packagedElement>
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="Core-PrimitiveTypes-Boolean" name="Boolean">
+          <ownedComment xmi:id="Core-PrimitiveTypes-Boolean-_ownedComment.0" annotatedElement="Core-PrimitiveTypes-Boolean">
+            <body>A Boolean type is used for logical expression, consisting of the predefined values true and false.</body>
+          </ownedComment>
+        </packagedElement>
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="Core-PrimitiveTypes-String" name="String">
+          <ownedComment xmi:id="Core-PrimitiveTypes-String-_ownedComment.0" annotatedElement="Core-PrimitiveTypes-String">
+            <body>A string is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters.</body>
+          </ownedComment>
+        </packagedElement>
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="Core-PrimitiveTypes-UnlimitedNatural" name="UnlimitedNatural">
+          <ownedComment xmi:id="Core-PrimitiveTypes-UnlimitedNatural-_ownedComment.0" annotatedElement="Core-PrimitiveTypes-UnlimitedNatural">
+            <body>An unlimited natural is a primitive type representing unlimited natural values.</body>
+          </ownedComment>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="Core-Basic" name="Basic">
+        <packageImport xmi:id="Core-Basic-_packageImport.0" importedPackage="Core-PrimitiveTypes"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-Class" name="Class">
+          <ownedComment xmi:id="Core-Basic-Class-_ownedComment.0" annotatedElement="Core-Basic-Class">
+            <body>A class is a type that has objects as its instances.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnNH7VEeOu79LxSz8Ylw" general="Core-Basic-Type"/>
+          <ownedAttribute xmi:id="Core-Basic-Class-isAbstract" name="isAbstract" type="Core-PrimitiveTypes-Boolean">
+            <ownedComment xmi:id="Core-Basic-Class-isAbstract-_ownedComment.0" annotatedElement="Core-Basic-Class-isAbstract">
+              <body>True when a class is abstract.</body>
+            </ownedComment>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_XobAM37VEeOu79LxSz8Ylw" value="false"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_tT8mYMV_EeOUxMGVZGOl2Q" name="isActive" type="Core-PrimitiveTypes-Boolean">
+            <ownedComment xmi:id="_tT8mYcV_EeOUxMGVZGOl2Q" annotatedElement="_tT8mYMV_EeOUxMGVZGOl2Q">
+              <body>True when a class is active.</body>
+            </ownedComment>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_tT8mYsV_EeOUxMGVZGOl2Q" value="false"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Class-ownedAttribute" name="ownedProperties" type="Core-Basic-Property" isOrdered="true" aggregation="composite" association="Core-Basic-A_ownedAttribute_class">
+            <ownedComment xmi:id="Core-Basic-Class-ownedAttribute-_ownedComment.0" annotatedElement="Core-Basic-Class-ownedAttribute">
+              <body>The attributes owned by a class. These do not include the inherited attributes. Attributes are represented by instances of Property.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobANH7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobANX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Class-ownedOperation" name="ownedOperations" type="Core-Basic-Operation" isOrdered="true" aggregation="composite" association="Core-Basic-A_ownedOperation_class">
+            <ownedComment xmi:id="Core-Basic-Class-ownedOperation-_ownedComment.0" annotatedElement="Core-Basic-Class-ownedOperation">
+              <body>The operations owned by a class. These do not include the inherited operations.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobANn7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobAN37VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Class-superClass" name="superClasses" type="Core-Basic-Class" association="Core-Basic-A_superClass_class">
+            <ownedComment xmi:id="Core-Basic-Class-superClass-_ownedComment.0" annotatedElement="Core-Basic-Class-superClass">
+              <body>The immediate superclasses of a class, from which the class inherits.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAOH7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobAOX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Type-package" name="owningPackage" type="Core-Basic-Package" association="Core-Basic-A_ownedType_package">
+            <ownedComment xmi:id="Core-Basic-Type-package-_ownedComment.0" annotatedElement="Core-Basic-Type-package">
+              <body>Specifies the owning package of this classifier, if any.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobARn7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-Operation" name="Operation">
+          <ownedComment xmi:id="Core-Basic-Operation-_ownedComment.0" annotatedElement="Core-Basic-Operation">
+            <body>An operation is owned by a class and may be invoked in the context of objects that are instances of that class. It is a typed element and a multiplicity element.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnNX7VEeOu79LxSz8Ylw" general="Core-Basic-TypedElement"/>
+          <ownedAttribute xmi:id="Core-Basic-Operation-raisedException" name="raisedExceptions" type="Core-Basic-Type" association="Core-Basic-A_raisedException_operation">
+            <ownedComment xmi:id="Core-Basic-Operation-raisedException-_ownedComment.0" annotatedElement="Core-Basic-Operation-raisedException">
+              <body>The exceptions that are declared as possible during an invocation of the operation.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAOn7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobAO37VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Operation-ownedParameter" name="ownedParameters" type="Core-Basic-Parameter" isOrdered="true" aggregation="composite" association="Core-Basic-A_ownedParameter_operation">
+            <ownedComment xmi:id="Core-Basic-Operation-ownedParameter-_ownedComment.0" annotatedElement="Core-Basic-Operation-ownedParameter">
+              <body>The parameters to the operation.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAPH7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobAPX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Operation-class" name="owningClass" type="Core-Basic-Class" association="Core-Basic-A_ownedOperation_class">
+            <ownedComment xmi:id="Core-Basic-Operation-class-_ownedComment.0" annotatedElement="Core-Basic-Operation-class">
+              <body>The class that owns the operation.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAPn7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-Parameter" name="Parameter">
+          <ownedComment xmi:id="Core-Basic-Parameter-_ownedComment.0" annotatedElement="Core-Basic-Parameter">
+            <body>A parameter is a typed element that represents a parameter of an operation.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnNn7VEeOu79LxSz8Ylw" general="Core-Basic-TypedElement"/>
+          <ownedAttribute xmi:id="Core-Basic-Parameter-operation" name="owningOperation" type="Core-Basic-Operation" association="Core-Basic-A_ownedParameter_operation">
+            <ownedComment xmi:id="Core-Basic-Parameter-operation-_ownedComment.0" annotatedElement="Core-Basic-Parameter-operation">
+              <body>The operation that owns the parameter.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAP37VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-Property" name="Property">
+          <ownedComment xmi:id="Core-Basic-Property-_ownedComment.0" annotatedElement="Core-Basic-Property">
+            <body>A property is a typed element that represents an attribute of a class.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnN37VEeOu79LxSz8Ylw" general="Core-Basic-TypedElement"/>
+          <ownedAttribute xmi:id="Core-Basic-Property-isReadOnly" name="isReadOnly" type="Core-PrimitiveTypes-Boolean">
+            <ownedComment xmi:id="Core-Basic-Property-isReadOnly-_ownedComment.0" annotatedElement="Core-Basic-Property-isReadOnly">
+              <body>If isReadOnly is true, the attribute may not be written to after initialization.</body>
+            </ownedComment>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_XobAQH7VEeOu79LxSz8Ylw" value="false"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Property-default" name="defaultValue" type="_QtXDwIdLEeSCCeYhTarOBg" isDerived="true">
+            <ownedComment xmi:id="Core-Basic-Property-default-_ownedComment.0" annotatedElement="Core-Basic-Property-default">
+              <body>An object that defines the initial value for the property when an object of the owning class is instantiated. The value is derived by interpreting the defaultValueString in accordance with the property type.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAQX7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Property-isComposite" name="isComposite" type="Core-PrimitiveTypes-Boolean">
+            <ownedComment xmi:id="Core-Basic-Property-isComposite-_ownedComment.0" annotatedElement="Core-Basic-Property-isComposite">
+              <body>If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute.</body>
+            </ownedComment>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_XobAQn7VEeOu79LxSz8Ylw" value="false"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Property-isDerived" name="isDerived" type="Core-PrimitiveTypes-Boolean">
+            <ownedComment xmi:id="Core-Basic-Property-isDerived-_ownedComment.0" annotatedElement="Core-Basic-Property-isDerived">
+              <body>If isDerived is true, the value of the attribute is derived from information elsewhere.</body>
+            </ownedComment>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_XobAQ37VEeOu79LxSz8Ylw" value="false"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Property-class" name="owningClass" type="Core-Basic-Class" association="Core-Basic-A_ownedAttribute_class">
+            <ownedComment xmi:id="Core-Basic-Property-class-_ownedComment.0" annotatedElement="Core-Basic-Property-class">
+              <body>The class that owns the property, and of which the property is an attribute.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobARH7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Property-opposite" name="opposite" type="Core-Basic-Property" association="Core-Basic-A_opposite_property">
+            <ownedComment xmi:id="Core-Basic-Property-opposite-_ownedComment.0" annotatedElement="Core-Basic-Property-opposite">
+              <body>Two attributes attr1 and attr2 of two objects o1 and o2 (which may be the same object) may be paired with each other so that o1.attr1 refers to o2 if and only if o2.attr2 refers to o1. In such a case attr1 is the opposite of attr2 and attr2 is the opposite of attr1.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobARX7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_dcG2MIdqEeSCCeYhTarOBg" name="defaultValueString" type="Core-PrimitiveTypes-String">
+            <ownedComment xmi:id="_dcG2MYdqEeSCCeYhTarOBg" annotatedElement="_dcG2MIdqEeSCCeYhTarOBg">
+              <body>A string that is used to give an initial value for the property when an object of the owning class is instantiated. Interpretation of the string depends on the property type. For a Boolean Property the string may be 'true' (without quotes) denoting the Boolean true value. For a String property, the string may again be 'true' (without quotes) denoting the four character sequence 't' 'r' 'u' 'e'.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dcG2ModqEeSCCeYhTarOBg"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-Type" name="Type" isAbstract="true">
+          <ownedComment xmi:id="Core-Basic-Type-_ownedComment.0" annotatedElement="Core-Basic-Type">
+            <body>A type is a named element that is used as the type for a typed element. A type can be contained in a package.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnOH7VEeOu79LxSz8Ylw" general="Core-Basic-NamedElement"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-NamedElement" name="NamedElement" isAbstract="true">
+          <ownedComment xmi:id="Core-Basic-NamedElement-_ownedComment.0" annotatedElement="Core-Basic-NamedElement">
+            <body>A named element represents an element with a name.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnOX7VEeOu79LxSz8Ylw" general="Core-Basic-Element"/>
+          <ownedAttribute xmi:id="Core-Basic-NamedElement-name" name="name" type="Core-PrimitiveTypes-String">
+            <ownedComment xmi:id="Core-Basic-NamedElement-name-_ownedComment.0" annotatedElement="Core-Basic-NamedElement-name">
+              <body>The name of the NamedElement.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAR37VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-TypedElement" name="TypedElement" isAbstract="true">
+          <ownedComment xmi:id="Core-Basic-TypedElement-_ownedComment.0" annotatedElement="Core-Basic-TypedElement">
+            <body>A typed element is a kind of named element that represents an element with a type.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnOn7VEeOu79LxSz8Ylw" general="Core-Basic-NamedElement"/>
+          <ownedAttribute xmi:id="Core-Basic-TypedElement-type" name="type" type="Core-Basic-Type" association="Core-Basic-A_type_typedElement">
+            <ownedComment xmi:id="Core-Basic-TypedElement-type-_ownedComment.0" annotatedElement="Core-Basic-TypedElement-type">
+              <body>The type of the TypedElement.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobASH7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-Enumeration" name="Enumeration">
+          <ownedComment xmi:id="Core-Basic-Enumeration-_ownedComment.0" annotatedElement="Core-Basic-Enumeration">
+            <body>An enumeration defines a set of literals that can be used as its values.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnO37VEeOu79LxSz8Ylw" general="Core-Basic-DataType"/>
+          <ownedAttribute xmi:id="Core-Basic-Enumeration-ownedLiteral" name="ownedLiterals" type="Core-Basic-EnumerationLiteral" isOrdered="true" aggregation="composite" association="Core-Basic-A_ownedLiteral_enumeration">
+            <ownedComment xmi:id="Core-Basic-Enumeration-ownedLiteral-_ownedComment.0" annotatedElement="Core-Basic-Enumeration-ownedLiteral">
+              <body>The ordered set of literals for this Enumeration.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobASX7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobASn7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-EnumerationLiteral" name="EnumerationLiteral">
+          <ownedComment xmi:id="Core-Basic-EnumerationLiteral-_ownedComment.0" annotatedElement="Core-Basic-EnumerationLiteral">
+            <body>An enumeration literal is a value of an enumeration.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnPH7VEeOu79LxSz8Ylw" general="Core-Basic-NamedElement"/>
+          <ownedAttribute xmi:id="Core-Basic-EnumerationLiteral-enumeration" name="owningEnumeration" type="Core-Basic-Enumeration" association="Core-Basic-A_ownedLiteral_enumeration">
+            <ownedComment xmi:id="Core-Basic-EnumerationLiteral-enumeration-_ownedComment.0" annotatedElement="Core-Basic-EnumerationLiteral-enumeration">
+              <body>The Enumeration that this EnumerationLiteral is a member of.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAS37VEeOu79LxSz8Ylw" value="1"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-PrimitiveType" name="PrimitiveType">
+          <ownedComment xmi:id="Core-Basic-PrimitiveType-_ownedComment.0" annotatedElement="Core-Basic-PrimitiveType">
+            <body>A primitive type is a data type implemented by the underlying infrastructure and made available for modeling.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnPX7VEeOu79LxSz8Ylw" general="Core-Basic-DataType"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-Package" name="Package">
+          <ownedComment xmi:id="Core-Basic-Package-_ownedComment.0" annotatedElement="Core-Basic-Package">
+            <body>A package is a container for types and other packages.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnPn7VEeOu79LxSz8Ylw" general="Core-Basic-NamedElement"/>
+          <ownedAttribute xmi:id="Core-Basic-Package-nestedPackage" name="ownedPackages" type="Core-Basic-Package" aggregation="composite" association="Core-Basic-A_nestedPackage_nestingPackage">
+            <ownedComment xmi:id="Core-Basic-Package-nestedPackage-_ownedComment.0" annotatedElement="Core-Basic-Package-nestedPackage">
+              <body>The set of contained packages.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobATH7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobATX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Package-nestingPackage" name="owningPackage" type="Core-Basic-Package" association="Core-Basic-A_nestedPackage_nestingPackage">
+            <ownedComment xmi:id="Core-Basic-Package-nestingPackage-_ownedComment.0" annotatedElement="Core-Basic-Package-nestingPackage">
+              <body>The containing package.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobATn7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Package-ownedType" name="ownedClasses" type="Core-Basic-Class" aggregation="composite" association="Core-Basic-A_ownedType_package">
+            <ownedComment xmi:id="Core-Basic-Package-ownedType-_ownedComment.0" annotatedElement="Core-Basic-Package-ownedType">
+              <body>The set of contained types.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAT37VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobAUH7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-DataType" name="DataType">
+          <ownedComment xmi:id="Core-Basic-DataType-_ownedComment.0" annotatedElement="Core-Basic-DataType">
+            <body>DataType is an abstract class that acts as a common superclass for different kinds of data types.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnP37VEeOu79LxSz8Ylw" general="Core-Basic-Type"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-Element" name="Element" isAbstract="true">
+          <ownedComment xmi:id="Core-Basic-Element-_ownedComment.0" annotatedElement="Core-Basic-Element">
+            <body>An element is a constituent of a model.</body>
+          </ownedComment>
+          <ownedAttribute xmi:id="Core-Basic-Element-ownedComment" name="ownedComments" type="Core-Basic-Comment" aggregation="composite" association="Core-Basic-A_ownedComment_owningElement">
+            <ownedComment xmi:id="Core-Basic-Element-ownedComment-_ownedComment.0" annotatedElement="Core-Basic-Element-ownedComment">
+              <body>The Comments owned by this element.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAUX7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobAUn7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-A_annotatedElement_comment-comment" name="annotatingComments" type="Core-Basic-Comment" association="Core-Basic-A_annotatedElement_comment">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAXX7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobAXn7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="Core-Basic-Comment" name="Comment">
+          <ownedComment xmi:id="Core-Basic-Comment-_ownedComment.0" annotatedElement="Core-Basic-Comment">
+            <body>A comment is a textual annotation that can be attached to a set of elements.</body>
+          </ownedComment>
+          <generalization xmi:id="_XpKnQH7VEeOu79LxSz8Ylw" general="Core-Basic-Element"/>
+          <ownedAttribute xmi:id="Core-Basic-Comment-body" name="body" type="Core-PrimitiveTypes-String">
+            <ownedComment xmi:id="Core-Basic-Comment-body-_ownedComment.0" annotatedElement="Core-Basic-Comment-body">
+              <body>Specifies a string that is the comment.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAU37VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-Comment-annotatedElement" name="annotatedElements" type="Core-Basic-Element" association="Core-Basic-A_annotatedElement_comment">
+            <ownedComment xmi:id="Core-Basic-Comment-annotatedElement-_ownedComment.0" annotatedElement="Core-Basic-Comment-annotatedElement">
+              <body>References the Element(s) being commented.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAVH7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobAVX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="Core-Basic-A_ownedComment_owningElement-owningElement" name="owningElement" type="Core-Basic-Element" association="Core-Basic-A_ownedComment_owningElement">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAX37VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="Core-Basic-A_raisedException_operation" name="A_raisedExceptions_operation" memberEnd="Core-Basic-Operation-raisedException Core-Basic-A_raisedException_operation-operation">
+          <ownedEnd xmi:id="Core-Basic-A_raisedException_operation-operation" name="operation" type="Core-Basic-Operation" association="Core-Basic-A_raisedException_operation">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAVn7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobAV37VEeOu79LxSz8Ylw" value="*"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="Core-Basic-A_ownedAttribute_class" name="A_ownedProperties_owningClass" memberEnd="Core-Basic-Class-ownedAttribute Core-Basic-Property-class"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="Core-Basic-A_opposite_property" name="A_opposite_property" memberEnd="Core-Basic-Property-opposite Core-Basic-A_opposite_property-property">
+          <ownedEnd xmi:id="Core-Basic-A_opposite_property-property" name="property" type="Core-Basic-Property" association="Core-Basic-A_opposite_property">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAWH7VEeOu79LxSz8Ylw"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="Core-Basic-A_ownedParameter_operation" name="A_ownedParameters_owningOperation" memberEnd="Core-Basic-Operation-ownedParameter Core-Basic-Parameter-operation"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="Core-Basic-A_ownedOperation_class" name="A_ownedOperations_owningClass" memberEnd="Core-Basic-Class-ownedOperation Core-Basic-Operation-class"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="Core-Basic-A_superClass_class" name="A_superClasses_subClasses" memberEnd="Core-Basic-Class-superClass Core-Basic-A_superClass_class-class">
+          <ownedEnd xmi:id="Core-Basic-A_superClass_class-class" name="subClasses" type="Core-Basic-Class" association="Core-Basic-A_superClass_class">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAWX7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobAWn7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="Core-Basic-A_type_typedElement" name="A_type_typedElement" memberEnd="Core-Basic-TypedElement-type Core-Basic-A_type_typedElement-typedElement">
+          <ownedEnd xmi:id="Core-Basic-A_type_typedElement-typedElement" name="typedElement" type="Core-Basic-TypedElement" association="Core-Basic-A_type_typedElement">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XobAW37VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XobAXH7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="Core-Basic-A_ownedLiteral_enumeration" name="A_ownedLiterals_owningEnumeration" memberEnd="Core-Basic-Enumeration-ownedLiteral Core-Basic-EnumerationLiteral-enumeration"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="Core-Basic-A_nestedPackage_nestingPackage" name="A_ownedPackages_owningPackage" memberEnd="Core-Basic-Package-nestedPackage Core-Basic-Package-nestingPackage"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="Core-Basic-A_ownedType_package" name="A_ownedClasses_owningPackage" memberEnd="Core-Basic-Package-ownedType Core-Basic-Type-package"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="Core-Basic-A_annotatedElement_comment" name="A_annotatedElements_annotatingComment" memberEnd="Core-Basic-Comment-annotatedElement Core-Basic-A_annotatedElement_comment-comment"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="Core-Basic-A_ownedComment_owningElement" name="A_ownedComments_owningElement" memberEnd="Core-Basic-Element-ownedComment Core-Basic-A_ownedComment_owningElement-owningElement"/>
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_QtXDwIdLEeSCCeYhTarOBg" name="Object"/>
+        <profileApplication xmi:id="_MLY08IdtEeSCCeYhTarOBg">
+          <eAnnotations xmi:id="_MLY08YdtEeSCCeYhTarOBg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+          </eAnnotations>
+          <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+        </profileApplication>
+      </packagedElement>
+    </packagedElement>
+  </uml:Package>
+  <Ecore:EAttribute xmi:id="_PB69MIdtEeSCCeYhTarOBg" isTransient="true" base_Property="Core-Basic-Property-default"/>
+</xmi:XMI>

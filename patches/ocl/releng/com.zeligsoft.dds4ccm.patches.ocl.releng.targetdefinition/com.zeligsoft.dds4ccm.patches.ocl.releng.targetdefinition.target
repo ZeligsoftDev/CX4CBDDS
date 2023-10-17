@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde?>
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
+<target name="OCL Release 6.18" sequenceNumber="1697146838">
+  <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.feature.group" version="2.32.0.v20221121-1400"/>
+      <unit id="org.eclipse.uml2.sdk.feature.group" version="5.5.3.v20221116-1811"/>
+      <unit id="org.eclipse.equinox.launcher" version="1.6.400.v20210924-0641"/>
+      <unit id="org.eclipse.jdt.annotation" version="2.2.700.v20220826-1026"/>
+      <unit id="org.eclipse.jdt.junit4.runtime" version="1.3.0.v20220609-1843"/>
+      <unit id="org.eclipse.osgi.compatibility.state" version="1.2.800.v20221116-1440"/>
+      <unit id="org.eclipse.pde.junit.runtime" version="3.6.200.v20220523-1051"/>
+      <unit id="org.eclipse.ui.ide.application" version="1.4.600.v20221024-2137"/>
+      <repository id="eclipse-2022-12" location="https://download.eclipse.org/releases/2022-12/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.license.feature.group" version="2.0.2.v20181016-2210"/>
+      <repository id="licence" location="https://download.eclipse.org/cbi/updates/license"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.31.0.v20230529-0659"/>
+      <unit id="org.eclipse.xtext.generator.feature.group" version="2.31.0.v20230529-0659"/>
+      <repository id="xtext" location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.31.0/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.examples.library" version="2.10.0.v20200518-1440"/>
+      <repository id="emf" location="https://download.eclipse.org/modeling/emf/emf/builds/release/2.32"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="com.google.guava" version="30.1.0.v20210127-2300"/>
+      <unit id="lpg.runtime.java" version="2.0.17.v201004271640"/>
+      <unit id="lpg.runtime.java.source" version="2.0.17.v201004271640"/>
+      <repository id="orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository"/>
+    </location>
+  </locations>
+</target>

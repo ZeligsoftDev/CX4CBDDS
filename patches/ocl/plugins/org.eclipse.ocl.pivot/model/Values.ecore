@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="values" nsURI="http://www.eclipse.org/ocl/2015/Values" nsPrefix="values">
+  <eClassifiers xsi:type="ecore:EClass" name="BagValue" eSuperTypes="#//CollectionValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CollectionValue" abstract="true" eSuperTypes="#//IterableValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ComparableValue" abstract="true" interface="true"
+      eSuperTypes="#//Value #//OCLValue">
+    <eTypeParameters name="T"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" abstract="true" eSuperTypes="#//RealValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InvalidValue" abstract="true" interface="true"
+      eSuperTypes="#//NullValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IterableValue" abstract="true" interface="true"
+      eSuperTypes="#//Value"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MapValue" eSuperTypes="#//IterableValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NullValue" eSuperTypes="#//ObjectValue #//IntegerValue #//UnlimitedValue #//BagValue #//OrderedSetValue #//SequenceValue #//SetValue #//TupleValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NumberValue" abstract="true">
+    <eGenericSuperTypes eClassifier="#//ComparableValue">
+      <eTypeArguments eClassifier="#//NumberValue"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OCLValue" abstract="true" interface="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="The OCLValue interface must be implemented by any datatype for which Java's Object.equals is inappropriate&#xA;when OCL datatype equivalence is required."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectValue" abstract="true" eSuperTypes="#//Value"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OrderedCollectionValue" abstract="true"
+      interface="true" eSuperTypes="#//CollectionValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OrderedSetValue" abstract="true" eSuperTypes="#//OrderedCollectionValue #//UniqueCollectionValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RealValue" eSuperTypes="#//NumberValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceValue" abstract="true" eSuperTypes="#//OrderedCollectionValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SetValue" eSuperTypes="#//UniqueCollectionValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TupleValue" eSuperTypes="#//Value">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Interface of a tuple instance value.  OCL expressions resulting in tuples&#xA;yield instances of this interface."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UniqueCollectionValue" abstract="true"
+      interface="true" eSuperTypes="#//CollectionValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UnlimitedNaturalValue" abstract="true"
+      interface="true" eSuperTypes="#//NumberValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UnlimitedValue" eSuperTypes="#//UnlimitedNaturalValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A value support wrapping/boxing a value whose Java implementation does not comply with OCL semantics, primarily&#xA;that equal values return true from Object.equals(Object) but also for variant metamodel elements.&#xA;&lt;p>&#xA;A boxed value is not needed for Boolean and String that are well-behaved.&#xA;&lt;p>&#xA;A boxed value is needed for Integer and Double, since in OCL 4 is equal to 4.0 and since multiple implementation&#xA;classes exist to support growth between unlimited numeric ranges.&#xA;&lt;p>&#xA;A boxed value is needed for EnumerationLiterals since distinct Pivot, Ecore, UML variants may exist.&#xA;&lt;p>&#xA;A boxed value is needed for types since distinct Pivot, Ecore, UML variants may exist.&#xA;&lt;p>&#xA;A boxed value is useful/needed for collections to provide OCL polymorphism.&#xA;&lt;p>&#xA;A boxed value is not needed for the large number of ordinary EObjects not in the above list.&#xA;&lt;p>&#xA;asYYY returns a non-null YYY if self is convertible to an YYY and is not NullValue/InvalidValue&#xA;throws an InvalidValueException for a NullValue/InvalidValue. A Value object may be converted&#xA;if the conversion to YYY is exact and type conformant.&#xA;&lt;p>&#xA;isYYY returns an YYY-related value if self is an YYY and is not a NullValue/InvalidValue, returns null otherwise."/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+   <extension-point id="as_resource_factory" name="AS Resource Factory" schema="schema/as_resource_factory.exsd"/>
+   <extension-point id="complete_ocl_registry" name="Complete OCL Registry" schema="schema/complete_ocl_registry.exsd"/>
+   <extension-point id="label_generator" name="%_UI_LabelGenerator_extensionpoint" schema="schema/label_generator.exsd"/>
+   <extension-point id="standard_library" name="OCL Standard Library" schema="schema/standard_library.exsd"/>
+   <extension-point id="thread_local" name="OCL Thread Local manager" schema="schema/thread_local.exsd"/>
+
+   <extension point="org.eclipse.core.runtime.preferences">
+      <initializer class="org.eclipse.ocl.pivot.options.OCLinEcorePreferenceInitializer"/>
+   </extension>
+   <extension point="org.eclipse.core.runtime.preferences">
+      <initializer class="org.eclipse.ocl.pivot.internal.plugin.PivotPreferenceInitializer"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.content_parser">
+      <!-- @generated Pivot.merged NOT-->
+      <!--parser
+            contentTypeIdentifier="org.eclipse.ocl.oclas"
+            class="org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl"/-->
+      <parser
+            contentTypeIdentifier="org.eclipse.ocl.oclas"
+            class="org.eclipse.ocl.pivot.internal.resource.OCLASResourceFactory"/>
+      <!--parser
+            contentTypeIdentifier="org.eclipse.ocl.pivot.ecore"
+            class="org.eclipse.ocl.pivot.ecore.EcoreASResourceFactory"/>
+      <parser
+            contentTypeIdentifier="org.eclipse.ocl.pivot.uml"
+            class="org.eclipse.ocl.pivot.uml.UMLASResourceFactory"/-->
+   </extension>
+
+   <extension point="org.eclipse.core.contenttype.contentTypes">
+      <!-- @generated Pivot.merged -->
+      <content-type
+            base-type="org.eclipse.emf.ecore.xmi"
+            file-extensions="oclas"
+            id="org.eclipse.ocl.oclas"
+            name="%_UI_Pivot_content_type"
+            priority="normal">
+         <describer class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+            <parameter name="namespace" value="http://www.eclipse.org/ocl/2015/Pivot"/>
+            <parameter name="kind" value="xmi"/>
+         </describer>
+      </content-type>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser type="oclas"
+            class="org.eclipse.ocl.pivot.internal.resource.OCLASResourceFactory"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated PivotAnnotations -->
+      <package
+            uri="http://www.eclipse.org/ocl/2018/Annotations"
+            class="org.eclipse.ocl.pivot.annotations.PivotAnnotationsPackage"
+            genModel="model/PivotAnnotations.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/ocl/2015/Library"
+            class="org.eclipse.ocl.pivot.oclstdlib.OCLstdlibPackage"
+            genModel="model/oclstdlib.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/ocl/2015/Pivot"
+            class="org.eclipse.ocl.pivot.PivotPackage"
+            genModel="model/Pivot.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Values NOT -->
+      <!--package
+            uri="http://www.eclipse.org/ocl/2015/Values"
+            class="org.eclipse.ocl.pivot.values.ValuesPackage"
+            genModel="model/Values.genmodel"/-->
+      <package
+            uri="http://www.eclipse.org/ocl/2015/Values"
+            class="org.eclipse.ocl.pivot.internal.values.ValuesPackageImpl"
+            genModel="model/Values.genmodel"/>
+   </extension>
+
+  <extension point = "org.eclipse.emf.ecore.invocation_delegate">
+    <factory uri = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
+       class = "org.eclipse.ocl.pivot.internal.delegate.OCLInvocationDelegateFactory$Global" />
+  </extension>
+
+  <extension point = "org.eclipse.emf.ecore.query_delegate">
+    <factory uri = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
+       class = "org.eclipse.ocl.pivot.internal.delegate.OCLQueryDelegateFactory$Global" />
+  </extension>
+
+  <extension point = "org.eclipse.emf.ecore.setting_delegate">
+    <factory uri = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
+       class = "org.eclipse.ocl.pivot.internal.delegate.OCLSettingDelegateFactory$Global" />
+  </extension>
+
+  <extension point = "org.eclipse.emf.ecore.validation_delegate">
+    <delegate uri = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
+       class = "org.eclipse.ocl.pivot.internal.delegate.OCLValidationDelegateFactory$Global" />
+  </extension>
+
+  <extension point="org.eclipse.ocl.pivot.as_resource_factory">
+     <factory class="org.eclipse.ocl.pivot.internal.ecore.EcoreASResourceFactory"
+     	extension="ecore" contentType="org.eclipse.ocl.oclas.ecore" externalPriority="100"/>
+     <!--factory class="org.eclipse.ocl.pivot.internal.resource.OCLASResourceFactory"
+     	extension="oclas" contentType="org.eclipse.ocl.oclas"
+     	uri="http://www.eclipse.org/ocl/2015/Pivot"/-->
+  </extension>
+
+   <extension point="org.eclipse.ocl.pivot.standard_library"
+         id="ocl_stdlib" name="OCL Stdlib">
+     <library uri="http://www.eclipse.org/ocl/2015/Library"
+     	class="org.eclipse.ocl.pivot.model.OCLstdlib$Loader"/>
+   </extension>
+
+   <extension point="org.eclipse.ocl.pivot.standard_library"
+         id="ocl_stdlib_old" name="OCL Stdlib">
+     <library uri="http://www.eclipse.org/ocl/3.1.0/OCL.oclstdlib"
+     	class="org.eclipse.ocl.pivot.model.OCLstdlib$Loader"/>
+   </extension>
+
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes extension="oclas" type="text" />
+  </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Lookup -->
+      <package
+            uri="http://www.eclipse.org/ocl/2015/Lookup"
+            class="org.eclipse.ocl.pivot.internal.lookup.LookupPackage"
+            genModel="model/Lookup.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.ocl.pivot.label_generator">
+      <generator for="java.lang.Boolean"
+      	class="org.eclipse.ocl.pivot.internal.labels.BooleanLabelGenerator"/>
+      <generator for="java.lang.Class"
+      	class="org.eclipse.ocl.pivot.internal.labels.ClassLabelGenerator"/>
+      <generator for="org.eclipse.emf.ecore.impl.DynamicEObjectImpl"
+      	class="org.eclipse.ocl.pivot.internal.labels.DynamicEObjectImplLabelGenerator"/>
+      <generator for="org.eclipse.emf.ecore.EAnnotation"
+      	class="org.eclipse.ocl.pivot.internal.labels.EAnnotationLabelGenerator"/>
+      <generator for="java.io.File"
+      	class="org.eclipse.ocl.pivot.internal.labels.FileLabelGenerator"/>
+      <generator for="org.eclipse.emf.ecore.EGenericType"
+      	class="org.eclipse.ocl.pivot.internal.labels.EGenericTypeLabelGenerator"/>
+      <generator for="org.eclipse.ocl.pivot.ids.ElementId"
+      	class="org.eclipse.ocl.pivot.internal.labels.ElementIdLabelGenerator"/>
+      <generator for="org.eclipse.emf.ecore.ENamedElement"
+      	class="org.eclipse.ocl.pivot.internal.labels.ENamedElementLabelGenerator"/>
+      <generator for="org.eclipse.emf.ecore.EObject"
+      	class="org.eclipse.ocl.pivot.internal.labels.EObjectLabelGenerator"/>
+      <generator for="org.eclipse.ocl.pivot.ExpressionInOCL"
+      	class="org.eclipse.ocl.pivot.internal.labels.ExpressionInOCLLabelGenerator"/>
+      <generator for="org.eclipse.ocl.pivot.Model"
+      	class="org.eclipse.ocl.pivot.internal.labels.ModelLabelGenerator"/>
+      <generator for="org.eclipse.ocl.pivot.utilities.Nameable"
+      	class="org.eclipse.ocl.pivot.internal.labels.NameableLabelGenerator"/>
+      <generator for="java.lang.Number"
+      	class="org.eclipse.ocl.pivot.internal.labels.NumberLabelGenerator"/>
+      <generator for="org.eclipse.emf.ecore.resource.Resource"
+      	class="org.eclipse.ocl.pivot.internal.labels.ResourceLabelGenerator"/>
+      <generator for="java.lang.String"
+      	class="org.eclipse.ocl.pivot.internal.labels.StringLabelGenerator"/>
+      <generator for="org.eclipse.emf.common.util.URI"
+      	class="org.eclipse.ocl.pivot.internal.labels.EcoreURILabelGenerator"/>
+      <generator for="org.eclipse.ocl.pivot.values.Value"
+      	class="org.eclipse.ocl.pivot.internal.labels.ValueLabelGenerator"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.annotation_validator">
+      <validator uri="http://www.eclipse.org/emf/2002/Ecore/OCL"
+      	class="org.eclipse.ocl.pivot.internal.validation.Ecore_OCL_AnnotationValidator$Blank"/>
+      <validator uri="http://www.eclipse.org/emf/2002/Ecore/OCL/Debug"
+      	class="org.eclipse.ocl.pivot.internal.validation.Ecore_OCL_AnnotationValidator$Debug"/>
+      <validator uri="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
+      	class="org.eclipse.ocl.pivot.internal.validation.Ecore_OCL_AnnotationValidator$Pivot"/>
+      <validator uri="http://www.eclipse.org/OCL/ASLibrary"
+      	class="org.eclipse.ocl.pivot.internal.validation.OCL_ASLibrary_AnnotationValidator"/>
+      <validator uri="http://www.eclipse.org/OCL/ASMetamodel"
+      	class="org.eclipse.ocl.pivot.internal.validation.OCL_ASMetamodel_AnnotationValidator"/>
+      <validator uri="http://www.eclipse.org/OCL/Collection"
+      	class="org.eclipse.ocl.pivot.internal.validation.OCL_Collection_AnnotationValidator"/>
+      <validator uri="http://www.eclipse.org/OCL/Import"
+      	class="org.eclipse.ocl.pivot.internal.validation.OCL_Import_AnnotationValidator"/>
+      <validator uri="http://www.eclipse.org/OCL/MetaAnnotation"
+      	class="org.eclipse.ocl.pivot.internal.validation.OCL_MetaAnnotation_AnnotationValidator"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Queries -->
+      <package
+            uri="http://www.eclipse.org/ocl/2022/Queries"
+            class="org.eclipse.ocl.pivot.queries.QueriesPackage"
+            genModel="model/Queries.genmodel"/>
+   </extension>
+
+</plugin>
