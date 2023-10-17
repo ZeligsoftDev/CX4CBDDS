@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.zeligsoft.dds4ccm</groupId>
+	<artifactId>com.zeligsoft.dds4ccm.patches.ocl.examples</artifactId>
+	<version>2.5.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<parent>
+		<groupId>com.zeligsoft.dds4ccm</groupId>
+		<artifactId>com.zeligsoft.dds4ccm.patches.ocl</artifactId>
+		<version>2.5.0-SNAPSHOT</version>
+	</parent>
+	
+	<modules>
+<!-- 
+		<module>org.eclipse.ocl.examples.codegen</module>
+		<module>org.eclipse.ocl.examples.debug</module>
+		<module>org.eclipse.ocl.examples.debug.ui</module>
+		<module>org.eclipse.ocl.examples.debug.vm</module>
+		<module>org.eclipse.ocl.examples.debug.vm.ui</module>
+		<module>org.eclipse.ocl.examples.emf.validation.validity</module>
+		<module>org.eclipse.ocl.examples.emf.validation.validity.ui</module>
+		<module>org.eclipse.ocl.examples.standalone</module>
+		<module>org.eclipse.ocl.examples.xtext.idioms</module>
+		<module>org.eclipse.ocl.examples.xtext.idioms.ui</module>
+ -->
+ 		<module>org.eclipse.ocl.examples.xtext.serializer</module>
+	</modules>
+</project>
