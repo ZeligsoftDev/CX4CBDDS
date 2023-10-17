@@ -1,0 +1,69 @@
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated COPY
+	 */
+	private static int idCounter = 0;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated COPY
+	 */
+	private int id = ID_EDEFAULT;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated COPY
+	 */
+	private int internalGetId() {
+		if (id == ID_EDEFAULT) {
+			id = ++idCounter;
+		}
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated COPY
+	 */
+	private <%java.awt.image.BufferedImage%> image = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated COPY
+	 */
+	private <%java.awt.image.BufferedImage%> internalGetImage() {
+		if (image == null) {
+			try {
+				image = ImageIO.read(new File(getSrc()));
+			} catch (IOException e) {
+				System.err.println("Failed to read '" + getSrc() + "'");
+				e.printStackTrace();
+			}
+		}
+		return image;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated COPY
+	 */
+	private int internalGetActualHeight() {
+		<%java.awt.image.BufferedImage%> image = internalGetImage();
+		return image != null ? image.getHeight() : 0;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated COPY
+	 */
+	private int internalGetActualWidth() {
+		<%java.awt.image.BufferedImage%> image = internalGetImage();
+		return image != null ? image.getWidth() : 0;
+	}
