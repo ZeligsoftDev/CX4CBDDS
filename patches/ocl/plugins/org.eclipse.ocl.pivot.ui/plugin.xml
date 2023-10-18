@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.core.resources.builders"
+       id="org.eclipse.ocl.pivot.ui.oclbuilder" name="%OCLBuilder.name">
+     <builder hasNature="true">
+        <run class="org.eclipse.ocl.pivot.ui.builder.OCLBuilder"/>
+        <!--run class="org.eclipse.ocl.pivot.ui.internal.ExecutableExtensionFactory">
+             <parameter name="guicekey" value="org.eclipse.core.resources.IncrementalProjectBuilder"/>
+        </run-->
+     </builder>
+   </extension>
+  
+   <extension point="org.eclipse.core.resources.natures"
+        id="org.eclipse.ocl.pivot.ui.oclnature" name="%OCLNature.name">
+     <runtime>
+        <run class="org.eclipse.ocl.pivot.ui.nature.OCLNature"/>
+     </runtime>
+     <builder id="org.eclipse.ocl.pivot.ui.oclbuilder"/>
+   </extension>
+  
+   <extension point="org.eclipse.ui.commands">
+     <command id="org.eclipse.ocl.pivot.ui.AddOCLNatureCommand"
+           categoryId="org.eclipse.ui.category.project"
+           name="%OCLNatureAddCommand.label"/>
+     <command id="org.eclipse.ocl.pivot.ui.RemoveOCLNatureCommand"
+           categoryId="org.eclipse.ui.category.project"
+           name="%OCLNatureRemoveCommand.label"/>
+   </extension>
+  
+   <extension point="org.eclipse.ui.handlers">
+      <handler commandId="org.eclipse.ocl.pivot.ui.AddOCLNatureCommand"
+             class="org.eclipse.ocl.xtext.base.ui.commands.ToggleOCLNatureCommand">
+         <activeWhen>
+            <iterate operator="or"
+                    ifEmpty="false">
+                <adapt type="org.eclipse.core.resources.IProject">
+                    <not>
+                        <test property="org.eclipse.core.resources.projectNature"
+                                forcePluginActivation="true"
+                                value="org.eclipse.ocl.pivot.ui.oclnature">
+                        </test>
+                    </not>
+                </adapt>
+            </iterate>
+         </activeWhen>
+      </handler>
+      <handler commandId="org.eclipse.ocl.pivot.ui.RemoveOCLNatureCommand"
+             class="org.eclipse.ocl.xtext.base.ui.commands.ToggleOCLNatureCommand">
+         <activeWhen>
+            <iterate operator="or"
+                    ifEmpty="false">
+                <adapt type="org.eclipse.core.resources.IProject">
+                        <test property="org.eclipse.core.resources.projectNature"
+                                forcePluginActivation="true"
+                                value="org.eclipse.ocl.pivot.ui.oclnature">
+                        </test>
+                </adapt>
+            </iterate>
+         </activeWhen>
+      </handler>
+   </extension>
+
+  <extension point="org.eclipse.ui.menus">
+        <menuContribution locationURI="popup:org.eclipse.ui.projectConfigure?after=additions">
+         <command
+               commandId="org.eclipse.ocl.pivot.ui.AddOCLNatureCommand"
+               icon="icons/ocl16.gif"
+               style="push">
+            <visibleWhen>
+                <iterate operator="or"
+                        ifEmpty="false">
+                    <adapt type="org.eclipse.core.resources.IProject">
+                        <not>
+                            <test property="org.eclipse.core.resources.projectNature"
+                                forcePluginActivation="true"
+                                value="org.eclipse.ocl.pivot.ui.oclnature">
+                            </test>
+                        </not>
+                    </adapt>
+                </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.eclipse.ocl.pivot.ui.RemoveOCLNatureCommand"
+               icon="icons/ocl16.gif"
+               style="push">
+            <visibleWhen>
+                <iterate operator="or"
+                        ifEmpty="false">
+                    <adapt type="org.eclipse.core.resources.IProject">
+	                        <test property="org.eclipse.core.resources.projectNature"
+	                            forcePluginActivation="true"
+	                            value="org.eclipse.ocl.pivot.ui.oclnature">
+	                        </test>
+                    </adapt>
+                </iterate>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages">
+      <page id="org.eclipse.ocl.pivot.ui.preferences.ProjectPreferencePage"
+            category="org.eclipse.ocl.common.ui.preferences.ProjectPreferencePage"
+            name="%MF_Pivot"
+            class="org.eclipse.ocl.pivot.ui.internal.preferences.PivotProjectPreferencePage"/>
+   </extension>
+   <extension point="org.eclipse.ui.propertyPages">
+      <page id="org.eclipse.ocl.pivot.ui.properties.ProjectPropertyPage"
+            category="org.eclipse.ocl.common.ui.properties.ProjectPropertyPage"
+            name="%MF_Pivot"
+            class="org.eclipse.ocl.pivot.ui.internal.preferences.PivotProjectPreferencePage">
+         <enabledWhen>
+            <adapt type="org.eclipse.core.resources.IProject"/>
+         </enabledWhen>
+         <filter name="open" value="true"/>
+      </page>
+   </extension>
+   
+   <extension point="org.eclipse.emf.ecore.edit.annotation_item_provider_adapter_factory">
+      <factory uri="http://www.eclipse.org/emf/2002/Ecore/OCL"
+            class="org.eclipse.emf.ecore.provider.annotation.EAnnotationItemProviderAdapterFactory$Reflective"/>
+      <factory uri="http://www.eclipse.org/emf/2002/Ecore/OCL/Debug"
+            class="org.eclipse.emf.ecore.provider.annotation.EAnnotationItemProviderAdapterFactory$Reflective"/>
+      <factory uri="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
+            class="org.eclipse.emf.ecore.provider.annotation.EAnnotationItemProviderAdapterFactory$Reflective"/>
+      <factory uri="http://www.eclipse.org/OCL/Collection"
+            class="org.eclipse.emf.ecore.provider.annotation.EAnnotationItemProviderAdapterFactory$Reflective"/>
+      <factory uri="http://www.eclipse.org/OCL/Import"
+            class="org.eclipse.emf.ecore.provider.annotation.EAnnotationItemProviderAdapterFactory$Reflective"/>
+   </extension>
+</plugin>
