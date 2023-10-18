@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="validity" nsURI="http://www.eclipse.org/emf/validation/2013/Validity"
+    nsPrefix="validity">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractNode" abstract="true">
+    <eOperations name="getParent" eType="#//AbstractNode"/>
+    <eOperations name="getChildren" upperBound="-1" eType="#//AbstractNode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="grayed" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="worstResult" eType="#//Result"
+        transient="true" derived="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConstrainingNode" eSuperTypes="#//AbstractNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//ConstrainingNode"
+        eOpposite="#//ConstrainingNode/children"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" ordered="false"
+        upperBound="-1" eType="#//ConstrainingNode" containment="true" eOpposite="#//ConstrainingNode/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constrainingObject" lowerBound="1"
+        eType="#//Object" transient="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LeafConstrainingNode" eSuperTypes="#//ConstrainingNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintLocator" lowerBound="1"
+        eType="#//ConstraintLocator" transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintResource" eType="#//Resource"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraintString" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Result">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resultSet" lowerBound="1"
+        eType="#//ResultSet" eOpposite="#//ResultSet/results"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resultValidatableNode"
+        lowerBound="1" eType="#//ResultValidatableNode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="severity" lowerBound="1"
+        eType="#//Severity" defaultValueLiteral="UNKNOWN"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="diagnostic" eType="#//Object"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validatableNode" lowerBound="1"
+        eType="#//ValidatableNode" changeable="false" volatile="true" transient="true"
+        derived="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leafConstrainingNode" lowerBound="1"
+        eType="#//LeafConstrainingNode" changeable="false" volatile="true" transient="true"
+        derived="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resultConstrainingNode"
+        lowerBound="1" eType="#//ResultConstrainingNode" changeable="false" volatile="true"
+        transient="true" derived="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exception" eType="#//Throwable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResultConstrainingNode" eSuperTypes="#//ConstrainingNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resultValidatableNode"
+        ordered="false" lowerBound="1" eType="#//ResultValidatableNode" eOpposite="#//ResultValidatableNode/resultConstrainingNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResultSet">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="root" lowerBound="1" eType="#//RootNode"
+        eOpposite="#//RootNode/resultSets"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="results" ordered="false"
+        upperBound="-1" eType="#//Result" containment="true" eOpposite="#//Result/resultSet"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResultValidatableNode" eSuperTypes="#//ValidatableNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resultConstrainingNode"
+        ordered="false" lowerBound="1" eType="#//ResultConstrainingNode" eOpposite="#//ResultConstrainingNode/resultValidatableNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RootNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resultSets" ordered="false"
+        upperBound="-1" eType="#//ResultSet" containment="true" eOpposite="#//ResultSet/root"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constrainingNodes" ordered="false"
+        upperBound="-1" eType="#//RootConstrainingNode" containment="true" eOpposite="#//RootConstrainingNode/rootNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validatableNodes" ordered="false"
+        upperBound="-1" eType="#//RootValidatableNode" containment="true" eOpposite="#//RootValidatableNode/rootNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RootConstrainingNode" eSuperTypes="#//ConstrainingNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rootNode" lowerBound="1"
+        eType="#//RootNode" eOpposite="#//RootNode/constrainingNodes"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RootValidatableNode" eSuperTypes="#//ValidatableNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rootNode" lowerBound="1"
+        eType="#//RootNode" eOpposite="#//RootNode/validatableNodes"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValidatableNode" eSuperTypes="#//AbstractNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//ValidatableNode"
+        eOpposite="#//ValidatableNode/children"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" ordered="false"
+        upperBound="-1" eType="#//ValidatableNode" containment="true" eOpposite="#//ValidatableNode/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constrainedObject" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ConstraintLocator" instanceClassName="org.eclipse.ocl.examples.emf.validation.validity.locator.ConstraintLocator"
+      serializable="false"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"
+      serializable="false"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Resource" instanceClassName="org.eclipse.emf.ecore.resource.Resource"
+      serializable="false"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Throwable" instanceClassName="java.lang.Throwable"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Severity">
+    <eLiterals name="UNKNOWN"/>
+    <eLiterals name="OK" value="1"/>
+    <eLiterals name="INFO" value="2"/>
+    <eLiterals name="WARNING" value="3"/>
+    <eLiterals name="ERROR" value="4"/>
+    <eLiterals name="FATAL" value="5"/>
+  </eClassifiers>
+</ecore:EPackage>
