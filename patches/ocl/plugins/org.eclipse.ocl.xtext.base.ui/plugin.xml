@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+    <extension point="org.eclipse.core.resources.markers"
+      id="Marker" name="%MF_Problem">
+        <super type="org.eclipse.xtext.ui.check.fast"/>
+        <persistent value="true"/>
+    </extension>
+    
+	<extension point="org.eclipse.ui.commands">
+	  <command id="org.eclipse.ocl.xtext.base.ui.SaveASCommand"
+	    name="%MF_Save_AS_Command" description="%MF_Save_AS_Description"/>
+	  <command id="org.eclipse.ocl.xtext.base.ui.SaveCSCommand"
+	    name="%MF_Save_CS_Command" description="%MF_Save_CS_Description"/>
+	  <command id="org.eclipse.ocl.xtext.base.ui.ValidateCommand"
+	    name="%MF_Validate_Command" description="%MF_Validate_Description"/>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+	  <handler commandId="org.eclipse.ocl.xtext.base.ui.SaveASCommand"
+	    class="org.eclipse.ocl.xtext.base.ui.commands.SaveASHandler"/>
+	  <handler commandId="org.eclipse.ocl.xtext.base.ui.SaveCSCommand"
+	    class="org.eclipse.ocl.xtext.base.ui.commands.SaveCSHandler"/>
+	  <handler commandId="org.eclipse.ocl.xtext.base.ui.ValidateCommand"
+	    class="org.eclipse.ocl.xtext.base.ui.commands.ValidateHandler"/>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="popup:org.eclipse.ocl.examples.ui.Menu?after=save">
+         <menu id="org.eclipse.ocl.xtext.base.ui.Save" label="%MF_Save"/>         
+      </menuContribution>
+      <!--menuContribution locationURI="popup:org.eclipse.uml2.uml.editor.presentation.UMLEditorID?after=additions">
+         <menu id="org.eclipse.ocl.examples.ui.Menu" label="%MF_OCL">
+            <separator name="load" visible="true"/>
+            <separator name="save" visible="true"/>
+            <separator name="set" visible="true"/>
+            <separator name="show" visible="true"/>
+         </menu>
+      </menuContribution-->
+	  <menuContribution locationURI="popup:org.eclipse.ocl.examples.ui.Menu?after=additions">
+	    <command commandId="org.eclipse.ocl.xtext.base.ui.ValidateCommand"
+	      label="%MF_Validate">
+            <!--visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen-->
+	    </command>
+	  </menuContribution>
+	</extension>
+ 
+    <extension point="org.eclipse.ui.newWizards">
+      <category id="org.eclipse.ocl.ui.wizards"
+            name="OCL">
+      </category>
+   </extension>
+
+   <extension point="org.eclipse.ocl.pivot.thread_local">
+      <manager class="org.eclipse.ocl.xtext.base.ui.utilities.ThreadLocalExecutorUI"/>
+   </extension>
+
+</plugin>
