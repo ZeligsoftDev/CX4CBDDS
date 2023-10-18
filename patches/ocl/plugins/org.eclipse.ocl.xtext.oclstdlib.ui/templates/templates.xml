@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+<template name="minimal OCL Standard Library" description="template for a minimal OCL Standard Library"
+	id="org.eclipse.ocl.xtext.oclstdlib.ui.templates.library"
+	context="org.eclipse.ocl.xtext.oclstdlib.OCLstdlib.LibraryCS"
+	enabled="true">library ocl : ocl = 'http://www.eclipse.org/ocl/2015/Library'
+{
+	type AnyClassifier(T) : ClassifierType conformsTo OclAny {}
+	type Bag(T) : BagType conformsTo Collection(T) {}
+	type Boolean : PrimitiveType conformsTo OclAny {}
+	type Class conformsTo OclAny {}	
+	type Collection(T) : CollectionType conformsTo OclAny {}
+	type Enumeration conformsTo OclAny {}
+	type Integer : PrimitiveType conformsTo Real {}
+	type OclAny : AnyType {
+		operation "="(object2 : OclAny) : Boolean;
+	}
+	type OclElement conformsTo OclAny {}	
+	type OclInvalid : InvalidType conformsTo OclVoid {}
+	type OclLambda conformsTo OclAny {}	
+	type OclTuple conformsTo OclAny {}	
+	type OclVoid : VoidType conformsTo OclAny {}
+	type OrderedSet(T) : OrderedSetType conformsTo Collection(T) {}
+	type Real : PrimitiveType conformsTo OclAny {}
+	type Sequence(T) : SequenceType conformsTo Collection(T) {}
+	type Set(T) : SetType conformsTo Collection(T) {}
+	type String : PrimitiveType conformsTo OclAny {}
+	type Tuple : TupleType conformsTo OclAny {}
+	type UnlimitedNatural : PrimitiveType conformsTo Integer {}
+}
+</template>
+
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclstdlib.OCLstdlib.ClassCS" 
+	deleted="false" 
+	description="type declaration" 
+	enabled="true" 
+	name="Type"
+	id="ClassCS">type ${cursor}${name} conformsTo OclAny {
+}
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclstdlib.OCLstdlib.LibIterationCS" 
+	deleted="false" 
+	description="iteration declaration" 
+	enabled="true" 
+	name="Iteration"
+	id="LibIterationCS">iteration ${cursor}${name}(${param1} : T | body : ${type}) : ${type} => 'org.eclipse.ocl.pivot.library.oclany.OclAnyUnsupportedOperation';
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclstdlib.OCLstdlib.LibraryCS" 
+	deleted="false" 
+	description="library declaration" 
+	enabled="true" 
+	name="Library"
+	id="LibraryCS">library ${cursor}${aliasName} : 'http://uri#/';
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclstdlib.OCLstdlib.LibOperationCS" 
+	deleted="false" 
+	description="operation declaration" 
+	enabled="true" 
+	name="Operation"
+	id="LibOperationCS">operation ${cursor}${name}(${param1} : ${type1}) : ${type2} => 'org.eclipse.ocl.pivot.library.oclany.OclAnyUnsupportedOperation';
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclstdlib.OCLstdlib.PackageCS" 
+	deleted="false" 
+	description="package declaration" 
+	enabled="true" 
+	name="Package"
+	id="PackageCS">package ${cursor}${name} : ${prefix} = 'http://nsURI'
+{	
+}
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclstdlib.OCLstdlib.LibPropertyCS" 
+	deleted="false" 
+	description="property declaration" 
+	enabled="true" 
+	name="Property"
+	id="LibPropertyCS">property ${cursor}${name} : ${type} => 'org.eclipse.ocl.pivot.library.oclany.OclAnyUnsupportedOperation';
+</template>
+
+	
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.essentialocl.EssentialOCL.IfExpCS" 
+	deleted="false" 
+	description="if then else expression" 
+	enabled="true" 
+	name="If"
+	id="IfExpCS">if ${cursor}true then ${line_selection} else null endif</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.essentialocl.EssentialOCL.LetExpCS" 
+	deleted="false" 
+	description="let expression" 
+	enabled="true" 
+	name="Let"
+	id="LetExpCS">let ${cursor}${variableName} : String = null in ${line_selection}</template>
+</templates>
