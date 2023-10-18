@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/uml2/2.2.0/GenModel" copyrightText="Copyright (c) 2015, 2022 Willink Transformations and others.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v2.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v20.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;  E.D.Willink - Initial API and implementation" modelDirectory="/org.eclipse.ocl.pivot.uml/emf-gen" editDirectory="" editorDirectory="" modelPluginID="org.eclipse.ocl.pivot.uml" runtimeJar="true" modelName="OCLforUML" modelPluginClass="org.eclipse.ocl.pivot.uml.PivotUMLPlugin" updateClasspath="false" nonNLSMarkers="true" codeFormatting="true" testsDirectory="" importerID="org.eclipse.uml2.uml.ecore.importer" bundleManifest="false" containmentProxies="true" complianceLevel="8.0" copyrightFields="false" runtimeVersion="2.7" operationReflection="true" pluginKey="" invariantPrefix="validate">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
+    <details key="ECORE_TAGGED_VALUES" value="PROCESS"/>
+    <details key="UNION_PROPERTIES" value="PROCESS"/>
+    <details key="UNTYPED_PROPERTIES" value="REPORT"/>
+    <details key="DUPLICATE_FEATURES" value="PROCESS"/>
+    <details key="SUBSETTING_PROPERTIES" value="PROCESS"/>
+    <details key="VALIDATION_DELEGATES" value="IGNORE"/>
+    <details key="OPPOSITE_ROLE_NAMES" value="IGNORE"/>
+    <details key="COMMENTS" value="PROCESS"/>
+    <details key="DUPLICATE_FEATURE_INHERITANCE" value="PROCESS"/>
+    <details key="DUPLICATE_OPERATIONS" value="PROCESS"/>
+    <details key="PROPERTY_DEFAULT_EXPRESSIONS" value="IGNORE"/>
+    <details key="INVARIANT_CONSTRAINTS" value="PROCESS"/>
+    <details key="REDEFINING_PROPERTIES" value="PROCESS"/>
+    <details key="ANNOTATION_DETAILS" value="PROCESS"/>
+    <details key="NON_API_INVARIANTS" value="IGNORE"/>
+    <details key="DUPLICATE_OPERATION_INHERITANCE" value="PROCESS"/>
+    <details key="REDEFINING_OPERATIONS" value="PROCESS"/>
+    <details key="INVOCATION_DELEGATES" value="IGNORE"/>
+    <details key="DERIVED_FEATURES" value="PROCESS"/>
+    <details key="OPERATION_BODIES" value="IGNORE"/>
+    <details key="CAMEL_CASE_NAMES" value="IGNORE"/>
+    <details key="SUPER_CLASS_ORDER" value="PROCESS"/>
+  </genAnnotations>
+  <foreignModel>OCLforUML.profile.uml</foreignModel>
+  <genPackages xsi:type="genmodel:GenPackage" prefix="OCLforUML" basePackage="org.eclipse.ocl.pivot.uml.internal" disposableProviderFactory="true">
+    <ecorePackage href="OCLforUML.ecore#/"/>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false">
+      <ecoreEnum href="OCLforUML.ecore#//Overflow"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral">
+        <ecoreEnumLiteral href="OCLforUML.ecore#//Overflow/invalid"/>
+      </genEnumLiterals>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral">
+        <ecoreEnumLiteral href="OCLforUML.ecore#//Overflow/saturate"/>
+      </genEnumLiterals>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral">
+        <ecoreEnumLiteral href="OCLforUML.ecore#//Overflow/modulo"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genEnums xsi:type="genmodel:GenEnum" typeSafeEnumCompatible="false">
+      <ecoreEnum href="OCLforUML.ecore#//Rounding"/>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral">
+        <ecoreEnumLiteral href="OCLforUML.ecore#//Rounding/nearest"/>
+      </genEnumLiterals>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral">
+        <ecoreEnumLiteral href="OCLforUML.ecore#//Rounding/ceiling"/>
+      </genEnumLiterals>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral">
+        <ecoreEnumLiteral href="OCLforUML.ecore#//Rounding/floor"/>
+      </genEnumLiterals>
+      <genEnumLiterals xsi:type="genmodel:GenEnumLiteral">
+        <ecoreEnumLiteral href="OCLforUML.ecore#//Rounding/congruent"/>
+      </genEnumLiterals>
+    </genEnums>
+    <genClasses xsi:type="genmodel:GenClass">
+      <ecoreClass href="OCLforUML.ecore#//BoundedInteger"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//BoundedInteger/overflow"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass">
+      <ecoreClass href="OCLforUML.ecore#//Integer"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="OCLforUML.ecore#//Integer/base_DataType"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//Integer/maximum"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//Integer/minimum"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass">
+      <ecoreClass href="OCLforUML.ecore#//Collection"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="OCLforUML.ecore#//Collection/base_MultiplicityElement"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//Collection/isNullFree"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass">
+      <ecoreClass href="OCLforUML.ecore#//Collections"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="OCLforUML.ecore#//Collections/base_Class"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="OCLforUML.ecore#//Collections/base_Package"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//Collections/isNullFree"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass">
+      <ecoreClass href="OCLforUML.ecore#//FixedPoint"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//FixedPoint/bitTrue"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//FixedPoint/fractionalBits"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//FixedPoint/integerBits"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//FixedPoint/overflow"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//FixedPoint/rounding"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass">
+      <ecoreClass href="OCLforUML.ecore#//Real"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="OCLforUML.ecore#//Real/base_DataType"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//Real/epsilon"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//Real/maximum"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//Real/minimum"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass">
+      <ecoreClass href="OCLforUML.ecore#//FloatingPoint"/>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//FloatingPoint/exponentBits"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//FloatingPoint/mantissaBits"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//FloatingPoint/overflow"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//FloatingPoint/rounding"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass">
+      <ecoreClass href="OCLforUML.ecore#//Validation"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="OCLforUML.ecore#//Validation/base_InstanceSpecification"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//Validation/validate"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses xsi:type="genmodel:GenClass">
+      <ecoreClass href="OCLforUML.ecore#//Validations"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="OCLforUML.ecore#//Validations/base_Package"/>
+      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="OCLforUML.ecore#//Validations/validateInstanceSpecifications"/>
+      </genFeatures>
+    </genClasses>
+  </genPackages>
+  <usedGenPackages href="../../../plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml"/>
+  <usedGenPackages href="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"/>
+  <usedGenPackages href="../../../plugin/org.eclipse.uml2.types/model/Types.genmodel#//types"/>
+</genmodel:GenModel>
