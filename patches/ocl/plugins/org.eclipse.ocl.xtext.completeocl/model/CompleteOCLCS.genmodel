@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2010, 2022 Willink Transformations and others.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v2.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v20.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;  E.D.Willink - Initial API and implementation"
+    modelDirectory="/org.eclipse.ocl.xtext.completeocl/emf-gen" editDirectory="/org.eclipse.ocl.xtext.completeocl.edit/emf-gen"
+    editorDirectory="/org.eclipse.ocl.xtext.completeocl.editor/emf-gen" modelPluginID="org.eclipse.ocl.xtext.completeocl"
+    templateDirectory="/org.eclipse.ocl.examples.codegen/templates" forceOverwrite="true"
+    modelName="CompleteOCLCS" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" testsDirectory="/org.eclipse.ocl.xtext.completeocl.tests/emf-gen"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    editPluginID="org.eclipse.ocl.xtext.completeocl.edit" editorPluginID="org.eclipse.ocl.xtext.completeocl.editor"
+    runtimeVersion="2.7" usedGenPackages="../../org.eclipse.ocl.xtext.base/model/BaseCS.genmodel#//basecs ../../org.eclipse.ocl.xtext.essentialocl/model/EssentialOCLCS.genmodel#//essentialoclcs ../../org.eclipse.ocl.pivot/model/Pivot.genmodel#//pivot"
+    importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
+    <details key="Use Delegates" value="false"/>
+    <details key="Use Null Annotations" value="true"/>
+    <details key="Generate Classifier ints" value="true"/>
+  </genAnnotations>
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel/ToString"/>
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel/Visitor">
+    <details key="Root Visitor Class" value="org.eclipse.ocl.xtext.basecs.util.BaseCSVisitor"/>
+    <details key="Derived Visitor Class" value="org.eclipse.ocl.xtext.completeoclcs.util.CompleteOCLCSVisitor"/>
+  </genAnnotations>
+  <foreignModel>CompleteOCLCS.ecore</foreignModel>
+  <genPackages prefix="CompleteOCLCS" basePackage="org.eclipse.ocl.xtext" disposableProviderFactory="true"
+      fileExtensions="completeoclcs" ecorePackage="CompleteOCLCS.ecore#/">
+    <genClasses ecoreClass="CompleteOCLCS.ecore#//ClassifierContextDeclCS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//ClassifierContextDeclCS/ownedDefinitions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//ClassifierContextDeclCS/ownedInvariants"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//ClassifierContextDeclCS/referredClass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute CompleteOCLCS.ecore#//ClassifierContextDeclCS/selfName"/>
+    </genClasses>
+    <genClasses ecoreClass="CompleteOCLCS.ecore#//CompleteOCLDocumentCS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//CompleteOCLDocumentCS/ownedContexts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//CompleteOCLDocumentCS/ownedPackages"/>
+    </genClasses>
+    <genClasses ecoreClass="CompleteOCLCS.ecore#//ContextDeclCS"/>
+    <genClasses ecoreClass="CompleteOCLCS.ecore#//DefCS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompleteOCLCS.ecore#//DefCS/isStatic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//DefCS/ownedSpecification"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//DefCS/owningClassifierContextDecl"/>
+    </genClasses>
+    <genClasses ecoreClass="CompleteOCLCS.ecore#//DefOperationCS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//DefOperationCS/ownedParameters"/>
+    </genClasses>
+    <genClasses ecoreClass="CompleteOCLCS.ecore#//DefPropertyCS"/>
+    <genClasses image="false" ecoreClass="CompleteOCLCS.ecore#//FeatureContextDeclCS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//FeatureContextDeclCS/ownedType"/>
+    </genClasses>
+    <genClasses ecoreClass="CompleteOCLCS.ecore#//OCLMessageArgCS"/>
+    <genClasses ecoreClass="CompleteOCLCS.ecore#//OperationContextDeclCS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//OperationContextDeclCS/ownedBodies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//OperationContextDeclCS/ownedParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//OperationContextDeclCS/ownedPostconditions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//OperationContextDeclCS/ownedPreconditions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//OperationContextDeclCS/ownedResult"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//OperationContextDeclCS/referredOperation"/>
+    </genClasses>
+    <genClasses ecoreClass="CompleteOCLCS.ecore#//PackageDeclarationCS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//PackageDeclarationCS/ownedContexts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//PackageDeclarationCS/ownedInvariants"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//PackageDeclarationCS/referredPackage"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="CompleteOCLCS.ecore#//PathNameDeclCS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//PathNameDeclCS/ownedPathName"/>
+    </genClasses>
+    <genClasses ecoreClass="CompleteOCLCS.ecore#//PropertyContextDeclCS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//PropertyContextDeclCS/ownedDefaultExpressions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//PropertyContextDeclCS/ownedDerivedInvariants"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompleteOCLCS.ecore#//PropertyContextDeclCS/referredProperty"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

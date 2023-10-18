@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+  <extension point="org.eclipse.core.contenttype.contentTypes">
+	<content-type id="org.eclipse.ocl.xtext.CompleteOCL" name="%completeOCLName" 
+		base-type="org.eclipse.core.runtime.text"
+		file-extensions="ocl"
+        default-charset="UTF-8">
+         <describer class="org.eclipse.ocl.pivot.resource.NotXMLContentHandlerImpl$Describer"/>
+      </content-type>
+  </extension>
+
+   <extension point="org.eclipse.emf.validation.constraintProviders"
+         id="org.eclipse.ocl.xtext.completeocl.validation.provider">
+      <category id="org.eclipse.ocl.xtext.completeocl.validation.CompleteOCL"
+            name="Complete OCL Documents">
+         Constraints determined by parsing Complete OCL Documents
+      </category>
+  </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated CompleteOCLCS -->
+      <package
+            uri="http://www.eclipse.org/ocl/2015/CompleteOCLCS"
+            class="org.eclipse.ocl.xtext.completeoclcs.CompleteOCLCSPackage"
+            genModel="model/CompleteOCLCS.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.team.core.fileTypes">
+      <fileTypes extension="ocl" type="text" />
+      <fileTypes extension="completeoclcs" type="text" />
+   </extension>
+
+  <extension point="org.eclipse.ocl.pivot.as_resource_factory">
+     <factory class="org.eclipse.ocl.xtext.completeocl.utilities.CompleteOCLASResourceFactory"
+     	extension="ocl" contentType="org.eclipse.ocl.oclas.ocl"/>
+  </extension>
+
+   <extension point="org.eclipse.ocl.pivot.label_generator">
+      <generator for="org.eclipse.ocl.xtext.completeoclcs.PathNameDeclCS"
+      	class="org.eclipse.ocl.xtext.completeocl.utilities.PathNameDeclCSLabelGenerator"/>
+   </extension>
+
+</plugin>
