@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2010, 2022 Willink Transformations and others.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v2.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v20.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;  E.D.Willink - Initial API and implementation"
+    modelDirectory="/org.eclipse.ocl.xtext.oclstdlib/emf-gen" editDirectory="/org.eclipse.ocl.xtext.oclstdlib.edit/emf-gen"
+    editorDirectory="/org.eclipse.ocl.xtext.oclstdlib.editor/emf-gen" modelPluginID="org.eclipse.ocl.xtext.oclstdlib"
+    templateDirectory="/org.eclipse.ocl.examples.codegen/templates" forceOverwrite="true"
+    modelName="OCLstdlibCS" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" testsDirectory="/org.eclipse.ocl.xtext.oclstdlib.tests/emf-gen"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    editPluginID="org.eclipse.ocl.xtext.oclstdlib.edit" editorPluginID="org.eclipse.ocl.xtext.oclstdlib.editor"
+    runtimeVersion="2.7" usedGenPackages="../../org.eclipse.ocl.xtext.base/model/BaseCS.genmodel#//basecs ../../org.eclipse.ocl.pivot/model/Pivot.genmodel#//pivot"
+    importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
+    <details key="Use Delegates" value="false"/>
+    <details key="Use Null Annotations" value="true"/>
+    <details key="Generate Classifier ints" value="true"/>
+  </genAnnotations>
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel/ToString"/>
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel/Visitor">
+    <details key="Root Visitor Class" value="org.eclipse.ocl.xtext.basecs.util.BaseCSVisitor"/>
+    <details key="Derived Visitor Class" value="org.eclipse.ocl.xtext.oclstdlibcs.util.OCLstdlibCSVisitor"/>
+  </genAnnotations>
+  <foreignModel>OCLstdlibCS.ecore</foreignModel>
+  <genPackages prefix="OCLstdlibCS" basePackage="org.eclipse.ocl.xtext" disposableProviderFactory="true"
+      ecorePackage="OCLstdlibCS.ecore#/">
+    <genClasses ecoreClass="OCLstdlibCS.ecore#//JavaClassCS"/>
+    <genClasses image="false" ecoreClass="OCLstdlibCS.ecore#//JavaImplementationCS">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OCLstdlibCS.ecore#//JavaImplementationCS/implementation"/>
+    </genClasses>
+    <genClasses ecoreClass="OCLstdlibCS.ecore#//LibClassCS">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OCLstdlibCS.ecore#//LibClassCS/metaclassName"/>
+    </genClasses>
+    <genClasses ecoreClass="OCLstdlibCS.ecore#//LibCoercionCS"/>
+    <genClasses ecoreClass="OCLstdlibCS.ecore#//LibConstraintCS"/>
+    <genClasses ecoreClass="OCLstdlibCS.ecore#//LibIterationCS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCLstdlibCS.ecore#//LibIterationCS/isInvalidating"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCLstdlibCS.ecore#//LibIterationCS/isValidating"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OCLstdlibCS.ecore#//LibIterationCS/ownedAccumulators"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OCLstdlibCS.ecore#//LibIterationCS/ownedIterators"/>
+    </genClasses>
+    <genClasses ecoreClass="OCLstdlibCS.ecore#//LibOperationCS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCLstdlibCS.ecore#//LibOperationCS/isInvalidating"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCLstdlibCS.ecore#//LibOperationCS/isStatic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCLstdlibCS.ecore#//LibOperationCS/isValidating"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference OCLstdlibCS.ecore#//LibOperationCS/precedence"/>
+    </genClasses>
+    <genClasses ecoreClass="OCLstdlibCS.ecore#//LibOppositeCS"/>
+    <genClasses ecoreClass="OCLstdlibCS.ecore#//LibPackageCS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OCLstdlibCS.ecore#//LibPackageCS/ownedPrecedences"/>
+    </genClasses>
+    <genClasses ecoreClass="OCLstdlibCS.ecore#//LibPropertyCS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCLstdlibCS.ecore#//LibPropertyCS/isStatic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference OCLstdlibCS.ecore#//LibPropertyCS/ownedOpposite"/>
+    </genClasses>
+    <genClasses ecoreClass="OCLstdlibCS.ecore#//LibRootPackageCS"/>
+    <genClasses ecoreClass="OCLstdlibCS.ecore#//MetaclassNameCS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCLstdlibCS.ecore#//MetaclassNameCS/name"/>
+    </genClasses>
+    <genClasses ecoreClass="OCLstdlibCS.ecore#//PrecedenceCS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute OCLstdlibCS.ecore#//PrecedenceCS/isRightAssociative"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

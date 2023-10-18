@@ -1,0 +1,270 @@
+/*******************************************************************************
+ * Copyright (c) 2010 Willink Transformations and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v2.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v20.html
+ *
+ * Contributors:
+ *   E.D.Willink - initial API and implementation
+ * 	 E.D.Willink (Obeo) - Bug 416287 - tuple-valued constraints
+ *******************************************************************************/
+grammar org.eclipse.ocl.xtext.oclstdlib.OCLstdlib with org.eclipse.ocl.xtext.essentialocl.EssentialOCL
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "platform:/resource/org.eclipse.ocl.pivot/model/Pivot.ecore" as pivot
+import "platform:/resource/org.eclipse.ocl.xtext.base/model/BaseCS.ecore" as base
+import "platform:/resource/org.eclipse.ocl.xtext.essentialocl/model/EssentialOCLCS.ecore" as essentialocl
+import "platform:/resource/org.eclipse.ocl.xtext.oclstdlib/model/OCLstdlibCS.ecore"
+//generate OCLstdlib "http://www.eclipse.org/ocl/examples/xtext/oclstdlib/OCLstdlibCST"
+
+Library returns LibRootPackageCS:
+	(ownedImports+=ImportCS ';')*
+	(ownedPackages+=LibPackageCS)*
+;
+
+@Override
+Identifier:
+	ID
+|	RestrictedKeywords
+;
+
+RestrictedKeywords:
+	'abstract'
+|	'annotation'
+|	'conformsTo'
+|	'documentation'
+|	'extends'
+|	'import'
+|	'inv'
+|	'invalidating'
+|	'iteration'
+|	'left'
+|	'library'
+|	'operation'
+|	'opposite'
+|	'package'
+|	'post'
+|	'pre'
+|	'precedence'
+|	'property'
+|	'right'
+|	'static'
+|	'type'
+//|	'typeof'
+|	'validating'
+//|	'Lambda'
+//|	'Tuple'
+;
+
+Name:
+	Identifier
+|	DOUBLE_QUOTED_STRING
+|	EssentialOCLReservedKeyword
+|	PrimitiveTypeIdentifier
+|	CollectionTypeIdentifier
+;
+
+AnyName:
+	Name
+|	'Lambda'
+|	'Map'
+|	'Tuple'
+;
+
+LibPathNameCS returns base::PathNameCS:
+	ownedPathElements+=LibPathElementCS ('::' ownedPathElements+=LibPathElementCS)*;
+
+LibPathElementCS returns base::PathElementCS:
+	referredElement=[pivot::NamedElement|Name];
+
+AccumulatorCS returns base::ParameterCS:
+	name=Identifier ':' ownedType=TypedMultiplicityRefCS
+;
+
+AnnotationCS returns base::AnnotationCS:
+	'annotation' name=(Identifier|SINGLE_QUOTED_STRING)
+	('(' ownedDetails+=DetailCS (',' ownedDetails+=DetailCS)* ')')?
+	(('{' ownedAnnotations+=AnnotationElementCS '}')
+	|';'
+	)
+;
+
+AnnotationElementCS returns base::AnnotationElementCS:
+	AnnotationCS | DocumentationCS
+;
+
+LibClassCS returns LibClassCS:
+	(isAbstract?='abstract')? 'type' name=AnyName
+	(ownedSignature=TemplateSignatureCS)?
+	(':' metaclassName=[MetaclassNameCS|AnyName])?
+	('conformsTo' ownedSuperTypes+=TypedRefCS (',' ownedSuperTypes+=TypedRefCS)*)?
+	('=>' implementation=[JavaClassCS|SINGLE_QUOTED_STRING])?
+	'{' (ownedOperations+=OperationCS
+	   | ownedProperties+=LibPropertyCS
+	   | ownedConstraints+=InvCS
+	   | ownedAnnotations+=AnnotationElementCS)* '}'
+;
+
+ClassCS returns base::ClassCS:
+	LibClassCS
+;
+
+DetailCS returns base::DetailCS:
+	name=(Name|SINGLE_QUOTED_STRING) '=' values+=(SINGLE_QUOTED_STRING|ML_SINGLE_QUOTED_STRING)*
+;
+
+DocumentationCS returns base::DocumentationCS:
+	{base::DocumentationCS} 'documentation' value=SINGLE_QUOTED_STRING?
+	('(' ownedDetails+=DetailCS (',' ownedDetails+=DetailCS)* ')')?
+	 ';'
+;
+
+ImportCS returns base::ImportCS:
+	'import' (name=Identifier ':')? ownedPathName=URIPathNameCS (isAll?='::*')?;
+
+InvCS returns LibConstraintCS:
+	stereotype='inv' (name=UnrestrictedName ('(' ownedMessageSpecification=SpecificationCS ')')?)? ':' ownedSpecification=SpecificationCS ';'
+;
+
+LibCoercionCS returns LibCoercionCS:
+	'coercion' name=Name '(' ')' ':' ownedType=TypedMultiplicityRefCS
+	('=>' implementation=[JavaClassCS|SINGLE_QUOTED_STRING])?
+	(('{' (ownedAnnotations+=AnnotationElementCS
+	     | ownedPreconditions+=PostCS
+	     | ownedPostconditions+=PreCS)* '}')
+	|';'
+	)
+;
+
+LibIterationCS returns LibIterationCS:
+	'iteration' name=Name
+	(ownedSignature=TemplateSignatureCS)?
+	'(' ownedIterators+=IteratorCS (',' ownedIterators+=IteratorCS)*
+	(';' ownedAccumulators+=AccumulatorCS (',' ownedAccumulators+=AccumulatorCS)*)?
+	('|' ownedParameters+=ParameterCS (',' ownedParameters+=ParameterCS)*)?
+	')'
+	':' ownedType=TypedMultiplicityRefCS
+	(isInvalidating?='invalidating')?
+	(isValidating?='validating')?
+	('=>' implementation=[JavaClassCS|SINGLE_QUOTED_STRING])?
+	(('{' (ownedAnnotations+=AnnotationElementCS
+	     | ownedPreconditions+=PostCS
+	     | ownedPostconditions+=PreCS)* '}')
+	|';'
+	)
+;
+
+IteratorCS returns base::ParameterCS:
+	name=Identifier ':' ownedType=TypedMultiplicityRefCS
+;
+
+LambdaTypeCS returns base::LambdaTypeCS:
+	name='Lambda' (ownedSignature=TemplateSignatureCS)? ownedContextType=LambdaContextTypeRefCS
+	'(' (ownedParameterTypes+=TypedMultiplicityRefCS (',' ownedParameterTypes+=TypedMultiplicityRefCS)*)? ')'
+	':' ownedResultType=TypedRefCS
+;
+
+LambdaContextTypeRefCS returns base::TypedTypeRefCS:
+	ownedPathName=LibPathNameCS
+;
+
+OperationCS returns base::OperationCS:
+	LibCoercionCS|LibIterationCS|LibOperationCS
+;
+
+LibOperationCS returns LibOperationCS:
+	(isStatic?='static')? 'operation' name=Name
+	(ownedSignature=TemplateSignatureCS)?
+	'(' (ownedParameters+=ParameterCS (',' ownedParameters+=ParameterCS)*)? ')'
+	':' ownedType=TypedMultiplicityRefCS
+	(isValidating?='validating')?
+	(isInvalidating?='invalidating')?
+	('precedence' '=' precedence=[pivot::Precedence|Name])?
+	('=>' implementation=[JavaClassCS|SINGLE_QUOTED_STRING])?
+	(('{' (ownedAnnotations+=AnnotationElementCS
+	     | ('body' UnrestrictedName? ':' ownedBodyExpressions+=SpecificationCS ';')
+	     | ownedPostconditions+=PostCS
+	     | ownedPreconditions+=PreCS)* '}')
+	|';'
+	)
+;
+
+LibOppositeCS returns LibOppositeCS:
+	'opposite' name=Name ':' ownedType=TypedMultiplicityRefCS
+;
+
+LibPackageCS returns LibPackageCS:
+    'library' name=Name
+	(':' nsPrefix=Identifier '=' nsURI=URI)?
+	'{' (ownedPackages+=PackageCS
+		| ('precedence' (ownedPrecedences+=PrecedenceCS)+ ';')
+	    | ownedClasses+=ClassCS
+		| ownedAnnotations+=AnnotationElementCS)*
+	'}'
+;
+
+PackageCS returns base::PackageCS:
+	'package' name=Name
+	(':' nsPrefix=Identifier '=' nsURI=URI)?
+	'{'
+		(ownedPackages+=PackageCS
+	   | ownedClasses+=ClassCS
+	   | ownedAnnotations+=AnnotationElementCS)*
+	'}'
+;
+
+ParameterCS returns base::ParameterCS:
+	name=Identifier ':' ownedType=TypedMultiplicityRefCS
+;
+
+LibPropertyCS returns LibPropertyCS:
+	(isStatic?='static')? 'property' name=Name
+	':' ownedType=TypedMultiplicityRefCS
+	ownedOpposite=LibOppositeCS?
+	('=>' implementation=[JavaClassCS|SINGLE_QUOTED_STRING])?
+	(	('{' (ownedAnnotations+=AnnotationElementCS)* '}')
+	|	';'
+	)
+;
+
+PostCS returns LibConstraintCS:
+	stereotype='post' (name=UnrestrictedName ('(' ownedMessageSpecification=SpecificationCS ')')?)? ':' ownedSpecification=SpecificationCS ';'
+;
+
+PreCS returns LibConstraintCS:
+	stereotype='pre' (name=UnrestrictedName ('(' ownedMessageSpecification=SpecificationCS ')')?)? ':' ownedSpecification=SpecificationCS ';'
+;
+
+PrecedenceCS returns PrecedenceCS:
+	('left'|isRightAssociative?='right') ':' name=Name
+;
+
+SpecificationCS returns essentialocl::ExpSpecificationCS:
+	ownedExpression=ExpCS;
+
+TypedMultiplicityRefCS returns base::TypedRefCS:
+	(MapTypeCS | TupleTypeCS | TypedTypeRefCS | LambdaTypeCS) (ownedMultiplicity=MultiplicityCS)?
+;
+
+//---------------------------------------------------------------------------------
+//	Base overrides
+//---------------------------------------------------------------------------------
+@Override
+TypedRefCS returns base::TypedRefCS:
+	MapTypeCS | TupleTypeCS | TypedTypeRefCS | LambdaTypeCS
+;
+
+@Override
+TypedTypeRefCS returns base::TypedTypeRefCS:
+    (isTypeof?='typeof' '(' ownedPathName=LibPathNameCS ')')
+  | (ownedPathName=LibPathNameCS ('(' ownedBinding=TemplateBindingCS ')')?)
+;
+
+//---------------------------------------------------------------------------------
+//	EssentialOCL overrides
+//---------------------------------------------------------------------------------
+@Override
+TuplePartCS returns base::TuplePartCS:
+	name=Identifier ':' ownedType=TypedMultiplicityRefCS
+;
