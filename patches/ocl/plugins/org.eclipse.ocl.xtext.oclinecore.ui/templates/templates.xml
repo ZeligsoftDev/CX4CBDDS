@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.AnnotationCS" 
+	deleted="false" 
+	description="annotation declaration" 
+	enabled="true" 
+	name="Annotation"
+	id="AnnotationCS">annotation ${cursor}${name} (${key} = '${value}');
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.AttributeCS" 
+	deleted="false" description="attribute declaration" 
+	enabled="true"
+	name="Attribute"
+	id="AttributeCS">attribute ${cursor}${name} : String[1];
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.ClassCS" 
+	deleted="false" 
+	description="abstract class declaration" 
+	enabled="true" 
+	name="Abstract Class"
+	id="AbstractClassCS">abstract class ${cursor}${name}
+{
+}
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.ClassCS" 
+	deleted="false" 
+	description="class declaration" 
+	enabled="true" 
+	name="Class"
+	id="ClassCS">class ${cursor}${name}
+{
+}
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.DataTypeCS" 
+	deleted="false" 
+	description="dataType declaration" 
+	enabled="true" 
+	name="DataType"
+	id="DataTypeCS">datatype ${cursor}${name} : '${instanceClassName}';
+</template>
+<template 
+	autoinsert="true" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.DetailCS" 
+	deleted="false" 
+	description="annotation detail declaration" 
+	enabled="true" 
+	name="Detail"
+	id="DetailCS">${cursor}${key} '{$value}'</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.DerivedConstraintCS" 
+	deleted="false" 
+	description="derived property constraint" 
+	enabled="true" 
+	name="Derived Constraint"
+	id="DerivedConstraintCS">derivation: ${cursor}true;
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.DocumentationCS" 
+	deleted="false" 
+	description="documentation" 
+	enabled="true" 
+	name="Documentation"
+	id="DocumentationCS">documentation '${cursor}${value}';
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.EnumerationCS" 
+	deleted="false" 
+	description="enumeration declaration" 
+	enabled="true" 
+	name="Enumeration"
+	id="EnumerationCS">enum ${cursor}${name}
+{
+}
+<template 
+	autoinsert="true" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.EnumerationLiteralCS" 
+	deleted="false" 
+	description="enumeration literal declaration" 
+	enabled="true" 
+	name="Enumeration Literal"
+	id="EnumerationLiteralCS">literal ${cursor}${name};
+</template>
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.ImportCS" 
+	deleted="false" 
+	description="import declaration" 
+	enabled="true" 
+	name="Import"
+	id="ImportCS">import ${cursor}${aliasName} : 'http://uri#/';
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.InvariantConstraintCS" 
+	deleted="false" 
+	description="invariant declaration" 
+	enabled="true" 
+	name="Invariant"
+	id="InvariantConstraintCS">invariant ${cursor}${InvariantName} : true;
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.LibraryCS" 
+	deleted="false" 
+	description="library declaration" 
+	enabled="true" 
+	name="Library"
+	id="LibraryCS">library ${cursor}${aliasName} : 'http://uri#/';
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.OperationCS" 
+	deleted="false" 
+	description="operation declaration" 
+	enabled="true" 
+	name="Operation"
+	id="OperationCS">operation ${cursor}${operationName}(${param} : String) : Boolean
+{
+	body: true;
+}
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.PackageCS" 
+	deleted="false" 
+	description="package declaration" 
+	enabled="true" 
+	name="Package"
+	id="PackageCS">package ${cursor}${name} : ${prefix} = 'http://nsURI'
+{
+}
+</template>
+<template 
+	autoinsert="true" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.ParameterCS" 
+	deleted="false" 
+	description="parameter declaration" 
+	enabled="true" 
+	name="Parameter"
+	id="ParameterCS">${cursor}${param} : String</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.ReferenceCS" 
+	deleted="false" 
+	description="property declaration" 
+	enabled="true" 
+	name="Property"
+	id="ReferenceCS0">property ${cursor}${name} : String [1];
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.ReferenceCS" 
+	deleted="false" 
+	description="bidirectional property declaration" 
+	enabled="true" 
+	name="Property with opposite"
+	id="ReferenceCS1">property ${cursor}${here2there}#${there2here} : ${There} [1];
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.ReferenceCS" 
+	deleted="false" 
+	description="derived property declaration" 
+	enabled="true" 
+	name="Property with derivation"
+	id="ReferenceCS2">property ${cursor}${name} : String[1] {!resolve, readonly, derived, transient, volatile }
+{
+	derivation: true;
+}
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.PostconditionConstraintCS" 
+	deleted="false" 
+	description="postcondition declaration" 
+	enabled="true" 
+	name="Post Condition"
+	id="PostconditionConstraintCS">postcondition ${cursor}${name} : true;
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.PreconditionConstraintCS" 
+	deleted="false" 
+	description="precondition declaration" 
+	enabled="true" 
+	name="Pre Condition"
+	id="PreconditionConstraintCS">precondition ${cursor}${name} : true;
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.essentialocl.EssentialOCL.IfExpCS" 
+	deleted="false" 
+	description="if then else expression" 
+	enabled="true" 
+	name="If"
+	id="IfExpCS">if ${cursor}true then ${line_selection} else null endif</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.essentialocl.EssentialOCL.LetExpCS" 
+	deleted="false" 
+	description="let expression" 
+	enabled="true" 
+	name="Let"
+	id="LetExpCS">let ${cursor}${variableName} : String = null in ${line_selection}</template>
+</templates>
