@@ -3,26 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.zeligsoft.dds4ccm</groupId>
-	<artifactId>com.zeligsoft.dds4ccm.patches</artifactId>
+	<artifactId>com.zeligsoft.dds4ccm.patches.apache</artifactId>
 	<version>2.5.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-
 	<parent>
 		<groupId>com.zeligsoft.dds4ccm</groupId>
-		<artifactId>com.zeligsoft.dds4ccm.root</artifactId>
+		<artifactId>com.zeligsoft.dds4ccm.patches</artifactId>
 		<version>2.5.0-SNAPSHOT</version>
 	</parent>
 
 	<modules>
- 		<module>apache</module>
-		<module>ecf</module>
-		<module>mwe2</module>
-<!-- 		<module>nebula</module> -->
-		<module>ocl</module>
- 		<module>papyrus</module>
-		<module>xtext</module>
-		<module>xtend</module>
-		<module>xpand</module>
-		<module>xtend2</module>
-	</modules>
+<!--
+ 		<module>ant</module>
+ -->
+    </modules>
 </project>
