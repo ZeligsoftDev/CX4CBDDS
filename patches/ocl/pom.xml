@@ -13,7 +13,7 @@
 	</parent>
 
 	<properties>
-		<ecj-version>3.23.0</ecj-version>
+		<ecj-version>3.35.0</ecj-version>
 		<java-source-encoding>UTF-8</java-source-encoding>
 		<resource-encoding>UTF-8</resource-encoding>
 		<os-jvm-flags />
@@ -103,6 +103,42 @@
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+<!--
+ 					<compilerVersion>1.8</compilerVersion>
+					<source>8</source>
+					<target>8</target>
+					<release>8</release>
+					<encoding>UTF-8</encoding>
+ -->
+					<useJDK>BREE</useJDK>
+					<!-- Workaround Bug 569379 -->
+					<deriveReleaseCompilerArgumentFromTargetLevel>false</deriveReleaseCompilerArgumentFromTargetLevel>
+					<!-- Workaround Bug 526011 -->
+					<compilerArgs>
+						<arg>-annotationpath</arg>
+						<arg>${project.basedir}/../../plugins/org.eclipse.ocl.pivot/annotations</arg>
+					</compilerArgs>
+					<log>plain</log>
+					<verbose>true</verbose>
+				</configuration>
+				<dependencies>
+					<!-- Investigate Bug 569379 -->
+					<dependency>
+						<groupId>org.eclipse.jdt</groupId>
+						<artifactId>ecj</artifactId>
+						<version>${ecj-version}</version>
+					</dependency>
+					<!--dependency> <groupId>org.eclipse.jdt</groupId> <artifactId>org.eclipse.jdt.core</artifactId> 
+						<version>${cbi-jdt-version}</version> </dependency> <dependency> <groupId>org.eclipse.jdt</groupId> 
+						<artifactId>org.eclipse.jdt.compiler.apt</artifactId> <version>${cbi-jdt-apt-version}</version> 
+						</dependency -->
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-source-plugin</artifactId>
 				<version>${tycho.version}</version>
 				<configuration>
@@ -143,6 +179,13 @@
 					<artifactId>tycho-compiler-plugin</artifactId>
 					<version>${tycho.version}</version>
 					<configuration>
+<!--
+	 					<compilerVersion>1.8</compilerVersion>
+						<source>8</source>
+						<target>8</target>
+						<release>8</release>
+						<encoding>UTF-8</encoding>
+ -->
 						<useJDK>BREE</useJDK>
 						<!-- Workaround Bug 569379 -->
 						<deriveReleaseCompilerArgumentFromTargetLevel>false</deriveReleaseCompilerArgumentFromTargetLevel>
