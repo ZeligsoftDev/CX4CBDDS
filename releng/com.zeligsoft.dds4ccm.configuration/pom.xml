@@ -112,6 +112,14 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho.version}</version>
 				<configuration>
+					<target>
+						<artifact>
+							<groupId>com.zeligsoft.dds4ccm</groupId>
+							<artifactId>com.zeligsoft.papyrus-cx.axcioma.targetdefinition</artifactId>
+							<version>2.5.0-SNAPSHOT</version>
+<!-- 							<classifier>papyrus-cx-axcioma-release</classifier> -->
+						</artifact>
+					</target>
 					<environments>
 						<environment>
 							<os>linux</os>
@@ -125,7 +133,7 @@
 					</environments>
 				</configuration>
 			</plugin>
-<!-- 
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-compiler-plugin</artifactId>
@@ -135,7 +143,9 @@
 					<target>11</target>
 					<release>11</release>
 					<encoding>UTF-8</encoding>
-<!- 					<useJDK>BREE</useJDK>         force toolchain usage ->
+<!-- 
+ 					<useJDK>BREE</useJDK>
+ -->
 				</configuration>
 				<executions>
 					<execution>
@@ -147,7 +157,6 @@
 					</execution>
 				</executions>
 			</plugin>
- -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-toolchains-plugin</artifactId>
