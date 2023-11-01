@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.zeligsoft.dds4ccm</groupId>
+		<artifactId>com.zeligsoft.dds4ccm.patches.apache.httpcomponents.httpclient.plugins</artifactId>
+		<version>2.5.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>org.apache.httpcomponents.httpclient</artifactId>
+	<version>4.5.14-SNAPSHOT</version>
+	<packaging>eclipse-plugin</packaging>
+	<!-- <packaging>eclipse-bundle-recipe</packaging> -->
+<!-- 	<name>Apache HttpClient</name> -->
+	<properties>
+		<httpclient.version>4.5.14</httpclient.version>
+		<ehcache.version>2.6.11</ehcache.version>
+		<memcached.version>2.12.3</memcached.version>
+	</properties>
+
+
+	<dependencies>
+		<!-- <dependency> <groupId>org.apache.httpcomponents</groupId> <artifactId>httpclient</artifactId> 
+			<version>${httpclient.version}</version> </dependency> -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient-cache</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>fluent-hc</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>${ehcache.version}</version>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>net.spy</groupId>
+			<artifactId>spymemcached</artifactId>
+			<version>${memcached.version}</version>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+ 					<pomDependencies>consider</pomDependencies>
+ 					<pomDependencies>wrapAsBundle</pomDependencies>
+					<extraRequirements>
+						<requirement>
+							<groupId>net.sf.ehcache</groupId>
+							<artifactId>ehcache-core</artifactId>
+							<version>${ehcache.version}</version>
+						</requirement>
+						<requirement>
+							<groupId>net.spy</groupId>
+							<artifactId>spymemcached</artifactId>
+							<version>${memcached.version}</version>
+						</requirement>
+					</extraRequirements>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

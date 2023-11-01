@@ -10,6 +10,9 @@
 		<rootdir>${maven.multiModuleProjectDirectory}</rootdir>
 		<project.build.sourceEncoding>ISO-8859-1
 		</project.build.sourceEncoding>
+		<local-p2-repo.url>http://localhost:8080/site</local-p2-repo.url>
+		<maven-central.url>https://mvnrepository.com/</maven-central.url>
+<!-- 		<maven-central.url>https://repo1.maven.org/maven2</maven-central.url> -->
 		<eclipse-release.url>https://download.eclipse.org/releases/2023-06/
 		</eclipse-release.url>
 		<eclipse-cbi.url>https://download.eclipse.org/cbi/updates/license
@@ -27,9 +30,26 @@
 		<emf-compare.url>https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/</emf-compare.url>
 <!-- 		<papyrus-compare.url>https://download.eclipse.org/modeling/mdt/papyrus/components/compare/updates/nightly/0.7.0-N20200430-193447/ -->
 <!-- 		</papyrus-compare.url> -->
+		<ehcache.version>2.6.11</ehcache.version>
+		<memcached.version>2.12.3</memcached.version>
 	</properties>
 
 	<repositories>
+<!-- 	
+		<repository>
+			<id>local-p2-repo</id>
+			<url>${local-p2-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
+ -->
+		<repository>
+			<id>maven-central</id>
+			<url>${maven-central.url}</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
 		<repository>
 			<id>eclipse-release</id>
 			<url>${eclipse-release.url}</url>
