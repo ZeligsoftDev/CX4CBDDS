@@ -8,30 +8,29 @@
 	<properties>
 		<tycho.version>2.7.5</tycho.version>
 		<rootdir>${maven.multiModuleProjectDirectory}</rootdir>
-		<project.build.sourceEncoding>ISO-8859-1
-		</project.build.sourceEncoding>
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
 		<local-p2-repo.url>http://localhost:8080/site</local-p2-repo.url>
 		<maven-central.url>https://mvnrepository.com/</maven-central.url>
 <!-- 		<maven-central.url>https://repo1.maven.org/maven2</maven-central.url> -->
-		<eclipse-release.url>https://download.eclipse.org/releases/2023-06/
-		</eclipse-release.url>
-		<eclipse-cbi.url>https://download.eclipse.org/cbi/updates/license
-		</eclipse-cbi.url>
-		<orbit.url>https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository/
-		</orbit.url>
-		<papyrus.url>https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2023-06/
-		</papyrus.url>
-		<cdt-repo.url>https://download.eclipse.org/releases/2023-06/
-		</cdt-repo.url>
-		<xtext.url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.31.0/
-		</xtext.url>
-		<xpand.url>https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/
-		</xpand.url>
+		<eclipse-release.url>https://download.eclipse.org/releases/2023-06/</eclipse-release.url>
+		<eclipse-cbi.url>https://download.eclipse.org/cbi/updates/license</eclipse-cbi.url>
+		<orbit.url>https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository/</orbit.url>
+		<papyrus.url>https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2023-06/</papyrus.url>
+		<cdt-repo.url>https://download.eclipse.org/releases/2023-06/</cdt-repo.url>
+		<xtext.url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.31.0/</xtext.url>
+		<xpand.url>https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/</xpand.url>
 		<emf-compare.url>https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/</emf-compare.url>
 <!-- 		<papyrus-compare.url>https://download.eclipse.org/modeling/mdt/papyrus/components/compare/updates/nightly/0.7.0-N20200430-193447/ -->
 <!-- 		</papyrus-compare.url> -->
+		<java.source.version>17</java.source.version>
+		<java.target.version>17</java.target.version>
 		<ehcache.version>2.6.11</ehcache.version>
 		<memcached.version>2.12.3</memcached.version>
+		<xtend.version>2.31.0</xtend.version>
+		<xtext.version>2.30.0</xtext.version>
+		<maven.clean.version>3.2.0</maven.clean.version>
+		<maven.compiler.version>3.11.0</maven.compiler.version>
+		<maven.resources.version>3.3.1</maven.resources.version>
 	</properties>
 
 	<repositories>
@@ -103,6 +102,67 @@
 	</repositories>
 
 	<build>
+		<pluginManagement>
+			<!-- redistributed plugin configurations -->
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven.compiler.version}</version>
+					<configuration>
+						<source>${java.source.version}</source>
+						<target>${java.target.version}</target>
+						<compilerArgs>
+							<main.argLine>-Xms512m -Xmx2048m -XX:SoftRefLRUPolicyMSPerMB=100</main.argLine>
+						</compilerArgs>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven.resources.version}</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${maven.clean.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>${xtend.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>target-platform-configuration</artifactId>
+					<version>${tycho.version}</version>
+					<configuration>
+						<target>
+							<artifact>
+								<groupId>com.zeligsoft.dds4ccm</groupId>
+								<artifactId>com.zeligsoft.papyrus-cx.axcioma.targetdefinition</artifactId>
+								<version>2.5.0-SNAPSHOT</version>
+	<!-- 							<classifier>papyrus-cx-axcioma-release</classifier> -->
+							</artifact>
+						</target>
+						<environments>
+							<environment>
+								<os>linux</os>
+								<ws>gtk</ws>
+								<arch>x86_64</arch>
+							</environment>
+							<environment> <os>macosx</os> <ws>cocoa</ws> <arch>x86_64</arch> </environment>
+							<!-- <environment> <os>win32</os> <ws>win32</ws> <arch>x86</arch> </environment>
+								<environment> <os>win32</os> <ws>win32</ws> <arch>x86_64</arch> </environment>
+								<environment> <os>macosx</os> <ws>cocoa</ws> <arch>x86_64</arch> </environment> -->
+						</environments>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -126,32 +186,6 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho.version}</version>
-				<configuration>
-					<target>
-						<artifact>
-							<groupId>com.zeligsoft.dds4ccm</groupId>
-							<artifactId>com.zeligsoft.papyrus-cx.axcioma.targetdefinition</artifactId>
-							<version>2.5.0-SNAPSHOT</version>
-<!-- 							<classifier>papyrus-cx-axcioma-release</classifier> -->
-						</artifact>
-					</target>
-					<environments>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment> <os>macosx</os> <ws>cocoa</ws> <arch>x86_64</arch> </environment>
-						<!-- <environment> <os>win32</os> <ws>win32</ws> <arch>x86</arch> </environment>
-							<environment> <os>win32</os> <ws>win32</ws> <arch>x86_64</arch> </environment>
-							<environment> <os>macosx</os> <ws>cocoa</ws> <arch>x86_64</arch> </environment> -->
-					</environments>
-				</configuration>
 			</plugin>
 
 			<plugin>
@@ -199,4 +233,9 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<modules>
+		<module>com.zeligsoft.papyrus-cx.axcioma.targetdefinition</module>
+	</modules>
+
 </project>

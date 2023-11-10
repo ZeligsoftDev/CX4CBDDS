@@ -9,6 +9,7 @@
 package org.eclipse.xtext.util.internal;
 
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.eclipse.xtend.lib.macro.AbstractClassProcessor;
 import org.eclipse.xtend.lib.macro.TransformationContext;
 import org.eclipse.xtend.lib.macro.declaration.MutableClassDeclaration;
@@ -17,6 +18,7 @@ import org.eclipse.xtend2.lib.StringConcatenationClient;
 public class LogProcessor extends AbstractClassProcessor {
 	@Override
 	public void doTransform(MutableClassDeclaration cls, TransformationContext context) {
+		System.out.println("[DEBUG] LogProcessor; context = " + context.toString());
 		cls.addField("LOG", field -> {
 			field.setStatic(true);
 			field.setFinal(true);
@@ -24,7 +26,7 @@ public class LogProcessor extends AbstractClassProcessor {
 			field.setInitializer(new StringConcatenationClient() {
 				@Override
 				protected void appendTo(TargetStringConcatenation target) {
-					target.append(Logger.class);
+					target.append(LogManager.class);
 					target.append(".getLogger(");
 					target.append(cls.getSimpleName());
 					target.append(".class)");
