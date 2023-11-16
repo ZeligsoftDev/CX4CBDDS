@@ -131,9 +131,10 @@
 					<version>${maven.clean.version}</version>
 				</plugin>
 				<plugin>
-					<groupId>org.eclipse.xtend</groupId>
-					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtend.version}</version>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-maven-plugin</artifactId>
+					<version>${tycho.version}</version>
+					<extensions>true</extensions>
 				</plugin>
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
@@ -161,9 +162,75 @@
 						</environments>
 					</configuration>
 				</plugin>
+				<!--Enable the replacement of the SNAPSHOT version in the final product
+					configuration -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho.version}</version>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<id>package-feature</id>
+							<configuration>
+								<finalName>${project.artifactId}_${unqualifiedVersion}.${buildQualifier}
+								</finalName>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+	
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho.version}</version>
+					<configuration>
+						<source>11</source>
+						<target>11</target>
+						<release>11</release>
+						<encoding>UTF-8</encoding>
+	<!-- 
+	 					<useJDK>BREE</useJDK>
+	 -->
+					</configuration>
+					<executions>
+						<execution>
+							<id>compile</id>
+							<phase>compile</phase>
+							<configuration>
+								<verbose>true</verbose>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>${xtend.version}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-toolchains-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>toolchain</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<toolchains>
+						<jdk>                     <!-- ~ toolchains.xml!/toolchains/toolchain/type -->
+							<version>11</version> <!-- ~ toolchains.xml!/toolchains/toolchain/provides/version -->
+						</jdk>
+					</toolchains>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
@@ -210,26 +277,6 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-toolchains-plugin</artifactId>
-				<version>3.0.0</version>
-				<executions>
-					<execution>
-						<phase>validate</phase>
-						<goals>
-							<goal>toolchain</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<toolchains>
-						<jdk>                     <!-- ~ toolchains.xml!/toolchains/toolchain/type -->
-							<version>11</version> <!-- ~ toolchains.xml!/toolchains/toolchain/provides/version -->
-						</jdk>
-					</toolchains>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
