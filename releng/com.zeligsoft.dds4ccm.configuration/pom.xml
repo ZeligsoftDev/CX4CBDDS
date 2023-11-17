@@ -149,6 +149,38 @@
 	<!-- 							<classifier>papyrus-cx-axcioma-release</classifier> -->
 							</artifact>
 						</target>
+						<filters>
+							<filter>
+								<type>eclipse-plugin</type>
+								<id>org.apache.log4j</id>
+								<removeAll />
+							</filter>
+							<filter>
+								<type>p2-installable-unit</type>
+								<id>org.apache.log4j</id>
+								<removeAll />
+							</filter>
+							<filter>
+								<type>java-package</type>
+								<id>org.apache.log4j</id>
+								<removeAll />
+							</filter>
+							<filter>
+								<type>eclipse-plugin</type>
+								<id>org.apache.commons.logging</id>
+								<removeAll />
+							</filter>
+							<filter>
+								<type>p2-installable-unit</type>
+								<id>org.apache.commons.logging</id>
+								<removeAll />
+							</filter>
+							<filter>
+								<type>java-package</type>
+								<id>org.apache.commons.logging</id>
+								<removeAll />
+							</filter>
+						</filters>
 						<environments>
 							<environment>
 								<os>linux</os>
