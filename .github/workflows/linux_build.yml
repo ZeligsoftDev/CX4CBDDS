@@ -66,13 +66,9 @@ jobs:
                 core.exportVariable(var_name, value)
                 core.info(var_name + ' = ' + value)
             }
-      - name: Build Papyrus 4.8 patches
-        run: |
-           cd papyrus-patch/v4.8.0
-           ../../mvnw clean verify
       - name: Build DDS4CBDDS
         run: |
-           ./mvnw -D "dds4ccm.root=$GITHUB_WORKSPACE" clean verify
+           ./mvnw clean verify
       - name: Located Built archives
         uses: actions/github-script@v6
         with:
