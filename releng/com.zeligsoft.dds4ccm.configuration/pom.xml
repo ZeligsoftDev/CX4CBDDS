@@ -11,17 +11,24 @@
 		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
 		<local-p2-repo.url>http://localhost:8080/site</local-p2-repo.url>
 		<maven-central.url>https://mvnrepository.com/</maven-central.url>
-<!-- 		<maven-central.url>https://repo1.maven.org/maven2</maven-central.url> -->
+		<!--
+		<maven-central.url>https://repo1.maven.org/maven2</maven-central.url> -->
 		<eclipse-release.url>https://download.eclipse.org/releases/2023-06/</eclipse-release.url>
 		<eclipse-cbi.url>https://download.eclipse.org/cbi/updates/license</eclipse-cbi.url>
-		<orbit.url>https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository/</orbit.url>
-		<papyrus.url>https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2023-06/</papyrus.url>
+		<orbit.url>
+			https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository/</orbit.url>
+		<papyrus.url>
+			https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2023-06/</papyrus.url>
 		<cdt-repo.url>https://download.eclipse.org/releases/2023-06/</cdt-repo.url>
-		<xtext.url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.31.0/</xtext.url>
-		<xpand.url>https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/</xpand.url>
-		<emf-compare.url>https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/</emf-compare.url>
-<!-- 		<papyrus-compare.url>https://download.eclipse.org/modeling/mdt/papyrus/components/compare/updates/nightly/0.7.0-N20200430-193447/ -->
-<!-- 		</papyrus-compare.url> -->
+		<xtext.url>
+			https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.31.0/</xtext.url>
+		<xpand.url>
+			https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/</xpand.url>
+		<emf-compare.url>
+			https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/</emf-compare.url>
+		<!--
+		<papyrus-compare.url>https://download.eclipse.org/modeling/mdt/papyrus/components/compare/updates/nightly/0.7.0-N20200430-193447/ -->
+		<!-- 		</papyrus-compare.url> -->
 		<java.source.version>17</java.source.version>
 		<java.target.version>17</java.target.version>
 		<ehcache.version>2.6.11</ehcache.version>
@@ -34,7 +41,7 @@
 	</properties>
 
 	<repositories>
-<!-- 	
+		<!-- 	
 		<repository>
 			<id>local-p2-repo</id>
 			<url>${local-p2-repo.url}</url>
@@ -64,11 +71,11 @@
 			<url>${papyrus.url}</url>
 			<layout>p2</layout>
 		</repository>
-<!-- 		<repository> -->
-<!-- 			<id>cdt-repo</id> -->
-<!-- 			<url>${cdt-repo.url}</url> -->
-<!-- 			<layout>p2</layout> -->
-<!-- 		</repository> -->
+		<!-- 		<repository> -->
+		<!-- 			<id>cdt-repo</id> -->
+		<!-- 			<url>${cdt-repo.url}</url> -->
+		<!-- 			<layout>p2</layout> -->
+		<!-- 		</repository> -->
 		<repository>
 			<id>orbit</id>
 			<url>${orbit.url}</url>
@@ -89,7 +96,7 @@
 			<url>${emf-compare.url}</url>
 			<layout>p2</layout>
 		</repository>
-<!--
+		<!--
  		<repository>
  			<id>papyrus-compare</id>
  			<url>${papyrus-compare.url}</url>
@@ -98,7 +105,7 @@
 
 		<repository>
 		    <id>papyrus-patches</id>
-		    <url>file://${rootdir}/papyrus-patch/v6.5.0/site-papyrus-patch/target/site</url>
+		<url>file://${rootdir}/papyrus-patch/v6.5.0/site-papyrus-patch/target/site</url>
 		    <layout>p2</layout>
 		</repository>
  -->
@@ -117,7 +124,8 @@
 						<source>${java.source.version}</source>
 						<target>${java.target.version}</target>
 						<compilerArgs>
-							<main.argLine>-Xms512m -Xmx2048m -XX:SoftRefLRUPolicyMSPerMB=100</main.argLine>
+							<main.argLine>-Xms512m -Xmx2048m
+								-XX:SoftRefLRUPolicyMSPerMB=100</main.argLine>
 						</compilerArgs>
 					</configuration>
 				</plugin>
@@ -148,9 +156,11 @@
 						<target>
 							<artifact>
 								<groupId>com.zeligsoft.dds4ccm</groupId>
-								<artifactId>com.zeligsoft.papyrus-cx.axcioma.targetdefinition</artifactId>
+								<artifactId>
+									com.zeligsoft.papyrus-cx.axcioma.targetdefinition</artifactId>
 								<version>2.5.0-SNAPSHOT</version>
-	<!-- 							<classifier>papyrus-cx-axcioma-release</classifier> -->
+								<!--
+								<classifier>papyrus-cx-axcioma-release</classifier> -->
 							</artifact>
 						</target>
 						<filters>
@@ -191,8 +201,13 @@
 								<ws>gtk</ws>
 								<arch>x86_64</arch>
 							</environment>
-							<environment> <os>macosx</os> <ws>cocoa</ws> <arch>x86_64</arch> </environment>
-							<!-- <environment> <os>win32</os> <ws>win32</ws> <arch>x86</arch> </environment>
+							<environment>
+								<os>macosx</os>
+								<ws>cocoa</ws>
+								<arch>x86_64</arch>
+							</environment>
+							<!-- <environment> <os>win32</os> <ws>win32</ws>
+							<arch>x86</arch> </environment>
 								<environment> <os>win32</os> <ws>win32</ws> <arch>x86_64</arch> </environment>
 								<environment> <os>macosx</os> <ws>cocoa</ws> <arch>x86_64</arch> </environment> -->
 						</environments>
@@ -209,13 +224,14 @@
 							<phase>package</phase>
 							<id>package-feature</id>
 							<configuration>
-								<finalName>${project.artifactId}_${unqualifiedVersion}.${buildQualifier}
+								<finalName>
+									${project.artifactId}_${unqualifiedVersion}.${buildQualifier}
 								</finalName>
 							</configuration>
 						</execution>
 					</executions>
 				</plugin>
-	
+
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-compiler-plugin</artifactId>
@@ -225,7 +241,7 @@
 						<target>11</target>
 						<release>11</release>
 						<encoding>UTF-8</encoding>
-	<!-- 
+						<!-- 
 	 					<useJDK>BREE</useJDK>
 	 -->
 					</configuration>
@@ -244,29 +260,63 @@
 					<artifactId>xtend-maven-plugin</artifactId>
 					<version>${xtend.version}</version>
 				</plugin>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+<!--
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>aspectj-maven-plugin</artifactId>
+										<versionRange>[1.0,)</versionRange>
+										<goals>
+											<goal>test-compile</goal>
+											<goal>compile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+-->
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-toolchains-plugin</artifactId>
+					<version>3.0.0</version>
+					<executions>
+						<execution>
+							<phase>validate</phase>
+							<goals>
+								<goal>toolchain</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<toolchains>
+							<jdk>                     <!-- ~ toolchains.xml!/toolchains/toolchain/type -->
+								<version>11</version> 
+								<vendor>openjdk</vendor> <!-- ~
+								toolchains.xml!/toolchains/toolchain/provides/version -->
+							</jdk>
+							<jdk>                     <!-- ~ toolchains.xml!/toolchains/toolchain/type -->
+								<version>17</version> 
+								<vendor>openjdk</vendor> <!-- ~
+								toolchains.xml!/toolchains/toolchain/provides/version -->
+							</jdk>
+						</toolchains>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-toolchains-plugin</artifactId>
-				<version>3.0.0</version>
-				<executions>
-					<execution>
-						<phase>validate</phase>
-						<goals>
-							<goal>toolchain</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<toolchains>
-						<jdk>                     <!-- ~ toolchains.xml!/toolchains/toolchain/type -->
-							<version>11</version> <!-- ~ toolchains.xml!/toolchains/toolchain/provides/version -->
-						</jdk>
-					</toolchains>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
@@ -284,7 +334,8 @@
 						<phase>package</phase>
 						<id>package-feature</id>
 						<configuration>
-							<finalName>${project.artifactId}_${unqualifiedVersion}.${buildQualifier}
+							<finalName>
+								${project.artifactId}_${unqualifiedVersion}.${buildQualifier}
 							</finalName>
 						</configuration>
 					</execution>
@@ -300,7 +351,7 @@
 					<target>11</target>
 					<release>11</release>
 					<encoding>UTF-8</encoding>
-<!-- 
+					<!-- 
  					<useJDK>BREE</useJDK>
  -->
 				</configuration>
