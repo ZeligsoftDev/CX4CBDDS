@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+ Copyright (c) 2015 Obeo.
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 
+ Contributors:
+     Obeo - initial API and implementation
+-->
+
+<plugin>
+   <extension
+         point="org.eclipse.emf.compare.rcp.postProcessor">
+      <processor
+            class="org.eclipse.papyrus.compare.diagram.internal.PapyrusDiagramPostProcessor"
+            description="Post-processor that handles specifics of Papyrus UML diagrams."
+            label="Papyrus Diagram Post-Processor"
+            ordinal="35">
+         <nsURI
+               value="http://www.eclipse.org/gmf/runtime/\d.\d.\d/notation">
+         </nsURI>
+      </processor>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.rcp.postProcessor">
+      <processor
+            class="org.eclipse.papyrus.compare.diagram.internal.IgnoreDiFilePostProcessor"
+            description="Post-processor that causes changes applied to the contents of di-files to be ignored."
+            label="Ignore Papyrus Di-files Post-Processor"
+            ordinal="35">
+         <nsURI
+               value="http://www.eclipse.org/papyrus/\d.\d.\d/sashdi">
+         </nsURI>
+      </processor>
+   </extension>
+</plugin>

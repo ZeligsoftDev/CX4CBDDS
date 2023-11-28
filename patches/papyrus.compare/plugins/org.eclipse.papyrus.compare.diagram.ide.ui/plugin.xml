@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+ Copyright (c) 2013, 2017 Obeo, EclipseSource and others.
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 
+ Contributors:
+     Obeo - initial API and implementation
+     Stefan Dirix - Bugs 456699, 474723
+     Camille Letavernier - Bug 515373
+     Christian W. Damus - bug 512529
+     Simon Delisle - bug 217638
+-->
+
+<plugin>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <file-association
+            content-type="org.eclipse.emf.compare.content.type"
+            file-extensions="di,notation"/>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.ide.resourceSetHook">
+      <resourceSetHook
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.internal.CssInstallationHook">
+      </resourceSetHook>
+      <resourceSetHook
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.internal.SaveParameterHook">
+      </resourceSetHook>
+      <resourceSetHook
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.internal.ElementTypeSetConfigurationRegistryInitializingHook">
+      </resourceSetHook>
+      <resourceSetHook
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.internal.ServicesRegistryInitializingHook">
+      </resourceSetHook>
+      <resourceSetHook
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.internal.DiagramMigrationHook">
+      </resourceSetHook>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.ide.ui.logicalModelViewHandlers">
+      <handler
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.internal.logical.view.PapyrusLMVHandler"
+            ranking="20">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.ide.ui.modelDependencyProvider">
+      <dependency
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.dependency.PapyrusDependencyProvider">
+      </dependency>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.eclipse.papyrus.infra.onefile.model.IPapyrusFile"
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.comparesource.EMFCompareSourceAdapterFactory">
+         <adapter
+               type="org.eclipse.emf.compare.ide.ui.source.IEMFComparisonSource">
+         </adapter>
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.compare.contentMergeViewers">
+      <viewer
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.contentmergeviewer.PapyrusTreeContentMergeViewerCreator"
+            id="org.eclipse.papyrus.compare.ide.ui.PapyrusTreeContentMergeViewer"
+            label="Model Compare (Papyrus)"
+            extensions= 
+              "papyrus-org.eclipse.emf.compare.rcp.ui.eTreeDiff,
+              papyrus-org.eclipse.emf.compare.rcp.ui.eMatch,
+              papyrus-org.eclipse.emf.compare.rcp.ui.eResourceDiff,
+              papyrus-NODE_TYPE__EMF_EOBJECT,
+              papyrus-NODE_TYPE__EMF_RESOURCE,
+              papyrus-NODE_TYPE__EMF_RESOURCESET,
+              papyrus-NODE_TYPE__EMF_COMPARISON">
+      </viewer>
+      <viewer
+            class="org.eclipse.emf.compare.ide.ui.internal.contentmergeviewer.TextFallbackCompareViewerCreator"
+            extensions=
+            "papyrus-org.eclipse.emf.compare.rcp.ui.eTreeDiff,
+              papyrus-org.eclipse.emf.compare.rcp.ui.eMatch,
+              papyrus-org.eclipse.emf.compare.rcp.ui.eResourceDiff,
+              papyrus-NODE_TYPE__EMF_EOBJECT,
+              papyrus-NODE_TYPE__EMF_RESOURCE,
+              papyrus-NODE_TYPE__EMF_RESOURCESET,
+              papyrus-NODE_TYPE__EMF_COMPARISON"
+            id="org.eclipse.emf.compare.ide.ui.internal.contentmergeviewer.TextFallbackCompareViewer"
+            label="%emf.compare.fallback.textcompare">
+      </viewer>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.rcp.ui.accessorFactory">
+      <factory
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.internal.accessorfactory.PapyrusAccessorFactoryWrapper"
+            ranking="1000">
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.rcp.ui.contentMergeViewerCustomization">
+      <treeContentCustomization
+            contentProvider="org.eclipse.papyrus.compare.diagram.ide.ui.contentmergeviewer.provider.PapyrusMergeViewerItemContentProvider"
+            context="org.eclipse.papyrus.compare.diagram.ide.ui.contentmergeviewer.provider.PapyrusContextTester"
+            ranking="20">
+      </treeContentCustomization>
+      <contentCustomization
+            context="org.eclipse.papyrus.compare.diagram.ide.ui.contentmergeviewer.provider.PapyrusContextTester"
+            mergeViewerItemProvider="org.eclipse.papyrus.compare.diagram.ide.ui.contentmergeviewer.provider.PapyrusCompareAccessorMergeViewerItemProvider"
+            ranking="10">
+      </contentCustomization>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.rcp.ui.filters">
+      <filter
+            activeByDefault="true"
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.internal.structuremergeviewer.filters.PapyrusDiagramTechnicalElementsFilter"
+            description="Technical elements of Papyrus diagrams such as hidden applied stereotype comments shapes and links."
+            label="Papyrus diagram technical elements">
+      </filter>
+   </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.viewpoints.policy.viewType">
+      <helper
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.internal.helper.CompareDiagramViewTypeHelper"
+            priority="50">
+      </helper>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.rcp.ui.groups">
+     <group
+            class="org.eclipse.papyrus.compare.diagram.ide.ui.internal.structuremergeviewer.groups.PapyrusGroupProvider"
+            label="Default (Papyrus)"
+            rank="140">
+      </group>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.ide.modelInclusionTester">
+      <fileExtensionModelInclusionTester
+            fileExtension="di">
+      </fileExtensionModelInclusionTester>
+      <fileExtensionModelInclusionTester
+            fileExtension="sash">
+      </fileExtensionModelInclusionTester>
+      <dynamicModelInclusionTester
+            dynamicTester="org.eclipse.papyrus.compare.diagram.ide.ui.internal.logical.InternationalizationFileInclusionTester">
+      </dynamicModelInclusionTester>
+   </extension>
+</plugin>

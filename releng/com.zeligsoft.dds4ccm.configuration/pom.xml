@@ -26,9 +26,7 @@
 			https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/</xpand.url>
 		<emf-compare.url>
 			https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/</emf-compare.url>
-		<!--
-		<papyrus-compare.url>https://download.eclipse.org/modeling/mdt/papyrus/components/compare/updates/nightly/0.7.0-N20200430-193447/ -->
-		<!-- 		</papyrus-compare.url> -->
+		<papyrus-compare.url>https://download.eclipse.org/modeling/mdt/papyrus/components/compare/updates/integration/0.7.0-I20211001-092653/</papyrus-compare.url>
 		<java.source.version>17</java.source.version>
 		<java.target.version>17</java.target.version>
 		<ehcache.version>2.6.11</ehcache.version>
@@ -96,13 +94,12 @@
 			<url>${emf-compare.url}</url>
 			<layout>p2</layout>
 		</repository>
-		<!--
  		<repository>
  			<id>papyrus-compare</id>
  			<url>${papyrus-compare.url}</url>
  			<layout>p2</layout>
  		</repository> 
-
+		<!--
 		<repository>
 		    <id>papyrus-patches</id>
 		<url>file://${rootdir}/papyrus-patch/v6.5.0/site-papyrus-patch/target/site</url>
