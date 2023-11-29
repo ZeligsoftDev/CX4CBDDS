@@ -16,7 +16,7 @@ import org.eclipse.ocl.pivot.ids.SpecializedId;
 import org.eclipse.ocl.pivot.ids.TemplateParameterId;
 import org.eclipse.ocl.pivot.ids.TemplateableId;
 
-public abstract class AbstractSpecializedIdImpl<T extends TemplateableId> extends AbstractTemplateableIdImpl<T> implements SpecializedId
+public abstract class AbstractSpecializedIdImpl<@NonNull T extends TemplateableId> extends AbstractTemplateableIdImpl<T> implements SpecializedId
 {
 	protected final @NonNull T generalizedId;
 	protected final @NonNull BindingsId templateBindings;

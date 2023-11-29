@@ -18,7 +18,7 @@ import org.eclipse.ocl.pivot.ids.PackageId;
 import org.eclipse.ocl.pivot.ids.TemplateParameterId;
 import org.eclipse.ocl.pivot.ids.TemplateableTypeId;
 
-public /*abstract*/ class SpecializedTypeIdImpl extends AbstractSpecializedIdImpl<TemplateableTypeId> implements TemplateableTypeId, NestedTypeId
+public /*abstract*/ class SpecializedTypeIdImpl extends AbstractSpecializedIdImpl<@NonNull TemplateableTypeId> implements TemplateableTypeId, NestedTypeId
 {
 	public SpecializedTypeIdImpl(@NonNull TemplateableTypeId generalizedId, @NonNull BindingsId templateBindings) {
 		super(generalizedId, templateBindings);

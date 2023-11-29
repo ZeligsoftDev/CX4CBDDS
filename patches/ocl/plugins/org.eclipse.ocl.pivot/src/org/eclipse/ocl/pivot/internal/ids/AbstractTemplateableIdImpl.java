@@ -25,9 +25,9 @@ import org.eclipse.ocl.pivot.ids.SpecializedId;
 import org.eclipse.ocl.pivot.ids.TemplateParameterId;
 import org.eclipse.ocl.pivot.ids.TemplateableId;
 
-public abstract class AbstractTemplateableIdImpl<T extends TemplateableId> extends AbstractElementId implements TemplateableId
+public abstract class AbstractTemplateableIdImpl<@NonNull T extends TemplateableId> extends AbstractElementId implements TemplateableId
 {
-	private static class SpecializedValue<T extends TemplateableId> extends AbstractKeyAndValue<@NonNull T>
+	private static class SpecializedValue<@NonNull T extends TemplateableId> extends AbstractKeyAndValue<@NonNull T>
 	{
 		private final @NonNull AbstractTemplateableIdImpl<T> generalizedId;
 		private final @NonNull BindingsId value;
@@ -58,7 +58,7 @@ public abstract class AbstractTemplateableIdImpl<T extends TemplateableId> exten
 	/**
 	 * @since 1.18
 	 */
-	public static class SpecializedSingletonScope<T extends TemplateableId> extends AbstractSingletonScope<@NonNull T, @NonNull BindingsId>
+	public static class SpecializedSingletonScope<@NonNull T extends TemplateableId> extends AbstractSingletonScope<@NonNull T, @NonNull BindingsId>
 	{
 
 		public @NonNull T getSingleton(@NonNull AbstractTemplateableIdImpl<T> generalizedId, @NonNull BindingsId bindingsId) {

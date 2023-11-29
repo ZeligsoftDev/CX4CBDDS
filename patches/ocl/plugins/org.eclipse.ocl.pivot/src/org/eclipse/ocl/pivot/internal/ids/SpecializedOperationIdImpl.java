@@ -17,7 +17,7 @@ import org.eclipse.ocl.pivot.ids.OperationId;
 import org.eclipse.ocl.pivot.ids.ParametersId;
 import org.eclipse.ocl.pivot.ids.TypeId;
 
-public class SpecializedOperationIdImpl extends AbstractSpecializedIdImpl<OperationId> implements OperationId
+public class SpecializedOperationIdImpl extends AbstractSpecializedIdImpl<@NonNull OperationId> implements OperationId
 {
 	public SpecializedOperationIdImpl(@NonNull OperationId generalizedId, @NonNull BindingsId templateBindings) {
 		super(generalizedId, templateBindings);

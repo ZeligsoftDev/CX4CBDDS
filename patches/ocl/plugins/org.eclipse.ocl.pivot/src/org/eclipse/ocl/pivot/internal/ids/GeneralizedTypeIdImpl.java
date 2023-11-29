@@ -20,7 +20,7 @@ import org.eclipse.ocl.pivot.ids.TemplateableTypeId;
 import org.eclipse.ocl.pivot.internal.ids.GeneralizedOperationIdImpl.OperationIdSingletonScope;
 import org.eclipse.ocl.pivot.internal.ids.PropertyIdImpl.PropertyIdSingletonScope;
 
-public abstract class GeneralizedTypeIdImpl<T extends TemplateableId> extends AbstractGeneralizedIdImpl<T> implements TemplateableTypeId
+public abstract class GeneralizedTypeIdImpl<@NonNull T extends TemplateableId> extends AbstractGeneralizedIdImpl<T> implements TemplateableTypeId
 {
 	/**
 	 * Map from the operation hashCode to the operationIds with the same hash.
