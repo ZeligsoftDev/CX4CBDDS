@@ -62,7 +62,8 @@ public class DeploymentEditorViewTypeHelper implements IViewTypeHelper {
 		// Issue #118
 		ArchitectureDomainManager manager = ArchitectureDomainManager.getInstance();
 		PapyrusRepresentationKind kind = (PapyrusRepresentationKind) manager.getRepresentationKindById(
-				"org.eclipse.papyrus.uml.diagram.compositeStructure.root.structuredClassifier"); //$NON-NLS-1$
+				"com.zeligsoft.domain.cbdds.architecture.representationkind.deploymenteditor");
+//				"org.eclipse.papyrus.uml.diagram.compositeStructure.root.structuredClassifier"); //$NON-NLS-1$
 		return new DeploymentViewPrototype(kind);
 	}
 
