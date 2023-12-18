@@ -164,63 +164,63 @@ jobs:
             }
       - name: Preserve ATCD Archive
         if: ${{ env.ATCD_PRESENT == 'true' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.ATCD_FILE_NAME }}
           path: ${{ env.ATCD_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve AXCIOMA archive
         if: ${{ env.AXCIOMA_PRESENT == 'true' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.AXCIOMA_FILE_NAME }}
           path: ${{ env.AXCIOMA_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve AXCIOMA RCP archive
         if: ${{ env.AXCIOMA_RCP_PRESENT == 'true' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.AXCIOMA_RCP_FILE_NAME }}
           path: ${{ env.AXCIOMA_RCP_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve DDK archive
         if: ${{ env.DDK_PRESENT == 'true' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.DDK_FILE_NAME }}
           path: ${{ env.DDK_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve PAPYRUS_440_PATCH archive
         if: ${{ env.PAPYRUS_440_PATCH_PRESENT == 'true' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PAPYRUS_440_PATCH_FILE_NAME }}
           path: ${{ env.PAPYRUS_440_PATCH_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve PAPYRUS_480_PATCH archive
         if: ${{ env.PAPYRUS_480_PATCH_PRESENT == 'true' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PAPYRUS_480_PATCH_FILE_NAME }}
           path: ${{ env.PAPYRUS_480_PATCH_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve ATCD RPM
         if: ${{ env.ATCD_RPM_PRESENT == 'true' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.ATCD_RPM_FILE_NAME }}
           path: ${{ env.ATCD_RPM_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve AXCIOMA_RPM
         if: ${{ env.AXCIOMA_RPM_PRESENT == 'true' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.AXCIOMA_RPM_FILE_NAME }}
           path: ${{ env.AXCIOMA_RPM_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Preserve AXCIOMA_RCP_RPM
         if: ${{ env.AXCIOMA_RCP_RPM_PRESENT == 'true' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.AXCIOMA_RCP_RPM_FILE_NAME }}
           path: ${{ env.AXCIOMA_RCP_RPM_PATH }}
