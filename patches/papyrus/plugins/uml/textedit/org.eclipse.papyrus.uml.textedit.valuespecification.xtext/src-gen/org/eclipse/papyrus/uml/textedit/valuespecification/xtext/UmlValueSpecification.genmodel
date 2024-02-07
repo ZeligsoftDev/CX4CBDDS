@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.papyrus.uml.textedit.valuespecification.xtext/src-gen"
+    editDirectory="/org.eclipse.papyrus.uml.textedit.valuespecification.xtext.edit/src"
+    editorDirectory="/org.eclipse.papyrus.uml.textedit.valuespecification.xtext.editor/src"
+    modelPluginID="org.eclipse.papyrus.uml.textedit.valuespecification.xtext" forceOverwrite="true"
+    modelName="UmlValueSpecification" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="6.0" copyrightFields="false" editPluginID="org.eclipse.papyrus.uml.textedit.valuespecification.xtext.edit"
+    editorPluginID="org.eclipse.papyrus.uml.textedit.valuespecification.xtext.editor"
+    runtimeVersion="2.14" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/resource/org.eclipse.uml2.uml/model/UML.genmodel#//uml">
+  <genPackages prefix="UmlValueSpecification" basePackage="org.eclipse.papyrus.uml.textedit.valuespecification.xtext"
+      disposableProviderFactory="true" ecorePackage="UmlValueSpecification.ecore#/">
+    <genClasses ecoreClass="UmlValueSpecification.ecore#//AbstractRule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference UmlValueSpecification.ecore#//AbstractRule/visibility"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UmlValueSpecification.ecore#//AbstractRule/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference UmlValueSpecification.ecore#//AbstractRule/instanceSpecification"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference UmlValueSpecification.ecore#//AbstractRule/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference UmlValueSpecification.ecore#//AbstractRule/undefined"/>
+    </genClasses>
+    <genClasses ecoreClass="UmlValueSpecification.ecore#//LiteralBooleanRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UmlValueSpecification.ecore#//LiteralBooleanRule/value"/>
+    </genClasses>
+    <genClasses ecoreClass="UmlValueSpecification.ecore#//LiteralIntegerOrUnlimitedNaturalRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UmlValueSpecification.ecore#//LiteralIntegerOrUnlimitedNaturalRule/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UmlValueSpecification.ecore#//LiteralIntegerOrUnlimitedNaturalRule/unlimited"/>
+    </genClasses>
+    <genClasses ecoreClass="UmlValueSpecification.ecore#//LiteralRealRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UmlValueSpecification.ecore#//LiteralRealRule/value"/>
+    </genClasses>
+    <genClasses ecoreClass="UmlValueSpecification.ecore#//LiteralNullRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UmlValueSpecification.ecore#//LiteralNullRule/value"/>
+    </genClasses>
+    <genClasses ecoreClass="UmlValueSpecification.ecore#//LiteralStringRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UmlValueSpecification.ecore#//LiteralStringRule/value"/>
+    </genClasses>
+    <genClasses ecoreClass="UmlValueSpecification.ecore#//UndefinedRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UmlValueSpecification.ecore#//UndefinedRule/value"/>
+    </genClasses>
+    <genClasses ecoreClass="UmlValueSpecification.ecore#//VisibilityKind">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UmlValueSpecification.ecore#//VisibilityKind/public"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UmlValueSpecification.ecore#//VisibilityKind/private"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UmlValueSpecification.ecore#//VisibilityKind/protected"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UmlValueSpecification.ecore#//VisibilityKind/package"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

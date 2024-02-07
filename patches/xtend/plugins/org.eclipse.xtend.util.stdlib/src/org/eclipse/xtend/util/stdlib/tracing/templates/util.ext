@@ -1,0 +1,20 @@
+import trace;
+
+extension org::eclipse::xtend::util::stdlib::naming;
+
+filename( emf::EObject this ): 
+	qualifiedName()+".html";
+	
+label( emf::EObject this ): 
+	qualifiedName(); 
+	
+typelabel( emf::EObject this ): 
+	metaType.name;
+	
+String getName( Object o ): o.metaType.getProperty("name").get(o);
+
+boolean isValid( String this ): !(startsWith("?") || startsWith("%") || startsWith("&") );
+
+validNamedTracesBySource(Trace this): traceBySource.select(t|t.source.getName().isValid());
+
+sortLabel( TraceBySource item ): item.source.typelabel()+item.source.namespace();

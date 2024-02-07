@@ -32,11 +32,14 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.6.0,4.0.0)",
  org.eclipse.xtend.ide;bundle-version="2.18.0",
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtext.xtext.ide;bundle-version="2.18.0",
- org.eclipse.papyrus.uml.types.core;bundle-version="4.0.0"
+ org.eclipse.papyrus.uml.types.core;bundle-version="4.0.0",
+ org.eclipse.papyrus.infra.emf;bundle-version="4.3.0",
+ org.eclipse.papyrus.infra.services.edit;bundle-version="4.1.0",
+ org.eclipse.papyrus.infra.emf.gmf;bundle-version="2.1.0"
 Bundle-Activator: com.zeligsoft.base.zdl.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
-Import-Package: org.apache.commons.logging,
- org.eclipse.internal.xpand2,
+Import-Package: org.eclipse.internal.xpand2,
  org.eclipse.internal.xpand2.ast,
- org.eclipse.internal.xpand2.parser
+ org.eclipse.internal.xpand2.parser,
+ org.slf4j;version="2.0.7"

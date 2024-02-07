@@ -30,54 +30,54 @@ public class DDKAPIGenerator {
   @Inject
   @Extension
   private GenDomainConceptExtensions _genDomainConceptExtensions;
-  
+
   @Inject
   @Extension
   private GenDomainStructuralFeatureExtensions _genDomainStructuralFeatureExtensions;
-  
+
   @Inject
   @Extension
   private JavaNamingExtensions _javaNamingExtensions;
-  
+
   @Inject
   @Extension
   private JavaInterfaceGenerator _javaInterfaceGenerator;
-  
+
   @Inject
   @Extension
   private JavaImplementationGenerator _javaImplementationGenerator;
-  
+
   @Inject
   @Extension
   private JavaEnumerationGenerator _javaEnumerationGenerator;
-  
+
   @Inject
   @Extension
   private JavaUMLPackageTypeSelectUtilGenerator _javaUMLPackageTypeSelectUtilGenerator;
-  
+
   @Inject
   @Extension
   private ZDLGenExtensions _zDLGenExtensions;
-  
+
   @Inject
   @Extension
   private GenDomainModelExtensions _genDomainModelExtensions;
-  
+
   @Inject
   @Named("Root Package")
   private String rootPackage;
-  
+
   @Inject
   @Named("Implementation SubPackage")
   private String implSubPackage;
-  
+
   @Inject
   @Named("Implementation Suffix")
   private String implSuffix;
-  
+
   @Inject
   private IFileSystemAccess fileSystemAccess;
-  
+
   public void doGenerate(final GenDomainModel model) {
     this.compileFactoryClass(model);
     this.compileTypeSelectClass(model);
@@ -86,7 +86,7 @@ public class DDKAPIGenerator {
       this.doGenerate(block);
     }
   }
-  
+
   public void doGenerate(final GenDomainBlock block) {
     final String blockName = block.getName();
     final String rootDirectory = this._javaNamingExtensions.interfaceJavaPackage(block).replace(".", "/");
@@ -127,7 +127,7 @@ public class DDKAPIGenerator {
         this._javaEnumerationGenerator.compileEnumeration(element, blockName));
     }
   }
-  
+
   public void compileTypeSelectClass(final GenDomainModel model) {
     StringConcatenation _builder = new StringConcatenation();
     String _replace = model.getRootPackage().replace(".", "/");
@@ -141,7 +141,7 @@ public class DDKAPIGenerator {
     _builder.append("TypeSelectUtil.java");
     this.fileSystemAccess.generateFile(_builder.toString(), this._javaUMLPackageTypeSelectUtilGenerator.generateJavaUMLPackageTypeSelectUtil(model));
   }
-  
+
   public void compileFactoryClass(final GenDomainModel model) {
     final Iterable<GenDomainSpecialization> domainSpecializations = Iterables.<GenDomainSpecialization>filter(model.getElements(), GenDomainSpecialization.class);
     final Consumer<GenDomainSpecialization> _function = (GenDomainSpecialization spec) -> {
@@ -149,7 +149,7 @@ public class DDKAPIGenerator {
     };
     domainSpecializations.forEach(_function);
   }
-  
+
   public void compileFactoryClass(final GenDomainSpecialization model) {
     final GenDomainModel domainModel = this._zDLGenExtensions.domainModel(model.eContainer());
     StringConcatenation _builder = new StringConcatenation();
@@ -164,7 +164,7 @@ public class DDKAPIGenerator {
     _builder.append("FactoryImpl.java");
     this.fileSystemAccess.generateFile(_builder.toString(), this.compileFactoryClassHelper(model));
   }
-  
+
   private CharSequence compileFactoryClassHelper(final GenDomainSpecialization model) {
     CharSequence _xblockexpression = null;
     {

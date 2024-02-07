@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    name="completeoclcs"
+    nsURI="http://www.eclipse.org/ocl/2015/CompleteOCLCS"
+    nsPrefix="completeoclcs">
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="ClassifierContextDeclCS"
+      eSuperTypes="#//ContextDeclCS ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//TemplateableElementCS">
+    <eAnnotations
+        source="http://www.eclipse.org/emf/2002/GenModel">
+      <details
+          key="documentation"
+          value="A ClassifierContextDeclCS supports a class context which provides additional or&#xA;complementary declarations such as invariants and definitions for the referred class."/>
+    </eAnnotations>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedDefinitions"
+        upperBound="-1"
+        eType="#//DefCS"
+        containment="true"
+        eOpposite="#//DefCS/owningClassifierContextDecl">
+      <eAnnotations
+          source="http://www.eclipse.org/emf/2002/GenModel">
+        <details
+            key="documentation"
+            value="The additional operations and property definitions."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedInvariants"
+        upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//ConstraintCS"
+        containment="true">
+      <eAnnotations
+          source="http://www.eclipse.org/emf/2002/GenModel">
+        <details
+            key="documentation"
+            value="The additional class invariants."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="referredClass"
+        eType="ecore:EClass ../../org.eclipse.ocl.pivot/model/Pivot.ecore#T-pivot-Class"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true"
+        resolveProxies="false">
+      <eAnnotations
+          source="http://www.eclipse.org/emf/2002/GenModel">
+        <details
+            key="documentation"
+            value="The class for which this context provides additional detail."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="selfName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations
+          source="http://www.eclipse.org/emf/2002/GenModel">
+        <details
+            key="documentation"
+            value="The optional alternative spelling of 'self'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="CompleteOCLDocumentCS"
+      eSuperTypes="../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//NamespaceCS ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//RootCS">
+    <eAnnotations
+        source="http://www.eclipse.org/emf/2002/GenModel">
+      <details
+          key="documentation"
+          value="A CompleteOCLDocumentCS supports the entire Complete OCL Document that extends&#xA;referenced classes and packages with additional or complementary declarations ."/>
+    </eAnnotations>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedContexts"
+        upperBound="-1"
+        eType="#//ContextDeclCS"
+        containment="true">
+      <eAnnotations
+          source="http://www.eclipse.org/emf/2002/GenModel">
+        <details
+            key="documentation"
+            value="The declarations that directly extend classes, operations or properties."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedPackages"
+        upperBound="-1"
+        eType="#//PackageDeclarationCS"
+        containment="true">
+      <eAnnotations
+          source="http://www.eclipse.org/emf/2002/GenModel">
+        <details
+            key="documentation"
+            value="The declarations that extend within the context of a referenced package."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="ContextDeclCS"
+      abstract="true"
+      eSuperTypes="#//PathNameDeclCS">
+    <eAnnotations
+        source="http://www.eclipse.org/emf/2002/GenModel">
+      <details
+          key="documentation"
+          value="The abstract ContextDeclCS identifies the common functionality of Class, Operation and Property&#xA;contexts for complementary declarations."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="DefCS"
+      abstract="true"
+      eSuperTypes="../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//TypedElementCS">
+    <eAnnotations
+        source="http://www.eclipse.org/emf/2002/GenModel">
+      <details
+          key="documentation"
+          value="The abstract DefCS identifies the common functionality of additional Operation or Property&#xA;definitions."/>
+    </eAnnotations>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="isStatic"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations
+          source="http://www.eclipse.org/emf/2002/GenModel">
+        <details
+            key="documentation"
+            value="Whether this Oeration or Property definition is for a static feature."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedSpecification"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.essentialocl/model/EssentialOCLCS.ecore#//ExpSpecificationCS"
+        containment="true">
+      <eAnnotations
+          source="http://www.eclipse.org/emf/2002/GenModel">
+        <details
+            key="documentation"
+            value="The OCL specification for the Operation body of Property default value."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="owningClassifierContextDecl"
+        eType="#//ClassifierContextDeclCS"
+        changeable="false"
+        eOpposite="#//ClassifierContextDeclCS/ownedDefinitions">
+      <eAnnotations
+          source="http://www.eclipse.org/emf/2002/GenModel">
+        <details
+            key="documentation"
+            value="The class context identifying the class for this additional definition."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="DefOperationCS"
+      eSuperTypes="#//DefCS ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//TemplateableElementCS">
+    <eAnnotations
+        source="http://www.eclipse.org/emf/2002/GenModel">
+      <details
+          key="documentation"
+          value="A DefOperationCS defines an additional operation for its context class."/>
+    </eAnnotations>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedParameters"
+        upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//ParameterCS"
+        containment="true">
+      <eAnnotations
+          source="http://www.eclipse.org/emf/2002/GenModel">
+        <details
+            key="documentation"
+            value="The list of parameters for the defined operation."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="DefPropertyCS"
+      eSuperTypes="#//DefCS">
+    <eAnnotations
+        source="http://www.eclipse.org/emf/2002/GenModel">
+      <details
+          key="documentation"
+          value="A DefPropertyCS defines an additional property for its context class."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="FeatureContextDeclCS"
+      abstract="true"
+      eSuperTypes="#//ContextDeclCS">
+    <eAnnotations
+        source="http://www.eclipse.org/emf/2002/GenModel">
+      <details
+          key="documentation"
+          value="The abstract FeatureContextDeclCS identifies the common functionality of Operation and Property&#xA;contexts for complementary declarations."/>
+    </eAnnotations>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedType"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//TypedRefCS"
+        containment="true">
+      <eAnnotations
+          source="http://www.eclipse.org/emf/2002/GenModel">
+        <details
+            key="documentation"
+            value="The Property type or OPeration return type."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="OCLMessageArgCS"
+      eSuperTypes="../../org.eclipse.ocl.xtext.essentialocl/model/EssentialOCLCS.ecore#//ExpCS"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="OperationContextDeclCS"
+      eSuperTypes="#//FeatureContextDeclCS ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//TemplateableElementCS">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedBodies"
+        upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.essentialocl/model/EssentialOCLCS.ecore#//ExpSpecificationCS"
+        containment="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedParameters"
+        upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//ParameterCS"
+        containment="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedPostconditions"
+        upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//ConstraintCS"
+        containment="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedPreconditions"
+        upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//ConstraintCS"
+        containment="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedResult"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.essentialocl/model/EssentialOCLCS.ecore#//VariableCS"
+        transient="true"
+        derived="true"
+        containment="true"
+        resolveProxies="false"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="referredOperation"
+        eType="ecore:EClass ../../org.eclipse.ocl.pivot/model/Pivot.ecore#T-pivot-Operation"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true"
+        resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="PackageDeclarationCS"
+      eSuperTypes="#//PathNameDeclCS">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedContexts"
+        upperBound="-1"
+        eType="#//ContextDeclCS"
+        containment="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedInvariants"
+        upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//ConstraintCS"
+        containment="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="referredPackage"
+        eType="ecore:EClass ../../org.eclipse.ocl.pivot/model/Pivot.ecore#T-pivot-Package"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true"
+        resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="PathNameDeclCS"
+      abstract="true"
+      eSuperTypes="../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//ModelElementCS">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedPathName"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//PathNameCS"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="PropertyContextDeclCS"
+      eSuperTypes="#//FeatureContextDeclCS">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedDefaultExpressions"
+        upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.essentialocl/model/EssentialOCLCS.ecore#//ExpSpecificationCS"
+        containment="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="ownedDerivedInvariants"
+        upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.ocl.xtext.base/model/BaseCS.ecore#//ConstraintCS"
+        containment="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="referredProperty"
+        eType="ecore:EClass ../../org.eclipse.ocl.pivot/model/Pivot.ecore#T-pivot-Property"
+        changeable="false"
+        volatile="true"
+        transient="true"
+        derived="true"
+        resolveProxies="false"/>
+  </eClassifiers>
+</ecore:EPackage>

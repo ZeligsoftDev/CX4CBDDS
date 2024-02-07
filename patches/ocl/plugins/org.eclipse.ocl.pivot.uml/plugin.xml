@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.validation.constraintParsers">
+      <constraintParser lang="Path"
+            class="org.eclipse.ocl.pivot.uml.internal.validation.PathConstraintParser"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.validation.constraintProviders"
+         id="org.eclipse.ocl.xtext.completeocl.validation.provider">
+      <category id="org.eclipse.ocl.pivot.validation.UMLProfile"
+            name="UML Profiles">
+         Constraints determined by analyzing UML Profiles
+      </category>
+   </extension>
+
+   <extension point="org.eclipse.emf.validation.traversal">
+      <traversalStrategy
+            class="org.eclipse.ocl.pivot.uml.internal.validation.UMLTraversalStrategy"
+            namespaceUri="http://www.eclipse.org/uml2/2.0.0/UML">
+         <eclass name="Model"/>
+      </traversalStrategy>
+      <traversalStrategy
+            class="org.eclipse.ocl.pivot.uml.internal.validation.UMLTraversalStrategy"
+            namespaceUri="http://www.eclipse.org/uml2/3.0.0/UML">
+         <eclass name="Model"/>
+      </traversalStrategy>
+      <traversalStrategy
+            class="org.eclipse.ocl.pivot.uml.internal.validation.UMLTraversalStrategy"
+            namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML">
+         <eclass name="Model"/>
+      </traversalStrategy>
+      <traversalStrategy
+            class="org.eclipse.ocl.pivot.uml.internal.validation.UMLTraversalStrategy"
+            namespaceUri="http://www.eclipse.org/uml2/5.0.0/UML">
+         <eclass name="Model"/>
+      </traversalStrategy>
+   </extension>
+
+  <extension point="org.eclipse.ocl.pivot.as_resource_factory">
+     <factory class="org.eclipse.ocl.pivot.uml.internal.resource.UMLASResourceFactory"
+     	extension="uml" contentType="org.eclipse.ocl.oclas.uml" externalPriority="200"
+     	resourceClass="org.eclipse.uml2.uml.resource.UMLResource"/>
+  </extension>
+
+   <extension point="org.eclipse.ocl.pivot.label_generator">
+      <generator for="org.eclipse.uml2.uml.Comment"
+      	class="org.eclipse.ocl.pivot.uml.internal.labels.CommentLabelGenerator"/>
+      <generator for="org.eclipse.uml2.uml.LiteralBoolean"
+      	class="org.eclipse.ocl.pivot.uml.internal.labels.LiteralBooleanLabelGenerator"/>
+      <generator for="org.eclipse.uml2.uml.LiteralInteger"
+      	class="org.eclipse.ocl.pivot.uml.internal.labels.LiteralIntegerLabelGenerator"/>
+      <generator for="org.eclipse.uml2.uml.LiteralNull"
+      	class="org.eclipse.ocl.pivot.uml.internal.labels.LiteralNullLabelGenerator"/>
+      <generator for="org.eclipse.uml2.uml.LiteralReal"
+      	class="org.eclipse.ocl.pivot.uml.internal.labels.LiteralRealLabelGenerator"/>
+      <generator for="org.eclipse.uml2.uml.LiteralString"
+      	class="org.eclipse.ocl.pivot.uml.internal.labels.LiteralStringLabelGenerator"/>
+      <generator for="org.eclipse.uml2.uml.LiteralUnlimitedNatural"
+      	class="org.eclipse.ocl.pivot.uml.internal.labels.LiteralUnlimitedNaturalLabelGenerator"/>
+      <generator for="org.eclipse.uml2.uml.NamedElement"
+      	class="org.eclipse.ocl.pivot.uml.internal.labels.NamedElementLabelGenerator"/>
+      <generator for="org.eclipse.uml2.uml.OpaqueExpression"
+      	class="org.eclipse.ocl.pivot.uml.internal.labels.OpaqueExpressionLabelGenerator"/>
+      <generator for="org.eclipse.uml2.uml.PackageImport"
+      	class="org.eclipse.ocl.pivot.uml.internal.labels.PackageImportLabelGenerator"/>
+      <generator for="org.eclipse.uml2.uml.Slot"
+      	class="org.eclipse.ocl.pivot.uml.internal.labels.SlotLabelGenerator"/>
+      <generator for="org.eclipse.ocl.pivot.uml.internal.library.UMLElementExtension"
+      	class="org.eclipse.ocl.pivot.uml.internal.labels.UMLElementExtensionLabelGenerator"/>
+   </extension>
+
+   <extension point="org.eclipse.uml2.uml.generated_package">
+      <profile uri="http://www.eclipse.org/ocl/2015/OCLforUML" location="pathmap://OCL_PROFILES/OCLforUML.profile.uml#_0"/> 
+   </extension>
+   <extension point="org.eclipse.emf.ecore.uri_mapping">
+      <mapping source="pathmap://OCL_PROFILES/" target="platform:/plugin/org.eclipse.ocl.pivot.uml/model/"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated OCLforUML.profile -->
+      <package
+            uri="http://www.eclipse.org/ocl/2015/OCLforUML/1"
+            class="org.eclipse.ocl.pivot.uml.internal.oclforuml.OCLforUMLPackage"
+            genModel="model/OCLforUML.profile.genmodel"/>
+   </extension>
+
+</plugin>

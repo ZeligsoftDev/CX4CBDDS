@@ -1,0 +1,121 @@
+grammar org.eclipse.emf.mwe2.language.Mwe2 hidden (WS, ML_COMMENT, SL_COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "platform:/resource/org.eclipse.emf.mwe2.language/model/Mwe2.ecore"
+import "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore" as types
+
+Module:
+  {Module}
+  'module' canonicalName=FQN 
+  imports+=Import* 
+  (declaredProperties+=DeclaredProperty)* 
+  root=RootComponent;
+
+DeclaredProperty:
+  'var' (type=[types::JvmType|FQN])? name=FQN ('=' default=Value)?;
+
+RootComponent returns Component:
+  {Component} (type=[types::JvmType|FQN]| '@' module=[Module|FQN]) (':' name=FQN)? (autoInject?='auto-inject')? 
+  '{'
+    assignment+=Assignment* 
+  '}';
+  
+Component:
+  {Component} (type=[types::JvmType|FQN]| '@' module=[Module|FQN])? (':' name=FQN)? (autoInject?='auto-inject')? 
+  '{'
+    assignment+=Assignment* 
+  '}';
+
+Import:
+  'import' importedNamespace=ImportedFQN;
+
+ImportedFQN:
+  FQN ('.*')?;
+
+Assignment:
+  feature=[types::JvmIdentifiableElement|FQN] '=' value=Value;
+
+Value:
+  Component|
+  StringLiteral|
+  BooleanLiteral|
+  IntegerLiteral|
+  DoubleLiteral|
+  NullLiteral|
+  Reference;
+
+NullLiteral:
+  {NullLiteral} 'null';
+
+DoubleLiteral:
+  value=DoubleValue;
+
+DoubleValue returns ecore::EDouble:
+  IntValue '.' INT;
+
+IntegerLiteral:
+  value=IntValue;
+  
+IntValue returns ecore::EInt:
+  ('-'|'+')? INT
+;
+
+BooleanLiteral:
+  {BooleanLiteral} (isTrue?='true'|'false');
+
+Reference:
+  referable=[Referrable|FQN];
+
+FQN:
+  ID ('.' ID)*;
+
+StringLiteral hidden ():
+    begin="'" 
+      parts+=PlainString?
+      (parts+=PropertyReference parts+=PlainString?)*
+    end="'"
+  | begin='"' 
+      parts+=PlainString?
+      (parts+=PropertyReference parts+=PlainString?)* 
+    end='"'
+;
+
+PropertyReference hidden():
+  '${' PropertyReferenceImpl '}';
+  
+PropertyReferenceImpl returns PropertyReference hidden(WS, ML_COMMENT, SL_COMMENT):
+  referable=[DeclaredProperty|FQN];
+
+PlainString:
+  value=ConstantValue;
+
+// To identify other keywords or INT as allowed parts in a string,
+// we use a customized lexer with predicates. 
+// This allows us to use e.g. single quotes without escape sequences
+// in double quoted strings and vice versa.
+ConstantValue:
+  (WS|
+  ANY_OTHER|
+  ID|
+  "\\'" | 
+  '\\"' | 
+  "\\${" | 
+  "\\\\")+;
+
+terminal ID:
+  '^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
+  
+terminal INT returns ecore::EInt: 
+  ('0'..'9')+;
+
+terminal ML_COMMENT:
+  '/*'->'*/';
+
+terminal SL_COMMENT:
+  '//' !('\n' | '\r')* ('\r'? '\n')?;
+
+terminal WS:
+  (' ' | '\t' | '\r' | '\n')+;
+
+terminal ANY_OTHER:
+  .;

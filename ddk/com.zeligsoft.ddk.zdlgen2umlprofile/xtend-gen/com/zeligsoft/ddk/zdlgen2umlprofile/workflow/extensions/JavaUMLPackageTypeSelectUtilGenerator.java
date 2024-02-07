@@ -6,9 +6,6 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenDomainBlock;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainClassifier;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainConcept;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainModel;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.GenDomainModelExtensions;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaImportExtensions;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaNamingExtensions;
 import java.util.Arrays;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
@@ -26,15 +23,15 @@ public class JavaUMLPackageTypeSelectUtilGenerator {
   @Inject
   @Extension
   private GenDomainModelExtensions _genDomainModelExtensions;
-  
+
   @Inject
   @Extension
   private JavaNamingExtensions _javaNamingExtensions;
-  
+
   @Inject
   @Extension
   private JavaImportExtensions _javaImportExtensions;
-  
+
   public CharSequence generateJavaUMLPackageTypeSelectUtil(final GenDomainModel model) {
     CharSequence _xblockexpression = null;
     {
@@ -143,25 +140,25 @@ public class JavaUMLPackageTypeSelectUtilGenerator {
     }
     return _xblockexpression;
   }
-  
+
   public Iterable<GenDomainClassifier> packageableElementTypes(final GenDomainModel model) {
     final Function1<GenDomainBlock, Iterable<GenDomainClassifier>> _function = (GenDomainBlock block) -> {
       return this.packageableElementTypes(block);
     };
     return Iterables.<GenDomainClassifier>concat(IterableExtensions.<GenDomainBlock, Iterable<GenDomainClassifier>>map(this._genDomainModelExtensions.domainBlocks(model), _function));
   }
-  
+
   public Iterable<GenDomainClassifier> packageableElementTypes(final GenDomainBlock block) {
     final Function1<GenDomainClassifier, Boolean> _function = (GenDomainClassifier classifier) -> {
       return Boolean.valueOf(this.mapsToPackageableElement(classifier));
     };
     return IterableExtensions.<GenDomainClassifier>filter(block.getClassifiers(), _function);
   }
-  
+
   private boolean _mapsToPackageableElement(final GenDomainClassifier classifier) {
     return false;
   }
-  
+
   private boolean _mapsToPackageableElement(final GenDomainConcept classifier) {
     boolean _xblockexpression = false;
     {
@@ -176,7 +173,7 @@ public class JavaUMLPackageTypeSelectUtilGenerator {
     }
     return _xblockexpression;
   }
-  
+
   private Set<org.eclipse.uml2.uml.Class> umlMetaclassMapping(final GenDomainConcept concept) {
     Set<org.eclipse.uml2.uml.Class> _xblockexpression = null;
     {
@@ -191,7 +188,7 @@ public class JavaUMLPackageTypeSelectUtilGenerator {
     }
     return _xblockexpression;
   }
-  
+
   private boolean mapsToPackageableElement(final GenDomainClassifier classifier) {
     if (classifier instanceof GenDomainConcept) {
       return _mapsToPackageableElement((GenDomainConcept)classifier);

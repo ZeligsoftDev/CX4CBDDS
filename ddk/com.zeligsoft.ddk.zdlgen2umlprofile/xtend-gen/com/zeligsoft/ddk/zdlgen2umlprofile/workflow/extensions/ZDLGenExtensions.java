@@ -11,23 +11,23 @@ public class ZDLGenExtensions {
   protected GenDomainModel _domainModel(final GenDomainConcept concept) {
     return this.domainModel(concept.getBlock());
   }
-  
+
   protected GenDomainModel _domainModel(final GenDomainBlock block) {
     return this.domainModel(block.eContainer());
   }
-  
+
   protected GenDomainModel _domainModel(final GenDomainPackage pkg) {
     return this.domainModel(pkg.eContainer());
   }
-  
+
   protected GenDomainModel _domainModel(final GenDomainModel model) {
     return model;
   }
-  
+
   protected GenDomainModel _domainModel(final Object eobj) {
     return null;
   }
-  
+
   public GenDomainModel domainModel(final Object model) {
     if (model instanceof GenDomainModel) {
       return _domainModel((GenDomainModel)model);

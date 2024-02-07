@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+    <extension point="org.eclipse.ui.editors">
+        <editor
+              class="org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+              contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+              default="false"
+              extensions="ecore,oclinecore"
+              icon="icons/OCLModelFile.gif"
+              id="org.eclipse.ocl.xtext.oclinecore.OCLinEcore"
+              name="%MF_OCLinEcoreEditor">
+           <contentTypeBinding contentTypeId="org.eclipse.ocl.xtext.OCLinEcore"/>
+        </editor>
+    </extension>
+    <extension
+        point="org.eclipse.ui.handlers">
+        <handler
+            class="org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+            <activeWhen>
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+        <handler
+            class="org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.validate">
+         <activeWhen>
+            <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+            </reference>
+         </activeWhen>
+      </handler>
+    </extension>
+    <extension point="org.eclipse.core.expressions.definitions">
+        <definition id="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+            <and>
+                <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+                <with variable="activeEditor">
+                    <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
+                        value="org.eclipse.ocl.xtext.oclinecore.OCLinEcore" 
+                        forcePluginActivation="true"/>
+                </with>        
+            </and>
+        </definition>
+    </extension>
+    <extension
+            point="org.eclipse.ui.preferencePages">
+        <!--page
+            category="org.eclipse.ocl.common.ui.preferences.ProjectPreferencePage"
+            class="org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.eclipse.ocl.xtext.oclinecore.OCLinEcore"
+            name="%MF_OCLinEcore">
+            <keywordReference id="org.eclipse.ocl.xtext.oclinecore.ui.keyword_OCLinEcore"/>
+        </page-->
+        <page
+            category="org.eclipse.ocl.common.ui.preferences.SyntaxColoringPreferencePage"
+            class="org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.coloring"
+            name="%MF_OCLinEcore">
+            <keywordReference id="org.eclipse.ocl.xtext.oclinecore.ui.keyword_OCLinEcore"/>
+        </page>
+        <page
+            category="org.eclipse.ocl.common.ui.preferences.TemplatePreferencePage"
+            class="org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.templates"
+            name="%MF_OCLinEcore">
+            <keywordReference id="org.eclipse.ocl.xtext.oclinecore.ui.keyword_OCLinEcore"/>
+        </page>
+    </extension>
+    <extension
+        point="org.eclipse.ui.keywords">
+        <keyword
+            id="org.eclipse.ocl.xtext.oclinecore.ui.keyword_OCLinEcore"
+            label="%MF_OCLinEcore"/>
+    </extension>
+    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            description="%MF_TriggerExpensiveValidation"
+            id="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.validate"
+            name="%MF_Validate">
+      </command>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution
+            locationURI="popup:#OCLinEcoreEditorContext?after=group.edit">
+             <command
+                 commandId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.validate"
+                 style="push"
+                 tooltip="%MF_TriggerExpensiveValidation">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen>
+         </command>  
+         </menuContribution>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#OCLinEcoreEditorContext?endof=group.find">
+			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
+				<visibleWhen checkEnabled="false">
+                	<reference definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                	</reference>
+            	</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+	    <handler
+            class="org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            commandId="org.eclipse.xtext.ui.editor.FindReferences">
+            <activeWhen>
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+    </extension>   
+
+<!-- adding resource factories -->
+
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="oclinecore">
+		</parser>
+	</extension>
+	<!--extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+        <resourceServiceProvider
+            class="org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            uriExtension="oclinecore">
+        </resourceServiceProvider>
+    </extension-->
+
+
+    <!-- marker definitions for org.eclipse.ocl.xtext.oclinecore.OCLinEcore -->
+    <extension point="org.eclipse.core.resources.markers"
+      id="Marker" name="%MF_Problem">
+        <super type="org.eclipse.ocl.xtext.base.ui.Marker"/>
+        <persistent value="true"/>
+    </extension>
+
+	<!-- Quick Outline -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler 
+			class="org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference
+					definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="%MF_OpenQuickOutline"
+			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+			name="%MF_QuickOutline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#OCLinEcoreEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+				style="push"
+				tooltip="%MF_OpenQuickOutline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+    <!-- quickfix marker resolution generator for org.eclipse.ocl.xtext.oclinecore.OCLinEcore -->
+   <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.eclipse.ocl.xtext.oclinecore.ui.Marker">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+      </markerResolutionGenerator>
+   </extension>
+
+
+
+
+
+	<extension point="org.eclipse.ui.commands">
+	  <command id="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsEcoreCommand"
+	    name="%MF_SaveAsEcore_Command" description="%MF_SaveAsEcore_Description"/>
+	  <command id="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveInEcoreCommand"
+	    name="%MF_SaveInEcore_Command" description="%MF_SaveInEcore_Description"/>
+	  <command id="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsOCLinEcoreCommand"
+	    name="%MF_SaveAsOCLinEcore_Command" description="%MF_SaveAsOCLinEcore_Description"/>
+	  <command id="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsPivotCommand"
+	    name="%MF_SaveAsPivot_Command" description="%MF_SaveAsPivot_Description"/>
+	  <command id="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsUMLCommand"
+	    name="%MF_SaveAsUML_Command" description="%MF_SaveAsUML_Description"/>
+	  <command id="org.eclipse.ocl.xtext.oclinecore.ui.outline.CreateDynamicInstanceCommand"
+	    name="%MF_CreateDynamicInstance_Command" description="%MF_CreateDynamicInstance_Description"/>
+	  <command id="org.eclipse.ocl.xtext.oclinecore.ui.commands.SetExportDelegateURICommand_Virtual"
+	    name="%MF_SetExportDelegateURI_Virtual_Command" description="%MF_SetExportDelegateURI_Virtual_Description"/>
+	  <command id="org.eclipse.ocl.xtext.oclinecore.ui.commands.SetExportDelegateURICommand_LPG"
+         name="%MF_SetExportDelegateURI_LPG_Command" description="%MF_SetExportDelegateURI_LPG_Description"/>
+	  <command id="org.eclipse.ocl.xtext.oclinecore.ui.commands.SetExportDelegateURICommand_Pivot"
+	    name="%MF_SetExportDelegateURI_Pivot_Command" description="%MF_SetExportDelegateURI_Pivot_Description"/>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+	  <handler commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsEcoreCommand"
+	    class="org.eclipse.ocl.xtext.oclinecore.ui.commands.SaveAsEcoreHandler"/>
+	  <handler commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveInEcoreCommand"
+	    class="org.eclipse.ocl.xtext.oclinecore.ui.commands.SaveInEcoreHandler"/>
+	  <handler commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsOCLinEcoreCommand"
+	    class="org.eclipse.ocl.xtext.oclinecore.ui.commands.SaveAsOCLinEcoreHandler"/>
+	  <handler commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsPivotCommand"
+	    class="org.eclipse.ocl.xtext.oclinecore.ui.commands.SaveAsPivotHandler"/>
+	  <handler commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsUMLCommand"
+	    class="org.eclipse.ocl.xtext.oclinecore.ui.commands.SaveAsUMLHandler"/>
+	  <handler commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.CreateDynamicInstanceCommand"
+	    class="org.eclipse.ocl.xtext.oclinecore.ui.commands.CreateDynamicInstanceHandler"/>
+	  <handler commandId="org.eclipse.ocl.xtext.oclinecore.ui.commands.SetExportDelegateURICommand_LPG"
+	    class="org.eclipse.ocl.xtext.oclinecore.ui.commands.SetExportDelegateURIHandler"/>
+	  <handler commandId="org.eclipse.ocl.xtext.oclinecore.ui.commands.SetExportDelegateURICommand_Pivot"
+	    class="org.eclipse.ocl.xtext.oclinecore.ui.commands.SetExportDelegateURIHandler"/>
+	  <handler commandId="org.eclipse.ocl.xtext.oclinecore.ui.commands.SetExportDelegateURICommand_Virtual"
+	    class="org.eclipse.ocl.xtext.oclinecore.ui.commands.SetExportDelegateURIHandler"/>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+	  <!--menuContribution locationURI="popup:org.eclipse.xtext.ui.common.outline?after=additions">
+	    <command commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsEcoreCommand"
+	      label="Save as Ecore2">
+	      <visibleWhen checkEnabled="false">
+	        <iterate>
+	          <adapt type="org.eclipse.ocl.xtext.oclinecorecs.OCLinEcoreDocumentCS"/>
+	        </iterate>
+	      </visibleWhen>
+	    </command>
+	  </menuContribution-->
+      <menuContribution locationURI="popup:org.eclipse.ocl.examples.ui.Menu?after=save">
+         <menu id="org.eclipse.ocl.xtext.oclinecore.ui.SaveAs" label="%MF_SaveAs"/>         
+      </menuContribution>
+	  <menuContribution locationURI="popup:org.eclipse.ocl.xtext.oclinecore.ui.SaveAs?after=additions">
+	    <command commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsEcoreCommand"
+	      label="%MF_SaveAsEcore">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command>
+	    <command commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveInEcoreCommand"
+	      label="%MF_SaveInEcore">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command>
+	    <command commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsOCLinEcoreCommand"
+	      label="%MF_SaveAsOCLinEcore">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command>
+	    <command commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsPivotCommand"
+	      label="%MF_SaveAsPivot">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command>
+	    <!--command commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.SaveAsUMLCommand"
+	      label="%MF_SaveAsUML">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command-->
+	  </menuContribution>
+	  <menuContribution locationURI="popup:#OCLinEcoreEditorContext?after=group.rest">
+	    <command commandId="org.eclipse.ocl.xtext.oclinecore.ui.outline.CreateDynamicInstanceCommand"
+	      label="%MF_CreateDynamicInstance">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command>
+	  </menuContribution>
+	  <menuContribution locationURI="popup:org.eclipse.ocl.examples.ui.Menu?after=set">
+         <menu id="org.eclipse.ocl.xtext.oclinecore.ui.SetExportDelegateURI" label="%MF_SetExportDelegateURI"/>
+      </menuContribution>
+	  <menuContribution locationURI="popup:org.eclipse.ocl.xtext.oclinecore.ui.SetExportDelegateURI?after=additions">
+	    <command
+           commandId="org.eclipse.ocl.xtext.oclinecore.ui.commands.SetExportDelegateURICommand_Virtual"
+           label="%MF_SetExportDelegateURI_Virtual"
+           style="radio">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command>
+	    <command
+           commandId="org.eclipse.ocl.xtext.oclinecore.ui.commands.SetExportDelegateURICommand_LPG"
+           label="%MF_SetExportDelegateURI_LPG"
+           style="radio">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command>
+	    <command
+           commandId="org.eclipse.ocl.xtext.oclinecore.ui.commands.SetExportDelegateURICommand_Pivot"
+           label="%MF_SetExportDelegateURI_Pivot"
+           style="radio">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command>
+	  </menuContribution>
+	</extension>
+   <extension point="org.eclipse.ui.preferencePages">
+      <page id="org.eclipse.ocl.xtext.oclinecore.ui.preferences.ProjectPreferencePage"
+            category="org.eclipse.ocl.common.ui.preferences.ProjectPreferencePage"
+            name="%MF_OCLinEcore"
+            class="org.eclipse.ocl.xtext.oclinecore.ui.preferences.OCLinEcoreProjectPreferencePage"/>
+   </extension>
+   <extension point="org.eclipse.ui.propertyPages">
+      <page id="org.eclipse.ocl.xtext.oclinecore.ui.properties.ProjectPropertyPage"
+            category="org.eclipse.ocl.common.ui.properties.ProjectPropertyPage"
+            name="%MF_OCLinEcore"
+            class="org.eclipse.ocl.xtext.oclinecore.ui.preferences.OCLinEcoreProjectPreferencePage">
+         <enabledWhen>
+            <adapt type="org.eclipse.core.resources.IProject"/>
+         </enabledWhen>
+         <filter name="open" value="true"/>
+      </page>
+   </extension>
+
+	<extension point="org.eclipse.ui.menus">
+	  <menuContribution locationURI="popup:org.eclipse.ocl.xtext.base.ui.Save?after=additions">
+	    <command commandId="org.eclipse.ocl.xtext.base.ui.SaveASCommand"
+	      label="%MF_Save_AS">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command>
+	  </menuContribution>
+	  <menuContribution locationURI="popup:org.eclipse.ocl.xtext.base.ui.Save?after=additions">
+	    <command commandId="org.eclipse.ocl.xtext.base.ui.SaveCSCommand"
+	      label="%MF_Save_CS">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.oclinecore.OCLinEcore.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command>
+	  </menuContribution>
+	</extension>
+ 
+    <extension point="org.eclipse.ui.newWizards">
+      <wizard id="org.eclipse.ocl.xtext.oclinecore.ui.OCLinEcoreFileNewWizard"
+            category="org.eclipse.ocl.ui.wizards"
+            class="org.eclipse.ocl.xtext.oclinecore.ui.wizards.OCLinEcoreFileNewWizard"
+            icon="icons/OCLModelFile.gif"          
+            name="%MF_OCLINECORE_WIZARD_NAME"
+            project="false">
+         <description>
+            %MF_OCLINECORE_WIZARD_DESCRIPTION
+         </description>
+      </wizard>
+      <wizard id="org.eclipse.ocl.xtext.oclinecore.ui.EcoreWithOCLFileNewWizard"
+            category="org.eclipse.ocl.ui.wizards"
+            class="org.eclipse.ocl.xtext.oclinecore.ui.wizards.EcoreWithOCLFileNewWizard"
+            icon="icons/OCLModelFile.gif"          
+            name="%MF_OCL_IN_ECORE_WIZARD_NAME"
+            project="false">
+         <description>
+            %MF_OCL_IN_ECORE_WIZARD_DESCRIPTION
+         </description>
+      </wizard>
+   </extension>
+
+</plugin>

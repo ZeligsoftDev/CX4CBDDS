@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.ocl.xtext.essentialocl" version="2">
+    <resource path="src-gen/org/eclipse/ocl/examples/xtext/essentialocl/parser/antlr/EssentialOCLParser.java" type="org.eclipse.ocl.xtext.essentialocl.parser.antlr.EssentialOCLParser">
+        <filter id="643842064">
+            <message_arguments>
+                <message_argument value="InternalEssentialOCLParser"/>
+                <message_argument value="EssentialOCLParser"/>
+                <message_argument value="createParser(XtextTokenStream)"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src-gen/org/eclipse/ocl/examples/xtext/essentialocl/serializer/AbstractEssentialOCLSemanticSequencer.java" type="org.eclipse.ocl.xtext.essentialocl.serializer.AbstractEssentialOCLSemanticSequencer">
+        <filter id="576720909">
+            <message_arguments>
+                <message_argument value="AbstractDelegatingSemanticSequencer"/>
+                <message_argument value="AbstractEssentialOCLSemanticSequencer"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src-gen/org/eclipse/ocl/examples/xtext/essentialocl/serializer/AbstractEssentialOCLSyntacticSequencer.java" type="org.eclipse.ocl.xtext.essentialocl.serializer.AbstractEssentialOCLSyntacticSequencer">
+        <filter id="576720909">
+            <message_arguments>
+                <message_argument value="AbstractSyntacticSequencer"/>
+                <message_argument value="AbstractEssentialOCLSyntacticSequencer"/>
+            </message_arguments>
+        </filter>
+        <filter id="627060751">
+            <message_arguments>
+                <message_argument value="AbstractElementAlias"/>
+                <message_argument value="AbstractEssentialOCLSyntacticSequencer"/>
+                <message_argument value="match_TupleTypeCS___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q"/>
+            </message_arguments>
+        </filter>
+        <filter id="643846161">
+            <message_arguments>
+                <message_argument value="ISynNavigable"/>
+                <message_argument value="AbstractEssentialOCLSyntacticSequencer"/>
+                <message_argument value="emit_TupleTypeCS___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q(EObject, ISyntacticSequencerPDAProviderISynNavigable, List&lt;INode&gt;)"/>
+            </message_arguments>
+        </filter>
+        <filter id="643846161">
+            <message_arguments>
+                <message_argument value="ISynTransition"/>
+                <message_argument value="AbstractEssentialOCLSyntacticSequencer"/>
+                <message_argument value="emitUnassignedTokens(EObject, ISyntacticSequencerPDAProviderISynTransition, INode, INode)"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/ocl/examples/xtext/essentialocl/EssentialOCLRuntimeModule.java" type="org.eclipse.ocl.xtext.essentialocl.EssentialOCLRuntimeModule$RetokenizingEssentialOCLParser">
+        <filter id="643842064">
+            <message_arguments>
+                <message_argument value="InternalEssentialOCLParser"/>
+                <message_argument value="RetokenizingEssentialOCLParser"/>
+                <message_argument value="createParser(XtextTokenStream)"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/ocl/examples/xtext/essentialocl/serializer/EssentialOCLCrossReferenceSerializer.java" type="org.eclipse.ocl.xtext.essentialocl.serializer.EssentialOCLCrossReferenceSerializer">
+        <filter id="576720909">
+            <message_arguments>
+                <message_argument value="CrossReferenceSerializer"/>
+                <message_argument value="EssentialOCLCrossReferenceSerializer"/>
+            </message_arguments>
+        </filter>
+        <filter id="643846161">
+            <message_arguments>
+                <message_argument value="Acceptor"/>
+                <message_argument value="EssentialOCLCrossReferenceSerializer"/>
+                <message_argument value="getCrossReferenceNameFromScope(EObject, CrossReference, EObject, IScope, ISerializationDiagnosticAcceptor)"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/ocl/examples/xtext/essentialocl/serializer/EssentialOCLCrossReferenceSerializer.java" type="org.eclipse.ocl.xtext.essentialocl.serializer.EssentialOCLCrossReferenceSerializer$AcceptorHelper">
+        <filter id="627060751">
+            <message_arguments>
+                <message_argument value="Acceptor"/>
+                <message_argument value="AcceptorHelper"/>
+                <message_argument value="errors"/>
+            </message_arguments>
+        </filter>
+        <filter id="643850349">
+            <message_arguments>
+                <message_argument value="Acceptor"/>
+                <message_argument value="AcceptorHelper"/>
+                <message_argument value="AcceptorHelper(EssentialOCLCrossReferenceSerializer, EObject, CrossReference, EObject, IScope, ISerializationDiagnosticAcceptor)"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/ocl/examples/xtext/essentialocl/serializer/EssentialOCLHiddenTokenSequencer.java" type="org.eclipse.ocl.xtext.essentialocl.serializer.EssentialOCLHiddenTokenSequencer">
+        <filter id="576720909">
+            <message_arguments>
+                <message_argument value="HiddenTokenSequencer"/>
+                <message_argument value="EssentialOCLHiddenTokenSequencer"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

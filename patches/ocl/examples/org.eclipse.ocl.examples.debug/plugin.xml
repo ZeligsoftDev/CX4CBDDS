@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.core.resources.markers" id="OCLBreakpointMarker">
+       <super type="org.eclipse.debug.core.lineBreakpointMarker"/>
+       <persistent value="true"/>
+       <attribute name="org.eclipse.ocl.examples.debug.unitUri"/>
+       <attribute name="org.eclipse.ocl.examples.debug.runToLine"/>
+    </extension>
+   
+    <extension point="org.eclipse.debug.core.breakpoints">
+       <breakpoint id="org.eclipse.ocl.examples.debug.core.OCLBreakpoint"
+             class="org.eclipse.ocl.examples.debug.core.OCLLineBreakpoint"
+             markerType="org.eclipse.ocl.examples.debug.OCLBreakpointMarker"
+             name="%MF_OCLBreakpoints"/>
+    </extension>
+    
+   <extension point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType id="org.eclipse.ocl.examples.debug.launching.OCLLaunchConfigurationDelegate"
+            delegate="org.eclipse.ocl.examples.debug.launching.OCLLaunchConfigurationDelegate"
+            modes="run"
+            name="%MF_OCLExpression"/>
+   </extension>
+
+    <extension point="org.eclipse.debug.core.sourceLocators">
+        <sourceLocator id="org.eclipse.ocl.examples.debug.srclookup.OCLSourceLookupDirector"
+        	name="%MF_SourceLookupDirector"
+			class="org.eclipse.ocl.examples.debug.srclookup.OCLSourceLookupDirector"/>
+    </extension>
+    
+    <extension point="org.eclipse.debug.core.sourcePathComputers">
+       <sourcePathComputer id="org.eclipse.ocl.examples.debug.srclookup.OCLSourcePathComputer"
+			class="org.eclipse.ocl.examples.debug.srclookup.OCLSourcePathComputer"/>
+    </extension>
+
+    <!--extension point="org.eclipse.debug.core.watchExpressionDelegates">
+       <watchExpressionDelegate
+         	debugModel="org.eclipse.ocl.examples.debug"
+         	delegateClass="org.eclipse.ocl.examples.debug.core.OCLWatchExpressionDelegate"/>
+    </extension-->   
+
+</plugin>

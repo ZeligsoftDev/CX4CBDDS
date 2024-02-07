@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.zeligsoft.papyrus.uml.nattable.patch.feature"
+      label="%featureName"
+      version="2.6.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.papyrus.uml.nattable.feature" version="4.0.0.202306070926" patch="true"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.nebula.widgets.nattable.extension.nebula"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

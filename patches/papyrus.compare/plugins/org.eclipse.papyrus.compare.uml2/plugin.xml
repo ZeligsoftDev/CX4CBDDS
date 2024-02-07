@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.compare.ide.resourceSetHook">
+      <resourceSetHook
+            class="org.eclipse.papyrus.compare.uml2.internal.hook.ProfileMigrationHook">
+      </resourceSetHook>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.rcp.postProcessor">
+      <processor
+            class="org.eclipse.papyrus.compare.uml2.internal.postprocessor.PapyrusPostProcessor"
+            description="Post-processor for Papyrus models."
+            label="Papyrus Post Processor"
+            ordinal="30">
+         <nsURI
+               value="http://www.eclipse.org/uml2/\d.0.0/UML">
+         </nsURI>
+      </processor>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.rcp.merger">
+      <merger
+            class="org.eclipse.papyrus.compare.uml2.internal.postprocessor.ResourceRefactoringMerger"
+            ranking="30">
+      </merger>
+   </extension>
+</plugin>

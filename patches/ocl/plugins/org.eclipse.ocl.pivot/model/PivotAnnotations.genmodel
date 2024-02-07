@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2010, 2022 Willink Transformations and others.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v2.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v20.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;  E.D.Willink - Initial API and implementation"
+    modelDirectory="/org.eclipse.ocl.pivot/emf-gen" modelPluginID="org.eclipse.ocl.pivot"
+    templateDirectory="/org.eclipse.ocl.examples.codegen/templates" modelName="PivotAnnotations"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
+    importerID="org.eclipse.emf.importer.ecore" bundleManifest="false" complianceLevel="8.0"
+    copyrightFields="false" runtimeVersion="2.7" operationReflection="true" importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
+    <details key="Use Delegates" value="false"/>
+    <details key="Use Null Annotations" value="true"/>
+  </genAnnotations>
+  <foreignModel>PivotAnnotations.ecore</foreignModel>
+  <genPackages prefix="PivotAnnotations" basePackage="org.eclipse.ocl.pivot" disposableProviderFactory="true"
+      ecorePackage="PivotAnnotations.ecore#/">
+    <genClasses ecoreClass="PivotAnnotations.ecore#//ASLibrary_EPackage"/>
+    <genClasses ecoreClass="PivotAnnotations.ecore#//ASMetamodel_EPackage"/>
+    <genClasses ecoreClass="PivotAnnotations.ecore#//Collection_EClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PivotAnnotations.ecore#//Collection_EClass/nullFree"/>
+    </genClasses>
+    <genClasses ecoreClass="PivotAnnotations.ecore#//Collection_EPackage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PivotAnnotations.ecore#//Collection_EPackage/nullFree"/>
+    </genClasses>
+    <genClasses ecoreClass="PivotAnnotations.ecore#//Collection_ETypedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PivotAnnotations.ecore#//Collection_ETypedElement/nullFree"/>
+    </genClasses>
+    <genClasses ecoreClass="PivotAnnotations.ecore#//Ecore_OCL_EClassifier"/>
+    <genClasses ecoreClass="PivotAnnotations.ecore#//Ecore_OCL_EOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PivotAnnotations.ecore#//Ecore_OCL_EOperation/body"/>
+    </genClasses>
+    <genClasses ecoreClass="PivotAnnotations.ecore#//Ecore_OCL_EStructuralFeature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PivotAnnotations.ecore#//Ecore_OCL_EStructuralFeature/derivation"/>
+    </genClasses>
+    <genClasses ecoreClass="PivotAnnotations.ecore#//Import_EPackage"/>
+    <genClasses ecoreClass="PivotAnnotations.ecore#//MetaAnnotation_EAnnotation"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -11,11 +11,6 @@ import com.zeligsoft.ddk.zdl.zdlgen.GenDomainDataType;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainNamedElement;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainReference;
 import com.zeligsoft.ddk.zdl.zdlgen.GenDomainStructuralFeature;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.GenDomainConceptExtensions;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.GenDomainStructuralFeatureExtensions;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaImportExtensions;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaMethodSignaturesExtensions;
-import com.zeligsoft.ddk.zdlgen2umlprofile.workflow.extensions.JavaNamingExtensions;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -35,35 +30,35 @@ public class JavaInterfaceGenerator {
   @Inject
   @Extension
   private GenDomainConceptExtensions _genDomainConceptExtensions;
-  
+
   @Inject
   @Extension
   private GenDomainStructuralFeatureExtensions _genDomainStructuralFeatureExtensions;
-  
+
   @Inject
   @Extension
   private JavaNamingExtensions _javaNamingExtensions;
-  
+
   @Inject
   @Extension
   private JavaImportExtensions _javaImportExtensions;
-  
+
   @Inject
   @Extension
   private JavaMethodSignaturesExtensions _javaMethodSignaturesExtensions;
-  
+
   @Inject
   @Named("Root Package")
   private String rootPackage;
-  
+
   @Inject
   @Named("Implementation SubPackage")
   private String implSubPackage;
-  
+
   @Inject
   @Named("Implementation Suffix")
   private String implSuffix;
-  
+
   protected CharSequence _compileInterface(final GenDomainClassifier concept) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
@@ -81,7 +76,7 @@ public class JavaInterfaceGenerator {
     _builder.newLine();
     return _builder;
   }
-  
+
   protected CharSequence _compileInterface(final GenDomainConcept concept) {
     CharSequence _xblockexpression = null;
     {
@@ -164,12 +159,12 @@ public class JavaInterfaceGenerator {
     }
     return _xblockexpression;
   }
-  
+
   protected CharSequence _compileInterface(final GenDomainStructuralFeature feature) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder;
   }
-  
+
   protected CharSequence _compileInterface(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _attributeAccessor = this.attributeAccessor(feature);
@@ -180,7 +175,7 @@ public class JavaInterfaceGenerator {
     _builder.newLineIfNotEmpty();
     return _builder;
   }
-  
+
   public CharSequence attributeAccessor(final GenDomainAttribute feature) {
     StringConcatenation _builder = new StringConcatenation();
     String _accessorSignature = this._javaMethodSignaturesExtensions.accessorSignature(feature);
@@ -188,7 +183,7 @@ public class JavaInterfaceGenerator {
     _builder.append(";");
     return _builder;
   }
-  
+
   public String attributeModifier(final GenDomainAttribute feature) {
     String _xifexpression = null;
     boolean _isReadOnly = feature.getDomainAttribute().isReadOnly();
@@ -290,7 +285,7 @@ public class JavaInterfaceGenerator {
     }
     return _xifexpression;
   }
-  
+
   public String referenceModifier(final GenDomainReference feature) {
     String _xifexpression = null;
     boolean _isReadOnly = feature.getDomainAttribute().isReadOnly();
@@ -392,7 +387,7 @@ public class JavaInterfaceGenerator {
     }
     return _xifexpression;
   }
-  
+
   protected CharSequence _compileInterface(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _referenceAccessor = this.referenceAccessor(feature);
@@ -403,7 +398,7 @@ public class JavaInterfaceGenerator {
     _builder.newLineIfNotEmpty();
     return _builder;
   }
-  
+
   private CharSequence referenceAccessor(final GenDomainReference feature) {
     StringConcatenation _builder = new StringConcatenation();
     String _accessorSignature = this._javaMethodSignaturesExtensions.accessorSignature(feature);
@@ -411,7 +406,7 @@ public class JavaInterfaceGenerator {
     _builder.append(";");
     return _builder;
   }
-  
+
   public List<GenDomainClassifier> interfaceImports(final GenDomainConcept concept) {
     List<GenDomainClassifier> _xblockexpression = null;
     {
@@ -433,7 +428,7 @@ public class JavaInterfaceGenerator {
     }
     return _xblockexpression;
   }
-  
+
   public CharSequence umlMappingInterfaceMethods(final GenDomainConcept concept) {
     StringConcatenation _builder = new StringConcatenation();
     {
@@ -451,7 +446,7 @@ public class JavaInterfaceGenerator {
     }
     return _builder;
   }
-  
+
   public CharSequence typeSelectFields(final GenDomainConcept concept) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/**");
@@ -491,7 +486,7 @@ public class JavaInterfaceGenerator {
     _builder.newLineIfNotEmpty();
     return _builder;
   }
-  
+
   public CharSequence compileInterface(final GenDomainNamedElement feature) {
     if (feature instanceof GenDomainAttribute) {
       return _compileInterface((GenDomainAttribute)feature);

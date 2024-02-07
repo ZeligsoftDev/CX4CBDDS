@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Package xmi:id="_0" name="SubSuperStructure">
+    <packagedElement xmi:type="uml:Package" xmi:id="AuxiliaryConstructs" name="AuxiliaryConstructs">
+      <packagedElement xmi:type="uml:Package" xmi:id="AuxiliaryConstructs-Templates" name="Templates">
+        <packagedElement xmi:type="uml:Class" xmi:id="_RHSqABpbEeSM9LreJtBwBg" name="Class">
+          <generalization xmi:id="_XnqLPH7VEeOu79LxSz8Ylw" general="AuxiliaryConstructs-Templates-TemplateableElement"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_nFdeAJwSEd-STLWP-FLKew" name="Element" isAbstract="true"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_iWKggA3IEeSm6471J7pVhQ" name="NamedElement" isAbstract="true"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="AuxiliaryConstructs-Templates-Operation" name="Operation">
+          <ownedComment xmi:id="AuxiliaryConstructs-Templates-Operation-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-Operation">
+            <body>Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.</body>
+          </ownedComment>
+          <generalization xmi:id="_XnqLOX7VEeOu79LxSz8Ylw" general="AuxiliaryConstructs-Templates-TemplateableElement"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="AuxiliaryConstructs-Templates-TemplateBinding" name="TemplateBinding">
+          <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateBinding-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateBinding">
+            <body>A template binding represents a relationship between a templateable element and a template. A template binding specifies the substitutions of actual parameters for the formal parameters of the template.</body>
+          </ownedComment>
+          <generalization xmi:id="_XnqLMn7VEeOu79LxSz8Ylw" general="_nFdeAJwSEd-STLWP-FLKew"/>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-TemplateBinding-boundElement" name="owningElement" type="AuxiliaryConstructs-Templates-TemplateableElement" association="AuxiliaryConstructs-Templates-A_templateBinding_boundElement">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateBinding-boundElement-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateBinding-boundElement">
+              <body>The element that is bound by this binding.</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-TemplateBinding-signature" name="templateSignature" type="AuxiliaryConstructs-Templates-TemplateSignature" isReadOnly="true" isDerived="true">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateBinding-signature-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateBinding-signature">
+              <body>The template signature for the template that is the target of the binding.</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-TemplateBinding-parameterSubstitution" name="ownedSubstitutions" type="AuxiliaryConstructs-Templates-TemplateParameterSubstitution" aggregation="composite" association="AuxiliaryConstructs-Templates-A_parameterSubstitution_templateBinding">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateBinding-parameterSubstitution-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateBinding-parameterSubstitution">
+              <body>The parameter substitutions owned by this template binding.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnNfRn7VEeOu79LxSz8Ylw" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnNfR37VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="AuxiliaryConstructs-Templates-TemplateParameter" name="TemplateParameter">
+          <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateParameter-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateParameter">
+            <body>A template parameter exposes a parameterable element as a formal template parameter of a template.</body>
+          </ownedComment>
+          <generalization xmi:id="_XnqLMX7VEeOu79LxSz8Ylw" general="AuxiliaryConstructs-Templates-Classifier"/>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-TemplateParameter-signature" name="owningSignature" type="AuxiliaryConstructs-Templates-TemplateSignature" association="AuxiliaryConstructs-Templates-A_ownedParameter_signature">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateParameter-signature-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateParameter-signature">
+              <body>The template signature that owns this template parameter.</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-ClassifierTemplateParameter-constrainingType" name="constrainingClasses" type="_RHSqABpbEeSM9LreJtBwBg">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-ClassifierTemplateParameter-constrainingType-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-ClassifierTemplateParameter-constrainingType">
+              <body>The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnNfU37VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnNfVH7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-TemplateParameter-default" name="lowerBound" type="AuxiliaryConstructs-Templates-Classifier">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateParameter-default-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateParameter-default">
+              <body>The element that is the default for this formal template parameter.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnNfRH7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_lUe_ICDJEeSNlrewQPlAjA" name="upperBound" type="AuxiliaryConstructs-Templates-Classifier">
+            <ownedComment xmi:id="_lUe_ISDJEeSNlrewQPlAjA" annotatedElement="_lUe_ICDJEeSNlrewQPlAjA">
+              <body>The element that is the default for this formal template parameter.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lUe_IiDJEeSNlrewQPlAjA"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="AuxiliaryConstructs-Templates-TemplateParameterSubstitution" name="TemplateParameterSubstitution">
+          <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateParameterSubstitution-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateParameterSubstitution">
+            <body>A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.</body>
+          </ownedComment>
+          <generalization xmi:id="_XnqLM37VEeOu79LxSz8Ylw" general="_nFdeAJwSEd-STLWP-FLKew"/>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-TemplateParameterSubstitution-formal" name="formal" type="AuxiliaryConstructs-Templates-TemplateParameter">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateParameterSubstitution-formal-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateParameterSubstitution-formal">
+              <body>The formal template parameter that is associated with this substitution.</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-TemplateParameterSubstitution-templateBinding" name="owningBinding" type="AuxiliaryConstructs-Templates-TemplateBinding" association="AuxiliaryConstructs-Templates-A_parameterSubstitution_templateBinding">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateParameterSubstitution-templateBinding-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateParameterSubstitution-templateBinding">
+              <body>The optional bindings from this element to templates.</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-TemplateParameterSubstitution-actual" name="actual" type="AuxiliaryConstructs-Templates-Classifier">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateParameterSubstitution-actual-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateParameterSubstitution-actual">
+              <body>The element that is the actual parameter for this substitution.</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_w9IbkCbPEeS7N_aTjEWq7Q" name="ownedWildcard" type="_m-eaECbPEeS7N_aTjEWq7Q" aggregation="composite">
+            <ownedComment xmi:id="_w9IbkSbPEeS7N_aTjEWq7Q" annotatedElement="_w9IbkCbPEeS7N_aTjEWq7Q">
+              <body>The element that is the actual parameter for this substitution.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5d6w4CbPEeS7N_aTjEWq7Q"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="AuxiliaryConstructs-Templates-TemplateSignature" name="TemplateSignature">
+          <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateSignature-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateSignature">
+            <body>A template signature bundles the set of formal template parameters for a templated element.</body>
+          </ownedComment>
+          <generalization xmi:id="_XnqLMH7VEeOu79LxSz8Ylw" general="_nFdeAJwSEd-STLWP-FLKew"/>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-TemplateSignature-ownedParameter" name="ownedParameters" type="AuxiliaryConstructs-Templates-TemplateParameter" isOrdered="true" aggregation="composite" association="AuxiliaryConstructs-Templates-A_ownedParameter_signature">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateSignature-ownedParameter-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateSignature-ownedParameter">
+              <body>The formal template parameters that are owned by this template signature.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QUaIYBsHEeSM9LreJtBwBg" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnNfQn7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-TemplateSignature-template" name="owningElement" type="AuxiliaryConstructs-Templates-TemplateableElement" association="AuxiliaryConstructs-Templates-A_ownedTemplateSignature_template">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateSignature-template-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateSignature-template">
+              <body>The element that owns this template signature.</body>
+            </ownedComment>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="AuxiliaryConstructs-Templates-TemplateableElement" name="TemplateableElement" isAbstract="true">
+          <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateableElement-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateableElement">
+            <body>A templateable element is an element that can optionally be defined as a template and bound to other templates.</body>
+          </ownedComment>
+          <generalization xmi:id="_XnqLNH7VEeOu79LxSz8Ylw" general="_nFdeAJwSEd-STLWP-FLKew"/>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-TemplateableElement-templateBinding" name="ownedBindings" type="AuxiliaryConstructs-Templates-TemplateBinding" aggregation="composite" association="AuxiliaryConstructs-Templates-A_templateBinding_boundElement">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateableElement-templateBinding-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateableElement-templateBinding">
+              <body>The optional bindings from this element to templates.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnNfSX7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnNfSn7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="AuxiliaryConstructs-Templates-TemplateableElement-ownedTemplateSignature" name="ownedSignature" type="AuxiliaryConstructs-Templates-TemplateSignature" aggregation="composite" association="AuxiliaryConstructs-Templates-A_ownedTemplateSignature_template">
+            <ownedComment xmi:id="AuxiliaryConstructs-Templates-TemplateableElement-ownedTemplateSignature-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-TemplateableElement-ownedTemplateSignature">
+              <body>The optional template signature specifying the formal template parameters.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnNfS37VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="AuxiliaryConstructs-Templates-Classifier" name="Type" isAbstract="true">
+          <ownedComment xmi:id="AuxiliaryConstructs-Templates-Classifier-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-Classifier">
+            <body>Type is defined to be a kind of templateable element so that a type can be parameterized. It is also defined to be a kind of parameterable element so that a type can be a formal template parameter.</body>
+          </ownedComment>
+          <generalization xmi:id="_SpiroBp2EeSM9LreJtBwBg" general="_iWKggA3IEeSm6471J7pVhQ"/>
+          <ownedOperation xmi:id="_aKKPsB-gEeSG6YCqNQ2wgQ" name="isClass">
+            <ownedParameter xmi:id="_galr8B-gEeSG6YCqNQ2wgQ" name="result" type="_RHSqABpbEeSM9LreJtBwBg" direction="return">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mnf6IB-gEeSG6YCqNQ2wgQ"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_n4ExMB-gEeSG6YCqNQ2wgQ" name="isTemplateParameter">
+            <ownedParameter xmi:id="_n4ExMR-gEeSG6YCqNQ2wgQ" name="result" type="AuxiliaryConstructs-Templates-TemplateParameter" direction="return">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_n4ExMh-gEeSG6YCqNQ2wgQ"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="AuxiliaryConstructs-Templates-ValueSpecification" name="ValueSpecification" isAbstract="true">
+          <ownedComment xmi:id="AuxiliaryConstructs-Templates-ValueSpecification-_ownedComment.0" annotatedElement="AuxiliaryConstructs-Templates-ValueSpecification">
+            <body>ValueSpecification specializes ParameterableElement to specify that a value specification can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.</body>
+          </ownedComment>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_m-eaECbPEeS7N_aTjEWq7Q" name="WildcardType">
+          <generalization xmi:id="_qu1GQCbPEeS7N_aTjEWq7Q" general="_RHSqABpbEeSM9LreJtBwBg"/>
+          <ownedAttribute xmi:id="_ujWgwCbPEeS7N_aTjEWq7Q" name="lowerBound" type="AuxiliaryConstructs-Templates-Classifier">
+            <ownedComment xmi:id="_ujWgwSbPEeS7N_aTjEWq7Q" annotatedElement="_ujWgwCbPEeS7N_aTjEWq7Q">
+              <body>The element that is the default for this formal template parameter.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ujWgwibPEeS7N_aTjEWq7Q"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_ujWgwybPEeS7N_aTjEWq7Q" name="upperBound" type="AuxiliaryConstructs-Templates-Classifier">
+            <ownedComment xmi:id="_ujWgxCbPEeS7N_aTjEWq7Q" annotatedElement="_ujWgwybPEeS7N_aTjEWq7Q">
+              <body>The element that is the default for this formal template parameter.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ujWgxSbPEeS7N_aTjEWq7Q"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="AuxiliaryConstructs-Templates-A_ownedParameter_signature" name="A_ownedParameters_owningSignature" memberEnd="AuxiliaryConstructs-Templates-TemplateSignature-ownedParameter AuxiliaryConstructs-Templates-TemplateParameter-signature"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="AuxiliaryConstructs-Templates-A_templateBinding_boundElement" name="A_ownedBindings_owningElement" memberEnd="AuxiliaryConstructs-Templates-TemplateableElement-templateBinding AuxiliaryConstructs-Templates-TemplateBinding-boundElement"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="AuxiliaryConstructs-Templates-A_parameterSubstitution_templateBinding" name="A_ownedSubstitutions_owningBinding" memberEnd="AuxiliaryConstructs-Templates-TemplateBinding-parameterSubstitution AuxiliaryConstructs-Templates-TemplateParameterSubstitution-templateBinding"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="AuxiliaryConstructs-Templates-A_ownedTemplateSignature_template" name="A_ownedSignature_owningElement" memberEnd="AuxiliaryConstructs-Templates-TemplateableElement-ownedTemplateSignature AuxiliaryConstructs-Templates-TemplateSignature-template"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_sBOM4K5nEd-xTJkHwX_SlQ" name="Constraints">
+        <packagedElement xmi:type="uml:Class" xmi:id="_JhArsK5oEd-xTJkHwX_SlQ" name="Constraint">
+          <ownedComment xmi:id="_JhArsa5oEd-xTJkHwX_SlQ" annotatedElement="_JhArsK5oEd-xTJkHwX_SlQ">
+            <body>A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.</body>
+          </ownedComment>
+          <ownedRule xmi:id="_JhArsq5oEd-xTJkHwX_SlQ" name="not_apply_to_self" constrainedElement="_JhArsK5oEd-xTJkHwX_SlQ">
+            <ownedComment xmi:id="_JhArs65oEd-xTJkHwX_SlQ" annotatedElement="_JhArsq5oEd-xTJkHwX_SlQ">
+              <body>A constraint cannot be applied to itself.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_JhArtK5oEd-xTJkHwX_SlQ">
+              <language>OCL</language>
+              <body>not constrainedElement->includes(self)</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_JhArta5oEd-xTJkHwX_SlQ" name="value_specification_boolean" constrainedElement="_JhArsK5oEd-xTJkHwX_SlQ">
+            <ownedComment xmi:id="_JhArtq5oEd-xTJkHwX_SlQ" annotatedElement="_JhArta5oEd-xTJkHwX_SlQ">
+              <body>The value specification for a constraint must evaluate to a Boolean value.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_JhArt65oEd-xTJkHwX_SlQ">
+              <language>OCL</language>
+              <body>self.specification.booleanValue().oclIsKindOf(Boolean)</body>
+            </specification>
+          </ownedRule>
+          <generalization xmi:id="_VY5XECDHEeSNlrewQPlAjA">
+            <general xmi:type="uml:Class" href="Infrastructure.uml#Core-Basic-NamedElement"/>
+          </generalization>
+          <ownedAttribute xmi:id="_JhArua5oEd-xTJkHwX_SlQ" name="constrainedElements" isOrdered="true">
+            <ownedComment xmi:id="_JhAruq5oEd-xTJkHwX_SlQ" annotatedElement="_JhArua5oEd-xTJkHwX_SlQ">
+              <body>The ordered set of Elements referenced by this Constraint.</body>
+            </ownedComment>
+            <type xmi:type="uml:Class" href="Infrastructure.uml#Core-Basic-Element"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQTH7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQTX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_JhArva5oEd-xTJkHwX_SlQ" name="ownedSpecification" type="_VcCqIBlSEeSM9LreJtBwBg" aggregation="composite" association="_U6pm4BzMEeSIos3S87O_rg">
+            <ownedComment xmi:id="_JhArvq5oEd-xTJkHwX_SlQ" annotatedElement="_JhArva5oEd-xTJkHwX_SlQ">
+              <body>A condition that must be true when evaluated in order for the constraint to be satisfied.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQTn7VEeOu79LxSz8Ylw" value="1"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_JhArv65oEd-xTJkHwX_SlQ" name="context" type="_ece4cLKGEeKjjeuHwYguuQ" isReadOnly="true" isDerived="true">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQT37VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_N9Kt8K5oEd-xTJkHwX_SlQ" name="ValueSpecification" isAbstract="true">
+          <ownedComment xmi:id="_N9Kt8a5oEd-xTJkHwX_SlQ" annotatedElement="_N9Kt8K5oEd-xTJkHwX_SlQ">
+            <body>A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.</body>
+          </ownedComment>
+          <generalization xmi:id="_XnXQUH7VEeOu79LxSz8Ylw">
+            <general xmi:type="uml:Class" href="Infrastructure.uml#Core-Basic-TypedElement"/>
+          </generalization>
+          <ownedOperation xmi:id="_N9Kt9K5oEd-xTJkHwX_SlQ" name="isComputable" bodyCondition="_N9Kt9q5oEd-xTJkHwX_SlQ" isQuery="true">
+            <ownedComment xmi:id="_N9Kt9a5oEd-xTJkHwX_SlQ" annotatedElement="_N9Kt9K5oEd-xTJkHwX_SlQ">
+              <body>The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.</body>
+            </ownedComment>
+            <ownedRule xmi:id="_N9Kt9q5oEd-xTJkHwX_SlQ" name="spec" constrainedElement="_N9Kt9K5oEd-xTJkHwX_SlQ">
+              <specification xmi:type="uml:ExpressionInOCL" xmi:id="_N9Kt965oEd-xTJkHwX_SlQ">
+                <language>OCL</language>
+                <body>false</body>
+              </specification>
+            </ownedRule>
+            <ownedParameter xmi:id="_N9Kt-K5oEd-xTJkHwX_SlQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#Core-PrimitiveTypes-Boolean"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_N9Kt-a5oEd-xTJkHwX_SlQ" name="integerValue" bodyCondition="_N9Kt-65oEd-xTJkHwX_SlQ" isQuery="true">
+            <ownedComment xmi:id="_N9Kt-q5oEd-xTJkHwX_SlQ" annotatedElement="_N9Kt-a5oEd-xTJkHwX_SlQ">
+              <body>The query integerValue() gives a single Integer value when one can be computed.</body>
+            </ownedComment>
+            <ownedRule xmi:id="_N9Kt-65oEd-xTJkHwX_SlQ" name="spec" constrainedElement="_N9Kt-a5oEd-xTJkHwX_SlQ">
+              <specification xmi:type="uml:ExpressionInOCL" xmi:id="_N9Kt_K5oEd-xTJkHwX_SlQ">
+                <language>OCL</language>
+                <body>Set{}</body>
+              </specification>
+            </ownedRule>
+            <ownedParameter xmi:id="_N9Kt_a5oEd-xTJkHwX_SlQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#Core-PrimitiveTypes-Integer"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_N00dIMXEEeS34PyjCbzxBg"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_N9Kt_q5oEd-xTJkHwX_SlQ" name="booleanValue" bodyCondition="_N9KuAK5oEd-xTJkHwX_SlQ" isQuery="true">
+            <ownedComment xmi:id="_N9Kt_65oEd-xTJkHwX_SlQ" annotatedElement="_N9Kt_q5oEd-xTJkHwX_SlQ">
+              <body>The query booleanValue() gives a single Boolean value when one can be computed.</body>
+            </ownedComment>
+            <ownedRule xmi:id="_N9KuAK5oEd-xTJkHwX_SlQ" name="spec" constrainedElement="_N9Kt_q5oEd-xTJkHwX_SlQ">
+              <specification xmi:type="uml:ExpressionInOCL" xmi:id="_N9KuAa5oEd-xTJkHwX_SlQ">
+                <language>OCL</language>
+                <body>Set{}</body>
+              </specification>
+            </ownedRule>
+            <ownedParameter xmi:id="_N9KuAq5oEd-xTJkHwX_SlQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#Core-PrimitiveTypes-Boolean"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_O8pA0MXEEeS34PyjCbzxBg"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_N9KuA65oEd-xTJkHwX_SlQ" name="stringValue" bodyCondition="_N9KuBa5oEd-xTJkHwX_SlQ" isQuery="true">
+            <ownedComment xmi:id="_N9KuBK5oEd-xTJkHwX_SlQ" annotatedElement="_N9KuA65oEd-xTJkHwX_SlQ">
+              <body>The query stringValue() gives a single String value when one can be computed.</body>
+            </ownedComment>
+            <ownedRule xmi:id="_N9KuBa5oEd-xTJkHwX_SlQ" name="spec" constrainedElement="_N9KuA65oEd-xTJkHwX_SlQ">
+              <specification xmi:type="uml:ExpressionInOCL" xmi:id="_N9KuBq5oEd-xTJkHwX_SlQ">
+                <language>OCL</language>
+                <body>Set{}</body>
+              </specification>
+            </ownedRule>
+            <ownedParameter xmi:id="_N9KuB65oEd-xTJkHwX_SlQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#Core-PrimitiveTypes-String"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PzoTMMXEEeS34PyjCbzxBg"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_N9KuCK5oEd-xTJkHwX_SlQ" name="unlimitedValue" bodyCondition="_N9KuCq5oEd-xTJkHwX_SlQ" isQuery="true">
+            <ownedComment xmi:id="_N9KuCa5oEd-xTJkHwX_SlQ" annotatedElement="_N9KuCK5oEd-xTJkHwX_SlQ">
+              <body>The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.</body>
+            </ownedComment>
+            <ownedRule xmi:id="_N9KuCq5oEd-xTJkHwX_SlQ" name="spec" constrainedElement="_N9KuCK5oEd-xTJkHwX_SlQ">
+              <specification xmi:type="uml:ExpressionInOCL" xmi:id="_N9KuC65oEd-xTJkHwX_SlQ">
+                <language>OCL</language>
+                <body>Set{}</body>
+              </specification>
+            </ownedRule>
+            <ownedParameter xmi:id="_N9KuDK5oEd-xTJkHwX_SlQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#Core-PrimitiveTypes-UnlimitedNatural"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Qy9pQMXEEeS34PyjCbzxBg"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_N9KuDa5oEd-xTJkHwX_SlQ" name="isNull" bodyCondition="_N9KuD65oEd-xTJkHwX_SlQ" isQuery="true">
+            <ownedComment xmi:id="_N9KuDq5oEd-xTJkHwX_SlQ" annotatedElement="_N9KuDa5oEd-xTJkHwX_SlQ">
+              <body>The query isNull() returns true when it can be computed that the value is null.</body>
+            </ownedComment>
+            <ownedRule xmi:id="_N9KuD65oEd-xTJkHwX_SlQ" name="spec" constrainedElement="_N9KuDa5oEd-xTJkHwX_SlQ">
+              <specification xmi:type="uml:ExpressionInOCL" xmi:id="_N9KuEK5oEd-xTJkHwX_SlQ">
+                <language>OCL</language>
+                <body>false</body>
+              </specification>
+            </ownedRule>
+            <ownedParameter xmi:id="_N9KuEa5oEd-xTJkHwX_SlQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#Core-PrimitiveTypes-Boolean"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_SzzFsK5oEd-xTJkHwX_SlQ" name="ExpressionInOCL">
+          <ownedComment xmi:id="_SzzFsa5oEd-xTJkHwX_SlQ" annotatedElement="_SzzFsK5oEd-xTJkHwX_SlQ">
+            <body>An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.</body>
+          </ownedComment>
+          <generalization xmi:id="_XnqLQX7VEeOu79LxSz8Ylw" general="_VcCqIBlSEeSM9LreJtBwBg"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_MUAiUK5pEd-xTJkHwX_SlQ" name="NamedElement" isAbstract="true"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_ece4cLKGEeKjjeuHwYguuQ" name="Namespace" isAbstract="true">
+          <ownedAttribute xmi:id="_FR6McbB1Ed-sntd82PWy7Q" name="ownedConstraints" type="_JhArsK5oEd-xTJkHwX_SlQ" aggregation="composite">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQVX7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQVn7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_VcCqIBlSEeSM9LreJtBwBg" name="LanguageExpression" isAbstract="true">
+          <ownedComment xmi:id="_VcCqIRlSEeSM9LreJtBwBg" annotatedElement="_VcCqIBlSEeSM9LreJtBwBg">
+            <body>An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.</body>
+          </ownedComment>
+          <generalization xmi:id="_VcCqJBlSEeSM9LreJtBwBg" general="_N9Kt8K5oEd-xTJkHwX_SlQ"/>
+          <ownedAttribute xmi:id="_VcCqJRlSEeSM9LreJtBwBg" name="body" isOrdered="true" isUnique="false" aggregation="composite">
+            <ownedComment xmi:id="_VcCqJhlSEeSM9LreJtBwBg" annotatedElement="_VcCqJRlSEeSM9LreJtBwBg">
+              <body>The text of the expression, possibly in multiple languages.</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#Core-PrimitiveTypes-String"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pxigoBlzEeSM9LreJtBwBg"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VcCqKRlSEeSM9LreJtBwBg" name="language" isOrdered="true" isReadOnly="true" aggregation="composite" isDerived="true">
+            <ownedComment xmi:id="_VcCqKhlSEeSM9LreJtBwBg" annotatedElement="_VcCqKRlSEeSM9LreJtBwBg">
+              <body>Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.</body>
+            </ownedComment>
+            <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#Core-PrimitiveTypes-String"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_MoSIEBzMEeSIos3S87O_rg" name="owningConstraint" type="_JhArsK5oEd-xTJkHwX_SlQ" association="_U6pm4BzMEeSIos3S87O_rg">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Qb_qQBzMEeSIos3S87O_rg"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_U6pm4BzMEeSIos3S87O_rg" name="A_ownedSpecification_owningConstraint" memberEnd="_JhArva5oEd-xTJkHwX_SlQ _MoSIEBzMEeSIos3S87O_rg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_97IzMLB0Ed-sntd82PWy7Q" name="Namespaces">
+        <packagedElement xmi:type="uml:Class" xmi:id="_97IzMbB0Ed-sntd82PWy7Q" name="Class">
+          <generalization xmi:id="_XnqLQn7VEeOu79LxSz8Ylw" general="_97IzQrB0Ed-sntd82PWy7Q"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_97JaTbB0Ed-sntd82PWy7Q" name="NamedElement" isAbstract="true"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_97IzQrB0Ed-sntd82PWy7Q" name="Namespace" isAbstract="true">
+          <generalization xmi:id="_XnqLQ37VEeOu79LxSz8Ylw" general="_97JaTbB0Ed-sntd82PWy7Q"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_dupBELB1Ed-sntd82PWy7Q" name="Operation">
+          <generalization xmi:id="_XnqLRH7VEeOu79LxSz8Ylw" general="_97IzQrB0Ed-sntd82PWy7Q"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_97IzY7B0Ed-sntd82PWy7Q" name="Package">
+          <generalization xmi:id="_XnqLRX7VEeOu79LxSz8Ylw" general="_97IzQrB0Ed-sntd82PWy7Q"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_0lPd4Mf5Ed-sJIf4tYBt-g" name="States">
+        <packagedElement xmi:type="uml:Class" xmi:id="_CO_y8EeyEeKdl-y5nJoJpQ" name="Behavior" isAbstract="true">
+          <generalization xmi:id="_XnqLT37VEeOu79LxSz8Ylw" general="_ZFGA8EeyEeKdl-y5nJoJpQ"/>
+          <ownedAttribute xmi:id="_DPEqcMU_EeOUxMGVZGOl2Q" name="owningTransition" type="_Et9DUEefEeKdl-y5nJoJpQ" association="_R5_mwMU_EeOUxMGVZGOl2Q">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DPEqccU_EeOUxMGVZGOl2Q"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_lg9w8EegEeKdl-y5nJoJpQ" name="Boolean"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_ZFGA8EeyEeKdl-y5nJoJpQ" name="Class">
+          <ownedAttribute xmi:id="_i7RooEfCEeKdl-y5nJoJpQ" name="ownedBehaviors" type="_CO_y8EeyEeKdl-y5nJoJpQ" aggregation="composite">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaU37VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XngaVH7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Et-4jkefEeKdl-y5nJoJpQ" name="ConnectionPointReference">
+          <ownedComment xmi:id="_Et-4j0efEeKdl-y5nJoJpQ" annotatedElement="_Et-4jkefEeKdl-y5nJoJpQ">
+            <body>A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state.</body>
+          </ownedComment>
+          <ownedRule xmi:id="_Et-4kEefEeKdl-y5nJoJpQ" name="entry_pseudostates" constrainedElement="_Et-4jkefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-4kUefEeKdl-y5nJoJpQ" annotatedElement="_Et-4kEefEeKdl-y5nJoJpQ">
+              <body>The entry Pseudostates must be Pseudostates with kind entryPoint.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-4kkefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>entry->notEmpty() implies entry->forAll(e | e.kind = #entryPoint)</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-4k0efEeKdl-y5nJoJpQ" name="exit_pseudostates" constrainedElement="_Et-4jkefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-4lEefEeKdl-y5nJoJpQ" annotatedElement="_Et-4k0efEeKdl-y5nJoJpQ">
+              <body>The exit Pseudostates must be Pseudostates with kind exitPoint.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-4lUefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>exit->notEmpty() implies exit->forAll(e | e.kind = #exitPoint)</body>
+            </specification>
+          </ownedRule>
+          <generalization xmi:id="_XnqLTX7VEeOu79LxSz8Ylw" general="_Et9qYEefEeKdl-y5nJoJpQ"/>
+          <ownedAttribute xmi:id="_Et-4l0efEeKdl-y5nJoJpQ" name="entries" type="_Et-RcEefEeKdl-y5nJoJpQ" association="_IWCyAMVEEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_Et-4mEefEeKdl-y5nJoJpQ" annotatedElement="_Et-4l0efEeKdl-y5nJoJpQ">
+              <body>The entryPoint kind pseudo states corresponding to this connection point.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaM37VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XngaNH7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et-4m0efEeKdl-y5nJoJpQ" name="owningState" type="_DKDnoEefEeKdl-y5nJoJpQ" association="_cqOSUMVDEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_Et-4nEefEeKdl-y5nJoJpQ" annotatedElement="_Et-4m0efEeKdl-y5nJoJpQ">
+              <body>The State in which the connection point refreshens are defined.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaNX7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et-4n0efEeKdl-y5nJoJpQ" name="exits" type="_Et-RcEefEeKdl-y5nJoJpQ" association="_gADwQMVEEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_Et-4oEefEeKdl-y5nJoJpQ" annotatedElement="_Et-4n0efEeKdl-y5nJoJpQ">
+              <body>The exitPoints kind pseudo states corresponding to this connection point.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaNn7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XngaN37VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_jAYTcEe0EeKdl-y5nJoJpQ" name="Constraint">
+          <ownedAttribute xmi:id="_ox-ZMMVBEeOUxMGVZGOl2Q" name="owningState" type="_DKDnoEefEeKdl-y5nJoJpQ" association="_xUTmoMVBEeOUxMGVZGOl2Q">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ox-ZMcVBEeOUxMGVZGOl2Q"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_uREfIMVBEeOUxMGVZGOl2Q" name="owningTransition" type="_Et9DUEefEeKdl-y5nJoJpQ" association="_xUTmocVBEeOUxMGVZGOl2Q">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_uREfIcVBEeOUxMGVZGOl2Q"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Et-RmUefEeKdl-y5nJoJpQ" name="FinalState">
+          <ownedComment xmi:id="_Et-RmkefEeKdl-y5nJoJpQ" annotatedElement="_Et-RmUefEeKdl-y5nJoJpQ">
+            <body>A special kind of state signifying that the enclosing region is completed. If the enclosing region is directly contained in a state machine and all other regions in the state machine also are completed, then it means that the entire state machine is completed.</body>
+          </ownedComment>
+          <ownedRule xmi:id="_Et-Rm0efEeKdl-y5nJoJpQ" name="no_outgoing_transitions" constrainedElement="_Et-RmUefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-RnEefEeKdl-y5nJoJpQ" annotatedElement="_Et-Rm0efEeKdl-y5nJoJpQ">
+              <body>A final state cannot have any outgoing transitions.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-RnUefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>self.outgoing->size() = 0</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-RnkefEeKdl-y5nJoJpQ" name="no_regions" constrainedElement="_Et-RmUefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-Rn0efEeKdl-y5nJoJpQ" annotatedElement="_Et-RnkefEeKdl-y5nJoJpQ">
+              <body>A final state cannot have regions.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-4gEefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>self.region->size() = 0</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-4gUefEeKdl-y5nJoJpQ" name="cannot_reference_submachine" constrainedElement="_Et-RmUefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-4gkefEeKdl-y5nJoJpQ" annotatedElement="_Et-4gUefEeKdl-y5nJoJpQ">
+              <body>A final state cannot reference a submachine.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-4g0efEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>self.submachine->isEmpty()</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-4hEefEeKdl-y5nJoJpQ" name="no_entry_behavior" constrainedElement="_Et-RmUefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-4hUefEeKdl-y5nJoJpQ" annotatedElement="_Et-4hEefEeKdl-y5nJoJpQ">
+              <body>A final state has no entry behavior.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-4hkefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>self.entry->isEmpty()</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-4h0efEeKdl-y5nJoJpQ" name="no_exit_behavior" constrainedElement="_Et-RmUefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-4iEefEeKdl-y5nJoJpQ" annotatedElement="_Et-4h0efEeKdl-y5nJoJpQ">
+              <body>A final state has no exit behavior.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-4iUefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>self.exit->isEmpty()</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-4ikefEeKdl-y5nJoJpQ" name="no_state_behavior" constrainedElement="_Et-RmUefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-4i0efEeKdl-y5nJoJpQ" annotatedElement="_Et-4ikefEeKdl-y5nJoJpQ">
+              <body>A final state has no state (doActivity) behavior.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-4jEefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>self.doActivity->isEmpty()</body>
+            </specification>
+          </ownedRule>
+          <generalization xmi:id="_XnqLTH7VEeOu79LxSz8Ylw" general="_DKDnoEefEeKdl-y5nJoJpQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_39jdgMf5Ed-sJIf4tYBt-g" name="NamedElement" isAbstract="true"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_JofBoEe1EeKdl-y5nJoJpQ" name="Namespace" isAbstract="true"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Et-RcEefEeKdl-y5nJoJpQ" name="Pseudostate">
+          <ownedComment xmi:id="_Et-RcUefEeKdl-y5nJoJpQ" annotatedElement="_Et-RcEefEeKdl-y5nJoJpQ">
+            <body>A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.</body>
+          </ownedComment>
+          <ownedRule xmi:id="_Et-RckefEeKdl-y5nJoJpQ" name="initial_vertex" constrainedElement="_Et-RcEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-Rc0efEeKdl-y5nJoJpQ" annotatedElement="_Et-RckefEeKdl-y5nJoJpQ">
+              <body>An initial vertex can have at most one outgoing transition.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-RdEefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(self.kind = #initial) implies (self.outgoing->size &lt;= 1)</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-RdUefEeKdl-y5nJoJpQ" name="history_vertices" constrainedElement="_Et-RcEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-RdkefEeKdl-y5nJoJpQ" annotatedElement="_Et-RdUefEeKdl-y5nJoJpQ">
+              <body>History vertices can have at most one outgoing transition.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-Rd0efEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>((self.kind = #deepHistory) or (self.kind = #shallowHistory)) implies
+(self.outgoing->size &lt;= 1)
+</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-ReEefEeKdl-y5nJoJpQ" name="join_vertex" constrainedElement="_Et-RcEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-ReUefEeKdl-y5nJoJpQ" annotatedElement="_Et-ReEefEeKdl-y5nJoJpQ">
+              <body>In a complete statemachine, a join vertex must have at least two incoming transitions and exactly one outgoing transition.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-RekefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(self.kind = #join) implies
+((self.outgoing->size = 1) and (self.incoming->size >= 2))
+</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-Re0efEeKdl-y5nJoJpQ" name="transitions_incoming" constrainedElement="_Et-RcEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-RfEefEeKdl-y5nJoJpQ" annotatedElement="_Et-Re0efEeKdl-y5nJoJpQ">
+              <body>All transitions incoming a join vertex must originate in different regions of an orthogonal state.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-RfUefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(self.kind = #join) implies
+  self.incoming->forAll (t1, t2 | t1&lt;>t2 implies
+    (self.stateMachine.LCA(t1.source, t2.source).container.isOrthogonal))</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-RfkefEeKdl-y5nJoJpQ" name="fork_vertex" constrainedElement="_Et-RcEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-Rf0efEeKdl-y5nJoJpQ" annotatedElement="_Et-RfkefEeKdl-y5nJoJpQ">
+              <body>In a complete statemachine, a fork vertex must have at least two outgoing transitions and exactly one incoming transition.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-RgEefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(self.kind = #fork) implies
+((self.incoming->size = 1) and (self.outgoing->size >= 2))
+</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-RgUefEeKdl-y5nJoJpQ" name="transitions_outgoing" constrainedElement="_Et-RcEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-RgkefEeKdl-y5nJoJpQ" annotatedElement="_Et-RgUefEeKdl-y5nJoJpQ">
+              <body>All transitions outgoing a fork vertex must target states in different regions of an orthogonal state.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-Rg0efEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(self.kind = #fork) implies
+  self.outgoing->forAll (t1, t2 | t1&lt;>t2 implies
+    (self.stateMachine.LCA(t1.target, t2.target).container.isOrthogonal))</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-RhEefEeKdl-y5nJoJpQ" name="junction_vertex" constrainedElement="_Et-RcEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-RhUefEeKdl-y5nJoJpQ" annotatedElement="_Et-RhEefEeKdl-y5nJoJpQ">
+              <body>In a complete statemachine, a junction vertex must have at least one incoming and one outgoing transition.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-RhkefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(self.kind = #junction) implies
+((self.incoming->size >= 1) and (self.outgoing->size >= 1))
+</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-Rh0efEeKdl-y5nJoJpQ" name="choice_vertex" constrainedElement="_Et-RcEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-RiEefEeKdl-y5nJoJpQ" annotatedElement="_Et-Rh0efEeKdl-y5nJoJpQ">
+              <body>In a complete statemachine, a choice vertex must have at least one incoming and one outgoing transition.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-RiUefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(self.kind = #choice) implies
+((self.incoming->size >= 1) and (self.outgoing->size >= 1))
+</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-RikefEeKdl-y5nJoJpQ" name="outgoing_from_initial" constrainedElement="_Et-RcEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-Ri0efEeKdl-y5nJoJpQ" annotatedElement="_Et-RikefEeKdl-y5nJoJpQ">
+              <body>The outgoing transition from and initial vertex may have a behavior, but not a trigger or a guard.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-RjEefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(self.kind = #initial) implies (self.outgoing.guard->isEmpty()&#xD;
+  and self.outgoing.trigger->isEmpty())</body>
+            </specification>
+          </ownedRule>
+          <generalization xmi:id="_XnqLS37VEeOu79LxSz8Ylw" general="_Et9qYEefEeKdl-y5nJoJpQ"/>
+          <ownedAttribute xmi:id="_Et-RjkefEeKdl-y5nJoJpQ" name="kind" type="_EuAGpUefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-Rj0efEeKdl-y5nJoJpQ" annotatedElement="_Et-RjkefEeKdl-y5nJoJpQ">
+              <body>Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.</body>
+            </ownedComment>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_XngaMH7VEeOu79LxSz8Ylw" value="initial"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et-RkUefEeKdl-y5nJoJpQ" name="owningStateMachine" type="_vAUZkEebEeKdl-y5nJoJpQ" association="_f_Y-EBsIEeSM9LreJtBwBg">
+            <ownedComment xmi:id="_Et-RkkefEeKdl-y5nJoJpQ" annotatedElement="_Et-RkUefEeKdl-y5nJoJpQ">
+              <body>The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaMX7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et-RlUefEeKdl-y5nJoJpQ" name="owningState" type="_DKDnoEefEeKdl-y5nJoJpQ" association="_NtdYEMVDEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_Et-RlkefEeKdl-y5nJoJpQ" annotatedElement="_Et-RlUefEeKdl-y5nJoJpQ">
+              <body>The State that owns this pseudostate and in which it appears.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaMn7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Enumeration" xmi:id="_EuAGpUefEeKdl-y5nJoJpQ" name="PseudostateKind" visibility="private">
+          <ownedComment xmi:id="_EuAGpkefEeKdl-y5nJoJpQ" annotatedElement="_EuAGpUefEeKdl-y5nJoJpQ">
+            <body>PseudostateKind is an enumeration type.</body>
+          </ownedComment>
+          <ownedLiteral xmi:id="_EuAGp0efEeKdl-y5nJoJpQ" name="initial">
+            <ownedComment xmi:id="_EuAGqEefEeKdl-y5nJoJpQ" annotatedElement="_EuAGp0efEeKdl-y5nJoJpQ">
+              <body>An initial pseudostate represents a default vertex that is the source for a single transition to the default state of a composite state. There can be at most one initial vertex in a region. The outgoing transition from the initial vertex may have a behavior, but not a trigger or guard.</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:id="_EuAGqUefEeKdl-y5nJoJpQ" name="deepHistory">
+            <ownedComment xmi:id="_EuAGqkefEeKdl-y5nJoJpQ" annotatedElement="_EuAGqUefEeKdl-y5nJoJpQ">
+              <body>DeepHistory represents the most recent active configuration of the composite state that directly contains this pseudostate; e.g. the state configuration that was active when the composite state was last exited. A composite state can have at most one deep history vertex. At most one transition may originate from the history connector to the default deep history state. This transition is taken in case the composite state had never been active before. Entry actions of states entered on the path to the state represented by a deep history are performed.</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:id="_EuAGq0efEeKdl-y5nJoJpQ" name="shallowHistory">
+            <ownedComment xmi:id="_EuAGrEefEeKdl-y5nJoJpQ" annotatedElement="_EuAGq0efEeKdl-y5nJoJpQ">
+              <body>ShallowHistory represents the most recent active substate of its containing state (but not the substates of that substate). A composite state can have at most one shallow history vertex. A transition coming into the shallow history vertex is equivalent to a transition coming into the most recent active substate of a state. At most one transition may originate from the history connector to the default shallow history state. This transition is taken in case the composite state had never been active before. Entry actions of states entered on the path to the state represented by a shallow history are performed.</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:id="_EuAGrUefEeKdl-y5nJoJpQ" name="join">
+            <ownedComment xmi:id="_EuAGrkefEeKdl-y5nJoJpQ" annotatedElement="_EuAGrUefEeKdl-y5nJoJpQ">
+              <body>Join vertices serve to merge several transitions emanating from source vertices in different orthogonal regions. The transitions entering a join vertex cannot have guards or triggers.</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:id="_EuAGr0efEeKdl-y5nJoJpQ" name="fork">
+            <ownedComment xmi:id="_EuAGsEefEeKdl-y5nJoJpQ" annotatedElement="_EuAGr0efEeKdl-y5nJoJpQ">
+              <body>Fork vertices serve to split an incoming transition into two or more transitions terminating on orthogonal target vertices&#xD;
+(i.e. vertices in different regions of a composite state). The segments outgoing from a fork vertex must not have guards or triggers.</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:id="_EuAGsUefEeKdl-y5nJoJpQ" name="junction">
+            <ownedComment xmi:id="_EuAGskefEeKdl-y5nJoJpQ" annotatedElement="_EuAGsUefEeKdl-y5nJoJpQ">
+              <body>Junction vertices are semantic-free vertices that are used to chain together multiple transitions. They are used to construct compound transition paths between states. For example, a junction can be used to converge multiple incoming transitions into a single outgoing transition representing a shared transition path (this is known as an merge). Conversely, they can be used to split an incoming transition into multiple outgoing transition segments with different guard conditions. This realizes a static conditional branch. (In the latter case, outgoing transitions whose guard conditions evaluate to false are disabled. A predefined guard denoted 'else' may be defined for at most one outgoing transition. This transition is enabled if all the guards labeling the other transitions are false.) Static conditional branches are distinct from dynamic conditional branches that are realized by choice vertices (described below).</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:id="_EuAGs0efEeKdl-y5nJoJpQ" name="choice">
+            <ownedComment xmi:id="_EuAGtEefEeKdl-y5nJoJpQ" annotatedElement="_EuAGs0efEeKdl-y5nJoJpQ">
+              <body>Choice vertices which, when reached, result in the dynamic evaluation of the guards of the triggers of its outgoing transitions. This realizes a dynamic conditional branch. It allows splitting of transitions into multiple outgoing paths such that the decision on which path to take may be a function of the results of prior actions performed in the same run-tocompletion step. If more than one of the guards evaluates to true, an arbitrary one is selected. If none of the guards evaluates to true, then the model is considered ill-formed. (To avoid this, it is recommended to define one outgoing transition with the predefined else guard for every choice vertex.) Choice vertices should be distinguished from static branch points that are based on junction points (described above).</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:id="_EuAGtUefEeKdl-y5nJoJpQ" name="entryPoint">
+            <ownedComment xmi:id="_EuAGtkefEeKdl-y5nJoJpQ" annotatedElement="_EuAGtUefEeKdl-y5nJoJpQ">
+              <body>An entry point pseudostate is an entry point of a state machine or composite state. In each region of the state machine or composite state it has a single transition to a vertex within the same region.</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:id="_EuAGt0efEeKdl-y5nJoJpQ" name="exitPoint">
+            <ownedComment xmi:id="_EuAGuEefEeKdl-y5nJoJpQ" annotatedElement="_EuAGt0efEeKdl-y5nJoJpQ">
+              <body>An exit point pseudostate is an exit point of a state machine or composite state. Entering an exit point within any region of the composite state or state machine referenced by a submachine state implies the exit of this composite state or submachine state and the triggering of the transition that has this exit point as source in the state machine enclosing the submachine or composite state.</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:id="_EuAGuUefEeKdl-y5nJoJpQ" name="terminate">
+            <ownedComment xmi:id="_EuAGukefEeKdl-y5nJoJpQ" annotatedElement="_EuAGuUefEeKdl-y5nJoJpQ">
+              <body>Entering a terminate pseudostate implies that the execution of this state machine by means of its context object is terminated. The state machine does not exit any states nor does it perform any exit actions other than those associated with the transition leading to the terminate pseudostate. Entering a terminate pseudostate is equivalent to invoking a DestroyObjectAction.</body>
+            </ownedComment>
+          </ownedLiteral>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Et-4o0efEeKdl-y5nJoJpQ" name="Region">
+          <ownedComment xmi:id="_Et-4pEefEeKdl-y5nJoJpQ" annotatedElement="_Et-4o0efEeKdl-y5nJoJpQ">
+            <body>A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions.</body>
+          </ownedComment>
+          <ownedRule xmi:id="_Et-4pUefEeKdl-y5nJoJpQ" name="initial_vertex" constrainedElement="_Et-4o0efEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-4pkefEeKdl-y5nJoJpQ" annotatedElement="_Et-4pUefEeKdl-y5nJoJpQ">
+              <body>A region can have at most one initial vertex</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-4p0efEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>self.subvertex->select (v | v.oclIsKindOf(Pseudostate))->
+select(p : Pseudostate | p.kind = #initial)->size() &lt;= 1
+</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-4qEefEeKdl-y5nJoJpQ" name="deep_history_vertex" constrainedElement="_Et-4o0efEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-4qUefEeKdl-y5nJoJpQ" annotatedElement="_Et-4qEefEeKdl-y5nJoJpQ">
+              <body>A region can have at most one deep history vertex</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-4qkefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>self.subvertex->select (v | v.oclIsKindOf(Pseudostate))->
+select(p : Pseudostate | p.kind = #deepHistory)->size() &lt;= 1
+</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-4q0efEeKdl-y5nJoJpQ" name="shallow_history_vertex" constrainedElement="_Et-4o0efEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-4rEefEeKdl-y5nJoJpQ" annotatedElement="_Et-4q0efEeKdl-y5nJoJpQ">
+              <body>A region can have at most one shallow history vertex</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-4rUefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>self.subvertex->select(v | v.oclIsKindOf(Pseudostate))->
+select(p : Pseudostate | p.kind = #shallowHistory)->size() &lt;= 1
+</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et-4rkefEeKdl-y5nJoJpQ" name="owned" constrainedElement="_Et-4o0efEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et-4r0efEeKdl-y5nJoJpQ" annotatedElement="_Et-4rkefEeKdl-y5nJoJpQ">
+              <body>If a Region is owned by a StateMachine, then it cannot also be owned by a State and vice versa.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et-4sEefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(stateMachine->notEmpty() implies state->isEmpty()) and (state->notEmpty() implies stateMachine->isEmpty())</body>
+            </specification>
+          </ownedRule>
+          <generalization xmi:id="_XnqLTn7VEeOu79LxSz8Ylw" general="_JofBoEe1EeKdl-y5nJoJpQ"/>
+          <ownedAttribute xmi:id="_Et_fkkefEeKdl-y5nJoJpQ" name="ownedSubvertexes" type="_Et9qYEefEeKdl-y5nJoJpQ" aggregation="composite" association="_9FFU0EebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et_fk0efEeKdl-y5nJoJpQ" annotatedElement="_Et_fkkefEeKdl-y5nJoJpQ">
+              <body>The set of vertices that are owned by this region.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaOH7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XngaOX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et_flkefEeKdl-y5nJoJpQ" name="ownedTransitions" type="_Et9DUEefEeKdl-y5nJoJpQ" aggregation="composite" association="_9FFU0UebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et_fl0efEeKdl-y5nJoJpQ" annotatedElement="_Et_flkefEeKdl-y5nJoJpQ">
+              <body>The set of transitions owned by the region. Note that internal transitions are owned by a region, but applies to the source state.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaOn7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XngaO37VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et_fmkefEeKdl-y5nJoJpQ" name="owningStateMachine" type="_vAUZkEebEeKdl-y5nJoJpQ" association="_-hK0EMVCEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_Et_fm0efEeKdl-y5nJoJpQ" annotatedElement="_Et_fmkefEeKdl-y5nJoJpQ">
+              <body>The StateMachine that owns the Region. If a Region is owned by a StateMachine, then it cannot also be owned by a State.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaPH7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et_fnkefEeKdl-y5nJoJpQ" name="owningState" type="_DKDnoEefEeKdl-y5nJoJpQ" association="_wImzEMVCEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_Et_fn0efEeKdl-y5nJoJpQ" annotatedElement="_Et_fnkefEeKdl-y5nJoJpQ">
+              <body>The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaPX7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et_fokefEeKdl-y5nJoJpQ" name="extendedRegion" type="_Et-4o0efEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et_fo0efEeKdl-y5nJoJpQ" annotatedElement="_Et_fokefEeKdl-y5nJoJpQ">
+              <body>The region of which this region is an extension.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaPn7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_vAUZkEebEeKdl-y5nJoJpQ" name="StateMachine">
+          <ownedComment xmi:id="_vAUZkUebEeKdl-y5nJoJpQ" annotatedElement="_vAUZkEebEeKdl-y5nJoJpQ">
+            <body>State machines can be used to express the behavior of part of a system. Behavior is modeled as a traversal of a graph of state nodes interconnected by one or more joined transition arcs that are triggered by the dispatching of series of (event) occurrences. During this traversal, the state machine executes a series of activities associated with various elements of the state machine.</body>
+          </ownedComment>
+          <ownedRule xmi:id="_vAUZkkebEeKdl-y5nJoJpQ" name="classifier_context" constrainedElement="_vAUZkEebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_vAUZk0ebEeKdl-y5nJoJpQ" annotatedElement="_vAUZkkebEeKdl-y5nJoJpQ">
+              <body>The classifier context of a state machine cannot be an interface.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_vAUZlEebEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>context->notEmpty() implies not context.oclIsKindOf(Interface)</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_vAUZlUebEeKdl-y5nJoJpQ" name="context_classifier" constrainedElement="_vAUZkEebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_vAUZlkebEeKdl-y5nJoJpQ" annotatedElement="_vAUZlUebEeKdl-y5nJoJpQ">
+              <body>The context classifier of the method state machine of a behavioral feature must be the classifier that owns the behavioral feature.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_vAUZl0ebEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>specification->notEmpty() implies (context->notEmpty() and specification->featuringClassifier->exists (c | c = context))</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_vAUZmEebEeKdl-y5nJoJpQ" name="connection_points" constrainedElement="_vAUZkEebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_vAUZmUebEeKdl-y5nJoJpQ" annotatedElement="_vAUZmEebEeKdl-y5nJoJpQ">
+              <body>The connection points of a state machine are pseudostates of kind entry point or exit point.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_vAUZmkebEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>conectionPoint->forAll (c | c.kind = #entryPoint or c.kind = #exitPoint)</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_vAUZm0ebEeKdl-y5nJoJpQ" name="method" constrainedElement="_vAUZkEebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_vAUZnEebEeKdl-y5nJoJpQ" annotatedElement="_vAUZm0ebEeKdl-y5nJoJpQ">
+              <body>A state machine as the method for a behavioral feature cannot have entry/exit connection points.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_vAUZnUebEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>specification->notEmpty() implies connectionPoint->isEmpty()</body>
+            </specification>
+          </ownedRule>
+          <generalization xmi:id="_XnqLRn7VEeOu79LxSz8Ylw" general="_CO_y8EeyEeKdl-y5nJoJpQ"/>
+          <ownedAttribute xmi:id="_vAUZn0ebEeKdl-y5nJoJpQ" name="ownedRegions" type="_Et-4o0efEeKdl-y5nJoJpQ" aggregation="composite" association="_-hK0EMVCEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_vAUZoEebEeKdl-y5nJoJpQ" annotatedElement="_vAUZn0ebEeKdl-y5nJoJpQ">
+              <body>The regions owned directly by the state machine.</body>
+            </ownedComment>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQWX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_vAUZo0ebEeKdl-y5nJoJpQ" name="ownedConnectionPoints" type="_Et-RcEefEeKdl-y5nJoJpQ" aggregation="composite" association="_f_Y-EBsIEeSM9LreJtBwBg">
+            <ownedComment xmi:id="_vAUZpEebEeKdl-y5nJoJpQ" annotatedElement="_vAUZo0ebEeKdl-y5nJoJpQ">
+              <body>The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQWn7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQW37VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_vAUZp0ebEeKdl-y5nJoJpQ" name="extendedStateMachines" type="_vAUZkEebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_vAUZqEebEeKdl-y5nJoJpQ" annotatedElement="_vAUZp0ebEeKdl-y5nJoJpQ">
+              <body>The state machines of which this is an extension.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQXH7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQXX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_vAUZq0ebEeKdl-y5nJoJpQ" name="submachineStates" type="_DKDnoEefEeKdl-y5nJoJpQ" association="_9FFU1EebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_vAUZrEebEeKdl-y5nJoJpQ" annotatedElement="_vAUZq0ebEeKdl-y5nJoJpQ">
+              <body>References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQXn7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQX37VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_DKDnoEefEeKdl-y5nJoJpQ" name="State">
+          <ownedComment xmi:id="_DKDnoUefEeKdl-y5nJoJpQ" annotatedElement="_DKDnoEefEeKdl-y5nJoJpQ">
+            <body>A state models a situation during which some (usually implicit) invariant condition holds.</body>
+          </ownedComment>
+          <ownedRule xmi:id="_DKDnokefEeKdl-y5nJoJpQ" name="submachine_states" constrainedElement="_DKDnoEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_DKDno0efEeKdl-y5nJoJpQ" annotatedElement="_DKDnokefEeKdl-y5nJoJpQ">
+              <body>Only submachine states can have connection point references.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_DKDnpEefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>isSubmachineState implies connection->notEmpty ( )</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_DKDnpUefEeKdl-y5nJoJpQ" name="destinations_or_sources_of_transitions" constrainedElement="_DKDnoEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_DKDnpkefEeKdl-y5nJoJpQ" annotatedElement="_DKDnpUefEeKdl-y5nJoJpQ">
+              <body>The connection point references used as destinations/sources of transitions associated with a submachine state must be defined as entry/exit points in the submachine state machine.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_DKDnp0efEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>self.isSubmachineState implies (self.connection->forAll (cp |&#xD;
+cp.entry->forAll (p | p.statemachine = self.submachine) and&#xD;
+cp.exit->forAll (p | p.statemachine = self.submachine)))</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_DKDnqEefEeKdl-y5nJoJpQ" name="submachine_or_regions" constrainedElement="_DKDnoEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_DKDnqUefEeKdl-y5nJoJpQ" annotatedElement="_DKDnqEefEeKdl-y5nJoJpQ">
+              <body>A state is not allowed to have both a submachine and regions.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_DKDnqkefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>isComposite implies not isSubmachineState</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_DKDnq0efEeKdl-y5nJoJpQ" name="composite_states" constrainedElement="_DKDnoEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_DKDnrEefEeKdl-y5nJoJpQ" annotatedElement="_DKDnq0efEeKdl-y5nJoJpQ">
+              <body>Only composite states can have entry or exit pseudostates defined.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_DKDnrUefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>connectionPoint->notEmpty() implies isComoposite</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_DKDnrkefEeKdl-y5nJoJpQ" name="entry_or_exit" constrainedElement="_DKDnoEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_DKDnr0efEeKdl-y5nJoJpQ" annotatedElement="_DKDnrkefEeKdl-y5nJoJpQ">
+              <body>Only entry or exit pseudostates can serve as connection points.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_DKDnsEefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>connectionPoint->forAll(cp|cp.kind = #entry or cp.kind = #exit)</body>
+            </specification>
+          </ownedRule>
+          <generalization xmi:id="_XnqLR37VEeOu79LxSz8Ylw" general="_Et9qYEefEeKdl-y5nJoJpQ"/>
+          <generalization xmi:id="_XnqLSH7VEeOu79LxSz8Ylw" general="_JofBoEe1EeKdl-y5nJoJpQ"/>
+          <ownedAttribute xmi:id="_DKDntEefEeKdl-y5nJoJpQ" name="isComposite" type="_lg9w8EegEeKdl-y5nJoJpQ" isReadOnly="true" isDerived="true">
+            <ownedComment xmi:id="_DKDntUefEeKdl-y5nJoJpQ" annotatedElement="_DKDntEefEeKdl-y5nJoJpQ">
+              <body>A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region.</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDnt0efEeKdl-y5nJoJpQ" name="isOrthogonal" type="_lg9w8EegEeKdl-y5nJoJpQ" isReadOnly="true" isDerived="true">
+            <ownedComment xmi:id="_DKDnuEefEeKdl-y5nJoJpQ" annotatedElement="_DKDnt0efEeKdl-y5nJoJpQ">
+              <body>A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions.</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDnukefEeKdl-y5nJoJpQ" name="isSimple" type="_lg9w8EegEeKdl-y5nJoJpQ" isReadOnly="true" isDerived="true">
+            <ownedComment xmi:id="_DKDnu0efEeKdl-y5nJoJpQ" annotatedElement="_DKDnukefEeKdl-y5nJoJpQ">
+              <body>A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine.</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDnvUefEeKdl-y5nJoJpQ" name="isSubmachineState" type="_lg9w8EegEeKdl-y5nJoJpQ" isReadOnly="true" isDerived="true">
+            <ownedComment xmi:id="_DKDnvkefEeKdl-y5nJoJpQ" annotatedElement="_DKDnvUefEeKdl-y5nJoJpQ">
+              <body>A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine).</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDnwEefEeKdl-y5nJoJpQ" name="submachines" type="_vAUZkEebEeKdl-y5nJoJpQ" association="_9FFU1EebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_DKDnwUefEeKdl-y5nJoJpQ" annotatedElement="_DKDnwEefEeKdl-y5nJoJpQ">
+              <body>The state machine that is to be inserted in place of the (submachine) state.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQZH7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDnxEefEeKdl-y5nJoJpQ" name="ownedConnections" type="_Et-4jkefEeKdl-y5nJoJpQ" aggregation="composite" association="_cqOSUMVDEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_DKDnxUefEeKdl-y5nJoJpQ" annotatedElement="_DKDnxEefEeKdl-y5nJoJpQ">
+              <body>The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQZX7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQZn7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDnyEefEeKdl-y5nJoJpQ" name="redefinedState" type="_DKDnoEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_DKDnyUefEeKdl-y5nJoJpQ" annotatedElement="_DKDnyEefEeKdl-y5nJoJpQ">
+              <body>The state of which this state is a redefinition.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQZ37VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDnzEefEeKdl-y5nJoJpQ" name="ownedRegions" type="_Et-4o0efEeKdl-y5nJoJpQ" aggregation="composite" association="_wImzEMVCEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_DKDnzUefEeKdl-y5nJoJpQ" annotatedElement="_DKDnzEefEeKdl-y5nJoJpQ">
+              <body>The regions owned directly by the state.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQaH7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQaX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDn1EefEeKdl-y5nJoJpQ" name="ownedStateInvariant" type="_jAYTcEe0EeKdl-y5nJoJpQ" aggregation="composite" association="_xUTmoMVBEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_DKDn1UefEeKdl-y5nJoJpQ" annotatedElement="_DKDn1EefEeKdl-y5nJoJpQ">
+              <body>Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions.&#xD;
+</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQan7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDn2EefEeKdl-y5nJoJpQ" name="ownedEntry" type="_CO_y8EeyEeKdl-y5nJoJpQ" aggregation="composite">
+            <ownedComment xmi:id="_DKDn2UefEeKdl-y5nJoJpQ" annotatedElement="_DKDn2EefEeKdl-y5nJoJpQ">
+              <body>An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state.&#xD;
+</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQa37VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDn3EefEeKdl-y5nJoJpQ" name="ownedExit" type="_CO_y8EeyEeKdl-y5nJoJpQ" aggregation="composite">
+            <ownedComment xmi:id="_DKDn3UefEeKdl-y5nJoJpQ" annotatedElement="_DKDn3EefEeKdl-y5nJoJpQ">
+              <body>An optional behavior that is executed whenever this state is exited regardless of which transition was taken out of the state. If defined, exit actions are always executed to completion only after all internal activities and transition actions have completed execution.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQbH7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDn4EefEeKdl-y5nJoJpQ" name="ownedDoActivity" type="_CO_y8EeyEeKdl-y5nJoJpQ" aggregation="composite">
+            <ownedComment xmi:id="_DKDn4UefEeKdl-y5nJoJpQ" annotatedElement="_DKDn4EefEeKdl-y5nJoJpQ">
+              <body>An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops either by itself, or when the state is exited, whichever comes first.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQbX7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDn5EefEeKdl-y5nJoJpQ" name="ownedConnectionPoints" type="_Et-RcEefEeKdl-y5nJoJpQ" aggregation="composite" association="_NtdYEMVDEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_DKDn5UefEeKdl-y5nJoJpQ" annotatedElement="_DKDn5EefEeKdl-y5nJoJpQ">
+              <body>The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQbn7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQb37VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_DKDn6EefEeKdl-y5nJoJpQ" name="ownedDeferrableTriggers" type="_5gHlAEe2EeKdl-y5nJoJpQ" aggregation="composite" association="_Cig0gMVBEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_DKDn6UefEeKdl-y5nJoJpQ" annotatedElement="_DKDn6EefEeKdl-y5nJoJpQ">
+              <body>A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.&#xD;
+</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQcH7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQcX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Et9DUEefEeKdl-y5nJoJpQ" name="Transition">
+          <ownedComment xmi:id="_Et9DUUefEeKdl-y5nJoJpQ" annotatedElement="_Et9DUEefEeKdl-y5nJoJpQ">
+            <body>A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type.</body>
+          </ownedComment>
+          <ownedRule xmi:id="_Et9DUkefEeKdl-y5nJoJpQ" name="fork_segment_guards" constrainedElement="_Et9DUEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9DU0efEeKdl-y5nJoJpQ" annotatedElement="_Et9DUkefEeKdl-y5nJoJpQ">
+              <body>A fork segment must not have guards or triggers.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et9DVEefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(source.oclIsKindOf(Pseudostate) and source.kind = #fork) implies (guard->isEmpty() and trigger->isEmpty())</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et9DVUefEeKdl-y5nJoJpQ" name="join_segment_guards" constrainedElement="_Et9DUEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9DVkefEeKdl-y5nJoJpQ" annotatedElement="_Et9DVUefEeKdl-y5nJoJpQ">
+              <body>A join segment must not have guards or triggers.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et9DV0efEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(target.oclIsKindOf(Pseudostate) and target.kind = #join) implies (guard->isEmpty() and trigger->isEmpty())</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et9DWEefEeKdl-y5nJoJpQ" name="fork_segment_state" constrainedElement="_Et9DUEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9DWUefEeKdl-y5nJoJpQ" annotatedElement="_Et9DWEefEeKdl-y5nJoJpQ">
+              <body>A fork segment must always target a state.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et9DWkefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(source.oclIsKindOf(Pseudostate) and source.kind = #fork) implies (target.oclIsKindOf(State))</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et9DW0efEeKdl-y5nJoJpQ" name="join_segment_state" constrainedElement="_Et9DUEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9DXEefEeKdl-y5nJoJpQ" annotatedElement="_Et9DW0efEeKdl-y5nJoJpQ">
+              <body>A join segment must always originate from a state.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et9DXUefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>(target.oclIsKindOf(Pseudostate) and target.kind = #join) implies (source.oclIsKindOf(State))</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et9DXkefEeKdl-y5nJoJpQ" name="outgoing_pseudostates" constrainedElement="_Et9DUEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9DX0efEeKdl-y5nJoJpQ" annotatedElement="_Et9DXkefEeKdl-y5nJoJpQ">
+              <body>Transitions outgoing pseudostates may not have a trigger.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et9DYEefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>source.oclIsKindOf(Pseudostate) and (source.kind &lt;> #initial)) implies trigger->isEmpty()</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et9DYUefEeKdl-y5nJoJpQ" name="initial_transition" constrainedElement="_Et9DUEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9DYkefEeKdl-y5nJoJpQ" annotatedElement="_Et9DYUefEeKdl-y5nJoJpQ">
+              <body>An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype &lt;&lt;create>>.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et9DY0efEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>self.source.oclIsKindOf(Pseudostate) implies
+(self.source.oclAsType(Pseudostate).kind = #initial) implies
+(self.source.container = self.stateMachine.top) implies
+((self.trigger->isEmpty) or
+(self.trigger.stereotype.name = 'create'))
+</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_Et9DZEefEeKdl-y5nJoJpQ" name="signatures_compatible" constrainedElement="_Et9DUEefEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9DZUefEeKdl-y5nJoJpQ" annotatedElement="_Et9DZEefEeKdl-y5nJoJpQ">
+              <body>In case of more than one trigger, the signatures of these must be compatible in case the parameters of the signal are assigned to local variables/attributes.&#xD;
+</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_Et9DZkefEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+          <generalization xmi:id="_XnqLSX7VEeOu79LxSz8Ylw" general="_JofBoEe1EeKdl-y5nJoJpQ"/>
+          <ownedAttribute xmi:id="_Et9DaUefEeKdl-y5nJoJpQ" name="kind" type="_9FEtwEebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9DakefEeKdl-y5nJoJpQ" annotatedElement="_Et9DaUefEeKdl-y5nJoJpQ">
+              <body>Indicates  the precise type of the transition.</body>
+            </ownedComment>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_XnXQcn7VEeOu79LxSz8Ylw" value="external"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et9DbEefEeKdl-y5nJoJpQ" name="owningRegion" type="_Et-4o0efEeKdl-y5nJoJpQ" association="_9FFU0UebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9DbUefEeKdl-y5nJoJpQ" annotatedElement="_Et9DbEefEeKdl-y5nJoJpQ">
+              <body>Designates the region that owns this transition.</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et9DcEefEeKdl-y5nJoJpQ" name="source" type="_Et9qYEefEeKdl-y5nJoJpQ" association="_9FFU0kebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9DcUefEeKdl-y5nJoJpQ" annotatedElement="_Et9DcEefEeKdl-y5nJoJpQ">
+              <body>Designates the originating vertex (state or pseudostate) of the transition.</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et9DdEefEeKdl-y5nJoJpQ" name="target" type="_Et9qYEefEeKdl-y5nJoJpQ" association="_9FFU00ebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9DdUefEeKdl-y5nJoJpQ" annotatedElement="_Et9DdEefEeKdl-y5nJoJpQ">
+              <body>Designates the target vertex that is reached when the transition is taken.</body>
+            </ownedComment>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et9DfEefEeKdl-y5nJoJpQ" name="ownedGuard" type="_jAYTcEe0EeKdl-y5nJoJpQ" aggregation="composite" association="_xUTmocVBEeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_Et9DfUefEeKdl-y5nJoJpQ" annotatedElement="_Et9DfEefEeKdl-y5nJoJpQ">
+              <body>A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQc37VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et9DhEefEeKdl-y5nJoJpQ" name="ownedEffect" type="_CO_y8EeyEeKdl-y5nJoJpQ" aggregation="composite" association="_R5_mwMU_EeOUxMGVZGOl2Q">
+            <ownedComment xmi:id="_Et9DhUefEeKdl-y5nJoJpQ" annotatedElement="_Et9DhEefEeKdl-y5nJoJpQ">
+              <body>Specifies an optional behavior to be performed when the transition fires.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQdH7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et9DiEefEeKdl-y5nJoJpQ" name="ownedTriggers" type="_5gHlAEe2EeKdl-y5nJoJpQ" aggregation="composite" association="_9FF8CUebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9DiUefEeKdl-y5nJoJpQ" annotatedElement="_Et9DiEefEeKdl-y5nJoJpQ">
+              <body>Specifies the triggers that may fire the transition.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQdX7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQdn7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Enumeration" xmi:id="_9FEtwEebEeKdl-y5nJoJpQ" name="TransitionKind" visibility="private">
+          <ownedComment xmi:id="_9FEtwUebEeKdl-y5nJoJpQ" annotatedElement="_9FEtwEebEeKdl-y5nJoJpQ">
+            <body>TransitionKind is an enumeration type.</body>
+          </ownedComment>
+          <ownedRule xmi:id="_9FEtwkebEeKdl-y5nJoJpQ" name="state_is_local" constrainedElement="_9FEtwEebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_9FEtw0ebEeKdl-y5nJoJpQ" annotatedElement="_9FEtwkebEeKdl-y5nJoJpQ">
+              <body>The source state of a transition with transition kind local must be a composite state.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_9FEtxEebEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>kind=#local implies owner.source.isComposite</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_9FEtxUebEeKdl-y5nJoJpQ" name="state_is_external" constrainedElement="_9FEtwEebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_9FEtxkebEeKdl-y5nJoJpQ" annotatedElement="_9FEtxUebEeKdl-y5nJoJpQ">
+              <body>The source state of a transition with transition kind external must be a composite state.</body>
+            </ownedComment>
+            <specification xmi:type="uml:ExpressionInOCL" xmi:id="_9FEtx0ebEeKdl-y5nJoJpQ">
+              <language>OCL</language>
+              <body>kind=#external implies owner.source.isComposite</body>
+            </specification>
+          </ownedRule>
+          <ownedLiteral xmi:id="_9FEtyEebEeKdl-y5nJoJpQ" name="internal">
+            <ownedComment xmi:id="_9FEtyUebEeKdl-y5nJoJpQ" annotatedElement="_9FEtyEebEeKdl-y5nJoJpQ">
+              <body>Implies that the transition, if triggered, occurs without exiting or entering the source state. Thus, it does not cause a state change. This means that the entry or exit condition of the source state will not be invoked. An internal transition can be taken even if the state machine is in one or more regions nested within this state.</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:id="_9FEtykebEeKdl-y5nJoJpQ" name="local">
+            <ownedComment xmi:id="_9FEty0ebEeKdl-y5nJoJpQ" annotatedElement="_9FEtykebEeKdl-y5nJoJpQ">
+              <body>Implies that the transition, if triggered, will not exit the composite (source) state, but it will apply to any state within the composite state, and these will be exited and entered.</body>
+            </ownedComment>
+          </ownedLiteral>
+          <ownedLiteral xmi:id="_9FEtzEebEeKdl-y5nJoJpQ" name="external">
+            <ownedComment xmi:id="_9FEtzUebEeKdl-y5nJoJpQ" annotatedElement="_9FEtzEebEeKdl-y5nJoJpQ">
+              <body>Implies that the transition, if triggered, will exit the composite (source) state.</body>
+            </ownedComment>
+          </ownedLiteral>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_5gHlAEe2EeKdl-y5nJoJpQ" name="Trigger">
+          <generalization xmi:id="_XnqLUH7VEeOu79LxSz8Ylw" general="_39jdgMf5Ed-sJIf4tYBt-g"/>
+          <ownedAttribute xmi:id="_2o4UEMVAEeOUxMGVZGOl2Q" name="owningState" type="_DKDnoEefEeKdl-y5nJoJpQ" association="_Cig0gMVBEeOUxMGVZGOl2Q">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2o4UEcVAEeOUxMGVZGOl2Q"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_9FF8CkebEeKdl-y5nJoJpQ" name="owningTransition" type="_Et9DUEefEeKdl-y5nJoJpQ" association="_9FF8CUebEeKdl-y5nJoJpQ">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaUX7VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Et9qYEefEeKdl-y5nJoJpQ" name="Vertex" isAbstract="true">
+          <ownedComment xmi:id="_Et9qYUefEeKdl-y5nJoJpQ" annotatedElement="_Et9qYEefEeKdl-y5nJoJpQ">
+            <body>A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions.</body>
+          </ownedComment>
+          <generalization xmi:id="_XnqLSn7VEeOu79LxSz8Ylw" general="_39jdgMf5Ed-sJIf4tYBt-g"/>
+          <ownedAttribute xmi:id="_Et9qY0efEeKdl-y5nJoJpQ" name="owningRegion" type="_Et-4o0efEeKdl-y5nJoJpQ" association="_9FFU0EebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9qZEefEeKdl-y5nJoJpQ" annotatedElement="_Et9qY0efEeKdl-y5nJoJpQ">
+              <body>The region that contains this vertex.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQd37VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et9qZ0efEeKdl-y5nJoJpQ" name="outgoingTransitions" type="_Et9DUEefEeKdl-y5nJoJpQ" isReadOnly="true" association="_9FFU0kebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9qaEefEeKdl-y5nJoJpQ" annotatedElement="_Et9qZ0efEeKdl-y5nJoJpQ">
+              <body>Specifies the transitions departing from this vertex.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQeH7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQeX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Et9qa0efEeKdl-y5nJoJpQ" name="incomingTransitions" type="_Et9DUEefEeKdl-y5nJoJpQ" isReadOnly="true" association="_9FFU00ebEeKdl-y5nJoJpQ">
+            <ownedComment xmi:id="_Et9qbEefEeKdl-y5nJoJpQ" annotatedElement="_Et9qa0efEeKdl-y5nJoJpQ">
+              <body>Specifies the transitions entering this vertex.</body>
+            </ownedComment>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XnXQen7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XnXQe37VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_IWCyAMVEEeOUxMGVZGOl2Q" name="A_connectionPointReference_entry" memberEnd="_Et-4l0efEeKdl-y5nJoJpQ _R1yp8MVEEeOUxMGVZGOl2Q">
+          <ownedEnd xmi:id="_R1yp8MVEEeOUxMGVZGOl2Q" name="connectionPointReference" type="_Et-RcEefEeKdl-y5nJoJpQ" association="_IWCyAMVEEeOUxMGVZGOl2Q">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UKFAwMVEEeOUxMGVZGOl2Q"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_gADwQMVEEeOUxMGVZGOl2Q" name="A_connectionPointReference_exit" memberEnd="_Et-4n0efEeKdl-y5nJoJpQ _gADwQcVEEeOUxMGVZGOl2Q">
+          <ownedEnd xmi:id="_gADwQcVEEeOUxMGVZGOl2Q" name="connectionPointReference" type="_Et-RcEefEeKdl-y5nJoJpQ" association="_gADwQMVEEeOUxMGVZGOl2Q">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gADwQsVEEeOUxMGVZGOl2Q"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_NtdYEMVDEeOUxMGVZGOl2Q" name="A_ownedConnectionPoints_owningState" memberEnd="_DKDn5EefEeKdl-y5nJoJpQ _Et-RlUefEeKdl-y5nJoJpQ"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_f_Y-EBsIEeSM9LreJtBwBg" name="A_ownedConnectionPoints_owningStateMachine" memberEnd="_vAUZo0ebEeKdl-y5nJoJpQ _Et-RkUefEeKdl-y5nJoJpQ"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_cqOSUMVDEeOUxMGVZGOl2Q" name="A_ownedConnections_owningState" memberEnd="_DKDnxEefEeKdl-y5nJoJpQ _Et-4m0efEeKdl-y5nJoJpQ"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_9FFU0EebEeKdl-y5nJoJpQ" name="A_owningRegion_ownedSubvertexes" memberEnd="_Et9qY0efEeKdl-y5nJoJpQ _Et_fkkefEeKdl-y5nJoJpQ"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_9FFU0UebEeKdl-y5nJoJpQ" name="A_owningRegion_ownedTransitions" memberEnd="_Et9DbEefEeKdl-y5nJoJpQ _Et_flkefEeKdl-y5nJoJpQ"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_Cig0gMVBEeOUxMGVZGOl2Q" name="A_ownedDeferrableTriggers_owningState" memberEnd="_DKDn6EefEeKdl-y5nJoJpQ _2o4UEMVAEeOUxMGVZGOl2Q"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_R5_mwMU_EeOUxMGVZGOl2Q" name="A_ownedEffect_owningTransition" memberEnd="_Et9DhEefEeKdl-y5nJoJpQ _DPEqcMU_EeOUxMGVZGOl2Q"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_xUTmocVBEeOUxMGVZGOl2Q" name="A_ownedGuard_owningTransition" memberEnd="_Et9DfEefEeKdl-y5nJoJpQ _uREfIMVBEeOUxMGVZGOl2Q"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_9FFU00ebEeKdl-y5nJoJpQ" name="A_incomingTransitions_target" memberEnd="_Et9qa0efEeKdl-y5nJoJpQ _Et9DdEefEeKdl-y5nJoJpQ"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_9FFU0kebEeKdl-y5nJoJpQ" name="A_outgoingTransitions_source" memberEnd="_Et9qZ0efEeKdl-y5nJoJpQ _Et9DcEefEeKdl-y5nJoJpQ"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_xUTmoMVBEeOUxMGVZGOl2Q" name="A_owningState_ownedStateInvariant" memberEnd="_DKDn1EefEeKdl-y5nJoJpQ _ox-ZMMVBEeOUxMGVZGOl2Q"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_wImzEMVCEeOUxMGVZGOl2Q" name="A_ownedRegions_owningState" memberEnd="_DKDnzEefEeKdl-y5nJoJpQ _Et_fnkefEeKdl-y5nJoJpQ"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_-hK0EMVCEeOUxMGVZGOl2Q" name="A_ownedRegions_owningStateMachiine" memberEnd="_vAUZn0ebEeKdl-y5nJoJpQ _Et_fmkefEeKdl-y5nJoJpQ"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_9FFU1EebEeKdl-y5nJoJpQ" name="A_submachineStates_submachines" memberEnd="_vAUZq0ebEeKdl-y5nJoJpQ _DKDnwEefEeKdl-y5nJoJpQ"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_9FF8CUebEeKdl-y5nJoJpQ" name="A_owningTransition_ownedTriggers" memberEnd="_9FF8CkebEeKdl-y5nJoJpQ _Et9DiEefEeKdl-y5nJoJpQ"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_AD6JQMitEd-sJIf4tYBt-g" name="Actions">
+        <packagedElement xmi:type="uml:Class" xmi:id="_CmXe8MitEd-sJIf4tYBt-g" name="CallOperationAction">
+          <generalization xmi:id="_XnqLUX7VEeOu79LxSz8Ylw" general="_EOXXgMitEd-sJIf4tYBt-g"/>
+          <ownedAttribute xmi:id="_QvWy4MitEd-sJIf4tYBt-g" name="operation" type="_MmYyYMitEd-sJIf4tYBt-g"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_EOXXgMitEd-sJIf4tYBt-g" name="NamedElement" isAbstract="true"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_MmYyYMitEd-sJIf4tYBt-g" name="Operation"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_HT7aQMitEd-sJIf4tYBt-g" name="SendSignalAction">
+          <generalization xmi:id="_XnqLUn7VEeOu79LxSz8Ylw" general="_EOXXgMitEd-sJIf4tYBt-g"/>
+          <ownedAttribute xmi:id="_YEJPIMitEd-sJIf4tYBt-g" name="signal" type="_OS2UMMitEd-sJIf4tYBt-g"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_OS2UMMitEd-sJIf4tYBt-g" name="Signal"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_VymA8IQLEeGSY6MLEc_weQ" name="Models">
+        <packagedElement xmi:type="uml:Class" xmi:id="__xSUAJ0cEeKlhqsLHPfBIg" name="Import">
+          <generalization xmi:id="_XnqLU37VEeOu79LxSz8Ylw" general="_E-lfUJ0dEeKlhqsLHPfBIg"/>
+          <ownedAttribute xmi:id="__xS7EZ0cEeKlhqsLHPfBIg" name="importedNamespace" type="_vUwG8MaCEeGSosHO1vMMFA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_E-lfUJ0dEeKlhqsLHPfBIg" name="NamedElement" isAbstract="true"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_vUwG8MaCEeGSosHO1vMMFA" name="Namespace" isAbstract="true"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_ZE--wIQLEeGSY6MLEc_weQ" name="Package"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_lqIjIMZ_EeGSosHO1vMMFA" name="Model">
+          <generalization xmi:id="_XnqLVH7VEeOu79LxSz8Ylw" general="_vUwG8MaCEeGSosHO1vMMFA"/>
+          <ownedAttribute xmi:id="_UMBmIMaCEeGSosHO1vMMFA" name="ownedPackages" type="_ZE--wIQLEeGSY6MLEc_weQ" aggregation="composite">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaVX7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XngaVn7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_diPHkMaCEeGSosHO1vMMFA" name="externalURI" type="_b9hMgMaCEeGSosHO1vMMFA">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaV37VEeOu79LxSz8Ylw"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_c7chEJ0dEeKlhqsLHPfBIg" name="ownedImports" type="__xSUAJ0cEeKlhqsLHPfBIg" isOrdered="true" aggregation="composite">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XngaWH7VEeOu79LxSz8Ylw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XngaWX7VEeOu79LxSz8Ylw" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_b9hMgMaCEeGSosHO1vMMFA" name="String"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_iQY4IOkFEeGPiYoGg5fAqg" name="Profiles">
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_tEhkYLjIEeOjq8qOYXet4Q" name="Boolean"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_oMqCQOkFEeGPiYoGg5fAqg" name="Class"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_XmK6gLjKEeOjq8qOYXet4Q" name="Element" isAbstract="true"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_lDhHEOkFEeGPiYoGg5fAqg" name="Package">
+          <ownedAttribute xmi:id="_4ZppkLjIEeOjq8qOYXet4Q" name="ownedProfileApplications" type="_hi6iYLjIEeOjq8qOYXet4Q" aggregation="composite" association="_wiEz4LjJEeOjq8qOYXet4Q">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6y4x0LjIEeOjq8qOYXet4Q"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7Lk-oLjIEeOjq8qOYXet4Q" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_lOhdMOkFEeGPiYoGg5fAqg" name="Profile">
+          <generalization xmi:id="_XnqLVX7VEeOu79LxSz8Ylw" general="_lDhHEOkFEeGPiYoGg5fAqg"/>
+          <ownedAttribute xmi:id="_QdKF4LjJEeOjq8qOYXet4Q" name="profileApplications" type="_hi6iYLjIEeOjq8qOYXet4Q" association="_iwALILjJEeOjq8qOYXet4Q">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QdKF4bjJEeOjq8qOYXet4Q"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QdKF4rjJEeOjq8qOYXet4Q" value="*"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_hi6iYLjIEeOjq8qOYXet4Q" name="ProfileApplication">
+          <generalization xmi:id="_daQZALjKEeOjq8qOYXet4Q" general="_XmK6gLjKEeOjq8qOYXet4Q"/>
+          <ownedAttribute xmi:id="_okNa4LjIEeOjq8qOYXet4Q" name="isStrict" type="_tEhkYLjIEeOjq8qOYXet4Q">
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_zCR8QLjIEeOjq8qOYXet4Q" value="false"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_D0t-sLjJEeOjq8qOYXet4Q" name="owningPackage" type="_lDhHEOkFEeGPiYoGg5fAqg" association="_wiEz4LjJEeOjq8qOYXet4Q">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D0t-sbjJEeOjq8qOYXet4Q" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D0t-srjJEeOjq8qOYXet4Q" value="1"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_SS1OELjJEeOjq8qOYXet4Q" name="appliedProfile" type="_lOhdMOkFEeGPiYoGg5fAqg" association="_iwALILjJEeOjq8qOYXet4Q">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SS1OEbjJEeOjq8qOYXet4Q" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SS1OErjJEeOjq8qOYXet4Q" value="1"/>
+          </ownedAttribute>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_nH7O0OkFEeGPiYoGg5fAqg" name="Stereotype">
+          <generalization xmi:id="_XnqLVn7VEeOu79LxSz8Ylw" general="_oMqCQOkFEeGPiYoGg5fAqg"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_iwALILjJEeOjq8qOYXet4Q" name="A_appliedProfile_profileApplications" memberEnd="_SS1OELjJEeOjq8qOYXet4Q _QdKF4LjJEeOjq8qOYXet4Q"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_wiEz4LjJEeOjq8qOYXet4Q" name="A_owningPackage_ownedProfileApplications" memberEnd="_D0t-sLjJEeOjq8qOYXet4Q _4ZppkLjIEeOjq8qOYXet4Q"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_xg6fUPF8Ed-BXqn3guNB1A" name="Sub_IsStatic">
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_KrFBsPF9Ed-BXqn3guNB1A" name="Boolean"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_0_eQ4PF8Ed-BXqn3guNB1A" name="Feature" isAbstract="true">
+        <generalization xmi:id="_XnqLV37VEeOu79LxSz8Ylw" general="_coJOwPF-Ed-Ob5Xbijlg7g"/>
+        <ownedAttribute xmi:id="_C_PXYPF9Ed-BXqn3guNB1A" name="isStatic" type="_KrFBsPF9Ed-BXqn3guNB1A">
+          <defaultValue xmi:type="uml:LiteralString" xmi:id="_IZ4VcBtBEeSM9LreJtBwBg" value="false"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_coJOwPF-Ed-Ob5Xbijlg7g" name="TypedElement" isAbstract="true"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_4ji0kPF8Ed-BXqn3guNB1A" name="Operation">
+        <generalization xmi:id="_XnqLWH7VEeOu79LxSz8Ylw" general="_0_eQ4PF8Ed-BXqn3guNB1A"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_6gXGkPF8Ed-BXqn3guNB1A" name="Property">
+        <generalization xmi:id="_XnqLWX7VEeOu79LxSz8Ylw" general="_0_eQ4PF8Ed-BXqn3guNB1A"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_24hxMH9FEeOrlIuDtf7a6A">
+      <eAnnotations xmi:id="_24riMH9FEeOrlIuDtf7a6A" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Package>
+  <Ecore:EReference xmi:id="_4t9BwH9FEeOrlIuDtf7a6A" isTransient="true" isVolatile="true" base_Property="_JhArv65oEd-xTJkHwX_SlQ" isResolveProxies="false"/>
+  <Ecore:EAttribute xmi:id="_asJIEH9SEeOrlIuDtf7a6A" isTransient="true" isVolatile="true" base_Property="_DKDntEefEeKdl-y5nJoJpQ"/>
+  <Ecore:EAttribute xmi:id="_cPr-cH9SEeOrlIuDtf7a6A" isTransient="true" isVolatile="true" base_Property="_DKDnt0efEeKdl-y5nJoJpQ"/>
+  <Ecore:EAttribute xmi:id="_ftlosH9SEeOrlIuDtf7a6A" isTransient="true" isVolatile="true" base_Property="_DKDnukefEeKdl-y5nJoJpQ"/>
+  <Ecore:EAttribute xmi:id="_1vi70BlUEeSM9LreJtBwBg" isTransient="true" isVolatile="true" base_Property="_VcCqKRlSEeSM9LreJtBwBg"/>
+  <Ecore:EAttribute xmi:id="_xCxxIBsJEeSM9LreJtBwBg" isTransient="true" isVolatile="true" base_Property="_DKDnvUefEeKdl-y5nJoJpQ"/>
+  <Ecore:EReference xmi:id="_e6siMCEvEeSNlrewQPlAjA" isTransient="true" isVolatile="true" base_Property="AuxiliaryConstructs-Templates-TemplateBinding-signature" isResolveProxies="false"/>
+</xmi:XMI>

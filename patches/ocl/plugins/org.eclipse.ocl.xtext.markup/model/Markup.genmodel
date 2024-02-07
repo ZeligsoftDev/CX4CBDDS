@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2010, 2022 Willink Transformations and others.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v2.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v20.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;  E.D.Willink - Initial API and implementation"
+    modelDirectory="/org.eclipse.ocl.xtext.markup/emf-gen" editDirectory="/org.eclipse.ocl.xtext.markup.edit/src"
+    editorDirectory="/org.eclipse.ocl.xtext.markup.editor/src" modelPluginID="org.eclipse.ocl.xtext.markup"
+    templateDirectory="/org.eclipse.ocl.examples.codegen/templates" forceOverwrite="true"
+    modelName="MarkupCS" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    editPluginID="org.eclipse.ocl.xtext.markup.edit" editorPluginID="org.eclipse.ocl.xtext.markup.editor"
+    runtimeVersion="2.7" importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
+    <details key="Use Delegates" value="false"/>
+    <details key="Use Null Annotations" value="true"/>
+    <details key="Generate Classifier ints" value="true"/>
+  </genAnnotations>
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel/ToString">
+    <details key="org.eclipse.ocl.xtext.markupcs.MarkupElement" value="&lt;%org.eclipse.ocl.xtext.markup.MarkupToTree%> toString = new &lt;%org.eclipse.ocl.xtext.markup.MarkupToTree%>();&#xD;&#xA;return String.valueOf(toString.doSwitch(this));"/>
+  </genAnnotations>
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel/CopyAndPaste">
+    <details key="org.eclipse.ocl.xtext.markupcs.FigureElement" value="model/FigureElement.javacopy"/>
+  </genAnnotations>
+  <foreignModel>Markup.ecore</foreignModel>
+  <genPackages prefix="Markup" basePackage="org.eclipse.ocl.xtext" disposableProviderFactory="true"
+      fileExtensions="markupcs" ecorePackage="Markup.ecore#/">
+    <genClasses ecoreClass="Markup.ecore#//BulletElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//BulletElement/level"/>
+    </genClasses>
+    <genClasses ecoreClass="Markup.ecore#//CompoundElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Markup.ecore#//CompoundElement/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="Markup.ecore#//FigureElement">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//FigureElement/id"
+          get="return internalGetId();"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//FigureElement/src"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//FigureElement/alt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//FigureElement/def"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//FigureElement/requiredWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//FigureElement/requiredHeight"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//FigureElement/actualWidth"
+          get="return internalGetActualWidth();"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//FigureElement/actualHeight"
+          get="return internalGetActualHeight();"/>
+    </genClasses>
+    <genClasses ecoreClass="Markup.ecore#//FigureRefElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Markup.ecore#//FigureRefElement/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="Markup.ecore#//FontElement">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//FontElement/font"/>
+    </genClasses>
+    <genClasses ecoreClass="Markup.ecore#//FootnoteElement"/>
+    <genClasses ecoreClass="Markup.ecore#//HeadingElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//HeadingElement/level"/>
+    </genClasses>
+    <genClasses ecoreClass="Markup.ecore#//Markup"/>
+    <genClasses ecoreClass="Markup.ecore#//MarkupElement">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Markup.ecore#//MarkupElement/owner"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//MarkupElement/uniqueId"/>
+    </genClasses>
+    <genClasses ecoreClass="Markup.ecore#//NewLineElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//NewLineElement/text"/>
+    </genClasses>
+    <genClasses ecoreClass="Markup.ecore#//NullElement"/>
+    <genClasses ecoreClass="Markup.ecore#//OCLCodeElement"/>
+    <genClasses ecoreClass="Markup.ecore#//OCLEvalElement"/>
+    <genClasses ecoreClass="Markup.ecore#//OCLTextElement"/>
+    <genClasses ecoreClass="Markup.ecore#//TextElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Markup.ecore#//TextElement/text"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

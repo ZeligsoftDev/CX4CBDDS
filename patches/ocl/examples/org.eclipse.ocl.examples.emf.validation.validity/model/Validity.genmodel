@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.ocl.examples.emf.validation.validity/emf-gen"
+    modelPluginID="org.eclipse.ocl.examples.emf.validation.validity" templateDirectory="/org.eclipse.ocl.examples.codegen/templates"
+    modelName="Validity" modelPluginClass="" editPluginClass="org.eclipse.ocl.examples.emf.validation.validity.validity.provider.ValidityEditPlugin"
+    editorPluginClass="org.eclipse.ocl.examples.emf.validation.validity.validity.presentation.ValidityEditorPlugin"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testSuiteClass="org.eclipse.ocl.examples.emf.validation.validity.validity.tests.ValidityAllTests"
+    booleanFlagsReservedBits="8" importerID="org.eclipse.emf.importer.ecore" suppressNotification="true"
+    complianceLevel="8.0" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    importOrganizing="true">
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
+    <details key="Use Delegates" value="false"/>
+    <details key="Use Null Annotations" value="true"/>
+  </genAnnotations>
+  <foreignModel>Validity.ecore</foreignModel>
+  <genPackages prefix="Validity" basePackage="org.eclipse.ocl.examples.emf.validation"
+      disposableProviderFactory="true" ecorePackage="Validity.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Validity.ecore#//Severity">
+      <genEnumLiterals ecoreEnumLiteral="Validity.ecore#//Severity/UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="Validity.ecore#//Severity/OK"/>
+      <genEnumLiterals ecoreEnumLiteral="Validity.ecore#//Severity/INFO"/>
+      <genEnumLiterals ecoreEnumLiteral="Validity.ecore#//Severity/WARNING"/>
+      <genEnumLiterals ecoreEnumLiteral="Validity.ecore#//Severity/ERROR"/>
+      <genEnumLiterals ecoreEnumLiteral="Validity.ecore#//Severity/FATAL"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="Validity.ecore#//ConstraintLocator"/>
+    <genDataTypes ecoreDataType="Validity.ecore#//Object"/>
+    <genDataTypes ecoreDataType="Validity.ecore#//Resource"/>
+    <genDataTypes ecoreDataType="Validity.ecore#//Throwable"/>
+    <genClasses image="false" ecoreClass="Validity.ecore#//AbstractNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validity.ecore#//AbstractNode/enabled"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validity.ecore#//AbstractNode/grayed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validity.ecore#//AbstractNode/visible"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validity.ecore#//AbstractNode/label"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Validity.ecore#//AbstractNode/worstResult"/>
+      <genOperations ecoreOperation="Validity.ecore#//AbstractNode/getParent"/>
+      <genOperations ecoreOperation="Validity.ecore#//AbstractNode/getChildren"/>
+    </genClasses>
+    <genClasses ecoreClass="Validity.ecore#//ConstrainingNode">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Validity.ecore#//ConstrainingNode/parent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Validity.ecore#//ConstrainingNode/children"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validity.ecore#//ConstrainingNode/constrainingObject"/>
+    </genClasses>
+    <genClasses ecoreClass="Validity.ecore#//LeafConstrainingNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validity.ecore#//LeafConstrainingNode/constraintLocator"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Validity.ecore#//LeafConstrainingNode/constraintResource"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Validity.ecore#//LeafConstrainingNode/constraintString"/>
+    </genClasses>
+    <genClasses ecoreClass="Validity.ecore#//Result">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Validity.ecore#//Result/resultSet"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Validity.ecore#//Result/resultValidatableNode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validity.ecore#//Result/severity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validity.ecore#//Result/diagnostic"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Validity.ecore#//Result/validatableNode"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Validity.ecore#//Result/leafConstrainingNode"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Validity.ecore#//Result/resultConstrainingNode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validity.ecore#//Result/exception"/>
+    </genClasses>
+    <genClasses ecoreClass="Validity.ecore#//ResultConstrainingNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Validity.ecore#//ResultConstrainingNode/resultValidatableNode"/>
+    </genClasses>
+    <genClasses ecoreClass="Validity.ecore#//ResultSet">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Validity.ecore#//ResultSet/root"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Validity.ecore#//ResultSet/results"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Validity.ecore#//ResultSet/timestamp"/>
+    </genClasses>
+    <genClasses ecoreClass="Validity.ecore#//ResultValidatableNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Validity.ecore#//ResultValidatableNode/resultConstrainingNode"/>
+    </genClasses>
+    <genClasses ecoreClass="Validity.ecore#//RootNode">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Validity.ecore#//RootNode/resultSets"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Validity.ecore#//RootNode/constrainingNodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Validity.ecore#//RootNode/validatableNodes"/>
+    </genClasses>
+    <genClasses ecoreClass="Validity.ecore#//RootConstrainingNode">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Validity.ecore#//RootConstrainingNode/rootNode"/>
+    </genClasses>
+    <genClasses ecoreClass="Validity.ecore#//RootValidatableNode">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Validity.ecore#//RootValidatableNode/rootNode"/>
+    </genClasses>
+    <genClasses ecoreClass="Validity.ecore#//ValidatableNode">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Validity.ecore#//ValidatableNode/parent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Validity.ecore#//ValidatableNode/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Validity.ecore#//ValidatableNode/constrainedObject"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

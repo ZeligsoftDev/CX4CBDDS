@@ -1,0 +1,127 @@
+target "Papyrus Main" with requirements source
+
+// I-build should be referenced lazily due to their volatility, unless a specific version is needed
+/*** Manual referencing ***/
+// manualUpdate
+location nebula "http://download.eclipse.org/nebula/releases/1.2.0/" {
+	org.eclipse.nebula.widgets.richtext.feature.feature.group
+	org.eclipse.nebula.cwt.feature.feature.group
+}
+
+// manualUpdate
+location nattable "http://download.eclipse.org/nattable/releases/1.5.0/repository" {
+	org.eclipse.nebula.widgets.nattable.core.feature.feature.group
+	org.eclipse.nebula.widgets.nattable.core.source.feature.feature.group
+	org.eclipse.nebula.widgets.nattable.extension.glazedlists.feature.feature.group
+	org.eclipse.nebula.widgets.nattable.extension.glazedlists.source.feature.feature.group
+	org.eclipse.nebula.widgets.nattable.extension.nebula.feature.feature.group
+	org.eclipse.nebula.widgets.nattable.extension.nebula.source.feature.feature.group
+}
+
+// manualUpdate
+location orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository" {
+	com.google.guava [27.0.0,31.0.0) // emf.compare still needs guava 27.0.0
+	com.google.guava.source [27.0.0,31.0.0)
+	// This disappeared from the baseline, need to look at simrel messages
+	org.apache.commons.io [2.8.0, 3.0.0)
+	// update dependencies to be in adequation with latest gmf runtime
+	com.google.gson [2.9.1,3.0.0)
+	com.google.gson.source [2.9.1,3.0.0) 
+	org.apache.batik.anim [1.16.0,1.17.0)
+	org.apache.batik.dom [1.16.0,1.17.0)
+	org.apache.batik.dom.svg [1.16.0,1.17.0)
+	org.apache.batik.xml [1.16.0,1.17.0)
+	org.apache.logging.log4j [2.17.0, 3.0.0)
+	com.google.inject [5.0.0, 6.0.0)
+}
+
+
+/*** Updates from the Simrel repository ***/
+
+// updateFrom("XWT",0)
+location xwt "https://download.eclipse.org/xwt/milestones-1.9.0/1.9.0-RC2/" {
+	org.eclipse.xwt.feature.feature.group lazy
+}
+
+// updateFrom("QVT Operational for 2023-06",0)
+location qvto "https://download.eclipse.org/mmt/qvto/updates/releases/3.10.7" {
+	org.eclipse.m2m.qvt.oml.sdk.feature.group
+}
+
+// updateFrom("M2T Xpand for 2021-03",0) 
+location xpand "https://download.eclipse.org/modeling/m2t/xpand/updates/releases/R201605260315/" {
+	org.eclipse.xpand.sdk.feature.group
+	org.eclipse.xtend.feature.group
+}
+
+// updateFrom("MDT UML2",0) 
+location uml "https://download.eclipse.org/modeling/mdt/uml2/updates/5.5" {
+	org.eclipse.uml2.sdk.feature.group
+}
+
+// updateFrom("Eclipse",0)
+location platform "https://download.eclipse.org/eclipse/updates/4.28/R-4.28-202306050440/" {
+	org.eclipse.sdk.feature.group
+}
+
+// updateFrom("OCL for 2023-06",0) 
+location ocl "https://download.eclipse.org/modeling/mdt/ocl/updates/releases/6.18.0" {
+	org.eclipse.ocl.examples.classic.feature.group
+	org.eclipse.ocl.examples.feature.group
+}
+
+// updateFrom("Xtext, Xtend",0)
+location xtext "https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.31.0/" {
+	org.eclipse.xtext.sdk.feature.group
+	org.eclipse.xtend.sdk.feature.group
+	org.eclipse.xtext.redist.feature.group
+	org.eclipse.xtext.runtime.feature.group
+	org.eclipse.xtext.ui.feature.group
+	org.eclipse.xtext.generator.feature.group
+}
+
+// updateFrom("EMFT MWE for 2022-12",0)
+location mwe "https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.14.0/" {
+	org.eclipse.emf.mwe2.language.sdk.feature.group
+}
+
+// updateFrom("Web Tools Platform",0) 
+location webtools "https://download.eclipse.org/webtools/downloads/drops/R3.30.0/S-3.30RC2-20230603084739/repository/" {
+	org.eclipse.wst.xml_ui.feature.feature.group lazy
+}
+
+// updateFrom("GMF Runtime",0)
+location gmfRuntime "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/R202305230839" {
+	org.eclipse.gmf.runtime.sdk.feature.group
+}
+
+// updateFrom("GMF Runtime",1)
+location gmfNotation "https://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/R202211151334" {
+	org.eclipse.gmf.runtime.notation.sdk.feature.group
+}
+
+// updateFrom("EMF (Core)",0)
+location emf "https://download.eclipse.org/modeling/emf/emf/builds/release/2.34.0" {
+	org.eclipse.emf.sdk.feature.group
+}
+
+// updateFrom("EMF Services",0) 
+location emfQuery "https://download.eclipse.org/modeling/emf/query/updates/releases/R202208101410" {
+	org.eclipse.emf.query.sdk.feature.group
+}
+
+// updateFrom("EMF Services",1)
+location emfValidation "https://download.eclipse.org/modeling/emf/validation/updates/releases/R202305230712" {
+	org.eclipse.emf.validation.sdk.feature.group
+}
+
+// updateFrom("EMF Services",2)
+location emfTransaction "https://download.eclipse.org/modeling/emf/transaction/updates/releases/R202208110935" {
+	org.eclipse.emf.transaction.sdk.feature.group
+}
+
+// updateFrom("GEF",0)
+location gef "https://download.eclipse.org/tools/gef/classic/releases/3.16.0" {
+	org.eclipse.gef.feature.group
+}
+

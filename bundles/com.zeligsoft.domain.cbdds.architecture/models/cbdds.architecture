@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<architecture:ArchitectureDomain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:architecture="http://www.eclipse.org/papyrus/infra/core/architecture" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:gmfdiagrepresentation="http://www.eclipse.org/papyrus/infra/gmfdiag/representation" xmlns:paletteconfiguration="http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.8" xmi:id="_pvwuANV3EemRs_x18rjDMA" name="Software Engineering" description="">
+<architecture:ArchitectureDomain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:architecture="http://www.eclipse.org/papyrus/infra/core/architecture" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:elementtypesconfigurations="http://www.eclipse.org/papyrus/infra/elementtypesconfigurations/1.2" xmlns:gmfdiagrepresentation="http://www.eclipse.org/papyrus/infra/gmfdiag/representation" xmlns:paletteconfiguration="http://www.eclipse.org/papyrus/diagram/paletteconfiguration/0.8" xmi:id="_pvwuANV3EemRs_x18rjDMA" name="Distributed, Real-Time and Embedded Systems Domain" description="">
   <stakeholders xmi:type="architecture:Stakeholder" xmi:id="__XDmkNV3EemRs_x18rjDMA" name="ATCD Modeler" description="Stakeholder involved in ATCD modeling"/>
   <stakeholders xmi:type="architecture:Stakeholder" xmi:id="_GGdd0NV4EemRs_x18rjDMA" name="AXCIOMA Modeler" description="Stakeholder involved in AXCIOMA modeling"/>
   <concerns xmi:type="architecture:Concern" xmi:id="_Ww-6YNV4EemRs_x18rjDMA" name="ATCD Modeling"/>
   <concerns xmi:type="architecture:Concern" xmi:id="_aNWTkNV4EemRs_x18rjDMA" name="AXCIOMA Modeling"/>
   <contexts xmi:type="architecture:ArchitectureDescriptionLanguage" xmi:id="_fXUeENV4EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.atcd.architecture" name="ATCD" description="ATCD Modeling Language" defaultViewpoints="_-gpGgNV4EemRs_x18rjDMA" creationCommandClass="com.zeligsoft.domain.cbdds.architecture.commands.CreateATCDModelCommand">
-    <viewpoints xmi:type="architecture:ArchitectureViewpoint" xmi:id="_-gpGgNV4EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.viewpoint.atcd" name="ATCD" concerns="_Ww-6YNV4EemRs_x18rjDMA">
+    <viewpoints xmi:type="architecture:ArchitectureViewpoint" xmi:id="_-gpGgNV4EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.viewpoint.atcd" name="ATCD Modelling" concerns="_Ww-6YNV4EemRs_x18rjDMA">
       <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_fa4kAHDuEeWh-MssWmCB_A"/>
       <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_zzf4gHDtEeWh-MssWmCB_A"/>
       <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_UzcgsHDtEeWh-MssWmCB_A"/>
@@ -53,7 +53,7 @@
     <metamodel xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
   </contexts>
   <contexts xmi:type="architecture:ArchitectureDescriptionLanguage" xmi:id="_PwQTgNWBEemDwbmIrr3eOw" id="com.zeligsoft.domain.cbdds.axcioma.architecture" name="AXCIOMA" description="AXCIOMA Modeling Language" defaultViewpoints="_AXsuwNV5EemRs_x18rjDMA" creationCommandClass="com.zeligsoft.domain.cbdds.architecture.commands.CreateAXCIOMAModelCommand" conversionCommandClass="com.zeligsoft.domain.cbdds.architecture.commands.ConvertToAXCIOMACommand">
-    <viewpoints xmi:type="architecture:ArchitectureViewpoint" xmi:id="_AXsuwNV5EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.viewpoint.axcioma" name="AXCIOMA" concerns="_aNWTkNV4EemRs_x18rjDMA">
+    <viewpoints xmi:type="architecture:ArchitectureViewpoint" xmi:id="_AXsuwNV5EemRs_x18rjDMA" id="com.zeligsoft.domain.cbdds.viewpoint.axcioma" name="AXCIOMA Modelling" concerns="_aNWTkNV4EemRs_x18rjDMA">
       <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_zzf4gHDtEeWh-MssWmCB_A"/>
       <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_fa4kAHDuEeWh-MssWmCB_A"/>
       <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_yeY0sHDvEeWh-MssWmCB_A"/>
@@ -94,7 +94,7 @@
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.base.zdl/elementtypes/ZDL.elementtypesconfigurations#_9ZjZMDCqEeqtnaAwMhA4RQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.domain.zml/elementtypes/ZML.elementtypesconfigurations#_8rKg0DC4EeqtnaAwMhA4RQ"/>
     <elementTypes xmi:type="elementtypesconfigurations:ElementTypeSetConfiguration" href="platform:/plugin/com.zeligsoft.cx.ui/elementtypes/CX_ui.elementtypesconfigurations#_z0RrkDCrEeqtnaAwMhA4RQ"/>
-    <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" xmi:id="_CF3pMExIEeqoLNTLZUle2w" name="Composite Structure Diagram" icon="platform:/plugin/org.eclipse.papyrus.uml.diagram.composite/icons/obj16/Diagram_CompositeStructure.gif" implementationID="CompositeStructure">
+    <representationKinds xmi:type="gmfdiagrepresentation:PapyrusDiagram" xmi:id="_CF3pMExIEeqoLNTLZUle2w" id="com.zeligsoft.domain.cbdds.architecture.representationkind.deploymenteditor" name="Deployment Model" icon="platform:/plugin/org.eclipse.papyrus.uml.diagram.composite/icons/obj16/Diagram_CompositeStructure.gif" implementationID="CompositeStructure">
       <concerns xmi:type="architecture:Concern" href="platform:/plugin/org.eclipse.papyrus.uml.architecture/model/uml.architecture#_HQhf48SYEeaKZJ_pGfaSiA"/>
       <palettes xmi:type="paletteconfiguration:PaletteConfiguration" href="platform:/plugin/com.zeligsoft.domain.dds4ccm.ui/palettes/DDS4CCM_compositestructure.paletteconfiguration#/"/>
     </representationKinds>

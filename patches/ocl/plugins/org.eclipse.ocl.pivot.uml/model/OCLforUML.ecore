@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="oclforuml" nsURI="http://www.eclipse.org/ocl/2015/OCLforUML/1"
+    nsPrefix="ocl4uml">
+  <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <details key="originalName" value="OCLforUML"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="BoundedInteger" eSuperTypes="#//Integer">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Specifies that a DataType behaves as an Integer number with explicit precision and overflow handling. A 16 bit number may be specified using a maximum of 32767 and minimum of -32768. &#xD;&#xA;Specifies how an out of range numeric result is to be handled.&#xD;&#xA;Specifies that an out of range result is invalid. This is the default.&#xD;&#xA;Specifies that an out of range result should be saturated to the nearest maximum/minimum value.&#xD;&#xA;Specifies that an out of range result should be wrapped around to give a value modulo the maximum-minimum+1.&#xD;&#xA;Specifies additional characteristics that affect the behavior of evaluations.&#xD;&#xA;Specifies how the resolution of a numeric result is to be reduced.&#xD;&#xA;Values are rounded down if the residue is less than half an epsilon, rounded up if the residue is greater than or equal to half an epsilon.&#xD;&#xA;Values are always rounded up. This is also known as round to plus infinity.&#xD;&#xA;Values are always rounded down. This is also known as truncate or round to minus infinity.&#xD;&#xA;Values are rounded down if the residue is less than half an epsilon, rounded up if the residue is greater than half an epsilon. Residues of exactly half an epsilon are rounded to yield an even result with respect to the least significant bit of the result."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="overflow" ordered="false"
+        lowerBound="1" eType="#//Overflow" defaultValueLiteral="invalid">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The behavior when a maximum/minimum value is exceeded."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Integer">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Specifies that a DataType behaves as an Integer and optionally defines a limited numeric range that an implementation must support. Computations resulting in values beyond a specified minimum or maximum limits are ill-defined. The derived BoundedInteger stereotype may be used to define exact precisions and an overflow behavior."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_DataType" ordered="false"
+        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximum" ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The most positive inclusive value of the DataType. Defaults to unlimited."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimum" ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The most negative inclusive value of the DataType. Defaults to unlimited."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Overflow">
+    <eLiterals name="invalid"/>
+    <eLiterals name="saturate" value="1"/>
+    <eLiterals name="modulo" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Collection">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Specifies the null-free-ness of a Collection."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_MultiplicityElement"
+        ordered="false" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNullFree" ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        defaultValueLiteral="false" unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether the type of the TypedElement is a null-free Collection."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Collections">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Specifies the default null-free-ness of Collections defined by composed properties of child Packages and/or Classes."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Package" ordered="false"
+        eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNullFree" ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        defaultValueLiteral="false" unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether the type of the TypedElement is a null-free Collection."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FixedPoint" eSuperTypes="#//Real">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Specifies that a DataType behaves as a Real number and optionally defines the precision of a fixed point Integer representation. A two bit number with the values {-4, -2, 0, +2} is specified as having three integerBits and -1 fractionalBIts."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bitTrue" ordered="false"
+        lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Specifies that an implementation precisely implements the specified number of fractionBits and so is bit-true. Alternatively a non-bit-true implementation may use a larger fractionalBits to suit the natural precision of a target platform. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fractionalBits" ordered="false"
+        lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer"
+        defaultValueLiteral="0">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The number of bits used to represent the fractional ptrecision of the fixed point number. This may be negative if the fixed point quantum is greater than 1."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="integerBits" ordered="false"
+        lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The number of bits used to represent the sign and non-fractional part of the fixed point number. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="overflow" ordered="false"
+        lowerBound="1" eType="#//Overflow" defaultValueLiteral="invalid">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The behavior when a maximum/minimum value is exceeded."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rounding" ordered="false"
+        lowerBound="1" eType="#//Rounding" defaultValueLiteral="nearest">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The behavior when there is insufficient resolution."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Real">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Specifies that a DataType behaves as a Real and optionally defines a limited numeric range and resolution that an implementation must support. Computations resulting in values beyond a specified minimum or maximum limits or resolution are ill-defined. The derived FixedPoint or FloatingPoint stereotypes may be used to define more exact precisions, overflow and underflow behaviors."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_DataType" ordered="false"
+        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="epsilon" ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Real"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The minimum required ratio between adjacent values."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximum" ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Real"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The most positive inclusive value of the DataType. Defaults to unlimited."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimum" ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Real"
+        unsettable="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The most negative inclusive value of the DataType. Defaults to unlimited."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Rounding">
+    <eLiterals name="nearest"/>
+    <eLiterals name="ceiling" value="1"/>
+    <eLiterals name="floor" value="2"/>
+    <eLiterals name="congruent" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FloatingPoint" eSuperTypes="#//Real">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Specifies that a DataType behaves as a Real number and optionally defines the required precision of a mantissa and base 2 exponent floating point representation. An IEEE 754 double precision number may be specified with 11 exponentBits, 53 mantissaBits. 1.7976931348623157e+308 maximum, -1.7976931348623157e+308 minimum, 1.0000000000000002 epsilon."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exponentBits" ordered="false"
+        lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The number of bits used to represent the base 2 exponent and its polarity."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mantissaBits" ordered="false"
+        lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Integer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The number of bits used to represent the mantissa and its polarity."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="overflow" ordered="false"
+        lowerBound="1" eType="#//Overflow" defaultValueLiteral="invalid">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The behavior when a maximum/minimum value is exceeded."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rounding" ordered="false"
+        lowerBound="1" eType="#//Rounding" defaultValueLiteral="nearest">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The behavior when there is insufficient resolution."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Validation">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Controls the validation of an InstanceSpecification."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_InstanceSpecification"
+        ordered="false" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//InstanceSpecification"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validate" ordered="false"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether the instance(s) should be validated."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Validations">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Controls the default validation of all InstanceSpecifications within a Package and its nested Packages."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Package" ordered="false"
+        lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validateInstanceSpecifications"
+        ordered="false" eType="ecore:EDataType platform:/plugin/org.eclipse.uml2.types/model/Types.ecore#//Boolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether child instanceSpecifications should be validated."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

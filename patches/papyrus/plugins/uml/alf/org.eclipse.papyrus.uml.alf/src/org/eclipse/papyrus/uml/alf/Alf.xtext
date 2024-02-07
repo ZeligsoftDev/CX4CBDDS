@@ -1,0 +1,1144 @@
+/*****************************************************************************
+ * Copyright (c) 2013, 2014 CEA LIST.
+ *
+ *    
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *  IJI - Initial implementation
+ * 
+ *****************************************************************************/
+
+grammar org.eclipse.papyrus.uml.alf.Alf hidden (WS, ML_COMMENT, SL_COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.omg.org/spec/ALF/20120827"
+
+/*********
+* UNITS *
+*********/
+
+UnitDefinition :
+	(namespaceName = NamespaceDeclaration )?
+	(^import += ImportDeclaration )*
+  ( documentation += DOCUMENTATION_COMMENT )?
+  ( annotation += StereotypeAnnotation )*
+  definition = NamespaceDefinition
+;
+
+StereotypeAnnotation : 
+	'@' stereotypeName = QualifiedName 
+	 ( '(' ( names = QualifiedNameList | taggedValues = TaggedValueList ) ')' )? 
+;
+
+TaggedValueList :
+  // CHANGE: Made taggedValue composite in the metamodel.
+  taggedValue += TaggedValue ( "," taggedValue += TaggedValue )*
+;
+
+TaggedValue : 
+	name = Name '=>' 
+	( value = BOOLEAN_VALUE |
+	  operator = NumericUnaryOperator? value = NATURAL_VALUE |
+	  value = '*' |
+	  value = STRING 
+	) ;
+
+NamespaceDeclaration returns QualifiedName : 
+	'namespace' QualifiedName ';'
+;
+
+ImportDeclaration returns ImportReference : 
+	( PackageImportReference | ElementImportReference ) ';'	
+;
+
+ElementImportReference :
+  visibility = ImportVisibilityIndicator 'import' referentName = QualifiedName ('as' alias = Name)?
+;
+
+PackageImportReference :
+  visibility = ImportVisibilityIndicator 'import' referentName = PackageImportQualifiedName
+//  ( 
+//    referentName = UnqualifiedName ('::' | '.') '*' |
+//    referentName = ColonQualifiedName '::' '*' | 
+//    referentName = DotQualifiedName '.' '*'
+//  )
+;
+
+PackageImportQualifiedName returns QualifiedName :
+  nameBinding += NameBinding 
+  (
+    ('::' nameBinding += NameBinding)* '::' '*' |
+    ('.' nameBinding += NameBinding)* '.' '*'
+  )
+;
+
+ImportVisibilityIndicator : 
+	'public' | 'private'
+;
+
+/* NAMESPACES */
+NamespaceDefinition : 
+	PackageDefinition | ClassifierDefinition
+;
+
+VisibilityIndicator: 
+	ImportVisibilityIndicator | 'protected'
+;
+
+// CHANGE: Separated Member into Member with a composite reference to MemberDefinition.
+
+/* PACKAGES */
+PackageDefinition : 
+	'package' name = Name '{' ( ownedMember += PackagedElement )* '}' 
+;
+
+PackageDefinitionOrStub returns PackageDefinition :
+	'package' name = Name ( isStub ?= ';' | '{' ( ownedMember += PackagedElement )* '}' )
+;
+
+// PackageBody : 
+// 	{PackageBody}'{' ( packagedElement += PackagedElement )* '}'
+// ;
+
+PackagedElement returns Member : 
+  ( documentation += DOCUMENTATION_COMMENT )?
+  ( annotation += StereotypeAnnotation )*
+  visibility = ImportVisibilityIndicator 
+	definition = PackagedElementDefinition
+;
+
+PackagedElementDefinition returns MemberDefinition:
+  PackageDefinitionOrStub | ClassifierDefinitionOrStub
+;
+
+/***************
+* CLASSIFIERS *
+***************/
+ClassifierDefinition : 
+  ClassDefinition | 
+  ActiveClassDefinition | 
+  DataTypeDefinition | 
+  EnumerationDefinition | 
+  AssociationDefinition | 
+  SignalDefinition | 
+  ActivityDefinition
+;
+
+ClassifierDefinitionOrStub returns ClassifierDefinition : 
+  ClassDefinitionOrStub | 
+  ActiveClassDefinitionOrStub | 
+  DataTypeDefinitionOrStub | 
+  EnumerationDefinitionOrStub | 
+  AssociationDefinitionOrStub | 
+  SignalDefinitionOrStub | 
+  ActivityDefinitionOrStub
+;
+
+ClassifierSignature returns ClassifierDefinition : 
+	name = Name 
+	( '<' ownedMember += ClassifierTemplateParameter ( ',' ownedMember += ClassifierTemplateParameter )* '>' )? 
+	( specialization = SpecializationClause )?
+;
+
+ClassifierTemplateParameter returns Member :
+	( documentation += DOCUMENTATION_COMMENT )? 
+	definition = ClassifierTemplateParameterDefinition
+	// TODO: isAbstract = true visibility = 'private'
+;
+
+ClassifierTemplateParameterDefinition returns ClassifierTemplateParameter :
+    name = Name ( 'specializes' specialization = TemplateParameterConstraint )?
+;
+
+TemplateParameterConstraint returns QualifiedNameList :
+  name += QualifiedName
+;
+
+SpecializationClause returns QualifiedNameList : 
+	'specializes' QualifiedNameList
+;
+
+/* CLASSES */
+ClassDeclaration returns ClassDefinition : 
+	( isAbstract ?= 'abstract' )? 'class' name = Name 
+  ( '<' ownedMember += ClassifierTemplateParameter ( ',' ownedMember += ClassifierTemplateParameter )* '>' )? 
+  ( specialization = SpecializationClause )?
+;
+
+ClassDefinition : 
+  ClassDeclaration
+	'{' ( ownedMember += ClassMember )* '}'
+;
+
+ClassDefinitionOrStub returns ClassDefinition : 
+	ClassDeclaration
+	( isStub ?= ';' | '{' ( ownedMember += ClassMember )* '}' )
+;
+
+ClassMember returns Member : 
+	( documentation += DOCUMENTATION_COMMENT*)?
+	( annotation += StereotypeAnnotation )*
+	( visibility = VisibilityIndicator )?
+	definition = ClassMemberDefinition
+;
+
+ClassMemberDefinition returns MemberDefinition :
+  ClassifierDefinitionOrStub | FeatureDefinitionOrStub
+;
+
+
+/* ACTIVE CLASSES */
+ActiveClassDeclaration returns ActiveClassDefinition : 
+  ( isAbstract ?= 'abstract' )? 'active' 'class' name = Name
+  ( '<' ownedMember += ClassifierTemplateParameter ( ',' ownedMember += ClassifierTemplateParameter )* '>' )? 
+  ( specialization = SpecializationClause )?
+;
+
+ActiveClassDefinition : 
+  ActiveClassDeclaration
+  '{' ( ownedMember += ActiveClassMember )* '}'
+  // CHANGE: Made classifierBehavior composite (and classifierBehavior isn't added to ownedMembers)
+  ( 'do' classifierBehavior = BehaviorClause )?
+;
+
+ActiveClassDefinitionOrStub returns ActiveClassDefinition : 
+  ActiveClassDeclaration
+  ( isStub ?= ';' | 
+    '{' ( ownedMember += ActiveClassMember )* '}' ( 'do' classifierBehavior = BehaviorClause )? )
+;
+
+BehaviorClause returns ActivityDefinition :
+	body = Block | name = Name // NOTE: Does not set isStub = true.
+;
+
+ActiveClassMember returns Member : 
+  ( documentation += DOCUMENTATION_COMMENT)?
+  ( annotation += StereotypeAnnotation )*
+  ( visibility = VisibilityIndicator )?
+	definition = ActiveClassMemberDefinition
+;
+
+ActiveClassMemberDefinition returns MemberDefinition : 
+	ClassMemberDefinition | ActiveFeatureDefinitionOrStub
+;
+
+/* DATA TYPES */
+DataTypeDeclaration returns DataTypeDefinition : 
+  ( isAbstract ?= 'abstract' )? 'datatype' name = Name 
+  ( '<' ownedMember += ClassifierTemplateParameter ( ',' ownedMember += ClassifierTemplateParameter )* '>' )? 
+  ( specialization = SpecializationClause )?
+;
+
+DataTypeDefinition :
+  DataTypeDeclaration
+	'{' ( ownedMember += StructuredMember )* '}'
+;
+
+DataTypeDefinitionOrStub returns DataTypeDefinition : 
+  DataTypeDeclaration
+  ( isStub ?= ';' | '{' ( ownedMember += StructuredMember )* '}' )
+;
+
+StructuredMember returns Member : 
+	( documentation += DOCUMENTATION_COMMENT )?
+	( annotation += StereotypeAnnotation )*
+	( visibility = 'public' )? 
+	definition = PropertyDefinition
+;
+
+/* ASSOCIATIONS */
+AssociationDeclaration returns AssociationDefinition : 
+  ( isAbstract ?= 'abstract' )? 'assoc'  name = Name 
+  ( '<' ownedMember += ClassifierTemplateParameter ( ',' ownedMember += ClassifierTemplateParameter )* '>' )? 
+  ( specialization = SpecializationClause )?
+;
+
+AssociationDefinition : 
+  AssociationDeclaration
+  '{' ( ownedMember += StructuredMember )* '}'
+;
+
+AssociationDefinitionOrStub returns AssociationDefinition :
+  AssociationDeclaration
+	( isStub ?= ';' | '{' ( ownedMember += StructuredMember )* '}' )
+;
+
+/* ENUMERATIONS */
+EnumerationDeclaration returns EnumerationDefinition : 
+	'enum' name = Name ( specialization = SpecializationClause )?
+;
+
+EnumerationDefinition : 
+	EnumerationDeclaration 
+  '{' ( ownedMember += EnumerationLiteralName ( ',' ownedMember += EnumerationLiteralName )* )? '}'
+;
+
+EnumerationDefinitionOrStub returns EnumerationDefinition :
+  EnumerationDeclaration 
+	( isStub ?= ';' | '{' ( ownedMember += EnumerationLiteralName ( ',' ownedMember += EnumerationLiteralName )*  )? '}' )
+;
+
+EnumerationLiteralName returns Member : 
+	( documentation += DOCUMENTATION_COMMENT  )? 
+	// TODO: visibility = 'public'
+	definition = EnumerationLiteralNameDefinition
+;
+
+EnumerationLiteralNameDefinition returns EnumerationLiteralName :
+  name = Name 
+;
+
+/* SIGNALS */
+SignalDeclaration returns SignalDefinition : 
+  ( isAbstract ?= 'abstract' )? 'signal' name = Name 
+  ( '<' ownedMember += ClassifierTemplateParameter ( ',' ownedMember += ClassifierTemplateParameter )* '>' )? 
+  ( specialization = SpecializationClause )?
+;
+
+SignalDefinition : 
+  SignalDeclaration
+  '{' ( ownedMember += StructuredMember )* '}'
+;
+
+SignalDefinitionOrStub returns SignalDefinition : 
+  SignalDeclaration
+	( isStub ?= ';' | '{' ( ownedMember += StructuredMember )* '}' )
+;
+
+/* ACTIVITIES */
+ActivityDeclaration returns ActivityDefinition : 
+  'activity' name = Name 
+  ( '<' ownedMember += ClassifierTemplateParameter ( ',' ownedMember += ClassifierTemplateParameter )* '>' )? 
+  '(' ( ownedMember += FormalParameter ( ',' ownedMember += FormalParameter )* )? ')'
+  ( ownedMember += ReturnParameter )?
+;
+
+ActivityDefinition : 
+  ActivityDeclaration
+	body = Block
+;
+
+ActivityDefinitionOrStub returns ActivityDefinition : 
+  ActivityDeclaration
+  ( isStub ?= ';' | body = Block )
+;
+
+FormalParameter returns Member : 
+	( documentation += DOCUMENTATION_COMMENT )?
+	( annotation += StereotypeAnnotation )*
+	definition = FormalParameterDefinition
+;
+
+FormalParameterDefinition returns NonReturnParameter :
+  // CHANGE: Added the NonReturnParameter subtype of FormalParameter to accomodate Xtext serialization.
+  direction = ParameterDirection name = Name ':' 
+  // CHANGE: Made TypedElementDefinition a composite part of FormalParameter, rather than the supertype
+  typePart = TypePart  
+;
+
+ReturnParameter returns Member :
+  definition = ReturnParameterDefinition
+;
+
+ReturnParameterDefinition returns ReturnParameter :
+  // CHANGE: Added the NonReturnParameter subtype of FormalParameter to accomodate Xtext serialization.
+  ':' typePart = TypePart
+  // CHANGE: Made return the default for direction
+;
+
+ParameterDirection : 
+	'in' | 'out' | 'inout'
+;
+
+/* FEATURES */
+FeatureDefinitionOrStub returns MemberDefinition : 
+  AttributeDefinition | OperationDefinitionOrStub
+;
+
+ActiveFeatureDefinitionOrStub returns MemberDefinition : 
+	ReceptionDefinition | SignalReceptionDefinitionOrStub
+;
+
+/* PROPERTIES */
+PropertyDefinition : 
+	PropertyDeclaration ';'
+;
+
+AttributeDefinition returns PropertyDefinition : 
+	PropertyDeclaration ( initializer = AttributeInitializer )? ';'
+;
+
+AttributeInitializer returns Expression : 
+	'=' InitializationExpression
+;
+
+PropertyDeclaration returns PropertyDefinition : 
+	name = Name ':' ( isComposite?='compose' )? 
+	// CHANGE: Made TypedElementDefinition a composite part of PropertyDefinition instead of the supertype
+	typePart = TypePart
+;
+
+TypePart returns TypedElementDefinition :
+  // CHANGE: Added isAny attribute to TypedElementDefinition to allow Xtext serialization.
+  // CHANGE: Added isMultiplicity attribute to TypedElementDefinition.
+  // CHANGE: Added isSequence attribute to TypedElementDefinition.
+  ( isAny ?= 'any' | typeName = QualifiedName )
+  ( ( '[' 
+      ( isMultiplicity ?= ']' | 
+        ( lowerBound = NATURAL_VALUE '..' )? upperBound = UnlimitedNaturalLiteral ']' 
+      )
+    )?
+    ( isOrdered ?= 'ordered' ( isNonunique ?= 'nonunique' )? | 
+      isNonunique ?='nonunique' ( isOrdered ?= 'ordered' )? | 
+      isSequence ?= 'sequence'
+    )?
+  )?
+;
+
+/*
+TypeName returns QualifiedName :
+	'any' | QualifiedName
+;
+*/
+ 
+UnlimitedNaturalLiteral : 
+	NATURAL_VALUE | '*'	
+;
+
+/* OPERATIONS */
+OperationDeclaration returns OperationDefinition : 
+	( isAbstract?='abstract' )? name = Name 
+  '(' ( ownedMember += FormalParameter ( ',' ownedMember += FormalParameter )* )? ')'
+  ( ownedMember += ReturnParameter )?
+	( redefinition = RedefinitionClause )?
+;
+
+OperationDefinitionOrStub returns OperationDefinition : 
+	OperationDeclaration 
+	( isStub ?= ';' | body = Block )
+;
+
+RedefinitionClause returns QualifiedNameList : 
+	'redefines' QualifiedNameList
+;
+
+/* RECEPTIONS */
+ReceptionDefinition : 
+	'receive' signalName = QualifiedName ';'
+	// TODO: name = signal.nameBinding->last().name
+;
+
+SignalReceptionDeclaration returns SignalReceptionDefinition: 
+	'receive' 'signal' name = Name ( specialization = SpecializationClause )?
+;
+
+SignalReceptionDefinitionOrStub returns SignalReceptionDefinition : 
+	SignalReceptionDeclaration 
+  ( isStub ?= ';' | '{' ( ownedMember += StructuredMember )* '}' )
+;
+
+/***************
+* NAMES        *
+***************/
+Name :
+  ID | UNRESTRICTED_NAME
+;
+
+QualifiedName :
+	UnqualifiedName ( ( '::' nameBinding += NameBinding )+ | ( '.' nameBinding += NameBinding )+ )?
+;
+	
+PotentiallyAmbiguousQualifiedName returns QualifiedName :
+  UnqualifiedName 
+  ( ( '::' nameBinding += NameBinding )+ |
+    isAmbiguous ?= '.' nameBinding += NameBinding ( '.' nameBinding += NameBinding )*
+  )?
+;
+
+ColonQualifiedName returns QualifiedName : 
+	UnqualifiedName ( '::' nameBinding += NameBinding )+
+;
+
+DotQualifiedName returns QualifiedName : 
+	UnqualifiedName ( '.' nameBinding += NameBinding )+
+;
+
+UnqualifiedName returns QualifiedName : 
+	nameBinding += NameBinding
+; 
+
+NameBinding : 
+	name = Name ( binding = TemplateBinding )?	
+;
+
+/*
+QualifiedNameWithoutBinding :
+	// unqualified = UnqualifiedName (nameCompletion = (ColonQualifiedNameCompletion | DotQualifiedNameCompletion))?
+	unqualified = Name (nameCompletion = (ColonQualifiedNameCompletionWithoutBinding))?
+;
+*/
+	
+/*
+ColonQualifiedNameCompletionWithoutBinding : 
+	( '::' names+=Name)+
+;
+*/
+
+/* Unbounded lookahead required here */
+TemplateBinding : 
+	'<' ( NamedTemplateBinding | PositionalTemplateBinding ) '>'
+;
+
+PositionalTemplateBinding : 
+	argumentName += QualifiedName ( ',' argumentName += QualifiedName )*
+;
+
+NamedTemplateBinding : 
+	substitution += TemplateParameterSubstitution ( ',' substitution += TemplateParameterSubstitution )*
+;
+
+TemplateParameterSubstitution :
+	parameterName = Name "=>" argumentName = QualifiedName
+;
+
+/***************
+* EXPRESSIONS *
+***************/
+Expression :
+  AssignmentExpression | ConditionalExpression
+;
+
+/* PRIMARY EXPRESSIONS */
+
+PrimaryExpression returns Expression :
+  BaseExpression
+	// CHANGE: Made FeatureReference and ExtentOrExpression subtypes of Expression.
+  ( {FeatureReference.expression = current} '.' nameBinding = NameBinding {FeatureInvocationExpression.target = current} tuple = Tuple |
+    {FeatureReference.expression = current} '.' nameBinding = NameBinding {PropertyAccessExpression.featureReference = current} | 
+    {ExtentOrExpression.nonNameExpression = current} '->' 
+      ( {SequenceOperationExpression.primary = current} operation = QualifiedName tuple = Tuple
+      | {SequenceReductionExpression.primary = current} 'reduce' ( isOrdered ?= 'ordered' )? behaviorName = QualifiedName 
+      // CHANGE: Made SequenceExpansionExpression concrete.
+      | {SequenceExpansionExpression.primary = current} operation = ID variable = Name '(' argument = Expression ')'
+      ) | 
+    {SequenceAccessExpression.primary = current} index = Index
+  )*
+;
+
+//NonNamePrimaryExpression returns Expression :
+//  NonNameBaseExpression |
+//  BaseExpression
+//  // CHANGE: Made FeatureReference and ExtentOrExpression subtypes of Expression.
+//  ( {FeatureReference.expression = current} '.' nameBinding = NameBinding {FeatureInvocationExpression.target = current} tuple = Tuple |
+//    {FeatureReference.expression = current} '.' nameBinding = NameBinding {PropertyAccessExpression.featureReference = current} | 
+//    {ExtentOrExpression.nonNameExpression = current} '->' 
+//      ( {SequenceOperationExpression.primary = current} operation = QualifiedName tuple = Tuple
+//      | {SequenceReductionExpression.primary = current} 'reduce' ( isOrdered ?= 'ordered' )? behaviorName = QualifiedName 
+//      // CHANGE: Made SequenceExpansionExpression concrete.
+//      | {SequenceExpansionExpression.primary = current} operation = ID variable = Name '(' argument = Expression ')'
+//      ) | 
+//    {SequenceAccessExpression.primary = current} index = Index
+//  )+
+//;
+
+BaseExpression returns Expression : 
+	LiteralExpression |
+	ThisExpression |
+	SuperInvocationExpression |
+	InstanceCreationOrSequenceConstructionExpression |
+  ClassExtentExpression |
+  LinkOperationExpression |
+  SequenceConstructionExpression |
+  SequenceOperationOrReductionOrExpansionExpression |
+  BehaviorInvocationExpression |
+  NameExpression |
+  ParenthesizedExpression
+;
+
+/* LITERAL EXPRESSIONS */
+LiteralExpression returns LiteralExpression :
+  BooleanLiteralExpression |
+  NaturalLiteralExpression |
+  UnboundedLiteralExpression |
+  StringLiteralExpression
+;
+
+BooleanLiteralExpression :
+	image = BOOLEAN_VALUE
+;
+
+NaturalLiteralExpression :
+	image = NATURAL_VALUE
+;
+
+UnboundedLiteralExpression :
+	{UnboundedLiteralExpression} '*'
+;
+
+StringLiteralExpression :
+	image = STRING
+;
+
+/* Name EXPRESSIONS */
+NameExpression :
+  name = PotentiallyAmbiguousQualifiedName
+;
+
+/* THIS EXPRESSIONS */
+ThisExpression returns Expression : 
+	{FeatureInvocationExpression} 'this' tuple = Tuple | 
+	{ThisExpression} 'this'
+;
+
+/* PARENTHESIZED EXPRESSIONS */
+ParenthesizedExpression returns Expression : 
+	'(' Expression ')'
+;
+
+/* PROPERTY ACCESS EXPRESSIONS */
+//FeatureReference :
+//  expression = PrimaryExpression // '.' nameBinding = NameBinding
+//;
+
+//FeatureTargetExpression returns Expression :
+//  NonNamePrimaryExpression | NameTargetExpression
+//;
+//
+//NameTargetExpression returns NameExpression :
+//  name = ColonQualifiedName
+//;
+
+/* INVOCATION EXPRESSIONS */
+
+BehaviorInvocationExpression :
+  target = PotentiallyAmbiguousQualifiedName tuple = Tuple
+;
+
+Tuple : 
+	/* {Tuple}'(' ( namedTupleExpressionList = NamedTupleExpressionList | ( positionalTupleExpressionList = PositionalTupleExpressionList )? ) ')' */
+	'(' ( NamedTupleExpressionList | PositionalTupleExpressionList ) ')'
+;
+
+PositionalTupleExpressionList returns PositionalTuple :
+	{PositionalTuple} ( expression += Expression (',' expression += Expression)* )?
+;
+
+NamedTupleExpressionList returns NamedTuple : 
+	namedExpression += NamedExpression ( ',' namedExpression += NamedExpression )*
+;
+
+NamedExpression : 
+	name = Name '=>' expression = Expression
+;
+
+SuperInvocationExpression :
+	'super' ( '.' target = QualifiedName)? tuple = Tuple
+;
+
+/* INSTANCE CREATION EXPRESSIONS */
+InstanceCreationOrSequenceConstructionExpression returns Expression : 
+	'new' 
+	( 
+	  {SequenceConstructionExpression} typeName = QualifiedName ( hasMultiplicity ?= MultiplicityIndicator )? '{' ( elements = SequenceElements )? '}' | 
+	  {InstanceCreationExpression} constructor = QualifiedName tuple = Tuple
+	)
+;
+
+/* LINK OPERATION EXPRESSIONS */
+LinkOperationExpression :
+  associationName = PotentiallyAmbiguousQualifiedName '.' operation = LinkOperation tuple = LinkOperationTuple
+;
+
+LinkOperation :
+'createLink' | 'destroyLink' | 'clearAssoc'
+;
+
+LinkOperationTuple returns Tuple :
+'(' ( IndexedNamedTupleExpressionList | PositionalTupleExpressionList ) ')'
+;
+
+IndexedNamedTupleExpressionList returns NamedTuple :
+  namedExpression += IndexedNamedExpression (',' namedExpression += IndexedNamedExpression )*
+;
+
+IndexedNamedExpression returns NamedExpression : 
+	name = Name ( index = Index )? '=>' expression = Expression
+;
+
+/* CLASS EXTENT EXPRESSIONS */
+ClassExtentExpression :
+  className = PotentiallyAmbiguousQualifiedName '.' 'allInstances' '(' ')'
+;
+
+/* SEQUENCE CONSTRUCTION EXPRESSIONS */
+
+SequenceConstructionExpression :
+  // CHANGE: Added isAny attribute to SequenceConstructionExpression in order to allow Xtext serialization.
+  ( isAny ?= 'any' | typeName = QualifiedName ) ( hasMultiplicity ?= MultiplicityIndicator )? '{' ( elements = SequenceElements )? '}' |
+  hasMultiplicity ?= 'null'
+;
+
+MultiplicityIndicator : 
+	'[' ']'
+;
+
+SequenceElements : 
+  SequenceRange | 
+  SequenceExpressionList
+;
+
+SequenceRange :
+  rangeLower = Expression '..' rangeUpper = Expression
+;
+
+SequenceExpressionList :
+  element += SequenceElement ( ',' element += SequenceElement )* ( ',' )?
+;
+
+SequenceElement returns Expression : 
+	Expression | SequenceInitializationExpression
+;
+
+SequenceInitializationExpression returns SequenceConstructionExpression : 
+	'new'? '{' elements = SequenceElements '}'
+;
+
+/* SEQUENCE ACCESS EXPRESSIONS */
+Index returns Expression : 
+	'[' Expression ']'
+;
+
+/* SEQUENCE OPERATION, REDUCTION AND EXPANSION EXPRESSIONS */
+// NOTE: This only covers the case when the primary is a class extent shorthand.
+SequenceOperationOrReductionOrExpansionExpression returns Expression :
+  {ExtentOrExpression} name = PotentiallyAmbiguousQualifiedName '->' 
+    ( {SequenceOperationExpression.primary = current} operation = QualifiedName tuple = Tuple
+    | {SequenceReductionExpression.primary = current} 'reduce' ( isOrdered ?= 'ordered' )? behaviorName = QualifiedName 
+    // CHANGE: Made SequenceExpansionExpression concrete.
+    | {SequenceExpansionExpression.primary = current} operation = ID variable = Name '(' argument = Expression ')'
+    )
+;
+    
+/* INCREMENT OR DECREMENT EXPRESSIONS */
+PrefixExpression returns IncrementOrDecrementExpression : 
+  // CHANGE: Added operator to IncrementOrDecrementExpression in the metamodel.
+	operator = AffixOperator operand = LeftHandSide // isPrefix ?= ''
+;
+
+AffixOperator :
+	'++' | '--'
+;
+
+/* UNARY EXPRESSIONS */
+UnaryExpression returns Expression :
+  PostfixOrCastExpression | NonPostfixNonCastUnaryExpression
+;
+
+PostfixOrCastExpression returns Expression :
+  PostfixExpression | CastExpression | PrimaryExpression
+;
+
+PostfixExpression returns IncrementOrDecrementExpression :
+  operand = LeftHandSide operator = AffixOperator
+;
+
+NonPostfixNonCastUnaryExpression returns Expression : 
+	PrefixExpression | 
+	NumericUnaryExpression | 
+	BooleanUnaryExpression	| 
+	BitStringUnaryExpression	| 
+	IsolationExpression
+;
+
+BooleanUnaryExpression : 
+	operator = '!' operand = UnaryExpression
+;
+
+BitStringUnaryExpression : 
+	operator = '~' operand = UnaryExpression
+;
+
+NumericUnaryExpression : 
+	operator = NumericUnaryOperator operand = UnaryExpression
+;
+
+NumericUnaryOperator : 
+	'+' | '-'
+;
+
+IsolationExpression : 
+	operator='$' operand = UnaryExpression
+;
+
+CastExpression : 
+  // CHANGE: Added isAny attribute to CastExpression in order to allow Xtext serialization.
+  '(' ( isAny ?= 'any' | typeName = QualifiedName ) ')' operand = CastCompletion
+;
+
+CastCompletion returns Expression : 
+	PostfixOrCastExpression | 
+	BooleanUnaryExpression	| 
+	BitStringUnaryExpression	| 
+	IsolationExpression
+;
+
+/* ARITHMETIC EXPRESSIONS */
+MultiplicativeExpression returns Expression : 
+	UnaryExpression 
+	( {ArithmeticExpression.operand1 = current} operator = MultiplicativeOperator operand2 = UnaryExpression )*
+;
+
+MultiplicativeOperator : 
+	'*' | '/' | '%'
+;
+
+AdditiveExpression returns Expression : 
+	MultiplicativeExpression
+	( {ArithmeticExpression.operand1 = current} operator = AdditiveOperator operand2 = MultiplicativeExpression )*
+;
+
+AdditiveOperator : 
+	'+' | '-'
+;
+
+/* SHIFT EXPRESSIONS */
+
+ShiftExpression returns Expression : 
+	AdditiveExpression
+	( {ShiftExpression.operand1 = current} operator = ShiftOperator operand2 = AdditiveExpression )*
+;
+
+ShiftOperator : 
+	'<<' | '>>' | '>>>'
+;
+
+/* RELATIONAL EXPRESSIONS */
+RelationalExpression returns Expression :
+	ShiftExpression 
+	( {RelationalExpression.operand1 = current} operator = RelationalOperator operand2 = ShiftExpression )?
+;
+
+RelationalOperator : 
+	'<' | '>' | '<=' | '>='
+;
+
+/* CLASSIFICATION EXPRESSIONS */
+ClassificationExpression returns Expression : 
+	RelationalExpression 
+  ( {ClassificationExpression.operand = current} operator = ClassificationOperator typeName = QualifiedName )?
+;
+
+ClassificationOperator : 
+	'instanceof' | 'hastype'
+;
+
+/* EQUALITY EXPRESSIONS */
+EqualityExpression returns Expression : 
+	ClassificationExpression 
+  ( {EqualityExpression.operand1 = current} operator = EqualityOperator operand2 = ClassificationExpression )*
+;
+
+EqualityOperator : 
+	'==' | '!='
+;
+
+/* LOGICAL EXPRESSIONS */
+AndExpression returns Expression : 
+	EqualityExpression 
+  ( {LogicalExpression.operand1 = current} operator = '&' operand2 = EqualityExpression )*
+;
+
+ExclusiveOrExpression returns Expression :
+  AndExpression
+  ( {LogicalExpression.operand1 = current} operator = '^' operand2 = AndExpression )*
+;
+
+InclusiveOrExpression returns Expression : 
+	ExclusiveOrExpression
+	( {LogicalExpression.operand1 = current} operator = '|' operand2 = ExclusiveOrExpression )*
+;
+
+/* CONDITIONAL LOGICAL EXPRESSIONS */
+ConditionalAndExpression returns Expression : 
+	InclusiveOrExpression
+	( {ConditionalLogicalExpression.operand1 = current} operator = '&&' operand2 = InclusiveOrExpression )*
+;
+
+ConditionalOrExpression returns Expression :
+	ConditionalAndExpression
+	( {ConditionalLogicalExpression.operand1 = current} operator = '||' operand2 = ConditionalAndExpression )*
+;
+
+/* CONDITIONAL-TEST EXPRESSIONS */
+ConditionalExpression returns Expression : 
+	ConditionalOrExpression
+  ( {ConditionalTestExpression.operand1 = current} 
+    '?' operand2 = Expression ':' operand3 = ConditionalExpression 
+  )?
+;
+
+/* ASSIGNMENT EXPRESSIONS */
+AssignmentExpression returns AssignmentExpression :
+  leftHandSide = LeftHandSide operator = AssignmentOperator rightHandSide = Expression
+;
+
+LeftHandSide :
+  NameLeftHandSide | 
+  FeatureLeftHandSide // ( index = Index )? |
+//  "(" LeftHandSide ")"
+;
+
+NameLeftHandSide :
+  // CHANGE: Moved the index property from LeftHandSide down to just NameLeftHandSide.
+  target = PotentiallyAmbiguousQualifiedName ( index = Index )? 
+;
+
+FeatureLeftHandSide :
+  // CHANGE: Replaced the feature property of a FeatureLeftHandSide with expression.
+  expression = PrimaryExpression
+;
+
+AssignmentOperator : 
+	'=' | '+=' | '-='	| '*='| '/=' | '%=' | '&=' | '|='	| '^=' | '<<=' | '>>=' | '>>>=' ;
+
+/**************
+ * STATEMENTS *
+ **************/
+StatementSequence returns Block : 
+	{Block} ( statement += DocumentedStatement )*
+;
+
+DocumentedStatement returns AnnotatedStatement : 
+	// CHANGE: Made AnnotatedStatement a subtype of DocumentedStatement with annotations and a statement reference. 
+	AnnotatedStatement
+;
+
+Statement : 
+	// AnnotatedStatement | 
+	InLineStatement |
+	BlockStatement |
+	EmptyStatement |
+	LocalNameDeclarationStatement |
+  ExpressionStatement |
+	IfStatement |
+	SwitchStatement |
+	WhileStatement |
+	ForStatement |
+	DoStatement |
+	BreakStatement |
+	ReturnStatement |
+	AcceptStatement |
+	ClassifyStatement
+;
+
+/* BLOCK */
+Block : 
+	{Block} '{' ( statement += DocumentedStatement )* '}'
+;
+
+/* ANNOTATED STATEMENTS */
+AnnotatedStatement : 
+  ( documentation += DOCUMENTATION_COMMENT )?
+  // CHANGE: Include text line in annotation statement.
+  ( annotation += STATEMENT_ANNOTATION )*
+  // ( '//@' annotation += Annotation ( '@' annotation += Annotation )+ '\r'? '\n' )*
+	statement = Statement
+;
+
+/*
+Annotation : 
+	identifier = ID ( '(' argument += Name ( ',' argument += Name )* ')' )?
+;
+*/
+
+/* IN-LINE STATEMENTS */
+InLineStatement : 
+  // CHANGE: Include all text lexically in one attribute of InLineStatement.
+  code = INLINE_STATEMENT
+	//'/*@' 'inline' '(' language = Name ')' '*/'
+;
+
+/* BLOCK STATEMENTS */
+BlockStatement :
+	block = Block
+;
+
+/* EMPTY STATEMENTS */
+EmptyStatement :
+  {EmptyStatement}
+	';'
+;
+
+/* LOCAL NAME DECLARATION STATEMENTS */
+LocalNameDeclarationStatement : 
+  // CHANGE: Added isAny attribute to localNameDeclarationStatement in order to allow Xtext serialization.
+	( 'let' name = Name ':' ( isAny ?= 'any' | typeName = QualifiedName ) hasMultiplicity ?= MultiplicityIndicator? |
+	  ( isAny ?= 'any' | typeName = QualifiedName ) hasMultiplicity ?= MultiplicityIndicator? name = Name
+	)
+	'=' expression = InitializationExpression ';'
+;
+
+InitializationExpression returns Expression :
+	Expression
+| SequenceInitializationExpression
+| InstanceInitializationExpression
+;
+
+InstanceInitializationExpression returns InstanceCreationExpression : 
+	'new' tuple = Tuple
+;
+
+/* EXPRESSION STATEMENTS */
+ExpressionStatement :
+  expression = Expression ';'
+;
+
+/* IF STATEMENTS */
+IfStatement : 
+	'if' nonFinalClauses += ConcurrentClauses ( 'else' 'if' nonFinalClauses += ConcurrentClauses )*
+	( 'else' finalClause = Block )?
+;
+
+ConcurrentClauses : 
+	clause += NonFinalClause ( 'or' 'if' clause += NonFinalClause )*
+;
+
+NonFinalClause : 
+	'(' condition = Expression ')' body = Block
+;
+
+/* SWITCH STATEMENTS */
+SwitchStatement : 
+	'switch' '(' expression = Expression ')'
+	'{' ( nonDefaultClause += SwitchClause )*
+	( defaultClause = SwitchDefaultClause )? '}'
+;
+
+SwitchClause :
+	case += SwitchCase ( case += SwitchCase )*
+	block = NonEmptyStatementSequence
+;
+
+SwitchCase returns Expression : 
+	'case' Expression ':'
+;
+
+SwitchDefaultClause returns Block : 
+	'default' ':' NonEmptyStatementSequence
+;
+
+NonEmptyStatementSequence returns Block : 
+	( statement += DocumentedStatement )+
+;
+
+/* WHILE STATEMENTS */
+WhileStatement : 
+	'while' '(' condition = Expression ')' body = Block
+;
+
+/* DO STATEMENTS */
+DoStatement : 
+	'do' body = Block 'while' '(' condition = Expression ')' ';'
+;
+
+/* FOR STATEMENTS */
+ForStatement : 
+	'for' '(' variableDefinition += LoopVariableDefinition ( ',' variableDefinition += LoopVariableDefinition )* ')' 
+	body = Block
+;
+
+LoopVariableDefinition : 
+  // CHANGE: Added isAny attribute to LoopVariableDefinition in order to allow Xtext serialization.
+  // NOTE: Default for typeIsInferred must be false.
+	variable = Name typeIsInferred ?= 'in' expression1 = Expression ( '..' expression2 = Expression )? |
+	( isAny ?= 'any' | typeName = QualifiedName ) variable = Name ':' expression1 = Expression
+;
+
+/* BREAK STATEMENTS */
+BreakStatement : 
+	{BreakStatement} 
+	'break' ';'
+;
+
+/* RETURN STATEMENTS */
+ReturnStatement : 
+	{ReturnStatement}
+	'return' ( expression = Expression )? ';'
+;
+
+/* ACCEPT STATEMENTS */
+AcceptStatement : 
+ 	( acceptBlock += AcceptClause ';' | 
+    acceptBlock += AcceptBlock ( 'or' acceptBlock += AcceptBlock )* 
+  )
+;
+
+AcceptBlock : 
+	AcceptClause block = Block
+;
+
+AcceptClause returns AcceptBlock : 
+	'accept' '(' ( name = Name ':' )? signalNames = QualifiedNameList ')'
+;
+
+/* CLASSIFY STATEMENTS */
+ClassifyStatement :
+	'classify' expression = Expression 
+   (
+     fromList = ClassificationFromClause ( toList = ClassificationToClause )? |
+     ( isReclassifyAll ?= ReclassifyAllClause )? toList = ClassificationToClause
+   )
+   ';'
+;
+
+ClassificationFromClause returns QualifiedNameList :
+	'from' QualifiedNameList
+;
+
+ClassificationToClause returns QualifiedNameList : 
+	'to' QualifiedNameList
+;
+
+ReclassifyAllClause : 
+	'from' '*'
+;
+
+QualifiedNameList : 
+	name += QualifiedName ( ',' name += QualifiedName )*
+;
+
+
+/****************
+* Terminals
+*****************/
+terminal BOOLEAN_VALUE : 'true' | 'false' ;
+
+terminal NATURAL_VALUE :
+	('0' | '1'..'9' (('_')? '0'..'9')*) | //DECIMAL 
+	(('0b' | '0B') '0'..'1' (('_')? '0'..'1')*) | // BINARY
+	(('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F')  (('_')? ('0'..'9'|'a'..'f'|'A'..'F'))*) | // HEX
+	('0' ('_')? '0'..'7' (('_')? '0'..'7')*) // OCT
+;
+
+terminal ID : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')* ;
+terminal UNRESTRICTED_NAME : '\'' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'\'') )* '\'' ;
+
+terminal STRING	: '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"' ;
+
+terminal DOCUMENTATION_COMMENT : '/**' -> '*/' ;
+terminal STATEMENT_ANNOTATION : '//@' -> '\n'
+//  '//@' WS? ID (WS? '(' WS? (ID | UNRESTRICTED_NAME) (WS? ',' WS? (ID | UNRESTRICTED_NAME))* WS? ')')? 
+//  (WS? '@' WS? ID (WS? '(' WS? (ID | UNRESTRICTED_NAME) (WS? ',' WS? (ID | UNRESTRICTED_NAME))* WS? ')')?)* (' '|'\t')* ('\r'? '\n')
+;
+terminal INLINE_STATEMENT : '/*@inline(' (ID | UNRESTRICTED_NAME) ')' -> '*/';
+
+terminal ML_COMMENT	: '/*' !('*' | '@') -> '*/';
+terminal SL_COMMENT : '//' (!('@'|'\n'|'\r') !('\n'|'\r')*)? ('\r'? '\n')?;
+
+terminal WS : (' '|'\t'|'\r'|'\n')+;

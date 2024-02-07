@@ -1,0 +1,75 @@
+«IMPORT trace»
+
+«EXTENSION org::eclipse::xtend::util::stdlib::naming»
+«EXTENSION org::eclipse::xtend::util::stdlib::tracing::templates::util»
+
+«DEFINE root FOR Trace»
+	«EXPAND index»
+	«EXPAND file(traceBySource) FOREACH validNamedTracesBySource()»
+«ENDDEFINE» 
+  
+«DEFINE index FOR Trace»
+	«FILE "index.html"»
+		<html>
+		<head>
+		  <title>Trace HTML Dump</title>  
+		</head>
+		<body>
+			<table border="1" width="100%">
+			<tr>
+			  <th>Trace-Kind<th>Type<th>Name<th>Namespace
+				«FOREACH validNamedTracesBySource().sortBy(t|t.sortLabel()) AS s»
+					«EXPAND tableRow( traceBySource.exists(e|((TraceBySource)e).source == s.source),"" ) FOR s.source»
+				«ENDFOREACH»
+			</table>
+		</body>
+	«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE file(List traceBySource) FOR TraceBySource»
+	«FILE source.filename()»
+		<html>
+		<head>
+		  <title>Trace for «source.qualifiedName()»</title>
+		</head>
+		<body>
+			
+			<h2>Traces to Other Model Elements</h2>
+			<table border="1" width="100%">
+			<tr>
+			  <th>Trace-Kind<th>Type<th>Name<th>Namespace
+			«FOREACH items.typeSelect(M2MTraceItem) AS item»	
+				«FOREACH item.to.select( t|t.getName().isValid() ) AS to»
+					«EXPAND tableRow( traceBySource.exists(e|((TraceBySource)e).source == to), item.kind ) FOR to»
+				«ENDFOREACH»
+			«ENDFOREACH» 
+			</table>
+
+			<h2>Traces to Code</h2>
+			<table border="1" width="100%">
+			<tr>
+			  <th>Trace-Kind<th>File<th>Token
+				«FOREACH items.typeSelect(M2CTraceItem) AS toCode»
+					<tr>
+						<td>«toCode.kind»
+						<td>«toCode.targetFile»
+						<td>«toCode.token»
+					</tr>
+				«ENDFOREACH»
+			</ul>
+		</body>
+	«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE tableRow(boolean link, String kind) FOR emf::EObject»
+<tr>
+	<td>«kind» 
+	<td>«typelabel()» 
+	«IF link»
+		<td><a href="«filename()»">«getName()»</a>
+	«ELSE»
+		<td>«getName()»
+	«ENDIF»
+	<td>«namespace()»
+</tr>
+«ENDDEFINE»

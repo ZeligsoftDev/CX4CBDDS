@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<project name="oAW - emftools" default="release">
+	<!-- todo: versionsnummer -->
+	<property name="release-dir" value="../core.release" />
+
+	<path id="build.classpath">
+		<fileset dir="../core.lib/lib">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement location="${release-dir}/jars/oaw-workflow.jar" />
+		<pathelement location="${release-dir}/jars/oaw-expressions.jar" />
+	</path>
+
+	<target name="clean">
+		<delete dir="out" />
+	</target>
+
+	<target name="compile" depends="clean">
+		<mkdir dir="out" />
+		<mkdir dir="out/classes" />
+
+		<javac classpathref="build.classpath" debug="true" encoding="iso-8859-1" destdir="out/classes">
+			<src path="main/src" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="out/oaw-emftools.jar">
+			<fileset dir="out/classes" />
+			<fileset dir="main/src" />
+		</jar>
+	</target>
+
+	<target name="test" depends="jar">
+		<delete dir="out/testclasses" />
+		<mkdir dir="out/testclasses" />
+		<javac srcdir="test/src" debug="true" encoding="iso-8859-1" destdir="out/testclasses">
+			<classpath>
+				<path refid="build.classpath" />
+				<pathelement location="out/oaw-emftools.jar" />
+			</classpath>
+		</javac>
+		<copy todir="out/testclasses">
+			<fileset dir="test/src" />
+		</copy>
+		<junit fork="no" haltonerror="true" haltonfailure="true">
+			<formatter type="plain" usefile="false" />
+			<classpath>
+				<path refid="build.classpath" />
+				<pathelement location="out/oaw-emftools.jar" />
+				<pathelement path="out/testclasses" />
+				<pathelement path="test/src" />
+			</classpath>
+			<batchtest>
+				<fileset dir="out/testclasses">
+					<include name="**/*Test.class" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="release" depends="jar, test">
+		<copy todir="${release-dir}/jars" file="out/oaw-emftools.jar" flatten="true" />
+	</target>
+
+</project>

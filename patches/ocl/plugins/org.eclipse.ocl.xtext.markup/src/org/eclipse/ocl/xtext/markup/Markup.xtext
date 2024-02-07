@@ -1,0 +1,111 @@
+/*******************************************************************************
+ * Copyright (c) 2011 Willink Transformations and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v2.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v20.html
+ *
+ * Contributors:
+ *     E.D.Willink - initial API and implementation
+ *******************************************************************************/
+grammar org.eclipse.ocl.xtext.markup.Markup hidden()
+
+//generate markup "http://www.omg.org/ocl/markup/Markup"
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "platform:/resource/org.eclipse.ocl.xtext.markup/model/Markup.ecore"
+
+Markup:
+	elements+=MarkupElement*;
+
+terminal fragment NUMBER: '0'..'9';
+terminal fragment LETTER: 'a'..'z' | 'A'..'Z' | '_';
+terminal fragment ESCAPED : '\\' ('b' | 't' | 'n' | 'f' | 'r' | '"' | "'" | '\\' | '<' | '>' | '[' | ']');
+terminal fragment VERTICAL_WS : '\n' | '\r';
+terminal fragment HORIZONTAL_WS : ' ' | '\t';
+
+terminal INT: NUMBER+;
+terminal STRING	: '"' ( ESCAPED | !('\\' | '"') )* '"' ;
+terminal ID: LETTER (LETTER | NUMBER)*;
+terminal WORD: ( ESCAPED | !('\\' | '"' | '[' | ']' | ':' | '#' | ',' | HORIZONTAL_WS | VERTICAL_WS) )+;
+
+terminal NL	: (HORIZONTAL_WS* VERTICAL_WS)+;
+terminal WS	: HORIZONTAL_WS+;
+
+terminal ANY_OTHER: .;
+
+MarkupKeyword:
+	'b'
+|	'e'
+|	'bullet'
+|	'figure'
+|	'figureRef'
+|	'footnote'
+|	'heading'
+|	'oclCode'
+|	'oclEval'
+|	'oclText'
+;
+
+MarkupElement:
+	FontElement
+|	NewLineElement
+|	BulletElement
+|	FigureElement
+|	FigureRefElement
+|	FootnoteElement
+|	HeadingElement
+|	NullElement
+|	OCLCodeElement
+|	OCLEvalElement
+|	OCLTextElement
+|	TextElement				// Last to give everything else a try first
+;
+
+BulletElement:
+	{BulletElement} 'bullet' (':' level=INT)? '[' elements+=MarkupElement* ']'
+;
+
+FontElement:
+	font=('b'|'e') '[' elements+=MarkupElement* ']'
+;
+
+FigureElement:
+	'figure' ('#' def=ID)? '[' src=STRING (',' alt=STRING (',' requiredWidth=INT (',' requiredHeight=INT)?)?)? ']'
+;
+
+FigureRefElement:
+	'figureRef' '[' ref=[FigureElement|ID] ']'
+;
+
+FootnoteElement:
+	{FootnoteElement} 'footnote' '[' elements+=MarkupElement* ']'
+;
+
+HeadingElement:
+	{HeadingElement} 'heading' (':' level=INT)? '[' elements+=MarkupElement* ']'
+;
+
+NewLineElement:
+	text=NL
+;
+
+NullElement:
+	{NullElement} '[' elements+=MarkupElement* ']'
+;
+
+OCLCodeElement:
+	{OCLCodeElement} 'oclCode' '[' elements+=MarkupElement* ']'
+;
+
+OCLEvalElement:
+	{OCLEvalElement} 'oclEval' '[' elements+=MarkupElement* ']'
+;
+
+OCLTextElement:
+	{OCLTextElement} 'oclText' '[' elements+=MarkupElement* ']'
+;
+
+TextElement:
+	text+=(ID|WORD|INT|WS|':'|'#'|',')+ | text+=MarkupKeyword
+;

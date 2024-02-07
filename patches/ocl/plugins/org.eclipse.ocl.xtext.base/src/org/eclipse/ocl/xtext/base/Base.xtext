@@ -1,0 +1,142 @@
+/*******************************************************************************
+ * Copyright (c) 2010 Willink Transformations and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v2.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v20.html
+ *
+ * Contributors:
+ *     E.D.Willink - initial API and implementation
+ *******************************************************************************/
+grammar org.eclipse.ocl.xtext.base.Base hidden(WS, ML_COMMENT, SL_COMMENT) //with org.eclipse.xtext.common.Terminals
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "platform:/resource/org.eclipse.ocl.pivot/model/Pivot.ecore" as pivot
+import "platform:/resource/org.eclipse.ocl.xtext.base/model/BaseCS.ecore"
+
+MultiplicityBoundsCS returns MultiplicityBoundsCS:
+	 lowerBound=LOWER ('..' upperBound=UPPER)?;
+
+MultiplicityCS returns MultiplicityCS:
+	'[' (MultiplicityBoundsCS | MultiplicityStringCS) ('|?' | isNullFree?='|1')? ']';
+
+MultiplicityStringCS returns MultiplicityStringCS:
+	stringBounds=('*'|'+'|'?');
+
+PathNameCS returns PathNameCS:
+	ownedPathElements+=FirstPathElementCS ('::' ownedPathElements+=NextPathElementCS)*;
+
+UnreservedPathNameCS returns PathNameCS:
+	ownedPathElements+=NextPathElementCS ('::' ownedPathElements+=NextPathElementCS)*;
+
+FirstPathElementCS returns PathElementCS:
+	referredElement=[pivot::NamedElement|UnrestrictedName];
+
+NextPathElementCS returns PathElementCS:
+	referredElement=[pivot::NamedElement|UnreservedName];
+
+TemplateBindingCS returns TemplateBindingCS:
+	ownedSubstitutions+=TemplateParameterSubstitutionCS (',' ownedSubstitutions+=TemplateParameterSubstitutionCS)* (ownedMultiplicity=MultiplicityCS)?
+;
+
+TemplateParameterSubstitutionCS returns TemplateParameterSubstitutionCS:
+	ownedActualParameter=TypeRefCS
+;
+
+TemplateSignatureCS returns TemplateSignatureCS:
+	'(' ownedParameters+=TypeParameterCS (',' ownedParameters+=TypeParameterCS)* ')'
+;
+
+TypeParameterCS returns TypeParameterCS:
+	name=UnrestrictedName
+	('extends' ownedExtends+=TypedRefCS ('&&' ownedExtends+=TypedRefCS)*)?
+;
+
+TypeRefCS returns TypeRefCS:
+	TypedRefCS | WildcardTypeRefCS
+;
+
+TypedRefCS returns TypedRefCS:
+	TypedTypeRefCS
+;
+
+TypedTypeRefCS returns TypedTypeRefCS:
+	ownedPathName=PathNameCS ('(' ownedBinding=TemplateBindingCS ')')?
+;
+
+UnreservedName returns ecore::EString: // Intended to be overridden
+	UnrestrictedName;
+
+UnrestrictedName returns ecore::EString: // Intended to be overridden
+	Identifier;
+
+WildcardTypeRefCS returns WildcardTypeRefCS:
+	{WildcardTypeRefCS} '?' ('extends' ownedExtends=TypedRefCS)?
+;
+
+ID: SIMPLE_ID | ESCAPED_ID;
+
+Identifier:
+	ID;
+
+/* A lowerbounded integer is used to define the lowerbound of a collection multiplicity. The value may not be the unlimited value. */
+LOWER returns ecore::EInt:
+	INT
+;
+
+/* A number may be an integer or floating point value. The declaration here appears to be that for just an integer. This is to avoid
+ * lookahead conflicts in simple lexers between a dot within a floating point number and the dot-dot in a CollectionLiteralPartCS. A
+ * practical implementation should give high priority to a successful parse of INT ('.' INT)? (('e' | 'E') ('+' | '-')? INT)? than
+ * to the unsuccessful partial parse of INT '..'. The type of the INT terminal is String to allow the floating point syntax to be used.
+ */
+NUMBER_LITERAL returns BigNumber: // Not terminal to allow parser backtracking to sort out "5..7"
+	INT; // EssentialOCLTokenSource pieces this together ('.' INT)? (('e' | 'E') ('+' | '-')? INT)?;
+
+StringLiteral:
+	SINGLE_QUOTED_STRING;
+
+/* An upperbounded integer is used to define the upperbound of a collection multiplicity. The value may be the unlimited value. */
+UPPER returns ecore::EInt:
+	INT | '*'
+;
+
+URI:
+	SINGLE_QUOTED_STRING;
+
+terminal fragment ESCAPED_CHARACTER:
+	'\\' ('b' | 't' | 'n' | 'f' | 'r' | 'u' | '"' | "'" | '\\');
+
+terminal fragment LETTER_CHARACTER:
+	'a'..'z' | 'A'..'Z' | '_';
+
+terminal DOUBLE_QUOTED_STRING:
+	'"' (ESCAPED_CHARACTER | !('\\' | '"'))* '"';
+
+terminal SINGLE_QUOTED_STRING:
+	"'" (ESCAPED_CHARACTER | !('\\' | "'"))* "'";
+
+terminal ML_SINGLE_QUOTED_STRING:
+	"/'"->"'/";
+
+terminal SIMPLE_ID:
+	LETTER_CHARACTER (LETTER_CHARACTER | ('0'..'9'))*;
+
+terminal ESCAPED_ID:
+	"_" SINGLE_QUOTED_STRING;
+
+terminal INT: // String to allow diverse re-use
+	('0'..'9')+;		// multiple leading zeroes occur as floating point fractional part
+
+/* A multi-line comment supports a comment that may span more than one line using familiar slash-star...star-slash comment delimiters */
+terminal ML_COMMENT:
+	'/*' ->'*/';
+
+/* A single-line comment supports a comment that terminates at the end of the line */
+terminal SL_COMMENT:
+	'--' !('\n' | '\r')* ('\r'? '\n')?;
+
+/* Whitespace may occur between any pair of tokens */
+terminal WS:
+	(' ' | '\t' | '\r' | '\n')+;
+
+terminal ANY_OTHER:
+	.;

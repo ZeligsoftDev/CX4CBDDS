@@ -1,0 +1,58 @@
+extension org::eclipse::xtend::util::stdlib::naming;
+extension org::eclipse::xtend::util::stdlib::io;
+extension org::eclipse::xtend::util::stdlib::issues;
+
+
+/**
+ * Creates a trace between two elements.
+ * @param from Source element
+ * @param to Target element.
+ * @param kind Name for the trace from source to target.
+ * @param backKind Name for the trace from target back to source.
+ */
+Void createTrace( Object from, Object to, String kind, String backKind ): 
+	createTrace( from, to, kind ) -> createTrace( to, from, backKind );
+
+/**
+ * Creates a trace between two elements.
+ * @param from Source element
+ * @param to Target element.
+ * @param kind Name for the trace. 
+ */
+Void createTrace( Object from, Object to, String kind ): 
+	JAVA org.eclipse.xtend.util.stdlib.TraceComponent.createTrace(java.lang.Object, java.lang.Object, java.lang.String);
+
+/**
+ * Clears all traces.
+ */
+Void clearTrace():  
+	JAVA org.eclipse.xtend.util.stdlib.TraceComponent.clearTrace();
+
+/**
+ * Finds the target of a trace. This function will report an error if no trace for the source
+ * element to the target of the specified kind can be found.
+ * @param from Source element.
+ * @param kind Trace kind name.
+ * @return The target element of that trace.
+ */
+Object getSingleTraceTarget( Object from, String kind ): 
+	let t = getTargetInternal(from, kind):
+		t != null ? t : reportError("cannot find a "+kind+" trace for "+from.qualifiedName() );
+
+/**
+ * Proves if a trace of a specific kind exists for some element.
+ * @param from Some model element.
+ * @param kind Name of the trace.
+ * @return true, if a trace of that kind exists for the element.
+ */
+boolean hasTrace( Object from, String kind ): 
+	getTargetInternal(from, kind) != null;
+
+
+// -------------------------------- INTERNAL --------------------------------   
+
+
+
+private Object getTargetInternal( Object from, String kind ): 
+	JAVA org.eclipse.xtend.util.stdlib.TraceComponent.getSingleTraceTarget(java.lang.Object, java.lang.String);
+	   

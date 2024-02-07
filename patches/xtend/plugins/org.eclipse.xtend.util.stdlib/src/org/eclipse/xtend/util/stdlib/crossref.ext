@@ -1,0 +1,16 @@
+// ****************************************************************************
+// *** openArchitectureWare stdlib extensions: crossref
+// *** ------------------------------------------------------------------------
+// *** This library contains functions to find crossreferences to EObjects.
+// ****************************************************************************
+import emf;
+
+
+/**
+ * Retrieves objects that reference a given object.
+ * @param target The target object.
+ * @return A list of objects referencing the target.
+ */
+List[EObject] getReferencingObjects(EObject target) :
+JAVA org.eclipse.xtend.util.stdlib.EmfUtils.getReferencingObjects(org.eclipse.emf.ecore.EObject)
+;

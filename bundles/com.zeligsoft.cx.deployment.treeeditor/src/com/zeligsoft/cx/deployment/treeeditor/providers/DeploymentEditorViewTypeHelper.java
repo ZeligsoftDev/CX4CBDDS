@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.papyrus.infra.architecture.ArchitectureDomainManager;
 import org.eclipse.papyrus.infra.architecture.representation.PapyrusRepresentationKind;
+import org.eclipse.papyrus.infra.core.architecture.RepresentationKind;
 import org.eclipse.papyrus.infra.viewpoints.policy.IViewTypeHelper;
 import org.eclipse.papyrus.infra.viewpoints.policy.ViewPrototype;
 
@@ -61,7 +62,8 @@ public class DeploymentEditorViewTypeHelper implements IViewTypeHelper {
 		// Issue #118
 		ArchitectureDomainManager manager = ArchitectureDomainManager.getInstance();
 		PapyrusRepresentationKind kind = (PapyrusRepresentationKind) manager.getRepresentationKindById(
-				"org.eclipse.papyrus.uml.diagram.compositeStructure.root.structuredClassifier"); //$NON-NLS-1$
+				"com.zeligsoft.domain.cbdds.architecture.representationkind.deploymenteditor");
+//				"org.eclipse.papyrus.uml.diagram.compositeStructure.root.structuredClassifier"); //$NON-NLS-1$
 		return new DeploymentViewPrototype(kind);
 	}
 

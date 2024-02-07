@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Composite xmlns:x="http://www.eclipse.org/xwt"
+	xmlns:ppel="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets.layout"
+	xmlns:ppe="clr-namespace:org.eclipse.papyrus.infra.properties.ui.widgets" xmlns="http://www.eclipse.org/xwt/presentation"
+	xmlns:uml="clr-namespace:org.eclipse.papyrus.uml.properties.widgets">
+	<Composite.layout>
+		<ppel:PropertiesLayout></ppel:PropertiesLayout>
+	</Composite.layout>
+	<Composite>
+		<Composite.layout>
+			<ppel:PropertiesLayout></ppel:PropertiesLayout>
+		</Composite.layout>
+		<uml:StereotypeDisplayNattablePropertyEditor
+			property="UMLNotation:Element:stereotypeDisplay"
+			tableURI="platform:/plugin/org.eclipse.papyrus.uml.nattable.stereotype.display/config/stereotype.nattableconfiguration"
+			input="{Binding}"></uml:StereotypeDisplayNattablePropertyEditor>
+		<ppe:BooleanCheckbox input="{Binding}"
+			property="UMLNotation:Element:elementIcon"></ppe:BooleanCheckbox>
+		<ppe:BooleanCheckbox input="{Binding}"
+			property="UMLNotation:Element:shadow"></ppe:BooleanCheckbox>
+	</Composite>
+</Composite>

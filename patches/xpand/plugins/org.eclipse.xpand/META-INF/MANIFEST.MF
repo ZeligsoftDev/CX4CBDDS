@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.eclipse.xpand
+Bundle-Version: 2.2.1.qualifier
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.xtend,
+ org.eclipse.emf.mwe.core;resolution:=optional;x-installation:=greedy,
+ org.eclipse.jdt.core;resolution:=optional;x-installation:=greedy,
+ org.eclipse.text;resolution:=optional;x-installation:=greedy,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Export-Package: 
+ org.eclipse.internal.xpand2,
+ org.eclipse.internal.xpand2.ast,
+ org.eclipse.internal.xpand2.codeassist,
+ org.eclipse.internal.xpand2.debug,
+ org.eclipse.internal.xpand2.model,
+ org.eclipse.internal.xpand2.parser,
+ org.eclipse.internal.xpand2.pr,
+ org.eclipse.internal.xpand2.pr.util,
+ org.eclipse.internal.xpand2.type,
+ org.eclipse.xpand2,
+ org.eclipse.xpand2.output
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: org.apache.logging.log4j;version="2.17.1"

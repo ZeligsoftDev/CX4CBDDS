@@ -1,0 +1,59 @@
+grammar org.eclipse.papyrus.uml.textedit.transition.xtext.UmlTransition
+		with org.eclipse.papyrus.uml.alf.Common
+		
+import "http://www.eclipse.org/uml2/5.0.0/UML" as uml
+
+generate umlTransition "http://www.eclipse.org/papyrus/uml/textedit/transition/xtext/UmlTransition"
+
+TransitionRule:
+	(triggers+=EventRule (',' triggers+=EventRule)*)?
+	(guard=GuardRule)? 
+	(effect=EffectRule)? ;
+
+//////////////////////
+// EVENTS
+//////////////////////
+
+EventRule :
+	CallOrSignalEventRule 
+	| AnyReceiveEventRule
+	| TimeEventRule 
+	| ChangeEventRule ;
+
+CallOrSignalEventRule :
+	operationOrSignal = [uml::NamedElement] ;
+
+AnyReceiveEventRule :
+	isAReceiveEvent = 'all' ;
+	
+TimeEventRule :
+	RelativeTimeEventRule | AbsoluteTimeEventRule ;
+
+RelativeTimeEventRule :
+	'after' expr=STRING;
+
+AbsoluteTimeEventRule :
+	'at' expr=STRING;
+
+ChangeEventRule :
+	'when' exp=STRING;
+
+///////////////////////
+// GUARD
+///////////////////////
+
+GuardRule :
+	'[' constraint=STRING']';
+	
+///////////////////////
+// EFFECT
+///////////////////////
+
+EffectRule :
+	'/' kind = BehaviorKind
+	behaviorName = ID ;
+
+enum BehaviorKind :
+	ACTIVITY = "Activity" |
+	STATE_MACHINE = "StateMachine" |
+	OPAQUE_BEHAVIOR = "OpaqueBehavior" ;

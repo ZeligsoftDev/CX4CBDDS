@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.essentialocl.EssentialOCL.IfExpCS" 
+	deleted="false" 
+	description="if then else expression" 
+	enabled="true" 
+	name="If"
+	id="IfExpCS">if ${cursor}true then ${line_selection} else null endif</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.essentialocl.EssentialOCL.LetExpCS" 
+	deleted="false" 
+	description="let expression" 
+	enabled="true" 
+	name="Let"
+	id="LetExpCS">let ${cursor}${variableName} : String = null in ${line_selection}</template>
+</templates>

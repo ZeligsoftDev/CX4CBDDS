@@ -1,0 +1,226 @@
+/*******************************************************************************
+ * Copyright (c) 2010 Willink Transformations and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v2.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v20.html
+ *
+ * Contributors:
+ *     E.D.Willink - initial API and implementation
+ *******************************************************************************/
+grammar org.eclipse.ocl.xtext.completeocl.CompleteOCL
+with org.eclipse.ocl.xtext.essentialocl.EssentialOCL
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "platform:/resource/org.eclipse.ocl.pivot/model/Pivot.ecore" as pivot
+import "platform:/resource/org.eclipse.ocl.xtext.base/model/BaseCS.ecore" as base
+import "platform:/resource/org.eclipse.ocl.xtext.essentialocl/model/EssentialOCLCS.ecore" as essentialocl
+import "platform:/resource/org.eclipse.ocl.xtext.completeocl/model/CompleteOCLCS.ecore"
+
+/*
+ * A Complete OCL document comprises
+ * bullet[model imports for referenced and complemented models]
+ * bullet[includes for additional Complete OCL documents]
+ * bullet[libraries to augment or override the OCL Standard Library]
+ * bullet[package declarations for package-grouped declarations]
+ * bullet[context declarations for independent declarations]
+ */
+CompleteOCLDocumentCS returns CompleteOCLDocumentCS:
+	ownedImports+=ImportCS*
+	(ownedPackages+=PackageDeclarationCS | ownedContexts+=ContextDeclCS)*;
+
+terminal UNQUOTED_STRING:	// Never forward parsed; just provides a placeholder
+	'£$%^£$%^'				//  for reverse serialisation of embedded OCL
+;
+
+CompleteOCLNavigationOperatorName:
+	'^' | '^^';
+
+ClassifierContextDeclCS returns ClassifierContextDeclCS:
+	'context' (ownedSignature=TemplateSignatureCS)? (selfName=UnrestrictedName)?
+	ownedPathName=UnreservedPathNameCS
+	(('inv' ownedInvariants+=ConstraintCS)
+	| ownedDefinitions+=DefCS
+	)+;
+
+/*
+ * A Constraint such as
+ *
+ * oclText[IsNull('should be null') : self = null]
+ *
+ * comprises at least the OCL specification of the constraint. The constraint may
+ * additionally have a name which may be followed by a parenthesized expression defining an OCL
+ * expression to be evaluated to provide an error message.
+ */
+ConstraintCS returns base::ConstraintCS:
+	(name=UnrestrictedName ('(' ownedMessageSpecification=SpecificationCS ')')?)? ':' ownedSpecification=SpecificationCS;
+
+/*
+ * A Context declaration can be a Classifier, Operation of Property Context declaration.
+ */
+ContextDeclCS returns ContextDeclCS:
+	PropertyContextDeclCS
+	| ClassifierContextDeclCS
+	| OperationContextDeclCS;
+
+/*
+ * A definition can be an, Operation or Property definition.
+ */
+DefCS returns DefCS:
+	DefOperationCS|DefPropertyCS;
+
+/*
+ * An operation definition provides an additional operation for its classifier context.
+ *
+ * oclText[static def redundantName: isEven(i : Integer) : Boolean = i mod 2 = 0]
+ *
+ * comprises at least an operation name, return type and an OCL expression that evaluates the operation value.
+ * The operation may have parameters and may be declared static in which case there is no oclText[self].
+ *
+ * For compatibility with invariants the definition may have a name that is never used.
+ */
+DefOperationCS returns DefOperationCS:
+	(isStatic?='static')? 'def' UnrestrictedName? ':' (ownedSignature=TemplateSignatureCS)?
+		name=UnrestrictedName '(' (ownedParameters+=DefParameterCS (',' ownedParameters+=DefParameterCS)*)? ')' ':' (ownedType=TypeExpCS)?
+		 '=' ownedSpecification=SpecificationCS;
+
+DefParameterCS returns base::ParameterCS:
+	name=UnrestrictedName ':' ownedType=TypeExpCS;
+
+/*
+ * A property definition provides an additional property for its classifier context.
+ *
+ * oclText[static def redundantName: upperCaseName : Boolean = name.toUpperCase()]
+ *
+ * comprises at least a property name, type and an OCL expression that evaluates the property value.
+ * The property may be declared static in which case there is no oclText[self].
+ *
+ * For compatibility with invariants the definition may have a name that is never used.
+ */
+DefPropertyCS returns DefPropertyCS:
+	(isStatic?='static')? 'def' UnrestrictedName? ':' name=UnrestrictedName ':' ownedType=TypeExpCS
+		'=' ownedSpecification=SpecificationCS;
+
+ImportCS returns base::ImportCS:
+	('import' | 'include' | 'library') (name=Identifier ':')? ownedPathName=URIPathNameCS (isAll?='::*')?;
+
+/*
+ * An operation context declaration complements an existing operation with additional details.
+ *
+ * oclText[context (T) Stack::pop() : T]
+ * oclText[pre NotEmptyPop: size() > 0]
+ * oclText[post: size()@pre = size() + 1]
+ *
+ * The operation declaration comprises at least an operation name, which must be qualified with at least a
+ * class name. If used outside a package declaration, package name qualification is also needed.
+ * If the return type is omitted OclVoid is used.
+ * The operation may also have operation parameters and template parameters.
+ * The declaration may be followed by any number of preconditions,
+ * and/or postconditions. It may also be followed by a body expression that defines the evaluation.
+ *
+ * For compatibility with invariants the body expression may have a name that is never used.
+ */
+OperationContextDeclCS returns OperationContextDeclCS:
+	'context' (ownedSignature=TemplateSignatureCS)? ownedPathName=UnreservedPathNameCS
+	'(' (ownedParameters+=ParameterCS (',' ownedParameters+=ParameterCS)*)? ')' ':' (ownedType=TypeExpCS)?
+	(('pre' ownedPreconditions+=ConstraintCS)
+	| ('post' ownedPostconditions+=ConstraintCS)
+	| ('body' UnrestrictedName? ':' ownedBodies+=SpecificationCS)
+	)*;
+
+PackageDeclarationCS returns PackageDeclarationCS:
+	'package' ownedPathName=UnreservedPathNameCS ('inv' ownedInvariants+=ConstraintCS)* (ownedContexts+=ContextDeclCS)* 'endpackage';
+
+ParameterCS returns base::ParameterCS:
+	(name=UnrestrictedName ':')? ownedType=TypeExpCS;
+
+/*
+ * A property context declaration complements an existing property with additional details.
+ *
+ * oclText[context (T) Stack::isEmpty : Boolean]
+ * oclText[derive IsEmpty: size() = 0]
+ *
+ * The property declaration comprises at least a property name and type.
+ * The type must be qualified with at least a class name.
+ * If used outside a package declaration, package name qualification is also needed.
+ * The declaration may be followed by a derive constraint and/or an init expression.
+ *
+ * A derive constraint provides an alternate mechanism for defining a class invariant;
+ * the only difference is that the property is identified as a constrainedElement. As an
+ * invariant the constraint provides an OCL expression that should always be true.
+ *
+ * For a non-derived property, an init expression defines the value to be assigned to the property
+ * when its containing object is first created.
+ *
+ * For a derived property, an init expression defines the evaluation of the property, which
+ * may vary from access to access even for read-only properties.
+ *
+ * NB. RoyalAndLoyal gratuitously names its derived values.
+ */
+PropertyContextDeclCS returns PropertyContextDeclCS:
+	'context' ownedPathName=UnreservedPathNameCS ':' ownedType=TypeExpCS
+	(('derive' UnrestrictedName? ':' ownedDefaultExpressions+=SpecificationCS)
+	| ('init' UnrestrictedName? ':' ownedDefaultExpressions+=SpecificationCS)
+	)*;
+
+SpecificationCS returns essentialocl::ExpSpecificationCS:
+	ownedExpression=ExpCS | exprString=UNQUOTED_STRING;
+
+//---------------------------------------------------------------------------------
+//	Base overrides
+//---------------------------------------------------------------------------------
+@Override
+TemplateSignatureCS returns base::TemplateSignatureCS:
+	('(' ownedParameters+=TypeParameterCS (',' ownedParameters+=TypeParameterCS)* ')')
+|	('<' ownedParameters+=TypeParameterCS (',' ownedParameters+=TypeParameterCS)* '>')
+;
+
+@Override
+TypedRefCS returns base::TypedRefCS:
+	TypeLiteralCS | TypedTypeRefCS
+;
+
+@Override
+UnrestrictedName returns ecore::EString:
+	EssentialOCLUnrestrictedName
+	//| 'body'
+	//| 'context'
+	//| 'def'
+	//| 'derive'
+	//|	'endpackage'
+	| 'import'
+	| 'include'
+	//| 'init'
+	//| 'inv'
+	| 'library'
+	//|	'package'
+	//|	'post'
+	//|	'pre'
+	//|	'static'
+;
+
+//---------------------------------------------------------------------------------
+//	EssentialOCL overrides
+//---------------------------------------------------------------------------------
+@Override
+NavigatingArgExpCS returns essentialocl::ExpCS:
+	({OCLMessageArgCS} '?')
+	| ExpCS
+;
+
+@Override
+NavigationOperatorName:
+	EssentialOCLNavigationOperatorName | CompleteOCLNavigationOperatorName;
+
+@Override
+PrimitiveTypeIdentifier:
+	'Boolean'
+	| 'Integer'
+	| 'Real'
+	| 'String'
+	| 'UnlimitedNatural'
+	| 'OclAny'
+	| 'OclInvalid'
+	| 'OclMessage'
+	| 'OclState'
+	| 'OclVoid';

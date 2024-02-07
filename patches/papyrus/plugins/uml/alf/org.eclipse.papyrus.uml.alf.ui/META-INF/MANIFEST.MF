@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.compare;bundle-version="[3.7.0,4.0.0)",
+ org.eclipse.emf.databinding;bundle-version="[1.5.0,2.0.0)",
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="[1.9.0,2.0.0)",
+ org.eclipse.ocl.ecore;bundle-version="[3.15.0,4.0.0)",
+ org.eclipse.papyrus.infra.emf;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.papyrus.uml.alf;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.papyrus.uml.alf.libraries;bundle-version="[3.0.0,4.0.0)",
+ org.eclipse.uml2.uml;bundle-version="[5.5.0,6.0.0)",
+ org.eclipse.xtext.builder;bundle-version="[2.22.0,3.0.0)",
+ org.eclipse.xtext.common.types.ui;bundle-version="[2.22.0,3.0.0)",
+ org.eclipse.xtext.ui;bundle-version="[2.22.0,3.0.0)",
+ org.eclipse.xtext.ui.codetemplates.ui;bundle-version="[2.22.0,3.0.0)",
+ org.eclipse.xtext.ui.shared;bundle-version="[2.22.0,3.0.0)",
+ org.eclipse.xtext.xbase;bundle-version="[2.22.0,3.0.0)"
+Export-Package: org.eclipse.papyrus.uml.alf.ui.contentassist,
+ org.eclipse.papyrus.uml.alf.ui.contentassist.antlr,
+ org.eclipse.papyrus.uml.alf.ui.editor,
+ org.eclipse.papyrus.uml.alf.ui.internal,
+ org.eclipse.papyrus.uml.alf.ui.quickfix,
+ org.eclipse.papyrus.uml.alf.ui.contentassist.antlr.internal
+Bundle-Vendor: Eclipse Modeling Project
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 4.0.1.qualifier
+Bundle-Name: ALF Language (UI)
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.eclipse.papyrus.uml.alf.ui.internal.AlfActivator
+Bundle-SymbolicName: org.eclipse.papyrus.uml.alf.ui;singleton:=true
+Import-Package: org.apache.logging.log4j;version="2.17.1",
+ org.eclipse.xtext.xbase.lib;version="[2.10.0,3.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: org.eclipse.papyrus.uml.alf.ui

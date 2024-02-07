@@ -1,0 +1,112 @@
+class org/eclipse/emf/common/util/URI
+appendFileExtension
+ (Ljava/lang/String;)Lorg/eclipse/emf/common/util/URI;
+ (Ljava/lang/String;)L1org/eclipse/emf/common/util/URI;
+appendFragment
+ (Ljava/lang/String;)Lorg/eclipse/emf/common/util/URI;
+ (Ljava/lang/String;)L1org/eclipse/emf/common/util/URI;
+appendQuery
+ (Ljava/lang/String;)Lorg/eclipse/emf/common/util/URI;
+ (Ljava/lang/String;)L1org/eclipse/emf/common/util/URI;
+appendSegment
+ (Ljava/lang/String;)Lorg/eclipse/emf/common/util/URI;
+ (Ljava/lang/String;)L1org/eclipse/emf/common/util/URI;
+authority
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+collapseSegments
+ (Z)[Ljava/lang/String;
+ (Z)[1L1java/lang/String;
+createFileURI
+ (Ljava/lang/String;)Lorg/eclipse/emf/common/util/URI;
+ (Ljava/lang/String;)L1org/eclipse/emf/common/util/URI;
+createPlatformPluginURI
+ (Ljava/lang/String;Z)Lorg/eclipse/emf/common/util/URI;
+ (Ljava/lang/String;Z)L1org/eclipse/emf/common/util/URI;
+createPlatformResourceURI
+ (Ljava/lang/String;Z)Lorg/eclipse/emf/common/util/URI;
+ (Ljava/lang/String;Z)L1org/eclipse/emf/common/util/URI;
+createURI
+ (Ljava/lang/String;)Lorg/eclipse/emf/common/util/URI;
+ (Ljava/lang/String;)L1org/eclipse/emf/common/util/URI;
+createURI
+ (Ljava/lang/String;Z)Lorg/eclipse/emf/common/util/URI;
+ (Ljava/lang/String;Z)L1org/eclipse/emf/common/util/URI;
+deresolve
+ (Lorg/eclipse/emf/common/util/URI;)Lorg/eclipse/emf/common/util/URI;
+ (Lorg/eclipse/emf/common/util/URI;)L1org/eclipse/emf/common/util/URI;
+deresolve
+ (Lorg/eclipse/emf/common/util/URI;ZZZ)Lorg/eclipse/emf/common/util/URI;
+ (Lorg/eclipse/emf/common/util/URI;ZZZ)L1org/eclipse/emf/common/util/URI;
+device
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+devicePath
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+fragment
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+getCachedString
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+host
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+lastSegment
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+opaquePart
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+path
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+port
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+query
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+rawAppendFragment
+ (Ljava/lang/CharSequence;)Lorg/eclipse/emf/common/util/URI;
+ (Ljava/lang/CharSequence;)L1org/eclipse/emf/common/util/URI;
+rawSegments
+ ()[Ljava/lang/String;
+ ()[1L1java/lang/String;
+replacePrefix
+ (Lorg/eclipse/emf/common/util/URI;Lorg/eclipse/emf/common/util/URI;)Lorg/eclipse/emf/common/util/URI;
+ (Lorg/eclipse/emf/common/util/URI;Lorg/eclipse/emf/common/util/URI;)L0org/eclipse/emf/common/util/URI;
+resolve
+ (Lorg/eclipse/emf/common/util/URI;)Lorg/eclipse/emf/common/util/URI;
+ (Lorg/eclipse/emf/common/util/URI;)L1org/eclipse/emf/common/util/URI;
+resolve
+ (Lorg/eclipse/emf/common/util/URI;Z)Lorg/eclipse/emf/common/util/URI;
+ (Lorg/eclipse/emf/common/util/URI;Z)L1org/eclipse/emf/common/util/URI;
+scheme
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+segment
+ (I)Ljava/lang/String;
+ (I)L1java/lang/String;
+segments
+ ()[Ljava/lang/String;
+ ()[1L1java/lang/String;
+segmentsList
+ ()Ljava/util/List<Ljava/lang/String;>;
+ ()L1java/util/List<L1java/lang/String;>;
+toFileString
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+trimFileExtension
+ ()Lorg/eclipse/emf/common/util/URI;
+ ()L1org/eclipse/emf/common/util/URI;
+trimFragment
+ ()Lorg/eclipse/emf/common/util/URI;
+ ()L1org/eclipse/emf/common/util/URI;
+trimQuery
+ ()Lorg/eclipse/emf/common/util/URI;
+ ()L1org/eclipse/emf/common/util/URI;
+userInfo
+ ()Ljava/lang/String;
+ ()L0java/lang/String;

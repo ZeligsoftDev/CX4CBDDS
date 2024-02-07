@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+    <extension
+            point="org.eclipse.ui.editors">
+        <editor
+            class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            default="true"
+            extensions="umlmessage"
+            id="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage"
+            name="UmlMessage Editor">
+        </editor>
+    </extension>
+    <extension
+        point="org.eclipse.ui.handlers">
+        <handler
+            class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+            <activeWhen>
+                <reference
+                    definitionId="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+        <handler
+            class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.validate">
+         <activeWhen>
+            <reference
+                    definitionId="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.Editor.opened">
+            </reference>
+         </activeWhen>
+      </handler>
+    </extension>
+    <extension point="org.eclipse.core.expressions.definitions">
+        <definition id="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.Editor.opened">
+            <and>
+                <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+                <with variable="activeEditor">
+                    <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
+                        value="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage" 
+                        forcePluginActivation="true"/>
+                </with>        
+            </and>
+        </definition>
+    </extension>
+    <extension
+            point="org.eclipse.ui.preferencePages">
+        <page
+              category="org.eclipse.papyrus.embeddededitors"
+              class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+              id="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage"
+              name="UmlMessage">
+            <keywordReference id="org.eclipse.papyrus.uml.textedit.message.xtext.ui.keyword_UmlMessage"/>
+        </page>
+        <page
+            category="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage"
+            class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.coloring"
+            name="Syntax Coloring">
+            <keywordReference id="org.eclipse.papyrus.uml.textedit.message.xtext.ui.keyword_UmlMessage"/>
+        </page>
+        <page
+            category="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage"
+            class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.templates"
+            name="Templates">
+            <keywordReference id="org.eclipse.papyrus.uml.textedit.message.xtext.ui.keyword_UmlMessage"/>
+        </page>
+    </extension>
+    <extension
+            point="org.eclipse.ui.propertyPages">
+        <page
+            class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage"
+            name="UmlMessage">
+            <keywordReference id="org.eclipse.papyrus.uml.textedit.message.xtext.ui.keyword_UmlMessage"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
+    <extension
+        point="org.eclipse.ui.keywords">
+        <keyword
+            id="org.eclipse.papyrus.uml.textedit.message.xtext.ui.keyword_UmlMessage"
+            label="UmlMessage"/>
+    </extension>
+    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            description="Trigger expensive validation"
+            id="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.validate"
+            name="Validate">
+      </command>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution
+            locationURI="popup:#TextEditorContext?after=group.edit">
+             <command
+                 commandId="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.validate"
+                 style="push"
+                 tooltip="Trigger expensive validation">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.Editor.opened">
+                </reference>
+            </visibleWhen>
+         </command>  
+         </menuContribution>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
+			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
+				<visibleWhen checkEnabled="false">
+                	<reference definitionId="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.Editor.opened">
+                	</reference>
+            	</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+	    <handler
+            class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            commandId="org.eclipse.xtext.ui.editor.FindReferences">
+            <activeWhen>
+                <reference
+                    definitionId="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+    </extension>   
+
+<!-- adding resource factories -->
+
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="umlmessage">
+		</parser>
+	</extension>
+	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+        <resourceServiceProvider
+            class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            uriExtension="umlmessage">
+        </resourceServiceProvider>
+    </extension>
+
+
+
+   <extension
+         point="org.eclipse.xtext.builder.participant">
+      <participant
+            class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+      </participant>
+   </extension>
+   <extension
+            point="org.eclipse.ui.preferencePages">
+        <page
+            category="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage"
+            class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.compiler.preferencePage"
+            name="Compiler">
+            <keywordReference id="org.eclipse.papyrus.uml.textedit.message.xtext.ui.keyword_UmlMessage"/>
+        </page>
+    </extension>
+    <extension
+            point="org.eclipse.ui.propertyPages">
+        <page
+            category="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage"
+            class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.compiler.propertyPage"
+            name="Compiler">
+            <keywordReference id="org.eclipse.papyrus.uml.textedit.message.xtext.ui.keyword_UmlMessage"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
+
+	<!-- Quick Outline -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler 
+			class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference
+					definitionId="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Open the quick outline."
+			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+			name="Quick Outline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+				style="push"
+				tooltip="Open Quick Outline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="org.eclipse.papyrus.uml.textedit.message.xtext.UmlMessage.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+   <!-- quickfix marker resolution generator -->
+   <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="org.eclipse.papyrus.uml.textedit.message.xtext.ui.UmlMessageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
+      </markerResolutionGenerator>
+   </extension>
+<!-- CUSTOM EXTENSION POINT **************************************************************************-->
+   <extension
+         point="org.eclipse.papyrus.infra.gmfdiag.extensionpoints.editors.DirectEditor">
+      <DirectEditor
+            additionalConstraint="org.eclipse.papyrus.uml.textedit.message.xtext.ui.contributions.AdvancedMessageDirectEditorConstraint"
+            contributor="CEA List"
+            icon="icons/Diagram_Communication.gif"
+            language="Advanced message editor"
+            objectToEdit="org.eclipse.uml2.uml.Message">
+         <popupeditor
+               editorConfiguration="org.eclipse.papyrus.uml.textedit.message.xtext.ui.contributions.MessagePopupEditor"></popupeditor>
+         <Priority
+               name="Medium">
+         </Priority>               
+      </DirectEditor>
+      
+   </extension>
+
+</plugin>

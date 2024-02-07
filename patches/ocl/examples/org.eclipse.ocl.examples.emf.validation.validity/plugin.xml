@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+   <extension-point id="constraint_locator" name="constraint_locator" schema="schema/constraint_locator.exsd"/>
+   <extension-point id="validity_exporter" name="Validity Results Exporter" schema="schema/validity_exporter.exsd"/>
+
+   <extension point="org.eclipse.ocl.examples.emf.validation.validity.constraint_locator">
+   		<locator metaclass="http://www.eclipse.org/emf/2002/Ecore"
+   			class="org.eclipse.ocl.examples.emf.validation.validity.locator.EClassConstraintLocator"/>
+   		<locator metaclass="http://www.eclipse.org/emf/2002/Ecore"
+   			 class="org.eclipse.ocl.examples.emf.validation.validity.locator.EClassifierConstraintLocator"/>
+   		<locator metaclass="http://www.eclipse.org/emf/2002/Ecore"
+   			 class="org.eclipse.ocl.examples.emf.validation.validity.locator.EValidatorConstraintLocator"/>
+   		<locator
+   			 class="org.eclipse.ocl.examples.emf.validation.validity.locator.EValidatorConstraintLocator"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Validation -->
+      <package
+            uri="http://www.eclipse.org/emf/validation/2013/Validity"
+            class="org.eclipse.ocl.examples.emf.validation.validity.ValidityPackage"
+            genModel="model/Validity.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.ocl.examples.emf.validation.validity.validity_exporter">
+       <exporter type="html" name="HTML Export"
+             class="org.eclipse.ocl.examples.emf.validation.validity.export.HTMLExporter"/>
+       <exporter type="model" name="Model Export"
+             class="org.eclipse.ocl.examples.emf.validation.validity.export.ModelExporter"/>
+       <exporter type="text" name="Text Export"
+             class="org.eclipse.ocl.examples.emf.validation.validity.export.TextExporter"/>
+    </extension>
+
+</plugin>

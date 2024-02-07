@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+ Copyright (c) 2017 Ericsson and others.
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 
+ Contributors:
+     Simon Delisle - initial API and implementation
+-->
+
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.eclipse.emf.compare.egit.ui.internal.actions.ModelMergeToolActionHandler"
+            id="org.eclipse.papyrus.compare.egit.ui.internal.actions.ModelMergeTool"
+            name="Model Merge Tool (with EMFCompare)">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="org.eclipse.papyrus.compare.egit.ui.internal.actions.ModelMergeTool"
+            icon="icons/obj16/modelmergetool.png">
+      </image>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:team.main?after=group4">
+            <command
+                  commandId="org.eclipse.papyrus.compare.egit.ui.internal.actions.ModelMergeTool"
+                  style="push">
+                  <visibleWhen
+	                  checkEnabled="false">
+	                  <and>
+			               <test
+			                     property="org.eclipse.egit.ui.resources.ResourceState.hasUnstagedChanges">
+			               </test>
+			               <iterate
+	                     		ifEmpty="false"
+	                    		operator="and">
+				               <instanceof
+		                            value="org.eclipse.papyrus.infra.onefile.model.IPapyrusFile">
+			                   </instanceof>
+		                   </iterate>
+		              </and>
+            	  </visibleWhen>
+            </command>
+      </menuContribution>
+   </extension>
+   <!--
+   Ensure that this plug-in is started so that the operation is available.
+   -->
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.eclipse.papyrus.compare.egit.ui.EgitPapyrusStartup">
+      </startup>
+   </extension>
+</plugin>

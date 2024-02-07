@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_0" name="OCLforUML" URI="http://www.eclipse.org/ocl/2015/OCLforUML" metamodelReference="_qtyJwICREeOB3rHSo1B3ow">
+    <eAnnotations xmi:id="_qu15sICREeOB3rHSo1B3ow" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_DNf3AP-JEeSyUJMFSxXv-Q" name="oclforuml" nsURI="http://www.eclipse.org/ocl/2015/OCLforUML/1" nsPrefix="ocl4uml">
+        <eAnnotations xmi:id="_DNf3Af-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <details xmi:id="_DNf3Av-JEeSyUJMFSxXv-Q" key="originalName" value="OCLforUML"/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DNf3A_-JEeSyUJMFSxXv-Q" name="BoundedInteger" eSuperTypes="_DNf3DP-JEeSyUJMFSxXv-Q">
+          <eAnnotations xmi:id="_DNf3BP-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_oOB5kP68EeSyUJMFSxXv-Q"/>
+          <eAnnotations xmi:id="_DNf3Bf-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_DNf3Bv-JEeSyUJMFSxXv-Q" key="documentation" value="Specifies that a DataType behaves as an Integer number with explicit precision and overflow handling. A 16 bit number may be specified using a maximum of 32767 and minimum of -32768. &#xD;&#xA;Specifies how an out of range numeric result is to be handled.&#xD;&#xA;Specifies that an out of range result is invalid. This is the default.&#xD;&#xA;Specifies that an out of range result should be saturated to the nearest maximum/minimum value.&#xD;&#xA;Specifies that an out of range result should be wrapped around to give a value modulo the maximum-minimum+1.&#xD;&#xA;Specifies additional characteristics that affect the behavior of evaluations.&#xD;&#xA;Specifies how the resolution of a numeric result is to be reduced.&#xD;&#xA;Values are rounded down if the residue is less than half an epsilon, rounded up if the residue is greater than or equal to half an epsilon.&#xD;&#xA;Values are always rounded up. This is also known as round to plus infinity.&#xD;&#xA;Values are always rounded down. This is also known as truncate or round to minus infinity.&#xD;&#xA;Values are rounded down if the residue is less than half an epsilon, rounded up if the residue is greater than half an epsilon. Residues of exactly half an epsilon are rounded to yield an even result with respect to the least significant bit of the result."/>
+          </eAnnotations>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3B_-JEeSyUJMFSxXv-Q" name="overflow" ordered="false" lowerBound="1" eType="_DNf3Gv-JEeSyUJMFSxXv-Q" defaultValueLiteral="invalid">
+            <eAnnotations xmi:id="_DNf3CP-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3Cf-JEeSyUJMFSxXv-Q" key="documentation" value="The behavior when a maximum/minimum value is exceeded."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DNf3DP-JEeSyUJMFSxXv-Q" name="Integer">
+          <eAnnotations xmi:id="_DNf3Df-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_eNU4AP5sEeSuyPhGguN-lg"/>
+          <eAnnotations xmi:id="_DNf3Dv-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_DNf3D_-JEeSyUJMFSxXv-Q" key="documentation" value="Specifies that a DataType behaves as an Integer and optionally defines a limited numeric range that an implementation must support. Computations resulting in values beyond a specified minimum or maximum limits are ill-defined. The derived BoundedInteger stereotype may be used to define exact precisions and an overflow behavior."/>
+          </eAnnotations>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DNf3EP-JEeSyUJMFSxXv-Q" name="base_DataType" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3Ev-JEeSyUJMFSxXv-Q" name="maximum" ordered="false" unsettable="true">
+            <eAnnotations xmi:id="_DNf3E_-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3FP-JEeSyUJMFSxXv-Q" key="documentation" value="The most positive inclusive value of the DataType. Defaults to unlimited."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3Fv-JEeSyUJMFSxXv-Q" name="minimum" ordered="false" unsettable="true">
+            <eAnnotations xmi:id="_DNf3F_-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3GP-JEeSyUJMFSxXv-Q" key="documentation" value="The most negative inclusive value of the DataType. Defaults to unlimited."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_DNf3Gv-JEeSyUJMFSxXv-Q" name="Overflow">
+          <eAnnotations xmi:id="_DNf3G_-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hH02cP69EeSyUJMFSxXv-Q"/>
+          <eLiterals xmi:id="_DNf3HP-JEeSyUJMFSxXv-Q" name="invalid"/>
+          <eLiterals xmi:id="_DNf3Hf-JEeSyUJMFSxXv-Q" name="saturate" value="1"/>
+          <eLiterals xmi:id="_DNf3Hv-JEeSyUJMFSxXv-Q" name="modulo" value="2"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DNf3H_-JEeSyUJMFSxXv-Q" name="Collection">
+          <eAnnotations xmi:id="_DNf3IP-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="Derive"/>
+          <eAnnotations xmi:id="_DNf3If-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_DNf3Iv-JEeSyUJMFSxXv-Q" key="documentation" value="Specifies the null-free-ness of a Collection."/>
+          </eAnnotations>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DNf3I_-JEeSyUJMFSxXv-Q" name="base_MultiplicityElement" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//MultiplicityElement"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3Jf-JEeSyUJMFSxXv-Q" name="isNullFree" ordered="false" defaultValueLiteral="false" unsettable="true">
+            <eAnnotations xmi:id="_DNf3Jv-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3J_-JEeSyUJMFSxXv-Q" key="documentation" value="Whether the type of the TypedElement is a null-free Collection."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DNf3Kf-JEeSyUJMFSxXv-Q" name="Collections">
+          <eAnnotations xmi:id="_DNf3Kv-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_vk35YP6-EeSyUJMFSxXv-Q"/>
+          <eAnnotations xmi:id="_DNf3K_-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_DNf3LP-JEeSyUJMFSxXv-Q" key="documentation" value="Specifies the default null-free-ness of Collections defined by composed properties of child Packages and/or Classes."/>
+          </eAnnotations>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DNf3Lf-JEeSyUJMFSxXv-Q" name="base_Class" ordered="false">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DNf3L_-JEeSyUJMFSxXv-Q" name="base_Package" ordered="false">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3Mf-JEeSyUJMFSxXv-Q" name="isNullFree" ordered="false" defaultValueLiteral="false" unsettable="true">
+            <eAnnotations xmi:id="_DNf3Mv-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3M_-JEeSyUJMFSxXv-Q" key="documentation" value="Whether the type of the TypedElement is a null-free Collection."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DNf3Nf-JEeSyUJMFSxXv-Q" name="FixedPoint" eSuperTypes="_DNf3Tv-JEeSyUJMFSxXv-Q">
+          <eAnnotations xmi:id="_DNf3Nv-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ExmOcP7CEeSyUJMFSxXv-Q"/>
+          <eAnnotations xmi:id="_DNf3N_-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_DNf3OP-JEeSyUJMFSxXv-Q" key="documentation" value="Specifies that a DataType behaves as a Real number and optionally defines the precision of a fixed point Integer representation. A two bit number with the values {-4, -2, 0, +2} is specified as having three integerBits and -1 fractionalBIts."/>
+          </eAnnotations>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3Of-JEeSyUJMFSxXv-Q" name="bitTrue" ordered="false" lowerBound="1">
+            <eAnnotations xmi:id="_DNf3Ov-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3O_-JEeSyUJMFSxXv-Q" key="documentation" value="Specifies that an implementation precisely implements the specified number of fractionBits and so is bit-true. Alternatively a non-bit-true implementation may use a larger fractionalBits to suit the natural precision of a target platform. "/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3Pf-JEeSyUJMFSxXv-Q" name="fractionalBits" ordered="false" lowerBound="1" defaultValueLiteral="0">
+            <eAnnotations xmi:id="_DNf3Pv-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3P_-JEeSyUJMFSxXv-Q" key="documentation" value="The number of bits used to represent the fractional ptrecision of the fixed point number. This may be negative if the fixed point quantum is greater than 1."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3Qf-JEeSyUJMFSxXv-Q" name="integerBits" ordered="false" lowerBound="1">
+            <eAnnotations xmi:id="_DNf3Qv-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3Q_-JEeSyUJMFSxXv-Q" key="documentation" value="The number of bits used to represent the sign and non-fractional part of the fixed point number. "/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3Rf-JEeSyUJMFSxXv-Q" name="overflow" ordered="false" lowerBound="1" eType="_DNf3Gv-JEeSyUJMFSxXv-Q" defaultValueLiteral="invalid">
+            <eAnnotations xmi:id="_DNf3Rv-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3R_-JEeSyUJMFSxXv-Q" key="documentation" value="The behavior when a maximum/minimum value is exceeded."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3Sf-JEeSyUJMFSxXv-Q" name="rounding" ordered="false" lowerBound="1" eType="_DNf3YP-JEeSyUJMFSxXv-Q" defaultValueLiteral="nearest">
+            <eAnnotations xmi:id="_DNf3Sv-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3S_-JEeSyUJMFSxXv-Q" key="documentation" value="The behavior when there is insufficient resolution."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DNf3Tv-JEeSyUJMFSxXv-Q" name="Real">
+          <eAnnotations xmi:id="_DNf3T_-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_MQY74P5tEeSuyPhGguN-lg"/>
+          <eAnnotations xmi:id="_DNf3UP-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_DNf3Uf-JEeSyUJMFSxXv-Q" key="documentation" value="Specifies that a DataType behaves as a Real and optionally defines a limited numeric range and resolution that an implementation must support. Computations resulting in values beyond a specified minimum or maximum limits or resolution are ill-defined. The derived FixedPoint or FloatingPoint stereotypes may be used to define more exact precisions, overflow and underflow behaviors."/>
+          </eAnnotations>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DNf3Uv-JEeSyUJMFSxXv-Q" name="base_DataType" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3VP-JEeSyUJMFSxXv-Q" name="epsilon" ordered="false" unsettable="true">
+            <eAnnotations xmi:id="_DNf3Vf-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3Vv-JEeSyUJMFSxXv-Q" key="documentation" value="The minimum required ratio between adjacent values."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Real"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3WP-JEeSyUJMFSxXv-Q" name="maximum" ordered="false" unsettable="true">
+            <eAnnotations xmi:id="_DNf3Wf-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3Wv-JEeSyUJMFSxXv-Q" key="documentation" value="The most positive inclusive value of the DataType. Defaults to unlimited."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Real"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3XP-JEeSyUJMFSxXv-Q" name="minimum" ordered="false" unsettable="true">
+            <eAnnotations xmi:id="_DNf3Xf-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3Xv-JEeSyUJMFSxXv-Q" key="documentation" value="The most negative inclusive value of the DataType. Defaults to unlimited."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Real"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EEnum" xmi:id="_DNf3YP-JEeSyUJMFSxXv-Q" name="Rounding">
+          <eAnnotations xmi:id="_DNf3Yf-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_LJCjkP7AEeSyUJMFSxXv-Q"/>
+          <eLiterals xmi:id="_DNf3Yv-JEeSyUJMFSxXv-Q" name="nearest"/>
+          <eLiterals xmi:id="_DNf3Y_-JEeSyUJMFSxXv-Q" name="ceiling" value="1"/>
+          <eLiterals xmi:id="_DNf3ZP-JEeSyUJMFSxXv-Q" name="floor" value="2"/>
+          <eLiterals xmi:id="_DNf3Zf-JEeSyUJMFSxXv-Q" name="congruent" value="3"/>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DNf3Zv-JEeSyUJMFSxXv-Q" name="FloatingPoint" eSuperTypes="_DNf3Tv-JEeSyUJMFSxXv-Q">
+          <eAnnotations xmi:id="_DNf3Z_-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_fNJAgP6_EeSyUJMFSxXv-Q"/>
+          <eAnnotations xmi:id="_DNf3aP-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_DNf3af-JEeSyUJMFSxXv-Q" key="documentation" value="Specifies that a DataType behaves as a Real number and optionally defines the required precision of a mantissa and base 2 exponent floating point representation. An IEEE 754 double precision number may be specified with 11 exponentBits, 53 mantissaBits. 1.7976931348623157e+308 maximum, -1.7976931348623157e+308 minimum, 1.0000000000000002 epsilon."/>
+          </eAnnotations>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3av-JEeSyUJMFSxXv-Q" name="exponentBits" ordered="false" lowerBound="1">
+            <eAnnotations xmi:id="_DNf3a_-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3bP-JEeSyUJMFSxXv-Q" key="documentation" value="The number of bits used to represent the base 2 exponent and its polarity."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3bv-JEeSyUJMFSxXv-Q" name="mantissaBits" ordered="false" lowerBound="1">
+            <eAnnotations xmi:id="_DNf3b_-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3cP-JEeSyUJMFSxXv-Q" key="documentation" value="The number of bits used to represent the mantissa and its polarity."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3cv-JEeSyUJMFSxXv-Q" name="overflow" ordered="false" lowerBound="1" eType="_DNf3Gv-JEeSyUJMFSxXv-Q" defaultValueLiteral="invalid">
+            <eAnnotations xmi:id="_DNf3c_-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3dP-JEeSyUJMFSxXv-Q" key="documentation" value="The behavior when a maximum/minimum value is exceeded."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3dv-JEeSyUJMFSxXv-Q" name="rounding" ordered="false" lowerBound="1" eType="_DNf3YP-JEeSyUJMFSxXv-Q" defaultValueLiteral="nearest">
+            <eAnnotations xmi:id="_DNf3d_-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3eP-JEeSyUJMFSxXv-Q" key="documentation" value="The behavior when there is insufficient resolution."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DNf3e_-JEeSyUJMFSxXv-Q" name="Validation">
+          <eAnnotations xmi:id="_DNf3fP-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ajiYwP5qEeSuyPhGguN-lg"/>
+          <eAnnotations xmi:id="_DNf3ff-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_DNf3fv-JEeSyUJMFSxXv-Q" key="documentation" value="Controls the validation of an InstanceSpecification."/>
+          </eAnnotations>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DNf3f_-JEeSyUJMFSxXv-Q" name="base_InstanceSpecification" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3gf-JEeSyUJMFSxXv-Q" name="validate" ordered="false" defaultValueLiteral="false">
+            <eAnnotations xmi:id="_DNf3gv-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3g_-JEeSyUJMFSxXv-Q" key="documentation" value="Whether the instance(s) should be validated."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_DNf3hf-JEeSyUJMFSxXv-Q" name="Validations">
+          <eAnnotations xmi:id="_DNf3hv-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_Iz6UsP6_EeSyUJMFSxXv-Q"/>
+          <eAnnotations xmi:id="_DNf3h_-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+            <details xmi:id="_DNf3iP-JEeSyUJMFSxXv-Q" key="documentation" value="Controls the default validation of all InstanceSpecifications within a Package and its nested Packages."/>
+          </eAnnotations>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_DNf3if-JEeSyUJMFSxXv-Q" name="base_Package" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DNf3i_-JEeSyUJMFSxXv-Q" name="validateInstanceSpecifications" ordered="false" defaultValueLiteral="false">
+            <eAnnotations xmi:id="_DNf3jP-JEeSyUJMFSxXv-Q" source="http://www.eclipse.org/emf/2002/GenModel">
+              <details xmi:id="_DNf3jf-JEeSyUJMFSxXv-Q" key="documentation" value="Whether child instanceSpecifications should be validated."/>
+            </eAnnotations>
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <ownedComment xmi:id="_8R_S8P7DEeSyUJMFSxXv-Q" annotatedElement="_oOB5kP68EeSyUJMFSxXv-Q">
+      <body>Specifies additional characteristics that affect the behavior of evaluations.</body>
+    </ownedComment>
+    <packageImport xmi:id="_qtyJwICREeOB3rHSo1B3ow">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_sBzb4P5pEeSuyPhGguN-lg" name="Class_Collections" memberEnd="_sBzb4f5pEeSuyPhGguN-lg _vk35Yv6-EeSyUJMFSxXv-Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_sBzb4f5pEeSuyPhGguN-lg" name="extension_Collections" type="_vk35YP6-EeSyUJMFSxXv-Q" aggregation="composite" association="_sBzb4P5pEeSuyPhGguN-lg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sBzb4v5pEeSuyPhGguN-lg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_3FsfwP5sEeSuyPhGguN-lg" name="DataType_Integer" memberEnd="_3Fsfwf5sEeSuyPhGguN-lg _eNU4B_5sEeSuyPhGguN-lg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_3Fsfwf5sEeSuyPhGguN-lg" name="extension_Integer" type="_eNU4AP5sEeSuyPhGguN-lg" aggregation="composite" association="_3FsfwP5sEeSuyPhGguN-lg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3Fsfwv5sEeSuyPhGguN-lg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_biFkUP5tEeSuyPhGguN-lg" name="DataType_Real" memberEnd="_biFkUf5tEeSuyPhGguN-lg _MQY77P5tEeSuyPhGguN-lg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_biFkUf5tEeSuyPhGguN-lg" name="extension_Real" type="_MQY74P5tEeSuyPhGguN-lg" aggregation="composite" association="_biFkUP5tEeSuyPhGguN-lg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_biFkUv5tEeSuyPhGguN-lg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_X_UTEP5rEeSuyPhGguN-lg" name="InstanceSpecification_Validation" memberEnd="_ajiYx_5qEeSuyPhGguN-lg _FfY-oP5sEeSuyPhGguN-lg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_FfY-oP5sEeSuyPhGguN-lg" name="extension_Validation" type="_ajiYwP5qEeSuyPhGguN-lg" aggregation="composite" association="_X_UTEP5rEeSuyPhGguN-lg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FfY-of5sEeSuyPhGguN-lg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_sW9zkP5pEeSuyPhGguN-lg" name="Package_Collections" memberEnd="_sW9zkf5pEeSuyPhGguN-lg _vk35ZP6-EeSyUJMFSxXv-Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_sW9zkf5pEeSuyPhGguN-lg" name="extension_Collections" type="_vk35YP6-EeSyUJMFSxXv-Q" aggregation="composite" association="_sW9zkP5pEeSuyPhGguN-lg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sW9zkv5pEeSuyPhGguN-lg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_LO2RQP5rEeSuyPhGguN-lg" name="Package_Validations" memberEnd="_FuSWQP5sEeSuyPhGguN-lg _Iz6UtP6_EeSyUJMFSxXv-Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_FuSWQP5sEeSuyPhGguN-lg" name="extension_Validations" type="_Iz6UsP6_EeSyUJMFSxXv-Q" aggregation="composite" association="_LO2RQP5rEeSuyPhGguN-lg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FuSWQf5sEeSuyPhGguN-lg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qt3CQICREeOB3rHSo1B3ow" name="MultiplicityElement_Collection" memberEnd="_qt3CQYCREeOB3rHSo1B3ow _gCzTQP5pEeSuyPhGguN-lg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qt3CQYCREeOB3rHSo1B3ow" name="extension_Collection" type="Derive" aggregation="composite" association="_qt3CQICREeOB3rHSo1B3ow">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qt3CQoCREeOB3rHSo1B3ow"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_oOB5kP68EeSyUJMFSxXv-Q" name="BoundedInteger">
+      <ownedComment xmi:id="_oOB5kf68EeSyUJMFSxXv-Q" annotatedElement="_oOB5kP68EeSyUJMFSxXv-Q">
+        <body>Specifies that a DataType behaves as an Integer number with explicit precision and overflow handling. A 16 bit number may be specified using a maximum of 32767 and minimum of -32768. </body>
+      </ownedComment>
+      <generalization xmi:id="_mXC34P6-EeSyUJMFSxXv-Q" general="_eNU4AP5sEeSuyPhGguN-lg"/>
+      <ownedAttribute xmi:id="_oOB5nv68EeSyUJMFSxXv-Q" name="overflow" visibility="public" type="_hH02cP69EeSyUJMFSxXv-Q" aggregation="composite">
+        <ownedComment xmi:id="_oOB5n_68EeSyUJMFSxXv-Q" annotatedElement="_oOB5nv68EeSyUJMFSxXv-Q">
+          <body>The behavior when a maximum/minimum value is exceeded.</body>
+        </ownedComment>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oOB5oP68EeSyUJMFSxXv-Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oOB5of68EeSyUJMFSxXv-Q" value="1"/>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_ZaYNIP6-EeSyUJMFSxXv-Q" instance="_tupNAP69EeSyUJMFSxXv-Q"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="Derive" name="Collection">
+      <ownedComment xmi:id="Derive-_ownedComment.0" annotatedElement="Derive">
+        <body>Specifies the null-free-ness of a Collection.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_gCzTQP5pEeSuyPhGguN-lg" name="base_MultiplicityElement" association="_qt3CQICREeOB3rHSo1B3ow">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#MultiplicityElement"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_H4xiwP5qEeSuyPhGguN-lg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="Derive-computation" name="isNullFree" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="Derive-computation-_ownedComment.0" annotatedElement="Derive-computation">
+          <body>Whether the type of the TypedElement is a null-free Collection.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Derive-computation-_lowerValue"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Derive-computation-_upperValue" value="1"/>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_NQ9qMPzPEeSJqqzMlzwypQ"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_vk35YP6-EeSyUJMFSxXv-Q" name="Collections">
+      <ownedComment xmi:id="_vk35Yf6-EeSyUJMFSxXv-Q" annotatedElement="_vk35YP6-EeSyUJMFSxXv-Q">
+        <body>Specifies the default null-free-ness of Collections defined by composed properties of child Packages and/or Classes.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_vk35Yv6-EeSyUJMFSxXv-Q" name="base_Class" association="_sBzb4P5pEeSuyPhGguN-lg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vk35Y_6-EeSyUJMFSxXv-Q"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_vk35ZP6-EeSyUJMFSxXv-Q" name="base_Package" association="_sW9zkP5pEeSuyPhGguN-lg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vk35Zf6-EeSyUJMFSxXv-Q"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_vk35aP6-EeSyUJMFSxXv-Q" name="isNullFree" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_vk35af6-EeSyUJMFSxXv-Q" annotatedElement="_vk35aP6-EeSyUJMFSxXv-Q">
+          <body>Whether the type of the TypedElement is a null-free Collection.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vk35av6-EeSyUJMFSxXv-Q"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vk35a_6-EeSyUJMFSxXv-Q" value="1"/>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_vk35bP6-EeSyUJMFSxXv-Q"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_ExmOcP7CEeSyUJMFSxXv-Q" name="FixedPoint">
+      <ownedComment xmi:id="_ExmOcf7CEeSyUJMFSxXv-Q" annotatedElement="_ExmOcP7CEeSyUJMFSxXv-Q">
+        <body>Specifies that a DataType behaves as a Real number and optionally defines the precision of a fixed point Integer representation. A two bit number with the values {-4, -2, 0, +2} is specified as having three integerBits and -1 fractionalBIts.</body>
+      </ownedComment>
+      <generalization xmi:id="_ExmOcv7CEeSyUJMFSxXv-Q" general="_MQY74P5tEeSuyPhGguN-lg"/>
+      <ownedAttribute xmi:id="_AHZTsP7DEeSyUJMFSxXv-Q" name="bitTrue" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_AHZTsf7DEeSyUJMFSxXv-Q" annotatedElement="_AHZTsP7DEeSyUJMFSxXv-Q">
+          <body>Specifies that an implementation precisely implements the specified number of fractionBits and so is bit-true. Alternatively a non-bit-true implementation may use a larger fractionalBits to suit the natural precision of a target platform. </body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AHZTsv7DEeSyUJMFSxXv-Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AHZTs_7DEeSyUJMFSxXv-Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ExmOgf7CEeSyUJMFSxXv-Q" name="fractionalBits" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_ExmOgv7CEeSyUJMFSxXv-Q" annotatedElement="_ExmOgf7CEeSyUJMFSxXv-Q">
+          <body>The number of bits used to represent the fractional ptrecision of the fixed point number. This may be negative if the fixed point quantum is greater than 1.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ExmOg_7CEeSyUJMFSxXv-Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ExmOhP7CEeSyUJMFSxXv-Q" value="1"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_Emg1MP-FEeSyUJMFSxXv-Q"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ExmOff7CEeSyUJMFSxXv-Q" name="integerBits" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_ExmOfv7CEeSyUJMFSxXv-Q" annotatedElement="_ExmOff7CEeSyUJMFSxXv-Q">
+          <body>The number of bits used to represent the sign and non-fractional part of the fixed point number. </body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ExmOf_7CEeSyUJMFSxXv-Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ExmOgP7CEeSyUJMFSxXv-Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ExmOc_7CEeSyUJMFSxXv-Q" name="overflow" visibility="public" type="_hH02cP69EeSyUJMFSxXv-Q" aggregation="composite">
+        <ownedComment xmi:id="_ExmOdP7CEeSyUJMFSxXv-Q" annotatedElement="_ExmOc_7CEeSyUJMFSxXv-Q">
+          <body>The behavior when a maximum/minimum value is exceeded.</body>
+        </ownedComment>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ExmOdf7CEeSyUJMFSxXv-Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ExmOdv7CEeSyUJMFSxXv-Q" value="1"/>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_ExmOd_7CEeSyUJMFSxXv-Q" instance="_tupNAP69EeSyUJMFSxXv-Q"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ExmOeP7CEeSyUJMFSxXv-Q" name="rounding" visibility="public" type="_LJCjkP7AEeSyUJMFSxXv-Q" aggregation="composite">
+        <ownedComment xmi:id="_ExmOef7CEeSyUJMFSxXv-Q" annotatedElement="_ExmOeP7CEeSyUJMFSxXv-Q">
+          <body>The behavior when there is insufficient resolution.</body>
+        </ownedComment>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ExmOev7CEeSyUJMFSxXv-Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ExmOe_7CEeSyUJMFSxXv-Q" value="1"/>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_ExmOfP7CEeSyUJMFSxXv-Q" instance="_LJCjkv7AEeSyUJMFSxXv-Q"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_fNJAgP6_EeSyUJMFSxXv-Q" name="FloatingPoint">
+      <ownedComment xmi:id="_fNJAgf6_EeSyUJMFSxXv-Q" annotatedElement="_fNJAgP6_EeSyUJMFSxXv-Q">
+        <body>Specifies that a DataType behaves as a Real number and optionally defines the required precision of a mantissa and base 2 exponent floating point representation. An IEEE 754 double precision number may be specified with 11 exponentBits, 53 mantissaBits. 1.7976931348623157e+308 maximum, -1.7976931348623157e+308 minimum, 1.0000000000000002 epsilon.</body>
+      </ownedComment>
+      <generalization xmi:id="_iNXQQP6_EeSyUJMFSxXv-Q" general="_MQY74P5tEeSuyPhGguN-lg"/>
+      <ownedAttribute xmi:id="_W3TsEP7BEeSyUJMFSxXv-Q" name="exponentBits" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_W3TsEf7BEeSyUJMFSxXv-Q" annotatedElement="_W3TsEP7BEeSyUJMFSxXv-Q">
+          <body>The number of bits used to represent the base 2 exponent and its polarity.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_W3TsEv7BEeSyUJMFSxXv-Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_W3TsE_7BEeSyUJMFSxXv-Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_xC_V0P7BEeSyUJMFSxXv-Q" name="mantissaBits" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_xC_V0f7BEeSyUJMFSxXv-Q" annotatedElement="_xC_V0P7BEeSyUJMFSxXv-Q">
+          <body>The number of bits used to represent the mantissa and its polarity.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xC_V0v7BEeSyUJMFSxXv-Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xC_V0_7BEeSyUJMFSxXv-Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_fNJAk_6_EeSyUJMFSxXv-Q" name="overflow" visibility="public" type="_hH02cP69EeSyUJMFSxXv-Q" aggregation="composite">
+        <ownedComment xmi:id="_fNJAlP6_EeSyUJMFSxXv-Q" annotatedElement="_fNJAk_6_EeSyUJMFSxXv-Q">
+          <body>The behavior when a maximum/minimum value is exceeded.</body>
+        </ownedComment>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fNJAlf6_EeSyUJMFSxXv-Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fNJAlv6_EeSyUJMFSxXv-Q" value="1"/>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_eWrnsP7BEeSyUJMFSxXv-Q" instance="_tupNAP69EeSyUJMFSxXv-Q"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_fNJAmP6_EeSyUJMFSxXv-Q" name="rounding" visibility="public" type="_LJCjkP7AEeSyUJMFSxXv-Q" aggregation="composite">
+        <ownedComment xmi:id="_fNJAmf6_EeSyUJMFSxXv-Q" annotatedElement="_fNJAmP6_EeSyUJMFSxXv-Q">
+          <body>The behavior when there is insufficient resolution.</body>
+        </ownedComment>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fNJAmv6_EeSyUJMFSxXv-Q" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fNJAm_6_EeSyUJMFSxXv-Q" value="1"/>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="_dWJ-0P7BEeSyUJMFSxXv-Q" instance="_LJCjkv7AEeSyUJMFSxXv-Q"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_eNU4AP5sEeSuyPhGguN-lg" name="Integer">
+      <ownedComment xmi:id="_eNU4Af5sEeSuyPhGguN-lg" annotatedElement="_eNU4AP5sEeSuyPhGguN-lg">
+        <body>Specifies that a DataType behaves as an Integer and optionally defines a limited numeric range that an implementation must support. Computations resulting in values beyond a specified minimum or maximum limits are ill-defined. The derived BoundedInteger stereotype may be used to define exact precisions and an overflow behavior.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_eNU4B_5sEeSuyPhGguN-lg" name="base_DataType" association="_3FsfwP5sEeSuyPhGguN-lg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eNU4CP5sEeSuyPhGguN-lg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_eNU4Av5sEeSuyPhGguN-lg" name="maximum" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_eNU4A_5sEeSuyPhGguN-lg" annotatedElement="_eNU4Av5sEeSuyPhGguN-lg">
+          <body>The most positive inclusive value of the DataType. Defaults to unlimited.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eNU4BP5sEeSuyPhGguN-lg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eNU4Bf5sEeSuyPhGguN-lg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_vekWUP5sEeSuyPhGguN-lg" name="minimum" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_vekWUf5sEeSuyPhGguN-lg" annotatedElement="_vekWUP5sEeSuyPhGguN-lg">
+          <body>The most negative inclusive value of the DataType. Defaults to unlimited.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vekWUv5sEeSuyPhGguN-lg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vekWU_5sEeSuyPhGguN-lg" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_hH02cP69EeSyUJMFSxXv-Q" name="Overflow">
+      <ownedComment xmi:id="_5yGX0P69EeSyUJMFSxXv-Q" annotatedElement="_oOB5kP68EeSyUJMFSxXv-Q">
+        <body>Specifies how an out of range numeric result is to be handled.</body>
+      </ownedComment>
+      <ownedLiteral xmi:id="_tupNAP69EeSyUJMFSxXv-Q" name="invalid">
+        <ownedComment xmi:id="_CsQPYP6-EeSyUJMFSxXv-Q" annotatedElement="_oOB5kP68EeSyUJMFSxXv-Q">
+          <body>Specifies that an out of range result is invalid. This is the default.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_yZt1AP69EeSyUJMFSxXv-Q" name="saturate">
+        <ownedComment xmi:id="_HUC54P6-EeSyUJMFSxXv-Q" annotatedElement="_oOB5kP68EeSyUJMFSxXv-Q">
+          <body>Specifies that an out of range result should be saturated to the nearest maximum/minimum value.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_0rviAP69EeSyUJMFSxXv-Q" name="modulo">
+        <ownedComment xmi:id="_MO6RYP6-EeSyUJMFSxXv-Q" annotatedElement="_oOB5kP68EeSyUJMFSxXv-Q">
+          <body>Specifies that an out of range result should be wrapped around to give a value modulo the maximum-minimum+1.</body>
+        </ownedComment>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_MQY74P5tEeSuyPhGguN-lg" name="Real">
+      <ownedComment xmi:id="_MQY74f5tEeSuyPhGguN-lg" annotatedElement="_MQY74P5tEeSuyPhGguN-lg">
+        <body>Specifies that a DataType behaves as a Real and optionally defines a limited numeric range and resolution that an implementation must support. Computations resulting in values beyond a specified minimum or maximum limits or resolution are ill-defined. The derived FixedPoint or FloatingPoint stereotypes may be used to define more exact precisions, overflow and underflow behaviors.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_MQY77P5tEeSuyPhGguN-lg" name="base_DataType" association="_biFkUP5tEeSuyPhGguN-lg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MQY77f5tEeSuyPhGguN-lg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_UAn-AP5tEeSuyPhGguN-lg" name="epsilon" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_UAn-Af5tEeSuyPhGguN-lg" annotatedElement="_UAn-AP5tEeSuyPhGguN-lg">
+          <body>The minimum required ratio between adjacent values.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UAn-Av5tEeSuyPhGguN-lg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UAn-A_5tEeSuyPhGguN-lg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_MQY74v5tEeSuyPhGguN-lg" name="maximum" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_MQY74_5tEeSuyPhGguN-lg" annotatedElement="_MQY74v5tEeSuyPhGguN-lg">
+          <body>The most positive inclusive value of the DataType. Defaults to unlimited.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MQY75P5tEeSuyPhGguN-lg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MQY75f5tEeSuyPhGguN-lg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_MQY75_5tEeSuyPhGguN-lg" name="minimum" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_MQY76P5tEeSuyPhGguN-lg" annotatedElement="_MQY75_5tEeSuyPhGguN-lg">
+          <body>The most negative inclusive value of the DataType. Defaults to unlimited.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MQY76f5tEeSuyPhGguN-lg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MQY76v5tEeSuyPhGguN-lg" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_LJCjkP7AEeSyUJMFSxXv-Q" name="Rounding">
+      <ownedComment xmi:id="_LJCjkf7AEeSyUJMFSxXv-Q" annotatedElement="_oOB5kP68EeSyUJMFSxXv-Q">
+        <body>Specifies how the resolution of a numeric result is to be reduced.</body>
+      </ownedComment>
+      <ownedLiteral xmi:id="_LJCjkv7AEeSyUJMFSxXv-Q" name="nearest">
+        <ownedComment xmi:id="_LJCjk_7AEeSyUJMFSxXv-Q" annotatedElement="_oOB5kP68EeSyUJMFSxXv-Q">
+          <body>Values are rounded down if the residue is less than half an epsilon, rounded up if the residue is greater than or equal to half an epsilon.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_LJCjlP7AEeSyUJMFSxXv-Q" name="ceiling">
+        <ownedComment xmi:id="_LJCjlf7AEeSyUJMFSxXv-Q" annotatedElement="_oOB5kP68EeSyUJMFSxXv-Q">
+          <body>Values are always rounded up. This is also known as round to plus infinity.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_LJCjlv7AEeSyUJMFSxXv-Q" name="floor">
+        <ownedComment xmi:id="_LJCjl_7AEeSyUJMFSxXv-Q" annotatedElement="_oOB5kP68EeSyUJMFSxXv-Q">
+          <body>Values are always rounded down. This is also known as truncate or round to minus infinity.</body>
+        </ownedComment>
+      </ownedLiteral>
+      <ownedLiteral xmi:id="_abVB4P7AEeSyUJMFSxXv-Q" name="congruent">
+        <ownedComment xmi:id="_abVB4f7AEeSyUJMFSxXv-Q" annotatedElement="_oOB5kP68EeSyUJMFSxXv-Q">
+          <body>Values are rounded down if the residue is less than half an epsilon, rounded up if the residue is greater than half an epsilon. Residues of exactly half an epsilon are rounded to yield an even result with respect to the least significant bit of the result.</body>
+        </ownedComment>
+      </ownedLiteral>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_ajiYwP5qEeSuyPhGguN-lg" name="Validation">
+      <ownedComment xmi:id="_ajiYwf5qEeSuyPhGguN-lg" annotatedElement="_ajiYwP5qEeSuyPhGguN-lg">
+        <body>Controls the validation of an InstanceSpecification.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_ajiYx_5qEeSuyPhGguN-lg" name="base_InstanceSpecification" association="_X_UTEP5rEeSuyPhGguN-lg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#InstanceSpecification"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ajiYyP5qEeSuyPhGguN-lg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_ajiYwv5qEeSuyPhGguN-lg" name="validate" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_ajiYw_5qEeSuyPhGguN-lg" annotatedElement="_ajiYwv5qEeSuyPhGguN-lg">
+          <body>Whether the instance(s) should be validated.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ajiYxP5qEeSuyPhGguN-lg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ajiYxf5qEeSuyPhGguN-lg" value="1"/>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_ajiYxv5qEeSuyPhGguN-lg"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_Iz6UsP6_EeSyUJMFSxXv-Q" name="Validations">
+      <ownedComment xmi:id="_Iz6Usf6_EeSyUJMFSxXv-Q" annotatedElement="_Iz6UsP6_EeSyUJMFSxXv-Q">
+        <body>Controls the default validation of all InstanceSpecifications within a Package and its nested Packages.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_Iz6UtP6_EeSyUJMFSxXv-Q" name="base_Package" association="_LO2RQP5rEeSuyPhGguN-lg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Iz6Utf6_EeSyUJMFSxXv-Q" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Iz6Utv6_EeSyUJMFSxXv-Q" name="validateInstanceSpecifications" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_Iz6Ut_6_EeSyUJMFSxXv-Q" annotatedElement="_Iz6Utv6_EeSyUJMFSxXv-Q">
+          <body>Whether child instanceSpecifications should be validated.</body>
+        </ownedComment>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Iz6UuP6_EeSyUJMFSxXv-Q"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Iz6Uuf6_EeSyUJMFSxXv-Q" value="1"/>
+        <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_Iz6Uuv6_EeSyUJMFSxXv-Q"/>
+      </ownedAttribute>
+    </packagedElement>
+    <profileApplication xmi:id="_6ryEUL5MEeCUg9_01zj7Og">
+      <eAnnotations xmi:id="_6ryrYL5MEeCUg9_01zj7Og" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_7-6gIL5MEeCUg9_01zj7Og" base_Package="_0" packageName="oclforuml" nsPrefix="ocl4uml" nsURI="http://www.eclipse.org/ocl/2015/OCLforUML/1" basePackage="org.eclipse.ocl.pivot.uml" prefix="OCL4UML"/>
+  <Ecore:EAttribute xmi:id="_7nrR8P-EEeSyUJMFSxXv-Q" isUnsettable="true" base_Property="Derive-computation"/>
+  <Ecore:EAttribute xmi:id="_-kVQUP-EEeSyUJMFSxXv-Q" isUnsettable="true" base_Property="_vk35aP6-EeSyUJMFSxXv-Q"/>
+  <Ecore:EAttribute xmi:id="_XeyiwP-FEeSyUJMFSxXv-Q" isUnsettable="true" base_Property="_eNU4Av5sEeSuyPhGguN-lg"/>
+  <Ecore:EAttribute xmi:id="_Zlsk4P-FEeSyUJMFSxXv-Q" isUnsettable="true" base_Property="_vekWUP5sEeSuyPhGguN-lg"/>
+  <Ecore:EAttribute xmi:id="_dn7EMP-FEeSyUJMFSxXv-Q" isUnsettable="true" base_Property="_UAn-AP5tEeSuyPhGguN-lg"/>
+  <Ecore:EAttribute xmi:id="_fmIdUP-FEeSyUJMFSxXv-Q" isUnsettable="true" base_Property="_MQY74v5tEeSuyPhGguN-lg"/>
+  <Ecore:EAttribute xmi:id="_hzynsP-FEeSyUJMFSxXv-Q" isUnsettable="true" base_Property="_MQY75_5tEeSuyPhGguN-lg"/>
+</xmi:XMI>

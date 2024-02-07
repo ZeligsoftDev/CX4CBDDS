@@ -1,0 +1,24 @@
+// ****************************************************************************
+// *** openArchitectureWare stdlib extensions: properties
+// *** ------------------------------------------------------------------------
+// *** This library contains functions accessing values from property files.
+// ****************************************************************************
+
+/**
+ * Retrieves a property from class <tt>org.eclipse.xtend.util.stdlib.PropertiesExtension</tt>.
+ * Properties are populated by the <tt>org.eclipse.xtend.util.stdlib.PropertiesReader</tt> 
+ * workflow component.
+ * @param key Property key
+ * @return Property value, if defined, else <tt>null</tt>.
+ */
+String getProperty(String key) :
+   internalGetProperty(key)
+;
+
+
+// -------------------------------- INTERNAL --------------------------------   
+
+private Object internalGetProperty(String s) :
+   JAVA org.eclipse.xtend.util.stdlib.PropertiesExtension.getProperty(java.lang.String)
+;
+

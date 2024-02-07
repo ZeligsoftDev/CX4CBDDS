@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2014, 2017 Willink Transformations Ltd., University of York and others.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v2.0&#xD;&#xA;which accompanies this distribution, and is available at &#xD;&#xA;http://www.eclipse.org/legal/epl-v20.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;    Adolfo Sanchez-Barbudo Herrera (University of York) - initial API and implementation"
+    modelDirectory="/org.eclipse.ocl.pivot/emf-gen" modelPluginID="org.eclipse.ocl.pivot"
+    modelName="PivotLookup" nonNLSMarkers="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    suppressEMFModelTags="true" importerID="org.eclipse.emf.importer.ecore" bundleManifest="false"
+    complianceLevel="8.0" copyrightFields="false" runtimeVersion="2.7" usedGenPackages="oclstdlib.genmodel#//oclstdlib Pivot.genmodel#//pivot"
+    operationReflection="true" importOrganizing="true" pluginKey="">
+  <genAnnotations source="http://www.eclipse.org/OCL/GenModel">
+    <details key="Use Delegates" value="false"/>
+    <details key="Use Null Annotations" value="true"/>
+  </genAnnotations>
+  <foreignModel>Lookup.ecore</foreignModel>
+  <genPackages prefix="Lookup" basePackage="org.eclipse.ocl.pivot.internal" disposableProviderFactory="true"
+      ecorePackage="Lookup.ecore#/">
+    <genClasses ecoreClass="Lookup.ecore#//LookupEnvironment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lookup.ecore#//LookupEnvironment/namedElements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lookup.ecore#//LookupEnvironment/parentEnv"/>
+      <genOperations ecoreOperation="Lookup.ecore#//LookupEnvironment/addElements">
+        <genParameters ecoreParameter="Lookup.ecore#//LookupEnvironment/addElements/elements"/>
+        <genTypeParameters ecoreTypeParameter="Lookup.ecore#//LookupEnvironment/addElements/NE"/>
+      </genOperations>
+      <genOperations ecoreOperation="Lookup.ecore#//LookupEnvironment/addElement">
+        <genParameters ecoreParameter="Lookup.ecore#//LookupEnvironment/addElement/element"/>
+      </genOperations>
+      <genOperations ecoreOperation="Lookup.ecore#//LookupEnvironment/hasFinalResult"
+          body="throw new &lt;%java.lang.UnsupportedOperationException%>(&quot;Enviroment::hasFinalResult() has been created for CG purposes. Don't call this method&quot;);"/>
+      <genOperations ecoreOperation="Lookup.ecore#//LookupEnvironment/getExecutor"
+          body="throw new &lt;%java.lang.UnsupportedOperationException%>(&quot;Enviroment::getEvaluator() has been created for CG purposes. Don't call this method&quot;);"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Lookup.ecore#//Executor"/>
+  </genPackages>
+</genmodel:GenModel>

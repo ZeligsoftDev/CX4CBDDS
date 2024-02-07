@@ -1,0 +1,37 @@
+The model structure of the Pivot model is defined in PivotStuctural.ecore complemented by constraints in Pivot.ocl.
+The /org.eclipse.ocl.examples.build/src/org/eclipse/ocl/examples/build/GeneratePivotModel.mwe2
+script supervises their merge to Pivot.ecore and the generation of the Java via Pivot.genmodel.
+
+Vintage UML-aligned content below...
+
+
+Sources:
+
+Infrastructure.cmof - from UML 2.2 specification
+SubSuperstructure.cmof - trimmed and edited from UML 2.2 specification
+OCL.cmof - from OCL specification after editing and enhancement
+MDTOCL.cmof - local contribution
+Pivot.cmof - the overall merge
+Pivot.genmodel
+
+Pivot.cmof defines:
+- the merge of
+--- UML Core::Basic from Infrastructure.ecore (standard)
+--- UML Core::PrimitiveTypes from Infrastructure.ecore (standard)
+--- UML-based Templates from SubSuperstructure.ecore
+--- UML-based Associations from SubSuperstructure.ecore
+--- OCL PrimitiveTypes (adds Real for now)
+--- OCL Types (potentially standard)
+--- OCL Expressions (potentially standard)
+--- OCL Runtime (new standard perhaps)
+- the Ecore profile
+--- the URI
+--- the primitive type to Java mappings
+
+A UML Editor->Package->Merge... is saved as Pivot.merged.uml
+
+Pivot.genmodel is Reloaded from Pivot.merged.uml to produce pivot.ecore.
+-- the genmodel reload shows pivot as the ONLY package.
+
+This is all automated by the /org.eclipse.ocl.examples.build/src/org/eclipse/ocl/examples/build/GeneratePivotModel.mwe2
+workflow.

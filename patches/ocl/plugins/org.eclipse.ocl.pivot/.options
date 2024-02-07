@@ -1,0 +1,97 @@
+# Debugging options for the org.eclipse.ocl.pivot plug-in
+
+# Turn on tracing of the nsURI to *.ecore mapping discovery
+org.eclipse.ocl.pivot/projectMap/addEPackage=false
+
+# Turn on tracing of the nsURI to GenModel location discovery 
+org.eclipse.ocl.pivot/projectMap/addGenModel=false
+
+# Turn on tracing of the plgin.xml generated_package extension point 
+org.eclipse.ocl.pivot/projectMap/addGeneratedPackage=false
+
+# Turn on tracing of the ResourceSet.Converter.URI_MAP URI initialization 
+org.eclipse.ocl.pivot/projectMap/addURIMap=false
+
+# Turn on tracing of the resource load strategy configuration commands
+org.eclipse.ocl.pivot/projectMap/configure=false
+
+# Turn on tracing of the package/resource gets that trigger resolutions
+org.eclipse.ocl.pivot/projectMap/get=false
+
+# Turn on tracing of the install/uninstall of EPackage.Registry descriptors
+org.eclipse.ocl.pivot/projectMap/install=false
+
+# Turn on tracing of the resource changes 
+org.eclipse.ocl.pivot/projectMap/resourceChange=false
+
+# Turn on tracing of the resolution of EPackage.Registry and ResourceSet.URIResourceMap entries 
+org.eclipse.ocl.pivot/projectMap/resolve=false
+
+# Trace maintenance of CompleteClasses 
+org.eclipse.ocl.pivot/completeClasses=false
+
+# Trace maintenance of CompletePackages 
+org.eclipse.ocl.pivot/completePackages=false
+
+# Trace conversion of not-optional primitive types such as EBoolean
+org.eclipse.ocl.pivot/ecore2as/notOptional=false
+
+# Trace creation/attach/detach/dispose of EnvironmentFactory instances
+org.eclipse.ocl.pivot/environmentFactory/attach=false
+
+# Trace update of EnvironmentFactory/Executor thread local state
+org.eclipse.ocl.pivot/environmentFactory/threadLocal=false
+
+# Trace maintenance of cached evaluations 
+org.eclipse.ocl.pivot/evaluations=false
+
+# Trace maintenance of FinalAnalysis 
+org.eclipse.ocl.pivot/finalAnaysis=false
+
+# Trace maintenance of Model installation in a PivotMetamodelManager
+org.eclipse.ocl.pivot/install/model=false
+
+# Trace maintenance of PartialClasses 
+org.eclipse.ocl.pivot/partialClasses=false
+
+# Trace creation of base_xxx properties 
+org.eclipse.ocl.pivot/partialClasses/addBaseProperty=false
+
+# Trace creation of extension_xxx properties 
+org.eclipse.ocl.pivot/partialClasses/addExtensionProperty=false
+
+# Trace lazy resolution of member operations 
+org.eclipse.ocl.pivot/partialClasses/initMemberOperations=false
+
+# Trace lazy resolution of member properties 
+org.eclipse.ocl.pivot/partialClasses/initMemberProperties=false
+
+# Trace maintenance of PartialModels 
+org.eclipse.ocl.pivot/partialModels=false
+
+# Trace maintenance of PartialPackages 
+org.eclipse.ocl.pivot/partialPackages=false
+
+# Throw an IllegalStateException if an immuatbke resource is modified. 
+org.eclipse.ocl.pivot/resource/checkImmutability=false
+
+# Trace updates of the StandardLibraryContribution.REGISTRY
+org.eclipse.ocl.pivot/standardLibraryContribution=false
+
+# Trace validation of InstanceSpecifications 
+org.eclipse.ocl.pivot/validate/instance=false
+
+# Trace validation of OpaqueElement bodies 
+org.eclipse.ocl.pivot/validate/opaqueElement=false
+
+# Trace validation of ElementExtension creations 
+org.eclipse.ocl.pivot/uml2as/addElementExtension=false
+
+# Trace validation of Import discoveries 
+org.eclipse.ocl.pivot/uml2as/addImportedResource=false
+
+# Trace validation of Profile Application discoveries 
+org.eclipse.ocl.pivot/uml2as/addProfileApplication=false
+
+# Trace validation of Stereotype Application discoveries 
+org.eclipse.ocl.pivot/uml2as/addStereotypeApplication=false

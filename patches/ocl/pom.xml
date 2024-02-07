@@ -1,0 +1,236 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.zeligsoft.dds4ccm</groupId>
+	<artifactId>com.zeligsoft.dds4ccm.patches.ocl</artifactId>
+	<version>2.6.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<parent>
+		<groupId>com.zeligsoft.dds4ccm</groupId>
+		<artifactId>com.zeligsoft.dds4ccm.patches</artifactId>
+		<version>2.6.0-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<ecj-version>3.35.0</ecj-version>
+		<java-source-encoding>UTF-8</java-source-encoding>
+		<resource-encoding>UTF-8</resource-encoding>
+		<os-jvm-flags />
+		<maven-resources-version>3.2.0</maven-resources-version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<includePackedArtifacts>true</includePackedArtifacts>
+					<resolver>p2</resolver>
+					<!-- See Bug 541797, org.eclipse.equinox.http.jetty seemed to need JavaSE-1.8 
+						to be explicit. Since moving to a Java 11-build environment, it no longer 
+						appears to be necessary. -->
+					<!--<executionEnvironment>JavaSE-17</executionEnvironment> -->
+					<target>
+						<artifact>
+							<groupId>com.zeligsoft.dds4ccm</groupId>
+							<artifactId>com.zeligsoft.dds4ccm.patches.ocl.releng.targetdefinition</artifactId>
+							<version>2.6.0-SNAPSHOT</version>
+							<classifier>release-6.18</classifier>
+						</artifact>
+					</target>
+					<!-- <target> <artifact> <groupId>org.eclipse.ocl</groupId> <artifactId>org.eclipse.ocl.releng.tycho</artifactId> 
+						<version>6.18.0-SNAPSHOT</version> <classifier>release-6.18.target</classifier> 
+						</artifact> </target> -->
+					<dependency-resolution>
+						<extraRequirements>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.apache.ant</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.osgi.compatibility.state</id>
+								<versionRange>[1.1.0,2.0.0)</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.jdt.annotation</id>
+								<versionRange>[2.0.0,3.0.0)</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>javax.annotation</id>
+								<versionRange>[1.0.0,2.0.0)</versionRange>
+							</requirement>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.xtext.logging</id>
+								<versionRange>[2.17.0,3.0.0)</versionRange>
+							</requirement>
+							<!--requirement> <type>eclipse-plugin</type> <id>org.eclipse.jdt.compiler.apt</id> 
+								<versionRange>0.0.0</versionRange> </requirement> <requirement> <type>eclipse-plugin</type> 
+								<id>org.eclipse.jdt.core</id> <versionRange>0.0.0</versionRange> </requirement -->
+						</extraRequirements>
+					</dependency-resolution>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+<!--
+ 					<compilerVersion>1.8</compilerVersion>
+					<source>8</source>
+					<target>8</target>
+					<release>8</release>
+					<encoding>UTF-8</encoding>
+ -->
+					<useJDK>BREE</useJDK>
+					<!-- Workaround Bug 569379 -->
+					<deriveReleaseCompilerArgumentFromTargetLevel>false</deriveReleaseCompilerArgumentFromTargetLevel>
+					<!-- Workaround Bug 526011 -->
+					<compilerArgs>
+						<arg>-annotationpath</arg>
+						<arg>${project.basedir}/../../plugins/org.eclipse.ocl.pivot/annotations</arg>
+					</compilerArgs>
+					<log>plain</log>
+					<verbose>true</verbose>
+				</configuration>
+				<dependencies>
+					<!-- Investigate Bug 569379 -->
+					<dependency>
+						<groupId>org.eclipse.jdt</groupId>
+						<artifactId>ecj</artifactId>
+						<version>${ecj-version}</version>
+					</dependency>
+					<!--dependency> <groupId>org.eclipse.jdt</groupId> <artifactId>org.eclipse.jdt.core</artifactId> 
+						<version>${cbi-jdt-version}</version> </dependency> <dependency> <groupId>org.eclipse.jdt</groupId> 
+						<artifactId>org.eclipse.jdt.compiler.apt</artifactId> <version>${cbi-jdt-apt-version}</version> 
+						</dependency -->
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>feature-source</id>
+						<goals>
+							<goal>feature-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-maven-plugin</artifactId>
+					<version>${tycho.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>target-platform-configuration</artifactId>
+					<version>${tycho.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho.version}</version>
+					<configuration>
+<!--
+	 					<compilerVersion>1.8</compilerVersion>
+						<source>8</source>
+						<target>8</target>
+						<release>8</release>
+						<encoding>UTF-8</encoding>
+ -->
+						<useJDK>BREE</useJDK>
+						<!-- Workaround Bug 569379 -->
+						<deriveReleaseCompilerArgumentFromTargetLevel>false</deriveReleaseCompilerArgumentFromTargetLevel>
+						<!-- Workaround Bug 526011 -->
+						<compilerArgs>
+							<arg>-annotationpath</arg>
+							<arg>${project.basedir}/../../plugins/org.eclipse.ocl.pivot/annotations</arg>
+						</compilerArgs>
+						<log>plain</log>
+						<verbose>true</verbose>
+					</configuration>
+					<dependencies>
+						<!-- Investigate Bug 569379 -->
+						<dependency>
+							<groupId>org.eclipse.jdt</groupId>
+							<artifactId>ecj</artifactId>
+							<version>${ecj-version}</version>
+						</dependency>
+						<!--dependency> <groupId>org.eclipse.jdt</groupId> <artifactId>org.eclipse.jdt.core</artifactId> 
+							<version>${cbi-jdt-version}</version> </dependency> <dependency> <groupId>org.eclipse.jdt</groupId> 
+							<artifactId>org.eclipse.jdt.compiler.apt</artifactId> <version>${cbi-jdt-apt-version}</version> 
+							</dependency -->
+					</dependencies>
+					<!--configuration> <encoding>${java-source-encoding}</encoding> <source>${source-java-version}</source> 
+						<target>${target-java-version}</target> <showWarnings>true</showWarnings> 
+						</configuration -->
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-version}</version>
+					<configuration>
+						<encoding>${resource-encoding}</encoding>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<modules>
+ 		<module>releng</module>
+		<!-- The actual plug-in(s) we are patching. -->
+		<module>plugins</module>
+ 		<module>examples</module> 
+		<!-- The feature patches that bundle the patched plugins -->
+<!-- 		<module>features</module> -->
+	</modules>
+</project>

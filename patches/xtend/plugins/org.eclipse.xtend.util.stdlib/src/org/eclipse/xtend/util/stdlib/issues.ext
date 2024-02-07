@@ -1,0 +1,40 @@
+// ****************************************************************************
+// *** openArchitectureWare stdlib extensions: issues
+// *** ------------------------------------------------------------------------
+// *** This library contains functions to report warnings and errors to
+// *** the workflow.
+// ****************************************************************************
+extension org::eclipse::xtend::util::stdlib::naming;
+
+/**
+ * Reports a warning message to the workflow context.
+ * @param message A message
+ * @return The message
+ */
+String reportWarning( String message ): JAVA org.eclipse.xtend.util.stdlib.ExtIssueReporter.reportWarning(java.lang.String);
+
+/**
+ * Reports a warning message and the qualified name of a context object to the workflow context.
+ * @param object A context object
+ * @param message A message
+ * @return The message
+ */
+String reportWarning( Object object, String message ): reportWarningInternal( object.qualifiedName(), message );
+
+/**
+ * Reports an error message to the workflow context.
+ * @param message A message
+ * @return The message
+ */
+String reportError( String message ): JAVA org.eclipse.xtend.util.stdlib.ExtIssueReporter.reportError(java.lang.String);
+
+String reportError( Object object, String message ): reportErrorInternal( object.qualifiedName(), message );
+
+
+// -------------------------------- INTERNAL --------------------------------   
+
+
+private String reportErrorInternal( String qfn, String message ): JAVA org.eclipse.xtend.util.stdlib.ExtIssueReporter.reportError(java.lang.String, java.lang.String);
+private String reportWarningInternal( String qfn, String message ): JAVA org.eclipse.xtend.util.stdlib.ExtIssueReporter.reportWarning(java.lang.String, java.lang.String);
+
+   

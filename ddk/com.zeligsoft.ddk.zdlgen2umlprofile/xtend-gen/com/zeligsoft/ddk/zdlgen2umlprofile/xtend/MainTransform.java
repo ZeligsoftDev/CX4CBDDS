@@ -42,15 +42,15 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 @SuppressWarnings("all")
 public class MainTransform {
   private ElementTypeSetConfiguration umlElementType;
-  
+
   private IClientContext clientCtx;
-  
+
   private Profile profile;
-  
+
   private ElementTypeSetConfiguration typeSet;
-  
+
   private List<org.eclipse.uml2.uml.Class> processedConcepts = new ArrayList<org.eclipse.uml2.uml.Class>();
-  
+
   public void mainTransform(final Profile profile, final ElementTypeSetConfiguration umlType, final ElementTypeSetConfiguration typeSet) {
     this.profile = profile;
     this.umlElementType = umlType;
@@ -83,7 +83,7 @@ public class MainTransform {
       }
     }
   }
-  
+
   public ElementTypeConfiguration processConcept(final org.eclipse.uml2.uml.Class concept, final Stereotype st) {
     final String speId = ZDLElementTypeUtil.getZDLSpecializationElementTypeId(this.profile, concept);
     final SpecializationTypeConfiguration config = this.findSpecializationTypeConfiguration(speId);
@@ -107,7 +107,7 @@ public class MainTransform {
     }
     return result;
   }
-  
+
   public ApplyStereotypeAdviceConfiguration findApplyStereotypeAdviceConfiguration(final String id) {
     EList<AbstractAdviceBindingConfiguration> _adviceBindingsConfigurations = this.typeSet.getAdviceBindingsConfigurations();
     for (final AbstractAdviceBindingConfiguration advice : _adviceBindingsConfigurations) {
@@ -119,7 +119,7 @@ public class MainTransform {
     }
     return null;
   }
-  
+
   public SpecializationTypeConfiguration findSpecializationTypeConfiguration(final String id) {
     EList<ElementTypeConfiguration> _elementTypeConfigurations = this.typeSet.getElementTypeConfigurations();
     for (final ElementTypeConfiguration et : _elementTypeConfigurations) {
@@ -131,7 +131,7 @@ public class MainTransform {
     }
     return null;
   }
-  
+
   public void configureSpecializationType(final SpecializationTypeConfiguration type, final org.eclipse.uml2.uml.Class concept, final Stereotype stereotype) {
     try {
       final org.eclipse.uml2.uml.Class metaclass = ZDLUtil.getBaseMetaclass(this.profile, concept);
@@ -203,7 +203,7 @@ public class MainTransform {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   public SpecializationTypeConfiguration createSpecializedType(final org.eclipse.uml2.uml.Class concept, final Stereotype st) {
     final ArrayList<?> _cacheKey = CollectionLiterals.newArrayList(concept, st);
     final SpecializationTypeConfiguration _result;
@@ -218,14 +218,14 @@ public class MainTransform {
     _init_createSpecializedType(_result, concept, st);
     return _result;
   }
-  
+
   private final HashMap<ArrayList<?>, SpecializationTypeConfiguration> _createCache_createSpecializedType = CollectionLiterals.newHashMap();
-  
+
   private void _init_createSpecializedType(final SpecializationTypeConfiguration result, final org.eclipse.uml2.uml.Class concept, final Stereotype st) {
     this.typeSet.getElementTypeConfigurations().add(result);
     this.configureSpecializationType(result, concept, st);
   }
-  
+
   public IconEntry createIconEntry(final IconEntry iconEntry) {
     IconEntry result = ElementTypesConfigurationsFactory.eINSTANCE.createIconEntry();
     result.setBundleId(iconEntry.getBundleId());
@@ -233,7 +233,7 @@ public class MainTransform {
     result.setIconPath(path.normalize().toString().replace("\\", "/"));
     return result;
   }
-  
+
   public IconEntry createIconEntry(final URL url) {
     IconEntry result = ElementTypesConfigurationsFactory.eINSTANCE.createIconEntry();
     final String temp = url.toString().substring("platform:/plugin/".length());
@@ -248,7 +248,7 @@ public class MainTransform {
     result.setIconPath(path);
     return result;
   }
-  
+
   public String domainQualifiedName(final String qn) {
     final int index = qn.lastIndexOf("::");
     String _name = this.profile.getName();
@@ -256,7 +256,7 @@ public class MainTransform {
     final String result = (_name + _substring);
     return result;
   }
-  
+
   public StereotypeApplicationMatcherConfiguration createStereotypeMatcher(final org.eclipse.uml2.uml.Class concept) {
     final ArrayList<?> _cacheKey = CollectionLiterals.newArrayList(concept);
     final StereotypeApplicationMatcherConfiguration _result;
@@ -271,14 +271,14 @@ public class MainTransform {
     _init_createStereotypeMatcher(_result, concept);
     return _result;
   }
-  
+
   private final HashMap<ArrayList<?>, StereotypeApplicationMatcherConfiguration> _createCache_createStereotypeMatcher = CollectionLiterals.newHashMap();
-  
+
   private void _init_createStereotypeMatcher(final StereotypeApplicationMatcherConfiguration result, final org.eclipse.uml2.uml.Class concept) {
     final String qn = this.domainQualifiedName(concept.getQualifiedName());
     result.getStereotypesQualifiedNames().add(qn);
   }
-  
+
   public Boolean configureApplyStereotypeAdviceConfiguration(final ApplyStereotypeAdviceConfiguration adviceConfig, final org.eclipse.uml2.uml.Class concept, final ElementTypeConfiguration et) {
     boolean _xblockexpression = false;
     {
@@ -300,7 +300,7 @@ public class MainTransform {
     }
     return Boolean.valueOf(_xblockexpression);
   }
-  
+
   public String getApplyStereotypeAdviceConfigurationId(final org.eclipse.uml2.uml.Class concept) {
     String _name = this.profile.getName();
     String _plus = ("com.zeligsoft.domain." + _name);
@@ -309,7 +309,7 @@ public class MainTransform {
     String _plus_2 = (_plus_1 + _replaceAll);
     return (_plus_2 + "Stereotype");
   }
-  
+
   public ApplyStereotypeAdviceConfiguration createApplyStereotypeAdvice(final org.eclipse.uml2.uml.Class concept, final ElementTypeConfiguration et) {
     final ArrayList<?> _cacheKey = CollectionLiterals.newArrayList(concept, et);
     final ApplyStereotypeAdviceConfiguration _result;
@@ -324,14 +324,14 @@ public class MainTransform {
     _init_createApplyStereotypeAdvice(_result, concept, et);
     return _result;
   }
-  
+
   private final HashMap<ArrayList<?>, ApplyStereotypeAdviceConfiguration> _createCache_createApplyStereotypeAdvice = CollectionLiterals.newHashMap();
-  
+
   private void _init_createApplyStereotypeAdvice(final ApplyStereotypeAdviceConfiguration result, final org.eclipse.uml2.uml.Class concept, final ElementTypeConfiguration et) {
     this.typeSet.getAdviceBindingsConfigurations().add(result);
     this.configureApplyStereotypeAdviceConfiguration(result, concept, et);
   }
-  
+
   public StereotypeToApply createStereotypeToApply(final org.eclipse.uml2.uml.Class concept) {
     final ArrayList<?> _cacheKey = CollectionLiterals.newArrayList(concept);
     final StereotypeToApply _result;
@@ -346,9 +346,9 @@ public class MainTransform {
     _init_createStereotypeToApply(_result, concept);
     return _result;
   }
-  
+
   private final HashMap<ArrayList<?>, StereotypeToApply> _createCache_createStereotypeToApply = CollectionLiterals.newHashMap();
-  
+
   private void _init_createStereotypeToApply(final StereotypeToApply result, final org.eclipse.uml2.uml.Class concept) {
     final String qn = this.domainQualifiedName(concept.getQualifiedName());
     result.getRequiredProfiles().add(this.profile.getName());

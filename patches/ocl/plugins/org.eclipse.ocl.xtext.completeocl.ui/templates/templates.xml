@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.ContextDeclCS" 
+	deleted="false" 
+	description="context declaration" 
+	enabled="true" 
+	name="Context"
+	id="ContextDeclCS">context ${cursor}${type}
+inv ${cursor}${name}: true
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.DefCS" 
+	deleted="false" 
+	description="def operation declaration" 
+	enabled="true" 
+	name="Def Operation"
+	id="DefOperationCS">def: ${cursor}${name}(${param1} : ${type1}) : ${type}
+	= null
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.DefCS" 
+	deleted="false" 
+	description="def property declaration" 
+	enabled="true" 
+	name="Def Property"
+	id="DefPropertyCS">def: ${cursor}${name} : ${type} = null
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.ImportCS" 
+	deleted="false" 
+	description="import statement" 
+	enabled="true" 
+	name="Import"
+	id="ImportCS">import '${cursor}${importURI}'
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.IncludeCS" 
+	deleted="false" 
+	description="include declaration" 
+	enabled="true" 
+	name="Include"
+	id="IncludeCS">include '${cursor}${namespace}'
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.InvCS" 
+	deleted="false" 
+	description="invariant declaration" 
+	enabled="true" 
+	name="Invariant"
+	id="InvCS">inv ${cursor}${InvariantName} : true
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.LibraryCS" 
+	deleted="false" 
+	description="library declaration" 
+	enabled="true" 
+	name="Library"
+	id="LibraryCS">library '${cursor}${packageURI}'
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.OperationContextDeclCS" 
+	deleted="false" 
+	description="operation context declaration" 
+	enabled="true" 
+	name="Operation Context"
+	id="OperationContextDeclCS">context ${cursor}${value}::${cursor}${operation}() : ${cursor}${returnType}
+body: null
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.OperationContextDeclCS" 
+	deleted="false" 
+	description="constrained operation context declaration" 
+	enabled="true" 
+	name="Operation Context"
+	id="OperationContextDeclCS2">context ${cursor}${value}::${cursor}${operation}() : ${cursor}${returnType}
+pre: true
+body: null
+post: true
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.PackageDeclarationCS" 
+	deleted="false" 
+	description="package declaration" 
+	enabled="true" 
+	name="Package"
+	id="PackageDeclarationCS">package ${cursor}${name}
+	${line_selection}
+endpackage
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.PostCS" 
+	deleted="false" 
+	description="post condition" 
+	enabled="true" 
+	name="Post Condition"
+	id="PostCS">post: ${cursor}true
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.PreCS" 
+	deleted="false" 
+	description="pre condition" 
+	enabled="true" 
+	name="Pre Condition"
+	id="PreCS">pre: ${cursor}true
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.PropertyContextDeclCS" 
+	deleted="false" 
+	description="property context declaration" 
+	enabled="true" 
+	name="Property Context"
+	id="PropertyContextDeclCS">context ${cursor}${type}::${property} : ${propertyType}
+init: null
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.completeocl.CompleteOCL.PropertyContextDeclCS" 
+	deleted="false" 
+	description="derived property context declaration" 
+	enabled="true" 
+	name="Property Context"
+	id="PropertyContextDeclCS2">context ${cursor}${type}::${property} : ${propertyType}
+derive: null
+</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.essentialocl.EssentialOCL.IfExpCS" 
+	deleted="false" 
+	description="if then else expression" 
+	enabled="true" 
+	name="If"
+	id="IfExpCS">if ${cursor}true then ${line_selection} else null endif</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.essentialocl.EssentialOCL.LetExpCS" 
+	deleted="false" 
+	description="let expression" 
+	enabled="true" 
+	name="Let"
+	id="LetExpCS">let ${cursor}${variableName} : String = null in ${line_selection}</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.essentialocl.EssentialOCL.TupleLiteralExpCS" 
+	deleted="false" 
+	description="Tuple Literal" 
+	enabled="true" 
+	name="Tuple Literal"
+	id="TupleLiteralExpCS">Tuple { ${cursor}${name} : ${type} = ${expression} }</template>
+<template 
+	autoinsert="false" 
+	context="org.eclipse.ocl.xtext.essentialocl.EssentialOCL.TupleTypeCS" 
+	deleted="false" 
+	description="Tuple Type" 
+	enabled="true" 
+	name="TupleType"
+	id="TupleTypeCS">Tuple ( ${cursor} ${name} : ${value:CrossReference('TypeExpCS')} )</template>
+</templates>

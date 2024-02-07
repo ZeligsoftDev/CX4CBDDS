@@ -43,7 +43,7 @@ License:       Apache License, Version 2.0
 BuildArch:     x86_64
 URL:           https://github.com/ZeligsoftDev/CX4CBDDS
 AutoReqProv:   no
-Requires:      java-11-openjdk
+Requires:      java-17-openjdk
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Describe packages

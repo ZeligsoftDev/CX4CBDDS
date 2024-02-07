@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+-->
+
+<plugin>
+
+  <extension point="org.eclipse.core.contenttype.contentTypes">
+	<content-type id="org.eclipse.ocl.xtext.OCLstdlib" name="%OCLstdlibName" 
+		base-type="org.eclipse.core.runtime.text"
+		file-extensions="oclstdlib"
+        default-charset="UTF-8">
+         <describer class="org.eclipse.ocl.pivot.resource.NotXMLContentHandlerImpl$Describer"/>
+      </content-type>
+  </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated OCLstdlibCS -->
+      <package
+            uri="http://www.eclipse.org/ocl/2015/OCLstdlibCS"
+            class="org.eclipse.ocl.xtext.oclstdlibcs.OCLstdlibCSPackage"
+            genModel="model/OCLstdlibCS.genmodel"/>
+   </extension>
+
+  <extension point="org.eclipse.ocl.pivot.as_resource_factory">
+     <factory class="org.eclipse.ocl.xtext.oclstdlib.utilities.OCLstdlibASResourceFactory"
+     	extension="oclstdlib" contentType="org.eclipse.ocl.oclas.oclstdlib"/>
+  </extension>
+
+   <extension point="org.eclipse.team.core.fileTypes">
+      <fileTypes extension="oclstdlib" type="text" />
+      <fileTypes extension="oclstdlibcs" type="text" />
+   </extension>
+
+</plugin>

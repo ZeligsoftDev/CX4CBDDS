@@ -1,0 +1,18 @@
+extension org::eclipse::xtend::util::stdlib::naming;
+extension org::eclipse::xtend::util::stdlib::io;
+extension org::eclipse::xtend::util::stdlib::issues;
+
+ 
+Void createCodeTrace( Object from, String kind ): 
+	JAVA org.eclipse.xtend.util.stdlib.TraceComponent.createCodeTrace( java.lang.Object, java.lang.String );
+
+String createVisibleCodeTrace( Object from, String kind ): 
+	"" + createCodeTrace( from, kind ) +": "+from.qualifiedName();
+	
+TRACE( Object from, String kind ): 
+	createCodeTrace( from, kind );
+
+VTRACE( Object from, String kind ): 
+	createVisibleCodeTrace( from, kind );
+
+ 

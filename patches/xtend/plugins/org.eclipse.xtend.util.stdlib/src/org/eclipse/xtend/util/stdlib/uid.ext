@@ -1,0 +1,31 @@
+// ****************************************************************************
+// *** eclipse.xtend stdlib extensions: uid
+// *** ------------------------------------------------------------------------
+// *** This library contains functions to create an retrieve unique identifiers
+// *** for model elements.
+// ****************************************************************************
+
+
+/**
+ * Retrieves an unique identifier for an object. Creates a new one on first access.
+ * @param o A model element or other object.
+ * @return The UID for this object.
+ */
+cached String uid( Object o ): JAVA org.eclipse.xtend.util.stdlib.UIDHelper.uid( java.lang.Object );
+
+/**
+ * Creates a unique identifier for an object.
+ * @param o A model element or other object.
+ * @return A newly created UID for this object.
+ */
+String createUID( Object o ): JAVA org.eclipse.xtend.util.stdlib.UIDHelper.createNewUID( java.lang.Object );
+
+/**
+ * Retrieves an object's identifier. The object must be read from a
+ * XMLResource.
+ * 
+ * @param obj An object
+ * @return The object's id. Returns null if the object was not load from a XMLResource.
+ */
+String xmlId (ecore::EObject o) : JAVA org.eclipse.xtend.util.stdlib.EmfUtils.getID( org.eclipse.emf.ecore.EObject );
+String xmlId (emf::EObject o) : JAVA org.eclipse.xtend.util.stdlib.EmfUtils.getID( org.eclipse.emf.ecore.EObject );

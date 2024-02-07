@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.ocl.xtext.markup" version="2">
+    <resource path="src-gen/org/eclipse/ocl/examples/xtext/markup/parser/antlr/MarkupParser.java" type="org.eclipse.ocl.xtext.markup.parser.antlr.MarkupParser">
+        <filter id="643842064">
+            <message_arguments>
+                <message_argument value="InternalMarkupParser"/>
+                <message_argument value="MarkupParser"/>
+                <message_argument value="createParser(XtextTokenStream)"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src-gen/org/eclipse/ocl/examples/xtext/markup/serializer/AbstractMarkupSemanticSequencer.java" type="org.eclipse.ocl.xtext.markup.serializer.AbstractMarkupSemanticSequencer">
+        <filter id="576720909">
+            <message_arguments>
+                <message_argument value="AbstractDelegatingSemanticSequencer"/>
+                <message_argument value="AbstractMarkupSemanticSequencer"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src-gen/org/eclipse/ocl/examples/xtext/markup/serializer/AbstractMarkupSyntacticSequencer.java" type="org.eclipse.ocl.xtext.markup.serializer.AbstractMarkupSyntacticSequencer">
+        <filter id="576720909">
+            <message_arguments>
+                <message_argument value="AbstractSyntacticSequencer"/>
+                <message_argument value="AbstractMarkupSyntacticSequencer"/>
+            </message_arguments>
+        </filter>
+        <filter id="643846161">
+            <message_arguments>
+                <message_argument value="ISynTransition"/>
+                <message_argument value="AbstractMarkupSyntacticSequencer"/>
+                <message_argument value="emitUnassignedTokens(EObject, ISyntacticSequencerPDAProviderISynTransition, INode, INode)"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

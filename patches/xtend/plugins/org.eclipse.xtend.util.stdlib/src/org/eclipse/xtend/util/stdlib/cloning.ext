@@ -1,0 +1,24 @@
+extension org::eclipse::xtend::util::stdlib::tracing;
+ 
+/**
+ * Clones an object.
+ * @param original The object to clone
+ * @return The cloned object
+ */
+Object clone( Object original ): JAVA org.eclipse.xtend.util.stdlib.CloningExtensions.clone(java.lang.Object);
+
+Object cloneWithTrace( Object original, String traceKind ): 
+	let c = original.clone(): (
+		createTrace( original, c, traceKind ) ->
+		c
+	);
+  
+/**
+ * Clones a list of objects.
+ * @param l Source list
+ * @return A list of cloned objects.
+ */  
+List clone( List l ): l.collect( e| e.clone() );
+
+List cloneWithTrace( List l, String traceKind ): l.collect( e| e.cloneWithTrace(traceKind) );
+

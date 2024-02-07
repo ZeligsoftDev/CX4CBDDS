@@ -1,0 +1,71 @@
+grammar org.eclipse.papyrus.uml.textedit.parameter.xtext.UmlParameter //with org.eclipse.xtext.common.Terminals
+with org.eclipse.papyrus.uml.textedit.common.xtext.UmlCommon
+
+import "http://www.eclipse.org/uml2/5.0.0/UML" as uml
+import "http://www.eclipse.org/papyrus/uml/textedit/common/xtext/UmlCommon" as common
+
+generate umlParameter "http://www.eclipse.org/papyrus/uml/textedit/parameter/xtext/UmlParameter"
+
+ParameterRule:
+	(visibility = VisibilityRule)?
+	(direction = DirectionRule)?
+	name=ID (':' (type=TypeRule | typeUndefined?="<Undefined>"))?
+	(multiplicity = MultiplicityRule) ? 
+	(modifiers = ModifiersRule) ?
+	(effect = EffectRule)?
+	(defaultValue = DefaultValueRule)?
+;
+	
+ModifiersRule:
+	{ModifiersRule}'{' (values += ModifierSpecification (',' values += ModifierSpecification)*)? '}'
+;
+
+ModifierSpecification:
+	value = ModifierKind ;
+
+VisibilityRule:
+	visibility = VisibilityKind
+;
+
+DirectionRule:
+	direction = Direction
+;
+
+enum ModifierKind:
+	EXCEPTION = "exception" 
+	| STREAM = "stream" 
+	| ORDERED = "ordered" 
+	| UNIQUE = "unique" ;
+
+
+enum EffectKind:
+	CREATE= "create"
+	| READ = "read"
+	| UPDATE = "update"
+	| DELETE="delete";
+	
+EffectRule:
+	'{' "effect:" effectKind = EffectKind '}';
+	
+DefaultValueRule :
+	'=' default = Value ;
+	
+Value : IntValue | StringValue | BooleanValue | RealValue | NullValue | NoValue;
+
+IntValue : literalInteger = INT;
+
+StringValue : literalString = STRING;
+
+enum BooleanLiterals:
+	TRUE = "true" |
+	FALSE = "false"
+;
+
+BooleanValue : literalBoolean = BooleanLiterals;
+
+//TODO: Support all Java-compliant doubles
+RealValue : integer = INT '.' | '.' fraction = INT | integer = INT "." fraction = INT;
+
+NullValue : {NullValue}'null';
+
+NoValue : {NoValue}'none';

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+    <extension
+            point="org.eclipse.ui.editors">
+        <editor
+              class="org.eclipse.ocl.xtext.completeocl.ui.CompleteOCLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+              contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+              default="true"
+              extensions="ocl"
+              icon="icons/OCLModelFile.gif"
+              id="org.eclipse.ocl.xtext.completeocl.CompleteOCL"
+              name="%MF_CompleteOCLEditor">
+           <contentTypeBinding contentTypeId="org.eclipse.ocl.xtext.CompleteOCL"/>
+        </editor>
+    </extension>
+    <extension
+        point="org.eclipse.ui.handlers">
+        <handler
+            class="org.eclipse.ocl.xtext.completeocl.ui.CompleteOCLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+            <activeWhen>
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+        <handler
+            class="org.eclipse.ocl.xtext.completeocl.ui.CompleteOCLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.validate">
+         <activeWhen>
+            <reference
+                    definitionId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.Editor.opened">
+            </reference>
+         </activeWhen>
+      </handler>
+    </extension>
+    <extension point="org.eclipse.core.expressions.definitions">
+        <definition id="org.eclipse.ocl.xtext.completeocl.CompleteOCL.Editor.opened">
+            <and>
+                <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+                <with variable="activeEditor">
+                    <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
+                        value="org.eclipse.ocl.xtext.completeocl.CompleteOCL" 
+                        forcePluginActivation="true"/>
+                </with>        
+            </and>
+        </definition>
+    </extension>
+    <extension
+            point="org.eclipse.ui.preferencePages">
+        <!--page
+            category="org.eclipse.ocl.common.ui.preferences.ProjectPreferencePage"
+            class="org.eclipse.ocl.xtext.completeocl.ui.CompleteOCLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="org.eclipse.ocl.xtext.completeocl.CompleteOCL"
+            name="%MF_CompleteOCL">
+            <keywordReference id="org.eclipse.ocl.xtext.completeocl.ui.keyword_CompleteOCL"/>
+        </page-->
+        <page
+            category="org.eclipse.ocl.common.ui.preferences.SyntaxColoringPreferencePage"
+            class="org.eclipse.ocl.xtext.completeocl.ui.CompleteOCLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="org.eclipse.ocl.xtext.completeocl.CompleteOCL.coloring"
+            name="%MF_CompleteOCL">
+            <keywordReference id="org.eclipse.ocl.xtext.completeocl.ui.keyword_CompleteOCL"/>
+        </page>
+        <page
+            category="org.eclipse.ocl.common.ui.preferences.TemplatePreferencePage"
+            class="org.eclipse.ocl.xtext.completeocl.ui.CompleteOCLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="org.eclipse.ocl.xtext.completeocl.CompleteOCL.templates"
+            name="%MF_CompleteOCL">
+            <keywordReference id="org.eclipse.ocl.xtext.completeocl.ui.keyword_CompleteOCL"/>
+        </page>
+    </extension>
+    <extension
+        point="org.eclipse.ui.keywords">
+        <keyword
+            id="org.eclipse.ocl.xtext.completeocl.ui.keyword_CompleteOCL"
+            label="%MF_CompleteOCL"/>
+    </extension>
+    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            description="%MF_TriggerExpensiveValidation"
+            id="org.eclipse.ocl.xtext.completeocl.CompleteOCL.validate"
+            name="%MF_Validate">
+      </command>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution
+            locationURI="popup:#CompleteOCLEditorContext?after=group.edit">
+             <command
+                 commandId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.validate"
+                 style="push"
+                 tooltip="%MF_TriggerExpensiveValidation">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.Editor.opened">
+                </reference>
+            </visibleWhen>
+         </command>  
+         </menuContribution>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#CompleteOCLEditorContext?endof=group.find">
+			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
+				<visibleWhen checkEnabled="false">
+                	<reference definitionId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.Editor.opened">
+                	</reference>
+            	</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+	    <handler
+            class="org.eclipse.ocl.xtext.completeocl.ui.CompleteOCLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            commandId="org.eclipse.xtext.ui.editor.FindReferences">
+            <activeWhen>
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+    </extension>   
+
+<!-- adding resource factories -->
+
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="org.eclipse.ocl.xtext.completeocl.ui.CompleteOCLExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="ocl">
+		</parser>
+	</extension>
+	<!--extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+        <resourceServiceProvider
+            class="org.eclipse.ocl.xtext.completeocl.ui.CompleteOCLExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            uriExtension="ocl">
+        </resourceServiceProvider>
+    </extension-->
+
+
+    <!-- marker definitions for org.eclipse.ocl.xtext.completeocl.CompleteOCL -->
+    <extension point="org.eclipse.core.resources.markers"
+      id="Marker" name="%MF_Problem">
+        <super type="org.eclipse.ocl.xtext.base.ui.Marker"/>
+        <persistent value="true"/>
+    </extension>
+
+	<!-- Quick Outline -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler 
+			class="org.eclipse.ocl.xtext.completeocl.ui.CompleteOCLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference
+					definitionId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="%MF_OpenQuickOutline"
+			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+			name="%MF_QuickOutline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#CompleteOCLEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+				style="push"
+				tooltip="%MF_OpenQuickOutline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+    <!-- quickfix marker resolution generator for org.eclipse.ocl.xtext.completeocl.CompleteOCL -->
+   <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="org.eclipse.ocl.xtext.completeocl.ui.CompleteOCLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="org.eclipse.ocl.xtext.completeocl.ui.Marker">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+   </extension>
+   
+	<!-- Load Complete OCL Document -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler 
+			class="org.eclipse.ocl.xtext.completeocl.ui.commands.LoadCompleteOCLResourceHandler"
+			commandId="org.eclipse.ocl.xtext.completeocl.loadresource">
+			<!--activeWhen>
+				<reference
+					definitionId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.Editor.opened">
+				</reference>
+			</activeWhen-->
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.commands">
+	  <command id="org.eclipse.ocl.xtext.completeocl.loadresource"
+		name="%MF_LoadOCLResource_label" description="%MF_LoadOCLResource"/>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+	  <menuContribution locationURI="popup:org.eclipse.ocl.examples.ui.Menu?after=load">
+			<command commandId="org.eclipse.ocl.xtext.completeocl.loadresource"
+				style="push"
+        	    icon="$nl$/icons/OCLModelFile.gif"
+				tooltip="%MF_LoadOCLResource">
+				<visibleWhen checkEnabled="false">
+					<test property="org.eclipse.ocl.examples.ui.resourceSetAvailable" forcePluginActivation="true"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<!--
+           	locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+			locationURI="popup:org.eclipse.ui.menus.showInMenu" TextEditor, Xtexteditor, not Ecore editor
+			locationURI="popup:#CompleteOCLEditorContext?after=group.open"  TextEditor, Xtexteditor, not Ecore editor
+		-->
+	</extension>
+
+	<!-- Export Complete OCL Document -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler 
+			class="org.eclipse.ocl.xtext.completeocl.ui.commands.ExportCompleteOCLHandler"
+			commandId="org.eclipse.ocl.xtext.completeocl.ui.ExportCompleteOCLCommand">
+			<!--activeWhen>
+				<reference
+					definitionId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.Editor.opened">
+				</reference>
+			</activeWhen-->
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.commands">
+	  <command id="org.eclipse.ocl.xtext.completeocl.ui.ExportCompleteOCLCommand"
+	    name="%MF_ExportCompleteOCL_label" description="%MF_ExportCompleteOCL"/>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+	  <menuContribution locationURI="popup:org.eclipse.ocl.examples.ui.Menu?after=load">
+	    <command commandId="org.eclipse.ocl.xtext.completeocl.ui.ExportCompleteOCLCommand"
+	      label="%MF_ExportCompleteOCL_label">
+				style="push"
+        	    icon="$nl$/icons/OCLModelFile.gif"
+				tooltip="%MF_ExportCompleteOCL">
+				<visibleWhen checkEnabled="false">
+					<test property="org.eclipse.ocl.examples.ui.resourceSetAvailable" forcePluginActivation="true"/>
+				</visibleWhen>
+	    </command>
+	  </menuContribution>
+	</extension>
+
+	<extension point="org.eclipse.ui.menus">
+	  <menuContribution locationURI="popup:org.eclipse.ocl.examples.ui.Menu?after=save">
+	    <command commandId="org.eclipse.ocl.xtext.base.ui.SaveASCommand"
+	      label="%MF_Save_AS">
+				style="push"
+        	    icon="$nl$/icons/OCLModelFile.gif"
+				tooltip="%MF_Save_AS_Description">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command>
+	  </menuContribution>
+	  <menuContribution locationURI="popup:org.eclipse.ocl.examples.ui.Menu?after=save">
+	    <command commandId="org.eclipse.ocl.xtext.base.ui.SaveCSCommand"
+	      label="%MF_Save_CS">
+            <visibleWhen checkEnabled="false">
+				style="push"
+        	    icon="$nl$/icons/OCLModelFile.gif"
+				tooltip="%MF_Save_CS_Description">
+                <reference
+                    definitionId="org.eclipse.ocl.xtext.completeocl.CompleteOCL.Editor.opened">
+                </reference>
+            </visibleWhen>
+	    </command>
+	  </menuContribution>
+	</extension>
+ 
+    <extension point="org.eclipse.ui.newWizards">
+      <wizard id="org.eclipse.ocl.xtext.completeocl.ui.CompleteOCLFileNewWizard"
+            category="org.eclipse.ocl.ui.wizards"
+            class="org.eclipse.ocl.xtext.completeocl.ui.wizards.CompleteOCLFileNewWizard"
+            icon="icons/OCLModelFile.gif"          
+            name="%MF_COMPLETE_OCL_WIZARD_NAME"
+            project="false">
+         <description>
+            %MF_COMPLETE_OCL_WIZARD_DESCRIPTION
+         </description>
+      </wizard>
+   </extension>
+
+</plugin>
