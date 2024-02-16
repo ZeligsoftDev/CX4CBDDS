@@ -338,13 +338,13 @@ public class AxciomaWriterSwitch extends IDL3PlusWriterSwitch {
 		@Override
 		public Object caseStructType(StructType object) {
 			
-			String commentString = "//@top-level false";
+			boolean nested = false;
 			
 			EAnnotation annotation = object.getEAnnotation(AnnotationUtil.ZCX_ANNOTATION);
-			if( annotation != null ) {
+			if (annotation != null) {
 				String topLevel = annotation.getDetails().get("toplevel");
-				if( topLevel != null && topLevel.matches("true")) {
-					commentString = "//@top-level true";
+				if (topLevel != null && topLevel.matches("true")) {
+					nested = true;
 				}
 			}
 			
@@ -363,10 +363,15 @@ public class AxciomaWriterSwitch extends IDL3PlusWriterSwitch {
 			
 			// if AXCIOMA
 			String extensibility = "@final";
-			if(object.isIsAppendable()) {
+			if (object.isIsAppendable()) {
 				extensibility = "@appendable";
 			}
 			buf.append(String.format("%s%s%n", indentString, extensibility));
+			String nestedAnnotation = "@nested(FALSE)";
+			if (!nested) {
+				nestedAnnotation = "@nested(TRUE)";
+			}
+			buf.append(String.format("%s%s%n", indentString, nestedAnnotation));
 			
 			buf.append(String.format("%sstruct %s {%n", 
 					indentString,
@@ -376,8 +381,8 @@ public class AxciomaWriterSwitch extends IDL3PlusWriterSwitch {
 				doSwitch(m);					
 			}
 			popScope();
-			buf.append(String.format("%s}; %s%n",
-					indentString, commentString));
+			buf.append(String.format("%s}; %n",
+					indentString));
 			conditionalNewLine();
 			return buf.toString();
 		}
