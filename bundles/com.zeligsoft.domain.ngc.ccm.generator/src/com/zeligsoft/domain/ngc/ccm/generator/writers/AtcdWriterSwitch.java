@@ -284,13 +284,13 @@ public class AtcdWriterSwitch extends IDL3PlusWriterSwitch {
 		@Override
 		public Object caseStructType(StructType object) {
 			
-			boolean nested = true;
+			String commentString = "//@top-level false";
 			
 			EAnnotation annotation = object.getEAnnotation(AnnotationUtil.ZCX_ANNOTATION);
 			if( annotation != null ) {
 				String topLevel = annotation.getDetails().get("toplevel");
 				if( topLevel != null && topLevel.matches("true")) {
-					nested = false;
+					commentString = "//@top-level true";
 				}
 			}
 			
@@ -307,12 +307,6 @@ public class AtcdWriterSwitch extends IDL3PlusWriterSwitch {
 				}
 			}
 			
-			String nestedAnnotation = "@nested(FALSE)";
-			if (nested) {
-				nestedAnnotation = "@nested(TRUE)";
-			}
-			buf.append(String.format("%s%s%n", indentString, nestedAnnotation));
-
 			buf.append(String.format("%sstruct %s {%n", 
 					indentString,
 					object.getName()));
@@ -321,8 +315,8 @@ public class AtcdWriterSwitch extends IDL3PlusWriterSwitch {
 				doSwitch(m);					
 			}
 			popScope();
-			buf.append(String.format("%s};%n",
-					indentString));
+			buf.append(String.format("%s}; %s%n",
+					indentString, commentString));
 			conditionalNewLine();
 			return buf.toString();
 		}
