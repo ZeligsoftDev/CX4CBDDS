@@ -338,13 +338,13 @@ public class AxciomaWriterSwitch extends IDL3PlusWriterSwitch {
 		@Override
 		public Object caseStructType(StructType object) {
 			
-			boolean nested = false;
+			boolean nested = true;
 			
 			EAnnotation annotation = object.getEAnnotation(AnnotationUtil.ZCX_ANNOTATION);
 			if (annotation != null) {
 				String topLevel = annotation.getDetails().get("toplevel");
 				if (topLevel != null && topLevel.matches("true")) {
-					nested = true;
+					nested = false;
 				}
 			}
 			
@@ -368,7 +368,7 @@ public class AxciomaWriterSwitch extends IDL3PlusWriterSwitch {
 			}
 			buf.append(String.format("%s%s%n", indentString, extensibility));
 			String nestedAnnotation = "@nested(FALSE)";
-			if (!nested) {
+			if (nested) {
 				nestedAnnotation = "@nested(TRUE)";
 			}
 			buf.append(String.format("%s%s%n", indentString, nestedAnnotation));
