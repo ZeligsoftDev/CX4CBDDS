@@ -158,7 +158,7 @@ jobs:
           path: ${{ env.AXCIOMA_RPM_PATH }}
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         if: github.event_name == 'release'
         with:
           files: |
