@@ -92,5 +92,16 @@
             path="pathmap://DDS4CCM_PROFILES/dds4ccm.profile.uml">
       </profile>
    </extension>
+   <extension
+         point="org.eclipse.papyrus.infra.core.model">
+      <model
+            classname="org.eclipse.papyrus.uml.tools.model.ExtendedUmlModel"
+            description="Model for UML"
+            fileExtension="uml">
+         <modelSnippet
+               classname="com.zeligsoft.domain.dds4ccm.snippets.CXUMLModelSnippet">
+         </modelSnippet>
+      </model>
+   </extension>
 
 </plugin>
