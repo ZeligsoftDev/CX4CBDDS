@@ -49,6 +49,9 @@ public class CompareColorImpl implements RemovalListener<RGB, Color>, ICompareCo
 
 	/** Scale factor */
 	private static final double INTERPOLATION_SCALE_2 = 0.97;
+	
+	/** Scale factor for filling of a selected element */
+	private static final double INTERPOLATION_SCALE_SELECTED_FILL = 0.3;
 
 	/** Scale factor to compute the color of border. */
 	private static final double DARKER_BORDER_SCALE_FACTOR = -0.5;
@@ -82,11 +85,15 @@ public class CompareColorImpl implements RemovalListener<RGB, Color>, ICompareCo
 
 	private RGB incomingFill;
 
+	private RGB incommingSelectedFill;
+
 	private RGB conflictSelected;
 
 	private RGB conflict;
 
 	private RGB conflictFill;
+
+	private RGB conflictSelectedFill;
 
 	private RGB outgoingSelected;
 
@@ -94,6 +101,8 @@ public class CompareColorImpl implements RemovalListener<RGB, Color>, ICompareCo
 
 	private RGB outgoingFill;
 
+	private RGB outgoingSelectedFill;
+	
 	private RGB requiredColor;
 
 	private RGB requiredBorderColor;
@@ -101,7 +110,7 @@ public class CompareColorImpl implements RemovalListener<RGB, Color>, ICompareCo
 	private RGB unmergeableColor;
 
 	private RGB unmergeableBorderColor;
-
+	
 	/**
 	 * Constructor. With this constructor the colors will disposed at the same as the control.
 	 * 
@@ -153,7 +162,6 @@ public class CompareColorImpl implements RemovalListener<RGB, Color>, ICompareCo
 	}
 
 	private RGB getFillRGB(Diff diff, boolean isThreeWay, boolean isIgnoreAncestor, boolean selected) {
-		RGB selectedFill = getBackground();
 		if (isThreeWay && !isIgnoreAncestor) {
 			boolean requiredConflictForWayOfMerge = false;
 
@@ -161,21 +169,21 @@ public class CompareColorImpl implements RemovalListener<RGB, Color>, ICompareCo
 				switch (diff.getSource()) {
 					case RIGHT:
 						if (fLeftIsLocal) {
-							return selected ? selectedFill : incomingFill;
+							return selected ? incommingSelectedFill : incomingFill;
 						}
-						return selected ? selectedFill : outgoingFill;
+						return selected ? outgoingSelectedFill : outgoingFill;
 					case LEFT:
 						if (fLeftIsLocal) {
-							return selected ? selectedFill : outgoingFill;
+							return selected ? outgoingSelectedFill : outgoingFill;
 						}
-						return selected ? selectedFill : incomingFill;
+						return selected ? incommingSelectedFill : incomingFill;
 				}
 			} else {
-				return selected ? selectedFill : conflictFill;
+				return selected ? conflictSelectedFill : conflictFill;
 			}
-			return selected ? selectedFill : conflictFill;
+			return selected ? conflictSelectedFill : conflictFill;
 		}
-		return selected ? selectedFill : outgoingFill;
+		return selected ? outgoingSelectedFill : outgoingFill;
 	}
 
 	/**
@@ -234,6 +242,7 @@ public class CompareColorImpl implements RemovalListener<RGB, Color>, ICompareCo
 		}
 		conflict = interpolate(conflictSelected, background, INTERPOLATION_SCALE_1);
 		conflictFill = interpolate(conflictSelected, background, INTERPOLATION_SCALE_2);
+		conflictSelectedFill = interpolate(conflictSelected, background, INTERPOLATION_SCALE_SELECTED_FILL);
 
 		outgoingSelected = fColorRegistry.getRGB(OUTGOING_CHANGE_COLOR_THEME_KEY);
 		if (outgoingSelected == null) {
@@ -241,6 +250,7 @@ public class CompareColorImpl implements RemovalListener<RGB, Color>, ICompareCo
 		}
 		outgoing = interpolate(outgoingSelected, background, INTERPOLATION_SCALE_1);
 		outgoingFill = interpolate(outgoingSelected, background, INTERPOLATION_SCALE_2);
+		outgoingSelectedFill = interpolate(outgoingSelected, background, INTERPOLATION_SCALE_SELECTED_FILL);
 
 		incomingSelected = fColorRegistry.getRGB(INCOMING_CHANGE_COLOR_THEME_KEY);
 		if (incomingSelected == null) {
@@ -248,6 +258,7 @@ public class CompareColorImpl implements RemovalListener<RGB, Color>, ICompareCo
 		}
 		incoming = interpolate(incomingSelected, background, INTERPOLATION_SCALE_1);
 		incomingFill = interpolate(incomingSelected, background, INTERPOLATION_SCALE_2);
+		incommingSelectedFill = interpolate(incomingSelected, background, INTERPOLATION_SCALE_SELECTED_FILL);
 	}
 
 	/**
