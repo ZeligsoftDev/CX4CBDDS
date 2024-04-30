@@ -13,14 +13,18 @@
 		</project.build.sourceEncoding>
 		<eclipse-release.url>https://download.eclipse.org/releases/2020-06/
 		</eclipse-release.url>
-		<orbit.url>https://download.eclipse.org/tools/orbit/downloads/drops/R20200529191137/repository/
+		<orbit.url>
+			https://download.eclipse.org/tools/orbit/downloads/drops/R20200529191137/repository/
 		</orbit.url>
-		<papyrus.url>https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2020-06/
+		<papyrus.url>
+			https://download.eclipse.org/modeling/mdt/papyrus/updates/releases/2020-06/
 		</papyrus.url>
 		<cdt-repo.url>https://archive.eclipse.org/tools/cdt/releases/9.11/
 		</cdt-repo.url>
-		<emf-compare.url>https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202005260905/</emf-compare.url>
-		<papyrus-compare.url>https://download.eclipse.org/modeling/mdt/papyrus/components/compare/updates/nightly/0.7.0-N20200430-193447/
+		<emf-compare.url>
+			https://download.eclipse.org/modeling/emf/compare/updates/releases/3.3/R202005260905/</emf-compare.url>
+		<papyrus-compare.url>
+			https://download.eclipse.org/modeling/mdt/papyrus/components/compare/updates/nightly/0.7.0-N20200430-193447/
 		</papyrus-compare.url>
 	</properties>
 
@@ -76,7 +80,8 @@
 						<phase>package</phase>
 						<id>package-feature</id>
 						<configuration>
-							<finalName>${project.artifactId}_${unqualifiedVersion}.${buildQualifier}
+							<finalName>
+								${project.artifactId}_${unqualifiedVersion}.${buildQualifier}
 							</finalName>
 						</configuration>
 					</execution>
@@ -93,7 +98,8 @@
 							<ws>gtk</ws>
 							<arch>x86_64</arch>
 						</environment>
-						<!-- <environment> <os>win32</os> <ws>win32</ws> <arch>x86</arch> </environment>
+						<!-- <environment> <os>win32</os> <ws>win32</ws>
+						<arch>x86</arch> </environment>
 							<environment> <os>win32</os> <ws>win32</ws> <arch>x86_64</arch> </environment>
 							<environment> <os>macosx</os> <ws>cocoa</ws> <arch>x86_64</arch> </environment> -->
 					</environments>
@@ -103,17 +109,19 @@
 	</build>
 
 	<modules>
-	    <!--
+		<!--
 	    The actual plug-in(s) we are patching.
 	    -->
-	    <module>org.eclipse.papyrus.uml.properties</module>
-	    <module>org.eclipse.papyrus.views.modelexplorer</module>
-	    <!--
+		<module>org.eclipse.emf.compare.rcp.ui</module>
+		<module>org.eclipse.papyrus.uml.properties</module>
+		<module>org.eclipse.papyrus.views.modelexplorer</module>
+		<!--
 	    The feature patches that bundle the patched plugins
 	    -->
+		<module>com.zeligsoft.emf.compare.rcp.ui.patch.feature</module>
 		<module>com.zeligsoft.papyrus.uml.properties.patch.feature</module>
 		<module>com.zeligsoft.papyrus.views.modelexplorer.patch.feature</module>
 
 		<module>site-papyrus-patch</module>
-    </modules>
+	</modules>
 </project>
