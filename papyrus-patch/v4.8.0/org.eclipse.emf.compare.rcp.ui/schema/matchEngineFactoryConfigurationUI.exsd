@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.emf.compare.rcp.ui" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.eclipse.emf.compare.rcp.ui" id="matchEngineFactoryConfigurationUI" name="matchEngineFactoryConfigurationUI"/>
+      </appinfo>
+      <documentation>
+         This extension point is use to register UI component to configure Matching engine factories.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <choice>
+            <element ref="configurator" minOccurs="1" maxOccurs="unbounded"/>
+         </choice>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="configurator">
+      <complexType>
+         <attribute name="itemToConfigure" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Id of the item to configure. It is the qualified named of the factory class. This factory shall implement org.eclipse.emf.compare.rcp.internal.extension.IConfigurableItem.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.compare.rcp.internal.extension.IConfigurableItem"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="uiProvider" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A class that provide a Configuration UI.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.compare.rcp.ui.internal.preferences.IConfiguratorUI"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         4.0.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;extension
+       point=&quot;org.eclipse.emf.compare.rcp.ui.matchEngineFactoryConfiguratorUI&quot;&gt;
+    &lt;configurator
+          itemToConfigure=&quot;org.eclipse.emf.compare.rcp.internal.match.RCPMatchEngineFactory&quot;
+          uiProvider=&quot;org.eclipse.emf.compare.rcp.ui.internal.configuration.ui.match.DefaultMatchEngineConfiguatorUIFactory&quot;&gt;
+    &lt;/configurator&gt;
+ &lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+
+
+
+</schema>
