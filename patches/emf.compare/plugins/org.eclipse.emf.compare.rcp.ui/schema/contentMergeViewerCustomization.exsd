@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.emf.compare.rcp.ui" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.eclipse.emf.compare.rcp.ui" id="contentMergeViewerCustomization" name="Customization of ContentMergeViewers"/>
+      </appinfo>
+      <documentation>
+         This extension point can be used to tell EMF Compare how to handle the content within the ContentMergeViewers.
+
+The &quot;contentCustomization&quot; element may be used by clients to filter the root elements which are provided by the &quot;EMFCompareAccessor&quot;s and displayed in the Content Merge Viewers. Another use case would be to wrap the given objects within an own special object type which provides additional information for a specialized LabelProvider.
+
+The &quot;treeContentCustomization&quot; element may be used by clients to add, move or filter elements within the Tree Content Merge Viewers (Containment Tree). The added elements don&apos;t have to be EObjects.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="contentCustomization" minOccurs="0" maxOccurs="unbounded"/>
+            <element ref="treeContentCustomization" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="contentCustomization">
+      <annotation>
+         <documentation>
+            Allows to customize the root and selected elements of the default ContentMergeViewers.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="mergeViewerItemProvider" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The ContentProvider which is responsible of determining the root and selected IMergeViewerItems by examining the input of the ContentMergeViewer. 
+
+If this attribute is not specified a default implementation will be used.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.compare.ide.ui.contentmergeviewer.tree.provider.IMergeViewerItemProvider"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="context" type="string">
+            <annotation>
+               <documentation>
+                  The IContextTester inidicates whether the customization should be applied for the current comparison. 
+
+If no IContextTester is specified the customization will be applied to all contexts.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.compare.adapterfactory.context.IContextTester"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="ranking" type="string">
+            <annotation>
+               <documentation>
+                  If multiple content customizations are applicable to the current context, the one with the highest ranking will be chosen. 
+
+If no ranking is specified a default ranking of &quot;-1&quot; will be assumed.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="treeContentCustomization">
+      <annotation>
+         <documentation>
+            Allows to customize the structure of the TreeContentMergeViewer.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="contentProvider" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The content provider which is responsible of determining the children and parent elements of IMergeViewerItems.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.compare.ide.ui.contentmergeviewer.tree.provider.IMergeViewerItemContentProvider"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="context" type="string">
+            <annotation>
+               <documentation>
+                  The IContextTester indicates whether the customization should be applied for the current comparison. 
+
+If no IContextTester is specified the customization will be applied to all contexts.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.emf.compare.adapterfactory.context.IContextTester"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="ranking" type="string">
+            <annotation>
+               <documentation>
+                  If multiple content customizations are applicable to the current context, the one with the highest ranking will be chosen. 
+
+If no ranking is specified a default ranking of &quot;-1&quot; will be assumed.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         4.3.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         The example below shows the extension point syntax:
+&lt;p&gt;
+&lt;pre&gt;
+   &lt;extension
+         point=&quot;org.eclipse.emf.compare.rcp.ui.contentMergeViewerCustomization&quot;&gt;
+      &lt;treeContentCustomization
+            contentProvider=&quot;org.example.MyMergeViewerItemContentProvider&quot;
+            context=&quot;org.example.MyContextTester&quot;
+            ranking=&quot;20&quot;&gt;
+      &lt;/treeContentCustomization&gt;
+      &lt;contentCustomization
+            mergeViewerItemProvider=&quot;org.example.MyCompareAccessorMergeViewerItemProvider&quot;
+            context=&quot;org.example.MyContextTester&quot;
+            ranking=&quot;10&quot;&gt;
+      &lt;/contentCustomization&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         Plug-ins using this extension point have to implement:
+&lt;ul&gt;
+&lt;li&gt;&lt;samp&gt;org.eclipse.emf.compare.ide.ui.contentmergeviewer.tree.provider.IMergeViewerItemProvider&lt;/samp&gt; when using the &quot;contentCustomization&quot; element.&lt;/li&gt;
+&lt;li&gt;&lt;samp&gt;IMergeViewerItemContentProvider&lt;/samp&gt; when using the &quot;treeContentCustomization&quot; element.&lt;/li&gt;
+&lt;/ul&gt;
+Optionally &lt;samp&gt;org.eclipse.emf.compare.adapterfactory.context.IContextTester&lt;/samp&gt; may be implemented to check for a certain context (recommended).
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         There is no provided default implementation.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         Copyright (c) 2016 EclipseSource Muenchen GmbH and others.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Stefan Dirix - initial API and implementation
+      </documentation>
+   </annotation>
+
+</schema>
