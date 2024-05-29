@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+ Copyright (c) 2013, 2015, 2016 Obeo and others..
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 
+ Contributors:
+     Obeo - initial API and implementation
+     Simon Delisle - bug 495753
+-->
+
+<plugin>
+   <extension-point id="groups" name="EMF Compare Groups" schema="schema/groups.exsd"/>
+   <extension-point id="filters" name="EMF Compare Filters" schema="schema/filters.exsd"/>
+   <extension-point id="accessorFactory" name="Accessor Factory" schema="schema/accessorFactory.exsd"/>
+   <extension-point id="differenceGroupExtender" name="EMF Compare Difference Group Extender" schema="schema/differenceGroupExtender.exsd"/>
+   <extension-point id="matchEngineFactoryConfigurationUI" name="matchEngineFactoryConfigurationUI" schema="schema/matchEngineFactoryConfigurationUI.exsd"/>
+   <extension-point id="contentMergeViewerCustomization" name="Customization of ContentMergeViewers" schema="schema/contentMergeViewerCustomization.exsd"/>
+   <extension
+         point="org.eclipse.emf.compare.rcp.ui.groups">
+      <group
+            class="org.eclipse.emf.compare.rcp.ui.internal.structuremergeviewer.groups.impl.DefaultGroupProvider"
+            description="%emf.compare.default.groups.description"
+            label="%emf.compare.default"
+            rank="100">
+      </group>
+      <group
+            class="org.eclipse.emf.compare.rcp.ui.internal.structuremergeviewer.groups.impl.KindGroupProvider"
+            description="%emf.compare.kind.groups.description"
+            label="%emf.compare.kind.groups"
+            rank="80">
+      </group>
+      <group
+            class="org.eclipse.emf.compare.rcp.ui.internal.structuremergeviewer.groups.impl.ThreeWayComparisonGroupProvider"
+            description="%emf.compare.side.groups.description"
+            label="%emf.compare.side.groups"
+            rank="120"
+            type="THREE_WAY">
+      </group>
+      <group
+            class="org.eclipse.emf.compare.rcp.ui.internal.structuremergeviewer.groups.impl.ByResourceGroupProvider"
+            description="%emf.compare.resource.group.description"
+            label="%emf.compare.resource.group"
+            rank="60">
+      </group>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.rcp.ui.filters">
+      <filter
+            activeByDefault="true"
+            class="org.eclipse.emf.compare.rcp.ui.internal.structuremergeviewer.filters.impl.CascadingDifferencesFilter"
+            description="%emf.compare.cascading.differences.filter.description"
+            label="%emf.compare.cascading.differences.filter">
+      </filter>
+      <filter
+            activeByDefault="true"
+            class="org.eclipse.emf.compare.rcp.ui.internal.structuremergeviewer.filters.impl.TechnicalitiesFilter"
+            description="%emf.compare.technicalities.filter.description"
+            label="%emf.compare.technicalities.filter">
+      </filter>
+   </extension>
+   <extension
+         point="org.eclipse.emf.compare.rcp.ui.accessorFactory">
+      <factory
+            class="org.eclipse.emf.compare.rcp.ui.internal.contentmergeviewer.accessor.factory.impl.MatchAccessorFactory"
+            ranking="10">
+      </factory>
+      <factory
+            class="org.eclipse.emf.compare.rcp.ui.internal.contentmergeviewer.accessor.factory.impl.ManyStructuralFeatureAccessorFactory"
+            ranking="10">
+      </factory>
+      <factory
+            class="org.eclipse.emf.compare.rcp.ui.internal.contentmergeviewer.accessor.factory.impl.SingleStructuralFeatureAccessorFactory"
+            ranking="10">
+      </factory>
+      <factory
+            class="org.eclipse.emf.compare.rcp.ui.internal.contentmergeviewer.accessor.factory.impl.StringAttributeChangeAccessorFactory"
+            ranking="10">
+      </factory>
+      <factory
+            class="org.eclipse.emf.compare.rcp.ui.internal.contentmergeviewer.accessor.factory.impl.ResourceContentsAccessorFactory"
+            ranking="10">
+      </factory>
+      <factory
+            class="org.eclipse.emf.compare.rcp.ui.internal.contentmergeviewer.accessor.factory.impl.ComparisonAccessorFactory"
+            ranking="10">
+      </factory>
+      <factory
+            class="org.eclipse.emf.compare.rcp.ui.internal.contentmergeviewer.accessor.factory.impl.MatchResourceAccessorFactory"
+            ranking="10">
+      </factory>
+      <factory
+            class="org.eclipse.emf.compare.rcp.ui.internal.contentmergeviewer.accessor.factory.impl.FeatureMapKeyChangeAccessorFactory"
+            ranking="10">
+      </factory>
+      <factory
+            class="org.eclipse.emf.compare.rcp.ui.internal.contentmergeviewer.accessor.factory.impl.FeatureMapChangeMoveAccessorFactory"
+            ranking="10">
+      </factory>
+      <factory
+            class="org.eclipse.emf.compare.rcp.ui.internal.contentmergeviewer.accessor.factory.impl.ContainmentReferenceChangeAccessorFactory"
+            ranking="15">
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.themes">
+      <themeElementCategory
+            id="org.eclipse.emf.compare.themeCategory"
+            label="%themeElementCategory.label">
+         <description>
+            %themeElementCategory.description
+         </description>
+      </themeElementCategory>
+      <colorDefinition
+            categoryId="org.eclipse.emf.compare.themeCategory"
+            id="org.eclipse.emf.compare.incomingChangeColor"
+            isEditable="true"
+            label="%incomingColor.label"
+            value="COLOR_BLUE">
+         <description>
+            %incomingColor.desc
+         </description>
+      </colorDefinition>
+      <colorDefinition
+            categoryId="org.eclipse.emf.compare.themeCategory"
+            id="org.eclipse.emf.compare.conflictingChangeColor"
+            isEditable="true"
+            label="%conflictingColor.label"
+            value="COLOR_RED">
+         <description>
+            %conflictingColor.desc
+         </description>
+      </colorDefinition>
+      <colorDefinition
+            categoryId="org.eclipse.emf.compare.themeCategory"
+            id="org.eclipse.emf.compare.outgoingChangeColor"
+            isEditable="true"
+            label="%outgoingColor.label"
+            value="COLOR_BLACK">
+         <description>
+            %outgoingColor.desc
+         </description>
+      </colorDefinition>
+      <colorDefinition
+            categoryId="org.eclipse.emf.compare.themeCategory"
+            id="org.eclipse.emf.compare.requiredChangeColor"
+            isEditable="true"
+            label="%requiredColor.label"
+            value="215, 255, 200">
+         <description>
+         	%requiredColor.desc
+         </description>
+      </colorDefinition>
+      <colorDefinition
+            categoryId="org.eclipse.emf.compare.themeCategory"
+            id="org.eclipse.emf.compare.unmergeableChangeColor"
+            isEditable="true"
+            label="%mergeColor.label"
+            value="255, 205, 180">
+         <description>
+            %mergeColor.desc
+         </description>
+      </colorDefinition>
+	</extension>
+	<extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.eclipse.emf.compare.rcp.ui.internal.preferences.EMFComparePreferencePage"
+            id="org.eclipse.emf.compare.rcp.ui.preferencePage.global"
+            name="%page.name">
+      </page>
+      <page
+            category="org.eclipse.emf.compare.rcp.ui.preferencePage.global"
+            class="org.eclipse.emf.compare.rcp.ui.internal.preferences.EnginesPreferencePage"
+            id="org.eclipse.emf.compare.rcp.ui.preferencePage.engines"
+            name="%page.engines.name">
+      </page>
+      <page
+            category="org.eclipse.emf.compare.rcp.ui.preferencePage.global"
+            class="org.eclipse.emf.compare.rcp.ui.internal.preferences.PostProcessorPreferencePage"
+            id="org.eclipse.emf.compare.rcp.ui.preferencePage.postProcessors"
+            name="%page.postProcessors.name">
+      </page>
+      <page
+            category="org.eclipse.emf.compare.rcp.ui.preferencePage.global"
+            class="org.eclipse.emf.compare.rcp.ui.internal.preferences.FiltersPreferencePage"
+            id="org.eclipse.emf.compare.rcp.ui.preferencePage.filters"
+            name="%page.filters.name">
+	  </page>
+      <page
+      		category="org.eclipse.emf.compare.rcp.ui.preferencePage.global"
+            class="org.eclipse.emf.compare.rcp.ui.internal.preferences.GroupsPreferencePage"
+            id="org.eclipse.emf.compare.rcp.ui.preferencePage.groups"
+            name="%page.groups.name">
+      </page>
+      <page
+            category="org.eclipse.emf.compare.rcp.ui.preferencePage.global"
+            class="org.eclipse.emf.compare.rcp.ui.internal.preferences.AdapterFactoriesPreferencePage"
+            id="org.eclipse.emf.compare.rcp.ui.preferencePage.adapterfactories"
+            name="%page.itemProviders.name">
+      </page>
+      <page
+            category="org.eclipse.emf.compare.rcp.ui.preferencePage.global"
+            class="org.eclipse.emf.compare.rcp.ui.internal.preferences.LoggingPreferencePage"
+            id="org.eclipse.emf.compare.rcp.ui.preferencePage.logging"
+            name="%page.logging.name">
+      </page>
+   </extension>
+   <extension
+       point="org.eclipse.emf.compare.rcp.ui.matchEngineFactoryConfigurationUI">
+    <configurator
+          itemToConfigure="org.eclipse.emf.compare.rcp.internal.match.DefaultRCPMatchEngineFactory"
+          uiProvider="org.eclipse.emf.compare.rcp.ui.internal.configuration.ui.match.DefaultMatchEngineConfiguatorUIFactory">
+    </configurator>
+ </extension>
+   <extension
+         point="org.eclipse.emf.compare.rcp.ui.contentMergeViewerCustomization">
+      <treeContentCustomization
+            contentProvider="org.eclipse.emf.compare.rcp.ui.internal.mergeviewer.item.impl.ResourceAttachmentChangeProvider"
+            ranking="100">
+      </treeContentCustomization>
+   </extension>
+</plugin>
