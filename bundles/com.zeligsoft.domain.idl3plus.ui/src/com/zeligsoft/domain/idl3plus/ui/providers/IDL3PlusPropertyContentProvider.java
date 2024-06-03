@@ -97,16 +97,14 @@ public class IDL3PlusPropertyContentProvider extends CCMPropertyContentProvider 
 				.isZDLConcept(modelObject, IDL3PlusNames.CONNECTOR_DEF)) {
 			// get properties of the component
 			Component component = (Component) entry.getModelObject();
-			IPropertyEntry grandParent = entry.getParent();
-			EObject grandParentEObject = grandParent.getModelObject();
-			Property grandParentProperty = null;
-			if (grandParentEObject instanceof Property) {
-				grandParentProperty = (Property) grandParentEObject;
+			IPropertyEntry entryParent = entry.getParent();
+			EObject entryParentModelObject = entryParent != null ? entryParent.getModelObject() : null;
+			Property entryParentDeploymentProperty = null;
+			if (entryParentModelObject instanceof Property) {
+				entryParentDeploymentProperty = (Property) entryParentModelObject;
 			}
-			Iterator<Property> itor = component.getAllAttributes().iterator();
-			while (itor.hasNext()) {
-				Property property = itor.next();
-				if (!IDL3PlusUtil.filter(grandParentProperty, property)) {
+			for (Property property: component.getAllAttributes()) {
+				if (entryParent == null || !IDL3PlusUtil.filter(entryParentDeploymentProperty, property)) {
 					if (ZDLUtil.isZDLConcept(property,
 							CXDomainNames.CXATTRIBUTE)) {
 						children.add(entry.addChild(property));

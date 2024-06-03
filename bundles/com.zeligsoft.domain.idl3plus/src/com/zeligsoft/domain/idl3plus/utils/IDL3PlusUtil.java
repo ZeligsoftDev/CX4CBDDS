@@ -559,13 +559,13 @@ public class IDL3PlusUtil {
 	 * Determine whether the given attribute of the given port type matches the pattern specified for the 
 	 * port type in the filteredProperties extension.
 	 * 
-	 * @param grandParent - A {@link Property}.
+	 * @param deploymentProperty - A {@link Property} in the Deployment.
 	 * @param port - A {@link Port} {@link Property}.
 	 * @return A boolean.
 	 */
-	public static boolean filter(Property grandParent, Property port) {
-		if (grandParent != null && port != null && ZDLUtil.isZDLConcept(port, ZMLMMNames.PORT)) {
-			Type portType = grandParent.getType();
+	public static boolean filter(Property deploymentProperty, Property port) {
+		if (deploymentProperty != null && port != null && ZDLUtil.isZDLConcept(port, ZMLMMNames.PORT)) {
+			Type portType = deploymentProperty.getType();
 			if (portType != null && ZDLUtil.isZDLConcept(portType, ZMLMMNames.PORT_TYPE)) {
 				String portTypeQualifiedName = getInstantiatedPortTypeQualifiedName(portType);
 				FilteredPropertyConfiguration filteredPropertyConfiguration = ConnectorRegistry.getInstance()
