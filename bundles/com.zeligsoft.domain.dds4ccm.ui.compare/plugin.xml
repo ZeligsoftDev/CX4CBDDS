@@ -12,5 +12,13 @@
             ranking="20">
       </factory>
    </extension>
+   <extension
+         point="org.eclipse.emf.compare.rcp.ui.contentMergeViewerCustomization">
+      <contentCustomization
+            context="com.zeligsoft.domain.dds4ccm.ui.compare.contentmergeviewer.provider.DDS4CCMContextTester"
+            mergeViewerItemProvider="com.zeligsoft.domain.dds4ccm.ui.compare.contentmergeviewer.provider.DDS4CCMMergeViewerItemProvider"
+            ranking="30">
+      </contentCustomization>
+   </extension>
 
 </plugin>
