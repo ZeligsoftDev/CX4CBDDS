@@ -36,7 +36,7 @@ import com.zeligsoft.domain.zml.util.ZMLMMNames;
  */
 public class ValidNameConstraint extends AbstractModelConstraint {
 	
-	private static final String VALID_NAME_REGEX = "[a-zA-Z_]\\w*";
+	private static final String VALID_NAME_REGEX = "[a-zA-Z_](\\w|\\.)*";
 	private static final Pattern VALID_NAME_PATTERN = Pattern.compile(VALID_NAME_REGEX);
 	private static final Predicate<String> VALID_NAME_PREDICATE = VALID_NAME_PATTERN.asMatchPredicate();
 
@@ -53,7 +53,8 @@ public class ValidNameConstraint extends AbstractModelConstraint {
 					return ctx.createSuccessStatus();
 				}
 			}
-			return ctx.createFailureStatus(nameObj.toString());
+			String invalidName = nameObj != null ? nameObj.toString() : "<null>";
+			return ctx.createFailureStatus(invalidName);
 		}
 
 		return null;
