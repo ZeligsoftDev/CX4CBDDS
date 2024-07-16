@@ -182,7 +182,7 @@ public class OawDebug {
 					Object nameVal = eObj.eGet(attribute);
 					if (nameVal instanceof List) {
 						nameOrId = stringFromList((List)nameVal);
-					} else {
+					} else if (nameVal instanceof String) {
 						nameOrId = (String) nameVal.toString();
 					}
 					found = true;
