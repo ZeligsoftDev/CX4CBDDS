@@ -139,7 +139,39 @@ public class DDS4CCMUtil {
 	}
 
 
-	/**
+	private static EObject getPropertyType(Component containerProcess, PropertyVariable property) {
+		switch (property) {
+		case LM_PROCESSNAME:
+		case LM_CPUAFFINITY:
+		case LM_PROCESSPRIORITY:
+		case LOCALITY_ARGUMENTS:
+			return CORBAUtil.getCORBAPrimitiveType(containerProcess, "CXString"); //$NON-NLS-1$
+		case ZMQ_SRV_IOTHREADS:
+		case ZMQ_SRV_POLLINGTHREADS:
+		case ZMQ_SRV_MAXSOCKETS:
+		case ZMQ_SRV_THREADPRIO:
+		case ZMQ_SRV_THREADSCHEDPOLICY:
+			return CORBAUtil.getCORBAPrimitiveType(containerProcess, "CXULong"); //$NON-NLS-1$
+		default:
+			return CORBAUtil.getCORBAPrimitiveType(containerProcess, "CXString"); //$NON-NLS-1$
+		}
+	}
+	
+	private static PropertyVariable[] CONTAINER_PROPERTIES_TO_ADD = {
+			PropertyVariable.LM_CPUAFFINITY,
+			PropertyVariable.LM_PROCESSPRIORITY,
+			PropertyVariable.LOCALITY_ARGUMENTS,
+			PropertyVariable.ZMQ_SRV_IOTHREADS,
+			PropertyVariable.ZMQ_SRV_POLLINGTHREADS,
+			PropertyVariable.ZMQ_SRV_MAXSOCKETS,
+			PropertyVariable.ZMQ_SRV_THREADPRIO,
+			PropertyVariable.ZMQ_SRV_THREADSCHEDPOLICY
+	};
+
+	private static PropertyVariable[] CONTAINER_PROPERTIES_TO_REMOVE = {
+			PropertyVariable.LM_PROCESSNAME
+	};
+/**
 	 * 
 	 * 
 	 * @param containerProcess
@@ -149,69 +181,45 @@ public class DDS4CCMUtil {
 
 		String modelType = DDS4CCMUtil.getModelType(containerProcess);
 
-		final String cpuAffinity = PropertyVariable.LM_CPUAFFINITY.getName(modelType);
-
-		final String processName = PropertyVariable.LM_PROCESSNAME.getName(modelType);
-
-		final String processPriority = PropertyVariable.LM_PROCESSPRIORITY.getName(modelType);
- 
-		final String localityArgs = PropertyVariable.LOCALITY_ARGUMENTS.getName(modelType);
-				
-		EObject corbaStringType = CORBAUtil.getCORBAPrimitiveType(containerProcess, "CXString"); //$NON-NLS-1$
-		boolean b_containerProcessModified = false;
-
-		boolean b_hasAffinity = false;
-		boolean b_hasProcessName = false;
-		boolean b_hasProcessPriority = false;
-		boolean b_hasLocalityArgs = false;
+		boolean containerProcessModified = false;
 
 		if (ZDLUtil.isZDLConcept(containerProcess, CCMNames.CONTAINER_PROCESS)) {
-			for (Property p : containerProcess.getOwnedAttributes()) {
-				if (p.getName().matches(cpuAffinity)) {
-					b_hasAffinity = true;
-				} else if (p.getName().matches(processName)) {
-					b_hasProcessName = true;
-				} else if (p.getName().matches(processPriority)) {
-					b_hasProcessPriority = true;
-				} else if (p.getName().matches(localityArgs)) {
-					b_hasLocalityArgs = true;
+			for (PropertyVariable p: CONTAINER_PROPERTIES_TO_ADD) {
+				String name = p.getName(modelType);
+				boolean hasRequiredProperty = false;
+				for (Property umlProperty: containerProcess.getOwnedAttributes()) {
+					if (name.equals(umlProperty.getName())) {
+						hasRequiredProperty = true;
+					}
+				}
+				if (!hasRequiredProperty) {
+					containerProcessModified = true;
+					EObject property = ZDLUtil.createZDLConceptIn(containerProcess,
+							CCMNames.PROPERTY);
+					ZDLUtil.setValue(property, CCMNames.PROPERTY,
+							ZMLMMNames.NAMED_ELEMENT__NAME, name);
+					ZDLUtil.setValue(property, CCMNames.PROPERTY,
+							ZMLMMNames.TYPED_ELEMENT__TYPE, getPropertyType(containerProcess, p));
 				}
 			}
-
-			if (!b_hasAffinity) {
-				b_containerProcessModified = true;
-				EObject property = ZDLUtil.createZDLConceptIn(containerProcess,
-						CCMNames.PROPERTY);
-				ZDLUtil.setValue(property, CCMNames.PROPERTY,
-						ZMLMMNames.NAMED_ELEMENT__NAME, cpuAffinity);
-				ZDLUtil.setValue(property, CCMNames.PROPERTY,
-						ZMLMMNames.TYPED_ELEMENT__TYPE, corbaStringType);
-			}
-			if (b_hasProcessName) {
-				Command cmd = BaseUtil.getDeleteCommand(Collections.singletonList(containerProcess.getOwnedMember(processName)));
-				TransactionUtil.getEditingDomain(containerProcess).getCommandStack().execute(cmd);
-			}
-			if (!b_hasProcessPriority) {
-				b_containerProcessModified = true;
-				EObject property = ZDLUtil.createZDLConceptIn(containerProcess,
-						CCMNames.PROPERTY);
-				ZDLUtil.setValue(property, CCMNames.PROPERTY,
-						ZMLMMNames.NAMED_ELEMENT__NAME, processPriority);
-				ZDLUtil.setValue(property, CCMNames.PROPERTY,
-						ZMLMMNames.TYPED_ELEMENT__TYPE, corbaStringType);
-			}
-			if (!b_hasLocalityArgs) {
-				b_containerProcessModified = true;
-				EObject property = ZDLUtil.createZDLConceptIn(containerProcess,
-						CCMNames.PROPERTY);
-				ZDLUtil.setValue(property, CCMNames.PROPERTY,
-						ZMLMMNames.NAMED_ELEMENT__NAME, localityArgs);
-				ZDLUtil.setValue(property, CCMNames.PROPERTY,
-						ZMLMMNames.TYPED_ELEMENT__TYPE, corbaStringType);
+			for (PropertyVariable p: CONTAINER_PROPERTIES_TO_REMOVE) {
+				String name = p.getName(modelType);
+				boolean hasUndesiredProperty = false;
+				for (Property umlProperty: containerProcess.getOwnedAttributes()) {
+					if (name.equals(umlProperty.getName())) {
+						hasUndesiredProperty = true;
+						break;
+					}
+				}
+				if (hasUndesiredProperty) {
+					containerProcessModified = true;
+					Command cmd = BaseUtil.getDeleteCommand(Collections.singletonList(containerProcess.getOwnedMember(name)));
+					TransactionUtil.getEditingDomain(containerProcess).getCommandStack().execute(cmd);
+				}
 			}
 		}
 
-		return b_containerProcessModified;
+		return containerProcessModified;
 	}
 	
 	public static boolean addRegisterNamingProperty(Class zdlClass) {
