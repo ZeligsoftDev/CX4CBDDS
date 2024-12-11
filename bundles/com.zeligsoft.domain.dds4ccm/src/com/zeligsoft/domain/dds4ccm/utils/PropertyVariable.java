@@ -20,7 +20,13 @@ public enum PropertyVariable {
 	LM_CPUAFFINITY("edu.vanderbilt.dre.DAnCE.LocalityManager.CPUAffinity", "nl.remedy.it.DnCX11.LocalityManager.CPUAffinity"),
 	LM_PROCESSNAME("edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessName", "nl.remedy.it.DnCX11.LocalityManager.ProcessName"),
 	LM_PROCESSPRIORITY("edu.vanderbilt.dre.DAnCE.LocalityManager.ProcessPriority", "nl.remedy.it.DnCX11.LocalityManager.ProcessPriority"),
-	LOCALITY_ARGUMENTS("edu.vanderbilt.dre.DAnCE.LocalityArguments", "nl.remedy.it.DnCX11.LocalityArguments");
+	LOCALITY_ARGUMENTS("edu.vanderbilt.dre.DAnCE.LocalityArguments", "nl.remedy.it.DnCX11.LocalityArguments"),
+	ZMQ_SRV_IOTHREADS("nl.remedy.it.PSDD.ZMQ.Service.IOThreads","nl.remedy.it.PSDD.ZMQ.Service.IOThreads"),
+	ZMQ_SRV_POLLINGTHREADS("nl.remedy.it.PSDD.ZMQ.Service.PollingThreads","nl.remedy.it.PSDD.ZMQ.Service.PollingThreads"),
+	ZMQ_SRV_MAXSOCKETS("nl.remedy.it.PSDD.ZMQ.Service.MaxSockets","nl.remedy.it.PSDD.ZMQ.Service.MaxSockets"),
+	ZMQ_SRV_THREADPRIO("nl.remedy.it.PSDD.ZMQ.Service.ThreadPrio","nl.remedy.it.PSDD.ZMQ.Service.ThreadPrio"),
+	ZMQ_SRV_THREADSCHEDPOLICY("nl.remedy.it.PSDD.ZMQ.Service.ThreadSchedPolicy","nl.remedy.it.PSDD.ZMQ.Service.ThreadSchedPolicy");
+	
 
 	private final String axciomaName;
 	private final String atcdName;
